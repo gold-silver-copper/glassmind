@@ -31,6 +31,12 @@ pub struct Label {
     /// The task kind, or the conversation move (`reference`, `meta`, ...).
     pub kind: String,
     pub expected: Response,
+    /// For a "repaired" turn: a directory, relative to the sources, of
+    /// files copied over the repaired source before judging it (tests the
+    /// request did not show, as rustbench hides them). With it, the tests
+    /// must pass too, whatever check was asked for.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub hidden: Option<String>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]

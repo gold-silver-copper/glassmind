@@ -500,6 +500,12 @@ pub fn apply(changes: &[RustChange], roots: &BTreeMap<String, PathBuf>) -> Resul
 /// a day ahead, so cargo builds them anew whatever was built before.
 pub fn copy_tree(from: &Path, to: &Path) -> Result<(), String> {
     let _ = std::fs::remove_dir_all(to);
+    overlay(from, to)
+}
+
+/// Copies every file under `from` over the tree at `to`, replacing files of
+/// the same path and keeping the rest.
+pub fn overlay(from: &Path, to: &Path) -> Result<(), String> {
     for f in files(from) {
         let into = to.join(&f);
         if let Some(dir) = into.parent() {

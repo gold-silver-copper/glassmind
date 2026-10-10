@@ -36,6 +36,21 @@ broken copies of them (`tools/datagen/harness_tasks.py`); labels come from
 | urlencoding | 2.1.3 | 52K | MIT | held-out |
 | version-compare | 0.2.1 | 100K | MIT | held-out |
 
+## rustbench (an outside benchmark)
+
+[rustbench](https://github.com/gold-silver-copper/rustbench) at commit
+`f79e71a`, MIT OR Apache-2.0: small std-only crates with one thing to fix
+or change, a request in three styles (terse, chatty, hurried), and hidden
+tests that judge the result.
+
+- **dev split**: the fix-error, fix-test, edit and implement tasks without
+  an output check (219 tasks, 657 turns) are training data
+  (`tools/datagen/rustbench_tasks.py`). The scorer copies each task's
+  hidden tests over a remedy and runs `cargo test`, as rustbench does.
+- **held-out split**: measurement only, with rustbench's own runner and
+  `tools/rustbench-agent.sh`. Never trained on, never turned into data,
+  never shown to loop agents (it lives with the held-out data).
+
 ## Requests (generated)
 
 All requests were written by Claude Opus 5.5 (`tools/datagen/phrase.py`),

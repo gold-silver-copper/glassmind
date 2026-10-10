@@ -30,8 +30,12 @@ TARGET = Path.home() / ".cache" / "glassmind" / "harness-target"
 
 def cargo(root, *args):
     env = dict(__import__("os").environ, CARGO_TARGET_DIR=str(TARGET / root.name))
-    p = subprocess.run(["cargo", *args[:1], "-j", "4", *args[1:]], cwd=root, capture_output=True, text=True,
-                       env=env, timeout=900)
+    try:
+        p = subprocess.run(["cargo", *args[:1], "-j", "4", *args[1:]], cwd=root, capture_output=True, text=True,
+                           env=env, timeout=180)
+    except subprocess.TimeoutExpired:
+        # A breakage that hangs (a loop that never ends) is not a usable task.
+        return False, ""
     return p.returncode == 0, p.stdout
 
 
@@ -197,7 +201,7 @@ def main():
     crates = sorted(p for p in Path(a.crates).expanduser().iterdir() if (p / "Cargo.toml").exists())
     out = Path(a.out).expanduser()
     (out / "sources").mkdir(parents=True, exist_ok=True)
-    tasks = []
+    tasks, made_names = [], set()
     for crate in crates:
         rng = random.Random(f"{a.seed}/{crate.name}")
         files = rs_files(crate, tests=False)
@@ -215,6 +219,8 @@ def main():
             new_text, what = r
             tag = hashlib.sha256(f"{crate.name}{f}{what}".encode()).hexdigest()[:8]
             name = f"{crate.name}-{want}-{tag}"
+            if name in made_names:
+                continue
             dst = out / "sources" / name
             copy_crate(crate, dst)
             rel = f.relative_to(crate).as_posix()
@@ -246,6 +252,7 @@ def main():
                 tasks.append({"id": f"{name}/fix_tests", "source": name, "kind": "fix_tests", "args": {},
                               "expected": {"type": "repaired", "check": "test"}, "info": info})
             made[want] += 1
+            made_names.add(name)
             print(f"{name}: {what}", flush=True)
     with open(out / "tasks.jsonl", "w") as fo:
         for t in tasks:

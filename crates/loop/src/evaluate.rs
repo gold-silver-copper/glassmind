@@ -284,8 +284,8 @@ pub fn evaluate(
     })
 }
 
-/// The task family of a label's kind: coding tasks for the harness, or
-/// questions and requests about code (`qa`).
+/// The task family of a label's kind: coding tasks for the harness, tasks
+/// from rustbench (`rb_*`), or questions and requests about code (`qa`).
 pub fn family(kind: &str) -> &'static str {
     let kind = kind.rsplit(':').next().unwrap_or(kind);
     if matches!(
@@ -293,6 +293,8 @@ pub fn family(kind: &str) -> &'static str {
         "build_status" | "fix_build" | "test_status" | "fix_tests"
     ) {
         "harness"
+    } else if kind.starts_with("rb_") {
+        "rustbench"
     } else {
         "qa"
     }
