@@ -78,6 +78,7 @@ fn head(config: &Config) -> Result<String, String> {
 fn patch_of(dir: &Path, base: &str) -> Result<String, String> {
     let mut add = vec!["add", "-A", "--"];
     add.extend(CHANGE_PATHS.iter().filter(|p| dir.join(p).exists()));
+    add.extend(FIXED_PATHS);
     git(dir, &add)?;
     let out = crate::exec::Run::new(
         "git",
