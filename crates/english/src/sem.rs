@@ -103,6 +103,27 @@ pub enum Cat {
     /// A dash setting a topic before a question about it: "`x` — how
     /// many callers".
     Dash,
+    /// A phrase after a noun that restricts it by what fills one side of a
+    /// relation: "whose type is or contains `Arc`", "of type `Tab`".
+    Qualifier,
+    /// Words saying a role's filler is or includes a thing: "is",
+    /// "contains", "is or contains", "wraps".
+    Includes,
+    /// A second way of putting a qualifier, added after it: "or contains
+    /// it", "(or something wrapping it)".
+    Alternative,
+    /// The thing a qualifier named, said again: "it", "one", or its name.
+    Again,
+    /// Words saying where in a thing another is: "somehow", "in it", "in
+    /// its type".
+    Within,
+    /// A preposition naming a relation: "with" (having).
+    Preposition,
+    /// An adjective naming one side of a relation: "typed".
+    RoleAdjective,
+    /// A noun for a kind of thing that holds others: a "field" holds what
+    /// its type mentions.
+    Holder,
 }
 
 /// English grammatical number, used for agreement.
@@ -175,6 +196,13 @@ pub enum Sem<O: Ontology> {
     Mention {
         thing: Thing<O>,
         kind: Option<O::Kind>,
+    },
+    /// A kind of thing that holds what fills one side of a relation for it:
+    /// a field holds the types its type mentions.
+    Holder {
+        kind: O::Kind,
+        relation: O::Relation,
+        position: Position,
     },
     /// A number as typed or spoken.
     Count(u64),

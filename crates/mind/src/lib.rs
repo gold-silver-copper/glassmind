@@ -75,7 +75,7 @@ impl<O: Ontology> Session<O> {
             let in_meaning = turn.meaning.iter().flat_map(|m| {
                 m.things().into_iter().filter_map(|t| match t {
                     Thing::Item(i) => Some(i.clone()),
-                    Thing::Named(_) | Thing::Previous => None,
+                    _ => None,
                 })
             });
             let in_reply = turn.reply.items().into_iter().cloned();
@@ -229,7 +229,7 @@ impl<O: Ontology> Mind<'_, O> {
                         options.push(items.into_iter().map(Thing::Item).collect());
                     }
                 }
-                Thing::Item(_) | Thing::Previous => {
+                _ => {
                     names.push(None);
                     options.push(vec![thing.clone()]);
                 }

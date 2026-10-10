@@ -48,6 +48,12 @@ pub enum RustKind {
 pub enum RustRelation {
     /// `Calls(f, g)`: function `f`'s body calls `g` by name.
     Calls,
+    /// `HasField(s, f)`: struct `s` declares field `f`.
+    HasField,
+    /// `TypeMentions(f, t)`: field `f`'s type has the identifier `t` in it
+    /// (`Vec<Velocity>` mentions `Vec` and `Velocity`). `t` need not be an
+    /// item of the sources: `Arc` and `u32` are types too.
+    TypeMentions,
 }
 
 /// One Rust item, identified by where its name is written.
@@ -77,7 +83,9 @@ impl Labelled for RustItem {
 
 /// Looking a name up: exact matches of the name or `Owner::name`.
 const LOOKUP_EXACT: RuleInfo = RuleInfo::new("rust.lookup.exact", SEED);
-/// Looking a name up: when nothing matches exactly, matches ignoring case.
+/// Looking a name up: when nothing matches exactly, matches ignoring case,
+/// unless the name is written exactly as a type somewhere (`Arc` is not
+/// the function `arc`).
 const LOOKUP_ANY_CASE: RuleInfo = RuleInfo::new("rust.lookup.any_case", SEED);
 /// The calls relation, read from call expressions in function bodies.
 const RELATION_CALLS: RuleInfo = RuleInfo::new("rust.relation.calls", SEED);
@@ -89,6 +97,10 @@ const LOCATE_UNIQUE: RuleInfo = RuleInfo::new("rust.locate.unique", 2);
 /// struct, enum or trait whose name no other item shares (or no other item
 /// of the kind the user said it is).
 const DESCRIBE_UNIQUE: RuleInfo = RuleInfo::new("rust.describe.unique", 3);
+/// The has-field relation, read from struct declarations.
+const RELATION_HAS_FIELD: RuleInfo = RuleInfo::new("rust.relation.has_field", 3);
+/// The type-mentions relation, read from the identifiers in field types.
+const RELATION_TYPE_MENTIONS: RuleInfo = RuleInfo::new("rust.relation.type_mentions", 3);
 
 /// Every world rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -97,6 +109,8 @@ pub const RULES: &[RuleInfo] = &[
     RELATION_CALLS,
     LOCATE_UNIQUE,
     DESCRIBE_UNIQUE,
+    RELATION_HAS_FIELD,
+    RELATION_TYPE_MENTIONS,
 ];
 
 /// One or more indexed Rust sources.
@@ -146,65 +160,123 @@ impl RustWorld {
             .filter(move |i| i.source == source && i.kind == RustKind::Function && i.name == name)
     }
 
-    /// Every item that fills `position` of `relation` when `other` fills the
-    /// other argument. `Err` if the world cannot decide it.
+    /// Every item that fills `position` of `relation` when one of `others`
+    /// fills the other argument. `Err` if the world cannot decide it.
     fn related(
         &self,
         relation: RustRelation,
         position: Position,
-        other: &RustItem,
+        others: &BTreeSet<RustItem>,
         fired: &mut Vec<RuleInfo>,
     ) -> Result<BTreeSet<RustItem>, Trouble<Rust>> {
-        match relation {
-            RustRelation::Calls => {
-                if !self.switches.on(RELATION_CALLS.id) {
+        let rule = match relation {
+            RustRelation::Calls => RELATION_CALLS,
+            RustRelation::HasField => RELATION_HAS_FIELD,
+            RustRelation::TypeMentions => RELATION_TYPE_MENTIONS,
+        };
+        if !self.switches.on(rule.id) {
+            return Err(Trouble::Unsupported);
+        }
+        fired.push(rule);
+        // The kinds `others` may be of.
+        let wanted: &[RustKind] = match (relation, position) {
+            (RustRelation::Calls, _) => &[RustKind::Function],
+            (RustRelation::HasField, Position::First) => &[RustKind::Field],
+            (RustRelation::HasField, Position::Second) => &[RustKind::Struct],
+            (RustRelation::TypeMentions, _) => &[RustKind::Struct, RustKind::Enum, RustKind::Trait],
+        };
+        if let Some(item) = others.iter().find(|o| !wanted.contains(&o.kind)) {
+            return Err(Trouble::WrongKind { item: item.clone() });
+        }
+        let mut out = BTreeSet::new();
+        match (relation, position) {
+            (RustRelation::Calls, _) => {
+                for other in others {
+                    out.extend(self.calls(position, other)?);
+                }
+            }
+            // A struct's fields are indexed right after it.
+            (RustRelation::HasField, _) => {
+                for source in &self.sources {
+                    let mut owner = None;
+                    for record in &source.records {
+                        let item = &record.item;
+                        match (item.kind, owner) {
+                            (RustKind::Struct, _) => owner = Some(item),
+                            (RustKind::Field, Some(owner)) => {
+                                let (this, that) = match position {
+                                    Position::First => (owner, item),
+                                    Position::Second => (item, owner),
+                                };
+                                if others.contains(that) {
+                                    out.insert(this.clone());
+                                }
+                            }
+                            _ => {}
+                        }
+                    }
+                }
+            }
+            (RustRelation::TypeMentions, Position::First) => {
+                let names: BTreeSet<&str> = others.iter().map(|o| o.name.as_str()).collect();
+                out = self.typed(&names);
+            }
+            (RustRelation::TypeMentions, Position::Second) => return Err(Trouble::Unsupported),
+        }
+        Ok(out)
+    }
+
+    /// Fields whose type mentions one of `names`.
+    fn typed(&self, names: &BTreeSet<&str>) -> BTreeSet<RustItem> {
+        self.records()
+            .filter(|r| r.type_idents.iter().any(|t| names.contains(t.as_str())))
+            .map(|r| r.item.clone())
+            .collect()
+    }
+
+    /// The functions calling `other` (`First`), or that it calls (`Second`).
+    fn calls(
+        &self,
+        position: Position,
+        other: &RustItem,
+    ) -> Result<BTreeSet<RustItem>, Trouble<Rust>> {
+        let Some(source) = self.sources.iter().find(|s| s.name == other.source) else {
+            return Ok(BTreeSet::new());
+        };
+        let item_at = |i: usize| source.records.get(i).map(|r| r.item.clone());
+        match position {
+            // Callers of `other`. Calls are found by name, so they only
+            // identify `other` when its name is unique among functions.
+            Position::First => {
+                if self.functions_named(&other.source, &other.name).count() > 1 {
                     return Err(Trouble::Unsupported);
                 }
-                fired.push(RELATION_CALLS);
-                if other.kind != RustKind::Function {
-                    return Err(Trouble::WrongKind {
-                        item: other.clone(),
-                    });
-                }
-                let Some(source) = self.sources.iter().find(|s| s.name == other.source) else {
-                    return Ok(BTreeSet::new());
-                };
-                let item_at = |i: usize| source.records.get(i).map(|r| r.item.clone());
-                match position {
-                    // Callers of `other`. Calls are found by name, so they only
-                    // identify `other` when its name is unique among functions.
-                    Position::First => {
-                        if self.functions_named(&other.source, &other.name).count() > 1 {
-                            return Err(Trouble::Unsupported);
-                        }
-                        Ok(source
-                            .calls
-                            .iter()
-                            .filter(|c| c.name == other.name)
-                            .filter_map(|c| item_at(c.caller))
-                            .collect())
-                    }
-                    // Functions `other` calls, among those whose name no
-                    // other item of any kind has.
-                    Position::Second => {
-                        let names: BTreeSet<&str> = source
-                            .calls
-                            .iter()
-                            .filter(|c| item_at(c.caller).as_ref() == Some(other))
-                            .map(|c| c.name.as_str())
-                            .collect();
-                        let mut out = BTreeSet::new();
-                        for name in names {
-                            let mut named = source.records.iter().filter(|r| r.item.name == name);
-                            if let (Some(only), None) = (named.next(), named.next())
-                                && only.item.kind == RustKind::Function
-                            {
-                                out.insert(only.item.clone());
-                            }
-                        }
-                        Ok(out)
+                Ok(source
+                    .calls
+                    .iter()
+                    .filter(|c| c.name == other.name)
+                    .filter_map(|c| item_at(c.caller))
+                    .collect())
+            }
+            // Functions `other` calls, among those whose name no
+            // other item of any kind has.
+            Position::Second => {
+                let names: BTreeSet<&str> = source
+                    .calls
+                    .iter()
+                    .filter(|c| item_at(c.caller).as_ref() == Some(other))
+                    .map(|c| c.name.as_str())
+                    .collect();
+                let mut out = BTreeSet::new();
+                for name in names {
+                    let mut named = source.records.iter().filter(|r| r.item.name == name);
+                    if let (Some(only), None) = (named.next(), named.next())
+                        && only.item.kind == RustKind::Function
+                    {
+                        out.insert(only.item.clone());
                     }
                 }
+                Ok(out)
             }
         }
     }
@@ -222,7 +294,7 @@ impl RustWorld {
         let item = match thing {
             Thing::Item(item) => item,
             Thing::Named(name) => return Err(Trouble::NoSuchName { name: name.clone() }),
-            Thing::Previous => return Err(Trouble::Unsupported),
+            Thing::Previous | Thing::Fitting(_) => return Err(Trouble::Unsupported),
         };
         if !self.switches.on(rule.id) {
             return Err(Trouble::Unsupported);
@@ -249,20 +321,34 @@ impl RustWorld {
     ) -> Result<Vec<RustItem>, Trouble<Rust>> {
         let mut candidates: Option<BTreeSet<RustItem>> = None;
         for condition in &description.conditions {
-            let fitting = match condition {
-                Condition::Related {
-                    relation,
-                    position,
-                    other: Thing::Item(other),
-                } => self.related(*relation, *position, other, fired)?,
-                Condition::Related {
-                    other: Thing::Named(name),
-                    ..
-                } => return Err(Trouble::NoSuchName { name: name.clone() }),
-                Condition::Related {
-                    other: Thing::Previous,
-                    ..
-                } => return Err(Trouble::Unsupported),
+            let Condition::Related {
+                relation,
+                position,
+                other,
+            } = condition;
+            let fitting = match other {
+                Thing::Item(other) => {
+                    self.related(*relation, *position, &[other.clone()].into(), fired)?
+                }
+                Thing::Fitting(d) => {
+                    let others = self.identify(d, fired)?.into_iter().collect();
+                    self.related(*relation, *position, &others, fired)?
+                }
+                // A type needs no item to be named (`Arc`, `u32`), only to be
+                // written as one somewhere.
+                Thing::Named(name)
+                    if (*relation, *position) == (RustRelation::TypeMentions, Position::First)
+                        && self.switches.on(RELATION_TYPE_MENTIONS.id) =>
+                {
+                    fired.push(RELATION_TYPE_MENTIONS);
+                    let fields = self.typed(&[name.0.as_str()].into());
+                    if fields.is_empty() {
+                        return Err(Trouble::NoSuchName { name: name.clone() });
+                    }
+                    fields
+                }
+                Thing::Named(name) => return Err(Trouble::NoSuchName { name: name.clone() }),
+                Thing::Previous => return Err(Trouble::Unsupported),
             };
             candidates = Some(match candidates {
                 None => fitting,
@@ -300,7 +386,12 @@ impl World<Rust> for RustWorld {
                 .collect();
             fired.push(LOOKUP_EXACT);
         }
-        if found.is_empty() && self.switches.on(LOOKUP_ANY_CASE.id) {
+        if found.is_empty()
+            && self.switches.on(LOOKUP_ANY_CASE.id)
+            && !self
+                .records()
+                .any(|r| r.type_idents.iter().any(|t| t == wanted))
+        {
             found = self
                 .records()
                 .filter(|r| matches(&r.item, true))

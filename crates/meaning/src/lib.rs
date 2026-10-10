@@ -72,6 +72,9 @@ pub enum Thing<O: Ontology> {
     /// Referred back to without a name: a thing said before, to be found
     /// from what came earlier.
     Previous,
+    /// Any thing that fits the description, left unnamed ("a field whose
+    /// type is `Arc`").
+    Fitting(Description<O>),
 }
 
 /// A condition a thing must meet to fit a description.
@@ -239,7 +242,7 @@ impl<O: Ontology> Description<O> {
     pub fn items(&self) -> impl Iterator<Item = &O::Item> {
         self.things().into_iter().filter_map(|t| match t {
             Thing::Item(i) => Some(i),
-            Thing::Named(_) | Thing::Previous => None,
+            _ => None,
         })
     }
 
@@ -254,7 +257,7 @@ impl<O: Ontology> Description<O> {
 impl<O: Ontology> Condition<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
-            Condition::Related { other, .. } => vec![other],
+            Condition::Related { other, .. } => other.things(),
         }
     }
 
@@ -267,8 +270,25 @@ impl<O: Ontology> Condition<O> {
             } => Condition::Related {
                 relation: relation.clone(),
                 position: *position,
-                other: f(other),
+                other: other.map_things(f),
             },
+        }
+    }
+}
+
+impl<O: Ontology> Thing<O> {
+    /// The named or resolved things this one is, or refers to inside it.
+    pub fn things(&self) -> Vec<&Thing<O>> {
+        match self {
+            Thing::Fitting(d) => d.things(),
+            _ => vec![self],
+        }
+    }
+
+    pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
+        match self {
+            Thing::Fitting(d) => Thing::Fitting(d.map_things(f)),
+            _ => f(self),
         }
     }
 }

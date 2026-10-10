@@ -112,6 +112,82 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
             },
         )
         .read_only(),
+        // "which structs have a field whose type is or contains `Arc`"
+        kind("en.rust.noun.structs", 3, "structs", Struct, Plural),
+        kind("en.rust.noun.fields", 3, "fields", Field, Plural),
+        verb("en.rust.verb.has", 3, "has", HasField, ThirdSingular),
+        verb("en.rust.verb.have", 3, "have", HasField, Plain),
+        // "which structs hold a field ...", "what structs got a field ..."
+        verb("en.rust.verb.holds", 3, "holds", HasField, ThirdSingular).read_only(),
+        verb("en.rust.verb.hold", 3, "hold", HasField, Plain).read_only(),
+        verb("en.rust.verb.got", 3, "got", HasField, Plain).read_only(),
+        // "find structs that contain a RepoCommit field"
+        verb("en.rust.verb.contain", 3, "contain", HasField, Plain).read_only(),
+        // "which structs keep a `LineCache` in a field", "store a `Shown` in
+        // a field", "carry `KeyModifiers` in a field"
+        verb("en.rust.verb.keep", 3, "keep", HasField, Plain).read_only(),
+        verb("en.rust.verb.store", 3, "store", HasField, Plain).read_only(),
+        verb("en.rust.verb.carry", 3, "carry", HasField, Plain).read_only(),
+        // "structs with a field of type `Notice`", "structs w/ a field ..."
+        word(
+            RuleInfo::new("en.rust.preposition.with", 3),
+            Cat::Preposition,
+            &["with"],
+            Sem::Relation {
+                relation: HasField,
+                form: Plain,
+            },
+        ),
+        word(
+            RuleInfo::new("en.rust.preposition.w", 3),
+            Cat::Preposition,
+            &["w", "/"],
+            Sem::Relation {
+                relation: HasField,
+                form: Plain,
+            },
+        ),
+        // A field's type: "whose type is `Arc`", "of type `Tab`", "typed `Art`".
+        word(
+            RuleInfo::new("en.rust.role.type", 3),
+            Cat::RoleNoun,
+            &["type"],
+            Sem::Role {
+                relation: TypeMentions,
+                position: Position::Second,
+            },
+        ),
+        // A field holds what its type mentions: "a `Gate` field", "a field
+        // that is `Key`", "fields containing `Signature`".
+        word(
+            RuleInfo::new("en.rust.holder.field", 3),
+            Cat::Holder,
+            &["field"],
+            Sem::Holder {
+                kind: Field,
+                relation: TypeMentions,
+                position: Position::Second,
+            },
+        ),
+        word(
+            RuleInfo::new("en.rust.holder.fields", 3),
+            Cat::Holder,
+            &["fields"],
+            Sem::Holder {
+                kind: Field,
+                relation: TypeMentions,
+                position: Position::Second,
+            },
+        ),
+        word(
+            RuleInfo::new("en.rust.role.typed", 3),
+            Cat::RoleAdjective,
+            &["typed"],
+            Sem::Role {
+                relation: TypeMentions,
+                position: Position::Second,
+            },
+        ),
     ]
 }
 
@@ -330,6 +406,49 @@ mod tests {
             "cut caller count",
         ] {
             assert_eq!(meanings(text), by_role, "{text:?}");
+        }
+    }
+
+    /// The ways of asking which structs have a field of a type mean what
+    /// the system says when it asks that.
+    #[test]
+    fn ways_of_asking_for_structs_by_field_type_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let field = Thing::Fitting(Description {
+            kind: Some(RustKind::Field),
+            conditions: vec![Condition::Related {
+                relation: RustRelation::TypeMentions,
+                position: Position::First,
+                other: Thing::Named(Name("Arc".into())),
+            }],
+        });
+        let meaning = Utterance::Ask(Question::Identify(Description {
+            kind: Some(RustKind::Struct),
+            conditions: vec![Condition::Related {
+                relation: RustRelation::HasField,
+                position: Position::First,
+                other: field,
+            }],
+        }));
+        let spoken = english
+            .speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
+            .map(|s| s.text);
+        assert_eq!(
+            spoken.as_deref(),
+            Some("Which structs have a field whose type is or contains `Arc`?")
+        );
+        for text in [
+            "I'd like to know which structs have a field whose type is `Arc` or contains it.",
+            "structs w/ a field of type Arc (or something wrapping it)",
+            "what structs have a field with a type that contains `Arc`?",
+            "any structs with fields typed Arc or containing Arc",
+            "which structs hold an `Arc` field",
+            "are there structs that have a field that is an Arc? which ones",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
         }
     }
 }

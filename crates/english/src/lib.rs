@@ -18,6 +18,7 @@ pub mod asking;
 pub mod counting;
 pub mod describe;
 pub mod discourse;
+pub mod having;
 pub mod lexicon;
 pub mod locate;
 pub mod mention;
@@ -43,6 +44,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(discourse::rules());
     rules.extend(mention::rules());
     rules.extend(describe::rules());
+    rules.extend(having::rules());
     rules
 }
 
