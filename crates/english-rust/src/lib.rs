@@ -889,6 +889,30 @@ mod tests {
         }
     }
 
+    /// The ways of asking what the system holds of the conversation all
+    /// mean the same, and the system can answer with or without anything
+    /// to recall.
+    #[test]
+    fn ways_of_asking_what_is_remembered_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "Could you show me what you're keeping in your context right now, i.e. what you remember of this conversation so far?",
+            "What do you remember of this conversation so far? Please show me what's in your context.",
+            "btw what are you holding in context rn",
+            "dump what you've got in context so far",
+            "can you show what you remember from this convo? like what's in your context",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                readings.iter().all(|r| r.meaning == Utterance::AskRecall),
+                "{text:?}"
+            );
+        }
+        assert!(english.say(&Reply::Recall(Vec::new())).is_some());
+    }
+
     /// The ways of telling the system what the user will call a struct all
     /// mean the same fact, whether the name is quoted or not.
     #[test]

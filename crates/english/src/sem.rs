@@ -210,6 +210,35 @@ pub enum Cat {
     /// from the container to what it holds: "in", "inside" ("what's in
     /// `x`").
     Inside,
+    /// What the system holds of the conversation, as a clause naming it:
+    /// "what you're keeping in your context right now", "what's in your
+    /// context", "what do you remember of this convo".
+    Recall,
+    /// The hearer and a verb of holding in mind: "you're keeping", "do you
+    /// remember", "you've got".
+    Rememberer,
+    /// "you're", "you are", "are you": the hearer, before a progressive
+    /// verb.
+    YouAre,
+    /// "you", "do you": the hearer, before a plain verb.
+    YouDo,
+    /// A progressive verb of holding in mind: "keeping", "remembering".
+    Keeping,
+    /// A plain verb of holding in mind: "remember", "keep".
+    Keep,
+    /// A noun for where the system holds what was said: "context",
+    /// "your memory".
+    Memory,
+    /// Words saying when or of what the system holds something: "right
+    /// now", "so far", "of this conversation".
+    Span,
+    /// A preposition before the conversation: "of", "from", "about".
+    Among,
+    /// The conversation: "this conversation", "our convo".
+    Talk,
+    /// A word saying the clause after it means what was said before:
+    /// "meaning", "like", "i.e.".
+    Gloss,
 }
 
 /// English grammatical number, used for agreement.

@@ -41,14 +41,6 @@ const EARLIER: &[(&str, &[&str])] = &[
     ("en.earlier.message", &["message"]),
 ];
 
-/// Two ways of asking to forget, said one after the other, ask it once.
-fn forget_again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    c.iter()
-        .filter(|v| matches!(v, Sem::Utterance(_)))
-        .all(|v| *v == Sem::Utterance(Utterance::Forget))
-        .then_some(Sem::Utterance(Utterance::Forget))
-}
-
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let blank = || Sem::Quote(String::new());
     let forget = || S::Const(Sem::Utterance(Utterance::Forget));
@@ -111,20 +103,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Cat::Utterance,
             vec![C(Cat::Dismiss), C(Cat::Said)],
             forget(),
-        ),
-        // "never mind, forget that", "forget that, nevermind", "Never mind
-        // that. Please forget it."
-        rule(
-            "en.utterance.forget_again",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::Utterance)],
-            S::Build(forget_again),
-        ),
-        rule(
-            "en.utterance.forget_again_comma",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), W(","), C(Cat::Utterance)],
-            S::Build(forget_again),
         ),
         // "OK, I've forgotten that."
         Rule::new(

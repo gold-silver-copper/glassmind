@@ -172,6 +172,8 @@ pub enum Utterance<O: Ontology> {
     Forget,
     /// States a fact for later turns.
     Tell(Fact<O>),
+    /// Asks what the system holds of the conversation so far.
+    AskRecall,
 }
 
 /// A claim that a set of things is exactly what fits a description.
@@ -242,6 +244,9 @@ pub enum Reply<O: Ontology> {
     Forgotten,
     /// The fact the user stated was taken note of.
     Noted(Fact<O>),
+    /// What the system holds of the conversation: the items it has spoken
+    /// of, most recent first.
+    Recall(Vec<O::Item>),
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on assumptions, which are stated first.
@@ -258,8 +263,7 @@ impl<O: Ontology> Utterance<O> {
             Utterance::Ask(q) => q.things(),
             Utterance::Command(Action::Rename { thing, .. })
             | Utterance::Tell(Fact::Alias { thing, .. }) => thing.things(),
-            Utterance::AskReason => Vec::new(),
-            Utterance::Forget => Vec::new(),
+            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
         }
     }
 
@@ -277,6 +281,7 @@ impl<O: Ontology> Utterance<O> {
             }
             Utterance::AskReason => Utterance::AskReason,
             Utterance::Forget => Utterance::Forget,
+            Utterance::AskRecall => Utterance::AskRecall,
             Utterance::Tell(Fact::Alias { thing, kind, alias }) => Utterance::Tell(Fact::Alias {
                 thing: thing.map_things(f),
                 kind: kind.clone(),
@@ -403,7 +408,9 @@ impl<O: Ontology> Reply<O> {
                 ..
             }) => vec![item],
             Reply::Noted(_) => Vec::new(),
-            Reply::Proposal { .. } | Reply::Reason { .. } | Reply::Forgotten => Vec::new(),
+            Reply::Proposal { .. } | Reply::Reason { .. } | Reply::Forgotten | Reply::Recall(_) => {
+                Vec::new()
+            }
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
             Reply::Trouble(_) => Vec::new(),
             Reply::Assuming { reply, .. } => reply.items(),

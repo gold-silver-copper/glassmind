@@ -47,6 +47,10 @@ pub const REASON_IS_REQUEST: RuleInfo = RuleInfo::new("mind.reason.request", 6);
 /// item ("what fields does the slot have?" after "I'll call `CacheLine`
 /// "the slot""), the latest such word holding.
 pub const ALIAS_NOTED: RuleInfo = RuleInfo::new("mind.alias.noted", 7);
+/// Asked what it holds of the conversation, the system gives the items
+/// mentioned in it, most recent first, leaving out what the user asked it
+/// to forget ("can you show me what you're keeping in your context?").
+pub const RECALL_IS_MENTIONS: RuleInfo = RuleInfo::new("mind.recall.mentions", 7);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -57,6 +61,7 @@ pub const RULES: &[RuleInfo] = &[
     PREFER_ASKING,
     REASON_IS_REQUEST,
     ALIAS_NOTED,
+    RECALL_IS_MENTIONS,
 ];
 
 /// A source the conversation was given.
@@ -250,6 +255,7 @@ impl<O: Ontology> Mind<'_, O> {
                     Utterance::Command(a) => self.world.propose(a, &mut world_rules),
                     Utterance::AskReason => reason(session, self.switches, &mut world_rules),
                     Utterance::Forget => Ok(Reply::Forgotten),
+                    Utterance::AskRecall => recall(session, self.switches, &mut world_rules),
                     Utterance::Tell(f) => self.world.note(f, &mut world_rules),
                 };
                 rt.world_rules.extend(world_rules);
@@ -515,6 +521,20 @@ fn reason<O: Ontology>(
         .ok_or(Trouble::Unsupported)
 }
 
+/// What the conversation holds: the items mentioned in it. Pushes the rule
+/// it used onto `fired`.
+fn recall<O: Ontology>(
+    session: &Session<O>,
+    switches: &Switches,
+    fired: &mut Vec<RuleInfo>,
+) -> Result<Reply<O>, Trouble<O>> {
+    if !switches.on(RECALL_IS_MENTIONS.id) {
+        return Err(Trouble::Unsupported);
+    }
+    fired.push(RECALL_IS_MENTIONS);
+    Ok(Reply::Recall(session.mentions()))
+}
+
 /// The input with `▮` before the token at `at` (or at the end).
 pub fn mark(text: &str, tokens: &[TokenSpan], at: usize) -> String {
     let byte = tokens.get(at).map_or(text.trim_end().len(), |t| t.start);
@@ -560,6 +580,7 @@ fn progress_of<O: Ontology>(reply: &Reply<O>) -> Progress {
         | Reply::Proposal { .. }
         | Reply::Reason { .. }
         | Reply::Forgotten
+        | Reply::Recall(_)
         | Reply::Noted(_) => Progress::Done,
     }
 }

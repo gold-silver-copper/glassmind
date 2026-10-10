@@ -28,6 +28,7 @@ pub mod locate;
 pub mod mention;
 pub mod naming;
 pub mod reason;
+pub mod recall;
 pub mod remark;
 pub mod renaming;
 pub mod request;
@@ -59,6 +60,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(forgetting::rules());
     rules.extend(alias::rules());
     rules.extend(contents::rules());
+    rules.extend(recall::rules());
     rules
 }
 
