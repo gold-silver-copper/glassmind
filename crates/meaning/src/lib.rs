@@ -296,6 +296,19 @@ pub enum Reply<O: Ontology> {
 }
 
 impl<O: Ontology> Utterance<O> {
+    /// The names the utterance says things are called (see
+    /// [`Description::called`]).
+    pub fn called(&self) -> Vec<&Name> {
+        match self {
+            Utterance::Ask(Question::Identify(d) | Question::Count(d)) => d.called(),
+            _ => self
+                .things_within(&|_| false)
+                .into_iter()
+                .flat_map(Thing::called)
+                .collect(),
+        }
+    }
+
     /// The things the utterance is about, without looking inside those it
     /// describes: for "which functions call `tick` on `Health`", the thing
     /// called `tick`, not `Health`.
@@ -390,6 +403,23 @@ impl<O: Ontology> Description<O> {
         self.things_within(&|_| true)
     }
 
+    /// Every name the description (and every description inside it) says
+    /// a thing is called. Unlike a name matched ([`Condition::Named`]), a
+    /// name nothing is called makes the description fit nothing.
+    pub fn called(&self) -> Vec<&Name> {
+        self.conditions
+            .iter()
+            .flat_map(|c| match c {
+                Condition::Called(name) => vec![name],
+                Condition::Related { other: thing, .. }
+                | Condition::Is(thing)
+                | Condition::NamedLike(thing)
+                | Condition::PartOf(thing) => thing.called(),
+                Condition::Named(_) => Vec::new(),
+            })
+            .collect()
+    }
+
     pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         self.conditions
             .iter()
@@ -452,6 +482,15 @@ impl<O: Ontology> Thing<O> {
     /// The named or resolved things this one is, or refers to inside it.
     pub fn things(&self) -> Vec<&Thing<O>> {
         self.things_within(&|_| true)
+    }
+
+    /// The names a described thing is said to be called (see
+    /// [`Description::called`]).
+    pub fn called(&self) -> Vec<&Name> {
+        match self {
+            Thing::Fitting(d) => d.called(),
+            Thing::Named(_) | Thing::Item(_) | Thing::Previous => Vec::new(),
+        }
     }
 
     pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {

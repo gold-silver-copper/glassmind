@@ -1,4 +1,11 @@
 # calibrated on the hidden texting-style dev set (497 turns), with word pairs: answering questions the model gives 0.9 or more, when no word typed points to another template, gave 449 right and none wrong (tagger off: 412); every threshold from 0.6 to 0.99 gave none wrong. From 0.3 up to that, it asks "did you mean".
+# held out: 678 of 735 right
+#   confidence 0.99+: 635/668 right (95.1%)
+#   confidence 0.95+: 21/27 right (77.8%)
+#   confidence 0.90+: 4/9 right (44.4%)
+#   confidence 0.80+: 9/14 right (64.3%)
+#   confidence 0.60+: 3/7 right (42.9%)
+#   confidence 0.40+: 6/10 right (60.0%)
 examples	3677
 sure	0.9
 offer	0.3

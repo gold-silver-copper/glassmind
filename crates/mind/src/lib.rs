@@ -84,6 +84,13 @@ pub const SHARED_NAME_ANY: RuleInfo = RuleInfo::new("mind.name.any", 23);
 pub const PREFER_FEWEST_EDITS: RuleInfo =
     RuleInfo::new("mind.prefer.fewest_corrections", glassmind_rules::HAND);
 
+/// Preference: of the readings the world can answer, those that say
+/// nothing is called a name that names nothing ("structs with a `Sender`
+/// in tehir fields": "fields called `tehir`" fits nothing, "their fields"
+/// does), before fewer corrections.
+pub const PREFER_NAMES_THAT_EXIST: RuleInfo =
+    RuleInfo::new("mind.prefer.names_that_exist", glassmind_rules::HAND);
+
 /// "yes" to a waiting proposal makes its changes; "no" declines it.
 pub const CONSENT_APPLIES: RuleInfo = RuleInfo::new("mind.consent.applies", glassmind_rules::HAND);
 
@@ -107,6 +114,7 @@ pub const RULES: &[RuleInfo] = &[
     ASK_WHEN_UNSURE,
     KEEP_NAMES,
     CONSENT_APPLIES,
+    PREFER_NAMES_THAT_EXIST,
     PREFER_FEWEST_EDITS,
     PREFER_FEWEST_IDLE,
     PREFER_RECENT_MENTION,
@@ -533,20 +541,52 @@ impl<O: Ontology> Mind<'_, O> {
             .iter()
             .filter_map(|c| Some((c, c.result.as_ref().ok()?)))
             .collect();
-        // Of the readings the world can answer, those that correct the fewest
-        // mistyped words: a correction is a guess at what was typed.
+        // Of the readings the world can answer, those calling nothing by a
+        // name nothing has.
+        let mut fired = Vec::new();
+        let missing = |c: &Candidate<O>, fired: &mut Vec<RuleInfo>| {
+            c.meaning
+                .called()
+                .into_iter()
+                .filter(|n| self.world.lookup(n, fired).is_empty())
+                .count()
+        };
+        let counts: Vec<usize> = good.iter().map(|(c, _)| missing(c, &mut fired)).collect();
+        if let Some(&least) = counts.iter().min()
+            && counts.iter().any(|&n| n != least)
+            && self.switches.on(PREFER_NAMES_THAT_EXIST.id)
+        {
+            let mut keep = counts.iter().map(|&n| n == least);
+            good.retain(|_| keep.next().unwrap_or(false));
+            trace.preferences.push(PREFER_NAMES_THAT_EXIST);
+        }
+        // Of those, the ones read most directly: as typed or with slips
+        // corrected, before the normalizer's edits, before guesses.
+        let tier = |c: &Candidate<O>| c.edits / NORMALIZED;
+        let lowest = good.iter().map(|(c, _)| tier(c)).min();
+        if good.iter().any(|(c, _)| Some(tier(c)) != lowest)
+            && self.switches.on(PREFER_FEWEST_EDITS.id)
+        {
+            good.retain(|(c, _)| Some(tier(c)) == lowest);
+            trace.preferences.push(PREFER_FEWEST_EDITS);
+        }
+        // Then those leaving the fewest words unread: a reading that skips
+        // what was typed ("a field thats `ArmourRow`" read as a field named
+        // `a`) is worse than one that corrects a slip.
+        let replies: BTreeSet<&Reply<O>> = good.iter().map(|&(_, r)| r).collect();
+        let least = good.iter().map(|(c, _)| c.idle).min();
+        if replies.len() > 1 && self.switches.on(PREFER_FEWEST_IDLE.id) {
+            good.retain(|(c, _)| Some(c.idle) == least);
+            trace.preferences.push(PREFER_FEWEST_IDLE);
+        }
+        // Then those correcting the fewest mistyped words: a correction is
+        // a guess at what was typed.
         let fewest = good.iter().map(|(c, _)| c.edits).min();
         if good.iter().any(|(c, _)| Some(c.edits) != fewest)
             && self.switches.on(PREFER_FEWEST_EDITS.id)
         {
             good.retain(|(c, _)| Some(c.edits) == fewest);
             trace.preferences.push(PREFER_FEWEST_EDITS);
-        }
-        let replies: BTreeSet<&Reply<O>> = good.iter().map(|&(_, r)| r).collect();
-        let least = good.iter().map(|(c, _)| c.idle).min();
-        if replies.len() > 1 && self.switches.on(PREFER_FEWEST_IDLE.id) {
-            good.retain(|(c, _)| Some(c.idle) == least);
-            trace.preferences.push(PREFER_FEWEST_IDLE);
         }
         let Some(&(first, first_reply)) = good.first() else {
             // Nothing survived: report the trouble of the reading that got

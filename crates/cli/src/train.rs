@@ -155,29 +155,47 @@ pub fn intents(
     };
     let first = IntentModel::learn(&learn(&IntentModel::default()));
     let examples = learn(&first);
-    let mut model = IntentModel::learn(&examples);
-    // Until calibrated on the dev set: answer nothing without asking, and
-    // offer only what is likelier than not.
-    model.sure = 1.01;
-    model.offer = 0.5;
-    std::fs::write(out, model.dump())
-        .map_err(|e| format!("cannot write {}: {e}", out.display()))?;
-    // How often the model's best template is the one answered right, on
-    // the examples themselves.
-    let hits = examples
+    // Held out: every fifth example, judged by a model learned from the rest.
+    let (learning, held) = glassmind_models::report::hold_out(&examples, 5);
+    let trial = IntentModel::learn(&learning);
+    let answers: Vec<(f64, bool)> = held
         .iter()
-        .filter(|(words, t)| {
-            model
+        .filter_map(|(words, t)| {
+            let best = trial
                 .rank(words, glassmind_models::intents::slots_of(t))
-                .first()
-                .is_some_and(|best| best.0 == t)
+                .into_iter()
+                .next()?;
+            Some((best.1, best.0 == t))
         })
-        .count();
+        .collect();
+    let calibration = glassmind_models::Calibration::of(&answers);
+    let mut model = IntentModel::learn(&examples);
+    // The thresholds stay those of the model being replaced, which were
+    // calibrated on the dev set; a new model is answered by nothing until
+    // it is calibrated.
+    let before = std::fs::read_to_string(out).unwrap_or_default();
+    let old = IntentModel::load(&before);
+    (model.sure, model.offer) = if before.is_empty() {
+        (1.01, 0.5)
+    } else {
+        (old.sure, old.offer)
+    };
+    let notes: String = before
+        .lines()
+        .filter(|l| l.starts_with("# calibrated"))
+        .map(|l| format!("{l}\n"))
+        .collect();
+    std::fs::write(
+        out,
+        format!("{notes}{}{}", calibration.table("# "), model.dump()),
+    )
+    .map_err(|e| format!("cannot write {}: {e}", out.display()))?;
     Ok(format!(
-        "learned from {} examples of {} turns answered right; {} templates, {} words; best template right on {hits} of them",
+        "learned from {} examples of {} turns answered right; {} templates, {} words and pairs\n{}",
         examples.len(),
         right.len(),
         model.templates.len(),
         model.seen.len(),
+        calibration.table(""),
     ))
 }
