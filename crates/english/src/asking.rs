@@ -118,7 +118,7 @@ fn restrict<O: Ontology>(c: &[Sem<O>], wanted: VerbForm) -> Option<Sem<O>> {
 }
 
 /// Things of a kind (or of any kind) meeting one condition.
-fn described<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+pub(crate) fn described<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     let (kind, condition) = match c {
         [Sem::Kind { kind, .. }, Sem::Condition { condition, .. }] => (Some(kind), condition),
         [Sem::Condition { condition, .. }] => (None, condition),

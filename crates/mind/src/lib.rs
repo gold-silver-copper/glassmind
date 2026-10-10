@@ -22,6 +22,11 @@ pub mod trace;
 
 pub use trace::{ReadingTrace, Trace, WorldResult};
 
+/// Preference: when readings differ, keep those that take the fewest words
+/// to mean nothing ("is there anything that calls `x`? like how many
+/// functions call it" asks how many, rather than asking which and setting
+/// the rest aside as a remark).
+pub const PREFER_FEWEST_IDLE: RuleInfo = RuleInfo::new("mind.prefer.fewest_idle", 9);
 /// Preference: when readings differ only in which item a name means, prefer
 /// the item mentioned most recently in the conversation.
 pub const PREFER_RECENT_MENTION: RuleInfo = RuleInfo::new("mind.prefer.recent_mention", SEED);
@@ -47,9 +52,15 @@ pub const RECALL_IS_MENTIONS: RuleInfo = RuleInfo::new("mind.recall.mentions", 7
 /// function defined?" after "which functions call `x`?") is the one item
 /// the latest understood turn asked about, if it asked about just one.
 pub const PREVIOUS_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.topic", 9);
+/// Otherwise, a thing referred back to without a name ("which functions
+/// call it?", "where is that one defined?") means the item the user last
+/// spoke of, in the latest turn not forgotten that spoke of one. If that
+/// turn spoke of several items, which one is meant is left open.
+pub const PREVIOUS_IS_LAST_SPOKEN: RuleInfo = RuleInfo::new("mind.refer.last_spoken", 9);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
+    PREFER_FEWEST_IDLE,
     PREFER_RECENT_MENTION,
     PREFER_FIRST_READING,
     PREFER_ASKING,
@@ -57,6 +68,7 @@ pub const RULES: &[RuleInfo] = &[
     ALIAS_NOTED,
     RECALL_IS_MENTIONS,
     PREVIOUS_IS_TOPIC,
+    PREVIOUS_IS_LAST_SPOKEN,
 ];
 
 /// A source the conversation was given.
@@ -101,8 +113,7 @@ impl<O: Ontology> Session<O> {
     pub fn mentions(&self) -> Vec<O::Item> {
         let mut out = Vec::new();
         for turn in self.remembered() {
-            let in_meaning = turn.meaning.iter().flat_map(Utterance::things);
-            for item in in_meaning.filter_map(Thing::item).chain(turn.reply.items()) {
+            for item in spoken_of(turn).chain(turn.reply.items()) {
                 if !out.contains(item) {
                     out.push(item.clone());
                 }
@@ -111,19 +122,37 @@ impl<O: Ontology> Session<O> {
         out
     }
 
-    /// The turns, most recent first, leaving out a turn the user asked to
-    /// forget and the request to forget it.
+    /// The items the user spoke of in the latest remembered turn that spoke
+    /// of any, each once.
+    pub fn last_spoken(&self) -> Vec<O::Item> {
+        let mut out = Vec::new();
+        for turn in self.remembered() {
+            for item in spoken_of(turn) {
+                if !out.contains(item) {
+                    out.push(item.clone());
+                }
+            }
+            if !out.is_empty() {
+                break;
+            }
+        }
+        out
+    }
+
+    /// The turns, most recent first, leaving out each turn the user asked
+    /// to forget and the request to forget it.
     fn remembered(&self) -> impl Iterator<Item = &TurnRecord<O>> {
         let mut forgotten = 0;
         self.turns.iter().rev().filter(move |turn| {
             if turn.meaning == Some(Utterance::Forget) {
                 forgotten += 1;
+                false
             } else if forgotten > 0 {
                 forgotten -= 1;
+                false
             } else {
-                return true;
+                true
             }
-            false
         })
     }
 
@@ -191,6 +220,8 @@ type Means<O> = Vec<(Name, <O as Ontology>::Item)>;
 /// A reading after resolution and answering.
 struct Candidate<O: Ontology> {
     reading: usize,
+    /// Tokens the reading takes to mean nothing.
+    idle: usize,
     meaning: Utterance<O>,
     means: Means<O>,
     result: WorldResult<O>,
@@ -268,6 +299,7 @@ impl<O: Ontology> Mind<'_, O> {
                 rt.outcomes.push((meaning.clone(), result.clone()));
                 candidates.push(Candidate {
                     reading: i,
+                    idle: reading.idle,
                     meaning,
                     means,
                     result,
@@ -316,11 +348,20 @@ impl<O: Ontology> Mind<'_, O> {
                 if !items.is_empty() {
                     choices = items.into_iter().map(Thing::Item).collect();
                 }
-            } else if *thing == Thing::Previous
-                && let Some(item) = session.topic()
-                && self.using(PREVIOUS_IS_TOPIC, &mut rt.world_rules).is_ok()
-            {
-                choices = vec![Thing::Item(item)];
+            } else if *thing == Thing::Previous {
+                // The one item the latest turn asked about, or else the one
+                // item last spoken of, if those rules are on.
+                if let Some(item) = session.topic()
+                    && self.using(PREVIOUS_IS_TOPIC, &mut rt.world_rules).is_ok()
+                {
+                    choices = vec![Thing::Item(item)];
+                } else if let [item] = session.last_spoken().as_slice()
+                    && self
+                        .using(PREVIOUS_IS_LAST_SPOKEN, &mut rt.world_rules)
+                        .is_ok()
+                {
+                    choices = vec![Thing::Item(item.clone())];
+                }
             }
             options.push(choices);
         }
@@ -350,10 +391,16 @@ impl<O: Ontology> Mind<'_, O> {
         candidates: &'c [Candidate<O>],
         trace: &mut Trace<O>,
     ) -> (Reply<O>, Option<&'c Candidate<O>>) {
-        let good: Vec<(&Candidate<O>, &Reply<O>)> = candidates
+        let mut good: Vec<(&Candidate<O>, &Reply<O>)> = candidates
             .iter()
             .filter_map(|c| Some((c, c.result.as_ref().ok()?)))
             .collect();
+        let replies: BTreeSet<&Reply<O>> = good.iter().map(|&(_, r)| r).collect();
+        let least = good.iter().map(|(c, _)| c.idle).min();
+        if replies.len() > 1 && self.switches.on(PREFER_FEWEST_IDLE.id) {
+            good.retain(|(c, _)| Some(c.idle) == least);
+            trace.preferences.push(PREFER_FEWEST_IDLE);
+        }
         let Some(&(first, first_reply)) = good.first() else {
             // Nothing survived: report the trouble of the reading that got
             // furthest, or ask back.
@@ -441,6 +488,14 @@ impl<O: Ontology> Mind<'_, O> {
             Some(pick),
         )
     }
+}
+
+/// The items the user spoke of in a turn, as it was understood.
+fn spoken_of<O: Ontology>(turn: &TurnRecord<O>) -> impl Iterator<Item = &O::Item> {
+    turn.meaning
+        .iter()
+        .flat_map(Utterance::things)
+        .filter_map(Thing::item)
 }
 
 /// Why the most recent action asked for was taken up: the turn that asked.

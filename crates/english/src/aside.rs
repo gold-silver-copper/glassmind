@@ -55,13 +55,15 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.quick_thing", 6, "quick thing"),
     ("en.aside.btw", 6, "btw"),
     ("en.aside.fyi", 6, "fyi"),
-    // "Got it. Where is that function defined?", "Great, and where ...":
-    // taking in the last answer before going on.
+    // "And which functions call it?", "ok and where is that one defined?",
+    // "Okay, and ...": a turn going on from the one before.
+    ("en.aside.and", 9, "and"),
+    ("en.aside.okay", 9, "okay"),
+    // "Got it. Where is that function defined?", "Great, thanks.", "Makes
+    // sense, thanks.": the last reply taken in.
     ("en.aside.got_it", 9, "got it"),
     ("en.aside.great", 9, "great"),
-    // "and where is it defined?", "ok and what does it do?": a turn going
-    // on from the last one.
-    ("en.aside.and", 9, "and"),
+    ("en.aside.makes_sense", 9, "makes sense"),
     // "How many functions call it, by the way?"
     ("en.aside.by_the_way", 9, "by the way"),
 ];

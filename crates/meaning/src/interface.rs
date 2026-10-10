@@ -25,6 +25,9 @@ pub struct Reading<O: Ontology> {
     pub rules: Vec<RuleInfo>,
     /// The parse tree, written out for `--explain`.
     pub parse: String,
+    /// How many tokens this reading takes to mean nothing (a remark, a
+    /// greeting, a word joining two ways of asking).
+    pub idle: usize,
 }
 
 /// What the language made of the input.

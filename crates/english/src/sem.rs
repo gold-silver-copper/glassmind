@@ -117,6 +117,9 @@ pub enum Cat {
     Participial,
     /// A noun for how many things there are: "number", "count", "#".
     Amount,
+    /// A word standing for things whose kind is left open, before what
+    /// describes them: "ones", "those", "anything".
+    Ones,
     /// A dash setting a topic before a question about it: "`x` — how
     /// many callers".
     Dash,

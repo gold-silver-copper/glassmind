@@ -70,12 +70,14 @@ fn described<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
-/// Words before a participle that keep its meaning: "are calling `x`",
-/// "end up calling `x`".
-const ASPECTS: &[(&str, &str)] = &[
-    ("en.verb_phrase.are_participial", "are"),
-    ("en.verb_phrase.is_participial", "is"),
-    ("en.verb_phrase.end_up", "end up"),
+/// Words before a participle that keep its meaning, and the round each
+/// came in: "are calling `x`", "end up calling `x`", "anything that ends up
+/// calling it".
+const ASPECTS: &[(&str, u32, &str)] = &[
+    ("en.verb_phrase.are_participial", ROUND, "are"),
+    ("en.verb_phrase.is_participial", ROUND, "is"),
+    ("en.verb_phrase.end_up", ROUND, "end up"),
+    ("en.verb_phrase.ends_up", 9, "ends up"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -261,10 +263,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ),
         ),
     ]);
-    rules.extend(ASPECTS.iter().map(|(id, before)| {
+    rules.extend(ASPECTS.iter().map(|&(id, round, before)| {
         let mut rhs = phrase(before);
         rhs.push(C(Cat::Participial));
-        rule(id, Cat::VerbPhrase, rhs, first)
+        Rule::new(
+            RuleInfo::new(id, round),
+            Cat::VerbPhrase,
+            rhs,
+            S::Build(first),
+        )
+        .read_only()
     }));
     rules
 }

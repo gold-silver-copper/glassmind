@@ -27,6 +27,7 @@ pub mod lexicon;
 pub mod locate;
 pub mod mention;
 pub mod naming;
+pub mod ones;
 pub mod reason;
 pub mod recall;
 pub mod remark;
@@ -64,6 +65,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         contents::rules,
         recall::rules,
         widening::rules,
+        ones::rules,
     ]
     .into_iter()
     .flat_map(|rules| rules())
@@ -162,6 +164,7 @@ impl<O: Ontology> Language<O> for English<O> {
                     meaning: u.clone(),
                     rules: p.rules(),
                     parse: render(p, &tokens),
+                    idle: idle(p),
                 }),
                 _ => None,
             })
@@ -238,6 +241,22 @@ pub fn detokenize(words: &[String]) -> String {
 }
 
 /// Writes a parse tree as nested rule IDs over the words they cover.
+/// How many tokens the phrase takes to mean nothing: those under its
+/// outermost phrases whose value is blank.
+fn idle<O: Ontology>(phrase: &Phrase<Sem<O>>) -> usize {
+    if phrase.value == blank() {
+        return phrase.end - phrase.start;
+    }
+    phrase
+        .children
+        .iter()
+        .map(|child| match child {
+            Node::Token(_) => 0,
+            Node::Phrase(p) => idle(p),
+        })
+        .sum()
+}
+
 fn render<O: Ontology>(phrase: &Phrase<Sem<O>>, tokens: &[Token]) -> String {
     let inner: Vec<String> = phrase
         .children

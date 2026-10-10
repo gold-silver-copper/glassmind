@@ -793,6 +793,39 @@ mod tests {
         }
     }
 
+    /// The ways of asking, in a later turn, for the callers of what was
+    /// said before all ask for the things that call it, whatever kind
+    /// they say those things are.
+    #[test]
+    fn ways_of_asking_for_the_callers_of_what_was_said_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "And which functions call that one?",
+            "who calls that",
+            "ok and which ones are they, the functions that call it?",
+            "is there anything that ends up calling that function?",
+            "Got it. Which functions are those that call it?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            for reading in readings {
+                let Utterance::Ask(Question::Identify(d)) = reading.meaning else {
+                    panic!("{text:?} read as {:?}", reading.meaning);
+                };
+                assert_eq!(
+                    d.conditions,
+                    vec![Condition::Related {
+                        relation: RustRelation::Calls,
+                        position: Position::First,
+                        other: Thing::Previous,
+                    }],
+                    "{text:?}"
+                );
+            }
+        }
+    }
+
     /// The ways of asking what the system holds of the conversation all
     /// mean the same, and the system can answer with or without anything
     /// to recall.

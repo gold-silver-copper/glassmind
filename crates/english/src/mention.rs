@@ -114,11 +114,31 @@ fn restated<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         {
             Some(first.clone())
         }
+        // "is there anything that calls `x`? like how many functions call
+        // it": the count of the same things.
+        (
+            Sem::Utterance(Utterance::Ask(Question::Identify(a))),
+            Sem::Utterance(Utterance::Ask(Question::Count(b))),
+        ) => counted(a, b).map(|d| Sem::Utterance(Utterance::Ask(Question::Count(d)))),
         // "why do you want to change that? what's the reason?", "never
         // mind, forget that"
         (Sem::Utterance(a), Sem::Utterance(b)) if a == b => Some(first.clone()),
         _ => None,
     }
+}
+
+/// `count`, if it counts the things `which` asks for, its "it" being the
+/// one thing `which` refers to, whatever kind either says they are.
+fn counted<O: Ontology>(which: &Description<O>, count: &Description<O>) -> Option<Description<O>> {
+    let things = which.things();
+    let [thing] = things.as_slice() else {
+        return None;
+    };
+    let bound = count.map_things(&mut |t| match t {
+        Thing::Previous => (*thing).clone(),
+        other => other.clone(),
+    });
+    (bound.conditions == which.conditions).then_some(bound)
 }
 
 /// Words and marks that only join or set off phrases, by category.
@@ -265,30 +285,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("that"), C(Cat::Noun)],
             |_| Some(Sem::Thing(Thing::Previous)),
         ),
-        // "where's that defined", "which functions call that one": the
-        // thing said before.
-        word(
-            RuleInfo::new("en.noun_phrase.that", 9),
-            Cat::NounPhrase,
-            "that",
-            Sem::Thing(Thing::Previous),
-        )
-        .read_only(),
-        word(
-            RuleInfo::new("en.noun_phrase.that_one", 9),
-            Cat::NounPhrase,
-            "that one",
-            Sem::Thing(Thing::Previous),
-        )
-        .read_only(),
-        // "it": the thing said before.
-        word(
-            RuleInfo::new("en.noun_phrase.it", ROUND),
-            Cat::NounPhrase,
-            "it",
-            Sem::Thing(Thing::Previous),
-        )
-        .read_only(),
         // "job_page - what does it do", "static_record, what's it for"
         rule(
             "en.question.set_off",
@@ -332,6 +328,24 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             first,
         ),
     ];
+    // Words for the thing said before: "it", and "who calls that",
+    // "where's that defined", "which functions call that one?".
+    rules.extend(
+        [
+            ("en.noun_phrase.it", ROUND, "it"),
+            ("en.noun_phrase.that", 9, "that"),
+            ("en.noun_phrase.that_one", 9, "that one"),
+        ]
+        .map(|(id, round, words)| {
+            word(
+                RuleInfo::new(id, round),
+                Cat::NounPhrase,
+                words,
+                Sem::Thing(Thing::Previous),
+            )
+            .read_only()
+        }),
+    );
     rules.extend(fillers(ROUND, FILLERS));
     rules
 }
