@@ -537,6 +537,9 @@ mod tests {
             "how many fns are calling cut",
             "count of funcs that call `cut`",
             "number of fns calling `cut`",
+            "cut called by how many functions",
+            "how many places call `cut`, fn count only",
+            "how many fns call cut? or exact number if you can",
         ] {
             assert_eq!(meanings(text), plain, "{text:?}");
         }
@@ -546,6 +549,8 @@ mod tests {
             "how many callers does `cut` have",
             "cut — how many callers",
             "cut caller count",
+            "how many callers `cut` has",
+            "cut, how many callers it got",
         ] {
             assert_eq!(meanings(text), by_role, "{text:?}");
         }

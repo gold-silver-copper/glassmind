@@ -303,4 +303,7 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // and can't find it again": where the speaker came across the thing.
     ("en.remark.keep", 13, "keep"),
     ("en.remark.saw", 13, "saw"),
+    // "how many functions call `screen`? kinda lost with this one": how
+    // the speaker feels about the code.
+    ("en.remark.kinda", 14, "kinda"),
 ];

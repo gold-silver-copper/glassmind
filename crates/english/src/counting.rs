@@ -144,20 +144,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             S::Build(count),
         )
         .read_only(),
-        // "`refilter` called from how many fns"
-        Rule::new(
-            RuleInfo::new("en.question.undergoes_from_how_many", 11),
-            Cat::Question,
-            vec![
-                C(Cat::Undergoes),
-                W("from"),
-                W("how"),
-                W("many"),
-                C(Cat::Noun),
-            ],
-            S::Build(count),
-        )
-        .read_only(),
         // "how many callers does `x` have"
         rule(
             "en.question.how_many_have",
@@ -333,6 +319,22 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         .read_only(),
         // "how many functions": of that kind.
         again("en.recount.kind", vec![C(Cat::Recount), C(Cat::Noun)], last),
+        // "fn count only": a count of things of that kind; "or exact number
+        // if you can": the count itself.
+        Rule::new(
+            RuleInfo::new("en.recount.kind_amount", 14),
+            Cat::Recount,
+            vec![C(Cat::Noun), C(Cat::Amount)],
+            S::Build(first),
+        )
+        .read_only(),
+        Rule::new(
+            RuleInfo::new("en.recount.exact_amount", 14),
+            Cat::Recount,
+            vec![W("exact"), C(Cat::Amount)],
+            S::Const(blank()),
+        )
+        .read_only(),
         // ", can you count them", "like how many"
         again(
             "en.recount.prompt",
@@ -371,6 +373,52 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             (Cat::Amount, &[("en.amount.num", "num")]),
         ],
     ));
+    // "`refilter` called from how many fns", "`x` called by how many fns"
+    rules.extend(
+        [
+            ("en.question.undergoes_from_how_many", 11, "from"),
+            ("en.question.undergoes_by_how_many", 14, "by"),
+        ]
+        .map(|(id, round, agent)| {
+            Rule::new(
+                RuleInfo::new(id, round),
+                Cat::Question,
+                vec![
+                    C(Cat::Undergoes),
+                    W(agent),
+                    W("how"),
+                    W("many"),
+                    C(Cat::Noun),
+                ],
+                S::Build(count),
+            )
+            .read_only()
+        }),
+    );
+    // "how many callers `x` has", "`x` how many callers it got", "`x`, how
+    // many callers it have": the question in the order of a statement.
+    rules.extend(
+        [
+            ("en.question.how_many_role_has", "has"),
+            ("en.question.how_many_role_have", "have"),
+            ("en.question.how_many_role_got", "got"),
+        ]
+        .map(|(id, verb)| {
+            Rule::new(
+                RuleInfo::new(id, 14),
+                Cat::Question,
+                vec![
+                    W("how"),
+                    W("many"),
+                    C(Cat::RoleNoun),
+                    C(Cat::NounPhrase),
+                    W(verb),
+                ],
+                S::Build(count),
+            )
+            .read_only()
+        }),
+    );
     rules.extend(ASPECTS.iter().map(|&(id, round, before)| {
         let mut rhs = phrase(before);
         rhs.push(C(Cat::Participial));
