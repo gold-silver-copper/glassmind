@@ -237,7 +237,36 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
                 position: Position::Second,
             },
         ),
+        // A field or method belongs to its type: "the field `x` of `S`",
+        // "`x` on the `S` struct", "`x` in `S`". The thing before the word
+        // is the member.
+        belonging("en.rust.belonging.of", "of"),
+        belonging("en.rust.belonging.on", "on"),
+        belonging("en.rust.belonging.in", "in"),
+        // "Config field saved_max_mb": a field is part of its struct.
+        word(
+            RuleInfo::new("en.rust.part.field", 5),
+            Cat::Part,
+            &["field"],
+            Sem::Holder {
+                kind: Field,
+                relation: HasField,
+                position: Position::Second,
+            },
+        ),
     ]
+}
+
+fn belonging(id: &'static str, form: &'static str) -> Rule<Cat, Sem<Rust>> {
+    word(
+        RuleInfo::new(id, 5),
+        Cat::Belonging,
+        &[form],
+        Sem::Role {
+            relation: RustRelation::Member,
+            position: Position::Second,
+        },
+    )
 }
 
 /// All English rules for talking about Rust: the language's own and the words for the world.
@@ -252,7 +281,9 @@ mod tests {
     use super::*;
     use glassmind_english::English;
     use glassmind_meaning::interface::{Language, Understanding};
-    use glassmind_meaning::{Condition, Description, Name, Position, Question, Thing, Utterance};
+    use glassmind_meaning::{
+        Action, Condition, Description, Name, Position, Question, Thing, Utterance,
+    };
     use glassmind_rules::Switches;
 
     /// Every question the system can say about every kind and relation it
@@ -507,7 +538,7 @@ mod tests {
     #[test]
     fn ways_of_asking_for_a_rename_agree() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
-        let meaning = Utterance::Command(glassmind_meaning::Action::Rename {
+        let meaning = Utterance::Command(Action::Rename {
             thing: Thing::Named(Name("tick".into())),
             kind: None,
             name: Name("drain_events".into()),
@@ -534,5 +565,48 @@ mod tests {
             english.understand("rename tick to drain_events tick is vague"),
             Understanding::Failed { .. }
         ));
+    }
+
+    /// The ways of asking to rename a field of a struct can all mean the
+    /// same: the field that is `x` and a member of the struct that is `S`
+    /// ("the `x` field" may also be a field of type `x`, which the world
+    /// decides).
+    #[test]
+    fn ways_of_asking_to_rename_a_field_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let is = |kind, name: &str| {
+            Thing::Fitting(Description {
+                kind: Some(kind),
+                conditions: vec![Condition::Is(Thing::Named(Name(name.into())))],
+            })
+        };
+        let field = Description {
+            kind: None,
+            conditions: vec![
+                Condition::Is(Thing::Named(Name("x".into()))),
+                Condition::Related {
+                    relation: RustRelation::Member,
+                    position: Position::Second,
+                    other: is(RustKind::Struct, "S"),
+                },
+            ],
+        };
+        let meaning = Utterance::Command(Action::Rename {
+            thing: Thing::Fitting(field),
+            kind: Some(RustKind::Field),
+            name: Name("y".into()),
+        });
+        for text in [
+            "rename the field `x` of the `S` struct to `y`",
+            "Could you rename the `x` field on the `S` struct to `y`, please?",
+            "the field `x` in the `S` struct is confusing, can you rename it to `y`?",
+            "in the `S` struct there is field `x`, can we rename it to `y`?",
+            "I'd like to rename the field `x` in the `S` struct to `y`. Can you do that for me?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
     }
 }

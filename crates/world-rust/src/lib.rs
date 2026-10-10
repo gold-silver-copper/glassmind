@@ -51,6 +51,9 @@ pub enum RustRelation {
     Calls,
     /// `HasField(s, f)`: struct `s` declares field `f`.
     HasField,
+    /// `Member(t, m)`: `m` belongs to the struct, enum or trait `t`: one
+    /// of its fields, or a function in its `impl` or trait body.
+    Member,
     /// `TypeMentions(f, t)`: field `f`'s type has the identifier `t` in it
     /// (`Vec<Velocity>` mentions `Vec` and `Velocity`). `t` need not be an
     /// item of the sources: `Arc` and `u32` are types too.
@@ -95,8 +98,8 @@ impl Labelled for RustItem {
     }
 }
 
-/// Looking a name up: exact matches of the name or `Owner::name`, or of
-/// `Owner.name` for a field, as code accesses it.
+/// Looking a name up: exact matches of the name, `Owner::name` or
+/// `Owner.name`.
 const LOOKUP_EXACT: RuleInfo = RuleInfo::new("rust.lookup.exact", SEED);
 /// Looking a name up: when nothing matches exactly, matches ignoring case,
 /// unless the name is written exactly as a type somewhere (`Arc` is not
@@ -114,6 +117,9 @@ const LOCATE_UNIQUE: RuleInfo = RuleInfo::new("rust.locate.unique", 2);
 const DESCRIBE_UNIQUE: RuleInfo = RuleInfo::new("rust.describe.unique", 3);
 /// The has-field relation, read from struct declarations.
 const RELATION_HAS_FIELD: RuleInfo = RuleInfo::new("rust.relation.has_field", 3);
+/// The member relation, read from the struct a field is declared in and
+/// the type or trait a function's `impl` or trait body is for, by name.
+const RELATION_MEMBER: RuleInfo = RuleInfo::new("rust.relation.member", 5);
 /// The type-mentions relation, read from the identifiers in field types.
 const RELATION_TYPE_MENTIONS: RuleInfo = RuleInfo::new("rust.relation.type_mentions", 3);
 
@@ -127,6 +133,13 @@ const RELATION_BELONGS_TO: RuleInfo = RuleInfo::new("rust.relation.belongs_to", 
 /// }`, `S { f: p }`), so no type information is needed to know the edit is
 /// exact.
 const RENAME: RuleInfo = RuleInfo::new("rust.rename", 5);
+/// Renaming a field, proposed only when it is exact without type
+/// information: no other field in its source has its name, every
+/// identifier token with its name is written as that field (declared,
+/// `x.f`, `S { f: v }`, `S { f: p }`; not `S { f }` or inside a macro),
+/// and the new name is written nowhere in the source. Decides before
+/// [`RENAME`] for anything that is a field.
+const RENAME_FIELD: RuleInfo = RuleInfo::new("rust.rename.field", 5);
 
 /// Every world rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -139,6 +152,8 @@ pub const RULES: &[RuleInfo] = &[
     RELATION_TYPE_MENTIONS,
     RELATION_BELONGS_TO,
     RENAME,
+    RENAME_FIELD,
+    RELATION_MEMBER,
 ];
 
 /// One or more indexed Rust sources.
@@ -200,6 +215,7 @@ impl RustWorld {
         let rule = match relation {
             RustRelation::Calls => RELATION_CALLS,
             RustRelation::HasField => RELATION_HAS_FIELD,
+            RustRelation::Member => RELATION_MEMBER,
             RustRelation::TypeMentions => RELATION_TYPE_MENTIONS,
             RustRelation::BelongsTo => RELATION_BELONGS_TO,
         };
@@ -212,7 +228,8 @@ impl RustWorld {
             (RustRelation::Calls, _) => &[RustKind::Function],
             (RustRelation::HasField, Position::First) => &[RustKind::Field],
             (RustRelation::HasField, Position::Second) => &[RustKind::Struct],
-            (RustRelation::TypeMentions | RustRelation::BelongsTo, _) => {
+            (RustRelation::Member, Position::First) => &[RustKind::Field, RustKind::Function],
+            (RustRelation::TypeMentions | RustRelation::BelongsTo | RustRelation::Member, _) => {
                 &[RustKind::Struct, RustKind::Enum, RustKind::Trait]
             }
         };
@@ -244,6 +261,22 @@ impl RustWorld {
                                 }
                             }
                             _ => {}
+                        }
+                    }
+                }
+            }
+            (RustRelation::Member, _) => {
+                for item in self.records().map(|r| &r.item) {
+                    for other in others {
+                        let (whole, part) = match position {
+                            Position::First => (item, other),
+                            Position::Second => (other, item),
+                        };
+                        if part.source == whole.source
+                            && part.owner.as_ref() == Some(&whole.name)
+                            && !wanted.contains(&item.kind)
+                        {
+                            out.insert(item.clone());
                         }
                     }
                 }
@@ -376,6 +409,79 @@ impl RustWorld {
         Ok(item.clone())
     }
 
+    /// The items a resolved thing stands for.
+    fn things(
+        &self,
+        thing: &Thing<Rust>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<BTreeSet<RustItem>, Trouble<Rust>> {
+        match thing {
+            Thing::Item(item) => Ok([item.clone()].into()),
+            Thing::Fitting(d) => Ok(self.identify(d, fired)?.into_iter().collect()),
+            Thing::Named(name) => Err(Trouble::NoSuchName { name: name.clone() }),
+            Thing::Previous => Err(Trouble::Unsupported),
+        }
+    }
+
+    /// Renaming a field, by [`RENAME_FIELD`]: every spot its name is
+    /// written. `None` if the thing is not a field, for [`RENAME`] to
+    /// decide.
+    fn rename_field(
+        &self,
+        thing: &Thing<Rust>,
+        kind: Option<RustKind>,
+        name: &Name,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Option<Result<Reply<Rust>, Trouble<Rust>>> {
+        if !self.switches.on(RENAME_FIELD.id) || kind.is_some_and(|k| k != RustKind::Field) {
+            return None;
+        }
+        let fields_named = |name: &str| -> Vec<RustItem> {
+            self.records()
+                .filter(|r| r.item.kind == RustKind::Field && r.item.name == name)
+                .map(|r| r.item.clone())
+                .collect()
+        };
+        // A field said to be of a struct is the one so described; a name
+        // alone that several fields have asks which, whatever else it names.
+        let item = match thing {
+            Thing::Fitting(d) => match self.identify(d, fired) {
+                Ok(items) => items.first().filter(|_| items.len() == 1)?.clone(),
+                Err(trouble) => return Some(Err(trouble)),
+            },
+            Thing::Item(item) if fields_named(&item.name).len() > 1 => {
+                fired.push(RENAME_FIELD);
+                return Some(Err(Trouble::Ambiguous {
+                    candidates: fields_named(&item.name),
+                }));
+            }
+            Thing::Item(item) => item.clone(),
+            Thing::Named(_) | Thing::Previous => return None,
+        };
+        if item.kind != RustKind::Field {
+            return None;
+        }
+        fired.push(RENAME_FIELD);
+        let source = self.sources.iter().find(|s| s.name == item.source)?;
+        let at = source.idents.get(&item.name)?;
+        if fields_named(&item.name).len() > 1
+            || source.idents.contains_key(&name.0)
+            || at
+                .iter()
+                .any(|p| source.names.get(p) != Some(&RustKind::Field))
+        {
+            return Some(Err(Trouble::Unsupported));
+        }
+        Some(Ok(Reply::Proposal {
+            action: Action::Rename {
+                thing: Thing::Item(item),
+                kind,
+                name: name.clone(),
+            },
+            spots: spots(source, at),
+        }))
+    }
+
     fn identify(
         &self,
         description: &Description<Rust>,
@@ -383,35 +489,16 @@ impl RustWorld {
     ) -> Result<Vec<RustItem>, Trouble<Rust>> {
         let mut candidates: Option<BTreeSet<RustItem>> = None;
         for condition in &description.conditions {
-            let (relation, position, other) = match condition {
-                Condition::Related {
-                    relation,
-                    position,
-                    other,
-                } => (relation, position, other),
-                Condition::Called(name) => {
-                    let named = self.lookup(name, fired).into_iter().collect();
-                    candidates = Some(match candidates {
-                        None => named,
-                        Some(c) => c.intersection(&named).cloned().collect(),
-                    });
-                    continue;
-                }
-            };
-            let fitting = match other {
-                Thing::Item(other) => {
-                    self.related(*relation, *position, &[other.clone()].into(), fired)?
-                }
-                Thing::Fitting(d) => {
-                    let others = self.identify(d, fired)?.into_iter().collect();
-                    self.related(*relation, *position, &others, fired)?
-                }
+            let fitting = match condition {
+                Condition::Called(name) => self.lookup(name, fired).into_iter().collect(),
+                Condition::Is(thing) => self.things(thing, fired)?,
                 // A type needs no item to be named (`Arc`, `u32`), only to be
                 // written as one somewhere.
-                Thing::Named(name)
-                    if (*relation, *position) == (RustRelation::TypeMentions, Position::First)
-                        && self.switches.on(RELATION_TYPE_MENTIONS.id) =>
-                {
+                Condition::Related {
+                    relation: RustRelation::TypeMentions,
+                    position: Position::First,
+                    other: Thing::Named(name),
+                } if self.switches.on(RELATION_TYPE_MENTIONS.id) => {
                     fired.push(RELATION_TYPE_MENTIONS);
                     let fields = self.typed(&[name.0.as_str()].into());
                     if fields.is_empty() {
@@ -419,8 +506,14 @@ impl RustWorld {
                     }
                     fields
                 }
-                Thing::Named(name) => return Err(Trouble::NoSuchName { name: name.clone() }),
-                Thing::Previous => return Err(Trouble::Unsupported),
+                Condition::Related {
+                    relation,
+                    position,
+                    other,
+                } => {
+                    let others = self.things(other, fired)?;
+                    self.related(*relation, *position, &others, fired)?
+                }
             };
             candidates = Some(match candidates {
                 None => fitting,
@@ -429,16 +522,29 @@ impl RustWorld {
         }
         let candidates =
             candidates.unwrap_or_else(|| self.all_of(description.kind).into_iter().collect());
-        Ok(candidates
+        let found: Vec<RustItem> = candidates
             .into_iter()
             .filter(|i| description.kind.is_none_or(|k| i.kind == k))
-            .collect())
+            .collect();
+        // A thing said to be a certain one but described wrongly ("`f` on
+        // `S`" when `f` is not on `S`) is no thing at all.
+        let definite = || {
+            description
+                .conditions
+                .iter()
+                .any(|c| matches!(c, Condition::Is(_)))
+        };
+        if found.is_empty() && definite() {
+            return Err(Trouble::Unsupported);
+        }
+        Ok(found)
     }
 }
 
 impl World<Rust> for RustWorld {
     fn lookup(&self, name: &Name, fired: &mut Vec<RuleInfo>) -> Vec<RustItem> {
         let wanted = name.0.as_str();
+        let path = wanted.replace('.', "::");
         let matches = |item: &RustItem, fold: bool| {
             let eq = |a: &str, b: &str| {
                 if fold {
@@ -447,13 +553,7 @@ impl World<Rust> for RustWorld {
                     a == b
                 }
             };
-            eq(&item.name, wanted)
-                || eq(&item.label(), wanted)
-                || item.kind == RustKind::Field
-                    && item
-                        .owner
-                        .as_ref()
-                        .is_some_and(|o| eq(&format!("{o}.{}", item.name), wanted))
+            eq(&item.name, wanted) || eq(&item.label(), &path)
         };
         let mut found: Vec<RustItem> = Vec::new();
         if self.switches.on(LOOKUP_EXACT.id) {
@@ -522,6 +622,9 @@ impl World<Rust> for RustWorld {
         fired: &mut Vec<RuleInfo>,
     ) -> Result<Reply<Rust>, Trouble<Rust>> {
         let Action::Rename { thing, kind, name } = action;
+        if let Some(reply) = self.rename_field(thing, *kind, name, fired) {
+            return reply;
+        }
         let item = self.only(RENAME, thing, *kind, fired)?;
         if !matches!(item.kind, RustKind::Function | RustKind::Field) {
             return Err(Trouble::WrongKind { item });
@@ -549,15 +652,7 @@ impl World<Rust> for RustWorld {
                 kind: *kind,
                 name: name.clone(),
             },
-            spots: at
-                .iter()
-                .map(|(file, line, column)| RustSpot {
-                    source: source.name.clone(),
-                    file: source.files.get(*file).cloned().unwrap_or_default(),
-                    line: *line,
-                    column: *column,
-                })
-                .collect(),
+            spots: spots(source, at),
         })
     }
 
@@ -567,6 +662,18 @@ impl World<Rust> for RustWorld {
         names.dedup();
         names
     }
+}
+
+/// The spots in `source` at these positions.
+fn spots(source: &SourceIndex, at: &BTreeSet<index::Pos>) -> Vec<RustSpot> {
+    at.iter()
+        .map(|(file, line, column)| RustSpot {
+            source: source.name.clone(),
+            file: source.files.get(*file).cloned().unwrap_or_default(),
+            line: *line,
+            column: *column,
+        })
+        .collect()
 }
 
 #[cfg(test)]
@@ -615,5 +722,50 @@ mod tests {
             Err(Trouble::Unsupported)
         );
         let _ = std::fs::remove_dir_all(&root);
+    }
+
+    /// A field is renamed at every spot its name is written, and only when
+    /// every one of them is written as that field.
+    #[test]
+    fn field_renames_are_exact_or_refused() {
+        let root =
+            std::env::temp_dir().join(format!("glassmind-rename-field-{}", std::process::id()));
+        std::fs::create_dir_all(&root).unwrap();
+        std::fs::write(
+            root.join("lib.rs"),
+            "struct S { kept: u32, wrapped: u32, short: u32 }\n\
+             fn f(s: &S) -> u32 {\n\
+             \x20   let S { kept: k, .. } = s;\n\
+             \x20   println!(\"{}\", s.wrapped);\n\
+             \x20   let short = 1;\n\
+             \x20   let t = S { kept: 1, wrapped: 2, short };\n\
+             \x20   *k + t.kept\n\
+             }\n",
+        )
+        .unwrap();
+        let world = RustWorld::open(&[("t".into(), root.as_path())], &Switches::all_on());
+        let rename = |old: &str, new: &str| {
+            let item = world.lookup(&Name(old.into()), &mut Vec::new()).pop();
+            let action = Action::Rename {
+                thing: Thing::Item(item.unwrap()),
+                kind: None,
+                name: Name(new.into()),
+            };
+            match world.propose(&action, &mut Vec::new()) {
+                Ok(Reply::Proposal { spots, .. }) => {
+                    Some(spots.iter().map(|s| (s.line, s.column)).collect::<Vec<_>>())
+                }
+                _ => None,
+            }
+        };
+        assert_eq!(
+            rename("kept", "held"),
+            Some(vec![(1, 11), (3, 12), (6, 16), (7, 11)])
+        );
+        // Written inside a macro, as a shorthand, or a name already taken.
+        assert_eq!(rename("wrapped", "held"), None);
+        assert_eq!(rename("short", "held"), None);
+        assert_eq!(rename("kept", "f"), None);
+        std::fs::remove_dir_all(&root).unwrap();
     }
 }

@@ -33,12 +33,16 @@ pub const PREFER_FIRST_READING: RuleInfo = RuleInfo::new("mind.prefer.first_read
 /// right kind, ask which of those was meant ("which `settings` field?")
 /// rather than say a function called `settings` is no field.
 pub const PREFER_RIGHT_KIND: RuleInfo = RuleInfo::new("mind.prefer.right_kind", 5);
+/// When readings of a request to change something would change different
+/// things, ask which one was meant rather than act on a guess.
+pub const ASK_BEFORE_ACTING: RuleInfo = RuleInfo::new("mind.ask_before_acting", 5);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
     PREFER_RECENT_MENTION,
     PREFER_FIRST_READING,
     PREFER_RIGHT_KIND,
+    ASK_BEFORE_ACTING,
 ];
 
 /// A source the conversation was given.
@@ -313,6 +317,19 @@ impl<O: Ontology> Mind<'_, O> {
                 .clone()
                 .unwrap_or(Reply::Trouble(Trouble::Unsupported));
             return (reply, Some(first.meaning.clone()));
+        }
+        // Readings may propose the same edit in different words (with or
+        // without the kind said), so only different items make it a guess.
+        let edited: BTreeSet<&O::Item> = replies.iter().flat_map(|r| r.items()).collect();
+        if self.switches.on(ASK_BEFORE_ACTING.id)
+            && edited.len() > 1
+            && good
+                .iter()
+                .any(|c| matches!(c.meaning, Utterance::Command(_)))
+        {
+            trace.preferences.push(ASK_BEFORE_ACTING);
+            let candidates = edited.into_iter().cloned().collect();
+            return (Reply::Trouble(Trouble::Ambiguous { candidates }), None);
         }
         // The readings disagree: prefer recent mentions, then the first reading.
         let mentions = session.mentions();

@@ -24,6 +24,7 @@ pub mod lexicon;
 pub mod locate;
 pub mod mention;
 pub mod remark;
+pub mod renaming;
 pub mod request;
 pub mod seed;
 pub mod sem;
@@ -47,6 +48,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(describe::rules());
     rules.extend(having::rules());
     rules.extend(change::rules());
+    rules.extend(renaming::rules());
     rules
 }
 

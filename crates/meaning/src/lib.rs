@@ -93,6 +93,9 @@ pub enum Condition<O: Ontology> {
     },
     /// The described thing is called this name.
     Called(Name),
+    /// The described thing is this very thing ("the field `x` of `S`" is
+    /// `x`, and also of `S`).
+    Is(Thing<O>),
 }
 
 /// A description of things: an optional kind and conditions they all meet.
@@ -290,7 +293,7 @@ impl<O: Ontology> Description<O> {
 impl<O: Ontology> Condition<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
-            Condition::Related { other, .. } => other.things(),
+            Condition::Related { other, .. } | Condition::Is(other) => other.things(),
             Condition::Called(_) => Vec::new(),
         }
     }
@@ -306,6 +309,7 @@ impl<O: Ontology> Condition<O> {
                 position: *position,
                 other: other.map_things(f),
             },
+            Condition::Is(other) => Condition::Is(other.map_things(f)),
             Condition::Called(_) => self.clone(),
         }
     }

@@ -12,7 +12,7 @@ pub enum Cat {
     /// A whole user turn. The start category.
     Utterance,
     /// A request to change something, without its final punctuation:
-    /// "rename `x` to `y`".
+    /// "rename `x` to `y`", "`S.x` -> `y`".
     Command,
     /// Words saying what a thing is to become: "to", "into", "->".
     Into,
@@ -141,6 +141,22 @@ pub enum Cat {
     /// A noun for a kind of thing that holds others: a "field" holds what
     /// its type mentions.
     Holder,
+    /// A verb asking for a thing to get a new name: "rename", "change".
+    Rename,
+    /// An arrow from an old name to a new one: "->", "→".
+    Arrow,
+    /// A preposition saying what a thing belongs to, naming the relation
+    /// between them: "of", "on", "in" (the field `x` of `S`).
+    Belonging,
+    /// A noun for a kind of thing that is part of another, naming how: a
+    /// "field" of a struct ("`S` field `x`").
+    Part,
+    /// A thing set up to be talked about, perhaps with a comment on it: "the
+    /// `x` field on `S`", "`x` in `S` is confusing".
+    Topic,
+    /// Words asking the hearer to carry out the request just made: "can
+    /// you do that for me?", "could you take care of that?".
+    Errand,
 }
 
 /// English grammatical number, used for agreement.
@@ -215,7 +231,8 @@ pub enum Sem<O: Ontology> {
         kind: Option<O::Kind>,
     },
     /// A kind of thing that holds what fills one side of a relation for it:
-    /// a field holds the types its type mentions.
+    /// a field holds the types its type mentions. Said of a part, the
+    /// relation is to its whole: a field is a struct's.
     Holder {
         kind: O::Kind,
         relation: O::Relation,

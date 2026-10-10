@@ -65,7 +65,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             remark_value(),
         )
     };
-    vec![
+    let mut rules = vec![
         // "I'm looking at the voxel code": the speaker's own situation, up
         // to the next punctuation.
         Rule::new(
@@ -88,6 +88,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Cat::Remark,
             vec![W("can't"), Class(TEXT)],
             remark(),
+        ),
+        // "kick_mps is kind of cryptic for me": what the speaker thinks of
+        // a thing, which a later "it" refers to.
+        Rule::new(
+            RuleInfo::new("en.remark.mention_is", 5),
+            Cat::Remark,
+            vec![C(Cat::Mention), W("is"), Class(TEXT)],
+            S::Build(|c| c.first().cloned()),
         ),
         // Each further word of the remark: "... the voxel code".
         Rule::new(
@@ -197,6 +205,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Utterance), W(","), C(Cat::Remark)],
             S::Build(request),
         ),
+        // "Please rename `x` to `y`, since that describes it better."
+        utterance(
+            "en.utterance.remark_after_comma_stop",
+            5,
+            vec![C(Cat::Utterance), W(","), C(Cat::Remark), W(".")],
+        ),
         // "Which functions call `inner`? I'm trying to understand how it's used."
         utterance(
             "en.utterance.remark_after_stop",
@@ -220,5 +234,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         greeting("en.greeting.hey", "hey"),
         // "Hi, what functions does `local_times_in_explicit_zones` call?"
         greeting("en.greeting.hi", "hi"),
-    ]
+    ];
+    // "the old name confused me a bit", "the current name is kinda
+    // confusing": what the speaker thinks of the name being changed.
+    for (id, subject) in [
+        ("en.remark.the_old_name", "old"),
+        ("en.remark.the_current_name", "current"),
+    ] {
+        rules.push(Rule::new(
+            RuleInfo::new(id, 5),
+            Cat::Remark,
+            vec![W("the"), W(subject), W("name"), Class(TEXT)],
+            remark(),
+        ));
+    }
+    rules
 }

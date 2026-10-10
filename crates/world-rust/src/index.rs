@@ -122,7 +122,20 @@ pub fn index_source(name: &str, root: &Path) -> SourceIndex {
         let file_index = index.files.len();
         let mut idents = Vec::new();
         idents_in(parsed.1, &mut idents);
-        for ident in idents {
+        let lines: Vec<&str> = text.lines().collect();
+        // Only tokens written as they are: a doc comment lexes as a `doc`
+        // attribute whose span is the comment.
+        let written = |ident: &proc_macro2::Ident| {
+            let start = ident.span().start();
+            lines.get(start.line.wrapping_sub(1)).is_some_and(|l| {
+                ident
+                    .to_string()
+                    .chars()
+                    .zip(l.chars().skip(start.column))
+                    .all(|(a, b)| a == b)
+            })
+        };
+        for ident in idents.into_iter().filter(written) {
             index
                 .idents
                 .entry(ident.to_string())

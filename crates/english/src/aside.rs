@@ -16,6 +16,15 @@ const ROUND: u32 = 2;
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let aside = || S::Const(Sem::Quote(String::new()));
     // Greetings, hesitations and thanks, as users open or close a request.
+    let aside_word = |(id, words, round): (&'static str, &'static [&'static str], u32)| {
+        word(
+            RuleInfo::new(id, round),
+            Cat::Aside,
+            words,
+            Sem::Quote(String::new()),
+        )
+        .read_only()
+    };
     let mut rules: Vec<Rule<Cat, Sem<O>>> = [
         ("en.aside.hey", &["hey"][..]),
         ("en.aside.hi", &["hi"]),
@@ -36,16 +45,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ("en.aside.quick_one", &["quick", "one"]),
     ]
     .into_iter()
-    .map(|(id, words)| {
-        word(
-            RuleInfo::new(id, ROUND),
-            Cat::Aside,
-            words,
-            Sem::Quote(String::new()),
-        )
-        .read_only()
-    })
+    .map(|(id, words)| aside_word((id, words, ROUND)))
     .collect();
+    // "Quick request: please rename ...", "... Thanks a lot!"
+    rules.push(aside_word((
+        "en.aside.quick_request",
+        &["quick", "request"],
+        5,
+    )));
+    rules.push(aside_word((
+        "en.aside.thanks_a_lot",
+        &["thanks", "a", "lot"],
+        5,
+    )));
     // The punctuation that ends an aside: "hey,", "hi!", "quick question:",
     // "sorry, quick one -", "Thanks.".
     for (id, mark) in [
