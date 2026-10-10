@@ -35,7 +35,7 @@ fn named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 /// "a `x` field", "field `x`": any thing of the kind going by the name.
-fn kind_named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+pub(crate) fn kind_named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c {
         [Sem::Thing(Thing::Named(name)), Sem::Kind { kind, .. }]
         | [Sem::Kind { kind, .. }, Sem::Thing(Thing::Named(name))] => {

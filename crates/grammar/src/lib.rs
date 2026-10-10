@@ -145,8 +145,6 @@ pub struct Parse<V> {
     /// How many tokens the parser could read before no rule could continue.
     /// Equal to the token count when the whole input was read.
     pub reached: usize,
-    /// True if the parser gave up because the input had too many readings.
-    pub overflow: bool,
 }
 
 /// Something that may come next after an unfinished input.
@@ -244,22 +242,20 @@ where
         let chart = self.chart(lexicon, tokens, false);
         let mut readings = self.readings(&chart, tokens.len());
         // Mistyped words may also be read as the words they may be: add the
-        // readings that need the fewest corrections and mean something new.
-        // Which reading wins is left to whoever can check them.
+        // corrected readings that mean something new. Which reading wins
+        // (fewest corrections, among those that make sense) is left to
+        // whoever can check them.
         if tokens.iter().any(|t| !lexicon.corrections(t).is_empty()) {
             let corrected = self.chart(lexicon, tokens, true);
-            let mut fixed: Vec<Rc<Phrase<V>>> = self
+            let fixed: Vec<Rc<Phrase<V>>> = self
                 .readings(&corrected, tokens.len())
                 .into_iter()
                 .filter(|p| p.edits > 0 && !readings.iter().any(|r| r.value == p.value))
                 .collect();
-            let least = fixed.iter().map(|p| p.edits).min().unwrap_or(0);
-            fixed.retain(|p| p.edits == least);
             if readings.is_empty() && !fixed.is_empty() {
                 return Parse {
                     readings: fixed,
                     reached: corrected.reached,
-                    overflow: corrected.overflow,
                 };
             }
             readings.extend(fixed);
@@ -267,7 +263,6 @@ where
         Parse {
             readings,
             reached: chart.reached,
-            overflow: chart.overflow,
         }
     }
 

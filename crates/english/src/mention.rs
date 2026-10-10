@@ -12,8 +12,9 @@ use glassmind_meaning::{
 use crate::aside::filler;
 use crate::asking::read_only_rule;
 use crate::contents::narrowed;
-use crate::lexicon::{CAPITALIZED, CODE, LOWER, NAME, WORD};
+use crate::lexicon::{CAPITALIZED, CODE, ITEM, LOWER, NAME, SAID, WORD};
 use crate::locate::fillers;
+use crate::naming::kind_named;
 use crate::sem::{Cat, Number, Sem};
 use crate::spoken;
 use crate::{first, word};
@@ -133,9 +134,13 @@ pub(crate) fn named<O: Ontology>(v: Option<&Sem<O>>) -> Option<Sem<O>> {
 /// thing set off before it.
 fn set_off<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c {
-        [Sem::Mention { thing, kind }, .., Sem::Question(later)]
-            if later.things().contains(&&Thing::Previous) =>
-        {
+        // A thing described ("go fn") holds its kind.
+        [
+            Sem::Mention { thing, kind }
+            | Sem::Thing(thing @ Thing::Fitting(Description { kind, .. })),
+            ..,
+            Sem::Question(later),
+        ] if later.things().contains(&&Thing::Previous) => {
             let earlier = Question::Describe {
                 thing: thing.clone(),
                 kind: kind.clone(),
@@ -405,6 +410,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Mention), C(Break), C(Question)],
             set_off,
         ),
+        // "go fn — where does it live": the same, of a thing named by a
+        // word the system knows as English, with its kind.
+        rule(
+            "en.question.set_off_word_kind",
+            27,
+            Question,
+            vec![Class(SAID), C(Noun), C(Break), C(Question)],
+            |c| set_off(&[kind_named(c.get(..2)?)?, c.last()?.clone()]),
+        ),
         // "is_rate_limit where is it", "SimPlugin where it live": the same,
         // with no mark between.
         rule(
@@ -467,6 +481,23 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         vec![W("the"), Class(NAME)],
         |c| match c {
             [Sem::Name(n)] => Some(Sem::Thing(Thing::Named(n.clone()))),
+            _ => None,
+        },
+    ));
+    // "`Chat::retry`": a thing described as being an item ("Chat retry",
+    // the `retry` that is part of `Chat`), once the world has found it to
+    // be one, is said as that item.
+    rules.push(spoken(
+        "en.noun_phrase.found_item",
+        27,
+        NounPhrase,
+        vec![Class(ITEM)],
+        |_| None,
+        |v| match v {
+            Sem::Thing(Thing::Fitting(d)) => d.conditions.iter().find_map(|c| match c {
+                Condition::Is(Thing::Item(i)) => Some(vec![Sem::Item(i.clone())]),
+                _ => None,
+            }),
             _ => None,
         },
     ));

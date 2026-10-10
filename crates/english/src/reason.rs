@@ -37,7 +37,6 @@ const WORDS: &[(&str, Cat, &str)] = &[
     ("en.wish.you_want", Wish, "you want"),
     ("en.wish.does_it_want", Wish, "does it want"),
     ("en.wish.it_wants", Wish, "it wants"),
-    ("en.wish.would_it_want", Wish, "would it want"),
     // Nouns for why something is done, with what they may open with.
     ("en.reason.reason", Reason, "reason"),
     ("en.reason.reasoning", Reason, "reasoning"),
@@ -90,10 +89,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         // "why do you want that", "why do you want that changed"
         why("en.why.want", vec![W("why"), C(Wish), C(Deed)]),
-        why(
-            "en.why.want_changed",
-            vec![W("why"), C(Wish), C(Deed), W("changed")],
-        ),
         // "why change that", "why that change"
         why("en.why.carrying", vec![W("why"), C(Carrying)]),
         why("en.why.deed", vec![W("why"), C(Deed)]),

@@ -11,6 +11,7 @@
 //! It depends on no particular language or world, only on the interfaces in
 //! `glassmind_meaning::interface`.
 
+use std::cmp::Reverse;
 use std::collections::BTreeSet;
 
 use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
@@ -78,11 +79,6 @@ pub const NAMED_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.named", 18);
 /// it when the things of that name cannot all fill the place.
 pub const SHARED_NAME_ANY: RuleInfo = RuleInfo::new("mind.name.any", 23);
 
-/// Diagnosis: when no sentence shape fits, blame the first word that is
-/// neither known to the language nor a name in the world.
-pub const BLAME_UNKNOWN_WORD: RuleInfo =
-    RuleInfo::new("mind.diagnose.unknown_word", glassmind_rules::HAND);
-
 /// Preference: of the readings the world can answer, those that correct the
 /// fewest mistyped words.
 pub const PREFER_FEWEST_EDITS: RuleInfo =
@@ -91,7 +87,6 @@ pub const PREFER_FEWEST_EDITS: RuleInfo =
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
     PREFER_FEWEST_EDITS,
-    BLAME_UNKNOWN_WORD,
     PREFER_FEWEST_IDLE,
     PREFER_RECENT_MENTION,
     PREFER_FIRST_READING,
@@ -305,35 +300,6 @@ impl<O: Ontology> Mind<'_, O> {
         }
     }
 
-    /// When no sentence shape fits, a word that is neither known to the
-    /// language nor a name in the world is the likeliest reason: report it,
-    /// so the reply names the word and marks where it is, instead of
-    /// marking wherever the parser happened to run out.
-    fn blame_unknown_word(
-        &self,
-        text: &str,
-        trouble: Trouble<O>,
-        trace: &mut Trace<O>,
-    ) -> Trouble<O> {
-        if !matches!(trouble, Trouble::UnknownShape { .. })
-            || !self.switches.on(BLAME_UNKNOWN_WORD.id)
-        {
-            return trouble;
-        }
-        let mut fired = Vec::new();
-        for (at, word) in self.language.unknown_words(text) {
-            if self
-                .world
-                .lookup(&Name(word.clone()), &mut fired)
-                .is_empty()
-            {
-                trace.preferences.push(BLAME_UNKNOWN_WORD);
-                return Trouble::UnknownWord { at, word };
-            }
-        }
-        trouble
-    }
-
     fn think(
         &self,
         session: &Session<O>,
@@ -342,7 +308,6 @@ impl<O: Ontology> Mind<'_, O> {
     ) -> (Reply<O>, Option<Utterance<O>>) {
         let readings = match self.language.understand(text) {
             Understanding::Failed { trouble } => {
-                let trouble = self.blame_unknown_word(text, trouble, trace);
                 trace.failure = Some(trouble.clone());
                 return (Reply::Trouble(trouble), None);
             }
@@ -511,18 +476,29 @@ impl<O: Ontology> Mind<'_, O> {
         }
         let Some(&(first, first_reply)) = good.first() else {
             // Nothing survived: report the trouble of the reading that got
-            // furthest (the earliest of those, which understood the most
-            // of what was said), or ask back.
+            // furthest, then of the one leaving fewest names that name
+            // nothing ("where is `x` defind": `defind` read as "defined"
+            // rather than as a second unknown name), the earliest of those
+            // (which understood the most of what was said), or ask back.
             let asking = self.switches.on(PREFER_ASKING.id);
             let asks = |t: &Trouble<O>| asking && matches!(t, Trouble::Ambiguous { .. });
             let referring = self.switches.on(PREFER_REFERRING.id);
             let refers =
                 |c: &Candidate<O>| !referring || !c.meaning.things().contains(&&Thing::Previous);
+            let unknown = |c: &Candidate<O>| {
+                c.meaning
+                    .things()
+                    .iter()
+                    .filter(|t| matches!(t, Thing::Named(_)))
+                    .count()
+            };
             let worst = candidates
                 .iter()
                 .rev()
                 .filter_map(|c| Some((c, c.result.as_ref().err()?)))
-                .max_by_key(|&(c, t)| (asks(t), refers(c), trouble_progress(t)));
+                .max_by_key(|&(c, t)| {
+                    (asks(t), refers(c), trouble_progress(t), Reverse(unknown(c)))
+                });
             let Some((c, trouble)) = worst else {
                 return (Reply::Trouble(Trouble::Unsupported), None);
             };
@@ -649,7 +625,7 @@ fn stuck_at<O: Ontology>(reply: &Reply<O>) -> Option<usize> {
 fn trouble_progress<O: Ontology>(t: &Trouble<O>) -> Progress {
     match t {
         Trouble::UnknownWord { .. } => Progress::Words,
-        Trouble::UnknownShape { .. } | Trouble::TooAmbiguous => Progress::Sentence,
+        Trouble::UnknownShape { .. } => Progress::Sentence,
         Trouble::NoSuchName { .. } | Trouble::Ambiguous { .. } => Progress::Reference,
         Trouble::WrongKind { .. } | Trouble::Unsupported => Progress::Action,
     }

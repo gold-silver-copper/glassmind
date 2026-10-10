@@ -68,20 +68,23 @@ fn named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, round, lhs, rhs, build| read_only_rule(id, round, lhs, rhs, build);
     let mut rules = vec![
-        // "call the struct `Page` "the leaf"", "calling `Gallery` the wall"
+        // "call the struct `Page` "the leaf"", "calling `Gallery` the wall";
+        // the thing may be named by a known word capitalized the way type
+        // names are, as an owner is: "call Summary the digest".
         rule(
             "en.fact.call",
             ROUND,
             Fact,
-            vec![C(Calling), C(Mention), C(Alias)],
+            vec![C(Calling), C(Owner), C(Alias)],
             alias,
         ),
-        // "refer to struct Store as "the vault""
+        // "refer to struct Store as "the vault"", "i'll refer to Summary as
+        // 'the digest'"
         rule(
             "en.fact.refer",
             ROUND,
             Fact,
-            vec![C(Referring), C(Mention), W("as"), C(Alias)],
+            vec![C(Referring), C(Owner), W("as"), C(Alias)],
             alias,
         ),
         // "BlobObject = the blob"

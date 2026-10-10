@@ -55,8 +55,6 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.but", 6, "but"),
     // "Quick heads-up: I'm going to call ...", "btw I'll call ...", "...,
     // fyi"
-    ("en.aside.quick_heads_up", 6, "quick heads-up"),
-    ("en.aside.quick_thing", 6, "quick thing"),
     ("en.aside.btw", 6, "btw"),
     ("en.aside.fyi", 6, "fyi"),
     // "And which functions call it?", "ok and where is that one defined?",

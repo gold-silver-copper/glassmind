@@ -353,23 +353,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("where"), C(Target), W("lives")],
             located,
         ),
-        // "..., do you know where it is?": where the thing is, with
-        // nothing more said of it.
-        rule(
-            "en.indirect.where_is",
-            25,
-            Indirect,
-            vec![W("where"), C(Target), W("is")],
-            located,
-        ),
-        // "where it's defined": where the thing said before is.
-        rule(
-            "en.indirect.where_it_s_defined",
-            9,
-            Indirect,
-            vec![W("where it's"), C(Defined)],
-            previous,
-        ),
         // "`LookFelt` - where defined": where the thing just set off is,
         // with nothing more said of it.
         rule(

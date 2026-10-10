@@ -71,10 +71,6 @@ pub trait Language<O: Ontology> {
     fn say(&self, reply: &Reply<O>) -> Option<Spoken>;
     /// Says what may follow the complete tokens of `prefix`.
     fn next(&self, prefix: &str) -> Vec<Next>;
-    /// The plain words in `text` the language does not know, with their
-    /// token positions: candidates for why a sentence was not understood
-    /// (unless the world knows them as names).
-    fn unknown_words(&self, text: &str) -> Vec<(usize, String)>;
 }
 
 /// A world: the data glassmind can see.

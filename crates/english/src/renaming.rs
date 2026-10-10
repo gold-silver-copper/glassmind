@@ -303,7 +303,6 @@ const ERRANDS: Phrases = &[
     ("en.errand.do_that", "do that"),
     ("en.errand.do_it", "do it"),
     ("en.errand.take_care_of_that", "take care of that"),
-    ("en.proxy.doing_that", "doing that"),
     ("en.proxy.possible_to_do", "is that possible to do"),
     ("en.proxy.ok_to_do", "is that ok to do"),
 ];
@@ -348,14 +347,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Mention), C(Arrow), Class(NAME)],
             rename,
         ),
-        // "rename it", "pls rename": a rename to a name not said here.
+        // "rename it": a rename to a name not said here.
         heard(
             "en.command.rename_only",
             Command,
             vec![C(Rename), C(Mention)],
             rename,
         ),
-        heard("en.command.rename_bare", Command, vec![C(Rename)], rename),
         // "`filename` field should be `file_name`", "should be called ..."
         heard(
             "en.command.should_be",
@@ -483,12 +481,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
-        heard(
-            "en.mention.owner_part_after",
-            Mention,
-            vec![C(Mention), C(Mention), C(Part)],
-            belonging,
-        ),
         // "I'd like to rename `x` to `y`. Can you do that for me?"
         heard(
             "en.utterance.errand",
@@ -546,16 +538,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Prompt), C(NewName)],
             crate::last,
         ),
-        later("en.offer.more", Offer, vec![C(Offer), Class(TEXT)], first),
-        // "can we rename it into `y` so it's more clear what it is?": a
-        // remark after a request to change something, which a question's
-        // words may not be.
-        later(
-            "en.utterance.command_remark_mark",
-            Utterance,
-            vec![C(Command), C(Remark), W("?")],
-            first,
-        ),
         // "I think `x` should be called `y`. Could you rename that
         // function, please?": the same rename asked for again in a
         // sentence of its own.
@@ -582,13 +564,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Topic), W("?"), C(Utterance)],
             about,
         ),
-        // "so there is this fn `check_kit`, can we rename it": the thing
-        // pointed out before the request about it.
+        // "so there is this fn `check_kit`, can we rename it", "so there's
+        // `show_since` on Doc too. can we rename it": the thing pointed out
+        // before the request about it.
         later(
             "en.topic.there_is_this",
             Topic,
             vec![W("there is this"), C(Mention)],
             first,
+        ),
+        read_only_rule(
+            "en.topic.there_s",
+            27,
+            Topic,
+            vec![W("there's"), C(Mention)],
+            first,
+        ),
+        // "`pr_key` fn needs a clearer name, go w/ `pr_cache_id`", "want
+        // GearLook's `x` renamed, go with `y`": the name chosen for the
+        // thing talked about.
+        read_only_rule(
+            "en.command.go_with",
+            27,
+            Command,
+            vec![W("go with"), Class(CODE)],
+            rename,
         ),
     ]);
     let grown = |id, lhs, rhs, build| read_only_rule(id, 21, lhs, rhs, build);
@@ -686,17 +686,10 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("the"), Class(SAID), C(Noun)],
             |c| of_kind(&[owner(c.get(..1)?)?, c.last()?.clone()]),
         ),
-        named("en.renamed.the", Renamed, vec![W("the"), C(Renamed)], first),
         named(
             "en.command.rename_word",
             Command,
             vec![C(Rename), C(Renamed), C(Into), Class(NAME)],
-            rename,
-        ),
-        named(
-            "en.command.word_becomes",
-            Command,
-            vec![C(Renamed), C(Becomes), Class(CODE)],
             rename,
         ),
         named("en.topic.word", Topic, vec![C(Renamed)], first),
@@ -706,12 +699,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.command.kind_not",
             Command,
             vec![C(Command), W(","), C(Noun), W("not"), C(Noun)],
-            of_kind_said,
-        ),
-        named(
-            "en.command.kind_only",
-            Command,
-            vec![C(Command), W(","), C(Noun), W("only")],
             of_kind_said,
         ),
     ]);

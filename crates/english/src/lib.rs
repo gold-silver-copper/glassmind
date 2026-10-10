@@ -266,11 +266,10 @@ impl<O: Ontology> Language<O> for English<O> {
         if !readings.is_empty() {
             return Understanding::Readings(readings);
         }
-        // Why nothing was understood: too many readings, an unknown word
-        // where reading stopped, or words in a shape no rule fits.
+        // Why nothing was understood: an unknown word where reading
+        // stopped, or words in a shape no rule fits (or too many readings).
         let at = parse.reached;
         let trouble = match tokens.get(at) {
-            _ if parse.overflow => Trouble::TooAmbiguous,
             Some(t)
                 if t.shape == Shape::Word && !self.lexicon.known.contains(self.lexicon.norm(t)) =>
             {
@@ -282,17 +281,6 @@ impl<O: Ontology> Language<O> for English<O> {
             _ => Trouble::UnknownShape { at },
         };
         Understanding::Failed { trouble }
-    }
-
-    fn unknown_words(&self, text: &str) -> Vec<(usize, String)> {
-        self.tokenize(text)
-            .iter()
-            .enumerate()
-            .filter(|(_, t)| {
-                t.shape == Shape::Word && !self.lexicon.known.contains(self.lexicon.norm(t))
-            })
-            .map(|(i, t)| (i, t.text.clone()))
-            .collect()
     }
 
     fn say(&self, reply: &Reply<O>) -> Option<Spoken> {

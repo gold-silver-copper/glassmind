@@ -194,16 +194,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ROUND,
             vec![C(Mention), C(Break), W("which"), C(RoleNoun)],
         ),
-        (
-            "en.question.unmarked_what_role",
-            18,
-            vec![C(Mention), W("what"), C(RoleNoun)],
-        ),
-        (
-            "en.question.unmarked_which_role",
-            18,
-            vec![C(Mention), W("which"), C(RoleNoun)],
-        ),
         // "doing struct what fields": the same, of a thing described.
         (
             "en.question.unmarked_what_role_described",

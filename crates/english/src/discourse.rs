@@ -62,7 +62,6 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     // field renamed to load_status": a change the speaker wants made.
     ("en.prompt.i_want_to", 25, "i want to"),
     ("en.prompt.need", 25, "need"),
-    ("en.prompt.i_need", 25, "i need"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {

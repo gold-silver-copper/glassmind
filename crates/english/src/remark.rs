@@ -7,7 +7,7 @@ use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Ontology, Thing};
 
 use crate::asking::read_only_rule;
-use crate::lexicon::{CODE, TEXT};
+use crate::lexicon::{CODE, COMPARATIVE, TEXT};
 use crate::mention::named;
 use crate::sem::{Cat, Sem};
 use crate::{blank, first, last, word};
@@ -110,6 +110,37 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Remark), W("seeing"), C(Mention)],
             last,
         ),
+        // "seems it just fires one round at a body, nothing gets shot down
+        // really? can we rename it ...": a remark going on past a comma,
+        // up to the question mark.
+        read_only_rule(
+            "en.musing.comma",
+            27,
+            Musing,
+            vec![C(Remark), W(","), Class(TEXT)],
+            first,
+        ),
+        read_only_rule(
+            "en.musing.more",
+            27,
+            Musing,
+            vec![C(Musing), Class(TEXT)],
+            first,
+        ),
+        utterance(
+            "en.utterance.musing_question",
+            27,
+            vec![C(Musing), W("?"), C(Utterance)],
+        ),
+        // "rename fn `x` to `y`, cleaner": what the change makes better,
+        // said with no subject or verb.
+        read_only_rule(
+            "en.remark.comparative",
+            27,
+            Remark,
+            vec![Class(COMPARATIVE)],
+            first,
+        ),
         // "the name": what a remark about a thing's name calls it.
         word(
             RuleInfo::new("en.name_noun.name", 5),
@@ -148,6 +179,22 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.utterance.remark_after_stop",
             ROUND,
             vec![C(Utterance), C(Remark), W(".")],
+        ),
+        // "what is `x` even for? is it a test?": a remark the speaker is
+        // unsure of, after the request.
+        utterance(
+            "en.utterance.remark_after_mark",
+            27,
+            vec![C(Utterance), C(Remark), C(Mark)],
+        ),
+        // "the fn yes() -> bool one": a function's signature in a remark,
+        // its arrow two marks.
+        read_only_rule(
+            "en.remark.arrow",
+            27,
+            Remark,
+            vec![C(Remark), W("- >")],
+            first,
         ),
         // "...? I'd like the drawing functions to be named a bit more
         // consistently.", "which functions call `x`? I'd like to check
@@ -193,9 +240,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             // "I'm looking at the voxel code. How many functions call
             // `carve`?"
             ("en.utterance.remark_stop", ROUND, Remark, W(".")),
-            // "the function trace_step, i think it just logs a line per
-            // step? maybe rename it to ...": a remark the user is unsure of.
-            ("en.utterance.remark_question", 11, Remark, W("?")),
             // "I'm looking into validation a bit, which functions call
             // `problems`?", "I'm trying to clean up a bit in Editor... could
             // you rename ..."
@@ -324,4 +368,10 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // to be.
     ("en.remark.is_it_like", 26, "is it like"),
     ("en.remark.as", 26, "as"),
+    // "so there's this `x`, what does it do": a thing the speaker points
+    // out.
+    ("en.remark.there_s", 27, "there's"),
+    // "what is `x` even for? is it a test?": what the speaker guesses the
+    // thing is.
+    ("en.remark.is_it_a", 27, "is it a"),
 ];
