@@ -250,6 +250,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             }),
         )
         .read_only(),
+        // "which fields does that struct have": the thing said before, as
+        // the object of a verb.
+        Rule::new(
+            RuleInfo::new("en.noun_phrase.that_kind", 7),
+            Cat::NounPhrase,
+            vec![W("that"), C(Cat::Noun)],
+            S::Const(Sem::Thing(Thing::Previous)),
+        )
+        .read_only(),
         // "it": the thing said before.
         Rule::new(
             RuleInfo::new("en.noun_phrase.it", ROUND),

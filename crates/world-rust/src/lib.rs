@@ -153,6 +153,10 @@ const RENAME_UNIQUE: RuleInfo = RuleInfo::new("rust.rename.unique", 5);
 /// only item of its kind (or of the kind the user said) with its name, so
 /// later uses of the alias can't mean another one.
 const ALIAS_UNIQUE: RuleInfo = RuleInfo::new("rust.alias.unique", 6);
+/// A name said to be of a kind no item with that name is ("the `draw`
+/// struct" when `draw` is a function): the thing meant is of another kind,
+/// not missing, so asking for its fields is asking the wrong kind of thing.
+const NAMED_OTHER_KIND: RuleInfo = RuleInfo::new("rust.condition.named.other_kind", 7);
 
 /// Every world rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -170,6 +174,7 @@ pub const RULES: &[RuleInfo] = &[
     CONDITION_NAMED,
     RENAME_UNIQUE,
     ALIAS_UNIQUE,
+    NAMED_OTHER_KIND,
 ];
 
 /// One or more indexed Rust sources.
@@ -558,16 +563,20 @@ impl RustWorld {
             return Err(Trouble::Unsupported);
         }
         fired.push(CONDITION_NAMED);
-        let named: BTreeSet<RustItem> = self
+        let (named, other): (BTreeSet<RustItem>, BTreeSet<RustItem>) = self
             .records()
             .map(|r| &r.item)
-            .filter(|i| i.name == name.0 && kind.is_none_or(|k| i.kind == k))
+            .filter(|i| i.name == name.0)
             .cloned()
-            .collect();
-        if named.is_empty() {
-            return Err(Trouble::NoSuchName { name: name.clone() });
+            .partition(|i| kind.is_none_or(|k| i.kind == k));
+        match other.into_iter().next() {
+            Some(item) if named.is_empty() && self.switches.on(NAMED_OTHER_KIND.id) => {
+                fired.push(NAMED_OTHER_KIND);
+                Err(Trouble::WrongKind { item })
+            }
+            _ if named.is_empty() => Err(Trouble::NoSuchName { name: name.clone() }),
+            _ => Ok(named),
         }
-        Ok(named)
     }
 
     fn identify(

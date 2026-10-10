@@ -179,6 +179,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Passive)],
             same,
         ),
+        // "what fields has `x` got": the perfect, with "got" as its verb.
+        Rule::new(
+            RuleInfo::new("en.restriction.has", 7),
+            Cat::Restriction,
+            vec![W("has"), C(Cat::NounPhrase), C(Cat::Verb)],
+            S::Build(|c| restrict(c, VerbForm::Plain)),
+        )
+        .read_only(),
         // "which functions is `x` calling"
         rule(
             "en.restriction.progressive",

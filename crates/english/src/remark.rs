@@ -282,6 +282,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(
         openers
             .chain(MORE_OPENERS.iter().map(|o| (o, 6)))
+            .chain(LATER_OPENERS.iter().map(|o| (o, 7)))
             .map(|((id, w), round)| {
                 Rule::new(
                     RuleInfo::new(id, round),
@@ -321,4 +322,17 @@ const MORE_OPENERS: &[(&str, &str)] = &[
     ("en.remark.not", "not"),
     ("en.remark.hope", "hope"),
     ("en.remark.easier", "easier"),
+];
+
+/// Words a remark can open with, added in round 7, after a question about
+/// what a thing holds: what the speaker is after ("trying to understand the
+/// struct", "want to see what it holds"), an apology ("sorry, still new to
+/// this code"), an aside ("kind of a long name for a struct lol") or the
+/// question again in other words ("like what does the struct hold").
+const LATER_OPENERS: &[(&str, &str)] = &[
+    ("en.remark.trying", "trying"),
+    ("en.remark.want", "want"),
+    ("en.remark.sorry", "sorry"),
+    ("en.remark.kind", "kind"),
+    ("en.remark.like", "like"),
 ];

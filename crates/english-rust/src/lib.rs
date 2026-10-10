@@ -249,6 +249,36 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
                 position: Position::Second,
             },
         ),
+        // "fields inside `S`"
+        word(
+            RuleInfo::new("en.rust.preposition.inside", 7),
+            Cat::Preposition,
+            &["inside"],
+            Sem::Relation {
+                relation: BelongsTo,
+                form: Plain,
+            },
+        )
+        .read_only(),
+        // "which fields `S` contains", "which fields make up `S`"
+        verb(
+            "en.rust.verb.contains",
+            7,
+            "contains",
+            HasField,
+            ThirdSingular,
+        )
+        .read_only(),
+        word(
+            RuleInfo::new("en.rust.verb.make_up", 7),
+            Cat::Verb,
+            &["make", "up"],
+            Sem::Relation {
+                relation: BelongsTo,
+                form: Plain,
+            },
+        )
+        .read_only(),
         // A field or method belongs to its type: "the field `x` of `S`",
         // "`x` on the `S` struct", "`x` in `S`". The thing before the word
         // is the member.
@@ -266,6 +296,29 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
                 position: Position::Second,
             },
         ),
+        // "`S` struct fields", "`S` members": the fields of a struct.
+        word(
+            RuleInfo::new("en.rust.part.fields", 7),
+            Cat::Part,
+            &["fields"],
+            Sem::Holder {
+                kind: Field,
+                relation: HasField,
+                position: Position::Second,
+            },
+        )
+        .read_only(),
+        word(
+            RuleInfo::new("en.rust.part.members", 7),
+            Cat::Part,
+            &["members"],
+            Sem::Holder {
+                kind: Field,
+                relation: HasField,
+                position: Position::Second,
+            },
+        )
+        .read_only(),
     ]
 }
 
@@ -790,6 +843,36 @@ mod tests {
                 panic!("could not read {text:?}");
             };
             assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
+    /// Asking which fields are on a struct, by where they are, means the
+    /// same however it is put.
+    #[test]
+    fn ways_of_asking_for_the_fields_on_a_struct_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Ask(Question::Identify(Description {
+            kind: Some(RustKind::Field),
+            conditions: vec![Condition::Related {
+                relation: RustRelation::BelongsTo,
+                position: Position::First,
+                other: Thing::Fitting(Description {
+                    kind: Some(RustKind::Struct),
+                    conditions: vec![Condition::Named(Name("Page".into()))],
+                }),
+            }],
+        }));
+        for text in [
+            "what fields are on the `Page` struct?",
+            "Could you tell me which fields are defined in the `Page` struct, please?",
+            "what are the fields of the `Page` struct? sorry, still new to this code",
+            "what fields inside the Page struct",
+            "which fields make up the `Page` struct?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
         }
     }
 }

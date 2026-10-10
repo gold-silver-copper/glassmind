@@ -17,6 +17,7 @@ pub mod alias;
 pub mod aside;
 pub mod asking;
 pub mod change;
+pub mod contents;
 pub mod counting;
 pub mod describe;
 pub mod discourse;
@@ -57,6 +58,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(reason::rules());
     rules.extend(forgetting::rules());
     rules.extend(alias::rules());
+    rules.extend(contents::rules());
     rules
 }
 
