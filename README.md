@@ -31,6 +31,18 @@ cargo build --release
 Edits are proposed as a set of changes and applied only with `--apply`; it
 never commits.
 
+As a coding agent (it runs `cargo check`, `cargo test` and `clippy` itself,
+in a memory-capped scope, and reads their messages):
+
+```sh
+# talk about a crate, its build and its tests; "yes" applies a proposed fix
+./target/release/glassmind code ../some-crate
+# act on one request: a fix or edit it finds is made, anything else is printed
+./target/release/glassmind do ../some-crate "the build is broken, fix it"
+# as the agent of the rustbench benchmark (github.com/gold-silver-copper/rustbench)
+rustbench run --agent ./tools/rustbench-agent.sh
+```
+
 ## Results so far
 
 28 loop rounds, 431M agent tokens (mostly cache reads), all data written by
@@ -45,12 +57,19 @@ tooling. Chart: `docs/results/chart.html` (numbers in `docs/results/summary.json
 | code size, syntax tokens | 19,094 | 59,391 |
 | rules | 32 | 1,090 |
 
-- The held-out score was still rising when the run stopped.
-- The gap between validation and held-out is phrasing style, not unfamiliar
-  code. Adding a hurried-typing training persona after round 11 lifted
-  held-out from 42% to 55%.
-- No confident wrong answers on any set: unknown requests are refused, and the
-  ▮ in the reply marks the word that wasn't understood.
+- **The 72% is an upper bound, not a clean measure.** An outside review found
+  that the operator had read that held-out set's style prompt, a training
+  persona copied its examples, and its score decided which changes were
+  kept. It was retired on 2026-10-10.
+- On a fresh style written by a separate agent (711 turns, never read on the
+  training side), the round-28 grammar alone gets **2.8%** right. The hand
+  grammar fits the styles it was grown on. With the request-category tagger
+  (a small learned model that reads the request and hands a template to the
+  grammar) it gets 17%, with no confident wrong answers left after the
+  fixes in this branch.
+- No confident wrong answers on the training, validation or dev sets:
+  unknown requests are refused, and the ▮ in the reply marks the word that
+  wasn't understood.
 - Of the rules, 543 are used by 10 or more right answers, 149 by exactly one.
 - No human-written requests have been tested.
 
@@ -67,8 +86,9 @@ Three layers, kept apart by the crate graph (`cargo run -p glassmind-depcheck`, 
 | `glassmind-english-rust` | English words for the Rust world's kinds and relations |
 | `glassmind-mind` | dialogue: readings, name resolution, preference rules, sessions, traces |
 | `glassmind-rules` | every rule's stable ID, the loop round that added it, and runtime switches |
-| `glassmind` (cli) | `ask`, `chat`, `complete`, `eval`, `rules` |
-| `glassmind-loop` | the scorer, the size counter and the improvement loop |
+| `glassmind-models` | small learned models (the normalizer's edit model, the request-category tagger) and their held-out reports: they propose and rank, typed code decides |
+| `glassmind` (cli) | `ask`, `chat`, `code`, `do`, `complete`, `eval`, `rules`, `train-normalizer`, `train-intents` |
+| `glassmind-loop` | the scorer (with its own cargo runner for judging fixes), the size counter and the improvement loop |
 | `tools/oracle` | computes exact answers with `syn`, independently of glassmind |
 | `tools/datagen` | plans conversations from tasks and phrases them with Claude Opus 5.5 |
 
