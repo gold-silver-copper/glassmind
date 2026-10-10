@@ -5,6 +5,7 @@
 //! - A language crate (`glassmind-<language>`) depends on no world.
 //! - A world crate (`glassmind-world-*`) depends on no language and no grammar.
 //! - The dialogue layer (`glassmind-mind`) depends on no language and no world.
+//! - Every layer may use `glassmind-rules`, which depends on nothing.
 //! - The oracle depends on no part of glassmind except the answer format.
 //!
 //! Dependencies are followed transitively. Run with `cargo run -p glassmind-depcheck`.
@@ -17,6 +18,8 @@ use serde_json::Value;
 /// The layer a workspace crate belongs to, read from its name.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Layer {
+    /// Rule identity and switches: shared by every layer, depends on nothing.
+    Rules,
     Meaning,
     Grammar,
     Language,
@@ -36,6 +39,7 @@ fn layer(name: &str) -> Layer {
         return Layer::Tool;
     };
     match rest {
+        "rules" => Layer::Rules,
         "meaning" => Layer::Meaning,
         "grammar" => Layer::Grammar,
         "mind" => Layer::Mind,
@@ -52,7 +56,11 @@ fn layer(name: &str) -> Layer {
 /// Whether a crate in layer `from` may depend on a crate in layer `to`.
 fn allowed(from: Layer, to: Layer) -> bool {
     use Layer::*;
+    if to == Rules {
+        return from != Rules;
+    }
     match from {
+        Rules => false,
         Meaning => false,
         Grammar => false,
         Answer => false,
