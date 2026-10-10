@@ -5,6 +5,7 @@
 
 use glassmind_english::{Cat, Number, Sem, VerbForm, word};
 use glassmind_grammar::Rule;
+use glassmind_meaning::Position;
 use glassmind_rules::{RuleInfo, SEED};
 use glassmind_world_rust::{Rust, RustKind, RustRelation};
 
@@ -69,6 +70,35 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
         kind("en.rust.noun.field", 2, "field", Field, Singular),
         verb("en.rust.verb.calls", SEED, "calls", Calls, ThirdSingular),
         verb("en.rust.verb.call", SEED, "call", Calls, Plain),
+        // Short forms in terse requests: "fns called by `cut`".
+        kind("en.rust.noun.fns", 2, "fns", Function, Plural),
+        kind("en.rust.noun.funcs", 2, "funcs", Function, Plural),
+        // "which fns does `search_results` invoke"
+        verb("en.rust.verb.invokes", 2, "invokes", Calls, ThirdSingular),
+        verb("en.rust.verb.invoke", 2, "invoke", Calls, Plain),
+        // "fns called by `parse_archives`"
+        verb("en.rust.verb.called", 2, "called", Calls, Participle),
+        // "which functions is `parse_request` calling"
+        verb("en.rust.verb.calling", 2, "calling", Calls, Progressive),
+        // "callees of `dm_vector`": what a function calls; "callers": what calls it.
+        word(
+            RuleInfo::new("en.rust.role.callees", 2),
+            Cat::RoleNoun,
+            &["callees"],
+            Sem::Role {
+                relation: Calls,
+                position: Position::Second,
+            },
+        ),
+        word(
+            RuleInfo::new("en.rust.role.callers", 2),
+            Cat::RoleNoun,
+            &["callers"],
+            Sem::Role {
+                relation: Calls,
+                position: Position::First,
+            },
+        ),
     ]
 }
 
@@ -190,5 +220,35 @@ mod tests {
             };
             assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
         }
+    }
+
+    /// The many ways of asking what a function calls all mean the same.
+    #[test]
+    fn ways_of_asking_for_callees_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meanings = |text: &str| match english.understand(text) {
+            Understanding::Readings(readings) => {
+                let mut m: Vec<_> = readings.into_iter().map(|r| r.meaning).collect();
+                m.dedup();
+                m
+            }
+            Understanding::Failed { .. } => Vec::new(),
+        };
+        let plain = meanings("which functions does `cut` call?");
+        assert_eq!(plain.len(), 1);
+        for text in [
+            "Hey, can you tell me which functions `cut` calls, please?",
+            "I'd like to know which functions `cut` calls. Thanks!",
+            "um, which functions are called by `cut`?",
+            "fns called from inside cut",
+            "Could you list the functions that `cut` calls?",
+            "cut calls which fns",
+        ] {
+            assert_eq!(meanings(text), plain, "{text:?}");
+        }
+        assert_eq!(
+            meanings("callees of `cut`"),
+            meanings("what does `cut` call?")
+        );
     }
 }

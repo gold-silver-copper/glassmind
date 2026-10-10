@@ -1,7 +1,8 @@
 //! English categories and the values phrases carry while they are built.
 
 use glassmind_meaning::{
-    Assumption, Condition, Description, Extent, Name, Ontology, Question, Reply, Thing, Utterance,
+    Assumption, Condition, Description, Extent, Name, Ontology, Position, Question, Reply, Thing,
+    Utterance,
 };
 
 /// English phrase categories. These are English's own categories, used only
@@ -59,6 +60,22 @@ pub enum Cat {
     Tell,
     /// A noun for where a thing is: "location", "loc".
     Location,
+    /// A phrase that restricts what is asked about to the objects of a
+    /// relation: "does `x` call", "`x` calls", "called by `x`".
+    Restriction,
+    /// A passive participle with its agent: "called by `x`".
+    Passive,
+    /// A noun phrase describing the things asked for: "fns called by `x`",
+    /// "the functions that `x` calls", "callees of `x`".
+    Description,
+    /// A noun naming one side of a relation: "callees", "callers".
+    RoleNoun,
+    /// A word that opens or closes a turn and asks nothing: "hey,", "um,",
+    /// "quick question:", "thanks!".
+    Interjection,
+    /// Words that frame a request without changing it: "can you", "tell
+    /// me", "I'd like to know".
+    Prompt,
 }
 
 /// English grammatical number, used for agreement.
@@ -75,6 +92,10 @@ pub enum VerbForm {
     Plain,
     /// "calls": singular third-person subjects.
     ThirdSingular,
+    /// "called": the passive participle.
+    Participle,
+    /// "calling": after "is".
+    Progressive,
 }
 
 impl VerbForm {
@@ -83,6 +104,7 @@ impl VerbForm {
         match self {
             VerbForm::Plain => Number::Plural,
             VerbForm::ThirdSingular => Number::Singular,
+            VerbForm::Participle | VerbForm::Progressive => Number::Plural,
         }
     }
 }
@@ -117,6 +139,11 @@ pub enum Sem<O: Ontology> {
     Item(O::Item),
     /// Several resolved items.
     Items(Vec<O::Item>),
+    /// One side of a relation, named by a noun: "callees" are the second.
+    Role {
+        relation: O::Relation,
+        position: Position,
+    },
     /// A number as typed or spoken.
     Count(u64),
     /// A text the system quotes, such as an unknown word.

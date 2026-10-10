@@ -14,6 +14,8 @@ use glassmind_meaning::{Ontology, Reply, Trouble};
 use glassmind_rules::Switches;
 
 pub mod aside;
+pub mod asking;
+pub mod discourse;
 pub mod lexicon;
 pub mod locate;
 pub mod remark;
@@ -33,6 +35,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(request::rules());
     rules.extend(aside::rules());
     rules.extend(locate::rules());
+    rules.extend(asking::rules());
+    rules.extend(discourse::rules());
     rules
 }
 

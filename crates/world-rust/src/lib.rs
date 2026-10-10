@@ -174,7 +174,8 @@ impl RustWorld {
                             .filter_map(|c| item_at(c.caller))
                             .collect())
                     }
-                    // Functions `other` calls, among those with a unique name.
+                    // Functions `other` calls, among those whose name no
+                    // other item of any kind has.
                     Position::Second => {
                         let names: BTreeSet<&str> = source
                             .calls
@@ -184,9 +185,11 @@ impl RustWorld {
                             .collect();
                         let mut out = BTreeSet::new();
                         for name in names {
-                            let mut named = self.functions_named(&other.source, name);
-                            if let (Some(only), None) = (named.next(), named.next()) {
-                                out.insert(only.clone());
+                            let mut named = source.records.iter().filter(|r| r.item.name == name);
+                            if let (Some(only), None) = (named.next(), named.next())
+                                && only.item.kind == RustKind::Function
+                            {
+                                out.insert(only.item.clone());
                             }
                         }
                         Ok(out)
