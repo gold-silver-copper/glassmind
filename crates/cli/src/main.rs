@@ -24,6 +24,7 @@ macro_rules! say {
 
 mod answer;
 mod chat;
+mod details;
 mod edit;
 mod system;
 
@@ -77,6 +78,14 @@ enum Command {
         #[command(flatten)]
         common: Common,
     },
+    /// The coding harness: talk about a repository, build and test it, and
+    /// fix what fails. Changes are only made when you say yes.
+    Code {
+        #[command(flatten)]
+        common: Common,
+        /// The repository (defaults to the current directory).
+        repo: Option<String>,
+    },
     /// Print what may come next after an unfinished input.
     Complete {
         #[command(flatten)]
@@ -111,7 +120,11 @@ fn main() -> ExitCode {
             apply,
             text,
         } => ask(&common, apply, &text.join(" ")),
-        Command::Chat { common } => chat::run(&common),
+        Command::Chat { common } => chat::run(&common, false),
+        Command::Code { mut common, repo } => {
+            common.sources.extend(repo);
+            chat::run(&common, true)
+        }
         Command::Complete { common, text } => complete(&common, &text.join(" ")),
         Command::Eval {
             sources,
@@ -168,6 +181,11 @@ fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
             say!("{}", turn.trace.render());
         }
         say!("{}", turn.spoken);
+        if !matches!(turn.reply, glassmind_meaning::Reply::Proposal { .. }) {
+            for line in details::details(&turn.reply) {
+                say!("{line}");
+            }
+        }
     }
     if let Some(changes) = edit::changes(&answer::response(&turn.reply)) {
         if !common.json {

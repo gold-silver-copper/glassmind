@@ -183,6 +183,8 @@ fn kind_word(kind: ItemKind) -> &'static str {
         ItemKind::Enum => "enum",
         ItemKind::Trait => "trait",
         ItemKind::Field => "field",
+        ItemKind::Problem => "problem",
+        ItemKind::Test => "test",
     }
 }
 

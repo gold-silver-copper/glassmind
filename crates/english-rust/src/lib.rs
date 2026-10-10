@@ -297,7 +297,29 @@ pub fn rules() -> Vec<Word> {
     glassmind_english::rules()
         .into_iter()
         .chain(words())
+        .chain(check_words())
         .collect()
+}
+
+/// The English words for the Rust world's checks: "build", "tests",
+/// "lints" (written by hand to seed the harness).
+pub fn check_words() -> Vec<Word> {
+    use glassmind_world_rust::checks::RustCheck::*;
+    [
+        ("en.rust.check.build", "build", Build),
+        ("en.rust.check.tests", "tests", Test),
+        ("en.rust.check.lints", "lints", Lint),
+    ]
+    .into_iter()
+    .map(|(id, form, check)| {
+        word(
+            RuleInfo::new(id, glassmind_rules::HAND),
+            Cat::CheckName,
+            form,
+            Sem::Check(check),
+        )
+    })
+    .collect()
 }
 
 #[cfg(test)]
@@ -332,6 +354,7 @@ mod tests {
             name: "spawn_wave".into(),
             kind: RustKind::Function,
             owner: None,
+            detail: None,
         };
         let troubles = [
             Trouble::UnknownWord {

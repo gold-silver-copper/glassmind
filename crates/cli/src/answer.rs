@@ -3,6 +3,7 @@
 use glassmind_answer::{Change, ItemKey, ItemKind, MetaAct, Outcome, Refusal, Response, Stage};
 use glassmind_meaning::{Action, Reply, Thing, Trouble};
 use glassmind_mind::{Progress, Turn};
+use glassmind_world_rust::checks::RustCheck;
 use glassmind_world_rust::{Rust, RustItem, RustKind};
 
 pub fn key(item: &RustItem) -> ItemKey {
@@ -17,8 +18,20 @@ pub fn key(item: &RustItem) -> ItemKey {
             RustKind::Enum => ItemKind::Enum,
             RustKind::Trait => ItemKind::Trait,
             RustKind::Field => ItemKind::Field,
+            RustKind::Problem => ItemKind::Problem,
+            RustKind::Test => ItemKind::Test,
         },
     }
+}
+
+/// A check's name in the answer format.
+pub fn check_name(check: RustCheck) -> String {
+    match check {
+        RustCheck::Build => "build",
+        RustCheck::Test => "test",
+        RustCheck::Lint => "lint",
+    }
+    .to_owned()
 }
 
 pub fn response(reply: &Reply<Rust>) -> Response {
@@ -65,6 +78,36 @@ pub fn response(reply: &Reply<Rust>) -> Response {
         Reply::Proposal { .. } => Response::Refuse {
             refusal: Refusal::Unsupported,
         },
+        Reply::Checked { check, problems }
+        | Reply::Applied {
+            check: Some(check),
+            problems,
+            ..
+        } => Response::Checked {
+            check: check_name(*check),
+            passed: problems.is_empty(),
+            problems: problems.iter().map(key).collect(),
+        },
+        Reply::Applied { check: None, .. } => Response::Meta {
+            act: MetaAct::Noted,
+        },
+        Reply::Remedy { check, changes, .. } => Response::Remedy {
+            check: check_name(*check),
+            changes: changes
+                .iter()
+                .map(|c| Change {
+                    source: c.source.clone(),
+                    file: c.file.clone(),
+                    line: c.line,
+                    column: c.column,
+                    old: c.old.clone(),
+                    new: c.new.clone(),
+                })
+                .collect(),
+        },
+        Reply::Declined => Response::Meta {
+            act: MetaAct::Declined,
+        },
         Reply::Reason { turn, .. } => Response::Meta {
             act: MetaAct::ExplainAction {
                 turn: u32::try_from(*turn).unwrap_or(u32::MAX),
@@ -90,6 +133,9 @@ pub fn response(reply: &Reply<Rust>) -> Response {
             },
             Trouble::Unsupported => Response::Refuse {
                 refusal: Refusal::Unsupported,
+            },
+            Trouble::NothingPending => Response::Refuse {
+                refusal: Refusal::NothingPending,
             },
         },
     }

@@ -97,6 +97,29 @@ pub trait World<O: Ontology> {
     /// noted, or why it cannot be (the name may mean several items). Pushes
     /// the world rules it used onto `fired`.
     fn note(&self, fact: &Fact<O>, fired: &mut Vec<RuleInfo>) -> Result<Reply<O>, Trouble<O>>;
+    /// Runs a check of the world (builds the code, runs the tests) and
+    /// says what it found. Pushes the world rules it used onto `fired`.
+    fn check(&self, _check: &O::Check, _fired: &mut Vec<RuleInfo>) -> Result<Reply<O>, Trouble<O>> {
+        Err(Trouble::Unsupported)
+    }
+    /// Changes that would make a check pass, as a remedy to offer; nothing
+    /// is changed. Pushes the world rules it used onto `fired`.
+    fn remedy(
+        &self,
+        _check: &O::Check,
+        _fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<O>, Trouble<O>> {
+        Err(Trouble::Unsupported)
+    }
+    /// Makes the changes of a proposal or remedy the user accepted, then
+    /// says what the check (if any) finds afterwards.
+    fn apply(
+        &self,
+        _proposal: &Reply<O>,
+        _fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<O>, Trouble<O>> {
+        Err(Trouble::Unsupported)
+    }
     /// The names of all items, for completion, sorted and deduplicated.
     fn names(&self) -> Vec<String>;
 }

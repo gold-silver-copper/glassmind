@@ -2,6 +2,9 @@
 
 use glassmind_meaning::interface::{Language, Next, World};
 use glassmind_mind::Session;
+use std::cell::RefCell;
+use std::rc::Rc;
+
 use rustyline::completion::{Completer, Pair};
 use rustyline::error::ReadlineError;
 use rustyline::{Context, Editor, Helper, Highlighter, Hinter, Validator};
@@ -49,11 +52,11 @@ fn split_partial(line: &str) -> (&str, &str) {
 }
 
 #[derive(Helper, Hinter, Highlighter, Validator)]
-struct Completion<'a> {
-    system: &'a System,
+struct Completion {
+    system: Rc<RefCell<System>>,
 }
 
-impl Completer for Completion<'_> {
+impl Completer for Completion {
     type Candidate = Pair;
 
     fn complete(
@@ -64,7 +67,7 @@ impl Completer for Completion<'_> {
     ) -> rustyline::Result<(usize, Vec<Pair>)> {
         let line = line.get(..pos).unwrap_or(line);
         let (done, _) = split_partial(line);
-        let pairs = candidates(self.system, line)
+        let pairs = candidates(&self.system.borrow(), line)
             .into_iter()
             .map(|c| Pair {
                 display: c.clone(),
@@ -75,8 +78,13 @@ impl Completer for Completion<'_> {
     }
 }
 
-pub fn run(common: &Common) -> Result<(), String> {
-    let system = open(common);
+/// Talks interactively; in the coding harness (`code`), shows the details
+/// under each reply (problems, proposed changes) and reads the sources again
+/// after changes are made.
+pub fn run(common: &Common, harness: bool) -> Result<(), String> {
+    let system = Rc::new(RefCell::new(open(common)));
+    let shared = system.clone();
+    let system = system.borrow();
     let mut session: Session<_> = match &common.session {
         Some(path) => load_session(path, system.source_refs())?,
         None => Session::new(system.source_refs()),
@@ -95,9 +103,12 @@ pub fn run(common: &Common) -> Result<(), String> {
     let config = rustyline::Config::builder()
         .completion_type(rustyline::CompletionType::List)
         .build();
-    let mut editor: Editor<Completion<'_>, rustyline::history::DefaultHistory> =
+    let mut editor: Editor<Completion, rustyline::history::DefaultHistory> =
         Editor::with_config(config).map_err(|e| e.to_string())?;
-    editor.set_helper(Some(Completion { system: &system }));
+    drop(system);
+    editor.set_helper(Some(Completion {
+        system: shared.clone(),
+    }));
     loop {
         match editor.readline("> ") {
             Ok(line) => {
@@ -105,11 +116,18 @@ pub fn run(common: &Common) -> Result<(), String> {
                     continue;
                 }
                 let _ = editor.add_history_entry(line.as_str());
-                let turn = system.respond(&mut session, &line);
+                let turn = shared.borrow().respond(&mut session, &line);
                 if common.explain {
                     say!("{}", turn.trace.render());
                 }
                 say!("{}", turn.spoken);
+                for line in crate::details::details(&turn.reply) {
+                    say!("{line}");
+                }
+                if harness && matches!(turn.reply, glassmind_meaning::Reply::Applied { .. }) {
+                    // The sources changed: read them again.
+                    *shared.borrow_mut() = open(common);
+                }
                 if let Some(path) = &common.session {
                     save_session(path, &session)?;
                 }

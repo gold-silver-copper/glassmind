@@ -21,6 +21,7 @@ pub mod around;
 pub mod aside;
 pub mod asking;
 pub mod change;
+pub mod checking;
 pub mod contents;
 pub mod correcting;
 pub mod counting;
@@ -57,6 +58,7 @@ pub const RULES: &[RuleInfo] = &[typos::TYPOS];
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     [
         seed::rules::<O> as fn() -> Vec<Rule<Cat, Sem<O>>>,
+        checking::rules,
         remark::rules,
         request::rules,
         aside::rules,

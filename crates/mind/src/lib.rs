@@ -84,8 +84,12 @@ pub const SHARED_NAME_ANY: RuleInfo = RuleInfo::new("mind.name.any", 23);
 pub const PREFER_FEWEST_EDITS: RuleInfo =
     RuleInfo::new("mind.prefer.fewest_corrections", glassmind_rules::HAND);
 
+/// "yes" to a waiting proposal makes its changes; "no" declines it.
+pub const CONSENT_APPLIES: RuleInfo = RuleInfo::new("mind.consent.applies", glassmind_rules::HAND);
+
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
+    CONSENT_APPLIES,
     PREFER_FEWEST_EDITS,
     PREFER_FEWEST_IDLE,
     PREFER_RECENT_MENTION,
@@ -130,6 +134,25 @@ pub struct Session<O: Ontology> {
 }
 
 impl<O: Ontology> Session<O> {
+    /// The proposal still waiting for a yes or no: the latest edit
+    /// proposal or remedy with changes, unless a later turn applied or
+    /// declined something.
+    pub fn pending(&self) -> Option<Reply<O>> {
+        for turn in self.turns.iter().rev() {
+            let mut reply = &turn.reply;
+            while let Reply::Assuming { reply: inner, .. } = reply {
+                reply = inner;
+            }
+            match reply {
+                Reply::Applied { .. } | Reply::Declined => return None,
+                Reply::Proposal { .. } => return Some(reply.clone()),
+                Reply::Remedy { changes, .. } if !changes.is_empty() => return Some(reply.clone()),
+                _ => {}
+            }
+        }
+        None
+    }
+
     pub fn new(sources: Vec<SourceRef>) -> Self {
         Session {
             sources,
@@ -347,6 +370,13 @@ impl<O: Ontology> Mind<'_, O> {
                         .map(|()| Reply::Recall(session.mentions())),
                     Utterance::Tell(f) => self.world.note(f, fired),
                     Utterance::Correct(_) => Err(Trouble::Unsupported),
+                    Utterance::Consent(yes) => match session.pending() {
+                        None => Err(Trouble::NothingPending),
+                        Some(_) if !*yes => Ok(Reply::Declined),
+                        Some(proposal) => self
+                            .using(CONSENT_APPLIES, fired)
+                            .and_then(|()| self.world.apply(&proposal, fired)),
+                    },
                 };
                 rt.outcomes.push((meaning.clone(), result.clone()));
                 candidates.push(Candidate {
@@ -627,7 +657,9 @@ fn trouble_progress<O: Ontology>(t: &Trouble<O>) -> Progress {
         Trouble::UnknownWord { .. } => Progress::Words,
         Trouble::UnknownShape { .. } => Progress::Sentence,
         Trouble::NoSuchName { .. } | Trouble::Ambiguous { .. } => Progress::Reference,
-        Trouble::WrongKind { .. } | Trouble::Unsupported => Progress::Action,
+        Trouble::WrongKind { .. } | Trouble::Unsupported | Trouble::NothingPending => {
+            Progress::Action
+        }
     }
 }
 

@@ -10,6 +10,10 @@ use glassmind_meaning::{
 pub enum Cat {
     /// A whole user turn. The start category.
     Utterance,
+    /// A noun naming a check: "build", "tests".
+    CheckName,
+    /// A noun phrase naming a check: "the build".
+    CheckPhrase,
     /// A request to change something, without its final punctuation:
     /// "rename `x` to `y`", "`S.x` -> `y`".
     Command,
@@ -406,4 +410,6 @@ pub enum Sem<O: Ontology> {
     Count(u64),
     /// A text the system quotes, such as an unknown word.
     Quote(String),
+    /// A way the world checks itself: building, testing.
+    Check(O::Check),
 }
