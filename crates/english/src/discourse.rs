@@ -3,13 +3,15 @@
 //! you", "tell me", "I'd like to know"). The request means the same with or
 //! without them. The system never says them.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, Sym};
 use glassmind_meaning::Ontology;
 
 use crate::aside::filler;
+use crate::asking::read_only_rule;
 use crate::remark::request;
 use crate::sem::{Cat, Sem};
 
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 2;
@@ -50,7 +52,6 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     ("en.prompt.maybe", 11, "maybe"),
     // "can someone explain what `x` does": asked of anyone listening.
     ("en.prompt.can_someone", 14, "can someone"),
-    ("en.prompt.could_someone", 14, "could someone"),
     // "I'm thinking `x` should be renamed to `y`"
     ("en.prompt.i_m_thinking", 11, "i'm thinking"),
     // "I'm curious how many ...", "I'm wondering how many ...", "Trying
@@ -62,22 +63,14 @@ const PROMPTS: &[(&str, u32, &str)] = &[
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let utterance = |id, round, rhs| {
-        Rule::new(
-            RuleInfo::new(id, round),
-            Cat::Utterance,
-            rhs,
-            S::Build(request),
-        )
-        .read_only()
-    };
+    let utterance = |id, round, rhs| read_only_rule(id, round, Utterance, rhs, request);
     let mut rules: Vec<_> = INTERJECTIONS
         .iter()
-        .map(|&(id, round, words)| filler(id, round, Cat::Interjection, words))
+        .map(|&(id, round, words)| filler(id, round, Interjection, words))
         .chain(
             PROMPTS
                 .iter()
-                .map(|&(id, round, words)| filler(id, round, Cat::Prompt, words)),
+                .map(|&(id, round, words)| filler(id, round, Prompt, words)),
         )
         .collect();
     rules.extend([
@@ -85,36 +78,32 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         utterance(
             "en.utterance.interjection_before",
             ROUND,
-            vec![C(Cat::Interjection), C(Cat::Utterance)],
+            vec![C(Interjection), C(Utterance)],
         ),
         // "Could you list the functions that `paced` calls please?"
         utterance(
             "en.utterance.interjection_after",
             ROUND,
-            vec![C(Cat::Utterance), C(Cat::Interjection)],
+            vec![C(Utterance), C(Interjection)],
         ),
         // "Forget that, please."
         utterance(
             "en.utterance.interjection_after_comma",
             6,
-            vec![C(Cat::Utterance), W(","), C(Cat::Interjection)],
+            vec![C(Utterance), W(","), C(Interjection)],
         ),
         // "fields on `alice` struct??": the mark doubled asks no more.
         utterance(
             "en.utterance.question_marks",
             14,
-            vec![C(Cat::Utterance), W("?"), W("?")],
+            vec![C(Utterance), W("? ?")],
         ),
         // "Please rename the field `x` to `y`, since it's a flag."
-        utterance("en.utterance.stop", 5, vec![C(Cat::Utterance), W(".")]),
+        utterance("en.utterance.stop", 5, vec![C(Utterance), W(".")]),
         // "Can you tell me which functions `pubkey` calls?" ("I'd like to
         // know which functions `among` calls." is read by
         // `en.utterance.question_stop` in locate.rs.)
-        utterance(
-            "en.utterance.prompt",
-            ROUND,
-            vec![C(Cat::Prompt), C(Cat::Utterance)],
-        ),
+        utterance("en.utterance.prompt", ROUND, vec![C(Prompt), C(Utterance)]),
     ]);
     rules
 }

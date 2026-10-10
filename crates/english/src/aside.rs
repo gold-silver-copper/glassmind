@@ -2,14 +2,16 @@
 //! quick question: ...", "um, ...", "... Thanks!"). The request means the
 //! same with or without them. The system never says one.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::Ontology;
 
+use crate::asking::read_only_rule;
 use crate::blank;
 use crate::remark::request;
 use crate::sem::{Cat, Sem};
 use crate::word;
 
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 2;
@@ -77,58 +79,29 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.thx", 11, "thx"),
 ];
 
-/// The punctuation after an aside: "..., ok?" (an aside asking whether
-/// what was said is fine), and what ends one: "hey,", "hi!", "quick
-/// question:", "sorry, quick one -", "Thanks.".
-const MARKS: &[(&str, u32, &str)] = &[
-    ("en.aside.question", 6, "?"),
-    ("en.aside.comma", ROUND, ","),
-    ("en.aside.bang", ROUND, "!"),
-    ("en.aside.colon", ROUND, ":"),
-    ("en.aside.stop", ROUND, "."),
-    ("en.aside.dash", ROUND, "-"),
-];
-
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let utterance = |id, round, rhs| {
-        Rule::new(
-            RuleInfo::new(id, round),
-            Cat::Utterance,
-            rhs,
-            S::Build(request),
-        )
-        .read_only()
-    };
+    let utterance = |id, round, rhs| read_only_rule(id, round, Utterance, rhs, request);
     let mut rules: Vec<_> = ASIDES
         .iter()
-        .map(|&(id, round, words)| filler(id, round, Cat::Aside, words))
+        .map(|&(id, round, words)| filler(id, round, Aside, words))
         .collect();
-    rules.extend(MARKS.iter().map(|&(id, round, mark)| {
-        Rule::new(
-            RuleInfo::new(id, round),
-            Cat::Aside,
-            vec![C(Cat::Aside), W(mark)],
-            S::Const(blank()),
-        )
-        .read_only()
-    }));
     rules.extend([
         // "Please forget that, thanks."
         utterance(
             "en.utterance.comma_aside",
             6,
-            vec![C(Cat::Utterance), W(","), C(Cat::Aside)],
+            vec![C(Utterance), W(","), C(Aside)],
         ),
         // "Hey, where is `x` defined?" and "Where is `x` defined? Thanks!"
         utterance(
             "en.utterance.aside_before",
             ROUND,
-            vec![C(Cat::Aside), C(Cat::Utterance)],
+            vec![C(Aside), C(Utterance)],
         ),
         utterance(
             "en.utterance.aside_after",
             ROUND,
-            vec![C(Cat::Utterance), C(Cat::Aside)],
+            vec![C(Utterance), C(Aside)],
         ),
     ]);
     rules

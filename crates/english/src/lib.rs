@@ -8,12 +8,14 @@
 use std::collections::BTreeSet;
 use std::marker::PhantomData;
 
+use Cat::*;
 use glassmind_grammar::{ExpectedSym, Grammar, Node, Phrase, Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::interface::{Language, Next, Reading, Spoken, TokenSpan, Understanding};
 use glassmind_meaning::{Ontology, Reply, Trouble};
 use glassmind_rules::Switches;
 
 pub mod alias;
+pub mod around;
 pub mod aside;
 pub mod asking;
 pub mod change;
@@ -70,6 +72,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ones::rules,
         whence::rules,
         correcting::rules,
+        around::rules,
     ]
     .into_iter()
     .flat_map(|rules| rules())
@@ -90,6 +93,19 @@ pub fn first<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 /// The value of a rule's last child ("even for").
 pub fn last<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     c.last().cloned()
+}
+
+/// A rule that reads its children with `read` and speaks a value with
+/// `speak`, splitting it into its children's values.
+pub(crate) fn spoken<O: Ontology>(
+    id: &'static str,
+    round: u32,
+    lhs: Cat,
+    rhs: Vec<Sym<Cat>>,
+    read: fn(&[Sem<O>]) -> Option<Sem<O>>,
+    speak: fn(&Sem<O>) -> Option<Vec<Sem<O>>>,
+) -> Rule<Cat, Sem<O>> {
+    Rule::new(RuleInfo::new(id, round), lhs, rhs, S::Both(read, speak))
 }
 
 /// The words of a phrase written with spaces between them ("is or
@@ -117,9 +133,20 @@ pub struct English<O: Ontology> {
 
 impl<O: Ontology> English<O> {
     /// English with the given rules (usually [`rules`] plus a bridge crate's
-    /// words), minus those switched off.
-    pub fn new(rules: Vec<Rule<Cat, Sem<O>>>, switches: &Switches) -> Self {
-        let grammar = Grammar::new(Cat::Utterance, rules, switches);
+    /// words), minus those switched off. A rule's word may be a phrase
+    /// written with spaces ("where is"), which reads as its words in turn.
+    pub fn new(mut rules: Vec<Rule<Cat, Sem<O>>>, switches: &Switches) -> Self {
+        for rule in &mut rules {
+            rule.rhs = rule
+                .rhs
+                .iter()
+                .flat_map(|s| match s {
+                    Sym::Word(words) => phrase(words),
+                    s => vec![*s],
+                })
+                .collect();
+        }
+        let grammar = Grammar::new(Utterance, rules, switches);
         let known = grammar
             .rules()
             .iter()
@@ -212,7 +239,7 @@ impl<O: Ontology> Language<O> for English<O> {
     }
 
     fn say(&self, reply: &Reply<O>) -> Option<Spoken> {
-        self.speak(Cat::Reply, &Sem::Reply(reply.clone()))
+        self.speak(Reply, &Sem::Reply(reply.clone()))
     }
 
     fn next(&self, prefix: &str) -> Vec<Next> {

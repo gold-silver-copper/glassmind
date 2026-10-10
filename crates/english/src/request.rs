@@ -2,12 +2,14 @@
 //! embedded question itself. The opening asks nothing of its own, so the
 //! question means the same with or without it. The system never says one.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::Ontology;
 
+use crate::asking::read_only_rule;
 use crate::sem::{Cat, Sem};
 use crate::{blank, word};
 
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 2;
@@ -18,20 +20,13 @@ fn question<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let asks = |id, rhs| {
-        Rule::new(
-            RuleInfo::new(id, ROUND),
-            Cat::Question,
-            rhs,
-            S::Build(question),
-        )
-    };
+    let asks = |id, rhs| read_only_rule(id, ROUND, Question, rhs, question);
     let mut rules = vec![
         // "Can you ...": asking whether the hearer can do something, which
         // asks them to do it. The opening asks nothing of its own.
         word(
             RuleInfo::new("en.request.can_you", ROUND),
-            Cat::Request,
+            Request,
             "can you",
             blank(),
         ),
@@ -42,15 +37,9 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ("en.question.tell_me", "tell"),
         ("en.question.show_me", "show"),
     ] {
-        rules.push(asks(
-            id,
-            vec![C(Cat::Request), W(verb), W("me"), C(Cat::Question)],
-        ));
+        rules.push(asks(id, vec![C(Request), W(verb), W("me"), C(Question)]));
     }
     // "... which functions call `merge_box`, please?"
-    rules.push(asks(
-        "en.question.please",
-        vec![C(Cat::Question), W(","), W("please")],
-    ));
+    rules.push(asks("en.question.please", vec![C(Question), W(", please")]));
     rules
 }

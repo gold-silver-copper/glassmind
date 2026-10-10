@@ -8,9 +8,11 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Condition, Description, Extent, Ontology, Position, Question, Thing};
 
+use crate::first;
 use crate::sem::{Cat, Number, Sem, VerbForm};
+use crate::spoken;
 
-use Cat::{ItemList, Noun, NounPhrase, Passive, Restriction, RoleNoun, Statement, Verb};
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 2;
@@ -156,11 +158,6 @@ fn role_and_thing<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
-/// A rule passing its first child's value up unchanged.
-pub(crate) fn same<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    c.first().cloned()
-}
-
 /// Words before the doer of a passive: "called by `x`", "called from
 /// inside `x`", "called in `x`".
 const AGENTS: &[(&str, &str)] = &[
@@ -181,18 +178,6 @@ const PASSIVE_AUX: &[(&str, u32, &str)] = &[
     ("en.restriction.are_getting_passive", 13, "are getting"),
 ];
 
-/// Words after a verb that say the calls happen inside the subject, and
-/// the round each came in: "what does `x` call inside", "what `x` calls
-/// into", "which functions does `x` call inside it?", "what does `paste`
-/// call internally?", "what fields does `real_wiki` have in it?".
-const INSIDE: &[(&str, u32, &str)] = &[
-    ("en.restriction.into", ROUND, "into"),
-    ("en.restriction.inside", ROUND, "inside"),
-    ("en.restriction.inside_it", 13, "inside it"),
-    ("en.restriction.internally", 13, "internally"),
-    ("en.restriction.in_it", 14, "in it"),
-];
-
 /// Words between a role noun and the other argument: "callees of `x`",
 /// "callees for `x`".
 const ROLE_OF: &[(&str, u32, &str)] = &[
@@ -207,14 +192,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, lhs, rhs, build| read_only_rule(id, ROUND, lhs, rhs, build);
     let mut rules: Vec<Rule<Cat, Sem<O>>> = vec![
         // "does `x` call": the question order, which the system also speaks.
-        Rule::new(
-            RuleInfo::new("en.restriction.does", ROUND),
+        spoken(
+            "en.restriction.does",
+            ROUND,
             Restriction,
             words_then("does", &[NounPhrase, Verb]),
-            S::Both(
-                |c| restrict(c, VerbForm::Plain),
-                |v| subject_verb(v, VerbForm::Plain),
-            ),
+            |c| restrict(c, VerbForm::Plain),
+            |v| subject_verb(v, VerbForm::Plain),
         ),
         // "`x` calls", in embedded and casual questions: "which functions
         // `x` calls", "`x` calls what".
@@ -224,19 +208,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(NounPhrase), C(Verb)],
             |c| restrict(c, VerbForm::ThirdSingular),
         ),
-        // "the functions that `x` calls".
-        rule(
-            "en.restriction.that",
-            Restriction,
-            words_then("that", &[Restriction]),
-            same,
-        ),
         // "fns called by `x`".
         rule(
             "en.restriction.passive",
             Restriction,
             vec![C(Passive)],
-            same,
+            first,
         ),
         // "what fields has `x` got": the perfect, with "got" as its verb.
         read_only_rule(
@@ -254,23 +231,27 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             |c| restrict(c, VerbForm::Progressive),
         ),
         // "what does `x` call"
-        Rule::new(
-            RuleInfo::new("en.question.what_restricted", ROUND),
-            Cat::Question,
+        spoken(
+            "en.question.what_restricted",
+            ROUND,
+            Question,
             words_then("what", &[Restriction]),
-            S::Both(identify, |v| match v {
+            identify,
+            |v| match v {
                 Sem::Question(Question::Identify(d)) if d.kind.is_none() => {
                     Some(vec![object_condition(d)?])
                 }
                 _ => None,
-            }),
+            },
         ),
         // "which functions does `x` call"
-        Rule::new(
-            RuleInfo::new("en.question.which_restricted", ROUND),
-            Cat::Question,
+        spoken(
+            "en.question.which_restricted",
+            ROUND,
+            Question,
             words_then("which", &[Noun, Restriction]),
-            S::Both(identify, |v| match v {
+            identify,
+            |v| match v {
                 Sem::Question(Question::Identify(d)) => Some(vec![
                     Sem::Kind {
                         kind: d.kind.clone()?,
@@ -279,12 +260,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                     object_condition(d)?,
                 ]),
                 _ => None,
-            }),
+            },
         ),
         // "what functions does `x` call"
         rule(
             "en.question.what_kind_restricted",
-            Cat::Question,
+            Question,
             words_then("what", &[Noun, Restriction]),
             identify,
         ),
@@ -292,13 +273,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // object's place.
         rule(
             "en.question.echo_what",
-            Cat::Question,
+            Question,
             vec![C(Restriction), W("what")],
             identify,
         ),
         rule(
             "en.question.echo_which",
-            Cat::Question,
+            Question,
             vec![C(Restriction), W("which"), C(Noun)],
             |c| match c {
                 [condition, kind] => identify(&[kind.clone(), condition.clone()]),
@@ -308,97 +289,72 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // A description alone asks for what it describes: "fns called by `x`".
         rule(
             "en.question.description",
-            Cat::Question,
-            vec![C(Cat::Description)],
+            Question,
+            vec![C(Description)],
             identify,
         ),
         // "fns called by `x`", "funcs `x` calls", "functions that `x` calls".
         rule(
             "en.description.restricted",
-            Cat::Description,
+            Description,
             vec![C(Noun), C(Restriction)],
             described,
-        ),
-        // "the functions that `x` calls"
-        rule(
-            "en.description.the",
-            Cat::Description,
-            words_then("the", &[Cat::Description]),
-            same,
-        ),
-        // "all the functions that call `x`", "all functions that call it"
-        read_only_rule(
-            "en.description.all",
-            10,
-            Cat::Description,
-            words_then("all", &[Cat::Description]),
-            same,
         ),
         // "`pick_row` callees"
         rule(
             "en.description.name_role",
-            Cat::Description,
+            Description,
             vec![C(NounPhrase), C(RoleNoun)],
             role_and_thing,
         ),
         // "`x` calls `a` and `b`."
-        Rule::new(
-            RuleInfo::new("en.statement.object_list", ROUND),
+        spoken(
+            "en.statement.object_list",
+            ROUND,
             Statement,
             vec![C(NounPhrase), C(Verb), C(ItemList)],
-            S::Both(
-                |c| match c {
-                    [
-                        Sem::Thing(other),
-                        Sem::Relation { relation, .. },
-                        Sem::Items(members),
-                    ] => Some(Sem::Extent(Extent {
-                        description: meeting(None, related(relation, Position::Second, other)),
-                        members: members.clone(),
-                    })),
-                    _ => None,
-                },
-                |v| match v {
-                    Sem::Extent(e) if !e.members.is_empty() => {
-                        let mut said = subject_verb(
-                            &object_condition(&e.description)?,
-                            VerbForm::ThirdSingular,
-                        )?;
-                        said.push(Sem::Items(e.members.clone()));
-                        Some(said)
-                    }
-                    _ => None,
-                },
-            ),
+            |c| match c {
+                [
+                    Sem::Thing(other),
+                    Sem::Relation { relation, .. },
+                    Sem::Items(members),
+                ] => Some(Sem::Extent(Extent {
+                    description: meeting(None, related(relation, Position::Second, other)),
+                    members: members.clone(),
+                })),
+                _ => None,
+            },
+            |v| match v {
+                Sem::Extent(e) if !e.members.is_empty() => {
+                    let mut said =
+                        subject_verb(&object_condition(&e.description)?, VerbForm::ThirdSingular)?;
+                    said.push(Sem::Items(e.members.clone()));
+                    Some(said)
+                }
+                _ => None,
+            },
         ),
         // "`x` calls nothing."
-        Rule::new(
-            RuleInfo::new("en.statement.object_nothing", ROUND),
+        spoken(
+            "en.statement.object_nothing",
+            ROUND,
             Statement,
             vec![C(NounPhrase), C(Verb), W("nothing")],
-            S::Both(
-                |_| None,
-                |v| match v {
-                    Sem::Extent(e) if e.members.is_empty() => {
-                        subject_verb(&object_condition(&e.description)?, VerbForm::ThirdSingular)
-                    }
-                    _ => None,
-                },
-            ),
+            |_| None,
+            |v| match v {
+                Sem::Extent(e) if e.members.is_empty() => {
+                    subject_verb(&object_condition(&e.description)?, VerbForm::ThirdSingular)
+                }
+                _ => None,
+            },
         ),
     ];
     rules.extend(AGENTS.iter().map(|(id, words)| {
-        let mut rhs = vec![C(Verb)];
-        rhs.extend(words_then(words, &[NounPhrase]));
+        let rhs = vec![C(Verb), W(words), C(NounPhrase)];
         rule(id, Passive, rhs, |c| restrict(c, VerbForm::Participle))
     }));
     rules.extend(PASSIVE_AUX.iter().map(|&(id, round, words)| {
-        read_only_rule(id, round, Restriction, words_then(words, &[Passive]), same)
-    }));
-    rules.extend(INSIDE.iter().map(|&(id, round, words)| {
-        let mut rhs = vec![C(Restriction)];
-        rhs.extend(words_then(words, &[]));
-        read_only_rule(id, round, Restriction, rhs, same)
+        read_only_rule(id, round, Restriction, words_then(words, &[Passive]), first)
     }));
     // The subject and the verb in casual and embedded questions: "what fns
     // `x` call", "which functions `x` ends up calling", "which functions
@@ -417,12 +373,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         (
             "en.restriction.ends_up",
-            vec![C(NounPhrase), W("ends"), W("up"), C(Verb)],
+            vec![C(NounPhrase), W("ends up"), C(Verb)],
             progressive,
         ),
         (
             "en.restriction.does_end_up",
-            vec![W("does"), C(NounPhrase), W("end"), W("up"), C(Verb)],
+            vec![W("does"), C(NounPhrase), W("end up"), C(Verb)],
             progressive,
         ),
         // "what are the functions it's calling?": "it is" run together.
@@ -439,7 +395,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         read_only_rule(
             id,
             round,
-            Cat::Description,
+            Description,
             vec![C(RoleNoun), W(word), C(NounPhrase)],
             role_and_thing,
         )
@@ -449,16 +405,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         read_only_rule(
             "en.question.what_is_progressive",
             13,
-            Cat::Question,
-            vec![C(Cat::WhatIs), C(NounPhrase), C(Verb)],
+            Question,
+            vec![C(WhatIs), C(NounPhrase), C(Verb)],
             |c| identify(&[restrict(c.get(1..)?, VerbForm::Progressive)?]),
         ),
         // "with_query -> callees"
         read_only_rule(
             "en.description.name_arrow_role",
             13,
-            Cat::Description,
-            vec![C(NounPhrase), C(Cat::Arrow), C(RoleNoun)],
+            Description,
+            vec![C(NounPhrase), C(Arrow), C(RoleNoun)],
             |c| match c {
                 [other, _, role] => role_of(role, other),
                 _ => None,

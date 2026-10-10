@@ -5,13 +5,16 @@
 //! that name. Many things may share a name, so it is a condition on what
 //! is described, not a reference to one thing.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, Sym};
 use glassmind_meaning::{Condition, Description, Ontology, Thing};
 
+use crate::asking::read_only_rule;
 use crate::lexicon::SAID;
 use crate::renaming::heard;
 use crate::sem::{Cat, Number, Sem};
+use crate::spoken;
 
+use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 5;
@@ -47,70 +50,72 @@ fn kind_named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     vec![
         // "(a field) named `done`": how the system says it.
-        Rule::new(
-            RuleInfo::new("en.qualifier.named", ROUND),
-            Cat::Qualifier,
-            vec![W("named"), C(Cat::NounPhrase)],
-            S::Both(named, |v| match v {
+        spoken(
+            "en.qualifier.named",
+            ROUND,
+            Qualifier,
+            vec![W("named"), C(NounPhrase)],
+            named,
+            |v| match v {
                 Sem::Condition {
                     condition: Condition::Named(name),
                     ..
                 } => Some(vec![Sem::Thing(Thing::Named(name.clone()))]),
                 _ => None,
-            }),
+            },
         ),
         // "a field called `footer`"
         heard(
             "en.qualifier.called",
-            Cat::Qualifier,
-            vec![W("called"), C(Cat::NounPhrase)],
+            Qualifier,
+            vec![W("called"), C(NounPhrase)],
             named,
         ),
         // "(a field) named like that": goes by the name of the thing said
         // before, as "named that" does.
-        Rule::new(
-            RuleInfo::new("en.qualifier.named_like", 13),
-            Cat::Qualifier,
-            vec![W("named"), W("like"), C(Cat::NounPhrase)],
-            S::Build(named),
-        )
-        .read_only(),
+        read_only_rule(
+            "en.qualifier.named_like",
+            13,
+            Qualifier,
+            vec![W("named like"), C(NounPhrase)],
+            named,
+        ),
         // "(a field) with that name": goes by the name of the thing said
         // before.
-        Rule::new(
-            RuleInfo::new("en.qualifier.with_that_name", 13),
-            Cat::Qualifier,
-            vec![W("with"), W("that"), C(Cat::NameNoun)],
-            S::Build(|_| named(&[Sem::Thing(Thing::Previous)])),
-        )
-        .read_only(),
+        read_only_rule(
+            "en.qualifier.with_that_name",
+            13,
+            Qualifier,
+            vec![W("with that"), C(NameNoun)],
+            |_| named(&[Sem::Thing(Thing::Previous)]),
+        ),
         // "a `push_head` field", "`seam_m` field"
         heard(
             "en.noun_phrase.name_kind",
-            Cat::NounPhrase,
-            vec![C(Cat::NounPhrase), C(Cat::Noun)],
+            NounPhrase,
+            vec![C(NounPhrase), C(Noun)],
             kind_named,
         ),
         // "field `width`", "a field `eye_off`"
         heard(
             "en.noun_phrase.kind_name",
-            Cat::NounPhrase,
-            vec![C(Cat::Noun), C(Cat::NounPhrase)],
+            NounPhrase,
+            vec![C(Noun), C(NounPhrase)],
             kind_named,
         ),
         // "`merge_state` as a field"
         heard(
             "en.noun_phrase.as_a",
-            Cat::NounPhrase,
-            vec![C(Cat::NounPhrase), W("as"), W("a"), C(Cat::Noun)],
+            NounPhrase,
+            vec![C(NounPhrase), W("as a"), C(Noun)],
             kind_named,
         ),
         // "the field `search`", "the `saved` field": a thing described,
         // which "the" leaves as it is.
         heard(
             "en.noun_phrase.the_fitting",
-            Cat::NounPhrase,
-            vec![W("the"), C(Cat::NounPhrase)],
+            NounPhrase,
+            vec![W("the"), C(NounPhrase)],
             |c| match c {
                 [t @ Sem::Thing(Thing::Fitting(_))] => Some(t.clone()),
                 _ => None,
@@ -119,19 +124,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "which structs have field named calls?", "which structs have
         // field far": a word after "named" or the kind is the name, even
         // one the system knows as English.
-        Rule::new(
-            RuleInfo::new("en.qualifier.named_word", 15),
-            Cat::Qualifier,
+        read_only_rule(
+            "en.qualifier.named_word",
+            15,
+            Qualifier,
             vec![W("named"), Class(SAID)],
-            S::Build(named),
-        )
-        .read_only(),
-        Rule::new(
-            RuleInfo::new("en.noun_phrase.kind_word", 15),
-            Cat::NounPhrase,
-            vec![C(Cat::Noun), Class(SAID)],
-            S::Build(kind_named),
-        )
-        .read_only(),
+            named,
+        ),
+        read_only_rule(
+            "en.noun_phrase.kind_word",
+            15,
+            NounPhrase,
+            vec![C(Noun), Class(SAID)],
+            kind_named,
+        ),
     ]
 }

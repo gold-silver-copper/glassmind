@@ -8,14 +8,15 @@
 //! The things asked for are often described by where they are, so these
 //! shapes build a [`Cat::Description`] and ask for what it describes.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, Sym};
 use glassmind_meaning::{Condition, Description, Ontology, Position, Question, Thing};
 
 use crate::aside::filler;
+use crate::asking::read_only_rule;
 use crate::asking::role_of;
-use crate::first;
 use crate::sem::{Cat, Number, Sem};
 
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 7;
@@ -111,59 +112,46 @@ pub(crate) fn narrowed<O: Ontology>(
 }
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let rule = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
-    };
+    let rule = |id, lhs, rhs, build| read_only_rule(id, ROUND, lhs, rhs, build);
     // A question asking for what the description among the children
     // describes.
-    let question = |id, rhs| rule(id, Cat::Question, rhs, identify);
+    let question = |id, rhs| rule(id, Question, rhs, identify);
     let mut rules = vec![
         // "what fields on `memo_data`", "which fields are in `S`": a
         // question word before a description asks for what it describes.
         question(
             "en.question.what_description",
-            vec![W("what"), C(Cat::Description)],
+            vec![W("what"), C(Description)],
         ),
         question(
             "en.question.which_description",
-            vec![W("which"), C(Cat::Description)],
+            vec![W("which"), C(Description)],
         ),
         // "what are the fields of `S`", "what's the fields of `S`", "what
         // is inside `S`" ("what are" is a `Cat::WhatIs`)
         question(
             "en.question.what_is_description",
-            vec![C(Cat::WhatIs), C(Cat::Description)],
+            vec![C(WhatIs), C(Description)],
         ),
         // "fields are on `S`", "fields are defined on the `S` struct"
         rule(
             "en.description.are_preposition",
-            Cat::Description,
-            vec![
-                C(Cat::Noun),
-                W("are"),
-                C(Cat::Preposition),
-                C(Cat::NounPhrase),
-            ],
+            Description,
+            vec![C(Noun), W("are"), C(Preposition), C(NounPhrase)],
             placed_kind,
         ),
         rule(
             "en.description.are_defined_preposition",
-            Cat::Description,
-            vec![
-                C(Cat::Noun),
-                W("are"),
-                C(Cat::Defined),
-                C(Cat::Preposition),
-                C(Cat::NounPhrase),
-            ],
+            Description,
+            vec![C(Noun), W("are"), C(Defined), C(Preposition), C(NounPhrase)],
             placed_kind,
         ),
         // "`S` struct fields", "end_speed fields", "hint_labels struct
         // members": the parts of a thing, named after it.
         rule(
             "en.description.parts",
-            Cat::Description,
-            vec![C(Cat::NounPhrase), C(Cat::Part)],
+            Description,
+            vec![C(NounPhrase), C(Part)],
             |c: &[Sem<O>]| match c {
                 [
                     Sem::Thing(other),
@@ -183,25 +171,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
-        rule(
-            "en.ask_again.for_me",
-            Cat::AskAgain,
-            vec![C(Cat::AskAgain), W("for"), W("me")],
-            first,
-        ),
         // "could you list them": asking again for what was just answered.
         filler(
             "en.ask_again.could_you_list_them",
             ROUND,
-            Cat::AskAgain,
+            AskAgain,
             "could you list them",
         ),
         // "what's in `RepoId`", "what is inside `Bank`", "what's in it":
         // what the thing holds.
         rule(
             "en.question.what_is_inside",
-            Cat::Question,
-            vec![C(Cat::WhatIs), C(Cat::Inside), C(Cat::NounPhrase)],
+            Question,
+            vec![C(WhatIs), C(Inside), C(NounPhrase)],
             |c| {
                 Some(Sem::Question(Question::Identify(Description {
                     kind: None,
@@ -212,15 +194,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "its fields"
         rule(
             "en.description.its",
-            Cat::Description,
-            vec![W("its"), C(Cat::RoleNoun)],
+            Description,
+            vec![W("its"), C(RoleNoun)],
             |c| role_of(c.first()?, &Sem::Thing(Thing::Previous)),
         ),
         // "I'm looking at `InGrid`, which fields does it have?": what the
         // user is looking at, set off before the question about it.
-        filler("en.prompt.looking_at", ROUND, Cat::Prompt, "i'm looking at"),
+        filler("en.prompt.looking_at", ROUND, Prompt, "i'm looking at"),
         // "what are the fields of `Week`": "what is" asked of many.
-        filler("en.what_is.what_are", ROUND, Cat::WhatIs, "what are"),
+        filler("en.what_is.what_are", ROUND, WhatIs, "what are"),
     ];
     // "`Note` struct - what fields", "Identity - which fields": a role
     // alone, asked of the thing set off before it.
@@ -230,8 +212,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ] {
         rules.push(rule(
             id,
-            Cat::Question,
-            vec![C(Cat::Mention), C(Cat::Break), W(which), C(Cat::RoleNoun)],
+            Question,
+            vec![C(Mention), C(Break), W(which), C(RoleNoun)],
             |c| match c {
                 [Sem::Mention { thing, .. }, _, role] => {
                     identify(&[role_of(role, &Sem::Thing(thing.clone()))?])
@@ -243,8 +225,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     // "(field) is in `x`"
     rules.push(rule(
         "en.verb_phrase.is_preposition",
-        Cat::VerbPhrase,
-        vec![W("is"), C(Cat::Preposition), C(Cat::NounPhrase)],
+        VerbPhrase,
+        vec![W("is"), C(Preposition), C(NounPhrase)],
         placed,
     ));
     rules

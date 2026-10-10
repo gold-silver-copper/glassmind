@@ -17,7 +17,7 @@ pub enum Cat {
     /// Words saying what a thing is to become: "to", "into", "->".
     Into,
     /// Words saying a thing is to be called something else: "renamed to",
-    /// "should be", "->".
+    /// "should be".
     Becomes,
     /// A verb giving a thing a name: "rename", "call".
     Naming,
@@ -61,6 +61,9 @@ pub enum Cat {
     Defined,
     /// A noun for the place a thing is written down: "definition", "def".
     Definition,
+    /// The code being talked about, as a whole: "the code", "the
+    /// codebase", "code".
+    Codebase,
     /// What the user wants located: a thing, or its definition ("the
     /// definition of `x`").
     Target,
@@ -121,8 +124,8 @@ pub enum Cat {
     /// kind if one is said: "can you count them for me?", "like how many
     /// exactly", "how many functions".
     Recount,
-    /// Words saying something happens to a thing in many places: "a lot",
-    /// "in a lot of places".
+    /// Words saying something happens to a thing in many places: "in lot
+    /// of places".
     Widely,
     /// A word standing for things whose kind is left open, before what
     /// describes them: "ones", "those", "anything".
@@ -221,8 +224,10 @@ pub enum Cat {
     Time,
     /// A name the user gives a thing: ""the leaf"", "the runner".
     Alias,
-    /// Words asking where from: "where", "where is", "from where".
-    Whence,
+    /// The opening of a question about where a thing is or where it
+    /// undergoes something from: "where is", "where's", "where does", or
+    /// "where" alone.
+    Where,
     /// A verb in the passive, without its subject: "called", "gets
     /// called", "getting used".
     Undergo,

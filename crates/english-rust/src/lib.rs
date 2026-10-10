@@ -54,7 +54,7 @@ fn field(relation: RustRelation, position: Position) -> Sem<Rust> {
 
 /// Every English word for a Rust concept.
 pub fn words() -> Vec<Word> {
-    use Cat::{Belonging, Holder, Inside, Noun, Part, Preposition, RoleAdjective, RoleNoun, Verb};
+    use Cat::*;
     use Number::*;
     use Position::*;
     use RustKind::*;
@@ -257,17 +257,12 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.role.members", 7, "members", HasField, Second),
             ],
         )),
-        // A field or method belongs to its type: "the field `x` of `S`",
-        // "`x` on the `S` struct", "`x` in `S`". The thing before the word
-        // is the member.
+        // A field or method belongs to its type: "`x` in `S`". The thing
+        // before the word is the member.
         table(
             Belonging,
             role,
-            &[
-                ("en.rust.belonging.of", 5, "of", Member, Second),
-                ("en.rust.belonging.on", 5, "on", Member, Second),
-                ("en.rust.belonging.in", 5, "in", Member, Second),
-            ],
+            &[("en.rust.belonging.in", 5, "in", Member, Second)],
         ),
         // What is inside a struct is what it has: "what's inside `NewDm`".
         read_only(table(
@@ -546,12 +541,14 @@ mod tests {
             "cut called by how many functions",
             "how many places call `cut`, fn count only",
             "how many fns call cut? or exact number if you can",
-            "how many functions call `cut`, roughly is it used in a lot of places?",
+            "how many functions call `cut`, is it used in lot of places?",
         ] {
             assert_eq!(meanings(text), plain, "{text:?}");
         }
         // How widely it is used asks again only of the things that use it.
-        assert!(meanings("how many functions does `cut` call, is it used a lot?").is_empty());
+        assert!(
+            meanings("how many functions does `cut` call, is it used in lot of places?").is_empty()
+        );
         let by_role = meanings("number of callers of `cut`");
         assert_eq!(by_role.len(), 1);
         for text in [

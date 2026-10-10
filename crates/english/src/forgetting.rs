@@ -9,7 +9,9 @@ use crate::aside::filler;
 use crate::blank;
 use crate::phrase;
 use crate::sem::{Cat, Sem};
+use crate::spoken;
 
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 6;
@@ -18,18 +20,18 @@ const ROUND: u32 = 6;
 const WORDS: &[(&str, Cat, &str)] = &[
     // Verbs asking the system to drop what was said, alone or before what
     // they drop: "forget (that)", "never mind (that)", "scratch that".
-    ("en.dismiss.forget", Cat::Dismiss, "forget"),
-    ("en.dismiss.never_mind", Cat::Dismiss, "never mind"),
-    ("en.dismiss.nevermind", Cat::Dismiss, "nevermind"),
-    ("en.dismiss.nvm", Cat::Dismiss, "nvm"),
-    ("en.dismiss.scratch", Cat::Dismiss, "scratch"),
+    ("en.dismiss.forget", Dismiss, "forget"),
+    ("en.dismiss.never_mind", Dismiss, "never mind"),
+    ("en.dismiss.nevermind", Dismiss, "nevermind"),
+    ("en.dismiss.nvm", Dismiss, "nvm"),
+    ("en.dismiss.scratch", Dismiss, "scratch"),
     // Words pointing back at what was said: "that", "it".
-    ("en.said.that", Cat::Said, "that"),
-    ("en.said.it", Cat::Said, "it"),
+    ("en.said.that", Said, "that"),
+    ("en.said.it", Said, "it"),
     // Nouns for something said before: "one", "thing", "question".
-    ("en.earlier.one", Cat::Earlier, "one"),
-    ("en.earlier.thing", Cat::Earlier, "thing"),
-    ("en.earlier.question", Cat::Earlier, "question"),
+    ("en.earlier.one", Earlier, "one"),
+    ("en.earlier.thing", Earlier, "thing"),
+    ("en.earlier.question", Earlier, "question"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -38,7 +40,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let forget = |id, rhs| {
         rule(
             id,
-            Cat::Utterance,
+            Utterance,
             rhs,
             S::Const(Sem::Utterance(Utterance::Forget)),
         )
@@ -49,35 +51,22 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         .collect();
     rules.extend([
         // "that one", "that last question": what was said, by when.
-        blank_of(
-            "en.said.that_one",
-            Cat::Said,
-            vec![W("that"), C(Cat::Earlier)],
-        ),
-        blank_of(
-            "en.earlier.last",
-            Cat::Earlier,
-            vec![W("last"), C(Cat::Earlier)],
-        ),
+        blank_of("en.said.that_one", Said, vec![W("that"), C(Earlier)]),
         // "never mind", "nvm": what to drop goes without saying.
-        forget("en.utterance.dismiss", vec![C(Cat::Dismiss)]),
+        forget("en.utterance.dismiss", vec![C(Dismiss)]),
         // "forget that", "never mind that last question", "scratch that".
-        forget(
-            "en.utterance.dismiss_said",
-            vec![C(Cat::Dismiss), C(Cat::Said)],
-        ),
+        forget("en.utterance.dismiss_said", vec![C(Dismiss), C(Said)]),
         // "OK, I've forgotten that."
-        Rule::new(
-            RuleInfo::new("en.reply.forgotten", ROUND),
-            Cat::Reply,
+        spoken(
+            "en.reply.forgotten",
+            ROUND,
+            Reply,
             phrase("ok , I've forgotten that ."),
-            S::Both(
-                |_| None,
-                |v| match v {
-                    Sem::Reply(Reply::Forgotten) => Some(Vec::new()),
-                    _ => None,
-                },
-            ),
+            |_| None,
+            |v| match v {
+                Sem::Reply(Reply::Forgotten) => Some(Vec::new()),
+                _ => None,
+            },
         ),
     ]);
     rules

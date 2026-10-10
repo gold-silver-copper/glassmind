@@ -5,16 +5,17 @@
 //! say the answer, plus the replies for each kind of trouble. Everything
 //! else in the English grammar is grown by the loop.
 
-use glassmind_grammar::{Rule, RuleInfo, SEED, Sem as S, Sym};
+use glassmind_grammar::{Rule, SEED, Sym};
 use glassmind_meaning::{
     Assumption, Condition, Description, Extent, Ontology, Position, Question, Reply, Thing,
     Trouble, Utterance,
 };
 
 use crate::lexicon::{ITEM, NAME, NUMBER};
-use crate::phrase;
 use crate::sem::{Cat, Number, Sem, VerbForm};
+use crate::spoken;
 
+use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
 
 type Read<O> = fn(&[Sem<O>]) -> Option<Sem<O>>;
@@ -28,7 +29,7 @@ fn seed<O: Ontology>(
     read: Read<O>,
     speak: Speak<O>,
 ) -> Rule<Cat, Sem<O>> {
-    Rule::new(RuleInfo::new(id, SEED), cat, rhs, S::Both(read, speak))
+    spoken(id, SEED, cat, rhs, read, speak)
 }
 
 /// A seed rule only the system says: a reply the user never types, so it
@@ -150,15 +151,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // A question, with or without its question mark.
         seed(
             "en.utterance.question_mark",
-            Cat::Utterance,
-            vec![C(Cat::Question), W("?")],
+            Utterance,
+            vec![C(Question), W("?")],
             ask,
             unask,
         ),
         seed(
             "en.utterance.question",
-            Cat::Utterance,
-            vec![C(Cat::Question)],
+            Utterance,
+            vec![C(Question)],
             ask,
             unask,
         )
@@ -166,24 +167,24 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "what calls `x`": identify things of any kind meeting a condition.
         seed(
             "en.question.what",
-            Cat::Question,
-            vec![W("what"), C(Cat::VerbPhrase)],
+            Question,
+            vec![W("what"), C(VerbPhrase)],
             identify,
             |v| unidentify(v, false, Number::Singular),
         ),
         // "which functions call `x`": identify things of a kind meeting a condition.
         seed(
             "en.question.which",
-            Cat::Question,
-            vec![W("which"), C(Cat::Noun), C(Cat::VerbPhrase)],
+            Question,
+            vec![W("which"), C(Noun), C(VerbPhrase)],
             identify,
             |v| unidentify(v, true, Number::Plural),
         ),
         // "calls `x`": the subject is the first argument of the verb's relation.
         seed(
             "en.verb_phrase.object",
-            Cat::VerbPhrase,
-            vec![C(Cat::Verb), C(Cat::NounPhrase)],
+            VerbPhrase,
+            vec![C(Verb), C(NounPhrase)],
             |c| match c {
                 [Sem::Relation { relation, form }, Sem::Thing(other)] => Some(Sem::Condition {
                     condition: Condition::Related {
@@ -220,7 +221,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // A thing named by the user.
         seed(
             "en.noun_phrase.name",
-            Cat::NounPhrase,
+            NounPhrase,
             vec![Class(NAME)],
             |c| match c {
                 [Sem::Name(n)] => Some(Sem::Thing(Thing::Named(n.clone()))),
@@ -234,7 +235,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // A resolved item, as the system speaks of it.
         seed(
             "en.noun_phrase.item",
-            Cat::NounPhrase,
+            NounPhrase,
             vec![Class(ITEM)],
             |c| match c {
                 [Sem::Item(i)] => Some(Sem::Thing(Thing::Item(i.clone()))),
@@ -248,8 +249,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "`a` and `b` call `x`."
         seed(
             "en.statement.list",
-            Cat::Statement,
-            vec![C(Cat::ItemList), C(Cat::VerbPhrase)],
+            Statement,
+            vec![C(ItemList), C(VerbPhrase)],
             extent,
             |v| match v {
                 Sem::Extent(e) if !e.members.is_empty() => {
@@ -263,14 +264,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "2 functions call `x`: `a` and `b`."
         seed(
             "en.statement.counted",
-            Cat::Statement,
-            vec![
-                Class(NUMBER),
-                C(Cat::Noun),
-                C(Cat::VerbPhrase),
-                W(":"),
-                C(Cat::ItemList),
-            ],
+            Statement,
+            vec![Class(NUMBER), C(Noun), C(VerbPhrase), W(":"), C(ItemList)],
             extent,
             |v| match v {
                 Sem::Extent(e) if !e.members.is_empty() => {
@@ -285,8 +280,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "nothing calls `x`."
         seed(
             "en.statement.nothing",
-            Cat::Statement,
-            vec![W("nothing"), C(Cat::VerbPhrase)],
+            Statement,
+            vec![W("nothing"), C(VerbPhrase)],
             extent,
             |v| match v {
                 Sem::Extent(e) if e.members.is_empty() => {
@@ -298,8 +293,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "no functions call `x`."
         seed(
             "en.statement.no_kind",
-            Cat::Statement,
-            vec![W("no"), C(Cat::Noun), C(Cat::VerbPhrase)],
+            Statement,
+            vec![W("no"), C(Noun), C(VerbPhrase)],
             extent,
             |v| match v {
                 Sem::Extent(e) if e.members.is_empty() => {
@@ -309,24 +304,20 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             },
         ),
         // Lists of items: "`a`", "`a` and `b`", "`a`, `b` and `c`".
-        seed(
-            "en.item_list.one",
-            Cat::ItemList,
-            vec![Class(ITEM)],
-            list,
-            |v| unlist(v, 1),
-        ),
+        seed("en.item_list.one", ItemList, vec![Class(ITEM)], list, |v| {
+            unlist(v, 1)
+        }),
         seed(
             "en.item_list.two",
-            Cat::ItemList,
+            ItemList,
             vec![Class(ITEM), W("and"), Class(ITEM)],
             list,
             |v| unlist(v, 2),
         ),
         seed(
             "en.item_list.more",
-            Cat::ItemList,
-            vec![Class(ITEM), W(","), C(Cat::ItemList)],
+            ItemList,
+            vec![Class(ITEM), W(","), C(ItemList)],
             |c| match c {
                 [Sem::Item(first), Sem::Items(rest)] if rest.len() >= 2 => {
                     Some(Sem::Items([vec![first.clone()], rest.clone()].concat()))
@@ -344,8 +335,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // Replies.
         seed(
             "en.reply.extent",
-            Cat::Reply,
-            vec![C(Cat::Statement), W(".")],
+            Reply,
+            vec![C(Statement), W(".")],
             |c| match c {
                 [Sem::Extent(e)] => Some(Sem::Reply(Reply::Extent(e.clone()))),
                 _ => None,
@@ -358,8 +349,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "By `x` I assume you mean `Foo::x`. ..." or "I take that to mean: ...? ..."
         said(
             "en.reply.assuming",
-            Cat::Reply,
-            vec![C(Cat::Assumption), C(Cat::Reply)],
+            Reply,
+            vec![C(Assumption), C(Reply)],
             |v| match v {
                 Sem::Reply(Reply::Assuming { assumptions, reply }) => {
                     let (first, rest) = assumptions.split_first()?;
@@ -378,13 +369,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         said(
             "en.assumption.means",
-            Cat::Assumption,
-            [
-                vec![W("by"), Class(NAME)],
-                phrase("I assume you mean"),
-                vec![Class(ITEM), W(".")],
-            ]
-            .concat(),
+            Assumption,
+            vec![
+                W("by"),
+                Class(NAME),
+                W("I assume you mean"),
+                Class(ITEM),
+                W("."),
+            ],
             |v| match v {
                 Sem::Assumption(Assumption::Means { name, item }) => {
                     Some(vec![Sem::Name(name.clone()), Sem::Item(item.clone())])
@@ -394,8 +386,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         said(
             "en.assumption.reading",
-            Cat::Assumption,
-            [phrase("I take that to mean :"), vec![C(Cat::Utterance)]].concat(),
+            Assumption,
+            vec![W("I take that to mean :"), C(Utterance)],
             |v| match v {
                 Sem::Assumption(Assumption::Reading { meaning }) => {
                     Some(vec![Sem::Utterance(meaning.clone())])
@@ -405,8 +397,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         said(
             "en.reply.no_such_name",
-            Cat::Reply,
-            [phrase("nothing is called"), vec![Class(NAME), W(".")]].concat(),
+            Reply,
+            vec![W("nothing is called"), Class(NAME), W(".")],
             |v| match v {
                 Sem::Reply(Reply::Trouble(Trouble::NoSuchName { name })) => {
                     Some(vec![Sem::Name(name.clone())])
@@ -416,12 +408,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         said(
             "en.reply.wrong_kind",
-            Cat::Reply,
-            [
-                vec![Class(ITEM)],
-                phrase("is the wrong kind of thing for that ."),
-            ]
-            .concat(),
+            Reply,
+            vec![Class(ITEM), W("is the wrong kind of thing for that .")],
             |v| match v {
                 Sem::Reply(Reply::Trouble(Trouble::WrongKind { item })) => {
                     Some(vec![Sem::Item(item.clone())])
@@ -431,12 +419,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         said(
             "en.reply.ambiguous",
-            Cat::Reply,
-            [
-                phrase("I can't tell which one you mean :"),
-                vec![C(Cat::ItemList), W(".")],
-            ]
-            .concat(),
+            Reply,
+            vec![W("I can't tell which one you mean :"), C(ItemList), W(".")],
             |v| match v {
                 Sem::Reply(Reply::Trouble(Trouble::Ambiguous { candidates })) => {
                     Some(vec![Sem::Items(candidates.clone())])

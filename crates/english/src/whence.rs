@@ -12,6 +12,7 @@ use crate::asking::{identify, read_only_rule, related};
 use crate::last;
 use crate::sem::{Cat, Number, Sem, VerbForm};
 
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 9;
@@ -19,18 +20,17 @@ const ROUND: u32 = 9;
 /// The words of a question about where from, each meaning nothing by
 /// itself.
 const WORDS: &[(&str, Cat, &str)] = &[
-    // Words asking where, with the auxiliary of a question: "where is `x`
-    // called", "where does `x` get used".
-    ("en.whence.where", Cat::Whence, "where"),
-    ("en.whence.where_is", Cat::Whence, "where is"),
-    ("en.whence.where_s", Cat::Whence, "where's"),
-    ("en.whence.where_does", Cat::Whence, "where does"),
+    // Words asking where, with the auxiliary of a question: "where does
+    // `x` get used" ("where is" is in [`crate::locate`]).
+    ("en.whence.where", Where, "where"),
+    ("en.whence.where_s", Where, "where's"),
+    ("en.whence.where_does", Where, "where does"),
     // Words before a participle making it passive: "is called", "gets
     // used", "getting called".
-    ("en.becoming.is", Cat::Becoming, "is"),
-    ("en.becoming.gets", Cat::Becoming, "gets"),
-    ("en.becoming.get", Cat::Becoming, "get"),
-    ("en.becoming.getting", Cat::Becoming, "getting"),
+    ("en.becoming.is", Becoming, "is"),
+    ("en.becoming.gets", Becoming, "gets"),
+    ("en.becoming.get", Becoming, "get"),
+    ("en.becoming.getting", Becoming, "getting"),
 ];
 
 /// "`x` gets called": the things asked about stand first in the relation,
@@ -58,39 +58,32 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         .map(|&(id, cat, words)| filler(id, ROUND, cat, words))
         .collect();
     rules.extend([
-        // "from where `x` gets called", "from where does `x` get used"
-        rule(
-            "en.whence.from",
-            Cat::Whence,
-            vec![W("from"), C(Cat::Whence)],
-            last,
-        ),
         // "called", "gets called", "is getting called"
-        rule("en.undergo.verb", Cat::Undergo, vec![C(Cat::Verb)], last),
+        rule("en.undergo.verb", Undergo, vec![C(Verb)], last),
         rule(
             "en.undergo.auxiliary",
-            Cat::Undergo,
-            vec![C(Cat::Becoming), C(Cat::Undergo)],
+            Undergo,
+            vec![C(Becoming), C(Undergo)],
             last,
         ),
         // "`x` gets called"
         rule(
             "en.undergoes.passive",
-            Cat::Undergoes,
-            vec![C(Cat::NounPhrase), C(Cat::Undergo)],
+            Undergoes,
+            vec![C(NounPhrase), C(Undergo)],
             undergoes,
         ),
         // "where is `x` called", "where `x` gets called from"
         rule(
             "en.question.whence",
-            Cat::Question,
-            vec![C(Cat::Whence), C(Cat::Undergoes)],
+            Question,
+            vec![C(Where), C(Undergoes)],
             |c| identify(c.get(1..)?),
         ),
         rule(
             "en.question.whence_from",
-            Cat::Question,
-            vec![C(Cat::Whence), C(Cat::Undergoes), W("from")],
+            Question,
+            vec![C(Where), C(Undergoes), W("from")],
             |c| identify(c.get(1..2)?),
         ),
     ]);

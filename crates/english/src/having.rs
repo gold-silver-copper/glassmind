@@ -7,19 +7,15 @@
 //! qualifier names one side of a relation with a role noun ("type") and
 //! says what fills it.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{self as meaning, Condition, Ontology, Position, Thing};
 
 use crate::aside::filler;
-use crate::asking::{identify, meeting, read_only_rule, related, same, words_then};
+use crate::asking::{identify, meeting, read_only_rule, related, words_then};
 use crate::sem::{Cat, Number, Sem};
-use crate::{blank, last, word};
+use crate::{blank, first, last, spoken, word};
 
-use Cat::{
-    Again, Alternative, Anything, AskAgain, Break, Defined, Description, Hedge, Holder, Includes,
-    Join, Noun, NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question,
-    RoleAdjective, RoleNoun, Utterance, VerbPhrase, Within,
-};
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 3;
@@ -277,34 +273,6 @@ fn part_holders<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
-/// "who has a `Target` field? structs only": a question asking for things
-/// of any kind, or of the kind named, asks for things of that kind.
-fn only<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    match c {
-        [
-            Sem::Utterance(meaning::Utterance::Ask(meaning::Question::Identify(d))),
-            Sem::Kind { kind, .. },
-        ] if d.kind.as_ref().is_none_or(|k| k == kind) => {
-            let mut d = d.clone();
-            d.kind = Some(kind.clone());
-            Some(Sem::Utterance(meaning::Utterance::Ask(
-                meaning::Question::Identify(d),
-            )))
-        }
-        _ => None,
-    }
-}
-
-/// Words before a holder that leave it the same kind of holder: "a
-/// field", "one of their fields", "some field".
-const HOLDER_DETERMINERS: &[(&str, &str)] = &[
-    ("en.holder.a", "a"),
-    ("en.holder.some", "some"),
-    ("en.holder.their", "their"),
-    ("en.holder.one_of_their", "one of their"),
-    ("en.holder.one_of_its", "one of its"),
-];
-
 /// Words between a thing and a holder it is in: "a `LineCache` in a
 /// field", "`Poster` as field type", "a Spot somewhere in their fields".
 const LODGINGS: &[(&str, &str)] = &[
@@ -371,30 +339,23 @@ const ASK_AGAIN: &[(&str, &str)] = &[
 const ASK_AGAIN_LATER: &[(&str, &str)] =
     &[("en.ask_again.which_ones_are_there", "which ones are there")];
 
-/// Words for some thing of any kind: "anything", "anyone", "something".
+/// Words for some thing of any kind: "anything", "something".
 const ANYTHING: &[(&str, &str)] = &[
     ("en.anything.anything", "anything"),
     ("en.anything.something", "something"),
-    ("en.anything.anyone", "anyone"),
-];
-
-/// Determiners before a role noun, which name the same role: "a type",
-/// "the type", "its type".
-const ROLE_DETERMINERS: &[(&str, &str)] = &[
-    ("en.role_noun.a", "a"),
-    ("en.role_noun.the", "the"),
-    ("en.role_noun.its", "its"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, lhs, rhs, build| read_only_rule(id, ROUND, lhs, rhs, build);
     let mut rules: Vec<Rule<Cat, Sem<O>>> = vec![
         // "a field whose type is or contains `x`": how the system says it.
-        Rule::new(
-            RuleInfo::new("en.noun_phrase.qualified", ROUND),
+        spoken(
+            "en.noun_phrase.qualified",
+            ROUND,
             NounPhrase,
             words_then("a", &[Noun, Qualifier]),
-            S::Both(fitting, |v| match v {
+            fitting,
+            |v| match v {
                 Sem::Thing(Thing::Fitting(d)) => match d.conditions.as_slice() {
                     [condition] => Some(vec![
                         Sem::Kind {
@@ -409,7 +370,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                     _ => None,
                 },
                 _ => None,
-            }),
+            },
         ),
         // "fields typed `Art`", "have field whose type is `Gone`".
         rule(
@@ -418,25 +379,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Noun), C(Qualifier)],
             fitting,
         ),
-        // "contains a `Key`", "an `Arc`".
-        rule(
-            "en.noun_phrase.a",
-            NounPhrase,
-            words_then("a", &[NounPhrase]),
-            last,
-        ),
-        rule(
-            "en.noun_phrase.an",
-            NounPhrase,
-            words_then("an", &[NounPhrase]),
-            last,
-        ),
         // "whose type is or contains `x`"
-        Rule::new(
-            RuleInfo::new("en.qualifier.whose", ROUND),
+        spoken(
+            "en.qualifier.whose",
+            ROUND,
             Qualifier,
             words_then("whose", &[RoleNoun, Includes, NounPhrase]),
-            S::Both(qualified, unqualified),
+            qualified,
+            unqualified,
         ),
         // "of type `x`", "with type `x`", "with a type of `x`", "typed `x`".
         rule(
@@ -515,7 +465,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.qualifier.within",
             Qualifier,
             vec![C(Qualifier), C(Within)],
-            same,
+            first,
         ),
         // "whose type is `Tab` or contains it"
         rule(
@@ -556,18 +506,11 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("or"), C(RoleNoun), W("that"), C(Includes), C(Again)],
             last,
         ),
-        // ", or contains it", "(or containing it)", "or contains it somehow"
-        rule(
-            "en.alternative.comma",
-            Alternative,
-            words_then(",", &[Alternative]),
-            last,
-        ),
         rule(
             "en.alternative.aside",
             Alternative,
             vec![W("("), C(Alternative), W(")")],
-            same,
+            first,
         ),
         // The thing again: "one", or "it" or its name.
         filler("en.again.one", ROUND, Again, "one"),
@@ -599,23 +542,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("what"), C(Noun), W("are"), C(Preposition), C(NounPhrase)],
             |c| identify(&[placed(c)?]),
         ),
-        // "any structs with fields typed `Commit`?", "are there structs
-        // that ...": asking whether there are some asks for them.
-        rule(
-            "en.description.any",
-            Description,
-            words_then("any", &[Description]),
-            last,
-        ),
-        // "is there many functions that call `x`": asking whether there
-        // are many asks for them too.
-        read_only_rule(
-            "en.description.many",
-            11,
-            Description,
-            words_then("many", &[Description]),
-            last,
-        ),
         // "is there anything that ends up calling `x`", "anything calling
         // `x`": something doing it, of any kind.
         read_only_rule(
@@ -641,12 +567,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             words_then("does", &[Anything, VerbPhrase]),
             |c| identify(&[anything(c)?]),
         ),
-        rule(
-            "en.description.are_there",
-            Description,
-            words_then("are there", &[Description]),
-            last,
-        ),
         // "are there structs that ...? which ones?", "..., can you list
         // them?": asking again for the things just asked about.
         read_only_rule(
@@ -671,21 +591,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             9,
             AskAgain,
             words_then("which", &[Noun]),
-            same,
+            first,
         ),
         read_only_rule(
             "en.ask_again.which_kind_do",
             9,
             AskAgain,
             vec![W("which"), C(Noun), W("do")],
-            same,
-        ),
-        read_only_rule(
-            "en.ask_again.question_mark",
-            5,
-            AskAgain,
-            vec![C(AskAgain), W("?")],
-            same,
+            first,
         ),
         // "which structs actually have ...": a hedge changes nothing asked.
         read_only_rule(
@@ -701,15 +614,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.noun.in_the_codebase",
             5,
             Noun,
-            vec![C(Noun), W("in"), W("the"), W("codebase")],
-            same,
+            vec![C(Noun), W("in"), C(Codebase)],
+            first,
         ),
         // "which struct(s) have ...": a noun that may be one or many.
         read_only_rule(
             "en.noun.maybe_plural",
             5,
             Noun,
-            vec![C(Noun), W("("), W("s"), W(")")],
+            vec![C(Noun), W("( s )")],
             |c| match c {
                 [Sem::Kind { kind, .. }] => Some(Sem::Kind {
                     kind: kind.clone(),
@@ -717,15 +630,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 }),
                 _ => None,
             },
-        ),
-        // "which structs have a `jobs` field in them": "them" is the
-        // subject again, so it says nothing more.
-        read_only_rule(
-            "en.verb_phrase.in_them",
-            5,
-            VerbPhrase,
-            vec![C(VerbPhrase), W("in"), W("them")],
-            same,
         ),
         // "find the structs that ..."
         filler("en.prompt.find", ROUND, Prompt, "find"),
@@ -798,8 +702,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         grown(
             "en.alternative.widened",
             Alternative,
-            vec![C(Alternative), W(","), C(Cat::Widening)],
-            same,
+            vec![C(Alternative), W(","), C(Widening)],
+            first,
         ),
         // "or with a type that includes `IRect`", "or that contains Key
         // somehow", "or where the type contains it"
@@ -825,48 +729,24 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             put_again,
         ),
         // "who has a `Target` field? structs only", "who has a url field,
-        // structs only"
+        // structs only": asked again of things of that kind.
         grown(
-            "en.utterance.only",
-            Utterance,
-            vec![C(Utterance), C(Noun), W("only")],
-            only,
-        ),
-        grown(
-            "en.utterance.comma_only",
-            Utterance,
-            vec![C(Utterance), W(","), C(Noun), W("only")],
-            only,
+            "en.ask_again.only",
+            AskAgain,
+            vec![C(Noun), W("only")],
+            first,
         ),
     ]);
-    rules.extend(
-        HOLDER_DETERMINERS
-            .iter()
-            .map(|(id, words)| grown(id, Holder, words_then(words, &[Holder]), last)),
-    );
     rules.extend(LODGINGS.iter().map(|(id, words)| {
-        let mut rhs = vec![C(NounPhrase)];
-        rhs.extend(words_then(words, &[Holder]));
-        grown(id, NounPhrase, rhs, held)
+        grown(
+            id,
+            NounPhrase,
+            vec![C(NounPhrase), W(words), C(Holder)],
+            held,
+        )
     }));
     let later = |id, lhs, rhs, build| read_only_rule(id, LATER, lhs, rhs, build);
     rules.extend([
-        // "is there a struct that has ...": asking whether there is one
-        // asks for them.
-        later(
-            "en.description.a",
-            Description,
-            words_then("a", &[Description]),
-            last,
-        ),
-        // "is there struct somewhere with ...": every thing asked about is
-        // somewhere, so saying so restricts nothing.
-        later(
-            "en.noun.somewhere",
-            Noun,
-            vec![C(Noun), W("somewhere")],
-            same,
-        ),
         // "fields of `RefCompare`", "field of ImageSearch": a holder of the
         // thing, said after it.
         later(
@@ -904,14 +784,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         later(
             "en.alternative.or_with_role_that",
             Alternative,
-            vec![
-                W("or"),
-                W("with"),
-                C(RoleNoun),
-                W("that"),
-                C(Includes),
-                C(Again),
-            ],
+            vec![W("or with"), C(RoleNoun), W("that"), C(Includes), C(Again)],
             last,
         ),
         later(
@@ -927,8 +800,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             words_then("anywhere in", &[RoleNoun]),
             last,
         ),
-        // "a field type": a part with a determiner.
-        later("en.part.a", Part, words_then("a", &[Part]), last),
         // "where is `ImageSearch` used as field type", "RangeSource used as
         // field type where": what
         // has a part whose role `x` fills.
@@ -936,11 +807,9 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.where_used_as",
             Question,
             vec![
-                W("where"),
-                W("is"),
+                W("where is"),
                 C(NounPhrase),
-                W("used"),
-                W("as"),
+                W("used as"),
                 C(Part),
                 C(RoleNoun),
             ],
@@ -951,8 +820,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Question,
             vec![
                 C(NounPhrase),
-                W("used"),
-                W("as"),
+                W("used as"),
                 C(Part),
                 C(RoleNoun),
                 W("where"),
@@ -977,26 +845,17 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Break), C(AskAgain)],
             last,
         ),
-        // "is there some struct with a `socials` field": asking whether
-        // there is one asks for them.
-        now(
-            "en.description.some",
-            Description,
-            words_then("some", &[Description]),
-            last,
-        ),
         // "what structs", asked again after a question or a thing set off.
         now(
             "en.ask_again.what_kind",
             AskAgain,
             words_then("what", &[Noun]),
-            same,
+            first,
         ),
     ]);
     rules.extend(
         [
             ("en.ask_again.which_are_they", "which are they"),
-            ("en.ask_again.is_there_a_list", "is there a list"),
             (
                 "en.ask_again.is_there_a_list_somewhere",
                 "is there a list somewhere",
@@ -1020,14 +879,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Noun), C(RoleNoun)],
             last,
         ),
-        // "whats in `x`, fields i mean": the speaker saying what they
-        // asked, which asks it again.
-        round_14(
-            "en.ask_again.i_mean",
-            AskAgain,
-            vec![C(AskAgain), W("i"), W("mean")],
-            same,
-        ),
     ]);
     // "a struct field": a part said with the kind it is in, the same part.
     rules.push(read_only_rule(
@@ -1039,17 +890,11 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ));
     // "where's `handgun_draw_m` declared as a struct field", "where's `x`
     // used as a struct field": what has a part going by the name.
-    for (id, start, verb) in [
-        ("en.question.where_s_declared_as", "where's", C(Defined)),
-        ("en.question.where_is_declared_as", "where is", C(Defined)),
-        ("en.question.where_s_used_as", "where's", W("used")),
-        ("en.question.where_is_used_as_part", "where is", W("used")),
+    for (id, verb) in [
+        ("en.question.where_s_declared_as", C(Defined)),
+        ("en.question.where_s_used_as", W("used")),
     ] {
-        let rhs = [
-            words_then(start, &[NounPhrase]),
-            vec![verb, W("as"), C(Part)],
-        ]
-        .concat();
+        let rhs = vec![W("where's"), C(NounPhrase), verb, W("as"), C(Part)];
         rules.push(read_only_rule(id, 15, Question, rhs, |c| {
             identify(&[part_holders(&[c.first()?.clone(), c.last()?.clone()])?])
         }));
@@ -1058,12 +903,10 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         [("en.hedge.only", "only"), ("en.hedge.like", "like")]
             .map(|(id, words)| filler(id, LATER, Hedge, words)),
     );
-    for (table, lhs) in [(ROLE_DETERMINERS, RoleNoun), (WITHIN_ROLE, Within)] {
-        rules.extend(
-            table
-                .iter()
-                .map(|(id, words)| rule(id, lhs, words_then(words, &[RoleNoun]), last)),
-        );
-    }
+    rules.extend(
+        WITHIN_ROLE
+            .iter()
+            .map(|(id, words)| rule(id, Within, words_then(words, &[RoleNoun]), last)),
+    );
     rules
 }

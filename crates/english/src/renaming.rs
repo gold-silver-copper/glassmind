@@ -9,14 +9,17 @@
 //! that field?"); said together with a request that gives it ("`x` -> `y`,
 //! rename it"), the request is made once.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{Action, Condition, Description, Name, Ontology, Thing, Utterance};
 
+use crate::aside::filler;
+use crate::asking::read_only_rule;
 use crate::lexicon::{NAME, TEXT};
-use crate::phrase;
 use crate::sem::{Cat, Sem};
+use crate::spoken;
 use crate::{blank, first, word};
 
+use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 5;
@@ -201,7 +204,7 @@ pub(crate) fn heard<O: Ontology>(
     rhs: Vec<Sym<Cat>>,
     build: fn(&[Sem<O>]) -> Option<Sem<O>>,
 ) -> Rule<Cat, Sem<O>> {
-    Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
+    read_only_rule(id, ROUND, lhs, rhs, build)
 }
 
 /// Rules reading each phrase of a table of (id, phrase) as a blank `cat`,
@@ -270,11 +273,13 @@ const ERRAND_AFTER: Phrases = &[
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let mut rules = vec![
         // "rename the field `x` to `y`": how the system says it, too.
-        Rule::new(
-            RuleInfo::new("en.command.rename_verb", ROUND),
-            Cat::Command,
-            vec![C(Cat::Rename), C(Cat::Mention), C(Cat::Into), Class(NAME)],
-            S::Both(rename, |v| match v {
+        spoken(
+            "en.command.rename_verb",
+            ROUND,
+            Command,
+            vec![C(Rename), C(Mention), C(Into), Class(NAME)],
+            rename,
+            |v| match v {
                 Sem::Utterance(Utterance::Command(Action::Rename {
                     thing,
                     kind,
@@ -289,98 +294,80 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                     Sem::Name(name.clone()),
                 ]),
                 _ => None,
-            }),
+            },
         ),
         // "Builder.cur_len -> chunk_bytes"
         heard(
             "en.command.arrow",
-            Cat::Command,
-            vec![C(Cat::Mention), C(Cat::Arrow), Class(NAME)],
+            Command,
+            vec![C(Mention), C(Arrow), Class(NAME)],
             rename,
         ),
         // "rename it", "pls rename": a rename to a name not said here.
         heard(
             "en.command.rename_only",
-            Cat::Command,
-            vec![C(Cat::Rename), C(Cat::Mention)],
+            Command,
+            vec![C(Rename), C(Mention)],
             rename,
         ),
-        heard(
-            "en.command.rename_bare",
-            Cat::Command,
-            vec![C(Cat::Rename)],
-            rename,
-        ),
+        heard("en.command.rename_bare", Command, vec![C(Rename)], rename),
         // "`filename` field should be `file_name`", "should be called ..."
         heard(
             "en.command.should_be",
-            Cat::Command,
-            vec![C(Cat::Mention), C(Cat::ShouldBe), C(Cat::NewName)],
+            Command,
+            vec![C(Mention), C(ShouldBe), C(NewName)],
             rename,
         ),
         // The new name: "`y`", "something like `y`".
-        heard("en.new_name.name", Cat::NewName, vec![Class(NAME)], first),
+        heard("en.new_name.name", NewName, vec![Class(NAME)], first),
         // "the field": the thing said before, of that kind.
         heard(
             "en.mention.the_kind_only",
-            Cat::Mention,
-            vec![W("the"), C(Cat::Noun)],
+            Mention,
+            vec![W("the"), C(Noun)],
             previous,
         ),
         // "the field name `fg`", "name `x`": the thing, by its name.
         heard(
             "en.mention.kind_name",
-            Cat::Mention,
-            vec![C(Cat::Noun), W("name"), C(Cat::Mention)],
+            Mention,
+            vec![C(Noun), W("name"), C(Mention)],
             crate::mention::of_kind,
         ),
-        heard(
-            "en.mention.name_first",
-            Cat::Mention,
-            vec![W("name"), C(Cat::Mention)],
-            first,
-        ),
         // "-> rename to `url_slug`"
-        word(
-            RuleInfo::new("en.break.arrow", ROUND),
-            Cat::Break,
-            "- >",
-            blank(),
-        )
-        .read_only(),
+        filler("en.break.arrow", ROUND, Break, "- >"),
         // "`x` -> `y`, rename it", "`x` should be called `y`, could you
         // rename it?"
         heard(
             "en.utterance.confirmed",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), W(","), C(Cat::Utterance)],
+            Utterance,
+            vec![C(Utterance), W(","), C(Utterance)],
             confirmed,
         ),
         // "the field `tag` is pretty generic, could you rename it? Can you
         // do that, is that possible to do?"
         heard(
             "en.utterance.proxy_comma",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), W(","), C(Cat::Errand)],
+            Utterance,
+            vec![C(Utterance), W(","), C(Errand)],
             request,
         ),
         // "call it `y`", "call it `y` instead"
         heard(
             "en.command.call",
-            Cat::Command,
-            vec![W("call"), C(Cat::Mention), Class(NAME)],
+            Command,
+            vec![W("call"), C(Mention), Class(NAME)],
             rename,
         ),
         // "I'd like the `x` field renamed to `y`"
         heard(
             "en.command.like_renamed",
-            Cat::Command,
+            Command,
             vec![
-                W("i'd"),
-                W("like"),
-                C(Cat::Mention),
+                W("i'd like"),
+                C(Mention),
                 W("renamed"),
-                C(Cat::Into),
+                C(Into),
                 Class(NAME),
             ],
             rename,
@@ -388,184 +375,141 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "`x` on `S`, rename it to `y`", "`S.x` — call it `y` instead"
         heard(
             "en.command.about",
-            Cat::Command,
-            vec![C(Cat::Topic), C(Cat::Break), C(Cat::Command)],
+            Command,
+            vec![C(Topic), C(Break), C(Command)],
             about,
         ),
         heard(
             "en.command.about_bare",
-            Cat::Command,
-            vec![C(Cat::Topic), C(Cat::Command)],
+            Command,
+            vec![C(Topic), C(Command)],
             about,
         ),
         // "the `x` field on `S` is a bit vague to me, can you rename it to
         // `y`?", "... isn't very descriptive. Can you rename it to `y`?"
         heard(
             "en.utterance.about",
-            Cat::Utterance,
-            vec![C(Cat::Topic), C(Cat::Break), C(Cat::Utterance)],
+            Utterance,
+            vec![C(Topic), C(Break), C(Utterance)],
             about,
         ),
         heard(
             "en.utterance.about_stop",
-            Cat::Utterance,
-            vec![C(Cat::Topic), W("."), C(Cat::Utterance)],
+            Utterance,
+            vec![C(Topic), W("."), C(Utterance)],
             about,
         ),
         // A topic: a thing mentioned, perhaps with what the user thinks of
         // it, up to the next punctuation: "`x` is confusing".
-        heard("en.topic.mention", Cat::Topic, vec![C(Cat::Mention)], first),
-        heard(
-            "en.topic.more",
-            Cat::Topic,
-            vec![C(Cat::Topic), Class(TEXT)],
-            first,
-        ),
+        heard("en.topic.mention", Topic, vec![C(Mention)], first),
+        heard("en.topic.more", Topic, vec![C(Topic), Class(TEXT)], first),
         // "the field `x` in `S` is also used for calf it seems, so name is
         // a bit misleading"
         heard(
             "en.topic.comma_more",
-            Cat::Topic,
-            vec![C(Cat::Topic), W(","), Class(TEXT)],
+            Topic,
+            vec![C(Topic), W(","), Class(TEXT)],
             first,
         ),
         // "in `Chat` there is field `dm_news`", "in `S` the field `x`"
         heard(
             "en.topic.there_is",
-            Cat::Topic,
-            vec![
-                C(Cat::Belonging),
-                C(Cat::Mention),
-                W("there"),
-                W("is"),
-                C(Cat::Mention),
-            ],
+            Topic,
+            vec![C(Belonging), C(Mention), W("there is"), C(Mention)],
             belonging,
         ),
         heard(
             "en.topic.in_owner",
-            Cat::Topic,
-            vec![C(Cat::Belonging), C(Cat::Mention), C(Cat::Mention)],
+            Topic,
+            vec![C(Belonging), C(Mention), C(Mention)],
             belonging,
         ),
         // "App::title_shown -> rename to window_title"
         heard(
             "en.command.about_arrow",
-            Cat::Command,
-            vec![C(Cat::Topic), C(Cat::Arrow), C(Cat::Command)],
+            Command,
+            vec![C(Topic), C(Arrow), C(Command)],
             about,
         ),
         // "Config field saved_max_mb", "Worker recheck field": a part
         // named with its owner.
         heard(
             "en.mention.owner_part",
-            Cat::Mention,
-            vec![C(Cat::Mention), C(Cat::Part), C(Cat::Mention)],
+            Mention,
+            vec![C(Mention), C(Part), C(Mention)],
             belonging,
         ),
         heard(
             "en.mention.owner_part_after",
-            Cat::Mention,
-            vec![C(Cat::Mention), C(Cat::Mention), C(Cat::Part)],
+            Mention,
+            vec![C(Mention), C(Mention), C(Part)],
             belonging,
-        ),
-        // "its field `x`": the thing itself.
-        heard(
-            "en.mention.its",
-            Cat::Mention,
-            vec![W("its"), C(Cat::Mention)],
-            first,
         ),
         // "I'd like to rename `x` to `y`. Can you do that for me?"
         heard(
             "en.utterance.errand",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::Errand)],
+            Utterance,
+            vec![C(Utterance), C(Errand)],
             request,
         ),
         heard(
             "en.command.errand",
-            Cat::Command,
-            vec![C(Cat::Command), W(","), C(Cat::Errand)],
+            Command,
+            vec![C(Command), W(","), C(Errand)],
             first,
         ),
         heard(
             "en.errand.prompt",
-            Cat::Errand,
-            vec![C(Cat::Prompt), C(Cat::Errand)],
+            Errand,
+            vec![C(Prompt), C(Errand)],
             first,
         ),
     ];
     for (table, cat) in [
-        (RENAME, Cat::Rename),
-        (ARROWS, Cat::Arrow),
-        (PROMPTS, Cat::Prompt),
-        (ERRANDS, Cat::Errand),
+        (RENAME, Rename),
+        (ARROWS, Arrow),
+        (PROMPTS, Prompt),
+        (ERRANDS, Errand),
     ] {
         rules.extend(blanks(cat, table));
     }
-    let later = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, 11), lhs, rhs, S::Build(build)).read_only()
-    };
+    let later = |id, lhs, rhs, build| read_only_rule(id, 11, lhs, rhs, build);
     rules.extend([
         // "rename `padded` to something clearer": a rename whose new name
         // is left for later.
         later(
             "en.command.rename_vague",
-            Cat::Command,
-            vec![C(Cat::Rename), C(Cat::Mention), C(Cat::Into), C(Cat::Vague)],
+            Command,
+            vec![C(Rename), C(Mention), C(Into), C(Vague)],
             rename,
         ),
-        word(
-            RuleInfo::new("en.vague.something", 11),
-            Cat::Vague,
-            "something",
-            blank(),
-        )
-        .read_only(),
-        later(
-            "en.vague.more",
-            Cat::Vague,
-            vec![C(Cat::Vague), Class(TEXT)],
-            first,
-        ),
+        filler("en.vague.something", 11, Vague, "something"),
+        later("en.vague.more", Vague, vec![C(Vague), Class(TEXT)], first),
         // "... to something clearer? maybe `inset_by_padding`", "... more
         // clear? I think `load_job_files` fits better"
         later(
             "en.utterance.offered",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::Mark), C(Cat::Offer)],
+            Utterance,
+            vec![C(Utterance), C(Mark), C(Offer)],
             offered,
         ),
         // The name offered behind the words that frame a request ("maybe",
         // "I think").
-        Rule::new(
-            RuleInfo::new("en.offer.prompt", 12),
-            Cat::Offer,
-            vec![C(Cat::Prompt), C(Cat::NewName)],
-            S::Build(crate::last),
-        )
-        .read_only(),
-        later(
-            "en.offer.more",
-            Cat::Offer,
-            vec![C(Cat::Offer), Class(TEXT)],
-            first,
+        read_only_rule(
+            "en.offer.prompt",
+            12,
+            Offer,
+            vec![C(Prompt), C(NewName)],
+            crate::last,
         ),
-        // "could you rename it to `open_tab_at` maybe?"
-        later(
-            "en.command.maybe",
-            Cat::Command,
-            vec![C(Cat::Command), W("maybe")],
-            first,
-        ),
+        later("en.offer.more", Offer, vec![C(Offer), Class(TEXT)], first),
         // "can we rename it into `y` so it's more clear what it is?": a
         // remark after a request to change something, which a question's
         // words may not be.
         later(
             "en.utterance.command_remark_mark",
-            Cat::Utterance,
-            vec![C(Cat::Command), C(Cat::Remark), W("?")],
+            Utterance,
+            vec![C(Command), C(Remark), W("?")],
             first,
         ),
         // "I think `x` should be called `y`. Could you rename that
@@ -573,80 +517,57 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // sentence of its own.
         later(
             "en.utterance.confirmed_stop",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), W("."), C(Cat::Utterance)],
+            Utterance,
+            vec![C(Utterance), W("."), C(Utterance)],
             confirmed,
         ),
         // "`thread_found` should be renamed to `y`"
         later(
             "en.becomes.should_be_renamed",
-            Cat::Becomes,
-            vec![W("should"), W("be"), W("renamed"), C(Cat::Into)],
+            Becomes,
+            vec![W("should be renamed"), C(Into)],
             first,
         ),
         // "Could you handle that for me?"
-        word(
-            RuleInfo::new("en.errand.handle_that", 11),
-            Cat::Errand,
-            "handle that",
-            blank(),
-        )
-        .read_only(),
+        filler("en.errand.handle_that", 11, Errand, "handle that"),
         // "the function `wakes` — the name is kinda unclear to me, ...
         // right? could you rename it": a topic the user is unsure of.
         later(
             "en.utterance.about_question",
-            Cat::Utterance,
-            vec![C(Cat::Topic), W("?"), C(Cat::Utterance)],
+            Utterance,
+            vec![C(Topic), W("?"), C(Utterance)],
             about,
         ),
         // "so there is this fn `check_kit`, can we rename it": the thing
         // pointed out before the request about it.
         later(
             "en.topic.there_is_this",
-            Cat::Topic,
-            vec![W("there"), W("is"), W("this"), C(Cat::Mention)],
+            Topic,
+            vec![W("there is this"), C(Mention)],
             first,
         ),
         // "what is `digit` even... ok anyway, could you rename it": the
         // thing wondered about, left aside for the request.
         later(
             "en.topic.what_is_even",
-            Cat::Topic,
-            vec![C(Cat::WhatIs), C(Cat::Mention), C(Cat::Hedge)],
+            Topic,
+            vec![C(WhatIs), C(Mention), C(Hedge)],
             |c| c.get(1).cloned(),
-        ),
-        // "change name of `rounded` to `to_ellipse`", "change `load_older`
-        // name to ...": the thing whose name is meant.
-        later(
-            "en.mention.name_of",
-            Cat::Mention,
-            vec![W("name"), W("of"), C(Cat::Mention)],
-            first,
-        ),
-        later(
-            "en.mention.name_after",
-            Cat::Mention,
-            vec![C(Cat::Mention), W("name")],
-            first,
         ),
     ]);
     // Words saying what a thing ought to be called.
-    rules.push(
-        word(
-            RuleInfo::new("en.should_be.called", ROUND),
-            Cat::ShouldBe,
-            "should be called",
-            blank(),
-        )
-        .read_only(),
-    );
-    for (table, cat) in [(COMMAND_AFTER, Cat::Command), (ERRAND_AFTER, Cat::Errand)] {
-        rules.extend(table.iter().map(|(id, words)| {
-            let mut rhs = vec![C(cat)];
-            rhs.extend(phrase(words));
-            heard(id, cat, rhs, first)
-        }));
+    rules.push(filler(
+        "en.should_be.called",
+        ROUND,
+        ShouldBe,
+        "should be called",
+    ));
+    for (table, cat) in [(COMMAND_AFTER, Command), (ERRAND_AFTER, Errand)] {
+        rules.extend(
+            table
+                .iter()
+                .map(|(id, words)| heard(id, cat, vec![C(cat), W(words)], first)),
+        );
     }
     rules
 }

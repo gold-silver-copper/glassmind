@@ -4,17 +4,21 @@
 //! back to, and a question asked twice ("what does `x` do, and what is it
 //! for?") asks once.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{
     Condition, Description, Name, Ontology, Position, Question, Thing, Utterance,
 };
 
+use crate::aside::filler;
+use crate::asking::read_only_rule;
 use crate::contents::narrowed;
 use crate::lexicon::{CODE, NAME, WORD};
 use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
-use crate::{blank, first, word};
+use crate::spoken;
+use crate::word;
 
+use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 3;
@@ -167,7 +171,7 @@ fn counted<O: Ontology>(which: &Description<O>, count: &Description<O>) -> Optio
 const FILLERS: &[(Cat, &[(&str, &str)])] = &[
     // Words joining two ways of asking one question.
     (
-        Cat::Join,
+        Join,
         &[
             ("en.join.comma", ","),
             ("en.join.and", "and"),
@@ -177,7 +181,7 @@ const FILLERS: &[(Cat, &[(&str, &str)])] = &[
     ),
     // Marks setting a thing off before a question about it.
     (
-        Cat::Break,
+        Break,
         &[
             ("en.break.dash", "-"),
             ("en.break.em_dash", "—"),
@@ -187,38 +191,34 @@ const FILLERS: &[(Cat, &[(&str, &str)])] = &[
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let rule = |id, round, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, round), lhs, rhs, S::Build(build)).read_only()
-    };
+    let rule = |id, round, lhs, rhs, build| read_only_rule(id, round, lhs, rhs, build);
     let mut rules = vec![
         // "`x`": a thing mentioned by name, of a kind left open.
-        Rule::new(
-            RuleInfo::new("en.mention.thing", ROUND),
-            Cat::Mention,
-            vec![C(Cat::NounPhrase)],
-            S::Both(
-                // A description ("a `Gate` field") points at no one thing.
-                |c| match c {
-                    [Sem::Thing(thing)] if !matches!(thing, Thing::Fitting(_)) => {
-                        Some(Sem::Mention {
-                            thing: thing.clone(),
-                            kind: None,
-                        })
-                    }
-                    _ => None,
-                },
-                |v| match v {
-                    Sem::Mention { thing, kind: None } => Some(vec![Sem::Thing(thing.clone())]),
-                    _ => None,
-                },
-            ),
+        spoken(
+            "en.mention.thing",
+            ROUND,
+            Mention,
+            vec![C(NounPhrase)], // A description ("a `Gate` field") points at no one thing.
+            |c| match c {
+                [Sem::Thing(thing)] if !matches!(thing, Thing::Fitting(_)) => Some(Sem::Mention {
+                    thing: thing.clone(),
+                    kind: None,
+                }),
+                _ => None,
+            },
+            |v| match v {
+                Sem::Mention { thing, kind: None } => Some(vec![Sem::Thing(thing.clone())]),
+                _ => None,
+            },
         ),
         // "the `X` struct": how the system says it, too.
-        Rule::new(
-            RuleInfo::new("en.mention.the_kind", ROUND),
-            Cat::Mention,
-            vec![W("the"), C(Cat::Mention), C(Cat::Noun)],
-            S::Both(of_kind, |v: &Sem<O>| match v {
+        spoken(
+            "en.mention.the_kind",
+            ROUND,
+            Mention,
+            vec![W("the"), C(Mention), C(Noun)],
+            of_kind,
+            |v: &Sem<O>| match v {
                 Sem::Mention {
                     thing,
                     kind: Some(kind),
@@ -233,39 +233,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                     },
                 ]),
                 _ => None,
-            }),
+            },
         ),
         // "`indexed` fn", "`Fixed` struct"
         rule(
             "en.mention.kind",
             ROUND,
-            Cat::Mention,
-            vec![C(Cat::Mention), C(Cat::Noun)],
+            Mention,
+            vec![C(Mention), C(Noun)],
             of_kind,
         ),
         // "fn star", "the function `hm`"
         rule(
             "en.mention.kind_first",
             ROUND,
-            Cat::Mention,
-            vec![C(Cat::Noun), C(Cat::Mention)],
+            Mention,
+            vec![C(Noun), C(Mention)],
             of_kind,
-        ),
-        // "the `x`", "the Walker"
-        rule(
-            "en.mention.the",
-            ROUND,
-            Cat::Mention,
-            vec![W("the"), C(Cat::Mention)],
-            first,
         ),
         // "`save_filter` in `App`", "the `retry` method on `Chat`", "the
         // `sealed` field of the `Builder` struct"
         rule(
             "en.mention.preposition",
             5,
-            Cat::Mention,
-            vec![C(Cat::Mention), C(Cat::Preposition), C(Cat::Mention)],
+            Mention,
+            vec![C(Mention), C(Preposition), C(Mention)],
             related,
         ),
         // "which functions call `accent` on Theme": the thing so placed,
@@ -273,36 +265,24 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.noun_phrase.preposition",
             9,
-            Cat::NounPhrase,
-            vec![C(Cat::Mention), C(Cat::Preposition), C(Cat::Mention)],
+            NounPhrase,
+            vec![C(Mention), C(Preposition), C(Mention)],
             |c| match related(c)? {
                 Sem::Mention { thing, .. } => Some(Sem::Thing(thing)),
                 _ => None,
             },
         ),
         // "...": a trailing-off that sets what came before apart.
-        word(
-            RuleInfo::new("en.break.dots", 5),
-            Cat::Break,
-            ". . .",
-            blank(),
-        )
-        .read_only(),
+        filler("en.break.dots", 5, Break, ". . ."),
         // "..": the same, typed short.
-        word(
-            RuleInfo::new("en.break.two_dots", 11),
-            Cat::Break,
-            ". .",
-            blank(),
-        )
-        .read_only(),
+        filler("en.break.two_dots", 11, Break, ". ."),
         // "the `move_covers` system": a thing named as code, with a noun
         // of the user's own for its kind, which says nothing the system can
         // check.
         rule(
             "en.mention.own_noun_after",
             11,
-            Cat::Mention,
+            Mention,
             vec![W("the"), Class(CODE), Class(WORD)],
             |c| named(c.first()),
         ),
@@ -310,16 +290,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.mention.the_name",
             5,
-            Cat::Mention,
-            vec![W("the"), C(Cat::NameNoun), C(Cat::Mention)],
+            Mention,
+            vec![W("the"), C(NameNoun), C(Mention)],
             |c| c.last().cloned(),
         ),
         // "that function": the thing said before, of a kind.
         rule(
             "en.mention.that_kind",
             5,
-            Cat::Mention,
-            vec![W("that"), C(Cat::Noun)],
+            Mention,
+            vec![W("that"), C(Noun)],
             |c| match c {
                 [Sem::Kind { kind, .. }] => Some(Sem::Mention {
                     thing: Thing::Previous,
@@ -333,8 +313,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.noun_phrase.that_kind",
             7,
-            Cat::NounPhrase,
-            vec![W("that"), C(Cat::Noun)],
+            NounPhrase,
+            vec![W("that"), C(Noun)],
             |_| Some(Sem::Thing(Thing::Previous)),
         ),
         // "what's inside `x`, like which fields the struct has?": the
@@ -342,16 +322,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.noun_phrase.the_kind",
             14,
-            Cat::NounPhrase,
-            vec![W("the"), C(Cat::Noun)],
+            NounPhrase,
+            vec![W("the"), C(Noun)],
             |_| Some(Sem::Thing(Thing::Previous)),
         ),
         // "job_page - what does it do", "static_record, what's it for"
         rule(
             "en.question.set_off",
             ROUND,
-            Cat::Question,
-            vec![C(Cat::Mention), C(Cat::Break), C(Cat::Question)],
+            Question,
+            vec![C(Mention), C(Break), C(Question)],
             set_off,
         ),
         // "is_rate_limit where is it", "SimPlugin where it live": the same,
@@ -359,8 +339,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.question.set_off_unmarked",
             13,
-            Cat::Question,
-            vec![C(Cat::Mention), C(Cat::Question)],
+            Question,
+            vec![C(Mention), C(Question)],
             set_off,
         ),
         // "what does `x` do, and what is it for", "what is the Walker for,
@@ -368,8 +348,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.question.restated",
             ROUND,
-            Cat::Question,
-            vec![C(Cat::Question), C(Cat::Join), C(Cat::Question)],
+            Question,
+            vec![C(Question), C(Join), C(Question)],
             restated,
         ),
         // "what is `fit_s` for? what does it do?", "I'd like to know what
@@ -377,25 +357,17 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.utterance.restated",
             ROUND,
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::Utterance)],
+            Utterance,
+            vec![C(Utterance), C(Utterance)],
             restated,
         ),
         // "what does mark_dead do exactly? like what is it for"
         rule(
             "en.utterance.restated_joined",
             ROUND,
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::Join), C(Cat::Utterance)],
+            Utterance,
+            vec![C(Utterance), C(Join), C(Utterance)],
             restated,
-        ),
-        // ", and", ", or", ", like"
-        rule(
-            "en.join.comma_join",
-            ROUND,
-            Cat::Join,
-            vec![W(","), C(Cat::Join)],
-            first,
         ),
     ];
     // Words for the thing said before: "it", and "who calls that",
@@ -409,7 +381,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         .map(|(id, round, words)| {
             word(
                 RuleInfo::new(id, round),
-                Cat::NounPhrase,
+                NounPhrase,
                 words,
                 Sem::Thing(Thing::Previous),
             )
@@ -420,7 +392,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.push(rule(
         "en.noun_phrase.the_name",
         11,
-        Cat::NounPhrase,
+        NounPhrase,
         vec![W("the"), Class(NAME)],
         |c| match c {
             [Sem::Name(n)] => Some(Sem::Thing(Thing::Named(n.clone()))),
@@ -429,6 +401,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ));
     rules.extend(fillers(ROUND, FILLERS));
     // "what `x` do / whats it for": two ways of asking, split by a slash.
-    rules.extend(fillers(14, &[(Cat::Join, &[("en.join.slash", "/")])]));
+    rules.extend(fillers(14, &[(Join, &[("en.join.slash", "/")])]));
     rules
 }

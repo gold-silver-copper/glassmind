@@ -13,15 +13,13 @@
 use glassmind_grammar::{Rule, Sym};
 use glassmind_meaning::{Condition, Ontology, Question, Thing, Utterance};
 
-use crate::asking::{read_only_rule, same};
+use crate::asking::read_only_rule;
+use crate::first;
 use crate::lexicon::NAME;
 use crate::locate::fillers;
 use crate::sem::{Cat, Sem};
 
-use Cat::{
-    Counted, Directly, Enclosure, Hedge, Includes, Inclusion, Noun, NounPhrase, Prompt, RoleNoun,
-    Widening, Wrapped, Wrapping,
-};
+use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 9;
@@ -55,25 +53,21 @@ fn widened<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 /// (directly or inside like Vec or Option)?", "... in it? like
 /// Vec<DiscussionComment> also counts".
 const WIDENED: &[(&str, Cat, &[Sym<Cat>])] = &[
-    (
-        "en.question.widened",
-        Cat::Question,
-        &[C(Cat::Question), C(Widening)],
-    ),
+    ("en.question.widened", Question, &[C(Question), C(Widening)]),
     (
         "en.question.widened_comma",
-        Cat::Question,
-        &[C(Cat::Question), W(","), C(Widening)],
+        Question,
+        &[C(Question), W(","), C(Widening)],
     ),
     (
         "en.utterance.widened",
-        Cat::Utterance,
-        &[C(Cat::Utterance), C(Widening)],
+        Utterance,
+        &[C(Utterance), C(Widening)],
     ),
     (
         "en.utterance.widened_comma",
-        Cat::Utterance,
-        &[C(Cat::Utterance), W(","), C(Widening)],
+        Utterance,
+        &[C(Utterance), W(","), C(Widening)],
     ),
 ];
 
@@ -106,12 +100,6 @@ const PARTS: &[(&str, Cat, &[Sym<Cat>])] = &[
         Widening,
         &[C(Enclosure), C(Counted)],
     ),
-    (
-        "en.widening.comma_counted",
-        Widening,
-        &[C(Widening), W(","), C(Counted)],
-    ),
-    ("en.widening.etc", Widening, &[C(Widening), W("etc")]),
     // "incl. wrapped, Option<Art> etc", "... inside some other type, like
     // Option or whatever".
     (
@@ -131,7 +119,7 @@ const PARTS: &[(&str, Cat, &[Sym<Cat>])] = &[
     (
         "en.widening.ones_where",
         Widening,
-        &[W("ones"), W("where"), C(Wrapped)],
+        &[W("ones where"), C(Wrapped)],
     ),
     (
         "en.widening.kind_where",
@@ -167,13 +155,6 @@ const PARTS: &[(&str, Cat, &[Sym<Cat>])] = &[
         &[C(Enclosure), W("<"), C(Enclosure), W(">")],
     ),
     (
-        "en.enclosure.generic_elided",
-        Enclosure,
-        &[C(Enclosure), W("<"), W("."), W("."), W("."), W(">")],
-    ),
-    ("en.enclosure.etc", Enclosure, &[C(Enclosure), W("etc")]),
-    ("en.enclosure.like", Enclosure, &[W("like"), C(Enclosure)]),
-    (
         "en.enclosure.or",
         Enclosure,
         &[C(Enclosure), W("or"), C(Enclosure)],
@@ -183,19 +164,11 @@ const PARTS: &[(&str, Cat, &[Sym<Cat>])] = &[
         Enclosure,
         &[C(Enclosure), W("/"), C(Enclosure)],
     ),
-    ("en.enclosure.a", Enclosure, &[W("a"), C(Enclosure)]),
-    (
-        "en.enclosure.another",
-        Enclosure,
-        &[W("another"), C(Enclosure)],
-    ),
-    ("en.enclosure.other", Enclosure, &[W("other"), C(Enclosure)]),
-    ("en.enclosure.some", Enclosure, &[W("some"), C(Enclosure)]),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let mut rules: Vec<Rule<Cat, Sem<O>>> = Vec::new();
-    for (table, build) in [(WIDENED, widened as fn(&[Sem<O>]) -> _), (PARTS, same)] {
+    for (table, build) in [(WIDENED, widened as fn(&[Sem<O>]) -> _), (PARTS, first)] {
         rules.extend(
             table
                 .iter()
@@ -203,21 +176,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         );
     }
     rules.extend([
-        // "either directly or wrapped"
-        read_only_rule(
-            "en.widening.either",
-            11,
-            Widening,
-            vec![W("either"), C(Widening)],
-            same,
-        ),
         // "Fields where the type only contains a `u64` count too"
         read_only_rule(
             "en.widening.counted",
             11,
             Widening,
             vec![C(Widening), C(Counted)],
-            same,
+            first,
         ),
         // "like Option or Vec of it", "Vec of `Pose`"
         read_only_rule(
@@ -225,15 +190,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             11,
             Enclosure,
             vec![C(Enclosure), W("of"), C(NounPhrase)],
-            same,
-        ),
-        // "like &str": a reference to it.
-        read_only_rule(
-            "en.enclosure.reference",
-            11,
-            Enclosure,
-            vec![W("&"), C(Enclosure)],
-            same,
+            first,
         ),
     ]);
     // "the type just contains Key"
@@ -297,7 +254,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ),
             // "I'm trying to figure out where BoardConfig is held: which
             // structs ..."
-            (Cat::Break, &[("en.break.colon", ":")]),
+            (Break, &[("en.break.colon", ":")]),
         ],
     ));
     rules

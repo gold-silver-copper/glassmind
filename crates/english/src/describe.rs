@@ -3,16 +3,20 @@
 //! struct", and the system's answer, "`x` is the function defined at
 //! src/x.rs:12.".
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{Ontology, Question, Reply, Thing};
 
+use crate::aside::filler;
+use crate::asking::read_only_rule;
 use crate::lexicon::{ITEM, PLACE};
 use crate::locate::fillers;
 use crate::mention::related;
 use crate::sem::{Cat, Number, Sem};
+use crate::spoken;
 use crate::word;
 use crate::{blank, first, last};
 
+use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 3;
@@ -107,23 +111,23 @@ const PROMPTS: &[(&str, &str)] = &[
 /// More such words, from round 14: "what does it represent", "could you
 /// explain me what `x` is for".
 const LATER: &[(Cat, &[(&str, &str)])] = &[
-    (Cat::Doing, &[("en.doing.represent", "represent")]),
-    (Cat::Prompt, &[("en.prompt.explain_me", "explain me")]),
+    (Doing, &[("en.doing.represent", "represent")]),
+    (Prompt, &[("en.prompt.explain_me", "explain me")]),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let rule = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
-    };
+    let rule = |id, lhs, rhs, build| read_only_rule(id, ROUND, lhs, rhs, build);
     // A question asking what the thing mentioned is.
-    let question = |id, rhs| rule(id, Cat::Question, rhs, describe);
+    let question = |id, rhs| rule(id, Question, rhs, describe);
     let mut rules = vec![
         // "what does `x` do": how the system asks it, too.
-        Rule::new(
-            RuleInfo::new("en.question.what_does_do", ROUND),
-            Cat::Question,
-            vec![W("what"), W("does"), C(Cat::Mention), C(Cat::Doing)],
-            S::Both(describe, |v| match v {
+        spoken(
+            "en.question.what_does_do",
+            ROUND,
+            Question,
+            vec![W("what does"), C(Mention), C(Doing)],
+            describe,
+            |v| match v {
                 Sem::Question(Question::Describe { thing, kind }) => Some(vec![
                     Sem::Mention {
                         thing: thing.clone(),
@@ -132,49 +136,49 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                     blank(),
                 ]),
                 _ => None,
-            }),
+            },
         ),
         // "what's `seed_at` do", "what is `x` doing", "what's `x` testing"
         question(
             "en.question.what_is_doing",
-            vec![C(Cat::WhatIs), C(Cat::Mention), C(Cat::Doing)],
+            vec![C(WhatIs), C(Mention), C(Doing)],
         ),
         // "what is `x` for", "what's `x` even for", "what is `x` used for"
         question(
             "en.question.what_is_for",
-            vec![C(Cat::WhatIs), C(Cat::Mention), C(Cat::Use)],
+            vec![C(WhatIs), C(Mention), C(Use)],
         ),
         // "what is `Found`", "LastReviewQuery - what is it"
-        question("en.question.what_is", vec![C(Cat::WhatIs), C(Cat::Mention)]),
+        question("en.question.what_is", vec![C(WhatIs), C(Mention)]),
         // In embedded questions: "what `x` does", "what `Signature` represents".
         question(
             "en.question.what_doing",
-            vec![W("what"), C(Cat::Mention), C(Cat::Doing)],
+            vec![W("what"), C(Mention), C(Doing)],
         ),
         // "`tabs_has` does what": asked in the order of a statement.
-        Rule::new(
-            RuleInfo::new("en.question.does_what", 10),
-            Cat::Question,
-            vec![C(Cat::Mention), C(Cat::Doing), W("what")],
-            S::Build(describe),
-        )
-        .read_only(),
+        read_only_rule(
+            "en.question.does_what",
+            10,
+            Question,
+            vec![C(Mention), C(Doing), W("what")],
+            describe,
+        ),
         // "what `x` is for", "what the `Notice` struct is used for", "what
         // `x` is checking"
         question(
             "en.question.what_x_is_for",
-            vec![W("what"), C(Cat::Mention), W("is"), C(Cat::Use)],
+            vec![W("what"), C(Mention), W("is"), C(Use)],
         ),
         question(
             "en.question.what_x_is_doing",
-            vec![W("what"), C(Cat::Mention), W("is"), C(Cat::Doing)],
+            vec![W("what"), C(Mention), W("is"), C(Doing)],
         ),
         // "what it's for", "what it's used for": what the thing said
         // before is.
         rule(
             "en.question.what_it_s_for",
-            Cat::Question,
-            vec![W("what"), W("it's"), C(Cat::Use)],
+            Question,
+            vec![W("what it's"), C(Use)],
             |_| {
                 describe(&[Sem::Mention {
                     thing: Thing::Previous,
@@ -185,146 +189,122 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "purpose of `boards_plain_and_wrapped`", "what is the purpose of `x`"
         question(
             "en.question.purpose_of",
-            vec![C(Cat::Purpose), W("of"), C(Cat::Mention)],
+            vec![C(Purpose), W("of"), C(Mention)],
         ),
         // "`x` purpose", "utc_times fn - purpose?"
-        question(
-            "en.question.purpose",
-            vec![C(Cat::Mention), C(Cat::Purpose)],
-        ),
+        question("en.question.purpose", vec![C(Mention), C(Purpose)]),
         question(
             "en.question.set_off_purpose",
-            vec![C(Cat::Mention), C(Cat::Break), C(Cat::Purpose)],
+            vec![C(Mention), C(Break), C(Purpose)],
         ),
         // "explain message_rows", "explain the Thread struct"
-        question("en.question.explain", vec![W("explain"), C(Cat::Mention)]),
+        question("en.question.explain", vec![W("explain"), C(Mention)]),
         // "what does `x` do exactly", "so what is `x` for, basically?"
         rule(
             "en.question.hedged",
-            Cat::Question,
-            vec![C(Cat::Question), C(Cat::Hedge)],
+            Question,
+            vec![C(Question), C(Hedge)],
             first,
         ),
         rule(
             "en.question.comma_hedged",
-            Cat::Question,
-            vec![C(Cat::Question), W(","), C(Cat::Hedge)],
+            Question,
+            vec![C(Question), W(","), C(Hedge)],
             first,
         ),
         // "`x` is the function defined at src/x.rs:12."
-        Rule::new(
-            RuleInfo::new("en.reply.account", ROUND),
-            Cat::Reply,
+        spoken(
+            "en.reply.account",
+            ROUND,
+            Reply,
             vec![
                 Class(ITEM),
-                W("is"),
-                W("the"),
-                C(Cat::Noun),
-                W("defined"),
-                W("at"),
+                W("is the"),
+                C(Noun),
+                W("defined at"),
                 Class(PLACE),
                 W("."),
             ],
-            S::Both(
-                |_| None,
-                |v: &Sem<O>| match v {
-                    Sem::Reply(Reply::Account { item, kind }) => Some(vec![
-                        Sem::Item(item.clone()),
-                        Sem::Kind {
-                            kind: kind.clone(),
-                            number: Number::Singular,
-                        },
-                        Sem::Item(item.clone()),
-                    ]),
-                    _ => None,
-                },
-            ),
+            |_| None,
+            |v: &Sem<O>| match v {
+                Sem::Reply(Reply::Account { item, kind }) => Some(vec![
+                    Sem::Item(item.clone()),
+                    Sem::Kind {
+                        kind: kind.clone(),
+                        number: Number::Singular,
+                    },
+                    Sem::Item(item.clone()),
+                ]),
+                _ => None,
+            },
         ),
     ];
-    let now = |id, rhs, build| {
-        Rule::new(RuleInfo::new(id, NOW), Cat::Question, rhs, S::Build(build)).read_only()
-    };
+    let now = |id, rhs, build| read_only_rule(id, NOW, Question, rhs, build);
     rules.extend([
         // "what Mark for", "what `RepoSort` used for", "what `cut` fn for":
         // asked with no "is"; and "`x` struct, what it for".
         now(
             "en.question.what_for",
-            vec![W("what"), C(Cat::Mention), C(Cat::Use)],
+            vec![W("what"), C(Mention), C(Use)],
             describe,
         ),
         // "describe unread_counter"
         now(
             "en.question.describe",
-            vec![W("describe"), C(Cat::Mention)],
+            vec![W("describe"), C(Mention)],
             describe,
         ),
         // "what does `unblock` do on `Chat`", "what `filterable` does in
         // `Menu`": the place said after the question.
         now(
             "en.question.placed",
-            vec![C(Cat::Question), C(Cat::Preposition), C(Cat::Mention)],
+            vec![C(Question), C(Preposition), C(Mention)],
             placed,
         ),
         now(
             "en.question.placed_after_comma",
-            vec![
-                C(Cat::Question),
-                W(","),
-                C(Cat::Preposition),
-                C(Cat::Mention),
-            ],
+            vec![C(Question), W(","), C(Preposition), C(Mention)],
             placed,
         ),
         // "what `x` does, can you explain?": framed by more than one
         // prompt, said after.
         now(
             "en.question.prompts_after",
-            vec![C(Cat::Question), W(","), C(Cat::Prompt), C(Cat::Prompt)],
+            vec![C(Question), W(","), C(Prompt), C(Prompt)],
             first,
         ),
     ]);
     rules.extend(fillers(NOW, LATER));
     // In embedded questions: "can you tell me what `x` is", "what
     // `RepositoryWithPendingReview` is, what it's for".
-    rules.push(
-        Rule::new(
-            RuleInfo::new("en.question.what_x_is", 15),
-            Cat::Question,
-            vec![W("what"), C(Cat::Mention), W("is")],
-            S::Build(describe),
-        )
-        .read_only(),
-    );
-    rules.extend(fillers(
-        11,
-        &[
-            // "how many functions call `x`, roughly?"
-            (Cat::Hedge, &[("en.hedge.roughly", "roughly")]),
-            // "do you know how many ...", "how many ..., do you know?"
-            (Cat::Prompt, &[("en.prompt.do_you_know", "do you know")]),
-        ],
+    rules.push(read_only_rule(
+        "en.question.what_x_is",
+        15,
+        Question,
+        vec![W("what"), C(Mention), W("is")],
+        describe,
     ));
-    // "how many functions call `x`, do you know?": the frame said after.
-    rules.push(
-        Rule::new(
-            RuleInfo::new("en.question.prompt_after", 11),
-            Cat::Question,
-            vec![C(Cat::Question), W(","), C(Cat::Prompt)],
-            S::Build(first),
-        )
-        .read_only(),
-    );
+    // "how many functions call `x`, roughly?"
+    rules.push(filler("en.hedge.roughly", 11, Hedge, "roughly"));
+    // "what does `x` do, explain me": the frame said after.
+    rules.push(read_only_rule(
+        "en.question.prompt_after",
+        11,
+        Question,
+        vec![C(Question), W(","), C(Prompt)],
+        first,
+    ));
     // "what does `x` actually do", "what is `x` even for"
-    for (id, cat) in [("en.doing.hedged", Cat::Doing), ("en.use.hedged", Cat::Use)] {
-        rules.push(rule(id, cat, vec![C(Cat::Hedge), C(cat)], last));
+    for (id, cat) in [("en.doing.hedged", Doing), ("en.use.hedged", Use)] {
+        rules.push(rule(id, cat, vec![C(Hedge), C(cat)], last));
     }
     for (table, cat) in [
-        (DOING, Cat::Doing),
-        (USE, Cat::Use),
-        (PURPOSE, Cat::Purpose),
-        (HEDGES, Cat::Hedge),
-        (WHAT_IS, Cat::WhatIs),
-        (PROMPTS, Cat::Prompt),
+        (DOING, Doing),
+        (USE, Use),
+        (PURPOSE, Purpose),
+        (HEDGES, Hedge),
+        (WHAT_IS, WhatIs),
+        (PROMPTS, Prompt),
     ] {
         rules.extend(
             table

@@ -6,14 +6,17 @@
 //! Follow-ups, marks and prompts all read as blank values, so a follow-up
 //! carries the value of its first part and adds nothing to the request.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{Ontology, Reply, Utterance};
 
+use crate::aside::filler;
 use crate::lexicon::CODE;
 use crate::renaming::{Phrases, blanks, heard, rename, request};
 use crate::sem::{Cat, Sem};
+use crate::spoken;
 use crate::{blank, first, word};
 
+use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 5;
@@ -23,126 +26,118 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "rename to `y`", after what is to be renamed was said.
         heard(
             "en.command.rename_to",
-            Cat::Command,
-            vec![W("rename"), C(Cat::Into), Class(CODE)],
+            Command,
+            vec![W("rename"), C(Into), Class(CODE)],
             rename,
         ),
         // "rename it `submenu_modal`", "call it `vault_hand_placement`"
         heard(
             "en.command.naming",
-            Cat::Command,
-            vec![C(Cat::Naming), C(Cat::Mention), Class(CODE)],
+            Command,
+            vec![C(Naming), C(Mention), Class(CODE)],
             rename,
         ),
         // "`start_download` -> `spawn_fetch_jobs`", "`tx_view` renamed to
         // `extract_tx_view`", "`on_edited` should be `handle_edit_result`"
         heard(
             "en.command.becomes",
-            Cat::Command,
-            vec![C(Cat::Mention), C(Cat::Becomes), Class(CODE)],
+            Command,
+            vec![C(Mention), C(Becomes), Class(CODE)],
             rename,
         ),
         // "rename `x` to `y` for me", "... Could you do that, please?"
         heard(
             "en.utterance.follow_up",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::FollowUp)],
-            request,
-        ),
-        heard(
-            "en.utterance.mark_follow_up",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::Mark), C(Cat::FollowUp)],
+            Utterance,
+            vec![C(Utterance), C(FollowUp)],
             request,
         ),
         // "..., can you do it?", "... and update the callers too"
         heard(
             "en.utterance.joined_follow_up",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), C(Cat::Join), C(Cat::FollowUp)],
+            Utterance,
+            vec![C(Utterance), C(Join), C(FollowUp)],
             request,
         ),
         // A command, with or without its final punctuation.
-        Rule::new(
-            RuleInfo::new("en.utterance.command", ROUND),
-            Cat::Utterance,
-            vec![C(Cat::Command)],
-            S::Both(first, |v| Some(vec![v.clone()])),
+        spoken(
+            "en.utterance.command",
+            ROUND,
+            Utterance,
+            vec![C(Command)],
+            first,
+            |v| Some(vec![v.clone()]),
         ),
         heard(
             "en.utterance.command_mark",
-            Cat::Utterance,
-            vec![C(Cat::Command), W("?")],
+            Utterance,
+            vec![C(Command), W("?")],
             first,
         ),
         // "I'd rename `x` to `y`."
-        Rule::new(
-            RuleInfo::new("en.reply.proposal", ROUND),
-            Cat::Reply,
-            vec![W("I'd"), C(Cat::Command), W(".")],
-            S::Both(
-                |_| None,
-                |v| match v {
-                    Sem::Reply(Reply::Proposal { action, .. }) => {
-                        Some(vec![Sem::Utterance(Utterance::Command(action.clone()))])
-                    }
-                    _ => None,
-                },
-            ),
+        spoken(
+            "en.reply.proposal",
+            ROUND,
+            Reply,
+            vec![W("I'd"), C(Command), W(".")],
+            |_| None,
+            |v| match v {
+                Sem::Reply(Reply::Proposal { action, .. }) => {
+                    Some(vec![Sem::Utterance(Utterance::Command(action.clone()))])
+                }
+                _ => None,
+            },
         ),
-        word(RuleInfo::new("en.into.to", ROUND), Cat::Into, "to", blank()),
+        word(RuleInfo::new("en.into.to", ROUND), Into, "to", blank()),
     ];
     for (cat, table) in [
-        (Cat::Into, INTO),
-        (Cat::Becomes, BECOMES),
-        (Cat::Naming, NAMING),
-        (Cat::FollowUp, FOLLOW_UPS),
-        (Cat::Mark, MARKS),
+        (Into, INTO),
+        (Becomes, BECOMES),
+        (Naming, NAMING),
+        (FollowUp, FOLLOW_UPS),
+        (Mark, MARKS),
     ] {
         rules.extend(blanks(cat, table).map(Rule::read_only));
     }
     // "`x` -> `y`, update all callers"
-    rules.push(
-        word(
-            RuleInfo::new("en.follow_up.update_all_callers_bare", 11),
-            Cat::FollowUp,
-            "update all callers",
-            blank(),
-        )
-        .read_only(),
-    );
+    rules.push(filler(
+        "en.follow_up.update_all_callers_bare",
+        11,
+        FollowUp,
+        "update all callers",
+    ));
     rules.extend([
         heard(
             "en.becomes.into",
-            Cat::Becomes,
-            vec![W("renamed"), C(Cat::Into)],
+            Becomes,
+            vec![W("renamed"), C(Into)],
             first,
         ),
         // "could you do that", "pls rename", "do that for me, please?"
         heard(
             "en.follow_up.prompt",
-            Cat::FollowUp,
-            vec![C(Cat::Prompt), C(Cat::FollowUp)],
+            FollowUp,
+            vec![C(Prompt), C(FollowUp)],
             first,
         ),
         heard(
             "en.follow_up.comma_interjection",
-            Cat::FollowUp,
-            vec![C(Cat::FollowUp), W(","), C(Cat::Interjection)],
+            FollowUp,
+            vec![C(FollowUp), W(","), C(Interjection)],
             first,
         ),
         // "...? `regrid` is kinda confusing for me": a remark, as a sentence
         // of its own, so none of its words belong to the request.
         heard(
             "en.follow_up.remark",
-            Cat::FollowUp,
-            vec![C(Cat::Mark), C(Cat::Remark)],
+            FollowUp,
+            vec![C(Mark), C(Remark)],
             first,
         ),
         heard(
             "en.follow_up.mark",
-            Cat::FollowUp,
-            vec![C(Cat::FollowUp), C(Cat::Mark)],
+            FollowUp,
+            vec![C(FollowUp), C(Mark)],
             first,
         ),
     ]);
@@ -159,10 +154,7 @@ const INTO: Phrases = &[
 ];
 
 /// Words saying a thing is to be called something else, after it.
-const BECOMES: Phrases = &[
-    ("en.becomes.arrow", "- >"),
-    ("en.becomes.should_be", "should be"),
-];
+const BECOMES: Phrases = &[("en.becomes.should_be", "should be")];
 
 /// Verbs giving a thing a name, before it and the name.
 const NAMING: Phrases = &[("en.naming.rename", "rename"), ("en.naming.make", "make")];

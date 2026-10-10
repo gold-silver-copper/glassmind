@@ -4,7 +4,7 @@
 //! description says what is asked for; the word in the noun's place
 //! leaves the kind open.
 
-use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{Rule, Sym};
 use glassmind_meaning::Ontology;
 
 use crate::asking::{described, identify, read_only_rule, words_then};
@@ -12,6 +12,7 @@ use crate::last;
 use crate::locate::fillers;
 use crate::sem::{Cat, Sem};
 
+use Cat::*;
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 9;
@@ -27,71 +28,69 @@ fn described_rest<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let rule = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
-    };
+    let rule = |id, lhs, rhs, build| read_only_rule(id, ROUND, lhs, rhs, build);
     let mut rules = vec![
         // "ones calling `x`", "anything that calls it"
         rule(
             "en.description.ones_participial",
-            Cat::Description,
-            vec![C(Cat::Ones), C(Cat::Participial)],
+            Description,
+            vec![C(Ones), C(Participial)],
             described_rest,
         ),
         rule(
             "en.description.ones_that",
-            Cat::Description,
-            vec![C(Cat::Ones), W("that"), C(Cat::VerbPhrase)],
+            Description,
+            vec![C(Ones), W("that"), C(VerbPhrase)],
             described_rest,
         ),
         // "everything `shoved` invokes", "the ones `x` calls"
         read_only_rule(
             "en.description.ones_restricted",
             13,
-            Cat::Description,
-            vec![C(Cat::Ones), C(Cat::Restriction)],
+            Description,
+            vec![C(Ones), C(Restriction)],
             described_rest,
         ),
         // "they, the functions that call it": the description they stand for.
         rule(
             "en.description.ones_apposed",
-            Cat::Description,
-            vec![C(Cat::Ones), W(","), C(Cat::Description)],
+            Description,
+            vec![C(Ones), W(","), C(Description)],
             last,
         ),
         // "which ones call it?"
         rule(
             "en.question.which_ones",
-            Cat::Question,
-            vec![W("which"), C(Cat::Ones), C(Cat::VerbPhrase)],
+            Question,
+            vec![W("which"), C(Ones), C(VerbPhrase)],
             identify_rest,
         ),
         // "which ones are they, the ones calling it?", "which functions are
         // those that call it?"
         rule(
             "en.question.which_ones_are",
-            Cat::Question,
-            vec![W("which"), C(Cat::Ones), W("are"), C(Cat::Description)],
+            Question,
+            vec![W("which"), C(Ones), W("are"), C(Description)],
             identify_rest,
         ),
         rule(
             "en.question.which_kind_are",
-            Cat::Question,
-            vec![W("which"), C(Cat::Noun), W("are"), C(Cat::Description)],
+            Question,
+            vec![W("which"), C(Noun), W("are"), C(Description)],
             identify_rest,
         ),
         // "is there anything that calls it?"
         rule(
             "en.question.is_there",
-            Cat::Question,
-            words_then("is there", &[Cat::Description]),
+            Question,
+            words_then("is there", &[Description]),
             identify,
         ),
     ];
     rules.extend(fillers(
         ROUND,
         &[(
-            Cat::Ones,
+            Ones,
             &[
                 ("en.ones.ones", "ones"),
                 ("en.ones.those", "those"),
@@ -104,13 +103,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(fillers(
         11,
         &[(
-            Cat::Ones,
+            Ones,
             &[("en.ones.places", "places"), ("en.ones.things", "things")],
         )],
     ));
     rules.extend(fillers(
         13,
-        &[(Cat::Ones, &[("en.ones.everything", "everything")])],
+        &[(Ones, &[("en.ones.everything", "everything")])],
     ));
     rules
 }
