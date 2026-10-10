@@ -1,0 +1,1538 @@
+# calibrated on the hidden texting-style dev set (497 turns): answering questions the model gives 0.8 or more, when every word typed has come with the template before, gave 447 right and none wrong (tagger off: 412); no threshold down to 0.5 gave a wrong answer or more right ones. From 0.3 up to that, it asks "did you mean".
+examples	3677
+sure	0.8
+offer	0.3
+template	how many functions call <0>	328
+template	how many functions call a function named <0>	2
+template	rename <0> to <1>	181
+template	rename the <0> field to <1>	111
+template	rename the <0> function to <1>	40
+template	what calls <0>	181
+template	what calls a function named <0>	1
+template	what does <0> call	81
+template	what does <0> do	448
+template	what does <0> have	82
+template	what does a field named <0> have	2
+template	what does a function named <0> call	1
+template	what does a struct named <0> have	76
+template	what does the <0> enum do	2
+template	what does the <0> function do	15
+template	what does the <0> struct do	11
+template	what has a field named <0>	2
+template	what has a field whose type is or contains <0>	4
+template	where is <0> defined	550
+template	where is the <0> enum defined	1
+template	where is the <0> field defined	2
+template	where is the <0> function defined	13
+template	where is the <0> struct defined	5
+template	which fields belong to <0>	43
+template	which fields belong to a struct named <0>	90
+template	which fields does <0> have	115
+template	which fields does a struct named <0> have	165
+template	which fields have <0>	1
+template	which fields have a struct named <0>	1
+template	which functions call <0>	375
+template	which functions call a function named <0>	1
+template	which functions does <0> call	325
+template	which functions does a function named <0> call	9
+template	which structs have <0>	6
+template	which structs have a field named <0>	252
+template	which structs have a field whose type is or contains <0>	155
+seen	's	5
+seen	a	315
+seen	actually	11
+seen	advance	11
+seen	again	2
+seen	all	4
+seen	also	6
+seen	an	9
+seen	and	24
+seen	any	29
+seen	anything	59
+seen	anyway	2
+seen	anywhere	2
+seen	are	140
+seen	as	23
+seen	at	27
+seen	be	11
+seen	but	4
+seen	by	48
+seen	call	764
+seen	called	148
+seen	callees	14
+seen	callers	77
+seen	calling	138
+seen	calls	236
+seen	can	292
+seen	can't	29
+seen	cant	3
+seen	care	7
+seen	carry	9
+seen	change	10
+seen	check	2
+seen	checking	6
+seen	code	9
+seen	codebase	19
+seen	contain	7
+seen	containing	14
+seen	contains	74
+seen	could	122
+seen	count	20
+seen	counts	4
+seen	curious	2
+seen	declared	10
+seen	def	13
+seen	define	4
+seen	defined	486
+seen	definition	16
+seen	defn	5
+seen	directly	7
+seen	do	202
+seen	does	536
+seen	doing	3
+seen	don't	2
+seen	end	21
+seen	ends	45
+seen	enum	3
+seen	even	34
+seen	everywhere	8
+seen	exactly	18
+seen	explain	42
+seen	field	516
+seen	fields	564
+seen	figure	166
+seen	file	5
+seen	find	83
+seen	fn	33
+seen	fns	223
+seen	for	331
+seen	from	54
+seen	funcs	29
+seen	function	38
+seen	functions	790
+seen	get	42
+seen	gets	18
+seen	getting	3
+seen	got	51
+seen	has	89
+seen	have	442
+seen	hey	255
+seen	hi	46
+seen	hm	9
+seen	hmm	12
+seen	hold	39
+seen	holding	7
+seen	holds	5
+seen	how	311
+seen	i	42
+seen	i'd	199
+seen	i'm	237
+seen	if	12
+seen	in	164
+seen	incl	3
+seen	includes	5
+seen	including	3
+seen	inside	61
+seen	instead	4
+seen	into	10
+seen	invoke	10
+seen	invokes	3
+seen	is	621
+seen	it	523
+seen	it's	35
+seen	its	20
+seen	jump	2
+seen	just	7
+seen	keep	4
+seen	kind	4
+seen	know	176
+seen	like	251
+seen	list	95
+seen	live	23
+seen	lives	9
+seen	loc	2
+seen	locate	4
+seen	location	13
+seen	looking	27
+seen	lot	4
+seen	made	5
+seen	make	3
+seen	many	310
+seen	me	310
+seen	mean	7
+seen	members	8
+seen	name	13
+seen	named	94
+seen	need	2
+seen	nested	5
+seen	num	2
+seen	number	11
+seen	of	239
+seen	ok	69
+seen	on	84
+seen	one	19
+seen	ones	20
+seen	only	9
+seen	or	119
+seen	other	7
+seen	out	166
+seen	places	6
+seen	please	176
+seen	pls	126
+seen	plz	2
+seen	point	22
+seen	purpose	15
+seen	question	191
+seen	quick	205
+seen	rename	294
+seen	renamed	12
+seen	request	4
+seen	roughly	3
+seen	s	2
+seen	saw	4
+seen	see	18
+seen	seeing	3
+seen	should	10
+seen	show	20
+seen	so	109
+seen	some	9
+seen	somehow	3
+seen	something	10
+seen	somewhere	13
+seen	sorry	4
+seen	store	8
+seen	struct	395
+seen	structs	395
+seen	take	8
+seen	tell	240
+seen	test	18
+seen	testing	6
+seen	thanks	122
+seen	that	175
+seen	that's	2
+seen	the	430
+seen	their	6
+seen	them	26
+seen	there	87
+seen	there's	2
+seen	they	8
+seen	think	4
+seen	this	5
+seen	to	664
+seen	trying	222
+seen	type	118
+seen	typed	9
+seen	types	3
+seen	um	65
+seen	understand	41
+seen	up	69
+seen	update	2
+seen	use	21
+seen	used	45
+seen	uses	17
+seen	want	16
+seen	way	3
+seen	what	907
+seen	what's	112
+seen	whats	39
+seen	where	500
+seen	where's	91
+seen	which	949
+seen	who	94
+seen	whose	66
+seen	with	44
+seen	wrapped	11
+seen	wrapping	8
+seen	wraps	10
+seen	you	414
+word	how many functions call <0>	a	1
+word	how many functions call <0>	advance	1
+word	how many functions call <0>	anything	2
+word	how many functions call <0>	are	23
+word	how many functions call <0>	by	4
+word	how many functions call <0>	call	257
+word	how many functions call <0>	called	5
+word	how many functions call <0>	callers	2
+word	how many functions call <0>	calling	53
+word	how many functions call <0>	calls	6
+word	how many functions call <0>	can	19
+word	how many functions call <0>	could	9
+word	how many functions call <0>	count	20
+word	how many functions call <0>	curious	2
+word	how many functions call <0>	do	3
+word	how many functions call <0>	end	15
+word	how many functions call <0>	exactly	4
+word	how many functions call <0>	figure	9
+word	how many functions call <0>	fn	1
+word	how many functions call <0>	fns	85
+word	how many functions call <0>	for	3
+word	how many functions call <0>	from	1
+word	how many functions call <0>	funcs	15
+word	how many functions call <0>	function	1
+word	how many functions call <0>	functions	226
+word	how many functions call <0>	get	1
+word	how many functions call <0>	hey	26
+word	how many functions call <0>	hi	3
+word	how many functions call <0>	hm	1
+word	how many functions call <0>	how	308
+word	how many functions call <0>	i'd	20
+word	how many functions call <0>	i'm	11
+word	how many functions call <0>	if	1
+word	how many functions call <0>	in	3
+word	how many functions call <0>	invoke	3
+word	how many functions call <0>	is	13
+word	how many functions call <0>	it	16
+word	how many functions call <0>	just	4
+word	how many functions call <0>	know	23
+word	how many functions call <0>	like	28
+word	how many functions call <0>	lot	2
+word	how many functions call <0>	many	308
+word	how many functions call <0>	me	23
+word	how many functions call <0>	num	2
+word	how many functions call <0>	number	11
+word	how many functions call <0>	of	25
+word	how many functions call <0>	ok	6
+word	how many functions call <0>	one	2
+word	how many functions call <0>	only	1
+word	how many functions call <0>	or	1
+word	how many functions call <0>	out	9
+word	how many functions call <0>	places	5
+word	how many functions call <0>	please	13
+word	how many functions call <0>	pls	6
+word	how many functions call <0>	question	23
+word	how many functions call <0>	quick	24
+word	how many functions call <0>	roughly	3
+word	how many functions call <0>	so	10
+word	how many functions call <0>	tell	20
+word	how many functions call <0>	thanks	12
+word	how many functions call <0>	that	17
+word	how many functions call <0>	the	7
+word	how many functions call <0>	them	5
+word	how many functions call <0>	there	9
+word	how many functions call <0>	this	1
+word	how many functions call <0>	to	30
+word	how many functions call <0>	trying	10
+word	how many functions call <0>	um	10
+word	how many functions call <0>	up	15
+word	how many functions call <0>	use	3
+word	how many functions call <0>	used	2
+word	how many functions call <0>	want	2
+word	how many functions call <0>	with	1
+word	how many functions call <0>	you	31
+word	how many functions call a function named <0>	call	1
+word	how many functions call a function named <0>	calls	1
+word	how many functions call a function named <0>	function	2
+word	how many functions call a function named <0>	functions	2
+word	how many functions call a function named <0>	how	2
+word	how many functions call a function named <0>	i'm	1
+word	how many functions call a function named <0>	it	1
+word	how many functions call a function named <0>	many	2
+word	how many functions call a function named <0>	the	2
+word	how many functions call a function named <0>	to	1
+word	how many functions call a function named <0>	trying	1
+word	how many functions call a function named <0>	understand	1
+word	rename <0> to <1>	all	1
+word	rename <0> to <1>	anyway	2
+word	rename <0> to <1>	be	6
+word	rename <0> to <1>	call	3
+word	rename <0> to <1>	called	2
+word	rename <0> to <1>	callers	2
+word	rename <0> to <1>	can	7
+word	rename <0> to <1>	care	1
+word	rename <0> to <1>	change	2
+word	rename <0> to <1>	could	10
+word	rename <0> to <1>	do	5
+word	rename <0> to <1>	even	2
+word	rename <0> to <1>	everywhere	6
+word	rename <0> to <1>	for	3
+word	rename <0> to <1>	hey	1
+word	rename <0> to <1>	i	1
+word	rename <0> to <1>	i'd	6
+word	rename <0> to <1>	i'm	1
+word	rename <0> to <1>	if	2
+word	rename <0> to <1>	instead	2
+word	rename <0> to <1>	is	2
+word	rename <0> to <1>	it	18
+word	rename <0> to <1>	its	1
+word	rename <0> to <1>	like	7
+word	rename <0> to <1>	me	3
+word	rename <0> to <1>	name	2
+word	rename <0> to <1>	of	2
+word	rename <0> to <1>	ok	5
+word	rename <0> to <1>	one	1
+word	rename <0> to <1>	only	1
+word	rename <0> to <1>	please	9
+word	rename <0> to <1>	pls	49
+word	rename <0> to <1>	plz	2
+word	rename <0> to <1>	quick	2
+word	rename <0> to <1>	rename	162
+word	rename <0> to <1>	renamed	4
+word	rename <0> to <1>	request	2
+word	rename <0> to <1>	should	6
+word	rename <0> to <1>	so	2
+word	rename <0> to <1>	something	1
+word	rename <0> to <1>	take	2
+word	rename <0> to <1>	thanks	2
+word	rename <0> to <1>	that	6
+word	rename <0> to <1>	that's	1
+word	rename <0> to <1>	the	1
+word	rename <0> to <1>	to	125
+word	rename <0> to <1>	understand	1
+word	rename <0> to <1>	update	2
+word	rename <0> to <1>	used	1
+word	rename <0> to <1>	want	3
+word	rename <0> to <1>	what	2
+word	rename <0> to <1>	you	17
+word	rename the <0> field to <1>	a	1
+word	rename the <0> field to <1>	advance	1
+word	rename the <0> field to <1>	and	1
+word	rename the <0> field to <1>	be	4
+word	rename the <0> field to <1>	call	3
+word	rename the <0> field to <1>	called	2
+word	rename the <0> field to <1>	can	11
+word	rename the <0> field to <1>	care	4
+word	rename the <0> field to <1>	change	6
+word	rename the <0> field to <1>	code	1
+word	rename the <0> field to <1>	could	12
+word	rename the <0> field to <1>	do	8
+word	rename the <0> field to <1>	doing	1
+word	rename the <0> field to <1>	everywhere	1
+word	rename the <0> field to <1>	field	111
+word	rename the <0> field to <1>	fn	1
+word	rename the <0> field to <1>	for	2
+word	rename the <0> field to <1>	hey	2
+word	rename the <0> field to <1>	hi	4
+word	rename the <0> field to <1>	hmm	1
+word	rename the <0> field to <1>	i	2
+word	rename the <0> field to <1>	i'd	15
+word	rename the <0> field to <1>	i'm	1
+word	rename the <0> field to <1>	in	1
+word	rename the <0> field to <1>	instead	2
+word	rename the <0> field to <1>	into	3
+word	rename the <0> field to <1>	is	2
+word	rename the <0> field to <1>	it	11
+word	rename the <0> field to <1>	its	1
+word	rename the <0> field to <1>	like	15
+word	rename the <0> field to <1>	lot	1
+word	rename the <0> field to <1>	me	2
+word	rename the <0> field to <1>	name	4
+word	rename the <0> field to <1>	need	1
+word	rename the <0> field to <1>	of	4
+word	rename the <0> field to <1>	ok	5
+word	rename the <0> field to <1>	one	2
+word	rename the <0> field to <1>	please	11
+word	rename the <0> field to <1>	pls	24
+word	rename the <0> field to <1>	quick	3
+word	rename the <0> field to <1>	rename	92
+word	rename the <0> field to <1>	renamed	8
+word	rename the <0> field to <1>	request	1
+word	rename the <0> field to <1>	should	4
+word	rename the <0> field to <1>	so	4
+word	rename the <0> field to <1>	take	4
+word	rename the <0> field to <1>	thanks	8
+word	rename the <0> field to <1>	that	11
+word	rename the <0> field to <1>	the	37
+word	rename the <0> field to <1>	think	2
+word	rename the <0> field to <1>	to	80
+word	rename the <0> field to <1>	um	1
+word	rename the <0> field to <1>	used	1
+word	rename the <0> field to <1>	want	2
+word	rename the <0> field to <1>	you	24
+word	rename the <0> function to <1>	a	1
+word	rename the <0> function to <1>	advance	1
+word	rename the <0> function to <1>	and	1
+word	rename the <0> function to <1>	call	1
+word	rename the <0> function to <1>	can	12
+word	rename the <0> function to <1>	care	2
+word	rename the <0> function to <1>	change	2
+word	rename the <0> function to <1>	could	12
+word	rename the <0> function to <1>	do	1
+word	rename the <0> function to <1>	everywhere	1
+word	rename the <0> function to <1>	fn	10
+word	rename the <0> function to <1>	for	2
+word	rename the <0> function to <1>	function	28
+word	rename the <0> function to <1>	hey	5
+word	rename the <0> function to <1>	hi	2
+word	rename the <0> function to <1>	i'd	6
+word	rename the <0> function to <1>	in	1
+word	rename the <0> function to <1>	into	1
+word	rename the <0> function to <1>	it	2
+word	rename the <0> function to <1>	it's	1
+word	rename the <0> function to <1>	like	6
+word	rename the <0> function to <1>	lot	1
+word	rename the <0> function to <1>	make	1
+word	rename the <0> function to <1>	me	2
+word	rename the <0> function to <1>	of	2
+word	rename the <0> function to <1>	ok	1
+word	rename the <0> function to <1>	one	2
+word	rename the <0> function to <1>	places	1
+word	rename the <0> function to <1>	please	19
+word	rename the <0> function to <1>	pls	2
+word	rename the <0> function to <1>	quick	3
+word	rename the <0> function to <1>	rename	40
+word	rename the <0> function to <1>	request	1
+word	rename the <0> function to <1>	so	1
+word	rename the <0> function to <1>	take	2
+word	rename the <0> function to <1>	thanks	7
+word	rename the <0> function to <1>	that	4
+word	rename the <0> function to <1>	the	28
+word	rename the <0> function to <1>	to	37
+word	rename the <0> function to <1>	used	1
+word	rename the <0> function to <1>	you	24
+word	what calls <0>	anything	12
+word	what calls <0>	call	6
+word	what calls <0>	called	16
+word	what calls <0>	callers	69
+word	what calls <0>	calling	11
+word	what calls <0>	calls	73
+word	what calls <0>	can	1
+word	what calls <0>	does	1
+word	what calls <0>	ends	7
+word	what calls <0>	figure	1
+word	what calls <0>	for	2
+word	what calls <0>	from	16
+word	what calls <0>	functions	3
+word	what calls <0>	get	3
+word	what calls <0>	gets	3
+word	what calls <0>	getting	2
+word	what calls <0>	hey	2
+word	what calls <0>	i'd	1
+word	what calls <0>	invokes	1
+word	what calls <0>	is	8
+word	what calls <0>	it	5
+word	what calls <0>	it's	2
+word	what calls <0>	know	1
+word	what calls <0>	like	1
+word	what calls <0>	list	4
+word	what calls <0>	me	1
+word	what calls <0>	of	62
+word	what calls <0>	only	1
+word	what calls <0>	out	1
+word	what calls <0>	please	1
+word	what calls <0>	pls	7
+word	what calls <0>	question	2
+word	what calls <0>	quick	2
+word	what calls <0>	see	2
+word	what calls <0>	tell	1
+word	what calls <0>	that	7
+word	what calls <0>	them	1
+word	what calls <0>	there	7
+word	what calls <0>	to	4
+word	what calls <0>	trying	3
+word	what calls <0>	up	7
+word	what calls <0>	used	3
+word	what calls <0>	uses	5
+word	what calls <0>	what	20
+word	what calls <0>	where	9
+word	what calls <0>	where's	10
+word	what calls <0>	which	3
+word	what calls <0>	who	64
+word	what calls <0>	you	1
+word	what calls a function named <0>	callers	1
+word	what calls a function named <0>	fn	1
+word	what calls a function named <0>	for	1
+word	what does <0> call	and	1
+word	what does <0> call	at	1
+word	what does <0> call	by	2
+word	what does <0> call	call	44
+word	what does <0> call	called	3
+word	what does <0> call	callees	14
+word	what does <0> call	calling	2
+word	what does <0> call	calls	15
+word	what does <0> call	does	37
+word	what does <0> call	fns	1
+word	what does <0> call	for	2
+word	what does <0> call	gets	3
+word	what does <0> call	i'm	1
+word	what does <0> call	inside	9
+word	what does <0> call	into	5
+word	what does <0> call	invokes	2
+word	what does <0> call	it	7
+word	what does <0> call	kind	1
+word	what does <0> call	list	7
+word	what does <0> call	looking	1
+word	what does <0> call	made	3
+word	what does <0> call	me	1
+word	what does <0> call	of	9
+word	what does <0> call	pls	3
+word	what does <0> call	show	4
+word	what does <0> call	what	59
+word	what does <0> call	what's	2
+word	what does <0> call	which	1
+word	what does <0> do	a	1
+word	what does <0> do	actually	7
+word	what does <0> do	advance	3
+word	what does <0> do	and	18
+word	what does <0> do	be	1
+word	what does <0> do	but	3
+word	what does <0> do	can	34
+word	what does <0> do	can't	1
+word	what does <0> do	check	1
+word	what does <0> do	checking	6
+word	what does <0> do	code	1
+word	what does <0> do	codebase	1
+word	what does <0> do	could	14
+word	what does <0> do	do	174
+word	what does <0> do	does	177
+word	what does <0> do	doing	2
+word	what does <0> do	don't	2
+word	what does <0> do	even	30
+word	what does <0> do	exactly	13
+word	what does <0> do	explain	38
+word	what does <0> do	figure	10
+word	what does <0> do	for	274
+word	what does <0> do	get	2
+word	what does <0> do	hey	23
+word	what does <0> do	hi	2
+word	what does <0> do	hm	2
+word	what does <0> do	hmm	2
+word	what does <0> do	i	3
+word	what does <0> do	i'd	22
+word	what does <0> do	i'm	20
+word	what does <0> do	in	5
+word	what does <0> do	is	134
+word	what does <0> do	it	147
+word	what does <0> do	it's	14
+word	what does <0> do	its	5
+word	what does <0> do	keep	2
+word	what does <0> do	kind	1
+word	what does <0> do	know	21
+word	what does <0> do	like	33
+word	what does <0> do	me	26
+word	what does <0> do	name	3
+word	what does <0> do	of	8
+word	what does <0> do	ok	5
+word	what does <0> do	on	1
+word	what does <0> do	or	13
+word	what does <0> do	out	10
+word	what does <0> do	please	10
+word	what does <0> do	purpose	12
+word	what does <0> do	question	19
+word	what does <0> do	quick	19
+word	what does <0> do	see	1
+word	what does <0> do	seeing	2
+word	what does <0> do	so	12
+word	what does <0> do	tell	23
+word	what does <0> do	test	4
+word	what does <0> do	testing	6
+word	what does <0> do	thanks	9
+word	what does <0> do	the	6
+word	what does <0> do	there's	1
+word	what does <0> do	this	2
+word	what does <0> do	to	44
+word	what does <0> do	trying	20
+word	what does <0> do	um	4
+word	what does <0> do	understand	12
+word	what does <0> do	use	1
+word	what does <0> do	used	16
+word	what does <0> do	what	315
+word	what does <0> do	what's	87
+word	what does <0> do	whats	24
+word	what does <0> do	you	47
+word	what does <0> have	's	5
+word	what does <0> have	a	1
+word	what does <0> have	are	9
+word	what does <0> have	can	1
+word	what does <0> have	could	1
+word	what does <0> have	does	5
+word	what does <0> have	fields	76
+word	what does <0> have	figure	1
+word	what does <0> have	for	1
+word	what does <0> have	has	1
+word	what does <0> have	have	1
+word	what does <0> have	hold	4
+word	what does <0> have	i	2
+word	what does <0> have	i'm	3
+word	what does <0> have	in	4
+word	what does <0> have	inside	3
+word	what does <0> have	it	3
+word	what does <0> have	it's	2
+word	what does <0> have	its	5
+word	what does <0> have	know	1
+word	what does <0> have	like	1
+word	what does <0> have	list	16
+word	what does <0> have	made	1
+word	what does <0> have	me	8
+word	what does <0> have	mean	1
+word	what does <0> have	members	3
+word	what does <0> have	of	32
+word	what does <0> have	ones	2
+word	what does <0> have	out	1
+word	what does <0> have	please	1
+word	what does <0> have	pls	5
+word	what does <0> have	quick	1
+word	what does <0> have	show	7
+word	what does <0> have	so	1
+word	what does <0> have	somewhere	1
+word	what does <0> have	struct	9
+word	what does <0> have	tell	1
+word	what does <0> have	that	2
+word	what does <0> have	the	9
+word	what does <0> have	they	3
+word	what does <0> have	think	1
+word	what does <0> have	to	4
+word	what does <0> have	trying	3
+word	what does <0> have	understand	2
+word	what does <0> have	want	1
+word	what does <0> have	what	16
+word	what does <0> have	what's	4
+word	what does <0> have	whats	3
+word	what does <0> have	which	6
+word	what does <0> have	you	2
+word	what does a field named <0> have	fields	2
+word	what does a field named <0> have	have	2
+word	what does a field named <0> have	what	2
+word	what does a function named <0> call	call	1
+word	what does a function named <0> call	does	1
+word	what does a function named <0> call	fn	1
+word	what does a function named <0> call	inside	1
+word	what does a function named <0> call	what	1
+word	what does a struct named <0> have	advance	1
+word	what does a struct named <0> have	are	12
+word	what does a struct named <0> have	can	5
+word	what does a struct named <0> have	could	10
+word	what does a struct named <0> have	does	1
+word	what does a struct named <0> have	fields	60
+word	what does a struct named <0> have	for	10
+word	what does a struct named <0> have	hey	1
+word	what does a struct named <0> have	hi	1
+word	what does a struct named <0> have	hold	1
+word	what does a struct named <0> have	in	10
+word	what does a struct named <0> have	inside	2
+word	what does a struct named <0> have	it	5
+word	what does a struct named <0> have	its	1
+word	what does a struct named <0> have	list	18
+word	what does a struct named <0> have	me	13
+word	what does a struct named <0> have	members	4
+word	what does a struct named <0> have	of	47
+word	what does a struct named <0> have	ones	1
+word	what does a struct named <0> have	please	1
+word	what does a struct named <0> have	pls	4
+word	what does a struct named <0> have	question	1
+word	what does a struct named <0> have	quick	1
+word	what does a struct named <0> have	show	1
+word	what does a struct named <0> have	struct	76
+word	what does a struct named <0> have	tell	2
+word	what does a struct named <0> have	thanks	9
+word	what does a struct named <0> have	the	28
+word	what does a struct named <0> have	they	2
+word	what does a struct named <0> have	to	1
+word	what does a struct named <0> have	trying	1
+word	what does a struct named <0> have	understand	1
+word	what does a struct named <0> have	what	14
+word	what does a struct named <0> have	what's	6
+word	what does a struct named <0> have	whats	5
+word	what does a struct named <0> have	which	2
+word	what does a struct named <0> have	you	15
+word	what does the <0> enum do	do	1
+word	what does the <0> enum do	does	1
+word	what does the <0> enum do	enum	2
+word	what does the <0> enum do	for	1
+word	what does the <0> enum do	hey	1
+word	what does the <0> enum do	is	1
+word	what does the <0> enum do	question	1
+word	what does the <0> enum do	quick	1
+word	what does the <0> enum do	the	2
+word	what does the <0> enum do	what	2
+word	what does the <0> function do	actually	1
+word	what does the <0> function do	check	1
+word	what does the <0> function do	could	2
+word	what does the <0> function do	do	4
+word	what does the <0> function do	does	5
+word	what does the <0> function do	explain	2
+word	what does the <0> function do	fn	10
+word	what does the <0> function do	for	5
+word	what does the <0> function do	function	4
+word	what does the <0> function do	i'd	1
+word	what does the <0> function do	i'm	1
+word	what does the <0> function do	is	1
+word	what does the <0> function do	it	5
+word	what does the <0> function do	know	1
+word	what does the <0> function do	like	1
+word	what does the <0> function do	me	1
+word	what does the <0> function do	of	2
+word	what does the <0> function do	please	1
+word	what does the <0> function do	pls	1
+word	what does the <0> function do	purpose	3
+word	what does the <0> function do	tell	1
+word	what does the <0> function do	test	1
+word	what does the <0> function do	the	4
+word	what does the <0> function do	to	2
+word	what does the <0> function do	trying	1
+word	what does the <0> function do	understand	1
+word	what does the <0> function do	what	8
+word	what does the <0> function do	what's	2
+word	what does the <0> function do	whats	1
+word	what does the <0> function do	you	2
+word	what does the <0> struct do	actually	1
+word	what does the <0> struct do	and	1
+word	what does the <0> struct do	can	2
+word	what does the <0> struct do	could	1
+word	what does the <0> struct do	do	1
+word	what does the <0> struct do	does	2
+word	what does the <0> struct do	explain	2
+word	what does the <0> struct do	for	8
+word	what does the <0> struct do	hey	2
+word	what does the <0> struct do	i'd	1
+word	what does the <0> struct do	is	5
+word	what does the <0> struct do	it	3
+word	what does the <0> struct do	it's	1
+word	what does the <0> struct do	know	1
+word	what does the <0> struct do	like	1
+word	what does the <0> struct do	me	2
+word	what does the <0> struct do	please	1
+word	what does the <0> struct do	question	2
+word	what does the <0> struct do	quick	2
+word	what does the <0> struct do	so	1
+word	what does the <0> struct do	struct	11
+word	what does the <0> struct do	tell	2
+word	what does the <0> struct do	the	7
+word	what does the <0> struct do	to	1
+word	what does the <0> struct do	used	2
+word	what does the <0> struct do	what	10
+word	what does the <0> struct do	you	3
+word	what has a field named <0>	a	1
+word	what has a field named <0>	an	1
+word	what has a field named <0>	as	1
+word	what has a field named <0>	declared	1
+word	what has a field named <0>	field	2
+word	what has a field named <0>	has	1
+word	what has a field named <0>	struct	1
+word	what has a field named <0>	where's	1
+word	what has a field named <0>	who	1
+word	what has a field whose type is or contains <0>	a	4
+word	what has a field whose type is or contains <0>	containing	2
+word	what has a field whose type is or contains <0>	field	4
+word	what has a field whose type is or contains <0>	has	3
+word	what has a field whose type is or contains <0>	in	1
+word	what has a field whose type is or contains <0>	it	2
+word	what has a field whose type is or contains <0>	of	1
+word	what has a field whose type is or contains <0>	or	2
+word	what has a field whose type is or contains <0>	store	1
+word	what has a field whose type is or contains <0>	struct	1
+word	what has a field whose type is or contains <0>	type	1
+word	what has a field whose type is or contains <0>	typed	1
+word	what has a field whose type is or contains <0>	who	4
+word	where is <0> defined	a	1
+word	where is <0> defined	again	2
+word	where is <0> defined	and	2
+word	where is <0> defined	anywhere	1
+word	where is <0> defined	at	10
+word	where is <0> defined	but	1
+word	where is <0> defined	can	54
+word	where is <0> defined	can't	26
+word	where is <0> defined	cant	3
+word	where is <0> defined	code	7
+word	where is <0> defined	codebase	4
+word	where is <0> defined	could	8
+word	where is <0> defined	declared	9
+word	where is <0> defined	def	13
+word	where is <0> defined	defined	461
+word	where is <0> defined	definition	15
+word	where is <0> defined	defn	5
+word	where is <0> defined	do	4
+word	where is <0> defined	does	28
+word	where is <0> defined	figure	38
+word	where is <0> defined	file	5
+word	where is <0> defined	find	62
+word	where is <0> defined	for	6
+word	where is <0> defined	get	12
+word	where is <0> defined	hey	45
+word	where is <0> defined	hi	13
+word	where is <0> defined	hm	2
+word	where is <0> defined	hmm	2
+word	where is <0> defined	i	17
+word	where is <0> defined	i'd	16
+word	where is <0> defined	i'm	55
+word	where is <0> defined	in	13
+word	where is <0> defined	is	286
+word	where is <0> defined	it	71
+word	where is <0> defined	its	6
+word	where is <0> defined	jump	2
+word	where is <0> defined	keep	1
+word	where is <0> defined	know	19
+word	where is <0> defined	like	19
+word	where is <0> defined	live	20
+word	where is <0> defined	lives	2
+word	where is <0> defined	loc	2
+word	where is <0> defined	locate	3
+word	where is <0> defined	location	13
+word	where is <0> defined	looking	8
+word	where is <0> defined	me	55
+word	where is <0> defined	of	19
+word	where is <0> defined	ok	9
+word	where is <0> defined	one	2
+word	where is <0> defined	out	38
+word	where is <0> defined	please	22
+word	where is <0> defined	pls	9
+word	where is <0> defined	point	22
+word	where is <0> defined	question	33
+word	where is <0> defined	quick	35
+word	where is <0> defined	saw	2
+word	where is <0> defined	see	3
+word	where is <0> defined	seeing	1
+word	where is <0> defined	so	12
+word	where is <0> defined	somewhere	2
+word	where is <0> defined	sorry	3
+word	where is <0> defined	tell	33
+word	where is <0> defined	test	1
+word	where is <0> defined	thanks	17
+word	where is <0> defined	that	3
+word	where is <0> defined	the	24
+word	where is <0> defined	there	1
+word	where is <0> defined	to	78
+word	where is <0> defined	trying	49
+word	where is <0> defined	um	8
+word	where is <0> defined	where	435
+word	where is <0> defined	where's	76
+word	where is <0> defined	which	5
+word	where is <0> defined	you	59
+word	where is the <0> enum defined	defined	1
+word	where is the <0> enum defined	enum	1
+word	where is the <0> enum defined	hey	1
+word	where is the <0> enum defined	is	1
+word	where is the <0> enum defined	question	1
+word	where is the <0> enum defined	quick	1
+word	where is the <0> enum defined	the	1
+word	where is the <0> enum defined	where	1
+word	where is the <0> field defined	can	1
+word	where is the <0> field defined	defined	1
+word	where is the <0> field defined	field	2
+word	where is the <0> field defined	is	2
+word	where is the <0> field defined	it	1
+word	where is the <0> field defined	me	1
+word	where is the <0> field defined	please	1
+word	where is the <0> field defined	tell	1
+word	where is the <0> field defined	the	1
+word	where is the <0> field defined	where	2
+word	where is the <0> field defined	you	1
+word	where is the <0> function defined	can	1
+word	where is the <0> function defined	could	1
+word	where is the <0> function defined	defined	7
+word	where is the <0> function defined	does	1
+word	where is the <0> function defined	fn	9
+word	where is the <0> function defined	function	2
+word	where is the <0> function defined	hey	1
+word	where is the <0> function defined	is	5
+word	where is the <0> function defined	it	2
+word	where is the <0> function defined	live	3
+word	where is the <0> function defined	locate	1
+word	where is the <0> function defined	me	2
+word	where is the <0> function defined	please	1
+word	where is the <0> function defined	tell	2
+word	where is the <0> function defined	test	2
+word	where is the <0> function defined	thanks	1
+word	where is the <0> function defined	the	4
+word	where is the <0> function defined	where	10
+word	where is the <0> function defined	where's	2
+word	where is the <0> function defined	you	2
+word	where is the <0> struct defined	at	1
+word	where is the <0> struct defined	can	2
+word	where is the <0> struct defined	defined	5
+word	where is the <0> struct defined	i'd	1
+word	where is the <0> struct defined	is	4
+word	where is the <0> struct defined	know	1
+word	where is the <0> struct defined	like	1
+word	where is the <0> struct defined	me	2
+word	where is the <0> struct defined	please	3
+word	where is the <0> struct defined	struct	5
+word	where is the <0> struct defined	tell	2
+word	where is the <0> struct defined	the	5
+word	where is the <0> struct defined	to	1
+word	where is the <0> struct defined	um	1
+word	where is the <0> struct defined	where	4
+word	where is the <0> struct defined	where's	1
+word	where is the <0> struct defined	you	2
+word	which fields belong to <0>	are	11
+word	which fields belong to <0>	could	1
+word	which fields belong to <0>	defined	1
+word	which fields belong to <0>	does	1
+word	which fields belong to <0>	fields	43
+word	which fields belong to <0>	figure	2
+word	which fields belong to <0>	hey	1
+word	which fields belong to <0>	hold	1
+word	which fields belong to <0>	i	1
+word	which fields belong to <0>	i'm	2
+word	which fields belong to <0>	in	16
+word	which fields belong to <0>	is	1
+word	which fields belong to <0>	it	2
+word	which fields belong to <0>	like	2
+word	which fields belong to <0>	list	4
+word	which fields belong to <0>	me	2
+word	which fields belong to <0>	members	1
+word	which fields belong to <0>	on	27
+word	which fields belong to <0>	out	2
+word	which fields belong to <0>	pls	1
+word	which fields belong to <0>	see	1
+word	which fields belong to <0>	show	3
+word	which fields belong to <0>	so	1
+word	which fields belong to <0>	store	1
+word	which fields belong to <0>	struct	3
+word	which fields belong to <0>	that	1
+word	which fields belong to <0>	the	8
+word	which fields belong to <0>	them	1
+word	which fields belong to <0>	to	4
+word	which fields belong to <0>	trying	3
+word	which fields belong to <0>	um	5
+word	which fields belong to <0>	understand	1
+word	which fields belong to <0>	want	1
+word	which fields belong to <0>	what	17
+word	which fields belong to <0>	which	3
+word	which fields belong to <0>	you	1
+word	which fields belong to a struct named <0>	are	51
+word	which fields belong to a struct named <0>	can	10
+word	which fields belong to a struct named <0>	can't	1
+word	which fields belong to a struct named <0>	could	3
+word	which fields belong to a struct named <0>	defined	10
+word	which fields belong to a struct named <0>	fields	90
+word	which fields belong to a struct named <0>	figure	4
+word	which fields belong to a struct named <0>	find	1
+word	which fields belong to a struct named <0>	for	1
+word	which fields belong to a struct named <0>	hey	1
+word	which fields belong to a struct named <0>	holding	1
+word	which fields belong to a struct named <0>	holds	1
+word	which fields belong to a struct named <0>	i	2
+word	which fields belong to a struct named <0>	i'd	7
+word	which fields belong to a struct named <0>	i'm	5
+word	which fields belong to a struct named <0>	in	32
+word	which fields belong to a struct named <0>	inside	1
+word	which fields belong to a struct named <0>	is	2
+word	which fields belong to a struct named <0>	it	7
+word	which fields belong to a struct named <0>	it's	2
+word	which fields belong to a struct named <0>	know	7
+word	which fields belong to a struct named <0>	like	7
+word	which fields belong to a struct named <0>	list	5
+word	which fields belong to a struct named <0>	make	2
+word	which fields belong to a struct named <0>	me	16
+word	which fields belong to a struct named <0>	ok	2
+word	which fields belong to a struct named <0>	on	55
+word	which fields belong to a struct named <0>	out	4
+word	which fields belong to a struct named <0>	please	12
+word	which fields belong to a struct named <0>	pls	5
+word	which fields belong to a struct named <0>	question	4
+word	which fields belong to a struct named <0>	quick	4
+word	which fields belong to a struct named <0>	see	1
+word	which fields belong to a struct named <0>	show	4
+word	which fields belong to a struct named <0>	so	6
+word	which fields belong to a struct named <0>	struct	90
+word	which fields belong to a struct named <0>	tell	11
+word	which fields belong to a struct named <0>	thanks	2
+word	which fields belong to a struct named <0>	the	49
+word	which fields belong to a struct named <0>	they	2
+word	which fields belong to a struct named <0>	to	13
+word	which fields belong to a struct named <0>	trying	5
+word	which fields belong to a struct named <0>	um	7
+word	which fields belong to a struct named <0>	understand	1
+word	which fields belong to a struct named <0>	up	2
+word	which fields belong to a struct named <0>	want	1
+word	which fields belong to a struct named <0>	what	45
+word	which fields belong to a struct named <0>	where	1
+word	which fields belong to a struct named <0>	which	14
+word	which fields belong to a struct named <0>	you	13
+word	which fields does <0> have	a	3
+word	which fields does <0> have	as	1
+word	which fields does <0> have	at	10
+word	which fields does <0> have	can	2
+word	which fields does <0> have	can't	1
+word	which fields does <0> have	carry	5
+word	which fields does <0> have	codebase	1
+word	which fields does <0> have	contains	1
+word	which fields does <0> have	could	3
+word	which fields does <0> have	definition	1
+word	which fields does <0> have	does	53
+word	which fields does <0> have	exactly	1
+word	which fields does <0> have	field	1
+word	which fields does <0> have	fields	114
+word	which fields does <0> have	figure	10
+word	which fields does <0> have	find	1
+word	which fields does <0> have	for	2
+word	which fields does <0> have	got	15
+word	which fields does <0> have	has	21
+word	which fields does <0> have	have	61
+word	which fields does <0> have	hey	2
+word	which fields does <0> have	hi	1
+word	which fields does <0> have	hmm	1
+word	which fields does <0> have	hold	7
+word	which fields does <0> have	holds	1
+word	which fields does <0> have	i	5
+word	which fields does <0> have	i'd	4
+word	which fields does <0> have	i'm	22
+word	which fields does <0> have	in	10
+word	which fields does <0> have	inside	9
+word	which fields does <0> have	is	4
+word	which fields does <0> have	it	25
+word	which fields does <0> have	it's	1
+word	which fields does <0> have	just	1
+word	which fields does <0> have	know	4
+word	which fields does <0> have	like	8
+word	which fields does <0> have	list	4
+word	which fields does <0> have	looking	10
+word	which fields does <0> have	made	1
+word	which fields does <0> have	me	5
+word	which fields does <0> have	mean	3
+word	which fields does <0> have	need	1
+word	which fields does <0> have	of	1
+word	which fields does <0> have	ok	4
+word	which fields does <0> have	out	10
+word	which fields does <0> have	please	2
+word	which fields does <0> have	pls	1
+word	which fields does <0> have	question	2
+word	which fields does <0> have	quick	3
+word	which fields does <0> have	so	8
+word	which fields does <0> have	somewhere	1
+word	which fields does <0> have	store	2
+word	which fields does <0> have	struct	18
+word	which fields does <0> have	tell	3
+word	which fields does <0> have	that	8
+word	which fields does <0> have	the	19
+word	which fields does <0> have	them	2
+word	which fields does <0> have	think	1
+word	which fields does <0> have	to	19
+word	which fields does <0> have	trying	15
+word	which fields does <0> have	um	3
+word	which fields does <0> have	understand	5
+word	which fields does <0> have	up	1
+word	which fields does <0> have	what	92
+word	which fields does <0> have	what's	9
+word	which fields does <0> have	whats	3
+word	which fields does <0> have	which	18
+word	which fields does <0> have	you	5
+word	which fields does a struct named <0> have	at	1
+word	which fields does a struct named <0> have	can	19
+word	which fields does a struct named <0> have	carry	1
+word	which fields does a struct named <0> have	contain	3
+word	which fields does a struct named <0> have	contains	7
+word	which fields does a struct named <0> have	could	4
+word	which fields does a struct named <0> have	does	98
+word	which fields does a struct named <0> have	field	1
+word	which fields does a struct named <0> have	fields	164
+word	which fields does a struct named <0> have	figure	12
+word	which fields does a struct named <0> have	for	1
+word	which fields does a struct named <0> have	got	8
+word	which fields does a struct named <0> have	has	40
+word	which fields does a struct named <0> have	have	104
+word	which fields does a struct named <0> have	hey	35
+word	which fields does a struct named <0> have	hi	3
+word	which fields does a struct named <0> have	hm	1
+word	which fields does a struct named <0> have	hmm	1
+word	which fields does a struct named <0> have	hold	3
+word	which fields does a struct named <0> have	holds	3
+word	which fields does a struct named <0> have	i'd	12
+word	which fields does a struct named <0> have	i'm	13
+word	which fields does a struct named <0> have	in	4
+word	which fields does a struct named <0> have	inside	2
+word	which fields does a struct named <0> have	it	21
+word	which fields does a struct named <0> have	know	12
+word	which fields does a struct named <0> have	like	12
+word	which fields does a struct named <0> have	list	2
+word	which fields does a struct named <0> have	looking	1
+word	which fields does a struct named <0> have	me	23
+word	which fields does a struct named <0> have	ok	5
+word	which fields does a struct named <0> have	out	12
+word	which fields does a struct named <0> have	please	8
+word	which fields does a struct named <0> have	pls	2
+word	which fields does a struct named <0> have	question	22
+word	which fields does a struct named <0> have	quick	22
+word	which fields does a struct named <0> have	see	1
+word	which fields does a struct named <0> have	so	6
+word	which fields does a struct named <0> have	store	1
+word	which fields does a struct named <0> have	struct	165
+word	which fields does a struct named <0> have	tell	22
+word	which fields does a struct named <0> have	thanks	8
+word	which fields does a struct named <0> have	the	132
+word	which fields does a struct named <0> have	them	1
+word	which fields does a struct named <0> have	to	28
+word	which fields does a struct named <0> have	trying	15
+word	which fields does a struct named <0> have	um	3
+word	which fields does a struct named <0> have	understand	3
+word	which fields does a struct named <0> have	want	1
+word	which fields does a struct named <0> have	what	132
+word	which fields does a struct named <0> have	what's	2
+word	which fields does a struct named <0> have	whats	3
+word	which fields does a struct named <0> have	which	31
+word	which fields does a struct named <0> have	you	23
+word	which fields have <0>	fields	1
+word	which fields have <0>	has	1
+word	which fields have <0>	i	1
+word	which fields have <0>	in	1
+word	which fields have <0>	is	1
+word	which fields have <0>	it	1
+word	which fields have <0>	know	1
+word	which fields have <0>	store	1
+word	which fields have <0>	to	1
+word	which fields have <0>	want	1
+word	which fields have <0>	what	1
+word	which fields have a struct named <0>	fields	1
+word	which fields have a struct named <0>	has	1
+word	which fields have a struct named <0>	struct	1
+word	which fields have a struct named <0>	the	1
+word	which fields have a struct named <0>	what	1
+word	which functions call <0>	advance	3
+word	which functions call <0>	all	2
+word	which functions call <0>	any	1
+word	which functions call <0>	anything	45
+word	which functions call <0>	are	12
+word	which functions call <0>	by	2
+word	which functions call <0>	call	316
+word	which functions call <0>	called	13
+word	which functions call <0>	callers	3
+word	which functions call <0>	calling	59
+word	which functions call <0>	calls	21
+word	which functions call <0>	can	40
+word	which functions call <0>	could	13
+word	which functions call <0>	do	1
+word	which functions call <0>	does	2
+word	which functions call <0>	end	3
+word	which functions call <0>	ends	37
+word	which functions call <0>	figure	33
+word	which functions call <0>	find	4
+word	which functions call <0>	fns	55
+word	which functions call <0>	for	2
+word	which functions call <0>	from	15
+word	which functions call <0>	funcs	5
+word	which functions call <0>	functions	315
+word	which functions call <0>	gets	12
+word	which functions call <0>	has	1
+word	which functions call <0>	hey	42
+word	which functions call <0>	hi	6
+word	which functions call <0>	hm	1
+word	which functions call <0>	how	1
+word	which functions call <0>	i	3
+word	which functions call <0>	i'd	29
+word	which functions call <0>	i'm	34
+word	which functions call <0>	if	1
+word	which functions call <0>	in	3
+word	which functions call <0>	invoke	2
+word	which functions call <0>	is	50
+word	which functions call <0>	it	68
+word	which functions call <0>	it's	2
+word	which functions call <0>	just	1
+word	which functions call <0>	know	28
+word	which functions call <0>	like	40
+word	which functions call <0>	list	4
+word	which functions call <0>	me	50
+word	which functions call <0>	mean	1
+word	which functions call <0>	of	3
+word	which functions call <0>	ok	11
+word	which functions call <0>	ones	1
+word	which functions call <0>	out	33
+word	which functions call <0>	please	27
+word	which functions call <0>	pls	2
+word	which functions call <0>	question	29
+word	which functions call <0>	quick	29
+word	which functions call <0>	see	3
+word	which functions call <0>	show	1
+word	which functions call <0>	so	15
+word	which functions call <0>	store	1
+word	which functions call <0>	tell	47
+word	which functions call <0>	thanks	15
+word	which functions call <0>	that	44
+word	which functions call <0>	the	6
+word	which functions call <0>	them	1
+word	which functions call <0>	there	41
+word	which functions call <0>	this	1
+word	which functions call <0>	to	68
+word	which functions call <0>	trying	36
+word	which functions call <0>	um	3
+word	which functions call <0>	understand	4
+word	which functions call <0>	up	40
+word	which functions call <0>	use	7
+word	which functions call <0>	used	14
+word	which functions call <0>	uses	6
+word	which functions call <0>	want	3
+word	which functions call <0>	what	22
+word	which functions call <0>	where	24
+word	which functions call <0>	which	347
+word	which functions call <0>	who	18
+word	which functions call <0>	you	53
+word	which functions call a function named <0>	call	1
+word	which functions call a function named <0>	function	1
+word	which functions call a function named <0>	functions	1
+word	which functions call a function named <0>	the	1
+word	which functions call a function named <0>	which	1
+word	which functions does <0> call	a	2
+word	which functions does <0> call	actually	2
+word	which functions does <0> call	are	12
+word	which functions does <0> call	at	3
+word	which functions does <0> call	by	40
+word	which functions does <0> call	call	123
+word	which functions does <0> call	called	62
+word	which functions does <0> call	calling	13
+word	which functions does <0> call	calls	120
+word	which functions does <0> call	can	34
+word	which functions does <0> call	could	5
+word	which functions does <0> call	does	114
+word	which functions does <0> call	end	3
+word	which functions does <0> call	ends	1
+word	which functions does <0> call	figure	23
+word	which functions does <0> call	fns	82
+word	which functions does <0> call	from	22
+word	which functions does <0> call	funcs	9
+word	which functions does <0> call	functions	234
+word	which functions does <0> call	get	24
+word	which functions does <0> call	getting	1
+word	which functions does <0> call	hey	27
+word	which functions does <0> call	hi	4
+word	which functions does <0> call	hmm	1
+word	which functions does <0> call	i	3
+word	which functions does <0> call	i'd	27
+word	which functions does <0> call	i'm	29
+word	which functions does <0> call	in	2
+word	which functions does <0> call	inside	25
+word	which functions does <0> call	into	1
+word	which functions does <0> call	invoke	5
+word	which functions does <0> call	is	9
+word	which functions does <0> call	it	39
+word	which functions does <0> call	it's	2
+word	which functions does <0> call	kind	1
+word	which functions does <0> call	know	25
+word	which functions does <0> call	like	37
+word	which functions does <0> call	list	6
+word	which functions does <0> call	looking	3
+word	which functions does <0> call	me	34
+word	which functions does <0> call	mean	2
+word	which functions does <0> call	of	1
+word	which functions does <0> call	ok	5
+word	which functions does <0> call	out	23
+word	which functions does <0> call	please	11
+word	which functions does <0> call	pls	1
+word	which functions does <0> call	question	20
+word	which functions does <0> call	quick	20
+word	which functions does <0> call	see	5
+word	which functions does <0> call	so	14
+word	which functions does <0> call	tell	34
+word	which functions does <0> call	test	1
+word	which functions does <0> call	thanks	10
+word	which functions does <0> call	that	6
+word	which functions does <0> call	the	6
+word	which functions does <0> call	there	2
+word	which functions does <0> call	there's	1
+word	which functions does <0> call	this	1
+word	which functions does <0> call	to	57
+word	which functions does <0> call	trying	26
+word	which functions does <0> call	um	9
+word	which functions does <0> call	understand	3
+word	which functions does <0> call	up	4
+word	which functions does <0> call	use	3
+word	which functions does <0> call	uses	5
+word	which functions does <0> call	want	1
+word	which functions does <0> call	way	2
+word	which functions does <0> call	what	105
+word	which functions does <0> call	which	212
+word	which functions does <0> call	you	39
+word	which functions does a function named <0> call	are	1
+word	which functions does a function named <0> call	at	1
+word	which functions does a function named <0> call	call	8
+word	which functions does a function named <0> call	called	1
+word	which functions does a function named <0> call	does	8
+word	which functions does a function named <0> call	functions	9
+word	which functions does a function named <0> call	hey	1
+word	which functions does a function named <0> call	i'm	6
+word	which functions does a function named <0> call	in	1
+word	which functions does a function named <0> call	it	6
+word	which functions does a function named <0> call	looking	1
+word	which functions does a function named <0> call	ok	1
+word	which functions does a function named <0> call	question	1
+word	which functions does a function named <0> call	quick	1
+word	which functions does a function named <0> call	so	1
+word	which functions does a function named <0> call	test	9
+word	which functions does a function named <0> call	the	9
+word	which functions does a function named <0> call	to	5
+word	which functions does a function named <0> call	trying	5
+word	which functions does a function named <0> call	understand	5
+word	which functions does a function named <0> call	what	1
+word	which functions does a function named <0> call	which	8
+word	which structs have <0>	a	2
+word	which structs have <0>	as	3
+word	which structs have <0>	carry	1
+word	which structs have <0>	define	1
+word	which structs have <0>	field	3
+word	which structs have <0>	got	1
+word	which structs have <0>	has	1
+word	which structs have <0>	have	2
+word	which structs have <0>	list	1
+word	which structs have <0>	structs	6
+word	which structs have <0>	that	1
+word	which structs have <0>	what	1
+word	which structs have <0>	which	4
+word	which structs have a field named <0>	a	169
+word	which structs have a field named <0>	advance	1
+word	which structs have a field named <0>	all	1
+word	which structs have a field named <0>	an	6
+word	which structs have a field named <0>	any	19
+word	which structs have a field named <0>	are	3
+word	which structs have a field named <0>	as	5
+word	which structs have a field named <0>	called	44
+word	which structs have a field named <0>	can	24
+word	which structs have a field named <0>	carry	1
+word	which structs have a field named <0>	codebase	12
+word	which structs have a field named <0>	contain	2
+word	which structs have a field named <0>	containing	6
+word	which structs have a field named <0>	could	10
+word	which structs have a field named <0>	define	3
+word	which structs have a field named <0>	field	251
+word	which structs have a field named <0>	figure	15
+word	which structs have a field named <0>	find	8
+word	which structs have a field named <0>	for	5
+word	which structs have a field named <0>	got	18
+word	which structs have a field named <0>	has	14
+word	which structs have a field named <0>	have	184
+word	which structs have a field named <0>	hey	24
+word	which structs have a field named <0>	hi	6
+word	which structs have a field named <0>	hm	1
+word	which structs have a field named <0>	hmm	2
+word	which structs have a field named <0>	hold	1
+word	which structs have a field named <0>	holding	1
+word	which structs have a field named <0>	i	2
+word	which structs have a field named <0>	i'd	16
+word	which structs have a field named <0>	i'm	21
+word	which structs have a field named <0>	in	23
+word	which structs have a field named <0>	is	15
+word	which structs have a field named <0>	it	8
+word	which structs have a field named <0>	kind	1
+word	which structs have a field named <0>	know	16
+word	which structs have a field named <0>	like	17
+word	which structs have a field named <0>	list	15
+word	which structs have a field named <0>	lives	6
+word	which structs have a field named <0>	looking	3
+word	which structs have a field named <0>	me	28
+word	which structs have a field named <0>	name	4
+word	which structs have a field named <0>	named	94
+word	which structs have a field named <0>	of	3
+word	which structs have a field named <0>	ok	4
+word	which structs have a field named <0>	on	1
+word	which structs have a field named <0>	one	1
+word	which structs have a field named <0>	ones	12
+word	which structs have a field named <0>	only	4
+word	which structs have a field named <0>	out	15
+word	which structs have a field named <0>	please	14
+word	which structs have a field named <0>	pls	2
+word	which structs have a field named <0>	question	18
+word	which structs have a field named <0>	quick	19
+word	which structs have a field named <0>	s	2
+word	which structs have a field named <0>	saw	2
+word	which structs have a field named <0>	so	5
+word	which structs have a field named <0>	some	1
+word	which structs have a field named <0>	somewhere	3
+word	which structs have a field named <0>	sorry	1
+word	which structs have a field named <0>	struct	13
+word	which structs have a field named <0>	structs	237
+word	which structs have a field named <0>	tell	25
+word	which structs have a field named <0>	thanks	14
+word	which structs have a field named <0>	that	29
+word	which structs have a field named <0>	the	20
+word	which structs have a field named <0>	them	12
+word	which structs have a field named <0>	there	17
+word	which structs have a field named <0>	they	1
+word	which structs have a field named <0>	to	34
+word	which structs have a field named <0>	trying	18
+word	which structs have a field named <0>	um	9
+word	which structs have a field named <0>	used	1
+word	which structs have a field named <0>	what	25
+word	which structs have a field named <0>	where	6
+word	which structs have a field named <0>	where's	1
+word	which structs have a field named <0>	which	189
+word	which structs have a field named <0>	who	5
+word	which structs have a field named <0>	with	22
+word	which structs have a field named <0>	you	34
+word	which structs have a field whose type is or contains <0>	a	128
+word	which structs have a field whose type is or contains <0>	also	6
+word	which structs have a field whose type is or contains <0>	an	2
+word	which structs have a field whose type is or contains <0>	any	9
+word	which structs have a field whose type is or contains <0>	anywhere	1
+word	which structs have a field whose type is or contains <0>	are	6
+word	which structs have a field whose type is or contains <0>	as	13
+word	which structs have a field whose type is or contains <0>	can	13
+word	which structs have a field whose type is or contains <0>	carry	1
+word	which structs have a field whose type is or contains <0>	codebase	1
+word	which structs have a field whose type is or contains <0>	contain	2
+word	which structs have a field whose type is or contains <0>	containing	6
+word	which structs have a field whose type is or contains <0>	contains	66
+word	which structs have a field whose type is or contains <0>	could	3
+word	which structs have a field whose type is or contains <0>	counts	4
+word	which structs have a field whose type is or contains <0>	directly	7
+word	which structs have a field whose type is or contains <0>	does	1
+word	which structs have a field whose type is or contains <0>	even	2
+word	which structs have a field whose type is or contains <0>	field	141
+word	which structs have a field whose type is or contains <0>	fields	13
+word	which structs have a field whose type is or contains <0>	figure	8
+word	which structs have a field whose type is or contains <0>	find	7
+word	which structs have a field whose type is or contains <0>	got	9
+word	which structs have a field whose type is or contains <0>	has	5
+word	which structs have a field whose type is or contains <0>	have	88
+word	which structs have a field whose type is or contains <0>	hey	12
+word	which structs have a field whose type is or contains <0>	hi	1
+word	which structs have a field whose type is or contains <0>	hm	1
+word	which structs have a field whose type is or contains <0>	hmm	2
+word	which structs have a field whose type is or contains <0>	hold	22
+word	which structs have a field whose type is or contains <0>	holding	5
+word	which structs have a field whose type is or contains <0>	i'd	15
+word	which structs have a field whose type is or contains <0>	i'm	11
+word	which structs have a field whose type is or contains <0>	if	8
+word	which structs have a field whose type is or contains <0>	in	34
+word	which structs have a field whose type is or contains <0>	incl	3
+word	which structs have a field whose type is or contains <0>	includes	5
+word	which structs have a field whose type is or contains <0>	including	3
+word	which structs have a field whose type is or contains <0>	inside	9
+word	which structs have a field whose type is or contains <0>	is	75
+word	which structs have a field whose type is or contains <0>	it	47
+word	which structs have a field whose type is or contains <0>	it's	8
+word	which structs have a field whose type is or contains <0>	its	1
+word	which structs have a field whose type is or contains <0>	just	1
+word	which structs have a field whose type is or contains <0>	keep	1
+word	which structs have a field whose type is or contains <0>	know	15
+word	which structs have a field whose type is or contains <0>	like	15
+word	which structs have a field whose type is or contains <0>	list	9
+word	which structs have a field whose type is or contains <0>	lives	1
+word	which structs have a field whose type is or contains <0>	me	10
+word	which structs have a field whose type is or contains <0>	nested	5
+word	which structs have a field whose type is or contains <0>	of	18
+word	which structs have a field whose type is or contains <0>	ok	6
+word	which structs have a field whose type is or contains <0>	one	9
+word	which structs have a field whose type is or contains <0>	ones	4
+word	which structs have a field whose type is or contains <0>	only	2
+word	which structs have a field whose type is or contains <0>	or	103
+word	which structs have a field whose type is or contains <0>	other	7
+word	which structs have a field whose type is or contains <0>	out	8
+word	which structs have a field whose type is or contains <0>	please	8
+word	which structs have a field whose type is or contains <0>	pls	2
+word	which structs have a field whose type is or contains <0>	question	13
+word	which structs have a field whose type is or contains <0>	quick	13
+word	which structs have a field whose type is or contains <0>	see	1
+word	which structs have a field whose type is or contains <0>	so	10
+word	which structs have a field whose type is or contains <0>	some	8
+word	which structs have a field whose type is or contains <0>	somehow	3
+word	which structs have a field whose type is or contains <0>	something	9
+word	which structs have a field whose type is or contains <0>	somewhere	6
+word	which structs have a field whose type is or contains <0>	store	1
+word	which structs have a field whose type is or contains <0>	struct	2
+word	which structs have a field whose type is or contains <0>	structs	152
+word	which structs have a field whose type is or contains <0>	tell	10
+word	which structs have a field whose type is or contains <0>	thanks	8
+word	which structs have a field whose type is or contains <0>	that	36
+word	which structs have a field whose type is or contains <0>	that's	1
+word	which structs have a field whose type is or contains <0>	the	13
+word	which structs have a field whose type is or contains <0>	their	6
+word	which structs have a field whose type is or contains <0>	them	3
+word	which structs have a field whose type is or contains <0>	there	10
+word	which structs have a field whose type is or contains <0>	to	27
+word	which structs have a field whose type is or contains <0>	trying	11
+word	which structs have a field whose type is or contains <0>	type	117
+word	which structs have a field whose type is or contains <0>	typed	8
+word	which structs have a field whose type is or contains <0>	types	3
+word	which structs have a field whose type is or contains <0>	um	2
+word	which structs have a field whose type is or contains <0>	understand	1
+word	which structs have a field whose type is or contains <0>	use	7
+word	which structs have a field whose type is or contains <0>	used	4
+word	which structs have a field whose type is or contains <0>	uses	1
+word	which structs have a field whose type is or contains <0>	way	1
+word	which structs have a field whose type is or contains <0>	what	16
+word	which structs have a field whose type is or contains <0>	where	8
+word	which structs have a field whose type is or contains <0>	which	105
+word	which structs have a field whose type is or contains <0>	who	2
+word	which structs have a field whose type is or contains <0>	whose	66
+word	which structs have a field whose type is or contains <0>	with	21
+word	which structs have a field whose type is or contains <0>	wrapped	11
+word	which structs have a field whose type is or contains <0>	wrapping	8
+word	which structs have a field whose type is or contains <0>	wraps	10
+word	which structs have a field whose type is or contains <0>	you	16

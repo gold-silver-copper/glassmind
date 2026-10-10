@@ -80,6 +80,53 @@ impl Places {
     }
 }
 
+/// The most memory one check may use: tests of broken code can loop
+/// allocating, and must not take the machine with them.
+const TOOL_MEMORY: &str = "6G";
+
+/// Whether checks can run in a systemd scope of their own, which caps their
+/// memory and kills everything they started when time runs out.
+fn scoped() -> bool {
+    static SCOPED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    *SCOPED.get_or_init(|| {
+        Command::new("systemd-run")
+            .args(["--user", "--scope", "--quiet", "--collect", "true"])
+            .stdin(Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .status()
+            .is_ok_and(|s| s.success())
+    })
+}
+
+/// `cargo`, capped where it can be: in a scope with a memory limit and a
+/// time limit, and in a process group of its own, so a timeout ends the
+/// tests it started too.
+fn cargo_command() -> Command {
+    let mut command = if scoped() {
+        let mut c = Command::new("systemd-run");
+        c.args(["--user", "--scope", "--quiet", "--collect"])
+            .arg(format!("-pMemoryMax={TOOL_MEMORY}"))
+            .arg("-pMemorySwapMax=0")
+            .arg(format!("-pRuntimeMaxSec={}", TOOL_TIME.as_secs() + 30))
+            .args(["--", "cargo"]);
+        c
+    } else {
+        Command::new("cargo")
+    };
+    std::os::unix::process::CommandExt::process_group(&mut command, 0);
+    command
+}
+
+/// Ends a check's whole process group.
+fn kill_group(child: &mut std::process::Child) {
+    let _ = Command::new("kill")
+        .args(["-KILL", "--", &format!("-{}", child.id())])
+        .status();
+    let _ = child.kill();
+    let _ = child.wait();
+}
+
 fn cargo(
     places: &Places,
     source: &str,
@@ -87,7 +134,7 @@ fn cargo(
     subcommand: &str,
     args: &[&str],
 ) -> Result<(bool, String), String> {
-    let mut command = Command::new("cargo");
+    let mut command = cargo_command();
     if let Some(target) = &places.target {
         command.env("CARGO_TARGET_DIR", target.join(source));
     }
@@ -122,7 +169,7 @@ fn cargo(
         match child.try_wait() {
             Ok(Some(status)) => break status.success(),
             Ok(None) if start.elapsed() > TOOL_TIME => {
-                let _ = child.kill();
+                kill_group(&mut child);
                 return Err("cargo took too long".into());
             }
             Ok(None) => std::thread::sleep(Duration::from_millis(100)),

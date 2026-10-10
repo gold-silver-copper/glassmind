@@ -1,11 +1,11 @@
 //! Training glassmind's small models from what it already gets right.
 
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
 
 use glassmind_answer::{ConversationInput, Outcome, Response};
 use glassmind_english::{Shape, Token};
-use glassmind_models::EditModel;
+use glassmind_models::{EditModel, IntentModel};
 use serde::Deserialize;
 
 /// The parts of a label the trainer needs.
@@ -34,14 +34,14 @@ pub fn model_word(t: &Token) -> String {
     }
 }
 
-/// Learns the normalizer's edit model from every turn answered right:
-/// what was typed, against what the grammar says for the same request.
-pub fn normalizer(
+/// Every turn answered right (other than coding fixes, which have no
+/// single right wording): what was typed, and what the grammar says for the
+/// reading chosen. What each small model learns from.
+fn answered_right(
     inputs: &Path,
     outcomes: &Path,
     labels: &Path,
-    out: &Path,
-) -> Result<String, String> {
+) -> Result<Vec<(String, String)>, String> {
     let inputs: Vec<ConversationInput> = read_lines(inputs)?;
     let outcomes: Vec<Outcome> = read_lines(outcomes)?;
     let labels: Vec<Label> = read_lines(labels)?;
@@ -53,27 +53,40 @@ pub fn normalizer(
         .iter()
         .flat_map(|c| c.turns.iter().map(|t| (t.id.as_str(), t.text.as_str())))
         .collect();
-    let english = glassmind_english::English::<glassmind_world_rust::Rust>::new(
+    Ok(outcomes
+        .iter()
+        .filter_map(|o| {
+            let canonical = o.canonical.as_ref()?;
+            let exp = expected.get(o.turn_id.as_str())?;
+            let text = texts.get(o.turn_id.as_str())?;
+            (!matches!(exp, Response::Repaired { .. }) && &&o.response == exp)
+                .then(|| ((*text).to_owned(), canonical.clone()))
+        })
+        .collect())
+}
+
+fn english() -> glassmind_english::English<glassmind_world_rust::Rust> {
+    glassmind_english::English::new(
         glassmind_english_rust::rules(),
         &glassmind_rules::Switches::all_on(),
-    );
+    )
+}
+
+/// Learns the normalizer's edit model from every turn answered right:
+/// what was typed, against what the grammar says for the same request.
+pub fn normalizer(
+    inputs: &Path,
+    outcomes: &Path,
+    labels: &Path,
+    out: &Path,
+) -> Result<String, String> {
+    let english = english();
     let words =
         |text: &str| -> Vec<String> { english.tokens_of(text).iter().map(model_word).collect() };
-    let mut pairs = Vec::new();
-    for o in &outcomes {
-        let (Some(canonical), Some(exp), Some(text)) = (
-            &o.canonical,
-            expected.get(o.turn_id.as_str()),
-            texts.get(o.turn_id.as_str()),
-        ) else {
-            continue;
-        };
-        if matches!(exp, Response::Repaired { .. }) || &&o.response != exp {
-            continue;
-        }
-        let canonical = canonical.trim_end_matches(['?', '.']).to_owned();
-        pairs.push((words(text), words(&canonical)));
-    }
+    let pairs: Vec<(Vec<String>, Vec<String>)> = answered_right(inputs, outcomes, labels)?
+        .iter()
+        .map(|(text, canonical)| (words(text), words(canonical.trim_end_matches(['?', '.']))))
+        .collect();
     let mut model = EditModel::learn(&pairs);
     // Trust readings that cost no more than 95 in 100 readings known to be right.
     let mut costs: Vec<f64> = pairs
@@ -119,5 +132,52 @@ pub fn normalizer(
         top(&model.added),
         list(&dropped),
         list(&swapped)
+    ))
+}
+
+/// Learns the request-category tagger from every turn answered right: the
+/// words typed, against the canonical request with its names as slots.
+/// Twice: the second time, mistyped words one slip from a word the first
+/// model knows are read as that word, as they are when it is used.
+pub fn intents(
+    inputs: &Path,
+    outcomes: &Path,
+    labels: &Path,
+    out: &Path,
+) -> Result<String, String> {
+    let english = english();
+    let right = answered_right(inputs, outcomes, labels)?;
+    let learn = |m: &IntentModel| -> Vec<(BTreeSet<String>, String)> {
+        right
+            .iter()
+            .filter_map(|(text, canonical)| english.intent_example(text, canonical, m))
+            .collect()
+    };
+    let first = IntentModel::learn(&learn(&IntentModel::default()));
+    let examples = learn(&first);
+    let mut model = IntentModel::learn(&examples);
+    // Until calibrated on the dev set: answer nothing without asking, and
+    // offer only what is likelier than not.
+    model.sure = 1.01;
+    model.offer = 0.5;
+    std::fs::write(out, model.dump())
+        .map_err(|e| format!("cannot write {}: {e}", out.display()))?;
+    // How often the model's best template is the one answered right, on
+    // the examples themselves.
+    let hits = examples
+        .iter()
+        .filter(|(words, t)| {
+            model
+                .rank(words, glassmind_models::intents::slots_of(t))
+                .first()
+                .is_some_and(|best| best.0 == t)
+        })
+        .count();
+    Ok(format!(
+        "learned from {} examples of {} turns answered right; {} templates, {} words; best template right on {hits} of them",
+        examples.len(),
+        right.len(),
+        model.templates.len(),
+        model.seen.len(),
     ))
 }

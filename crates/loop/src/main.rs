@@ -88,6 +88,9 @@ enum Command {
         heldout: PathBuf,
         #[arg(long)]
         valid: Option<PathBuf>,
+        /// More directories agents never see (everything else held out).
+        #[arg(long)]
+        private: Vec<PathBuf>,
         #[arg(long, default_value_t = 0.01)]
         size_price: f64,
         #[arg(long, default_value_t = 4)]
@@ -155,7 +158,11 @@ fn main() -> ExitCode {
             let labels: Vec<score::Label> = read_jsonl(&labels)?;
             let mut outcomes: Vec<Outcome> = read_jsonl(&outcomes)?;
             if let Some(sources) = sources {
-                outcomes = verify::remedies(&evaluate::check_places(), &labels, outcomes, &sources);
+                let home = std::env::var_os("HOME")
+                    .map(PathBuf::from)
+                    .unwrap_or_default();
+                let places = verify::Places::under(&home.join(".cache/glassmind/score-check"));
+                outcomes = verify::remedies(&places, &labels, outcomes, &sources);
             }
             let report = score::report(&labels, &outcomes);
             if json {
@@ -214,6 +221,7 @@ fn main() -> ExitCode {
             train,
             heldout,
             valid,
+            private,
             size_price,
             max_agents,
             model,
@@ -233,6 +241,7 @@ fn main() -> ExitCode {
                 train: abs(train),
                 heldout: abs(heldout),
                 valid: valid.map(abs),
+                private: private.into_iter().map(abs).collect(),
                 size_price,
                 max_agents: max_agents.min(4),
                 model,

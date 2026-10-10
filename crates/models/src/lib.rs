@@ -5,5 +5,7 @@
 //! with what a model proposes.
 
 pub mod edits;
+pub mod intents;
 
 pub use edits::{Edit, EditModel};
+pub use intents::IntentModel;

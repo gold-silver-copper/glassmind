@@ -33,7 +33,9 @@ impl Sandbox {
             "--proc".into(),
             "/proc".into(),
         ];
-        for h in &self.hidden {
+        // A directory inside one already hidden is hidden with it.
+        let inside = |h: &PathBuf| self.hidden.iter().any(|o| o != h && h.starts_with(o));
+        for h in self.hidden.iter().filter(|h| !inside(h)) {
             let path = h.to_string_lossy().into_owned();
             if h.is_dir() {
                 a.extend(["--tmpfs".into(), path]);
@@ -86,6 +88,7 @@ pub struct Run<'a> {
     stdin: Option<String>,
     timeout: Option<Duration>,
     sandbox: Option<&'a Sandbox>,
+    memory: Option<&'static str>,
 }
 
 impl<'a> Run<'a> {
@@ -99,6 +102,7 @@ impl<'a> Run<'a> {
             stdin: None,
             timeout: None,
             sandbox: None,
+            memory: None,
         }
     }
 
@@ -128,12 +132,42 @@ impl<'a> Run<'a> {
         self
     }
 
+    /// Runs it in a systemd scope of its own capped at `memory` (such as
+    /// "6G", no swap), where the machine has them: code under test can loop
+    /// allocating.
+    pub fn memory(mut self, memory: &'static str) -> Self {
+        self.memory = Some(memory);
+        self
+    }
+
     pub fn go(self) -> Result<Output, String> {
         let (program, args) = match self.sandbox {
             Some(s) => s.wrap(&self.program, &self.args),
             None => (self.program.clone(), self.args.clone()),
         };
+        let (program, args) = match self.memory.filter(|_| scopes()) {
+            Some(memory) => {
+                let mut a: Vec<String> = [
+                    "--user",
+                    "--scope",
+                    "--quiet",
+                    "--collect",
+                    "-pMemorySwapMax=0",
+                ]
+                .map(String::from)
+                .to_vec();
+                a.push(format!("-pMemoryMax={memory}"));
+                a.push("--".into());
+                a.push(program);
+                a.extend(args);
+                ("systemd-run".to_owned(), a)
+            }
+            None => (program, args),
+        };
         let mut cmd = Command::new(&program);
+        // A group of its own, so a timeout ends everything it started (an
+        // orphan would also keep the output pipes open).
+        std::os::unix::process::CommandExt::process_group(&mut cmd, 0);
         cmd.args(&args)
             .current_dir(self.cwd)
             .stdin(if self.stdin.is_some() {
@@ -172,6 +206,9 @@ impl<'a> Run<'a> {
                 Ok(Some(status)) => break Some(status),
                 Ok(None) => {
                     if self.timeout.is_some_and(|t| start.elapsed() > t) {
+                        let _ = Command::new("kill")
+                            .args(["-KILL", "--", &format!("-{}", child.id())])
+                            .status();
                         let _ = child.kill();
                         timed_out = true;
                         break child.wait().ok();
@@ -190,6 +227,20 @@ impl<'a> Run<'a> {
             timed_out,
         })
     }
+}
+
+/// Whether commands can run in systemd scopes of their own.
+fn scopes() -> bool {
+    static SCOPES: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    *SCOPES.get_or_init(|| {
+        Command::new("systemd-run")
+            .args(["--user", "--scope", "--quiet", "--collect", "true"])
+            .stdin(Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .status()
+            .is_ok_and(|s| s.success())
+    })
 }
 
 fn read_all<R: std::io::Read>(pipe: Option<R>) -> String {

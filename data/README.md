@@ -2,7 +2,9 @@
 
 Everything glassmind is trained or measured on, where it came from, and what
 it became. The data itself lives outside git (`~/.cache/glassmind/`), and
-held-out data is kept where loop agents cannot read it.
+everything held out (data, sources, generator prompts, the dev set,
+rustbench) lives under `~/.cache/glassmind/heldout`, which loop agents
+cannot read.
 
 ## Code to talk about (the Rust world)
 
@@ -59,9 +61,18 @@ was written by a person.
 
 | set | turns | generators | about |
 |---|---|---|---|
-| training | 6,926 (6,696 QA + 230 coding) | terse, chatty, newcomer, hurried personas | training repos and crates |
-| validation | 267 | the training personas | held-out repos (reported, never used to accept) |
-| held-out | 725 (624 QA + 101 coding) | a separate "query log" generator prompt | held-out repos and crates |
+| training | 7,557 (6,722 QA + 178 coding + 657 rustbench dev) | terse, chatty, newcomer, hurried personas; rustbench's own styles | training repos and crates, rustbench dev |
+| validation | 267 | the training personas | held-out repos; guards acceptance and decides when the loop stops |
+| dev | 497 | a hidden "texting" prompt | training repos; calibrates the small models' thresholds |
+| held-out v2 | 711 (625 QA + 86 coding) | a style written by a separate agent; its prompt and requests were never read on the training side | held-out repos and crates; decides nothing |
+
+Held-out v1 (a "query log" style, 725 turns) was retired on 2026-10-10: the
+operator had read its prompt, and a training persona ("slack", since
+deleted with its 1,107 turns) copied its examples with names swapped. Its
+numbers up to loop round 29 are an upper bound. The v1 coding tasks also
+reused the training breakages; v2's are broken by other means
+(`tools/datagen/harness_tasks.py --breakers`, from a file outside the
+repository).
 
 ## Toolchain
 

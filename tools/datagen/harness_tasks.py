@@ -19,24 +19,41 @@ Writes OUT/sources/<task source>/ (the broken copies) and OUT/tasks.jsonl.
 import argparse
 import hashlib
 import json
+import os
 import random
 import re
 import shutil
+import signal
 import subprocess
 from pathlib import Path
 
 TARGET = Path.home() / ".cache" / "glassmind" / "harness-target"
 
 
+# A broken crate's tests can loop allocating: every cargo run gets a systemd
+# scope that caps its memory and ends everything it started when time is up
+# (killing cargo alone leaves its test programs running).
+TIME, MEMORY = 180, "6G"
+SCOPE = ["systemd-run", "--user", "--scope", "--quiet", "--collect", f"-pMemoryMax={MEMORY}",
+         "-pMemorySwapMax=0", f"-pRuntimeMaxSec={TIME}", "--"]
+
+
 def cargo(root, *args):
-    env = dict(__import__("os").environ, CARGO_TARGET_DIR=str(TARGET / root.name))
+    env = dict(os.environ, CARGO_TARGET_DIR=str(TARGET / root.name))
+    p = subprocess.Popen([*SCOPE, "cargo", *args[:1], "-j", "4", *args[1:]], cwd=root, stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, env=env,
+                         start_new_session=True)
     try:
-        p = subprocess.run(["cargo", *args[:1], "-j", "4", *args[1:]], cwd=root, capture_output=True, text=True,
-                           env=env, timeout=180)
+        out, err = p.communicate(timeout=TIME + 30)
     except subprocess.TimeoutExpired:
-        # A breakage that hangs (a loop that never ends) is not a usable task.
+        os.killpg(p.pid, signal.SIGKILL)
+        p.wait()
         return False, ""
-    return p.returncode == 0, p.stdout
+    # Killed for its memory or time (cargo, or a test program it ran): a
+    # breakage that hangs is not a usable task, and its failures are unknown.
+    if p.returncode < 0 or "(signal: " in err:
+        return False, ""
+    return p.returncode == 0, out
 
 
 def build_problems(root, source):

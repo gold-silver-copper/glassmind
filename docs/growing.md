@@ -72,9 +72,10 @@ export GLASSMIND_CARGO_TARGET=$HOME/.cache/glassmind/check/target GLASSMIND_CHEC
 
 - **Any method is allowed** if it measurably helps: grammar rules, fuzzy or
   learned matching of words and names, probabilities, outside data, a new
-  formalism. Prefer what generalizes to phrasings you have not seen: the
-  held-out set is written by people with other habits, about other
-  repositories. Never fake answers (no tables of particular sentences or
+  formalism. Prefer what generalizes to phrasings you have not seen: a hidden
+  held-out set, written by people with other habits about other
+  repositories, measures that (it decides nothing; a hidden validation set
+  of other repositories guards acceptance). Never fake answers (no tables of particular sentences or
   names with their answers).
 - **Every new rule** (grammar rule, word, world relation, preference) gets a
   stable unique dotted ID (`en.question.where_defined`,

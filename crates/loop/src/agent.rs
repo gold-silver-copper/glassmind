@@ -43,7 +43,8 @@ pub fn sandbox(
     let mut writable = writable;
     writable.push(h.join(".cargo/registry"));
     writable.push(h.join(".cargo/git"));
-    // Builds and results of checks on training sources (coding tasks).
+    // Agents' own builds and results of checks on training sources (the
+    // scorer keeps its own where agents cannot see them).
     writable.push(h.join(".cache/glassmind/check"));
     // The login lives in ~/.claude and ~/.claude.json, which Claude Code
     // must be able to update; the history in them stays masked.
@@ -74,7 +75,10 @@ pub fn sandbox(
             config.heldout.clone(),
             config.heldout_sources.clone(),
             paths.root.clone(),
-        ],
+        ]
+        .into_iter()
+        .chain(config.private.iter().cloned())
+        .collect(),
         tmp,
     })
 }

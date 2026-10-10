@@ -195,7 +195,8 @@ fn rescore(
     Ok(b)
 }
 
-/// Whether the held-out score has not improved for `patience` rounds.
+/// Whether the validation score has not improved for `patience` rounds
+/// (the held-out score decides nothing, not even when to stop).
 pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
     // A change made by hand can change how cost is counted, so improvement
     // is measured from the last one on.
@@ -206,8 +207,8 @@ pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
     let mut best = f64::INFINITY;
     let mut best_round = 0;
     for e in history.iter().skip(since).filter(|e| e.accepted) {
-        if e.scores.heldout_cost < best - 1e-9 {
-            best = e.scores.heldout_cost;
+        if e.scores.valid_cost < best - 1e-9 {
+            best = e.scores.valid_cost;
             best_round = e.round;
         }
     }
@@ -215,7 +216,7 @@ pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
 }
 
 /// Runs rounds until stopped (a `STOP` file in the state directory, or no
-/// held-out improvement for `patience` rounds), or just one with `once`.
+/// validation improvement for `patience` rounds), or just one with `once`.
 pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
     let config: Config = state::read_json(&paths.config())?;
     let data = Data::load(&config)?;
@@ -240,7 +241,7 @@ pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
             log(
                 paths,
                 &format!(
-                    "no held-out improvement for {} rounds; stopping",
+                    "no validation improvement for {} rounds; stopping",
                     config.patience
                 ),
             );
@@ -629,34 +630,43 @@ method, style, size or doubts about usefulness: the scorer judges those. \
 Reply with only JSON: {\"veto\": true|false, \"reason\": \"...\"}";
 
 fn review(config: &Config, paths: &Paths, dir: &Path) -> Result<(), String> {
-    let slot = paths.slot(99);
-    let run = agent::claude(
-        config,
-        paths,
-        &slot,
-        dir,
-        REVIEW,
-        Some("Read,Grep,Glob,Bash"),
-        Vec::new(),
-    )?;
-    let text = run.summary;
-    let start = text.find('{').unwrap_or(0);
-    let verdict: serde_json::Value = serde_json::from_str(
-        text.get(start..)
-            .unwrap_or_default()
-            .trim_end_matches('`')
-            .trim(),
-    )
-    .unwrap_or(serde_json::Value::Null);
-    let _ = std::fs::write(paths.logs().join("last-review.txt"), &text);
-    if verdict.get("veto").and_then(serde_json::Value::as_bool) == Some(true) {
-        let reason = verdict
-            .get("reason")
-            .and_then(serde_json::Value::as_str)
-            .unwrap_or("vetoed");
-        return Err(format!("reviewer veto: {reason}"));
+    // No verdict is not an approval: an empty or unreadable reply is asked
+    // again once, then the change is rejected.
+    for _ in 0..2 {
+        let run = agent::claude(
+            config,
+            paths,
+            &paths.slot(99),
+            dir,
+            REVIEW,
+            Some("Read,Grep,Glob,Bash"),
+            Vec::new(),
+        )?;
+        let text = run.summary;
+        let _ = std::fs::write(paths.logs().join("last-review.txt"), &text);
+        let verdict: Option<serde_json::Value> = text
+            .find('{')
+            .zip(text.rfind('}'))
+            .and_then(|(a, b)| text.get(a..=b))
+            .and_then(|json| serde_json::from_str(json).ok());
+        match verdict
+            .as_ref()
+            .and_then(|v| v.get("veto"))
+            .and_then(serde_json::Value::as_bool)
+        {
+            Some(false) => return Ok(()),
+            Some(true) => {
+                let reason = verdict
+                    .as_ref()
+                    .and_then(|v| v.get("reason"))
+                    .and_then(serde_json::Value::as_str)
+                    .unwrap_or("vetoed");
+                return Err(format!("reviewer veto: {reason}"));
+            }
+            None => continue,
+        }
     }
-    Ok(())
+    Err("the reviewer gave no readable verdict".into())
 }
 
 fn compression_round(

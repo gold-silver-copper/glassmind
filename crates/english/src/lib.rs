@@ -13,7 +13,7 @@ use glassmind_grammar::{
     ExpectedSym, Grammar, Lexicon, Node, Phrase, Rule, RuleInfo, Sem as S, Sym,
 };
 use glassmind_meaning::interface::{Language, Next, Reading, Spoken, TokenSpan, Understanding};
-use glassmind_meaning::{Ontology, Reply, Trouble};
+use glassmind_meaning::{Ontology, Reply, Trouble, Utterance};
 use glassmind_rules::Switches;
 
 pub mod alias;
@@ -29,6 +29,7 @@ pub mod describe;
 pub mod discourse;
 pub mod forgetting;
 pub mod having;
+pub mod intents;
 pub mod lexicon;
 pub mod locate;
 pub mod mention;
@@ -53,7 +54,7 @@ pub use sem::{Cat, Number, Sem, VerbForm};
 pub use tokens::{Shape, Token, tokenize};
 
 /// English rules that are not grammar rules, for listing and switching.
-pub const RULES: &[RuleInfo] = &[typos::TYPOS, normalize::NORMALIZER];
+pub const RULES: &[RuleInfo] = &[typos::TYPOS, normalize::NORMALIZER, intents::INTENTS];
 
 /// Every English rule that is not about a particular world.
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -141,6 +142,8 @@ pub struct English<O: Ontology> {
     lexicon: EnglishLexicon<O>,
     /// Whether inputs that do not parse are read through the normalizer.
     normalizing: bool,
+    /// Whether inputs nothing else reads go to the request-category tagger.
+    tagging: bool,
 }
 
 impl<O: Ontology> English<O> {
@@ -180,6 +183,7 @@ impl<O: Ontology> English<O> {
         English {
             grammar,
             normalizing: switches.on(normalize::NORMALIZER.id),
+            tagging: switches.on(intents::INTENTS.id),
             lexicon: EnglishLexicon {
                 known,
                 standing,
@@ -279,6 +283,83 @@ impl<O: Ontology> English<O> {
         (!found.is_empty()).then_some(found)
     }
 
+    /// Readings of the input as the request the tagger finds likeliest for
+    /// its words (see [`intents`]), when nothing else reads it. `edits` is
+    /// 150 for a question the model is sure of and 250 otherwise (asked
+    /// first), plus how unlikely the template is.
+    fn tagged(&self, tokens: &[Token]) -> Option<Vec<Reading<O>>> {
+        let known = |w: &str| self.lexicon.known.contains(w);
+        let m = intents::model();
+        let (names, words) = intents::split(tokens, &known, m);
+        let mut found: Vec<Reading<O>> = Vec::new();
+        for (template, p) in m.rank(&words, names.len()).into_iter().take(3) {
+            if p < m.offer {
+                break;
+            }
+            if !m.explains(template, &words) {
+                continue;
+            }
+            let text = intents::fill(template, &names);
+            let filled = self.tokenize(&text);
+            let parse = self.grammar.parse(&self.lexicon, &filled);
+            for r in &parse.readings {
+                if let Sem::Utterance(u) = &r.value {
+                    // Only a question is answered on the model's word alone:
+                    // anything else (a change, a fact, consent) is asked first.
+                    let sure = p >= m.sure && matches!(u, Utterance::Ask(_));
+                    found.push(Reading {
+                        meaning: u.clone(),
+                        rules: [r.rules(), vec![intents::INTENTS]].concat(),
+                        parse: render(r, &filled),
+                        idle: idle(r),
+                        edits: if sure { 150 } else { 250 }
+                            + ((1.0 - p) * 40.0).round() as u32
+                            + r.edits,
+                        discarded: Vec::new(),
+                    });
+                }
+            }
+            if !found.is_empty() {
+                break;
+            }
+        }
+        (!found.is_empty()).then_some(found)
+    }
+
+    /// What the tagger learns from one request answered right: the words
+    /// typed, and the canonical form with the names typed numbered in its
+    /// slots. `None` when the names typed and the names in the canonical
+    /// form do not match up one to one.
+    pub fn intent_example(
+        &self,
+        typed: &str,
+        canonical: &str,
+        m: &glassmind_models::IntentModel,
+    ) -> Option<(BTreeSet<String>, String)> {
+        let known = |w: &str| self.lexicon.known.contains(w);
+        let (names, words) = intents::split(&self.tokenize(typed), &known, m);
+        let mut used = vec![false; names.len()];
+        let mut template = Vec::new();
+        for t in self.tokenize(canonical.trim_end_matches(['?', '.'])) {
+            let name = matches!(t.shape, Shape::Code | Shape::Number)
+                || (t.shape == Shape::Word && !known(&t.norm));
+            if name {
+                let i = names
+                    .iter()
+                    .position(|n| n.text.eq_ignore_ascii_case(&t.text))?;
+                if let Some(u) = used.get_mut(i) {
+                    *u = true;
+                }
+                template.push(glassmind_models::intents::slot(i));
+            } else if t.shape == Shape::Punct {
+                template.push(t.text);
+            } else {
+                template.push(t.norm);
+            }
+        }
+        used.iter().all(|u| *u).then(|| (words, template.join(" ")))
+    }
+
     /// The tokens of `text`, as this grammar splits it.
     pub fn tokens_of(&self, text: &str) -> Vec<Token> {
         self.tokenize(text)
@@ -345,6 +426,11 @@ impl<O: Ontology> Language<O> for English<O> {
             && let Some(normalized) = self.normalized(&tokens)
         {
             return Understanding::Readings(normalized);
+        }
+        if self.tagging
+            && let Some(tagged) = self.tagged(&tokens)
+        {
+            return Understanding::Readings(tagged);
         }
         // Why nothing was understood: an unknown word where reading
         // stopped, or words in a shape no rule fits (or too many readings).

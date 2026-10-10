@@ -133,6 +133,18 @@ enum Command {
         #[arg(long)]
         out: PathBuf,
     },
+    /// Learn the request-category tagger from turns answered right (eval
+    /// outcomes against their labels).
+    TrainIntents {
+        #[arg(long)]
+        inputs: PathBuf,
+        #[arg(long)]
+        outcomes: PathBuf,
+        #[arg(long)]
+        labels: PathBuf,
+        #[arg(long)]
+        out: PathBuf,
+    },
     /// List every rule with the round that added it.
     Rules {
         /// Also show what each grammar rule reads.
@@ -172,6 +184,12 @@ fn main() -> ExitCode {
             labels,
             out,
         } => train::normalizer(&inputs, &outcomes, &labels, &out).map(|report| say!("{report}")),
+        Command::TrainIntents {
+            inputs,
+            outcomes,
+            labels,
+            out,
+        } => train::intents(&inputs, &outcomes, &labels, &out).map(|report| say!("{report}")),
         Command::Rules { detail } => {
             for problem in system::rule_problems() {
                 eprintln!("problem: {problem}");

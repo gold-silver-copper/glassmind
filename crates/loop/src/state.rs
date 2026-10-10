@@ -21,8 +21,14 @@ pub struct Config {
     /// Directories holding `inputs.jsonl` and `labels.jsonl`.
     pub train: PathBuf,
     pub heldout: PathBuf,
-    /// Training generators on held-out repos: reported, never used to accept.
+    /// Training generators on held-out repos: guards acceptance (a change
+    /// may not make it worse) and decides when to stop. The held-out set
+    /// decides nothing.
     pub valid: Option<PathBuf>,
+    /// More directories agents never see: everything else held out (its
+    /// generator prompts, dev sets, outside benchmarks' held-out splits).
+    #[serde(default)]
+    pub private: Vec<PathBuf>,
     /// Failure units per syntax token of mind code.
     pub size_price: f64,
     /// Agents running at once.
@@ -37,7 +43,7 @@ pub struct Config {
     pub sandbox: bool,
     /// Growth rounds before each compression round.
     pub growth_per_compression: u32,
-    /// Stop after this many rounds without a held-out improvement.
+    /// Stop after this many rounds without a validation improvement.
     pub patience: u32,
     /// Ask an LLM reviewer to veto changes that put language knowledge in
     /// as special cases or knowledge in the wrong layer.

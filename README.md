@@ -104,7 +104,11 @@ run it as a detached, resumable service) alternates:
   merge or generalize the rest.
 
 A change is accepted only if it builds and passes clippy, the tests and the
-layer check; lowers training cost plus 0.01 per syntax token of mind code;
-turns no right or honestly refused training turn wrong; does not worsen the
-held-out score; and is not vetoed by a reviewer agent for keyword spotting,
-special-casing or knowledge in the wrong layer.
+layer check; lowers training cost plus a price per syntax token of mind
+code; turns no right or honestly refused training turn wrong; does not
+worsen the validation score (other repositories) by more than 2; and is not
+vetoed by a reviewer agent for faked answers. The held-out score decides
+nothing, not even when to stop: it is only reported. Agents cannot read
+anything held out, and the scorer's code (`crates/loop`, `crates/answer`)
+is outside what they may change. Every check on code runs in a
+memory-capped scope that ends everything it started.
