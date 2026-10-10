@@ -15,15 +15,18 @@ use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 5;
 
-/// "named `x`": the described thing goes by the name.
+/// "named `x`": the described thing goes by the name; "named that": by
+/// the name of the thing said before.
 fn named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    match c {
-        [Sem::Thing(Thing::Named(name))] => Some(Sem::Condition {
-            condition: Condition::Named(name.clone()),
-            number: Number::Plural,
-        }),
-        _ => None,
-    }
+    let condition = match c.last()? {
+        Sem::Thing(Thing::Named(name)) => Condition::Named(name.clone()),
+        Sem::Thing(Thing::Previous) => Condition::NamedLike(Thing::Previous),
+        _ => return None,
+    };
+    Some(Sem::Condition {
+        condition,
+        number: Number::Plural,
+    })
 }
 
 /// "a `x` field", "field `x`": any thing of the kind going by the name.
@@ -62,6 +65,24 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("called"), C(Cat::NounPhrase)],
             named,
         ),
+        // "(a field) named like that": goes by the name of the thing said
+        // before, as "named that" does.
+        Rule::new(
+            RuleInfo::new("en.qualifier.named_like", 13),
+            Cat::Qualifier,
+            vec![W("named"), W("like"), C(Cat::NounPhrase)],
+            S::Build(named),
+        )
+        .read_only(),
+        // "(a field) with that name": goes by the name of the thing said
+        // before.
+        Rule::new(
+            RuleInfo::new("en.qualifier.with_that_name", 13),
+            Cat::Qualifier,
+            vec![W("with"), W("that"), C(Cat::NameNoun)],
+            S::Build(|_| named(&[Sem::Thing(Thing::Previous)])),
+        )
+        .read_only(),
         // "a `push_head` field", "`seam_m` field"
         heard(
             "en.noun_phrase.name_kind",

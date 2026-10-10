@@ -99,6 +99,10 @@ pub enum Condition<O: Ontology> {
     /// The described thing goes by this name in its world ("a field named
     /// `done`"). The name is matched, not looked up: many things may share it.
     Named(Name),
+    /// The described thing goes by the name of this other thing ("a field
+    /// with that name", "a field called that"). Once the other thing is
+    /// known only by its name, this is [`Condition::Named`].
+    NamedLike(Thing<O>),
 }
 
 /// A description of things: an optional kind and conditions they all meet.
@@ -327,17 +331,25 @@ impl<O: Ontology> Description<O> {
 impl<O: Ontology> Condition<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
-            Condition::Related { other, .. } | Condition::Is(other) => other.things(),
+            Condition::Related { other, .. }
+            | Condition::Is(other)
+            | Condition::NamedLike(other) => other.things(),
             Condition::Called(_) | Condition::Named(_) => Vec::new(),
         }
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
         let mut out = self.clone();
-        if let Condition::Related { other, .. } | Condition::Is(other) = &mut out {
+        if let Condition::Related { other, .. }
+        | Condition::Is(other)
+        | Condition::NamedLike(other) = &mut out
+        {
             *other = other.map_things(f);
         }
-        out
+        match out {
+            Condition::NamedLike(Thing::Named(name)) => Condition::Named(name),
+            out => out,
+        }
     }
 }
 

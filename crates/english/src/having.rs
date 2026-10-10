@@ -16,8 +16,8 @@ use crate::sem::{Cat, Number, Sem};
 use crate::{blank, last, word};
 
 use Cat::{
-    Again, Alternative, Anything, AskAgain, Description, Hedge, Holder, Includes, Join, Noun,
-    NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective,
+    Again, Alternative, Anything, AskAgain, Break, Description, Hedge, Holder, Includes, Join,
+    Noun, NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective,
     RoleNoun, Utterance, VerbPhrase, Within,
 };
 use Sym::{Cat as C, Word as W};
@@ -25,6 +25,7 @@ use Sym::{Cat as C, Word as W};
 const ROUND: u32 = 3;
 const GROWN: u32 = 9;
 const LATER: u32 = 11;
+const NOW: u32 = 13;
 
 /// The request asked again: as it was, or, when asked again for things of
 /// a kind ("which functions?"), for those of that kind among what it asks.
@@ -249,6 +250,28 @@ fn used_as<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
                 related(relation, flip(*position), &Thing::Fitting(part)),
             ))))
         }
+        _ => None,
+    }
+}
+
+/// "`tree_scroll` field": what has a part going by the name.
+fn part_holders<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [
+            Sem::Thing(Thing::Named(name)),
+            Sem::Holder {
+                kind,
+                relation,
+                position,
+            },
+        ] => Some(Sem::Description(meeting(
+            None,
+            related(
+                relation,
+                flip(*position),
+                &Thing::Fitting(meeting(Some(kind), Condition::Named(name.clone()))),
+            ),
+        ))),
         _ => None,
     }
 }
@@ -936,6 +959,50 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             used_as,
         ),
     ]);
+    let now = |id, lhs, rhs, build| read_only_rule(id, NOW, lhs, rhs, build);
+    rules.extend([
+        // "`tree_scroll` field": what has a part going by the name, which
+        // "- what structs" asks again of things of a kind.
+        now(
+            "en.description.part_holders",
+            Description,
+            vec![C(NounPhrase), C(Part)],
+            part_holders,
+        ),
+        // "— which structs", "- what structs": asked again, set off.
+        now(
+            "en.ask_again.set_off",
+            AskAgain,
+            vec![C(Break), C(AskAgain)],
+            last,
+        ),
+        // "is there some struct with a `socials` field": asking whether
+        // there is one asks for them.
+        now(
+            "en.description.some",
+            Description,
+            words_then("some", &[Description]),
+            last,
+        ),
+        // "what structs", asked again after a question or a thing set off.
+        now(
+            "en.ask_again.what_kind",
+            AskAgain,
+            words_then("what", &[Noun]),
+            same,
+        ),
+    ]);
+    rules.extend(
+        [
+            ("en.ask_again.which_are_they", "which are they"),
+            ("en.ask_again.is_there_a_list", "is there a list"),
+            (
+                "en.ask_again.is_there_a_list_somewhere",
+                "is there a list somewhere",
+            ),
+        ]
+        .map(|(id, words)| filler(id, NOW, AskAgain, words)),
+    );
     rules.extend(
         [("en.hedge.only", "only"), ("en.hedge.like", "like")]
             .map(|(id, words)| filler(id, LATER, Hedge, words)),

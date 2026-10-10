@@ -160,6 +160,8 @@ pub fn words() -> Vec<Word> {
                 // embed ThemeConfig in a field"
                 ("en.rust.verb.stores", 11, "stores", HasField, ThirdSingular),
                 ("en.rust.verb.embed", 11, "embed", HasField, Plain),
+                // "structs that declare a `sliding` field"
+                ("en.rust.verb.declare", 13, "declare", HasField, Plain),
                 // "which fields `S` contains", "which fields make up `S`",
                 // "what fields `PostText` is made up of"
                 (
@@ -695,6 +697,10 @@ mod tests {
             "list structs containing field `done`",
             "what structs got done as a field",
             "which structs have field named done? still finding my way around here",
+            "I saw `done` somewhere, which structs have a field with that name?",
+            "i keep seeing `done` around, which structs have field named that?",
+            "`done` field - what structs",
+            "I'm looking for structs that have `done` field, which ones are there?",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

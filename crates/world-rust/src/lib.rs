@@ -568,6 +568,11 @@ impl RustWorld {
                 Condition::Called(name) => self.lookup(name, fired).into_iter().collect(),
                 Condition::Is(thing) => self.things(thing, fired)?,
                 Condition::Named(name) => self.named(name, description.kind, fired)?,
+                // Named like an item: by the item's own name.
+                Condition::NamedLike(Thing::Item(item)) => {
+                    self.named(&Name(item.name.clone()), description.kind, fired)?
+                }
+                Condition::NamedLike(_) => return Err(Unsupported),
                 // A type needs no item to be named (`Arc`, `u32`), only to be
                 // written as one somewhere.
                 Condition::Related {

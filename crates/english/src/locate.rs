@@ -313,13 +313,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ]);
     rules.extend([
         // "can you tell me where `x` is defined", "I'd like to know where
-        // ...", "I'm trying to find where `x` is used as a field type"
-        rule(
-            "en.question.inquiry",
+        // ...", "I'm trying to find where `x` is used as a field type", "I'm
+        // looking for structs that have `probe` field", "i'm trying to
+        // figure out which structs have a field called `on`"
+        Rule::new(
+            RuleInfo::new("en.question.inquiry_question", 13),
             Cat::Question,
-            vec![C(Cat::Inquiry), C(Cat::Indirect)],
-            crate::last,
-        ),
+            vec![C(Cat::Inquiry), C(Cat::Question)],
+            S::Build(crate::last),
+        )
+        .read_only(),
         // "where `x` is defined"
         rule(
             "en.indirect.where_defined",
