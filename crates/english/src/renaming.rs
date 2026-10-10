@@ -16,7 +16,7 @@ use glassmind_meaning::{
 
 use crate::aside::filler;
 use crate::asking::read_only_rule;
-use crate::lexicon::{CODE, NAME, POSSESSIVE, TEXT};
+use crate::lexicon::{CODE, NAME, TEXT};
 use crate::sem::{Cat, Sem};
 use crate::spoken;
 use crate::{blank, first, word};
@@ -276,9 +276,6 @@ const COMMAND_AFTER: Phrases = &[
     ("en.command.please", "please"),
     ("en.command.comma_please", ", please"),
     ("en.command.pls", "pls"),
-    ("en.command.update_usages", ", update usages"),
-    ("en.command.update_all_usages", ", update all usages"),
-    ("en.command.update_all_uses", ", update all uses"),
     ("en.command.rename_it", ", rename it"),
     ("en.command.instead", "instead"),
     ("en.command.for_me", "for me"),
@@ -449,19 +446,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Belonging), C(Mention), W("there is"), C(Mention)],
             belonging,
         ),
-        heard(
-            "en.topic.in_owner",
-            Topic,
-            vec![C(Belonging), C(Mention), C(Mention)],
-            belonging,
-        ),
-        // "App::title_shown -> rename to window_title"
-        heard(
-            "en.command.about_arrow",
-            Command,
-            vec![C(Topic), C(Arrow), C(Command)],
-            about,
-        ),
         // "Config field saved_max_mb", "Worker recheck field": a part
         // named with its owner.
         heard(
@@ -589,14 +573,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("there is this"), C(Mention)],
             first,
         ),
-        // "what is `digit` even... ok anyway, could you rename it": the
-        // thing wondered about, left aside for the request.
-        later(
-            "en.topic.what_is_even",
-            Topic,
-            vec![C(WhatIs), C(Mention), C(Hedge)],
-            |c| c.get(1).cloned(),
-        ),
     ]);
     let grown = |id, lhs, rhs, build| read_only_rule(id, 21, lhs, rhs, build);
     rules.extend([
@@ -642,20 +618,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Mention,
             vec![Class(NAME), C(Mention)],
             part_of,
-        ),
-        grown(
-            "en.mention.possessive_part",
-            Mention,
-            vec![Class(POSSESSIVE), C(Mention)],
-            part_of,
-        ),
-        // "in `Tactics` there is this field `close_in`": what is pointed
-        // out, part of the thing it is said to be in.
-        grown(
-            "en.topic.in_owner_pointed",
-            Topic,
-            vec![C(Belonging), C(Mention), C(Topic)],
-            belonging,
         ),
         // "what does `armed` in `MySites` even mean... anyway, rename it":
         // the thing asked about, left aside for the request.

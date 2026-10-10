@@ -361,26 +361,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     // "`x` how many callers it got, number of functions": the count
     // asked for again, as a noun.
     rules.push(filler("en.recount.number_of", 18, Recount, "number of"));
-    // "`from_name` called from how many places": things of any kind.
-    rules.push(read_only_rule(
-        "en.question.undergoes_from_how_many_ones",
-        18,
-        Question,
-        vec![C(Undergoes), W("from"), C(HowMany), C(Ones)],
-        |c| count(&[anything(c.get(..1)?)?]),
-    ));
-    // "how mnay fns call `x`", "`x` called by how mny functions": "how
-    // many" mistyped, as hurried users do.
-    rules.extend(fillers(
-        18,
-        &[(
-            HowMany,
-            &[
-                ("en.how_many.mistyped.mnay", "how mnay"),
-                ("en.how_many.mistyped.mny", "how mny"),
-            ],
-        )],
-    ));
     // "is it used in lot of places", with the article dropped
     rules.push(filler(
         "en.widely.in_lot_of_places",
@@ -411,8 +391,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ("en.question.how_many_role_has", 14, "has"),
             ("en.question.how_many_role_have", 14, "have"),
             ("en.question.how_many_role_got", 14, "got"),
-            // "`x` how many callers it hav", mistyped
-            ("en.question.how_many_role_hav", 18, "hav"),
         ]
         .map(|(id, round, verb)| {
             read_only_rule(

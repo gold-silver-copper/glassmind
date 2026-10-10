@@ -10,7 +10,6 @@ use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{Ontology, Reply, Utterance};
 
 use crate::aside::filler;
-use crate::asking::read_only_rule;
 use crate::lexicon::CODE;
 use crate::renaming::{Phrases, blanks, heard, rename, request};
 use crate::sem::{Cat, Sem};
@@ -100,13 +99,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ] {
         rules.extend(blanks(cat, table).map(Rule::read_only));
     }
-    // "`x` -> `y`, update all callers"
-    rules.push(filler(
-        "en.follow_up.update_all_callers_bare",
-        11,
-        FollowUp,
-        "update all callers",
-    ));
     rules.extend([
         heard(
             "en.becomes.into",
@@ -143,15 +135,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             FollowUp,
             "with all callers",
         ),
-        // "pls rename everywhere", "rename it, with all callers": one
-        // follow-up after another.
-        read_only_rule(
-            "en.follow_up.more",
-            21,
-            FollowUp,
-            vec![C(FollowUp), C(FollowUp)],
-            first,
-        ),
         heard(
             "en.follow_up.mark",
             FollowUp,
@@ -185,11 +168,6 @@ const FOLLOW_UPS: Phrases = &[
     ("en.follow_up.for_me", "for me"),
     ("en.follow_up.everywhere", "everywhere"),
     ("en.follow_up.everywhere_used", "everywhere it's used"),
-    ("en.follow_up.update_callers", "update the callers too"),
-    (
-        "en.follow_up.update_all_callers",
-        "update all the callers too",
-    ),
 ];
 
 /// Marks ending a sentence inside a turn.

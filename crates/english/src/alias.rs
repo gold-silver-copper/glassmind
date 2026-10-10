@@ -143,9 +143,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("the"), C(Unknown)],
             name,
         ),
-        // "what fields does the slot have?": a name the user gave, standing
-        // for the thing they gave it to.
-        rule("en.noun_phrase.alias", 7, NounPhrase, vec![C(Alias)], named),
         // "what fields does the vault have?" after "refer to struct Store
         // as "the vault"": a name given in quotes with its "the".
         rule(

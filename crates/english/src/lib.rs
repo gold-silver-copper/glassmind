@@ -76,7 +76,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         whence::rules,
         correcting::rules,
         around::rules,
-        spelling::rules,
     ]
     .into_iter()
     .flat_map(|rules| rules())
@@ -169,21 +168,11 @@ impl<O: Ontology> English<O> {
                 _ => None,
             })
             .collect();
-        // Mistypings: never read as phrases, but as the word meant.
-        let meant = grammar
-            .rules()
-            .iter()
-            .filter_map(|r| match (r.lhs, r.rhs.as_slice()) {
-                (Mistyped, [Sym::Word(typed), Sym::Word(meant)]) => Some((*typed, *meant)),
-                _ => None,
-            })
-            .collect();
         English {
             grammar,
             lexicon: EnglishLexicon {
                 known,
                 standing,
-                meant,
                 spellings: spelling::spellings(switches),
                 ontology: PhantomData,
             },

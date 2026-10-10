@@ -150,11 +150,6 @@ const RENAME: RuleInfo = RuleInfo::new("rust.rename", 5);
 /// and the new name is written nowhere in the source. Decides before
 /// [`RENAME`] for anything that is a field.
 const RENAME_FIELD: RuleInfo = RuleInfo::new("rust.rename.field", 5);
-/// Renaming a thing when the new name is not given ("rename the `x` field"):
-/// a rename is only exact without type information, so a name that several
-/// items of its kind share (a field declared by two structs) can't be
-/// renamed until the user says which one is meant.
-const RENAME_UNIQUE: RuleInfo = RuleInfo::new("rust.rename.unique", 5);
 /// Noting a name the user will call a thing by: only when the thing is the
 /// only item of its kind (or of the kind the user said) with its name, so
 /// later uses of the alias can't mean another one.
@@ -178,7 +173,6 @@ pub const RULES: &[RuleInfo] = &[
     RENAME_FIELD,
     RELATION_MEMBER,
     CONDITION_NAMED,
-    RENAME_UNIQUE,
     ALIAS_UNIQUE,
     NAMED_OTHER_KIND,
     CONDITION_PART_OF,
@@ -510,36 +504,6 @@ impl RustWorld {
         })
     }
 
-    /// A rename to a name not given, by [`RENAME_UNIQUE`]: which item is
-    /// meant, if items of its kind share its name; otherwise there is no
-    /// edit to propose.
-    fn rename_unnamed(
-        &self,
-        thing: &Thing<Rust>,
-        kind: Option<RustKind>,
-        fired: &mut Vec<RuleInfo>,
-    ) -> Found<Reply<Rust>> {
-        let item = resolved(thing)?;
-        self.fire(RENAME_UNIQUE, fired)?;
-        // Every item of the kind meant that has the name, whichever of them
-        // this reading took the name to mean. With no kind said, a name
-        // several fields have asks which field, as [`RENAME_FIELD`] does.
-        let kind = kind.unwrap_or(if self.sharing(&item.name, Some(Field)).len() > 1 {
-            Field
-        } else {
-            item.kind
-        });
-        let candidates = self.sharing(&item.name, Some(kind));
-        if candidates.len() > 1 {
-            return Err(Ambiguous { candidates });
-        }
-        if item.kind != kind {
-            return Err(WrongKind { item: item.clone() });
-        }
-        // With no new name there is no edit to propose.
-        Err(Unsupported)
-    }
-
     /// The items of the kind (any kind if `None`) whose name is exactly
     /// `name`; "no such name" if there are none.
     fn named(
@@ -689,8 +653,10 @@ impl World<Rust> for RustWorld {
 
     fn propose(&self, action: &Action<Rust>, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {
         let Action::Rename { thing, kind, name } = action;
+        // With no new name there is no edit to propose.
         let Some(name) = name else {
-            return self.rename_unnamed(thing, *kind, fired);
+            resolved(thing)?;
+            return Err(Unsupported);
         };
         if let Some(reply) = self.rename_field(thing, *kind, name, fired) {
             return reply;

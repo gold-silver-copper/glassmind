@@ -165,44 +165,6 @@ const LATER_FILLERS: &[(Cat, &[(&str, &str)])] = &[
     (Location, &[("en.location.file", "file")]),
 ];
 
-/// Common ways of mistyping these words, from round 18, read as the word
-/// meant, as `describe::MISTYPED` does: "where izz defiend", "where's
-/// notified defnied", "wehre is settle_ref", "wher is Store defined",
-/// "advisories_dark whre is it", "locate `middle_of` definiton", "loaction
-/// of `x`".
-const MISTYPED: &[(Cat, &[(&str, &str)])] = &[
-    (
-        Defined,
-        &[
-            ("en.defined.mistyped.defiend", "defiend"),
-            ("en.defined.mistyped.defnied", "defnied"),
-            ("en.defined.mistyped.definde", "definde"),
-            ("en.defined.mistyped.deifned", "deifned"),
-            ("en.defined.mistyped.definded", "definded"),
-        ],
-    ),
-    (
-        Where,
-        &[
-            ("en.whence.mistyped.wher", "wher"),
-            ("en.whence.mistyped.wher_is", "wher is"),
-            ("en.whence.mistyped.wehre", "wehre"),
-            ("en.whence.mistyped.wehre_is", "wehre is"),
-            ("en.whence.mistyped.wehre_s", "wehre's"),
-            ("en.whence.mistyped.whre", "whre"),
-            ("en.whence.mistyped.whre_is", "whre is"),
-        ],
-    ),
-    (
-        Definition,
-        &[
-            ("en.definition.mistyped.definiton", "definiton"),
-            ("en.definition.mistyped.defintion", "defintion"),
-        ],
-    ),
-    (Location, &[("en.location.mistyped.loaction", "loaction")]),
-];
-
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, round, lhs, rhs, build| read_only_rule(id, round, lhs, rhs, build);
     // "where is `x` defined": how the system asks it, too. Also "where's
@@ -493,7 +455,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ]);
     rules.extend(fillers(ROUND, FILLERS));
     rules.extend(fillers(13, LATER_FILLERS));
-    rules.extend(fillers(18, MISTYPED));
     // "`x` is defined at src/x.rs:12."
     rules.push(spoken(
         "en.reply.location",

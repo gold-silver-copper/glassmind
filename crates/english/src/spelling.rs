@@ -1,50 +1,15 @@
-//! Words as users often mistype them, each read as the word meant wherever
-//! that word is read. A `Mistyped` rule's words are the word as typed, then
-//! the word meant; it is never a phrase, so the system never says one. A
-//! mistyping is a known word, so it is never read as a name; quote it in
-//! backticks to name it. The words for a world's kinds are mistyped in its
-//! bridge crate.
-//!
-//! A `SPELLINGS` entry is read the same way by the lexicon, credited to
-//! the readings that use it: "whcih fields does `S` hav" reads as "which
-//! fields does `S` have". Each is one fixed word, mistyped the
-//! way people often mistype it, with its own ID and switch; it stands for
-//! the word meant everywhere that word is read, never as a name or a
-//! guess. Only plain words are corrected: code and quoted names are not.
+//! Words as users often mistype them, each read by the lexicon as the word
+//! meant wherever that word is read, and credited to the readings that use
+//! it: "whcih fields does `S` hav" reads as "which fields does `S` have".
+//! Each is one fixed word, mistyped the way people often mistype it, with
+//! its own ID and switch; it stands for the word meant everywhere that word
+//! is read, never as a name or a guess, and the system never says it. Only
+//! plain words are corrected: code and quoted names are not, so quote a
+//! mistyping in backticks to name it.
 
 use std::collections::BTreeMap;
 
-use glassmind_grammar::Rule;
-use glassmind_meaning::Ontology;
 use glassmind_rules::{RuleInfo, Switches};
-
-use crate::locate::fillers;
-use crate::sem::{Cat, Sem};
-
-/// Mistypings from round 18's questions about structs with a field of some
-/// name: "whcih structs have field `area`", "which structs hav `kinds`
-/// field", "what structs have teh field more_wanted", "structs contianing
-/// field reason", "what structs have a field caled value".
-const MISTYPED: &[(Cat, &[(&str, &str)])] = &[(
-    Cat::Mistyped,
-    &[
-        ("en.mistyped.whcih", "whcih which"),
-        ("en.mistyped.whihc", "whihc which"),
-        ("en.mistyped.wich", "wich which"),
-        ("en.mistyped.hav", "hav have"),
-        ("en.mistyped.hve", "hve have"),
-        ("en.mistyped.hvae", "hvae have"),
-        ("en.mistyped.contianing", "contianing containing"),
-        ("en.mistyped.containg", "containg containing"),
-        ("en.mistyped.caled", "caled called"),
-        ("en.mistyped.namde", "namde named"),
-        ("en.mistyped.teh", "teh the"),
-    ],
-)];
-
-pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    fillers(18, MISTYPED)
-}
 
 /// A rule's ID, the word as typed and the word meant.
 type Spelling = (&'static str, &'static str, &'static str);
@@ -137,7 +102,6 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.hsa", "hsa", "has"),
             ("en.spelling.teh", "teh", "the"),
             ("en.spelling.taht", "taht", "that"),
-            ("en.spelling.lsit", "lsit", "list"),
             ("en.spelling.fucntions", "fucntions", "functions"),
             ("en.spelling.functons", "functons", "functions"),
             ("en.spelling.functoins", "functoins", "functions"),
@@ -146,6 +110,25 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.defiend", "defiend", "defined"),
             ("en.spelling.defnied", "defnied", "defined"),
             ("en.spelling.mnay", "mnay", "many"),
+            ("en.how_many.mistyped.mny", "mny", "many"),
+            // "where's notified definde", "wehre's `with_file`", "locate
+            // `middle_of` definiton", "loaction of `x`".
+            ("en.defined.mistyped.definde", "definde", "defined"),
+            ("en.defined.mistyped.deifned", "deifned", "defined"),
+            ("en.defined.mistyped.definded", "definded", "defined"),
+            ("en.whence.mistyped.wehre_s", "wehre's", "where's"),
+            (
+                "en.definition.mistyped.definiton",
+                "definiton",
+                "definition",
+            ),
+            ("en.location.mistyped.loaction", "loaction", "location"),
+            // "how many funtcions call `x`", "how many fns calll `x`",
+            // "which fns `x` callls", "how many fns callling `x`".
+            ("en.rust.noun.mistyped.funtcions", "funtcions", "functions"),
+            ("en.rust.verb.mistyped.calll", "calll", "call"),
+            ("en.rust.verb.mistyped.callls", "callls", "calls"),
+            ("en.rust.verb.mistyped.callling", "callling", "calling"),
             ("en.spelling.renmae", "renmae", "rename"),
             ("en.spelling.chnage", "chnage", "change"),
             ("en.spelling.rememebr", "rememebr", "remember"),
@@ -203,7 +186,6 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.cals", "cals", "calls"),
             ("en.spelling.fo", "fo", "of"),
             ("en.spelling.anythign", "anythign", "anything"),
-            ("en.spelling.knwo", "knwo", "know"),
             ("en.spelling.funtions", "funtions", "functions"),
             ("en.spelling.functinos", "functinos", "functions"),
             ("en.spelling.calld", "calld", "called"),
@@ -212,6 +194,17 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.calsl", "calsl", "calls"),
             ("en.spelling.itslef", "itslef", "itself"),
             ("en.spelling.internaly", "internaly", "internally"),
+            // From questions about structs with a field of some name:
+            // "structs containg field reason", "what structs have a field
+            // namde value", "what structs got a `dead` fild", "what strcuts
+            // have field named lists".
+            ("en.mistyped.containg", "containg", "containing"),
+            ("en.mistyped.namde", "namde", "named"),
+            ("en.rust.mistyped.fild", "fild", "field"),
+            ("en.rust.mistyped.strucs", "strucs", "structs"),
+            ("en.rust.mistyped.strucst", "strucst", "structs"),
+            ("en.rust.mistyped.strutcs", "strutcs", "structs"),
+            ("en.rust.mistyped.strcuts", "strcuts", "structs"),
         ],
     ),
     (

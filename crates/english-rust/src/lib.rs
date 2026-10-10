@@ -3,7 +3,7 @@
 //! A world never adds grammar, and the English crate knows no world; this
 //! bridge adds one rule per word form, each reading as a Rust concept.
 
-use glassmind_english::{Cat, Number, Sem, VerbForm, blank, word};
+use glassmind_english::{Cat, Number, Sem, VerbForm, word};
 use glassmind_grammar::Rule;
 use glassmind_meaning::Position;
 use glassmind_rules::{RuleInfo, SEED};
@@ -104,51 +104,6 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.noun.test", 13, "test", Function, Singular),
                 // "what does `x` hold, field-wise": as to its fields.
                 ("en.rust.noun.field_wise", 14, "field-wise", Field, Plural),
-                // Mistyped, as hurried users do: "how many fucntions call
-                // `x`", "how many functoins call `list_mut`", "where's that
-                // fucntion defined".
-                (
-                    "en.rust.noun.mistyped.fucntions",
-                    18,
-                    "fucntions",
-                    Function,
-                    Plural,
-                ),
-                (
-                    "en.rust.noun.mistyped.funcitons",
-                    18,
-                    "funcitons",
-                    Function,
-                    Plural,
-                ),
-                (
-                    "en.rust.noun.mistyped.functoins",
-                    18,
-                    "functoins",
-                    Function,
-                    Plural,
-                ),
-                (
-                    "en.rust.noun.mistyped.functons",
-                    18,
-                    "functons",
-                    Function,
-                    Plural,
-                ),
-                (
-                    "en.rust.noun.mistyped.funtcions",
-                    18,
-                    "funtcions",
-                    Function,
-                    Plural,
-                ),
-                (
-                    "en.rust.noun.mistyped.fucntion",
-                    18,
-                    "fucntion",
-                    Function,
-                    Singular,
-                ),
             ],
         )),
         table(
@@ -184,45 +139,10 @@ pub fn words() -> Vec<Word> {
                 // `OnceLock` in a field type", "what structs use `UserCount`
                 // as field type".
                 ("en.rust.verb.use_field", 19, "use", HasField, Plain),
-                (
-                    "en.rust.verb.uses_field",
-                    19,
-                    "uses",
-                    HasField,
-                    ThirdSingular,
-                ),
-                // Mistyped: "how many fns calll `x`", "which fns `x`
-                // callls", "which fns get caled by `x`", "how many fns
-                // callling `x`".
-                ("en.rust.verb.mistyped.calll", 18, "calll", Calls, Plain),
-                (
-                    "en.rust.verb.mistyped.callls",
-                    18,
-                    "callls",
-                    Calls,
-                    ThirdSingular,
-                ),
-                (
-                    "en.rust.verb.mistyped.caled",
-                    18,
-                    "caled",
-                    Calls,
-                    Participle,
-                ),
-                (
-                    "en.rust.verb.mistyped.callling",
-                    18,
-                    "callling",
-                    Calls,
-                    Progressive,
-                ),
                 // "which structs hold a field ...", "what structs got a field ..."
                 ("en.rust.verb.holds", 3, "holds", HasField, ThirdSingular),
                 ("en.rust.verb.hold", 3, "hold", HasField, Plain),
                 ("en.rust.verb.got", 3, "got", HasField, Plain),
-                // Mistyped: "what fields `Span` hav", "what fields `x` hve".
-                ("en.rust.verb.mistyped.hav", 18, "hav", HasField, Plain),
-                ("en.rust.verb.mistyped.hve", 18, "hve", HasField, Plain),
                 // "find structs that contain a RepoCommit field"
                 ("en.rust.verb.contain", 3, "contain", HasField, Plain),
                 // "which structs keep a `LineCache` in a field", "store a
@@ -369,22 +289,6 @@ pub fn words() -> Vec<Word> {
             field,
             &[("en.rust.part.field", 5, "field", HasField, Second)],
         ),
-        // Kinds as users mistype them, then the word meant: "what
-        // structs got a `dead` feild", "what strcuts have field named lists",
-        // "callers of `gun_order`, whcih fucntions".
-        [
-            ("en.rust.mistyped.feild", "feild field"),
-            ("en.rust.mistyped.fiedl", "fiedl field"),
-            ("en.rust.mistyped.fild", "fild field"),
-            ("en.rust.mistyped.strucs", "strucs structs"),
-            ("en.rust.mistyped.strucst", "strucst structs"),
-            ("en.rust.mistyped.strutcs", "strutcs structs"),
-            ("en.rust.mistyped.strcuts", "strcuts structs"),
-            ("en.rust.mistyped.fucntion", "fucntion function"),
-            ("en.rust.mistyped.fucntions", "fucntions functions"),
-        ]
-        .map(|(id, words)| word(RuleInfo::new(id, 18), Cat::Mistyped, words, blank()).read_only())
-        .to_vec(),
     ]
     .concat()
 }
@@ -1412,15 +1316,14 @@ mod tests {
         }
     }
 
-    /// A name the user gave a thing, quoted, after "the" or bare, stands for
-    /// that thing where a name can.
+    /// A name the user gave a thing, after "the" or bare, stands for that
+    /// thing where a name can.
     #[test]
     fn names_the_user_gave_stand_for_things() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         for (text, name) in [
             ("what fields does the slot have?", "the slot"),
             ("so what fields are in the mover?", "the mover"),
-            ("what fields does \"the leaf\" have", "the leaf"),
             ("what fields does sun glow have", "sun glow"),
             ("what fields does the history sheet have?", "history sheet"),
             ("ledger fields", "ledger"),

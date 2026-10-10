@@ -96,29 +96,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             |c| identify(c.get(..1)?),
         ),
     ]);
-    // "`x` called by what fns", "`press` called by whcih functions", "`x`
-    // called from what": the doer asked for in its place, perhaps with
-    // its kind.
-    for (id, by, which) in [
-        ("en.question.undergoes_by_which", "by", "which"),
-        ("en.question.undergoes_by_what", "by", "what"),
-        ("en.question.undergoes_from_which", "from", "which"),
-        ("en.question.undergoes_from_what", "from", "what"),
+    // "`x` called by what fns", "`press` called by whcih functions": the
+    // doer asked for in its place, with its kind.
+    for (id, which) in [
+        ("en.question.undergoes_by_which", "which"),
+        ("en.question.undergoes_by_what", "what"),
     ] {
         rules.push(read_only_rule(
             id,
             22,
             Question,
-            vec![C(Undergoes), W(by), W(which), C(Noun)],
+            vec![C(Undergoes), W("by"), W(which), C(Noun)],
             |c| identify(&[c.last()?.clone(), c.first()?.clone()]),
         ));
     }
-    rules.push(read_only_rule(
-        "en.question.undergoes_by_what_alone",
-        22,
-        Question,
-        vec![C(Undergoes), W("by what")],
-        identify,
-    ));
     rules
 }

@@ -146,31 +146,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Noun), W("are"), C(Defined), C(Preposition), C(NounPhrase)],
             placed_kind,
         ),
-        // "`S` struct fields", "end_speed fields", "hint_labels struct
-        // members": the parts of a thing, named after it.
-        rule(
-            "en.description.parts",
-            Description,
-            vec![C(NounPhrase), C(Part)],
-            |c: &[Sem<O>]| match c {
-                [
-                    Sem::Thing(other),
-                    Sem::Holder {
-                        kind,
-                        relation,
-                        position,
-                    },
-                ] => Some(Sem::Description(Description {
-                    kind: Some(kind.clone()),
-                    conditions: vec![Condition::Related {
-                        relation: relation.clone(),
-                        position: *position,
-                        other: other.clone(),
-                    }],
-                })),
-                _ => None,
-            },
-        ),
         // "could you list them": asking again for what was just answered.
         filler(
             "en.ask_again.could_you_list_them",

@@ -15,8 +15,7 @@ use std::collections::BTreeSet;
 
 use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
 use glassmind_meaning::{
-    Assumption, Condition, Description, Fact, Name, Ontology, Question, Reply, Thing, Trouble,
-    Utterance,
+    Condition, Description, Fact, Name, Ontology, Question, Reply, Thing, Trouble, Utterance,
 };
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
@@ -524,28 +523,10 @@ impl<O: Ontology> Mind<'_, O> {
             pick.reading + 1,
             rule.id
         );
-        // Say what was assumed: the meaning of each name that differs between
-        // readings, or else the reading itself.
-        let mut assumptions: Vec<Assumption<O>> = pick
-            .means
-            .iter()
-            .filter(|(name, item)| {
-                good.iter()
-                    .any(|(c, _)| c.means.iter().any(|(n, i)| n == name && i != item))
-            })
-            .map(|(name, item)| Assumption::Means {
-                name: name.clone(),
-                item: item.clone(),
-            })
-            .collect();
-        if assumptions.is_empty() {
-            assumptions.push(Assumption::Reading {
-                meaning: pick.meaning.clone(),
-            });
-        }
+        // Say what was assumed: the reading chosen.
         (
             Reply::Assuming {
-                assumptions,
+                reading: pick.meaning.clone(),
                 reply: Box::new(reply.clone()),
             },
             Some(pick),

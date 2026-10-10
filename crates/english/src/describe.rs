@@ -316,14 +316,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ));
     // "what does `armed` even mean"
     rules.push(filler("en.doing.mean", 21, Doing, "mean"));
-    // "what does `x` do, explain me": the frame said after.
-    rules.push(read_only_rule(
-        "en.question.prompt_after",
-        11,
-        Question,
-        vec![C(Question), W(","), C(Prompt)],
-        first,
-    ));
     // "what does `x` actually do", "what is `x` even for"
     for (id, cat) in [("en.doing.hedged", Doing), ("en.use.hedged", Use)] {
         rules.push(rule(id, cat, vec![C(Hedge), C(cat)], last));

@@ -24,7 +24,6 @@ const WORDS: &[(&str, Cat, &str)] = &[
     ("en.deed.that_change", Deed, "that change"),
     ("en.deed.this_change", Deed, "this change"),
     ("en.deed.the_change", Deed, "the change"),
-    ("en.deed.the_thing", Deed, "the thing"),
     // Words saying the system put the action forward.
     (
         "en.proposed.you_just_proposed",

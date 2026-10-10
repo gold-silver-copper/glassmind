@@ -1,8 +1,7 @@
 //! English categories and the values phrases carry while they are built.
 
 use glassmind_meaning::{
-    Assumption, Condition, Description, Extent, Name, Ontology, Position, Question, Reply, Thing,
-    Utterance,
+    Condition, Description, Extent, Name, Ontology, Position, Question, Reply, Thing, Utterance,
 };
 
 /// English phrase categories. These are English's own categories, used only
@@ -44,8 +43,6 @@ pub enum Cat {
     ItemList,
     /// A whole reply the system says.
     Reply,
-    /// A statement of something the system assumed.
-    Assumption,
     /// A clause the user says about themselves that asks nothing: "I'm
     /// reworking the follow feature a bit".
     Remark,
@@ -313,9 +310,6 @@ pub enum Cat {
     /// A clause saying a thing is inside another: "it's wrapped in
     /// something", "the type just contains `Key`".
     Wrapped,
-    /// A word as users mistype it, then the word they mean: never a phrase,
-    /// but read wherever the word meant is ("whcih", "feild").
-    Mistyped,
 }
 
 /// English grammatical number, used for agreement.
@@ -357,7 +351,6 @@ pub enum Sem<O: Ontology> {
     Utterance(Utterance<O>),
     Question(Question<O>),
     Reply(Reply<O>),
-    Assumption(Assumption<O>),
     Extent(Extent<O>),
     Description(Description<O>),
     Thing(Thing<O>),

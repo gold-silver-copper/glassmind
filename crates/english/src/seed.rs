@@ -7,8 +7,7 @@
 
 use glassmind_grammar::{Rule, SEED, Sym};
 use glassmind_meaning::{
-    Assumption, Condition, Description, Extent, Ontology, Position, Question, Reply, Thing,
-    Trouble, Utterance,
+    Condition, Description, Extent, Ontology, Position, Question, Reply, Thing, Trouble, Utterance,
 };
 
 use crate::lexicon::{ITEM, NAME, NUMBER};
@@ -351,52 +350,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
-        // "By `x` I assume you mean `Foo::x`. ..." or "I take that to mean: ...? ..."
+        // "I take that to mean: ...? ...": the reading the reply rests on.
         said(
             "en.reply.assuming",
             Reply,
-            vec![C(Assumption), C(Reply)],
+            vec![W("I take that to mean :"), C(Utterance), C(Reply)],
             |v| match v {
-                Sem::Reply(Reply::Assuming { assumptions, reply }) => {
-                    let (first, rest) = assumptions.split_first()?;
-                    let rest = if rest.is_empty() {
-                        (**reply).clone()
-                    } else {
-                        Reply::Assuming {
-                            assumptions: rest.to_vec(),
-                            reply: reply.clone(),
-                        }
-                    };
-                    Some(vec![Sem::Assumption(first.clone()), Sem::Reply(rest)])
-                }
-                _ => None,
-            },
-        ),
-        said(
-            "en.assumption.means",
-            Assumption,
-            vec![
-                W("by"),
-                Class(NAME),
-                W("I assume you mean"),
-                Class(ITEM),
-                W("."),
-            ],
-            |v| match v {
-                Sem::Assumption(Assumption::Means { name, item }) => {
-                    Some(vec![Sem::Name(name.clone()), Sem::Item(item.clone())])
-                }
-                _ => None,
-            },
-        ),
-        said(
-            "en.assumption.reading",
-            Assumption,
-            vec![W("I take that to mean :"), C(Utterance)],
-            |v| match v {
-                Sem::Assumption(Assumption::Reading { meaning }) => {
-                    Some(vec![Sem::Utterance(meaning.clone())])
-                }
+                Sem::Reply(Reply::Assuming { reading, reply }) => Some(vec![
+                    Sem::Utterance(reading.clone()),
+                    Sem::Reply((**reply).clone()),
+                ]),
                 _ => None,
             },
         ),

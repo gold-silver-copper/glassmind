@@ -218,16 +218,6 @@ pub enum Trouble<O: Ontology> {
     TooAmbiguous,
 }
 
-/// Something the system took for granted to choose between readings.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
-#[serde(bound = "")]
-pub enum Assumption<O: Ontology> {
-    /// A name the user wrote was taken to mean this item.
-    Means { name: Name, item: O::Item },
-    /// The input was taken to mean this.
-    Reading { meaning: Utterance<O> },
-}
-
 /// Everything a reply can mean, before a language puts it into words.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]
@@ -260,9 +250,10 @@ pub enum Reply<O: Ontology> {
     Recall(Vec<O::Item>),
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
-    /// A reply that rests on assumptions, which are stated first.
+    /// A reply that rests on the system taking the input, which could be
+    /// read several ways, to mean `reading`, which is stated first.
     Assuming {
-        assumptions: Vec<Assumption<O>>,
+        reading: Utterance<O>,
         reply: Box<Reply<O>>,
     },
 }

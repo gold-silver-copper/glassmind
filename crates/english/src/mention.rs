@@ -344,15 +344,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("the"), Class(CODE), Class(WORD)],
             |c| named(c.first()),
         ),
-        // "the helper `x`", "the test helper `fake_list`": the same, with
-        // the user's own noun before the name, perhaps after a kind.
-        rule(
-            "en.mention.own_noun_before",
-            21,
-            Mention,
-            vec![W("the"), Class(LOWER), C(Mention)],
-            |c| c.last().cloned(),
-        ),
+        // "the test helper `fake_list`": the same, with the user's own noun
+        // before the name, after a kind.
         rule(
             "en.mention.kind_own_noun_before",
             21,
@@ -454,9 +447,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ("en.noun_phrase.it", ROUND, "it"),
             ("en.noun_phrase.that", 9, "that"),
             ("en.noun_phrase.that_one", 9, "that one"),
-            // "marks_follow_the_theme where's taht defined", "what calls
-            // taht": mistyped, as in describe.rs.
-            ("en.noun_phrase.mistyped.taht", 18, "taht"),
         ]
         .map(|(id, round, words)| {
             word(
