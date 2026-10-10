@@ -10,7 +10,7 @@ use glassmind_meaning::{
 };
 
 use crate::contents::narrowed;
-use crate::lexicon::{CODE, WORD};
+use crate::lexicon::{CODE, NAME, WORD};
 use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
 use crate::{blank, first, word};
@@ -388,6 +388,17 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             .read_only()
         }),
     );
+    // "functions call the `index_bits`": a name with an article before it.
+    rules.push(rule(
+        "en.noun_phrase.the_name",
+        11,
+        Cat::NounPhrase,
+        vec![W("the"), Class(NAME)],
+        |c| match c {
+            [Sem::Name(n)] => Some(Sem::Thing(Thing::Named(n.clone()))),
+            _ => None,
+        },
+    ));
     rules.extend(fillers(ROUND, FILLERS));
     rules
 }

@@ -43,7 +43,7 @@ fn again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 /// Things of any kind meeting the condition last among the children.
-fn anything<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+pub(crate) fn anything<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c.last()? {
         Sem::Condition { condition, .. } => {
             Some(Sem::Description(meeting(None, condition.clone())))
@@ -531,6 +531,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.description.any",
             Description,
             words_then("any", &[Description]),
+            last,
+        ),
+        // "is there many functions that call `x`": asking whether there
+        // are many asks for them too.
+        read_only_rule(
+            "en.description.many",
+            11,
+            Description,
+            words_then("many", &[Description]),
             last,
         ),
         rule(

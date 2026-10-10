@@ -51,6 +51,12 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     ("en.prompt.maybe", 11, "maybe"),
     // "I'm thinking `x` should be renamed to `y`"
     ("en.prompt.i_m_thinking", 11, "i'm thinking"),
+    // "I'm curious how many ...", "I'm wondering how many ...", "Trying
+    // to figure out how many ...": the speaker's wish to know, or "I'm
+    // trying to" said without its subject.
+    ("en.prompt.i_m_curious", 11, "i'm curious"),
+    ("en.prompt.i_m_wondering", 11, "i'm wondering"),
+    ("en.prompt.bare_trying_to", 11, "trying to"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {

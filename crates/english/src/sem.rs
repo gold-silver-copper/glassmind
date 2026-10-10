@@ -117,6 +117,10 @@ pub enum Cat {
     Participial,
     /// A noun for how many things there are: "number", "count", "#".
     Amount,
+    /// Words asking for the things just asked about to be counted, of a
+    /// kind if one is said: "can you count them for me?", "like how many
+    /// exactly", "how many functions".
+    Recount,
     /// A word standing for things whose kind is left open, before what
     /// describes them: "ones", "those", "anything".
     Ones,

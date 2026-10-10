@@ -3,11 +3,13 @@
 //! "`x` caller count", and saying the answer: "3 functions call `x`."
 
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
-use glassmind_meaning::{Condition, Description, Ontology, Position, Question, Reply};
+use glassmind_meaning::{Condition, Description, Ontology, Position, Question, Reply, Utterance};
 
 use crate::asking::role_of;
 use crate::blank;
 use crate::first;
+use crate::having::anything;
+use crate::last;
 use crate::lexicon::NUMBER;
 use crate::locate::fillers;
 use crate::phrase;
@@ -23,7 +25,8 @@ const ROUND: u32 = 3;
 fn count<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     let description = match c {
         [Sem::Description(d)] | [Sem::Question(Question::Count(d))] => d.clone(),
-        [Sem::Kind { kind, .. }, Sem::Condition { condition, .. }] => Description {
+        [Sem::Kind { kind, .. }, Sem::Condition { condition, .. }]
+        | [Sem::Condition { condition, .. }, Sem::Kind { kind, .. }] => Description {
             kind: Some(kind.clone()),
             conditions: vec![condition.clone()],
         },
@@ -70,6 +73,28 @@ fn described<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
+/// The request before, asked again as how many things it asks for: of the
+/// kind said after, if one is ("is there many functions that call `x`?
+/// like how many exactly", "is there anything calling `x`? how many
+/// functions", "how many fns call `x`, can you count them?").
+fn recount<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let [
+        Sem::Utterance(Utterance::Ask(Question::Identify(d) | Question::Count(d))),
+        said,
+    ] = c
+    else {
+        return None;
+    };
+    let mut d = d.clone();
+    if let Sem::Kind { kind, .. } = said {
+        if d.kind.as_ref().is_some_and(|k| k != kind) {
+            return None;
+        }
+        d.kind = Some(kind.clone());
+    }
+    Some(Sem::Utterance(Utterance::Ask(Question::Count(d))))
+}
+
 /// Words before a participle that keep its meaning, and the round each
 /// came in: "are calling `x`", "end up calling `x`", "ends up calling `x`",
 /// "anything that ends up calling it".
@@ -102,6 +127,37 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("how"), W("many"), C(Cat::Description)],
             count,
         ),
+        // "how many places call `x`", "how many things call it": things of
+        // any kind.
+        Rule::new(
+            RuleInfo::new("en.question.how_many_ones", 11),
+            Cat::Question,
+            vec![W("how"), W("many"), C(Cat::Ones), C(Cat::VerbPhrase)],
+            S::Build(|c| count(&[anything(c)?])),
+        )
+        .read_only(),
+        // "how many callers `x`", with nothing between the role and the thing.
+        Rule::new(
+            RuleInfo::new("en.question.how_many_role", 11),
+            Cat::Question,
+            vec![W("how"), W("many"), C(Cat::RoleNoun), C(Cat::NounPhrase)],
+            S::Build(count),
+        )
+        .read_only(),
+        // "`refilter` called from how many fns"
+        Rule::new(
+            RuleInfo::new("en.question.undergoes_from_how_many", 11),
+            Cat::Question,
+            vec![
+                C(Cat::Undergoes),
+                W("from"),
+                W("how"),
+                W("many"),
+                C(Cat::Noun),
+            ],
+            S::Build(count),
+        )
+        .read_only(),
         // "how many callers does `x` have"
         rule(
             "en.question.how_many_have",
@@ -263,6 +319,58 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ),
         ),
     ]);
+    // Asking again how many of the things just asked about there are.
+    let again = |id, rhs, build| {
+        Rule::new(RuleInfo::new(id, 11), Cat::Recount, rhs, S::Build(build)).read_only()
+    };
+    rules.extend([
+        Rule::new(
+            RuleInfo::new("en.utterance.recount", 11),
+            Cat::Utterance,
+            vec![C(Cat::Utterance), C(Cat::Recount)],
+            S::Build(recount),
+        )
+        .read_only(),
+        // "how many functions": of that kind.
+        again("en.recount.kind", vec![C(Cat::Recount), C(Cat::Noun)], last),
+        // ", can you count them", "like how many"
+        again(
+            "en.recount.prompt",
+            vec![C(Cat::Prompt), C(Cat::Recount)],
+            last,
+        ),
+        again(
+            "en.recount.joined",
+            vec![C(Cat::Join), C(Cat::Recount)],
+            last,
+        ),
+        // "how many exactly", "count them for me?"
+        again(
+            "en.recount.hedged",
+            vec![C(Cat::Recount), C(Cat::Hedge)],
+            first,
+        ),
+        again(
+            "en.recount.for_me",
+            vec![C(Cat::Recount), W("for"), W("me")],
+            first,
+        ),
+        again("en.recount.mark", vec![C(Cat::Recount), W("?")], first),
+    ]);
+    rules.extend(fillers(
+        11,
+        &[
+            (
+                Cat::Recount,
+                &[
+                    ("en.recount.count_them", "count them"),
+                    ("en.recount.how_many", "how many"),
+                ],
+            ),
+            // "num of funcs calling `x`"
+            (Cat::Amount, &[("en.amount.num", "num")]),
+        ],
+    ));
     rules.extend(ASPECTS.iter().map(|&(id, round, before)| {
         let mut rhs = phrase(before);
         rhs.push(C(Cat::Participial));

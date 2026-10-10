@@ -7,6 +7,7 @@ use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Ontology, Question, Reply, Thing};
 
 use crate::lexicon::{ITEM, PLACE};
+use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
 use crate::word;
 use crate::{blank, first, last};
@@ -208,6 +209,25 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ),
         ),
     ];
+    rules.extend(fillers(
+        11,
+        &[
+            // "how many functions call `x`, roughly?"
+            (Cat::Hedge, &[("en.hedge.roughly", "roughly")]),
+            // "do you know how many ...", "how many ..., do you know?"
+            (Cat::Prompt, &[("en.prompt.do_you_know", "do you know")]),
+        ],
+    ));
+    // "how many functions call `x`, do you know?": the frame said after.
+    rules.push(
+        Rule::new(
+            RuleInfo::new("en.question.prompt_after", 11),
+            Cat::Question,
+            vec![C(Cat::Question), W(","), C(Cat::Prompt)],
+            S::Build(first),
+        )
+        .read_only(),
+    );
     // "what does `x` actually do", "what is `x` even for"
     for (id, cat) in [("en.doing.hedged", Cat::Doing), ("en.use.hedged", Cat::Use)] {
         rules.push(rule(id, cat, vec![C(Cat::Hedge), C(cat)], last));

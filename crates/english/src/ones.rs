@@ -92,5 +92,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ],
         )],
     ));
+    // "how many places call it", "is there many things that end up
+    // calling `x`"
+    rules.extend(fillers(
+        11,
+        &[(
+            Cat::Ones,
+            &[("en.ones.places", "places"), ("en.ones.things", "things")],
+        )],
+    ));
     rules
 }
