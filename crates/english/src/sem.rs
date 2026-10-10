@@ -145,6 +145,10 @@ pub enum Cat {
     /// A second way of putting a qualifier, added after it: "or contains
     /// it", "(or something wrapping it)".
     Alternative,
+    /// What a qualifier says fills a role or is held: a noun phrase, or a
+    /// capitalized word naming a type even if it is English ("typed
+    /// Handle", "whose type is or contains Change").
+    Filling,
     /// The thing a qualifier named, said again: "it", "one", or its name.
     Again,
     /// Words saying where in a thing another is: "somehow", "in it", "in

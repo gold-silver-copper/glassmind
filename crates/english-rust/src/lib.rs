@@ -180,6 +180,17 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.verb.uses", 9, "uses", Calls, ThirdSingular),
                 ("en.rust.verb.use", 9, "use", Calls, Plain),
                 ("en.rust.verb.used", 9, "used", Calls, Participle),
+                // A struct uses what it keeps in a field: "which structs use
+                // `OnceLock` in a field type", "what structs use `UserCount`
+                // as field type".
+                ("en.rust.verb.use_field", 19, "use", HasField, Plain),
+                (
+                    "en.rust.verb.uses_field",
+                    19,
+                    "uses",
+                    HasField,
+                    ThirdSingular,
+                ),
                 // Mistyped: "how many fns calll `x`", "which fns `x`
                 // callls", "which fns get caled by `x`", "how many fns
                 // callling `x`".
@@ -268,7 +279,6 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.preposition.in", 5, "in", BelongsTo, Plain),
                 // "structs with a field of type `Notice`", "structs w/ a field ..."
                 ("en.rust.preposition.with", 3, "with", HasField, Plain),
-                ("en.rust.preposition.w", 3, "w /", HasField, Plain),
             ],
         ),
         read_only(table(
@@ -763,12 +773,29 @@ mod tests {
             "is there a struct with a field of type `Arc`, or a field that contains it?",
             "where is `Arc` used as a field type? which structs have a field that contains it?",
             "`Arc` used as field type where? structs only",
+            "any structs w/ field typed Arc, list them pls",
+            "whcih structs have field w/ Arc type",
+            "structs that hav field type Arc, which",
+            "field type Arc or contains it, what structs have tht",
+            "what structs got a feild that uses Arc",
+            "which structs have a field of type Arc (or Option of it etc)",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
             };
             assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
         }
+        // A type named by an English word, capitalized, is still named.
+        let Understanding::Readings(readings) =
+            english.understand("which structs have a field typed Handle (or wraping one)")
+        else {
+            panic!("could not read the capitalized word");
+        };
+        assert!(readings.iter().any(|r| r.meaning
+            == meaning.map_things(&mut |t| match t {
+                Thing::Named(_) => Thing::Named(Name("Handle".into())),
+                other => other.clone(),
+            })));
         // "an `Arc` field" may also be a field named `Arc`; the world
         // settles which.
         let Understanding::Readings(readings) =

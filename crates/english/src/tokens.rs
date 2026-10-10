@@ -90,6 +90,10 @@ pub fn tokenize(text: &str) -> Vec<Token> {
             {
                 j -= 1;
             }
+            // A letter with a slash after it is one shortened word: "w/".
+            if j == i + 1 && chars.get(j).is_some_and(|&(_, d)| d == '/') {
+                j += 1;
+            }
             let word = text.get(start..end_of(j)).unwrap_or_default();
             (word, shape_of(word), j)
         } else {
@@ -133,7 +137,8 @@ mod tests {
 
     #[test]
     fn splits_words_code_and_punctuation() {
-        let t = tokenize("What calls `spawn_wave`? rename Player::hp, ok player.hp's");
+        let t =
+            tokenize("What calls `spawn_wave`? rename Player::hp, ok player.hp's w/ Option/Vec");
         let shapes: Vec<(String, Shape)> = t.iter().map(|t| (t.text.clone(), t.shape)).collect();
         assert_eq!(
             shapes,
@@ -147,6 +152,10 @@ mod tests {
                 (",".into(), Shape::Punct),
                 ("ok".into(), Shape::Word),
                 ("player.hp's".into(), Shape::Code),
+                ("w/".into(), Shape::Word),
+                ("Option".into(), Shape::Word),
+                ("/".into(), Shape::Punct),
+                ("Vec".into(), Shape::Word),
             ]
         );
     }

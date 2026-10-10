@@ -111,6 +111,8 @@ const AFTER: &[(&str, u32, Cat, &str)] = &[
     ("en.widening.etc", 9, Widening, "etc"),
     ("en.enclosure.generic_elided", 9, Enclosure, "< . . . >"),
     ("en.enclosure.etc", 9, Enclosure, "etc"),
+    // "(or Option of it etc)"
+    ("en.alternative.etc", 19, Alternative, "etc"),
     // "change it like that"
     ("en.carrying.like_that", 6, Carrying, "like that"),
     // "what you're keeping in your context, please"

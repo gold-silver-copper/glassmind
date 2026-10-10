@@ -12,11 +12,12 @@ use glassmind_meaning::{self as meaning, Condition, Ontology, Position, Thing};
 
 use crate::aside::filler;
 use crate::asking::{identify, meeting, read_only_rule, related, words_then};
+use crate::lexicon::CAPITALIZED;
 use crate::sem::{Cat, Number, Sem};
 use crate::{blank, first, last, spoken, word};
 
 use Cat::*;
-use Sym::{Cat as C, Word as W};
+use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 3;
 const GROWN: u32 = 9;
@@ -225,6 +226,26 @@ fn put_again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
+/// "a field of type `x`, what structs have that": the question for the
+/// things related to any thing fitting a description set off before it,
+/// which its "that" refers back to. A thing described is no one thing, so
+/// only a question for things related to it asks about it.
+fn set_off_fitting<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [
+            Sem::Thing(fitting @ Thing::Fitting(_)),
+            ..,
+            Sem::Question(later @ (meaning::Question::Identify(_) | meaning::Question::Count(_))),
+        ] if later.things().contains(&&Thing::Previous) => {
+            Some(Sem::Question(later.map_things(&mut |t| match t {
+                Thing::Previous => fitting.clone(),
+                other => other.clone(),
+            })))
+        }
+        _ => None,
+    }
+}
+
 /// "where is `x` used as a field type": the things having a part (a field)
 /// whose role (its type) `x` fills.
 fn used_as<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
@@ -309,6 +330,10 @@ const INCLUDES_LATER: &[(&str, &str)] = &[
     ("en.includes.use", "use"),
 ];
 
+/// Ways of saying a role's filler includes a thing, from round 19: "a
+/// field that uses `QuerySet`".
+const INCLUDES_19: &[(&str, &str)] = &[("en.includes.uses", "uses")];
+
 /// Words saying where in a thing another is, after a qualifier: "or wraps
 /// it somehow", "or contains u32 in it", "with type IRect in it".
 const WITHIN: &[(&str, &str)] = &[
@@ -389,7 +414,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.qualifier.whose",
             ROUND,
             Qualifier,
-            words_then("whose", &[RoleNoun, Includes, NounPhrase]),
+            words_then("whose", &[RoleNoun, Includes, Filling]),
             qualified,
             unqualified,
         ),
@@ -397,38 +422,32 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.qualifier.of",
             Qualifier,
-            words_then("of", &[RoleNoun, NounPhrase]),
+            words_then("of", &[RoleNoun, Filling]),
             qualified,
         ),
         rule(
             "en.qualifier.with",
             Qualifier,
-            words_then("with", &[RoleNoun, NounPhrase]),
+            words_then("with", &[RoleNoun, Filling]),
             qualified,
         ),
         rule(
             "en.qualifier.with_role_of",
             Qualifier,
-            vec![W("with"), C(RoleNoun), W("of"), C(NounPhrase)],
+            vec![W("with"), C(RoleNoun), W("of"), C(Filling)],
             qualified,
         ),
         // "with type that is or contains `x`"
         rule(
             "en.qualifier.with_role_that",
             Qualifier,
-            vec![
-                W("with"),
-                C(RoleNoun),
-                W("that"),
-                C(Includes),
-                C(NounPhrase),
-            ],
+            vec![W("with"), C(RoleNoun), W("that"), C(Includes), C(Filling)],
             qualified,
         ),
         rule(
             "en.qualifier.adjective",
             Qualifier,
-            vec![C(RoleAdjective), C(NounPhrase)],
+            vec![C(RoleAdjective), C(Filling)],
             qualified,
         ),
         // A qualifier naming no role, after a holder: "(a field) that is
@@ -436,19 +455,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.qualifier.that",
             Qualifier,
-            words_then("that", &[Includes, NounPhrase]),
+            words_then("that", &[Includes, Filling]),
             last,
         ),
         rule(
             "en.qualifier.that_s",
             Qualifier,
-            words_then("that's", &[NounPhrase]),
+            words_then("that's", &[Filling]),
             last,
         ),
         rule(
             "en.qualifier.includes",
             Qualifier,
-            vec![C(Includes), C(NounPhrase)],
+            vec![C(Includes), C(Filling)],
             last,
         ),
         // "a field that is `Key`", "fields containing `Signature`"
@@ -519,7 +538,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         // The thing again: "one", or "it" or its name.
         filler("en.again.one", ROUND, Again, "one"),
-        rule("en.again.name", Again, vec![C(NounPhrase)], last),
+        rule("en.again.name", Again, vec![C(Filling)], last),
         // "which structs have a field ...": also "what structs", "who has".
         rule(
             "en.question.what_kind",
@@ -654,6 +673,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         (ASK_AGAIN_LATER, AskAgain, LATER),
         (INCLUDES_LATER, Includes, LATER),
         (ASK_AGAIN_18, AskAgain, 18),
+        (INCLUDES_19, Includes, 19),
     ] {
         rules.extend(
             table
@@ -667,14 +687,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         grown(
             "en.qualifier.adjective_as",
             Qualifier,
-            vec![C(RoleAdjective), W("as"), C(NounPhrase)],
+            vec![C(RoleAdjective), W("as"), C(Filling)],
             qualified,
         ),
         // "where the type is `Does`", "(or) where the type contains it"
         grown(
             "en.qualifier.where",
             Qualifier,
-            words_then("where", &[RoleNoun, Includes, NounPhrase]),
+            words_then("where", &[RoleNoun, Includes, Filling]),
             qualified,
         ),
         // "with `FileKind` in its type", "with PrChangedFile in it", "with
@@ -701,7 +721,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         grown(
             "en.qualifier.that_role",
             Qualifier,
-            words_then("that", &[Includes, RoleNoun, NounPhrase]),
+            words_then("that", &[Includes, RoleNoun, Filling]),
             |c| qualified(c.get(1..)?),
         ),
         // "(or contains it, like Option<...>)"
@@ -930,6 +950,60 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         [("en.hedge.only", "only"), ("en.hedge.like", "like")]
             .map(|(id, words)| filler(id, LATER, Hedge, words)),
     );
+    let round_19 = |id, lhs, rhs, build| read_only_rule(id, 19, lhs, rhs, build);
+    rules.extend([
+        // What fills a role is a thing: "whose type is or contains `x`".
+        spoken(
+            "en.filling.noun_phrase",
+            19,
+            Filling,
+            vec![C(NounPhrase)],
+            first,
+            |v| Some(vec![v.clone()]),
+        ),
+        // "a field typed Handle", "a field thats Kind or wraps it": a type
+        // named by a word the system knows as English, capitalized.
+        round_19(
+            "en.filling.capitalized",
+            Filling,
+            vec![Class(CAPITALIZED)],
+            first,
+        ),
+        // "(structs that have a) field type `Reveal`": a role and what
+        // fills it, after the holder, with nothing between.
+        round_19(
+            "en.qualifier.role",
+            Qualifier,
+            vec![C(RoleNoun), C(Filling)],
+            qualified,
+        ),
+        // "(`MergeMethod` as field type,) or inside one", "or insdie it":
+        // the thing again, wrapped in another.
+        round_19(
+            "en.alternative.or_wrapping",
+            Alternative,
+            vec![W("or"), C(Wrapping), C(Again)],
+            last,
+        ),
+        // "field type `Milestone` or contains it, what structs have tht"
+        round_19(
+            "en.question.set_off_described",
+            Question,
+            vec![C(NounPhrase), C(Break), C(Question)],
+            set_off_fitting,
+        ),
+        // "structs with a `WireRelease` field in them": "in them" says no
+        // more than the preposition did.
+        round_19(
+            "en.description.within",
+            Description,
+            vec![C(Description), C(Within)],
+            first,
+        ),
+    ]);
+    rules.push(filler("en.within.in_them", 19, Within, "in them"));
+    // "any structs w/ field typed `x`, list them pls"
+    rules.push(filler("en.ask_again.list_them", 19, AskAgain, "list them"));
     rules.extend(
         WITHIN_ROLE
             .iter()

@@ -22,6 +22,10 @@ pub const WORD: &str = "word";
 /// Token class: a plain word the system knows, read as the thing going by
 /// that name where only a name can stand: "a field named calls".
 pub const SAID: &str = "said";
+/// Token class: a plain word the system knows, capitalized the way type
+/// names are and more than one letter long, read as the thing going by
+/// that name: "a field typed Handle", "whose type is or contains Change".
+pub const CAPITALIZED: &str = "capitalized";
 /// Token class: a number.
 pub const NUMBER: &str = "number";
 /// Token class: any word, name or number in a remark, whose content the
@@ -76,6 +80,13 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
                 vec![Sem::Name(Name(token.text.clone()))]
             }
             (SAID, Shape::Word) if self.known.contains(self.norm(token)) => {
+                vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
+            }
+            (CAPITALIZED, Shape::Word)
+                if token.text.chars().nth(1).is_some()
+                    && token.text.starts_with(char::is_uppercase)
+                    && self.known.contains(self.norm(token)) =>
+            {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
             }
             (TEXT, shape) if shape != Shape::Punct => vec![Sem::Quote(token.text.clone())],

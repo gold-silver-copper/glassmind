@@ -70,6 +70,14 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// wnat to chagne that". Also asking why a change was proposed: "why u
 /// wnat to change that", "why u want to chagne that", "reason for the
 /// cahnge?".
+///
+/// Round 19, from questions about structs with a field of some type:
+/// "structs w/ a field thats Kind or wraps it", "field type Milestone or
+/// contains it, what structs have tht", "... or smth containg it", "a field
+/// typed Handle (or wraping one)", "or that conatins it", "or contaning
+/// it", "whose type is or incldues `x`", "directly or nestd". "w/" is not
+/// mistyped but shortened, the way "with" is often written; the tokenizer
+/// keeps the slash with the letter.
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -151,6 +159,15 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.wnat", "wnat", "want"),
             ("en.spelling.chagne", "chagne", "change"),
             ("en.spelling.cahnge", "cahnge", "change"),
+            ("en.spelling.w_slash", "w/", "with"),
+            ("en.spelling.thats", "thats", "that's"),
+            ("en.spelling.tht", "tht", "that"),
+            ("en.spelling.smth", "smth", "something"),
+            ("en.spelling.wraping", "wraping", "wrapping"),
+            ("en.spelling.conatins", "conatins", "contains"),
+            ("en.spelling.contaning", "contaning", "containing"),
+            ("en.spelling.incldues", "incldues", "includes"),
+            ("en.spelling.nestd", "nestd", "nested"),
         ],
     ),
 ];
