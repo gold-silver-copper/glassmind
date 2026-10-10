@@ -3,6 +3,7 @@
 //! Follows the definitions in `docs/tasks.md`: which files count, what an
 //! item is, and when a function calls a name.
 
+use std::collections::{BTreeMap, BTreeSet};
 use std::path::{Path, PathBuf};
 
 use proc_macro2::Span;
@@ -30,6 +31,10 @@ pub struct Call {
     pub line: u32,
 }
 
+/// Where an identifier is written: the index of its file in
+/// [`SourceIndex::files`], its 1-based line and 0-based column in characters.
+pub type Pos = (usize, u32, u32);
+
 /// Everything indexed from one source.
 #[derive(Debug, Clone, Default)]
 pub struct SourceIndex {
@@ -37,6 +42,17 @@ pub struct SourceIndex {
     pub root: PathBuf,
     pub records: Vec<Record>,
     pub calls: Vec<Call>,
+    /// The files indexed, relative to the root.
+    pub files: Vec<String>,
+    /// Every identifier token written in the files (lexed with
+    /// `proc-macro2`, so also inside macro invocations), and where.
+    pub idents: BTreeMap<String, BTreeSet<Pos>>,
+    /// Where syntax alone says what kind of item an identifier names. A
+    /// function: its declaration, the last segment of an expression path, a
+    /// method call's name, a name in a `use` tree. A field: its declaration,
+    /// `expr.f`, `S { f: v }`, `S { f: p }`. Macro bodies are not parsed, so
+    /// no token in one is here.
+    pub names: BTreeMap<Pos, RustKind>,
     /// Files that could not be read or parsed, with the reason.
     pub skipped: Vec<(String, String)>,
 }
@@ -94,22 +110,36 @@ pub fn index_source(name: &str, root: &Path) -> SourceIndex {
                 continue;
             }
         };
-        let parsed = match syn::parse_file(&text) {
+        let parsed = match syn::parse_file(&text)
+            .and_then(|p| Ok((p, text.parse::<proc_macro2::TokenStream>()?)))
+        {
             Ok(p) => p,
             Err(e) => {
                 index.skipped.push((file, e.to_string()));
                 continue;
             }
         };
+        let file_index = index.files.len();
+        let mut idents = Vec::new();
+        idents_in(parsed.1, &mut idents);
+        for ident in idents {
+            index
+                .idents
+                .entry(ident.to_string())
+                .or_default()
+                .insert(pos(file_index, &ident));
+        }
+        index.files.push(file.clone());
         let mut visitor = Indexer {
             source: name,
             file: &file,
+            file_index,
             text: &text,
             index: &mut index,
             current_fn: Vec::new(),
             owner: Vec::new(),
         };
-        visitor.visit_file(&parsed);
+        visitor.visit_file(&parsed.0);
     }
     index.calls.sort();
     index.calls.dedup();
@@ -119,6 +149,7 @@ pub fn index_source(name: &str, root: &Path) -> SourceIndex {
 struct Indexer<'a> {
     source: &'a str,
     file: &'a str,
+    file_index: usize,
     text: &'a str,
     index: &'a mut SourceIndex,
     /// Indices of the functions whose bodies we are inside, innermost last.
@@ -157,10 +188,19 @@ fn type_name(ty: &syn::Type) -> Option<String> {
     }
 }
 
-fn idents_in(tokens: proc_macro2::TokenStream, out: &mut Vec<String>) {
+fn pos(file: usize, ident: &proc_macro2::Ident) -> Pos {
+    let start = ident.span().start();
+    (
+        file,
+        line_of(ident.span()),
+        u32::try_from(start.column).unwrap_or(u32::MAX),
+    )
+}
+
+fn idents_in(tokens: proc_macro2::TokenStream, out: &mut Vec<proc_macro2::Ident>) {
     for tree in tokens {
         match tree {
-            proc_macro2::TokenTree::Ident(i) => out.push(i.to_string()),
+            proc_macro2::TokenTree::Ident(i) => out.push(i),
             proc_macro2::TokenTree::Group(g) => idents_in(g.stream(), out),
             _ => {}
         }
@@ -211,6 +251,7 @@ impl Indexer<'_> {
     ) {
         let owner = self.owner.last().cloned();
         let at = self.add(&sig.ident, RustKind::Function, owner, attrs);
+        self.names(&sig.ident, RustKind::Function);
         if let Some(body) = body {
             // Items nested in the body get their own owner context.
             let saved = std::mem::take(&mut self.owner);
@@ -218,6 +259,16 @@ impl Indexer<'_> {
             self.visit_block(body);
             self.current_fn.pop();
             self.owner = saved;
+        }
+    }
+
+    fn names(&mut self, ident: &syn::Ident, kind: RustKind) {
+        self.index.names.insert(pos(self.file_index, ident), kind);
+    }
+
+    fn names_field(&mut self, member: &syn::Member) {
+        if let syn::Member::Named(ident) = member {
+            self.names(ident, RustKind::Field);
         }
     }
 
@@ -280,10 +331,11 @@ impl<'ast> Visit<'ast> for Indexer<'_> {
                         Some(s.ident.to_string()),
                         &field.attrs,
                     );
+                    self.names(ident, RustKind::Field);
                     let mut idents = Vec::new();
                     idents_in(quote::ToTokens::to_token_stream(&field.ty), &mut idents);
                     if let Some(record) = self.index.records.get_mut(at) {
-                        record.type_idents = idents;
+                        record.type_idents = idents.iter().map(ToString::to_string).collect();
                     }
                 }
             }
@@ -309,8 +361,46 @@ impl<'ast> Visit<'ast> for Indexer<'_> {
         syn::visit::visit_expr_call(self, c);
     }
 
+    fn visit_expr_path(&mut self, p: &'ast syn::ExprPath) {
+        if let Some(last) = p.path.segments.last() {
+            self.names(&last.ident, RustKind::Function);
+        }
+        syn::visit::visit_expr_path(self, p);
+    }
+
+    /// `S { f }` names the field and a variable at once, so `f` is not
+    /// taken as an expression path.
+    fn visit_field_value(&mut self, f: &'ast syn::FieldValue) {
+        if f.colon_token.is_some() {
+            self.names_field(&f.member);
+            syn::visit::visit_field_value(self, f);
+        }
+    }
+
+    fn visit_field_pat(&mut self, f: &'ast syn::FieldPat) {
+        if f.colon_token.is_some() {
+            self.names_field(&f.member);
+            syn::visit::visit_field_pat(self, f);
+        }
+    }
+
+    fn visit_expr_field(&mut self, f: &'ast syn::ExprField) {
+        self.names_field(&f.member);
+        syn::visit::visit_expr_field(self, f);
+    }
+
+    fn visit_use_name(&mut self, u: &'ast syn::UseName) {
+        self.names(&u.ident, RustKind::Function);
+    }
+
+    fn visit_use_rename(&mut self, u: &'ast syn::UseRename) {
+        self.names(&u.ident, RustKind::Function);
+        self.names(&u.rename, RustKind::Function);
+    }
+
     fn visit_expr_method_call(&mut self, m: &'ast syn::ExprMethodCall) {
         self.call(&m.method);
+        self.names(&m.method, RustKind::Function);
         syn::visit::visit_expr_method_call(self, m);
     }
 }

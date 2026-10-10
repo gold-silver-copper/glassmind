@@ -11,8 +11,8 @@ use std::sync::Arc;
 
 use glassmind_meaning::interface::World;
 use glassmind_meaning::{
-    Condition, Description, Extent, Labelled, Name, Ontology, Position, Question, Reply, Thing,
-    Trouble,
+    Action, Condition, Description, Extent, Labelled, Name, Ontology, Position, Question, Reply,
+    Thing, Trouble,
 };
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
@@ -29,6 +29,7 @@ impl Ontology for Rust {
     type Kind = RustKind;
     type Relation = RustRelation;
     type Item = RustItem;
+    type Spot = RustSpot;
 }
 
 /// Kinds of Rust items.
@@ -54,6 +55,9 @@ pub enum RustRelation {
     /// (`Vec<Velocity>` mentions `Vec` and `Velocity`). `t` need not be an
     /// item of the sources: `Arc` and `u32` are types too.
     TypeMentions,
+    /// `BelongsTo(m, o)`: `m` is declared in `o`: a field of struct `o`, or
+    /// a function in trait `o` or in an `impl` of type `o`.
+    BelongsTo,
 }
 
 /// One Rust item, identified by where its name is written.
@@ -66,6 +70,16 @@ pub struct RustItem {
     pub kind: RustKind,
     /// The type or trait a function belongs to, or the struct a field belongs to.
     pub owner: Option<String>,
+}
+
+/// Where an identifier is written: a 1-based line and a 0-based column, in
+/// characters, of a file in a source.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+pub struct RustSpot {
+    pub source: String,
+    pub file: String,
+    pub line: u32,
+    pub column: u32,
 }
 
 impl Labelled for RustItem {
@@ -81,7 +95,8 @@ impl Labelled for RustItem {
     }
 }
 
-/// Looking a name up: exact matches of the name or `Owner::name`.
+/// Looking a name up: exact matches of the name or `Owner::name`, or of
+/// `Owner.name` for a field, as code accesses it.
 const LOOKUP_EXACT: RuleInfo = RuleInfo::new("rust.lookup.exact", SEED);
 /// Looking a name up: when nothing matches exactly, matches ignoring case,
 /// unless the name is written exactly as a type somewhere (`Arc` is not
@@ -102,6 +117,17 @@ const RELATION_HAS_FIELD: RuleInfo = RuleInfo::new("rust.relation.has_field", 3)
 /// The type-mentions relation, read from the identifiers in field types.
 const RELATION_TYPE_MENTIONS: RuleInfo = RuleInfo::new("rust.relation.type_mentions", 3);
 
+/// The belongs-to relation, read from where functions and fields are declared.
+const RELATION_BELONGS_TO: RuleInfo = RuleInfo::new("rust.relation.belongs_to", 5);
+/// Renaming a function or a field: only when no other item of its kind in
+/// its source has its name, the new name is a fresh identifier, and every
+/// identifier token with the old name names an item of that kind by syntax
+/// alone (for a function its declaration, a call or other expression path,
+/// a method call, a `use`; for a field its declaration, `expr.f`, `S { f: v
+/// }`, `S { f: p }`), so no type information is needed to know the edit is
+/// exact.
+const RENAME: RuleInfo = RuleInfo::new("rust.rename", 5);
+
 /// Every world rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
     LOOKUP_EXACT,
@@ -111,6 +137,8 @@ pub const RULES: &[RuleInfo] = &[
     DESCRIBE_UNIQUE,
     RELATION_HAS_FIELD,
     RELATION_TYPE_MENTIONS,
+    RELATION_BELONGS_TO,
+    RENAME,
 ];
 
 /// One or more indexed Rust sources.
@@ -173,6 +201,7 @@ impl RustWorld {
             RustRelation::Calls => RELATION_CALLS,
             RustRelation::HasField => RELATION_HAS_FIELD,
             RustRelation::TypeMentions => RELATION_TYPE_MENTIONS,
+            RustRelation::BelongsTo => RELATION_BELONGS_TO,
         };
         if !self.switches.on(rule.id) {
             return Err(Trouble::Unsupported);
@@ -183,7 +212,9 @@ impl RustWorld {
             (RustRelation::Calls, _) => &[RustKind::Function],
             (RustRelation::HasField, Position::First) => &[RustKind::Field],
             (RustRelation::HasField, Position::Second) => &[RustKind::Struct],
-            (RustRelation::TypeMentions, _) => &[RustKind::Struct, RustKind::Enum, RustKind::Trait],
+            (RustRelation::TypeMentions | RustRelation::BelongsTo, _) => {
+                &[RustKind::Struct, RustKind::Enum, RustKind::Trait]
+            }
         };
         if let Some(item) = others.iter().find(|o| !wanted.contains(&o.kind)) {
             return Err(Trouble::WrongKind { item: item.clone() });
@@ -221,7 +252,21 @@ impl RustWorld {
                 let names: BTreeSet<&str> = others.iter().map(|o| o.name.as_str()).collect();
                 out = self.typed(&names);
             }
-            (RustRelation::TypeMentions, Position::Second) => return Err(Trouble::Unsupported),
+            (RustRelation::BelongsTo, Position::First) => {
+                out = self
+                    .records()
+                    .map(|r| &r.item)
+                    .filter(|i| {
+                        others
+                            .iter()
+                            .any(|o| o.source == i.source && i.owner.as_ref() == Some(&o.name))
+                    })
+                    .cloned()
+                    .collect();
+            }
+            (RustRelation::TypeMentions | RustRelation::BelongsTo, Position::Second) => {
+                return Err(Trouble::Unsupported);
+            }
         }
         Ok(out)
     }
@@ -283,23 +328,40 @@ impl RustWorld {
 
     /// The thing asked about, checked by `rule`: of the kind the user said
     /// it is, if they said one, and the only item of that kind with its
-    /// name, so the user can't have meant another one.
-    fn only<'a>(
+    /// name, or the only one fitting what the user said of it ("`x` on
+    /// `App`"), so the user can't have meant another one.
+    fn only(
         &self,
         rule: RuleInfo,
-        thing: &'a Thing<Rust>,
+        thing: &Thing<Rust>,
         kind: Option<RustKind>,
         fired: &mut Vec<RuleInfo>,
-    ) -> Result<&'a RustItem, Trouble<Rust>> {
-        let item = match thing {
-            Thing::Item(item) => item,
-            Thing::Named(name) => return Err(Trouble::NoSuchName { name: name.clone() }),
-            Thing::Previous | Thing::Fitting(_) => return Err(Trouble::Unsupported),
-        };
+    ) -> Result<RustItem, Trouble<Rust>> {
         if !self.switches.on(rule.id) {
             return Err(Trouble::Unsupported);
         }
         fired.push(rule);
+        let item = match thing {
+            Thing::Item(item) => item,
+            Thing::Fitting(d) => {
+                let mut fitting = self.identify(d, fired)?;
+                return match (fitting.pop(), fitting.is_empty()) {
+                    (Some(item), true) if kind.is_some_and(|k| item.kind != k) => {
+                        Err(Trouble::WrongKind { item })
+                    }
+                    (Some(item), true) => Ok(item),
+                    (Some(item), false) => {
+                        fitting.push(item);
+                        Err(Trouble::Ambiguous {
+                            candidates: fitting,
+                        })
+                    }
+                    (None, _) => Err(Trouble::Unsupported),
+                };
+            }
+            Thing::Named(name) => return Err(Trouble::NoSuchName { name: name.clone() }),
+            Thing::Previous => return Err(Trouble::Unsupported),
+        };
         if kind.is_some_and(|k| item.kind != k) {
             return Err(Trouble::WrongKind { item: item.clone() });
         }
@@ -311,7 +373,7 @@ impl RustWorld {
         if candidates.len() > 1 {
             return Err(Trouble::Ambiguous { candidates });
         }
-        Ok(item)
+        Ok(item.clone())
     }
 
     fn identify(
@@ -321,11 +383,21 @@ impl RustWorld {
     ) -> Result<Vec<RustItem>, Trouble<Rust>> {
         let mut candidates: Option<BTreeSet<RustItem>> = None;
         for condition in &description.conditions {
-            let Condition::Related {
-                relation,
-                position,
-                other,
-            } = condition;
+            let (relation, position, other) = match condition {
+                Condition::Related {
+                    relation,
+                    position,
+                    other,
+                } => (relation, position, other),
+                Condition::Called(name) => {
+                    let named = self.lookup(name, fired).into_iter().collect();
+                    candidates = Some(match candidates {
+                        None => named,
+                        Some(c) => c.intersection(&named).cloned().collect(),
+                    });
+                    continue;
+                }
+            };
             let fitting = match other {
                 Thing::Item(other) => {
                     self.related(*relation, *position, &[other.clone()].into(), fired)?
@@ -375,7 +447,13 @@ impl World<Rust> for RustWorld {
                     a == b
                 }
             };
-            eq(&item.name, wanted) || eq(&item.label(), wanted)
+            eq(&item.name, wanted)
+                || eq(&item.label(), wanted)
+                || item.kind == RustKind::Field
+                    && item
+                        .owner
+                        .as_ref()
+                        .is_some_and(|o| eq(&format!("{o}.{}", item.name), wanted))
         };
         let mut found: Vec<RustItem> = Vec::new();
         if self.switches.on(LOOKUP_EXACT.id) {
@@ -423,19 +501,64 @@ impl World<Rust> for RustWorld {
             }),
             Question::Locate { thing, kind } => {
                 let item = self.only(LOCATE_UNIQUE, thing, *kind, fired)?;
-                Ok(Reply::Location(item.clone()))
+                Ok(Reply::Location(item))
             }
             Question::Describe { thing, kind } => {
                 let item = self.only(DESCRIBE_UNIQUE, thing, *kind, fired)?;
                 if item.kind == RustKind::Field {
-                    return Err(Trouble::WrongKind { item: item.clone() });
+                    return Err(Trouble::WrongKind { item });
                 }
                 Ok(Reply::Account {
-                    item: item.clone(),
                     kind: item.kind,
+                    item,
                 })
             }
         }
+    }
+
+    fn propose(
+        &self,
+        action: &Action<Rust>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<Rust>, Trouble<Rust>> {
+        let Action::Rename { thing, kind, name } = action;
+        let item = self.only(RENAME, thing, *kind, fired)?;
+        if !matches!(item.kind, RustKind::Function | RustKind::Field) {
+            return Err(Trouble::WrongKind { item });
+        }
+        let source = self
+            .sources
+            .iter()
+            .find(|s| s.name == item.source)
+            .ok_or(Trouble::Unsupported)?;
+        let at = source.idents.get(&item.name).ok_or(Trouble::Unsupported)?;
+        if syn::parse_str::<syn::Ident>(&name.0).is_err()
+            || self.sources.iter().any(|s| s.idents.contains_key(&name.0))
+            || at.iter().any(|p| source.names.get(p) != Some(&item.kind))
+            || self
+                .records()
+                .filter(|r| r.item.name == item.name && r.item.kind == item.kind)
+                .count()
+                > 1
+        {
+            return Err(Trouble::Unsupported);
+        }
+        Ok(Reply::Proposal {
+            action: Action::Rename {
+                thing: Thing::Item(item.clone()),
+                kind: *kind,
+                name: name.clone(),
+            },
+            spots: at
+                .iter()
+                .map(|(file, line, column)| RustSpot {
+                    source: source.name.clone(),
+                    file: source.files.get(*file).cloned().unwrap_or_default(),
+                    line: *line,
+                    column: *column,
+                })
+                .collect(),
+        })
     }
 
     fn names(&self) -> Vec<String> {
@@ -443,5 +566,54 @@ impl World<Rust> for RustWorld {
         names.sort();
         names.dedup();
         names
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// A rename is proposed only when every token with the old name names
+    /// the function by syntax alone: a use inside a macro, whose tokens
+    /// are not parsed, or a new name already taken, makes it a guess.
+    #[test]
+    fn renames_only_when_exact() {
+        let root = std::env::temp_dir().join(format!("glassmind-rename-{}", std::process::id()));
+        let world = |files: &[(&str, &str)]| {
+            let _ = std::fs::remove_dir_all(&root);
+            for (file, text) in files {
+                std::fs::create_dir_all(&root).ok();
+                std::fs::write(root.join(file), text).ok();
+            }
+            RustWorld::open(&[("s".to_owned(), root.as_path())], &Switches::all_on())
+        };
+        let rename = |world: &RustWorld, to: &str| {
+            let item = world.lookup(&Name("step".into()), &mut Vec::new());
+            let [item] = item.as_slice() else {
+                return Err(Trouble::Unsupported);
+            };
+            let action = Action::Rename {
+                thing: Thing::Item(item.clone()),
+                kind: None,
+                name: Name(to.into()),
+            };
+            world.propose(&action, &mut Vec::new())
+        };
+        let code = "use a::step as go;\nfn step() {}\nfn run() { step(); x.step(); go(); }\n";
+        let spots = match rename(&world(&[("a.rs", code)]), "advance") {
+            Ok(Reply::Proposal { spots, .. }) => spots.len(),
+            other => panic!("{other:?}"),
+        };
+        assert_eq!(spots, 4);
+        assert_eq!(
+            rename(&world(&[("a.rs", code)]), "run"),
+            Err(Trouble::Unsupported)
+        );
+        let in_macro = [("a.rs", code), ("b.rs", "fn f() { dbg!(step()); }\n")];
+        assert_eq!(
+            rename(&world(&in_macro), "advance"),
+            Err(Trouble::Unsupported)
+        );
+        let _ = std::fs::remove_dir_all(&root);
     }
 }

@@ -37,6 +37,20 @@ const INTERJECTIONS: &[(&str, &[&str])] = &[
     ("en.interjection.quick_question", &["quick", "question"]),
 ];
 
+/// Interjections in quick requests: "quick request:", "pls", "thx",
+/// "thanks a lot.", "thanks in advance".
+const MORE_INTERJECTIONS: &[(&str, &[&str])] = &[
+    ("en.interjection.quick_request", &["quick", "request"]),
+    ("en.interjection.pls", &["pls"]),
+    ("en.interjection.plz", &["plz"]),
+    ("en.interjection.thx", &["thx"]),
+    ("en.interjection.thanks_a_lot", &["thanks", "a", "lot"]),
+    (
+        "en.interjection.thanks_in_advance",
+        &["thanks", "in", "advance"],
+    ),
+];
+
 /// Punctuation that may follow an interjection: "hey,", "quick question:",
 /// "thanks!".
 const INTERJECTION_MARKS: &[(&str, &str)] = &[
@@ -44,6 +58,20 @@ const INTERJECTION_MARKS: &[(&str, &str)] = &[
     ("en.interjection.colon", ":"),
     ("en.interjection.bang", "!"),
     ("en.interjection.stop", "."),
+];
+
+/// Prompts asking leave for a change, or saying it is wanted: "can we",
+/// "would it be ok to", "I'd like `x` renamed ...", "want `x` renamed ...".
+const MORE_PROMPTS: &[(&str, &[&str])] = &[
+    ("en.prompt.can_we", &["can", "we"]),
+    ("en.prompt.could_we", &["could", "we"]),
+    ("en.prompt.can_i", &["can", "i"]),
+    (
+        "en.prompt.would_it_be_ok_to",
+        &["would", "it", "be", "ok", "to"],
+    ),
+    ("en.prompt.i_d_like", &["i'd", "like"]),
+    ("en.prompt.want", &["want"]),
 ];
 
 /// Words that frame a request: "can you", "tell me", "I'd like to know".
@@ -64,12 +92,12 @@ const PROMPTS: &[(&str, &[&str])] = &[
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let words = |cat, table: &[(&'static str, &'static [&'static str])]| {
+    let words = |cat, round, table: &[(&'static str, &'static [&'static str])]| {
         table
             .iter()
             .map(move |(id, words)| {
                 Rule::new(
-                    RuleInfo::new(id, ROUND),
+                    RuleInfo::new(id, round),
                     cat,
                     words.iter().map(|w| W(w)).collect(),
                     S::Const(Sem::Quote(String::new())),
@@ -81,8 +109,10 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, lhs, rhs, build| {
         Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
     };
-    let mut rules = words(Cat::Interjection, INTERJECTIONS);
-    rules.extend(words(Cat::Prompt, PROMPTS));
+    let mut rules = words(Cat::Interjection, ROUND, INTERJECTIONS);
+    rules.extend(words(Cat::Prompt, ROUND, PROMPTS));
+    rules.extend(words(Cat::Interjection, 5, MORE_INTERJECTIONS));
+    rules.extend(words(Cat::Prompt, 5, MORE_PROMPTS));
     rules.extend(INTERJECTION_MARKS.iter().map(|(id, mark)| {
         rule(
             id,

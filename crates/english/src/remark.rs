@@ -4,7 +4,7 @@
 //! asks nothing either. The system never says one.
 
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
-use glassmind_meaning::Ontology;
+use glassmind_meaning::{Ontology, Thing};
 
 use crate::lexicon::TEXT;
 use crate::sem::{Cat, Sem};
@@ -15,9 +15,34 @@ use Sym::{Cat as C, Class, Word as W};
 const ROUND: u32 = 1;
 const GREETING_ROUND: u32 = 2;
 
-/// The request a remark goes with.
+/// The request a remark goes with. A remark about a thing before it ("`x`
+/// is a bit vague. Can you rename it?") is what the request's "it" refers
+/// back to. One after it is not taken as a remark: its words may be the
+/// rest of the request ("where's `x` getting called from").
 pub(crate) fn request<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    c.iter().find(|v| matches!(v, Sem::Utterance(_))).cloned()
+    let mut topic = None;
+    for v in c {
+        match (v, topic) {
+            (Sem::Mention { thing, .. }, _) => topic = Some(thing),
+            (Sem::Utterance(u), Some(topic)) => {
+                return Some(Sem::Utterance(u.map_things(&mut |t| {
+                    if *t == Thing::Previous {
+                        topic.clone()
+                    } else {
+                        t.clone()
+                    }
+                })));
+            }
+            (Sem::Utterance(_), None) => {
+                return c
+                    .iter()
+                    .all(|v| !matches!(v, Sem::Mention { .. }))
+                    .then(|| v.clone());
+            }
+            _ => {}
+        }
+    }
+    None
 }
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -69,7 +94,81 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             RuleInfo::new("en.remark.more", ROUND),
             Cat::Remark,
             vec![C(Cat::Remark), Class(TEXT)],
+            S::Build(|c| c.first().cloned()),
+        ),
+        // "`tick` on `App` is a bit cryptic": a remark about a thing.
+        Rule::new(
+            RuleInfo::new("en.remark.about", 5),
+            Cat::Remark,
+            vec![C(Cat::Mention), Class(TEXT)],
+            S::Build(|c| c.first().cloned()),
+        ),
+        // "since `lost` on its own is pretty vague", "if that's ok": the
+        // speaker's reasons and conditions.
+        Rule::new(
+            RuleInfo::new("en.remark.since", 5),
+            Cat::Remark,
+            vec![W("since"), Class(TEXT)],
             remark(),
+        ),
+        Rule::new(
+            RuleInfo::new("en.remark.if", 5),
+            Cat::Remark,
+            vec![W("if"), Class(TEXT)],
+            remark(),
+        ),
+        word(
+            RuleInfo::new("en.name_noun.name", 5),
+            Cat::NameNoun,
+            &["name"],
+            remark_value(),
+        ),
+        word(
+            RuleInfo::new("en.name_noun.current_name", 5),
+            Cat::NameNoun,
+            &["current", "name"],
+            remark_value(),
+        ),
+        word(
+            RuleInfo::new("en.name_noun.plain_name", 5),
+            Cat::NameNoun,
+            &["plain", "name"],
+            remark_value(),
+        ),
+        // "so it's clear what it returns": the speaker's purpose.
+        Rule::new(
+            RuleInfo::new("en.remark.so_it_is", 5),
+            Cat::Remark,
+            vec![W("so"), W("it's"), Class(TEXT)],
+            remark(),
+        ),
+        // "maybe it's a better name", "just so it's more obvious"
+        Rule::new(
+            RuleInfo::new("en.remark.maybe", 5),
+            Cat::Remark,
+            vec![W("maybe"), Class(TEXT)],
+            remark(),
+        ),
+        Rule::new(
+            RuleInfo::new("en.remark.just", 5),
+            Cat::Remark,
+            vec![W("just"), Class(TEXT)],
+            remark(),
+        ),
+        // "the current name is a bit vague", "the plain name confused me":
+        // a remark about the name being changed.
+        Rule::new(
+            RuleInfo::new("en.remark.the_name", 5),
+            Cat::Remark,
+            vec![W("the"), C(Cat::NameNoun), Class(TEXT)],
+            remark(),
+        ),
+        // "`App::submenu`, rename it `submenu_modal`", "`x` — can you
+        // rename it to `y`?": a thing set off before a request about it.
+        utterance(
+            "en.utterance.set_off",
+            5,
+            vec![C(Cat::Mention), C(Cat::Break), C(Cat::Utterance)],
         ),
         // "I'm looking at the voxel code. How many functions call `carve`?"
         utterance(
@@ -77,11 +176,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ROUND,
             vec![C(Cat::Remark), W("."), C(Cat::Utterance)],
         ),
-        // "I'm looking into validation a bit, which functions call `problems`?"
+        // "I'm looking into validation a bit, which functions call
+        // `problems`?", "I'm trying to clean up a bit in Editor... could you
+        // rename ..."
         utterance(
-            "en.utterance.remark_comma",
-            ROUND,
-            vec![C(Cat::Remark), W(","), C(Cat::Utterance)],
+            "en.utterance.remark_break",
+            5,
+            vec![C(Cat::Remark), C(Cat::Break), C(Cat::Utterance)],
         ),
         // "Which functions call `x`? i'm trying to understand where it's hooked in"
         utterance(

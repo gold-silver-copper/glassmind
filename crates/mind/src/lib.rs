@@ -28,8 +28,18 @@ pub const PREFER_RECENT_MENTION: RuleInfo = RuleInfo::new("mind.prefer.recent_me
 /// Preference: otherwise, prefer the reading the grammar found first.
 pub const PREFER_FIRST_READING: RuleInfo = RuleInfo::new("mind.prefer.first_reading", SEED);
 
+/// Preference: when no reading can be answered, and a name was taken to
+/// mean items of the wrong kind for what was asked as well as several of the
+/// right kind, ask which of those was meant ("which `settings` field?")
+/// rather than say a function called `settings` is no field.
+pub const PREFER_RIGHT_KIND: RuleInfo = RuleInfo::new("mind.prefer.right_kind", 5);
+
 /// Every dialogue rule, for listing and switching.
-pub const RULES: &[RuleInfo] = &[PREFER_RECENT_MENTION, PREFER_FIRST_READING];
+pub const RULES: &[RuleInfo] = &[
+    PREFER_RECENT_MENTION,
+    PREFER_FIRST_READING,
+    PREFER_RIGHT_KIND,
+];
 
 /// A source the conversation was given.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -196,6 +206,7 @@ impl<O: Ontology> Mind<'_, O> {
                 let mut world_rules = fired;
                 let result = match &meaning {
                     Utterance::Ask(q) => self.world.answer(q, &mut world_rules),
+                    Utterance::Command(a) => self.world.propose(a, &mut world_rules),
                 };
                 rt.world_rules.extend(world_rules);
                 rt.outcomes.push((meaning.clone(), result.clone()));
@@ -266,6 +277,17 @@ impl<O: Ontology> Mind<'_, O> {
         let (good, bad): (Vec<_>, Vec<_>) = candidates.into_iter().partition(|c| c.result.is_ok());
         let Some(first) = good.first() else {
             // Nothing survived: report the trouble of the reading that got furthest.
+            let wrong_kind = |c: &Candidate<O>| matches!(c.result, Err(Trouble::WrongKind { .. }));
+            let mut bad = bad;
+            if self.switches.on(PREFER_RIGHT_KIND.id)
+                && bad.iter().any(wrong_kind)
+                && bad
+                    .iter()
+                    .any(|c| matches!(c.result, Err(Trouble::Ambiguous { .. })))
+            {
+                trace.preferences.push(PREFER_RIGHT_KIND);
+                bad.retain(|c| !wrong_kind(c));
+            }
             let worst = bad
                 .into_iter()
                 .filter_map(|c| c.result.err().map(|t| (c.reading, c.meaning, t)))
@@ -426,8 +448,10 @@ fn progress_of<O: Ontology>(reply: &Reply<O>) -> Progress {
     match reply {
         Reply::Trouble(t) => trouble_progress(t),
         Reply::Assuming { reply, .. } => progress_of(reply),
-        Reply::Extent(_) | Reply::Location(_) | Reply::Account { .. } | Reply::Count { .. } => {
-            Progress::Done
-        }
+        Reply::Extent(_)
+        | Reply::Location(_)
+        | Reply::Account { .. }
+        | Reply::Count { .. }
+        | Reply::Proposal { .. } => Progress::Done,
     }
 }

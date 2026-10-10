@@ -11,6 +11,23 @@ use glassmind_meaning::{
 pub enum Cat {
     /// A whole user turn. The start category.
     Utterance,
+    /// A request to change something, without its final punctuation:
+    /// "rename `x` to `y`".
+    Command,
+    /// Words saying what a thing is to become: "to", "into", "->".
+    Into,
+    /// Words saying a thing is to be called something else: "renamed to",
+    /// "should be", "->".
+    Becomes,
+    /// A verb giving a thing a name: "rename", "call".
+    Naming,
+    /// A noun for what a thing is called: "name", "current name".
+    NameNoun,
+    /// A mark ending a sentence: "?", ".", "!".
+    Mark,
+    /// Words asking again, or in more detail, for what was just asked: "can
+    /// you do that?", "rename all uses", "update the callers too".
+    FollowUp,
     /// A question, without its final punctuation.
     Question,
     /// A noun phrase that refers to one thing.

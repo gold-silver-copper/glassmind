@@ -6,7 +6,7 @@
 
 use glassmind_rules::RuleInfo;
 
-use crate::{Name, Ontology, Question, Reply, Trouble, Utterance};
+use crate::{Action, Name, Ontology, Question, Reply, Trouble, Utterance};
 
 /// One stretch of the user's input that the language treats as a token.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -76,6 +76,14 @@ pub trait World<O: Ontology> {
     fn answer(
         &self,
         question: &Question<O>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<O>, Trouble<O>>;
+    /// The edit that would carry out an action whose things are all
+    /// resolved to items, as a proposal; nothing is changed. Pushes the
+    /// world rules it used onto `fired`.
+    fn propose(
+        &self,
+        action: &Action<O>,
         fired: &mut Vec<RuleInfo>,
     ) -> Result<Reply<O>, Trouble<O>>;
     /// The names of all items, for completion, sorted and deduplicated.

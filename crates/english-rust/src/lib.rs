@@ -82,6 +82,55 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
         verb("en.rust.verb.called", 2, "called", Calls, Participle),
         // "which functions is `parse_request` calling"
         verb("en.rust.verb.calling", 2, "calling", Calls, Progressive),
+        // "rename the `retry` method on `Chat`"
+        kind("en.rust.noun.method", 5, "method", Function, Singular),
+        // "2 fields belong to `Wheel`: ...", "which functions belong to `App`"
+        word(
+            RuleInfo::new("en.rust.verb.belongs_to", 5),
+            Cat::Verb,
+            &["belongs", "to"],
+            Sem::Relation {
+                relation: BelongsTo,
+                form: ThirdSingular,
+            },
+        ),
+        word(
+            RuleInfo::new("en.rust.verb.belong_to", 5),
+            Cat::Verb,
+            &["belong", "to"],
+            Sem::Relation {
+                relation: BelongsTo,
+                form: Plain,
+            },
+        ),
+        // "`save_filter` in `App`", "`regrid` on `Scene`"
+        word(
+            RuleInfo::new("en.rust.preposition.on", 5),
+            Cat::Preposition,
+            &["on"],
+            Sem::Relation {
+                relation: BelongsTo,
+                form: Plain,
+            },
+        ),
+        word(
+            RuleInfo::new("en.rust.preposition.of", 5),
+            Cat::Preposition,
+            &["of"],
+            Sem::Relation {
+                relation: BelongsTo,
+                form: Plain,
+            },
+        ),
+        word(
+            RuleInfo::new("en.rust.preposition.in", 5),
+            Cat::Preposition,
+            &["in"],
+            Sem::Relation {
+                relation: BelongsTo,
+                form: Plain,
+            },
+        ),
         // "callees of `dm_vector`": what a function calls; "callers": what calls it.
         word(
             RuleInfo::new("en.rust.role.callees", 2),
@@ -450,5 +499,40 @@ mod tests {
             };
             assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
         }
+    }
+
+    /// However the user asks for a rename, with a topic set before it, a
+    /// follow-up or remarks after it, it means what the system says when it
+    /// proposes it.
+    #[test]
+    fn ways_of_asking_for_a_rename_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Command(glassmind_meaning::Action::Rename {
+            thing: Thing::Named(Name("tick".into())),
+            kind: None,
+            name: Name("drain_events".into()),
+        });
+        let spoken = english
+            .speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
+            .map(|s| s.text);
+        assert_eq!(spoken.as_deref(), Some("Rename `tick` to `drain_events`"));
+        for text in [
+            "Could you rename `tick` to `drain_events`, please?",
+            "tick -> drain_events pls",
+            "`tick` is a bit cryptic. Can you rename it to `drain_events`?",
+            "I'd like to rename `tick` to `drain_events`. Could you do that for me?",
+            "rename tick to drain_events? the current name is vague",
+            "tick should be drain_events, rename it",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+        }
+        // Words after the request without a break may be part of it.
+        assert!(matches!(
+            english.understand("rename tick to drain_events tick is vague"),
+            Understanding::Failed { .. }
+        ));
     }
 }

@@ -12,6 +12,10 @@ use crate::tokens::{Shape, Token};
 
 /// Token class: a name the user typed, to be looked up in the world.
 pub const NAME: &str = "name";
+/// Token class: a name written as code, in backticks or shaped like an
+/// identifier (`spawn_wave`). A plain word may be English the system does
+/// not know, so it is never one: a new name must not be a guess.
+pub const CODE: &str = "code";
 /// Token class: a number.
 pub const NUMBER: &str = "number";
 /// Token class: any word, name or number in a remark, whose content the
@@ -40,7 +44,7 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
 
     fn read_class(&self, class: &'static str, token: &Token) -> Vec<Sem<O>> {
         match (class, token.shape) {
-            (NAME, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
+            (NAME | CODE, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
             (NAME, Shape::Word) if !self.known.contains(token.norm.as_str()) => {
                 vec![Sem::Name(Name(token.text.clone()))]
             }
@@ -52,7 +56,7 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
 
     fn speak_class(&self, class: &'static str, value: &Sem<O>) -> Option<String> {
         match (class, value) {
-            (NAME, Sem::Name(Name(n))) => Some(format!("`{n}`")),
+            (NAME | CODE, Sem::Name(Name(n))) => Some(format!("`{n}`")),
             (ITEM, Sem::Item(item)) => Some(format!("`{}`", item.label())),
             (PLACE, Sem::Item(item)) => Some(item.place()),
             (QUOTE, Sem::Quote(q)) => Some(format!("`{q}`")),

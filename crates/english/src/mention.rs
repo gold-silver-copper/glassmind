@@ -5,7 +5,9 @@
 //! for?") asks once.
 
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
-use glassmind_meaning::{Ontology, Question, Thing, Utterance};
+use glassmind_meaning::{
+    Condition, Description, Name, Ontology, Position, Question, Thing, Utterance,
+};
 
 use crate::sem::{Cat, Number, Sem};
 
@@ -43,6 +45,45 @@ fn refer_back<O: Ontology>(later: &Question<O>, earlier: &Question<O>) -> Option
         },
         other => other,
     })
+}
+
+/// "`x` on the `App` struct": the thing with the mentioned name that stands
+/// in the preposition's relation to the other thing, of the kind said.
+fn related<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let called = |name: &Name, kind: &Option<O::Kind>, more| {
+        Thing::Fitting(Description {
+            kind: kind.clone(),
+            conditions: [vec![Condition::Called(name.clone())], more].concat(),
+        })
+    };
+    match c {
+        [
+            Sem::Mention {
+                thing: Thing::Named(name),
+                kind,
+            },
+            Sem::Relation { relation, .. },
+            Sem::Mention { thing, kind: other },
+        ] => {
+            let other = match (thing, other) {
+                (Thing::Named(n), Some(_)) => called(n, other, Vec::new()),
+                (thing, _) => thing.clone(),
+            };
+            Some(Sem::Mention {
+                thing: called(
+                    name,
+                    kind,
+                    vec![Condition::Related {
+                        relation: relation.clone(),
+                        position: Position::First,
+                        other,
+                    }],
+                ),
+                kind: kind.clone(),
+            })
+        }
+        _ => None,
+    }
 }
 
 /// "`x` - what does it do": the question about the thing set off before it.
@@ -107,11 +148,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Cat::Mention,
             vec![C(Cat::NounPhrase)],
             S::Both(
+                // A description ("a `Gate` field") points at no one thing.
                 |c| match c {
-                    [Sem::Thing(thing)] => Some(Sem::Mention {
-                        thing: thing.clone(),
-                        kind: None,
-                    }),
+                    [Sem::Thing(thing)] if !matches!(thing, Thing::Fitting(_)) => {
+                        Some(Sem::Mention {
+                            thing: thing.clone(),
+                            kind: None,
+                        })
+                    }
                     _ => None,
                 },
                 |v| match v {
@@ -163,6 +207,45 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("the"), C(Cat::Mention)],
             |c| c.first().cloned(),
         ),
+        // "`save_filter` in `App`", "the `retry` method on `Chat`", "the
+        // `sealed` field of the `Builder` struct"
+        Rule::new(
+            RuleInfo::new("en.mention.preposition", 5),
+            Cat::Mention,
+            vec![C(Cat::Mention), C(Cat::Preposition), C(Cat::Mention)],
+            S::Build(related),
+        )
+        .read_only(),
+        // "...": a trailing-off that sets what came before apart.
+        Rule::new(
+            RuleInfo::new("en.break.dots", 5),
+            Cat::Break,
+            vec![W("."), W("."), W(".")],
+            blank(),
+        )
+        .read_only(),
+        // "the name `job_git`": the thing that has the name.
+        Rule::new(
+            RuleInfo::new("en.mention.the_name", 5),
+            Cat::Mention,
+            vec![W("the"), C(Cat::NameNoun), C(Cat::Mention)],
+            S::Build(|c| c.last().cloned()),
+        )
+        .read_only(),
+        // "that function": the thing said before, of a kind.
+        Rule::new(
+            RuleInfo::new("en.mention.that_kind", 5),
+            Cat::Mention,
+            vec![W("that"), C(Cat::Noun)],
+            S::Build(|c: &[Sem<O>]| match c {
+                [Sem::Kind { kind, .. }] => Some(Sem::Mention {
+                    thing: Thing::Previous,
+                    kind: Some(kind.clone()),
+                }),
+                _ => None,
+            }),
+        )
+        .read_only(),
         // "it": the thing said before.
         Rule::new(
             RuleInfo::new("en.noun_phrase.it", ROUND),

@@ -31,6 +31,9 @@ pub trait Ontology: Copy + Eq + Ord + Hash + Debug + Default + 'static {
     type Relation: Concept;
     /// A thing in the world, resolved: a stable handle that can label itself.
     type Item: Concept + Labelled;
+    /// A place where something is written in the world's data, which an
+    /// edit can rewrite (a line and column in a file).
+    type Spot: Concept;
 }
 
 /// The bounds every concept a world defines must meet.
@@ -88,6 +91,8 @@ pub enum Condition<O: Ontology> {
         position: Position,
         other: Thing<O>,
     },
+    /// The described thing is called this name.
+    Called(Name),
 }
 
 /// A description of things: an optional kind and conditions they all meet.
@@ -120,11 +125,26 @@ pub enum Question<O: Ontology> {
     Count(Description<O>),
 }
 
+/// A request to change the world's data.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub enum Action<O: Ontology> {
+    /// Give the thing a new name everywhere it is referred to; `kind`, if
+    /// given, is what the user said it is.
+    Rename {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+        name: Name,
+    },
+}
+
 /// Everything a user turn can mean.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]
 pub enum Utterance<O: Ontology> {
     Ask(Question<O>),
+    /// Asks for an action to be carried out.
+    Command(Action<O>),
 }
 
 /// A claim that a set of things is exactly what fits a description.
@@ -183,6 +203,11 @@ pub enum Reply<O: Ontology> {
         description: Description<O>,
         count: u64,
     },
+    /// The edit that would carry out an action: every spot it rewrites.
+    Proposal {
+        action: Action<O>,
+        spots: Vec<O::Spot>,
+    },
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on assumptions, which are stated first.
@@ -197,6 +222,7 @@ impl<O: Ontology> Utterance<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
             Utterance::Ask(q) => q.things(),
+            Utterance::Command(Action::Rename { thing, .. }) => thing.things(),
         }
     }
 
@@ -205,6 +231,13 @@ impl<O: Ontology> Utterance<O> {
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
         match self {
             Utterance::Ask(q) => Utterance::Ask(q.map_things(f)),
+            Utterance::Command(Action::Rename { thing, kind, name }) => {
+                Utterance::Command(Action::Rename {
+                    thing: thing.map_things(f),
+                    kind: kind.clone(),
+                    name: name.clone(),
+                })
+            }
         }
     }
 }
@@ -213,7 +246,7 @@ impl<O: Ontology> Question<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
             Question::Identify(d) | Question::Count(d) => d.things(),
-            Question::Locate { thing, .. } | Question::Describe { thing, .. } => vec![thing],
+            Question::Locate { thing, .. } | Question::Describe { thing, .. } => thing.things(),
         }
     }
 
@@ -222,11 +255,11 @@ impl<O: Ontology> Question<O> {
             Question::Identify(d) => Question::Identify(d.map_things(f)),
             Question::Count(d) => Question::Count(d.map_things(f)),
             Question::Locate { thing, kind } => Question::Locate {
-                thing: f(thing),
+                thing: thing.map_things(f),
                 kind: kind.clone(),
             },
             Question::Describe { thing, kind } => Question::Describe {
-                thing: f(thing),
+                thing: thing.map_things(f),
                 kind: kind.clone(),
             },
         }
@@ -258,6 +291,7 @@ impl<O: Ontology> Condition<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
             Condition::Related { other, .. } => other.things(),
+            Condition::Called(_) => Vec::new(),
         }
     }
 
@@ -272,6 +306,7 @@ impl<O: Ontology> Condition<O> {
                 position: *position,
                 other: other.map_things(f),
             },
+            Condition::Called(_) => self.clone(),
         }
     }
 }
@@ -301,7 +336,16 @@ impl<O: Ontology> Reply<O> {
             Reply::Count { description, .. } => description.items().collect(),
             Reply::Location(item)
             | Reply::Account { item, .. }
-            | Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
+            | Reply::Trouble(Trouble::WrongKind { item })
+            | Reply::Proposal {
+                action:
+                    Action::Rename {
+                        thing: Thing::Item(item),
+                        ..
+                    },
+                ..
+            } => vec![item],
+            Reply::Proposal { .. } => Vec::new(),
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
             Reply::Trouble(_) => Vec::new(),
             Reply::Assuming { reply, .. } => reply.items(),
