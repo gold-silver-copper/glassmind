@@ -32,19 +32,24 @@ of material:
    words, ranking readings, correcting typos, guessing which module a request
    needs, predicting a likely next step. Each is small, trained from data, has
    a held-out accuracy and a calibrated confidence, and can be inspected. The
-   user's `~/code/flexion` is the model for this: a Wiktionary dump goes in,
-   a small Rust crate with a confidence for every answer comes out.
+   user's `~/code/flexion` shows the idea (read it; never depend on it): a
+   Wiktionary dump goes in, a small Rust model with a confidence for every
+   answer comes out.
 3. **Queryable data.** Facts that don't compress (names, documentation, crate
    APIs, dictionary entries, encyclopedic facts) live in indexed stores the
    code looks up, not in models and not in code.
 
-**Word forms come from flexion.** Use `~/code/flexion` (GitHub
-`gold-silver-copper/flexion`) for inflection. When glassmind needs a language
-flexion doesn't have yet, add that language to flexion. Don't use the old
-hand-written English crates (`english`, `english-core`, `english-phrase`,
-`english-ccg`, anything in `~/code/english/` or `~/code/linguistics/`). When
-flexion is wrong or missing something glassmind needs, fix it upstream in
-flexion (a PR there) instead of working around it in glassmind.
+**Never depend on flexion.** The user's `~/code/flexion` is under active
+development, so glassmind must not use it in any way: no crate dependency,
+no vendored copy, none of its tools or training code, no edits to it and no
+PRs or issues on it. Do read its
+source for ideas (how it turns a Wiktionary dump plus a short grammar
+description into a small inflection model with calibrated confidences), and
+build glassmind's own word-form models with glassmind's own model trainer,
+in glassmind's own crates. Don't use
+the old hand-written English crates either (`english`, `english-core`,
+`english-phrase`, `english-ccg`, anything in `~/code/english/` or
+`~/code/linguistics/`).
 
 **No LLM runs inside it.** Opus builds it; glassmind runs without one,
 deterministically, with a trace for every answer (`--explain`). That is the
@@ -131,7 +136,7 @@ the failures call for:
 | Layer | Model | What it predicts | Data |
 |---|---|---|---|
 | Spelling | Normalizer | "teh fn" → "the fn"; texting style; splitting identifiers | Wikipedia typo edits, synthetic noise, chat logs |
-| Morphology | Inflection (flexion) and its inverse, analysis | Lemma + features → form; form → lemma + features | Wiktionary |
+| Morphology | Inflection (glassmind's own, in the spirit of flexion) and its inverse, analysis | Lemma + features → form; form → lemma + features | Wiktionary |
 | Lexical | Category tagger (a "supertagger") | Each word's likely grammatical category in context | Universal Dependencies treebanks, plus glassmind's own accepted parses |
 | Syntax | Parse ranker | Which of the grammar's readings people mean: attachment ("rename the field in Player"), scope of "and" | Treebanks, plus its own parses |
 | Semantics | Sense chooser | Which concept a word means here ("crate" as a Rust package vs. a box) | Wiktionary senses, Wikidata types, context |
