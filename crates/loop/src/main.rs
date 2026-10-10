@@ -94,8 +94,6 @@ enum Command {
         agent: String,
         #[arg(long)]
         no_sandbox: bool,
-        #[arg(long)]
-        token_file: Option<PathBuf>,
         #[arg(long, default_value_t = 3)]
         growth_per_compression: u32,
         #[arg(long, default_value_t = 16)]
@@ -212,15 +210,11 @@ fn main() -> ExitCode {
             model,
             agent,
             no_sandbox,
-            token_file,
             growth_per_compression,
             patience,
             no_reviewer,
             agent_minutes,
         } => {
-            let home = std::env::var_os("HOME")
-                .map(PathBuf::from)
-                .unwrap_or_default();
             let abs = |p: PathBuf| std::fs::canonicalize(&p).unwrap_or(p);
             let config = state::Config {
                 repo: abs(repo),
@@ -235,7 +229,6 @@ fn main() -> ExitCode {
                 model,
                 agent,
                 sandbox: !no_sandbox,
-                token_file: token_file.unwrap_or_else(|| home.join(".cache/glassmind/oauth-token")),
                 growth_per_compression,
                 patience,
                 reviewer: !no_reviewer,

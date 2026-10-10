@@ -35,8 +35,6 @@ pub struct Config {
     /// Run agents and evaluations inside bubblewrap, hiding the held-out
     /// data, the user's code and the user's Claude Code history.
     pub sandbox: bool,
-    /// File with a long-lived Claude Code OAuth token for agents.
-    pub token_file: PathBuf,
     /// Growth rounds before each compression round.
     pub growth_per_compression: u32,
     /// Stop after this many rounds without a held-out improvement.

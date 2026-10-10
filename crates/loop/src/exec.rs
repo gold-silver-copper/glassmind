@@ -14,6 +14,9 @@ pub struct Sandbox {
     pub hidden: Vec<PathBuf>,
     /// Bound over `/tmp`, so nothing is written to RAM-backed `/tmp`.
     pub tmp: Option<PathBuf>,
+    /// Hidden after the writable directories are mounted: parts of a
+    /// writable directory the process must not see.
+    pub masked: Vec<PathBuf>,
 }
 
 impl Sandbox {
@@ -48,6 +51,14 @@ impl Sandbox {
         for w in &self.writable {
             let w = w.to_string_lossy().into_owned();
             a.extend(["--bind".into(), w.clone(), w]);
+        }
+        for m in &self.masked {
+            let path = m.to_string_lossy().into_owned();
+            if m.is_dir() {
+                a.extend(["--tmpfs".into(), path]);
+            } else if m.exists() {
+                a.extend(["--ro-bind".into(), "/dev/null".into(), path]);
+            }
         }
         a.push("--".into());
         a.push(program.into());

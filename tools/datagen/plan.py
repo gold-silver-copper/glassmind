@@ -23,7 +23,7 @@ REPO = Path(__file__).resolve().parents[2]
 ASK = {
     "callers": "Ask which functions call `{name}`.",
     "callees": "Ask which functions `{name}` calls.",
-    "count_callers": "Ask how many functions call `{name}` (a number).",
+    "count_callers": "Ask how many functions call `{name}`.",
     "locate": "Ask where `{name}` is defined.",
     "describe": "Ask what `{name}` does or what it is for.",
     "fields_of": "Ask what fields the struct `{name}` has.",

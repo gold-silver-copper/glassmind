@@ -1,8 +1,8 @@
 """Calling Claude Opus 5.5 headless, isolated from the user's own Claude Code history.
 
-Every call runs `claude -p` with its own config directory, no tools, no
-settings, and no saved session, authenticated by a long-lived OAuth token
-(never an API key). The token lives in ~/.cache/glassmind/oauth-token.
+Every call runs the plain `claude` CLI on the user's own login (never an API
+key), with no tools, no settings, and no saved session, so nothing is added
+to the user's Claude Code history.
 """
 
 import json
@@ -13,22 +13,18 @@ from pathlib import Path
 
 MODEL = "claude-opus-5-5"
 HOME = Path.home() / ".cache" / "glassmind"
-CONFIG_DIR = HOME / "claude-gen"
-TOKEN_FILE = HOME / "oauth-token"
 USAGE_LOG = HOME / "usage" / "datagen.jsonl"
 
 
 def env():
-    token = TOKEN_FILE.read_text().strip()
-    e = {k: v for k, v in os.environ.items() if not k.startswith(("ANTHROPIC_", "CLAUDE_CODE_", "CLAUDECODE", "OPENAI_", "GEMINI_"))}
-    e["CLAUDE_CONFIG_DIR"] = str(CONFIG_DIR)
-    e["CLAUDE_CODE_OAUTH_TOKEN"] = token
-    return e
+    """The environment for a child `claude`: the user's own login, with no
+    API keys and none of this session's variables."""
+    return {k: v for k, v in os.environ.items()
+            if not k.startswith(("ANTHROPIC_", "CLAUDE_CODE_", "CLAUDECODE", "OPENAI_", "GEMINI_"))}
 
 
 def ask(prompt, system, label, retries=4, timeout=1800):
     """Returns the model's text reply to `prompt`. Logs token usage under `label`."""
-    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
     USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
         "claude", "-p", "--model", MODEL, "--output-format", "json",

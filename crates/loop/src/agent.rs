@@ -1,9 +1,9 @@
 //! Running a coding agent on a brief, in its own worktree.
 //!
-//! Claude Code agents run headless (`claude -p`) with their own config
-//! directory and a long-lived OAuth token, inside a bubblewrap sandbox that
-//! hides the held-out data, the user's code and the user's Claude Code
-//! history, and that cannot push anywhere.
+//! Claude Code agents run headless (`claude -p`) on the user's own login,
+//! without saving their sessions, inside a bubblewrap sandbox that hides the
+//! held-out data, the user's code and the user's Claude Code history, and
+//! that cannot push anywhere.
 
 use std::path::{Path, PathBuf};
 use std::time::Duration;
@@ -43,12 +43,28 @@ pub fn sandbox(
     let mut writable = writable;
     writable.push(h.join(".cargo/registry"));
     writable.push(h.join(".cargo/git"));
+    // The login lives in ~/.claude and ~/.claude.json, which Claude Code
+    // must be able to update; the history in them stays masked.
+    writable.push(h.join(".claude"));
+    writable.push(h.join(".claude.json"));
+    let claude = h.join(".claude");
     Some(Sandbox {
         writable: writable.into_iter().filter(|p| p.exists()).collect(),
+        masked: [
+            "projects",
+            "history.jsonl",
+            "file-history",
+            "sessions",
+            "session-env",
+            "paste-cache",
+            "todos",
+            "jobs",
+        ]
+        .iter()
+        .map(|d| claude.join(d))
+        .collect(),
         hidden: vec![
             h.join("code"),
-            h.join(".claude"),
-            h.join(".claude.json"),
             h.join(".ssh"),
             h.join(".config/gh"),
             h.join(".codex"),
@@ -91,19 +107,15 @@ pub fn claude(
     tools: Option<&str>,
     writable: Vec<PathBuf>,
 ) -> Result<AgentRun, String> {
-    let token = std::fs::read_to_string(&config.token_file)
-        .map_err(|e| format!("no agent token at {}: {e}", config.token_file.display()))?;
-    let config_dir = slot.join("claude-config");
     let tmp = slot.join("tmp");
-    for d in [&config_dir, &tmp] {
-        std::fs::create_dir_all(d).map_err(|e| e.to_string())?;
-    }
+    std::fs::create_dir_all(&tmp).map_err(|e| e.to_string())?;
     let mut args: Vec<String> = vec![
         "-p".into(),
         "--model".into(),
         config.model.clone(),
         "--output-format".into(),
         "json".into(),
+        "--no-session-persistence".into(),
         "--setting-sources".into(),
         String::new(),
     ];
@@ -122,8 +134,6 @@ pub fn claude(
         .remove_env_prefix("CLAUDE")
         .remove_env_prefix("OPENAI_")
         .remove_env_prefix("GEMINI_")
-        .env("CLAUDE_CONFIG_DIR", &config_dir.to_string_lossy())
-        .env("CLAUDE_CODE_OAUTH_TOKEN", token.trim())
         .env("CLAUDE_CODE_TMPDIR", &tmp.to_string_lossy())
         .env("TMPDIR", &tmp.to_string_lossy())
         .env("CARGO_TARGET_DIR", &slot.join("target").to_string_lossy())

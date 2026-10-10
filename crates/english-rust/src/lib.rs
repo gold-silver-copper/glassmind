@@ -92,7 +92,9 @@ mod tests {
         for rule in words() {
             match rule.sem {
                 glassmind_grammar::Sem::Const(Sem::Kind { kind, .. }) => kinds.push(Some(kind)),
-                glassmind_grammar::Sem::Const(Sem::Relation { relation, .. }) => relations.push(relation),
+                glassmind_grammar::Sem::Const(Sem::Relation { relation, .. }) => {
+                    relations.push(relation)
+                }
                 _ => {}
             }
         }
@@ -108,7 +110,9 @@ mod tests {
                             other: Thing::Named(Name("spawn_wave".into())),
                         }],
                     }));
-                    let Some(spoken) = english.speak(Cat::Utterance, &Sem::Utterance(meaning.clone())) else {
+                    let Some(spoken) =
+                        english.speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
+                    else {
                         continue;
                     };
                     let Understanding::Readings(readings) = english.understand(&spoken.text) else {
