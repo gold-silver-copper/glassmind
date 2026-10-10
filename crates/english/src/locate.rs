@@ -63,6 +63,22 @@ fn previous<O: Ontology>(_: &[Sem<O>]) -> Option<Sem<O>> {
     }))
 }
 
+/// Where the thing among the children is, of those in the relation to
+/// the other thing after it.
+fn placed<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [thing, .., relation, other] => {
+            match related(&[thing.clone(), relation.clone(), other.clone()])? {
+                Sem::Mention { thing, kind } => {
+                    Some(Sem::Question(Question::Locate { thing, kind }))
+                }
+                _ => None,
+            }
+        }
+        _ => None,
+    }
+}
+
 /// Words that only shape a question about where a thing is, by category.
 const FILLERS: &[(Cat, &[(&str, &str)])] = &[
     // The speaker's wish to know: "I'd like to know", "I'm trying to
@@ -131,8 +147,8 @@ const LATER_FILLERS: &[(Cat, &[(&str, &str)])] = &[
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let rule = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
+    let rule = |id, round, lhs, rhs, build| {
+        Rule::new(RuleInfo::new(id, round), lhs, rhs, S::Build(build)).read_only()
     };
     // "where is `x` defined": how the system asks it, too.
     let mut rules = vec![Rule::new(
@@ -192,7 +208,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 vec![C(Cat::Target), C(Cat::Location)],
             ),
         ]
-        .map(|(id, rhs)| rule(id, Cat::Question, rhs, located)),
+        .map(|(id, rhs)| rule(id, ROUND, Cat::Question, rhs, located)),
     );
     // The same asked tersely, with no "is" or "does": "where `x` defined",
     // "where izz", "where parses_urls fn live", "where air_n get defined".
@@ -212,68 +228,71 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 vec![W("where"), C(Cat::Target), W("get"), C(Cat::Defined)],
             ),
         ]
-        .map(|(id, rhs)| {
-            Rule::new(RuleInfo::new(id, 13), Cat::Question, rhs, S::Build(located)).read_only()
-        }),
+        .map(|(id, rhs)| rule(id, 13, Cat::Question, rhs, located)),
     );
-    let later = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, 13), lhs, rhs, S::Build(build)).read_only()
-    };
     rules.extend([
         // "def of scroll_by", "settings_changed definition": the
         // definition alone, asked for.
-        later(
+        rule(
             "en.question.definition_of",
+            13,
             Cat::Question,
             vec![C(Cat::Definition), W("of"), C(Cat::NounPhrase)],
             locate,
         ),
-        later(
+        rule(
             "en.question.definition",
+            13,
             Cat::Question,
             vec![C(Cat::NounPhrase), C(Cat::Definition)],
             locate,
         ),
         // "which file defines Network"
-        later(
+        rule(
             "en.question.which_file_defines",
+            13,
             Cat::Question,
             vec![W("which"), C(Cat::Location), W("defines"), C(Cat::Target)],
             located,
         ),
         // "Where's `x` defined, in which file?", "protocol_name — which
         // file": the file of the thing said before.
-        later(
+        rule(
             "en.question.which_file",
+            13,
             Cat::Question,
             vec![W("which"), C(Cat::Location)],
             previous,
         ),
-        later(
+        rule(
             "en.question.in_which_file",
+            13,
             Cat::Question,
             vec![W("in"), W("which"), C(Cat::Location)],
             previous,
         ),
         // "..., do you know where?": where the thing said before is.
-        later(
+        rule(
             "en.indirect.where",
+            13,
             Cat::Indirect,
             vec![W("where")],
             previous,
         ),
         // "I'm trying to figure out where `x` is defined, can you point
         // me?": the question, asked again.
-        later(
+        rule(
             "en.question.inquiry_again",
+            13,
             Cat::Question,
             vec![C(Cat::Question), W(","), C(Cat::Inquiry)],
             first,
         ),
         // "Where is `set_focus` defined on `Chat`?": where the thing so
         // placed is.
-        later(
+        rule(
             "en.question.where_defined_on",
+            13,
             Cat::Question,
             vec![
                 W("where"),
@@ -283,29 +302,37 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 C(Cat::Preposition),
                 C(Cat::Mention),
             ],
-            |c| match c {
-                [thing, _, relation, other] => {
-                    let placed = related(&[thing.clone(), relation.clone(), other.clone()])?;
-                    match placed {
-                        Sem::Mention { thing, kind } => {
-                            Some(Sem::Question(Question::Locate { thing, kind }))
-                        }
-                        _ => None,
-                    }
-                }
-                _ => None,
-            },
+            placed,
+        ),
+        // "where `mount_m` is defined, on GearLook i think": the place
+        // said after the clause.
+        rule(
+            "en.indirect.where_defined_on",
+            15,
+            Cat::Indirect,
+            vec![
+                W("where"),
+                C(Cat::Mention),
+                W("is"),
+                C(Cat::Defined),
+                W(","),
+                C(Cat::Preposition),
+                C(Cat::Mention),
+            ],
+            placed,
         ),
         // "where is it defined in code?"
-        later(
+        rule(
             "en.question.in_code",
+            13,
             Cat::Question,
             vec![C(Cat::Question), W("in"), W("code")],
             first,
         ),
         // "where is it actually defined"
-        later(
+        rule(
             "en.defined.actually",
+            13,
             Cat::Defined,
             vec![W("actually"), C(Cat::Defined)],
             nothing,
@@ -316,16 +343,17 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // ...", "I'm trying to find where `x` is used as a field type", "I'm
         // looking for structs that have `probe` field", "i'm trying to
         // figure out which structs have a field called `on`"
-        Rule::new(
-            RuleInfo::new("en.question.inquiry_question", 13),
+        rule(
+            "en.question.inquiry_question",
+            13,
             Cat::Question,
             vec![C(Cat::Inquiry), C(Cat::Question)],
-            S::Build(crate::last),
-        )
-        .read_only(),
+            crate::last,
+        ),
         // "where `x` is defined"
         rule(
             "en.indirect.where_defined",
+            ROUND,
             Cat::Indirect,
             vec![W("where"), C(Cat::Target), W("is"), C(Cat::Defined)],
             located,
@@ -342,6 +370,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         .map(|(id, place)| {
             rule(
                 id,
+                ROUND,
                 Cat::Question,
                 vec![C(Cat::Question), W("in"), W("the"), W(place)],
                 first,
@@ -350,50 +379,51 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     );
     rules.extend([
         // "where's it live", "where's that live"
-        Rule::new(
-            RuleInfo::new("en.question.where_s_live", 9),
+        rule(
+            "en.question.where_s_live",
+            9,
             Cat::Question,
             vec![W("where's"), C(Cat::Target), W("live")],
-            S::Build(located),
-        )
-        .read_only(),
+            located,
+        ),
         // "where `parse_remote` lives", "where it lives": where the thing
         // is, as a clause.
-        Rule::new(
-            RuleInfo::new("en.indirect.where_lives", 10),
+        rule(
+            "en.indirect.where_lives",
+            10,
             Cat::Indirect,
             vec![W("where"), C(Cat::Target), W("lives")],
-            S::Build(located),
-        )
-        .read_only(),
+            located,
+        ),
         // "where it's defined": where the thing said before is.
-        Rule::new(
-            RuleInfo::new("en.indirect.where_it_s_defined", 9),
+        rule(
+            "en.indirect.where_it_s_defined",
+            9,
             Cat::Indirect,
             vec![W("where"), W("it's"), C(Cat::Defined)],
-            S::Build(previous),
-        )
-        .read_only(),
+            previous,
+        ),
         // "`LookFelt` - where defined": where the thing just set off is,
         // with nothing more said of it.
-        Rule::new(
-            RuleInfo::new("en.question.where_defined_bare", 10),
+        rule(
+            "en.question.where_defined_bare",
+            10,
             Cat::Question,
             vec![W("where"), C(Cat::Defined)],
-            S::Build(previous),
-        )
-        .read_only(),
+            previous,
+        ),
         // "and where it is defined?": asked in the order of a clause.
-        Rule::new(
-            RuleInfo::new("en.question.indirect", 9),
+        rule(
+            "en.question.indirect",
+            9,
             Cat::Question,
             vec![C(Cat::Indirect)],
-            S::Build(crate::last),
-        )
-        .read_only(),
+            crate::last,
+        ),
         // "where's `x` defined at"
         rule(
             "en.question.at",
+            ROUND,
             Cat::Question,
             vec![C(Cat::Question), W("at")],
             located,
@@ -404,6 +434,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // to know where `x` is defined."
         rule(
             "en.utterance.question_stop",
+            ROUND,
             Cat::Utterance,
             vec![C(Cat::Question), W(".")],
             |c| match c {
@@ -437,18 +468,21 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "the definition of `x`"
         rule(
             "en.target.the",
+            ROUND,
             Cat::Target,
             vec![W("the"), C(Cat::Target)],
             located,
         ),
         rule(
             "en.target.definition_of",
+            ROUND,
             Cat::Target,
             vec![C(Cat::Definition), W("of"), C(Cat::NounPhrase)],
             locate,
         ),
         rule(
             "en.target.definition",
+            ROUND,
             Cat::Target,
             vec![C(Cat::NounPhrase), C(Cat::Definition)],
             locate,
@@ -456,6 +490,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "Inquiry": a modal question "can you tell me"; the speaker's wish ("I'd like to know") is in `FILLERS`.
         rule(
             "en.inquiry.modal",
+            ROUND,
             Cat::Inquiry,
             vec![C(Cat::Modal), W("you"), C(Cat::Tell)],
             nothing,

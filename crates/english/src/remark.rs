@@ -9,7 +9,7 @@ use glassmind_meaning::{Ontology, Thing};
 use crate::lexicon::{CODE, TEXT};
 use crate::mention::named;
 use crate::sem::{Cat, Sem};
-use crate::{blank, first, phrase, word};
+use crate::{blank, first, last, phrase, word};
 
 use Sym::{Cat as C, Class, Word as W};
 
@@ -120,6 +120,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Remark), Class(CODE)],
             S::Build(|c| named(c.last())),
         ),
+        // "I keep seeing Readied around the code": a remark on where the
+        // speaker came across a thing, which a later "it" refers to.
+        Rule::new(
+            RuleInfo::new("en.remark.seeing", 15),
+            Cat::Remark,
+            vec![C(Cat::Remark), W("seeing"), C(Cat::Mention)],
+            S::Build(last),
+        )
+        .read_only(),
         // "the name": what a remark about a thing's name calls it.
         word(
             RuleInfo::new("en.name_noun.name", 5),
