@@ -26,6 +26,9 @@ pub fn response(reply: &Reply<Rust>) -> Response {
         Reply::Extent(e) => Response::Items {
             items: e.members.iter().map(key).collect(),
         },
+        Reply::Location(item) => Response::Items {
+            items: [key(item)].into(),
+        },
         Reply::Assuming { reply, .. } => response(reply),
         Reply::Trouble(t) => match t {
             Trouble::UnknownWord { word, .. } => Response::Refuse {

@@ -62,6 +62,11 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
             Function,
             Plural,
         ),
+        kind("en.rust.noun.fn", 2, "fn", Function, Singular),
+        kind("en.rust.noun.struct", 2, "struct", Struct, Singular),
+        kind("en.rust.noun.enum", 2, "enum", Enum, Singular),
+        kind("en.rust.noun.trait", 2, "trait", Trait, Singular),
+        kind("en.rust.noun.field", 2, "field", Field, Singular),
         verb("en.rust.verb.calls", SEED, "calls", Calls, ThirdSingular),
         verb("en.rust.verb.call", SEED, "call", Calls, Plain),
     ]
@@ -155,6 +160,35 @@ mod tests {
             format!("hey, I'm tidying up the `Wave` code, {request}"),
         ] {
             assert_eq!(meanings(&text), plain, "{text:?}");
+        }
+    }
+
+    /// However the user asks where a thing is, and whatever asides they
+    /// put around it, it means what the system says when it asks that.
+    #[test]
+    fn ways_of_asking_where_mean_the_same() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Ask(Question::Locate {
+            thing: Thing::Named(Name("spawn_wave".into())),
+            kind: None,
+        });
+        let spoken = english
+            .speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
+            .map(|s| s.text);
+        assert_eq!(spoken.as_deref(), Some("Where is `spawn_wave` defined?"));
+        for text in [
+            "Where is `spawn_wave` defined?",
+            "Hey, quick question: where's spawn_wave defined? Thanks!",
+            "Can you tell me where `spawn_wave` is defined, please?",
+            "I'd like to know where `spawn_wave` is defined.",
+            "um, where does `spawn_wave` live in the codebase? can't find it",
+            "find the definition of `spawn_wave`",
+            "spawn_wave defined where",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
         }
     }
 }

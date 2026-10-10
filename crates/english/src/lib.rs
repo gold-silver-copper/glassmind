@@ -13,7 +13,9 @@ use glassmind_meaning::interface::{Language, Next, Reading, Spoken, TokenSpan, U
 use glassmind_meaning::{Ontology, Reply, Trouble};
 use glassmind_rules::Switches;
 
+pub mod aside;
 pub mod lexicon;
+pub mod locate;
 pub mod remark;
 pub mod request;
 pub mod seed;
@@ -29,6 +31,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let mut rules = seed::rules();
     rules.extend(remark::rules());
     rules.extend(request::rules());
+    rules.extend(aside::rules());
+    rules.extend(locate::rules());
     rules
 }
 

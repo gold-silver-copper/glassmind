@@ -69,6 +69,10 @@ impl Labelled for RustItem {
             _ => self.name.clone(),
         }
     }
+
+    fn place(&self) -> String {
+        format!("{}:{}", self.file, self.line)
+    }
 }
 
 /// Looking a name up: exact matches of the name or `Owner::name`.
@@ -77,9 +81,13 @@ const LOOKUP_EXACT: RuleInfo = RuleInfo::new("rust.lookup.exact", SEED);
 const LOOKUP_ANY_CASE: RuleInfo = RuleInfo::new("rust.lookup.any_case", SEED);
 /// The calls relation, read from call expressions in function bodies.
 const RELATION_CALLS: RuleInfo = RuleInfo::new("rust.relation.calls", SEED);
+/// Where an item is: where its name is written, said only when no other
+/// item of the kind asked for has that name, so the user can't have meant
+/// another one.
+const LOCATE_UNIQUE: RuleInfo = RuleInfo::new("rust.locate.unique", 2);
 
 /// Every world rule, for listing and switching.
-pub const RULES: &[RuleInfo] = &[LOOKUP_EXACT, LOOKUP_ANY_CASE, RELATION_CALLS];
+pub const RULES: &[RuleInfo] = &[LOOKUP_EXACT, LOOKUP_ANY_CASE, RELATION_CALLS, LOCATE_UNIQUE];
 
 /// One or more indexed Rust sources.
 pub struct RustWorld {
@@ -268,6 +276,31 @@ impl World<Rust> for RustWorld {
                     members,
                 }))
             }
+            Question::Locate {
+                thing: Thing::Item(item),
+                kind,
+            } => {
+                if !self.switches.on(LOCATE_UNIQUE.id) {
+                    return Err(Trouble::Unsupported);
+                }
+                fired.push(LOCATE_UNIQUE);
+                if kind.is_some_and(|k| item.kind != k) {
+                    return Err(Trouble::WrongKind { item: item.clone() });
+                }
+                let candidates: Vec<RustItem> = self
+                    .records()
+                    .filter(|r| r.item.name == item.name && kind.is_none_or(|k| r.item.kind == k))
+                    .map(|r| r.item.clone())
+                    .collect();
+                if candidates.len() > 1 {
+                    return Err(Trouble::Ambiguous { candidates });
+                }
+                Ok(Reply::Location(item.clone()))
+            }
+            Question::Locate {
+                thing: Thing::Named(name),
+                ..
+            } => Err(Trouble::NoSuchName { name: name.clone() }),
         }
     }
 

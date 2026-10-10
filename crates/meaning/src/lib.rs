@@ -41,6 +41,9 @@ impl<T: Clone + Eq + Ord + Hash + Debug + Serialize + DeserializeOwned> Concept 
 /// file name, a row key). This is data, not language: languages quote it.
 pub trait Labelled {
     fn label(&self) -> String;
+    /// Where the thing is set down in its world (a file and line, a table
+    /// and row). Also data, quoted as it is.
+    fn place(&self) -> String;
 }
 
 /// A name as written by the user: a reference to data by its identifier,
@@ -96,6 +99,11 @@ pub struct Description<O: Ontology> {
 pub enum Question<O: Ontology> {
     /// Identify every thing that fits the description.
     Identify(Description<O>),
+    /// Say where the thing is; `kind`, if given, is what the user said it is.
+    Locate {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+    },
 }
 
 /// Everything a user turn can mean.
@@ -152,6 +160,8 @@ pub enum Assumption<O: Ontology> {
 pub enum Reply<O: Ontology> {
     /// The things that fit what was asked about.
     Extent(Extent<O>),
+    /// The item asked about, which carries where it is.
+    Location(O::Item),
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on assumptions, which are stated first.
@@ -182,12 +192,17 @@ impl<O: Ontology> Question<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
             Question::Identify(d) => d.things(),
+            Question::Locate { thing, .. } => vec![thing],
         }
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
         match self {
             Question::Identify(d) => Question::Identify(d.map_things(f)),
+            Question::Locate { thing, kind } => Question::Locate {
+                thing: f(thing),
+                kind: kind.clone(),
+            },
         }
     }
 }
@@ -239,7 +254,7 @@ impl<O: Ontology> Reply<O> {
                     Thing::Named(_) => None,
                 }))
                 .collect(),
-            Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
+            Reply::Location(item) | Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
             Reply::Trouble(_) => Vec::new(),
             Reply::Assuming { reply, .. } => reply.items(),

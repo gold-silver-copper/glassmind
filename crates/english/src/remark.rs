@@ -16,7 +16,7 @@ const ROUND: u32 = 1;
 const GREETING_ROUND: u32 = 2;
 
 /// The request a remark goes with.
-fn request<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+pub(crate) fn request<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     c.iter().find(|v| matches!(v, Sem::Utterance(_))).cloned()
 }
 
@@ -49,6 +49,21 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("i'm"), Class(TEXT)],
             remark(),
         ),
+        // "I keep seeing it around", "i couldn't find it": the same, said
+        // with a plain subject.
+        Rule::new(
+            RuleInfo::new("en.remark.i", 2),
+            Cat::Remark,
+            vec![W("i"), Class(TEXT)],
+            remark(),
+        ),
+        // "can't find it": the speaker's trouble, without a subject.
+        Rule::new(
+            RuleInfo::new("en.remark.cannot", 2),
+            Cat::Remark,
+            vec![W("can't"), Class(TEXT)],
+            remark(),
+        ),
         // Each further word of the remark: "... the voxel code".
         Rule::new(
             RuleInfo::new("en.remark.more", ROUND),
@@ -73,6 +88,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.utterance.remark_after",
             ROUND,
             vec![C(Cat::Utterance), C(Cat::Remark)],
+        ),
+        // "where is the `downloaded` defined, I can't find it"
+        Rule::new(
+            RuleInfo::new("en.utterance.remark_after_comma", 2),
+            Cat::Utterance,
+            vec![C(Cat::Utterance), W(","), C(Cat::Remark)],
+            S::Build(request),
         ),
         // "Which functions call `inner`? I'm trying to understand how it's used."
         utterance(

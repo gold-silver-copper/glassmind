@@ -19,6 +19,8 @@ pub const NUMBER: &str = "number";
 pub const TEXT: &str = "text";
 /// Token class: an item the system speaks of. Never read from input.
 pub const ITEM: &str = "item";
+/// Token class: where an item the system speaks of is. Never read from input.
+pub const PLACE: &str = "place";
 /// Token class: a piece of the user's input the system quotes back.
 pub const QUOTE: &str = "quote";
 
@@ -52,6 +54,7 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
         match (class, value) {
             (NAME, Sem::Name(Name(n))) => Some(format!("`{n}`")),
             (ITEM, Sem::Item(item)) => Some(format!("`{}`", item.label())),
+            (PLACE, Sem::Item(item)) => Some(item.place()),
             (QUOTE, Sem::Quote(q)) => Some(format!("`{q}`")),
             (NUMBER, Sem::Count(n)) => Some(n.to_string()),
             _ => None,

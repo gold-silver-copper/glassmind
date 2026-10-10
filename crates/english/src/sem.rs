@@ -36,6 +36,29 @@ pub enum Cat {
     Request,
     /// A word that greets before a request and asks nothing: "hey".
     Greeting,
+    /// A word or two said around a request that asks nothing: a greeting,
+    /// a hesitation, thanks ("hey,", "um", "quick question:", "thanks!").
+    Aside,
+    /// A participle saying a thing is written down somewhere: "defined".
+    Defined,
+    /// A noun for the place a thing is written down: "definition", "def".
+    Definition,
+    /// What the user wants located: a thing, or its definition ("the
+    /// definition of `x`").
+    Target,
+    /// A question set inside a sentence: "where `x` is defined".
+    Indirect,
+    /// Words asking to be told the answer to an indirect question: "can you
+    /// tell me", "I'd like to know".
+    Inquiry,
+    /// A verb asking for a thing to be found: "find", "point me to".
+    Seek,
+    /// A modal verb that makes a request polite: "can", "could".
+    Modal,
+    /// A verb asking to be told: "tell me", "show me", "point me to".
+    Tell,
+    /// A noun for where a thing is: "location", "loc".
+    Location,
 }
 
 /// English grammatical number, used for agreement.
