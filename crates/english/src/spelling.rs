@@ -65,6 +65,10 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// Round 25, from putting right what was just asked: "sorry ment
 /// `back_plated`", "oops i ment org_people_say_how_many_are_left_out", "sry
 /// meant `Overlay`". "sry" is "sorry" typed short, as "thx" is "thanks".
+/// Also from asking where a thing is defined and what it does:
+/// "where is strip_expire defind", "SavedConfig defned where", "where is
+/// number_syntax deffined", "where `rooms_cursor` definedd", "what
+/// SessionRounds do exactlly", "explain page_block, purpse?".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -225,6 +229,12 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
         &[
             ("en.spelling.ment", "ment", "meant"),
             ("en.spelling.sry", "sry", "sorry"),
+            ("en.spelling.defind", "defind", "defined"),
+            ("en.spelling.defned", "defned", "defined"),
+            ("en.spelling.deffined", "deffined", "defined"),
+            ("en.spelling.definedd", "definedd", "defined"),
+            ("en.spelling.exactlly", "exactlly", "exactly"),
+            ("en.spelling.purpse", "purpse", "purpose"),
         ],
     ),
 ];

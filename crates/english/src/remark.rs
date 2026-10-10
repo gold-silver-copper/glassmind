@@ -314,4 +314,9 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // what the speaker thinks of the name being changed.
     ("en.remark.current", 21, "current"),
     ("en.remark.too", 21, "too"),
+    // "where is `x` defined? someone mentioned it to me": where the
+    // speaker heard of the thing.
+    ("en.remark.someone", 25, "someone"),
+    // "what does `x` do, quick sumary": how the speaker wants the answer.
+    ("en.remark.quick", 25, "quick"),
 ];

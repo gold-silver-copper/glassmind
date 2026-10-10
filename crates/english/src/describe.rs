@@ -314,6 +314,48 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ],
         )],
     ));
+    // "unbind_ignore what does it do / whats teh point", "explain
+    // page_block, purpse?", "what `x` does, or what it's meant to be used
+    // for": what a thing is for, asked of the thing said before.
+    rules.extend(fillers(
+        25,
+        &[
+            (Purpose, &[("en.purpose.the_point", "the point")]),
+            (
+                Use,
+                &[
+                    ("en.use.meant_for", "meant for"),
+                    ("en.use.meant_to_be_used_for", "meant to be used for"),
+                ],
+            ),
+        ],
+    ));
+    rules.extend([
+        // "whats the point": the purpose of the thing said before.
+        read_only_rule(
+            "en.question.what_is_purpose",
+            25,
+            Question,
+            vec![C(WhatIs), C(Purpose)],
+            previous_described,
+        ),
+        // "what's the point of `x`", "what is the purpose of `x`"
+        read_only_rule(
+            "en.question.what_is_purpose_of",
+            25,
+            Question,
+            vec![C(WhatIs), C(Purpose), W("of"), C(Mention)],
+            describe,
+        ),
+        // "explain page_block, purpose?": the same, with the noun alone.
+        read_only_rule(
+            "en.question.purpose_bare",
+            25,
+            Question,
+            vec![C(Purpose)],
+            previous_described,
+        ),
+    ]);
     // "what does `armed` even mean"
     rules.push(filler("en.doing.mean", 21, Doing, "mean"));
     // "what does `x` actually do", "what is `x` even for"

@@ -455,6 +455,8 @@ mod tests {
             "def of spawn_wave",
             "I'm trying to figure out where `spawn_wave` is defined, can you point me?",
             "where is `spawn_wave` defined? keep seeing it around",
+            "spawn_wave definiton?",
+            "where is `spawn_wave` defined, do you know where it is?",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
@@ -479,6 +481,7 @@ mod tests {
             "where's that defined",
             "where's it live",
             "and where it is defined?",
+            "where's it defind? someone mentioned it to me",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
@@ -562,6 +565,11 @@ mod tests {
             "what seed_at is, what it for",
             "what seed_at doo exaclty",
             "seed_at whats it fro",
+            "seed_at what does it do / whats teh point",
+            "what's the point of seed_at",
+            "explain seed_at, purpse?",
+            "what does seed_at do, quick sumary",
+            "Can you tell me what `seed_at` does, or what it's meant to be used for?",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

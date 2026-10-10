@@ -222,6 +222,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Definition), W("of"), C(NounPhrase)],
             locate,
         ),
+        // "kept_glare definiton?": the same, the noun after.
+        rule(
+            "en.question.definition",
+            25,
+            Question,
+            vec![C(NounPhrase), C(Definition)],
+            locate,
+        ),
         // "which file defines Network"
         rule(
             "en.question.which_file_defines",
@@ -335,6 +343,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             10,
             Indirect,
             vec![W("where"), C(Target), W("lives")],
+            located,
+        ),
+        // "..., do you know where it is?": where the thing is, with
+        // nothing more said of it.
+        rule(
+            "en.indirect.where_is",
+            25,
+            Indirect,
+            vec![W("where"), C(Target), W("is")],
             located,
         ),
         // "where it's defined": where the thing said before is.
