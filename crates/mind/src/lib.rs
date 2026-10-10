@@ -190,7 +190,7 @@ impl<O: Ontology> Session<O> {
     /// mention nothing.
     pub fn mentions(&self) -> Vec<O::Item> {
         let mut out = Vec::new();
-        for turn in self.remembered() {
+        for turn in self.settled() {
             for item in spoken_of(turn).chain(turn.reply.items()) {
                 if !out.contains(item) {
                     out.push(item.clone());
@@ -198,6 +198,13 @@ impl<O: Ontology> Session<O> {
             }
         }
         out
+    }
+
+    /// The remembered turns whose reading was taken, not only asked about
+    /// ("did you mean ...?"): what the conversation is about.
+    fn settled(&self) -> impl Iterator<Item = &TurnRecord<O>> {
+        self.remembered()
+            .filter(|t| !matches!(t.reply, Reply::Clarify { .. }))
     }
 
     /// The turns, most recent first, leaving out each turn the user asked
@@ -223,7 +230,7 @@ impl<O: Ontology> Session<O> {
     /// With `named` ([`NAMED_IS_TOPIC`]), a thing described by its name is
     /// what was asked about, not the items it is described by.
     pub fn topic(&self, named: bool) -> Option<O::Item> {
-        let meaning = self.remembered().find_map(|t| t.meaning.as_ref())?;
+        let meaning = self.settled().find_map(|t| t.meaning.as_ref())?;
         let called = |c: &Condition<O>| matches!(c, Condition::Called(_));
         if meaning
             .subjects()

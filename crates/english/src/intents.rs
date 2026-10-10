@@ -51,6 +51,15 @@ fn bridge() -> &'static BTreeMap<String, Vec<String>> {
     })
 }
 
+/// English's closed class of words with logical force: negation,
+/// exclusion, restriction and quantity. A request with one of them asks
+/// something a template without it does not.
+pub const LOGICAL: &[&str] = &[
+    "not", "no", "never", "none", "nothing", "nobody", "neither", "nor", "without", "except",
+    "but", "unless", "only", "just", "all", "every", "each", "any", "both", "either", "more",
+    "less", "fewer", "most", "least", "than", "besides", "other", "else", "also", "too",
+];
+
 /// What stands for a name in the model's word pairs.
 pub const NAME: &str = "<n>";
 

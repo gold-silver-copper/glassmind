@@ -148,11 +148,11 @@ impl IntentModel {
         // Pairs of words too: "<n> call" pointing to "which functions does
         // <0> call" says the request goes the other way from "how many
         // functions call <0>", and no template here asks it. A pair seen too
-        // seldom says nothing; a single word never seen at all may be more
-        // being asked.
+        // seldom says nothing, and so does a word never seen at all (the
+        // language says which of its words always matter).
         words.iter().all(|w| {
             let seen = self.seen.get(w).copied().unwrap_or(0);
-            if w.contains(' ') && seen < LEAST_TELLING {
+            if seen == 0 || (w.contains(' ') && seen < LEAST_TELLING) {
                 return true;
             }
             let elsewhere = self

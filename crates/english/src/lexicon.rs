@@ -10,6 +10,14 @@ use glassmind_meaning::{Labelled, Name, Ontology, Thing};
 use crate::sem::Sem;
 use crate::tokens::{Shape, Token};
 
+/// English's articles and determiners. Typed plainly they are never a
+/// name ("which structs have a member ..." is not about something called
+/// `a`); in backticks or quotes they can be. (Other function words can:
+/// "rename the to field".)
+const DETERMINERS: &[&str] = &[
+    "a", "an", "the", "this", "these", "those", "some", "any", "each", "every", "no",
+];
+
 /// Token class: a name the user typed, to be looked up in the world.
 pub const NAME: &str = "name";
 /// Token class: a name written as code, in backticks or shaped like an
@@ -97,7 +105,8 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             }
             (SAID, Shape::Word)
                 if self.known.contains(self.norm(token))
-                    && !self.standing.contains(self.norm(token)) =>
+                    && !self.standing.contains(self.norm(token))
+                    && !DETERMINERS.contains(&self.norm(token)) =>
             {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
             }

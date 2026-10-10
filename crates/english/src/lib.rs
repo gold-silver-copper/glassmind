@@ -302,6 +302,17 @@ impl<O: Ontology> English<O> {
                 if !m.explains(template, &words) {
                     continue;
                 }
+                // A word with logical force ("not", "except", "only") that
+                // the template does not have changes what is asked.
+                if words
+                    .iter()
+                    .any(|w| intents::LOGICAL.contains(&w.as_str()) || w.ends_with("n't"))
+                    && !template
+                        .split(' ')
+                        .any(|w| intents::LOGICAL.contains(&w) || w.ends_with("n't"))
+                {
+                    continue;
+                }
                 // A word that is a noun phrase by itself ("it", "that")
                 // refers to something: a template without one, filled with
                 // a plain word taken for a name, changes what was asked

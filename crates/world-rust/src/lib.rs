@@ -603,7 +603,16 @@ impl RustWorld {
         let mut candidates: Option<BTreeSet<RustItem>> = None;
         for condition in &description.conditions {
             let fitting = match condition {
-                Condition::Called(name) => self.lookup(name, fired).into_iter().collect(),
+                // Called a name nothing has: not "none of them", but no such
+                // name ("an attribute with that name" read as "a thing
+                // called `attribute`").
+                Condition::Called(name) => {
+                    let called: BTreeSet<RustItem> = self.lookup(name, fired).into_iter().collect();
+                    if called.is_empty() {
+                        return Err(NoSuchName { name: name.clone() });
+                    }
+                    called
+                }
                 Condition::Is(thing) => self.things(thing, fired)?,
                 Condition::Named(name) => self.named(name, description.kind, fired)?,
                 // Named like an item: by the item's own name.
