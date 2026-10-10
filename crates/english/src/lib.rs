@@ -290,16 +290,26 @@ impl<O: Ontology> English<O> {
     fn tagged(&self, tokens: &[Token]) -> Option<Vec<Reading<O>>> {
         let known = |w: &str| self.lexicon.known.contains(w);
         let m = intents::model();
-        let (names, words) = intents::split(tokens, &known, m);
+        let (names, words) = intents::split(tokens, &known, m, &|_| false);
+        // With code named, a word that is a noun phrase by itself may stand
+        // for it ("`x`: where does it live"): read that way too.
+        let standing = |w: &str| self.lexicon.standing.contains(w);
+        let back = (names.iter().any(|t| t.shape == Shape::Code)
+            && tokens.iter().any(|t| standing(&t.norm)))
+        .then(|| intents::split(tokens, &known, m, &standing).1);
         let mut found: Vec<Reading<O>> = Vec::new();
         // Which of the words that may be names are the names: each choice
         // is read, and the world keeps those whose names name something.
         for (chosen, discarded) in intents::choices(&names, m.most_slots()) {
-            for (template, p) in m.rank(&words, chosen.len()).into_iter().take(3) {
+            let words = match &back {
+                Some(back) if chosen.iter().any(|t| t.shape == Shape::Code) => back,
+                _ => &words,
+            };
+            for (template, p) in m.rank(words, chosen.len()).into_iter().take(3) {
                 if p < m.offer {
                     break;
                 }
-                if !m.explains(template, &words) {
+                if !m.explains(template, words) {
                     continue;
                 }
                 // A word with logical force ("not", "except", "only") that
@@ -371,7 +381,7 @@ impl<O: Ontology> English<O> {
         m: &glassmind_models::IntentModel,
     ) -> Option<(BTreeSet<String>, String)> {
         let known = |w: &str| self.lexicon.known.contains(w);
-        let (names, words) = intents::split(&self.tokenize(typed), &known, m);
+        let (names, words) = intents::split(&self.tokenize(typed), &known, m, &|_| false);
         let mut used = vec![false; names.len()];
         let mut template = Vec::new();
         for t in self.tokenize(canonical.trim_end_matches(['?', '.'])) {
@@ -486,6 +496,13 @@ impl<O: Ontology> Language<O> for English<O> {
             _ => Trouble::UnknownShape { at },
         };
         Understanding::Failed { trouble }
+    }
+
+    fn guesses(&self, text: &str) -> Vec<Reading<O>> {
+        if !self.tagging {
+            return Vec::new();
+        }
+        self.tagged(&self.tokenize(text)).unwrap_or_default()
     }
 
     fn say(&self, reply: &Reply<O>) -> Option<Spoken> {

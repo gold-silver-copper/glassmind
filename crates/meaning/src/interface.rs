@@ -75,6 +75,11 @@ pub trait Language<O: Ontology> {
     fn say(&self, reply: &Reply<O>) -> Option<Spoken>;
     /// Says what may follow the complete tokens of `prefix`.
     fn next(&self, prefix: &str) -> Vec<Next>;
+    /// Readings its models guess for the input, for when none of its
+    /// readings works: proposals the world still checks.
+    fn guesses(&self, _text: &str) -> Vec<Reading<O>> {
+        Vec::new()
+    }
 }
 
 /// A world: the data glassmind can see.

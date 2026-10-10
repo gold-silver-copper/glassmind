@@ -69,10 +69,14 @@ pub const NAME: &str = "<n>";
 /// the first word after `^`. An unknown word one slip from a word the model
 /// `m` knows is a mistyped word, not a name: read as that word when there is
 /// one such word, and left out when there are several.
+///
+/// A word `back` accepts stands for a name typed elsewhere ("`x`: where does
+/// it live", where "it" is `x`): it counts as a name, without being one.
 pub fn split(
     tokens: &[Token],
     known: &dyn Fn(&str) -> bool,
     m: &IntentModel,
+    back: &dyn Fn(&str) -> bool,
 ) -> (Vec<Token>, BTreeSet<String>) {
     let mut names = Vec::new();
     let mut words = BTreeSet::new();
@@ -92,6 +96,7 @@ pub fn split(
                 names.push(t.clone());
                 Some(NAME.to_owned())
             }
+            Shape::Word if back(&t.norm) => Some(NAME.to_owned()),
             // A word the model never saw that means one it knows
             // ("invoked": "called").
             Shape::Word if !bridged.is_empty() => {

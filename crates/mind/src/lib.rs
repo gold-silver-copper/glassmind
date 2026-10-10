@@ -91,6 +91,12 @@ pub const PREFER_FEWEST_EDITS: RuleInfo =
 pub const PREFER_NAMES_THAT_EXIST: RuleInfo =
     RuleInfo::new("mind.prefer.names_that_exist", glassmind_rules::HAND);
 
+/// When no reading works in the world, the language's guesses are weighed
+/// too (the request-category tagger's readings, when the grammar's
+/// readings all fail: "which structs declare a member with that name").
+pub const GUESS_WHEN_STUCK: RuleInfo =
+    RuleInfo::new("mind.guess_when_stuck", glassmind_rules::HAND);
+
 /// "yes" to a waiting proposal makes its changes; "no" declines it.
 pub const CONSENT_APPLIES: RuleInfo = RuleInfo::new("mind.consent.applies", glassmind_rules::HAND);
 
@@ -114,6 +120,7 @@ pub const RULES: &[RuleInfo] = &[
     ASK_WHEN_UNSURE,
     KEEP_NAMES,
     CONSENT_APPLIES,
+    GUESS_WHEN_STUCK,
     PREFER_NAMES_THAT_EXIST,
     PREFER_FEWEST_EDITS,
     PREFER_FEWEST_IDLE,
@@ -380,8 +387,34 @@ impl<O: Ontology> Mind<'_, O> {
             }],
             _ => readings,
         };
+        let mut candidates = self.weigh(session, &readings, 0, trace);
+        // When no reading works in the world, the language's guesses (its
+        // models' readings) are weighed too, and kept if one works.
+        if candidates.iter().all(|c| c.result.is_err()) && self.switches.on(GUESS_WHEN_STUCK.id) {
+            let guesses = self.language.guesses(text);
+            let more = self.weigh(session, &guesses, readings.len(), trace);
+            if more.iter().any(|c| c.result.is_ok()) {
+                trace.preferences.push(GUESS_WHEN_STUCK);
+                candidates.extend(more);
+            }
+        }
+        let (reply, chosen) = self.choose(session, &candidates, trace);
+        trace.chosen = chosen.map(|c| c.reading);
+        (reply, chosen.map(|c| c.meaning.clone()))
+    }
+
+    /// Every way of taking each reading (numbered from `first`), with what
+    /// the world makes of it; each reading's trace goes into `trace`.
+    fn weigh(
+        &self,
+        session: &Session<O>,
+        readings: &[Reading<O>],
+        first: usize,
+        trace: &mut Trace<O>,
+    ) -> Vec<Candidate<O>> {
         let mut candidates = Vec::new();
         for (i, reading) in readings.iter().enumerate() {
+            let i = first + i;
             // A reading that discards a word naming something in the world
             // ignores what the user asked about.
             let mut fired = Vec::new();
@@ -449,9 +482,7 @@ impl<O: Ontology> Mind<'_, O> {
             }
             trace.readings.push(rt);
         }
-        let (reply, chosen) = self.choose(session, &candidates, trace);
-        trace.chosen = chosen.map(|c| c.reading);
-        (reply, chosen.map(|c| c.meaning.clone()))
+        candidates
     }
 
     /// Pushes `rule` onto `fired` if it is switched on; a meaning that needs
