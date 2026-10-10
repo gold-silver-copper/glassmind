@@ -34,6 +34,8 @@ pub enum Cat {
     /// The polite opening of a request, which asks nothing itself: "can
     /// you", "can you please".
     Request,
+    /// A word that greets before a request and asks nothing: "hey".
+    Greeting,
 }
 
 /// English grammatical number, used for agreement.

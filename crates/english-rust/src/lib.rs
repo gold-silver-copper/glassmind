@@ -130,8 +130,9 @@ mod tests {
         assert!(checked > 0);
     }
 
-    /// A remark about the speaker, before or after a request, or a polite
-    /// opening such as "can you tell me", leaves the request's meaning as it was.
+    /// A remark about the speaker, before or after a request, a polite
+    /// opening such as "can you tell me", or a greeting before it, leaves the
+    /// request's meaning as it was.
     #[test]
     fn remarks_and_politeness_do_not_change_the_request() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
@@ -150,6 +151,8 @@ mod tests {
             format!("{request} I'm curious."),
             "Can you tell me which functions call `spawn_wave`, please?".into(),
             "can you please show me which functions call `spawn_wave`".into(),
+            format!("Hey, {request}"),
+            format!("hey, I'm tidying up the `Wave` code, {request}"),
         ] {
             assert_eq!(meanings(&text), plain, "{text:?}");
         }
