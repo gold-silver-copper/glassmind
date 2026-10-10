@@ -152,6 +152,7 @@ fn works(places: &Places, sources: &Path, label: &Label, check: &str, changes: &
             "CARGO_TARGET_DIR",
             &places.target.join(source).to_string_lossy(),
         )
+        .env("TMPDIR", &places.scratch.to_string_lossy())
         .timeout(Duration::from_secs(600))
         .memory("6G")
         .go()

@@ -37,6 +37,9 @@ pub struct IntentModel {
 /// Words seen fewer times than this are left out of the model.
 const LEAST_SEEN: u32 = 2;
 
+/// How often a pair of words must have been seen to rule a template out.
+const LEAST_TELLING: u32 = 3;
+
 /// Smoothing for a word's chance in a template.
 const ALPHA: f64 = 0.5;
 
@@ -78,7 +81,8 @@ impl IntentModel {
     }
 
     /// The templates taking `names` names, likeliest first, with their
-    /// probability given which known words appear in `words`.
+    /// probability among all templates given which known words appear in
+    /// `words`.
     pub fn rank(&self, words: &BTreeSet<String>, names: usize) -> Vec<(&str, f64)> {
         let present: BTreeSet<&str> = words
             .iter()
@@ -88,7 +92,6 @@ impl IntentModel {
         let mut scored: Vec<(&str, f64)> = self
             .templates
             .iter()
-            .filter(|(t, _)| slots_of(t) == names)
             .map(|(t, &n)| {
                 let n = f64::from(n);
                 let mut score = (n / f64::from(self.examples.max(1))).ln();
@@ -113,18 +116,53 @@ impl IntentModel {
         for s in &mut scored {
             s.1 = (s.1 - top).exp() / total;
         }
+        // Normalized over every template, then only those taking as many
+        // names: a reading that takes a word for a name competes with one
+        // that does not ("how many functions reference it").
+        scored.retain(|(t, _)| slots_of(t) == names);
         scored.sort_by(|a, b| b.1.total_cmp(&a.1));
         scored
     }
 
-    /// Whether every word in `words` has come with `template` before: a
-    /// word it has never come with is a sign of more being asked than the
-    /// template says ("what does `x` do, and which functions call it").
+    /// How many names the template taking the most takes.
+    pub fn most_slots(&self) -> usize {
+        self.templates
+            .keys()
+            .map(|t| slots_of(t))
+            .max()
+            .unwrap_or(0)
+    }
+
+    /// Whether no word in `words` asks for something `template` does not:
+    /// a word that has never come with the template but mostly comes with
+    /// another one is a sign of more being asked ("what does `x` do, and
+    /// which functions call it"). Words that come with many templates
+    /// ("pls", "the") say nothing either way.
     pub fn explains(&self, template: &str, words: &BTreeSet<String>) -> bool {
-        words.iter().all(|w| {
+        let count = |t: &str, w: &str| {
             self.words
-                .get(&(template.to_owned(), w.clone()))
-                .is_some_and(|n| *n > 0)
+                .get(&(t.to_owned(), w.to_owned()))
+                .copied()
+                .unwrap_or(0)
+        };
+        // Pairs of words too: "<n> call" pointing to "which functions does
+        // <0> call" says the request goes the other way from "how many
+        // functions call <0>", and no template here asks it. A pair seen too
+        // seldom says nothing; a single word never seen at all may be more
+        // being asked.
+        words.iter().all(|w| {
+            let seen = self.seen.get(w).copied().unwrap_or(0);
+            if w.contains(' ') && seen < LEAST_TELLING {
+                return true;
+            }
+            let elsewhere = self
+                .templates
+                .keys()
+                .filter(|t| t.as_str() != template)
+                .map(|t| count(t, w))
+                .max()
+                .unwrap_or(0);
+            count(template, w) > 0 || 2 * elsewhere < seen
         })
     }
 

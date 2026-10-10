@@ -46,10 +46,9 @@ pub fn sandbox(
     // Agents' own builds and results of checks on training sources (the
     // scorer keeps its own where agents cannot see them).
     writable.push(h.join(".cache/glassmind/check"));
-    // The login lives in ~/.claude and ~/.claude.json, which Claude Code
-    // must be able to update; the history in them stays masked.
-    writable.push(h.join(".claude"));
-    writable.push(h.join(".claude.json"));
+    // The login in ~/.claude and ~/.claude.json is read-only to agents;
+    // the history there is masked, and the folders Claude Code writes as
+    // it works are empty ones of their own.
     let claude = h.join(".claude");
     Some(Sandbox {
         writable: writable.into_iter().filter(|p| p.exists()).collect(),
@@ -62,6 +61,8 @@ pub fn sandbox(
             "paste-cache",
             "todos",
             "jobs",
+            "shell-snapshots",
+            "statsig",
         ]
         .iter()
         .map(|d| claude.join(d))

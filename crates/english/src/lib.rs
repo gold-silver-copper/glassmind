@@ -292,35 +292,54 @@ impl<O: Ontology> English<O> {
         let m = intents::model();
         let (names, words) = intents::split(tokens, &known, m);
         let mut found: Vec<Reading<O>> = Vec::new();
-        for (template, p) in m.rank(&words, names.len()).into_iter().take(3) {
-            if p < m.offer {
-                break;
-            }
-            if !m.explains(template, &words) {
-                continue;
-            }
-            let text = intents::fill(template, &names);
-            let filled = self.tokenize(&text);
-            let parse = self.grammar.parse(&self.lexicon, &filled);
-            for r in &parse.readings {
-                if let Sem::Utterance(u) = &r.value {
-                    // Only a question is answered on the model's word alone:
-                    // anything else (a change, a fact, consent) is asked first.
-                    let sure = p >= m.sure && matches!(u, Utterance::Ask(_));
-                    found.push(Reading {
-                        meaning: u.clone(),
-                        rules: [r.rules(), vec![intents::INTENTS]].concat(),
-                        parse: render(r, &filled),
-                        idle: idle(r),
-                        edits: if sure { 150 } else { 250 }
-                            + ((1.0 - p) * 40.0).round() as u32
-                            + r.edits,
-                        discarded: Vec::new(),
-                    });
+        // Which of the words that may be names are the names: each choice
+        // is read, and the world keeps those whose names name something.
+        for (chosen, discarded) in intents::choices(&names, m.most_slots()) {
+            for (template, p) in m.rank(&words, chosen.len()).into_iter().take(3) {
+                if p < m.offer {
+                    break;
                 }
-            }
-            if !found.is_empty() {
-                break;
+                if !m.explains(template, &words) {
+                    continue;
+                }
+                // A word that is a noun phrase by itself ("it", "that")
+                // refers to something: a template without one would put a
+                // name in its place and change what was asked about.
+                let refers =
+                    |text: &str| text.split(' ').any(|w| self.lexicon.standing.contains(w));
+                if words
+                    .iter()
+                    .any(|w| self.lexicon.standing.contains(w.as_str()))
+                    && !refers(template)
+                {
+                    continue;
+                }
+                let text = intents::fill(template, &chosen);
+                let filled = self.tokenize(&text);
+                let parse = self.grammar.parse(&self.lexicon, &filled);
+                let before = found.len();
+                for r in &parse.readings {
+                    if let Sem::Utterance(u) = &r.value {
+                        // Only a question is answered on the model's word
+                        // alone: anything else (a change, a fact, consent)
+                        // is asked first.
+                        let sure = p >= m.sure && matches!(u, Utterance::Ask(_));
+                        found.push(Reading {
+                            meaning: u.clone(),
+                            rules: [r.rules(), vec![intents::INTENTS]].concat(),
+                            parse: render(r, &filled),
+                            idle: idle(r),
+                            edits: if sure { 150 } else { 250 }
+                                + ((1.0 - p) * 40.0).round() as u32
+                                + 5 * discarded.len() as u32
+                                + r.edits,
+                            discarded: discarded.clone(),
+                        });
+                    }
+                }
+                if found.len() > before {
+                    break;
+                }
             }
         }
         (!found.is_empty()).then_some(found)
@@ -358,6 +377,11 @@ impl<O: Ontology> English<O> {
             }
         }
         used.iter().all(|u| *u).then(|| (words, template.join(" ")))
+    }
+
+    /// Whether the grammar knows `word` (lowercase).
+    pub fn knows(&self, word: &str) -> bool {
+        self.lexicon.known.contains(word)
     }
 
     /// The tokens of `text`, as this grammar splits it.

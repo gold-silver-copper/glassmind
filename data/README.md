@@ -1,17 +1,16 @@
 # Data sources
 
 Everything glassmind is trained or measured on, where it came from, and what
-it became. The data itself lives outside git (`~/.cache/glassmind/`), and
-everything held out (data, sources, generator prompts, the dev set,
-rustbench) lives under `~/.cache/glassmind/heldout`, which loop agents
-cannot read.
+it became. The data itself lives outside git, and everything held out
+(data, sources, generator prompts, the dev set, rustbench) lives where loop
+agents cannot read it; the loop's config lists those places.
 
 ## Code to talk about (the Rust world)
 
 | source | version | size | license | use |
 |---|---|---|---|---|
 | top_down_shooter_game (tds), ck, ghtui, memochat | the user's repos at the commits in `~/.cache/glassmind/sources/SOURCES` | 3.5–476 MB | the user's | QA training |
-| bevy_noodle (noodle), fux | the user's repos at the commits in `heldout/sources/SOURCES` | 9–45 MB | the user's | QA held-out |
+| bevy_noodle (noodle), fux | the user's repos at fixed commits (recorded with the held-out data) | 9–45 MB | the user's | QA held-out |
 
 ## Crates for coding tasks (the harness)
 

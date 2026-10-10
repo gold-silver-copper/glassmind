@@ -39,7 +39,10 @@ SCOPE = ["systemd-run", "--user", "--scope", "--quiet", "--collect", f"-pMemoryM
 
 
 def cargo(root, *args):
-    env = dict(os.environ, CARGO_TARGET_DIR=str(TARGET / root.name))
+    # Doc tests write temporary files: never in /tmp (in memory here).
+    tmp = TARGET / "tmp"
+    tmp.mkdir(parents=True, exist_ok=True)
+    env = dict(os.environ, CARGO_TARGET_DIR=str(TARGET / root.name), TMPDIR=str(tmp))
     p = subprocess.Popen([*SCOPE, "cargo", *args[:1], "-j", "4", *args[1:]], cwd=root, stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, env=env,
                          start_new_session=True)

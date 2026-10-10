@@ -2,7 +2,7 @@
 //! applied on top of the accepted version, checked, scored, reviewed, and
 //! committed only if it is better.
 
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 use std::fmt::Write as _;
 use std::path::{Path, PathBuf};
 
@@ -501,8 +501,9 @@ fn consider(
     let at = head(config)?;
     let dir = worktree(config, paths, "apply", &at)?;
     let result = (|| {
+        let patch = unique_rule_ids(&dir, patch, round);
         let patch_file = paths.root.join("candidate.patch");
-        std::fs::write(&patch_file, patch).map_err(|e| e.to_string())?;
+        std::fs::write(&patch_file, &patch).map_err(|e| e.to_string())?;
         let applied = git(
             &dir,
             &[
@@ -563,6 +564,60 @@ fn consider(
     })();
     drop_worktree(config, &dir);
     result
+}
+
+/// The rule IDs given to `RuleInfo::new` on the lines of `text`.
+fn rule_ids<'t>(lines: impl Iterator<Item = &'t str>) -> BTreeSet<String> {
+    const MARK: &str = "RuleInfo::new(\"";
+    lines
+        .flat_map(|l| {
+            l.match_indices(MARK)
+                .map(move |(i, _)| l.get(i + MARK.len()..))
+        })
+        .flatten()
+        .filter_map(|rest| rest.split('"').next())
+        .map(str::to_owned)
+        .collect()
+}
+
+/// The patch with every rule it adds under an ID the accepted version in
+/// `dir` already has renamed (`id` becomes `id.r<round><n>`): agents working
+/// in parallel pick the same names.
+fn unique_rule_ids(dir: &Path, patch: &str, round: u32) -> String {
+    let added = rule_ids(
+        patch
+            .lines()
+            .filter(|l| l.starts_with('+') && !l.starts_with("+++")),
+    );
+    let removed = rule_ids(
+        patch
+            .lines()
+            .filter(|l| l.starts_with('-') && !l.starts_with("---")),
+    );
+    let existing = git(dir, &["grep", "-h", "RuleInfo::new(\"", "--", "crates"])
+        .map(|out| rule_ids(out.lines()))
+        .unwrap_or_default();
+    let mut patch = patch.to_owned();
+    for (n, id) in added
+        .iter()
+        .filter(|id| existing.contains(*id) && !removed.contains(*id))
+        .enumerate()
+    {
+        let (old, new) = (format!("\"{id}\""), format!("\"{id}.r{round}{n}\""));
+        patch = patch
+            .lines()
+            .map(|l| {
+                if l.starts_with('+') && l.contains("RuleInfo::new(") {
+                    l.replace(&old, &new)
+                } else {
+                    l.to_owned()
+                }
+            })
+            .collect::<Vec<_>>()
+            .join("\n")
+            + "\n";
+    }
+    patch
 }
 
 const MERGE: &str = "You are merging one change into glassmind, a symbolic English-understanding system whose \

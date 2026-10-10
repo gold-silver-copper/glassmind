@@ -138,6 +138,11 @@ fn cargo(
     if let Some(target) = &places.target {
         command.env("CARGO_TARGET_DIR", target.join(source));
     }
+    // Doc tests and build scripts write temporary files: beside the scratch
+    // copies, never in the system temp directory.
+    let tmp = scratch("tmp");
+    let _ = std::fs::create_dir_all(&tmp);
+    command.env("TMPDIR", &tmp);
     let mut child = command
         .arg(subcommand)
         .args(["-j", "4"])

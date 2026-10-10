@@ -108,9 +108,12 @@ Read 66–72% as an upper bound. Before more growth, rebuild the measurement:
 - **Training data that doesn't imitate the test.** Rewrite or drop the
   "slack" persona. When you want noisier training phrasing, get it from real
   human text, never from the held-out generator's prompt or examples.
-- **Protect the scorer.** The scorer, the remedy verifier, `checks.rs`, the
-  check cache and the task generators are off limits to loop agents. They
-  must not be able to write them, through code or through the cache. You,
+- **Protect the scorer.** The scorer, the remedy verifier (with its own
+  cargo runner in `crates/loop/src/verify.rs`), the scorer's check results
+  and the task generators are off limits to loop agents. They must not be
+  able to write them, through code or through the cache. (`checks.rs` is
+  glassmind's own harness code, which the loop grows; since 2026-10-10 the
+  scorer does not use it.) You,
   the top-level session, may change the scorer deliberately. Each change
   goes in its own commit with the reason, re-scoring the last few accepted
   versions with both the old and the new scorer.
