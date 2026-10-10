@@ -14,7 +14,9 @@
 use std::collections::BTreeSet;
 
 use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
-use glassmind_meaning::{Assumption, Fact, Name, Ontology, Reply, Thing, Trouble, Utterance};
+use glassmind_meaning::{
+    Assumption, Condition, Fact, Name, Ontology, Reply, Thing, Trouble, Utterance,
+};
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
 
@@ -50,7 +52,9 @@ pub const ALIAS_NOTED: RuleInfo = RuleInfo::new("mind.alias.noted", 7);
 pub const RECALL_IS_MENTIONS: RuleInfo = RuleInfo::new("mind.recall.mentions", 7);
 /// A thing referred back to ("where is it defined?", "where is that
 /// function defined?" after "which functions call `x`?") is the one item
-/// the latest understood turn asked about, if it asked about just one.
+/// the latest understood turn asked about, if it asked about just one. A
+/// thing that turn described by its name ("`tick` on `Health`") is not
+/// the items that qualify it, so then there is none.
 pub const PREVIOUS_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.topic", 9);
 /// A correction ("sorry, I meant `y`" after "where is `x` defined?") asks
 /// the request of the latest remembered turn again, with the thing it says
@@ -149,6 +153,14 @@ impl<O: Ontology> Session<O> {
     /// about just one.
     pub fn topic(&self) -> Option<O::Item> {
         let meaning = self.remembered().find_map(|t| t.meaning.as_ref())?;
+        let called = |c: &Condition<O>| matches!(c, Condition::Called(_));
+        if meaning
+            .subjects()
+            .iter()
+            .any(|t| matches!(t, Thing::Fitting(d) if d.conditions.iter().any(called)))
+        {
+            return None;
+        }
         let mut items = meaning.things().into_iter().filter_map(Thing::item);
         let item = items.next()?;
         items.next().is_none().then(|| item.clone())

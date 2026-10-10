@@ -120,6 +120,9 @@ pub enum Cat {
     Participial,
     /// A noun for how many things there are: "number", "count", "#".
     Amount,
+    /// Words asking how many things there are: "how many", and its
+    /// mistypings "how mnay", "how mny".
+    HowMany,
     /// Words asking for the things just asked about to be counted, of a
     /// kind if one is said: "can you count them for me?", "like how many
     /// exactly", "how many functions".

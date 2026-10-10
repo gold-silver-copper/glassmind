@@ -27,8 +27,10 @@ const ROUND: u32 = 3;
 
 /// Asks how many things the children describe: a description, a kind and
 /// a condition, a role and the other argument, or a count question as it is.
+/// Words that mean nothing by themselves ("how many", "number") are skipped.
 fn count<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    let description = match c {
+    let c: Vec<_> = c.iter().filter(|v| **v != blank()).cloned().collect();
+    let description = match c.as_slice() {
         [Sem::Description(d)] | [Sem::Question(Question::Count(d))] => d.clone(),
         [Sem::Kind { kind, .. }, Sem::Condition { condition, .. }]
         | [Sem::Condition { condition, .. }, Sem::Kind { kind, .. }] => Description {
@@ -125,10 +127,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.how_many",
             ROUND,
             Question,
-            vec![W("how many"), C(Noun), C(VerbPhrase)],
+            vec![C(HowMany), C(Noun), C(VerbPhrase)],
             count,
             |v| match v {
-                Sem::Question(Question::Count(d)) => kind_and_condition(d, Number::Plural),
+                Sem::Question(Question::Count(d)) => {
+                    Some([vec![blank()], kind_and_condition(d, Number::Plural)?].concat())
+                }
                 _ => None,
             },
         ),
@@ -136,7 +140,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rule(
             "en.question.how_many_described",
             Question,
-            vec![W("how many"), C(Description)],
+            vec![C(HowMany), C(Description)],
             count,
         ),
         // "how many places call `x`", "how many things call it": things of
@@ -145,7 +149,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.how_many_ones",
             11,
             Question,
-            vec![W("how many"), C(Ones), C(VerbPhrase)],
+            vec![C(HowMany), C(Ones), C(VerbPhrase)],
             |c| count(&[anything(c)?]),
         ),
         // "how many callers `x`", with nothing between the role and the thing.
@@ -153,27 +157,21 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.how_many_role",
             11,
             Question,
-            vec![W("how many"), C(RoleNoun), C(NounPhrase)],
+            vec![C(HowMany), C(RoleNoun), C(NounPhrase)],
             count,
         ),
         // "how many callers does `x` have"
         rule(
             "en.question.how_many_have",
             Question,
-            vec![
-                W("how many"),
-                C(RoleNoun),
-                W("does"),
-                C(NounPhrase),
-                W("have"),
-            ],
+            vec![C(HowMany), C(RoleNoun), W("does"), C(NounPhrase), W("have")],
             count,
         ),
         // "`x` — how many callers"
         rule(
             "en.question.topic_how_many",
             Question,
-            vec![C(NounPhrase), C(Dash), W("how many"), C(RoleNoun)],
+            vec![C(NounPhrase), C(Dash), C(HowMany), C(RoleNoun)],
             count,
         ),
         // "number of callers of `x`", "count of fns calling `x`", "# of callers for `x`"
@@ -181,7 +179,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.amount_of",
             Question,
             vec![C(Amount), W("of"), C(Description)],
-            |c| count(c.get(1..)?),
+            count,
         ),
         // "`x` caller count"
         rule(
@@ -239,6 +237,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 }),
                 _ => None,
             },
+        ),
+        // "how many": how the system says it, too.
+        word(
+            RuleInfo::new("en.how_many", 18),
+            HowMany,
+            "how many",
+            blank(),
         ),
         // "number": how the system says it, too.
         word(
@@ -353,6 +358,29 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             (Amount, &[("en.amount.num", "num")]),
         ],
     ));
+    // "`x` how many callers it got, number of functions": the count
+    // asked for again, as a noun.
+    rules.push(filler("en.recount.number_of", 18, Recount, "number of"));
+    // "`from_name` called from how many places": things of any kind.
+    rules.push(read_only_rule(
+        "en.question.undergoes_from_how_many_ones",
+        18,
+        Question,
+        vec![C(Undergoes), W("from"), C(HowMany), C(Ones)],
+        |c| count(&[anything(c.get(..1)?)?]),
+    ));
+    // "how mnay fns call `x`", "`x` called by how mny functions": "how
+    // many" mistyped, as hurried users do.
+    rules.extend(fillers(
+        18,
+        &[(
+            HowMany,
+            &[
+                ("en.how_many.mistyped.mnay", "how mnay"),
+                ("en.how_many.mistyped.mny", "how mny"),
+            ],
+        )],
+    ));
     // "is it used in lot of places", with the article dropped
     rules.push(filler(
         "en.widely.in_lot_of_places",
@@ -371,7 +399,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 id,
                 round,
                 Question,
-                vec![C(Undergoes), W(agent), W("how many"), C(Noun)],
+                vec![C(Undergoes), W(agent), C(HowMany), C(Noun)],
                 count,
             )
         }),
@@ -380,16 +408,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     // many callers it have": the question in the order of a statement.
     rules.extend(
         [
-            ("en.question.how_many_role_has", "has"),
-            ("en.question.how_many_role_have", "have"),
-            ("en.question.how_many_role_got", "got"),
+            ("en.question.how_many_role_has", 14, "has"),
+            ("en.question.how_many_role_have", 14, "have"),
+            ("en.question.how_many_role_got", 14, "got"),
+            // "`x` how many callers it hav", mistyped
+            ("en.question.how_many_role_hav", 18, "hav"),
         ]
-        .map(|(id, verb)| {
+        .map(|(id, round, verb)| {
             read_only_rule(
                 id,
-                14,
+                round,
                 Question,
-                vec![W("how many"), C(RoleNoun), C(NounPhrase), W(verb)],
+                vec![C(HowMany), C(RoleNoun), C(NounPhrase), W(verb)],
                 count,
             )
         }),

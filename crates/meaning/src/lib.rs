@@ -264,6 +264,22 @@ pub enum Reply<O: Ontology> {
 }
 
 impl<O: Ontology> Utterance<O> {
+    /// The things the utterance is about, without looking inside those it
+    /// describes: for "which functions call `tick` on `Health`", the thing
+    /// called `tick`, not `Health`.
+    pub fn subjects(&self) -> Vec<&Thing<O>> {
+        match self {
+            Utterance::Ask(Question::Identify(d) | Question::Count(d)) => {
+                d.conditions.iter().filter_map(Condition::other).collect()
+            }
+            Utterance::Ask(Question::Locate { thing, .. } | Question::Describe { thing, .. })
+            | Utterance::Command(Action::Rename { thing, .. })
+            | Utterance::Tell(Fact::Alias { thing, .. })
+            | Utterance::Correct(thing) => vec![thing],
+            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
+        }
+    }
+
     /// Every thing the utterance refers to, in order.
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
@@ -329,13 +345,18 @@ impl<O: Ontology> Description<O> {
 }
 
 impl<O: Ontology> Condition<O> {
-    pub fn things(&self) -> Vec<&Thing<O>> {
+    /// The other thing the condition relates the described thing to.
+    pub fn other(&self) -> Option<&Thing<O>> {
         match self {
             Condition::Related { other, .. }
             | Condition::Is(other)
-            | Condition::NamedLike(other) => other.things(),
-            Condition::Called(_) | Condition::Named(_) => Vec::new(),
+            | Condition::NamedLike(other) => Some(other),
+            Condition::Called(_) | Condition::Named(_) => None,
         }
+    }
+
+    pub fn things(&self) -> Vec<&Thing<O>> {
+        self.other().map(Thing::things).unwrap_or_default()
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {

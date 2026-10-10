@@ -104,6 +104,51 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.noun.test", 13, "test", Function, Singular),
                 // "what does `x` hold, field-wise": as to its fields.
                 ("en.rust.noun.field_wise", 14, "field-wise", Field, Plural),
+                // Mistyped, as hurried users do: "how many fucntions call
+                // `x`", "how many functoins call `list_mut`", "where's that
+                // fucntion defined".
+                (
+                    "en.rust.noun.mistyped.fucntions",
+                    18,
+                    "fucntions",
+                    Function,
+                    Plural,
+                ),
+                (
+                    "en.rust.noun.mistyped.funcitons",
+                    18,
+                    "funcitons",
+                    Function,
+                    Plural,
+                ),
+                (
+                    "en.rust.noun.mistyped.functoins",
+                    18,
+                    "functoins",
+                    Function,
+                    Plural,
+                ),
+                (
+                    "en.rust.noun.mistyped.functons",
+                    18,
+                    "functons",
+                    Function,
+                    Plural,
+                ),
+                (
+                    "en.rust.noun.mistyped.funtcions",
+                    18,
+                    "funtcions",
+                    Function,
+                    Plural,
+                ),
+                (
+                    "en.rust.noun.mistyped.fucntion",
+                    18,
+                    "fucntion",
+                    Function,
+                    Singular,
+                ),
             ],
         )),
         table(
@@ -135,10 +180,38 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.verb.uses", 9, "uses", Calls, ThirdSingular),
                 ("en.rust.verb.use", 9, "use", Calls, Plain),
                 ("en.rust.verb.used", 9, "used", Calls, Participle),
+                // Mistyped: "how many fns calll `x`", "which fns `x`
+                // callls", "which fns get caled by `x`", "how many fns
+                // callling `x`".
+                ("en.rust.verb.mistyped.calll", 18, "calll", Calls, Plain),
+                (
+                    "en.rust.verb.mistyped.callls",
+                    18,
+                    "callls",
+                    Calls,
+                    ThirdSingular,
+                ),
+                (
+                    "en.rust.verb.mistyped.caled",
+                    18,
+                    "caled",
+                    Calls,
+                    Participle,
+                ),
+                (
+                    "en.rust.verb.mistyped.callling",
+                    18,
+                    "callling",
+                    Calls,
+                    Progressive,
+                ),
                 // "which structs hold a field ...", "what structs got a field ..."
                 ("en.rust.verb.holds", 3, "holds", HasField, ThirdSingular),
                 ("en.rust.verb.hold", 3, "hold", HasField, Plain),
                 ("en.rust.verb.got", 3, "got", HasField, Plain),
+                // Mistyped: "what fields `Span` hav", "what fields `x` hve".
+                ("en.rust.verb.mistyped.hav", 18, "hav", HasField, Plain),
+                ("en.rust.verb.mistyped.hve", 18, "hve", HasField, Plain),
                 // "find structs that contain a RepoCommit field"
                 ("en.rust.verb.contain", 3, "contain", HasField, Plain),
                 // "which structs keep a `LineCache` in a field", "store a
@@ -544,6 +617,8 @@ mod tests {
             "how many places call `cut`, fn count only",
             "how many fns call cut? or exact number if you can",
             "how many functions call `cut`, is it used in lot of places?",
+            "how mnay fucntions calll cut",
+            "cut called by how mny functoins",
         ] {
             assert_eq!(meanings(text), plain, "{text:?}");
         }
@@ -559,6 +634,7 @@ mod tests {
             "cut caller count",
             "how many callers `cut` has",
             "cut, how many callers it got",
+            "cut how many callers it hav",
         ] {
             assert_eq!(meanings(text), by_role, "{text:?}");
         }
