@@ -37,7 +37,9 @@ pub const NUMBER: &str = "number";
 /// Token class: any word, name or number in a remark, whose content the
 /// system need not understand. Punctuation that ends a remark is not one;
 /// brackets, written inside a type or a key ("returns Option<u64>", "for
-/// the ] and [ thing"), are.
+/// the ] and [ thing"), are, and so are quotes and parentheses around what
+/// a tool said ("it says "cannot find `fmt`" (E0433)") and the slash of a
+/// path ("in src/lib.rs").
 pub const TEXT: &str = "text";
 /// Token class: a plain word comparing, as "-er" words do: what a remark
 /// after a request says the change makes better ("..., cleaner",
@@ -106,7 +108,12 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
             }
-            (TEXT, shape) if shape != Shape::Punct || token.text.contains(['<', '>', '[', ']']) => {
+            (TEXT, shape)
+                if shape != Shape::Punct
+                    || token
+                        .text
+                        .contains(['<', '>', '[', ']', '"', '(', ')', '/']) =>
+            {
                 vec![Sem::Quote(token.text.clone())]
             }
             (COMPARATIVE, Shape::Word) if token.norm.ends_with("er") => {

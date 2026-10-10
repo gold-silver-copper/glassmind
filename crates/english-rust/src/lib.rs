@@ -308,6 +308,7 @@ pub fn check_words() -> Vec<Word> {
     [
         ("en.rust.check.build", "build", Build),
         ("en.rust.check.tests", "tests", Test),
+        ("en.rust.check.test_suite", "test suite", Test),
         ("en.rust.check.lints", "lints", Lint),
     ]
     .into_iter()
@@ -319,6 +320,44 @@ pub fn check_words() -> Vec<Word> {
             Sem::Check(check),
         )
     })
+    // "fix the compile errors", "it doesn't compile", "so it compiles",
+    // "get it compiling again", "compilation errors": the build named by
+    // its verb.
+    .chain(
+        [
+            ("en.rust.check.compile", "compile"),
+            ("en.rust.check.compiling", "compiling"),
+            ("en.rust.check.compilation", "compilation"),
+        ]
+        .into_iter()
+        .map(|(id, form)| {
+            word(
+                RuleInfo::new(id, 29),
+                Cat::CheckName,
+                form,
+                Sem::Check(Build),
+            )
+            .read_only()
+        }),
+    )
+    .chain(
+        // "can you make them pass?", "fix so they pass": of the checks,
+        // only the tests are many things that pass or fail, so they are the
+        // check pointed back at as many.
+        [
+            ("en.rust.check_phrase.them", "them"),
+            ("en.rust.check_phrase.they", "they"),
+        ]
+        .map(|(id, form)| {
+            word(
+                RuleInfo::new(id, 29),
+                Cat::CheckPhrase,
+                form,
+                Sem::Check(Test),
+            )
+            .read_only()
+        }),
+    )
     .collect()
 }
 
@@ -660,6 +699,53 @@ mod tests {
         assert!(matches!(
             english.understand("what does `seed_at` do, and which functions call it?"),
             Understanding::Failed { .. }
+        ));
+    }
+
+    /// The ways of asking how the tests come out ask about the tests, and
+    /// nothing else.
+    #[test]
+    fn ways_of_asking_whether_tests_pass_agree() {
+        use glassmind_world_rust::checks::RustCheck::{Build, Test};
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "Are the tests passing at the moment, or which ones are failing?",
+            "Can you tell me whether the dunce tests all pass right now? If any of them fail, which ones are they?",
+            "Hey, could you run the unicase test suite and tell me which tests fail, if any?",
+            "Quick question: do the tests in siphasher pass right now? If not, I'd like to know which ones are failing.",
+            "Hi! Are the tests passing? Please let me know if any are failing.",
+            "Do all the tests pass, or are some of them failing?",
+            "run teh tests pls, what fails",
+            "tests pass or whcih fail",
+            "which tests failling rn",
+            "any tests fial rn",
+            "test suite green?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                least_corrected(readings).all(|r| matches!(
+                    r.meaning,
+                    Utterance::Ask(Question::Passes(Test) | Question::Problems(Test))
+                )),
+                "{text:?}"
+            );
+        }
+        // Asking which tests pass is not asking which fail, and a second
+        // question about another check is not the same question.
+        for text in [
+            "which tests pass",
+            "do the tests pass? does the build pass?",
+        ] {
+            assert!(
+                !matches!(english.understand(text), Understanding::Readings(_)),
+                "{text:?}"
+            );
+        }
+        assert!(matches!(
+            english.understand("does the build pass"),
+            Understanding::Readings(r) if r.iter().all(|r| r.meaning == Utterance::Ask(Question::Passes(Build)))
         ));
     }
 
@@ -1313,6 +1399,32 @@ mod tests {
         );
     }
 
+    /// The ways of asking for a broken build to be fixed all ask to repair
+    /// the build, whatever is said about the errors around them.
+    #[test]
+    fn ways_of_asking_to_fix_the_build_agree() {
+        use glassmind_world_rust::checks::RustCheck;
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "pls fix compile erors, cannot find function `dispay_fn`",
+            "The dunce build is broken. I'm seeing E0425, \"cannot find value `trimed` in this scope\". Could you please fix the compile errors so it builds again? Thanks!",
+            "the build fails with \"cannot find trait `Error` in this scope\" (E0405). could you fix the build?",
+            "build broke, cannot find value `sate` in this scope. fix pls",
+            "heck doesn't build, can you fix it?",
+            "can you fix it so it compiles?",
+            "get strsim compiling again",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                least_corrected(readings)
+                    .all(|r| r.meaning == Utterance::Command(Action::Repair(RustCheck::Build))),
+                "{text:?}"
+            );
+        }
+    }
+
     /// The ways of taking back the last request all mean forgetting it, and
     /// the system says it has.
     #[test]
@@ -1334,6 +1446,34 @@ mod tests {
             );
         }
         assert!(english.say(&Reply::Forgotten).is_some());
+    }
+
+    /// Asking for the failing tests to pass, however it is put and whatever
+    /// is said of them first, asks for the tests to be fixed.
+    #[test]
+    fn ways_of_asking_for_passing_tests_agree() {
+        use glassmind_world_rust::checks::RustCheck;
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "make failing tests pass",
+            "make the broken tests pass",
+            "can u fix so tests pass",
+            "Could you fix things so the failing tests pass?",
+            "Could you please get the failing tests passing again?",
+            "get failing tests green in heck, e.g. lower_camel::tests::test1",
+            "some tests in heck are failing, like kebab::tests::test1. can you make them pass?",
+            "there are failing tests, for example one in src/lib.rs. can you fix so they pass?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                readings
+                    .iter()
+                    .all(|r| r.meaning == Utterance::Command(Action::Repair(RustCheck::Test))),
+                "{text:?}"
+            );
+        }
     }
 
     /// Asking what is in a struct, for its members, or for its fields after
