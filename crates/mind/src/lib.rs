@@ -15,7 +15,8 @@ use std::collections::BTreeSet;
 
 use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
 use glassmind_meaning::{
-    Assumption, Condition, Description, Fact, Name, Ontology, Reply, Thing, Trouble, Utterance,
+    Assumption, Condition, Description, Fact, Name, Ontology, Question, Reply, Thing, Trouble,
+    Utterance,
 };
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
@@ -71,6 +72,12 @@ pub const PREFER_REFERRING: RuleInfo = RuleInfo::new("mind.prefer.referring", 10
 /// `BodyHealth`", "where is that defined" is not about `BodyHealth`. Its
 /// item is not known, so nothing is referred back to.
 pub const NAMED_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.named", 18);
+/// A name several items share, said in describing what is asked about,
+/// can mean any thing of that name ("which structs have `is_org`" when two
+/// structs each have a field `is_org`: both structs). This reading comes
+/// before those taking the name to mean one of the items; the world rejects
+/// it when the things of that name cannot all fill the place.
+pub const SHARED_NAME_ANY: RuleInfo = RuleInfo::new("mind.name.any", 23);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -85,6 +92,7 @@ pub const RULES: &[RuleInfo] = &[
     CORRECTION_REPLACES,
     PREFER_REFERRING,
     NAMED_IS_TOPIC,
+    SHARED_NAME_ANY,
 ];
 
 /// A source the conversation was given.
@@ -369,6 +377,11 @@ impl<O: Ontology> Mind<'_, O> {
         rt: &mut ReadingTrace<O>,
     ) -> Vec<(Utterance<O>, Means<O>)> {
         let things = meaning.things();
+        // The things said outright, rather than in describing what is asked.
+        let outright = match meaning {
+            Utterance::Ask(Question::Identify(_) | Question::Count(_)) => Vec::new(),
+            _ => meaning.subjects(),
+        };
         let mut options = Vec::new();
         for &thing in &things {
             let mut choices = vec![thing.clone()];
@@ -381,8 +394,20 @@ impl<O: Ontology> Mind<'_, O> {
                     _ => self.world.lookup(name, &mut rt.world_rules),
                 };
                 rt.resolutions.push((name.clone(), items.clone()));
+                let any = items.len() > 1
+                    && !outright.contains(&thing)
+                    && self.using(SHARED_NAME_ANY, &mut rt.world_rules).is_ok();
                 if !items.is_empty() {
                     choices = items.into_iter().map(Thing::Item).collect();
+                }
+                if any {
+                    choices.insert(
+                        0,
+                        Thing::Fitting(Description {
+                            kind: None,
+                            conditions: vec![Condition::Named(name.clone())],
+                        }),
+                    );
                 }
             } else if *thing == Thing::Previous {
                 // The one item the latest turn asked about, if that rule is on.

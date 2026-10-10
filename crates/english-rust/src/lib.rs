@@ -914,6 +914,26 @@ mod tests {
         ] {
             assert!(named(text).iter().any(|m| calls.contains(m)), "{text:?}");
         }
+        // A name taken to mean any thing of that name, said and read back.
+        let any = Utterance::Ask(Question::Identify(Description {
+            kind: Some(RustKind::Struct),
+            conditions: vec![Condition::Related {
+                relation: RustRelation::HasField,
+                position: Position::First,
+                other: Thing::Fitting(Description {
+                    kind: None,
+                    conditions: vec![Condition::Named(Name("done".into()))],
+                }),
+            }],
+        }));
+        let spoken = english
+            .speak(Cat::Utterance, &Sem::Utterance(any.clone()))
+            .map(|s| s.text);
+        assert_eq!(
+            spoken.as_deref(),
+            Some("Which structs have anything named `done`?")
+        );
+        assert!(named("which structs have anything named `done`").contains(&any));
     }
 
     /// However the user asks for a rename, with a topic set before it, a

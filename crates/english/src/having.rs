@@ -417,6 +417,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
+        // "(structs that have) anything named `is_org`": any thing of any
+        // kind meeting the condition, as the system says a name several
+        // things share when it takes it to mean any of them.
+        spoken(
+            "en.noun_phrase.anything_qualified",
+            23,
+            NounPhrase,
+            words_then("anything", &[Qualifier]),
+            |c| match anything(c)? {
+                Sem::Description(d) => Some(Sem::Thing(Thing::Fitting(d))),
+                _ => None,
+            },
+            |v| match v {
+                Sem::Thing(Thing::Fitting(d)) if d.kind.is_none() => {
+                    match d.conditions.as_slice() {
+                        [condition] => Some(vec![Sem::Condition {
+                            condition: condition.clone(),
+                            number: Number::Singular,
+                        }]),
+                        _ => None,
+                    }
+                }
+                _ => None,
+            },
+        ),
         // "fields typed `Art`", "have field whose type is `Gone`".
         rule(
             "en.noun_phrase.bare_qualified",
