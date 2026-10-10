@@ -32,8 +32,10 @@ pub fn tick(e: &mut Enemy) {
 }
 "#;
 
-fn fixture() -> Source {
-    let root = std::path::Path::new(env!("CARGO_TARGET_TMPDIR")).join("oracle-fixture");
+/// The fixture source, written to a directory of the calling test's own:
+/// tests run in parallel, and a shared file could be read half-written.
+fn fixture(test: &str) -> Source {
+    let root = std::path::Path::new(env!("CARGO_TARGET_TMPDIR")).join(format!("oracle-fixture-{test}"));
     fs::create_dir_all(root.join("src")).unwrap();
     fs::write(root.join("src/game.rs"), GAME).unwrap();
     source::load("fx", &root).unwrap()
@@ -56,7 +58,7 @@ fn item_names(response: &Response) -> BTreeSet<String> {
 
 #[test]
 fn callers_follow_own_bodies_only() {
-    let src = fixture();
+    let src = fixture("callers_follow_own_bodies_only");
     // `nested`'s call belongs to `nested`, not to `helper`; the closure's
     // call is `helper`'s own, so `helper` is recursive.
     let callers = task(&src, "callers", "spawn_wave").unwrap();
@@ -73,7 +75,7 @@ fn callers_follow_own_bodies_only() {
 
 #[test]
 fn renames_and_field_types() {
-    let src = fixture();
+    let src = fixture("renames_and_field_types");
     // `boss_hp` also occurs inside `println!`, so renaming it is not exact.
     assert!(task(&src, "rename_field", "Enemy.boss_hp").is_none());
     // `hp` belongs to two structs: no rename, but an ambiguous one.

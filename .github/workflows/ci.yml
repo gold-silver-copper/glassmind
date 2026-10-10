@@ -58,4 +58,4 @@ jobs:
             --agent "$PWD/fixtures/stub-agent.sh" --no-sandbox --no-reviewer --max-agents 1 --size-price 0.001
           ./target/release/glassmind-loop run --state "$RUNNER_TEMP/state" --once
           ./target/release/glassmind-loop status --state "$RUNNER_TEMP/state"
-          grep -q '"kind":"growth".*"accepted":true' "$RUNNER_TEMP/state/history.jsonl"
+          grep -q '"kind":"growth".*"accepted":true' "$RUNNER_TEMP/state/history.jsonl" || { cat "$RUNNER_TEMP/state/history.jsonl"; exit 1; }
