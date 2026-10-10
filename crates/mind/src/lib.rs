@@ -150,7 +150,8 @@ impl<O: Ontology> Session<O> {
     }
 
     /// The one item the latest understood turn asked about, if it asked
-    /// about just one.
+    /// about just one. An item only mentioned in describing another thing
+    /// ("which functions call `tick` on `BodyHealth`") is not asked about.
     pub fn topic(&self) -> Option<O::Item> {
         let meaning = self.remembered().find_map(|t| t.meaning.as_ref())?;
         let called = |c: &Condition<O>| matches!(c, Condition::Called(_));

@@ -3,7 +3,7 @@
 //! A world never adds grammar, and the English crate knows no world; this
 //! bridge adds one rule per word form, each reading as a Rust concept.
 
-use glassmind_english::{Cat, Number, Sem, VerbForm, word};
+use glassmind_english::{Cat, Number, Sem, VerbForm, blank, word};
 use glassmind_grammar::Rule;
 use glassmind_meaning::Position;
 use glassmind_rules::{RuleInfo, SEED};
@@ -352,6 +352,22 @@ pub fn words() -> Vec<Word> {
             field,
             &[("en.rust.part.field", 5, "field", HasField, Second)],
         ),
+        // Kinds as users mistype them, then the word meant: "what
+        // structs got a `dead` feild", "what strcuts have field named lists",
+        // "callers of `gun_order`, whcih fucntions".
+        [
+            ("en.rust.mistyped.feild", "feild field"),
+            ("en.rust.mistyped.fiedl", "fiedl field"),
+            ("en.rust.mistyped.fild", "fild field"),
+            ("en.rust.mistyped.strucs", "strucs structs"),
+            ("en.rust.mistyped.strucst", "strucst structs"),
+            ("en.rust.mistyped.strutcs", "strutcs structs"),
+            ("en.rust.mistyped.strcuts", "strcuts structs"),
+            ("en.rust.mistyped.fucntion", "fucntion function"),
+            ("en.rust.mistyped.fucntions", "fucntions functions"),
+        ]
+        .map(|(id, words)| word(RuleInfo::new(id, 18), Cat::Mistyped, words, blank()).read_only())
+        .to_vec(),
     ]
     .concat()
 }
@@ -799,6 +815,9 @@ mod tests {
             "what structs have `done` as field",
             "which struct has done field in it",
             "is there any struct that has a field `done`? what structs is it in",
+            "whcih strucs hav teh feild named done",
+            "structs that have a `done` field, which",
+            "field done, which structs have it",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

@@ -1,7 +1,7 @@
 //! How the English grammar reads tokens that are not fixed words: names,
 //! numbers, and the items and quotes the system speaks.
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::marker::PhantomData;
 
 use glassmind_grammar::Lexicon;
@@ -38,6 +38,8 @@ pub struct EnglishLexicon<O> {
     /// Every word some rule uses. A plain word that is one of these is read
     /// as that word, never as a name; quote it in backticks to name it.
     pub known: BTreeSet<&'static str>,
+    /// The word meant by each mistyping: "whcih" is read as "which".
+    pub meant: BTreeMap<&'static str, &'static str>,
     pub ontology: PhantomData<O>,
 }
 
@@ -45,7 +47,10 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
     type Token = Token;
 
     fn norm<'t>(&self, token: &'t Token) -> &'t str {
-        &token.norm
+        self.meant
+            .get(token.norm.as_str())
+            .copied()
+            .unwrap_or(&token.norm)
     }
 
     fn read_class(&self, class: &'static str, token: &Token) -> Vec<Sem<O>> {

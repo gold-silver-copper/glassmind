@@ -38,6 +38,7 @@ pub mod renaming;
 pub mod request;
 pub mod seed;
 pub mod sem;
+pub mod spelling;
 pub mod tokens;
 pub mod whence;
 pub mod widening;
@@ -73,6 +74,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         whence::rules,
         correcting::rules,
         around::rules,
+        spelling::rules,
     ]
     .into_iter()
     .flat_map(|rules| rules())
@@ -156,10 +158,20 @@ impl<O: Ontology> English<O> {
                 _ => None,
             })
             .collect::<BTreeSet<_>>();
+        // Mistypings: never read as phrases, but as the word meant.
+        let meant = grammar
+            .rules()
+            .iter()
+            .filter_map(|r| match (r.lhs, r.rhs.as_slice()) {
+                (Mistyped, [Sym::Word(typed), Sym::Word(meant)]) => Some((*typed, *meant)),
+                _ => None,
+            })
+            .collect();
         English {
             grammar,
             lexicon: EnglishLexicon {
                 known,
+                meant,
                 ontology: PhantomData,
             },
         }

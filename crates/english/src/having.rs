@@ -874,6 +874,9 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     );
     // "`bore_height` struct fields - list pls": asked again, to be listed.
     rules.push(filler("en.ask_again.list", ROUND_14, AskAgain, "list"));
+    // "structs that have a `seen` field, which", "any structs w/ field
+    // named real? which": "which" alone asks again.
+    rules.push(filler("en.ask_again.which", 18, AskAgain, "which"));
     let round_14 = |id, lhs, rhs, build| read_only_rule(id, ROUND_14, lhs, rhs, build);
     rules.extend([
         // "whats inside `overboard`, fields", "what does `x` hold,

@@ -42,6 +42,18 @@ fn refer_back<O: Ontology>(later: &Question<O>, earlier: &Question<O>) -> Option
         Question::Describe { thing, kind } | Question::Locate { thing, kind } => (thing, kind),
         Question::Identify(_) | Question::Count(_) => return None,
     };
+    // "field credentials, which structs have it": asking which things
+    // stand in a relation to a thing named with its kind is asking about
+    // every thing of that kind going by that name.
+    let thing = match (later, thing, kind) {
+        (Question::Identify(_) | Question::Count(_), Thing::Named(name), Some(_)) => {
+            Thing::Fitting(Description {
+                kind: kind.clone(),
+                conditions: vec![Condition::Named(name.clone())],
+            })
+        }
+        _ => thing.clone(),
+    };
     let bound = later.map_things(&mut |t| match t {
         Thing::Previous => thing.clone(),
         other => other.clone(),

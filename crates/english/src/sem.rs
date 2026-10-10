@@ -300,6 +300,9 @@ pub enum Cat {
     /// A clause saying a thing is inside another: "it's wrapped in
     /// something", "the type just contains `Key`".
     Wrapped,
+    /// A word as users mistype it, then the word they mean: never a phrase,
+    /// but read wherever the word meant is ("whcih", "feild").
+    Mistyped,
 }
 
 /// English grammatical number, used for agreement.
