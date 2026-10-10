@@ -284,6 +284,17 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
     ]);
     rules.extend(fillers(NOW, LATER));
+    // In embedded questions: "can you tell me what `x` is", "what
+    // `RepositoryWithPendingReview` is, what it's for".
+    rules.push(
+        Rule::new(
+            RuleInfo::new("en.question.what_x_is", 15),
+            Cat::Question,
+            vec![W("what"), C(Cat::Mention), W("is")],
+            S::Build(describe),
+        )
+        .read_only(),
+    );
     rules.extend(fillers(
         11,
         &[
