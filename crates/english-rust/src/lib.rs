@@ -294,7 +294,7 @@ mod tests {
     use glassmind_english::English;
     use glassmind_meaning::interface::{Language, Understanding};
     use glassmind_meaning::{
-        Action, Condition, Description, Name, Position, Question, Reply, Thing, Utterance,
+        Action, Condition, Description, Fact, Name, Position, Question, Reply, Thing, Utterance,
     };
     use glassmind_rules::Switches;
 
@@ -767,5 +767,29 @@ mod tests {
             );
         }
         assert!(english.say(&Reply::Forgotten).is_some());
+    }
+
+    /// The ways of telling the system what the user will call a struct all
+    /// mean the same fact, whether the name is quoted or not.
+    #[test]
+    fn ways_of_stating_an_alias_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Tell(Fact::Alias {
+            thing: Thing::Named(Name("Page".into())),
+            kind: Some(RustKind::Struct),
+            alias: Name("the leaf".into()),
+        });
+        for text in [
+            "Just so you know, I'm going to call the struct `Page` \"the leaf\" from now on.",
+            "Ok so, from now on I'll refer to the `Page` struct as 'the leaf'.",
+            "gonna call struct Page the leaf from here on",
+            "I'll just call `Page` struct \"the leaf\", ok?",
+            "`Page` struct = the leaf going forward, easier for me",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+        }
     }
 }

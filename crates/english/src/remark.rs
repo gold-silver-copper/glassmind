@@ -314,6 +314,11 @@ const OPENERS: &[(&str, &str)] = &[
     ("en.remark.think", "think"),
 ];
 
-/// Words a remark can open with after a question about the system's
-/// reasons: "not sure I get it", "not sure I follow".
-const MORE_OPENERS: &[(&str, &str)] = &[("en.remark.not", "not")];
+/// Words a remark can open with, added in round 6: after a question about
+/// the system's reasons ("not sure I get it", "not sure I follow"), or after
+/// a statement ("hope that's fine", "easier for me to remember").
+const MORE_OPENERS: &[(&str, &str)] = &[
+    ("en.remark.not", "not"),
+    ("en.remark.hope", "hope"),
+    ("en.remark.easier", "easier"),
+];

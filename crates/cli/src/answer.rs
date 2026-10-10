@@ -56,6 +56,9 @@ pub fn response(reply: &Reply<Rust>) -> Response {
         Reply::Forgotten => Response::Meta {
             act: MetaAct::Forget,
         },
+        Reply::Noted(_) => Response::Meta {
+            act: MetaAct::Noted,
+        },
         Reply::Proposal { .. } => Response::Refuse {
             refusal: Refusal::Unsupported,
         },

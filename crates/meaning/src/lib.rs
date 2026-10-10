@@ -145,6 +145,19 @@ pub enum Action<O: Ontology> {
     },
 }
 
+/// Something the user tells the system, for it to keep in mind.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub enum Fact<O: Ontology> {
+    /// The user will call the thing `alias`, a name of their own that the
+    /// world does not know; `kind`, if given, is what the user said it is.
+    Alias {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+        alias: Name,
+    },
+}
+
 /// Everything a user turn can mean.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]
@@ -157,6 +170,8 @@ pub enum Utterance<O: Ontology> {
     /// Takes back what was said before: the conversation is to go on as if
     /// it had not been.
     Forget,
+    /// States a fact for later turns.
+    Tell(Fact<O>),
 }
 
 /// A claim that a set of things is exactly what fits a description.
@@ -225,6 +240,8 @@ pub enum Reply<O: Ontology> {
     Reason { turn: usize, action: Action<O> },
     /// What was said before is forgotten.
     Forgotten,
+    /// The fact the user stated was taken note of.
+    Noted(Fact<O>),
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on assumptions, which are stated first.
@@ -239,7 +256,8 @@ impl<O: Ontology> Utterance<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
             Utterance::Ask(q) => q.things(),
-            Utterance::Command(Action::Rename { thing, .. }) => thing.things(),
+            Utterance::Command(Action::Rename { thing, .. })
+            | Utterance::Tell(Fact::Alias { thing, .. }) => thing.things(),
             Utterance::AskReason => Vec::new(),
             Utterance::Forget => Vec::new(),
         }
@@ -259,6 +277,11 @@ impl<O: Ontology> Utterance<O> {
             }
             Utterance::AskReason => Utterance::AskReason,
             Utterance::Forget => Utterance::Forget,
+            Utterance::Tell(Fact::Alias { thing, kind, alias }) => Utterance::Tell(Fact::Alias {
+                thing: thing.map_things(f),
+                kind: kind.clone(),
+                alias: alias.clone(),
+            }),
         }
     }
 }
@@ -374,7 +397,12 @@ impl<O: Ontology> Reply<O> {
                         ..
                     },
                 ..
-            } => vec![item],
+            }
+            | Reply::Noted(Fact::Alias {
+                thing: Thing::Item(item),
+                ..
+            }) => vec![item],
+            Reply::Noted(_) => Vec::new(),
             Reply::Proposal { .. } | Reply::Reason { .. } | Reply::Forgotten => Vec::new(),
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
             Reply::Trouble(_) => Vec::new(),

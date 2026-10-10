@@ -6,7 +6,7 @@
 
 use glassmind_rules::RuleInfo;
 
-use crate::{Action, Name, Ontology, Question, Reply, Trouble, Utterance};
+use crate::{Action, Fact, Name, Ontology, Question, Reply, Trouble, Utterance};
 
 /// One stretch of the user's input that the language treats as a token.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -87,6 +87,10 @@ pub trait World<O: Ontology> {
         action: &Action<O>,
         fired: &mut Vec<RuleInfo>,
     ) -> Result<Reply<O>, Trouble<O>>;
+    /// The fact a user stated, with its things resolved to items, as
+    /// noted, or why it cannot be (the name may mean several items). Pushes
+    /// the world rules it used onto `fired`.
+    fn note(&self, fact: &Fact<O>, fired: &mut Vec<RuleInfo>) -> Result<Reply<O>, Trouble<O>>;
     /// The names of all items, for completion, sorted and deduplicated.
     fn names(&self) -> Vec<String>;
 }

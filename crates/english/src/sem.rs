@@ -188,6 +188,24 @@ pub enum Cat {
     /// A noun for something said before, perhaps placed in time: "one",
     /// "question", "last thing".
     Earlier,
+    /// A fact the user states, without its final punctuation: "I'll call
+    /// `Page` "the leaf" from now on".
+    Fact,
+    /// A verb giving a thing a name of the user's own: "call", "calling".
+    Calling,
+    /// A verb giving a thing a name of the user's own, before "as": "refer
+    /// to".
+    Referring,
+    /// Words saying the speaker means to do something: "I'm going to".
+    Intent,
+    /// Words saying how long something holds: "from now on".
+    Time,
+    /// A name the user gives a thing: ""the leaf"", "the runner".
+    Alias,
+    /// Any words, as typed.
+    Words,
+    /// Words the system does not know, as typed.
+    Unknown,
 }
 
 /// English grammatical number, used for agreement.

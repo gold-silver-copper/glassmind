@@ -73,8 +73,8 @@ pub fn tokenize(text: &str) -> Vec<Token> {
                 });
             }
             i = close;
-        } else if is_word_char(c) {
-            // A word, joined across `::` and `.` when both sides are word characters.
+        } else if is_word_char(c) && c != '\'' {
+            // A word (a leading apostrophe opens a quote, so is punctuation), joined across `::` and `.` when both sides are word characters.
             let mut j = i;
             loop {
                 while chars.get(j).is_some_and(|&(_, d)| is_word_char(d)) {

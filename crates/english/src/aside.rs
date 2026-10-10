@@ -69,6 +69,39 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     // what was just said.
     rules.push(aside_word(("en.aside.wait", &["wait"], 6)));
     rules.push(aside_word(("en.aside.but", &["but"], 6)));
+    // "Quick heads-up: I'm going to call ...", "btw I'll call ...", "...,
+    // fyi"
+    rules.extend(
+        [
+            ("en.aside.heads_up", &["heads-up"][..]),
+            ("en.aside.quick_heads_up", &["quick", "heads-up"]),
+            ("en.aside.quick_thing", &["quick", "thing"]),
+            ("en.aside.small_thing", &["small", "thing"]),
+            ("en.aside.btw", &["btw"]),
+            ("en.aside.fyi", &["fyi"]),
+        ]
+        .into_iter()
+        .map(|(id, words)| aside_word((id, words, 6))),
+    );
+    // "..., ok?": an aside asking whether what was said is fine.
+    rules.push(
+        Rule::new(
+            RuleInfo::new("en.aside.question", 6),
+            Cat::Aside,
+            vec![C(Cat::Aside), W("?")],
+            aside(),
+        )
+        .read_only(),
+    );
+    rules.push(
+        Rule::new(
+            RuleInfo::new("en.utterance.comma_aside", 6),
+            Cat::Utterance,
+            vec![C(Cat::Utterance), W(","), C(Cat::Aside)],
+            S::Build(request),
+        )
+        .read_only(),
+    );
     // The punctuation that ends an aside: "hey,", "hi!", "quick question:",
     // "sorry, quick one -", "Thanks.".
     for (id, mark) in [

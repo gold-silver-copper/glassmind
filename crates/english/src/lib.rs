@@ -13,6 +13,7 @@ use glassmind_meaning::interface::{Language, Next, Reading, Spoken, TokenSpan, U
 use glassmind_meaning::{Ontology, Reply, Trouble};
 use glassmind_rules::Switches;
 
+pub mod alias;
 pub mod aside;
 pub mod asking;
 pub mod change;
@@ -55,6 +56,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(naming::rules());
     rules.extend(reason::rules());
     rules.extend(forgetting::rules());
+    rules.extend(alias::rules());
     rules
 }
 

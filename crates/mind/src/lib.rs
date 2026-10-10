@@ -233,6 +233,7 @@ impl<O: Ontology> Mind<'_, O> {
                     Utterance::Command(a) => self.world.propose(a, &mut world_rules),
                     Utterance::AskReason => reason(session, self.switches, &mut world_rules),
                     Utterance::Forget => Ok(Reply::Forgotten),
+                    Utterance::Tell(f) => self.world.note(f, &mut world_rules),
                 };
                 rt.world_rules.extend(world_rules);
                 rt.outcomes.push((meaning.clone(), result.clone()));
@@ -527,6 +528,7 @@ fn progress_of<O: Ontology>(reply: &Reply<O>) -> Progress {
         | Reply::Count { .. }
         | Reply::Proposal { .. }
         | Reply::Reason { .. }
-        | Reply::Forgotten => Progress::Done,
+        | Reply::Forgotten
+        | Reply::Noted(_) => Progress::Done,
     }
 }

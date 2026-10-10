@@ -11,8 +11,8 @@ use std::sync::Arc;
 
 use glassmind_meaning::interface::World;
 use glassmind_meaning::{
-    Action, Condition, Description, Extent, Labelled, Name, Ontology, Position, Question, Reply,
-    Thing, Trouble,
+    Action, Condition, Description, Extent, Fact, Labelled, Name, Ontology, Position, Question,
+    Reply, Thing, Trouble,
 };
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
@@ -149,6 +149,10 @@ const RENAME_FIELD: RuleInfo = RuleInfo::new("rust.rename.field", 5);
 /// items of its kind share (a field declared by two structs) can't be
 /// renamed until the user says which one is meant.
 const RENAME_UNIQUE: RuleInfo = RuleInfo::new("rust.rename.unique", 5);
+/// Noting a name the user will call a thing by: only when the thing is the
+/// only item of its kind (or of the kind the user said) with its name, so
+/// later uses of the alias can't mean another one.
+const ALIAS_UNIQUE: RuleInfo = RuleInfo::new("rust.alias.unique", 6);
 
 /// Every world rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -165,6 +169,7 @@ pub const RULES: &[RuleInfo] = &[
     RELATION_MEMBER,
     CONDITION_NAMED,
     RENAME_UNIQUE,
+    ALIAS_UNIQUE,
 ];
 
 /// One or more indexed Rust sources.
@@ -741,6 +746,20 @@ impl World<Rust> for RustWorld {
             },
             spots: spots(source, at),
         })
+    }
+
+    fn note(
+        &self,
+        fact: &Fact<Rust>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<Rust>, Trouble<Rust>> {
+        let Fact::Alias { thing, kind, alias } = fact;
+        let item = self.only(ALIAS_UNIQUE, thing, *kind, fired)?;
+        Ok(Reply::Noted(Fact::Alias {
+            thing: Thing::Item(item),
+            kind: *kind,
+            alias: alias.clone(),
+        }))
     }
 
     fn names(&self) -> Vec<String> {
