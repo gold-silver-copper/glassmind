@@ -12,7 +12,8 @@ use glassmind_meaning::{Action, Ontology, Question, Reply, Trouble, Utterance};
 use glassmind_rules::HAND;
 
 use crate::asking::read_only_rule;
-use crate::lexicon::{LOWER, NAME, NUMBER};
+use crate::lexicon::{LOWER, NAME, NUMBER, WORD};
+use crate::locate::fillers;
 use crate::sem::{Cat, Sem};
 use crate::{blank, first, last, spoken};
 
@@ -65,16 +66,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
-        Rule::new(
-            glassmind_grammar::RuleInfo::new("en.question.passes_do", HAND),
-            Question,
-            vec![W("do"), C(CheckPhrase), W("pass")],
-            glassmind_grammar::Sem::Build(|c: &[Sem<O>]| match c {
-                [Sem::Check(check)] => Some(Sem::Question(Question::Passes(check.clone()))),
-                _ => None,
-            }),
-        )
-        .read_only(),
         // "are there problems with the build".
         spoken(
             "en.question.problems",
@@ -429,6 +420,227 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Utterance,
             vec![C(Musing), W("."), C(Fix)],
             repair,
+        ),
+    ]);
+    rules.extend(outcomes());
+    rules
+}
+
+const GROWN: u32 = 29;
+
+/// Whether the check comes out well.
+fn passes<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c.first()? {
+        Sem::Check(check) => Some(Sem::Question(Question::Passes(check.clone()))),
+        _ => None,
+    }
+}
+
+/// What comes out badly in the check.
+fn problems<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c.first()? {
+        Sem::Check(check) => Some(Sem::Question(Question::Problems(check.clone()))),
+        _ => None,
+    }
+}
+
+/// Ways of asking how checks come out, from round 29: "are the tests
+/// passing at the moment, or which ones are failing?", "tests all passs?",
+/// "can you tell me whether the test suite currently passes", "run teh
+/// tests pls, what fails", "If any of them fail, which ones are they?".
+fn outcomes<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
+    let rule = |id, lhs, rhs, build| read_only_rule(id, GROWN, lhs, rhs, build);
+    let mut rules = fillers(
+        GROWN,
+        &[
+            (
+                Passing,
+                &[
+                    ("en.passing.pass", "pass"),
+                    ("en.passing.passes", "passes"),
+                    ("en.passing.passing", "passing"),
+                    ("en.passing.green", "green"),
+                ],
+            ),
+            (
+                Failing,
+                &[
+                    ("en.failing.fail", "fail"),
+                    ("en.failing.fails", "fails"),
+                    ("en.failing.failing", "failing"),
+                    ("en.failing.red", "red"),
+                ],
+            ),
+            (
+                Whether,
+                &[
+                    ("en.whether.do", "do"),
+                    ("en.whether.are", "are"),
+                    ("en.whether.if", "if"),
+                    ("en.whether.whether", "whether"),
+                ],
+            ),
+            (
+                Portion,
+                &[
+                    ("en.portion.which", "which"),
+                    ("en.portion.which_ones", "which ones"),
+                    ("en.portion.what", "what"),
+                    ("en.portion.some", "some"),
+                    ("en.portion.some_of_them", "some of them"),
+                    ("en.portion.any", "any"),
+                    ("en.portion.anything", "anything"),
+                ],
+            ),
+            // "Please let me know if any are failing."
+            (Prompt, &[("en.prompt.let_me_know", "let me know")]),
+            // "If any of them fail, which ones are they?"
+            (
+                AskAgain,
+                &[("en.ask_again.which_ones_are_they", "which ones are they")],
+            ),
+        ],
+    );
+    // "are failing", "currently passes", "failing rn", "passing in dunce":
+    // with the verb's helper, or placed in time or in the crate, the verb
+    // says the same; so does "all pass", said of every part.
+    for (cat, [are, before, after]) in [
+        (
+            Passing,
+            [
+                "en.passing.are",
+                "en.passing.set_before",
+                "en.passing.set_after",
+            ],
+        ),
+        (
+            Failing,
+            [
+                "en.failing.are",
+                "en.failing.set_before",
+                "en.failing.set_after",
+            ],
+        ),
+    ] {
+        rules.extend([
+            rule(are, cat, vec![W("are"), C(cat)], last),
+            rule(before, cat, vec![C(Setting), C(cat)], last),
+            rule(after, cat, vec![C(cat), C(Setting)], first),
+        ]);
+    }
+    rules.push(rule(
+        "en.passing.all",
+        Passing,
+        vec![W("all"), C(Passing)],
+        last,
+    ));
+    rules.extend([
+        // "right now", "at the moment", "rn": when the check is run.
+        rule("en.setting.span", Setting, vec![C(Span)], first),
+        // "in dunce": the crate the check is run on, the one talked about.
+        rule("en.setting.in", Setting, vec![W("in"), Class(WORD)], first),
+        // "the dunce tests", "the unicase test suite": a crate's check.
+        rule(
+            "en.check_name.of",
+            CheckName,
+            vec![Class(WORD), C(CheckName)],
+            last,
+        ),
+        // "all the tests".
+        rule(
+            "en.check_phrase.all",
+            CheckPhrase,
+            vec![W("all"), C(CheckPhrase)],
+            last,
+        ),
+        // "the tests pass", "any tests failing".
+        rule(
+            "en.outcome.passing",
+            Outcome,
+            vec![C(CheckPhrase), C(Passing)],
+            passes,
+        ),
+        rule(
+            "en.outcome.failing",
+            Outcome,
+            vec![C(CheckPhrase), C(Failing)],
+            problems,
+        ),
+        // "siphasher tests passing?", "any tests fial rn": asked by
+        // saying it.
+        rule("en.question.outcome", Question, vec![C(Outcome)], first),
+        // "do the tests pass", "are the tests in dunce passing", "whether
+        // the test suite currently passes".
+        rule(
+            "en.question.whether",
+            Question,
+            vec![C(Whether), C(Outcome)],
+            last,
+        ),
+        // "which tests are currently failing", "what tests fail".
+        rule(
+            "en.question.which_failing",
+            Question,
+            vec![C(Portion), C(Outcome)],
+            |c| match c.last()? {
+                q @ Sem::Question(Question::Problems(_)) => Some(q.clone()),
+                _ => None,
+            },
+        ),
+        // "run the tests", "check the dunce test suite": running a check
+        // asks how it comes out.
+        rule(
+            "en.question.run",
+            Question,
+            vec![W("run"), C(CheckPhrase)],
+            passes,
+        ),
+        rule(
+            "en.question.check",
+            Question,
+            vec![W("check"), C(CheckPhrase)],
+            passes,
+        ),
+        // "Do all the tests pass, or do any fail?", "..., and tell me
+        // which tests fail": the same check asked of again.
+        rule(
+            "en.ask_again.check",
+            AskAgain,
+            vec![C(Question)],
+            |c: &[Sem<O>]| match c.first()? {
+                Sem::Question(Question::Passes(check) | Question::Problems(check)) => {
+                    Some(Sem::Check(check.clone()))
+                }
+                _ => None,
+            },
+        ),
+        // "or which ones are failing", "what fails", "are some of them
+        // failing", "if any are failing".
+        rule(
+            "en.ask_again.failing",
+            AskAgain,
+            vec![C(Portion), C(Failing)],
+            first,
+        ),
+        rule(
+            "en.ask_again.whether_failing",
+            AskAgain,
+            vec![C(Whether), C(Portion), C(Failing)],
+            first,
+        ),
+        // "If not, I'd like to know which ones are failing.": asked again
+        // on a condition, or framed.
+        rule(
+            "en.ask_again.remark",
+            AskAgain,
+            vec![C(Remark), C(Break), C(AskAgain)],
+            last,
+        ),
+        rule(
+            "en.ask_again.prompt",
+            AskAgain,
+            vec![C(Prompt), C(AskAgain)],
+            last,
         ),
     ]);
     rules

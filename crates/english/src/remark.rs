@@ -376,4 +376,7 @@ const OPENERS: &[(&str, u32, &str)] = &[
     ("en.remark.is_it_a", 27, "is it a"),
     // "fix the build, getting E0596 ...": what a tool says.
     ("en.remark.getting", 29, "getting"),
+    // "Before I push anything, ...": when the speaker means to use what
+    // they ask for.
+    ("en.remark.before", 29, "before"),
 ];

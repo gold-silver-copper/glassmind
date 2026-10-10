@@ -308,6 +308,7 @@ pub fn check_words() -> Vec<Word> {
     [
         ("en.rust.check.build", "build", Build),
         ("en.rust.check.tests", "tests", Test),
+        ("en.rust.check.test_suite", "test suite", Test),
         ("en.rust.check.lints", "lints", Lint),
     ]
     .into_iter()
@@ -680,6 +681,53 @@ mod tests {
         assert!(matches!(
             english.understand("what does `seed_at` do, and which functions call it?"),
             Understanding::Failed { .. }
+        ));
+    }
+
+    /// The ways of asking how the tests come out ask about the tests, and
+    /// nothing else.
+    #[test]
+    fn ways_of_asking_whether_tests_pass_agree() {
+        use glassmind_world_rust::checks::RustCheck::{Build, Test};
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "Are the tests passing at the moment, or which ones are failing?",
+            "Can you tell me whether the dunce tests all pass right now? If any of them fail, which ones are they?",
+            "Hey, could you run the unicase test suite and tell me which tests fail, if any?",
+            "Quick question: do the tests in siphasher pass right now? If not, I'd like to know which ones are failing.",
+            "Hi! Are the tests passing? Please let me know if any are failing.",
+            "Do all the tests pass, or are some of them failing?",
+            "run teh tests pls, what fails",
+            "tests pass or whcih fail",
+            "which tests failling rn",
+            "any tests fial rn",
+            "test suite green?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                least_corrected(readings).all(|r| matches!(
+                    r.meaning,
+                    Utterance::Ask(Question::Passes(Test) | Question::Problems(Test))
+                )),
+                "{text:?}"
+            );
+        }
+        // Asking which tests pass is not asking which fail, and a second
+        // question about another check is not the same question.
+        for text in [
+            "which tests pass",
+            "do the tests pass? does the build pass?",
+        ] {
+            assert!(
+                !matches!(english.understand(text), Understanding::Readings(_)),
+                "{text:?}"
+            );
+        }
+        assert!(matches!(
+            english.understand("does the build pass"),
+            Understanding::Readings(r) if r.iter().all(|r| r.meaning == Utterance::Ask(Question::Passes(Build)))
         ));
     }
 

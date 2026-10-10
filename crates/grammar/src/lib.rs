@@ -171,9 +171,10 @@ pub struct Spoken {
     pub rules: Vec<RuleInfo>,
 }
 
-/// Limits that keep a pathological input from using unbounded memory.
+/// Limits that keep a pathological input from using unbounded memory. A
+/// list said one item per level (a check's 89 failing tests) must fit.
 const MAX_ITEMS_PER_COLUMN: usize = 50_000;
-const MAX_GENERATION_DEPTH: usize = 40;
+const MAX_GENERATION_DEPTH: usize = 400;
 
 /// A list of rules, ready to parse and generate.
 pub struct Grammar<C, V> {

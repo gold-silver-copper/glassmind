@@ -328,6 +328,25 @@ pub enum Cat {
     /// A clause saying a thing is inside another: "it's wrapped in
     /// something", "the type just contains `Key`".
     Wrapped,
+    /// A verb saying a check comes out well, perhaps placed: "pass",
+    /// "passing", "all pass right now", "green".
+    Passing,
+    /// A verb saying some of what a check tries comes out badly, perhaps
+    /// placed: "fail", "are failing", "currently failing", "red".
+    Failing,
+    /// A clause saying how a check comes out, which asks whether it does,
+    /// or which of its parts fail: "the tests pass", "tests all passing",
+    /// "any tests failing rn".
+    Outcome,
+    /// A word opening a question whether a check comes out so: "do",
+    /// "are", "whether", "if".
+    Whether,
+    /// Words saying when or where a check is run: "right now", "at the
+    /// moment", "in `dunce`".
+    Setting,
+    /// Words standing for some of what the check just asked about tries,
+    /// left unnamed: "which ones", "some of them", "any", "anything".
+    Portion,
 }
 
 /// English grammatical number, used for agreement.

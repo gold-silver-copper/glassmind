@@ -10,7 +10,7 @@
 use std::collections::{BTreeMap, BTreeSet};
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
-use std::time::{Duration, Instant};
+use std::time::{Duration, Instant, SystemTime};
 
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -46,6 +46,13 @@ pub struct Finding {
     pub item: RustItem,
     pub fixes: Vec<RustChange>,
 }
+
+/// How far ahead copies of a source are dated.
+const AHEAD: Duration = Duration::from_secs(24 * 60 * 60);
+
+/// The version of the kept results, raised when checks change what they
+/// find: before 2, a check could read a build of another copy.
+const RESULTS: &str = "v2";
 
 /// How long one tool run may take.
 const TOOL_TIME: Duration = Duration::from_secs(15 * 60);
@@ -332,7 +339,7 @@ pub fn run_in(
 ) -> Result<Vec<Finding>, String> {
     let cache = places.cache.as_ref().map(|dir| {
         dir.join(format!(
-            "{check:?}-{source}-{:016x}.json",
+            "{check:?}-{source}-{:016x}-{RESULTS}.json",
             fingerprint(root)
         ))
     });
@@ -342,7 +349,22 @@ pub fn run_in(
     {
         return Ok(found);
     }
-    let found = run_tools(places, check, source, root)?;
+    // When every copy of a source builds in one directory, cargo may take
+    // a build newer than the files for a build of them: the tools run on a
+    // fresh copy, newer than any build, so another copy's build (one with
+    // the tests fixed, say) is never taken for this one's.
+    let found = match &places.target {
+        Some(target) => {
+            let copy = target
+                .join("copies")
+                .join(format!("{source}-{}", std::process::id()));
+            let found =
+                copy_tree(root, &copy).and_then(|()| run_tools(places, check, source, &copy));
+            let _ = std::fs::remove_dir_all(&copy);
+            found?
+        }
+        None => run_tools(places, check, source, root)?,
+    };
     if let Some(path) = &cache {
         if let Some(dir) = path.parent() {
             let _ = std::fs::create_dir_all(dir);
@@ -468,7 +490,8 @@ pub fn apply(changes: &[RustChange], roots: &BTreeMap<String, PathBuf>) -> Resul
 }
 
 /// Copies a source tree (without `target` and hidden directories) into
-/// `to`, for trying changes without touching the original.
+/// `to`, for trying changes without touching the original. The copies are
+/// dated a day ahead, so cargo builds them anew whatever was built before.
 pub fn copy_tree(from: &Path, to: &Path) -> Result<(), String> {
     let _ = std::fs::remove_dir_all(to);
     let mut stack = vec![PathBuf::new()];
@@ -489,6 +512,8 @@ pub fn copy_tree(from: &Path, to: &Path) -> Result<(), String> {
                 stack.push(rel_child);
             } else {
                 std::fs::copy(from.join(&rel_child), to.join(&rel_child))
+                    .and_then(|_| std::fs::File::open(to.join(&rel_child)))
+                    .and_then(|f| f.set_modified(SystemTime::now() + AHEAD))
                     .map_err(|e| e.to_string())?;
             }
         }
