@@ -13,7 +13,11 @@ glassmind-world-rust.workspace = true
 glassmind-english-rust.workspace = true
 glassmind-mind.workspace = true
 glassmind-answer.workspace = true
+glassmind-rules.workspace = true
+glassmind-grammar.workspace = true
 serde.workspace = true
+clap.workspace = true
+rustyline.workspace = true
 serde_json.workspace = true
 
 [lints]
