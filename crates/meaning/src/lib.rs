@@ -270,24 +270,14 @@ impl<O: Ontology> Utterance<O> {
     /// The utterance with every thing replaced by `f` of it, in the order
     /// [`Utterance::things`] lists them.
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
-        match self {
-            Utterance::Ask(q) => Utterance::Ask(q.map_things(f)),
-            Utterance::Command(Action::Rename { thing, kind, name }) => {
-                Utterance::Command(Action::Rename {
-                    thing: thing.map_things(f),
-                    kind: kind.clone(),
-                    name: name.clone(),
-                })
-            }
-            Utterance::AskReason => Utterance::AskReason,
-            Utterance::Forget => Utterance::Forget,
-            Utterance::AskRecall => Utterance::AskRecall,
-            Utterance::Tell(Fact::Alias { thing, kind, alias }) => Utterance::Tell(Fact::Alias {
-                thing: thing.map_things(f),
-                kind: kind.clone(),
-                alias: alias.clone(),
-            }),
+        let mut out = self.clone();
+        match &mut out {
+            Utterance::Ask(q) => *q = q.map_things(f),
+            Utterance::Command(Action::Rename { thing, .. })
+            | Utterance::Tell(Fact::Alias { thing, .. }) => *thing = thing.map_things(f),
+            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => {}
         }
+        out
     }
 }
 
@@ -300,18 +290,14 @@ impl<O: Ontology> Question<O> {
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
-        match self {
-            Question::Identify(d) => Question::Identify(d.map_things(f)),
-            Question::Count(d) => Question::Count(d.map_things(f)),
-            Question::Locate { thing, kind } => Question::Locate {
-                thing: thing.map_things(f),
-                kind: kind.clone(),
-            },
-            Question::Describe { thing, kind } => Question::Describe {
-                thing: thing.map_things(f),
-                kind: kind.clone(),
-            },
+        let mut out = self.clone();
+        match &mut out {
+            Question::Identify(d) | Question::Count(d) => *d = d.map_things(f),
+            Question::Locate { thing, .. } | Question::Describe { thing, .. } => {
+                *thing = thing.map_things(f);
+            }
         }
+        out
     }
 }
 
@@ -322,10 +308,7 @@ impl<O: Ontology> Description<O> {
 
     /// The resolved things the description refers to.
     pub fn items(&self) -> impl Iterator<Item = &O::Item> {
-        self.things().into_iter().filter_map(|t| match t {
-            Thing::Item(i) => Some(i),
-            _ => None,
-        })
+        self.things().into_iter().filter_map(Thing::item)
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
@@ -345,19 +328,11 @@ impl<O: Ontology> Condition<O> {
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
-        match self {
-            Condition::Related {
-                relation,
-                position,
-                other,
-            } => Condition::Related {
-                relation: relation.clone(),
-                position: *position,
-                other: other.map_things(f),
-            },
-            Condition::Is(other) => Condition::Is(other.map_things(f)),
-            Condition::Called(_) | Condition::Named(_) => self.clone(),
+        let mut out = self.clone();
+        if let Condition::Related { other, .. } | Condition::Is(other) = &mut out {
+            *other = other.map_things(f);
         }
+        out
     }
 }
 
@@ -367,6 +342,14 @@ impl<O: Ontology> Thing<O> {
         match self {
             Thing::Fitting(d) => d.things(),
             _ => vec![self],
+        }
+    }
+
+    /// The item this thing is resolved to, if it is.
+    pub fn item(&self) -> Option<&O::Item> {
+        match self {
+            Thing::Item(i) => Some(i),
+            _ => None,
         }
     }
 
@@ -386,34 +369,19 @@ impl<O: Ontology> Reply<O> {
             Reply::Count { description, .. } => description.items().collect(),
             Reply::Location(item)
             | Reply::Account { item, .. }
-            | Reply::Trouble(Trouble::WrongKind { item })
-            | Reply::Proposal {
-                action:
-                    Action::Rename {
-                        thing: Thing::Item(item),
-                        ..
-                    },
+            | Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
+            Reply::Proposal {
+                action: Action::Rename { thing, .. },
                 ..
             }
             | Reply::Reason {
-                action:
-                    Action::Rename {
-                        thing: Thing::Item(item),
-                        ..
-                    },
+                action: Action::Rename { thing, .. },
                 ..
             }
-            | Reply::Noted(Fact::Alias {
-                thing: Thing::Item(item),
-                ..
-            }) => vec![item],
-            Reply::Noted(_) => Vec::new(),
-            Reply::Proposal { .. } | Reply::Reason { .. } | Reply::Forgotten | Reply::Recall(_) => {
-                Vec::new()
-            }
+            | Reply::Noted(Fact::Alias { thing, .. }) => thing.item().into_iter().collect(),
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
-            Reply::Trouble(_) => Vec::new(),
             Reply::Assuming { reply, .. } => reply.items(),
+            _ => Vec::new(),
         }
     }
 }

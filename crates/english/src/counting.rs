@@ -6,7 +6,11 @@ use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Condition, Description, Ontology, Position, Question, Reply};
 
 use crate::asking::role_of;
+use crate::blank;
+use crate::first;
 use crate::lexicon::NUMBER;
+use crate::locate::fillers;
+use crate::phrase;
 use crate::sem::{Cat, Number, Sem, VerbForm};
 use crate::word;
 
@@ -57,27 +61,26 @@ fn kind_and_condition<O: Ontology>(d: &Description<O>, number: Number) -> Option
     }
 }
 
+/// The description among the children (a noun and what restricts it), if
+/// it describes things to count.
+fn described<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match count(c)? {
+        Sem::Question(Question::Count(d)) => Some(Sem::Description(d)),
+        _ => None,
+    }
+}
+
 /// Words before a participle that keep its meaning: "are calling `x`",
 /// "end up calling `x`".
-const ASPECTS: &[(&str, &[&str])] = &[
-    ("en.verb_phrase.are_participial", &["are"]),
-    ("en.verb_phrase.is_participial", &["is"]),
-    ("en.verb_phrase.end_up", &["end", "up"]),
-    ("en.verb_phrase.ends_up", &["ends", "up"]),
+const ASPECTS: &[(&str, &str)] = &[
+    ("en.verb_phrase.are_participial", "are"),
+    ("en.verb_phrase.is_participial", "is"),
+    ("en.verb_phrase.end_up", "end up"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, lhs, rhs, build| {
         Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
-    };
-    let words = |id, cat, words: &[&'static str]| {
-        word(
-            RuleInfo::new(id, ROUND),
-            cat,
-            words,
-            Sem::Quote(String::new()),
-        )
-        .read_only()
     };
     let mut rules = vec![
         // "how many functions call `x`": how the system asks it, too.
@@ -145,40 +148,32 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("count"), C(Cat::Description)],
             count,
         ),
+        // A count question as it is.
         rule(
             "en.question.count_how_many",
             Cat::Question,
             vec![W("count"), C(Cat::Question)],
-            |c| match c {
-                [q @ Sem::Question(Question::Count(_))] => Some(q.clone()),
-                _ => None,
-            },
+            count,
         ),
         // "can you count how many functions call `x` for me?"
         rule(
             "en.question.for_me",
             Cat::Question,
             vec![C(Cat::Question), W("for"), W("me")],
-            |c| c.first().cloned(),
+            first,
         ),
         // "fns calling `x`", "funcs that call `x`"
         rule(
             "en.description.participial",
             Cat::Description,
             vec![C(Cat::Noun), C(Cat::Participial)],
-            |c| match count(c)? {
-                Sem::Question(Question::Count(d)) => Some(Sem::Description(d)),
-                _ => None,
-            },
+            described,
         ),
         rule(
             "en.description.that_verb_phrase",
             Cat::Description,
             vec![C(Cat::Noun), W("that"), C(Cat::VerbPhrase)],
-            |c| match count(c)? {
-                Sem::Question(Question::Count(d)) => Some(Sem::Description(d)),
-                _ => None,
-            },
+            described,
         ),
         // "calling `x`"
         rule(
@@ -203,17 +198,27 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
+        // "number": how the system says it, too.
         word(
             RuleInfo::new("en.amount.number", ROUND),
             Cat::Amount,
-            &["number"],
-            Sem::Quote(String::new()),
+            "number",
+            blank(),
         ),
-        words("en.amount.count", Cat::Amount, &["count"]),
-        words("en.amount.hash", Cat::Amount, &["#"]),
-        words("en.dash.em", Cat::Dash, &["—"]),
-        words("en.dash.en", Cat::Dash, &["–"]),
-        words("en.dash.hyphen", Cat::Dash, &["-"]),
+    ];
+    // Nouns for how many things there are, and dashes setting a topic
+    // before a question about it.
+    rules.extend(fillers(
+        ROUND,
+        &[
+            (
+                Cat::Amount,
+                &[("en.amount.count", "count"), ("en.amount.hash", "#")],
+            ),
+            (Cat::Dash, &[("en.dash.em", "—"), ("en.dash.hyphen", "-")]),
+        ],
+    ));
+    rules.extend([
         // "3 functions call `x`.", "1 function calls `x`."
         Rule::new(
             RuleInfo::new("en.reply.count", ROUND),
@@ -228,9 +233,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                         } else {
                             Number::Plural
                         };
-                        let mut c = vec![Sem::Count(*count)];
-                        c.extend(kind_and_condition(description, number)?);
-                        Some(c)
+                        Some(
+                            [
+                                vec![Sem::Count(*count)],
+                                kind_and_condition(description, number)?,
+                            ]
+                            .concat(),
+                        )
                     }
                     _ => None,
                 },
@@ -245,17 +254,17 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 |_| None,
                 |v| match v {
                     Sem::Reply(Reply::Count { count, .. }) => {
-                        Some(vec![Sem::Quote(String::new()), Sem::Count(*count)])
+                        Some(vec![blank(), Sem::Count(*count)])
                     }
                     _ => None,
                 },
             ),
         ),
-    ];
+    ]);
     rules.extend(ASPECTS.iter().map(|(id, before)| {
-        let mut rhs: Vec<_> = before.iter().map(|w| W(w)).collect();
+        let mut rhs = phrase(before);
         rhs.push(C(Cat::Participial));
-        rule(id, Cat::VerbPhrase, rhs, |c: &[Sem<O>]| c.first().cloned())
+        rule(id, Cat::VerbPhrase, rhs, first)
     }));
     rules
 }

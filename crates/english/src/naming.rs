@@ -8,6 +8,7 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Condition, Description, Ontology, Thing};
 
+use crate::renaming::heard;
 use crate::sem::{Cat, Number, Sem};
 
 use Sym::{Cat as C, Word as W};
@@ -40,9 +41,6 @@ fn kind_named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let rule = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
-    };
     vec![
         // "(a field) named `done`": how the system says it.
         Rule::new(
@@ -58,28 +56,28 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             }),
         ),
         // "a field called `footer`"
-        rule(
+        heard(
             "en.qualifier.called",
             Cat::Qualifier,
             vec![W("called"), C(Cat::NounPhrase)],
             named,
         ),
         // "a `push_head` field", "`seam_m` field"
-        rule(
+        heard(
             "en.noun_phrase.name_kind",
             Cat::NounPhrase,
             vec![C(Cat::NounPhrase), C(Cat::Noun)],
             kind_named,
         ),
         // "field `width`", "a field `eye_off`"
-        rule(
+        heard(
             "en.noun_phrase.kind_name",
             Cat::NounPhrase,
             vec![C(Cat::Noun), C(Cat::NounPhrase)],
             kind_named,
         ),
         // "`merge_state` as a field"
-        rule(
+        heard(
             "en.noun_phrase.as_a",
             Cat::NounPhrase,
             vec![C(Cat::NounPhrase), W("as"), W("a"), C(Cat::Noun)],
@@ -87,7 +85,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         // "the field `search`", "the `saved` field": a thing described,
         // which "the" leaves as it is.
-        rule(
+        heard(
             "en.noun_phrase.the_fitting",
             Cat::NounPhrase,
             vec![W("the"), C(Cat::NounPhrase)],

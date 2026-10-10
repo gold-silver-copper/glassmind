@@ -9,7 +9,9 @@ use glassmind_meaning::{
     Condition, Description, Name, Ontology, Position, Question, Thing, Utterance,
 };
 
+use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
+use crate::{blank, first, word};
 
 use Sym::{Cat as C, Word as W};
 
@@ -50,40 +52,36 @@ fn refer_back<O: Ontology>(later: &Question<O>, earlier: &Question<O>) -> Option
 /// "`x` on the `App` struct": the thing with the mentioned name that stands
 /// in the preposition's relation to the other thing, of the kind said.
 fn related<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let [
+        Sem::Mention {
+            thing: Thing::Named(name),
+            kind,
+        },
+        Sem::Relation { relation, .. },
+        Sem::Mention { thing, kind: other },
+    ] = c
+    else {
+        return None;
+    };
     let called = |name: &Name, kind: &Option<O::Kind>, more| {
         Thing::Fitting(Description {
             kind: kind.clone(),
             conditions: [vec![Condition::Called(name.clone())], more].concat(),
         })
     };
-    match c {
-        [
-            Sem::Mention {
-                thing: Thing::Named(name),
-                kind,
-            },
-            Sem::Relation { relation, .. },
-            Sem::Mention { thing, kind: other },
-        ] => {
-            let other = match (thing, other) {
-                (Thing::Named(n), Some(_)) => called(n, other, Vec::new()),
-                (thing, _) => thing.clone(),
-            };
-            Some(Sem::Mention {
-                thing: called(
-                    name,
-                    kind,
-                    vec![Condition::Related {
-                        relation: relation.clone(),
-                        position: Position::First,
-                        other,
-                    }],
-                ),
-                kind: kind.clone(),
-            })
-        }
-        _ => None,
-    }
+    let other = match (thing, other) {
+        (Thing::Named(n), Some(_)) => called(n, other, Vec::new()),
+        _ => thing.clone(),
+    };
+    let related = Condition::Related {
+        relation: relation.clone(),
+        position: Position::First,
+        other,
+    };
+    Some(Sem::Mention {
+        thing: called(name, kind, vec![related]),
+        kind: kind.clone(),
+    })
 }
 
 /// "`x` - what does it do": the question about the thing set off before it.
@@ -105,9 +103,8 @@ fn set_off<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 /// "what does `x` do, and what is it for?": the first question, when the
 /// second asks the same about what it refers back to.
 fn restated<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    let (first, second) = match c {
-        [first, second] | [first, _, second] => (first, second),
-        _ => return None,
+    let ([first, second] | [first, _, second]) = c else {
+        return None;
     };
     let same = |a: &Question<O>, b: &Question<O>| refer_back(b, a).as_ref() == Some(a);
     match (first, second) {
@@ -124,25 +121,32 @@ fn restated<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
-/// Words joining two ways of asking one question.
-const JOINS: &[(&str, &str)] = &[
-    ("en.join.comma", ","),
-    ("en.join.and", "and"),
-    ("en.join.or", "or"),
-    ("en.join.like", "like"),
-];
-
-/// Marks setting a thing off before a question about it.
-const BREAKS: &[(&str, &str)] = &[
-    ("en.break.dash", "-"),
-    ("en.break.em_dash", "—"),
-    ("en.break.comma", ","),
+/// Words and marks that only join or set off phrases, by category.
+const FILLERS: &[(Cat, &[(&str, &str)])] = &[
+    // Words joining two ways of asking one question.
+    (
+        Cat::Join,
+        &[
+            ("en.join.comma", ","),
+            ("en.join.and", "and"),
+            ("en.join.or", "or"),
+            ("en.join.like", "like"),
+        ],
+    ),
+    // Marks setting a thing off before a question about it.
+    (
+        Cat::Break,
+        &[
+            ("en.break.dash", "-"),
+            ("en.break.em_dash", "—"),
+            ("en.break.comma", ","),
+        ],
+    ),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let blank = || S::Const(Sem::Quote(String::new()));
-    let rule = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
+    let rule = |id, round, lhs, rhs, build| {
+        Rule::new(RuleInfo::new(id, round), lhs, rhs, S::Build(build)).read_only()
     };
     let mut rules = vec![
         // "`x`": a thing mentioned by name, of a kind left open.
@@ -192,6 +196,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "`indexed` fn", "`Fixed` struct"
         rule(
             "en.mention.kind",
+            ROUND,
             Cat::Mention,
             vec![C(Cat::Mention), C(Cat::Noun)],
             of_kind,
@@ -199,6 +204,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "fn star", "the function `hm`"
         rule(
             "en.mention.kind_first",
+            ROUND,
             Cat::Mention,
             vec![C(Cat::Noun), C(Cat::Mention)],
             of_kind,
@@ -206,69 +212,71 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "the `x`", "the Walker"
         rule(
             "en.mention.the",
+            ROUND,
             Cat::Mention,
             vec![W("the"), C(Cat::Mention)],
-            |c| c.first().cloned(),
+            first,
         ),
         // "`save_filter` in `App`", "the `retry` method on `Chat`", "the
         // `sealed` field of the `Builder` struct"
-        Rule::new(
-            RuleInfo::new("en.mention.preposition", 5),
+        rule(
+            "en.mention.preposition",
+            5,
             Cat::Mention,
             vec![C(Cat::Mention), C(Cat::Preposition), C(Cat::Mention)],
-            S::Build(related),
-        )
-        .read_only(),
+            related,
+        ),
         // "...": a trailing-off that sets what came before apart.
-        Rule::new(
+        word(
             RuleInfo::new("en.break.dots", 5),
             Cat::Break,
-            vec![W("."), W("."), W(".")],
+            ". . .",
             blank(),
         )
         .read_only(),
         // "the name `job_git`": the thing that has the name.
-        Rule::new(
-            RuleInfo::new("en.mention.the_name", 5),
+        rule(
+            "en.mention.the_name",
+            5,
             Cat::Mention,
             vec![W("the"), C(Cat::NameNoun), C(Cat::Mention)],
-            S::Build(|c| c.last().cloned()),
-        )
-        .read_only(),
+            |c| c.last().cloned(),
+        ),
         // "that function": the thing said before, of a kind.
-        Rule::new(
-            RuleInfo::new("en.mention.that_kind", 5),
+        rule(
+            "en.mention.that_kind",
+            5,
             Cat::Mention,
             vec![W("that"), C(Cat::Noun)],
-            S::Build(|c: &[Sem<O>]| match c {
+            |c| match c {
                 [Sem::Kind { kind, .. }] => Some(Sem::Mention {
                     thing: Thing::Previous,
                     kind: Some(kind.clone()),
                 }),
                 _ => None,
-            }),
-        )
-        .read_only(),
+            },
+        ),
         // "which fields does that struct have": the thing said before, as
         // the object of a verb.
-        Rule::new(
-            RuleInfo::new("en.noun_phrase.that_kind", 7),
+        rule(
+            "en.noun_phrase.that_kind",
+            7,
             Cat::NounPhrase,
             vec![W("that"), C(Cat::Noun)],
-            S::Const(Sem::Thing(Thing::Previous)),
-        )
-        .read_only(),
+            |_| Some(Sem::Thing(Thing::Previous)),
+        ),
         // "it": the thing said before.
-        Rule::new(
+        word(
             RuleInfo::new("en.noun_phrase.it", ROUND),
             Cat::NounPhrase,
-            vec![W("it")],
-            S::Const(Sem::Thing(Thing::Previous)),
+            "it",
+            Sem::Thing(Thing::Previous),
         )
         .read_only(),
         // "job_page - what does it do", "static_record, what's it for"
         rule(
             "en.question.set_off",
+            ROUND,
             Cat::Question,
             vec![C(Cat::Mention), C(Cat::Break), C(Cat::Question)],
             set_off,
@@ -277,6 +285,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // like what does it do"
         rule(
             "en.question.restated",
+            ROUND,
             Cat::Question,
             vec![C(Cat::Question), C(Cat::Join), C(Cat::Question)],
             restated,
@@ -285,6 +294,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // `hm` does. Could you explain it, please?"
         rule(
             "en.utterance.restated",
+            ROUND,
             Cat::Utterance,
             vec![C(Cat::Utterance), C(Cat::Utterance)],
             restated,
@@ -292,6 +302,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "what does mark_dead do exactly? like what is it for"
         rule(
             "en.utterance.restated_joined",
+            ROUND,
             Cat::Utterance,
             vec![C(Cat::Utterance), C(Cat::Join), C(Cat::Utterance)],
             restated,
@@ -299,15 +310,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // ", and", ", or", ", like"
         rule(
             "en.join.comma_join",
+            ROUND,
             Cat::Join,
             vec![W(","), C(Cat::Join)],
-            |c| c.first().cloned(),
+            first,
         ),
     ];
-    for (table, cat) in [(JOINS, Cat::Join), (BREAKS, Cat::Break)] {
-        rules.extend(table.iter().map(|(id, mark)| {
-            Rule::new(RuleInfo::new(id, ROUND), cat, vec![W(mark)], blank()).read_only()
-        }));
-    }
+    rules.extend(fillers(ROUND, FILLERS));
     rules
 }

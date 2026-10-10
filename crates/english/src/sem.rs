@@ -264,10 +264,11 @@ pub enum VerbForm {
 impl VerbForm {
     /// The subject number this form agrees with.
     pub fn agrees_with(self) -> Number {
+        // Only "calls" agrees with one thing; "call", "called" and
+        // "calling" go with many.
         match self {
-            VerbForm::Plain => Number::Plural,
             VerbForm::ThirdSingular => Number::Singular,
-            VerbForm::Participle | VerbForm::Progressive => Number::Plural,
+            _ => Number::Plural,
         }
     }
 }

@@ -42,42 +42,63 @@ pub use tokens::{Shape, Token, tokenize};
 
 /// Every English rule that is not about a particular world.
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let mut rules = seed::rules();
-    rules.extend(remark::rules());
-    rules.extend(request::rules());
-    rules.extend(aside::rules());
-    rules.extend(locate::rules());
-    rules.extend(asking::rules());
-    rules.extend(counting::rules());
-    rules.extend(discourse::rules());
-    rules.extend(mention::rules());
-    rules.extend(describe::rules());
-    rules.extend(having::rules());
-    rules.extend(change::rules());
-    rules.extend(renaming::rules());
-    rules.extend(naming::rules());
-    rules.extend(reason::rules());
-    rules.extend(forgetting::rules());
-    rules.extend(alias::rules());
-    rules.extend(contents::rules());
-    rules.extend(recall::rules());
-    rules
+    [
+        seed::rules::<O> as fn() -> Vec<Rule<Cat, Sem<O>>>,
+        remark::rules,
+        request::rules,
+        aside::rules,
+        locate::rules,
+        asking::rules,
+        counting::rules,
+        discourse::rules,
+        mention::rules,
+        describe::rules,
+        having::rules,
+        change::rules,
+        renaming::rules,
+        naming::rules,
+        reason::rules,
+        forgetting::rules,
+        alias::rules,
+        contents::rules,
+        recall::rules,
+    ]
+    .into_iter()
+    .flat_map(|rules| rules())
+    .collect()
 }
 
-/// A rule that reads one or more fixed words as a fixed value: how a bridge
-/// crate adds the English words for a world's kinds and relations.
+/// The value of words that carry no meaning of their own.
+pub fn blank<O: Ontology>() -> Sem<O> {
+    Sem::Quote(String::new())
+}
+
+/// The value of a rule's first child: for words around a phrase that keep
+/// its meaning ("what you remember, please").
+pub fn first<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    c.first().cloned()
+}
+
+/// The value of a rule's last child ("even for").
+pub fn last<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    c.last().cloned()
+}
+
+/// The words of a phrase written with spaces between them ("is or
+/// contains"), as a rule's right-hand side.
+pub fn phrase(words: &'static str) -> Vec<Sym<Cat>> {
+    words.split(' ').map(Sym::Word).collect()
+}
+
+/// A rule that reads a fixed phrase ("is or contains") as a fixed value: how
+/// a bridge crate adds the English words for a world's kinds and relations.
 pub fn word<O: Ontology>(
     info: RuleInfo,
     cat: Cat,
-    words: &[&'static str],
+    words: &'static str,
     value: Sem<O>,
 ) -> Rule<Cat, Sem<O>> {
-    Rule::new(
-        info,
-        cat,
-        words.iter().map(|w| Sym::Word(w)).collect(),
-        S::Const(value),
-    )
+    Rule::new(info, cat, phrase(words), S::Const(value))
 }
 
 /// English, ready to read and speak.
@@ -121,21 +142,6 @@ impl<O: Ontology> English<O> {
             rules: spoken.rules,
         })
     }
-
-    fn diagnose(&self, tokens: &[Token], reached: usize, overflow: bool) -> Trouble<O> {
-        if overflow {
-            return Trouble::TooAmbiguous;
-        }
-        match tokens.get(reached) {
-            Some(t) if t.shape == Shape::Word && !self.lexicon.known.contains(t.norm.as_str()) => {
-                Trouble::UnknownWord {
-                    at: reached,
-                    word: t.text.clone(),
-                }
-            }
-            _ => Trouble::UnknownShape { at: reached },
-        }
-    }
 }
 
 impl<O: Ontology> Language<O> for English<O> {
@@ -158,18 +164,23 @@ impl<O: Ontology> Language<O> for English<O> {
                 _ => None,
             })
             .collect();
-        if readings.is_empty() {
-            let reached = if parse.reached == tokens.len() && !tokens.is_empty() {
-                tokens.len()
-            } else {
-                parse.reached
-            };
-            Understanding::Failed {
-                trouble: self.diagnose(&tokens, reached, parse.overflow),
-            }
-        } else {
-            Understanding::Readings(readings)
+        if !readings.is_empty() {
+            return Understanding::Readings(readings);
         }
+        // Why nothing was understood: too many readings, an unknown word
+        // where reading stopped, or words in a shape no rule fits.
+        let at = parse.reached;
+        let trouble = match tokens.get(at) {
+            _ if parse.overflow => Trouble::TooAmbiguous,
+            Some(t) if t.shape == Shape::Word && !self.lexicon.known.contains(t.norm.as_str()) => {
+                Trouble::UnknownWord {
+                    at,
+                    word: t.text.clone(),
+                }
+            }
+            _ => Trouble::UnknownShape { at },
+        };
+        Understanding::Failed { trouble }
     }
 
     fn say(&self, reply: &Reply<O>) -> Option<Spoken> {
@@ -207,17 +218,19 @@ pub fn detokenize(words: &[String]) -> String {
         }
         if sentence_start && !punct {
             let mut chars = w.chars();
-            if let Some(first) = chars.next() {
-                out.extend(first.to_uppercase());
-                out.push_str(chars.as_str());
-            }
-            sentence_start = false;
+            out.extend(
+                chars
+                    .next()
+                    .into_iter()
+                    .flat_map(char::to_uppercase)
+                    .chain(chars),
+            );
         } else {
             out.push_str(w);
         }
-        if matches!(w.as_str(), "." | "?" | "!") {
-            sentence_start = true;
-        }
+        // A sentence starts after its end mark, and punctuation before its
+        // first word leaves it still to start.
+        sentence_start = matches!(w.as_str(), "." | "?" | "!") || (sentence_start && punct);
     }
     out
 }

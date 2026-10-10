@@ -20,21 +20,13 @@ use serde::{Deserialize, Serialize};
 
 pub mod trace;
 
-pub use trace::{ReadingTrace, Trace};
+pub use trace::{ReadingTrace, Trace, WorldResult};
 
 /// Preference: when readings differ only in which item a name means, prefer
 /// the item mentioned most recently in the conversation.
 pub const PREFER_RECENT_MENTION: RuleInfo = RuleInfo::new("mind.prefer.recent_mention", SEED);
 /// Preference: otherwise, prefer the reading the grammar found first.
 pub const PREFER_FIRST_READING: RuleInfo = RuleInfo::new("mind.prefer.first_reading", SEED);
-/// Preference: when no reading can be answered, and a name was taken to
-/// mean items of the wrong kind for what was asked as well as several of the
-/// right kind, ask which of those was meant ("which `settings` field?")
-/// rather than say a function called `settings` is no field.
-pub const PREFER_RIGHT_KIND: RuleInfo = RuleInfo::new("mind.prefer.right_kind", 5);
-/// When readings of a request to change something would change different
-/// things, ask which one was meant rather than act on a guess.
-pub const ASK_BEFORE_ACTING: RuleInfo = RuleInfo::new("mind.ask_before_acting", 5);
 /// Preference: when no reading can be answered, ask which item is meant if
 /// some reading only lacks that, rather than report why the others failed
 /// ("rename the `bytes` field" is not about fields typed `bytes`).
@@ -56,8 +48,6 @@ pub const RECALL_IS_MENTIONS: RuleInfo = RuleInfo::new("mind.recall.mentions", 7
 pub const RULES: &[RuleInfo] = &[
     PREFER_RECENT_MENTION,
     PREFER_FIRST_READING,
-    PREFER_RIGHT_KIND,
-    ASK_BEFORE_ACTING,
     PREFER_ASKING,
     REASON_IS_REQUEST,
     ALIAS_NOTED,
@@ -104,28 +94,19 @@ impl<O: Ontology> Session<O> {
     /// A turn the user asked to forget, and the request to forget it,
     /// mention nothing.
     pub fn mentions(&self) -> Vec<O::Item> {
-        let mut seen = BTreeSet::new();
         let mut out = Vec::new();
         let mut forgotten = 0;
         for turn in self.turns.iter().rev() {
             if turn.meaning == Some(Utterance::Forget) {
                 forgotten += 1;
-                continue;
-            }
-            if forgotten > 0 {
+            } else if forgotten > 0 {
                 forgotten -= 1;
-                continue;
-            }
-            let in_meaning = turn.meaning.iter().flat_map(|m| {
-                m.things().into_iter().filter_map(|t| match t {
-                    Thing::Item(i) => Some(i.clone()),
-                    _ => None,
-                })
-            });
-            let in_reply = turn.reply.items().into_iter().cloned();
-            for item in in_meaning.chain(in_reply) {
-                if seen.insert(item.clone()) {
-                    out.push(item);
+            } else {
+                let in_meaning = turn.meaning.iter().flat_map(Utterance::things);
+                for item in in_meaning.filter_map(Thing::item).chain(turn.reply.items()) {
+                    if !out.contains(item) {
+                        out.push(item.clone());
+                    }
                 }
             }
         }
@@ -181,20 +162,15 @@ pub struct Mind<'a, O: Ontology> {
     pub switches: &'a Switches,
 }
 
-/// A reading with its names resolved: the meaning, which item each name
-/// was taken to mean, and the world rules used to look them up.
-type Resolved<O> = (
-    Utterance<O>,
-    Vec<(Name, <O as Ontology>::Item)>,
-    Vec<RuleInfo>,
-);
+/// Which item each name was taken to mean.
+type Means<O> = Vec<(Name, <O as Ontology>::Item)>;
 
 /// A reading after resolution and answering.
 struct Candidate<O: Ontology> {
     reading: usize,
     meaning: Utterance<O>,
-    means: Vec<(Name, O::Item)>,
-    result: Result<Reply<O>, Trouble<O>>,
+    means: Means<O>,
+    result: WorldResult<O>,
 }
 
 impl<O: Ontology> Mind<'_, O> {
@@ -203,12 +179,16 @@ impl<O: Ontology> Mind<'_, O> {
         let tokens = self.language.tokens(text);
         let mut trace = Trace::new(text, &tokens);
         let (reply, meaning) = self.think(session, text, &mut trace);
-        let progress = progress_of(&reply);
-        let understood = match &reply {
-            Reply::Trouble(Trouble::UnknownWord { at, .. } | Trouble::UnknownShape { at }) => *at,
-            _ => tokens.len(),
+        let said = self.language.say(&reply).unwrap_or_else(|| Spoken {
+            text: format!("(I have no words for this reply: {reply:?})"),
+            rules: Vec::new(),
+        });
+        trace.reply = Some(reply.clone());
+        trace.reply_rules = said.rules;
+        let spoken = match stuck_at(&reply) {
+            Some(at) => format!("{}\n  {}", said.text, mark(text, &tokens, at)),
+            None => said.text,
         };
-        let spoken = self.speak(&reply, &tokens, text, &mut trace);
         session.turns.push(TurnRecord {
             text: text.to_owned(),
             meaning,
@@ -216,10 +196,10 @@ impl<O: Ontology> Mind<'_, O> {
             spoken: spoken.clone(),
         });
         Turn {
+            progress: progress_of(&reply),
+            understood: stuck_at(&reply).unwrap_or(tokens.len()),
             reply,
             spoken,
-            progress,
-            understood,
             tokens: tokens.len(),
             trace,
         }
@@ -248,17 +228,20 @@ impl<O: Ontology> Mind<'_, O> {
                 world_rules: Vec::new(),
                 outcomes: Vec::new(),
             };
-            for (meaning, means, fired) in self.resolve(session, &reading.meaning, &mut rt) {
-                let mut world_rules = fired;
+            for (meaning, means) in self.resolve(session, &reading.meaning, &mut rt) {
+                let fired = &mut rt.world_rules;
                 let result = match &meaning {
-                    Utterance::Ask(q) => self.world.answer(q, &mut world_rules),
-                    Utterance::Command(a) => self.world.propose(a, &mut world_rules),
-                    Utterance::AskReason => reason(session, self.switches, &mut world_rules),
+                    Utterance::Ask(q) => self.world.answer(q, fired),
+                    Utterance::Command(a) => self.world.propose(a, fired),
+                    Utterance::AskReason => self
+                        .using(REASON_IS_REQUEST, fired)
+                        .and_then(|()| reason(session)),
                     Utterance::Forget => Ok(Reply::Forgotten),
-                    Utterance::AskRecall => recall(session, self.switches, &mut world_rules),
-                    Utterance::Tell(f) => self.world.note(f, &mut world_rules),
+                    Utterance::AskRecall => self
+                        .using(RECALL_IS_MENTIONS, fired)
+                        .map(|()| Reply::Recall(session.mentions())),
+                    Utterance::Tell(f) => self.world.note(f, fired),
                 };
-                rt.world_rules.extend(world_rules);
                 rt.outcomes.push((meaning.clone(), result.clone()));
                 candidates.push(Candidate {
                     reading: i,
@@ -269,171 +252,133 @@ impl<O: Ontology> Mind<'_, O> {
             }
             trace.readings.push(rt);
         }
-        self.choose(session, candidates, trace)
+        let (reply, chosen) = self.choose(session, &candidates, trace);
+        trace.chosen = chosen.map(|c| c.reading);
+        (reply, chosen.map(|c| c.meaning.clone()))
     }
 
-    /// Every way of resolving the reading's names to items. A name with no
-    /// item yields one unresolved candidate, which the world rejects.
+    /// Pushes `rule` onto `fired` if it is switched on; a meaning that needs
+    /// a rule that is switched off is unsupported.
+    fn using(&self, rule: RuleInfo, fired: &mut Vec<RuleInfo>) -> Result<(), Trouble<O>> {
+        if !self.switches.on(rule.id) {
+            return Err(Trouble::Unsupported);
+        }
+        fired.push(rule);
+        Ok(())
+    }
+
+    /// Every way of resolving the reading's names to items, each with the
+    /// item each name was taken to mean. A name with no item yields one
+    /// unresolved candidate, which the world rejects. The world rules used
+    /// to look the names up go into `rt`.
     fn resolve(
         &self,
         session: &Session<O>,
         meaning: &Utterance<O>,
         rt: &mut ReadingTrace<O>,
-    ) -> Vec<Resolved<O>> {
-        let mut options: Vec<Vec<Thing<O>>> = Vec::new();
-        let mut names: Vec<Option<Name>> = Vec::new();
-        let mut fired = Vec::new();
-        for thing in meaning.things() {
-            match thing {
-                Thing::Named(name) => {
-                    let aliased = session
-                        .aliased(name)
-                        .filter(|_| self.switches.on(ALIAS_NOTED.id));
-                    let items = match aliased {
-                        Some(item) => {
-                            fired.push(ALIAS_NOTED);
-                            vec![item]
-                        }
-                        None => self.world.lookup(name, &mut fired),
-                    };
-                    rt.resolutions.push((name.clone(), items.clone()));
-                    names.push(Some(name.clone()));
-                    if items.is_empty() {
-                        options.push(vec![thing.clone()]);
-                    } else {
-                        options.push(items.into_iter().map(Thing::Item).collect());
+    ) -> Vec<(Utterance<O>, Means<O>)> {
+        let things = meaning.things();
+        let mut options = Vec::new();
+        for &thing in &things {
+            let mut choices = vec![thing.clone()];
+            if let Thing::Named(name) = thing {
+                // A name the user gave an item means it, if that rule is on.
+                let items = match session.aliased(name) {
+                    Some(item) if self.using(ALIAS_NOTED, &mut rt.world_rules).is_ok() => {
+                        vec![item]
                     }
-                }
-                _ => {
-                    names.push(None);
-                    options.push(vec![thing.clone()]);
+                    _ => self.world.lookup(name, &mut rt.world_rules),
+                };
+                rt.resolutions.push((name.clone(), items.clone()));
+                if !items.is_empty() {
+                    choices = items.into_iter().map(Thing::Item).collect();
                 }
             }
+            options.push(choices);
         }
-        let mut out = Vec::new();
-        for combo in cartesian(&options) {
-            let mut k = 0;
-            let resolved = meaning.map_things(&mut |t| {
-                let next = combo.get(k).cloned().unwrap_or_else(|| t.clone());
-                k += 1;
-                next
-            });
-            let means = names
-                .iter()
-                .zip(&combo)
-                .filter_map(|(n, t)| match (n, t) {
-                    (Some(n), Thing::Item(i)) => Some((n.clone(), i.clone())),
-                    _ => None,
-                })
-                .collect();
-            out.push((resolved, means, fired.clone()));
-        }
-        out
+        cartesian(&options)
+            .into_iter()
+            .map(|combo| {
+                let mut chosen = combo.iter();
+                let resolved = meaning.map_things(&mut |t| chosen.next().unwrap_or(t).clone());
+                let means = things
+                    .iter()
+                    .zip(&combo)
+                    .filter_map(|pair| match pair {
+                        (Thing::Named(n), Thing::Item(i)) => Some((n.clone(), i.clone())),
+                        _ => None,
+                    })
+                    .collect();
+                (resolved, means)
+            })
+            .collect()
     }
 
-    /// Picks the reply from the candidates, by the preference rules.
-    fn choose(
+    /// Picks the reply from the candidates, by the preference rules, and
+    /// the candidate it came from.
+    fn choose<'c>(
         &self,
         session: &Session<O>,
-        candidates: Vec<Candidate<O>>,
+        candidates: &'c [Candidate<O>],
         trace: &mut Trace<O>,
-    ) -> (Reply<O>, Option<Utterance<O>>) {
-        let (good, bad): (Vec<_>, Vec<_>) = candidates.into_iter().partition(|c| c.result.is_ok());
-        let Some(first) = good.first() else {
+    ) -> (Reply<O>, Option<&'c Candidate<O>>) {
+        let good: Vec<(&Candidate<O>, &Reply<O>)> = candidates
+            .iter()
+            .filter_map(|c| Some((c, c.result.as_ref().ok()?)))
+            .collect();
+        let Some(&(first, first_reply)) = good.first() else {
             // Nothing survived: report the trouble of the reading that got
             // furthest, or ask back.
-            let wrong_kind = |c: &Candidate<O>| matches!(c.result, Err(Trouble::WrongKind { .. }));
-            let mut bad = bad;
-            if self.switches.on(PREFER_RIGHT_KIND.id)
-                && bad.iter().any(wrong_kind)
-                && bad
-                    .iter()
-                    .any(|c| matches!(c.result, Err(Trouble::Ambiguous { .. })))
-            {
-                trace.preferences.push(PREFER_RIGHT_KIND);
-                bad.retain(|c| !wrong_kind(c));
-            }
             let asking = self.switches.on(PREFER_ASKING.id);
-            let worst = bad
-                .into_iter()
-                .filter_map(|c| c.result.err().map(|t| (c.reading, c.meaning, t)))
-                .max_by_key(|(_, _, t)| {
-                    let asks = matches!(t, Trouble::Ambiguous { .. });
-                    (asks && asking, trouble_progress(t))
-                });
-            return match worst {
-                Some((reading, meaning, trouble)) => {
-                    if asking && matches!(trouble, Trouble::Ambiguous { .. }) {
-                        trace.preferences.push(PREFER_ASKING);
-                    }
-                    trace.chosen = Some(reading);
-                    (Reply::Trouble(trouble), Some(meaning))
-                }
-                None => (Reply::Trouble(Trouble::Unsupported), None),
+            let asks = |t: &Trouble<O>| asking && matches!(t, Trouble::Ambiguous { .. });
+            let worst = candidates
+                .iter()
+                .filter_map(|c| Some((c, c.result.as_ref().err()?)))
+                .max_by_key(|&(_, t)| (asks(t), trouble_progress(t)));
+            let Some((c, trouble)) = worst else {
+                return (Reply::Trouble(Trouble::Unsupported), None);
             };
+            if asks(trouble) {
+                trace.preferences.push(PREFER_ASKING);
+            }
+            return (Reply::Trouble(trouble.clone()), Some(c));
         };
-        let replies: BTreeSet<&Reply<O>> =
-            good.iter().filter_map(|c| c.result.as_ref().ok()).collect();
+        let replies: BTreeSet<&Reply<O>> = good.iter().map(|&(_, r)| r).collect();
         if replies.len() == 1 {
             trace.choice = format!(
                 "{} surviving reading(s), all with the same answer",
                 good.len()
             );
-            trace.chosen = Some(first.reading);
-            let reply = first
-                .result
-                .clone()
-                .unwrap_or(Reply::Trouble(Trouble::Unsupported));
-            return (reply, Some(first.meaning.clone()));
-        }
-        // Readings may propose the same edit in different words (with or
-        // without the kind said), so only different items make it a guess.
-        let edited: BTreeSet<&O::Item> = replies.iter().flat_map(|r| r.items()).collect();
-        if self.switches.on(ASK_BEFORE_ACTING.id)
-            && edited.len() > 1
-            && good
-                .iter()
-                .any(|c| matches!(c.meaning, Utterance::Command(_)))
-        {
-            trace.preferences.push(ASK_BEFORE_ACTING);
-            let candidates = edited.into_iter().cloned().collect();
-            return (Reply::Trouble(Trouble::Ambiguous { candidates }), None);
+            return (first_reply.clone(), Some(first));
         }
         // The readings disagree: prefer recent mentions, then the first reading.
         let mentions = session.mentions();
-        let recency = |c: &Candidate<O>| -> usize {
+        let recency = |c: &Candidate<O>| {
             c.means
                 .iter()
-                .map(|(_, item)| {
-                    mentions
-                        .iter()
-                        .position(|m| m == item)
-                        .unwrap_or(usize::MAX)
-                })
+                .filter_map(|(_, item)| mentions.iter().position(|m| m == item))
                 .min()
-                .unwrap_or(usize::MAX)
         };
-        let mut pick = first;
-        let mut rule = PREFER_FIRST_READING;
-        if self.switches.on(PREFER_RECENT_MENTION.id)
-            && let Some(best) = good.iter().min_by_key(|c| (recency(c), c.reading))
-            && recency(best) != usize::MAX
-        {
-            pick = best;
-            rule = PREFER_RECENT_MENTION;
-        } else if !self.switches.on(PREFER_FIRST_READING.id) {
-            return (
-                Reply::Trouble(Trouble::Ambiguous {
-                    candidates: good
-                        .iter()
-                        .flat_map(|c| c.means.iter().map(|(_, i)| i.clone()))
-                        .collect(),
-                }),
-                None,
-            );
-        }
+        let recent = good
+            .iter()
+            .filter_map(|&(c, r)| Some((recency(c)?, c, r)))
+            .min_by_key(|&(recency, c, _)| (recency, c.reading));
+        let (pick, reply, rule) = match recent {
+            Some((_, c, r)) if self.switches.on(PREFER_RECENT_MENTION.id) => {
+                (c, r, PREFER_RECENT_MENTION)
+            }
+            _ if self.switches.on(PREFER_FIRST_READING.id) => {
+                (first, first_reply, PREFER_FIRST_READING)
+            }
+            _ => {
+                let candidates = good
+                    .iter()
+                    .flat_map(|(c, _)| c.means.iter().map(|(_, i)| i.clone()))
+                    .collect();
+                return (Reply::Trouble(Trouble::Ambiguous { candidates }), None);
+            }
+        };
         trace.preferences.push(rule);
-        trace.chosen = Some(pick.reading);
         trace.choice = format!(
             "{} surviving readings with {} different answers; chose reading {} by {}",
             good.len(),
@@ -448,7 +393,7 @@ impl<O: Ontology> Mind<'_, O> {
             .iter()
             .filter(|(name, item)| {
                 good.iter()
-                    .any(|c| c.means.iter().any(|(n, i)| n == name && i != item))
+                    .any(|(c, _)| c.means.iter().any(|(n, i)| n == name && i != item))
             })
             .map(|(name, item)| Assumption::Means {
                 name: name.clone(),
@@ -460,52 +405,18 @@ impl<O: Ontology> Mind<'_, O> {
                 meaning: pick.meaning.clone(),
             });
         }
-        let inner = pick
-            .result
-            .clone()
-            .unwrap_or(Reply::Trouble(Trouble::Unsupported));
         (
             Reply::Assuming {
                 assumptions,
-                reply: Box::new(inner),
+                reply: Box::new(reply.clone()),
             },
-            Some(pick.meaning.clone()),
+            Some(pick),
         )
-    }
-
-    fn speak(
-        &self,
-        reply: &Reply<O>,
-        tokens: &[TokenSpan],
-        text: &str,
-        trace: &mut Trace<O>,
-    ) -> String {
-        let spoken = self.language.say(reply).unwrap_or_else(|| Spoken {
-            text: format!("(I have no words for this reply: {reply:?})"),
-            rules: Vec::new(),
-        });
-        trace.reply = Some(reply.clone());
-        trace.reply_rules = spoken.rules.clone();
-        match reply {
-            Reply::Trouble(Trouble::UnknownWord { at, .. } | Trouble::UnknownShape { at }) => {
-                format!("{}\n  {}", spoken.text, mark(text, tokens, *at))
-            }
-            _ => spoken.text,
-        }
     }
 }
 
 /// Why the most recent action asked for was taken up: the turn that asked.
-/// Pushes the rule it used onto `fired`.
-fn reason<O: Ontology>(
-    session: &Session<O>,
-    switches: &Switches,
-    fired: &mut Vec<RuleInfo>,
-) -> Result<Reply<O>, Trouble<O>> {
-    if !switches.on(REASON_IS_REQUEST.id) {
-        return Err(Trouble::Unsupported);
-    }
-    fired.push(REASON_IS_REQUEST);
+fn reason<O: Ontology>(session: &Session<O>) -> Result<Reply<O>, Trouble<O>> {
     session
         .turns
         .iter()
@@ -521,20 +432,6 @@ fn reason<O: Ontology>(
         .ok_or(Trouble::Unsupported)
 }
 
-/// What the conversation holds: the items mentioned in it. Pushes the rule
-/// it used onto `fired`.
-fn recall<O: Ontology>(
-    session: &Session<O>,
-    switches: &Switches,
-    fired: &mut Vec<RuleInfo>,
-) -> Result<Reply<O>, Trouble<O>> {
-    if !switches.on(RECALL_IS_MENTIONS.id) {
-        return Err(Trouble::Unsupported);
-    }
-    fired.push(RECALL_IS_MENTIONS);
-    Ok(Reply::Recall(session.mentions()))
-}
-
 /// The input with `▮` before the token at `at` (or at the end).
 pub fn mark(text: &str, tokens: &[TokenSpan], at: usize) -> String {
     let byte = tokens.get(at).map_or(text.trim_end().len(), |t| t.start);
@@ -542,22 +439,30 @@ pub fn mark(text: &str, tokens: &[TokenSpan], at: usize) -> String {
     format!("{before}▮{after}")
 }
 
+/// Every way of taking one choice from each of `options`, in order; at most
+/// 256, a guard against inputs with many ambiguous names.
 fn cartesian<T: Clone>(options: &[Vec<T>]) -> Vec<Vec<T>> {
-    let mut out: Vec<Vec<T>> = vec![Vec::new()];
-    for choices in options {
-        let mut next = Vec::new();
-        for prefix in &out {
-            for choice in choices {
-                let mut p = prefix.clone();
-                p.push(choice.clone());
-                next.push(p);
-            }
-        }
-        out = next;
-        // A guard against inputs with many ambiguous names.
-        out.truncate(256);
+    options.iter().fold(vec![Vec::new()], |out, choices| {
+        let mut next: Vec<Vec<T>> = out
+            .iter()
+            .flat_map(|prefix| {
+                choices
+                    .iter()
+                    .map(|c| prefix.iter().chain([c]).cloned().collect())
+            })
+            .collect();
+        next.truncate(256);
+        next
+    })
+}
+
+/// The token where reading stopped, if the reply is that the input was not
+/// understood.
+fn stuck_at<O: Ontology>(reply: &Reply<O>) -> Option<usize> {
+    match reply {
+        Reply::Trouble(Trouble::UnknownWord { at, .. } | Trouble::UnknownShape { at }) => Some(*at),
+        _ => None,
     }
-    out
 }
 
 fn trouble_progress<O: Ontology>(t: &Trouble<O>) -> Progress {
@@ -573,14 +478,6 @@ fn progress_of<O: Ontology>(reply: &Reply<O>) -> Progress {
     match reply {
         Reply::Trouble(t) => trouble_progress(t),
         Reply::Assuming { reply, .. } => progress_of(reply),
-        Reply::Extent(_)
-        | Reply::Location(_)
-        | Reply::Account { .. }
-        | Reply::Count { .. }
-        | Reply::Proposal { .. }
-        | Reply::Reason { .. }
-        | Reply::Forgotten
-        | Reply::Recall(_)
-        | Reply::Noted(_) => Progress::Done,
+        _ => Progress::Done,
     }
 }

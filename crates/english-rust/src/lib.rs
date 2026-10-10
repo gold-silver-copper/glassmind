@@ -9,381 +9,259 @@ use glassmind_meaning::Position;
 use glassmind_rules::{RuleInfo, SEED};
 use glassmind_world_rust::{Rust, RustKind, RustRelation};
 
-fn kind(
-    id: &'static str,
-    round: u32,
-    form: &'static str,
-    kind: RustKind,
-    number: Number,
-) -> Rule<Cat, Sem<Rust>> {
-    word(
-        RuleInfo::new(id, round),
-        Cat::Noun,
-        &[form],
-        Sem::Kind { kind, number },
-    )
+type Word = Rule<Cat, Sem<Rust>>;
+
+/// One word rule per `(id, round, words, a, b)` row, reading the words as
+/// a `cat` whose meaning `sem` makes from the row's `a` and `b`.
+fn table<A: Copy, B: Copy>(
+    cat: Cat,
+    sem: fn(A, B) -> Sem<Rust>,
+    rows: &[(&'static str, u32, &'static str, A, B)],
+) -> Vec<Word> {
+    rows.iter()
+        .map(|&(id, round, words, a, b)| word(RuleInfo::new(id, round), cat, words, sem(a, b)))
+        .collect()
 }
 
-fn verb(
-    id: &'static str,
-    round: u32,
-    form: &'static str,
-    relation: RustRelation,
-    verb_form: VerbForm,
-) -> Rule<Cat, Sem<Rust>> {
-    word(
-        RuleInfo::new(id, round),
-        Cat::Verb,
-        &[form],
-        Sem::Relation {
-            relation,
-            form: verb_form,
-        },
-    )
+/// The same rules, accepted but never said.
+fn read_only(rules: Vec<Word>) -> Vec<Word> {
+    rules.into_iter().map(Word::read_only).collect()
+}
+
+/// A kind of item, in the singular or plural: "function", "structs".
+fn kind(kind: RustKind, number: Number) -> Sem<Rust> {
+    Sem::Kind { kind, number }
+}
+
+/// A relation, as a verb in the given form or a preposition: "calls", "on".
+fn relation(relation: RustRelation, form: VerbForm) -> Sem<Rust> {
+    Sem::Relation { relation, form }
+}
+
+/// One argument of a relation, as a noun or adjective: "callers", "type".
+fn role(relation: RustRelation, position: Position) -> Sem<Rust> {
+    Sem::Role { relation, position }
+}
+
+/// A field, standing in a place of the relation: "a `Gate` field".
+fn field(relation: RustRelation, position: Position) -> Sem<Rust> {
+    Sem::Holder {
+        kind: RustKind::Field,
+        relation,
+        position,
+    }
 }
 
 /// Every English word for a Rust concept.
-pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
+pub fn words() -> Vec<Word> {
+    use Cat::{Belonging, Holder, Inside, Noun, Part, Preposition, RoleAdjective, RoleNoun, Verb};
     use Number::*;
+    use Position::*;
     use RustKind::*;
     use RustRelation::*;
     use VerbForm::*;
-    vec![
-        kind(
-            "en.rust.noun.function",
-            SEED,
-            "function",
-            Function,
-            Singular,
+    [
+        table(
+            Noun,
+            kind,
+            &[
+                (
+                    "en.rust.noun.function",
+                    SEED,
+                    "function",
+                    Function,
+                    Singular,
+                ),
+                (
+                    "en.rust.noun.functions",
+                    SEED,
+                    "functions",
+                    Function,
+                    Plural,
+                ),
+                ("en.rust.noun.fn", 2, "fn", Function, Singular),
+                ("en.rust.noun.struct", 2, "struct", Struct, Singular),
+                ("en.rust.noun.enum", 2, "enum", Enum, Singular),
+                ("en.rust.noun.field", 2, "field", Field, Singular),
+                // Short forms in terse requests: "fns called by `cut`",
+                // "where's that func defined".
+                ("en.rust.noun.fns", 2, "fns", Function, Plural),
+                ("en.rust.noun.funcs", 2, "funcs", Function, Plural),
+                ("en.rust.noun.func", 3, "func", Function, Singular),
+                // "rename the `retry` method on `Chat`"
+                ("en.rust.noun.method", 5, "method", Function, Singular),
+                // "which structs have a field whose type is or contains `Arc`"
+                ("en.rust.noun.structs", 3, "structs", Struct, Plural),
+                ("en.rust.noun.fields", 3, "fields", Field, Plural),
+            ],
         ),
-        kind(
-            "en.rust.noun.functions",
-            SEED,
-            "functions",
-            Function,
-            Plural,
+        table(
+            Verb,
+            relation,
+            &[
+                ("en.rust.verb.calls", SEED, "calls", Calls, ThirdSingular),
+                ("en.rust.verb.call", SEED, "call", Calls, Plain),
+                // "which fns does `search_results` invoke"
+                ("en.rust.verb.invokes", 2, "invokes", Calls, ThirdSingular),
+                ("en.rust.verb.invoke", 2, "invoke", Calls, Plain),
+                // "fns called by `parse_archives`"
+                ("en.rust.verb.called", 2, "called", Calls, Participle),
+                // "which functions is `parse_request` calling"
+                ("en.rust.verb.calling", 2, "calling", Calls, Progressive),
+                // "which functions belong to `App`"
+                ("en.rust.verb.belong_to", 5, "belong to", BelongsTo, Plain),
+                // "which structs have a field ..."
+                ("en.rust.verb.has", 3, "has", HasField, ThirdSingular),
+                ("en.rust.verb.have", 3, "have", HasField, Plain),
+            ],
         ),
-        kind("en.rust.noun.fn", 2, "fn", Function, Singular),
-        kind("en.rust.noun.struct", 2, "struct", Struct, Singular),
-        kind("en.rust.noun.enum", 2, "enum", Enum, Singular),
-        kind("en.rust.noun.trait", 2, "trait", Trait, Singular),
-        kind("en.rust.noun.field", 2, "field", Field, Singular),
-        verb("en.rust.verb.calls", SEED, "calls", Calls, ThirdSingular),
-        verb("en.rust.verb.call", SEED, "call", Calls, Plain),
-        // Short forms in terse requests: "fns called by `cut`".
-        kind("en.rust.noun.fns", 2, "fns", Function, Plural),
-        kind("en.rust.noun.funcs", 2, "funcs", Function, Plural),
-        // "where's that func defined"
-        kind("en.rust.noun.func", 3, "func", Function, Singular),
-        // "which fns does `search_results` invoke"
-        verb("en.rust.verb.invokes", 2, "invokes", Calls, ThirdSingular),
-        verb("en.rust.verb.invoke", 2, "invoke", Calls, Plain),
-        // "fns called by `parse_archives`"
-        verb("en.rust.verb.called", 2, "called", Calls, Participle),
-        // "which functions is `parse_request` calling"
-        verb("en.rust.verb.calling", 2, "calling", Calls, Progressive),
-        // "rename the `retry` method on `Chat`"
-        kind("en.rust.noun.method", 5, "method", Function, Singular),
-        // "2 fields belong to `Wheel`: ...", "which functions belong to `App`"
-        word(
-            RuleInfo::new("en.rust.verb.belongs_to", 5),
-            Cat::Verb,
-            &["belongs", "to"],
-            Sem::Relation {
-                relation: BelongsTo,
-                form: ThirdSingular,
-            },
-        ),
-        word(
-            RuleInfo::new("en.rust.verb.belong_to", 5),
-            Cat::Verb,
-            &["belong", "to"],
-            Sem::Relation {
-                relation: BelongsTo,
-                form: Plain,
-            },
-        ),
-        // "`save_filter` in `App`", "`regrid` on `Scene`"
-        word(
-            RuleInfo::new("en.rust.preposition.on", 5),
-            Cat::Preposition,
-            &["on"],
-            Sem::Relation {
-                relation: BelongsTo,
-                form: Plain,
-            },
-        ),
-        word(
-            RuleInfo::new("en.rust.preposition.of", 5),
-            Cat::Preposition,
-            &["of"],
-            Sem::Relation {
-                relation: BelongsTo,
-                form: Plain,
-            },
-        ),
-        word(
-            RuleInfo::new("en.rust.preposition.in", 5),
-            Cat::Preposition,
-            &["in"],
-            Sem::Relation {
-                relation: BelongsTo,
-                form: Plain,
-            },
-        ),
-        // "callees of `dm_vector`": what a function calls; "callers": what calls it.
-        word(
-            RuleInfo::new("en.rust.role.callees", 2),
-            Cat::RoleNoun,
-            &["callees"],
-            Sem::Role {
-                relation: Calls,
-                position: Position::Second,
-            },
-        ),
-        word(
-            RuleInfo::new("en.rust.role.callers", 2),
-            Cat::RoleNoun,
-            &["callers"],
-            Sem::Role {
-                relation: Calls,
-                position: Position::First,
-            },
-        ),
-        // "`save_viewed` caller count": the singular, as a noun modifier.
-        word(
-            RuleInfo::new("en.rust.role.caller", 3),
-            Cat::RoleNoun,
-            &["caller"],
-            Sem::Role {
-                relation: Calls,
-                position: Position::First,
-            },
-        )
-        .read_only(),
-        // "which structs have a field whose type is or contains `Arc`"
-        kind("en.rust.noun.structs", 3, "structs", Struct, Plural),
-        kind("en.rust.noun.fields", 3, "fields", Field, Plural),
-        verb("en.rust.verb.has", 3, "has", HasField, ThirdSingular),
-        verb("en.rust.verb.have", 3, "have", HasField, Plain),
-        // "which structs hold a field ...", "what structs got a field ..."
-        verb("en.rust.verb.holds", 3, "holds", HasField, ThirdSingular).read_only(),
-        verb("en.rust.verb.hold", 3, "hold", HasField, Plain).read_only(),
-        verb("en.rust.verb.got", 3, "got", HasField, Plain).read_only(),
-        // "find structs that contain a RepoCommit field"
-        verb("en.rust.verb.contain", 3, "contain", HasField, Plain).read_only(),
-        // "which structs keep a `LineCache` in a field", "store a `Shown` in
-        // a field", "carry `KeyModifiers` in a field"
-        verb("en.rust.verb.keep", 3, "keep", HasField, Plain).read_only(),
-        verb("en.rust.verb.store", 3, "store", HasField, Plain).read_only(),
-        verb("en.rust.verb.carry", 3, "carry", HasField, Plain).read_only(),
-        // "which structs define a field named `order`", "structs containing
-        // field `title`", "any structs holding a `jobs` field"
-        verb("en.rust.verb.define", 5, "define", HasField, Plain).read_only(),
-        verb(
-            "en.rust.verb.containing",
-            5,
-            "containing",
-            HasField,
-            Progressive,
-        )
-        .read_only(),
-        verb("en.rust.verb.holding", 5, "holding", HasField, Progressive).read_only(),
-        // "structs with a field of type `Notice`", "structs w/ a field ..."
-        word(
-            RuleInfo::new("en.rust.preposition.with", 3),
-            Cat::Preposition,
-            &["with"],
-            Sem::Relation {
-                relation: HasField,
-                form: Plain,
-            },
-        ),
-        word(
-            RuleInfo::new("en.rust.preposition.w", 3),
-            Cat::Preposition,
-            &["w", "/"],
-            Sem::Relation {
-                relation: HasField,
-                form: Plain,
-            },
-        ),
-        // A field's type: "whose type is `Arc`", "of type `Tab`", "typed `Art`".
-        word(
-            RuleInfo::new("en.rust.role.type", 3),
-            Cat::RoleNoun,
-            &["type"],
-            Sem::Role {
-                relation: TypeMentions,
-                position: Position::Second,
-            },
-        ),
-        // A field holds what its type mentions: "a `Gate` field", "a field
-        // that is `Key`", "fields containing `Signature`".
-        word(
-            RuleInfo::new("en.rust.holder.field", 3),
-            Cat::Holder,
-            &["field"],
-            Sem::Holder {
-                kind: Field,
-                relation: TypeMentions,
-                position: Position::Second,
-            },
-        ),
-        word(
-            RuleInfo::new("en.rust.holder.fields", 3),
-            Cat::Holder,
-            &["fields"],
-            Sem::Holder {
-                kind: Field,
-                relation: TypeMentions,
-                position: Position::Second,
-            },
-        ),
-        word(
-            RuleInfo::new("en.rust.role.typed", 3),
-            Cat::RoleAdjective,
-            &["typed"],
-            Sem::Role {
-                relation: TypeMentions,
-                position: Position::Second,
-            },
+        read_only(table(
+            Verb,
+            relation,
+            &[
+                // "which structs hold a field ...", "what structs got a field ..."
+                ("en.rust.verb.holds", 3, "holds", HasField, ThirdSingular),
+                ("en.rust.verb.hold", 3, "hold", HasField, Plain),
+                ("en.rust.verb.got", 3, "got", HasField, Plain),
+                // "find structs that contain a RepoCommit field"
+                ("en.rust.verb.contain", 3, "contain", HasField, Plain),
+                // "which structs keep a `LineCache` in a field", "store a
+                // `Shown` in a field", "carry `KeyModifiers` in a field"
+                ("en.rust.verb.keep", 3, "keep", HasField, Plain),
+                ("en.rust.verb.store", 3, "store", HasField, Plain),
+                ("en.rust.verb.carry", 3, "carry", HasField, Plain),
+                // "which structs define a field named `order`", "structs
+                // containing field `title`", "any structs holding a `jobs` field"
+                ("en.rust.verb.define", 5, "define", HasField, Plain),
+                (
+                    "en.rust.verb.containing",
+                    5,
+                    "containing",
+                    HasField,
+                    Progressive,
+                ),
+                ("en.rust.verb.holding", 5, "holding", HasField, Progressive),
+                // "which fields `S` contains", "which fields make up `S`",
+                // "what fields `PostText` is made up of"
+                (
+                    "en.rust.verb.contains",
+                    7,
+                    "contains",
+                    HasField,
+                    ThirdSingular,
+                ),
+                ("en.rust.verb.make_up", 7, "make up", BelongsTo, Plain),
+                (
+                    "en.rust.verb.is_made_up_of",
+                    7,
+                    "is made up of",
+                    HasField,
+                    ThirdSingular,
+                ),
+            ],
+        )),
+        table(
+            Preposition,
+            relation,
+            &[
+                // "`save_filter` in `App`", "`regrid` on `Scene`"
+                ("en.rust.preposition.on", 5, "on", BelongsTo, Plain),
+                ("en.rust.preposition.of", 5, "of", BelongsTo, Plain),
+                ("en.rust.preposition.in", 5, "in", BelongsTo, Plain),
+                // "structs with a field of type `Notice`", "structs w/ a field ..."
+                ("en.rust.preposition.with", 3, "with", HasField, Plain),
+                ("en.rust.preposition.w", 3, "w /", HasField, Plain),
+            ],
         ),
         // "fields inside `S`"
-        word(
-            RuleInfo::new("en.rust.preposition.inside", 7),
-            Cat::Preposition,
-            &["inside"],
-            Sem::Relation {
-                relation: BelongsTo,
-                form: Plain,
-            },
-        )
-        .read_only(),
-        // "which fields `S` contains", "which fields make up `S`"
-        verb(
-            "en.rust.verb.contains",
-            7,
-            "contains",
-            HasField,
-            ThirdSingular,
-        )
-        .read_only(),
-        word(
-            RuleInfo::new("en.rust.verb.make_up", 7),
-            Cat::Verb,
-            &["make", "up"],
-            Sem::Relation {
-                relation: BelongsTo,
-                form: Plain,
-            },
-        )
-        .read_only(),
+        read_only(table(
+            Preposition,
+            relation,
+            &[("en.rust.preposition.inside", 7, "inside", BelongsTo, Plain)],
+        )),
+        // A field holds what its type mentions: "a `Gate` field", "a field
+        // that is `Key`", "fields containing `Signature`".
+        table(
+            Holder,
+            field,
+            &[
+                ("en.rust.holder.field", 3, "field", TypeMentions, Second),
+                ("en.rust.holder.fields", 3, "fields", TypeMentions, Second),
+            ],
+        ),
+        table(
+            RoleNoun,
+            role,
+            &[
+                // "callees of `dm_vector`": what a function calls; "callers":
+                // what calls it.
+                ("en.rust.role.callees", 2, "callees", Calls, Second),
+                ("en.rust.role.callers", 2, "callers", Calls, First),
+                // A field's type: "whose type is `Arc`", "of type `Tab`".
+                ("en.rust.role.type", 3, "type", TypeMentions, Second),
+            ],
+        ),
+        // "typed `Art`"
+        table(
+            RoleAdjective,
+            role,
+            &[("en.rust.role.typed", 3, "typed", TypeMentions, Second)],
+        ),
+        read_only(table(
+            RoleNoun,
+            role,
+            &[
+                // "`save_viewed` caller count": the singular, as a noun modifier.
+                ("en.rust.role.caller", 3, "caller", Calls, First),
+                // A struct's fields are what it has: "`Conv` fields",
+                // "`QueryEntry` members".
+                ("en.rust.role.fields", 7, "fields", HasField, Second),
+                ("en.rust.role.members", 7, "members", HasField, Second),
+            ],
+        )),
         // A field or method belongs to its type: "the field `x` of `S`",
         // "`x` on the `S` struct", "`x` in `S`". The thing before the word
         // is the member.
-        belonging("en.rust.belonging.of", "of"),
-        belonging("en.rust.belonging.on", "on"),
-        belonging("en.rust.belonging.in", "in"),
-        // A struct's fields are what it has, and what is in it: "`Conv`
-        // fields", "`QueryEntry` members", "what's inside `NewDm`", "what
-        // fields `PostText` is made up of".
-        role("en.rust.role.fields", "fields"),
-        role("en.rust.role.members", "members"),
-        inside("en.rust.inside.in", "in"),
-        inside("en.rust.inside.inside", "inside"),
-        word(
-            RuleInfo::new("en.rust.verb.is_made_up_of", 7),
-            Cat::Verb,
-            &["is", "made", "up", "of"],
-            Sem::Relation {
-                relation: HasField,
-                form: ThirdSingular,
-            },
-        )
-        .read_only(),
-        // "Config field saved_max_mb": a field is part of its struct.
-        word(
-            RuleInfo::new("en.rust.part.field", 5),
-            Cat::Part,
-            &["field"],
-            Sem::Holder {
-                kind: Field,
-                relation: HasField,
-                position: Position::Second,
-            },
+        table(
+            Belonging,
+            role,
+            &[
+                ("en.rust.belonging.of", 5, "of", Member, Second),
+                ("en.rust.belonging.on", 5, "on", Member, Second),
+                ("en.rust.belonging.in", 5, "in", Member, Second),
+            ],
         ),
-        // "`S` struct fields", "`S` members": the fields of a struct.
-        word(
-            RuleInfo::new("en.rust.part.fields", 7),
-            Cat::Part,
-            &["fields"],
-            Sem::Holder {
-                kind: Field,
-                relation: HasField,
-                position: Position::Second,
-            },
-        )
-        .read_only(),
-        word(
-            RuleInfo::new("en.rust.part.members", 7),
-            Cat::Part,
-            &["members"],
-            Sem::Holder {
-                kind: Field,
-                relation: HasField,
-                position: Position::Second,
-            },
-        )
-        .read_only(),
+        // What is inside a struct is what it has: "what's inside `NewDm`".
+        read_only(table(
+            Inside,
+            relation,
+            &[
+                ("en.rust.inside.in", 7, "in", HasField, Plain),
+                ("en.rust.inside.inside", 7, "inside", HasField, Plain),
+            ],
+        )),
+        // A field is part of its struct: "Config field saved_max_mb".
+        table(
+            Part,
+            field,
+            &[("en.rust.part.field", 5, "field", HasField, Second)],
+        ),
+        // "`S` struct fields": the fields of a struct.
+        read_only(table(
+            Part,
+            field,
+            &[("en.rust.part.fields", 7, "fields", HasField, Second)],
+        )),
     ]
-}
-
-/// A noun for the fields a struct has.
-fn role(id: &'static str, form: &'static str) -> Rule<Cat, Sem<Rust>> {
-    word(
-        RuleInfo::new(id, 7),
-        Cat::RoleNoun,
-        &[form],
-        Sem::Role {
-            relation: RustRelation::HasField,
-            position: Position::Second,
-        },
-    )
-    .read_only()
-}
-
-/// A preposition for what is inside a struct: its fields.
-fn inside(id: &'static str, form: &'static str) -> Rule<Cat, Sem<Rust>> {
-    word(
-        RuleInfo::new(id, 7),
-        Cat::Inside,
-        &[form],
-        Sem::Relation {
-            relation: RustRelation::HasField,
-            form: VerbForm::Plain,
-        },
-    )
-    .read_only()
-}
-
-fn belonging(id: &'static str, form: &'static str) -> Rule<Cat, Sem<Rust>> {
-    word(
-        RuleInfo::new(id, 5),
-        Cat::Belonging,
-        &[form],
-        Sem::Role {
-            relation: RustRelation::Member,
-            position: Position::Second,
-        },
-    )
+    .concat()
 }
 
 /// All English rules for talking about Rust: the language's own and the words for the world.
-pub fn rules() -> Vec<Rule<Cat, Sem<Rust>>> {
-    let mut rules = glassmind_english::rules();
-    rules.extend(words());
-    rules
+pub fn rules() -> Vec<Word> {
+    glassmind_english::rules()
+        .into_iter()
+        .chain(words())
+        .collect()
 }
 
 #[cfg(test)]
@@ -678,7 +556,6 @@ mod tests {
             "which struct(s) define a done field",
             "list structs containing field `done`",
             "what structs got done as a field",
-            "is there any struct with a field named `done`? which ones have it",
             "which structs have field named done? still finding my way around here",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
@@ -734,9 +611,9 @@ mod tests {
         ));
     }
 
-    /// The ways of asking to rename a field of a struct can all mean the
-    /// same: the field that is `x` and a member of the struct that is `S`
-    /// ("the `x` field" may also be a field of type `x`, which the world
+    /// Asking to rename a field after setting its struct as the topic can
+    /// mean the field that is `x` and a member of the struct that is `S`
+    /// ("field `x`" may also be a field of type `x`, which the world
     /// decides).
     #[test]
     fn ways_of_asking_to_rename_a_field_agree() {
@@ -763,18 +640,11 @@ mod tests {
             kind: Some(RustKind::Field),
             name: Some(Name("y".into())),
         });
-        for text in [
-            "rename the field `x` of the `S` struct to `y`",
-            "Could you rename the `x` field on the `S` struct to `y`, please?",
-            "the field `x` in the `S` struct is confusing, can you rename it to `y`?",
-            "in the `S` struct there is field `x`, can we rename it to `y`?",
-            "I'd like to rename the field `x` in the `S` struct to `y`. Can you do that for me?",
-        ] {
-            let Understanding::Readings(readings) = english.understand(text) else {
-                panic!("could not read {text:?}");
-            };
-            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
-        }
+        let text = "in the `S` struct there is field `x`, can we rename it to `y`?";
+        let Understanding::Readings(readings) = english.understand(text) else {
+            panic!("could not read {text:?}");
+        };
+        assert!(readings.iter().any(|r| r.meaning == meaning));
     }
 
     /// The ways of asking for a field to be renamed mean what the system

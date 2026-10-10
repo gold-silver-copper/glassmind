@@ -5,6 +5,7 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::Ontology;
 
+use crate::blank;
 use crate::remark::request;
 use crate::sem::{Cat, Sem};
 use crate::word;
@@ -13,135 +14,102 @@ use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 2;
 
+/// A fixed phrase that means nothing by itself (an aside, a prompt, the
+/// "that" of "forget that"), read but never said.
+pub(crate) fn filler<O: Ontology>(
+    id: &'static str,
+    round: u32,
+    cat: Cat,
+    words: &'static str,
+) -> Rule<Cat, Sem<O>> {
+    word(RuleInfo::new(id, round), cat, words, blank()).read_only()
+}
+
+/// Greetings, hesitations and thanks, as users open or close a request,
+/// and the round each came in.
+const ASIDES: &[(&str, u32, &str)] = &[
+    ("en.aside.ok", ROUND, "ok"),
+    ("en.aside.so", ROUND, "so"),
+    ("en.aside.um", ROUND, "um"),
+    ("en.aside.uh", ROUND, "uh"),
+    ("en.aside.hmm", ROUND, "hmm"),
+    ("en.aside.hm", ROUND, "hm"),
+    ("en.aside.oh", ROUND, "oh"),
+    ("en.aside.sorry", ROUND, "sorry"),
+    ("en.aside.thanks", ROUND, "thanks"),
+    ("en.aside.quick_question", ROUND, "quick question"),
+    ("en.aside.quick_one", ROUND, "quick one"),
+    // "Quick request: please rename ...", "... Thanks a lot!"
+    ("en.aside.quick_request", 5, "quick request"),
+    ("en.aside.thanks_a_lot", 5, "thanks a lot"),
+    // "Actually, please forget that."
+    ("en.aside.actually", 6, "actually"),
+    ("en.aside.thanks_in_advance", 5, "thanks in advance"),
+    // "wait, why ...", "ok but why ...": a pause before a question about
+    // what was just said.
+    ("en.aside.wait", 6, "wait"),
+    ("en.aside.but", 6, "but"),
+    // "Quick heads-up: I'm going to call ...", "btw I'll call ...", "...,
+    // fyi"
+    ("en.aside.quick_heads_up", 6, "quick heads-up"),
+    ("en.aside.quick_thing", 6, "quick thing"),
+    ("en.aside.btw", 6, "btw"),
+    ("en.aside.fyi", 6, "fyi"),
+];
+
+/// The punctuation after an aside: "..., ok?" (an aside asking whether
+/// what was said is fine), and what ends one: "hey,", "hi!", "quick
+/// question:", "sorry, quick one -", "Thanks.".
+const MARKS: &[(&str, u32, &str)] = &[
+    ("en.aside.question", 6, "?"),
+    ("en.aside.comma", ROUND, ","),
+    ("en.aside.bang", ROUND, "!"),
+    ("en.aside.colon", ROUND, ":"),
+    ("en.aside.stop", ROUND, "."),
+    ("en.aside.dash", ROUND, "-"),
+];
+
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let aside = || S::Const(Sem::Quote(String::new()));
-    // Greetings, hesitations and thanks, as users open or close a request.
-    let aside_word = |(id, words, round): (&'static str, &'static [&'static str], u32)| {
-        word(
+    let utterance = |id, round, rhs| {
+        Rule::new(
             RuleInfo::new(id, round),
-            Cat::Aside,
-            words,
-            Sem::Quote(String::new()),
+            Cat::Utterance,
+            rhs,
+            S::Build(request),
         )
         .read_only()
     };
-    let mut rules: Vec<Rule<Cat, Sem<O>>> = [
-        ("en.aside.hey", &["hey"][..]),
-        ("en.aside.hi", &["hi"]),
-        ("en.aside.hello", &["hello"]),
-        ("en.aside.ok", &["ok"]),
-        ("en.aside.okay", &["okay"]),
-        ("en.aside.so", &["so"]),
-        ("en.aside.um", &["um"]),
-        ("en.aside.uh", &["uh"]),
-        ("en.aside.hmm", &["hmm"]),
-        ("en.aside.hm", &["hm"]),
-        ("en.aside.oh", &["oh"]),
-        ("en.aside.ah", &["ah"]),
-        ("en.aside.sorry", &["sorry"]),
-        ("en.aside.thanks", &["thanks"]),
-        ("en.aside.thank_you", &["thank", "you"]),
-        ("en.aside.quick_question", &["quick", "question"]),
-        ("en.aside.quick_one", &["quick", "one"]),
-    ]
-    .into_iter()
-    .map(|(id, words)| aside_word((id, words, ROUND)))
-    .collect();
-    // "Quick request: please rename ...", "... Thanks a lot!"
-    rules.push(aside_word((
-        "en.aside.quick_request",
-        &["quick", "request"],
-        5,
-    )));
-    rules.push(aside_word((
-        "en.aside.thanks_a_lot",
-        &["thanks", "a", "lot"],
-        5,
-    )));
-    // "Actually, please forget that."
-    rules.push(aside_word(("en.aside.actually", &["actually"], 6)));
-    rules.push(aside_word((
-        "en.aside.thanks_in_advance",
-        &["thanks", "in", "advance"],
-        5,
-    )));
-    // "wait, why ...", "ok but why ...": a pause before a question about
-    // what was just said.
-    rules.push(aside_word(("en.aside.wait", &["wait"], 6)));
-    rules.push(aside_word(("en.aside.but", &["but"], 6)));
-    // "Quick heads-up: I'm going to call ...", "btw I'll call ...", "...,
-    // fyi"
-    rules.extend(
-        [
-            ("en.aside.heads_up", &["heads-up"][..]),
-            ("en.aside.quick_heads_up", &["quick", "heads-up"]),
-            ("en.aside.quick_thing", &["quick", "thing"]),
-            ("en.aside.small_thing", &["small", "thing"]),
-            ("en.aside.btw", &["btw"]),
-            ("en.aside.fyi", &["fyi"]),
-        ]
-        .into_iter()
-        .map(|(id, words)| aside_word((id, words, 6))),
-    );
-    // "..., ok?": an aside asking whether what was said is fine.
-    rules.push(
+    let mut rules: Vec<_> = ASIDES
+        .iter()
+        .map(|&(id, round, words)| filler(id, round, Cat::Aside, words))
+        .collect();
+    rules.extend(MARKS.iter().map(|&(id, round, mark)| {
         Rule::new(
-            RuleInfo::new("en.aside.question", 6),
+            RuleInfo::new(id, round),
             Cat::Aside,
-            vec![C(Cat::Aside), W("?")],
-            aside(),
+            vec![C(Cat::Aside), W(mark)],
+            S::Const(blank()),
         )
-        .read_only(),
-    );
-    rules.push(
-        Rule::new(
-            RuleInfo::new("en.utterance.comma_aside", 6),
-            Cat::Utterance,
+        .read_only()
+    }));
+    rules.extend([
+        // "Please forget that, thanks."
+        utterance(
+            "en.utterance.comma_aside",
+            6,
             vec![C(Cat::Utterance), W(","), C(Cat::Aside)],
-            S::Build(request),
-        )
-        .read_only(),
-    );
-    // The punctuation that ends an aside: "hey,", "hi!", "quick question:",
-    // "sorry, quick one -", "Thanks.".
-    for (id, mark) in [
-        ("en.aside.comma", ","),
-        ("en.aside.bang", "!"),
-        ("en.aside.colon", ":"),
-        ("en.aside.stop", "."),
-        ("en.aside.dash", "-"),
-        ("en.aside.em_dash", "—"),
-    ] {
-        rules.push(
-            Rule::new(
-                RuleInfo::new(id, ROUND),
-                Cat::Aside,
-                vec![C(Cat::Aside), W(mark)],
-                aside(),
-            )
-            .read_only(),
-        );
-    }
-    // "Hey, where is `x` defined?" and "Where is `x` defined? Thanks!"
-    for (id, rhs) in [
-        (
+        ),
+        // "Hey, where is `x` defined?" and "Where is `x` defined? Thanks!"
+        utterance(
             "en.utterance.aside_before",
+            ROUND,
             vec![C(Cat::Aside), C(Cat::Utterance)],
         ),
-        (
+        utterance(
             "en.utterance.aside_after",
+            ROUND,
             vec![C(Cat::Utterance), C(Cat::Aside)],
         ),
-    ] {
-        rules.push(
-            Rule::new(
-                RuleInfo::new(id, ROUND),
-                Cat::Utterance,
-                rhs,
-                S::Build(request),
-            )
-            .read_only(),
-        );
-    }
+    ]);
     rules
 }

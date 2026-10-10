@@ -11,9 +11,10 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Condition, Description, Ontology, Position, Question, Thing};
 
+use crate::aside::filler;
 use crate::asking::role_of;
-use crate::sem::{Cat, Number, Sem, VerbForm};
-use crate::word;
+use crate::first;
+use crate::sem::{Cat, Number, Sem};
 
 use Sym::{Cat as C, Word as W};
 
@@ -92,34 +93,25 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, lhs, rhs, build| {
         Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
     };
+    // A question asking for what the description among the children
+    // describes.
+    let question = |id, rhs| rule(id, Cat::Question, rhs, identify);
     let mut rules = vec![
         // "what fields on `memo_data`", "which fields are in `S`": a
         // question word before a description asks for what it describes.
-        rule(
+        question(
             "en.question.what_description",
-            Cat::Question,
             vec![W("what"), C(Cat::Description)],
-            identify,
         ),
-        rule(
+        question(
             "en.question.which_description",
-            Cat::Question,
             vec![W("which"), C(Cat::Description)],
-            identify,
         ),
-        // "what are the fields of `S`", "what are fields inside `S`",
-        // "what's the fields of `S`"
-        rule(
-            "en.question.what_are_description",
-            Cat::Question,
-            vec![W("what"), W("are"), C(Cat::Description)],
-            identify,
-        ),
-        rule(
+        // "what are the fields of `S`", "what's the fields of `S`", "what
+        // is inside `S`" ("what are" is a `Cat::WhatIs`)
+        question(
             "en.question.what_is_description",
-            Cat::Question,
             vec![C(Cat::WhatIs), C(Cat::Description)],
-            identify,
         ),
         // "fields are on `S`", "fields are defined on the `S` struct"
         rule(
@@ -170,25 +162,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
-        // "I'd like to know what fields `S` has. Can you list them for me?",
-        // "could you list them": asking again for what was just asked.
-        rule(
-            "en.ask_again.stop",
-            Cat::AskAgain,
-            vec![W("."), C(Cat::AskAgain)],
-            |c| c.first().cloned(),
-        ),
         rule(
             "en.ask_again.for_me",
             Cat::AskAgain,
             vec![C(Cat::AskAgain), W("for"), W("me")],
-            |c| c.first().cloned(),
+            first,
         ),
-        rule(
+        // "could you list them": asking again for what was just answered.
+        filler(
             "en.ask_again.could_you_list_them",
+            ROUND,
             Cat::AskAgain,
-            vec![W("could"), W("you"), W("list"), W("them")],
-            |_| Some(Sem::Quote(String::new())),
+            "could you list them",
         ),
         // "what's in `RepoId`", "what is inside `Bank`", "what's in it":
         // what the thing holds.
@@ -216,39 +201,11 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Question), C(Cat::Join), C(Cat::Question)],
             narrowed,
         ),
-        // "what fields has the `Footer` struct got": the perfect, with the
-        // verb's plain form.
-        rule(
-            "en.restriction.has_got",
-            Cat::Restriction,
-            vec![W("has"), C(Cat::NounPhrase), C(Cat::Verb)],
-            |c| match c {
-                [_, Sem::Relation { form, .. }] if *form == VerbForm::Plain => {
-                    Some(Sem::Condition {
-                        condition: related(c, Position::Second)?,
-                        number: Number::Plural,
-                    })
-                }
-                _ => None,
-            },
-        ),
         // "I'm looking at `InGrid`, which fields does it have?": what the
         // user is looking at, set off before the question about it.
-        word(
-            RuleInfo::new("en.prompt.looking_at", ROUND),
-            Cat::Prompt,
-            &["i'm", "looking", "at"],
-            Sem::Quote(String::new()),
-        )
-        .read_only(),
+        filler("en.prompt.looking_at", ROUND, Cat::Prompt, "i'm looking at"),
         // "what are the fields of `Week`": "what is" asked of many.
-        word(
-            RuleInfo::new("en.what_is.what_are", ROUND),
-            Cat::WhatIs,
-            &["what", "are"],
-            Sem::Quote(String::new()),
-        )
-        .read_only(),
+        filler("en.what_is.what_are", ROUND, Cat::WhatIs, "what are"),
     ];
     // "`Note` struct - what fields", "Identity - which fields": a role
     // alone, asked of the thing set off before it.
@@ -268,33 +225,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             },
         ));
     }
-    // "(fields) are on `x`", "is in `x`", "are defined on `x`"
-    for (id, be) in [
-        ("en.verb_phrase.are_preposition", "are"),
-        ("en.verb_phrase.is_preposition", "is"),
-    ] {
-        rules.push(rule(
-            id,
-            Cat::VerbPhrase,
-            vec![W(be), C(Cat::Preposition), C(Cat::NounPhrase)],
-            placed,
-        ));
-    }
-    for (id, be) in [
-        ("en.verb_phrase.are_defined_preposition", "are"),
-        ("en.verb_phrase.is_defined_preposition", "is"),
-    ] {
-        rules.push(rule(
-            id,
-            Cat::VerbPhrase,
-            vec![
-                W(be),
-                C(Cat::Defined),
-                C(Cat::Preposition),
-                C(Cat::NounPhrase),
-            ],
-            placed,
-        ));
-    }
+    // "(field) is in `x`"
+    rules.push(rule(
+        "en.verb_phrase.is_preposition",
+        Cat::VerbPhrase,
+        vec![W("is"), C(Cat::Preposition), C(Cat::NounPhrase)],
+        placed,
+    ));
     rules
 }

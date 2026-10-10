@@ -5,117 +5,72 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Ontology, Reply, Utterance};
 
+use crate::aside::filler;
+use crate::blank;
+use crate::phrase;
 use crate::sem::{Cat, Sem};
-use crate::word;
 
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 6;
 
-/// Verbs asking the system to drop what was said, alone or before what
-/// they drop: "forget (that)", "never mind (that)", "scratch that".
-const DISMISS: &[(&str, &[&str])] = &[
-    ("en.dismiss.forget", &["forget"]),
-    ("en.dismiss.never_mind", &["never", "mind"]),
-    ("en.dismiss.nevermind", &["nevermind"]),
-    ("en.dismiss.nvm", &["nvm"]),
-    ("en.dismiss.scratch", &["scratch"]),
-    ("en.dismiss.ignore", &["ignore"]),
-    ("en.dismiss.disregard", &["disregard"]),
-];
-
-/// Words pointing back at what was said: "that", "it", "this".
-const SAID: &[(&str, &[&str])] = &[
-    ("en.said.that", &["that"]),
-    ("en.said.it", &["it"]),
-    ("en.said.this", &["this"]),
-];
-
-/// Nouns for something said before, and words placing it: "one",
-/// "question", "last thing".
-const EARLIER: &[(&str, &[&str])] = &[
-    ("en.earlier.one", &["one"]),
-    ("en.earlier.thing", &["thing"]),
-    ("en.earlier.question", &["question"]),
-    ("en.earlier.request", &["request"]),
-    ("en.earlier.message", &["message"]),
+/// The words of a request to forget, each meaning nothing by itself.
+const WORDS: &[(&str, Cat, &str)] = &[
+    // Verbs asking the system to drop what was said, alone or before what
+    // they drop: "forget (that)", "never mind (that)", "scratch that".
+    ("en.dismiss.forget", Cat::Dismiss, "forget"),
+    ("en.dismiss.never_mind", Cat::Dismiss, "never mind"),
+    ("en.dismiss.nevermind", Cat::Dismiss, "nevermind"),
+    ("en.dismiss.nvm", Cat::Dismiss, "nvm"),
+    ("en.dismiss.scratch", Cat::Dismiss, "scratch"),
+    // Words pointing back at what was said: "that", "it".
+    ("en.said.that", Cat::Said, "that"),
+    ("en.said.it", Cat::Said, "it"),
+    // Nouns for something said before: "one", "thing", "question".
+    ("en.earlier.one", Cat::Earlier, "one"),
+    ("en.earlier.thing", Cat::Earlier, "thing"),
+    ("en.earlier.question", Cat::Earlier, "question"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let blank = || Sem::Quote(String::new());
-    let forget = || S::Const(Sem::Utterance(Utterance::Forget));
     let rule = |id, lhs, rhs, sem| Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, sem).read_only();
-    let mut rules = Vec::new();
-    for (table, cat) in [
-        (DISMISS, Cat::Dismiss),
-        (SAID, Cat::Said),
-        (EARLIER, Cat::Earlier),
-    ] {
-        rules.extend(
-            table
-                .iter()
-                .map(|(id, words)| word(RuleInfo::new(id, ROUND), cat, words, blank()).read_only()),
-        );
-    }
-    rules.extend([
-        // "that one", "that last question", "the last one", "my last
-        // request": what was said, by when.
+    let blank_of = |id, lhs, rhs| rule(id, lhs, rhs, S::Const(blank()));
+    let forget = |id, rhs| {
         rule(
+            id,
+            Cat::Utterance,
+            rhs,
+            S::Const(Sem::Utterance(Utterance::Forget)),
+        )
+    };
+    let mut rules: Vec<_> = WORDS
+        .iter()
+        .map(|&(id, cat, words)| filler(id, ROUND, cat, words))
+        .collect();
+    rules.extend([
+        // "that one", "that last question": what was said, by when.
+        blank_of(
             "en.said.that_one",
             Cat::Said,
             vec![W("that"), C(Cat::Earlier)],
-            S::Const(blank()),
         ),
-        rule(
-            "en.said.the",
-            Cat::Said,
-            vec![W("the"), C(Cat::Earlier)],
-            S::Const(blank()),
-        ),
-        rule(
-            "en.said.my",
-            Cat::Said,
-            vec![W("my"), C(Cat::Earlier)],
-            S::Const(blank()),
-        ),
-        rule(
+        blank_of(
             "en.earlier.last",
             Cat::Earlier,
             vec![W("last"), C(Cat::Earlier)],
-            S::Const(blank()),
-        ),
-        rule(
-            "en.earlier.previous",
-            Cat::Earlier,
-            vec![W("previous"), C(Cat::Earlier)],
-            S::Const(blank()),
         ),
         // "never mind", "nvm": what to drop goes without saying.
-        rule(
-            "en.utterance.dismiss",
-            Cat::Utterance,
-            vec![C(Cat::Dismiss)],
-            forget(),
-        ),
+        forget("en.utterance.dismiss", vec![C(Cat::Dismiss)]),
         // "forget that", "never mind that last question", "scratch that".
-        rule(
+        forget(
             "en.utterance.dismiss_said",
-            Cat::Utterance,
             vec![C(Cat::Dismiss), C(Cat::Said)],
-            forget(),
         ),
         // "OK, I've forgotten that."
         Rule::new(
             RuleInfo::new("en.reply.forgotten", ROUND),
             Cat::Reply,
-            vec![
-                W("ok"),
-                W(","),
-                W("I've"),
-                W("forgotten"),
-                W("that"),
-                W("."),
-            ],
+            phrase("ok , I've forgotten that ."),
             S::Both(
                 |_| None,
                 |v| match v {

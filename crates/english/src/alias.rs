@@ -9,9 +9,10 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Fact, Name, Ontology, Reply, Thing, Utterance};
 
+use crate::first;
 use crate::lexicon::{ITEM, QUOTE, TEXT, WORD};
+use crate::locate::{fillers, nothing};
 use crate::sem::{Cat, Sem};
-use crate::word;
 
 use Sym::{Cat as C, Class, Word as W};
 
@@ -29,22 +30,19 @@ fn words<O: Ontology>(c: &[Sem<O>]) -> String {
         .join(" ")
 }
 
-/// The thing mentioned among the children, to be called the name among
-/// them.
+/// The thing mentioned last among the children, to be called the name
+/// after it.
 fn alias<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    let (thing, kind) = c.iter().find_map(|v| match v {
-        Sem::Mention { thing, kind } => Some((thing.clone(), kind.clone())),
+    match c {
+        [.., Sem::Mention { thing, kind }, Sem::Name(alias)] => {
+            Some(Sem::Utterance(Utterance::Tell(Fact::Alias {
+                thing: thing.clone(),
+                kind: kind.clone(),
+                alias: alias.clone(),
+            })))
+        }
         _ => None,
-    })?;
-    let alias = c.iter().find_map(|v| match v {
-        Sem::Name(n) => Some(n.clone()),
-        _ => None,
-    })?;
-    Some(Sem::Utterance(Utterance::Tell(Fact::Alias {
-        thing,
-        kind,
-        alias,
-    })))
+    }
 }
 
 /// The fact among the children.
@@ -54,16 +52,26 @@ fn fact<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         .cloned()
 }
 
+/// The words among the children, as a name the user gave.
+fn name<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    Some(Sem::Name(Name(words(c))))
+}
+
+/// The words among the children, as a name the user gave, standing for the
+/// thing they gave it to.
+fn named<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    Some(Sem::Thing(Thing::Named(Name(words(c)))))
+}
+
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let blank = || Sem::Quote(String::new());
-    let rule = |id, lhs, rhs, build| {
-        Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, S::Build(build)).read_only()
+    let rule = |id, round, lhs, rhs, build| {
+        Rule::new(RuleInfo::new(id, round), lhs, rhs, S::Build(build)).read_only()
     };
-    let name = |c: &[Sem<O>]| Some(Sem::Name(Name(words(c))));
     let mut rules = vec![
         // "call the struct `Page` "the leaf"", "calling `Gallery` the wall"
         rule(
             "en.fact.call",
+            ROUND,
             Cat::Fact,
             vec![C(Cat::Calling), C(Cat::Mention), C(Cat::Alias)],
             alias,
@@ -71,6 +79,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "refer to struct Store as "the vault""
         rule(
             "en.fact.refer",
+            ROUND,
             Cat::Fact,
             vec![C(Cat::Referring), C(Cat::Mention), W("as"), C(Cat::Alias)],
             alias,
@@ -78,6 +87,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "BlobObject = the blob"
         rule(
             "en.fact.equals",
+            ROUND,
             Cat::Fact,
             vec![C(Cat::Mention), W("="), C(Cat::Alias)],
             alias,
@@ -85,6 +95,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "I'm going to call ...", "gonna call ...", "I'll just call ..."
         rule(
             "en.fact.intent",
+            ROUND,
             Cat::Fact,
             vec![C(Cat::Intent), C(Cat::Fact)],
             fact,
@@ -92,53 +103,53 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "... from now on", "from here on, ..."
         rule(
             "en.fact.time_after",
+            ROUND,
             Cat::Fact,
             vec![C(Cat::Fact), C(Cat::Time)],
             fact,
         ),
         rule(
             "en.fact.time_before",
+            ROUND,
             Cat::Fact,
             vec![C(Cat::Time), C(Cat::Fact)],
-            fact,
-        ),
-        rule(
-            "en.fact.time_comma",
-            Cat::Fact,
-            vec![C(Cat::Time), W(","), C(Cat::Fact)],
             fact,
         ),
         // "for the rest of this chat": any words after it, which may well
         // be names.
         rule(
             "en.time.for_the_rest_of",
+            ROUND,
             Cat::Time,
             vec![W("for"), W("the"), W("rest"), W("of"), C(Cat::Words)],
-            |_| Some(Sem::Quote(String::new())),
+            nothing,
         ),
         rule(
             "en.utterance.fact",
+            ROUND,
             Cat::Utterance,
             vec![C(Cat::Fact)],
             fact,
         ),
-        // ""the leaf"", "'the card'": any words, quoted.
-        rule(
-            "en.alias.quoted",
-            Cat::Alias,
-            vec![W("\""), C(Cat::Words), W("\"")],
-            name,
-        ),
-        rule(
-            "en.alias.single_quoted",
-            Cat::Alias,
-            vec![W("'"), C(Cat::Words), W("'")],
-            name,
-        ),
+    ];
+    // ""the leaf"", "'the card'": any words, quoted.
+    rules.extend(
+        [("en.alias.quoted", "\""), ("en.alias.single_quoted", "'")].map(|(id, quote)| {
+            rule(
+                id,
+                ROUND,
+                Cat::Alias,
+                vec![W(quote), C(Cat::Words), W(quote)],
+                name,
+            )
+        }),
+    );
+    rules.extend([
         // "the portrait", "the link spot": unquoted, words the system does
         // not know after "the", so the name ends where known words go on.
         rule(
             "en.alias.the",
+            ROUND,
             Cat::Alias,
             vec![W("the"), C(Cat::Unknown)],
             |c| Some(Sem::Name(Name(format!("the {}", words(c))))),
@@ -146,49 +157,56 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "just "the leaf"": only that name.
         rule(
             "en.alias.just",
+            ROUND,
             Cat::Alias,
             vec![W("just"), C(Cat::Alias)],
-            |c| c.first().cloned(),
+            first,
         ),
         // "what fields does the slot have?": a name the user gave, standing
         // for the thing they gave it to.
-        Rule::new(
-            RuleInfo::new("en.noun_phrase.alias", 7),
+        rule(
+            "en.noun_phrase.alias",
+            7,
             Cat::NounPhrase,
             vec![C(Cat::Alias)],
-            S::Build(|c| match c {
-                [Sem::Name(n)] => Some(Sem::Thing(Thing::Named(n.clone()))),
-                _ => None,
-            }),
-        )
-        .read_only(),
+            named,
+        ),
         // "what fields does sun glow have?", "the history sheet": several
         // words the system does not know, a name the user gave, which may
         // have been given without "the".
-        Rule::new(
-            RuleInfo::new("en.noun_phrase.unknown", 7),
+        rule(
+            "en.noun_phrase.unknown",
+            7,
             Cat::NounPhrase,
             vec![C(Cat::Unknown), Class(WORD)],
-            S::Build(|c| Some(Sem::Thing(Thing::Named(Name(words(c)))))),
-        )
-        .read_only(),
-        Rule::new(
-            RuleInfo::new("en.noun_phrase.the_unknown", 7),
+            named,
+        ),
+        rule(
+            "en.noun_phrase.the_unknown",
+            7,
             Cat::NounPhrase,
             vec![W("the"), C(Cat::Unknown), Class(WORD)],
-            S::Build(|c| Some(Sem::Thing(Thing::Named(Name(words(c)))))),
-        )
-        .read_only(),
-        rule("en.words.one", Cat::Words, vec![Class(TEXT)], name),
+            named,
+        ),
+        // Any words, and words the system does not know, as typed.
+        rule("en.words.one", ROUND, Cat::Words, vec![Class(TEXT)], name),
         rule(
             "en.words.more",
+            ROUND,
             Cat::Words,
             vec![C(Cat::Words), Class(TEXT)],
             name,
         ),
-        rule("en.unknown.one", Cat::Unknown, vec![Class(WORD)], name),
+        rule(
+            "en.unknown.one",
+            ROUND,
+            Cat::Unknown,
+            vec![Class(WORD)],
+            name,
+        ),
         rule(
             "en.unknown.more",
+            ROUND,
             Cat::Unknown,
             vec![C(Cat::Unknown), Class(WORD)],
             name,
@@ -207,7 +225,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ],
             S::Both(
                 |_| None,
-                |v| match v {
+                |v: &Sem<O>| match v {
                     Sem::Reply(Reply::Noted(Fact::Alias {
                         thing: Thing::Item(item),
                         alias,
@@ -217,50 +235,54 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 },
             ),
         ),
-    ];
-    let words = |cat, table: &[(&'static str, &'static [&'static str])]| {
-        table
-            .iter()
-            .map(move |(id, words)| word(RuleInfo::new(id, ROUND), cat, words, blank()).read_only())
-            .collect::<Vec<_>>()
-    };
-    rules.extend(words(Cat::Calling, CALLING));
-    rules.extend(words(Cat::Referring, REFERRING));
-    rules.extend(words(Cat::Intent, INTENTS));
-    rules.extend(words(Cat::Time, TIMES));
+    ]);
+    rules.extend(fillers(ROUND, FILLERS));
     rules
 }
 
-/// Verbs giving a thing a name of the user's own, before it and the name.
-const CALLING: &[(&str, &[&str])] = &[
-    ("en.calling.call", &["call"]),
-    ("en.calling.calling", &["calling"]),
-];
-
-/// Verbs giving a thing a name of the user's own, before it and "as".
-const REFERRING: &[(&str, &[&str])] = &[
-    ("en.referring.refer_to", &["refer", "to"]),
-    ("en.referring.referring_to", &["referring", "to"]),
-];
-
-/// Words saying the user means to do what follows: "I'm going to", "gonna".
-const INTENTS: &[(&str, &[&str])] = &[
-    ("en.intent.i_ll", &["i'll"]),
-    ("en.intent.i_will", &["i", "will"]),
-    ("en.intent.i_m", &["i'm"]),
-    ("en.intent.going_to", &["going", "to"]),
-    ("en.intent.gonna", &["gonna"]),
-    ("en.intent.be", &["be"]),
-    ("en.intent.just", &["just"]),
-];
-
-/// Words saying how long a name the user gives holds.
-const TIMES: &[(&str, &[&str])] = &[
-    ("en.time.from_now_on", &["from", "now", "on"]),
-    ("en.time.from_now", &["from", "now"]),
-    ("en.time.from_here_on", &["from", "here", "on"]),
-    ("en.time.from_here", &["from", "here"]),
-    ("en.time.going_forward", &["going", "forward"]),
-    ("en.time.for_now", &["for", "now"]),
-    ("en.time.for_short", &["for", "short"]),
+/// Words that only shape the telling of a name, by category.
+const FILLERS: &[(Cat, &[(&str, &str)])] = &[
+    // Verbs giving a thing a name of the user's own, before it and the name.
+    (
+        Cat::Calling,
+        &[
+            ("en.calling.call", "call"),
+            ("en.calling.calling", "calling"),
+        ],
+    ),
+    // Verbs giving a thing a name of the user's own, before it and "as".
+    (
+        Cat::Referring,
+        &[
+            ("en.referring.refer_to", "refer to"),
+            ("en.referring.referring_to", "referring to"),
+        ],
+    ),
+    // Words saying the user means to do what follows: "I'm going to",
+    // "gonna".
+    (
+        Cat::Intent,
+        &[
+            ("en.intent.i_ll", "i'll"),
+            ("en.intent.i_will", "i will"),
+            ("en.intent.i_m", "i'm"),
+            ("en.intent.going_to", "going to"),
+            ("en.intent.gonna", "gonna"),
+            ("en.intent.be", "be"),
+            ("en.intent.just", "just"),
+        ],
+    ),
+    // Words saying how long a name the user gives holds.
+    (
+        Cat::Time,
+        &[
+            ("en.time.from_now_on", "from now on"),
+            ("en.time.from_now", "from now"),
+            ("en.time.from_here_on", "from here on"),
+            ("en.time.from_here", "from here"),
+            ("en.time.going_forward", "going forward"),
+            ("en.time.for_now", "for now"),
+            ("en.time.for_short", "for short"),
+        ],
+    ),
 ];
