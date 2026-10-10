@@ -285,6 +285,23 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
         belonging("en.rust.belonging.of", "of"),
         belonging("en.rust.belonging.on", "on"),
         belonging("en.rust.belonging.in", "in"),
+        // A struct's fields are what it has, and what is in it: "`Conv`
+        // fields", "`QueryEntry` members", "what's inside `NewDm`", "what
+        // fields `PostText` is made up of".
+        role("en.rust.role.fields", "fields"),
+        role("en.rust.role.members", "members"),
+        inside("en.rust.inside.in", "in"),
+        inside("en.rust.inside.inside", "inside"),
+        word(
+            RuleInfo::new("en.rust.verb.is_made_up_of", 7),
+            Cat::Verb,
+            &["is", "made", "up", "of"],
+            Sem::Relation {
+                relation: HasField,
+                form: ThirdSingular,
+            },
+        )
+        .read_only(),
         // "Config field saved_max_mb": a field is part of its struct.
         word(
             RuleInfo::new("en.rust.part.field", 5),
@@ -320,6 +337,34 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
         )
         .read_only(),
     ]
+}
+
+/// A noun for the fields a struct has.
+fn role(id: &'static str, form: &'static str) -> Rule<Cat, Sem<Rust>> {
+    word(
+        RuleInfo::new(id, 7),
+        Cat::RoleNoun,
+        &[form],
+        Sem::Role {
+            relation: RustRelation::HasField,
+            position: Position::Second,
+        },
+    )
+    .read_only()
+}
+
+/// A preposition for what is inside a struct: its fields.
+fn inside(id: &'static str, form: &'static str) -> Rule<Cat, Sem<Rust>> {
+    word(
+        RuleInfo::new(id, 7),
+        Cat::Inside,
+        &[form],
+        Sem::Relation {
+            relation: RustRelation::HasField,
+            form: VerbForm::Plain,
+        },
+    )
+    .read_only()
 }
 
 fn belonging(id: &'static str, form: &'static str) -> Rule<Cat, Sem<Rust>> {
@@ -820,6 +865,28 @@ mod tests {
             );
         }
         assert!(english.say(&Reply::Forgotten).is_some());
+    }
+
+    /// Asking what is in a struct, for its members, or for its fields after
+    /// setting it off, can all mean asking what it has.
+    #[test]
+    fn ways_of_asking_what_a_struct_holds_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meanings = |text: &str| match english.understand(text) {
+            Understanding::Readings(readings) => readings.into_iter().map(|r| r.meaning).collect(),
+            Understanding::Failed { .. } => Vec::new(),
+        };
+        let has = meanings("what does `Conv` have?");
+        assert_eq!(has.len(), 1);
+        for text in [
+            "um, what's inside `Conv`?",
+            "what is in Conv",
+            "`Conv` - which fields?",
+            "what are the members of `Conv`?",
+            "Conv fields",
+        ] {
+            assert!(meanings(text).iter().any(|m| has.contains(m)), "{text:?}");
+        }
     }
 
     /// The ways of telling the system what the user will call a struct all

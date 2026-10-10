@@ -206,6 +206,10 @@ pub enum Cat {
     Words,
     /// Words the system does not know, as typed.
     Unknown,
+    /// A preposition saying a thing is inside another, naming the relation
+    /// from the container to what it holds: "in", "inside" ("what's in
+    /// `x`").
+    Inside,
 }
 
 /// English grammatical number, used for agreement.
