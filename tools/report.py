@@ -107,8 +107,11 @@ function panel(id,H,top,bottom,ymax,ticks,fmt,series){
   for(let i=0;i<=5;i++){const t=xmax*i/5;s+=`<text x="${x(t)}" y="${H-bottom+16}" text-anchor="middle">${t.toFixed(0)}M</text>`;}
   s+=`<text x="${(L+W-R)/2}" y="${H-4}" text-anchor="middle">agent tokens spent (millions)</text></g>`;
   P.forEach(p=>{if(p.kind==='data'||p.kind==='manual'){s+=`<line x1="${x(p.tokens_m)}" x2="${x(p.tokens_m)}" y1="${top}" y2="${H-bottom}" stroke="var(--mark)" stroke-dasharray="3 3"/>`;}});
+  const used=[];
   series.forEach(([key,col,label])=>{s+=`<path d="${step(p=>p[key],y)}" fill="none" stroke="var(${col})" stroke-width="2"/>`;
-    const lastP=[...P].reverse().find(p=>p[key]!=null); if(label&&lastP) s+=`<text x="${x(lastP.tokens_m)-4}" y="${y(lastP[key])-6}" text-anchor="end" font-size="11" fill="var(--ink)">${label} ${fmt(lastP[key])}</text>`;});
+    const lastP=[...P].reverse().find(p=>p[key]!=null); if(!label||!lastP) return;
+    let ly=y(lastP[key])-6; while(used.some(u=>Math.abs(u-ly)<13)) ly+=13; used.push(ly);
+    s+=`<text x="${x(lastP.tokens_m)-4}" y="${ly}" text-anchor="end" font-size="11" fill="var(--ink)">${label} ${fmt(lastP[key])}</text>`;});
   s+=`<line id="${id}-x" y1="${top}" y2="${H-bottom}" stroke="var(--ink2)" stroke-width="1" visibility="hidden"/>`;
   s+=`<rect x="${L}" y="${top}" width="${W-L-R}" height="${H-top-bottom}" fill="transparent" id="${id}-hit"/>`;
   svg.innerHTML=s;

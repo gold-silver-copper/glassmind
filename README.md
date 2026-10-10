@@ -31,6 +31,29 @@ cargo build --release
 Edits are proposed as a set of changes and applied only with `--apply`; it
 never commits.
 
+## Results so far
+
+28 loop rounds, 431M agent tokens (mostly cache reads), all data written by
+Claude Opus 5.5 working backwards from tasks with answers computed by
+tooling. Chart: `docs/results/chart.html` (numbers in `docs/results/summary.json`).
+
+| | seed | round 28 |
+|---|---|---|
+| training (training styles and repos), right | 0.7% | 99.2% |
+| validation (training styles, unseen repos) | 0.7% | 98.1% |
+| held-out (another generator and style, unseen repos) | 0% | 72.0% |
+| code size, syntax tokens | 19,094 | 59,391 |
+| rules | 32 | 1,090 |
+
+- The held-out score was still rising when the run stopped.
+- The gap between validation and held-out is phrasing style, not unfamiliar
+  code. Adding a hurried-typing training persona after round 11 lifted
+  held-out from 42% to 55%.
+- No confident wrong answers on any set: unknown requests are refused, and the
+  ▮ in the reply marks the word that wasn't understood.
+- Of the rules, 543 are used by 10 or more right answers, 149 by exactly one.
+- No human-written requests have been tested.
+
 ## How it is built
 
 Three layers, kept apart by the crate graph (`cargo run -p glassmind-depcheck`, run in CI):
