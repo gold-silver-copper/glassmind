@@ -14,6 +14,7 @@ use glassmind_meaning::{Ontology, Reply, Trouble};
 use glassmind_rules::Switches;
 
 pub mod lexicon;
+pub mod remark;
 pub mod seed;
 pub mod sem;
 pub mod tokens;
@@ -24,7 +25,9 @@ pub use tokens::{Shape, Token, tokenize};
 
 /// Every English rule that is not about a particular world.
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    seed::rules()
+    let mut rules = seed::rules();
+    rules.extend(remark::rules());
+    rules
 }
 
 /// A rule that reads one or more fixed words as a fixed value: how a bridge

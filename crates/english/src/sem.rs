@@ -28,6 +28,9 @@ pub enum Cat {
     Reply,
     /// A statement of something the system assumed.
     Assumption,
+    /// A clause the user says about themselves that asks nothing: "I'm
+    /// reworking the follow feature a bit".
+    Remark,
 }
 
 /// English grammatical number, used for agreement.

@@ -14,6 +14,9 @@ use crate::tokens::{Shape, Token};
 pub const NAME: &str = "name";
 /// Token class: a number.
 pub const NUMBER: &str = "number";
+/// Token class: any word, name or number in a remark, whose content the
+/// system need not understand. Punctuation ends a remark, so it is not one.
+pub const TEXT: &str = "text";
 /// Token class: an item the system speaks of. Never read from input.
 pub const ITEM: &str = "item";
 /// Token class: a piece of the user's input the system quotes back.
@@ -39,6 +42,7 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             (NAME, Shape::Word) if !self.known.contains(token.norm.as_str()) => {
                 vec![Sem::Name(Name(token.text.clone()))]
             }
+            (TEXT, shape) if shape != Shape::Punct => vec![Sem::Quote(token.text.clone())],
             (NUMBER, Shape::Number) => token.text.parse().map(Sem::Count).into_iter().collect(),
             _ => Vec::new(),
         }
