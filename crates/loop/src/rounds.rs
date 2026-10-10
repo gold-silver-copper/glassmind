@@ -13,15 +13,17 @@ use crate::state::{self, Attempts, Baseline, Config, Entry, Paths, Tokens};
 use crate::{compress, growth};
 
 /// Paths a loop change may touch; anything else an agent leaves behind
-/// (scratch outputs) is not part of the change.
+/// (scratch outputs) is not part of the change. The loop itself, the
+/// answer format and the fixture labels are the measuring instruments, so
+/// agents cannot change them.
 const CHANGE_PATHS: &[&str] = &[
     "crates",
     "tools/depcheck",
-    "docs/tasks.md",
     "Cargo.toml",
     "Cargo.lock",
     "fixtures",
 ];
+const FIXED_PATHS: &[&str] = &[":!crates/loop", ":!crates/answer", ":!fixtures/data"];
 
 fn log(paths: &Paths, line: &str) {
     use std::io::Write;
