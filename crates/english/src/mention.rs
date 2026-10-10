@@ -302,6 +302,24 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("the"), Class(CAPITALIZED)],
             owner,
         ),
+        // "which functions call `accent` on Theme", "what does Chat's
+        // `paste` call", "which funcs does Chat retry invoke": a thing
+        // mentioned by what it is to another, as a verb's subject or object.
+        rule(
+            "en.noun_phrase.described",
+            22,
+            NounPhrase,
+            vec![C(Mention)],
+            |c| match c {
+                [
+                    Sem::Mention {
+                        thing: thing @ Thing::Fitting(_),
+                        ..
+                    },
+                ] => Some(Sem::Thing(thing.clone())),
+                _ => None,
+            },
+        ),
         // "...": a trailing-off that sets what came before apart.
         filler("en.break.dots", 5, Break, ". . ."),
         // "..": the same, typed short.
@@ -454,25 +472,17 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(fillers(ROUND, FILLERS));
     // "what `x` do / whats it for": two ways of asking, split by a slash.
     rules.extend(fillers(14, &[(Join, &[("en.join.slash", "/")])]));
-    // "which functions call `accent` on Theme": the thing so placed, as
-    // the object of a verb; "which functions call `step_match`, in the
-    // Chat": the same, set off by a comma.
-    for (id, round, rhs) in [
-        (
-            "en.noun_phrase.preposition",
-            9,
-            vec![C(Mention), C(Preposition), C(Owner)],
-        ),
-        (
-            "en.noun_phrase.preposition_set_off",
-            22,
-            vec![C(Mention), W(","), C(Preposition), C(Owner)],
-        ),
-    ] {
-        rules.push(rule(id, round, NounPhrase, rhs, |c| match related(c)? {
+    // "which functions call `step_match`, in the Chat": the thing so
+    // placed, set off by a comma, as the object of a verb.
+    rules.push(rule(
+        "en.noun_phrase.preposition_set_off",
+        22,
+        NounPhrase,
+        vec![C(Mention), W(","), C(Preposition), C(Owner)],
+        |c| match related(c)? {
             Sem::Mention { thing, .. } => Some(Sem::Thing(thing)),
             _ => None,
-        }));
-    }
+        },
+    ));
     rules
 }

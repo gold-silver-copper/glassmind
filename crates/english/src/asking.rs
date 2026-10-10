@@ -138,6 +138,15 @@ pub(crate) fn identify<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
+/// Asks for the things of the kind said after the restriction: "`x`
+/// calls which fns".
+fn echoed<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [condition, kind] => identify(&[kind.clone(), condition.clone()]),
+        _ => None,
+    }
+}
+
 /// "callees of `x`": the things filling one side of a relation.
 pub(crate) fn role_of<O: Ontology>(role: &Sem<O>, other: &Sem<O>) -> Option<Sem<O>> {
     match (role, other) {
@@ -281,10 +290,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.echo_which",
             Question,
             vec![C(Restriction), W("which"), C(Noun)],
-            |c| match c {
-                [condition, kind] => identify(&[kind.clone(), condition.clone()]),
-                _ => None,
-            },
+            echoed,
         ),
         // A description alone asks for what it describes: "fns called by `x`".
         rule(
@@ -427,6 +433,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 [other, _, role] => role_of(role, other),
                 _ => None,
             },
+        ),
+        // "`x` calls what fucntions", "wardrobe calls waht fns"
+        read_only_rule(
+            "en.question.echo_what_kind",
+            22,
+            Question,
+            vec![C(Restriction), W("what"), C(Noun)],
+            echoed,
         ),
     ]);
     rules

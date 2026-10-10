@@ -85,7 +85,10 @@ type Spelling = (&'static str, &'static str, &'static str);
 ///
 /// Round 22, from questions about what calls a function: "who cals
 /// `x`", "list callers fo `x`", "anythign call `x`", "who calls `x`,
-/// need to knwo".
+/// need to knwo". Also from questions about what a function calls:
+/// "what funtions `limit` call", "which functinos signature call", "fns
+/// calld by room_message", "show calles of `x`", "what funcs does find
+/// call internaly".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -194,6 +197,11 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.fo", "fo", "of"),
             ("en.spelling.anythign", "anythign", "anything"),
             ("en.spelling.knwo", "knwo", "know"),
+            ("en.spelling.funtions", "funtions", "functions"),
+            ("en.spelling.functinos", "functinos", "functions"),
+            ("en.spelling.calld", "calld", "called"),
+            ("en.spelling.calles", "calles", "callees"),
+            ("en.spelling.internaly", "internaly", "internally"),
         ],
     ),
 ];

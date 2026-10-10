@@ -1026,6 +1026,41 @@ mod tests {
         assert!(readings.iter().any(|r| r.meaning == owned));
     }
 
+    /// A thing mentioned by its owner can be what a verb's subject is, and
+    /// the question word can stand where the object goes: these all ask
+    /// which functions the method `x` of `Rack` calls.
+    #[test]
+    fn an_owned_thing_can_be_asked_what_it_calls() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Ask(Question::Identify(Description {
+            kind: Some(RustKind::Function),
+            conditions: vec![Condition::Related {
+                relation: RustRelation::Calls,
+                position: Position::Second,
+                other: Thing::Fitting(Description {
+                    kind: None,
+                    conditions: vec![
+                        Condition::Is(Thing::Named(Name("x_y".into()))),
+                        Condition::Related {
+                            relation: RustRelation::Member,
+                            position: Position::Second,
+                            other: Thing::Named(Name("Rack".into())),
+                        },
+                    ],
+                }),
+            }],
+        }));
+        for text in [
+            "which functions does Rack's `x_y` call internally?",
+            "Rack's x_y calls what fucntions",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
     /// A part named after its whole, with no word for how it belongs
     /// ("`S` `x`", "S's x"), is the thing that is `x` and a part of `S`.
     #[test]
