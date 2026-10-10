@@ -134,16 +134,27 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend([
         // "the portrait", "the link spot": unquoted, words the system does
         // not know after "the", so the name ends where known words go on.
+        // "the" is not part of the name: after "calling `QueryEntry` the
+        // ledger", "ledger fields" and "the ledger's fields" both use it.
         rule(
             "en.alias.the",
             ROUND,
             Alias,
             vec![W("the"), C(Unknown)],
-            |c| Some(Sem::Name(Name(format!("the {}", words(c))))),
+            name,
         ),
         // "what fields does the slot have?": a name the user gave, standing
         // for the thing they gave it to.
         rule("en.noun_phrase.alias", 7, NounPhrase, vec![C(Alias)], named),
+        // "what fields does the vault have?" after "refer to struct Store
+        // as "the vault"": a name given in quotes with its "the".
+        rule(
+            "en.noun_phrase.the_quoted_alias",
+            23,
+            NounPhrase,
+            vec![W("the"), C(Unknown)],
+            |c| Some(Sem::Thing(Thing::Named(Name(format!("the {}", words(c)))))),
+        ),
         // "what fields does sun glow have?", "the history sheet": several
         // words the system does not know, a name the user gave, which may
         // have been given without "the".

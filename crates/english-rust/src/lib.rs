@@ -1339,26 +1339,46 @@ mod tests {
     }
 
     /// The ways of telling the system what the user will call a struct all
-    /// mean the same fact, whether the name is quoted or not.
+    /// mean the same fact. A quoted name is kept as typed; outside quotes,
+    /// "the" is not part of the name.
     #[test]
     fn ways_of_stating_an_alias_agree() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
-        let meaning = Utterance::Tell(Fact::Alias {
-            thing: Thing::Named(Name("Page".into())),
-            kind: Some(RustKind::Struct),
-            alias: Name("the leaf".into()),
-        });
-        for text in [
-            "Just so you know, I'm going to call the struct `Page` \"the leaf\" from now on.",
-            "Ok so, from now on I'll refer to the `Page` struct as 'the leaf'.",
-            "gonna call struct Page the leaf from here on",
-            "I'll just call `Page` struct \"the leaf\", ok?",
-            "`Page` struct = the leaf going forward, easier for me",
+        let meaning = |alias: &str| {
+            Utterance::Tell(Fact::Alias {
+                thing: Thing::Named(Name("Page".into())),
+                kind: Some(RustKind::Struct),
+                alias: Name(alias.into()),
+            })
+        };
+        for (text, alias) in [
+            (
+                "Just so you know, I'm going to call the struct `Page` \"the leaf\" from now on.",
+                "the leaf",
+            ),
+            (
+                "Ok so, from now on I'll refer to the `Page` struct as 'the leaf'.",
+                "the leaf",
+            ),
+            (
+                "Ok so, to keep things short, I'll refer to struct Page as \"the leaf\".",
+                "the leaf",
+            ),
+            ("I'll just call `Page` struct \"the leaf\", ok?", "the leaf"),
+            ("gonna call struct Page the leaf from here on", "leaf"),
+            (
+                "`Page` struct = the leaf going forward, easier for me",
+                "leaf",
+            ),
+            ("im calling struct Page the leaf frm here, ok", "leaf"),
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
             };
-            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+            assert!(
+                readings.iter().all(|r| r.meaning == meaning(alias)),
+                "{text:?}"
+            );
         }
     }
 
@@ -1403,6 +1423,7 @@ mod tests {
             ("what fields does \"the leaf\" have", "the leaf"),
             ("what fields does sun glow have", "sun glow"),
             ("what fields does the history sheet have?", "history sheet"),
+            ("ledger fields", "ledger"),
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

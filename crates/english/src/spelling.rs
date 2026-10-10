@@ -92,7 +92,10 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// "which functions it calsl", "what does it call itslef".
 ///
 /// Round 23, from questions about structs with a field of some type:
-/// "which structs hold a Sender in tehir fields".
+/// "which structs hold a Sender in tehir fields"; and from telling the
+/// system a name of the user's own: "im gonna call `Wound` the hole", "ill
+/// call Confirm the gate", "im calling it word list frm here". "im" and
+/// "ill" are "i'm" and "i'll" without the apostrophe.
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -211,7 +214,15 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.internaly", "internaly", "internally"),
         ],
     ),
-    (23, &[("en.spelling.tehir", "tehir", "their")]),
+    (
+        23,
+        &[
+            ("en.spelling.tehir", "tehir", "their"),
+            ("en.spelling.im", "im", "i'm"),
+            ("en.spelling.ill", "ill", "i'll"),
+            ("en.spelling.frm", "frm", "from"),
+        ],
+    ),
 ];
 
 /// Every spelling: the word as typed, its rule and the word meant.

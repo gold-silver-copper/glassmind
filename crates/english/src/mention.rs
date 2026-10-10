@@ -274,6 +274,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Noun), C(Mention)],
             of_kind,
         ),
+        // "refer to struct Store as ...", "the struct Handle": a thing of
+        // the kind said, named by a known word capitalized the way type
+        // names are.
+        rule(
+            "en.mention.kind_capitalized",
+            23,
+            Mention,
+            vec![C(Noun), Class(CAPITALIZED)],
+            |c| of_kind(&[c.first()?.clone(), owner(c)?]),
+        ),
         // "`save_filter` in `App`", "the `retry` method on `Chat`", "the
         // `sealed` field of the `Builder` struct", "rename state_path in
         // Store to ..."

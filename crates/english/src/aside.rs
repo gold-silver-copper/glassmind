@@ -79,6 +79,9 @@ const ASIDES: &[(&str, u32, &str)] = &[
     // after a digression; "..., thx".
     ("en.aside.anyway", 11, "anyway"),
     ("en.aside.thx", 11, "thx"),
+    // "Ok so, to keep things short, I'll refer to ...": why the user is
+    // about to say something.
+    ("en.aside.to_keep_things_short", 23, "to keep things short"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
