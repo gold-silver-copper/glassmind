@@ -79,10 +79,37 @@ pub fn find(
         .filter(|(_, _, uses, _)| *uses <= 1)
         .map(|(id, ..)| id.clone())
         .collect();
-    for id in &candidates {
-        let ev = evaluate::evaluate(config, paths, data, dir, target, std::slice::from_ref(id))?;
-        if no_worse(data, base, &ev) {
-            found.removable.push(id.clone());
+    // Each rule is tried on its own, eight evaluations at a time.
+    for chunk in candidates.chunks(8) {
+        let results: Vec<Result<bool, String>> = std::thread::scope(|s| {
+            let handles: Vec<_> = chunk
+                .iter()
+                .map(|id| {
+                    s.spawn(move || {
+                        evaluate::evaluate(
+                            config,
+                            paths,
+                            data,
+                            dir,
+                            target,
+                            std::slice::from_ref(id),
+                        )
+                        .map(|ev| no_worse(data, base, &ev))
+                    })
+                })
+                .collect();
+            handles
+                .into_iter()
+                .map(|h| {
+                    h.join()
+                        .unwrap_or_else(|_| Err("ablation thread panicked".into()))
+                })
+                .collect()
+        });
+        for (id, ok) in chunk.iter().zip(results) {
+            if ok? {
+                found.removable.push(id.clone());
+            }
         }
     }
     // Check that they can all go together; if not, keep a greedy subset.
