@@ -62,8 +62,11 @@ pub fn tokenize(text: &str) -> Vec<Token> {
                 j += 1;
             }
             let inner = text.get(end_of(i + 1)..end_of(j)).unwrap_or_default();
+            // A call's parentheses (`pair()`) are not part of the name.
+            let inner = inner.trim();
+            let inner = inner.strip_suffix("()").unwrap_or(inner);
             // Past the closing backtick, if there is one.
-            (inner.trim(), Shape::Code, (j + 1).min(chars.len()))
+            (inner, Shape::Code, (j + 1).min(chars.len()))
         } else if is_word_char(c) && c != '\'' {
             // A word (a leading apostrophe opens a quote, so is punctuation), joined across `::` and `.` when both sides are word characters.
             let mut j = i;

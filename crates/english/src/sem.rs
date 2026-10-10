@@ -205,6 +205,18 @@ pub enum Cat {
     Time,
     /// A name the user gives a thing: ""the leaf"", "the runner".
     Alias,
+    /// Words asking where from: "where", "where is", "from where".
+    Whence,
+    /// A verb in the passive, without its subject: "called", "gets
+    /// called", "getting used".
+    Undergo,
+    /// A word before a participle making it passive: "is", "gets".
+    Becoming,
+    /// A thing undergoing a relation, as a condition on what stands on its
+    /// other side: "`x` gets called".
+    Undergoes,
+    /// A word for some thing of any kind: "anything", "anyone".
+    Anything,
     /// Any words, as typed.
     Words,
     /// Words the system does not know, as typed.

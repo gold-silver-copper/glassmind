@@ -71,8 +71,8 @@ fn described<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 /// Words before a participle that keep its meaning, and the round each
-/// came in: "are calling `x`", "end up calling `x`", "anything that ends up
-/// calling it".
+/// came in: "are calling `x`", "end up calling `x`", "ends up calling `x`",
+/// "anything that ends up calling it".
 const ASPECTS: &[(&str, u32, &str)] = &[
     ("en.verb_phrase.are_participial", ROUND, "are"),
     ("en.verb_phrase.is_participial", ROUND, "is"),

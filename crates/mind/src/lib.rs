@@ -403,11 +403,13 @@ impl<O: Ontology> Mind<'_, O> {
         }
         let Some(&(first, first_reply)) = good.first() else {
             // Nothing survived: report the trouble of the reading that got
-            // furthest, or ask back.
+            // furthest (the earliest of those, which understood the most
+            // of what was said), or ask back.
             let asking = self.switches.on(PREFER_ASKING.id);
             let asks = |t: &Trouble<O>| asking && matches!(t, Trouble::Ambiguous { .. });
             let worst = candidates
                 .iter()
+                .rev()
                 .filter_map(|c| Some((c, c.result.as_ref().err()?)))
                 .max_by_key(|&(_, t)| (asks(t), trouble_progress(t)));
             let Some((c, trouble)) = worst else {

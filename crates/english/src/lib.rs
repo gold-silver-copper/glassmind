@@ -36,6 +36,7 @@ pub mod request;
 pub mod seed;
 pub mod sem;
 pub mod tokens;
+pub mod whence;
 pub mod widening;
 
 pub use lexicon::EnglishLexicon;
@@ -66,6 +67,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         recall::rules,
         widening::rules,
         ones::rules,
+        whence::rules,
     ]
     .into_iter()
     .flat_map(|rules| rules())
@@ -134,6 +136,23 @@ impl<O: Ontology> English<O> {
         }
     }
 
+    /// How many words a phrase passes over as text it need not understand
+    /// (the words of a remark).
+    fn passed_over(&self, phrase: &Phrase<Sem<O>>) -> usize {
+        let rule = self.grammar.rules().iter().find(|r| r.info == phrase.rule);
+        phrase
+            .children
+            .iter()
+            .enumerate()
+            .map(|(i, child)| match child {
+                Node::Phrase(p) => self.passed_over(p),
+                Node::Token(_) => {
+                    usize::from(rule.and_then(|r| r.rhs.get(i)) == Some(&Sym::Class(lexicon::TEXT)))
+                }
+            })
+            .sum()
+    }
+
     pub fn grammar(&self) -> &Grammar<Cat, Sem<O>> {
         &self.grammar
     }
@@ -155,7 +174,9 @@ impl<O: Ontology> Language<O> for English<O> {
 
     fn understand(&self, text: &str) -> Understanding<O> {
         let tokens = tokenize(text);
-        let parse = self.grammar.parse(&self.lexicon, &tokens);
+        let mut parse = self.grammar.parse(&self.lexicon, &tokens);
+        // Readings that understand more of what was said come first.
+        parse.readings.sort_by_cached_key(|p| self.passed_over(p));
         let readings: Vec<Reading<O>> = parse
             .readings
             .iter()

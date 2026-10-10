@@ -9,6 +9,7 @@ use glassmind_meaning::{
     Condition, Description, Name, Ontology, Position, Question, Thing, Utterance,
 };
 
+use crate::contents::narrowed;
 use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
 use crate::{blank, first, word};
@@ -101,7 +102,8 @@ fn set_off<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 /// "what does `x` do, and what is it for?": the first question, when the
-/// second asks the same about what it refers back to.
+/// second asks the same about what it refers back to; or the second, when
+/// it narrows the first to things of a kind ([`narrowed`]).
 fn restated<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     let ([first, second] | [first, _, second]) = c else {
         return None;
@@ -114,15 +116,18 @@ fn restated<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         {
             Some(first.clone())
         }
-        // "is there anything that calls `x`? like how many functions call
-        // it": the count of the same things.
-        (
-            Sem::Utterance(Utterance::Ask(Question::Identify(a))),
-            Sem::Utterance(Utterance::Ask(Question::Count(b))),
-        ) => counted(a, b).map(|d| Sem::Utterance(Utterance::Ask(Question::Count(d)))),
         // "why do you want to change that? what's the reason?", "never
         // mind, forget that"
         (Sem::Utterance(a), Sem::Utterance(b)) if a == b => Some(first.clone()),
+        (Sem::Question(a), Sem::Question(b)) => narrowed(a, b).map(Sem::Question),
+        // "is there anything that calls `x`? like how many functions call
+        // it": the count of the same things.
+        (Sem::Utterance(Utterance::Ask(a)), Sem::Utterance(Utterance::Ask(b))) => match (a, b) {
+            (Question::Identify(a), Question::Count(b)) => counted(a, b).map(Question::Count),
+            _ => None,
+        }
+        .or_else(|| narrowed(a, b))
+        .map(|q| Sem::Utterance(Utterance::Ask(q))),
         _ => None,
     }
 }
@@ -246,6 +251,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Mention), C(Cat::Preposition), C(Cat::Mention)],
             related,
         ),
+        // "which functions call `accent` on Theme": the thing so placed,
+        // as the object of a verb.
+        rule(
+            "en.noun_phrase.preposition",
+            9,
+            Cat::NounPhrase,
+            vec![C(Cat::Mention), C(Cat::Preposition), C(Cat::Mention)],
+            |c| match related(c)? {
+                Sem::Mention { thing, .. } => Some(Sem::Thing(thing)),
+                _ => None,
+            },
+        ),
         // "...": a trailing-off that sets what came before apart.
         word(
             RuleInfo::new("en.break.dots", 5),
@@ -294,7 +311,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             set_off,
         ),
         // "what does `x` do, and what is it for", "what is the Walker for,
-        // like what does it do"
+        // like what does it do", "what's inside `Bank`, which fields it has"
         rule(
             "en.question.restated",
             ROUND,

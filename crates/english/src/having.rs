@@ -16,14 +16,41 @@ use crate::sem::{Cat, Number, Sem};
 use crate::{blank, last, word};
 
 use Cat::{
-    Again, Alternative, AskAgain, Description, Hedge, Holder, Includes, Noun, NounPhrase,
-    Preposition, Prompt, Qualifier, Question, RoleAdjective, RoleNoun, Utterance, VerbPhrase,
-    Within,
+    Again, Alternative, Anything, AskAgain, Description, Hedge, Holder, Includes, Join, Noun,
+    NounPhrase, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective, RoleNoun,
+    Utterance, VerbPhrase, Within,
 };
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 3;
 const GROWN: u32 = 9;
+
+/// The request asked again: as it was, or, when asked again for things of
+/// a kind ("which functions?"), for those of that kind among what it asks.
+fn again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    use meaning::{Question::Identify, Utterance::Ask};
+    match c {
+        [Sem::Utterance(Ask(Identify(d))), Sem::Kind { kind, .. }]
+            if d.kind.as_ref().is_none_or(|k| k == kind) =>
+        {
+            let mut d = d.clone();
+            d.kind = Some(kind.clone());
+            Some(Sem::Utterance(Ask(Identify(d))))
+        }
+        [_, Sem::Kind { .. }] => None,
+        _ => c.first().cloned(),
+    }
+}
+
+/// Things of any kind meeting the condition last among the children.
+fn anything<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c.last()? {
+        Sem::Condition { condition, .. } => {
+            Some(Sem::Description(meeting(None, condition.clone())))
+        }
+        _ => None,
+    }
+}
 
 /// The other side of a two-place relation.
 fn flip(position: Position) -> Position {
@@ -269,6 +296,14 @@ const ASK_AGAIN: &[(&str, &str)] = &[
     ("en.ask_again.can_you_list_them", "can you list them"),
 ];
 
+/// Words for some thing of any kind: "anything", "anyone".
+const ANYTHING: &[(&str, &str)] = &[
+    ("en.anything.anything", "anything"),
+    ("en.anything.something", "something"),
+    ("en.anything.anyone", "anyone"),
+    ("en.anything.anybody", "anybody"),
+];
+
 /// Determiners before a role noun, which name the same role: "a type",
 /// "the type", "its type".
 const ROLE_DETERMINERS: &[(&str, &str)] = &[
@@ -504,6 +539,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             words_then("is there", &[Description]),
             last,
         ),
+        // "is there anything that ends up calling `x`", "anything calling
+        // `x`": something doing it, of any kind.
+        read_only_rule(
+            "en.description.anything_that",
+            9,
+            Description,
+            vec![C(Anything), W("that"), C(VerbPhrase)],
+            anything,
+        ),
+        read_only_rule(
+            "en.description.anything_doing",
+            9,
+            Description,
+            vec![C(Anything), C(Participial)],
+            anything,
+        ),
+        // "does anything call `x`": asking whether something does asks
+        // for what does.
+        read_only_rule(
+            "en.question.does_anything",
+            9,
+            Question,
+            words_then("does", &[Anything, VerbPhrase]),
+            |c| identify(&[anything(c)?]),
+        ),
         rule(
             "en.description.are_there",
             Description,
@@ -517,14 +577,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             5,
             Utterance,
             vec![C(Utterance), C(AskAgain)],
+            again,
+        ),
+        // ", which ones?", "like which functions"
+        read_only_rule(
+            "en.ask_again.joined",
+            9,
+            AskAgain,
+            vec![C(Join), C(AskAgain)],
+            last,
+        ),
+        // "which functions?", "which functions do": asking again for the
+        // things just asked about, of the kind they are.
+        read_only_rule(
+            "en.ask_again.which_kind",
+            9,
+            AskAgain,
+            words_then("which", &[Noun]),
             same,
         ),
         read_only_rule(
-            "en.ask_again.comma",
-            5,
+            "en.ask_again.which_kind_do",
+            9,
             AskAgain,
-            words_then(",", &[AskAgain]),
-            last,
+            vec![W("which"), C(Noun), W("do")],
+            same,
         ),
         read_only_rule(
             "en.ask_again.question_mark",
@@ -587,6 +664,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         (INCLUDES, Includes, ROUND),
         (WITHIN, Within, ROUND),
         (ASK_AGAIN, AskAgain, 5),
+        (ANYTHING, Anything, 9),
     ] {
         rules.extend(
             table

@@ -119,6 +119,12 @@ pub fn words() -> Vec<Word> {
             Verb,
             relation,
             &[
+                // What uses a function calls it: "who uses `on_floor`",
+                // "which functions use it", "where `x` gets used".
+                ("en.rust.verb.uses", 9, "uses", Calls, ThirdSingular),
+                ("en.rust.verb.use", 9, "use", Calls, Plain),
+                ("en.rust.verb.used", 9, "used", Calls, Participle),
+                ("en.rust.verb.using", 9, "using", Calls, Progressive),
                 // "which structs hold a field ...", "what structs got a field ..."
                 ("en.rust.verb.holds", 3, "holds", HasField, ThirdSingular),
                 ("en.rust.verb.hold", 3, "hold", HasField, Plain),
@@ -218,6 +224,9 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.role.caller", 3, "caller", Calls, First),
                 // "list structs whose field types include `Sort`"
                 ("en.rust.role.types", 9, "types", TypeMentions, Second),
+                // "call sites of `penetrator`": where it is called, which
+                // are in its callers.
+                ("en.rust.role.call_sites", 9, "call sites", Calls, First),
                 // A struct's fields are what it has: "`Conv` fields",
                 // "`QueryEntry` members".
                 ("en.rust.role.fields", 7, "fields", HasField, Second),
@@ -503,6 +512,48 @@ mod tests {
             "cut caller count",
         ] {
             assert_eq!(meanings(text), by_role, "{text:?}");
+        }
+    }
+
+    /// Asking where a function is called from, whether anything calls it,
+    /// or who uses it, all ask for its callers: of any kind, or functions
+    /// when a later question says so.
+    #[test]
+    fn ways_of_asking_for_callers_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let asks = |kind| {
+            Utterance::Ask(Question::Identify(Description {
+                kind,
+                conditions: vec![Condition::Related {
+                    relation: RustRelation::Calls,
+                    position: Position::First,
+                    other: Thing::Named(Name("cut".into())),
+                }],
+            }))
+        };
+        for (text, kind) in [
+            ("where is `cut` called from?", None),
+            ("where's cut getting called from", None),
+            ("from where does `cut` get used", None),
+            ("does anything call `cut()`?", None),
+            ("who uses cut", None),
+            (
+                "is there anything that ends up calling `cut`? which functions call it",
+                Some(RustKind::Function),
+            ),
+            (
+                "I'm trying to figure out where `cut` gets used, which functions?",
+                Some(RustKind::Function),
+            ),
+            (
+                "trying to understand `cut`, which functions are calling it?",
+                Some(RustKind::Function),
+            ),
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == asks(kind)), "{text:?}");
         }
     }
 

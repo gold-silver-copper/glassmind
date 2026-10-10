@@ -66,27 +66,39 @@ fn identify<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         _ => None,
     })
 }
-/// "what's inside `Bank`, which fields it has": a question for what stands
-/// in a relation to a thing, then for those of one kind, about the same
-/// thing. The second asks what both ask.
-fn narrowed<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    let (Some(Sem::Question(Question::Identify(wide))), Some(Sem::Question(narrow))) =
-        (c.first(), c.last())
-    else {
+/// "what's inside `Bank`, which fields it has", "is there anything that
+/// calls `x`? which functions call it": a question for what stands in a
+/// relation to a thing, then for the same about the same thing, with a
+/// kind said in one of them (or asking how many: "like how many functions
+/// call it"). Together they ask the later question, of the kind said.
+pub(crate) fn narrowed<O: Ontology>(
+    earlier: &Question<O>,
+    later: &Question<O>,
+) -> Option<Question<O>> {
+    let Question::Identify(wide) = earlier else {
         return None;
     };
     let [Condition::Related { other, .. }] = wide.conditions.as_slice() else {
         return None;
     };
-    match narrow.map_things(&mut |t| match t {
+    let later = later.map_things(&mut |t| match t {
         Thing::Previous => other.clone(),
         t => t.clone(),
-    }) {
-        Question::Identify(d) if wide.kind.is_none() && d.conditions == wide.conditions => {
-            Some(Sem::Question(Question::Identify(d)))
-        }
-        _ => None,
+    });
+    let (Question::Identify(d) | Question::Count(d)) = &later else {
+        return None;
+    };
+    if d.conditions != wide.conditions || (wide.kind.is_some() && d.kind.is_some()) {
+        return None;
     }
+    let d = Description {
+        kind: d.kind.clone().or_else(|| wide.kind.clone()),
+        conditions: d.conditions.clone(),
+    };
+    Some(match later {
+        Question::Count(_) => Question::Count(d),
+        _ => Question::Identify(d),
+    })
 }
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -194,12 +206,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Cat::Description,
             vec![W("its"), C(Cat::RoleNoun)],
             |c| role_of(c.first()?, &Sem::Thing(Thing::Previous)),
-        ),
-        rule(
-            "en.question.narrowed",
-            Cat::Question,
-            vec![C(Cat::Question), C(Cat::Join), C(Cat::Question)],
-            narrowed,
         ),
         // "I'm looking at `InGrid`, which fields does it have?": what the
         // user is looking at, set off before the question about it.

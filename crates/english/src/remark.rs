@@ -6,7 +6,7 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Ontology, Thing};
 
-use crate::lexicon::TEXT;
+use crate::lexicon::{CODE, TEXT};
 use crate::sem::{Cat, Sem};
 use crate::{blank, first, phrase, word};
 
@@ -95,6 +95,21 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         // "`tick` on `App` is a bit cryptic": a remark about a thing.
         about("en.remark.about", vec![C(Cat::Mention), Class(TEXT)]),
+        // "trying to understand scroll_by", "so the Store has this
+        // `write_json`": a remark ending with the thing it is about, named
+        // as code.
+        Rule::new(
+            RuleInfo::new("en.remark.ending_about", 9),
+            Cat::Remark,
+            vec![C(Cat::Remark), Class(CODE)],
+            S::Build(|c| match c.last()? {
+                Sem::Name(name) => Some(Sem::Mention {
+                    thing: Thing::Named(name.clone()),
+                    kind: None,
+                }),
+                _ => None,
+            }),
+        ),
         // "the name": what a remark about a thing's name calls it.
         word(
             RuleInfo::new("en.name_noun.name", 5),
