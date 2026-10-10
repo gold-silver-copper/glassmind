@@ -110,6 +110,10 @@ pub fn response(reply: &Reply<Rust>) -> Response {
                 })
                 .collect(),
         },
+        // Asking back whether it meant a reading is honest, not an answer.
+        Reply::Clarify { .. } => Response::Ask {
+            candidates: Default::default(),
+        },
         Reply::Declined => Response::Meta {
             act: MetaAct::Declined,
         },
@@ -146,7 +150,7 @@ pub fn response(reply: &Reply<Rust>) -> Response {
     }
 }
 
-pub fn outcome(turn_id: &str, turn: &Turn<Rust>) -> Outcome {
+pub fn outcome(turn_id: &str, turn: &Turn<Rust>, canonical: Option<String>) -> Outcome {
     Outcome {
         turn_id: turn_id.to_owned(),
         response: response(&turn.reply),
@@ -161,5 +165,18 @@ pub fn outcome(turn_id: &str, turn: &Turn<Rust>) -> Outcome {
         tokens: u32::try_from(turn.tokens).unwrap_or(u32::MAX),
         rules: turn.rules().iter().map(|r| r.id.to_owned()).collect(),
         text: turn.spoken.clone(),
+        canonical,
     }
+}
+
+/// What English says for the reading the turn was answered from, before
+/// its names were looked up: the canonical form of the request.
+pub fn canonical(english: &glassmind_english::English<Rust>, turn: &Turn<Rust>) -> Option<String> {
+    let reading = turn.trace.chosen.and_then(|i| turn.trace.readings.get(i))?;
+    english
+        .speak(
+            glassmind_english::Cat::Utterance,
+            &glassmind_english::Sem::Utterance(reading.meaning.clone()),
+        )
+        .map(|s| s.text)
 }

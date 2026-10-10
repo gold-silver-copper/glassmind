@@ -307,6 +307,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
+        // "Did you mean: which functions call `x`?"
+        said(
+            "en.reply.clarify",
+            Reply,
+            vec![W("did you mean :"), C(Utterance)],
+            |v| match v {
+                Sem::Reply(Reply::Clarify { reading }) => {
+                    Some(vec![Sem::Utterance(reading.clone())])
+                }
+                _ => None,
+            },
+        ),
         said(
             "en.reply.declined",
             Reply,

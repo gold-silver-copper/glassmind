@@ -165,6 +165,11 @@ pub struct Outcome {
     pub rules: Vec<String>,
     /// The reply as the user would see it.
     pub text: String,
+    /// What the system says for the reading it chose, before names were
+    /// looked up: the canonical form of the request, for learning how
+    /// people's phrasing differs from it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub canonical: Option<String>,
 }
 
 /// One conversation as given to `glassmind eval`: sources and user turns only.

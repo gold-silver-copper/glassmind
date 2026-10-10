@@ -226,6 +226,7 @@ mod tests {
             tokens: 2,
             rules: Vec::new(),
             text: String::new(),
+            canonical: None,
         }
     }
 

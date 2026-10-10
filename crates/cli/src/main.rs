@@ -27,6 +27,7 @@ mod chat;
 mod details;
 mod edit;
 mod system;
+mod train;
 
 use system::{System, load_session, parse_source, save_session};
 
@@ -104,6 +105,18 @@ enum Command {
         #[arg(long, value_delimiter = ',')]
         disable: Vec<String>,
     },
+    /// Learn the normalizer's edit model from turns answered right (eval
+    /// outcomes and their labels), and write it as text.
+    TrainNormalizer {
+        #[arg(long)]
+        inputs: PathBuf,
+        #[arg(long)]
+        outcomes: PathBuf,
+        #[arg(long)]
+        labels: PathBuf,
+        #[arg(long)]
+        out: PathBuf,
+    },
     /// List every rule with the round that added it.
     Rules {
         /// Also show what each grammar rule reads.
@@ -131,6 +144,12 @@ fn main() -> ExitCode {
             inputs,
             disable,
         } => eval(&sources, &inputs, Switches::without(disable)),
+        Command::TrainNormalizer {
+            inputs,
+            outcomes,
+            labels,
+            out,
+        } => train::normalizer(&inputs, &outcomes, &labels, &out).map(|report| say!("{report}")),
         Command::Rules { detail } => {
             for problem in system::rule_problems() {
                 eprintln!("problem: {problem}");
@@ -171,7 +190,7 @@ fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
     };
     let turn = system.respond(&mut session, text);
     if common.json {
-        let outcome = answer::outcome("ask", &turn);
+        let outcome = answer::outcome("ask", &turn, answer::canonical(&system.english, &turn));
         say!(
             "{}",
             serde_json::to_string(&outcome).map_err(|e| e.to_string())?
@@ -253,7 +272,7 @@ fn eval(
         let mut session = Session::new(Vec::new());
         for turn in &conversation.turns {
             let result = mind.respond(&mut session, &turn.text);
-            let outcome = answer::outcome(&turn.id, &result);
+            let outcome = answer::outcome(&turn.id, &result, answer::canonical(&english, &result));
             let json = serde_json::to_string(&outcome).map_err(|e| e.to_string())?;
             writeln!(out, "{json}").map_err(|e| e.to_string())?;
         }

@@ -14,7 +14,7 @@
 use std::cmp::Reverse;
 use std::collections::BTreeSet;
 
-use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
+use glassmind_meaning::interface::{Language, Reading, Spoken, TokenSpan, Understanding, World};
 use glassmind_meaning::{
     Condition, Description, Fact, Name, Ontology, Question, Reply, Thing, Trouble, Utterance,
 };
@@ -87,8 +87,25 @@ pub const PREFER_FEWEST_EDITS: RuleInfo =
 /// "yes" to a waiting proposal makes its changes; "no" declines it.
 pub const CONSENT_APPLIES: RuleInfo = RuleInfo::new("mind.consent.applies", glassmind_rules::HAND);
 
+/// `Reading::edits` at or above which a reading came through the
+/// language's normalizer rather than as typed.
+const NORMALIZED: u32 = 100;
+/// `Reading::edits` at or above which a reading needed an edit the
+/// language is unsure of.
+const UNSURE: u32 = 200;
+
+/// Asking "did you mean ...?" instead of answering a reading the language
+/// is unsure it understood.
+pub const ASK_WHEN_UNSURE: RuleInfo = RuleInfo::new("mind.ask_when_unsure", glassmind_rules::HAND);
+
+/// A reading that leaves out (or reads as another word) a word naming
+/// something in the world is not taken.
+pub const KEEP_NAMES: RuleInfo = RuleInfo::new("mind.keep_names", glassmind_rules::HAND);
+
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
+    ASK_WHEN_UNSURE,
+    KEEP_NAMES,
     CONSENT_APPLIES,
     PREFER_FEWEST_EDITS,
     PREFER_FEWEST_IDLE,
@@ -145,7 +162,7 @@ impl<O: Ontology> Session<O> {
             }
             match reply {
                 Reply::Applied { .. } | Reply::Declined => return None,
-                Reply::Proposal { .. } => return Some(reply.clone()),
+                Reply::Proposal { .. } | Reply::Clarify { .. } => return Some(reply.clone()),
                 Reply::Remedy { changes, .. } if !changes.is_empty() => return Some(reply.clone()),
                 _ => {}
             }
@@ -336,8 +353,28 @@ impl<O: Ontology> Mind<'_, O> {
             }
             Understanding::Readings(readings) => readings,
         };
+        // "yes" to "did you mean ...?" answers the reading asked about.
+        let readings = match (session.pending(), readings.first().map(|r| &r.meaning)) {
+            (Some(Reply::Clarify { reading }), Some(Utterance::Consent(true))) => vec![Reading {
+                meaning: reading,
+                rules: vec![CONSENT_APPLIES],
+                parse: "(yes to: did you mean ...)".to_owned(),
+                idle: 0,
+                edits: 0,
+                discarded: Vec::new(),
+            }],
+            _ => readings,
+        };
         let mut candidates = Vec::new();
         for (i, reading) in readings.iter().enumerate() {
+            // A reading that discards a word naming something in the world
+            // ignores what the user asked about.
+            let mut fired = Vec::new();
+            let discards_name = self.switches.on(KEEP_NAMES.id)
+                && reading
+                    .discarded
+                    .iter()
+                    .any(|w| !self.world.lookup(&Name(w.clone()), &mut fired).is_empty());
             let mut rt = ReadingTrace {
                 parse: reading.parse.clone(),
                 rules: reading.rules.clone(),
@@ -346,6 +383,13 @@ impl<O: Ontology> Mind<'_, O> {
                 world_rules: Vec::new(),
                 outcomes: Vec::new(),
             };
+            if discards_name {
+                rt.world_rules.push(KEEP_NAMES);
+                rt.outcomes
+                    .push((reading.meaning.clone(), Err(Trouble::Unsupported)));
+                trace.readings.push(rt);
+                continue;
+            }
             // A correction asks the corrected request, if that rule is on.
             let meaning = match &reading.meaning {
                 Utterance::Correct(thing)
@@ -546,6 +590,28 @@ impl<O: Ontology> Mind<'_, O> {
                 "{} surviving reading(s), all with the same answer",
                 good.len()
             );
+            // A reading that needed an unlikely edit of the input: ask
+            // whether it is what was meant rather than answer it.
+            if first.edits >= UNSURE && self.switches.on(ASK_WHEN_UNSURE.id) {
+                trace.preferences.push(ASK_WHEN_UNSURE);
+                return (
+                    Reply::Clarify {
+                        reading: first.meaning.clone(),
+                    },
+                    Some(first),
+                );
+            }
+            // A reading that needed the normalizer's edits is a guess at
+            // what was meant: say which reading the answer rests on.
+            if first.edits >= NORMALIZED {
+                return (
+                    Reply::Assuming {
+                        reading: first.meaning.clone(),
+                        reply: Box::new(first_reply.clone()),
+                    },
+                    Some(first),
+                );
+            }
             return (first_reply.clone(), Some(first));
         }
         // The readings disagree: prefer recent mentions, then the first reading.

@@ -31,6 +31,10 @@ pub struct Reading<O: Ontology> {
     /// What the corrections of mistyped words cost this reading; 0 if it
     /// reads the words as typed.
     pub edits: u32,
+    /// Words the user typed that this reading leaves out or reads as other
+    /// words (the normalizer's edits): a reading that discards a name of
+    /// something in the world ignores what the user asked about.
+    pub discarded: Vec<String>,
 }
 
 /// What the language made of the input.

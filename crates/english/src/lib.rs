@@ -33,6 +33,7 @@ pub mod lexicon;
 pub mod locate;
 pub mod mention;
 pub mod naming;
+pub mod normalize;
 pub mod ones;
 pub mod reason;
 pub mod recall;
@@ -52,7 +53,7 @@ pub use sem::{Cat, Number, Sem, VerbForm};
 pub use tokens::{Shape, Token, tokenize};
 
 /// English rules that are not grammar rules, for listing and switching.
-pub const RULES: &[RuleInfo] = &[typos::TYPOS];
+pub const RULES: &[RuleInfo] = &[typos::TYPOS, normalize::NORMALIZER];
 
 /// Every English rule that is not about a particular world.
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -138,6 +139,8 @@ pub fn word<O: Ontology>(
 pub struct English<O: Ontology> {
     grammar: Grammar<Cat, Sem<O>>,
     lexicon: EnglishLexicon<O>,
+    /// Whether inputs that do not parse are read through the normalizer.
+    normalizing: bool,
 }
 
 impl<O: Ontology> English<O> {
@@ -176,6 +179,7 @@ impl<O: Ontology> English<O> {
             .collect();
         English {
             grammar,
+            normalizing: switches.on(normalize::NORMALIZER.id),
             lexicon: EnglishLexicon {
                 known,
                 standing,
@@ -210,6 +214,74 @@ impl<O: Ontology> English<O> {
         tokenize(text, &|w| {
             self.lexicon.known.contains(w) || self.lexicon.spellings.contains_key(w)
         })
+    }
+
+    /// Readings of the input with the normalizer's edits, when it does not
+    /// parse as typed: the cheapest edited inputs that parse, within one
+    /// bit of the cheapest. `edits` on each reading is 100 plus ten times
+    /// its cost in bits, so any reading of the input as typed (or with
+    /// mistyped words corrected) is preferred.
+    fn normalized(&self, tokens: &[Token]) -> Option<Vec<Reading<O>>> {
+        let known = |w: &str| self.lexicon.known.contains(w);
+        let mut found: Vec<Reading<O>> = Vec::new();
+        let mut best: Option<f64> = None;
+        for (edited, cost) in normalize::candidates(tokens, &known).into_iter().take(80) {
+            if best.is_some_and(|b| cost > b + 1.0) {
+                break;
+            }
+            let parse = self.grammar.parse(&self.lexicon, &edited);
+            for p in &parse.readings {
+                if let Sem::Utterance(u) = &p.value {
+                    // Only a reading close enough to what was typed is trusted.
+                    let said = self
+                        .speak(Cat::Utterance, &p.value)
+                        .map(|s| s.text)
+                        .unwrap_or_default();
+                    let typed: Vec<String> = tokens.iter().map(normalize::model_word).collect();
+                    let canonical: Vec<String> = self
+                        .tokenize(said.trim_end_matches(['?', '.']))
+                        .iter()
+                        .map(normalize::model_word)
+                        .collect();
+                    if said.is_empty() || !normalize::model().trusts(&typed, &canonical) {
+                        continue;
+                    }
+                    best.get_or_insert(cost);
+                    found.push(Reading {
+                        meaning: u.clone(),
+                        rules: [p.rules(), vec![normalize::NORMALIZER]].concat(),
+                        parse: render(p, &edited),
+                        idle: idle(p),
+                        // 100 and up: read through the normalizer; 200 and
+                        // up: with an edit too unlikely to answer without
+                        // asking (see `normalize::SURE_EDIT_BITS`).
+                        edits: if normalize::model().worst_edit(&typed, &canonical)
+                            <= normalize::SURE_EDIT_BITS
+                        {
+                            100
+                        } else {
+                            200
+                        } + (cost * 10.0).round() as u32
+                            + p.edits,
+                        discarded: tokens
+                            .iter()
+                            .filter(|t| {
+                                !edited
+                                    .iter()
+                                    .any(|e| e.start == t.start && e.text == t.text)
+                            })
+                            .map(|t| t.text.clone())
+                            .collect(),
+                    });
+                }
+            }
+        }
+        (!found.is_empty()).then_some(found)
+    }
+
+    /// The tokens of `text`, as this grammar splits it.
+    pub fn tokens_of(&self, text: &str) -> Vec<Token> {
+        self.tokenize(text)
     }
 
     pub fn grammar(&self) -> &Grammar<Cat, Sem<O>> {
@@ -261,12 +333,18 @@ impl<O: Ontology> Language<O> for English<O> {
                     parse: render(p, &tokens),
                     idle: idle(p),
                     edits: p.edits,
+                    discarded: Vec::new(),
                 }),
                 _ => None,
             })
             .collect();
         if !readings.is_empty() {
             return Understanding::Readings(readings);
+        }
+        if self.normalizing
+            && let Some(normalized) = self.normalized(&tokens)
+        {
+            return Understanding::Readings(normalized);
         }
         // Why nothing was understood: an unknown word where reading
         // stopped, or words in a shape no rule fits (or too many readings).

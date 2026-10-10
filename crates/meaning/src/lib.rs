@@ -282,6 +282,9 @@ pub enum Reply<O: Ontology> {
     },
     /// The user declined what was proposed; nothing was changed.
     Declined,
+    /// Not sure the input was understood: asks whether it meant this
+    /// reading; "yes" answers it.
+    Clarify { reading: Utterance<O> },
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on the system taking the input, which could be
