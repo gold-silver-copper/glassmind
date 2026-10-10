@@ -88,7 +88,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 ("en.ones.ones", "ones"),
                 ("en.ones.those", "those"),
                 ("en.ones.they", "they"),
-                ("en.ones.anything", "anything"),
             ],
         )],
     ));

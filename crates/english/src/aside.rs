@@ -66,13 +66,11 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.makes_sense", 9, "makes sense"),
     // "How many functions call it, by the way?"
     ("en.aside.by_the_way", 9, "by the way"),
-    // "Oops, sorry, I meant `x`.", "ah sorry, ...", "no, I meant ...", "my
-    // bad, ...": a slip owned before it is put right.
+    // "Oops, sorry, I meant `x`.", "ah sorry, ...", "no, I meant ...": a
+    // slip owned before it is put right.
     ("en.aside.oops", 10, "oops"),
-    ("en.aside.whoops", 10, "whoops"),
     ("en.aside.ah", 10, "ah"),
     ("en.aside.no", 10, "no"),
-    ("en.aside.my_bad", 10, "my bad"),
     // "ok anyway, could you rename it ...": going back to the request
     // after a digression; "..., thx".
     ("en.aside.anyway", 11, "anyway"),

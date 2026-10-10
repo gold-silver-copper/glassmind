@@ -125,11 +125,9 @@ const PARTS: &[(&str, Cat, &[Sym<Cat>])] = &[
         Widening,
         &[C(Directly), W("or"), C(Widening)],
     ),
-    // "if it's wrapped in other type", "when it's wrapped in something",
-    // "ones where it's inside some other type", "fields where `Post` is
+    // "if it's wrapped in other type", "ones where it's inside some other type", "fields where `Post` is
     // wrapped in something else", "ones where the type just contains Key".
     ("en.widening.if", Widening, &[W("if"), C(Wrapped)]),
-    ("en.widening.when", Widening, &[W("when"), C(Wrapped)]),
     (
         "en.widening.ones_where",
         Widening,
@@ -186,7 +184,6 @@ const PARTS: &[(&str, Cat, &[Sym<Cat>])] = &[
         &[C(Enclosure), W("/"), C(Enclosure)],
     ),
     ("en.enclosure.a", Enclosure, &[W("a"), C(Enclosure)]),
-    ("en.enclosure.an", Enclosure, &[W("an"), C(Enclosure)]),
     (
         "en.enclosure.another",
         Enclosure,
@@ -269,26 +266,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 &[
                     ("en.wrapping.wrapped", "wrapped"),
                     ("en.wrapping.nested", "nested"),
-                    ("en.wrapping.boxed", "boxed"),
                     ("en.wrapping.inside", "inside"),
                     ("en.wrapping.in", "in"),
                 ],
             ),
-            (
-                Enclosure,
-                &[
-                    ("en.enclosure.something", "something"),
-                    ("en.enclosure.something_else", "something else"),
-                    ("en.enclosure.whatever", "whatever"),
-                ],
-            ),
+            (Enclosure, &[("en.enclosure.something", "something")]),
             (
                 Counted,
                 &[
-                    ("en.counted.count", "count"),
                     ("en.counted.count_too", "count too"),
                     ("en.counted.also_counts", "also counts"),
-                    ("en.counted.both_count", "both count"),
                 ],
             ),
             (

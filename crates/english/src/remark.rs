@@ -180,12 +180,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Wishing), Class(TEXT)],
             S::Const(remark_value()),
         ),
-        // "I'm going through the chat code, and I'd like ..."
-        utterance(
-            "en.utterance.remark_comma_and",
-            5,
-            vec![C(Cat::Remark), W(","), W("and"), C(Cat::Utterance)],
-        ),
         // "Hey, quick question: ...", "hey, could you rename ..."
         greeting("en.greeting.hey", "hey"),
         // "Hi, what functions does `local_times_in_explicit_zones` call?"

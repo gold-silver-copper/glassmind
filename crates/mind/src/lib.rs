@@ -52,11 +52,6 @@ pub const RECALL_IS_MENTIONS: RuleInfo = RuleInfo::new("mind.recall.mentions", 7
 /// function defined?" after "which functions call `x`?") is the one item
 /// the latest understood turn asked about, if it asked about just one.
 pub const PREVIOUS_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.topic", 9);
-/// Otherwise, a thing referred back to without a name ("which functions
-/// call it?", "where is that one defined?") means the item the user last
-/// spoke of, in the latest turn not forgotten that spoke of one. If that
-/// turn spoke of several items, which one is meant is left open.
-pub const PREVIOUS_IS_LAST_SPOKEN: RuleInfo = RuleInfo::new("mind.refer.last_spoken", 9);
 /// A correction ("sorry, I meant `y`" after "where is `x` defined?") asks
 /// the request of the latest remembered turn again, with the thing it says
 /// in place of the one item that request was about. If that turn was not
@@ -78,7 +73,6 @@ pub const RULES: &[RuleInfo] = &[
     ALIAS_NOTED,
     RECALL_IS_MENTIONS,
     PREVIOUS_IS_TOPIC,
-    PREVIOUS_IS_LAST_SPOKEN,
     CORRECTION_REPLACES,
     PREFER_REFERRING,
 ];
@@ -129,23 +123,6 @@ impl<O: Ontology> Session<O> {
                 if !out.contains(item) {
                     out.push(item.clone());
                 }
-            }
-        }
-        out
-    }
-
-    /// The items the user spoke of in the latest remembered turn that spoke
-    /// of any, each once.
-    pub fn last_spoken(&self) -> Vec<O::Item> {
-        let mut out = Vec::new();
-        for turn in self.remembered() {
-            for item in spoken_of(turn) {
-                if !out.contains(item) {
-                    out.push(item.clone());
-                }
-            }
-            if !out.is_empty() {
-                break;
             }
         }
         out
@@ -383,18 +360,11 @@ impl<O: Ontology> Mind<'_, O> {
                     choices = items.into_iter().map(Thing::Item).collect();
                 }
             } else if *thing == Thing::Previous {
-                // The one item the latest turn asked about, or else the one
-                // item last spoken of, if those rules are on.
+                // The one item the latest turn asked about, if that rule is on.
                 if let Some(item) = session.topic()
                     && self.using(PREVIOUS_IS_TOPIC, &mut rt.world_rules).is_ok()
                 {
                     choices = vec![Thing::Item(item)];
-                } else if let [item] = session.last_spoken().as_slice()
-                    && self
-                        .using(PREVIOUS_IS_LAST_SPOKEN, &mut rt.world_rules)
-                        .is_ok()
-                {
-                    choices = vec![Thing::Item(item.clone())];
                 }
             }
             options.push(choices);

@@ -31,7 +31,6 @@ const WORDS: &[(&str, Cat, &str)] = &[
     ("en.becoming.gets", Cat::Becoming, "gets"),
     ("en.becoming.get", Cat::Becoming, "get"),
     ("en.becoming.getting", Cat::Becoming, "getting"),
-    ("en.becoming.being", Cat::Becoming, "being"),
 ];
 
 /// "`x` gets called": the things asked about stand first in the relation,

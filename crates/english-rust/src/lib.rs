@@ -124,7 +124,6 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.verb.uses", 9, "uses", Calls, ThirdSingular),
                 ("en.rust.verb.use", 9, "use", Calls, Plain),
                 ("en.rust.verb.used", 9, "used", Calls, Participle),
-                ("en.rust.verb.using", 9, "using", Calls, Progressive),
                 // "which structs hold a field ...", "what structs got a field ..."
                 ("en.rust.verb.holds", 3, "holds", HasField, ThirdSingular),
                 ("en.rust.verb.hold", 3, "hold", HasField, Plain),
@@ -154,7 +153,6 @@ pub fn words() -> Vec<Word> {
                 // embed ThemeConfig in a field"
                 ("en.rust.verb.stores", 11, "stores", HasField, ThirdSingular),
                 ("en.rust.verb.embed", 11, "embed", HasField, Plain),
-                ("en.rust.verb.embeds", 11, "embeds", HasField, ThirdSingular),
                 // "which fields `S` contains", "which fields make up `S`",
                 // "what fields `PostText` is made up of"
                 (
@@ -270,12 +268,6 @@ pub fn words() -> Vec<Word> {
             field,
             &[("en.rust.part.field", 5, "field", HasField, Second)],
         ),
-        // "`S` struct fields": the fields of a struct.
-        read_only(table(
-            Part,
-            field,
-            &[("en.rust.part.fields", 7, "fields", HasField, Second)],
-        )),
     ]
     .concat()
 }

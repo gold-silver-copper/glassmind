@@ -46,7 +46,6 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     ("en.prompt.want", 5, "want"),
     // "can u rename ...": "you" typed short.
     ("en.prompt.can_u", 11, "can u"),
-    ("en.prompt.could_u", 11, "could u"),
     // "maybe rename it to `log_fuzz_step`": a request put forward gently.
     ("en.prompt.maybe", 11, "maybe"),
     // "I'm thinking `x` should be renamed to `y`"

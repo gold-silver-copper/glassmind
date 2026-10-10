@@ -61,7 +61,6 @@ const FILLERS: &[(Cat, &[(&str, &str)])] = &[
     (
         Cat::Inquiry,
         &[
-            ("en.inquiry.do_you_know", "do you know"),
             ("en.inquiry.like_to_know", "i'd like to know"),
             ("en.inquiry.figure_out", "i'm trying to figure out"),
             ("en.inquiry.trying_to_find", "i'm trying to find"),
@@ -76,7 +75,6 @@ const FILLERS: &[(Cat, &[(&str, &str)])] = &[
         Cat::Tell,
         &[
             ("en.tell.tell_me", "tell me"),
-            ("en.tell.show_me", "show me"),
             ("en.tell.point_me_to", "point me to"),
         ],
     ),
@@ -320,15 +318,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::NounPhrase), C(Cat::Definition)],
             locate,
         ),
-        // "Inquiry": a modal question "can you tell me", or a bare "tell
-        // me"; the speaker's wish ("I'd like to know") is in `FILLERS`.
+        // "Inquiry": a modal question "can you tell me"; the speaker's wish ("I'd like to know") is in `FILLERS`.
         rule(
             "en.inquiry.modal",
             Cat::Inquiry,
             vec![C(Cat::Modal), W("you"), C(Cat::Tell)],
             nothing,
         ),
-        rule("en.inquiry.tell", Cat::Inquiry, vec![C(Cat::Tell)], nothing),
         // "defined": how the system says it, too.
         word(
             RuleInfo::new("en.defined.defined", ROUND),
@@ -338,18 +334,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
     ]);
     rules.extend(fillers(ROUND, FILLERS));
-    // The same wish said without a subject: "trying to find where `x` is
-    // defined".
-    rules.extend(fillers(
-        10,
-        &[(
-            Cat::Inquiry,
-            &[
-                ("en.inquiry.bare_trying_to_find", "trying to find"),
-                ("en.inquiry.bare_figure_out", "trying to figure out"),
-            ],
-        )],
-    ));
     // "`x` is defined at src/x.rs:12."
     rules.push(Rule::new(
         RuleInfo::new("en.reply.location", ROUND),

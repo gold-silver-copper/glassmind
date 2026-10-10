@@ -21,9 +21,8 @@ fn correction<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, lhs, rhs, sem| Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, sem).read_only();
     vec![
-        // "meant", "mean": what the speaker had in mind.
+        // "meant": what the speaker had in mind.
         filler("en.meant.meant", ROUND, Cat::Meant, "meant"),
-        filler("en.meant.mean", ROUND, Cat::Meant, "mean"),
         // "I meant", "actually meant", "I actually meant".
         rule(
             "en.meant.i",
@@ -50,14 +49,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             }),
         ),
-        // "I meant `y`, not that one", "meant `y` not `x`": the correction,
-        // with the thing it sets aside.
-        rule(
-            "en.utterance.meant_not",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), W("not"), C(Cat::NounPhrase)],
-            S::Build(correction),
-        ),
+        // "I meant `y`, not that one": the correction, with the thing it
+        // sets aside.
         rule(
             "en.utterance.meant_comma_not",
             Cat::Utterance,

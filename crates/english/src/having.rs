@@ -16,8 +16,8 @@ use crate::sem::{Cat, Number, Sem};
 use crate::{blank, last, word};
 
 use Cat::{
-    Again, Alternative, Anything, AskAgain, Description, Hedge, Holder, Includes, Indirect, Join,
-    Noun, NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective,
+    Again, Alternative, Anything, AskAgain, Description, Hedge, Holder, Includes, Join, Noun,
+    NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective,
     RoleNoun, Utterance, VerbPhrase, Within,
 };
 use Sym::{Cat as C, Word as W};
@@ -277,7 +277,6 @@ const HOLDER_DETERMINERS: &[(&str, &str)] = &[
     ("en.holder.a", "a"),
     ("en.holder.some", "some"),
     ("en.holder.their", "their"),
-    ("en.holder.its", "its"),
     ("en.holder.one_of_their", "one of their"),
     ("en.holder.one_of_its", "one of its"),
 ];
@@ -316,7 +315,6 @@ const INCLUDES_LATER: &[(&str, &str)] = &[
     ("en.includes.is_comma_or_includes", "is , or includes ,"),
     ("en.includes.has", "has"),
     ("en.includes.use", "use"),
-    ("en.includes.uses", "uses"),
 ];
 
 /// Words saying where in a thing another is, after a qualifier: "or wraps
@@ -334,7 +332,6 @@ const WITHIN: &[(&str, &str)] = &[
 const WITHIN_ROLE: &[(&str, &str)] = &[
     ("en.within.in_role", "in"),
     ("en.within.inside_role", "inside"),
-    ("en.within.somewhere_in_role", "somewhere in"),
 ];
 
 /// Questions after a question that ask again for what it asks about.
@@ -350,12 +347,11 @@ const ASK_AGAIN: &[(&str, &str)] = &[
 const ASK_AGAIN_LATER: &[(&str, &str)] =
     &[("en.ask_again.which_ones_are_there", "which ones are there")];
 
-/// Words for some thing of any kind: "anything", "anyone".
+/// Words for some thing of any kind: "anything", "anyone", "something".
 const ANYTHING: &[(&str, &str)] = &[
     ("en.anything.anything", "anything"),
     ("en.anything.something", "something"),
     ("en.anything.anyone", "anyone"),
-    ("en.anything.anybody", "anybody"),
 ];
 
 /// Determiners before a role noun, which name the same role: "a type",
@@ -594,12 +590,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             11,
             Description,
             words_then("many", &[Description]),
-            last,
-        ),
-        rule(
-            "en.description.is_there",
-            Description,
-            words_then("is there", &[Description]),
             last,
         ),
         // "is there anything that ends up calling `x`", "anything calling
@@ -915,8 +905,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
         // "a field type": a part with a determiner.
         later("en.part.a", Part, words_then("a", &[Part]), last),
-        // "where is `ImageSearch` used as field type", "where `x` is used
-        // as a field type", "RangeSource used as field type where": what
+        // "where is `ImageSearch` used as field type", "RangeSource used as
+        // field type where": what
         // has a part whose role `x` fills.
         later(
             "en.question.where_used_as",
@@ -925,20 +915,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 W("where"),
                 W("is"),
                 C(NounPhrase),
-                W("used"),
-                W("as"),
-                C(Part),
-                C(RoleNoun),
-            ],
-            used_as,
-        ),
-        later(
-            "en.indirect.where_used_as",
-            Indirect,
-            vec![
-                W("where"),
-                C(NounPhrase),
-                W("is"),
                 W("used"),
                 W("as"),
                 C(Part),

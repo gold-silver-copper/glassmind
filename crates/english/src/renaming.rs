@@ -537,18 +537,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Utterance), C(Cat::Mark), C(Cat::Offer)],
             offered,
         ),
-        later(
-            "en.offer.maybe",
+        // The name offered behind the words that frame a request ("maybe",
+        // "I think").
+        Rule::new(
+            RuleInfo::new("en.offer.prompt", 12),
             Cat::Offer,
-            vec![W("maybe"), C(Cat::NewName)],
-            first,
-        ),
-        later(
-            "en.offer.i_think",
-            Cat::Offer,
-            vec![W("i"), W("think"), C(Cat::NewName)],
-            first,
-        ),
+            vec![C(Cat::Prompt), C(Cat::NewName)],
+            S::Build(crate::last),
+        )
+        .read_only(),
         later(
             "en.offer.more",
             Cat::Offer,
