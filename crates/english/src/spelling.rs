@@ -61,6 +61,10 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// system a name of the user's own: "im gonna call `Wound` the hole", "ill
 /// call Confirm the gate", "im calling it word list frm here". "im" and
 /// "ill" are "i'm" and "i'll" without the apostrophe.
+///
+/// Round 25, from putting right what was just asked: "sorry ment
+/// `back_plated`", "oops i ment org_people_say_how_many_are_left_out", "sry
+/// meant `Overlay`". "sry" is "sorry" typed short, as "thx" is "thanks".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -214,6 +218,13 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.im", "im", "i'm"),
             ("en.spelling.ill", "ill", "i'll"),
             ("en.spelling.frm", "frm", "from"),
+        ],
+    ),
+    (
+        25,
+        &[
+            ("en.spelling.ment", "ment", "meant"),
+            ("en.spelling.sry", "sry", "sorry"),
         ],
     ),
 ];

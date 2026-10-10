@@ -633,6 +633,8 @@ mod tests {
             "oh sorry, I meant `cut` actually",
             "Sorry, I meant `cut`, not that one.",
             "no, I meant the function `cut`, not `trim`",
+            "sry ment `cut`",
+            "oops i ment cut",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
