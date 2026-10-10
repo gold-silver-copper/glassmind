@@ -27,6 +27,13 @@ Reply with only a JSON array, one object per conversation, in the order given:
 [{"conv_id": "...", "turns": [{"text": "...", "new_name": "optional", "nickname": "optional"}]}]"""
 
 PERSONAS = {
+    # Added after loop round 10, written from the brief's requirement that
+    # generators imitate how people actually type (short, lowercase, missing
+    # words, typos), not from any held-out example.
+    "hurried": """Persona: someone typing fast into a chat box on a laptop while in the middle of something else.
+Very short and all lowercase. Often drops articles, "is"/"are", "do"/"does" and question marks ("what fields Player have", "where spawn_wave").
+Frequent typos in ordinary English words: about one word in five has a dropped, doubled or swapped letter ("fucntion", "whcih", "defiend", "teh").
+Never a typo inside a code identifier. Sometimes shorthand: u, pls, w/, fn, smth. Sometimes the words come in an odd order.""",
     "terse": """Persona: a senior engineer firing quick queries into a terminal tool between meetings.
 Mostly lowercase, as few words as possible, articles and question marks often dropped ("callers of x", "where's foo defined").
 Sometimes abbreviations (fn, func). An occasional typo in an ordinary English word, never in identifiers.
