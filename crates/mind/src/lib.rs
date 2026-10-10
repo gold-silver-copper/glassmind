@@ -426,6 +426,8 @@ fn progress_of<O: Ontology>(reply: &Reply<O>) -> Progress {
     match reply {
         Reply::Trouble(t) => trouble_progress(t),
         Reply::Assuming { reply, .. } => progress_of(reply),
-        Reply::Extent(_) | Reply::Location(_) | Reply::Account { .. } => Progress::Done,
+        Reply::Extent(_) | Reply::Location(_) | Reply::Account { .. } | Reply::Count { .. } => {
+            Progress::Done
+        }
     }
 }

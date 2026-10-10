@@ -95,6 +95,14 @@ pub enum Cat {
     Break,
     /// Words joining two ways of asking one question: "and", ", or", "like".
     Join,
+    /// A present participle with its object, a condition on what it
+    /// describes: "calling `x`".
+    Participial,
+    /// A noun for how many things there are: "number", "count", "#".
+    Amount,
+    /// A dash setting a topic before a question about it: "`x` — how
+    /// many callers".
+    Dash,
 }
 
 /// English grammatical number, used for agreement.

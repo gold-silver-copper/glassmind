@@ -15,6 +15,7 @@ use glassmind_rules::Switches;
 
 pub mod aside;
 pub mod asking;
+pub mod counting;
 pub mod describe;
 pub mod discourse;
 pub mod lexicon;
@@ -38,6 +39,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(aside::rules());
     rules.extend(locate::rules());
     rules.extend(asking::rules());
+    rules.extend(counting::rules());
     rules.extend(discourse::rules());
     rules.extend(mention::rules());
     rules.extend(describe::rules());

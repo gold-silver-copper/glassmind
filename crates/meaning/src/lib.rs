@@ -113,6 +113,8 @@ pub enum Question<O: Ontology> {
         thing: Thing<O>,
         kind: Option<O::Kind>,
     },
+    /// Say how many things fit the description.
+    Count(Description<O>),
 }
 
 /// Everything a user turn can mean.
@@ -173,6 +175,11 @@ pub enum Reply<O: Ontology> {
     Location(O::Item),
     /// What the item asked about is: its kind, and where it is.
     Account { item: O::Item, kind: O::Kind },
+    /// How many things fit a description.
+    Count {
+        description: Description<O>,
+        count: u64,
+    },
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on assumptions, which are stated first.
@@ -202,7 +209,7 @@ impl<O: Ontology> Utterance<O> {
 impl<O: Ontology> Question<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
-            Question::Identify(d) => d.things(),
+            Question::Identify(d) | Question::Count(d) => d.things(),
             Question::Locate { thing, .. } | Question::Describe { thing, .. } => vec![thing],
         }
     }
@@ -210,6 +217,7 @@ impl<O: Ontology> Question<O> {
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
         match self {
             Question::Identify(d) => Question::Identify(d.map_things(f)),
+            Question::Count(d) => Question::Count(d.map_things(f)),
             Question::Locate { thing, kind } => Question::Locate {
                 thing: f(thing),
                 kind: kind.clone(),
@@ -225,6 +233,14 @@ impl<O: Ontology> Question<O> {
 impl<O: Ontology> Description<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         self.conditions.iter().flat_map(Condition::things).collect()
+    }
+
+    /// The resolved things the description refers to.
+    pub fn items(&self) -> impl Iterator<Item = &O::Item> {
+        self.things().into_iter().filter_map(|t| match t {
+            Thing::Item(i) => Some(i),
+            Thing::Named(_) | Thing::Previous => None,
+        })
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
@@ -261,14 +277,8 @@ impl<O: Ontology> Reply<O> {
     /// Every item the reply mentions, in order.
     pub fn items(&self) -> Vec<&O::Item> {
         match self {
-            Reply::Extent(e) => e
-                .members
-                .iter()
-                .chain(e.description.things().into_iter().filter_map(|t| match t {
-                    Thing::Item(i) => Some(i),
-                    Thing::Named(_) | Thing::Previous => None,
-                }))
-                .collect(),
+            Reply::Extent(e) => e.members.iter().chain(e.description.items()).collect(),
+            Reply::Count { description, .. } => description.items().collect(),
             Reply::Location(item)
             | Reply::Account { item, .. }
             | Reply::Trouble(Trouble::WrongKind { item }) => vec![item],

@@ -83,7 +83,7 @@ fn identify<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 }
 
 /// "callees of `x`": the things filling one side of a relation.
-fn role_of<O: Ontology>(role: &Sem<O>, other: &Sem<O>) -> Option<Sem<O>> {
+pub(crate) fn role_of<O: Ontology>(role: &Sem<O>, other: &Sem<O>) -> Option<Sem<O>> {
     match (role, other) {
         (Sem::Role { relation, position }, Sem::Thing(other)) => {
             Some(Sem::Description(Description {

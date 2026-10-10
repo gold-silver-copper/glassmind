@@ -30,6 +30,7 @@ pub fn response(reply: &Reply<Rust>) -> Response {
             items: [key(item)].into(),
         },
         Reply::Account { item, .. } => Response::Describe { item: key(item) },
+        Reply::Count { count, .. } => Response::Count { count: *count },
         Reply::Assuming { reply, .. } => response(reply),
         Reply::Trouble(t) => match t {
             Trouble::UnknownWord { word, .. } => Response::Refuse {

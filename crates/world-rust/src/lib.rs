@@ -326,6 +326,10 @@ impl World<Rust> for RustWorld {
                     members,
                 }))
             }
+            Question::Count(description) => Ok(Reply::Count {
+                description: description.clone(),
+                count: u64::try_from(self.identify(description, fired)?.len()).unwrap_or(u64::MAX),
+            }),
             Question::Locate { thing, kind } => {
                 let item = self.only(LOCATE_UNIQUE, thing, *kind, fired)?;
                 Ok(Reply::Location(item.clone()))

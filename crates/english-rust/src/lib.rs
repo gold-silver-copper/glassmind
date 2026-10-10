@@ -101,6 +101,17 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
                 position: Position::First,
             },
         ),
+        // "`save_viewed` caller count": the singular, as a noun modifier.
+        word(
+            RuleInfo::new("en.rust.role.caller", 3),
+            Cat::RoleNoun,
+            &["caller"],
+            Sem::Role {
+                relation: Calls,
+                position: Position::First,
+            },
+        )
+        .read_only(),
     ]
 }
 
@@ -287,5 +298,38 @@ mod tests {
             english.understand("what does `seed_at` do, and which functions call it?"),
             Understanding::Failed { .. }
         ));
+    }
+
+    /// The ways of asking how many functions call a function all mean the same.
+    #[test]
+    fn ways_of_counting_callers_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meanings = |text: &str| match english.understand(text) {
+            Understanding::Readings(readings) => {
+                let mut m: Vec<_> = readings.into_iter().map(|r| r.meaning).collect();
+                m.dedup();
+                m
+            }
+            Understanding::Failed { .. } => Vec::new(),
+        };
+        let plain = meanings("how many functions call `cut`?");
+        assert_eq!(plain.len(), 1);
+        for text in [
+            "Hey, can you count how many functions call `cut` for me?",
+            "how many fns are calling cut",
+            "count of funcs that call `cut`",
+            "number of fns calling `cut`",
+        ] {
+            assert_eq!(meanings(text), plain, "{text:?}");
+        }
+        let by_role = meanings("number of callers of `cut`");
+        assert_eq!(by_role.len(), 1);
+        for text in [
+            "how many callers does `cut` have",
+            "cut — how many callers",
+            "cut caller count",
+        ] {
+            assert_eq!(meanings(text), by_role, "{text:?}");
+        }
     }
 }

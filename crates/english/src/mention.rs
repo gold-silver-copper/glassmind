@@ -30,7 +30,7 @@ fn of_kind<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 fn refer_back<O: Ontology>(later: &Question<O>, earlier: &Question<O>) -> Option<Question<O>> {
     let (thing, kind) = match earlier {
         Question::Describe { thing, kind } | Question::Locate { thing, kind } => (thing, kind),
-        Question::Identify(_) => return None,
+        Question::Identify(_) | Question::Count(_) => return None,
     };
     let bound = later.map_things(&mut |t| match t {
         Thing::Previous => thing.clone(),
