@@ -287,11 +287,12 @@ fn main() -> ExitCode {
 
 fn print_totals(name: &str, t: &score::Totals) {
     say!(
-        "{name:<36} {:>5} turns  {:>5} right  {:>5} refused  {:>4} wrong  cost {:>8.1}  ({:.1}% right)",
+        "{name:<36} {:>5} turns  {:>5} right  {:>5} refused  {:>4} wrong  {:>4} wordless  cost {:>8.1}  ({:.1}% right)",
         t.turns,
         t.right,
         t.refused,
         t.wrong,
+        t.wordless,
         t.cost,
         100.0 * t.accuracy()
     );

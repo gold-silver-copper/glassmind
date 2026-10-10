@@ -24,6 +24,7 @@ macro_rules! say {
 
 mod answer;
 mod chat;
+mod edit;
 mod system;
 
 use system::{System, load_session, parse_source, save_session};
@@ -65,6 +66,9 @@ enum Command {
     Ask {
         #[command(flatten)]
         common: Common,
+        /// Make the edit the reply proposes (files are written; nothing is committed).
+        #[arg(long)]
+        apply: bool,
         /// What to say.
         text: Vec<String>,
     },
@@ -102,7 +106,11 @@ enum Command {
 fn main() -> ExitCode {
     let cli = Cli::parse();
     let result = match cli.command {
-        Command::Ask { common, text } => ask(&common, &text.join(" ")),
+        Command::Ask {
+            common,
+            apply,
+            text,
+        } => ask(&common, apply, &text.join(" ")),
         Command::Chat { common } => chat::run(&common),
         Command::Complete { common, text } => complete(&common, &text.join(" ")),
         Command::Eval {
@@ -142,7 +150,7 @@ fn open(common: &Common) -> System {
     System::open(&sources, Switches::without(common.disable.clone()))
 }
 
-fn ask(common: &Common, text: &str) -> Result<(), String> {
+fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
     let system = open(common);
     let mut session = match &common.session {
         Some(path) => load_session(path, system.source_refs())?,
@@ -160,6 +168,23 @@ fn ask(common: &Common, text: &str) -> Result<(), String> {
             say!("{}", turn.trace.render());
         }
         say!("{}", turn.spoken);
+    }
+    if let Some(changes) = edit::changes(&answer::response(&turn.reply)) {
+        if !common.json {
+            say!("{}", edit::describe(&changes));
+        }
+        if apply {
+            let roots = system
+                .world
+                .sources
+                .iter()
+                .map(|s| (s.name.clone(), s.root.clone()))
+                .collect();
+            let n = edit::apply(&changes, &roots)?;
+            say!("Applied {n} changes. Nothing was committed.");
+        } else if !common.json {
+            say!("(Nothing changed. Run the same request with --apply to make these changes.)");
+        }
     }
     if let Some(path) = &common.session {
         save_session(path, &session)?;

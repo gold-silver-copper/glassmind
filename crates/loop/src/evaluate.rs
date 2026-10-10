@@ -238,6 +238,14 @@ pub fn decide(
             shown.join(", ")
         ));
     }
+    let wordless = |outcomes: &[Outcome]| score::report(&data.train, outcomes).total.wordless;
+    let (wb, wa) = (wordless(&before.train), wordless(&after.train));
+    if wa > wb {
+        return Err(format!(
+            "{} more training replies have no words ({wb} -> {wa})",
+            wa - wb
+        ));
+    }
     let tb = before.scores.total(config.size_price);
     let ta = after.scores.total(config.size_price);
     if ta >= tb - 1e-9 {

@@ -11,6 +11,19 @@ use std::collections::BTreeSet;
 /// The loop round that marks hand-written seed knowledge.
 pub const SEED: u32 = 0;
 
+/// The mark for knowledge written by hand after the loop started (fixes to
+/// the engine's own behavior, not grown by a loop round).
+pub const HAND: u32 = u32::MAX;
+
+/// Says who added a rule: `seed`, `round N`, or `by hand`.
+pub fn provenance(round: u32) -> String {
+    match round {
+        SEED => "seed".to_owned(),
+        HAND => "by hand".to_owned(),
+        n => format!("round {n}"),
+    }
+}
+
 /// Identity and provenance of one rule.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct RuleInfo {

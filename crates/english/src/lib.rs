@@ -268,6 +268,17 @@ impl<O: Ontology> Language<O> for English<O> {
         Understanding::Failed { trouble }
     }
 
+    fn unknown_words(&self, text: &str) -> Vec<(usize, String)> {
+        self.tokenize(text)
+            .iter()
+            .enumerate()
+            .filter(|(_, t)| {
+                t.shape == Shape::Word && !self.lexicon.known.contains(self.lexicon.norm(t))
+            })
+            .map(|(i, t)| (i, t.text.clone()))
+            .collect()
+    }
+
     fn say(&self, reply: &Reply<O>) -> Option<Spoken> {
         self.speak(Reply, &Sem::Reply(reply.clone()))
     }

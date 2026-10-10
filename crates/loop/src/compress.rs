@@ -163,10 +163,12 @@ pub fn write_brief(
     let _ = writeln!(
         b,
         "The codebase is not append-only. Make glassmind smaller and clearer without making it worse. \
-         The loop accepts your change only if the training cost plus 0.01 per syntax token of mind code goes \
-         down, no training turn that was right or honestly refused becomes wrong, and the hidden held-out set \
-         does not get worse. Size counts syntax tokens of non-test code (identifiers count 1 whatever their \
-         length; comments and docs are free), so good names and docs cost nothing.\n"
+         The loop accepts your change only if the training cost plus {} per syntax token of mind code goes \
+         down, no training turn that was right or honestly refused becomes wrong, no more replies lose their \
+         words, and the hidden held-out set does not get worse. Size counts syntax tokens of non-test code \
+         (identifiers count 1 whatever their length; comments and docs are free), so good names and docs \
+         cost nothing. Prefer one general rule over several phrase-specific ones.\n",
+        config.size_price
     );
     let _ = writeln!(
         b,

@@ -267,11 +267,12 @@ pub fn write_brief(
     let _ = writeln!(
         b,
         "## How the change is judged\n\nThe loop accepts it only if it builds and clippy, tests and the layer \
-         check pass; the training cost plus 0.01 per syntax token of mind code goes down; no training turn \
-         that was right or honestly refused becomes wrong; a hidden held-out set does not get worse; and a \
-         reviewer finds no keyword spotting, special-casing, or knowledge in the wrong layer. Aim for rules \
-         that generalize to phrasings you have not seen: the held-out set is written by people with other \
-         habits, about other repositories.\n"
+         check pass; the training cost plus {} per syntax token of mind code goes down; no training turn \
+         that was right or honestly refused becomes wrong; no more replies lose their words; a hidden \
+         held-out set does not get worse; and a reviewer finds no faked answers. Any method is allowed. \
+         Aim for what generalizes to phrasings you have not seen: the held-out set is written by people \
+         with other habits, about other repositories. A reply with no words costs 0.5 extra.\n",
+        config.size_price
     );
     if let Some(example) = worked_example {
         let _ = writeln!(

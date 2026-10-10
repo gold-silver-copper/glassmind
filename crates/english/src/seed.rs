@@ -10,7 +10,7 @@ use glassmind_meaning::{
     Condition, Description, Extent, Ontology, Position, Question, Reply, Thing, Trouble, Utterance,
 };
 
-use crate::lexicon::{ITEM, NAME, NUMBER};
+use crate::lexicon::{ITEM, NAME, NUMBER, QUOTE};
 use crate::sem::{Cat, Number, Sem, VerbForm};
 use crate::spoken;
 
@@ -360,6 +360,44 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                     Sem::Utterance(reading.clone()),
                     Sem::Reply((**reply).clone()),
                 ]),
+                _ => None,
+            },
+        ),
+        said(
+            "en.reply.unknown_word",
+            Reply,
+            vec![W("I don't know the word"), Class(QUOTE), W(".")],
+            |v| match v {
+                Sem::Reply(Reply::Trouble(Trouble::UnknownWord { word, .. })) => {
+                    Some(vec![Sem::Quote(word.clone())])
+                }
+                _ => None,
+            },
+        ),
+        said(
+            "en.reply.unknown_shape",
+            Reply,
+            vec![W("I can't follow the sentence from the marked spot .")],
+            |v| match v {
+                Sem::Reply(Reply::Trouble(Trouble::UnknownShape { .. })) => Some(Vec::new()),
+                _ => None,
+            },
+        ),
+        said(
+            "en.reply.unsupported",
+            Reply,
+            vec![W("I understand , but I can't do that here .")],
+            |v| match v {
+                Sem::Reply(Reply::Trouble(Trouble::Unsupported)) => Some(Vec::new()),
+                _ => None,
+            },
+        ),
+        said(
+            "en.reply.too_ambiguous",
+            Reply,
+            vec![W("that has too many readings for me .")],
+            |v| match v {
+                Sem::Reply(Reply::Trouble(Trouble::TooAmbiguous)) => Some(Vec::new()),
                 _ => None,
             },
         ),

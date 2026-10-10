@@ -307,9 +307,45 @@ mod tests {
     use glassmind_english::English;
     use glassmind_meaning::interface::{Language, Understanding};
     use glassmind_meaning::{
-        Action, Condition, Description, Fact, Name, Position, Question, Reply, Thing, Utterance,
+        Action, Condition, Description, Fact, Name, Position, Question, Reply, Thing, Trouble,
+        Utterance,
     };
     use glassmind_rules::Switches;
+
+    /// Every kind of trouble can be put into words: a reply the system
+    /// cannot say is a reply the user never gets, which no answer score sees.
+    #[test]
+    fn every_trouble_can_be_said() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let item = glassmind_world_rust::RustItem {
+            source: "s".into(),
+            file: "src/lib.rs".into(),
+            line: 1,
+            name: "spawn_wave".into(),
+            kind: RustKind::Function,
+            owner: None,
+        };
+        let troubles = [
+            Trouble::UnknownWord {
+                at: 0,
+                word: "zork".into(),
+            },
+            Trouble::UnknownShape { at: 0 },
+            Trouble::NoSuchName {
+                name: Name("zork".into()),
+            },
+            Trouble::WrongKind { item: item.clone() },
+            Trouble::Ambiguous {
+                candidates: vec![item.clone(), item],
+            },
+            Trouble::Unsupported,
+            Trouble::TooAmbiguous,
+        ];
+        for trouble in troubles {
+            let reply = Reply::Trouble(trouble);
+            assert!(english.say(&reply).is_some(), "no words for {reply:?}");
+        }
+    }
 
     /// Every question the system can say about every kind and relation it
     /// has words for parses back to the meaning it was said from.

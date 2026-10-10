@@ -12,6 +12,13 @@ use serde::{Deserialize, Serialize};
 /// The cost of a confident wrong answer.
 pub const WRONG: f64 = 10.0;
 
+/// The extra cost of a reply the system has no words for: the user gets
+/// nothing they can read, whatever the answer behind it.
+pub const WORDLESS: f64 = 0.5;
+
+/// How the CLI marks a reply the language could not put into words.
+const NO_WORDS: &str = "(I have no words";
+
 /// The label of one turn: what glassmind should have done.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Label {
@@ -39,6 +46,8 @@ pub struct Scored {
     pub turn_id: String,
     pub verdict: Verdict,
     pub cost: f64,
+    /// Whether the reply was put into words.
+    pub worded: bool,
 }
 
 /// The cost of a refusal that stopped at `stage` after understanding
@@ -109,6 +118,7 @@ pub fn score(label: &Label, outcome: Option<&Outcome>) -> Scored {
             turn_id: label.turn_id.clone(),
             verdict: Verdict::Refused,
             cost: 1.0,
+            worded: false,
         };
     };
     let verdict = judge(&label.expected, outcome);
@@ -117,10 +127,12 @@ pub fn score(label: &Label, outcome: Option<&Outcome>) -> Scored {
         Verdict::Wrong => WRONG,
         Verdict::Refused => refusal_cost(outcome.stage, outcome.understood, outcome.tokens),
     };
+    let worded = !outcome.text.starts_with(NO_WORDS);
     Scored {
         turn_id: label.turn_id.clone(),
         verdict,
-        cost,
+        cost: if worded { cost } else { cost + WORDLESS },
+        worded,
     }
 }
 
@@ -131,6 +143,8 @@ pub struct Totals {
     pub right: usize,
     pub refused: usize,
     pub wrong: usize,
+    /// Replies with no words.
+    pub wordless: usize,
     pub cost: f64,
 }
 
@@ -138,6 +152,9 @@ impl Totals {
     pub fn add(&mut self, s: &Scored) {
         self.turns += 1;
         self.cost += s.cost;
+        if !s.worded {
+            self.wordless += 1;
+        }
         match s.verdict {
             Verdict::Right => self.right += 1,
             Verdict::Refused => self.refused += 1,

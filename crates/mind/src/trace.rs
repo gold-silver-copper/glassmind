@@ -81,7 +81,7 @@ fn unique<'a>(rules: impl IntoIterator<Item = &'a RuleInfo>) -> Vec<RuleInfo> {
 fn rounds(rules: &[RuleInfo]) -> String {
     let rules: Vec<String> = unique(rules)
         .iter()
-        .map(|r| format!("{} (round {})", r.id, r.round))
+        .map(|r| format!("{} ({})", r.id, glassmind_rules::provenance(r.round)))
         .collect();
     rules.join(", ")
 }

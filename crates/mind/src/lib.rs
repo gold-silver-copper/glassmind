@@ -78,8 +78,14 @@ pub const NAMED_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.named", 18);
 /// it when the things of that name cannot all fill the place.
 pub const SHARED_NAME_ANY: RuleInfo = RuleInfo::new("mind.name.any", 23);
 
+/// Diagnosis: when no sentence shape fits, blame the first word that is
+/// neither known to the language nor a name in the world.
+pub const BLAME_UNKNOWN_WORD: RuleInfo =
+    RuleInfo::new("mind.diagnose.unknown_word", glassmind_rules::HAND);
+
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
+    BLAME_UNKNOWN_WORD,
     PREFER_FEWEST_IDLE,
     PREFER_RECENT_MENTION,
     PREFER_FIRST_READING,
@@ -291,6 +297,35 @@ impl<O: Ontology> Mind<'_, O> {
         }
     }
 
+    /// When no sentence shape fits, a word that is neither known to the
+    /// language nor a name in the world is the likeliest reason: report it,
+    /// so the reply names the word and marks where it is, instead of
+    /// marking wherever the parser happened to run out.
+    fn blame_unknown_word(
+        &self,
+        text: &str,
+        trouble: Trouble<O>,
+        trace: &mut Trace<O>,
+    ) -> Trouble<O> {
+        if !matches!(trouble, Trouble::UnknownShape { .. })
+            || !self.switches.on(BLAME_UNKNOWN_WORD.id)
+        {
+            return trouble;
+        }
+        let mut fired = Vec::new();
+        for (at, word) in self.language.unknown_words(text) {
+            if self
+                .world
+                .lookup(&Name(word.clone()), &mut fired)
+                .is_empty()
+            {
+                trace.preferences.push(BLAME_UNKNOWN_WORD);
+                return Trouble::UnknownWord { at, word };
+            }
+        }
+        trouble
+    }
+
     fn think(
         &self,
         session: &Session<O>,
@@ -299,6 +334,7 @@ impl<O: Ontology> Mind<'_, O> {
     ) -> (Reply<O>, Option<Utterance<O>>) {
         let readings = match self.language.understand(text) {
             Understanding::Failed { trouble } => {
+                let trouble = self.blame_unknown_word(text, trouble, trace);
                 trace.failure = Some(trouble.clone());
                 return (Reply::Trouble(trouble), None);
             }

@@ -8,9 +8,10 @@
 
 use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{Ontology, Reply, Utterance};
+use glassmind_rules::HAND;
 
 use crate::aside::filler;
-use crate::lexicon::CODE;
+use crate::lexicon::{CODE, NUMBER};
 use crate::renaming::{Phrases, blanks, heard, rename, request};
 use crate::sem::{Cat, Sem};
 use crate::spoken;
@@ -74,15 +75,30 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Command), W("?")],
             first,
         ),
-        // "I'd rename `x` to `y`."
+        // "I'd rename `x` to `y` in 3 places." (the places are listed by the CLI).
         spoken(
             "en.reply.proposal",
             ROUND,
             Reply,
-            vec![W("I'd"), C(Command), W(".")],
+            vec![W("I'd"), C(Command), W("in"), Class(NUMBER), W("places .")],
             |_| None,
             |v| match v {
-                Sem::Reply(Reply::Proposal { action, .. }) => {
+                Sem::Reply(Reply::Proposal { action, spots }) if spots.len() != 1 => Some(vec![
+                    Sem::Utterance(Utterance::Command(action.clone())),
+                    Sem::Count(u64::try_from(spots.len()).ok()?),
+                ]),
+                _ => None,
+            },
+        ),
+        // "I'd rename `x` to `y` in one place."
+        spoken(
+            "en.reply.proposal_one",
+            HAND,
+            Reply,
+            vec![W("I'd"), C(Command), W("in one place .")],
+            |_| None,
+            |v| match v {
+                Sem::Reply(Reply::Proposal { action, spots }) if spots.len() == 1 => {
                     Some(vec![Sem::Utterance(Utterance::Command(action.clone()))])
                 }
                 _ => None,

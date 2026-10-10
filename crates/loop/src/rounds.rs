@@ -604,13 +604,13 @@ fn merge(
     Ok(())
 }
 
-const REVIEW: &str = "You review one change to glassmind, a symbolic English-understanding system whose knowledge is \
-Rust source. Read docs/growing.md for its rules. Run `git diff HEAD` to see the change (it is uncommitted). \
-VETO the change only if it clearly breaks one of these: (1) language understanding added as keyword spotting, \
-substring/regex tests over the input, fuzzy matching, or a special case for one particular sentence instead of \
-grammar rules that compose; (2) English words or grammar, or Rust-code concepts, put into the meaning layer \
-(crates/meaning), or Rust concepts into crates/english, or English into crates/world-rust; (3) answers faked \
-instead of computed. Do not veto for style, size, or doubts about usefulness: the scorer judges those. \
+const REVIEW: &str = "You review one change to glassmind, an English-understanding system whose knowledge is \
+readable Rust source. Read docs/growing.md. Run `git diff HEAD` to see the change (it is uncommitted). Any method \
+is allowed (fuzzy matching, learned models, outside data, new formalisms). VETO the change only if it clearly does \
+one of these: (1) fakes answers instead of computing them from the world (for example a table of particular \
+training sentences or task names with their answers); (2) reads anything about the held-out data or the scorer's \
+labels; (3) puts knowledge where only one request can use it while presenting it as general. Do not veto for \
+method, style, size or doubts about usefulness: the scorer judges those. \
 Reply with only JSON: {\"veto\": true|false, \"reason\": \"...\"}";
 
 fn review(config: &Config, paths: &Paths, dir: &Path) -> Result<(), String> {

@@ -44,10 +44,12 @@ but never say (sloppy or rare input). Single words use `english::word(...)`.
 
 ## Rules for every change
 
-- **Understanding goes through the grammar.** No keyword spotting, no regexes
-  or substring tests over the input, no fuzzy matching, no special case per
-  sentence. Only the tokenizer reads raw text. Add words and sentence shapes
-  as grammar rules that compose with the others.
+- **Any method is allowed** if it measurably helps: grammar rules, fuzzy or
+  learned matching of words and names, probabilities, outside data, a new
+  formalism. Prefer what generalizes to phrasings you have not seen: the
+  held-out set is written by people with other habits, about other
+  repositories. Never fake answers (no tables of particular sentences or
+  names with their answers).
 - **Every new rule** (grammar rule, word, world relation, preference) gets a
   stable unique dotted ID (`en.question.where_defined`,
   `en.rust.noun.structs`, `rust.relation.has_field`, `mind.prefer.…`), the
@@ -57,12 +59,15 @@ but never say (sloppy or rare input). Single words use `english::word(...)`.
   `Switches` (look at how existing ones do it).
 - **Never edit on a guess.** If an edit's target is ambiguous, ask
   (`Trouble::Ambiguous` → the user is asked which one).
+- **Every reply must have words.** A reply the language cannot say costs
+  0.5 extra, and a change that leaves more replies without words is
+  rejected.
 - **Wrong is far worse than "I don't know".** A wrong answer costs 10; a
   refusal at most 1. Do not make a turn answer unless the answer is right by
   `docs/tasks.md`. Do not turn a right or honest refusal into a wrong answer:
   such a change is rejected outright.
 - **Size is priced**: every syntax token of non-test code in the mind crates
-  costs 0.01 failure units (identifiers count 1 whatever their length;
+  costs a fixed price in failure units (your brief says how much) (identifiers count 1 whatever their length;
   comments and docs are free). Prefer general rules that cover many turns
   over many specific ones. Delete what you make redundant.
 - Non-test code must not panic: no `unwrap`, `expect`, indexing or `panic!`
