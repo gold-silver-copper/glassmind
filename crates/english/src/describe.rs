@@ -298,6 +298,23 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ));
     // "how many functions call `x`, roughly?"
     rules.push(filler("en.hedge.roughly", 11, Hedge, "roughly"));
+    // "how many functions call it in total?", "how many callers does that
+    // have total", "how many functions call that one, then?": the whole
+    // answer, or the question following from the one before; the question
+    // is the same.
+    rules.extend(fillers(
+        27,
+        &[(
+            Hedge,
+            &[
+                ("en.hedge.in_total", "in total"),
+                ("en.hedge.total", "total"),
+                ("en.hedge.in_all", "in all"),
+                ("en.hedge.altogether", "altogether"),
+                ("en.hedge.then", "then"),
+            ],
+        )],
+    ));
     // "what does `pretty` call internally", "what funcs does find call
     // internaly": where the calls are made, which the question already says.
     // "and which functions does it call itself?", "which functions does it

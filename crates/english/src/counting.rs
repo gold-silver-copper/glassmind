@@ -152,6 +152,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(HowMany), C(Ones), C(VerbPhrase)],
             |c| count(&[anything(c)?]),
         ),
+        // "how many call it", "how many are calling it in total?": things
+        // of any kind, with the noun left out.
+        read_only_rule(
+            "en.question.how_many_bare",
+            27,
+            Question,
+            vec![C(HowMany), C(VerbPhrase)],
+            |c| count(&[anything(c)?]),
+        ),
         // "how many callers `x`", with nothing between the role and the thing.
         read_only_rule(
             "en.question.how_many_role",
@@ -333,6 +342,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // ", can you count them", "like how many"
         again("en.recount.prompt", 11, vec![C(Prompt), C(Recount)], last),
         again("en.recount.joined", 11, vec![C(Join), C(Recount)], last),
+        // "how many functions call it, roughly? or exactly if you can": how
+        // close a count the speaker wants (not just any hedge: "like even if it's wrapped" asks no
+        // count).
+        again(
+            "en.recount.or_exactly",
+            27,
+            vec![C(Join), W("exactly")],
+            |_| Some(blank()),
+        ),
         // "how many exactly", "count them for me?"
         again("en.recount.hedged", 11, vec![C(Recount), C(Hedge)], first),
         // "how many functions call `x`, is it used in lot of places?":

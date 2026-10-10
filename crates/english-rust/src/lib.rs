@@ -1015,6 +1015,43 @@ mod tests {
         assert!(readings.iter().any(|r| r.meaning == owned));
     }
 
+    /// Asking for the whole count, or following on from the question
+    /// before, asks the same count; so does leaving the noun out.
+    #[test]
+    fn a_count_in_total_is_the_count() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let calling = Condition::Related {
+            relation: RustRelation::Calls,
+            position: Position::First,
+            other: Thing::Previous,
+        };
+        for (text, kind) in [
+            (
+                "how many functions call it in total?",
+                Some(RustKind::Function),
+            ),
+            (
+                "and how many functions call that, in total?",
+                Some(RustKind::Function),
+            ),
+            (
+                "how many functions call that one, then?",
+                Some(RustKind::Function),
+            ),
+            ("how many are calling it in total?", None),
+            ("how many call it", None),
+        ] {
+            let meaning = Utterance::Ask(Question::Count(Description {
+                kind,
+                conditions: vec![calling.clone()],
+            }));
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
     /// A kind said after a word the system knows as English shows it to be
     /// a name: these all ask for the fields of a struct named "call".
     #[test]
