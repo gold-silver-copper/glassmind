@@ -73,3 +73,56 @@ pub fn rules() -> Vec<Rule<Cat, Sem<Rust>>> {
     rules.extend(words());
     rules
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use glassmind_english::English;
+    use glassmind_meaning::interface::{Language, Understanding};
+    use glassmind_meaning::{Condition, Description, Name, Position, Question, Thing, Utterance};
+    use glassmind_rules::Switches;
+
+    /// Every question the system can say about every kind and relation it
+    /// has words for parses back to the meaning it was said from.
+    #[test]
+    fn spoken_questions_parse_back_to_their_meaning() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let mut kinds = vec![None];
+        let mut relations = Vec::new();
+        for rule in words() {
+            match rule.sem {
+                glassmind_grammar::Sem::Const(Sem::Kind { kind, .. }) => kinds.push(Some(kind)),
+                glassmind_grammar::Sem::Const(Sem::Relation { relation, .. }) => relations.push(relation),
+                _ => {}
+            }
+        }
+        let mut checked = 0;
+        for kind in &kinds {
+            for relation in &relations {
+                for position in [Position::First, Position::Second] {
+                    let meaning = Utterance::Ask(Question::Identify(Description {
+                        kind: *kind,
+                        conditions: vec![Condition::Related {
+                            relation: *relation,
+                            position,
+                            other: Thing::Named(Name("spawn_wave".into())),
+                        }],
+                    }));
+                    let Some(spoken) = english.speak(Cat::Utterance, &Sem::Utterance(meaning.clone())) else {
+                        continue;
+                    };
+                    let Understanding::Readings(readings) = english.understand(&spoken.text) else {
+                        panic!("could not read back {:?}", spoken.text);
+                    };
+                    assert!(
+                        readings.iter().any(|r| r.meaning == meaning),
+                        "{:?} read back as something else",
+                        spoken.text
+                    );
+                    checked += 1;
+                }
+            }
+        }
+        assert!(checked > 0);
+    }
+}
