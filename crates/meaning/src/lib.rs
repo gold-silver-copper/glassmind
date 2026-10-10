@@ -282,11 +282,17 @@ impl<O: Ontology> Utterance<O> {
 
     /// Every thing the utterance refers to, in order.
     pub fn things(&self) -> Vec<&Thing<O>> {
+        self.things_within(&|_| true)
+    }
+
+    /// The things the utterance refers to, looking inside only the
+    /// descriptions `within` accepts: one it does not is a thing itself.
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         match self {
-            Utterance::Ask(q) => q.things(),
+            Utterance::Ask(q) => q.things_within(within),
             Utterance::Command(Action::Rename { thing, .. })
             | Utterance::Tell(Fact::Alias { thing, .. })
-            | Utterance::Correct(thing) => thing.things(),
+            | Utterance::Correct(thing) => thing.things_within(within),
             Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
         }
     }
@@ -308,9 +314,15 @@ impl<O: Ontology> Utterance<O> {
 
 impl<O: Ontology> Question<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
+        self.things_within(&|_| true)
+    }
+
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         match self {
-            Question::Identify(d) | Question::Count(d) => d.things(),
-            Question::Locate { thing, .. } | Question::Describe { thing, .. } => thing.things(),
+            Question::Identify(d) | Question::Count(d) => d.things_within(within),
+            Question::Locate { thing, .. } | Question::Describe { thing, .. } => {
+                thing.things_within(within)
+            }
         }
     }
 
@@ -328,7 +340,14 @@ impl<O: Ontology> Question<O> {
 
 impl<O: Ontology> Description<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
-        self.conditions.iter().flat_map(Condition::things).collect()
+        self.things_within(&|_| true)
+    }
+
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
+        self.conditions
+            .iter()
+            .flat_map(|c| c.things_within(within))
+            .collect()
     }
 
     /// The resolved things the description refers to.
@@ -355,6 +374,12 @@ impl<O: Ontology> Condition<O> {
         }
     }
 
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
+        self.other()
+            .map(|other| other.things_within(within))
+            .unwrap_or_default()
+    }
+
     pub fn things(&self) -> Vec<&Thing<O>> {
         self.other().map(Thing::things).unwrap_or_default()
     }
@@ -377,8 +402,12 @@ impl<O: Ontology> Condition<O> {
 impl<O: Ontology> Thing<O> {
     /// The named or resolved things this one is, or refers to inside it.
     pub fn things(&self) -> Vec<&Thing<O>> {
+        self.things_within(&|_| true)
+    }
+
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         match self {
-            Thing::Fitting(d) => d.things(),
+            Thing::Fitting(d) if within(d) => d.things_within(within),
             _ => vec![self],
         }
     }

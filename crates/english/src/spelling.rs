@@ -4,9 +4,19 @@
 //! mistyping is a known word, so it is never read as a name; quote it in
 //! backticks to name it. The words for a world's kinds are mistyped in its
 //! bridge crate.
+//!
+//! A `SPELLINGS` entry is read the same way by the lexicon, credited to
+//! the readings that use it: "whcih fields does `S` hav" reads as "which
+//! fields does `S` have". Each is one fixed word, mistyped the
+//! way people often mistype it, with its own ID and switch; it stands for
+//! the word meant everywhere that word is read, never as a name or a
+//! guess. Only plain words are corrected: code and quoted names are not.
+
+use std::collections::BTreeMap;
 
 use glassmind_grammar::Rule;
 use glassmind_meaning::Ontology;
+use glassmind_rules::{RuleInfo, Switches};
 
 use crate::locate::fillers;
 use crate::sem::{Cat, Sem};
@@ -34,4 +44,110 @@ const MISTYPED: &[(Cat, &[(&str, &str)])] = &[(
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     fillers(18, MISTYPED)
+}
+
+/// A rule's ID, the word as typed and the word meant.
+type Spelling = (&'static str, &'static str, &'static str);
+
+/// For each round, the rule, the word as typed and the word meant.
+///
+/// Round 17: "what is_general doo", "what does lead_up acutally do",
+/// "what HudRounds for exacly", "PullRequestState whats it fro", "waht's
+/// with_saved for", "what long_words_break_hard tesst", "actualy scratch
+/// that, forget it".
+///
+/// Round 18: "what feilds pr_base have", "list fileds of
+/// draw_add_filter struct pls", "whcih fields export_thread have", "what
+/// fields random_nonce hav", "tag_transfer hav what fields", "what fields
+/// draw_board_images struct hsa", "list teh fields of segment pls",
+/// "draw_menu fields, quick lsit", "slab_interval memebers", "what does
+/// thread_marks contian, field-wise", "nvm forget taht", "nvm forgte that".
+const SPELLINGS: &[(u32, &[Spelling])] = &[
+    (
+        17,
+        &[
+            ("en.doing.mistyped.doo", "doo", "do"),
+            ("en.doing.mistyped.doe", "doe", "does"),
+            ("en.doing.mistyped.doess", "doess", "does"),
+            ("en.doing.mistyped.tset", "tset", "test"),
+            ("en.doing.mistyped.tesst", "tesst", "test"),
+            ("en.doing.mistyped.chekcs", "chekcs", "checks"),
+            ("en.doing.mistyped.chekcing", "chekcing", "checking"),
+            ("en.use.mistyped.fro", "fro", "for"),
+            ("en.hedge.mistyped.actualy", "actualy", "actually"),
+            ("en.hedge.mistyped.acutally", "acutally", "actually"),
+            ("en.hedge.mistyped.exaclty", "exaclty", "exactly"),
+            ("en.hedge.mistyped.exacly", "exacly", "exactly"),
+            ("en.what_is.mistyped.waht_s", "waht's", "what's"),
+            ("en.what_is.mistyped.whta_s", "whta's", "what's"),
+        ],
+    ),
+    (
+        18,
+        &[
+            ("en.spelling.feilds", "feilds", "fields"),
+            ("en.spelling.fileds", "fileds", "fields"),
+            ("en.spelling.feild", "feild", "field"),
+            ("en.spelling.fiedl", "fiedl", "field"),
+            ("en.spelling.whcih", "whcih", "which"),
+            ("en.spelling.whihc", "whihc", "which"),
+            ("en.spelling.wich", "wich", "which"),
+            ("en.spelling.waht", "waht", "what"),
+            ("en.spelling.whta", "whta", "what"),
+            ("en.spelling.wat", "wat", "what"),
+            ("en.spelling.r", "r", "are"),
+            ("en.spelling.tehy", "tehy", "they"),
+            ("en.spelling.hav", "hav", "have"),
+            ("en.spelling.hve", "hve", "have"),
+            ("en.spelling.hvae", "hvae", "have"),
+            ("en.spelling.hsa", "hsa", "has"),
+            ("en.spelling.teh", "teh", "the"),
+            ("en.spelling.taht", "taht", "that"),
+            ("en.spelling.lsit", "lsit", "list"),
+            ("en.spelling.fucntions", "fucntions", "functions"),
+            ("en.spelling.functons", "functons", "functions"),
+            ("en.spelling.functoins", "functoins", "functions"),
+            ("en.spelling.funcitons", "funcitons", "functions"),
+            ("en.spelling.fucntion", "fucntion", "function"),
+            ("en.spelling.defiend", "defiend", "defined"),
+            ("en.spelling.defnied", "defnied", "defined"),
+            ("en.spelling.mnay", "mnay", "many"),
+            ("en.spelling.renmae", "renmae", "rename"),
+            ("en.spelling.chnage", "chnage", "change"),
+            ("en.spelling.rememebr", "rememebr", "remember"),
+            ("en.spelling.remeber", "remeber", "remember"),
+            ("en.spelling.insdie", "insdie", "inside"),
+            ("en.spelling.wher", "wher", "where"),
+            ("en.spelling.whre", "whre", "where"),
+            ("en.spelling.wehre", "wehre", "where"),
+            ("en.spelling.caled", "caled", "called"),
+            ("en.spelling.memebers", "memebers", "members"),
+            ("en.spelling.contian", "contian", "contain"),
+            ("en.spelling.contians", "contians", "contains"),
+            ("en.spelling.contianing", "contianing", "containing"),
+            ("en.spelling.forgte", "forgte", "forget"),
+            ("en.spelling.forgett", "forgett", "forget"),
+        ],
+    ),
+];
+
+/// Every spelling: the word as typed, its rule and the word meant.
+fn all() -> impl Iterator<Item = (&'static str, (RuleInfo, &'static str))> {
+    SPELLINGS.iter().flat_map(|&(round, table)| {
+        table
+            .iter()
+            .map(move |&(id, typed, meant)| (typed, (RuleInfo::new(id, round), meant)))
+    })
+}
+
+/// Every spelling rule, for listing and switching off.
+pub fn corrections() -> impl Iterator<Item = RuleInfo> {
+    all().map(|(_, (rule, _))| rule)
+}
+
+/// The spellings switched on, by the word as typed.
+pub fn spellings(switches: &Switches) -> BTreeMap<&'static str, (RuleInfo, &'static str)> {
+    all()
+        .filter(|(_, (rule, _))| switches.on(rule.id))
+        .collect()
 }

@@ -115,43 +115,13 @@ const LATER: &[(Cat, &[(&str, &str)])] = &[
     (Prompt, &[("en.prompt.explain_me", "explain me")]),
 ];
 
-/// Common ways of mistyping these words, from round 17, read as the word
-/// meant: "what is_general doo", "what does lead_up acutally do", "what
-/// HudRounds for exacly", "PullRequestState whats it fro", "waht's
-/// with_saved for", "what long_words_break_hard tesst". A mistyping known
-/// in one place stops being read as a name or a remark everywhere, so each
-/// is added only where nothing else reads that word as a name or remark.
-const MISTYPED: &[(Cat, &[(&str, &str)])] = &[
-    (
-        Doing,
-        &[
-            ("en.doing.mistyped.doo", "doo"),
-            ("en.doing.mistyped.doe", "doe"),
-            ("en.doing.mistyped.doess", "doess"),
-            ("en.doing.mistyped.tset", "tset"),
-            ("en.doing.mistyped.tesst", "tesst"),
-            ("en.doing.mistyped.chekcs", "chekcs"),
-            ("en.doing.mistyped.chekcing", "chekcing"),
-        ],
-    ),
-    (Use, &[("en.use.mistyped.fro", "fro")]),
-    (
-        Hedge,
-        &[
-            ("en.hedge.mistyped.actualy", "actualy"),
-            ("en.hedge.mistyped.acutally", "acutally"),
-            ("en.hedge.mistyped.exaclty", "exaclty"),
-            ("en.hedge.mistyped.exacly", "exacly"),
-        ],
-    ),
-    (
-        WhatIs,
-        &[
-            ("en.what_is.mistyped.waht_s", "waht's"),
-            ("en.what_is.mistyped.whta_s", "whta's"),
-        ],
-    ),
-];
+/// Asking what the thing said before is.
+fn previous_described<O: Ontology>(_: &[Sem<O>]) -> Option<Sem<O>> {
+    describe(&[Sem::Mention {
+        thing: Thing::Previous,
+        kind: None,
+    }])
+}
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let rule = |id, lhs, rhs, build| read_only_rule(id, ROUND, lhs, rhs, build);
@@ -217,12 +187,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.what_it_s_for",
             Question,
             vec![W("what it's"), C(Use)],
-            |_| {
-                describe(&[Sem::Mention {
-                    thing: Thing::Previous,
-                    kind: None,
-                }])
-            },
+            previous_described,
+        ),
+        // "what `run_angles` do, what its for": the same, the apostrophe
+        // left out.
+        read_only_rule(
+            "en.question.what_its_for",
+            18,
+            Question,
+            vec![W("what its"), C(Use)],
+            previous_described,
         ),
         // "purpose of `boards_plain_and_wrapped`", "what is the purpose of `x`"
         question(
@@ -313,7 +287,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
     ]);
     rules.extend(fillers(NOW, LATER));
-    rules.extend(fillers(17, MISTYPED));
     // In embedded questions: "can you tell me what `x` is", "what
     // `RepositoryWithPendingReview` is, what it's for".
     rules.push(read_only_rule(

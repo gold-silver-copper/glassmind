@@ -205,22 +205,37 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         filler("en.what_is.what_are", ROUND, WhatIs, "what are"),
     ];
     // "`Note` struct - what fields", "Identity - which fields": a role
-    // alone, asked of the thing set off before it.
-    for (id, which) in [
-        ("en.question.set_off_what_role", "what"),
-        ("en.question.set_off_which_role", "which"),
+    // alone, asked of the thing set off before it; also with no mark
+    // between, "index_of what fields", "refresh_search struct which
+    // fields".
+    for (id, round, rhs) in [
+        (
+            "en.question.set_off_what_role",
+            ROUND,
+            vec![C(Mention), C(Break), W("what"), C(RoleNoun)],
+        ),
+        (
+            "en.question.set_off_which_role",
+            ROUND,
+            vec![C(Mention), C(Break), W("which"), C(RoleNoun)],
+        ),
+        (
+            "en.question.unmarked_what_role",
+            18,
+            vec![C(Mention), W("what"), C(RoleNoun)],
+        ),
+        (
+            "en.question.unmarked_which_role",
+            18,
+            vec![C(Mention), W("which"), C(RoleNoun)],
+        ),
     ] {
-        rules.push(rule(
-            id,
-            Question,
-            vec![C(Mention), C(Break), W(which), C(RoleNoun)],
-            |c| match c {
-                [Sem::Mention { thing, .. }, _, role] => {
-                    identify(&[role_of(role, &Sem::Thing(thing.clone()))?])
-                }
-                _ => None,
-            },
-        ));
+        rules.push(read_only_rule(id, round, Question, rhs, |c| match c {
+            [Sem::Mention { thing, .. }, .., role] => {
+                identify(&[role_of(role, &Sem::Thing(thing.clone()))?])
+            }
+            _ => None,
+        }));
     }
     // "(field) is in `x`"
     rules.push(rule(

@@ -339,6 +339,11 @@ const ASK_AGAIN: &[(&str, &str)] = &[
 const ASK_AGAIN_LATER: &[(&str, &str)] =
     &[("en.ask_again.which_ones_are_there", "which ones are there")];
 
+/// Asking again for the things just asked about, from round 18:
+/// "`thread_every` fields, what are they", "fields on `read` struct, what
+/// are they".
+const ASK_AGAIN_18: &[(&str, &str)] = &[("en.ask_again.what_are_they", "what are they")];
+
 /// Words for some thing of any kind: "anything", "something".
 const ANYTHING: &[(&str, &str)] = &[
     ("en.anything.anything", "anything"),
@@ -648,6 +653,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         (ANYTHING, Anything, 9),
         (ASK_AGAIN_LATER, AskAgain, LATER),
         (INCLUDES_LATER, Includes, LATER),
+        (ASK_AGAIN_18, AskAgain, 18),
     ] {
         rules.extend(
             table

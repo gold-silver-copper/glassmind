@@ -4,7 +4,7 @@
 use std::collections::{BTreeMap, BTreeSet};
 use std::marker::PhantomData;
 
-use glassmind_grammar::Lexicon;
+use glassmind_grammar::{Lexicon, RuleInfo};
 use glassmind_meaning::{Labelled, Name, Ontology, Thing};
 
 use crate::sem::Sem;
@@ -40,26 +40,42 @@ pub struct EnglishLexicon<O> {
     pub known: BTreeSet<&'static str>,
     /// The word meant by each mistyping: "whcih" is read as "which".
     pub meant: BTreeMap<&'static str, &'static str>,
+    /// Mistyped words, each read as the word meant (see `spelling`).
+    pub spellings: BTreeMap<&'static str, (RuleInfo, &'static str)>,
     pub ontology: PhantomData<O>,
+}
+
+impl<O> EnglishLexicon<O> {
+    /// The spelling rule that corrects `token`, and the word meant.
+    pub fn respelled(&self, token: &Token) -> Option<(RuleInfo, &'static str)> {
+        (token.shape == Shape::Word)
+            .then(|| self.spellings.get(token.norm.as_str()).copied())
+            .flatten()
+    }
 }
 
 impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
     type Token = Token;
 
     fn norm<'t>(&self, token: &'t Token) -> &'t str {
-        self.meant
-            .get(token.norm.as_str())
-            .copied()
-            .unwrap_or(&token.norm)
+        self.respelled(token).map_or_else(
+            || {
+                self.meant
+                    .get(token.norm.as_str())
+                    .copied()
+                    .unwrap_or(&token.norm)
+            },
+            |(_, meant)| meant,
+        )
     }
 
     fn read_class(&self, class: &'static str, token: &Token) -> Vec<Sem<O>> {
         match (class, token.shape) {
             (NAME | CODE, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
-            (NAME | WORD, Shape::Word) if !self.known.contains(token.norm.as_str()) => {
+            (NAME | WORD, Shape::Word) if !self.known.contains(self.norm(token)) => {
                 vec![Sem::Name(Name(token.text.clone()))]
             }
-            (SAID, Shape::Word) if self.known.contains(token.norm.as_str()) => {
+            (SAID, Shape::Word) if self.known.contains(self.norm(token)) => {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
             }
             (TEXT, shape) if shape != Shape::Punct => vec![Sem::Quote(token.text.clone())],

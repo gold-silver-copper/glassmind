@@ -16,6 +16,7 @@ pub fn all_rules() -> Vec<RuleInfo> {
         .iter()
         .map(|r| r.info)
         .collect();
+    rules.extend(glassmind_english::spelling::corrections());
     rules.extend(glassmind_world_rust::RULES.iter().copied());
     rules.extend(glassmind_mind::RULES.iter().copied());
     rules
@@ -40,6 +41,7 @@ pub fn all_rules_detailed() -> Vec<(RuleInfo, String)> {
             (r.info, format!("{:?} -> {}{mode}", r.lhs, rhs.join(" ")))
         })
         .collect();
+    out.extend(glassmind_english::spelling::corrections().map(|r| (r, "spelling".to_owned())));
     out.extend(
         glassmind_world_rust::RULES
             .iter()

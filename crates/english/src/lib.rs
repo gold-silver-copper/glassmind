@@ -9,7 +9,9 @@ use std::collections::BTreeSet;
 use std::marker::PhantomData;
 
 use Cat::*;
-use glassmind_grammar::{ExpectedSym, Grammar, Node, Phrase, Rule, RuleInfo, Sem as S, Sym};
+use glassmind_grammar::{
+    ExpectedSym, Grammar, Lexicon, Node, Phrase, Rule, RuleInfo, Sem as S, Sym,
+};
 use glassmind_meaning::interface::{Language, Next, Reading, Spoken, TokenSpan, Understanding};
 use glassmind_meaning::{Ontology, Reply, Trouble};
 use glassmind_rules::Switches;
@@ -172,6 +174,7 @@ impl<O: Ontology> English<O> {
             lexicon: EnglishLexicon {
                 known,
                 meant,
+                spellings: spelling::spellings(switches),
                 ontology: PhantomData,
             },
         }
@@ -216,6 +219,12 @@ impl<O: Ontology> Language<O> for English<O> {
     fn understand(&self, text: &str) -> Understanding<O> {
         let tokens = tokenize(text);
         let mut parse = self.grammar.parse(&self.lexicon, &tokens);
+        // The spellings corrected, which every reading uses.
+        let respelled: Vec<RuleInfo> = tokens
+            .iter()
+            .filter_map(|t| self.lexicon.respelled(t))
+            .map(|(rule, _)| rule)
+            .collect();
         // Readings that understand more of what was said come first.
         parse.readings.sort_by_cached_key(|p| self.passed_over(p));
         let readings: Vec<Reading<O>> = parse
@@ -224,7 +233,7 @@ impl<O: Ontology> Language<O> for English<O> {
             .filter_map(|p| match &p.value {
                 Sem::Utterance(u) => Some(Reading {
                     meaning: u.clone(),
-                    rules: p.rules(),
+                    rules: [p.rules(), respelled.clone()].concat(),
                     parse: render(p, &tokens),
                     idle: idle(p),
                 }),
@@ -239,7 +248,9 @@ impl<O: Ontology> Language<O> for English<O> {
         let at = parse.reached;
         let trouble = match tokens.get(at) {
             _ if parse.overflow => Trouble::TooAmbiguous,
-            Some(t) if t.shape == Shape::Word && !self.lexicon.known.contains(t.norm.as_str()) => {
+            Some(t)
+                if t.shape == Shape::Word && !self.lexicon.known.contains(self.lexicon.norm(t)) =>
+            {
                 Trouble::UnknownWord {
                     at,
                     word: t.text.clone(),

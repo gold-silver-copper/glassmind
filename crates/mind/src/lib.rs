@@ -15,7 +15,7 @@ use std::collections::BTreeSet;
 
 use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
 use glassmind_meaning::{
-    Assumption, Condition, Fact, Name, Ontology, Reply, Thing, Trouble, Utterance,
+    Assumption, Condition, Description, Fact, Name, Ontology, Reply, Thing, Trouble, Utterance,
 };
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
@@ -66,6 +66,11 @@ pub const CORRECTION_REPLACES: RuleInfo = RuleInfo::new("mind.correct.replaces",
 /// nothing yet ("I'm looking for `x`, where is it defined?" with no `x`:
 /// there is nothing called `x`, rather than nothing for "it" to be).
 pub const PREFER_REFERRING: RuleInfo = RuleInfo::new("mind.prefer.referring", 10);
+/// A thing a turn described by its name is what that turn asked about, not
+/// the items it was described by: after "which functions call `tick` on
+/// `BodyHealth`", "where is that defined" is not about `BodyHealth`. Its
+/// item is not known, so nothing is referred back to.
+pub const NAMED_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.named", 18);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -79,6 +84,7 @@ pub const RULES: &[RuleInfo] = &[
     PREVIOUS_IS_TOPIC,
     CORRECTION_REPLACES,
     PREFER_REFERRING,
+    NAMED_IS_TOPIC,
 ];
 
 /// A source the conversation was given.
@@ -152,7 +158,9 @@ impl<O: Ontology> Session<O> {
     /// The one item the latest understood turn asked about, if it asked
     /// about just one. An item only mentioned in describing another thing
     /// ("which functions call `tick` on `BodyHealth`") is not asked about.
-    pub fn topic(&self) -> Option<O::Item> {
+    /// With `named` ([`NAMED_IS_TOPIC`]), a thing described by its name is
+    /// what was asked about, not the items it is described by.
+    pub fn topic(&self, named: bool) -> Option<O::Item> {
         let meaning = self.remembered().find_map(|t| t.meaning.as_ref())?;
         let called = |c: &Condition<O>| matches!(c, Condition::Called(_));
         if meaning
@@ -162,7 +170,11 @@ impl<O: Ontology> Session<O> {
         {
             return None;
         }
-        let mut items = meaning.things().into_iter().filter_map(Thing::item);
+        let unnamed = |d: &Description<O>| !named || !d.conditions.iter().any(called);
+        let mut items = meaning
+            .things_within(&unnamed)
+            .into_iter()
+            .filter_map(Thing::item);
         let item = items.next()?;
         items.next().is_none().then(|| item.clone())
     }
@@ -374,7 +386,8 @@ impl<O: Ontology> Mind<'_, O> {
                 }
             } else if *thing == Thing::Previous {
                 // The one item the latest turn asked about, if that rule is on.
-                if let Some(item) = session.topic()
+                let named = self.using(NAMED_IS_TOPIC, &mut rt.world_rules).is_ok();
+                if let Some(item) = session.topic(named)
                     && self.using(PREVIOUS_IS_TOPIC, &mut rt.world_rules).is_ok()
                 {
                     choices = vec![Thing::Item(item)];

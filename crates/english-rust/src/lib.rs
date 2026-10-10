@@ -1039,9 +1039,30 @@ mod tests {
             "what fields `Conv` has in it",
             "I'm trying to figure out what's inside Conv, like which fields the struct has?",
             "show me the struct fields of Conv",
+            "whcih fileds does `Conv` hav",
+            "Conv whta fields",
+            "`Conv` fields, waht r they",
         ] {
             assert!(meanings(text).iter().any(|m| has.contains(m)), "{text:?}");
         }
+    }
+
+    /// A field set off by its name and referred back to is any field going
+    /// by that name, as when it is said in place.
+    #[test]
+    fn a_field_set_off_by_name_is_asked_about_by_name() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meanings = |text: &str| match english.understand(text) {
+            Understanding::Readings(readings) => readings.into_iter().map(|r| r.meaning).collect(),
+            Understanding::Failed { .. } => Vec::new(),
+        };
+        let by_name = meanings("which structs have field credentials");
+        assert!(!by_name.is_empty());
+        assert!(
+            meanings("field credentials, which structs have it")
+                .iter()
+                .any(|m| by_name.contains(m))
+        );
     }
 
     /// The ways of asking, in a later turn, for the callers of what was

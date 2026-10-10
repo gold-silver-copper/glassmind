@@ -46,8 +46,6 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.thanks_a_lot", 5, "thanks a lot"),
     // "Actually, please forget that."
     ("en.aside.actually", 6, "actually"),
-    // "actualy scratch that, forget it": mistyped, as in describe.rs.
-    ("en.aside.mistyped.actualy", 17, "actualy"),
     ("en.aside.thanks_in_advance", 5, "thanks in advance"),
     // "wait, why ...", "ok but why ...": a pause before a question about
     // what was just said.
