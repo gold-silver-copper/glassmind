@@ -62,6 +62,11 @@ pub const PREVIOUS_IS_LAST_SPOKEN: RuleInfo = RuleInfo::new("mind.refer.last_spo
 /// in place of the one item that request was about. If that turn was not
 /// understood, or was about no item or several, nothing is corrected.
 pub const CORRECTION_REPLACES: RuleInfo = RuleInfo::new("mind.correct.replaces", 10);
+/// Preference: when no reading can be answered, report why a reading
+/// failed that had something to refer back to, over one whose "it" means
+/// nothing yet ("I'm looking for `x`, where is it defined?" with no `x`:
+/// there is nothing called `x`, rather than nothing for "it" to be).
+pub const PREFER_REFERRING: RuleInfo = RuleInfo::new("mind.prefer.referring", 10);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -75,6 +80,7 @@ pub const RULES: &[RuleInfo] = &[
     PREVIOUS_IS_TOPIC,
     PREVIOUS_IS_LAST_SPOKEN,
     CORRECTION_REPLACES,
+    PREFER_REFERRING,
 ];
 
 /// A source the conversation was given.
@@ -435,16 +441,22 @@ impl<O: Ontology> Mind<'_, O> {
             // of what was said), or ask back.
             let asking = self.switches.on(PREFER_ASKING.id);
             let asks = |t: &Trouble<O>| asking && matches!(t, Trouble::Ambiguous { .. });
+            let referring = self.switches.on(PREFER_REFERRING.id);
+            let refers =
+                |c: &Candidate<O>| !referring || !c.meaning.things().contains(&&Thing::Previous);
             let worst = candidates
                 .iter()
                 .rev()
                 .filter_map(|c| Some((c, c.result.as_ref().err()?)))
-                .max_by_key(|&(_, t)| (asks(t), trouble_progress(t)));
+                .max_by_key(|&(c, t)| (asks(t), refers(c), trouble_progress(t)));
             let Some((c, trouble)) = worst else {
                 return (Reply::Trouble(Trouble::Unsupported), None);
             };
             if asks(trouble) {
                 trace.preferences.push(PREFER_ASKING);
+            }
+            if referring && candidates.iter().any(|c| !refers(c)) {
+                trace.preferences.push(PREFER_REFERRING);
             }
             return (Reply::Trouble(trouble.clone()), Some(c));
         };

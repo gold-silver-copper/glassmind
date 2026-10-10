@@ -209,6 +209,8 @@ const OPENERS: &[(&str, u32, &str)] = &[
     ("en.remark.i", 2, "i"),
     // "can't find it": the speaker's trouble, without a subject.
     ("en.remark.cannot", 2, "can't"),
+    // "cant find it": the same, typed without the apostrophe.
+    ("en.remark.cant", 10, "cant"),
     // "still finding my way around here", "still new to this code": the
     // speaker's situation, said without a subject.
     ("en.remark.still", 5, "still"),

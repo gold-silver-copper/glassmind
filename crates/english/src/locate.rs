@@ -213,11 +213,34 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             S::Build(located),
         )
         .read_only(),
+        // "where `parse_remote` lives", "where it lives": where the thing
+        // is, as a clause.
+        Rule::new(
+            RuleInfo::new("en.indirect.where_lives", 10),
+            Cat::Indirect,
+            vec![W("where"), C(Cat::Target), W("lives")],
+            S::Build(located),
+        )
+        .read_only(),
         // "where it's defined": where the thing said before is.
         Rule::new(
             RuleInfo::new("en.indirect.where_it_s_defined", 9),
             Cat::Indirect,
             vec![W("where"), W("it's"), C(Cat::Defined)],
+            S::Build(|_| {
+                Some(Sem::Question(Question::Locate {
+                    thing: Thing::Previous,
+                    kind: None,
+                }))
+            }),
+        )
+        .read_only(),
+        // "`LookFelt` - where defined": where the thing just set off is,
+        // with nothing more said of it.
+        Rule::new(
+            RuleInfo::new("en.question.where_defined_bare", 10),
+            Cat::Question,
+            vec![W("where"), C(Cat::Defined)],
             S::Build(|_| {
                 Some(Sem::Question(Question::Locate {
                     thing: Thing::Previous,
@@ -314,6 +337,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
     ]);
     rules.extend(fillers(ROUND, FILLERS));
+    // The same wish said without a subject: "trying to find where `x` is
+    // defined".
+    rules.extend(fillers(
+        10,
+        &[(
+            Cat::Inquiry,
+            &[
+                ("en.inquiry.bare_trying_to_find", "trying to find"),
+                ("en.inquiry.bare_figure_out", "trying to figure out"),
+            ],
+        )],
+    ));
     // "`x` is defined at src/x.rs:12."
     rules.push(Rule::new(
         RuleInfo::new("en.reply.location", ROUND),

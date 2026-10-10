@@ -327,6 +327,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             words_then("the", &[Cat::Description]),
             same,
         ),
+        // "all the functions that call `x`", "all functions that call it"
+        read_only_rule(
+            "en.description.all",
+            10,
+            Cat::Description,
+            words_then("all", &[Cat::Description]),
+            same,
+        ),
         // "`pick_row` callees"
         rule(
             "en.description.name_role",

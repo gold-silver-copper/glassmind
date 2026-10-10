@@ -118,6 +118,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.question.what_doing",
             vec![W("what"), C(Cat::Mention), C(Cat::Doing)],
         ),
+        // "`tabs_has` does what": asked in the order of a statement.
+        Rule::new(
+            RuleInfo::new("en.question.does_what", 10),
+            Cat::Question,
+            vec![C(Cat::Mention), C(Cat::Doing), W("what")],
+            S::Build(describe),
+        )
+        .read_only(),
         // "what `x` is for", "what the `Notice` struct is used for", "what
         // `x` is checking"
         question(
