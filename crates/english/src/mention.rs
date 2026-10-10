@@ -265,6 +265,22 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("that"), C(Cat::Noun)],
             |_| Some(Sem::Thing(Thing::Previous)),
         ),
+        // "where's that defined", "which functions call that one": the
+        // thing said before.
+        word(
+            RuleInfo::new("en.noun_phrase.that", 9),
+            Cat::NounPhrase,
+            "that",
+            Sem::Thing(Thing::Previous),
+        )
+        .read_only(),
+        word(
+            RuleInfo::new("en.noun_phrase.that_one", 9),
+            Cat::NounPhrase,
+            "that one",
+            Sem::Thing(Thing::Previous),
+        )
+        .read_only(),
         // "it": the thing said before.
         word(
             RuleInfo::new("en.noun_phrase.it", ROUND),

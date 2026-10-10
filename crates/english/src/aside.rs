@@ -55,6 +55,15 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.quick_thing", 6, "quick thing"),
     ("en.aside.btw", 6, "btw"),
     ("en.aside.fyi", 6, "fyi"),
+    // "Got it. Where is that function defined?", "Great, and where ...":
+    // taking in the last answer before going on.
+    ("en.aside.got_it", 9, "got it"),
+    ("en.aside.great", 9, "great"),
+    // "and where is it defined?", "ok and what does it do?": a turn going
+    // on from the last one.
+    ("en.aside.and", 9, "and"),
+    // "How many functions call it, by the way?"
+    ("en.aside.by_the_way", 9, "by the way"),
 ];
 
 /// The punctuation after an aside: "..., ok?" (an aside asking whether

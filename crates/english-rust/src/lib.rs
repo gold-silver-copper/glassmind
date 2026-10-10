@@ -384,6 +384,30 @@ mod tests {
         }
     }
 
+    /// Asking where the thing said before is, going on from the last turn,
+    /// leaves what it refers back to for the conversation to find.
+    #[test]
+    fn ways_of_asking_where_it_is_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Ask(Question::Locate {
+            thing: Thing::Previous,
+            kind: None,
+        });
+        for text in [
+            "And where is it defined?",
+            "Got it. Can you tell me where it's defined?",
+            "Great, and where is that defined actually?",
+            "where's that defined",
+            "where's it live",
+            "and where it is defined?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
     /// The many ways of asking what a function calls all mean the same.
     #[test]
     fn ways_of_asking_for_callees_agree() {

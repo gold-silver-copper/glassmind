@@ -43,6 +43,10 @@ pub const ALIAS_NOTED: RuleInfo = RuleInfo::new("mind.alias.noted", 7);
 /// mentioned in it, most recent first, leaving out what the user asked it
 /// to forget ("can you show me what you're keeping in your context?").
 pub const RECALL_IS_MENTIONS: RuleInfo = RuleInfo::new("mind.recall.mentions", 7);
+/// A thing referred back to ("where is it defined?", "where is that
+/// function defined?" after "which functions call `x`?") is the one item
+/// the latest understood turn asked about, if it asked about just one.
+pub const PREVIOUS_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.topic", 9);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -52,6 +56,7 @@ pub const RULES: &[RuleInfo] = &[
     REASON_IS_REQUEST,
     ALIAS_NOTED,
     RECALL_IS_MENTIONS,
+    PREVIOUS_IS_TOPIC,
 ];
 
 /// A source the conversation was given.
@@ -95,22 +100,40 @@ impl<O: Ontology> Session<O> {
     /// mention nothing.
     pub fn mentions(&self) -> Vec<O::Item> {
         let mut out = Vec::new();
+        for turn in self.remembered() {
+            let in_meaning = turn.meaning.iter().flat_map(Utterance::things);
+            for item in in_meaning.filter_map(Thing::item).chain(turn.reply.items()) {
+                if !out.contains(item) {
+                    out.push(item.clone());
+                }
+            }
+        }
+        out
+    }
+
+    /// The turns, most recent first, leaving out a turn the user asked to
+    /// forget and the request to forget it.
+    fn remembered(&self) -> impl Iterator<Item = &TurnRecord<O>> {
         let mut forgotten = 0;
-        for turn in self.turns.iter().rev() {
+        self.turns.iter().rev().filter(move |turn| {
             if turn.meaning == Some(Utterance::Forget) {
                 forgotten += 1;
             } else if forgotten > 0 {
                 forgotten -= 1;
             } else {
-                let in_meaning = turn.meaning.iter().flat_map(Utterance::things);
-                for item in in_meaning.filter_map(Thing::item).chain(turn.reply.items()) {
-                    if !out.contains(item) {
-                        out.push(item.clone());
-                    }
-                }
+                return true;
             }
-        }
-        out
+            false
+        })
+    }
+
+    /// The one item the latest understood turn asked about, if it asked
+    /// about just one.
+    pub fn topic(&self) -> Option<O::Item> {
+        let meaning = self.remembered().find_map(|t| t.meaning.as_ref())?;
+        let mut items = meaning.things().into_iter().filter_map(Thing::item);
+        let item = items.next()?;
+        items.next().is_none().then(|| item.clone())
     }
 
     /// The item the user last said they would call `name`, if any.
@@ -293,6 +316,11 @@ impl<O: Ontology> Mind<'_, O> {
                 if !items.is_empty() {
                     choices = items.into_iter().map(Thing::Item).collect();
                 }
+            } else if *thing == Thing::Previous
+                && let Some(item) = session.topic()
+                && self.using(PREVIOUS_IS_TOPIC, &mut rt.world_rules).is_ok()
+            {
+                choices = vec![Thing::Item(item)];
             }
             options.push(choices);
         }

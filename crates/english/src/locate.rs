@@ -3,7 +3,7 @@
 //! where", and the system's answer, "`x` is defined at src/x.rs:12.".
 
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
-use glassmind_meaning::{Ontology, Question, Reply, Utterance};
+use glassmind_meaning::{Ontology, Question, Reply, Thing, Utterance};
 
 use crate::blank;
 use crate::first;
@@ -205,6 +205,35 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         }),
     );
     rules.extend([
+        // "where's it live", "where's that live"
+        Rule::new(
+            RuleInfo::new("en.question.where_s_live", 9),
+            Cat::Question,
+            vec![W("where's"), C(Cat::Target), W("live")],
+            S::Build(located),
+        )
+        .read_only(),
+        // "where it's defined": where the thing said before is.
+        Rule::new(
+            RuleInfo::new("en.indirect.where_it_s_defined", 9),
+            Cat::Indirect,
+            vec![W("where"), W("it's"), C(Cat::Defined)],
+            S::Build(|_| {
+                Some(Sem::Question(Question::Locate {
+                    thing: Thing::Previous,
+                    kind: None,
+                }))
+            }),
+        )
+        .read_only(),
+        // "and where it is defined?": asked in the order of a clause.
+        Rule::new(
+            RuleInfo::new("en.question.indirect", 9),
+            Cat::Question,
+            vec![C(Cat::Indirect)],
+            S::Build(located),
+        )
+        .read_only(),
         // "where's `x` defined at"
         rule(
             "en.question.at",
