@@ -39,6 +39,10 @@ pub const ASK_BEFORE_ACTING: RuleInfo = RuleInfo::new("mind.ask_before_acting", 
 /// some reading only lacks that, rather than report why the others failed
 /// ("rename the `bytes` field" is not about fields typed `bytes`).
 pub const PREFER_ASKING: RuleInfo = RuleInfo::new("mind.prefer.asking", 5);
+/// Asked why it took up an action, the system gives the request that asked
+/// for it: the most recent turn understood as asking for an action ("why do
+/// you want to change that?" after "rename `x` to `y`").
+pub const REASON_IS_REQUEST: RuleInfo = RuleInfo::new("mind.reason.request", 6);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -47,6 +51,7 @@ pub const RULES: &[RuleInfo] = &[
     PREFER_RIGHT_KIND,
     ASK_BEFORE_ACTING,
     PREFER_ASKING,
+    REASON_IS_REQUEST,
 ];
 
 /// A source the conversation was given.
@@ -215,6 +220,7 @@ impl<O: Ontology> Mind<'_, O> {
                 let result = match &meaning {
                     Utterance::Ask(q) => self.world.answer(q, &mut world_rules),
                     Utterance::Command(a) => self.world.propose(a, &mut world_rules),
+                    Utterance::AskReason => reason(session, self.switches, &mut world_rules),
                 };
                 rt.world_rules.extend(world_rules);
                 rt.outcomes.push((meaning.clone(), result.clone()));
@@ -439,6 +445,32 @@ impl<O: Ontology> Mind<'_, O> {
     }
 }
 
+/// Why the most recent action asked for was taken up: the turn that asked.
+/// Pushes the rule it used onto `fired`.
+fn reason<O: Ontology>(
+    session: &Session<O>,
+    switches: &Switches,
+    fired: &mut Vec<RuleInfo>,
+) -> Result<Reply<O>, Trouble<O>> {
+    if !switches.on(REASON_IS_REQUEST.id) {
+        return Err(Trouble::Unsupported);
+    }
+    fired.push(REASON_IS_REQUEST);
+    session
+        .turns
+        .iter()
+        .enumerate()
+        .rev()
+        .find_map(|(turn, t)| match &t.meaning {
+            Some(Utterance::Command(action)) => Some(Reply::Reason {
+                turn,
+                action: action.clone(),
+            }),
+            _ => None,
+        })
+        .ok_or(Trouble::Unsupported)
+}
+
 /// The input with `▮` before the token at `at` (or at the end).
 pub fn mark(text: &str, tokens: &[TokenSpan], at: usize) -> String {
     let byte = tokens.get(at).map_or(text.trim_end().len(), |t| t.start);
@@ -481,6 +513,7 @@ fn progress_of<O: Ontology>(reply: &Reply<O>) -> Progress {
         | Reply::Location(_)
         | Reply::Account { .. }
         | Reply::Count { .. }
-        | Reply::Proposal { .. } => Progress::Done,
+        | Reply::Proposal { .. }
+        | Reply::Reason { .. } => Progress::Done,
     }
 }

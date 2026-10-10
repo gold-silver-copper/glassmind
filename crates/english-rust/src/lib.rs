@@ -294,7 +294,7 @@ mod tests {
     use glassmind_english::English;
     use glassmind_meaning::interface::{Language, Understanding};
     use glassmind_meaning::{
-        Action, Condition, Description, Name, Position, Question, Thing, Utterance,
+        Action, Condition, Description, Name, Position, Question, Reply, Thing, Utterance,
     };
     use glassmind_rules::Switches;
 
@@ -709,5 +709,40 @@ mod tests {
             };
             assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
         }
+    }
+
+    /// The ways of asking why the system wants a change all ask only that,
+    /// and the system answers with the request that asked for it.
+    #[test]
+    fn ways_of_asking_why_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "Hmm, can you explain why you want to make that change?",
+            "why does it want to change that, the change you just proposed?",
+            "why do you want to change that? not sure I get the reason",
+            "Why do you want to change that? Can you walk me through your reasoning?",
+            "whats the reasoning behind that change",
+            "why change it tho",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                readings.iter().all(|r| r.meaning == Utterance::AskReason),
+                "{text:?}"
+            );
+        }
+        let reason = Reply::Reason {
+            turn: 0,
+            action: Action::Rename {
+                thing: Thing::Named(Name("tick".into())),
+                kind: None,
+                name: Some(Name("drain_events".into())),
+            },
+        };
+        assert_eq!(
+            english.say(&reason).map(|s| s.text).as_deref(),
+            Some("Because you asked me to rename `tick` to `drain_events`.")
+        );
     }
 }

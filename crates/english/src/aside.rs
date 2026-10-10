@@ -63,6 +63,10 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         &["thanks", "in", "advance"],
         5,
     )));
+    // "wait, why ...", "ok but why ...": a pause before a question about
+    // what was just said.
+    rules.push(aside_word(("en.aside.wait", &["wait"], 6)));
+    rules.push(aside_word(("en.aside.but", &["but"], 6)));
     // The punctuation that ends an aside: "hey,", "hi!", "quick question:",
     // "sorry, quick one -", "Thanks.".
     for (id, mark) in [

@@ -152,6 +152,8 @@ pub enum Utterance<O: Ontology> {
     Ask(Question<O>),
     /// Asks for an action to be carried out.
     Command(Action<O>),
+    /// Asks why the system took up the action it was last asked for.
+    AskReason,
 }
 
 /// A claim that a set of things is exactly what fits a description.
@@ -215,6 +217,9 @@ pub enum Reply<O: Ontology> {
         action: Action<O>,
         spots: Vec<O::Spot>,
     },
+    /// Why an action was taken up: the user asked for it in turn `turn`
+    /// (0-based) of the conversation.
+    Reason { turn: usize, action: Action<O> },
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on assumptions, which are stated first.
@@ -230,6 +235,7 @@ impl<O: Ontology> Utterance<O> {
         match self {
             Utterance::Ask(q) => q.things(),
             Utterance::Command(Action::Rename { thing, .. }) => thing.things(),
+            Utterance::AskReason => Vec::new(),
         }
     }
 
@@ -245,6 +251,7 @@ impl<O: Ontology> Utterance<O> {
                     name: name.clone(),
                 })
             }
+            Utterance::AskReason => Utterance::AskReason,
         }
     }
 }
@@ -352,8 +359,16 @@ impl<O: Ontology> Reply<O> {
                         ..
                     },
                 ..
+            }
+            | Reply::Reason {
+                action:
+                    Action::Rename {
+                        thing: Thing::Item(item),
+                        ..
+                    },
+                ..
             } => vec![item],
-            Reply::Proposal { .. } => Vec::new(),
+            Reply::Proposal { .. } | Reply::Reason { .. } => Vec::new(),
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
             Reply::Trouble(_) => Vec::new(),
             Reply::Assuming { reply, .. } => reply.items(),

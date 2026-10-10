@@ -1,6 +1,6 @@
 //! Turning a reply into the machine-readable answer format.
 
-use glassmind_answer::{Change, ItemKey, ItemKind, Outcome, Refusal, Response, Stage};
+use glassmind_answer::{Change, ItemKey, ItemKind, MetaAct, Outcome, Refusal, Response, Stage};
 use glassmind_meaning::{Action, Reply, Thing, Trouble};
 use glassmind_mind::{Progress, Turn};
 use glassmind_world_rust::{Rust, RustItem, RustKind};
@@ -55,6 +55,11 @@ pub fn response(reply: &Reply<Rust>) -> Response {
         },
         Reply::Proposal { .. } => Response::Refuse {
             refusal: Refusal::Unsupported,
+        },
+        Reply::Reason { turn, .. } => Response::Meta {
+            act: MetaAct::ExplainAction {
+                turn: u32::try_from(*turn).unwrap_or(u32::MAX),
+            },
         },
         Reply::Trouble(t) => match t {
             Trouble::UnknownWord { word, .. } => Response::Refuse {

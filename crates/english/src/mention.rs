@@ -117,6 +117,10 @@ fn restated<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         {
             Some(first.clone())
         }
+        // "why do you want to change that? what's the reason?"
+        (Sem::Utterance(a @ Utterance::AskReason), Sem::Utterance(b)) if a == b => {
+            Some(first.clone())
+        }
         _ => None,
     }
 }

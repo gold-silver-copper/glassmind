@@ -278,14 +278,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     // Other ways a remark opens: with another subject ("it's more clear",
     // "the name is a bit vague"), or without one ("seems more clear to me",
     // "took me a while to get").
-    rules.extend(OPENERS.iter().map(|(id, w)| {
-        Rule::new(
-            RuleInfo::new(id, 5),
-            Cat::Remark,
-            vec![W(w), Class(TEXT)],
-            remark(),
-        )
-    }));
+    let openers = OPENERS.iter().map(|o| (o, 5));
+    rules.extend(
+        openers
+            .chain(MORE_OPENERS.iter().map(|o| (o, 6)))
+            .map(|((id, w), round)| {
+                Rule::new(
+                    RuleInfo::new(id, round),
+                    Cat::Remark,
+                    vec![W(w), Class(TEXT)],
+                    remark(),
+                )
+            }),
+    );
     // What the request is for: "so it's clearer".
     rules.push(Rule::new(
         RuleInfo::new("en.remark.so", 5),
@@ -308,3 +313,7 @@ const OPENERS: &[(&str, &str)] = &[
     ("en.remark.took", "took"),
     ("en.remark.think", "think"),
 ];
+
+/// Words a remark can open with after a question about the system's
+/// reasons: "not sure I get it", "not sure I follow".
+const MORE_OPENERS: &[(&str, &str)] = &[("en.remark.not", "not")];

@@ -164,6 +164,21 @@ pub enum Cat {
     NewName,
     /// Words saying what a thing ought to be called: "should be called".
     ShouldBe,
+    /// A question asking why the system took up an action, without its
+    /// final punctuation: "why do you want to change that".
+    Why,
+    /// Words for the action the system took up: "that", "that change",
+    /// "the thing you just proposed".
+    Deed,
+    /// Words saying the system put an action forward: "you just proposed".
+    Proposed,
+    /// Words saying the system wants something: "do you want", "it wants".
+    Wish,
+    /// A verb phrase carrying out the action: "change that", "make that
+    /// change".
+    Carrying,
+    /// A noun for why something is done: "reason", "the reasoning".
+    Reason,
 }
 
 /// English grammatical number, used for agreement.
