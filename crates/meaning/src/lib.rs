@@ -214,8 +214,6 @@ pub enum Trouble<O: Ontology> {
     Ambiguous { candidates: Vec<O::Item> },
     /// The meaning was understood, but this world cannot carry it out.
     Unsupported,
-    /// The input had more readings than the parser keeps.
-    TooAmbiguous,
 }
 
 /// Everything a reply can mean, before a language puts it into words.

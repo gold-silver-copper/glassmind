@@ -376,9 +376,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             (Amount, &[("en.amount.num", "num")]),
         ],
     ));
-    // "`x` how many callers it got, number of functions": the count
-    // asked for again, as a noun.
-    rules.push(filler("en.recount.number_of", 18, Recount, "number of"));
     // "is it used in lot of places", with the article dropped
     rules.push(filler(
         "en.widely.in_lot_of_places",

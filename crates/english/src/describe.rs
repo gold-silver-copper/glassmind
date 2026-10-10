@@ -90,7 +90,6 @@ const HEDGES: &[(&str, &str)] = &[
     ("en.hedge.exactly", "exactly"),
     ("en.hedge.basically", "basically"),
     ("en.hedge.quickly", "quickly"),
-    ("en.hedge.a_bit", "a bit"),
 ];
 
 /// "what is", "what's", "whats".
@@ -106,13 +105,6 @@ const PROMPTS: &[(&str, &str)] = &[
     ("en.prompt.explain", "explain"),
     ("en.prompt.walk_me_through", "walk me through"),
     ("en.prompt.understand", "understand"),
-];
-
-/// More such words, from round 14: "what does it represent", "could you
-/// explain me what `x` is for".
-const LATER: &[(Cat, &[(&str, &str)])] = &[
-    (Doing, &[("en.doing.represent", "represent")]),
-    (Prompt, &[("en.prompt.explain_me", "explain me")]),
 ];
 
 /// Asking what the thing said before is.
@@ -286,7 +278,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             first,
         ),
     ]);
-    rules.extend(fillers(NOW, LATER));
+    // "could you explain me what `x` is for"
+    rules.push(filler("en.prompt.explain_me", NOW, Prompt, "explain me"));
     // In embedded questions: "can you tell me what `x` is", "what
     // `RepositoryWithPendingReview` is, what it's for".
     rules.push(read_only_rule(
@@ -309,8 +302,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             &[
                 ("en.hedge.in_total", "in total"),
                 ("en.hedge.total", "total"),
-                ("en.hedge.in_all", "in all"),
-                ("en.hedge.altogether", "altogether"),
                 ("en.hedge.then", "then"),
             ],
         )],
@@ -340,10 +331,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             (Purpose, &[("en.purpose.the_point", "the point")]),
             (
                 Use,
-                &[
-                    ("en.use.meant_for", "meant for"),
-                    ("en.use.meant_to_be_used_for", "meant to be used for"),
-                ],
+                &[("en.use.meant_to_be_used_for", "meant to be used for")],
             ),
         ],
     ));
@@ -364,41 +352,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(WhatIs), C(Purpose), W("of"), C(Mention)],
             describe,
         ),
-        // "explain page_block, purpose?": the same, with the noun alone.
-        read_only_rule(
-            "en.question.purpose_bare",
-            25,
-            Question,
-            vec![C(Purpose)],
-            previous_described,
-        ),
     ]);
     // "whats unhidden_posts return / used for", "what is `x` doing, or used
     // for": what a thing gives back, and what it does and what it is for
     // asked together; "can you tell me what `x` does and why we'd use it".
-    rules.extend(fillers(
-        26,
-        &[
-            (
-                Doing,
-                &[
-                    ("en.doing.return", "return"),
-                    ("en.doing.returns", "returns"),
-                ],
-            ),
-            (
-                Motive,
-                &[
-                    ("en.motive.we_d_use", "why we'd use"),
-                    ("en.motive.you_d_use", "why you'd use"),
-                    ("en.motive.would_we_use", "why would we use"),
-                    ("en.motive.would_you_use", "why would you use"),
-                    ("en.motive.would_i_use", "why would i use"),
-                    ("en.motive.do_we_need", "why do we need"),
-                ],
-            ),
-        ],
-    ));
+    rules.extend([
+        filler("en.doing.returns", 26, Doing, "returns"),
+        filler("en.motive.we_d_use", 26, Motive, "why we'd use"),
+    ]);
     let later = |id, lhs, rhs, build| read_only_rule(id, 26, lhs, rhs, build);
     rules.extend([
         // "return / used for", "doing, or used for": both asked at once,
@@ -429,13 +390,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     // thing asks what it is, as its purpose does.
     rules.extend(fillers(
         27,
-        &[(
-            Purpose,
-            &[
-                ("en.purpose.summary", "summary"),
-                ("en.purpose.quick_summary", "quick summary"),
-            ],
-        )],
+        &[(Purpose, &[("en.purpose.quick_summary", "quick summary")])],
     ));
     // "what does `armed` even mean"
     rules.push(filler("en.doing.mean", 21, Doing, "mean"));

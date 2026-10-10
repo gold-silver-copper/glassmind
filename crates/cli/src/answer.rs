@@ -74,7 +74,7 @@ pub fn response(reply: &Reply<Rust>) -> Response {
             Trouble::UnknownWord { word, .. } => Response::Refuse {
                 refusal: Refusal::UnknownWord { word: word.clone() },
             },
-            Trouble::UnknownShape { .. } | Trouble::TooAmbiguous => Response::Refuse {
+            Trouble::UnknownShape { .. } => Response::Refuse {
                 refusal: Refusal::UnknownShape,
             },
             Trouble::NoSuchName { name } => Response::Refuse {

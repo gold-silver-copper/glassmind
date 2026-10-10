@@ -393,15 +393,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             },
         ),
         said(
-            "en.reply.too_ambiguous",
-            Reply,
-            vec![W("that has too many readings for me .")],
-            |v| match v {
-                Sem::Reply(Reply::Trouble(Trouble::TooAmbiguous)) => Some(Vec::new()),
-                _ => None,
-            },
-        ),
-        said(
             "en.reply.no_such_name",
             Reply,
             vec![W("nothing is called"), Class(NAME), W(".")],

@@ -64,7 +64,6 @@ const BEFORE: &[(&str, u32, Cat, &str)] = &[
     // "from where `x` gets called", "from where does `x` get used"
     ("en.whence.from", 9, Where, "from"),
     // "either directly or wrapped"
-    ("en.widening.either", 11, Widening, "either"),
     // "like &str": a reference to it.
     ("en.enclosure.reference", 11, Enclosure, "&"),
     // "that last question": what was said, by when.
@@ -81,7 +80,6 @@ const BEFORE: &[(&str, u32, Cat, &str)] = &[
     // something is wrapped in.
     ("en.enclosure.like", 9, Enclosure, "like"),
     ("en.enclosure.a", 9, Enclosure, "a"),
-    ("en.enclosure.another", 9, Enclosure, "another"),
     ("en.enclosure.other", 9, Enclosure, "other"),
     ("en.enclosure.some", 9, Enclosure, "some"),
 ];
@@ -110,11 +108,9 @@ const AFTER: &[(&str, u32, Cat, &str)] = &[
     // "Option<u16> etc", "Option<...>": wrapped in others like it.
     ("en.widening.etc", 9, Widening, "etc"),
     ("en.enclosure.generic_elided", 9, Enclosure, "< . . . >"),
-    ("en.enclosure.etc", 9, Enclosure, "etc"),
     // "(or Option of it etc)"
     ("en.alternative.etc", 19, Alternative, "etc"),
     // "change it like that"
-    ("en.carrying.like_that", 6, Carrying, "like that"),
     // "what you're keeping in your context, please"
     ("en.recall.please", 7, Recall, ", please"),
     // Words after a verb that say the calls happen inside the subject:
@@ -132,7 +128,6 @@ const AFTER: &[(&str, u32, Cat, &str)] = &[
     ("en.aside.bang", 2, Aside, "!"),
     ("en.aside.colon", 2, Aside, ":"),
     ("en.aside.stop", 2, Aside, "."),
-    ("en.aside.dash", 2, Aside, "-"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {

@@ -240,9 +240,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             // "I'm looking at the voxel code. How many functions call
             // `carve`?"
             ("en.utterance.remark_stop", ROUND, Remark, W(".")),
-            // "the function trace_step, i think it just logs a line per
-            // step? maybe rename it to ...": a remark the user is unsure of.
-            ("en.utterance.remark_question", 11, Remark, W("?")),
             // "I'm looking into validation a bit, which functions call
             // `problems`?", "I'm trying to clean up a bit in Editor... could
             // you rename ..."
@@ -377,5 +374,4 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // "what is `x` even for? is it a test?": what the speaker guesses the
     // thing is.
     ("en.remark.is_it_a", 27, "is it a"),
-    ("en.remark.is_it_an", 27, "is it an"),
 ];

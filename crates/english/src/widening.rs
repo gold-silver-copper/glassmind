@@ -94,12 +94,6 @@ const PARTS: &[(&str, Cat, &[Sym<Cat>])] = &[
         Widening,
         &[C(Inclusion), C(Enclosure)],
     ),
-    // "Option<u16> etc count too", "Just Keypair or wrapped, both count".
-    (
-        "en.widening.enclosure_counted",
-        Widening,
-        &[C(Enclosure), C(Counted)],
-    ),
     // "incl. wrapped, Option<Art> etc", "... inside some other type, like
     // Option or whatever".
     (
@@ -228,13 +222,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 ],
             ),
             (Enclosure, &[("en.enclosure.something", "something")]),
-            (
-                Counted,
-                &[
-                    ("en.counted.count_too", "count too"),
-                    ("en.counted.also_counts", "also counts"),
-                ],
-            ),
+            (Counted, &[("en.counted.count_too", "count too")]),
             (
                 Directly,
                 &[
