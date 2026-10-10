@@ -7,6 +7,7 @@ use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Ontology, Thing};
 
 use crate::lexicon::{CODE, TEXT};
+use crate::mention::named;
 use crate::sem::{Cat, Sem};
 use crate::{blank, first, phrase, word};
 
@@ -117,13 +118,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             RuleInfo::new("en.remark.ending_about", 9),
             Cat::Remark,
             vec![C(Cat::Remark), Class(CODE)],
-            S::Build(|c| match c.last()? {
-                Sem::Name(name) => Some(Sem::Mention {
-                    thing: Thing::Named(name.clone()),
-                    kind: None,
-                }),
-                _ => None,
-            }),
+            S::Build(|c| named(c.last())),
         ),
         // "the name": what a remark about a thing's name calls it.
         word(
@@ -294,4 +289,8 @@ const OPENERS: &[(&str, u32, &str)] = &[
     ("en.remark.sorry", 7, "sorry"),
     ("en.remark.kind", 7, "kind"),
     ("en.remark.like", 7, "like"),
+    // "where is `ask` defined? keep seeing it around", "saw it somewhere
+    // and can't find it again": where the speaker came across the thing.
+    ("en.remark.keep", 13, "keep"),
+    ("en.remark.saw", 13, "saw"),
 ];

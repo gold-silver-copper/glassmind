@@ -47,13 +47,17 @@ fn refer_back<O: Ontology>(later: &Question<O>, earlier: &Question<O>) -> Option
             thing,
             kind: kind.clone(),
         },
+        Question::Locate { thing, kind: None } => Question::Locate {
+            thing,
+            kind: kind.clone(),
+        },
         other => other,
     })
 }
 
 /// "`x` on the `App` struct": the thing with the mentioned name that stands
 /// in the preposition's relation to the other thing, of the kind said.
-fn related<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+pub(crate) fn related<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     let [
         Sem::Mention {
             thing: Thing::Named(name),
@@ -86,10 +90,22 @@ fn related<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     })
 }
 
-/// "`x` - what does it do": the question about the thing set off before it.
+/// The thing with the name, of a kind left open.
+pub(crate) fn named<O: Ontology>(v: Option<&Sem<O>>) -> Option<Sem<O>> {
+    match v? {
+        Sem::Name(name) => Some(Sem::Mention {
+            thing: Thing::Named(name.clone()),
+            kind: None,
+        }),
+        _ => None,
+    }
+}
+
+/// "`x` - what does it do", "`x` where is it": the question about the
+/// thing set off before it.
 fn set_off<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c {
-        [Sem::Mention { thing, kind }, _, Sem::Question(later)]
+        [Sem::Mention { thing, kind }, .., Sem::Question(later)]
             if later.things().contains(&&Thing::Previous) =>
         {
             let earlier = Question::Describe {
@@ -288,13 +304,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             11,
             Cat::Mention,
             vec![W("the"), Class(CODE), Class(WORD)],
-            |c| match c.first()? {
-                Sem::Name(name) => Some(Sem::Mention {
-                    thing: Thing::Named(name.clone()),
-                    kind: None,
-                }),
-                _ => None,
-            },
+            |c| named(c.first()),
         ),
         // "the name `job_git`": the thing that has the name.
         rule(
@@ -333,6 +343,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ROUND,
             Cat::Question,
             vec![C(Cat::Mention), C(Cat::Break), C(Cat::Question)],
+            set_off,
+        ),
+        // "is_rate_limit where is it", "SimPlugin where it live": the same,
+        // with no mark between.
+        rule(
+            "en.question.set_off_unmarked",
+            13,
+            Cat::Question,
+            vec![C(Cat::Mention), C(Cat::Question)],
             set_off,
         ),
         // "what does `x` do, and what is it for", "what is the Walker for,

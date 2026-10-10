@@ -95,6 +95,13 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.noun.fields", 3, "fields", Field, Plural),
             ],
         ),
+        // A test is a function: "where is the test `a_blast_pushes_it`
+        // defined?"
+        read_only(table(
+            Noun,
+            kind,
+            &[("en.rust.noun.test", 13, "test", Function, Singular)],
+        )),
         table(
             Verb,
             relation,
@@ -387,6 +394,12 @@ mod tests {
             "um, where does `spawn_wave` live in the codebase? can't find it",
             "find the definition of `spawn_wave`",
             "spawn_wave defined where",
+            "where spawn_wave defined at",
+            "spawn_wave where is it",
+            "Where's spawn_wave defined, in which file?",
+            "def of spawn_wave",
+            "I'm trying to figure out where `spawn_wave` is defined, can you point me?",
+            "where is `spawn_wave` defined? keep seeing it around",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
