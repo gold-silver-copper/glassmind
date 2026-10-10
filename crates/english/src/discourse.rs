@@ -48,6 +48,9 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     ("en.prompt.can_u", 11, "can u"),
     // "maybe rename it to `log_fuzz_step`": a request put forward gently.
     ("en.prompt.maybe", 11, "maybe"),
+    // "can someone explain what `x` does": asked of anyone listening.
+    ("en.prompt.can_someone", 14, "can someone"),
+    ("en.prompt.could_someone", 14, "could someone"),
     // "I'm thinking `x` should be renamed to `y`"
     ("en.prompt.i_m_thinking", 11, "i'm thinking"),
     // "I'm curious how many ...", "I'm wondering how many ...", "Trying

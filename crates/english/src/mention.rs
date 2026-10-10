@@ -419,5 +419,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         },
     ));
     rules.extend(fillers(ROUND, FILLERS));
+    // "what `x` do / whats it for": two ways of asking, split by a slash.
+    rules.extend(fillers(14, &[(Cat::Join, &[("en.join.slash", "/")])]));
     rules
 }

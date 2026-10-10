@@ -8,6 +8,7 @@ use glassmind_meaning::{Ontology, Question, Reply, Thing};
 
 use crate::lexicon::{ITEM, PLACE};
 use crate::locate::fillers;
+use crate::mention::related;
 use crate::sem::{Cat, Number, Sem};
 use crate::word;
 use crate::{blank, first, last};
@@ -15,6 +16,7 @@ use crate::{blank, first, last};
 use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 3;
+const NOW: u32 = 14;
 
 /// What the thing mentioned among the children is.
 fn describe<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
@@ -25,6 +27,29 @@ fn describe<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         })),
         _ => None,
     })
+}
+
+/// "what does `unblock` do on `Chat`", "what is `x` for, in the `Chat`":
+/// the question about the thing, the one with its name that stands so to
+/// the other thing.
+fn placed<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let [
+        Sem::Question(Question::Describe {
+            thing: thing @ Thing::Named(_),
+            kind,
+        }),
+        ..,
+        relation,
+        other,
+    ] = c
+    else {
+        return None;
+    };
+    let mention = Sem::Mention {
+        thing: thing.clone(),
+        kind: kind.clone(),
+    };
+    describe(&[related(&[mention, relation.clone(), other.clone()])?])
 }
 
 /// Verbs for what a thing does when it runs. The first is how the system
@@ -77,6 +102,13 @@ const PROMPTS: &[(&str, &str)] = &[
     ("en.prompt.explain", "explain"),
     ("en.prompt.walk_me_through", "walk me through"),
     ("en.prompt.understand", "understand"),
+];
+
+/// More such words, from round 14: "what does it represent", "could you
+/// explain me what `x` is for".
+const LATER: &[(Cat, &[(&str, &str)])] = &[
+    (Cat::Doing, &[("en.doing.represent", "represent")]),
+    (Cat::Prompt, &[("en.prompt.explain_me", "explain me")]),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -209,6 +241,49 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ),
         ),
     ];
+    let now = |id, rhs, build| {
+        Rule::new(RuleInfo::new(id, NOW), Cat::Question, rhs, S::Build(build)).read_only()
+    };
+    rules.extend([
+        // "what Mark for", "what `RepoSort` used for", "what `cut` fn for":
+        // asked with no "is"; and "`x` struct, what it for".
+        now(
+            "en.question.what_for",
+            vec![W("what"), C(Cat::Mention), C(Cat::Use)],
+            describe,
+        ),
+        // "describe unread_counter"
+        now(
+            "en.question.describe",
+            vec![W("describe"), C(Cat::Mention)],
+            describe,
+        ),
+        // "what does `unblock` do on `Chat`", "what `filterable` does in
+        // `Menu`": the place said after the question.
+        now(
+            "en.question.placed",
+            vec![C(Cat::Question), C(Cat::Preposition), C(Cat::Mention)],
+            placed,
+        ),
+        now(
+            "en.question.placed_after_comma",
+            vec![
+                C(Cat::Question),
+                W(","),
+                C(Cat::Preposition),
+                C(Cat::Mention),
+            ],
+            placed,
+        ),
+        // "what `x` does, can you explain?": framed by more than one
+        // prompt, said after.
+        now(
+            "en.question.prompts_after",
+            vec![C(Cat::Question), W(","), C(Cat::Prompt), C(Cat::Prompt)],
+            first,
+        ),
+    ]);
+    rules.extend(fillers(NOW, LATER));
     rules.extend(fillers(
         11,
         &[
