@@ -41,6 +41,8 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.thanks", ROUND, "thanks"),
     ("en.aside.quick_question", ROUND, "quick question"),
     ("en.aside.quick_one", ROUND, "quick one"),
+    // "Out of curiosity, could you show me what you're keeping ..."
+    ("en.aside.out_of_curiosity", 19, "out of curiosity"),
     // "Quick request: please rename ...", "... Thanks a lot!"
     ("en.aside.quick_request", 5, "quick request"),
     ("en.aside.thanks_a_lot", 5, "thanks a lot"),

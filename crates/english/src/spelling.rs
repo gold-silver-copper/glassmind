@@ -62,6 +62,12 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// draw_board_images struct hsa", "list teh fields of segment pls",
 /// "draw_menu fields, quick lsit", "slab_interval memebers", "what does
 /// thread_marks contian, field-wise", "nvm forget taht", "nvm forgte that".
+///
+/// Round 19, asking what the system holds of the conversation: "show me
+/// what u rember of this convo", "show what ur keepign in context", "what
+/// u remebering of this conversation", "what u keeping in contxt right
+/// now". "u" is "you" typed short, as in "can u rename ..." and "why u
+/// wnat to chagne that".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -127,6 +133,21 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.contianing", "contianing", "containing"),
             ("en.spelling.forgte", "forgte", "forget"),
             ("en.spelling.forgett", "forgett", "forget"),
+        ],
+    ),
+    (
+        19,
+        &[
+            ("en.spelling.u", "u", "you"),
+            ("en.spelling.keepng", "keepng", "keeping"),
+            ("en.spelling.keepign", "keepign", "keeping"),
+            ("en.spelling.rember", "rember", "remember"),
+            ("en.spelling.rememeber", "rememeber", "remember"),
+            ("en.spelling.remmeber", "remmeber", "remember"),
+            ("en.spelling.remebering", "remebering", "remembering"),
+            ("en.spelling.contxt", "contxt", "context"),
+            ("en.spelling.wnat", "wnat", "want"),
+            ("en.spelling.chagne", "chagne", "change"),
         ],
     ),
 ];

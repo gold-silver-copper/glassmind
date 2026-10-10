@@ -46,8 +46,6 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     ("en.prompt.would_it_be_ok_to", 5, "would it be ok to"),
     ("en.prompt.i_d_like", 5, "i'd like"),
     ("en.prompt.want", 5, "want"),
-    // "can u rename ...": "you" typed short.
-    ("en.prompt.can_u", 11, "can u"),
     // "maybe rename it to `log_fuzz_step`": a request put forward gently.
     ("en.prompt.maybe", 11, "maybe"),
     // "can someone explain what `x` does": asked of anyone listening.
@@ -91,6 +89,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.utterance.interjection_after_comma",
             6,
             vec![C(Utterance), W(","), C(Interjection)],
+        ),
+        // "what u keeping in ur context rn, show me", "what u rember of
+        // this convo so far, show pls": the prompt said after the request.
+        utterance(
+            "en.utterance.prompt_after",
+            19,
+            vec![C(Utterance), W(","), C(Prompt)],
         ),
         // "fields on `alice` struct??": the mark doubled asks no more.
         utterance(

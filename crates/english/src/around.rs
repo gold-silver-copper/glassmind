@@ -75,6 +75,8 @@ const BEFORE: &[(&str, u32, Cat, &str)] = &[
     ("en.keeping.currently", 7, Keeping, "currently"),
     ("en.keep.currently", 7, Keep, "currently"),
     ("en.memory.your", 7, Memory, "your"),
+    // "what u keeping in ur context": "your" typed short.
+    ("en.memory.ur", 19, Memory, "ur"),
     // "like Vec<Post>", "a Vec", "another type", "some other type": a type
     // something is wrapped in.
     ("en.enclosure.like", 9, Enclosure, "like"),

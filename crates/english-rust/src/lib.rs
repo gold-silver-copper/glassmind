@@ -1110,6 +1110,9 @@ mod tests {
             "btw what are you holding in context rn",
             "dump what you've got in context so far",
             "can you show what you remember from this convo? like what's in your context",
+            "what u keepin in ur context rn, show me",
+            "show what ur keepign in context",
+            "what u rememeber of this convo so far, show me ur context",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

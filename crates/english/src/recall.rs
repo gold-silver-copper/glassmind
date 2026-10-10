@@ -64,6 +64,20 @@ const WORDS: &[(&str, Cat, &str)] = &[
     ("en.prompt.dump", Prompt, "dump"),
 ];
 
+/// Words of a request to recall from round 19, as typed in a hurry.
+const WORDS_19: &[(&str, Cat, &str)] = &[
+    // "show what ur keepign in context": "you're" typed short.
+    ("en.you_are.ur", YouAre, "ur"),
+    // "what u keeping in context rn": "you're" with its "are" left out.
+    ("en.you_are.you", YouAre, "you"),
+    // "what you have in your context": holding it, plainly said.
+    ("en.keep.have", Keep, "have"),
+    // "what you're keeping in context for this convo"
+    ("en.within.for", Among, "for"),
+    // "what's currently in your context"
+    ("en.span.currently", Span, "currently"),
+];
+
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let recall = || S::Const(Sem::Utterance(Utterance::AskRecall));
     let rule = |id, lhs, rhs, sem| Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, sem).read_only();
@@ -91,6 +105,23 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(WhatIs), W("in"), C(Memory)],
             recall(),
         ),
+        // "what's currently in your context"
+        Rule::new(
+            RuleInfo::new("en.recall.what_is_now_in", 19),
+            Recall,
+            vec![C(WhatIs), C(Span), W("in"), C(Memory)],
+            recall(),
+        )
+        .read_only(),
+        // "show me ur context", "what u rember of this convo so far, show
+        // me ur context": the place it is held, for what is held there.
+        Rule::new(
+            RuleInfo::new("en.recall.memory", 19),
+            Recall,
+            vec![C(Memory)],
+            recall(),
+        )
+        .read_only(),
         // "what you're keeping in your context", "... right now", "... of
         // this conversation so far"
         as_first("en.recall.in", Recall, vec![C(Recall), W("in"), C(Memory)]),
@@ -141,7 +172,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(
         WORDS
             .iter()
-            .map(|&(id, cat, words)| filler(id, ROUND, cat, words)),
+            .map(|&(id, cat, words)| filler(id, ROUND, cat, words))
+            .chain(
+                WORDS_19
+                    .iter()
+                    .map(|&(id, cat, words)| filler(id, 19, cat, words)),
+            ),
     );
     rules
 }
