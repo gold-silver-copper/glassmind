@@ -169,6 +169,25 @@ const WITHIN_ROLE: &[(&str, &[&str])] = &[
     ("en.within.somewhere_in_role", &["somewhere", "in"]),
 ];
 
+/// Questions after a question that ask again for what it asks about.
+const ASK_AGAIN: &[(&str, &[&str])] = &[
+    ("en.ask_again.which_ones", &["which", "ones"]),
+    (
+        "en.ask_again.which_ones_are_there",
+        &["which", "ones", "are", "there"],
+    ),
+    (
+        "en.ask_again.which_ones_have_it",
+        &["which", "ones", "have", "it"],
+    ),
+    ("en.ask_again.are_there_any", &["are", "there", "any"]),
+    ("en.ask_again.is_there_any", &["is", "there", "any"]),
+    (
+        "en.ask_again.can_you_list_them",
+        &["can", "you", "list", "them"],
+    ),
+];
+
 /// Determiners before a role noun, which name the same role: "a type",
 /// "the type", "its type".
 const ROLE_DETERMINERS: &[(&str, &str)] = &[
@@ -507,20 +526,69 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("are"), W("there"), C(Cat::Description)],
             last,
         ),
-        // "are there structs that ...? which ones?": asking for the things
-        // whose existence was asked about.
-        rule(
-            "en.utterance.which_ones",
+        // "are there structs that ...? which ones?", "..., can you list
+        // them?": asking again for the things just asked about.
+        Rule::new(
+            RuleInfo::new("en.utterance.ask_again", 5),
             Cat::Utterance,
-            vec![C(Cat::Utterance), W("which"), W("ones")],
-            |c| c.first().cloned(),
-        ),
-        rule(
-            "en.utterance.which_ones_question",
-            Cat::Utterance,
-            vec![C(Cat::Utterance), W("which"), W("ones"), W("?")],
-            |c| c.first().cloned(),
-        ),
+            vec![C(Cat::Utterance), C(Cat::AskAgain)],
+            S::Build(|c| c.first().cloned()),
+        )
+        .read_only(),
+        Rule::new(
+            RuleInfo::new("en.ask_again.comma", 5),
+            Cat::AskAgain,
+            vec![W(","), C(Cat::AskAgain)],
+            S::Build(last),
+        )
+        .read_only(),
+        Rule::new(
+            RuleInfo::new("en.ask_again.question_mark", 5),
+            Cat::AskAgain,
+            vec![C(Cat::AskAgain), W("?")],
+            S::Build(|c| c.first().cloned()),
+        )
+        .read_only(),
+        // "which structs actually have ...": a hedge changes nothing asked.
+        Rule::new(
+            RuleInfo::new("en.verb_phrase.hedged", 5),
+            Cat::VerbPhrase,
+            vec![C(Cat::Hedge), C(Cat::VerbPhrase)],
+            S::Build(last),
+        )
+        .read_only(),
+        // "which structs in the codebase have ...": every thing asked about
+        // is in the code, so saying so restricts nothing.
+        Rule::new(
+            RuleInfo::new("en.noun.in_the_codebase", 5),
+            Cat::Noun,
+            vec![C(Cat::Noun), W("in"), W("the"), W("codebase")],
+            S::Build(|c| c.first().cloned()),
+        )
+        .read_only(),
+        // "which struct(s) have ...": a noun that may be one or many.
+        Rule::new(
+            RuleInfo::new("en.noun.maybe_plural", 5),
+            Cat::Noun,
+            vec![C(Cat::Noun), W("("), W("s"), W(")")],
+            S::Build(|c: &[Sem<O>]| match c {
+                [Sem::Kind { kind, .. }] => Some(Sem::Kind {
+                    kind: kind.clone(),
+                    number: Number::Plural,
+                }),
+                _ => None,
+            }),
+        )
+        .read_only(),
+        // "which structs have a `jobs` field in them": "them" is the
+        // subject again, so it says nothing more.
+        Rule::new(
+            RuleInfo::new("en.verb_phrase.in_them", 5),
+            Cat::VerbPhrase,
+            vec![C(Cat::VerbPhrase), W("in"), W("them")],
+            S::Build(|c| c.first().cloned()),
+        )
+        .read_only(),
         // "find the structs that ..."
         word(
             RuleInfo::new("en.prompt.find", ROUND),
@@ -547,6 +615,11 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     };
     rules.extend(words(INCLUDES, Cat::Includes, true));
     rules.extend(words(WITHIN, Cat::Within, false));
+    rules.extend(
+        ASK_AGAIN
+            .iter()
+            .map(|(id, w)| word(RuleInfo::new(id, 5), Cat::AskAgain, w, blank()).read_only()),
+    );
     rules.extend(
         ROLE_DETERMINERS
             .iter()

@@ -157,6 +157,9 @@ pub enum Cat {
     /// Words asking the hearer to carry out the request just made: "can
     /// you do that for me?", "could you take care of that?".
     Errand,
+    /// A question after a question asking again for the things it asks
+    /// about: "which ones?", "can you list them?".
+    AskAgain,
 }
 
 /// English grammatical number, used for agreement.

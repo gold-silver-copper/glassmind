@@ -122,6 +122,10 @@ const RELATION_HAS_FIELD: RuleInfo = RuleInfo::new("rust.relation.has_field", 3)
 const RELATION_MEMBER: RuleInfo = RuleInfo::new("rust.relation.member", 5);
 /// The type-mentions relation, read from the identifiers in field types.
 const RELATION_TYPE_MENTIONS: RuleInfo = RuleInfo::new("rust.relation.type_mentions", 3);
+/// Things going by a name: the items whose name is exactly the one given,
+/// of the kind described. A field's name is how it is told apart from the
+/// other fields of its struct, so "a field named `done`" may be several.
+const CONDITION_NAMED: RuleInfo = RuleInfo::new("rust.condition.named", 5);
 
 /// The belongs-to relation, read from where functions and fields are declared.
 const RELATION_BELONGS_TO: RuleInfo = RuleInfo::new("rust.relation.belongs_to", 5);
@@ -154,6 +158,7 @@ pub const RULES: &[RuleInfo] = &[
     RENAME,
     RENAME_FIELD,
     RELATION_MEMBER,
+    CONDITION_NAMED,
 ];
 
 /// One or more indexed Rust sources.
@@ -362,7 +367,8 @@ impl RustWorld {
     /// The thing asked about, checked by `rule`: of the kind the user said
     /// it is, if they said one, and the only item of that kind with its
     /// name, or the only one fitting what the user said of it ("`x` on
-    /// `App`"), so the user can't have meant another one.
+    /// `App`", "the struct named `App`"), so the user can't have meant
+    /// another one.
     fn only(
         &self,
         rule: RuleInfo,
@@ -386,7 +392,11 @@ impl RustWorld {
                     (Some(item), false) => {
                         fitting.push(item);
                         Err(Trouble::Ambiguous {
-                            candidates: fitting,
+                            candidates: self
+                                .records()
+                                .filter(|r| fitting.contains(&r.item))
+                                .map(|r| r.item.clone())
+                                .collect(),
                         })
                     }
                     (None, _) => Err(Trouble::Unsupported),
@@ -482,6 +492,30 @@ impl RustWorld {
         }))
     }
 
+    /// The items of the kind (any kind if `None`) whose name is exactly
+    /// `name`; "no such name" if there are none.
+    fn named(
+        &self,
+        name: &Name,
+        kind: Option<RustKind>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<BTreeSet<RustItem>, Trouble<Rust>> {
+        if !self.switches.on(CONDITION_NAMED.id) {
+            return Err(Trouble::Unsupported);
+        }
+        fired.push(CONDITION_NAMED);
+        let named: BTreeSet<RustItem> = self
+            .records()
+            .map(|r| &r.item)
+            .filter(|i| i.name == name.0 && kind.is_none_or(|k| i.kind == k))
+            .cloned()
+            .collect();
+        if named.is_empty() {
+            return Err(Trouble::NoSuchName { name: name.clone() });
+        }
+        Ok(named)
+    }
+
     fn identify(
         &self,
         description: &Description<Rust>,
@@ -492,6 +526,7 @@ impl RustWorld {
             let fitting = match condition {
                 Condition::Called(name) => self.lookup(name, fired).into_iter().collect(),
                 Condition::Is(thing) => self.things(thing, fired)?,
+                Condition::Named(name) => self.named(name, description.kind, fired)?,
                 // A type needs no item to be named (`Arc`, `u32`), only to be
                 // written as one somewhere.
                 Condition::Related {
@@ -606,7 +641,7 @@ impl World<Rust> for RustWorld {
             Question::Describe { thing, kind } => {
                 let item = self.only(DESCRIBE_UNIQUE, thing, *kind, fired)?;
                 if item.kind == RustKind::Field {
-                    return Err(Trouble::WrongKind { item });
+                    return Err(Trouble::WrongKind { item: item.clone() });
                 }
                 Ok(Reply::Account {
                     kind: item.kind,
@@ -627,7 +662,7 @@ impl World<Rust> for RustWorld {
         }
         let item = self.only(RENAME, thing, *kind, fired)?;
         if !matches!(item.kind, RustKind::Function | RustKind::Field) {
-            return Err(Trouble::WrongKind { item });
+            return Err(Trouble::WrongKind { item: item.clone() });
         }
         let source = self
             .sources

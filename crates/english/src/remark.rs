@@ -97,6 +97,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Mention), W("is"), Class(TEXT)],
             S::Build(|c| c.first().cloned()),
         ),
+        // "still finding my way around here", "still new to this code": the
+        // speaker's situation, said without a subject.
+        Rule::new(
+            RuleInfo::new("en.remark.still", 5),
+            Cat::Remark,
+            vec![W("still"), Class(TEXT)],
+            remark(),
+        ),
         // Each further word of the remark: "... the voxel code".
         Rule::new(
             RuleInfo::new("en.remark.more", ROUND),
@@ -191,6 +199,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.utterance.remark_break",
             5,
             vec![C(Cat::Remark), C(Cat::Break), C(Cat::Utterance)],
+        ),
+        // "I'm working on the UI side and I'd like to know ...", "I'm
+        // trying to find where `session` is stored — which structs ..."
+        utterance(
+            "en.utterance.remark_and",
+            5,
+            vec![C(Cat::Remark), W("and"), C(Cat::Utterance)],
+        ),
+        utterance(
+            "en.utterance.remark_dash",
+            5,
+            vec![C(Cat::Remark), W("—"), C(Cat::Utterance)],
         ),
         // "Which functions call `x`? i'm trying to understand where it's hooked in"
         utterance(

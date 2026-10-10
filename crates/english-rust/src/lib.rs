@@ -177,6 +177,18 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
         verb("en.rust.verb.keep", 3, "keep", HasField, Plain).read_only(),
         verb("en.rust.verb.store", 3, "store", HasField, Plain).read_only(),
         verb("en.rust.verb.carry", 3, "carry", HasField, Plain).read_only(),
+        // "which structs define a field named `order`", "structs containing
+        // field `title`", "any structs holding a `jobs` field"
+        verb("en.rust.verb.define", 5, "define", HasField, Plain).read_only(),
+        verb(
+            "en.rust.verb.containing",
+            5,
+            "containing",
+            HasField,
+            Progressive,
+        )
+        .read_only(),
+        verb("en.rust.verb.holding", 5, "holding", HasField, Progressive).read_only(),
         // "structs with a field of type `Notice`", "structs w/ a field ..."
         word(
             RuleInfo::new("en.rust.preposition.with", 3),
@@ -522,13 +534,59 @@ mod tests {
             "structs w/ a field of type Arc (or something wrapping it)",
             "what structs have a field with a type that contains `Arc`?",
             "any structs with fields typed Arc or containing Arc",
-            "which structs hold an `Arc` field",
             "are there structs that have a field that is an Arc? which ones",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
             };
             assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+        }
+        // "an `Arc` field" may also be a field named `Arc`; the world
+        // settles which.
+        let Understanding::Readings(readings) =
+            english.understand("which structs hold an `Arc` field")
+        else {
+            panic!("could not read the compound");
+        };
+        assert!(readings.iter().any(|r| r.meaning == meaning));
+    }
+
+    /// The ways of asking which structs have a field of a name mean what
+    /// the system says when it asks that.
+    #[test]
+    fn ways_of_asking_for_structs_by_field_name_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Ask(Question::Identify(Description {
+            kind: Some(RustKind::Struct),
+            conditions: vec![Condition::Related {
+                relation: RustRelation::HasField,
+                position: Position::First,
+                other: Thing::Fitting(Description {
+                    kind: Some(RustKind::Field),
+                    conditions: vec![Condition::Named(Name("done".into()))],
+                }),
+            }],
+        }));
+        let spoken = english
+            .speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
+            .map(|s| s.text);
+        assert_eq!(
+            spoken.as_deref(),
+            Some("Which structs have a field named `done`?")
+        );
+        for text in [
+            "I'd like to know which structs in the codebase have a field called `done`, please.",
+            "so which structs have the field `done` in them?",
+            "which struct(s) define a done field",
+            "list structs containing field `done`",
+            "what structs got done as a field",
+            "is there any struct with a field named `done`? which ones have it",
+            "which structs have field named done? still finding my way around here",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
         }
     }
 
