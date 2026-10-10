@@ -86,6 +86,19 @@ pub struct Scores {
     pub valid_turns: usize,
     pub size: u64,
     pub rules: usize,
+    /// Right answers and turns per task family (`qa`, `harness`), for
+    /// training and held-out, so each family keeps its own history.
+    #[serde(default)]
+    pub families: BTreeMap<String, Family>,
+}
+
+/// One task family's numbers on training and held-out turns.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct Family {
+    pub train_right: usize,
+    pub train_turns: usize,
+    pub heldout_right: usize,
+    pub heldout_turns: usize,
 }
 
 impl Scores {

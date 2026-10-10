@@ -110,26 +110,71 @@ pub fn eval_set(
     }
     // The candidate's code reads held-out inputs, so it runs where it can
     // write nothing.
+    let held_out =
+        (sources == config.heldout_sources.as_path()).then_some(config.heldout.as_path());
+    let places = check_places_for(held_out);
     let scratch = paths.root.join("eval-tmp");
     std::fs::create_dir_all(&scratch).map_err(|e| e.to_string())?;
     let mut sb = agent::sandbox(config, paths, Vec::new(), Some(scratch));
     if let Some(s) = &mut sb {
         s.hidden
             .retain(|h| h != &config.heldout && h != &config.heldout_sources && h != &paths.root);
-        s.writable.clear();
+        // Coding tasks build and test their sources: builds and results go
+        // to the shared check places, the only places it may write.
+        s.writable = vec![
+            places.target.clone().unwrap_or_default(),
+            places.cache.clone().unwrap_or_default(),
+        ];
     }
     let out = Run::new(&binary(target).to_string_lossy(), &args, dir)
+        .env(
+            "GLASSMIND_CARGO_TARGET",
+            &places.target.clone().unwrap_or_default().to_string_lossy(),
+        )
+        .env(
+            "GLASSMIND_CHECK_CACHE",
+            &places.cache.clone().unwrap_or_default().to_string_lossy(),
+        )
         .timeout(Duration::from_secs(3600))
         .sandbox(sb.as_ref())
         .go()?;
     if !out.ok {
         return Err(format!("eval failed:\n{}", tail(&out.stderr, 30)));
     }
-    out.stdout
+    let outcomes: Vec<Outcome> = out
+        .stdout
         .lines()
         .filter(|l| !l.trim().is_empty())
         .map(|l| serde_json::from_str(l).map_err(|e| format!("bad outcome: {e}")))
-        .collect()
+        .collect::<Result<_, _>>()?;
+    let labels: Vec<Label> = read_jsonl(&data.join("labels.jsonl")).unwrap_or_default();
+    Ok(crate::verify::remedies(&places, &labels, outcomes, sources))
+}
+
+/// Where checks keep builds and results. Held-out sources get their own,
+/// inside the held-out directory agents cannot see, since the results hold
+/// what the compiler said about them.
+pub fn check_places_for(held_out: Option<&Path>) -> glassmind_world_rust::checks::Places {
+    let home = std::env::var_os("HOME")
+        .map(PathBuf::from)
+        .unwrap_or_default();
+    let base = match held_out {
+        Some(dir) => dir.join("check"),
+        None => home.join(".cache/glassmind/check"),
+    };
+    let places = glassmind_world_rust::checks::Places {
+        target: Some(base.join("target")),
+        cache: Some(base.join("results")),
+    };
+    for dir in [&places.target, &places.cache].into_iter().flatten() {
+        let _ = std::fs::create_dir_all(dir);
+    }
+    places
+}
+
+/// Where checks on training sources keep builds and results.
+pub fn check_places() -> glassmind_world_rust::checks::Places {
+    check_places_for(None)
 }
 
 /// Scores `dir`'s glassmind (already built into `target`) on every data set.
@@ -171,6 +216,27 @@ pub fn evaluate(
         )?,
         None => Vec::new(),
     };
+    let mut families: BTreeMap<String, crate::state::Family> = BTreeMap::new();
+    for (labels, outcomes, held) in [
+        (&data.train, &train, false),
+        (&data.heldout, &heldout, true),
+    ] {
+        let report = score::report(labels, outcomes);
+        for label in labels {
+            let f = families.entry(family(&label.kind).to_owned()).or_default();
+            let right = report
+                .turns
+                .get(&label.turn_id)
+                .is_some_and(|s| s.verdict == Verdict::Right);
+            if held {
+                f.heldout_turns += 1;
+                f.heldout_right += usize::from(right);
+            } else {
+                f.train_turns += 1;
+                f.train_right += usize::from(right);
+            }
+        }
+    }
     let t = score::report(&data.train, &train).total;
     let h = score::report(&data.heldout, &heldout).total;
     let v = score::report(&data.valid, &valid).total;
@@ -197,10 +263,25 @@ pub fn evaluate(
             valid_turns: v.turns,
             size: size::mind_size(dir).1,
             rules,
+            families,
         },
         train,
         heldout,
     })
+}
+
+/// The task family of a label's kind: coding tasks for the harness, or
+/// questions and requests about code (`qa`).
+pub fn family(kind: &str) -> &'static str {
+    let kind = kind.rsplit(':').next().unwrap_or(kind);
+    if matches!(
+        kind,
+        "build_status" | "fix_build" | "test_status" | "fix_tests"
+    ) {
+        "harness"
+    } else {
+        "qa"
+    }
 }
 
 /// Per-turn verdicts.

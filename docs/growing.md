@@ -42,6 +42,32 @@ A rule is `Rule::new(RuleInfo::new(id, round), lhs, rhs, sem)`. `Sem::Both(build
 split)` reads and speaks; `.read_only()` marks forms the system should accept
 but never say (sloppy or rare input). Single words use `english::word(...)`.
 
+## Coding tasks (the harness)
+
+Some training turns are coding tasks on a broken copy of a small crate
+(`kind` `build_status`, `fix_build`, `test_status`, `fix_tests`): "does it
+build?", "fix the build", "which tests fail?", "make the tests pass". The
+Rust world runs the crate's own tools for them (`crates/world-rust/src/checks.rs`):
+`cargo check`, `cargo test`, `clippy`, whose reports become items of kind
+`Problem` and `Test`. A remedy is a set of changes; the scorer applies it to
+a scratch copy and runs the check, so **a remedy that does not make the
+check pass costs like a wrong answer**, while offering none, or saying some
+problems would remain, is an honest refusal. Today the only remedies are the
+compiler's own suggestions; making failing tests pass needs more (finding
+the code a failing test exercises and trying changes there, always verified
+by running the tests).
+
+Checks are slow, so their results are cached by the files' contents. Set
+these when you run `eval` on coding tasks, and score with `--sources`:
+
+```sh
+export GLASSMIND_CARGO_TARGET=$HOME/.cache/glassmind/check/target GLASSMIND_CHECK_CACHE=$HOME/.cache/glassmind/check/results
+./target/release/glassmind eval --sources $SOURCES --inputs $DATA/group-inputs.jsonl > group-out.jsonl
+./target/release/glassmind-loop score --labels $DATA/group-labels.jsonl --outcomes group-out.jsonl --sources $SOURCES
+# talk to a broken crate yourself:
+./target/release/glassmind code $SOURCES/<task source>
+```
+
 ## Rules for every change
 
 - **Any method is allowed** if it measurably helps: grammar rules, fuzzy or

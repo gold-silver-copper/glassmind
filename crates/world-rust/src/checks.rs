@@ -41,7 +41,7 @@ pub struct RustChange {
 }
 
 /// A problem a tool reported, with the changes the compiler suggests for it.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Finding {
     pub item: RustItem,
     pub fixes: Vec<RustChange>,
@@ -52,8 +52,39 @@ const TOOL_TIME: Duration = Duration::from_secs(15 * 60);
 
 /// Runs `cargo SUBCOMMAND -j 4 ARGS...` in `root`, returning whether it
 /// succeeded and its stdout.
-fn cargo(root: &Path, subcommand: &str, args: &[&str]) -> Result<(bool, String), String> {
-    let mut child = Command::new("cargo")
+/// Where checks keep their builds and their results.
+#[derive(Debug, Clone, Default)]
+pub struct Places {
+    /// Builds go here, one directory per source (shared by its scratch
+    /// copies), instead of each source's own `target`.
+    pub target: Option<PathBuf>,
+    /// Results are kept here by check, source and a fingerprint of its
+    /// files, so the same code is only ever checked once.
+    pub cache: Option<PathBuf>,
+}
+
+impl Places {
+    /// From GLASSMIND_CARGO_TARGET and GLASSMIND_CHECK_CACHE, if set.
+    pub fn from_env() -> Places {
+        Places {
+            target: std::env::var_os("GLASSMIND_CARGO_TARGET").map(PathBuf::from),
+            cache: std::env::var_os("GLASSMIND_CHECK_CACHE").map(PathBuf::from),
+        }
+    }
+}
+
+fn cargo(
+    places: &Places,
+    source: &str,
+    root: &Path,
+    subcommand: &str,
+    args: &[&str],
+) -> Result<(bool, String), String> {
+    let mut command = Command::new("cargo");
+    if let Some(target) = &places.target {
+        command.env("CARGO_TARGET_DIR", target.join(source));
+    }
+    let mut child = command
         .arg(subcommand)
         .args(["-j", "4"])
         .args(args)
@@ -247,11 +278,93 @@ fn failing_tests(source: &str, out: &str) -> Vec<RustItem> {
     tests
 }
 
-/// Runs a check of the source at `root`, returning what it found.
+/// A stable fingerprint of a source tree's files (FNV-1a over each path
+/// and its bytes, in path order), skipping `target` and hidden entries.
+fn fingerprint(root: &Path) -> u64 {
+    let mut files = Vec::new();
+    let mut stack = vec![PathBuf::new()];
+    while let Some(rel) = stack.pop() {
+        let Ok(entries) = std::fs::read_dir(root.join(&rel)) else {
+            continue;
+        };
+        for entry in entries.flatten() {
+            let name = entry.file_name().to_string_lossy().into_owned();
+            if name.starts_with('.') || name == "target" {
+                continue;
+            }
+            let child = rel.join(&name);
+            if entry.file_type().is_ok_and(|t| t.is_dir()) {
+                stack.push(child);
+            } else {
+                files.push(child);
+            }
+        }
+    }
+    files.sort();
+    let mut h: u64 = 0xcbf2_9ce4_8422_2325;
+    let mut eat = |bytes: &[u8]| {
+        for b in bytes {
+            h ^= u64::from(*b);
+            h = h.wrapping_mul(0x0100_0000_01b3);
+        }
+    };
+    for f in files {
+        eat(f.to_string_lossy().as_bytes());
+        eat(&std::fs::read(root.join(&f)).unwrap_or_default());
+    }
+    h
+}
+
+/// Runs a check of the source at `root`, returning what it found. With
+/// GLASSMIND_CHECK_CACHE set, results are kept there by the check, the
+/// source's name and a fingerprint of its files, so the same code is only
+/// ever checked once.
 pub fn run(check: RustCheck, source: &str, root: &Path) -> Result<Vec<Finding>, String> {
+    run_in(&Places::from_env(), check, source, root)
+}
+
+/// [`run`], with builds and results kept where `places` says.
+pub fn run_in(
+    places: &Places,
+    check: RustCheck,
+    source: &str,
+    root: &Path,
+) -> Result<Vec<Finding>, String> {
+    let cache = places.cache.as_ref().map(|dir| {
+        dir.join(format!(
+            "{check:?}-{source}-{:016x}.json",
+            fingerprint(root)
+        ))
+    });
+    if let Some(path) = &cache
+        && let Ok(text) = std::fs::read_to_string(path)
+        && let Ok(found) = serde_json::from_str(&text)
+    {
+        return Ok(found);
+    }
+    let found = run_tools(places, check, source, root)?;
+    if let Some(path) = &cache {
+        if let Some(dir) = path.parent() {
+            let _ = std::fs::create_dir_all(dir);
+        }
+        if let Ok(text) = serde_json::to_string(&found) {
+            let _ = std::fs::write(path, text);
+        }
+    }
+    Ok(found)
+}
+
+fn run_tools(
+    places: &Places,
+    check: RustCheck,
+    source: &str,
+    root: &Path,
+) -> Result<Vec<Finding>, String> {
     match check {
         RustCheck::Build => {
             let (ok, out) = cargo(
+                places,
+                source,
                 root,
                 "check",
                 &["--all-targets", "--message-format=json", "-q"],
@@ -265,6 +378,8 @@ pub fn run(check: RustCheck, source: &str, root: &Path) -> Result<Vec<Finding>, 
         }
         RustCheck::Lint => {
             let (_, out) = cargo(
+                places,
+                source,
                 root,
                 "clippy",
                 &["--all-targets", "--message-format=json", "-q"],
@@ -272,11 +387,13 @@ pub fn run(check: RustCheck, source: &str, root: &Path) -> Result<Vec<Finding>, 
             Ok(findings(source, root, &out, &["error", "warning"]))
         }
         RustCheck::Test => {
-            let build = run(RustCheck::Build, source, root)?;
+            let build = run_tools(places, RustCheck::Build, source, root)?;
             if !build.is_empty() {
                 return Ok(build);
             }
             let (ok, out) = cargo(
+                places,
+                source,
                 root,
                 "test",
                 &["--no-fail-fast", "--", "--test-threads", "4"],

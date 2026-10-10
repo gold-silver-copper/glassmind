@@ -90,8 +90,10 @@ pub fn judge(expected: &Response, outcome: &Outcome) -> Verdict {
                 Verdict::Refused
             }
         }
-        // Not answering is honest whatever was expected.
+        // Not answering is honest whatever was expected; so is offering no
+        // change for a fix.
         (_, Response::Refuse { .. }) => Verdict::Refused,
+        (_, Response::Remedy { changes, .. }) if changes.is_empty() => Verdict::Refused,
         // Asking back is honest for a question, and right when it was expected
         // with the same candidates.
         (Response::Ask { candidates: e }, Response::Ask { candidates: g }) => {

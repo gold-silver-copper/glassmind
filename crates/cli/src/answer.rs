@@ -91,6 +91,11 @@ pub fn response(reply: &Reply<Rust>) -> Response {
         Reply::Applied { check: None, .. } => Response::Meta {
             act: MetaAct::Noted,
         },
+        // Changes that leave problems are not a fix: offering them is
+        // honest, but it does not answer "make it pass".
+        Reply::Remedy { left, .. } if !left.is_empty() => Response::Refuse {
+            refusal: Refusal::Unsupported,
+        },
         Reply::Remedy { check, changes, .. } => Response::Remedy {
             check: check_name(*check),
             changes: changes

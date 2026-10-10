@@ -25,6 +25,7 @@ mod rounds;
 mod score;
 mod size;
 mod state;
+mod verify;
 
 #[derive(Parser)]
 #[command(
@@ -45,6 +46,10 @@ enum Command {
         labels: PathBuf,
         #[arg(long)]
         outcomes: PathBuf,
+        /// The sources the outcomes are about: remedies for coding tasks
+        /// are applied to scratch copies of them and checked.
+        #[arg(long)]
+        sources: Option<PathBuf>,
         /// Print the full report as JSON.
         #[arg(long)]
         json: bool,
@@ -144,10 +149,14 @@ fn main() -> ExitCode {
         Command::Score {
             labels,
             outcomes,
+            sources,
             json,
         } => (|| {
             let labels: Vec<score::Label> = read_jsonl(&labels)?;
-            let outcomes: Vec<Outcome> = read_jsonl(&outcomes)?;
+            let mut outcomes: Vec<Outcome> = read_jsonl(&outcomes)?;
+            if let Some(sources) = sources {
+                outcomes = verify::remedies(&evaluate::check_places(), &labels, outcomes, &sources);
+            }
             let report = score::report(&labels, &outcomes);
             if json {
                 say!(

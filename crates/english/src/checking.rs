@@ -239,6 +239,26 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
+        said(
+            "en.reply.remedy_partial_one",
+            Reply,
+            vec![
+                W("I'd make one change , but some problems with"),
+                C(CheckPhrase),
+                W("would remain ."),
+            ],
+            |v| match v {
+                Sem::Reply(Reply::Remedy {
+                    check,
+                    changes,
+                    left,
+                    ..
+                }) if changes.len() == 1 && !left.is_empty() => {
+                    Some(vec![Sem::Check(check.clone())])
+                }
+                _ => None,
+            },
+        ),
         // "I don't know how to fix the build."
         said(
             "en.reply.no_remedy",

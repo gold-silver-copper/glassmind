@@ -201,7 +201,7 @@ pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
     // is measured from the last one on.
     let since = history
         .iter()
-        .rposition(|e| e.kind == "manual")
+        .rposition(|e| e.kind == "manual" || e.kind == "data")
         .unwrap_or(0);
     let mut best = f64::INFINITY;
     let mut best_round = 0;
