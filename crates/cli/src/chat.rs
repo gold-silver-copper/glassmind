@@ -92,8 +92,11 @@ pub fn run(common: &Common) -> Result<(), String> {
         sources.join(", "),
         system.world.names().len()
     );
+    let config = rustyline::Config::builder()
+        .completion_type(rustyline::CompletionType::List)
+        .build();
     let mut editor: Editor<Completion<'_>, rustyline::history::DefaultHistory> =
-        Editor::new().map_err(|e| e.to_string())?;
+        Editor::with_config(config).map_err(|e| e.to_string())?;
     editor.set_helper(Some(Completion { system: &system }));
     loop {
         match editor.readline("> ") {
