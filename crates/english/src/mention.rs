@@ -389,6 +389,9 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ("en.noun_phrase.it", ROUND, "it"),
             ("en.noun_phrase.that", 9, "that"),
             ("en.noun_phrase.that_one", 9, "that one"),
+            // "marks_follow_the_theme where's taht defined", "what calls
+            // taht": mistyped, as in describe.rs.
+            ("en.noun_phrase.mistyped.taht", 18, "taht"),
         ]
         .map(|(id, round, words)| {
             word(

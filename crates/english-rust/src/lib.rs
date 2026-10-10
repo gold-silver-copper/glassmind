@@ -489,6 +489,8 @@ mod tests {
             "spawn_wave defined where",
             "where spawn_wave defined at",
             "spawn_wave where is it",
+            "wehre is spawn_wave defiend",
+            "spawn_wave defnied whre",
             "Where's spawn_wave defined, in which file?",
             "def of spawn_wave",
             "I'm trying to figure out where `spawn_wave` is defined, can you point me?",
