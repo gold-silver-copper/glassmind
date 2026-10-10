@@ -1,15 +1,20 @@
 # calibrated on the hidden texting-style dev set (497 turns), with word pairs: answering questions the model gives 0.9 or more, when no word typed points to another template, gave 449 right and none wrong (tagger off: 412); every threshold from 0.6 to 0.99 gave none wrong. From 0.3 up to that, it asks "did you mean".
-# held out: 678 of 735 right
-#   confidence 0.99+: 635/668 right (95.1%)
-#   confidence 0.95+: 21/27 right (77.8%)
-#   confidence 0.90+: 4/9 right (44.4%)
-#   confidence 0.80+: 9/14 right (64.3%)
-#   confidence 0.60+: 3/7 right (42.9%)
-#   confidence 0.40+: 6/10 right (60.0%)
-examples	3677
+# held out: 693 of 743 right
+#   confidence 0.99+: 641/667 right (96.1%)
+#   confidence 0.95+: 17/23 right (73.9%)
+#   confidence 0.90+: 9/12 right (75.0%)
+#   confidence 0.80+: 12/18 right (66.7%)
+#   confidence 0.60+: 7/8 right (87.5%)
+#   confidence 0.40+: 4/9 right (44.4%)
+#   confidence 0.00+: 3/6 right (50.0%)
+examples	3718
 sure	0.9
 offer	0.3
-template	how many functions call <0>	328
+template	are there problems with the tests	7
+template	does the tests pass	10
+template	fix the build	19
+template	fix the tests	2
+template	how many functions call <0>	330
 template	how many functions call a function named <0>	2
 template	rename <0> to <1>	181
 template	rename the <0> field to <1>	111
@@ -43,17 +48,19 @@ template	which functions call a function named <0>	1
 template	which functions does <0> call	325
 template	which functions does a function named <0> call	9
 template	which structs have <0>	6
-template	which structs have a field named <0>	252
+template	which structs have a field named <0>	253
 template	which structs have a field whose type is or contains <0>	155
-seen	's	5
+seen	's	12
+seen	's <n>	3
 seen	's fields	5
-seen	<n> 's	5
+seen	's it	4
+seen	<n> 's	6
 seen	<n> <n>	58
 seen	<n> actually	8
 seen	<n> are	3
 seen	<n> as	14
 seen	<n> call	149
-seen	<n> called	19
+seen	<n> called	20
 seen	<n> callees	5
 seen	<n> callers	6
 seen	<n> calling	5
@@ -107,11 +114,11 @@ seen	<n> pls	79
 seen	<n> purpose	5
 seen	<n> rename	26
 seen	<n> renamed	8
-seen	<n> roughly	3
+seen	<n> roughly	4
 seen	<n> should	6
 seen	<n> somewhere	3
 seen	<n> struct	293
-seen	<n> test	3
+seen	<n> test	2
 seen	<n> testing	5
 seen	<n> thanks	61
 seen	<n> to	177
@@ -120,19 +127,21 @@ seen	<n> type	3
 seen	<n> update	2
 seen	<n> used	7
 seen	<n> want	2
-seen	<n> what	71
-seen	<n> what's	8
+seen	<n> what	72
+seen	<n> what's	6
 seen	<n> whats	8
 seen	<n> where	18
 seen	<n> where's	7
-seen	<n> which	100
+seen	<n> which	101
 seen	<n> who	2
-seen	^ <n>	311
-seen	^ any	14
+seen	^ 's	2
+seen	^ <n>	312
+seen	^ any	15
 seen	^ anything	7
+seen	^ build	6
 seen	^ callees	7
 seen	^ callers	63
-seen	^ can	187
+seen	^ can	188
 seen	^ change	8
 seen	^ could	63
 seen	^ count	9
@@ -141,28 +150,30 @@ seen	^ explain	15
 seen	^ field	4
 seen	^ fields	74
 seen	^ find	17
+seen	^ fix	12
 seen	^ fns	32
 seen	^ funcs	3
 seen	^ functions	3
-seen	^ hey	255
-seen	^ hi	46
+seen	^ hey	256
+seen	^ hi	47
 seen	^ hm	9
 seen	^ hmm	12
-seen	^ how	178
+seen	^ how	179
 seen	^ i	4
 seen	^ i'd	161
-seen	^ i'm	187
+seen	^ i'm	188
 seen	^ is	72
 seen	^ jump	2
 seen	^ list	51
 seen	^ loc	2
 seen	^ locate	3
 seen	^ location	3
+seen	^ make	2
 seen	^ num	2
 seen	^ number	8
 seen	^ ok	65
 seen	^ please	11
-seen	^ pls	16
+seen	^ pls	17
 seen	^ purpose	8
 seen	^ quick	122
 seen	^ rename	165
@@ -170,19 +181,20 @@ seen	^ show	17
 seen	^ so	43
 seen	^ sorry	4
 seen	^ structs	25
+seen	^ tests	4
 seen	^ trying	5
 seen	^ um	64
 seen	^ want	4
 seen	^ what	490
-seen	^ what's	86
+seen	^ what's	84
 seen	^ whats	18
-seen	^ where	226
+seen	^ where	227
 seen	^ where's	82
-seen	^ which	318
+seen	^ which	323
 seen	^ who	84
-seen	a	315
+seen	a	316
 seen	a <n>	73
-seen	a field	236
+seen	a field	237
 seen	a list	3
 seen	a lot	2
 seen	a struct	7
@@ -192,8 +204,8 @@ seen	actually	11
 seen	actually do	7
 seen	actually does	2
 seen	advance	11
-seen	again	2
-seen	all	4
+seen	again	3
+seen	all	5
 seen	all the	3
 seen	also	6
 seen	also counts	4
@@ -202,40 +214,46 @@ seen	an <n>	9
 seen	and	24
 seen	and can't	2
 seen	and what	18
-seen	any	29
+seen	any	32
 seen	any struct	7
 seen	any structs	19
-seen	anything	59
+seen	anything	60
 seen	anything call	6
 seen	anything calling	6
 seen	anything that	47
 seen	anyway	2
 seen	anyway could	2
 seen	anywhere	2
-seen	are	140
+seen	are	144
 seen	are called	11
 seen	are calling	34
 seen	are defined	10
+seen	are failing	2
 seen	are fields	2
 seen	are holding	3
 seen	are in	24
 seen	are its	2
 seen	are on	21
-seen	are the	18
+seen	are passing	2
+seen	are the	19
 seen	are there	4
 seen	are they	8
 seen	as	23
 seen	as <n>	3
 seen	as a	13
 seen	as field	7
-seen	at	27
+seen	at	30
 seen	at <n>	14
-seen	at the	3
+seen	at the	6
 seen	be	11
 seen	be <n>	6
 seen	be called	3
-seen	but	4
-seen	but don't	2
+seen	broken	7
+seen	broken fix	6
+seen	build	16
+seen	build broken	6
+seen	but	10
+seen	but don't	8
 seen	by	48
 seen	by <n>	42
 seen	by how	4
@@ -248,16 +266,16 @@ seen	call like	6
 seen	call pls	2
 seen	call thanks	2
 seen	call the	4
-seen	called	148
+seen	called	149
 seen	called <n>	47
 seen	called by	45
-seen	called from	49
+seen	called from	50
 seen	called in	2
 seen	called inside	3
 seen	callees	14
 seen	callees for	2
 seen	callees of	7
-seen	callers	77
+seen	callers	78
 seen	callers for	3
 seen	callers of	64
 seen	calling	138
@@ -275,9 +293,9 @@ seen	calls pls	2
 seen	calls thanks	6
 seen	calls what	10
 seen	calls which	11
-seen	can	292
+seen	can	293
 seen	can i	7
-seen	can you	283
+seen	can you	284
 seen	can't	29
 seen	can't find	24
 seen	can't see	3
@@ -287,14 +305,16 @@ seen	care	7
 seen	care of	7
 seen	carry	9
 seen	carry <n>	2
-seen	change	10
+seen	change	16
 seen	change field	5
-seen	check	2
+seen	change what	6
+seen	check	3
 seen	checking	6
 seen	checking for	3
 seen	code	9
 seen	codebase	19
 seen	codebase have	13
+seen	compile	2
 seen	contain	7
 seen	contain a	3
 seen	containing	14
@@ -340,7 +360,8 @@ seen	defn	5
 seen	defn location	5
 seen	directly	7
 seen	directly or	7
-seen	do	202
+seen	do	203
+seen	do 's	2
 seen	do and	11
 seen	do exactly	10
 seen	do i'm	4
@@ -351,10 +372,9 @@ seen	do or	7
 seen	do thanks	3
 seen	do that	8
 seen	do what	7
-seen	do what's	2
 seen	do whats	8
 seen	do you	7
-seen	does	536
+seen	does	542
 seen	does <n>	272
 seen	does and	5
 seen	does anything	2
@@ -372,7 +392,8 @@ seen	does what	11
 seen	does what's	2
 seen	does which	4
 seen	doing	3
-seen	don't	2
+seen	don't	8
+seen	don't change	6
 seen	don't get	2
 seen	end	21
 seen	end up	21
@@ -390,7 +411,10 @@ seen	explain <n>	14
 seen	explain it	12
 seen	explain me	2
 seen	explain what	11
-seen	field	516
+seen	fail	9
+seen	failing	7
+seen	failing rn	2
+seen	field	517
 seen	field <n>	100
 seen	field also	3
 seen	field call	3
@@ -401,7 +425,7 @@ seen	field including	2
 seen	field into	2
 seen	field list	2
 seen	field name	4
-seen	field named	93
+seen	field named	94
 seen	field of	15
 seen	field pls	2
 seen	field rename	5
@@ -433,8 +457,8 @@ seen	fields the	46
 seen	fields typed	2
 seen	fields use	3
 seen	fields which	2
-seen	figure	166
-seen	figure out	166
+seen	figure	167
+seen	figure out	167
 seen	file	5
 seen	find	83
 seen	find <n>	8
@@ -445,11 +469,15 @@ seen	find structs	3
 seen	find the	12
 seen	find where	14
 seen	find which	6
+seen	fix	18
+seen	fix compile	2
+seen	fix it	6
+seen	fix the	10
 seen	fn	33
 seen	fn <n>	12
 seen	fn for	2
 seen	fn what's	2
-seen	fns	223
+seen	fns	224
 seen	fns <n>	35
 seen	fns call	106
 seen	fns called	27
@@ -459,7 +487,7 @@ seen	fns get	2
 seen	fns invoke	2
 seen	fns it	2
 seen	fns that	9
-seen	fns use	2
+seen	fns use	3
 seen	for	331
 seen	for <n>	6
 seen	for and	3
@@ -476,8 +504,9 @@ seen	for structs	2
 seen	for the	2
 seen	for what	14
 seen	for where	4
-seen	from	54
+seen	from	55
 seen	from <n>	16
+seen	from how	2
 seen	from inside	6
 seen	from where	3
 seen	from which	9
@@ -505,7 +534,7 @@ seen	functions it	13
 seen	functions it's	2
 seen	functions that	13
 seen	functions use	8
-seen	get	42
+seen	get	43
 seen	get called	27
 seen	get defined	12
 seen	get what	2
@@ -518,7 +547,7 @@ seen	got	51
 seen	got <n>	7
 seen	got a	19
 seen	got field	2
-seen	has	89
+seen	has	88
 seen	has <n>	10
 seen	has a	13
 seen	has field	2
@@ -536,7 +565,7 @@ seen	have it	5
 seen	have thanks	2
 seen	have the	5
 seen	have trying	6
-seen	hey	255
+seen	hey	256
 seen	hey can	42
 seen	hey could	15
 seen	hey how	11
@@ -545,8 +574,8 @@ seen	hey i'm	11
 seen	hey quick	78
 seen	hey what	30
 seen	hey where	19
-seen	hey which	27
-seen	hi	46
+seen	hey which	28
+seen	hi	47
 seen	hi can	6
 seen	hi could	5
 seen	hi i'd	2
@@ -568,8 +597,8 @@ seen	hold a	21
 seen	holding	7
 seen	holding a	5
 seen	holds	5
-seen	how	311
-seen	how many	310
+seen	how	313
+seen	how many	312
 seen	i	42
 seen	i can't	10
 seen	i find	7
@@ -580,14 +609,16 @@ seen	i think	4
 seen	i want	6
 seen	i'd	199
 seen	i'd like	199
-seen	i'm	237
+seen	i'm	238
 seen	i'm curious	2
 seen	i'm kind	2
 seen	i'm looking	27
-seen	i'm trying	203
-seen	if	12
+seen	i'm trying	204
+seen	if	16
+seen	if any	3
 seen	if it's	7
-seen	in	164
+seen	if the	3
+seen	in	165
 seen	in <n>	40
 seen	in a	14
 seen	in advance	11
@@ -638,21 +669,22 @@ seen	is that	2
 seen	is the	14
 seen	is there	82
 seen	is used	8
-seen	it	523
+seen	it	530
 seen	it <n>	7
 seen	it again	2
+seen	it but	7
 seen	it call	29
 seen	it called	3
 seen	it calls	6
 seen	it defined	9
 seen	it do	55
-seen	it does	7
+seen	it does	13
 seen	it end	2
 seen	it everywhere	3
 seen	it for	64
 seen	it gets	2
 seen	it got	8
-seen	it has	14
+seen	it has	13
 seen	it have	15
 seen	it holds	4
 seen	it is	2
@@ -686,7 +718,7 @@ seen	keep	4
 seen	keep seeing	3
 seen	kind	4
 seen	kind of	4
-seen	know	176
+seen	know	177
 seen	know how	20
 seen	know what	37
 seen	know where	19
@@ -730,15 +762,15 @@ seen	lot	4
 seen	lot of	2
 seen	made	5
 seen	made by	2
-seen	make	3
+seen	make	5
 seen	make up	2
-seen	many	310
+seen	many	312
 seen	many exactly	4
-seen	many fns	72
+seen	many fns	73
 seen	many funcs	9
 seen	many functions	227
-seen	many places	3
-seen	me	310
+seen	many places	4
+seen	me	312
 seen	me <n>	5
 seen	me fields	2
 seen	me how	20
@@ -752,12 +784,14 @@ seen	me which	123
 seen	mean	7
 seen	mean which	2
 seen	members	8
+seen	moment	3
+seen	moment or	2
 seen	name	13
 seen	name <n>	3
 seen	name but	3
 seen	name to	2
-seen	named	94
-seen	named <n>	92
+seen	named	95
+seen	named <n>	93
 seen	need	2
 seen	nested	5
 seen	num	2
@@ -789,10 +823,12 @@ seen	one	19
 seen	one could	2
 seen	one of	4
 seen	one where	2
-seen	ones	20
+seen	ones	24
+seen	ones are	2
+seen	ones fail	3
 seen	ones have	3
 seen	only	9
-seen	or	119
+seen	or	125
 seen	or a	8
 seen	or containing	4
 seen	or contains	57
@@ -801,12 +837,13 @@ seen	or inside	5
 seen	or nested	3
 seen	or something	4
 seen	or what	13
+seen	or which	6
 seen	or wrapped	2
 seen	or wrapping	6
 seen	or wraps	8
 seen	other	7
 seen	other type	7
-seen	out	166
+seen	out	167
 seen	out how	9
 seen	out the	10
 seen	out what	47
@@ -814,13 +851,17 @@ seen	out what's	7
 seen	out where	59
 seen	out which	26
 seen	out who	6
-seen	places	6
+seen	pass	6
+seen	pass or	3
+seen	passing	4
+seen	passing at	3
+seen	places	7
 seen	places that	3
-seen	please	176
+seen	please	177
 seen	please list	2
 seen	please rename	18
 seen	please tell	4
-seen	pls	126
+seen	pls	127
 seen	pls rename	22
 seen	plz	2
 seen	point	22
@@ -849,7 +890,8 @@ seen	renamed	12
 seen	renamed to	12
 seen	request	4
 seen	request please	2
-seen	roughly	3
+seen	rn	3
+seen	roughly	4
 seen	s	2
 seen	saw	4
 seen	saw it	2
@@ -919,7 +961,7 @@ seen	struct what	22
 seen	struct whats	3
 seen	struct which	9
 seen	struct with	5
-seen	structs	395
+seen	structs	396
 seen	structs are	4
 seen	structs carry	2
 seen	structs contain	3
@@ -938,12 +980,18 @@ seen	structs whose	4
 seen	structs with	22
 seen	take	8
 seen	take care	7
-seen	tell	240
-seen	tell me	240
+seen	tell	241
+seen	tell me	241
 seen	test	18
 seen	test <n>	11
 seen	testing	6
-seen	thanks	122
+seen	tests	19
+seen	tests are	2
+seen	tests fail	4
+seen	tests failing	2
+seen	tests pass	5
+seen	tests passing	2
+seen	thanks	123
 seen	thanks a	2
 seen	thanks in	11
 seen	that	175
@@ -962,8 +1010,9 @@ seen	that please	2
 seen	that struct	11
 seen	that wraps	2
 seen	that's	2
-seen	the	430
+seen	the	445
 seen	the <n>	233
+seen	the build	10
 seen	the callers	2
 seen	the code	8
 seen	the codebase	18
@@ -973,11 +1022,13 @@ seen	the field	22
 seen	the fields	41
 seen	the function	25
 seen	the functions	9
+seen	the moment	3
 seen	the name	3
 seen	the number	2
 seen	the struct	50
 seen	the structs	9
 seen	the test	11
+seen	the tests	5
 seen	the type	8
 seen	their	6
 seen	their fields	6
@@ -997,10 +1048,10 @@ seen	think	4
 seen	think it's	2
 seen	this	5
 seen	this <n>	3
-seen	to	664
+seen	to	665
 seen	to <n>	241
 seen	to do	2
-seen	to figure	165
+seen	to figure	166
 seen	to find	20
 seen	to it	10
 seen	to know	169
@@ -1008,8 +1059,8 @@ seen	to rename	20
 seen	to see	14
 seen	to understand	40
 seen	to where	7
-seen	trying	222
-seen	trying to	222
+seen	trying	223
+seen	trying to	223
 seen	type	118
 seen	type <n>	16
 seen	type can	2
@@ -1038,8 +1089,8 @@ seen	up	69
 seen	up calling	66
 seen	up the	2
 seen	update	2
-seen	use	21
-seen	use <n>	9
+seen	use	22
+seen	use <n>	10
 seen	use it	9
 seen	used	45
 seen	used as	4
@@ -1057,7 +1108,7 @@ seen	want the	2
 seen	want to	9
 seen	way	3
 seen	way to	3
-seen	what	907
+seen	what	914
 seen	what <n>	180
 seen	what are	25
 seen	what calls	19
@@ -1069,15 +1120,15 @@ seen	what funcs	4
 seen	what functions	49
 seen	what gets	3
 seen	what is	117
-seen	what it	25
+seen	what it	31
 seen	what it's	17
 seen	what structs	39
 seen	what the	7
-seen	what's	112
-seen	what's <n>	75
+seen	what's	106
+seen	what's <n>	73
 seen	what's in	9
 seen	what's inside	9
-seen	what's it	15
+seen	what's it	11
 seen	what's store	2
 seen	what's the	2
 seen	whats	39
@@ -1085,7 +1136,7 @@ seen	whats <n>	10
 seen	whats in	9
 seen	whats inside	4
 seen	whats it	15
-seen	where	500
+seen	where	501
 seen	where <n>	233
 seen	where can	7
 seen	where defined	2
@@ -1097,19 +1148,21 @@ seen	where its	5
 seen	where the	8
 seen	where which	2
 seen	where's	91
-seen	where's <n>	82
+seen	where's <n>	81
 seen	where's it	5
 seen	where's that	3
-seen	which	949
+seen	which	962
+seen	which fail	2
 seen	which fields	71
 seen	which file	5
 seen	which fns	69
 seen	which funcs	4
 seen	which functions	498
 seen	which have	3
-seen	which ones	19
+seen	which ones	23
 seen	which struct	3
-seen	which structs	272
+seen	which structs	273
+seen	which tests	6
 seen	who	94
 seen	who call	3
 seen	who calls	67
@@ -1133,7 +1186,7 @@ seen	wrapping it	8
 seen	wraps	10
 seen	wraps <n>	3
 seen	wraps it	7
-seen	you	414
+seen	you	415
 seen	you count	8
 seen	you do	12
 seen	you explain	26
@@ -1145,8 +1198,127 @@ seen	you point	21
 seen	you rename	36
 seen	you show	3
 seen	you take	7
-seen	you tell	236
-word	how many functions call <0>	<n> called	5
+seen	you tell	237
+word	are there problems with the tests	^ any	1
+word	are there problems with the tests	^ hey	1
+word	are there problems with the tests	^ which	5
+word	are there problems with the tests	any	2
+word	are there problems with the tests	are	1
+word	are there problems with the tests	fail	4
+word	are there problems with the tests	failing	3
+word	are there problems with the tests	failing rn	2
+word	are there problems with the tests	hey	1
+word	are there problems with the tests	hey which	1
+word	are there problems with the tests	if	1
+word	are there problems with the tests	if any	1
+word	are there problems with the tests	rn	3
+word	are there problems with the tests	tests	7
+word	are there problems with the tests	tests are	1
+word	are there problems with the tests	tests fail	4
+word	are there problems with the tests	tests failing	2
+word	are there problems with the tests	thanks	1
+word	are there problems with the tests	which	6
+word	are there problems with the tests	which tests	6
+word	does the tests pass	^ can	1
+word	does the tests pass	^ hi	1
+word	does the tests pass	^ i'm	1
+word	does the tests pass	^ tests	4
+word	does the tests pass	all	1
+word	does the tests pass	any	1
+word	does the tests pass	anything	1
+word	does the tests pass	are	3
+word	does the tests pass	are failing	2
+word	does the tests pass	are passing	2
+word	does the tests pass	are the	1
+word	does the tests pass	at	3
+word	does the tests pass	at the	3
+word	does the tests pass	can	1
+word	does the tests pass	can you	1
+word	does the tests pass	check	1
+word	does the tests pass	do	1
+word	does the tests pass	fail	5
+word	does the tests pass	failing	2
+word	does the tests pass	figure	1
+word	does the tests pass	figure out	1
+word	does the tests pass	hi	1
+word	does the tests pass	i'm	1
+word	does the tests pass	i'm trying	1
+word	does the tests pass	if	3
+word	does the tests pass	if any	1
+word	does the tests pass	if the	2
+word	does the tests pass	in	1
+word	does the tests pass	know	1
+word	does the tests pass	me	2
+word	does the tests pass	moment	3
+word	does the tests pass	moment or	2
+word	does the tests pass	ones	4
+word	does the tests pass	ones are	1
+word	does the tests pass	ones fail	3
+word	does the tests pass	or	6
+word	does the tests pass	or which	6
+word	does the tests pass	out	1
+word	does the tests pass	pass	4
+word	does the tests pass	pass or	3
+word	does the tests pass	passing	4
+word	does the tests pass	passing at	3
+word	does the tests pass	please	1
+word	does the tests pass	tell	1
+word	does the tests pass	tell me	1
+word	does the tests pass	test	1
+word	does the tests pass	tests	9
+word	does the tests pass	tests are	1
+word	does the tests pass	tests pass	3
+word	does the tests pass	tests passing	2
+word	does the tests pass	the	4
+word	does the tests pass	the moment	3
+word	does the tests pass	the tests	4
+word	does the tests pass	to	1
+word	does the tests pass	to figure	1
+word	does the tests pass	trying	1
+word	does the tests pass	trying to	1
+word	does the tests pass	which	6
+word	does the tests pass	which fail	2
+word	does the tests pass	which ones	4
+word	does the tests pass	you	1
+word	does the tests pass	you tell	1
+word	fix the build	^ build	6
+word	fix the build	^ fix	12
+word	fix the build	^ pls	1
+word	fix the build	again	1
+word	fix the build	broken	6
+word	fix the build	broken fix	6
+word	fix the build	build	16
+word	fix the build	build broken	6
+word	fix the build	but	6
+word	fix the build	but don't	6
+word	fix the build	change	6
+word	fix the build	change what	6
+word	fix the build	compile	2
+word	fix the build	does	6
+word	fix the build	don't	6
+word	fix the build	don't change	6
+word	fix the build	fix	18
+word	fix the build	fix compile	2
+word	fix the build	fix it	6
+word	fix the build	fix the	10
+word	fix the build	get	1
+word	fix the build	it	7
+word	fix the build	it but	6
+word	fix the build	it does	6
+word	fix the build	pls	1
+word	fix the build	the	10
+word	fix the build	the build	10
+word	fix the build	what	6
+word	fix the build	what it	6
+word	fix the tests	^ make	2
+word	fix the tests	broken	1
+word	fix the tests	failing	1
+word	fix the tests	make	2
+word	fix the tests	pass	2
+word	fix the tests	tests	2
+word	fix the tests	tests pass	2
+word	fix the tests	the	1
+word	how many functions call <0>	<n> called	6
 word	how many functions call <0>	<n> can	3
 word	how many functions call <0>	<n> could	2
 word	how many functions call <0>	<n> do	3
@@ -1158,16 +1330,16 @@ word	how many functions call <0>	<n> just	4
 word	how many functions call <0>	<n> like	8
 word	how many functions call <0>	<n> please	12
 word	how many functions call <0>	<n> pls	6
-word	how many functions call <0>	<n> roughly	3
+word	how many functions call <0>	<n> roughly	4
 word	how many functions call <0>	<n> thanks	11
-word	how many functions call <0>	^ <n>	14
+word	how many functions call <0>	^ <n>	15
 word	how many functions call <0>	^ can	10
 word	how many functions call <0>	^ could	4
 word	how many functions call <0>	^ count	9
 word	how many functions call <0>	^ hey	26
 word	how many functions call <0>	^ hi	3
 word	how many functions call <0>	^ hm	1
-word	how many functions call <0>	^ how	177
+word	how many functions call <0>	^ how	178
 word	how many functions call <0>	^ i'd	16
 word	how many functions call <0>	^ i'm	8
 word	how many functions call <0>	^ is	9
@@ -1191,10 +1363,10 @@ word	how many functions call <0>	call	257
 word	how many functions call <0>	call <n>	244
 word	how many functions call <0>	call it	11
 word	how many functions call <0>	call the	2
-word	how many functions call <0>	called	5
+word	how many functions call <0>	called	6
 word	how many functions call <0>	called by	4
-word	how many functions call <0>	called from	1
-word	how many functions call <0>	callers	2
+word	how many functions call <0>	called from	2
+word	how many functions call <0>	callers	3
 word	how many functions call <0>	calling	53
 word	how many functions call <0>	calling <n>	52
 word	how many functions call <0>	calls	6
@@ -1217,16 +1389,17 @@ word	how many functions call <0>	exactly	4
 word	how many functions call <0>	figure	9
 word	how many functions call <0>	figure out	9
 word	how many functions call <0>	fn	1
-word	how many functions call <0>	fns	85
+word	how many functions call <0>	fns	86
 word	how many functions call <0>	fns <n>	3
 word	how many functions call <0>	fns call	63
 word	how many functions call <0>	fns calling	8
 word	how many functions call <0>	fns it	1
 word	how many functions call <0>	fns that	6
-word	how many functions call <0>	fns use	2
+word	how many functions call <0>	fns use	3
 word	how many functions call <0>	for	3
 word	how many functions call <0>	for me	3
-word	how many functions call <0>	from	1
+word	how many functions call <0>	from	2
+word	how many functions call <0>	from how	2
 word	how many functions call <0>	funcs	15
 word	how many functions call <0>	funcs call	9
 word	how many functions call <0>	funcs calling	5
@@ -1252,8 +1425,8 @@ word	how many functions call <0>	hi	3
 word	how many functions call <0>	hi could	1
 word	how many functions call <0>	hi i'm	1
 word	how many functions call <0>	hm	1
-word	how many functions call <0>	how	308
-word	how many functions call <0>	how many	308
+word	how many functions call <0>	how	310
+word	how many functions call <0>	how many	310
 word	how many functions call <0>	i'd	20
 word	how many functions call <0>	i'd like	20
 word	how many functions call <0>	i'm	11
@@ -1281,12 +1454,12 @@ word	how many functions call <0>	like the	1
 word	how many functions call <0>	like to	20
 word	how many functions call <0>	lot	2
 word	how many functions call <0>	lot of	2
-word	how many functions call <0>	many	308
+word	how many functions call <0>	many	310
 word	how many functions call <0>	many exactly	4
-word	how many functions call <0>	many fns	72
+word	how many functions call <0>	many fns	73
 word	how many functions call <0>	many funcs	9
 word	how many functions call <0>	many functions	225
-word	how many functions call <0>	many places	3
+word	how many functions call <0>	many places	4
 word	how many functions call <0>	me	23
 word	how many functions call <0>	me how	20
 word	how many functions call <0>	me thanks	1
@@ -1307,7 +1480,7 @@ word	how many functions call <0>	only	1
 word	how many functions call <0>	or	1
 word	how many functions call <0>	out	9
 word	how many functions call <0>	out how	9
-word	how many functions call <0>	places	5
+word	how many functions call <0>	places	6
 word	how many functions call <0>	places that	2
 word	how many functions call <0>	please	13
 word	how many functions call <0>	please tell	1
@@ -1318,7 +1491,7 @@ word	how many functions call <0>	question how	22
 word	how many functions call <0>	quick	24
 word	how many functions call <0>	quick one	1
 word	how many functions call <0>	quick question	23
-word	how many functions call <0>	roughly	3
+word	how many functions call <0>	roughly	4
 word	how many functions call <0>	so	10
 word	how many functions call <0>	so how	8
 word	how many functions call <0>	so i'm	2
@@ -1348,8 +1521,8 @@ word	how many functions call <0>	um	10
 word	how many functions call <0>	um how	9
 word	how many functions call <0>	up	15
 word	how many functions call <0>	up calling	15
-word	how many functions call <0>	use	3
-word	how many functions call <0>	use <n>	2
+word	how many functions call <0>	use	4
+word	how many functions call <0>	use <n>	3
 word	how many functions call <0>	use it	1
 word	how many functions call <0>	used	2
 word	how many functions call <0>	used in	2
@@ -1997,6 +2170,10 @@ word	what does <0> call	what's	2
 word	what does <0> call	what's <n>	2
 word	what does <0> call	which	1
 word	what does <0> call	which fns	1
+word	what does <0> do	's	6
+word	what does <0> do	's <n>	2
+word	what does <0> do	's it	4
+word	what does <0> do	<n> 's	1
 word	what does <0> do	<n> actually	6
 word	what does <0> do	<n> checking	4
 word	what does <0> do	<n> do	114
@@ -2006,12 +2183,13 @@ word	what does <0> do	<n> for	126
 word	what does <0> do	<n> is	27
 word	what does <0> do	<n> its	1
 word	what does <0> do	<n> purpose	5
-word	what does <0> do	<n> test	2
+word	what does <0> do	<n> test	1
 word	what does <0> do	<n> testing	5
 word	what does <0> do	<n> used	4
-word	what does <0> do	<n> what	35
-word	what does <0> do	<n> what's	8
+word	what does <0> do	<n> what	36
+word	what does <0> do	<n> what's	6
 word	what does <0> do	<n> whats	6
+word	what does <0> do	^ 's	2
 word	what does <0> do	^ <n>	59
 word	what does <0> do	^ can	24
 word	what does <0> do	^ could	5
@@ -2030,7 +2208,7 @@ word	what does <0> do	^ quick	13
 word	what does <0> do	^ so	7
 word	what does <0> do	^ um	4
 word	what does <0> do	^ what	162
-word	what does <0> do	^ what's	71
+word	what does <0> do	^ what's	69
 word	what does <0> do	^ whats	9
 word	what does <0> do	a	1
 word	what does <0> do	actually	7
@@ -2052,6 +2230,7 @@ word	what does <0> do	codebase	1
 word	what does <0> do	could	14
 word	what does <0> do	could you	14
 word	what does <0> do	do	174
+word	what does <0> do	do 's	2
 word	what does <0> do	do and	11
 word	what does <0> do	do exactly	10
 word	what does <0> do	do i'm	4
@@ -2060,7 +2239,6 @@ word	what does <0> do	do like	3
 word	what does <0> do	do or	7
 word	what does <0> do	do thanks	3
 word	what does <0> do	do what	7
-word	what does <0> do	do what's	2
 word	what does <0> do	do whats	8
 word	what does <0> do	does	177
 word	what does <0> do	does <n>	79
@@ -2178,7 +2356,7 @@ word	what does <0> do	so there's	1
 word	what does <0> do	so what	10
 word	what does <0> do	tell	23
 word	what does <0> do	tell me	23
-word	what does <0> do	test	4
+word	what does <0> do	test	3
 word	what does <0> do	testing	6
 word	what does <0> do	thanks	9
 word	what does <0> do	thanks in	3
@@ -2205,15 +2383,15 @@ word	what does <0> do	use	1
 word	what does <0> do	use it	1
 word	what does <0> do	used	16
 word	what does <0> do	used for	16
-word	what does <0> do	what	315
+word	what does <0> do	what	316
 word	what does <0> do	what <n>	141
 word	what does <0> do	what does	117
 word	what does <0> do	what is	104
 word	what does <0> do	what it	16
 word	what does <0> do	what it's	14
-word	what does <0> do	what's	87
-word	what does <0> do	what's <n>	73
-word	what does <0> do	what's it	13
+word	what does <0> do	what's	81
+word	what does <0> do	what's <n>	71
+word	what does <0> do	what's it	9
 word	what does <0> do	what's the	1
 word	what does <0> do	whats	24
 word	what does <0> do	whats <n>	9
@@ -2274,7 +2452,6 @@ word	what does <0> have	figure	1
 word	what does <0> have	figure out	1
 word	what does <0> have	for	1
 word	what does <0> have	for me	1
-word	what does <0> have	has	1
 word	what does <0> have	have	1
 word	what does <0> have	hold	4
 word	what does <0> have	i	2
@@ -2288,7 +2465,6 @@ word	what does <0> have	in it	1
 word	what does <0> have	inside	3
 word	what does <0> have	inside <n>	3
 word	what does <0> have	it	3
-word	what does <0> have	it has	1
 word	what does <0> have	it's	2
 word	what does <0> have	it's a	1
 word	what does <0> have	its	5
@@ -2722,6 +2898,8 @@ word	what has a field whose type is or contains <0>	typed	1
 word	what has a field whose type is or contains <0>	typed <n>	1
 word	what has a field whose type is or contains <0>	who	4
 word	what has a field whose type is or contains <0>	who has	3
+word	where is <0> defined	's	1
+word	where is <0> defined	's <n>	1
 word	where is <0> defined	<n> declared	9
 word	where is <0> defined	<n> def	5
 word	where is <0> defined	<n> defined	324
@@ -2754,8 +2932,8 @@ word	where is <0> defined	^ so	3
 word	where is <0> defined	^ sorry	3
 word	where is <0> defined	^ trying	2
 word	where is <0> defined	^ um	8
-word	where is <0> defined	^ where	213
-word	where is <0> defined	^ where's	71
+word	where is <0> defined	^ where	214
+word	where is <0> defined	^ where's	70
 word	where is <0> defined	^ which	1
 word	where is <0> defined	a	1
 word	where is <0> defined	again	2
@@ -2801,6 +2979,7 @@ word	where is <0> defined	do you	4
 word	where is <0> defined	does	28
 word	where is <0> defined	does <n>	23
 word	where is <0> defined	does it	5
+word	where is <0> defined	failing	1
 word	where is <0> defined	figure	38
 word	where is <0> defined	figure out	38
 word	where is <0> defined	file	5
@@ -2852,6 +3031,7 @@ word	where is <0> defined	is it	18
 word	where is <0> defined	is the	5
 word	where is <0> defined	it	71
 word	where is <0> defined	it again	2
+word	where is <0> defined	it but	1
 word	where is <0> defined	it defined	9
 word	where is <0> defined	it is	1
 word	where is <0> defined	it live	7
@@ -2918,6 +3098,7 @@ word	where is <0> defined	sorry quick	2
 word	where is <0> defined	tell	33
 word	where is <0> defined	tell me	33
 word	where is <0> defined	test	1
+word	where is <0> defined	tests	1
 word	where is <0> defined	thanks	17
 word	where is <0> defined	that	3
 word	where is <0> defined	that defined	3
@@ -2926,6 +3107,7 @@ word	where is <0> defined	the <n>	6
 word	where is <0> defined	the code	6
 word	where is <0> defined	the codebase	4
 word	where is <0> defined	the definition	6
+word	where is <0> defined	the tests	1
 word	where is <0> defined	there	1
 word	where is <0> defined	to	78
 word	where is <0> defined	to <n>	3
@@ -2938,7 +3120,7 @@ word	where is <0> defined	trying	49
 word	where is <0> defined	trying to	49
 word	where is <0> defined	um	8
 word	where is <0> defined	um where	8
-word	where is <0> defined	where	435
+word	where is <0> defined	where	436
 word	where is <0> defined	where <n>	200
 word	where is <0> defined	where can	7
 word	where is <0> defined	where defined	2
@@ -2946,8 +3128,8 @@ word	where is <0> defined	where does	28
 word	where is <0> defined	where is	187
 word	where is <0> defined	where it	5
 word	where is <0> defined	where its	5
-word	where is <0> defined	where's	76
-word	where is <0> defined	where's <n>	71
+word	where is <0> defined	where's	75
+word	where is <0> defined	where's <n>	70
 word	where is <0> defined	where's it	2
 word	where is <0> defined	where's that	3
 word	where is <0> defined	which	5
@@ -3884,6 +4066,7 @@ word	which functions call <0>	i'd like	29
 word	which functions call <0>	i'm	34
 word	which functions call <0>	i'm trying	34
 word	which functions call <0>	if	1
+word	which functions call <0>	if any	1
 word	which functions call <0>	in	3
 word	which functions call <0>	in advance	3
 word	which functions call <0>	invoke	2
@@ -4361,7 +4544,7 @@ word	which structs have a field named <0>	<n> thanks	13
 word	which structs have a field named <0>	<n> trying	1
 word	which structs have a field named <0>	<n> used	1
 word	which structs have a field named <0>	<n> what	1
-word	which structs have a field named <0>	<n> which	9
+word	which structs have a field named <0>	<n> which	10
 word	which structs have a field named <0>	^ <n>	3
 word	which structs have a field named <0>	^ any	10
 word	which structs have a field named <0>	^ can	17
@@ -4384,12 +4567,12 @@ word	which structs have a field named <0>	^ sorry	1
 word	which structs have a field named <0>	^ structs	12
 word	which structs have a field named <0>	^ um	9
 word	which structs have a field named <0>	^ what	20
-word	which structs have a field named <0>	^ where's	1
+word	which structs have a field named <0>	^ where's	2
 word	which structs have a field named <0>	^ which	74
 word	which structs have a field named <0>	^ who	5
-word	which structs have a field named <0>	a	169
+word	which structs have a field named <0>	a	170
 word	which structs have a field named <0>	a <n>	39
-word	which structs have a field named <0>	a field	128
+word	which structs have a field named <0>	a field	129
 word	which structs have a field named <0>	a list	3
 word	which structs have a field named <0>	a struct	2
 word	which structs have a field named <0>	advance	1
@@ -4422,11 +4605,11 @@ word	which structs have a field named <0>	could	10
 word	which structs have a field named <0>	could you	10
 word	which structs have a field named <0>	define	3
 word	which structs have a field named <0>	define a	3
-word	which structs have a field named <0>	field	251
+word	which structs have a field named <0>	field	252
 word	which structs have a field named <0>	field <n>	37
 word	which structs have a field named <0>	field called	44
 word	which structs have a field named <0>	field in	5
-word	which structs have a field named <0>	field named	93
+word	which structs have a field named <0>	field named	94
 word	which structs have a field named <0>	field pls	2
 word	which structs have a field named <0>	field structs	5
 word	which structs have a field named <0>	field which	9
@@ -4514,8 +4697,8 @@ word	which structs have a field named <0>	me	28
 word	which structs have a field named <0>	me please	1
 word	which structs have a field named <0>	me which	25
 word	which structs have a field named <0>	name	4
-word	which structs have a field named <0>	named	94
-word	which structs have a field named <0>	named <n>	92
+word	which structs have a field named <0>	named	95
+word	which structs have a field named <0>	named <n>	93
 word	which structs have a field named <0>	of	3
 word	which structs have a field named <0>	of on	1
 word	which structs have a field named <0>	of the	1
@@ -4524,6 +4707,7 @@ word	which structs have a field named <0>	ok so	4
 word	which structs have a field named <0>	on	1
 word	which structs have a field named <0>	one	1
 word	which structs have a field named <0>	ones	12
+word	which structs have a field named <0>	ones are	1
 word	which structs have a field named <0>	ones have	3
 word	which structs have a field named <0>	only	4
 word	which structs have a field named <0>	out	15
@@ -4554,7 +4738,7 @@ word	which structs have a field named <0>	struct has	2
 word	which structs have a field named <0>	struct s	2
 word	which structs have a field named <0>	struct that	3
 word	which structs have a field named <0>	struct with	5
-word	which structs have a field named <0>	structs	237
+word	which structs have a field named <0>	structs	238
 word	which structs have a field named <0>	structs contain	2
 word	which structs have a field named <0>	structs containing	6
 word	which structs have a field named <0>	structs define	3
@@ -4604,13 +4788,13 @@ word	which structs have a field named <0>	what structs	23
 word	which structs have a field named <0>	where	6
 word	which structs have a field named <0>	where <n>	5
 word	which structs have a field named <0>	where it	1
-word	which structs have a field named <0>	where's	1
+word	which structs have a field named <0>	where's	2
 word	which structs have a field named <0>	where's <n>	1
-word	which structs have a field named <0>	which	189
+word	which structs have a field named <0>	which	190
 word	which structs have a field named <0>	which have	3
 word	which structs have a field named <0>	which ones	12
 word	which structs have a field named <0>	which struct	3
-word	which structs have a field named <0>	which structs	168
+word	which structs have a field named <0>	which structs	169
 word	which structs have a field named <0>	who	5
 word	which structs have a field named <0>	who has	5
 word	which structs have a field named <0>	with	22
@@ -4763,6 +4947,7 @@ word	which structs have a field whose type is or contains <0>	i'm	11
 word	which structs have a field whose type is or contains <0>	i'm trying	11
 word	which structs have a field whose type is or contains <0>	if	8
 word	which structs have a field whose type is or contains <0>	if it's	7
+word	which structs have a field whose type is or contains <0>	if the	1
 word	which structs have a field whose type is or contains <0>	in	34
 word	which structs have a field whose type is or contains <0>	in a	13
 word	which structs have a field whose type is or contains <0>	in it	1

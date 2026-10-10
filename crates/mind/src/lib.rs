@@ -689,6 +689,17 @@ impl<O: Ontology> Mind<'_, O> {
             pick.reading + 1,
             rule.id
         );
+        // A reading the language is unsure of is asked about, whichever way
+        // it was picked.
+        if pick.edits >= UNSURE && self.switches.on(ASK_WHEN_UNSURE.id) {
+            trace.preferences.push(ASK_WHEN_UNSURE);
+            return (
+                Reply::Clarify {
+                    reading: pick.meaning.clone(),
+                },
+                Some(pick),
+            );
+        }
         // Say what was assumed: the reading chosen.
         (
             Reply::Assuming {

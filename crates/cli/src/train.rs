@@ -34,9 +34,10 @@ pub fn model_word(t: &Token) -> String {
     }
 }
 
-/// Every turn answered right (other than coding fixes, which have no
-/// single right wording): what was typed, and what the grammar says for the
-/// reading chosen. What each small model learns from.
+/// Every turn answered right: what was typed, and what the grammar says for
+/// the reading chosen. What each small model learns from. A fix counts
+/// only once the scorer has run it (its outcome is then `repaired`); a fix
+/// glassmind merely offered never matches.
 fn answered_right(
     inputs: &Path,
     outcomes: &Path,
@@ -59,8 +60,7 @@ fn answered_right(
             let canonical = o.canonical.as_ref()?;
             let exp = expected.get(o.turn_id.as_str())?;
             let text = texts.get(o.turn_id.as_str())?;
-            (!matches!(exp, Response::Repaired { .. }) && &&o.response == exp)
-                .then(|| ((*text).to_owned(), canonical.clone()))
+            (&&o.response == exp).then(|| ((*text).to_owned(), canonical.clone()))
         })
         .collect())
 }

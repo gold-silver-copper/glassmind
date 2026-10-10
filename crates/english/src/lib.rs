@@ -303,14 +303,18 @@ impl<O: Ontology> English<O> {
                     continue;
                 }
                 // A word that is a noun phrase by itself ("it", "that")
-                // refers to something: a template without one would put a
-                // name in its place and change what was asked about.
+                // refers to something: a template without one, filled with
+                // a plain word taken for a name, changes what was asked
+                // about ("how many functions reference it"). With code
+                // ("`x` - which functions does it call") the word refers
+                // back to the code.
                 let refers =
                     |text: &str| text.split(' ').any(|w| self.lexicon.standing.contains(w));
                 if words
                     .iter()
                     .any(|w| self.lexicon.standing.contains(w.as_str()))
                     && !refers(template)
+                    && chosen.iter().any(|t| t.shape == Shape::Word)
                 {
                     continue;
                 }
