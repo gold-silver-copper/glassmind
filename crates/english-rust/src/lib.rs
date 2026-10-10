@@ -312,6 +312,15 @@ mod tests {
     };
     use glassmind_rules::Switches;
 
+    /// The readings the system would act on: those correcting the fewest
+    /// mistyped words (corrected readings are only fallbacks).
+    fn least_corrected(
+        readings: Vec<glassmind_meaning::interface::Reading<Rust>>,
+    ) -> impl Iterator<Item = glassmind_meaning::interface::Reading<Rust>> {
+        let least = readings.iter().map(|r| r.edits).min().unwrap_or(0);
+        readings.into_iter().filter(move |r| r.edits == least)
+    }
+
     /// Every kind of trouble can be put into words: a reply the system
     /// cannot say is a reply the user never gets, which no answer score sees.
     #[test]
@@ -402,9 +411,9 @@ mod tests {
     fn remarks_and_politeness_do_not_change_the_request() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         let meanings = |text: &str| match english.understand(text) {
-            Understanding::Readings(readings) => {
-                readings.into_iter().map(|r| r.meaning).collect::<Vec<_>>()
-            }
+            Understanding::Readings(readings) => least_corrected(readings)
+                .map(|r| r.meaning)
+                .collect::<Vec<_>>(),
             Understanding::Failed { .. } => Vec::new(),
         };
         let request = "which functions call `spawn_wave`?";
@@ -430,7 +439,7 @@ mod tests {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         let meanings = |text: &str| match english.understand(text) {
             Understanding::Readings(readings) => {
-                let mut m: Vec<_> = readings.into_iter().map(|r| r.meaning).collect();
+                let mut m: Vec<_> = least_corrected(readings).map(|r| r.meaning).collect();
                 m.dedup();
                 m
             }
@@ -532,7 +541,7 @@ mod tests {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         let meanings = |text: &str| match english.understand(text) {
             Understanding::Readings(readings) => {
-                let mut m: Vec<_> = readings.into_iter().map(|r| r.meaning).collect();
+                let mut m: Vec<_> = least_corrected(readings).map(|r| r.meaning).collect();
                 m.dedup();
                 m
             }
@@ -629,7 +638,7 @@ mod tests {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         let meanings = |text: &str| match english.understand(text) {
             Understanding::Readings(readings) => {
-                let mut m: Vec<_> = readings.into_iter().map(|r| r.meaning).collect();
+                let mut m: Vec<_> = least_corrected(readings).map(|r| r.meaning).collect();
                 m.dedup();
                 m
             }
@@ -859,7 +868,9 @@ mod tests {
         }
         // A name the system also knows as English, where only a name fits.
         let named = |text: &str| match english.understand(text) {
-            Understanding::Readings(readings) => readings.into_iter().map(|r| r.meaning).collect(),
+            Understanding::Readings(readings) => {
+                least_corrected(readings).map(|r| r.meaning).collect()
+            }
             Understanding::Failed { .. } => Vec::new(),
         };
         let calls = named("which structs have a field named `calls`?");
@@ -1238,7 +1249,9 @@ mod tests {
     fn ways_of_asking_what_a_struct_holds_agree() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         let meanings = |text: &str| match english.understand(text) {
-            Understanding::Readings(readings) => readings.into_iter().map(|r| r.meaning).collect(),
+            Understanding::Readings(readings) => {
+                least_corrected(readings).map(|r| r.meaning).collect()
+            }
             Understanding::Failed { .. } => Vec::new(),
         };
         let mut has = meanings("what does `Conv` have?");
@@ -1270,7 +1283,9 @@ mod tests {
     fn a_field_set_off_by_name_is_asked_about_by_name() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         let meanings = |text: &str| match english.understand(text) {
-            Understanding::Readings(readings) => readings.into_iter().map(|r| r.meaning).collect(),
+            Understanding::Readings(readings) => {
+                least_corrected(readings).map(|r| r.meaning).collect()
+            }
             Understanding::Failed { .. } => Vec::new(),
         };
         let by_name = meanings("which structs have field credentials");

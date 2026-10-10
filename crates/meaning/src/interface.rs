@@ -28,6 +28,9 @@ pub struct Reading<O: Ontology> {
     /// How many tokens this reading takes to mean nothing (a remark, a
     /// greeting, a word joining two ways of asking).
     pub idle: usize,
+    /// What the corrections of mistyped words cost this reading; 0 if it
+    /// reads the words as typed.
+    pub edits: u32,
 }
 
 /// What the language made of the input.

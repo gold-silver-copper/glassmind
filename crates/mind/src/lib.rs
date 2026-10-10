@@ -83,8 +83,14 @@ pub const SHARED_NAME_ANY: RuleInfo = RuleInfo::new("mind.name.any", 23);
 pub const BLAME_UNKNOWN_WORD: RuleInfo =
     RuleInfo::new("mind.diagnose.unknown_word", glassmind_rules::HAND);
 
+/// Preference: of the readings the world can answer, those that correct the
+/// fewest mistyped words.
+pub const PREFER_FEWEST_EDITS: RuleInfo =
+    RuleInfo::new("mind.prefer.fewest_corrections", glassmind_rules::HAND);
+
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
+    PREFER_FEWEST_EDITS,
     BLAME_UNKNOWN_WORD,
     PREFER_FEWEST_IDLE,
     PREFER_RECENT_MENTION,
@@ -260,6 +266,8 @@ struct Candidate<O: Ontology> {
     reading: usize,
     /// Tokens the reading takes to mean nothing.
     idle: usize,
+    /// What its corrections of mistyped words cost.
+    edits: u32,
     meaning: Utterance<O>,
     means: Means<O>,
     result: WorldResult<O>,
@@ -379,6 +387,7 @@ impl<O: Ontology> Mind<'_, O> {
                 candidates.push(Candidate {
                     reading: i,
                     idle: reading.idle,
+                    edits: reading.edits,
                     meaning,
                     means,
                     result,
@@ -485,6 +494,15 @@ impl<O: Ontology> Mind<'_, O> {
             .iter()
             .filter_map(|c| Some((c, c.result.as_ref().ok()?)))
             .collect();
+        // Of the readings the world can answer, those that correct the fewest
+        // mistyped words: a correction is a guess at what was typed.
+        let fewest = good.iter().map(|(c, _)| c.edits).min();
+        if good.iter().any(|(c, _)| Some(c.edits) != fewest)
+            && self.switches.on(PREFER_FEWEST_EDITS.id)
+        {
+            good.retain(|(c, _)| Some(c.edits) == fewest);
+            trace.preferences.push(PREFER_FEWEST_EDITS);
+        }
         let replies: BTreeSet<&Reply<O>> = good.iter().map(|&(_, r)| r).collect();
         let least = good.iter().map(|(c, _)| c.idle).min();
         if replies.len() > 1 && self.switches.on(PREFER_FEWEST_IDLE.id) {

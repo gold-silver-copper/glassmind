@@ -77,13 +77,13 @@ but never say (sloppy or rare input). Single words use `english::word(...)`.
 
 ## Checking your work
 
-Paths are given in your brief (`$SOURCES`, `$DATA`). Always use `-j 8` and
-`--test-threads 8`.
+Paths are given in your brief (`$SOURCES`, `$DATA`). Other agents build at
+the same time: always use `-j 4` and `--test-threads 4`.
 
 ```sh
-cargo build --release -j 8 -p glassmind -p glassmind-loop
-cargo clippy --workspace --all-targets -j 8 -- -D warnings
-cargo test --workspace -j 8 -- --test-threads 8
+cargo build --release -j 4 -p glassmind -p glassmind-loop
+cargo clippy --workspace --all-targets -j 4 -- -D warnings
+cargo test --workspace -j 4 -- --test-threads 4
 cargo run -q -p glassmind-depcheck
 # your group's turns:
 ./target/release/glassmind eval --sources $SOURCES --inputs $DATA/group-inputs.jsonl > group-out.jsonl

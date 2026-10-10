@@ -42,12 +42,16 @@ pub mod seed;
 pub mod sem;
 pub mod spelling;
 pub mod tokens;
+pub mod typos;
 pub mod whence;
 pub mod widening;
 
 pub use lexicon::EnglishLexicon;
 pub use sem::{Cat, Number, Sem, VerbForm};
 pub use tokens::{Shape, Token, tokenize};
+
+/// English rules that are not grammar rules, for listing and switching.
+pub const RULES: &[RuleInfo] = &[typos::TYPOS];
 
 /// Every English rule that is not about a particular world.
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -174,6 +178,7 @@ impl<O: Ontology> English<O> {
                 known,
                 standing,
                 spellings: spelling::spellings(switches),
+                typos: switches.on(typos::TYPOS.id),
                 ontology: PhantomData,
             },
         }
@@ -192,6 +197,7 @@ impl<O: Ontology> English<O> {
                 Node::Token(_) => {
                     usize::from(rule.and_then(|r| r.rhs.get(i)) == Some(&Sym::Class(lexicon::TEXT)))
                 }
+                Node::Corrected(..) => 0,
             })
             .sum()
     }
@@ -240,9 +246,19 @@ impl<O: Ontology> Language<O> for English<O> {
             .filter_map(|p| match &p.value {
                 Sem::Utterance(u) => Some(Reading {
                     meaning: u.clone(),
-                    rules: [p.rules(), respelled.clone()].concat(),
+                    rules: [
+                        p.rules(),
+                        respelled.clone(),
+                        if p.edits > 0 {
+                            vec![typos::TYPOS]
+                        } else {
+                            Vec::new()
+                        },
+                    ]
+                    .concat(),
                     parse: render(p, &tokens),
                     idle: idle(p),
+                    edits: p.edits,
                 }),
                 _ => None,
             })
@@ -342,7 +358,7 @@ fn idle<O: Ontology>(phrase: &Phrase<Sem<O>>) -> usize {
         .children
         .iter()
         .map(|child| match child {
-            Node::Token(_) => 0,
+            Node::Token(_) | Node::Corrected(..) => 0,
             Node::Phrase(p) => idle(p),
         })
         .sum()
@@ -357,6 +373,9 @@ fn render<O: Ontology>(phrase: &Phrase<Sem<O>>, tokens: &[Token]) -> String {
                 .get(*i)
                 .map_or_else(String::new, |t| format!("{:?}", t.text)),
             Node::Phrase(p) => render(p, tokens),
+            Node::Corrected(i, word) => tokens
+                .get(*i)
+                .map_or_else(String::new, |t| format!("{:?}->{word:?}", t.text)),
         })
         .collect();
     format!("{}[{}]", phrase.rule.id, inner.join(" "))

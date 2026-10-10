@@ -134,23 +134,26 @@ pub fn baseline(config: &Config, paths: &Paths, data: &Data) -> Result<Baseline,
     Ok(b)
 }
 
-/// Scores the accepted version again after the training data changed (more
-/// conversations were generated), so later changes are judged on the new set.
+/// Scores the version at `commit` again: after the training data changed
+/// (`kind` "data") or after changes made by hand outside the loop (`kind`
+/// "manual"), so later changes are judged against it.
 fn rescore(
     config: &Config,
     paths: &Paths,
     data: &Data,
     base: &Baseline,
+    commit: &str,
+    kind: &str,
+    why: &str,
 ) -> Result<Baseline, String> {
     log(
         paths,
         &format!(
-            "training data changed ({} -> {} turns); scoring the accepted version again",
-            base.train.len(),
-            data.train.len()
+            "{why}; scoring {commit} again ({} training turns before)",
+            base.train.len()
         ),
     );
-    let dir = worktree(config, paths, "rescore", &base.commit)?;
+    let dir = worktree(config, paths, "rescore", commit)?;
     let target = paths.eval_target();
     let built = crate::exec::cargo(&dir, &target, &["build", "--release", "-p", "glassmind"]);
     let result = match built {
@@ -166,7 +169,7 @@ fn rescore(
         .max()
         .unwrap_or(0);
     let b = Baseline {
-        commit: base.commit.clone(),
+        commit: commit.to_owned(),
         round,
         scores: ev.scores.clone(),
         train: ev.train,
@@ -177,13 +180,13 @@ fn rescore(
         paths,
         &Entry {
             round,
-            kind: "data".into(),
-            group: format!("more training data: {} turns", data.train.len()),
+            kind: kind.into(),
+            group: why.into(),
             accepted: true,
-            reason: "the training set grew; same code, scored on the new set".into(),
+            reason: why.into(),
             scores: ev.scores,
             tokens_cumulative: cumulative(paths),
-            commit: base.commit.clone(),
+            commit: commit.to_owned(),
             unix_time: state::now(),
             ..Entry::default()
         },
@@ -211,8 +214,14 @@ pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
     let config: Config = state::read_json(&paths.config())?;
     let data = Data::load(&config)?;
     let mut base = baseline(&config, paths, &data)?;
+    let at = head(&config)?;
     if base.train.len() != data.train.len() {
-        base = rescore(&config, paths, &data, &base)?;
+        let why = format!("more training data: {} turns", data.train.len());
+        base = rescore(&config, paths, &data, &base, &at, "data", &why)?;
+    } else if base.commit != at {
+        let subject = git(&config.repo, &["log", "-1", "--format=%s", &at]).unwrap_or_default();
+        let why = format!("changed by hand: {subject}");
+        base = rescore(&config, paths, &data, &base, &at, "manual", &why)?;
     }
     loop {
         if paths.stop_file().exists() {

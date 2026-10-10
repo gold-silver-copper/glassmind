@@ -53,6 +53,8 @@ pub struct EnglishLexicon<O> {
     pub standing: BTreeSet<&'static str>,
     /// Mistyped words, each read as the word meant (see `spelling`).
     pub spellings: BTreeMap<&'static str, (RuleInfo, &'static str)>,
+    /// Whether mistyped words may be read as known words (see `typos`).
+    pub typos: bool,
     pub ontology: PhantomData<O>,
 }
 
@@ -102,6 +104,13 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             (NUMBER, Shape::Number) => token.text.parse().map(Sem::Count).into_iter().collect(),
             _ => Vec::new(),
         }
+    }
+
+    fn corrections(&self, token: &Token) -> Vec<(&'static str, u32)> {
+        if !self.typos || token.shape != Shape::Word || self.known.contains(self.norm(token)) {
+            return Vec::new();
+        }
+        crate::typos::candidates(&token.norm, self.known.iter().copied())
     }
 
     fn speak_class(&self, class: &'static str, value: &Sem<O>) -> Option<String> {

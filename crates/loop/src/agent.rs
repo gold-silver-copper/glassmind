@@ -140,6 +140,8 @@ pub fn claude(
             .env("CLAUDE_CODE_TMPDIR", &tmp.to_string_lossy())
             .env("TMPDIR", &tmp.to_string_lossy())
             .env("CARGO_TARGET_DIR", &slot.join("target").to_string_lossy())
+            // Four agents building at once: four jobs each keeps the machine responsive.
+            .env("CARGO_BUILD_JOBS", "4")
             .stdin(prompt)
             .timeout(Duration::from_secs(config.agent_minutes * 60))
             .sandbox(sb.as_ref())

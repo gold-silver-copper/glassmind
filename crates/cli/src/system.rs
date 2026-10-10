@@ -17,6 +17,7 @@ pub fn all_rules() -> Vec<RuleInfo> {
         .map(|r| r.info)
         .collect();
     rules.extend(glassmind_english::spelling::corrections());
+    rules.extend(glassmind_english::RULES.iter().copied());
     rules.extend(glassmind_world_rust::RULES.iter().copied());
     rules.extend(glassmind_mind::RULES.iter().copied());
     rules

@@ -94,6 +94,11 @@ pub trait Lexicon<V> {
     fn read_class(&self, class: &'static str, token: &Self::Token) -> Vec<V>;
     /// The surface text for a value of `class`, used when speaking.
     fn speak_class(&self, class: &'static str, value: &V) -> Option<String>;
+    /// Words the token may be a mistyping of, each with what the correction
+    /// costs. Only tried when no reading needs none.
+    fn corrections(&self, _token: &Self::Token) -> Vec<(&'static str, u32)> {
+        Vec::new()
+    }
 }
 
 /// A finished piece of a parse tree.
@@ -103,6 +108,8 @@ pub enum Node<V> {
     Token(usize),
     /// A phrase built by a rule.
     Phrase(Rc<Phrase<V>>),
+    /// The token at this index was read as this word, corrected.
+    Corrected(usize, &'static str),
 }
 
 /// A phrase: which rule built it, over which tokens, with which value.
@@ -113,6 +120,8 @@ pub struct Phrase<V> {
     pub end: usize,
     pub value: V,
     pub children: Vec<Node<V>>,
+    /// The cost of the corrections made in this phrase (0 if none).
+    pub edits: u32,
 }
 
 impl<V> Phrase<V> {
@@ -184,6 +193,7 @@ struct Item<V> {
     start: usize,
     values: Vec<V>,
     nodes: Vec<Node<V>>,
+    edits: u32,
 }
 
 impl<C, V> Grammar<C, V>
@@ -231,8 +241,38 @@ where
 
     /// Parses `tokens` as the start category.
     pub fn parse<L: Lexicon<V>>(&self, lexicon: &L, tokens: &[L::Token]) -> Parse<V> {
-        let chart = self.chart(lexicon, tokens);
-        let n = tokens.len();
+        let chart = self.chart(lexicon, tokens, false);
+        let mut readings = self.readings(&chart, tokens.len());
+        // Mistyped words may also be read as the words they may be: add the
+        // readings that need the fewest corrections and mean something new.
+        // Which reading wins is left to whoever can check them.
+        if tokens.iter().any(|t| !lexicon.corrections(t).is_empty()) {
+            let corrected = self.chart(lexicon, tokens, true);
+            let mut fixed: Vec<Rc<Phrase<V>>> = self
+                .readings(&corrected, tokens.len())
+                .into_iter()
+                .filter(|p| p.edits > 0 && !readings.iter().any(|r| r.value == p.value))
+                .collect();
+            let least = fixed.iter().map(|p| p.edits).min().unwrap_or(0);
+            fixed.retain(|p| p.edits == least);
+            if readings.is_empty() && !fixed.is_empty() {
+                return Parse {
+                    readings: fixed,
+                    reached: corrected.reached,
+                    overflow: corrected.overflow,
+                };
+            }
+            readings.extend(fixed);
+        }
+        Parse {
+            readings,
+            reached: chart.reached,
+            overflow: chart.overflow,
+        }
+    }
+
+    /// Every distinct complete reading in a chart over `n` tokens.
+    fn readings(&self, chart: &Chart<V>, n: usize) -> Vec<Rc<Phrase<V>>> {
         let mut readings = Vec::new();
         let mut seen = HashSet::new();
         for item in chart.columns.get(n).into_iter().flatten() {
@@ -247,17 +287,13 @@ where
                 readings.push(Rc::new(phrase));
             }
         }
-        Parse {
-            readings,
-            reached: chart.reached,
-            overflow: chart.overflow,
-        }
+        readings
     }
 
     /// What may come right after `tokens`, read as the start of a phrase of
     /// the start category. Empty if `tokens` cannot begin one.
     pub fn expected<L: Lexicon<V>>(&self, lexicon: &L, tokens: &[L::Token]) -> Vec<Expectation<V>> {
-        let chart = self.chart(lexicon, tokens);
+        let chart = self.chart(lexicon, tokens, false);
         let mut out: Vec<Expectation<V>> = Vec::new();
         for item in chart.columns.get(tokens.len()).into_iter().flatten() {
             let Some(rule) = self.rules.get(item.rule) else {
@@ -293,6 +329,7 @@ where
             end,
             value,
             children: item.nodes.clone(),
+            edits: item.edits,
         })
     }
 
@@ -313,11 +350,24 @@ where
                 start,
                 values: Vec::new(),
                 nodes: Vec::new(),
+                edits: 0,
             })
     }
 
-    fn chart<L: Lexicon<V>>(&self, lexicon: &L, tokens: &[L::Token]) -> Chart<V> {
+    /// Fills the Earley chart; with `correct`, mistyped words may be read
+    /// as the words they may be, at a cost.
+    fn chart<L: Lexicon<V>>(&self, lexicon: &L, tokens: &[L::Token], correct: bool) -> Chart<V> {
         let n = tokens.len();
+        let fixes: Vec<Vec<(&'static str, u32)>> = tokens
+            .iter()
+            .map(|t| {
+                if correct {
+                    lexicon.corrections(t)
+                } else {
+                    Vec::new()
+                }
+            })
+            .collect();
         let mut chart = Chart {
             columns: vec![Vec::new(); n + 1],
             keys: vec![HashSet::new(); n + 1],
@@ -357,7 +407,9 @@ where
                             .collect();
                         for w in waiting {
                             let node = Node::Phrase(phrase.clone());
-                            chart.push(i, w.advance(Some(phrase.value.clone()), node));
+                            let mut next = w.advance(Some(phrase.value.clone()), node);
+                            next.edits = next.edits.saturating_add(phrase.edits);
+                            chart.push(i, next);
                         }
                     }
                     Some(Sym::Cat(c)) => {
@@ -370,6 +422,13 @@ where
                     Some(Sym::Word(w)) => {
                         if token.is_some_and(|t| lexicon.norm(t) == *w) {
                             chart.push(i + 1, item.advance(None, Node::Token(i)));
+                        }
+                        for &(fix, cost) in fixes.get(i).into_iter().flatten() {
+                            if fix == *w {
+                                let mut next = item.advance(None, Node::Corrected(i, fix));
+                                next.edits = next.edits.saturating_add(cost);
+                                chart.push(i + 1, next);
+                            }
                         }
                     }
                     Some(Sym::Class(class)) => {

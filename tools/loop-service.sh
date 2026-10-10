@@ -12,7 +12,11 @@ case "$cmd" in
   start)
     rm -f "$state/STOP"
     bin=$(realpath "$bin")
+    # Its own slice with a memory cap: if the loop and its agents outgrow it,
+    # they are slowed and then killed inside the slice, never the terminal.
     systemd-run --user --unit=glassmind-loop --collect --same-dir \
+      --slice=glassmind.slice -p MemoryHigh=28G -p MemoryMax=36G -p MemorySwapMax=0 \
+      -p OOMScoreAdjust=800 \
       --setenv=PATH="$PATH" --setenv=HOME="$HOME" \
       "$bin" run --state "$state"
     ;;
