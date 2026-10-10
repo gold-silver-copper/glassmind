@@ -197,9 +197,15 @@ fn rescore(
 
 /// Whether the held-out score has not improved for `patience` rounds.
 pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
+    // A change made by hand can change how cost is counted, so improvement
+    // is measured from the last one on.
+    let since = history
+        .iter()
+        .rposition(|e| e.kind == "manual")
+        .unwrap_or(0);
     let mut best = f64::INFINITY;
     let mut best_round = 0;
-    for e in history.iter().filter(|e| e.accepted) {
+    for e in history.iter().skip(since).filter(|e| e.accepted) {
         if e.scores.heldout_cost < best - 1e-9 {
             best = e.scores.heldout_cost;
             best_round = e.round;
