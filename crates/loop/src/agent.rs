@@ -129,19 +129,30 @@ pub fn claude(
     let mut writable = writable;
     writable.extend([slot.to_path_buf(), cwd.to_path_buf()]);
     let sb = sandbox(config, paths, writable, Some(tmp.clone()));
-    let out = Run::new("claude", &args, cwd)
-        .remove_env_prefix("ANTHROPIC_")
-        .remove_env_prefix("CLAUDE")
-        .remove_env_prefix("OPENAI_")
-        .remove_env_prefix("GEMINI_")
-        .env("CLAUDE_CODE_TMPDIR", &tmp.to_string_lossy())
-        .env("TMPDIR", &tmp.to_string_lossy())
-        .env("CARGO_TARGET_DIR", &slot.join("target").to_string_lossy())
-        .stdin(prompt)
-        .timeout(Duration::from_secs(config.agent_minutes * 60))
-        .sandbox(sb.as_ref())
-        .go()?;
-    let parsed: Value = serde_json::from_str(out.stdout.trim()).unwrap_or(Value::Null);
+    // A usage limit is not a failed attempt: wait for it to reset and retry.
+    let mut waited = 0;
+    let (out, parsed) = loop {
+        let out = Run::new("claude", &args, cwd)
+            .remove_env_prefix("ANTHROPIC_")
+            .remove_env_prefix("CLAUDE")
+            .remove_env_prefix("OPENAI_")
+            .remove_env_prefix("GEMINI_")
+            .env("CLAUDE_CODE_TMPDIR", &tmp.to_string_lossy())
+            .env("TMPDIR", &tmp.to_string_lossy())
+            .env("CARGO_TARGET_DIR", &slot.join("target").to_string_lossy())
+            .stdin(prompt)
+            .timeout(Duration::from_secs(config.agent_minutes * 60))
+            .sandbox(sb.as_ref())
+            .go()?;
+        let parsed: Value = serde_json::from_str(out.stdout.trim()).unwrap_or(Value::Null);
+        let limited = parsed.get("api_error_status").and_then(Value::as_u64) == Some(429);
+        if !limited || waited >= 24 * 6 {
+            break (out, parsed);
+        }
+        waited += 1;
+        eprintln!("usage limit reached; waiting 10 minutes before retrying");
+        std::thread::sleep(Duration::from_secs(600));
+    };
     let summary = parsed
         .get("result")
         .and_then(Value::as_str)
