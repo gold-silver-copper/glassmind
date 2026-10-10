@@ -35,7 +35,8 @@ pub fn tick(e: &mut Enemy) {
 /// The fixture source, written to a directory of the calling test's own:
 /// tests run in parallel, and a shared file could be read half-written.
 fn fixture(test: &str) -> Source {
-    let root = std::path::Path::new(env!("CARGO_TARGET_TMPDIR")).join(format!("oracle-fixture-{test}"));
+    let root =
+        std::path::Path::new(env!("CARGO_TARGET_TMPDIR")).join(format!("oracle-fixture-{test}"));
     fs::create_dir_all(root.join("src")).unwrap();
     fs::write(root.join("src/game.rs"), GAME).unwrap();
     source::load("fx", &root).unwrap()
