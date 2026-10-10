@@ -25,14 +25,20 @@ pub struct Found {
 /// Whether switching rules off left every training turn at most as costly
 /// and the held-out cost no higher.
 fn no_worse(data: &Data, base: &Baseline, ev: &evaluate::Evaluated) -> bool {
+    train_no_worse(data, base, &ev.train)
+        && ev.scores.heldout_cost <= base.scores.heldout_cost + 1e-9
+}
+
+/// Whether every training turn is at most as costly as in the baseline.
+fn train_no_worse(data: &Data, base: &Baseline, train: &[glassmind_answer::Outcome]) -> bool {
     let before = evaluate::verdicts(&data.train, &base.train);
-    let after = evaluate::verdicts(&data.train, &ev.train);
+    let after = evaluate::verdicts(&data.train, train);
     let worse = before.iter().any(|(id, (vb, cb))| {
         after.get(id).is_some_and(|(va, ca)| {
             *ca > cb + 1e-9 || (*va == Verdict::Wrong && *vb != Verdict::Wrong)
         })
     });
-    !worse && ev.scores.heldout_cost <= base.scores.heldout_cost + 1e-9
+    !worse
 }
 
 /// Builds the accepted version in `dir` and switches rules off one by one.
@@ -85,16 +91,19 @@ pub fn find(
             let handles: Vec<_> = chunk
                 .iter()
                 .map(|id| {
+                    // Training only here; the held-out set is checked on the
+                    // rules that pass, together, below.
                     s.spawn(move || {
-                        evaluate::evaluate(
+                        evaluate::eval_set(
                             config,
                             paths,
-                            data,
                             dir,
                             target,
+                            &config.sources,
+                            &config.train,
                             std::slice::from_ref(id),
                         )
-                        .map(|ev| no_worse(data, base, &ev))
+                        .map(|train| train_no_worse(data, base, &train))
                     })
                 })
                 .collect();
@@ -116,13 +125,24 @@ pub fn find(
     if found.removable.len() > 1 {
         let ev = evaluate::evaluate(config, paths, data, dir, target, &found.removable)?;
         if !no_worse(data, base, &ev) {
+            // Add them sixteen at a time, and one at a time only within a
+            // group of sixteen that does not pass as a whole.
             let mut keep: Vec<String> = Vec::new();
-            for id in &found.removable {
+            for chunk in found.removable.chunks(16) {
                 let mut trial = keep.clone();
-                trial.push(id.clone());
+                trial.extend(chunk.iter().cloned());
                 let ev = evaluate::evaluate(config, paths, data, dir, target, &trial)?;
                 if no_worse(data, base, &ev) {
                     keep = trial;
+                    continue;
+                }
+                for id in chunk {
+                    let mut trial = keep.clone();
+                    trial.push(id.clone());
+                    let ev = evaluate::evaluate(config, paths, data, dir, target, &trial)?;
+                    if no_worse(data, base, &ev) {
+                        keep = trial;
+                    }
                 }
             }
             found.removable = keep;
