@@ -31,6 +31,9 @@ pub trait Ontology: Copy + Eq + Ord + Hash + Debug + Default + 'static {
     type Relation: Concept;
     /// A thing in the world, resolved: a stable handle that can label itself.
     type Item: Concept + Labelled;
+    /// A place where something is written in the world's data, which an
+    /// edit can rewrite (a line and column in a file).
+    type Spot: Concept;
 }
 
 /// The bounds every concept a world defines must meet.
@@ -41,6 +44,9 @@ impl<T: Clone + Eq + Ord + Hash + Debug + Serialize + DeserializeOwned> Concept 
 /// file name, a row key). This is data, not language: languages quote it.
 pub trait Labelled {
     fn label(&self) -> String;
+    /// Where the thing is set down in its world (a file and line, a table
+    /// and row). Also data, quoted as it is.
+    fn place(&self) -> String;
 }
 
 /// A name as written by the user: a reference to data by its identifier,
@@ -66,6 +72,12 @@ pub enum Thing<O: Ontology> {
     Named(Name),
     /// Resolved to one item of the world.
     Item(O::Item),
+    /// Referred back to without a name: a thing said before, to be found
+    /// from what came earlier.
+    Previous,
+    /// Any thing that fits the description, left unnamed ("a field whose
+    /// type is `Arc`").
+    Fitting(Description<O>),
 }
 
 /// A condition a thing must meet to fit a description.
@@ -79,6 +91,22 @@ pub enum Condition<O: Ontology> {
         position: Position,
         other: Thing<O>,
     },
+    /// The described thing is called this name.
+    Called(Name),
+    /// The described thing is this very thing ("the field `x` of `S`" is
+    /// `x`, and also of `S`).
+    Is(Thing<O>),
+    /// The described thing goes by this name in its world ("a field named
+    /// `done`"). The name is matched, not looked up: many things may share it.
+    Named(Name),
+    /// The described thing goes by the name of this other thing ("a field
+    /// with that name", "a field called that"). Once the other thing is
+    /// known only by its name, this is [`Condition::Named`].
+    NamedLike(Thing<O>),
+    /// The described thing is one of the parts of this other thing, as its
+    /// world divides wholes into parts, with no relation said: the whole
+    /// set before the part ("`S`'s `x`", "`S` `x`").
+    PartOf(Thing<O>),
 }
 
 /// A description of things: an optional kind and conditions they all meet.
@@ -96,6 +124,46 @@ pub struct Description<O: Ontology> {
 pub enum Question<O: Ontology> {
     /// Identify every thing that fits the description.
     Identify(Description<O>),
+    /// Say where the thing is; `kind`, if given, is what the user said it is.
+    Locate {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+    },
+    /// Say what the thing is and what it is for; `kind`, if given, is what
+    /// the user said it is.
+    Describe {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+    },
+    /// Say how many things fit the description.
+    Count(Description<O>),
+}
+
+/// A request to change the world's data.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub enum Action<O: Ontology> {
+    /// Give the thing a new name wherever it is named; `kind`, if given, is
+    /// what the user said it is. `name` is `None` when the user asks for a
+    /// rename without saying the new name.
+    Rename {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+        name: Option<Name>,
+    },
+}
+
+/// Something the user tells the system, for it to keep in mind.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub enum Fact<O: Ontology> {
+    /// The user will call the thing `alias`, a name of their own that the
+    /// world does not know; `kind`, if given, is what the user said it is.
+    Alias {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+        alias: Name,
+    },
 }
 
 /// Everything a user turn can mean.
@@ -103,6 +171,20 @@ pub enum Question<O: Ontology> {
 #[serde(bound = "")]
 pub enum Utterance<O: Ontology> {
     Ask(Question<O>),
+    /// Asks for an action to be carried out.
+    Command(Action<O>),
+    /// Asks why the system took up the action it was last asked for.
+    AskReason,
+    /// Takes back what was said before: the conversation is to go on as if
+    /// it had not been.
+    Forget,
+    /// States a fact for later turns.
+    Tell(Fact<O>),
+    /// Asks what the system holds of the conversation so far.
+    AskRecall,
+    /// Corrects the request just made: it was meant to be about this thing,
+    /// in place of the one it was about.
+    Correct(Thing<O>),
 }
 
 /// A claim that a set of things is exactly what fits a description.
@@ -136,65 +218,136 @@ pub enum Trouble<O: Ontology> {
     TooAmbiguous,
 }
 
-/// Something the system took for granted to choose between readings.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
-#[serde(bound = "")]
-pub enum Assumption<O: Ontology> {
-    /// A name the user wrote was taken to mean this item.
-    Means { name: Name, item: O::Item },
-    /// The input was taken to mean this.
-    Reading { meaning: Utterance<O> },
-}
-
 /// Everything a reply can mean, before a language puts it into words.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]
 pub enum Reply<O: Ontology> {
     /// The things that fit what was asked about.
     Extent(Extent<O>),
+    /// The item asked about, which carries where it is.
+    Location(O::Item),
+    /// What the item asked about is: its kind, and where it is.
+    Account { item: O::Item, kind: O::Kind },
+    /// How many things fit a description.
+    Count {
+        description: Description<O>,
+        count: u64,
+    },
+    /// The edit that would carry out an action: every spot it rewrites.
+    Proposal {
+        action: Action<O>,
+        spots: Vec<O::Spot>,
+    },
+    /// Why an action was taken up: the user asked for it in turn `turn`
+    /// (0-based) of the conversation.
+    Reason { turn: usize, action: Action<O> },
+    /// What was said before is forgotten.
+    Forgotten,
+    /// The fact the user stated was taken note of.
+    Noted(Fact<O>),
+    /// What the system holds of the conversation: the items it has spoken
+    /// of, most recent first.
+    Recall(Vec<O::Item>),
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
-    /// A reply that rests on assumptions, which are stated first.
+    /// A reply that rests on the system taking the input, which could be
+    /// read several ways, to mean `reading`, which is stated first.
     Assuming {
-        assumptions: Vec<Assumption<O>>,
+        reading: Utterance<O>,
         reply: Box<Reply<O>>,
     },
 }
 
 impl<O: Ontology> Utterance<O> {
+    /// The things the utterance is about, without looking inside those it
+    /// describes: for "which functions call `tick` on `Health`", the thing
+    /// called `tick`, not `Health`.
+    pub fn subjects(&self) -> Vec<&Thing<O>> {
+        match self {
+            Utterance::Ask(Question::Identify(d) | Question::Count(d)) => {
+                d.conditions.iter().filter_map(Condition::other).collect()
+            }
+            Utterance::Ask(Question::Locate { thing, .. } | Question::Describe { thing, .. })
+            | Utterance::Command(Action::Rename { thing, .. })
+            | Utterance::Tell(Fact::Alias { thing, .. })
+            | Utterance::Correct(thing) => vec![thing],
+            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
+        }
+    }
+
     /// Every thing the utterance refers to, in order.
     pub fn things(&self) -> Vec<&Thing<O>> {
+        self.things_within(&|_| true)
+    }
+
+    /// The things the utterance refers to, looking inside only the
+    /// descriptions `within` accepts: one it does not is a thing itself.
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         match self {
-            Utterance::Ask(q) => q.things(),
+            Utterance::Ask(q) => q.things_within(within),
+            Utterance::Command(Action::Rename { thing, .. })
+            | Utterance::Tell(Fact::Alias { thing, .. })
+            | Utterance::Correct(thing) => thing.things_within(within),
+            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
         }
     }
 
     /// The utterance with every thing replaced by `f` of it, in the order
     /// [`Utterance::things`] lists them.
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
-        match self {
-            Utterance::Ask(q) => Utterance::Ask(q.map_things(f)),
+        let mut out = self.clone();
+        match &mut out {
+            Utterance::Ask(q) => *q = q.map_things(f),
+            Utterance::Command(Action::Rename { thing, .. })
+            | Utterance::Tell(Fact::Alias { thing, .. })
+            | Utterance::Correct(thing) => *thing = thing.map_things(f),
+            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => {}
         }
+        out
     }
 }
 
 impl<O: Ontology> Question<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
+        self.things_within(&|_| true)
+    }
+
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         match self {
-            Question::Identify(d) => d.things(),
+            Question::Identify(d) | Question::Count(d) => d.things_within(within),
+            Question::Locate { thing, .. } | Question::Describe { thing, .. } => {
+                thing.things_within(within)
+            }
         }
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
-        match self {
-            Question::Identify(d) => Question::Identify(d.map_things(f)),
+        let mut out = self.clone();
+        match &mut out {
+            Question::Identify(d) | Question::Count(d) => *d = d.map_things(f),
+            Question::Locate { thing, .. } | Question::Describe { thing, .. } => {
+                *thing = thing.map_things(f);
+            }
         }
+        out
     }
 }
 
 impl<O: Ontology> Description<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
-        self.conditions.iter().flat_map(Condition::things).collect()
+        self.things_within(&|_| true)
+    }
+
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
+        self.conditions
+            .iter()
+            .flat_map(|c| c.things_within(within))
+            .collect()
+    }
+
+    /// The resolved things the description refers to.
+    pub fn items(&self) -> impl Iterator<Item = &O::Item> {
+        self.things().into_iter().filter_map(Thing::item)
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
@@ -206,23 +359,68 @@ impl<O: Ontology> Description<O> {
 }
 
 impl<O: Ontology> Condition<O> {
-    pub fn things(&self) -> Vec<&Thing<O>> {
+    /// The other thing the condition relates the described thing to.
+    pub fn other(&self) -> Option<&Thing<O>> {
         match self {
-            Condition::Related { other, .. } => vec![other],
+            Condition::Related { other, .. }
+            | Condition::Is(other)
+            | Condition::NamedLike(other)
+            | Condition::PartOf(other) => Some(other),
+            Condition::Called(_) | Condition::Named(_) => None,
+        }
+    }
+
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
+        self.other()
+            .map(|other| other.things_within(within))
+            .unwrap_or_default()
+    }
+
+    pub fn things(&self) -> Vec<&Thing<O>> {
+        self.other().map(Thing::things).unwrap_or_default()
+    }
+
+    pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
+        let mut out = self.clone();
+        if let Condition::Related { other, .. }
+        | Condition::Is(other)
+        | Condition::NamedLike(other)
+        | Condition::PartOf(other) = &mut out
+        {
+            *other = other.map_things(f);
+        }
+        match out {
+            Condition::NamedLike(Thing::Named(name)) => Condition::Named(name),
+            out => out,
+        }
+    }
+}
+
+impl<O: Ontology> Thing<O> {
+    /// The named or resolved things this one is, or refers to inside it.
+    pub fn things(&self) -> Vec<&Thing<O>> {
+        self.things_within(&|_| true)
+    }
+
+    pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
+        match self {
+            Thing::Fitting(d) if within(d) => d.things_within(within),
+            _ => vec![self],
+        }
+    }
+
+    /// The item this thing is resolved to, if it is.
+    pub fn item(&self) -> Option<&O::Item> {
+        match self {
+            Thing::Item(i) => Some(i),
+            _ => None,
         }
     }
 
     pub fn map_things(&self, f: &mut dyn FnMut(&Thing<O>) -> Thing<O>) -> Self {
         match self {
-            Condition::Related {
-                relation,
-                position,
-                other,
-            } => Condition::Related {
-                relation: relation.clone(),
-                position: *position,
-                other: f(other),
-            },
+            Thing::Fitting(d) => Thing::Fitting(d.map_things(f)),
+            _ => f(self),
         }
     }
 }
@@ -231,18 +429,23 @@ impl<O: Ontology> Reply<O> {
     /// Every item the reply mentions, in order.
     pub fn items(&self) -> Vec<&O::Item> {
         match self {
-            Reply::Extent(e) => e
-                .members
-                .iter()
-                .chain(e.description.things().into_iter().filter_map(|t| match t {
-                    Thing::Item(i) => Some(i),
-                    Thing::Named(_) => None,
-                }))
-                .collect(),
-            Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
+            Reply::Extent(e) => e.members.iter().chain(e.description.items()).collect(),
+            Reply::Count { description, .. } => description.items().collect(),
+            Reply::Location(item)
+            | Reply::Account { item, .. }
+            | Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
+            Reply::Proposal {
+                action: Action::Rename { thing, .. },
+                ..
+            }
+            | Reply::Reason {
+                action: Action::Rename { thing, .. },
+                ..
+            }
+            | Reply::Noted(Fact::Alias { thing, .. }) => thing.item().into_iter().collect(),
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
-            Reply::Trouble(_) => Vec::new(),
             Reply::Assuming { reply, .. } => reply.items(),
+            _ => Vec::new(),
         }
     }
 }

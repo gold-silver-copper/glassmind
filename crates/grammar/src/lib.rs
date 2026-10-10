@@ -213,53 +213,38 @@ where
     /// Problems in a rule list that would make it misbehave: duplicate IDs
     /// and empty right-hand sides.
     pub fn problems(rules: &[Rule<C, V>]) -> Vec<String> {
-        let mut out: Vec<String> = glassmind_rules::duplicate_ids(rules.iter().map(|r| &r.info))
+        glassmind_rules::duplicate_ids(rules.iter().map(|r| &r.info))
             .into_iter()
             .map(|id| format!("duplicate rule id {id}"))
-            .collect();
-        for rule in rules {
-            if rule.rhs.is_empty() {
-                out.push(format!(
-                    "rule {} has an empty right-hand side",
-                    rule.info.id
-                ));
-            }
-        }
-        out
+            .chain(
+                rules
+                    .iter()
+                    .filter(|r| r.rhs.is_empty())
+                    .map(|r| format!("rule {} has an empty right-hand side", r.info.id)),
+            )
+            .collect()
     }
 
     pub fn rules(&self) -> &[Rule<C, V>] {
         &self.rules
     }
 
-    pub fn start(&self) -> C {
-        self.start
-    }
-
     /// Parses `tokens` as the start category.
     pub fn parse<L: Lexicon<V>>(&self, lexicon: &L, tokens: &[L::Token]) -> Parse<V> {
-        self.parse_as(self.start, lexicon, tokens)
-    }
-
-    /// Parses `tokens` as category `cat`.
-    pub fn parse_as<L: Lexicon<V>>(&self, cat: C, lexicon: &L, tokens: &[L::Token]) -> Parse<V> {
-        let chart = self.chart(cat, lexicon, tokens);
+        let chart = self.chart(lexicon, tokens);
         let n = tokens.len();
         let mut readings = Vec::new();
         let mut seen = HashSet::new();
-        if let Some(last) = chart.columns.get(n) {
-            for item in last {
-                let Some(rule) = self.rules.get(item.rule) else {
-                    continue;
-                };
-                if item.start == 0
-                    && item.dot == rule.rhs.len()
-                    && rule.lhs == cat
-                    && let Some(phrase) = self.finish(item, n)
-                    && seen.insert(phrase.value.clone())
-                {
-                    readings.push(Rc::new(phrase));
-                }
+        for item in chart.columns.get(n).into_iter().flatten() {
+            if item.start == 0
+                && self
+                    .rules
+                    .get(item.rule)
+                    .is_some_and(|r| r.lhs == self.start && r.rhs.len() == item.dot)
+                && let Some(phrase) = self.finish(item, n)
+                && seen.insert(phrase.value.clone())
+            {
+                readings.push(Rc::new(phrase));
             }
         }
         Parse {
@@ -269,15 +254,12 @@ where
         }
     }
 
-    /// What may come right after `tokens`, read as the start of a `cat`.
-    /// Empty if `tokens` cannot begin one.
+    /// What may come right after `tokens`, read as the start of a phrase of
+    /// the start category. Empty if `tokens` cannot begin one.
     pub fn expected<L: Lexicon<V>>(&self, lexicon: &L, tokens: &[L::Token]) -> Vec<Expectation<V>> {
-        let chart = self.chart(self.start, lexicon, tokens);
+        let chart = self.chart(lexicon, tokens);
         let mut out: Vec<Expectation<V>> = Vec::new();
-        let Some(column) = chart.columns.get(tokens.len()) else {
-            return out;
-        };
-        for item in column {
+        for item in chart.columns.get(tokens.len()).into_iter().flatten() {
             let Some(rule) = self.rules.get(item.rule) else {
                 continue;
             };
@@ -314,39 +296,50 @@ where
         })
     }
 
-    fn chart<L: Lexicon<V>>(&self, cat: C, lexicon: &L, tokens: &[L::Token]) -> Chart<V> {
-        let n = tokens.len();
-        let mut columns: Vec<Vec<Item<V>>> = vec![Vec::new(); n + 1];
-        let mut keys: Vec<HashSet<Item<V>>> = vec![HashSet::new(); n + 1];
-        let mut overflow = false;
-        let mut reached = 0;
+    /// The symbol `item` waits for next; `None` once it is complete.
+    fn next_sym(&self, item: &Item<V>) -> Option<&Sym<C>> {
+        self.rules.get(item.rule)?.rhs.get(item.dot)
+    }
 
-        let mut initial = Vec::new();
-        for &r in self.by_lhs.get(&cat).into_iter().flatten() {
-            initial.push(Item {
-                rule: r,
+    /// Fresh items at `start` for every rule that builds a `cat`.
+    fn predict(&self, cat: C, start: usize) -> impl Iterator<Item = Item<V>> + '_ {
+        self.by_lhs
+            .get(&cat)
+            .into_iter()
+            .flatten()
+            .map(move |&rule| Item {
+                rule,
                 dot: 0,
-                start: 0,
+                start,
                 values: Vec::new(),
                 nodes: Vec::new(),
-            });
-        }
-        for item in initial {
-            push(&mut columns, &mut keys, 0, item);
-        }
+            })
+    }
 
+    fn chart<L: Lexicon<V>>(&self, lexicon: &L, tokens: &[L::Token]) -> Chart<V> {
+        let n = tokens.len();
+        let mut chart = Chart {
+            columns: vec![Vec::new(); n + 1],
+            keys: vec![HashSet::new(); n + 1],
+            reached: 0,
+            overflow: false,
+        };
+        for item in self.predict(self.start, 0) {
+            chart.push(0, item);
+        }
         for i in 0..=n {
             let mut predicted: BTreeSet<C> = BTreeSet::new();
             let mut k = 0;
-            while let Some(item) = columns.get(i).and_then(|c| c.get(k)).cloned() {
+            while let Some(item) = chart.columns.get(i).and_then(|c| c.get(k)).cloned() {
                 k += 1;
                 if k > MAX_ITEMS_PER_COLUMN {
-                    overflow = true;
+                    chart.overflow = true;
                     break;
                 }
                 let Some(rule) = self.rules.get(item.rule) else {
                     continue;
                 };
+                let token = tokens.get(i);
                 match rule.rhs.get(item.dot) {
                     None => {
                         // Complete: advance every item at `item.start` waiting for this category.
@@ -354,76 +347,52 @@ where
                             continue;
                         };
                         let phrase = Rc::new(phrase);
-                        let waiting: Vec<Item<V>> = columns
+                        let waiting: Vec<Item<V>> = chart
+                            .columns
                             .get(item.start)
                             .into_iter()
                             .flatten()
-                            .filter(|w| {
-                                self.rules
-                                    .get(w.rule)
-                                    .and_then(|wr| wr.rhs.get(w.dot))
-                                    .is_some_and(|s| *s == Sym::Cat(rule.lhs))
-                            })
+                            .filter(|w| self.next_sym(w) == Some(&Sym::Cat(rule.lhs)))
                             .cloned()
                             .collect();
-                        for mut w in waiting {
-                            w.dot += 1;
-                            w.values.push(phrase.value.clone());
-                            w.nodes.push(Node::Phrase(phrase.clone()));
-                            push(&mut columns, &mut keys, i, w);
+                        for w in waiting {
+                            let node = Node::Phrase(phrase.clone());
+                            chart.push(i, w.advance(Some(phrase.value.clone()), node));
                         }
                     }
                     Some(Sym::Cat(c)) => {
                         if predicted.insert(*c) {
-                            for &r in self.by_lhs.get(c).into_iter().flatten() {
-                                let new = Item {
-                                    rule: r,
-                                    dot: 0,
-                                    start: i,
-                                    values: Vec::new(),
-                                    nodes: Vec::new(),
-                                };
-                                push(&mut columns, &mut keys, i, new);
+                            for new in self.predict(*c, i) {
+                                chart.push(i, new);
                             }
                         }
                     }
                     Some(Sym::Word(w)) => {
-                        if let Some(token) = tokens.get(i)
-                            && lexicon.norm(token) == *w
-                        {
-                            let mut next = item.clone();
-                            next.dot += 1;
-                            next.nodes.push(Node::Token(i));
-                            push(&mut columns, &mut keys, i + 1, next);
+                        if token.is_some_and(|t| lexicon.norm(t) == *w) {
+                            chart.push(i + 1, item.advance(None, Node::Token(i)));
                         }
                     }
                     Some(Sym::Class(class)) => {
-                        if let Some(token) = tokens.get(i) {
-                            for value in lexicon.read_class(class, token) {
-                                let mut next = item.clone();
-                                next.dot += 1;
-                                next.values.push(value);
-                                next.nodes.push(Node::Token(i));
-                                push(&mut columns, &mut keys, i + 1, next);
-                            }
+                        for value in token
+                            .map(|t| lexicon.read_class(class, t))
+                            .into_iter()
+                            .flatten()
+                        {
+                            chart.push(i + 1, item.advance(Some(value), Node::Token(i)));
                         }
                     }
                 }
             }
-            if columns.get(i).is_some_and(|c| !c.is_empty()) {
-                reached = i;
+            if chart.columns.get(i).is_some_and(|c| !c.is_empty()) {
+                chart.reached = i;
             } else {
                 break;
             }
-            if overflow {
+            if chart.overflow {
                 break;
             }
         }
-        Chart {
-            columns,
-            reached,
-            overflow,
-        }
+        chart
     }
 
     /// Expresses `value` as a phrase of category `cat`, using the first
@@ -442,78 +411,84 @@ where
         if depth > MAX_GENERATION_DEPTH {
             return None;
         }
-        'rules: for &r in self.by_lhs.get(&cat).into_iter().flatten() {
-            let Some(rule) = self.rules.get(r) else {
-                continue;
-            };
-            if !rule.speak {
-                continue;
-            }
-            let children = match &rule.sem {
-                Sem::Const(v) if v == value => Vec::new(),
-                Sem::Const(_) | Sem::Build(_) => continue,
-                Sem::Both(_, split) => match split(value) {
-                    Some(c) => c,
-                    None => continue,
-                },
-            };
-            let mut spoken = Spoken {
-                words: Vec::new(),
-                rules: vec![rule.info],
-            };
-            let mut child_values = children.iter();
-            for sym in &rule.rhs {
-                match sym {
-                    Sym::Word(w) => spoken.words.push((*w).to_owned()),
-                    Sym::Class(class) => {
-                        let Some(v) = child_values.next() else {
-                            continue 'rules;
-                        };
-                        let Some(text) = lexicon.speak_class(class, v) else {
-                            continue 'rules;
-                        };
-                        spoken.words.push(text);
-                    }
-                    Sym::Cat(c) => {
-                        let Some(v) = child_values.next() else {
-                            continue 'rules;
-                        };
-                        let Some(sub) = self.generate_at(lexicon, *c, v, depth + 1) else {
-                            continue 'rules;
-                        };
-                        spoken.words.extend(sub.words);
-                        spoken.rules.extend(sub.rules);
-                    }
+        self.by_lhs.get(&cat).into_iter().flatten().find_map(|&r| {
+            let rule = self.rules.get(r)?;
+            self.generate_by(lexicon, rule, value, depth)
+        })
+    }
+
+    /// Expresses `value` with this one rule, if it speaks and can.
+    fn generate_by<L: Lexicon<V>>(
+        &self,
+        lexicon: &L,
+        rule: &Rule<C, V>,
+        value: &V,
+        depth: usize,
+    ) -> Option<Spoken> {
+        if !rule.speak {
+            return None;
+        }
+        let mut children = match &rule.sem {
+            Sem::Const(v) => (v == value).then(Vec::new)?,
+            Sem::Build(_) => return None,
+            Sem::Both(_, split) => split(value)?,
+        }
+        .into_iter();
+        let mut spoken = Spoken {
+            words: Vec::new(),
+            rules: vec![rule.info],
+        };
+        for sym in &rule.rhs {
+            match sym {
+                Sym::Word(w) => spoken.words.push((*w).to_owned()),
+                Sym::Class(class) => {
+                    let text = lexicon.speak_class(class, &children.next()?)?;
+                    spoken.words.push(text);
+                }
+                Sym::Cat(c) => {
+                    let sub = self.generate_at(lexicon, *c, &children.next()?, depth + 1)?;
+                    spoken.words.extend(sub.words);
+                    spoken.rules.extend(sub.rules);
                 }
             }
-            return Some(spoken);
         }
-        None
+        Some(spoken)
     }
 }
 
+/// The Earley chart: the items in each column, the same items without
+/// their parse trees for deduplication, and how far reading got.
 struct Chart<V> {
     columns: Vec<Vec<Item<V>>>,
+    keys: Vec<HashSet<Item<V>>>,
     reached: usize,
     overflow: bool,
 }
 
-fn push<V: Clone + Eq + Hash>(
-    columns: &mut [Vec<Item<V>>],
-    keys: &mut [HashSet<Item<V>>],
-    at: usize,
-    item: Item<V>,
-) {
-    // Items that differ only in their parse tree are the same item: keeping
-    // the first tree keeps the chart small, and the value is what matters.
-    let key = Item {
-        nodes: Vec::new(),
-        ..item.clone()
-    };
-    if let (Some(column), Some(seen)) = (columns.get_mut(at), keys.get_mut(at))
-        && seen.insert(key)
-    {
-        column.push(item);
+impl<V: Clone + Eq + Hash> Chart<V> {
+    fn push(&mut self, at: usize, item: Item<V>) {
+        // Items that differ only in their parse tree are the same item: keeping
+        // the first tree keeps the chart small, and the value is what matters.
+        let key = Item {
+            nodes: Vec::new(),
+            ..item.clone()
+        };
+        if let (Some(column), Some(seen)) = (self.columns.get_mut(at), self.keys.get_mut(at))
+            && seen.insert(key)
+        {
+            column.push(item);
+        }
+    }
+}
+
+impl<V: Clone> Item<V> {
+    /// The item with its next symbol read, which gave `value` (if any) and `node`.
+    fn advance(&self, value: Option<V>, node: Node<V>) -> Item<V> {
+        let mut next = self.clone();
+        next.dot += 1;
+        next.values.extend(value);
+        next.nodes.push(node);
+        next
     }
 }
 

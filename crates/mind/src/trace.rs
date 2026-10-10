@@ -1,6 +1,6 @@
 //! The record of how a turn was handled, for `--explain`.
 
-use std::fmt::Write as _;
+use std::fmt;
 
 use glassmind_meaning::interface::TokenSpan;
 use glassmind_meaning::{Labelled, Name, Ontology, Reply, Trouble, Utterance};
@@ -23,7 +23,7 @@ pub struct ReadingTrace<O: Ontology> {
 }
 
 /// Everything that happened in one turn.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct Trace<O: Ontology> {
     pub input: String,
     pub tokens: Vec<String>,
@@ -43,13 +43,7 @@ impl<O: Ontology> Trace<O> {
         Trace {
             input: input.to_owned(),
             tokens: tokens.iter().map(|t| t.text.clone()).collect(),
-            failure: None,
-            readings: Vec::new(),
-            chosen: None,
-            preferences: Vec::new(),
-            choice: String::new(),
-            reply: None,
-            reply_rules: Vec::new(),
+            ..Trace::default()
         }
     }
 
@@ -57,40 +51,48 @@ impl<O: Ontology> Trace<O> {
     /// spoke the reply, each once, in first-use order.
     pub fn rules(&self) -> Vec<RuleInfo> {
         let chosen = self.chosen.and_then(|i| self.readings.get(i));
-        let all = chosen
-            .into_iter()
-            .flat_map(|r| r.rules.iter().chain(r.world_rules.iter()))
-            .chain(self.preferences.iter())
-            .chain(self.reply_rules.iter());
-        let mut out: Vec<RuleInfo> = Vec::new();
-        for rule in all {
-            if !out.contains(rule) {
-                out.push(*rule);
-            }
-        }
-        out
+        unique(
+            chosen
+                .into_iter()
+                .flat_map(|r| r.rules.iter().chain(&r.world_rules))
+                .chain(&self.preferences)
+                .chain(&self.reply_rules),
+        )
     }
 
     /// The trace as text.
     pub fn render(&self) -> String {
-        let mut out = String::new();
-        let rounds = |rules: &[RuleInfo]| -> String {
-            let mut seen: Vec<&RuleInfo> = Vec::new();
-            for r in rules {
-                if !seen.contains(&r) {
-                    seen.push(r);
-                }
-            }
-            seen.iter()
-                .map(|r| format!("{} (round {})", r.id, r.round))
-                .collect::<Vec<_>>()
-                .join(", ")
-        };
-        let _ = writeln!(out, "input:  {}", self.input);
+        self.to_string()
+    }
+}
+
+/// Each rule once, in first-use order.
+fn unique<'a>(rules: impl IntoIterator<Item = &'a RuleInfo>) -> Vec<RuleInfo> {
+    let mut out = Vec::new();
+    for rule in rules {
+        if !out.contains(rule) {
+            out.push(*rule);
+        }
+    }
+    out
+}
+
+/// Each rule once, with its round.
+fn rounds(rules: &[RuleInfo]) -> String {
+    let rules: Vec<String> = unique(rules)
+        .iter()
+        .map(|r| format!("{} (round {})", r.id, r.round))
+        .collect();
+    rules.join(", ")
+}
+
+impl<O: Ontology> fmt::Display for Trace<O> {
+    fn fmt(&self, out: &mut fmt::Formatter<'_>) -> fmt::Result {
+        writeln!(out, "input:  {}", self.input)?;
         let words: Vec<String> = self.tokens.iter().map(|t| format!("[{t}]")).collect();
-        let _ = writeln!(out, "words:  {}", words.join(" "));
+        writeln!(out, "words:  {}", words.join(" "))?;
         if let Some(failure) = &self.failure {
-            let _ = writeln!(out, "parse:  no reading: {failure:?}");
+            writeln!(out, "parse:  no reading: {failure:?}")?;
         }
         for (i, r) in self.readings.iter().enumerate() {
             let marker = if self.chosen == Some(i) {
@@ -98,48 +100,39 @@ impl<O: Ontology> Trace<O> {
             } else {
                 ""
             };
-            let _ = writeln!(out, "reading {}{marker}:", i + 1);
-            let _ = writeln!(out, "  parse:   {}", r.parse);
-            let _ = writeln!(out, "  meaning: {:?}", r.meaning);
-            let _ = writeln!(out, "  rules:   {}", rounds(&r.rules));
+            writeln!(out, "reading {}{marker}:", i + 1)?;
+            writeln!(out, "  parse:   {}", r.parse)?;
+            writeln!(out, "  meaning: {:?}", r.meaning)?;
+            writeln!(out, "  rules:   {}", rounds(&r.rules))?;
             for (name, items) in &r.resolutions {
                 let found: Vec<String> = items.iter().map(Labelled::label).collect();
-                let _ = writeln!(
-                    out,
-                    "  name `{}` -> {}",
-                    name.0,
-                    if found.is_empty() {
-                        "nothing".to_owned()
-                    } else {
-                        found.join(", ")
-                    }
-                );
+                let found = if found.is_empty() {
+                    "nothing".to_owned()
+                } else {
+                    found.join(", ")
+                };
+                writeln!(out, "  name `{}` -> {found}", name.0)?;
             }
             for (meaning, result) in &r.outcomes {
-                let _ = writeln!(out, "  resolved: {meaning:?}");
+                writeln!(out, "  resolved: {meaning:?}")?;
                 match result {
-                    Ok(reply) => {
-                        let _ = writeln!(out, "  world:    {reply:?}");
-                    }
-                    Err(trouble) => {
-                        let _ = writeln!(out, "  dropped:  {trouble:?}");
-                    }
+                    Ok(reply) => writeln!(out, "  world:    {reply:?}")?,
+                    Err(trouble) => writeln!(out, "  dropped:  {trouble:?}")?,
                 }
             }
             if !r.world_rules.is_empty() {
-                let _ = writeln!(out, "  world rules: {}", rounds(&r.world_rules));
+                writeln!(out, "  world rules: {}", rounds(&r.world_rules))?;
             }
         }
         if !self.choice.is_empty() {
-            let _ = writeln!(out, "choice: {}", self.choice);
+            writeln!(out, "choice: {}", self.choice)?;
         }
         if !self.preferences.is_empty() {
-            let _ = writeln!(out, "preferences: {}", rounds(&self.preferences));
+            writeln!(out, "preferences: {}", rounds(&self.preferences))?;
         }
         if let Some(reply) = &self.reply {
-            let _ = writeln!(out, "reply:  {reply:?}");
+            writeln!(out, "reply:  {reply:?}")?;
         }
-        let _ = writeln!(out, "spoken by: {}", rounds(&self.reply_rules));
-        out
+        writeln!(out, "spoken by: {}", rounds(&self.reply_rules))
     }
 }

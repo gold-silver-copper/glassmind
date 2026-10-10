@@ -3,12 +3,15 @@
 //! Follows the definitions in `docs/tasks.md`: which files count, what an
 //! item is, and when a function calls a name.
 
+use std::collections::{BTreeMap, BTreeSet};
 use std::path::{Path, PathBuf};
 
-use proc_macro2::Span;
+use proc_macro2::{Ident, Span, TokenStream, TokenTree};
+use quote::ToTokens;
 use syn::visit::Visit;
 
-use crate::{RustItem, RustKind};
+use crate::RustItem;
+use crate::RustKind::{self, Field, Function};
 
 /// One indexed item with what the world knows about it.
 #[derive(Debug, Clone)]
@@ -30,6 +33,10 @@ pub struct Call {
     pub line: u32,
 }
 
+/// Where an identifier is written: the index of its file in
+/// [`SourceIndex::files`], its 1-based line and 0-based column in characters.
+pub type Pos = (usize, u32, u32);
+
 /// Everything indexed from one source.
 #[derive(Debug, Clone, Default)]
 pub struct SourceIndex {
@@ -37,6 +44,17 @@ pub struct SourceIndex {
     pub root: PathBuf,
     pub records: Vec<Record>,
     pub calls: Vec<Call>,
+    /// The files indexed, relative to the root.
+    pub files: Vec<String>,
+    /// Every identifier token written in the files (lexed with
+    /// `proc-macro2`, so also inside macro invocations), and where.
+    pub idents: BTreeMap<String, BTreeSet<Pos>>,
+    /// Where syntax alone says what kind of item an identifier names. A
+    /// function: its declaration, the last segment of an expression path, a
+    /// method call's name, a name in a `use` tree. A field: its declaration,
+    /// `expr.f`, `S { f: v }`, `S { f: p }`. Macro bodies are not parsed, so
+    /// no token in one is here.
+    pub names: BTreeMap<Pos, RustKind>,
     /// Files that could not be read or parsed, with the reason.
     pub skipped: Vec<(String, String)>,
 }
@@ -47,10 +65,8 @@ pub fn rust_files(root: &Path) -> Vec<String> {
     let mut out = Vec::new();
     let mut stack = vec![root.to_path_buf()];
     while let Some(dir) = stack.pop() {
-        let Ok(entries) = std::fs::read_dir(&dir) else {
-            continue;
-        };
-        for entry in entries.flatten() {
+        // Unreadable directories and entries are skipped.
+        for entry in std::fs::read_dir(&dir).into_iter().flatten().flatten() {
             let name = entry.file_name().to_string_lossy().into_owned();
             if name.starts_with('.') {
                 continue;
@@ -94,22 +110,46 @@ pub fn index_source(name: &str, root: &Path) -> SourceIndex {
                 continue;
             }
         };
-        let parsed = match syn::parse_file(&text) {
-            Ok(p) => p,
-            Err(e) => {
-                index.skipped.push((file, e.to_string()));
-                continue;
-            }
+        let (syntax, tokens) =
+            match syn::parse_file(&text).and_then(|p| Ok((p, text.parse::<TokenStream>()?))) {
+                Ok(p) => p,
+                Err(e) => {
+                    index.skipped.push((file, e.to_string()));
+                    continue;
+                }
+            };
+        let file_index = index.files.len();
+        let lines: Vec<&str> = text.lines().collect();
+        // Only tokens written as they are: a doc comment lexes as a `doc`
+        // attribute whose span is the comment.
+        let written = |ident: &Ident| {
+            let start = ident.span().start();
+            lines.get(start.line.wrapping_sub(1)).is_some_and(|l| {
+                ident
+                    .to_string()
+                    .chars()
+                    .zip(l.chars().skip(start.column))
+                    .all(|(a, b)| a == b)
+            })
         };
+        for ident in idents_in(tokens).into_iter().filter(written) {
+            index
+                .idents
+                .entry(ident.to_string())
+                .or_default()
+                .insert(pos(file_index, &ident));
+        }
+        index.files.push(file.clone());
         let mut visitor = Indexer {
             source: name,
             file: &file,
+            file_index,
             text: &text,
             index: &mut index,
             current_fn: Vec::new(),
             owner: Vec::new(),
         };
-        visitor.visit_file(&parsed);
+        visitor.visit_file(&syntax);
     }
     index.calls.sort();
     index.calls.dedup();
@@ -119,6 +159,7 @@ pub fn index_source(name: &str, root: &Path) -> SourceIndex {
 struct Indexer<'a> {
     source: &'a str,
     file: &'a str,
+    file_index: usize,
     text: &'a str,
     index: &'a mut SourceIndex,
     /// Indices of the functions whose bodies we are inside, innermost last.
@@ -131,18 +172,20 @@ fn line_of(span: Span) -> u32 {
     u32::try_from(span.start().line).unwrap_or(u32::MAX)
 }
 
+/// The lines of a doc comment, trimmed.
 fn doc_lines(attrs: &[syn::Attribute]) -> Vec<String> {
     attrs
         .iter()
-        .filter(|a| a.path().is_ident("doc"))
         .filter_map(|a| match &a.meta {
-            syn::Meta::NameValue(nv) => match &nv.value {
-                syn::Expr::Lit(syn::ExprLit {
-                    lit: syn::Lit::Str(s),
-                    ..
-                }) => Some(s.value().trim().to_owned()),
-                _ => None,
-            },
+            syn::Meta::NameValue(syn::MetaNameValue {
+                path,
+                value:
+                    syn::Expr::Lit(syn::ExprLit {
+                        lit: syn::Lit::Str(s),
+                        ..
+                    }),
+                ..
+            }) if path.is_ident("doc") => Some(s.value().trim().to_owned()),
             _ => None,
         })
         .collect()
@@ -157,14 +200,25 @@ fn type_name(ty: &syn::Type) -> Option<String> {
     }
 }
 
-fn idents_in(tokens: proc_macro2::TokenStream, out: &mut Vec<String>) {
-    for tree in tokens {
-        match tree {
-            proc_macro2::TokenTree::Ident(i) => out.push(i.to_string()),
-            proc_macro2::TokenTree::Group(g) => idents_in(g.stream(), out),
-            _ => {}
-        }
-    }
+fn pos(file: usize, ident: &Ident) -> Pos {
+    let start = ident.span().start();
+    (
+        file,
+        line_of(ident.span()),
+        u32::try_from(start.column).unwrap_or(u32::MAX),
+    )
+}
+
+/// Every identifier in the tokens, also inside groups.
+fn idents_in(tokens: TokenStream) -> Vec<Ident> {
+    tokens
+        .into_iter()
+        .flat_map(|tree| match tree {
+            TokenTree::Ident(i) => vec![i],
+            TokenTree::Group(g) => idents_in(g.stream()),
+            _ => Vec::new(),
+        })
+        .collect()
 }
 
 impl Indexer<'_> {
@@ -181,7 +235,7 @@ impl Indexer<'_> {
 
     fn add(
         &mut self,
-        name: &syn::Ident,
+        name: &Ident,
         kind: RustKind,
         owner: Option<String>,
         attrs: &[syn::Attribute],
@@ -200,6 +254,10 @@ impl Indexer<'_> {
             doc: doc_lines(attrs),
             type_idents: Vec::new(),
         });
+        // A function's or field's declaration names its kind.
+        if matches!(kind, Function | Field) {
+            self.names(name, kind);
+        }
         self.index.records.len() - 1
     }
 
@@ -209,8 +267,7 @@ impl Indexer<'_> {
         attrs: &[syn::Attribute],
         body: Option<&syn::Block>,
     ) {
-        let owner = self.owner.last().cloned();
-        let at = self.add(&sig.ident, RustKind::Function, owner, attrs);
+        let at = self.add(&sig.ident, Function, self.owner.last().cloned(), attrs);
         if let Some(body) = body {
             // Items nested in the body get their own owner context.
             let saved = std::mem::take(&mut self.owner);
@@ -221,7 +278,28 @@ impl Indexer<'_> {
         }
     }
 
-    fn call(&mut self, name: &syn::Ident) {
+    /// Visits the items of an `impl` or trait body as members of `owner`.
+    /// They are only its functions (and consts); visiting them directly
+    /// keeps them out of the enclosing function's calls.
+    fn members(&mut self, owner: String, visit: impl FnOnce(&mut Self)) {
+        self.owner.push(owner);
+        let saved_fn = std::mem::take(&mut self.current_fn);
+        visit(self);
+        self.current_fn = saved_fn;
+        self.owner.pop();
+    }
+
+    fn names(&mut self, ident: &Ident, kind: RustKind) {
+        self.index.names.insert(pos(self.file_index, ident), kind);
+    }
+
+    fn names_field(&mut self, member: &syn::Member) {
+        if let syn::Member::Named(ident) = member {
+            self.names(ident, Field);
+        }
+    }
+
+    fn call(&mut self, name: &Ident) {
         if let Some(&caller) = self.current_fn.last() {
             self.index.calls.push(Call {
                 caller,
@@ -246,27 +324,20 @@ impl<'ast> Visit<'ast> for Indexer<'_> {
     }
 
     fn visit_item_impl(&mut self, i: &'ast syn::ItemImpl) {
-        let owner = type_name(&i.self_ty).unwrap_or_default();
-        self.owner.push(owner);
-        // Nested items inside an impl are only its functions (and consts);
-        // visiting them directly keeps them out of the enclosing function's calls.
-        let saved_fn = std::mem::take(&mut self.current_fn);
-        for item in &i.items {
-            self.visit_impl_item(item);
-        }
-        self.current_fn = saved_fn;
-        self.owner.pop();
+        self.members(type_name(&i.self_ty).unwrap_or_default(), |v| {
+            for item in &i.items {
+                v.visit_impl_item(item);
+            }
+        });
     }
 
     fn visit_item_trait(&mut self, t: &'ast syn::ItemTrait) {
         self.add(&t.ident, RustKind::Trait, None, &t.attrs);
-        self.owner.push(t.ident.to_string());
-        let saved_fn = std::mem::take(&mut self.current_fn);
-        for item in &t.items {
-            self.visit_trait_item(item);
-        }
-        self.current_fn = saved_fn;
-        self.owner.pop();
+        self.members(t.ident.to_string(), |v| {
+            for item in &t.items {
+                v.visit_trait_item(item);
+            }
+        });
     }
 
     fn visit_item_struct(&mut self, s: &'ast syn::ItemStruct) {
@@ -274,16 +345,12 @@ impl<'ast> Visit<'ast> for Indexer<'_> {
         if let syn::Fields::Named(fields) = &s.fields {
             for field in &fields.named {
                 if let Some(ident) = &field.ident {
-                    let at = self.add(
-                        ident,
-                        RustKind::Field,
-                        Some(s.ident.to_string()),
-                        &field.attrs,
-                    );
-                    let mut idents = Vec::new();
-                    idents_in(quote::ToTokens::to_token_stream(&field.ty), &mut idents);
-                    if let Some(record) = self.index.records.get_mut(at) {
-                        record.type_idents = idents;
+                    self.add(ident, Field, Some(s.ident.to_string()), &field.attrs);
+                    if let Some(record) = self.index.records.last_mut() {
+                        record.type_idents = idents_in(field.ty.to_token_stream())
+                            .iter()
+                            .map(ToString::to_string)
+                            .collect();
                     }
                 }
             }
@@ -309,8 +376,46 @@ impl<'ast> Visit<'ast> for Indexer<'_> {
         syn::visit::visit_expr_call(self, c);
     }
 
+    fn visit_expr_path(&mut self, p: &'ast syn::ExprPath) {
+        if let Some(last) = p.path.segments.last() {
+            self.names(&last.ident, Function);
+        }
+        syn::visit::visit_expr_path(self, p);
+    }
+
+    /// `S { f }` names the field and a variable at once, so `f` is not
+    /// taken as an expression path.
+    fn visit_field_value(&mut self, f: &'ast syn::FieldValue) {
+        if f.colon_token.is_some() {
+            self.names_field(&f.member);
+            syn::visit::visit_field_value(self, f);
+        }
+    }
+
+    fn visit_field_pat(&mut self, f: &'ast syn::FieldPat) {
+        if f.colon_token.is_some() {
+            self.names_field(&f.member);
+            syn::visit::visit_field_pat(self, f);
+        }
+    }
+
+    fn visit_expr_field(&mut self, f: &'ast syn::ExprField) {
+        self.names_field(&f.member);
+        syn::visit::visit_expr_field(self, f);
+    }
+
+    fn visit_use_name(&mut self, u: &'ast syn::UseName) {
+        self.names(&u.ident, Function);
+    }
+
+    fn visit_use_rename(&mut self, u: &'ast syn::UseRename) {
+        self.names(&u.ident, Function);
+        self.names(&u.rename, Function);
+    }
+
     fn visit_expr_method_call(&mut self, m: &'ast syn::ExprMethodCall) {
         self.call(&m.method);
+        self.names(&m.method, Function);
         syn::visit::visit_expr_method_call(self, m);
     }
 }

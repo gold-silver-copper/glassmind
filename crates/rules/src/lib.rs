@@ -39,11 +39,7 @@ impl Switches {
     }
 
     /// Every rule on except those listed.
-    pub fn without<I, S>(ids: I) -> Self
-    where
-        I: IntoIterator<Item = S>,
-        S: Into<String>,
-    {
+    pub fn without(ids: impl IntoIterator<Item = impl Into<String>>) -> Self {
         Switches {
             disabled: ids.into_iter().map(Into::into).collect(),
         }
@@ -52,20 +48,15 @@ impl Switches {
     pub fn on(&self, id: &str) -> bool {
         !self.disabled.contains(id)
     }
-
-    pub fn disabled(&self) -> impl Iterator<Item = &str> {
-        self.disabled.iter().map(String::as_str)
-    }
 }
 
 /// Every rule ID that appears more than once in `rules`, for start-up checks.
 pub fn duplicate_ids<'a>(rules: impl IntoIterator<Item = &'a RuleInfo>) -> Vec<&'static str> {
     let mut seen = BTreeSet::new();
-    let mut duplicates = BTreeSet::new();
-    for rule in rules {
-        if !seen.insert(rule.id) {
-            duplicates.insert(rule.id);
-        }
-    }
+    let duplicates: BTreeSet<_> = rules
+        .into_iter()
+        .map(|r| r.id)
+        .filter(|id| !seen.insert(*id))
+        .collect();
     duplicates.into_iter().collect()
 }

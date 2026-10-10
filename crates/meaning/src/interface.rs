@@ -6,7 +6,7 @@
 
 use glassmind_rules::RuleInfo;
 
-use crate::{Name, Ontology, Question, Reply, Trouble, Utterance};
+use crate::{Action, Fact, Name, Ontology, Question, Reply, Trouble, Utterance};
 
 /// One stretch of the user's input that the language treats as a token.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -25,6 +25,9 @@ pub struct Reading<O: Ontology> {
     pub rules: Vec<RuleInfo>,
     /// The parse tree, written out for `--explain`.
     pub parse: String,
+    /// How many tokens this reading takes to mean nothing (a remark, a
+    /// greeting, a word joining two ways of asking).
+    pub idle: usize,
 }
 
 /// What the language made of the input.
@@ -78,6 +81,19 @@ pub trait World<O: Ontology> {
         question: &Question<O>,
         fired: &mut Vec<RuleInfo>,
     ) -> Result<Reply<O>, Trouble<O>>;
+    /// The edit that would carry out an action whose things are all
+    /// resolved to items, as a proposal, or why it cannot be proposed (a
+    /// rename to a name not given can at most ask which item is meant);
+    /// nothing is changed. Pushes the world rules it used onto `fired`.
+    fn propose(
+        &self,
+        action: &Action<O>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<O>, Trouble<O>>;
+    /// The fact a user stated, with its things resolved to items, as
+    /// noted, or why it cannot be (the name may mean several items). Pushes
+    /// the world rules it used onto `fired`.
+    fn note(&self, fact: &Fact<O>, fired: &mut Vec<RuleInfo>) -> Result<Reply<O>, Trouble<O>>;
     /// The names of all items, for completion, sorted and deduplicated.
     fn names(&self) -> Vec<String>;
 }

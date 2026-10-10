@@ -43,8 +43,8 @@ fn is_word_char(c: char) -> bool {
     c.is_alphanumeric() || c == '_' || c == '\'' || c == '-'
 }
 
-/// Splits `text` into tokens.
-pub fn tokenize(text: &str) -> Vec<Token> {
+/// Splits `text` into tokens, given the words the grammar knows.
+pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
     let mut tokens = Vec::new();
     let chars: Vec<(usize, char)> = text.char_indices().collect();
     let end_of = |i: usize| chars.get(i).map_or(text.len(), |&(b, _)| b);
@@ -52,43 +52,36 @@ pub fn tokenize(text: &str) -> Vec<Token> {
     while let Some(&(start, c)) = chars.get(i) {
         if c.is_whitespace() {
             i += 1;
-        } else if c == '`' {
+            continue;
+        }
+        // The token's text, its shape, and the index of the char after it.
+        let (word, shape, next) = if c == '`' {
             // A quoted identifier runs to the next backtick (or the end).
             let mut j = i + 1;
             while chars.get(j).is_some_and(|&(_, d)| d != '`') {
                 j += 1;
             }
-            let inner = text
-                .get(end_of(i + 1)..end_of(j))
-                .unwrap_or_default()
-                .trim();
-            let close = if chars.get(j).is_some() { j + 1 } else { j };
-            if !inner.is_empty() {
-                tokens.push(Token {
-                    text: inner.to_owned(),
-                    norm: inner.to_lowercase(),
-                    shape: Shape::Code,
-                    start,
-                    end: end_of(close),
-                });
-            }
-            i = close;
-        } else if is_word_char(c) {
-            // A word, joined across `::` and `.` when both sides are word characters.
+            let inner = text.get(end_of(i + 1)..end_of(j)).unwrap_or_default();
+            // A call's parentheses (`pair()`) are not part of the name.
+            let inner = inner.trim();
+            let inner = inner.strip_suffix("()").unwrap_or(inner);
+            // Past the closing backtick, if there is one.
+            (inner, Shape::Code, (j + 1).min(chars.len()))
+        } else if is_word_char(c) && c != '\'' && c != '-' {
+            // A word (a leading apostrophe opens a quote, and a leading
+            // hyphen is a dash, so both are punctuation), joined across `::` and `.` when both sides are word characters.
             let mut j = i;
             loop {
                 while chars.get(j).is_some_and(|&(_, d)| is_word_char(d)) {
                     j += 1;
                 }
-                let joiner = match (chars.get(j), chars.get(j + 1), chars.get(j + 2)) {
-                    (Some(&(_, ':')), Some(&(_, ':')), Some(&(_, d))) if is_word_char(d) => 2,
-                    (Some(&(_, '.')), Some(&(_, d)), _) if d.is_alphanumeric() || d == '_' => 1,
-                    _ => 0,
-                };
-                if joiner == 0 {
-                    break;
+                match (chars.get(j), chars.get(j + 1), chars.get(j + 2)) {
+                    (Some(&(_, ':')), Some(&(_, ':')), Some(&(_, d))) if is_word_char(d) => j += 2,
+                    (Some(&(_, '.')), Some(&(_, d)), _) if d.is_alphanumeric() || d == '_' => {
+                        j += 1
+                    }
+                    _ => break,
                 }
-                j += joiner;
             }
             // Trailing apostrophes and hyphens belong to the punctuation, not the word.
             while j > i + 1
@@ -98,38 +91,67 @@ pub fn tokenize(text: &str) -> Vec<Token> {
             {
                 j -= 1;
             }
+            // A word with "'s" that is no known word ("What's" is one) owns
+            // what follows ("change App's `x`", "show me mobility's
+            // fields"), and the "'s" is a word of its own; but in lower
+            // case, a known word before it says it is short for "is"
+            // ("there's").
+            let lower = |k| {
+                text.get(start..end_of(k))
+                    .unwrap_or_default()
+                    .to_lowercase()
+            };
+            if j > i + 2
+                && chars.get(j - 2).is_some_and(|&(_, d)| d == '\'')
+                && chars.get(j - 1).is_some_and(|&(_, d)| d == 's')
+                && !known(&lower(j))
+                && (c.is_uppercase() || !known(&lower(j - 2)))
+            {
+                j -= 2;
+            }
+            // A letter with a slash after it is one shortened word: "w/".
+            if j == i + 1 && chars.get(j).is_some_and(|&(_, d)| d == '/') {
+                j += 1;
+            }
             let word = text.get(start..end_of(j)).unwrap_or_default();
+            (word, shape_of(word), j)
+        } else if c == '\''
+            && chars.get(i + 1).is_some_and(|&(_, d)| d == 's')
+            && !chars.get(i + 2).is_some_and(|&(_, d)| is_word_char(d))
+            && tokens.last().is_some_and(|t: &Token| t.end == start)
+        {
+            // The "'s" of a name owning what follows: "App's", "`App`'s".
+            let word = text.get(start..end_of(i + 2)).unwrap_or_default();
+            (word, Shape::Word, i + 2)
+        } else {
+            // One punctuation character; lowercasing leaves it as it is.
+            let p = text.get(start..end_of(i + 1)).unwrap_or_default();
+            (p, Shape::Punct, i + 1)
+        };
+        // An empty pair of backticks is no token.
+        if !word.is_empty() {
             tokens.push(Token {
                 text: word.to_owned(),
                 norm: word.to_lowercase(),
-                shape: shape_of(word),
+                shape,
                 start,
-                end: end_of(j),
+                end: end_of(next),
             });
-            i = j;
-        } else {
-            let end = end_of(i + 1);
-            let p = text.get(start..end).unwrap_or_default();
-            tokens.push(Token {
-                text: p.to_owned(),
-                norm: p.to_owned(),
-                shape: Shape::Punct,
-                start,
-                end,
-            });
-            i += 1;
         }
+        i = next;
     }
     tokens
 }
 
 fn shape_of(word: &str) -> Shape {
-    if word.chars().all(|c| c.is_ascii_digit()) {
-        return Shape::Number;
-    }
-    let inner_upper = word.chars().skip(1).any(char::is_uppercase);
-    let has_digit = word.chars().any(|c| c.is_ascii_digit());
-    if word.contains('_') || word.contains("::") || word.contains('.') || inner_upper || has_digit {
+    let digit = |c: char| c.is_ascii_digit();
+    if word.chars().all(digit) {
+        Shape::Number
+    } else if word.contains(['_', ':', '.'])
+        || word.contains(digit)
+        || word.chars().skip(1).any(char::is_uppercase)
+    {
+        // A word holds `:` only as part of `::`.
         Shape::Code
     } else {
         Shape::Word
@@ -142,7 +164,10 @@ mod tests {
 
     #[test]
     fn splits_words_code_and_punctuation() {
-        let t = tokenize("What calls `spawn_wave`? rename Player::hp, ok player.hp's");
+        let t = tokenize(
+            "What calls `spawn_wave`? rename Player::hp, ok player.hp's w/ Option/Vec App's What's",
+            &|w| w == "what's",
+        );
         let shapes: Vec<(String, Shape)> = t.iter().map(|t| (t.text.clone(), t.shape)).collect();
         assert_eq!(
             shapes,
@@ -155,7 +180,15 @@ mod tests {
                 ("Player::hp".into(), Shape::Code),
                 (",".into(), Shape::Punct),
                 ("ok".into(), Shape::Word),
-                ("player.hp's".into(), Shape::Code),
+                ("player.hp".into(), Shape::Code),
+                ("'s".into(), Shape::Word),
+                ("w/".into(), Shape::Word),
+                ("Option".into(), Shape::Word),
+                ("/".into(), Shape::Punct),
+                ("Vec".into(), Shape::Word),
+                ("App".into(), Shape::Word),
+                ("'s".into(), Shape::Word),
+                ("What's".into(), Shape::Word),
             ]
         );
     }

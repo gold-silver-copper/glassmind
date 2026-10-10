@@ -1,7 +1,7 @@
 //! Turning a reply into the machine-readable answer format.
 
-use glassmind_answer::{ItemKey, ItemKind, Outcome, Refusal, Response, Stage};
-use glassmind_meaning::{Reply, Trouble};
+use glassmind_answer::{Change, ItemKey, ItemKind, MetaAct, Outcome, Refusal, Response, Stage};
+use glassmind_meaning::{Action, Reply, Thing, Trouble};
 use glassmind_mind::{Progress, Turn};
 use glassmind_world_rust::{Rust, RustItem, RustKind};
 
@@ -26,7 +26,50 @@ pub fn response(reply: &Reply<Rust>) -> Response {
         Reply::Extent(e) => Response::Items {
             items: e.members.iter().map(key).collect(),
         },
+        Reply::Location(item) => Response::Items {
+            items: [key(item)].into(),
+        },
+        Reply::Account { item, .. } => Response::Describe { item: key(item) },
+        Reply::Count { count, .. } => Response::Count { count: *count },
         Reply::Assuming { reply, .. } => response(reply),
+        Reply::Proposal {
+            action:
+                Action::Rename {
+                    thing: Thing::Item(item),
+                    name: Some(name),
+                    ..
+                },
+            spots,
+        } => Response::Edit {
+            changes: spots
+                .iter()
+                .map(|s| Change {
+                    source: s.source.clone(),
+                    file: s.file.clone(),
+                    line: s.line,
+                    column: s.column,
+                    old: item.name.clone(),
+                    new: name.0.clone(),
+                })
+                .collect(),
+        },
+        Reply::Forgotten => Response::Meta {
+            act: MetaAct::Forget,
+        },
+        Reply::Noted(_) => Response::Meta {
+            act: MetaAct::Noted,
+        },
+        Reply::Recall(_) => Response::Meta {
+            act: MetaAct::ShowContext,
+        },
+        Reply::Proposal { .. } => Response::Refuse {
+            refusal: Refusal::Unsupported,
+        },
+        Reply::Reason { turn, .. } => Response::Meta {
+            act: MetaAct::ExplainAction {
+                turn: u32::try_from(*turn).unwrap_or(u32::MAX),
+            },
+        },
         Reply::Trouble(t) => match t {
             Trouble::UnknownWord { word, .. } => Response::Refuse {
                 refusal: Refusal::UnknownWord { word: word.clone() },
