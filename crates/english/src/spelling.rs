@@ -68,7 +68,8 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// Also from asking where a thing is defined and what it does:
 /// "where is strip_expire defind", "SavedConfig defned where", "where is
 /// number_syntax deffined", "where `rooms_cursor` definedd", "what
-/// SessionRounds do exactlly", "explain page_block, purpse?".
+/// SessionRounds do exactlly", "explain page_block, purpse?". And from
+/// asking to rename a field: "pls renam field touched to was_touched".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -235,6 +236,7 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.definedd", "definedd", "defined"),
             ("en.spelling.exactlly", "exactlly", "exactly"),
             ("en.spelling.purpse", "purpse", "purpose"),
+            ("en.spelling.renam", "renam", "rename"),
         ],
     ),
 ];

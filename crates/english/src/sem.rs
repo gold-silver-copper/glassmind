@@ -177,6 +177,10 @@ pub enum Cat {
     /// A thing set up to be talked about, perhaps with a comment on it: "the
     /// `x` field on `S`", "`x` in `S` is confusing".
     Topic,
+    /// A thing to be renamed, named by a word the system knows as English,
+    /// which saying its kind shows to be a name: "field live", "the to
+    /// field".
+    Renamed,
     /// Words asking the hearer to carry out the request just made: "can
     /// you do that for me?", "could you take care of that?".
     Errand,

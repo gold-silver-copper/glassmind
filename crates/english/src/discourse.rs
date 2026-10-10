@@ -58,6 +58,11 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     ("en.prompt.i_m_curious", 11, "i'm curious"),
     ("en.prompt.i_m_wondering", 11, "i'm wondering"),
     ("en.prompt.bare_trying_to", 11, "trying to"),
+    // "um, i want to rename the field mergeable to ...", "need the status
+    // field renamed to load_status": a change the speaker wants made.
+    ("en.prompt.i_want_to", 25, "i want to"),
+    ("en.prompt.need", 25, "need"),
+    ("en.prompt.i_need", 25, "i need"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {

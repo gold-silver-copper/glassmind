@@ -964,6 +964,28 @@ mod tests {
         assert!(readings.iter().any(|r| r.meaning == owned));
     }
 
+    /// Saying the kind shows a word the system knows as English to be a
+    /// name: these all ask to rename the field named "to".
+    #[test]
+    fn a_known_word_with_its_kind_is_a_name() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Command(Action::Rename {
+            thing: Thing::Named(Name("to".into())),
+            kind: Some(RustKind::Field),
+            name: Some(Name("dest_node".into())),
+        });
+        for text in [
+            "rename the to field to dest_node",
+            "pls renam field to to dest_node",
+            "i need the to field renamed to dest_node",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
     /// A thing mentioned by its owner can be what a verb's subject is, and
     /// the question word can stand where the object goes: these all ask
     /// which functions the method `x` of `Rack` calls.

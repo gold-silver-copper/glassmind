@@ -106,8 +106,9 @@ pub(crate) fn related<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     })
 }
 
-/// A thing named by a known word, mentioned as an owner.
-fn owner<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+/// A thing named by a known word, mentioned as an owner or as the thing to
+/// rename.
+pub(crate) fn owner<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c.last()? {
         Sem::Thing(thing) => Some(Sem::Mention {
             thing: thing.clone(),

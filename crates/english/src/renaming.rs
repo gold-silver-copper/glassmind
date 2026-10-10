@@ -16,7 +16,8 @@ use glassmind_meaning::{
 
 use crate::aside::filler;
 use crate::asking::read_only_rule;
-use crate::lexicon::{CODE, NAME, TEXT};
+use crate::lexicon::{CODE, NAME, SAID, TEXT};
+use crate::mention::{of_kind, owner};
 use crate::sem::{Cat, Sem};
 use crate::spoken;
 use crate::{blank, first, word};
@@ -208,6 +209,22 @@ fn offered<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         return None;
     };
     Some(renaming(thing.clone(), kind.clone(), Some(name.clone())))
+}
+
+/// "rename `x` -> `y`, field not fn": the request, of the kind said after
+/// it, unless it said another.
+fn of_kind_said<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let [
+        Sem::Utterance(Utterance::Command(Action::Rename { thing, kind, name })),
+        Sem::Kind { kind: said, .. },
+        ..,
+    ] = c
+    else {
+        return None;
+    };
+    kind.as_ref()
+        .is_none_or(|k| k == said)
+        .then(|| renaming(thing.clone(), Some(said.clone()), name.clone()))
 }
 
 /// "the field": the thing said before, of the kind named.
@@ -649,6 +666,53 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Updating,
             vec![C(Updating), Class(TEXT)],
             first,
+        ),
+    ]);
+    let named = |id, lhs, rhs, build| read_only_rule(id, 25, lhs, rhs, build);
+    rules.extend([
+        // "rename field live to is_active", "can u rename teh named field
+        // to has_name", "need the status field renamed to load_status",
+        // "field up too short, rename to up_dir": the thing to rename named
+        // by a word the system knows, with its kind.
+        named(
+            "en.renamed.kind_word",
+            Renamed,
+            vec![C(Noun), Class(SAID)],
+            |c| of_kind(&[c.first()?.clone(), owner(c)?]),
+        ),
+        named(
+            "en.renamed.the_word_kind",
+            Renamed,
+            vec![W("the"), Class(SAID), C(Noun)],
+            |c| of_kind(&[owner(c.get(..1)?)?, c.last()?.clone()]),
+        ),
+        named("en.renamed.the", Renamed, vec![W("the"), C(Renamed)], first),
+        named(
+            "en.command.rename_word",
+            Command,
+            vec![C(Rename), C(Renamed), C(Into), Class(NAME)],
+            rename,
+        ),
+        named(
+            "en.command.word_becomes",
+            Command,
+            vec![C(Renamed), C(Becomes), Class(CODE)],
+            rename,
+        ),
+        named("en.topic.word", Topic, vec![C(Renamed)], first),
+        // "rename painted -> is_painted, field not fn", "..., field only":
+        // the kind of the thing to rename, said after the request.
+        named(
+            "en.command.kind_not",
+            Command,
+            vec![C(Command), W(","), C(Noun), W("not"), C(Noun)],
+            of_kind_said,
+        ),
+        named(
+            "en.command.kind_only",
+            Command,
+            vec![C(Command), W(","), C(Noun), W("only")],
+            of_kind_said,
         ),
     ]);
     // "I'd like the field `x` to be called `y`"
