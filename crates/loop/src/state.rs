@@ -60,6 +60,14 @@ impl Tokens {
     pub fn total(&self) -> u64 {
         self.input + self.output + self.cache_read + self.cache_write
     }
+
+    pub fn add(&mut self, o: &Tokens) {
+        self.input += o.input;
+        self.output += o.output;
+        self.cache_read += o.cache_read;
+        self.cache_write += o.cache_write;
+        self.cost_usd += o.cost_usd;
+    }
 }
 
 /// Scores of one evaluated version of glassmind.

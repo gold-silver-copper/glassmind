@@ -234,14 +234,25 @@ fn growth_round(
 ) -> Result<(), String> {
     let verdicts = evaluate::verdicts(&data.train, &base.train);
     let mut attempts: Attempts = state::read_json(&paths.attempts()).unwrap_or_default();
-    let chosen: Vec<growth::Group> = growth::groups(&data.train, &base.train, &verdicts)
-        .into_iter()
-        .filter(|g| match attempts.groups.get(&g.key) {
-            Some((failed, size)) => *failed < 3 || *size != g.turns.len(),
-            None => true,
-        })
-        .take(config.max_agents)
-        .collect();
+    // Groups agents keep failing at cool down; groups that mostly overlap
+    // one already chosen wait for a later round, since their fixes would collide.
+    let mut chosen: Vec<growth::Group> = Vec::new();
+    let mut taken: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
+    for g in growth::groups(&data.train, &base.train, &verdicts) {
+        if chosen.len() >= config.max_agents {
+            break;
+        }
+        let cooled = attempts
+            .groups
+            .get(&g.key)
+            .is_some_and(|(failed, size)| *failed >= 3 && *size == g.turns.len());
+        let overlap = g.turns.iter().filter(|t| taken.contains(*t)).count();
+        if cooled || overlap * 2 > g.turns.len() {
+            continue;
+        }
+        taken.extend(g.turns.iter().cloned());
+        chosen.push(g);
+    }
     if chosen.is_empty() {
         return Err("no failure groups left to work on".into());
     }
@@ -290,7 +301,7 @@ fn growth_round(
     });
     for ((group, _slot, wt, _), run) in jobs.iter().zip(runs) {
         let mut agent_ok = false;
-        let (tokens, summary, patch) = match run {
+        let (mut tokens, summary, patch) = match run {
             Ok(r) => {
                 agent_ok = r.ok;
                 let _ = std::fs::write(
@@ -319,6 +330,7 @@ fn growth_round(
                 &group.title,
                 &summary,
                 &p,
+                &mut tokens,
             ),
             Err(e) => Err(e),
         };
@@ -407,13 +419,14 @@ fn consider(
     group: &str,
     summary: &str,
     patch: &str,
+    tokens: &mut Tokens,
 ) -> Result<Evaluated, String> {
     let at = head(config)?;
     let dir = worktree(config, paths, "apply", &at)?;
     let result = (|| {
         let patch_file = paths.root.join("candidate.patch");
         std::fs::write(&patch_file, patch).map_err(|e| e.to_string())?;
-        git(
+        let applied = git(
             &dir,
             &[
                 "apply",
@@ -421,8 +434,12 @@ fn consider(
                 "--whitespace=nowarn",
                 &patch_file.to_string_lossy(),
             ],
-        )
-        .map_err(|e| format!("the change does not apply to the latest accepted version: {e}"))?;
+        );
+        if let Err(e) = applied {
+            merge(config, paths, &dir, summary, tokens).map_err(|m| {
+                format!("the change does not apply to the latest accepted version: {e}\n{m}")
+            })?;
+        }
         let target = paths.eval_target();
         evaluate::checks(&dir, &target)?;
         let ev = evaluate::evaluate(config, paths, data, &dir, &target, &[])?;
@@ -469,6 +486,61 @@ fn consider(
     })();
     drop_worktree(config, &dir);
     result
+}
+
+const MERGE: &str = "You are merging one change into glassmind, a symbolic English-understanding system whose \
+knowledge is Rust source (read docs/growing.md). The change was written against an older version; other changes \
+were accepted since, and applying it left git conflict markers (<<<<<<< ======= >>>>>>>) in these files: {files}. \
+Resolve every conflict so that BOTH the already accepted code and the change work together: keep every rule from \
+both sides (rule IDs must stay unique), merge enum variants and match arms, and fix anything else that no longer \
+fits. Do not add new features. Then make sure `cargo build --release -j 8 --workspace`, `cargo clippy --workspace \
+--all-targets -j 8 -- -D warnings` and `cargo test --workspace -j 8 -- --test-threads 8` pass. Leave the result \
+uncommitted. What the change was for: {summary}";
+
+/// Resolves the conflicts a patch left in `dir` with a merging agent.
+fn merge(
+    config: &Config,
+    paths: &Paths,
+    dir: &Path,
+    summary: &str,
+    tokens: &mut Tokens,
+) -> Result<(), String> {
+    let files = git(dir, &["diff", "--name-only", "--diff-filter=U"])?;
+    if files.trim().is_empty() {
+        return Err("nothing to merge".into());
+    }
+    let prompt = MERGE
+        .replace("{files}", &files.lines().collect::<Vec<_>>().join(", "))
+        .replace("{summary}", summary.trim());
+    let run = agent::claude(
+        config,
+        paths,
+        &paths.slot(98),
+        dir,
+        &prompt,
+        None,
+        Vec::new(),
+    )?;
+    tokens.add(&run.tokens);
+    let markers = crate::exec::Run::new(
+        "git",
+        &[
+            "grep".to_owned(),
+            "-l".to_owned(),
+            "-E".to_owned(),
+            "^(<<<<<<<|>>>>>>>) ".to_owned(),
+        ],
+        dir,
+    )
+    .go()?;
+    if !markers.stdout.trim().is_empty() {
+        return Err(format!(
+            "conflict markers remain in {}",
+            markers.stdout.trim()
+        ));
+    }
+    git(dir, &["add", "-A", "--"])?;
+    Ok(())
 }
 
 const REVIEW: &str = "You review one change to glassmind, a symbolic English-understanding system whose knowledge is \
@@ -537,7 +609,7 @@ fn compression_round(
     let brief = compress::write_brief(&slot, config, round, &found, base)?;
     let wt = worktree(config, paths, &format!("r{round}-compress"), &start)?;
     let run = agent::run_agent(config, paths, &slot, &wt, &brief);
-    let (tokens, summary, patch) = match run {
+    let (mut tokens, summary, patch) = match run {
         Ok(r) => {
             let _ = std::fs::write(paths.logs().join(format!("r{round}-compress.log")), &r.log);
             (r.tokens, r.summary, patch_of(&wt, &start))
@@ -556,6 +628,7 @@ fn compression_round(
             "compression",
             &summary,
             &p,
+            &mut tokens,
         ),
         Err(e) => Err(e),
     };
