@@ -14,7 +14,7 @@
 use std::collections::BTreeSet;
 
 use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
-use glassmind_meaning::{Assumption, Name, Ontology, Reply, Thing, Trouble, Utterance};
+use glassmind_meaning::{Assumption, Fact, Name, Ontology, Reply, Thing, Trouble, Utterance};
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
 
@@ -43,6 +43,10 @@ pub const PREFER_ASKING: RuleInfo = RuleInfo::new("mind.prefer.asking", 5);
 /// for it: the most recent turn understood as asking for an action ("why do
 /// you want to change that?" after "rename `x` to `y`").
 pub const REASON_IS_REQUEST: RuleInfo = RuleInfo::new("mind.reason.request", 6);
+/// A name the user said earlier they would call an item by means that
+/// item ("what fields does the slot have?" after "I'll call `CacheLine`
+/// "the slot""), the latest such word holding.
+pub const ALIAS_NOTED: RuleInfo = RuleInfo::new("mind.alias.noted", 7);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -52,6 +56,7 @@ pub const RULES: &[RuleInfo] = &[
     ASK_BEFORE_ACTING,
     PREFER_ASKING,
     REASON_IS_REQUEST,
+    ALIAS_NOTED,
 ];
 
 /// A source the conversation was given.
@@ -120,6 +125,18 @@ impl<O: Ontology> Session<O> {
             }
         }
         out
+    }
+
+    /// The item the user last said they would call `name`, if any.
+    pub fn aliased(&self, name: &Name) -> Option<O::Item> {
+        self.turns.iter().rev().find_map(|turn| match &turn.reply {
+            Reply::Noted(Fact::Alias {
+                thing: Thing::Item(item),
+                alias,
+                ..
+            }) if alias.0.eq_ignore_ascii_case(&name.0) => Some(item.clone()),
+            _ => None,
+        })
     }
 }
 
@@ -226,7 +243,7 @@ impl<O: Ontology> Mind<'_, O> {
                 world_rules: Vec::new(),
                 outcomes: Vec::new(),
             };
-            for (meaning, means, fired) in self.resolve(&reading.meaning, &mut rt) {
+            for (meaning, means, fired) in self.resolve(session, &reading.meaning, &mut rt) {
                 let mut world_rules = fired;
                 let result = match &meaning {
                     Utterance::Ask(q) => self.world.answer(q, &mut world_rules),
@@ -251,14 +268,28 @@ impl<O: Ontology> Mind<'_, O> {
 
     /// Every way of resolving the reading's names to items. A name with no
     /// item yields one unresolved candidate, which the world rejects.
-    fn resolve(&self, meaning: &Utterance<O>, rt: &mut ReadingTrace<O>) -> Vec<Resolved<O>> {
+    fn resolve(
+        &self,
+        session: &Session<O>,
+        meaning: &Utterance<O>,
+        rt: &mut ReadingTrace<O>,
+    ) -> Vec<Resolved<O>> {
         let mut options: Vec<Vec<Thing<O>>> = Vec::new();
         let mut names: Vec<Option<Name>> = Vec::new();
         let mut fired = Vec::new();
         for thing in meaning.things() {
             match thing {
                 Thing::Named(name) => {
-                    let items = self.world.lookup(name, &mut fired);
+                    let aliased = session
+                        .aliased(name)
+                        .filter(|_| self.switches.on(ALIAS_NOTED.id));
+                    let items = match aliased {
+                        Some(item) => {
+                            fired.push(ALIAS_NOTED);
+                            vec![item]
+                        }
+                        None => self.world.lookup(name, &mut fired),
+                    };
                     rt.resolutions.push((name.clone(), items.clone()));
                     names.push(Some(name.clone()));
                     if items.is_empty() {

@@ -875,4 +875,29 @@ mod tests {
             assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
         }
     }
+
+    /// A name the user gave a thing, quoted, after "the" or bare, stands for
+    /// that thing where a name can.
+    #[test]
+    fn names_the_user_gave_stand_for_things() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for (text, name) in [
+            ("what fields does the slot have?", "the slot"),
+            ("so what fields are in the mover?", "the mover"),
+            ("what fields does \"the leaf\" have", "the leaf"),
+            ("what fields does sun glow have", "sun glow"),
+            ("what fields does the history sheet have?", "history sheet"),
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            let named = Thing::Named(Name(name.into()));
+            assert!(
+                readings
+                    .iter()
+                    .any(|r| r.meaning.things().contains(&&named)),
+                "{text:?}"
+            );
+        }
+    }
 }

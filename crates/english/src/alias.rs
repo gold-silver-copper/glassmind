@@ -9,7 +9,7 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Fact, Name, Ontology, Reply, Thing, Utterance};
 
-use crate::lexicon::{ITEM, NAME, QUOTE, TEXT};
+use crate::lexicon::{ITEM, QUOTE, TEXT, WORD};
 use crate::sem::{Cat, Sem};
 use crate::word;
 
@@ -150,6 +150,35 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("just"), C(Cat::Alias)],
             |c| c.first().cloned(),
         ),
+        // "what fields does the slot have?": a name the user gave, standing
+        // for the thing they gave it to.
+        Rule::new(
+            RuleInfo::new("en.noun_phrase.alias", 7),
+            Cat::NounPhrase,
+            vec![C(Cat::Alias)],
+            S::Build(|c| match c {
+                [Sem::Name(n)] => Some(Sem::Thing(Thing::Named(n.clone()))),
+                _ => None,
+            }),
+        )
+        .read_only(),
+        // "what fields does sun glow have?", "the history sheet": several
+        // words the system does not know, a name the user gave, which may
+        // have been given without "the".
+        Rule::new(
+            RuleInfo::new("en.noun_phrase.unknown", 7),
+            Cat::NounPhrase,
+            vec![C(Cat::Unknown), Class(WORD)],
+            S::Build(|c| Some(Sem::Thing(Thing::Named(Name(words(c)))))),
+        )
+        .read_only(),
+        Rule::new(
+            RuleInfo::new("en.noun_phrase.the_unknown", 7),
+            Cat::NounPhrase,
+            vec![W("the"), C(Cat::Unknown), Class(WORD)],
+            S::Build(|c| Some(Sem::Thing(Thing::Named(Name(words(c)))))),
+        )
+        .read_only(),
         rule("en.words.one", Cat::Words, vec![Class(TEXT)], name),
         rule(
             "en.words.more",
@@ -157,11 +186,11 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Words), Class(TEXT)],
             name,
         ),
-        rule("en.unknown.one", Cat::Unknown, vec![Class(NAME)], name),
+        rule("en.unknown.one", Cat::Unknown, vec![Class(WORD)], name),
         rule(
             "en.unknown.more",
             Cat::Unknown,
-            vec![C(Cat::Unknown), Class(NAME)],
+            vec![C(Cat::Unknown), Class(WORD)],
             name,
         ),
         // "Noted: `the leaf` is `Page`."

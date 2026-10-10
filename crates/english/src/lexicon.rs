@@ -16,6 +16,9 @@ pub const NAME: &str = "name";
 /// identifier (`spawn_wave`). A plain word may be English the system does
 /// not know, so it is never one: a new name must not be a guess.
 pub const CODE: &str = "code";
+/// Token class: a plain word the system does not know, not written as
+/// code: what a name of the user's own ("the history sheet") is made of.
+pub const WORD: &str = "word";
 /// Token class: a number.
 pub const NUMBER: &str = "number";
 /// Token class: any word, name or number in a remark, whose content the
@@ -45,7 +48,7 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
     fn read_class(&self, class: &'static str, token: &Token) -> Vec<Sem<O>> {
         match (class, token.shape) {
             (NAME | CODE, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
-            (NAME, Shape::Word) if !self.known.contains(token.norm.as_str()) => {
+            (NAME | WORD, Shape::Word) if !self.known.contains(token.norm.as_str()) => {
                 vec![Sem::Name(Name(token.text.clone()))]
             }
             (TEXT, shape) if shape != Shape::Punct => vec![Sem::Quote(token.text.clone())],

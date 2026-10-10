@@ -25,6 +25,26 @@ fn flip(position: Position) -> Position {
     }
 }
 
+/// "fields in `S`": things of the kind standing in the preposition's
+/// relation to the thing.
+fn placed<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [
+            Sem::Kind { kind, .. },
+            Sem::Relation { relation, .. },
+            Sem::Thing(other),
+        ] => Some(Sem::Description(Description {
+            kind: Some(kind.clone()),
+            conditions: vec![Condition::Related {
+                relation: relation.clone(),
+                position: Position::First,
+                other: other.clone(),
+            }],
+        })),
+        _ => None,
+    }
+}
+
 /// "whose type is `x`": the described thing's role is filled by `x`, so it
 /// fills the other side of the role's relation.
 fn qualified<O: Ontology>(role: &Sem<O>, other: &Sem<O>) -> Option<Sem<O>> {
@@ -490,22 +510,25 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.description.preposition",
             Cat::Description,
             vec![C(Cat::Noun), C(Cat::Preposition), C(Cat::NounPhrase)],
-            |c| match c {
-                [
-                    Sem::Kind { kind, .. },
-                    Sem::Relation { relation, .. },
-                    Sem::Thing(other),
-                ] => Some(Sem::Description(Description {
-                    kind: Some(kind.clone()),
-                    conditions: vec![Condition::Related {
-                        relation: relation.clone(),
-                        position: Position::First,
-                        other: other.clone(),
-                    }],
-                })),
-                _ => None,
-            },
+            placed,
         ),
+        // "what fields are in the slot?": asking for the things so placed.
+        Rule::new(
+            RuleInfo::new("en.question.what_are_preposition", 7),
+            Cat::Question,
+            vec![
+                W("what"),
+                C(Cat::Noun),
+                W("are"),
+                C(Cat::Preposition),
+                C(Cat::NounPhrase),
+            ],
+            S::Build(|c| match placed(c)? {
+                Sem::Description(d) => Some(Sem::Question(Question::Identify(d))),
+                _ => None,
+            }),
+        )
+        .read_only(),
         // "any structs with fields typed `Commit`?", "are there structs
         // that ...": asking whether there are some asks for them.
         rule(
