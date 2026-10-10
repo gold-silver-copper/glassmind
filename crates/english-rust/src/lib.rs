@@ -968,6 +968,34 @@ mod tests {
         assert!(readings.iter().any(|r| r.meaning == owned));
     }
 
+    /// A kind said after a word the system knows as English shows it to be
+    /// a name: these all ask for the fields of a struct named "call".
+    #[test]
+    fn a_known_word_before_its_kind_is_a_name() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let call = Thing::Fitting(Description {
+            kind: Some(RustKind::Struct),
+            conditions: vec![Condition::Named(Name("call".into()))],
+        });
+        let meaning = Utterance::Ask(Question::Identify(Description {
+            kind: Some(RustKind::Field),
+            conditions: vec![Condition::Related {
+                relation: RustRelation::BelongsTo,
+                position: Position::First,
+                other: call,
+            }],
+        }));
+        for text in [
+            "fields on call struct",
+            "what fields are on the call struct",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
     /// Saying the kind shows a word the system knows as English to be a
     /// name: these all ask to rename the field named "to".
     #[test]

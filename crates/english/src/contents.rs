@@ -182,7 +182,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     // "`Note` struct - what fields", "Identity - which fields": a role
     // alone, asked of the thing set off before it; also with no mark
     // between, "index_of what fields", "refresh_search struct which
-    // fields".
+    // fields", "doing struct what fields".
     for (id, round, rhs) in [
         (
             "en.question.set_off_what_role",
@@ -204,9 +204,20 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             18,
             vec![C(Mention), W("which"), C(RoleNoun)],
         ),
+        // "doing struct what fields": the same, of a thing described.
+        (
+            "en.question.unmarked_what_role_described",
+            26,
+            vec![C(NounPhrase), W("what"), C(RoleNoun)],
+        ),
+        (
+            "en.question.unmarked_which_role_described",
+            26,
+            vec![C(NounPhrase), W("which"), C(RoleNoun)],
+        ),
     ] {
         rules.push(read_only_rule(id, round, Question, rhs, |c| match c {
-            [Sem::Mention { thing, .. }, .., role] => {
+            [Sem::Mention { thing, .. } | Sem::Thing(thing), .., role] => {
                 identify(&[role_of(role, &Sem::Thing(thing.clone()))?])
             }
             _ => None,

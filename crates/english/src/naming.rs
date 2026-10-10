@@ -147,6 +147,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Noun), Class(SAID)],
             kind_named,
         ),
+        // "fields on call struct": the same, with the kind after the word.
+        read_only_rule(
+            "en.noun_phrase.word_kind",
+            26,
+            NounPhrase,
+            vec![Class(SAID), C(Noun)],
+            kind_named,
+        ),
         // "whcih functions call forget", "who calls forget": the word
         // after a verb is the thing it names, even one the system knows
         // as English.

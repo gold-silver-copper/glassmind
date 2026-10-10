@@ -319,4 +319,9 @@ const OPENERS: &[(&str, u32, &str)] = &[
     ("en.remark.someone", 25, "someone"),
     // "what does `x` do, quick sumary": how the speaker wants the answer.
     ("en.remark.quick", 25, "quick"),
+    // "what fields does `x` have, is it like a wrapper struct around u32?",
+    // "what fields `x` has as a struct": what the speaker takes the thing
+    // to be.
+    ("en.remark.is_it_like", 26, "is it like"),
+    ("en.remark.as", 26, "as"),
 ];

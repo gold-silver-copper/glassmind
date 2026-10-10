@@ -91,19 +91,21 @@ pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
             {
                 j -= 1;
             }
-            // A capitalized word with "'s" that is no known word ("What's"
-            // is one) owns what follows ("change App's `x`"), and the "'s"
-            // is a word of its own.
-            if c.is_uppercase()
-                && j > i + 2
+            // A word with "'s" that is no known word ("What's" is one) owns
+            // what follows ("change App's `x`", "show me mobility's
+            // fields"), and the "'s" is a word of its own; but in lower
+            // case, a known word before it says it is short for "is"
+            // ("there's").
+            let lower = |k| {
+                text.get(start..end_of(k))
+                    .unwrap_or_default()
+                    .to_lowercase()
+            };
+            if j > i + 2
                 && chars.get(j - 2).is_some_and(|&(_, d)| d == '\'')
                 && chars.get(j - 1).is_some_and(|&(_, d)| d == 's')
-                && !known(
-                    &text
-                        .get(start..end_of(j))
-                        .unwrap_or_default()
-                        .to_lowercase(),
-                )
+                && !known(&lower(j))
+                && (c.is_uppercase() || !known(&lower(j - 2)))
             {
                 j -= 2;
             }
@@ -178,7 +180,8 @@ mod tests {
                 ("Player::hp".into(), Shape::Code),
                 (",".into(), Shape::Punct),
                 ("ok".into(), Shape::Word),
-                ("player.hp's".into(), Shape::Code),
+                ("player.hp".into(), Shape::Code),
+                ("'s".into(), Shape::Word),
                 ("w/".into(), Shape::Word),
                 ("Option".into(), Shape::Word),
                 ("/".into(), Shape::Punct),

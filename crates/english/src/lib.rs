@@ -196,9 +196,12 @@ impl<O: Ontology> English<O> {
             .sum()
     }
 
-    /// The tokens of `text`, as the words this grammar knows split it.
+    /// The tokens of `text`, as the words this grammar knows (or knows
+    /// mistyped) split it.
     fn tokenize(&self, text: &str) -> Vec<Token> {
-        tokenize(text, &|w| self.lexicon.known.contains(w))
+        tokenize(text, &|w| {
+            self.lexicon.known.contains(w) || self.lexicon.spellings.contains_key(w)
+        })
     }
 
     pub fn grammar(&self) -> &Grammar<Cat, Sem<O>> {
