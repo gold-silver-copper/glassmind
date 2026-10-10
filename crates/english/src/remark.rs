@@ -228,6 +228,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             utterance(id, round, vec![C(lead), between, C(Cat::Utterance)])
         }),
     );
+    // "so in batch_responses, what does it end up calling?": the thing the
+    // request is about, set off with the place the user looks in.
+    rules.push(
+        utterance(
+            "en.utterance.set_off_in",
+            13,
+            vec![W("in"), C(Cat::Mention), C(Cat::Break), C(Cat::Utterance)],
+        )
+        .read_only(),
+    );
     rules
 }
 

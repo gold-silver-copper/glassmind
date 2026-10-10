@@ -7,7 +7,7 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::Ontology;
 
-use crate::asking::{described, identify, words_then};
+use crate::asking::{described, identify, read_only_rule, words_then};
 use crate::last;
 use crate::locate::fillers;
 use crate::sem::{Cat, Sem};
@@ -42,6 +42,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.description.ones_that",
             Cat::Description,
             vec![C(Cat::Ones), W("that"), C(Cat::VerbPhrase)],
+            described_rest,
+        ),
+        // "everything `shoved` invokes", "the ones `x` calls"
+        read_only_rule(
+            "en.description.ones_restricted",
+            13,
+            Cat::Description,
+            vec![C(Cat::Ones), C(Cat::Restriction)],
             described_rest,
         ),
         // "they, the functions that call it": the description they stand for.
@@ -99,6 +107,10 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Cat::Ones,
             &[("en.ones.places", "places"), ("en.ones.things", "things")],
         )],
+    ));
+    rules.extend(fillers(
+        13,
+        &[(Cat::Ones, &[("en.ones.everything", "everything")])],
     ));
     rules
 }

@@ -242,6 +242,9 @@ pub fn words() -> Vec<Word> {
                 // "call sites of `penetrator`": where it is called, which
                 // are in its callers.
                 ("en.rust.role.call_sites", 9, "call sites", Calls, First),
+                // "calls made by `x`", "list calls made inside `pin_seen`":
+                // what a function calls.
+                ("en.rust.role.calls_made", 13, "calls made", Calls, Second),
                 // A struct's fields are what it has: "`Conv` fields",
                 // "`QueryEntry` members".
                 ("en.rust.role.fields", 7, "fields", HasField, Second),
@@ -453,13 +456,24 @@ mod tests {
             "fns called from inside cut",
             "Could you list the functions that `cut` calls?",
             "cut calls which fns",
+            "what functions does `cut` end up calling?",
+            "which functions `cut` ends up calling?",
+            "what functions are getting called from `cut`?",
         ] {
             assert_eq!(meanings(text), plain, "{text:?}");
         }
-        assert_eq!(
-            meanings("callees of `cut`"),
-            meanings("what does `cut` call?")
-        );
+        for text in [
+            "callees of `cut`",
+            "what's `cut` calling",
+            "cut -> callees",
+            "calls made by cut",
+        ] {
+            assert_eq!(
+                meanings(text),
+                meanings("what does `cut` call?"),
+                "{text:?}"
+            );
+        }
     }
 
     /// However the user asks what a thing is for, whether they name it

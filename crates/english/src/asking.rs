@@ -171,18 +171,35 @@ const AGENTS: &[(&str, &str)] = &[
     ("en.passive.from_inside", "from inside"),
 ];
 
-/// Words after a verb that say the calls happen inside the subject: "what
-/// does `x` call inside", "what `x` calls into".
-const INSIDE: &[(&str, &str)] = &[
-    ("en.restriction.into", "into"),
-    ("en.restriction.inside", "inside"),
+/// Words before a passive, and the round each came in: "which functions
+/// are called by `x`", "what functions get called from `x`", "what
+/// functions are getting called from `x`".
+const PASSIVE_AUX: &[(&str, u32, &str)] = &[
+    ("en.restriction.are_passive", ROUND, "are"),
+    ("en.restriction.get_passive", ROUND, "get"),
+    ("en.restriction.gets_passive", ROUND, "gets"),
+    ("en.restriction.are_getting_passive", 13, "are getting"),
+];
+
+/// Words after a verb that say the calls happen inside the subject, and
+/// the round each came in: "what does `x` call inside", "what `x` calls
+/// into", "which functions does `x` call inside it?", "what does `paste`
+/// call internally?".
+const INSIDE: &[(&str, u32, &str)] = &[
+    ("en.restriction.into", ROUND, "into"),
+    ("en.restriction.inside", ROUND, "inside"),
+    ("en.restriction.inside_it", 13, "inside it"),
+    ("en.restriction.internally", 13, "internally"),
 ];
 
 /// Words between a role noun and the other argument: "callees of `x`",
 /// "callees for `x`".
-const ROLE_OF: &[(&str, &str)] = &[
-    ("en.description.role_of", "of"),
-    ("en.description.role_for", "for"),
+const ROLE_OF: &[(&str, u32, &str)] = &[
+    ("en.description.role_of", ROUND, "of"),
+    ("en.description.role_for", ROUND, "for"),
+    // "calls made by `x`", "calls made inside `x`"
+    ("en.description.role_by", 13, "by"),
+    ("en.description.role_inside", 13, "inside"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
@@ -234,25 +251,6 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Restriction,
             words_then("is", &[NounPhrase, Verb]),
             |c| restrict(c, VerbForm::Progressive),
-        ),
-        // "which functions are called by `x`", "what functions get called from `x`".
-        rule(
-            "en.restriction.are_passive",
-            Restriction,
-            words_then("are", &[Passive]),
-            same,
-        ),
-        rule(
-            "en.restriction.get_passive",
-            Restriction,
-            words_then("get", &[Passive]),
-            same,
-        ),
-        rule(
-            "en.restriction.gets_passive",
-            Restriction,
-            words_then("gets", &[Passive]),
-            same,
         ),
         // "what does `x` call"
         Rule::new(
@@ -393,18 +391,78 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rhs.extend(words_then(words, &[NounPhrase]));
         rule(id, Passive, rhs, |c| restrict(c, VerbForm::Participle))
     }));
-    rules.extend(
-        INSIDE
-            .iter()
-            .map(|(id, word)| rule(id, Restriction, vec![C(Restriction), W(word)], same)),
-    );
-    rules.extend(ROLE_OF.iter().map(|(id, word)| {
-        rule(
+    rules.extend(PASSIVE_AUX.iter().map(|&(id, round, words)| {
+        read_only_rule(id, round, Restriction, words_then(words, &[Passive]), same)
+    }));
+    rules.extend(INSIDE.iter().map(|&(id, round, words)| {
+        let mut rhs = vec![C(Restriction)];
+        rhs.extend(words_then(words, &[]));
+        read_only_rule(id, round, Restriction, rhs, same)
+    }));
+    // The subject and the verb in casual and embedded questions: "what fns
+    // `x` call", "which functions `x` ends up calling", "which functions
+    // `x` is calling", "what does it end up calling?".
+    let progressive: fn(&[Sem<O>]) -> Option<Sem<O>> = |c| restrict(c, VerbForm::Progressive);
+    for (id, rhs, build) in [
+        (
+            "en.restriction.plain",
+            vec![C(NounPhrase), C(Verb)],
+            (|c| restrict(c, VerbForm::Plain)) as fn(&[Sem<O>]) -> Option<Sem<O>>,
+        ),
+        (
+            "en.restriction.declarative_progressive",
+            vec![C(NounPhrase), W("is"), C(Verb)],
+            progressive,
+        ),
+        (
+            "en.restriction.ends_up",
+            vec![C(NounPhrase), W("ends"), W("up"), C(Verb)],
+            progressive,
+        ),
+        (
+            "en.restriction.does_end_up",
+            vec![W("does"), C(NounPhrase), W("end"), W("up"), C(Verb)],
+            progressive,
+        ),
+        // "what are the functions it's calling?": "it is" run together.
+        ("en.restriction.it_s", vec![W("it's"), C(Verb)], |c| {
+            restrict(
+                &[Sem::Thing(Thing::Previous), c.first()?.clone()],
+                VerbForm::Progressive,
+            )
+        }),
+    ] {
+        rules.push(read_only_rule(id, 13, Restriction, rhs, build));
+    }
+    rules.extend(ROLE_OF.iter().map(|&(id, round, word)| {
+        read_only_rule(
             id,
+            round,
             Cat::Description,
             vec![C(RoleNoun), W(word), C(NounPhrase)],
             role_and_thing,
         )
     }));
+    rules.extend([
+        // "what's `settings_menu` calling"
+        read_only_rule(
+            "en.question.what_is_progressive",
+            13,
+            Cat::Question,
+            vec![C(Cat::WhatIs), C(NounPhrase), C(Verb)],
+            |c| identify(&[restrict(c.get(1..)?, VerbForm::Progressive)?]),
+        ),
+        // "with_query -> callees"
+        read_only_rule(
+            "en.description.name_arrow_role",
+            13,
+            Cat::Description,
+            vec![C(NounPhrase), C(Cat::Arrow), C(RoleNoun)],
+            |c| match c {
+                [other, _, role] => role_of(role, other),
+                _ => None,
+            },
+        ),
+    ]);
     rules
 }
