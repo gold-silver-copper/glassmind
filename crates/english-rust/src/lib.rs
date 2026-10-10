@@ -73,6 +73,8 @@ pub fn words() -> Vec<Rule<Cat, Sem<Rust>>> {
         // Short forms in terse requests: "fns called by `cut`".
         kind("en.rust.noun.fns", 2, "fns", Function, Plural),
         kind("en.rust.noun.funcs", 2, "funcs", Function, Plural),
+        // "where's that func defined"
+        kind("en.rust.noun.func", 3, "func", Function, Singular),
         // "which fns does `search_results` invoke"
         verb("en.rust.verb.invokes", 2, "invokes", Calls, ThirdSingular),
         verb("en.rust.verb.invoke", 2, "invoke", Calls, Plain),
@@ -250,5 +252,40 @@ mod tests {
             meanings("callees of `cut`"),
             meanings("what does `cut` call?")
         );
+    }
+
+    /// However the user asks what a thing is for, whether they name it
+    /// before the question or ask twice, it means what the system says
+    /// when it asks that.
+    #[test]
+    fn ways_of_asking_what_a_thing_does_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Ask(Question::Describe {
+            thing: Thing::Named(Name("seed_at".into())),
+            kind: None,
+        });
+        let spoken = english
+            .speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
+            .map(|s| s.text);
+        assert_eq!(spoken.as_deref(), Some("What does `seed_at` do?"));
+        for text in [
+            "what's seed_at for",
+            "Quick question: what does `seed_at` do, and what is it for?",
+            "what is `seed_at` even for? what does it do",
+            "I'd like to know what `seed_at` does. Could you explain it, please?",
+            "seed_at - what's it do",
+            "purpose of `seed_at`",
+            "explain seed_at quickly",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+        }
+        // A second question about something else is not the same question.
+        assert!(matches!(
+            english.understand("what does `seed_at` do, and which functions call it?"),
+            Understanding::Failed { .. }
+        ));
     }
 }

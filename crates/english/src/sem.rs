@@ -76,6 +76,25 @@ pub enum Cat {
     /// Words that frame a request without changing it: "can you", "tell
     /// me", "I'd like to know".
     Prompt,
+    /// A thing as the user points at it, perhaps with the kind they say it
+    /// is: "`x`", "the `X` struct", "fn `x`", "it".
+    Mention,
+    /// A verb for what a thing does when it runs: "do", "checks", "testing".
+    Doing,
+    /// What a thing serves: "for", "used for", "about".
+    Use,
+    /// A noun for what a thing is for: "purpose".
+    Purpose,
+    /// A word that softens or sharpens a question without changing what it
+    /// asks: "even", "actually", "exactly".
+    Hedge,
+    /// "what is", "what's".
+    WhatIs,
+    /// A mark setting a thing off before what is asked about it: "`x` -
+    /// what does it do", "`x`, what's it for".
+    Break,
+    /// Words joining two ways of asking one question: "and", ", or", "like".
+    Join,
 }
 
 /// English grammatical number, used for agreement.
@@ -143,6 +162,11 @@ pub enum Sem<O: Ontology> {
     Role {
         relation: O::Relation,
         position: Position,
+    },
+    /// A thing as mentioned, and the kind the user said it is.
+    Mention {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
     },
     /// A number as typed or spoken.
     Count(u64),

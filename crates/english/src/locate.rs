@@ -6,7 +6,7 @@ use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Ontology, Question, Reply, Utterance};
 
 use crate::lexicon::{ITEM, PLACE};
-use crate::sem::{Cat, Number, Sem};
+use crate::sem::{Cat, Sem};
 use crate::word;
 
 use Sym::{Cat as C, Class, Word as W};
@@ -32,23 +32,6 @@ fn locate<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
             thing: thing.clone(),
             kind: None,
         })),
-        _ => None,
-    })
-}
-
-/// Where the thing is, given that it is of the kind among the children.
-fn of_kind<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
-    let kind = c.iter().find_map(|v| match v {
-        Sem::Kind { kind, .. } => Some(kind.clone()),
-        _ => None,
-    });
-    c.iter().find_map(|v| match v {
-        Sem::Question(Question::Locate { thing, kind: None }) => {
-            Some(Sem::Question(Question::Locate {
-                thing: thing.clone(),
-                kind: kind.clone(),
-            }))
-        }
         _ => None,
     })
 }
@@ -160,18 +143,19 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             located,
         ),
         // Where the user wants it looked for: "where is `x` defined in the
-        // code", "where does `x` live in the codebase", "where's `x` defined at".
+        // code", "where does `x` live in the codebase", "where's `x` defined
+        // at", "what is `x` used for in the code".
         rule(
             "en.question.in_the_code",
             Cat::Question,
             vec![C(Cat::Question), W("in"), W("the"), W("code")],
-            located,
+            question,
         ),
         rule(
             "en.question.in_the_codebase",
             Cat::Question,
             vec![C(Cat::Question), W("in"), W("the"), W("codebase")],
-            located,
+            question,
         ),
         rule(
             "en.question.at",
@@ -193,52 +177,30 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             }),
         )
         .read_only(),
-        // The thing itself, "the `x`", "the `x` struct", "the function
-        // `x`", its definition: "the definition of `x`", "`x` def".
+        // The thing itself, as mentioned: "the `x`", "the `x` struct", "the
+        // function `x`"; or its definition: "the definition of `x`", "`x` def".
         Rule::new(
-            RuleInfo::new("en.target.thing", ROUND),
+            RuleInfo::new("en.target.mention", 3),
             Cat::Target,
-            vec![C(Cat::NounPhrase)],
-            S::Both(locate, |v| match v {
-                Sem::Question(Question::Locate { thing, kind: None }) => {
-                    Some(vec![Sem::Thing(thing.clone())])
-                }
-                _ => None,
-            }),
-        ),
-        Rule::new(
-            RuleInfo::new("en.target.the_kind", ROUND),
-            Cat::Target,
-            vec![W("the"), C(Cat::Target), C(Cat::Noun)],
-            S::Both(of_kind, |v| match v {
-                Sem::Question(Question::Locate {
-                    thing,
-                    kind: Some(kind),
-                }) => Some(vec![
-                    Sem::Question(Question::Locate {
+            vec![C(Cat::Mention)],
+            S::Both(
+                |c| match c {
+                    [Sem::Mention { thing, kind }] => Some(Sem::Question(Question::Locate {
                         thing: thing.clone(),
-                        kind: None,
-                    }),
-                    Sem::Kind {
                         kind: kind.clone(),
-                        number: Number::Singular,
-                    },
-                ]),
-                _ => None,
-            }),
+                    })),
+                    _ => None,
+                },
+                |v| match v {
+                    Sem::Question(Question::Locate { thing, kind }) => Some(vec![Sem::Mention {
+                        thing: thing.clone(),
+                        kind: kind.clone(),
+                    }]),
+                    _ => None,
+                },
+            ),
         ),
-        rule(
-            "en.target.kind",
-            Cat::Target,
-            vec![C(Cat::Target), C(Cat::Noun)],
-            of_kind,
-        ),
-        rule(
-            "en.target.the_kind_first",
-            Cat::Target,
-            vec![W("the"), C(Cat::Noun), C(Cat::Target)],
-            of_kind,
-        ),
+        // "the definition of `x`"
         rule(
             "en.target.the",
             Cat::Target,

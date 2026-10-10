@@ -69,6 +69,9 @@ pub enum Thing<O: Ontology> {
     Named(Name),
     /// Resolved to one item of the world.
     Item(O::Item),
+    /// Referred back to without a name: a thing said before, to be found
+    /// from what came earlier.
+    Previous,
 }
 
 /// A condition a thing must meet to fit a description.
@@ -101,6 +104,12 @@ pub enum Question<O: Ontology> {
     Identify(Description<O>),
     /// Say where the thing is; `kind`, if given, is what the user said it is.
     Locate {
+        thing: Thing<O>,
+        kind: Option<O::Kind>,
+    },
+    /// Say what the thing is and what it is for; `kind`, if given, is what
+    /// the user said it is.
+    Describe {
         thing: Thing<O>,
         kind: Option<O::Kind>,
     },
@@ -162,6 +171,8 @@ pub enum Reply<O: Ontology> {
     Extent(Extent<O>),
     /// The item asked about, which carries where it is.
     Location(O::Item),
+    /// What the item asked about is: its kind, and where it is.
+    Account { item: O::Item, kind: O::Kind },
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on assumptions, which are stated first.
@@ -192,7 +203,7 @@ impl<O: Ontology> Question<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         match self {
             Question::Identify(d) => d.things(),
-            Question::Locate { thing, .. } => vec![thing],
+            Question::Locate { thing, .. } | Question::Describe { thing, .. } => vec![thing],
         }
     }
 
@@ -200,6 +211,10 @@ impl<O: Ontology> Question<O> {
         match self {
             Question::Identify(d) => Question::Identify(d.map_things(f)),
             Question::Locate { thing, kind } => Question::Locate {
+                thing: f(thing),
+                kind: kind.clone(),
+            },
+            Question::Describe { thing, kind } => Question::Describe {
                 thing: f(thing),
                 kind: kind.clone(),
             },
@@ -251,10 +266,12 @@ impl<O: Ontology> Reply<O> {
                 .iter()
                 .chain(e.description.things().into_iter().filter_map(|t| match t {
                     Thing::Item(i) => Some(i),
-                    Thing::Named(_) => None,
+                    Thing::Named(_) | Thing::Previous => None,
                 }))
                 .collect(),
-            Reply::Location(item) | Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
+            Reply::Location(item)
+            | Reply::Account { item, .. }
+            | Reply::Trouble(Trouble::WrongKind { item }) => vec![item],
             Reply::Trouble(Trouble::Ambiguous { candidates }) => candidates.iter().collect(),
             Reply::Trouble(_) => Vec::new(),
             Reply::Assuming { reply, .. } => reply.items(),

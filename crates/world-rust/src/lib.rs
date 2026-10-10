@@ -85,9 +85,19 @@ const RELATION_CALLS: RuleInfo = RuleInfo::new("rust.relation.calls", SEED);
 /// item of the kind asked for has that name, so the user can't have meant
 /// another one.
 const LOCATE_UNIQUE: RuleInfo = RuleInfo::new("rust.locate.unique", 2);
+/// What an item is: its kind and where it is, said only for a function,
+/// struct, enum or trait whose name no other item shares (or no other item
+/// of the kind the user said it is).
+const DESCRIBE_UNIQUE: RuleInfo = RuleInfo::new("rust.describe.unique", 3);
 
 /// Every world rule, for listing and switching.
-pub const RULES: &[RuleInfo] = &[LOOKUP_EXACT, LOOKUP_ANY_CASE, RELATION_CALLS, LOCATE_UNIQUE];
+pub const RULES: &[RuleInfo] = &[
+    LOOKUP_EXACT,
+    LOOKUP_ANY_CASE,
+    RELATION_CALLS,
+    LOCATE_UNIQUE,
+    DESCRIBE_UNIQUE,
+];
 
 /// One or more indexed Rust sources.
 pub struct RustWorld {
@@ -199,6 +209,39 @@ impl RustWorld {
         }
     }
 
+    /// The thing asked about, checked by `rule`: of the kind the user said
+    /// it is, if they said one, and the only item of that kind with its
+    /// name, so the user can't have meant another one.
+    fn only<'a>(
+        &self,
+        rule: RuleInfo,
+        thing: &'a Thing<Rust>,
+        kind: Option<RustKind>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<&'a RustItem, Trouble<Rust>> {
+        let item = match thing {
+            Thing::Item(item) => item,
+            Thing::Named(name) => return Err(Trouble::NoSuchName { name: name.clone() }),
+            Thing::Previous => return Err(Trouble::Unsupported),
+        };
+        if !self.switches.on(rule.id) {
+            return Err(Trouble::Unsupported);
+        }
+        fired.push(rule);
+        if kind.is_some_and(|k| item.kind != k) {
+            return Err(Trouble::WrongKind { item: item.clone() });
+        }
+        let candidates: Vec<RustItem> = self
+            .records()
+            .filter(|r| r.item.name == item.name && kind.is_none_or(|k| r.item.kind == k))
+            .map(|r| r.item.clone())
+            .collect();
+        if candidates.len() > 1 {
+            return Err(Trouble::Ambiguous { candidates });
+        }
+        Ok(item)
+    }
+
     fn identify(
         &self,
         description: &Description<Rust>,
@@ -216,6 +259,10 @@ impl RustWorld {
                     other: Thing::Named(name),
                     ..
                 } => return Err(Trouble::NoSuchName { name: name.clone() }),
+                Condition::Related {
+                    other: Thing::Previous,
+                    ..
+                } => return Err(Trouble::Unsupported),
             };
             candidates = Some(match candidates {
                 None => fitting,
@@ -279,31 +326,20 @@ impl World<Rust> for RustWorld {
                     members,
                 }))
             }
-            Question::Locate {
-                thing: Thing::Item(item),
-                kind,
-            } => {
-                if !self.switches.on(LOCATE_UNIQUE.id) {
-                    return Err(Trouble::Unsupported);
-                }
-                fired.push(LOCATE_UNIQUE);
-                if kind.is_some_and(|k| item.kind != k) {
-                    return Err(Trouble::WrongKind { item: item.clone() });
-                }
-                let candidates: Vec<RustItem> = self
-                    .records()
-                    .filter(|r| r.item.name == item.name && kind.is_none_or(|k| r.item.kind == k))
-                    .map(|r| r.item.clone())
-                    .collect();
-                if candidates.len() > 1 {
-                    return Err(Trouble::Ambiguous { candidates });
-                }
+            Question::Locate { thing, kind } => {
+                let item = self.only(LOCATE_UNIQUE, thing, *kind, fired)?;
                 Ok(Reply::Location(item.clone()))
             }
-            Question::Locate {
-                thing: Thing::Named(name),
-                ..
-            } => Err(Trouble::NoSuchName { name: name.clone() }),
+            Question::Describe { thing, kind } => {
+                let item = self.only(DESCRIBE_UNIQUE, thing, *kind, fired)?;
+                if item.kind == RustKind::Field {
+                    return Err(Trouble::WrongKind { item: item.clone() });
+                }
+                Ok(Reply::Account {
+                    item: item.clone(),
+                    kind: item.kind,
+                })
+            }
         }
     }
 
