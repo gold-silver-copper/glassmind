@@ -26,6 +26,7 @@ const ROUND: u32 = 3;
 const GROWN: u32 = 9;
 const LATER: u32 = 11;
 const NOW: u32 = 13;
+const ROUND_14: u32 = 14;
 
 /// The request asked again: as it was, or, when asked again for things of
 /// a kind ("which functions?"), for those of that kind among what it asks.
@@ -1003,6 +1004,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ]
         .map(|(id, words)| filler(id, NOW, AskAgain, words)),
     );
+    // "`bore_height` struct fields - list pls": asked again, to be listed.
+    rules.push(filler("en.ask_again.list", ROUND_14, AskAgain, "list"));
+    let round_14 = |id, lhs, rhs, build| read_only_rule(id, ROUND_14, lhs, rhs, build);
+    rules.extend([
+        // "whats inside `overboard`, fields", "what does `x` hold,
+        // field-wise": a kind alone, set off after what was asked, asks it
+        // again of that kind.
+        round_14("en.ask_again.kind", AskAgain, vec![C(Join), C(Noun)], last),
+        // "the struct fields of `person_items`": a role said with the kind
+        // it is in, which is the same role.
+        round_14(
+            "en.role_noun.kind",
+            RoleNoun,
+            vec![C(Noun), C(RoleNoun)],
+            last,
+        ),
+        // "whats in `x`, fields i mean": the speaker saying what they
+        // asked, which asks it again.
+        round_14(
+            "en.ask_again.i_mean",
+            AskAgain,
+            vec![C(AskAgain), W("i"), W("mean")],
+            same,
+        ),
+    ]);
     rules.extend(
         [("en.hedge.only", "only"), ("en.hedge.like", "like")]
             .map(|(id, words)| filler(id, LATER, Hedge, words)),

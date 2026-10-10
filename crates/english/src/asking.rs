@@ -184,12 +184,13 @@ const PASSIVE_AUX: &[(&str, u32, &str)] = &[
 /// Words after a verb that say the calls happen inside the subject, and
 /// the round each came in: "what does `x` call inside", "what `x` calls
 /// into", "which functions does `x` call inside it?", "what does `paste`
-/// call internally?".
+/// call internally?", "what fields does `real_wiki` have in it?".
 const INSIDE: &[(&str, u32, &str)] = &[
     ("en.restriction.into", ROUND, "into"),
     ("en.restriction.inside", ROUND, "inside"),
     ("en.restriction.inside_it", 13, "inside it"),
     ("en.restriction.internally", 13, "internally"),
+    ("en.restriction.in_it", 14, "in it"),
 ];
 
 /// Words between a role noun and the other argument: "callees of `x`",

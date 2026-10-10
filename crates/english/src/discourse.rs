@@ -99,6 +99,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             6,
             vec![C(Cat::Utterance), W(","), C(Cat::Interjection)],
         ),
+        // "fields on `alice` struct??": the mark doubled asks no more.
+        utterance(
+            "en.utterance.question_marks",
+            14,
+            vec![C(Cat::Utterance), W("?"), W("?")],
+        ),
         // "Please rename the field `x` to `y`, since it's a flag."
         utterance("en.utterance.stop", 5, vec![C(Cat::Utterance), W(".")]),
         // "Can you tell me which functions `pubkey` calls?" ("I'd like to

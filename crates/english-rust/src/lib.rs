@@ -100,7 +100,11 @@ pub fn words() -> Vec<Word> {
         read_only(table(
             Noun,
             kind,
-            &[("en.rust.noun.test", 13, "test", Function, Singular)],
+            &[
+                ("en.rust.noun.test", 13, "test", Function, Singular),
+                // "what does `x` hold, field-wise": as to its fields.
+                ("en.rust.noun.field_wise", 14, "field-wise", Field, Plural),
+            ],
         )),
         table(
             Verb,
@@ -895,7 +899,7 @@ mod tests {
     }
 
     /// Asking what is in a struct, for its members, or for its fields after
-    /// setting it off, can all mean asking what it has.
+    /// setting it off or asking again, can all mean asking what it has.
     #[test]
     fn ways_of_asking_what_a_struct_holds_agree() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
@@ -903,14 +907,21 @@ mod tests {
             Understanding::Readings(readings) => readings.into_iter().map(|r| r.meaning).collect(),
             Understanding::Failed { .. } => Vec::new(),
         };
-        let has = meanings("what does `Conv` have?");
+        let mut has = meanings("what does `Conv` have?");
         assert_eq!(has.len(), 1);
+        // Asking again for its fields asks for the same, of that kind.
+        has.extend(meanings("what fields does `Conv` have?"));
         for text in [
             "um, what's inside `Conv`?",
             "what is in Conv",
             "`Conv` - which fields?",
             "what are the members of `Conv`?",
             "Conv fields",
+            "whats inside Conv, fields i mean",
+            "what does `Conv` hold, field-wise",
+            "what fields `Conv` has in it",
+            "I'm trying to figure out what's inside Conv, like which fields the struct has?",
+            "show me the struct fields of Conv",
         ] {
             assert!(meanings(text).iter().any(|m| has.contains(m)), "{text:?}");
         }

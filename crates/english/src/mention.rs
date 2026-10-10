@@ -337,6 +337,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("that"), C(Cat::Noun)],
             |_| Some(Sem::Thing(Thing::Previous)),
         ),
+        // "what's inside `x`, like which fields the struct has?": the
+        // thing said before, named again by its kind.
+        rule(
+            "en.noun_phrase.the_kind",
+            14,
+            Cat::NounPhrase,
+            vec![W("the"), C(Cat::Noun)],
+            |_| Some(Sem::Thing(Thing::Previous)),
+        ),
         // "job_page - what does it do", "static_record, what's it for"
         rule(
             "en.question.set_off",
