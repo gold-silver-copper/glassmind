@@ -814,6 +814,7 @@ mod tests {
             "any structs with fields typed Arc or containing Arc",
             "are there structs that have a field that is an Arc? which ones",
             "which structs keep an `Arc` in one of their fields? also counts if it's wrapped in something",
+            "which structs hold an Arc in tehir fields",
             "structs w/ fields typed Arc (incl. nested, Option<Arc> etc)",
             "which structs have a field with `Arc` in its type, directly or wrapped",
             "which structs have a field typed as `Arc`, or with a type that includes it?",

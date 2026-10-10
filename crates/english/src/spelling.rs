@@ -90,6 +90,9 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// calld by room_message", "show calles of `x`", "what funcs does find
 /// call internaly", and after asking what calls it: "which fns it caal",
 /// "which functions it calsl", "what does it call itslef".
+///
+/// Round 23, from questions about structs with a field of some type:
+/// "which structs hold a Sender in tehir fields".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -208,6 +211,7 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.internaly", "internaly", "internally"),
         ],
     ),
+    (23, &[("en.spelling.tehir", "tehir", "their")]),
 ];
 
 /// Every spelling: the word as typed, its rule and the word meant.
