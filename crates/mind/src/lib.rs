@@ -91,10 +91,21 @@ impl<O: Ontology> Session<O> {
     }
 
     /// Items mentioned in the conversation, most recent first, each once.
+    /// A turn the user asked to forget, and the request to forget it,
+    /// mention nothing.
     pub fn mentions(&self) -> Vec<O::Item> {
         let mut seen = BTreeSet::new();
         let mut out = Vec::new();
+        let mut forgotten = 0;
         for turn in self.turns.iter().rev() {
+            if turn.meaning == Some(Utterance::Forget) {
+                forgotten += 1;
+                continue;
+            }
+            if forgotten > 0 {
+                forgotten -= 1;
+                continue;
+            }
             let in_meaning = turn.meaning.iter().flat_map(|m| {
                 m.things().into_iter().filter_map(|t| match t {
                     Thing::Item(i) => Some(i.clone()),
@@ -221,6 +232,7 @@ impl<O: Ontology> Mind<'_, O> {
                     Utterance::Ask(q) => self.world.answer(q, &mut world_rules),
                     Utterance::Command(a) => self.world.propose(a, &mut world_rules),
                     Utterance::AskReason => reason(session, self.switches, &mut world_rules),
+                    Utterance::Forget => Ok(Reply::Forgotten),
                 };
                 rt.world_rules.extend(world_rules);
                 rt.outcomes.push((meaning.clone(), result.clone()));
@@ -514,6 +526,7 @@ fn progress_of<O: Ontology>(reply: &Reply<O>) -> Progress {
         | Reply::Account { .. }
         | Reply::Count { .. }
         | Reply::Proposal { .. }
-        | Reply::Reason { .. } => Progress::Done,
+        | Reply::Reason { .. }
+        | Reply::Forgotten => Progress::Done,
     }
 }

@@ -136,6 +136,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Utterance), C(Cat::Interjection)],
             request,
         ),
+        // "Actually, forget that, please.", "Please forget that, thanks."
+        Rule::new(
+            RuleInfo::new("en.utterance.interjection_after_comma", 6),
+            Cat::Utterance,
+            vec![C(Cat::Utterance), W(","), C(Cat::Interjection)],
+            S::Build(request),
+        )
+        .read_only(),
         // "which functions `open_key` calls, please"
         rule(
             "en.question.interjection_after",

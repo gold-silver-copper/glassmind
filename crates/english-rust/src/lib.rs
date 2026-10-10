@@ -745,4 +745,27 @@ mod tests {
             Some("Because you asked me to rename `tick` to `drain_events`.")
         );
     }
+
+    /// The ways of taking back the last request all mean forgetting it, and
+    /// the system says it has.
+    #[test]
+    fn ways_of_taking_back_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "nvm, forget that",
+            "Actually, never mind that last question. Please forget it.",
+            "ok forget that one, not needed anymore",
+            "Please forget that last one, thanks.",
+            "scratch that",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                readings.iter().all(|r| r.meaning == Utterance::Forget),
+                "{text:?}"
+            );
+        }
+        assert!(english.say(&Reply::Forgotten).is_some());
+    }
 }

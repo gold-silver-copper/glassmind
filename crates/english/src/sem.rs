@@ -179,6 +179,15 @@ pub enum Cat {
     Carrying,
     /// A noun for why something is done: "reason", "the reasoning".
     Reason,
+    /// A verb asking the system to drop what was said: "forget", "never
+    /// mind", "scratch".
+    Dismiss,
+    /// Words pointing back at what the user said before: "that", "it",
+    /// "that last question".
+    Said,
+    /// A noun for something said before, perhaps placed in time: "one",
+    /// "question", "last thing".
+    Earlier,
 }
 
 /// English grammatical number, used for agreement.

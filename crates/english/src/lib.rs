@@ -19,6 +19,7 @@ pub mod change;
 pub mod counting;
 pub mod describe;
 pub mod discourse;
+pub mod forgetting;
 pub mod having;
 pub mod lexicon;
 pub mod locate;
@@ -53,6 +54,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(renaming::rules());
     rules.extend(naming::rules());
     rules.extend(reason::rules());
+    rules.extend(forgetting::rules());
     rules
 }
 
