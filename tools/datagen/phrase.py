@@ -27,6 +27,13 @@ Reply with only a JSON array, one object per conversation, in the order given:
 [{"conv_id": "...", "turns": [{"text": "...", "new_name": "optional", "nickname": "optional"}]}]"""
 
 PERSONAS = {
+    # Added after the harness work started (2026-10-10), from the steering's
+    # call for texting style and dropped words; distinct from the hidden
+    # dev set's texting prompt, which is kept for calibrating models.
+    "slack": """Persona: a developer firing short messages into a team chat channel where the code assistant lives.
+Mostly lowercase, no greeting, often no question mark. Leaves out small words ("what fields Player", "who calls tick", "where defined spawn_wave").
+Sometimes puts the name first and the question after ("spawn_wave callers?", "Player fields").
+Chat shorthand now and then (pls, thx, rn, u, w/, smth), and a few typos in ordinary words, never in code identifiers.""",
     # Added after loop round 10, written from the brief's requirement that
     # generators imitate how people actually type (short, lowercase, missing
     # words, typos), not from any held-out example.
