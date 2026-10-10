@@ -12,7 +12,7 @@ use glassmind_meaning::{
 use crate::aside::filler;
 use crate::asking::read_only_rule;
 use crate::contents::narrowed;
-use crate::lexicon::{CODE, NAME, WORD};
+use crate::lexicon::{CAPITALIZED, CODE, LOWER, NAME, WORD};
 use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
 use crate::spoken;
@@ -272,6 +272,25 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Mention), C(Preposition), C(Mention)],
             related,
         ),
+        // "rename state_path in Store to ...": the owner named by a known
+        // word, capitalized the way type names are.
+        rule(
+            "en.mention.preposition_capitalized",
+            21,
+            Mention,
+            vec![C(Mention), C(Preposition), Class(CAPITALIZED)],
+            |c| match c {
+                [part, relation, Sem::Thing(owner)] => related(&[
+                    part.clone(),
+                    relation.clone(),
+                    Sem::Mention {
+                        thing: owner.clone(),
+                        kind: None,
+                    },
+                ]),
+                _ => None,
+            },
+        ),
         // "which functions call `accent` on Theme": the thing so placed,
         // as the object of a verb.
         rule(
@@ -297,6 +316,25 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Mention,
             vec![W("the"), Class(CODE), Class(WORD)],
             |c| named(c.first()),
+        ),
+        // "the helper `x`", "the test helper `fake_list`": the same, with
+        // the user's own noun before the name, perhaps after a kind.
+        rule(
+            "en.mention.own_noun_before",
+            21,
+            Mention,
+            vec![W("the"), Class(LOWER), C(Mention)],
+            |c| c.last().cloned(),
+        ),
+        rule(
+            "en.mention.kind_own_noun_before",
+            21,
+            Mention,
+            vec![W("the"), C(Noun), Class(LOWER), C(Mention)],
+            |c| match c {
+                [kind, _, mention] => of_kind(&[kind.clone(), mention.clone()]),
+                _ => None,
+            },
         ),
         // "the name `job_git`": the thing that has the name.
         rule(

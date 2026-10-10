@@ -294,4 +294,7 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // "callers of `App::modal`, need the full list", "who calls `x`, need
     // the callers": what the speaker needs, said without a subject.
     ("en.remark.need", 19, "need"),
+    // "current name kinda akward", "current name dosnt say waht it does":
+    // what the speaker thinks of the name, without "the".
+    ("en.remark.current_name", 21, "current name"),
 ];

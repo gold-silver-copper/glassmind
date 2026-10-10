@@ -10,6 +10,7 @@ use glassmind_grammar::{Rule, RuleInfo, Sym};
 use glassmind_meaning::{Ontology, Reply, Utterance};
 
 use crate::aside::filler;
+use crate::asking::read_only_rule;
 use crate::lexicon::CODE;
 use crate::renaming::{Phrases, blanks, heard, rename, request};
 use crate::sem::{Cat, Sem};
@@ -132,6 +133,23 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.follow_up.remark",
             FollowUp,
             vec![C(Mark), C(Remark)],
+            first,
+        ),
+        // "rename `x` -> `y`, w/ all callers", "..., rename all uses"
+        filler("en.follow_up.all_uses", 21, FollowUp, "all uses"),
+        filler(
+            "en.follow_up.with_all_callers",
+            21,
+            FollowUp,
+            "with all callers",
+        ),
+        // "pls rename everywhere", "rename it, with all callers": one
+        // follow-up after another.
+        read_only_rule(
+            "en.follow_up.more",
+            21,
+            FollowUp,
+            vec![C(FollowUp), C(FollowUp)],
             first,
         ),
         heard(

@@ -19,6 +19,10 @@ pub const CODE: &str = "code";
 /// Token class: a plain word the system does not know, not written as
 /// code: what a name of the user's own ("the history sheet") is made of.
 pub const WORD: &str = "word";
+/// Token class: a plain word the system does not know, in lower case: a
+/// noun of the user's own ("the test helper `x`"), never a type's name,
+/// which is capitalized.
+pub const LOWER: &str = "lower";
 /// Token class: a plain word the system knows, read as the thing going by
 /// that name where only a name can stand: "a field named calls".
 pub const SAID: &str = "said";
@@ -78,6 +82,12 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             (NAME | CODE, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
             (NAME | WORD, Shape::Word) if !self.known.contains(self.norm(token)) => {
                 vec![Sem::Name(Name(token.text.clone()))]
+            }
+            (LOWER, Shape::Word)
+                if token.text.starts_with(char::is_lowercase)
+                    && !self.known.contains(self.norm(token)) =>
+            {
+                vec![Sem::Quote(token.text.clone())]
             }
             (SAID, Shape::Word) if self.known.contains(self.norm(token)) => {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]

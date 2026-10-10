@@ -168,6 +168,9 @@ pub enum Cat {
     /// A preposition saying what a thing belongs to, naming the relation
     /// between them: "of", "on", "in" (the field `x` of `S`).
     Belonging,
+    /// The word after an owner, naming the relation between it and what
+    /// follows: the "'s" of "App's `on_mouse`".
+    Possessive,
     /// A noun for a kind of thing that is part of another, naming how: a
     /// "field" of a struct ("`S` field `x`").
     Part,

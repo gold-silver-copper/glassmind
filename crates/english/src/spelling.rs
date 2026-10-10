@@ -78,6 +78,10 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// it", "whose type is or incldues `x`", "directly or nestd". "w/" is not
 /// mistyped but shortened, the way "with" is often written; the tokenizer
 /// keeps the slash with the letter.
+///
+/// Round 21, from requests to rename a function: "rename `x` to `y`,
+/// thnks", "`x` shoud be called `y`", "pls rename evrywhere", "want it
+/// called `y` isntead".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -168,6 +172,15 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.contaning", "contaning", "containing"),
             ("en.spelling.incldues", "incldues", "includes"),
             ("en.spelling.nestd", "nestd", "nested"),
+        ],
+    ),
+    (
+        21,
+        &[
+            ("en.spelling.thnks", "thnks", "thanks"),
+            ("en.spelling.shoud", "shoud", "should"),
+            ("en.spelling.evrywhere", "evrywhere", "everywhere"),
+            ("en.spelling.isntead", "isntead", "instead"),
         ],
     ),
 ];

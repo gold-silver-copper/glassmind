@@ -197,6 +197,11 @@ impl<O: Ontology> English<O> {
             .sum()
     }
 
+    /// The tokens of `text`, as the words this grammar knows split it.
+    fn tokenize(&self, text: &str) -> Vec<Token> {
+        tokenize(text, &|w| self.lexicon.known.contains(w))
+    }
+
     pub fn grammar(&self) -> &Grammar<Cat, Sem<O>> {
         &self.grammar
     }
@@ -213,11 +218,11 @@ impl<O: Ontology> English<O> {
 
 impl<O: Ontology> Language<O> for English<O> {
     fn tokens(&self, text: &str) -> Vec<TokenSpan> {
-        tokenize(text).iter().map(Token::span).collect()
+        self.tokenize(text).iter().map(Token::span).collect()
     }
 
     fn understand(&self, text: &str) -> Understanding<O> {
-        let tokens = tokenize(text);
+        let tokens = self.tokenize(text);
         let mut parse = self.grammar.parse(&self.lexicon, &tokens);
         // The spellings corrected, which every reading uses.
         let respelled: Vec<RuleInfo> = tokens
@@ -266,7 +271,7 @@ impl<O: Ontology> Language<O> for English<O> {
     }
 
     fn next(&self, prefix: &str) -> Vec<Next> {
-        let tokens = tokenize(prefix);
+        let tokens = self.tokenize(prefix);
         let mut out: Vec<Next> = self
             .grammar
             .expected(&self.lexicon, &tokens)

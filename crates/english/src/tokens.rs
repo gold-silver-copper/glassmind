@@ -43,8 +43,8 @@ fn is_word_char(c: char) -> bool {
     c.is_alphanumeric() || c == '_' || c == '\'' || c == '-'
 }
 
-/// Splits `text` into tokens.
-pub fn tokenize(text: &str) -> Vec<Token> {
+/// Splits `text` into tokens, given the words the grammar knows.
+pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
     let mut tokens = Vec::new();
     let chars: Vec<(usize, char)> = text.char_indices().collect();
     let end_of = |i: usize| chars.get(i).map_or(text.len(), |&(b, _)| b);
@@ -90,12 +90,36 @@ pub fn tokenize(text: &str) -> Vec<Token> {
             {
                 j -= 1;
             }
+            // A capitalized word with "'s" that is no known word ("What's"
+            // is one) owns what follows ("change App's `x`"), and the "'s"
+            // is a word of its own.
+            if c.is_uppercase()
+                && j > i + 2
+                && chars.get(j - 2).is_some_and(|&(_, d)| d == '\'')
+                && chars.get(j - 1).is_some_and(|&(_, d)| d == 's')
+                && !known(
+                    &text
+                        .get(start..end_of(j))
+                        .unwrap_or_default()
+                        .to_lowercase(),
+                )
+            {
+                j -= 2;
+            }
             // A letter with a slash after it is one shortened word: "w/".
             if j == i + 1 && chars.get(j).is_some_and(|&(_, d)| d == '/') {
                 j += 1;
             }
             let word = text.get(start..end_of(j)).unwrap_or_default();
             (word, shape_of(word), j)
+        } else if c == '\''
+            && chars.get(i + 1).is_some_and(|&(_, d)| d == 's')
+            && !chars.get(i + 2).is_some_and(|&(_, d)| is_word_char(d))
+            && tokens.last().is_some_and(|t: &Token| t.end == start)
+        {
+            // The "'s" of a name owning what follows: "App's", "`App`'s".
+            let word = text.get(start..end_of(i + 2)).unwrap_or_default();
+            (word, Shape::Word, i + 2)
         } else {
             // One punctuation character; lowercasing leaves it as it is.
             let p = text.get(start..end_of(i + 1)).unwrap_or_default();
@@ -137,8 +161,10 @@ mod tests {
 
     #[test]
     fn splits_words_code_and_punctuation() {
-        let t =
-            tokenize("What calls `spawn_wave`? rename Player::hp, ok player.hp's w/ Option/Vec");
+        let t = tokenize(
+            "What calls `spawn_wave`? rename Player::hp, ok player.hp's w/ Option/Vec App's What's",
+            &|w| w == "what's",
+        );
         let shapes: Vec<(String, Shape)> = t.iter().map(|t| (t.text.clone(), t.shape)).collect();
         assert_eq!(
             shapes,
@@ -156,6 +182,9 @@ mod tests {
                 ("Option".into(), Shape::Word),
                 ("/".into(), Shape::Punct),
                 ("Vec".into(), Shape::Word),
+                ("App".into(), Shape::Word),
+                ("'s".into(), Shape::Word),
+                ("What's".into(), Shape::Word),
             ]
         );
     }

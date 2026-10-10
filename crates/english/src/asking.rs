@@ -307,6 +307,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(NounPhrase), C(RoleNoun)],
             role_and_thing,
         ),
+        // "Stock's fields", "`x`'s callers"
+        read_only_rule(
+            "en.description.possessive_role",
+            21,
+            Description,
+            vec![C(NounPhrase), W("'s"), C(RoleNoun)],
+            role_and_thing,
+        ),
         // "`x` calls `a` and `b`."
         spoken(
             "en.statement.object_list",

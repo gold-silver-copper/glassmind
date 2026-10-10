@@ -347,6 +347,13 @@ pub fn words() -> Vec<Word> {
             role,
             &[("en.rust.belonging.in", 5, "in", Member, Second)],
         ),
+        // A type owns its fields and methods: "App's `on_mouse`". The
+        // thing after the word is the member.
+        read_only(table(
+            Possessive,
+            role,
+            &[("en.rust.possessive.s", 21, "'s", Member, Second)],
+        )),
         // What is inside a struct is what it has: "what's inside `NewDm`".
         read_only(table(
             Inside,
@@ -892,6 +899,13 @@ mod tests {
             "rename tick, call it drain_events",
             "can we rename `tick` to something clearer? maybe `drain_events`",
             "please rename `tick` to `drain_events`, tick is kind of vague",
+            "`tick` to `drain_events`, thx",
+            "rename tick to smth better pls, maybe drain_events",
+            "rename tick to something better, `drain_events`",
+            "rename tick, want it called drain_events isntead",
+            "tick shoud be called drain_events, rename pls",
+            "rename tick to drain_events pls, current name kinda vague",
+            "tick -> drain_events pls rename evrywhere",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
@@ -950,6 +964,27 @@ mod tests {
             panic!("could not read {text:?}");
         };
         assert!(readings.iter().any(|r| r.meaning == meaning));
+        // "Seat's field `x`": the same member, its owner named before "'s".
+        let owned = Utterance::Command(Action::Rename {
+            thing: Thing::Fitting(Description {
+                kind: None,
+                conditions: vec![
+                    Condition::Is(Thing::Named(Name("x".into()))),
+                    Condition::Related {
+                        relation: RustRelation::Member,
+                        position: Position::Second,
+                        other: Thing::Named(Name("Seat".into())),
+                    },
+                ],
+            }),
+            kind: Some(RustKind::Field),
+            name: Some(Name("y".into())),
+        });
+        let text = "rename Seat's field `x` to `y`";
+        let Understanding::Readings(readings) = english.understand(text) else {
+            panic!("could not read {text:?}");
+        };
+        assert!(readings.iter().any(|r| r.meaning == owned));
     }
 
     /// The ways of asking for a field to be renamed mean what the system

@@ -14,7 +14,7 @@ use glassmind_meaning::{Action, Condition, Description, Name, Ontology, Thing, U
 
 use crate::aside::filler;
 use crate::asking::read_only_rule;
-use crate::lexicon::{NAME, TEXT};
+use crate::lexicon::{CODE, NAME, TEXT};
 use crate::sem::{Cat, Sem};
 use crate::spoken;
 use crate::{blank, first, word};
@@ -439,6 +439,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Mention), C(Part), C(Mention)],
             belonging,
         ),
+        // "App's `on_mouse`", "Builder's seen_urls": a part named after
+        // its owner's "'s".
+        read_only_rule(
+            "en.mention.possessive",
+            21,
+            Mention,
+            vec![C(Mention), C(Possessive), C(Mention)],
+            |c| match c {
+                [owner, role, part] => belonging(&[role.clone(), owner.clone(), part.clone()]),
+                _ => None,
+            },
+        ),
         heard(
             "en.mention.owner_part_after",
             Mention,
@@ -553,6 +565,43 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Topic,
             vec![C(WhatIs), C(Mention), C(Hedge)],
             |c| c.get(1).cloned(),
+        ),
+    ]);
+    let grown = |id, lhs, rhs, build| read_only_rule(id, 21, lhs, rhs, build);
+    rules.extend([
+        // "rename `x` to something better, maybe `y`", "rename `x` to
+        // smth better pls, `y`": the name offered after a comma.
+        grown(
+            "en.utterance.offered_comma",
+            Utterance,
+            vec![C(Utterance), W(","), C(Offer)],
+            offered,
+        ),
+        // "..., `snap_to_play_zoom`": a name offered with no words framing
+        // it, written as code so it is no guess.
+        grown("en.offer.code", Offer, vec![Class(CODE)], first),
+        // "`run_menu_item` to `activate_menu_row`, thx": the thing and the
+        // name it is to have, with no verb.
+        grown(
+            "en.command.mention_to",
+            Command,
+            vec![C(Mention), W("to"), Class(CODE)],
+            rename,
+        ),
+        // "want it called `y` instead"
+        grown(
+            "en.command.want_called",
+            Command,
+            vec![W("want"), C(Mention), W("called"), Class(CODE)],
+            rename,
+        ),
+        // "`cached_data` would be clearer as `cache_lookup`": what the
+        // thing would be better as.
+        grown(
+            "en.becomes.would_be_as",
+            Becomes,
+            vec![W("would be"), Class(TEXT), W("as")],
+            first,
         ),
     ]);
     // Words saying what a thing ought to be called.
