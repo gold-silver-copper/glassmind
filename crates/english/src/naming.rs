@@ -8,10 +8,11 @@
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Condition, Description, Ontology, Thing};
 
+use crate::lexicon::SAID;
 use crate::renaming::heard;
 use crate::sem::{Cat, Number, Sem};
 
-use Sym::{Cat as C, Word as W};
+use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 5;
 
@@ -115,5 +116,22 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 _ => None,
             },
         ),
+        // "which structs have field named calls?", "which structs have
+        // field far": a word after "named" or the kind is the name, even
+        // one the system knows as English.
+        Rule::new(
+            RuleInfo::new("en.qualifier.named_word", 15),
+            Cat::Qualifier,
+            vec![W("named"), Class(SAID)],
+            S::Build(named),
+        )
+        .read_only(),
+        Rule::new(
+            RuleInfo::new("en.noun_phrase.kind_word", 15),
+            Cat::NounPhrase,
+            vec![C(Cat::Noun), Class(SAID)],
+            S::Build(kind_named),
+        )
+        .read_only(),
     ]
 }

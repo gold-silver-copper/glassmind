@@ -16,9 +16,9 @@ use crate::sem::{Cat, Number, Sem};
 use crate::{blank, last, word};
 
 use Cat::{
-    Again, Alternative, Anything, AskAgain, Break, Description, Hedge, Holder, Includes, Join,
-    Noun, NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective,
-    RoleNoun, Utterance, VerbPhrase, Within,
+    Again, Alternative, Anything, AskAgain, Break, Defined, Description, Hedge, Holder, Includes,
+    Join, Noun, NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question,
+    RoleAdjective, RoleNoun, Utterance, VerbPhrase, Within,
 };
 use Sym::{Cat as C, Word as W};
 
@@ -1029,6 +1029,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             same,
         ),
     ]);
+    // "a struct field": a part said with the kind it is in, the same part.
+    rules.push(read_only_rule(
+        "en.part.kind",
+        15,
+        Part,
+        vec![C(Noun), C(Part)],
+        last,
+    ));
+    // "where's `handgun_draw_m` declared as a struct field", "where's `x`
+    // used as a struct field": what has a part going by the name.
+    for (id, start, verb) in [
+        ("en.question.where_s_declared_as", "where's", C(Defined)),
+        ("en.question.where_is_declared_as", "where is", C(Defined)),
+        ("en.question.where_s_used_as", "where's", W("used")),
+        ("en.question.where_is_used_as_part", "where is", W("used")),
+    ] {
+        let rhs = [
+            words_then(start, &[NounPhrase]),
+            vec![verb, W("as"), C(Part)],
+        ]
+        .concat();
+        rules.push(read_only_rule(id, 15, Question, rhs, |c| {
+            identify(&[part_holders(&[c.first()?.clone(), c.last()?.clone()])?])
+        }));
+    }
     rules.extend(
         [("en.hedge.only", "only"), ("en.hedge.like", "like")]
             .map(|(id, words)| filler(id, LATER, Hedge, words)),

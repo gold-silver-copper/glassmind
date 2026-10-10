@@ -718,11 +718,24 @@ mod tests {
             "i keep seeing `done` around, which structs have field named that?",
             "`done` field - what structs",
             "I'm looking for structs that have `done` field, which ones are there?",
+            "where's done declared as a struct field, which structs",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
             };
             assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+        // A name the system also knows as English, where only a name fits.
+        let named = |text: &str| match english.understand(text) {
+            Understanding::Readings(readings) => readings.into_iter().map(|r| r.meaning).collect(),
+            Understanding::Failed { .. } => Vec::new(),
+        };
+        let calls = named("which structs have a field named `calls`?");
+        for text in [
+            "which structs have field named calls?",
+            "which structs have field calls",
+        ] {
+            assert!(named(text).iter().any(|m| calls.contains(m)), "{text:?}");
         }
     }
 

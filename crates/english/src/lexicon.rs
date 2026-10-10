@@ -5,7 +5,7 @@ use std::collections::BTreeSet;
 use std::marker::PhantomData;
 
 use glassmind_grammar::Lexicon;
-use glassmind_meaning::{Labelled, Name, Ontology};
+use glassmind_meaning::{Labelled, Name, Ontology, Thing};
 
 use crate::sem::Sem;
 use crate::tokens::{Shape, Token};
@@ -19,6 +19,9 @@ pub const CODE: &str = "code";
 /// Token class: a plain word the system does not know, not written as
 /// code: what a name of the user's own ("the history sheet") is made of.
 pub const WORD: &str = "word";
+/// Token class: a plain word the system knows, read as the thing going by
+/// that name where only a name can stand: "a field named calls".
+pub const SAID: &str = "said";
 /// Token class: a number.
 pub const NUMBER: &str = "number";
 /// Token class: any word, name or number in a remark, whose content the
@@ -50,6 +53,9 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             (NAME | CODE, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
             (NAME | WORD, Shape::Word) if !self.known.contains(token.norm.as_str()) => {
                 vec![Sem::Name(Name(token.text.clone()))]
+            }
+            (SAID, Shape::Word) if self.known.contains(token.norm.as_str()) => {
+                vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
             }
             (TEXT, shape) if shape != Shape::Punct => vec![Sem::Quote(token.text.clone())],
             (NUMBER, Shape::Number) => token.text.parse().map(Sem::Count).into_iter().collect(),
