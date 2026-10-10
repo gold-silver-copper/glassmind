@@ -143,6 +143,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Cat::Question), W(","), C(Cat::Interjection)],
             question,
         ),
+        // "Please rename the field `x` to `y`, since it's a flag."
+        Rule::new(
+            RuleInfo::new("en.utterance.stop", 5),
+            Cat::Utterance,
+            vec![C(Cat::Utterance), W(".")],
+            S::Build(request),
+        )
+        .read_only(),
         // "I'd like to know which functions `among` calls." is read by
         // `en.utterance.question_stop` in locate.rs.
         // "Can you tell me which functions `pubkey` calls?"

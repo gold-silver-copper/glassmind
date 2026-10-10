@@ -29,14 +29,18 @@ fn rename<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     Some(Sem::Utterance(Utterance::Command(Action::Rename {
         thing,
         kind,
-        name,
+        name: Some(name),
     })))
 }
 
 /// The mention, the wording and the new name a rename speaks.
 fn unrename<O: Ontology>(v: &Sem<O>) -> Option<Vec<Sem<O>>> {
     match v {
-        Sem::Utterance(Utterance::Command(Action::Rename { thing, kind, name })) => Some(vec![
+        Sem::Utterance(Utterance::Command(Action::Rename {
+            thing,
+            kind,
+            name: Some(name),
+        })) => Some(vec![
             Sem::Mention {
                 thing: thing.clone(),
                 kind: kind.clone(),

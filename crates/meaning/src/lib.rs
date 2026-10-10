@@ -135,12 +135,13 @@ pub enum Question<O: Ontology> {
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]
 pub enum Action<O: Ontology> {
-    /// Give the thing a new name everywhere it is referred to; `kind`, if
-    /// given, is what the user said it is.
+    /// Give the thing a new name wherever it is named; `kind`, if given, is
+    /// what the user said it is. `name` is `None` when the user asks for a
+    /// rename without saying the new name.
     Rename {
         thing: Thing<O>,
         kind: Option<O::Kind>,
-        name: Name,
+        name: Option<Name>,
     },
 }
 

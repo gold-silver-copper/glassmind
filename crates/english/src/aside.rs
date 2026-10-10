@@ -58,6 +58,11 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         &["thanks", "a", "lot"],
         5,
     )));
+    rules.push(aside_word((
+        "en.aside.thanks_in_advance",
+        &["thanks", "in", "advance"],
+        5,
+    )));
     // The punctuation that ends an aside: "hey,", "hi!", "quick question:",
     // "sorry, quick one -", "Thanks.".
     for (id, mark) in [

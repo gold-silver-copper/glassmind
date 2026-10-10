@@ -36,7 +36,7 @@ pub fn response(reply: &Reply<Rust>) -> Response {
             action:
                 Action::Rename {
                     thing: Thing::Item(item),
-                    name,
+                    name: Some(name),
                     ..
                 },
             spots,

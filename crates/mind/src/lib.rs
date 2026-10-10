@@ -27,7 +27,6 @@ pub use trace::{ReadingTrace, Trace};
 pub const PREFER_RECENT_MENTION: RuleInfo = RuleInfo::new("mind.prefer.recent_mention", SEED);
 /// Preference: otherwise, prefer the reading the grammar found first.
 pub const PREFER_FIRST_READING: RuleInfo = RuleInfo::new("mind.prefer.first_reading", SEED);
-
 /// Preference: when no reading can be answered, and a name was taken to
 /// mean items of the wrong kind for what was asked as well as several of the
 /// right kind, ask which of those was meant ("which `settings` field?")
@@ -36,6 +35,10 @@ pub const PREFER_RIGHT_KIND: RuleInfo = RuleInfo::new("mind.prefer.right_kind", 
 /// When readings of a request to change something would change different
 /// things, ask which one was meant rather than act on a guess.
 pub const ASK_BEFORE_ACTING: RuleInfo = RuleInfo::new("mind.ask_before_acting", 5);
+/// Preference: when no reading can be answered, ask which item is meant if
+/// some reading only lacks that, rather than report why the others failed
+/// ("rename the `bytes` field" is not about fields typed `bytes`).
+pub const PREFER_ASKING: RuleInfo = RuleInfo::new("mind.prefer.asking", 5);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -43,6 +46,7 @@ pub const RULES: &[RuleInfo] = &[
     PREFER_FIRST_READING,
     PREFER_RIGHT_KIND,
     ASK_BEFORE_ACTING,
+    PREFER_ASKING,
 ];
 
 /// A source the conversation was given.
@@ -280,7 +284,8 @@ impl<O: Ontology> Mind<'_, O> {
     ) -> (Reply<O>, Option<Utterance<O>>) {
         let (good, bad): (Vec<_>, Vec<_>) = candidates.into_iter().partition(|c| c.result.is_ok());
         let Some(first) = good.first() else {
-            // Nothing survived: report the trouble of the reading that got furthest.
+            // Nothing survived: report the trouble of the reading that got
+            // furthest, or ask back.
             let wrong_kind = |c: &Candidate<O>| matches!(c.result, Err(Trouble::WrongKind { .. }));
             let mut bad = bad;
             if self.switches.on(PREFER_RIGHT_KIND.id)
@@ -292,12 +297,19 @@ impl<O: Ontology> Mind<'_, O> {
                 trace.preferences.push(PREFER_RIGHT_KIND);
                 bad.retain(|c| !wrong_kind(c));
             }
+            let asking = self.switches.on(PREFER_ASKING.id);
             let worst = bad
                 .into_iter()
                 .filter_map(|c| c.result.err().map(|t| (c.reading, c.meaning, t)))
-                .max_by_key(|(_, _, t)| trouble_progress(t));
+                .max_by_key(|(_, _, t)| {
+                    let asks = matches!(t, Trouble::Ambiguous { .. });
+                    (asks && asking, trouble_progress(t))
+                });
             return match worst {
                 Some((reading, meaning, trouble)) => {
+                    if asking && matches!(trouble, Trouble::Ambiguous { .. }) {
+                        trace.preferences.push(PREFER_ASKING);
+                    }
                     trace.chosen = Some(reading);
                     (Reply::Trouble(trouble), Some(meaning))
                 }

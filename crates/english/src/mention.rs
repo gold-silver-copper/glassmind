@@ -16,7 +16,7 @@ use Sym::{Cat as C, Word as W};
 const ROUND: u32 = 3;
 
 /// The mention among the children, with the kind among them.
-fn of_kind<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+pub(crate) fn of_kind<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c {
         [Sem::Mention { thing, kind: None }, Sem::Kind { kind, .. }]
         | [Sem::Kind { kind, .. }, Sem::Mention { thing, kind: None }] => Some(Sem::Mention {

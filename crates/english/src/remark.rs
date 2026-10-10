@@ -250,6 +250,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             GREETING_ROUND,
             vec![C(Cat::Greeting), W("!"), C(Cat::Utterance)],
         ),
+        // "I'm going through the chat code, and I'd like ..."
+        Rule::new(
+            RuleInfo::new("en.utterance.remark_comma_and", 5),
+            Cat::Utterance,
+            vec![C(Cat::Remark), W(","), W("and"), C(Cat::Utterance)],
+            S::Build(request),
+        ),
         // "Hey, quick question: ...", "hey, could you rename ..."
         greeting("en.greeting.hey", "hey"),
         // "Hi, what functions does `local_times_in_explicit_zones` call?"
@@ -268,5 +275,36 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             remark(),
         ));
     }
+    // Other ways a remark opens: with another subject ("it's more clear",
+    // "the name is a bit vague"), or without one ("seems more clear to me",
+    // "took me a while to get").
+    rules.extend(OPENERS.iter().map(|(id, w)| {
+        Rule::new(
+            RuleInfo::new(id, 5),
+            Cat::Remark,
+            vec![W(w), Class(TEXT)],
+            remark(),
+        )
+    }));
+    // What the request is for: "so it's clearer".
+    rules.push(Rule::new(
+        RuleInfo::new("en.remark.so", 5),
+        Cat::Remark,
+        vec![W("so"), C(Cat::Remark)],
+        remark(),
+    ));
     rules
 }
+
+/// Words a remark can open with, besides those above.
+const OPENERS: &[(&str, &str)] = &[
+    ("en.remark.it", "it"),
+    ("en.remark.it_s", "it's"),
+    ("en.remark.its", "its"),
+    ("en.remark.that_s", "that's"),
+    ("en.remark.the", "the"),
+    ("en.remark.seems", "seems"),
+    ("en.remark.reads", "reads"),
+    ("en.remark.took", "took"),
+    ("en.remark.think", "think"),
+];

@@ -160,6 +160,10 @@ pub enum Cat {
     /// A question after a question asking again for the things it asks
     /// about: "which ones?", "can you list them?".
     AskAgain,
+    /// The name a thing is to be given: "`y`", "something like `y`".
+    NewName,
+    /// Words saying what a thing ought to be called: "should be called".
+    ShouldBe,
 }
 
 /// English grammatical number, used for agreement.

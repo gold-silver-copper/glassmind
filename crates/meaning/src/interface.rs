@@ -79,8 +79,9 @@ pub trait World<O: Ontology> {
         fired: &mut Vec<RuleInfo>,
     ) -> Result<Reply<O>, Trouble<O>>;
     /// The edit that would carry out an action whose things are all
-    /// resolved to items, as a proposal; nothing is changed. Pushes the
-    /// world rules it used onto `fired`.
+    /// resolved to items, as a proposal, or why it cannot be proposed (a
+    /// rename to a name not given can at most ask which item is meant);
+    /// nothing is changed. Pushes the world rules it used onto `fired`.
     fn propose(
         &self,
         action: &Action<O>,

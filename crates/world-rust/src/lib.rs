@@ -144,6 +144,11 @@ const RENAME: RuleInfo = RuleInfo::new("rust.rename", 5);
 /// and the new name is written nowhere in the source. Decides before
 /// [`RENAME`] for anything that is a field.
 const RENAME_FIELD: RuleInfo = RuleInfo::new("rust.rename.field", 5);
+/// Renaming a thing when the new name is not given ("rename the `x` field"):
+/// a rename is only exact without type information, so a name that several
+/// items of its kind share (a field declared by two structs) can't be
+/// renamed until the user says which one is meant.
+const RENAME_UNIQUE: RuleInfo = RuleInfo::new("rust.rename.unique", 5);
 
 /// Every world rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -159,6 +164,7 @@ pub const RULES: &[RuleInfo] = &[
     RENAME_FIELD,
     RELATION_MEMBER,
     CONDITION_NAMED,
+    RENAME_UNIQUE,
 ];
 
 /// One or more indexed Rust sources.
@@ -486,10 +492,53 @@ impl RustWorld {
             action: Action::Rename {
                 thing: Thing::Item(item),
                 kind,
-                name: name.clone(),
+                name: Some(name.clone()),
             },
             spots: spots(source, at),
         }))
+    }
+
+    /// A rename to a name not given, by [`RENAME_UNIQUE`]: which item is
+    /// meant, if items of its kind share its name; otherwise there is no
+    /// edit to propose.
+    fn rename_unnamed(
+        &self,
+        thing: &Thing<Rust>,
+        kind: Option<RustKind>,
+        fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<Rust>, Trouble<Rust>> {
+        let item = match thing {
+            Thing::Item(item) => item,
+            Thing::Named(name) => return Err(Trouble::NoSuchName { name: name.clone() }),
+            Thing::Previous | Thing::Fitting(_) => return Err(Trouble::Unsupported),
+        };
+        if !self.switches.on(RENAME_UNIQUE.id) {
+            return Err(Trouble::Unsupported);
+        }
+        fired.push(RENAME_UNIQUE);
+        // Every item of the kind meant that has the name, whichever of them
+        // this reading took the name to mean. With no kind said, a name
+        // several fields have asks which field, as [`RENAME_FIELD`] does.
+        let sharing = |kind: RustKind| -> Vec<RustItem> {
+            self.records()
+                .filter(|r| r.item.name == item.name && r.item.kind == kind)
+                .map(|r| r.item.clone())
+                .collect()
+        };
+        let kind = kind.unwrap_or(if sharing(RustKind::Field).len() > 1 {
+            RustKind::Field
+        } else {
+            item.kind
+        });
+        let candidates = sharing(kind);
+        if candidates.len() > 1 {
+            return Err(Trouble::Ambiguous { candidates });
+        }
+        if item.kind != kind {
+            return Err(Trouble::WrongKind { item: item.clone() });
+        }
+        // With no new name there is no edit to propose.
+        Err(Trouble::Unsupported)
     }
 
     /// The items of the kind (any kind if `None`) whose name is exactly
@@ -657,6 +706,9 @@ impl World<Rust> for RustWorld {
         fired: &mut Vec<RuleInfo>,
     ) -> Result<Reply<Rust>, Trouble<Rust>> {
         let Action::Rename { thing, kind, name } = action;
+        let Some(name) = name else {
+            return self.rename_unnamed(thing, *kind, fired);
+        };
         if let Some(reply) = self.rename_field(thing, *kind, name, fired) {
             return reply;
         }
@@ -685,7 +737,7 @@ impl World<Rust> for RustWorld {
             action: Action::Rename {
                 thing: Thing::Item(item.clone()),
                 kind: *kind,
-                name: name.clone(),
+                name: Some(name.clone()),
             },
             spots: spots(source, at),
         })
@@ -737,7 +789,7 @@ mod tests {
             let action = Action::Rename {
                 thing: Thing::Item(item.clone()),
                 kind: None,
-                name: Name(to.into()),
+                name: Some(Name(to.into())),
             };
             world.propose(&action, &mut Vec::new())
         };
@@ -784,7 +836,7 @@ mod tests {
             let action = Action::Rename {
                 thing: Thing::Item(item.unwrap()),
                 kind: None,
-                name: Name(new.into()),
+                name: Some(Name(new.into())),
             };
             match world.propose(&action, &mut Vec::new()) {
                 Ok(Reply::Proposal { spots, .. }) => {

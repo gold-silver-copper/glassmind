@@ -599,7 +599,7 @@ mod tests {
         let meaning = Utterance::Command(Action::Rename {
             thing: Thing::Named(Name("tick".into())),
             kind: None,
-            name: Name("drain_events".into()),
+            name: Some(Name("drain_events".into())),
         });
         let spoken = english
             .speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
@@ -616,7 +616,18 @@ mod tests {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
             };
-            assert!(readings.iter().all(|r| r.meaning == meaning), "{text:?}");
+            // A reading may also take words before "rename it" as a remark,
+            // leaving the new name unsaid; it can only ask back.
+            let unnamed = |u: &Utterance<Rust>| {
+                matches!(u, Utterance::Command(Action::Rename { name: None, .. }))
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+            assert!(
+                readings
+                    .iter()
+                    .all(|r| r.meaning == meaning || unnamed(&r.meaning)),
+                "{text:?}"
+            );
         }
         // Words after the request without a break may be part of it.
         assert!(matches!(
@@ -652,7 +663,7 @@ mod tests {
         let meaning = Utterance::Command(Action::Rename {
             thing: Thing::Fitting(field),
             kind: Some(RustKind::Field),
-            name: Name("y".into()),
+            name: Some(Name("y".into())),
         });
         for text in [
             "rename the field `x` of the `S` struct to `y`",
@@ -660,6 +671,38 @@ mod tests {
             "the field `x` in the `S` struct is confusing, can you rename it to `y`?",
             "in the `S` struct there is field `x`, can we rename it to `y`?",
             "I'd like to rename the field `x` in the `S` struct to `y`. Can you do that for me?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
+    /// The ways of asking for a field to be renamed mean what the system
+    /// says when it asks that, whether the field is named in the request or
+    /// before it.
+    #[test]
+    fn ways_of_asking_for_a_field_rename_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Command(Action::Rename {
+            thing: Thing::Named(Name("scroll".into())),
+            kind: Some(RustKind::Field),
+            name: Some(Name("offset".into())),
+        });
+        let spoken = english
+            .speak(Cat::Utterance, &Sem::Utterance(meaning.clone()))
+            .map(|s| s.text);
+        assert_eq!(
+            spoken.as_deref(),
+            Some("Rename the `scroll` field to `offset`")
+        );
+        for text in [
+            "Hey, could you rename the field `scroll` to `offset`, please? Thanks!",
+            "I'd like the field `scroll` renamed to `offset`. Can you do that?",
+            "scroll field -> offset, rename it",
+            "the field `scroll` is a bit vague. Could you rename it to `offset`?",
+            "I think `scroll` field should be called offset, could you rename it?",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
