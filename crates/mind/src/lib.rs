@@ -57,6 +57,11 @@ pub const PREVIOUS_IS_TOPIC: RuleInfo = RuleInfo::new("mind.refer.topic", 9);
 /// spoke of, in the latest turn not forgotten that spoke of one. If that
 /// turn spoke of several items, which one is meant is left open.
 pub const PREVIOUS_IS_LAST_SPOKEN: RuleInfo = RuleInfo::new("mind.refer.last_spoken", 9);
+/// A correction ("sorry, I meant `y`" after "where is `x` defined?") asks
+/// the request of the latest remembered turn again, with the thing it says
+/// in place of the one item that request was about. If that turn was not
+/// understood, or was about no item or several, nothing is corrected.
+pub const CORRECTION_REPLACES: RuleInfo = RuleInfo::new("mind.correct.replaces", 10);
 
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
@@ -69,6 +74,7 @@ pub const RULES: &[RuleInfo] = &[
     RECALL_IS_MENTIONS,
     PREVIOUS_IS_TOPIC,
     PREVIOUS_IS_LAST_SPOKEN,
+    CORRECTION_REPLACES,
 ];
 
 /// A source the conversation was given.
@@ -163,6 +169,17 @@ impl<O: Ontology> Session<O> {
         let mut items = meaning.things().into_iter().filter_map(Thing::item);
         let item = items.next()?;
         items.next().is_none().then(|| item.clone())
+    }
+
+    /// The latest remembered turn's request, about `thing` in place of the
+    /// one item it was about.
+    pub fn corrected(&self, thing: &Thing<O>) -> Option<Utterance<O>> {
+        let meaning = self.remembered().next()?.meaning.as_ref()?;
+        let things = meaning.things();
+        let [old @ Thing::Item(_)] = things.as_slice() else {
+            return None;
+        };
+        Some(meaning.map_things(&mut |t| if t == *old { thing } else { t }.clone()))
     }
 
     /// The item the user last said they would call `name`, if any.
@@ -282,7 +299,17 @@ impl<O: Ontology> Mind<'_, O> {
                 world_rules: Vec::new(),
                 outcomes: Vec::new(),
             };
-            for (meaning, means) in self.resolve(session, &reading.meaning, &mut rt) {
+            // A correction asks the corrected request, if that rule is on.
+            let meaning = match &reading.meaning {
+                Utterance::Correct(thing)
+                    if self.using(CORRECTION_REPLACES, &mut rt.world_rules).is_ok() =>
+                {
+                    session.corrected(thing)
+                }
+                _ => None,
+            }
+            .unwrap_or_else(|| reading.meaning.clone());
+            for (meaning, means) in self.resolve(session, &meaning, &mut rt) {
                 let fired = &mut rt.world_rules;
                 let result = match &meaning {
                     Utterance::Ask(q) => self.world.answer(q, fired),
@@ -295,6 +322,7 @@ impl<O: Ontology> Mind<'_, O> {
                         .using(RECALL_IS_MENTIONS, fired)
                         .map(|()| Reply::Recall(session.mentions())),
                     Utterance::Tell(f) => self.world.note(f, fired),
+                    Utterance::Correct(_) => Err(Trouble::Unsupported),
                 };
                 rt.outcomes.push((meaning.clone(), result.clone()));
                 candidates.push(Candidate {

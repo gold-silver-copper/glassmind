@@ -18,6 +18,7 @@ pub mod aside;
 pub mod asking;
 pub mod change;
 pub mod contents;
+pub mod correcting;
 pub mod counting;
 pub mod describe;
 pub mod discourse;
@@ -68,6 +69,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         widening::rules,
         ones::rules,
         whence::rules,
+        correcting::rules,
     ]
     .into_iter()
     .flat_map(|rules| rules())

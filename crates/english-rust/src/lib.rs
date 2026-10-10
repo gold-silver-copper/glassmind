@@ -515,6 +515,26 @@ mod tests {
         }
     }
 
+    /// Ways of saying the request just made was meant to be about another
+    /// thing all correct it to that thing.
+    #[test]
+    fn ways_of_correcting_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let corrects = Utterance::Correct(Thing::Named(Name("cut".into())));
+        for text in [
+            "Oops, sorry, I actually meant `cut`.",
+            "sorry, meant cut",
+            "oh sorry, I meant `cut` actually",
+            "Sorry, I meant `cut`, not that one.",
+            "no, I meant the function `cut`, not `trim`",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == corrects), "{text:?}");
+        }
+    }
+
     /// Asking where a function is called from, whether anything calls it,
     /// or who uses it, all ask for its callers: of any kind, or functions
     /// when a later question says so.

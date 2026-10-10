@@ -217,6 +217,9 @@ pub enum Cat {
     Undergoes,
     /// A word for some thing of any kind: "anything", "anyone".
     Anything,
+    /// Words saying what the speaker meant to say: "I meant", "meant", "I
+    /// actually meant".
+    Meant,
     /// Any words, as typed.
     Words,
     /// Words the system does not know, as typed.

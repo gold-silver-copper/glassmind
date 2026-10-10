@@ -174,6 +174,9 @@ pub enum Utterance<O: Ontology> {
     Tell(Fact<O>),
     /// Asks what the system holds of the conversation so far.
     AskRecall,
+    /// Corrects the request just made: it was meant to be about this thing,
+    /// in place of the one it was about.
+    Correct(Thing<O>),
 }
 
 /// A claim that a set of things is exactly what fits a description.
@@ -262,7 +265,8 @@ impl<O: Ontology> Utterance<O> {
         match self {
             Utterance::Ask(q) => q.things(),
             Utterance::Command(Action::Rename { thing, .. })
-            | Utterance::Tell(Fact::Alias { thing, .. }) => thing.things(),
+            | Utterance::Tell(Fact::Alias { thing, .. })
+            | Utterance::Correct(thing) => thing.things(),
             Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
         }
     }
@@ -274,7 +278,8 @@ impl<O: Ontology> Utterance<O> {
         match &mut out {
             Utterance::Ask(q) => *q = q.map_things(f),
             Utterance::Command(Action::Rename { thing, .. })
-            | Utterance::Tell(Fact::Alias { thing, .. }) => *thing = thing.map_things(f),
+            | Utterance::Tell(Fact::Alias { thing, .. })
+            | Utterance::Correct(thing) => *thing = thing.map_things(f),
             Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => {}
         }
         out
