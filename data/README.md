@@ -52,6 +52,16 @@ tests that judge the result.
   `tools/rustbench-agent.sh`. Never trained on, never turned into data,
   never shown to loop agents (it lives with the held-out data).
 
+## Word knowledge
+
+| source | version | size | license | became |
+|---|---|---|---|---|
+| Wikidata: 18 programming-concept items (subroutine, member variable, function call, record, class, test case, ...), English labels and aliases | fetched 2026-10-10 | 2 JSON files, 30 KB | CC0 | the tagger's word bridge (`crates/english/models/synonyms.tsv`, 144 words): a word it never saw read as the glassmind word for the same concept ("invoked" as "called", "member" as "field") |
+| Open English WordNet | 2025 edition | 11 MB (XML) | CC BY 4.0 | computing senses for the same bridge; its commonest general senses were tried and left out (selection set 111 -> 106 right) |
+
+Built by `tools/datagen/wordnet_bridge.py`. On the selection set the
+bridge took the tagger from 108 to 111 right, none wrong; dev unchanged.
+
 ## Requests (generated)
 
 All requests were written by Claude Opus 5.5 (`tools/datagen/phrase.py`),

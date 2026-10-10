@@ -6,7 +6,7 @@
 //! decides: only a filled template that parses is read, and it is never
 //! answered without asking unless the model is sure.
 
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 use std::sync::OnceLock;
 
 use glassmind_models::IntentModel;
@@ -32,6 +32,25 @@ pub fn model() -> &'static IntentModel {
     })
 }
 
+/// The word bridge (`models/synonyms.tsv`, from Wikidata's programming
+/// concepts and WordNet; see `tools/datagen/wordnet_bridge.py`): words the
+/// model never saw, and the words it knows that mean the same. Read once,
+/// or for experiments from the file GLASSMIND_SYNONYMS names.
+fn bridge() -> &'static BTreeMap<String, Vec<String>> {
+    static BRIDGE: OnceLock<BTreeMap<String, Vec<String>>> = OnceLock::new();
+    BRIDGE.get_or_init(|| {
+        let text =
+            std::env::var_os("GLASSMIND_SYNONYMS").and_then(|p| std::fs::read_to_string(p).ok());
+        text.as_deref()
+            .unwrap_or(include_str!("../models/synonyms.tsv"))
+            .lines()
+            .filter(|l| !l.starts_with('#'))
+            .filter_map(|l| l.split_once('\t'))
+            .map(|(w, to)| (w.to_owned(), to.split(',').map(str::to_owned).collect()))
+            .collect()
+    })
+}
+
 /// What stands for a name in the model's word pairs.
 pub const NAME: &str = "<n>";
 
@@ -50,10 +69,25 @@ pub fn split(
     let mut words = BTreeSet::new();
     let mut sequence = vec!["^".to_owned()];
     for t in tokens {
+        let bridged: Vec<&String> = match t.shape {
+            Shape::Word if !m.knows(&t.norm) => bridge()
+                .get(&t.norm)
+                .into_iter()
+                .flatten()
+                .filter(|w| m.knows(w))
+                .collect(),
+            _ => Vec::new(),
+        };
         let word = match t.shape {
             Shape::Code | Shape::Number => {
                 names.push(t.clone());
                 Some(NAME.to_owned())
+            }
+            // A word the model never saw that means one it knows
+            // ("invoked": "called").
+            Shape::Word if !bridged.is_empty() => {
+                words.extend(bridged.iter().map(|w| (*w).clone()));
+                bridged.first().map(|w| (*w).clone())
             }
             Shape::Word if !known(&t.norm) => {
                 let near: Vec<&String> = if t.norm.chars().count() >= 4 {
