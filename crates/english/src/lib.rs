@@ -15,6 +15,7 @@ use glassmind_rules::Switches;
 
 pub mod lexicon;
 pub mod remark;
+pub mod request;
 pub mod seed;
 pub mod sem;
 pub mod tokens;
@@ -27,6 +28,7 @@ pub use tokens::{Shape, Token, tokenize};
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let mut rules = seed::rules();
     rules.extend(remark::rules());
+    rules.extend(request::rules());
     rules
 }
 

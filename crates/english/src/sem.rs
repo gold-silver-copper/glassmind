@@ -31,6 +31,9 @@ pub enum Cat {
     /// A clause the user says about themselves that asks nothing: "I'm
     /// reworking the follow feature a bit".
     Remark,
+    /// The polite opening of a request, which asks nothing itself: "can
+    /// you", "can you please".
+    Request,
 }
 
 /// English grammatical number, used for agreement.

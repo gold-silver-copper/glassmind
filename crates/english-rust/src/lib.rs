@@ -130,10 +130,10 @@ mod tests {
         assert!(checked > 0);
     }
 
-    /// A remark about the speaker, before or after a request, leaves the
-    /// request's meaning as it was.
+    /// A remark about the speaker, before or after a request, or a polite
+    /// opening such as "can you tell me", leaves the request's meaning as it was.
     #[test]
-    fn remarks_do_not_change_the_request() {
+    fn remarks_and_politeness_do_not_change_the_request() {
         let english: English<Rust> = English::new(rules(), &Switches::all_on());
         let meanings = |text: &str| match english.understand(text) {
             Understanding::Readings(readings) => {
@@ -148,6 +148,8 @@ mod tests {
             format!("I'm tidying up the `Wave` code. {request}"),
             format!("i'm looking at waves 2 and 3, {request}"),
             format!("{request} I'm curious."),
+            "Can you tell me which functions call `spawn_wave`, please?".into(),
+            "can you please show me which functions call `spawn_wave`".into(),
         ] {
             assert_eq!(meanings(&text), plain, "{text:?}");
         }
