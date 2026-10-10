@@ -141,6 +141,9 @@ pub fn words() -> Vec<Word> {
                     Progressive,
                 ),
                 ("en.rust.verb.holding", 5, "holding", HasField, Progressive),
+                // "what structs are storing a `Regex` in a field", "structs
+                // storing an Fn in a field"
+                ("en.rust.verb.storing", 9, "storing", HasField, Progressive),
                 // "which fields `S` contains", "which fields make up `S`",
                 // "what fields `PostText` is made up of"
                 (
@@ -213,6 +216,8 @@ pub fn words() -> Vec<Word> {
             &[
                 // "`save_viewed` caller count": the singular, as a noun modifier.
                 ("en.rust.role.caller", 3, "caller", Calls, First),
+                // "list structs whose field types include `Sort`"
+                ("en.rust.role.types", 9, "types", TypeMentions, Second),
                 // A struct's fields are what it has: "`Conv` fields",
                 // "`QueryEntry` members".
                 ("en.rust.role.fields", 7, "fields", HasField, Second),
@@ -511,6 +516,11 @@ mod tests {
             "what structs have a field with a type that contains `Arc`?",
             "any structs with fields typed Arc or containing Arc",
             "are there structs that have a field that is an Arc? which ones",
+            "which structs keep an `Arc` in one of their fields? also counts if it's wrapped in something",
+            "structs w/ fields typed Arc (incl. nested, Option<Arc> etc)",
+            "which structs have a field with `Arc` in its type, directly or wrapped",
+            "which structs have a field typed as `Arc`, or with a type that includes it?",
+            "who has a field typed `Arc`? structs only",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

@@ -8,7 +8,7 @@
 //! says what fills it.
 
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
-use glassmind_meaning::{Condition, Ontology, Position, Thing};
+use glassmind_meaning::{self as meaning, Condition, Ontology, Position, Thing};
 
 use crate::aside::filler;
 use crate::asking::{identify, meeting, read_only_rule, related, same, words_then};
@@ -23,6 +23,7 @@ use Cat::{
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 3;
+const GROWN: u32 = 9;
 
 /// The other side of a two-place relation.
 fn flip(position: Position) -> Position {
@@ -95,7 +96,9 @@ fn agreeing<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
             }
             | Sem::Thing(other)),
             again,
-        ] if !matches!(again, Sem::Thing(t) if t != other) => Some(q.clone()),
+        ] if !matches!(again, Sem::Thing(t) if t != other && *t != Thing::Previous) => {
+            Some(q.clone())
+        }
         _ => None,
     }
 }
@@ -135,6 +138,92 @@ fn held<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         _ => None,
     }
 }
+
+/// "with `x` in its type", "with `x` type", "with `x` in it": a thing
+/// inside what fills a role (said after it), or inside the holder itself.
+fn holding<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [.., thing, role @ Sem::Role { .. }] => qualified(&[role.clone(), thing.clone()]),
+        [thing @ Sem::Thing(_), _] => Some(thing.clone()),
+        _ => None,
+    }
+}
+
+/// The thing a qualifier speaks of: "(or) with a type that contains it".
+fn spoken_of<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [
+            Sem::Condition {
+                condition: Condition::Related { other, .. },
+                ..
+            }
+            | Sem::Thing(other),
+        ] => Some(Sem::Thing(other.clone())),
+        _ => None,
+    }
+}
+
+/// Whether a holder and a role noun after it name the same side of the
+/// same relation: "field type".
+fn holder_role<O: Ontology>(c: &[Sem<O>]) -> bool {
+    matches!(c, [
+        Sem::Holder { relation, position, .. },
+        Sem::Role { relation: r, position: p },
+    ] if relation == r && position == p)
+}
+
+/// A question again with another way of putting what it asks about, said
+/// after it ("which structs have a field of type `Session`? or something
+/// containing it"): the alternative must speak of a thing the question
+/// does, by name or as "it".
+fn put_again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [Sem::Utterance(u), again]
+            if !matches!(again, Sem::Thing(t)
+                if *t != Thing::Previous && !u.things().contains(&t)) =>
+        {
+            Some(Sem::Utterance(u.clone()))
+        }
+        _ => None,
+    }
+}
+
+/// "who has a `Target` field? structs only": a question asking for things
+/// of any kind, or of the kind named, asks for things of that kind.
+fn only<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [
+            Sem::Utterance(meaning::Utterance::Ask(meaning::Question::Identify(d))),
+            Sem::Kind { kind, .. },
+        ] if d.kind.as_ref().is_none_or(|k| k == kind) => {
+            let mut d = d.clone();
+            d.kind = Some(kind.clone());
+            Some(Sem::Utterance(meaning::Utterance::Ask(
+                meaning::Question::Identify(d),
+            )))
+        }
+        _ => None,
+    }
+}
+
+/// Words before a holder that leave it the same kind of holder: "a
+/// field", "one of their fields", "some field".
+const HOLDER_DETERMINERS: &[(&str, &str)] = &[
+    ("en.holder.a", "a"),
+    ("en.holder.some", "some"),
+    ("en.holder.their", "their"),
+    ("en.holder.its", "its"),
+    ("en.holder.one_of_their", "one of their"),
+    ("en.holder.one_of_its", "one of its"),
+];
+
+/// Words between a thing and a holder it is in: "a `LineCache` in a
+/// field", "`Poster` as field type", "a Spot somewhere in their fields".
+const LODGINGS: &[(&str, &str)] = &[
+    ("en.noun_phrase.in_holder", "in"),
+    ("en.noun_phrase.as_holder", "as"),
+    ("en.noun_phrase.somewhere_in_holder", "somewhere in"),
+];
 
 /// Ways of saying a role's filler is or includes a thing. A field's type
 /// "contains" `Arc` when `Arc` is written anywhere in it, so "is or
@@ -371,8 +460,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("("), C(Alternative), W(")")],
             same,
         ),
-        // The thing again: "it", "one", or its name.
-        filler("en.again.it", ROUND, Again, "it"),
+        // The thing again: "one", or "it" or its name.
         filler("en.again.one", ROUND, Again, "one"),
         rule("en.again.name", Again, vec![C(NounPhrase)], last),
         // "which structs have a field ...": also "what structs", "who has".
@@ -506,6 +594,104 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 .map(|(id, words)| filler(id, round, cat, words)),
         );
     }
+    let grown = |id, lhs, rhs, build| read_only_rule(id, GROWN, lhs, rhs, build);
+    rules.extend([
+        // "typed as `HashSet`"
+        grown(
+            "en.qualifier.adjective_as",
+            Qualifier,
+            vec![C(RoleAdjective), W("as"), C(NounPhrase)],
+            qualified,
+        ),
+        // "where the type is `Does`", "(or) where the type contains it"
+        grown(
+            "en.qualifier.where",
+            Qualifier,
+            words_then("where", &[RoleNoun, Includes, NounPhrase]),
+            qualified,
+        ),
+        // "with `FileKind` in its type", "with PrChangedFile in it", "with
+        // `SavedPost` type (in it)"
+        grown(
+            "en.qualifier.with_within",
+            Qualifier,
+            words_then("with", &[NounPhrase, Within]),
+            holding,
+        ),
+        grown(
+            "en.qualifier.with_then_role",
+            Qualifier,
+            words_then("with", &[NounPhrase, RoleNoun]),
+            holding,
+        ),
+        // "(a field) that is `Saved` type", "that is type `Load`"
+        grown(
+            "en.qualifier.that_then_role",
+            Qualifier,
+            words_then("that", &[Includes, NounPhrase, RoleNoun]),
+            holding,
+        ),
+        grown(
+            "en.qualifier.that_role",
+            Qualifier,
+            words_then("that", &[Includes, RoleNoun, NounPhrase]),
+            |c| qualified(c.get(1..)?),
+        ),
+        // "(or contains it, like Option<...>)"
+        grown(
+            "en.alternative.widened",
+            Alternative,
+            vec![C(Alternative), W(","), C(Cat::Widening)],
+            same,
+        ),
+        // "or with a type that includes `IRect`", "or that contains Key
+        // somehow", "or where the type contains it"
+        grown(
+            "en.alternative.qualifier",
+            Alternative,
+            words_then("or", &[Qualifier]),
+            spoken_of,
+        ),
+        // "a field type", "in a field type"
+        grown(
+            "en.holder.role",
+            Holder,
+            vec![C(Holder), C(RoleNoun)],
+            |c| holder_role(c).then(|| c.first().cloned()).flatten(),
+        ),
+        // "which structs have `Poster` as field type? or field type that
+        // contains Poster somewhere in it"
+        grown(
+            "en.utterance.put_again",
+            Utterance,
+            vec![C(Utterance), C(Alternative)],
+            put_again,
+        ),
+        // "who has a `Target` field? structs only", "who has a url field,
+        // structs only"
+        grown(
+            "en.utterance.only",
+            Utterance,
+            vec![C(Utterance), C(Noun), W("only")],
+            only,
+        ),
+        grown(
+            "en.utterance.comma_only",
+            Utterance,
+            vec![C(Utterance), W(","), C(Noun), W("only")],
+            only,
+        ),
+    ]);
+    rules.extend(
+        HOLDER_DETERMINERS
+            .iter()
+            .map(|(id, words)| grown(id, Holder, words_then(words, &[Holder]), last)),
+    );
+    rules.extend(LODGINGS.iter().map(|(id, words)| {
+        let mut rhs = vec![C(NounPhrase)];
+        rhs.extend(words_then(words, &[Holder]));
+        grown(id, NounPhrase, rhs, held)
+    }));
     for (table, lhs) in [(ROLE_DETERMINERS, RoleNoun), (WITHIN_ROLE, Within)] {
         rules.extend(
             table

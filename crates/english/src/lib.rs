@@ -35,6 +35,7 @@ pub mod request;
 pub mod seed;
 pub mod sem;
 pub mod tokens;
+pub mod widening;
 
 pub use lexicon::EnglishLexicon;
 pub use sem::{Cat, Number, Sem, VerbForm};
@@ -62,6 +63,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         alias::rules,
         contents::rules,
         recall::rules,
+        widening::rules,
     ]
     .into_iter()
     .flat_map(|rules| rules())

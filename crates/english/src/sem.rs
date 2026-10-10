@@ -239,6 +239,25 @@ pub enum Cat {
     /// A word saying the clause after it means what was said before:
     /// "meaning", "like", "i.e.".
     Gloss,
+    /// A remark after a question about what things hold, saying a thing
+    /// counts when it is held inside another: "incl. wrapped", "also counts
+    /// if it's inside some other type", "directly or nested".
+    Widening,
+    /// Words saying a thing is inside another: "wrapped in", "nested",
+    /// "boxed", "inside".
+    Wrapping,
+    /// What a thing is inside: "something else", "another type", "a `Vec`
+    /// or `Option`", "`Option<u64>` etc".
+    Enclosure,
+    /// Words opening a widening remark: "including", "incl.", "also", "even".
+    Inclusion,
+    /// Words saying the cases just named count: "counts too", "both count".
+    Counted,
+    /// Words for a thing held as it is: "directly", "just `Keypair`".
+    Directly,
+    /// A clause saying a thing is inside another: "it's wrapped in
+    /// something", "the type just contains `Key`".
+    Wrapped,
 }
 
 /// English grammatical number, used for agreement.
