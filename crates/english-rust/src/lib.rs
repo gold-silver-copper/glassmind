@@ -958,6 +958,32 @@ mod tests {
         ));
     }
 
+    /// A remark around a rename may run past a comma, hold brackets, or be
+    /// a lone comparison, and the name may be chosen with "go with": these
+    /// all can mean renaming `tick` to `drain_events`.
+    #[test]
+    fn remarks_around_a_rename_leave_it_as_it_is() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Command(Action::Rename {
+            thing: Thing::Named(Name("tick".into())),
+            kind: None,
+            name: Some(Name("drain_events".into())),
+        });
+        for text in [
+            "rename tick to drain_events, cleaner",
+            "`tick` is a bit vague, go w/ `drain_events`",
+            "um, `tick` returns Option<Event>, can we call it `drain_events` instead?",
+            "please rename `tick` to `drain_events`, I think that's better for the ] and [ thing",
+            "I'm looking at `tick`... seems it drains, nothing ticks really? can we rename it into `drain_events`",
+            "so there's `tick` too. can we rename it to `drain_events`?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+    }
+
     /// Asking to rename a field after setting its struct as the topic can
     /// mean the field that is `x` and a member of the struct that is `S`
     /// ("field `x`" may also be a field of type `x`, which the world

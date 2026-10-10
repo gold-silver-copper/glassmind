@@ -7,7 +7,7 @@ use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
 use glassmind_meaning::{Ontology, Thing};
 
 use crate::asking::read_only_rule;
-use crate::lexicon::{CODE, TEXT};
+use crate::lexicon::{CODE, COMPARATIVE, TEXT};
 use crate::mention::named;
 use crate::sem::{Cat, Sem};
 use crate::{blank, first, last, word};
@@ -109,6 +109,37 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             Remark,
             vec![C(Remark), W("seeing"), C(Mention)],
             last,
+        ),
+        // "seems it just fires one round at a body, nothing gets shot down
+        // really? can we rename it ...": a remark going on past a comma,
+        // up to the question mark.
+        read_only_rule(
+            "en.musing.comma",
+            27,
+            Musing,
+            vec![C(Remark), W(","), Class(TEXT)],
+            first,
+        ),
+        read_only_rule(
+            "en.musing.more",
+            27,
+            Musing,
+            vec![C(Musing), Class(TEXT)],
+            first,
+        ),
+        utterance(
+            "en.utterance.musing_question",
+            27,
+            vec![C(Musing), W("?"), C(Utterance)],
+        ),
+        // "rename fn `x` to `y`, cleaner": what the change makes better,
+        // said with no subject or verb.
+        read_only_rule(
+            "en.remark.comparative",
+            27,
+            Remark,
+            vec![Class(COMPARATIVE)],
+            first,
         ),
         // "the name": what a remark about a thing's name calls it.
         word(
@@ -324,4 +355,7 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // to be.
     ("en.remark.is_it_like", 26, "is it like"),
     ("en.remark.as", 26, "as"),
+    // "so there's this `x`, what does it do": a thing the speaker points
+    // out.
+    ("en.remark.there_s", 27, "there's"),
 ];

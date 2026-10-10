@@ -582,13 +582,31 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Topic), W("?"), C(Utterance)],
             about,
         ),
-        // "so there is this fn `check_kit`, can we rename it": the thing
-        // pointed out before the request about it.
+        // "so there is this fn `check_kit`, can we rename it", "so there's
+        // `show_since` on Doc too. can we rename it": the thing pointed out
+        // before the request about it.
         later(
             "en.topic.there_is_this",
             Topic,
             vec![W("there is this"), C(Mention)],
             first,
+        ),
+        read_only_rule(
+            "en.topic.there_s",
+            27,
+            Topic,
+            vec![W("there's"), C(Mention)],
+            first,
+        ),
+        // "`pr_key` fn needs a clearer name, go w/ `pr_cache_id`", "want
+        // GearLook's `x` renamed, go with `y`": the name chosen for the
+        // thing talked about.
+        read_only_rule(
+            "en.command.go_with",
+            27,
+            Command,
+            vec![W("go with"), Class(CODE)],
+            rename,
         ),
     ]);
     let grown = |id, lhs, rhs, build| read_only_rule(id, 21, lhs, rhs, build);

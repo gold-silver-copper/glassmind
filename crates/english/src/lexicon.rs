@@ -35,8 +35,14 @@ pub const CAPITALIZED: &str = "capitalized";
 /// Token class: a number.
 pub const NUMBER: &str = "number";
 /// Token class: any word, name or number in a remark, whose content the
-/// system need not understand. Punctuation ends a remark, so it is not one.
+/// system need not understand. Punctuation that ends a remark is not one;
+/// brackets, written inside a type or a key ("returns Option<u64>", "for
+/// the ] and [ thing"), are.
 pub const TEXT: &str = "text";
+/// Token class: a plain word comparing, as "-er" words do: what a remark
+/// after a request says the change makes better ("..., cleaner",
+/// "..., shorter").
+pub const COMPARATIVE: &str = "comparative";
 /// Token class: an item the system speaks of. Never read from input.
 pub const ITEM: &str = "item";
 /// Token class: where an item the system speaks of is. Never read from input.
@@ -100,7 +106,12 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
             }
-            (TEXT, shape) if shape != Shape::Punct => vec![Sem::Quote(token.text.clone())],
+            (TEXT, shape) if shape != Shape::Punct || token.text.contains(['<', '>', '[', ']']) => {
+                vec![Sem::Quote(token.text.clone())]
+            }
+            (COMPARATIVE, Shape::Word) if token.norm.ends_with("er") => {
+                vec![Sem::Quote(token.text.clone())]
+            }
             (NUMBER, Shape::Number) => token.text.parse().map(Sem::Count).into_iter().collect(),
             _ => Vec::new(),
         }

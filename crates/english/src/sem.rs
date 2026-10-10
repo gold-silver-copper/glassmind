@@ -46,6 +46,10 @@ pub enum Cat {
     /// A clause the user says about themselves that asks nothing: "I'm
     /// reworking the follow feature a bit".
     Remark,
+    /// A remark going on past a comma, which only a question mark ends:
+    /// "seems it just fires one round at a body, nothing gets shot down
+    /// really?".
+    Musing,
     /// The polite opening of a request, which asks nothing itself: "can
     /// you", "can you please".
     Request,
