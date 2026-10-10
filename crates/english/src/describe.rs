@@ -425,6 +425,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             describe,
         ),
     ]);
+    // "summary of `x`", "quick sumary of review_action": a summary of a
+    // thing asks what it is, as its purpose does.
+    rules.extend(fillers(
+        27,
+        &[(
+            Purpose,
+            &[
+                ("en.purpose.summary", "summary"),
+                ("en.purpose.quick_summary", "quick summary"),
+            ],
+        )],
+    ));
     // "what does `armed` even mean"
     rules.push(filler("en.doing.mean", 21, Doing, "mean"));
     // "what does `x` actually do", "what is `x` even for"

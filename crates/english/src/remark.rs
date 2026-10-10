@@ -180,6 +180,22 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ROUND,
             vec![C(Utterance), C(Remark), W(".")],
         ),
+        // "what is `x` even for? is it a test?": a remark the speaker is
+        // unsure of, after the request.
+        utterance(
+            "en.utterance.remark_after_mark",
+            27,
+            vec![C(Utterance), C(Remark), C(Mark)],
+        ),
+        // "the fn yes() -> bool one": a function's signature in a remark,
+        // its arrow two marks.
+        read_only_rule(
+            "en.remark.arrow",
+            27,
+            Remark,
+            vec![C(Remark), W("- >")],
+            first,
+        ),
         // "...? I'd like the drawing functions to be named a bit more
         // consistently.", "which functions call `x`? I'd like to check
         // before changing it": what the user wishes for, after the request.
@@ -358,4 +374,8 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // "so there's this `x`, what does it do": a thing the speaker points
     // out.
     ("en.remark.there_s", 27, "there's"),
+    // "what is `x` even for? is it a test?": what the speaker guesses the
+    // thing is.
+    ("en.remark.is_it_a", 27, "is it a"),
+    ("en.remark.is_it_an", 27, "is it an"),
 ];

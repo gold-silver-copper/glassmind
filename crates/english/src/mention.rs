@@ -12,7 +12,7 @@ use glassmind_meaning::{
 use crate::aside::filler;
 use crate::asking::read_only_rule;
 use crate::contents::narrowed;
-use crate::lexicon::{CAPITALIZED, CODE, LOWER, NAME, SAID, WORD};
+use crate::lexicon::{CAPITALIZED, CODE, ITEM, LOWER, NAME, SAID, WORD};
 use crate::locate::fillers;
 use crate::naming::kind_named;
 use crate::sem::{Cat, Number, Sem};
@@ -481,6 +481,23 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         vec![W("the"), Class(NAME)],
         |c| match c {
             [Sem::Name(n)] => Some(Sem::Thing(Thing::Named(n.clone()))),
+            _ => None,
+        },
+    ));
+    // "`Chat::retry`": a thing described as being an item ("Chat retry",
+    // the `retry` that is part of `Chat`), once the world has found it to
+    // be one, is said as that item.
+    rules.push(spoken(
+        "en.noun_phrase.found_item",
+        27,
+        NounPhrase,
+        vec![Class(ITEM)],
+        |_| None,
+        |v| match v {
+            Sem::Thing(Thing::Fitting(d)) => d.conditions.iter().find_map(|c| match c {
+                Condition::Is(Thing::Item(i)) => Some(vec![Sem::Item(i.clone())]),
+                _ => None,
+            }),
             _ => None,
         },
     ));

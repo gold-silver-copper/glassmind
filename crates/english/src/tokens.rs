@@ -113,8 +113,20 @@ pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
             if j == i + 1 && chars.get(j).is_some_and(|&(_, d)| d == '/') {
                 j += 1;
             }
-            let word = text.get(start..end_of(j)).unwrap_or_default();
-            (word, shape_of(word), j)
+            // A known word with underscores after it ("what teh_ point") is
+            // the word, the underscores a slip of the hand.
+            let whole = text.get(start..end_of(j)).unwrap_or_default();
+            let stem = whole.trim_end_matches('_');
+            let word = if known(&stem.to_lowercase()) {
+                stem
+            } else {
+                whole
+            };
+            // A call's parentheses after a name ("the fn yes() one") are not
+            // part of it, and show it to be code.
+            let call = text.get(end_of(j)..).is_some_and(|r| r.starts_with("()"));
+            let shape = if call { Shape::Code } else { shape_of(word) };
+            (word, shape, j + 2 * usize::from(call))
         } else if c == '\''
             && chars.get(i + 1).is_some_and(|&(_, d)| d == 's')
             && !chars.get(i + 2).is_some_and(|&(_, d)| is_word_char(d))

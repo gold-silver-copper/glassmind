@@ -618,6 +618,11 @@ mod tests {
             "what's the point of seed_at",
             "explain seed_at, purpse?",
             "what does seed_at do, quick sumary",
+            "quick sumary of seed_at",
+            "what teh_ point of seed_at",
+            "what is seed_at() for",
+            "what is `seed_at` even for? is it a test?",
+            "what is seed_at for? the fn seed_at() -> bool one",
             "Can you tell me what `seed_at` does, or what it's meant to be used for?",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
