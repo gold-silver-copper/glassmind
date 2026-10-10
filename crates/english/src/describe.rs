@@ -300,7 +300,20 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.push(filler("en.hedge.roughly", 11, Hedge, "roughly"));
     // "what does `pretty` call internally", "what funcs does find call
     // internaly": where the calls are made, which the question already says.
-    rules.push(filler("en.hedge.internally", 22, Hedge, "internally"));
+    // "and which functions does it call itself?", "which functions does it
+    // call in turn?": the asker turning from what calls a thing to what it
+    // calls; the question is the same.
+    rules.extend(fillers(
+        22,
+        &[(
+            Hedge,
+            &[
+                ("en.hedge.itself", "itself"),
+                ("en.hedge.in_turn", "in turn"),
+                ("en.hedge.internally", "internally"),
+            ],
+        )],
+    ));
     // "what does `armed` even mean"
     rules.push(filler("en.doing.mean", 21, Doing, "mean"));
     // "what does `x` do, explain me": the frame said after.

@@ -607,6 +607,8 @@ mod tests {
             "what functions does `cut` end up calling?",
             "which functions `cut` ends up calling?",
             "what functions are getting called from `cut`?",
+            "and which functions does `cut` call itself?",
+            "which functions does `cut` call in turn?",
         ] {
             assert_eq!(meanings(text), plain, "{text:?}");
         }
@@ -615,6 +617,7 @@ mod tests {
             "what's `cut` calling",
             "cut -> callees",
             "calls made by cut",
+            "what does `cut` call internaly",
         ] {
             assert_eq!(
                 meanings(text),

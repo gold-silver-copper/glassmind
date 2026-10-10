@@ -88,7 +88,8 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// need to knwo". Also from questions about what a function calls:
 /// "what funtions `limit` call", "which functinos signature call", "fns
 /// calld by room_message", "show calles of `x`", "what funcs does find
-/// call internaly".
+/// call internaly", and after asking what calls it: "which fns it caal",
+/// "which functions it calsl", "what does it call itslef".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -201,6 +202,9 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.functinos", "functinos", "functions"),
             ("en.spelling.calld", "calld", "called"),
             ("en.spelling.calles", "calles", "callees"),
+            ("en.spelling.caal", "caal", "call"),
+            ("en.spelling.calsl", "calsl", "calls"),
+            ("en.spelling.itslef", "itslef", "itself"),
             ("en.spelling.internaly", "internaly", "internally"),
         ],
     ),
