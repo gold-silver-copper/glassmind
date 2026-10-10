@@ -14,6 +14,9 @@ pub enum Cat {
     CheckName,
     /// A noun phrase naming a check: "the build".
     CheckPhrase,
+    /// A request to fix something that leaves what to fix to a remark
+    /// before it: "(the build is broken,) can you fix it please".
+    Fix,
     /// A request to change something, without its final punctuation:
     /// "rename `x` to `y`", "`S.x` -> `y`".
     Command,

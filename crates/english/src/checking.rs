@@ -11,9 +11,10 @@ use glassmind_grammar::{Rule, Sym};
 use glassmind_meaning::{Action, Ontology, Question, Reply, Trouble, Utterance};
 use glassmind_rules::HAND;
 
-use crate::lexicon::NUMBER;
+use crate::asking::read_only_rule;
+use crate::lexicon::{LOWER, NAME, NUMBER};
 use crate::sem::{Cat, Sem};
-use crate::spoken;
+use crate::{blank, first, last, spoken};
 
 use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
@@ -28,8 +29,18 @@ fn said<O: Ontology>(
     spoken(id, HAND, cat, rhs, |_| None, speak)
 }
 
+/// A request to make `check` pass, from the first check among `c`.
+fn repair<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    c.iter().find_map(|v| match v {
+        Sem::Check(check) => Some(Sem::Utterance(Utterance::Command(Action::Repair(
+            check.clone(),
+        )))),
+        _ => None,
+    })
+}
+
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    vec![
+    let mut rules: Vec<Rule<Cat, Sem<O>>> = vec![
         // "the build", "the tests".
         spoken(
             "en.check_phrase.the",
@@ -232,7 +243,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                     changes,
                     left,
                     ..
-                }) if !changes.is_empty() && !left.is_empty() => Some(vec![
+                }) if changes.len() > 1 && !left.is_empty() => Some(vec![
                     Sem::Count(u64::try_from(changes.len()).ok()?),
                     Sem::Check(check.clone()),
                 ]),
@@ -319,5 +330,106 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("there is nothing waiting for a yes or no .")],
             |v| matches!(v, Sem::Reply(Reply::Trouble(Trouble::NothingPending))).then(Vec::new),
         ),
-    ]
+    ];
+    let rule = |id, lhs, rhs, build| read_only_rule(id, 29, lhs, rhs, build);
+    rules.extend([
+        // "fix build", "fix compile errors", "fix the build issues", "fix
+        // the heck compile errors": the check, with what is wrong with it
+        // in a noun of the user's own, and the crate it is checked in.
+        rule(
+            "en.check_phrase.bare",
+            CheckPhrase,
+            vec![C(CheckName)],
+            first,
+        ),
+        rule(
+            "en.check_phrase.errors",
+            CheckPhrase,
+            vec![C(CheckPhrase), Class(LOWER)],
+            first,
+        ),
+        rule(
+            "en.check_phrase.named",
+            CheckPhrase,
+            vec![W("the"), Class(NAME), C(CheckName)],
+            last,
+        ),
+        // "fix it so it compiles".
+        rule(
+            "en.command.repair_it_so",
+            Command,
+            vec![W("fix it so it"), C(CheckName)],
+            repair,
+        ),
+        // "get the build working", each perhaps "again".
+        rule(
+            "en.command.get_working",
+            Command,
+            vec![W("get"), C(CheckPhrase), W("working")],
+            repair,
+        ),
+        rule(
+            "en.command.again",
+            Command,
+            vec![C(Command), W("again")],
+            first,
+        ),
+        // "get it compiling", "get strsim compiling".
+        rule(
+            "en.command.get_going",
+            Command,
+            vec![W("get"), C(Mention), C(CheckName)],
+            repair,
+        ),
+        // "build broken", "the dunce build is broken", "heck doesn't
+        // compile": a remark naming a check, which a fix after it fixes.
+        rule("en.remark.check", Remark, vec![C(CheckPhrase)], first),
+        rule(
+            "en.remark.then_check",
+            Remark,
+            vec![C(Remark), C(CheckName)],
+            last,
+        ),
+        // "The dunce build is broken. I'm seeing E0425, "cannot find value
+        // `x`". Could you fix it?": what a tool said goes on past a comma,
+        // before the request. Gone on so long, what it was about is no
+        // longer what the request's "it" refers back to.
+        rule(
+            "en.utterance.musing_stop",
+            Utterance,
+            vec![C(Musing), W("."), C(Utterance)],
+            last,
+        ),
+        // "build fails ..., can you fix", "build broke, ... . pls fix",
+        // "the build is broken, can you fix it?".
+        rule("en.fix.bare", Fix, vec![W("fix")], |_| Some(blank())),
+        rule("en.fix.it", Fix, vec![W("fix it")], |_| Some(blank())),
+        rule("en.fix.mark", Fix, vec![C(Fix), C(Mark)], first),
+        rule("en.fix.prompt", Fix, vec![C(Prompt), C(Fix)], last),
+        rule(
+            "en.fix.interjection",
+            Fix,
+            vec![C(Interjection), C(Fix)],
+            last,
+        ),
+        rule(
+            "en.utterance.failing_fix",
+            Utterance,
+            vec![C(Remark), C(Break), C(Fix)],
+            repair,
+        ),
+        rule(
+            "en.utterance.failing_stop_fix",
+            Utterance,
+            vec![C(Remark), W("."), C(Fix)],
+            repair,
+        ),
+        rule(
+            "en.utterance.musing_stop_fix",
+            Utterance,
+            vec![C(Musing), W("."), C(Fix)],
+            repair,
+        ),
+    ]);
+    rules
 }

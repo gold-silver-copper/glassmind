@@ -319,6 +319,26 @@ pub fn check_words() -> Vec<Word> {
             Sem::Check(check),
         )
     })
+    // "fix the compile errors", "it doesn't compile", "so it compiles",
+    // "get it compiling again", "compilation errors": the build named by
+    // its verb.
+    .chain(
+        [
+            ("en.rust.check.compile", "compile"),
+            ("en.rust.check.compiling", "compiling"),
+            ("en.rust.check.compilation", "compilation"),
+        ]
+        .into_iter()
+        .map(|(id, form)| {
+            word(
+                RuleInfo::new(id, 29),
+                Cat::CheckName,
+                form,
+                Sem::Check(Build),
+            )
+            .read_only()
+        }),
+    )
     .collect()
 }
 
@@ -1311,6 +1331,32 @@ mod tests {
             english.say(&reason).map(|s| s.text).as_deref(),
             Some("Because you asked me to rename `tick` to `drain_events`.")
         );
+    }
+
+    /// The ways of asking for a broken build to be fixed all ask to repair
+    /// the build, whatever is said about the errors around them.
+    #[test]
+    fn ways_of_asking_to_fix_the_build_agree() {
+        use glassmind_world_rust::checks::RustCheck;
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "pls fix compile erors, cannot find function `dispay_fn`",
+            "The dunce build is broken. I'm seeing E0425, \"cannot find value `trimed` in this scope\". Could you please fix the compile errors so it builds again? Thanks!",
+            "the build fails with \"cannot find trait `Error` in this scope\" (E0405). could you fix the build?",
+            "build broke, cannot find value `sate` in this scope. fix pls",
+            "heck doesn't build, can you fix it?",
+            "can you fix it so it compiles?",
+            "get strsim compiling again",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                least_corrected(readings)
+                    .all(|r| r.meaning == Utterance::Command(Action::Repair(RustCheck::Build))),
+                "{text:?}"
+            );
+        }
     }
 
     /// The ways of taking back the last request all mean forgetting it, and

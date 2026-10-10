@@ -183,12 +183,18 @@ const RUN_CHECK: RuleInfo = RuleInfo::new("rust.check.run", HAND);
 /// A remedy: the compiler's suggested fixes, kept only if the build then
 /// passes in a scratch copy.
 const REMEDY_SUGGESTED: RuleInfo = RuleInfo::new("rust.remedy.compiler_suggestions", HAND);
+/// The compiler's suggestions for one place are alternatives ("use
+/// `crate::fmt`", "use `core::fmt`", ...): a remedy makes only the first
+/// it offers there, as no two replacements of the same text can both be
+/// made.
+const REMEDY_ONE_PER_PLACE: RuleInfo = RuleInfo::new("rust.remedy.one_per_place", 29);
 /// Applying changes the user accepted, then checking again.
 const APPLY_CHANGES: RuleInfo = RuleInfo::new("rust.apply.changes", HAND);
 
 pub const RULES: &[RuleInfo] = &[
     RUN_CHECK,
     REMEDY_SUGGESTED,
+    REMEDY_ONE_PER_PLACE,
     APPLY_CHANGES,
     LOOKUP_EXACT,
     LOOKUP_ANY_CASE,
@@ -764,6 +770,19 @@ impl World<Rust> for RustWorld {
         let problems: Vec<RustItem> = found.iter().map(|f| f.item.clone()).collect();
         let mut changes: Vec<RustChange> =
             found.iter().flat_map(|f| f.fixes.iter().cloned()).collect();
+        if self.switches.on(REMEDY_ONE_PER_PLACE.id) {
+            fired.push(REMEDY_ONE_PER_PLACE);
+            let mut places = BTreeSet::new();
+            changes.retain(|c| {
+                places.insert((
+                    c.source.clone(),
+                    c.file.clone(),
+                    c.line,
+                    c.column,
+                    c.old.clone(),
+                ))
+            });
+        }
         changes.sort();
         changes.dedup();
         if problems.is_empty() || changes.is_empty() {
