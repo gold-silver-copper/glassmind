@@ -57,11 +57,11 @@ compiler's own suggestions; making failing tests pass needs more (finding
 the code a failing test exercises and trying changes there, always verified
 by running the tests).
 
-Checks are slow, so their results are cached by the files' contents. Set
+Checks are slow, so their results are cached by the files' contents. Scratch copies never go to `/tmp` (it is in memory on this machine). Set
 these when you run `eval` on coding tasks, and score with `--sources`:
 
 ```sh
-export GLASSMIND_CARGO_TARGET=$HOME/.cache/glassmind/check/target GLASSMIND_CHECK_CACHE=$HOME/.cache/glassmind/check/results
+export GLASSMIND_CARGO_TARGET=$HOME/.cache/glassmind/check/target GLASSMIND_CHECK_CACHE=$HOME/.cache/glassmind/check/results GLASSMIND_SCRATCH=$HOME/.cache/glassmind/check/scratch
 ./target/release/glassmind eval --sources $SOURCES --inputs $DATA/group-inputs.jsonl > group-out.jsonl
 ./target/release/glassmind-loop score --labels $DATA/group-labels.jsonl --outcomes group-out.jsonl --sources $SOURCES
 # talk to a broken crate yourself:

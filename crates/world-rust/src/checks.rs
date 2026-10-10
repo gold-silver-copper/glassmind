@@ -586,9 +586,16 @@ pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustCh
 /// temporary directory: a sandboxed run may write there and nowhere else
 /// of its own.
 pub fn scratch(source: &str) -> PathBuf {
-    std::env::temp_dir()
-        .join("glassmind-scratch")
-        .join(format!("{source}-{}", std::process::id()))
+    // Never the system temp directory: on this machine it is in memory.
+    let base = std::env::var_os("GLASSMIND_SCRATCH")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| {
+            std::env::var_os("HOME")
+                .map(PathBuf::from)
+                .unwrap_or_default()
+                .join(".cache/glassmind/scratch")
+        });
+    base.join(format!("{source}-{}", std::process::id()))
 }
 
 #[cfg(test)]

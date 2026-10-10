@@ -170,6 +170,7 @@ def flip_logic(text, rng):
 
 
 BUILD_BREAKERS = [typo_use, drop_mut, drop_ref_mut, drop_use]
+TEST_BREAKERS = [flip_logic]
 
 
 def copy_crate(src, dst):
@@ -184,7 +185,15 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--per-crate", type=int, default=6)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--breakers", help="a Python file defining BUILD_BREAKERS and TEST_BREAKERS to use instead "
+                                        "(the held-out set's breakers live outside the repo)")
     a = ap.parse_args()
+    global BUILD_BREAKERS, TEST_BREAKERS
+    if a.breakers:
+        extra = {**globals(), "__name__": "breakers"}
+        exec(compile(Path(a.breakers).read_text(), a.breakers, "exec"), extra)
+        BUILD_BREAKERS = extra.get("BUILD_BREAKERS", BUILD_BREAKERS)
+        TEST_BREAKERS = extra.get("TEST_BREAKERS", TEST_BREAKERS)
     crates = sorted(p for p in Path(a.crates).expanduser().iterdir() if (p / "Cargo.toml").exists())
     out = Path(a.out).expanduser()
     (out / "sources").mkdir(parents=True, exist_ok=True)
@@ -199,7 +208,7 @@ def main():
             want = "build" if made["build"] < a.per_crate else "test"
             f = rng.choice(files)
             text = f.read_text()
-            mut = rng.choice(BUILD_BREAKERS) if want == "build" else flip_logic
+            mut = rng.choice(BUILD_BREAKERS if want == "build" else TEST_BREAKERS)
             r = mut(text, rng)
             if not r:
                 continue

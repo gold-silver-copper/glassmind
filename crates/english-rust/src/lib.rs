@@ -738,8 +738,10 @@ mod tests {
             "which tests pass",
             "do the tests pass? does the build pass?",
         ] {
+            // Not as typed: the normalizer may still guess at a reading,
+            // which is then stated or asked about, never taken as typed.
             assert!(
-                !matches!(english.understand(text), Understanding::Readings(_)),
+                !matches!(english.understand(text), Understanding::Readings(rs) if rs.iter().any(|r| r.edits < 100)),
                 "{text:?}"
             );
         }

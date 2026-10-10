@@ -124,6 +124,7 @@ pub fn eval_set(
         s.writable = vec![
             places.target.clone().unwrap_or_default(),
             places.cache.clone().unwrap_or_default(),
+            scratch_of(&places),
         ];
     }
     let out = Run::new(&binary(target).to_string_lossy(), &args, dir)
@@ -135,6 +136,7 @@ pub fn eval_set(
             "GLASSMIND_CHECK_CACHE",
             &places.cache.clone().unwrap_or_default().to_string_lossy(),
         )
+        .env("GLASSMIND_SCRATCH", &scratch_of(&places).to_string_lossy())
         .timeout(Duration::from_secs(3600))
         .sandbox(sb.as_ref())
         .go()?;
@@ -170,6 +172,18 @@ pub fn check_places_for(held_out: Option<&Path>) -> glassmind_world_rust::checks
         let _ = std::fs::create_dir_all(dir);
     }
     places
+}
+
+/// Where scratch copies for trying changes go: beside the check results.
+fn scratch_of(places: &glassmind_world_rust::checks::Places) -> PathBuf {
+    let dir = places
+        .cache
+        .as_ref()
+        .and_then(|c| c.parent())
+        .map(|p| p.join("scratch"))
+        .unwrap_or_default();
+    let _ = std::fs::create_dir_all(&dir);
+    dir
 }
 
 /// Where checks on training sources keep builds and results.

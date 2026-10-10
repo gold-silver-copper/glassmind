@@ -142,6 +142,7 @@ dependencies = [
  "glassmind-grammar",
  "glassmind-meaning",
  "glassmind-mind",
+ "glassmind-models",
  "glassmind-rules",
  "glassmind-world-rust",
  "rustyline",
@@ -169,6 +170,7 @@ version = "0.1.0"
 dependencies = [
  "glassmind-grammar",
  "glassmind-meaning",
+ "glassmind-models",
  "glassmind-rules",
  "serde",
 ]
@@ -222,6 +224,10 @@ dependencies = [
  "serde",
  "serde_json",
 ]
+
+[[package]]
+name = "glassmind-models"
+version = "0.1.0"
 
 [[package]]
 name = "glassmind-oracle"

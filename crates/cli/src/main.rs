@@ -105,6 +105,22 @@ enum Command {
         #[arg(long, value_delimiter = ',')]
         disable: Vec<String>,
     },
+    /// Act on one request in a repository, as a coding agent: a fix or an
+    /// edit glassmind finds is made (asking for it is consent); anything else
+    /// (an answer, a question, "I don't know how") is printed, and written to
+    /// `--reply-file` if given. Nothing is committed.
+    Do {
+        /// The repository to work in.
+        repo: PathBuf,
+        /// Where to write the reply when no change is made.
+        #[arg(long)]
+        reply_file: Option<PathBuf>,
+        /// Show the whole trace.
+        #[arg(long)]
+        explain: bool,
+        /// The request.
+        text: Vec<String>,
+    },
     /// Learn the normalizer's edit model from turns answered right (eval
     /// outcomes and their labels), and write it as text.
     TrainNormalizer {
@@ -144,6 +160,12 @@ fn main() -> ExitCode {
             inputs,
             disable,
         } => eval(&sources, &inputs, Switches::without(disable)),
+        Command::Do {
+            repo,
+            reply_file,
+            explain,
+            text,
+        } => act(&repo, reply_file.as_deref(), explain, &text.join(" ")),
         Command::TrainNormalizer {
             inputs,
             outcomes,
@@ -225,6 +247,54 @@ fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
     }
     if let Some(path) = &common.session {
         save_session(path, &session)?;
+    }
+    Ok(())
+}
+
+fn act(
+    repo: &std::path::Path,
+    reply_file: Option<&std::path::Path>,
+    explain: bool,
+    text: &str,
+) -> Result<(), String> {
+    use glassmind_meaning::Reply;
+    use glassmind_meaning::interface::World as _;
+    let sources = vec![parse_source(&repo.to_string_lossy())];
+    let system = System::open(&sources, Switches::all_on());
+    let mut session = Session::new(system.source_refs());
+    let turn = system.respond(&mut session, text);
+    if explain {
+        say!("{}", turn.trace.render());
+    }
+    say!("{}", turn.spoken);
+    for line in details::details(&turn.reply) {
+        say!("{line}");
+    }
+    let mut inner = &turn.reply;
+    while let Reply::Assuming { reply, .. } = inner {
+        inner = reply;
+    }
+    let changes = match inner {
+        Reply::Remedy { changes, left, .. } => !changes.is_empty() && left.is_empty(),
+        Reply::Proposal { .. } => true,
+        _ => false,
+    };
+    if changes {
+        let mut fired = Vec::new();
+        match system.world.apply(inner, &mut fired) {
+            Ok(applied) => {
+                if let Some(said) =
+                    glassmind_meaning::interface::Language::say(&system.english, &applied)
+                {
+                    say!("{}", said.text);
+                }
+                return Ok(());
+            }
+            Err(e) => say!("could not make the changes: {e:?}"),
+        }
+    }
+    if let Some(path) = reply_file {
+        std::fs::write(path, format!("{}\n", turn.spoken)).map_err(|e| e.to_string())?;
     }
     Ok(())
 }
