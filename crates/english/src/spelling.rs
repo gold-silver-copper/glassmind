@@ -67,7 +67,9 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// what u rember of this convo", "show what ur keepign in context", "what
 /// u remebering of this conversation", "what u keeping in contxt right
 /// now". "u" is "you" typed short, as in "can u rename ..." and "why u
-/// wnat to chagne that".
+/// wnat to chagne that". Also asking why a change was proposed: "why u
+/// wnat to change that", "why u want to chagne that", "reason for the
+/// cahnge?".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -148,6 +150,7 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.contxt", "contxt", "context"),
             ("en.spelling.wnat", "wnat", "want"),
             ("en.spelling.chagne", "chagne", "change"),
+            ("en.spelling.cahnge", "cahnge", "change"),
         ],
     ),
 ];

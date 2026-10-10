@@ -291,4 +291,7 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // "how many functions call `screen`? kinda lost with this one": how
     // the speaker feels about the code.
     ("en.remark.kinda", 14, "kinda"),
+    // "callers of `App::modal`, need the full list", "who calls `x`, need
+    // the callers": what the speaker needs, said without a subject.
+    ("en.remark.need", 19, "need"),
 ];

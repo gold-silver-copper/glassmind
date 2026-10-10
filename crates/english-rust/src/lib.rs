@@ -969,6 +969,8 @@ mod tests {
             "Why do you want to change that? Can you walk me through your reasoning?",
             "whats the reasoning behind that change",
             "why change it tho",
+            "why u wnat chagne that one",
+            "Why does that change need to happen?",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

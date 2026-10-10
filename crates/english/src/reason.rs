@@ -51,10 +51,25 @@ const WORDS: &[(&str, Cat, &str)] = &[
     ("en.hedge.tho", Hedge, "tho"),
 ];
 
+/// Words of a "why" question from round 19: "why you want to change that
+/// one?".
+const WORDS_19: &[(&str, Cat, &str)] = &[("en.deed.that_one", Deed, "that one")];
+
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
-    let rule = |id, lhs, rhs, sem| Rule::new(RuleInfo::new(id, ROUND), lhs, rhs, sem).read_only();
+    let rule_in =
+        |id, round, lhs, rhs, sem| Rule::new(RuleInfo::new(id, round), lhs, rhs, sem).read_only();
+    let rule = |id, lhs, rhs, sem| rule_in(id, ROUND, lhs, rhs, sem);
     // A "why" question about the action the system took up.
-    let why = |id, rhs| rule(id, Why, rhs, S::Const(Sem::Utterance(Utterance::AskReason)));
+    let why_in = |id, round, rhs| {
+        rule_in(
+            id,
+            round,
+            Why,
+            rhs,
+            S::Const(Sem::Utterance(Utterance::AskReason)),
+        )
+    };
+    let why = |id, rhs| why_in(id, ROUND, rhs);
     // A phrase meaning what its first part means.
     let as_first = |id, lhs, rhs| rule(id, lhs, rhs, S::Build(first));
     let mut rules = vec![
@@ -64,6 +79,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         why(
             "en.why.want_to",
             vec![W("why"), C(Wish), W("to"), C(Carrying)],
+        ),
+        // "why u want chnage that", "why u wnat change that": the "to" left
+        // out.
+        why_in("en.why.want_bare", 19, vec![W("why"), C(Wish), C(Carrying)]),
+        // "why does that change need to happen?"
+        why_in(
+            "en.why.need_to_happen",
+            19,
+            vec![W("why does"), C(Deed), W("need to happen")],
         ),
         // "why do you want that", "why do you want that changed"
         why("en.why.want", vec![W("why"), C(Wish), C(Deed)]),
@@ -131,7 +155,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(
         WORDS
             .iter()
-            .map(|&(id, cat, words)| filler(id, ROUND, cat, words)),
+            .map(|&(id, cat, words)| filler(id, ROUND, cat, words))
+            .chain(
+                WORDS_19
+                    .iter()
+                    .map(|&(id, cat, words)| filler(id, 19, cat, words)),
+            ),
     );
     rules
 }
