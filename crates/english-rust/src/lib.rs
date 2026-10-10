@@ -544,9 +544,12 @@ mod tests {
             "cut called by how many functions",
             "how many places call `cut`, fn count only",
             "how many fns call cut? or exact number if you can",
+            "how many functions call `cut`, roughly is it used in a lot of places?",
         ] {
             assert_eq!(meanings(text), plain, "{text:?}");
         }
+        // How widely it is used asks again only of the things that use it.
+        assert!(meanings("how many functions does `cut` call, is it used a lot?").is_empty());
         let by_role = meanings("number of callers of `cut`");
         assert_eq!(by_role.len(), 1);
         for text in [

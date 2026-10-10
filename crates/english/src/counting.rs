@@ -3,7 +3,9 @@
 //! "`x` caller count", and saying the answer: "3 functions call `x`."
 
 use glassmind_grammar::{Rule, RuleInfo, Sem as S, Sym};
-use glassmind_meaning::{Condition, Description, Ontology, Position, Question, Reply, Utterance};
+use glassmind_meaning::{
+    Condition, Description, Ontology, Position, Question, Reply, Thing, Utterance,
+};
 
 use crate::asking::role_of;
 use crate::blank;
@@ -91,6 +93,13 @@ fn recount<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
             return None;
         }
         d.kind = Some(kind.clone());
+    }
+    // "is it used a lot?": what it undergoes must be what the things
+    // asked about do to the thing they were asked about.
+    if let Sem::Condition { condition, .. } = said {
+        d.conditions
+            .iter()
+            .find(|c| c.map_things(&mut |_| Thing::Previous) == *condition)?;
     }
     Some(Sem::Utterance(Utterance::Ask(Question::Count(d))))
 }
@@ -306,8 +315,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
     ]);
     // Asking again how many of the things just asked about there are.
-    let again = |id, rhs, build| {
-        Rule::new(RuleInfo::new(id, 11), Cat::Recount, rhs, S::Build(build)).read_only()
+    let again = |id, round, rhs, build| {
+        Rule::new(RuleInfo::new(id, round), Cat::Recount, rhs, S::Build(build)).read_only()
     };
     rules.extend([
         Rule::new(
@@ -318,46 +327,68 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         )
         .read_only(),
         // "how many functions": of that kind.
-        again("en.recount.kind", vec![C(Cat::Recount), C(Cat::Noun)], last),
+        again(
+            "en.recount.kind",
+            11,
+            vec![C(Cat::Recount), C(Cat::Noun)],
+            last,
+        ),
         // "fn count only": a count of things of that kind; "or exact number
         // if you can": the count itself.
-        Rule::new(
-            RuleInfo::new("en.recount.kind_amount", 14),
-            Cat::Recount,
+        again(
+            "en.recount.kind_amount",
+            14,
             vec![C(Cat::Noun), C(Cat::Amount)],
-            S::Build(first),
-        )
-        .read_only(),
-        Rule::new(
-            RuleInfo::new("en.recount.exact_amount", 14),
-            Cat::Recount,
+            first,
+        ),
+        again(
+            "en.recount.exact_amount",
+            14,
             vec![W("exact"), C(Cat::Amount)],
-            S::Const(blank()),
-        )
-        .read_only(),
+            |_| Some(blank()),
+        ),
         // ", can you count them", "like how many"
         again(
             "en.recount.prompt",
+            11,
             vec![C(Cat::Prompt), C(Cat::Recount)],
             last,
         ),
         again(
             "en.recount.joined",
+            11,
             vec![C(Cat::Join), C(Cat::Recount)],
             last,
         ),
         // "how many exactly", "count them for me?"
         again(
             "en.recount.hedged",
+            11,
             vec![C(Cat::Recount), C(Cat::Hedge)],
             first,
         ),
         again(
             "en.recount.for_me",
+            11,
             vec![C(Cat::Recount), W("for"), W("me")],
             first,
         ),
-        again("en.recount.mark", vec![C(Cat::Recount), W("?")], first),
+        again("en.recount.mark", 11, vec![C(Cat::Recount), W("?")], first),
+        // "how many functions call `x`, is it used in a lot of places?":
+        // how widely it is used asks how many things use it.
+        again(
+            "en.recount.undergoes_widely",
+            15,
+            vec![W("is"), C(Cat::Undergoes), C(Cat::Widely)],
+            first,
+        ),
+        // "..., roughly is it used a lot?"
+        again(
+            "en.recount.hedged_before",
+            15,
+            vec![C(Cat::Hedge), C(Cat::Recount)],
+            last,
+        ),
     ]);
     rules.extend(fillers(
         11,
@@ -372,6 +403,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             // "num of funcs calling `x`"
             (Cat::Amount, &[("en.amount.num", "num")]),
         ],
+    ));
+    rules.extend(fillers(
+        15,
+        &[(
+            Cat::Widely,
+            &[
+                ("en.widely.a_lot", "a lot"),
+                ("en.widely.in_a_lot_of_places", "in a lot of places"),
+                // with the article dropped
+                ("en.widely.in_lot_of_places", "in lot of places"),
+            ],
+        )],
     ));
     // "`refilter` called from how many fns", "`x` called by how many fns"
     rules.extend(

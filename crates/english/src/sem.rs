@@ -121,6 +121,9 @@ pub enum Cat {
     /// kind if one is said: "can you count them for me?", "like how many
     /// exactly", "how many functions".
     Recount,
+    /// Words saying something happens to a thing in many places: "a lot",
+    /// "in a lot of places".
+    Widely,
     /// A word standing for things whose kind is left open, before what
     /// describes them: "ones", "those", "anything".
     Ones,
