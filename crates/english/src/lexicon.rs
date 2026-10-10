@@ -30,6 +30,9 @@ pub const SAID: &str = "said";
 /// names are and more than one letter long, read as the thing going by
 /// that name: "a field typed Handle", "whose type is or contains Change".
 pub const CAPITALIZED: &str = "capitalized";
+/// Token class: a word the system does not know, ending in "'s", read as
+/// the name before it: whose part comes next ("Builder's `seen_urls`").
+pub const POSSESSIVE: &str = "possessive";
 /// Token class: a number.
 pub const NUMBER: &str = "number";
 /// Token class: any word, name or number in a remark, whose content the
@@ -98,6 +101,14 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
                     && self.known.contains(self.norm(token)) =>
             {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
+            }
+            (POSSESSIVE, Shape::Word | Shape::Code) if !self.known.contains(self.norm(token)) => {
+                token
+                    .text
+                    .strip_suffix("'s")
+                    .map(|whole| Sem::Name(Name(whole.into())))
+                    .into_iter()
+                    .collect()
             }
             (TEXT, shape) if shape != Shape::Punct => vec![Sem::Quote(token.text.clone())],
             (NUMBER, Shape::Number) => token.text.parse().map(Sem::Count).into_iter().collect(),

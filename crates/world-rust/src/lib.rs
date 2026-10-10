@@ -128,6 +128,10 @@ const RELATION_TYPE_MENTIONS: RuleInfo = RuleInfo::new("rust.relation.type_menti
 /// of the kind described. A field's name is how it is told apart from the
 /// other fields of its struct, so "a field named `done`" may be several.
 const CONDITION_NAMED: RuleInfo = RuleInfo::new("rust.condition.named", 5);
+/// A part of a thing, no relation said ("`S`'s `x`", "`S` `x`"): one of
+/// the members of the struct, enum or trait, as [`RELATION_MEMBER`] reads
+/// them.
+const CONDITION_PART_OF: RuleInfo = RuleInfo::new("rust.condition.part_of", 21);
 
 /// The belongs-to relation, read from where functions and fields are declared.
 const RELATION_BELONGS_TO: RuleInfo = RuleInfo::new("rust.relation.belongs_to", 5);
@@ -177,6 +181,7 @@ pub const RULES: &[RuleInfo] = &[
     RENAME_UNIQUE,
     ALIAS_UNIQUE,
     NAMED_OTHER_KIND,
+    CONDITION_PART_OF,
 ];
 
 /// What the world finds: a value, or the trouble that stopped it.
@@ -573,6 +578,11 @@ impl RustWorld {
                     self.named(&Name(item.name.clone()), description.kind, fired)?
                 }
                 Condition::NamedLike(_) => return Err(Unsupported),
+                Condition::PartOf(whole) => {
+                    self.fire(CONDITION_PART_OF, fired)?;
+                    let wholes = self.things(whole, fired)?;
+                    self.related(RustRelation::Member, Position::Second, &wholes, fired)?
+                }
                 // A type needs no item to be named (`Arc`, `u32`), only to be
                 // written as one somewhere.
                 Condition::Related {

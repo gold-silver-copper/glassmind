@@ -103,6 +103,10 @@ pub enum Condition<O: Ontology> {
     /// with that name", "a field called that"). Once the other thing is
     /// known only by its name, this is [`Condition::Named`].
     NamedLike(Thing<O>),
+    /// The described thing is one of the parts of this other thing, as its
+    /// world divides wholes into parts, with no relation said: the whole
+    /// set before the part ("`S`'s `x`", "`S` `x`").
+    PartOf(Thing<O>),
 }
 
 /// A description of things: an optional kind and conditions they all meet.
@@ -369,7 +373,8 @@ impl<O: Ontology> Condition<O> {
         match self {
             Condition::Related { other, .. }
             | Condition::Is(other)
-            | Condition::NamedLike(other) => Some(other),
+            | Condition::NamedLike(other)
+            | Condition::PartOf(other) => Some(other),
             Condition::Called(_) | Condition::Named(_) => None,
         }
     }
@@ -388,7 +393,8 @@ impl<O: Ontology> Condition<O> {
         let mut out = self.clone();
         if let Condition::Related { other, .. }
         | Condition::Is(other)
-        | Condition::NamedLike(other) = &mut out
+        | Condition::NamedLike(other)
+        | Condition::PartOf(other) = &mut out
         {
             *other = other.map_things(f);
         }

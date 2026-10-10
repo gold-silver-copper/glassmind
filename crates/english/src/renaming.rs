@@ -10,11 +10,13 @@
 //! rename it"), the request is made once.
 
 use glassmind_grammar::{Rule, RuleInfo, Sym};
-use glassmind_meaning::{Action, Condition, Description, Name, Ontology, Thing, Utterance};
+use glassmind_meaning::{
+    Action, Condition, Description, Name, Ontology, Question, Thing, Utterance,
+};
 
 use crate::aside::filler;
 use crate::asking::read_only_rule;
-use crate::lexicon::{CODE, NAME, TEXT};
+use crate::lexicon::{CODE, NAME, POSSESSIVE, TEXT};
 use crate::sem::{Cat, Sem};
 use crate::spoken;
 use crate::{blank, first, word};
@@ -107,6 +109,35 @@ fn belonging<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
             ],
         }),
         kind: kind.or(said.clone()),
+    })
+}
+
+/// "Builder's `seen_urls`", "`WireRelease` `is_prerelease`": the part
+/// named after the whole it is a part of, which says no relation.
+fn part_of<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let [Sem::Name(whole), Sem::Mention { thing, kind }] = c else {
+        return None;
+    };
+    (*thing != Thing::Previous).then(|| Sem::Mention {
+        thing: Thing::Fitting(Description {
+            kind: None,
+            conditions: vec![
+                Condition::Is(thing.clone()),
+                Condition::PartOf(Thing::Named(whole.clone())),
+            ],
+        }),
+        kind: kind.clone(),
+    })
+}
+
+/// "what does `x` even mean": the thing the question asks about.
+fn asked<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let [Sem::Question(Question::Describe { thing, kind })] = c else {
+        return None;
+    };
+    Some(Sem::Mention {
+        thing: thing.clone(),
+        kind: kind.clone(),
     })
 }
 
@@ -603,7 +634,75 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![W("would be"), Class(TEXT), W("as")],
             first,
         ),
+        // "rename WireRelease is_prerelease to unstable", "change
+        // Builder's seen_urls to visited_links", "Facility's labels field":
+        // a part after the whole it is part of.
+        grown(
+            "en.mention.whole_part",
+            Mention,
+            vec![Class(NAME), C(Mention)],
+            part_of,
+        ),
+        grown(
+            "en.mention.possessive_part",
+            Mention,
+            vec![Class(POSSESSIVE), C(Mention)],
+            part_of,
+        ),
+        // "in `Tactics` there is this field `close_in`": what is pointed
+        // out, part of the thing it is said to be in.
+        grown(
+            "en.topic.in_owner_pointed",
+            Topic,
+            vec![C(Belonging), C(Mention), C(Topic)],
+            belonging,
+        ),
+        // "what does `armed` in `MySites` even mean... anyway, rename it":
+        // the thing asked about, left aside for the request.
+        grown("en.topic.asked", Topic, vec![C(Question)], asked),
+        // "rename `x` to something better, like `y`": the name offered
+        // after a comma.
+        grown(
+            "en.command.offered_comma",
+            Command,
+            vec![C(Command), W(","), C(Offer)],
+            offered,
+        ),
+        grown(
+            "en.offer.like",
+            Offer,
+            vec![W("like"), C(NewName)],
+            crate::last,
+        ),
+        // "... and update the places using it too please"
+        grown("en.follow_up.updating", FollowUp, vec![C(Updating)], first),
+        grown(
+            "en.updating.update",
+            Updating,
+            vec![W("update"), Class(TEXT)],
+            first,
+        ),
+        grown(
+            "en.updating.more",
+            Updating,
+            vec![C(Updating), Class(TEXT)],
+            first,
+        ),
     ]);
+    // "I'd like the field `x` to be called `y`"
+    rules.push(filler(
+        "en.should_be.to_be_called",
+        21,
+        ShouldBe,
+        "to be called",
+    ));
+    // "can you do the rename?"
+    rules.push(filler(
+        "en.errand.do_the_rename",
+        21,
+        Errand,
+        "do the rename",
+    ));
     // Words saying what a thing ought to be called.
     rules.push(filler(
         "en.should_be.called",

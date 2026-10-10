@@ -987,6 +987,57 @@ mod tests {
         assert!(readings.iter().any(|r| r.meaning == owned));
     }
 
+    /// A part named after its whole, with no word for how it belongs
+    /// ("`S` `x`", "S's x"), is the thing that is `x` and a part of `S`.
+    #[test]
+    fn a_part_after_its_whole_is_part_of_it() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Command(Action::Rename {
+            thing: Thing::Fitting(Description {
+                kind: None,
+                conditions: vec![
+                    Condition::Is(Thing::Named(Name("x_y".into()))),
+                    Condition::PartOf(Thing::Named(Name("Rack".into()))),
+                ],
+            }),
+            kind: None,
+            name: Some(Name("z_w".into())),
+        });
+        for text in [
+            "rename Rack x_y to z_w",
+            "Rack `x_y` -> `z_w` plz",
+            "rename Rack x_y to something better, like z_w",
+            "rename Rack x_y to z_w? and update the places using it too please",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning), "{text:?}");
+        }
+        // A capitalized owner's "'s" is split off by the tokenizer and read
+        // as the owner's member.
+        let owned = Utterance::Command(Action::Rename {
+            thing: Thing::Fitting(Description {
+                kind: None,
+                conditions: vec![
+                    Condition::Is(Thing::Named(Name("x_y".into()))),
+                    Condition::Related {
+                        relation: RustRelation::Member,
+                        position: Position::Second,
+                        other: Thing::Named(Name("Rack".into())),
+                    },
+                ],
+            }),
+            kind: None,
+            name: Some(Name("z_w".into())),
+        });
+        let text = "change Rack's x_y to z_w everywhere";
+        let Understanding::Readings(readings) = english.understand(text) else {
+            panic!("could not read {text:?}");
+        };
+        assert!(readings.iter().any(|r| r.meaning == owned), "{text:?}");
+    }
+
     /// The ways of asking for a field to be renamed mean what the system
     /// says when it asks that, whether the field is named in the request or
     /// before it.

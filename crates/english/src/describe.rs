@@ -298,6 +298,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ));
     // "how many functions call `x`, roughly?"
     rules.push(filler("en.hedge.roughly", 11, Hedge, "roughly"));
+    // "what does `armed` even mean"
+    rules.push(filler("en.doing.mean", 21, Doing, "mean"));
     // "what does `x` do, explain me": the frame said after.
     rules.push(read_only_rule(
         "en.question.prompt_after",

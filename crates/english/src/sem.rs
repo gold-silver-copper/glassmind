@@ -196,6 +196,9 @@ pub enum Cat {
     /// The new name offered after a request that left it unsaid: "maybe
     /// `y`", "I think `y` fits better".
     Offer,
+    /// Asking for what uses a renamed thing to be updated too, in the
+    /// user's own words: "update the places using it too".
+    Updating,
     /// A question asking why the system took up an action, without its
     /// final punctuation: "why do you want to change that".
     Why,

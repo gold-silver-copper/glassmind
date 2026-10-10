@@ -67,8 +67,9 @@ pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
             let inner = inner.strip_suffix("()").unwrap_or(inner);
             // Past the closing backtick, if there is one.
             (inner, Shape::Code, (j + 1).min(chars.len()))
-        } else if is_word_char(c) && c != '\'' {
-            // A word (a leading apostrophe opens a quote, so is punctuation), joined across `::` and `.` when both sides are word characters.
+        } else if is_word_char(c) && c != '\'' && c != '-' {
+            // A word (a leading apostrophe opens a quote, and a leading
+            // hyphen is a dash, so both are punctuation), joined across `::` and `.` when both sides are word characters.
             let mut j = i;
             loop {
                 while chars.get(j).is_some_and(|&(_, d)| is_word_char(d)) {

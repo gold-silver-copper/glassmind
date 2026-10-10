@@ -223,6 +223,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         )
         .read_only(),
     );
+    // "Small thing, in `WireDay` I'd like the field `x` to be called `y`":
+    // the same, with nothing setting it off.
+    rules.push(utterance(
+        "en.utterance.set_off_in_bare",
+        21,
+        vec![W("in"), C(Mention), C(Utterance)],
+    ));
     rules
 }
 
@@ -297,4 +304,8 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // "current name kinda akward", "current name dosnt say waht it does":
     // what the speaker thinks of the name, without "the".
     ("en.remark.current_name", 21, "current name"),
+    // "..., current name kinda misleadng", "..., too long, make it `y`":
+    // what the speaker thinks of the name being changed.
+    ("en.remark.current", 21, "current"),
+    ("en.remark.too", 21, "too"),
 ];
