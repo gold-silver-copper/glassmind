@@ -128,9 +128,12 @@ pub struct Paths {
 }
 
 impl Paths {
+    /// The state directory, created if missing, as an absolute path (git
+    /// worktrees and child processes need absolute paths).
     pub fn new(root: &Path) -> Self {
+        let _ = std::fs::create_dir_all(root);
         Paths {
-            root: root.to_path_buf(),
+            root: std::fs::canonicalize(root).unwrap_or_else(|_| root.to_path_buf()),
         }
     }
     pub fn config(&self) -> PathBuf {

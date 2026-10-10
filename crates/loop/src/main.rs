@@ -7,6 +7,14 @@ use clap::{Parser, Subcommand};
 use glassmind_answer::Outcome;
 use serde::de::DeserializeOwned;
 
+/// Prints a line to stdout, ignoring a closed pipe (`println!` would panic).
+macro_rules! say {
+    ($($t:tt)*) => {{
+        use std::io::Write as _;
+        let _ = writeln!(std::io::stdout(), $($t)*);
+    }};
+}
+
 mod agent;
 mod chart;
 mod compress;
@@ -144,7 +152,7 @@ fn main() -> ExitCode {
             let outcomes: Vec<Outcome> = read_jsonl(&outcomes)?;
             let report = score::report(&labels, &outcomes);
             if json {
-                println!(
+                say!(
                     "{}",
                     serde_json::to_string_pretty(&report).map_err(|e| e.to_string())?
                 );
@@ -179,7 +187,7 @@ fn main() -> ExitCode {
                     } else {
                         worse += 1;
                     }
-                    println!(
+                    say!(
                         "{} {id}: {vb:?} {cb:.2} -> {va:?} {ca:.2}",
                         if ca < cb { "better" } else { "WORSE " }
                     );
@@ -187,7 +195,7 @@ fn main() -> ExitCode {
             }
             let tb: f64 = b.values().map(|(_, c)| c).sum();
             let ta: f64 = a.values().map(|(_, c)| c).sum();
-            println!("{better} turns better, {worse} worse; cost {tb:.1} -> {ta:.1}");
+            say!("{better} turns better, {worse} worse; cost {tb:.1} -> {ta:.1}");
             Ok(())
         })(),
         Command::Init {
@@ -239,7 +247,7 @@ fn main() -> ExitCode {
         Command::Status { state: dir } => {
             let paths = state::Paths::new(&dir);
             for e in state::history(&paths) {
-                println!(
+                say!(
                     "round {:>3} {:<11} {:<8} train {:>8.1} ({:>4}/{:<4} right) held-out {:>7.1} ({:>3}/{:<3}) size {:>6} tokens {:>10}  {}",
                     e.round,
                     e.kind,
@@ -269,9 +277,9 @@ fn main() -> ExitCode {
         Command::Size { repo } => {
             let (per, total) = size::mind_size(&repo);
             for (krate, n) in per {
-                println!("{n:>8}  {krate}");
+                say!("{n:>8}  {krate}");
             }
-            println!("{total:>8}  total");
+            say!("{total:>8}  total");
             Ok(())
         }
     };
@@ -285,7 +293,7 @@ fn main() -> ExitCode {
 }
 
 fn print_totals(name: &str, t: &score::Totals) {
-    println!(
+    say!(
         "{name:<36} {:>5} turns  {:>5} right  {:>5} refused  {:>4} wrong  cost {:>8.1}  ({:.1}% right)",
         t.turns,
         t.right,

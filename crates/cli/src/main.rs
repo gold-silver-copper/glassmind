@@ -14,6 +14,14 @@ use glassmind_rules::Switches;
 use glassmind_world_rust::index::{SourceIndex, index_source};
 use glassmind_world_rust::{Rust, RustWorld};
 
+/// Prints a line to stdout, ignoring a closed pipe (`println!` would panic).
+macro_rules! say {
+    ($($t:tt)*) => {{
+        use std::io::Write as _;
+        let _ = writeln!(std::io::stdout(), $($t)*);
+    }};
+}
+
 mod answer;
 mod chat;
 mod system;
@@ -108,9 +116,9 @@ fn main() -> ExitCode {
             }
             for (rule, what) in system::all_rules_detailed() {
                 if detail {
-                    println!("{}\t{}\t{what}", rule.id, rule.round);
+                    say!("{}\t{}\t{what}", rule.id, rule.round);
                 } else {
-                    println!("{}\t{}", rule.id, rule.round);
+                    say!("{}\t{}", rule.id, rule.round);
                 }
             }
             Ok(())
@@ -143,15 +151,15 @@ fn ask(common: &Common, text: &str) -> Result<(), String> {
     let turn = system.respond(&mut session, text);
     if common.json {
         let outcome = answer::outcome("ask", &turn);
-        println!(
+        say!(
             "{}",
             serde_json::to_string(&outcome).map_err(|e| e.to_string())?
         );
     } else {
         if common.explain {
-            println!("{}", turn.trace.render());
+            say!("{}", turn.trace.render());
         }
-        println!("{}", turn.spoken);
+        say!("{}", turn.spoken);
     }
     if let Some(path) = &common.session {
         save_session(path, &session)?;
@@ -162,7 +170,7 @@ fn ask(common: &Common, text: &str) -> Result<(), String> {
 fn complete(common: &Common, text: &str) -> Result<(), String> {
     let system = open(common);
     for candidate in chat::candidates(&system, text) {
-        println!("{candidate}");
+        say!("{candidate}");
     }
     Ok(())
 }

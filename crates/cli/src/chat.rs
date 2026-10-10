@@ -87,7 +87,7 @@ pub fn run(common: &Common) -> Result<(), String> {
         .iter()
         .map(|s| s.name.clone())
         .collect();
-    println!(
+    say!(
         "glassmind: talking about {} ({} names). Tab shows what can come next; Ctrl-D quits.",
         sources.join(", "),
         system.world.names().len()
@@ -104,9 +104,9 @@ pub fn run(common: &Common) -> Result<(), String> {
                 let _ = editor.add_history_entry(line.as_str());
                 let turn = system.respond(&mut session, &line);
                 if common.explain {
-                    println!("{}", turn.trace.render());
+                    say!("{}", turn.trace.render());
                 }
-                println!("{}", turn.spoken);
+                say!("{}", turn.spoken);
                 if let Some(path) = &common.session {
                     save_session(path, &session)?;
                 }
