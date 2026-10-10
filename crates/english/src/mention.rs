@@ -10,11 +10,12 @@ use glassmind_meaning::{
 };
 
 use crate::contents::narrowed;
+use crate::lexicon::{CODE, WORD};
 use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
 use crate::{blank, first, word};
 
-use Sym::{Cat as C, Word as W};
+use Sym::{Cat as C, Class, Word as W};
 
 const ROUND: u32 = 3;
 
@@ -271,6 +272,30 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             blank(),
         )
         .read_only(),
+        // "..": the same, typed short.
+        word(
+            RuleInfo::new("en.break.two_dots", 11),
+            Cat::Break,
+            ". .",
+            blank(),
+        )
+        .read_only(),
+        // "the `move_covers` system": a thing named as code, with a noun
+        // of the user's own for its kind, which says nothing the system can
+        // check.
+        rule(
+            "en.mention.own_noun_after",
+            11,
+            Cat::Mention,
+            vec![W("the"), Class(CODE), Class(WORD)],
+            |c| match c.first()? {
+                Sem::Name(name) => Some(Sem::Mention {
+                    thing: Thing::Named(name.clone()),
+                    kind: None,
+                }),
+                _ => None,
+            },
+        ),
         // "the name `job_git`": the thing that has the name.
         rule(
             "en.mention.the_name",

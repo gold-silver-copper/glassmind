@@ -692,6 +692,9 @@ mod tests {
             "I'd like to rename `tick` to `drain_events`. Could you do that for me?",
             "rename tick to drain_events? the current name is vague",
             "tick should be drain_events, rename it",
+            "rename tick, call it drain_events",
+            "can we rename `tick` to something clearer? maybe `drain_events`",
+            "please rename `tick` to `drain_events`, tick is kind of vague",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

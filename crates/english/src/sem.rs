@@ -167,6 +167,15 @@ pub enum Cat {
     NewName,
     /// Words saying what a thing ought to be called: "should be called".
     ShouldBe,
+    /// Words standing for a new name not given yet: "something clearer",
+    /// "something more clear".
+    Vague,
+    /// What the user wishes for, said after a request: "I'd like the
+    /// drawing functions to be named a bit more consistently".
+    Wishing,
+    /// The new name offered after a request that left it unsaid: "maybe
+    /// `y`", "I think `y` fits better".
+    Offer,
     /// A question asking why the system took up an action, without its
     /// final punctuation: "why do you want to change that".
     Why,

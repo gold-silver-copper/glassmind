@@ -69,6 +69,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             S::Build(request),
         )
     };
+    let after_comma = |id, round, rhs| {
+        Rule::new(
+            RuleInfo::new(id, round),
+            Cat::Utterance,
+            rhs,
+            S::Build(first),
+        )
+    };
     // A word that greets the system, before the request it opens.
     let greeting = |id, w| {
         word(
@@ -91,6 +99,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             RuleInfo::new("en.remark.more", ROUND),
             Cat::Remark,
             vec![C(Cat::Remark), Class(TEXT)],
+            S::Build(first),
+        ),
+        // "I wasn't sure what "tape" means here": words quoted in a remark.
+        Rule::new(
+            RuleInfo::new("en.remark.quote", 11),
+            Cat::Remark,
+            vec![C(Cat::Remark), W("\"")],
             S::Build(first),
         ),
         // "`tick` on `App` is a bit cryptic": a remark about a thing.
@@ -123,14 +138,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             ROUND,
             vec![C(Cat::Utterance), C(Cat::Remark)],
         ),
-        // "where is the `downloaded` defined, I can't find it"
-        utterance(
+        // "where is the `downloaded` defined, I can't find it". Set off by
+        // the comma, a remark may also be about a thing: "please rename
+        // `tick` to `x`, tick is kind of vague for me".
+        after_comma(
             "en.utterance.remark_after_comma",
             2,
             vec![C(Cat::Utterance), W(","), C(Cat::Remark)],
         ),
         // "Please rename `x` to `y`, since that describes it better."
-        utterance(
+        after_comma(
             "en.utterance.remark_after_comma_stop",
             5,
             vec![C(Cat::Utterance), W(","), C(Cat::Remark), W(".")],
@@ -140,6 +157,28 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.utterance.remark_after_stop",
             ROUND,
             vec![C(Cat::Utterance), C(Cat::Remark), W(".")],
+        ),
+        // "...? I'd like the drawing functions to be named a bit more
+        // consistently.", "which functions call `x`? I'd like to check
+        // before changing it": what the user wishes for, after the request.
+        // Said before one, its words may be the request itself ("I'd like
+        // to know what `x` does. Could you explain it?").
+        utterance(
+            "en.utterance.wish_after",
+            11,
+            vec![C(Cat::Utterance), C(Cat::Wishing)],
+        ),
+        Rule::new(
+            RuleInfo::new("en.wishing.i_d_like", 11),
+            Cat::Wishing,
+            vec![W("i'd"), W("like"), Class(TEXT)],
+            S::Const(remark_value()),
+        ),
+        Rule::new(
+            RuleInfo::new("en.wishing.more", 11),
+            Cat::Wishing,
+            vec![C(Cat::Wishing), Class(TEXT)],
+            S::Const(remark_value()),
         ),
         // "I'm going through the chat code, and I'd like ..."
         utterance(
@@ -169,6 +208,9 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             // "I'm looking at the voxel code. How many functions call
             // `carve`?"
             ("en.utterance.remark_stop", ROUND, Cat::Remark, W(".")),
+            // "the function trace_step, i think it just logs a line per
+            // step? maybe rename it to ...": a remark the user is unsure of.
+            ("en.utterance.remark_question", 11, Cat::Remark, W("?")),
             // "I'm looking into validation a bit, which functions call
             // `problems`?", "I'm trying to clean up a bit in Editor... could
             // you rename ..."
@@ -207,6 +249,11 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // "I keep seeing it around", "i couldn't find it": the same, said with
     // a plain subject.
     ("en.remark.i", 2, "i"),
+    // "maybe it's better name"
+    ("en.remark.maybe", 11, "maybe"),
+    // "name sounds like a getter to me", "would be easier for me to read"
+    ("en.remark.name", 11, "name"),
+    ("en.remark.would", 11, "would"),
     // "can't find it": the speaker's trouble, without a subject.
     ("en.remark.cannot", 2, "can't"),
     // "cant find it": the same, typed without the apostrophe.

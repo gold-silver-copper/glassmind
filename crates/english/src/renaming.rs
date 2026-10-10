@@ -131,6 +131,8 @@ fn about<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 
 /// "`x` field -> `y`, rename it": the first request, when the second asks
 /// for the same rename of the same thing, or of what it refers back to.
+/// The second may give the name the first left unsaid: "rename `x`, call
+/// it `y`".
 fn confirmed<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     let [
         Sem::Utterance(Utterance::Command(Action::Rename { thing, kind, name })),
@@ -146,14 +148,32 @@ fn confirmed<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     };
     ((*again == Thing::Previous || again == thing)
         && (kind_again.is_none() || kind.is_none() || kind_again == kind)
-        && (name_again.is_none() || name_again == name))
+        && (name_again.is_none() || name.is_none() || name_again == name))
         .then(|| {
             renaming(
                 thing.clone(),
                 kind.clone().or_else(|| kind_again.clone()),
-                name.clone(),
+                name.clone().or_else(|| name_again.clone()),
             )
         })
+}
+
+/// "rename `x` to something clearer? maybe `y`": the request, with the name
+/// offered after it, if it left the name unsaid.
+fn offered<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    let [
+        Sem::Utterance(Utterance::Command(Action::Rename {
+            thing,
+            kind,
+            name: None,
+        })),
+        ..,
+        Sem::Name(name),
+    ] = c
+    else {
+        return None;
+    };
+    Some(renaming(thing.clone(), kind.clone(), Some(name.clone())))
 }
 
 /// "the field": the thing said before, of the kind named.
@@ -484,6 +504,136 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ] {
         rules.extend(blanks(cat, table));
     }
+    let later = |id, lhs, rhs, build| {
+        Rule::new(RuleInfo::new(id, 11), lhs, rhs, S::Build(build)).read_only()
+    };
+    rules.extend([
+        // "rename `padded` to something clearer": a rename whose new name
+        // is left for later.
+        later(
+            "en.command.rename_vague",
+            Cat::Command,
+            vec![C(Cat::Rename), C(Cat::Mention), C(Cat::Into), C(Cat::Vague)],
+            rename,
+        ),
+        word(
+            RuleInfo::new("en.vague.something", 11),
+            Cat::Vague,
+            "something",
+            blank(),
+        )
+        .read_only(),
+        later(
+            "en.vague.more",
+            Cat::Vague,
+            vec![C(Cat::Vague), Class(TEXT)],
+            first,
+        ),
+        // "... to something clearer? maybe `inset_by_padding`", "... more
+        // clear? I think `load_job_files` fits better"
+        later(
+            "en.utterance.offered",
+            Cat::Utterance,
+            vec![C(Cat::Utterance), C(Cat::Mark), C(Cat::Offer)],
+            offered,
+        ),
+        later(
+            "en.offer.maybe",
+            Cat::Offer,
+            vec![W("maybe"), C(Cat::NewName)],
+            first,
+        ),
+        later(
+            "en.offer.i_think",
+            Cat::Offer,
+            vec![W("i"), W("think"), C(Cat::NewName)],
+            first,
+        ),
+        later(
+            "en.offer.more",
+            Cat::Offer,
+            vec![C(Cat::Offer), Class(TEXT)],
+            first,
+        ),
+        // "could you rename it to `open_tab_at` maybe?"
+        later(
+            "en.command.maybe",
+            Cat::Command,
+            vec![C(Cat::Command), W("maybe")],
+            first,
+        ),
+        // "can we rename it into `y` so it's more clear what it is?": a
+        // remark after a request to change something, which a question's
+        // words may not be.
+        later(
+            "en.utterance.command_remark_mark",
+            Cat::Utterance,
+            vec![C(Cat::Command), C(Cat::Remark), W("?")],
+            first,
+        ),
+        // "I think `x` should be called `y`. Could you rename that
+        // function, please?": the same rename asked for again in a
+        // sentence of its own.
+        later(
+            "en.utterance.confirmed_stop",
+            Cat::Utterance,
+            vec![C(Cat::Utterance), W("."), C(Cat::Utterance)],
+            confirmed,
+        ),
+        // "`thread_found` should be renamed to `y`"
+        later(
+            "en.becomes.should_be_renamed",
+            Cat::Becomes,
+            vec![W("should"), W("be"), W("renamed"), C(Cat::Into)],
+            first,
+        ),
+        // "Could you handle that for me?"
+        word(
+            RuleInfo::new("en.errand.handle_that", 11),
+            Cat::Errand,
+            "handle that",
+            blank(),
+        )
+        .read_only(),
+        // "the function `wakes` — the name is kinda unclear to me, ...
+        // right? could you rename it": a topic the user is unsure of.
+        later(
+            "en.utterance.about_question",
+            Cat::Utterance,
+            vec![C(Cat::Topic), W("?"), C(Cat::Utterance)],
+            about,
+        ),
+        // "so there is this fn `check_kit`, can we rename it": the thing
+        // pointed out before the request about it.
+        later(
+            "en.topic.there_is_this",
+            Cat::Topic,
+            vec![W("there"), W("is"), W("this"), C(Cat::Mention)],
+            first,
+        ),
+        // "what is `digit` even... ok anyway, could you rename it": the
+        // thing wondered about, left aside for the request.
+        later(
+            "en.topic.what_is_even",
+            Cat::Topic,
+            vec![C(Cat::WhatIs), C(Cat::Mention), C(Cat::Hedge)],
+            |c| c.get(1).cloned(),
+        ),
+        // "change name of `rounded` to `to_ellipse`", "change `load_older`
+        // name to ...": the thing whose name is meant.
+        later(
+            "en.mention.name_of",
+            Cat::Mention,
+            vec![W("name"), W("of"), C(Cat::Mention)],
+            first,
+        ),
+        later(
+            "en.mention.name_after",
+            Cat::Mention,
+            vec![C(Cat::Mention), W("name")],
+            first,
+        ),
+    ]);
     // Words saying what a thing ought to be called.
     rules.push(
         word(

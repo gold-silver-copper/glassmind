@@ -73,6 +73,10 @@ const ASIDES: &[(&str, u32, &str)] = &[
     ("en.aside.ah", 10, "ah"),
     ("en.aside.no", 10, "no"),
     ("en.aside.my_bad", 10, "my bad"),
+    // "ok anyway, could you rename it ...": going back to the request
+    // after a digression; "..., thx".
+    ("en.aside.anyway", 11, "anyway"),
+    ("en.aside.thx", 11, "thx"),
 ];
 
 /// The punctuation after an aside: "..., ok?" (an aside asking whether

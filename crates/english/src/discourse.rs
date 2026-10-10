@@ -44,6 +44,13 @@ const PROMPTS: &[(&str, u32, &str)] = &[
     ("en.prompt.would_it_be_ok_to", 5, "would it be ok to"),
     ("en.prompt.i_d_like", 5, "i'd like"),
     ("en.prompt.want", 5, "want"),
+    // "can u rename ...": "you" typed short.
+    ("en.prompt.can_u", 11, "can u"),
+    ("en.prompt.could_u", 11, "could u"),
+    // "maybe rename it to `log_fuzz_step`": a request put forward gently.
+    ("en.prompt.maybe", 11, "maybe"),
+    // "I'm thinking `x` should be renamed to `y`"
+    ("en.prompt.i_m_thinking", 11, "i'm thinking"),
 ];
 
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {

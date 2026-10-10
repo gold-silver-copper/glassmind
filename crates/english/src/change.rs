@@ -101,6 +101,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     ] {
         rules.extend(blanks(cat, table).map(Rule::read_only));
     }
+    // "`x` -> `y`, update all callers"
+    rules.push(
+        word(
+            RuleInfo::new("en.follow_up.update_all_callers_bare", 11),
+            Cat::FollowUp,
+            "update all callers",
+            blank(),
+        )
+        .read_only(),
+    );
     rules.extend([
         heard(
             "en.becomes.into",
