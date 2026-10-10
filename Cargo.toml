@@ -1,0 +1,37 @@
+[workspace]
+resolver = "3"
+members = ["crates/*", "tools/oracle", "tools/depcheck"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/gold-silver-copper/glassmind"
+
+[workspace.dependencies]
+glassmind-meaning = { path = "crates/meaning" }
+glassmind-grammar = { path = "crates/grammar" }
+glassmind-english = { path = "crates/english" }
+glassmind-world-rust = { path = "crates/world-rust" }
+glassmind-english-rust = { path = "crates/english-rust" }
+glassmind-mind = { path = "crates/mind" }
+glassmind-answer = { path = "crates/answer" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+syn = { version = "2", features = ["full", "visit", "extra-traits"] }
+proc-macro2 = { version = "1", features = ["span-locations"] }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+panic = "deny"
+indexing_slicing = "deny"
+unreachable = "deny"
+todo = "deny"
+unimplemented = "deny"
+
+[profile.release]
+debug = 1

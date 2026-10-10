@@ -1,0 +1,15 @@
+[package]
+name = "glassmind-english-rust"
+description = "English words for the Rust world"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+glassmind-meaning.workspace = true
+glassmind-english.workspace = true
+glassmind-world-rust.workspace = true
+
+[lints]
+workspace = true

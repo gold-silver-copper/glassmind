@@ -1,0 +1,20 @@
+[package]
+name = "glassmind"
+description = "Talk to glassmind about Rust code: ask, chat, explain, eval"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+glassmind-meaning.workspace = true
+glassmind-english.workspace = true
+glassmind-world-rust.workspace = true
+glassmind-english-rust.workspace = true
+glassmind-mind.workspace = true
+glassmind-answer.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,13 @@
+[package]
+name = "glassmind-grammar"
+description = "Grammar building blocks: incremental Earley parser, completion and generation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+
+
+[lints]
+workspace = true

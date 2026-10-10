@@ -1,0 +1,13 @@
+[package]
+name = "glassmind-depcheck"
+description = "Checks the crate dependency graph keeps the layers apart"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+serde_json.workspace = true
+
+[lints]
+workspace = true

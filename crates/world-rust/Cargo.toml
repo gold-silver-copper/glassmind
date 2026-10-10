@@ -1,0 +1,16 @@
+[package]
+name = "glassmind-world-rust"
+description = "The Rust source code world"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+glassmind-meaning.workspace = true
+serde.workspace = true
+syn.workspace = true
+proc-macro2.workspace = true
+
+[lints]
+workspace = true
