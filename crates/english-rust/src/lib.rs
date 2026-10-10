@@ -718,6 +718,9 @@ mod tests {
             "`done` field - what structs",
             "I'm looking for structs that have `done` field, which ones are there?",
             "where's done declared as a struct field, which structs",
+            "what structs have `done` as field",
+            "which struct has done field in it",
+            "is there any struct that has a field `done`? what structs is it in",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");

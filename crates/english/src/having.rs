@@ -853,6 +853,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             first,
         ),
     ]);
+    // "is there any struct that has a field `eye_off`? what structs is it
+    // in": asking again which holders the thing asked about is in.
+    rules.push(read_only_rule(
+        "en.ask_again.is_it_in",
+        17,
+        AskAgain,
+        vec![C(AskAgain), W("is it in")],
+        first,
+    ));
     rules.extend(
         [
             ("en.ask_again.which_are_they", "which are they"),
@@ -899,6 +908,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             identify(&[part_holders(&[c.first()?.clone(), c.last()?.clone()])?])
         }));
     }
+    // "which struct has `engine_inertia` field in it": "in it" says no
+    // more than the verb did.
+    rules.push(read_only_rule(
+        "en.verb_phrase.within",
+        17,
+        VerbPhrase,
+        vec![C(VerbPhrase), C(Within)],
+        first,
+    ));
     rules.extend(
         [("en.hedge.only", "only"), ("en.hedge.like", "like")]
             .map(|(id, words)| filler(id, LATER, Hedge, words)),

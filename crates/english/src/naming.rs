@@ -110,6 +110,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(NounPhrase), W("as a"), C(Noun)],
             kind_named,
         ),
+        // "what structs have `selected` as field"
+        read_only_rule(
+            "en.noun_phrase.as_bare",
+            17,
+            NounPhrase,
+            vec![C(NounPhrase), W("as"), C(Noun)],
+            kind_named,
+        ),
         // "the field `search`", "the `saved` field": a thing described,
         // which "the" leaves as it is.
         heard(
