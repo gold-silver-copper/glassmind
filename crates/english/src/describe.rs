@@ -356,6 +356,58 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             previous_described,
         ),
     ]);
+    // "whats unhidden_posts return / used for", "what is `x` doing, or used
+    // for": what a thing gives back, and what it does and what it is for
+    // asked together; "can you tell me what `x` does and why we'd use it".
+    rules.extend(fillers(
+        26,
+        &[
+            (
+                Doing,
+                &[
+                    ("en.doing.return", "return"),
+                    ("en.doing.returns", "returns"),
+                ],
+            ),
+            (
+                Motive,
+                &[
+                    ("en.motive.we_d_use", "why we'd use"),
+                    ("en.motive.you_d_use", "why you'd use"),
+                    ("en.motive.would_we_use", "why would we use"),
+                    ("en.motive.would_you_use", "why would you use"),
+                    ("en.motive.would_i_use", "why would i use"),
+                    ("en.motive.do_we_need", "why do we need"),
+                ],
+            ),
+        ],
+    ));
+    let later = |id, lhs, rhs, build| read_only_rule(id, 26, lhs, rhs, build);
+    rules.extend([
+        // "return / used for", "doing, or used for": both asked at once,
+        // which asks what the thing is for.
+        later(
+            "en.use.doing_or",
+            Use,
+            vec![C(Doing), C(Join), C(Use)],
+            last,
+        ),
+        // "and why we'd use it", "why would you use `x`": what a thing is
+        // for, asked by why one would want it.
+        later(
+            "en.question.motive",
+            Question,
+            vec![C(Motive), C(Mention)],
+            describe,
+        ),
+        // "what the point of `x`": the "is" left out.
+        later(
+            "en.question.what_purpose_of",
+            Question,
+            vec![W("what"), C(Purpose), W("of"), C(Mention)],
+            describe,
+        ),
+    ]);
     // "what does `armed` even mean"
     rules.push(filler("en.doing.mean", 21, Doing, "mean"));
     // "what does `x` actually do", "what is `x` even for"

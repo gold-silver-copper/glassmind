@@ -335,6 +335,14 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         vec![C(Question), W("in"), C(Codebase)],
         first,
     ));
+    // "whats Topic for in thsi codebase": the code the user is working
+    // in, pointed at.
+    rules.push(filler(
+        "en.codebase.this_codebase",
+        26,
+        Codebase,
+        "this codebase",
+    ));
     rules.extend([
         // "where `parse_remote` lives", "where it lives": where the thing
         // is, as a clause.

@@ -181,6 +181,9 @@ pub enum Cat {
     /// which saying its kind shows to be a name: "field live", "the to
     /// field".
     Renamed,
+    /// Words asking why one would use a thing, which asks what it is for:
+    /// "why we'd use", "why would you use".
+    Motive,
     /// Words asking the hearer to carry out the request just made: "can
     /// you do that for me?", "could you take care of that?".
     Errand,

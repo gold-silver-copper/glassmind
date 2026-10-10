@@ -70,6 +70,9 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// number_syntax deffined", "where `rooms_cursor` definedd", "what
 /// SessionRounds do exactlly", "explain page_block, purpse?". And from
 /// asking to rename a field: "pls renam field touched to was_touched".
+///
+/// Round 26, from asking what a thing is for: "wht `listen` fn for",
+/// "whats Topic for in thsi codebase".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -237,6 +240,13 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.exactlly", "exactlly", "exactly"),
             ("en.spelling.purpse", "purpse", "purpose"),
             ("en.spelling.renam", "renam", "rename"),
+        ],
+    ),
+    (
+        26,
+        &[
+            ("en.spelling.wht", "wht", "what"),
+            ("en.spelling.thsi", "thsi", "this"),
         ],
     ),
 ];
