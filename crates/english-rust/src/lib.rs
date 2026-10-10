@@ -483,6 +483,45 @@ mod tests {
         }
     }
 
+    /// Hurried ways of asking what calls a function mean what the plain
+    /// question means, of the kind said or of any kind.
+    #[test]
+    fn hurried_ways_of_asking_for_callers_agree() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meanings = |text: &str| match english.understand(text) {
+            Understanding::Readings(readings) => {
+                let mut m: Vec<_> = readings.into_iter().map(|r| r.meaning).collect();
+                m.dedup();
+                m
+            }
+            Understanding::Failed { .. } => Vec::new(),
+        };
+        for (plain, texts) in [
+            (
+                "which functions call `cut`?",
+                &[
+                    "cut called by what fns",
+                    "anythign call cut, which fucntions",
+                    "um, which functions call `cut`, if any?",
+                ][..],
+            ),
+            (
+                "what calls `cut`?",
+                &[
+                    "cut called from where",
+                    "who cals cut",
+                    "who uses cut, callers only",
+                ][..],
+            ),
+        ] {
+            let plain = meanings(plain);
+            assert_eq!(plain.len(), 1);
+            for text in texts {
+                assert_eq!(meanings(text), plain, "{text:?}");
+            }
+        }
+    }
+
     /// However the user asks where a thing is, and whatever asides they
     /// put around it, it means what the system says when it asks that.
     #[test]

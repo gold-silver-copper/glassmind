@@ -93,6 +93,21 @@ fn undescribed<O: Ontology>(
     }
 }
 
+/// "calls `x`": the subject is the first argument of the verb's relation.
+pub(crate) fn object<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [Sem::Relation { relation, form }, Sem::Thing(other)] => Some(Sem::Condition {
+            condition: Condition::Related {
+                relation: relation.clone(),
+                position: Position::First,
+                other: other.clone(),
+            },
+            number: form.agrees_with(),
+        }),
+        _ => None,
+    }
+}
+
 /// Asks which things fit the description the children say.
 fn identify<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     Some(Sem::Question(Question::Identify(described(c)?)))
@@ -185,17 +200,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             "en.verb_phrase.object",
             VerbPhrase,
             vec![C(Verb), C(NounPhrase)],
-            |c| match c {
-                [Sem::Relation { relation, form }, Sem::Thing(other)] => Some(Sem::Condition {
-                    condition: Condition::Related {
-                        relation: relation.clone(),
-                        position: Position::First,
-                        other: other.clone(),
-                    },
-                    number: form.agrees_with(),
-                }),
-                _ => None,
-            },
+            object,
             |v| match v {
                 Sem::Condition {
                     condition:

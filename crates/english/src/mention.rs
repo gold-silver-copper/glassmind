@@ -16,7 +16,7 @@ use crate::lexicon::{CAPITALIZED, CODE, LOWER, NAME, WORD};
 use crate::locate::fillers;
 use crate::sem::{Cat, Number, Sem};
 use crate::spoken;
-use crate::word;
+use crate::{first, word};
 
 use Cat::*;
 use Sym::{Cat as C, Class, Word as W};
@@ -104,6 +104,17 @@ pub(crate) fn related<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
         thing: called(name, kind, vec![related]),
         kind: kind.clone(),
     })
+}
+
+/// A thing named by a known word, mentioned as an owner.
+fn owner<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c.last()? {
+        Sem::Thing(thing) => Some(Sem::Mention {
+            thing: thing.clone(),
+            kind: None,
+        }),
+        _ => None,
+    }
 }
 
 /// The thing with the name, of a kind left open.
@@ -264,44 +275,32 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             of_kind,
         ),
         // "`save_filter` in `App`", "the `retry` method on `Chat`", "the
-        // `sealed` field of the `Builder` struct"
+        // `sealed` field of the `Builder` struct", "rename state_path in
+        // Store to ..."
         rule(
             "en.mention.preposition",
             5,
             Mention,
-            vec![C(Mention), C(Preposition), C(Mention)],
+            vec![C(Mention), C(Preposition), C(Owner)],
             related,
         ),
-        // "rename state_path in Store to ...": the owner named by a known
-        // word, capitalized the way type names are.
+        rule("en.owner.mention", 22, Owner, vec![C(Mention)], first),
+        // "rename state_path in Store to ...", "calling `http_put` on the
+        // Store": the owner named by a known word, capitalized the way
+        // type names are.
         rule(
-            "en.mention.preposition_capitalized",
-            21,
-            Mention,
-            vec![C(Mention), C(Preposition), Class(CAPITALIZED)],
-            |c| match c {
-                [part, relation, Sem::Thing(owner)] => related(&[
-                    part.clone(),
-                    relation.clone(),
-                    Sem::Mention {
-                        thing: owner.clone(),
-                        kind: None,
-                    },
-                ]),
-                _ => None,
-            },
+            "en.owner.capitalized",
+            22,
+            Owner,
+            vec![Class(CAPITALIZED)],
+            owner,
         ),
-        // "which functions call `accent` on Theme": the thing so placed,
-        // as the object of a verb.
         rule(
-            "en.noun_phrase.preposition",
-            9,
-            NounPhrase,
-            vec![C(Mention), C(Preposition), C(Mention)],
-            |c| match related(c)? {
-                Sem::Mention { thing, .. } => Some(Sem::Thing(thing)),
-                _ => None,
-            },
+            "en.owner.the_capitalized",
+            22,
+            Owner,
+            vec![W("the"), Class(CAPITALIZED)],
+            owner,
         ),
         // "...": a trailing-off that sets what came before apart.
         filler("en.break.dots", 5, Break, ". . ."),
@@ -455,5 +454,25 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.extend(fillers(ROUND, FILLERS));
     // "what `x` do / whats it for": two ways of asking, split by a slash.
     rules.extend(fillers(14, &[(Join, &[("en.join.slash", "/")])]));
+    // "which functions call `accent` on Theme": the thing so placed, as
+    // the object of a verb; "which functions call `step_match`, in the
+    // Chat": the same, set off by a comma.
+    for (id, round, rhs) in [
+        (
+            "en.noun_phrase.preposition",
+            9,
+            vec![C(Mention), C(Preposition), C(Owner)],
+        ),
+        (
+            "en.noun_phrase.preposition_set_off",
+            22,
+            vec![C(Mention), W(","), C(Preposition), C(Owner)],
+        ),
+    ] {
+        rules.push(rule(id, round, NounPhrase, rhs, |c| match related(c)? {
+            Sem::Mention { thing, .. } => Some(Sem::Thing(thing)),
+            _ => None,
+        }));
+    }
     rules
 }

@@ -24,7 +24,9 @@ pub const WORD: &str = "word";
 /// which is capitalized.
 pub const LOWER: &str = "lower";
 /// Token class: a plain word the system knows, read as the thing going by
-/// that name where only a name can stand: "a field named calls".
+/// that name where a name can stand: "a field named calls", "which
+/// functions call forget". A word that is a noun phrase by itself ("it")
+/// is never one.
 pub const SAID: &str = "said";
 /// Token class: a plain word the system knows, capitalized the way type
 /// names are and more than one letter long, read as the thing going by
@@ -49,6 +51,9 @@ pub struct EnglishLexicon<O> {
     /// Every word some rule uses. A plain word that is one of these is read
     /// as that word, never as a name; quote it in backticks to name it.
     pub known: BTreeSet<&'static str>,
+    /// Known words that are a noun phrase by themselves, pointing at a
+    /// thing ("it", "that"): never read as the name of one.
+    pub standing: BTreeSet<&'static str>,
     /// The word meant by each mistyping: "whcih" is read as "which".
     pub meant: BTreeMap<&'static str, &'static str>,
     /// Mistyped words, each read as the word meant (see `spelling`).
@@ -92,7 +97,10 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
             {
                 vec![Sem::Quote(token.text.clone())]
             }
-            (SAID, Shape::Word) if self.known.contains(self.norm(token)) => {
+            (SAID, Shape::Word)
+                if self.known.contains(self.norm(token))
+                    && !self.standing.contains(self.norm(token)) =>
+            {
                 vec![Sem::Thing(Thing::Named(Name(token.text.clone())))]
             }
             (CAPITALIZED, Shape::Word)

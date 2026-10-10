@@ -11,6 +11,7 @@ use glassmind_meaning::{Condition, Description, Ontology, Thing};
 use crate::asking::read_only_rule;
 use crate::lexicon::SAID;
 use crate::renaming::heard;
+use crate::seed::object;
 use crate::sem::{Cat, Number, Sem};
 use crate::spoken;
 
@@ -145,6 +146,16 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             NounPhrase,
             vec![C(Noun), Class(SAID)],
             kind_named,
+        ),
+        // "whcih functions call forget", "who calls forget": the word
+        // after a verb is the thing it names, even one the system knows
+        // as English.
+        read_only_rule(
+            "en.verb_phrase.object_word",
+            22,
+            VerbPhrase,
+            vec![C(Verb), Class(SAID)],
+            object,
         ),
     ]
 }

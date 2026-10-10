@@ -86,6 +86,39 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Where), C(Undergoes), W("from")],
             |c| identify(c.get(1..2)?),
         ),
+        // "`x` called from where", "`x` gets used where": the question
+        // word in the place it asks about.
+        read_only_rule(
+            "en.question.whence_echo",
+            22,
+            Question,
+            vec![C(Undergoes), C(Where)],
+            |c| identify(c.get(..1)?),
+        ),
     ]);
+    // "`x` called by what fns", "`press` called by whcih functions", "`x`
+    // called from what": the doer asked for in its place, perhaps with
+    // its kind.
+    for (id, by, which) in [
+        ("en.question.undergoes_by_which", "by", "which"),
+        ("en.question.undergoes_by_what", "by", "what"),
+        ("en.question.undergoes_from_which", "from", "which"),
+        ("en.question.undergoes_from_what", "from", "what"),
+    ] {
+        rules.push(read_only_rule(
+            id,
+            22,
+            Question,
+            vec![C(Undergoes), W(by), W(which), C(Noun)],
+            |c| identify(&[c.last()?.clone(), c.first()?.clone()]),
+        ));
+    }
+    rules.push(read_only_rule(
+        "en.question.undergoes_by_what_alone",
+        22,
+        Question,
+        vec![C(Undergoes), W("by what")],
+        identify,
+    ));
     rules
 }

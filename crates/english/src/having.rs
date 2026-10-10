@@ -27,6 +27,8 @@ const ROUND_14: u32 = 14;
 
 /// The request asked again: as it was, or, when asked again for things of
 /// a kind ("which functions?"), for those of that kind among what it asks.
+/// Asked again by a role ("who uses `x`, callers only"), it must already ask
+/// for the things in that role.
 fn again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     use meaning::{Question::Identify, Utterance::Ask};
     match c {
@@ -38,6 +40,19 @@ fn again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
             Some(Sem::Utterance(Ask(Identify(d))))
         }
         [_, Sem::Kind { .. }] => None,
+        [
+            Sem::Utterance(Ask(Identify(d))),
+            Sem::Role { relation, position },
+        ] => d
+            .conditions
+            .iter()
+            .any(|c| {
+                matches!(c, Condition::Related { relation: r, position: p, .. }
+                    if r == relation && p == position)
+            })
+            .then(|| c.first().cloned())
+            .flatten(),
+        [_, Sem::Role { .. }] => None,
         _ => c.first().cloned(),
     }
 }
@@ -582,6 +597,15 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             vec![C(Anything), C(Participial)],
             anything,
         ),
+        // "anything call `x`, which fns", "anythign call `x`": the question
+        // whether something does, said without its "does".
+        read_only_rule(
+            "en.description.anything_bare",
+            22,
+            Description,
+            vec![C(Anything), C(VerbPhrase)],
+            anything,
+        ),
         // "does anything call `x`": asking whether something does asks
         // for what does.
         read_only_rule(
@@ -1004,6 +1028,18 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     rules.push(filler("en.within.in_them", 19, Within, "in them"));
     // "any structs w/ field typed `x`, list them pls"
     rules.push(filler("en.ask_again.list_them", 19, AskAgain, "list them"));
+    // "who uses `wrap_lines`, callers only": the role of the things asked
+    // for, said again.
+    rules.extend([
+        read_only_rule("en.ask_again.role", 22, AskAgain, vec![C(RoleNoun)], first),
+        read_only_rule(
+            "en.ask_again.hedged",
+            22,
+            AskAgain,
+            vec![C(AskAgain), C(Hedge)],
+            first,
+        ),
+    ]);
     rules.extend(
         WITHIN_ROLE
             .iter()

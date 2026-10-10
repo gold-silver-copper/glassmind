@@ -168,6 +168,9 @@ pub enum Cat {
     /// A preposition saying what a thing belongs to, naming the relation
     /// between them: "of", "on", "in" (the field `x` of `S`).
     Belonging,
+    /// What a thing is said to be in or on: a mention, or a known word
+    /// capitalized the way type names are ("in Store", "on the Store").
+    Owner,
     /// The word after an owner, naming the relation between it and what
     /// follows: the "'s" of "App's `on_mouse`".
     Possessive,

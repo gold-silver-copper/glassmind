@@ -137,6 +137,12 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             5,
             vec![C(Utterance), W(","), C(Remark), W(".")],
         ),
+        // "um, which functions call `x`, if any?"
+        after_comma(
+            "en.utterance.remark_after_comma_mark",
+            22,
+            vec![C(Utterance), W(","), C(Remark), C(Mark)],
+        ),
         // "Which functions call `inner`? I'm trying to understand how it's used."
         utterance(
             "en.utterance.remark_after_stop",

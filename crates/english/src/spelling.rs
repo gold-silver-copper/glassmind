@@ -82,6 +82,10 @@ type Spelling = (&'static str, &'static str, &'static str);
 /// Round 21, from requests to rename a function: "rename `x` to `y`,
 /// thnks", "`x` shoud be called `y`", "pls rename evrywhere", "want it
 /// called `y` isntead".
+///
+/// Round 22, from questions about what calls a function: "who cals
+/// `x`", "list callers fo `x`", "anythign call `x`", "who calls `x`,
+/// need to knwo".
 const SPELLINGS: &[(u32, &[Spelling])] = &[
     (
         17,
@@ -181,6 +185,15 @@ const SPELLINGS: &[(u32, &[Spelling])] = &[
             ("en.spelling.shoud", "shoud", "should"),
             ("en.spelling.evrywhere", "evrywhere", "everywhere"),
             ("en.spelling.isntead", "isntead", "instead"),
+        ],
+    ),
+    (
+        22,
+        &[
+            ("en.spelling.cals", "cals", "calls"),
+            ("en.spelling.fo", "fo", "of"),
+            ("en.spelling.anythign", "anythign", "anything"),
+            ("en.spelling.knwo", "knwo", "know"),
         ],
     ),
 ];
