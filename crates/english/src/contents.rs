@@ -81,16 +81,25 @@ pub(crate) fn narrowed<O: Ontology>(
     let [Condition::Related { other, .. }] = wide.conditions.as_slice() else {
         return None;
     };
-    let later = later.map_things(&mut |t| match t {
-        Thing::Previous => other.clone(),
-        t => t.clone(),
-    });
+    // "it" is the thing the earlier question is about, or else the one
+    // thing named deep in what it describes: "where is `x` used as a field
+    // type? which structs have a field that contains it?"
+    let bind = |it: &Thing<O>| {
+        let later = later.map_things(&mut |t| match t {
+            Thing::Previous => it.clone(),
+            t => t.clone(),
+        });
+        let fits = matches!(&later, Question::Identify(d) | Question::Count(d)
+            if d.conditions == wide.conditions && (wide.kind.is_none() || d.kind.is_none()));
+        fits.then_some(later)
+    };
+    let later = bind(other).or_else(|| match other.things().as_slice() {
+        [thing] => bind(thing),
+        _ => None,
+    })?;
     let (Question::Identify(d) | Question::Count(d)) = &later else {
         return None;
     };
-    if d.conditions != wide.conditions || (wide.kind.is_some() && d.kind.is_some()) {
-        return None;
-    }
     let d = Description {
         kind: d.kind.clone().or_else(|| wide.kind.clone()),
         conditions: d.conditions.clone(),

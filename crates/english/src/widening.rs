@@ -205,6 +205,40 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
                 .map(|&(id, lhs, rhs)| read_only_rule(id, ROUND, lhs, rhs.to_vec(), build)),
         );
     }
+    rules.extend([
+        // "either directly or wrapped"
+        read_only_rule(
+            "en.widening.either",
+            11,
+            Widening,
+            vec![W("either"), C(Widening)],
+            same,
+        ),
+        // "Fields where the type only contains a `u64` count too"
+        read_only_rule(
+            "en.widening.counted",
+            11,
+            Widening,
+            vec![C(Widening), C(Counted)],
+            same,
+        ),
+        // "like Option or Vec of it", "Vec of `Pose`"
+        read_only_rule(
+            "en.enclosure.of",
+            11,
+            Enclosure,
+            vec![C(Enclosure), W("of"), C(NounPhrase)],
+            same,
+        ),
+        // "like &str": a reference to it.
+        read_only_rule(
+            "en.enclosure.reference",
+            11,
+            Enclosure,
+            vec![W("&"), C(Enclosure)],
+            same,
+        ),
+    ]);
     // "the type just contains Key"
     rules.push(read_only_rule(
         "en.includes.hedged",

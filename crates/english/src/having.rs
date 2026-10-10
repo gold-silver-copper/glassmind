@@ -16,14 +16,15 @@ use crate::sem::{Cat, Number, Sem};
 use crate::{blank, last, word};
 
 use Cat::{
-    Again, Alternative, Anything, AskAgain, Description, Hedge, Holder, Includes, Join, Noun,
-    NounPhrase, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective, RoleNoun,
-    Utterance, VerbPhrase, Within,
+    Again, Alternative, Anything, AskAgain, Description, Hedge, Holder, Includes, Indirect, Join,
+    Noun, NounPhrase, Part, Participial, Preposition, Prompt, Qualifier, Question, RoleAdjective,
+    RoleNoun, Utterance, VerbPhrase, Within,
 };
 use Sym::{Cat as C, Word as W};
 
 const ROUND: u32 = 3;
 const GROWN: u32 = 9;
+const LATER: u32 = 11;
 
 /// The request asked again: as it was, or, when asked again for things of
 /// a kind ("which functions?"), for those of that kind among what it asks.
@@ -112,6 +113,18 @@ fn unqualified<O: Ontology>(v: &Sem<O>) -> Option<Vec<Sem<O>>> {
     }
 }
 
+/// Whether what is said again speaks only of the given things, by name or
+/// as "it", wherever it names them: "or a field that contains it".
+fn speaks_of<O: Ontology>(again: &Sem<O>, things: &[&Thing<O>]) -> bool {
+    match again {
+        Sem::Thing(t) => t
+            .things()
+            .iter()
+            .all(|t| **t == Thing::Previous || things.contains(t)),
+        _ => true,
+    }
+}
+
 /// The qualifier among the children, if what else they say agrees with it:
 /// an alternative must speak of the same thing, by name or as "it".
 fn agreeing<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
@@ -123,9 +136,7 @@ fn agreeing<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
             }
             | Sem::Thing(other)),
             again,
-        ] if !matches!(again, Sem::Thing(t) if t != other && *t != Thing::Previous) => {
-            Some(q.clone())
-        }
+        ] if speaks_of(again, &other.things()) => Some(q.clone()),
         _ => None,
     }
 }
@@ -140,8 +151,9 @@ fn fitting<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     }
 }
 
-/// "a field that is `x`", "a `x` field": any thing of a holder's kind
-/// holding `x`, which comes after or before the holder.
+/// "a field that is `x`", "a `x` field", "a field that contains it": any
+/// thing of a holder's kind holding `x`, which comes after or before the
+/// holder.
 fn held<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c {
         [
@@ -159,9 +171,12 @@ fn held<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
                 relation,
                 position,
             },
-        ] if matches!(other, Thing::Named(_) | Thing::Item(_)) => Some(Sem::Thing(Thing::Fitting(
-            meeting(Some(kind), related(relation, flip(*position), other)),
-        ))),
+        ] if matches!(other, Thing::Named(_) | Thing::Item(_) | Thing::Previous) => {
+            Some(Sem::Thing(Thing::Fitting(meeting(
+                Some(kind),
+                related(relation, flip(*position), other),
+            ))))
+        }
         _ => None,
     }
 }
@@ -205,11 +220,34 @@ fn holder_role<O: Ontology>(c: &[Sem<O>]) -> bool {
 /// does, by name or as "it".
 fn put_again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     match c {
-        [Sem::Utterance(u), again]
-            if !matches!(again, Sem::Thing(t)
-                if *t != Thing::Previous && !u.things().contains(&t)) =>
-        {
+        [Sem::Utterance(u), again] if speaks_of(again, &u.things()) => {
             Some(Sem::Utterance(u.clone()))
+        }
+        _ => None,
+    }
+}
+
+/// "where is `x` used as a field type": the things having a part (a field)
+/// whose role (its type) `x` fills.
+fn used_as<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
+    match c {
+        [
+            Sem::Thing(thing),
+            Sem::Holder {
+                kind,
+                relation,
+                position,
+            },
+            Sem::Role {
+                relation: role,
+                position: filled,
+            },
+        ] => {
+            let part = meeting(Some(kind), related(role, flip(*filled), thing));
+            Some(Sem::Question(meaning::Question::Identify(meeting(
+                None,
+                related(relation, flip(*position), &Thing::Fitting(part)),
+            ))))
         }
         _ => None,
     }
@@ -270,6 +308,17 @@ const INCLUDES: &[(&str, &str)] = &[
     ("en.includes.is_comma_or_contains", "is , or contains ,"),
 ];
 
+/// More ways of saying a role's filler includes a thing: "whose field
+/// types include `Sort`", "a field with a type that is, or includes, `x`",
+/// "whose type has `GistFile` in it", "fields that use `PostText`".
+const INCLUDES_LATER: &[(&str, &str)] = &[
+    ("en.includes.include", "include"),
+    ("en.includes.is_comma_or_includes", "is , or includes ,"),
+    ("en.includes.has", "has"),
+    ("en.includes.use", "use"),
+    ("en.includes.uses", "uses"),
+];
+
 /// Words saying where in a thing another is, after a qualifier: "or wraps
 /// it somehow", "or contains u32 in it", "with type IRect in it".
 const WITHIN: &[(&str, &str)] = &[
@@ -295,6 +344,11 @@ const ASK_AGAIN: &[(&str, &str)] = &[
     ("en.ask_again.is_there_any", "is there any"),
     ("en.ask_again.can_you_list_them", "can you list them"),
 ];
+
+/// More questions asking again: "... like &str or Box<str>. which ones
+/// are there?"
+const ASK_AGAIN_LATER: &[(&str, &str)] =
+    &[("en.ask_again.which_ones_are_there", "which ones are there")];
 
 /// Words for some thing of any kind: "anything", "anyone".
 const ANYTHING: &[(&str, &str)] = &[
@@ -674,6 +728,8 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         (WITHIN, Within, ROUND),
         (ASK_AGAIN, AskAgain, 5),
         (ANYTHING, Anything, 9),
+        (ASK_AGAIN_LATER, AskAgain, LATER),
+        (INCLUDES_LATER, Includes, LATER),
     ] {
         rules.extend(
             table
@@ -779,6 +835,135 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         rhs.extend(words_then(words, &[Holder]));
         grown(id, NounPhrase, rhs, held)
     }));
+    let later = |id, lhs, rhs, build| read_only_rule(id, LATER, lhs, rhs, build);
+    rules.extend([
+        // "is there a struct that has ...": asking whether there is one
+        // asks for them.
+        later(
+            "en.description.a",
+            Description,
+            words_then("a", &[Description]),
+            last,
+        ),
+        // "is there struct somewhere with ...": every thing asked about is
+        // somewhere, so saying so restricts nothing.
+        later(
+            "en.noun.somewhere",
+            Noun,
+            vec![C(Noun), W("somewhere")],
+            same,
+        ),
+        // "fields of `RefCompare`", "field of ImageSearch": a holder of the
+        // thing, said after it.
+        later(
+            "en.noun_phrase.holder_of",
+            NounPhrase,
+            vec![C(Holder), W("of"), C(NounPhrase)],
+            held,
+        ),
+        // "a struct field": a holder said with the kind it is in, which is
+        // the same holder.
+        later("en.holder.kind", Holder, vec![C(Noun), C(Holder)], last),
+        // "(fields) use `Tab` type"
+        later(
+            "en.qualifier.includes_then_role",
+            Qualifier,
+            vec![C(Includes), C(NounPhrase), C(RoleNoun)],
+            holding,
+        ),
+        // "or a field that contains it", "or field type that contains
+        // Poster somewhere in it": another thing holding it.
+        later(
+            "en.alternative.or_noun_phrase",
+            Alternative,
+            words_then("or", &[NounPhrase]),
+            last,
+        ),
+        // "or one whose type contains it"
+        later(
+            "en.alternative.or_one",
+            Alternative,
+            words_then("or one", &[Qualifier]),
+            spoken_of,
+        ),
+        // "or with a type that contains one", "or a type containing it"
+        later(
+            "en.alternative.or_with_role_that",
+            Alternative,
+            vec![
+                W("or"),
+                W("with"),
+                C(RoleNoun),
+                W("that"),
+                C(Includes),
+                C(Again),
+            ],
+            last,
+        ),
+        later(
+            "en.alternative.or_role_includes",
+            Alternative,
+            vec![W("or"), C(RoleNoun), C(Includes), C(Again)],
+            last,
+        ),
+        // "use TimeZone anywhere in the type"
+        later(
+            "en.within.anywhere_in_role",
+            Within,
+            words_then("anywhere in", &[RoleNoun]),
+            last,
+        ),
+        // "a field type": a part with a determiner.
+        later("en.part.a", Part, words_then("a", &[Part]), last),
+        // "where is `ImageSearch` used as field type", "where `x` is used
+        // as a field type", "RangeSource used as field type where": what
+        // has a part whose role `x` fills.
+        later(
+            "en.question.where_used_as",
+            Question,
+            vec![
+                W("where"),
+                W("is"),
+                C(NounPhrase),
+                W("used"),
+                W("as"),
+                C(Part),
+                C(RoleNoun),
+            ],
+            used_as,
+        ),
+        later(
+            "en.indirect.where_used_as",
+            Indirect,
+            vec![
+                W("where"),
+                C(NounPhrase),
+                W("is"),
+                W("used"),
+                W("as"),
+                C(Part),
+                C(RoleNoun),
+            ],
+            used_as,
+        ),
+        later(
+            "en.question.used_as_where",
+            Question,
+            vec![
+                C(NounPhrase),
+                W("used"),
+                W("as"),
+                C(Part),
+                C(RoleNoun),
+                W("where"),
+            ],
+            used_as,
+        ),
+    ]);
+    rules.extend(
+        [("en.hedge.only", "only"), ("en.hedge.like", "like")]
+            .map(|(id, words)| filler(id, LATER, Hedge, words)),
+    );
     for (table, lhs) in [(ROLE_DETERMINERS, RoleNoun), (WITHIN_ROLE, Within)] {
         rules.extend(
             table

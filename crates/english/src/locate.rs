@@ -172,12 +172,13 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         .map(|(id, rhs)| rule(id, Cat::Question, rhs, located)),
     );
     rules.extend([
-        // "can you tell me where `x` is defined", "I'd like to know where ..."
+        // "can you tell me where `x` is defined", "I'd like to know where
+        // ...", "I'm trying to find where `x` is used as a field type"
         rule(
             "en.question.inquiry",
             Cat::Question,
             vec![C(Cat::Inquiry), C(Cat::Indirect)],
-            located,
+            crate::last,
         ),
         // "where `x` is defined"
         rule(
@@ -254,7 +255,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
             RuleInfo::new("en.question.indirect", 9),
             Cat::Question,
             vec![C(Cat::Indirect)],
-            S::Build(located),
+            S::Build(crate::last),
         )
         .read_only(),
         // "where's `x` defined at"

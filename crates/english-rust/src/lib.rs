@@ -150,6 +150,11 @@ pub fn words() -> Vec<Word> {
                 // "what structs are storing a `Regex` in a field", "structs
                 // storing an Fn in a field"
                 ("en.rust.verb.storing", 9, "storing", HasField, Progressive),
+                // "who stores a RefCell in a struct field", "structs that
+                // embed ThemeConfig in a field"
+                ("en.rust.verb.stores", 11, "stores", HasField, ThirdSingular),
+                ("en.rust.verb.embed", 11, "embed", HasField, Plain),
+                ("en.rust.verb.embeds", 11, "embeds", HasField, ThirdSingular),
                 // "which fields `S` contains", "which fields make up `S`",
                 // "what fields `PostText` is made up of"
                 (
@@ -182,11 +187,16 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.preposition.w", 3, "w /", HasField, Plain),
             ],
         ),
-        // "fields inside `S`"
         read_only(table(
             Preposition,
             relation,
-            &[("en.rust.preposition.inside", 7, "inside", BelongsTo, Plain)],
+            &[
+                // "fields inside `S`"
+                ("en.rust.preposition.inside", 7, "inside", BelongsTo, Plain),
+                // A struct has the fields it owns: "structs whose fields use
+                // `Tab` type", "structs whose field types include `Sort`".
+                ("en.rust.preposition.whose", 11, "whose", HasField, Plain),
+            ],
         )),
         // A field holds what its type mentions: "a `Gate` field", "a field
         // that is `Key`", "fields containing `Signature`".
@@ -616,6 +626,10 @@ mod tests {
             "which structs have a field with `Arc` in its type, directly or wrapped",
             "which structs have a field typed as `Arc`, or with a type that includes it?",
             "who has a field typed `Arc`? structs only",
+            "structs w/ fields of `Arc` (direct or nested)",
+            "is there a struct with a field of type `Arc`, or a field that contains it?",
+            "where is `Arc` used as a field type? which structs have a field that contains it?",
+            "`Arc` used as field type where? structs only",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
