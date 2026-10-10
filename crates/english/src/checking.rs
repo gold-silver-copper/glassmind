@@ -40,6 +40,86 @@ fn repair<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
     })
 }
 
+/// The ways of asking for a check to be made to pass, and of naming the
+/// check by what is wrong with it.
+fn passing<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
+    let rule = |id, lhs, rhs, build| read_only_rule(id, 29, lhs, rhs, build);
+    let command = |id, rhs| read_only_rule(id, 29, Command, rhs, repair);
+    let mut rules = vec![
+        // "the failing tests", "failing tests", "the broken build": a check
+        // named by its not passing.
+        rule(
+            "en.check_phrase.ailing",
+            CheckPhrase,
+            vec![C(Ailing), C(CheckName)],
+            last,
+        ),
+        // "the failing tests pass", "they pass".
+        rule(
+            "en.pass_clause.pass",
+            PassClause,
+            vec![C(CheckPhrase), W("pass")],
+            first,
+        ),
+        // "make failing tests pass in heck", "get failing tests green in
+        // heck": the source they are in; "get the build working again".
+        rule(
+            "en.pass_clause.in",
+            PassClause,
+            vec![C(PassClause), W("in"), Class(NAME)],
+            first,
+        ),
+        rule(
+            "en.pass.in",
+            Pass,
+            vec![C(Pass), W("in"), Class(NAME)],
+            first,
+        ),
+        rule("en.pass.again", Pass, vec![C(Pass), W("again")], first),
+        // "make the failing tests pass", "fix so the tests pass", "fix
+        // things so the failing tests pass", "get the failing tests to
+        // pass", "get failing tests green".
+        command("en.command.make_pass", vec![W("make"), C(PassClause)]),
+        command("en.command.fix_so", vec![W("fix"), C(FixSo), C(PassClause)]),
+        command(
+            "en.command.get_passing",
+            vec![W("get"), C(CheckPhrase), C(Pass)],
+        ),
+    ];
+    rules.extend(fillers(
+        29,
+        &[
+            (
+                Ailing,
+                &[
+                    ("en.ailing.failing", "failing"),
+                    ("en.ailing.the_failing", "the failing"),
+                    ("en.ailing.broken", "broken"),
+                    ("en.ailing.the_broken", "the broken"),
+                ],
+            ),
+            (
+                Pass,
+                &[
+                    ("en.pass.passing", "passing"),
+                    ("en.pass.to_pass", "to pass"),
+                    ("en.pass.green", "green"),
+                    ("en.pass.working", "working"),
+                ],
+            ),
+            (
+                FixSo,
+                &[
+                    ("en.fix_so.so", "so"),
+                    ("en.fix_so.things", "things so"),
+                    ("en.fix_so.it", "it so"),
+                ],
+            ),
+        ],
+    ));
+    rules
+}
+
 pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
     let mut rules: Vec<Rule<Cat, Sem<O>>> = vec![
         // "the build", "the tests".
@@ -384,7 +464,9 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         // "The dunce build is broken. I'm seeing E0425, "cannot find value
         // `x`". Could you fix it?": what a tool said goes on past a comma,
         // before the request. Gone on so long, what it was about is no
-        // longer what the request's "it" refers back to.
+        // longer what the request's "it" refers back to. "some tests are
+        // failing in siphasher, for example `x`. could you make the
+        // failing tests pass?".
         rule(
             "en.utterance.musing_stop",
             Utterance,
@@ -423,6 +505,7 @@ pub fn rules<O: Ontology>() -> Vec<Rule<Cat, Sem<O>>> {
         ),
     ]);
     rules.extend(outcomes());
+    rules.extend(passing());
     rules
 }
 

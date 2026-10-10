@@ -285,9 +285,9 @@ fn failing_tests(source: &str, out: &str) -> Vec<RustItem> {
     tests
 }
 
-/// A stable fingerprint of a source tree's files (FNV-1a over each path
-/// and its bytes, in path order), skipping `target` and hidden entries.
-fn fingerprint(root: &Path) -> u64 {
+/// Every file of a source tree (not `target` or hidden entries), as
+/// paths relative to `root`, in path order.
+fn files(root: &Path) -> Vec<PathBuf> {
     let mut files = Vec::new();
     let mut stack = vec![PathBuf::new()];
     while let Some(rel) = stack.pop() {
@@ -308,6 +308,12 @@ fn fingerprint(root: &Path) -> u64 {
         }
     }
     files.sort();
+    files
+}
+
+/// A stable fingerprint of a source tree's files (FNV-1a over each path
+/// and its bytes, in path order).
+fn fingerprint(root: &Path) -> u64 {
     let mut h: u64 = 0xcbf2_9ce4_8422_2325;
     let mut eat = |bytes: &[u8]| {
         for b in bytes {
@@ -315,7 +321,7 @@ fn fingerprint(root: &Path) -> u64 {
             h = h.wrapping_mul(0x0100_0000_01b3);
         }
     };
-    for f in files {
+    for f in files(root) {
         eat(f.to_string_lossy().as_bytes());
         eat(&std::fs::read(root.join(&f)).unwrap_or_default());
     }
@@ -489,44 +495,99 @@ pub fn apply(changes: &[RustChange], roots: &BTreeMap<String, PathBuf>) -> Resul
     Ok(changes.len())
 }
 
-/// Copies a source tree (without `target` and hidden directories) into
-/// `to`, for trying changes without touching the original. The copies are
-/// dated a day ahead, so cargo builds them anew whatever was built before.
+/// Copies a source tree (without `target` and hidden entries) into `to`,
+/// for trying changes without touching the original. The copies are dated
+/// a day ahead, so cargo builds them anew whatever was built before.
 pub fn copy_tree(from: &Path, to: &Path) -> Result<(), String> {
     let _ = std::fs::remove_dir_all(to);
-    let mut stack = vec![PathBuf::new()];
-    while let Some(rel) = stack.pop() {
-        let dir = from.join(&rel);
-        std::fs::create_dir_all(to.join(&rel)).map_err(|e| e.to_string())?;
-        for entry in std::fs::read_dir(&dir)
-            .map_err(|e| e.to_string())?
-            .flatten()
-        {
-            let name = entry.file_name();
-            let name_str = name.to_string_lossy();
-            if name_str.starts_with('.') || name_str == "target" {
-                continue;
-            }
-            let rel_child = rel.join(&name);
-            if entry.file_type().is_ok_and(|t| t.is_dir()) {
-                stack.push(rel_child);
-            } else {
-                std::fs::copy(from.join(&rel_child), to.join(&rel_child))
-                    .and_then(|_| std::fs::File::open(to.join(&rel_child)))
-                    .and_then(|f| f.set_modified(SystemTime::now() + AHEAD))
-                    .map_err(|e| e.to_string())?;
-            }
+    for f in files(from) {
+        let into = to.join(&f);
+        if let Some(dir) = into.parent() {
+            std::fs::create_dir_all(dir).map_err(|e| e.to_string())?;
         }
+        std::fs::copy(from.join(&f), &into)
+            .and_then(|_| std::fs::File::open(&into))
+            .and_then(|f| f.set_modified(SystemTime::now() + AHEAD))
+            .map_err(|e| e.to_string())?;
     }
     Ok(())
 }
 
-/// A scratch directory for trying changes to `source`.
+/// Slips that leave code building but computing the wrong thing: an
+/// operator or a truth value written for its neighbour, in pairs.
+const SLIPS: &str = " + , - , < , <= , > , >= , == , != , && , || ,true,false";
+
+/// How long undone slips are tried before giving up.
+const SLIP_TIME: Duration = Duration::from_secs(120);
+
+/// Changes that each undo one possible slip (see [`SLIPS`]) in the code
+/// under `src` of the source at `root`, outside comments, attributes and
+/// the test module at the end of a file. Files the failing `tests` name
+/// most (by module or where they panicked) come first.
+pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
+    let said = format!("{tests:?}");
+    let mut files: Vec<PathBuf> = files(root)
+        .into_iter()
+        .filter(|f| f.starts_with("src") && f.extension().is_some_and(|e| e == "rs"))
+        .collect();
+    files.sort_by_key(|f| {
+        std::cmp::Reverse(
+            f.file_stem()
+                .map_or(0, |s| said.matches(&*s.to_string_lossy()).count()),
+        )
+    });
+    let slips: Vec<&str> = SLIPS.split(',').collect();
+    let mut changes = Vec::new();
+    for f in files {
+        let text = std::fs::read_to_string(root.join(&f)).unwrap_or_default();
+        let code = text.lines().take_while(|l| !l.contains("#[cfg(test)]"));
+        for (n, line) in code.enumerate() {
+            if line.trim_start().starts_with(['/', '#']) {
+                continue;
+            }
+            for (i, old) in slips.iter().enumerate() {
+                for (at, _) in line.match_indices(old) {
+                    changes.push(RustChange {
+                        source: source.to_owned(),
+                        file: f.to_string_lossy().into_owned(),
+                        line: n as u32 + 1,
+                        column: line.get(..at).map_or(0, |b| b.chars().count()) as u32,
+                        old: (*old).to_owned(),
+                        new: slips.get(i ^ 1).copied().unwrap_or_default().to_owned(),
+                    });
+                }
+            }
+        }
+    }
+    changes
+}
+
+/// The first slip (see [`slips`]) after whose undoing every test of the
+/// source at `root` passes, each tried alone in a fresh scratch copy, for
+/// at most [`SLIP_TIME`].
+pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustChange> {
+    let scratch = scratch(source);
+    let roots = BTreeMap::from([(source.to_owned(), scratch.clone())]);
+    let start = Instant::now();
+    let found = slips(source, root, tests)
+        .into_iter()
+        .take_while(|_| start.elapsed() < SLIP_TIME)
+        .find(|slip| {
+            copy_tree(root, &scratch)
+                .and_then(|()| apply(std::slice::from_ref(slip), &roots))
+                .and_then(|_| run(RustCheck::Test, source, &scratch))
+                .is_ok_and(|f| f.is_empty())
+        });
+    let _ = std::fs::remove_dir_all(&scratch);
+    found
+}
+
+/// A scratch directory for trying changes to `source`, in the system's
+/// temporary directory: a sandboxed run may write there and nowhere else
+/// of its own.
 pub fn scratch(source: &str) -> PathBuf {
-    let home = std::env::var_os("HOME")
-        .map(PathBuf::from)
-        .unwrap_or_default();
-    home.join(".cache/glassmind/scratch")
+    std::env::temp_dir()
+        .join("glassmind-scratch")
         .join(format!("{source}-{}", std::process::id()))
 }
 
@@ -540,6 +601,44 @@ mod tests {
         let tests = failing_tests("s", out);
         assert_eq!(tests.len(), 1);
         assert_eq!(tests[0].name, "tests::adds");
+    }
+
+    #[test]
+    fn slips_are_in_code_not_tests_named_files_first() {
+        let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../target/test-slips");
+        let _ = std::fs::remove_dir_all(&dir);
+        std::fs::create_dir_all(dir.join("src")).unwrap();
+        std::fs::create_dir_all(dir.join("tests")).unwrap();
+        std::fs::write(
+            dir.join("src/lib.rs"),
+            "// a < b\nfn f(a: u8) -> bool { a < 3 || is_true() }\n#[cfg(test)]\nmod t { fn g() -> bool { 1 == 2 } }\n",
+        )
+        .unwrap();
+        std::fs::write(dir.join("src/kebab.rs"), "fn k() -> bool { false }\n").unwrap();
+        std::fs::write(dir.join("tests/it.rs"), "fn h() -> bool { 1 == 2 }\n").unwrap();
+        let failing = RustItem {
+            source: "s".into(),
+            file: String::new(),
+            line: 0,
+            name: "kebab::tests::test1".into(),
+            kind: RustKind::Test,
+            owner: None,
+            detail: None,
+        };
+        let found = slips("s", &dir, &[failing]);
+        let said: Vec<(&str, u32, u32, &str)> = found
+            .iter()
+            .map(|c| (c.file.as_str(), c.line, c.column, c.new.as_str()))
+            .collect();
+        assert_eq!(
+            said,
+            vec![
+                ("src/kebab.rs", 1, 17, "true"),
+                ("src/lib.rs", 2, 23, " <= "),
+                ("src/lib.rs", 2, 27, " && "),
+                ("src/lib.rs", 2, 34, "false"),
+            ]
+        );
     }
 
     #[test]

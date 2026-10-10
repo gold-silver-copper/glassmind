@@ -379,4 +379,11 @@ const OPENERS: &[(&str, u32, &str)] = &[
     // "Before I push anything, ...": when the speaker means to use what
     // they ask for.
     ("en.remark.before", 29, "before"),
+    // "some tests are failing in heck, like `x`", "there are failing tests
+    // in percent-encoding": what the speaker has seen go wrong.
+    ("en.remark.some", 29, "some"),
+    ("en.remark.there_are", 29, "there are"),
+    // "get failing tests green, e.g. `x`": an example of what the request
+    // is about.
+    ("en.remark.e_g", 29, "e.g ."),
 ];

@@ -188,6 +188,10 @@ const REMEDY_SUGGESTED: RuleInfo = RuleInfo::new("rust.remedy.compiler_suggestio
 /// it offers there, as no two replacements of the same text can both be
 /// made.
 const REMEDY_ONE_PER_PLACE: RuleInfo = RuleInfo::new("rust.remedy.one_per_place", 29);
+/// A remedy for failing tests: undoing one slip of an operator or a truth
+/// value in the source's own code (`checks::slips`), kept only if every
+/// test then passes in a scratch copy.
+const REMEDY_SLIP: RuleInfo = RuleInfo::new("rust.remedy.undo_slip", 29);
 /// Applying changes the user accepted, then checking again.
 const APPLY_CHANGES: RuleInfo = RuleInfo::new("rust.apply.changes", HAND);
 
@@ -195,6 +199,7 @@ pub const RULES: &[RuleInfo] = &[
     RUN_CHECK,
     REMEDY_SUGGESTED,
     REMEDY_ONE_PER_PLACE,
+    REMEDY_SLIP,
     APPLY_CHANGES,
     LOOKUP_EXACT,
     LOOKUP_ANY_CASE,
@@ -785,6 +790,19 @@ impl World<Rust> for RustWorld {
         }
         changes.sort();
         changes.dedup();
+        // Failing tests come with no fixes of the compiler's.
+        if problems.iter().all(|p| p.kind == RustKind::Test)
+            && self.switches.on(REMEDY_SLIP.id)
+            && let Some(undone) = self
+                .sources
+                .iter()
+                .filter(|s| problems.iter().any(|p| p.source == s.name))
+                .map(|s| checks::undo_slip(&s.name, &s.root, &problems))
+                .collect::<Option<Vec<_>>>()
+        {
+            fired.push(REMEDY_SLIP);
+            changes = undone;
+        }
         if problems.is_empty() || changes.is_empty() {
             return Ok(Reply::Remedy {
                 check: *check,

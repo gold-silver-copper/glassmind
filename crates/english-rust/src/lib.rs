@@ -340,6 +340,24 @@ pub fn check_words() -> Vec<Word> {
             .read_only()
         }),
     )
+    .chain(
+        // "can you make them pass?", "fix so they pass": of the checks,
+        // only the tests are many things that pass or fail, so they are the
+        // check pointed back at as many.
+        [
+            ("en.rust.check_phrase.them", "them"),
+            ("en.rust.check_phrase.they", "they"),
+        ]
+        .map(|(id, form)| {
+            word(
+                RuleInfo::new(id, 29),
+                Cat::CheckPhrase,
+                form,
+                Sem::Check(Test),
+            )
+            .read_only()
+        }),
+    )
     .collect()
 }
 
@@ -1428,6 +1446,34 @@ mod tests {
             );
         }
         assert!(english.say(&Reply::Forgotten).is_some());
+    }
+
+    /// Asking for the failing tests to pass, however it is put and whatever
+    /// is said of them first, asks for the tests to be fixed.
+    #[test]
+    fn ways_of_asking_for_passing_tests_agree() {
+        use glassmind_world_rust::checks::RustCheck;
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        for text in [
+            "make failing tests pass",
+            "make the broken tests pass",
+            "can u fix so tests pass",
+            "Could you fix things so the failing tests pass?",
+            "Could you please get the failing tests passing again?",
+            "get failing tests green in heck, e.g. lower_camel::tests::test1",
+            "some tests in heck are failing, like kebab::tests::test1. can you make them pass?",
+            "there are failing tests, for example one in src/lib.rs. can you fix so they pass?",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("could not read {text:?}");
+            };
+            assert!(
+                readings
+                    .iter()
+                    .all(|r| r.meaning == Utterance::Command(Action::Repair(RustCheck::Test))),
+                "{text:?}"
+            );
+        }
     }
 
     /// Asking what is in a struct, for its members, or for its fields after

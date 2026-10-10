@@ -17,6 +17,16 @@ pub enum Cat {
     /// A request to fix something that leaves what to fix to a remark
     /// before it: "(the build is broken,) can you fix it please".
     Fix,
+    /// A word saying a check does not pass: "failing", "broken".
+    Ailing,
+    /// A check said to pass: "the failing tests pass".
+    PassClause,
+    /// Words after a check saying it is to pass: "passing", "to pass",
+    /// "green".
+    Pass,
+    /// Words between "fix" and what the fix is for, saying nothing more:
+    /// "so", "things so", "it so".
+    FixSo,
     /// A request to change something, without its final punctuation:
     /// "rename `x` to `y`", "`S.x` -> `y`".
     Command,
