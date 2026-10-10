@@ -506,6 +506,8 @@ mod tests {
             "what seed_at do / whats it for",
             "can you tell me what seed_at is",
             "what seed_at is, what it for",
+            "what seed_at doo exaclty",
+            "seed_at whats it fro",
         ] {
             let Understanding::Readings(readings) = english.understand(text) else {
                 panic!("could not read {text:?}");
