@@ -84,7 +84,11 @@ enum Command {
         disable: Vec<String>,
     },
     /// List every rule with the round that added it.
-    Rules,
+    Rules {
+        /// Also show what each grammar rule reads.
+        #[arg(long)]
+        detail: bool,
+    },
 }
 
 fn main() -> ExitCode {
@@ -98,12 +102,16 @@ fn main() -> ExitCode {
             inputs,
             disable,
         } => eval(&sources, &inputs, Switches::without(disable)),
-        Command::Rules => {
+        Command::Rules { detail } => {
             for problem in system::rule_problems() {
                 eprintln!("problem: {problem}");
             }
-            for rule in system::all_rules() {
-                println!("{}\t{}", rule.id, rule.round);
+            for (rule, what) in system::all_rules_detailed() {
+                if detail {
+                    println!("{}\t{}\t{what}", rule.id, rule.round);
+                } else {
+                    println!("{}\t{}", rule.id, rule.round);
+                }
             }
             Ok(())
         }

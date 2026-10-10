@@ -21,6 +21,38 @@ pub fn all_rules() -> Vec<RuleInfo> {
     rules
 }
 
+/// Every rule with a short description of what it reads (grammar rules)
+/// or which layer it belongs to.
+pub fn all_rules_detailed() -> Vec<(RuleInfo, String)> {
+    let mut out: Vec<(RuleInfo, String)> = glassmind_english_rust::rules()
+        .iter()
+        .map(|r| {
+            let rhs: Vec<String> = r
+                .rhs
+                .iter()
+                .map(|s| match s {
+                    glassmind_grammar::Sym::Cat(c) => format!("{c:?}"),
+                    glassmind_grammar::Sym::Word(w) => format!("{w:?}"),
+                    glassmind_grammar::Sym::Class(c) => format!("<{c}>"),
+                })
+                .collect();
+            let mode = if r.speak { "" } else { " (read only)" };
+            (r.info, format!("{:?} -> {}{mode}", r.lhs, rhs.join(" ")))
+        })
+        .collect();
+    out.extend(
+        glassmind_world_rust::RULES
+            .iter()
+            .map(|r| (*r, "world rule".to_owned())),
+    );
+    out.extend(
+        glassmind_mind::RULES
+            .iter()
+            .map(|r| (*r, "dialogue rule".to_owned())),
+    );
+    out
+}
+
 /// Problems that make the rule set unusable, such as duplicate IDs.
 pub fn rule_problems() -> Vec<String> {
     let mut problems = glassmind_grammar::Grammar::problems(&glassmind_english_rust::rules());

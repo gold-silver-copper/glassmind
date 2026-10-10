@@ -1,0 +1,588 @@
+//! The loop itself: growth and compression rounds, each candidate change
+//! applied on top of the accepted version, checked, scored, reviewed, and
+//! committed only if it is better.
+
+use std::collections::BTreeMap;
+use std::fmt::Write as _;
+use std::path::{Path, PathBuf};
+
+use crate::agent::{self, AgentRun};
+use crate::evaluate::{self, Data, Evaluated};
+use crate::exec::git;
+use crate::state::{self, Attempts, Baseline, Config, Entry, Paths, Tokens};
+use crate::{compress, growth};
+
+/// Paths a loop change may touch; anything else an agent leaves behind
+/// (scratch outputs) is not part of the change.
+const CHANGE_PATHS: &[&str] = &[
+    "crates",
+    "tools/depcheck",
+    "docs/tasks.md",
+    "Cargo.toml",
+    "Cargo.lock",
+    "fixtures",
+];
+
+fn log(paths: &Paths, line: &str) {
+    use std::io::Write;
+    let _ = std::fs::create_dir_all(paths.logs());
+    if let Ok(mut f) = std::fs::OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(paths.logs().join("loop.log"))
+    {
+        let _ = writeln!(f, "[{}] {line}", state::now());
+    }
+    eprintln!("{line}");
+}
+
+fn worktree(config: &Config, paths: &Paths, name: &str, commit: &str) -> Result<PathBuf, String> {
+    let dir = paths.worktrees().join(name);
+    if dir.exists() {
+        let _ = git(
+            &config.repo,
+            &["worktree", "remove", "--force", &dir.to_string_lossy()],
+        );
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+    std::fs::create_dir_all(paths.worktrees()).map_err(|e| e.to_string())?;
+    git(
+        &config.repo,
+        &[
+            "worktree",
+            "add",
+            "--detach",
+            &dir.to_string_lossy(),
+            commit,
+        ],
+    )?;
+    Ok(dir)
+}
+
+fn drop_worktree(config: &Config, dir: &Path) {
+    let _ = git(
+        &config.repo,
+        &["worktree", "remove", "--force", &dir.to_string_lossy()],
+    );
+    let _ = std::fs::remove_dir_all(dir);
+}
+
+fn head(config: &Config) -> Result<String, String> {
+    git(
+        &config.repo,
+        &["rev-parse", &format!("refs/heads/{}", config.branch)],
+    )
+}
+
+/// The agent's change, as a patch against the commit it started from.
+fn patch_of(dir: &Path, base: &str) -> Result<String, String> {
+    let mut add = vec!["add", "-A", "--"];
+    add.extend(CHANGE_PATHS.iter().filter(|p| dir.join(p).exists()));
+    git(dir, &add)?;
+    let out = crate::exec::Run::new(
+        "git",
+        &[
+            "diff".to_owned(),
+            "--cached".to_owned(),
+            "--binary".to_owned(),
+            base.to_owned(),
+        ],
+        dir,
+    )
+    .go()?;
+    Ok(out.stdout)
+}
+
+/// Establishes the baseline from the branch head, if there is none yet.
+pub fn baseline(config: &Config, paths: &Paths, data: &Data) -> Result<Baseline, String> {
+    if paths.baseline().exists() {
+        return state::read_json(&paths.baseline());
+    }
+    let commit = head(config)?;
+    log(paths, &format!("establishing the baseline at {commit}"));
+    let dir = worktree(config, paths, "baseline", &commit)?;
+    let target = paths.eval_target();
+    let result = evaluate::checks(&dir, &target)
+        .and_then(|()| evaluate::evaluate(config, paths, data, &dir, &target, &[]));
+    drop_worktree(config, &dir);
+    let ev = result?;
+    let b = Baseline {
+        commit: commit.clone(),
+        round: 0,
+        scores: ev.scores.clone(),
+        train: ev.train,
+        heldout: ev.heldout,
+    };
+    state::write_json(&paths.baseline(), &b)?;
+    state::append_history(
+        paths,
+        &Entry {
+            round: 0,
+            kind: "baseline".into(),
+            group: "seed".into(),
+            accepted: true,
+            reason: "the seed".into(),
+            scores: ev.scores,
+            commit,
+            unix_time: state::now(),
+            ..Entry::default()
+        },
+    )?;
+    Ok(b)
+}
+
+/// Whether the held-out score has not improved for `patience` rounds.
+pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
+    let mut best = f64::INFINITY;
+    let mut best_round = 0;
+    for e in history.iter().filter(|e| e.accepted) {
+        if e.scores.heldout_cost < best - 1e-9 {
+            best = e.scores.heldout_cost;
+            best_round = e.round;
+        }
+    }
+    round > best_round + patience
+}
+
+/// Runs rounds until stopped (a `STOP` file in the state directory, or no
+/// held-out improvement for `patience` rounds), or just one with `once`.
+pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
+    let config: Config = state::read_json(&paths.config())?;
+    let data = Data::load(&config)?;
+    let mut base = baseline(&config, paths, &data)?;
+    loop {
+        if paths.stop_file().exists() {
+            log(paths, "stop file found; stopping");
+            break;
+        }
+        let history = state::history(paths);
+        let round = history.iter().map(|e| e.round).max().unwrap_or(0) + 1;
+        if stale(&history, config.patience, round) {
+            log(
+                paths,
+                &format!(
+                    "no held-out improvement for {} rounds; stopping",
+                    config.patience
+                ),
+            );
+            break;
+        }
+        let compression = round % (config.growth_per_compression + 1) == 0;
+        log(
+            paths,
+            &format!(
+                "round {round}: {}",
+                if compression { "compression" } else { "growth" }
+            ),
+        );
+        let result = if compression {
+            compression_round(&config, paths, &data, &mut base, round)
+        } else {
+            growth_round(&config, paths, &data, &mut base, round)
+        };
+        if let Err(e) = result {
+            log(paths, &format!("round {round} failed: {e}"));
+            state::append_history(
+                paths,
+                &Entry {
+                    round,
+                    kind: if compression { "compression" } else { "growth" }.into(),
+                    group: "(round)".into(),
+                    reason: e,
+                    scores: base.scores.clone(),
+                    tokens_cumulative: cumulative(paths),
+                    unix_time: state::now(),
+                    ..Entry::default()
+                },
+            )?;
+        }
+        if once {
+            break;
+        }
+    }
+    Ok(())
+}
+
+fn cumulative(paths: &Paths) -> u64 {
+    state::history(paths).iter().map(|e| e.tokens.total()).sum()
+}
+
+/// The diff of the most recent accepted change, for agents to learn from.
+fn worked_example(config: &Config, paths: &Paths, kind: &str) -> Option<String> {
+    let entry = state::history(paths)
+        .into_iter()
+        .rev()
+        .find(|e| e.accepted && e.kind == kind && !e.commit.is_empty())?;
+    let diff = git(
+        &config.repo,
+        &["show", "--format=%s%n%n%b", &entry.commit, "--", "crates"],
+    )
+    .ok()?;
+    let lines: Vec<&str> = diff.lines().take(260).collect();
+    Some(lines.join("\n"))
+}
+
+fn growth_round(
+    config: &Config,
+    paths: &Paths,
+    data: &Data,
+    base: &mut Baseline,
+    round: u32,
+) -> Result<(), String> {
+    let verdicts = evaluate::verdicts(&data.train, &base.train);
+    let mut attempts: Attempts = state::read_json(&paths.attempts()).unwrap_or_default();
+    let chosen: Vec<growth::Group> = growth::groups(&data.train, &base.train, &verdicts)
+        .into_iter()
+        .filter(|g| match attempts.groups.get(&g.key) {
+            Some((failed, size)) => *failed < 3 || *size != g.turns.len(),
+            None => true,
+        })
+        .take(config.max_agents)
+        .collect();
+    if chosen.is_empty() {
+        return Err("no failure groups left to work on".into());
+    }
+    let example = worked_example(config, paths, "growth");
+    let start = base.commit.clone();
+    let mut jobs = Vec::new();
+    for (i, g) in chosen.iter().enumerate() {
+        let slot = paths.slot(i);
+        let _ = std::fs::remove_dir_all(slot.join("data"));
+        std::fs::create_dir_all(&slot).map_err(|e| e.to_string())?;
+        let brief = growth::write_brief(
+            &slot,
+            config,
+            round,
+            g,
+            &data.train,
+            &base.train,
+            example.as_deref(),
+        )?;
+        let wt = worktree(config, paths, &format!("r{round}-{i}"), &start)?;
+        log(
+            paths,
+            &format!(
+                "  agent {i}: {} ({} turns, cost {:.1})",
+                g.title,
+                g.turns.len(),
+                g.cost
+            ),
+        );
+        jobs.push((g.clone(), slot, wt, brief));
+    }
+    let runs: Vec<Result<AgentRun, String>> = std::thread::scope(|s| {
+        let handles: Vec<_> = jobs
+            .iter()
+            .map(|(_, slot, wt, brief)| {
+                s.spawn(|| agent::run_agent(config, paths, slot, wt, brief))
+            })
+            .collect();
+        handles
+            .into_iter()
+            .map(|h| {
+                h.join()
+                    .unwrap_or_else(|_| Err("agent thread panicked".into()))
+            })
+            .collect()
+    });
+    for ((group, _slot, wt, _), run) in jobs.iter().zip(runs) {
+        let mut agent_ok = false;
+        let (tokens, summary, patch) = match run {
+            Ok(r) => {
+                agent_ok = r.ok;
+                let _ = std::fs::write(
+                    paths
+                        .logs()
+                        .join(format!("r{round}-{}.log", sanitize(&group.key))),
+                    &r.log,
+                );
+                (r.tokens, r.summary, patch_of(wt, &start))
+            }
+            Err(e) => (Tokens::default(), String::new(), Err(e)),
+        };
+        let outcome = match patch {
+            Ok(p) if p.trim().is_empty() => Err(if agent_ok {
+                "the agent made no change".to_owned()
+            } else {
+                "the agent failed or timed out without a change".to_owned()
+            }),
+            Ok(p) => consider(
+                config,
+                paths,
+                data,
+                base,
+                round,
+                "growth",
+                &group.title,
+                &summary,
+                &p,
+            ),
+            Err(e) => Err(e),
+        };
+        record(paths, base, round, "growth", &group.title, tokens, &outcome)?;
+        let entry = attempts
+            .groups
+            .entry(group.key.clone())
+            .or_insert((0, group.turns.len()));
+        if outcome.is_ok() {
+            *entry = (0, group.turns.len());
+        } else {
+            *entry = (entry.0 + 1, group.turns.len());
+        }
+        drop_worktree(config, wt);
+    }
+    state::write_json(&paths.attempts(), &attempts)
+}
+
+fn sanitize(s: &str) -> String {
+    s.chars()
+        .map(|c| if c.is_alphanumeric() { c } else { '_' })
+        .collect()
+}
+
+fn record(
+    paths: &Paths,
+    base: &Baseline,
+    round: u32,
+    kind: &str,
+    group: &str,
+    tokens: Tokens,
+    outcome: &Result<Evaluated, String>,
+) -> Result<(), String> {
+    let previous = cumulative(paths);
+    let (accepted, reason, scores) = match outcome {
+        Ok(ev) => (true, "accepted".to_owned(), ev.scores.clone()),
+        Err(e) => (false, e.clone(), base.scores.clone()),
+    };
+    log(
+        paths,
+        &format!(
+            "  {kind} `{group}`: {} (train {:.1}, held-out {:.1}, size {}) {}",
+            if accepted { "ACCEPTED" } else { "rejected" },
+            scores.train_cost,
+            scores.heldout_cost,
+            scores.size,
+            if accepted {
+                String::new()
+            } else {
+                reason.lines().next().unwrap_or_default().to_owned()
+            }
+        ),
+    );
+    state::append_history(
+        paths,
+        &Entry {
+            round,
+            kind: kind.into(),
+            group: group.into(),
+            accepted,
+            reason,
+            tokens,
+            tokens_cumulative: previous + tokens.total(),
+            scores,
+            commit: if accepted {
+                base.commit.clone()
+            } else {
+                String::new()
+            },
+            unix_time: state::now(),
+        },
+    )
+}
+
+/// Applies a patch on top of the accepted version, checks, scores and
+/// reviews it, and commits it if it is accepted. On success the baseline is
+/// the new version.
+#[allow(clippy::too_many_arguments)]
+fn consider(
+    config: &Config,
+    paths: &Paths,
+    data: &Data,
+    base: &mut Baseline,
+    round: u32,
+    kind: &str,
+    group: &str,
+    summary: &str,
+    patch: &str,
+) -> Result<Evaluated, String> {
+    let at = head(config)?;
+    let dir = worktree(config, paths, "apply", &at)?;
+    let result = (|| {
+        let patch_file = paths.root.join("candidate.patch");
+        std::fs::write(&patch_file, patch).map_err(|e| e.to_string())?;
+        git(
+            &dir,
+            &[
+                "apply",
+                "--3way",
+                "--whitespace=nowarn",
+                &patch_file.to_string_lossy(),
+            ],
+        )
+        .map_err(|e| format!("the change does not apply to the latest accepted version: {e}"))?;
+        let target = paths.eval_target();
+        evaluate::checks(&dir, &target)?;
+        let ev = evaluate::evaluate(config, paths, data, &dir, &target, &[])?;
+        evaluate::decide(config, data, base, &ev)?;
+        if config.reviewer {
+            review(config, paths, &dir)?;
+        }
+        let mut message = String::new();
+        let _ = writeln!(message, "loop round {round} ({kind}): {group}\n");
+        let _ = writeln!(message, "{}\n", summary.trim());
+        let _ = writeln!(message, "Loop-Round: {round}");
+        let _ = writeln!(
+            message,
+            "Train-Cost: {:.1} -> {:.1}",
+            base.scores.train_cost, ev.scores.train_cost
+        );
+        let _ = writeln!(
+            message,
+            "Heldout-Cost: {:.1} -> {:.1}",
+            base.scores.heldout_cost, ev.scores.heldout_cost
+        );
+        let _ = writeln!(message, "Size: {} -> {}", base.scores.size, ev.scores.size);
+        git(&dir, &["add", "-A", "--"])?;
+        git(&dir, &["commit", "-q", "-m", &message])?;
+        let new = git(&dir, &["rev-parse", "HEAD"])?;
+        git(
+            &config.repo,
+            &[
+                "update-ref",
+                &format!("refs/heads/{}", config.branch),
+                &new,
+                &at,
+            ],
+        )?;
+        *base = Baseline {
+            commit: new,
+            round,
+            scores: ev.scores.clone(),
+            train: ev.train.clone(),
+            heldout: ev.heldout.clone(),
+        };
+        state::write_json(&paths.baseline(), base)?;
+        Ok(ev)
+    })();
+    drop_worktree(config, &dir);
+    result
+}
+
+const REVIEW: &str = "You review one change to glassmind, a symbolic English-understanding system whose knowledge is \
+Rust source. Read docs/growing.md for its rules. Run `git diff HEAD` to see the change (it is uncommitted). \
+VETO the change only if it clearly breaks one of these: (1) language understanding added as keyword spotting, \
+substring/regex tests over the input, fuzzy matching, or a special case for one particular sentence instead of \
+grammar rules that compose; (2) English words or grammar, or Rust-code concepts, put into the meaning layer \
+(crates/meaning), or Rust concepts into crates/english, or English into crates/world-rust; (3) answers faked \
+instead of computed. Do not veto for style, size, or doubts about usefulness: the scorer judges those. \
+Reply with only JSON: {\"veto\": true|false, \"reason\": \"...\"}";
+
+fn review(config: &Config, paths: &Paths, dir: &Path) -> Result<(), String> {
+    let slot = paths.slot(99);
+    let run = agent::claude(
+        config,
+        paths,
+        &slot,
+        dir,
+        REVIEW,
+        Some("Read,Grep,Glob,Bash"),
+        Vec::new(),
+    )?;
+    let text = run.summary;
+    let start = text.find('{').unwrap_or(0);
+    let verdict: serde_json::Value = serde_json::from_str(
+        text.get(start..)
+            .unwrap_or_default()
+            .trim_end_matches('`')
+            .trim(),
+    )
+    .unwrap_or(serde_json::Value::Null);
+    let _ = std::fs::write(paths.logs().join("last-review.txt"), &text);
+    if verdict.get("veto").and_then(serde_json::Value::as_bool) == Some(true) {
+        let reason = verdict
+            .get("reason")
+            .and_then(serde_json::Value::as_str)
+            .unwrap_or("vetoed");
+        return Err(format!("reviewer veto: {reason}"));
+    }
+    Ok(())
+}
+
+fn compression_round(
+    config: &Config,
+    paths: &Paths,
+    data: &Data,
+    base: &mut Baseline,
+    round: u32,
+) -> Result<(), String> {
+    let start = base.commit.clone();
+    let dir = worktree(config, paths, "ablate", &start)?;
+    let target = paths.eval_target();
+    let found = compress::find(config, paths, data, base, &dir, &target);
+    drop_worktree(config, &dir);
+    let found = found?;
+    log(
+        paths,
+        &format!(
+            "  ablation: {} rules removable, {} single-use",
+            found.removable.len(),
+            found.single_use.len()
+        ),
+    );
+    let slot = paths.slot(0);
+    std::fs::create_dir_all(&slot).map_err(|e| e.to_string())?;
+    let brief = compress::write_brief(&slot, config, round, &found, base)?;
+    let wt = worktree(config, paths, &format!("r{round}-compress"), &start)?;
+    let run = agent::run_agent(config, paths, &slot, &wt, &brief);
+    let (tokens, summary, patch) = match run {
+        Ok(r) => {
+            let _ = std::fs::write(paths.logs().join(format!("r{round}-compress.log")), &r.log);
+            (r.tokens, r.summary, patch_of(&wt, &start))
+        }
+        Err(e) => (Tokens::default(), String::new(), Err(e)),
+    };
+    let outcome = match patch {
+        Ok(p) if p.trim().is_empty() => Err("the agent made no change".to_owned()),
+        Ok(p) => consider(
+            config,
+            paths,
+            data,
+            base,
+            round,
+            "compression",
+            "compression",
+            &summary,
+            &p,
+        ),
+        Err(e) => Err(e),
+    };
+    record(
+        paths,
+        base,
+        round,
+        "compression",
+        "compression",
+        tokens,
+        &outcome,
+    )?;
+    drop_worktree(config, &wt);
+    Ok(())
+}
+
+/// Rule usage on the training set: for each rule ID, the turns it took part
+/// in that were answered right.
+pub fn usage(data: &Data, base: &Baseline) -> BTreeMap<String, Vec<String>> {
+    let verdicts = evaluate::verdicts(&data.train, &base.train);
+    let mut out: BTreeMap<String, Vec<String>> = BTreeMap::new();
+    for o in &base.train {
+        if verdicts
+            .get(&o.turn_id)
+            .is_some_and(|(v, _)| *v == crate::score::Verdict::Right)
+        {
+            for r in &o.rules {
+                out.entry(r.clone()).or_default().push(o.turn_id.clone());
+            }
+        }
+    }
+    out
+}
