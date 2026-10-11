@@ -1,0 +1,102 @@
+{
+  "scope": "same-data regression equivalence; not unseen QA accuracy",
+  "splits": {
+    "train": {
+      "rows": 19481,
+      "answer_parity": 19481,
+      "set_parity": 19481,
+      "retained_baseline_parity": 19481,
+      "cli_answer_parity": 19481,
+      "cli_set_parity": 19481,
+      "parity_resources": {
+        "wall_seconds": 15.7201,
+        "max_rss_kib": 71980
+      },
+      "cli_resources": {
+        "wall_seconds": 0.5022,
+        "max_rss_kib": 73884
+      }
+    },
+    "valid": {
+      "rows": 2821,
+      "answer_parity": 2821,
+      "set_parity": 2821,
+      "retained_baseline_parity": 2821,
+      "cli_answer_parity": 2821,
+      "cli_set_parity": 2821,
+      "parity_resources": {
+        "wall_seconds": 2.3547,
+        "max_rss_kib": 89152
+      },
+      "cli_resources": {
+        "wall_seconds": 0.1515,
+        "max_rss_kib": 89152
+      }
+    }
+  },
+  "inputs": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/train.questions",
+      "bytes": 797196,
+      "sha256": "d3cd1c39d916195757a304ce254a19e5f3b6b6b7fa19f6356cddbf9fff675eaf"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/valid.questions",
+      "bytes": 115573,
+      "sha256": "97704ab5a33b6c6ffed1dcf90f08b9296c761dcd5ad4615bb4d46bc342c2fc32"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/new999-train-base.jsonl",
+      "bytes": 1909160,
+      "sha256": "eb09e5fc44e699e2ab08b94a44409ab8ad5a623224bd7340372c4326bcb0aee8"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/new999-valid-frozen.jsonl",
+      "bytes": 275811,
+      "sha256": "31eabcae27f2303c2060e17e86cc5027273079c2624a4ffff1e15a878d920a85"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/index.json",
+      "bytes": 650045,
+      "sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+      "bytes": 35773124,
+      "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+    }
+  ],
+  "performance_1000": {
+    "baseline": {
+      "wall_seconds": 0.5021,
+      "max_rss_kib": 89152
+    },
+    "disk": {
+      "wall_seconds": 0.1523,
+      "max_rss_kib": 89152
+    }
+  },
+  "seconds": 20.378,
+  "database": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/native999.sqlite",
+    "bytes": 2281472,
+    "sha256": "1c0450201e9992bf7ee33f77f5a38039d045634efc020e44ff8323b7ac3958cd"
+  },
+  "binaries": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/glassmind-facts",
+      "bytes": 31144864,
+      "sha256": "19852c6f9e5a4558b5a296a908649a1d76837ccd194198c3b90414b4ce010aaa"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/examples/disk_parity",
+      "bytes": 25338472,
+      "sha256": "fcbac23f0a7d52b11740774da6c119dfa9e7cb81f03534e02638466b62601263"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/baseline/predictions",
+      "bytes": 7584984,
+      "sha256": "1e5a4af21b05024c85c6e3173f782cd6d62c3a5ed27259fe642aeb30c56eb433"
+    }
+  ]
+}

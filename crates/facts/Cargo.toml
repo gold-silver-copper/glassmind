@@ -12,6 +12,7 @@ serde.workspace = true
 serde_json.workspace = true
 clap.workspace = true
 sha2 = "0.10.9"
+rusqlite = { version = "0.40.2", features = ["bundled", "hooks", "limits"] }
 
 [lints]
 workspace = true
