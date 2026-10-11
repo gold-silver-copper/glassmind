@@ -1,0 +1,51 @@
+{
+  "files": [
+    {
+      "table": "claims",
+      "path": "all/part-00-of-86.parquet",
+      "subject_or_name_ids": 9468504,
+      "property_ids": 9468504,
+      "selected_target_ids": 5677515
+    },
+    {
+      "table": "labels",
+      "path": "en/part-0-of-2.parquet",
+      "subject_or_name_ids": 24701651,
+      "property_ids": 0,
+      "selected_target_ids": 0
+    },
+    {
+      "table": "labels",
+      "path": "en/part-1-of-2.parquet",
+      "subject_or_name_ids": 24701651,
+      "property_ids": 0,
+      "selected_target_ids": 0
+    },
+    {
+      "table": "labels",
+      "path": "mul/part-0-of-1.parquet",
+      "subject_or_name_ids": 19975251,
+      "property_ids": 0,
+      "selected_target_ids": 0
+    },
+    {
+      "table": "aliases",
+      "path": "en/part-0-of-1.parquet",
+      "subject_or_name_ids": 14768817,
+      "property_ids": 0,
+      "selected_target_ids": 0
+    },
+    {
+      "table": "aliases",
+      "path": "mul/part-0-of-1.parquet",
+      "subject_or_name_ids": 882386,
+      "property_ids": 0,
+      "selected_target_ids": 0
+    }
+  ],
+  "selected_claims": 5677515,
+  "selected_names": 84990012,
+  "database_sha256": "c3f1197705f131e74f8f7b794d3f08eaef7d3b48e8a312170185e6728bff1313",
+  "seconds": 15.595,
+  "result": "all canonical and lossless signed-integer roundtrips"
+}

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "license": "CC0-1.0",
+  "publisher": "permutans",
+  "snapshot": "20260928",
+  "scope": "Publisher excludes scholarly works. Only all/part-00-of-86 claims, not a random or complete sample; all English/en and default-language/mul labels and aliases. Normal/preferred entity-valued recorded statements include qualified and historical claims; no current timeless assertion. Raw Parquet contains full qualifiers and references. No QA data used for selection.",
+  "pilot_sha256": "c3f1197705f131e74f8f7b794d3f08eaef7d3b48e8a312170185e6728bff1313",
+  "pilot_bytes": 10367000576,
+  "canonical_audit_sha256": "2ffb55f0696851b965e44a0fbac86ff63c4f359741eb9368741469fd9a25a1a8",
+  "names": 84990012,
+  "statements": 5677515,
+  "qualified_statements": 707253,
+  "files": [
+    {
+      "table": "claims",
+      "path": "all/part-00-of-86.parquet",
+      "revision": "39e6837bef8b6f982fbf23acd19134e882400db7",
+      "sha256": "c6988fa659b6bf34db7c456986e31e76d44a03440d549fa1f2d66d162eeb5ffb",
+      "bytes": 529038605,
+      "source_rows": 9468504,
+      "row_id_offset": 0,
+      "kept_rows": 5677515
+    },
+    {
+      "table": "labels",
+      "path": "en/part-0-of-2.parquet",
+      "revision": "51005b1a1495beae6371838584ad73eaf170ebc9",
+      "sha256": "a8f8c0099165f170a681958a2e2ee42a994128b985cd0a36e08be708395f65cc",
+      "bytes": 298597410,
+      "source_rows": 24701651,
+      "row_id_offset": 0,
+      "kept_rows": 24687724
+    },
+    {
+      "table": "labels",
+      "path": "en/part-1-of-2.parquet",
+      "revision": "51005b1a1495beae6371838584ad73eaf170ebc9",
+      "sha256": "b418a70d1d7b1120e1f6a9308c97a438cb093b49e1cd598053b3e056581c62be",
+      "bytes": 293137553,
+      "source_rows": 24701651,
+      "row_id_offset": 24701651,
+      "kept_rows": 24701651
+    },
+    {
+      "table": "labels",
+      "path": "mul/part-0-of-1.parquet",
+      "revision": "51005b1a1495beae6371838584ad73eaf170ebc9",
+      "sha256": "591e3de9490939979325d22222b26717d526c4a5204860bdaf92f82c8849e4e6",
+      "bytes": 203150922,
+      "source_rows": 19975251,
+      "row_id_offset": 49403302,
+      "kept_rows": 19974806
+    },
+    {
+      "table": "aliases",
+      "path": "en/part-0-of-1.parquet",
+      "revision": "6ac11164399601dc6cc24c39a65d03b90c4dccc7",
+      "sha256": "d38bc4cdca09ce44a9f9bf85880c46ccd6d9f8e2b2e9670953a8a0690b4be05b",
+      "bytes": 142385818,
+      "source_rows": 14768817,
+      "row_id_offset": 69378553,
+      "kept_rows": 14744010
+    },
+    {
+      "table": "aliases",
+      "path": "mul/part-0-of-1.parquet",
+      "revision": "6ac11164399601dc6cc24c39a65d03b90c4dccc7",
+      "sha256": "e5adb9a5f85e2f198887d4d7a48aea62655e37d909bbe7a43c440fe476dea32f",
+      "bytes": 9295759,
+      "source_rows": 882386,
+      "row_id_offset": 84147370,
+      "kept_rows": 881821
+    }
+  ]
+}
