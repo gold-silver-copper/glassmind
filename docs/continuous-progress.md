@@ -32,7 +32,8 @@ WORK/ceildivision, base609f42e. Frozen candidate90e463f72105bb3a28fc0b1c17315647
 at WORK/ceildivision-run/frozen-candidate/glassmind. Worker43tests/clippy/fmt/build
 passed; authored8exactrepairs and6negative/rollback cases; publicTRAIN5/27→6/27,
 all5previouspatchesunchanged. New shipping-boxes primitiveunsigned div_ceil repair.
-Reviewed archived source is now integrated in root without runtime revisions.
+Reviewed archived source committed locally as13673438624ce290c369b563a286534e3da326fd,
+without runtime revisions; notpushed. No openPR atlastcheck.
 Workspace session43069 COMPLETE tools/check.sh (-j1):fmt,alltargetclippy,release,
 strict4/4fixture smoke pass. Log WORK/coordinator/ceildivision-integrated/check.log.
 IntegratedmainSHA44ca28a3793eb43147382bd437791deffbf28d4725854866a9f220da6931a84d
@@ -79,6 +80,12 @@ PLAN prose count19 corrected only in audit.json; frozen expectedcasearrays uncha
 Parent rawcacheaudit COMPLETE:8examples/16exactedges, cachedresponse hashesverified,
 WORK/coordinator/factmatch-audit/{raw-edges.py,raw-edge-audit.json}. Qualifier/rank
 metadata retained; no current/globaltruth claim.
+Main baselines COMPLETE sessions42229/24773 underfactmatch-independent:
+main-baseline has standalone/facts-enabled/defaulttalk bytes forfirst200/full2821;
+legacy-baseline41/41memory(no intent),27/27calculations,47/47mixedstory pass.
+Bundle real-bundle has sourceindex/model verifiedmanifest, baseline-identity.json
+records main44ca28a... and copied baseline-continuous-predictions. Futuremain
+regression.py uses --baseline main-baseline; do not substitutebundleprovenance.
 Next: archive+hashverify terminaloriginals BEFORE inspection, adapt CLIshape only,
 run all30contracts then realcachewitness and unchangedlegacy2821/maintalk gates.
 
