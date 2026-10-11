@@ -32,6 +32,8 @@ def main():
         assert result.returncode==0,(row['id'],result.stdout,result.stderr)
         if mode in ('baseline','candidate'):assert accepted==row[mode],(row['id'],accepted,result.stdout)
         elif mode=='old-native':assert accepted==row['accept'],(row['id'],result.stdout)
+        if mode=='candidate' and row['id']=='new-ambiguity':
+            assert '2 passing candidates' in result.stdout,(row['id'],result.stdout)
         if not accepted:assert before==after,(row['id'],'unexpected modification')
         else:
             assert set(before)==set(after) and all(before[k]==after[k] for k in before if k!='src/lib.rs')
