@@ -1,0 +1,44 @@
+{
+  "source": {
+    "source_commit": "e03437a81f2d047babad5e122aec99a88b1c56af",
+    "binary_sha256": "b53e5f21899189d7e51d8a8ce87aeab561ea92e3196d949cb6ff20d37661e133",
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "baseline": "174pass588refused3fail/765",
+    "local_validation": "tools/coding-ambiguity/integrated/"
+  },
+  "total": 765,
+  "baseline": {
+    "refused": 588,
+    "pass": 174,
+    "fail": 3
+  },
+  "candidate": {
+    "refused": 591,
+    "pass": 174,
+    "fail": 0
+  },
+  "unchanged": 762,
+  "changes": [
+    {
+      "task": "fix-tests/leap-year",
+      "style": "chatty",
+      "before": "fail",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/leap-year",
+      "style": "hurried",
+      "before": "fail",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/leap-year",
+      "style": "terse",
+      "before": "fail",
+      "after": "refused"
+    }
+  ],
+  "baseline_results_sha256": "eaef77bfe21709e8eb61c2d6aea388536ab795cbc91e08c8b44952abd6e3a5f5",
+  "candidate_results_sha256": "284d386d16e15a187fd842f11a0514f5d34536dc80cd6de86ad7437737b32f6d",
+  "note": "All174priorpasses retained. Three failures become refusals after concrete native-confirmed disagreement between two original-test-passing repairs; no new correct solution or broad correctness claim. No heldout run."
+}

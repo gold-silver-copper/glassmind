@@ -1,0 +1,64 @@
+{
+  "source": {
+    "source_commit": "e03437a81f2d047babad5e122aec99a88b1c56af",
+    "binary_sha256": "b53e5f21899189d7e51d8a8ce87aeab561ea92e3196d949cb6ff20d37661e133",
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "baseline": "174pass588refused3fail/765",
+    "local_validation": "tools/coding-ambiguity/integrated/"
+  },
+  "tests": 25,
+  "workspace": "fmt/all-targetclippy/release/strict4of4smoke passed",
+  "sample": {
+    "refused": 2,
+    "verified": 2
+  },
+  "full27": {
+    "refused": 22,
+    "verified": 5
+  },
+  "independent_replay": "All27 verdicts and remaining5patches identical to worker; original108fixturehashes verified.",
+  "native_context_regressions": "actualu8 witness passes; included aliasu8=i8 rejects out-of-domain witness; unusedsource cannot count as executed evidence",
+  "full765": {
+    "refused": 591,
+    "pass": 174,
+    "fail": 0
+  },
+  "full765_report": "docs/results/coding-ambiguity.json",
+  "artifacts": [
+    {
+      "file": "sample.json",
+      "bytes": 1269,
+      "sha256": "3b4305422b6c992cd18568ebde54f1008b0dc0dcaac96ee878dc7b0eae1dcfc0"
+    },
+    {
+      "file": "full.json",
+      "bytes": 5782,
+      "sha256": "bb49a3add4dd8e3321ef8fab1f6ab7dc7c6cbceb85b33c828578492648736963"
+    },
+    {
+      "file": "native-witness.json",
+      "bytes": 1535,
+      "sha256": "7aa031dbe9c07389b06329e4f4b3b1185bc7fb69d8b0221823129cf306573361"
+    },
+    {
+      "file": "tests.log",
+      "bytes": 2538,
+      "sha256": "1b83cdde49d95d27acd8830fee583bfcff546a2b8916c719ad35595cd796b670"
+    },
+    {
+      "file": "workspace.log",
+      "bytes": 942,
+      "sha256": "fc5d0c00e633dca49eaadf7d3f74c521487152123388d82c8cbe6d6e0976753f"
+    },
+    {
+      "file": "replay.sh",
+      "bytes": 938,
+      "sha256": "b914e6e266474236a374baa0bf9e1c165bb97e93ce14ce35d1c5814999924237"
+    },
+    {
+      "file": "witness.json",
+      "bytes": 2736,
+      "sha256": "51969986c30d7821a6ec4a2a5c579b2a3123eea69d32a7f5f110acf4306045cc"
+    }
+  ]
+}

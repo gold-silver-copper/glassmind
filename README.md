@@ -88,7 +88,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 174/765 pass; 588 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 174/765 pass; 591 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -159,6 +159,13 @@ with every prior pass preserved. Unknown clauses, conflicts and negation refuse;
 one request with broader contextual prose remains unsupported.
 [Field-addition scope](docs/coding-addfields.md), [language and local checks](tools/coding-editlanguage/HANDOFF.md),
 and [full comparison](docs/results/coding-editlanguage.json).
+
+Test-based repair now withdraws a candidate when bounded search finds another
+test-passing repair with a different output on the same input, confirmed by
+native Rust in the original package. This changes three dev failures into
+refusals while preserving every pass. Unsupported cases retain the existing
+policy; passing tests or agreeing on sampled inputs is not a correctness proof.
+[Scope and independent verification](tools/coding-ambiguity/PARENT.md).
 
 `glassmind read --model tools/reading/qa/artifacts/model.json --context passage.txt
 "Who visited Zürich?"` proposes a source span and shows its passage. Output is

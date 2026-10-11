@@ -1,0 +1,299 @@
+{
+  "source_sha256": "8361d7d30053e8bffc95aec5a1ebaf0a0361b79987b5c358fdc0ea9a2cdb02e8",
+  "models": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/baseline/model.json",
+      "bytes": 32174720,
+      "sha256": "fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/tmp/spansequence/sequence.unselected.json",
+      "bytes": 652222,
+      "sha256": "70aadf00846b9434fcafdf958a3b83b2d1f62dfa1599562f14337b520cb9dafe"
+    }
+  ]
+}
+Running as unit: run-p2997313-i95301641.scope; invocation ID: cf5f3424444c49c590269130b1afec32
+{
+  "model_sha256": "fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88",
+  "all": {
+    "dialogues": 10,
+    "user_turns": 91,
+    "gold_frames": 108,
+    "predicted_frames": 273,
+    "tp": 86,
+    "fp": 5,
+    "fn": 22,
+    "route_exact": 69,
+    "strict_frame_correct": 48,
+    "intent_correct": 80,
+    "full_joint_correct": 35,
+    "fuzzy_joint_sum": 49.17,
+    "gold_switches": 33,
+    "correct_switches": 8,
+    "service": {
+      "Weather_1": {
+        "frames": 31,
+        "strict": 28,
+        "fuzzy_sum": 29.17
+      },
+      "Travel_1": {
+        "frames": 26,
+        "strict": 16,
+        "fuzzy_sum": 16.0
+      },
+      "RideSharing_1": {
+        "frames": 51,
+        "strict": 4,
+        "fuzzy_sum": 4.0
+      }
+    },
+    "active_precision": 0.945054945054945,
+    "active_recall": 0.7962962962962963,
+    "active_f1": 0.864321608040201
+  },
+  "single": {
+    "dialogues": 0,
+    "user_turns": 0,
+    "gold_frames": 0,
+    "predicted_frames": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "route_exact": 0,
+    "strict_frame_correct": 0,
+    "intent_correct": 0,
+    "full_joint_correct": 0,
+    "fuzzy_joint_sum": 0.0,
+    "gold_switches": 0,
+    "correct_switches": 0,
+    "service": {},
+    "active_precision": 0,
+    "active_recall": 0,
+    "active_f1": 0
+  },
+  "multi": {
+    "dialogues": 10,
+    "user_turns": 91,
+    "gold_frames": 108,
+    "predicted_frames": 273,
+    "tp": 86,
+    "fp": 5,
+    "fn": 22,
+    "route_exact": 69,
+    "strict_frame_correct": 48,
+    "intent_correct": 80,
+    "full_joint_correct": 35,
+    "fuzzy_joint_sum": 49.17,
+    "gold_switches": 33,
+    "correct_switches": 8,
+    "service": {
+      "Weather_1": {
+        "frames": 31,
+        "strict": 28,
+        "fuzzy_sum": 29.17
+      },
+      "Travel_1": {
+        "frames": 26,
+        "strict": 16,
+        "fuzzy_sum": 16.0
+      },
+      "RideSharing_1": {
+        "frames": 51,
+        "strict": 4,
+        "fuzzy_sum": 4.0
+      }
+    },
+    "active_precision": 0.945054945054945,
+    "active_recall": 0.7962962962962963,
+    "active_f1": 0.864321608040201
+  }
+}
+Running as unit: run-p2997364-i95301643.scope; invocation ID: 1ba7fe76a9e14b99a7c8120232f76312
+{
+  "model_sha256": "fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88",
+  "all": {
+    "dialogues": 179,
+    "user_turns": 1119,
+    "gold_frames": 1218,
+    "predicted_frames": 3357,
+    "tp": 1076,
+    "fp": 15,
+    "fn": 142,
+    "route_exact": 977,
+    "strict_frame_correct": 716,
+    "intent_correct": 1004,
+    "full_joint_correct": 610,
+    "fuzzy_joint_sum": 784.7595999999995,
+    "gold_switches": 184,
+    "correct_switches": 42,
+    "service": {
+      "Weather_1": {
+        "frames": 316,
+        "strict": 198,
+        "fuzzy_sum": 237.0196000000001
+      },
+      "Travel_1": {
+        "frames": 380,
+        "strict": 293,
+        "fuzzy_sum": 295.55999999999995
+      },
+      "RideSharing_1": {
+        "frames": 522,
+        "strict": 225,
+        "fuzzy_sum": 252.18000000000004
+      }
+    },
+    "active_precision": 0.9862511457378552,
+    "active_recall": 0.8834154351395731,
+    "active_f1": 0.9320051970550022
+  },
+  "single": {
+    "dialogues": 125,
+    "user_turns": 627,
+    "gold_frames": 627,
+    "predicted_frames": 1881,
+    "tp": 604,
+    "fp": 0,
+    "fn": 23,
+    "route_exact": 604,
+    "strict_frame_correct": 468,
+    "intent_correct": 601,
+    "full_joint_correct": 457,
+    "fuzzy_joint_sum": 516.8900000000003,
+    "gold_switches": 0,
+    "correct_switches": 0,
+    "service": {
+      "RideSharing_1": {
+        "frames": 257,
+        "strict": 202,
+        "fuzzy_sum": 229.17999999999998
+      },
+      "Weather_1": {
+        "frames": 148,
+        "strict": 68,
+        "fuzzy_sum": 89.71
+      },
+      "Travel_1": {
+        "frames": 222,
+        "strict": 198,
+        "fuzzy_sum": 198.0
+      }
+    },
+    "active_precision": 1.0,
+    "active_recall": 0.9633173843700159,
+    "active_f1": 0.9813160032493907
+  },
+  "multi": {
+    "dialogues": 54,
+    "user_turns": 492,
+    "gold_frames": 591,
+    "predicted_frames": 1476,
+    "tp": 472,
+    "fp": 15,
+    "fn": 119,
+    "route_exact": 373,
+    "strict_frame_correct": 248,
+    "intent_correct": 403,
+    "full_joint_correct": 153,
+    "fuzzy_joint_sum": 267.8696000000001,
+    "gold_switches": 184,
+    "correct_switches": 42,
+    "service": {
+      "Weather_1": {
+        "frames": 168,
+        "strict": 130,
+        "fuzzy_sum": 147.3096
+      },
+      "Travel_1": {
+        "frames": 158,
+        "strict": 95,
+        "fuzzy_sum": 97.55999999999997
+      },
+      "RideSharing_1": {
+        "frames": 265,
+        "strict": 23,
+        "fuzzy_sum": 23.0
+      }
+    },
+    "active_precision": 0.9691991786447639,
+    "active_recall": 0.7986463620981388,
+    "active_f1": 0.87569573283859
+  },
+  "isolation": {
+    "utterance_only": true,
+    "reversed_batch_identical": true,
+    "annotation_input_rejected": true,
+    "conversations": 179,
+    "gold_routing": false
+  }
+}
+Running as unit: run-p2997444-i95262286.scope; invocation ID: dc9551d5a5ac41e2b2b3f8f51942289d
+{
+  "joint_transitions": {
+    "right->right": 610,
+    "wrong->wrong": 459,
+    "refused->refused": 50
+  },
+  "frame_transitions": {
+    "True->True": 716,
+    "False->False": 502
+  },
+  "routing_transitions": {
+    "True->True": 977,
+    "False->False": 142
+  }
+}
+Running as unit: run-p2997486-i95246521.scope; invocation ID: 57da0d893b9c4db9a6aa5edbc15356cf
+{
+  "counts": {},
+  "proposal_status": {},
+  "routing_unchanged": true,
+  "intents_unchanged": true,
+  "offers_unchanged": true
+}
+Running as unit: run-p2997490-i95259771.scope; invocation ID: 7e99001427cf44fa96224c89daa26f3c
+{"carry":true,"dialogues":45,"frames":257,"intent_correct":256,"strict_joint_correct":202}
+Running as unit: run-p2997504-i95246522.scope; invocation ID: 96358bf4e0474927bd9bbb896fb97139
+{
+  "service": "RideSharing_1",
+  "scope": "complete single-service dev slice",
+  "dialogues": 45,
+  "frames": 257,
+  "active_intent_correct": 256,
+  "active_intent_accuracy": 0.9961089494163424,
+  "strict_joint_correct": 202,
+  "strict_joint_accuracy": 0.7859922178988327,
+  "metrics": {
+    "joint_goal_accuracy": {
+      "sum": 229.18,
+      "count": 257,
+      "mean": 0.8917509727626459
+    },
+    "joint_cat_accuracy": {
+      "sum": 243.0,
+      "count": 257,
+      "mean": 0.9455252918287937
+    },
+    "joint_noncat_accuracy": {
+      "sum": 239.34,
+      "count": 257,
+      "mean": 0.931284046692607
+    },
+    "average_goal_accuracy": {
+      "sum": 228.02166666666668,
+      "count": 238,
+      "mean": 0.9580742296918768
+    },
+    "average_cat_accuracy": {
+      "sum": 224.0,
+      "count": 230,
+      "mean": 0.9739130434782609
+    },
+    "average_noncat_accuracy": {
+      "sum": 194.34,
+      "count": 211,
+      "mean": 0.921042654028436
+    }
+  }
+}

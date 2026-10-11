@@ -46,3 +46,35 @@ The unchanged frozen predictor source is `4a05e4cbd53209a1666f8335e2b974ab19aa6d
 See [historical scope](continuous/HANDOFF.md), [TRAIN snapshot provenance](trainindex/HANDOFF.md)
 and [rejected filter](linkquality/HANDOFF.md). Raw data remains outside git;
 this audit downloads no data and changes no licenses.
+
+## Why linking alone cannot repair the rejected snapshot
+
+`coverage-audit.py` uses annotated IDs only to examine knowledge coverage; it
+does not generate predictions or select new entities. It validates full question
+order and row coverage before joining frozen outputs. Among2821 validation rows,
+only232 annotated entities exist in the999-entity snapshot. Of their232 relations,
+228 are inverse and four forward. Even with annotated entity/relation supplied,
+205 have a nonempty local answer set omitting the annotated answer,24 have no
+claim, and only three have a unique matching claim. None has a nonunique set
+containing the annotated answer.
+
+The linker already finds193 of those232 entities, and190 predicted relation
+labels match. Their outcomes are148 multiple-answer refusals,21 missing claims,
+10 uncertain relations and11 accepted answers. Thus the two joint matches are
+close to this snapshot's three unique matching claims; another alias filter
+cannot address the dominant knowledge gap.
+
+On19481 TRAIN rows,3031 entities are covered, including2293 inverse relations.
+Their claim sets have555 unique gold matches,466 missing claims,1853 nonempty
+sets omitting gold and157 nonunique sets containing gold. This supports examining
+TRAIN-only entity selection and inverse-edge coverage before another linking
+experiment. These oracle diagnostics are not model accuracy or global uniqueness.
+
+[TRAIN report](../../docs/results/facts-train999-coverage-train.json) and
+[validation report](../../docs/results/facts-train999-coverage-valid.json) include
+input/tool hashes. Reproduce with `coverage-audit.py --index INDEX --labels
+valid.tsv --questions valid.questions --predictions new999-valid-frozen.jsonl
+--output REPORT`; add `--paired` for the retained TRAIN baseline/candidate file.
+The index is `WORK/trainindex-run/tmp/trainindex/scope1000/index.json`; frozen
+questions/predictions are in `WORK/linkquality-run/artifacts`. No runtime, index,
+scorer, original acceptance criterion or historical metric changed.

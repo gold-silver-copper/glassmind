@@ -1,0 +1,197 @@
+{
+  "source_head": "eb22519f20325e72549a103cf99180ea0dbc2ba3",
+  "run": "/home/gsc/.cache/glassmind/continuous-20261010/repairambiguity2-run",
+  "source_sha256": {
+    "crates/world-rust/src/checks.rs": "88a8a2deac21679428364c772eb49ee80b753b20945718c6606491eb2f311a37",
+    "crates/world-rust/src/slips.rs": "7e6b274bd563be39e71398db14068473acc66fd81ee10b4afa3ab76bb74b4556",
+    "crates/world-rust/src/ambiguity.rs": "bb0e2d7aafcaf5bd04004c28003289760f5cec927ff3e9042bd9a12938108795"
+  },
+  "binary_sha256": {
+    "baseline": "bb5dae741d23b84d9ce07707ee536aeaf38089be34330724221ed50bb2f1bacb",
+    "candidate": "2f4476462328a59cc72ef03356275126eb41a5725c6da135024c1f02ceb27d30"
+  },
+  "reports": {
+    "baseline-sample": {
+      "totals": {
+        "refused": 2,
+        "verified": 2
+      },
+      "inputs_sha256": "e7e40240d859bdc23a6c66f81d4b33d19a420a329743a7a48892b1e6bef5d61b",
+      "report_sha256": "3b4305422b6c992cd18568ebde54f1008b0dc0dcaac96ee878dc7b0eae1dcfc0"
+    },
+    "baseline-full": {
+      "totals": {
+        "refused": 21,
+        "verified": 6
+      },
+      "inputs_sha256": "6eea206a106aa053c7e458e5975f7a4e2c4c2b19a7a066510ad454f2985e6164",
+      "report_sha256": "fdcb06faaf3d25b744ec543c7deb8031d84fa3aa20675bd17d2ec49aea4188ee"
+    },
+    "candidate-sample": {
+      "totals": {
+        "refused": 2,
+        "verified": 2
+      },
+      "inputs_sha256": "e7e40240d859bdc23a6c66f81d4b33d19a420a329743a7a48892b1e6bef5d61b",
+      "report_sha256": "3b4305422b6c992cd18568ebde54f1008b0dc0dcaac96ee878dc7b0eae1dcfc0"
+    },
+    "candidate-full": {
+      "totals": {
+        "refused": 22,
+        "verified": 5
+      },
+      "inputs_sha256": "6eea206a106aa053c7e458e5975f7a4e2c4c2b19a7a066510ad454f2985e6164",
+      "report_sha256": "bb49a3add4dd8e3321ef8fab1f6ab7dc7c6cbceb85b33c828578492648736963"
+    }
+  },
+  "changes": [
+    {
+      "before": {
+        "source": "rb-fix-tests-leap-year",
+        "turn_id": "train/rb-fix-tests-leap-year/chatty#0",
+        "verdict": "verified",
+        "changes": [
+          {
+            "source": "rb-fix-tests-leap-year",
+            "file": "src/lib.rs",
+            "line": 5,
+            "column": 52,
+            "old": "==",
+            "new": "!="
+          }
+        ]
+      },
+      "after": {
+        "source": "rb-fix-tests-leap-year",
+        "turn_id": "train/rb-fix-tests-leap-year/chatty#0",
+        "verdict": "refused",
+        "changes": []
+      }
+    }
+  ],
+  "independent_native_train": {
+    "witness": {
+      "argument": "year : u32",
+      "first_output": "false",
+      "function": "is_leap",
+      "input": "0",
+      "method": "bounded checked scalar AST evaluation; disagreement only",
+      "second_output": "true"
+    },
+    "runs": [
+      {
+        "label": "first",
+        "returncode": 0,
+        "command": [
+          "systemd-run",
+          "--user",
+          "--scope",
+          "-pMemoryMax=8G",
+          "-pMemorySwapMax=0",
+          "setsid",
+          "--wait",
+          "timeout",
+          "--kill-after=10s",
+          "600",
+          "cargo",
+          "test",
+          "-j1",
+          "--",
+          "--test-threads",
+          "4"
+        ]
+      },
+      {
+        "label": "second",
+        "returncode": 0,
+        "command": [
+          "systemd-run",
+          "--user",
+          "--scope",
+          "-pMemoryMax=8G",
+          "-pMemorySwapMax=0",
+          "setsid",
+          "--wait",
+          "timeout",
+          "--kill-after=10s",
+          "600",
+          "cargo",
+          "test",
+          "-j1",
+          "--",
+          "--test-threads",
+          "4"
+        ]
+      },
+      {
+        "label": "native",
+        "returncode": 0,
+        "command": [
+          "systemd-run",
+          "--user",
+          "--scope",
+          "-pMemoryMax=8G",
+          "-pMemorySwapMax=0",
+          "setsid",
+          "--wait",
+          "timeout",
+          "--kill-after=10s",
+          "600",
+          "cargo",
+          "test",
+          "-j1",
+          "--",
+          "--test-threads",
+          "4"
+        ]
+      }
+    ],
+    "witness_sha256": "79b039867400baa73d507eb6ad5dc596badc972a5c7ad493ce6f2294e869b964"
+  },
+  "independent_native_fixture": {
+    "witness": {
+      "argument": "x : u8",
+      "first_output": "false",
+      "function": "select",
+      "input": "4",
+      "method": "bounded checked scalar AST evaluation; disagreement only",
+      "second_output": "true"
+    },
+    "runs": [
+      {
+        "label": "native",
+        "returncode": 0,
+        "command": [
+          "systemd-run",
+          "--user",
+          "--scope",
+          "-pMemoryMax=8G",
+          "-pMemorySwapMax=0",
+          "setsid",
+          "--wait",
+          "timeout",
+          "--kill-after=10s",
+          "600",
+          "cargo",
+          "test",
+          "-j1",
+          "--",
+          "--test-threads",
+          "4"
+        ]
+      }
+    ],
+    "witness_sha256": "22f8521df2ee501a46b259cf736eb53ecd35a714fed63401c4815f8e2f651463"
+  },
+  "source_files": 108,
+  "source_bytes": 29232,
+  "source_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+  "source_license": "MIT OR Apache-2.0 per existing coding-repair provenance; original request data has no separately declared license",
+  "new_external_data_bytes": 0,
+  "train_metadata_bytes": {
+    "inputs.jsonl": 9016,
+    "labels.jsonl": 2669
+  },
+  "tests": "24 passed; includes native differential scalar properties and two fresh-cargo repair fixtures, plus deadline cancellation",
+  "parent_full765": "not run; coordinator gate pending"
+}

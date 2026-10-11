@@ -1,0 +1,1229 @@
+{
+  "decision": "rejected CAL before candidate DEV",
+  "raw_proposals": [
+    535,
+    512
+  ],
+  "highest_threshold_proposals": [
+    470,
+    458
+  ],
+  "gold_spans": 552,
+  "high_threshold_gold_recall": 0.8297101449275363,
+  "high_threshold_errors": {
+    "boundary mismatch": 4,
+    "unannotated slot proposal": 8
+  },
+  "all_raw_errors": [
+    {
+      "service": "RideSharing_1",
+      "utterance": "i also need a cab to go to 140 new montgomery street #1",
+      "system": "they do not serve alcohol. Your booking is confirmed",
+      "proposal": {
+        "char_end": 30,
+        "char_start": 27,
+        "end": 30,
+        "margin": 17.1026817219481,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 27,
+        "value": "140"
+      },
+      "gold": [
+        {
+          "exclusive_end": 55,
+          "slot": "destination",
+          "start": 27,
+          "value": "140 new montgomery street #1"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "116_00032",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "140 new montgomery street #1"
+          ],
+          "number_of_riders": [
+            "3"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "RideSharing_1",
+      "utterance": "Thank you. I want to find some house songs. I like Martin Garrix.",
+      "system": "Your ride has been book and its on the way.",
+      "proposal": {
+        "char_end": 64,
+        "char_start": 51,
+        "end": 64,
+        "margin": 12.012438249823617,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 51,
+        "value": "Martin Garrix"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "126_00118",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "Scroll Bar Waterside Kitchen"
+          ],
+          "number_of_riders": [
+            "1"
+          ],
+          "shared_ride": [
+            "True"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "RideSharing_1",
+      "utterance": "I need your help to book a Cab to go to Mandarin Gourmet Restaurant. Even a Cab with shared ride is also okay for me.",
+      "system": "",
+      "proposal": {
+        "char_end": 73,
+        "char_start": 40,
+        "end": 73,
+        "margin": 41.78594742413679,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 40,
+        "value": "Mandarin Gourmet Restaurant. Even"
+      },
+      "gold": [
+        {
+          "exclusive_end": 67,
+          "slot": "destination",
+          "start": 40,
+          "value": "Mandarin Gourmet Restaurant"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "126_00121",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "Mandarin Gourmet Restaurant"
+          ],
+          "shared_ride": [
+            "True"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "RideSharing_1",
+      "utterance": "Just one person, and I'm going to Risibisi. Shared is fine.",
+      "system": "Sure, where are you going and how many people are you with? Do you need a shared ride?",
+      "proposal": {
+        "char_end": 50,
+        "char_start": 34,
+        "end": 50,
+        "margin": 49.931236767819314,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 34,
+        "value": "Risibisi. Shared"
+      },
+      "gold": [
+        {
+          "exclusive_end": 42,
+          "slot": "destination",
+          "start": 34,
+          "value": "Risibisi"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "127_00024",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "Risibisi"
+          ],
+          "number_of_riders": [
+            "1"
+          ],
+          "shared_ride": [
+            "True"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "RideSharing_1",
+      "utterance": "I need it to accommodate two people, and I don't care if it's a shared ride. The place i'm going is at 800 Pollard Road bldg a.",
+      "system": "How many people will you need the cab to accommodate? Also, I need to know the location where you need to go, and whether or not you would be okay with a shared ride.",
+      "proposal": {
+        "char_end": 119,
+        "char_start": 103,
+        "end": 119,
+        "margin": 46.93035462244097,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 103,
+        "value": "800 Pollard Road"
+      },
+      "gold": [
+        {
+          "exclusive_end": 126,
+          "slot": "destination",
+          "start": 103,
+          "value": "800 Pollard Road bldg a"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "22_00109",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "800 Pollard Road bldg a"
+          ],
+          "number_of_riders": [
+            "2"
+          ],
+          "shared_ride": [
+            "True"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "RideSharing_1",
+      "utterance": "I have to get to BAM Howard Gilman Opera House, can you get a cab for me?",
+      "system": "",
+      "proposal": {
+        "char_end": 40,
+        "char_start": 17,
+        "end": 40,
+        "margin": 17.544504234297847,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 17,
+        "value": "BAM Howard Gilman Opera"
+      },
+      "gold": [
+        {
+          "exclusive_end": 46,
+          "slot": "destination",
+          "start": 17,
+          "value": "BAM Howard Gilman Opera House"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "23_00008",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "BAM Howard Gilman Opera House"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Fine, give me a room in that hotel on 11th of March. Just one.",
+      "system": "It'll be nice then too. 71 degree high. 27 % chance of rain.",
+      "proposal": {
+        "char_end": 45,
+        "char_start": 38,
+        "end": 45,
+        "margin": 6.7101220063261735,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 38,
+        "value": "11th of"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00076",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "London"
+          ],
+          "date": [
+            "March 7th"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Okay. Now book a room in that hotel on March 6th",
+      "system": "The average temperature is 86 degrees Fahrenheit for the day and a 5 percent chance of rain",
+      "proposal": {
+        "char_end": 48,
+        "char_start": 39,
+        "end": 48,
+        "margin": 138.62183687302308,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 39,
+        "value": "March 6th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00077",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "LA"
+          ],
+          "date": [
+            "March 7th"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Please check the weather on Friday next week in that place.",
+      "system": "How can I help you further?",
+      "proposal": {
+        "char_end": 39,
+        "char_start": 28,
+        "end": 39,
+        "margin": 9.342916854948271,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 28,
+        "value": "Friday next"
+      },
+      "gold": [
+        {
+          "exclusive_end": 44,
+          "slot": "date",
+          "start": 28,
+          "value": "Friday next week"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "46_00098",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Vancouver"
+          ],
+          "date": [
+            "Friday next week"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Okay. Now I would like to reserve a hotel room checking-in on March 7th.",
+      "system": "The temperature averages 71 degrees farenheit and there is a 27 percent chance of rain.",
+      "proposal": {
+        "char_end": 71,
+        "char_start": 62,
+        "end": 71,
+        "margin": 186.88584500677803,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 62,
+        "value": "March 7th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00103",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "London, England"
+          ],
+          "date": [
+            "March 7th"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "I want to check in the hotel on the 4th of March and out on March 10th 2019.",
+      "system": "The humidity is 35 %.",
+      "proposal": {
+        "char_end": 42,
+        "char_start": 36,
+        "end": 42,
+        "margin": 3.4815295978310132,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 36,
+        "value": "4th of"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00113",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Phoenix, AZ"
+          ],
+          "date": [
+            "March 10th",
+            "March 10th 2019"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "I want to check in the hotel on the 4th of March and out on March 10th 2019.",
+      "system": "The humidity is 35 %.",
+      "proposal": {
+        "char_end": 70,
+        "char_start": 60,
+        "end": 70,
+        "margin": 58.95718481699032,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 60,
+        "value": "March 10th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00113",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Phoenix, AZ"
+          ],
+          "date": [
+            "March 10th",
+            "March 10th 2019"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Sorry, I don't know the zip code but please can you search for the city Paris, France. Is it windy?",
+      "system": "Can I have the zip code for the city you are searching for?",
+      "proposal": {
+        "char_end": 77,
+        "char_start": 67,
+        "end": 77,
+        "margin": 5.0803208314505355,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 67,
+        "value": "city Paris"
+      },
+      "gold": [
+        {
+          "exclusive_end": 77,
+          "slot": "city",
+          "start": 72,
+          "value": "Paris"
+        }
+      ],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "47_00022",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Paris"
+          ],
+          "date": [
+            "5th of this month"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Thanks for the information. Please can you help me to find a room in a good hotel in Paris.",
+      "system": "Yup, it's slightly humidity to around 55 percent.",
+      "proposal": {
+        "char_end": 90,
+        "char_start": 85,
+        "end": 90,
+        "margin": 30.39013782196116,
+        "service": "Weather_1",
+        "slot": "city",
+        "start": 85,
+        "value": "Paris"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "47_00022",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Paris"
+          ],
+          "date": [
+            "5th of this month"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "San fran.",
+      "system": "What city should i check?",
+      "proposal": {
+        "char_end": 3,
+        "char_start": 0,
+        "end": 3,
+        "margin": 3.755196565747852,
+        "service": "Weather_1",
+        "slot": "city",
+        "start": 0,
+        "value": "San"
+      },
+      "gold": [
+        {
+          "exclusive_end": 8,
+          "slot": "city",
+          "start": 0,
+          "value": "San fran"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "47_00123",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "San fran"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Cool. Can you look up round trip flight to Delhi, India for the 1st of this month?",
+      "system": "The humidity level is expected to reach 15 percent.",
+      "proposal": {
+        "char_end": 81,
+        "char_start": 64,
+        "end": 81,
+        "margin": 76.45989606868557,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 64,
+        "value": "1st of this month"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "48_00092",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Delhi, India"
+          ],
+          "date": [
+            "tomorrow"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Thanks. Can you check American Airlines for a round trip flight to New Delhi? I'd like to return on the 14th of this month.",
+      "system": "There is a 0 percent chance of rain with a high temperature of 100 degrees!",
+      "proposal": {
+        "char_end": 122,
+        "char_start": 104,
+        "end": 122,
+        "margin": 61.81800723000424,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 104,
+        "value": "14th of this month"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "48_00110",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "New Delhi"
+          ],
+          "date": [
+            "March 13th"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Thanks. Can you find me a round trip flight to Phoenix, AZ ? I need to be back home on March 9th.",
+      "system": "Humidity is at 31 percent.",
+      "proposal": {
+        "char_end": 96,
+        "char_start": 87,
+        "end": 96,
+        "margin": 190.8344441934023,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 87,
+        "value": "March 9th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "49_00007",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Phoenix, AZ"
+          ],
+          "date": [
+            "March 9th"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Okay thanks. I'd like to travel there and need to find a round trip flight. I'll be travelling from SF on March 6th 2019.",
+      "system": "The average daytime temperature should be around 62 degrees and there is a 45 percent chance of rain.",
+      "proposal": {
+        "char_end": 115,
+        "char_start": 106,
+        "end": 115,
+        "margin": 6.248700858562643,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 106,
+        "value": "March 6th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "49_00111",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Toronto, Ontario"
+          ],
+          "date": [
+            "March 6th",
+            "March 6th 2019"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Travel_1",
+      "utterance": "That works for me. Get me three bus tickets to San Francisco.",
+      "system": "Yes, there is an entry fee.",
+      "proposal": {
+        "char_end": 60,
+        "char_start": 47,
+        "end": 60,
+        "margin": 54.46230806142057,
+        "service": "Travel_1",
+        "slot": "location",
+        "start": 47,
+        "value": "San Francisco"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "70_00003",
+      "state": {
+        "active_intent": "FindAttractions",
+        "requested_slots": [],
+        "slot_values": {
+          "good_for_kids": [
+            "True"
+          ],
+          "location": [
+            "San Fran"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Travel_1",
+      "utterance": "Thanks for your help. Can you find me some child friendly attractions in Seattle?",
+      "system": "I have confirmed your tickets.",
+      "proposal": {
+        "char_end": 80,
+        "char_start": 73,
+        "end": 80,
+        "margin": 39.249664107485614,
+        "service": "Travel_1",
+        "slot": "location",
+        "start": 73,
+        "value": "Seattle"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "89_00042",
+      "state": {
+        "active_intent": "FindAttractions",
+        "requested_slots": [],
+        "slot_values": {
+          "good_for_kids": [
+            "True"
+          ],
+          "location": [
+            "Seattle",
+            "Seattle, WA"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Travel_1",
+      "utterance": "Thank you for the assistance. Can you find me a wildlife spot in Fresno?",
+      "system": "Your tickets have been booked successfully.",
+      "proposal": {
+        "char_end": 71,
+        "char_start": 65,
+        "end": 71,
+        "margin": 14.789299424184492,
+        "service": "Travel_1",
+        "slot": "location",
+        "start": 65,
+        "value": "Fresno"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "89_00062",
+      "state": {
+        "active_intent": "FindAttractions",
+        "requested_slots": [],
+        "slot_values": {
+          "category": [
+            "Nature Preserve"
+          ],
+          "location": [
+            "Fresno"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "What will the weather in Ciudad de Mexico be on the the 7th.",
+      "system": "",
+      "proposal": {
+        "char_end": 31,
+        "char_start": 25,
+        "end": 31,
+        "margin": 46.1327948486221,
+        "service": "Weather_1",
+        "slot": "city",
+        "start": 25,
+        "value": "Ciudad"
+      },
+      "gold": [
+        {
+          "exclusive_end": 41,
+          "slot": "city",
+          "start": 25,
+          "value": "Ciudad de Mexico"
+        },
+        {
+          "exclusive_end": 59,
+          "slot": "date",
+          "start": 52,
+          "value": "the 7th"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "91_00022",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Ciudad de Mexico"
+          ],
+          "date": [
+            "the 7th"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    }
+  ],
+  "highest_threshold_errors": [
+    {
+      "service": "RideSharing_1",
+      "utterance": "I need your help to book a Cab to go to Mandarin Gourmet Restaurant. Even a Cab with shared ride is also okay for me.",
+      "system": "",
+      "proposal": {
+        "char_end": 73,
+        "char_start": 40,
+        "end": 73,
+        "margin": 41.78594742413679,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 40,
+        "value": "Mandarin Gourmet Restaurant. Even"
+      },
+      "gold": [
+        {
+          "exclusive_end": 67,
+          "slot": "destination",
+          "start": 40,
+          "value": "Mandarin Gourmet Restaurant"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "126_00121",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "Mandarin Gourmet Restaurant"
+          ],
+          "shared_ride": [
+            "True"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "RideSharing_1",
+      "utterance": "Just one person, and I'm going to Risibisi. Shared is fine.",
+      "system": "Sure, where are you going and how many people are you with? Do you need a shared ride?",
+      "proposal": {
+        "char_end": 50,
+        "char_start": 34,
+        "end": 50,
+        "margin": 49.931236767819314,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 34,
+        "value": "Risibisi. Shared"
+      },
+      "gold": [
+        {
+          "exclusive_end": 42,
+          "slot": "destination",
+          "start": 34,
+          "value": "Risibisi"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "127_00024",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "Risibisi"
+          ],
+          "number_of_riders": [
+            "1"
+          ],
+          "shared_ride": [
+            "True"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "RideSharing_1",
+      "utterance": "I need it to accommodate two people, and I don't care if it's a shared ride. The place i'm going is at 800 Pollard Road bldg a.",
+      "system": "How many people will you need the cab to accommodate? Also, I need to know the location where you need to go, and whether or not you would be okay with a shared ride.",
+      "proposal": {
+        "char_end": 119,
+        "char_start": 103,
+        "end": 119,
+        "margin": 46.93035462244097,
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "start": 103,
+        "value": "800 Pollard Road"
+      },
+      "gold": [
+        {
+          "exclusive_end": 126,
+          "slot": "destination",
+          "start": 103,
+          "value": "800 Pollard Road bldg a"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "22_00109",
+      "state": {
+        "active_intent": "GetRide",
+        "requested_slots": [],
+        "slot_values": {
+          "destination": [
+            "800 Pollard Road bldg a"
+          ],
+          "number_of_riders": [
+            "2"
+          ],
+          "shared_ride": [
+            "True"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Okay. Now book a room in that hotel on March 6th",
+      "system": "The average temperature is 86 degrees Fahrenheit for the day and a 5 percent chance of rain",
+      "proposal": {
+        "char_end": 48,
+        "char_start": 39,
+        "end": 48,
+        "margin": 138.62183687302308,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 39,
+        "value": "March 6th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00077",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "LA"
+          ],
+          "date": [
+            "March 7th"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Okay. Now I would like to reserve a hotel room checking-in on March 7th.",
+      "system": "The temperature averages 71 degrees farenheit and there is a 27 percent chance of rain.",
+      "proposal": {
+        "char_end": 71,
+        "char_start": 62,
+        "end": 71,
+        "margin": 186.88584500677803,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 62,
+        "value": "March 7th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00103",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "London, England"
+          ],
+          "date": [
+            "March 7th"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "I want to check in the hotel on the 4th of March and out on March 10th 2019.",
+      "system": "The humidity is 35 %.",
+      "proposal": {
+        "char_end": 70,
+        "char_start": 60,
+        "end": 70,
+        "margin": 58.95718481699032,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 60,
+        "value": "March 10th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "46_00113",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Phoenix, AZ"
+          ],
+          "date": [
+            "March 10th",
+            "March 10th 2019"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Cool. Can you look up round trip flight to Delhi, India for the 1st of this month?",
+      "system": "The humidity level is expected to reach 15 percent.",
+      "proposal": {
+        "char_end": 81,
+        "char_start": 64,
+        "end": 81,
+        "margin": 76.45989606868557,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 64,
+        "value": "1st of this month"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "48_00092",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Delhi, India"
+          ],
+          "date": [
+            "tomorrow"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Thanks. Can you check American Airlines for a round trip flight to New Delhi? I'd like to return on the 14th of this month.",
+      "system": "There is a 0 percent chance of rain with a high temperature of 100 degrees!",
+      "proposal": {
+        "char_end": 122,
+        "char_start": 104,
+        "end": 122,
+        "margin": 61.81800723000424,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 104,
+        "value": "14th of this month"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "48_00110",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "New Delhi"
+          ],
+          "date": [
+            "March 13th"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "Thanks. Can you find me a round trip flight to Phoenix, AZ ? I need to be back home on March 9th.",
+      "system": "Humidity is at 31 percent.",
+      "proposal": {
+        "char_end": 96,
+        "char_start": 87,
+        "end": 96,
+        "margin": 190.8344441934023,
+        "service": "Weather_1",
+        "slot": "date",
+        "start": 87,
+        "value": "March 9th"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "49_00007",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Phoenix, AZ"
+          ],
+          "date": [
+            "March 9th"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Travel_1",
+      "utterance": "That works for me. Get me three bus tickets to San Francisco.",
+      "system": "Yes, there is an entry fee.",
+      "proposal": {
+        "char_end": 60,
+        "char_start": 47,
+        "end": 60,
+        "margin": 54.46230806142057,
+        "service": "Travel_1",
+        "slot": "location",
+        "start": 47,
+        "value": "San Francisco"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "70_00003",
+      "state": {
+        "active_intent": "FindAttractions",
+        "requested_slots": [],
+        "slot_values": {
+          "good_for_kids": [
+            "True"
+          ],
+          "location": [
+            "San Fran"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    },
+    {
+      "service": "Travel_1",
+      "utterance": "Thanks for your help. Can you find me some child friendly attractions in Seattle?",
+      "system": "I have confirmed your tickets.",
+      "proposal": {
+        "char_end": 80,
+        "char_start": 73,
+        "end": 80,
+        "margin": 39.249664107485614,
+        "service": "Travel_1",
+        "slot": "location",
+        "start": 73,
+        "value": "Seattle"
+      },
+      "gold": [],
+      "reason": "unannotated slot proposal",
+      "dialogue_id": "89_00042",
+      "state": {
+        "active_intent": "FindAttractions",
+        "requested_slots": [],
+        "slot_values": {
+          "good_for_kids": [
+            "True"
+          ],
+          "location": [
+            "Seattle",
+            "Seattle, WA"
+          ]
+        }
+      },
+      "matches_current_gold_value": true
+    },
+    {
+      "service": "Weather_1",
+      "utterance": "What will the weather in Ciudad de Mexico be on the the 7th.",
+      "system": "",
+      "proposal": {
+        "char_end": 31,
+        "char_start": 25,
+        "end": 31,
+        "margin": 46.1327948486221,
+        "service": "Weather_1",
+        "slot": "city",
+        "start": 25,
+        "value": "Ciudad"
+      },
+      "gold": [
+        {
+          "exclusive_end": 41,
+          "slot": "city",
+          "start": 25,
+          "value": "Ciudad de Mexico"
+        },
+        {
+          "exclusive_end": 59,
+          "slot": "date",
+          "start": 52,
+          "value": "the 7th"
+        }
+      ],
+      "reason": "boundary mismatch",
+      "dialogue_id": "91_00022",
+      "state": {
+        "active_intent": "GetWeather",
+        "requested_slots": [],
+        "slot_values": {
+          "city": [
+            "Ciudad de Mexico"
+          ],
+          "date": [
+            "the 7th"
+          ]
+        }
+      },
+      "matches_current_gold_value": false
+    }
+  ],
+  "schedule_rerun_to_preserve_failed_weights": true,
+  "highest_errors_state_match": {
+    "differs": 8,
+    "matches": 4
+  }
+}
