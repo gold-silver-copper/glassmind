@@ -1,0 +1,128 @@
+[
+  {
+    "name": "sum_all",
+    "source": "pub fn fold_values(data: &[i64]) -> i64 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(fold_values(&[-8,-3,0,2,7]),-2); assert_eq!(fold_values(&[]),0); } }\n",
+    "target": "fold_values",
+    "kind": "implement",
+    "request": "implement `fold_values`"
+  },
+  {
+    "name": "sum_negative",
+    "source": "pub fn fold_values(data: &[i64]) -> i64 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(fold_values(&[-8,-3,0,2,7]),-11); assert_eq!(fold_values(&[4,9]),0); } }\n",
+    "target": "fold_values",
+    "kind": "implement",
+    "request": "implement `fold_values`"
+  },
+  {
+    "name": "reverse_odd",
+    "source": "pub fn select_values(data: &[i32]) -> Vec<i32> { unimplemented!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(select_values(&[-5,-2,0,3,8,9]),vec![9,3,-5]); assert_eq!(select_values(&[]),vec![]); } }\n",
+    "target": "select_values",
+    "kind": "implement",
+    "request": "implement `select_values`"
+  },
+  {
+    "name": "unicode_reverse",
+    "source": "pub fn 並べる(data: &str) -> String { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(並べる(\"ø 中 x\"),\"x 中 ø\"); assert_eq!(並べる(\"a\tb\"),\"b\ta\"); assert_eq!(並べる(\"\"),\"\"); } }\n",
+    "target": "並べる",
+    "kind": "implement",
+    "request": "implement `並べる`"
+  },
+  {
+    "name": "words_forward",
+    "source": "pub fn pieces(data: &str) -> Vec<String> { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(pieces(\" oak\t birch\n松 \"),vec![\"oak\",\"birch\",\"松\"]); assert!(pieces(\" \t\").is_empty()); } }\n",
+    "target": "pieces",
+    "kind": "implement",
+    "request": "implement `pieces`"
+  },
+  {
+    "name": "count_chars",
+    "source": "pub fn measure(data: &str) -> usize { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(measure(\"é 中\"),3); assert_eq!(measure(\"abc def\"),7); assert_eq!(measure(\"\"),0); } }\n",
+    "target": "measure",
+    "kind": "implement",
+    "request": "implement `measure`"
+  },
+  {
+    "name": "competing",
+    "source": "pub fn fold_values(data: &[i64]) -> i64 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(fold_values(&[2]),2); } }\n",
+    "target": "fold_values",
+    "kind": "ambiguous",
+    "request": "implement `fold_values`"
+  },
+  {
+    "name": "alias",
+    "source": "type i32 = u32; pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  },
+  {
+    "name": "partial",
+    "source": "pub fn target(data: &[i32]) -> i32 { let _keep = 1; todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  },
+  {
+    "name": "existing",
+    "source": "pub fn target(data: &[i32]) -> i32 { 0 }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  },
+  {
+    "name": "macro_shadow",
+    "source": "macro_rules! todo { () => {0} } pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  },
+  {
+    "name": "negative",
+    "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "please do not implement `target`"
+  },
+  {
+    "name": "compound",
+    "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target` and rename it to `new_name`"
+  },
+  {
+    "name": "behavior",
+    "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target` with wrapping arithmetic"
+  },
+  {
+    "name": "unexecuted",
+    "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(2+3,5); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  },
+  {
+    "name": "no_tests",
+    "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  },
+  {
+    "name": "compiler_failure",
+    "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { missing_function(); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  },
+  {
+    "name": "conflicting",
+    "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); assert_eq!(target(&[2,3]),6); } }\n",
+    "target": "target",
+    "kind": "unchanged",
+    "request": "implement `target`"
+  }
+]

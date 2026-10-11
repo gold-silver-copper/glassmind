@@ -1,0 +1,29 @@
+Running as unit: run-p74047-i100714318.scope; invocation ID: f7c29d94a0be48a28b0fa1dc5a502286
+error[E0308]: mismatched types
+  --> tools/coding-implementation-grammar/parser_audit.rs:10:89
+   |
+10 | ...us::request(&text)), disposition(glassmind_english_rust::implementation_grammar::request(&text)));
+   |                         ----------- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `Implement`, found a different `Implement`
+   |                         |
+   |                         arguments to this function are incorrect
+   |
+note: there are multiple different versions of crate `glassmind_world_rust` in the dependency graph
+  --> crates/world-rust/src/implementation.rs:14:1
+   |
+14 | pub struct Implement {
+   | -------------------- this is the found type
+   |
+  ::: crates/world-rust/src/implementation.rs:14:1
+   |
+14 | pub struct Implement {
+   | ^^^^^^^^^^^^^^^^^^^^ this is the expected type
+   = help: you can use `cargo tree` to explore your dependency tree
+note: function defined here
+  --> tools/coding-implementation-grammar/parser_audit.rs:4:4
+   |
+ 4 | fn disposition(value: Option<Result<glassmind_world_rust::implementation::Implement, String>>) -> String {
+   |    ^^^^^^^^^^^ ------------------------------------------------------------------------------
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0308`.

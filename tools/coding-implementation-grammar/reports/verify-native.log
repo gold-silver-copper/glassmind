@@ -1,0 +1,81 @@
+Running as unit: run-p5225-i100609558.scope; invocation ID: 227b3849333447c49dff554ae0a32cc1
+[
+  {
+    "id": "sum",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-native/scratch/implement-4161218-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        4
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-native/scratch/implement-4162232-0.evidence",
+    "choice": {
+      "candidate_count": 12,
+      "passing_indices": [
+        11
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "words",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-native/scratch/implement-4164784-0.evidence",
+    "choice": {
+      "candidate_count": 2,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "positive_sum",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-native/scratch/implement-4165644-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        3
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "even",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-native/scratch/implement-4166573-0.evidence",
+    "choice": {
+      "candidate_count": 12,
+      "passing_indices": [
+        5
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "characters",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-native/scratch/implement-4168945-0.evidence",
+    "choice": {
+      "candidate_count": 4,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  }
+]

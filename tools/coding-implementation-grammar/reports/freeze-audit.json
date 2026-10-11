@@ -1,0 +1,32 @@
+[
+  {
+    "text": "collect_values needs a body, implement it",
+    "allowed_by_frozen_accepted_grammar": false,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "c87c5007ecdbdd2fdc00e680476129177e25e7a6bf7dda283842c5445916fdc1"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/freeze-audit/scratch/implement-104613-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "text": "collect_values needs implementing, implement it",
+    "allowed_by_frozen_accepted_grammar": false,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "c87c5007ecdbdd2fdc00e680476129177e25e7a6bf7dda283842c5445916fdc1"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/freeze-audit/scratch/implement-105316-0.evidence\n",
+    "exit": 0
+  }
+]

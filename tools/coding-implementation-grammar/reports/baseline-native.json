@@ -1,0 +1,104 @@
+[
+  {
+    "id": "sum",
+    "text": "implement collect_values",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44"
+    },
+    "stdout": "\nrunning 1 test\ntest tests::contract ... FAILED\n\nfailures:\n\n---- tests::contract stdout ----\n\nthread 'tests::contract' (4134252) panicked at src/lib.rs:1:55:\nnot yet implemented\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    tests::contract\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "exit": 101
+  },
+  {
+    "id": "reverse",
+    "text": "implement transform_values",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "abb944b5cabb633eff2af01b0a45fcbfc73b763fa5bab237b3a0167266c9c91b"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "abb944b5cabb633eff2af01b0a45fcbfc73b763fa5bab237b3a0167266c9c91b"
+    },
+    "stdout": "\nrunning 1 test\ntest tests::contract ... FAILED\n\nfailures:\n\n---- tests::contract stdout ----\n\nthread 'tests::contract' (4134358) panicked at src/lib.rs:1:51:\nnot implemented\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    tests::contract\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "exit": 101
+  },
+  {
+    "id": "words",
+    "text": "implement 単語",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "3832eff06e727d2649828ab225b9f9567507dc67b7b14abc3b7917b07a6965c7"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "3832eff06e727d2649828ab225b9f9567507dc67b7b14abc3b7917b07a6965c7"
+    },
+    "stdout": "\nrunning 1 test\ntest tests::contract ... FAILED\n\nfailures:\n\n---- tests::contract stdout ----\n\nthread 'tests::contract' (4134442) panicked at src/lib.rs:1:39:\nnot yet implemented\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    tests::contract\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "exit": 101
+  },
+  {
+    "id": "positive_sum",
+    "text": "implement collect_values",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "5864a9c076be90c3a77a376fd6234f3107828782bbc010c75ddd6c2ee4939913"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "5864a9c076be90c3a77a376fd6234f3107828782bbc010c75ddd6c2ee4939913"
+    },
+    "stdout": "\nrunning 1 test\ntest tests::contract ... FAILED\n\nfailures:\n\n---- tests::contract stdout ----\n\nthread 'tests::contract' (4134518) panicked at src/lib.rs:1:44:\nnot yet implemented\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    tests::contract\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "exit": 101
+  },
+  {
+    "id": "even",
+    "text": "implement transform_values",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "38e27e412c27b8c2555d4d414df0b88e9696f8416d251f524a3d4a193373cd0d"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "38e27e412c27b8c2555d4d414df0b88e9696f8416d251f524a3d4a193373cd0d"
+    },
+    "stdout": "\nrunning 1 test\ntest tests::contract ... FAILED\n\nfailures:\n\n---- tests::contract stdout ----\n\nthread 'tests::contract' (4134602) panicked at src/lib.rs:1:51:\nnot yet implemented\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    tests::contract\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "exit": 101
+  },
+  {
+    "id": "characters",
+    "text": "implement 反転",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "dfaf1e49cc314e592d2cae55d86a27a047107b8ffea656aaad6657e5f6c1cec0"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "dfaf1e49cc314e592d2cae55d86a27a047107b8ffea656aaad6657e5f6c1cec0"
+    },
+    "stdout": "\nrunning 1 test\ntest tests::contract ... FAILED\n\nfailures:\n\n---- tests::contract stdout ----\n\nthread 'tests::contract' (4134680) panicked at src/lib.rs:1:34:\nnot yet implemented\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n\n\nfailures:\n    tests::contract\n\ntest result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "exit": 101
+  }
+]

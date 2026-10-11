@@ -1,0 +1,42 @@
+Running as unit: run-p67653-i100677993.scope; invocation ID: 8257f806ead54782bfe832934bf00819
+[
+  {
+    "id": "train/rb-implement-sum-even/chatty#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/train-sample/scratch/implement-65257-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "train/rb-implement-sum-even/hurried#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/train-sample/scratch/implement-66023-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "train/rb-implement-sum-even/terse#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/train-sample/scratch/implement-66787-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  }
+]

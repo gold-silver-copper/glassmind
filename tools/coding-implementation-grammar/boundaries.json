@@ -1,0 +1,206 @@
+[
+  {
+    "id": "b0",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "which functions call implement?",
+    "route": "none"
+  },
+  {
+    "id": "b1",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "where is function implement?",
+    "route": "none"
+  },
+  {
+    "id": "b2",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "rename function implement to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b3",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "what is the type of Ledger.implement?",
+    "route": "none"
+  },
+  {
+    "id": "b4",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "rename field implement to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b5",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "which functions call implemented?",
+    "route": "none"
+  },
+  {
+    "id": "b6",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "where is function implemented?",
+    "route": "none"
+  },
+  {
+    "id": "b7",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "rename function implemented to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b8",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "what is the type of Ledger.implemented?",
+    "route": "none"
+  },
+  {
+    "id": "b9",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "rename field implemented to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b10",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "which functions call write?",
+    "route": "none"
+  },
+  {
+    "id": "b11",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "where is function write?",
+    "route": "none"
+  },
+  {
+    "id": "b12",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "rename function write to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b13",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "what is the type of Ledger.write?",
+    "route": "none"
+  },
+  {
+    "id": "b14",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "rename field write to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b15",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "which functions call fill?",
+    "route": "none"
+  },
+  {
+    "id": "b16",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "where is function fill?",
+    "route": "none"
+  },
+  {
+    "id": "b17",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "rename function fill to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b18",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "what is the type of Ledger.fill?",
+    "route": "none"
+  },
+  {
+    "id": "b19",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "rename field fill to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b20",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "which functions call `implement`?",
+    "route": "none"
+  },
+  {
+    "id": "b21",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "where is function \"write\"?",
+    "route": "none"
+  },
+  {
+    "id": "b22",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "what is the type of `Ledger.implement`?",
+    "route": "none"
+  },
+  {
+    "id": "b23",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\npub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "where is function implement?",
+    "route": "none"
+  },
+  {
+    "id": "b24",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\npub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "rename implement to calculate",
+    "route": "none"
+  },
+  {
+    "id": "b25",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "add a public i32 field total to Ledger with default 0",
+    "route": "none"
+  },
+  {
+    "id": "b26",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "repair implemented",
+    "route": "none"
+  },
+  {
+    "id": "b27",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "which functions implemented this behavior?",
+    "route": "none"
+  },
+  {
+    "id": "b28",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "what is the type of Ledger.implemented?",
+    "route": "none"
+  },
+  {
+    "id": "b29",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n",
+    "text": "rename function write to implement",
+    "route": "none"
+  },
+  {
+    "id": "b30",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n",
+    "text": "where is field fill in Ledger?",
+    "route": "none"
+  },
+  {
+    "id": "b31",
+    "code": "pub fn implement() -> i32 { 3 }\npub fn implemented() -> i32 { implement() }\npub fn write() -> i32 { implemented() }\npub fn fill() -> i32 { write() }\n// implement absent\n",
+    "text": "which functions call fill?",
+    "route": "none"
+  },
+  {
+    "id": "b32",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n#[cfg(test)] mod tests { use super::*; #[test] fn valid() { assert_eq!(build().implement,1); } }\n",
+    "text": "Use 0 for all existing constructors. Could you please add a public field total: i32 to the Ledger struct?",
+    "route": "none"
+  },
+  {
+    "id": "b33",
+    "code": "pub struct Ledger { pub implement: i32, pub implemented: i32, pub write: i32, pub fill: i32 }\npub fn build() -> Ledger { Ledger { implement: 1, implemented: 2, write: 3, fill: 4 } }\n#[cfg(test)] mod tests { use super::*; #[test] fn valid() { assert_eq!(build().implement,1); } }\n",
+    "text": "Use 0 for all existing constructors. Could you please add a public field implemented_new: i32 to the Ledger struct?",
+    "route": "none"
+  }
+]

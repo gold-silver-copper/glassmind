@@ -1,0 +1,97 @@
+{
+  "accept": [
+    [
+      "implement `語`",
+      "語"
+    ],
+    [
+      "Please implement \"mañana\".",
+      "mañana"
+    ],
+    [
+      "Could you write the body of 'write' in src/lib.rs?",
+      "write"
+    ],
+    [
+      "fill in fill",
+      "fill"
+    ],
+    [
+      "implement implement",
+      "implement"
+    ],
+    [
+      "implement implemented",
+      "implemented"
+    ],
+    [
+      "Hi! There's a `sum_it` function in src/lib.rs that's still just a `todo!()`. Could you fill it in so it does what its doc comment says?",
+      "sum_it"
+    ],
+    [
+      "sum_it is todo!() still, implement it per the doc comment pls",
+      "sum_it"
+    ],
+    [
+      "sum_it = todo!(), pls implement",
+      "sum_it"
+    ]
+  ],
+  "refuse": [
+    "implement",
+    "implement x and y",
+    "implement x then rename y to z",
+    "implement x with wrapping arithmetic",
+    "implement x in src/main.rs",
+    "implement A::x",
+    "implement `A.x`",
+    "implement `x",
+    "implement x`",
+    "do not implement x",
+    "could you not implement x?",
+    "please don't write x",
+    "x should not be implemented",
+    "x is a stub, implement y",
+    "implement it",
+    "implement x. Delete tests.",
+    "repair x and implement y",
+    "rename function implement to calculate then implement y",
+    "implement x per doc comment, return 42"
+  ],
+  "none": [
+    "which functions call implement?",
+    "where is function implement?",
+    "rename function implement to calculate",
+    "what is the type of Ledger.implement?",
+    "rename field implement to calculate",
+    "which functions call implemented?",
+    "where is function implemented?",
+    "rename function implemented to calculate",
+    "what is the type of Ledger.implemented?",
+    "rename field implemented to calculate",
+    "which functions call write?",
+    "where is function write?",
+    "rename function write to calculate",
+    "what is the type of Ledger.write?",
+    "rename field write to calculate",
+    "which functions call fill?",
+    "where is function fill?",
+    "rename function fill to calculate",
+    "what is the type of Ledger.fill?",
+    "rename field fill to calculate",
+    "which functions call `implement`?",
+    "where is function \"write\"?",
+    "what is the type of `Ledger.implement`?",
+    "where is function implement?",
+    "rename implement to calculate",
+    "add a public i32 field total to Ledger with default 0",
+    "repair implemented",
+    "which functions implemented this behavior?",
+    "what is the type of Ledger.implemented?",
+    "rename function write to implement",
+    "where is field fill in Ledger?",
+    "which functions call fill?",
+    "Use 0 for all existing constructors. Could you please add a public field total: i32 to the Ledger struct?",
+    "Use 0 for all existing constructors. Could you please add a public field implemented_new: i32 to the Ledger struct?"
+  ]
+}

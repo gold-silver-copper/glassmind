@@ -1,0 +1,122 @@
+[
+  {
+    "id": "sum",
+    "code": "pub fn collect_values(xs: &[i32]) -> i32 { /* keep */ todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(collect_values(&[-7,2,4,9]),8); assert_eq!(collect_values(&[]),0); assert_eq!(collect_values(&[-3,-2]),-5); } }\n",
+    "text": "implement collect_values",
+    "accept": true
+  },
+  {
+    "id": "reverse",
+    "code": "pub fn transform_values(xs: &[i32]) -> Vec<i32> { unimplemented!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform_values(&[-3,0,4,7]),vec![7,4,0,-3]); assert_eq!(transform_values(&[]),vec![]); assert_eq!(transform_values(&[8]),vec![8]); } }\n",
+    "text": "implement transform_values",
+    "accept": true
+  },
+  {
+    "id": "words",
+    "code": "pub fn 単語(s: &str) -> Vec<String> { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(単語(\" one\t deux\n三 \"),vec![\"三\",\"deux\",\"one\"]); assert!(単語(\" \t\").is_empty()); } }\n",
+    "text": "implement 単語",
+    "accept": true
+  },
+  {
+    "id": "positive_sum",
+    "code": "pub fn collect_values(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(collect_values(&[-7,2,4,9]),15); assert_eq!(collect_values(&[-2,-3]),0); assert_eq!(collect_values(&[]),0); } }\n",
+    "text": "implement collect_values",
+    "accept": true
+  },
+  {
+    "id": "even",
+    "code": "pub fn transform_values(xs: &[i32]) -> Vec<i32> { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform_values(&[-3,-2,0,4,7]),vec![-2,0,4]); assert_eq!(transform_values(&[]),vec![]); } }\n",
+    "text": "implement transform_values",
+    "accept": true
+  },
+  {
+    "id": "characters",
+    "code": "pub fn 反転(s: &str) -> String { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(反転(\"a é三\"),\"三é a\"); assert_eq!(反転(\"\"),\"\"); } }\n",
+    "text": "implement 反転",
+    "accept": true
+  },
+  {
+    "id": "ambiguous",
+    "code": "pub fn target(s: &str) -> usize { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(\"z\"),1); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "conflicting",
+    "code": "pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); assert_eq!(target(&[1,2]),4); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "no_tests",
+    "code": "pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "uncalled",
+    "code": "pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(2+2,4); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "shadow_type",
+    "code": "type i32 = u32; pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "shadow_trait",
+    "code": "trait Extra { fn iter(&self) {} } pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "shadow_macro",
+    "code": "macro_rules! todo { () => {0} } pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "existing",
+    "code": "pub fn target(xs: &[i32]) -> i32 { 0 }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "partial",
+    "code": "pub fn target(xs: &[i32]) -> i32 { let y = 1; todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "compile_failure",
+    "code": "pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { unknown_name(); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "unsupported",
+    "code": "pub fn target(x: i32, y: i32) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(1,2),3); } }\n",
+    "text": "implement target",
+    "accept": false
+  },
+  {
+    "id": "malformed",
+    "code": "pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); } }\n",
+    "text": "implement target then erase tests",
+    "accept": false
+  },
+  {
+    "id": "live_rollback",
+    "code": "pub fn collect_values(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(collect_values(&[-7,2,4,9]),8); assert_eq!(collect_values(&[-3,-2]),-5); assert!(!std::env::current_dir().unwrap().ends_with(\"live_rollback\")); } }\n",
+    "text": "implement collect_values",
+    "accept": false
+  },
+  {
+    "id": "missing",
+    "code": "pub fn target(xs: &[i32]) -> i32 { todo!() }\n// fixture tail is immutable\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[1,2]),3); } }\n",
+    "text": "implement absent",
+    "accept": false
+  }
+]

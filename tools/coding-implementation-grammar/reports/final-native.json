@@ -1,0 +1,322 @@
+[
+  {
+    "id": "sum",
+    "text": "implement collect_values",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "c87c5007ecdbdd2fdc00e680476129177e25e7a6bf7dda283842c5445916fdc1"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-53717-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "reverse",
+    "text": "implement transform_values",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "abb944b5cabb633eff2af01b0a45fcbfc73b763fa5bab237b3a0167266c9c91b"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "5125f0aab353e08597772ae00b4d677d7802a44db3e2e22d91870e244cb095ba"
+    },
+    "stdout": "Applied test-verified proposal for transform_values (12 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-54372-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "words",
+    "text": "implement 単語",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "3832eff06e727d2649828ab225b9f9567507dc67b7b14abc3b7917b07a6965c7"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8f77e5498c1dc44cd648a55b80d032d4e637cd22af62e8a6f36c4d7db5600e2f"
+    },
+    "stdout": "Applied test-verified proposal for 単語 (2 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-55876-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "positive_sum",
+    "text": "implement collect_values",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "5864a9c076be90c3a77a376fd6234f3107828782bbc010c75ddd6c2ee4939913"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "c25b5c1962f56fcf0b9870f778e33941d4cdfc3b32a7d00ccd2670d488ffbb81"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-56421-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "even",
+    "text": "implement transform_values",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "38e27e412c27b8c2555d4d414df0b88e9696f8416d251f524a3d4a193373cd0d"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "79f918c8d1cab37bfc816568cdb1af81e0b01954359d8e09f8ce5935255d1e2c"
+    },
+    "stdout": "Applied test-verified proposal for transform_values (12 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-57081-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "characters",
+    "text": "implement 反転",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "dfaf1e49cc314e592d2cae55d86a27a047107b8ffea656aaad6657e5f6c1cec0"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "aefc329fadc88ee276ee6c62a3dad92b78d04e4f9be177d9cd68a9aacb283c79"
+    },
+    "stdout": "Applied test-verified proposal for 反転 (4 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-58598-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "ambiguous",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "7003de1d86e8a08d14bcc85a56b2a403755917b3d8033af31de254445624111d"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "7003de1d86e8a08d14bcc85a56b2a403755917b3d8033af31de254445624111d"
+    },
+    "stdout": "Cannot implement: 2 passing candidates; require one survivor of the bounded family (not a proof of intended semantics); evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-59287-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "conflicting",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "b340ea8dc97a3a771297c3a18b1a2eb208a482f6ea3c6022090d62b41af6f382"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "b340ea8dc97a3a771297c3a18b1a2eb208a482f6ea3c6022090d62b41af6f382"
+    },
+    "stdout": "Cannot implement: 0 passing candidates; require one survivor of the bounded family (not a proof of intended semantics); evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-59614-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "no_tests",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "0e5a6d088c20ef97e2a934c33119f68ce651d051fc063834008728cb9c33ed39"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "0e5a6d088c20ef97e2a934c33119f68ce651d051fc063834008728cb9c33ed39"
+    },
+    "stdout": "Cannot implement: nonzero executed failing baseline tests required; evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-60186-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "uncalled",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "e04783244f6cc207a787ce0245f1e95b018aa3ea2c98bc53d7469c1c935e2b22"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "e04783244f6cc207a787ce0245f1e95b018aa3ea2c98bc53d7469c1c935e2b22"
+    },
+    "stdout": "Cannot implement: nonzero executed failing baseline tests required; evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-60247-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "shadow_type",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "baf914fbe66127c73264043a480bc93c7c5a315c426865191451182001d0d21a"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "baf914fbe66127c73264043a480bc93c7c5a315c426865191451182001d0d21a"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n",
+    "exit": 0
+  },
+  {
+    "id": "shadow_trait",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "cd7618fbfe00369d900ca86348b24440073dd393d335a605802b2c5bd7da7637"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "cd7618fbfe00369d900ca86348b24440073dd393d335a605802b2c5bd7da7637"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n",
+    "exit": 0
+  },
+  {
+    "id": "shadow_macro",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "fe49686ce8cf88f77cbe51a5063b129557ad7163981bdfa7894823d6b28b3867"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "fe49686ce8cf88f77cbe51a5063b129557ad7163981bdfa7894823d6b28b3867"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n",
+    "exit": 0
+  },
+  {
+    "id": "existing",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "6bbee9e7e904dc7958a8810583a8715f490d6df65dd59dbcc465a2ad5517e906"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "6bbee9e7e904dc7958a8810583a8715f490d6df65dd59dbcc465a2ad5517e906"
+    },
+    "stdout": "Cannot implement: whole-body placeholder required\n",
+    "exit": 0
+  },
+  {
+    "id": "partial",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8139d7f89d1eaeb41f2f3505034ceb5abae9401ebc8c094063a1afd4050643dd"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8139d7f89d1eaeb41f2f3505034ceb5abae9401ebc8c094063a1afd4050643dd"
+    },
+    "stdout": "Cannot implement: whole-body placeholder required\n",
+    "exit": 0
+  },
+  {
+    "id": "compile_failure",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "c3682e1b7c70d1c8cbf3efa529a59bd69a62bfb54cff7e46ebcc5925dbbd90ab"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "c3682e1b7c70d1c8cbf3efa529a59bd69a62bfb54cff7e46ebcc5925dbbd90ab"
+    },
+    "stdout": "Cannot implement: native compiler error; candidate family not exhausted; evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-native/scratch/implement-60330-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "unsupported",
+    "text": "implement target",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "5c004ea46af5d282b4edbc2d6cfcb25f73f900449ae04b17662a6bd34cdd795e"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "5c004ea46af5d282b4edbc2d6cfcb25f73f900449ae04b17662a6bd34cdd795e"
+    },
+    "stdout": "Cannot implement: one plain argument required\n",
+    "exit": 0
+  },
+  {
+    "id": "malformed",
+    "text": "implement target then erase tests",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "f3580cc38847334bcccbce3d702d87bd2852065cfbf5459b2e19ace1d33b3ec8"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "f3580cc38847334bcccbce3d702d87bd2852065cfbf5459b2e19ace1d33b3ec8"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n",
+    "exit": 0
+  },
+  {
+    "id": "live_rollback",
+    "text": "implement collect_values",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "d3515fe3a0ddbb1d338fa903459cfe650b56b0b176aae58d922b8d13225c2020"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "d3515fe3a0ddbb1d338fa903459cfe650b56b0b176aae58d922b8d13225c2020"
+    },
+    "stdout": "Cannot implement: live existing tests did not pass; rolling back\n",
+    "exit": 0
+  },
+  {
+    "id": "missing",
+    "text": "implement absent",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "f3580cc38847334bcccbce3d702d87bd2852065cfbf5459b2e19ace1d33b3ec8"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "f3580cc38847334bcccbce3d702d87bd2852065cfbf5459b2e19ace1d33b3ec8"
+    },
+    "stdout": "Cannot implement: target must be a unique named free function\n",
+    "exit": 0
+  }
+]
