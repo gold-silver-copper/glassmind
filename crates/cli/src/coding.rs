@@ -634,6 +634,21 @@ impl Language<Rust> for CodingLanguage<'_> {
         self.english.tokens(text)
     }
     fn understand(&self, text: &str) -> Understanding<Rust> {
+        if let Some(request) = glassmind_english_rust::implementation_grammar::task_request(text) {
+            return match request {
+                Ok(thing) => Understanding::Readings(vec![Reading {
+                    meaning: Utterance::Command(Action::Implement { thing }),
+                    rules: Vec::new(),
+                    parse: "fully consumed implementation request".into(),
+                    idle: 0,
+                    edits: 0,
+                    discarded: Vec::new(),
+                }]),
+                Err(reason) => Understanding::Failed {
+                    trouble: Trouble::ActionFailed { reason },
+                },
+            };
+        }
         let understood = self.english.understand(text);
         if let Understanding::Readings(ref rs) = understood
             && (rename_requests::legacy_compatible(text)
@@ -717,7 +732,8 @@ impl Language<Rust> for CodingLanguage<'_> {
         understood
     }
     fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
-        if rename_requests::concerns_rename(text)
+        if glassmind_english_rust::implementation_grammar::task_request(text).is_some()
+            || rename_requests::concerns_rename(text)
             || rename_requests::request(text).is_some()
             || Self::contains_rename(&self.english.understand(text))
         {
@@ -729,7 +745,28 @@ impl Language<Rust> for CodingLanguage<'_> {
         Self::scope_readings(text, guesses)
     }
     fn say(&self, reply: &Reply<Rust>) -> Option<Spoken> {
-        self.english.say(reply)
+        use glassmind_meaning::Labelled;
+        match reply {
+            Reply::Patch {
+                action: Action::Implement { thing },
+                trials,
+                evidence,
+                ..
+            } => Some(Spoken {
+                text: format!(
+                    "I'd implement {} using the unique test-passing candidate from {trials} checked candidates. Existing tests pass; prose requirements are not proved. Evidence: {evidence}",
+                    thing
+                        .item()
+                        .map_or_else(|| "the target".into(), |i| i.label())
+                ),
+                rules: Vec::new(),
+            }),
+            Reply::Trouble(Trouble::ActionFailed { reason }) => Some(Spoken {
+                text: format!("Cannot complete this action: {reason}"),
+                rules: Vec::new(),
+            }),
+            _ => self.english.say(reply),
+        }
     }
     fn next(&self, prefix: &str) -> Vec<Next> {
         self.english.next(prefix)

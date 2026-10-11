@@ -111,6 +111,25 @@ assert len(state['task']['revision']['attempts']) == 2
 assert 'let mut answer' in source.read_text() and 'a + b' in source.read_text()
 turn('undo')
 assert source.read_text() == original_revision
+# An implementation plan resolves prior context and resumes fresh native proof.
+root = out / 'implementation-project'
+(root / 'src').mkdir(parents=True)
+(root / 'Cargo.toml').write_text('[package]\nname="implementation_cli_smoke"\nversion="0.1.0"\nedition="2021"\n[workspace]\n')
+source = root / 'src/lib.rs'
+original_implementation = 'pub fn gather_values(xs: &[i32]) -> i32 { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(gather_values(&[6,-11,8]),3); assert_eq!(gather_values(&[-7,-5]),-12); } }\n'
+source.write_text(original_implementation)
+session = out / 'implementation-session.json'
+turn('where is `gather_values`?', 1)
+state = turn('implement it; then rename it to accumulated; then check the tests', 1)
+assert state['task']['status'] == 'Ready' and source.read_text() == original_implementation
+state = turn('continue', 1)
+assert state['plan']['current'] == 1
+assert 'todo!()' not in source.read_text()
+state = turn('continue', 8)
+assert state['plan']['status'] == 'Completed' and state['plan']['current'] == 3
+assert 'fn accumulated(' in source.read_text()
+turn('undo')
+assert 'fn gather_values(' in source.read_text() and 'todo!()' not in source.read_text()
 report = dict(processes=len(turns), passed=True,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest())
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

@@ -160,6 +160,8 @@ pub enum Selection {
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]
 pub enum Action<O: Ontology> {
+    /// Supply an implementation for a declared, unresolved target.
+    Implement { thing: Thing<O> },
     /// Give the thing a new name wherever it is named; `kind`, if given, is
     /// what the user said it is. `name` is `None` when the user asks for a
     /// rename without saying the new name.
@@ -222,6 +224,8 @@ pub struct Extent<O: Ontology> {
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]
 pub enum Trouble<O: Ontology> {
+    /// A supported action failed its native preconditions or verification.
+    ActionFailed { reason: String },
     /// The token at `at` is not a word the language knows.
     UnknownWord { at: usize, word: String },
     /// The words are known, but no sentence shape continues at `at`
@@ -258,6 +262,15 @@ pub enum Reply<O: Ontology> {
     Proposal {
         action: Action<O>,
         spots: Vec<O::Spot>,
+    },
+    /// A verified concrete patch for a typed action. Evidence identifies the
+    /// native proposal run; the host must revalidate it before application.
+    Patch {
+        action: Action<O>,
+        changes: Vec<O::Change>,
+        check: O::Check,
+        trials: usize,
+        evidence: String,
     },
     /// Why an action was taken up: the user asked for it in turn `turn`
     /// (0-based) of the conversation.
@@ -327,7 +340,7 @@ impl<O: Ontology> Utterance<O> {
                 d.conditions.iter().filter_map(Condition::other).collect()
             }
             Utterance::Ask(Question::Locate { thing, .. } | Question::Describe { thing, .. })
-            | Utterance::Command(Action::Rename { thing, .. })
+            | Utterance::Command(Action::Rename { thing, .. } | Action::Implement { thing })
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => vec![thing],
             Utterance::Ask(Question::Passes(_) | Question::Problems(_))
@@ -349,7 +362,7 @@ impl<O: Ontology> Utterance<O> {
     pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         match self {
             Utterance::Ask(q) => q.things_within(within),
-            Utterance::Command(Action::Rename { thing, .. })
+            Utterance::Command(Action::Rename { thing, .. } | Action::Implement { thing })
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => thing.things_within(within),
             Utterance::Command(Action::Repair(_))
@@ -366,7 +379,7 @@ impl<O: Ontology> Utterance<O> {
         let mut out = self.clone();
         match &mut out {
             Utterance::Ask(q) => *q = q.map_things(f),
-            Utterance::Command(Action::Rename { thing, .. })
+            Utterance::Command(Action::Rename { thing, .. } | Action::Implement { thing })
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => *thing = thing.map_things(f),
             Utterance::Command(Action::Repair(_))
@@ -540,6 +553,14 @@ impl<O: Ontology> Reply<O> {
             }
             | Reply::Reason {
                 action: Action::Rename { thing, .. },
+                ..
+            }
+            | Reply::Patch {
+                action: Action::Implement { thing } | Action::Rename { thing, .. },
+                ..
+            }
+            | Reply::Reason {
+                action: Action::Implement { thing },
                 ..
             }
             | Reply::Noted(Fact::Alias { thing, .. }) => thing.item().into_iter().collect(),

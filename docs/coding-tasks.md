@@ -2,7 +2,8 @@
 
 `glassmind do --session FILE` keeps a typed coding task and conversation between
 invocations. It currently supports the existing rename and build/test/lint repair
-actions, plus ordinary questions through the existing language frontend.
+actions, test-verified implementation of supported function stubs, and ordinary
+questions through the existing language frontend.
 
 ```sh
 # Propose without applying; keep state outside the source repository.
@@ -115,6 +116,29 @@ all edits from the successful composed action together. A repair inside an
 ordered plan must finish before later operations run. `show task` reports the
 attempt count, diagnostic counts and stopping reason.
 
-Function implementation and add-field commands remain available through `do`
-without `--session`. Conditional branches, arbitrary new repair families and
-general conversational constraints are not yet implemented by the controller.
+## Implementing a function
+
+`implement gather_values` uses the existing finite, signature-directed native
+proposer and keeps its verified patch in the task. `--steps 1` previews without
+editing. A later `continue` reruns the native proof, compares the exact typed
+patch and applies it through the implementation verifier. Saved evidence paths
+and candidate counts explain the preview; they cannot authorize an edited patch.
+
+Implementation supports the same top-level stubs in `src/lib.rs` as standalone
+`do`. Existing failing tests must execute the exact target, and exactly one
+candidate in the bounded family must pass. Passing tests do not prove prose
+requirements, doc comments or behavior outside their coverage. Missing tests,
+an unexecuted target, ambiguous passing candidates and unsupported code refuse.
+Compiler warning source excerpts do not count as target execution evidence.
+
+After locating a function, `implement it` or `fill it in` resolves the prior
+target, including after restart. A correction changes the target and keeps the
+implementation action. Quote identifiers that are also English grammar words,
+for example ``where is `total`?``. Plans can combine implementation, rename and
+verification; each action keeps its own proposal/application stages and undo.
+Existing rename restrictions still apply, including collisions with identifiers
+in generated code.
+
+Add-field commands remain available through `do` without `--session`. Conditional
+branches, arbitrary new repair families and general conversational constraints
+are not yet implemented by the controller.

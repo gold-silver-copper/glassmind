@@ -74,7 +74,7 @@ demonstrates a new useful behavior and preserves existing correctness. Do not
 require every feature to earn another point on an old task. Do not describe a
 flat score as a gain. Keep the benchmark as a regression check, not the roadmap.
 
-## First development batch
+## Starting or resuming development
 
 Briefly inspect current code, git state, applicable instructions, open work and
 `docs/continuous-progress.md`. Check actual process and artifact state: old
@@ -82,14 +82,21 @@ Briefly inspect current code, git state, applicable instructions, open work and
 verified results without letting the old queue dictate this new direction.
 Do not restart completed jobs or re-run unchanged large experiments.
 
-Then implement a shared task representation and connect it to one complete
-coding flow in the existing CLI. Choose a real supported action as the first
-consumer, then extend the flow to multiple steps. Reuse existing parsers,
-source indexes, patch representations, checkers, rollback and session storage.
-Let concrete integrations determine the abstraction; avoid a speculative
+Determine which of the capabilities below already work. Do not rebuild a
+completed task representation, plan runner or persistence layer because this
+prompt describes them. Finish and validate promising unfinished integrations
+first, then choose the most valuable remaining gap from the actual code.
+
+If the shared task flow is missing, implement a shared task representation and
+connect it to one complete coding flow in the existing CLI. Choose a real
+supported action as the first consumer, then extend the flow to multiple steps.
+Otherwise extend the existing flow with another useful verified action, stronger
+constraint handling or better contextual language understanding. Reuse existing
+parsers, source indexes, patch representations, checkers, rollback and session
+storage. Let concrete integrations determine the abstraction; avoid a speculative
 universal schema or a wholesale rewrite.
 
-The first substantial delivery should demonstrate:
+The integrated system should demonstrate:
 
 - Several materially different phrasings reaching the same typed task while
   retaining explicit constraints; a correction changes only the intended field.
@@ -107,6 +114,9 @@ These are development acceptance examples, not sentences to hardcode. Use
 varied wording, identifiers and independent fixtures. Deliver intermediate
 working slices when helpful, then immediately continue toward the full flow.
 Afterward choose the next gap from actual usage of this integrated system.
+Rank candidates by useful tasks unlocked, reuse across capabilities, evidence
+that the approach can work, and implementation cost. Reassess after every shipped
+batch. Do not exhaust easy benchmark cases while larger product gaps remain.
 
 ## Development loop
 
@@ -208,8 +218,8 @@ authorization. No prompt guarantees execution beyond actual account or platform
 availability. If no meaningful authorized work remains possible, preserve a
 resumable checkpoint and follow the platform's blocked-goal rules.
 
-Once explicitly activated: inspect enough to act, implement the first integrated
-slice, validate it, ship it, and keep building the next useful capability.
+Once explicitly activated: inspect enough to act, implement the next useful
+integrated slice, validate it, ship it, and keep building the next capability.
 
 ---
 

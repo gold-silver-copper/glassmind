@@ -264,6 +264,7 @@ pub struct RustWorld {
     switches: Switches,
     /// What each check last found, per source, until a change is applied.
     found: std::sync::Mutex<BTreeMap<(String, RustCheck), Vec<checks::Finding>>>,
+    implementation: std::sync::Mutex<Option<implementation::Implementation>>,
 }
 
 /// The item a thing stands for once its name is resolved: "no such name" if
@@ -292,6 +293,7 @@ impl RustWorld {
             sources,
             switches: switches.clone(),
             found: std::sync::Mutex::new(BTreeMap::new()),
+            implementation: std::sync::Mutex::new(None),
         }
     }
 
@@ -861,6 +863,11 @@ impl World<Rust> for RustWorld {
         let (thing, kind, name) = match action {
             Action::Rename { thing, kind, name } => (thing, kind, name),
             Action::Repair(check) => return self.remedy(check, fired),
+            Action::Implement { .. } => {
+                return self
+                    .propose_typed_implementation(action)
+                    .map_err(|reason| Trouble::ActionFailed { reason });
+            }
         };
         // With no new name there is no edit to propose.
         let Some(name) = name else {
@@ -1089,6 +1096,11 @@ impl World<Rust> for RustWorld {
     fn apply(&self, proposal: &Reply<Rust>, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {
         if !self.switches.on(APPLY_CHANGES.id) {
             return Err(Unsupported);
+        }
+        if matches!(proposal, Reply::Patch { .. }) {
+            return self
+                .apply_typed_implementation(proposal)
+                .map_err(|reason| Trouble::ActionFailed { reason });
         }
         let (changes, check) = match proposal {
             Reply::Remedy { changes, check, .. } if !changes.is_empty() => {

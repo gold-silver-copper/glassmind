@@ -1,5 +1,20 @@
 //! Consumed action grammar. Quoted names and qualified references are single roles.
-use glassmind_world_rust::implementation::Implement;
+use glassmind_meaning::{Name, Thing};
+use glassmind_world_rust::{Rust, implementation::Implement};
+
+#[derive(Clone, Debug)]
+enum Target {
+    Named(String),
+    Previous,
+}
+impl Target {
+    fn thing(self) -> Thing<Rust> {
+        match self {
+            Self::Named(n) => Thing::Named(Name(n)),
+            Self::Previous => Thing::Previous,
+        }
+    }
+}
 
 #[derive(Clone, Debug)]
 enum Token<'a> {
@@ -114,10 +129,10 @@ fn valid_target(name: &str) -> bool {
     name.starts_with(|c: char| c == '_' || c.is_alphabetic())
         && name.chars().all(|c| c == '_' || c.is_alphanumeric())
 }
-fn imperative(c: &mut Cursor<'_>, bound: Option<&str>) -> Option<String> {
+fn imperative(c: &mut Cursor<'_>, bound: Option<&str>) -> Option<Target> {
     c.polite();
     if c.eat("fill it in") {
-        return bound.map(str::to_owned);
+        return Some(bound.map_or(Target::Previous, |n| Target::Named(n.to_owned())));
     }
     if !(c.eat("implement")
         || c.eat("fill in")
@@ -129,16 +144,16 @@ fn imperative(c: &mut Cursor<'_>, bound: Option<&str>) -> Option<String> {
         return None;
     }
     let target = if c.eat("it") {
-        bound?.to_owned()
+        bound.map_or(Target::Previous, |n| Target::Named(n.to_owned()))
     } else if let Some(target) = c.target() {
         if bound.is_some_and(|b| b != target) {
             return None;
         }
-        target
+        Target::Named(target)
     } else {
-        bound?.to_owned()
+        Target::Named(bound?.to_owned())
     };
-    if !valid_target(&target) || !c.location() {
+    if matches!(&target, Target::Named(n) if !valid_target(n)) || !c.location() {
         return None;
     }
     Some(target)
@@ -178,7 +193,7 @@ fn action_head(c: &mut Cursor<'_>) -> bool {
     c.one(&["implement", "write", "fill"])
 }
 /// None delegates to the established query/rename/field/repair routes.
-pub fn request(text: &str) -> Option<Result<Implement, String>> {
+fn parse_target(text: &str) -> Option<Result<Target, String>> {
     let tokens = match lex(text) {
         Some(tokens) => tokens,
         None => {
@@ -213,7 +228,7 @@ pub fn request(text: &str) -> Option<Result<Implement, String>> {
     if let Some(target) = imperative(&mut direct, None)
         && direct.finish()
     {
-        return Some(Ok(Implement { target }));
+        return Some(Ok(target));
     }
     let mut stub = c.clone();
     let declared = declaration(&mut stub);
@@ -223,7 +238,7 @@ pub fn request(text: &str) -> Option<Result<Implement, String>> {
             && let Some(target) = imperative(&mut body, Some(target))
             && body.finish()
         {
-            return Some(Ok(Implement { target }));
+            return Some(Ok(target));
         }
     }
     let mut passive = c.clone();
@@ -251,6 +266,21 @@ pub fn request(text: &str) -> Option<Result<Implement, String>> {
         && action_head(&mut other);
     (action_head(&mut c) || declared.is_some() || passive || compound)
         .then(|| Err("unsupported or unconsumed implementation request".into()))
+}
+
+/// The standalone command requires an explicit bound name, as before.
+pub fn request(text: &str) -> Option<Result<Implement, String>> {
+    parse_target(text).map(|r| {
+        r.and_then(|t| match t {
+            Target::Named(target) => Ok(Implement { target }),
+            Target::Previous => Err("implementation needs a target from task context".into()),
+        })
+    })
+}
+
+/// Task sessions can resolve an explicit pronoun through the shared mind.
+pub fn task_request(text: &str) -> Option<Result<Thing<Rust>, String>> {
+    parse_target(text).map(|r| r.map(Target::thing))
 }
 
 #[cfg(test)]

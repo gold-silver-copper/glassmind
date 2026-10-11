@@ -79,10 +79,8 @@ pub(super) fn clauses(text: &str) -> Result<Option<Vec<String>>, String> {
 }
 
 fn interpretations(system: &System, text: &str) -> Result<Vec<Utterance<Rust>>, String> {
-    if glassmind_english_rust::implementation_grammar::request(text).is_some()
-        || glassmind_english_rust::add_fields::request(text).is_some()
-    {
-        return Err("implementation and add-field actions are not yet plan operations".into());
+    if glassmind_english_rust::add_fields::request(text).is_some() {
+        return Err("add-field actions are not yet plan operations".into());
     }
     let language = crate::coding::CodingLanguage {
         english: &system.english,
