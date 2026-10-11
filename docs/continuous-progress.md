@@ -2,11 +2,11 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Known completed-worker tokens:202965100, cached input counted once; parent and
-interrupted usage excluded. Pilot semantic teacher completed; one replication teacher now running.
-Its owned ChatGPT login symlink has been removed after archival and scope verification.
+Known completed-worker tokens:203193886, cached input counted once; parent and
+interrupted usage excluded. All quantity teachers are terminal; no model workers
+are running. Their owned auth symlinks were removed after verified archival.
 
-## Current jobs,19:25UTC
+## Current jobs,19:30UTC
 
 Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
 coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
@@ -52,7 +52,7 @@ Push93513/create77478/merge43361 allCOMPLETE. FirstpostmergeGitHubquery TLS
 timeout; retryconfirmedmergedstate. No publicationwork remainsforcodingbatch.
 NEXT: monitor existingnativeclaimsjob89022, then frozenstorageaudit/witnesses.
 Independentquantitypilot nowactive: WORK/span-references,branchcontinuous/span-references
-head430b732. RUN=WORK/coordinator/span-references. Plan d4efe58 frozenbeforeselection.
+head39effbd (later review/report commits follow). RUN=WORK/coordinator/span-references. Plan d4efe58 frozenbeforeselection.
 32TRAIN-FIT rows selectedby(group_sha256,row_id), solepriorreasonambiguous_leaf;
 all6sourcefiles/52oldarchivefileshashverified and32nativebindingsreproduced.
 BatchSHAb4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e.
@@ -84,23 +84,29 @@ plan d9f9fdc beforeselection, preparation982b936 beforeteachers. RUN=WORK/coordi
 span-expansion. Next128uniqueFITgroups in4x32frozenbatches; allsourcehashes/native
 bindingsverified. CombinedbatchSHA1863c210d4e566a939b568fe7a70db8db53bc46a979011c990e3f5f27bb47a10.
 Eightparentcases frozen,24nativechecks passed;4498mustrefuseconflictingboardlengths.
-All4isolatedChatGPTloginsverified. Batches01/02/03 COMPLETE47083/13879/74867 exit0,
-174.398/168.386/176.402s, nocapfailures. Originals14filesperbatchhashverified;
-ownedauthlinksremovedafterinactivescopes. Mechanical/native26/24/22acceptedrows,
-28/26/25programvariants. Usage349523+227144+231903=808570; completedtotal202965100.
-Batch04RUNNING4711,scopeglassmind-span-expansion-04,supervisor1219143,wrapper1219150;
-onlymodelworker. OwnedauthlinkRUN/batch-04/teacher/codex/auth.json remains;
-preserve.py04 afterterminal archivesoriginals+usage thenremovesownedlink. Never
-archivecredentials. EachAstrafast/high1200s8G0swap2MiBannotations256MiBdirectory.
-Batch01semanticreviewCOMPLETE:26accepted28variants163assignments,zeroaccepted
-contradictions;all6refusalsconfirmed. semantic-review-01.json hasall32rowdecisions.
-All18refusalsbatches02/03reviewed;24+22acceptedrowsstillUNREVIEWED. See
-nonacceptance-review-02-03.json. Batch04unreviewed. Overallgatestillpending.
-NEXT:finish04preservation/nativevalidation,check-parent.pyall8frozenreferences,
-then reviewEVERYacceptedlink in02/03/04plus04refusals. Gate>=96/128,zeroaccepted
-semanticcontradictions,all8parentagree. Nofit/CAL/DEV/runtimeorquantityscorechange.
+Replication COMPLETE and REJECTED:95/128parentconfirmedaccepted vs frozen96minimum.
+All4teachers terminal47083/13879/74867/4711 exit0,174.398/168.386/176.402/186.443s,
+no cap failures. All56originalfiles hashverified; all4ownedauthlinks removed after
+inactive scopes. Each exactAstrafast/high viaChatGPT,1200s8G0swap2MiBannotations
+256MiBdirectory. NoAPIkeys/fallback. No modelworkers nowrunning.
 
-Nativeclaims89022 stillRUNNING at42minutes (PIDs1022832/1022833verified);
+All128rows reviewed:85resolved10equivalent19unsupported9ambiguous5label_error.
+Accepted95rows/105nativevariants exact; rootreviewed643assignments,zeroaccepted
+semanticcontradictions. All34contracts pass,all8frozenparentcasesagree,27native
+original/counterfactualchecks match. Perbatchaccepted26/24/22/23. See worktree
+semantic-review-01..04.json,final-report.json,PROGRESS.md andexternalRUN copies.
+33exclusions:12missingcalculations,6exactoccurrence/permutationambiguities,
+10missingpremise/targetinterpretations,5rationale/targetcontradictions. Some are
+conservativewordingrefusals,notprovenincorrectsourceanswers. Gateisnotrelaxed.
+Usage1037356=993295input(includes800000cached)+44061output;completedtotal203193886.
+
+NEXTquantity: freeze materiallydifferentrepresentation beforefurtherselection.
+Candidate: complete question-grounded graphs permittingexplicitmissingderivedsteps
+and justifiedcoreferentialquantityreferences,withinunchangednativebounds. Do not
+expand/refit thisrejected frozen-skeleton occurrencepolicy. No currenttraining,
+CAL/DEV,quantityruntime orscorechange. Original354/7473vs1000staysREJECTED.
+
+Nativeclaims89022 stillRUNNING at44minutes (PIDs1022832/1022833verified);
 secondaryindexesbuilt1225.432s, finalintegritychecksremaining. Do not restart.
 Continue original3396saudit/witnesses sequence afterterminalresourcepass.
 
