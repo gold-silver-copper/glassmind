@@ -1,0 +1,216 @@
+{
+  "freeze_all_hashes_match": true,
+  "sample_equals_full_prefix": true,
+  "ledger_sums_equal_report": true,
+  "labeled_errors": 5725,
+  "unlabeled_errors": 4608,
+  "labeled_errors_by_gold_label": {
+    "punct": 672,
+    "conj": 411,
+    "nsubj": 326,
+    "advmod": 318,
+    "obl": 317,
+    "root": 307,
+    "amod": 274,
+    "nmod": 266,
+    "compound": 262,
+    "case": 228,
+    "obj": 220,
+    "parataxis": 208,
+    "advcl": 194,
+    "cc": 126,
+    "flat": 124,
+    "det": 112,
+    "cop": 109,
+    "mark": 106,
+    "appos": 98,
+    "acl:relcl": 93,
+    "obl:unmarked": 82,
+    "xcomp": 79,
+    "acl": 78,
+    "ccomp": 77,
+    "list": 75,
+    "nsubj:pass": 64,
+    "aux": 63,
+    "discourse": 58,
+    "nmod:unmarked": 53,
+    "nmod:poss": 40,
+    "iobj": 29,
+    "nummod": 29,
+    "nmod:desc": 27,
+    "compound:prt": 27,
+    "expl": 23,
+    "goeswith": 23,
+    "csubj": 22,
+    "aux:pass": 22,
+    "vocative": 17,
+    "nsubj:outer": 16,
+    "fixed": 14,
+    "reparandum": 9,
+    "advcl:relcl": 9,
+    "obl:agent": 5,
+    "det:predet": 5,
+    "cc:preconj": 2,
+    "dislocated": 2,
+    "orphan": 2,
+    "dep": 2
+  },
+  "first12_errors": [
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0001",
+      "position": 6,
+      "form": "story",
+      "gold": [
+        4,
+        "nsubj"
+      ],
+      "predicted": [
+        4,
+        "obj"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0002",
+      "position": 2,
+      "form": "Bush",
+      "gold": [
+        5,
+        "nsubj"
+      ],
+      "predicted": [
+        0,
+        "root"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0002",
+      "position": 3,
+      "form": "on",
+      "gold": [
+        4,
+        "case"
+      ],
+      "predicted": [
+        5,
+        "mark"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0002",
+      "position": 4,
+      "form": "Tuesday",
+      "gold": [
+        5,
+        "obl"
+      ],
+      "predicted": [
+        5,
+        "nsubj"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0002",
+      "position": 5,
+      "form": "nominated",
+      "gold": [
+        0,
+        "root"
+      ],
+      "predicted": [
+        2,
+        "acl"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0002",
+      "position": 19,
+      "form": ".",
+      "gold": [
+        5,
+        "punct"
+      ],
+      "predicted": [
+        2,
+        "punct"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0003",
+      "position": 14,
+      "form": "judge",
+      "gold": [
+        11,
+        "nmod"
+      ],
+      "predicted": [
+        2,
+        "obl"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0003",
+      "position": 25,
+      "form": "replacing",
+      "gold": [
+        2,
+        "advcl"
+      ],
+      "predicted": [
+        14,
+        "acl"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0003",
+      "position": 26,
+      "form": "Steffen",
+      "gold": [
+        25,
+        "obj"
+      ],
+      "predicted": [
+        28,
+        "compound"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0003",
+      "position": 28,
+      "form": "Graae",
+      "gold": [
+        26,
+        "flat"
+      ],
+      "predicted": [
+        25,
+        "obj"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0005",
+      "position": 4,
+      "form": "A.",
+      "gold": [
+        3,
+        "obj"
+      ],
+      "predicted": [
+        7,
+        "compound"
+      ]
+    },
+    {
+      "sentence": "weblog-blogspot.com_nominations_20041117172713_ENG_20041117_172713-0005",
+      "position": 6,
+      "form": "Anketell",
+      "gold": [
+        4,
+        "flat"
+      ],
+      "predicted": [
+        7,
+        "compound"
+      ]
+    }
+  ]
+}

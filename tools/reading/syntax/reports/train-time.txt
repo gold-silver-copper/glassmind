@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/target/release/reading-syntax",
+    "train",
+    "--train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/en_ewt-ud-train.conllu",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/model.bin",
+    "--report",
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train-report.json"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 3.3743557300185785,
+  "user_seconds": 3.31617,
+  "system_seconds": 0.047847999999999995,
+  "max_rss_KiB": 291672,
+  "major_page_faults": 0,
+  "minor_page_faults": 24727
+}

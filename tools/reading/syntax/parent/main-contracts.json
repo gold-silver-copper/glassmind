@@ -1,0 +1,89 @@
+{
+  "total": 16,
+  "passed": 16,
+  "rows": [
+    {
+      "name": "sample",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "full",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "authored",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "contracts",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "independent",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "plain_prediction",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "single_json",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "empty",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "too_many",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "too_long",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "row_bound",
+      "exit": 1,
+      "passed": true
+    },
+    {
+      "name": "invalid_utf8",
+      "exit": 1,
+      "passed": true
+    },
+    {
+      "name": "conflicting_modes",
+      "exit": 2,
+      "passed": true
+    },
+    {
+      "name": "missing_input",
+      "exit": 2,
+      "passed": true
+    },
+    {
+      "name": "corrupt_model",
+      "exit": 1,
+      "passed": true
+    },
+    {
+      "name": "help",
+      "exit": 0,
+      "passed": true
+    }
+  ],
+  "binary_sha256": "226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0",
+  "full_prediction_sha256": "059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d",
+  "scope": "Main-command contracts and exact retained-output equivalence; linguistic errors are preserved."
+}

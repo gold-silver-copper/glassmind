@@ -1,0 +1,1753 @@
+{
+  "active_sentences_correct": 6,
+  "active_sentences": 6,
+  "active_edges_correct": 12,
+  "active_edges": 12,
+  "gate": true,
+  "probes": [
+    {
+      "name": "active-1",
+      "text": "The nurse called the teacher.",
+      "core": [
+        [
+          2,
+          3,
+          "nsubj"
+        ],
+        [
+          5,
+          3,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 3,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 3,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "called",
+          "the",
+          "teacher",
+          "."
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 16,
+            "form": "called",
+            "start": 10
+          },
+          {
+            "end": 20,
+            "form": "the",
+            "start": 17
+          },
+          {
+            "end": 28,
+            "form": "teacher",
+            "start": 21
+          },
+          {
+            "end": 29,
+            "form": ".",
+            "start": 28
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "active-2",
+      "text": "The teacher called the nurse.",
+      "core": [
+        [
+          2,
+          3,
+          "nsubj"
+        ],
+        [
+          5,
+          3,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 3,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 3,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "teacher",
+          "called",
+          "the",
+          "nurse",
+          "."
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 11,
+            "form": "teacher",
+            "start": 4
+          },
+          {
+            "end": 18,
+            "form": "called",
+            "start": 12
+          },
+          {
+            "end": 22,
+            "form": "the",
+            "start": 19
+          },
+          {
+            "end": 28,
+            "form": "nurse",
+            "start": 23
+          },
+          {
+            "end": 29,
+            "form": ".",
+            "start": 28
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "active-3",
+      "text": "The dog chased the cat.",
+      "core": [
+        [
+          2,
+          3,
+          "nsubj"
+        ],
+        [
+          5,
+          3,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 3,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 3,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "dog",
+          "chased",
+          "the",
+          "cat",
+          "."
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 7,
+            "form": "dog",
+            "start": 4
+          },
+          {
+            "end": 14,
+            "form": "chased",
+            "start": 8
+          },
+          {
+            "end": 18,
+            "form": "the",
+            "start": 15
+          },
+          {
+            "end": 22,
+            "form": "cat",
+            "start": 19
+          },
+          {
+            "end": 23,
+            "form": ".",
+            "start": 22
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "active-4",
+      "text": "The cat chased the dog.",
+      "core": [
+        [
+          2,
+          3,
+          "nsubj"
+        ],
+        [
+          5,
+          3,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 3,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 3,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "cat",
+          "chased",
+          "the",
+          "dog",
+          "."
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 7,
+            "form": "cat",
+            "start": 4
+          },
+          {
+            "end": 14,
+            "form": "chased",
+            "start": 8
+          },
+          {
+            "end": 18,
+            "form": "the",
+            "start": 15
+          },
+          {
+            "end": 22,
+            "form": "dog",
+            "start": 19
+          },
+          {
+            "end": 23,
+            "form": ".",
+            "start": 22
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "active-5",
+      "text": "The manager hired the driver.",
+      "core": [
+        [
+          2,
+          3,
+          "nsubj"
+        ],
+        [
+          5,
+          3,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 3,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 3,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "manager",
+          "hired",
+          "the",
+          "driver",
+          "."
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 11,
+            "form": "manager",
+            "start": 4
+          },
+          {
+            "end": 17,
+            "form": "hired",
+            "start": 12
+          },
+          {
+            "end": 21,
+            "form": "the",
+            "start": 18
+          },
+          {
+            "end": 28,
+            "form": "driver",
+            "start": 22
+          },
+          {
+            "end": 29,
+            "form": ".",
+            "start": 28
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "active-6",
+      "text": "The driver hired the manager.",
+      "core": [
+        [
+          2,
+          3,
+          "nsubj"
+        ],
+        [
+          5,
+          3,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 3,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 3,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "driver",
+          "hired",
+          "the",
+          "manager",
+          "."
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 10,
+            "form": "driver",
+            "start": 4
+          },
+          {
+            "end": 16,
+            "form": "hired",
+            "start": 11
+          },
+          {
+            "end": 20,
+            "form": "the",
+            "start": 17
+          },
+          {
+            "end": 28,
+            "form": "manager",
+            "start": 21
+          },
+          {
+            "end": 29,
+            "form": ".",
+            "start": 28
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "passive-1",
+      "text": "The teacher was called by the nurse.",
+      "core": [
+        [
+          2,
+          4,
+          "nsubj:pass"
+        ],
+        [
+          7,
+          4,
+          "obl:agent"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 4,
+          "label": "nsubj:pass",
+          "correct": true
+        },
+        {
+          "dependent": 7,
+          "head": 4,
+          "label": "obl:agent",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj:pass",
+          "aux:pass",
+          "root",
+          "case",
+          "det",
+          "obl:agent",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "teacher",
+          "was",
+          "called",
+          "by",
+          "the",
+          "nurse",
+          "."
+        ],
+        "heads": [
+          2,
+          4,
+          4,
+          0,
+          7,
+          7,
+          4,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 11,
+            "form": "teacher",
+            "start": 4
+          },
+          {
+            "end": 15,
+            "form": "was",
+            "start": 12
+          },
+          {
+            "end": 22,
+            "form": "called",
+            "start": 16
+          },
+          {
+            "end": 25,
+            "form": "by",
+            "start": 23
+          },
+          {
+            "end": 29,
+            "form": "the",
+            "start": 26
+          },
+          {
+            "end": 35,
+            "form": "nurse",
+            "start": 30
+          },
+          {
+            "end": 36,
+            "form": ".",
+            "start": 35
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "AUX",
+          "VERB",
+          "ADP",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "passive-2",
+      "text": "The nurse was called by the teacher.",
+      "core": [
+        [
+          2,
+          4,
+          "nsubj:pass"
+        ],
+        [
+          7,
+          4,
+          "obl:agent"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 4,
+          "label": "nsubj:pass",
+          "correct": true
+        },
+        {
+          "dependent": 7,
+          "head": 4,
+          "label": "obl:agent",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj:pass",
+          "aux:pass",
+          "root",
+          "case",
+          "det",
+          "obl:agent",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "was",
+          "called",
+          "by",
+          "the",
+          "teacher",
+          "."
+        ],
+        "heads": [
+          2,
+          4,
+          4,
+          0,
+          7,
+          7,
+          4,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 13,
+            "form": "was",
+            "start": 10
+          },
+          {
+            "end": 20,
+            "form": "called",
+            "start": 14
+          },
+          {
+            "end": 23,
+            "form": "by",
+            "start": 21
+          },
+          {
+            "end": 27,
+            "form": "the",
+            "start": 24
+          },
+          {
+            "end": 35,
+            "form": "teacher",
+            "start": 28
+          },
+          {
+            "end": 36,
+            "form": ".",
+            "start": 35
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "AUX",
+          "VERB",
+          "ADP",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "negation-1",
+      "text": "The nurse did not call the teacher.",
+      "core": [
+        [
+          2,
+          5,
+          "nsubj"
+        ],
+        [
+          4,
+          5,
+          "advmod"
+        ],
+        [
+          7,
+          5,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 5,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 4,
+          "head": 5,
+          "label": "advmod",
+          "correct": true
+        },
+        {
+          "dependent": 7,
+          "head": 5,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "aux",
+          "advmod",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "did",
+          "not",
+          "call",
+          "the",
+          "teacher",
+          "."
+        ],
+        "heads": [
+          2,
+          5,
+          5,
+          5,
+          0,
+          7,
+          5,
+          5
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 13,
+            "form": "did",
+            "start": 10
+          },
+          {
+            "end": 17,
+            "form": "not",
+            "start": 14
+          },
+          {
+            "end": 22,
+            "form": "call",
+            "start": 18
+          },
+          {
+            "end": 26,
+            "form": "the",
+            "start": 23
+          },
+          {
+            "end": 34,
+            "form": "teacher",
+            "start": 27
+          },
+          {
+            "end": 35,
+            "form": ".",
+            "start": 34
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "AUX",
+          "PART",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "negation-2",
+      "text": "The nurse did call the teacher.",
+      "core": [
+        [
+          2,
+          4,
+          "nsubj"
+        ],
+        [
+          6,
+          4,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 4,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 6,
+          "head": 4,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "aux",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "did",
+          "call",
+          "the",
+          "teacher",
+          "."
+        ],
+        "heads": [
+          2,
+          4,
+          4,
+          0,
+          6,
+          4,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 13,
+            "form": "did",
+            "start": 10
+          },
+          {
+            "end": 18,
+            "form": "call",
+            "start": 14
+          },
+          {
+            "end": 22,
+            "form": "the",
+            "start": 19
+          },
+          {
+            "end": 30,
+            "form": "teacher",
+            "start": 23
+          },
+          {
+            "end": 31,
+            "form": ".",
+            "start": 30
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "AUX",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "question",
+      "text": "Did the nurse call the teacher?",
+      "core": [
+        [
+          3,
+          4,
+          "nsubj"
+        ],
+        [
+          6,
+          4,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 3,
+          "head": 4,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 6,
+          "head": 4,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "aux",
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Did",
+          "the",
+          "nurse",
+          "call",
+          "the",
+          "teacher",
+          "?"
+        ],
+        "heads": [
+          4,
+          3,
+          4,
+          0,
+          6,
+          4,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "Did",
+            "start": 0
+          },
+          {
+            "end": 7,
+            "form": "the",
+            "start": 4
+          },
+          {
+            "end": 13,
+            "form": "nurse",
+            "start": 8
+          },
+          {
+            "end": 18,
+            "form": "call",
+            "start": 14
+          },
+          {
+            "end": 22,
+            "form": "the",
+            "start": 19
+          },
+          {
+            "end": 30,
+            "form": "teacher",
+            "start": 23
+          },
+          {
+            "end": 31,
+            "form": "?",
+            "start": 30
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "AUX",
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "statement",
+      "text": "The nurse called the teacher!",
+      "core": [
+        [
+          2,
+          3,
+          "nsubj"
+        ],
+        [
+          5,
+          3,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 3,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 3,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "called",
+          "the",
+          "teacher",
+          "!"
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 16,
+            "form": "called",
+            "start": 10
+          },
+          {
+            "end": 20,
+            "form": "the",
+            "start": 17
+          },
+          {
+            "end": 28,
+            "form": "teacher",
+            "start": 21
+          },
+          {
+            "end": 29,
+            "form": "!",
+            "start": 28
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "unicode",
+      "text": "Élodie greeted José — politely.",
+      "core": [
+        [
+          1,
+          2,
+          "nsubj"
+        ],
+        [
+          3,
+          2,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 1,
+          "head": 2,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 3,
+          "head": 2,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct",
+          "advmod",
+          "punct"
+        ],
+        "forms": [
+          "Élodie",
+          "greeted",
+          "José",
+          "—",
+          "politely",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          5,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 7,
+            "form": "Élodie",
+            "start": 0
+          },
+          {
+            "end": 15,
+            "form": "greeted",
+            "start": 8
+          },
+          {
+            "end": 21,
+            "form": "José",
+            "start": 16
+          },
+          {
+            "end": 25,
+            "form": "—",
+            "start": 22
+          },
+          {
+            "end": 34,
+            "form": "politely",
+            "start": 26
+          },
+          {
+            "end": 35,
+            "form": ".",
+            "start": 34
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT",
+          "ADV",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "coordination",
+      "text": "The nurse and the teacher called the driver.",
+      "core": [
+        [
+          2,
+          6,
+          "nsubj"
+        ],
+        [
+          5,
+          2,
+          "conj"
+        ],
+        [
+          8,
+          6,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 2,
+          "head": 6,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 5,
+          "head": 2,
+          "label": "conj",
+          "correct": true
+        },
+        {
+          "dependent": 8,
+          "head": 6,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "cc",
+          "det",
+          "conj",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "and",
+          "the",
+          "teacher",
+          "called",
+          "the",
+          "driver",
+          "."
+        ],
+        "heads": [
+          2,
+          6,
+          5,
+          5,
+          2,
+          0,
+          8,
+          6,
+          6
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 13,
+            "form": "and",
+            "start": 10
+          },
+          {
+            "end": 17,
+            "form": "the",
+            "start": 14
+          },
+          {
+            "end": 25,
+            "form": "teacher",
+            "start": 18
+          },
+          {
+            "end": 32,
+            "form": "called",
+            "start": 26
+          },
+          {
+            "end": 36,
+            "form": "the",
+            "start": 33
+          },
+          {
+            "end": 43,
+            "form": "driver",
+            "start": 37
+          },
+          {
+            "end": 44,
+            "form": ".",
+            "start": 43
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "CCONJ",
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "attachment-1",
+      "text": "The nurse saw the teacher with binoculars.",
+      "alternatives": "with binoculars may modify saw or teacher",
+      "checks": [],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "root",
+          "det",
+          "obj",
+          "case",
+          "nmod",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "saw",
+          "the",
+          "teacher",
+          "with",
+          "binoculars",
+          "."
+        ],
+        "heads": [
+          2,
+          3,
+          0,
+          5,
+          3,
+          7,
+          5,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 13,
+            "form": "saw",
+            "start": 10
+          },
+          {
+            "end": 17,
+            "form": "the",
+            "start": 14
+          },
+          {
+            "end": 25,
+            "form": "teacher",
+            "start": 18
+          },
+          {
+            "end": 30,
+            "form": "with",
+            "start": 26
+          },
+          {
+            "end": 41,
+            "form": "binoculars",
+            "start": 31
+          },
+          {
+            "end": 42,
+            "form": ".",
+            "start": 41
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "ADP",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "name": "attachment-2",
+      "text": "The nurse with binoculars saw the teacher.",
+      "core": [
+        [
+          4,
+          2,
+          "nmod"
+        ],
+        [
+          2,
+          5,
+          "nsubj"
+        ],
+        [
+          7,
+          5,
+          "obj"
+        ]
+      ],
+      "checks": [
+        {
+          "dependent": 4,
+          "head": 2,
+          "label": "nmod",
+          "correct": true
+        },
+        {
+          "dependent": 2,
+          "head": 5,
+          "label": "nsubj",
+          "correct": true
+        },
+        {
+          "dependent": 7,
+          "head": 5,
+          "label": "obj",
+          "correct": true
+        }
+      ],
+      "prediction": {
+        "deprels": [
+          "det",
+          "nsubj",
+          "case",
+          "nmod",
+          "root",
+          "det",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "The",
+          "nurse",
+          "with",
+          "binoculars",
+          "saw",
+          "the",
+          "teacher",
+          "."
+        ],
+        "heads": [
+          2,
+          5,
+          4,
+          2,
+          0,
+          7,
+          5,
+          5
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "The",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "nurse",
+            "start": 4
+          },
+          {
+            "end": 14,
+            "form": "with",
+            "start": 10
+          },
+          {
+            "end": 25,
+            "form": "binoculars",
+            "start": 15
+          },
+          {
+            "end": 29,
+            "form": "saw",
+            "start": 26
+          },
+          {
+            "end": 33,
+            "form": "the",
+            "start": 30
+          },
+          {
+            "end": 41,
+            "form": "teacher",
+            "start": 34
+          },
+          {
+            "end": 42,
+            "form": ".",
+            "start": 41
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "DET",
+          "NOUN",
+          "ADP",
+          "NOUN",
+          "VERB",
+          "DET",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    }
+  ]
+}

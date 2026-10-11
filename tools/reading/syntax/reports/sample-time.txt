@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/reading-syntax",
+    "predict",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/model.bin",
+    "--input",
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample-input.jsonl",
+    "--output",
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample-predictions.jsonl"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 0.036272024968639016,
+  "user_seconds": 0.032997,
+  "system_seconds": 0.003002,
+  "max_rss_KiB": 60072,
+  "major_page_faults": 0,
+  "minor_page_faults": 1129
+}
