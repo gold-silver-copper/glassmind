@@ -1,0 +1,64 @@
+{
+  "source": "original authored public Rust fixtures; no external data",
+  "version": "askverify-v1 at base e0b042a0528a292cc60a08d157e640fa7892588f",
+  "license": "MIT OR Apache-2.0",
+  "fixture_files": [
+    {
+      "path": "fixtures/bounded/Cargo.toml",
+      "bytes": 85,
+      "sha256": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e"
+    },
+    {
+      "path": "fixtures/bounded/src/lib.rs",
+      "bytes": 205,
+      "sha256": "7183fc1209ad185a634e62ee47e0577df32f4334a039490237dd7c511f3013d2"
+    },
+    {
+      "path": "fixtures/broken/Cargo.toml",
+      "bytes": 85,
+      "sha256": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e"
+    },
+    {
+      "path": "fixtures/broken/src/lib.rs",
+      "bytes": 251,
+      "sha256": "6354ecb9c97e017e5d5ddc72e0a87eb2c6b31b5f932b0424abe372f6bdea6d65"
+    },
+    {
+      "path": "fixtures/multifile/Cargo.toml",
+      "bytes": 85,
+      "sha256": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e"
+    },
+    {
+      "path": "fixtures/multifile/src/lib.rs",
+      "bytes": 181,
+      "sha256": "2a6d6341f7e5ba36b483e7628fcfe64972996daba23abc067f4e7ef70e80eaa8"
+    },
+    {
+      "path": "fixtures/multifile/src/parcel.rs",
+      "bytes": 89,
+      "sha256": "72a6b0d27268e6d2735c17a6c98cfa70fb442e34e05618c6074941bf1eb9ca02"
+    },
+    {
+      "path": "fixtures/routing/Cargo.toml",
+      "bytes": 85,
+      "sha256": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e"
+    },
+    {
+      "path": "fixtures/routing/src/lib.rs",
+      "bytes": 83,
+      "sha256": "ea4161e24e01000145bdb8d3659e43db27d952a74fc1c7d5206b2870bba433e4"
+    },
+    {
+      "path": "fixtures/valid/Cargo.toml",
+      "bytes": 85,
+      "sha256": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e"
+    },
+    {
+      "path": "fixtures/valid/src/lib.rs",
+      "bytes": 336,
+      "sha256": "c2998a9d76141f9b888f8449045756f346ac98f3080c5dbf51edb94153407363"
+    }
+  ],
+  "total_fixture_bytes": 1570,
+  "total_fixture_files": 11
+}

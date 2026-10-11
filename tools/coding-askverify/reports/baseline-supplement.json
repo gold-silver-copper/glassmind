@@ -1,0 +1,469 @@
+{
+  "binary": "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+  "binary_sha256": "b53e5f21899189d7e51d8a8ce87aeab561ea92e3196d949cb6ff20d37661e133",
+  "results": [
+    {
+      "name": "json_explain",
+      "calls": [
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "public=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/json_explain",
+            "--apply",
+            "--json",
+            "--explain",
+            "rename struct Parcel to Package"
+          ],
+          "exit": 0,
+          "stdout": "{\"turn_id\":\"ask\",\"response\":{\"type\":\"edit\",\"changes\":[{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":2,\"column\":11,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":5,\"column\":22,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":8,\"column\":21,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":9,\"column\":4,\"old\":\"Parcel\",\"new\":\"Package\"}]},\"stage\":\"done\",\"understood\":5,\"tokens\":5,\"rules\":[\"en.utterance.command\",\"en.command.rename_verb\",\"en.rename.rename\",\"en.mention.kind_first\",\"en.rust.noun.struct\",\"en.mention.thing\",\"en.noun_phrase.name\",\"en.into.to\",\"rust.lookup.exact\",\"rust.rename\",\"rust.rename.type\",\"en.reply.proposal\",\"en.mention.the_kind\",\"en.noun_phrase.item\"],\"text\":\"I'd rename the `Parcel` struct to `Package` in 4 places.\",\"canonical\":\"Rename the `Parcel` struct to `Package`\"}\nApplied 4 changes. Nothing was committed.\n",
+          "stderr": "",
+          "json": null
+        }
+      ],
+      "checks": {
+        "single_checked_json": false,
+        "exit_success": true
+      },
+      "passed": false
+    },
+    {
+      "name": "declared_type_success_and_session_guard",
+      "calls": [
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "public=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/declared",
+            "--json",
+            "what is the type of Parcel.weight"
+          ],
+          "exit": 0,
+          "stdout": "{\"declared_type\":{\"end\":85,\"field\":{\"detail\":null,\"file\":\"src/lib.rs\",\"kind\":\"Field\",\"line\":3,\"name\":\"weight\",\"owner\":\"Parcel\",\"source\":\"public\"},\"owner\":{\"detail\":null,\"file\":\"src/lib.rs\",\"kind\":\"Struct\",\"line\":2,\"name\":\"Parcel\",\"owner\":null,\"source\":\"public\"},\"spelling\":\"u32\",\"start\":82}}\n",
+          "stderr": "",
+          "json": {
+            "declared_type": {
+              "end": 85,
+              "field": {
+                "detail": null,
+                "file": "src/lib.rs",
+                "kind": "Field",
+                "line": 3,
+                "name": "weight",
+                "owner": "Parcel",
+                "source": "public"
+              },
+              "owner": {
+                "detail": null,
+                "file": "src/lib.rs",
+                "kind": "Struct",
+                "line": 2,
+                "name": "Parcel",
+                "owner": null,
+                "source": "public"
+              },
+              "spelling": "u32",
+              "start": 82
+            }
+          }
+        },
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "public=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/declared",
+            "--json",
+            "--apply",
+            "what is the type of Parcel.weight"
+          ],
+          "exit": 0,
+          "stdout": "{\"declared_type\":{\"end\":85,\"field\":{\"detail\":null,\"file\":\"src/lib.rs\",\"kind\":\"Field\",\"line\":3,\"name\":\"weight\",\"owner\":\"Parcel\",\"source\":\"public\"},\"owner\":{\"detail\":null,\"file\":\"src/lib.rs\",\"kind\":\"Struct\",\"line\":2,\"name\":\"Parcel\",\"owner\":null,\"source\":\"public\"},\"spelling\":\"u32\",\"start\":82}}\n",
+          "stderr": "",
+          "json": {
+            "declared_type": {
+              "end": 85,
+              "field": {
+                "detail": null,
+                "file": "src/lib.rs",
+                "kind": "Field",
+                "line": 3,
+                "name": "weight",
+                "owner": "Parcel",
+                "source": "public"
+              },
+              "owner": {
+                "detail": null,
+                "file": "src/lib.rs",
+                "kind": "Struct",
+                "line": 2,
+                "name": "Parcel",
+                "owner": null,
+                "source": "public"
+              },
+              "spelling": "u32",
+              "start": 82
+            }
+          }
+        },
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "public=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/declared",
+            "--json",
+            "--apply",
+            "--session",
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/declared-session.json",
+            "what is the type of Parcel.weight"
+          ],
+          "exit": 1,
+          "stdout": "",
+          "stderr": "glassmind: declared-type questions currently require a standalone ask (no --session)\n",
+          "json": null
+        }
+      ],
+      "checks": {
+        "declared_u32": true,
+        "apply_same_as_query": true,
+        "source_unchanged": true,
+        "session_guard": true
+      },
+      "passed": true
+    },
+    {
+      "name": "preview_then_apply_history",
+      "calls": [
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "public=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/history",
+            "--json",
+            "--session",
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/history-session.json",
+            "rename struct Parcel to Package"
+          ],
+          "exit": 0,
+          "stdout": "{\"turn_id\":\"ask\",\"response\":{\"type\":\"edit\",\"changes\":[{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":2,\"column\":11,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":5,\"column\":22,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":8,\"column\":21,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":9,\"column\":4,\"old\":\"Parcel\",\"new\":\"Package\"}]},\"stage\":\"done\",\"understood\":5,\"tokens\":5,\"rules\":[\"en.utterance.command\",\"en.command.rename_verb\",\"en.rename.rename\",\"en.mention.kind_first\",\"en.rust.noun.struct\",\"en.mention.thing\",\"en.noun_phrase.name\",\"en.into.to\",\"rust.lookup.exact\",\"rust.rename\",\"rust.rename.type\",\"en.reply.proposal\",\"en.mention.the_kind\",\"en.noun_phrase.item\"],\"text\":\"I'd rename the `Parcel` struct to `Package` in 4 places.\",\"canonical\":\"Rename the `Parcel` struct to `Package`\"}\n",
+          "stderr": "",
+          "json": {
+            "turn_id": "ask",
+            "response": {
+              "type": "edit",
+              "changes": [
+                {
+                  "source": "public",
+                  "file": "src/lib.rs",
+                  "line": 2,
+                  "column": 11,
+                  "old": "Parcel",
+                  "new": "Package"
+                },
+                {
+                  "source": "public",
+                  "file": "src/lib.rs",
+                  "line": 5,
+                  "column": 22,
+                  "old": "Parcel",
+                  "new": "Package"
+                },
+                {
+                  "source": "public",
+                  "file": "src/lib.rs",
+                  "line": 8,
+                  "column": 21,
+                  "old": "Parcel",
+                  "new": "Package"
+                },
+                {
+                  "source": "public",
+                  "file": "src/lib.rs",
+                  "line": 9,
+                  "column": 4,
+                  "old": "Parcel",
+                  "new": "Package"
+                }
+              ]
+            },
+            "stage": "done",
+            "understood": 5,
+            "tokens": 5,
+            "rules": [
+              "en.utterance.command",
+              "en.command.rename_verb",
+              "en.rename.rename",
+              "en.mention.kind_first",
+              "en.rust.noun.struct",
+              "en.mention.thing",
+              "en.noun_phrase.name",
+              "en.into.to",
+              "rust.lookup.exact",
+              "rust.rename",
+              "rust.rename.type",
+              "en.reply.proposal",
+              "en.mention.the_kind",
+              "en.noun_phrase.item"
+            ],
+            "text": "I'd rename the `Parcel` struct to `Package` in 4 places.",
+            "canonical": "Rename the `Parcel` struct to `Package`"
+          }
+        },
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "public=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/history",
+            "--json",
+            "--session",
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/history-session.json",
+            "--apply",
+            "rename struct Parcel to Package"
+          ],
+          "exit": 0,
+          "stdout": "{\"turn_id\":\"ask\",\"response\":{\"type\":\"edit\",\"changes\":[{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":2,\"column\":11,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":5,\"column\":22,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":8,\"column\":21,\"old\":\"Parcel\",\"new\":\"Package\"},{\"source\":\"public\",\"file\":\"src/lib.rs\",\"line\":9,\"column\":4,\"old\":\"Parcel\",\"new\":\"Package\"}]},\"stage\":\"done\",\"understood\":5,\"tokens\":5,\"rules\":[\"en.utterance.command\",\"en.command.rename_verb\",\"en.rename.rename\",\"en.mention.kind_first\",\"en.rust.noun.struct\",\"en.mention.thing\",\"en.noun_phrase.name\",\"en.into.to\",\"rust.lookup.exact\",\"rust.rename\",\"rust.rename.type\",\"en.reply.proposal\",\"en.mention.the_kind\",\"en.noun_phrase.item\"],\"text\":\"I'd rename the `Parcel` struct to `Package` in 4 places.\",\"canonical\":\"Rename the `Parcel` struct to `Package`\"}\nApplied 4 changes. Nothing was committed.\n",
+          "stderr": "",
+          "json": null
+        },
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "public=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/history",
+            "--json",
+            "--session",
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/history-session.json",
+            "yes"
+          ],
+          "exit": 0,
+          "stdout": "{\"turn_id\":\"ask\",\"response\":{\"type\":\"refuse\",\"reason\":\"unsupported\"},\"stage\":\"action\",\"understood\":1,\"tokens\":1,\"rules\":[\"en.utterance.yes\",\"mind.consent.applies\",\"rust.apply.changes\",\"en.reply.unsupported\"],\"text\":\"I understand, but I can't do that here.\",\"canonical\":\"Yes\"}\n",
+          "stderr": "",
+          "json": {
+            "turn_id": "ask",
+            "response": {
+              "type": "refuse",
+              "reason": "unsupported"
+            },
+            "stage": "action",
+            "understood": 1,
+            "tokens": 1,
+            "rules": [
+              "en.utterance.yes",
+              "mind.consent.applies",
+              "rust.apply.changes",
+              "en.reply.unsupported"
+            ],
+            "text": "I understand, but I can't do that here.",
+            "canonical": "Yes"
+          }
+        },
+        {
+          "session_before_yes": {
+            "sources": [
+              {
+                "name": "public",
+                "root": "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/history"
+              }
+            ],
+            "turns": [
+              {
+                "text": "rename struct Parcel to Package",
+                "meaning": {
+                  "Command": {
+                    "Rename": {
+                      "thing": {
+                        "Item": {
+                          "source": "public",
+                          "file": "src/lib.rs",
+                          "line": 2,
+                          "name": "Parcel",
+                          "kind": "Struct",
+                          "owner": null,
+                          "detail": null
+                        }
+                      },
+                      "kind": "Struct",
+                      "name": "Package"
+                    }
+                  }
+                },
+                "reply": {
+                  "Proposal": {
+                    "action": {
+                      "Rename": {
+                        "thing": {
+                          "Item": {
+                            "source": "public",
+                            "file": "src/lib.rs",
+                            "line": 2,
+                            "name": "Parcel",
+                            "kind": "Struct",
+                            "owner": null,
+                            "detail": null
+                          }
+                        },
+                        "kind": "Struct",
+                        "name": "Package"
+                      }
+                    },
+                    "spots": [
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 2,
+                        "column": 11
+                      },
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 5,
+                        "column": 22
+                      },
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 8,
+                        "column": 21
+                      },
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 9,
+                        "column": 4
+                      }
+                    ]
+                  }
+                },
+                "spoken": "I'd rename the `Parcel` struct to `Package` in 4 places."
+              },
+              {
+                "text": "rename struct Parcel to Package",
+                "meaning": {
+                  "Command": {
+                    "Rename": {
+                      "thing": {
+                        "Item": {
+                          "source": "public",
+                          "file": "src/lib.rs",
+                          "line": 2,
+                          "name": "Parcel",
+                          "kind": "Struct",
+                          "owner": null,
+                          "detail": null
+                        }
+                      },
+                      "kind": "Struct",
+                      "name": "Package"
+                    }
+                  }
+                },
+                "reply": {
+                  "Proposal": {
+                    "action": {
+                      "Rename": {
+                        "thing": {
+                          "Item": {
+                            "source": "public",
+                            "file": "src/lib.rs",
+                            "line": 2,
+                            "name": "Parcel",
+                            "kind": "Struct",
+                            "owner": null,
+                            "detail": null
+                          }
+                        },
+                        "kind": "Struct",
+                        "name": "Package"
+                      }
+                    },
+                    "spots": [
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 2,
+                        "column": 11
+                      },
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 5,
+                        "column": 22
+                      },
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 8,
+                        "column": 21
+                      },
+                      {
+                        "source": "public",
+                        "file": "src/lib.rs",
+                        "line": 9,
+                        "column": 4
+                      }
+                    ]
+                  }
+                },
+                "spoken": "I'd rename the `Parcel` struct to `Package` in 4 places."
+              }
+            ]
+          }
+        }
+      ],
+      "checks": {
+        "proposal_then_applied": false,
+        "nothing_pending": false,
+        "yes_no_write": true
+      },
+      "passed": false
+    },
+    {
+      "name": "two_source_routing",
+      "calls": [
+        {
+          "command": [
+            "/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline/glassmind",
+            "ask",
+            "-s",
+            "selected=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/selected",
+            "-s",
+            "other=/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/baseline-supplement/other",
+            "--apply",
+            "--json",
+            "rename function weigh to measure"
+          ],
+          "exit": 0,
+          "stdout": "{\"turn_id\":\"ask\",\"response\":{\"type\":\"edit\",\"changes\":[{\"source\":\"selected\",\"file\":\"src/lib.rs\",\"line\":5,\"column\":7,\"old\":\"weigh\",\"new\":\"measure\"}]},\"stage\":\"done\",\"understood\":5,\"tokens\":5,\"rules\":[\"en.utterance.command\",\"en.command.rename_verb\",\"en.rename.rename\",\"en.mention.kind_first\",\"en.rust.noun.function\",\"en.mention.thing\",\"en.noun_phrase.name\",\"en.into.to\",\"rust.lookup.exact\",\"rust.rename\",\"en.reply.proposal_one\",\"en.mention.the_kind\",\"en.noun_phrase.item\"],\"text\":\"I'd rename the `weigh` function to `measure` in one place.\",\"canonical\":\"Rename the `weigh` function to `measure`\"}\nApplied 1 changes. Nothing was committed.\n",
+          "stderr": ""
+        }
+      ],
+      "checks": {
+        "selected_changed": true,
+        "other_unchanged": true,
+        "checked_success": false
+      },
+      "passed": false
+    }
+  ],
+  "passed": 1,
+  "total": 4,
+  "fixture_hashes": {
+    "bounded/Cargo.toml": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e",
+    "bounded/src/lib.rs": "7183fc1209ad185a634e62ee47e0577df32f4334a039490237dd7c511f3013d2",
+    "broken/Cargo.toml": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e",
+    "broken/src/lib.rs": "6354ecb9c97e017e5d5ddc72e0a87eb2c6b31b5f932b0424abe372f6bdea6d65",
+    "multifile/Cargo.toml": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e",
+    "multifile/src/lib.rs": "2a6d6341f7e5ba36b483e7628fcfe64972996daba23abc067f4e7ef70e80eaa8",
+    "multifile/src/parcel.rs": "72a6b0d27268e6d2735c17a6c98cfa70fb442e34e05618c6074941bf1eb9ca02",
+    "routing/Cargo.toml": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e",
+    "routing/src/lib.rs": "ea4161e24e01000145bdb8d3659e43db27d952a74fc1c7d5206b2870bba433e4",
+    "valid/Cargo.toml": "cbdc2660b52de93357ea4d0c2299f1f6d189f8a1181a5ca51a15a6d06a768d7e",
+    "valid/src/lib.rs": "c2998a9d76141f9b888f8449045756f346ac98f3080c5dbf51edb94153407363"
+  }
+}
