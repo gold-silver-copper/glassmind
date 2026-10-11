@@ -1,111 +1,81 @@
 # Continuous development checkpoint
 
-## Authoritative current state — 2026-10-11 UTC, field-owner dev complete; percentage integration next
+## Authoritative current state — 2026-10-11 UTC, percentage batch validated
 
-Goal active under `prompts/grow-continuously.md`; no blocker. This section
-supersedes older ACTIVE/pending labels. WORK=`/home/gsc/.cache/glassmind/continuous-20261010`.
-Branch `harness`, HEAD runtime4a06d788e923ca29e40ddc1e6f5d0e8d50f20015.
-The last turn restated the prompt without progress; this continuation completed
-publishing, independent replay and launched the next bounded experiment.
+Goal active under prompts/grow-continuously.md. This section supersedes older
+ACTIVE/pending labels. WORK=/home/gsc/.cache/glassmind/continuous-20261010;
+branch harness; runtime408d16b9f52c20ec9d9b6ed3e8c0787131b55a79.
+No blocker, model worker or parent job remains live. Old stopped dirty loop untouched.
 
-PR27 is MERGED: https://github.com/gold-silver-copper/glassmind/pull/27
-Merge9ee1749dcc8100c08b1af9c3985a32cdd22365bf at2026-10-11T08:19:57Z;
-exacthead5af9c4067d12d1f7a0ee05af14b84af4b321f68c; CI38124307162SUCCESS.
-Push84962/create80896/merge24963 COMPLETE. Do not repeat checks or merge.
-Published runtime47b6b285b5cd23f0580600dcda3011689ab20da1, binary
-bd7df8f882bf3fb2d1a5ac4c86ce77083e6305949953630030285256562747dd.
-Includes exact identifier spelling/roles, typed story routing and buffered JSON.
-Coding full765 at5f2859a/ca120ec6:174passes591refusals0fail, every outcome unchanged.
-42/42roles vs33/42; eight independent spelling checks safe, seven behavior-tested
-edits. Full1340grammar/120reading parse outputs unchanged.43Englishtests pass.
-Conversation490social+134memory both modes;122boundary checks each, goodbye6/7,
-calc27/story47/facts36+16/stale2 all pass. CLINC3100 routing1303->1305, all old
-correct retained, no new wrong, same40inherited wrong accepted. Separate routing
-diagnostic, not classifier accuracy. Full3987story/47625turn and2821fact replies
-byte-identical.17conversationtests/workspace gates pass. Model/thresholds unchanged.
-Five interleaved startups2.5866s ->.0933s, identical replies; concurrent jobs, no
-cold-cache claim. Ten malformed/missing cases and saved state remain compatible.
-All final coding/conversation jobs COMPLETE; do not repeat. Detailed reports in
-tools/coding-identifier-roles, tools/conversation/route-authority and buffered-loading.
-Original worker archives and repository copies reverified; inactive trees/auth
-links removed. Wrapper EOF/report-path typo/interrupted unbuffered run retained,
-none credited as passing. Final buffered replay complete.
+PR27 MERGED9ee1749dcc8100c08b1af9c3985a32cdd22365bf at08:19:57Z,
+exacthead5af9c4067d12d1f7a0ee05af14b84af4b321f68c,CI38124307162SUCCESS.
+Publishes identifier spelling/roles, conversation authority and buffered loading.
+Code contracts33->42, all8spelling probes safe; full765174/591/0 unchanged.
+Conversation490social+134memorybothmodes, full3100routing1303->1305 correct,
+alloldcorrect retained/no newwrong, inherited40wrong unchanged. Full3987story/
+47625turns and2821fact replies byte-identical. Medianstartup2.5866->.0933s from
+five paired fresh processes with concurrentjobs, not cold-cache/isolated-system.
+All required checks complete; original errors/partialattempts remain documented.
+Reports tools/coding-identifier-roles, tools/conversation/route-authority,
+tools/conversation/buffered-loading. Do not repeat PR27 checks/merge.
 
-FIELDOWNERS accepted after local integration and full dev. Original282files/1,130,972
-bytes archived atWORK/fieldowners-run/submitted. All3189raw artifact hashes pass;
-four removed worktree paths resolve to archived copies. Only glassmind-accepted
-SHA19d2770f8a43cdd9037b8a46747d5a428489b567dcdfd63e40e1bc1e011fb621 and
-accepted-*/regressions-accepted reports are final. Earlier final-* and
-`glassmind-candidate` are stale v3 after a failed build; preserve, exclude.
-Exact two source files integrated at4a06d788e923ca29e40ddc1e6f5d0e8d50f20015;
-release binary8e52835c22bbb335a10fa4f3c9b175f1e7db07b0f5b895803adbcb35a8cc431d
-retained atWORK/coordinator/fieldowners-review/glassmind-integrated.
-Parent worker-binary replay and integrated sample/full/audit reproduce all16+4
-outcomes, source hashes and replies:12expected refusals ->16/16 with4exact edits;
-all four supplemental refusals unchanged. Every original before/after native
-behavior test executed. Workspace fmt/clippy/release/strict4smoke,27unit tests,
-4isolation tests pass. Initial parent test command omitted CARGO_TARGET_DIR and
-2isolation tests unwrapped missing environment; original log retained. Rerunonly
-four unchanged isolation tests with env set, then previously unrun fixture probes.
-A subsequent test-only helper fix supplies its own target fallback when
-CARGO_TARGET_DIR is absent, preserving all assertions. All4 isolationtests pass
-both unset and explicit target; fmt/scopedalltargetclippy pass. Sessions74949 and
-33799 COMPLETE. Runtime/binary unchanged. Completed sessions25584(worker replay),7302(initial
-workspace/test script exit101),70336(corrected continuation),25291(independent replay).
-Do not poll/restart them. Parent report tools/coding-field-owners/PARENT.md.
-Original export26/27 and AddField14/15 mismatches remain unchanged worker evidence.
+PR28 MERGED1eec9e659f09d2553f3b1860c54c725e4aa9e7ca at08:30:35Z,
+exacthead4d964a8a5f55e467fd825595e5770e25802af862,CI38124942602SUCCESS.
+Push39304/create88275/merge68284 COMPLETE. Do not repeat.
+FIELDOWNERS runtime4a06d788e923ca29e40ddc1e6f5d0e8d50f20015, binary
+8e52835c22bbb335a10fa4f3c9b175f1e7db07b0f5b895803adbcb35a8cc431d.
+Parent original16+4 and independent21 all reproduce exact edits/refusals and
+before/after native behavior; six independent edits include one inherited.
+Full765 COMPLETE23591:174passes591refusals0fail, everyoutcome unchanged,
+result6bb70923ac905413d059f4882ca7edf88b90a2707fe244bbd531bc85bb36cb34.
+27world unit +4isolation tests/workspace pass. Parent initially omitted required
+CARGO_TARGET_DIR; original2isolationfailures retained, corrected env4pass. A later
+test-only fixture fallback (caf8ece) preserves assertions and passes all4bothwith
+andwithout env; fmt/clippy pass. Runtime unchanged by test helper.
+Original282files/3189raw hashes andreview233files/231manifest/fiveidentities/two
+freezes verified. All513repositorycopies match. Inactive trees/login links removed
+only after repeatverification. Stale v3 final-* files are excluded, accepted-*
+only authoritative. Export26/27 andAddField14/15 inheritedmismatches remain.
+All parent sessions25584,7302(exit101initialenv),70336,25291,74949,33799 COMPLETE.
+Raw WORK/coordinator/fieldowners-review andfieldowners-full; reports
+ tools/coding-field-owners/PARENT.md andcoding-field-owners-review. No repeatfull765.
 
-FIELDREVIEW COMPLETE:233files353733bytes archived atWORK/fieldreview-run/submitted;
-all archive entries,231review manifest entries, five identities and two frozen
-files verified.21independent
-cases: six exact edits including one inherited, fifteen unchanged refusals.
-No unsafe accepted edit found in bounded scope; no general Rust proof. Parent
-integrated release reproduces all21 plus fixedsample; native behavior before/after
-passes. Nested opposing owners, paths, struct updates, Unicode/CRLF covered.
-Worker runtime restored; archive+232repository copies verified before removing
-inactive worktree/login link. Fieldowner archive+281copies also match; tree/auth
-removed. Reports tools/coding-field-owners-review. All513copies preserved.
+PERCENTCHANGE accepted after independent integration; not yet published.
+Original41files3,022,535bytes archived atWORK/percentchange-run/submitted;
+18freezeidentities/35artifact entries verified,36source/reportcopies match.
+Original32smallreports/adapters copied; fullledger/predictions external andindexed
+byoriginalARTIFACTS. Inactive workerworktree/login link removed afterreverification.
+Exact four source/test files integrated at408d16b9f52c20ec9d9b6ed3e8c0787131b55a79.
+Finalmainbinary20594291e08e216596645ac21355eca216f8cadfb12cd20e66d7fd71350634f6;
+quantitybinary5a94dba0b893fafed21906c2150e51de7fab94c67cadefba10008b2a187e4b9f.
+Both retained WORK/coordinator/percentchange-review/glassmind-{integrated,quantities}.
+All4475dev:22->29correct,4450->4443refused,3wrongunchanged. Bothv3andlegacy metrics;
+all25originalanswerpayloads retained, zero newwrong/unscorable. Allsample/full
+predictions/ledgers/reports byte-identical toworker. Fullprediction SHA
+98447f585880c5600b76b6bd949c4d7bfbb1f0754825ce2ee3404ef745813ebc.
+Parent separately rescoredfrozenpredictions, reviewedall7derivations, andadded78
+independent rational/domain/reference checks. All38workerprobes/3116synthetic
+triples/50linear/55absolute checks reproduceoriginalreports exactly. Twelvequantity
+tests andworkspacefmt/clippy/release/strict4smoke pass. Main talk78eachmode includes
+56correctcalculations and22no-calculationchecks, notclaimsaboutotherreplysemantics.
+Bothmodes490social+134memory pass;calc27/story47/facts36+16/stale2 pass. Sourcechanges
+since4a06d78 onlyquantities+testhelper; coding/English/CLI paths unchanged, so no
+repeatfull765 claimed. BoundedTRAIN-derivedgrammars andannualcompoundingassumptions
+remainexplicit; notgeneralwordproblemorofficialmultiple-choiceaccuracy.
+Parent sessions79620(integrationfull) and32820(talk) COMPLETEexit0. No jobs remain.
+Reports tools/quantities/percent-change/PARENT.md +parent/, docs/results/numbers-percent-change.json.
+Raw WORK/coordinator/percentchange-review. Knowncompletedworker tokens116,217,906,
+cachedinputcountedonce;parent/interrupted/unfinishedexcluded. Workeroriginalbinary
+quantitiese94f0ba1 andmain6e1de532 retained; archivepatch60cda8ec versusworker53578ccc
+prefixdifference, exactsourcehashes checked beforeintegration. No newdata/model.
 
-Full765 is COMPLETE, session23591 exited0. All174oldpasses retained,591refusals,
-zero failures; every765outcome unchanged. Result SHA
-6bb70923ac905413d059f4882ca7edf88b90a2707fe244bbd531bc85bb36cb34.
-Exact outcome comparer passes; docs/results/coding-field-owners.json. Do not
-repeat/poll completed run. Command was:
-GLASSMIND=WORK/coordinator/fieldowners-review/glassmind-integrated
-GLASSMIND_SCRATCH=WORK/coordinator/fieldowners-full/native-scratch
-tools/rustbench-dev.sh WORK/coordinator/fieldowners-full.
-8GiB/0swap scopes,setsid--wait,diskTMPDIR,timeout and10s kill grace.
-Baseline WORK/coordinator/identifierroles-full/results.jsonl SHA
-cc1daf8604b72ca88978b6c3580c9af5f43b4194bc9980ddb33c0a330f7fa631.
-Full integration gate passed. Field-only publishing is next; percentage runtime
-is not integrated and must remain out of this PR.
-
-PERCENTCHANGE COMPLETE, promising but not integrated. Original41files/3,022,535
-bytes archived/hashverified atWORK/percentchange-run/submitted;18freeze identities
-and35artifact entries verified. Scope inactive; originalworktree/loginlink remain.
-Worker full4475:22->29correct,4450->4443refused,3wrong unchanged, all25answered
-payloads retained;3116synthetic triples unchanged. Scoped12tests/fmt/clippy/debug
-CLI build;38probes/linear50/absolute55 pass. Parent original-prediction rescore
-reproduces full report;78independent rational/domain/reference checks pass, all7
-newanswers independently reviewed. Exact baseline sparse25answer scope disclosed.
-No post-full changes. Core is explicit bound percentage stages, not relative motion.
-Original worker binaries WORK/percentchange-run/candidate/glassmind-quantities
-SHAe94f0ba1b05ce12aee1dfd015815af0f6825bf0f3049c0501fb2a5eb2cfacf15,
-main6e1de5323493f759231525cd5347eb0324a851f469a300d3c3de89970af6f9a1.
-Archivepatch60cda8ec8f1389fa077bbb683ba8d6682dcb08dfb0dd96a909e01b9bdd21fb29;
-workerpatch53578ccc5629ea02bfd366d973413420640fc6d19564abf966e029e42b0df7bd.
-32small original reports/adapters copied into UNTRACKED tools/quantities/percent-change;
-full ledger/predictions remain external (originalARTIFACTS indexes fullarchive).
-Parent raw WORK/coordinator/percentchange-review (independent.py/json,frozen-cases,
-rescore/). Next integrate exact archived source after field PR opens, run final
-release full4475/synthetic and conversation regressions, then publish separately.
-No active model workers or parent benchmark jobs now. Old dirty loop untouched.
-Known completed worker tokens116,217,906 inclcachedinput once; parentexcluded.
-External PR27 five-line milestone already appended.
-
-Next: push/open field-ownership PR with all gates passed, then exact-head CI merge.
-Continue percentage integration from the verified archive; do not restart worker. Keep both coding and conversation moving and periodically revisit weak
-reading/dialogue coverage with a new measurable hypothesis. Goal remains active.
+Next: commit/push verified percentage reports and open PR29, then exact-head CI
+merge. Preserve currentbenchmarks/README consistency. Choose next useful bounded
+experiment from weak dialogue/reading or coding TRAIN/DEV evidence; no active
+worker to restart. Keep both coding andconversation moving, nevermarkgoaldone
+for a milestone. ExternalPR27five-line milestone alreadyappended; nextmajorlog
+can combinePR28/29 afterpercentagepublishing. Latestreport/journalchanges are
+uncommitted; no further behavior tests needed absent newchanges/concerns.
 
 ## Historical checkpoint before final route replay — superseded below
 

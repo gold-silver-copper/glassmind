@@ -1,0 +1,103 @@
+{
+  "decision": "accepted after independent review and integrated full dev",
+  "commit": "408d16b9f52c20ec9d9b6ed3e8c0787131b55a79",
+  "binary_sha256": "20594291e08e216596645ac21355eca216f8cadfb12cd20e66d7fd71350634f6",
+  "quantities_binary_sha256": "5a94dba0b893fafed21906c2150e51de7fab94c67cadefba10008b2a187e4b9f",
+  "mathqa": {
+    "baseline_limit": "Sparse missing indices implied refusals; full hash/order and all answer records verified",
+    "correct_losses": {
+      "production": []
+    },
+    "full_total": 4475,
+    "gate": true,
+    "legacy_scores": {
+      "candidate": {
+        "correct": 29,
+        "refused": 4443,
+        "wrong": 3
+      },
+      "production": {
+        "correct": 22,
+        "refused": 4450,
+        "wrong": 3
+      }
+    },
+    "legacy_unparseable_full": 1229,
+    "metric": "exact-label-comparison-v3",
+    "new_bad": [],
+    "original_answers_unchanged": true,
+    "scores": {
+      "candidate": {
+        "correct": 29,
+        "refused": 4443,
+        "wrong": 3
+      },
+      "production": {
+        "correct": 22,
+        "refused": 4450,
+        "wrong": 3
+      }
+    },
+    "total": 4475,
+    "transitions": {
+      "production": {
+        "correct -> correct": 22,
+        "refused -> correct": 7,
+        "refused -> refused": 4443,
+        "wrong -> wrong": 3
+      }
+    }
+  },
+  "full_predictions_sha256": "98447f585880c5600b76b6bd949c4d7bfbb1f0754825ce2ee3404ef745813ebc",
+  "all_sample_full_predictions_ledgers_reports_byte_identical_worker": true,
+  "synthetic_regressions": {
+    "synthetic": {
+      "total": 3116,
+      "right": 3056,
+      "refused": 60,
+      "wrong": 0,
+      "expected_refusals": 762,
+      "changes": [],
+      "baseline_canonical_sha256": "93b2bd1c9f8822af95a68d02663a90d122d24ca57d730c61c670e2b11079bbe9",
+      "candidate_canonical_sha256": "93b2bd1c9f8822af95a68d02663a90d122d24ca57d730c61c670e2b11079bbe9"
+    },
+    "novel": {
+      "source": "linearwords-local-development-v1",
+      "license": "MIT OR Apache-2.0",
+      "total": 50,
+      "bytes": 8380,
+      "sha256": "4fd43ddbce1fc5f0eda31934363aee05454ec1c77c77cafc737fec70ce8db299",
+      "failures": []
+    }
+  },
+  "worker_contracts": 38,
+  "parent_contracts": 78,
+  "absolute_contracts": 55,
+  "main_talk_contracts": {
+    "each_mode": 78,
+    "each_mode_calculated": 56,
+    "each_mode_no_calculation": 22
+  },
+  "social_each_mode": 490,
+  "memory_each_mode": 134,
+  "calc27": 27,
+  "story47": 47,
+  "factsets": 52,
+  "stale": 2,
+  "quantity_tests": 12,
+  "workspace": "fmt/clippy/release/strict4smoke pass",
+  "provenance": {
+    "archive_files": 41,
+    "freeze_identities": 18,
+    "artifact_entries": 35,
+    "source_and_report_copies": 36
+  },
+  "limitations": [
+    "Narrow TRAIN-derived productions, not broad word-problem understanding.",
+    "Standard annual compounding and nonnegative quantity assumptions are explicit; population results must be integral.",
+    "MathQA exact-label metric is not official multiple-choice accuracy; bare-label dimensions remain unchecked.",
+    "Three original wrong answers remain; all25 original answer payloads unchanged.",
+    "Only Problem enters runtime; full denominators, scorers and thresholds unchanged.",
+    "Full coding run is the unchanged world/English path at4a06d78; no repeat full765 claimed for quantity-only changes."
+  ]
+}

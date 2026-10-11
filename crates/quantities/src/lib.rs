@@ -5,6 +5,7 @@ mod linear;
 pub mod number_words;
 mod parser;
 mod percent;
+mod percent_change;
 mod ratio_total;
 pub mod rational;
 pub mod units;

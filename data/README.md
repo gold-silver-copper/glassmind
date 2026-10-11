@@ -497,3 +497,16 @@ are scoped development contracts, not independent benchmark accuracy.
 [independent review](../tools/coding-field-owners-review/HANDOFF.md), and
 [parent validation](../tools/coding-field-owners/PARENT.md) preserve frozen hashes,
 failed iterations, conservative refusals and the completed full-dev gate.
+
+
+## Explicit percentage changes (2026-10-11 UTC)
+
+The same pinned MathQA TRAIN/DEV files and unchanged exact-label-v3/legacy scorers
+are reused. Design reads only Problem text from the first4000 TRAIN rows;160
+matching texts total39,443 bytes under the source's Apache-2.0 terms. New authored
+38-probe inputs total5,295 bytes, MIT OR Apache-2.0. No downloaded bytes, new model
+or dependency. The parent adds78 independent rational/domain/reference checks.
+All4475 DEV predictions take only Problem text; options/answers stay evaluator-side.
+[Provenance and frozen design](../tools/quantities/percent-change/HANDOFF.md) and
+[independent integrated validation](../tools/quantities/percent-change/PARENT.md)
+record seven new justified answers, retained failures and compounding assumptions.

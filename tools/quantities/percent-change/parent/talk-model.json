@@ -1,0 +1,922 @@
+{
+  "mode": "model",
+  "total": 78,
+  "passed": 78,
+  "positives": 56,
+  "rows": [
+    {
+      "question": "0 is increased by 0% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "0 is decreased by 0% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "0 is increased by 25% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "0 is decreased by 25% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "0 is increased by 100% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "0 is decreased by 100% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "0 is increased by 125% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "0 is decreased by 125% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "13 is increased by 0% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "13",
+        "value": "13",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "13"
+    },
+    {
+      "question": "13 is decreased by 0% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "13",
+        "value": "13",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "13"
+    },
+    {
+      "question": "13 is increased by 25% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "65/4",
+        "value": "65/4",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "65/4"
+    },
+    {
+      "question": "13 is decreased by 25% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "39/4",
+        "value": "39/4",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "39/4"
+    },
+    {
+      "question": "13 is increased by 100% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "26",
+        "value": "26",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "26"
+    },
+    {
+      "question": "13 is decreased by 100% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "13 is increased by 125% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "117/4",
+        "value": "117/4",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "117/4"
+    },
+    {
+      "question": "13 is decreased by 125% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "72 is increased by 0% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "72",
+        "value": "72",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "72"
+    },
+    {
+      "question": "72 is decreased by 0% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "72",
+        "value": "72",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "72"
+    },
+    {
+      "question": "72 is increased by 25% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "90",
+        "value": "90",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "90"
+    },
+    {
+      "question": "72 is decreased by 25% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "54",
+        "value": "54",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "54"
+    },
+    {
+      "question": "72 is increased by 100% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "144",
+        "value": "144",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "144"
+    },
+    {
+      "question": "72 is decreased by 100% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "72 is increased by 125% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "162",
+        "value": "162",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "162"
+    },
+    {
+      "question": "72 is decreased by 125% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "a number increased by 25 percent gives 15 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "12",
+        "value": "12",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "12"
+    },
+    {
+      "question": "a number reduced by 25 percent gives 15 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "20",
+        "value": "20",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "20"
+    },
+    {
+      "question": "a number increased by 50 percent gives 18 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "12",
+        "value": "12",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "12"
+    },
+    {
+      "question": "a number reduced by 50 percent gives 18 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "36",
+        "value": "36",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "36"
+    },
+    {
+      "question": "a number increased by 100 percent gives 0 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0",
+        "value": "0",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "a number reduced by 100 percent gives 0 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "a number increased by 125 percent gives 9 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "4",
+        "value": "4",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "4"
+    },
+    {
+      "question": "a number reduced by 125 percent gives 9 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "increasing the original cost of an engine by 25 percent and then increasing the new cost by 20 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "50 percent",
+        "value": "50",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "50"
+    },
+    {
+      "question": "increasing the original cost of an engine by 25 percent and then decreasing the new cost by 20 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "0 percent",
+        "value": "0",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "0"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 25 percent and then increasing the new cost by 20 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "10 percent",
+        "value": "10",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "10"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 25 percent and then decreasing the new cost by 20 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "40 percent",
+        "value": "40",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "40"
+    },
+    {
+      "question": "increasing the original cost of an engine by 50 percent and then increasing the new cost by 50 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "125 percent",
+        "value": "125",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "125"
+    },
+    {
+      "question": "increasing the original cost of an engine by 50 percent and then decreasing the new cost by 50 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "25 percent",
+        "value": "25",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "25"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 50 percent and then increasing the new cost by 50 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "25 percent",
+        "value": "25",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "25"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 50 percent and then decreasing the new cost by 50 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "75 percent",
+        "value": "75",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "75"
+    },
+    {
+      "question": "increasing the original cost of an engine by 10 percent and then increasing the new cost by 10 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "21 percent",
+        "value": "21",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "21"
+    },
+    {
+      "question": "increasing the original cost of an engine by 10 percent and then decreasing the new cost by 10 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "1 percent",
+        "value": "1",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "1"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 10 percent and then increasing the new cost by 10 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "1 percent",
+        "value": "1",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "1"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 10 percent and then decreasing the new cost by 10 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "19 percent",
+        "value": "19",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "19"
+    },
+    {
+      "question": "increasing the original cost of an engine by 0 percent and then increasing the new cost by 75 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "75 percent",
+        "value": "75",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "75"
+    },
+    {
+      "question": "increasing the original cost of an engine by 0 percent and then decreasing the new cost by 75 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "75 percent",
+        "value": "75",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "75"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 0 percent and then increasing the new cost by 75 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "75 percent",
+        "value": "75",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "75"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 0 percent and then decreasing the new cost by 75 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "75 percent",
+        "value": "75",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "75"
+    },
+    {
+      "question": "increasing the original cost of an engine by 100 percent and then increasing the new cost by 40 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "180 percent",
+        "value": "180",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "180"
+    },
+    {
+      "question": "increasing the original cost of an engine by 100 percent and then decreasing the new cost by 40 percent is equivalent to increasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "20 percent",
+        "value": "20",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "20"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 100 percent and then increasing the new cost by 40 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "100 percent",
+        "value": "100",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "100"
+    },
+    {
+      "question": "decreasing the original cost of an engine by 100 percent and then decreasing the new cost by 40 percent is equivalent to decreasing the original cost by what percentage",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "100 percent",
+        "value": "100",
+        "unit": "percent",
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "100"
+    },
+    {
+      "question": "the present population of city amber is 64 . population increase rate is 25 percent p . a . find the population of city before 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the present population of city amber is 64 . population increase rate is 25 percent p . a . find the population of city after 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "100",
+        "value": "100",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "100"
+    },
+    {
+      "question": "the present population of city amber is 64 . population decrease rate is 25 percent p . a . find the population of city before 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the present population of city amber is 64 . population decrease rate is 25 percent p . a . find the population of city after 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "36",
+        "value": "36",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "36"
+    },
+    {
+      "question": "the present population of city amber is 100 . population increase rate is 10 percent p . a . find the population of city before 0 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "100",
+        "value": "100",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "100"
+    },
+    {
+      "question": "the present population of city amber is 100 . population increase rate is 10 percent p . a . find the population of city after 0 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "100",
+        "value": "100",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "100"
+    },
+    {
+      "question": "the present population of city amber is 100 . population decrease rate is 10 percent p . a . find the population of city before 0 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "100",
+        "value": "100",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "100"
+    },
+    {
+      "question": "the present population of city amber is 100 . population decrease rate is 10 percent p . a . find the population of city after 0 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "100",
+        "value": "100",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "100"
+    },
+    {
+      "question": "the present population of city amber is 80 . population increase rate is 50 percent p . a . find the population of city before 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the present population of city amber is 80 . population increase rate is 50 percent p . a . find the population of city after 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "180",
+        "value": "180",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "180"
+    },
+    {
+      "question": "the present population of city amber is 80 . population decrease rate is 50 percent p . a . find the population of city before 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "320",
+        "value": "320",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "320"
+    },
+    {
+      "question": "the present population of city amber is 80 . population decrease rate is 50 percent p . a . find the population of city after 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "calculated",
+        "text": "20",
+        "value": "20",
+        "unit": null,
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+      },
+      "expected": "20"
+    },
+    {
+      "question": "the present population of city amber is 5 . population increase rate is 10 percent p . a . find the population of city before 1 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the present population of city amber is 5 . population increase rate is 10 percent p . a . find the population of city after 1 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the present population of city amber is 5 . population decrease rate is 10 percent p . a . find the population of city before 1 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the present population of city amber is 5 . population decrease rate is 10 percent p . a . find the population of city after 1 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "a number increased by 20 percentage points gives 120 . the number is",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "70 is increased by 10% . find the final number and then add 4",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the present population of city amber is 80 . population increase rate is 25% p . a . find the population of town after 2 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "increasing the original cost of an engine by 20 percent and then increasing the new price by 30 percent is equivalent to increasing the original cost by what percent",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "expected": null
+    },
+    {
+      "question": "increasing the original price of an engine by 20 percent and then increasing the original price by 30 percent is equivalent to increasing the original price by what percent",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "expected": null
+    },
+    {
+      "question": "-20 is increased by 10% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "20 is increased by -10% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "20 is increased by 10% . find the initial number",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "20 is increased by 10% and reduced by 10% . find the final number",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    },
+    {
+      "question": "the population of a city is 100 . it decreases annually at the rate of 125% . what will be its population after 0 years",
+      "passed": true,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "expected": null
+    }
+  ]
+}

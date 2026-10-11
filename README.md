@@ -116,8 +116,8 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
 | Multi-service dialogue, SGD three-service dev subset | 610/1,119 exact routing-and-state turns; 50 refused; 459 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
-| Word problems, MathQA (numeric answers without choices) | 22/4,475 right; 4,450 refused; 3 wrong | pending |
-| Same MathQA scope, exact-label comparison v3 (separate rebaseline) | 22/4,475 label matches; 4,450 refused; 3 wrong; 0 unscorable answers | pending |
+| Word problems, MathQA (numeric answers without choices) | 29/4,475 right; 4,443 refused; 3 wrong | pending |
+| Same MathQA scope, exact-label comparison v3 (separate rebaseline) | 29/4,475 label matches; 4,443 refused; 3 wrong; 0 unscorable answers | pending |
 | Passage QA, SQuAD 1.1 (unverified proposals) | 23.95% raw normalized EM; selected: 815 right, 8,964 refused, 791 wrong / 10,570 | pending |
 | Passage QA, SQuAD2 public-dev baseline (same v1 reader) | 433 correct answers; 5,140 correct expected refusals; 5,064 unsupported; 1,236 wrong / 11,873 | pending |
 | Chat memory, calculations and stories | 490/490 routing and 134/134 memory checks in both model modes; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
@@ -384,3 +384,8 @@ from expected refusals. Its official selected EM is46.95%, below an always-refus
 comparator. One prediction ofA receives official normalization credit despite
 being a wrong substantive answer; the table and separate diagnostic retain it
 as wrong. No new reading model is deployed.
+
+Explicit forward/inverse percentage changes and successive changes now use the
+correct before/after base. Bounded annual population changes use exact compounding.
+MathQA dev improves22->29 correct with all prior answers retained; broad language
+coverage remains limited. [Scope and validation](tools/quantities/percent-change/PARENT.md).

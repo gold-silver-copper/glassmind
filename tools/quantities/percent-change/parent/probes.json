@@ -1,0 +1,779 @@
+{
+  "total": 38,
+  "baseline_pass": 16,
+  "candidate_pass": 38,
+  "cases": [
+    {
+      "question": "Increasing the original price of a lantern by 10 percent and then increasing the new price by 10 percent is equivalent to increasing the original price by what percent?",
+      "expected": "21",
+      "unit": "percent",
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "21",
+          "unit": "percent",
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "Increasing the original price of a violin by 25 percent and then increasing the new price by 20 percent is equivalent to increasing the original price by what percent?",
+      "expected": "50",
+      "unit": "percent",
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "50",
+          "unit": "percent",
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "Increasing the original price of a basket by 12 percent and then increasing the new price by 15 percent is equivalent to increasing the original price by what percent?",
+      "expected": "144/5",
+      "unit": "percent",
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "144/5",
+          "unit": "percent",
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "Increasing the original price of a kettle by 0 percent and then increasing the new price by 30 percent is equivalent to increasing the original price by what percent?",
+      "expected": "30",
+      "unit": "percent",
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "30",
+          "unit": "percent",
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "75 is increased by 20%. Find the final number.",
+      "expected": "90",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "90",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number increased by 20% gives 90. The number is",
+      "expected": "75",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "75",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "120 is increased by 25%. Find the final number.",
+      "expected": "150",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "150",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number increased by 25% gives 150. The number is",
+      "expected": "120",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "120",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "0 is increased by 10%. Find the final number.",
+      "expected": "0",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "0",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number increased by 10% gives 0. The number is",
+      "expected": "0",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "0",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "200 is increased by 100%. Find the final number.",
+      "expected": "400",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "400",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number increased by 100% gives 400. The number is",
+      "expected": "200",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "200",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number is increased by 20% and then decreased by 20%. What is the percentage decrease?",
+      "expected": "4",
+      "unit": "percent",
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "4",
+          "unit": "percent",
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number is increased by 50% and then decreased by 50%. What is the percentage decrease?",
+      "expected": "25",
+      "unit": "percent",
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "25",
+          "unit": "percent",
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number is increased by 30% and then decreased by 10%. What is the percentage increase?",
+      "expected": "17",
+      "unit": "percent",
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "17",
+          "unit": "percent",
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The population of town mira is 10000. It increases annually at the rate of 10%. What will be its population after 2 years?",
+      "expected": "12100",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "12100",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The present population of town mira is 12100. Population increase rate is 10% p. a. Find the population of town before 2 years?",
+      "expected": "10000",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "10000",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The population of town luma is 8000. It increases annually at the rate of 20%. What will be its population after 3 years?",
+      "expected": "13824",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "13824",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The present population of town luma is 13824. Population increase rate is 20% p. a. Find the population of town before 3 years?",
+      "expected": "8000",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "8000",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The population of town cedar is 1000. It increases annually at the rate of 50%. What will be its population after 2 years?",
+      "expected": "2250",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "2250",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The present population of town cedar is 2250. Population increase rate is 50% p. a. Find the population of town before 2 years?",
+      "expected": "1000",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "1000",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "90 is decreased by 100%. Find the final number.",
+      "expected": "0",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": false
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "0",
+          "unit": null,
+          "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number decreased by 100% gives 0. The number is",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "division by zero"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "-20 is increased by 10%. Find the final number.",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "negative base"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "20 is increased by -10%. Find the final number.",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "negative change magnitude"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "20 is decreased by 101%. Find the final number.",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "decrease exceeds nonnegative quantity"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "20 is increased by 10 percentage points. Find the final number.",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "20 is increased by 10%. Find the final number. Also add 5.",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number increased by 20% gives 120. The number is 90. The number is",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "Increasing the original price of a lantern by 10 percent and then increasing the new cost by 10 percent is equivalent to increasing the original price by what percent?",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "conflicting quantity reference"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "Increasing the original price of a lantern by 10 percent and then increasing the original price by 10 percent is equivalent to increasing the original price by what percent?",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The present population of a city is 1440. Population increase rate is 20% p. a. Find the population of village before 2 years?",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "conflicting population reference"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "The population of a town is 1. It increases annually at the rate of 10%. What will be its population after 1 year?",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "invalid number"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "expected a whole number"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number is increased by x percent and then decreased by y percent. What is the percentage increase?",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "20 dollars is increased by 10%. Find the final number.",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "20 is changed by 10%. Find the final number.",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "A number is increased by 20% and then decreased by 20%. What is the percentage increase?",
+      "expected": null,
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "refusal",
+          "reason": "unsupported English cardinal"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "refusal",
+          "reason": "requested direction conflicts with change"
+        },
+        "passed": true
+      }
+    },
+    {
+      "question": "What is 20 percent of 120?",
+      "expected": "24",
+      "unit": null,
+      "baseline": {
+        "actual": {
+          "status": "answer",
+          "value": "24",
+          "unit": null,
+          "method": "exact percentage relation"
+        },
+        "passed": true
+      },
+      "candidate": {
+        "actual": {
+          "status": "answer",
+          "value": "24",
+          "unit": null,
+          "method": "exact percentage relation"
+        },
+        "passed": true
+      }
+    }
+  ],
+  "source": "authored development probes v1",
+  "license": "MIT OR Apache-2.0"
+}

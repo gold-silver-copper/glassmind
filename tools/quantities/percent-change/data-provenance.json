@@ -1,0 +1,33 @@
+{
+  "new_download_bytes": 0,
+  "source_version": "fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6",
+  "source_license": "Apache-2.0 (supplied AllenAI card)",
+  "source_files": {
+    "train.parquet": {
+      "bytes": 9013733,
+      "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    "validation.parquet": {
+      "bytes": 1350141,
+      "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+    },
+    "source-card.md": {
+      "bytes": 7438,
+      "sha256": "8051c9a1e42245600985ff1b890dfe3ecce804c47555d83ca7a02a2e3f4b4cc2"
+    }
+  },
+  "derived_train_text": {
+    "bytes": 39443,
+    "sha256": "63f71b219fcb2c756e22bb690a0b5326cb34afbdd5140590f5ad452d8191abd7",
+    "license": "Apache-2.0",
+    "selected_rows": 160,
+    "design_scope": "Problem only, indices0..3999; selected text containing increas/decreas/% more/% less and percent/%"
+  },
+  "authored_probes": {
+    "bytes": 5295,
+    "sha256": "06b35307604e3cc7125697dfa55cf3cce0b503ca83beb9207fd195e463434ff3",
+    "version": "percent-change-public-development-v1",
+    "license": "MIT OR Apache-2.0",
+    "rows": 38
+  }
+}
