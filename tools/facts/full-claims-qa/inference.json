@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims-qa/predictor",
+    "predict-disk",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+    "--database",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims/native.sqlite"
+  ],
+  "seconds": 1.0158694259589538,
+  "returncode": 0,
+  "questions": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims-qa/cal-questions.txt",
+    "bytes": 80196,
+    "sha256": "c1cb8845f5429c3d5af90d7b9f399cdc5f92c583bafcbb93838747645109150a"
+  },
+  "predictions": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims-qa/cal-predictions.jsonl",
+    "bytes": 180480,
+    "sha256": "f08932cc85301d5c3354ced2d87e46a2f7d81c6b7f207c4443464831c4c0e93c"
+  }
+}

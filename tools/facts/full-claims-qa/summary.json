@@ -1,0 +1,199 @@
+{
+  "scope": "existing every-tenth TRAIN CAL; independent public full86-shard graph",
+  "total": 1949,
+  "strict_joint_gain": 552,
+  "link_counts": {
+    "baseline": {
+      "linked": 594,
+      "correct_entity": 153,
+      "correct_entity_and_relation": 146
+    },
+    "candidate": {
+      "linked": 1013,
+      "correct_entity": 843,
+      "correct_entity_and_relation": 792
+    }
+  },
+  "transitions": {
+    "right_to_right": 2,
+    "right_to_refused": 0,
+    "right_to_wrong": 0,
+    "refused_to_right": 538,
+    "refused_to_refused": 1296,
+    "refused_to_wrong": 29,
+    "wrong_to_right": 14,
+    "wrong_to_refused": 69,
+    "wrong_to_wrong": 1
+  },
+  "promotion_prerequisite_passed": false,
+  "native_cal_knowledge_diagnostic": {
+    "counts": {
+      "total": 1949,
+      "annotated_entity_present": 1946,
+      "annotated_entity_has_eligible_alias": 1946,
+      "entity_link_correct": 843,
+      "entity_and_relation_correct": 792
+    },
+    "present_anchor_directions": {
+      "R": 460,
+      "P": 1486
+    },
+    "local_claim_categories_for_present_anchors": {
+      "nonunique_including_gold": 663,
+      "unique_gold": 1213,
+      "gold_absent_from_nonempty": 52,
+      "missing": 18
+    }
+  },
+  "seconds": 35.57179739896674,
+  "limitations": "Development CAL, existing trained relation model, complete publisher release with its stated scope, exact annotated IDs without redirect rewriting; no held-out or current-truth claim.",
+  "baseline": {
+    "answer_only": {
+      "right": 26,
+      "refused": 1863,
+      "wrong": 60
+    },
+    "joint_entity_relation_answer": {
+      "right": 2,
+      "refused": 1863,
+      "wrong": 84
+    }
+  },
+  "candidate": {
+    "answer_only": {
+      "right": 558,
+      "refused": 1365,
+      "wrong": 26
+    },
+    "joint_entity_relation_answer": {
+      "right": 554,
+      "refused": 1365,
+      "wrong": 30
+    }
+  },
+  "newly_wrong_count": 29,
+  "lost_correct_count": 0,
+  "newly_wrong_categories": {
+    "wrong_relation": 7,
+    "wrong_anchor": 12,
+    "source_answer_disagreement": 10
+  },
+  "failure_categories": [
+    {
+      "train_index": 550,
+      "category": "wrong_relation"
+    },
+    {
+      "train_index": 860,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 1000,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 1360,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 1590,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 1820,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 3380,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 3990,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 4270,
+      "category": "wrong_relation"
+    },
+    {
+      "train_index": 4760,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 5740,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 5950,
+      "category": "wrong_relation"
+    },
+    {
+      "train_index": 6590,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 7350,
+      "category": "wrong_relation"
+    },
+    {
+      "train_index": 7820,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 10310,
+      "category": "wrong_relation"
+    },
+    {
+      "train_index": 10500,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 11540,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 12000,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 12970,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 13490,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 13700,
+      "category": "wrong_relation"
+    },
+    {
+      "train_index": 13870,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 14060,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 14540,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 16450,
+      "category": "wrong_relation"
+    },
+    {
+      "train_index": 16730,
+      "category": "source_answer_disagreement"
+    },
+    {
+      "train_index": 17320,
+      "category": "wrong_anchor"
+    },
+    {
+      "train_index": 17870,
+      "category": "source_answer_disagreement"
+    }
+  ]
+}
