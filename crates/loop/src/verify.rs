@@ -140,7 +140,13 @@ fn works(places: &Places, sources: &Path, label: &Label, check: &str, changes: &
     ) else {
         return false;
     };
-    let copy = places.scratch.join(source);
+    // A copy of its own: scorers run side by side (the loop's evaluations,
+    // ablations), and a shared copy let one remove another's.
+    static COPIES: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    let n = COPIES.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+    let copy = places
+        .scratch
+        .join(format!("{source}-{}-{n}", std::process::id()));
     let _ = std::fs::remove_dir_all(&copy);
     let ready = std::fs::create_dir_all(&copy)
         .map_err(|e| e.to_string())

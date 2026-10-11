@@ -17,6 +17,9 @@ struct Label {
     expected: Response,
 }
 
+/// The most words a request may have to teach the tagger from its label.
+const SHORT: usize = 12;
+
 /// The request a coding task's label names by itself, whatever the words
 /// typed: what the tagger learns for every such turn, answered right or not.
 /// (An edit or a feature to implement names no one request.)
@@ -192,8 +195,12 @@ pub fn intents(
             .filter_map(|l| {
                 let template = asked_by(&l.kind, &l.expected)?;
                 let text = texts.get(l.turn_id.as_str())?;
-                (!answered.contains(text))
-                    .then(|| (english.intent_words(text, m), template.to_owned()))
+                let words = english.intent_words(text, m);
+                // A long request says much besides what it asks (what the
+                // code does, what the error said): its words would count
+                // for the request.
+                let short = words.iter().filter(|w| !w.contains(' ')).count() <= SHORT;
+                (short && !answered.contains(text)).then(|| (words, template.to_owned()))
             })
             .collect()
     };

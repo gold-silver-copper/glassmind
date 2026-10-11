@@ -1,29 +1,29 @@
 # calibrated on the hidden texting-style dev set (497 turns), with word pairs: answering questions the model gives 0.9 or more, when no word typed points to another template, gave 449 right and none wrong (tagger off: 412); every threshold from 0.6 to 0.99 gave none wrong. From 0.3 up to that, it asks "did you mean".
-# held out: 767 of 846 right
-#   confidence 0.99+: 720/749 right (96.1%)
-#   confidence 0.95+: 14/22 right (63.6%)
-#   confidence 0.90+: 3/11 right (27.3%)
-#   confidence 0.80+: 11/19 right (57.9%)
-#   confidence 0.60+: 10/21 right (47.6%)
-#   confidence 0.40+: 6/15 right (40.0%)
-#   confidence 0.00+: 3/9 right (33.3%)
-examples	4231
+# held out: 737 of 810 right
+#   confidence 0.99+: 684/719 right (95.1%)
+#   confidence 0.95+: 12/24 right (50.0%)
+#   confidence 0.90+: 7/11 right (63.6%)
+#   confidence 0.80+: 9/14 right (64.3%)
+#   confidence 0.60+: 17/25 right (68.0%)
+#   confidence 0.40+: 4/10 right (40.0%)
+#   confidence 0.00+: 4/7 right (57.1%)
+examples	4050
 sure	0.9
 offer	0.3
-template	are there problems with the build	69
+template	are there problems with the build	32
 template	are there problems with the tests	7
 template	does the tests pass	10
-template	fix the build	376
-template	fix the tests	92
+template	fix the build	251
+template	fix the tests	74
 template	how many functions call <0>	330
 template	how many functions call a function named <0>	2
 template	rename <0> to <1>	181
 template	rename the <0> field to <1>	111
-template	rename the <0> function to <1>	39
+template	rename the <0> function to <1>	40
 template	what calls <0>	181
 template	what calls a function named <0>	1
 template	what does <0> call	81
-template	what does <0> do	449
+template	what does <0> do	448
 template	what does <0> have	81
 template	what does a field named <0> have	2
 template	what does a function named <0> call	1
@@ -39,7 +39,7 @@ template	where is the <0> field defined	2
 template	where is the <0> function defined	13
 template	where is the <0> struct defined	5
 template	which fields belong to <0>	43
-template	which fields belong to a struct named <0>	91
+template	which fields belong to a struct named <0>	90
 template	which fields does <0> have	115
 template	which fields does a struct named <0> have	165
 template	which fields have <0>	1
@@ -52,177 +52,157 @@ template	which structs have <0>	6
 template	which structs have a field named <0>	252
 template	which structs have a field whose type is or contains <0>	156
 template	which tests fail	1
-seen	's	18
-seen	's <n>	9
+seen	's	14
+seen	's <n>	5
 seen	's fields	5
 seen	's it	4
-seen	<n> 's	9
-seen	<n> <n>	325
-seen	<n> a	13
-seen	<n> about	13
-seen	<n> actually	12
-seen	<n> and	44
-seen	<n> are	4
-seen	<n> as	22
-seen	<n> at	22
+seen	<n> 's	6
+seen	<n> <n>	179
+seen	<n> about	4
+seen	<n> actually	8
+seen	<n> and	10
+seen	<n> are	3
+seen	<n> as	16
 seen	<n> broken	3
-seen	<n> build	73
-seen	<n> but	53
-seen	<n> by	3
-seen	<n> call	150
+seen	<n> build	41
+seen	<n> but	2
+seen	<n> by	2
+seen	<n> call	149
 seen	<n> called	20
 seen	<n> callees	5
 seen	<n> callers	6
 seen	<n> calling	5
 seen	<n> calls	127
-seen	<n> can	31
+seen	<n> can	21
 seen	<n> carry	4
 seen	<n> checking	4
-seen	<n> code	6
-seen	<n> compile	89
-seen	<n> compiling	34
+seen	<n> code	2
+seen	<n> compile	36
+seen	<n> compiling	31
 seen	<n> contains	2
-seen	<n> could	39
+seen	<n> could	22
 seen	<n> declared	10
 seen	<n> def	5
 seen	<n> defined	328
 seen	<n> definition	8
 seen	<n> defn	5
-seen	<n> do	119
-seen	<n> does	75
-seen	<n> don't	8
+seen	<n> do	118
+seen	<n> does	69
+seen	<n> don't	2
 seen	<n> end	2
 seen	<n> enum	3
-seen	<n> even	33
+seen	<n> even	31
 seen	<n> everywhere	3
-seen	<n> fails	23
-seen	<n> field	159
+seen	<n> fails	10
+seen	<n> field	155
 seen	<n> fields	27
-seen	<n> file	5
-seen	<n> find	41
+seen	<n> file	2
+seen	<n> find	17
 seen	<n> fix	26
 seen	<n> fn	26
-seen	<n> for	152
-seen	<n> found	2
-seen	<n> from	4
-seen	<n> function	17
+seen	<n> for	143
+seen	<n> function	13
 seen	<n> get	15
 seen	<n> gets	13
 seen	<n> getting	2
-seen	<n> go	2
 seen	<n> got	12
-seen	<n> has	29
+seen	<n> has	23
 seen	<n> have	77
 seen	<n> here	2
 seen	<n> hold	9
-seen	<n> how	12
-seen	<n> i	50
-seen	<n> i'm	6
-seen	<n> if	12
-seen	<n> in	73
+seen	<n> how	11
+seen	<n> i	10
+seen	<n> i'm	3
+seen	<n> if	2
+seen	<n> in	42
 seen	<n> incl	2
-seen	<n> instead	5
-seen	<n> into	4
+seen	<n> instead	4
+seen	<n> into	3
 seen	<n> invoke	4
 seen	<n> invokes	2
-seen	<n> is	165
-seen	<n> it	44
-seen	<n> it's	2
+seen	<n> is	154
+seen	<n> it	2
 seen	<n> its	2
-seen	<n> just	40
-seen	<n> keep	2
-seen	<n> like	32
-seen	<n> list	7
+seen	<n> just	5
+seen	<n> like	25
+seen	<n> list	4
 seen	<n> live	13
-seen	<n> lives	8
+seen	<n> lives	7
 seen	<n> make	23
-seen	<n> me	2
 seen	<n> members	3
-seen	<n> method	10
-seen	<n> name	3
-seen	<n> no	3
-seen	<n> not	10
-seen	<n> of	6
-seen	<n> on	11
-seen	<n> one	3
-seen	<n> or	54
-seen	<n> out	7
-seen	<n> please	72
-seen	<n> pls	83
-seen	<n> point	3
+seen	<n> method	3
+seen	<n> name	2
+seen	<n> never	2
+seen	<n> no	2
+seen	<n> not	3
+seen	<n> on	8
+seen	<n> or	48
+seen	<n> out	3
+seen	<n> please	70
+seen	<n> pls	81
 seen	<n> purpose	5
 seen	<n> rename	26
 seen	<n> renamed	8
-seen	<n> right	6
 seen	<n> roughly	4
-seen	<n> seems	2
-seen	<n> should	8
-seen	<n> show	5
-seen	<n> so	3
+seen	<n> should	7
+seen	<n> show	2
 seen	<n> somewhere	4
-seen	<n> still	20
-seen	<n> struct	291
-seen	<n> test	46
+seen	<n> struct	290
+seen	<n> test	45
 seen	<n> testing	5
-seen	<n> thanks	62
-seen	<n> that	3
-seen	<n> the	52
+seen	<n> thanks	61
+seen	<n> the	32
 seen	<n> there	2
-seen	<n> there's	2
 seen	<n> thing	2
-seen	<n> this	35
-seen	<n> to	188
-seen	<n> too	2
-seen	<n> total	3
+seen	<n> to	181
 seen	<n> trying	5
-seen	<n> type	13
-seen	<n> types	7
+seen	<n> type	7
+seen	<n> types	2
 seen	<n> update	2
 seen	<n> used	7
 seen	<n> want	2
-seen	<n> what	175
-seen	<n> what's	7
+seen	<n> what	102
+seen	<n> what's	6
 seen	<n> whats	8
-seen	<n> where	19
+seen	<n> where	18
 seen	<n> where's	7
 seen	<n> which	101
 seen	<n> who	2
 seen	<n> why	2
-seen	<n> with	3
-seen	<n> word	4
-seen	<n> wrong	3
+seen	<n> word	2
+seen	<n> wrong	5
 seen	^ 's	2
-seen	^ <n>	496
+seen	^ <n>	451
 seen	^ any	16
 seen	^ anything	7
 seen	^ build	11
 seen	^ callees	7
 seen	^ callers	63
-seen	^ can	191
+seen	^ can	188
 seen	^ cant	5
 seen	^ change	8
-seen	^ check	3
+seen	^ check	2
 seen	^ compile	23
-seen	^ could	84
+seen	^ could	64
 seen	^ count	9
-seen	^ does	21
+seen	^ does	15
 seen	^ explain	15
 seen	^ field	4
-seen	^ fields	74
+seen	^ fields	73
 seen	^ find	17
 seen	^ fix	31
 seen	^ fns	32
 seen	^ funcs	3
 seen	^ functions	3
 seen	^ get	33
-seen	^ hey	283
-seen	^ hi	114
+seen	^ hey	260
+seen	^ hi	56
 seen	^ hm	10
 seen	^ hmm	12
 seen	^ how	179
 seen	^ i	4
-seen	^ i'd	163
-seen	^ i'm	197
+seen	^ i'd	161
+seen	^ i'm	189
 seen	^ is	73
 seen	^ it	2
 seen	^ jump	2
@@ -234,13 +214,13 @@ seen	^ make	36
 seen	^ no	3
 seen	^ num	2
 seen	^ number	9
-seen	^ ok	79
+seen	^ ok	76
 seen	^ okay	2
 seen	^ please	11
 seen	^ pls	19
 seen	^ purpose	8
-seen	^ quick	129
-seen	^ rename	164
+seen	^ quick	122
+seen	^ rename	165
 seen	^ show	17
 seen	^ so	44
 seen	^ sorry	4
@@ -249,64 +229,53 @@ seen	^ tests	4
 seen	^ thanks	4
 seen	^ the	2
 seen	^ trying	5
-seen	^ um	68
+seen	^ um	66
 seen	^ want	4
-seen	^ what	496
+seen	^ what	495
 seen	^ what's	85
-seen	^ whats	19
+seen	^ whats	18
 seen	^ where	227
 seen	^ where's	82
 seen	^ which	321
 seen	^ who	84
-seen	a	373
-seen	a <n>	127
+seen	a	319
+seen	a <n>	76
 seen	a field	236
-seen	a list	6
+seen	a list	4
 seen	a lot	2
 seen	a struct	7
 seen	a type	13
 seen	a way	3
-seen	about	22
-seen	about <n>	16
-seen	about not	2
-seen	actually	20
-seen	actually <n>	4
-seen	actually build	3
-seen	actually compile	2
+seen	about	6
+seen	about <n>	4
+seen	actually	11
 seen	actually do	7
 seen	actually does	2
 seen	advance	11
-seen	again	42
-seen	again <n>	32
-seen	all	6
+seen	again	6
+seen	all	5
 seen	all the	3
-seen	also	7
+seen	also	6
 seen	also counts	4
-seen	an	24
-seen	an <n>	24
-seen	and	103
-seen	and <n>	23
+seen	an	9
+seen	an <n>	9
+seen	and	36
+seen	and <n>	7
 seen	and can't	2
-seen	and fix	8
-seen	and i	23
-seen	and i'd	4
-seen	and i'm	2
-seen	and now	5
-seen	and the	6
-seen	and want	2
-seen	and what	20
-seen	any	35
+seen	and fix	4
+seen	and the	2
+seen	and what	18
+seen	any	33
 seen	any struct	7
 seen	any structs	19
-seen	anything	61
+seen	anything	60
 seen	anything call	6
 seen	anything calling	6
 seen	anything that	47
 seen	anyway	2
 seen	anyway could	2
 seen	anywhere	2
-seen	are	150
-seen	are any	2
+seen	are	145
 seen	are called	11
 seen	are calling	34
 seen	are defined	10
@@ -319,58 +288,35 @@ seen	are on	21
 seen	are passing	2
 seen	are the	19
 seen	are there	4
-seen	are they	9
-seen	as	33
-seen	as <n>	12
-seen	as a	14
+seen	are they	8
+seen	as	25
+seen	as <n>	5
+seen	as a	13
 seen	as field	7
-seen	as it	4
-seen	at	63
-seen	at <n>	15
-seen	at the	16
-seen	at this	20
-seen	be	13
+seen	at	32
+seen	at <n>	14
+seen	at the	8
+seen	be	11
 seen	be <n>	6
 seen	be called	3
-seen	be used	2
-seen	because	2
-seen	because of	2
-seen	behind	4
-seen	behind a	3
-seen	broken	18
+seen	broken	14
 seen	broken <n>	2
 seen	broken fix	6
-seen	broken i	2
 seen	broken test	2
-seen	build	244
-seen	build <n>	58
-seen	build actually	4
-seen	build again	34
-seen	build at	5
-seen	build broken	8
-seen	build check	3
-seen	build fails	56
-seen	build for	2
-seen	build is	7
-seen	build live	4
+seen	build	105
+seen	build <n>	10
+seen	build broken	7
+seen	build fails	36
+seen	build live	3
 seen	build ok	4
-seen	build please	2
 seen	build quick	23
-seen	build right	8
 seen	build seeing	4
-seen	but	67
-seen	but <n>	3
+seen	but	12
 seen	but don't	8
-seen	but i'd	2
-seen	but i'm	3
-seen	but it	3
-seen	but maybe	2
-seen	but not	3
-seen	but the	39
-seen	by	53
+seen	by	50
 seen	by <n>	43
 seen	by how	4
-seen	call	763
+seen	call	762
 seen	call <n>	509
 seen	call inside	11
 seen	call into	3
@@ -406,13 +352,12 @@ seen	calls pls	2
 seen	calls thanks	6
 seen	calls what	10
 seen	calls which	11
-seen	can	331
+seen	can	305
 seen	can <n>	2
 seen	can i	7
-seen	can you	318
-seen	can't	52
-seen	can't find	25
-seen	can't see	21
+seen	can you	294
+seen	can't	29
+seen	can't find	24
 seen	can't to	3
 seen	cant	9
 seen	cant <n>	5
@@ -424,37 +369,22 @@ seen	carry <n>	2
 seen	change	16
 seen	change field	5
 seen	change what	6
-seen	check	14
-seen	check <n>	2
-seen	check build	2
-seen	check compile	2
+seen	check	6
 seen	checking	7
 seen	checking could	2
 seen	checking for	3
-seen	code	81
-seen	code <n>	20
-seen	code build	3
-seen	code compile	3
-seen	code is	32
-seen	code so	3
+seen	code	13
 seen	codebase	19
 seen	codebase have	13
-seen	compile	244
-seen	compile <n>	94
-seen	compile and	2
-seen	compile at	5
-seen	compile can	4
-seen	compile could	5
-seen	compile for	5
+seen	compile	109
+seen	compile <n>	30
 seen	compile getting	2
 seen	compile keep	28
 seen	compile pls	29
-seen	compile right	45
 seen	compile saw	2
-seen	compile something	3
-seen	compiling	37
-seen	compiling <n>	32
-seen	compiling again	5
+seen	compiling	33
+seen	compiling <n>	30
+seen	compiling again	3
 seen	contain	7
 seen	contain a	3
 seen	containing	14
@@ -466,20 +396,17 @@ seen	contains <n>	40
 seen	contains it	24
 seen	contains one	2
 seen	contains please	3
-seen	could	233
-seen	could you	233
+seen	could	143
+seen	could you	143
 seen	count	22
 seen	count how	3
 seen	count of	9
 seen	count them	5
-seen	counting	3
-seen	counts	6
+seen	counts	4
 seen	counts if	4
 seen	curious	2
 seen	curious how	2
-seen	currently	2
-seen	declared	12
-seen	declared as	3
+seen	declared	10
 seen	def	13
 seen	def location	4
 seen	def of	8
@@ -503,7 +430,7 @@ seen	defn	5
 seen	defn location	5
 seen	directly	7
 seen	directly or	7
-seen	do	236
+seen	do	203
 seen	do 's	2
 seen	do and	11
 seen	do exactly	10
@@ -516,45 +443,41 @@ seen	do thanks	3
 seen	do that	8
 seen	do what	7
 seen	do whats	8
-seen	do you	8
-seen	does	655
-seen	does <n>	289
+seen	do you	7
+seen	does	590
+seen	does <n>	276
 seen	does and	5
 seen	does anything	2
-seen	does build	3
+seen	does build	2
 seen	does can	2
-seen	does check	2
 seen	does could	6
 seen	does inside	11
-seen	does it	103
+seen	does it	102
 seen	does or	6
 seen	does please	5
 seen	does struct	3
 seen	does thanks	5
 seen	does that	7
-seen	does the	109
-seen	does this	2
+seen	does the	96
 seen	does what	11
 seen	does what's	2
 seen	does which	4
-seen	doing	23
-seen	doing the	20
-seen	don't	28
+seen	doing	3
+seen	don't	13
 seen	don't change	6
-seen	don't compile	17
-seen	don't get	3
-seen	end	24
+seen	don't compile	5
+seen	don't get	2
+seen	end	22
 seen	end up	22
 seen	ends	45
 seen	ends up	45
 seen	enum	3
-seen	even	37
+seen	even	34
 seen	even for	30
 seen	even ok	2
-seen	even though	2
 seen	everywhere	8
 seen	everywhere its	2
-seen	exactly	19
+seen	exactly	18
 seen	explain	42
 seen	explain <n>	14
 seen	explain it	12
@@ -562,26 +485,22 @@ seen	explain me	2
 seen	explain what	11
 seen	fail	11
 seen	fail fix	2
-seen	failing	30
-seen	failing <n>	3
+seen	failing	24
+seen	failing <n>	2
 seen	failing fix	9
 seen	failing rn	2
 seen	failing test	2
-seen	failing the	2
-seen	fails	112
-seen	fails <n>	5
-seen	fails and	20
-seen	fails because	2
-seen	fails could	11
+seen	fails	78
+seen	fails <n>	3
+seen	fails could	7
 seen	fails fix	52
-seen	fails the	4
-seen	fails with	3
-seen	field	528
-seen	field <n>	109
+seen	fails the	2
+seen	fails with	2
+seen	field	523
+seen	field <n>	106
 seen	field also	3
 seen	field call	3
 seen	field called	43
-seen	field can	2
 seen	field directly	6
 seen	field in	6
 seen	field including	2
@@ -603,7 +522,7 @@ seen	field where	2
 seen	field which	11
 seen	field whose	61
 seen	field with	15
-seen	fields	562
+seen	fields	561
 seen	fields <n>	43
 seen	fields also	2
 seen	fields are	57
@@ -614,35 +533,34 @@ seen	fields is	3
 seen	fields it	26
 seen	fields make	2
 seen	fields of	76
-seen	fields on	52
+seen	fields on	51
 seen	fields pls	3
 seen	fields the	46
 seen	fields typed	2
 seen	fields use	3
 seen	fields which	2
-seen	figure	173
-seen	figure out	173
-seen	file	11
-seen	file and	3
-seen	find	128
-seen	find <n>	37
+seen	figure	168
+seen	figure out	168
+seen	file	7
+seen	find	101
+seen	find <n>	20
 seen	find all	3
 seen	find def	7
-seen	find function	7
+seen	find function	2
 seen	find it	29
 seen	find structs	3
-seen	find the	13
-seen	find type	7
+seen	find the	12
+seen	find type	4
 seen	find where	14
 seen	find which	6
-seen	fix	262
+seen	fix	216
 seen	fix <n>	2
 seen	fix build	3
 seen	fix compile	3
-seen	fix it	48
+seen	fix it	29
 seen	fix pls	53
 seen	fix that	13
-seen	fix the	57
+seen	fix the	31
 seen	fn	39
 seen	fn <n>	14
 seen	fn fix	3
@@ -659,9 +577,9 @@ seen	fns invoke	2
 seen	fns it	2
 seen	fns that	9
 seen	fns use	3
-seen	for	373
-seen	for <n>	25
-seen	for a	7
+seen	for	345
+seen	for <n>	14
+seen	for a	2
 seen	for and	3
 seen	for can	4
 seen	for could	2
@@ -670,16 +588,15 @@ seen	for i	2
 seen	for in	2
 seen	for it	2
 seen	for like	6
-seen	for me	36
+seen	for me	30
 seen	for please	2
 seen	for structs	2
-seen	for the	4
+seen	for the	2
 seen	for what	14
 seen	for where	4
-seen	for you	3
-seen	found	3
-seen	from	59
-seen	from <n>	18
+seen	found	2
+seen	from	55
+seen	from <n>	16
 seen	from how	2
 seen	from inside	6
 seen	from where	3
@@ -689,10 +606,9 @@ seen	funcs <n>	2
 seen	funcs call	10
 seen	funcs calling	9
 seen	funcs does	7
-seen	function	52
-seen	function <n>	33
+seen	function	42
+seen	function <n>	28
 seen	function does	2
-seen	function don't	2
 seen	function is	3
 seen	function to	2
 seen	functions	790
@@ -709,38 +625,36 @@ seen	functions it	13
 seen	functions it's	2
 seen	functions that	13
 seen	functions use	8
-seen	get	115
-seen	get <n>	4
-seen	get a	2
+seen	get	76
+seen	get <n>	2
 seen	get called	27
 seen	get defined	12
-seen	get it	38
+seen	get it	2
 seen	get the	30
 seen	get what	2
 seen	gets	18
 seen	gets called	10
 seen	gets used	8
-seen	getting	15
-seen	getting <n>	12
+seen	getting	6
+seen	getting <n>	3
 seen	getting called	3
-seen	go	6
+seen	go	5
 seen	go <n>	4
-seen	got	66
-seen	got <n>	18
+seen	got	59
+seen	got <n>	14
 seen	got a	19
 seen	got field	2
-seen	has	97
-seen	has <n>	14
+seen	has	90
+seen	has <n>	12
 seen	has a	13
-seen	has an	6
 seen	has field	2
 seen	has in	2
 seen	has please	5
 seen	has thanks	3
 seen	has the	4
-seen	have	447
-seen	have <n>	19
-seen	have a	201
+seen	have	442
+seen	have <n>	17
+seen	have a	198
 seen	have an	2
 seen	have field	51
 seen	have i'm	3
@@ -749,33 +663,24 @@ seen	have thanks	2
 seen	have the	5
 seen	have trying	6
 seen	here	2
-seen	hey	283
+seen	hey	260
 seen	hey <n>	3
 seen	hey can	42
 seen	hey could	15
-seen	hey does	4
 seen	hey how	11
-seen	hey i	6
 seen	hey i'd	21
-seen	hey i'm	13
-seen	hey quick	81
-seen	hey the	6
+seen	hey i'm	11
+seen	hey quick	78
 seen	hey what	30
 seen	hey where	19
 seen	hey which	28
-seen	hi	114
-seen	hi <n>	5
-seen	hi can	7
+seen	hi	56
+seen	hi <n>	3
+seen	hi can	6
 seen	hi could	5
-seen	hi does	2
-seen	hi i	5
 seen	hi i'd	2
-seen	hi i'm	23
-seen	hi in	2
-seen	hi our	5
-seen	hi the	3
-seen	hi there	4
-seen	hi this	32
+seen	hi i'm	18
+seen	hi our	2
 seen	hi what	5
 seen	hi where	3
 seen	hi which	7
@@ -793,44 +698,34 @@ seen	hold a	21
 seen	holding	7
 seen	holding a	5
 seen	holds	5
-seen	how	314
+seen	how	313
 seen	how many	312
-seen	i	153
-seen	i <n>	51
-seen	i can't	31
+seen	i	52
+seen	i <n>	3
+seen	i can't	10
 seen	i find	7
-seen	i got	6
-seen	i have	3
-seen	i keep	5
+seen	i keep	3
 seen	i mean	7
-seen	i saw	22
-seen	i see	3
-seen	i think	20
-seen	i want	10
-seen	i'd	227
-seen	i'd like	227
-seen	i'm	273
-seen	i'm <n>	6
+seen	i saw	6
+seen	i see	2
+seen	i think	7
+seen	i want	6
+seen	i'd	199
+seen	i'd like	199
+seen	i'm	240
 seen	i'm curious	2
-seen	i'm getting	9
 seen	i'm kind	2
 seen	i'm looking	27
-seen	i'm not	4
-seen	i'm seeing	2
-seen	i'm trying	213
-seen	i'm wondering	2
-seen	if	36
-seen	if <n>	4
+seen	i'm trying	205
+seen	if	17
 seen	if any	3
-seen	if it's	11
-seen	if that's	6
-seen	if the	5
-seen	if there	4
-seen	in	216
-seen	in <n>	52
+seen	if it's	7
+seen	if the	3
+seen	in	183
+seen	in <n>	51
 seen	in a	14
 seen	in advance	11
-seen	in it	22
+seen	in it	21
 seen	in lot	2
 seen	in one	4
 seen	in other	2
@@ -838,10 +733,10 @@ seen	in some	4
 seen	in something	5
 seen	in struct	4
 seen	in that	2
-seen	in the	50
+seen	in the	46
 seen	in their	2
 seen	in them	9
-seen	in this	32
+seen	in this	7
 seen	in which	2
 seen	incl	3
 seen	incl wrapped	2
@@ -857,83 +752,68 @@ seen	inside one	2
 seen	inside some	4
 seen	inside the	2
 seen	inside which	12
-seen	instead	5
-seen	into	14
-seen	into <n>	7
+seen	instead	4
+seen	into	12
+seen	into <n>	6
 seen	invoke	10
 seen	invoke <n>	5
 seen	invokes	3
-seen	is	685
-seen	is <n>	267
-seen	is behind	3
-seen	is broken	4
+seen	is	628
+seen	is <n>	255
 seen	is calling	5
 seen	is checking	2
 seen	is defined	113
-seen	is failing	4
 seen	is for	24
-seen	is in	4
+seen	is in	3
 seen	is inside	2
 seen	is it	69
-seen	is meant	32
 seen	is or	49
-seen	is right	2
 seen	is store	2
-seen	is that	3
-seen	is the	15
+seen	is that	2
+seen	is the	14
 seen	is there	83
 seen	is used	8
-seen	it	756
-seen	it <n>	17
+seen	it	623
+seen	it <n>	8
 seen	it again	2
-seen	it build	63
+seen	it build	26
 seen	it but	7
 seen	it call	29
 seen	it called	3
 seen	it calls	6
-seen	it can	2
-seen	it compile	48
-seen	it compiling	3
-seen	it could	3
+seen	it compile	9
+seen	it compiling	2
 seen	it defined	9
 seen	it do	55
-seen	it does	78
-seen	it don't	3
+seen	it does	43
 seen	it end	2
 seen	it everywhere	3
-seen	it for	65
+seen	it for	64
 seen	it gets	2
 seen	it got	8
 seen	it has	13
 seen	it have	15
 seen	it holds	4
-seen	it is	6
+seen	it is	2
 seen	it live	9
 seen	it lives	3
-seen	it out	3
-seen	it please	8
+seen	it please	7
 seen	it pls	3
-seen	it returns	2
-seen	it should	3
-seen	it so	38
 seen	it somehow	3
 seen	it somewhere	4
 seen	it thanks	5
-seen	it to	24
+seen	it to	3
 seen	it use	3
 seen	it used	11
 seen	it uses	5
-seen	it would	35
-seen	it's	41
-seen	it's <n>	2
+seen	it's	35
 seen	it's a	2
 seen	it's calling	2
 seen	it's for	11
 seen	it's inside	2
-seen	it's just	2
 seen	it's used	8
 seen	it's wrapped	6
-seen	its	23
+seen	its	22
 seen	its <n>	2
 seen	its defined	4
 seen	its fields	6
@@ -941,49 +821,43 @@ seen	its for	5
 seen	its used	2
 seen	jump	2
 seen	jump to	2
-seen	just	47
-seen	just <n>	37
+seen	just	7
 seen	just want	3
-seen	keep	36
-seen	keep seeing	5
+seen	keep	33
+seen	keep seeing	3
 seen	keep the	27
 seen	kind	4
 seen	kind of	4
-seen	know	185
+seen	know	177
 seen	know how	20
-seen	know if	3
-seen	know what	42
+seen	know what	37
 seen	know where	19
 seen	know which	95
-seen	let	3
-seen	let me	3
-seen	like	293
-seen	like <n>	13
+seen	like	253
+seen	like <n>	4
 seen	like how	7
-seen	like it	21
 seen	like the	7
-seen	like to	199
+seen	like to	192
 seen	like what	12
 seen	like what's	2
 seen	like where	3
 seen	like which	24
-seen	list	105
-seen	list <n>	6
+seen	list	100
+seen	list <n>	5
 seen	list callers	3
 seen	list calls	2
 seen	list fields	17
 seen	list funcs	3
-seen	list of	5
+seen	list of	3
 seen	list pls	3
 seen	list structs	13
 seen	list the	25
 seen	list them	12
 seen	list what	4
-seen	live	30
+seen	live	26
 seen	live in	3
 seen	live like	3
-seen	lives	12
-seen	lives <n>	2
+seen	lives	10
 seen	lives which	6
 seen	loc	2
 seen	loc of	2
@@ -991,15 +865,15 @@ seen	locate	4
 seen	locate <n>	2
 seen	location	13
 seen	location of	3
-seen	looking	28
+seen	looking	27
 seen	looking at	18
 seen	looking for	9
 seen	lot	4
 seen	lot of	2
 seen	made	5
 seen	made by	2
-seen	make	66
-seen	make it	31
+seen	make	63
+seen	make it	28
 seen	make the	3
 seen	make this	28
 seen	make up	2
@@ -1009,94 +883,71 @@ seen	many fns	73
 seen	many funcs	9
 seen	many functions	227
 seen	many places	4
-seen	maybe	2
-seen	maybe there	2
-seen	me	331
-seen	me <n>	7
+seen	me	314
+seen	me <n>	5
 seen	me fields	2
 seen	me how	20
-seen	me if	2
-seen	me know	2
 seen	me please	8
-seen	me thanks	7
+seen	me thanks	6
 seen	me the	8
-seen	me there	2
-seen	me there's	2
 seen	me to	18
-seen	me what	62
+seen	me what	59
 seen	me where	39
-seen	me whether	2
 seen	me which	123
-seen	mean	9
+seen	mean	8
 seen	mean which	2
-seen	meant	33
-seen	meant to	33
 seen	members	8
-seen	method	15
-seen	method <n>	11
-seen	mind	36
-seen	mind <n>	35
-seen	moment	12
-seen	moment i	7
+seen	method	6
+seen	method <n>	4
+seen	moment	4
 seen	moment or	2
-seen	name	15
+seen	name	14
 seen	name <n>	3
 seen	name but	3
 seen	name to	2
-seen	named	96
-seen	named <n>	94
+seen	named	95
+seen	named <n>	93
 seen	need	2
 seen	nested	5
-seen	never	3
-seen	no	9
-seen	no <n>	2
-seen	no field	4
-seen	no method	3
-seen	not	25
-seen	not <n>	16
-seen	not declared	2
-seen	now	64
-seen	now <n>	2
-seen	now could	33
-seen	now i	13
-seen	now i'm	7
-seen	now it	2
-seen	now the	3
+seen	never	2
+seen	no	6
+seen	no field	3
+seen	no method	2
+seen	not	6
+seen	not <n>	2
 seen	num	3
 seen	num of	2
-seen	number	13
-seen	number <n>	2
+seen	number	12
 seen	number of	10
-seen	of	257
-seen	of <n>	158
+seen	of	242
+seen	of <n>	148
 seen	of callers	2
 seen	of fns	13
 seen	of funcs	6
-seen	of it	4
+seen	of it	2
 seen	of on	2
 seen	of places	2
 seen	of struct	9
 seen	of structs	2
 seen	of that	7
-seen	of the	26
+seen	of the	25
 seen	of their	4
 seen	of type	15
-seen	ok	88
+seen	ok	85
 seen	ok anyway	2
 seen	ok can	5
 seen	ok fix	8
 seen	ok got	2
-seen	ok so	68
+seen	ok so	65
 seen	okay	2
-seen	on	106
-seen	on <n>	61
+seen	on	95
+seen	on <n>	58
 seen	on it	2
 seen	on struct	3
-seen	on the	30
-seen	on type	3
-seen	one	32
-seen	one <n>	6
-seen	one and	2
+seen	on the	27
+seen	on type	2
+seen	one	23
+seen	one <n>	2
 seen	one could	2
 seen	one of	4
 seen	one where	2
@@ -1104,10 +955,9 @@ seen	ones	24
 seen	ones are	2
 seen	ones fail	3
 seen	ones have	3
-seen	only	16
-seen	only <n>	5
-seen	or	140
-seen	or <n>	10
+seen	only	9
+seen	or	131
+seen	or <n>	3
 seen	or a	8
 seen	or containing	4
 seen	or contains	57
@@ -1122,58 +972,53 @@ seen	or wrapping	6
 seen	or wraps	8
 seen	other	8
 seen	other type	7
-seen	our	10
-seen	our <n>	9
-seen	out	183
-seen	out <n>	2
+seen	our	2
+seen	our <n>	2
+seen	out	172
 seen	out how	9
-seen	out if	7
-seen	out of	3
-seen	out the	11
+seen	out if	2
+seen	out of	2
+seen	out the	10
 seen	out what	47
 seen	out what's	7
 seen	out where	59
 seen	out which	26
 seen	out who	6
-seen	out wrong	2
-seen	pass	7
+seen	pass	8
 seen	pass or	3
-seen	passes	4
-seen	passing	6
+seen	passing	5
 seen	passing at	3
 seen	places	7
 seen	places that	3
-seen	please	195
-seen	please fix	5
+seen	please	187
+seen	please fix	2
 seen	please go	2
-seen	please let	2
 seen	please list	2
 seen	please rename	18
 seen	please tell	4
-seen	pls	223
+seen	pls	221
 seen	pls fix	37
 seen	pls rename	22
 seen	plz	3
-seen	point	26
-seen	point <n>	3
+seen	point	24
+seen	point <n>	2
 seen	point me	22
 seen	purpose	15
 seen	purpose of	9
-seen	question	200
+seen	question	191
 seen	question can	4
-seen	question does	8
 seen	question how	22
 seen	question what	50
 seen	question where	33
 seen	question which	80
-seen	quick	238
+seen	quick	228
 seen	quick list	2
-seen	quick one	9
-seen	quick question	200
+seen	quick one	8
+seen	quick question	191
 seen	quick request	4
 seen	red	6
 seen	red pls	2
-seen	rename	293
+seen	rename	294
 seen	rename <n>	165
 seen	rename field	22
 seen	rename fn	8
@@ -1184,65 +1029,50 @@ seen	renamed	12
 seen	renamed to	12
 seen	request	4
 seen	request please	2
-seen	returns	5
-seen	right	66
-seen	right <n>	3
-seen	right now	58
+seen	returns	2
 seen	rn	4
 seen	roughly	4
 seen	run	2
 seen	run the	2
-seen	s	4
-seen	saw	29
-seen	saw <n>	14
-seen	saw a	2
-seen	saw an	6
+seen	s	3
+seen	saw	12
+seen	saw <n>	8
 seen	saw it	2
-seen	saw something	5
-seen	see	40
-seen	see what	5
+seen	see	16
+seen	see what	4
 seen	see where	3
 seen	see which	6
-seen	see why	21
-seen	seeing	12
-seen	seeing <n>	8
+seen	seeing	8
+seen	seeing <n>	5
 seen	seeing the	2
-seen	seems	3
+seen	seems	2
 seen	sense	2
-seen	should	17
-seen	should be	11
-seen	should live	3
-seen	show	32
-seen	show 's	2
-seen	show <n>	2
+seen	should	11
+seen	should be	10
+seen	show	26
 seen	show fields	2
 seen	show me	15
 seen	show the	2
-seen	show up	2
-seen	so	158
+seen	so	110
 seen	so can	2
 seen	so could	3
 seen	so how	8
-seen	so i	2
 seen	so i'd	6
-seen	so i'm	10
+seen	so i'm	9
 seen	so is	2
-seen	so it	40
-seen	so the	7
+seen	so the	2
 seen	so there's	2
 seen	so what	34
 seen	so where	11
 seen	so which	26
-seen	some	13
-seen	some <n>	3
+seen	some	10
 seen	some field	4
 seen	some other	4
 seen	somehow	3
-seen	something	28
-seen	something about	8
+seen	something	14
 seen	something containing	2
 seen	something fix	2
-seen	something like	8
+seen	something like	2
 seen	something wrapping	2
 seen	somewhere	14
 seen	somewhere and	2
@@ -1250,13 +1080,10 @@ seen	somewhere in	4
 seen	somewhere which	2
 seen	sorry	4
 seen	sorry quick	3
-seen	still	21
-seen	still doing	20
-seen	store	9
+seen	store	8
 seen	store in	4
-seen	struct	393
+seen	struct	392
 seen	struct <n>	60
-seen	struct are	2
 seen	struct contain	2
 seen	struct contains	6
 seen	struct defined	2
@@ -1299,32 +1126,29 @@ seen	structs that	39
 seen	structs use	3
 seen	structs whose	4
 seen	structs with	22
-seen	take	30
-seen	take a	22
+seen	take	9
 seen	take care	7
-seen	tell	247
-seen	tell me	247
-seen	test	83
-seen	test <n>	14
+seen	tell	241
+seen	tell me	241
+seen	test	74
+seen	test <n>	12
 seen	test fail	2
 seen	test failing	13
 seen	test fails	32
-seen	test is	2
-seen	test passes	3
 seen	test red	3
 seen	testing	6
-seen	tests	21
+seen	tests	20
 seen	tests are	2
 seen	tests fail	4
 seen	tests failing	2
 seen	tests pass	5
 seen	tests passing	2
-seen	thanks	131
+seen	thanks	128
 seen	thanks a	2
 seen	thanks could	3
 seen	thanks in	11
-seen	that	195
-seen	that <n>	9
+seen	that	190
+seen	that <n>	5
 seen	that call	21
 seen	that calls	8
 seen	that contains	7
@@ -1338,93 +1162,72 @@ seen	that name	4
 seen	that please	6
 seen	that struct	11
 seen	that wraps	2
-seen	that's	8
-seen	that's <n>	2
-seen	that's the	5
-seen	the	707
-seen	the <n>	356
-seen	the build	81
+seen	that's	2
+seen	the	538
+seen	the <n>	310
+seen	the build	20
 seen	the callers	2
-seen	the code	53
+seen	the code	9
 seen	the codebase	18
-seen	the compile	8
+seen	the compile	2
 seen	the count	2
 seen	the definition	6
 seen	the failing	2
 seen	the field	22
 seen	the fields	41
-seen	the function	26
+seen	the function	25
 seen	the functions	9
-seen	the moment	12
+seen	the moment	4
 seen	the name	3
 seen	the number	2
-seen	the only	7
-seen	the show	2
 seen	the struct	50
 seen	the structs	9
-seen	the test	19
+seen	the test	12
 seen	the tests	6
-seen	the thing	20
-seen	the total	2
 seen	the type	8
-seen	the way	2
 seen	their	6
 seen	their fields	6
 seen	them	26
 seen	them for	6
 seen	them which	2
-seen	there	103
-seen	there <n>	4
+seen	there	91
 seen	there a	8
 seen	there any	14
 seen	there anything	50
-seen	there are	2
-seen	there is	6
 seen	there many	7
 seen	there structs	5
-seen	there's	11
-seen	there's <n>	2
-seen	there's an	2
+seen	there's	3
 seen	there's this	2
-seen	they	10
-seen	thing	23
+seen	they	8
+seen	thing	2
 seen	things	2
-seen	think	22
-seen	think i	15
+seen	think	9
+seen	think i	3
 seen	think it's	2
-seen	think the	2
-seen	this	154
-seen	this <n>	102
-seen	this build	2
-seen	this code	20
+seen	this	41
+seen	this <n>	10
 seen	this compile	28
-seen	though	2
-seen	to	748
-seen	to <n>	249
-seen	to build	4
-seen	to compile	20
-seen	to do	34
-seen	to figure	172
+seen	to	670
+seen	to <n>	243
+seen	to do	2
+seen	to figure	167
 seen	to find	20
-seen	to get	3
 seen	to it	10
-seen	to know	176
-seen	to me	2
+seen	to know	169
 seen	to rename	20
-seen	to see	15
+seen	to see	14
 seen	to something	2
 seen	to understand	40
 seen	to where	7
-seen	too	5
+seen	too	3
 seen	too <n>	2
-seen	total	5
-seen	trying	232
-seen	trying to	232
-seen	type	141
-seen	type <n>	30
+seen	trying	224
+seen	trying to	224
+seen	type	130
+seen	type <n>	25
 seen	type can	2
 seen	type contains	2
-seen	type for	9
+seen	type for	3
 seen	type is	60
 seen	type or	5
 seen	type that	13
@@ -1432,9 +1235,8 @@ seen	type which	2
 seen	typed	9
 seen	typed <n>	6
 seen	typed as	3
-seen	types	10
-seen	types <n>	5
-seen	um	69
+seen	types	5
+seen	um	67
 seen	um how	9
 seen	um is	6
 seen	um what	25
@@ -1446,16 +1248,16 @@ seen	understand it	2
 seen	understand the	9
 seen	understand what	10
 seen	understand where	2
-seen	up	74
+seen	up	70
 seen	up calling	66
 seen	up the	2
 seen	update	2
-seen	use	24
+seen	use	23
 seen	use <n>	10
-seen	use it	10
-seen	used	47
+seen	use it	9
+seen	used	45
 seen	used as	4
-seen	used for	19
+seen	used for	18
 seen	used from	4
 seen	used in	2
 seen	used which	10
@@ -1463,18 +1265,17 @@ seen	uses	17
 seen	uses <n>	9
 seen	uses inside	2
 seen	uses it	3
-seen	want	23
-seen	want <n>	4
-seen	want the	3
-seen	want to	11
-seen	way	6
+seen	want	17
+seen	want <n>	3
+seen	want the	2
+seen	want to	9
+seen	way	4
 seen	way to	3
-seen	we	2
-seen	what	1040
-seen	what <n>	204
+seen	what	952
+seen	what <n>	189
 seen	what are	25
 seen	what calls	19
-seen	what does	179
+seen	what does	178
 seen	what ends	5
 seen	what fields	288
 seen	what fns	31
@@ -1482,29 +1283,29 @@ seen	what funcs	4
 seen	what functions	49
 seen	what gets	3
 seen	what is	117
-seen	what it	96
+seen	what it	61
 seen	what it's	17
 seen	what structs	39
-seen	what the	42
-seen	what's	109
-seen	what's <n>	74
+seen	what the	7
+seen	what's	107
+seen	what's <n>	73
 seen	what's in	9
 seen	what's inside	9
 seen	what's it	11
 seen	what's store	2
 seen	what's the	3
-seen	whats	40
-seen	whats <n>	11
+seen	whats	39
+seen	whats <n>	10
 seen	whats in	9
 seen	whats inside	4
 seen	whats it	15
-seen	where	502
+seen	where	501
 seen	where <n>	233
 seen	where can	7
 seen	where defined	2
 seen	where does	30
 seen	where is	197
-seen	where it	9
+seen	where it	8
 seen	where it's	5
 seen	where its	5
 seen	where the	8
@@ -1513,8 +1314,6 @@ seen	where's	91
 seen	where's <n>	81
 seen	where's it	5
 seen	where's that	3
-seen	whether	3
-seen	whether <n>	2
 seen	which	960
 seen	which fail	2
 seen	which fields	71
@@ -1535,23 +1334,17 @@ seen	who uses	10
 seen	whose	66
 seen	whose fields	3
 seen	whose type	62
-seen	why	25
+seen	why	3
 seen	why fix	2
-seen	why i'd	20
-seen	with	54
-seen	with <n>	12
-seen	with a	25
+seen	with	48
+seen	with <n>	9
+seen	with a	23
 seen	with an	2
 seen	with field	2
 seen	with fields	2
 seen	with that	5
-seen	with the	2
 seen	with type	3
-seen	wondering	2
-seen	word	6
-seen	word <n>	2
-seen	would	36
-seen	would you	36
+seen	word	3
 seen	wrapped	11
 seen	wrapped in	7
 seen	wrapping	8
@@ -1559,390 +1352,174 @@ seen	wrapping it	8
 seen	wraps	10
 seen	wraps <n>	3
 seen	wraps it	7
-seen	wrong	10
+seen	wrong	8
 seen	wrong <n>	2
-seen	wrong could	2
 seen	wrong test	4
-seen	you	598
-seen	you <n>	5
-seen	you and	2
+seen	you	447
 seen	you count	8
 seen	you do	12
 seen	you explain	26
-seen	you find	13
-seen	you fix	64
-seen	you get	36
+seen	you find	11
+seen	you fix	25
 seen	you know	7
 seen	you list	31
-seen	you make	5
-seen	you mind	36
-seen	you please	16
+seen	you make	2
+seen	you please	13
 seen	you point	21
 seen	you rename	36
 seen	you show	3
-seen	you take	29
-seen	you tell	243
-word	are there problems with the build	<n> <n>	49
-word	are there problems with the build	<n> about	7
-word	are there problems with the build	<n> actually	4
-word	are there problems with the build	<n> and	8
-word	are there problems with the build	<n> as	4
-word	are there problems with the build	<n> build	16
-word	are there problems with the build	<n> but	9
-word	are there problems with the build	<n> can	2
-word	are there problems with the build	<n> compile	17
-word	are there problems with the build	<n> compiling	1
-word	are there problems with the build	<n> do	1
-word	are there problems with the build	<n> does	11
-word	are there problems with the build	<n> even	1
-word	are there problems with the build	<n> field	3
-word	are there problems with the build	<n> find	30
+seen	you take	8
+seen	you tell	237
+word	are there problems with the build	<n> <n>	19
+word	are there problems with the build	<n> about	1
+word	are there problems with the build	<n> as	2
+word	are there problems with the build	<n> build	7
+word	are there problems with the build	<n> compile	5
+word	are there problems with the build	<n> does	5
+word	are there problems with the build	<n> field	1
+word	are there problems with the build	<n> find	11
 word	are there problems with the build	<n> fn	1
 word	are there problems with the build	<n> for	3
-word	are there problems with the build	<n> go	1
 word	are there problems with the build	<n> got	2
-word	are there problems with the build	<n> has	4
-word	are there problems with the build	<n> i	3
-word	are there problems with the build	<n> i'm	1
-word	are there problems with the build	<n> if	9
-word	are there problems with the build	<n> in	25
-word	are there problems with the build	<n> into	1
-word	are there problems with the build	<n> is	3
-word	are there problems with the build	<n> it	2
-word	are there problems with the build	<n> like	2
-word	are there problems with the build	<n> me	1
-word	are there problems with the build	<n> method	4
+word	are there problems with the build	<n> has	2
+word	are there problems with the build	<n> i	2
+word	are there problems with the build	<n> in	4
+word	are there problems with the build	<n> like	1
+word	are there problems with the build	<n> method	2
 word	are there problems with the build	<n> no	2
-word	are there problems with the build	<n> not	5
-word	are there problems with the build	<n> of	1
-word	are there problems with the build	<n> on	7
-word	are there problems with the build	<n> or	8
+word	are there problems with the build	<n> on	5
+word	are there problems with the build	<n> or	3
 word	are there problems with the build	<n> out	2
-word	are there problems with the build	<n> please	1
-word	are there problems with the build	<n> right	3
 word	are there problems with the build	<n> somewhere	1
-word	are there problems with the build	<n> the	9
 word	are there problems with the build	<n> there	1
-word	are there problems with the build	<n> to	3
-word	are there problems with the build	<n> type	6
-word	are there problems with the build	<n> types	1
-word	are there problems with the build	<n> what	5
-word	are there problems with the build	<n> what's	1
-word	are there problems with the build	<n> with	2
+word	are there problems with the build	<n> to	1
+word	are there problems with the build	<n> type	3
 word	are there problems with the build	^ <n>	3
 word	are there problems with the build	^ build	3
-word	are there problems with the build	^ can	3
 word	are there problems with the build	^ check	2
-word	are there problems with the build	^ does	17
-word	are there problems with the build	^ hey	8
-word	are there problems with the build	^ hi	3
-word	are there problems with the build	^ i'd	2
-word	are there problems with the build	^ i'm	6
+word	are there problems with the build	^ does	11
+word	are there problems with the build	^ i'm	1
 word	are there problems with the build	^ is	1
 word	are there problems with the build	^ it	2
-word	are there problems with the build	^ ok	1
-word	are there problems with the build	^ quick	7
 word	are there problems with the build	^ so	1
-word	are there problems with the build	^ um	2
-word	are there problems with the build	^ what	7
+word	are there problems with the build	^ um	1
+word	are there problems with the build	^ what	6
 word	are there problems with the build	^ what's	1
-word	are there problems with the build	a	3
-word	are there problems with the build	a <n>	3
-word	are there problems with the build	about	9
-word	are there problems with the build	about <n>	6
-word	are there problems with the build	about not	2
-word	are there problems with the build	actually	9
-word	are there problems with the build	actually <n>	4
-word	are there problems with the build	actually build	3
-word	are there problems with the build	actually compile	2
-word	are there problems with the build	all	1
-word	are there problems with the build	also	1
-word	are there problems with the build	an	9
-word	are there problems with the build	an <n>	9
-word	are there problems with the build	and	10
-word	are there problems with the build	and i	1
-word	are there problems with the build	and i'd	2
-word	are there problems with the build	and i'm	2
-word	are there problems with the build	and want	1
-word	are there problems with the build	and what	2
-word	are there problems with the build	any	2
-word	are there problems with the build	anything	1
-word	are there problems with the build	are	2
-word	are there problems with the build	are any	2
-word	are there problems with the build	as	5
-word	are there problems with the build	as <n>	5
-word	are there problems with the build	as it	1
-word	are there problems with the build	at	10
-word	are there problems with the build	at the	9
-word	are there problems with the build	behind	1
-word	are there problems with the build	behind a	1
-word	are there problems with the build	broken	1
-word	are there problems with the build	build	50
-word	are there problems with the build	build <n>	18
-word	are there problems with the build	build actually	4
-word	are there problems with the build	build at	5
-word	are there problems with the build	build check	3
-word	are there problems with the build	build is	4
-word	are there problems with the build	build live	4
+word	are there problems with the build	about	2
+word	are there problems with the build	about <n>	2
+word	are there problems with the build	as	2
+word	are there problems with the build	as <n>	2
+word	are there problems with the build	at	1
+word	are there problems with the build	at the	1
+word	are there problems with the build	build	21
+word	are there problems with the build	build <n>	8
+word	are there problems with the build	build live	3
 word	are there problems with the build	build ok	4
-word	are there problems with the build	build right	8
 word	are there problems with the build	build seeing	4
-word	are there problems with the build	but	10
-word	are there problems with the build	but i'd	2
-word	are there problems with the build	but i'm	3
-word	are there problems with the build	but maybe	2
-word	are there problems with the build	but not	3
-word	are there problems with the build	by	1
-word	are there problems with the build	can	6
-word	are there problems with the build	can you	6
-word	are there problems with the build	can't	2
-word	are there problems with the build	can't find	1
-word	are there problems with the build	check	8
-word	are there problems with the build	check build	2
-word	are there problems with the build	check compile	2
-word	are there problems with the build	code	7
-word	are there problems with the build	code build	3
-word	are there problems with the build	code compile	3
-word	are there problems with the build	compile	30
+word	are there problems with the build	check	2
+word	are there problems with the build	compile	12
 word	are there problems with the build	compile <n>	1
-word	are there problems with the build	compile at	5
-word	are there problems with the build	compile for	2
 word	are there problems with the build	compile getting	2
 word	are there problems with the build	compile keep	1
-word	are there problems with the build	compile right	10
 word	are there problems with the build	compile saw	2
-word	are there problems with the build	compiling	1
-word	are there problems with the build	compiling <n>	1
-word	are there problems with the build	currently	1
-word	are there problems with the build	declared	1
-word	are there problems with the build	declared as	1
-word	are there problems with the build	do	1
-word	are there problems with the build	do you	1
-word	are there problems with the build	does	46
-word	are there problems with the build	does <n>	16
-word	are there problems with the build	does build	3
-word	are there problems with the build	does check	2
-word	are there problems with the build	does it	7
-word	are there problems with the build	does the	17
-word	are there problems with the build	does this	2
-word	are there problems with the build	end	1
-word	are there problems with the build	even	1
-word	are there problems with the build	exactly	1
-word	are there problems with the build	failing	1
-word	are there problems with the build	field	5
-word	are there problems with the build	field <n>	5
-word	are there problems with the build	figure	6
-word	are there problems with the build	figure out	6
-word	are there problems with the build	find	31
-word	are there problems with the build	find <n>	22
-word	are there problems with the build	find function	4
-word	are there problems with the build	find type	5
+word	are there problems with the build	does	17
+word	are there problems with the build	does <n>	4
+word	are there problems with the build	does build	2
+word	are there problems with the build	does it	6
+word	are there problems with the build	does the	4
+word	are there problems with the build	field	2
+word	are there problems with the build	field <n>	2
+word	are there problems with the build	figure	1
+word	are there problems with the build	figure out	1
+word	are there problems with the build	find	11
+word	are there problems with the build	find <n>	8
+word	are there problems with the build	find type	3
 word	are there problems with the build	fn	1
 word	are there problems with the build	fn <n>	1
-word	are there problems with the build	for	12
-word	are there problems with the build	for <n>	9
-word	are there problems with the build	for you	3
-word	are there problems with the build	function	4
-word	are there problems with the build	function <n>	4
-word	are there problems with the build	getting	8
-word	are there problems with the build	getting <n>	8
-word	are there problems with the build	go	1
-word	are there problems with the build	got	13
-word	are there problems with the build	got <n>	10
-word	are there problems with the build	has	4
+word	are there problems with the build	for	7
+word	are there problems with the build	for <n>	6
+word	are there problems with the build	getting	3
+word	are there problems with the build	getting <n>	3
+word	are there problems with the build	got	7
+word	are there problems with the build	got <n>	7
+word	are there problems with the build	has	2
 word	are there problems with the build	has <n>	2
-word	are there problems with the build	has an	2
-word	are there problems with the build	hey	8
-word	are there problems with the build	hey does	4
-word	are there problems with the build	hey i	1
-word	are there problems with the build	hey i'm	1
-word	are there problems with the build	hey quick	2
-word	are there problems with the build	hi	3
-word	are there problems with the build	hi can	1
-word	are there problems with the build	hi does	2
-word	are there problems with the build	i	32
-word	are there problems with the build	i <n>	4
-word	are there problems with the build	i got	6
-word	are there problems with the build	i keep	2
-word	are there problems with the build	i saw	19
+word	are there problems with the build	i	6
+word	are there problems with the build	i <n>	1
+word	are there problems with the build	i saw	3
 word	are there problems with the build	i see	1
-word	are there problems with the build	i think	14
-word	are there problems with the build	i'd	7
-word	are there problems with the build	i'd like	7
-word	are there problems with the build	i'm	19
-word	are there problems with the build	i'm getting	5
-word	are there problems with the build	i'm not	4
-word	are there problems with the build	i'm seeing	2
-word	are there problems with the build	i'm trying	7
-word	are there problems with the build	i'm wondering	1
-word	are there problems with the build	if	19
-word	are there problems with the build	if <n>	4
-word	are there problems with the build	if it's	4
-word	are there problems with the build	if that's	5
-word	are there problems with the build	if the	2
-word	are there problems with the build	if there	3
-word	are there problems with the build	in	25
+word	are there problems with the build	i think	2
+word	are there problems with the build	i'm	1
+word	are there problems with the build	i'm trying	1
+word	are there problems with the build	if	1
+word	are there problems with the build	in	4
 word	are there problems with the build	in <n>	1
-word	are there problems with the build	in this	24
-word	are there problems with the build	into	1
-word	are there problems with the build	into <n>	1
-word	are there problems with the build	is	11
-word	are there problems with the build	is <n>	8
-word	are there problems with the build	is behind	1
-word	are there problems with the build	is broken	1
-word	are there problems with the build	is that	1
-word	are there problems with the build	is the	1
-word	are there problems with the build	it	12
-word	are there problems with the build	it <n>	1
+word	are there problems with the build	in this	3
+word	are there problems with the build	is	1
+word	are there problems with the build	is <n>	1
+word	are there problems with the build	it	8
 word	are there problems with the build	it build	2
 word	are there problems with the build	it compile	6
-word	are there problems with the build	it is	1
-word	are there problems with the build	it's	4
-word	are there problems with the build	it's <n>	1
-word	are there problems with the build	it's just	2
-word	are there problems with the build	just	3
-word	are there problems with the build	just <n>	1
-word	are there problems with the build	keep	3
-word	are there problems with the build	keep seeing	2
-word	are there problems with the build	know	8
-word	are there problems with the build	know if	2
-word	are there problems with the build	know what	5
-word	are there problems with the build	let	1
-word	are there problems with the build	let me	1
-word	are there problems with the build	like	15
-word	are there problems with the build	like <n>	8
-word	are there problems with the build	like to	7
-word	are there problems with the build	live	4
-word	are there problems with the build	lives	1
-word	are there problems with the build	maybe	2
-word	are there problems with the build	maybe there	2
-word	are there problems with the build	me	9
-word	are there problems with the build	me <n>	1
-word	are there problems with the build	me if	1
-word	are there problems with the build	me know	1
-word	are there problems with the build	me what	3
-word	are there problems with the build	me whether	2
-word	are there problems with the build	method	5
-word	are there problems with the build	method <n>	5
-word	are there problems with the build	moment	9
-word	are there problems with the build	moment i	7
-word	are there problems with the build	no	3
-word	are there problems with the build	no <n>	1
-word	are there problems with the build	no field	2
-word	are there problems with the build	not	15
-word	are there problems with the build	not <n>	13
-word	are there problems with the build	not declared	1
-word	are there problems with the build	now	21
-word	are there problems with the build	now i	13
-word	are there problems with the build	now i'm	5
-word	are there problems with the build	now the	1
-word	are there problems with the build	of	2
-word	are there problems with the build	of <n>	1
+word	are there problems with the build	keep	1
+word	are there problems with the build	like	2
+word	are there problems with the build	like <n>	2
+word	are there problems with the build	live	3
+word	are there problems with the build	method	2
+word	are there problems with the build	method <n>	2
+word	are there problems with the build	moment	1
+word	are there problems with the build	no	2
+word	are there problems with the build	no field	1
+word	are there problems with the build	of	1
 word	are there problems with the build	of the	1
-word	are there problems with the build	ok	5
+word	are there problems with the build	ok	4
 word	are there problems with the build	ok got	2
-word	are there problems with the build	ok so	1
-word	are there problems with the build	on	8
-word	are there problems with the build	on <n>	5
-word	are there problems with the build	on type	2
-word	are there problems with the build	one	1
-word	are there problems with the build	only	7
-word	are there problems with the build	only <n>	5
-word	are there problems with the build	or	10
-word	are there problems with the build	or <n>	7
+word	are there problems with the build	on	5
+word	are there problems with the build	on <n>	4
+word	are there problems with the build	on type	1
+word	are there problems with the build	or	4
+word	are there problems with the build	or <n>	3
 word	are there problems with the build	or what	1
-word	are there problems with the build	out	8
-word	are there problems with the build	out if	6
+word	are there problems with the build	out	3
+word	are there problems with the build	out if	1
 word	are there problems with the build	out of	1
-word	are there problems with the build	please	1
-word	are there problems with the build	please let	1
-word	are there problems with the build	question	9
-word	are there problems with the build	question does	8
-word	are there problems with the build	quick	9
-word	are there problems with the build	quick question	9
-word	are there problems with the build	right	21
-word	are there problems with the build	right now	21
-word	are there problems with the build	saw	25
-word	are there problems with the build	saw <n>	13
-word	are there problems with the build	saw a	1
-word	are there problems with the build	saw an	6
-word	are there problems with the build	saw something	5
-word	are there problems with the build	see	3
-word	are there problems with the build	see what	1
-word	are there problems with the build	seeing	9
-word	are there problems with the build	seeing <n>	8
-word	are there problems with the build	show	1
-word	are there problems with the build	show up	1
-word	are there problems with the build	so	2
-word	are there problems with the build	so i'm	1
-word	are there problems with the build	some	1
-word	are there problems with the build	some <n>	1
-word	are there problems with the build	something	9
-word	are there problems with the build	something about	2
-word	are there problems with the build	something like	7
+word	are there problems with the build	saw	8
+word	are there problems with the build	saw <n>	7
+word	are there problems with the build	see	1
+word	are there problems with the build	seeing	5
+word	are there problems with the build	seeing <n>	5
+word	are there problems with the build	so	1
+word	are there problems with the build	something	2
+word	are there problems with the build	something like	1
 word	are there problems with the build	somewhere	1
-word	are there problems with the build	tell	6
-word	are there problems with the build	tell me	6
-word	are there problems with the build	that	1
-word	are there problems with the build	that's	6
-word	are there problems with the build	that's <n>	1
-word	are there problems with the build	that's the	5
-word	are there problems with the build	the	38
-word	are there problems with the build	the <n>	9
-word	are there problems with the build	the build	21
-word	are there problems with the build	the code	7
-word	are there problems with the build	the moment	9
-word	are there problems with the build	the only	7
-word	are there problems with the build	there	6
-word	are there problems with the build	there are	2
-word	are there problems with the build	there is	3
-word	are there problems with the build	they	1
-word	are there problems with the build	thing	1
-word	are there problems with the build	think	16
-word	are there problems with the build	think i	15
-word	are there problems with the build	this	26
-word	are there problems with the build	this <n>	24
-word	are there problems with the build	this build	2
-word	are there problems with the build	to	17
-word	are there problems with the build	to <n>	3
-word	are there problems with the build	to build	1
-word	are there problems with the build	to figure	6
-word	are there problems with the build	to know	7
-word	are there problems with the build	to see	1
-word	are there problems with the build	too	1
-word	are there problems with the build	trying	7
-word	are there problems with the build	trying to	7
-word	are there problems with the build	type	13
-word	are there problems with the build	type <n>	7
-word	are there problems with the build	type for	6
-word	are there problems with the build	types	1
-word	are there problems with the build	types <n>	1
-word	are there problems with the build	um	2
+word	are there problems with the build	the	7
+word	are there problems with the build	the <n>	1
+word	are there problems with the build	the build	5
+word	are there problems with the build	the moment	1
+word	are there problems with the build	there	1
+word	are there problems with the build	think	4
+word	are there problems with the build	think i	3
+word	are there problems with the build	this	4
+word	are there problems with the build	this <n>	3
+word	are there problems with the build	to	2
+word	are there problems with the build	to <n>	1
+word	are there problems with the build	to figure	1
+word	are there problems with the build	trying	1
+word	are there problems with the build	trying to	1
+word	are there problems with the build	type	7
+word	are there problems with the build	type <n>	4
+word	are there problems with the build	type for	3
+word	are there problems with the build	um	1
 word	are there problems with the build	um what	1
-word	are there problems with the build	up	3
-word	are there problems with the build	want	1
-word	are there problems with the build	want to	1
-word	are there problems with the build	what	29
-word	are there problems with the build	what <n>	24
-word	are there problems with the build	what does	1
-word	are there problems with the build	what the	2
-word	are there problems with the build	what's	2
+word	are there problems with the build	what	10
+word	are there problems with the build	what <n>	9
+word	are there problems with the build	what's	1
 word	are there problems with the build	what's the	1
-word	are there problems with the build	whether	3
-word	are there problems with the build	whether <n>	2
-word	are there problems with the build	with	2
-word	are there problems with the build	with <n>	1
-word	are there problems with the build	with a	1
-word	are there problems with the build	wondering	1
-word	are there problems with the build	you	9
-word	are there problems with the build	you and	2
-word	are there problems with the build	you tell	6
+word	are there problems with the build	you	1
 word	are there problems with the tests	^ any	1
 word	are there problems with the tests	^ hey	1
 word	are there problems with the tests	^ which	5
 word	are there problems with the tests	any	2
 word	are there problems with the tests	are	1
-word	are there problems with the tests	currently	1
 word	are there problems with the tests	fail	4
 word	are there problems with the tests	failing	3
 word	are there problems with the tests	failing rn	2
@@ -1987,12 +1564,7 @@ word	does the tests pass	if any	1
 word	does the tests pass	if the	2
 word	does the tests pass	in	1
 word	does the tests pass	know	1
-word	does the tests pass	know if	1
-word	does the tests pass	let	1
-word	does the tests pass	let me	1
 word	does the tests pass	me	2
-word	does the tests pass	me if	1
-word	does the tests pass	me know	1
 word	does the tests pass	moment	3
 word	does the tests pass	moment or	2
 word	does the tests pass	ones	4
@@ -2002,12 +1574,11 @@ word	does the tests pass	or	6
 word	does the tests pass	or which	6
 word	does the tests pass	out	1
 word	does the tests pass	out if	1
-word	does the tests pass	pass	3
+word	does the tests pass	pass	4
 word	does the tests pass	pass or	3
 word	does the tests pass	passing	4
 word	does the tests pass	passing at	3
 word	does the tests pass	please	1
-word	does the tests pass	please let	1
 word	does the tests pass	red	1
 word	does the tests pass	run	1
 word	does the tests pass	run the	1
@@ -2030,810 +1601,424 @@ word	does the tests pass	which fail	2
 word	does the tests pass	which ones	4
 word	does the tests pass	you	1
 word	does the tests pass	you tell	1
-word	fix the build	's	1
-word	fix the build	's <n>	1
-word	fix the build	<n> <n>	171
-word	fix the build	<n> a	11
-word	fix the build	<n> about	4
-word	fix the build	<n> and	19
-word	fix the build	<n> are	1
-word	fix the build	<n> as	4
-word	fix the build	<n> at	21
+word	fix the build	<n> <n>	70
+word	fix the build	<n> about	2
+word	fix the build	<n> and	4
 word	fix the build	<n> broken	2
-word	fix the build	<n> build	57
-word	fix the build	<n> but	41
-word	fix the build	<n> by	2
-word	fix the build	<n> call	1
-word	fix the build	<n> can	11
-word	fix the build	<n> code	2
-word	fix the build	<n> compile	72
-word	fix the build	<n> compiling	33
-word	fix the build	<n> could	15
-word	fix the build	<n> don't	8
-word	fix the build	<n> even	1
-word	fix the build	<n> field	4
-word	fix the build	<n> file	1
-word	fix the build	<n> find	11
+word	fix the build	<n> build	34
+word	fix the build	<n> but	1
+word	fix the build	<n> by	1
+word	fix the build	<n> can	3
+word	fix the build	<n> compile	31
+word	fix the build	<n> compiling	31
+word	fix the build	<n> could	4
+word	fix the build	<n> don't	2
+word	fix the build	<n> field	2
+word	fix the build	<n> find	6
 word	fix the build	<n> fix	24
 word	fix the build	<n> fn	5
-word	fix the build	<n> for	6
-word	fix the build	<n> found	2
-word	fix the build	<n> from	2
-word	fix the build	<n> function	6
-word	fix the build	<n> go	1
-word	fix the build	<n> has	3
+word	fix the build	<n> for	2
+word	fix the build	<n> function	2
 word	fix the build	<n> here	2
-word	fix the build	<n> how	1
-word	fix the build	<n> i	40
-word	fix the build	<n> i'm	1
-word	fix the build	<n> if	1
-word	fix the build	<n> in	13
-word	fix the build	<n> is	4
-word	fix the build	<n> it	40
-word	fix the build	<n> it's	1
-word	fix the build	<n> just	35
-word	fix the build	<n> like	3
-word	fix the build	<n> list	1
-word	fix the build	<n> lives	1
+word	fix the build	<n> i	1
+word	fix the build	<n> in	7
+word	fix the build	<n> it	1
 word	fix the build	<n> make	23
-word	fix the build	<n> method	5
-word	fix the build	<n> no	1
-word	fix the build	<n> not	2
-word	fix the build	<n> of	2
+word	fix the build	<n> not	1
 word	fix the build	<n> on	3
-word	fix the build	<n> one	1
-word	fix the build	<n> or	2
-word	fix the build	<n> out	2
-word	fix the build	<n> please	2
-word	fix the build	<n> pls	4
-word	fix the build	<n> point	2
-word	fix the build	<n> right	2
-word	fix the build	<n> should	1
-word	fix the build	<n> so	1
-word	fix the build	<n> still	20
-word	fix the build	<n> test	2
-word	fix the build	<n> thanks	1
-word	fix the build	<n> that	3
-word	fix the build	<n> the	36
+word	fix the build	<n> or	1
+word	fix the build	<n> out	1
+word	fix the build	<n> please	1
+word	fix the build	<n> pls	2
+word	fix the build	<n> the	29
 word	fix the build	<n> there	1
-word	fix the build	<n> there's	2
 word	fix the build	<n> thing	1
-word	fix the build	<n> this	35
-word	fix the build	<n> to	7
-word	fix the build	<n> too	1
-word	fix the build	<n> total	1
-word	fix the build	<n> type	4
-word	fix the build	<n> types	6
-word	fix the build	<n> what	97
+word	fix the build	<n> to	2
+word	fix the build	<n> type	1
+word	fix the build	<n> types	2
+word	fix the build	<n> what	30
 word	fix the build	<n> why	1
-word	fix the build	<n> with	1
-word	fix the build	<n> word	2
-word	fix the build	^ <n>	132
+word	fix the build	<n> word	1
+word	fix the build	^ <n>	88
 word	fix the build	^ build	8
 word	fix the build	^ cant	5
-word	fix the build	^ check	1
 word	fix the build	^ compile	23
-word	fix the build	^ could	21
+word	fix the build	^ could	1
 word	fix the build	^ fix	28
 word	fix the build	^ get	32
-word	fix the build	^ hey	12
-word	fix the build	^ hi	47
+word	fix the build	^ hey	2
+word	fix the build	^ hi	3
 word	fix the build	^ hm	1
-word	fix the build	^ i'm	3
 word	fix the build	^ make	33
 word	fix the build	^ no	3
-word	fix the build	^ ok	10
+word	fix the build	^ ok	8
 word	fix the build	^ okay	1
 word	fix the build	^ pls	2
 word	fix the build	^ thanks	3
 word	fix the build	^ the	2
-word	fix the build	^ um	1
-word	fix the build	a	44
-word	fix the build	a <n>	41
-word	fix the build	a list	2
-word	fix the build	about	10
-word	fix the build	about <n>	9
-word	fix the build	again	39
-word	fix the build	again <n>	32
-word	fix the build	an	4
-word	fix the build	an <n>	4
-word	fix the build	and	47
-word	fix the build	and <n>	3
-word	fix the build	and fix	5
-word	fix the build	and i	22
-word	fix the build	and i'd	1
-word	fix the build	and now	5
-word	fix the build	and the	5
-word	fix the build	and want	1
-word	fix the build	are	3
+word	fix the build	a	2
+word	fix the build	a <n>	2
+word	fix the build	about	2
+word	fix the build	about <n>	2
+word	fix the build	again	3
+word	fix the build	and	5
+word	fix the build	and fix	4
+word	fix the build	and the	1
+word	fix the build	are	1
 word	fix the build	are in	1
-word	fix the build	as	4
-word	fix the build	as <n>	3
-word	fix the build	as a	1
-word	fix the build	as it	3
-word	fix the build	at	21
-word	fix the build	at <n>	1
-word	fix the build	at this	20
-word	fix the build	be	1
-word	fix the build	be used	1
-word	fix the build	behind	3
-word	fix the build	behind a	2
-word	fix the build	broken	13
+word	fix the build	broken	10
 word	fix the build	broken <n>	1
 word	fix the build	broken fix	6
-word	fix the build	broken i	2
-word	fix the build	build	193
-word	fix the build	build <n>	40
-word	fix the build	build again	34
-word	fix the build	build broken	8
-word	fix the build	build fails	56
-word	fix the build	build for	2
-word	fix the build	build is	3
-word	fix the build	build please	2
+word	fix the build	build	84
+word	fix the build	build <n>	2
+word	fix the build	build broken	7
+word	fix the build	build fails	36
 word	fix the build	build quick	23
-word	fix the build	but	50
+word	fix the build	but	7
 word	fix the build	but don't	6
-word	fix the build	but it	3
-word	fix the build	but the	39
-word	fix the build	by	3
+word	fix the build	by	1
 word	fix the build	by <n>	1
-word	fix the build	call	1
-word	fix the build	can	27
-word	fix the build	can you	25
-word	fix the build	can't	21
-word	fix the build	can't see	21
+word	fix the build	can	9
+word	fix the build	can you	9
 word	fix the build	cant	6
 word	fix the build	cant <n>	5
 word	fix the build	cant find	1
 word	fix the build	change	6
 word	fix the build	change what	6
-word	fix the build	check	3
-word	fix the build	check <n>	2
+word	fix the build	check	1
 word	fix the build	checking	1
 word	fix the build	checking could	1
-word	fix the build	code	54
-word	fix the build	code <n>	20
-word	fix the build	code is	32
-word	fix the build	compile	214
-word	fix the build	compile <n>	93
-word	fix the build	compile and	2
-word	fix the build	compile can	4
-word	fix the build	compile could	5
-word	fix the build	compile for	3
+word	fix the build	compile	97
+word	fix the build	compile <n>	29
 word	fix the build	compile keep	27
 word	fix the build	compile pls	29
-word	fix the build	compile right	35
-word	fix the build	compile something	3
-word	fix the build	compiling	36
-word	fix the build	compiling <n>	31
-word	fix the build	compiling again	5
-word	fix the build	could	84
-word	fix the build	could you	84
-word	fix the build	counting	1
-word	fix the build	counts	1
-word	fix the build	declared	1
-word	fix the build	declared as	1
-word	fix the build	do	32
-word	fix the build	does	71
-word	fix the build	doing	20
-word	fix the build	doing the	20
-word	fix the build	don't	26
+word	fix the build	compiling	33
+word	fix the build	compiling <n>	30
+word	fix the build	compiling again	3
+word	fix the build	could	10
+word	fix the build	could you	10
+word	fix the build	does	36
+word	fix the build	don't	11
 word	fix the build	don't change	6
-word	fix the build	don't compile	17
-word	fix the build	don't get	1
-word	fix the build	even	1
-word	fix the build	even though	1
-word	fix the build	failing	1
-word	fix the build	fails	57
-word	fix the build	fails and	20
+word	fix the build	don't compile	5
+word	fix the build	fails	36
 word	fix the build	fails fix	33
-word	fix the build	fails with	3
-word	fix the build	field	6
+word	fix the build	fails with	2
+word	fix the build	field	4
 word	fix the build	field <n>	4
-word	fix the build	field can	2
-word	fix the build	file	2
-word	fix the build	file and	2
-word	fix the build	find	12
-word	fix the build	find <n>	7
-word	fix the build	find function	3
-word	fix the build	find type	2
-word	fix the build	fix	186
+word	fix the build	find	7
+word	fix the build	find <n>	4
+word	fix the build	find function	2
+word	fix the build	find type	1
+word	fix the build	fix	158
 word	fix the build	fix <n>	1
 word	fix the build	fix build	3
 word	fix the build	fix compile	3
-word	fix the build	fix it	37
+word	fix the build	fix it	22
 word	fix the build	fix pls	47
 word	fix the build	fix that	11
-word	fix the build	fix the	31
+word	fix the build	fix the	19
 word	fix the build	fn	5
 word	fix the build	fn <n>	1
 word	fix the build	fn fix	3
-word	fix the build	for	20
-word	fix the build	for <n>	9
-word	fix the build	for a	2
-word	fix the build	for me	7
-word	fix the build	for the	1
-word	fix the build	found	3
-word	fix the build	from	2
-word	fix the build	from <n>	2
-word	fix the build	function	9
-word	fix the build	function <n>	3
-word	fix the build	function don't	2
+word	fix the build	for	4
+word	fix the build	for <n>	1
+word	fix the build	for a	1
+word	fix the build	for me	1
+word	fix the build	found	2
+word	fix the build	function	4
+word	fix the build	function <n>	2
 word	fix the build	function is	1
-word	fix the build	get	71
-word	fix the build	get <n>	3
-word	fix the build	get it	38
+word	fix the build	get	33
+word	fix the build	get <n>	1
+word	fix the build	get it	2
 word	fix the build	get the	30
-word	fix the build	getting	4
-word	fix the build	getting <n>	4
 word	fix the build	go	5
 word	fix the build	go <n>	4
 word	fix the build	got	1
-word	fix the build	has	3
-word	fix the build	has an	3
-word	fix the build	have	3
-word	fix the build	have <n>	1
-word	fix the build	have a	2
 word	fix the build	here	2
-word	fix the build	hey	12
+word	fix the build	hey	2
 word	fix the build	hey <n>	2
-word	fix the build	hey i	5
-word	fix the build	hey quick	1
-word	fix the build	hey the	2
-word	fix the build	hi	47
-word	fix the build	hi <n>	4
-word	fix the build	hi i	4
-word	fix the build	hi i'm	2
-word	fix the build	hi the	2
-word	fix the build	hi there	3
-word	fix the build	hi this	32
+word	fix the build	hi	3
+word	fix the build	hi <n>	2
 word	fix the build	hm	1
-word	fix the build	how	1
-word	fix the build	i	75
-word	fix the build	i <n>	46
-word	fix the build	i can't	21
-word	fix the build	i have	2
-word	fix the build	i see	1
+word	fix the build	i	2
+word	fix the build	i <n>	1
 word	fix the build	i think	1
-word	fix the build	i want	4
-word	fix the build	i'd	21
-word	fix the build	i'd like	21
-word	fix the build	i'm	9
-word	fix the build	i'm <n>	1
-word	fix the build	i'm getting	4
-word	fix the build	i'm trying	2
-word	fix the build	if	1
-word	fix the build	if there	1
-word	fix the build	in	17
+word	fix the build	in	11
 word	fix the build	in <n>	8
-word	fix the build	in the	3
-word	fix the build	in this	7
-word	fix the build	into	1
-word	fix the build	is	46
-word	fix the build	is <n>	5
-word	fix the build	is behind	2
-word	fix the build	is broken	3
-word	fix the build	is failing	1
-word	fix the build	is meant	32
-word	fix the build	is right	1
-word	fix the build	it	201
-word	fix the build	it <n>	4
-word	fix the build	it build	61
+word	fix the build	in the	1
+word	fix the build	in this	3
+word	fix the build	is	3
+word	fix the build	is <n>	2
+word	fix the build	it	83
+word	fix the build	it <n>	1
+word	fix the build	it build	24
 word	fix the build	it but	6
-word	fix the build	it can	1
-word	fix the build	it compile	42
-word	fix the build	it compiling	3
-word	fix the build	it could	2
-word	fix the build	it does	71
-word	fix the build	it don't	3
-word	fix the build	it for	1
-word	fix the build	it is	3
-word	fix the build	it out	3
+word	fix the build	it compile	3
+word	fix the build	it compiling	2
+word	fix the build	it does	36
 word	fix the build	it please	1
 word	fix the build	it pls	1
-word	fix the build	it should	2
-word	fix the build	it so	38
 word	fix the build	it thanks	1
-word	fix the build	it to	21
-word	fix the build	it would	35
-word	fix the build	it's	1
-word	fix the build	it's <n>	1
-word	fix the build	its	3
+word	fix the build	its	2
 word	fix the build	its <n>	2
-word	fix the build	just	37
-word	fix the build	just <n>	36
 word	fix the build	keep	27
 word	fix the build	keep the	27
-word	fix the build	let	1
-word	fix the build	let me	1
-word	fix the build	like	24
-word	fix the build	like <n>	1
-word	fix the build	like it	21
-word	fix the build	list	3
-word	fix the build	list of	2
-word	fix the build	live	3
-word	fix the build	lives	1
-word	fix the build	lives <n>	1
-word	fix the build	make	59
-word	fix the build	make it	30
+word	fix the build	make	56
+word	fix the build	make it	27
 word	fix the build	make the	1
 word	fix the build	make this	28
-word	fix the build	me	9
-word	fix the build	me <n>	1
-word	fix the build	me thanks	1
-word	fix the build	me there	1
-word	fix the build	me there's	2
-word	fix the build	meant	32
-word	fix the build	meant to	32
-word	fix the build	method	9
-word	fix the build	method <n>	6
-word	fix the build	mind	35
-word	fix the build	mind <n>	35
-word	fix the build	named	1
-word	fix the build	named <n>	1
-word	fix the build	no	6
-word	fix the build	no <n>	1
+word	fix the build	me	1
+word	fix the build	method	3
+word	fix the build	method <n>	2
+word	fix the build	no	4
 word	fix the build	no field	2
-word	fix the build	no method	3
-word	fix the build	not	4
-word	fix the build	not <n>	1
-word	fix the build	not declared	1
-word	fix the build	now	42
-word	fix the build	now <n>	2
-word	fix the build	now could	33
-word	fix the build	now i'm	2
-word	fix the build	now it	1
-word	fix the build	now the	2
-word	fix the build	of	8
-word	fix the build	of <n>	7
-word	fix the build	ok	11
+word	fix the build	no method	2
+word	fix the build	not	1
+word	fix the build	of	2
+word	fix the build	of <n>	2
+word	fix the build	ok	9
 word	fix the build	ok can	4
 word	fix the build	ok fix	5
-word	fix the build	ok so	2
 word	fix the build	okay	1
-word	fix the build	on	8
+word	fix the build	on	4
 word	fix the build	on <n>	2
-word	fix the build	on the	2
 word	fix the build	on type	1
-word	fix the build	one	4
-word	fix the build	one <n>	2
-word	fix the build	or	3
-word	fix the build	or <n>	2
+word	fix the build	or	1
 word	fix the build	or something	1
-word	fix the build	out	5
-word	fix the build	out of	2
-word	fix the build	out the	1
-word	fix the build	passing	1
-word	fix the build	please	14
-word	fix the build	please fix	4
+word	fix the build	out	2
+word	fix the build	out of	1
+word	fix the build	please	8
+word	fix the build	please fix	1
 word	fix the build	please go	2
-word	fix the build	pls	84
+word	fix the build	pls	82
 word	fix the build	pls fix	32
-word	fix the build	point	3
-word	fix the build	point <n>	3
-word	fix the build	quick	24
-word	fix the build	quick one	1
-word	fix the build	returns	2
-word	fix the build	right	39
-word	fix the build	right <n>	2
-word	fix the build	right now	36
-word	fix the build	s	2
-word	fix the build	see	22
-word	fix the build	see why	21
+word	fix the build	point	2
+word	fix the build	point <n>	2
+word	fix the build	quick	23
+word	fix the build	returns	1
+word	fix the build	s	1
 word	fix the build	sense	1
-word	fix the build	should	4
-word	fix the build	should live	3
-word	fix the build	show	1
-word	fix the build	show 's	1
-word	fix the build	so	42
-word	fix the build	so i	1
-word	fix the build	so it	39
-word	fix the build	so the	2
-word	fix the build	some	3
-word	fix the build	some <n>	2
-word	fix the build	something	8
-word	fix the build	something about	6
+word	fix the build	some	1
+word	fix the build	something	2
 word	fix the build	something fix	2
-word	fix the build	still	20
-word	fix the build	still doing	20
-word	fix the build	store	1
-word	fix the build	take	22
-word	fix the build	take a	22
-word	fix the build	test	2
-word	fix the build	thanks	7
+word	fix the build	take	1
+word	fix the build	thanks	4
 word	fix the build	thanks could	2
-word	fix the build	that	16
-word	fix the build	that <n>	4
+word	fix the build	that	12
 word	fix the build	that for	1
 word	fix the build	that please	4
-word	fix the build	the	201
-word	fix the build	the <n>	89
-word	fix the build	the build	60
-word	fix the build	the code	32
-word	fix the build	the compile	8
-word	fix the build	the show	1
-word	fix the build	the thing	20
-word	fix the build	the total	2
-word	fix the build	the way	2
-word	fix the build	there	8
-word	fix the build	there <n>	4
-word	fix the build	there is	3
-word	fix the build	there's	7
-word	fix the build	there's <n>	2
-word	fix the build	there's an	1
-word	fix the build	thing	21
+word	fix the build	the	81
+word	fix the build	the <n>	66
+word	fix the build	the build	15
+word	fix the build	the compile	2
+word	fix the build	there	2
+word	fix the build	there's	1
+word	fix the build	thing	1
 word	fix the build	think	1
-word	fix the build	this	123
-word	fix the build	this <n>	75
-word	fix the build	this code	20
+word	fix the build	this	32
+word	fix the build	this <n>	4
 word	fix the build	this compile	28
-word	fix the build	though	1
-word	fix the build	to	64
-word	fix the build	to <n>	4
-word	fix the build	to build	3
-word	fix the build	to compile	20
-word	fix the build	to do	32
-word	fix the build	to get	1
-word	fix the build	to me	1
+word	fix the build	to	2
 word	fix the build	to something	1
-word	fix the build	too	1
-word	fix the build	total	3
-word	fix the build	trying	2
-word	fix the build	trying to	2
-word	fix the build	type	9
-word	fix the build	type <n>	6
-word	fix the build	type for	3
-word	fix the build	types	6
-word	fix the build	types <n>	4
-word	fix the build	um	1
-word	fix the build	use	2
-word	fix the build	use it	1
-word	fix the build	used	1
-word	fix the build	want	6
-word	fix the build	want <n>	1
-word	fix the build	want the	1
-word	fix the build	want to	1
-word	fix the build	way	3
-word	fix the build	we	1
-word	fix the build	what	104
-word	fix the build	what it	71
-word	fix the build	what the	32
-word	fix the build	why	23
+word	fix the build	type	4
+word	fix the build	type <n>	4
+word	fix the build	types	2
+word	fix the build	use	1
+word	fix the build	want	1
+word	fix the build	way	1
+word	fix the build	what	36
+word	fix the build	what it	36
+word	fix the build	why	1
 word	fix the build	why fix	1
-word	fix the build	why i'd	20
-word	fix the build	with	5
-word	fix the build	with <n>	4
-word	fix the build	with the	1
-word	fix the build	word	3
-word	fix the build	word <n>	1
-word	fix the build	would	35
-word	fix the build	would you	35
-word	fix the build	you	144
-word	fix the build	you <n>	4
-word	fix the build	you fix	39
-word	fix the build	you get	36
-word	fix the build	you make	3
-word	fix the build	you mind	35
-word	fix the build	you please	4
-word	fix the build	you take	22
-word	fix the tests	's	5
-word	fix the tests	's <n>	5
-word	fix the tests	<n> 's	3
-word	fix the tests	<n> <n>	47
-word	fix the tests	<n> a	2
-word	fix the tests	<n> about	1
-word	fix the tests	<n> and	16
-word	fix the tests	<n> at	1
+word	fix the build	with	2
+word	fix the build	with <n>	2
+word	fix the build	word	1
+word	fix the build	you	19
+word	fix the build	you fix	15
+word	fix the build	you please	1
+word	fix the build	you take	1
+word	fix the tests	's	2
+word	fix the tests	's <n>	2
+word	fix the tests	<n> <n>	32
+word	fix the tests	<n> and	5
 word	fix the tests	<n> broken	1
-word	fix the tests	<n> but	3
+word	fix the tests	<n> but	1
 word	fix the tests	<n> by	1
 word	fix the tests	<n> can	1
-word	fix the tests	<n> code	4
-word	fix the tests	<n> could	7
+word	fix the tests	<n> code	2
+word	fix the tests	<n> could	1
 word	fix the tests	<n> end	1
-word	fix the tests	<n> fails	23
-word	fix the tests	<n> file	4
+word	fix the tests	<n> fails	10
+word	fix the tests	<n> file	2
 word	fix the tests	<n> fix	2
-word	fix the tests	<n> for	8
-word	fix the tests	<n> from	2
-word	fix the tests	<n> has	1
+word	fix the tests	<n> for	3
 word	fix the tests	<n> i	1
-word	fix the tests	<n> i'm	1
-word	fix the tests	<n> in	5
-word	fix the tests	<n> instead	1
+word	fix the tests	<n> in	1
 word	fix the tests	<n> into	2
-word	fix the tests	<n> is	5
-word	fix the tests	<n> it	1
-word	fix the tests	<n> it's	1
-word	fix the tests	<n> keep	2
-word	fix the tests	<n> like	3
-word	fix the tests	<n> list	5
+word	fix the tests	<n> is	1
+word	fix the tests	<n> list	3
 word	fix the tests	<n> lives	1
-word	fix the tests	<n> me	1
-word	fix the tests	<n> name	2
-word	fix the tests	<n> not	3
-word	fix the tests	<n> of	3
-word	fix the tests	<n> on	1
-word	fix the tests	<n> one	2
-word	fix the tests	<n> out	3
-word	fix the tests	<n> point	1
-word	fix the tests	<n> right	1
-word	fix the tests	<n> seems	2
+word	fix the tests	<n> name	1
+word	fix the tests	<n> never	2
+word	fix the tests	<n> not	2
 word	fix the tests	<n> should	1
-word	fix the tests	<n> show	5
-word	fix the tests	<n> so	2
-word	fix the tests	<n> test	42
-word	fix the tests	<n> the	6
+word	fix the tests	<n> show	2
+word	fix the tests	<n> test	43
+word	fix the tests	<n> the	2
 word	fix the tests	<n> thing	1
-word	fix the tests	<n> to	2
-word	fix the tests	<n> too	1
-word	fix the tests	<n> total	2
-word	fix the tests	<n> what	1
-word	fix the tests	<n> where	1
+word	fix the tests	<n> to	1
 word	fix the tests	<n> why	1
-word	fix the tests	<n> word	2
-word	fix the tests	<n> wrong	3
-word	fix the tests	^ <n>	51
+word	fix the tests	<n> word	1
+word	fix the tests	<n> wrong	5
+word	fix the tests	^ <n>	50
 word	fix the tests	^ fix	3
 word	fix the tests	^ get	1
-word	fix the tests	^ hey	7
-word	fix the tests	^ hi	17
+word	fix the tests	^ hey	2
+word	fix the tests	^ hi	6
 word	fix the tests	^ make	3
 word	fix the tests	^ number	1
 word	fix the tests	^ ok	3
 word	fix the tests	^ okay	1
 word	fix the tests	^ pls	1
 word	fix the tests	^ thanks	1
-word	fix the tests	a	10
-word	fix the tests	a <n>	10
-word	fix the tests	about	2
-word	fix the tests	about <n>	1
+word	fix the tests	a	1
+word	fix the tests	a <n>	1
+word	fix the tests	about	1
 word	fix the tests	again	1
-word	fix the tests	an	2
-word	fix the tests	an <n>	2
-word	fix the tests	and	22
-word	fix the tests	and <n>	20
-word	fix the tests	and fix	3
-word	fix the tests	as	1
-word	fix the tests	as <n>	1
-word	fix the tests	at	2
+word	fix the tests	and	7
+word	fix the tests	and <n>	7
+word	fix the tests	at	1
 word	fix the tests	at the	1
-word	fix the tests	be	1
-word	fix the tests	because	2
-word	fix the tests	because of	2
 word	fix the tests	broken	4
 word	fix the tests	broken <n>	1
 word	fix the tests	broken test	2
-word	fix the tests	build	1
-word	fix the tests	but	3
-word	fix the tests	but <n>	3
+word	fix the tests	but	1
 word	fix the tests	by	1
-word	fix the tests	can	5
+word	fix the tests	can	3
 word	fix the tests	can <n>	2
-word	fix the tests	can you	3
-word	fix the tests	code	11
-word	fix the tests	code so	3
-word	fix the tests	could	27
-word	fix the tests	could you	27
+word	fix the tests	can you	1
+word	fix the tests	code	4
+word	fix the tests	could	11
+word	fix the tests	could you	11
 word	fix the tests	count	2
-word	fix the tests	counting	1
-word	fix the tests	counts	1
-word	fix the tests	does	2
-word	fix the tests	does <n>	1
-word	fix the tests	end	2
+word	fix the tests	does	1
+word	fix the tests	end	1
 word	fix the tests	end up	1
-word	fix the tests	even	1
-word	fix the tests	even though	1
 word	fix the tests	fail	2
 word	fix the tests	fail fix	2
-word	fix the tests	failing	22
-word	fix the tests	failing <n>	3
+word	fix the tests	failing	18
+word	fix the tests	failing <n>	2
 word	fix the tests	failing fix	9
 word	fix the tests	failing test	1
-word	fix the tests	failing the	2
-word	fix the tests	fails	55
-word	fix the tests	fails <n>	5
-word	fix the tests	fails because	2
-word	fix the tests	fails could	11
+word	fix the tests	fails	42
+word	fix the tests	fails <n>	3
+word	fix the tests	fails could	7
 word	fix the tests	fails fix	19
-word	fix the tests	fails the	4
-word	fix the tests	file	4
-word	fix the tests	file and	1
-word	fix the tests	find	2
-word	fix the tests	find the	1
-word	fix the tests	fix	76
+word	fix the tests	fails the	2
+word	fix the tests	file	2
+word	fix the tests	fix	58
 word	fix the tests	fix <n>	1
-word	fix the tests	fix it	11
+word	fix the tests	fix it	7
 word	fix the tests	fix pls	6
 word	fix the tests	fix that	2
-word	fix the tests	fix the	26
-word	fix the tests	for	9
+word	fix the tests	fix the	12
+word	fix the tests	for	3
 word	fix the tests	for <n>	1
-word	fix the tests	for a	5
-word	fix the tests	for the	1
-word	fix the tests	from	2
-word	fix the tests	function	1
-word	fix the tests	get	2
+word	fix the tests	for a	1
+word	fix the tests	get	1
 word	fix the tests	get <n>	1
-word	fix the tests	get a	1
-word	fix the tests	got	1
-word	fix the tests	got <n>	1
-word	fix the tests	has	2
-word	fix the tests	has <n>	2
-word	fix the tests	have	2
-word	fix the tests	have <n>	1
-word	fix the tests	have a	1
-word	fix the tests	hey	7
+word	fix the tests	hey	2
 word	fix the tests	hey <n>	1
-word	fix the tests	hey i'm	1
-word	fix the tests	hey the	4
-word	fix the tests	hi	17
+word	fix the tests	hi	6
 word	fix the tests	hi <n>	1
-word	fix the tests	hi i	1
-word	fix the tests	hi i'm	4
-word	fix the tests	hi in	2
-word	fix the tests	hi our	5
-word	fix the tests	hi the	1
-word	fix the tests	hi there	1
-word	fix the tests	i	4
+word	fix the tests	hi i'm	1
+word	fix the tests	hi our	2
+word	fix the tests	i	2
 word	fix the tests	i <n>	1
-word	fix the tests	i have	1
-word	fix the tests	i think	1
-word	fix the tests	i'm	7
-word	fix the tests	i'm <n>	5
-word	fix the tests	in	9
-word	fix the tests	in <n>	3
-word	fix the tests	in it	1
-word	fix the tests	in the	3
-word	fix the tests	instead	1
+word	fix the tests	i'm	1
+word	fix the tests	in	3
+word	fix the tests	in <n>	2
+word	fix the tests	in the	1
 word	fix the tests	into	2
 word	fix the tests	into <n>	2
-word	fix the tests	is	6
-word	fix the tests	is <n>	2
-word	fix the tests	is failing	3
-word	fix the tests	is in	1
-word	fix the tests	is right	1
-word	fix the tests	it	20
-word	fix the tests	it <n>	5
-word	fix the tests	it can	1
-word	fix the tests	it could	1
-word	fix the tests	it please	2
+word	fix the tests	is	2
+word	fix the tests	it	9
+word	fix the tests	it please	1
 word	fix the tests	it pls	1
-word	fix the tests	it returns	1
-word	fix the tests	it should	1
-word	fix the tests	it's	1
-word	fix the tests	keep	2
-word	fix the tests	like	3
-word	fix the tests	like <n>	2
-word	fix the tests	list	6
-word	fix the tests	list <n>	2
+word	fix the tests	keep	1
+word	fix the tests	list	4
+word	fix the tests	list <n>	1
 word	fix the tests	lives	1
-word	fix the tests	lives <n>	1
-word	fix the tests	looking	1
 word	fix the tests	make	4
 word	fix the tests	make it	1
 word	fix the tests	make the	2
 word	fix the tests	me	1
-word	fix the tests	mean	2
-word	fix the tests	name	2
-word	fix the tests	never	3
-word	fix the tests	not	4
+word	fix the tests	mean	1
+word	fix the tests	name	1
+word	fix the tests	never	2
+word	fix the tests	not	3
 word	fix the tests	not <n>	2
-word	fix the tests	now	1
-word	fix the tests	now it	1
 word	fix the tests	num	1
-word	fix the tests	number	2
-word	fix the tests	number <n>	2
-word	fix the tests	of	8
-word	fix the tests	of <n>	4
-word	fix the tests	of it	2
-word	fix the tests	of the	1
+word	fix the tests	number	1
 word	fix the tests	ok	3
 word	fix the tests	ok fix	3
 word	fix the tests	okay	1
-word	fix the tests	on	5
-word	fix the tests	on <n>	3
-word	fix the tests	on the	1
-word	fix the tests	one	8
-word	fix the tests	one <n>	4
-word	fix the tests	one and	2
-word	fix the tests	or	1
-word	fix the tests	or <n>	1
+word	fix the tests	on	2
+word	fix the tests	on <n>	2
+word	fix the tests	one	4
+word	fix the tests	one <n>	2
 word	fix the tests	other	1
-word	fix the tests	our	10
-word	fix the tests	our <n>	9
-word	fix the tests	out	3
-word	fix the tests	out <n>	1
-word	fix the tests	out wrong	2
+word	fix the tests	our	2
+word	fix the tests	our <n>	2
 word	fix the tests	pass	4
-word	fix the tests	passes	4
 word	fix the tests	passing	1
-word	fix the tests	please	3
+word	fix the tests	please	2
 word	fix the tests	please fix	1
 word	fix the tests	pls	13
 word	fix the tests	pls fix	5
 word	fix the tests	plz	1
-word	fix the tests	point	1
 word	fix the tests	red	5
 word	fix the tests	red pls	2
-word	fix the tests	returns	1
-word	fix the tests	right	5
-word	fix the tests	right <n>	1
-word	fix the tests	right now	1
 word	fix the tests	run	1
 word	fix the tests	run the	1
-word	fix the tests	seems	3
-word	fix the tests	should	3
-word	fix the tests	should be	1
-word	fix the tests	show	10
-word	fix the tests	show 's	1
-word	fix the tests	show <n>	2
+word	fix the tests	seems	2
+word	fix the tests	should	1
+word	fix the tests	show	6
 word	fix the tests	show the	2
-word	fix the tests	show up	1
-word	fix the tests	so	5
-word	fix the tests	so i	1
-word	fix the tests	so it	1
-word	fix the tests	so the	3
-word	fix the tests	something	1
-word	fix the tests	still	1
-word	fix the tests	test	62
-word	fix the tests	test <n>	2
+word	fix the tests	test	55
 word	fix the tests	test fail	2
 word	fix the tests	test failing	13
 word	fix the tests	test fails	32
-word	fix the tests	test is	2
-word	fix the tests	test passes	3
 word	fix the tests	test red	3
-word	fix the tests	tests	4
+word	fix the tests	tests	3
 word	fix the tests	tests pass	2
 word	fix the tests	thanks	1
 word	fix the tests	thanks could	1
 word	fix the tests	that	2
-word	fix the tests	the	34
-word	fix the tests	the <n>	25
-word	fix the tests	the code	6
+word	fix the tests	the	16
+word	fix the tests	the <n>	10
+word	fix the tests	the code	1
 word	fix the tests	the failing	2
-word	fix the tests	the function	1
-word	fix the tests	the show	1
-word	fix the tests	the test	8
+word	fix the tests	the test	1
 word	fix the tests	the tests	1
-word	fix the tests	there	1
-word	fix the tests	there's	2
-word	fix the tests	there's an	1
 word	fix the tests	thing	1
 word	fix the tests	things	1
-word	fix the tests	think	1
-word	fix the tests	think the	1
-word	fix the tests	though	1
-word	fix the tests	to	3
-word	fix the tests	to <n>	2
-word	fix the tests	to get	1
+word	fix the tests	to	1
+word	fix the tests	to <n>	1
 word	fix the tests	too	2
 word	fix the tests	too <n>	2
-word	fix the tests	total	2
-word	fix the tests	up	2
-word	fix the tests	we	1
-word	fix the tests	what	1
-word	fix the tests	what the	1
-word	fix the tests	what's	1
-word	fix the tests	what's <n>	1
-word	fix the tests	where	1
-word	fix the tests	where it	1
+word	fix the tests	up	1
 word	fix the tests	why	1
 word	fix the tests	why fix	1
-word	fix the tests	with	2
-word	fix the tests	with a	1
-word	fix the tests	with the	1
-word	fix the tests	word	3
-word	fix the tests	word <n>	1
-word	fix the tests	wrong	10
+word	fix the tests	with	1
+word	fix the tests	word	2
+word	fix the tests	wrong	8
 word	fix the tests	wrong <n>	2
-word	fix the tests	wrong could	2
 word	fix the tests	wrong test	4
-word	fix the tests	you	30
-word	fix the tests	you <n>	1
-word	fix the tests	you find	2
-word	fix the tests	you fix	25
+word	fix the tests	you	12
+word	fix the tests	you fix	10
 word	fix the tests	you make	1
 word	fix the tests	you please	1
 word	how many functions call <0>	<n> called	6
@@ -2933,7 +2118,6 @@ word	how many functions call <0>	functions is	1
 word	how many functions call <0>	functions that	5
 word	how many functions call <0>	functions use	1
 word	how many functions call <0>	get	1
-word	how many functions call <0>	get a	1
 word	how many functions call <0>	hey	26
 word	how many functions call <0>	hey can	4
 word	how many functions call <0>	hey could	2
@@ -2951,7 +2135,6 @@ word	how many functions call <0>	i'd like	20
 word	how many functions call <0>	i'm	11
 word	how many functions call <0>	i'm curious	2
 word	how many functions call <0>	i'm trying	8
-word	how many functions call <0>	i'm wondering	1
 word	how many functions call <0>	if	1
 word	how many functions call <0>	in	3
 word	how many functions call <0>	in advance	1
@@ -3036,7 +2219,6 @@ word	how many functions call <0>	things	1
 word	how many functions call <0>	this	1
 word	how many functions call <0>	to	30
 word	how many functions call <0>	to figure	9
-word	how many functions call <0>	to get	1
 word	how many functions call <0>	to know	20
 word	how many functions call <0>	trying	10
 word	how many functions call <0>	trying to	10
@@ -3052,7 +2234,6 @@ word	how many functions call <0>	used in	2
 word	how many functions call <0>	want	2
 word	how many functions call <0>	want the	2
 word	how many functions call <0>	with	1
-word	how many functions call <0>	wondering	1
 word	how many functions call <0>	you	31
 word	how many functions call <0>	you count	8
 word	how many functions call <0>	you know	3
@@ -3149,7 +2330,6 @@ word	rename <0> to <1>	i'd	6
 word	rename <0> to <1>	i'd like	6
 word	rename <0> to <1>	i'm	1
 word	rename <0> to <1>	if	2
-word	rename <0> to <1>	if that's	1
 word	rename <0> to <1>	instead	2
 word	rename <0> to <1>	is	2
 word	rename <0> to <1>	is <n>	2
@@ -3191,7 +2371,6 @@ word	rename <0> to <1>	renamed	4
 word	rename <0> to <1>	renamed to	4
 word	rename <0> to <1>	request	2
 word	rename <0> to <1>	request please	2
-word	rename <0> to <1>	right	1
 word	rename <0> to <1>	should	6
 word	rename <0> to <1>	should be	6
 word	rename <0> to <1>	so	2
@@ -3260,7 +2439,6 @@ word	rename the <0> field to <1>	a	1
 word	rename the <0> field to <1>	a lot	1
 word	rename the <0> field to <1>	advance	1
 word	rename the <0> field to <1>	and	1
-word	rename the <0> field to <1>	and i'd	1
 word	rename the <0> field to <1>	be	4
 word	rename the <0> field to <1>	be <n>	2
 word	rename the <0> field to <1>	be called	2
@@ -3325,7 +2503,6 @@ word	rename the <0> field to <1>	like to	9
 word	rename the <0> field to <1>	lot	1
 word	rename the <0> field to <1>	me	2
 word	rename the <0> field to <1>	me please	1
-word	rename the <0> field to <1>	mind	1
 word	rename the <0> field to <1>	name	4
 word	rename the <0> field to <1>	name <n>	3
 word	rename the <0> field to <1>	name to	1
@@ -3372,7 +2549,6 @@ word	rename the <0> field to <1>	the <n>	17
 word	rename the <0> field to <1>	the code	1
 word	rename the <0> field to <1>	the field	20
 word	rename the <0> field to <1>	think	2
-word	rename the <0> field to <1>	think the	1
 word	rename the <0> field to <1>	to	80
 word	rename the <0> field to <1>	to <n>	77
 word	rename the <0> field to <1>	to do	2
@@ -3381,11 +2557,8 @@ word	rename the <0> field to <1>	um	1
 word	rename the <0> field to <1>	used	1
 word	rename the <0> field to <1>	want	2
 word	rename the <0> field to <1>	want <n>	1
-word	rename the <0> field to <1>	would	1
-word	rename the <0> field to <1>	would you	1
 word	rename the <0> field to <1>	you	24
 word	rename the <0> field to <1>	you do	6
-word	rename the <0> field to <1>	you mind	1
 word	rename the <0> field to <1>	you please	1
 word	rename the <0> field to <1>	you rename	12
 word	rename the <0> field to <1>	you take	4
@@ -3399,7 +2572,7 @@ word	rename the <0> function to <1>	<n> method	1
 word	rename the <0> function to <1>	<n> please	7
 word	rename the <0> function to <1>	<n> pls	2
 word	rename the <0> function to <1>	<n> thanks	6
-word	rename the <0> function to <1>	<n> to	31
+word	rename the <0> function to <1>	<n> to	32
 word	rename the <0> function to <1>	^ <n>	1
 word	rename the <0> function to <1>	^ can	5
 word	rename the <0> function to <1>	^ could	6
@@ -3409,7 +2582,7 @@ word	rename the <0> function to <1>	^ i'd	4
 word	rename the <0> function to <1>	^ ok	1
 word	rename the <0> function to <1>	^ please	3
 word	rename the <0> function to <1>	^ quick	3
-word	rename the <0> function to <1>	^ rename	9
+word	rename the <0> function to <1>	^ rename	10
 word	rename the <0> function to <1>	a	1
 word	rename the <0> function to <1>	a lot	1
 word	rename the <0> function to <1>	advance	1
@@ -3471,7 +2644,7 @@ word	rename the <0> function to <1>	pls	2
 word	rename the <0> function to <1>	quick	3
 word	rename the <0> function to <1>	quick one	2
 word	rename the <0> function to <1>	quick request	1
-word	rename the <0> function to <1>	rename	39
+word	rename the <0> function to <1>	rename	40
 word	rename the <0> function to <1>	rename <n>	2
 word	rename the <0> function to <1>	rename fn	8
 word	rename the <0> function to <1>	rename the	27
@@ -3490,8 +2663,8 @@ word	rename the <0> function to <1>	that please	1
 word	rename the <0> function to <1>	the	28
 word	rename the <0> function to <1>	the <n>	3
 word	rename the <0> function to <1>	the function	24
-word	rename the <0> function to <1>	to	36
-word	rename the <0> function to <1>	to <n>	36
+word	rename the <0> function to <1>	to	37
+word	rename the <0> function to <1>	to <n>	37
 word	rename the <0> function to <1>	to rename	6
 word	rename the <0> function to <1>	used	1
 word	rename the <0> function to <1>	you	24
@@ -3756,7 +2929,7 @@ word	what does <0> do	^ so	7
 word	what does <0> do	^ um	4
 word	what does <0> do	^ what	162
 word	what does <0> do	^ what's	69
-word	what does <0> do	^ whats	10
+word	what does <0> do	^ whats	9
 word	what does <0> do	a	1
 word	what does <0> do	about	1
 word	what does <0> do	actually	7
@@ -3765,7 +2938,6 @@ word	what does <0> do	advance	3
 word	what does <0> do	and	18
 word	what does <0> do	and what	17
 word	what does <0> do	be	1
-word	what does <0> do	be used	1
 word	what does <0> do	but	3
 word	what does <0> do	but don't	2
 word	what does <0> do	can	34
@@ -3814,7 +2986,7 @@ word	what does <0> do	explain me	2
 word	what does <0> do	explain what	11
 word	what does <0> do	figure	10
 word	what does <0> do	figure out	10
-word	what does <0> do	for	275
+word	what does <0> do	for	274
 word	what does <0> do	for and	3
 word	what does <0> do	for can	4
 word	what does <0> do	for could	2
@@ -3861,7 +3033,6 @@ word	what does <0> do	it does	6
 word	what does <0> do	it for	59
 word	what does <0> do	it is	1
 word	what does <0> do	it please	3
-word	what does <0> do	it returns	1
 word	what does <0> do	it to	1
 word	what does <0> do	it used	9
 word	what does <0> do	it's	14
@@ -3881,8 +3052,6 @@ word	what does <0> do	like what	9
 word	what does <0> do	like what's	2
 word	what does <0> do	me	26
 word	what does <0> do	me what	25
-word	what does <0> do	meant	1
-word	what does <0> do	meant to	1
 word	what does <0> do	name	3
 word	what does <0> do	name but	3
 word	what does <0> do	of	8
@@ -3903,7 +3072,7 @@ word	what does <0> do	question	19
 word	what does <0> do	question what	19
 word	what does <0> do	quick	19
 word	what does <0> do	quick question	19
-word	what does <0> do	returns	2
+word	what does <0> do	returns	1
 word	what does <0> do	see	1
 word	what does <0> do	seeing	2
 word	what does <0> do	seeing the	2
@@ -3927,7 +3096,6 @@ word	what does <0> do	this <n>	1
 word	what does <0> do	to	44
 word	what does <0> do	to figure	9
 word	what does <0> do	to know	21
-word	what does <0> do	to me	1
 word	what does <0> do	to understand	12
 word	what does <0> do	trying	20
 word	what does <0> do	trying to	20
@@ -3938,8 +3106,8 @@ word	what does <0> do	understand <n>	4
 word	what does <0> do	understand what	8
 word	what does <0> do	use	1
 word	what does <0> do	use it	1
-word	what does <0> do	used	17
-word	what does <0> do	used for	17
+word	what does <0> do	used	16
+word	what does <0> do	used for	16
 word	what does <0> do	what	316
 word	what does <0> do	what <n>	141
 word	what does <0> do	what does	117
@@ -3950,8 +3118,8 @@ word	what does <0> do	what's	81
 word	what does <0> do	what's <n>	71
 word	what does <0> do	what's it	9
 word	what does <0> do	what's the	1
-word	what does <0> do	whats	25
-word	what does <0> do	whats <n>	10
+word	what does <0> do	whats	24
+word	what does <0> do	whats <n>	9
 word	what does <0> do	whats it	15
 word	what does <0> do	why	1
 word	what does <0> do	you	47
@@ -4418,10 +3586,8 @@ word	what has a field named <0>	an <n>	1
 word	what has a field named <0>	as	1
 word	what has a field named <0>	as a	1
 word	what has a field named <0>	declared	1
-word	what has a field named <0>	declared as	1
 word	what has a field named <0>	field	2
 word	what has a field named <0>	has	1
-word	what has a field named <0>	has an	1
 word	what has a field named <0>	struct	1
 word	what has a field named <0>	struct field	1
 word	what has a field named <0>	where's	1
@@ -4624,7 +3790,6 @@ word	where is <0> defined	looking	8
 word	where is <0> defined	looking at	2
 word	where is <0> defined	looking for	6
 word	where is <0> defined	me	55
-word	where is <0> defined	me there	1
 word	where is <0> defined	me to	18
 word	where is <0> defined	me where	33
 word	where is <0> defined	of	19
@@ -4897,7 +4062,6 @@ word	which fields belong to <0>	on	27
 word	which fields belong to <0>	on <n>	24
 word	which fields belong to <0>	on the	3
 word	which fields belong to <0>	out	2
-word	which fields belong to <0>	out <n>	1
 word	which fields belong to <0>	out what	1
 word	which fields belong to <0>	pls	1
 word	which fields belong to <0>	see	1
@@ -4938,10 +4102,10 @@ word	which fields belong to <0>	which	3
 word	which fields belong to <0>	which fields	3
 word	which fields belong to <0>	you	1
 word	which fields belong to <0>	you list	1
-word	which fields belong to a struct named <0>	<n> struct	82
+word	which fields belong to a struct named <0>	<n> struct	81
 word	which fields belong to a struct named <0>	^ can	10
 word	which fields belong to a struct named <0>	^ could	3
-word	which fields belong to a struct named <0>	^ fields	26
+word	which fields belong to a struct named <0>	^ fields	25
 word	which fields belong to a struct named <0>	^ hey	1
 word	which fields belong to a struct named <0>	^ i'd	5
 word	which fields belong to a struct named <0>	^ i'm	5
@@ -4953,12 +4117,12 @@ word	which fields belong to a struct named <0>	^ so	4
 word	which fields belong to a struct named <0>	^ um	7
 word	which fields belong to a struct named <0>	^ what	17
 word	which fields belong to a struct named <0>	^ which	1
-word	which fields belong to a struct named <0>	are	52
+word	which fields belong to a struct named <0>	are	51
 word	which fields belong to a struct named <0>	are defined	9
 word	which fields belong to a struct named <0>	are in	17
 word	which fields belong to a struct named <0>	are on	17
 word	which fields belong to a struct named <0>	are the	5
-word	which fields belong to a struct named <0>	are they	3
+word	which fields belong to a struct named <0>	are they	2
 word	which fields belong to a struct named <0>	can	10
 word	which fields belong to a struct named <0>	can you	10
 word	which fields belong to a struct named <0>	can't	1
@@ -4967,12 +4131,12 @@ word	which fields belong to a struct named <0>	could	3
 word	which fields belong to a struct named <0>	could you	3
 word	which fields belong to a struct named <0>	defined	10
 word	which fields belong to a struct named <0>	defined on	9
-word	which fields belong to a struct named <0>	fields	91
+word	which fields belong to a struct named <0>	fields	90
 word	which fields belong to a struct named <0>	fields are	44
 word	which fields belong to a struct named <0>	fields in	13
 word	which fields belong to a struct named <0>	fields is	2
 word	which fields belong to a struct named <0>	fields make	2
-word	which fields belong to a struct named <0>	fields on	30
+word	which fields belong to a struct named <0>	fields on	29
 word	which fields belong to a struct named <0>	figure	4
 word	which fields belong to a struct named <0>	figure out	4
 word	which fields belong to a struct named <0>	find	1
@@ -5020,8 +4184,8 @@ word	which fields belong to a struct named <0>	me what	6
 word	which fields belong to a struct named <0>	me which	6
 word	which fields belong to a struct named <0>	ok	2
 word	which fields belong to a struct named <0>	ok so	2
-word	which fields belong to a struct named <0>	on	56
-word	which fields belong to a struct named <0>	on <n>	27
+word	which fields belong to a struct named <0>	on	55
+word	which fields belong to a struct named <0>	on <n>	26
 word	which fields belong to a struct named <0>	on it	2
 word	which fields belong to a struct named <0>	on struct	3
 word	which fields belong to a struct named <0>	on the	24
@@ -5042,9 +4206,8 @@ word	which fields belong to a struct named <0>	so	6
 word	which fields belong to a struct named <0>	so i'd	1
 word	which fields belong to a struct named <0>	so the	1
 word	which fields belong to a struct named <0>	so what	4
-word	which fields belong to a struct named <0>	struct	91
+word	which fields belong to a struct named <0>	struct	90
 word	which fields belong to a struct named <0>	struct <n>	9
-word	which fields belong to a struct named <0>	struct are	2
 word	which fields belong to a struct named <0>	struct for	1
 word	which fields belong to a struct named <0>	struct i	2
 word	which fields belong to a struct named <0>	struct list	1
@@ -5059,7 +4222,7 @@ word	which fields belong to a struct named <0>	the	49
 word	which fields belong to a struct named <0>	the <n>	42
 word	which fields belong to a struct named <0>	the fields	8
 word	which fields belong to a struct named <0>	the struct	2
-word	which fields belong to a struct named <0>	they	3
+word	which fields belong to a struct named <0>	they	2
 word	which fields belong to a struct named <0>	to	13
 word	which fields belong to a struct named <0>	to figure	4
 word	which fields belong to a struct named <0>	to know	7
@@ -6290,7 +5453,6 @@ word	which structs have a field named <0>	quick question	18
 word	which structs have a field named <0>	s	2
 word	which structs have a field named <0>	saw	2
 word	which structs have a field named <0>	saw <n>	1
-word	which structs have a field named <0>	saw a	1
 word	which structs have a field named <0>	so	5
 word	which structs have a field named <0>	so could	1
 word	which structs have a field named <0>	so which	4
@@ -6449,7 +5611,6 @@ word	which structs have a field whose type is or contains <0>	contains it	24
 word	which structs have a field whose type is or contains <0>	contains one	2
 word	which structs have a field whose type is or contains <0>	could	3
 word	which structs have a field whose type is or contains <0>	could you	3
-word	which structs have a field whose type is or contains <0>	counting	1
 word	which structs have a field whose type is or contains <0>	counts	4
 word	which structs have a field whose type is or contains <0>	counts if	4
 word	which structs have a field whose type is or contains <0>	directly	7
@@ -6646,7 +5807,6 @@ word	which structs have a field whose type is or contains <0>	that have	15
 word	which structs have a field whose type is or contains <0>	that is	7
 word	which structs have a field whose type is or contains <0>	that wraps	2
 word	which structs have a field whose type is or contains <0>	that's	1
-word	which structs have a field whose type is or contains <0>	that's <n>	1
 word	which structs have a field whose type is or contains <0>	the	13
 word	which structs have a field whose type is or contains <0>	the codebase	1
 word	which structs have a field whose type is or contains <0>	the structs	4
