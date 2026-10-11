@@ -1,0 +1,27 @@
+{
+  "plain": {
+    "changed_events": 50,
+    "changed_reply_kinds": {
+      "refusal -> refusal": 33,
+      "refusal -> missing": 5,
+      "story_fact -> refusal": 1,
+      "story_answer -> refusal": 1
+    },
+    "changed_state_fields": {
+      "stories": 37
+    }
+  },
+  "-model": {
+    "changed_events": 50,
+    "changed_reply_kinds": {
+      "refusal -> intent": 30,
+      "refusal -> missing": 5,
+      "refusal -> refusal": 3,
+      "story_fact -> refusal": 1,
+      "story_answer -> refusal": 1
+    },
+    "changed_state_fields": {
+      "stories": 37
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "decision": "rejected as submitted; loses three previously correct learned proposals",
+  "archive_files": 745,
+  "original_artifact_entries_verified": 740,
+  "observed_binary_sha256": "4dac87aa5361a8d3360ba3025b28385b1c87d3c40f24159d1bcbfc816ba32d3b",
+  "final_binary_sha256": "900973a03613904ec656ccaa92187a14243bb1ac7e534570151fdfd38182a754",
+  "allocated_elf_sections_equal": 30,
+  "excluded_elf_sections": ".note.gnu.build-id and nonallocated debug/symbol/section metadata",
+  "whole_binary_equality": false,
+  "source_matches_observed": true,
+  "changed_rows": 23,
+  "new_wrong_proposals": 0,
+  "baseline_correct_learned": 1303,
+  "candidate_correct_learned": 1302,
+  "lost_correct": 3,
+  "new_correct": 2,
+  "local_gate_worker_reported": "490/490 each mode; parent did not repeat all490 on rejected candidate"
+}

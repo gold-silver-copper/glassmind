@@ -1,0 +1,8 @@
+{
+  "note": "Read-only diagnostic snapshot while final frozen worker sessions finish; must match final archived handoff before using for acceptance.",
+  "binary_sha256": "4dac87aa5361a8d3360ba3025b28385b1c87d3c40f24159d1bcbfc816ba32d3b",
+  "source": {
+    "crates/cli/src/everyday.rs": "dc39b5da752a9c311711b72fc6123d8c51c6fc65ce7856941fb5ba9c775f4908",
+    "crates/cli/src/talk_stories.rs": "4f0dfc287c4f51fe90a8becb00041f9dd090bf51938dccc65551b27c3430482c"
+  }
+}

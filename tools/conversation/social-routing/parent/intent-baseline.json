@@ -1,0 +1,18 @@
+{
+  "scope": "Main talk on CLINC150 validation with per-row resets; only learned-proposal correctness/retention is measured. Typed memory/social replies are not graded as classifier failures.",
+  "rows": 3100,
+  "binary_sha256": "8cde5dc486025e05932db946ba4accb7b5401fcd27c530bc8539eb4dca5bb78b",
+  "data_sha256": "39afa094ba8495e9b8b30595394937bdd7b5b8e6dcdba71a9a380047759c88f9",
+  "model_sha256": "a84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408",
+  "reply_kinds": {
+    "refusal": 1696,
+    "intent": 1343,
+    "remembered": 3,
+    "missing": 40,
+    "story_answer": 8,
+    "story_fact": 2,
+    "calculated": 5,
+    "social": 3
+  },
+  "correct_learned_proposals": 1303
+}

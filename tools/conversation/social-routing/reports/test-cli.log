@@ -1,0 +1,12 @@
+Running as unit: run-p3744464-i95968629.scope; invocation ID: a96a5206e92243d39ac886cd75d28141
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/socialrouting/crates/cli)
+    Finished `release` profile [optimized + debuginfo] target(s) in 10.32s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/socialrouting-run/target/release/deps/glassmind-b4a29ca4482421ce)
+
+running 3 tests
+test everyday::tests::unresolved_correction_invalidates_story_across_restart ... ok
+test everyday::tests::story_focus_prevents_implicit_personal_memory_edits ... ok
+test everyday::tests::social_turn_preserves_story_but_mixed_clause_invalidates ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 10 filtered out; finished in 0.00s
+

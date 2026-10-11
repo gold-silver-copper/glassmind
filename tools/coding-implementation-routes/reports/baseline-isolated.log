@@ -1,0 +1,31 @@
+Running as unit: run-p3752908-i96036010.scope; invocation ID: 98aa4520221346df941067e2e60c63e1
+[
+  {
+    "text": "which functions call implement?",
+    "ok": true,
+    "stdout": "1 function calls `implement`: `invoke`.\n",
+    "before": "4ec407ee85ccd8619113ce13e418e5715508ae2d7ed08d4fe2599e70bc9808d4",
+    "after": "4ec407ee85ccd8619113ce13e418e5715508ae2d7ed08d4fe2599e70bc9808d4"
+  },
+  {
+    "text": "rename implement to renamed",
+    "ok": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename implement to \u25aerenamed\n",
+    "before": "4ec407ee85ccd8619113ce13e418e5715508ae2d7ed08d4fe2599e70bc9808d4",
+    "after": "4ec407ee85ccd8619113ce13e418e5715508ae2d7ed08d4fe2599e70bc9808d4"
+  },
+  {
+    "text": "which functions call implemented?",
+    "ok": true,
+    "stdout": "1 function calls `implemented`: `invoke`.\n",
+    "before": "ab225282f464b30c0b1991990442658688721d612ff94f8e9d75df8016c955c4",
+    "after": "ab225282f464b30c0b1991990442658688721d612ff94f8e9d75df8016c955c4"
+  },
+  {
+    "text": "rename implemented to renamed",
+    "ok": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename implemented to \u25aerenamed\n",
+    "before": "ab225282f464b30c0b1991990442658688721d612ff94f8e9d75df8016c955c4",
+    "after": "ab225282f464b30c0b1991990442658688721d612ff94f8e9d75df8016c955c4"
+  }
+]

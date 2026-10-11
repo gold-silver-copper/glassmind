@@ -1,0 +1,4033 @@
+{
+  "right": 467,
+  "total": 490,
+  "sessions": 41,
+  "checks": [
+    {
+      "name": "0:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "0:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "0:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "0:exact utterance",
+      "expected": "goodbye",
+      "actual": "goodbye",
+      "right": true
+    },
+    {
+      "name": "0:one turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "0:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "0:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "0:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "0:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "0:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "0:exact utterance",
+      "expected": "goodbye",
+      "actual": "goodbye",
+      "right": true
+    },
+    {
+      "name": "0:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "0:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "0:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "0:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "0:recall source",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "0:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "0:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "0:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "0:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "0:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "1:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "1:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "1:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "1:exact utterance",
+      "expected": "goodbye",
+      "actual": "goodbye",
+      "right": true
+    },
+    {
+      "name": "1:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "1:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "1:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "1:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "1:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "1:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "1:exact utterance",
+      "expected": "goodbye",
+      "actual": "goodbye",
+      "right": true
+    },
+    {
+      "name": "1:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "1:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "1:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "1:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "1:recall source",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "1:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "1:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "1:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "1:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "1:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "2:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "2:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "2:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "2:exact utterance",
+      "expected": "goodbye",
+      "actual": "goodbye",
+      "right": true
+    },
+    {
+      "name": "2:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "2:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "2:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "2:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "2:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "2:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "2:exact utterance",
+      "expected": "goodbye",
+      "actual": "goodbye",
+      "right": true
+    },
+    {
+      "name": "2:one turn",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "2:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "2:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "2:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "2:recall source",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "2:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "2:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "2:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "2:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "2:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "3:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "3:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "3:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "3:exact utterance",
+      "expected": "hey there!",
+      "actual": "hey there!",
+      "right": true
+    },
+    {
+      "name": "3:one turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "3:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "3:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "3:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "3:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "3:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "3:exact utterance",
+      "expected": "hey there!",
+      "actual": "hey there!",
+      "right": true
+    },
+    {
+      "name": "3:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "3:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "3:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "3:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "3:recall source",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "3:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "3:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "3:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "3:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "3:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "4:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "4:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "4:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "4:exact utterance",
+      "expected": "hey there!",
+      "actual": "hey there!",
+      "right": true
+    },
+    {
+      "name": "4:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "4:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "4:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "4:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "4:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "4:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "4:exact utterance",
+      "expected": "hey there!",
+      "actual": "hey there!",
+      "right": true
+    },
+    {
+      "name": "4:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "4:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "4:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "4:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "4:recall source",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "4:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "4:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "4:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "4:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "4:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "5:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "5:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "5:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "5:exact utterance",
+      "expected": "hey there!",
+      "actual": "hey there!",
+      "right": true
+    },
+    {
+      "name": "5:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "5:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "5:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "5:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "5:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "5:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "5:exact utterance",
+      "expected": "hey there!",
+      "actual": "hey there!",
+      "right": true
+    },
+    {
+      "name": "5:one turn",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "5:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "5:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "5:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "5:recall source",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "5:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "5:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "5:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "5:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "5:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "6:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "6:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "6:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "6:exact utterance",
+      "expected": "see you later",
+      "actual": "see you later",
+      "right": true
+    },
+    {
+      "name": "6:one turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "6:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "6:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "6:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "6:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "6:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "6:exact utterance",
+      "expected": "see you later",
+      "actual": "see you later",
+      "right": true
+    },
+    {
+      "name": "6:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "6:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "6:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "6:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "6:recall source",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "6:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "6:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "6:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "6:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "6:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "7:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "7:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "7:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "7:exact utterance",
+      "expected": "see you later",
+      "actual": "see you later",
+      "right": true
+    },
+    {
+      "name": "7:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "7:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "7:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "7:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "7:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "7:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "7:exact utterance",
+      "expected": "see you later",
+      "actual": "see you later",
+      "right": true
+    },
+    {
+      "name": "7:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "7:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "7:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "7:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "7:recall source",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "7:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "7:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "7:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "7:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "7:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "8:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "8:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "8:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "8:exact utterance",
+      "expected": "see you later",
+      "actual": "see you later",
+      "right": true
+    },
+    {
+      "name": "8:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "8:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "8:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "8:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "8:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "8:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "8:exact utterance",
+      "expected": "see you later",
+      "actual": "see you later",
+      "right": true
+    },
+    {
+      "name": "8:one turn",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "8:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "8:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "8:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "8:recall source",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "8:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "8:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "8:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "8:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "8:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "9:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "9:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "9:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "9:exact utterance",
+      "expected": "thanks so much!",
+      "actual": "thanks so much!",
+      "right": true
+    },
+    {
+      "name": "9:one turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "9:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "9:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "9:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "9:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "9:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "9:exact utterance",
+      "expected": "thanks so much!",
+      "actual": "thanks so much!",
+      "right": true
+    },
+    {
+      "name": "9:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "9:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "9:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "9:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "9:recall source",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "9:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "9:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "9:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "9:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "9:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "10:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "10:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "10:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "10:exact utterance",
+      "expected": "thanks so much!",
+      "actual": "thanks so much!",
+      "right": true
+    },
+    {
+      "name": "10:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "10:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "10:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "10:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "10:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "10:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "10:exact utterance",
+      "expected": "thanks so much!",
+      "actual": "thanks so much!",
+      "right": true
+    },
+    {
+      "name": "10:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "10:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "10:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "10:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "10:recall source",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "10:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "10:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "10:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "10:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "10:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "11:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "11:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "11:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "11:exact utterance",
+      "expected": "thanks so much!",
+      "actual": "thanks so much!",
+      "right": true
+    },
+    {
+      "name": "11:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "11:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "11:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "11:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "11:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "11:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "11:exact utterance",
+      "expected": "thanks so much!",
+      "actual": "thanks so much!",
+      "right": true
+    },
+    {
+      "name": "11:one turn",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "11:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "11:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "11:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "11:recall source",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "11:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "11:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "11:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "11:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "11:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "12:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "12:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "12:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "12:exact utterance",
+      "expected": "nice to speak with you",
+      "actual": "nice to speak with you",
+      "right": true
+    },
+    {
+      "name": "12:one turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "12:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "12:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "12:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "12:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "12:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "12:exact utterance",
+      "expected": "nice to speak with you",
+      "actual": "nice to speak with you",
+      "right": true
+    },
+    {
+      "name": "12:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "12:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "12:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "12:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "12:recall source",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "12:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "12:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "12:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "12:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "12:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "13:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "13:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "13:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "13:exact utterance",
+      "expected": "nice to speak with you",
+      "actual": "nice to speak with you",
+      "right": true
+    },
+    {
+      "name": "13:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "13:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "13:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "13:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "13:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": false
+    },
+    {
+      "name": "13:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "13:exact utterance",
+      "expected": "nice to speak with you",
+      "actual": "nice to speak with you",
+      "right": true
+    },
+    {
+      "name": "13:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "13:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "13:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "13:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "13:recall source",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "13:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "13:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "13:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "13:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "13:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "14:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "14:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "14:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "14:exact utterance",
+      "expected": "nice to speak with you",
+      "actual": "nice to speak with you",
+      "right": true
+    },
+    {
+      "name": "14:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "14:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "14:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "14:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "14:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "14:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "14:exact utterance",
+      "expected": "nice to speak with you",
+      "actual": "nice to speak with you",
+      "right": true
+    },
+    {
+      "name": "14:one turn",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "14:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "14:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "14:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "14:recall source",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "14:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "14:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "14:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "14:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "14:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "15:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "15:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "15:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "15:exact utterance",
+      "expected": "how are things going",
+      "actual": "how are things going",
+      "right": true
+    },
+    {
+      "name": "15:one turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "15:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "15:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "15:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "15:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "15:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "15:exact utterance",
+      "expected": "how are things going",
+      "actual": "how are things going",
+      "right": true
+    },
+    {
+      "name": "15:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "15:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "15:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "15:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "15:recall source",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "15:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "15:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "15:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "15:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "15:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "16:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "16:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "16:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "16:exact utterance",
+      "expected": "how are things going",
+      "actual": "how are things going",
+      "right": true
+    },
+    {
+      "name": "16:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "16:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "16:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "16:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "16:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "16:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "16:exact utterance",
+      "expected": "how are things going",
+      "actual": "how are things going",
+      "right": true
+    },
+    {
+      "name": "16:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "16:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "16:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "16:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "16:recall source",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "16:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "16:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "16:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "16:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "16:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "17:social0",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "17:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "17:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "17:exact utterance",
+      "expected": "how are things going",
+      "actual": "how are things going",
+      "right": true
+    },
+    {
+      "name": "17:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "17:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "17:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "17:social1",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "17:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "17:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "17:exact utterance",
+      "expected": "how are things going",
+      "actual": "how are things going",
+      "right": true
+    },
+    {
+      "name": "17:one turn",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "17:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "17:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "17:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "17:recall source",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "17:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "17:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "17:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "17:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "17:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "18:social0",
+      "expected": "social",
+      "actual": "social",
+      "right": true
+    },
+    {
+      "name": "18:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "18:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "18:exact utterance",
+      "expected": "Hello",
+      "actual": "Hello",
+      "right": true
+    },
+    {
+      "name": "18:one turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "18:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "18:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "18:social1",
+      "expected": "social",
+      "actual": "social",
+      "right": true
+    },
+    {
+      "name": "18:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "18:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "18:exact utterance",
+      "expected": "Hello",
+      "actual": "Hello",
+      "right": true
+    },
+    {
+      "name": "18:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "18:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "18:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "18:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "18:recall source",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "18:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "18:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "18:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "18:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "18:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "19:social0",
+      "expected": "social",
+      "actual": "social",
+      "right": true
+    },
+    {
+      "name": "19:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "19:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "19:exact utterance",
+      "expected": "Hello",
+      "actual": "Hello",
+      "right": true
+    },
+    {
+      "name": "19:one turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "19:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "19:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "19:social1",
+      "expected": "social",
+      "actual": "social",
+      "right": true
+    },
+    {
+      "name": "19:story preserved",
+      "expected": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "actual": {
+        "assertions": [
+          "elin is in the kitchen."
+        ],
+        "invalidated": false
+      },
+      "right": true
+    },
+    {
+      "name": "19:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "19:exact utterance",
+      "expected": "Hello",
+      "actual": "Hello",
+      "right": true
+    },
+    {
+      "name": "19:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "19:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "19:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "19:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "19:recall source",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "19:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "19:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "19:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "19:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "19:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "20:social0",
+      "expected": "social",
+      "actual": "social",
+      "right": true
+    },
+    {
+      "name": "20:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "20:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "20:exact utterance",
+      "expected": "Hello",
+      "actual": "Hello",
+      "right": true
+    },
+    {
+      "name": "20:one turn",
+      "expected": 6,
+      "actual": 6,
+      "right": true
+    },
+    {
+      "name": "20:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "20:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "20:social1",
+      "expected": "social",
+      "actual": "social",
+      "right": true
+    },
+    {
+      "name": "20:story preserved",
+      "expected": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "actual": {
+        "assertions": [],
+        "invalidated": true
+      },
+      "right": true
+    },
+    {
+      "name": "20:focus cleared",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "20:exact utterance",
+      "expected": "Hello",
+      "actual": "Hello",
+      "right": true
+    },
+    {
+      "name": "20:one turn",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "20:name source",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "20:preferences",
+      "expected": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "actual": {
+        "color": {
+          "value": "blue",
+          "stated_on_turn": 2
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "20:recall exact",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "20:recall source",
+      "expected": 7,
+      "actual": 7,
+      "right": true
+    },
+    {
+      "name": "20:correction no write",
+      "expected": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "actual": {
+        "value": "Hal",
+        "stated_on_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "20:correction not remembered",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "20:reset then assertion",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "20:reset then answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "20:reset count",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "21:contrast kind",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "21:invalidation",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "21:subsequent answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "22:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "22:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "22:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "23:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "23:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "23:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "24:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "24:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "24:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "25:contrast kind",
+      "expected": "refusal",
+      "actual": "story_fact",
+      "right": false
+    },
+    {
+      "name": "25:invalidation",
+      "expected": true,
+      "actual": false,
+      "right": false
+    },
+    {
+      "name": "25:subsequent answer",
+      "expected": null,
+      "actual": "garden",
+      "right": false
+    },
+    {
+      "name": "26:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "26:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "26:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "27:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "27:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "27:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "28:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "28:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "28:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "29:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "29:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "29:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "30:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "30:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "30:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "31:contrast kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "31:invalidation",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "31:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "32:invalidation",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "32:subsequent answer",
+      "expected": "kitchen",
+      "actual": "kitchen",
+      "right": true
+    },
+    {
+      "name": "33:contrast kind",
+      "expected": "story_answer",
+      "actual": "story_answer",
+      "right": true
+    },
+    {
+      "name": "33:invalidation",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "33:subsequent answer",
+      "expected": "kitchen",
+      "actual": "kitchen",
+      "right": true
+    },
+    {
+      "name": "34:contrast kind",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "34:invalidation",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "34:subsequent answer",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "35:contrast kind",
+      "expected": "story_fact",
+      "actual": "story_fact",
+      "right": true
+    },
+    {
+      "name": "35:invalidation",
+      "expected": false,
+      "actual": false,
+      "right": true
+    },
+    {
+      "name": "35:subsequent answer",
+      "expected": "garden",
+      "actual": "garden",
+      "right": true
+    },
+    {
+      "name": "36:priority kind",
+      "expected": "remembered",
+      "actual": "remembered",
+      "right": true
+    },
+    {
+      "name": "37:priority kind",
+      "expected": "remembered",
+      "actual": "remembered",
+      "right": true
+    },
+    {
+      "name": "38:priority kind",
+      "expected": "calculated",
+      "actual": "calculated",
+      "right": true
+    },
+    {
+      "name": "39:priority kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    },
+    {
+      "name": "40:priority kind",
+      "expected": "refusal",
+      "actual": "refusal",
+      "right": true
+    }
+  ]
+}

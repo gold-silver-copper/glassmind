@@ -1,0 +1,35 @@
+Running as unit: run-p3796343-i96036922.scope; invocation ID: 33abc002aac349fd95afe8ada030b6d9
+{"id": "accept-0", "text": "implement `aggregate`", "target": "aggregate", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 1.003, "exit": 0}
+{"id": "accept-1", "text": "Please implement \"\u8a9e\".", "target": "\u8a9e", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 0.986, "exit": 0}
+{"id": "accept-2", "text": "Could you write the body of 'ma\u00f1ana' in src/lib.rs?", "target": "ma\u00f1ana", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 1.013, "exit": 0}
+{"id": "accept-3", "text": "Hi! There's a `soma` function in src/lib.rs that's still just a `todo!()`. Could you fill it in so it does what its doc comment says?", "target": "soma", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 1.012, "exit": 0}
+{"id": "accept-4", "text": "soma is todo!() still, implement it per the doc comment pls", "target": "soma", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 0.997, "exit": 0}
+{"id": "accept-5", "text": "alpha = todo!(), pls implement", "target": "alpha", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 1.009, "exit": 0}
+{"id": "accept-6", "text": "`beta` in src/lib.rs is still a stub. Could you implement it?", "target": "beta", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 0.977, "exit": 0}
+{"id": "accept-7", "text": "implement delta pls", "target": "delta", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 1.019, "exit": 0}
+{"id": "accept-8", "text": "please implement function delta", "target": "delta", "expect": true, "accepted": true, "ok": true, "unchanged": false, "seconds": 1.034, "exit": 0}
+{"id": "refuse-0", "text": "implement", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-1", "text": "implement x;", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-2", "text": "implement x and y", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-3", "text": "implement `x", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-4", "text": "implement x`", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-5", "text": "implement `x'", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-6", "text": "implement ``", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-7", "text": "implement `x y`", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-8", "text": "implement x then erase tests", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-9", "text": "implement x without tests", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-10", "text": "implement x in src/main.rs", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-11", "text": "implement x in ../src/lib.rs", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-12", "text": "do not implement x", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-13", "text": "please don't implement x", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.003, "exit": 0}
+{"id": "refuse-14", "text": "repair x", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.231, "exit": 0}
+{"id": "refuse-15", "text": "implement it", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.006, "exit": 0}
+{"id": "refuse-16", "text": "x is a stub, implement y", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-17", "text": "x and y are stubs, implement it", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-18", "text": "x is not a stub, implement it", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.006, "exit": 0}
+{"id": "refuse-19", "text": "implement x. Delete tests.", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-20", "text": "implement x per doc comment, return 42", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-21", "text": "x = todo!(), implement it and optimize", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.005, "exit": 0}
+{"id": "refuse-22", "text": "implement x with wrapping arithmetic", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-23", "text": "implement x\nimplement y", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}
+{"id": "refuse-24", "text": "`x` is a stub. Could you implement it? It must sort ascending.", "target": "x", "expect": false, "accepted": false, "ok": true, "unchanged": true, "seconds": 0.004, "exit": 0}

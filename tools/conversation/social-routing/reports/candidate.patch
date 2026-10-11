@@ -1,0 +1,368 @@
+diff --git i/crates/cli/src/everyday.rs w/crates/cli/src/everyday.rs
+index d1f13bd..cbed74f 100644
+--- i/crates/cli/src/everyday.rs
++++ w/crates/cli/src/everyday.rs
+@@ -3,7 +3,7 @@ use std::io::{BufRead, IsTerminal, Write};
+ use std::path::{Path, PathBuf};
+ 
+ use crate::talk_facts::{FactReply, Facts};
+-use crate::talk_stories::{Stories, StoryReply};
++use crate::talk_stories::{Stories, StoryPlan, StoryReply};
+ use glassmind_everyday::{Conversation, IntentModel, Reply};
+ use glassmind_quantities::Answer;
+ 
+@@ -45,6 +45,86 @@ impl TalkReply {
+     }
+ }
+ 
++// Full utterance grammar, independent of classifier confidence. No entity or
++// arbitrary trailing-text slot: appended assertions/actions must still be handled.
++fn social_form(line: &str) -> bool {
++    let lower = line.trim().trim_end_matches(['.', '!', '?']).to_lowercase();
++    let words: Vec<_> = lower.split_whitespace().collect();
++    match words.as_slice() {
++        ["hi" | "hello" | "hey" | "hiya" | "goodbye" | "bye"]
++        | ["hi" | "hello" | "hey", "there"]
++        | ["hey", "hey"]
++        | ["bye", "bye"]
++        | ["see", "you" | "ya", "later" | "soon"]
++        | ["talk", "to", "you", "later" | "soon"]
++        | ["how", "are", "you"]
++        | ["how", "are", "things", "going"]
++        | ["how", "is", "it", "going"] => true,
++        ["nice" | "good" | "great", "to", rest @ ..] => matches!(
++            rest,
++            ["see", "you"]
++                | ["see", "you", "again"]
++                | ["speak", "with", "you"]
++                | ["speak", "with", "you", "again"]
++                | ["talk", "to", "you"]
++                | ["talk", "to", "you", "again"]
++        ),
++        ["thanks", rest @ ..] | ["thank", "you", rest @ ..] => matches!(
++            rest,
++            [] | ["kindly"]
++                | ["a", "lot"]
++                | ["so" | "very", "much"]
++                | ["so", "very", "much"]
++                | ["for", "helping"]
++                | ["for", "helping", "me"]
++        ),
++        _ => false,
++    }
++}
++
++fn appended_social_clause(line: &str, supported_story: bool) -> bool {
++    // A complete salutation followed by an explicit clause boundary cannot be
++    // used as a story actor (the broad story parser can accept coordinated names).
++    if !matches!(
++        line.split_whitespace()
++            .next()
++            .unwrap_or_default()
++            .trim_end_matches([',', ';', '.', '!', '?']),
++        "hi" | "hello"
++            | "hey"
++            | "hiya"
++            | "goodbye"
++            | "bye"
++            | "see"
++            | "talk"
++            | "how"
++            | "nice"
++            | "good"
++            | "great"
++            | "thanks"
++            | "thank"
++    ) {
++        return false;
++    }
++    line.char_indices().any(|(i, c)| {
++        if !c.is_whitespace() && !matches!(c, ',' | ';' | '.' | '!' | '?') {
++            return false;
++        }
++        let (prefix, rest) = line.split_at(i);
++        let rest = rest.trim_start();
++        social_form(prefix)
++            && ((!supported_story && !rest.trim_end_matches(['.', '!', '?']).trim().is_empty())
++                || (!rest
++                    .trim_start_matches([',', ';', '.', '!', '?'])
++                    .trim()
++                    .is_empty()
++                    && rest.starts_with([',', ';', '.', '!', '?']))
++                || rest.starts_with("and ")
++                || rest.starts_with("but ")
++                || rest.starts_with("then "))
++    })
++}
++
+ fn respond_with_facts(
+     session: &mut Session,
+     line: &str,
+@@ -118,19 +198,24 @@ fn respond_with_facts(
+     };
+     // Without a story referent, a learned memory-read request can resolve
+     // against typed personal state. Do not feed it to a story write parser.
++    let mut story_plan = session.stories.plan(line);
++    if !memory_authority && appended_social_clause(&line.to_lowercase(), story_plan.supported()) {
++        story_plan = StoryPlan::Invalidate(
++            "Please give one statement or question at a time. Use /reset and restate the facts.",
++        );
++    }
++    if !memory_authority && !story_plan.supported() && social_form(line) {
++        if let Some((previous, proposal)) = proposed {
++            session.memory = previous;
++            return TalkReply::Conversation(proposal);
++        }
++        return TalkReply::Conversation(reply);
++    }
+     if !session.stories.has_context()
+         && proposed.as_ref().is_some_and(|(_, reply)| {
+             matches!(reply, Reply::Recalled { .. } | Reply::Missing { .. })
+         })
+-        && {
+-            // Check typed story operations first without letting an unsupported
+-            // personal question invalidate otherwise absent story context.
+-            let mut probe = Stories::default();
+-            probe.restore().is_ok()
+-                && probe
+-                    .respond(line)
+-                    .is_none_or(|reply| reply.kind == "refusal")
+-        }
++        && !story_plan.supported()
+         && let Some((previous, proposal)) = proposed
+     {
+         session.memory = previous;
+@@ -138,7 +223,7 @@ fn respond_with_facts(
+     }
+     if (matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
+         || (matches!(reply, Reply::Missing { .. }) && session.stories.has_context()))
+-        && let Some(story) = session.stories.respond(line)
++        && let Some(story) = session.stories.apply(story_plan)
+     {
+         // A story turn changes the conversational focus. A later bare
+         // correction must not overwrite an earlier name or preference.
+@@ -153,6 +238,20 @@ fn respond_with_facts(
+     }
+     if let Some((previous, proposal)) = proposed {
+         session.memory = previous;
++        // An unknown question/command may be ignored by the story adapter.
++        // That is not evidence that a proposed social act consumed the input.
++        if let Reply::Intent { proposal, .. } = &proposal
++            && matches!(
++                proposal.label.as_str(),
++                "greeting" | "goodbye" | "thank_you"
++            )
++            && !social_form(line)
++        {
++            return TalkReply::Conversation(Reply::Refusal {
++                text: "I couldn't resolve the whole message as a supported social turn. Please give one request or statement at a time.".into(),
++                proposal: Some(proposal.clone()),
++            });
++        }
+         return TalkReply::Conversation(proposal);
+     }
+     TalkReply::Conversation(reply)
+@@ -251,6 +350,31 @@ mod tests {
+         respond_with_facts(session, line, model, None)
+     }
+ 
++    #[test]
++    fn social_turn_preserves_story_but_mixed_clause_invalidates() {
++        let mut session = Session::default();
++        session.stories.restore().unwrap();
++        respond(&mut session, "Elin went to the kitchen.", None);
++        let before = serde_json::to_value(&session.stories).unwrap();
++        for line in ["hey there!", "see you soon", "thanks very much"] {
++            respond(&mut session, line, None);
++            assert_eq!(serde_json::to_value(&session.stories).unwrap(), before);
++            assert_eq!(session.memory.last_user_utterance.as_deref(), Some(line));
++        }
++        assert_eq!(session.memory.turn, 4);
++        for line in [
++            "hey there and Elin moved to the garden",
++            "how are you Elin teleported to the attic",
++        ] {
++            session.stories = Stories::default();
++            session.stories.restore().unwrap();
++            respond(&mut session, "Elin went to the kitchen.", None);
++            respond(&mut session, line, None);
++            let reply = respond(&mut session, "Where is Elin?", None);
++            assert_eq!(serde_json::to_value(reply).unwrap()["kind"], "refusal");
++        }
++    }
++
+     #[test]
+     fn unresolved_correction_invalidates_story_across_restart() {
+         let mut session = Session::default();
+diff --git i/crates/cli/src/talk_stories.rs w/crates/cli/src/talk_stories.rs
+index cb1b4a1..d62c4df 100644
+--- i/crates/cli/src/talk_stories.rs
++++ w/crates/cli/src/talk_stories.rs
+@@ -24,6 +24,20 @@ pub(crate) struct StoryReply {
+     pub reason: String,
+ }
+ 
++/// A read-only routing decision; only `apply` changes persisted story state.
++pub(crate) enum StoryPlan {
++    Ignore,
++    Reply(StoryReply),
++    Invalidate(&'static str),
++    Observe(String),
++}
++
++impl StoryPlan {
++    pub fn supported(&self) -> bool {
++        matches!(self, Self::Reply(_) | Self::Observe(_))
++    }
++}
++
+ impl Stories {
+     pub fn has_context(&self) -> bool {
+         self.invalidated || !self.assertions.is_empty()
+@@ -59,13 +73,15 @@ impl Stories {
+         Self::refuse(reason)
+     }
+ 
+-    pub fn respond(&mut self, line: &str) -> Option<StoryReply> {
++    pub fn plan(&self, line: &str) -> StoryPlan {
+         let lower = line.trim().to_lowercase();
+         if lower
+             .trim_end_matches(['.', '?', '!'])
+             .contains(['.', '?', ';', '!'])
+         {
+-            return Some(self.invalidate("Please give one statement or question at a time. Use /reset and restate the facts."));
++            return StoryPlan::Invalidate(
++                "Please give one statement or question at a time. Use /reset and restate the facts.",
++            );
+         }
+         let first = lower.split_whitespace().next().unwrap_or_default();
+         let question = lower.ends_with('?')
+@@ -92,18 +108,18 @@ impl Stories {
+             // do not alter facts; the ordinary conversation fallback handles them.
+             let result = self.world.ask(line.trim().trim_end_matches(['?', '.']));
+             if result.reason == "unsupported question" {
+-                return None;
++                return StoryPlan::Ignore;
+             }
+             if self.invalidated {
+-                return Some(Self::refuse(
++                return StoryPlan::Reply(Self::refuse(
+                     "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+                 ));
+             }
+             let Some(answer) = result.answer else {
+-                return Some(Self::refuse(&result.reason));
++                return StoryPlan::Reply(Self::refuse(&result.reason));
+             };
+             let derived = result.reason == "derived from story state";
+-            return Some(StoryReply {
++            return StoryPlan::Reply(StoryReply {
+                 kind: if derived {
+                     "story_answer"
+                 } else {
+@@ -134,7 +150,7 @@ impl Stories {
+                 | "tell"
+                 | "show"
+         ) {
+-            return None;
++            return StoryPlan::Ignore;
+         }
+         let mut statement = lower.trim();
+         let mut correction = false;
+@@ -162,28 +178,47 @@ impl Stories {
+             )
+         );
+         if !safe || (correction && !replaceable) {
+-            return Some(self.invalidate("I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."));
++            return StoryPlan::Invalidate(
++                "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
++            );
+         }
+         if self.invalidated {
+-            return Some(Self::refuse(
++            return StoryPlan::Reply(Self::refuse(
+                 "Use /reset and restate the facts so I can answer reliably again.",
+             ));
+         }
+         if self.assertions.len() >= MAX_ASSERTIONS
+             || self.assertions.iter().map(String::len).sum::<usize>() + statement.len() > MAX_BYTES
+         {
+-            return Some(self.invalidate(
++            return StoryPlan::Invalidate(
+                 "This conversation has reached its fact limit. Use /reset to start a new one.",
+-            ));
++            );
+         }
+-        self.world.observe(statement);
+-        self.assertions.push(statement.into());
+-        Some(StoryReply {
+-            kind: "story_fact",
+-            text: "Got it. I'll use that when answering your questions.".into(),
+-            answer: None,
+-            reason: "event accepted".into(),
+-        })
++        StoryPlan::Observe(statement.to_owned())
++    }
++
++    pub fn apply(&mut self, plan: StoryPlan) -> Option<StoryReply> {
++        match plan {
++            StoryPlan::Ignore => None,
++            StoryPlan::Reply(reply) => Some(reply),
++            StoryPlan::Invalidate(reason) => Some(self.invalidate(reason)),
++            StoryPlan::Observe(statement) => {
++                self.world.observe(&statement);
++                self.assertions.push(statement);
++                Some(StoryReply {
++                    kind: "story_fact",
++                    text: "Got it. I'll use that when answering your questions.".into(),
++                    answer: None,
++                    reason: "event accepted".into(),
++                })
++            }
++        }
++    }
++
++    #[cfg(test)]
++    pub fn respond(&mut self, line: &str) -> Option<StoryReply> {
++        let plan = self.plan(line);
++        self.apply(plan)
+     }
+ }
+ 
+@@ -281,6 +316,36 @@ mod tests {
+         Ok(story)
+     }
+ 
++    #[test]
++    fn repeated_plans_do_not_mutate_history_or_world() -> Result<(), String> {
++        let mut story = new_story()?;
++        story.respond("Elin went to the kitchen.");
++        let before = serde_json::to_value(&story).unwrap();
++        for _ in 0..2 {
++            assert!(story.plan("Elin went to the garden.").supported());
++            assert!(!story.plan("Elin teleported to the loft.").supported());
++            assert_eq!(serde_json::to_value(&story).unwrap(), before);
++            assert_eq!(
++                story
++                    .respond("Where is Elin?")
++                    .and_then(|r| r.answer)
++                    .as_deref(),
++                Some("kitchen")
++            );
++        }
++        let plan = story.plan("Elin went to the garden.");
++        story.apply(plan);
++        assert_eq!(story.assertions.len(), 2);
++        assert_eq!(
++            story
++                .respond("Where is Elin?")
++                .and_then(|r| r.answer)
++                .as_deref(),
++            Some("garden")
++        );
++        Ok(())
++    }
++
+     #[test]
+     fn unsupported_updates_block_stale_answers_even_after_restart() -> Result<(), String> {
+         for update in [

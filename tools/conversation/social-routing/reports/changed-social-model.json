@@ -1,0 +1,3918 @@
+[
+  {
+    "inputs": [
+      "goodbye"
+    ],
+    "session": 0,
+    "baseline": {
+      "session": 0,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 0,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.6055448,
+            "margin": 1.2570262,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 19
+          }
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "goodbye"
+    ],
+    "session": 0,
+    "baseline": {
+      "session": 0,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 0,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.6055448,
+            "margin": 1.2570262,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 19
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 0,
+    "baseline": {
+      "session": 0,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: goodbye",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 0,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: goodbye",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "Actually, it's Nova"
+    ],
+    "session": 0,
+    "baseline": {
+      "session": 0,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 0,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "goodbye"
+    ],
+    "session": 1,
+    "baseline": {
+      "session": 1,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 1,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.6055448,
+            "margin": 1.2570262,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 19
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "goodbye"
+    ],
+    "session": 1,
+    "baseline": {
+      "session": 1,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 1,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.6055448,
+            "margin": 1.2570262,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 19
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 1,
+    "baseline": {
+      "session": 1,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: goodbye",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 1,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: goodbye",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "goodbye"
+    ],
+    "session": 2,
+    "baseline": {
+      "session": 2,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 2,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.6055448,
+            "margin": 1.2570262,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 19
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "goodbye"
+    ],
+    "session": 2,
+    "baseline": {
+      "session": 2,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 2,
+      "inputs": [
+        "goodbye"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.6055448,
+            "margin": 1.2570262,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 19
+          }
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hey there!"
+    ],
+    "session": 3,
+    "baseline": {
+      "session": 3,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 3,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Hello!",
+          "proposal": {
+            "label": "greeting",
+            "accepted": true,
+            "score": 1.2990897,
+            "margin": 1.0026008,
+            "dev_confidence": 0.9807692,
+            "confidence_support": 260,
+            "known_features": 21
+          }
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hey there!"
+    ],
+    "session": 3,
+    "baseline": {
+      "session": 3,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 3,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Hello!",
+          "proposal": {
+            "label": "greeting",
+            "accepted": true,
+            "score": 1.2990897,
+            "margin": 1.0026008,
+            "dev_confidence": 0.9807692,
+            "confidence_support": 260,
+            "known_features": 21
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 3,
+    "baseline": {
+      "session": 3,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: hey there!",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 3,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: hey there!",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "Actually, it's Nova"
+    ],
+    "session": 3,
+    "baseline": {
+      "session": 3,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 3,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hey there!"
+    ],
+    "session": 4,
+    "baseline": {
+      "session": 4,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 4,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Hello!",
+          "proposal": {
+            "label": "greeting",
+            "accepted": true,
+            "score": 1.2990897,
+            "margin": 1.0026008,
+            "dev_confidence": 0.9807692,
+            "confidence_support": 260,
+            "known_features": 21
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hey there!"
+    ],
+    "session": 4,
+    "baseline": {
+      "session": 4,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 4,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Hello!",
+          "proposal": {
+            "label": "greeting",
+            "accepted": true,
+            "score": 1.2990897,
+            "margin": 1.0026008,
+            "dev_confidence": 0.9807692,
+            "confidence_support": 260,
+            "known_features": 21
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 4,
+    "baseline": {
+      "session": 4,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: hey there!",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 4,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: hey there!",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hey there!"
+    ],
+    "session": 5,
+    "baseline": {
+      "session": 5,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 5,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Hello!",
+          "proposal": {
+            "label": "greeting",
+            "accepted": true,
+            "score": 1.2990897,
+            "margin": 1.0026008,
+            "dev_confidence": 0.9807692,
+            "confidence_support": 260,
+            "known_features": 21
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hey there!"
+    ],
+    "session": 5,
+    "baseline": {
+      "session": 5,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 5,
+      "inputs": [
+        "hey there!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Hello!",
+          "proposal": {
+            "label": "greeting",
+            "accepted": true,
+            "score": 1.2990897,
+            "margin": 1.0026008,
+            "dev_confidence": 0.9807692,
+            "confidence_support": 260,
+            "known_features": 21
+          }
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "see you later"
+    ],
+    "session": 6,
+    "baseline": {
+      "session": 6,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 6,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.8573303,
+            "margin": 1.3497697,
+            "dev_confidence": 1.0,
+            "confidence_support": 176,
+            "known_features": 29
+          }
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "see you later"
+    ],
+    "session": 6,
+    "baseline": {
+      "session": 6,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 6,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.8573303,
+            "margin": 1.3497697,
+            "dev_confidence": 1.0,
+            "confidence_support": 176,
+            "known_features": 29
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 6,
+    "baseline": {
+      "session": 6,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: see you later",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 6,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: see you later",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "Actually, it's Nova"
+    ],
+    "session": 6,
+    "baseline": {
+      "session": 6,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 6,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "see you later"
+    ],
+    "session": 7,
+    "baseline": {
+      "session": 7,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 7,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.8573303,
+            "margin": 1.3497697,
+            "dev_confidence": 1.0,
+            "confidence_support": 176,
+            "known_features": 29
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "see you later"
+    ],
+    "session": 7,
+    "baseline": {
+      "session": 7,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 7,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.8573303,
+            "margin": 1.3497697,
+            "dev_confidence": 1.0,
+            "confidence_support": 176,
+            "known_features": 29
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 7,
+    "baseline": {
+      "session": 7,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: see you later",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 7,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: see you later",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "see you later"
+    ],
+    "session": 8,
+    "baseline": {
+      "session": 8,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 8,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.8573303,
+            "margin": 1.3497697,
+            "dev_confidence": 1.0,
+            "confidence_support": 176,
+            "known_features": 29
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "see you later"
+    ],
+    "session": 8,
+    "baseline": {
+      "session": 8,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 8,
+      "inputs": [
+        "see you later"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.8573303,
+            "margin": 1.3497697,
+            "dev_confidence": 1.0,
+            "confidence_support": 176,
+            "known_features": 29
+          }
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "see you later",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "thanks so much!"
+    ],
+    "session": 9,
+    "baseline": {
+      "session": 9,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 9,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "You're welcome.",
+          "proposal": {
+            "label": "thank_you",
+            "accepted": true,
+            "score": 2.3185425,
+            "margin": 1.8792347,
+            "dev_confidence": 0.97619045,
+            "confidence_support": 42,
+            "known_features": 31
+          }
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "thanks so much!"
+    ],
+    "session": 9,
+    "baseline": {
+      "session": 9,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 9,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "You're welcome.",
+          "proposal": {
+            "label": "thank_you",
+            "accepted": true,
+            "score": 2.3185425,
+            "margin": 1.8792347,
+            "dev_confidence": 0.97619045,
+            "confidence_support": 42,
+            "known_features": 31
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 9,
+    "baseline": {
+      "session": 9,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: thanks so much!",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 9,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: thanks so much!",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "Actually, it's Nova"
+    ],
+    "session": 9,
+    "baseline": {
+      "session": 9,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 9,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "thanks so much!"
+    ],
+    "session": 10,
+    "baseline": {
+      "session": 10,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 10,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "You're welcome.",
+          "proposal": {
+            "label": "thank_you",
+            "accepted": true,
+            "score": 2.3185425,
+            "margin": 1.8792347,
+            "dev_confidence": 0.97619045,
+            "confidence_support": 42,
+            "known_features": 31
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "thanks so much!"
+    ],
+    "session": 10,
+    "baseline": {
+      "session": 10,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 10,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "You're welcome.",
+          "proposal": {
+            "label": "thank_you",
+            "accepted": true,
+            "score": 2.3185425,
+            "margin": 1.8792347,
+            "dev_confidence": 0.97619045,
+            "confidence_support": 42,
+            "known_features": 31
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 10,
+    "baseline": {
+      "session": 10,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: thanks so much!",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 10,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: thanks so much!",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "thanks so much!"
+    ],
+    "session": 11,
+    "baseline": {
+      "session": 11,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 11,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "You're welcome.",
+          "proposal": {
+            "label": "thank_you",
+            "accepted": true,
+            "score": 2.3185425,
+            "margin": 1.8792347,
+            "dev_confidence": 0.97619045,
+            "confidence_support": 42,
+            "known_features": 31
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "thanks so much!"
+    ],
+    "session": 11,
+    "baseline": {
+      "session": 11,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 11,
+      "inputs": [
+        "thanks so much!"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "You're welcome.",
+          "proposal": {
+            "label": "thank_you",
+            "accepted": true,
+            "score": 2.3185425,
+            "margin": 1.8792347,
+            "dev_confidence": 0.97619045,
+            "confidence_support": 42,
+            "known_features": 31
+          }
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much!",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "nice to speak with you"
+    ],
+    "session": 12,
+    "baseline": {
+      "session": 12,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 12,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.5474212,
+            "margin": 1.2231641,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 48
+          }
+        }
+      ],
+      "state": {
+        "turn": 4,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "nice to speak with you"
+    ],
+    "session": 12,
+    "baseline": {
+      "session": 12,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 12,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.5474212,
+            "margin": 1.2231641,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 48
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 12,
+    "baseline": {
+      "session": 12,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: nice to speak with you",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 12,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: nice to speak with you",
+          "source_turn": 5
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "Actually, it's Nova"
+    ],
+    "session": 12,
+    "baseline": {
+      "session": 12,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 12,
+      "inputs": [
+        "Actually, it's Nova"
+      ],
+      "replies": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Nova",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "nice to speak with you"
+    ],
+    "session": 13,
+    "baseline": {
+      "session": 13,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 13,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.5474212,
+            "margin": 1.2231641,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 48
+          }
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "nice to speak with you"
+    ],
+    "session": 13,
+    "baseline": {
+      "session": 13,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 13,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.5474212,
+            "margin": 1.2231641,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 48
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "What did I just say?"
+    ],
+    "session": 13,
+    "baseline": {
+      "session": 13,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: nice to speak with you",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 13,
+      "inputs": [
+        "What did I just say?"
+      ],
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "You said: nice to speak with you",
+          "source_turn": 6
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "What did I just say?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen."
+          ],
+          "invalidated": false
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "nice to speak with you"
+    ],
+    "session": 14,
+    "baseline": {
+      "session": 14,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 14,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.5474212,
+            "margin": 1.2231641,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 48
+          }
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "nice to speak with you"
+    ],
+    "session": 14,
+    "baseline": {
+      "session": 14,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 14,
+      "inputs": [
+        "nice to speak with you"
+      ],
+      "replies": [
+        {
+          "kind": "intent",
+          "text": "Goodbye!",
+          "proposal": {
+            "label": "goodbye",
+            "accepted": true,
+            "score": 1.5474212,
+            "margin": 1.2231641,
+            "dev_confidence": 0.9911111,
+            "confidence_support": 225,
+            "known_features": 48
+          }
+        }
+      ],
+      "state": {
+        "turn": 7,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "nice to speak with you",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hello Elin teleported to the garden"
+    ],
+    "session": 23,
+    "baseline": {
+      "session": 23,
+      "inputs": [
+        "hello Elin teleported to the garden"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hello Elin teleported to the garden",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 23,
+      "inputs": [
+        "hello Elin teleported to the garden"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+          "answer": null,
+          "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hello Elin teleported to the garden",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "hey there and Elin moved to the garden"
+    ],
+    "session": 25,
+    "baseline": {
+      "session": 25,
+      "inputs": [
+        "hey there and Elin moved to the garden"
+      ],
+      "replies": [
+        {
+          "kind": "story_fact",
+          "text": "Got it. I'll use that when answering your questions.",
+          "answer": null,
+          "reason": "event accepted"
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there and Elin moved to the garden",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen.",
+            "hey there and elin moved to the garden"
+          ],
+          "invalidated": false
+        }
+      }
+    },
+    "candidate": {
+      "session": 25,
+      "inputs": [
+        "hey there and Elin moved to the garden"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+          "answer": null,
+          "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "hey there and Elin moved to the garden",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "Where is Elin?"
+    ],
+    "session": 25,
+    "baseline": {
+      "session": 25,
+      "inputs": [
+        "Where is Elin?"
+      ],
+      "replies": [
+        {
+          "kind": "story_answer",
+          "text": "garden",
+          "answer": "garden",
+          "reason": "derived from story state"
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Where is Elin?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [
+            "elin is in the kitchen.",
+            "hey there and elin moved to the garden"
+          ],
+          "invalidated": false
+        }
+      }
+    },
+    "candidate": {
+      "session": 25,
+      "inputs": [
+        "Where is Elin?"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+          "answer": null,
+          "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+        }
+      ],
+      "state": {
+        "turn": 6,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "Where is Elin?",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "goodbye and book a flight"
+    ],
+    "session": 26,
+    "baseline": {
+      "session": 26,
+      "inputs": [
+        "goodbye and book a flight"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye and book a flight",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 26,
+      "inputs": [
+        "goodbye and book a flight"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+          "answer": null,
+          "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "goodbye and book a flight",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  },
+  {
+    "inputs": [
+      "thanks so much, Elin went to the garden"
+    ],
+    "session": 27,
+    "baseline": {
+      "session": 27,
+      "inputs": [
+        "thanks so much, Elin went to the garden"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much, Elin went to the garden",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    "candidate": {
+      "session": 27,
+      "inputs": [
+        "thanks so much, Elin went to the garden"
+      ],
+      "replies": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+          "answer": null,
+          "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+        }
+      ],
+      "state": {
+        "turn": 5,
+        "name": {
+          "value": "Hal",
+          "stated_on_turn": 1
+        },
+        "preferences": {
+          "color": {
+            "value": "blue",
+            "stated_on_turn": 2
+          }
+        },
+        "last_slot": null,
+        "last_user_utterance": "thanks so much, Elin went to the garden",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    }
+  }
+]

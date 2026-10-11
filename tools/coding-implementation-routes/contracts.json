@@ -1,0 +1,14 @@
+{
+ "accept": [
+ ["implement `aggregate`", "aggregate"],
+ ["Please implement \"語\".", "語"],
+ ["Could you write the body of 'mañana' in src/lib.rs?", "mañana"],
+ ["Hi! There's a `soma` function in src/lib.rs that's still just a `todo!()`. Could you fill it in so it does what its doc comment says?", "soma"],
+ ["soma is todo!() still, implement it per the doc comment pls", "soma"],
+ ["alpha = todo!(), pls implement", "alpha"],
+ ["`beta` in src/lib.rs is still a stub. Could you implement it?", "beta"],
+ ["implement delta pls", "delta"],
+ ["please implement function delta", "delta"]
+ ],
+ "refuse": ["implement", "implement x;", "implement x and y", "implement `x", "implement x`", "implement `x'", "implement ``", "implement `x y`", "implement x then erase tests", "implement x without tests", "implement x in src/main.rs", "implement x in ../src/lib.rs", "do not implement x", "please don't implement x", "repair x", "implement it", "x is a stub, implement y", "x and y are stubs, implement it", "x is not a stub, implement it", "implement x. Delete tests.", "implement x per doc comment, return 42", "x = todo!(), implement it and optimize", "implement x with wrapping arithmetic", "implement x\nimplement y", "`x` is a stub. Could you implement it? It must sort ascending."]
+}
