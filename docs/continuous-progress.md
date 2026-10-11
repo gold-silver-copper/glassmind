@@ -52,9 +52,9 @@ session61636 COMPLETE0. Extra spaced-quoted-owner parser check PASS,
 quoted-owner-tests.log, session65515 COMPLETE0. Required workspacechecks PASS,
 check-v2.log, session42215 COMPLETE0. Real CLI34process smoke PASS,
 cli-smoke/report.json, session99827 COMPLETE0. Initial failures retained.
-Full765DEV running session27971; full765/run.log, results.jsonl when complete.
-Compare all outcomes against yolo-implementation/full765 before publishing.
-PR60 has merged. Publish this field batch after its full regression completes.
+Full765DEV session27971 COMPLETE0:223 pass/542 refused/0 fail; all765 outcomes
+identical to yolo-implementation/full765. Evidence tools/coding-tasks/fields-validation.json.
+All field jobs terminal. Next publish field batch and merge its exact green head.
 
 Next gap from integrated usage: type renaming still rejects cfg(test) modules
 and assertion macros supported by other verifiers. Keep those guards until a
@@ -74,14 +74,17 @@ tuning. Known completed-worker usage203481375tokens includes cached input once,
 excludes parent and interrupted calls; no new worker usage in these slices.
 Milestones do not complete this continuing goal.
 
-Next type-binding work is uncommitted in
+Next type-binding candidate is committed in
 /home/gsc/.cache/glassmind/yolo-type-test-bindings, branchcontinuous/type-test-bindings,
-based on9a06081. RUN=/home/gsc/.cache/glassmind/yolo-type-tests. Extends rename_types
+at07090010fb0e5ddeddab6a8c9600572267fb6004, based on9a06081. RUN=/home/gsc/.cache/glassmind/yolo-type-tests. Extends rename_types
 using existing closed test-module graph and builtin expression-list traversal;
 reproves typed binding spans before application and requests native tests.
 Added tests for cfg(test), parent globs, aliases, assertion arguments, macro
 shadowing, opaque syntax and stale direct World.apply proposals. First focused
-clippy/native test pipeline session93714 is running; tests.log. Clippy passed;
-native suites compiling. Not integrated or pinned.
+tests-v2.log session22372 COMPLETE0:88CLI tests and18rename proof tests PASS.
+Requiredchecks session6835 and finalbuild session86022 COMPLETE0. Original tests.log
+retains one obsolete Build-vs-Test expectation failure; updated to native Test.
+Pinned candidate SHA2565fbc48cc540249662d96c00a3deb48c2651af2e646064d8a00e61ccc55fca0c0;
+candidate.json. CLI34process smoke session66111 running, cli-smoke.log. Not integrated.
 Next: inspect failures, preserve existing identifier guards and verify the full
 field-add/rename/test workflow on ordinary assertion-based tests.
