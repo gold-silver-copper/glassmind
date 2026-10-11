@@ -1,0 +1,17 @@
+{
+  "validation_rows": 3598,
+  "validation_groups": 3567,
+  "training_labels": {
+    "other": 12123,
+    "mention": 7596
+  },
+  "model_bytes": 157357,
+  "grid_points": 55,
+  "passing_grid_points": 0,
+  "gate_passed": false,
+  "selected": null,
+  "maximum_gain_any_threshold": 219,
+  "maximum_gain_with_zero_new_wrong": 5,
+  "seconds": 1.3634014350827783,
+  "limitation": "Grouped FIT-internal validation of entity linking only; no CAL/DEV/fullQA or runtime promotion."
+}

@@ -1,0 +1,18 @@
+{
+  "plan_commit": "f1df139",
+  "scripts": {
+    "prepare.py": "f6024152e0ecc3bae78a99c33644c5bd4d4dc54d5f6a5e5a1f01fce96f4b57ce",
+    "supervise.py": "ed977087e705ebc42fac0dcc05df7dc2ee70eeec91418e86cd167d313a0c9a69"
+  },
+  "extractor_source_sha256": "2dda21162a8ff9f146473f9cbf4f1ba89d18de8f30f528545287003a2aada37e",
+  "binary_sha256": "7fbe57961d24f1d3c01449a01ed78dc35f7d74dac5a7c1fcad88ee1bda5c2e40",
+  "authored_contracts": {
+    "rust_tests": 1,
+    "valid_parity_cases": 8,
+    "limit_refusals": 2,
+    "passed": true
+  },
+  "production_source_unchanged": true,
+  "extraction_started": false,
+  "attempts": 1
+}

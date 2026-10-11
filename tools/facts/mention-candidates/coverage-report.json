@@ -1,0 +1,27 @@
+{
+  "counts": {
+    "rows": 17465,
+    "baseline_unlinked": 8072,
+    "has_correct_eligible_span": 9124,
+    "recoverable_unlinked": 942,
+    "matched_span_occurrences": 160285,
+    "ambiguous_span_occurrences": 135304,
+    "unique_eligible_entities": 24460,
+    "baseline_wrong": 1675,
+    "recoverable_wrong": 464,
+    "baseline_right": 7718,
+    "recoverable_right": 0
+  },
+  "fit_rows": 17465,
+  "fit_normalized_groups": 17291,
+  "calibration_rows_excluded": 1949,
+  "overlap_rows_excluded": 67,
+  "groups_with_correct_eligible_span": 9085,
+  "groups_with_recoverable_baseline_miss": 1400,
+  "groups_with_conflicting_gold_entities": 2,
+  "maximum_matched_spans": 29,
+  "all_native_link_parity": true,
+  "coverage_prerequisite_passed": true,
+  "seconds": 43.574020463973284,
+  "limitation": "Oracle TRAIN-FIT candidate coverage only; no learned accuracy, CAL prediction or default change."
+}
