@@ -329,13 +329,13 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 ## Current coding and dialogue integrations
 
 Both answerfiles and boundaries workers COMPLETE, scopes inactive, temporary
-login symlinks removed. Two new model workers are active below. Original submissions archived
+login symlinks removed. Three new model workers are active below. Original submissions archived
 with SHA256 manifests at WORK/{answerfiles,boundaries}-run/submitted/.
 All archived file hashes verified against each completed worktree; both worktrees removed. Both used the
 required GPT-6 Astra fast through ChatGPT; no API-key authentication.
 
 **Metadata answer files:** committed source
-82f2a2e917acbf97958122a0a7c5ef01fe4a7eee, unpublished pending full dev.
+82f2a2e917acbf97958122a0a7c5ef01fe4a7eee, full dev passed; publication pending.
 Fully consumed typed count/name question plus explicit relative output directive;
 plain number/name serialization, directory-descriptor no-symlink traversal,
 complete fsynced staging and atomic no-clobber publication. No field-type export,
@@ -348,16 +348,16 @@ file plain. Original worker source is retained separately from parent fixes.
 Parent fixed sample2/3 and full2/7 exports, remaining requests refuse; all27
 worker I/O/semantic fixtures and8 new dispatch/explanation checks pass. EnglishRust
 35 tests +8CLI tests, fmt/all-target clippy/release/strict4/4smoke pass. Reports:
-docs/coding-answerfiles-evidence/integrated/. No full benchmark gain claimed yet.
-Full765 RustBench dev is RUNNING, execsession72237, exact frozen binary SHA
+docs/coding-answerfiles-evidence/integrated/. Full benchmark gain confirmed below.
+Full765 RustBench dev COMPLETE, execsession72237:168pass594refused3fail, exactly
+two refusal->pass transitions, every other763 outcome unchanged. All166 priorpasses
+retained. Comparison docs/results/coding-answerfiles.json. Exact frozen binary SHA
  a4b625c0e9c06a65d5226236fe6154e1003a50c4a643a5b2e7acd9a5bf69a2b9
 at WORK/coordinator/answerfiles-full/glassmind. source.json/run.log there.
 Compare every(task,style) to WORK/coordinator/repairs2-full/results.jsonl baseline
-166pass596refused3fail, unchanged benchmark f79e71a. Reuse live handle; an
-observation timeout is not permission to restart.
+166pass596refused3fail, unchanged benchmark f79e71a. The job is complete; do not restart or repoll.
 
-**Dialogue boundary restoration:** committed source38ef238, unpublished pending
-parent full replay (now passed). Value-free shape/punctuation rules fit on same3174TRAIN
+**Dialogue boundary restoration:** committed source38ef238, full replay passed; publication pending. Value-free shape/punctuation rules fit on same3174TRAIN
 conversations, deterministic2532fit/642calibration split; all noncategorical TRAIN
 schema slots and USER+SYSTEM gold spans, scope amendment disclosed before dev.
 Two accepted rules require >=5fit and>=3calibration conversations, zero endpoint
@@ -384,15 +384,14 @@ tools/dialogue/boundaries/reports; parent results confirmed.
 
 ## Immediate next actions
 
-1. Finish existing coding72237; dialogue56221 is complete. Inspect coding changes
-   and independent hashes, no restarts on observation timeout.
+1. Coding72237 and dialogue56221 are COMPLETE. Full comparisons/hashes verified.
 2. If gates pass, update shared scoreboard/README with exact evaluated commits,
    publish coherent PR and merge only after green CI with exact-head match.
 3. Completed archive verification and removal of both worktrees; retain all run data.
 4. Next gaps: broader metadata field-type answers, dialogue source freshness and
    contiguous decoded spans, MathQA language22/4475, finite validation-seeded facts,
    reading semantics beyond byte likelihood. Keep coding/conversation progressing.
-5. Goal remains active. Two owned model workers are live below. Old dirty improvement loop stopped.
+5. Goal remains active. Three owned model workers are live below. Old dirty improvement loop stopped.
 
 ## Next bounded workers
 
@@ -414,3 +413,20 @@ tools/dialogue/boundaries/reports; parent results confirmed.
 Both scopes verified8GiB/0swap, forced GPT-6 Astra fast/ChatGPT-only, noAPIenv.
 Login status confirmed ChatGPT before launch. Each bounded1800sec, no subworkers.
 Temporary login symlinks remain until each exits. Keep all workers within4cap.
+
+- **ReadingQA ACTIVE**: launcherPID2484347, scopeglassmind-continuous-readingqa.scope,
+  worktreeWORK/readingqa atb36970d, runWORK/readingqa-run. Owns crates/reading and new
+  QA adapter/reports. New passage-grounded semantic-reading track, separate from
+  probability/BabyLM scores. Public SQuAD1.1 onlyTRAIN87599/DEV10570, pinned
+  eee5fdbf62f8613a7812b03419e6b29617b74fd1, downloaded35142551datasetbytes,
+  CC-BY-SA4. Source/provenance/scorer in WORK/readingqa-source (read-only mount).
+  Existing runtime has no context+question QA interface. Worker must preregister,
+  beat simple lexical span baseline with small inspectable TRAIN-only model,
+  article-disjoint fit/calibration, truthful uncertainty/provenance, strict input
+  annotation rejection, sample200 thenfull10570 unchanged official EM/F1.
+  Official evaluate-v2.0.py is used unmodified on all-answerable v1.1; require every
+  devID prediction before scoring (it otherwise drops missing IDs). No test items
+  or model predictions fetched. First attempted obsolete v1 scorer URL404; retained
+  downloaded dataset files, fetched current official scorer separately. No repeated
+  data downloads. Dataset hashes match published sources. Parent mainCLI integration
+  and independent full replay required for useful accepted capability.

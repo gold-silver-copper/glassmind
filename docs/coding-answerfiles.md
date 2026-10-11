@@ -117,9 +117,9 @@ checks passed but existing grammar tests regressed to 33/35 due to ambiguous
 field readings. Removed those rules and confined typed disambiguation to the
 metadata interface. Final 35/35 and sample/full export replays pass.
 
-This is a measured local-dev gain, not an updated full benchmark score. The
-coordinator must run all 765 dev cases before publication. The supplied starting
-full score 166 pass / 596 refused / 3 fail is not reevaluated here. No held-out
+At worker handoff this was a local-dev gain; the coordinator's subsequent full
+765-case result is recorded below. The worker did not reevaluate the supplied
+starting score of 166 pass / 596 refused / 3 fail. No held-out
 items or tests, task manifests, solutions, generators or private historical logs
 were read. The omitted two hurried original requests were not reconstructed.
 
@@ -192,3 +192,18 @@ Parent replay passes sample2/3, supplied full2/7, all27 original local fixtures
 pass. [Integrated outcomes](coding-answerfiles-evidence/integrated/) retain
 source-file hashes, stdout/transcripts and rejected I/O cases. Full765 RustBench
 dev is the remaining publication gate; no overall benchmark gain claimed yet.
+
+## Coordinator full development gate
+
+Source `82f2a2e917acbf97958122a0a7c5ef01fe4a7eee`, frozen release binary
+`a4b625c0e9c06a65d5226236fe6154e1003a50c4a643a5b2e7acd9a5bf69a2b9`,
+passes **168 / 765** RustBench dev requests, with **594 refused and 3 failed**.
+The unchanged benchmark revision is `f79e71a2a26fdaf15f9bc55225a038b61e66fafb`.
+Compared with the preceding 166/596/3 run, exactly two terse metadata-output
+requests change from refusal to pass. Every other task/style outcome is unchanged;
+all 166 prior passes remain. No held-out evaluation was run.
+
+[Full comparison and artifact hashes](results/coding-answerfiles.json) retain
+exact identities, transitions and local gates. The full job completed successfully;
+its output remains under `~/.cache/glassmind/continuous-20261010/coordinator/answerfiles-full/`.
+This verifies count exports, not general function explanations or exact field types.

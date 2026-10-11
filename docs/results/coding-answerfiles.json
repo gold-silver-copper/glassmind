@@ -1,0 +1,54 @@
+{
+  "before": {
+    "refused": 596,
+    "pass": 166,
+    "fail": 3
+  },
+  "after": {
+    "refused": 594,
+    "pass": 168,
+    "fail": 3
+  },
+  "transitions": {
+    "refused->refused": 594,
+    "pass->pass": 166,
+    "fail->fail": 3,
+    "refused->pass": 2
+  },
+  "changed": [
+    {
+      "task": "talk/callers-of-apply-damage",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass",
+      "detail": ""
+    },
+    {
+      "task": "talk/command-variant-count",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass",
+      "detail": ""
+    }
+  ],
+  "all_baseline_pass_retained": true,
+  "new_failures": [],
+  "source": {
+    "source_commit": "82f2a2e917acbf97958122a0a7c5ef01fe4a7eee",
+    "binary_sha256": "a4b625c0e9c06a65d5226236fe6154e1003a50c4a643a5b2e7acd9a5bf69a2b9",
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "local_sample": "2/3 exports, one unsupported type",
+    "local_full": "2/7 exports, five refusals,0wrong",
+    "fixtures": "27/27 original;8/8 query/trace regressions",
+    "tests": "8CLI+35EnglishRust",
+    "workspace": "fmt/clippy/release/strict4/4smoke pass"
+  },
+  "before_results": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/repairs2-full/results.jsonl",
+    "sha256": "43f10b66fe19bc476bb984034752eb659db04273d4fc655ac3493e4bf731cbd9"
+  },
+  "after_results": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/answerfiles-full/results.jsonl",
+    "sha256": "c0d966da57878cd30a8f47ae8bd4ba1f682d3187d0733c0c65e3c3c92dcedccb"
+  }
+}

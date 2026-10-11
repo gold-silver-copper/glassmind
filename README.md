@@ -86,7 +86,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 166/765 pass; 596 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 168/765 pass; 594 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -132,6 +132,13 @@ declaration, preserves function/test bodies and requires requested checks to
 pass; independent probes verify behavior for four additional repairs.
 [Repair scope](docs/coding-diagnostics-repairs.md) and
 [full comparison](docs/results/coding-standard-debug.json).
+
+Typed metadata questions can now write a count or unique name to a requested
+relative file. This adds two RustBench dev passes, with every other outcome
+unchanged. Exports refuse ambiguous answers, unsupported formats, unsafe paths
+and existing destinations; `--reply-file` remains the separate transcript.
+[Export scope](docs/coding-answerfiles.md) and
+[full comparison](docs/results/coding-answerfiles.json).
 
 
 On 179 complete SGD dev conversations involving RideSharing, Travel and Weather,
