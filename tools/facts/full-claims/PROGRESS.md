@@ -54,3 +54,9 @@ source/data results before integration/publication. Existing rootPR49merged.
 memory.swap.max0; both report oom0/oom_kill0. File-cache pressure reaches cap.
 Fetch ownedPIDs760445/760446; projection group761884/761926/761927/761928.
 Snapshot RUN/resource-observations.jsonl; do not confuse cgroupcache withprocessRSS.
+
+Probe scan groups identical (direction,anchor,property) lookups before storing
+independent answer sets, avoiding repeated materialization of common large inverse
+sets. All original per-case checks remain. Second retained-pilot smoke reproduces
+same110cases/hash/counts in0.451s;59distinct lookupgroups. Updated RUN/witnesses.py;
+prior version preserved as witnesses-before-grouping.py. No runtime behavior change.
