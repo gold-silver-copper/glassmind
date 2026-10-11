@@ -1,7 +1,7 @@
 //! The `glassmind` command: ask about Rust sources in English.
 
-use std::collections::BTreeMap;
-use std::io::{BufRead, Write};
+use std::collections::{BTreeMap, BTreeSet};
+use std::io::Write;
 use std::path::PathBuf;
 use std::process::ExitCode;
 use std::sync::Arc;
@@ -104,6 +104,17 @@ enum Command {
         /// Switch off these rules (comma-separated IDs).
         #[arg(long, value_delimiter = ',')]
         disable: Vec<String>,
+        /// Conversations answered at once (they are independent; the
+        /// outcomes come out in input order whatever this is).
+        #[arg(long, default_value_t = 1)]
+        jobs: usize,
+        /// Answer only the conversations that use one of these rules in an
+        /// earlier outcome file (`--only-using-from`): the others cannot
+        /// change when only these rules are switched off.
+        #[arg(long, value_delimiter = ',')]
+        only_using: Vec<String>,
+        #[arg(long)]
+        only_using_from: Option<PathBuf>,
     },
     /// Act on one request in a repository, as a coding agent: a fix or an
     /// edit glassmind finds is made (asking for it is consent); anything else
@@ -171,7 +182,29 @@ fn main() -> ExitCode {
             sources,
             inputs,
             disable,
-        } => eval(&sources, &inputs, Switches::without(disable)),
+            jobs,
+            only_using,
+            only_using_from,
+        } => (|| {
+            // The turns whose earlier outcome used one of the rules.
+            let only = match only_using_from {
+                Some(path) if !only_using.is_empty() => {
+                    let text = std::fs::read_to_string(&path)
+                        .map_err(|e| format!("cannot read {}: {e}", path.display()))?;
+                    let mut ids = BTreeSet::new();
+                    for line in text.lines().filter(|l| !l.trim().is_empty()) {
+                        let o: glassmind_answer::Outcome =
+                            serde_json::from_str(line).map_err(|e| format!("bad outcome: {e}"))?;
+                        if o.rules.iter().any(|r| only_using.contains(r)) {
+                            ids.insert(o.turn_id);
+                        }
+                    }
+                    Some(ids)
+                }
+                _ => None,
+            };
+            eval(&sources, &inputs, Switches::without(disable), jobs, only)
+        })(),
         Command::Do {
             repo,
             reply_file,
@@ -325,32 +358,48 @@ fn complete(common: &Common, text: &str) -> Result<(), String> {
     Ok(())
 }
 
+/// One conversation's outcomes, as JSON lines.
+type Answered = Result<Vec<String>, String>;
+
 fn eval(
     sources_dir: &std::path::Path,
     inputs: &std::path::Path,
     switches: Switches,
+    jobs: usize,
+    only: Option<BTreeSet<String>>,
 ) -> Result<(), String> {
-    let file = std::fs::File::open(inputs)
-        .map_err(|e| format!("cannot open {}: {e}", inputs.display()))?;
+    let text = std::fs::read_to_string(inputs)
+        .map_err(|e| format!("cannot read {}: {e}", inputs.display()))?;
+    let conversations: Vec<ConversationInput> = text
+        .lines()
+        .filter(|l| !l.trim().is_empty())
+        .map(|l| serde_json::from_str(l).map_err(|e| format!("bad conversation: {e}")))
+        .collect::<Result<_, _>>()?;
+    let conversations: Vec<ConversationInput> = match &only {
+        Some(ids) => conversations
+            .into_iter()
+            .filter(|c| c.turns.iter().any(|t| ids.contains(&t.id)))
+            .collect(),
+        None => conversations,
+    };
     let english: English<Rust> = English::new(glassmind_english_rust::rules(), &switches);
-    let mut indices: BTreeMap<String, Arc<SourceIndex>> = BTreeMap::new();
-    let stdout = std::io::stdout();
-    let mut out = std::io::BufWriter::new(stdout.lock());
-    for line in std::io::BufReader::new(file).lines() {
-        let line = line.map_err(|e| e.to_string())?;
-        if line.trim().is_empty() {
-            continue;
-        }
-        let conversation: ConversationInput =
-            serde_json::from_str(&line).map_err(|e| format!("bad conversation: {e}"))?;
-        let mut shared = Vec::new();
-        for name in &conversation.sources {
-            let index = indices
-                .entry(name.clone())
-                .or_insert_with(|| Arc::new(index_source(name, &sources_dir.join(name))))
-                .clone();
-            shared.push(index);
-        }
+    // Every source indexed once, before the conversations share them.
+    let names: BTreeSet<&String> = conversations.iter().flat_map(|c| &c.sources).collect();
+    let indices: BTreeMap<String, Arc<SourceIndex>> = names
+        .into_iter()
+        .map(|name| {
+            (
+                name.clone(),
+                Arc::new(index_source(name, &sources_dir.join(name))),
+            )
+        })
+        .collect();
+    let answer_one = |conversation: &ConversationInput| -> Result<Vec<String>, String> {
+        let shared = conversation
+            .sources
+            .iter()
+            .filter_map(|n| indices.get(n).cloned())
+            .collect();
         let world = RustWorld::from_indices(shared, &switches);
         let mind = Mind {
             language: &english,
@@ -358,11 +407,50 @@ fn eval(
             switches: &switches,
         };
         let mut session = Session::new(Vec::new());
-        for turn in &conversation.turns {
-            let result = mind.respond(&mut session, &turn.text);
-            let outcome = answer::outcome(&turn.id, &result, answer::canonical(&english, &result));
-            let json = serde_json::to_string(&outcome).map_err(|e| e.to_string())?;
-            writeln!(out, "{json}").map_err(|e| e.to_string())?;
+        conversation
+            .turns
+            .iter()
+            .map(|turn| {
+                let result = mind.respond(&mut session, &turn.text);
+                let outcome =
+                    answer::outcome(&turn.id, &result, answer::canonical(&english, &result));
+                serde_json::to_string(&outcome).map_err(|e| e.to_string())
+            })
+            .collect()
+    };
+    // Workers take the next conversation in turn; each one's outcomes are
+    // kept at its place, so the output keeps the input order.
+    let next = std::sync::atomic::AtomicUsize::new(0);
+    let done: Vec<std::sync::Mutex<Option<Answered>>> = conversations
+        .iter()
+        .map(|_| std::sync::Mutex::new(None))
+        .collect();
+    std::thread::scope(|s| {
+        for _ in 0..jobs.max(1) {
+            s.spawn(|| {
+                loop {
+                    let i = next.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                    let (Some(conversation), Some(slot)) = (conversations.get(i), done.get(i))
+                    else {
+                        break;
+                    };
+                    let answered = answer_one(conversation);
+                    if let Ok(mut slot) = slot.lock() {
+                        *slot = Some(answered);
+                    }
+                }
+            });
+        }
+    });
+    let stdout = std::io::stdout();
+    let mut out = std::io::BufWriter::new(stdout.lock());
+    for slot in done {
+        let lines = slot
+            .into_inner()
+            .map_err(|_| "a worker failed".to_owned())?
+            .unwrap_or_else(|| Err("a conversation was not answered".into()))?;
+        for line in lines {
+            writeln!(out, "{line}").map_err(|e| e.to_string())?;
         }
     }
     out.flush().map_err(|e| e.to_string())

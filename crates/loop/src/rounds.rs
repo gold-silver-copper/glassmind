@@ -215,6 +215,72 @@ pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
     round > best_round + patience
 }
 
+/// Merges the upstream branch's new commits into the loop's branch, if
+/// there are any and they merge cleanly; the merged subject line.
+fn pick_up(config: &Config) -> Result<Option<String>, String> {
+    let Some((repo, branch)) = &config.upstream else {
+        return Ok(None);
+    };
+    git(
+        &config.repo,
+        &["fetch", "-q", &repo.to_string_lossy(), branch],
+    )?;
+    let theirs = git(&config.repo, &["rev-parse", "FETCH_HEAD"])?;
+    let ours = head(config)?;
+    let merged = git(
+        &config.repo,
+        &["merge-base", "--is-ancestor", &theirs, &ours],
+    )
+    .is_ok();
+    if merged {
+        return Ok(None);
+    }
+    let subject = git(&config.repo, &["log", "-1", "--format=%s", &theirs])?;
+    let new = if git(
+        &config.repo,
+        &["merge-base", "--is-ancestor", &ours, &theirs],
+    )
+    .is_ok()
+    {
+        theirs
+    } else {
+        // Both moved: a merge commit, made in a scratch worktree.
+        let dir = config.repo.join(".git").join("pick-up");
+        let _ = git(
+            &config.repo,
+            &["worktree", "remove", "--force", &dir.to_string_lossy()],
+        );
+        git(
+            &config.repo,
+            &[
+                "worktree",
+                "add",
+                "-q",
+                "--detach",
+                &dir.to_string_lossy(),
+                &ours,
+            ],
+        )?;
+        let made = git(&dir, &["merge", "-q", "--no-edit", &theirs])
+            .and_then(|_| git(&dir, &["rev-parse", "HEAD"]));
+        let _ = git(
+            &config.repo,
+            &["worktree", "remove", "--force", &dir.to_string_lossy()],
+        );
+        made.map_err(|e| format!("merging {theirs} into {ours}: {e}"))?
+    };
+    git(
+        &config.repo,
+        &[
+            "update-ref",
+            &format!("refs/heads/{}", config.branch),
+            &new,
+            &ours,
+        ],
+    )?;
+    Ok(Some(subject))
+}
+
 /// Runs rounds until stopped (a `STOP` file in the state directory, or no
 /// validation improvement for `patience` rounds), or just one with `once`.
 pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
@@ -234,6 +300,16 @@ pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
         if paths.stop_file().exists() {
             log(paths, "stop file found; stopping");
             break;
+        }
+        // Changes made by hand meanwhile: merged, scored, and on.
+        match pick_up(&config) {
+            Ok(Some(subject)) => {
+                let at = head(&config)?;
+                let why = format!("changed by hand: {subject}");
+                base = rescore(&config, paths, &data, &base, &at, "manual", &why)?;
+            }
+            Ok(None) => {}
+            Err(e) => log(paths, &format!("could not take up hand changes: {e}")),
         }
         let history = state::history(paths);
         let round = history.iter().map(|e| e.round).max().unwrap_or(0) + 1;
@@ -315,7 +391,15 @@ fn growth_round(
     // one already chosen wait for a later round, since their fixes would collide.
     let mut chosen: Vec<growth::Group> = Vec::new();
     let mut taken: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
-    for g in growth::groups(&data.train, &base.train, &verdicts) {
+    let focused: Vec<crate::score::Label> = data
+        .train
+        .iter()
+        .filter(|l| {
+            config.focus.is_empty() || config.focus.iter().any(|f| f == evaluate::family(&l.kind))
+        })
+        .cloned()
+        .collect();
+    for g in growth::groups(&focused, &base.train, &verdicts) {
         if chosen.len() >= config.max_agents {
             break;
         }

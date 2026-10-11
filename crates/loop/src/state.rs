@@ -29,6 +29,17 @@ pub struct Config {
     /// generator prompts, dev sets, outside benchmarks' held-out splits).
     #[serde(default)]
     pub private: Vec<PathBuf>,
+    /// Growth rounds work only on failures of these task families (`qa`,
+    /// `harness`, `rustbench`); empty: all.
+    #[serde(default)]
+    pub focus: Vec<String>,
+    /// A repository and branch whose new commits (changes made by hand) the
+    /// loop merges at each round boundary, then rescores and goes on.
+    #[serde(default)]
+    pub upstream: Option<(PathBuf, String)>,
+    /// Conversations each evaluation answers at once.
+    #[serde(default = "default_eval_jobs")]
+    pub eval_jobs: usize,
     /// Failure units per syntax token of mind code.
     pub size_price: f64,
     /// Agents running at once.
@@ -50,6 +61,10 @@ pub struct Config {
     pub reviewer: bool,
     /// Minutes an agent may run.
     pub agent_minutes: u64,
+}
+
+fn default_eval_jobs() -> usize {
+    8
 }
 
 /// Token use of agent sessions.

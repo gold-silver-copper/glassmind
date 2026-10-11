@@ -108,6 +108,8 @@ pub fn eval_set(
         args.push("--disable".to_owned());
         args.push(disable.join(","));
     }
+    args.push("--jobs".to_owned());
+    args.push(config.eval_jobs.to_string());
     // The candidate's code runs where it can write only to places agents
     // cannot see: its checks' builds and results, and a scratch directory.
     // Held-out material is visible to it only while it answers held-out

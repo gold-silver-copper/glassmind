@@ -93,6 +93,19 @@ fn targets(root: &Path) -> &'static [&'static str] {
     }
 }
 
+/// Where scratch copies go: never the system temp directory, which on this
+/// machine is in memory.
+fn scratch_base() -> PathBuf {
+    std::env::var_os("GLASSMIND_SCRATCH")
+        .map(PathBuf::from)
+        .unwrap_or_else(|| {
+            std::env::var_os("HOME")
+                .map(PathBuf::from)
+                .unwrap_or_default()
+                .join(".cache/glassmind/scratch")
+        })
+}
+
 /// The most memory one check may use: tests of broken code can loop
 /// allocating, and must not take the machine with them.
 const TOOL_MEMORY: &str = "6G";
@@ -140,6 +153,43 @@ fn kill_group(child: &mut std::process::Child) {
     let _ = child.wait();
 }
 
+/// How many cargo runs one process makes at once (each `-j 4`): requests
+/// answered side by side share the machine.
+const CARGO_AT_ONCE: usize = 2;
+
+/// A turn to run cargo, held while it runs.
+struct CargoTurn;
+
+impl CargoTurn {
+    fn take() -> CargoTurn {
+        let (lock, freed) = &CARGO_RUNNING;
+        let mut running = lock
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        while *running >= CARGO_AT_ONCE {
+            running = freed
+                .wait(running)
+                .unwrap_or_else(std::sync::PoisonError::into_inner);
+        }
+        *running += 1;
+        CargoTurn
+    }
+}
+
+impl Drop for CargoTurn {
+    fn drop(&mut self) {
+        let (lock, freed) = &CARGO_RUNNING;
+        let mut running = lock
+            .lock()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        *running = running.saturating_sub(1);
+        freed.notify_one();
+    }
+}
+
+static CARGO_RUNNING: (std::sync::Mutex<usize>, std::sync::Condvar) =
+    (std::sync::Mutex::new(0), std::sync::Condvar::new());
+
 fn cargo(
     places: &Places,
     source: &str,
@@ -147,13 +197,14 @@ fn cargo(
     subcommand: &str,
     args: &[&str],
 ) -> Result<(bool, String), String> {
+    let _turn = CargoTurn::take();
     let mut command = cargo_command();
     if let Some(target) = &places.target {
         command.env("CARGO_TARGET_DIR", target.join(source));
     }
     // Doc tests and build scripts write temporary files: beside the scratch
     // copies, never in the system temp directory.
-    let tmp = scratch("tmp");
+    let tmp = scratch_base().join(format!("tmp-{}", std::process::id()));
     let _ = std::fs::create_dir_all(&tmp);
     command.env("TMPDIR", &tmp);
     let mut child = command
@@ -657,16 +708,11 @@ pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustCh
 /// temporary directory: a sandboxed run may write there and nowhere else
 /// of its own.
 pub fn scratch(source: &str) -> PathBuf {
-    // Never the system temp directory: on this machine it is in memory.
-    let base = std::env::var_os("GLASSMIND_SCRATCH")
-        .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            std::env::var_os("HOME")
-                .map(PathBuf::from)
-                .unwrap_or_default()
-                .join(".cache/glassmind/scratch")
-        });
-    base.join(format!("{source}-{}", std::process::id()))
+    let base = scratch_base();
+    // Of its own: requests answered side by side may try the same source.
+    static COPIES: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    let n = COPIES.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+    base.join(format!("{source}-{}-{n}", std::process::id()))
 }
 
 #[cfg(test)]
