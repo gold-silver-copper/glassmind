@@ -194,6 +194,25 @@ impl<O: Ontology> English<O> {
         }
     }
 
+    /// Exact questions only: no guessed spellings, normalization, ignored
+    /// free-text remarks. Fixed grammatical words still participate in parsing.
+    pub fn exact_questions(&self, text: &str) -> Vec<glassmind_meaning::Question<O>> {
+        let tokens = self.tokenize(text);
+        if tokens.iter().any(|t| self.lexicon.respelled(t).is_some()) {
+            return Vec::new();
+        }
+        self.grammar
+            .parse(&self.lexicon, &tokens)
+            .readings
+            .iter()
+            .filter(|p| p.edits == 0 && self.passed_over(p) == 0)
+            .filter_map(|p| match &p.value {
+                Sem::Utterance(glassmind_meaning::Utterance::Ask(q)) => Some(q.clone()),
+                _ => None,
+            })
+            .collect()
+    }
+
     /// How many words a phrase passes over as text it need not understand
     /// (the words of a remark).
     fn passed_over(&self, phrase: &Phrase<Sem<O>>) -> usize {

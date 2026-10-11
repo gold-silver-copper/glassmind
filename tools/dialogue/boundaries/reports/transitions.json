@@ -1,0 +1,25 @@
+{
+  "joint_transitions": {
+    "right->right": 609,
+    "wrong->wrong": 459,
+    "refused->refused": 50,
+    "wrong->right": 1
+  },
+  "frame_transitions": {
+    "True->True": 712,
+    "False->False": 502,
+    "False->True": 4
+  },
+  "routing_transitions": {
+    "True->True": 977,
+    "False->False": 142
+  },
+  "changed_joint_ids": [
+    [
+      "17_00034",
+      8,
+      "wrong",
+      "right"
+    ]
+  ]
+}

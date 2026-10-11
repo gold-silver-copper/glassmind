@@ -280,6 +280,7 @@ mod tests {
         }
         let (schemas, offers) = fixture();
         let model = MultiModel {
+            boundaries: None,
             version: 1,
             router: constant("A"),
             independent_router: BTreeMap::new(),

@@ -1,0 +1,201 @@
+{
+  "binary": "/home/gsc/code/glassmind/target/release/glassmind",
+  "binary_sha256": "a4b625c0e9c06a65d5226236fe6154e1003a50c4a643a5b2e7acd9a5bf69a2b9",
+  "total": 7,
+  "usable": 2,
+  "safe": 7,
+  "rows": [
+    {
+      "case": "callers-of-apply-damage-chatty",
+      "prompt": "Hi! I'm thinking about changing how armor works in `apply_damage` and want to know how much code that touches. How many functions in this crate call `apply_damage`? Please put only the number (digits, nothing else) in a file called ANSWER at the top of the crate, no need to change any code.",
+      "expected": "3\n",
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: missing output destination\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: missing output destination\n",
+      "before": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/combat.rs": "2cc5996dc5e2588ff72ceda801bcfe195dbfc5cd8fd2463b30d804bc5682c985",
+        "src/hazards.rs": "4dd3eb7a6dac64aa676b6b7674c4884750c684994d58551304b3978789b86787",
+        "src/lib.rs": "617edf9afb954096d622c31c1e2b239501f6658b43db7088be8ca357962a7053",
+        "src/unit.rs": "72c3279fd487eda9e29ac89cc898dddae8795a04f66e49bd22541322d03d3d46"
+      },
+      "after": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/combat.rs": "2cc5996dc5e2588ff72ceda801bcfe195dbfc5cd8fd2463b30d804bc5682c985",
+        "src/hazards.rs": "4dd3eb7a6dac64aa676b6b7674c4884750c684994d58551304b3978789b86787",
+        "src/lib.rs": "617edf9afb954096d622c31c1e2b239501f6658b43db7088be8ca357962a7053",
+        "src/unit.rs": "72c3279fd487eda9e29ac89cc898dddae8795a04f66e49bd22541322d03d3d46"
+      }
+    },
+    {
+      "case": "callers-of-apply-damage-terse",
+      "prompt": "How many functions call `apply_damage`? Write just the number to a file named ANSWER in the crate root.",
+      "expected": "3\n",
+      "answer": "3\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "ANSWER"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote 3 to ANSWER.\n",
+      "stderr": "",
+      "transcript": "Wrote 3 to ANSWER.\n",
+      "before": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/combat.rs": "2cc5996dc5e2588ff72ceda801bcfe195dbfc5cd8fd2463b30d804bc5682c985",
+        "src/hazards.rs": "4dd3eb7a6dac64aa676b6b7674c4884750c684994d58551304b3978789b86787",
+        "src/lib.rs": "617edf9afb954096d622c31c1e2b239501f6658b43db7088be8ca357962a7053",
+        "src/unit.rs": "72c3279fd487eda9e29ac89cc898dddae8795a04f66e49bd22541322d03d3d46"
+      },
+      "after": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "ANSWER": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+        "src/combat.rs": "2cc5996dc5e2588ff72ceda801bcfe195dbfc5cd8fd2463b30d804bc5682c985",
+        "src/hazards.rs": "4dd3eb7a6dac64aa676b6b7674c4884750c684994d58551304b3978789b86787",
+        "src/lib.rs": "617edf9afb954096d622c31c1e2b239501f6658b43db7088be8ca357962a7053",
+        "src/unit.rs": "72c3279fd487eda9e29ac89cc898dddae8795a04f66e49bd22541322d03d3d46"
+      }
+    },
+    {
+      "case": "command-variant-count-chatty",
+      "prompt": "Hi, quick one: I'm writing the help text for my todo CLI. How many variants does the `Command` enum have right now? Please write only the number into a file named ANSWER in the crate root. Don't change anything else.",
+      "expected": "6\n",
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unconsumed output instruction\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unconsumed output instruction\n",
+      "before": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "ad991c683e0967867715717d1194b3e99cdacf952ebf7a96b250a173844bce47"
+      },
+      "after": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "ad991c683e0967867715717d1194b3e99cdacf952ebf7a96b250a173844bce47"
+      }
+    },
+    {
+      "case": "command-variant-count-terse",
+      "prompt": "How many variants does the `Command` enum have? Write just the number to a file ANSWER in the crate root.",
+      "expected": "6\n",
+      "answer": "6\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "ANSWER"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote 6 to ANSWER.\n",
+      "stderr": "",
+      "transcript": "Wrote 6 to ANSWER.\n",
+      "before": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "ad991c683e0967867715717d1194b3e99cdacf952ebf7a96b250a173844bce47"
+      },
+      "after": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "ANSWER": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+        "src/lib.rs": "ad991c683e0967867715717d1194b3e99cdacf952ebf7a96b250a173844bce47"
+      }
+    },
+    {
+      "case": "items-field-type-chatty",
+      "prompt": "Hey there! I'm writing a serializer for orders and need to know how line items are stored. What's the type of the `items` field on the `Order` struct? Please write just the type, spelled exactly as it is in the source, into a file named ANSWER at the crate root.",
+      "expected": "Vec<LineItem>\n",
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unsupported answer format (number or unique name required)\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unsupported answer format (number or unique name required)\n",
+      "before": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "c8aee5f7d0fc7dd8c8cc1e56eda3bdae084fbe6d1e66c6c655a69b464398f759",
+        "src/order.rs": "8af827830924a5f250af2245537b5ac915354ef8a5479130ab7b8098e37cf657"
+      },
+      "after": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "c8aee5f7d0fc7dd8c8cc1e56eda3bdae084fbe6d1e66c6c655a69b464398f759",
+        "src/order.rs": "8af827830924a5f250af2245537b5ac915354ef8a5479130ab7b8098e37cf657"
+      }
+    },
+    {
+      "case": "items-field-type-hurried",
+      "prompt": "type of Order.items? write the type exactly like in the code into ANSWER at crate root",
+      "expected": "Vec<LineItem>\n",
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unsupported answer format (number or unique name required)\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unsupported answer format (number or unique name required)\n",
+      "before": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "c8aee5f7d0fc7dd8c8cc1e56eda3bdae084fbe6d1e66c6c655a69b464398f759",
+        "src/order.rs": "8af827830924a5f250af2245537b5ac915354ef8a5479130ab7b8098e37cf657"
+      },
+      "after": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "c8aee5f7d0fc7dd8c8cc1e56eda3bdae084fbe6d1e66c6c655a69b464398f759",
+        "src/order.rs": "8af827830924a5f250af2245537b5ac915354ef8a5479130ab7b8098e37cf657"
+      }
+    },
+    {
+      "case": "items-field-type-terse",
+      "prompt": "What is the type of the `items` field on `Order`? Write just the type, exactly as written in the source, to a file ANSWER in the crate root.",
+      "expected": "Vec<LineItem>\n",
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unsupported answer format (number or unique name required)\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unsupported answer format (number or unique name required)\n",
+      "before": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "c8aee5f7d0fc7dd8c8cc1e56eda3bdae084fbe6d1e66c6c655a69b464398f759",
+        "src/order.rs": "8af827830924a5f250af2245537b5ac915354ef8a5479130ab7b8098e37cf657"
+      },
+      "after": {
+        "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "Cargo.lock": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418",
+        "src/lib.rs": "c8aee5f7d0fc7dd8c8cc1e56eda3bdae084fbe6d1e66c6c655a69b464398f759",
+        "src/order.rs": "8af827830924a5f250af2245537b5ac915354ef8a5479130ab7b8098e37cf657"
+      }
+    }
+  ]
+}
