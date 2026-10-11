@@ -1,0 +1,30 @@
+{
+  "base_commit": "e73f68c36e183b4060468cc6e752b8709f0662a0",
+  "uncommitted": true,
+  "source_sha256": {
+    "Cargo.toml": "a3652a713fa4b3c805b41207c3197c2b8f811ceb7a54d1c31437a65f08571825",
+    "Cargo.lock": "ea9ccfce67a24ea05bb5588d75a5bbbe29afe4e60e92a4d1e91730a994d286a8",
+    "crates/cli/Cargo.toml": "7005140e0ba70b4b8413fbd3ac00d6a14db6b846b4b76e90917ab4486a08a74c",
+    "crates/cli/src/main.rs": "402eadc80cdcbf6ba2e39653850ee6f6192d5e5e6f1650fc18c3da39916463cf",
+    "crates/cli/src/everyday.rs": "d4cf18a15036e5fc9f5618ffd338897904c0b8d472d0f33e9b92eb3b12d2cfc0",
+    "crates/cli/src/talk_stories.rs": "f7e2e15257160b9d46241b7e46faead0a928cce879c6c2d2718cc8c40fa350b2",
+    "tools/talk-story-dev.py": "e169d783e9df000aa383f2d4926f51917bf5360c5c12076201672e1751fa4a0f"
+  },
+  "binary_sha256": "997bc8b92ab3267cdc8f944455ee479050c6c958ce2ee485648f280209bf7477",
+  "validation": {
+    "cargo_build_glassmind": "passed",
+    "cargo_fmt_all_check": "passed",
+    "cargo_clippy_glassmind_all_targets_deny_warnings": "passed",
+    "focused_rust_tests": {
+      "passed": 3,
+      "failed": 0
+    },
+    "memory_smoke": {
+      "right": 41,
+      "wrong": 0
+    },
+    "git_diff_check": "passed"
+  },
+  "new_training_data_bytes": 0,
+  "owned_running_jobs_at_handoff": 0
+}

@@ -1,0 +1,278 @@
+{
+  "groups": {
+    "bnc_spoken": {
+      "bytes": 914,
+      "documents": 20,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 20,
+      "pairs": 0,
+      "sixgram": {
+        "bad": 0,
+        "bits": 1808.6821871277261,
+        "bits_per_byte": 1.978864537338869,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 4332.545931614268,
+        "bits_per_byte": 4.740203426273816,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "childes": {
+      "bytes": 444,
+      "documents": 20,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 20,
+      "pairs": 0,
+      "sixgram": {
+        "bad": 0,
+        "bits": 961.88681509995,
+        "bits_per_byte": 2.166411745720608,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 2517.1847104412036,
+        "bits_per_byte": 5.669334933426134,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "gutenberg": {
+      "bytes": 4851,
+      "documents": 20,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 20,
+      "pairs": 0,
+      "sixgram": {
+        "bad": 0,
+        "bits": 10055.762184323887,
+        "bits_per_byte": 2.0729256203512443,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 22421.116873837826,
+        "bits_per_byte": 4.621957714664569,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "open_subtitles": {
+      "bytes": 552,
+      "documents": 20,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 20,
+      "pairs": 0,
+      "sixgram": {
+        "bad": 0,
+        "bits": 1087.525146114626,
+        "bits_per_byte": 1.9701542502076559,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 2687.2334918457227,
+        "bits_per_byte": 4.8681766156625415,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "simple_wiki": {
+      "bytes": 3001,
+      "documents": 20,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 20,
+      "pairs": 0,
+      "sixgram": {
+        "bad": 0,
+        "bits": 7554.388021047903,
+        "bits_per_byte": 2.5172902436014337,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 14901.487111001954,
+        "bits_per_byte": 4.965507201266895,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "switchboard": {
+      "bytes": 637,
+      "documents": 20,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 20,
+      "pairs": 0,
+      "sixgram": {
+        "bad": 0,
+        "bits": 1297.8662194062147,
+        "bits_per_byte": 2.037466592474434,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 3276.2348165444214,
+        "bits_per_byte": 5.143225771655293,
+        "good": 0,
+        "ties": 0
+      }
+    }
+  },
+  "policy": "raw UTF-8; BOS context only; EOS scored; pair total bits; document bits / text bytes",
+  "total": {
+    "bytes": 10399,
+    "documents": 120,
+    "documents_equal_bits": 0,
+    "documents_higher_bits": 0,
+    "documents_lower_bits": 120,
+    "pairs": 0,
+    "sixgram": {
+      "bad": 0,
+      "bits": 22766.110573120295,
+      "bits_per_byte": 2.189259599299961,
+      "good": 0,
+      "ties": 0
+    },
+    "transitions": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "unigram": {
+      "bad": 0,
+      "bits": 50135.80293528539,
+      "bits_per_byte": 4.8212138604947965,
+      "good": 0,
+      "ties": 0
+    }
+  }
+}

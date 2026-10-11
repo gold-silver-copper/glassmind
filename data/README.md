@@ -249,3 +249,24 @@ Baseline 5 right / 4,469 refused / 1 wrong becomes 14 / 4,458 / 3. The two
 new scored errors are exact mathematical results versus rounded choices;
 they remain counted wrong. Existing synthetic results are unchanged.
 See [full provenance and limitations](../tools/quantities/HANDOFF.md).
+
+
+## Fixed byte probability experiment (2026-10-10)
+
+The separate `reading-probability` command trains a fixed byte six-gram on
+all six BabyLM2025 strict-small10M training members: 54,351,399 raw bytes,
+archive SHA-256 `6d9d2cb3b3feccf0669e74173edb55de6c7f12412ee02935d16b1b6b44160b39`.
+Training produces 4,303,829 count entries in a 68,861,296-byte artifact kept
+outside git. This is mixed-license research text; member attribution and
+unresolved redistribution terms are recorded in
+[the license report](../tools/reading/LICENSES.md). No corpus or weights
+are distributed in this repository.
+
+The same frozen dev probes are scored without truncation: all 1,340 grammar
+pairs and 120 reading excerpts (10,399 text bytes). Bits per byte includes
+one scored EOS per document in the numerator, no EOS in the byte denominator.
+A post-evaluation audit found 33 reading excerpts equal full training lines;
+none was removed. Grammar has 185 good-to-bad transitions and 23 regressing
+categories despite its net gain. The old parse-only metrics remain distinct;
+no semantic understanding or independent held-out claim is made.
+[Settings, hashes, results and reproduction](../tools/reading/HANDOFF.md).

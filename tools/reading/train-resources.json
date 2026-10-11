@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/target/release/reading-probability",
+    "train",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/byte6.bin",
+    "--input",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/bnc_spoken.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/childes.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/gutenberg.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/open_subtitles.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/simple_wiki.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/switchboard.train"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 8.688710001995787,
+  "peak_rss_kib": 285888,
+  "user_seconds": 8.575796,
+  "system_seconds": 0.09078
+}

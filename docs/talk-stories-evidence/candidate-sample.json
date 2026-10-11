@@ -1,0 +1,111 @@
+{
+  "dataset": "bAbI-v1.2-training-partition-through-talk",
+  "split": "dev",
+  "seed": "glassmind-stories-v1",
+  "sample_per_task": 20,
+  "total": 400,
+  "totals": {
+    "correct": 397,
+    "refusal": 3
+  },
+  "item_ids_sha256": "c2b73161a43b5caeb1093d0843a96731cd4f7c44274385d3d32550d75b24f7b3",
+  "per_task": {
+    "1": {
+      "correct": 20
+    },
+    "2": {
+      "correct": 20
+    },
+    "3": {
+      "correct": 20
+    },
+    "4": {
+      "correct": 20
+    },
+    "5": {
+      "correct": 20
+    },
+    "6": {
+      "correct": 20
+    },
+    "7": {
+      "correct": 20
+    },
+    "8": {
+      "correct": 20
+    },
+    "9": {
+      "correct": 20
+    },
+    "10": {
+      "correct": 20
+    },
+    "11": {
+      "correct": 20
+    },
+    "12": {
+      "correct": 20
+    },
+    "13": {
+      "correct": 20
+    },
+    "14": {
+      "correct": 20
+    },
+    "15": {
+      "correct": 20
+    },
+    "16": {
+      "correct": 17,
+      "refusal": 3
+    },
+    "17": {
+      "correct": 20
+    },
+    "18": {
+      "correct": 20
+    },
+    "19": {
+      "correct": 20
+    },
+    "20": {
+      "correct": 20
+    }
+  },
+  "failures": [
+    {
+      "id": "16/559/9",
+      "expected": "yellow",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/982/9",
+      "expected": "green",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/697/9",
+      "expected": "gray",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    }
+  ],
+  "binary_sha256": "997bc8b92ab3267cdc8f944455ee479050c6c958ce2ee485648f280209bf7477"
+}

@@ -1,0 +1,71 @@
+[
+  {
+    "update": "Mary might have moved to the loft.",
+    "replies": [
+      {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      }
+    ]
+  },
+  {
+    "update": "Mary is gone.",
+    "replies": [
+      {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      }
+    ]
+  },
+  {
+    "update": "Where is Mary? Mary teleported to the loft.",
+    "replies": [
+      {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      }
+    ]
+  }
+]

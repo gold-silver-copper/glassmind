@@ -29,6 +29,7 @@ mod details;
 mod edit;
 mod everyday;
 mod system;
+mod talk_stories;
 mod train;
 
 use system::{System, load_session, parse_source, save_session};
@@ -66,9 +67,12 @@ struct Common {
 
 #[derive(Subcommand)]
 enum Command {
-    /// Conversation: memory, exact arithmetic, units and dates.
+    /// Conversation: remember preferences, follow stories, calculate units and dates.
+    #[command(
+        long_about = "Remember names and preferences, follow story facts, and calculate exact answers.\n\nTry: Mary went to the kitchen. / Mary picked up the apple. / Where is the apple?\nEnter each statement or question on its own line. Use --session FILE to continue later.\n/reset clears memory and story facts; /quit leaves the conversation."
+    )]
     Talk {
-        /// Persist conversation memory between runs.
+        /// Persist memory and story facts between runs; /reset clears both.
         #[arg(long)]
         session: Option<PathBuf>,
         /// Optional learned everyday-intent model (no services are executed).

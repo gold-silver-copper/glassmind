@@ -22,6 +22,7 @@ use serde::{Deserialize, Serialize};
 
 pub mod checks;
 pub mod index;
+mod rename_types;
 mod slips;
 
 use RustKind::{Field, Function};
@@ -169,6 +170,9 @@ const RENAME: RuleInfo = RuleInfo::new("rust.rename", 5);
 /// and the new name is written nowhere in the source. Decides before
 /// [`RENAME`] for anything that is a field.
 const RENAME_FIELD: RuleInfo = RuleInfo::new("rust.rename.field", 5);
+/// Rename a struct or enum only when explicit module/import bindings account
+/// for every occurrence; refuse unsupported or potentially shadowed syntax.
+const RENAME_TYPE: RuleInfo = RuleInfo::new("rust.rename.type", HAND);
 /// Noting a name the user will call a thing by: only when the thing is the
 /// only item of its kind (or of the kind the user said) with its name, so
 /// later uses of the alias can't mean another one.
@@ -216,6 +220,7 @@ pub const RULES: &[RuleInfo] = &[
     RELATION_BELONGS_TO,
     RENAME,
     RENAME_FIELD,
+    RENAME_TYPE,
     RELATION_MEMBER,
     CONDITION_NAMED,
     ALIAS_UNIQUE,
@@ -749,6 +754,23 @@ impl World<Rust> for RustWorld {
             return reply;
         }
         let item = self.only(RENAME, thing, *kind, fired)?;
+        if matches!(item.kind, RustKind::Struct | RustKind::Enum) {
+            self.fire(RENAME_TYPE, fired)?;
+            let source = self
+                .sources
+                .iter()
+                .find(|s| s.name == item.source)
+                .ok_or(Unsupported)?;
+            let at = rename_types::positions(source, &item, &name.0).ok_or(Unsupported)?;
+            return Ok(Reply::Proposal {
+                action: Action::Rename {
+                    thing: Thing::Item(item),
+                    kind: *kind,
+                    name: Some(name.clone()),
+                },
+                spots: spots(source, &at),
+            });
+        }
         if !matches!(item.kind, Function | Field) {
             return Err(WrongKind { item });
         }

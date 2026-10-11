@@ -113,6 +113,45 @@
         "reasoning_output_tokens": 1891
       },
       "source": "continuous batch, acronym casing with monotonic inference"
+    },
+    {
+      "track": "storychat-continuous",
+      "started_unix": 1791689336.4409811,
+      "finished_unix": 1791689682.1026587,
+      "usage": {
+        "input_tokens": 1627827,
+        "cached_input_tokens": 1556352,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19987,
+        "reasoning_output_tokens": 4832
+      },
+      "source": "continuous batch, completed worker; times from retained artifact metadata"
+    },
+    {
+      "track": "edits-continuous",
+      "started_unix": 1791689420.9765363,
+      "finished_unix": 1791689743.8299613,
+      "usage": {
+        "input_tokens": 1054531,
+        "cached_input_tokens": 991488,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 16815,
+        "reasoning_output_tokens": 5270
+      },
+      "source": "continuous batch, completed worker; times from retained artifact metadata"
+    },
+    {
+      "track": "reading-probability-continuous",
+      "started_unix": 1791689867.4154153,
+      "finished_unix": 1791690198.8352065,
+      "usage": {
+        "input_tokens": 1304735,
+        "cached_input_tokens": 1229824,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19540,
+        "reasoning_output_tokens": 3828
+      },
+      "source": "continuous batch, fixed byte six-gram scorer; times from retained artifact metadata"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

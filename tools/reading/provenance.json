@@ -1,0 +1,48 @@
+{
+  "archive": {
+    "bytes": 18139949,
+    "sha256": "6d9d2cb3b3feccf0669e74173edb55de6c7f12412ee02935d16b1b6b44160b39"
+  },
+  "readme": {
+    "bytes": 3589,
+    "sha256": "20d4993f0f36a965add35cbf0554cbb42b131f60f29bd80db16ab56a3f40c9c0"
+  },
+  "members": {
+    "train_10M/bnc_spoken.train": {
+      "bytes": 4884146,
+      "sha256": "e932ab5c552c8205aad28880c52a610d929c6f90f5b24d52b790f7e7d2df8d21"
+    },
+    "train_10M/childes.train": {
+      "bytes": 15485295,
+      "sha256": "8095a2aa318e51c40ee10fa28ea311025a5879f42b23289268cf00447b796bfc"
+    },
+    "train_10M/gutenberg.train": {
+      "bytes": 14001510,
+      "sha256": "9f151d44847f257232f00724f541f429265710ca1c7e02ac37edf2ff84bdb4c3"
+    },
+    "train_10M/open_subtitles.train": {
+      "bytes": 10828244,
+      "sha256": "72a0be59362c41c8681a08403feead3b7d100f8a8a7e6ff664c6aae93e4dfa74"
+    },
+    "train_10M/simple_wiki.train": {
+      "bytes": 8432882,
+      "sha256": "e0a80b05c9521c6080c2b30fa92870e0e02f7c23d15d73218043d2236db96e05"
+    },
+    "train_10M/switchboard.train": {
+      "bytes": 719322,
+      "sha256": "65d6dee919f28386a907842ada3bf56dde4eb961f4e6e56e1529500c1d6ec0a4"
+    }
+  },
+  "dev": {
+    "grammar": {
+      "bytes": 210468,
+      "sha256": "37ad0a1eba3a9cd9c5eae850973c376b5e32a7968ecb95833eb2d32115f6304b",
+      "rows": 1340
+    },
+    "reading": {
+      "bytes": 14854,
+      "sha256": "66b0c802ea52161fbf819770697f96e6f0aa5e1f9aeab836681f0b8c49f30983",
+      "rows": 120
+    }
+  }
+}

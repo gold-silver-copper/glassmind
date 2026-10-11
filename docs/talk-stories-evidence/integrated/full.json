@@ -1,0 +1,311 @@
+{
+  "dataset": "bAbI-v1.2-training-partition-through-talk",
+  "split": "dev",
+  "seed": "glassmind-stories-v1",
+  "sample_per_task": 0,
+  "total": 3987,
+  "totals": {
+    "correct": 3966,
+    "wrong": 3,
+    "refusal": 18
+  },
+  "item_ids_sha256": "7486408ce80bdd7a06e562506453340f6637a29b937b93238ad760ae04a1715d",
+  "per_task": {
+    "1": {
+      "correct": 200
+    },
+    "2": {
+      "correct": 200
+    },
+    "3": {
+      "correct": 200
+    },
+    "4": {
+      "correct": 200
+    },
+    "5": {
+      "correct": 200
+    },
+    "6": {
+      "correct": 200
+    },
+    "7": {
+      "correct": 200
+    },
+    "8": {
+      "correct": 200
+    },
+    "9": {
+      "correct": 200
+    },
+    "10": {
+      "correct": 197,
+      "wrong": 3
+    },
+    "11": {
+      "correct": 200
+    },
+    "12": {
+      "correct": 200
+    },
+    "13": {
+      "correct": 200
+    },
+    "14": {
+      "correct": 200
+    },
+    "15": {
+      "correct": 200
+    },
+    "16": {
+      "correct": 182,
+      "refusal": 18
+    },
+    "17": {
+      "correct": 200
+    },
+    "18": {
+      "correct": 198
+    },
+    "19": {
+      "correct": 200
+    },
+    "20": {
+      "correct": 189
+    }
+  },
+  "failures": [
+    {
+      "id": "10/86/11",
+      "expected": "maybe",
+      "actual": {
+        "kind": "story_answer",
+        "text": "yes",
+        "answer": "yes",
+        "reason": "derived from story state"
+      },
+      "outcome": "wrong"
+    },
+    {
+      "id": "10/167/5",
+      "expected": "maybe",
+      "actual": {
+        "kind": "story_answer",
+        "text": "yes",
+        "answer": "yes",
+        "reason": "derived from story state"
+      },
+      "outcome": "wrong"
+    },
+    {
+      "id": "10/193/5",
+      "expected": "maybe",
+      "actual": {
+        "kind": "story_answer",
+        "text": "yes",
+        "answer": "yes",
+        "reason": "derived from story state"
+      },
+      "outcome": "wrong"
+    },
+    {
+      "id": "16/559/9",
+      "expected": "yellow",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/982/9",
+      "expected": "green",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/697/9",
+      "expected": "gray",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/686/9",
+      "expected": "gray",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/34/9",
+      "expected": "green",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/717/9",
+      "expected": "gray",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/351/9",
+      "expected": "white",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/155/9",
+      "expected": "yellow",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/910/9",
+      "expected": "gray",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/984/9",
+      "expected": "white",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/22/9",
+      "expected": "green",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/596/9",
+      "expected": "yellow",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/402/9",
+      "expected": "green",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/663/9",
+      "expected": "white",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/975/9",
+      "expected": "gray",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/654/9",
+      "expected": "yellow",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/977/9",
+      "expected": "yellow",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "16/905/9",
+      "expected": "yellow",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "refusal"
+    }
+  ],
+  "binary_sha256": "94c89f0184b1b8af183f727bb177c5c115d4b20e59d182d80a0496c2f030a0ef"
+}

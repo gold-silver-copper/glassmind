@@ -1,0 +1,83 @@
+{
+  "groups": {
+    "bnc_spoken": {
+      "bytes": 257,
+      "documents": 12,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 12,
+      "pairs": 0,
+      "sixgram": {
+        "bad": 0,
+        "bits": 582.5297496478232,
+        "bits_per_byte": 2.266652722365071,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 1268.8118950364164,
+        "bits_per_byte": 4.937011264733138,
+        "good": 0,
+        "ties": 0
+      }
+    }
+  },
+  "policy": "raw UTF-8; BOS context only; EOS scored; pair total bits; document bits / text bytes",
+  "total": {
+    "bytes": 257,
+    "documents": 12,
+    "documents_equal_bits": 0,
+    "documents_higher_bits": 0,
+    "documents_lower_bits": 12,
+    "pairs": 0,
+    "sixgram": {
+      "bad": 0,
+      "bits": 582.5297496478232,
+      "bits_per_byte": 2.266652722365071,
+      "good": 0,
+      "ties": 0
+    },
+    "transitions": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "unigram": {
+      "bad": 0,
+      "bits": 1268.8118950364164,
+      "bits_per_byte": 4.937011264733138,
+      "good": 0,
+      "ties": 0
+    }
+  }
+}

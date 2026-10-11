@@ -1,0 +1,79 @@
+{
+  "dataset": "bAbI-v1.2-training-partition-through-talk",
+  "split": "dev",
+  "seed": "glassmind-stories-v1",
+  "sample_per_task": 20,
+  "total": 400,
+  "totals": {
+    "refusal": 400
+  },
+  "item_ids_sha256": "c2b73161a43b5caeb1093d0843a96731cd4f7c44274385d3d32550d75b24f7b3",
+  "per_task": {
+    "1": {
+      "refusal": 20
+    },
+    "2": {
+      "refusal": 20
+    },
+    "3": {
+      "refusal": 20
+    },
+    "4": {
+      "refusal": 20
+    },
+    "5": {
+      "refusal": 20
+    },
+    "6": {
+      "refusal": 20
+    },
+    "7": {
+      "refusal": 20
+    },
+    "8": {
+      "refusal": 20
+    },
+    "9": {
+      "refusal": 20
+    },
+    "10": {
+      "refusal": 20
+    },
+    "11": {
+      "refusal": 20
+    },
+    "12": {
+      "refusal": 20
+    },
+    "13": {
+      "refusal": 20
+    },
+    "14": {
+      "refusal": 20
+    },
+    "15": {
+      "refusal": 20
+    },
+    "16": {
+      "refusal": 20
+    },
+    "17": {
+      "refusal": 20
+    },
+    "18": {
+      "refusal": 20
+    },
+    "19": {
+      "refusal": 20
+    },
+    "20": {
+      "refusal": 20
+    }
+  },
+  "binary_sha256": "a3aece0cc6bed30a59b8b6cd4db2eda4c930abaea09bac222ae39b3a1311ba2f",
+  "failure_count": 400,
+  "full_report": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/storychat-run/submitted/docs/talk-stories-evidence/baseline-sample.json",
+    "sha256": "f13aa6f0d25d858996547fde466318bedb28e04f37792571f5e4cb734f548342"
+  }
+}
