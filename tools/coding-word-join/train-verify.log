@@ -1,0 +1,68 @@
+[
+  {
+    "id": "train/rb-implement-reverse-words/hurried#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/word-join/train-full/scratch/implement-872034-0.evidence",
+    "choice": {
+      "candidate_count": 6,
+      "passing_indices": [
+        5
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "train/rb-implement-reverse-words/terse#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/word-join/train-full/scratch/implement-873025-0.evidence",
+    "choice": {
+      "candidate_count": 6,
+      "passing_indices": [
+        5
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "train/rb-implement-sum-even/chatty#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/word-join/train-full/scratch/implement-874888-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "train/rb-implement-sum-even/hurried#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/word-join/train-full/scratch/implement-875661-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "train/rb-implement-sum-even/terse#0",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/word-join/train-full/scratch/implement-876424-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  }
+]
+{"total": 60, "retained": ["train/rb-implement-sum-even/chatty#0", "train/rb-implement-sum-even/hurried#0", "train/rb-implement-sum-even/terse#0"], "gained": ["train/rb-implement-reverse-words/hurried#0", "train/rb-implement-reverse-words/terse#0"], "accepted": 5, "original_result_sha256": "8ce78cfd08f4a56f58d3e57b03d89cc7420dafef9ab82f0831d614350b16db52", "candidate_result_sha256": "0a7d4fc8a1dd25b478a01c06f4e224746b16a805ac232662b38a7ea2f0b5b98f"}

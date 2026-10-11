@@ -2,10 +2,102 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — the independent public Wikidata graph passed native
-ingestion, source accounting and positive query checks, and is integrated.
-Known completed-worker tokens: 201,926,299 (cached input counted once; parent
-and interrupted usage excluded). No model workers ran in this batch.
+PROGRESS: word joining passed every fixed gate and is integrated; publication
+is next. Full independent claims acquisition passed; projection is still running.
+Known completed-worker tokens:201926299, cached input counted once; parent and
+interrupted usage excluded. No model workers, teacher calls or auth mounts.
+
+## Word joining passed; publish the integrated change
+
+Root merge4cf3015817020438c0820a93de65154fda391c28 integrates WORK/word-join
+ateb4ed14. Runtime7282d2e adds5lines: signature-directed single-space joining of
+words in original/reversed order. No parser/budget/verifier/test changes.
+196crate source/manifest/lock files match evaluated worktree byte-for-byte.
+Root executable exactly matches evaluated SHA
+b04a929a56f4fff3e1e748477856311a2098a5e95044b04bb1a5662fe3d99a78.
+Read tools/coding-word-join/PARENT.md and integration.json.
+
+Full765DEV:220passes,545refused,0failed; all218priorpasses retained. Exactlytwo
+gains, reverse-words hurried/terse, also supplied inTRAIN. Not unseen-task evidence.
+All59Rust world tests,76native checks(10new+66old), fixed6TRAINsample, full60TRAIN
+and independentverification pass. TRAIN5/60vs3; all3oldbodies and20oldnative
+sourceoutcomes byte-identical. Newweaktest correctlyrefuses2survivingcandidates.
+Workspacefmt/clippy/release/strict4smoke passed on identical source/binary.
+Reports, hashes and originals RUN=WORK/coordinator/word-join. All coding jobs,
+including fullDEV20945, COMPLETE. No need to repeat finished checks.
+
+NEXT: finish checkpoint/report commit, pushharness, createPR againstmain, review
+exactheadand mergeonlywithgreenCI and --match-head-commit. Currentbatch also
+records PR49's rejectedQA CAL and the prospectively frozen fullclaims plan;
+experimental fullclaims Rust importer remains onlyin its isolated worktree.
+NoPRcreatedyet for this batch. SourcegraphQA defaults remain unchanged.
+
+## Full independent claims snapshot: projection remains live
+
+WorktreeWORK/full-claims, branchcontinuous/full-claims at2d39058, clean.
+Read its tools/facts/full-claims/PROGRESS.md, PLAN.md and VALIDATION-PLAN.md.
+RUN=WORK/coordinator/full-claims; PyArrowvenv=WORK/coordinator/wikidata-snapshot/venv.
+Newformat3 importer/sourcebcc796c andvalidation835d9f8 passed36facts tests,
+22302oldTRAIN/DEV ordinary/set byteparity,853format2source-query parity,
+110oldpositivewitnesses, main28/28bothmodes andrequiredworkspacechecks.
+CandidatefactsCLI SHA b0a86c031e6c83d81af3a5672391f6385b9ec7eb1205743d4d79a7c5677cded7.
+Preserve WORK/coordinator/disk-facts/target/release/glassmind-facts until native
+preparation pins/copies it. Wordjoining builds used the separate root target.
+
+Fetch64342 COMPLETE:85newshards44104948009bytes,1495.359s,0retries. All86files
+includingfirsttotal44633986614bytes. Independentall-file audit78497 COMPLETE,
+21.354s, allpublisherhashes match; newrawfiles readonly. acquisition-report.json
+andfetch.jsonl committedinworktree; originalpilot/native/raw untouched.
+
+Projection29161 RUNNING, scopeglassmind-full-claims-projection, supervisor761927,
+child761928 lastverifiedlive. Lastobserved49completedfilesat1450s; readcurrentlog.
+Caps14400s/96GiBprojection/384GiBaddedrun,8GiB/no swap. Do notrestart intoexisting
+outputs. Fetchscopeisgone; projection scope includesfilecache, observedoom0.
+No fullnative output and no fullgraphQA evaluation have run.
+
+NEXT after projection finishes successfully: verify projection-resources.json,
+then run RUN/prepare-native.py RUN WORK/coordinator/disk-facts/target/release/glassmind-facts
+under finite8GiBscope. It requiresacquisitionaudit, pins projection/base andtested
+binary, and writesnative-invocation.json. Run RUN/supervise.py RUN native 21600
+followedbytheJSONcommand under8GiB/no swap, setsid --wait timeout --kill-after=10s
+21610s; useRUN/tmp for TMPDIR andSQLITE_TMPDIR. Newoutput192GiB/21600s gate.
+After successchmodoutputreadonly, runaudit.py thenwitnesses.py under3600s/8GiB
+andtheexistingdisk supervisor. Rawsource samples/fullcounts mustpassbefore
+integration/publication. Report setVMbudgeterrors separately, neveras correct.
+Only after storagepasses freeze a separateQA CAL gate; no newDEV/heldout now.
+
+Historical checkpoints below are superseded by this current handoff.
+
+## PR49 merged; independent public QA CAL rejected
+
+PR49 https://github.com/gold-silver-copper/glassmind/pull/49 MERGED
+663819d70f9bd2f220ba4d5452d4665597b2639e at2026-10-11T17:31:53Z.
+Reviewedhead9e5bdcc4b4736669a891395c97ef4ea43fa1fb89; CI38159805008 passed94s.
+Root has fast-forwarded through QA report400e555. QA worktree clean, all jobs
+complete. No model workers or auth mounts. Native importer remains shipped;
+QA rejection does not invalidate storage/source correctness.
+
+Frozen tools/facts/public-qa/PLAN.md gate: >=10 net strict correct on1949 approved
+TRAIN every-tenth CAL and zero prior right/refused -> wrong. Result baseline
+2right/1863refused/84wrong; publicpilot2/1940/7. Net0,7newwrong,2lostcorrect:
+REJECTED. No DEV run, no production bundle/model/threshold changes. Source
+inference only consumed questions, graph and model; separate annotation join.
+Full evidence tools/facts/public-qa/PARENT.md, summary.json and external
+WORK/coordinator/wikidata-qa; runtime6.542s. Knownworker tokens unchanged.
+
+Links improved594->1013 (correct anchors153->843; anchor+relation146->792), but
+source contains a unique annotated answer for only6rows. Native aliases exist
+for1946/1949anchors. All7newwrong linked correct anchor+inverse relation and a
+locally unique alternative; exact annotation metric remains fixed. The shard
+lacks both lostforwardclaims. Do not try another alias-only gate or fetch
+CAL-selected entities. Scoreboard has separately labelled CAL series.
+
+NEXT: freeze broader independent acquisition/resource plan from pinned86-file
+public claims tree, then implement multi-shard projection/native ingestion
+reusing the audited native alias keys. No additional claims acquired yet.
+Preserve old single-shard gates and artifacts; use a separate dataset/run.
+
+Historical native ingestion details below; publication/QA NEXT text is stale.
 
 ## Native public ingestion passed; publishing is next
 

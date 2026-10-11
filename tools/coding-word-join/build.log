@@ -1,0 +1,124 @@
+   Compiling glassmind-rules v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/rules)
+   Compiling glassmind-meaning v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/meaning)
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/world-rust)
+    Finished `release` profile [optimized + debuginfo] target(s) in 1m 11s
+     Running unittests src/lib.rs (/home/gsc/code/glassmind/target/release/deps/glassmind_world_rust-60dee784879e68e7)
+
+running 47 tests
+test checks::comparator_tests::comparator_opaque_shapes ... ok
+test ceiling_division::tests::resolves_only_concrete_unsigned_operands ... ok
+test checks::dedup_order_tests::bounded_choice_and_old_withdrawal_do_not_fall_through ... ok
+test checks::comparator_tests::comparator_older_dedup_veto_and_incomplete ... ok
+test checks::extremum_tests::suffix_budget_and_additional_shapes ... ok
+test checks::tests::applies_changes_across_lines_or_none ... ok
+test checks::tests::native_witness_requires_valid_context_and_executed_probe ... ok
+test checks::tests::reads_failing_tests ... ok
+test checks::tests::slips_are_in_code_not_tests_named_files_first ... ok
+test checks::tests::withdraws_only_with_two_passing_programs_and_keeps_original_files ... ok
+test declared_types::tests::declaration_uncertainty_is_not_type_resolution ... ok
+test declared_types::tests::declared_syntax_and_provenance_are_reusable_without_english ... ok
+test extremum::parent_tests::inline_tests_keep_their_own_namespace_and_unknown_root_expansion_refuses ... ok
+test implementation::tests::signatures_only_and_fixed_budget ... ok
+test implementation::tests::stale_rules_and_native_rollback ... ok
+test index_conversion::tests::diagnostic_scope_and_escaping_paths_refuse_before_native_probe ... ok
+test index_conversion::tests::subtraction_requires_dominating_defined_bounds ... ok
+test index_conversion::tests::zero_based_requires_strict_upper_bound ... ok
+test rename_fields::tests::refuses_unclassified_tokens_and_receiver_uncertainty ... ok
+test rename_fields::tests::separates_declarations_literals_and_typed_references ... ok
+test rename_functions::tests::apply_reproves_identity_when_old_token_spans_stay_identical ... ok
+test rename_functions::tests::preserves_alias_names_and_literal_bytes ... ok
+test rename_functions::tests::shadowing_and_macro_definitions_cannot_certify_a_path ... ok
+test rename_functions::tests::unicode_columns_are_characters_and_crlf_survives ... ok
+test rename_package::tests::documentation_is_literal_prose_only ... ok
+test rename_package::tests::package_roots_reexports_and_exact_spans ... ok
+test rename_types::tests::refuses_raw_spelling_and_associated_types ... ok
+test rename_types::tests::refuses_unexpanded_bindings_and_new_raw_collision ... ok
+test rename_types::tests::resolves_nested_modules_generics_and_unicode_columns ... ok
+test rename_variants::tests::binds_variants_imports_self_and_patterns ... ok
+test rename_variants::tests::rejects_unresolved_or_shadowed_bindings ... ok
+test rename_variants::tests::variant_ownership_uses_declaration_identity ... ok
+test rename_variants::tests::variants_have_a_distinct_kind_and_owner ... ok
+test slips::ambiguity::tests::checked_widths_and_short_circuit_match_native_rust ... ok
+test slips::ambiguity::tests::evidence_is_concrete_and_unsupported_is_not_proof ... ok
+test slips::ambiguity::tests::primitive_ceiling_calls_are_checked_and_exact ... ok
+test slips::ambiguity::tests::sibling_inline_tests_do_not_hide_scalar_disagreement ... ok
+test slips::tests::loop_bounds_only_and_unicode_coordinates_apply ... ok
+test slips::tests::protects_non_code_tests_and_keeps_later_production_code ... ok
+test standard_traits::tests::refuses_ambiguous_conditional_test_and_non_identifier_types ... ok
+test standard_traits::tests::refuses_source_symlink_outside_root ... ok
+test standard_traits::tests::standard_debug_is_atomic_and_preserves_unicode_and_attributes ... ok
+test tests::field_renames_are_exact_or_refused ... ok
+test tests::renames_only_when_exact ... ok
+test checks::comparator_tests::frozen_comparator_native_contracts has been running for over 60 seconds
+test checks::dedup_order_tests::frozen_dedup_order_native_contracts has been running for over 60 seconds
+test checks::extremum_tests::frozen_extremum_native_contracts has been running for over 60 seconds
+test checks::dedup_order_tests::frozen_dedup_order_native_contracts ... ok
+test checks::extremum_tests::frozen_extremum_native_contracts ... ok
+test checks::comparator_tests::frozen_comparator_native_contracts ... ok
+
+test result: ok. 47 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 169.28s
+
+     Running tests/argument_swap.rs (/home/gsc/code/glassmind/target/release/deps/argument_swap-6787568f030dd5f6)
+
+running 3 tests
+test tests::all_prior_families_keep_global_order ... ok
+test tests::frozen_positive_spans_and_negative_boundaries ... ok
+test tests::opaque_syntax_never_exposes_calls ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/argument_swap_parent.rs (/home/gsc/code/glassmind/target/release/deps/argument_swap_parent-6999a19caac3b555)
+
+running 3 tests
+test tests::equal_slots_and_one_independent_operand_type_anchor_integer_literals ... ok
+test tests::standard_format_beside_inert_inline_tests_preserves_call_spans ... ok
+test tests::bindings_hidden_inside_parsed_macro_expressions_remain_opaque ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/ceiling_division.rs (/home/gsc/code/glassmind/target/release/deps/ceiling_division-02e7e2084d089967)
+
+running 1 test
+test rounding_is_after_every_legacy_proposal_across_files ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/check_isolation.rs (/home/gsc/code/glassmind/target/release/deps/check_isolation-b56fb749fe4aa613)
+
+running 4 tests
+test tests::copy_rules_scripts_and_unsupported_topology_do_not_fall_back_to_live ... ok
+test tests::approved_repair_stale_rules_and_failed_verification_preserve_contract ... ok
+test tests::same_name_shared_target_and_cache_never_reuse_another_sources_binary ... ok
+test tests::diagnostics_preserve_every_live_byte_with_default_and_owned_places ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.37s
+
+     Running tests/multiplicative.rs (/home/gsc/code/glassmind/target/release/deps/multiplicative-46a73bc5327b2692)
+
+running 1 test
+test multiplicative_proposals_are_expression_tokens_and_legacy_order_is_global ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests glassmind_world_rust
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling glassmind-meaning v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/meaning)
+   Compiling glassmind-grammar v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/grammar)
+   Compiling glassmind-models v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/models)
+   Compiling glassmind-english v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/english)
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/world-rust)
+   Compiling glassmind-everyday v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/everyday)
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/english-rust)
+   Compiling glassmind-reading v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/reading)
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/facts)
+   Compiling glassmind-dialogue v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/dialogue)
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/quantities)
+   Compiling glassmind-stories v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/stories)
+   Compiling glassmind-mind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/mind)
+   Compiling glassmind-answer v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/answer)
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/word-join/crates/cli)
+    Finished `release` profile [optimized + debuginfo] target(s) in 1m 22s

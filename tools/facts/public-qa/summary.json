@@ -1,0 +1,144 @@
+{
+  "scope": "existing every-tenth TRAIN CAL; independent public first-shard graph",
+  "total": 1949,
+  "strict_joint_gain": 0,
+  "link_counts": {
+    "baseline": {
+      "linked": 594,
+      "correct_entity": 153,
+      "correct_entity_and_relation": 146
+    },
+    "candidate": {
+      "linked": 1013,
+      "correct_entity": 843,
+      "correct_entity_and_relation": 792
+    }
+  },
+  "transitions": {
+    "right_to_right": 0,
+    "right_to_refused": 2,
+    "right_to_wrong": 0,
+    "refused_to_right": 1,
+    "refused_to_refused": 1855,
+    "refused_to_wrong": 7,
+    "wrong_to_right": 1,
+    "wrong_to_refused": 83,
+    "wrong_to_wrong": 0
+  },
+  "promotion_prerequisite_passed": false,
+  "native_cal_knowledge_diagnostic": {
+    "counts": {
+      "total": 1949,
+      "annotated_entity_present": 1946,
+      "annotated_entity_has_eligible_alias": 1946,
+      "entity_link_correct": 843,
+      "entity_and_relation_correct": 792
+    },
+    "present_anchor_directions": {
+      "R": 460,
+      "P": 1486
+    },
+    "local_claim_categories_for_present_anchors": {
+      "gold_absent_from_nonempty": 296,
+      "missing": 1642,
+      "unique_gold": 6,
+      "nonunique_including_gold": 2
+    }
+  },
+  "inference": {
+    "command": [
+      "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-qa/predictor",
+      "predict-disk",
+      "--model",
+      "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+      "--database",
+      "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/native.sqlite"
+    ],
+    "seconds": 0.2167069159913808,
+    "returncode": 0,
+    "questions": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-qa/cal-questions.txt",
+      "bytes": 80196,
+      "sha256": "c1cb8845f5429c3d5af90d7b9f399cdc5f92c583bafcbb93838747645109150a"
+    },
+    "predictions": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-qa/cal-predictions.jsonl",
+      "bytes": 194766,
+      "sha256": "602ca8ec4cd82a92f5929fa9f0f49e866b4e40061731cc5719684542bbc60644"
+    }
+  },
+  "inputs": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/native.sqlite",
+      "bytes": 12306595840,
+      "sha256": "f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+      "bytes": 35773124,
+      "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/train.tsv",
+      "bytes": 1193868,
+      "sha256": "25c5994c4e3a4dad39bacf3c457b3ff4cf7b199630eb78045a0b478e4fda145b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/train.questions",
+      "bytes": 797196,
+      "sha256": "d3cd1c39d916195757a304ce254a19e5f3b6b6b7fa19f6356cddbf9fff675eaf"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/new999-train-base.jsonl",
+      "bytes": 1909160,
+      "sha256": "eb09e5fc44e699e2ab08b94a44409ab8ad5a623224bd7340372c4326bcb0aee8"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/index.json",
+      "bytes": 650045,
+      "sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/target/release/glassmind-facts",
+      "bytes": 31865032,
+      "sha256": "d733e1d9f19e5e4e5a03087f9d12725fed1b212f5a1b3b47f4573a7ac28d4a3d"
+    }
+  ],
+  "joint_audit_tool": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/wikidata-qa/tools/facts/joint-audit.py",
+    "bytes": 4585,
+    "sha256": "9921a175a2186f220b05f445cf6934ce30e9c83abc4eb7564164f67cd6890daa"
+  },
+  "seconds": 6.541854330920614,
+  "limitations": "Development CAL, existing trained relation model, incomplete source shard, exact annotated IDs without redirect rewriting; no held-out or current-truth claim.",
+  "baseline": {
+    "total": 1949,
+    "answer_only": {
+      "right": 26,
+      "refused": 1863,
+      "wrong": 60
+    },
+    "joint_entity_relation_answer": {
+      "right": 2,
+      "refused": 1863,
+      "wrong": 84
+    },
+    "coincidental_answer_matches": 24
+  },
+  "candidate": {
+    "total": 1949,
+    "answer_only": {
+      "right": 2,
+      "refused": 1940,
+      "wrong": 7
+    },
+    "joint_entity_relation_answer": {
+      "right": 2,
+      "refused": 1940,
+      "wrong": 7
+    },
+    "coincidental_answer_matches": 0
+  },
+  "newly_wrong_count": 7,
+  "lost_correct_count": 2
+}
