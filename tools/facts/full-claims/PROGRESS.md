@@ -1,7 +1,20 @@
-# Full independent claims release: native ingestion running
+# Full independent claims release: native complete, independent audit running
 
-Current18:45UTC: acquisition/projection/rawreference COMPLETE; native89022RUNNING.
-No full native success, final independent audit or newgraph QA yet.
+Current19:38UTC: acquisition/projection/rawreference/native import COMPLETE.
+Native89022 exit0,3052.182seconds,371540KiBpeakprocessRSS,
+142749644072sampledpeakaddedrunbytes. Original resource gates passed.
+Native database62772387840bytes, now0444;74445176entities,74983525aliases,
+362302267distinctedges,364044919statements,46448050qualified. Integrity and
+foreign references checked3050.936s; committed3051.003s. No restart needed.
+
+Independent audit77590 RUNNING,scopeglassmind-full-claims-audit,
+supervisor1230237,child1230238.8GiB/no swap,3396seconds remaining from original
+3600second source-audit budget after203.173srawreference; outertimeout3406s.
+TMPDIR/SQLITE_TMPDIR=RUN/tmp,supervise.py384GiBaddedrun cap. All86file sample
+comparisons finished by2.426s; aggregate counts,distinct/union checks andhashremain.
+NEXT: after audit-resources.json passes, runwitnesses.py via supervisor with
+3600seconds,8GiB/no swap andon-disktmp. Do not claim newgraphQA or promote default
+assets before allsource/storage/probe gates and a separate QA experiment.
 
 Projection29161 COMPLETE exit0:789435443rawrows,364044919statements,46448050
 qualified,1092134757canonical retainedIDs. 25821511680bytes SHA
@@ -13,8 +26,8 @@ projectionreport, including3647eligible. Database audit remainsrequired.
 Preparation18606 COMPLETE exit0. Pinned native binaryb0a86c03..., fullsource
 manifestSHA782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a1251dba2
 and originalrawreference before native start. See native-invocation.json.
-Native89022 RUNNING,scopeglassmind-full-claims-native,supervisor1022832,child
-1022833 (verify).21600s/192GiBoutput/384GiBaddedrun,8GiBno swap,ownedprocessgroup,
+Native89022 COMPLETE; former supervisor1022832,child1022833 terminal.
+Original caps21600s/192GiBoutput/384GiBaddedrun,8GiBno swap,ownedprocessgroup,
 TMPDIR/SQLITE_TMPDIR=RUN/tmp. Input projection andnative names are immutable.
 NEXT: monitor existing job; onlyafter native-resources passed makeoutputreadonly.
 Run independentaudit with3396sremaining budget via supervise.py thenwitnesses
