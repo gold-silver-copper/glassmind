@@ -124,7 +124,7 @@ fn cargo_command() -> Command {
             "setsid",
             "--wait",
             "timeout",
-            "--kill-after=5s",
+            "--kill-after=10s",
             "600",
             "cargo",
         ]);
@@ -715,51 +715,25 @@ pub fn overlay(from: &Path, to: &Path) -> Result<(), String> {
     Ok(())
 }
 
-/// Slips that leave code building but computing the wrong thing: an
-/// operator or a truth value written for its neighbour, in pairs.
-const SLIPS: &str = " + , - , < , <= , > , >= , == , != , && , || ,true,false";
-
 /// How long undone slips are tried before giving up.
 const SLIP_TIME: Duration = Duration::from_secs(120);
 
-/// Changes that each undo one possible slip (see [`SLIPS`]) in the code
-/// under `src` of the source at `root`, outside comments, attributes and
-/// the test module at the end of a file. Files the failing `tests` name
+/// Syntax-level operator, boolean, and for-loop bound changes in code
+/// under `src`, excluding macros and explicitly test-only items. Files the failing `tests` name
 /// most (by module or where they panicked) come first.
 pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
     let said = format!("{tests:?}");
-    let mut files: Vec<PathBuf> = files(root)
-        .into_iter()
-        .filter(|f| f.starts_with("src") && f.extension().is_some_and(|e| e == "rs"))
-        .collect();
+    let mut files = crate::slips::production_files(root);
     files.sort_by_key(|f| {
         std::cmp::Reverse(
             f.file_stem()
                 .map_or(0, |s| said.matches(&*s.to_string_lossy()).count()),
         )
     });
-    let slips: Vec<&str> = SLIPS.split(',').collect();
     let mut changes = Vec::new();
     for f in files {
         let text = std::fs::read_to_string(root.join(&f)).unwrap_or_default();
-        let code = text.lines().take_while(|l| !l.contains("#[cfg(test)]"));
-        for (n, line) in code.enumerate() {
-            if line.trim_start().starts_with(['/', '#']) {
-                continue;
-            }
-            for (i, old) in slips.iter().enumerate() {
-                for (at, _) in line.match_indices(old) {
-                    changes.push(RustChange {
-                        source: source.to_owned(),
-                        file: f.to_string_lossy().into_owned(),
-                        line: n as u32 + 1,
-                        column: line.get(..at).map_or(0, |b| b.chars().count()) as u32,
-                        old: (*old).to_owned(),
-                        new: slips.get(i ^ 1).copied().unwrap_or_default().to_owned(),
-                    });
-                }
-            }
-        }
+        changes.extend(crate::slips::proposals(source, &f.to_string_lossy(), &text));
     }
     changes
 }
@@ -815,11 +789,21 @@ mod tests {
         std::fs::create_dir_all(dir.join("tests")).unwrap();
         std::fs::write(
             dir.join("src/lib.rs"),
-            "// a < b\nfn f(a: u8) -> bool { a < 3 || is_true() }\n#[cfg(test)]\nmod t { fn g() -> bool { 1 == 2 } }\n",
+            "mod kebab; // a < b\nfn f(a: u8) -> bool { a < 3 || is_true() }\n#[cfg(test)]\nmod t { fn g() -> bool { 1 == 2 } }\n",
         )
         .unwrap();
         std::fs::write(dir.join("src/kebab.rs"), "fn k() -> bool { false }\n").unwrap();
         std::fs::write(dir.join("tests/it.rs"), "fn h() -> bool { 1 == 2 }\n").unwrap();
+        // An out-of-line test helper must not be considered production just
+        // because it lives under src and has no attributes of its own.
+        let lib = dir.join("src/lib.rs");
+        let text = std::fs::read_to_string(&lib).unwrap();
+        std::fs::write(&lib, format!("{text}#[cfg(test)] mod helper;\n")).unwrap();
+        std::fs::write(
+            dir.join("src/helper.rs"),
+            "fn expected() -> bool { true }\n",
+        )
+        .unwrap();
         let failing = RustItem {
             source: "s".into(),
             file: String::new(),
@@ -838,9 +822,8 @@ mod tests {
             said,
             vec![
                 ("src/kebab.rs", 1, 17, "true"),
-                ("src/lib.rs", 2, 23, " <= "),
-                ("src/lib.rs", 2, 27, " && "),
-                ("src/lib.rs", 2, 34, "false"),
+                ("src/lib.rs", 2, 24, "<="),
+                ("src/lib.rs", 2, 28, "&&"),
             ]
         );
     }

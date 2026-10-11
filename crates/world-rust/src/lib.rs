@@ -22,6 +22,7 @@ use serde::{Deserialize, Serialize};
 
 pub mod checks;
 pub mod index;
+mod slips;
 
 use RustKind::{Field, Function};
 use checks::{RustChange, RustCheck};
