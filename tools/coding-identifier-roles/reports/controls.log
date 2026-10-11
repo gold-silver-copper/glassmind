@@ -1,0 +1,16 @@
+query-caller-backtick True '`caller` is defined at src/lib.rs:1.\n'
+query-renamed-backtick True '`renamed` is defined at src/lib.rs:1.\n'
+query-called-backtick True '`called` is defined at src/lib.rs:1.\n'
+query-drain_events-backtick True '`drain_events` is defined at src/lib.rs:1.\n'
+query-café-backtick True '`café` is defined at src/lib.rs:1.\n'
+field-control-called True '`Record::called` is defined at src/lib.rs:1.\n'
+field-control-renamed True '`Record::renamed` is defined at src/lib.rs:1.\n'
+field-control-drain_events True '`Record::drain_events` is defined at src/lib.rs:1.\n'
+rename-control-caller True "I'd rename the `caller` function to `implement_again` in 2 places.\n  src/lib.rs:1:8  `caller` -> `implement_again`\n  src/lib.rs:2:27  `caller` -> `implement_again`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n"
+rename-control-implement True "I'd rename the `implement` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `implement` -> `renamed`\n  src/lib.rs:2:27  `implement` -> `renamed`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n"
+rename-control-weigh True "I'd rename the `weigh` function to `called` in 2 places.\n  src/lib.rs:1:8  `weigh` -> `called`\n  src/lib.rs:2:27  `weigh` -> `called`\n  (say yes to rename `weigh`)\nI made 2 changes. No problems with the build.\n"
+rename-control-drain_events True "I'd rename the `drain_events` function to `read` in 2 places.\n  src/lib.rs:1:8  `drain_events` -> `read`\n  src/lib.rs:2:27  `drain_events` -> `read`\n  (say yes to rename `drain_events`)\nI made 2 changes. No problems with the build.\n"
+rename-control-café True "I'd rename the `café` function to `naïve` in 2 places.\n  src/lib.rs:1:8  `café` -> `naïve`\n  src/lib.rs:2:27  `café` -> `naïve`\n  (say yes to rename `café`)\nI made 2 changes. No problems with the build.\n"
+field-rename-control-called True "I'd rename the `Record::called` field to `saved` in 3 places.\n  src/lib.rs:1:25  `called` -> `saved`\n  src/lib.rs:2:36  `called` -> `saved`\n  src/lib.rs:2:48  `called` -> `saved`\n  (say yes to rename `Record::called`)\nI made 3 changes. No problems with the build.\n"
+field-rename-control-renamed True "I'd rename the `Record::renamed` field to `read` in 3 places.\n  src/lib.rs:1:25  `renamed` -> `read`\n  src/lib.rs:2:36  `renamed` -> `read`\n  src/lib.rs:2:49  `renamed` -> `read`\n  (say yes to rename `Record::renamed`)\nI made 3 changes. No problems with the build.\n"
+{"total": 15, "passed": 15, "changed": 7}

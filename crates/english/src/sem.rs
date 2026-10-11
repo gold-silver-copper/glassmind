@@ -48,6 +48,8 @@ pub enum Cat {
     Question,
     /// A noun phrase that refers to one thing.
     NounPhrase,
+    /// A code name with an explicit kind, used only in code query/edit roles.
+    IdentifierMention,
     /// A noun naming a kind of thing, singular or plural.
     Noun,
     /// A verb naming a two-place relation.

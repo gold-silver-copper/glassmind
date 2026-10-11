@@ -1,0 +1,17 @@
+Running as unit: run-p3910602-i96187272.scope; invocation ID: fbb50f255b9945cb86c0e6fd8ef553f0
+   Compiling serde_core v1.0.229
+   Compiling memchr v2.8.3
+   Compiling serde_json v1.0.151
+   Compiling serde v1.0.229
+   Compiling glassmind-everyday v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/routeauthority/crates/everyday)
+    Finished `release` profile [optimized + debuginfo] target(s) in 4.57s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/routeauthority-run/target/release/deps/glassmind_everyday-5811da3f5ad1c985)
+
+running 4 tests
+test memory::tests::legacy_missing_referent_cannot_be_corrected ... ok
+test memory::tests::explicit_recall_restores_focus_and_correction_provenance ... ok
+test memory::tests::legacy_session_without_correction_field_remains_readable ... ok
+test memory::tests::unrelated_turns_cannot_supply_a_correction_reference ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

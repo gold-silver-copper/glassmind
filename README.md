@@ -45,6 +45,11 @@ continue across independent targets so one failure does not hide other diagnosti
 rustbench run --agent ./tools/rustbench-agent.sh
 ```
 
+Explicit kinds help with names that are also English words: `where is function called?`
+and `rename function weigh to called`. Code notation preserves significant
+underscores: `renamed_()` refers to `renamed_`.
+[Identifier scope and verification](tools/coding-identifier-roles/PARENT.md).
+
 ## Conversation and story commands
 
 ```sh
@@ -70,6 +75,11 @@ An unrelated turn clears the target of a bare correction such as “actually, it
 Name the field explicitly to correct it, or ask about that field first. A learned
 name-change request without a usable name leaves memory unchanged.
 [Memory behavior and verification](tools/conversation/memory-authority/PARENT.md).
+A complete social turn such as “see you later” preserves story state. Unsupported
+appended assertions still invalidate stale answers.
+[Conversation routing checks](tools/conversation/route-authority/PARENT.md).
+Buffered model loading reduced fresh-process startup from 2.59s to 0.093s in a
+[local paired probe](tools/conversation/buffered-loading/PARENT.md), with unchanged replies.
 [Dialogue tracking](crates/dialogue/EXPERIMENT.md) has a separate trained-model
 command. [Local Wikidata bundles](tools/facts/chat/HANDOFF.md) can also answer
 questions in `talk`: replies include source links, and JSON includes entity IDs
@@ -106,7 +116,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Same MathQA scope, exact-label comparison v3 (separate rebaseline) | 22/4,475 label matches; 4,450 refused; 3 wrong; 0 unscorable answers | pending |
 | Passage QA, SQuAD 1.1 (unverified proposals) | 23.95% raw normalized EM; selected: 815 right, 8,964 refused, 791 wrong / 10,570 | pending |
 | Passage QA, SQuAD2 public-dev baseline (same v1 reader) | 433 correct answers; 5,140 correct expected refusals; 5,064 unsupported; 1,236 wrong / 11,873 | pending |
-| Chat memory, calculations and stories | 41/41 memory with or without the intent model; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
+| Chat memory, calculations and stories | 490/490 routing and 134/134 memory checks in both model modes; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
 

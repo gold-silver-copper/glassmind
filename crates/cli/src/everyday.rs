@@ -3,7 +3,7 @@ use std::io::{BufRead, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
 use crate::talk_facts::{FactReply, Facts};
-use crate::talk_stories::{Stories, StoryReply};
+use crate::talk_stories::{Stories, StoryPlan, StoryReply};
 use glassmind_everyday::{Conversation, IntentModel, Reply};
 use glassmind_quantities::Answer;
 
@@ -43,6 +43,86 @@ impl TalkReply {
             Self::Fact(reply) => &reply.text,
         }
     }
+}
+
+// Full utterance grammar, independent of classifier confidence. No entity or
+// arbitrary trailing-text slot: appended assertions/actions must still be handled.
+fn social_form(line: &str) -> bool {
+    let lower = line.trim().trim_end_matches(['.', '!', '?']).to_lowercase();
+    let words: Vec<_> = lower.split_whitespace().collect();
+    match words.as_slice() {
+        ["hi" | "hello" | "hey" | "hiya" | "goodbye" | "bye"]
+        | ["hi" | "hello" | "hey", "there"]
+        | ["hey", "hey"]
+        | ["bye", "bye"]
+        | ["see", "you" | "ya", "later" | "soon"]
+        | ["talk", "to", "you", "later" | "soon"]
+        | ["how", "are", "you"]
+        | ["how", "are", "things", "going"]
+        | ["how", "is", "it", "going"] => true,
+        ["nice" | "good" | "great", "to", rest @ ..] => matches!(
+            rest,
+            ["see", "you"]
+                | ["see", "you", "again"]
+                | ["speak", "with", "you"]
+                | ["speak", "with", "you", "again"]
+                | ["talk", "to", "you"]
+                | ["talk", "to", "you", "again"]
+        ),
+        ["thanks", rest @ ..] | ["thank", "you", rest @ ..] => matches!(
+            rest,
+            [] | ["kindly"]
+                | ["a", "lot"]
+                | ["so" | "very", "much"]
+                | ["so", "very", "much"]
+                | ["for", "helping"]
+                | ["for", "helping", "me"]
+        ),
+        _ => false,
+    }
+}
+
+fn appended_social_clause(line: &str, supported_story: bool, stories: &Stories) -> bool {
+    // A complete salutation followed by an explicit clause boundary cannot be
+    // used as a story actor (the broad story parser can accept coordinated names).
+    if !matches!(
+        line.split_whitespace()
+            .next()
+            .unwrap_or_default()
+            .trim_end_matches([',', ';', '.', '!', '?']),
+        "hi" | "hello"
+            | "hey"
+            | "hiya"
+            | "goodbye"
+            | "bye"
+            | "see"
+            | "talk"
+            | "how"
+            | "nice"
+            | "good"
+            | "great"
+            | "thanks"
+            | "thank"
+    ) {
+        return false;
+    }
+    line.char_indices().any(|(i, c)| {
+        if !c.is_whitespace() && !matches!(c, ',' | ';' | '.' | '!' | '?') {
+            return false;
+        }
+        let (prefix, rest) = line.split_at(i);
+        let rest = rest.trim_start();
+        social_form(prefix)
+            && ((!supported_story && !rest.trim_end_matches(['.', '!', '?']).trim().is_empty())
+                || (!rest
+                    .trim_start_matches([',', ';', '.', '!', '?'])
+                    .trim()
+                    .is_empty()
+                    && rest.starts_with([',', ';', '.', '!', '?']))
+                || (rest.starts_with("and ") && !(supported_story && stories.has_actor(prefix)))
+                || rest.starts_with("but ")
+                || rest.starts_with("then "))
+    })
 }
 
 fn respond_with_facts(
@@ -118,19 +198,30 @@ fn respond_with_facts(
     };
     // Without a story referent, a learned memory-read request can resolve
     // against typed personal state. Do not feed it to a story write parser.
+    let mut story_plan = session.stories.plan(line);
+    if !memory_authority
+        && appended_social_clause(
+            &line.to_lowercase(),
+            story_plan.supported(),
+            &session.stories,
+        )
+    {
+        story_plan = StoryPlan::Invalidate(
+            "Please give one statement or question at a time. Use /reset and restate the facts.",
+        );
+    }
+    if !memory_authority && !story_plan.supported() && social_form(line) {
+        if let Some((previous, proposal)) = proposed {
+            session.memory = previous;
+            return TalkReply::Conversation(proposal);
+        }
+        return TalkReply::Conversation(reply);
+    }
     if !session.stories.has_context()
         && proposed.as_ref().is_some_and(|(_, reply)| {
             matches!(reply, Reply::Recalled { .. } | Reply::Missing { .. })
         })
-        && {
-            // Check typed story operations first without letting an unsupported
-            // personal question invalidate otherwise absent story context.
-            let mut probe = Stories::default();
-            probe.restore().is_ok()
-                && probe
-                    .respond(line)
-                    .is_none_or(|reply| reply.kind == "refusal")
-        }
+        && !story_plan.supported()
         && let Some((previous, proposal)) = proposed
     {
         session.memory = previous;
@@ -138,7 +229,7 @@ fn respond_with_facts(
     }
     if (matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
         || (matches!(reply, Reply::Missing { .. }) && session.stories.has_context()))
-        && let Some(story) = session.stories.respond(line)
+        && let Some(story) = session.stories.apply(story_plan)
     {
         // A story turn changes the conversational focus. A later bare
         // correction must not overwrite an earlier name or preference.
@@ -153,6 +244,8 @@ fn respond_with_facts(
     }
     if let Some((previous, proposal)) = proposed {
         session.memory = previous;
+        // Typed story ownership has already been resolved. An unrecognized
+        // social shape alone does not invalidate an ordinary learned proposal.
         return TalkReply::Conversation(proposal);
     }
     TalkReply::Conversation(reply)
@@ -160,7 +253,7 @@ fn respond_with_facts(
 
 fn read<T: serde::de::DeserializeOwned>(path: &Path) -> Result<T, String> {
     let file = std::fs::File::open(path).map_err(|e| e.to_string())?;
-    serde_json::from_reader(file).map_err(|e| e.to_string())
+    serde_json::from_reader(std::io::BufReader::new(file)).map_err(|e| e.to_string())
 }
 
 fn save(path: &Path, memory: &Session) -> Result<(), String> {
@@ -249,6 +342,31 @@ mod tests {
 
     fn respond(session: &mut Session, line: &str, model: Option<&IntentModel>) -> TalkReply {
         respond_with_facts(session, line, model, None)
+    }
+
+    #[test]
+    fn social_turn_preserves_story_but_mixed_clause_invalidates() {
+        let mut session = Session::default();
+        session.stories.restore().unwrap();
+        respond(&mut session, "Elin went to the kitchen.", None);
+        let before = serde_json::to_value(&session.stories).unwrap();
+        for line in ["hey there!", "see you soon", "thanks very much"] {
+            respond(&mut session, line, None);
+            assert_eq!(serde_json::to_value(&session.stories).unwrap(), before);
+            assert_eq!(session.memory.last_user_utterance.as_deref(), Some(line));
+        }
+        assert_eq!(session.memory.turn, 4);
+        for line in [
+            "hey there and Elin moved to the garden",
+            "how are you Elin teleported to the attic",
+        ] {
+            session.stories = Stories::default();
+            session.stories.restore().unwrap();
+            respond(&mut session, "Elin went to the kitchen.", None);
+            respond(&mut session, line, None);
+            let reply = respond(&mut session, "Where is Elin?", None);
+            assert_eq!(serde_json::to_value(reply).unwrap()["kind"], "refusal");
+        }
     }
 
     #[test]

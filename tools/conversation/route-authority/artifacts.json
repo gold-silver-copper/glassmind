@@ -1,0 +1,1761 @@
+{
+  "files": 438,
+  "bytes": 15748127,
+  "excludes": [
+    "tools/conversation/route-authority/artifacts.json (self)"
+  ],
+  "artifacts": {
+    "docs/conversation-route-authority.md": {
+      "bytes": 1716,
+      "sha256": "648fed1db7a96d7e238cf31e439413876ba88f5000e352fa1ae5cab256e83520"
+    },
+    "tools/conversation/route-authority/FROZEN.sha256": {
+      "bytes": 224,
+      "sha256": "78f8232703d84b9e9a3e814e15f2eae29c7002b038ffee437c2fce2fc887e706"
+    },
+    "tools/conversation/route-authority/HANDOFF.md": {
+      "bytes": 9404,
+      "sha256": "fe66e48232711d62f79e0189d6d00aecd2f9ecfdb61272d89de27a63f908f604"
+    },
+    "tools/conversation/route-authority/PLAN.md": {
+      "bytes": 1534,
+      "sha256": "a219ecb0a660cf9ed70ff60a3649c44fd6c1bb553f5555085ab082b9f940e661"
+    },
+    "tools/conversation/route-authority/audit.py": {
+      "bytes": 1689,
+      "sha256": "dc6e766d90367bb3025ebda9def52c11e71752adca484a422ba65cac0b148baa"
+    },
+    "tools/conversation/route-authority/boundaries.py": {
+      "bytes": 3747,
+      "sha256": "2daa8aea380ae420d3ccec8a0b3651e98d618473d4bdb1560b62a302cea189c0"
+    },
+    "tools/conversation/route-authority/check_gates.py": {
+      "bytes": 2975,
+      "sha256": "9cfbe82e8a65e778d339fd5fb9e2fb3fbf8d7c9115f7209e7db1ac5e4e20bf3a"
+    },
+    "tools/conversation/route-authority/gates.sh": {
+      "bytes": 2326,
+      "sha256": "1244a35dc0f3b04aab643897942c7bcc996489f32ab621cd9f7cef1da3e7edcb"
+    },
+    "tools/conversation/route-authority/identities.json": {
+      "bytes": 4059,
+      "sha256": "a142ab0494951d672c80c11cb1f7f35151356681fd180e00f33c46f0152de264"
+    },
+    "tools/conversation/route-authority/reports/acceptance.json": {
+      "bytes": 880,
+      "sha256": "b8e6a39176e79c9fbd8b176a0aaf298b9077888455d3a82b118a045fae681140"
+    },
+    "tools/conversation/route-authority/reports/acceptance.log": {
+      "bytes": 760,
+      "sha256": "50f23e8cc7c4a9721bfee8eb08a4184e42ce47cd7166eba99003a04b667d453e"
+    },
+    "tools/conversation/route-authority/reports/attempts.md": {
+      "bytes": 2313,
+      "sha256": "7ce40d0135d3c952c18d520e1e78bbec946b40df856041b0969b69b99c3a42e4"
+    },
+    "tools/conversation/route-authority/reports/base-source.json": {
+      "bytes": 376,
+      "sha256": "69efa6ab76110bcf6b8b64c19fc10f713a30545b24d903b7680a7199f177432a"
+    },
+    "tools/conversation/route-authority/reports/baseline-binary.sha256": {
+      "bytes": 107,
+      "sha256": "c61bb3acf7ad70e5ad52a09caac88dec840c19063434f13caa2eb234d51da370"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/records.json": {
+      "bytes": 39557,
+      "sha256": "4acfa45811ee901aab7ff800a3989264b1dae690f6b08b7a2c4a5ce4b65e8fa8"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/report.json": {
+      "bytes": 498,
+      "sha256": "1e426f7fb7a1dcb11b521a0624e3d8e80d3e6785fcbce5942b0f75e4f17c5878"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session10.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session11.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session12.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session13.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session14.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session15.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session16.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session17.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session5.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session6.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary/session9.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/records.json": {
+      "bytes": 40803,
+      "sha256": "44b7b099b740b3df78c878ba148ef776ba5bae1ca1f08641986a37a2ead2fd78"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/report.json": {
+      "bytes": 499,
+      "sha256": "718c633b2872dd983e05b772bed8e9000408092462c16541c79739f6bfe84d88"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session10.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session11.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session12.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session13.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session14.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session15.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session16.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session17.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session5.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session6.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-model/session9.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/records.json": {
+      "bytes": 19088,
+      "sha256": "60a970643250fa9d84b73895f93ef59d2531d7c912bc5e5e61bd41983ca07548"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/report.json": {
+      "bytes": 138,
+      "sha256": "1350f8ec4cc270393ffdd72da3f64fe9088cc1594469d88a8ebf815e43567587"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session5.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session6.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/records.json": {
+      "bytes": 19597,
+      "sha256": "b1aef61008a2447ce273db1c90b0a577470fd4995ec2a92132c6dcc8be0a51d4"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/report.json": {
+      "bytes": 138,
+      "sha256": "1350f8ec4cc270393ffdd72da3f64fe9088cc1594469d88a8ebf815e43567587"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session5.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session6.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-boundary-sample-model/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/events.json": {
+      "bytes": 32346,
+      "sha256": "107c70a94500d38eaef63368f1205dc853b850e9e57587d82bc98a359a1835d1"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/report.json": {
+      "bytes": 20342,
+      "sha256": "6d07506247210d1d81461030e7dcee4b480b7e30c4f7e30d940cabaabf0dae90"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/session0.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/session1.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/session2.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/session3.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/session4.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-model/session5.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/events.json": {
+      "bytes": 32346,
+      "sha256": "107c70a94500d38eaef63368f1205dc853b850e9e57587d82bc98a359a1835d1"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/report.json": {
+      "bytes": 20342,
+      "sha256": "5c2d45baaf46394b373c5f14b6afaeb72cf1c48395a6d6102bf1dd8c89d49324"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/session0.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/session1.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/session2.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/session3.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/session4.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-old-sample-plain/session5.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/baseline-stale/replies.jsonl": {
+      "bytes": 410,
+      "sha256": "7d5a6ef8592f49fb4cec591b38e9d18081b1c456693a1fd644e421be580db900"
+    },
+    "tools/conversation/route-authority/reports/baseline-stale/report.json": {
+      "bytes": 164,
+      "sha256": "9c2725f4bd043ac2abe7ed48bc74e2b57690ae48b8c497ca22f0a0bf21b0302e"
+    },
+    "tools/conversation/route-authority/reports/baseline-stale/session.json": {
+      "bytes": 193,
+      "sha256": "68ba944cd43b6281b9b6c5275a351590a44350f2ca4c685117295370c6c0bffd"
+    },
+    "tools/conversation/route-authority/reports/binary.sha256": {
+      "bytes": 108,
+      "sha256": "5ba48373b06d3468f2ac04d00e857bd58be06766b1f61176a0ffab0297f9f4df"
+    },
+    "tools/conversation/route-authority/reports/boundaries-resumed.log": {
+      "bytes": 388,
+      "sha256": "ce8865707142fe730a5585a9142a6441cc0f284c5b5ba8db1d9d3388a0e07c2c"
+    },
+    "tools/conversation/route-authority/reports/build.log": {
+      "bytes": 3626,
+      "sha256": "390b394bdfd6b2a0057c5075114f23887129c311607e86d23591d2deb8bc8000"
+    },
+    "tools/conversation/route-authority/reports/calc27.json": {
+      "bytes": 10162,
+      "sha256": "5992e8787b8b27b13d26c622833e6ab46a3335b496c56f87cd448b1dca7c5c20"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/records.json": {
+      "bytes": 40520,
+      "sha256": "7fc49a5f797dc29018096f562d77f6abf327efb463b49525a7fd0a7c21379df1"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/report.json": {
+      "bytes": 140,
+      "sha256": "ff87a08aad5211163f3633856746bc34dd573ab405c4b93bd01e6131bc6bb77d"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session10.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session11.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session12.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session13.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session14.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session15.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session16.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session17.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session5.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session6.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary/session9.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/records.json": {
+      "bytes": 41620,
+      "sha256": "29d5ddab80c3dc8836fcf32a8d664d4bea6810f9b8be9a656c520ec62b35a4f4"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/report.json": {
+      "bytes": 140,
+      "sha256": "ff87a08aad5211163f3633856746bc34dd573ab405c4b93bd01e6131bc6bb77d"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session10.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session11.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session12.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session13.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session14.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session15.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session16.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session17.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session5.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session6.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-model/session9.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/records.json": {
+      "bytes": 19664,
+      "sha256": "309c432a0091bad10195f0f9ec7cb127770a68e4ec06346e72d2f6d21577a4c9"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/report.json": {
+      "bytes": 138,
+      "sha256": "f0eda142a699323d2a910accd5b813e4b95e307c48db000a647ea5b36d22897e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session5.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session6.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/records.json": {
+      "bytes": 20173,
+      "sha256": "cf61687021723e133d21e2b3cb6a763bccbb29a240b430024ccbb8eeb42c865c"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/report.json": {
+      "bytes": 138,
+      "sha256": "f0eda142a699323d2a910accd5b813e4b95e307c48db000a647ea5b36d22897e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session0.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session1.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session2.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session3.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session4.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session5.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session6.json": {
+      "bytes": 205,
+      "sha256": "fdb5c22b7e671fc76426891c61bcbfc0defb086189827f063b81b333806ec577"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session7.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-boundary-sample-model/session8.json": {
+      "bytes": 205,
+      "sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e"
+    },
+    "tools/conversation/route-authority/reports/candidate-goodbye-model/replies.jsonl": {
+      "bytes": 392,
+      "sha256": "82d5d4567231c0d15810766556f6523e539032115dfb6f78fd073faed33999b5"
+    },
+    "tools/conversation/route-authority/reports/candidate-goodbye-model/report.json": {
+      "bytes": 157,
+      "sha256": "a70844ec001228f7ac452c108fc8ad5dc023daf976cb5e884289d10c0cccf9f1"
+    },
+    "tools/conversation/route-authority/reports/candidate-goodbye-model/session.json": {
+      "bytes": 200,
+      "sha256": "14fb70afa0fccb22660d2c83fef6303859da1eebe59de8b6cad1260f88f890d3"
+    },
+    "tools/conversation/route-authority/reports/candidate-goodbye-plain/replies.jsonl": {
+      "bytes": 339,
+      "sha256": "8fe9dac920fcdbe50b1c81557ef913e7035e359c285893d57a454796812cdba5"
+    },
+    "tools/conversation/route-authority/reports/candidate-goodbye-plain/report.json": {
+      "bytes": 147,
+      "sha256": "529edb818b87471bba5a251bb4b5a4ecb3d16ef942292510619a80f85e5ad7d4"
+    },
+    "tools/conversation/route-authority/reports/candidate-goodbye-plain/session.json": {
+      "bytes": 200,
+      "sha256": "14fb70afa0fccb22660d2c83fef6303859da1eebe59de8b6cad1260f88f890d3"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract0-0-state.json": {
+      "bytes": 441,
+      "sha256": "5e11eafb2d9929a8b1b479dc043f19f01dcdf4e67075658c7041ad0d04e192f8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract0-0.jsonl": {
+      "bytes": 268,
+      "sha256": "672d92fb47f1fe61487c47f0e77b8665c16d0063032358e9578b65ab5f48f8ec"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract0-session.json": {
+      "bytes": 318,
+      "sha256": "ba908d58abd819306a4e5a9f322354df2f2393776efa4eb37f6cfd29f04feeaf"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract1-0-state.json": {
+      "bytes": 262,
+      "sha256": "abd5ca2c6994941adb0f9c6f9f54be757ab9fa8dc5c6784b5d3ec4bfd34930fb"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract1-0.jsonl": {
+      "bytes": 483,
+      "sha256": "2171c6c83d131f1166dc0a4a3d0c3700e7592377246be70f30c1814ab0b5b45b"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract1-session.json": {
+      "bytes": 202,
+      "sha256": "8324c1d864bd1d18bf39de2def143f8a679b0f7239389203fb7c6c990794eae1"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract10-0-state.json": {
+      "bytes": 262,
+      "sha256": "e9574841fcb74165d400aba19aa477348ff3f2d8b5bbaf861bea65fa4c0fcb9c"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract10-0.jsonl": {
+      "bytes": 209,
+      "sha256": "fd81b1ee6e9cee28ba3e2004e747a05661cd0d767a3922cdaa3d7b329eaea26f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract10-session.json": {
+      "bytes": 202,
+      "sha256": "0a737ce77483c1af59ff8e13c33d7fd075e534097e2dbd2905ffc04339075ee0"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract11-0-state.json": {
+      "bytes": 428,
+      "sha256": "8124b0d769f51c013204597a6a7e11d535efb39d8a9fbc10e26c903b0ceb6af6"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract11-0.jsonl": {
+      "bytes": 300,
+      "sha256": "b2657b8becf9b0b46b52d6dde6171123b28dc7c949a9905edcb58638aadda731"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract11-session.json": {
+      "bytes": 305,
+      "sha256": "6f768499a62880ade29ae9f1e875a2fb0fbc4b7dd9f065371e286af060c134cb"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract12-0-state.json": {
+      "bytes": 277,
+      "sha256": "7ba071b0c8d8635fd8d54e2f422dd9e2208f5bf3d27520dbbf9e745cfe314554"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract12-0.jsonl": {
+      "bytes": 131,
+      "sha256": "c015a716829dae6a2a51fe705611e478f1d35eda1bfc944e71025606e6282664"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract12-session.json": {
+      "bytes": 217,
+      "sha256": "336ff4a003176fc6e0dd71c876ed9fe46ae0fb4412bbd13aa832d18f24a825db"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract13-0-state.json": {
+      "bytes": 241,
+      "sha256": "7d77dd39278cb51588e2947b98a2d743c8166e45491956f5f9667022ba150a54"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract13-0.jsonl": {
+      "bytes": 582,
+      "sha256": "286fc432e016e82886e34e4358724b5f2349277efd81d3f97f60e78d96c926d6"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract13-session.json": {
+      "bytes": 196,
+      "sha256": "de33f230e1df0d2bac7bec72c7ce9e11723393f894e3bce12efd7eb159f84392"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-0-state.json": {
+      "bytes": 355,
+      "sha256": "b6c555de6a606042b2e6b4321987113f001a32946c3b340e1e6b9dc43a8c0ca5"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-0.jsonl": {
+      "bytes": 128,
+      "sha256": "9fa1c43c44bafd9f37f09839fb63d0c4d00b4bb987d30f7e9ec965782fc0dd3b"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-1-state.json": {
+      "bytes": 539,
+      "sha256": "7d59b4d20a865e2645b2ad10eb6af7f078051133c249fee86c57f5c64ff0127c"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-1.jsonl": {
+      "bytes": 208,
+      "sha256": "91459c8c729a37f9c6c391f003b5ad17a1e7e30cea3a002e5b3af49ac9013e20"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-2-state.json": {
+      "bytes": 499,
+      "sha256": "30abb03142efbeae558eda5e5463c0ec0bdf763e5c6efb80438258405da3e028"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-2.jsonl": {
+      "bytes": 43,
+      "sha256": "05e140b08a35d88ddf9fe6f8760f7a17cd6253d96f4420918cbc5829e013bc9a"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-3-state.json": {
+      "bytes": 217,
+      "sha256": "36573c5f594fbefb4b2a6687497e954c3a20832598cb1f32a2da348d90681734"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-3.jsonl": {
+      "bytes": 218,
+      "sha256": "2eb3c8c5050d0fc3465118541db2a5bc79c17509d1a9e952fdc3602181536bd2"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract14-session.json": {
+      "bytes": 172,
+      "sha256": "1bbaafa687cfbd240e27e58c8c2fcce1aef32c90500e811d77599a0e03906768"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract15-0-state.json": {
+      "bytes": 432,
+      "sha256": "2369b97bb01335dd4639cf2c92b0adbeff3f388318d93b33308f6b9aabc391b8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract15-0.jsonl": {
+      "bytes": 128,
+      "sha256": "0923c600b7ecc06ca278936843f34a6e3527542e928c0cae8d2c76de8e6009d8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract15-session.json": {
+      "bytes": 309,
+      "sha256": "25a2a5955f351f3ef8bd20aff50e9b88a9da742ac5346cd9cc5d0b8557b7854a"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract2-0-state.json": {
+      "bytes": 261,
+      "sha256": "2b43df5fe2d6a5fe71bbc27147c5a2b533766a4f2cae6a6a1b7f3cb810c17ca3"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract2-0.jsonl": {
+      "bytes": 482,
+      "sha256": "cb08dddd2c8e7f4f2aae64faa249e4ceca19cb93213fa39ed65d8e0a329feb38"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract2-session.json": {
+      "bytes": 201,
+      "sha256": "efaf796ebbfd2fbbc65f630b69df4a351b71dbecbb70002c74585c95b520b653"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract3-0-state.json": {
+      "bytes": 325,
+      "sha256": "19a49795948deefaed7cd1a17b3e2de5be73f0611cb3eb5ee7786017f1085320"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract3-0.jsonl": {
+      "bytes": 544,
+      "sha256": "5d7de34f517d48316ef1fef6422db8f31d9f9829699ddf56f967ba417504ec09"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract3-session.json": {
+      "bytes": 241,
+      "sha256": "5835e29338ab109d37cfd709acb327aec9a14e2fb23b24660da37d1c92dfaff0"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract4-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract4-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract4-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract5-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract5-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract5-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract6-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract6-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract6-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract7-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract7-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract7-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract8-0-state.json": {
+      "bytes": 324,
+      "sha256": "28cad3ad5e795c3bfe19969a21aa2276a806337febafee0d02b777708d92b206"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract8-0.jsonl": {
+      "bytes": 292,
+      "sha256": "56f2e6532b6cd3c1df0abb868ffa1346ac78ada853e9136083318d9d30f908f8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract8-session.json": {
+      "bytes": 240,
+      "sha256": "fc2f32188281221370a1f3df37417006eb7eae29c5d8c5568e32eb1d01bc44d3"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract9-0-state.json": {
+      "bytes": 262,
+      "sha256": "2028c3230f1bf78a86d42372843e6943861c7409373586675a404958cfdbeade"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract9-0.jsonl": {
+      "bytes": 205,
+      "sha256": "5f50c4cdb3ac902f17df859b6dc828e86cbc2e136f30acf9112d96a44814a7d6"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/contract9-session.json": {
+      "bytes": 202,
+      "sha256": "cd4350f9934aa450263e9f50e1933e6ff6ccaf2bff3d00b16ccb220f15dd51ad"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/original-session.json": {
+      "bytes": 172,
+      "sha256": "1bbaafa687cfbd240e27e58c8c2fcce1aef32c90500e811d77599a0e03906768"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/original0.jsonl": {
+      "bytes": 2165,
+      "sha256": "1f653691b942208eb333cb22f31956bf5a345a459a6727faecc35006bc7fb7a1"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/original1.jsonl": {
+      "bytes": 186,
+      "sha256": "6327913adaf653d70afeeabdc3cce0cfed2803d143b2bdf1b2722452e77219f9"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/original2.jsonl": {
+      "bytes": 261,
+      "sha256": "2a5c73ca348b3236d71d6450facee45155148223741ac0a8fb8cb04a6161b85f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/original3.jsonl": {
+      "bytes": 145,
+      "sha256": "f4b8d9ed998ab478d65bc874dc34d6d9f9c2cfd60903fe0923c6ddd3da7e3c85"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/original4.jsonl": {
+      "bytes": 73,
+      "sha256": "9e4b42c49db9fbee7c03a968a4f36f8f82008fa6b3dcecb27ed86f34fc138d60"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/original5.jsonl": {
+      "bytes": 798,
+      "sha256": "5d1400ea7ecce7f9196bfe660ec4efe27b34f24327b58b176794ee314666bb66"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-model/report.json": {
+      "bytes": 35884,
+      "sha256": "07fc4af36b0793acd481d80e2944e04427764fab83d95be81be08f6110d73a25"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract0-0-state.json": {
+      "bytes": 441,
+      "sha256": "5e11eafb2d9929a8b1b479dc043f19f01dcdf4e67075658c7041ad0d04e192f8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract0-0.jsonl": {
+      "bytes": 268,
+      "sha256": "672d92fb47f1fe61487c47f0e77b8665c16d0063032358e9578b65ab5f48f8ec"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract0-session.json": {
+      "bytes": 318,
+      "sha256": "ba908d58abd819306a4e5a9f322354df2f2393776efa4eb37f6cfd29f04feeaf"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract1-0-state.json": {
+      "bytes": 262,
+      "sha256": "abd5ca2c6994941adb0f9c6f9f54be757ab9fa8dc5c6784b5d3ec4bfd34930fb"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract1-0.jsonl": {
+      "bytes": 343,
+      "sha256": "b7b73d141c86f42c04e3d6d3906c992910870b9d34fd194df61ee90c04f91a46"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract1-session.json": {
+      "bytes": 202,
+      "sha256": "8324c1d864bd1d18bf39de2def143f8a679b0f7239389203fb7c6c990794eae1"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract10-0-state.json": {
+      "bytes": 262,
+      "sha256": "e9574841fcb74165d400aba19aa477348ff3f2d8b5bbaf861bea65fa4c0fcb9c"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract10-0.jsonl": {
+      "bytes": 209,
+      "sha256": "fd81b1ee6e9cee28ba3e2004e747a05661cd0d767a3922cdaa3d7b329eaea26f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract10-session.json": {
+      "bytes": 202,
+      "sha256": "0a737ce77483c1af59ff8e13c33d7fd075e534097e2dbd2905ffc04339075ee0"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract11-0-state.json": {
+      "bytes": 428,
+      "sha256": "8124b0d769f51c013204597a6a7e11d535efb39d8a9fbc10e26c903b0ceb6af6"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract11-0.jsonl": {
+      "bytes": 300,
+      "sha256": "b2657b8becf9b0b46b52d6dde6171123b28dc7c949a9905edcb58638aadda731"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract11-session.json": {
+      "bytes": 305,
+      "sha256": "6f768499a62880ade29ae9f1e875a2fb0fbc4b7dd9f065371e286af060c134cb"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract12-0-state.json": {
+      "bytes": 274,
+      "sha256": "21ff1a95e87025bdf2f008f36381c9fbf0ec738192e9532b75b2643f4c14ac95"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract12-0.jsonl": {
+      "bytes": 392,
+      "sha256": "45f161f1f07fcd2c2765966a2af717f7f731875aa27c6537d10e9d6832964dc2"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract12-session.json": {
+      "bytes": 214,
+      "sha256": "dd959ec09615785dc3da34945453b5656170cf3e827404764a594ecb02281de7"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract13-0-state.json": {
+      "bytes": 241,
+      "sha256": "7d77dd39278cb51588e2947b98a2d743c8166e45491956f5f9667022ba150a54"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract13-0.jsonl": {
+      "bytes": 278,
+      "sha256": "d6628ccf5442abb41cbe3756190e087e0ab43a8b4dde7202b85f16511862a1e9"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract13-session.json": {
+      "bytes": 196,
+      "sha256": "de33f230e1df0d2bac7bec72c7ce9e11723393f894e3bce12efd7eb159f84392"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-0-state.json": {
+      "bytes": 355,
+      "sha256": "b6c555de6a606042b2e6b4321987113f001a32946c3b340e1e6b9dc43a8c0ca5"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-0.jsonl": {
+      "bytes": 128,
+      "sha256": "9fa1c43c44bafd9f37f09839fb63d0c4d00b4bb987d30f7e9ec965782fc0dd3b"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-1-state.json": {
+      "bytes": 539,
+      "sha256": "7d59b4d20a865e2645b2ad10eb6af7f078051133c249fee86c57f5c64ff0127c"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-1.jsonl": {
+      "bytes": 208,
+      "sha256": "91459c8c729a37f9c6c391f003b5ad17a1e7e30cea3a002e5b3af49ac9013e20"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-2-state.json": {
+      "bytes": 499,
+      "sha256": "30abb03142efbeae558eda5e5463c0ec0bdf763e5c6efb80438258405da3e028"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-2.jsonl": {
+      "bytes": 43,
+      "sha256": "05e140b08a35d88ddf9fe6f8760f7a17cd6253d96f4420918cbc5829e013bc9a"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-3-state.json": {
+      "bytes": 217,
+      "sha256": "36573c5f594fbefb4b2a6687497e954c3a20832598cb1f32a2da348d90681734"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-3.jsonl": {
+      "bytes": 218,
+      "sha256": "2eb3c8c5050d0fc3465118541db2a5bc79c17509d1a9e952fdc3602181536bd2"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract14-session.json": {
+      "bytes": 172,
+      "sha256": "1bbaafa687cfbd240e27e58c8c2fcce1aef32c90500e811d77599a0e03906768"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract15-0-state.json": {
+      "bytes": 432,
+      "sha256": "2369b97bb01335dd4639cf2c92b0adbeff3f388318d93b33308f6b9aabc391b8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract15-0.jsonl": {
+      "bytes": 128,
+      "sha256": "0923c600b7ecc06ca278936843f34a6e3527542e928c0cae8d2c76de8e6009d8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract15-session.json": {
+      "bytes": 309,
+      "sha256": "25a2a5955f351f3ef8bd20aff50e9b88a9da742ac5346cd9cc5d0b8557b7854a"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract2-0-state.json": {
+      "bytes": 261,
+      "sha256": "2b43df5fe2d6a5fe71bbc27147c5a2b533766a4f2cae6a6a1b7f3cb810c17ca3"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract2-0.jsonl": {
+      "bytes": 341,
+      "sha256": "f0a44341dfdaa676805f421f3a8c7835d2c2da579a2fb1f6ffd347a2fe7c462b"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract2-session.json": {
+      "bytes": 201,
+      "sha256": "efaf796ebbfd2fbbc65f630b69df4a351b71dbecbb70002c74585c95b520b653"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract3-0-state.json": {
+      "bytes": 325,
+      "sha256": "19a49795948deefaed7cd1a17b3e2de5be73f0611cb3eb5ee7786017f1085320"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract3-0.jsonl": {
+      "bytes": 395,
+      "sha256": "d758f5dbcb36f2784f026e70b96b8a7d1bedbdbd1d9ac5a2a22fd38cf6a2f437"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract3-session.json": {
+      "bytes": 241,
+      "sha256": "5835e29338ab109d37cfd709acb327aec9a14e2fb23b24660da37d1c92dfaff0"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract4-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract4-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract4-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract5-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract5-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract5-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract6-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract6-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract6-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract7-0-state.json": {
+      "bytes": 260,
+      "sha256": "c4c795c8dfdf97d5d962ac64752304a32d6912f306d30c415f56f472a06e110f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract7-0.jsonl": {
+      "bytes": 332,
+      "sha256": "318a55ad5f554e30597b1b02535f12c6d0ef13a503ed027d3e4e70c85684f304"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract7-session.json": {
+      "bytes": 200,
+      "sha256": "055d7f03832caae27e3fae1e2e543180ed12ad78f5746733b40236e6efbb7265"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract8-0-state.json": {
+      "bytes": 324,
+      "sha256": "28cad3ad5e795c3bfe19969a21aa2276a806337febafee0d02b777708d92b206"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract8-0.jsonl": {
+      "bytes": 292,
+      "sha256": "56f2e6532b6cd3c1df0abb868ffa1346ac78ada853e9136083318d9d30f908f8"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract8-session.json": {
+      "bytes": 240,
+      "sha256": "fc2f32188281221370a1f3df37417006eb7eae29c5d8c5568e32eb1d01bc44d3"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract9-0-state.json": {
+      "bytes": 262,
+      "sha256": "2028c3230f1bf78a86d42372843e6943861c7409373586675a404958cfdbeade"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract9-0.jsonl": {
+      "bytes": 205,
+      "sha256": "5f50c4cdb3ac902f17df859b6dc828e86cbc2e136f30acf9112d96a44814a7d6"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/contract9-session.json": {
+      "bytes": 202,
+      "sha256": "cd4350f9934aa450263e9f50e1933e6ff6ccaf2bff3d00b16ccb220f15dd51ad"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/original-session.json": {
+      "bytes": 172,
+      "sha256": "1bbaafa687cfbd240e27e58c8c2fcce1aef32c90500e811d77599a0e03906768"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/original0.jsonl": {
+      "bytes": 2165,
+      "sha256": "1f653691b942208eb333cb22f31956bf5a345a459a6727faecc35006bc7fb7a1"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/original1.jsonl": {
+      "bytes": 186,
+      "sha256": "6327913adaf653d70afeeabdc3cce0cfed2803d143b2bdf1b2722452e77219f9"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/original2.jsonl": {
+      "bytes": 261,
+      "sha256": "2a5c73ca348b3236d71d6450facee45155148223741ac0a8fb8cb04a6161b85f"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/original3.jsonl": {
+      "bytes": 145,
+      "sha256": "f4b8d9ed998ab478d65bc874dc34d6d9f9c2cfd60903fe0923c6ddd3da7e3c85"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/original4.jsonl": {
+      "bytes": 73,
+      "sha256": "9e4b42c49db9fbee7c03a968a4f36f8f82008fa6b3dcecb27ed86f34fc138d60"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/original5.jsonl": {
+      "bytes": 525,
+      "sha256": "9779ecee38e443cee02c4d060ca87176b204c1651a7b1fdeb58ab391048bf5d5"
+    },
+    "tools/conversation/route-authority/reports/candidate-memory-plain/report.json": {
+      "bytes": 34499,
+      "sha256": "f69918c79e38ef7493d46e28e40e9c3467c441f02e6411b2b3fefcdc8aa23f65"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/events.json": {
+      "bytes": 163589,
+      "sha256": "2cf96792007c7ba70c14b97d065e870f32bd00db7ba6664edd20927a163f4eae"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/report.json": {
+      "bytes": 78052,
+      "sha256": "08dd795fa96b6ab6208f915187c3e6b0d608fd00fb18d934b414e3627e4df52f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session0.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session1.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session10.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session11.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session12.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session13.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session14.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session15.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session16.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session17.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session18.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session19.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session2.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session20.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session21.json": {
+      "bytes": 291,
+      "sha256": "1f8e869b0c0ee623d3be48ffd96675e02610aca0136439102132b8a673216fff"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session22.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session23.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session24.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session25.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session26.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session27.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session28.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session29.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session3.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session30.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session31.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session32.json": {
+      "bytes": 264,
+      "sha256": "ed0c31821337df80fa8a51b621a416d77d9bdda3023c2c6d16ea02814cf825b1"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session33.json": {
+      "bytes": 264,
+      "sha256": "ed0c31821337df80fa8a51b621a416d77d9bdda3023c2c6d16ea02814cf825b1"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session34.json": {
+      "bytes": 294,
+      "sha256": "bf7b08aa8e53e8c1c9618da8e38081e1e759732eb8e9d236d4218165c3d4e00f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session35.json": {
+      "bytes": 289,
+      "sha256": "a1d05954a479eb92ab82e665d535a1356e5cb8b20494867bde7b45c552e2e920"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session36.json": {
+      "bytes": 372,
+      "sha256": "4b7fa85ab37784e497c3ebbdca512cd92de4ede7b404a3c1bd2dc1b4560fdd86"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session37.json": {
+      "bytes": 420,
+      "sha256": "4a1823179a0dd54c8252aef799aef5a6cafd43cb680de9598abe27a814597d10"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session38.json": {
+      "bytes": 267,
+      "sha256": "a6db6c90cd3c26cb8a117ddcf7d81466691d86a1a98358cf769666e99f215344"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session39.json": {
+      "bytes": 257,
+      "sha256": "8e9110b77b48594c9e77728289ae1792c79047eddcfbaf89128e5593d4aab3e1"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session4.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session40.json": {
+      "bytes": 263,
+      "sha256": "72d1f44fe72db85af14500c37b13438adcff421ce16c6f18c6cee972b63fd7e9"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session5.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session6.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session7.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session8.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-model/session9.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/events.json": {
+      "bytes": 157892,
+      "sha256": "e35c030fdaa58dc303d208e08366ea4da7cc3ce71bf187e775a792fb56753450"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/report.json": {
+      "bytes": 78126,
+      "sha256": "65f1770e22e633618fb05a0cefa73e988b33c9ff475c667f57308ac02401dd96"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session0.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session1.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session10.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session11.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session12.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session13.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session14.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session15.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session16.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session17.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session18.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session19.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session2.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session20.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session21.json": {
+      "bytes": 291,
+      "sha256": "1f8e869b0c0ee623d3be48ffd96675e02610aca0136439102132b8a673216fff"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session22.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session23.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session24.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session25.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session26.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session27.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session28.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session29.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session3.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session30.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session31.json": {
+      "bytes": 238,
+      "sha256": "4e2dcdb04b758bcafcc35e3cdc591f77643c897200780ad02e8939d194f5864d"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session32.json": {
+      "bytes": 264,
+      "sha256": "ed0c31821337df80fa8a51b621a416d77d9bdda3023c2c6d16ea02814cf825b1"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session33.json": {
+      "bytes": 264,
+      "sha256": "ed0c31821337df80fa8a51b621a416d77d9bdda3023c2c6d16ea02814cf825b1"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session34.json": {
+      "bytes": 294,
+      "sha256": "bf7b08aa8e53e8c1c9618da8e38081e1e759732eb8e9d236d4218165c3d4e00f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session35.json": {
+      "bytes": 289,
+      "sha256": "a1d05954a479eb92ab82e665d535a1356e5cb8b20494867bde7b45c552e2e920"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session36.json": {
+      "bytes": 372,
+      "sha256": "4b7fa85ab37784e497c3ebbdca512cd92de4ede7b404a3c1bd2dc1b4560fdd86"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session37.json": {
+      "bytes": 420,
+      "sha256": "4a1823179a0dd54c8252aef799aef5a6cafd43cb680de9598abe27a814597d10"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session38.json": {
+      "bytes": 267,
+      "sha256": "a6db6c90cd3c26cb8a117ddcf7d81466691d86a1a98358cf769666e99f215344"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session39.json": {
+      "bytes": 257,
+      "sha256": "8e9110b77b48594c9e77728289ae1792c79047eddcfbaf89128e5593d4aab3e1"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session4.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session40.json": {
+      "bytes": 263,
+      "sha256": "72d1f44fe72db85af14500c37b13438adcff421ce16c6f18c6cee972b63fd7e9"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session5.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session6.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session7.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session8.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-full-plain/session9.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/events.json": {
+      "bytes": 31466,
+      "sha256": "18021ac081aec153c5f280c8d2bc228478a3df5c1f00c976edf897807c4fed81"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/report.json": {
+      "bytes": 20498,
+      "sha256": "b3c93f28980fec94fbe68017697b2bc007c72165f2a511c6eceb9adf63a7edd7"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/session0.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/session1.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/session2.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/session3.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/session4.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-model/session5.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/events.json": {
+      "bytes": 29720,
+      "sha256": "ccfdbf666e1acc39dc46e4a4762b851ff7515c6201345c564c12a22918d448d3"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/report.json": {
+      "bytes": 20522,
+      "sha256": "f28c1a6c1a8a316c99e7b732fcbbb5e7fa06a931d8073f4d1bfb987ff96d6ea5"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/session0.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/session1.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/session2.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/session3.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/session4.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-old-sample-plain/session5.json": {
+      "bytes": 192,
+      "sha256": "960df05557c9a8dd1d8994403e05a057f6bf1ca464b875a03c8ed937a72ae11f"
+    },
+    "tools/conversation/route-authority/reports/candidate-stale/replies.jsonl": {
+      "bytes": 702,
+      "sha256": "85c8fcf8ae5a600f7e19058d36351a750da2e04eb8d5c975195c3ad589f92de8"
+    },
+    "tools/conversation/route-authority/reports/candidate-stale/report.json": {
+      "bytes": 162,
+      "sha256": "d1058fb4d1abccc9d1319e8e2cafbfc8558d54d3054e9c0450ee585d730b91b6"
+    },
+    "tools/conversation/route-authority/reports/candidate-stale/session.json": {
+      "bytes": 165,
+      "sha256": "51a785c8ddd79e36821ab749c25d91877210f7f3480669d47e5968ff6fea612a"
+    },
+    "tools/conversation/route-authority/reports/changed-routing-audit.json": {
+      "bytes": 17926,
+      "sha256": "b817e958da343ecfe0d9dd9626708fdf31b6339d6c65c7ef7053091ad7fc50bc"
+    },
+    "tools/conversation/route-authority/reports/clippy.log": {
+      "bytes": 3624,
+      "sha256": "6830f90585cc5e6054e956fe31b364d40ef0438c52aa06ad1200a89dfc308599"
+    },
+    "tools/conversation/route-authority/reports/execution-status.json": {
+      "bytes": 842,
+      "sha256": "737d34d95e6f96f731848d4535d2b8a28495ee1e4c47085dc9b19f6c69623a43"
+    },
+    "tools/conversation/route-authority/reports/facts/bundle/index.json": {
+      "bytes": 1469,
+      "sha256": "0b413c1f75ae665b4bca368e8aee0eb63bac2ee55b1be82b43c7097f8b674f42"
+    },
+    "tools/conversation/route-authority/reports/facts/bundle/labels.json": {
+      "bytes": 209,
+      "sha256": "88efbf1df5be8d5acea25dffe44de27d7e3a6d6fbf5eff943ce169e77a4ef45b"
+    },
+    "tools/conversation/route-authority/reports/facts/bundle/manifest.json": {
+      "bytes": 312,
+      "sha256": "06996fc3b7d313d01b9392f0d7a5e11785a16dda88299385a9a3ae06a4129f09"
+    },
+    "tools/conversation/route-authority/reports/facts/bundle/relation.json": {
+      "bytes": 337,
+      "sha256": "9cc77f17e5aa074460bdfbcdf38d92858e45c9ca354baad28b79a103ccd86a6a"
+    },
+    "tools/conversation/route-authority/reports/facts/report.json": {
+      "bytes": 221,
+      "sha256": "bae2775f1217be840d2b17a79a4bed148272db9389306351be3dd389e8a8e44e"
+    },
+    "tools/conversation/route-authority/reports/facts/session.json": {
+      "bytes": 191,
+      "sha256": "cb27f822526c1b1f59a18212fc7e52c21378ce3e85e554bc6c5a58f71db0157a"
+    },
+    "tools/conversation/route-authority/reports/facts-session/report.json": {
+      "bytes": 72,
+      "sha256": "3390e32b2b4294b6c02a1f28ff71288ecc940e39462d5537aeb02baf6598b5fe"
+    },
+    "tools/conversation/route-authority/reports/facts-session/session-False.json": {
+      "bytes": 267,
+      "sha256": "ae046ca5ef03748598e551051c75f835008bb0fe7d99dbc29185aa6607fe9003"
+    },
+    "tools/conversation/route-authority/reports/facts-session/session-True.json": {
+      "bytes": 267,
+      "sha256": "ae046ca5ef03748598e551051c75f835008bb0fe7d99dbc29185aa6607fe9003"
+    },
+    "tools/conversation/route-authority/reports/fmt-check.log": {
+      "bytes": 95,
+      "sha256": "caa33d1fe9fc1048819cb9b2e5e072a0b45c15be5ea52fbfc4421989e5699717"
+    },
+    "tools/conversation/route-authority/reports/fmt.log": {
+      "bytes": 95,
+      "sha256": "aeb998098735d4824630e8d48c5003ab352900bf75ec24a1b05df921101216c0"
+    },
+    "tools/conversation/route-authority/reports/gates-boundaries.log": {
+      "bytes": 1161,
+      "sha256": "d8660d399542b7dba8e8047e203e5645b8c5d239137c98d91cfcc7be4206519d"
+    },
+    "tools/conversation/route-authority/reports/gates-full.log": {
+      "bytes": 1277,
+      "sha256": "3f1e68f2c5c8a80c0f09348e44f655f738389476c32b2e29b1be169476431f2c"
+    },
+    "tools/conversation/route-authority/reports/gates-model.log": {
+      "bytes": 420,
+      "sha256": "3237369d8dc13a5263de6b6d866468b17fe9bcafc475c3b263c325d75e3289f1"
+    },
+    "tools/conversation/route-authority/reports/gates-plain.log": {
+      "bytes": 358,
+      "sha256": "b5c2572be8d965bcbc3e8caa0b8d09e86d65444e8b9259da45a06238cc4a7304"
+    },
+    "tools/conversation/route-authority/reports/gates-regressions.log": {
+      "bytes": 669,
+      "sha256": "8e800af69cffdda761e56cc8d9177090f00b8ae1aca44f17101e77f7a953cd7c"
+    },
+    "tools/conversation/route-authority/reports/inherited-wrong.json": {
+      "bytes": 503,
+      "sha256": "5b101a80dc8b4fc439ef217d1b852284b54091ee707dbc2d1072130569397a40"
+    },
+    "tools/conversation/route-authority/reports/intent-full/records.json": {
+      "bytes": 1645427,
+      "sha256": "d65dd01182a7beee747be7f51d9bfa99de63571d75fa02ab8d46ece2f33af23a"
+    },
+    "tools/conversation/route-authority/reports/intent-full/replies.jsonl": {
+      "bytes": 971637,
+      "sha256": "89038bd856bf61b27cb6987fa12ac9b56554e33a4e6bf73aa2c45a25f638941d"
+    },
+    "tools/conversation/route-authority/reports/intent-full/report.json": {
+      "bytes": 873,
+      "sha256": "b6e6bde2a2d38fb0f0bdeb4a40b3785fd25bf30a8cff9628e1e63366e4cb4a0c"
+    },
+    "tools/conversation/route-authority/reports/intent-full/transitions.json": {
+      "bytes": 1895,
+      "sha256": "17dec02fed4f2618af73519b62d3301ce8c423bc9d9e4e103d425a8799819f09"
+    },
+    "tools/conversation/route-authority/reports/manual-audit.md": {
+      "bytes": 487,
+      "sha256": "b19f32f3080bff244d69849ce5cac7563707b468b20e11bf312e1cdda16de3e3"
+    },
+    "tools/conversation/route-authority/reports/reconstructed-initial-gates.sh": {
+      "bytes": 2274,
+      "sha256": "6b7457231ca1a18a0b5e01f0699c4478490721e156376bf9c150475720b34593"
+    },
+    "tools/conversation/route-authority/reports/resources.txt": {
+      "bytes": 193,
+      "sha256": "d4d6cdeea19c5339ab2902ded56d882edce3179a8f404398c4b0f36d6b0789d5"
+    },
+    "tools/conversation/route-authority/reports/runtime.patch": {
+      "bytes": 15093,
+      "sha256": "407c93a5c63c29ccef4443a8979f9442d282d2821ecbdc993551a2a051b15a08"
+    },
+    "tools/conversation/route-authority/reports/source.sha256": {
+      "bytes": 190,
+      "sha256": "1400d9333e88b0edfb05e95d191772141cdfa12ae385ab6c014ed716c646ea50"
+    },
+    "tools/conversation/route-authority/reports/story-full/baseline.jsonl": {
+      "bytes": 5401842,
+      "sha256": "8df8189e8022cf436aa1aaf6e0aaeaabced18cd3b01b41faedb4f1d19010b480"
+    },
+    "tools/conversation/route-authority/reports/story-full/candidate.jsonl": {
+      "bytes": 5401842,
+      "sha256": "8df8189e8022cf436aa1aaf6e0aaeaabced18cd3b01b41faedb4f1d19010b480"
+    },
+    "tools/conversation/route-authority/reports/story-full/report.json": {
+      "bytes": 14064,
+      "sha256": "f21e0cb76dabb8bc7d05b6ca2992b9052ab4bb940cbf8c08e5eb082327841680"
+    },
+    "tools/conversation/route-authority/reports/story-sample/baseline.jsonl": {
+      "bytes": 550543,
+      "sha256": "72aa4113b1f71a395d76245be7eead6ad001a197539f16a51f343d1a6373cb5a"
+    },
+    "tools/conversation/route-authority/reports/story-sample/candidate.jsonl": {
+      "bytes": 550543,
+      "sha256": "72aa4113b1f71a395d76245be7eead6ad001a197539f16a51f343d1a6373cb5a"
+    },
+    "tools/conversation/route-authority/reports/story-sample/report.json": {
+      "bytes": 2528,
+      "sha256": "06b6562f9d13bdeb50c6ae9609747f027a0557c7d6f87c284981923855496d11"
+    },
+    "tools/conversation/route-authority/reports/story47.json": {
+      "bytes": 16066,
+      "sha256": "b74108641cd193892572393891247614ed8f03eba178f84e03c546c0cde53464"
+    },
+    "tools/conversation/route-authority/reports/test-everyday.log": {
+      "bytes": 790,
+      "sha256": "e49f16d4c06e0199ea4aa28575b09ca4a9d10984ecc14495984f1f6b4c15395b"
+    },
+    "tools/conversation/route-authority/reports/test-memory.log": {
+      "bytes": 999,
+      "sha256": "ebf38141cf1260fd00881ac8b18d78a4b667bafc41d5a2a97c410ad437489e0d"
+    },
+    "tools/conversation/route-authority/reports/test-stories.log": {
+      "bytes": 752,
+      "sha256": "493db8c821139f20a3723f267627d6cf5f248140128eba87132b274f0c0b014c"
+    },
+    "tools/conversation/route-authority/reproduce.sh": {
+      "bytes": 1729,
+      "sha256": "fbecbb83c43ca8feb6ccbcd2e4bf6c783e09a5f0151e07e0bd26be545bf9adba"
+    },
+    "tools/conversation/route-authority/validate.sh": {
+      "bytes": 1345,
+      "sha256": "f11c0a2bc6eb0deca8df5ab1fc0c9cefa3d92ae9a9a1577f4471f9fcbabe4ce8"
+    },
+    "tools/conversation/route-authority/verified-inputs.json": {
+      "bytes": 5580,
+      "sha256": "63625c1e7fac53d3376430f339257de880227321a4af53506f9aa7d6c6bc9d91"
+    }
+  }
+}

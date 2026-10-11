@@ -1,0 +1,58 @@
+{
+  "exact_checks": 8,
+  "safe": 8,
+  "previously_correct_retained": 5,
+  "wrong_targets_corrected": 3,
+  "accepted_edits": 6,
+  "native_tests_executed": 6,
+  "cases": [
+    {
+      "index": 0,
+      "request": "rename function caller to renamed_()",
+      "exit": 0,
+      "test_executed": true,
+      "source_sha256": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149",
+      "behavior_source_sha256": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149"
+    },
+    {
+      "index": 1,
+      "request": "rename function caller to called__()",
+      "exit": 0,
+      "test_executed": true,
+      "source_sha256": "76cd07d7c45127e05fe9578587cdcc8d7f1b1e8711a09c4d0c69c5129fe9cfb1",
+      "behavior_source_sha256": "76cd07d7c45127e05fe9578587cdcc8d7f1b1e8711a09c4d0c69c5129fe9cfb1"
+    },
+    {
+      "index": 2,
+      "request": "rename function caller to saved_()",
+      "exit": 0,
+      "test_executed": true,
+      "source_sha256": "4de8fe02429ed8e34ed3d1d354c890ad438048fcfc06d5b450a1c6341b68d879",
+      "behavior_source_sha256": "4de8fe02429ed8e34ed3d1d354c890ad438048fcfc06d5b450a1c6341b68d879"
+    },
+    {
+      "index": 3,
+      "request": "rename function caller to `renamed_()`",
+      "exit": 0,
+      "test_executed": true,
+      "source_sha256": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149",
+      "behavior_source_sha256": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149"
+    },
+    {
+      "index": 5,
+      "request": "rename function tick to renamed_()",
+      "exit": 0,
+      "test_executed": true,
+      "source_sha256": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149",
+      "behavior_source_sha256": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149"
+    },
+    {
+      "index": 7,
+      "request": "rename function caller to na\u00efve",
+      "exit": 0,
+      "test_executed": true,
+      "source_sha256": "acb1fd09bd8f9eff7bf9f6ffca0c02b53667f5e77182fc2fb688129ab52bc098",
+      "behavior_source_sha256": "acb1fd09bd8f9eff7bf9f6ffca0c02b53667f5e77182fc2fb688129ab52bc098"
+    }
+  ]
+}

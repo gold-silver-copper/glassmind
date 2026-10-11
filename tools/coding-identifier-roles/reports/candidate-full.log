@@ -1,0 +1,43 @@
+query-caller-plain True '`caller` is defined at src/lib.rs:1.\n'
+query-caller-backtick True '`caller` is defined at src/lib.rs:1.\n'
+query-caller-double True '`caller` is defined at src/lib.rs:1.\n'
+query-renamed-plain True '`renamed` is defined at src/lib.rs:1.\n'
+query-renamed-backtick True '`renamed` is defined at src/lib.rs:1.\n'
+query-renamed-double True '`renamed` is defined at src/lib.rs:1.\n'
+query-called-plain True '`called` is defined at src/lib.rs:1.\n'
+query-called-backtick True '`called` is defined at src/lib.rs:1.\n'
+query-called-double True '`called` is defined at src/lib.rs:1.\n'
+query-drain_events-plain True '`drain_events` is defined at src/lib.rs:1.\n'
+query-drain_events-backtick True '`drain_events` is defined at src/lib.rs:1.\n'
+query-drain_events-double True '`drain_events` is defined at src/lib.rs:1.\n'
+query-café-plain True '`café` is defined at src/lib.rs:1.\n'
+query-café-backtick True '`café` is defined at src/lib.rs:1.\n'
+query-café-double True '`café` is defined at src/lib.rs:1.\n'
+field-query-called True '`Record::called` is defined at src/lib.rs:1.\n'
+field-control-called True '`Record::called` is defined at src/lib.rs:1.\n'
+field-query-renamed True '`Record::renamed` is defined at src/lib.rs:1.\n'
+field-control-renamed True '`Record::renamed` is defined at src/lib.rs:1.\n'
+field-query-drain_events True '`Record::drain_events` is defined at src/lib.rs:1.\n'
+field-control-drain_events True '`Record::drain_events` is defined at src/lib.rs:1.\n'
+rename-caller True "I'd rename the `caller` function to `implement_again` in 2 places.\n  src/lib.rs:1:8  `caller` -> `implement_again`\n  src/lib.rs:2:27  `caller` -> `implement_again`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n"
+rename-control-caller True "I'd rename the `caller` function to `implement_again` in 2 places.\n  src/lib.rs:1:8  `caller` -> `implement_again`\n  src/lib.rs:2:27  `caller` -> `implement_again`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n"
+rename-implement True "I'd rename the `implement` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `implement` -> `renamed`\n  src/lib.rs:2:27  `implement` -> `renamed`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n"
+rename-control-implement True "I'd rename the `implement` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `implement` -> `renamed`\n  src/lib.rs:2:27  `implement` -> `renamed`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n"
+rename-weigh True "I'd rename the `weigh` function to `called` in 2 places.\n  src/lib.rs:1:8  `weigh` -> `called`\n  src/lib.rs:2:27  `weigh` -> `called`\n  (say yes to rename `weigh`)\nI made 2 changes. No problems with the build.\n"
+rename-control-weigh True "I'd rename the `weigh` function to `called` in 2 places.\n  src/lib.rs:1:8  `weigh` -> `called`\n  src/lib.rs:2:27  `weigh` -> `called`\n  (say yes to rename `weigh`)\nI made 2 changes. No problems with the build.\n"
+rename-drain_events True "I'd rename the `drain_events` function to `read` in 2 places.\n  src/lib.rs:1:8  `drain_events` -> `read`\n  src/lib.rs:2:27  `drain_events` -> `read`\n  (say yes to rename `drain_events`)\nI made 2 changes. No problems with the build.\n"
+rename-control-drain_events True "I'd rename the `drain_events` function to `read` in 2 places.\n  src/lib.rs:1:8  `drain_events` -> `read`\n  src/lib.rs:2:27  `drain_events` -> `read`\n  (say yes to rename `drain_events`)\nI made 2 changes. No problems with the build.\n"
+rename-café True "I'd rename the `café` function to `naïve` in 2 places.\n  src/lib.rs:1:8  `café` -> `naïve`\n  src/lib.rs:2:27  `café` -> `naïve`\n  (say yes to rename `café`)\nI made 2 changes. No problems with the build.\n"
+rename-control-café True "I'd rename the `café` function to `naïve` in 2 places.\n  src/lib.rs:1:8  `café` -> `naïve`\n  src/lib.rs:2:27  `café` -> `naïve`\n  (say yes to rename `café`)\nI made 2 changes. No problems with the build.\n"
+field-rename-called True "I'd rename the `Record::called` field to `saved` in 3 places.\n  src/lib.rs:1:25  `called` -> `saved`\n  src/lib.rs:2:36  `called` -> `saved`\n  src/lib.rs:2:48  `called` -> `saved`\n  (say yes to rename `Record::called`)\nI made 3 changes. No problems with the build.\n"
+field-rename-control-called True "I'd rename the `Record::called` field to `saved` in 3 places.\n  src/lib.rs:1:25  `called` -> `saved`\n  src/lib.rs:2:36  `called` -> `saved`\n  src/lib.rs:2:48  `called` -> `saved`\n  (say yes to rename `Record::called`)\nI made 3 changes. No problems with the build.\n"
+field-rename-renamed True "I'd rename the `Record::renamed` field to `read` in 3 places.\n  src/lib.rs:1:25  `renamed` -> `read`\n  src/lib.rs:2:36  `renamed` -> `read`\n  src/lib.rs:2:49  `renamed` -> `read`\n  (say yes to rename `Record::renamed`)\nI made 3 changes. No problems with the build.\n"
+field-rename-control-renamed True "I'd rename the `Record::renamed` field to `read` in 3 places.\n  src/lib.rs:1:25  `renamed` -> `read`\n  src/lib.rs:2:36  `renamed` -> `read`\n  src/lib.rs:2:49  `renamed` -> `read`\n  (say yes to rename `Record::renamed`)\nI made 3 changes. No problems with the build.\n"
+negation True "I can't follow the sentence from the marked spot.\n  do ▮not rename function caller to renamed\n"
+multi True "I understand, but I can't do that here.\n"
+suffix True "I can't follow the sentence from the marked spot.\n  rename function caller to renamed inexplicable_suffix▮\n"
+collision True "I understand, but I can't do that here.\n"
+ambiguous True "I can't tell which one you mean: `caller` and `Other::caller`.\n"
+two-functions True "I can't tell which one you mean: `caller` and `caller`.\n"
+wrong-kind True '`caller` is the wrong kind of thing for that.\n'
+{"total": 42, "passed": 42, "changed": 14}

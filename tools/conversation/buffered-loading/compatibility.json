@@ -1,0 +1,110 @@
+{
+  "baseline_binary_sha256": "f16beba73f4c618bc94cf680ced5326ab65e4b6064d16432b24c33e39e1bba9a",
+  "candidate_binary_sha256": "bd7df8f882bf3fb2d1a5ac4c86ce77083e6305949953630030285256562747dd",
+  "rejection_cases": 10,
+  "all_rejections_identical": true,
+  "persisted_state_and_replies_identical": true,
+  "loaded_session_sha256": "9b97d773f78f04bbe02e8963df427635ebfada6919337c7397aba1da8e40fd8e",
+  "cases": [
+    {
+      "case": "empty",
+      "kind": "model",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: EOF while parsing a value at line 1 column 0\n"
+      }
+    },
+    {
+      "case": "empty",
+      "kind": "session",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: EOF while parsing a value at line 1 column 0\n"
+      }
+    },
+    {
+      "case": "truncated",
+      "kind": "model",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: EOF while parsing an object at line 1 column 19\n"
+      }
+    },
+    {
+      "case": "truncated",
+      "kind": "session",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: EOF while parsing an object at line 1 column 19\n"
+      }
+    },
+    {
+      "case": "shape",
+      "kind": "model",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: invalid length 0, expected struct IntentModel with 7 elements at line 1 column 2\n"
+      }
+    },
+    {
+      "case": "shape",
+      "kind": "session",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: invalid type: sequence, expected struct Session at line 1 column 1\n"
+      }
+    },
+    {
+      "case": "unicode",
+      "kind": "model",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: missing field `format_version` at line 1 column 11\n"
+      }
+    },
+    {
+      "case": "unicode",
+      "kind": "session",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: invalid unicode code point at line 1 column 10\n"
+      }
+    },
+    {
+      "case": "missing",
+      "kind": "model",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: No such file or directory (os error 2)\n"
+      }
+    },
+    {
+      "case": "invalid-version",
+      "kind": "model",
+      "identical": true,
+      "result": {
+        "code": 1,
+        "stdout": "",
+        "stderr": "glassmind: invalid model version, dimensions, or numeric weights\n"
+      }
+    }
+  ]
+}

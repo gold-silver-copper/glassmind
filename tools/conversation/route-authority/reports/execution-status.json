@@ -1,0 +1,41 @@
+{
+  "baseline_boundaries": {
+    "session": 10311,
+    "exit": 0
+  },
+  "cargo_validation": {
+    "session": 73552,
+    "exit": 0
+  },
+  "baseline_old_model_sample": {
+    "session": 50404,
+    "exit": 0
+  },
+  "plain_gates": {
+    "session": 46073,
+    "exit": 0
+  },
+  "initial_boundary_runner": {
+    "session": 55860,
+    "exit": 1,
+    "reason": "Full model baseline records were not yet ready; candidate full did not start."
+  },
+  "full_story_and_intent": {
+    "session": 78207,
+    "exit": 0
+  },
+  "regressions": {
+    "session": 19028,
+    "exit": 0
+  },
+  "resumed_boundaries_and_stale": {
+    "session": 52152,
+    "exit": 0
+  },
+  "model_gates": {
+    "session": 93499,
+    "exit": 2,
+    "reason": "All scorer commands completed successfully; final shell EOF after in-flight runner-file editing."
+  },
+  "remaining_jobs": []
+}

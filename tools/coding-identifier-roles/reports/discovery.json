@@ -1,0 +1,104 @@
+[
+  {
+    "request": "where is function implement?",
+    "stdout": "`implement` is defined at src/lib.rs:1.\n",
+    "stderr": "Running as unit: run-p3855432-i96094973.scope; invocation ID: 481c73045a3e475db340163dba35bb3b\n",
+    "changed": false
+  },
+  {
+    "request": "where is function caller?",
+    "stdout": "I can't follow the sentence from the marked spot.\n  where is function caller?\u25ae\n",
+    "stderr": "Running as unit: run-p3855434-i96094974.scope; invocation ID: fe92ea97dc8947a1957001c56dca442e\n",
+    "changed": false
+  },
+  {
+    "request": "where is function renamed?",
+    "stdout": "I can't follow the sentence from the marked spot.\n  where is function renamed\u25ae?\n",
+    "stderr": "Running as unit: run-p3855436-i96141890.scope; invocation ID: 4e620ede99cd44589bde6cc6da868cdd\n",
+    "changed": false
+  },
+  {
+    "request": "where is function called?",
+    "stdout": "Nothing is called `is`.\n",
+    "stderr": "Running as unit: run-p3855439-i96042048.scope; invocation ID: 05ff5a0c7b504229a5fcf357b95af32a\n",
+    "changed": false
+  },
+  {
+    "request": "where is function it?",
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p3855441-i96019883.scope; invocation ID: b911b9ee2412478fa9ce92accbf7c84c\n",
+    "changed": false
+  },
+  {
+    "request": "rename caller to implement_again",
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename caller \u25aeto implement_again\n",
+    "stderr": "Running as unit: run-p3855443-i96042049.scope; invocation ID: ab531c97eabf4418af08bcd3f0272872\n",
+    "changed": false
+  },
+  {
+    "request": "rename implement to renamed",
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename implement to \u25aerenamed\n",
+    "stderr": "Running as unit: run-p3855445-i96149831.scope; invocation ID: 292c42b9762e49a09a71b1a46731682d\n",
+    "changed": false
+  },
+  {
+    "request": "rename function implement to calculate",
+    "stdout": "I'd rename the `implement` function to `calculate` in 2 places.\n  src/lib.rs:1:8  `implement` -> `calculate`\n  src/lib.rs:2:26  `implement` -> `calculate`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n",
+    "stderr": "Running as unit: run-p3855448-i96149832.scope; invocation ID: f0c074d0d7b6474d93d5f85d0ea30b7d\n",
+    "changed": true
+  },
+  {
+    "request": "rename function caller to called",
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename function caller to \u25aecalled\n",
+    "stderr": "Running as unit: run-p3855519-i95993176.scope; invocation ID: 5f3b8f67e4854e1487cdf3e6c86073f1\n",
+    "changed": false
+  },
+  {
+    "request": "rename function caller to `called`",
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p3855521-i95993177.scope; invocation ID: 9ad1f03d6d0c44efb718567be436985c\n",
+    "changed": false
+  },
+  {
+    "request": "where is function `it`?",
+    "stdout": "`it` is defined at src/lib.rs:5.\n",
+    "stderr": "Running as unit: run-p3855523-i95993178.scope; invocation ID: 882c50e55d4540309de4eed7c9bbdaba\n",
+    "changed": false
+  },
+  {
+    "request": "rename function it to calculate",
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p3855525-i96137942.scope; invocation ID: 776e6c94dc7940a4b72306d824c3665f\n",
+    "changed": false
+  },
+  {
+    "request": "rename function `it` to calculate",
+    "stdout": "I'd rename the `it` function to `calculate` in one place.\n  src/lib.rs:5:8  `it` -> `calculate`\n  (say yes to rename `it`)\nI made one change. No problems with the build.\n",
+    "stderr": "Running as unit: run-p3855527-i96122434.scope; invocation ID: 8d3e6874e6734e6ca3083e8cad918501\n",
+    "changed": true
+  },
+  {
+    "request": "rename field called of struct Ledger to calculate",
+    "stdout": "I don't know the word `Ledger`.\n  rename field called of struct \u25aeLedger to calculate\n",
+    "stderr": "Running as unit: run-p3855563-i96162022.scope; invocation ID: 7823d4c40e964061a486841fcb64045e\n",
+    "changed": false
+  },
+  {
+    "request": "rename field `called` of struct Ledger to calculate",
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p3855566-i96118424.scope; invocation ID: 6acafa561e6544da965fc94629b614ea\n",
+    "changed": false
+  },
+  {
+    "request": "where is field called of struct Ledger?",
+    "stdout": "I can't follow the sentence from the marked spot.\n  where is field called of struct Ledger\u25ae?\n",
+    "stderr": "Running as unit: run-p3855568-i96149834.scope; invocation ID: 46197291b6c145f88a3c243c9e6f8846\n",
+    "changed": false
+  },
+  {
+    "request": "where is field `called` of struct Ledger?",
+    "stdout": "`Ledger::called` is defined at src/lib.rs:6.\n",
+    "stderr": "Running as unit: run-p3855571-i96079536.scope; invocation ID: 35a7ffa61eee45ddbb4ec33c8cda8138\n",
+    "changed": false
+  }
+]

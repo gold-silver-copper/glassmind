@@ -1,0 +1,1122 @@
+[
+  {
+    "id": "query-caller-plain",
+    "request": "where is function caller?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`caller` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3913566-i96143939.scope; invocation ID: 6e69fce1622947b8b3e3ecabf008cae5\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913464-i96196904.scope; invocation ID: 3d6d1c3f90c5486fa4499f57e7f52886\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-caller-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913464-i96196904.scope; invocation ID: 3d6d1c3f90c5486fa4499f57e7f52886\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-caller-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-caller-backtick",
+    "request": "where is function `caller`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`caller` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3913669-i96106397.scope; invocation ID: cf059cd1397d4319a3d943add72b4f9f\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913568-i96177655.scope; invocation ID: 562d0a4c77e745d79b6421d4851e10d1\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-caller-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913568-i96177655.scope; invocation ID: 562d0a4c77e745d79b6421d4851e10d1\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-caller-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-caller-double",
+    "request": "where is function \"caller\"?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`caller` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3913772-i96199285.scope; invocation ID: 7a457609e52d45dcbe70014eb164628d\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913671-i96106398.scope; invocation ID: 60a3954cab724898b4981717ec004718\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-caller-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913671-i96106398.scope; invocation ID: 60a3954cab724898b4981717ec004718\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-caller-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-renamed-plain",
+    "request": "where is function renamed?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`renamed` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3913921-i96207361.scope; invocation ID: 2a2f8c8fd62a41269e496be548f322dd\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913776-i96090350.scope; invocation ID: 2ba73bac6f6942d29cebec1a7331967a\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-renamed-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913776-i96090350.scope; invocation ID: 2ba73bac6f6942d29cebec1a7331967a\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-renamed-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-renamed-backtick",
+    "request": "where is function `renamed`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`renamed` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914025-i96096139.scope; invocation ID: bc3bc67aab74485f9d3214ca627f85bc\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913923-i96207362.scope; invocation ID: 0227143e29444aaa82cace59a24c1423\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-renamed-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3913923-i96207362.scope; invocation ID: 0227143e29444aaa82cace59a24c1423\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-renamed-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-renamed-double",
+    "request": "where is function \"renamed\"?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`renamed` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914136-i96087319.scope; invocation ID: c8a3b161a7014c968d7b1ec52ee6e574\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914031-i96096140.scope; invocation ID: 8056f0eee8aa4f64b545575e1868b0cc\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-renamed-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914031-i96096140.scope; invocation ID: 8056f0eee8aa4f64b545575e1868b0cc\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-renamed-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-called-plain",
+    "request": "where is function called?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`called` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914247-i96139274.scope; invocation ID: 412720ad5531449fa702d45d25d08b11\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914138-i96087320.scope; invocation ID: 44fdd899fb754e29aa4257a510dd9aba\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-called-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914138-i96087320.scope; invocation ID: 44fdd899fb754e29aa4257a510dd9aba\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-called-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-called-backtick",
+    "request": "where is function `called`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`called` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914350-i96177672.scope; invocation ID: 5e857e1eea2e4b2189a898f5049169ec\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914249-i96192661.scope; invocation ID: 3b367b01ff7c4750a9fae18529b1fbe0\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-called-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914249-i96192661.scope; invocation ID: 3b367b01ff7c4750a9fae18529b1fbe0\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-called-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-called-double",
+    "request": "where is function \"called\"?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`called` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914466-i96158713.scope; invocation ID: 00d8c2106045432f8e66c9bfb93c0731\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914353-i96177673.scope; invocation ID: ffaa475f37454d0dbad77737a69ee7cc\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-called-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914353-i96177673.scope; invocation ID: ffaa475f37454d0dbad77737a69ee7cc\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-called-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-drain_events-plain",
+    "request": "where is function drain_events?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`drain_events` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914605-i96115324.scope; invocation ID: 1590fc20d93d47048c31602e8d50c47d\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914468-i96158714.scope; invocation ID: 590e6e9989074c2984db4e84d0f15f30\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-drain_events-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914468-i96158714.scope; invocation ID: 590e6e9989074c2984db4e84d0f15f30\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-drain_events-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-drain_events-backtick",
+    "request": "where is function `drain_events`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`drain_events` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914708-i96207386.scope; invocation ID: 3ab5a18f97604a0992cb84a0a43ea425\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914607-i96124614.scope; invocation ID: 73868ccc1e9042d2852431c644849b5c\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-drain_events-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914607-i96124614.scope; invocation ID: 73868ccc1e9042d2852431c644849b5c\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-drain_events-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-drain_events-double",
+    "request": "where is function \"drain_events\"?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`drain_events` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914819-i96099719.scope; invocation ID: 17d9139cd0014fe7ad2baee0c5050d13\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914714-i96196918.scope; invocation ID: 1df1608bd0744d018ee1175ed94d6c19\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-drain_events-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914714-i96196918.scope; invocation ID: 1df1608bd0744d018ee1175ed94d6c19\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-drain_events-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-café-plain",
+    "request": "where is function café?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`café` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3914922-i96099721.scope; invocation ID: 494a7c568d2149d5b81e87bc1c08487b\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914821-i96146622.scope; invocation ID: 9c1fd29de48a42f7a531770d163c12b7\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-café-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914821-i96146622.scope; invocation ID: 9c1fd29de48a42f7a531770d163c12b7\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-café-plain)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-café-backtick",
+    "request": "where is function `café`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`café` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915026-i96146630.scope; invocation ID: 90e8583d191a4e1c8b992eb4e82548f8\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914924-i96099722.scope; invocation ID: 3f3f1862cc3c47c892a53919c4ccfbd4\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-café-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3914924-i96099722.scope; invocation ID: 3f3f1862cc3c47c892a53919c4ccfbd4\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-café-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "query-café-double",
+    "request": "where is function \"café\"?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`café` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915165-i96146631.scope; invocation ID: 171963f298b54e6d8730c10d1cf955ad\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915032-i96163524.scope; invocation ID: c923200ba131449d99636c6912bde29a\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-café-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915032-i96163524.scope; invocation ID: c923200ba131449d99636c6912bde29a\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/query-café-double)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-query-called",
+    "request": "where is field called of struct Record?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`Record::called` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915343-i96099746.scope; invocation ID: e00d0ed414d24eca9a96836c8f0e8c8f\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915168-i96087386.scope; invocation ID: 422707c309764639bd2434acfe43d467\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-query-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915168-i96087386.scope; invocation ID: 422707c309764639bd2434acfe43d467\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-query-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-control-called",
+    "request": "where is field `called` of struct `Record`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`Record::called` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915480-i96135022.scope; invocation ID: 71363e9a02204a1ab377798329db0c67\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915378-i96146636.scope; invocation ID: 3b1c72c6f545417a862023980385d2e2\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-control-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915378-i96146636.scope; invocation ID: 3b1c72c6f545417a862023980385d2e2\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-control-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-query-renamed",
+    "request": "where is field renamed of struct Record?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`Record::renamed` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915583-i96111617.scope; invocation ID: 9dcd0424eb2d4b9d9a960453d12784c4\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915482-i96111614.scope; invocation ID: 79ef669eddd74c99bd6a1d7b485913c0\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-query-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915482-i96111614.scope; invocation ID: 79ef669eddd74c99bd6a1d7b485913c0\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-query-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-control-renamed",
+    "request": "where is field `renamed` of struct `Record`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`Record::renamed` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915687-i96124621.scope; invocation ID: 241c04b296f8405c805870202d43e296\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915585-i96111618.scope; invocation ID: 932d696e0a13466294997c8853ed64e7\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-control-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915585-i96111618.scope; invocation ID: 932d696e0a13466294997c8853ed64e7\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-control-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-query-drain_events",
+    "request": "where is field drain_events of struct Record?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`Record::drain_events` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915794-i96124622.scope; invocation ID: a9c45009a4a34dd19b76ac327dad35e9\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915689-i96139378.scope; invocation ID: eed5d405ede1404c80c2976ac2374e41\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-query-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915689-i96139378.scope; invocation ID: eed5d405ede1404c80c2976ac2374e41\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-query-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub drain_events: u32 }\npub fn observe() -> u32 { Record { drain_events: 7 }.drain_events }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-control-drain_events",
+    "request": "where is field `drain_events` of struct `Record`?",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`Record::drain_events` is defined at src/lib.rs:1.\n",
+      "stderr": "Running as unit: run-p3915902-i96146670.scope; invocation ID: 25c155ed9b2d4471ae86ea5b137c5e50\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915797-i96139388.scope; invocation ID: a1ac8ba9387f443baad2267087f7a472\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-control-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915797-i96139388.scope; invocation ID: a1ac8ba9387f443baad2267087f7a472\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-control-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub drain_events: u32 }\npub fn observe() -> u32 { Record { drain_events: 7 }.drain_events }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-caller",
+    "request": "rename function caller to implement_again",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `caller` function to `implement_again` in 2 places.\n  src/lib.rs:1:8  `caller` -> `implement_again`\n  src/lib.rs:2:27  `caller` -> `implement_again`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3916006-i96127340.scope; invocation ID: 96e4f925e89a4ecda1da2bdb1d0773de\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3915904-i96127339.scope; invocation ID: b632eabc334742d0b7c23b3797582e06\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-caller)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916043-i96127341.scope; invocation ID: f3ffb507311b4b3fb343c47bd7db57b5\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-caller)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn implement_again() -> u32 { 7 }\npub fn observe() -> u32 { implement_again() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-control-caller",
+    "request": "rename function `caller` to `implement_again`",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `caller` function to `implement_again` in 2 places.\n  src/lib.rs:1:8  `caller` -> `implement_again`\n  src/lib.rs:2:27  `caller` -> `implement_again`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3916247-i96199419.scope; invocation ID: 6c5a8782100d4c2cb409490e9dbf695d\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916146-i96185670.scope; invocation ID: c1602eaaa0fe4a45a16ee8da88c1b28a\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-caller)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916303-i96135078.scope; invocation ID: 447264632d694d769c9b9db0a758b606\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-caller)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn implement_again() -> u32 { 7 }\npub fn observe() -> u32 { implement_again() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-implement",
+    "request": "rename function implement to renamed",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `implement` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `implement` -> `renamed`\n  src/lib.rs:2:27  `implement` -> `renamed`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3916582-i96127343.scope; invocation ID: 00cdbc0a12ad4aafbe607a27cd711b23\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916437-i96199448.scope; invocation ID: 509b26edc2c74462a13f201eddba1f3c\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-implement)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916624-i96115499.scope; invocation ID: 117f497a59c4449d926c226c94037683\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-implement)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve implement in comments.\npub const NOTE: &str = \"implement\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-control-implement",
+    "request": "rename function `implement` to `renamed`",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `implement` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `implement` -> `renamed`\n  src/lib.rs:2:27  `implement` -> `renamed`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3916836-i96187319.scope; invocation ID: 7ed60d117e7a45658daf541a673529e5\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916732-i96099842.scope; invocation ID: af23f7682de3408cba14c12d801496bd\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-implement)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916872-i96199450.scope; invocation ID: 84b0d9312927467aa17464bf752f4227\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-implement)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve implement in comments.\npub const NOTE: &str = \"implement\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-weigh",
+    "request": "rename function weigh to called",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `weigh` function to `called` in 2 places.\n  src/lib.rs:1:8  `weigh` -> `called`\n  src/lib.rs:2:27  `weigh` -> `called`\n  (say yes to rename `weigh`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3917088-i96124626.scope; invocation ID: ec6d8530a42e4f0a8da01401e3ef7b7e\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3916977-i96199486.scope; invocation ID: 3612aa590b17461fbc2cef8b4bd31418\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-weigh)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917124-i96087499.scope; invocation ID: 726cd1eb5b414050867a457e780b8a56\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-weigh)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve weigh in comments.\npub const NOTE: &str = \"weigh\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-control-weigh",
+    "request": "rename function `weigh` to `called`",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `weigh` function to `called` in 2 places.\n  src/lib.rs:1:8  `weigh` -> `called`\n  src/lib.rs:2:27  `weigh` -> `called`\n  (say yes to rename `weigh`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3917331-i96158805.scope; invocation ID: 308f71ee3e26419aa8d3855595866267\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917226-i96087501.scope; invocation ID: f7ceb83c80254bcfafa5839188ccfc2b\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-weigh)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917373-i96087524.scope; invocation ID: f283ae0bd3924ddb982c440d487660d0\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-weigh)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve weigh in comments.\npub const NOTE: &str = \"weigh\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-drain_events",
+    "request": "rename function drain_events to read",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `drain_events` function to `read` in 2 places.\n  src/lib.rs:1:8  `drain_events` -> `read`\n  src/lib.rs:2:27  `drain_events` -> `read`\n  (say yes to rename `drain_events`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3917576-i96087557.scope; invocation ID: e2ca93d3f5904529b3529e79fe45bdbe\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917474-i96158809.scope; invocation ID: 024a751c70a241cebdbfed623877eb1f\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917614-i96115558.scope; invocation ID: e3f6d857a7c941f7ac215219c31c6e68\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn read() -> u32 { 7 }\npub fn observe() -> u32 { read() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-control-drain_events",
+    "request": "rename function `drain_events` to `read`",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `drain_events` function to `read` in 2 places.\n  src/lib.rs:1:8  `drain_events` -> `read`\n  src/lib.rs:2:27  `drain_events` -> `read`\n  (say yes to rename `drain_events`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3917828-i96158824.scope; invocation ID: d69e22e231a84aba8bc7b4b3d13b0ce2\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917727-i96115562.scope; invocation ID: 1a9a540ee9fe4affa8eaebc020ec2327\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917865-i96158826.scope; invocation ID: a63b0fa81b0044f581143c8dc568be6f\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-drain_events)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn read() -> u32 { 7 }\npub fn observe() -> u32 { read() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-café",
+    "request": "rename function café to naïve",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `café` function to `naïve` in 2 places.\n  src/lib.rs:1:8  `café` -> `naïve`\n  src/lib.rs:2:27  `café` -> `naïve`\n  (say yes to rename `café`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3918077-i96158834.scope; invocation ID: 69f1fbd9e8264d5cb721108c723a4241\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3917966-i96111919.scope; invocation ID: f399ee55902c4020ad2f4248cf1d39ba\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-café)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918122-i96087596.scope; invocation ID: 93d72f2a3cea47fc9ed9facc71999484\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-café)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn naïve() -> u32 { 7 }\npub fn observe() -> u32 { naïve() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "rename-control-café",
+    "request": "rename function `café` to `naïve`",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `café` function to `naïve` in 2 places.\n  src/lib.rs:1:8  `café` -> `naïve`\n  src/lib.rs:2:27  `café` -> `naïve`\n  (say yes to rename `café`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3918334-i96087607.scope; invocation ID: 8d98e82e41f646caa075aa789c4d7189\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918233-i96087597.scope; invocation ID: fccd6276d860413eba7a79d9bb8030bc\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-café)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918370-i96135222.scope; invocation ID: a8c6bf679045481e83efdf57aa41d385\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/rename-control-café)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn naïve() -> u32 { 7 }\npub fn observe() -> u32 { naïve() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-rename-called",
+    "request": "rename field called on Record to saved",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `Record::called` field to `saved` in 3 places.\n  src/lib.rs:1:25  `called` -> `saved`\n  src/lib.rs:2:36  `called` -> `saved`\n  src/lib.rs:2:48  `called` -> `saved`\n  (say yes to rename `Record::called`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3918573-i96087632.scope; invocation ID: 150adbe54daf49fdad3129b7f22a171a\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918472-i96135251.scope; invocation ID: 1b48671ee09e48c69c70e97ddcadfdb7\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918636-i96087633.scope; invocation ID: 1db09a4bacce4f6fa5924a682d03a9f2\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub saved: u32 }\npub fn observe() -> u32 { Record { saved: 7 }.saved }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-rename-control-called",
+    "request": "rename field `called` on `Record` to `saved`",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `Record::called` field to `saved` in 3 places.\n  src/lib.rs:1:25  `called` -> `saved`\n  src/lib.rs:2:36  `called` -> `saved`\n  src/lib.rs:2:48  `called` -> `saved`\n  (say yes to rename `Record::called`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3918849-i96106592.scope; invocation ID: 1fc11875f33b41609348a05a1b7dcb20\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918744-i96087640.scope; invocation ID: 244e333d11cf44d494d89f7a16723a03\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-control-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918889-i96119771.scope; invocation ID: effe0e6181124ba59de1d2aeff857121\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-control-called)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub saved: u32 }\npub fn observe() -> u32 { Record { saved: 7 }.saved }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-rename-renamed",
+    "request": "rename field renamed on Record to read",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `Record::renamed` field to `read` in 3 places.\n  src/lib.rs:1:25  `renamed` -> `read`\n  src/lib.rs:2:36  `renamed` -> `read`\n  src/lib.rs:2:49  `renamed` -> `read`\n  (say yes to rename `Record::renamed`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3919092-i96163634.scope; invocation ID: ad731fb622fc4d33aa68b21a678f4bfe\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3918991-i96163609.scope; invocation ID: 36f8610b12bf4c18915625a2a3f45c1a\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3919128-i96163636.scope; invocation ID: 8b5c91bc7b6c41c0b4989761400dc478\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub read: u32 }\npub fn observe() -> u32 { Record { read: 7 }.read }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "field-rename-control-renamed",
+    "request": "rename field `renamed` on `Record` to `read`",
+    "pass_": true,
+    "changed": true,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I'd rename the `Record::renamed` field to `read` in 3 places.\n  src/lib.rs:1:25  `renamed` -> `read`\n  src/lib.rs:2:36  `renamed` -> `read`\n  src/lib.rs:2:49  `renamed` -> `read`\n  (say yes to rename `Record::renamed`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p3919381-i96100034.scope; invocation ID: 352032d674e44e6da3ab5ce7f8595ea3\n"
+    },
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3919242-i96163639.scope; invocation ID: 788b6f7c38e54a76801890630dc6bf0d\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-control-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest preserved ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3919463-i96100035.scope; invocation ID: 855b08b042774b3c9321fe5652817ff8\n   Compiling roles v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/candidate-v2-full/field-rename-control-renamed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/roles-5f0690132e15ab1a)\n     Running tests/behavior.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/behavior-d6e1bba369436dcd)\n   Doc-tests roles\n"
+    },
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub read: u32 }\npub fn observe() -> u32 { Record { read: 7 }.read }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "negation",
+    "request": "do not rename function caller to renamed",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I can't follow the sentence from the marked spot.\n  do ▮not rename function caller to renamed\n",
+      "stderr": "Running as unit: run-p3919608-i96199739.scope; invocation ID: e7046bf241e64f2db79bff66d82ebe6d\n"
+    },
+    "before": null,
+    "after": null,
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "multi",
+    "request": "rename function caller to renamed and rename function observe to calculate",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I can't follow the sentence from the marked spot.\n  rename function caller to renamed and rename function observe to calculate▮\n",
+      "stderr": "Running as unit: run-p3919649-i96155101.scope; invocation ID: 11882ae8ee9e460991a9600cb8b178b5\n"
+    },
+    "before": null,
+    "after": null,
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "suffix",
+    "request": "rename function caller to renamed inexplicable_suffix",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I can't follow the sentence from the marked spot.\n  rename function caller to renamed inexplicable_suffix▮\n",
+      "stderr": "Running as unit: run-p3919739-i96169119.scope; invocation ID: 5490ba0c6d98496389abd918c03e2d4e\n"
+    },
+    "before": null,
+    "after": null,
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "collision",
+    "request": "rename function caller to renamed",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p3919744-i96100056.scope; invocation ID: 1efaf2aebd724d14bfc71b1c03668fe7\n"
+    },
+    "before": null,
+    "after": null,
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub fn renamed() {}\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "ambiguous",
+    "request": "rename `caller` to renamed",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I can't follow the sentence from the marked spot.\n  rename `caller` to ▮renamed\n",
+      "stderr": "Running as unit: run-p3919746-i96177777.scope; invocation ID: 858e2584c109493db2de35b2220286f7\n"
+    },
+    "before": null,
+    "after": null,
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub struct Other { pub caller: u32 }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "two-functions",
+    "request": "rename function caller to renamed",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "I can't tell which one you mean: `caller` and `caller`.\n",
+      "stderr": "Running as unit: run-p3919756-i96211305.scope; invocation ID: 12488439372b4fe1a93e9374ec819291\n"
+    },
+    "before": null,
+    "after": null,
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub mod nested { pub fn caller() -> u32 { 3 } }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  },
+  {
+    "id": "wrong-kind",
+    "request": "rename field caller to renamed",
+    "pass_": true,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "result": {
+      "code": 0,
+      "stdout": "`caller` is the wrong kind of thing for that.\n",
+      "stderr": "Running as unit: run-p3919758-i96115649.scope; invocation ID: 6d6fbc7e599a4c56912d69e170f48c8b\n"
+    },
+    "before": null,
+    "after": null,
+    "actual": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    }
+  }
+]

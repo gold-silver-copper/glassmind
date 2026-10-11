@@ -1,0 +1,58 @@
+[
+  {
+    "adapter": "coding-metatypes-dev",
+    "baseline": {
+      "total": 35,
+      "passed": 35,
+      "usable": 13,
+      "safe": 35
+    },
+    "candidate": {
+      "total": 35,
+      "passed": 35,
+      "usable": 13,
+      "safe": 35
+    },
+    "all_row_predicates_equal": true
+  },
+  {
+    "adapter": "coding-answerfiles-dev",
+    "baseline": {
+      "total": 27,
+      "usable": 6,
+      "safe": 26
+    },
+    "candidate": {
+      "total": 27,
+      "usable": 6,
+      "safe": 26
+    },
+    "all_row_predicates_equal": true
+  },
+  {
+    "adapter": "coding-answerfiles-regression",
+    "baseline": {
+      "total": 8,
+      "right": 8
+    },
+    "candidate": {
+      "total": 8,
+      "right": 8
+    },
+    "all_row_predicates_equal": true
+  },
+  {
+    "adapter": "coding-edits-dev",
+    "baseline_pass": 9,
+    "candidate_pass": 9,
+    "total": 9,
+    "all_row_predicates_equal": true
+  },
+  {
+    "adapter": "coding-addfields-dev",
+    "baseline_pass": 14,
+    "candidate_pass": 14,
+    "total": 15,
+    "inherited_failure": "live-rollback: both binaries edit; original adapter TypeError on expected=None; exact final source identical"
+  }
+]

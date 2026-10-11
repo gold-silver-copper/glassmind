@@ -1,0 +1,35 @@
+Running as unit: run-p3919864-i96102634.scope; invocation ID: 2922a2ee0223476fbc312f58858bb17e
+{
+  "binary": "/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/glassmind-candidate-v2",
+  "binary_sha256": "aaf8887135081b3462c0051b6f3750390ca5df56a631eab25fb46005a0b83d7a",
+  "total": 27,
+  "usable": 6,
+  "safe": 26
+}
+count usable safe Wrote 3 to tally.txt.
+caller_count usable safe Wrote 1 to reports/call-count.
+unique_name usable safe Wrote dispatch to caller-id.
+have_members usable safe Wrote 3 to size.
+quoted_filename usable safe Wrote 3 to résultat-count.txt.
+unclosed_quote refused safe Cannot write an answer: unclosed filename quote
+zero usable safe Wrote 0 to zero.
+unknown refused safe Cannot write an answer: unknown or ambiguous reference
+ambiguous refused safe Cannot write an answer: unknown or ambiguous reference
+multiple_names refused safe Cannot write an answer: name output requires exactly one item
+incompatible refused safe Cannot write an answer: answer does not match requested format
+unsupported_type refused UNSAFE Wrote Vec<u16> to field-type.
+trailing_action refused safe Cannot write an answer: unconsumed output instruction
+query_action refused safe Cannot write an answer: question is not fully understood
+query_tail refused safe Cannot write an answer: question is not fully understood
+extra_sentence refused safe Cannot write an answer: unconsumed output instruction
+preamble refused safe Cannot write an answer: question is not fully understood
+occupied refused safe Cannot write an answer: destination already exists; overwrite is forbidden
+source refused safe Cannot write an answer: destination already exists; overwrite is forbidden
+symlink refused safe Cannot write an answer: destination already exists; overwrite is forbidden
+parent_symlink refused safe Cannot write an answer: Not a directory (os error 20)
+traversal refused safe Cannot write an answer: destination must be a relative path without traversal
+absolute refused safe Cannot write an answer: destination must be a relative path without traversal
+partial_parse refused safe Cannot write an answer: unconsumed output instruction
+unknown_format refused safe Cannot write an answer: missing output destination
+bad_source refused safe Cannot write an answer: source index is incomplete
+transcript_alias refused safe Cannot write an answer: answer and --reply-file must have different destinations

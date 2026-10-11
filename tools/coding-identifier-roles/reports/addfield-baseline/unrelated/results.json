@@ -1,0 +1,30 @@
+[
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field weight: u16 to Parcel; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/lib.rs",
+      "src/main.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p3926661-i96087914.scope; invocation ID: 1063eb43a3f847c78d666ac9b931badc\n    Blocking waiting for file lock on build directory\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/addfield-baseline/unrelated/unrelated)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.26s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/independent-319165b408077c60)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/deps/addfield_contract-fb6c2d807ecfade2)\n   Doc-tests independent\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p3926926-i96163897.scope; invocation ID: a542b04bdc9743b1996046620bbdbdd4\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/identifierroles-run/target/debug/independent`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "unrelated"
+  }
+]

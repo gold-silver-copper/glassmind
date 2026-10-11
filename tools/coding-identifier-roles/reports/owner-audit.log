@@ -1,0 +1,16 @@
+baseline query-owner False "I can't follow the sentence from the marked spot.\n  where is field called of struct Change▮?\n"
+baseline query-other False "I can't follow the sentence from the marked spot.\n  where is field called of struct Ledger▮?\n"
+baseline rename-owner False "I can't follow the sentence from the marked spot.\n  rename field called on ▮Change to saved\n"
+baseline rename-control False "I understand, but I can't do that here.\n"
+baseline ambiguous True "I can't tell which one you mean: `Change::called` and `Ledger::called`.\n"
+baseline negated True "I can't follow the sentence from the marked spot.\n  do ▮not rename field called on Change to saved\n"
+baseline suffix True "I can't follow the sentence from the marked spot.\n  rename field called on ▮Change to saved mysterious_suffix\n"
+baseline second-command True "I can't follow the sentence from the marked spot.\n  rename field called on ▮Change to saved; rename field called on Ledger to updated\n"
+candidate query-owner True '`Change::called` is defined at src/lib.rs:1.\n'
+candidate query-other True '`Ledger::called` is defined at src/lib.rs:2.\n'
+candidate rename-owner False "I can't follow the sentence from the marked spot.\n  rename field called on Change ▮to saved\n"
+candidate rename-control False "I understand, but I can't do that here.\n"
+candidate ambiguous True "I can't tell which one you mean: `Change::called` and `Ledger::called`.\n"
+candidate negated True "I can't follow the sentence from the marked spot.\n  do ▮not rename field called on Change to saved\n"
+candidate suffix True "I can't follow the sentence from the marked spot.\n  rename field called on Change ▮to saved mysterious_suffix\n"
+candidate second-command True "I can't follow the sentence from the marked spot.\n  rename field called on Change ▮to saved; rename field called on Ledger to updated\n"

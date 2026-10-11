@@ -1,0 +1,11 @@
+Running as unit: glassmind-parent-route-story-full.scope; invocation ID: 2b5dbecf56df4516b5f8bbcb609a8a04
+Traceback (most recent call last):
+  File "/home/gsc/code/glassmind/tools/conversation/memory-authority/parent/story-regression.py", line 20, in <module>
+    before=(a.baseline/'replies.jsonl').read_bytes();old=json.loads((a.baseline/'report.json').read_text());assert old['input_sha256']==report['input_sha256'] and old['model_sha256']==report['model_sha256']
+  File "/usr/lib/python3.14/pathlib/__init__.py", line 777, in read_bytes
+    with self.open(mode='rb', buffering=0) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/pathlib/__init__.py", line 771, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/gsc/.cache/glassmind/continuous-20261010/coordinator/memoryauthority-review/story-baseline/replies.jsonl'

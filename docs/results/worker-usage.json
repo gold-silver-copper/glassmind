@@ -633,6 +633,43 @@
         "reasoning_output_tokens": 3787
       },
       "source": "Rejected; parent46 boundary results byte-identical36pass,44parser dispositions;65files,63manifest,6freeze,1148raw hashes verified. No accepted runtime/full765. Changes hypothesis after third implementation-family rejection."
+    },
+    {
+      "track": "identifierroles-continuous",
+      "started_unix": 1791704623.3054323,
+      "finished_unix": 1791705121.67999,
+      "usage": {
+        "input_tokens": 3829451,
+        "cached_input_tokens": 3714048,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27748,
+        "reasoning_output_tokens": 8204
+      },
+      "source": "Accepted V2 after original136-file archival,129manifest/4freeze/12identity verification; parent42/42,8spelling checks,43tests/workspace,1340grammar+120reading unchanged. Full765 retains174passes,591refusals,0fail; all outcomes unchanged."
+    },
+    {
+      "track": "routeauthority-continuous",
+      "started_unix": 1791704671.1294289,
+      "finished_unix": 1791705669.4614298,
+      "usage": {
+        "input_tokens": 4994918,
+        "cached_input_tokens": 4888064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 32382,
+        "reasoning_output_tokens": 12127
+      },
+      "source": "Accepted after original442-file archival,438artifact/25identity/30input/2freeze verification. Final buffered parent binary passes490+134both modes,122boundarychecks each,17tests/workspace; full3100 retains1303 and adds2, no newlywrong;3987story and2821facts byteidentical. Wrapper/report-path errors and interrupted unbuffered run preserved separately."
+    },
+    {
+      "track": "fieldowners-continuous",
+      "usage": {
+        "input_tokens": 3468519,
+        "cached_input_tokens": 3378944,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27134,
+        "reasoning_output_tokens": 7042
+      },
+      "source": "Original282files archived and hash verified; worker accepted16/16 plus4refusals. Only glassmind-accepted and accepted-* are final; stale v3 evidence excluded. Independent reviewer active; no parent acceptance/full765 claim."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

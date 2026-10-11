@@ -1,0 +1,364 @@
+{
+  "changed_rows": 19,
+  "newly_wrong": 0,
+  "inherited_wrong_accepted": 40,
+  "worker_outputs_byte_identical": true,
+  "rows": [
+    {
+      "index": 796,
+      "text": "hey, have you approved my vacation time yet",
+      "gold": "pto_request_status",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1301,
+      "text": "thanks for helping me",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "intent",
+        "text": "You're welcome.",
+        "proposal": {
+          "label": "thank_you",
+          "accepted": true,
+          "score": 1.4524052,
+          "margin": 1.2254024,
+          "dev_confidence": 0.9911111,
+          "confidence_support": 225,
+          "known_features": 49
+        }
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1302,
+      "text": "thanks for helping me out today",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1303,
+      "text": "thanks for the assist",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1304,
+      "text": "thank you for the help",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1305,
+      "text": "thanks for your help",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1306,
+      "text": "thank you for your help",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1313,
+      "text": "thanks, you've helped me",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1314,
+      "text": "thanks, i appreciate it",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1932,
+      "text": "thank you for the chat, goodbye",
+      "gold": "goodbye",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 1934,
+      "text": "thank you for chatting with me, bye",
+      "gold": "goodbye",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2248,
+      "text": "hey ai cancel it now",
+      "gold": "cancel",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2368,
+      "text": "hi what's up",
+      "gold": "greeting",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2369,
+      "text": "hey what's up",
+      "gold": "greeting",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2370,
+      "text": "hey how's it going",
+      "gold": "greeting",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2371,
+      "text": "hi, ai",
+      "gold": "greeting",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2376,
+      "text": "hiya",
+      "gold": "greeting",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "intent",
+        "text": "Hello!",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 1.0410697,
+          "margin": 1.0004077,
+          "dev_confidence": 0.9807692,
+          "confidence_support": 260,
+          "known_features": 3
+        }
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2756,
+      "text": "hey siri, please cancel my reservation at the loft for 5",
+      "gold": "cancel_reservation",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    },
+    {
+      "index": 2811,
+      "text": "hey how old are you",
+      "gold": "how_old_are_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      "new_wrong": false
+    }
+  ]
+}
