@@ -1,5 +1,5 @@
 {
-  "runtime_commit": "0f8dbfa",
+  "runtime_commit": "0f8dbfa61628e73e7d5cc22bbf81f10feb131a52",
   "release_binary_sha256": "5fcb1577ee7c22487f603aa2dbd7bf39ca60575b218b7c5fde9e507f76c6a815",
   "owned_contracts": 32,
   "exact_repairs": 10,
@@ -20,8 +20,14 @@
   "wasm_behavior_executed": false,
   "world_tests": 34,
   "workspace_fmt_clippy_build_smoke_pass": true,
-  "full765_pending": true,
+  "full765_pending": false,
   "original_archive_files": 613,
   "original_archive_bytes": 1173505,
-  "worktree_and_auth_removed_after_reverification": true
+  "worktree_and_auth_removed_after_reverification": true,
+  "full765": {
+    "pass": 177,
+    "refused": 588,
+    "fail": 0,
+    "previous_passes_retained": 174
+  }
 }

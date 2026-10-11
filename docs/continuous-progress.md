@@ -1,6 +1,20 @@
 # Continuous development checkpoint
 
-## Current review — signed-index runtime integrated, full DEV running
+## Signed-index full DEV complete; publishing pending
+
+Full765 session99446 COMPLETE:177pass588refused0fail, all174oldpasses retained.
+Only3index-with-i32 styles improve. ResultSHA52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d.
+Finalcomparison docs/results/coding-index-proof.json; allparentcheckscomplete.
+No repeatfull required. Syntaxworker alsoCOMPLETE, original32files196045bytes
+archived andall66external/5source/27repo/10freeze identitiesverified. Parent
+all25148word scoring exactlymatches19423LAS/20540UAS andall2001validtrees;
+nonduplicate19286LAS/20403UAS of25011. Parent13frozencontrasts, forms+text26runs:
+68/70coreedges,24/26all-correct; objectquestionWho didNora thank? fails bothmodes.
+No mainCLI integrationyet; prepared syntax-cli.rs undercoordinator/udsyntax-review.
+Workerworktree/auth stillpresent; preserveoriginals, hashverifycopiesbeforecleanup.
+OlderACTIVE labels belowarehistorical; no modelworker orparentbenchmark remainslive.
+
+## Previous checkpoint — signed-index full DEV was running
 
 INDEXPROOF worker COMPLETE; original613files/1,173,505bytes archived at
 WORK/indexproof-run/submitted. Allarchive/2runtime/29authored/10native/3supplied

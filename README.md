@@ -108,7 +108,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 174/765 pass; 591 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 177/765 pass; 588 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -389,3 +389,9 @@ Explicit forward/inverse percentage changes and successive changes now use the
 correct before/after base. Bounded annual population changes use exact compounding.
 MathQA dev improves22->29 correct with all prior answers retained; broad language
 coverage remains limited. [Scope and validation](tools/quantities/percent-change/PARENT.md).
+
+Guarded signed slice indices can now be repaired when control-flow bounds and an
+actual compiler target-width check justify the conversion. The full coding dev
+result improves174→177/765 with every previous pass retained and zero failures.
+Original guards and rank behavior are preserved; unsupported cases refuse.
+[Proof scope and independent validation](tools/coding-index-proof/PARENT.md).
