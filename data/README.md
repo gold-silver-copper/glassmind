@@ -107,3 +107,54 @@ BabyLM counts documents that produce such a meaning, not whether that meaning
 is correct. Documents over 48 tokens remain in the denominator as uncovered;
 the report counts them separately. No bits-per-byte claim is made. BabyLM's
 test archive is not used.
+
+## Everyday intents and conversation memory
+
+[CLINC150 / oos-eval](https://github.com/clinc/oos-eval), revision
+`828f8093932c8fe6ca7936c3d2e52903b1c523de`, CC BY 3.0
+(Larson et al., 2019). The upstream JSON is 2,495,390 bytes. The training
+fetcher saves 15,000 in-scope training rows (1,165,484 bytes) and 3,100
+validation rows including 100 OOS requests (239,360 bytes), stopping before
+any test items. The later OOS training section is intentionally unused.
+Three identical utterances overlap official train and validation; the
+reported official totals preserve them.
+
+The word/character-feature margin model is trained on training only; its
+refusal thresholds are selected on validation. A correct OOS refusal is a
+right answer. `crates/everyday/EXPERIMENT.md` records full dev results and
+reproduction. The frozen model has SHA-256
+`a84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408`.
+Models live under `~/.cache/glassmind/models/everyday/`; training/validation
+JSONL and provenance live under `~/.cache/glassmind/data/clinc150/`.
+
+The coordinator's `tools/heldout-tracks.py` scores the official 5,500-item
+test split (including 1,000 OOS), outside worker sandboxes. Only totals are
+reported; private test JSONL stays under `~/.cache/glassmind/heldout/`.
+This test result does not choose the model or refusal thresholds.
+
+Basic conversation memory is checked by 41 synthetic smoke assertions,
+including corrections, Unicode, persistence, reset and previous-message
+recall. These checks are not an independent dialogue benchmark. There is
+no claim of SGD/MultiWOZ performance or external-service execution yet.
+
+## Story reasoning
+
+[bAbI tasks 1–20](https://huggingface.co/datasets/facebook/babi_qa), v1.2,
+English 1k, CC BY 3.0 (Facebook, 2015): 20 training files, 2,947,923 bytes.
+The 11,745,123-byte archive has SHA-256
+`84f5296ab9a1ad0dc9464e08c491d65cd08830fca3acae9ab86f75e0fb81573c`.
+The official download was unavailable; a fresh public S3 mirror download
+matched the existing archive byte-for-byte by SHA-256.
+
+`tools/stories/babi.py` opens only training members, partitions whole
+stories by a fixed hash (16,013 train and 3,987 dev questions), and strips
+answer keys, task IDs and supporting-fact IDs before invoking Rust.
+The tiny motivation model learns state/action associations from training
+assertions, not answer labels. Its provenance and exact reproduction are
+in `tools/stories/`; the trained model is checked in.
+
+Official test scoring uses the coordinator's totals-only runner, with the
+archive stored under `~/.cache/glassmind/heldout/babi/`. Workers never read
+its test members or predictions. The frozen model scored 19,916 right,
+64 refusals and 20 wrong across all 20,000 official test questions.
+No held-out failures were inspected or used to modify the reasoner.

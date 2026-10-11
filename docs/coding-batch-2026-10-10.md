@@ -94,10 +94,10 @@ Use the output directory outside the Cargo workspace; otherwise scratch crates
 inherit the surrounding workspace. All commands below run sequentially.
 
 ```bash
-cd /home/gsc/.cache/glassmind/grow-fast-20261010/coding
+cd ~/code/glassmind
 set -e
 export TMPDIR="$PWD/scratch/tmp"
-export CARGO_TARGET_DIR=/home/gsc/.cache/glassmind/grow-fast-20261010/coding-target
+export CARGO_TARGET_DIR="$HOME/.cache/glassmind/coding-target"
 mkdir -p "$TMPDIR"
 capped() {
   systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 \

@@ -128,8 +128,8 @@ No cargo tests run, so test-thread configuration is inapplicable. For just
 evaluation with the existing build:
 
 ```sh
-systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid timeout --kill-after=5s 600 python3 tools/stories/babi.py eval --model tools/stories/action-model.json --sample 20 --report scratch/stories/sample.json
-systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid timeout --kill-after=5s 600 python3 tools/stories/babi.py eval --model tools/stories/action-model.json --sample 0 --report scratch/stories/dev.json
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=5s 600 python3 tools/stories/babi.py eval --model tools/stories/action-model.json --sample 20 --report scratch/stories/sample.json
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=5s 600 python3 tools/stories/babi.py eval --model tools/stories/action-model.json --sample 0 --report scratch/stories/dev.json
 ```
 
 Interactive use:

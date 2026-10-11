@@ -8,29 +8,12 @@ export PYTHONDONTWRITEBYTECODE=1
 mkdir -p "$TMPDIR"
 result_dir=$(mktemp -d "$PWD/scratch/stories/reproduce.XXXXXX")
 
-# setsid can fork when launched as a process-group leader. Wait for the entire
-# named scope before consuming its output or starting another compilation.
+# --wait preserves the child exit status when setsid must fork.
 run_scoped() {
     local name=$1
     shift
-    local unit="glassmind-stories-${name}-$$"
-    local log="$result_dir/$name.log"
-    systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 \
-        --unit="$unit" setsid timeout --kill-after=5s 600 "$@" >"$log" 2>&1
-    local count=0
-    while [[ $(systemctl --user show "$unit.scope" -p ActiveState --value) =~ ^(active|activating|deactivating)$ ]]; do
-        sleep 0.2
-        count=$((count + 1))
-        if ((count > 3050)); then
-            systemctl --user stop "$unit.scope"
-            cat "$log"
-            return 1
-        fi
-    done
-    if [[ $name == build || $name == clippy ]]; then
-        # Do not mistake the early exit of a forking setsid for cargo success.
-        if ! rg -q 'Finished .* profile' "$log"; then cat "$log"; return 1; fi
-    fi
+    systemd-run --user --scope --quiet --collect -pMemoryMax=8G -pMemorySwapMax=0 \
+        setsid --wait timeout --kill-after=5s 600 "$@" >"$result_dir/$name.log" 2>&1
 }
 
 python3 tools/stories/babi.py prepare --provenance "$result_dir/source.json" >"$result_dir/prepare.log"

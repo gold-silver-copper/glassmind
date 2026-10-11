@@ -74,8 +74,8 @@ def render(journal, out):
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text('''<!doctype html><meta charset="utf-8"><title>glassmind benchmark tracks</title>
 <style>body{font:15px system-ui;max-width:1050px;margin:24px auto;padding:0 16px;color:#222;background:#fafafa}svg{width:100%}svg text{font-size:12px;fill:#555}span{margin-right:16px}td,th{padding:6px 10px;border-bottom:1px solid #ddd;text-align:left}table{border-collapse:collapse;width:100%}</style>
-<h1>glassmind benchmark tracks</h1><p>Development scores steer work; held-out totals only check it. Solid lines: dev. Dashed: held-out. Each dataset and metric has its own series. Hours start at the first recorded measurement; tokens are cumulative for this measurement series and include cached input.</p>
-''' + '<p>'+legend+'</p><h2>Elapsed hours</h2>'+chart(rows,'hours')+'<h2>Model tokens</h2>'+chart(rows,'tokens')+'<table><tr><th>Track</th><th>Split</th><th>Right</th><th>Measure</th></tr>'+''.join(table)+'</table>')
+<h1>glassmind benchmark tracks</h1><p>Development scores steer work; held-out totals only check it. Solid lines: dev. Dashed: held-out. Each dataset and metric has its own series. Hours start at the first recorded measurement; tokens count completed Codex worker turns and include cached input. Parent usage and interrupted calls are excluded, so token counts are a lower bound. Reading measures coverage; the grammar probe uses parse preference, not probabilities. Synthetic chat checks are not an independent benchmark.</p>
+''' + '<p>'+legend+'</p><h2>Elapsed hours</h2>'+chart(rows,'hours')+'<h2>Model tokens</h2>'+chart(rows,'tokens')+'<table><tr><th>Track</th><th>Split</th><th>Right / covered</th><th>Measure</th></tr>'+''.join(table)+'</table>')
 
 
 def main():
