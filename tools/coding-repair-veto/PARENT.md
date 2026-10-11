@@ -52,3 +52,8 @@ unchanged. Combined24CLI+40English tests, workspace fmt/clippy/release and stric
 smoke pass. The facts interface also reproduces its47 single-line cases and18
 session invariants on this exact combined binary. Integration reports are in
 parent/integrated; full765 execution remains the frozen coding-only binary above.
+
+Published in [PR37](https://github.com/gold-silver-copper/glassmind/pull/37), reviewed
+heade240ae93b63c0ccb1d48ab403724820632d52345 with CI38134843165 successful.
+Original and final archives were reverified before removing the inactive worktree
+and temporary login link; raw runs and frozen binaries remain outside Git.

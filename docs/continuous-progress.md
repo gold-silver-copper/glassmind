@@ -11,9 +11,14 @@ Combined releaseSHA30c25729e302578be2091071572201b389ebe72df98ba059ed748b0fe491d
 frozen atcoordinator/repairveto-review/revision/integrated/glassmind.
 Known completed worker tokens156325307; parent/interrupted excluded, cached input
 counted once. No active model worker; no new external data/model calls this turn.
-PR36 was lastmerged as643929fc72fdddaacde68bba0b35eca7f289940d. No openPR atlatest
-query. Current sources/reporting notyetpushed. Next: commit pendingmetadata, push harness/openPR, check reviewedheadCI,
-mergewith exact--match-head-commit SHA. Do not claim merged untilconfirmed.
+PR37 MERGED https://github.com/gold-silver-copper/glassmind/pull/37 at2026-10-11T11:16:45Z,
+merge495d9f85e9d47380c93168867e3683a885618d47. Reviewedheade240ae93b63c0ccb1d48ab403724820632d52345
+passed CI38134843165 in86seconds. Push42940/create63443/merge65840 allCOMPLETE.
+Both source improvements andupdatedREADME/scorejournal are published. No openPR or
+active model/native/full/build job remains. This is a checkpoint, not goalcompletion.
+Next: investigate a new quantities representation using permitted TRAIN/DEV,
+starting with existing quantity source and rejected rate reports; do not repeat
+rate templates or syntax tweaks. Preserve all existing synthetic/full4475 baselines.
 
 ### Accepted repair scope change
 
@@ -23,7 +28,8 @@ remain WORK/repairveto-run/frozen-final. Independent original24×2 exposed3 unre
 edits and1missingstatus; original30×2 missed1status. Both originals NOTaccepted.
 Coordinator revision sourceSHAf53651abb4c96c7be2885eeac1e52adbaa643a583c4a8297f783a0aec004d8e6.
 Frozen coding-onlyrelease65750260c5db5a5838704cde8cd6cd17f16d11980e53005644d5df3cd7015f44.
-Owned inactive worktreeWORK/repairveto retains revisedsource; originalsnapshots intact.
+Originalsnapshots intact. Inactive repairveto worktree andtemporaryloginlink nowremoved
+after original/finalarchive verification; finalsource also in repairveto-run/coordinator-final-submitted.
 
 Revision includes source-preservation retraction, conditional once, negated request/
 permission predicates and ability/test-suite status terms. Scope is a veto retaining
@@ -98,14 +104,15 @@ newdownloads0. Scorejournal recordsordinaryQA unchanged, notauthoredaccuracy asQ
 
 ### Next work and retained ownership
 
-Finishpublishingabove, then replenishexperimentqueue fromTRAIN/DEV: investigate a
+Publishing complete. Replenishexperimentqueue fromTRAIN/DEV: investigate a
 changed representation for quantities or dialogue rather than more syntax tweaks.
 Alternative: inspect uncovered typed coding edits/implementation gaps without reading
 hidden solutions/generators. Avoidanother repairwhitelist orwhole-sentence patch list.
-No officialheldoutdatawasread. Afterpublish, verifyoriginal+revisionarchivesagain
-before removingownedinactive repairveto/factverify worktrees andtemporaryloginlinks.
-Rawruns/targets remainoutsideGit; neverremove unrelatedcaches. Externalprogresslog
-needsfive-line milestone atmerge. Historicalcheckpoints belowarenotactivejobs.
+No officialheldoutdatawasread. Original+revisionarchives reverified:153identities214434386bytes. Finalcleanup
+archives repairveto18files150805bytes, factverify30files116279bytes under each
+run/coordinator-final-submitted. Bothinactiveworktrees andtemporaryloginlinks removed;
+rawruns/targets/frozensources remain. pre-cleanup-verification.json recordsidentities.
+Externalprogresslog nowhasfive-line PR37 milestone. Neverremove unrelatedcaches. Historicalcheckpoints belowarenotactivejobs.
 
 ### Previous checkpoint details (superseded)
 
