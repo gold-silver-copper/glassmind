@@ -167,16 +167,32 @@ fn same_proposal(saved: &Reply<Rust>, fresh: &Reply<Rust>) -> bool {
                 ..
             },
         ) => a == b && x == y && left_a.is_empty() && left_b.is_empty(),
+        (
+            Reply::Patch {
+                action: a,
+                changes: x,
+                check: c,
+                ..
+            },
+            Reply::Patch {
+                action: b,
+                changes: y,
+                check: d,
+                ..
+            },
+        ) => a == b && x == y && c == d,
         (a @ Reply::Proposal { .. }, b @ Reply::Proposal { .. }) => a == b,
         _ => false,
     }
 }
 
 fn say(system: &System, reply: &Reply<Rust>) -> String {
-    system
-        .english
-        .say(reply)
-        .map_or_else(|| format!("{reply:?}"), |s| s.text)
+    crate::coding::CodingLanguage {
+        english: &system.english,
+        switches: &system.switches,
+    }
+    .say(reply)
+    .map_or_else(|| format!("{reply:?}"), |s| s.text)
 }
 
 fn status(session: &CodingSession) -> String {
@@ -509,9 +525,7 @@ pub fn run(
                 session.conversation.turns.clear();
                 "Task cancelled; no pending action will run.".into()
             }
-            _ if glassmind_english_rust::implementation_grammar::request(text).is_some()
-                || glassmind_english_rust::add_fields::request(text).is_some() =>
-            {
+            _ if glassmind_english_rust::add_fields::request(text).is_some() => {
                 if let Some(task) = &mut session.task
                     && matches!(
                         task.status,
@@ -523,7 +537,7 @@ pub fn run(
                 if let Some(plan) = &mut session.plan {
                     plan.status = TaskStatus::Cancelled;
                 }
-                "This action is not yet supported in a persistent task. Use do without --session for function implementation or adding fields.".into()
+                "This action is not yet supported in a persistent task. Use do without --session for adding fields.".into()
             }
             _ if glassmind_english::selection::request(text).is_some() => {
                 let selection =
@@ -579,7 +593,10 @@ fn request(
     for turn in &mut session.conversation.turns {
         if matches!(
             plain(&turn.reply),
-            Reply::Proposal { .. } | Reply::Remedy { .. } | Reply::Clarify { .. }
+            Reply::Proposal { .. }
+                | Reply::Patch { .. }
+                | Reply::Remedy { .. }
+                | Reply::Clarify { .. }
         ) {
             turn.reply = Reply::Declined;
         }
@@ -962,12 +979,18 @@ mod tests {
     }
 
     #[test]
-    fn unsupported_task_actions_do_not_fall_through_to_repair() {
+    fn implementation_without_executed_tests_does_not_fall_through_to_repair() {
         let f = Fixture::new("pub fn total(xs: &[i32]) -> i32 { todo!() }\n");
         let before = snapshot(&f.root).unwrap();
         f.turn(2, "implement total");
         assert_eq!(snapshot(&f.root).unwrap(), before);
-        assert!(f.state().task.is_none());
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Blocked);
+        assert!(matches!(task.request, Action::Implement { .. }));
+        assert!(task.revision.is_none());
+        assert!(
+            matches!(&task.events.last().unwrap().result, Reply::Trouble(glassmind_meaning::Trouble::ActionFailed { reason }) if reason.contains("nonzero executed failing baseline tests required"))
+        );
     }
     #[test]
     fn ordered_plan_rebinds_each_target_and_checks_the_final_result() {
@@ -1087,7 +1110,7 @@ mod tests {
     fn an_unsupported_replacement_cancels_a_whole_pending_plan() {
         let f = Fixture::new(SOURCE);
         f.turn(1, "rename Parcel to Package then rename Bundle to Shipment");
-        f.turn(2, "implement total");
+        f.turn(2, "add public field count: u32 to Parcel");
         assert_eq!(f.state().plan.unwrap().status, TaskStatus::Cancelled);
         f.turn(8, "continue");
         assert_eq!(f.source(), SOURCE);
@@ -1458,7 +1481,14 @@ mod tests {
             f.turn(1, control);
             f.turn(8, "continue");
             assert_eq!(f.source(), REVISION_SOURCE, "{control}");
-            assert_eq!(f.state().task.unwrap().status, TaskStatus::Cancelled);
+            let task = f.state().task.unwrap();
+            if control == "implement other" {
+                assert_eq!(task.status, TaskStatus::Blocked);
+                assert!(matches!(task.request, Action::Implement { .. }));
+                assert!(task.revision.is_none());
+            } else {
+                assert_eq!(task.status, TaskStatus::Cancelled);
+            }
         }
         let f = Fixture::new(REVISION_SOURCE);
         f.turn(2, "fix the tests");
@@ -1544,5 +1574,137 @@ mod tests {
         f.turn(8, "continue");
         assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
         assert_eq!(f.source(), REVISION_SOURCE);
+    }
+    const IMPLEMENT_SOURCE: &str = "pub fn total(xs: &[i32]) -> i32 { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(total(&[4,-9,7]),2); assert_eq!(total(&[-3,-5]),-8); assert_eq!(total(&[]),0); } }\n";
+
+    #[test]
+    fn implementation_preview_resumes_with_fresh_native_proof_and_undo() {
+        let f = Fixture::new(IMPLEMENT_SOURCE);
+        f.turn(1, "please implement total");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Ready);
+        assert!(
+            matches!(task.request, Action::Implement { thing: Thing::Item(ref i) } if i.name == "total")
+        );
+        assert!(
+            matches!(task.proposal(), Some(Reply::Patch { check: glassmind_world_rust::checks::RustCheck::Test, trials, .. }) if *trials > 1)
+        );
+        assert_eq!(f.source(), IMPLEMENT_SOURCE);
+        f.turn(1, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(!f.source().contains("todo!()"));
+        assert!(f.source().contains("assert_eq!(total(&[4,-9,7]),2)"));
+        f.turn(1, "undo");
+        assert_eq!(f.source(), IMPLEMENT_SOURCE);
+    }
+
+    #[test]
+    fn an_implementation_plan_can_rename_its_result_and_check_it() {
+        let f = Fixture::new(IMPLEMENT_SOURCE);
+        f.turn(
+            8,
+            "implement total; then rename it to accumulated; then check the tests",
+        );
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert_eq!(plan.current, 3);
+        assert!(matches!(
+            plan.steps.first().unwrap().task.as_ref().unwrap().request,
+            Action::Implement { .. }
+        ));
+        assert!(f.source().contains("fn accumulated("));
+        assert!(!f.source().contains("todo!()"));
+    }
+
+    #[test]
+    fn contextual_implementation_uses_the_previous_unique_function() {
+        let f = Fixture::new(IMPLEMENT_SOURCE);
+        f.turn(1, "where is `total`?");
+        f.turn(2, "fill it in");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(!f.source().contains("todo!()"));
+    }
+
+    #[test]
+    fn implementation_corrections_retain_the_action_kind() {
+        let source = format!("pub fn unused(xs: &[i32]) -> i32 {{ todo!() }}\n{IMPLEMENT_SOURCE}");
+        let f = Fixture::new(&source);
+        f.turn(1, "implement unused");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        f.turn(2, "sorry, I meant `total`");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(
+            f.source()
+                .contains("fn unused(xs: &[i32]) -> i32 { todo!() }")
+        );
+        assert!(
+            !f.source()
+                .contains("fn total(xs: &[i32]) -> i32 { todo!() }")
+        );
+    }
+
+    #[test]
+    fn unexecuted_and_ambiguous_implementations_remain_blocked() {
+        let source = "pub fn total(xs: &[i32]) -> i32 { todo!() }\n#[cfg(test)] mod tests { #[test] fn unrelated() { assert_eq!(1,2); } }\n";
+        let f = Fixture::new(source);
+        f.turn(2, "implement total");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Blocked);
+        assert!(
+            matches!(&task.events.last().unwrap().result, Reply::Trouble(glassmind_meaning::Trouble::ActionFailed { reason }) if reason.contains("execution was not witnessed"))
+        );
+        assert_eq!(f.source(), source);
+        let source = "pub fn total(xs: &[i32]) -> i32 { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn weak() { assert_eq!(total(&[]),0); } }\n";
+        let f = Fixture::new(source);
+        f.turn(2, "implement total");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        assert_eq!(f.source(), source);
+    }
+
+    #[test]
+    fn tampered_implementation_patch_cannot_bypass_native_proof() {
+        let f = Fixture::new(IMPLEMENT_SOURCE);
+        f.turn(1, "implement total");
+        let mut state = f.state();
+        let Reply::Patch { changes, .. } = &mut state
+            .task
+            .as_mut()
+            .unwrap()
+            .events
+            .last_mut()
+            .unwrap()
+            .result
+        else {
+            panic!("patch missing")
+        };
+        changes
+            .first_mut()
+            .unwrap()
+            .new
+            .push_str("// unproved change\n");
+        save(&f.session, &state).unwrap();
+        f.turn(2, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), IMPLEMENT_SOURCE);
+    }
+
+    #[test]
+    fn an_implementation_plan_rejects_unsupported_tail_before_synthesis() {
+        let f = Fixture::new(IMPLEMENT_SOURCE);
+        f.turn(8, "implement total; then delete every file");
+        assert!(f.state().task.is_none());
+        assert!(f.state().plan.is_none());
+        assert_eq!(f.source(), IMPLEMENT_SOURCE);
+    }
+    #[test]
+    fn implementation_does_not_bypass_rename_collision_checks() {
+        let f = Fixture::new(IMPLEMENT_SOURCE);
+        f.turn(8, "implement total; then rename it to sum");
+        let state = f.state();
+        assert_eq!(state.plan.as_ref().unwrap().current, 1);
+        assert_eq!(state.plan.unwrap().status, TaskStatus::Blocked);
+        assert!(f.source().contains("fn total("));
+        assert!(f.source().contains(".sum()"));
+        assert!(!f.source().contains("todo!()"));
     }
 }

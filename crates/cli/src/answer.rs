@@ -76,7 +76,7 @@ pub fn response(reply: &Reply<Rust>) -> Response {
         Reply::Recall(_) => Response::Meta {
             act: MetaAct::ShowContext,
         },
-        Reply::Proposal { .. } => Response::Refuse {
+        Reply::Proposal { .. } | Reply::Patch { .. } => Response::Refuse {
             refusal: Refusal::Unsupported,
         },
         Reply::Checked { check, problems }
@@ -141,7 +141,7 @@ pub fn response(reply: &Reply<Rust>) -> Response {
             Trouble::Ambiguous { candidates } => Response::Ask {
                 candidates: candidates.iter().map(key).collect(),
             },
-            Trouble::Unsupported => Response::Refuse {
+            Trouble::Unsupported | Trouble::ActionFailed { .. } => Response::Refuse {
                 refusal: Refusal::Unsupported,
             },
             Trouble::NothingPending => Response::Refuse {

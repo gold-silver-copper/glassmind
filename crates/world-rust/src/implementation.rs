@@ -1,5 +1,8 @@
 //! Finite signature-directed native pipelines; project tests are opaque verifiers.
 use crate::{APPLY_CHANGES, RUN_CHECK, RustWorld, checks};
+use crate::{Rust, RustKind};
+use glassmind_meaning::interface::World;
+use glassmind_meaning::{Action, Name, Reply, Thing};
 use quote::ToTokens;
 use std::{
     collections::BTreeMap,
@@ -27,6 +30,26 @@ pub struct Implementation {
     deadline: Instant,
 }
 impl Implementation {
+    fn patch(&self, source: &str, action: Action<Rust>) -> Result<Reply<Rust>, String> {
+        let old = self
+            .original
+            .get(Path::new("src/lib.rs"))
+            .ok_or("implementation source missing")?;
+        Ok(Reply::Patch {
+            action,
+            changes: vec![checks::RustChange {
+                source: source.into(),
+                file: "src/lib.rs".into(),
+                line: 1,
+                column: 0,
+                old: String::from_utf8(old.clone()).map_err(|e| e.to_string())?,
+                new: self.replacement.clone(),
+            }],
+            check: checks::RustCheck::Test,
+            trials: self.trials,
+            evidence: self.evidence.display().to_string(),
+        })
+    }
     pub fn trials(&self) -> usize {
         self.trials
     }
@@ -615,6 +638,88 @@ fn restore(root: &Path, original: &BTreeMap<PathBuf, Vec<u8>>) -> Result<(), Str
 }
 
 impl RustWorld {
+    fn implementation_action(&self, action: &Action<Rust>) -> Result<Implement, String> {
+        let Action::Implement {
+            thing: Thing::Item(item),
+        } = action
+        else {
+            return Err("implementation requires one resolved function".into());
+        };
+        let source = self.implementation_source()?;
+        if item.kind != RustKind::Function
+            || item.file != "src/lib.rs"
+            || item.owner.is_some()
+            || item.source != source.name
+            || !self
+                .lookup(&Name(item.name.clone()), &mut Vec::new())
+                .contains(item)
+        {
+            return Err(
+                "implementation target must be a current top-level function in src/lib.rs".into(),
+            );
+        }
+        Ok(Implement {
+            target: item.name.clone(),
+        })
+    }
+
+    pub(crate) fn propose_typed_implementation(
+        &self,
+        action: &Action<Rust>,
+    ) -> Result<Reply<Rust>, String> {
+        let request = self.implementation_action(action)?;
+        let proof = self.propose_implementation(&request)?;
+        let patch = proof.patch(&self.implementation_source()?.name, action.clone())?;
+        *self
+            .implementation
+            .lock()
+            .map_err(|_| "implementation cache unavailable")? = Some(proof);
+        Ok(patch)
+    }
+
+    pub(crate) fn apply_typed_implementation(
+        &self,
+        patch: &Reply<Rust>,
+    ) -> Result<Reply<Rust>, String> {
+        let Reply::Patch {
+            action,
+            changes,
+            check,
+            ..
+        } = patch
+        else {
+            return Err("typed implementation patch required".into());
+        };
+        let request = self.implementation_action(action)?;
+        let cached = self
+            .implementation
+            .lock()
+            .map_err(|_| "implementation cache unavailable")?
+            .take();
+        let proof = match cached {
+            Some(proof) if proof.action.target == request.target => proof,
+            _ => self.propose_implementation(&request)?,
+        };
+        let fresh = proof.patch(&self.implementation_source()?.name, action.clone())?;
+        let Reply::Patch {
+            changes: fresh_changes,
+            check: fresh_check,
+            ..
+        } = fresh
+        else {
+            return Err("native proof did not produce a patch".into());
+        };
+        if *changes != fresh_changes || *check != fresh_check {
+            return Err("saved implementation patch differs from native proof".into());
+        }
+        let count = self.apply_implementation(&proof)?;
+        Ok(Reply::Applied {
+            changes: count,
+            check: Some(fresh_check),
+            problems: Vec::new(),
+        })
+    }
+
     fn implementation_source(&self) -> Result<&crate::index::SourceIndex, String> {
         if !self.switches.on(APPLY_CHANGES.id) || !self.switches.on(RUN_CHECK.id) {
             return Err("implementation requires enabled apply and check rules".into());
@@ -686,7 +791,10 @@ impl RustWorld {
             )?;
             let log = fs::read_to_string(evidence.join("target-execution.log"))
                 .map_err(|e| e.to_string())?;
-            if reached.success || reached.failed == 0 || !log.contains(&marker) {
+            // Compiler warnings may quote the injected body without executing
+            // it. Require the standalone runtime panic payload, not source text.
+            let witnessed = log.lines().any(|line| line.trim() == marker);
+            if reached.success || reached.failed == 0 || !witnessed {
                 return Err("target execution was not witnessed in original tests".into());
             }
             let mut probe_expected = original.clone();
@@ -843,6 +951,49 @@ mod tests {
         assert_eq!(snapshot(&root).unwrap(), changed);
         fs::write(root.join("src/lib.rs"), code).unwrap();
         assert_eq!(world.apply_implementation(&proposal).unwrap(), 1);
+        let _ = fs::remove_dir_all(root);
+    }
+    #[test]
+    fn serialized_typed_patch_requires_fresh_native_proof() {
+        let root = checks::scratch("typed-implementation-contract");
+        fs::create_dir_all(root.join("src")).unwrap();
+        fs::write(root.join("Cargo.toml"), "[package]\nname=\"typed_implementation_contract\"\nversion=\"0.1.0\"\nedition=\"2021\"\n[workspace]\n").unwrap();
+        let code = "pub fn gather(xs: &[i32]) -> i32 { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn check() { assert_eq!(gather(&[4,-9,7]),2); assert_eq!(gather(&[-3,-5]),-8); } }\n";
+        fs::write(root.join("src/lib.rs"), code).unwrap();
+        let open = || RustWorld::open(&[("fixture".into(), root.as_path())], &Switches::all_on());
+        let world = open();
+        let item = world
+            .lookup(&Name("gather".into()), &mut Vec::new())
+            .first()
+            .unwrap()
+            .clone();
+        let action = Action::Implement {
+            thing: Thing::Item(item),
+        };
+        let proposal = world.propose(&action, &mut Vec::new()).unwrap();
+        let bytes = serde_json::to_vec(&proposal).unwrap();
+        let saved: Reply<Rust> = serde_json::from_slice(&bytes).unwrap();
+        drop(world);
+        let mut modified = saved.clone();
+        let Reply::Patch { changes, .. } = &mut modified else {
+            panic!("patch missing")
+        };
+        changes
+            .first_mut()
+            .unwrap()
+            .new
+            .push_str("// forged change\n");
+        assert!(open().apply(&modified, &mut Vec::new()).is_err());
+        assert_eq!(fs::read_to_string(root.join("src/lib.rs")).unwrap(), code);
+        let applied = open().apply(&saved, &mut Vec::new()).unwrap();
+        assert!(
+            matches!(applied, Reply::Applied { check: Some(checks::RustCheck::Test), ref problems, .. } if problems.is_empty())
+        );
+        assert!(
+            !fs::read_to_string(root.join("src/lib.rs"))
+                .unwrap()
+                .contains("todo!()")
+        );
         let _ = fs::remove_dir_all(root);
     }
 }

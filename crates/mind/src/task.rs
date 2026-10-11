@@ -47,6 +47,7 @@ impl<O: Ontology> Task<O> {
     pub fn proposed(request: Action<O>, original_text: String, result: Reply<O>) -> Self {
         let status = match &result {
             Reply::Proposal { spots, .. } if !spots.is_empty() => TaskStatus::Ready,
+            Reply::Patch { changes, .. } if !changes.is_empty() => TaskStatus::Ready,
             Reply::Remedy { changes, left, .. } if left.is_empty() => {
                 if changes.is_empty() {
                     TaskStatus::Completed

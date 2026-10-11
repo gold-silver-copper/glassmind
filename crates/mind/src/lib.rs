@@ -183,7 +183,9 @@ impl<O: Ontology> Session<O> {
             }
             match reply {
                 Reply::Applied { .. } | Reply::Declined => return None,
-                Reply::Proposal { .. } | Reply::Clarify { .. } => return Some(reply.clone()),
+                Reply::Proposal { .. } | Reply::Patch { .. } | Reply::Clarify { .. } => {
+                    return Some(reply.clone());
+                }
                 Reply::Remedy { changes, .. } if !changes.is_empty() => return Some(reply.clone()),
                 _ => {}
             }
@@ -847,9 +849,10 @@ fn trouble_progress<O: Ontology>(t: &Trouble<O>) -> Progress {
         Trouble::UnknownWord { .. } => Progress::Words,
         Trouble::UnknownShape { .. } => Progress::Sentence,
         Trouble::NoSuchName { .. } | Trouble::Ambiguous { .. } => Progress::Reference,
-        Trouble::WrongKind { .. } | Trouble::Unsupported | Trouble::NothingPending => {
-            Progress::Action
-        }
+        Trouble::WrongKind { .. }
+        | Trouble::Unsupported
+        | Trouble::NothingPending
+        | Trouble::ActionFailed { .. } => Progress::Action,
     }
 }
 

@@ -91,7 +91,9 @@ Up to four operations joined by `then` can run as a persisted plan, stopping
 on failed verification and resuming with `continue`. Ambiguous target choices
 persist too: `choose 2` selects the displayed target while keeping the requested
 new name. Repairs can persist up to four isolated revisions, using new compiler
-and test diagnostics before applying a verified composed change.
+and test diagnostics before applying a verified composed change. Function
+implementation also supports persisted previews, contextual targets and plans,
+using its existing native target-execution and unique-candidate checks.
 [Persistent coding tasks and current limits](docs/coding-tasks.md).
 
 
