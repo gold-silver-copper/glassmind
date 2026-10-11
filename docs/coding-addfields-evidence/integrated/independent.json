@@ -1,0 +1,214 @@
+[
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field weight: u16 to Parcel; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/lib.rs",
+      "src/main.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2724547-i94995126.scope; invocation ID: 47b72cb2712b4d30a4a421603bcd530b\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/independent/alias-self)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.17s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/deps/addfield_contract-fb6c2d807ecfade2)\n   Doc-tests independent\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2724663-i94960712.scope; invocation ID: deed2502e7304dfe9781a520aabc3b63\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/independent`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "alias-self"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field weight: u16 to Parcel; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/lib.rs",
+      "src/main.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2725318-i94960756.scope; invocation ID: 4e5bb345488240c3923b44ae37f6f2b9\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/independent/unrelated)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/deps/addfield_contract-fb6c2d807ecfade2)\n   Doc-tests independent\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2725533-i95007233.scope; invocation ID: 72abf4b319fa4bceab22eb0b371f5816\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/addfields-check/cargo-target/debug/independent`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "unrelated"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: target Default derive would synthesize an unrequested default\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "default"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: struct name must identify exactly one declaration\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "collision"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: type aliases may hide constructors\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "alias"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: item macros may generate constructors or bindings\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "unknown-macro"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: qualified or struct-update constructors are unsupported\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "update"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: conditional or custom attributes are unsupported outside cfg(test) modules\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "cfg"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors. Also delete the tests.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "trailing"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use unsafe { std::mem::zeroed() } for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: default expressions with calls, blocks or side effects are unsupported\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "unsafe-default"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: existing tests failed after applying the field; rolling back\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "live-rollback"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: unsafe functions may hide construction\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "unsafe-function"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: field addition failed compiler or existing tests in scratch copy\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "test-fails"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 999999 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: field addition failed compiler or existing tests in scratch copy\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "type-mismatch"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: block-local items/imports may shadow constructor bindings\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "local-shadow"
+  }
+]

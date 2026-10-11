@@ -334,6 +334,32 @@
         "reasoning_output_tokens": 7269
       },
       "source": "Raw SQuAD1.1 dev EM12.3936to23.9546; selected815right791wrong8964refused; parent forbids automatic factual answers, reviewing unverified source proposals"
+    },
+    {
+      "track": "addfields-continuous",
+      "started_unix": 1791696014.3889525,
+      "finished_unix": 1791696492.2298794,
+      "usage": {
+        "input_tokens": 3158722,
+        "cached_input_tokens": 3061120,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 26034,
+        "reasoning_output_tokens": 6930
+      },
+      "source": "Typed public scalar field addition: 2/5 visibledev,15 independent; parent full765 pending"
+    },
+    {
+      "track": "qasupport-continuous",
+      "started_unix": 1791696185.0063505,
+      "finished_unix": 1791696454.9756985,
+      "usage": {
+        "input_tokens": 1132327,
+        "cached_input_tokens": 1073024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18480,
+        "reasoning_output_tokens": 3569
+      },
+      "source": "REJECTED: frozen90% TRAIN calibration gate unmet; parent independently confirms failure and75provenance hashes; no runtime change"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

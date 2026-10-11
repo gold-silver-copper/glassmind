@@ -1,6 +1,6 @@
 //! Closed package graph. A symbol identity includes its Cargo target root.
 use crate::index::SourceIndex;
-use crate::rename_types::{Module, imports, modules};
+use crate::rename_types::{Module, imports, modules_with_tests};
 use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
 
@@ -76,6 +76,14 @@ pub(crate) struct Package {
 
 impl Package {
     pub(crate) fn load(source: &SourceIndex) -> Option<Self> {
+        Self::load_mode(source, false)
+    }
+
+    pub(crate) fn load_add_field(source: &SourceIndex) -> Option<Self> {
+        Self::load_mode(source, true)
+    }
+
+    fn load_mode(source: &SourceIndex, tests: bool) -> Option<Self> {
         let manifest = source.root.join("Cargo.toml");
         let mut library = None;
         // Discover ambiguity by paths, without loading unrelated package sources.
@@ -212,13 +220,14 @@ impl Package {
             } else {
                 "@bin"
             };
-            modules(
+            modules_with_tests(
                 source,
                 root,
                 vec![root_name.into()],
                 Path::new(root).parent()?,
                 parsed.items,
                 &mut all,
+                tests,
             )?;
         }
         let files: BTreeSet<_> = all.iter().map(|m| m.file).collect();
@@ -242,6 +251,7 @@ impl Package {
             uses: BTreeMap::new(),
             library,
         };
+        let mut globs = Vec::new();
         for m in &result.modules {
             result.symbols.insert(m.path.clone());
             let mut locals = BTreeSet::new();
@@ -259,6 +269,9 @@ impl Package {
                     _ => None,
                 };
                 if let Some(id) = id {
+                    if tests && crate::add_fields::standard_macro(&id.to_string()) {
+                        return None;
+                    }
                     if !locals.insert(id.to_string()) {
                         return None;
                     }
@@ -279,6 +292,10 @@ impl Package {
                     {
                         return None;
                     }
+                    if tests && quote::quote!(#u).to_string().replace(' ', "") == "usesuper::*;" {
+                        globs.push(m.path.clone());
+                        continue;
+                    }
                     let mut leaves = Vec::new();
                     imports(&u.tree, &mut Vec::new(), &mut leaves)?;
                     for (ids, alias) in leaves {
@@ -293,20 +310,21 @@ impl Package {
                         } else {
                             alias.to_string()
                         };
-                        if [
-                            "println",
-                            "eprintln",
-                            "Debug",
-                            "Clone",
-                            "Copy",
-                            "PartialEq",
-                            "Eq",
-                            "PartialOrd",
-                            "Ord",
-                            "Hash",
-                            "Default",
-                        ]
-                        .contains(&local.as_str())
+                        if (tests && crate::add_fields::standard_macro(&local))
+                            || [
+                                "println",
+                                "eprintln",
+                                "Debug",
+                                "Clone",
+                                "Copy",
+                                "PartialEq",
+                                "Eq",
+                                "PartialOrd",
+                                "Ord",
+                                "Hash",
+                                "Default",
+                            ]
+                            .contains(&local.as_str())
                             || !locals.insert(local.clone())
                         {
                             return None;
@@ -316,6 +334,25 @@ impl Package {
                         result.uses.insert(key, (m.path.clone(), names));
                     }
                 }
+            }
+        }
+        for module in globs {
+            let (_, parent) = module.split_last()?;
+            let keys: Vec<_> = result
+                .symbols
+                .iter()
+                .chain(result.uses.keys())
+                .filter(|k| k.len() == parent.len() + 1 && k.starts_with(parent))
+                .cloned()
+                .collect();
+            for key in keys {
+                let mut local = module.clone();
+                let name = key.last()?.clone();
+                local.push(name.clone());
+                if result.symbols.contains(&local) || result.uses.contains_key(&local) {
+                    return None;
+                }
+                result.uses.insert(local, (parent.to_vec(), vec![name]));
             }
         }
         // Resolve every import, even unused imports. Bound cycles deterministically.

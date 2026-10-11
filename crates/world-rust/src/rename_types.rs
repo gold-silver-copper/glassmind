@@ -25,13 +25,15 @@ pub(crate) fn position(file: usize, ident: &Ident) -> Pos {
     (file, p.line as u32, p.column as u32)
 }
 
-pub(crate) fn modules(
+#[allow(clippy::too_many_arguments)]
+pub(crate) fn modules_with_tests(
     source: &SourceIndex,
     file: &str,
     path: Vec<String>,
     directory: &Path,
     items: Vec<syn::Item>,
     out: &mut Vec<Module>,
+    tests: bool,
 ) -> Option<()> {
     if path.len() > 64 {
         return None;
@@ -39,14 +41,24 @@ pub(crate) fn modules(
     let file_index = source.files.iter().position(|f| f == file)?;
     for item in &items {
         if let syn::Item::Mod(m) = item {
-            if !m.attrs.iter().all(|a| a.path().is_ident("doc") && inert(a)) {
+            if !m.attrs.iter().all(|a| {
+                (a.path().is_ident("doc") && inert(a)) || (tests && crate::add_fields::test_cfg(a))
+            }) {
                 return None;
             }
             let mut child_path = path.clone();
             child_path.push(m.ident.to_string());
             let child_dir = directory.join(m.ident.to_string());
             if let Some((_, inner)) = &m.content {
-                modules(source, file, child_path, &child_dir, inner.clone(), out)?;
+                modules_with_tests(
+                    source,
+                    file,
+                    child_path,
+                    &child_dir,
+                    inner.clone(),
+                    out,
+                    tests,
+                )?;
             } else {
                 let direct = directory.join(format!("{}.rs", m.ident));
                 let nested = child_dir.join("mod.rs");
@@ -67,13 +79,14 @@ pub(crate) fn modules(
                 {
                     return None;
                 }
-                modules(
+                modules_with_tests(
                     source,
                     chosen.to_str()?,
                     child_path,
                     &child_dir,
                     parsed.items,
                     out,
+                    tests,
                 )?;
             }
         }

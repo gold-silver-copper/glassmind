@@ -1,0 +1,380 @@
+diff --git 1/crates/reading/src/bin/reading-support.rs 2/crates/reading/src/bin/reading-support.rs
+new file mode 100644
+index 0000000..87a1ead
+--- /dev/null
++++ 2/crates/reading/src/bin/reading-support.rs
+@@ -0,0 +1,374 @@
++// SPDX-License-Identifier: MIT
++//! Experimental, optional support-v1 selector. Scores are not entailment proofs.
++use clap::Parser;
++use glassmind_reading::qa::{Input, Model, Prediction, Status};
++use serde::{Deserialize, Serialize};
++use std::collections::BTreeSet;
++use std::io::{BufRead, BufReader, BufWriter, Write};
++use std::path::PathBuf;
++
++#[derive(Parser)]
++struct Args {
++    #[arg(long)]
++    input: PathBuf,
++    #[arg(long)]
++    model: PathBuf,
++    #[arg(long)]
++    support: Option<PathBuf>,
++    #[arg(long)]
++    features: bool,
++}
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct Support {
++    version: u32,
++    bias: f64,
++    threshold: Option<f64>,
++    trees: Vec<Node>,
++}
++#[derive(Deserialize)]
++#[serde(untagged)]
++enum Node {
++    Leaf {
++        value: f64,
++    },
++    Split {
++        feature: usize,
++        cut: f64,
++        left: Box<Node>,
++        right: Box<Node>,
++    },
++}
++impl Node {
++    fn valid(&self, depth: usize) -> bool {
++        if depth > 2 {
++            return false;
++        }
++        match self {
++            Self::Leaf { value } => value.is_finite() && value.abs() <= 1.0,
++            Self::Split {
++                feature,
++                cut,
++                left,
++                right,
++            } => {
++                *feature < 48 && cut.is_finite() && left.valid(depth + 1) && right.valid(depth + 1)
++            }
++        }
++    }
++    fn score(&self, x: &[f64]) -> f64 {
++        match self {
++            Self::Leaf { value } => *value,
++            Self::Split {
++                feature,
++                cut,
++                left,
++                right,
++            } => {
++                if x.get(*feature).copied().unwrap_or(0.0) <= *cut {
++                    left.score(x)
++                } else {
++                    right.score(x)
++                }
++            }
++        }
++    }
++}
++#[derive(Serialize)]
++struct FeatureRow {
++    prediction: Prediction,
++    features: Vec<f64>,
++}
++fn words(s: &str) -> Vec<String> {
++    s.split(|c: char| !c.is_alphanumeric() && c != '\'')
++        .filter(|x| !x.is_empty())
++        .map(str::to_owned)
++        .collect()
++}
++fn stem(s: &str) -> String {
++    let s = s.to_lowercase();
++    for suffix in ["ing", "ed", "es", "s"] {
++        if s.len() > suffix.len() + 3
++            && let Some(base) = s.strip_suffix(suffix)
++        {
++            return base.to_owned();
++        }
++    }
++    s
++}
++fn content(s: &str) -> bool {
++    !matches!(
++        s,
++        "a" | "an"
++            | "the"
++            | "of"
++            | "in"
++            | "on"
++            | "at"
++            | "to"
++            | "for"
++            | "from"
++            | "by"
++            | "with"
++            | "and"
++            | "or"
++            | "is"
++            | "was"
++            | "were"
++            | "are"
++            | "be"
++            | "been"
++            | "did"
++            | "does"
++            | "do"
++            | "has"
++            | "have"
++            | "had"
++            | "what"
++            | "which"
++            | "who"
++            | "whom"
++            | "whose"
++            | "when"
++            | "where"
++            | "how"
++            | "why"
++            | "that"
++            | "this"
++            | "it"
++            | "its"
++            | "as"
++    )
++}
++fn neg(s: &str) -> bool {
++    matches!(s, "not" | "no" | "never" | "neither" | "without") || s.ends_with("n't")
++}
++fn ratio(n: usize, d: usize) -> f64 {
++    n as f64 / d.max(1) as f64
++}
++fn features(context: &str, question: &str, p: &Prediction) -> Vec<f64> {
++    let Some(span) = p.proposal.as_ref() else {
++        return vec![0.0; 48];
++    };
++    let Some(ev) = p.evidence.as_ref() else {
++        return vec![0.0; 48];
++    };
++    let answer = span.text(context).unwrap_or("");
++    let evidence = ev.text(context).unwrap_or("");
++    let before = context.get(ev.start..span.start).unwrap_or("");
++    let after = context.get(span.end..ev.end).unwrap_or("");
++    let qw = words(question);
++    let aw = words(answer);
++    let ew = words(evidence);
++    let q: Vec<_> = qw.iter().map(|x| stem(x)).filter(|x| content(x)).collect();
++    let e: Vec<_> = ew.iter().map(|x| stem(x)).collect();
++    let b: Vec<_> = words(before).iter().map(|x| stem(x)).collect();
++    let a: Vec<_> = words(after).iter().map(|x| stem(x)).collect();
++    let qs: BTreeSet<_> = q.iter().collect();
++    let es: BTreeSet<_> = e.iter().collect();
++    let bs: BTreeSet<_> = b.iter().collect();
++    let ats: BTreeSet<_> = a.iter().collect();
++    let digit = aw
++        .iter()
++        .filter(|w| w.chars().any(char::is_numeric))
++        .count();
++    let cap = aw
++        .iter()
++        .filter(|w| w.chars().next().is_some_and(char::is_uppercase))
++        .count();
++    let low = question.to_lowercase();
++    let mut x = vec![
++        p.margin.clamp(0.0, 10.0) as f64,
++        p.score.clamp(-20.0, 20.0) as f64,
++        (aw.len().min(10) as f64) / 10.0,
++        ratio(digit, aw.len()),
++        ratio(cap, aw.len()),
++        ratio(qs.intersection(&es).count(), qs.len()),
++        ratio(qs.intersection(&bs).count(), qs.len()),
++        ratio(qs.intersection(&ats).count(), qs.len()),
++        ratio(b.len(), e.len()),
++        ratio(a.len(), e.len()),
++        (q.len().min(30) as f64) / 30.0,
++        (e.len().min(100) as f64) / 100.0,
++        f64::from(q.iter().any(|w| neg(w))),
++        f64::from(e.iter().any(|w| neg(w))),
++        ratio(
++            aw.iter().filter(|w| qs.contains(&stem(w))).count(),
++            aw.len(),
++        ),
++        f64::from(answer.chars().any(char::is_numeric)),
++        f64::from(
++            answer
++                .chars()
++                .all(|c| c.is_numeric() || c.is_whitespace() || ",.-/%".contains(c)),
++        ),
++    ];
++    for wh in ["who", "when", "where", "what", "which", "how", "why"] {
++        x.push(f64::from(
++            qw.first().is_some_and(|w| w.eq_ignore_ascii_case(wh)),
++        ));
++    }
++    for kind in [
++        "how many",
++        "how much",
++        "what year",
++        "which year",
++        "what date",
++        "what city",
++        "which city",
++        "what country",
++        "which country",
++        "what name",
++    ] {
++        x.push(f64::from(low.contains(kind)));
++    }
++    // Relative order and proximity of question anchors around the answer.
++    let positions: Vec<_> = q
++        .iter()
++        .filter_map(|w| e.iter().position(|s| s == w))
++        .collect();
++    let ordered = positions.windows(2).filter(|w| w[0] < w[1]).count();
++    x.push(ratio(ordered, positions.len().saturating_sub(1)));
++    x.push(f64::from(positions.len() == q.len() && !q.is_empty()));
++    for window in [2, 5, 10] {
++        x.push(ratio(
++            b.iter()
++                .rev()
++                .take(window)
++                .filter(|w| qs.contains(w))
++                .count(),
++            qs.len(),
++        ));
++        x.push(ratio(
++            a.iter().take(window).filter(|w| qs.contains(w)).count(),
++            qs.len(),
++        ));
++    }
++    x.push(f64::from(q.first().is_some_and(|w| bs.contains(w))));
++    x.push(f64::from(q.first().is_some_and(|w| ats.contains(w))));
++    x.push(f64::from(q.last().is_some_and(|w| bs.contains(w))));
++    x.push(f64::from(q.last().is_some_and(|w| ats.contains(w))));
++    x.push((context.match_indices(answer).take(10).count() as f64) / 10.0);
++    x.push(f64::from(before.ends_with(", ") || after.starts_with(',')));
++    x
++}
++fn run() -> Result<(), Box<dyn std::error::Error>> {
++    let args = Args::parse();
++    if std::fs::metadata(&args.model)?.len() > 4 * 1024 * 1024 {
++        return Err("rank model size".into());
++    }
++    let model: Model = serde_json::from_reader(BufReader::new(std::fs::File::open(args.model)?))?;
++    model.validate()?;
++    let support: Option<Support> = args
++        .support
++        .map(|p| -> Result<_, Box<dyn std::error::Error>> {
++            if std::fs::metadata(&p)?.len() > 1024 * 1024 {
++                return Err("support size".into());
++            }
++            Ok(serde_json::from_reader(BufReader::new(
++                std::fs::File::open(p)?,
++            ))?)
++        })
++        .transpose()?;
++    if let Some(s) = &support
++        && (s.version != 1
++            || !s.bias.is_finite()
++            || s.bias.abs() > 1.0
++            || s.threshold.is_some_and(|v| !v.is_finite())
++            || s.trees.len() != 60
++            || s.trees.iter().any(|t| !t.valid(0)))
++    {
++        return Err("invalid support model".into());
++    }
++    let mut out = BufWriter::new(std::io::stdout().lock());
++    for line in BufReader::new(std::fs::File::open(args.input)?).lines() {
++        let line = line?;
++        if line.len() > 512 * 1024 {
++            return Err("input row size".into());
++        }
++        let row: Input = serde_json::from_str(&line)?;
++        let mut p = model.predict(&row.context, &row.question);
++        let x = features(&row.context, &row.question, &p);
++        if let Some(s) = &support
++            && p.status == Status::Predicted
++        {
++            let score =
++                (s.bias + s.trees.iter().map(|t| t.score(&x)).sum::<f64>()).clamp(-64.0, 64.0);
++            if !score.is_finite() || s.threshold.is_none_or(|threshold| score < threshold) {
++                p.status = Status::Refused;
++                p.answer.clear();
++                p.reason = "support_v1_classifier_refusal_not_verification".into();
++            }
++        }
++        if args.features {
++            serde_json::to_writer(
++                &mut out,
++                &FeatureRow {
++                    prediction: p,
++                    features: x,
++                },
++            )?;
++        } else {
++            serde_json::to_writer(&mut out, &p)?;
++        }
++        writeln!(out)?;
++    }
++    Ok(())
++}
++fn main() -> std::process::ExitCode {
++    match run() {
++        Ok(()) => std::process::ExitCode::SUCCESS,
++        Err(e) => {
++            eprintln!("{e}");
++            std::process::ExitCode::FAILURE
++        }
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use glassmind_reading::qa::Span;
++    fn p(start: usize, end: usize, len: usize) -> Prediction {
++        Prediction {
++            status: Status::Predicted,
++            answer: String::new(),
++            proposal: Some(Span { start, end }),
++            evidence: Some(Span { start: 0, end: len }),
++            score: 1.0,
++            margin: 0.4,
++            reason: String::new(),
++        }
++    }
++    #[test]
++    fn features_distinguish_order_negation_and_answer_kind() {
++        let c = "Luz hired Otis in 2012.";
++        let x = features(c, "Who hired Otis?", &p(0, 3, c.len()));
++        let reverse = "Otis hired Luz in 2012.";
++        let y = features(reverse, "Who hired Otis?", &p(11, 14, reverse.len()));
++        assert_ne!(x, y);
++        let negated = "Luz never hired Otis in 2012.";
++        let z = features(negated, "Who hired Otis?", &p(0, 3, negated.len()));
++        assert_eq!(x[13], 0.0);
++        assert_eq!(z[13], 1.0);
++        let date = features(c, "When did Luz hire Otis?", &p(17, 21, c.len()));
++        assert_ne!(date[15], x[15]);
++        assert_eq!(x.len(), 48);
++        assert!(x.iter().all(|v| v.is_finite()));
++    }
++    #[test]
++    fn utf8_features_and_invalid_model_bounds() {
++        let c = "Éva greeted Zoë.";
++        let x = features(c, "Who greeted Zoë?", &p(0, 4, c.len()));
++        assert_eq!(x.len(), 48);
++        assert!(x.iter().all(|v| v.is_finite()));
++        assert!(
++            !Node::Leaf {
++                value: f64::INFINITY
++            }
++            .valid(0)
++        );
++        assert!(!Node::Leaf { value: 0.0 }.valid(3));
++        assert_eq!(Node::Leaf { value: 0.2 }.score(&x), 0.2);
++    }
++}

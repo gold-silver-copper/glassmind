@@ -39,6 +39,8 @@ continue across independent targets so one failure does not hide other diagnosti
 ./target/release/glassmind code ../some-crate
 # act on one request: a fix or edit it finds is made, anything else is printed
 ./target/release/glassmind do ../some-crate "the build is broken, fix it"
+# add an explicit scalar field and update resolved constructors, with tests and rollback
+./target/release/glassmind do ../some-crate "Add pub weight: u16 to Parcel. Use 7 for all existing constructors."
 # as the agent of the rustbench benchmark (github.com/gold-silver-copper/rustbench)
 rustbench run --agent ./tools/rustbench-agent.sh
 ```
@@ -86,7 +88,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 170/765 pass; 592 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 172/765 pass; 590 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -147,6 +149,14 @@ type exports add two more dev passes, preserving every other outcome. This is
 source syntax, not compiler type resolution; ambiguous owners and unsupported
 cfg or macros refuse. [Type-query scope](docs/coding-metatypes.md) and
 [full comparison](docs/results/coding-metatypes.json).
+
+Explicit public scalar fields can now be added through `do`, updating resolved
+constructors with the requested literal default. Structural checks, existing
+tests and rollback guard application. Two structural-edit dev requests now pass,
+bringing the full result to 172/765 with every prior pass preserved. Supported
+language remains narrow; three of five supplied requests still refuse.
+[Field-addition scope](docs/coding-addfields.md) and
+[full comparison](docs/results/coding-addfields.json).
 
 `glassmind read --model tools/reading/qa/artifacts/model.json --context passage.txt
 "Who visited Zürich?"` proposes a source span and shows its passage. Output is

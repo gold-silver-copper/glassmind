@@ -1,0 +1,394 @@
+{
+  "source_commit": "1003add43fe9e1970ee0a5380fc15c7304f94aa1",
+  "source_and_binary_files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/crates/reading/src/bin/reading-support.rs",
+      "bytes": 11524,
+      "sha256": "ea820035a08a4f483cdaa794860012480c5999792fc6e8bf297b407ca7b9bb01"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/crates/reading/src/qa.rs",
+      "bytes": 19303,
+      "sha256": "0eaef788ed493c0fa23ca81354e6d1b26e609a1f38449df212764cd966b0c991"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/crates/reading/src/lib.rs",
+      "bytes": 128,
+      "sha256": "5afe9711e70df23ed3c44696f3520d62984ee5ccce38d487bfba774ad306044b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/crates/reading/src/bin/reading-qa.rs",
+      "bytes": 2300,
+      "sha256": "2b7f4f2ceded611de303fbe5097df2f405b2c504fb5307ab577b14d7904f2de1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/crates/reading/Cargo.toml",
+      "bytes": 470,
+      "sha256": "3dc318e094f77ad798a6967b0628993236b87f2de14ea62aad54b09d2079797d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/Cargo.toml",
+      "bytes": 1440,
+      "sha256": "a3652a713fa4b3c805b41207c3197c2b8f811ceb7a54d1c31437a65f08571825"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/Cargo.lock",
+      "bytes": 17183,
+      "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/tools/reading/qa/run.py",
+      "bytes": 9230,
+      "sha256": "13afaf3b8962c8720e16a57403fe4814d0e61ba8a9e3d33a85b63ecc17dc480e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/tools/reading/support/PREREGISTER.md",
+      "bytes": 2291,
+      "sha256": "543d7e23fde7e3452e95f53a96704d6273d8460b786f257e433cf2dffc30163c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/tools/reading/support/prepare.py",
+      "bytes": 1278,
+      "sha256": "61c402efe22687be829a45cfa9e504053908e22b6b6eca537157460bb6a7c28f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/tools/reading/support/experiment.py",
+      "bytes": 8394,
+      "sha256": "62c9786821002552f4fb0558fa32cc9c3c82ff8f4c5d04971138c930eb004246"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/tools/reading/support/audit.py",
+      "bytes": 2123,
+      "sha256": "aebe75682cc2702a3df52c915d89413a655a84d1047603000144a556792e6f7e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/tools/reading/support/features.json",
+      "bytes": 1010,
+      "sha256": "13d4d01ca9f4c46e30ddf30567753dc089c45d8f8458e475b15ff9aff97b91fe"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/tools/reading/support/rejected.patch",
+      "bytes": 12121,
+      "sha256": "298aeda610f1b5616d1e5388f91b782e215ce7739cac969fa851edf6f79eda71"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/target/release/reading-support",
+      "bytes": 11808384,
+      "sha256": "7a9bdb4a0a3c1a8655c019d6d59e58929814fb1c277075972fcd36810eeae3b2"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/target/release/reading-qa",
+      "bytes": 11343480,
+      "sha256": "c1c0a664e37fb7895735a044f3c906486c961472dc58e533f2c30e5a51931ffd"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/dev-v1.1.json",
+      "bytes": 4854279,
+      "sha256": "95aa6a52d5d6a735563366753ca50492a658031da74f301ac5238b03966972c9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/train-v1.1.json",
+      "bytes": 30288272,
+      "sha256": "3527663986b8295af4f7fcdff1ba1ff3f72d07d61a20f487cb238a6ef92fd955"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/provenance.json",
+      "bytes": 1609,
+      "sha256": "079ecb49c09c3b93dfef8609cd031e64f12b967a4a12ae6aacaffcf16aff4e8a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/overlap-audit.json",
+      "bytes": 380,
+      "sha256": "ee4d4ff09f112009c9604eecb707670c89411e6941800a562001eb9b504064f1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/evaluate-v2.0.py",
+      "bytes": 10547,
+      "sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/LICENSE",
+      "bytes": 1073,
+      "sha256": "9c92e90621a47dc8508ddd78f0ee41a7b6a8fd5d37fd00709ff1c6eb1a7d7019"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/revision.txt",
+      "bytes": 41,
+      "sha256": "3701e662bb5e52c4333600da017c3cc6d1bc31ab817cf58de600a66bf48dac9f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/model.json",
+      "bytes": 873881,
+      "sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/full.candidate.outputs.jsonl",
+      "bytes": 1962199,
+      "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/full.candidate.accepted.json",
+      "bytes": 376905,
+      "sha256": "21224d894abb2c94af04dba5896c9336e2c247fb09507130a00c1221607a01d7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/full.input.jsonl",
+      "bytes": 9235127,
+      "sha256": "88e26d11c9827053401182ac81a5ed6bee3c1784c36240b12971b4595cef2a3a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/full.json",
+      "bytes": 983,
+      "sha256": "b254cb6b6248ab4a560b2476a78e73ef32719bf2ea6b5ac17aeb9e86768ee9ab"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/calibration.json",
+      "bytes": 409,
+      "sha256": "ea66b93104cc42c31545c16e6c4a8eab83899c45025ba87889432b8076c8caf9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/selection.json",
+      "bytes": 176275,
+      "sha256": "8a0708eb7f02b5ac9f6c38e9bed27414c753f10328f14d414d063b2e96606831"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/baseline/independent.json",
+      "bytes": 3122,
+      "sha256": "dcfac76159a485b6f6274f5b8b6e27dfe34beebd19b28c1b763911161ba387eb"
+    }
+  ],
+  "artifact_files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/audit.log",
+      "bytes": 1417,
+      "sha256": "9bf4af46b94c6de1b0cf4f46f02c378a9c2ece475238dc0d61b8e879713a50c3"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/baseline-sha256.txt",
+      "bytes": 426,
+      "sha256": "e1f07f60c4bf6e7fdaa9bee06e69c5bf1028683a78d3bb9441eadfa385d08a42"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/build.log",
+      "bytes": 2089,
+      "sha256": "22f5bf3f2bc4c1fd8228646e89597c9c79164ae67eb22459b2b4b1fb46cdd29c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/cal.features.jsonl",
+      "bytes": 1010654,
+      "sha256": "9091ae0cbe4f81944f5f53e2be6a95db5b32706cecd18c7d7ef2ce78814bce10"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/cal.input.jsonl",
+      "bytes": 1694806,
+      "sha256": "87f5726316597749b1c2ddc117c2532f6fc95ce09afe3ba5b48a26b14798de64"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/cal.labels.json",
+      "bytes": 2016644,
+      "sha256": "822a663d2360428e2f7bf3c8c3f56e39367e960501bc5225a1d7f45c01a69a03"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/diagnostic.json",
+      "bytes": 57083,
+      "sha256": "507572e1f467dd38ce86385e2d2bd810b7ba43dceebf824e097049673dda24e4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/fit.features.jsonl",
+      "bytes": 4063584,
+      "sha256": "2949af4959c1855f114cbdad786b7ef5cec3aa558cc191063ca20720665cc64a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/fit.input.jsonl",
+      "bytes": 6816473,
+      "sha256": "2eba5f45464581565258181c1829350e4c9fbaf6fc61ba896c294eb110fc35c0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/fit.labels.json",
+      "bytes": 8096389,
+      "sha256": "2001793b3448d32906a6bd74862768ad72c1e584dd19e7cd0c06f20c07bd1b52"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/fmt.log",
+      "bytes": 95,
+      "sha256": "ca094dafcfbb4887a85dc7af3b36442ad7633db05fb870250b8faadc12c3a344"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.input.jsonl",
+      "bytes": 9235127,
+      "sha256": "88e26d11c9827053401182ac81a5ed6bee3c1784c36240b12971b4595cef2a3a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.json",
+      "bytes": 1179,
+      "sha256": "3fa50b0acc5bb0822d5df0efb6a308b451438d0a2b9a7be0e31aa06f7a296c9b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.log",
+      "bytes": 1307,
+      "sha256": "f8817d822e132c31db9713966aec249a9e013069712c925501b40825745a9f32"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.margin.accepted.json",
+      "bytes": 359383,
+      "sha256": "67c5bfb3485c54e0e8ff4020e8c0330143bf3712e4931b085db902c91436230a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.margin.raw.json",
+      "bytes": 520183,
+      "sha256": "07a29adda9ef0d3a715903d47e1775235750e3af59f81251844a4c4d0153cd73"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.support.accepted.json",
+      "bytes": 359383,
+      "sha256": "67c5bfb3485c54e0e8ff4020e8c0330143bf3712e4931b085db902c91436230a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.support.raw.json",
+      "bytes": 520183,
+      "sha256": "07a29adda9ef0d3a715903d47e1775235750e3af59f81251844a4c4d0153cd73"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.supported.jsonl",
+      "bytes": 1968767,
+      "sha256": "48bc149e0873bc6f4607be1b4d1a89e2787c4b98b836b9e7c3d0c8e136a8100a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.transitions.json",
+      "bytes": 189391,
+      "sha256": "a7e32e846fcf7138b929a44dfe61a44aca4e5a26dc871b04d461c15f5ad363f2"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.v1.accepted.json",
+      "bytes": 376905,
+      "sha256": "21224d894abb2c94af04dba5896c9336e2c247fb09507130a00c1221607a01d7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/full.v1.raw.json",
+      "bytes": 520183,
+      "sha256": "07a29adda9ef0d3a715903d47e1775235750e3af59f81251844a4c4d0153cd73"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/probes.features.jsonl",
+      "bytes": 6995,
+      "sha256": "4030dc6a0a49be4859d699789541d2b2f73788bf7178352c4664e40a3437cd2a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/probes.input.jsonl",
+      "bytes": 1220,
+      "sha256": "9ca8d08ad205209eb65a5bee717b01545fc3272b3b71fe55157d0a6365752f30"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/probes.json",
+      "bytes": 38086,
+      "sha256": "a5373279ffbebec36767031a014d8111e494972714436b1e4e484d5895532539"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/probes.log",
+      "bytes": 109,
+      "sha256": "272838cbc0e84de99665dd08039442e3cc076660b1cbb9b8e5dc40fb1809b1eb"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/probes.supported.jsonl",
+      "bytes": 2838,
+      "sha256": "9fa5da4b1176548b90510edbc905bb8527d18da401a08f3b51f3825094b69151"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.input.jsonl",
+      "bytes": 171912,
+      "sha256": "d74eba694c80e6371fbd78cb8cf0bc1b76c56a87cb5aedfa7b887aa75f9e5b1e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.json",
+      "bytes": 1083,
+      "sha256": "d43bb8d443ad7044ecf6416de116b5c06453c5326d6f50495166edc4ca8ff769"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.log",
+      "bytes": 1178,
+      "sha256": "91824c46e8bdc52818d2198150dde4c890c1339333f0deaaac9c2944a30d1c0f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.margin.accepted.json",
+      "bytes": 6803,
+      "sha256": "55176c559847d907736c0309907df4de294a7811a0ea07348958e8bf11730f13"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.margin.raw.json",
+      "bytes": 9998,
+      "sha256": "b5d50759604c886be97507838fad8a565e247bba4603b3378d55ca1812f6c53b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.support.accepted.json",
+      "bytes": 6803,
+      "sha256": "55176c559847d907736c0309907df4de294a7811a0ea07348958e8bf11730f13"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.support.raw.json",
+      "bytes": 9998,
+      "sha256": "b5d50759604c886be97507838fad8a565e247bba4603b3378d55ca1812f6c53b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.supported.jsonl",
+      "bytes": 37318,
+      "sha256": "e9755970ce57b617f1d4c1c519388cbc0dadf28f18d8f7937bf42626ade27610"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.transitions.json",
+      "bytes": 3925,
+      "sha256": "026ee5e40f424dd3388ca6e6b682df9edaa018279ced11bfd1471ef9d5c79011"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.v1.accepted.json",
+      "bytes": 7195,
+      "sha256": "a3866c062aacba83a5ef08f26b349d26629417876263f4b6c592d3be8c282d3d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/sample.v1.raw.json",
+      "bytes": 9998,
+      "sha256": "b5d50759604c886be97507838fad8a565e247bba4603b3378d55ca1812f6c53b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/selection.json",
+      "bytes": 349639,
+      "sha256": "2ea99d376a7aab6fd2583e574b1aba9b415ecc94000d5cdf0298ac4f96eabb71"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/support-model.json",
+      "bytes": 28675,
+      "sha256": "38eed9ccb1b8fc0d6b6e76471b47efd0a2e16253ab7543d810ae27766716b13e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/tests.log",
+      "bytes": 2454,
+      "sha256": "95bfff6489dec0724bc594936513416077333bf364a1f9c1bc0a9308dcdc6a11"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/train-audit.json",
+      "bytes": 289,
+      "sha256": "9ac13cd1355e4a5218a097da35ac8d7bd5f5e51b5d7f4dbd92b9903167188b97"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/train-diagnostics.jsonl",
+      "bytes": 6404222,
+      "sha256": "ed51c89d9b4b034761f6ff36e10a8652bddee0136205511c8592679facf6e723"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/train.log",
+      "bytes": 362,
+      "sha256": "6ac1f6d0b7ae2c58dc0acb79b4a429aca59520f57d4117cef5c04b9410d27b16"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasupport-run/support/v1-replay.jsonl",
+      "bytes": 1962199,
+      "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+    }
+  ],
+  "no_downloads": true,
+  "dataset_revision": "eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+  "dataset_license": "CC-BY-SA-4.0",
+  "repository_and_scorer_license": "MIT",
+  "runtime_inputs": "context/question only; no gold labels, IDs, titles, annotations",
+  "outer_scope_memory_max_bytes": 8589934592,
+  "outer_scope_memory_swap_max_bytes": 0
+}

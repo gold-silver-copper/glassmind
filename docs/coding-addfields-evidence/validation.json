@@ -1,0 +1,203 @@
+{
+  "base": "2a968eccb073e55aa86561e92cb10796cd338ebc",
+  "source_manifest": {
+    "crates/cli/src/main.rs": {
+      "bytes": 21687,
+      "sha256": "d26c511b13f0610b839c42ce8010467e6c4ad78cd01732e2b85731e6f529ccc5"
+    },
+    "crates/english-rust/src/lib.rs": {
+      "bytes": 75129,
+      "sha256": "5bc341f614c822fb584d7b34fe5648c1b384315ebcc9e5734000188f53e1608f"
+    },
+    "crates/english-rust/src/add_fields.rs": {
+      "bytes": 3200,
+      "sha256": "3905a1c8f8409ceb52cb9b5acc24d559686ba275f3dd03ce4103e300a2eba0a8"
+    },
+    "crates/world-rust/src/lib.rs": {
+      "bytes": 46985,
+      "sha256": "960357147365418bc0151a661a6a5920a1ab948bff807d5d7195a2211d81bc58"
+    },
+    "crates/world-rust/src/add_fields.rs": {
+      "bytes": 17462,
+      "sha256": "5d1e9d63886e86d19002ae5483889788a5f655a3b1bac2cacd6d8037b5da86d3"
+    },
+    "crates/world-rust/src/rename_package.rs": {
+      "bytes": 20410,
+      "sha256": "47fc5f5ec47cbd0d0334dd6d392d54013de1dc1104c924ba7122d9499a4e2da4"
+    },
+    "crates/world-rust/src/rename_types.rs": {
+      "bytes": 14297,
+      "sha256": "1342539c74099b6bd63a786c82a08c6d6e01c676af64b07b3d633e3d81ce9911"
+    },
+    "tools/coding-addfields-dev.py": {
+      "bytes": 7707,
+      "sha256": "6c0fe917d7095d408994ea1f2a1d51f0b532e80a3292c1f6239155040e4b13a7"
+    }
+  },
+  "source_manifest_sha256": "93568548d0a5c072ef76e9371b513d8a7a9db4ac30e772b4914df7903dcb97e7",
+  "source_hash_definition": "sha256 compact sorted-key JSON of source_manifest; excludes this report and documentation",
+  "binary": "/home/gsc/.cache/glassmind/continuous-20261010/addfields-run/tmp/glassmind-addfields",
+  "binary_sha256": "2ad21e0584abdc07426c04217b8db633b7e17d88341ee7b024605aacd7ba23da",
+  "binary_profile": "debug",
+  "raw_root": "/home/gsc/.cache/glassmind/continuous-20261010/addfields-run/tmp",
+  "raw_report_sha256": {
+    "addfields-baseline-sample/results.json": "66cceb581f3a3688db482f86bfc7ebc143ac0fdb0a78051374e7c97fc51de4c8",
+    "addfields-baseline-full/results.json": "00577699c2fd3678093e93dfd7688f95341b97a530658ea9487754fc4185364c",
+    "addfields-accepted-sample/results.json": "a783b80c4a42581ab0144f9fe79a9f1d564f5bf9ea00516e3f6a08280ec6e857",
+    "addfields-accepted-full/results.json": "f2c6b1195ca2847263338d378f4a0055a3b47aa81ce5da69e474d9f8445769b5",
+    "addfields-accepted-independent/results.json": "e1fef11b6637fc7b4f89403587c931328de77f5f82d3aead6dfb962b8163e3b4",
+    "addfields-final-metatypes/results.json": "0b990728661f2db8fd25f6baae4697ed2479ae63f29a2c8349c65205c9f87e74",
+    "addfields-final-old27/results.json": "947881b5d2c0e1d676884824527d13522c289f8b212157584603d1f9e7ee6ecb",
+    "addfields-final-query-regression/results.json": "06aa0883e4030449b3dae9c0cf38e66dc09d8efd03538003ed8dfe8fb325081c",
+    "unit-tests-final.log": "f2fa5b476f2e6d27c6fe02a2abd7f637c53b19b6e38dffeab697e3ae9a1213b6",
+    "clippy-last.log": "0cda5428d34d423b475d6c6731f1567bdef03dae2d2c409d3b8ef2144ec3c882",
+    "build-last.log": "f74f530bec623b9accf212d964c5f6ca896b3536a72be53c9cd039df4f27a697",
+    "fmt-last.log": "c15731e9253e4480ad0ee136e9d471c501990d7b0b81cb54eb9cbdf8eca57420",
+    "fmt-check.log": "aa938fee24674d3678d5f8dcbca160636013a1535563b89d8ee2e317c59c5c4e"
+  },
+  "supplied_dev_source_bytes": 5025,
+  "supplied_dev_provenance": {
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "split": "dev",
+    "source": "Visible workspace Cargo/src only, including original public inline tests that construct the requested struct. Hidden tests, task manifests, solutions and generators not opened. Original requests from dev parse-failure transcripts, marker removed; absent chatty request omitted. No tests stripped or weakened.",
+    "license": "Unknown; no upstream LICENSE supplied; raw sources stay outsidegit",
+    "tasks": [
+      {
+        "task": "edits/add-book-pages",
+        "files": {
+          "Cargo.toml": {
+            "bytes": 130,
+            "sha256": "f147ff636c8f578b5bcd672b31379d21a5632b5cd4a1a886dff8e85b6d609bd4",
+            "public_inline_tests": false
+          },
+          "src/book.rs": {
+            "bytes": 354,
+            "sha256": "493b17919dc6293e94d49b84b4f88bbc9275d9291414b804b73738cd13e953ba",
+            "public_inline_tests": false
+          },
+          "src/catalog.rs": {
+            "bytes": 1056,
+            "sha256": "cf96e025f34741816a912247f1b7e2b0c793cecf305711e82dfd1958946b2ae6",
+            "public_inline_tests": true
+          },
+          "src/lib.rs": {
+            "bytes": 121,
+            "sha256": "84dc7dcc1e727d6bd3d7d3de9c8ca2f38f3751ffadf32e8a15c77ca5fb90ebe8",
+            "public_inline_tests": false
+          },
+          "src/main.rs": {
+            "bytes": 330,
+            "sha256": "d33f13ccf2546740d1a5993361060ecb7156c747ba3f83bd68e76651fcc228bf",
+            "public_inline_tests": false
+          },
+          "src/seed.rs": {
+            "bytes": 555,
+            "sha256": "812b05ce8913f72eca4bc58706557a87cfa724cd09913ec970ffb702b42d154e",
+            "public_inline_tests": false
+          }
+        },
+        "styles": [
+          "chatty",
+          "hurried",
+          "terse"
+        ]
+      },
+      {
+        "task": "edits/add-task-priority",
+        "files": {
+          "Cargo.toml": {
+            "bytes": 130,
+            "sha256": "f147ff636c8f578b5bcd672b31379d21a5632b5cd4a1a886dff8e85b6d609bd4",
+            "public_inline_tests": false
+          },
+          "src/lib.rs": {
+            "bytes": 116,
+            "sha256": "b61c7ce56238de1b4072d4640fda50e2f0debf9ba33e5501c0d60805a7726914",
+            "public_inline_tests": false
+          },
+          "src/list.rs": {
+            "bytes": 989,
+            "sha256": "8e56ae15f7f992ffa383089c117bdfca8ee4034e44a4d7873926046f22f290ef",
+            "public_inline_tests": true
+          },
+          "src/main.rs": {
+            "bytes": 468,
+            "sha256": "7c8545f3abb20b6a317358cb5cd2e9c1eb75b8b137a688c6db1680ec00b48f30",
+            "public_inline_tests": false
+          },
+          "src/task.rs": {
+            "bytes": 315,
+            "sha256": "3b02cfb3bd9d096c005f943d4cb57545679f97775e9bf40a1904178a90188126",
+            "public_inline_tests": false
+          },
+          "src/templates.rs": {
+            "bytes": 461,
+            "sha256": "2f3d8d3c1dd6d2f338f140234fed3408183e5c02539a0851bd713d944703b1e9",
+            "public_inline_tests": false
+          }
+        },
+        "styles": [
+          "hurried",
+          "terse"
+        ]
+      }
+    ]
+  },
+  "outcomes": {
+    "baseline_sample": {
+      "edited": 0,
+      "refused": 2
+    },
+    "baseline_full": {
+      "edited": 0,
+      "refused": 5
+    },
+    "sample": {
+      "verified": 2,
+      "refused": 0
+    },
+    "full": {
+      "verified": 2,
+      "refused": 3,
+      "unsafe": 0
+    },
+    "independent": {
+      "passed": 15,
+      "total": 15
+    },
+    "unit_tests": {
+      "passed": 66,
+      "prior": 65
+    },
+    "metatypes": {
+      "passed": 35,
+      "total": 35
+    },
+    "query_regression": {
+      "passed": 8,
+      "total": 8
+    },
+    "old_export_suite": {
+      "passed": 26,
+      "total": 27,
+      "known_obsolete_failure": "unsupported_type; only field-type created with Vec<u16>, original hashes unchanged"
+    }
+  },
+  "request_files": {
+    "add-book-pages/prompts.json": {
+      "bytes": 655,
+      "sha256": "f4f8a1a5b81a7f4f73304e1f5da859249d985b28665faeb47d9f4bd6e8d0919d"
+    },
+    "add-task-priority/prompts.json": {
+      "bytes": 317,
+      "sha256": "9f2e9c90acad561313d87b6b27b32bd151d5354dc71a0dbaa7f16e1fd62cce93"
+    }
+  },
+  "authored_independent_data": {
+    "files": 45,
+    "original_bytes": 4635,
+    "license": "MIT OR Apache-2.0",
+    "source": "tools/coding-addfields-dev.py at source_manifest hash",
+    "no_downloads": true
+  }
+}
