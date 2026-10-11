@@ -470,3 +470,24 @@ independently evaluate full10570 and integrate usable command before shipping.
 
 Next actions: finish existing56538 fullcodinghandle; review readingQA when done;
 keep both coding and conversation progressing. No confirmation needed. Goal active.
+
+### ReadingQA preliminary review (worker still active; not integrated)
+
+Worker full report: baseline rawEM12.3936%/F119.0015%; trainedranker rawEM23.9546%/
+F134.5184%. Its fixed TRAIN-calibration gate was only50%exactprecision (74/148
+of1000cal; margin0.18979406), not a reliable-answer guarantee. Onfull10570dev,
+selected815right791wrong8964refused,50.7472%precision at15.1939%coverage. Raw
+proposal improves but641baseline rawcorrect becomeincorrect; selectedbaseline
+has67right->wrong (baseline was itself a new unsafe heuristic, not a shipped
+capability). Independent unsupported-relationprobe "when buy" over "painted"
+returns an incorrect candidate. Sourceoccurrence is not entailment.
+
+Parent decision: do NOT integrate this as automatic factual conversation answers.
+Review it as an explicitly unverified source-grounded proposal/ranking component;
+if retained, require independent exactfullreplay/provenance/strictinput audit and
+useful honest interface, or improve verifier/proposer first. Do not quietly weaken
+this limit, tune threshold ondev, or conceal knownnewwrongclaims. Worker says its
+preregistered weaker experimentalgate passes; that does not establish product
+answerreliability. Model873881bytes SHAb7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5,
+raw artifacts currently underWORK/readingqa/tools/reading/qa/artifacts; move/archive
+large data outsidegit before anyintegration. No source copied toparent yet.
