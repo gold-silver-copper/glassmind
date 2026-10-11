@@ -87,6 +87,19 @@
         "reasoning_output_tokens": 2600
       },
       "source": "continuous batch, MathQA train/dev and exact percentages"
+    },
+    {
+      "track": "coding-syntax-repairs-continuous",
+      "started_unix": 1791688690.3293123,
+      "finished_unix": 1791689103.4048743,
+      "usage": {
+        "input_tokens": 2374049,
+        "cached_input_tokens": 2289024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19765,
+        "reasoning_output_tokens": 6015
+      },
+      "source": "continuous batch, AST repair proposals and training-only verification"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

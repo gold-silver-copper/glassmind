@@ -38,6 +38,13 @@ contains process metadata, JSONL events, stderr, final summary and disposable
 auth symlink. Bubblewrap masks other code, private data and account history;
 workers receive GPT-6 Astra fast through ChatGPT login with API-key env removed.
 Both scopes verified active after launch. Recheck before acting on PIDs.
+Facts worker subsequently launched from `1bab8ee`, PID 1537404, scope
+`glassmind-continuous-facts.scope`, same worker root and model/auth settings.
+Its worktree is `facts`, logs and metadata `facts-run`. Scope verified active.
+It owns facts crate changes and a separate continuous report; frozen index
+and relation model only. Hypothesis selection begins with auditing the 39
+wrong dev answers; accept fewer actual wrong claims without losing baseline
+right answers or introducing new wrong answers. Baseline 256/2526/39 of 2821.
 The old loop remains stopped; its checkout and state must be preserved.
 
 ## Queue after this batch
@@ -50,7 +57,8 @@ Workspace fmt/clippy/build and strict 4/4 fixture smoke passed. Source commit
 is recorded in the chat score journal; see `docs/talk-quantities.md`.
 PR #4 merged after green CI at `f83aefc` on main. Coding worker remains in
 progress; poll its scope/events. Quantities worker completed; scope inactive,
-temporary auth symlink removed, worktree retained until evidence is archived.
+temporary auth symlink removed, worktree removed after all 16 changed files
+were verified byte-identical to the committed root copies. Cache is retained.
 
 Integrated quantities source `e3eb10f`: exact percentage grammar; MathQA
 train/dev adapter. External full dev 5/4469/1 → 14/4458/3 right/refused/wrong
@@ -69,6 +77,34 @@ retained in its handoff. No independent-language claim relies on that suite.
 MathQA cache and PyArrow are under `quantities-run/tmp/{mathqa,quantities-deps}`;
 keep those artifacts. Known completed-worker usage is 22,157,081 tokens,
 including cached input, excluding parent and unfinished coding work.
+
+PR #5 merged after green CI (47 seconds), main `d607271`.
+Coding worker completed: 1→2 verified repairs /4 fixed sample, 5→6 /27
+available training sources, no failed verification; old five edited outputs
+identical. This is visible-test verification, not benchmark correctness.
+Coordinator extended its AST guards to exclude test-only locals, expressions,
+match arms, fields and enums. All seven focused tests pass. Workspace build
+is underway, then full rustbench dev on the frozen integrated binary.
+Coding scope stopped and auth symlink removed; its worktree is preserved for
+comparison. Facts worker remains active. Known completed-worker tokens now
+24,550,895 including cache; parent and unfinished facts work excluded.
+
+Full coding dev is running under exec session **52107**, launched by
+`GLASSMIND=.../coordinator/coding-full/glassmind tools/rustbench-dev.sh
+.../coordinator/coding-full`. Root is the worker root above. Source `75e3269`;
+frozen binary SHA-256
+`f9018a5b737d3b548ea22f9d36245d304238493f07c6421d0c349ba547074d75`.
+Workspace fmt/clippy/release build and strict 4/4 fixture smoke passed.
+Poll the existing session; do not start a duplicate. Compare all dev verdicts
+against `~/.cache/glassmind/grow-fast-20261010/keep-going-candidate/rustbench-dev/results.jsonl`.
+No coding PR/push until full-dev evidence is reviewed. Current root has the
+coding source committed; checkpoint/usage updates await their own commit.
+
+Facts preliminary diagnosis: 19 of 39 wrong dev answers arise from the
+uppercase alias `OF` matching ordinary “of” after normalization. The same
+issue appears in training. Worker is testing a general case-preserving rule
+for single-token all-uppercase aliases, with no changes to index/model/scorer.
+Do not treat this preliminary diagnosis as a measured final improvement.
 
 - Generalize verified code editing beyond compiler suggestions.
 - Broaden dialogue service coverage and facts retrieval without gold IDs.
