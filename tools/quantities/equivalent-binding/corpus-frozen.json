@@ -1,0 +1,35 @@
+{
+  "cal": 5925,
+  "cal_groups": 2346,
+  "clean": {
+    "CAL": 1182,
+    "FIT": 4590
+  },
+  "exclusions": {
+    "CAL": {
+      "binding_or_execution_refusal": 985,
+      "label_unscorable": 984,
+      "label_wrong": 645,
+      "unsupported_annotation": 2129
+    },
+    "FIT": {
+      "binding_or_execution_refusal": 3989,
+      "label_unscorable": 4341,
+      "label_wrong": 2470,
+      "unsupported_annotation": 8522
+    }
+  },
+  "files": {
+    "PLAN.md": "0c054fddfbd8d42d42a3c81ebc39ec1358236ebfe40f92bde66ca41732b06205",
+    "clean.jsonl": "806b4e0349789b6cffc53de4be149e55f8fad1d964fff25d3430240992ff4ff1",
+    "membership.jsonl": "782a41882a4899436c1161d20ef3b2616cdc52f59d907da022c65a35579f87d5",
+    "metric.py": "24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0",
+    "model.json": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+    "split.json": "b16bce2866326a9fe20438f88fca0631d11d62019a75fb2189c9dca6e01411e6",
+    "train.parquet": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+  },
+  "fit": 23912,
+  "fit_groups": 9521,
+  "structures_fit": 1565,
+  "total": 29837
+}

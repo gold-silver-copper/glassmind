@@ -1,0 +1,143 @@
+[
+  {
+    "name": "unsigned_primary_tie",
+    "kind": "repair",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 4, label: \"z\".into() }, Card { rank: 9, label: \"z\".into() }, Card { rank: 9, label: \"a\".into() }, Card { rank: 4, label: \"a\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| (x.rank,x.label.as_str())).collect::<Vec<_>>(), vec![(9,\"a\"),(9,\"z\"),(4,\"a\"),(4,\"z\")]); }\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "a.rank.cmp(&b.rank)",
+    "new": [
+      "b.rank.cmp(&a.rank)",
+      "a.rank.cmp(&b.rank).reverse()"
+    ]
+  },
+  {
+    "name": "signed_primary",
+    "kind": "repair",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: i64, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: -9, label: \"x\".into() }, Card { rank: 2, label: \"x\".into() }, Card { rank: -1, label: \"x\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| x.rank).collect::<Vec<_>>(), vec![2,-1,-9]); }\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "a.rank.cmp(&b.rank)",
+    "new": [
+      "b.rank.cmp(&a.rank)",
+      "a.rank.cmp(&b.rank).reverse()"
+    ]
+  },
+  {
+    "name": "string_primary",
+    "kind": "repair",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: String, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: \"apple\".into(), label: \"z\".into() }, Card { rank: \"pear\".into(), label: \"z\".into() }, Card { rank: \"pear\".into(), label: \"a\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| (x.rank.as_str(),x.label.as_str())).collect::<Vec<_>>(), vec![(\"pear\",\"a\"),(\"pear\",\"z\"),(\"apple\",\"z\")]); }\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "a.rank.cmp(&b.rank)",
+    "new": [
+      "b.rank.cmp(&a.rank)",
+      "a.rank.cmp(&b.rank).reverse()"
+    ]
+  },
+  {
+    "name": "char_unicode",
+    "kind": "repair",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: char, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordonné = cards.to_vec();\n    ordonné.sort_by(|a, b| a.rank /* retained */ .cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordonné\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 'a', label: \"x\".into() }, Card { rank: 'é', label: \"x\".into() }, Card { rank: 'z', label: \"x\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| x.rank).collect::<Vec<_>>(), vec!['é','z','a']); }\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "a.rank /* retained */ .cmp(&b.rank)",
+    "new": [
+      "b.rank /* retained */ .cmp(&a.rank)",
+      "a.rank /* retained */ .cmp(&b.rank).reverse()"
+    ]
+  },
+  {
+    "name": "bool_primary",
+    "kind": "repair",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: bool, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: false, label: \"x\".into() }, Card { rank: true, label: \"z\".into() }, Card { rank: true, label: \"a\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| (x.rank,x.label.as_str())).collect::<Vec<_>>(), vec![(true,\"a\"),(true,\"z\"),(false,\"x\")]); }\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "a.rank.cmp(&b.rank)",
+    "new": [
+      "b.rank.cmp(&a.rank)",
+      "a.rank.cmp(&b.rank).reverse()"
+    ]
+  },
+  {
+    "name": "type_alias",
+    "kind": "unchanged",
+    "files": {
+      "src/lib.rs": "type Rank = u32;\n#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: Rank, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 4, label: \"z\".into() }, Card { rank: 9, label: \"z\".into() }, Card { rank: 9, label: \"a\".into() }, Card { rank: 4, label: \"a\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| (x.rank,x.label.as_str())).collect::<Vec<_>>(), vec![(9,\"a\"),(9,\"z\"),(4,\"a\"),(4,\"z\")]); }\n}\n"
+    }
+  },
+  {
+    "name": "import_alias",
+    "kind": "unchanged",
+    "files": {
+      "src/lib.rs": "use std::vec::Vec as Buffer;\n#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Buffer<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 4, label: \"z\".into() }, Card { rank: 9, label: \"z\".into() }, Card { rank: 9, label: \"a\".into() }, Card { rank: 4, label: \"a\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| (x.rank,x.label.as_str())).collect::<Vec<_>>(), vec![(9,\"a\"),(9,\"z\"),(4,\"a\"),(4,\"z\")]); }\n}\n"
+    }
+  },
+  {
+    "name": "custom_ord",
+    "kind": "unchanged",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)] pub struct Key(u32);\n#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: Key, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: Key(4), label: \"z\".into() }, Card { rank: Key(9), label: \"z\".into() }, Card { rank: Key(9), label: \"a\".into() }, Card { rank: Key(4), label: \"a\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| (x.rank.0,x.label.as_str())).collect::<Vec<_>>(), vec![(9,\"a\"),(9,\"z\"),(4,\"a\"),(4,\"z\")]); }\n}\n"
+    }
+  },
+  {
+    "name": "computed_receiver",
+    "kind": "unchanged",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| rank_of(a).cmp(&rank_of(b)).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 4, label: \"z\".into() }, Card { rank: 9, label: \"z\".into() }, Card { rank: 9, label: \"a\".into() }, Card { rank: 4, label: \"a\".into() }]; let ys = arrange(&xs); assert_eq!(ys.iter().map(|x| (x.rank,x.label.as_str())).collect::<Vec<_>>(), vec![(9,\"a\"),(9,\"z\"),(4,\"a\"),(4,\"z\")]); }\n}\nfn rank_of(x: &Card) -> u32 { x.rank }\n"
+    }
+  },
+  {
+    "name": "competing_comparisons",
+    "kind": "unresolved",
+    "files": {
+      "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 1, label: \"b\".into() }, Card { rank: 2, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }]; let ys = arrange(&xs); assert!(ys[0].rank == 2 || ys[0].label == \"b\"); }\n}\n"
+    },
+    "alternatives": [
+      {
+        "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| b.rank.cmp(&a.rank).then_with(|| a.label.cmp(&b.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 1, label: \"b\".into() }, Card { rank: 2, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }]; let ys = arrange(&xs); assert!(ys[0].rank == 2 || ys[0].label == \"b\"); }\n}\n"
+      },
+      {
+        "src/lib.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank).then_with(|| b.label.cmp(&a.label)));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 1, label: \"b\".into() }, Card { rank: 2, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }]; let ys = arrange(&xs); assert!(ys[0].rank == 2 || ys[0].label == \"b\"); }\n}\n"
+      }
+    ],
+    "outputs": [
+      "[(2, \"a\"), (2, \"b\"), (1, \"a\"), (1, \"b\")]\n",
+      "[(1, \"b\"), (1, \"a\"), (2, \"b\"), (2, \"a\")]\n"
+    ],
+    "output_example": "fn main(){let xs=vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 1, label: \"b\".into() }, Card { rank: 2, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }];println!(\"{:?}\",arrange(&xs).iter().map(|x|(x.rank,x.label.clone())).collect::<Vec<_>>());}\n"
+  },
+  {
+    "name": "old_dedup_veto",
+    "kind": "unresolved",
+    "files": {
+      "src/lib.rs": "pub fn left(mut xs: Vec<u32>) -> Vec<u32> { xs.dedup(); xs.sort(); xs }\npub fn right(mut xs: Vec<u32>) -> Vec<u32> { xs.dedup(); xs.sort(); xs }\n",
+      "src/main.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }]; let ys = arrange(&xs); assert!(probe::left(vec![7,8,7]).len()==2 || probe::right(vec![7,8,7]).len()==2 || ys[0].rank==2); }\n}\nfn main() {}\n"
+    },
+    "alternatives": [
+      {
+        "src/lib.rs": "pub fn left(mut xs: Vec<u32>) -> Vec<u32> { xs.sort(); xs.dedup(); xs }\npub fn right(mut xs: Vec<u32>) -> Vec<u32> { xs.dedup(); xs.sort(); xs }\n",
+        "src/main.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }]; let ys = arrange(&xs); assert!(probe::left(vec![7,8,7]).len()==2 || probe::right(vec![7,8,7]).len()==2 || ys[0].rank==2); }\n}\nfn main() {}\n"
+      },
+      {
+        "src/lib.rs": "pub fn left(mut xs: Vec<u32>) -> Vec<u32> { xs.dedup(); xs.sort(); xs }\npub fn right(mut xs: Vec<u32>) -> Vec<u32> { xs.sort(); xs.dedup(); xs }\n",
+        "src/main.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| a.rank.cmp(&b.rank));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }]; let ys = arrange(&xs); assert!(probe::left(vec![7,8,7]).len()==2 || probe::right(vec![7,8,7]).len()==2 || ys[0].rank==2); }\n}\nfn main() {}\n"
+      },
+      {
+        "src/lib.rs": "pub fn left(mut xs: Vec<u32>) -> Vec<u32> { xs.dedup(); xs.sort(); xs }\npub fn right(mut xs: Vec<u32>) -> Vec<u32> { xs.dedup(); xs.sort(); xs }\n",
+        "src/main.rs": "#[derive(Clone, Debug, PartialEq)]\npub struct Card { pub rank: u32, pub label: String }\npub fn arrange(cards: &[Card]) -> Vec<Card> {\n    let mut ordered = cards.to_vec();\n    ordered.sort_by(|a, b| b.rank.cmp(&a.rank));\n    ordered\n}\n#[cfg(test)] mod tests { use super::*;\n#[test] fn visible() { let xs = vec![Card { rank: 1, label: \"a\".into() }, Card { rank: 2, label: \"b\".into() }]; let ys = arrange(&xs); assert!(probe::left(vec![7,8,7]).len()==2 || probe::right(vec![7,8,7]).len()==2 || ys[0].rank==2); }\n}\nfn main() {}\n"
+      }
+    ],
+    "outputs": [
+      "([7, 8], [7, 7, 8], 1)\n",
+      "([7, 7, 8], [7, 8], 1)\n",
+      "([7, 7, 8], [7, 7, 8], 2)\n"
+    ],
+    "output_main": "fn main(){let xs=vec![Card { rank: 1, label: \"a\".into() },Card { rank: 2, label: \"b\".into() }];println!(\"{:?}\",(probe::left(vec![7,8,7]),probe::right(vec![7,8,7]),arrange(&xs)[0].rank));}\n"
+  }
+]

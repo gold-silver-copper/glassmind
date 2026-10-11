@@ -24,6 +24,7 @@ pub mod add_fields;
 mod argument_swap;
 mod ceiling_division;
 pub mod checks;
+mod comparator;
 pub mod declared_types;
 mod dedup_order;
 mod extremum;

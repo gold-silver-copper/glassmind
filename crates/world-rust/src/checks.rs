@@ -756,6 +756,7 @@ pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
     let mut old = legacy_slips(source, root, tests);
     old.extend(extrema(source, root));
     old.extend(dedup_orders(source, root));
+    old.extend(comparators(source, root));
     old
 }
 
@@ -775,6 +776,16 @@ fn dedup_orders(source: &str, root: &Path) -> Vec<RustChange> {
         .flat_map(|file| {
             let text = std::fs::read_to_string(root.join(&file)).unwrap_or_default();
             crate::dedup_order::proposals(source, &file.to_string_lossy(), &text)
+        })
+        .collect()
+}
+
+fn comparators(source: &str, root: &Path) -> Vec<RustChange> {
+    crate::slips::production_files(root)
+        .into_iter()
+        .flat_map(|file| {
+            let text = std::fs::read_to_string(root.join(&file)).unwrap_or_default();
+            crate::comparator::proposals(source, &file.to_string_lossy(), &text)
         })
         .collect()
 }
@@ -875,20 +886,41 @@ fn native_witness(
 /// Unsupported code or sampled agreement leaves the first slip unchanged.
 pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustChange> {
     let mut withdrawn = false;
-    let old = undo_legacy_slip(source, root, tests, &mut withdrawn);
+    let mut comparator_veto = false;
+    let old = undo_legacy_slip(source, root, tests, &mut withdrawn, &mut comparator_veto);
     if old.is_some() || withdrawn {
         return old;
     }
     let candidates = extrema(source, root);
-    let old = verify_native_choice(source, root, &candidates, "extremum", &mut withdrawn);
+    let old = verify_native_choice_observed(
+        source,
+        root,
+        &candidates,
+        "extremum",
+        &mut withdrawn,
+        &mut comparator_veto,
+    );
     if old.is_some() || withdrawn {
         return old;
     }
-    verify_native_choice(
+    let old = verify_native_choice(
         source,
         root,
         &dedup_orders(source, root),
         "dedup-order",
+        &mut withdrawn,
+    );
+    if old.is_some() || withdrawn {
+        return old;
+    }
+    if comparator_veto {
+        return None;
+    }
+    verify_native_choice(
+        source,
+        root,
+        &comparators(source, root),
+        "comparator",
         &mut withdrawn,
     )
 }
@@ -906,6 +938,18 @@ fn verify_native_choice(
     candidates: &[RustChange],
     family: &str,
     withdrawn: &mut bool,
+) -> Option<RustChange> {
+    verify_native_choice_observed(source, root, candidates, family, withdrawn, &mut false)
+}
+
+// Observe incompleteness for the new fallback without changing old choices.
+fn verify_native_choice_observed(
+    source: &str,
+    root: &Path,
+    candidates: &[RustChange],
+    family: &str,
+    withdrawn: &mut bool,
+    comparator_veto: &mut bool,
 ) -> Option<RustChange> {
     if candidates.is_empty() {
         return None;
@@ -932,6 +976,10 @@ fn verify_native_choice(
                     Some(deadline),
                 )
             });
+        *comparator_veto |= match &result {
+            Ok(findings) => findings.iter().any(|f| f.item.kind != RustKind::Test),
+            Err(_) => true,
+        };
         records.push(serde_json::json!({"patch":candidate,"result":result}));
         match result {
             Ok(findings) if findings.is_empty() => passing.push(candidate.clone()),
@@ -939,7 +987,7 @@ fn verify_native_choice(
             // are incomplete verification, not a behavioral rejection. Keep the
             // pre-existing extremum choice semantics unchanged.
             Ok(findings)
-                if family == "dedup-order"
+                if matches!(family, "dedup-order" | "comparator")
                     && findings.iter().any(|f| f.item.kind != RustKind::Test) =>
             {
                 incomplete = true;
@@ -970,6 +1018,7 @@ fn verify_native_choice(
         .is_ok();
     let _ = std::fs::remove_dir_all(&scratch);
     *withdrawn = incomplete || passing.len() > 1 || !saved;
+    *comparator_veto |= *withdrawn;
     if accepted && saved {
         passing.pop()
     } else {
@@ -982,6 +1031,7 @@ fn undo_legacy_slip(
     root: &Path,
     tests: &[RustItem],
     withdrawn: &mut bool,
+    comparator_veto: &mut bool,
 ) -> Option<RustChange> {
     let scratch = scratch(source);
     let roots = BTreeMap::from([(source.to_owned(), scratch.clone())]);
@@ -1003,6 +1053,10 @@ fn undo_legacy_slip(
             let result = copy_tree(root, &scratch)
                 .and_then(|()| apply(std::slice::from_ref(slip), &roots))
                 .and_then(|_| run(RustCheck::Test, source, &scratch));
+            *comparator_veto |= match &result {
+                Ok(findings) => findings.iter().any(|f| f.item.kind != RustKind::Test),
+                Err(_) => true,
+            };
             if swaps.contains(slip) && result.is_err() {
                 uncertain_swap = true;
             }
@@ -1377,3 +1431,7 @@ mod extremum_tests;
 #[cfg(test)]
 #[path = "dedup_order_tests.rs"]
 mod dedup_order_tests;
+
+#[cfg(test)]
+#[path = "comparator_tests.rs"]
+mod comparator_tests;

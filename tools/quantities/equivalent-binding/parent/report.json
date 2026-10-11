@@ -1,0 +1,252 @@
+{
+  "decision": "rejected",
+  "frozen_files_verified": 121,
+  "clean_membership_exact": 5772,
+  "formal_pair_sets_checked": 59673,
+  "original_free_and_oracle_records_exact": 5772,
+  "unchanged_operation_hashes": {
+    "original": "9f8445a807a39ce7478757cf92ac6816110ff2392d56666b38d4038b1fd8cb86",
+    "A": "9f8445a807a39ce7478757cf92ac6816110ff2392d56666b38d4038b1fd8cb86",
+    "B": "9f8445a807a39ce7478757cf92ac6816110ff2392d56666b38d4038b1fd8cb86"
+  },
+  "native_free_CAL_exact": 1182,
+  "native_proposed_free_and_oracle_programs": 2282,
+  "totals": {
+    "original": {
+      "FIT": {
+        "free": {
+          "wrong": 2634,
+          "exact_ast": 1775,
+          "correct": 1863,
+          "refused": 93
+        },
+        "oracle": {
+          "correct": 2334,
+          "exact_ast": 2258,
+          "wrong": 2163,
+          "refused": 93
+        },
+        "teacher": {
+          "left_exact": 12886,
+          "right_exact": 12857,
+          "left_equiv": 13216,
+          "right_equiv": 12857,
+          "pair_equiv": 10912,
+          "decisions": 15753
+        }
+      },
+      "CAL": {
+        "free": {
+          "wrong": 993,
+          "exact_ast": 123,
+          "correct": 143,
+          "refused": 46
+        },
+        "oracle": {
+          "wrong": 887,
+          "exact_ast": 202,
+          "refused": 74,
+          "correct": 221
+        },
+        "teacher": {
+          "left_exact": 2197,
+          "right_exact": 2499,
+          "left_equiv": 2474,
+          "right_equiv": 2499,
+          "pair_equiv": 1393,
+          "decisions": 4138
+        }
+      }
+    },
+    "A": {
+      "FIT": {
+        "free": {
+          "wrong": 2461,
+          "exact_ast": 1955,
+          "correct": 2041,
+          "refused": 88
+        },
+        "oracle": {
+          "correct": 2641,
+          "exact_ast": 2564,
+          "wrong": 1873,
+          "refused": 76
+        },
+        "teacher": {
+          "left_exact": 13302,
+          "right_exact": 13272,
+          "left_equiv": 13582,
+          "right_equiv": 13272,
+          "pair_equiv": 11628,
+          "decisions": 15753
+        }
+      },
+      "CAL": {
+        "free": {
+          "wrong": 993,
+          "exact_ast": 124,
+          "correct": 146,
+          "refused": 43
+        },
+        "oracle": {
+          "wrong": 888,
+          "exact_ast": 206,
+          "refused": 69,
+          "correct": 225
+        },
+        "teacher": {
+          "left_exact": 2205,
+          "right_exact": 2508,
+          "left_equiv": 2474,
+          "right_equiv": 2508,
+          "pair_equiv": 1397,
+          "decisions": 4138
+        }
+      }
+    },
+    "B": {
+      "FIT": {
+        "free": {
+          "wrong": 2681,
+          "exact_ast": 1761,
+          "correct": 1831,
+          "refused": 78
+        },
+        "oracle": {
+          "correct": 2246,
+          "exact_ast": 2180,
+          "wrong": 2280,
+          "refused": 64
+        },
+        "teacher": {
+          "left_exact": 12700,
+          "right_exact": 12854,
+          "left_equiv": 13523,
+          "right_equiv": 12854,
+          "pair_equiv": 10835,
+          "decisions": 15753
+        }
+      },
+      "CAL": {
+        "free": {
+          "wrong": 1032,
+          "exact_ast": 106,
+          "correct": 127,
+          "refused": 23
+        },
+        "oracle": {
+          "wrong": 920,
+          "exact_ast": 173,
+          "refused": 59,
+          "correct": 203
+        },
+        "teacher": {
+          "left_exact": 2142,
+          "right_exact": 2487,
+          "left_equiv": 2562,
+          "right_equiv": 2487,
+          "pair_equiv": 1366,
+          "decisions": 4138
+        }
+      }
+    }
+  },
+  "gates": {
+    "free_min168": false,
+    "oracle_min251": false,
+    "free_above_A": false,
+    "oracle_above_A": false,
+    "left_equiv_gain_over_original": false,
+    "left_equiv_gain_over_A": false,
+    "right_equiv_gain_over_original": false,
+    "right_equiv_gain_over_A": false
+  },
+  "transitions": {
+    "A": {
+      "FIT": {
+        "free": {
+          "wrong->wrong": 2433,
+          "correct->correct": 1855,
+          "refused->refused": 73,
+          "wrong->correct": 186,
+          "wrong->refused": 15,
+          "refused->wrong": 20,
+          "correct->wrong": 8
+        },
+        "oracle": {
+          "correct->correct": 2323,
+          "wrong->wrong": 1835,
+          "wrong->correct": 313,
+          "refused->refused": 61,
+          "wrong->refused": 15,
+          "refused->wrong": 27,
+          "refused->correct": 5,
+          "correct->wrong": 11
+        }
+      },
+      "CAL": {
+        "free": {
+          "wrong->wrong": 989,
+          "correct->correct": 142,
+          "refused->refused": 43,
+          "correct->wrong": 1,
+          "wrong->correct": 4,
+          "refused->wrong": 3
+        },
+        "oracle": {
+          "wrong->wrong": 880,
+          "refused->refused": 69,
+          "correct->correct": 218,
+          "wrong->correct": 7,
+          "correct->wrong": 3,
+          "refused->wrong": 5
+        }
+      }
+    },
+    "B": {
+      "FIT": {
+        "free": {
+          "wrong->wrong": 2442,
+          "correct->correct": 1668,
+          "refused->refused": 46,
+          "correct->wrong": 195,
+          "wrong->correct": 160,
+          "refused->wrong": 44,
+          "wrong->refused": 32,
+          "refused->correct": 3
+        },
+        "oracle": {
+          "correct->correct": 2010,
+          "wrong->correct": 233,
+          "wrong->wrong": 1907,
+          "correct->wrong": 323,
+          "refused->wrong": 50,
+          "wrong->refused": 23,
+          "refused->correct": 3,
+          "refused->refused": 40,
+          "correct->refused": 1
+        }
+      },
+      "CAL": {
+        "free": {
+          "wrong->wrong": 976,
+          "correct->wrong": 27,
+          "refused->wrong": 29,
+          "correct->correct": 116,
+          "wrong->refused": 6,
+          "wrong->correct": 11,
+          "refused->refused": 17
+        },
+        "oracle": {
+          "wrong->wrong": 852,
+          "refused->wrong": 27,
+          "correct->wrong": 41,
+          "refused->refused": 47,
+          "correct->correct": 180,
+          "wrong->correct": 23,
+          "wrong->refused": 12
+        }
+      }
+    }
+  }
+}

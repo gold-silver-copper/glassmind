@@ -1,0 +1,58 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 550,
+    "pass": 215
+  },
+  "all_previous_passes_retained": 212,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "fix-tests/arcade-leaderboard",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/arcade-leaderboard",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/arcade-leaderboard",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "pass": 30,
+      "refused": 51
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f",
+  "candidate_result_sha256": "6cdb3be22ce3e32e6d77528eaaebaeaee5099ef5c6657b7acdc7787238dcde1c",
+  "binary_sha256": "2343c2ed6db780ee4b2be674800bfcb168f5acfb4e4c74f532ae2df4aab7ce38",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}

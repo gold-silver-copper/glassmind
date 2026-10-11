@@ -1,0 +1,60 @@
+{
+  "kind": "quantity_comparison",
+  "prefix": "Compare quantities: ",
+  "cases_sha256": "619db79709ef642050ba44fd4b151e6c9c2b1ad480e47b52a1c4f2a5d9fb1854",
+  "positive_natural": [
+    "Is 2 kg greater than 1500 g?",
+    "Is 1500 g less than 2 kg?",
+    "Is 1/3 hour equal to 20 minutes?",
+    "Is 1 us gallon equal to 3.785411784 litres?",
+    "Is 60 mph less than 100 km/h?",
+    "Is 32 fahrenheit equal to 0 celsius?",
+    "Is -40 fahrenheit equal to -40 celsius?",
+    "Is 0 celsius at least 32 fahrenheit?",
+    "Is 1 minute at most 61 seconds?",
+    "Is 1 pound greater than 0.5 kg?",
+    "Which is longer, 3 feet or 1 metre?",
+    "Which is shorter, 3 feet or 1 metre?",
+    "Which is heavier, 2 kg or 1500 g?",
+    "Which is lighter, 2 kg or 1500 g?",
+    "Which is faster, 36 km/h or 10 m/s?",
+    "Which is slower, 10 mph or 5 m/s?",
+    "Which is hotter, 0 celsius or 31 fahrenheit?",
+    "Which is colder, 0 celsius or 31 fahrenheit?",
+    "Is -273.15 celsius equal to 0 kelvin?",
+    "Is -2 kg greater than -1500 g?",
+    "  IS 1.5 KILOGRAMS AT MOST 1500 GRAMS ?  ",
+    "Is 1/2 m/s equal to 1.8 km/h?",
+    "Is 1 metre equal to 3 feet?",
+    "Is 2 minutes at most 119 seconds?"
+  ],
+  "reserved_natural_malformed": [
+    "Is 1 kg greater than 1 metre?",
+    "Is 1 gallon equal to 4 litres?",
+    "Is 2 bananas greater than 1 apple?",
+    "Is 2 kg greater than 1?",
+    "Which is hotter, 2 kg or 3 kg?",
+    "Is 1/0 kg equal to 1 kg?",
+    "Is 2 kg greater than 1 kg? My name is Changed",
+    "Which is longer, 2 m or 1 m? Mary moved to the office.",
+    "Is 2 kg greater than 1 kg less than 3 kg?"
+  ],
+  "malformed_prefix": [
+    "Compare quantities",
+    "Compare quantities:",
+    "Compare quantities My name is Changed"
+  ],
+  "modes": [
+    "plain",
+    "intent"
+  ],
+  "state_invariants": [
+    "Every personal memory, story and existing request_draft field preserved except normal turn+1, last_user_utterance=current and last_slot=None",
+    "No unit operand derives from personal names, remembered facts, story or draft context",
+    "Successful false/equal comparisons are distinct from refusal and human output states the actual result plus exact conversion witness",
+    "Natural supported forms and explicit-prefixed payloads agree with direct typed API",
+    "Explicit malformed prefix and natural quantitative comparison stems reserve the route even when the full parse fails",
+    "Persistence across process restart, ordinary recall and local facts/draft coexistence preserve boundaries",
+    "No new session field for ephemeral comparisons; legacy unused sessions and default scalar solve remain unchanged"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "cases_sha256": "07e435c448d9eedc30065c9727e77e324f08bc5b7fd6bbf15708285743f5b1f0",
+  "cases": [
+    {
+      "name": "competing_comparisons",
+      "alternatives": 2,
+      "all_native_passed": true,
+      "outputs": [
+        "[(2, \"a\"), (2, \"b\"), (1, \"a\"), (1, \"b\")]\n",
+        "[(1, \"b\"), (1, \"a\"), (2, \"b\"), (2, \"a\")]\n"
+      ]
+    },
+    {
+      "name": "old_dedup_veto",
+      "alternatives": 3,
+      "all_native_passed": true,
+      "outputs": [
+        "([7, 8], [7, 7, 8], 1)\n",
+        "([7, 7, 8], [7, 8], 1)\n",
+        "([7, 7, 8], [7, 7, 8], 2)\n"
+      ]
+    }
+  ]
+}

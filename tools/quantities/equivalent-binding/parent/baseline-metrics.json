@@ -1,0 +1,49 @@
+{
+  "scope": "New formal metric on frozen original TRAIN diagnostics; historical numeric scores unchanged",
+  "totals": {
+    "FIT": {
+      "free": {
+        "wrong": 2634,
+        "exact_ast": 1775,
+        "correct": 1863,
+        "refused": 93
+      },
+      "oracle": {
+        "correct": 2334,
+        "exact_ast": 2258,
+        "wrong": 2163,
+        "refused": 93
+      },
+      "teacher": {
+        "left_decisions": 15753,
+        "left_exact": 12886,
+        "left_equivalent": 13216,
+        "right_decisions": 15753,
+        "right_exact": 12857,
+        "right_equivalent": 12857
+      }
+    },
+    "CAL": {
+      "free": {
+        "wrong": 993,
+        "exact_ast": 123,
+        "correct": 143,
+        "refused": 46
+      },
+      "oracle": {
+        "wrong": 887,
+        "exact_ast": 202,
+        "refused": 74,
+        "correct": 221
+      },
+      "teacher": {
+        "left_decisions": 4138,
+        "left_exact": 2197,
+        "left_equivalent": 2474,
+        "right_decisions": 4138,
+        "right_exact": 2499,
+        "right_equivalent": 2499
+      }
+    }
+  }
+}

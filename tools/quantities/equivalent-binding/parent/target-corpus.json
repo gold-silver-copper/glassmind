@@ -1,0 +1,24 @@
+{
+  "scope": "TRAIN-only formal target oracle, no worker source/results used",
+  "counts": {
+    "FIT": {
+      "rows": 4590,
+      "steps": 15753,
+      "target_pairs": 22797,
+      "multiple_pairs": 7044,
+      "multiple_left_targets": 7044,
+      "multiple_right_given_gold_left": 0
+    },
+    "CAL": {
+      "rows": 1182,
+      "steps": 4138,
+      "target_pairs": 6008,
+      "multiple_pairs": 1870,
+      "multiple_left_targets": 1870,
+      "multiple_right_given_gold_left": 0
+    }
+  },
+  "targets_sha256": "152aed3414937acaadb0062a57cf796c96d4397683df280c1274745d75e11697",
+  "clean_sha256": "806b4e0349789b6cffc53de4be149e55f8fad1d964fff25d3430240992ff4ff1",
+  "script_sha256": "2fcfc528807743b6e7b3eedb4956c2e18407879c82fc20040a85cc96154a4aed"
+}

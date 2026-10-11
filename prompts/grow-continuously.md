@@ -6,6 +6,10 @@ Paste this into Codex to activate:
 /goal Follow /home/gsc/code/glassmind/prompts/grow-continuously.md continuously until I stop you. Select, implement, validate and ship improvements autonomously, then immediately start the next useful task. Do not ask for routine confirmation or mark the goal complete at a milestone.
 ```
 
+Select GPT-6 Astra and fast mode in the parent Codex session before activating
+the goal. Use the existing ChatGPT login. The instructions below also enforce
+these preferences for any model processes the agent launches.
+
 These instructions take effect when I explicitly activate or resume this
 goal. Reading, reviewing or editing this file does not activate it. Old
 checkpoint text saying "goal active" is historical evidence, not permission
@@ -250,6 +254,9 @@ Always leave one concrete next action and enough context to execute it:
 the relevant paths, baseline, expected result and verification command.
 Keep a few independent alternatives ready so one blocked dependency does
 not turn the checkpoint into a request for human direction.
+Keep the current handoff at the top and move completed batch details into
+linked reports. Record a short decision for each rejected approach so future
+continuations can avoid repeating it without rereading the entire history.
 Append a five-line update to the existing external progress log every few
 hours and at a major milestone. Keep README scores consistent at merges.
 
@@ -285,5 +292,6 @@ pause, cancellation or platform limit. No prompt can guarantee execution
 through an expired login, exhausted account limit, closed runtime or lost
 machine; preserve progress so an explicitly resumed goal can continue.
 
-Begin now: audit current state, select the highest-value measurable next
-experiment, execute it, and keep repeating the cycle without waiting for me.
+Once I activate or resume this goal: audit current state, select the
+highest-value measurable next experiment, execute it, and keep repeating
+the cycle without waiting for me.

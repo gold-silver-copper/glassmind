@@ -1,0 +1,567 @@
+[
+  {
+    "name": "mass_contradicts_raw_order",
+    "question": "Is 2 kg greater than 1500 g?",
+    "status": "compared",
+    "left": {
+      "value": "2",
+      "unit": "kg"
+    },
+    "right": {
+      "value": "1500",
+      "unit": "g"
+    },
+    "dimension": "mass",
+    "si_left": "2",
+    "si_right": "3/2",
+    "ordering": "greater",
+    "operation": "greater",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "inverse_mass",
+    "question": "Is 1500 g less than 2 kg?",
+    "status": "compared",
+    "left": {
+      "value": "1500",
+      "unit": "g"
+    },
+    "right": {
+      "value": "2",
+      "unit": "kg"
+    },
+    "dimension": "mass",
+    "si_left": "3/2",
+    "si_right": "2",
+    "ordering": "less",
+    "operation": "less",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "fraction_duration",
+    "question": "Is 1/3 hour equal to 20 minutes?",
+    "status": "compared",
+    "left": {
+      "value": "1/3",
+      "unit": "h"
+    },
+    "right": {
+      "value": "20",
+      "unit": "min"
+    },
+    "dimension": "duration",
+    "si_left": "1200",
+    "si_right": "1200",
+    "ordering": "equal",
+    "operation": "equal",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "exact_us_volume",
+    "question": "Is 1 us gallon equal to 3.785411784 litres?",
+    "status": "compared",
+    "left": {
+      "value": "1",
+      "unit": "us gallon"
+    },
+    "right": {
+      "value": "3.785411784",
+      "unit": "l"
+    },
+    "dimension": "volume",
+    "si_left": "473176473/125000000000",
+    "si_right": "473176473/125000000000",
+    "ordering": "equal",
+    "operation": "equal",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "speed",
+    "question": "Is 60 mph less than 100 km/h?",
+    "status": "compared",
+    "left": {
+      "value": "60",
+      "unit": "mph"
+    },
+    "right": {
+      "value": "100",
+      "unit": "km/h"
+    },
+    "dimension": "speed",
+    "si_left": "16764/625",
+    "si_right": "250/9",
+    "ordering": "less",
+    "operation": "less",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "freezing",
+    "question": "Is 32 fahrenheit equal to 0 celsius?",
+    "status": "compared",
+    "left": {
+      "value": "32",
+      "unit": "f"
+    },
+    "right": {
+      "value": "0",
+      "unit": "c"
+    },
+    "dimension": "temperature",
+    "si_left": "5463/20",
+    "si_right": "5463/20",
+    "ordering": "equal",
+    "operation": "equal",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "negative_affine",
+    "question": "Is -40 fahrenheit equal to -40 celsius?",
+    "status": "compared",
+    "left": {
+      "value": "-40",
+      "unit": "f"
+    },
+    "right": {
+      "value": "-40",
+      "unit": "c"
+    },
+    "dimension": "temperature",
+    "si_left": "4663/20",
+    "si_right": "4663/20",
+    "ordering": "equal",
+    "operation": "equal",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "inclusive_equal",
+    "question": "Is 0 celsius at least 32 fahrenheit?",
+    "status": "compared",
+    "left": {
+      "value": "0",
+      "unit": "c"
+    },
+    "right": {
+      "value": "32",
+      "unit": "f"
+    },
+    "dimension": "temperature",
+    "si_left": "5463/20",
+    "si_right": "5463/20",
+    "ordering": "equal",
+    "operation": "at_least",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "inclusive_lower",
+    "question": "Is 1 minute at most 61 seconds?",
+    "status": "compared",
+    "left": {
+      "value": "1",
+      "unit": "min"
+    },
+    "right": {
+      "value": "61",
+      "unit": "s"
+    },
+    "dimension": "duration",
+    "si_left": "60",
+    "si_right": "61",
+    "ordering": "less",
+    "operation": "at_most",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "false_mass",
+    "question": "Is 1 pound greater than 0.5 kg?",
+    "status": "compared",
+    "left": {
+      "value": "1",
+      "unit": "lb"
+    },
+    "right": {
+      "value": "0.5",
+      "unit": "kg"
+    },
+    "dimension": "mass",
+    "si_left": "45359237/100000000",
+    "si_right": "1/2",
+    "ordering": "less",
+    "operation": "greater",
+    "truth": false,
+    "choice": null
+  },
+  {
+    "name": "length_select_right",
+    "question": "Which is longer, 3 feet or 1 metre?",
+    "status": "compared",
+    "left": {
+      "value": "3",
+      "unit": "ft"
+    },
+    "right": {
+      "value": "1",
+      "unit": "m"
+    },
+    "dimension": "length",
+    "si_left": "1143/1250",
+    "si_right": "1",
+    "ordering": "less",
+    "operation": "higher",
+    "truth": null,
+    "choice": "right"
+  },
+  {
+    "name": "length_select_left",
+    "question": "Which is shorter, 3 feet or 1 metre?",
+    "status": "compared",
+    "left": {
+      "value": "3",
+      "unit": "ft"
+    },
+    "right": {
+      "value": "1",
+      "unit": "m"
+    },
+    "dimension": "length",
+    "si_left": "1143/1250",
+    "si_right": "1",
+    "ordering": "less",
+    "operation": "lower",
+    "truth": null,
+    "choice": "left"
+  },
+  {
+    "name": "mass_select_left",
+    "question": "Which is heavier, 2 kg or 1500 g?",
+    "status": "compared",
+    "left": {
+      "value": "2",
+      "unit": "kg"
+    },
+    "right": {
+      "value": "1500",
+      "unit": "g"
+    },
+    "dimension": "mass",
+    "si_left": "2",
+    "si_right": "3/2",
+    "ordering": "greater",
+    "operation": "higher",
+    "truth": null,
+    "choice": "left"
+  },
+  {
+    "name": "mass_select_right",
+    "question": "Which is lighter, 2 kg or 1500 g?",
+    "status": "compared",
+    "left": {
+      "value": "2",
+      "unit": "kg"
+    },
+    "right": {
+      "value": "1500",
+      "unit": "g"
+    },
+    "dimension": "mass",
+    "si_left": "2",
+    "si_right": "3/2",
+    "ordering": "greater",
+    "operation": "lower",
+    "truth": null,
+    "choice": "right"
+  },
+  {
+    "name": "speed_selection_equal",
+    "question": "Which is faster, 36 km/h or 10 m/s?",
+    "status": "compared",
+    "left": {
+      "value": "36",
+      "unit": "km/h"
+    },
+    "right": {
+      "value": "10",
+      "unit": "m/s"
+    },
+    "dimension": "speed",
+    "si_left": "10",
+    "si_right": "10",
+    "ordering": "equal",
+    "operation": "higher",
+    "truth": null,
+    "choice": "equal"
+  },
+  {
+    "name": "slower",
+    "question": "Which is slower, 10 mph or 5 m/s?",
+    "status": "compared",
+    "left": {
+      "value": "10",
+      "unit": "mph"
+    },
+    "right": {
+      "value": "5",
+      "unit": "m/s"
+    },
+    "dimension": "speed",
+    "si_left": "2794/625",
+    "si_right": "5",
+    "ordering": "less",
+    "operation": "lower",
+    "truth": null,
+    "choice": "left"
+  },
+  {
+    "name": "hotter",
+    "question": "Which is hotter, 0 celsius or 31 fahrenheit?",
+    "status": "compared",
+    "left": {
+      "value": "0",
+      "unit": "c"
+    },
+    "right": {
+      "value": "31",
+      "unit": "f"
+    },
+    "dimension": "temperature",
+    "si_left": "5463/20",
+    "si_right": "49067/180",
+    "ordering": "greater",
+    "operation": "higher",
+    "truth": null,
+    "choice": "left"
+  },
+  {
+    "name": "colder",
+    "question": "Which is colder, 0 celsius or 31 fahrenheit?",
+    "status": "compared",
+    "left": {
+      "value": "0",
+      "unit": "c"
+    },
+    "right": {
+      "value": "31",
+      "unit": "f"
+    },
+    "dimension": "temperature",
+    "si_left": "5463/20",
+    "si_right": "49067/180",
+    "ordering": "greater",
+    "operation": "lower",
+    "truth": null,
+    "choice": "right"
+  },
+  {
+    "name": "zero_kelvin",
+    "question": "Is -273.15 celsius equal to 0 kelvin?",
+    "status": "compared",
+    "left": {
+      "value": "-273.15",
+      "unit": "c"
+    },
+    "right": {
+      "value": "0",
+      "unit": "k"
+    },
+    "dimension": "temperature",
+    "si_left": "0",
+    "si_right": "0",
+    "ordering": "equal",
+    "operation": "equal",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "negative_magnitudes",
+    "question": "Is -2 kg greater than -1500 g?",
+    "status": "compared",
+    "left": {
+      "value": "-2",
+      "unit": "kg"
+    },
+    "right": {
+      "value": "-1500",
+      "unit": "g"
+    },
+    "dimension": "mass",
+    "si_left": "-2",
+    "si_right": "-3/2",
+    "ordering": "less",
+    "operation": "greater",
+    "truth": false,
+    "choice": null
+  },
+  {
+    "name": "case_space",
+    "question": "  IS 1.5 KILOGRAMS AT MOST 1500 GRAMS ?  ",
+    "status": "compared",
+    "left": {
+      "value": "1.5",
+      "unit": "kg"
+    },
+    "right": {
+      "value": "1500",
+      "unit": "g"
+    },
+    "dimension": "mass",
+    "si_left": "3/2",
+    "si_right": "3/2",
+    "ordering": "equal",
+    "operation": "at_most",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "fraction_speed",
+    "question": "Is 1/2 m/s equal to 1.8 km/h?",
+    "status": "compared",
+    "left": {
+      "value": "1/2",
+      "unit": "m/s"
+    },
+    "right": {
+      "value": "1.8",
+      "unit": "km/h"
+    },
+    "dimension": "speed",
+    "si_left": "1/2",
+    "si_right": "1/2",
+    "ordering": "equal",
+    "operation": "equal",
+    "truth": true,
+    "choice": null
+  },
+  {
+    "name": "false_equality",
+    "question": "Is 1 metre equal to 3 feet?",
+    "status": "compared",
+    "left": {
+      "value": "1",
+      "unit": "m"
+    },
+    "right": {
+      "value": "3",
+      "unit": "ft"
+    },
+    "dimension": "length",
+    "si_left": "1",
+    "si_right": "1143/1250",
+    "ordering": "greater",
+    "operation": "equal",
+    "truth": false,
+    "choice": null
+  },
+  {
+    "name": "false_inclusive",
+    "question": "Is 2 minutes at most 119 seconds?",
+    "status": "compared",
+    "left": {
+      "value": "2",
+      "unit": "min"
+    },
+    "right": {
+      "value": "119",
+      "unit": "s"
+    },
+    "dimension": "duration",
+    "si_left": "120",
+    "si_right": "119",
+    "ordering": "greater",
+    "operation": "at_most",
+    "truth": false,
+    "choice": null
+  },
+  {
+    "name": "cross_dimension",
+    "question": "Is 1 kg greater than 1 metre?",
+    "status": "refused"
+  },
+  {
+    "name": "ambiguous_gallon",
+    "question": "Is 1 gallon equal to 4 litres?",
+    "status": "refused"
+  },
+  {
+    "name": "unknown_unit",
+    "question": "Is 2 bananas greater than 1 apple?",
+    "status": "refused"
+  },
+  {
+    "name": "unitless",
+    "question": "Is 2 greater than 1?",
+    "status": "refused"
+  },
+  {
+    "name": "missing_right_unit",
+    "question": "Is 2 kg greater than 1?",
+    "status": "refused"
+  },
+  {
+    "name": "arithmetic_expression",
+    "question": "Is 1 kg plus 2 kg greater than 2 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "wrong_selection_dimension",
+    "question": "Which is hotter, 2 kg or 3 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "cross_selection",
+    "question": "Which is heavier, 1 litre or 1 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "zero_denominator",
+    "question": "Is 1/0 kg equal to 1 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "overflow_literal",
+    "question": "Is 340282366920938463463374607431768211456 kg greater than 1 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "nonfinite",
+    "question": "Is NaN kg equal to 1 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "appended_memory",
+    "question": "Is 2 kg greater than 1 kg? My name is Changed",
+    "status": "refused"
+  },
+  {
+    "name": "appended_story",
+    "question": "Which is longer, 2 m or 1 m? Mary moved to the office.",
+    "status": "refused"
+  },
+  {
+    "name": "extra_relation",
+    "question": "Is 2 kg greater than 1 kg less than 3 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "missing_quantity",
+    "question": "Is kg greater than 1 kg?",
+    "status": "refused"
+  },
+  {
+    "name": "nul",
+    "question": "Is 2 kg greater than 1 kg?\u0000",
+    "status": "refused"
+  },
+  {
+    "name": "oversized",
+    "question": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Is 2 kg greater than 1 kg?",
+    "status": "refused"
+  }
+]
