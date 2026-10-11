@@ -1,0 +1,90 @@
+{
+  "baseline": {
+    "totals": {
+      "correct": 397,
+      "refused": 3
+    },
+    "failures": [
+      {
+        "id": "16/559/9",
+        "status": "refused",
+        "reply": {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+          "answer": null,
+          "reason": "missing or ambiguous evidence"
+        },
+        "expected": "yellow"
+      },
+      {
+        "id": "16/982/9",
+        "status": "refused",
+        "reply": {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+          "answer": null,
+          "reason": "missing or ambiguous evidence"
+        },
+        "expected": "green"
+      },
+      {
+        "id": "16/697/9",
+        "status": "refused",
+        "reply": {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+          "answer": null,
+          "reason": "missing or ambiguous evidence"
+        },
+        "expected": "gray"
+      }
+    ],
+    "binary_sha256": "62b812cad756d4044eb3272871055002cf488cf0179663f64df6967831c0d198"
+  },
+  "candidate": {
+    "totals": {
+      "correct": 397,
+      "refused": 3
+    },
+    "failures": [
+      {
+        "id": "16/559/9",
+        "status": "refused",
+        "reply": {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+          "answer": null,
+          "reason": "missing or ambiguous evidence"
+        },
+        "expected": "yellow"
+      },
+      {
+        "id": "16/982/9",
+        "status": "refused",
+        "reply": {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+          "answer": null,
+          "reason": "missing or ambiguous evidence"
+        },
+        "expected": "green"
+      },
+      {
+        "id": "16/697/9",
+        "status": "refused",
+        "reply": {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+          "answer": null,
+          "reason": "missing or ambiguous evidence"
+        },
+        "expected": "gray"
+      }
+    ],
+    "binary_sha256": "4dac87aa5361a8d3360ba3025b28385b1c87d3c40f24159d1bcbfc816ba32d3b"
+  },
+  "questions": 400,
+  "turns": 4847,
+  "changed_turns": [],
+  "ids_sha256": "c2b73161a43b5caeb1093d0843a96731cd4f7c44274385d3d32550d75b24f7b3"
+}

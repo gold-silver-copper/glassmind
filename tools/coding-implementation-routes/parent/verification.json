@@ -1,0 +1,25 @@
+{
+  "archive_files": 65,
+  "manifest_entries": 63,
+  "frozen_entries": 6,
+  "raw_files_verified": 1148,
+  "boundary_checks": 46,
+  "passed": 36,
+  "results_byte_equal": true,
+  "unchanged_failed_cases": [
+    "query-active-set",
+    "rename-active-set",
+    "rename-to-active-set",
+    "field-type-set",
+    "field-add-set",
+    "query-active-unset",
+    "rename-active-unset",
+    "rename-to-active-unset",
+    "field-type-unset",
+    "field-add-unset"
+  ],
+  "parser_passes": 44,
+  "candidate_sha256": "1966eb5735d79540432335ac67438cc79336c3d370155764ecc878bc322ca4ca",
+  "parser_sha256": "362e836b420cd9f1f7e7f337b69b4f4b4eed5fe48d4c24c535aaf002ad58af64",
+  "decision": "rejected; no runtime integration; parent confirms original gate failure without altering authoring assumptions"
+}

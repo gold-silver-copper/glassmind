@@ -1,0 +1,8 @@
+{"mode": "plain", "sample": false, "contracts": {"right": 93, "total": 93}, "original": {"right": 41, "total": 41}}
+{"right": 6, "total": 6, "checks": [true, true, true, true, true, true], "post_implementation_review": true}
+{"mode": "model", "sample": false, "contracts": {"right": 93, "total": 93}, "original": {"right": 41, "total": 41}}
+{"right": 7, "total": 7, "checks": [true, true, true, true, true, true, true], "post_implementation_review": true}
+{"dataset": "talk-calculations-memory-synthetic-dev-v1", "independent_benchmark": false, "total": 27, "right": 27, "refused": 0, "wrong": 0, "model": "/home/gsc/.cache/glassmind/models/everyday/intent.json"}
+{"dataset": "talk-stories-mixed-dev-v1", "independent_benchmark": false, "total": 47, "totals": {"right": 47}, "binary_sha256": "4dac87aa5361a8d3360ba3025b28385b1c87d3c40f24159d1bcbfc816ba32d3b"}
+{"checks": 36, "baseline": false, "binary_sha256": "4dac87aa5361a8d3360ba3025b28385b1c87d3c40f24159d1bcbfc816ba32d3b", "fixture_index_sha256": "0b413c1f75ae665b4bca368e8aee0eb63bac2ee55b1be82b43c7097f8b674f42"}
+{"checks": 16, "intent_fixture_modes": [false, true]}

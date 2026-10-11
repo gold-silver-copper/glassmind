@@ -1,0 +1,51 @@
+{
+  "goodbye": [
+    [
+      "intent",
+      "goodbye",
+      "Goodbye!"
+    ]
+  ],
+  "hey there!": [
+    [
+      "intent",
+      "greeting",
+      "Hello!"
+    ]
+  ],
+  "see you later": [
+    [
+      "intent",
+      "goodbye",
+      "Goodbye!"
+    ]
+  ],
+  "thanks so much!": [
+    [
+      "intent",
+      "thank_you",
+      "You're welcome."
+    ]
+  ],
+  "nice to speak with you": [
+    [
+      "intent",
+      "goodbye",
+      "Goodbye!"
+    ]
+  ],
+  "how are things going": [
+    [
+      "intent",
+      "greeting",
+      "Hello!"
+    ]
+  ],
+  "Hello": [
+    [
+      "social",
+      null,
+      "Hello, Hal!"
+    ]
+  ]
+}

@@ -1,0 +1,1014 @@
+{
+  "right": 84,
+  "total": 84,
+  "checks": [
+    {
+      "session": 0,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 0,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 1,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 1,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 2,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 2,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 3,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 3,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 4,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 4,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 5,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 5,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 6,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 6,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 7,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 7,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 8,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 8,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 9,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 9,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 10,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 10,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 11,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 11,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 12,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 12,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 13,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 13,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 14,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 14,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 15,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 15,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 16,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 16,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 17,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 17,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 18,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 18,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 19,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 19,
+      "mode": "",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 20,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 20,
+      "mode": "",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 0,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 0,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 1,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 1,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 2,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 2,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 3,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 3,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 4,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 4,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 5,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 5,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 6,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 6,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 7,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 7,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 8,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 8,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 9,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 9,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 10,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 10,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 11,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 11,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 12,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 12,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 13,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 13,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 14,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 14,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 15,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 15,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 16,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 16,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 17,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 17,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 18,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 18,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "right": true
+    },
+    {
+      "session": 19,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 19,
+      "mode": "-model",
+      "expected": "kitchen",
+      "reply": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "right": true
+    },
+    {
+      "session": 20,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    },
+    {
+      "session": 20,
+      "mode": "-model",
+      "expected": null,
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "right": true
+    }
+  ]
+}

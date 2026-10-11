@@ -1,0 +1,784 @@
+[
+  {
+    "case": "query-active-set",
+    "text": "which functions call implement?",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "`Ledger::implement` is the wrong kind of thing for that.\n"
+  },
+  {
+    "case": "query-passive-set",
+    "text": "which functions call implemented?",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "1 function calls `implemented`: `caller`.\n"
+  },
+  {
+    "case": "rename-active-set",
+    "text": "rename implement to calculate",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "I can't tell which one you mean: `implement` and `Ledger::implement`.\n"
+  },
+  {
+    "case": "rename-passive-set",
+    "text": "rename implemented to compute",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "f88dacc5de01266fed3cdea6aa6d83836252ce554b5445ca34231ec340b478fc"
+    },
+    "stdout": "I'd rename `implemented` to `compute` in 2 places.\n  src/lib.rs:2:8  `implemented` -> `compute`\n  src/lib.rs:3:26  `implemented` -> `compute`\n  (say yes to rename `implemented`)\nI made 2 changes. No problems with the build.\n"
+  },
+  {
+    "case": "rename-to-active-set",
+    "text": "rename caller to implement_again",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename caller ▮to implement_again\n"
+  },
+  {
+    "case": "field-type-set",
+    "text": "what is the type of Ledger.implement?",
+    "expected_disposition": "none",
+    "parsed": "REFUSED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot establish a declared type: Unsupported\n"
+  },
+  {
+    "case": "field-add-set",
+    "text": "add public field implemented: i32 to Ledger with default 0",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n"
+  },
+  {
+    "case": "negative-set",
+    "text": "do not implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-polite-set",
+    "text": "please don't implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-modal-set",
+    "text": "could you not implement absent?",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-write-set",
+    "text": "do not write the body of absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-fill-set",
+    "text": "don't fill in absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "passive-negative-set",
+    "text": "absent should not be implemented",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "multi-rename-set",
+    "text": "rename implement to renamed then implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "multi-field-set",
+    "text": "add public field flag: i32 to Ledger with default 0 then implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "multi-repair-set",
+    "text": "repair caller and implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "behavior-set",
+    "text": "implement absent with wrapping arithmetic",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "unknown-set",
+    "text": "implement absent",
+    "expected_disposition": "absent",
+    "parsed": "absent",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n"
+  },
+  {
+    "case": "repair-set",
+    "text": "repair caller",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Nothing is called `repair`.\n"
+  },
+  {
+    "case": "ordinary-word-set",
+    "text": "which functions implemented this behavior?",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "I take that to mean: which functions does `implemented` call? `implemented` calls nothing.\n"
+  },
+  {
+    "case": "quoted-set",
+    "text": "Please implement \"語\".",
+    "expected_disposition": "語",
+    "parsed": "語",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n"
+  },
+  {
+    "case": "stub-set",
+    "text": "absent is a stub. Please implement it.",
+    "expected_disposition": "absent",
+    "parsed": "absent",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n"
+  },
+  {
+    "case": "ambiguous-set",
+    "text": "absent and other are stubs, implement it",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "query-active-unset",
+    "text": "which functions call implement?",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "`Ledger::implement` is the wrong kind of thing for that.\n"
+  },
+  {
+    "case": "query-passive-unset",
+    "text": "which functions call implemented?",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "1 function calls `implemented`: `caller`.\n"
+  },
+  {
+    "case": "rename-active-unset",
+    "text": "rename implement to calculate",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "I can't tell which one you mean: `implement` and `Ledger::implement`.\n"
+  },
+  {
+    "case": "rename-passive-unset",
+    "text": "rename implemented to compute",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "f88dacc5de01266fed3cdea6aa6d83836252ce554b5445ca34231ec340b478fc"
+    },
+    "stdout": "I'd rename `implemented` to `compute` in 2 places.\n  src/lib.rs:2:8  `implemented` -> `compute`\n  src/lib.rs:3:26  `implemented` -> `compute`\n  (say yes to rename `implemented`)\nI made 2 changes. No problems with the build.\n"
+  },
+  {
+    "case": "rename-to-active-unset",
+    "text": "rename caller to implement_again",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename caller ▮to implement_again\n"
+  },
+  {
+    "case": "field-type-unset",
+    "text": "what is the type of Ledger.implement?",
+    "expected_disposition": "none",
+    "parsed": "REFUSED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot establish a declared type: Unsupported\n"
+  },
+  {
+    "case": "field-add-unset",
+    "text": "add public field implemented: i32 to Ledger with default 0",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n"
+  },
+  {
+    "case": "negative-unset",
+    "text": "do not implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-polite-unset",
+    "text": "please don't implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-modal-unset",
+    "text": "could you not implement absent?",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-write-unset",
+    "text": "do not write the body of absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "negative-fill-unset",
+    "text": "don't fill in absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "passive-negative-unset",
+    "text": "absent should not be implemented",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "multi-rename-unset",
+    "text": "rename implement to renamed then implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "multi-field-unset",
+    "text": "add public field flag: i32 to Ledger with default 0 then implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "multi-repair-unset",
+    "text": "repair caller and implement absent",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "behavior-unset",
+    "text": "implement absent with wrapping arithmetic",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  },
+  {
+    "case": "unknown-unset",
+    "text": "implement absent",
+    "expected_disposition": "absent",
+    "parsed": "absent",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n"
+  },
+  {
+    "case": "repair-unset",
+    "text": "repair caller",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Nothing is called `repair`.\n"
+  },
+  {
+    "case": "ordinary-word-unset",
+    "text": "which functions implemented this behavior?",
+    "expected_disposition": "none",
+    "parsed": "UNRECOGNIZED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "I take that to mean: which functions does `implemented` call? `implemented` calls nothing.\n"
+  },
+  {
+    "case": "quoted-unset",
+    "text": "Please implement \"語\".",
+    "expected_disposition": "語",
+    "parsed": "語",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n"
+  },
+  {
+    "case": "stub-unset",
+    "text": "absent is a stub. Please implement it.",
+    "expected_disposition": "absent",
+    "parsed": "absent",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: production aliases/imports/traits/macros/modules/attributes unsupported\n"
+  },
+  {
+    "case": "ambiguous-unset",
+    "text": "absent and other are stubs, implement it",
+    "expected_disposition": "refused",
+    "parsed": "REFUSED",
+    "ok": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "after": {
+      "Cargo.toml": "1c4011492f8086a44d6a842f451ac545b2a832c09a7c4a3d0642972767eb10d7",
+      "src/lib.rs": "3d57d964a809cdb7daa130634064e3e823c4735eccfddd9226b3e6492ecdf758"
+    },
+    "stdout": "Cannot implement: unsupported or unconsumed implementation request\n"
+  }
+]

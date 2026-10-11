@@ -1,0 +1,82 @@
+{
+  "baseline-sample": {
+    "total": 1,
+    "passed": 1,
+    "implementations": 0
+  },
+  "sample": {
+    "total": 1,
+    "passed": 1,
+    "implementations": 1
+  },
+  "train": {
+    "total": 60,
+    "passed": 60,
+    "implementations": 3
+  },
+  "authored-sample": {
+    "total": 3,
+    "passed": 3,
+    "implementations": 3
+  },
+  "authored-full": {
+    "total": 20,
+    "passed": 20,
+    "implementations": 6
+  },
+  "contracts": {
+    "total": 34,
+    "passed": 34,
+    "implementations": 9
+  },
+  "environment": {
+    "total": 6,
+    "passed": 6,
+    "implementations": 2
+  },
+  "baseline-boundaries": {
+    "total": 46,
+    "passed": 36,
+    "implementations": 0
+  },
+  "boundaries": {
+    "total": 46,
+    "passed": 36,
+    "implementations": 0
+  },
+  "baseline-isolated": {
+    "total": 4,
+    "passed": 2,
+    "implementations": 0
+  },
+  "isolated": {
+    "total": 4,
+    "passed": 2,
+    "implementations": 0
+  },
+  "baseline-isolated-calculate": {
+    "total": 4,
+    "passed": 4,
+    "implementations": 0
+  },
+  "isolated-calculate": {
+    "total": 4,
+    "passed": 4,
+    "implementations": 0
+  },
+  "decision": "rejected",
+  "runtime_restored": true,
+  "parent_full765": "not run",
+  "scoped_rust_tests": 81,
+  "clippy": "passed",
+  "fmt": "passed",
+  "build": "passed",
+  "new_parser_dispositions": {
+    "passed": 44,
+    "total": 46
+  },
+  "original_parser_contracts": {
+    "passed": 34,
+    "total": 34
+  }
+}

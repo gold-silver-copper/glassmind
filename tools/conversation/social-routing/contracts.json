@@ -1,0 +1,237 @@
+[
+  {
+    "type": "social",
+    "context": "none",
+    "text": "goodbye"
+  },
+  {
+    "type": "social",
+    "context": "active",
+    "text": "goodbye"
+  },
+  {
+    "type": "social",
+    "context": "invalid",
+    "text": "goodbye"
+  },
+  {
+    "type": "social",
+    "context": "none",
+    "text": "hey there!"
+  },
+  {
+    "type": "social",
+    "context": "active",
+    "text": "hey there!"
+  },
+  {
+    "type": "social",
+    "context": "invalid",
+    "text": "hey there!"
+  },
+  {
+    "type": "social",
+    "context": "none",
+    "text": "see you later"
+  },
+  {
+    "type": "social",
+    "context": "active",
+    "text": "see you later"
+  },
+  {
+    "type": "social",
+    "context": "invalid",
+    "text": "see you later"
+  },
+  {
+    "type": "social",
+    "context": "none",
+    "text": "thanks so much!"
+  },
+  {
+    "type": "social",
+    "context": "active",
+    "text": "thanks so much!"
+  },
+  {
+    "type": "social",
+    "context": "invalid",
+    "text": "thanks so much!"
+  },
+  {
+    "type": "social",
+    "context": "none",
+    "text": "nice to speak with you"
+  },
+  {
+    "type": "social",
+    "context": "active",
+    "text": "nice to speak with you"
+  },
+  {
+    "type": "social",
+    "context": "invalid",
+    "text": "nice to speak with you"
+  },
+  {
+    "type": "social",
+    "context": "none",
+    "text": "how are things going"
+  },
+  {
+    "type": "social",
+    "context": "active",
+    "text": "how are things going"
+  },
+  {
+    "type": "social",
+    "context": "invalid",
+    "text": "how are things going"
+  },
+  {
+    "type": "social",
+    "context": "none",
+    "text": "Hello"
+  },
+  {
+    "type": "social",
+    "context": "active",
+    "text": "Hello"
+  },
+  {
+    "type": "social",
+    "context": "invalid",
+    "text": "Hello"
+  },
+  {
+    "type": "contrast",
+    "text": "Elin went to the garden.",
+    "kind": "story_fact",
+    "answer": "garden",
+    "invalidated": false
+  },
+  {
+    "type": "contrast",
+    "text": "Elin teleported to the garden.",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "hello Elin teleported to the garden",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "hello; Elin went to the garden.",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "hey there and Elin moved to the garden",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "goodbye and book a flight",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "thanks so much, Elin went to the garden",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "Elin did not move to the garden.",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "Elin said \"goodbye\".",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "\"hello\"",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "not goodbye",
+    "kind": "refusal",
+    "answer": null,
+    "invalidated": true
+  },
+  {
+    "type": "contrast",
+    "text": "Did Elin teleport to the garden?",
+    "kind": null,
+    "answer": "kitchen",
+    "invalidated": false
+  },
+  {
+    "type": "contrast",
+    "text": "Where is Elin?",
+    "kind": "story_answer",
+    "answer": "kitchen",
+    "invalidated": false
+  },
+  {
+    "type": "contrast",
+    "text": "Elin is not in the kitchen.",
+    "kind": "story_fact",
+    "answer": null,
+    "invalidated": false
+  },
+  {
+    "type": "contrast",
+    "text": "Actually, Elin is in the garden.",
+    "kind": "story_fact",
+    "answer": "garden",
+    "invalidated": false
+  },
+  {
+    "type": "priority",
+    "text": "My name is Nia",
+    "kind": "remembered"
+  },
+  {
+    "type": "priority",
+    "text": "My favorite color is green",
+    "kind": "remembered"
+  },
+  {
+    "type": "priority",
+    "text": "Calculate 7 * 8",
+    "kind": "calculated"
+  },
+  {
+    "type": "priority",
+    "text": "Call me",
+    "kind": "refusal"
+  },
+  {
+    "type": "priority",
+    "text": "Book a flight",
+    "kind": "intent"
+  }
+]

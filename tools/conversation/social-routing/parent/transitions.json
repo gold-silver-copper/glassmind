@@ -1,0 +1,172 @@
+{
+  "losses": [
+    {
+      "index": 2361,
+      "text": "how ya been",
+      "gold": "greeting",
+      "before": {
+        "kind": "intent",
+        "text": "Hello!",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 0.7351777,
+          "margin": 0.33841926,
+          "dev_confidence": 0.8030303,
+          "confidence_support": 132,
+          "known_features": 21
+        }
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I couldn't resolve the whole message as a supported social turn. Please give one request or statement at a time.",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 0.7351777,
+          "margin": 0.33841926,
+          "dev_confidence": 0.8030303,
+          "confidence_support": 132,
+          "known_features": 21
+        }
+      }
+    },
+    {
+      "index": 2364,
+      "text": "are you good",
+      "gold": "greeting",
+      "before": {
+        "kind": "intent",
+        "text": "Hello!",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 1.6355809,
+          "margin": 0.49183977,
+          "dev_confidence": 0.8898305,
+          "confidence_support": 118,
+          "known_features": 25
+        }
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I couldn't resolve the whole message as a supported social turn. Please give one request or statement at a time.",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 1.6355809,
+          "margin": 0.49183977,
+          "dev_confidence": 0.8898305,
+          "confidence_support": 118,
+          "known_features": 25
+        }
+      }
+    },
+    {
+      "index": 2367,
+      "text": "tell me how are you",
+      "gold": "greeting",
+      "before": {
+        "kind": "intent",
+        "text": "Hello!",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 1.7701111,
+          "margin": 0.8981636,
+          "dev_confidence": 0.978022,
+          "confidence_support": 182,
+          "known_features": 39
+        }
+      },
+      "after": {
+        "kind": "refusal",
+        "text": "I couldn't resolve the whole message as a supported social turn. Please give one request or statement at a time.",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 1.7701111,
+          "margin": 0.8981636,
+          "dev_confidence": 0.978022,
+          "confidence_support": 182,
+          "known_features": 39
+        }
+      }
+    }
+  ],
+  "gains": [
+    {
+      "index": 1301,
+      "text": "thanks for helping me",
+      "gold": "thank_you",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "intent",
+        "text": "You're welcome.",
+        "proposal": {
+          "label": "thank_you",
+          "accepted": true,
+          "score": 1.4524052,
+          "margin": 1.2254024,
+          "dev_confidence": 0.9911111,
+          "confidence_support": 225,
+          "known_features": 49
+        }
+      }
+    },
+    {
+      "index": 2376,
+      "text": "hiya",
+      "gold": "greeting",
+      "before": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "after": {
+        "kind": "intent",
+        "text": "Hello!",
+        "proposal": {
+          "label": "greeting",
+          "accepted": true,
+          "score": 1.0410697,
+          "margin": 1.0004077,
+          "dev_confidence": 0.9807692,
+          "confidence_support": 260,
+          "known_features": 3
+        }
+      }
+    }
+  ],
+  "changed_indices": [
+    796,
+    1301,
+    1302,
+    1303,
+    1304,
+    1305,
+    1306,
+    1313,
+    1314,
+    1932,
+    1934,
+    2248,
+    2361,
+    2364,
+    2367,
+    2368,
+    2369,
+    2370,
+    2371,
+    2376,
+    2756,
+    2811,
+    3052
+  ]
+}

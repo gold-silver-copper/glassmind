@@ -2,11 +2,11 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. This turn made
-concrete progress: native diagnostic isolation and typed memory authority are
-integrated and independently validated, including full affected dev regressions.
-PR25 is merged. Separate social-routing and implementation-route workers now
-pursue the next conversation and coding improvements. No acceptance gate or old rejection was weakened.
+Goal active: follow `prompts/grow-continuously.md` until stopped. PR25's native
+isolation and memory authority remain the validated runtime. Parent review now
+rejects both the social-routing and implementation-route submissions; their
+original evidence is archived and independently audited. New identifier-role
+and conversation-authority experiments are active with different hypotheses.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -61,8 +61,8 @@ Merged `79b418bda8168496bdf29c2bc47ea7ff1ff88bda` at2026-10-11T07:31:32Z,
 matching reviewed head `412f11eaedbf4d69e4d084a94cfe283762a515ed` exactly.
 CI38121545390 passed. Push31650, create65060 and merge75501 are COMPLETE.
 Do not repeat this PR's checks, merge or completed full dev evaluations.
-Known completed-worker tokens: 93,976,162, with cached input included once;
-parent usage and the unfinished social-routing worker are excluded.
+Known completed-worker tokens: 101,222,731, with cached input included once;
+parent usage and unfinished identifier-role/route-authority workers are excluded.
 
 CHECKISOLATION is COMPLETE. Its original 21 files (332,251 bytes) are archived at
 WORK/checkisolation-run/submitted. All 21 provenance entries were verified.
@@ -127,42 +127,71 @@ The earlier implementation-language experiment remains REJECTED at33/34; its
 are three styles of one function, with no full765 candidate run. Overbroad action
 reservation also remains a problem. Check isolation does not accept it retroactively.
 
-SOCIALROUTING is active: PID3692820, scope
-`glassmind-continuous-socialrouting.scope`, branch `continuous/socialrouting`,
-worktree WORK/socialrouting at1331ac7. Run directory: WORK/socialrouting-run;
-brief: WORK/socialrouting-task.txt. Astra fast/ChatGPT login and8GiB/zero-swap
-scope were verified. It owns CLI routing and a minimal non-mutating story probe;
-no solver changes or model training. A fully consumed social route must preserve
-story context while supported typed story operations retain priority. Unsupported
-potential assertions must still invalidate stale beliefs. Its frozen contrasts,
-original supplemental social checks, memory93+41 in both modes, calc27/story47,
-facts52 and full3987 story checks must pass. Parent later replays full ordinary
-facts2821. No held-out data or new downloads. Its frozen baseline binary62b812
-has identical conversation source but lacks native isolation, as documented.
+SOCIALROUTING is COMPLETE and REJECTED by parent. Original archive:
+WORK/socialrouting-run/submitted, 745 files; all 740 worker artifact entries
+verified. The worker's 490/490 local checks in each mode remain recorded, but
+parent all3100 CLINC validation through main talk loses three previously correct
+learned proposals and gains two: 1303 -> 1302. All 23 changed rows were audited;
+zero newly wrong accepted proposals. This is routing retention, not classifier
+accuracy; typed replies are ungraded. Three ordinary wellbeing questions were
+lost by the candidate's blanket social-label veto. No runtime integrated.
+Parent evidence: tools/conversation/social-routing/PARENT.md and parent/;
+raw WORK/coordinator/socialrouting-review. Completed sessions86103 and7361
+must not be repeated. Observed binary4dac87aa has exactly the final source hashes;
+worker final900973 differs in build/debug identity only. Parent independently
+verified equality of 30 allocated ELF sections, excluding GNU build-id; whole
+file equality is not claimed. Source hashes dc39b5da (everyday) and4f0dfc28 (story).
+Archive runtime.patch bfb1d3ba and worker9aca1750 differ only in Git i/ vs c/
+old-path prefixes. Small reports/adapters are copied byte-identically into git;
+large streams/session snapshots remain in the full external archive. The scope
+is inactive; auth link and worktree removed after a second hash verification.
 
-IMPLEMENTATIONROUTES is active: PID3745551, scope
-`glassmind-continuous-implementationroutes.scope`, branch
-`continuous/implementationroutes`, worktree WORK/implementationroutes at412f11e.
-Run directory: WORK/implementationroutes-run; brief:
-WORK/implementationroutes-task.txt. Astra fast/ChatGPT and8GiB/zero-swap scope
-verified. Its baseline binary is8cde5dc4, the integrated1331ac7 runtime;412f11e
-adds only evidence and docs. Both earlier implementation attempts remain rejected.
-It may reuse the archived implementation-language patch after its new PLAN,
-keeping the signature-directed candidate family byte-identical. It must fix
-broad action reservation that intercepts unrelated commands/identifiers, preserve
-all original20+34+6 checks, and add frozen actual query/rename boundary contracts.
-Existing native isolation addresses the earlier live-artifact failure separately.
-At least three original TRAIN requests must be test-verified before parentfull765:
->=177 passes, every174 old pass retained, zero failures. Report distinct functions
-and styles. No benchmark run by the worker; opaque public tests only, no solutions
-or hidden assets. Owns implementation modules/exports/minimal main do route;
-no overlap with the social worker's everyday/story files.
+IMPLEMENTATIONROUTES is COMPLETE and REJECTED. Original archive:
+WORK/implementationroutes-run/submitted, 65 files. Parent verified 63 manifest
+entries, six freezes and 1148 raw hashes. Independent replay exactly reproduces
+all46 boundary results:36pass,10fail,44/46 parser dispositions. A dot in
+Ledger.implement is mistaken for a sentence boundary by action reservation.
+Frozen positives also assume unsupported baseline behavior: function/field name
+ambiguity, lexical rename parsing, macro-bearing declared types and AddField
+wording. All failures remain; no rescored or weakened gate. Worker20/20authored,
+34/34parser+CLI,6env,3/60TRAIN (one function in three styles),81Rusttests are
+not a parent full765 result. No runtime integrated. Candidate1966eb57 and probe
+362e836b retained. Parent session3633 COMPLETE exit1 as expected; raw
+WORK/coordinator/implementationroutes-review and tools/coding-implementation-routes/PARENT.md.
+Scope inactive; auth link and restored worktree removed after archival verification.
+This is the third rejected implementation-family attempt: change hypothesis,
+not a fourth cosmetic retry. Prior rejections remain rejected.
 
-Next: inspect both workers when terminal, archive each original submission with
-coordinator/archive-batch.py before any integration, then independently review
-and run full affected dev gates. The helper preserves executable modes. Keep
-old rejections and all failed checks unchanged. Two model workers are active;
-no parent evaluation jobs remain. The old stopped dirty loop is untouched.
+IDENTIFIERROLES is ACTIVE: PID3838215, scope
+`glassmind-continuous-identifierroles.scope`, branch continuous/identifierroles,
+WORK/identifierroles atfd01b9b; run WORK/identifierroles-run;
+brief WORK/identifierroles-task.txt. It independently established the actual
+lexical cause: caller is an English role noun and renamed a known English word;
+implement_again itself already works. Quoted controls15/15 pass. Preregistered
+explicit identifier constituents at Rust name/kind/destination positions,
+42 authored contracts and native exact-edit checks; no synthesis revival.
+Owns minimal English lexicon and Rust bridge plus new reports. No world or
+CLI edits. Parent full765 and relevant grammar regressions required before merge.
+
+ROUTEAUTHORITY is ACTIVE: PID3856024, scope
+`glassmind-continuous-routeauthority.scope`, branch continuous/routeauthority,
+WORK/routeauthority atfd01b9b; run WORK/routeauthority-run;
+brief WORK/routeauthority-task.txt. Reuses the archived social candidate only as
+a rejected starting point. Hypothesis separates typed state authority from
+ordinary learned fallback, without adding validation-sentence exceptions.
+Also probes established actors whose names resemble greetings. Requires old490
+both modes, memory93+41 both, stale-answer/goodbye gates, calc27/story47/facts52,
+full3987 story byte equality, all1303 previously correct learned proposals
+retained with new coverage and no newly wrong accepted proposal on3100.
+Parent later independently verifies integrated runtime and full2821 facts.
+Both new workers use verified Astra fast/ChatGPT, no API keys, scope8GiB/0swap,
+explicit persistent TMPDIR and owned GLASSMIND_SCRATCH. Current model workers:2.
+No parent evaluation remains running. Old stopped dirty loop untouched.
+
+Next: finish preserving the rejection evidence, review each new worker only
+when terminal, archive the original before any changes/removal, then run full
+affected gates for promising candidates. Native runtime is still1331ac7 and
+root target/release/glassmind SHA8cde5dc4. No blocker or goal completion.
 
 ### Verified current batch
 

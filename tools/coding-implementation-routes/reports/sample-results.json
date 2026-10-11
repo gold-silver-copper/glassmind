@@ -1,0 +1,32 @@
+[
+  {
+    "id": "train/rb-implement-sum-even/terse#0",
+    "text": "implement `sum_even`",
+    "source": "rb-implement-sum-even",
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "bytes": 59
+      },
+      "src/lib.rs": {
+        "sha256": "fe894f47cb9322ca53ada207dd35f1d5b3d7307e477c0a4c9ad635215e8710ac",
+        "bytes": 360
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+        "bytes": 59
+      },
+      "src/lib.rs": {
+        "sha256": "c3e1125281f5e8920c788f84e2e3f01633d22acc5dce1ed52b1bd09cd31861c8",
+        "bytes": 412
+      }
+    },
+    "seconds": 4.63,
+    "exit": 0
+  }
+]

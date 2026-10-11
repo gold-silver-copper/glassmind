@@ -1,0 +1,1056 @@
+[
+  {
+    "id": "accept-0",
+    "text": "implement `aggregate`",
+    "target": "aggregate",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "b26f1c38ccffeabf0a30e6f75feadb3227eee036776f60ceb109b9191dbdaacc",
+        "bytes": 218
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "e2cc4a56c56dc77d2f5082ac14d392ff9beb01b1a162c572be4cbb8e424e2eb7",
+        "bytes": 242
+      }
+    },
+    "seconds": 1.003,
+    "exit": 0
+  },
+  {
+    "id": "accept-1",
+    "text": "Please implement \"語\".",
+    "target": "語",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "13c23eaece25ac1dcacb98ec684ac1b08e96d0851c451c34aa3260b53ccb77d7",
+        "bytes": 200
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "f04d7a86bd0fe5a790fe2387e897cb0eb2f1d88d04f9c1a7f665cb664ac8edf3",
+        "bytes": 224
+      }
+    },
+    "seconds": 0.986,
+    "exit": 0
+  },
+  {
+    "id": "accept-2",
+    "text": "Could you write the body of 'mañana' in src/lib.rs?",
+    "target": "mañana",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "287cb31483f1fb1e75159296b8ff650081ad4ef60f1ea2f66ae3acfc55170c83",
+        "bytes": 212
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "c8b8b0445ac783e9251c0bf66e0f1eb127ef9bc5ca9a0043f150a15c8fe04026",
+        "bytes": 236
+      }
+    },
+    "seconds": 1.013,
+    "exit": 0
+  },
+  {
+    "id": "accept-3",
+    "text": "Hi! There's a `soma` function in src/lib.rs that's still just a `todo!()`. Could you fill it in so it does what its doc comment says?",
+    "target": "soma",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "5b9ba886679daace22a98c40dc465d569228bae8352f6a34559c973931578159",
+        "bytes": 203
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "9d716207fd155b33b2a09e5267e939f4f010458a493b9969f7d25bfc23cac319",
+        "bytes": 227
+      }
+    },
+    "seconds": 1.012,
+    "exit": 0
+  },
+  {
+    "id": "accept-4",
+    "text": "soma is todo!() still, implement it per the doc comment pls",
+    "target": "soma",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "5b9ba886679daace22a98c40dc465d569228bae8352f6a34559c973931578159",
+        "bytes": 203
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "9d716207fd155b33b2a09e5267e939f4f010458a493b9969f7d25bfc23cac319",
+        "bytes": 227
+      }
+    },
+    "seconds": 0.997,
+    "exit": 0
+  },
+  {
+    "id": "accept-5",
+    "text": "alpha = todo!(), pls implement",
+    "target": "alpha",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "df4f60c6c484bba1f255c8256723fda21c756fd8eafa60682d1e8e751b156f7f",
+        "bytes": 206
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "7d48f4558783554d937fe4afc677c2fa316f16a88964cac6726d93184a97a18c",
+        "bytes": 230
+      }
+    },
+    "seconds": 1.009,
+    "exit": 0
+  },
+  {
+    "id": "accept-6",
+    "text": "`beta` in src/lib.rs is still a stub. Could you implement it?",
+    "target": "beta",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "65d1d2755119b295c09e70ea7607e8b5415ce9e4fb35614255e7be045251ee25",
+        "bytes": 203
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "3d7c6c13f9de1b6a6b2c3d0206ed0712a14a3b2daf125ddf69b3b2d64bd6376c",
+        "bytes": 227
+      }
+    },
+    "seconds": 0.977,
+    "exit": 0
+  },
+  {
+    "id": "accept-7",
+    "text": "implement delta pls",
+    "target": "delta",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "54c54927a485e0d552676e4809cfbba7d61fa678bbf18ed449daeebab363fee0",
+        "bytes": 206
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "75d13a655743a5335237cf4e8fafff3ad467e658e9c920540bb395375c632091",
+        "bytes": 230
+      }
+    },
+    "seconds": 1.019,
+    "exit": 0
+  },
+  {
+    "id": "accept-8",
+    "text": "please implement function delta",
+    "target": "delta",
+    "expect": true,
+    "accepted": true,
+    "ok": true,
+    "unchanged": false,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "54c54927a485e0d552676e4809cfbba7d61fa678bbf18ed449daeebab363fee0",
+        "bytes": 206
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "75d13a655743a5335237cf4e8fafff3ad467e658e9c920540bb395375c632091",
+        "bytes": 230
+      }
+    },
+    "seconds": 1.034,
+    "exit": 0
+  },
+  {
+    "id": "refuse-0",
+    "text": "implement",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-1",
+    "text": "implement x;",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-2",
+    "text": "implement x and y",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-3",
+    "text": "implement `x",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-4",
+    "text": "implement x`",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-5",
+    "text": "implement `x'",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-6",
+    "text": "implement ``",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-7",
+    "text": "implement `x y`",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-8",
+    "text": "implement x then erase tests",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-9",
+    "text": "implement x without tests",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-10",
+    "text": "implement x in src/main.rs",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-11",
+    "text": "implement x in ../src/lib.rs",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-12",
+    "text": "do not implement x",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-13",
+    "text": "please don't implement x",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.003,
+    "exit": 0
+  },
+  {
+    "id": "refuse-14",
+    "text": "repair x",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.231,
+    "exit": 0
+  },
+  {
+    "id": "refuse-15",
+    "text": "implement it",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.006,
+    "exit": 0
+  },
+  {
+    "id": "refuse-16",
+    "text": "x is a stub, implement y",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-17",
+    "text": "x and y are stubs, implement it",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-18",
+    "text": "x is not a stub, implement it",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.006,
+    "exit": 0
+  },
+  {
+    "id": "refuse-19",
+    "text": "implement x. Delete tests.",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-20",
+    "text": "implement x per doc comment, return 42",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-21",
+    "text": "x = todo!(), implement it and optimize",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.005,
+    "exit": 0
+  },
+  {
+    "id": "refuse-22",
+    "text": "implement x with wrapping arithmetic",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-23",
+    "text": "implement x\nimplement y",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  },
+  {
+    "id": "refuse-24",
+    "text": "`x` is a stub. Could you implement it? It must sort ascending.",
+    "target": "x",
+    "expect": false,
+    "accepted": false,
+    "ok": true,
+    "unchanged": true,
+    "before": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "after": {
+      "Cargo.toml": {
+        "sha256": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+        "bytes": 78
+      },
+      "src/lib.rs": {
+        "sha256": "ad39bc056a0362c7315ad2bbaeff773af44ae713a6c3dabb2d35a8bcbca7b4b4",
+        "bytes": 194
+      }
+    },
+    "seconds": 0.004,
+    "exit": 0
+  }
+]

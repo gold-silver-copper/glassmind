@@ -1,0 +1,31 @@
+Running as unit: run-p3755242-i95943745.scope; invocation ID: f7528c4800b34909af5247009ff19c8b
+[
+  {
+    "text": "which functions call implement?",
+    "ok": true,
+    "stdout": "1 function calls `implement`: `invoke`.\n",
+    "before": "4ec407ee85ccd8619113ce13e418e5715508ae2d7ed08d4fe2599e70bc9808d4",
+    "after": "4ec407ee85ccd8619113ce13e418e5715508ae2d7ed08d4fe2599e70bc9808d4"
+  },
+  {
+    "text": "rename implement to calculate",
+    "ok": true,
+    "stdout": "I'd rename `implement` to `calculate` in 2 places.\n  src/lib.rs:1:8  `implement` -> `calculate`\n  src/lib.rs:2:26  `implement` -> `calculate`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n",
+    "before": "4ec407ee85ccd8619113ce13e418e5715508ae2d7ed08d4fe2599e70bc9808d4",
+    "after": "32fd6b7eee42f2f46fccb6cd97a5336958f26b340e0404bba2841bc59ab3513e"
+  },
+  {
+    "text": "which functions call implemented?",
+    "ok": true,
+    "stdout": "1 function calls `implemented`: `invoke`.\n",
+    "before": "ab225282f464b30c0b1991990442658688721d612ff94f8e9d75df8016c955c4",
+    "after": "ab225282f464b30c0b1991990442658688721d612ff94f8e9d75df8016c955c4"
+  },
+  {
+    "text": "rename implemented to calculate",
+    "ok": true,
+    "stdout": "I'd rename `implemented` to `calculate` in 2 places.\n  src/lib.rs:1:8  `implemented` -> `calculate`\n  src/lib.rs:2:26  `implemented` -> `calculate`\n  (say yes to rename `implemented`)\nI made 2 changes. No problems with the build.\n",
+    "before": "ab225282f464b30c0b1991990442658688721d612ff94f8e9d75df8016c955c4",
+    "after": "32fd6b7eee42f2f46fccb6cd97a5336958f26b340e0404bba2841bc59ab3513e"
+  }
+]
