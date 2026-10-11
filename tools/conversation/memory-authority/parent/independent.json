@@ -1,0 +1,507 @@
+{
+  "scope": "Authored coordinator product session/provenance contrasts, not independent benchmark",
+  "binary_sha256": "62b812cad756d4044eb3272871055002cf488cf0179663f64df6967831c0d198",
+  "model_sha256": "a84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408",
+  "total": 14,
+  "passed": 12,
+  "records": [
+    {
+      "case": "social-plain",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "utterance-plain",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "missing_slot-plain",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "fact_list-plain",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "story-plain",
+      "passed": false,
+      "checks": {
+        "kind": false,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    {
+      "case": "calculation-plain",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "correction_source": true
+      },
+      "reply": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer oolong.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "state": {
+        "turn": 3,
+        "name": null,
+        "preferences": {
+          "general": {
+            "value": "oolong",
+            "stated_on_turn": 3
+          }
+        },
+        "last_slot": {
+          "Preference": "general"
+        },
+        "last_user_utterance": "Actually, it's oolong",
+        "last_correction": {
+          "slot": {
+            "Preference": "general"
+          },
+          "previous": {
+            "value": "jasmine tea",
+            "stated_on_turn": 1
+          },
+          "replacement": {
+            "value": "oolong",
+            "stated_on_turn": 3
+          }
+        },
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "explicit_restores-plain",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "correction_source": true
+      },
+      "reply": {
+        "kind": "remembered",
+        "text": "I'll call you Rowan.",
+        "slot": "Name"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Rowan",
+          "stated_on_turn": 3
+        },
+        "preferences": {},
+        "last_slot": "Name",
+        "last_user_utterance": "Actually, my name is Rowan",
+        "last_correction": {
+          "slot": "Name",
+          "previous": {
+            "value": "Élodie",
+            "stated_on_turn": 1
+          },
+          "replacement": {
+            "value": "Rowan",
+            "stated_on_turn": 3
+          }
+        },
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "social-model",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "utterance-model",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "missing_slot-model",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "fact_list-model",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "story-model",
+      "passed": false,
+      "checks": {
+        "kind": false,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "no_correction": true
+      },
+      "reply": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Élodie",
+          "stated_on_turn": 1
+        },
+        "preferences": {},
+        "last_slot": null,
+        "last_user_utterance": "Actually, it's Rowan",
+        "last_correction": null,
+        "stories": {
+          "assertions": [],
+          "invalidated": true
+        }
+      }
+    },
+    {
+      "case": "calculation-model",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "correction_source": true
+      },
+      "reply": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer oolong.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "state": {
+        "turn": 3,
+        "name": null,
+        "preferences": {
+          "general": {
+            "value": "oolong",
+            "stated_on_turn": 3
+          }
+        },
+        "last_slot": {
+          "Preference": "general"
+        },
+        "last_user_utterance": "Actually, it's oolong",
+        "last_correction": {
+          "slot": {
+            "Preference": "general"
+          },
+          "previous": {
+            "value": "jasmine tea",
+            "stated_on_turn": 1
+          },
+          "replacement": {
+            "value": "oolong",
+            "stated_on_turn": 3
+          }
+        },
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    },
+    {
+      "case": "explicit_restores-model",
+      "passed": true,
+      "checks": {
+        "kind": true,
+        "value": true,
+        "source": true,
+        "turn": true,
+        "last_utterance": true,
+        "correction_source": true
+      },
+      "reply": {
+        "kind": "remembered",
+        "text": "I'll call you Rowan.",
+        "slot": "Name"
+      },
+      "state": {
+        "turn": 3,
+        "name": {
+          "value": "Rowan",
+          "stated_on_turn": 3
+        },
+        "preferences": {},
+        "last_slot": "Name",
+        "last_user_utterance": "Actually, my name is Rowan",
+        "last_correction": {
+          "slot": "Name",
+          "previous": {
+            "value": "Élodie",
+            "stated_on_turn": 1
+          },
+          "replacement": {
+            "value": "Rowan",
+            "stated_on_turn": 3
+          }
+        },
+        "stories": {
+          "assertions": [],
+          "invalidated": false
+        }
+      }
+    }
+  ]
+}

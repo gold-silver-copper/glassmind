@@ -1,0 +1,12 @@
+   Compiling glassmind-everyday v0.1.0 (/home/gsc/code/glassmind/crates/everyday)
+    Finished `release` profile [optimized + debuginfo] target(s) in 1.46s
+     Running unittests src/lib.rs (target/release/deps/glassmind_everyday-5811da3f5ad1c985)
+
+running 4 tests
+test memory::tests::legacy_missing_referent_cannot_be_corrected ... ok
+test memory::tests::explicit_recall_restores_focus_and_correction_provenance ... ok
+test memory::tests::unrelated_turns_cannot_supply_a_correction_reference ... ok
+test memory::tests::legacy_session_without_correction_field_remains_readable ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

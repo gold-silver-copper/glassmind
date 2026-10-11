@@ -1,0 +1,10 @@
+   Compiling glassmind v0.1.0 (/home/gsc/code/glassmind/crates/cli)
+    Finished `release` profile [optimized + debuginfo] target(s) in 9.97s
+     Running unittests src/main.rs (target/release/deps/glassmind-b4a29ca4482421ce)
+
+running 2 tests
+test everyday::tests::unresolved_correction_invalidates_story_across_restart ... ok
+test everyday::tests::story_focus_prevents_implicit_personal_memory_edits ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
