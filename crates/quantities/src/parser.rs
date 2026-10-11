@@ -180,6 +180,13 @@ pub fn solve(question: &str) -> Result<Solved> {
     if let Ok(Some(value)) = crate::linear::solve(&text) {
         return Ok(numeric(value, "exact scalar linear constraints"));
     }
+    if let Some((value, percent)) = crate::percent_change::solve(&text)? {
+        return Ok((
+            value.to_string(),
+            percent.then(|| "percent".into()),
+            "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        ));
+    }
     if let Some((value, is_ratio)) = crate::percent::solve(&text)? {
         return Ok((
             value.to_string(),
