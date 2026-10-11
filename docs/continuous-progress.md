@@ -9,10 +9,11 @@ Repository `/home/gsc/code/glassmind`, branch `harness`.
 Merged PR #4 (conversation calculations), main merge `f83aefc`;
 merged PR #5 (exact percentages/MathQA), main merge `d607271`.
 Merged PR #6 (syntax repairs and acronym guard), merge `138676e`,
-evaluated PR head `ed81553`. New verified local commits awaiting publication:
+evaluated PR head `ed81553`. Merged PR #7, head `0616ecc`, merge `16757c3`, CI38109674013 green.
+Included verified source commits:
 `ea52c58` (type renaming), `797ba62` (story conversation), `ebd9817`
 (fixed byte probability scorer), `422d754` (story focus correction).
-Their workers completed. A new dialogue worker is active below.
+Their workers completed. Dialogue and variant-rename workers are active below.
 Do not push worker candidates until their affected full dev evidence passes.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
@@ -104,6 +105,24 @@ availability. Fixed complete selection now179 dev conversations (54multi),
 RideSharing regression reproduced202/257 exact,89.1751%fuzzy. Inspect final
 handoff; do not assume candidate accepted.
 
+Latest dialogue findings: joint trained router failed its fixed sample gate.
+Independent service classifiers improved full active-service F1 to95.62% and
+correctly routed switches42->116/184, but sample full-joint turns stayed21/91
+and full joint turns549->548 versus joint trained routing. Worker says it is
+ending iteration and recording **both rejected experiments**. Do not ship
+as accepted joint state-tracking improvement. Review final report before any
+integration; next hypothesis should address cross-service references with
+train-only learning/typed grounding, preserving prediction isolation.
+
+**Active worker: variants**, launcherPID1787990, scope
+`glassmind-continuous-variants.scope`, worktree `WORK/variants`, base `0616ecc`.
+Owns world-rust and necessary typed English/meaning changes, no sharedCLI.
+Goal: real enum-variant renames through constructors, patterns, Self paths
+and explicit bindings, with collisions/ambiguous names/rollback checks.
+Must retain type-rename9/9 and prior10 world-rust tests; coordinator still
+must run full765 RustBench dev before shipping a candidate. Hypothesis fixed
+before coding. Run dir `WORK/variants-run`; auth needed while active.
+
 Worker downloaded permitted pinned train/dev into its namespace's temporary
 cache `/home/gsc/.cache/glassmind/data/sgd-full`. Coordinator preserved all150
 source files with manifest hash verification, plus selected files, at
@@ -147,17 +166,16 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 ## Immediate next actions
 
-1. Publish this verified batch as nextPR (#7), inspect CI and merge with actual
-   headSHA. Full coding/session/reading evidence is complete; no benchmark
-   process remains. PR6 already merged.
+1. PR7 is merged; no publishing action or benchmark remains for that batch.
+   Inspect dialogue/variants workers, preserve artifacts and measure the next
+   coherent improvement. Do not duplicate completed full-dev evaluations.
 2. Review active dialogue worker when done, reproduce full declared selection
    and annotation isolation, preserve frozen single-service regression. Fix
    namespace-only data paths using the preserved cache above. Do not claim
    multi-service routing from oracle service names or score only easy frames.
-3. Coding has plateaued on all81 edit tasks despite the valid local rename
-   subset. Next coding hypothesis should target realistic source layouts and
-   reusable requested transformations, with actual before/after behavior and
-   rollback. Do not inspect hidden tests/generators or expected patches.
+3. Review the active variant worker against real source bindings and fixed
+   acceptance criteria; then full coding dev. No hidden tests/generators or
+   expected patches may be inspected.
 4. Facts expansion should use independently selected/training-derived entities;
    existing index is validation-seeded. Reading follow-up needs a declared
    independent dev design with overlap diagnostics. Keep measured scopes honest.
