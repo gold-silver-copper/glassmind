@@ -26,6 +26,7 @@ mod answer;
 mod chat;
 mod details;
 mod edit;
+mod everyday;
 mod system;
 mod train;
 
@@ -64,6 +65,17 @@ struct Common {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Basic conversation: names, preferences, corrections and message recall.
+    Talk {
+        /// Persist conversation memory between runs.
+        #[arg(long)]
+        session: Option<PathBuf>,
+        /// Optional learned everyday-intent model (no services are executed).
+        #[arg(long)]
+        model: Option<PathBuf>,
+        #[arg(long)]
+        json: bool,
+    },
     /// Say one thing and print the reply.
     Ask {
         #[command(flatten)]
@@ -167,6 +179,11 @@ enum Command {
 fn main() -> ExitCode {
     let cli = Cli::parse();
     let result = match cli.command {
+        Command::Talk {
+            session,
+            model,
+            json,
+        } => everyday::run(session, model, json),
         Command::Ask {
             common,
             apply,
