@@ -8,6 +8,20 @@ all owned auth links removed. No model workers or experiment jobs running.
 
 ## Current handoff: PR53 merged; full graph QA and complete graph pilot rejected
 
+PR54 OPEN https://github.com/gold-silver-copper/glassmind/pull/54, reviewedhead
+2f33ae32a6cab05fdd0739470eea5c2cdc9f8783. CI38169946220/job114560263975
+RUNNING lastverified, started19:54:02UTC. Push75274/create12358 COMPLETE. Required
+centralchecks passed; runtime/bothbinaries unchanged fromPR53. NEXT queryexisting
+PR54check; ifgreen andsamehead, merge with--match-head-commit exactSHA. Do not
+push checkpoint-only changes while that reviewedhead awaitsCI.
+
+Next facts design preparation: inspect TRAIN-FIT exact-alias candidate spans using
+native Rust normalization and the pinned fullgraph. Exclude existing every-tenth
+CAL and normalized question duplicates; keep annotations offline from extraction.
+First freeze bounded data/coverage plan and prove extractor parity withDiskStore.link.
+Then choose a learned mention/ranking hypothesis fromFIT evidence. Do not revive
+rejectedwhat/whichveto, use entityIDs asfeatures or lower priorpromotion gates.
+
 PR53 MERGEDa063cf13c064d67a59846ffd2708eb6ead4564a9 at19:50:02UTC.
 Reviewed7eb3de8cccf315766460223318852b97ceacc612, CI38169506217 SUCCESS99s.
 Allstorage/source/query gates passed; no publication work remains for importer.
