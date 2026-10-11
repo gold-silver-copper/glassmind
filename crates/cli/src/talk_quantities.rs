@@ -14,6 +14,7 @@ pub fn request(line: &str) -> Option<Result<&str, &'static str>> {
         if rest.is_empty() || rest.starts_with(':') || rest.starts_with(char::is_whitespace) {
             return Some(
                 rest.strip_prefix(':')
+                    .map(|payload| payload.strip_prefix(' ').unwrap_or(payload))
                     .filter(|payload| !payload.trim().is_empty())
                     .ok_or("Use Compare quantities: followed by a complete comparison."),
             );

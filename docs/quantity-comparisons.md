@@ -30,6 +30,8 @@ pronouns, appended assertions and malformed quantities refuse. Questions are
 limited to 4096 UTF-8 bytes and cannot contain NUL. Checked integer overflow
 refuses instead of rounding. This includes possible intermediate overflow even
 when a mathematical final result would be representable.
+The explicit command removes its prefix and at most one following ASCII space
+before applying the same payload limit; it does not trim away oversized input.
 
 Comparisons preserve personal memory, story state and provisional request drafts.
 They advance the ordinary turn counter and last-message field and clear personal
