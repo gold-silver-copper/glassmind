@@ -6,7 +6,7 @@ WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 RUN=WORK/coordinator/full-claims. Fixed plan84803eb before acquisition. Source
 importer/projection bcc796c; validation plan59950f7; source audit/probes following.
 
-RUN/fetch.py session64342, scopeglassmind-full-claims-fetch: RUNNING,7200s/96GiB
+RUN/fetch.py session64342, scopeglassmind-full-claims-fetch: COMPLETE exit0,7200s/96GiB
 received cap. New85shards plus reused first from old snapshot. Sequential public
 unauthenticated source requests; every completed shard passes publisher hash/size.
 RUN/project.py session29161, scopeglassmind-full-claims-projection: RUNNING,
@@ -44,7 +44,7 @@ under a finite8GiBscope; it pins completedprojection and copiescandidate intoRUN
 Then run RUN/supervise.py RUN native 21600 [native-invocation.json command] under
 8GiB/no swap, setsid--wait,timeout21610s and RUN/tmp bothTMPDIR/SQLITE_TMPDIR.
 Do not start until existingprojection completed; verify all pinned manifests.
-After native succeeds, makeoutputreadonly, runaudit.py under3600s/8GiB/supervisor,
+After native succeeds, makeoutputreadonly, runaudit.py under3396s/8GiB/supervisor,
 thenwitnesses.py samecap. Frozenfirsteligible rawsamplepershard bothdirections;
 large-setVMerrors are reported separately, nevercorrectness credit/limitincrease.
 Do not inspectQA/DEV or claimcoverage gain before separateQAplan. Review full
@@ -75,3 +75,13 @@ Reports acquisition-report.json/fetch.jsonl; source inventorySHAe29894e9... .
 Projection29161 stillRUNNING, last44files at1321s. No fullnative output yet.
 prepare-native additionally pins the tested CLI SHA b0a86c03... before copying;
 other track builds must not silently replace the previously verified importer.
+
+Independent raw reference COMPLETE: session2492 exit0,203.173s,695308KiB peakRSS.
+86files/789435443rawrows;8009fixed rawsamples,3647eligible. RawreferenceSHA
+3fcd1c82d6fc1563121dc33e0f81b81481ffd773aa89f3e1003e4c56c429e15c.
+reference-report.json retained. Samples reconstructed from full rawqualifiers
+without project.py/database input. Rawreference/report hashes pinned beforeimport
+by prepare-native.py. Final audit compares bothDBs to this reference; original
+3600s combined audit gate leaves3396s. No sample/gate changes or QA inputs.
+Intermediate independent comparison: all7817samples in first84projectedfiles
+agree; final86/fullDB comparisons remain required. Projectionstillrunning.
