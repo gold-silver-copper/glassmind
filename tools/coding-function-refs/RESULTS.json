@@ -1,0 +1,505 @@
+{
+  "base_commit": "078578b0ac350a1b3baa5af20b1a37d21d576d23",
+  "baseline_binary_sha256": "226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0",
+  "candidate_binary_sha256": "f57788db8058bde96f306a0b9de2a8d7a1645969f6bd2b17a35254ac53607cf9",
+  "baseline": [
+    {
+      "case": "grouped",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    },
+    {
+      "case": "alias",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "super_glob",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    },
+    {
+      "case": "selflib",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    },
+    {
+      "case": "callback",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    },
+    {
+      "case": "qualified",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    },
+    {
+      "case": "unicode_crlf",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    },
+    {
+      "case": "shadow_local",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "shadow_param",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "shadow_closure",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "multiple",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "field",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "method",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "ambiguous_glob",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "external_import",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "custom_macro",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "cfg",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "layout",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "collision",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "raw",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "case_comments",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "case_literal",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    },
+    {
+      "case": "block_function",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "supplied",
+      "expected_edit": true,
+      "edited": false,
+      "exact": true,
+      "native": [
+        0
+      ],
+      "output_equal": true,
+      "ok": false
+    }
+  ],
+  "candidate": [
+    {
+      "case": "grouped",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "alias",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "super_glob",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "selflib",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "callback",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "qualified",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "unicode_crlf",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "shadow_local",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "shadow_param",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "shadow_closure",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "multiple",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "field",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "method",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "ambiguous_glob",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "external_import",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "custom_macro",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "cfg",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "layout",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "collision",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "raw",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "case_comments",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "case_literal",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "block_function",
+      "expected_edit": false,
+      "edited": false,
+      "exact": true,
+      "native": [],
+      "output_equal": true,
+      "ok": true
+    },
+    {
+      "case": "supplied",
+      "expected_edit": true,
+      "edited": true,
+      "exact": true,
+      "native": [
+        0,
+        0
+      ],
+      "output_equal": true,
+      "ok": true
+    }
+  ],
+  "canonical_edits": 9,
+  "full765": "Not run by worker; supplied 177 pass/588 refused/0 fail; parent gate required",
+  "contracts": {
+    "preview_exact_nine": true,
+    "preview_unchanged": true,
+    "chatty_unchanged": true,
+    "chatty_route": true,
+    "hurried_unchanged": true,
+    "hurried_route": true,
+    "terse_unchanged": true,
+    "terse_route": true,
+    "rollback_baseline_pass": true,
+    "rollback_has_proposal": true,
+    "rollback_refused": true,
+    "rollback_exact_originals": true
+  },
+  "authored_source_files": 71,
+  "authored_source_bytes": 5652
+}

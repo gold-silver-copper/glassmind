@@ -736,6 +736,17 @@
         "reasoning_output_tokens": 7630
       },
       "source": "Rejected after independent frozen negation probe: Ava never hired Milo now selects Milo. Parent independently reproduces all10570DEV scores and1000CAL selection; aggregate gains retained, no runtime integration. 27archive/88provenance/29freeze identities verified."
+    },
+    {
+      "track": "functionrefs-continuous",
+      "usage": {
+        "input_tokens": 2915845,
+        "cached_input_tokens": 2817664,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 31794,
+        "reasoning_output_tokens": 11363
+      },
+      "source": "Original13entries119342bytes/3361artifacts521827063bytes/71authoredfiles/11source/3freeze identities verified. Parent16cases8->9exactnative-testedrepairs,zero unsafe/alloldretained; suppliedcanonical9edits5files2923bytes,originaltests andbinaryoutputbeforeafterpass. Integratedchecks/full765 pending."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

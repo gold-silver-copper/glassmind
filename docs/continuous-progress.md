@@ -1,5 +1,76 @@
 # Continuous development checkpoint
 
+## Latest checkpoint — QA rejection merged; rename backend verified locally
+
+PR33 merged at 2026-10-11T09:22:53Z, merge commit
+8d18377b18c07501425be1a2b64ee7d0bf2a34dd. Reviewed head
+8e12be3f884720a9ba6065fbec49e274d37589c4 passed CI38128065036 in 1m23s.
+Push63036/create5325/merge60688 are COMPLETE. No open PR remains from this batch.
+QASYNTAX rejected for independent negation regression; all evidence published.
+Do not rerun that experiment or integrate its runtime patch. Its worker worktree
+and temporary login link were removed after hash verification; archive retained.
+
+FUNCTIONREFS worker is COMPLETE, independently reviewed and integrated locally
+as code commit 4effc66fb430f130ca8c97fb8eed586d28af8676. Root release SHA256
+53d6e10aaa9d715eb1b8963c5cacaf4f41f06111f49e462161597bf91f7db2b9 is retained at
+WORK/coordinator/functionrefs-review/glassmind-integrated. Parent world tests
+(34 unit +4 isolation), workspace fmt/all-target clippy/release/strict4smoke pass.
+All16 independently frozen identity cases: baseline8 edits ->candidate/release9,
+all prior edits retained,7 unchanged refusals,zero unsafe edits. Every fixture
+executes original behavior before/after, exact expected bytes checked. Worker
+candidate f57788db... and integrated release produce identical source hashes.
+Parent supplied canonical:9 exact identifier edits,5 source files2923bytes,
+read-only preview, original tests before/after and identical binary output.
+Earlier 'six supplied files' wording was wrong: manifest has five source files.
+
+13 original parent-archive entries119342bytes,3361 raw artifacts521827063bytes,
+71 authored source files,11 source/3 frozen identities verified. Originals and
+root copies reverified before removing inactive functionrefs worktree/login link.
+Both original worker submitted/ and coordinator parent-submitted/ remain under
+WORK/functionrefs-run. Reports tools/coding-function-refs/PARENT.md and parent/;
+original reports unchanged. Inherited export26/27 and AddField14/15 remain.
+Ask/apply15/16 is an unchanged refusal expectation for a newly supported ordinary
+assertion reference; parent verified exact2token edit and native assertion.
+No scorer was weakened. Completed handles98356,37400,15896,6363,13605: do not poll
+or repeat those successful checks without a new source change. No parent job live.
+
+Full765 is NOT RUN for functionrefs yet. Approved baseline remains177pass,
+588refused,0fail (indexproof-full result52d3d1a...). Do not publish backend runtime
+until full765 preserves every old pass and zero failures. Prefer combining with
+accepted language work before one full run; if language rejects, validate/publish
+backend alone. No benchmark gain claimed. Evidence and usage commit follows this
+checkpoint; only source4effc66 is the evaluated code commit.
+
+RENAMEENGLISH ACTIVE PID683719, scopeglassmind-continuous-renameenglish.scope,
+8GiB/0swap verified. WORK/renameenglish at8e12be3, runWORK/renameenglish-run,
+briefWORK/renameenglish-task.txt. Required Astra fast/forcedChatGPT; login status
+verified. Owns new English rename helper/minimal English registration and only
+CLI coding-language bridge, no world/backend/main/scorer changes. Public fivefile
+workspace and three original requests supplied, no broad dataset mounts.
+Worker froze35 authoredcases and reports correct typed Rename for all3requests;
+legacy conversational regression fixes still underway. No parent candidate/source
+inspection yet. Archive TERMINAL submission first; worker may create submitted/,
+so check before using archive helper. Do not overwrite original archives.
+
+Parent froze26 independent language cases BEFORE candidate inspection at
+WORK/coordinator/renameenglish-independent, cases SHA256
+1440ec87d25178b543d109644eca866d6789ff1c078d565f031808066cdaf513.
+Baseline session77097 COMPLETE:4/8positive edits; SIX of16 negative requests
+actually mutate code (conditional, hypothetical question, extra unsupported
+operation, contradictory scope etc.);9negativecases receive mutating meanings.
+Both ordinary test/build repair controls retain correct meanings. Every actual
+edit compiles/tests; that does not make the unrequested action correct. Require
+no mutating negative readings/edits and preserve baselinepositive/control behavior.
+Runner captures ask/do chosen typed traces and source identity; source fixtures,
+reports and outputs retained. These are public authored diagnostics, not held-out.
+
+Next: review terminal renameenglish archive, replay independent26, reject if any
+unsafe parsing remains. Integrate only a passing coherent language change, run
+appropriate language/CLI regressions and updated workspace checks, then full765
+with retained original baseline. Backend proof has already passed independent
+review, do not redo its completed experiments. Known completed worker tokens
+129014038; unfinished renameenglish and parent usage excluded. Goal remains active.
+
 ## Latest checkpoint — QA syntax rejected by independent negation probe
 
 QASYNTAX is COMPLETE and REJECTED. Its own aggregate gates passed, but the
