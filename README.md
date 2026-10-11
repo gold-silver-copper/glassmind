@@ -153,6 +153,9 @@ in multiple clauses. Glassmind solves exact constraints and requires a unique
 requested value; ambiguous differences refuse, while explicit subtraction stays
 ordered. This adds six correct MathQA dev answers with existing answers preserved.
 [Scope, independent checks and semantic review](tools/quantities/linearwords/PARENT.md).
+The requested expression can now be determined while its operands remain
+unknown: a known sum of 10 implies twice that sum is 20. Ambiguous targets
+still refuse. [Determined answers and limits](docs/determined-quantities.md).
 
 ## Current benchmark tracks
 

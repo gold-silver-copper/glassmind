@@ -2,12 +2,37 @@
 
 Unlimited active goal; milestone completion does not complete the goal.
 Root branch `harness`; WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Current source commit c6ac04a; original and corrected experiment reports in
+Current source commit 3539a2d; coding feature source c6ac04a; original and corrected experiment reports in
 1529e30, 2a35c17 and b72897a. All coding evaluation jobs are complete. The contextual dialogue worker is active.
 Known completed-worker tokens: 200,145,321, cached input counted once;
 parent and interrupted usage excluded. One Astra fast/ChatGPT worker is running; details below.
 
-## Current action: contextual dialogue source-role experiment
+## Current action: publish determined scalar targets; review dialogue rejection
+
+PROGRESS this turn: source3539a2d implements exact target determination without
+requiring every operand to be unique. Fully consumed grammar unchanged. Exact
+row reduction plus bounded Fourier-Motzkin projection handles free variables and
+absolute-difference sign branches; ambiguity/inconsistency/overflow refuse.
+Review tools/quantities/target-determination/PARENT.md; artifacts
+WORK/coordinator/linear-targets; worktree WORK/linear-targets at3539a2d.
+New20 contracts: baseline8/20 (allrefused), candidate20/20 (12answers8refusals).
+Independent rectangle63, previous composition50 and absolute55 pass. All3116
+synthetic status/value/unit triples unchanged; MathQA sample100/full4475 unchanged
+29correct/4443refused/3wrong with all32 old answers retained. No benchmark gain.
+Newjournal series explicitly authored12/20 substantive answers,8expectedrefusals.
+Main20cases EACHplain+intent mode pass;12successes each preserve/recheck persisted
+memory/story/draft state with realbundles andrestart. 23source/test/manifests exact.
+Package tests/three newgroups/fmt/alltargetclippy/release/strict4smoke passed.
+Rootworkspace90346 andmain49570 COMPLETE; no rootverification job remains.
+NEXT: commit/pushreports and openPR46, mergeexactheadgreenCI. Then archive/review
+contextledger original submission before modifying/removing its worktree.
+
+Contextledger worker PID539613 is confirmed active atthischeckpoint; it reports
+all16CALgrids fail (45–65newwrong) and is finishing independent reconstruction and
+archive. This is provisional worker evidence, not yet parentverified. No runtime
+integration orcandidateDEV. Do not launch a duplicate. See ownership/details below.
+
+## Published PR45 and current dialogue worker
 
 Runtime integrated at c6ac04a. Full coding DEV: 218/765, 547 refusals, zero
 failures; all 215 previous passes retained. Three gains are request styles of

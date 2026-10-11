@@ -1,0 +1,20 @@
+{
+  "synthetic": {
+    "total": 3116,
+    "right": 3056,
+    "refused": 60,
+    "wrong": 0,
+    "expected_refusals": 762,
+    "changes": [],
+    "baseline_canonical_sha256": "93b2bd1c9f8822af95a68d02663a90d122d24ca57d730c61c670e2b11079bbe9",
+    "candidate_canonical_sha256": "93b2bd1c9f8822af95a68d02663a90d122d24ca57d730c61c670e2b11079bbe9"
+  },
+  "novel": {
+    "source": "linearwords-local-development-v1",
+    "license": "MIT OR Apache-2.0",
+    "total": 50,
+    "bytes": 8380,
+    "sha256": "4fd43ddbce1fc5f0eda31934363aee05454ec1c77c77cafc737fec70ce8db299",
+    "failures": []
+  }
+}
