@@ -23,6 +23,7 @@ use serde::{Deserialize, Serialize};
 pub mod checks;
 pub mod index;
 mod rename_types;
+mod rename_variants;
 mod slips;
 
 use RustKind::{Field, Function};
@@ -49,6 +50,8 @@ pub enum RustKind {
     Function,
     Struct,
     Enum,
+    /// A unit, tuple or record variant declared by an enum.
+    Variant,
     Trait,
     /// A named field of a struct.
     Field,
@@ -86,7 +89,7 @@ pub struct RustItem {
     pub line: u32,
     pub name: String,
     pub kind: RustKind,
-    /// The type or trait a function belongs to, or the struct a field belongs to.
+    /// The type/trait owning a function, struct owning a field, or enum owning a variant.
     pub owner: Option<String>,
     /// What a tool said about a problem or a failing test, as it said it.
     #[serde(default)]
@@ -173,6 +176,8 @@ const RENAME_FIELD: RuleInfo = RuleInfo::new("rust.rename.field", 5);
 /// Rename a struct or enum only when explicit module/import bindings account
 /// for every occurrence; refuse unsupported or potentially shadowed syntax.
 const RENAME_TYPE: RuleInfo = RuleInfo::new("rust.rename.type", HAND);
+/// Rename a variant only with explicit enum and reference bindings.
+const RENAME_VARIANT: RuleInfo = RuleInfo::new("rust.rename.variant", HAND);
 /// Noting a name the user will call a thing by: only when the thing is the
 /// only item of its kind (or of the kind the user said) with its name, so
 /// later uses of the alias can't mean another one.
@@ -221,6 +226,7 @@ pub const RULES: &[RuleInfo] = &[
     RENAME,
     RENAME_FIELD,
     RENAME_TYPE,
+    RENAME_VARIANT,
     RELATION_MEMBER,
     CONDITION_NAMED,
     ALIAS_UNIQUE,
@@ -347,7 +353,7 @@ impl RustWorld {
             (Calls, _) => &[Function],
             (HasField, First) => &[Field],
             (HasField, Second) => &[Struct],
-            (Member, First) => &[Field, Function],
+            (Member, First) => &[Field, Function, Variant],
             (TypeMentions | BelongsTo | Member, _) => &[Struct, Enum, Trait],
         };
         if let Some(item) = others.iter().find(|o| !wanted.contains(&o.kind)) {
@@ -395,6 +401,12 @@ impl RustWorld {
                             && part.owner.as_ref() == Some(&whole.name)
                             && !wanted.contains(&item.kind)
                         {
+                            if part.kind == Variant {
+                                let owner = self.variant_owner(part).ok_or(Unsupported)?;
+                                if owner != whole {
+                                    continue;
+                                }
+                            }
                             out.insert(item.clone());
                         }
                     }
@@ -406,6 +418,27 @@ impl RustWorld {
             (TypeMentions | BelongsTo, Second) => return Err(Unsupported),
         }
         Ok(out)
+    }
+
+    /// Variants are indexed immediately after their declaring enum. Use the
+    /// declaration identity, not just its name, for the ownership relation.
+    fn variant_owner(&self, part: &RustItem) -> Option<&RustItem> {
+        let source = self.sources.iter().find(|s| s.name == part.source)?;
+        let at = source.records.iter().position(|r| &r.item == part)?;
+        let owner = source
+            .records
+            .get(..at)?
+            .iter()
+            .rev()
+            .find(|r| r.item.kind != RustKind::Variant)
+            .map(|r| &r.item)
+            .filter(|i| i.kind == RustKind::Enum)?;
+        // RustItem currently identifies a declaration by file and line. Two
+        // same-named enums on one line must not acquire each other's variants.
+        if source.records.iter().filter(|r| &r.item == owner).count() != 1 {
+            return None;
+        }
+        Some(owner)
     }
 
     /// Fields whose type mentions one of `names`.
@@ -427,10 +460,7 @@ impl RustWorld {
             // identify `other` when its name is unique among the functions
             // of its source.
             Position::First => {
-                let namesakes = source
-                    .records
-                    .iter()
-                    .filter(|r| r.item.kind == Function && r.item.name == other.name);
+                let namesakes = source.records.iter().filter(|r| r.item.name == other.name);
                 if namesakes.count() > 1 {
                     return Err(Unsupported);
                 }
@@ -754,14 +784,29 @@ impl World<Rust> for RustWorld {
             return reply;
         }
         let item = self.only(RENAME, thing, *kind, fired)?;
-        if matches!(item.kind, RustKind::Struct | RustKind::Enum) {
-            self.fire(RENAME_TYPE, fired)?;
+        if matches!(
+            item.kind,
+            RustKind::Struct | RustKind::Enum | RustKind::Variant
+        ) {
+            self.fire(
+                if item.kind == RustKind::Variant {
+                    RENAME_VARIANT
+                } else {
+                    RENAME_TYPE
+                },
+                fired,
+            )?;
             let source = self
                 .sources
                 .iter()
                 .find(|s| s.name == item.source)
                 .ok_or(Unsupported)?;
-            let at = rename_types::positions(source, &item, &name.0).ok_or(Unsupported)?;
+            let at = if item.kind == RustKind::Variant {
+                rename_variants::positions(source, &item, &name.0)
+            } else {
+                rename_types::positions(source, &item, &name.0)
+            }
+            .ok_or(Unsupported)?;
             return Ok(Reply::Proposal {
                 action: Action::Rename {
                     thing: Thing::Item(item),

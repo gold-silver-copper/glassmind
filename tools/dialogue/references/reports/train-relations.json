@@ -1,0 +1,62 @@
+{
+  "train_sha256": "f347a5708e4444998ddcb7546ab5ecab68cac1c7785a12db18d7ad12920619f3",
+  "schema_sha256": "7afda6fb434a47ea594edb4ebdb9b182194156df4aaf1c5e40f984cc624eaef4",
+  "relations": [
+    {
+      "source_service": "Travel_1",
+      "source_slot": "location",
+      "target_service": "RideSharing_1",
+      "target_slot": "destination",
+      "matches": 0,
+      "opportunities": 171
+    },
+    {
+      "source_service": "Travel_1",
+      "source_slot": "location",
+      "target_service": "Weather_1",
+      "target_slot": "city",
+      "matches": 83,
+      "opportunities": 83
+    },
+    {
+      "source_service": "Travel_1",
+      "source_slot": "location",
+      "target_service": "Weather_1",
+      "target_slot": "date",
+      "matches": 0,
+      "opportunities": 97
+    },
+    {
+      "source_service": "Weather_1",
+      "source_slot": "city",
+      "target_service": "RideSharing_1",
+      "target_slot": "destination",
+      "matches": 0,
+      "opportunities": 83
+    },
+    {
+      "source_service": "Weather_1",
+      "source_slot": "city",
+      "target_service": "Travel_1",
+      "target_slot": "location",
+      "matches": 82,
+      "opportunities": 82
+    },
+    {
+      "source_service": "Weather_1",
+      "source_slot": "date",
+      "target_service": "RideSharing_1",
+      "target_slot": "destination",
+      "matches": 0,
+      "opportunities": 74
+    },
+    {
+      "source_service": "Weather_1",
+      "source_slot": "date",
+      "target_service": "Travel_1",
+      "target_slot": "location",
+      "matches": 0,
+      "opportunities": 62
+    }
+  ]
+}

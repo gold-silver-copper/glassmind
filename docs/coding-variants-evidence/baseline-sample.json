@@ -1,0 +1,49 @@
+{
+  "binary_sha256": "ce16d415cf198bf2e82a1855fb7b482f94bcbd1ee99349636adaddae395c4d94",
+  "cases": [
+    {
+      "case": "constructors",
+      "supported": true,
+      "changed": false,
+      "exact_source": false,
+      "behavior": true,
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_stdout": "9 Ready\n",
+      "after_stdout": "9 Ready\n",
+      "reply": "Nothing is called `Signal::Ready`.\n",
+      "stderr": "",
+      "pass": false
+    },
+    {
+      "case": "nested_alias",
+      "supported": true,
+      "changed": false,
+      "exact_source": false,
+      "behavior": true,
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_stdout": "8\n",
+      "after_stdout": "8\n",
+      "reply": "Nothing is called `State::Ready`.\n",
+      "stderr": "",
+      "pass": false
+    },
+    {
+      "case": "library_unicode",
+      "supported": true,
+      "changed": false,
+      "exact_source": false,
+      "behavior": true,
+      "before_exit": 0,
+      "after_exit": 0,
+      "before_stdout": "6\n",
+      "after_stdout": "6\n",
+      "reply": "Nothing is called `\u00c9tat::Pr\u00eat`.\n",
+      "stderr": "",
+      "pass": false
+    }
+  ],
+  "passed": 0,
+  "total": 3
+}

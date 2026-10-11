@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "minimum_support": 20,
+  "relations": [
+    {
+      "source_service": "Travel_1",
+      "source_slot": "location",
+      "target_service": "Weather_1",
+      "target_slot": "city",
+      "matches": 83,
+      "opportunities": 83
+    },
+    {
+      "source_service": "Weather_1",
+      "source_slot": "city",
+      "target_service": "Travel_1",
+      "target_slot": "location",
+      "matches": 82,
+      "opportunities": 82
+    }
+  ]
+}

@@ -13,18 +13,18 @@ use syn::visit::Visit;
 use crate::index::{Pos, SourceIndex};
 use crate::{RustItem, RustKind};
 
-struct Module {
-    path: Vec<String>,
-    file: usize,
-    items: Vec<syn::Item>,
+pub(crate) struct Module {
+    pub(crate) path: Vec<String>,
+    pub(crate) file: usize,
+    pub(crate) items: Vec<syn::Item>,
 }
 
-fn position(file: usize, ident: &Ident) -> Pos {
+pub(crate) fn position(file: usize, ident: &Ident) -> Pos {
     let p = ident.span().start();
     (file, p.line as u32, p.column as u32)
 }
 
-fn modules(
+pub(crate) fn modules(
     source: &SourceIndex,
     file: &str,
     path: Vec<String>,
@@ -79,7 +79,7 @@ fn modules(
 }
 
 // Only lexical module paths, never dependency paths or implicit preludes.
-fn absolute(module: &[String], path: &[String]) -> Option<Vec<String>> {
+pub(crate) fn absolute(module: &[String], path: &[String]) -> Option<Vec<String>> {
     let mut result = module.to_vec();
     let mut parts = path.iter().peekable();
     match parts.peek().map(|s| s.as_str()) {
@@ -102,7 +102,7 @@ fn absolute(module: &[String], path: &[String]) -> Option<Vec<String>> {
     Some(result)
 }
 
-fn imports(
+pub(crate) fn imports(
     tree: &syn::UseTree,
     prefix: &mut Vec<Ident>,
     out: &mut Vec<(Vec<Ident>, Ident)>,

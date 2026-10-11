@@ -185,6 +185,7 @@ fn kind_word(kind: ItemKind) -> &'static str {
         ItemKind::Field => "field",
         ItemKind::Problem => "problem",
         ItemKind::Test => "test",
+        ItemKind::Variant => "variant",
     }
 }
 

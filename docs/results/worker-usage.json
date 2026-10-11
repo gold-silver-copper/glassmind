@@ -152,6 +152,45 @@
         "reasoning_output_tokens": 3828
       },
       "source": "continuous batch, fixed byte six-gram scorer; times from retained artifact metadata"
+    },
+    {
+      "track": "dialogue-routing-continuous",
+      "started_unix": 1791690412.7330482,
+      "finished_unix": 1791690840.2963958,
+      "usage": {
+        "input_tokens": 1687149,
+        "cached_input_tokens": 1611264,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 26940,
+        "reasoning_output_tokens": 5640
+      },
+      "source": "Rejected multi-service routing/state hypotheses; times from artifact metadata"
+    },
+    {
+      "track": "coding-variants-continuous",
+      "started_unix": 1791690648.0478306,
+      "finished_unix": 1791691116.9317744,
+      "usage": {
+        "input_tokens": 2167959,
+        "cached_input_tokens": 2065152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27952,
+        "reasoning_output_tokens": 8848
+      },
+      "source": "Variant binding resolution; worker adapter evidence, coordinator CLI integration required"
+    },
+    {
+      "track": "dialogue-references-continuous",
+      "started_unix": 1791690883.4357734,
+      "finished_unix": 1791691261.7704968,
+      "usage": {
+        "input_tokens": 1504226,
+        "cached_input_tokens": 1430272,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22886,
+        "reasoning_output_tokens": 5880
+      },
+      "source": "Grounded predicted-slot transfer with complete new-error audit"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

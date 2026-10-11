@@ -270,3 +270,38 @@ none was removed. Grammar has 185 good-to-bad transitions and 23 regressing
 categories despite its net gain. The old parse-only metrics remain distinct;
 no semantic understanding or independent held-out claim is made.
 [Settings, hashes, results and reproduction](../tools/reading/HANDOFF.md).
+
+
+## Multi-service SGD and grounded slot transfer (2026-10-11 UTC)
+
+Pinned SGD revision `e852981ae34990f4358979625854259302feaa78`, CC-BY-SA-4.0.
+Only explicit official train/dev shards and schemas were downloaded: 150 files,
+504,306,737 bytes. No official test data was downloaded. Selection is by the
+fixed schema service set RideSharing_1, Travel_1 and Weather_1, preserving
+complete conversations: train 3,174 conversations/34,022 user turns/12,762 target
+frames (45,291,003 selected bytes); dev 179 conversations, including 54 multi-service,
+1,119 user turns and 1,218 gold frames. Runtime receives only speaker/utterance
+arrays and the global schema, with no gold service lists, states or annotations.
+Prediction isolation was checked by reversing conversation order and rejecting
+annotation fields. All three services are predicted before gold is consulted.
+
+The fixed joint12 router plus trained service trackers yields 549 exact joint
+turns; learned, value-free slot relations raise this to 595/1,119, with 474 wrong
+and 50 refused. All baseline-correct turns are retained. Exact service frames
+rise 598→689/1,218; multi-service RideSharing remains 0/265. Four incorrect copy
+events persist for 11 scored slot-turns. The earlier single-service slice remains
+202/257 exact, 89.1751% fuzzy, and is a distinct metric/denominator. Rejected
+router experiments are retained separately; no official held-out claim is made.
+
+The 455-byte relation model stores only schema names and train evidence counts.
+The candidate's frozen classifiers plus relations occupy 32,169,632 bytes,
+SHA256 `9991b341b4da7e775e0fa7e3ca55a2a00f4935a0a7b94db16f02b2b6596be83c`;
+large weights/data remain outside git. Source and selected-file hashes, all
+new-error audits, license, cache locations and exact reproduction commands are
+in [the reference-transfer handoff](../tools/dialogue/references/HANDOFF.md)
+and [source manifest](../tools/dialogue/reports/data-manifest.json).
+
+Enum-variant editing uses 14 independently authored local fixtures, 1,902 source
+bytes, under the workspace MIT OR Apache-2.0 license, with no downloaded training
+data. Four successful edits, nine expected refusals and rollback pass; all 765
+RustBench dev outcomes remain unchanged. [Evidence](../docs/coding-variants.md).

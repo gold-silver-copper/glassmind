@@ -1,0 +1,159 @@
+{
+  "base_revision": "0616eccefac75a538c90a3b9cf3055d828c0058d",
+  "source_version": "uncommitted; SHA256 of sorted path NUL bytes NUL for owned source files",
+  "source_sha256": "2cef4e14c53ee663ca8ed27a240d0c42fdc9b204c6ee65f5e2c386f0a4225b5c",
+  "source_files": {
+    "crates/world-rust/src/lib.rs": {
+      "bytes": 45969,
+      "sha256": "40e63c2ac7d7f2e125b61d40094ae0605a5375e7bfe797f010fa73ab828f9bbd"
+    },
+    "crates/world-rust/src/index.rs": {
+      "bytes": 14651,
+      "sha256": "a3dd39f6a0a274938933753e0538f67ab5390b8f3c1c44b96f182f8879082c59"
+    },
+    "crates/world-rust/src/rename_types.rs": {
+      "bytes": 15179,
+      "sha256": "8c5c85cec2b93b5e5dd8a42026996df1735259dfa54b6cc6b09ae83c6ff85cb0"
+    },
+    "crates/world-rust/src/rename_variants.rs": {
+      "bytes": 17759,
+      "sha256": "fd38e1841465385e3162005cb450940a9c0310bf8a6e2632d3b915d5139d67fb"
+    },
+    "crates/english-rust/src/lib.rs": {
+      "bytes": 73958,
+      "sha256": "89ab4e3cf787df67ad2f3df77d1bddd9af94af8f527b4baf72b364485a761f78"
+    },
+    "crates/english-rust/examples/coding-edits.rs": {
+      "bytes": 2182,
+      "sha256": "266a5479227d7199c4315a040ab181d1d0db29c8f748fbe75b0424e439ad73b0"
+    },
+    "tools/coding-variants-dev.py": {
+      "bytes": 7181,
+      "sha256": "fd05f7fc3db00ad2b363c632f21725c2d38ab73b49b44ca69ea6bee39bcd879b"
+    }
+  },
+  "binary_baseline": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/variants-run/tmp/glassmind-baseline",
+    "bytes": 108135152,
+    "sha256": "ce16d415cf198bf2e82a1855fb7b482f94bcbd1ee99349636adaddae395c4d94"
+  },
+  "binary_candidate": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/variants-run/target/debug/examples/coding-edits",
+    "bytes": 50890400,
+    "sha256": "10b7e8b9fe12079050674cc1a2de00368d50670e84016437482c94b4dad79726"
+  },
+  "cargo_lock": {
+    "bytes": 13028,
+    "sha256": "ea9ccfce67a24ea05bb5588d75a5bbbe29afe4e60e92a4d1e91730a994d286a8"
+  },
+  "data": {
+    "source": "independently authored literal tiny crates in tools/coding-variants-dev.py",
+    "version": "preregistered batch 2026-10-11",
+    "license": "MIT OR Apache-2.0",
+    "external_download_bytes": 0,
+    "cases": 14,
+    "original_rust_utf8_bytes": 1902
+  },
+  "results": {
+    "baseline-full": {
+      "passed": 10,
+      "total": 14
+    },
+    "baseline-sample": {
+      "passed": 0,
+      "total": 3
+    },
+    "candidate-sample": {
+      "passed": 3,
+      "total": 3
+    },
+    "candidate-full": {
+      "passed": 14,
+      "total": 14
+    },
+    "type-baseline": {
+      "passed": 9,
+      "total": 9
+    },
+    "type-candidate": {
+      "passed": 9,
+      "total": 9
+    }
+  },
+  "integration": "main CLI fails to build until coordinator adds Variant answer-kind bridge; candidate is owned English/world adapter",
+  "full_rustbench_dev": "not run; coordinator owns full765 and transition inspection",
+  "invalidated": [
+    "invalid-concurrent-candidate.json",
+    "invalid-concurrent-baseline.json"
+  ],
+  "evidence_files": {
+    "docs/coding-variants-evidence/baseline-full.json": {
+      "bytes": 4910,
+      "sha256": "3abedf60618e9932da4fa7f32bbb1b6e2958262fa65f40f6f28875aba08e48ea"
+    },
+    "docs/coding-variants-evidence/baseline-run.jsonl": {
+      "bytes": 3610,
+      "sha256": "580e00ff4514e7e5dacfb0d363e96a97d63aeb814f466bfeef4cc4536802ab8e"
+    },
+    "docs/coding-variants-evidence/baseline-sample.json": {
+      "bytes": 1195,
+      "sha256": "d350ac80aeed3eb603db94106fd4c29927495c008ae875fb32a2228e42ad737a"
+    },
+    "docs/coding-variants-evidence/build.log": {
+      "bytes": 167,
+      "sha256": "0b3645a99050754ad18fb4b8d3e779ae32442a5bfc257881192e398d7adbebf5"
+    },
+    "docs/coding-variants-evidence/candidate-full.json": {
+      "bytes": 7499,
+      "sha256": "28e3a9fef398989bfc3f2c16cf7c4f707e76018cf42a9051788752939075c3ee"
+    },
+    "docs/coding-variants-evidence/candidate-sample.json": {
+      "bytes": 2680,
+      "sha256": "ec5e5f4ee15ade29cc58b54180e21abd5ea036d889772e94e5b1c3d3e20c79f5"
+    },
+    "docs/coding-variants-evidence/clippy.log": {
+      "bytes": 405,
+      "sha256": "a5f5697972d6fae3e5920f230799d788302920f444de48d55c0ba05de11ed096"
+    },
+    "docs/coding-variants-evidence/fmt.log": {
+      "bytes": 95,
+      "sha256": "9ccc82e43024a323ba6e2f193bf4116896449715c9db368e66024069b7f9e036"
+    },
+    "docs/coding-variants-evidence/full-run.jsonl": {
+      "bytes": 6199,
+      "sha256": "263bcdade863d62f5b385eb0c784dbe1d17896dbf45a3b2884a2b200fef475fc"
+    },
+    "docs/coding-variants-evidence/invalid-concurrent-baseline.json": {
+      "bytes": 4910,
+      "sha256": "3abedf60618e9932da4fa7f32bbb1b6e2958262fa65f40f6f28875aba08e48ea"
+    },
+    "docs/coding-variants-evidence/invalid-concurrent-candidate.json": {
+      "bytes": 6922,
+      "sha256": "fb5f112ad5d0d50d79c295557942caea4cd5dcd82856273ef2793ad217512998"
+    },
+    "docs/coding-variants-evidence/sample-run.jsonl": {
+      "bytes": 2295,
+      "sha256": "510c02971588f88e29fb3a215080a4fbf96d053725ea5534a4f4bfed6e5349ca"
+    },
+    "docs/coding-variants-evidence/tests.log": {
+      "bytes": 4219,
+      "sha256": "3018fde3e52a4f059cedbc2401b0518a3f3c16abd117734105cd17fe8bca76a5"
+    },
+    "docs/coding-variants-evidence/type-baseline-run.jsonl": {
+      "bytes": 3042,
+      "sha256": "0849f540d829a7b871d0cb0877976c6e535caa4b7ddcc4a78b4f6cd72048a408"
+    },
+    "docs/coding-variants-evidence/type-baseline.json": {
+      "bytes": 3468,
+      "sha256": "354dd82441fdda0b9912fa56522cfc280350a30d763fd4536849f319aca36a39"
+    },
+    "docs/coding-variants-evidence/type-candidate.json": {
+      "bytes": 4783,
+      "sha256": "daafd5078bfb20171dfb374b399ac1c95659ee8207412e6fd1730935754e52ca"
+    },
+    "docs/coding-variants-evidence/type-run.jsonl": {
+      "bytes": 4357,
+      "sha256": "bca7bc5c8ff145cdf6ee8d33c2f5124846acafa8292edd89653e1a292a25e49d"
+    }
+  }
+}

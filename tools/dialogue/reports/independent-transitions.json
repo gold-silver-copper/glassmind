@@ -1,0 +1,201 @@
+{
+  "joint_transitions": {
+    "right->right": 545,
+    "wrong->wrong": 503,
+    "refused->wrong": 6,
+    "refused->refused": 42,
+    "wrong->refused": 16,
+    "right->refused": 2,
+    "right->wrong": 2,
+    "refused->right": 2,
+    "wrong->right": 1
+  },
+  "frame_transitions": {
+    "True->True": 592,
+    "False->False": 617,
+    "True->False": 6,
+    "False->True": 3
+  },
+  "routing_transitions": {
+    "True->True": 963,
+    "False->False": 87,
+    "False->True": 55,
+    "True->False": 14
+  },
+  "changed_joint_ids": [
+    [
+      "17_00011",
+      12,
+      "refused",
+      "wrong"
+    ],
+    [
+      "17_00011",
+      14,
+      "refused",
+      "wrong"
+    ],
+    [
+      "17_00011",
+      16,
+      "refused",
+      "wrong"
+    ],
+    [
+      "17_00016",
+      14,
+      "refused",
+      "wrong"
+    ],
+    [
+      "17_00023",
+      12,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00023",
+      14,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00023",
+      16,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00024",
+      0,
+      "right",
+      "refused"
+    ],
+    [
+      "17_00024",
+      2,
+      "right",
+      "wrong"
+    ],
+    [
+      "17_00028",
+      2,
+      "refused",
+      "right"
+    ],
+    [
+      "17_00028",
+      4,
+      "wrong",
+      "right"
+    ],
+    [
+      "17_00033",
+      6,
+      "refused",
+      "wrong"
+    ],
+    [
+      "17_00035",
+      10,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00035",
+      12,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00035",
+      14,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00035",
+      16,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00035",
+      18,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00035",
+      20,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00036",
+      14,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00038",
+      14,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00038",
+      16,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00038",
+      18,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00039",
+      2,
+      "right",
+      "refused"
+    ],
+    [
+      "17_00039",
+      4,
+      "right",
+      "wrong"
+    ],
+    [
+      "17_00044",
+      12,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00044",
+      14,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00049",
+      10,
+      "wrong",
+      "refused"
+    ],
+    [
+      "17_00052",
+      8,
+      "refused",
+      "wrong"
+    ],
+    [
+      "5_00061",
+      6,
+      "refused",
+      "right"
+    ]
+  ]
+}

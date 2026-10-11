@@ -1,0 +1,27 @@
+{
+  "dataset": "rustbench f79e71a all styles",
+  "split": "dev",
+  "total": 765,
+  "coding_source_commit": "0bff6a1704dcdd840058069c9e279a8fd61aa41e",
+  "binary_sha256": "0227f639013d66fa4befe07f0487590b491b9d30981217f8668821daf895240c",
+  "baseline": {
+    "refused": 599,
+    "pass": 163,
+    "fail": 3
+  },
+  "candidate": {
+    "refused": 599,
+    "pass": 163,
+    "fail": 3
+  },
+  "transitions": {
+    "refused->refused": 599,
+    "pass->pass": 163,
+    "fail->fail": 3
+  },
+  "changed": [],
+  "result_files": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/edits-full/results.jsonl": "a7bb0d3057f6b2dd6755e92fc6c943f952083552bbea68a059708f20f9e02fea",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/variants-full/results.jsonl": "c8d79b36101419d4fc0e7d647df15ccf39200a3b44d73ceac04d731b28f1c9aa"
+  }
+}

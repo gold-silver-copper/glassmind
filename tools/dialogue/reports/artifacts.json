@@ -1,0 +1,136 @@
+{
+  "base_commit": "eb15517c792fabed81e82b0733394e354b96e195",
+  "artifacts": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/multi/model-0.json",
+      "bytes": 31583903,
+      "sha256": "18303a59e90591b318961ffd00e98daa583923aed76e3ef93f0eb6a7af508ada"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/multi/model-12.json",
+      "bytes": 32200901,
+      "sha256": "7ad9f82b9adfd5671511feeca787193ce82ea2bf5f781ea5c6353befdff3428f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/multi/model-independent-12.json",
+      "bytes": 47605514,
+      "sha256": "f76a8996c8bac8aa23b8d82ff2f3c225c6539e75fafe1d6a355b483d14fd1af6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/models/dialogue/model-12.json",
+      "bytes": 7583366,
+      "sha256": "f3759d541be8115043b68ade07ff80856acfd9e8e403e3071e1fd4a1eec2b547"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/target/release/dialogue-multi",
+      "bytes": 15923680,
+      "sha256": "dac427d2ce43d8c65ac045034abc0751842fdb08f099de2e858054aa681f14da"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/target/release/glassmind-dialogue",
+      "bytes": 15568080,
+      "sha256": "d83a782cf24bb53ccaa259403e5f937605ec634e3aebd90ec73514ed00688388"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/multi/full-0/predictions.json",
+      "bytes": 397620,
+      "sha256": "ac4a475c41abf540ee468ace913110a7906ef417f2410e6245c91285a042828c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/multi/full-12/predictions.json",
+      "bytes": 394577,
+      "sha256": "0bf6ecc06fdcec1b0130610f7ce5275252caaa6993383fa9b4e58ebb0ae0884e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/multi/independent-full-12/predictions.json",
+      "bytes": 397654,
+      "sha256": "64451e9b027bf3e63170c67f2e7f132df886fbc23f62df9b22f7e17e7017b958"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/multi/legacy-predictions.json",
+      "bytes": 49012,
+      "sha256": "3b9a21719f738bf40feb8dfc86b266be5fe07ff48c49ea8ebe4b5ebfa79623b5"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/data/sgd-full/selected/train.json",
+      "bytes": 45291003,
+      "sha256": "f347a5708e4444998ddcb7546ab5ecab68cac1c7785a12db18d7ad12920619f3"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/data/sgd-full/selected/dev.json",
+      "bytes": 1207178,
+      "sha256": "89cc1943a0310354be053988235ff64e0cc232fd57a86b82b5f0f1dc354f8bf7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/data/sgd-full/selected/train-schema.json",
+      "bytes": 3707,
+      "sha256": "7afda6fb434a47ea594edb4ebdb9b182194156df4aaf1c5e40f984cc624eaef4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/data/sgd-full/selected/dev-schema.json",
+      "bytes": 3707,
+      "sha256": "b021ae923dbeb7782b99ac6628e65b1b48f3cca2892fb62ce8c77b472324e089"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/crates/dialogue/src/adapter.rs",
+      "bytes": 1408,
+      "sha256": "7a919603493525a5069d81ac3de5473819c1142cfadbd99380effff1a028d027"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/crates/dialogue/src/lib.rs",
+      "bytes": 204,
+      "sha256": "08a693b6191e622363fffc816372fc9e8d30e5b6739abe3d4df1e05f00444e32"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/crates/dialogue/src/main.rs",
+      "bytes": 7256,
+      "sha256": "5c101feb4a4167d541dd0e4b6aca8dc12b802ce760925526a6739e44f3e5fe10"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/crates/dialogue/src/tracker.rs",
+      "bytes": 12997,
+      "sha256": "87e53f0791eab162b08c65921e3f853f7ec55f53d27b43c9c58fe8d8d2b0201c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/crates/dialogue/src/multi.rs",
+      "bytes": 11671,
+      "sha256": "79caddc81c0694e5d7c0eff52b8ef70b22be5c557314a289237f016df1ae51e1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/crates/dialogue/src/bin/dialogue-multi.rs",
+      "bytes": 5579,
+      "sha256": "270a260fa5b3c8391ce11912deffa45b464687db91eb9f0faa7c1483da13e6eb"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/tools/dialogue/prepare.py",
+      "bytes": 2830,
+      "sha256": "737068b5426641b9927dbee7c1c5fcfbdbe052338695529484a14d0d1ca90da6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/tools/dialogue/evaluate.py",
+      "bytes": 5148,
+      "sha256": "79281f154628a44956df7e60b368165e1ff405692be057b37518b855b3577b24"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/tools/dialogue/compare.py",
+      "bytes": 1943,
+      "sha256": "442c7d348d79b5c38f6ebd760376c8836a89793300753a5f309e0369c11da693"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/tools/dialogue/evaluate.sh",
+      "bytes": 1256,
+      "sha256": "53f12be7f65718171be07aa4adae69483f9a24e277d0c3941b98c7ff885da4bd"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue/tools/dialogue/reproduce.sh",
+      "bytes": 3521,
+      "sha256": "60ce49ce5da7b2fcf84952e674b4cbb777c6b6bf3ed533c10472e7b5edd0519b"
+    }
+  ],
+  "frozen_ridesharing_model_structurally_identical": true,
+  "training_frames": {
+    "RideSharing_1": 3455,
+    "Travel_1": 6491,
+    "Weather_1": 2816
+  }
+}
