@@ -1,0 +1,1061 @@
+{
+  "authored": {
+    "total": 32,
+    "baseline_expected": 14,
+    "candidate_expected": 32,
+    "baseline_repair_readings": 23,
+    "candidate_repair_readings": 6,
+    "lost_expected": [],
+    "candidate_failures": [],
+    "transitions": [
+      {
+        "index": 0,
+        "expected": "repair_build",
+        "text": "Please fix the compiler error without changing the output.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "repair_build",
+          "repair_build"
+        ]
+      },
+      {
+        "index": 6,
+        "expected": "status_build",
+        "text": "Can the project compile successfully?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 7,
+        "expected": "status_tests",
+        "text": "Would you check whether our tests pass?",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [
+          "status_tests"
+        ],
+        "baseline_guesses": [
+          "repair_tests"
+        ],
+        "candidate_guesses": [
+          "status_tests"
+        ]
+      },
+      {
+        "index": 8,
+        "expected": "status_build",
+        "text": "Tell me whether the build passes.",
+        "baseline": [
+          "status_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 9,
+        "expected": "status_tests",
+        "text": "Are there any test failures?",
+        "baseline": [],
+        "candidate": [
+          "problems_tests"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "problems_tests"
+        ]
+      },
+      {
+        "index": 10,
+        "expected": "refuse",
+        "text": "\"Please fix the compiler errors.\"",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 11,
+        "expected": "refuse",
+        "text": "The issue quotes \"make the tests pass\" as an example.",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_tests"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 12,
+        "expected": "refuse",
+        "text": "She requested that you fix the build yesterday.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 14,
+        "expected": "refuse",
+        "text": "How would you fix these compiler errors?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 17,
+        "expected": "refuse",
+        "text": "Fix the compiler errors. Actually, stop.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 19,
+        "expected": "refuse",
+        "text": "If I approve tomorrow, fix the compiler error.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 20,
+        "expected": "refuse",
+        "text": "Fix the tests after I give permission.",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [],
+        "baseline_guesses": [],
+        "candidate_guesses": []
+      },
+      {
+        "index": 21,
+        "expected": "refuse",
+        "text": "Suppose I asked you to fix this build.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 22,
+        "expected": "refuse",
+        "text": "Could repairing the build affect behavior?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 23,
+        "expected": "refuse",
+        "text": "Fix the compiler error and then publish the crate.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 25,
+        "expected": "refuse",
+        "text": "Please fix the build, unless I object later.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 26,
+        "expected": "refuse",
+        "text": "Fix the build? No, leave it alone.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 27,
+        "expected": "refuse",
+        "text": "Please fix the build only when I confirm.",
+        "baseline": [
+          "repair_build",
+          "repair_build",
+          "repair_build",
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [],
+        "candidate_guesses": []
+      },
+      {
+        "index": 30,
+        "expected": "refuse",
+        "text": "Please fix the build and add a feature.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      }
+    ]
+  },
+  "legacy15": {
+    "total": 15,
+    "baseline_expected": 15,
+    "candidate_expected": 15,
+    "baseline_repair_readings": 15,
+    "candidate_repair_readings": 15,
+    "lost_expected": [],
+    "candidate_failures": [],
+    "transitions": []
+  },
+  "old68": {
+    "total": 68,
+    "baseline_expected": 34,
+    "candidate_expected": 63,
+    "baseline_repair_readings": 56,
+    "candidate_repair_readings": 27,
+    "lost_expected": [],
+    "candidate_failures": [
+      {
+        "index": 10,
+        "expected": "repair_build",
+        "text": "I'd like you to repair the build.",
+        "understood": [],
+        "guesses": []
+      },
+      {
+        "index": 54,
+        "expected": "refuse",
+        "text": "Could you fix something?",
+        "understood": [
+          "repair_build"
+        ],
+        "guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 55,
+        "expected": "refuse",
+        "text": "Please fix it.",
+        "understood": [
+          "repair_build"
+        ],
+        "guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 56,
+        "expected": "refuse",
+        "text": "The tests are failing.",
+        "understood": [
+          "problems_tests"
+        ],
+        "guesses": [
+          "repair_tests"
+        ]
+      },
+      {
+        "index": 57,
+        "expected": "refuse",
+        "text": "The build is broken.",
+        "understood": [
+          "repair_build"
+        ],
+        "guesses": [
+          "repair_build"
+        ]
+      }
+    ],
+    "transitions": [
+      {
+        "index": 24,
+        "expected": "status_build",
+        "text": "Does this project compile?",
+        "baseline": [
+          "other"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 25,
+        "expected": "status_build",
+        "text": "Does the build pass?",
+        "baseline": [
+          "status_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 26,
+        "expected": "status_build",
+        "text": "Can this crate compile?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 27,
+        "expected": "status_build",
+        "text": "Is the build passing?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 28,
+        "expected": "status_build",
+        "text": "Does `widget` compile?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 29,
+        "expected": "status_build",
+        "text": "Could you check whether the project compiles?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 30,
+        "expected": "status_build",
+        "text": "Please check if the build passes.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "status_build"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "status_build"
+        ]
+      },
+      {
+        "index": 31,
+        "expected": "status_tests",
+        "text": "Do the tests pass?",
+        "baseline": [
+          "status_tests"
+        ],
+        "candidate": [
+          "status_tests"
+        ],
+        "baseline_guesses": [
+          "repair_tests"
+        ],
+        "candidate_guesses": [
+          "status_tests"
+        ]
+      },
+      {
+        "index": 32,
+        "expected": "status_tests",
+        "text": "Are the tests passing?",
+        "baseline": [
+          "status_tests"
+        ],
+        "candidate": [
+          "status_tests"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "status_tests"
+        ]
+      },
+      {
+        "index": 33,
+        "expected": "status_tests",
+        "text": "Do all unit tests pass?",
+        "baseline": [
+          "status_tests"
+        ],
+        "candidate": [
+          "status_tests"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "status_tests"
+        ]
+      },
+      {
+        "index": 34,
+        "expected": "status_tests",
+        "text": "Can you check whether the tests pass?",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [
+          "status_tests"
+        ],
+        "baseline_guesses": [
+          "repair_tests"
+        ],
+        "candidate_guesses": [
+          "status_tests"
+        ]
+      },
+      {
+        "index": 35,
+        "expected": "status_tests",
+        "text": "Please check if the unit tests pass.",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [
+          "status_tests"
+        ],
+        "baseline_guesses": [
+          "repair_tests"
+        ],
+        "candidate_guesses": [
+          "status_tests"
+        ]
+      },
+      {
+        "index": 36,
+        "expected": "refuse",
+        "text": "\"Fix the build.\"",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 39,
+        "expected": "refuse",
+        "text": "Yesterday she asked me to fix the build.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 41,
+        "expected": "refuse",
+        "text": "Could you explain how to fix the build?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [],
+        "candidate_guesses": []
+      },
+      {
+        "index": 43,
+        "expected": "refuse",
+        "text": "Fix the build only if I confirm later.",
+        "baseline": [
+          "repair_build",
+          "repair_build",
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [],
+        "candidate_guesses": []
+      },
+      {
+        "index": 44,
+        "expected": "refuse",
+        "text": "If tests fail, fix the build.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 45,
+        "expected": "refuse",
+        "text": "Don't fix the build.",
+        "baseline": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [],
+        "candidate_guesses": []
+      },
+      {
+        "index": 48,
+        "expected": "refuse",
+        "text": "Fix the build. Actually, don't.",
+        "baseline": [
+          "repair_build",
+          "repair_build",
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [],
+        "candidate_guesses": []
+      },
+      {
+        "index": 49,
+        "expected": "refuse",
+        "text": "Fix the tests unless I cancel.",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 50,
+        "expected": "refuse",
+        "text": "Fix the build and delete the tests.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 52,
+        "expected": "refuse",
+        "text": "Fix the build or just explain the error.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 53,
+        "expected": "refuse",
+        "text": "Fix the build; also deploy it.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 58,
+        "expected": "refuse",
+        "text": "Would fixing the build change the API?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 59,
+        "expected": "refuse",
+        "text": "Is it possible to repair the tests without editing files?",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_tests"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 61,
+        "expected": "refuse",
+        "text": "Please fix `fix the build`.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 62,
+        "expected": "refuse",
+        "text": "Please fix the build? No, wait.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 63,
+        "expected": "refuse",
+        "text": "I might want you to fix the tests.",
+        "baseline": [
+          "repair_tests"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_tests"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 65,
+        "expected": "refuse",
+        "text": "The guide says \"fix the build\". Could you explain it?",
+        "baseline": [
+          "other",
+          "other",
+          "other",
+          "other",
+          "other",
+          "other"
+        ],
+        "candidate": [
+          "other",
+          "other",
+          "other",
+          "other",
+          "other",
+          "other"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 66,
+        "expected": "refuse",
+        "text": "Could you fix the build if I approve?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      },
+      {
+        "index": 67,
+        "expected": "refuse",
+        "text": "Please fix the build and the tests.",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [],
+        "baseline_guesses": [
+          "repair_build",
+          "repair_build"
+        ],
+        "candidate_guesses": []
+      }
+    ]
+  },
+  "train172": {
+    "total": 172,
+    "baseline_expected": 159,
+    "candidate_expected": 167,
+    "baseline_repair_readings": 161,
+    "candidate_repair_readings": 169,
+    "lost_expected": [],
+    "candidate_failures": [
+      {
+        "index": 15,
+        "expected": "build",
+        "text": "Hey! I split my shapes code into a couple of files and now report.rs says there's no method `area`, even though both shapes clearly implement it. Could you fix it?",
+        "understood": [],
+        "guesses": []
+      },
+      {
+        "index": 56,
+        "expected": "build",
+        "text": "doesnt compile pls fix",
+        "understood": [
+          "other",
+          "other"
+        ],
+        "guesses": [
+          "repair_build",
+          "repair_build"
+        ]
+      },
+      {
+        "index": 79,
+        "expected": "build",
+        "text": "no field error in volume fn, fix",
+        "understood": [],
+        "guesses": []
+      },
+      {
+        "index": 80,
+        "expected": "build",
+        "text": "no method area in report.rs but its implemented?? fix",
+        "understood": [
+          "other"
+        ],
+        "guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 154,
+        "expected": "test",
+        "text": "pager test fails, fix teh code pls not the test",
+        "understood": [],
+        "guesses": []
+      }
+    ],
+    "transitions": [
+      {
+        "index": 8,
+        "expected": "build",
+        "text": "Hello! I wrote this small Rust crate but the compiler rejects it. Would you mind fixing it so it compiles, without changing what it does?",
+        "baseline": [],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 9,
+        "expected": "build",
+        "text": "Hello! I'm counting hits on a battleship-style grid and the HashMap code won't compile. Could you make it build without changing how it counts?",
+        "baseline": [],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 10,
+        "expected": "build",
+        "text": "Hello! My loan calculator says mismatched types on the interest method and I don't get why. Can you get it to build?",
+        "baseline": [],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 14,
+        "expected": "build",
+        "text": "Hey! I parse CSV-ish lines into lowercase fields. The compiler says a temporary value is dropped while borrowed, which I don't really understand. Could you fix it?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 30,
+        "expected": "build",
+        "text": "Hi! I tweaked the basket summary to say \"cents total\" and now it doesn't compile, something about dividing a String. Can you fix it without changing the output text?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 33,
+        "expected": "build",
+        "text": "Hi! I'm parsing screen sizes like \"640x480\". It should return an error for bad input but the `?`s don't compile. Can you fix it?",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 39,
+        "expected": "build",
+        "text": "Hi! This crate doesn't compile right now. Could you get it building again without changing what the code is meant to do?",
+        "baseline": [],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_build"
+        ]
+      },
+      {
+        "index": 66,
+        "expected": "build",
+        "text": "get the crate compiling without changing what it does",
+        "baseline": [
+          "repair_build"
+        ],
+        "candidate": [
+          "repair_build"
+        ],
+        "baseline_guesses": [
+          "repair_build"
+        ],
+        "candidate_guesses": [
+          "repair_build",
+          "repair_build"
+        ]
+      },
+      {
+        "index": 101,
+        "expected": "test",
+        "text": "Hi there, I'm building a little puzzle game with a Caesar cipher and `wraps_past_z` fails. Letters near the end of the alphabet come out wrong. Could you find the bug and fix it without touching the test?",
+        "baseline": [],
+        "candidate": [
+          "repair_tests"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_tests"
+        ]
+      },
+      {
+        "index": 115,
+        "expected": "test",
+        "text": "Hi! Our winter weather log reports a high of 0.0\u00b0 on days where it never got above freezing, and `freezing_day_high` fails. Could you fix the code?",
+        "baseline": [],
+        "candidate": [
+          "repair_tests"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_tests"
+        ]
+      },
+      {
+        "index": 116,
+        "expected": "test",
+        "text": "Hi! The pedestrian crossing controller never shows red, it seems, and `yellow_turns_red` fails. Could you fix the light sequence?",
+        "baseline": [],
+        "candidate": [
+          "repair_tests"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_tests"
+        ]
+      },
+      {
+        "index": 146,
+        "expected": "test",
+        "text": "light never goes red?? test fails pls fix",
+        "baseline": [],
+        "candidate": [
+          "repair_tests"
+        ],
+        "baseline_guesses": [],
+        "candidate_guesses": [
+          "repair_tests"
+        ]
+      }
+    ],
+    "by_kind": {
+      "build": {
+        "total": 91,
+        "baseline": 83,
+        "candidate": 87
+      },
+      "test": {
+        "total": 81,
+        "baseline": 76,
+        "candidate": 80
+      }
+    }
+  }
+}

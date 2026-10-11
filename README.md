@@ -111,7 +111,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 180/765 pass; 585 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 200/765 pass; 565 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -413,12 +413,14 @@ forms and rejects incomplete or quoted rename instructions. Coding DEV improves
 177→180/765 with every prior pass retained and zero failures.
 [Scope, independent native checks and rejected revisions](tools/coding-rename-language/PARENT.md).
 
-A separate inherited issue remains in build/test repair routing: some status or
-quoted repair questions become repair commands, and `do` can then edit files.
-[The reproduced baseline](docs/results/repair-speechact-baseline.json) is retained;
-a strict repair-request whitelist was rejected after full DEV fell from 180 to 53 passes out of 765,
-despite passing its small independent checks. The published runtime remains unchanged.
-[Rejected coverage experiment](tools/coding-repair-speech/parent/revision/VALIDATION.md).
+Build/test repair routing now filters explicit quoted, negated, retracted or deferred
+requests and recognizes supported status questions as read-only checks. Behavior-preservation
+constraints remain usable. Coding DEV improves180→200/765 with every prior pass retained
+and zero failures; both authored native suites retain16/16 repairs and prevent their
+unrequested edits. Implicit reports and underspecified requests remain ambiguous;
+the original negative-case failures are retained in the [scope review](tools/coding-repair-veto/PARENT.md).
+The earlier strict whitelist's180→53 regression remains a
+[rejected experiment](tools/coding-repair-speech/parent/revision/VALIDATION.md).
 
 Raw-text syntax input now separates productive English clitics while preserving
 exact source bytes. Complete word-sequence matches improve1,370→1,556/2,001 EWT

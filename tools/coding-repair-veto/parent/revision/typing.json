@@ -1,0 +1,3342 @@
+[
+  {
+    "expected": "repair_build",
+    "group": "authored",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 0,
+    "text": "Please fix the compiler error without changing the output.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "authored",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 1,
+    "text": "The crate does not compile; can you repair it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "authored",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 2,
+    "text": "Our tests aren't passing. Please fix them.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "authored",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 3,
+    "text": "Please fix `compile_value`; the diagnostic is \"cannot find value\".",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "authored",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 4,
+    "text": "Please get the failing tests green again.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "authored",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 5,
+    "text": "The guide says \"fix the build\". Please fix our build now.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "authored",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 6,
+    "text": "Can the project compile successfully?",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_tests",
+    "group": "authored",
+    "guesses": [
+      "status_tests"
+    ],
+    "index": 7,
+    "text": "Would you check whether our tests pass?",
+    "understood": [
+      "status_tests"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "authored",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 8,
+    "text": "Tell me whether the build passes.",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_tests",
+    "group": "authored",
+    "guesses": [
+      "problems_tests"
+    ],
+    "index": 9,
+    "text": "Are there any test failures?",
+    "understood": [
+      "problems_tests"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 10,
+    "text": "\"Please fix the compiler errors.\"",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 11,
+    "text": "The issue quotes \"make the tests pass\" as an example.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 12,
+    "text": "She requested that you fix the build yesterday.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 13,
+    "text": "Explain why repairing the build is needed.",
+    "understood": [
+      "other"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 14,
+    "text": "How would you fix these compiler errors?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 15,
+    "text": "Do not fix the compiler errors.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 16,
+    "text": "Please never repair these tests.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 17,
+    "text": "Fix the compiler errors. Actually, stop.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 18,
+    "text": "Repair the tests, but wait for my approval.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 19,
+    "text": "If I approve tomorrow, fix the compiler error.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 20,
+    "text": "Fix the tests after I give permission.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 21,
+    "text": "Suppose I asked you to fix this build.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 22,
+    "text": "Could repairing the build affect behavior?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 23,
+    "text": "Fix the compiler error and then publish the crate.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 24,
+    "text": "Repair the tests; also remove the checks.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 25,
+    "text": "Please fix the build, unless I object later.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 26,
+    "text": "Fix the build? No, leave it alone.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 27,
+    "text": "Please fix the build only when I confirm.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 28,
+    "text": "Can you describe how to fix the tests?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 29,
+    "text": "I don't want the tests repaired.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 30,
+    "text": "Please fix the build and add a feature.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "authored",
+    "guesses": [],
+    "index": 31,
+    "text": "Don't explain it; don't fix the build either.",
+    "understood": []
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 0,
+    "text": "Fix the build.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 1,
+    "text": "Please fix the build.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 2,
+    "text": "Could you fix the build?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 3,
+    "text": "Can you please repair the build?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 4,
+    "text": "Would you fix the compiler errors, please?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 5,
+    "text": "Please resolve the compilation errors.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 6,
+    "text": "Make the project compile.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 7,
+    "text": "Get the build working again.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 8,
+    "text": "Fix it so it compiles.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 9,
+    "text": "I would like you to fix the build.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [],
+    "index": 10,
+    "text": "I'd like you to repair the build.",
+    "understood": []
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 11,
+    "text": "The build is broken. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 12,
+    "text": "The project does not compile. Please fix it.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 13,
+    "text": "Fix the compilation errors in `widget`.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "old68",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 14,
+    "text": "Please fix `widget` build errors.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 15,
+    "text": "Fix the tests.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 16,
+    "text": "Please repair the failing tests.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 17,
+    "text": "Could you get the tests passing?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 18,
+    "text": "Make failing tests pass.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 19,
+    "text": "Please make the unit tests pass.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 20,
+    "text": "I want you to fix the tests.",
+    "understood": [
+      "repair_tests",
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 21,
+    "text": "The tests are failing. Please fix them.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 22,
+    "text": "Fix the failing tests in `widget`.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 23,
+    "text": "Can you fix the tests, please?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "old68",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 24,
+    "text": "Does this project compile?",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "old68",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 25,
+    "text": "Does the build pass?",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "old68",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 26,
+    "text": "Can this crate compile?",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "old68",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 27,
+    "text": "Is the build passing?",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "old68",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 28,
+    "text": "Does `widget` compile?",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "old68",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 29,
+    "text": "Could you check whether the project compiles?",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_build",
+    "group": "old68",
+    "guesses": [
+      "status_build"
+    ],
+    "index": 30,
+    "text": "Please check if the build passes.",
+    "understood": [
+      "status_build"
+    ]
+  },
+  {
+    "expected": "status_tests",
+    "group": "old68",
+    "guesses": [
+      "status_tests"
+    ],
+    "index": 31,
+    "text": "Do the tests pass?",
+    "understood": [
+      "status_tests"
+    ]
+  },
+  {
+    "expected": "status_tests",
+    "group": "old68",
+    "guesses": [
+      "status_tests"
+    ],
+    "index": 32,
+    "text": "Are the tests passing?",
+    "understood": [
+      "status_tests"
+    ]
+  },
+  {
+    "expected": "status_tests",
+    "group": "old68",
+    "guesses": [
+      "status_tests"
+    ],
+    "index": 33,
+    "text": "Do all unit tests pass?",
+    "understood": [
+      "status_tests"
+    ]
+  },
+  {
+    "expected": "status_tests",
+    "group": "old68",
+    "guesses": [
+      "status_tests"
+    ],
+    "index": 34,
+    "text": "Can you check whether the tests pass?",
+    "understood": [
+      "status_tests"
+    ]
+  },
+  {
+    "expected": "status_tests",
+    "group": "old68",
+    "guesses": [
+      "status_tests"
+    ],
+    "index": 35,
+    "text": "Please check if the unit tests pass.",
+    "understood": [
+      "status_tests"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 36,
+    "text": "\"Fix the build.\"",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [
+      "other"
+    ],
+    "index": 37,
+    "text": "`fix the tests`",
+    "understood": [
+      "other"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 38,
+    "text": "The manual says \"repair the build\". Explain this.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 39,
+    "text": "Yesterday she asked me to fix the build.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 40,
+    "text": "If I asked you to repair the tests, what would happen?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 41,
+    "text": "Could you explain how to fix the build?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 42,
+    "text": "Can you tell me why the tests need repair?",
+    "understood": [
+      "other"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 43,
+    "text": "Fix the build only if I confirm later.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 44,
+    "text": "If tests fail, fix the build.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 45,
+    "text": "Don't fix the build.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 46,
+    "text": "Please do not repair the tests.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 47,
+    "text": "Never fix the build.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 48,
+    "text": "Fix the build. Actually, don't.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 49,
+    "text": "Fix the tests unless I cancel.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 50,
+    "text": "Fix the build and delete the tests.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 51,
+    "text": "Fix the tests and rename number to count.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 52,
+    "text": "Fix the build or just explain the error.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 53,
+    "text": "Fix the build; also deploy it.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 54,
+    "text": "Could you fix something?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 55,
+    "text": "Please fix it.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 56,
+    "text": "The tests are failing.",
+    "understood": [
+      "problems_tests"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 57,
+    "text": "The build is broken.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 58,
+    "text": "Would fixing the build change the API?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 59,
+    "text": "Is it possible to repair the tests without editing files?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 60,
+    "text": "Fix the build in `widget`; do not run tests.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 61,
+    "text": "Please fix `fix the build`.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 62,
+    "text": "Please fix the build? No, wait.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 63,
+    "text": "I might want you to fix the tests.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 64,
+    "text": "I do not want you to fix the build.",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 65,
+    "text": "The guide says \"fix the build\". Could you explain it?",
+    "understood": [
+      "other",
+      "other",
+      "other",
+      "other",
+      "other",
+      "other"
+    ]
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 66,
+    "text": "Could you fix the build if I approve?",
+    "understood": []
+  },
+  {
+    "expected": "refuse",
+    "group": "old68",
+    "guesses": [],
+    "index": 67,
+    "text": "Please fix the build and the tests.",
+    "understood": []
+  },
+  {
+    "expected": "repair_build",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 0,
+    "text": "pls fix compile erors, cannot find function `dispay_fn`",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 1,
+    "text": "The dunce build is broken. I'm seeing E0425, \"cannot find value `trimed` in this scope\". Could you please fix the compile errors so it builds again? Thanks!",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 2,
+    "text": "the build fails with \"cannot find trait `Error` in this scope\" (E0405). could you fix the build?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 3,
+    "text": "build broke, cannot find value `sate` in this scope. fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 4,
+    "text": "heck doesn't build, can you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 5,
+    "text": "can you fix it so it compiles?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_build",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 6,
+    "text": "get strsim compiling again",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 7,
+    "text": "make failing tests pass",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 8,
+    "text": "make the broken tests pass",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 9,
+    "text": "can u fix so tests pass",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 10,
+    "text": "Could you fix things so the failing tests pass?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 11,
+    "text": "Could you please get the failing tests passing again?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_build",
+      "repair_tests"
+    ],
+    "index": 12,
+    "text": "get failing tests green in heck, e.g. lower_camel::tests::test1",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 13,
+    "text": "some tests in heck are failing, like kebab::tests::test1. can you make them pass?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "repair_tests",
+    "group": "legacy15",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 14,
+    "text": "there are failing tests, for example one in src/lib.rs. can you fix so they pass?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 0,
+    "text": "== on Light doesnt work fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 1,
+    "text": "? error conversion thing in parse_size fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 2,
+    "text": "Box<Shape> error, fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 3,
+    "text": "Could you take a look at this code? cargo build fails and I can't see why. I'd like it to compile while still doing the same thing.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 4,
+    "text": "Hello! Converting a list of prices from cents to dollars, but the map call won't compile. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 5,
+    "text": "Hello! I added a label method for the shop's shelf tags and now cargo refuses to build. Can you sort it out? The label text itself is right.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 6,
+    "text": "Hello! I want initials from full names (\"Ada Lovelace\" gives \"AL\") but Rust won't let me index the string. Could you fix it? Names can have accents, by the way.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 7,
+    "text": "Hello! I wanted a generic `largest` so I can use it for scores and temperatures alike, but it won't compile. Could you help?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 8,
+    "text": "Hello! I wrote this small Rust crate but the compiler rejects it. Would you mind fixing it so it compiles, without changing what it does?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 9,
+    "text": "Hello! I'm counting hits on a battleship-style grid and the HashMap code won't compile. Could you make it build without changing how it counts?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 10,
+    "text": "Hello! My loan calculator says mismatched types on the interest method and I don't get why. Can you get it to build?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 11,
+    "text": "Hey there! I have a list of shapes behind boxes and want the total area, but the signature won't compile. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 12,
+    "text": "Hey! I added a reorder level to inventory items (it's optional in the input file) and the loader doesn't compile anymore. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 13,
+    "text": "Hey! I added a statement function for bank accounts but it won't compile, something about a private field. Can you fix it? The output format is what I want.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 14,
+    "text": "Hey! I parse CSV-ish lines into lowercase fields. The compiler says a temporary value is dropped while borrowed, which I don't really understand. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [],
+    "index": 15,
+    "text": "Hey! I split my shapes code into a couple of files and now report.rs says there's no method `area`, even though both shapes clearly implement it. Could you fix it?",
+    "understood": []
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 16,
+    "text": "Hey! Tag counter for my notes app won't compile, says type annotations needed. Can you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 17,
+    "text": "Hey! We just added in-store pickup as a shipping option and now the fee function won't compile. Pickup is free. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 18,
+    "text": "Hey, I added shipping to the price calculation and now the cart total doesn't compile. Could you take a look and fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 19,
+    "text": "Hey, I wrote a tiny helper that picks the longer of two titles and the compiler wants something about lifetimes. Could you make it compile?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 20,
+    "text": "Hey, I'm stuck on a compiler error in this little crate. Can you fix it so it builds? Please keep the behavior as it is.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [],
+    "index": 21,
+    "text": "Hey, I'm working on user profiles for a little media player. `muted` should return a copy of the settings with sound off and leave the original alone. The compiler complains about assigning through a reference, which confuses me. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 22,
+    "text": "Hey, quick one: my ticket tracker stopped compiling when I added a status field. Can you get it building again?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 23,
+    "text": "Hey, small waiting-list helper here that won't compile, the error says some method doesn't exist. Could you take a look?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 24,
+    "text": "Hi there! Average star rating for a review page, but the division won't compile. Can you make it work? It should give fractional averages.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 25,
+    "text": "Hi there! My weather forecast formatter won't compile and the error says the conversion function is private. Could you fix that?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 26,
+    "text": "Hi there, my word counter won't compile and I can't see why, the logic looks fine to me. Could you get it building?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 27,
+    "text": "Hi! Contact book: `address` should give the email if there is one, otherwise a note saying there's none. It won't compile, something about moving out of `self`. Can you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 28,
+    "text": "Hi! Geometry helper for a school project: the triangle perimeter function won't compile, it says the points were moved. Can you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 29,
+    "text": "Hi! I added a constant for milliseconds per day and the build broke. Could you get it compiling again?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 30,
+    "text": "Hi! I tweaked the basket summary to say \"cents total\" and now it doesn't compile, something about dividing a String. Can you fix it without changing the output text?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 31,
+    "text": "Hi! I want names sorted as \"Last, First\" for a class roster. The concatenation won't compile though. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 32,
+    "text": "Hi! I want to curve every exam score by some bonus points, capped at 100. The loop won't compile. Can you sort it out?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 33,
+    "text": "Hi! I'm parsing screen sizes like \"640x480\". It should return an error for bad input but the `?`s don't compile. Can you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 34,
+    "text": "Hi! I'm trying out threads to sum chunks of a big list in parallel. The spawn line doesn't compile, it says the closure may outlive something. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 35,
+    "text": "Hi! I'm writing a little price calculator. The cost function should give None for items that aren't in the price list, but it doesn't compile right now. Could you fix it?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 36,
+    "text": "Hi! Little traffic light simulation here, the `can_go` check won't compile. Can you sort it out?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 37,
+    "text": "Hi! Shipping volume calculator for parcels, won't build. Could you fix whatever's wrong?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 38,
+    "text": "Hi! The leaderboard lookup won't build, something about indexing. Could you fix it so it compiles? Ranks are 1-based, and that part works the way I want.",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 39,
+    "text": "Hi! This crate doesn't compile right now. Could you get it building again without changing what the code is meant to do?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 40,
+    "text": "Hi, I have a little sensor log that compares each new reading with the first one. The borrow checker is unhappy with it. Could you fix it so it builds and behaves the same?",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 41,
+    "text": "added Pickup variant now build fails, its free btw",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 42,
+    "text": "borrow checker error in add_reading pls fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 43,
+    "text": "build broken, fix it but dont change what it does",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 44,
+    "text": "cannot assign to *s error fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 45,
+    "text": "cannot move out of self.email fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 46,
+    "text": "cant add str fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 47,
+    "text": "cant divide u32 by f64 fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 48,
+    "text": "cant find type error, fix it",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 49,
+    "text": "cant index str, initials fn, fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 50,
+    "text": "cant multiply option or something. fix cost()",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 51,
+    "text": "cargo build fails?? fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 52,
+    "text": "cart_total broke after i added shipping, pls fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 53,
+    "text": "compile error, make it build quick",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 54,
+    "text": "const overflow error MS_PER_DAY fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 55,
+    "text": "doesn't build, fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 56,
+    "text": "doesnt compile pls fix",
+    "understood": [
+      "other",
+      "other"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 57,
+    "text": "fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 58,
+    "text": "fix build",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 59,
+    "text": "fix compile",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 60,
+    "text": "fix compile error",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 61,
+    "text": "fix the build",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 62,
+    "text": "fix the build error",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 63,
+    "text": "fix the compile error",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 64,
+    "text": "fix the error",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 65,
+    "text": "generic largest fn wont compile, binary op error",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 66,
+    "text": "get the crate compiling without changing what it does",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 67,
+    "text": "hashmap entry error on Cell, fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 68,
+    "text": "index error in player_at_rank, fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 69,
+    "text": "label() doesnt compile, returns ref to something? fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 70,
+    "text": "loader.rs missing field error, fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 71,
+    "text": "make it build",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 72,
+    "text": "make it compile",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 73,
+    "text": "make this compile",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 74,
+    "text": "make this compile; keep the behavior the same",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 75,
+    "text": "map on vec error fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 76,
+    "text": "mismatched types expected f64 found () fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 77,
+    "text": "mismatched types in Ticket::new fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 78,
+    "text": "missing lifetime specifier error fix it",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [],
+    "index": 79,
+    "text": "no field error in volume fn, fix",
+    "understood": []
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 80,
+    "text": "no method area in report.rs but its implemented?? fix",
+    "understood": [
+      "other"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 81,
+    "text": "no method error fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 82,
+    "text": "private fn error, forecast_line, fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 83,
+    "text": "profile.rs errors about & reference, idk why, fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 84,
+    "text": "statement() private field error, fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 85,
+    "text": "summary() broke cant divide string?? fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 86,
+    "text": "temporary value dropped while borrowed, fix it",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 87,
+    "text": "this doesn't compile, fix it",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 88,
+    "text": "thread spawn closure error fix pls",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build",
+      "repair_build"
+    ],
+    "index": 89,
+    "text": "type annotations needed error, fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "build",
+    "group": "train172",
+    "guesses": [
+      "repair_build"
+    ],
+    "index": 90,
+    "text": "use of moved value Point, perimeter fn, fix",
+    "understood": [
+      "repair_build"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 91,
+    "text": "1h30m parses wrong test red pls fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 92,
+    "text": "Hello! Blog posts end up with the same tag twice, e.g. \"rust\" listed two times, and `duplicate_tags_are_merged` fails. Could you fix the tag cleanup?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 93,
+    "text": "Hello! I'm smoothing step counts for a fitness app and `averages_every_window` fails: one value is missing from the output. I'm fairly sure the test is right. Could you fix the function?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 94,
+    "text": "Hello! The thermostat display shows 132°F for boiling water, and `boiling_point_in_fahrenheit` fails. The Fahrenheit-to-Celsius direction seems fine. Could you fix the other one?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 95,
+    "text": "Hey! Our snack machine simulation hands out free snacks: after one snack it acts like there's still a coin in it. `one_coin_one_snack` fails. Could you fix the state machine?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 96,
+    "text": "Hey! The downloader's status line shows silly percentages like 250%, and `status_shows_percent_done` fails. Can you fix the code so it reports progress properly?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 97,
+    "text": "Hey! The shop's reorder list suggests items we've stopped selling, and `suggests_low_stock_items_still_sold` fails. Could you fix the filter?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 98,
+    "text": "Hey! The status bar of my note-taking app says a brand new empty note has 1 word, and `empty_note_has_no_words` fails. Could you fix the counting?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 99,
+    "text": "Hey, I'm scanning service logs for the first ERROR line and `finds_error_after_blank_line` fails: it returns None even though there's an error further down. Could you fix the scanner?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 100,
+    "text": "Hey, the editor's 'recently opened' list forgets files it should remember. `keeps_the_last_three` in tests/visible.rs shows it. Can you track down the bug and fix it? Please leave the test alone.",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 101,
+    "text": "Hi there, I'm building a little puzzle game with a Caesar cipher and `wraps_past_z` fails. Letters near the end of the alphabet come out wrong. Could you find the bug and fix it without touching the test?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 102,
+    "text": "Hi! I have a tiny ledger for a club's accounts and `pay_moves_money_to_payee` started failing. The balances come out wrong. Could you find what's off in the library and fix it?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 103,
+    "text": "Hi! I'm merging meeting room bookings into busy blocks for a calendar view, and `long_booking_swallows_short_one` fails: the merged block starts too late. Could you fix the merge?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 104,
+    "text": "Hi! I'm working on the pager for our search results and `first_page_shows_three_items` keeps failing. The test matches what the docs say, so I think the bug is in the library. Could you fix it?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 105,
+    "text": "Hi! I'm writing invoicing for a small print shop and `total_includes_tax` fails: the customer seems to get a discount instead of paying tax. Could you fix the code?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 106,
+    "text": "Hi! I'm writing the save format for a pixel-art editor and `encodes_a_row` fails. Decoding works, but encoded rows lose something. Could you fix the encoder?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 107,
+    "text": "Hi! In my drawing app the Undo menu should show the most recent actions first, but `recent_lists_newest_first` fails. Could you fix the history code?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 108,
+    "text": "Hi! In our sensor dashboard, `no_readings_no_mean` fails: the mean of an empty list should be None, and right now it isn't. Could you fix the stats code?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 109,
+    "text": "Hi! My to-do app keeps reminding me about things I've already done, and `reminds_about_open_tasks_due_soon` fails. Could you fix the reminder logic?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 110,
+    "text": "Hi! On our finance dashboard, losses show up as \"-,123,456\". `negative_amounts` fails because of it. Positive numbers look fine. Could you fix the formatter?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 111,
+    "text": "Hi! Our arcade game's high-score table shows the worst players at the top. `top_two_scores` fails. Could you fix the sorting in the library?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 112,
+    "text": "Hi! Our booking calendar thinks February 2024 has 28 days, and `february_2024_has_29_days` fails because of it. Could you fix the date code?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 113,
+    "text": "Hi! Our point-of-sale screen turns $0.29 into 28 cents, and `typed_price_to_cents` fails. Could you fix the conversion?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 114,
+    "text": "Hi! Our shipping estimator says 25 items fit in 2 boxes of 12, and `leftover_items_need_a_box` fails. Could you fix the code so the test passes?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 115,
+    "text": "Hi! Our winter weather log reports a high of 0.0° on days where it never got above freezing, and `freezing_day_high` fails. Could you fix the code?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 116,
+    "text": "Hi! The pedestrian crossing controller never shows red, it seems, and `yellow_turns_red` fails. Could you fix the light sequence?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 117,
+    "text": "Hi! We parse timeouts like \"1h30m\" from a config file and `hours_and_minutes_add_up` is failing. Single units like \"45s\" seem fine. Could you fix the parser so the test passes?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 118,
+    "text": "Morning! Our garden weather station is supposed to warn about frost when it's at or below zero, but `zero_degrees_is_frost` is failing. Could you fix the code so the test passes?",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 119,
+    "text": "box count too low test red fix pls",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 120,
+    "text": "boxes test fails, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 121,
+    "text": "busy blocks wrong start time, test failing fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 122,
+    "text": "c to f broken, test fails. fix pls",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 123,
+    "text": "caesar thing broken near z, test fails. fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 124,
+    "text": "calendar test fails feb wrong, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 125,
+    "text": "cents off by one sometimes, test fails fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 126,
+    "text": "cipher test failing, fix the code",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 127,
+    "text": "conversion test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 128,
+    "text": "daily high wrong on cold days, test fail. fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 129,
+    "text": "download % is wrong test fails, plz fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 130,
+    "text": "dup tags not removed, test fail fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 131,
+    "text": "duration parse test fails, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 132,
+    "text": "empty note says 1 word lol. test fails fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 133,
+    "text": "encode drops stuff test fails, fix pls",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 134,
+    "text": "february test is failing, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 135,
+    "text": "first_error test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 136,
+    "text": "fix failing test in stats",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 137,
+    "text": "fix the failing high temp test",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 138,
+    "text": "fix the failing pagination test",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 139,
+    "text": "frost alert test red, pls fix code",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 140,
+    "text": "frost test fails. fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 141,
+    "text": "highscores upside down, test fails fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 142,
+    "text": "invoice total test failing",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 143,
+    "text": "invoice totals wrong, test fails fix pls",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 144,
+    "text": "leaderboard test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 145,
+    "text": "ledger pay test fails dunno why, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 146,
+    "text": "light never goes red?? test fails pls fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 147,
+    "text": "log scan misses errors, test failing pls fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 148,
+    "text": "make the moving average test pass",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 149,
+    "text": "mean test fails on empty, fix it",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 150,
+    "text": "merge test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 151,
+    "text": "moving avg test failng fix pls",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 152,
+    "text": "negative nums format weird test fails fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 153,
+    "text": "number format test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [],
+    "index": 154,
+    "text": "pager test fails, fix teh code pls not the test",
+    "understood": []
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 155,
+    "text": "payment test failing, fix it",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 156,
+    "text": "price test failing, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 157,
+    "text": "progress test fails, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 158,
+    "text": "recent files list broken test failing can u fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 159,
+    "text": "recent files test fails, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 160,
+    "text": "reminder test failing",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 161,
+    "text": "reminders for done tasks?? test fails fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 162,
+    "text": "reorder list wrong, test fails fix pls",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 163,
+    "text": "reorder test fails, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 164,
+    "text": "rle encode test failing, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 165,
+    "text": "tags test failing, fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 166,
+    "text": "traffic light test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 167,
+    "text": "undo list shows wrong stuff, test fails fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 168,
+    "text": "undo menu test failing",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 169,
+    "text": "vending machine gives free snacks lol, test fails fix",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests",
+      "repair_tests"
+    ],
+    "index": 170,
+    "text": "vending machine test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  },
+  {
+    "expected": "test",
+    "group": "train172",
+    "guesses": [
+      "repair_tests"
+    ],
+    "index": 171,
+    "text": "word count test fails",
+    "understood": [
+      "repair_tests"
+    ]
+  }
+]

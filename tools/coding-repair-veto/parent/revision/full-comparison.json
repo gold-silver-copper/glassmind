@@ -1,0 +1,167 @@
+{
+  "scope": "Full fixed765 Rust coding DEV; no held-out evaluation",
+  "source_base": "6a346c3080a5dd94d7a6bc7dae32af7f6d969798",
+  "source_sha256": "f53651abb4c96c7be2885eeac1e52adbaa643a583c4a8297f783a0aec004d8e6",
+  "binary_sha256": "65750260c5db5a5838704cde8cd6cd17f16d11980e53005644d5df3cd7015f44",
+  "total": 765,
+  "outcomes": {
+    "refused": 565,
+    "pass": 200
+  },
+  "all_previous_passes_retained": 180,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "fix-errors/derive-hash",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-errors/trailing-semicolon",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0034",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0121",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0200",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0214",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0254",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0255",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0277",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0307",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0309",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0373",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0384",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0409",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0594",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0617",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0665",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0700",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0746",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "rustc-error-index/e0783",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "refused": 66,
+      "pass": 15
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "6af4aba6d01ee829f2235494398eb76b894582cdd3f64f396293c55aea22e01b",
+  "candidate_result_sha256": "cf7a8a25c7d90d53e02ada1ca8fb66c7a7e2307b6416c91f506321e6927357ac",
+  "timing": {
+    "sum_agent_seconds": 503.987799982,
+    "median_agent_seconds": 0.401893452
+  },
+  "runner": "Unchanged tools/rustbench-dev.sh; on-disk TMPDIR and explicit native scratch;8GiB/0swap,setsid--wait,bounded timeouts and10second shutdown grace",
+  "independent_gates": "Parent30 and fresh24 native suites:16/16 exact repairs,zero unrequested edits or negative Command previews,10/10 typed statuses under documented original30 v2 type proxy; initial ask--apply remains read-only. TRAIN159->167/172,old68typed63/68 unchanged; all old original expectations preserved."
+}

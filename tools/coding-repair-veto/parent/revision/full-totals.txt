@@ -1,0 +1,18 @@
+group                          runs   pass%  refused  failed  cost/run
+all                             765   26.1%      565       0      0.74
+kind ask                         18  100.0%        0       0      0.00
+kind edit                        81    8.6%       74       0      0.91
+kind explain                     42    9.5%       38       0      0.90
+kind fix-error                  483   32.3%      327       0      0.68
+kind fix-test                    81   18.5%       66       0      0.81
+kind implement                   60    0.0%       60       0      1.00
+split dev                       765   26.1%      565       0      0.74
+style chatty                    255   25.1%      191       0      0.75
+style hurried                   255   25.9%      189       0      0.74
+style terse                     255   27.5%      185       0      0.73
+suite edits                      81    8.6%       74       0      0.91
+suite fix-errors                120   57.5%       51       0      0.42
+suite fix-tests                  81   18.5%       66       0      0.81
+suite implement                  60    0.0%       60       0      1.00
+suite rustc-error-index         363   24.0%      276       0      0.76
+suite talk                       60   36.7%       38       0      0.63

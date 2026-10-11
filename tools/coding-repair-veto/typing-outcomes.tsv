@@ -1,0 +1,288 @@
+group	index	expected	request_form_diagnostic	baseline_understood	candidate_understood	baseline_guesses	candidate_guesses	text
+authored	0	repair_build	unannotated	repair_build	repair_build	repair_build	repair_build,repair_build	Please fix the compiler error without changing the output.
+authored	1	repair_build	unannotated	repair_build	repair_build	repair_build	repair_build	The crate does not compile; can you repair it?
+authored	2	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	Our tests aren't passing. Please fix them.
+authored	3	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Please fix `compile_value`; the diagnostic is "cannot find value".
+authored	4	repair_tests	unannotated	repair_tests	repair_tests	repair_build	repair_build	Please get the failing tests green again.
+authored	5	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	The guide says "fix the build". Please fix our build now.
+authored	6	status_build	unannotated	repair_build	status_build	repair_build,repair_build	status_build	Can the project compile successfully?
+authored	7	status_tests	unannotated	repair_tests	status_tests	repair_tests	status_tests	Would you check whether our tests pass?
+authored	8	status_build	unannotated	status_build	status_build	repair_build	status_build	Tell me whether the build passes.
+authored	9	status_tests	unannotated	-	problems_tests	-	problems_tests	Are there any test failures?
+authored	10	refuse	unannotated	repair_build	-	repair_build,repair_build	-	"Please fix the compiler errors."
+authored	11	refuse	unannotated	repair_tests	-	repair_tests	-	The issue quotes "make the tests pass" as an example.
+authored	12	refuse	unannotated	repair_build	-	repair_build	-	She requested that you fix the build yesterday.
+authored	13	refuse	unannotated	other	other	-	-	Explain why repairing the build is needed.
+authored	14	refuse	unannotated	repair_build	-	repair_build	-	How would you fix these compiler errors?
+authored	15	refuse	unannotated	-	-	-	-	Do not fix the compiler errors.
+authored	16	refuse	unannotated	-	-	-	-	Please never repair these tests.
+authored	17	refuse	unannotated	repair_build	-	repair_build	-	Fix the compiler errors. Actually, stop.
+authored	18	refuse	unannotated	-	-	-	-	Repair the tests, but wait for my approval.
+authored	19	refuse	unannotated	repair_build	-	repair_build,repair_build	-	If I approve tomorrow, fix the compiler error.
+authored	20	refuse	unannotated	repair_tests	-	-	-	Fix the tests after I give permission.
+authored	21	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Suppose I asked you to fix this build.
+authored	22	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Could repairing the build affect behavior?
+authored	23	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Fix the compiler error and then publish the crate.
+authored	24	refuse	unannotated	-	-	-	-	Repair the tests; also remove the checks.
+authored	25	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Please fix the build, unless I object later.
+authored	26	refuse	unannotated	repair_build	-	repair_build	-	Fix the build? No, leave it alone.
+authored	27	refuse	unannotated	repair_build,repair_build,repair_build,repair_build,repair_build	-	-	-	Please fix the build only when I confirm.
+authored	28	refuse	unannotated	-	-	-	-	Can you describe how to fix the tests?
+authored	29	refuse	unannotated	-	-	-	-	I don't want the tests repaired.
+authored	30	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Please fix the build and add a feature.
+authored	31	refuse	unannotated	-	-	-	-	Don't explain it; don't fix the build either.
+old68	0	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Fix the build.
+old68	1	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Please fix the build.
+old68	2	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Could you fix the build?
+old68	3	repair_build	unannotated	repair_build	repair_build	repair_build	repair_build	Can you please repair the build?
+old68	4	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Would you fix the compiler errors, please?
+old68	5	repair_build	unannotated	repair_build	repair_build	repair_build	repair_build	Please resolve the compilation errors.
+old68	6	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Make the project compile.
+old68	7	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Get the build working again.
+old68	8	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Fix it so it compiles.
+old68	9	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	I would like you to fix the build.
+old68	10	repair_build	unannotated	-	-	-	-	I'd like you to repair the build.
+old68	11	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	The build is broken. Could you fix it?
+old68	12	repair_build	unannotated	repair_build	repair_build	repair_build	repair_build	The project does not compile. Please fix it.
+old68	13	repair_build	unannotated	repair_build	repair_build	repair_build	repair_build	Fix the compilation errors in `widget`.
+old68	14	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Please fix `widget` build errors.
+old68	15	repair_tests	unannotated	repair_tests	repair_tests	repair_build	repair_build	Fix the tests.
+old68	16	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	Please repair the failing tests.
+old68	17	repair_tests	unannotated	repair_tests	repair_tests	repair_build	repair_build	Could you get the tests passing?
+old68	18	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	Make failing tests pass.
+old68	19	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	Please make the unit tests pass.
+old68	20	repair_tests	unannotated	repair_tests,repair_tests	repair_tests,repair_tests	repair_tests	repair_tests	I want you to fix the tests.
+old68	21	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	The tests are failing. Please fix them.
+old68	22	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	Fix the failing tests in `widget`.
+old68	23	repair_tests	unannotated	repair_tests	repair_tests	repair_build	repair_build	Can you fix the tests, please?
+old68	24	status_build	unannotated	other	status_build	repair_build,repair_build	status_build	Does this project compile?
+old68	25	status_build	unannotated	status_build	status_build	repair_build	status_build	Does the build pass?
+old68	26	status_build	unannotated	repair_build	status_build	repair_build,repair_build	status_build	Can this crate compile?
+old68	27	status_build	unannotated	repair_build	status_build	repair_build	status_build	Is the build passing?
+old68	28	status_build	unannotated	repair_build	status_build	repair_build	status_build	Does `widget` compile?
+old68	29	status_build	unannotated	repair_build	status_build	repair_build,repair_build	status_build	Could you check whether the project compiles?
+old68	30	status_build	unannotated	repair_build	status_build	repair_build	status_build	Please check if the build passes.
+old68	31	status_tests	unannotated	status_tests	status_tests	repair_tests	status_tests	Do the tests pass?
+old68	32	status_tests	unannotated	status_tests	status_tests	-	status_tests	Are the tests passing?
+old68	33	status_tests	unannotated	status_tests	status_tests	-	status_tests	Do all unit tests pass?
+old68	34	status_tests	unannotated	repair_tests	status_tests	repair_tests	status_tests	Can you check whether the tests pass?
+old68	35	status_tests	unannotated	repair_tests	status_tests	repair_tests	status_tests	Please check if the unit tests pass.
+old68	36	refuse	unannotated	repair_build	-	repair_build,repair_build	-	"Fix the build."
+old68	37	refuse	unannotated	other	other	other	other	`fix the tests`
+old68	38	refuse	unannotated	-	-	-	-	The manual says "repair the build". Explain this.
+old68	39	refuse	unannotated	repair_build	-	repair_build	-	Yesterday she asked me to fix the build.
+old68	40	refuse	unannotated	-	-	-	-	If I asked you to repair the tests, what would happen?
+old68	41	refuse	unannotated	repair_build	-	-	-	Could you explain how to fix the build?
+old68	42	refuse	unannotated	other	other	-	-	Can you tell me why the tests need repair?
+old68	43	refuse	unannotated	repair_build,repair_build,repair_build,repair_build	-	-	-	Fix the build only if I confirm later.
+old68	44	refuse	unannotated	repair_build	-	repair_build,repair_build	-	If tests fail, fix the build.
+old68	45	refuse	unannotated	repair_build,repair_build	-	-	-	Don't fix the build.
+old68	46	refuse	unannotated	-	-	-	-	Please do not repair the tests.
+old68	47	refuse	unannotated	-	-	-	-	Never fix the build.
+old68	48	refuse	unannotated	repair_build,repair_build,repair_build,repair_build	-	-	-	Fix the build. Actually, don't.
+old68	49	refuse	unannotated	repair_tests	-	repair_build	-	Fix the tests unless I cancel.
+old68	50	refuse	unannotated	repair_build	-	repair_build	-	Fix the build and delete the tests.
+old68	51	refuse	unannotated	-	-	-	-	Fix the tests and rename number to count.
+old68	52	refuse	unannotated	repair_build	-	repair_build	-	Fix the build or just explain the error.
+old68	53	refuse	unannotated	repair_build	-	repair_build	-	Fix the build; also deploy it.
+old68	54	refuse	unannotated	repair_build	repair_build	repair_build	repair_build	Could you fix something?
+old68	55	refuse	unannotated	repair_build	repair_build	repair_build	repair_build	Please fix it.
+old68	56	refuse	unannotated	problems_tests	problems_tests	repair_tests	repair_tests	The tests are failing.
+old68	57	refuse	unannotated	repair_build	repair_build	repair_build	repair_build	The build is broken.
+old68	58	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Would fixing the build change the API?
+old68	59	refuse	unannotated	repair_tests	-	repair_tests	-	Is it possible to repair the tests without editing files?
+old68	60	refuse	unannotated	-	-	-	-	Fix the build in `widget`; do not run tests.
+old68	61	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Please fix `fix the build`.
+old68	62	refuse	unannotated	repair_build	-	repair_build	-	Please fix the build? No, wait.
+old68	63	refuse	unannotated	repair_tests	-	repair_tests	-	I might want you to fix the tests.
+old68	64	refuse	unannotated	-	-	-	-	I do not want you to fix the build.
+old68	65	refuse	unannotated	other,other,other,other,other,other	other,other,other,other,other,other	repair_build	-	The guide says "fix the build". Could you explain it?
+old68	66	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Could you fix the build if I approve?
+old68	67	refuse	unannotated	repair_build	-	repair_build,repair_build	-	Please fix the build and the tests.
+legacy15	0	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	pls fix compile erors, cannot find function `dispay_fn`
+legacy15	1	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	The dunce build is broken. I'm seeing E0425, "cannot find value `trimed` in this scope". Could you please fix the compile errors so it builds again? Thanks!
+legacy15	2	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	the build fails with "cannot find trait `Error` in this scope" (E0405). could you fix the build?
+legacy15	3	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	build broke, cannot find value `sate` in this scope. fix pls
+legacy15	4	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	heck doesn't build, can you fix it?
+legacy15	5	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	can you fix it so it compiles?
+legacy15	6	repair_build	unannotated	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	get strsim compiling again
+legacy15	7	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	make failing tests pass
+legacy15	8	repair_tests	unannotated	repair_tests	repair_tests	repair_build	repair_build	make the broken tests pass
+legacy15	9	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	can u fix so tests pass
+legacy15	10	repair_tests	unannotated	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Could you fix things so the failing tests pass?
+legacy15	11	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	Could you please get the failing tests passing again?
+legacy15	12	repair_tests	unannotated	repair_tests	repair_tests	repair_build,repair_tests	repair_build,repair_tests	get failing tests green in heck, e.g. lower_camel::tests::test1
+legacy15	13	repair_tests	unannotated	repair_tests	repair_tests	repair_tests	repair_tests	some tests in heck are failing, like kebab::tests::test1. can you make them pass?
+legacy15	14	repair_tests	unannotated	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	there are failing tests, for example one in src/lib.rs. can you fix so they pass?
+train172	0	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	== on Light doesnt work fix
+train172	1	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	? error conversion thing in parse_size fix pls
+train172	2	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Box<Shape> error, fix
+train172	3	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Could you take a look at this code? cargo build fails and I can't see why. I'd like it to compile while still doing the same thing.
+train172	4	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hello! Converting a list of prices from cents to dollars, but the map call won't compile. Could you fix it?
+train172	5	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hello! I added a label method for the shop's shelf tags and now cargo refuses to build. Can you sort it out? The label text itself is right.
+train172	6	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hello! I want initials from full names ("Ada Lovelace" gives "AL") but Rust won't let me index the string. Could you fix it? Names can have accents, by the way.
+train172	7	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hello! I wanted a generic `largest` so I can use it for scores and temperatures alike, but it won't compile. Could you help?
+train172	8	build	overt_request_marker	-	repair_build	-	repair_build	Hello! I wrote this small Rust crate but the compiler rejects it. Would you mind fixing it so it compiles, without changing what it does?
+train172	9	build	overt_request_marker	-	repair_build	-	repair_build	Hello! I'm counting hits on a battleship-style grid and the HashMap code won't compile. Could you make it build without changing how it counts?
+train172	10	build	overt_request_marker	-	repair_build	-	repair_build	Hello! My loan calculator says mismatched types on the interest method and I don't get why. Can you get it to build?
+train172	11	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hey there! I have a list of shapes behind boxes and want the total area, but the signature won't compile. Could you fix it?
+train172	12	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hey! I added a reorder level to inventory items (it's optional in the input file) and the loader doesn't compile anymore. Could you fix it?
+train172	13	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hey! I added a statement function for bank accounts but it won't compile, something about a private field. Can you fix it? The output format is what I want.
+train172	14	build	overt_request_marker	repair_build	repair_build	-	repair_build	Hey! I parse CSV-ish lines into lowercase fields. The compiler says a temporary value is dropped while borrowed, which I don't really understand. Could you fix it?
+train172	15	build	overt_request_marker	-	-	-	-	Hey! I split my shapes code into a couple of files and now report.rs says there's no method `area`, even though both shapes clearly implement it. Could you fix it?
+train172	16	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hey! Tag counter for my notes app won't compile, says type annotations needed. Can you fix it?
+train172	17	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hey! We just added in-store pickup as a shipping option and now the fee function won't compile. Pickup is free. Could you fix it?
+train172	18	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Hey, I added shipping to the price calculation and now the cart total doesn't compile. Could you take a look and fix it?
+train172	19	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Hey, I wrote a tiny helper that picks the longer of two titles and the compiler wants something about lifetimes. Could you make it compile?
+train172	20	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Hey, I'm stuck on a compiler error in this little crate. Can you fix it so it builds? Please keep the behavior as it is.
+train172	21	build	overt_request_marker	repair_build	repair_build	-	-	Hey, I'm working on user profiles for a little media player. `muted` should return a copy of the settings with sound off and leave the original alone. The compiler complains about assigning through a reference, which confuses me. Could you fix it?
+train172	22	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Hey, quick one: my ticket tracker stopped compiling when I added a status field. Can you get it building again?
+train172	23	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hey, small waiting-list helper here that won't compile, the error says some method doesn't exist. Could you take a look?
+train172	24	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi there! Average star rating for a review page, but the division won't compile. Can you make it work? It should give fractional averages.
+train172	25	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi there! My weather forecast formatter won't compile and the error says the conversion function is private. Could you fix that?
+train172	26	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi there, my word counter won't compile and I can't see why, the logic looks fine to me. Could you get it building?
+train172	27	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! Contact book: `address` should give the email if there is one, otherwise a note saying there's none. It won't compile, something about moving out of `self`. Can you fix it?
+train172	28	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! Geometry helper for a school project: the triangle perimeter function won't compile, it says the points were moved. Can you fix it?
+train172	29	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	Hi! I added a constant for milliseconds per day and the build broke. Could you get it compiling again?
+train172	30	build	overt_request_marker	repair_build	repair_build	-	repair_build	Hi! I tweaked the basket summary to say "cents total" and now it doesn't compile, something about dividing a String. Can you fix it without changing the output text?
+train172	31	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! I want names sorted as "Last, First" for a class roster. The concatenation won't compile though. Could you fix it?
+train172	32	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! I want to curve every exam score by some bonus points, capped at 100. The loop won't compile. Can you sort it out?
+train172	33	build	overt_request_marker	repair_build	repair_build	-	repair_build	Hi! I'm parsing screen sizes like "640x480". It should return an error for bad input but the `?`s don't compile. Can you fix it?
+train172	34	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! I'm trying out threads to sum chunks of a big list in parallel. The spawn line doesn't compile, it says the closure may outlive something. Could you fix it?
+train172	35	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! I'm writing a little price calculator. The cost function should give None for items that aren't in the price list, but it doesn't compile right now. Could you fix it?
+train172	36	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! Little traffic light simulation here, the `can_go` check won't compile. Can you sort it out?
+train172	37	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! Shipping volume calculator for parcels, won't build. Could you fix whatever's wrong?
+train172	38	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi! The leaderboard lookup won't build, something about indexing. Could you fix it so it compiles? Ranks are 1-based, and that part works the way I want.
+train172	39	build	overt_request_marker	-	repair_build	-	repair_build	Hi! This crate doesn't compile right now. Could you get it building again without changing what the code is meant to do?
+train172	40	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	Hi, I have a little sensor log that compares each new reading with the first one. The borrow checker is unhappy with it. Could you fix it so it builds and behaves the same?
+train172	41	build	implicit_or_unresolved	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	added Pickup variant now build fails, its free btw
+train172	42	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	borrow checker error in add_reading pls fix
+train172	43	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	build broken, fix it but dont change what it does
+train172	44	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	cannot assign to *s error fix pls
+train172	45	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	cannot move out of self.email fix pls
+train172	46	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	cant add str fix pls
+train172	47	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	cant divide u32 by f64 fix pls
+train172	48	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	cant find type error, fix it
+train172	49	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	cant index str, initials fn, fix pls
+train172	50	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	cant multiply option or something. fix cost()
+train172	51	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	cargo build fails?? fix pls
+train172	52	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	cart_total broke after i added shipping, pls fix
+train172	53	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	compile error, make it build quick
+train172	54	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	const overflow error MS_PER_DAY fix
+train172	55	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	doesn't build, fix
+train172	56	build	overt_request_marker	other,other	other,other	repair_build,repair_build	repair_build,repair_build	doesnt compile pls fix
+train172	57	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	fix
+train172	58	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	fix build
+train172	59	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	fix compile
+train172	60	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	fix compile error
+train172	61	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	fix the build
+train172	62	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	fix the build error
+train172	63	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	fix the compile error
+train172	64	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	fix the error
+train172	65	build	implicit_or_unresolved	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	generic largest fn wont compile, binary op error
+train172	66	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build,repair_build	get the crate compiling without changing what it does
+train172	67	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	hashmap entry error on Cell, fix pls
+train172	68	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	index error in player_at_rank, fix
+train172	69	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	label() doesnt compile, returns ref to something? fix pls
+train172	70	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	loader.rs missing field error, fix
+train172	71	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	make it build
+train172	72	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	make it compile
+train172	73	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	make this compile
+train172	74	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	make this compile; keep the behavior the same
+train172	75	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	map on vec error fix
+train172	76	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	mismatched types expected f64 found () fix
+train172	77	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	mismatched types in Ticket::new fix pls
+train172	78	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	missing lifetime specifier error fix it
+train172	79	build	overt_request_marker	-	-	-	-	no field error in volume fn, fix
+train172	80	build	overt_request_marker	other	other	repair_build	repair_build	no method area in report.rs but its implemented?? fix
+train172	81	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	no method error fix pls
+train172	82	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	private fn error, forecast_line, fix pls
+train172	83	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	profile.rs errors about & reference, idk why, fix pls
+train172	84	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	statement() private field error, fix
+train172	85	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	summary() broke cant divide string?? fix
+train172	86	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	temporary value dropped while borrowed, fix it
+train172	87	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	this doesn't compile, fix it
+train172	88	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	thread spawn closure error fix pls
+train172	89	build	overt_request_marker	repair_build	repair_build	repair_build,repair_build	repair_build,repair_build	type annotations needed error, fix
+train172	90	build	overt_request_marker	repair_build	repair_build	repair_build	repair_build	use of moved value Point, perimeter fn, fix
+train172	91	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	1h30m parses wrong test red pls fix
+train172	92	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hello! Blog posts end up with the same tag twice, e.g. "rust" listed two times, and `duplicate_tags_are_merged` fails. Could you fix the tag cleanup?
+train172	93	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hello! I'm smoothing step counts for a fitness app and `averages_every_window` fails: one value is missing from the output. I'm fairly sure the test is right. Could you fix the function?
+train172	94	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hello! The thermostat display shows 132°F for boiling water, and `boiling_point_in_fahrenheit` fails. The Fahrenheit-to-Celsius direction seems fine. Could you fix the other one?
+train172	95	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hey! Our snack machine simulation hands out free snacks: after one snack it acts like there's still a coin in it. `one_coin_one_snack` fails. Could you fix the state machine?
+train172	96	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hey! The downloader's status line shows silly percentages like 250%, and `status_shows_percent_done` fails. Can you fix the code so it reports progress properly?
+train172	97	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hey! The shop's reorder list suggests items we've stopped selling, and `suggests_low_stock_items_still_sold` fails. Could you fix the filter?
+train172	98	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hey! The status bar of my note-taking app says a brand new empty note has 1 word, and `empty_note_has_no_words` fails. Could you fix the counting?
+train172	99	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hey, I'm scanning service logs for the first ERROR line and `finds_error_after_blank_line` fails: it returns None even though there's an error further down. Could you fix the scanner?
+train172	100	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hey, the editor's 'recently opened' list forgets files it should remember. `keeps_the_last_three` in tests/visible.rs shows it. Can you track down the bug and fix it? Please leave the test alone.
+train172	101	test	overt_request_marker	-	repair_tests	-	repair_tests	Hi there, I'm building a little puzzle game with a Caesar cipher and `wraps_past_z` fails. Letters near the end of the alphabet come out wrong. Could you find the bug and fix it without touching the test?
+train172	102	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hi! I have a tiny ledger for a club's accounts and `pay_moves_money_to_payee` started failing. The balances come out wrong. Could you find what's off in the library and fix it?
+train172	103	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hi! I'm merging meeting room bookings into busy blocks for a calendar view, and `long_booking_swallows_short_one` fails: the merged block starts too late. Could you fix the merge?
+train172	104	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hi! I'm working on the pager for our search results and `first_page_shows_three_items` keeps failing. The test matches what the docs say, so I think the bug is in the library. Could you fix it?
+train172	105	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hi! I'm writing invoicing for a small print shop and `total_includes_tax` fails: the customer seems to get a discount instead of paying tax. Could you fix the code?
+train172	106	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hi! I'm writing the save format for a pixel-art editor and `encodes_a_row` fails. Decoding works, but encoded rows lose something. Could you fix the encoder?
+train172	107	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hi! In my drawing app the Undo menu should show the most recent actions first, but `recent_lists_newest_first` fails. Could you fix the history code?
+train172	108	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hi! In our sensor dashboard, `no_readings_no_mean` fails: the mean of an empty list should be None, and right now it isn't. Could you fix the stats code?
+train172	109	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hi! My to-do app keeps reminding me about things I've already done, and `reminds_about_open_tasks_due_soon` fails. Could you fix the reminder logic?
+train172	110	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hi! On our finance dashboard, losses show up as "-,123,456". `negative_amounts` fails because of it. Positive numbers look fine. Could you fix the formatter?
+train172	111	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hi! Our arcade game's high-score table shows the worst players at the top. `top_two_scores` fails. Could you fix the sorting in the library?
+train172	112	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hi! Our booking calendar thinks February 2024 has 28 days, and `february_2024_has_29_days` fails because of it. Could you fix the date code?
+train172	113	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hi! Our point-of-sale screen turns $0.29 into 28 cents, and `typed_price_to_cents` fails. Could you fix the conversion?
+train172	114	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	Hi! Our shipping estimator says 25 items fit in 2 boxes of 12, and `leftover_items_need_a_box` fails. Could you fix the code so the test passes?
+train172	115	test	overt_request_marker	-	repair_tests	-	repair_tests	Hi! Our winter weather log reports a high of 0.0° on days where it never got above freezing, and `freezing_day_high` fails. Could you fix the code?
+train172	116	test	overt_request_marker	-	repair_tests	-	repair_tests	Hi! The pedestrian crossing controller never shows red, it seems, and `yellow_turns_red` fails. Could you fix the light sequence?
+train172	117	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Hi! We parse timeouts like "1h30m" from a config file and `hours_and_minutes_add_up` is failing. Single units like "45s" seem fine. Could you fix the parser so the test passes?
+train172	118	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	Morning! Our garden weather station is supposed to warn about frost when it's at or below zero, but `zero_degrees_is_frost` is failing. Could you fix the code so the test passes?
+train172	119	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	box count too low test red fix pls
+train172	120	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	boxes test fails, fix
+train172	121	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	busy blocks wrong start time, test failing fix
+train172	122	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	c to f broken, test fails. fix pls
+train172	123	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	caesar thing broken near z, test fails. fix
+train172	124	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	calendar test fails feb wrong, fix
+train172	125	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	cents off by one sometimes, test fails fix
+train172	126	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	cipher test failing, fix the code
+train172	127	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	conversion test fails
+train172	128	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	daily high wrong on cold days, test fail. fix
+train172	129	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	download % is wrong test fails, plz fix
+train172	130	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	dup tags not removed, test fail fix
+train172	131	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	duration parse test fails, fix
+train172	132	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	empty note says 1 word lol. test fails fix
+train172	133	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	encode drops stuff test fails, fix pls
+train172	134	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	february test is failing, fix
+train172	135	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	first_error test fails
+train172	136	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	fix failing test in stats
+train172	137	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	fix the failing high temp test
+train172	138	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	fix the failing pagination test
+train172	139	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	frost alert test red, pls fix code
+train172	140	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	frost test fails. fix
+train172	141	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	highscores upside down, test fails fix
+train172	142	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	invoice total test failing
+train172	143	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	invoice totals wrong, test fails fix pls
+train172	144	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	leaderboard test fails
+train172	145	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	ledger pay test fails dunno why, fix
+train172	146	test	overt_request_marker	-	repair_tests	-	repair_tests	light never goes red?? test fails pls fix
+train172	147	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	log scan misses errors, test failing pls fix
+train172	148	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	make the moving average test pass
+train172	149	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	mean test fails on empty, fix it
+train172	150	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	merge test fails
+train172	151	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	moving avg test failng fix pls
+train172	152	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	negative nums format weird test fails fix
+train172	153	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	number format test fails
+train172	154	test	overt_request_marker	-	-	-	-	pager test fails, fix teh code pls not the test
+train172	155	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	payment test failing, fix it
+train172	156	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	price test failing, fix
+train172	157	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	progress test fails, fix
+train172	158	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	recent files list broken test failing can u fix
+train172	159	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	recent files test fails, fix
+train172	160	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	reminder test failing
+train172	161	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	reminders for done tasks?? test fails fix
+train172	162	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	reorder list wrong, test fails fix pls
+train172	163	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	reorder test fails, fix
+train172	164	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	rle encode test failing, fix
+train172	165	test	overt_request_marker	repair_tests	repair_tests	repair_tests	repair_tests	tags test failing, fix
+train172	166	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	traffic light test fails
+train172	167	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	undo list shows wrong stuff, test fails fix
+train172	168	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	undo menu test failing
+train172	169	test	overt_request_marker	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	vending machine gives free snacks lol, test fails fix
+train172	170	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests,repair_tests	repair_tests,repair_tests	vending machine test fails
+train172	171	test	implicit_or_unresolved	repair_tests	repair_tests	repair_tests	repair_tests	word count test fails

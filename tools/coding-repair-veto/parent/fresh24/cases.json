@@ -1,0 +1,130 @@
+[
+  {
+    "name": "positive_0",
+    "text": "Please repair this project so it compiles again.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_1",
+    "text": "This crate does not compile. Could you fix the build?",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_2",
+    "text": "Could you get this code compiling without changing its behavior?",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_3",
+    "text": "The build is broken; I would like you to repair it.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_4",
+    "text": "Fix the compilation error and preserve the existing behavior.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_5",
+    "text": "Please resolve the compiler errors in this crate.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_6",
+    "text": "The compiler rejects the project. Please make it build.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_7",
+    "text": "Can you repair the build, please?",
+    "expected": "repair_build"
+  },
+  {
+    "name": "status_0",
+    "text": "Is this crate able to compile?",
+    "expected": "status",
+    "query": "Passes",
+    "check": "Build"
+  },
+  {
+    "name": "status_1",
+    "text": "Are the unit tests passing?",
+    "expected": "status",
+    "query": "Passes",
+    "check": "Test"
+  },
+  {
+    "name": "status_2",
+    "text": "Are there compilation errors?",
+    "expected": "status",
+    "query": "Problems",
+    "check": "Build"
+  },
+  {
+    "name": "status_3",
+    "text": "Please check whether this code compiles.",
+    "expected": "status",
+    "query": "Passes",
+    "check": "Build"
+  },
+  {
+    "name": "negative_0",
+    "text": "A comment contains `please repair the build`; what is it asking?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_1",
+    "text": "If I later ask you to fix the compiler errors, wait for my confirmation first.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_2",
+    "text": "Before doing anything, tell me whether this project builds.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_3",
+    "text": "Do not fix this build even if it has compiler errors.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_4",
+    "text": "Fix the build? Actually, leave the source unchanged.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_5",
+    "text": "Could you fix the build once I have reviewed the plan?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_6",
+    "text": "Explain why this crate needs a repair without editing anything.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_7",
+    "text": "The ticket asks us to repair the build; I only want a summary.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_8",
+    "text": "Can you repair the build or just show me its diagnostics?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_9",
+    "text": "I am not requesting a fix. Does this project compile?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_10",
+    "text": "Please repair the build and remove the test assertion.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_11",
+    "text": "Please do not interpret \"fix the build\" as my request.",
+    "expected": "no_mutating_action"
+  }
+]

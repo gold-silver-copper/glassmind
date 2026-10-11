@@ -1,0 +1,634 @@
+{
+  "binary_sha256": "65750260c5db5a5838704cde8cd6cd17f16d11980e53005644d5df3cd7015f44",
+  "source_fixture": "pub fn number()->u32 { 7u8 }\n#[test] fn value(){assert_eq!(number(),7);}\n",
+  "cases": [
+    {
+      "name": "positive_0",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_0",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_1",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))",
+        "Command(Repair(Build))",
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_1",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))",
+        "Command(Repair(Build))",
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_2",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_2",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_3",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_3",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_4",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_4",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_5",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_5",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_6",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_6",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_7",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "positive_7",
+      "expected": "repair_build",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [
+        "Command(Repair(Build))"
+      ],
+      "preview_mutating": true,
+      "changed": true,
+      "exact_repair": true,
+      "native_exit": 0,
+      "action_exit": 0
+    },
+    {
+      "name": "status_0",
+      "expected": "status",
+      "check": "Build",
+      "mode": "ask",
+      "preview_meanings": [
+        "Ask(Passes(Build))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "status_0",
+      "expected": "status",
+      "check": "Build",
+      "mode": "do",
+      "preview_meanings": [
+        "Ask(Passes(Build))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "status_1",
+      "expected": "status",
+      "check": "Test",
+      "mode": "ask",
+      "preview_meanings": [
+        "Ask(Passes(Test))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "status_1",
+      "expected": "status",
+      "check": "Test",
+      "mode": "do",
+      "preview_meanings": [
+        "Ask(Passes(Test))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "status_2",
+      "expected": "status",
+      "check": "Build",
+      "mode": "ask",
+      "preview_meanings": [
+        "Ask(Problems(Build))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "status_2",
+      "expected": "status",
+      "check": "Build",
+      "mode": "do",
+      "preview_meanings": [
+        "Ask(Problems(Build))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "status_3",
+      "expected": "status",
+      "check": "Build",
+      "mode": "ask",
+      "preview_meanings": [
+        "Ask(Passes(Build))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "status_3",
+      "expected": "status",
+      "check": "Build",
+      "mode": "do",
+      "preview_meanings": [
+        "Ask(Passes(Build))"
+      ],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_0",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_0",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_1",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_1",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_2",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_2",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_3",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_3",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_4",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_4",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_5",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_5",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_6",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_6",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_7",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_7",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_8",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_8",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_9",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_9",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_10",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_10",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_11",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "ask",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    },
+    {
+      "name": "negative_11",
+      "expected": "no_mutating_action",
+      "check": null,
+      "mode": "do",
+      "preview_meanings": [],
+      "preview_mutating": false,
+      "changed": false,
+      "exact_repair": false,
+      "native_exit": null,
+      "action_exit": 0
+    }
+  ]
+}

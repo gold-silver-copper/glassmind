@@ -19,7 +19,550 @@ pub struct CodingLanguage<'a> {
     pub switches: &'a Switches,
 }
 
+/// A veto on explicit non-authorizing speech acts, not a positive-request parser.
+/// Legacy inference still owns affirmative and implicit failure-report coverage.
+#[derive(Clone, Copy)]
+enum RepairScope {
+    Legacy,
+    Veto,
+    Status(RustCheck, bool),
+}
+
+fn repair_scope(text: &str) -> RepairScope {
+    if text.len() > 8192 {
+        return RepairScope::Veto;
+    }
+    // Quotes are opaque data. Apostrophes within words are not quote delimiters.
+    let chars: Vec<_> = text.chars().collect();
+    let mut visible = String::new();
+    let mut quoted_action = false;
+    let mut i = 0;
+    while i < chars.len() {
+        let Some(&c) = chars.get(i) else {
+            return RepairScope::Veto;
+        };
+        let apostrophe = matches!(c, '\'' | '’')
+            && i > 0
+            && chars.get(i - 1).is_some_and(|c| c.is_alphanumeric())
+            && chars.get(i + 1).is_some_and(|c| c.is_alphanumeric());
+        if matches!(c, '"' | '`' | '\'' | '“' | '‘') && !apostrophe {
+            let end = match c {
+                '“' => '”',
+                '‘' => '’',
+                _ => c,
+            };
+            i += 1;
+            let start = i;
+            while chars.get(i).is_some_and(|c| *c != end) {
+                i += 1;
+            }
+            if i == chars.len() {
+                return RepairScope::Veto;
+            }
+            let quote: String = chars.get(start..i).unwrap_or_default().iter().collect();
+            quoted_action |= quote.split(|c: char| !c.is_alphanumeric()).any(|w| {
+                matches!(
+                    w.to_ascii_lowercase().as_str(),
+                    "fix" | "repair" | "resolve" | "make" | "get"
+                )
+            });
+            visible.push_str(" quoted ");
+        } else if apostrophe {
+            visible.push('\'');
+        } else {
+            visible.push(c.to_ascii_lowercase());
+        }
+        i += 1;
+    }
+    let clauses: Vec<Vec<&str>> = visible
+        .split(['.', ';', '?', '!'])
+        .map(|s| {
+            s.split(|c: char| !c.is_alphanumeric() && c != '\'' && c != '_')
+                .filter(|s| !s.is_empty())
+                .collect()
+        })
+        .filter(|s: &Vec<_>| !s.is_empty())
+        .collect();
+    if clauses.iter().map(Vec::len).sum::<usize>() > 512 {
+        return RepairScope::Veto;
+    }
+    let action = |w: &str| {
+        matches!(
+            w,
+            "fix"
+                | "fixing"
+                | "fixed"
+                | "repair"
+                | "repairing"
+                | "repaired"
+                | "resolve"
+                | "make"
+                | "get"
+        )
+    };
+    let has_action = clauses.iter().flatten().any(|w| action(w));
+    if (quoted_action
+        && (!has_action
+            || clauses.iter().flatten().all(|w| {
+                matches!(
+                    *w,
+                    "please" | "kindly" | "fix" | "repair" | "resolve" | "quoted"
+                )
+            })))
+        || clauses.iter().flatten().all(|w| *w == "quoted")
+    {
+        return RepairScope::Veto;
+    }
+    let mut status = None;
+    let mut status_clauses = 0;
+    for words in &clauses {
+        let w = words.as_slice();
+        let has = |s: &str| w.contains(&s);
+        let first = w
+            .iter()
+            .copied()
+            .find(|s| !matches!(*s, "please" | "kindly" | "actually" | "also" | "but"));
+        // 'get why/how/what ...' takes an explanatory complement, not a
+        // repaired object/result (as in 'get the tests passing').
+        let cognitive_get = |n: usize| {
+            w.get(n) == Some(&"get")
+                && w.get(n + 1)
+                    .is_some_and(|s| matches!(*s, "why" | "how" | "what"))
+        };
+        let repair_at = w
+            .iter()
+            .enumerate()
+            .find(|(n, s)| action(s) && !cognitive_get(*n))
+            .map(|(n, _)| n);
+        let requesting = repair_at.is_some();
+        // Negation attaches to the requested action/volition, not failure evidence.
+        for (n, word) in w.iter().enumerate() {
+            if matches!(
+                *word,
+                "not" | "don't" | "dont" | "never" | "cannot" | "can't"
+            ) {
+                let tail = w.get(n + 1..).unwrap_or_default();
+                let predicate = tail.iter().copied().find(|s| {
+                    !matches!(
+                        *s,
+                        "please"
+                            | "ever"
+                            | "really"
+                            | "actually"
+                            | "even"
+                            | "just"
+                            | "simply"
+                            | "under"
+                            | "any"
+                            | "circumstances"
+                            | "in"
+                            | "way"
+                            | "to"
+                    )
+                });
+                let explanatory_complement = predicate == Some("get")
+                    && tail
+                        .windows(2)
+                        .any(|p| matches!(p, ["get", "why" | "how" | "what"]));
+                let denied_request = requesting
+                    && predicate.is_some_and(|s| {
+                        matches!(
+                            s,
+                            "request"
+                                | "requesting"
+                                | "ask"
+                                | "asking"
+                                | "authorize"
+                                | "authorizing"
+                                | "permit"
+                                | "permitting"
+                        )
+                    });
+                if (predicate.is_some_and(|s| action(s) || matches!(s, "want" | "wish"))
+                    && !explanatory_complement)
+                    || denied_request
+                    || (matches!(*word, "don't" | "dont") && tail.is_empty())
+                {
+                    return RepairScope::Veto;
+                }
+            }
+        }
+        if (first == Some("no") && w.iter().all(|s| matches!(*s, "no" | "actually" | "please")))
+            || (has_action
+                && w.windows(2)
+                    .any(|p| matches!(p, ["no", "need" | "permission" | "authorization"])))
+            || w.windows(3)
+                .any(|p| matches!(p, ["changed", "my", "mind"] | ["take", "that", "back"]))
+            || matches!(first, Some("stop" | "wait" | "cancel" | "nevermind"))
+            || (has("no") && (has("wait") || has("leave") || has("stop")))
+            || w.windows(2).any(|p| p == ["never", "mind"])
+        {
+            return RepairScope::Veto;
+        }
+        // Keeping source untouched retracts permission to repair it. Keeping
+        // behavior unchanged remains a legitimate constraint on the repair.
+        if has_action
+            && w.iter().enumerate().any(|(n, word)| {
+                if !matches!(*word, "leave" | "keep") {
+                    return false;
+                }
+                let tail = w.get(n + 1..).unwrap_or_default();
+                let Some(end) = tail
+                    .iter()
+                    .position(|s| matches!(*s, "unchanged" | "untouched" | "alone"))
+                else {
+                    return false;
+                };
+                let object = tail.get(..end).unwrap_or_default();
+                object
+                    .iter()
+                    .any(|s| matches!(*s, "source" | "code" | "files"))
+                    && object.iter().all(|s| {
+                        matches!(
+                            *s,
+                            "the" | "this" | "these" | "my" | "our" | "source" | "code" | "files"
+                        )
+                    })
+            })
+        {
+            return RepairScope::Veto;
+        }
+        if has_action
+            && (matches!(
+                first,
+                Some("if" | "unless" | "until" | "when" | "once" | "provided" | "assuming")
+            ) || (requesting && (has("later") || has("tomorrow"))))
+        {
+            return RepairScope::Veto;
+        }
+        // Forbidding all source edits contradicts repair; preserving behavior or
+        // tests is a constraint the existing repair verifier can respect.
+        if has_action
+            && (has("without") || has("not") || has("don't") || has("dont"))
+            && w.iter().any(|s| {
+                matches!(
+                    *s,
+                    "edit"
+                        | "editing"
+                        | "change"
+                        | "changing"
+                        | "modify"
+                        | "modifying"
+                        | "touching"
+                )
+            })
+            && w.iter().any(|s| matches!(*s, "files" | "source" | "code"))
+            && !w
+                .iter()
+                .any(|s| matches!(*s, "behavior" | "behaviour" | "output"))
+            && !w
+                .windows(2)
+                .any(|p| matches!(p, ["changing" | "change", "what" | "how"]))
+        {
+            return RepairScope::Veto;
+        }
+        // Conditional scope is attached to a proposed action, including later clauses.
+        // A final "once" can specify repetition; "once we ..." defers authority.
+        let once_clause = w.windows(2).any(|p| {
+            matches!(
+                p,
+                [
+                    "once",
+                    "i" | "you"
+                        | "we"
+                        | "they"
+                        | "he"
+                        | "she"
+                        | "it"
+                        | "the"
+                        | "this"
+                        | "that"
+                        | "my"
+                        | "our"
+                ]
+            )
+        });
+        if (requesting
+            && (once_clause
+                || w.iter().any(|s| {
+                    matches!(
+                        *s,
+                        "if" | "unless" | "until" | "when" | "provided" | "assuming"
+                    )
+                })))
+            || (has_action
+                && w.iter().any(|s| {
+                    matches!(
+                        *s,
+                        "approval" | "permission" | "approve" | "confirm" | "later"
+                    )
+                })
+                && w.iter().any(|s| {
+                    matches!(
+                        *s,
+                        "wait" | "after" | "before" | "until" | "only" | "if" | "when"
+                    )
+                }))
+            || (requesting
+                && w.iter()
+                    .any(|s| matches!(*s, "suppose" | "imagine" | "hypothetically" | "might")))
+        {
+            return RepairScope::Veto;
+        }
+        // Reported speech does not turn an embedded infinitive into an imperative.
+        if requesting
+            && w.iter()
+                .any(|s| matches!(*s, "asked" | "requested" | "said" | "says" | "wrote"))
+            && !w
+                .iter()
+                .take(repair_at.unwrap_or(0))
+                .any(|s| matches!(*s, "please" | "can" | "could" | "would"))
+        {
+            return RepairScope::Veto;
+        }
+        let addressed = matches!(
+            first,
+            Some("explain" | "describe" | "tell" | "show" | "why" | "how")
+        ) || (w
+            .first()
+            .is_some_and(|s| matches!(*s, "can" | "could" | "would" | "will"))
+            && w.get(1) == Some(&"you"));
+        if addressed
+            && w.iter()
+                .any(|s| matches!(*s, "explain" | "describe" | "why" | "how"))
+        {
+            // 'fix it without changing how ...' is a preservation constraint.
+            let explanation_before_action = w
+                .iter()
+                .position(|s| matches!(*s, "explain" | "describe" | "why" | "how"))
+                .is_some_and(|n| repair_at.is_none_or(|a| n < a));
+            if explanation_before_action {
+                return RepairScope::Veto;
+            }
+        }
+        // Additional requested operations cannot ride along with a Repair reading.
+        for (n, word) in w.iter().enumerate() {
+            if matches!(
+                *word,
+                "delete" | "remove" | "rename" | "deploy" | "publish" | "add" | "run"
+            ) {
+                let before = w.get(..n).unwrap_or_default();
+                if matches!(
+                    first,
+                    Some("delete" | "remove" | "rename" | "deploy" | "publish" | "add" | "run")
+                ) || before
+                    .iter()
+                    .rev()
+                    .take(3)
+                    .any(|s| matches!(*s, "and" | "also" | "then" | "not" | "don't" | "dont"))
+                {
+                    return RepairScope::Veto;
+                }
+            }
+        }
+        if requesting
+            && ((has("build") && has("tests") && has("and"))
+                || (has("or") && (has("explain") || has("just"))))
+        {
+            return RepairScope::Veto;
+        }
+        // Read-only question recognition must consume the entire clause. Unknown
+        // question tails veto repair but never invent a status answer.
+        let interrogative = matches!(
+            first,
+            Some(
+                "does"
+                    | "do"
+                    | "did"
+                    | "has"
+                    | "have"
+                    | "was"
+                    | "were"
+                    | "should"
+                    | "is"
+                    | "are"
+                    | "can"
+                    | "could"
+                    | "would"
+                    | "will"
+                    | "what"
+                    | "which"
+            )
+        );
+        let check_request = matches!(first, Some("check" | "show" | "list"))
+            || (matches!(first, Some("can" | "could" | "would" | "will"))
+                && (has("you") || has("u"))
+                && has("check"))
+            || (matches!(first, Some("tell")) && (has("whether") || has("if")));
+        let question = (interrogative
+            && (!(has("you") || has("u")) || has("possible") || requesting))
+            || check_request;
+        let you_action = (has("you") || has("u")) && requesting && !has("possible");
+        if question && !you_action && !has_action {
+            let test = w.iter().any(|s| matches!(*s, "test" | "tests"));
+            let build = w.iter().any(|s| {
+                matches!(
+                    *s,
+                    "build"
+                        | "builds"
+                        | "compile"
+                        | "compiles"
+                        | "compiling"
+                        | "compilation"
+                        | "compiler"
+                )
+            });
+            let predicate = w.iter().any(|s| {
+                matches!(
+                    *s,
+                    "build"
+                        | "builds"
+                        | "works"
+                        | "working"
+                        | "green"
+                        | "pass"
+                        | "passes"
+                        | "passing"
+                        | "compile"
+                        | "compiles"
+                        | "compiling"
+                        | "errors"
+                        | "failures"
+                        | "problems"
+                        | "broken"
+                        | "fail"
+                        | "failing"
+                )
+            });
+            let complete = w.iter().all(|s| {
+                matches!(
+                    *s,
+                    "does"
+                        | "do"
+                        | "is"
+                        | "are"
+                        | "can"
+                        | "could"
+                        | "would"
+                        | "will"
+                        | "what"
+                        | "which"
+                        | "please"
+                        | "you"
+                        | "check"
+                        | "tell"
+                        | "show"
+                        | "list"
+                        | "me"
+                        | "whether"
+                        | "able"
+                        | "to"
+                        | "if"
+                        | "the"
+                        | "this"
+                        | "our"
+                        | "my"
+                        | "that"
+                        | "project"
+                        | "crate"
+                        | "rust"
+                        | "code"
+                        | "quoted"
+                        | "all"
+                        | "any"
+                        | "there"
+                        | "currently"
+                        | "now"
+                        | "successfully"
+                        | "cleanly"
+                        | "works"
+                        | "working"
+                        | "green"
+                        | "test"
+                        | "tests"
+                        | "unit"
+                        | "suite"
+                        | "build"
+                        | "builds"
+                        | "compile"
+                        | "compiles"
+                        | "compiling"
+                        | "compilation"
+                        | "compiler"
+                        | "pass"
+                        | "passes"
+                        | "passing"
+                        | "errors"
+                        | "failures"
+                        | "problems"
+                        | "broken"
+                        | "fail"
+                        | "failing"
+                )
+            });
+            if complete && predicate && (test || build) && !(test && build) {
+                let check = if test {
+                    RustCheck::Test
+                } else {
+                    RustCheck::Build
+                };
+                let problems = has("errors")
+                    || has("failures")
+                    || has("problems")
+                    || has("broken")
+                    || has("fail")
+                    || has("failing");
+                if let Some(RepairScope::Status(previous, polarity)) = status
+                    && (previous != check || polarity != problems)
+                {
+                    return RepairScope::Veto;
+                }
+                status_clauses += 1;
+                status = Some(RepairScope::Status(check, problems));
+            } else {
+                return RepairScope::Veto;
+            }
+        } else if question && !you_action && requesting {
+            return RepairScope::Veto;
+        }
+    }
+    if status.is_some() && status_clauses != clauses.len() {
+        RepairScope::Veto
+    } else {
+        status.unwrap_or(RepairScope::Legacy)
+    }
+}
+
 impl CodingLanguage<'_> {
+    fn scope_readings(text: &str, mut readings: Vec<Reading<Rust>>) -> Vec<Reading<Rust>> {
+        match repair_scope(text) {
+            RepairScope::Legacy => readings,
+            RepairScope::Veto => {
+                readings.retain(|r| !matches!(r.meaning, Utterance::Command(Action::Repair(_))));
+                readings
+            }
+            RepairScope::Status(check, problems) => {
+                let meaning = Utterance::Ask(if problems {
+                    Question::Problems(check)
+                } else {
+                    Question::Passes(check)
+                });
+                readings.retain(|r| r.meaning == meaning);
+                if readings.is_empty() {
+                    readings.push(Reading {
+                        meaning,
+                        rules: vec![RuleInfo::new("coding.repair.speech_scope", HAND)],
+                        parse: "complete read-only check question".into(),
+                        idle: 0,
+                        edits: 0,
+                        discarded: Vec::new(),
+                    });
+                }
+                readings
+            }
+        }
+    }
+
     fn contains_rename(understood: &Understanding<Rust>) -> bool {
         matches!(understood, Understanding::Readings(rs) if rs.iter().any(|r|
             matches!(r.meaning, Utterance::Command(Action::Rename { .. }))))
@@ -71,22 +614,17 @@ impl CodingLanguage<'_> {
             "fix_tests" => Utterance::Command(Action::Repair(RustCheck::Test)),
             _ => return Vec::new(),
         };
-        // Negated requests need a richer reading than a bag of words.
-        let lower = text.to_ascii_lowercase();
-        if ["don't", "do not", "never", "without"]
-            .iter()
-            .any(|w| lower.contains(w))
-        {
-            return Vec::new();
-        }
-        vec![Reading {
-            meaning,
-            rules: vec![CODING_INTENT],
-            parse: format!("coding intent: {intent} ({probability:.4})"),
-            idle: 0,
-            edits: 250,
-            discarded: Vec::new(),
-        }]
+        Self::scope_readings(
+            text,
+            vec![Reading {
+                meaning,
+                rules: vec![CODING_INTENT],
+                parse: format!("coding intent: {intent} ({probability:.4})"),
+                idle: 0,
+                edits: 250,
+                discarded: Vec::new(),
+            }],
+        )
     }
 }
 
@@ -149,6 +687,26 @@ impl Language<Rust> for CodingLanguage<'_> {
                 trouble: Trouble::Unsupported,
             };
         }
+        let understood = match understood {
+            Understanding::Readings(rs) => {
+                let rs = Self::scope_readings(text, rs);
+                if rs.is_empty() {
+                    Understanding::Failed {
+                        trouble: Trouble::Unsupported,
+                    }
+                } else {
+                    Understanding::Readings(rs)
+                }
+            }
+            other => {
+                let rs = Self::scope_readings(text, Vec::new());
+                if rs.is_empty() {
+                    other
+                } else {
+                    Understanding::Readings(rs)
+                }
+            }
+        };
         if matches!(understood, Understanding::Failed { .. }) {
             let readings = self.coding(text);
             if !readings.is_empty() {
@@ -167,7 +725,7 @@ impl Language<Rust> for CodingLanguage<'_> {
         let mut guesses = self.english.guesses(text);
         guesses.retain(|r| !matches!(r.meaning, Utterance::Command(Action::Rename { .. })));
         guesses.extend(self.coding(text));
-        guesses
+        Self::scope_readings(text, guesses)
     }
     fn say(&self, reply: &Reply<Rust>) -> Option<Spoken> {
         self.english.say(reply)
@@ -481,5 +1039,88 @@ mod rename_tests {
                 "{text}"
             );
         }
+    }
+}
+
+#[cfg(test)]
+mod repair_veto_probes {
+    use super::*;
+
+    #[test]
+    fn request_authority_and_preservation_contrasts() {
+        let rows: Vec<serde_json::Value> = serde_json::from_str(include_str!(
+            "../../../tools/coding-repair-veto/parent-revision-contrasts.json"
+        ))
+        .unwrap();
+        for row in rows {
+            let text = row["text"].as_str().unwrap();
+            let scope = repair_scope(text);
+            let okay = match row["expected"].as_str().unwrap() {
+                "refuse" => matches!(scope, RepairScope::Veto),
+                "status_build" => matches!(scope, RepairScope::Status(RustCheck::Build, false)),
+                "status_tests" => matches!(scope, RepairScope::Status(RustCheck::Test, false)),
+                _ => matches!(scope, RepairScope::Legacy),
+            };
+            assert!(okay, "{text}");
+        }
+    }
+
+    #[test]
+    fn frozen_speech_scope_contrasts() {
+        for line in include_str!("../../../tools/coding-repair-veto/contrasts.tsv")
+            .lines()
+            .chain(include_str!("../../../tools/coding-repair-veto/supplemental.tsv").lines())
+        {
+            let (expected, text) = line.split_once('\t').unwrap();
+            let scope = repair_scope(text);
+            let okay = match expected {
+                "refuse" => matches!(scope, RepairScope::Veto),
+                "status_build" => matches!(scope, RepairScope::Status(RustCheck::Build, _)),
+                "status_tests" => matches!(scope, RepairScope::Status(RustCheck::Test, _)),
+                _ => matches!(scope, RepairScope::Legacy),
+            };
+            assert!(okay, "{expected}: {text}");
+        }
+    }
+
+    // Optional public development adapter: does not read evaluation definitions.
+    #[test]
+    fn export_public_typing() {
+        let Ok(input) = std::env::var("REPAIR_VETO_INPUT") else {
+            return;
+        };
+        let output = std::env::var("REPAIR_VETO_OUTPUT").expect("output path");
+        let rows: Vec<serde_json::Value> =
+            serde_json::from_str(&std::fs::read_to_string(input).expect("public inputs"))
+                .expect("input JSON");
+        let switches = Switches::all_on();
+        let english = English::new(glassmind_english_rust::rules(), &switches);
+        let language = CodingLanguage {
+            english: &english,
+            switches: &switches,
+        };
+        let key = |r: &Reading<Rust>| match &r.meaning {
+            Utterance::Command(Action::Repair(RustCheck::Build)) => "repair_build",
+            Utterance::Command(Action::Repair(RustCheck::Test)) => "repair_tests",
+            Utterance::Ask(Question::Passes(RustCheck::Build)) => "status_build",
+            Utterance::Ask(Question::Passes(RustCheck::Test)) => "status_tests",
+            Utterance::Ask(Question::Problems(RustCheck::Build)) => "problems_build",
+            Utterance::Ask(Question::Problems(RustCheck::Test)) => "problems_tests",
+            _ => "other",
+        };
+        let mut results = Vec::new();
+        for mut row in rows {
+            let text = row["text"].as_str().expect("text");
+            let understood = match language.understand(text) {
+                Understanding::Readings(rs) => rs.iter().map(&key).collect::<Vec<_>>(),
+                _ => Vec::new(),
+            };
+            let guesses = language.guesses(text).iter().map(&key).collect::<Vec<_>>();
+            row["understood"] = serde_json::json!(understood);
+            row["guesses"] = serde_json::json!(guesses);
+            results.push(row);
+            std::fs::write(&output, serde_json::to_string_pretty(&results).unwrap()).unwrap();
+        }
+        std::fs::write(output, serde_json::to_string_pretty(&results).unwrap()).unwrap();
     }
 }

@@ -1,0 +1,28 @@
+{
+  "binary_sha256": "65750260c5db5a5838704cde8cd6cd17f16d11980e53005644d5df3cd7015f44",
+  "positive_exact_native": 8,
+  "positive_total": 8,
+  "positive_failed": [],
+  "unrequested_edits": [],
+  "negative_command_previews": 0,
+  "status_correct": 4,
+  "status_total": 4,
+  "status_actual": {
+    "status_0": [
+      "Ask(Passes(Build))"
+    ],
+    "status_1": [
+      "Ask(Passes(Test))"
+    ],
+    "status_2": [
+      "Ask(Problems(Build))"
+    ],
+    "status_3": [
+      "Ask(Passes(Build))"
+    ]
+  },
+  "ask_apply_unchanged": true,
+  "baseline_good": 7,
+  "baseline_good_retained": 7,
+  "all_desired_gates_pass": true
+}
