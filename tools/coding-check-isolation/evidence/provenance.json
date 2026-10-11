@@ -1,0 +1,163 @@
+{
+  "source_revision": "9b875b854908cbbd5f5a6c8fce73ddcdbbb8ec8f",
+  "uncommitted": true,
+  "license": "MIT OR Apache-2.0",
+  "external_data_bytes": 0,
+  "source": [
+    {
+      "path": "crates/world-rust/src/checks.rs",
+      "bytes": 42036,
+      "sha256": "96d23e689048b56d2b5a72dc901308484f8a2289c8a614249980e055890a5815"
+    },
+    {
+      "path": "crates/world-rust/tests/check_isolation.rs",
+      "bytes": 12062,
+      "sha256": "d270a5c328f00c2dd87a28dcaa5db9e4a1a77ccbbcdb043c3313400e5589cb53"
+    },
+    {
+      "path": "tools/coding-check-isolation/PLAN.md",
+      "bytes": 2335,
+      "sha256": "63479feab1ed506ead66c20c834e8baa02128b36a3f1ca88fd391e1ee67f4146"
+    },
+    {
+      "path": "tools/coding-check-isolation/run.py",
+      "bytes": 5043,
+      "sha256": "fe415c13e572f28e92a5b48730c2ce13f5ff886ef489a29a500406646905d96c"
+    },
+    {
+      "path": "tools/coding-check-isolation/compare.py",
+      "bytes": 1565,
+      "sha256": "8bb99b79bbf6b39cad112f65075e400a666fa148e80c83c4159f615979e370cd"
+    },
+    {
+      "path": "tools/coding-check-isolation/reproduce.sh",
+      "bytes": 2024,
+      "sha256": "200b31d5cf07f468a9477702d38605a0b396f5f2fbc92155f950fc7102b80f65"
+    },
+    {
+      "path": "docs/coding-check-isolation.md",
+      "bytes": 8409,
+      "sha256": "7d72021855ad11cfd9dbc40f0a6ba72225af358c3c49c2eeadf1f150ccb4714b"
+    }
+  ],
+  "source_bundle_sha256": "76a1196a1bb50a3452d4e9cc84bd82e041235aec372397bbf66c0ab83a6500c3",
+  "fixtures": [
+    {
+      "path": "Cargo.toml",
+      "bytes": 76,
+      "sha256": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 104,
+      "sha256": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53"
+    },
+    {
+      "path": "target/sentinel",
+      "bytes": 25,
+      "sha256": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+    },
+    {
+      "path": ".kept/sentinel",
+      "bytes": 22,
+      "sha256": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369"
+    },
+    {
+      "path": "pass/src/lib.rs",
+      "bytes": 66,
+      "sha256": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7"
+    },
+    {
+      "path": "fail/src/lib.rs",
+      "bytes": 67,
+      "sha256": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f"
+    },
+    {
+      "path": "compiler/src/lib.rs",
+      "bytes": 85,
+      "sha256": "c54043b2ac29db5ef37d1289b2dfea4cacb04849525e38ae0b5622306ad39666"
+    },
+    {
+      "path": "todo/src/lib.rs",
+      "bytes": 77,
+      "sha256": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767"
+    }
+  ],
+  "authored_distinct_fixture_literal_bytes": 522,
+  "expanded_cli_matrix_input_bytes": 3980,
+  "fixture_spec_sha256": "21d16a0b8a0699e95277401344d1089862f0d46dba42dac1e6d8a3b28d295bb7",
+  "binaries": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/checkisolation-run/baseline/glassmind",
+      "bytes": 74285584,
+      "sha256": "623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/checkisolation-run/tmp/final-glassmind",
+      "bytes": 126421248,
+      "sha256": "47c7d41fc13dd63cf0bd8d507ac271d8bb5cb0854ca5ad0fad49a91db3cd5a29"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "tools/coding-check-isolation/evidence/baseline.json",
+      "bytes": 165837,
+      "sha256": "79e24a60aec8f20dd707ae6146abc30496658662ca92d42d9dee9fba6059c559"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/build.log",
+      "bytes": 272,
+      "sha256": "0eeec7e53250c6fa2e86e520d620924e722b5917cf96364d11938d9fb9639b54"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/candidate-sample.json",
+      "bytes": 5294,
+      "sha256": "ee5a5276aed35373b464b1991e4383a70b1a640aa925cb02c2cf37eea05801c5"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/candidate.json",
+      "bytes": 43174,
+      "sha256": "bd772c84776b8b51a20d9fdcf28ed32c7f6bdc7600a95aed55daa8a482ceaab7"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/cli-edit-tests.log",
+      "bytes": 1124,
+      "sha256": "aad2ec5fd86e6edcc3c5a7272bb352067911ea98ee2fb69f7e7c9b328b3b6297"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/clippy.log",
+      "bytes": 290,
+      "sha256": "353832d6800a0b32d57847424f4436d0987123c0754b960fd1549a6944c51d90"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/comparison.json",
+      "bytes": 4094,
+      "sha256": "568d84e7227fa4442401539a051e4ad262c8b14fd3c5ec73146e866f684ac4b0"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/first-clippy.log",
+      "bytes": 8601,
+      "sha256": "f856d7618aed2e30dd00622cded29adea5f31e6e5791e392f9f5e21fb9c073c4"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/first-world-tests.log",
+      "bytes": 4448,
+      "sha256": "70c5696653e6a3a7acff657d5d197f919728e811ca800dca529dd884ddf4acc9"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/fmt.log",
+      "bytes": 95,
+      "sha256": "83138a9d94ae48d8f872dcc8428149df1f9523ff32ab165a772468084920faf2"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/isolation-final.log",
+      "bytes": 912,
+      "sha256": "03ef67fdc719d4a66f2960b38c19d30fe712b72d643daa828f5b57ba166280fd"
+    },
+    {
+      "path": "tools/coding-check-isolation/evidence/world-tests.log",
+      "bytes": 3234,
+      "sha256": "b3b4c5ba8a388a9f040dadfc1d9b5aca4cfaf137a8a929b2aa23b366246c9bfd"
+    }
+  ]
+}

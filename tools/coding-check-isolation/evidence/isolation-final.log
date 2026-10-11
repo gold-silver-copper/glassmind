@@ -1,0 +1,13 @@
+Running as unit: run-p3588074-i95828644.scope; invocation ID: 08f39d299d434d30a9c18df933669dae
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/checkisolation/crates/world-rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.22s
+     Running tests/check_isolation.rs (/home/gsc/.cache/glassmind/continuous-20261010/checkisolation-run/target/debug/deps/check_isolation-e82b082e20d730df)
+
+running 4 tests
+test tests::copy_rules_scripts_and_unsupported_topology_do_not_fall_back_to_live ... ok
+test tests::approved_repair_stale_rules_and_failed_verification_preserve_contract ... ok
+test tests::same_name_shared_target_and_cache_never_reuse_another_sources_binary ... ok
+test tests::diagnostics_preserve_every_live_byte_with_default_and_owned_places ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.87s
+
