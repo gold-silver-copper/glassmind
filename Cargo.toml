@@ -18,6 +18,7 @@ glassmind-english-rust = { path = "crates/english-rust" }
 glassmind-mind = { path = "crates/mind" }
 glassmind-answer = { path = "crates/answer" }
 glassmind-models = { path = "crates/models" }
+glassmind-stories = { path = "crates/stories" }
 glassmind-everyday = { path = "crates/everyday" }
 glassmind-quantities = { path = "crates/quantities" }
 serde = { version = "1", features = ["derive"] }

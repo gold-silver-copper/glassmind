@@ -1,9 +1,18 @@
-//! Conversation with typed memory, exact calculations and optional intent proposals.
+//! Conversation with typed memory, story reasoning, calculations and intent proposals.
 use std::io::{BufRead, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
+use crate::talk_stories::{Stories, StoryReply};
 use glassmind_everyday::{Conversation, IntentModel, Reply};
 use glassmind_quantities::Answer;
+
+#[derive(Default, serde::Serialize, serde::Deserialize)]
+struct Session {
+    #[serde(flatten)]
+    memory: Conversation,
+    #[serde(default)]
+    stories: Stories,
+}
 
 /// Preserve existing conversation JSON while exposing the calculation's typed result.
 #[derive(serde::Serialize)]
@@ -11,6 +20,7 @@ use glassmind_quantities::Answer;
 enum TalkReply {
     Conversation(Reply),
     Calculation(Calculation),
+    Story(StoryReply),
 }
 
 #[derive(serde::Serialize)]
@@ -27,14 +37,17 @@ impl TalkReply {
         match self {
             Self::Conversation(reply) => reply.text(),
             Self::Calculation(reply) => &reply.text,
+            Self::Story(reply) => &reply.text,
         }
     }
 }
 
-fn respond(memory: &mut Conversation, line: &str, model: Option<&IntentModel>) -> TalkReply {
-    // Respond once so every utterance, including a calculation, participates in
-    // turn provenance and last-message recall. Explicit memory always wins.
-    let reply = memory.respond(line, model);
+fn respond(session: &mut Session, line: &str, model: Option<&IntentModel>) -> TalkReply {
+    let memory = &mut session.memory;
+    // Persist one turn per utterance. Explicit memory always wins; learned
+    // intent proposals run only after typed reasoning, from the prior state.
+    let previous = model.map(|_| memory.clone());
+    let reply = memory.respond(line, None);
     if matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
         && let Answer::Answer {
             value,
@@ -53,6 +66,19 @@ fn respond(memory: &mut Conversation, line: &str, model: Option<&IntentModel>) -
             method,
         });
     }
+    if (matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
+        || (matches!(reply, Reply::Missing { .. }) && session.stories.has_context()))
+        && let Some(story) = session.stories.respond(line)
+    {
+        return TalkReply::Story(story);
+    }
+    if matches!(reply, Reply::Refusal { .. })
+        && let Some(mut previous) = previous
+    {
+        let reply = previous.respond(line, model);
+        session.memory = previous;
+        return TalkReply::Conversation(reply);
+    }
     TalkReply::Conversation(reply)
 }
 
@@ -61,7 +87,7 @@ fn read<T: serde::de::DeserializeOwned>(path: &Path) -> Result<T, String> {
     serde_json::from_reader(file).map_err(|e| e.to_string())
 }
 
-fn save(path: &Path, memory: &Conversation) -> Result<(), String> {
+fn save(path: &Path, memory: &Session) -> Result<(), String> {
     let pending = path.with_extension(format!("{}.pending", std::process::id()));
     let bytes = serde_json::to_vec(memory).map_err(|e| e.to_string())?;
     std::fs::write(&pending, bytes).map_err(|e| e.to_string())?;
@@ -74,9 +100,10 @@ pub fn run(session: Option<PathBuf>, model: Option<PathBuf>, json: bool) -> Resu
         model.validate().map_err(|e| e.to_string())?;
     }
     let mut memory = match session.as_deref().filter(|p| p.exists()) {
-        Some(path) => read::<Conversation>(path)?,
-        None => Conversation::default(),
+        Some(path) => read::<Session>(path)?,
+        None => Session::default(),
     };
+    memory.stories.restore()?;
     let stdin = std::io::stdin();
     let interactive = stdin.is_terminal();
     let mut output = std::io::stdout().lock();
@@ -105,7 +132,8 @@ pub fn run(session: Option<PathBuf>, model: Option<PathBuf>, json: bool) -> Resu
             return Err("keep each message below 8192 bytes".into());
         }
         if line.trim() == "/reset" {
-            memory = Conversation::default();
+            memory = Session::default();
+            memory.stories.restore()?;
             writeln!(
                 output,
                 "{}",
@@ -131,4 +159,26 @@ pub fn run(session: Option<PathBuf>, model: Option<PathBuf>, json: bool) -> Resu
         output.flush().map_err(|e| e.to_string())?;
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn unresolved_correction_invalidates_story_across_restart() {
+        let mut session = Session::default();
+        session.stories.restore().unwrap();
+        let reply = respond(&mut session, "Actually, it's Alice", None);
+        assert_eq!(serde_json::to_value(reply).unwrap()["kind"], "missing");
+        respond(&mut session, "Mary is in the kitchen.", None);
+        respond(&mut session, "Actually, it is the garden", None);
+        let mut restored: Session =
+            serde_json::from_str(&serde_json::to_string(&session).unwrap()).unwrap();
+        restored.stories.restore().unwrap();
+        let reply = respond(&mut restored, "Where is Mary?", None);
+        let value = serde_json::to_value(reply).unwrap();
+        assert_eq!(value["kind"], "refusal");
+        assert!(value["answer"].is_null());
+    }
 }

@@ -1,0 +1,595 @@
+{
+  "dataset": "talk-stories-mixed-dev-v1",
+  "independent_benchmark": false,
+  "total": 47,
+  "totals": {
+    "right": 22,
+    "refused": 25
+  },
+  "outcomes": [
+    {
+      "utterance": "My name is Mira",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Mira.",
+        "slot": "Name"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary went to the kitchen.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Mary picked up the apple.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Calculate 2 + 3 * 4",
+      "expected": {
+        "kind": "calculated",
+        "value": "14"
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "14",
+        "value": "14",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Hello",
+      "expected": {
+        "kind": "social"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "Hello, Mira!"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary moved to the garden.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Where is the apple?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "garden"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 7,
+        "contains": "Where is the apple?"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: Where is the apple?",
+        "source_turn": 7
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary gave the apple to John.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Who has the apple?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "john"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "John dropped the apple.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "How many objects is John carrying?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "none"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Actually, Mary is in the bedroom.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "bedroom"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Mary is either in the kitchen or the garden.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Is Mary in the kitchen?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "maybe"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Mary is in the office.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "My favorite color is green",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite color is green.",
+        "slot": {
+          "Preference": "color"
+        }
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "office"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Where is the apple?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "garden"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "What is my favorite color?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 20
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite color is green.",
+        "source_turn": 20
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary teleported to the attic.",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Calculate 7 * 8",
+      "expected": {
+        "kind": "calculated",
+        "value": "56"
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "56",
+        "value": "56",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is the apple?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "The kitchen is north of the office.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "What is north of the office?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "kitchen"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 4
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: What is north of the office?",
+        "source_turn": 4
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Actually, the kitchen is south of the office.",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is north of the office?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Lily is a swan.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Lily is white.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Ruby is a swan.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "What color is Ruby?",
+      "expected": {
+        "kind": "story_prediction",
+        "answer": "white"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Bill is hungry.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Where will Bill go?",
+      "expected": {
+        "kind": "story_prediction",
+        "answer": "kitchen"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Ada"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Ada.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Ada went to the hall.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    },
+    {
+      "utterance": "Where is Ada?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "hall"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "refused"
+    }
+  ],
+  "binary_sha256": "a3aece0cc6bed30a59b8b6cd4db2eda4c930abaea09bac222ae39b3a1311ba2f"
+}
