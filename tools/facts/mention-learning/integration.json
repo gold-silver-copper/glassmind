@@ -1,0 +1,13 @@
+{
+  "integration_commit": "b37d3f46a233092317d3505923bd9a3bbe868a93",
+  "source_commit": "2d50423",
+  "research_source_hashes": {
+    "crates/facts/examples/mention_candidates.rs": "2dda21162a8ff9f146473f9cbf4f1ba89d18de8f30f528545287003a2aada37e",
+    "crates/facts/examples/mention_context.rs": "563848ac1f9f78b1a94bb898fc7b62c2e328da1b7a75cab4117da1b3bbb8186e"
+  },
+  "production_source_unchanged_from": "2f33ae3",
+  "central_required_checks": "fmt/all-target clippy/release/strict4smoke passed",
+  "main_binary_sha256": "0d551879056cc5e0356b7e36adea1f274c2e0e30182122aa538dfb4b895dbc1b",
+  "facts_binary_sha256": "71ae5f437aed6f11db336662a51cee8c663770633ec23553194a53fe937cdfba",
+  "default_model_unchanged": true
+}
