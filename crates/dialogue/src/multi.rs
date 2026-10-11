@@ -7,6 +7,8 @@ use std::collections::{BTreeMap, BTreeSet};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct MultiModel {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub boundaries: Option<crate::boundaries::BoundaryModel>,
     pub version: u32,
     pub router: ProposalModel,
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
@@ -26,6 +28,7 @@ pub struct MultiSession {
     offer_source: Option<(usize, String)>,
     turn_count: usize,
     pub offer_proposals: Vec<crate::offers::OfferProposal>,
+    pub boundary_proposals: Vec<crate::boundaries::BoundaryProposal>,
 }
 fn features(system: &str, user: &str, previous: &BTreeSet<String>) -> String {
     let system = system
@@ -134,8 +137,10 @@ impl MultiModel {
             .collect()
     }
     pub fn validate(&self, schemas: &[Schema]) -> Result<(), String> {
-        if self.version != 1
-            || schemas.len() != self.services.len()
+        if !matches!(
+            (self.version, self.boundaries.is_some()),
+            (1, false) | (2, true)
+        ) || schemas.len() != self.services.len()
             || schemas
                 .iter()
                 .map(|s| &s.service_name)
@@ -146,6 +151,9 @@ impl MultiModel {
             return Err("multi model/schema mismatch".into());
         }
         self.router.validate()?;
+        if let Some(b) = &self.boundaries {
+            b.validate()?;
+        }
         if let Some(o) = &self.offers {
             o.validate(schemas)?;
         }
@@ -174,6 +182,7 @@ impl MultiModel {
         let turn_index = session.turn_count;
         session.turn_count += 1;
         session.offer_proposals.clear();
+        session.boundary_proposals.clear();
         if matches!(turn.speaker, Speaker::System) {
             if self.offers.is_some() {
                 session.offer_source = Some((turn_index, turn.utterance.clone()));
@@ -230,7 +239,7 @@ impl MultiModel {
                 if let (Some(resolver), Some(prior)) = (&self.references, &prior) {
                     for slot in &schema.slots {
                         if !state.slots.contains_key(&slot.name)
-                            && let Some(p) = resolver.propose(
+                            && let Some(mut p) = resolver.propose(
                                 &schema.service_name,
                                 &slot.name,
                                 prior,
@@ -238,6 +247,15 @@ impl MultiModel {
                                 schemas,
                             )
                         {
+                            if let Some(boundaries) = &self.boundaries
+                                && let Some(mut correction) =
+                                    boundaries.propose(&p.value, &session.history)
+                            {
+                                correction.service.clone_from(&schema.service_name);
+                                correction.slot.clone_from(&slot.name);
+                                p.value.clone_from(&correction.value);
+                                session.boundary_proposals.push(correction);
+                            }
                             state.slots.insert(
                                 slot.name.clone(),
                                 crate::tracker::SlotValue::Text(p.value),
@@ -324,6 +342,7 @@ mod tests {
             {"service_name":"B","slots":[],"intents":[{"name":"DoB","required_slots":[],"optional_slots":{}}]}
         ]"#).expect("schemas");
         let mut model = MultiModel {
+            boundaries: None,
             version: 1,
             router: constant("A"),
             independent_router: BTreeMap::new(),
@@ -412,6 +431,7 @@ mod tests {
           {"service_name":"B","slots":[{"name":"city","is_categorical":false,"possible_values":[]}],"intents":[{"name":"find","required_slots":["city"],"optional_slots":{}}]}
         ]"#).expect("schemas");
         let mut model = MultiModel {
+            boundaries: None,
             version: 1,
             router: constant("A|B"),
             independent_router: BTreeMap::new(),
@@ -471,5 +491,35 @@ mod tests {
         let mut fresh = MultiSession::default();
         model.advance(&mut fresh, &user("there"), &schemas);
         assert!(fresh.states["B"].slots.is_empty());
+        model.boundaries = Some(serde_json::from_str(r#"{"version":1,"rules":[{"shape":"A1.A1","punctuation":".","extension_chars":1,"fit_conversations":5,"calibration_conversations":3,"mismatches":0}]}"#).expect("boundary model"));
+        assert!(model.validate(&schemas).is_err()); // New submodel requires explicit v2.
+        model.version = 2;
+        model.validate(&schemas).expect("versioned extension");
+        fresh.states.entry("A".into()).or_default().slots.insert(
+            "place".into(),
+            crate::tracker::SlotValue::Text("Évora Q.R".into()),
+        );
+        model.advance(
+            &mut fresh,
+            &InputTurn {
+                speaker: Speaker::System,
+                utterance: "Forecast for Évora Q.R. today".into(),
+            },
+            &schemas,
+        );
+        model.advance(&mut fresh, &user("there"), &schemas);
+        assert_eq!(fresh.states["B"].slots["city"].text(), "Évora Q.R.");
+        assert_eq!(fresh.states["A"].slots["place"].text(), "Évora Q.R");
+        assert_eq!(fresh.boundary_proposals.len(), 1);
+        let proposal = &fresh.boundary_proposals[0];
+        assert_eq!(
+            &fresh.history[proposal.source_turn][proposal.start..proposal.end],
+            proposal.value
+        );
+        model.advance(&mut fresh, &user("there"), &schemas);
+        assert!(fresh.boundary_proposals.is_empty());
+        let mut reset = MultiSession::default();
+        model.advance(&mut reset, &user("there"), &schemas);
+        assert!(reset.states["B"].slots.is_empty());
     }
 }

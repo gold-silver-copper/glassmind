@@ -1,0 +1,76 @@
+{
+  "algorithm": "SHA256 of compact sort_keys JSON source file records",
+  "sha256": "c3053bd3f6e7eded2f813f8122ff0cea9a151f83f37c51c818805efc08eb4403",
+  "files": [
+    {
+      "path": "crates/dialogue/src/adapter.rs",
+      "bytes": 1408,
+      "sha256": "7a919603493525a5069d81ac3de5473819c1142cfadbd99380effff1a028d027"
+    },
+    {
+      "path": "crates/dialogue/src/bin/dialogue-multi.rs",
+      "bytes": 6091,
+      "sha256": "95cf9dc4a37747a658bcf676ce5cc0af65a257bd14fba9337d8e5275d4a6d9f1"
+    },
+    {
+      "path": "crates/dialogue/src/boundaries.rs",
+      "bytes": 7201,
+      "sha256": "9c765b1f039e169a1eae5e67f4025a7bd4e9dec0c13760a8541c29759b8b4941"
+    },
+    {
+      "path": "crates/dialogue/src/lib.rs",
+      "bytes": 263,
+      "sha256": "9f68127b01c3929d8a0b92fc7138582ab61c308512999e1b0956419e4326f244"
+    },
+    {
+      "path": "crates/dialogue/src/main.rs",
+      "bytes": 7256,
+      "sha256": "5c101feb4a4167d541dd0e4b6aca8dc12b802ce760925526a6739e44f3e5fe10"
+    },
+    {
+      "path": "crates/dialogue/src/multi.rs",
+      "bytes": 20559,
+      "sha256": "afc34686037e4a532b62748f8ca28ecbe800a4cc215fb89ceab0bd7ae6f39ed1"
+    },
+    {
+      "path": "crates/dialogue/src/offers.rs",
+      "bytes": 11550,
+      "sha256": "9fb10a401bf14f89000a293f4bd09af2dabd7770f17166476232a207b1cf77a1"
+    },
+    {
+      "path": "crates/dialogue/src/references.rs",
+      "bytes": 7379,
+      "sha256": "1d5f7b1210e2826cb69c21592e6d842a0473f3c252d9b1cd5e06433777888127"
+    },
+    {
+      "path": "crates/dialogue/src/tracker.rs",
+      "bytes": 12997,
+      "sha256": "87e53f0791eab162b08c65921e3f853f7ec55f53d27b43c9c58fe8d8d2b0201c"
+    },
+    {
+      "path": "tools/dialogue/boundaries/EXPERIMENT.md",
+      "bytes": 4206,
+      "sha256": "27070803784ce121a0aa0fe5a6e4c44b00832aa5cd96026834b937e9c2da7d44"
+    },
+    {
+      "path": "tools/dialogue/boundaries/audit.py",
+      "bytes": 3569,
+      "sha256": "6c6a1ee485031ea77a7a1916cce6f73f2c19c75d47bc1be3944bfcd09a88bbe7"
+    },
+    {
+      "path": "tools/dialogue/boundaries/evidence.py",
+      "bytes": 4148,
+      "sha256": "5d173a610d73b10e62a96f1f530d75396f00a41a17c1b1a98fd2b50b56fb783a"
+    },
+    {
+      "path": "tools/dialogue/boundaries/reproduce.sh",
+      "bytes": 2917,
+      "sha256": "2225246d35efa2bb2da92487ae1ff05671af086de2e55453c88cb2dc5b3bdb56"
+    },
+    {
+      "path": "tools/dialogue/boundaries/train.py",
+      "bytes": 3720,
+      "sha256": "8380b079b3b2c9a773b3156baec0af4061c56c901b611b8a91f1810cf9158d97"
+    }
+  ]
+}

@@ -58,6 +58,8 @@ fn write<T: Serialize>(p: &PathBuf, value: &T) -> Result<(), Box<dyn std::error:
 }
 #[derive(Serialize)]
 struct Snapshot {
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    boundary_proposals: Vec<glassmind_dialogue::boundaries::BoundaryProposal>,
     turn_index: usize,
     active_services: BTreeSet<String>,
     frames: Vec<Frame>,
@@ -109,6 +111,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 BTreeMap::new()
             };
             let model = MultiModel {
+                boundaries: None,
                 version: 1,
                 router,
                 independent_router,
@@ -155,6 +158,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                             })
                             .collect();
                         predictions.push(Snapshot {
+                            boundary_proposals: session.boundary_proposals.clone(),
                             turn_index,
                             active_services: session.active_services.clone(),
                             frames,
