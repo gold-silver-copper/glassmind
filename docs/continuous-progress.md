@@ -3,21 +3,47 @@
 The unlimited goal is active. Milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 
-## Current batch and next action
+## Published milestone and active next experiment
 
-Latest source commits: 59494b6c61ae402f88d4ab5495877069729da5f4 argument swaps;
-eb8df4d dated facts/main;142cbe1 TRAIN arithmetic diagnostic. Full765 session47129
-COMPLETE:206pass/559refused/0fail, all203retained,3download-progressstyle gains,
-no regressions. Comparison WORK/coordinator/argumentswap-full/comparison.json,
-resultsSHA927848d34a2cbc7a17280a9db6e35360fc1d37d6f5669a0d7163500e73023abd.
+PR40 MERGED https://github.com/gold-silver-copper/glassmind/pull/40
+Reviewedhead3c0ad3dace4de37476808347f2012599abb63467; CI38141155006 passed85seconds.
+Merge0b2faad0623156c99e25d4f3a476b962bc48a0c2 at2026-10-11T12:57:38Z.
+Source59494b6c61ae402f88d4ab5495877069729da5f4argument swaps,eb8df4ddatedfacts,
+142cbe1TRAINdiagnostic. Push38194,PRcreation93358,merge76079 COMPLETE.
+Coding206/765,559refused0fail,all203retained;3download-progressstylegains.
+ResultsSHA927848d34a2cbc7a17280a9db6e35360fc1d37d6f5669a0d7163500e73023abd.
+Datedfacts andallregressiongates belowpass. Do not repeat publication or append
+its scoreboardpoints again. Knowncompletedworker tokens171896511.
 
-NEXT: finish publication of this verified batch. Source and reports are integrated;
-commit final README/scoreboard/checkpoint changes, push harness, create PR with
-concrete results, review exact head and merge only green matching head. No openPR
-at last check. Workspace/finalmain alreadypassed; no newsourcechanges sincechecks.
-PR39 is alreadymerged, notanoutstandingtask. Records appended:2factsseries eb8df4d
-and same rustbenchdataset/metric coding206 at59494b6; do not duplicate.
-Knowncompletedworker tokens171896511. Threeworkers terminal; no longjobs remain.
+Rolebinding worker LIVE PID3013778, scopeglassmind-continuous-rolebinding.scope;
+worktreeWORK/rolebinding, branchcontinuous/rolebinding, base3c0ad3d.
+TaskWORK/rolebinding-task.txt; runWORK/rolebinding-run. LauncherWORK/launch.py.
+AstrafastforcedChatGPTlogin andlocalCLIflags verified beforelaunch; provider/APIkey
+envstripped. Scopeactive/running8GiB/0swap. No livecandidate/source/results inspected.
+OwnsONLYnewtools/quantities/role-binding; no productionchanges, DEV or parentcases.
+Read-onlyWORK/groundingaudit-source(29files/69811137bytes) andquantitiesdeps reused.
+
+Hypothesis: sharedcandidate-relative operandranker overexplicitquantityroles and
+relations transfers acrossnumberpositions betterthanflat42-way heads. Keeporiginal
+operationhead,binders,masks/rationalexecution/freehorizon/ties andcomparatorsfixed.
+Mustdiffermateriallyfromexisting+/-3slotcontexts/shape/rank/word/prefixfeatures.
+FreezeoneFITtrainingschedule/representation BEFORE CALinference; nocaltuning.
+Same29837TRAIN,4590cleanFIT,1182cleanCAL. Baselinefree143,oracleplan221/1182;
+goldcontextleft2197/4138,right2499/4138. Continuationgate>=3ppbotharguments
+(2322left,2624right correct),oracle>=251/free>=143. This is NOT ashippinggate.
+Exact200originalnativefree replay required; noDEVtest orproductionmodelreplacement.
+ExternalRusthelper/code/model<=16MiB,alloutputs frozenatend.20minboundedbatch.
+
+NEXT: independently freeze/check gate and representation invariants whileworker
+runs. Do not inspect live artifacts or launchduplicateworker. When terminal,
+archive/hashverify originalsource/reports/frozencandidate BEFOREinspection.
+EvaluatefixedTRAIN-onlygates, preserveallfailures; onlythenconsider separate DEV
+andsemanticacceptance. Otherqueues belowremainavailable,especiallycodingpublicTRAIN.
+
+Completedargumentswap/temporal/groundingaudit worktrees ANDtemporaryauthsymlinks
+removed AFTER re-verifying1155 originalarchivefiles576561232bytes plusretained
+revisionmanifest. Logs coordinator/batch40-{archive-review,cleanup}.json.
+Frozenbinaries/source/reports/runartifactsremain; neverdeleteoriginalevidence.
 
 ## Completed validation of combined source
 
@@ -40,8 +66,8 @@ bare-correction story invalidation. Retry82518 passed; original retained.
 
 ## Argument-swap repair
 
-Worker terminal, scopeglassmind-continuous-argumentswap.scope inactive. Worktree
-WORK/argumentswap, branchcontinuous/argumentswap, basecdd5030. No model process active.
+Worker terminal, scopeglassmind-continuous-argumentswap.scope inactive. Former worktree
+WORK/argumentswap removed after archive checks; branchcontinuous/argumentswap retained.
 Original archive WORK/argumentswap-run/terminal-originals:906files/246507361bytes,
 all hashverified before inspection/modification. Original binarySHA
 0b2c2cbcb11906a964022a2edc3daf5d8b8843e4db2a837a53165d972093e462.
@@ -68,7 +94,7 @@ Full765session47129 COMPLETE206/559/0, all203retained; baseline203/562/0, SHA
 
 ## Temporal facts
 
-Worker terminal, scopetemporal inactive. WorktreeWORK/temporal, base07f3d0d.
+Worker terminal, scopetemporal inactive. Former worktreeWORK/temporal removed, base07f3d0d.
 Original archive141files/194056696bytes verified before inspection.
 Standalone frozen binarySHA6ebd8026fe05398b31c2e680ff97f1a33928e2c1a0a46bd760fd59c1ecf46bec.
 Exact metadataSHA55097953db9b0f041ec4a7c2b5a7513586b1db9f572856cb84aa8610f484ee3d.
@@ -107,7 +133,7 @@ maincontractsSHA42d3d482ea551980f33ea61f801510a7431fd9441fac3ace49ba1811a6e7736c
 ## Accepted diagnostic only: arithmetic grounding audit
 
 Commit142cbe1; tools/quantities/grounding-audit/PARENT.md. NO productionmodelchange.
-Worker terminal, scopegroundingaudit inactive; worktreeWORK/groundingaudit,
+Worker terminal, scopegroundingaudit inactive; former worktreeWORK/groundingaudit removed,
 basef57d1f1. Archived108files/135997175bytes beforeinspection, all87frozenmanifest
 entries independentlyverified. No DEV content, fitting, downloads or new runtime.
 
@@ -165,10 +191,9 @@ humanfinal/contaminatedlegacy staydisabled. Neverinspecthiddenitems/predictions.
 ## Resource ownership and reproduction
 
 OnlymodelworkersareexternalAstra fast viaforcedChatGPTlogin; neverAPIkeys/Opus.
-Allthreecurrentworkers terminal; their worktrees and temporaryloginlinks still
-retained pending finalbatch/archivechecks. WORK/launch.py ownssandboxlauncher.
-No newmodelcalls startedthisturn. Beforelaunch verifyCLIflags/loginlocally.
-No active owned model or nonmodel jobs; all listed checks are complete.
+Threecompletedworkers cleaned asabove. Rolebinding is theONLYactiveworker.
+WORK/launch.py ownssandboxlauncher; no other activechecks/services.
+Before anynewlaunch verifyCLIflags/loginlocally.
 Allcargo8GiBzeroSwap,setsid--waittimeout,persistentTMPDIR,jobs1,testthreads4.
 Atmost4modelslotsincludingroot,8cargojobsprojectwide; no unrelatedcleanup/pkill-f.
 Afterpublication verifyarchivesagain beforeworktreeremoval. Preservefrozenbinaries,
