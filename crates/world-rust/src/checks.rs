@@ -20,11 +20,12 @@ use crate::{RustItem, RustKind};
 /// The ways the Rust world checks a source.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 pub enum RustCheck {
-    /// `cargo check --all-targets`: does the code (and its tests) compile?
+    /// `cargo check` of every target but benches (which often need a
+    /// nightly compiler): does the code (and its tests) compile?
     Build,
     /// `cargo test`: do the tests pass?
     Test,
-    /// `cargo clippy --all-targets`: what does the linter warn about?
+    /// `cargo clippy` of the same targets: what does the linter warn about?
     Lint,
 }
 
@@ -51,8 +52,9 @@ pub struct Finding {
 const AHEAD: Duration = Duration::from_secs(24 * 60 * 60);
 
 /// The version of the kept results, raised when checks change what they
-/// find: before 2, a check could read a build of another copy.
-const RESULTS: &str = "v2";
+/// find: before 2, a check could read a build of another copy; before 3,
+/// builds took in benches.
+const RESULTS: &str = "v3";
 
 /// How long one tool run may take.
 const TOOL_TIME: Duration = Duration::from_secs(15 * 60);
@@ -77,6 +79,17 @@ impl Places {
             target: std::env::var_os("GLASSMIND_CARGO_TARGET").map(PathBuf::from),
             cache: std::env::var_os("GLASSMIND_CHECK_CACHE").map(PathBuf::from),
         }
+    }
+}
+
+/// The targets checked: every one but benches, which often need a nightly
+/// compiler (`#![feature(test)]`), so whether cargo gets to them depends on
+/// the order it builds in. `--lib` only where there is a library.
+fn targets(root: &Path) -> &'static [&'static str] {
+    if root.join("src/lib.rs").exists() {
+        &["--lib", "--bins", "--tests", "--examples"]
+    } else {
+        &["--bins", "--tests", "--examples"]
     }
 }
 
@@ -447,7 +460,7 @@ fn run_tools(
                 source,
                 root,
                 "check",
-                &["--all-targets", "--message-format=json", "-q"],
+                &[targets(root), &["--message-format=json", "-q"]].concat(),
             )?;
             let found = findings(source, root, &out, &["error"]);
             // A failed build with no error read from it is not a pass.
@@ -462,7 +475,7 @@ fn run_tools(
                 source,
                 root,
                 "clippy",
-                &["--all-targets", "--message-format=json", "-q"],
+                &[targets(root), &["--message-format=json", "-q"]].concat(),
             )?;
             Ok(findings(source, root, &out, &["error", "warning"]))
         }

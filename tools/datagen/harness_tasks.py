@@ -60,7 +60,11 @@ def cargo(root, *args):
 
 
 def build_problems(root, source):
-    ok, out = cargo(root, "check", "--all-targets", "--message-format=json", "-q")
+    # Every target but benches, which often need a nightly compiler: as the
+    # checks of glassmind and of the scorer.
+    targets = ["--lib", "--bins", "--tests", "--examples"] if (root / "src/lib.rs").exists() \
+        else ["--bins", "--tests", "--examples"]
+    ok, out = cargo(root, "check", *targets, "--message-format=json", "-q")
     seen, items = set(), []
     for line in out.splitlines():
         try:

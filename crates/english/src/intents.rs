@@ -145,20 +145,25 @@ const MOST_CHOICES: usize = 40;
 
 /// The ways of choosing which of `names` are the request's names, up to
 /// `most` of them, in the order typed, each with the words left out: code
-/// and numbers are always names; a plain word the grammar does not know may
-/// be a name ("fields of Found") or a word it was never taught.
+/// and numbers are names, except in the last choice, which leaves out
+/// everything; a plain word the grammar does not know may be a name
+/// ("fields of Found") or a word it was never taught.
 pub fn choices(names: &[Token], most: usize) -> Vec<(Vec<Token>, Vec<String>)> {
     let fixed = names
         .iter()
         .filter(|t| matches!(t.shape, Shape::Code | Shape::Number))
         .count();
+    // Last, none of them: a request about the whole crate may mention code
+    // it is not about ("cannot find `fmt` in this scope, pls fix"); the
+    // reader takes such a choice only for a reading about no thing at all.
+    let none = (fixed > 0).then(|| (Vec::new(), names.iter().map(|t| t.text.clone()).collect()));
     let mut out = Vec::new();
     // Every subset of the plain words, as a bit mask over their positions.
     let plain: Vec<usize> = (0..names.len())
         .filter(|&i| names.get(i).is_some_and(|t| t.shape == Shape::Word))
         .collect();
     if plain.len() > 16 || fixed > most {
-        return out;
+        return none.into_iter().collect();
     }
     let mut masks: Vec<u32> = (0..1u32 << plain.len())
         .filter(|m| fixed + m.count_ones() as usize <= most)
@@ -185,6 +190,7 @@ pub fn choices(names: &[Token], most: usize) -> Vec<(Vec<Token>, Vec<String>)> {
             .collect();
         out.push((chosen, dropped));
     }
+    out.extend(none);
     out
 }
 

@@ -418,7 +418,16 @@ impl<O: Ontology> Mind<'_, O> {
             // A reading that discards a word naming something in the world
             // ignores what the user asked about.
             let mut fired = Vec::new();
+            // A check or repair of the whole crate is about no named thing:
+            // the names said with it are what the user saw ("cannot find
+            // `fmt`, pls fix").
+            let whole = matches!(
+                reading.meaning,
+                Utterance::Ask(Question::Passes(_) | Question::Problems(_))
+                    | Utterance::Command(glassmind_meaning::Action::Repair(_))
+            );
             let discards_name = self.switches.on(KEEP_NAMES.id)
+                && !whole
                 && reading
                     .discarded
                     .iter()

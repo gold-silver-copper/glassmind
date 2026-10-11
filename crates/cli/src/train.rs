@@ -12,7 +12,31 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 struct Label {
     turn_id: String,
+    #[serde(default)]
+    kind: String,
     expected: Response,
+}
+
+/// The request a coding task's label names by itself, whatever the words
+/// typed: what the tagger learns for every such turn, answered right or not.
+/// (An edit or a feature to implement names no one request.)
+fn asked_by(kind: &str, expected: &Response) -> Option<&'static str> {
+    let kind = kind.rsplit(':').next().unwrap_or(kind);
+    match (kind, expected) {
+        ("fix_build" | "rb_fix_error", Response::Repaired { check }) if check == "build" => {
+            Some("fix the build")
+        }
+        ("fix_tests" | "rb_fix_test", Response::Repaired { check }) if check == "test" => {
+            Some("fix the tests")
+        }
+        ("build_status", Response::Checked { check, .. }) if check == "build" => {
+            Some("are there problems with the build")
+        }
+        ("test_status", Response::Checked { check, .. }) if check == "test" => {
+            Some("which tests fail")
+        }
+        _ => None,
+    }
 }
 
 fn read_lines<T: serde::de::DeserializeOwned>(path: &Path) -> Result<Vec<T>, String> {
@@ -153,8 +177,29 @@ pub fn intents(
             .filter_map(|(text, canonical)| english.intent_example(text, canonical, m))
             .collect()
     };
-    let first = IntentModel::learn(&learn(&IntentModel::default()));
-    let examples = learn(&first);
+    // Coding turns, from their labels: their words against the request the
+    // label names.
+    let inputs_read: Vec<ConversationInput> = read_lines(inputs)?;
+    let labels_read: Vec<Label> = read_lines(labels)?;
+    let texts: BTreeMap<&str, &str> = inputs_read
+        .iter()
+        .flat_map(|c| c.turns.iter().map(|t| (t.id.as_str(), t.text.as_str())))
+        .collect();
+    let answered: BTreeSet<&str> = right.iter().map(|(text, _)| text.as_str()).collect();
+    let labelled = |m: &IntentModel| -> Vec<(BTreeSet<String>, String)> {
+        labels_read
+            .iter()
+            .filter_map(|l| {
+                let template = asked_by(&l.kind, &l.expected)?;
+                let text = texts.get(l.turn_id.as_str())?;
+                (!answered.contains(text))
+                    .then(|| (english.intent_words(text, m), template.to_owned()))
+            })
+            .collect()
+    };
+    let both = |m: &IntentModel| [learn(m), labelled(m)].concat();
+    let first = IntentModel::learn(&both(&IntentModel::default()));
+    let examples = both(&first);
     // Held out: every fifth example, judged by a model learned from the rest.
     let (learning, held) = glassmind_models::report::hold_out(&examples, 5);
     let trial = IntentModel::learn(&learning);

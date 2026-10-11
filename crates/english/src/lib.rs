@@ -345,6 +345,14 @@ impl<O: Ontology> English<O> {
                 let before = found.len();
                 for r in &parse.readings {
                     if let Sem::Utterance(u) = &r.value {
+                        // Code left out is fine only for a reading about no
+                        // thing at all (the build, the tests): never as
+                        // "it", or as something else in its place.
+                        if chosen.len() < names.iter().filter(|t| t.shape != Shape::Word).count()
+                            && !u.things().is_empty()
+                        {
+                            continue;
+                        }
                         // Only a question is answered on the model's word
                         // alone: anything else (a change, a fact, consent)
                         // is asked first.
@@ -368,6 +376,12 @@ impl<O: Ontology> English<O> {
             }
         }
         (!found.is_empty()).then_some(found)
+    }
+
+    /// The words the tagger sees in a request, its names left out.
+    pub fn intent_words(&self, typed: &str, m: &glassmind_models::IntentModel) -> BTreeSet<String> {
+        let known = |w: &str| self.lexicon.known.contains(w);
+        intents::split(&self.tokenize(typed), &known, m, &|_| false).1
     }
 
     /// What the tagger learns from one request answered right: the words

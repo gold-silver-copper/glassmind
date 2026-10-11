@@ -36,21 +36,26 @@ impl Places {
     }
 }
 
-/// The cargo command line for a check, or `None` for an unknown check.
-fn check_args(name: &str) -> Option<&'static [&'static str]> {
+/// The cargo command line for a check of the crate at `root`, or `None` for
+/// an unknown check. Builds cover every target but benches (which often
+/// need a nightly compiler), as glassmind's own checks do.
+fn check_args(name: &str, root: &Path) -> Option<Vec<&'static str>> {
+    let targets: &[&str] = if root.join("src/lib.rs").exists() {
+        &["--lib", "--bins", "--tests", "--examples"]
+    } else {
+        &["--bins", "--tests", "--examples"]
+    };
     match name {
-        "build" => Some(&["check", "-j", "4", "--all-targets", "-q"]),
-        "test" => Some(&["test", "-j", "4", "-q", "--", "--test-threads", "4"]),
-        "lint" => Some(&[
-            "clippy",
-            "-j",
-            "4",
-            "--all-targets",
-            "-q",
-            "--",
-            "-D",
-            "warnings",
-        ]),
+        "build" => Some([&["check", "-j", "4", "-q"], targets].concat()),
+        "test" => Some(vec!["test", "-j", "4", "-q", "--", "--test-threads", "4"]),
+        "lint" => Some(
+            [
+                &["clippy", "-j", "4", "-q"],
+                targets,
+                &["--", "-D", "warnings"],
+            ]
+            .concat(),
+        ),
         _ => None,
     }
 }
@@ -129,7 +134,10 @@ fn works(places: &Places, sources: &Path, label: &Label, check: &str, changes: &
     } else {
         check
     };
-    let (Some(args), false) = (check_args(check), source.contains(['/', '.'])) else {
+    let (Some(args), false) = (
+        check_args(check, &sources.join(source)),
+        source.contains(['/', '.']),
+    ) else {
         return false;
     };
     let copy = places.scratch.join(source);
