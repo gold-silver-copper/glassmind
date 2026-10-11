@@ -63,6 +63,9 @@ Primitive unsigned division can also be rounded up when unchanged native tests
 verify the repair. This handles partial shipping boxes and raises coding DEV
 from 200 to 203/765, retaining every old pass with zero failures.
 [Type, boundary and ambiguity checks](tools/coding-ceiling-division/PARENT.md).
+Typed local-function argument swaps now reach 206/765, retaining all 203 prior
+passes with zero failures. The three gains are styles of one download-progress
+bug. [Independent repair and ambiguity checks](tools/coding-argument-swap/PARENT.md).
 
 ## Conversation and story commands
 
@@ -129,7 +132,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 203/765 pass; 562 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 206/765 pass; 559 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |

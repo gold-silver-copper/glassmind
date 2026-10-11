@@ -1,0 +1,24 @@
+{
+  "commit": "eb8df4dedb7c93ad55c858e698969392b0f24370",
+  "source": "Single original recorded statement with both qualified bounds; existing500entity snapshot",
+  "authored": {
+    "total": 45,
+    "supported": 7,
+    "expected_unknown": 27,
+    "expected_refused": 11,
+    "correct_status": 45
+  },
+  "real_parent_queries": 15,
+  "raw_statements_verified": 308,
+  "main_cases": 24,
+  "state_checks": 36,
+  "bundle_failure_checks": 4,
+  "ordinary": {
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20,
+    "total": 2821
+  },
+  "combined_binary_sha256": "17b6ceb211602871b22da3afd15c05af8ba409595a220c379afde91ddf540b63",
+  "limitations": "Authored tests and finite validation-subject-seeded snapshot, not independent open-world retrieval; strict calendar-day interior, no current or complete historical truth"
+}

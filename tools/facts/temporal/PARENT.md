@@ -12,6 +12,8 @@ The worker additionally retained 56 authored CLI/library contracts, 100 queries 
 
 The only harness corrections were matching the worker’s filename/manifest schema without changing raw bytes and reading the existing structured memory schema correctly. See [adapter attempts](parent/adapter-attempts.md). All original evidence remains external. Parent input, status, witness, loader, main and legacy reports are in [parent](parent).
 
+The initial over-count fixture used null records and therefore tested schema rejection. A supplemental check supplies 100,001 schema-valid records: their 101,901,126-byte asset hits the tighter 16 MiB cap first. A 32 MiB+1 index also rejects before parsing. This confirms bounded rejection, not a separately reachable record-count branch; see [limit-review.json](parent/limit-review.json).
+
 The new bundle asset is optional and explicitly hash-bound. Existing answers are unaffected. The original raw cache and static index were selected through historical validation subjects; these checks demonstrate finite recorded-statement behavior, not independent retrieval or complete historical truth. Wikidata data is CC0; SimpleQuestions metadata retains its existing CC BY 3.0 provenance. Worker tokens: 2,118,994 including cached input once; parent accounting is incomplete.
 
 Reproduction uses the retained scripts in `coordinator/temporal-independent` and frozen binaries under `temporal-run/frozen-candidate`, within `/home/gsc/.cache/glassmind/continuous-20261010`. `run.py` reconstructs extractor inputs from the frozen 45 cases; `review.py` checks full witnesses, real statements and malformed assets; `main.py --binary BINARY --out FRESH_DIRECTORY` checks conversation and bundle behavior.
