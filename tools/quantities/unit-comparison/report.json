@@ -1,0 +1,33 @@
+{
+  "legacy_compatibility": {
+    "sample": {
+      "rows": 200,
+      "byte_identical": true,
+      "bytes": 11474,
+      "sha256": "dc6b9f8d10bcf64c23295e666e67edd63f10616ad9068b9b34458a87aa0a85bf"
+    },
+    "full": {
+      "rows": 4475,
+      "byte_identical": true,
+      "bytes": 258256,
+      "sha256": "5cf77234ace536a7f147c3a1bc4ac832a1052e2ac50c05ea232a1ce4a175eb98"
+    },
+    "synthetic": {
+      "rows": 3116,
+      "byte_identical": true,
+      "bytes": 296711,
+      "sha256": "ab818fdee8b4b383c8e0439dae83d9136926c6a5b4558c66033dfff4dac895ab"
+    }
+  },
+  "authored": {
+    "total": 64,
+    "comparisons": 32,
+    "expected_refusals": 32,
+    "wrong": 0,
+    "direct_parsed_equal": 32
+  },
+  "transport_checks": 5,
+  "scope": "Authored literal comparisons only; no new MathQA accuracy measurement.",
+  "binary_sha256": "a135ff47690658ed9f85e88dc3cea145ac6e2c1b33d624ee8fff9aec71f800e5",
+  "typed_sha256": "0d5e1cbb059ccc473b5a8d83cefeac2dde00cc13cefcfe6cc44f777bc14b14ed"
+}

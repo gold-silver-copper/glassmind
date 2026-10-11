@@ -32,6 +32,7 @@ enum TalkReply {
     Temporal(Box<TemporalReply>),
     TemporalMatching(Box<TemporalMatchingReply>),
     Draft(Box<crate::talk_drafts::DraftReply>),
+    Quantity(Box<crate::talk_quantities::QuantityReply>),
 }
 
 #[derive(serde::Serialize)]
@@ -55,6 +56,7 @@ impl TalkReply {
             Self::Temporal(reply) => &reply.text,
             Self::TemporalMatching(reply) => &reply.text,
             Self::Draft(reply) => &reply.text,
+            Self::Quantity(reply) => &reply.text,
         }
     }
 }
@@ -145,6 +147,12 @@ fn respond_with_facts(
     model: Option<&IntentModel>,
     facts: Option<&Facts>,
 ) -> TalkReply {
+    if let Some(request) = crate::talk_quantities::request(line) {
+        session.memory.turn = session.memory.turn.saturating_add(1);
+        session.memory.last_user_utterance = Some(line.to_owned());
+        session.memory.last_slot = None;
+        return TalkReply::Quantity(Box::new(crate::talk_quantities::respond(request)));
+    }
     if let Some(request) = crate::talk_facts::temporal_matching_request(line) {
         session.memory.turn = session.memory.turn.saturating_add(1);
         session.memory.last_user_utterance = Some(line.to_owned());

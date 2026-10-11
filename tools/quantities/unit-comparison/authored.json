@@ -1,0 +1,450 @@
+[
+  {
+    "question": "Is 2 kg greater than 1500 g?",
+    "dimension": "mass",
+    "ordering": "greater",
+    "kind": "predicate",
+    "operation": "greater_than",
+    "answer": true,
+    "witness_left": "2",
+    "witness_right": "3/2"
+  },
+  {
+    "question": "Which is longer, 3 feet or 1 metre?",
+    "dimension": "length",
+    "ordering": "less",
+    "kind": "selection",
+    "operation": "longer",
+    "answer": "right",
+    "witness_left": "3",
+    "witness_right": "1250/381"
+  },
+  {
+    "question": "Is 1/3 hour equal to 20 minutes?",
+    "dimension": "duration",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": true,
+    "witness_left": "1/3",
+    "witness_right": "1/3"
+  },
+  {
+    "question": "Is 2 kg less than 1500 g?",
+    "dimension": "mass",
+    "ordering": "greater",
+    "kind": "predicate",
+    "operation": "less_than",
+    "answer": false,
+    "witness_left": "2",
+    "witness_right": "3/2"
+  },
+  {
+    "question": "Is 1 metre at least 100 cm?",
+    "dimension": "length",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "at_least",
+    "answer": true,
+    "witness_left": "1",
+    "witness_right": "1"
+  },
+  {
+    "question": "Is 1 litre at most 999 ml?",
+    "dimension": "volume",
+    "ordering": "greater",
+    "kind": "predicate",
+    "operation": "at_most",
+    "answer": false,
+    "witness_left": "1",
+    "witness_right": "999/1000"
+  },
+  {
+    "question": "Is 36 km/h equal to 10 m/s?",
+    "dimension": "speed",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": true,
+    "witness_left": "36",
+    "witness_right": "36"
+  },
+  {
+    "question": "Is 0 celsius equal to 32 fahrenheit?",
+    "dimension": "temperature",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": true,
+    "witness_left": "0",
+    "witness_right": "0"
+  },
+  {
+    "question": "Is -40 fahrenheit equal to -40 celsius?",
+    "dimension": "temperature",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": true,
+    "witness_left": "-40",
+    "witness_right": "-40"
+  },
+  {
+    "question": "Is 273.15 kelvin equal to 0 degrees celsius?",
+    "dimension": "temperature",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": true,
+    "witness_left": "5463/20",
+    "witness_right": "5463/20"
+  },
+  {
+    "question": "Is -2 kg greater than -1500 g?",
+    "dimension": "mass",
+    "ordering": "less",
+    "kind": "predicate",
+    "operation": "greater_than",
+    "answer": false,
+    "witness_left": "-2",
+    "witness_right": "-3/2"
+  },
+  {
+    "question": "Is -1/3 hour less than -19 minutes?",
+    "dimension": "duration",
+    "ordering": "less",
+    "kind": "predicate",
+    "operation": "less_than",
+    "answer": true,
+    "witness_left": "-1/3",
+    "witness_right": "-19/60"
+  },
+  {
+    "question": "  iS\t+1.25\tUS   GALLONS  At LEAST  1 us gallon ?  ",
+    "dimension": "volume",
+    "ordering": "greater",
+    "kind": "predicate",
+    "operation": "at_least",
+    "answer": true,
+    "witness_left": "5/4",
+    "witness_right": "1"
+  },
+  {
+    "question": "Is .5 m equal to 50 cm",
+    "dimension": "length",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": true,
+    "witness_left": "1/2",
+    "witness_right": "1/2"
+  },
+  {
+    "question": "Is 1/-3 hour equal to -20 minutes?",
+    "dimension": "duration",
+    "ordering": "equal",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": true,
+    "witness_left": "-1/3",
+    "witness_right": "-1/3"
+  },
+  {
+    "question": "Is 1 kg equal to 2 kg?",
+    "dimension": "mass",
+    "ordering": "less",
+    "kind": "predicate",
+    "operation": "equal_to",
+    "answer": false,
+    "witness_left": "1",
+    "witness_right": "2"
+  },
+  {
+    "question": "Is 100 cm less than 2 m?",
+    "dimension": "length",
+    "ordering": "less",
+    "kind": "predicate",
+    "operation": "less_than",
+    "answer": true,
+    "witness_left": "100",
+    "witness_right": "200"
+  },
+  {
+    "question": "Is 2 m greater than 100 cm?",
+    "dimension": "length",
+    "ordering": "greater",
+    "kind": "predicate",
+    "operation": "greater_than",
+    "answer": true,
+    "witness_left": "2",
+    "witness_right": "1"
+  },
+  {
+    "question": "Is 2 m at most 100 cm?",
+    "dimension": "length",
+    "ordering": "greater",
+    "kind": "predicate",
+    "operation": "at_most",
+    "answer": false,
+    "witness_left": "2",
+    "witness_right": "1"
+  },
+  {
+    "question": "Is 100 cm at least 2 m?",
+    "dimension": "length",
+    "ordering": "less",
+    "kind": "predicate",
+    "operation": "at_least",
+    "answer": false,
+    "witness_left": "100",
+    "witness_right": "200"
+  },
+  {
+    "question": "Which is shorter, 3 feet or 1 metre?",
+    "dimension": "length",
+    "ordering": "less",
+    "kind": "selection",
+    "operation": "shorter",
+    "answer": "left",
+    "witness_left": "3",
+    "witness_right": "1250/381"
+  },
+  {
+    "question": "Which is heavier, 2 kg or 1500 g?",
+    "dimension": "mass",
+    "ordering": "greater",
+    "kind": "selection",
+    "operation": "heavier",
+    "answer": "left",
+    "witness_left": "2",
+    "witness_right": "3/2"
+  },
+  {
+    "question": "Which is lighter, 2 kg or 1500 g?",
+    "dimension": "mass",
+    "ordering": "greater",
+    "kind": "selection",
+    "operation": "lighter",
+    "answer": "right",
+    "witness_left": "2",
+    "witness_right": "3/2"
+  },
+  {
+    "question": "Which is faster, 10 m/s or 35 km/h?",
+    "dimension": "speed",
+    "ordering": "greater",
+    "kind": "selection",
+    "operation": "faster",
+    "answer": "left",
+    "witness_left": "10",
+    "witness_right": "175/18"
+  },
+  {
+    "question": "Which is slower, 10 m/s or 35 km/h?",
+    "dimension": "speed",
+    "ordering": "greater",
+    "kind": "selection",
+    "operation": "slower",
+    "answer": "right",
+    "witness_left": "10",
+    "witness_right": "175/18"
+  },
+  {
+    "question": "Which is hotter, 10 celsius or 40 fahrenheit?",
+    "dimension": "temperature",
+    "ordering": "greater",
+    "kind": "selection",
+    "operation": "hotter",
+    "answer": "left",
+    "witness_left": "10",
+    "witness_right": "40/9"
+  },
+  {
+    "question": "Which is colder, 10 celsius or 40 fahrenheit?",
+    "dimension": "temperature",
+    "ordering": "greater",
+    "kind": "selection",
+    "operation": "colder",
+    "answer": "right",
+    "witness_left": "10",
+    "witness_right": "40/9"
+  },
+  {
+    "question": "Which is hotter, -300 celsius or -400 celsius?",
+    "dimension": "temperature",
+    "ordering": "greater",
+    "kind": "selection",
+    "operation": "hotter",
+    "answer": "left",
+    "witness_left": "-300",
+    "witness_right": "-400"
+  },
+  {
+    "question": "WHICH IS LONGER, 1 M OR 100 CM?",
+    "dimension": "length",
+    "ordering": "equal",
+    "kind": "selection",
+    "operation": "longer",
+    "answer": "equal",
+    "witness_left": "1",
+    "witness_right": "1"
+  },
+  {
+    "question": "Which is lighter, 1 pound or 16 ounces?",
+    "dimension": "mass",
+    "ordering": "equal",
+    "kind": "selection",
+    "operation": "lighter",
+    "answer": "equal",
+    "witness_left": "1",
+    "witness_right": "1"
+  },
+  {
+    "question": "Which is faster, 36 km/h or 10 m/s?",
+    "dimension": "speed",
+    "ordering": "equal",
+    "kind": "selection",
+    "operation": "faster",
+    "answer": "equal",
+    "witness_left": "36",
+    "witness_right": "36"
+  },
+  {
+    "question": "Which is colder, 32 degrees fahrenheit or 0 degrees celsius?",
+    "dimension": "temperature",
+    "ordering": "equal",
+    "kind": "selection",
+    "operation": "colder",
+    "answer": "equal",
+    "witness_left": "32",
+    "witness_right": "32"
+  },
+  {
+    "question": "Is 1 kg greater than 2 m?",
+    "refusal": "dimension_mismatch"
+  },
+  {
+    "question": "Which is longer, 1 kg or 2 kg?",
+    "refusal": "selection_dimension_mismatch"
+  },
+  {
+    "question": "Which is heavier, 1 m or 2 m?",
+    "refusal": "selection_dimension_mismatch"
+  },
+  {
+    "question": "Which is faster, 1 hour or 2 hours?",
+    "refusal": "selection_dimension_mismatch"
+  },
+  {
+    "question": "Which is hotter, 1 litre or 2 litres?",
+    "refusal": "selection_dimension_mismatch"
+  },
+  {
+    "question": "Is 1 gallon equal to 1 us gallon?",
+    "refusal": "invalid_unit"
+  },
+  {
+    "question": "Is 1 stone greater than 1 kg?",
+    "refusal": "invalid_unit"
+  },
+  {
+    "question": "Is 1 kg g greater than 1 kg?",
+    "refusal": "invalid_unit"
+  },
+  {
+    "question": "Is 1/0 hour equal to 20 minutes?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Is NaN kg greater than 1 kg?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Is inf kg less than 2 kg?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Is 1e3 g equal to 1 kg?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Is 1..2 m equal to 1 m?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Is 1/2/3 m equal to 1 m?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Is 170141183460469231731687303715884105728 m equal to 1 m?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Is 170141183460469231731687303715884105727 km equal to 1 m?",
+    "refusal": "overflow"
+  },
+  {
+    "question": "Is 1 kg greater than 2 kg? Remember my name is Ada.",
+    "refusal": "invalid_unit"
+  },
+  {
+    "question": "Is 1 kg greater than 2 kg and I own a dog",
+    "refusal": "invalid_unit"
+  },
+  {
+    "question": "Is 1 kg greater than 2 kg??",
+    "refusal": "invalid_unit"
+  },
+  {
+    "question": "Is 1 kg greater than 2?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Is greater than 2 kg?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Is 1 kg greater than?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Is 1 greater than 2?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Is 1 + 2 kg greater than 2 kg?",
+    "refusal": "invalid_unit"
+  },
+  {
+    "question": "Is two kg greater than 1 kg?",
+    "refusal": "invalid_number"
+  },
+  {
+    "question": "Which is longer, it or 1 metre?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Which is longer 1 m or 2 m?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Which is more, 1 m or 2 m?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Is 1 kg >= 1 kg?",
+    "refusal": "grammar"
+  },
+  {
+    "question": "Is 1 kg greater than 1 kg?\u0000",
+    "refusal": "invalid_input"
+  },
+  {
+    "question": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "refusal": "invalid_input"
+  },
+  {
+    "question": "ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+    "refusal": "invalid_input"
+  }
+]

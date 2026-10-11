@@ -1,0 +1,214 @@
+[
+  {
+    "name": "signed_ties",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 2,
+    "accept": true
+  },
+  {
+    "name": "unicode",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut r\u00e9sultat=input.to_vec(); r\u00e9sultat.sort_by(|a,b| a.x /* \u03c0 preserve */ .cmp(&b.x).then_with(|| a.y.cmp(&b.y))); r\u00e9sultat}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 2,
+    "accept": true
+  },
+  {
+    "name": "secondary",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| b.x.cmp(&a.x).then_with(|| b.y.cmp(&a.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 2,
+    "accept": true
+  },
+  {
+    "name": "correct",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| b.x.cmp(&a.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 2,
+    "accept": false,
+    "original_pass": true
+  },
+  {
+    "name": "type_i8",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:i8}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:-3},Row{x:5}]),vec![Row{x:5},Row{x:-3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_i16",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:i16}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:-3},Row{x:5}]),vec![Row{x:5},Row{x:-3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_i64",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:i64}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:-3},Row{x:5}]),vec![Row{x:5},Row{x:-3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_i128",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:i128}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:-3},Row{x:5}]),vec![Row{x:5},Row{x:-3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_isize",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:isize}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:-3},Row{x:5}]),vec![Row{x:5},Row{x:-3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_u8",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:u8}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:3},Row{x:5}]),vec![Row{x:5},Row{x:3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_u16",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:u16}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:3},Row{x:5}]),vec![Row{x:5},Row{x:3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_u32",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:u32}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:3},Row{x:5}]),vec![Row{x:5},Row{x:3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_u64",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:u64}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:3},Row{x:5}]),vec![Row{x:5},Row{x:3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_u128",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:u128}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:3},Row{x:5}]),vec![Row{x:5},Row{x:3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_usize",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:usize}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:3},Row{x:5}]),vec![Row{x:5},Row{x:3}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_bool",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:bool}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:false},Row{x:true}]),vec![Row{x:true},Row{x:false}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_char",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:char}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:'a'},Row{x:'\u00e9'}]),vec![Row{x:'\u00e9'},Row{x:'a'}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "type_String",
+    "code": "#[derive(Debug,Clone,PartialEq)] pub struct Row{pub x:String}pub fn order(mut values:Vec<Row>)->Vec<Row>{values.sort_by(|a,b| a.x.cmp(&b.x));values}",
+    "test": "#[test] fn t(){assert_eq!(order(vec![Row{x:\"a\".into()},Row{x:\"\u00e9\".into()}]),vec![Row{x:\"\u00e9\".into()},Row{x:\"a\".into()}]);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "typed_local",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values:Vec<Row>=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 2,
+    "accept": true
+  },
+  {
+    "name": "inline_tests",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}\n#[cfg(test)] mod tests {use super::*;fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 2,
+    "accept": true
+  },
+  {
+    "name": "alias",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\ntype Count=i32;\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "import",
+    "code": "use std::cmp::Ord;\n#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "shadow",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); {let values=1; let _=values;} values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "nested_param",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); {let a=1; let _=a;} values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "effectful_receiver",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); { &mut values }.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "opaque_attribute",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\n#[inline] pub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "macro",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let _=stringify!(x); let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "custom_cmp",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\nimpl Row {fn cmp(&self,_:&Self)->std::cmp::Ordering{std::cmp::Ordering::Equal}}pub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "qualified",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: std::primitive::i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32,y:&str)->Row{Row{x,y:y.into()}} #[test] fn t(){\nassert_eq!(order(&[r(-5,\"b\"),r(2,\"z\"),r(-5,\"a\"),r(2,\"z\")]),vec![r(2,\"z\"),r(2,\"z\"),r(-5,\"a\"),r(-5,\"b\")]);\nassert_eq!(order(&[]),vec![]); assert_eq!(order(&[r(-9,\"\u00e9\")]),vec![r(-9,\"\u00e9\")]);}",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "competing",
+    "code": "#[derive(Debug, Clone, PartialEq)] pub struct Row {pub x: i32, pub y: String}\npub fn order(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}\npub fn other(input: &[Row])->Vec<Row>{let mut values=input.to_vec(); values.sort_by(|a,b| a.x.cmp(&b.x).then_with(|| a.y.cmp(&b.y))); values}",
+    "test": "fn r(x:i32)->Row{Row{x,y:String::new()}} #[test] fn t(){assert!(order(&[r(1),r(2)])[0].x==2 || other(&[r(1),r(2)])[0].x==2);}",
+    "count": 4,
+    "accept": false,
+    "outputs": true
+  }
+]

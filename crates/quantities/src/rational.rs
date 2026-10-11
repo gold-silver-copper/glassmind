@@ -19,6 +19,23 @@ fn gcd(mut a: i128, mut b: i128) -> i128 {
 }
 
 impl Rational {
+    /// Exact ordering with checked cross-products; overflow never rounds.
+    pub fn checked_cmp(self, rhs: Self) -> Result<std::cmp::Ordering> {
+        if self.numerator.signum() != rhs.numerator.signum() {
+            return Ok(self.numerator.cmp(&rhs.numerator));
+        }
+        let common = gcd(self.denominator, rhs.denominator);
+        let left = self
+            .numerator
+            .checked_mul(rhs.denominator / common)
+            .ok_or("rational overflow")?;
+        let right = rhs
+            .numerator
+            .checked_mul(self.denominator / common)
+            .ok_or("rational overflow")?;
+        Ok(left.cmp(&right))
+    }
+
     pub fn new(numerator: i128, denominator: i128) -> Result<Self> {
         if denominator == 0 {
             return Err("division by zero".into());

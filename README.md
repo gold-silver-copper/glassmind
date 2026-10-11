@@ -73,8 +73,16 @@ and exact native evidence.
 Typed adjacent Vec dedup/sort reordering reaches 212/765, retaining all 209 prior
 passes with zero failures. The three gains are styles of one blog-tags bug.
 [Independent repairs, controls and old-family ambiguity veto](tools/coding-dedup-order/PARENT.md).
+Typed record comparator direction repairs reach 215/765, retaining all 212 prior
+passes with zero failures. The three gains are styles of one leaderboard bug.
+[Independent ordering and ambiguity checks](tools/coding-comparator/PARENT.md).
 
 ## Conversation and story commands
+
+Literal quantity comparisons work directly in `talk`: `Is 2 kg greater than
+1500 g?` and `Which is longer, 3 feet or 1 metre?` return typed results with exact
+conversion evidence. `Compare quantities: QUESTION` selects the same operation
+explicitly. [Supported forms and limits](docs/quantity-comparisons.md).
 
 With `--dialogue-dir BUNDLE`, explicit `Draft request: TEXT` and `Service reply:
 TEXT` commands maintain a provisional service-request interpretation across
@@ -149,7 +157,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 212/765 pass; 553 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 215/765 pass; 550 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |

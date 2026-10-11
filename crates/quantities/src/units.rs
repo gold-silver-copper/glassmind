@@ -2,7 +2,8 @@
 use crate::rational::{Rational, Result};
 use std::marker::PhantomData;
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Serialize)]
+#[serde(rename_all = "snake_case")]
 pub enum Dimension {
     Length,
     Mass,
@@ -149,6 +150,12 @@ impl<D: Kind> Quantity<D> {
     }
     pub fn in_unit(&self, target: &TypedUnit<D>) -> Result<Rational> {
         self.unit.unit.convert(self.value, &target.unit)
+    }
+
+    /// Compare magnitudes after exact conversion, including affine temperatures.
+    pub fn checked_cmp(&self, other: &Self) -> Result<std::cmp::Ordering> {
+        self.in_unit(&self.unit)?
+            .checked_cmp(other.in_unit(&self.unit)?)
     }
 }
 
