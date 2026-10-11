@@ -60,11 +60,13 @@ One unresolved case has two distinct passing reorderings. The other has two
 passing OLD extremum choices plus a possible new sort-order repair: previous
 family veto MUST survive. PLAN/freeze/full-gate/compare-full.py are frozen.
 Full765 gate:209passesretained/0fail, unchanged denominator and runner.
-Baseline session86841 running at checkpoint; baseline.log/report/summary preserve
-actual compiled failing originals, source bytes and any oldchoice evidence.
-Independent alternative replay session61762 running; alternatives.py writes
-frozen variant source, native publictests and differing outputs. Check these
-existing handles first; do not duplicate. Parentcandidate replay waits for worker
+Baseline session86841 COMPLETE:all12 compile andfailtests;0/5repairs,5negative
+controls and2unresolved cases unchanged;no timeouts/manifestedits.
+Baseline oldextremum veto has actual2passing/incompletefalse/acceptedfalse evidence,
+reviewed inbaseline-veto-review.json. Independentalternatives61762 COMPLETE:
+two reorderings passbutyielddifferentvectors;oldextremum2 andnewdedup1 choices
+allpass thecross-family publictest andyielddifferentoutputs. Reports retained.
+Do not duplicate these runs. Parentcandidate replay waits for worker
 terminal archive/hashverification. Then review source, localcontracts and full765.
 
 ## Finished PR41 experiments
@@ -103,8 +105,7 @@ Do not reuse removedworktreepaths; parentadapters use retainedfrozen/sourcearchi
 
 Rolebinding independentlyreplayed1182cleanTRAIN-CAL rows:free143→92,
 oracle221→170;left2197→2370/right2499→2540 of4138. Threeoffour gatesfailed.
-69oldcorrectlost/18gained;45refusals→wrong. Full354? No: thisranker's replay1182;
-354belowbelongs to a separate dataset audit. No DEV/model/runtimeintegration.
+69oldcorrectlost/18gained;45refusals→wrong. No DEV/model/runtimeintegration.
 Archive172files165694278bytes,142frozenentriesverified, compactreports179a400.
 Surface/clausefeatures were not actual semanticentity roles. Stop retuning them.
 
@@ -140,7 +141,7 @@ semanticchecks; no first-match value priority or another oldrankerconfiguration.
 4. Facts coverage/inverseedges are the known broadgap; previousTRAIN999expansion
    rejected, rawcachedassets retained. Do not repeat aliasfilters or duplicatefetch.
 
-Onlydeduporder modelworkeractive; parentbaseline86841 andalternatives61762 owned.
+Onlydeduporder modelworkeractive; parentbaseline86841 andalternatives61762 COMPLETE.
 Allcargo8GiB/0swap,setsid--waittimeout,persistentTMPDIR,jobs1,testthreads<=4.
 Atmost4modelslotsincludingroot,8cargojobsprojectwide. No unrelatedcleanup/pkill-f.
 Stop exactownedjobs onexplicit userstop. Preserve archives BEFORE worker edits/removal.
