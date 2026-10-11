@@ -4,7 +4,12 @@ Active goal: prompts/grow-yolo.md until stopped. Prioritize shared language,
 verified coding and persistent task context. Root branch harness. No model
 workers or model API calls; workers must use Astra fast with ChatGPT login.
 
-Latest published: PR61 merged2026-10-11T21:42:41Z as
+Latest published: PR62 merged2026-10-11T21:47:15Z as
+762f392b4d8ead1ba4fa53e0ebad63af78d4035f, reviewedhead9153ff9;
+CI38177640915 SUCCESS. Type bindings across tests/assertions; full765DEV
+unchanged223/542/0. Evidence tools/coding-tasks/type-bindings-validation.json.
+
+Previous milestone: PR61 merged2026-10-11T21:42:41Z as
  d6c4aa6fa942b66a88a9a16dd8029aa59d573c8a. Reviewedhead16eb6f6;
  CI38177277414 SUCCESS. Typed public-field specs persist with targets, defaults,
 corrections, plan tails, native constructor proof and undo. 88CLI/3grammar/1native
@@ -27,21 +32,39 @@ Requiredchecks PASS(check.log,6835), finalbuild PASS(final-build.log,86022).
 CLI34process smoke PASS(cli-smoke/report.json,66111). Full765DEV36113COMPLETE0:
 223pass542refused0fail; all765outcomes identical to fields baseline.
 Evidence tools/coding-tasks/type-bindings-validation.json. All type jobs terminal.
-NEXT publish PR and merge exact reviewed green head.
+PR62 merged as recorded above.
 
-Independent action amendments are uncommitted in
-/home/gsc/.cache/glassmind/yolo-action-amendments, branchcontinuous/action-amendments
-fromc26253a. RUN=/home/gsc/.cache/glassmind/yolo-amendments.
-Adds shared Utterance::Amend and world-typed parameter corrections; native proposals
-remain authoritative. Explicit field default/type/name and rename destination
-corrections preserve other parameters and pending plan tail. Cancelled/completed/
-stale task guards retained. Fully consumed grammar preserves plain alias requests.
-94CLItests +1amendment grammar PASS(tests-v2.log,83822COMPLETE0); separate added
-shared-Mind/session serialization/declined-context test PASS(shared-mind-test.log,
-44829COMPLETE0). Requiredworkspacechecks running19874, check.log.
-Initial clippy closure result-size failure retained in tests.log and fixed with
-an explicit match. No amendment binary pinned or integrated. Next finish checks,
-run prepared40process CLI smoke, pin source/binary and evaluate full765DEV.
+Integrated action amendments: source4e7fb27a9a3ed2daaeb5ed0974285d91dfa24a93,
+rootcherry032e3eb. Worktree/home/gsc/.cache/glassmind/yolo-action-amendments.
+RUN=/home/gsc/.cache/glassmind/yolo-amendments. Shared Utterance::Amend and
+typed field default/type/name and rename destination corrections preserve other
+parameters and pending plan tails. Fully consumed grammar preserves aliases;
+cancelled/completed/stale tasks cannot resume via a parameter correction.
+94CLItests +1grammar PASS(tests-v2.log,83822); added shared-Mind serialization and
+declined-context test PASS(shared-mind-test.log,44829). Requiredchecks19874COMPLETE0.
+Pinned candidate SHA256994b5f3ed26d37fd4708a57d0a5d4fcdf600d4f25fd65adf92c76102bcbc954c,
+candidate.json. CLI40process smoke PASS(cli-smoke/report.json,99517COMPLETE0).
+Full765DEV71679COMPLETE0:223pass542refused0fail, all765outcomes identical to
+yolo-type-tests/full765. Evidence tools/coding-tasks/amendments-validation.json.
+All amendment jobs terminal; next publish and merge exactgreenhead. Runtime files compared
+identical after integration. Initial clippy failure retained in tests.log.
+
+Missing-parameter candidate is committed in
+/home/gsc/.cache/glassmind/yolo-missing-parameters, branchcontinuous/missing-parameters
+at efd319f2178e340d98bc3faba93e34f6159b5ff4, from032e3eb. RUN=/home/gsc/.cache/glassmind/yolo-missing.
+PublicField.default becomes Option, retaining the previous JSON string encoding
+for supplied defaults. Fully consumed declarations without defaults create a
+blocked Task with typed MissingParameter; no invented value or source change.
+Literal answers route to a default only for that exact missing slot, not target
+selection. Native proposal/rollback and plan tails reused. Unsupported types,
+conflicting values and partial constructor scope remain errors. Standalone do
+still requires explicit complete defaults. Initial98CLI +4field grammar PASS,
+tests.log session73908 COMPLETE0. After adding bare-literal routing, final focused
+pipeline77986 COMPLETE0:98CLI/4grammar PASS(tests-v2.log). Requiredchecks5370
+COMPLETE0(check.log). Pinned candidate SHA256
+06cba3225bb66c6096ca33612ae1884f28a777a1d012469f0cc9c6ee582ef46b; candidate.json.
+CLI43process smoke25031 running(cli-smoke.log), full765DEV launchedfull765/run.log.
+Not integrated. Next verify smoke, compare regression, publish after amendment PR.
 
 Shared cargo cache yolo-plans/target. Pinned binaries isolate live regressions
 from later cache writes. Every cargo run bounded8G0swap, finite timeout, on-disk

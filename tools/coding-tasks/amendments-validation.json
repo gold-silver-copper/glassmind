@@ -1,0 +1,22 @@
+{
+  "commit": "4e7fb27a9a3ed2daaeb5ed0974285d91dfa24a93",
+  "sha256": "994b5f3ed26d37fd4708a57d0a5d4fcdf600d4f25fd65adf92c76102bcbc954c",
+  "binary": "/home/gsc/.cache/glassmind/yolo-amendments/candidate",
+  "checks": "check.log",
+  "cli_tests": 94,
+  "shared_mind_test": "shared-mind-test.log",
+  "additional_shared_mind_test": 1,
+  "amendment_grammar_tests": 1,
+  "cli_smoke_processes": 40,
+  "dev_total": 765,
+  "outcomes": {
+    "refused": 542,
+    "pass": 223
+  },
+  "all_outcomes_identical_to_type_bindings_baseline": true,
+  "baseline_sha256": "5242962715b12851e9b4f88a75d8fc84289b86c349facd165006de035eba0bd4",
+  "results_sha256": "2f63aea8cf81d9ac677d45296fa6963bfc3237a219d25b43eb1a40366cad3b7b",
+  "artifacts": "/home/gsc/.cache/glassmind/yolo-amendments",
+  "workspace_checks": "fmt, all-target clippy, release workspace, strict 4/4 fixture smoke",
+  "limitations": "Explicit single-parameter corrections to pending supported actions; field names/types/defaults and rename destinations only. Native checks establish covered behavior, not general language understanding."
+}

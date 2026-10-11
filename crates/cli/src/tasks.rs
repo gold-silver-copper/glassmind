@@ -1,4 +1,5 @@
 //! Persistent coding tasks using the existing meaning, dialogue and Rust verifier.
+mod amendments;
 mod choices;
 mod plans;
 mod revisions;
@@ -524,6 +525,14 @@ pub fn run(
                 }
                 session.conversation.turns.clear();
                 "Task cancelled; no pending action will run.".into()
+            }
+            _ if glassmind_english_rust::add_fields::amendment_request(text).is_some()
+                && !matches!(
+                    glassmind_english_rust::add_fields::request(text),
+                    Some(Ok(_))
+                ) =>
+            {
+                amendments::amend(&mut session, &path, text, explain, steps)?
             }
             _ if glassmind_english::selection::request(text).is_some() => {
                 let selection =
@@ -1830,5 +1839,125 @@ mod tests {
         assert_eq!(plan.current, 2);
         assert!(f.source().contains("struct Packet"));
         assert!(f.source().contains("weight: 7"));
+    }
+    #[test]
+    fn field_parameter_corrections_preserve_the_owner_and_other_parameters() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(1, FIELD_REQUEST);
+        f.turn(1, "actually use 11 as the default instead");
+        f.turn(1, "check the tests");
+        f.turn(1, "change the field type to u8");
+        f.turn(1, "name the field priority instead");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Ready);
+        assert!(
+            matches!(task.request, Action::AddMember { thing: Thing::Item(owner), member } if owner.name == "Parcel" && member.name == "priority" && member.ty == "u8" && member.default == "11")
+        );
+        assert_eq!(f.source(), FIELD_SOURCE);
+        f.turn(1, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("pub priority: u8") && f.source().contains("priority: 11"));
+        f.turn(1, "undo");
+        assert_eq!(f.source(), FIELD_SOURCE);
+    }
+
+    #[test]
+    fn a_default_correction_preserves_the_unexecuted_plan_tail() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(
+            1,
+            &format!("{FIELD_REQUEST}; then rename it to Shipment; then check the tests"),
+        );
+        f.turn(1, "change the default to 23");
+        assert_eq!(f.state().plan.as_ref().unwrap().steps.len(), 3);
+        assert_eq!(f.source(), FIELD_SOURCE);
+        f.turn(8, "continue");
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("struct Shipment") && f.source().contains("weight: 23"));
+    }
+
+    #[test]
+    fn rename_destination_correction_preserves_contextual_plan_steps() {
+        let f = Fixture::new(SOURCE);
+        f.turn(1, "rename Parcel to Package; then rename it to Shipment");
+        f.turn(1, "call it CargoBox instead");
+        assert_eq!(f.source(), SOURCE);
+        assert_eq!(f.state().plan.unwrap().steps.len(), 2);
+        f.turn(8, "continue");
+        assert!(f.source().contains("struct Shipment"));
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Completed);
+        f.turn(1, "undo");
+        assert!(f.source().contains("struct CargoBox"));
+    }
+
+    #[test]
+    fn invalid_parameters_block_without_losing_a_correctable_field_specification() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(1, FIELD_REQUEST);
+        f.turn(2, "change the default to 999999");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        assert_eq!(f.source(), FIELD_SOURCE);
+        f.turn(2, "change the default to 4");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("weight: 4"));
+    }
+
+    #[test]
+    fn incompatible_or_incomplete_corrections_cancel_pending_execution() {
+        for text in [
+            "change the field type to u8",
+            "use Package as the new name and delete files",
+        ] {
+            let f = Fixture::new(SOURCE);
+            f.turn(1, "rename Parcel to Package");
+            f.turn(2, text);
+            f.turn(8, "continue");
+            assert_eq!(f.source(), SOURCE);
+            assert_eq!(f.state().task.unwrap().status, TaskStatus::Cancelled);
+        }
+    }
+
+    #[test]
+    fn parameter_corrections_do_not_resurrect_cancelled_or_stale_actions() {
+        for cancel in [
+            "cancel task",
+            "choose 1",
+            "gibberish unsupported replacement",
+        ] {
+            let f = Fixture::new(FIELD_SOURCE);
+            f.turn(1, FIELD_REQUEST);
+            f.turn(1, cancel);
+            f.turn(2, "change the default to 13");
+            f.turn(8, "continue");
+            assert_eq!(f.source(), FIELD_SOURCE, "{cancel}");
+        }
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(1, FIELD_REQUEST);
+        let external = format!("{FIELD_SOURCE}// external\n");
+        fs::write(f.root.join("src/lib.rs"), &external).unwrap();
+        f.turn(2, "change the default to 13");
+        f.turn(8, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), external);
+    }
+    #[test]
+    fn shared_mind_amends_persisted_action_and_respects_declined_context() {
+        let f = Fixture::new(FIELD_SOURCE);
+        let system = open(&f.root);
+        let mut conversation = Session::new(system.source_refs());
+        let first = system.respond(&mut conversation, FIELD_REQUEST);
+        assert!(matches!(plain(&first.reply), Reply::Patch { .. }));
+        let bytes = serde_json::to_vec(&conversation).unwrap();
+        let mut conversation: Session<Rust> = serde_json::from_slice(&bytes).unwrap();
+        system.respond(&mut conversation, "check the tests");
+        let changed = system.respond(&mut conversation, "use 19 as the default instead");
+        assert!(
+            matches!(plain(&changed.reply), Reply::Patch { action: Action::AddMember { member, .. }, .. } if member.default == "19" && member.name == "weight" && member.ty == "u16")
+        );
+        assert_eq!(f.source(), FIELD_SOURCE);
+        system.respond(&mut conversation, "no");
+        let refused = system.respond(&mut conversation, "use 3 as the default instead");
+        assert!(matches!(plain(&refused.reply), Reply::Trouble(_)));
+        assert_eq!(f.source(), FIELD_SOURCE);
     }
 }

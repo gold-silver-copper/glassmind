@@ -102,6 +102,15 @@ pub trait World<O: Ontology> {
         action: &Action<O>,
         fired: &mut Vec<RuleInfo>,
     ) -> Result<Reply<O>, Trouble<O>>;
+    /// Correct specified action parameters without changing the world. The
+    /// amended action must still pass ordinary resolution and proposal checks.
+    fn amend(
+        &self,
+        _action: &Action<O>,
+        _amendment: &O::Amendment,
+    ) -> Result<Action<O>, Trouble<O>> {
+        Err(Trouble::Unsupported)
+    }
     /// The fact a user stated, with its things resolved to items, as
     /// noted, or why it cannot be (the name may mean several items). Pushes
     /// the world rules it used onto `fired`.

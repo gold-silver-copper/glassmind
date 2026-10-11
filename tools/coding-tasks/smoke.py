@@ -148,6 +148,26 @@ assert state['plan']['status'] == 'Completed' and state['plan']['current'] == 3
 assert 'struct Signal' in source.read_text()
 turn('undo')
 assert 'struct Beacon' in source.read_text() and 'enabled: true' in source.read_text()
+# Parameter amendments keep the current proposal and unexecuted plan tail.
+root = out / 'amendment-project'
+(root / 'src').mkdir(parents=True)
+(root / 'Cargo.toml').write_text('[package]\nname="amendment_cli_smoke"\nversion="0.1.0"\nedition="2021"\n[workspace]\n')
+source = root / 'src/lib.rs'
+original_amendment = 'pub struct Reading { pub amount: u32 }\npub fn seed() -> Reading { Reading { amount: 27 } }\n#[cfg(test)] mod tests { use super::*; #[test] fn keeps_amount() { assert_eq!(seed().amount,27); } }\n'
+source.write_text(original_amendment)
+session = out / 'amendment-session.json'
+state = turn('Add pub count: u16 to Reading; use 5 for all existing constructors; then rename it to Sample; then check the tests', 1)
+assert state['task']['status'] == 'Ready' and source.read_text() == original_amendment
+state = turn('actually use 13 as the default instead', 1)
+assert state['task']['request']['AddMember']['member']['default'] == '13'
+turn('change the field type to u8', 1)
+turn('name the field retries instead', 1)
+state = turn('continue', 8)
+assert state['plan']['status'] == 'Completed' and state['plan']['current'] == 3
+assert 'struct Sample' in source.read_text() and 'retries: 13' in source.read_text()
+assert 'pub retries: u8' in source.read_text()
+turn('undo')
+assert 'struct Reading' in source.read_text() and 'retries: 13' in source.read_text()
 report = dict(processes=len(turns), passed=True,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest())
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

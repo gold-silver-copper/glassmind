@@ -40,6 +40,8 @@ pub trait Ontology: Copy + Eq + Ord + Hash + Debug + Default + 'static {
     type Change: Concept;
     /// A world-specific specification for adding a member to an existing thing.
     type Member: Concept;
+    /// A typed correction to parameters of a previously requested action.
+    type Amendment: Concept;
 }
 
 /// The bounds every concept a world defines must meet.
@@ -210,6 +212,8 @@ pub enum Utterance<O: Ontology> {
     /// Corrects the request just made: it was meant to be about this thing,
     /// in place of the one it was about.
     Correct(Thing<O>),
+    /// Change specified parameters while preserving the prior action and target.
+    Amend(O::Amendment),
     /// Agrees to (true) or declines (false) what the system proposed.
     Consent(bool),
 }
@@ -353,6 +357,7 @@ impl<O: Ontology> Utterance<O> {
             | Utterance::Correct(thing) => vec![thing],
             Utterance::Ask(Question::Passes(_) | Question::Problems(_))
             | Utterance::Command(Action::Repair(_))
+            | Utterance::Amend(_)
             | Utterance::Consent(_)
             | Utterance::AskReason
             | Utterance::Forget
@@ -378,6 +383,7 @@ impl<O: Ontology> Utterance<O> {
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => thing.things_within(within),
             Utterance::Command(Action::Repair(_))
+            | Utterance::Amend(_)
             | Utterance::Consent(_)
             | Utterance::AskReason
             | Utterance::Forget
@@ -399,6 +405,7 @@ impl<O: Ontology> Utterance<O> {
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => *thing = thing.map_things(f),
             Utterance::Command(Action::Repair(_))
+            | Utterance::Amend(_)
             | Utterance::Consent(_)
             | Utterance::AskReason
             | Utterance::Forget

@@ -1,5 +1,8 @@
 //! Fully consumed, explicit field-addition requests. Clauses retain their roles
 //! until one declaration, one default and complete constructor coverage unify.
+mod amendments;
+pub use amendments::request as amendment_request;
+
 use glassmind_meaning::{Name, Thing};
 use glassmind_world_rust::{
     Rust,
