@@ -1,0 +1,107 @@
+{
+  "build_source": "18b334ed81c59954b200a8de6138d8aa5ccad78e",
+  "reading_runtime": "unchanged v1 proposal and margin selector; not a new model",
+  "source_revision": "eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+  "model_sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5",
+  "binary_sha256": "6763ae097f8163e575e040f37250743b3d3e53500460bef86309ee8475bc3a3b",
+  "scorer_sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4",
+  "reports": {
+    "sample": {
+      "total": 200,
+      "counts": {
+        "unsupported_answerable": 92,
+        "correct_expected_refusal": 76,
+        "wrong": 23,
+        "correct_substantive": 9
+      },
+      "normalization_coincidences": [],
+      "official_selected": {
+        "exact": 42.5,
+        "f1": 42.5,
+        "total": 200
+      },
+      "official_raw": {
+        "exact": 16.5,
+        "f1": 19.78181818181818,
+        "total": 200
+      },
+      "all_refusal_exact": 93,
+      "answerable": 107,
+      "selected_precision": 0.28125
+    },
+    "full": {
+      "total": 11873,
+      "counts": {
+        "unsupported_answerable": 5064,
+        "correct_expected_refusal": 5140,
+        "wrong": 1236,
+        "correct_substantive": 433
+      },
+      "normalization_coincidences": [
+        {
+          "id": "5a2ecbe9a83784001a7d2496",
+          "answer": "A",
+          "note": "Official normalization treats this substantive prediction as empty on an unanswerable item; diagnostic retains it as wrong."
+        }
+      ],
+      "official_selected": {
+        "exact": 46.946854207024344,
+        "f1": 47.43593797711199,
+        "total": 11873
+      },
+      "official_raw": {
+        "exact": 11.74934725848564,
+        "f1": 17.088710096317737,
+        "total": 11873
+      },
+      "all_refusal_exact": 5945,
+      "answerable": 5928,
+      "selected_precision": 0.25943678849610546
+    }
+  },
+  "reused_complete_predictions_after_diagnostic_assertion": "Original count check caught one normalization coincidence; both sample/full outputs reused, no repeated inference.",
+  "selection": "SHA256(question ID), first200 then all11873; IDs and annotations never enter inference input",
+  "limitations": "New publicDEV dataset/metric series; expected correct refusals separate from substantive answers; all-refusal comparator reported. No test or external predictions. No fitting/calibration/candidateevaluation yet.",
+  "artifacts": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/sample.input.jsonl",
+      "bytes": 171712,
+      "sha256": "7c7da606d74c35ea187d103e8d336ac344a4a6c607e70b45a66dc20e7ac9b79b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/sample.outputs.jsonl",
+      "bytes": 37075,
+      "sha256": "bd0dc3c8e805a2ef49e3be916542f2d161cbb8a12e47ebbd92f4e705ecaf0c86"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/sample.report.json",
+      "bytes": 443,
+      "sha256": "9108fe1a2f172a81d2294b02fcbefed80173c006f1d107aaae86d325ee9bc3fc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/sample.statuses.json",
+      "bytes": 26844,
+      "sha256": "4548971b13026571939c678f7ee497af343867819446985bffe6365408cf2c2b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/full.input.jsonl",
+      "bytes": 10786904,
+      "sha256": "9a888b070e8b5054ae06aead59ac8f7857cab844c665db7af2095a17e9f80722"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/full.outputs.jsonl",
+      "bytes": 2204003,
+      "sha256": "6dd02aa2757011bec9971e47aef04e08260426f089eea004396ac13f0f9666a4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/full.report.json",
+      "bytes": 729,
+      "sha256": "668985d3fa0a4aa5cace283afa14ad0ed64d89ccb1f4b8a564f5da353aa2c7a5"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/qa2-baseline/full.statuses.json",
+      "bytes": 1596755,
+      "sha256": "6f7fb6a08be22883b3038319b739bad969b9d7911c5ffd6cd1e85c0d268a4610"
+    }
+  ]
+}

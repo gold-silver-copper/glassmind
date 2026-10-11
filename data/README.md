@@ -453,3 +453,18 @@ three unique matching validation claims even with annotated entity/relation IDs.
 This is a knowledge-coverage diagnostic, not a model score. It downloads no data
 and does not alter the index, scorer or historical measurements.
 [Definition and report links](../tools/facts/JOINT-AUDIT.md).
+
+
+## SQuAD2 reading baseline (2026-10-11 UTC)
+
+Downloaded only pinned public TRAIN/DEV from SQuAD-explorer revision
+`eee5fdbf62f8613a7812b03419e6b29617b74fd1`:46,494,161bytes,CC-BY-SA-4.0.
+TRAIN130319questions/43498unanswerable; DEV11873/5945unanswerable. Official
+evaluator/MIT license reused from the existing source. No test or external
+predictions fetched. Files stay outside git in WORK/readingqa2-source.
+
+Frozen v1 fullDEV baseline:433 substantivecorrect,5140correctexpectedrefusals,
+5064unsupported,1236wrong. Official EM46.94685% includes one normalization
+coincidence:predictionA on an unanswerable item. Official metric is preserved,
+with a separate5573-correct diagnostic excluding that substantive error. No new
+model trained. [Hashes, definitions and reproduction](../tools/reading/qa2/README.md).

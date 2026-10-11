@@ -11,7 +11,9 @@ WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 PR16 already MERGED `c6c6cd133e485e23f4bb8fe1d8786bcf6442b75e`, exacthead
 69ba975a9f44bd8f3aaf45be355fffe82cbc6577, CI38116227685 passed1m0s.
 Source now `e03437a81f2d047babad5e122aec99a88b1c56af` (repair ambiguity).
-Next batch PR17 not yet opened. Do not repeat completed PR15/16 checks or merges.
+PR17 MERGED ae69f1853adcb20bafbec9cd6176171048d07eb6 at2026-10-11T06:09:32Z,
+exacthead18b334ed81c59954b200a8de6138d8aa5ccad78e;CI38117005318passed1m17s.
+Do not repeat completed PR15/16/17 checks or merges. All repair publishing done.
 
 ### Verified current batch
 
@@ -61,35 +63,59 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens70,754,516 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens72,001,400 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,
 60unsupported0wrong/3116; memory41/calculations27/stories47. No new evaluation
 needed on unchangedtracks; PR16 readingroles/linkedfacts experiments remainrejected.
 
-### Sole live worker and next actions
+### Latest completed experiments and sole live worker
 
-RATEWORDS PID3036374, scopeglassmind-continuous-ratewords.scope confirmedACTIVE
-8GiB/0swap. WorktreeWORK/ratewords at e03437a, runWORK/ratewords-run,
-briefWORK/ratewords-task.txt. ForcedGPT6Astrafast/ChatGPT,noAPIenv. Ownscrates/
-quantities +newtools/quantities/ratewords. Extends reusable exacttypedconstraints
-for multi-clause rate/amount/duration, fullyconsumedEnglish; no template/answerlookup,
-implicitunit/positivity assumptions. BoundedTRAIN Problem-only inspection, one
-preregisteredrepresentation, no devretuning. Frozen corrected22rightMathQAbinary/
-full/sample/synthetic reports copiedintoownrun; existingtrain/validationparquet and
-pyarrow readonlymounted. Acceptance>=3additional semanticallyvalidcorrectanswers,
-all25oldanswerrecords unchanged, all3116synthetictriples identical, nonewwrong;
-independentFraction/unitrecomputation ofEVERYnewanswer. First100thenfull4475,
-all1229unparseablegoldrowsretained. Parent main-talk and fullindependentreplay
-beforepublishing acceptedcandidate. No newdata/dependencies/models expected.
+RATEWORDS COMPLETE/REJECTED. Scopeinactive, authunlinked. Original24files/121,018
+bytes archived/hashverified atWORK/ratewords-run/submitted, copied to roottools/
+quantities/ratewords but NOT yetcommitted or independentlyreviewed. Original
+worktreeWORK/ratewords retained untilparent artifact/semanticreview and finalhash
+verification. Runtimefullyrestored. Candidatefull4475:23right4444refused8wrong vs
+22/4450/3. All25oldanswerrecords and3116synthetictriples preserved; sixnewanswers
+independentlycomputed, five scoredwrong becauselegacygoldnormalizer returnsNone.
+Original acceptance>=3newcorrect/nonewwrong FAILED; notretroactivelyrescued.
+Worker13tests/43probes/50composition/55absolutechecks pass. No newdownloads.
 
-Next: publishverifiedrepair+auditbatch after exact-headrequiredCI, then review
-ratewords when terminal/archiveoriginalsfirst. Reading needs stronger supervision
-for unsupported questions; previoussupport androlefeature experiments failed.
-Dialogue needs semantic span/usefulness representation, not aloweredCALgate.
-Preserve stopped dirty oldloop. Stoponlyownedjobs onuserstop; nevercompletegoal
-at a milestone. No active parent benchmarkjobs remain.
+SQuAD2 baseline COMPLETE. PinnedpublicTRAIN/DEV46,494,161bytes downloaded into
+WORK/readingqa2-source, same eee5fdbrevision, CCBYSA4; officialscorer/MITlicense
+reused. TRAIN130319incl43498unanswerable;DEV11873incl5945unanswerable. No test or
+externalpredictions. Frozenv1first200 thenfull:433substantivecorrect,5140correct
+expectedrefusals,5064unsupportedanswerable,1236wrong. Selectedprecision25.9437%,
+officialEM46.94685/F147.43594, rawEM11.74935/F117.08871. All-refuse5945exact beats
+v1official5574, so futureacceptance needs substantivecoverage and thatcomparator.
+One wrongpredictionA normalizestoempty andearns officialcredit; preservedofficial
+metric plusseparate5573correct diagnostic. Initialcount assertion caught it AFTER
+completeinference; reusedfrozenpredictions forcorrection, no repeatinference.
+Datajob30781 andbaseline16989/93769 COMPLETE;16989exit1wasdiagnosticassertion,
+notinferencefailure. tools/reading/qa2/{README.md,source.json,baseline.json,baseline.py}
+are newlocalunpublishedartifacts; rawWORK/coordinator/qa2-baseline. No newmodel yet.
+
+MATHMETRIC is soleliveworker:PID3143654, scopeglassmind-continuous-mathmetric.scope
+confirmedACTIVE8GiB/0swap. WorktreeWORK/mathmetric at18b334e,runWORK/mathmetric-run,
+briefWORK/mathmetric-task.txt. ForcedGPT6AstrafastChatGPT,noAPIenv. Owns ONLYnew
+ tools/quantities/metric-v2. Separateoffline evaluatoraudit, noRust/runtime orlegacy
+scorermodification. TRAINcorrect/options/Problem read permitted ONLYforgroundtruth
+parsing; noformula/rationale/heldout. Freezegeneralunambiguousnormalization and
+adversarialtests BEFOREDEVoptioninspection/rescoring. ExactFraction/explicitunits,
+noarbitrarydigitextraction, roundingrelaxation orcandidate-matching. Preserve all
+4475rows, legacy1229unparseable/history and rejectedratewordsdecision. Verifyfrozen
+25/31answerrecords, allquestionhash/order/counts, rescoreBOTH underexplicitlyversioned
+newmetriconlyifjustified; independentexplanationeverychangedgrade. No inference
+oracceptance ofratecandidate. Parentreviewsmetric/rebaselineasdistinctwork before
+any futureprospectivecandidatecriterion. Baseline/candidatereports/Englishaudit
+copiedtoownrun; existingMathQAtrain/validationparquet/pyarrow readonlymounted.
+
+Next: reviewratewordsoriginalartifacts/semantics; reviewmathmetricwhenterminal
+andarchivefirst. Reading follow-up cannowusegenuineunanswerableTRAINsupervision,
+preregisterfit/cal/gatesbeforecandidate. Preserve oldv1 model and independentv2
+series, exactofficialscorer andstrictdiagnostic. No activeparentbenchmarkjobs.
+Goalactive; preserve oldstoppeddirtyloop, stoponlyownedworkersonuserstop.
 
 ## Historical checkpoints (superseded by current state above)
 

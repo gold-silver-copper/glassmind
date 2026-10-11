@@ -438,6 +438,19 @@
         "reasoning_output_tokens": 8828
       },
       "source": "REJECTED at preregistered99%CALspanprecision:458/470at32; no candidateDEV. Runtime restored; parent independently recomputed all thresholds."
+    },
+    {
+      "track": "ratewords-continuous",
+      "started_unix": 1791698509.6617227,
+      "finished_unix": 1791698861.3015156,
+      "usage": {
+        "input_tokens": 1222001,
+        "cached_input_tokens": 1147520,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 24883,
+        "reasoning_output_tokens": 6079
+      },
+      "source": "REJECTED typedtraversal:22to23correct,3to8wrong under frozenlegacy metric; all25oldanswers/3116synthetictriplespreserved. Five newly scoredwrong have unparseablegold; independentmetric audit queued, not a retroactiveacceptance."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
