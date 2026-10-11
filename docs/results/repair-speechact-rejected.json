@@ -1,0 +1,27 @@
+{
+  "status": "rejected_after_full_dev",
+  "source_commit": "8aeb5ac1a888dcea571d4c0710e059005442b215",
+  "rollback_commit": "6a346c3",
+  "binary_sha256": "e7bf6dd5fa6c1f3306cdeb563ceb50c5839ffabac7224c78fe874b90db28639e",
+  "results_sha256": "a2c7933d70ec10bb7a7ce25f95a3000413f107a236a288928ae587cd61724ba1",
+  "total": 765,
+  "baseline_passes": 180,
+  "candidate_passes": 53,
+  "refused": 712,
+  "failed": 0,
+  "previous_passes_lost": 127,
+  "retained": 53,
+  "independent": {
+    "positive_repairs": 8,
+    "total_positive": 8,
+    "unrequested_edits": 0,
+    "old_unrequested_edits": 9,
+    "status_proxy_v1": 5,
+    "status_proxy_v2": 6,
+    "status_total": 6,
+    "legacy_native_repairs": 15
+  },
+  "reason": "Local authored coverage failed to represent real request prose; full gate rejected and runtime rolled back. No scoring changes.",
+  "runtime_integration": false,
+  "report": "tools/coding-repair-speech/parent/revision/VALIDATION.md"
+}

@@ -1,0 +1,270 @@
+{
+  "base_commit": "1ab5b03643b34fcca338bb1744758ed240b0ef0a",
+  "source": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech",
+  "files": {
+    "crates/cli/src/coding.rs": {
+      "bytes": 24385,
+      "sha256": "1d4707de53b4adc6e4f2115df075f50a41ab998e7773b8995953840c62220490"
+    },
+    "crates/english-rust/src/lib.rs": {
+      "bytes": 75247,
+      "sha256": "aa73f466235f2700cc7650a152ed9d61bfe4f1d224f8b2ce2041d6930130613c"
+    },
+    "crates/english-rust/src/repair_requests.rs": {
+      "bytes": 14573,
+      "sha256": "cbb0aefb8afe5f6291c183b20a221f356d03f74c47359676b701478520d04515"
+    },
+    "tools/coding-repair-speech/EXPERIMENTS.md": {
+      "bytes": 2829,
+      "sha256": "b35206026b07192b223f65d0afd53c3f4fa88bc0aee258215aa80a21008dcd58"
+    },
+    "tools/coding-repair-speech/FROZEN.sha256": {
+      "bytes": 204,
+      "sha256": "04b3d678bcd266bd84e4b031de26db487d9318bb892db2091b636c2bbabfa0ab"
+    },
+    "tools/coding-repair-speech/HANDOFF.md": {
+      "bytes": 6827,
+      "sha256": "e0bbc9a743597e93f3c5ffd21ec9fe648fb0f3b1cff4fde3d1cd1a7efc7ef90d"
+    },
+    "tools/coding-repair-speech/HASHES.json": {
+      "bytes": 20262,
+      "sha256": "4ff242c72463da8e06206cb427f33fc55687a1c6add130004854956154a4b5e6"
+    },
+    "tools/coding-repair-speech/PLAN.md": {
+      "bytes": 1637,
+      "sha256": "618920e98cc1c2a345d6c0f9949d2aa467690a18d3f24cb26e4da39ca0cdfa4f"
+    },
+    "tools/coding-repair-speech/baseline-full.log": {
+      "bytes": 50,
+      "sha256": "9ab2f1037403b498a53e36f4a70610e63d1efbebbe0966e923be615885118b22"
+    },
+    "tools/coding-repair-speech/baseline-legacy-summary.json": {
+      "bytes": 128,
+      "sha256": "578dd19b69cbe4021f2fd54981a80a06498b651eeb8a3d08ed15ab2d2de60fb6"
+    },
+    "tools/coding-repair-speech/baseline-legacy.log": {
+      "bytes": 50,
+      "sha256": "8393dbb80bb76a13e7efba120baddb8fb2d669acd55b842bd706ceea69ecba93"
+    },
+    "tools/coding-repair-speech/baseline-sample.log": {
+      "bytes": 50,
+      "sha256": "1622235ac62035b27fba8b4067a27dbfe2d2312ab15664a8432e379f7472c4b2"
+    },
+    "tools/coding-repair-speech/baseline-summary.json": {
+      "bytes": 376,
+      "sha256": "b38a0178c2335a7999feda99727b6bed9783cf1cb82a114b6fb0aaaa89c64179"
+    },
+    "tools/coding-repair-speech/build-final-source.log": {
+      "bytes": 564,
+      "sha256": "094ba8fc70852e29fa2f93ffdd0792572af6167734447aaac7d596cf07070ece"
+    },
+    "tools/coding-repair-speech/build-final.log": {
+      "bytes": 270,
+      "sha256": "572289cfca5479bfc5de88263447470494ee4c64231c94caa8b57c6d2a8aaa60"
+    },
+    "tools/coding-repair-speech/build-last.log": {
+      "bytes": 510,
+      "sha256": "67402bacd3badb048f64e00979c977cb5bcb7500a8fc5a51c646e0ae4e6ca40b"
+    },
+    "tools/coding-repair-speech/build.log": {
+      "bytes": 270,
+      "sha256": "5410b32d5d51d83a67751bb6252d8c3a2a6cdd2323780beaeef1f0c05bca0beb"
+    },
+    "tools/coding-repair-speech/candidate-confirm.log": {
+      "bytes": 26,
+      "sha256": "2f1f401724c32448a0e303d560a445d7cb09439a23d53fe4149e5e18b56fa9db"
+    },
+    "tools/coding-repair-speech/candidate-full.log": {
+      "bytes": 53,
+      "sha256": "80992ac62e4fb817ae625cbcbf05bebee9f425dcfe8651694a94c6166932510c"
+    },
+    "tools/coding-repair-speech/candidate-legacy.log": {
+      "bytes": 50,
+      "sha256": "8393dbb80bb76a13e7efba120baddb8fb2d669acd55b842bd706ceea69ecba93"
+    },
+    "tools/coding-repair-speech/candidate-sample.log": {
+      "bytes": 50,
+      "sha256": "30a09843ef57691188aa4de96e939e67864053a2b4f16001c4b8fae270776785"
+    },
+    "tools/coding-repair-speech/candidate-summary-before-context.json": {
+      "bytes": 376,
+      "sha256": "1170c1688150dbfd14357d1167f1be76109baafd8924591d48a3fbab6f83d3c2"
+    },
+    "tools/coding-repair-speech/candidate-supplied.log": {
+      "bytes": 50,
+      "sha256": "829cca4b539eedc91f83014f54e2c23733825713043e25d72f10211b7022fbdc"
+    },
+    "tools/coding-repair-speech/cases.tsv": {
+      "bytes": 2889,
+      "sha256": "b1daac6e84d0d80ae2f27284b6cdfbde9c5ff7113392f8b06760bcca95221043"
+    },
+    "tools/coding-repair-speech/clippy-final-source.log": {
+      "bytes": 510,
+      "sha256": "a0a7804e29677dc05ef9c691cd56ea1a7e5e3db6716e3d40e6123277a162e8cb"
+    },
+    "tools/coding-repair-speech/clippy-final.log": {
+      "bytes": 510,
+      "sha256": "d0e7d83fc8c80e0a2fd37398149d079fa023679be8dba6657de10f3d325ca3ad"
+    },
+    "tools/coding-repair-speech/clippy-last.log": {
+      "bytes": 510,
+      "sha256": "327eb2591c4791b420eea345bd5ba21ee792a46b1f42de32caad2a2e37ca7f22"
+    },
+    "tools/coding-repair-speech/clippy.log": {
+      "bytes": 3503,
+      "sha256": "f3439ea91c831939aab436611c60553326d8e2967ba111d62017044d0de185e9"
+    },
+    "tools/coding-repair-speech/confirm.py": {
+      "bytes": 1679,
+      "sha256": "5adec908975f879d6b201e1cf502dc595a6212a00573666eb0643dd7fa12a657"
+    },
+    "tools/coding-repair-speech/diagnostic-tests-final.log": {
+      "bytes": 717,
+      "sha256": "41dc3e2b84204caf49a8d63daa8b0270f0462c9b4dad50669cd3363181717874"
+    },
+    "tools/coding-repair-speech/diagnostic-tests.log": {
+      "bytes": 2291,
+      "sha256": "9b81a1280615746d5e7a6524825a426d960710968278c5cc01678c24e97a7761"
+    },
+    "tools/coding-repair-speech/final-confirm.log": {
+      "bytes": 26,
+      "sha256": "2f1f401724c32448a0e303d560a445d7cb09439a23d53fe4149e5e18b56fa9db"
+    },
+    "tools/coding-repair-speech/final-full.log": {
+      "bytes": 53,
+      "sha256": "d6f033e1bd5c7c98b3d3de5c0c3243ab989498a243191734f3ae172091869ae7"
+    },
+    "tools/coding-repair-speech/final-legacy.log": {
+      "bytes": 50,
+      "sha256": "f885d8f5d0e5c1801bbe394932e3f883c28a9c29acce2a9dbcc535a7197bd257"
+    },
+    "tools/coding-repair-speech/final-sample.log": {
+      "bytes": 50,
+      "sha256": "30a09843ef57691188aa4de96e939e67864053a2b4f16001c4b8fae270776785"
+    },
+    "tools/coding-repair-speech/final-supplied.log": {
+      "bytes": 50,
+      "sha256": "54984e2399293df39a2d2947b0ba7f58a58db3c09ecf8292657be0102defd738"
+    },
+    "tools/coding-repair-speech/fmt-context-final.log": {
+      "bytes": 95,
+      "sha256": "6bde1df4b8e0f5ca7851bb992e54dfc8c87556900e02b21c6e3c34d1c799186f"
+    },
+    "tools/coding-repair-speech/fmt-context.log": {
+      "bytes": 95,
+      "sha256": "e1397b1c733835f301e02fd59ee5ab3c53c146e3d01cbfb8e1d77eeed4dad21f"
+    },
+    "tools/coding-repair-speech/fmt-final-source.log": {
+      "bytes": 95,
+      "sha256": "5f0fbc813a57c87671f03ff98ddaba571c836af6ff2805ef3785f25be4afe51a"
+    },
+    "tools/coding-repair-speech/fmt-final.log": {
+      "bytes": 95,
+      "sha256": "7fefa29f7f3b1194a1f45fcce52fa83c9a583ffbd2e227696161eefd9cce25b6"
+    },
+    "tools/coding-repair-speech/fmt-last.log": {
+      "bytes": 95,
+      "sha256": "2bed5ddbfe53a4ea01ed5f1ffc0738dd32a907e3dae086c8246ed18e2269e2e3"
+    },
+    "tools/coding-repair-speech/fmt.log": {
+      "bytes": 95,
+      "sha256": "4fc33bb35e534d0d080d5d2d1d333f66dac4d201f6e1b43a98939bfcf15eba67"
+    },
+    "tools/coding-repair-speech/observations.py": {
+      "bytes": 1374,
+      "sha256": "bcb515063794f42dddeaec34111f27c43abb5e1d43682fd0fdca3aa8188a0c14"
+    },
+    "tools/coding-repair-speech/probe.py": {
+      "bytes": 3069,
+      "sha256": "ed97ac281f3cdf84f18e924033cd9eda029b7f8c138b774ecda1562da0f06b91"
+    },
+    "tools/coding-repair-speech/public-legacy.tsv": {
+      "bytes": 1065,
+      "sha256": "824f38f2a9d7e954aebf31e5e9d7b7b484de9df4e2183a8dc8b452e0f076e2ca"
+    },
+    "tools/coding-repair-speech/reproduce.sh": {
+      "bytes": 2038,
+      "sha256": "1cc3dc4930bf27193f21b8705fb6dd8cdf3791a97dcd5592fc07521116e6c6ef"
+    },
+    "tools/coding-repair-speech/summarize.py": {
+      "bytes": 1222,
+      "sha256": "feeb7d1b5c2a270b934bcd3c615e3e99bdfb9e3cceea466f33804a2aeb0cfc09"
+    },
+    "tools/coding-repair-speech/supplied.tsv": {
+      "bytes": 793,
+      "sha256": "df3db645a9f974c5a187224b18841345cbff1cc8b0cb6ce9fe2af024aa529861"
+    },
+    "tools/coding-repair-speech/tests-context-final.log": {
+      "bytes": 5365,
+      "sha256": "bf47ef476ffab8da2d0c6fd95fdf75ac3ac531bae93dfde853d7515cedb0d9d7"
+    },
+    "tools/coding-repair-speech/tests-context.log": {
+      "bytes": 4040,
+      "sha256": "fd50191287e398937e30874fc60f351a8ea8bff8b91c68dba81cc2bb8e0b9eff"
+    },
+    "tools/coding-repair-speech/tests-final-source.log": {
+      "bytes": 5304,
+      "sha256": "102202c12b7647b737fb39deadfc7097dd1ee5887948118d77f38ee2f21a8762"
+    },
+    "tools/coding-repair-speech/tests-final.log": {
+      "bytes": 5277,
+      "sha256": "39b7e79e53b0488c50d35a552900c5c0e8581345625b832259e9a7a3ddf4d33c"
+    },
+    "tools/coding-repair-speech/tests-first.log": {
+      "bytes": 6206,
+      "sha256": "977a3587ef736b8350720d24570840e1235a1a3c06fb782bbc0735c2ea48200b"
+    },
+    "tools/coding-repair-speech/tests-last.log": {
+      "bytes": 5250,
+      "sha256": "972e4090da4f4b576dd5f0197cd69cb053bf04bce9b1ac52db09500ab3df687d"
+    },
+    "tools/coding-repair-speech/verified-confirm.log": {
+      "bytes": 26,
+      "sha256": "2f1f401724c32448a0e303d560a445d7cb09439a23d53fe4149e5e18b56fa9db"
+    },
+    "tools/coding-repair-speech/verified-full-observations.json": {
+      "bytes": 41575,
+      "sha256": "90d41e66bb2b2688f6c1bf5af17360a80621520f85e1eb93af008199d1f9f726"
+    },
+    "tools/coding-repair-speech/verified-full-summary.json": {
+      "bytes": 376,
+      "sha256": "5242d7a07e062bbc86250ef16dd8af8784ff4dba9a59eee2eb65614182eb8adc"
+    },
+    "tools/coding-repair-speech/verified-full.log": {
+      "bytes": 53,
+      "sha256": "d6f033e1bd5c7c98b3d3de5c0c3243ab989498a243191734f3ae172091869ae7"
+    },
+    "tools/coding-repair-speech/verified-legacy-observations.json": {
+      "bytes": 9540,
+      "sha256": "1ffaf8c5fea1ad6835b5d0c6c50e2896d4e3d870d68361c55e73b281c61765dc"
+    },
+    "tools/coding-repair-speech/verified-legacy-summary.json": {
+      "bytes": 128,
+      "sha256": "d9b3ef2c1fdabf832fe3172f20391b64efae352b8f2bcbe78c842d0abfa1cf0e"
+    },
+    "tools/coding-repair-speech/verified-legacy.log": {
+      "bytes": 50,
+      "sha256": "f885d8f5d0e5c1801bbe394932e3f883c28a9c29acce2a9dbcc535a7197bd257"
+    },
+    "tools/coding-repair-speech/verified-sample.log": {
+      "bytes": 50,
+      "sha256": "30a09843ef57691188aa4de96e939e67864053a2b4f16001c4b8fae270776785"
+    },
+    "tools/coding-repair-speech/verified-supplied-observations.json": {
+      "bytes": 10564,
+      "sha256": "8852f481dda66fb15b5916ba90fc30a51e8f94d86d77ed7fdf670372377df845"
+    },
+    "tools/coding-repair-speech/verified-supplied-summary.json": {
+      "bytes": 367,
+      "sha256": "5b6e501de6c8f553b74f29461e6974938c7effe941d83e5febcfae7fa760b84b"
+    },
+    "tools/coding-repair-speech/verified-supplied.log": {
+      "bytes": 50,
+      "sha256": "54984e2399293df39a2d2947b0ba7f58a58db3c09ecf8292657be0102defd738"
+    },
+    "runtime.patch": {
+      "bytes": 22944,
+      "sha256": "5dcfa3986074264035f60429a871ceec5ac963de318c1b373c0dae23bcf4869d"
+    }
+  }
+}

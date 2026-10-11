@@ -413,10 +413,17 @@ forms and rejects incomplete or quoted rename instructions. Coding DEV improves
 A separate inherited issue remains in build/test repair routing: some status or
 quoted repair questions become repair commands, and `do` can then edit files.
 [The reproduced baseline](docs/results/repair-speechact-baseline.json) is retained;
-the repair-routing experiment has not yet been integrated.
+a strict repair-request whitelist was rejected after full DEV fell from 180 to 53 passes out of 765,
+despite passing its small independent checks. The published runtime remains unchanged.
+[Rejected coverage experiment](tools/coding-repair-speech/parent/revision/VALIDATION.md).
 
 Raw-text syntax input now separates productive English clitics while preserving
 exact source bytes. Complete word-sequence matches improve1,370→1,556/2,001 EWT
 dev sentences, with every old match retained;445 mismatches remain. Supplied-form
 parser output and weights are unchanged.
 [Independent tokenization audit and limits](tools/reading/raw-syntax/PARENT.md).
+
+Two fixed-width dependency search experiments were rejected: raw cumulative scores
+reduced labeled attachment accuracy, while normalized local scores gained only five
+edges, below the preregistered 250-edge target. The frozen parser and published scores
+remain unchanged. [Normalized search review](tools/reading/syntax-normalized/PARENT.md).

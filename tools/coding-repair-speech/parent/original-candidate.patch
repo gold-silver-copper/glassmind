@@ -1,0 +1,668 @@
+diff --git c/crates/cli/src/coding.rs w/crates/cli/src/coding.rs
+index 31ac02d..040734c 100644
+--- c/crates/cli/src/coding.rs
++++ w/crates/cli/src/coding.rs
+@@ -4,7 +4,10 @@ use std::collections::BTreeSet;
+ use std::sync::OnceLock;
+ 
+ use glassmind_english::English;
+-use glassmind_english_rust::rename_requests;
++use glassmind_english_rust::{
++    rename_requests,
++    repair_requests::{self, SpeechAct},
++};
+ use glassmind_meaning::interface::{Language, Next, Reading, Spoken, TokenSpan, Understanding};
+ use glassmind_meaning::{Action, Question, Reply, Trouble, Utterance};
+ use glassmind_models::IntentModel;
+@@ -67,8 +70,18 @@ impl CodingLanguage<'_> {
+         let meaning = match intent {
+             "build_status" => Utterance::Ask(Question::Passes(RustCheck::Build)),
+             "test_status" => Utterance::Ask(Question::Passes(RustCheck::Test)),
+-            "fix_build" => Utterance::Command(Action::Repair(RustCheck::Build)),
+-            "fix_tests" => Utterance::Command(Action::Repair(RustCheck::Test)),
++            "fix_build"
++                if repair_requests::speech_act(text)
++                    == Some(SpeechAct::Repair(RustCheck::Build)) =>
++            {
++                Utterance::Command(Action::Repair(RustCheck::Build))
++            }
++            "fix_tests"
++                if repair_requests::speech_act(text)
++                    == Some(SpeechAct::Repair(RustCheck::Test)) =>
++            {
++                Utterance::Command(Action::Repair(RustCheck::Test))
++            }
+             _ => return Vec::new(),
+         };
+         // Negated requests need a richer reading than a bag of words.
+@@ -95,6 +108,25 @@ impl Language<Rust> for CodingLanguage<'_> {
+         self.english.tokens(text)
+     }
+     fn understand(&self, text: &str) -> Understanding<Rust> {
++        self.repair_boundary(text, self.legacy_understand(text))
++    }
++    fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
++        let guesses = self.legacy_guesses(text);
++        match self.repair_boundary(text, Understanding::Readings(guesses)) {
++            Understanding::Readings(rs) => rs,
++            _ => Vec::new(),
++        }
++    }
++    fn say(&self, reply: &Reply<Rust>) -> Option<Spoken> {
++        self.english.say(reply)
++    }
++    fn next(&self, prefix: &str) -> Vec<Next> {
++        self.english.next(prefix)
++    }
++}
++
++impl CodingLanguage<'_> {
++    fn legacy_understand(&self, text: &str) -> Understanding<Rust> {
+         let understood = self.english.understand(text);
+         if let Understanding::Readings(ref rs) = understood
+             && (rename_requests::legacy_compatible(text)
+@@ -157,7 +189,7 @@ impl Language<Rust> for CodingLanguage<'_> {
+         }
+         understood
+     }
+-    fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
++    fn legacy_guesses(&self, text: &str) -> Vec<Reading<Rust>> {
+         if rename_requests::concerns_rename(text)
+             || rename_requests::request(text).is_some()
+             || Self::contains_rename(&self.english.understand(text))
+@@ -169,11 +201,45 @@ impl Language<Rust> for CodingLanguage<'_> {
+         guesses.extend(self.coding(text));
+         guesses
+     }
+-    fn say(&self, reply: &Reply<Rust>) -> Option<Spoken> {
+-        self.english.say(reply)
+-    }
+-    fn next(&self, prefix: &str) -> Vec<Next> {
+-        self.english.next(prefix)
++    fn repair_boundary(&self, text: &str, understood: Understanding<Rust>) -> Understanding<Rust> {
++        let act = repair_requests::speech_act(text);
++        let meaning = act.map(|a| match a {
++            SpeechAct::Repair(k) => Utterance::Command(Action::Repair(k)),
++            SpeechAct::Status(k) => Utterance::Ask(Question::Passes(k)),
++        });
++        let mut rs = match understood {
++            Understanding::Readings(rs) => rs,
++            failed if meaning.is_none() => return failed,
++            _ => Vec::new(),
++        };
++        rs.retain(|r| match r.meaning {
++            Utterance::Command(Action::Repair(RustCheck::Build | RustCheck::Test)) => {
++                meaning.as_ref() == Some(&r.meaning)
++            }
++            _ => true,
++        });
++        if let Some(meaning) = meaning {
++            // A complete status/request clause establishes its kind, independent
++            // of model confidence. Retain original exact readings for provenance.
++            rs.retain(|r| r.meaning == meaning);
++            if rs.is_empty() {
++                rs.push(Reading {
++                    meaning,
++                    rules: vec![RuleInfo::new("en.rust.repair_speech", HAND)],
++                    parse: "fully consumed repair speech act".into(),
++                    idle: 0,
++                    edits: 0,
++                    discarded: Vec::new(),
++                });
++            }
++        }
++        if rs.is_empty() {
++            Understanding::Failed {
++                trouble: Trouble::Unsupported,
++            }
++        } else {
++            Understanding::Readings(rs)
++        }
+     }
+ }
+ 
+@@ -483,3 +549,55 @@ mod rename_tests {
+         }
+     }
+ }
++
++#[cfg(test)]
++mod repair_speech_tests {
++    use super::*;
++    #[test]
++    fn frozen_authority_in_understand_and_guesses() {
++        let switches = Switches::all_on();
++        let english = English::new(glassmind_english_rust::rules(), &switches);
++        let language = CodingLanguage {
++            english: &english,
++            switches: &switches,
++        };
++        let mut failures = Vec::new();
++        for row in include_str!("../../../tools/coding-repair-speech/cases.tsv").lines() {
++            let (expected, text) = row.split_once('\t').unwrap();
++            let want = match expected {
++                "repair_build" => Some(Utterance::Command(Action::Repair(RustCheck::Build))),
++                "repair_tests" => Some(Utterance::Command(Action::Repair(RustCheck::Test))),
++                "status_build" => Some(Utterance::Ask(Question::Passes(RustCheck::Build))),
++                "status_tests" => Some(Utterance::Ask(Question::Passes(RustCheck::Test))),
++                "refuse" => None,
++                _ => panic!("invalid authored case"),
++            };
++            let understood = language.understand(text);
++            let rs = match understood {
++                Understanding::Readings(rs) => rs,
++                _ => vec![],
++            };
++            let guesses = language.guesses(text);
++            let safe = |rs: &[Reading<Rust>]| {
++                rs.iter().all(|r| {
++                    !matches!(
++                        r.meaning,
++                        Utterance::Command(Action::Repair(RustCheck::Build | RustCheck::Test))
++                    )
++                })
++            };
++            let okay = match want {
++                Some(ref m) => {
++                    !rs.is_empty()
++                        && rs.iter().all(|r| &r.meaning == m)
++                        && guesses.iter().all(|r| &r.meaning == m)
++                }
++                None => safe(&rs) && safe(&guesses),
++            };
++            if !okay {
++                failures.push(format!("{text}: {rs:?}; guesses={guesses:?}"));
++            }
++        }
++        assert!(failures.is_empty(), "{}", failures.join("\n"));
++    }
++}
+diff --git c/crates/english-rust/src/lib.rs w/crates/english-rust/src/lib.rs
+index 640f4e3..1210cb0 100644
+--- c/crates/english-rust/src/lib.rs
++++ w/crates/english-rust/src/lib.rs
+@@ -7,6 +7,7 @@ pub mod add_fields;
+ pub mod declared_types;
+ pub mod identifier_roles;
+ pub mod rename_requests;
++pub mod repair_requests;
+ 
+ use glassmind_english::{Cat, Number, Sem, VerbForm, word};
+ use glassmind_grammar::Rule;
+diff --git 1/crates/english-rust/src/repair_requests.rs 2/crates/english-rust/src/repair_requests.rs
+new file mode 100644
+index 0000000..a7cf819
+--- /dev/null
++++ 2/crates/english-rust/src/repair_requests.rs
+@@ -0,0 +1,471 @@
++//! Bounded speech acts for repair authority. Only a complete positive request
++//! licenses a repair; quotation contents are data, never reparsed as clauses.
++use glassmind_world_rust::checks::RustCheck;
++
++#[derive(Clone, Copy, Debug, PartialEq, Eq)]
++pub enum SpeechAct {
++    Repair(RustCheck),
++    Status(RustCheck),
++}
++
++#[derive(Clone)]
++struct Token {
++    text: String,
++    quoted: bool,
++}
++fn tokens(text: &str) -> Option<Vec<Token>> {
++    if text.len() > 4096 {
++        return None;
++    }
++    let mut rest = text.trim();
++    let mut out = Vec::new();
++    while let Some(c) = rest.chars().next() {
++        let (word, len, quoted) = if matches!(c, '`' | '"' | '“') {
++            let close = if c == '“' { '”' } else { c };
++            let body = &rest[c.len_utf8()..];
++            let end = body.find(close)?;
++            (&body[..end], c.len_utf8() + end + close.len_utf8(), true)
++        } else {
++            let len = if c.is_alphanumeric() || c == '_' {
++                rest.char_indices()
++                    .find(|(_, c)| !(c.is_alphanumeric() || matches!(c, '_' | '\'' | '’' | '-')))
++                    .map_or(rest.len(), |(i, _)| i)
++            } else {
++                c.len_utf8()
++            };
++            (&rest[..len], len, false)
++        };
++        out.push(Token {
++            text: word.to_lowercase().replace('’', "'"),
++            quoted,
++        });
++        if out.len() > 128 {
++            return None;
++        }
++        rest = rest[len..].trim_start();
++    }
++    Some(out)
++}
++#[derive(Clone)]
++struct Cursor<'a> {
++    ts: &'a [Token],
++    at: usize,
++}
++impl Cursor<'_> {
++    fn eat(&mut self, phrase: &str) -> bool {
++        let mut at = self.at;
++        for w in phrase.split_whitespace() {
++            if !self.ts.get(at).is_some_and(|t| !t.quoted && t.text == w) {
++                return false;
++            }
++            at += 1;
++        }
++        self.at = at;
++        true
++    }
++    fn one(&mut self, choices: &[&str]) -> bool {
++        choices.iter().any(|s| self.eat(s))
++    }
++    fn id(&mut self) -> bool {
++        let Some(t) = self.ts.get(self.at) else {
++            return false;
++        };
++        // Source identifiers may be quoted, but quoted commands are not names.
++        if !t.quoted {
++            return false;
++        }
++        let mut cs = t.text.chars();
++        if !cs.next().is_some_and(|c| c.is_alphabetic() || c == '_')
++            || !cs.all(|c| c.is_alphanumeric() || matches!(c, '_' | '-'))
++        {
++            return false;
++        }
++        self.at += 1;
++        true
++    }
++    fn named_id(&mut self) -> bool {
++        let Some(t) = self.ts.get(self.at) else {
++            return false;
++        };
++        let mut cs = t.text.chars();
++        if !cs.next().is_some_and(|c| c.is_alphabetic() || c == '_')
++            || !cs.all(|c| c.is_alphanumeric() || matches!(c, '_' | '-'))
++        {
++            return false;
++        }
++        self.at += 1;
++        true
++    }
++    fn source_name(&mut self) -> bool {
++        let Some(t) = self.ts.get(self.at) else {
++            return false;
++        };
++        if !t.quoted
++            && [
++                "if", "unless", "when", "while", "not", "never", "don't", "do", "could", "would",
++                "should", "can", "will", "please", "fix", "repair", "explain", "delete", "rename",
++                "and", "or", "then",
++            ]
++            .contains(&t.text.as_str())
++        {
++            return false;
++        }
++        self.named_id()
++    }
++    fn path(&mut self) -> bool {
++        if !self.source_name() {
++            return false;
++        }
++        loop {
++            let saved = self.clone();
++            if self.one(&[": :", "/", "."]) && self.source_name() {
++                continue;
++            }
++            *self = saved;
++            return true;
++        }
++    }
++    fn diagnostic(&mut self) -> bool {
++        if !self.eat("cannot find")
++            || !self.one(&["value", "function", "trait", "type", "module"])
++            || !self.id()
++        {
++            return false;
++        }
++        self.eat("in this scope");
++        true
++    }
++    fn evidence(&mut self) -> bool {
++        if self.one(&["i'm seeing", "i am seeing"]) {
++            let Some(t) = self.ts.get(self.at) else {
++                return false;
++            };
++            if !t.text.starts_with('e')
++                || !t.text[1..].chars().all(|c| c.is_ascii_digit())
++                || t.text.len() != 5
++            {
++                return false;
++            }
++            self.at += 1;
++            if !self.eat(",") {
++                return false;
++            }
++        }
++        if self.ts.get(self.at).is_some_and(|t| t.quoted) {
++            self.at += 1;
++            if self.eat("(") {
++                let Some(t) = self.ts.get(self.at) else {
++                    return false;
++                };
++                if t.quoted
++                    || t.text.len() != 5
++                    || !t.text.starts_with('e')
++                    || !t.text[1..].chars().all(|c| c.is_ascii_digit())
++                {
++                    return false;
++                }
++                self.at += 1;
++                if !self.eat(")") {
++                    return false;
++                }
++            }
++            true
++        } else {
++            self.diagnostic()
++        }
++    }
++    fn example(&mut self) -> bool {
++        if !self.one(&["e . g .", "for example", "like"]) {
++            return false;
++        }
++        self.eat("one in");
++        self.path()
++    }
++    fn courtesy(&mut self) {
++        self.one(&["please", "pls"]);
++        self.one(&[
++            "could you",
++            "can you",
++            "would you",
++            "will you",
++            "can u",
++            "i would like you to",
++            "i'd like you to",
++            "i want you to",
++        ]);
++        self.one(&["please", "pls"]);
++    }
++    fn end(&mut self) -> bool {
++        self.eat(",");
++        self.one(&["please", "pls"]);
++        self.one(&[".", "?", "!"]);
++        if self.one(&["thanks", "thank you"]) {
++            self.one(&[".", "!"]);
++        }
++        self.at == self.ts.len()
++    }
++    fn target(&mut self) -> Option<RustCheck> {
++        let determined = self.one(&["all the", "all", "the", "this", "these"]);
++        self.one(&["failing", "broken"]);
++        // Bare source names before a check noun require a determiner. An
++        // introductory verb ("suppose build ...") is not a source modifier.
++        if !self.id() && determined {
++            let saved = self.clone();
++            if self.source_name() {
++                let next = self.ts.get(self.at);
++                if !next.is_some_and(|t| {
++                    !t.quoted && ["build", "tests", "test"].contains(&t.text.as_str())
++                }) {
++                    *self = saved;
++                }
++            }
++        }
++        let kind = if self.one(&["unit tests", "test suite", "tests", "test"]) {
++            RustCheck::Test
++        } else if self.one(&[
++            "compiler errors",
++            "compilation errors",
++            "compile errors",
++            "compile erors",
++            "build",
++            "compilation",
++            "project",
++            "crate",
++            "code",
++        ]) {
++            RustCheck::Build
++        } else {
++            return None;
++        };
++        self.one(&["errors", "issues", "failures"]);
++        if self.eat("for function") && !self.named_id() {
++            return None;
++        }
++        Some(kind)
++    }
++    fn location(&mut self) -> bool {
++        if self.eat("in") {
++            self.source_name()
++        } else {
++            true
++        }
++    }
++    fn predicate(&mut self, kind: RustCheck) -> bool {
++        match kind {
++            RustCheck::Build => self.one(&[
++                "to compile",
++                "compile",
++                "compiles",
++                "compiling",
++                "builds",
++                "pass",
++                "passes",
++                "passing",
++                "working",
++                "green",
++            ]),
++            RustCheck::Test => {
++                self.one(&["to pass", "pass", "passes", "passing", "working", "green"])
++            }
++            _ => false,
++        }
++    }
++    fn subject(&mut self) -> Option<RustCheck> {
++        let saved = self.clone();
++        if let Some(k) = self.target() {
++            return Some(k);
++        }
++        *self = saved;
++        self.source_name().then_some(RustCheck::Build)
++    }
++    fn status(&mut self) -> Option<RustCheck> {
++        let auxiliary = self.one(&["does", "do", "can", "is", "are"]);
++        if !auxiliary {
++            return None;
++        }
++        let k = self.subject()?;
++        (self.predicate(k) && self.end()).then_some(k)
++    }
++    fn check_request(&mut self) -> Option<RustCheck> {
++        self.courtesy();
++        if !self.one(&["check whether", "check if", "check that"]) {
++            return None;
++        }
++        let k = self.subject()?;
++        (self.predicate(k) && self.end()).then_some(k)
++    }
++    fn repair(&mut self, context: Option<RustCheck>) -> Option<RustCheck> {
++        self.courtesy();
++        let causative = if self.one(&["fix", "repair", "resolve", "correct"]) {
++            self.one(&["things so", "it so", "so"])
++        } else if self.one(&["make", "get"]) {
++            true
++        } else {
++            return None;
++        };
++        let bare = self.clone();
++        if let Some(k) = context
++            && !causative
++            && self.end()
++        {
++            return Some(k);
++        }
++        *self = bare;
++        let k = if self.one(&["it", "them", "they"]) {
++            if let Some(k) = context {
++                k
++            } else if causative && self.one(&["compile", "compiles", "compiling"]) {
++                return self.end().then_some(RustCheck::Build);
++            } else {
++                return None;
++            }
++        } else {
++            let saved = self.clone();
++            if let Some(k) = self.target() {
++                k
++            } else if causative {
++                *self = saved;
++                if !self.source_name() {
++                    return None;
++                }
++                RustCheck::Build
++            } else {
++                return None;
++            }
++        };
++        if causative && !self.predicate(k) {
++            return None;
++        }
++        self.eat("again");
++        if !self.location() {
++            return None;
++        }
++        if self.one(&["so it", "so they"]) && !self.predicate(k) {
++            return None;
++        }
++        self.eat("again");
++        let tail = self.clone();
++        if self.eat(",") {
++            let after_comma = self.clone();
++            if !(self.diagnostic() || {
++                *self = after_comma;
++                self.example()
++            }) {
++                *self = tail;
++            }
++        }
++        self.end().then_some(k)
++    }
++    fn context(&mut self) -> Option<RustCheck> {
++        let existential = self.eat("there are");
++        self.eat("some");
++        let k = self.subject()?;
++        if !self.location() {
++            return None;
++        }
++        if !existential
++            && !self.one(&[
++                "is broken",
++                "is failing",
++                "are failing",
++                "fails",
++                "broke",
++                "does not compile",
++                "doesn't compile",
++                "doesn't build",
++            ])
++        {
++            return None;
++        }
++        if self.eat("with") && !self.evidence() {
++            return None;
++        }
++        if !self.one(&[".", ","]) {
++            return None;
++        }
++        let saved = self.clone();
++        if self.evidence() || {
++            *self = saved.clone();
++            self.example()
++        } {
++            if !self.one(&[".", ","]) {
++                return None;
++            }
++        } else {
++            *self = saved;
++        }
++        Some(k)
++    }
++}
++
++/// Parse the entire supported utterance. None carries no repair permission;
++/// callers must still retain unrelated, independently supported actions.
++pub fn speech_act(text: &str) -> Option<SpeechAct> {
++    let ts = tokens(text)?;
++    let c = Cursor { ts: &ts, at: 0 };
++    if let Some(k) = c.clone().status().or_else(|| c.clone().check_request()) {
++        return Some(SpeechAct::Status(k));
++    }
++    if let Some(k) = c.clone().repair(None) {
++        return Some(SpeechAct::Repair(k));
++    }
++    let mut c = c;
++    let context = c.context()?;
++    c.repair(Some(context)).map(SpeechAct::Repair)
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    #[test]
++    fn existing_public_diagnostic_requests_and_outer_scope() {
++        for row in include_str!("../../../tools/coding-repair-speech/public-legacy.tsv").lines() {
++            let (kind, text) = row.split_once('\t').unwrap();
++            let k = if kind == "repair_build" {
++                RustCheck::Build
++            } else {
++                RustCheck::Test
++            };
++            assert_eq!(speech_act(text), Some(SpeechAct::Repair(k)), "{text}");
++        }
++        for text in [
++            "Suppose build is broken. Please fix it.",
++            "Imagine tests are failing. Fix them.",
++            "Assume build is broken, can you fix it?",
++        ] {
++            assert_eq!(speech_act(text), None, "{text}");
++        }
++        for context in [
++            "The build is broken.",
++            "The crate build fails with \"missing symbol\" (E0405).",
++            "The tests are failing.",
++        ] {
++            for request in [
++                "Could you explain how to fix it?",
++                "Please fix it only if I confirm.",
++                "Don't fix it.",
++                "Please fix it and delete the tests.",
++                "\"Please fix it\".",
++            ] {
++                let text = format!("{context} {request}");
++                assert_eq!(speech_act(&text), None, "{text}");
++            }
++        }
++    }
++
++    #[test]
++    fn frozen_complete_speech_acts() {
++        for row in include_str!("../../../tools/coding-repair-speech/cases.tsv").lines() {
++            let (expected, text) = row.split_once('\t').unwrap();
++            let want = match expected {
++                "repair_build" => Some(SpeechAct::Repair(RustCheck::Build)),
++                "repair_tests" => Some(SpeechAct::Repair(RustCheck::Test)),
++                "status_build" => Some(SpeechAct::Status(RustCheck::Build)),
++                "status_tests" => Some(SpeechAct::Status(RustCheck::Test)),
++                "refuse" => None,
++                _ => panic!("invalid authored case"),
++            };
++            assert_eq!(speech_act(text), want, "{text}");
++        }
++    }
++}

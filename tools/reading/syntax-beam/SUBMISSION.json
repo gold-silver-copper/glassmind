@@ -1,0 +1,140 @@
+{
+  "status": "rejected_runtime_rolled_back",
+  "files": [
+    {
+      "path": "tools/reading/syntax-beam/ARCHIVE.json",
+      "bytes": 250,
+      "sha256": "e53c0e04b52606955d00d41031bbf7c43b3fc2ec968af9621acc6c34072d157a"
+    },
+    {
+      "path": "tools/reading/syntax-beam/ARTIFACTS.json",
+      "bytes": 14326,
+      "sha256": "0a0a03466a223e18c3738d5ccb657e4affc77abc36786462a85b279857272c12"
+    },
+    {
+      "path": "tools/reading/syntax-beam/BOUND-NOTE.md",
+      "bytes": 397,
+      "sha256": "40a6ef33c2d72e268e85360dcab20bc3c0c314127b872ca915d131be1969a0a9"
+    },
+    {
+      "path": "tools/reading/syntax-beam/FREEZE.json",
+      "bytes": 4095,
+      "sha256": "c62c88c91cd43a0e64f400acb9a0233bd36b094f3050a5581cdf3f4782172521"
+    },
+    {
+      "path": "tools/reading/syntax-beam/HANDOFF.md",
+      "bytes": 10408,
+      "sha256": "b7fd2c0d741b86e5abd39acc87c575b712e39b816c7a56e05aa2864f5bf37246"
+    },
+    {
+      "path": "tools/reading/syntax-beam/IDENTITIES.json",
+      "bytes": 2156,
+      "sha256": "6be490d494d51eae72e687a0322352709af00eb562f4c436ca4984a65b7c26be"
+    },
+    {
+      "path": "tools/reading/syntax-beam/NOTICE.md",
+      "bytes": 899,
+      "sha256": "8968886b1fbd835d0571871c2f1979cbec9da7136e5a8cfa65faa6beacdfdd49"
+    },
+    {
+      "path": "tools/reading/syntax-beam/PLAN.md",
+      "bytes": 2406,
+      "sha256": "3531bbbd5b2eb0412a91ab2bf424b4f756649c3155f22c04214c5999784422fc"
+    },
+    {
+      "path": "tools/reading/syntax-beam/contrasts.jsonl",
+      "bytes": 3381,
+      "sha256": "eaef2988bf5f9b3ce6b009927a3340ed0cd8199a3b9337f868241b464affaad9"
+    },
+    {
+      "path": "tools/reading/syntax-beam/evaluate.py",
+      "bytes": 10027,
+      "sha256": "091b2825a592b89af56d5fd175930b00c189fb7fa465b54e7846f3628808cd8c"
+    },
+    {
+      "path": "tools/reading/syntax-beam/model-contract.rs",
+      "bytes": 1398,
+      "sha256": "073f659864642c088700fb4e8f24c90a26e13c4eae81a0acd19816b373f228f5"
+    },
+    {
+      "path": "tools/reading/syntax-beam/pre-edit.json",
+      "bytes": 441,
+      "sha256": "9e2d87ad748418d435ea522f7b15d9934a4ff9ee01797aac7188864cbb15740a"
+    },
+    {
+      "path": "tools/reading/syntax-beam/rejected.patch",
+      "bytes": 11008,
+      "sha256": "bf1e1ef1901d674cd0d30914c5824db7d153abbecb15dd1c8934cbc5e0ed1518"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/authored-losses.json",
+      "bytes": 3496,
+      "sha256": "d692da3f5bd85b377683debd3074375cade960a67e78cdb592d5fad3702ee278"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/baseline-score.json",
+      "bytes": 866,
+      "sha256": "ef5d1535c8c937ee867863c1abeccdd1b2529be132613a8f9c87c37d1d012deb"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/beam-model-check.log",
+      "bytes": 128,
+      "sha256": "1174cb5fbc90d499e60bf4e7dabf3c49f45d6ede00f8f859a74d66f63e951384"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/beam-score.json",
+      "bytes": 866,
+      "sha256": "766fe164cc8857f1748fee5891a2b02a7ec1919fa2cc5b586f31c7fcee5c413d"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/build.log",
+      "bytes": 282,
+      "sha256": "f14e4d2af293bc13fe25c972c034ed0fdccc94e8dd701c655d3a63b1e78e2945"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/clippy.log",
+      "bytes": 280,
+      "sha256": "3b7402de4c5de46d4d550c1a6c301e118a881988232883f6f4648a104a9fe4e4"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/contracts-report.json",
+      "bytes": 176,
+      "sha256": "94f4f14f94c81e22555af4db226a77635b3744a4df21883a5b8e0dd8c9ea05cb"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/final-verification.json",
+      "bytes": 291,
+      "sha256": "8e3e19b2bfe33219e5211d661a70d04e92fd006782544d6e263e4b1c67df6a7c"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/fmt.log",
+      "bytes": 95,
+      "sha256": "2d44faba144372031e36a5887b3e44358ead08f077b019d92d36919947f8ca7e"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/model-check.log",
+      "bytes": 115,
+      "sha256": "fa4c0ee02f7065b3d7c40005c9688c97048f84ab415c4875a33877b2b8d54687"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/sample-score.json",
+      "bytes": 305,
+      "sha256": "8d9d6d26a39799b3599f28f464e36219a8c31ea7ef291abdb807f8c5edcf9821"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/summary.json",
+      "bytes": 6048,
+      "sha256": "11a2d9107f6d9c3f4a6b02619a0d858279ed1fb7a513cbf90d61beda4f55717b"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reports/tests.log",
+      "bytes": 1356,
+      "sha256": "b59aa845a19ef870a7ea1c98349471fc7c4698e0e0f19d4ccc963d6fdc0c716d"
+    },
+    {
+      "path": "tools/reading/syntax-beam/reproduce.sh",
+      "bytes": 1727,
+      "sha256": "c1c1071a304cb9a06e0253878106a5ed2d0dcf033ee4abde8b99a3366183408c"
+    }
+  ]
+}

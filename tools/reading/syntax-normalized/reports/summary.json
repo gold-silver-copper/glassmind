@@ -1,0 +1,155 @@
+{
+  "baseline": {
+    "sentences": 2001,
+    "refused": 0,
+    "valid_trees": 2001,
+    "words": 25148,
+    "uas_correct": 20540,
+    "las_correct": 19423
+  },
+  "beam": {
+    "sentences": 2001,
+    "refused": 0,
+    "valid_trees": 2001,
+    "words": 25148,
+    "uas_correct": 20547,
+    "las_correct": 19428
+  },
+  "transitions": {
+    "all": {
+      "uas_correct->correct": 20527,
+      "las_correct->correct": 19411,
+      "las_wrong->wrong": 5708,
+      "sentence_wrong->wrong": 1173,
+      "uas_wrong->wrong": 4588,
+      "sentence_correct->correct": 828,
+      "uas_wrong->correct": 20,
+      "las_wrong->correct": 17,
+      "uas_correct->wrong": 13,
+      "las_correct->wrong": 12
+    },
+    "nonduplicate_forms": {
+      "uas_correct->correct": 20390,
+      "las_correct->correct": 19274,
+      "las_wrong->wrong": 5708,
+      "sentence_wrong->wrong": 1173,
+      "uas_wrong->wrong": 4588,
+      "sentence_correct->correct": 760,
+      "uas_wrong->correct": 20,
+      "las_wrong->correct": 17,
+      "uas_correct->wrong": 13,
+      "las_correct->wrong": 12
+    },
+    "duplicate_forms": {
+      "uas_correct->correct": 137,
+      "las_correct->correct": 137,
+      "sentence_correct->correct": 68
+    }
+  },
+  "authored": {
+    "cases": 24,
+    "edges": 72,
+    "baseline_correct": 72,
+    "beam_correct": 72,
+    "lost_correct": 0
+  },
+  "gates": {
+    "las": false,
+    "uas": true,
+    "trees": true,
+    "no_refusals": true,
+    "authored_preservation": true,
+    "default_forms_byte_identical": true,
+    "default_raw_byte_identical": true,
+    "independent_parent_contrasts": "pending"
+  },
+  "timings": {
+    "default_forms": {
+      "wall_seconds": 0.15617896802723408,
+      "peak_rss_kib": 60304,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/forms.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/default-forms.jsonl"
+      ]
+    },
+    "default_raw": {
+      "wall_seconds": 0.1765748909674585,
+      "peak_rss_kib": 60576,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/raw-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/default-raw.jsonl"
+      ]
+    },
+    "probes_greedy": {
+      "wall_seconds": 0.023640235071070492,
+      "peak_rss_kib": 59920,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/probe-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/probes-greedy.jsonl"
+      ]
+    },
+    "probes_beam": {
+      "wall_seconds": 0.024558000965043902,
+      "peak_rss_kib": 60400,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/probe-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/probes-beam.jsonl",
+        "--normalized-beam"
+      ]
+    },
+    "beam_sample": {
+      "wall_seconds": 0.0667057380778715,
+      "peak_rss_kib": 60416,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/sample-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/sample-predictions.jsonl",
+        "--normalized-beam"
+      ]
+    },
+    "beam_full": {
+      "wall_seconds": 0.4702367710415274,
+      "peak_rss_kib": 60348,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/forms.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/beam-predictions.jsonl",
+        "--normalized-beam"
+      ]
+    }
+  }
+}

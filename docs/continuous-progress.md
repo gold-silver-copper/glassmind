@@ -1,5 +1,94 @@
 # Continuous development checkpoint
 
+## Current checkpoint — full repair regression rejected; runtime restored
+
+The unlimited continuous goal remains active. WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+Root branch harness, lastsourcechange6a346c3 rolls back rejected8aeb5ac. Root crate
+files match published86b1e545 exactly; capped rollbackbuild19645 completed and main
+binary hash981f8b100cd82ec9edfa23f2c2d379f2dfb17976e6b32ebab2c68d335c6efdb7 matches
+published rawsyntax. PR35 remains latest merged (mergec9dd5e3, reviewed86b1e545,
+CI38131245655success); no openPR atlastquery. Coding180/765 andrawsyntax1556/2001
+remain published; no new runtime gain. Completed worker tokens148045514, excluding
+parent/interrupted and active repairveto/syntaxchildren workers.
+
+REPAIRSPEECH coordinator candidate8aeb5ac FAILED full765:53pass712refused0fail,
+all53retainedbut127 of180oldpasses lost. Session51761 COMPLETE; do notrerun. Exact
+results coordinator/repairspeech-full/results.jsonl SHA
+a2c7933d70ec10bb7a7ce25f95a3000413f107a236a288928ae587cd61724ba1.
+Fullcomparison in coordinator/repairspeech-review/revision/full-comparison.json and
+repo tools/coding-repair-speech/parent/revision/full-comparison.json. Original53-pass
+release e7bf6dd5fa6c1f3306cdeb563ceb50c5839ffabac7224c78fe874b90db28639e anddebug
+ e7a5c228f36c765f2623dcd054808909624cc7494f4e56d540038719d94ce752 remain frozen there.
+Originalworker67/parent66 archives and revisedsource snapshots preserved,verified
+before rollback andbefore inactive repairspeechworktree/auth removal (nowremoved).
+Both originalworker andcoordinator candidates rejected; no repairsource integrated.
+Local8/8nativepositive,0unrequestededits,15legacydo,20CLI+43English,workspace4smoke,
+30releasecontracts were real but insufficient; allsessionsCOMPLETE. Statusproxyv1=5/6,
+explicit Problems typecorrectionv2=6/6 witholdbaseline/originalgradespreserved.
+Do not claim all765 passed or alteroriginal68negative labels/oldworkerapplyexpectations.
+
+Only publicTRAIN requesttext from train-v3/inputs.jsonl was inspected afterfailure:
+172unique (91build/81test),no task.toml/solutions/hidden/generators read. Narrow
+whitelist missed shorthand/narrative/implicit context. Change hypothesis ratherthan
+addwhole-sentence templates. README/results/reviews nowdescribe failedfullgate.
+
+ACTIVE REPAIRVETO: PID1397043, scopeglassmind-continuous-repairveto.scope,
+WORK/repairveto branchcontinuous/repairveto at6a346c3; runWORK/repairveto-run.
+Astrafast/forcedChatGPT/noAPIenv,loginverified,outer8GiB0swap. Newbounded speech-act
+analysis vetoes Repair for explicitread-only/quoted/reported/negated/retracted/
+conditional/deferred/competing requests; preserves broadlegacypositive inference.
+This changes experimental scope, not originaltestlabels: old68 expectations remain
+reportedwithallfailures, not relabelled; implicitreports remain knownlegacyambiguity.
+Required original30parentcases/all9oldunrequestededitblocks/all8positive,full765all180
+retained/0failed; no claims ofuniversalrequestauthority. Workerowns coding.rs/newhelper/
+tools/coding-repair-veto only. TRAIN172plaintexts+kind preparedprovenancehashes; noIDs
+oranswers inruntime. Baseline main981f8 copied/hashverified. Do notinspectcandidate
+untilterminalarchive.
+Freshparent24cases×2modes atcoordinator/repairveto-independent frozenSHA
+20d0f745000ceda9c608d6d4b567321852c4a06d8a434d71f665841b25490187.
+Baseline session67365 COMPLETE:7/8 exactnativepositives (positive_2 unsupported),
+1/4correctstatuses,5unrequesteddoedits(status_0,negative_1,4,5,9),8negativeCommand
+previewmodecases. Allask--applyread-only. cases/check/query labels remain frozen;
+requirebaseline7retained,all8desiredpositives,4typedstatuses,zero unsupportedCommand
+previews/unrequestededits. Candidate notinspectedyet.
+
+SYNTAXNORM terminalREJECTED: independently rescored2001 LAS19423→19428 (+5 <250gate),
+UAS20540→20547/25148. LAS12correct→wrong/17wrong→correct;UAS13/20;all828exacttrees
+retained;allvalid/no refusals. Independent36/40 and16/20 unchanged,0edgechanges.
+Original73archive61,209,688bytes,parent32/121,136bytes,55rawidentities166,885,684bytes,
+27freeze135,271,132bytes verified. Two rolledback source paths resolvedto frozen
+candidate sourcecopies;initialmanifestlistassumptionfixedwithoutchangingartifacts.
+Worktree/auth removed onlyafterreverification. Originals remain syntaxnorm-run;
+smallreports tools/reading/syntax-normalized +parent; docsresultsrejectedJSON.
+Two decoderobjectives exhausted; no thirdscore/width/temperaturetweak.
+
+ACTIVE SYNTAXCHILDREN: PID1410721, scopeglassmind-continuous-syntaxchildren.scope,
+WORK/syntaxchildren branchcontinuous/syntaxchildren at6a346c3; runWORK/syntaxchildren-run.
+RequiredAstrafast/ChatGPTlogin/noAPIkeys;outer8GiB0swapverified. Newtraining feature
+hypothesis secondoutermostleft/rightchild+head/tag/labelconjunctions(top2stack),
+<=32additionalfeatures, same2tag/3parserTRAINepochs/staticoracle/greedydecoder,
+oneTRAINmodel only,noDEVtuning. Newexplicit train --child-features/version dispatch;
+legacyv1load/save/defaulttrain/fullraw/forms muststaybyteidentical. Model<32MiB,
+allbounds unchanged. Workerreadinglib/standalone/newtools only; parentmainintegration.
+Gate>=19673LAS and>=20540UAS/all2001valid/no newrefusals plusparentcoreedgepreservation.
+Freshparent20modifier/question/rolecontrasts40edges frozen beforeinspection at
+coordinator/syntaxchildren-independent, casesSHA
+98474dd00e465f90b27f618165308b2d3fccd8efb3a1a5d2015f729db7e0b135.
+Baseline COMPLETE31/40coreedges,15/20allcorrect. No candidateinspected. Trainingdata
+pinnedEWTTRAIN/DEVonly,noofficialtest/download. Baselinebundle byteverified.
+
+Pendingrootchanges are rejected-evidence/README/results/checkpoint only; netcrate
+diff since86b1e545 is empty. Nextcommit/push these reviews as evidence-onlyPR36,
+exactheadCI+merge; no redundant fullbenchmark warranted foridenticalrestoredruntime.
+Then reviewterminalworkers/archiveoriginals,runfrozenparentgates,integrateonlyaccepted
+candidateandfullaffectedDEV/checks beforepublishing. Noothermodel/native/fulljobs
+remainactive; alloldfulls complete. Nextaftercurrentparserfeature experiment should
+revisit facts/dialogue or quantities with a genuinely differentrepresentation.
+Oldercheckpointdetailsbelow arehistorical.
+
+### Previous checkpoint details (superseded)
+
+
 ## Current checkpoint — PR34 merged; raw tokenizer validated locally
 
 The continuous goal remains active. WORK=/home/gsc/.cache/glassmind/continuous-20261010.

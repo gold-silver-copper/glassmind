@@ -1,0 +1,158 @@
+[
+  {
+    "name": "positive_0",
+    "text": "Fix the compiler error.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_1",
+    "text": "Please make this project compile.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_2",
+    "text": "Could you repair the build?",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_3",
+    "text": "The build is failing; please fix it.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_4",
+    "text": "I would like you to fix the compiler errors.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_5",
+    "text": "Please fix the build and preserve behavior.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_6",
+    "text": "Fix compilation, please.",
+    "expected": "repair_build"
+  },
+  {
+    "name": "positive_7",
+    "text": "Can you fix this Rust crate so it builds?",
+    "expected": "repair_build"
+  },
+  {
+    "name": "status_0",
+    "text": "Does the build pass?",
+    "expected": "status",
+    "check": "Build"
+  },
+  {
+    "name": "status_1",
+    "text": "Can this crate compile?",
+    "expected": "status",
+    "check": "Build"
+  },
+  {
+    "name": "status_2",
+    "text": "Are there any compiler errors?",
+    "expected": "status",
+    "check": "Build"
+  },
+  {
+    "name": "status_3",
+    "text": "Do all tests pass?",
+    "expected": "status",
+    "check": "Test"
+  },
+  {
+    "name": "status_4",
+    "text": "Is the test suite passing?",
+    "expected": "status",
+    "check": "Test"
+  },
+  {
+    "name": "status_5",
+    "text": "Does this code build?",
+    "expected": "status",
+    "check": "Build"
+  },
+  {
+    "name": "negative_0",
+    "text": "The manual says \"repair the build\". Please describe what it means.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_1",
+    "text": "What does \"fix compilation\" mean?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_2",
+    "text": "Explain why somebody might ask \"could you fix the tests?\"",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_3",
+    "text": "If I wanted the build fixed, how would I ask?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_4",
+    "text": "I might ask you to fix compilation tomorrow.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_5",
+    "text": "Please fix the build after I approve the proposed edit.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_6",
+    "text": "Only fix the compiler errors if I explicitly authorize you.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_7",
+    "text": "Do not repair the build; just describe its error.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_8",
+    "text": "Please explain how to repair the build.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_9",
+    "text": "Could you show me how to fix the tests?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_10",
+    "text": "The words `fix the build` appear in a comment; explain the comment.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_11",
+    "text": "I have not asked you to fix the compiler errors.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_12",
+    "text": "Suppose the instruction were \"fix the build\". What would happen?",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_13",
+    "text": "First tell me what the compiler error is, then wait for permission to change it.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_14",
+    "text": "Please fix the build and delete the tests.",
+    "expected": "no_mutating_action"
+  },
+  {
+    "name": "negative_15",
+    "text": "Does the build pass? Do not change any source files.",
+    "expected": "no_mutating_action"
+  }
+]

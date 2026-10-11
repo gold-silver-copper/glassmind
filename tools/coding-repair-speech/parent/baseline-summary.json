@@ -1,0 +1,28 @@
+{
+  "cases": 30,
+  "mode_cases": 60,
+  "positive_do_exact_native_repairs": [
+    "positive_0",
+    "positive_1",
+    "positive_2",
+    "positive_3",
+    "positive_4",
+    "positive_5",
+    "positive_6",
+    "positive_7"
+  ],
+  "ask_apply_stays_readonly_for_remedies": true,
+  "unrequested_do_edits": [
+    "status_1",
+    "status_4",
+    "negative_0",
+    "negative_4",
+    "negative_5",
+    "negative_6",
+    "negative_11",
+    "negative_12",
+    "negative_14"
+  ],
+  "status_correct_requests": 2,
+  "scope": "Actual ask--apply and do. Existing ask--apply preserves Remedy confirmation; positive native application is through do. No candidate inspected. All8 baseline-positive do repairs must remain, plus all6 typed status questions and no negative mutation."
+}

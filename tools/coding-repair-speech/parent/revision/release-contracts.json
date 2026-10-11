@@ -1,0 +1,221 @@
+{
+  "binary_sha256": "e7bf6dd5fa6c1f3306cdeb563ceb50c5839ffabac7224c78fe874b90db28639e",
+  "cases": [
+    {
+      "name": "positive_0",
+      "meaning": [
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "positive_1",
+      "meaning": [
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "positive_2",
+      "meaning": [
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "positive_3",
+      "meaning": [
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "positive_4",
+      "meaning": [
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "positive_5",
+      "meaning": [
+        "Command(Repair(Build))",
+        "Command(Repair(Build))",
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "positive_6",
+      "meaning": [
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "positive_7",
+      "meaning": [
+        "Command(Repair(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "status_0",
+      "meaning": [
+        "Ask(Passes(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "status_1",
+      "meaning": [
+        "Ask(Passes(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "status_2",
+      "meaning": [
+        "Ask(Problems(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "status_3",
+      "meaning": [
+        "Ask(Passes(Test))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "status_4",
+      "meaning": [
+        "Ask(Passes(Test))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "status_5",
+      "meaning": [
+        "Ask(Passes(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_0",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_1",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_2",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_3",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_4",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_5",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_6",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_7",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_8",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_9",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_10",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_11",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_12",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_13",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_14",
+      "meaning": [],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    },
+    {
+      "name": "negative_15",
+      "meaning": [
+        "Ask(Passes(Build))",
+        "Ask(Passes(Build))",
+        "Ask(Passes(Build))",
+        "Ask(Passes(Build))",
+        "Ask(Passes(Build))"
+      ],
+      "source_unchanged": true,
+      "debug_contract_identical": true
+    }
+  ]
+}

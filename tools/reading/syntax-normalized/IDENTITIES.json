@@ -1,0 +1,38 @@
+{
+  "base_source": "8aeb5ac1a888dcea571d4c0710e059005442b215",
+  "completed_utc": "2026-10-11T10:33:02.522342+00:00",
+  "files": {
+    "crates/reading/src/syntax.rs": {
+      "bytes": 43549,
+      "sha256": "aa1f023de5b6131e978924e0b495321556777da70af53dbcb5a3820fe054e221"
+    },
+    "crates/reading/src/bin/reading-syntax.rs": {
+      "bytes": 6134,
+      "sha256": "4b0e59137e69c09fa445098ca7df2b5277f00447b8cad8fd62fff66aa2e539cd"
+    },
+    "tools/reading/syntax-normalized/rejected.patch": {
+      "bytes": 12932,
+      "sha256": "c321e817790948ed6ab019bd64c250b256eeb0011caac7b3fcad220b77eec9a3"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/reading-syntax": {
+      "bytes": 12398512,
+      "sha256": "b15f1a0a548dea766fa9a360dd834e0060926866082e98272d7f640052b3d84a"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/baseline/model.bin": {
+      "bytes": 12554724,
+      "sha256": "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/beam-predictions.jsonl": {
+      "bytes": 1060061,
+      "sha256": "e008c7dd95ae8a06835a5afc2bc7688ba36bf10435d42f97a7ddab6108a338c2"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/default-forms.jsonl": {
+      "bytes": 949978,
+      "sha256": "059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxnorm-run/candidate/default-raw.jsonl": {
+      "bytes": 1995803,
+      "sha256": "4c7b1b65161ebb82bd4c5f1bb7a18646dba2b2d6c613f5986f6c0cd51dbe676a"
+    }
+  }
+}
