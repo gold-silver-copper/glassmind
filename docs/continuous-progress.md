@@ -34,8 +34,8 @@ goldcontextleft2197/4138,right2499/4138. Continuationgate>=3ppbotharguments
 Exact200originalnativefree replay required; noDEVtest orproductionmodelreplacement.
 ExternalRusthelper/code/model<=16MiB,alloutputs frozenatend.20minboundedbatch.
 
-NEXT: independently freeze/check gate and representation invariants whileworker
-runs. Do not inspect live artifacts or launchduplicateworker. When terminal,
+Parentgates frozen atWORK/coordinator/rolebinding-independent/gates.json before
+candidateinspection. NEXT: check representation invariants whileworker runs. Do not inspect live artifacts or launchduplicateworker. When terminal,
 archive/hashverify originalsource/reports/frozencandidate BEFOREinspection.
 EvaluatefixedTRAIN-onlygates, preserveallfailures; onlythenconsider separate DEV
 andsemanticacceptance. Otherqueues belowremainavailable,especiallycodingpublicTRAIN.
@@ -115,7 +115,7 @@ Independentall308records match original claims across20hashverifiedrawfiles.
 20schemaeligibleintervals vs18nonemptystrictinteriors:two haveadjacentboundarydays.
 Supplementalvalid100001recordfixture101901126bytes rejects at tighter16MiBcap;
 32MiB+1index rejects. Initialnullrecordcountfixture onlyschemafailure, honestlynoted
-in parent/limit-review.json. These reports are uncommitted aftersourcecommit.
+in parent/limit-review.json. These reports were included in the published batch.
 Worker56authored+100cachequeries54supported46unknown,20factstests passed.
 
 First200/full2821 standalone/facts-enabled/default-talk bytes ALLidentical to old
