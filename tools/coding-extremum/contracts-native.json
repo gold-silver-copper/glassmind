@@ -1,0 +1,184 @@
+[
+  {
+    "name": "i8_max",
+    "code": "pub fn reduce(\u6570\u636e: &[i8]) -> Option<i8> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 > \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i8]) { assert_eq!(reduce(v),v.iter().copied().max()); }\n   check(&[]); check(&[i8::MIN]); check(&[i8::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i8::MIN,0,i8::MAX]);\n  }",
+    "new": "<i8>::MIN",
+    "count": 1
+  },
+  {
+    "name": "i8_min",
+    "code": "pub fn reduce(\u6570\u636e: &[i8]) -> Option<i8> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 < \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i8]) { assert_eq!(reduce(v),v.iter().copied().min()); }\n   check(&[]); check(&[i8::MIN]); check(&[i8::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i8::MIN,0,i8::MAX]);\n  }",
+    "new": "<i8>::MAX",
+    "count": 1
+  },
+  {
+    "name": "i16_max",
+    "code": "pub fn reduce(\u6570\u636e: &[i16]) -> Option<i16> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 > \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i16]) { assert_eq!(reduce(v),v.iter().copied().max()); }\n   check(&[]); check(&[i16::MIN]); check(&[i16::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i16::MIN,0,i16::MAX]);\n  }",
+    "new": "<i16>::MIN",
+    "count": 1
+  },
+  {
+    "name": "i16_min",
+    "code": "pub fn reduce(\u6570\u636e: &[i16]) -> Option<i16> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 < \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i16]) { assert_eq!(reduce(v),v.iter().copied().min()); }\n   check(&[]); check(&[i16::MIN]); check(&[i16::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i16::MIN,0,i16::MAX]);\n  }",
+    "new": "<i16>::MAX",
+    "count": 1
+  },
+  {
+    "name": "i32_max",
+    "code": "pub struct Data { pub values: Vec<i32> }\npub fn reduce(\u6570\u636e: &Data) -> Option<i32> {\n if \u6570\u636e.values.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in &\u6570\u636e.values { if \u9879 > \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i32]) { assert_eq!(reduce(&Data { values: v.to_vec() }),v.iter().copied().max()); }\n   check(&[]); check(&[i32::MIN]); check(&[i32::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i32::MIN,0,i32::MAX]);\n  }",
+    "new": "<i32>::MIN",
+    "count": 1
+  },
+  {
+    "name": "i32_min",
+    "code": "pub struct Data { pub values: Vec<i32> }\npub fn reduce(\u6570\u636e: &Data) -> Option<i32> {\n if \u6570\u636e.values.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in &\u6570\u636e.values { if \u9879 < \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i32]) { assert_eq!(reduce(&Data { values: v.to_vec() }),v.iter().copied().min()); }\n   check(&[]); check(&[i32::MIN]); check(&[i32::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i32::MIN,0,i32::MAX]);\n  }",
+    "new": "<i32>::MAX",
+    "count": 1
+  },
+  {
+    "name": "i64_max",
+    "code": "pub fn reduce(\u6570\u636e: &[i64]) -> Option<i64> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 > \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i64]) { assert_eq!(reduce(v),v.iter().copied().max()); }\n   check(&[]); check(&[i64::MIN]); check(&[i64::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i64::MIN,0,i64::MAX]);\n  }",
+    "new": "<i64>::MIN",
+    "count": 1
+  },
+  {
+    "name": "i64_min",
+    "code": "pub fn reduce(\u6570\u636e: &[i64]) -> Option<i64> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 < \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i64]) { assert_eq!(reduce(v),v.iter().copied().min()); }\n   check(&[]); check(&[i64::MIN]); check(&[i64::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i64::MIN,0,i64::MAX]);\n  }",
+    "new": "<i64>::MAX",
+    "count": 1
+  },
+  {
+    "name": "i128_max",
+    "code": "pub struct Data { pub values: Vec<i128> }\npub fn reduce(\u6570\u636e: &Data) -> Option<i128> {\n if \u6570\u636e.values.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in &\u6570\u636e.values { if \u9879 > \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i128]) { assert_eq!(reduce(&Data { values: v.to_vec() }),v.iter().copied().max()); }\n   check(&[]); check(&[i128::MIN]); check(&[i128::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i128::MIN,0,i128::MAX]);\n  }",
+    "new": "<i128>::MIN",
+    "count": 1
+  },
+  {
+    "name": "i128_min",
+    "code": "pub struct Data { pub values: Vec<i128> }\npub fn reduce(\u6570\u636e: &Data) -> Option<i128> {\n if \u6570\u636e.values.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in &\u6570\u636e.values { if \u9879 < \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[i128]) { assert_eq!(reduce(&Data { values: v.to_vec() }),v.iter().copied().min()); }\n   check(&[]); check(&[i128::MIN]); check(&[i128::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[i128::MIN,0,i128::MAX]);\n  }",
+    "new": "<i128>::MAX",
+    "count": 1
+  },
+  {
+    "name": "isize_max",
+    "code": "pub fn reduce(\u6570\u636e: &[isize]) -> Option<isize> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 > \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[isize]) { assert_eq!(reduce(v),v.iter().copied().max()); }\n   check(&[]); check(&[isize::MIN]); check(&[isize::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[isize::MIN,0,isize::MAX]);\n  }",
+    "new": "<isize>::MIN",
+    "count": 1
+  },
+  {
+    "name": "isize_min",
+    "code": "pub fn reduce(\u6570\u636e: &[isize]) -> Option<isize> {\n if \u6570\u636e.is_empty() { return None; }\n let mut \u7ed3\u679c = 0;\n for &\u9879 in \u6570\u636e { if \u9879 < \u7ed3\u679c { \u7ed3\u679c = \u9879; } }\n Some(\u7ed3\u679c)\n}\n",
+    "test": "#[test] fn boundaries() {\n   fn check(v: &[isize]) { assert_eq!(reduce(v),v.iter().copied().min()); }\n   check(&[]); check(&[isize::MIN]); check(&[isize::MAX]); check(&[0]);\n   check(&[-9,-2,-6]); check(&[2,9,6]); check(&[isize::MIN,0,isize::MAX]);\n  }",
+    "new": "<isize>::MAX",
+    "count": 1
+  },
+  {
+    "name": "unguarded",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n \n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "effectful",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = std::hint::black_box(x); } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "conditional",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { if x != -99 { best = x; } } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "shadowing",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { let mut best = 0; if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "altered_result",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best + 0)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "extra_statement",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let _ = xs.len(); let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "alias",
+    "code": "type Number = i32;\npub fn reduce(xs: &[Number]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "custom_deref",
+    "code": "pub struct Items(pub Vec<i32>); impl std::ops::Deref for Items { type Target = [i32]; fn deref(&self)->&[i32]{ &self.0 } }\npub fn reduce(xs: &Items) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in &**xs { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&Items(vec![-8,-2])),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "attribute",
+    "code": "#[inline]\npub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "macro",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = { std::dbg!(x) }; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "iterator",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs.iter() { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "unknown_flow",
+    "code": "pub fn reduce(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x == -99 { break; } if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn fails() { assert_eq!(reduce(&[-8,-2]),Some(-2)); }",
+    "new": null,
+    "count": 0
+  },
+  {
+    "name": "two_passing",
+    "code": "pub fn left(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\npub fn right(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn either() { assert!(left(&[-8,-2]) == Some(-2) || right(&[-8,-2]) == Some(-2)); }",
+    "new": null,
+    "count": 2
+  },
+  {
+    "name": "two_passing_full",
+    "code": "pub fn left(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\npub fn right(xs: &[i32]) -> Option<i32> {\n if xs.is_empty() { return None; }\n let mut best = 0;\n for &x in xs { if x > best { best = x; } }\n Some(best)\n}\n",
+    "test": "#[test] fn either() {let inputs: &[&[i32]]=&[&[],&[i32::MIN],&[i32::MAX],&[0],&[-9,-2,-6],&[2,9,6],&[i32::MIN,0,i32::MAX]]; assert!(inputs.iter().all(|v|left(v)==v.iter().copied().max()) || inputs.iter().all(|v|right(v)==v.iter().copied().max()));}",
+    "new": null,
+    "count": 2
+  }
+]

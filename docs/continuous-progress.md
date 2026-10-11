@@ -3,21 +3,89 @@
 The unlimited goal is active. Milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 
-## Current batch and next action
+## Published milestone and active next experiment
 
-Latest source commits: 59494b6c61ae402f88d4ab5495877069729da5f4 argument swaps;
-eb8df4d dated facts/main;142cbe1 TRAIN arithmetic diagnostic. Full765 session47129
-COMPLETE:206pass/559refused/0fail, all203retained,3download-progressstyle gains,
-no regressions. Comparison WORK/coordinator/argumentswap-full/comparison.json,
-resultsSHA927848d34a2cbc7a17280a9db6e35360fc1d37d6f5669a0d7163500e73023abd.
+PR40 MERGED https://github.com/gold-silver-copper/glassmind/pull/40
+Reviewedhead3c0ad3dace4de37476808347f2012599abb63467; CI38141155006 passed85seconds.
+Merge0b2faad0623156c99e25d4f3a476b962bc48a0c2 at2026-10-11T12:57:38Z.
+Source59494b6c61ae402f88d4ab5495877069729da5f4argument swaps,eb8df4ddatedfacts,
+142cbe1TRAINdiagnostic. Push38194,PRcreation93358,merge76079 COMPLETE.
+Coding206/765,559refused0fail,all203retained;3download-progressstylegains.
+ResultsSHA927848d34a2cbc7a17280a9db6e35360fc1d37d6f5669a0d7163500e73023abd.
+Datedfacts andallregressiongates belowpass. Do not repeat publication or append
+its scoreboardpoints again. Knowncompletedworker tokens179721595.
 
-NEXT: finish publication of this verified batch. Source and reports are integrated;
-commit final README/scoreboard/checkpoint changes, push harness, create PR with
-concrete results, review exact head and merge only green matching head. No openPR
-at last check. Workspace/finalmain alreadypassed; no newsourcechanges sincechecks.
-PR39 is alreadymerged, notanoutstandingtask. Records appended:2factsseries eb8df4d
-and same rustbenchdataset/metric coding206 at59494b6; do not duplicate.
-Knowncompletedworker tokens171896511. Threeworkers terminal; no longjobs remain.
+Current experiment state (verified this continuation):
+
+- Extremum worker TERMINAL, archived1422files/87096407bytes before review.
+  WorktreeWORK/extremum, original frozen binarya6e9d59a..., TRAIN7→8/27.
+  Original candidate failed all15 parent repairs because inline cfg(test) modules
+  made the production source opaque. Coordinator revision skips only inline modules
+  with exact cfg(test) and doc attributes; production scope remains restricted.
+  Revised51+1 unit/integration/native checks, clippy and release passed, session57861.
+  Revised frozen binary12f7c1edb0d0c0e309b4ffe2adaf593b91cc71c4703c3543a41258e92cd86035.
+  Parent19:15/15 exact repairs,3 negatives unchanged, two-passing competing case
+  refused with complete choice.json evidence. All19 originals compiled/failed tests.
+  Original parent adapter preserved; syntax-only UFCS associated-constant comparison
+  accepts <i32>::MIN as i32::MIN without changing cases/labels/expected values.
+  WORK/coordinator/extremum-independent/revision contains plan, source, frozenbinary,
+  parentresults and choice-review. Full765 COMPLETE session69043:209pass/556refused/0fail,all206retained;
+  threewinter-highstyles gained. ResultsSHAfd8400d01239435fbdf43e89ed295ee8d32d69478af953234d2453906df3262c.
+  coordinator/extremum-full/comparison.json records baseline/runner andallchanges.
+- Timed matching worker TERMINAL (formerPID3109066), scopeinactive. Worktree
+  WORK/timedmatch, basea716079. Original archive245files/232157600bytes hashverified;
+  three publicdata symlinks materialized, credential paths excluded.
+  Worker reports51 authored/455 cache cases and2821 legacybytes pass. Not yet
+  independently accepted or integrated. Owned crates/facts +tools/facts/timed-matching.
+  ParentWORK/coordinator/timedmatch-independent froze35 cases (SHA5d535143...),
+  real101 queries (SHA6d3fbcee...), main16 (SHA2661ad0b...) before candidateinspection.
+  Independent rawclaim oracle agrees all21 matched-status authored cases; old single
+  verifier composition agrees602 queries. Inputs alreadygenerated and hashed.
+  Parent35/real101 passed;182authored+8real fullwitnesses verified;124frozenhashes.
+  Corrected examplehelper's invalid equivalence of fullquestion andlossyparsed
+  constraints onreservedalias. Productionandexpectationsunchanged, originalfailurekept.
+  Integratedandcommitted2e44f25 `Match facts on YYYY-MM-DD:` main32/state44pass,
+  human3cases,oldtemporal45bytes,all2821legacybytes,calc27/story47,memory41plain
+  and93+41productionpass. Integratedbinary0ba0e7d4266926f27df8f5f4924d5991b8886b968829f968f1d47f255f34b238.
+  Artifactcoordinator/timedmatch-integrated. Requiredworkspacecheck36033 passedfmt/alltargetclippy/releaseworkspace/strict4smoke.
+  Finalcombinedbinary4087feb06e9e72f87674be8ddba20bf119cd14537b9c73ae8ff993cad8b10552
+  atcoordinator/combined-timedmatch-extremum matchesallfacts/CLI and24worldrustsourcehashes.
+  Finalmain32/state44passed session37851. Publicationpending.
+- Rolebinding worker TERMINAL/REJECTED. Original archive172files/165694278bytes;
+  all142 frozen manifestentries independentlyverified. Compact evidence committed
+  179a400, tools/quantities/role-binding/PARENT.md. Full1182 cleanTRAIN CAL
+  question-only replay and original native execution independentlymatch.
+  Free143→92 correct; oracle221→170; left2197→2370/right2499→2540 of4138.
+  Three of four frozen continuation gates failed.69 oldcorrectlost/18gained;
+  45 refusals becamewrong. No DEV access or runtime/model integration.
+  Surface token/clause sharing was not an actual semantic role parser.
+  Change supervision/data/representation before any next quantities experiment.
+
+Known completedworker tokens179721595 includingcachedinputonce; root/interrupted
+usageexcluded. Extremum2353350, rolebinding1686558, timedmatch3785176.
+Groundedsteps worker LIVE PID3445245, scopeglassmind-continuous-groundedsteps.scope,
+8GiB0swap, branchcontinuous/groundedsteps, base2e44f25. TaskWORK/groundedsteps-task.txt;
+runWORK/groundedsteps-run. Onlytools/quantities/grounded-steps; no runtime/train/tune/DEV.
+ChatGPTlogin andsupportedCLI flagsverified; no livecandidate/source/resultinspected.
+Question: can GSM8Kcalculatorannotations provide uniquelybound typedprogram labels?
+SourceWORK/groundedsteps-source: officialTRAIN7473rows4166206bytes, MIT,
+openai/grade-school-math3101c7d5072418e28b9008a6636bde82a006892c,
+SHA17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465.
+OnlyTRAIN+LICENSE fetched; officialtestneverdownloaded. Exactoldnativeexecutor/
+proposal/rational source suppliedreadonly. Originalbinder/constants/horizon fixed.
+Strict ambiguity includes duplicateinputs,input/priorvalues,constantcollisions;
+no answerderivedconstants. Reportsentiredenominator/exclusions/groupedFIT-CAL;
+these remain TRAINdiagnostics, not officialDEV or predictions. Data-readinessgate
+>=1000uniqueexactprograms plus independentcontracts; failure staysrejected.
+Parent19frozenbeforeinspection: coordinator/groundedsteps-independent,
+casesSHA499fdd73d7458eb49d7d2d5132afac41286dfe9ce9ee780f63a6d9364998ed64.
+Archive/hashverify workeroriginals BEFOREinspection/modification when terminal.
+Do not repeat any terminal worker. Preserve originalarchives.
+
+Completedargumentswap/temporal/groundingaudit worktrees ANDtemporaryauthsymlinks
+removed AFTER re-verifying1155 originalarchivefiles576561232bytes plusretained
+revisionmanifest. Logs coordinator/batch40-{archive-review,cleanup}.json.
+Frozenbinaries/source/reports/runartifactsremain; neverdeleteoriginalevidence.
 
 ## Completed validation of combined source
 
@@ -40,8 +108,8 @@ bare-correction story invalidation. Retry82518 passed; original retained.
 
 ## Argument-swap repair
 
-Worker terminal, scopeglassmind-continuous-argumentswap.scope inactive. Worktree
-WORK/argumentswap, branchcontinuous/argumentswap, basecdd5030. No model process active.
+Worker terminal, scopeglassmind-continuous-argumentswap.scope inactive. Former worktree
+WORK/argumentswap removed after archive checks; branchcontinuous/argumentswap retained.
 Original archive WORK/argumentswap-run/terminal-originals:906files/246507361bytes,
 all hashverified before inspection/modification. Original binarySHA
 0b2c2cbcb11906a964022a2edc3daf5d8b8843e4db2a837a53165d972093e462.
@@ -68,7 +136,7 @@ Full765session47129 COMPLETE206/559/0, all203retained; baseline203/562/0, SHA
 
 ## Temporal facts
 
-Worker terminal, scopetemporal inactive. WorktreeWORK/temporal, base07f3d0d.
+Worker terminal, scopetemporal inactive. Former worktreeWORK/temporal removed, base07f3d0d.
 Original archive141files/194056696bytes verified before inspection.
 Standalone frozen binarySHA6ebd8026fe05398b31c2e680ff97f1a33928e2c1a0a46bd760fd59c1ecf46bec.
 Exact metadataSHA55097953db9b0f041ec4a7c2b5a7513586b1db9f572856cb84aa8610f484ee3d.
@@ -89,7 +157,7 @@ Independentall308records match original claims across20hashverifiedrawfiles.
 20schemaeligibleintervals vs18nonemptystrictinteriors:two haveadjacentboundarydays.
 Supplementalvalid100001recordfixture101901126bytes rejects at tighter16MiBcap;
 32MiB+1index rejects. Initialnullrecordcountfixture onlyschemafailure, honestlynoted
-in parent/limit-review.json. These reports are uncommitted aftersourcecommit.
+in parent/limit-review.json. These reports were included in the published batch.
 Worker56authored+100cachequeries54supported46unknown,20factstests passed.
 
 First200/full2821 standalone/facts-enabled/default-talk bytes ALLidentical to old
@@ -107,7 +175,7 @@ maincontractsSHA42d3d482ea551980f33ea61f801510a7431fd9441fac3ace49ba1811a6e7736c
 ## Accepted diagnostic only: arithmetic grounding audit
 
 Commit142cbe1; tools/quantities/grounding-audit/PARENT.md. NO productionmodelchange.
-Worker terminal, scopegroundingaudit inactive; worktreeWORK/groundingaudit,
+Worker terminal, scopegroundingaudit inactive; former worktreeWORK/groundingaudit removed,
 basef57d1f1. Archived108files/135997175bytes beforeinspection, all87frozenmanifest
 entries independentlyverified. No DEV content, fitting, downloads or new runtime.
 
@@ -152,7 +220,9 @@ sequence2correct1refused21wrong. Runtime restored; evidence committed in
 Currentordinaryquantities29/4443/3 of4475; synthetic3056rightincl762expectedrefusals,
 60unsupported0wrong of3116. Story3966/3987;dialogue610/1119,459wrong50refused;
 readingraw2532/10570,selected815right791wrong8964refused; rawsyntax1556/2001.
-Memory41/41withoutintent;40/41production inherited Callme tomorrow issue remains.
+Memory41/41 in both intent modes was already established by memory-authority and
+route-authority parent reviews. Earlier checkpoint40/41 text was stale; do not
+start a duplicate Callme tomorrow repair. Fresh combined replay pending below.
 
 TRAINfacts999 expansion:47/2712/62answer,2/2712/107joint; confidenceprecisiongate
 failed. Mostinverseedgesmissing, notlinkerfailure. Separate old500cacheauditonly56
@@ -165,10 +235,9 @@ humanfinal/contaminatedlegacy staydisabled. Neverinspecthiddenitems/predictions.
 ## Resource ownership and reproduction
 
 OnlymodelworkersareexternalAstra fast viaforcedChatGPTlogin; neverAPIkeys/Opus.
-Allthreecurrentworkers terminal; their worktrees and temporaryloginlinks still
-retained pending finalbatch/archivechecks. WORK/launch.py ownssandboxlauncher.
-No newmodelcalls startedthisturn. Beforelaunch verifyCLIflags/loginlocally.
-No active owned model or nonmodel jobs; all listed checks are complete.
+Three prior workers cleaned asabove. Groundedsteps modelworkeractive. Extremum full DEV COMPLETE; batchpublicationpending.
+WORK/launch.py ownssandboxlauncher; inspect exact owned evaluation handles before resuming.
+Before anynewlaunch verifyCLIflags/loginlocally.
 Allcargo8GiBzeroSwap,setsid--waittimeout,persistentTMPDIR,jobs1,testthreads4.
 Atmost4modelslotsincludingroot,8cargojobsprojectwide; no unrelatedcleanup/pkill-f.
 Afterpublication verifyarchivesagain beforeworktreeremoval. Preservefrozenbinaries,

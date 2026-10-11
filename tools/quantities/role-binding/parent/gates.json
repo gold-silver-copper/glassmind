@@ -1,0 +1,33 @@
+{
+  "scope": "TRAIN-only representation continuation; no production or DEV acceptance",
+  "frozen_before_candidate_inspection": true,
+  "baseline_model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+  "train_sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99",
+  "fit_clean": 4590,
+  "cal_clean": 1182,
+  "arg_decisions": 4138,
+  "baseline": {
+    "left_correct": 2197,
+    "right_correct": 2499,
+    "free_numeric": 143,
+    "oracle_numeric": 221
+  },
+  "required": {
+    "left_correct_min": 2322,
+    "right_correct_min": 2624,
+    "free_numeric_min": 143,
+    "oracle_numeric_min": 251,
+    "native_baseline_replay_exact": 200,
+    "max_model_bytes": 16777216,
+    "production_files_changed": 0
+  },
+  "checks": [
+    "exact original split and clean membership/denominators",
+    "FIT-only vocabulary/weights/configuration, CAL used once",
+    "unchanged operation head,binder,legal masks,execution,comparator,horizon/ties",
+    "free accepts only questions; gold only named oracle conditions",
+    "material candidate-relative role/relation representation, not another window/threshold",
+    "all failures/metrics retained, model disabled regardless of TRAIN result"
+  ],
+  "task_sha256": "5b9dde6ebb5a3f985bbe2d0a4b4fc6d04c006cc8d00a9b2561ca78d07c40c9f6"
+}

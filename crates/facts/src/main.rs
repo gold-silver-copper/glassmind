@@ -12,6 +12,16 @@ struct Args {
 }
 #[derive(Subcommand)]
 enum Command {
+    /// Match positive conditions whose recorded intervals strictly contain a day.
+    MatchAt {
+        #[arg(long)]
+        index: PathBuf,
+        #[arg(long)]
+        temporal: PathBuf,
+        #[arg(long)]
+        date: String,
+        question: String,
+    },
     /// Evidence that one recorded bounded interval strictly contains a calendar day.
     VerifyAt {
         #[arg(long)]
@@ -107,6 +117,35 @@ struct Totals {
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     match Args::parse().command {
+        Command::MatchAt {
+            index,
+            temporal,
+            date,
+            question,
+        } => {
+            use glassmind_facts::temporal::{
+                MAX_TEMPORAL_BYTES, MAX_TEMPORAL_INDEX_BYTES, TemporalIndex,
+            };
+            fn bounded(path: PathBuf, cap: usize) -> Result<Vec<u8>, Box<dyn std::error::Error>> {
+                use std::io::Read;
+                let mut bytes = Vec::new();
+                fs::File::open(path)?
+                    .take((cap + 1) as u64)
+                    .read_to_end(&mut bytes)?;
+                if bytes.len() > cap {
+                    return Err("input byte cap exceeded".into());
+                }
+                Ok(bytes)
+            }
+            let store = TemporalIndex::from_bytes(
+                &bounded(index, MAX_TEMPORAL_INDEX_BYTES)?,
+                &bounded(temporal, MAX_TEMPORAL_BYTES)?,
+            )?;
+            println!(
+                "{}",
+                serde_json::to_string(&store.match_at_str(&date, &question))?
+            );
+        }
         Command::VerifyAt {
             index,
             temporal,

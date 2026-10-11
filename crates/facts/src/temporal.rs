@@ -252,6 +252,10 @@ fn claim_id(s: &str, subject: &str) -> bool {
         })
 }
 impl TemporalIndex {
+    pub(crate) fn store(&self) -> &Store {
+        &self.store
+    }
+
     pub fn from_bytes(index: &[u8], temporal: &[u8]) -> Result<Self, String> {
         if index.len() > MAX_TEMPORAL_INDEX_BYTES || temporal.len() > MAX_TEMPORAL_BYTES {
             return Err("input byte cap exceeded".into());
@@ -365,6 +369,25 @@ impl TemporalIndex {
                 };
             }
         };
+        match self.interval_witness(date, &edge) {
+            Ok(witness) => Supported {
+                date: date.clone(),
+                witness: Box::new(witness),
+                scope: "one_recorded_bounded_interval_calendar_day",
+            },
+            Err(skipped) => Unknown {
+                reason: TemporalUnknownReason::NoRecordedBoundedInterval,
+                skipped,
+            },
+        }
+    }
+
+    /// Select one original claim using the existing deterministic record order.
+    pub(crate) fn interval_witness(
+        &self,
+        date: &CalendarDate,
+        edge: &EdgeWitness,
+    ) -> Result<TemporalWitness, Vec<SkippedClaim>> {
         let mut skipped = Vec::new();
         for r in self.records.iter().filter(|r| {
             r.subject == edge.subject.0
@@ -381,25 +404,21 @@ impl TemporalIndex {
             });
             match outcome {
                 Ok((start, end)) => {
-                    return Supported {
-                        date: date.clone(),
-                        witness: Box::new(TemporalWitness {
-                            edge,
-                            claim_id: id.into(),
-                            rank: field(&r.statement, "/rank")
-                                .as_str()
-                                .unwrap_or_default()
-                                .into(),
-                            start,
-                            end,
-                            source_url: r.source_url.clone(),
-                            raw_file: r.raw_file.clone(),
-                            raw_sha256: r.raw_sha256.clone(),
-                            index_sha256: self.hash.clone(),
-                            policy: TEMPORAL_POLICY,
-                        }),
-                        scope: "one_recorded_bounded_interval_calendar_day",
-                    };
+                    return Ok(TemporalWitness {
+                        edge: edge.clone(),
+                        claim_id: id.into(),
+                        rank: field(&r.statement, "/rank")
+                            .as_str()
+                            .unwrap_or_default()
+                            .into(),
+                        start,
+                        end,
+                        source_url: r.source_url.clone(),
+                        raw_file: r.raw_file.clone(),
+                        raw_sha256: r.raw_sha256.clone(),
+                        index_sha256: self.hash.clone(),
+                        policy: TEMPORAL_POLICY,
+                    });
                 }
                 Err(reason) => skipped.push(SkippedClaim {
                     claim_id: id.into(),
@@ -407,10 +426,7 @@ impl TemporalIndex {
                 }),
             }
         }
-        Unknown {
-            reason: TemporalUnknownReason::NoRecordedBoundedInterval,
-            skipped,
-        }
+        Err(skipped)
     }
 }
 fn interval(s: &Value) -> Result<(BoundRange, BoundRange), ClaimSkipReason> {

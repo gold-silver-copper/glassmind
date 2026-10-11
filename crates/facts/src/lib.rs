@@ -383,3 +383,6 @@ mod tests {
 }
 
 pub mod temporal;
+
+pub mod timed_matching;
+pub use timed_matching::{TemporalMatchRefusalReason, TemporalMatchResult, TemporalSubjectMatch};

@@ -1,0 +1,20 @@
+[
+  {
+    "alternative": 0,
+    "old": "let mut first = 0;",
+    "new": "let mut first = ::core::primitive::i32::MIN;",
+    "public_tests_passed": true,
+    "probe": "joined(&[-5], &[-2])",
+    "observed_output": "Some(-5)",
+    "source_sha256": "0bbd29943982e85e29cc2f36959511e0fab4582fb93b8d3e3e3b0ed989dcffc6"
+  },
+  {
+    "alternative": 1,
+    "old": "let mut second = 0;",
+    "new": "let mut second = ::core::primitive::i32::MIN;",
+    "public_tests_passed": true,
+    "probe": "joined(&[-5], &[-2])",
+    "observed_output": "Some(-2)",
+    "source_sha256": "e1923cb681e0c0db6ae6488a9f86d9143c2868b3cfccd1bc6a8edc03322a1b6f"
+  }
+]

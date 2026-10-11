@@ -5,7 +5,7 @@ base=Path(__file__).parent
 work=base.parents[1]
 out=base/'candidate';out.mkdir()
 frozen=work/'temporal-run/frozen-candidate'
-extract=work/'temporal/tools/facts/temporal/extract.py'
+extract=work/'temporal-run/terminal-originals/source/tools/facts/temporal/extract.py'
 cases=json.loads((base/'cases.json').read_text())
 assert hashlib.sha256((base/'cases.json').read_bytes()).hexdigest()=='b4b37ca4340afd79227d7102535430592a9961a152d4e8f0f1a69d3c829481f5'
 rows=[]

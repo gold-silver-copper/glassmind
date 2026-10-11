@@ -753,6 +753,22 @@ const SLIP_TIME: Duration = Duration::from_secs(120);
 /// under `src`, excluding macros and explicitly test-only items. Files the failing `tests` name
 /// most (by module or where they panicked) come first.
 pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
+    let mut old = legacy_slips(source, root, tests);
+    old.extend(extrema(source, root));
+    old
+}
+
+fn extrema(source: &str, root: &Path) -> Vec<RustChange> {
+    crate::slips::production_files(root)
+        .into_iter()
+        .flat_map(|file| {
+            let text = std::fs::read_to_string(root.join(&file)).unwrap_or_default();
+            crate::extremum::proposals(source, &file.to_string_lossy(), &text)
+        })
+        .collect()
+}
+
+fn legacy_slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
     let said = format!("{tests:?}");
     let mut files = crate::slips::production_files(root);
     files.sort_by_key(|f| {
@@ -847,10 +863,80 @@ fn native_witness(
 /// test-passing slip with a concrete different defined scalar behavior.
 /// Unsupported code or sampled agreement leaves the first slip unchanged.
 pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustChange> {
+    let mut withdrawn = false;
+    let old = undo_legacy_slip(source, root, tests, &mut withdrawn);
+    if old.is_some() || withdrawn {
+        return old;
+    }
+    let candidates = extrema(source, root);
+    verify_extrema(source, root, &candidates)
+}
+
+fn verify_extrema(source: &str, root: &Path, candidates: &[RustChange]) -> Option<RustChange> {
+    if candidates.is_empty() {
+        return None;
+    }
+    let scratch = scratch(source);
+    let roots = BTreeMap::from([(source.to_owned(), scratch.clone())]);
+    let deadline = Instant::now() + Duration::from_secs(20);
+    let mut passing = Vec::new();
+    let mut records = Vec::new();
+    let mut incomplete = candidates.len() > 8;
+    for candidate in candidates.iter().take(8) {
+        if incomplete || Instant::now() >= deadline {
+            incomplete = true;
+            break;
+        }
+        let result = copy_tree(root, &scratch)
+            .and_then(|()| apply(std::slice::from_ref(candidate), &roots))
+            .and_then(|_| {
+                run_in_until(
+                    &Places::from_env(),
+                    RustCheck::Test,
+                    source,
+                    &scratch,
+                    Some(deadline),
+                )
+            });
+        records.push(serde_json::json!({"patch":candidate,"result":result}));
+        match result {
+            Ok(findings) if findings.is_empty() => passing.push(candidate.clone()),
+            Ok(_) => {}
+            Err(_) => {
+                incomplete = true;
+                break;
+            }
+        }
+    }
+    let accepted = !incomplete && passing.len() == 1;
+    let evidence = scratch_base().join(format!(
+        "extremum-{}",
+        scratch.file_name()?.to_string_lossy()
+    ));
+    let record = serde_json::json!({"candidates":candidates,"native_checks":records,"passing":passing,
+        "incomplete":incomplete,"accepted":accepted,"original_tree_fingerprint":format!("{:016x}",fingerprint(root)),
+        "limitation":"bounded native public-test verification; no loop interpreter or semantic witness"});
+    let saved = std::fs::create_dir_all(&evidence)
+        .and_then(|()| std::fs::write(evidence.join("choice.json"), record.to_string()))
+        .is_ok();
+    let _ = std::fs::remove_dir_all(&scratch);
+    if accepted && saved {
+        passing.pop()
+    } else {
+        None
+    }
+}
+
+fn undo_legacy_slip(
+    source: &str,
+    root: &Path,
+    tests: &[RustItem],
+    withdrawn: &mut bool,
+) -> Option<RustChange> {
     let scratch = scratch(source);
     let roots = BTreeMap::from([(source.to_owned(), scratch.clone())]);
     let start = Instant::now();
-    let all = slips(source, root, tests);
+    let all = legacy_slips(source, root, tests);
     let swaps: Vec<_> = crate::slips::production_files(root)
         .into_iter()
         .flat_map(|file| {
@@ -920,6 +1006,7 @@ pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustCh
                 );
             }
             let _ = std::fs::remove_dir_all(&scratch);
+            *withdrawn = unresolved;
             return if unresolved { None } else { found };
         }
         let extra = Instant::now();
@@ -1000,10 +1087,14 @@ pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustCh
                 saved.is_ok()
             );
             let _ = std::fs::remove_dir_all(&scratch);
+            *withdrawn = true;
             return None;
         }
     }
     let _ = std::fs::remove_dir_all(&scratch);
+    if found.is_none() && start.elapsed() >= SLIP_TIME {
+        *withdrawn = true;
+    }
     found
 }
 
@@ -1228,3 +1319,7 @@ mod tests {
         );
     }
 }
+
+#[cfg(test)]
+#[path = "extremum_tests.rs"]
+mod extremum_tests;

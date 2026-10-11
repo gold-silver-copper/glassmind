@@ -1,0 +1,58 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 556,
+    "pass": 209
+  },
+  "all_previous_passes_retained": 206,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "fix-tests/winter-high",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/winter-high",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/winter-high",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "refused": 57,
+      "pass": 24
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "927848d34a2cbc7a17280a9db6e35360fc1d37d6f5669a0d7163500e73023abd",
+  "candidate_result_sha256": "fd8400d01239435fbdf43e89ed295ee8d32d69478af953234d2453906df3262c",
+  "binary_sha256": "12f7c1edb0d0c0e309b4ffe2adaf593b91cc71c4703c3543a41258e92cd86035",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}

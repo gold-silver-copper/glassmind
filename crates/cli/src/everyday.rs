@@ -2,7 +2,9 @@
 use std::io::{BufRead, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
-use crate::talk_facts::{FactReply, Facts, MatchingReply, TemporalReply, VerificationReply};
+use crate::talk_facts::{
+    FactReply, Facts, MatchingReply, TemporalMatchingReply, TemporalReply, VerificationReply,
+};
 use crate::talk_stories::{Stories, StoryPlan, StoryReply};
 use glassmind_everyday::{Conversation, IntentModel, Reply};
 use glassmind_quantities::Answer;
@@ -26,6 +28,7 @@ enum TalkReply {
     Verification(Box<VerificationReply>),
     Matching(Box<MatchingReply>),
     Temporal(Box<TemporalReply>),
+    TemporalMatching(Box<TemporalMatchingReply>),
 }
 
 #[derive(serde::Serialize)]
@@ -47,6 +50,7 @@ impl TalkReply {
             Self::Verification(reply) => &reply.text,
             Self::Matching(reply) => &reply.text,
             Self::Temporal(reply) => &reply.text,
+            Self::TemporalMatching(reply) => &reply.text,
         }
     }
 }
@@ -137,6 +141,21 @@ fn respond_with_facts(
     model: Option<&IntentModel>,
     facts: Option<&Facts>,
 ) -> TalkReply {
+    if let Some(request) = crate::talk_facts::temporal_matching_request(line) {
+        session.memory.turn = session.memory.turn.saturating_add(1);
+        session.memory.last_user_utterance = Some(line.to_owned());
+        session.memory.last_slot = None;
+        let reply = facts
+            .ok_or("Matching dated facts requires a local facts bundle (--facts-dir).")
+            .and_then(|facts| facts.match_at(request));
+        return match reply {
+            Ok(reply) => TalkReply::TemporalMatching(Box::new(reply)),
+            Err(text) => TalkReply::Conversation(Reply::Refusal {
+                text: text.into(),
+                proposal: None,
+            }),
+        };
+    }
     if let Some(request) = crate::talk_facts::temporal_request(line) {
         session.memory.turn = session.memory.turn.saturating_add(1);
         session.memory.last_user_utterance = Some(line.to_owned());

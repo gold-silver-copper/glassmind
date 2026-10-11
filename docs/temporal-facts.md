@@ -27,3 +27,28 @@ This establishes evidence in one recorded interval from a finite snapshot. It do
 `tools/facts/temporal/extract.py` builds the metadata from hash-verified raw Wikidata responses and the matching static index. See its `--help` and [reproduction script](../tools/facts/temporal/reproduce.sh). Metadata is capped at 16 MiB and 100,000 records; the bound static index is capped at 32 MiB. Production bundles should retain source manifests and original response bytes outside git.
 
 Validation and limitations are recorded in the [parent review](../tools/facts/temporal/PARENT.md). The cached real-data slice inherits the existing 500 validation-subject-seeded index; it is not an independent open-world retrieval benchmark.
+
+## Find subjects matching dated conditions
+
+Use two or three positive employer or citizenship conditions on the same day:
+
+```text
+Match facts on 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic?
+```
+
+These names belong to the authored development graph. The standalone command is
+`glassmind-facts match-at --index BUNDLE/index.json --temporal BUNDLE/temporal.json --date 2012-01-01 'Who worked for Amber Lab and was a citizen of North Republic?'`.
+
+Every condition needs its own eligible original claim with a strict interval
+containing that day. Distinct employers or citizenships are supported. Duplicate
+conditions are idempotent. Birthplace, place of death, negation, and ambiguous or
+missing names cannot establish a dated match. Graph membership and dates never
+choose between ambiguous names.
+
+Glassmind checks the complete intersection before counting and displaying up to
+ten subjects, sorted by ID. JSON uses `kind: fact_matches_at` and reports
+`total_recorded_interval_matches`, `returned`, `truncated`, the query date and all
+displayed claim witnesses. Zero matches means the loaded records do not provide
+complete interval evidence for all conditions; it does not establish absence in
+the world. Personal memory and story state are preserved. See the
+[dated matching review](../tools/facts/timed-matching/PARENT.md) for evidence and limits.
