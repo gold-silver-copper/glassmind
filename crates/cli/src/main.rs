@@ -23,6 +23,7 @@ macro_rules! say {
 }
 
 mod answer;
+mod answer_file;
 mod chat;
 mod coding;
 mod details;
@@ -339,6 +340,18 @@ fn act(
     use glassmind_meaning::interface::World as _;
     let sources = vec![parse_source(&repo.to_string_lossy())];
     let system = System::open(&sources, Switches::all_on());
+    if let Some(result) = answer_file::handle(&system, repo, reply_file, explain, text) {
+        let message = result.unwrap_or_else(|reason| format!("Cannot write an answer: {reason}"));
+        say!("{message}");
+        if let Some(path) = reply_file {
+            // The helper rejects a transcript alias before creating an answer.
+            if answer_file::transcript_conflicts(repo, path, text) {
+                return Err(message);
+            }
+            std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
+        }
+        return Ok(());
+    }
     let mut session = Session::new(system.source_refs());
     let turn = system.respond(&mut session, text);
     if explain {

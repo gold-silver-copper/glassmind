@@ -1,0 +1,827 @@
+{
+  "base_source": "712d3a5f1ecf1bae20eca26cfd1211ff6184a72a",
+  "source": {
+    "crates/cli/src/main.rs": {
+      "bytes": 17710,
+      "sha256": "5589ea3478a7eec3dbb106b65d3416028c2d9ad43122cdeae4591f8a404bf91e"
+    },
+    "crates/cli/src/answer_file.rs": {
+      "bytes": 10791,
+      "sha256": "67b4d31338be6f6e5ff19869d08e14742a2f3926a14c92cfaa2965ce2604969d"
+    },
+    "crates/english/src/lib.rs": {
+      "bytes": 23660,
+      "sha256": "704816229c8313b323b898fb1a6a0d15be9a45542d4a40313275ad14f9c95b52"
+    },
+    "crates/english-rust/src/lib.rs": {
+      "bytes": 75084,
+      "sha256": "a1134bc4391bf9ccb456bf7dff38a7aca5c6b5d02fd2108a0141a66288110dc4"
+    },
+    "tools/coding-answerfiles-dev.py": {
+      "bytes": 8222,
+      "sha256": "d344e1e5fde701543041df8ba22a20e2eeaeb4aabb7fa03907b1685a24dfb1cc"
+    }
+  },
+  "reports": {
+    "baseline_sample": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/glassmind-baseline",
+      "binary_sha256": "cbe42583c56482cec7f8dca21a368f6984e5ecb491757714318af692f9fcfad8",
+      "total": 3,
+      "usable": 0,
+      "safe": 3,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/answerfiles-baseline-sample/results.json",
+      "sha256": "6747f90d41645b1cec02a31e6bb604f1c3e496f6dd5a41741fd79016c065134d",
+      "cases": [
+        {
+          "case": "callers-of-apply-damage-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "command-variant-count-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "items-field-type-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        }
+      ]
+    },
+    "baseline_full": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/glassmind-baseline",
+      "binary_sha256": "cbe42583c56482cec7f8dca21a368f6984e5ecb491757714318af692f9fcfad8",
+      "total": 7,
+      "usable": 0,
+      "safe": 7,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/answerfiles-baseline-full/results.json",
+      "sha256": "d2bd0895e98e7b6beb04c74265f07e5037c646a0e300c85312b6b0de8e4c85a0",
+      "cases": [
+        {
+          "case": "callers-of-apply-damage-chatty",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "callers-of-apply-damage-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "command-variant-count-chatty",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "command-variant-count-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "items-field-type-chatty",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "items-field-type-hurried",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "items-field-type-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        }
+      ]
+    },
+    "candidate_sample": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/target/debug/glassmind",
+      "binary_sha256": "6882660e3efcf47cd51d2fe5c12992682bbc3f943560c42ce831fbf8d9bcd32b",
+      "total": 3,
+      "usable": 2,
+      "safe": 3,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/answerfiles-final-sample/results.json",
+      "sha256": "ad8559970e1bcd949b20dbbfa822bcc6f23ae223b3d20e7c3f8d35541a445c2c",
+      "cases": [
+        {
+          "case": "callers-of-apply-damage-terse",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "ANSWER"
+          ]
+        },
+        {
+          "case": "command-variant-count-terse",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "ANSWER"
+          ]
+        },
+        {
+          "case": "items-field-type-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        }
+      ]
+    },
+    "candidate_full": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/target/debug/glassmind",
+      "binary_sha256": "6882660e3efcf47cd51d2fe5c12992682bbc3f943560c42ce831fbf8d9bcd32b",
+      "total": 7,
+      "usable": 2,
+      "safe": 7,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/answerfiles-final-full/results.json",
+      "sha256": "7c50f86e33240db6f1f3a8088c9fc066665165111c07500df132be0f7baf1a47",
+      "cases": [
+        {
+          "case": "callers-of-apply-damage-chatty",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "callers-of-apply-damage-terse",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "ANSWER"
+          ]
+        },
+        {
+          "case": "command-variant-count-chatty",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "command-variant-count-terse",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "ANSWER"
+          ]
+        },
+        {
+          "case": "items-field-type-chatty",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "items-field-type-hurried",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "items-field-type-terse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        }
+      ]
+    },
+    "independent_sample": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/target/debug/glassmind",
+      "binary_sha256": "6882660e3efcf47cd51d2fe5c12992682bbc3f943560c42ce831fbf8d9bcd32b",
+      "total": 3,
+      "usable": 3,
+      "safe": 3,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/answerfiles-final-independent-sample/results.json",
+      "sha256": "830e4aee7e0ce142f87adf8bdb407754e7ffc8aed95b7424f0e67a81354bcc61",
+      "cases": [
+        {
+          "case": "count",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "tally.txt"
+          ]
+        },
+        {
+          "case": "caller_count",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "reports/call-count"
+          ]
+        },
+        {
+          "case": "unique_name",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "caller-id"
+          ]
+        }
+      ]
+    },
+    "independent_full": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/target/debug/glassmind",
+      "binary_sha256": "6882660e3efcf47cd51d2fe5c12992682bbc3f943560c42ce831fbf8d9bcd32b",
+      "total": 27,
+      "usable": 6,
+      "safe": 27,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/answerfiles-run/tmp/answerfiles-final-independent/results.json",
+      "sha256": "f7d340a35258b0e116767295c7e9c311cd702be2397ca7c309f8ea68e973b49f",
+      "cases": [
+        {
+          "case": "count",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "tally.txt"
+          ]
+        },
+        {
+          "case": "caller_count",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "reports/call-count"
+          ]
+        },
+        {
+          "case": "unique_name",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "caller-id"
+          ]
+        },
+        {
+          "case": "have_members",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "size"
+          ]
+        },
+        {
+          "case": "quoted_filename",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "r\u00e9sultat-count.txt"
+          ]
+        },
+        {
+          "case": "unclosed_quote",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "zero",
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "added": [
+            "zero"
+          ]
+        },
+        {
+          "case": "unknown",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "ambiguous",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "multiple_names",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "incompatible",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "unsupported_type",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "trailing_action",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "query_action",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "query_tail",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "extra_sentence",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "preamble",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "occupied",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "source",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "symlink",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "parent_symlink",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "traversal",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "absolute",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "partial_parse",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "unknown_format",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "bad_source",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        },
+        {
+          "case": "transcript_alias",
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "added": []
+        }
+      ]
+    }
+  },
+  "production_provenance": {
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "split": "dev",
+    "source": "Existing dev results supply only parse-failure request text; production workspace sources only. Two successful-query transcripts lack original request, so omitted. No task manifests/solutions/hidden tests opened.",
+    "license": "No upstream LICENSE file present; not inferred; raw workspaces retained outside git",
+    "tasks": [
+      {
+        "task": "talk/callers-of-apply-damage",
+        "files": {
+          "Cargo.toml": {
+            "bytes": 59,
+            "sha256": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff"
+          },
+          "Cargo.lock": {
+            "bytes": 148,
+            "sha256": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418"
+          },
+          "src/combat.rs": {
+            "bytes": 463,
+            "sha256": "2cc5996dc5e2588ff72ceda801bcfe195dbfc5cd8fd2463b30d804bc5682c985"
+          },
+          "src/hazards.rs": {
+            "bytes": 266,
+            "sha256": "4dd3eb7a6dac64aa676b6b7674c4884750c684994d58551304b3978789b86787"
+          },
+          "src/lib.rs": {
+            "bytes": 47,
+            "sha256": "617edf9afb954096d622c31c1e2b239501f6658b43db7088be8ca357962a7053"
+          },
+          "src/unit.rs": {
+            "bytes": 696,
+            "sha256": "72c3279fd487eda9e29ac89cc898dddae8795a04f66e49bd22541322d03d3d46"
+          }
+        },
+        "styles": [
+          "chatty",
+          "terse"
+        ]
+      },
+      {
+        "task": "talk/command-variant-count",
+        "files": {
+          "Cargo.toml": {
+            "bytes": 59,
+            "sha256": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff"
+          },
+          "Cargo.lock": {
+            "bytes": 148,
+            "sha256": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418"
+          },
+          "src/lib.rs": {
+            "bytes": 758,
+            "sha256": "ad991c683e0967867715717d1194b3e99cdacf952ebf7a96b250a173844bce47"
+          }
+        },
+        "styles": [
+          "chatty",
+          "terse"
+        ]
+      },
+      {
+        "task": "talk/items-field-type",
+        "files": {
+          "Cargo.toml": {
+            "bytes": 59,
+            "sha256": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff"
+          },
+          "Cargo.lock": {
+            "bytes": 148,
+            "sha256": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418"
+          },
+          "src/lib.rs": {
+            "bytes": 15,
+            "sha256": "c8aee5f7d0fc7dd8c8cc1e56eda3bdae084fbe6d1e66c6c655a69b464398f759"
+          },
+          "src/order.rs": {
+            "bytes": 552,
+            "sha256": "8af827830924a5f250af2245537b5ac915354ef8a5479130ab7b8098e37cf657"
+          }
+        },
+        "styles": [
+          "chatty",
+          "hurried",
+          "terse"
+        ]
+      }
+    ]
+  },
+  "production_bytes": 3418,
+  "prompts": {
+    "callers-of-apply-damage/prompts.json": {
+      "bytes": 490,
+      "sha256": "7021a897e4646c6ad9b73cf4ee9d286a445c0b445d4ec1940f511cc0468b5779"
+    },
+    "command-variant-count/prompts.json": {
+      "bytes": 417,
+      "sha256": "4d3432fb321582292ed66bdd484b9b5398ead0b009262f2596d2d93bb0ac3a37"
+    },
+    "items-field-type/prompts.json": {
+      "bytes": 632,
+      "sha256": "ef94241b3a78d740c10c14f49f04d074ee29d0cba83bf541b72dacd2aadd91e4"
+    }
+  },
+  "prompt_bytes": 1539,
+  "fixture_license": "MIT OR Apache-2.0 (authored in this batch)",
+  "fixture_files": {
+    "count/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "caller_count/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "unique_name/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "have_members/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "quoted_filename/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "unclosed_quote/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "zero/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "unknown/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "ambiguous/src/lib.rs": {
+      "bytes": 194,
+      "sha256": "c85b46211556723bab6eb44cf63463b222cc6f1be8b3a3882dded0064225ccfa"
+    },
+    "multiple_names/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "incompatible/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "unsupported_type/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "trailing_action/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "query_action/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "query_tail/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "extra_sentence/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "preamble/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "occupied/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "source/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "symlink/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "parent_symlink/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "traversal/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "absolute/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "partial_parse/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "unknown_format/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    },
+    "bad_source/src/lib.rs": {
+      "bytes": 179,
+      "sha256": "948545cd93b1e4cc2debea1f07c7815eeb6fc1acd68cb36122d7b493e0221ac0"
+    },
+    "transcript_alias/src/lib.rs": {
+      "bytes": 162,
+      "sha256": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+    }
+  },
+  "fixture_manifests": {
+    "count/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "caller_count/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "unique_name/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "have_members/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "quoted_filename/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "unclosed_quote/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "zero/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "unknown/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "ambiguous/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "multiple_names/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "incompatible/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "unsupported_type/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "trailing_action/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "query_action/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "query_tail/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "extra_sentence/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "preamble/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "occupied/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "source/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "symlink/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "parent_symlink/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "traversal/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "absolute/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "partial_parse/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "unknown_format/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "bad_source/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    },
+    "transcript_alias/Cargo.toml": {
+      "bytes": 69,
+      "sha256": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780"
+    }
+  },
+  "fixture_bytes": 6286,
+  "new_downloads": 0,
+  "new_dependencies": 0,
+  "plain_query_regression": [
+    {
+      "name": "baseline",
+      "stdout": "1 function calls `save`.\n",
+      "stderr": "",
+      "exit": 0,
+      "transcript": "1 function calls `save`.\n"
+    },
+    {
+      "name": "candidate",
+      "stdout": "1 function calls `save`.\n",
+      "stderr": "",
+      "exit": 0,
+      "transcript": "1 function calls `save`.\n"
+    }
+  ],
+  "plain_query_fixture": {
+    "license": "MIT OR Apache-2.0",
+    "files": {
+      "Cargo.toml": {
+        "bytes": 51,
+        "sha256": "6caa9b4ddeead76e46bd25af657609ce6a32d1985b53fff52b029fece1181863"
+      },
+      "src/lib.rs": {
+        "bytes": 45,
+        "sha256": "f82b3c3d343f00226306b9a3d677f6991838232fa4ba0240de174e94c5cd1fab"
+      }
+    },
+    "bytes": 96
+  }
+}

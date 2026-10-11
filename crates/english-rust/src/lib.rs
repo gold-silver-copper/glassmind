@@ -9,6 +9,38 @@ use glassmind_meaning::Position;
 use glassmind_rules::{RuleInfo, SEED};
 use glassmind_world_rust::{Rust, RustKind, RustRelation};
 
+/// Fully consumed metadata questions. Rust's variants are members, not fields:
+/// disambiguate the generic English possessive "have" using the requested kind.
+/// Other questions and the ordinary dialogue grammar retain their readings.
+pub fn metadata_questions(
+    english: &glassmind_english::English<Rust>,
+    text: &str,
+) -> Vec<glassmind_meaning::Question<Rust>> {
+    use glassmind_meaning::{Condition, Question};
+    english
+        .exact_questions(text)
+        .into_iter()
+        .map(|mut q| {
+            if let Question::Count(d) | Question::Identify(d) = &mut q
+                && d.kind == Some(RustKind::Variant)
+            {
+                for c in &mut d.conditions {
+                    if let Condition::Related {
+                        relation,
+                        position: Position::Second,
+                        ..
+                    } = c
+                        && *relation == RustRelation::HasField
+                    {
+                        *relation = RustRelation::Member;
+                    }
+                }
+            }
+            q
+        })
+        .collect()
+}
+
 type Word = Rule<Cat, Sem<Rust>>;
 
 /// One word rule per `(id, round, words, a, b)` row, reading the words as
