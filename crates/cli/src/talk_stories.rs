@@ -24,9 +24,40 @@ pub(crate) struct StoryReply {
     pub reason: String,
 }
 
+/// A read-only routing decision; only `apply` changes persisted story state.
+pub(crate) enum StoryPlan {
+    Ignore,
+    Reply(StoryReply),
+    Invalidate(&'static str),
+    Observe(String),
+}
+
+impl StoryPlan {
+    pub fn supported(&self) -> bool {
+        matches!(self, Self::Reply(_) | Self::Observe(_))
+    }
+}
+
 impl Stories {
     pub fn has_context(&self) -> bool {
         self.invalidated || !self.assertions.is_empty()
+    }
+
+    /// Established story actors disambiguate a salutation-shaped name in a
+    /// supported coordinated event. This is state evidence, never an intent label.
+    pub fn has_actor(&self, name: &str) -> bool {
+        let named = |entity: &Entity| entity.0 == name;
+        self.world.events.iter().any(|event| match event {
+            Event::Locate { actors, .. } => actors.iter().any(named),
+            Event::Take { actor, .. }
+            | Event::Drop { actor, .. }
+            | Event::Give { actor, .. }
+            | Event::TimedLocate { actor, .. }
+            | Event::State { actor, .. } => named(actor),
+            Event::Kind { entity, .. } | Event::Attribute { entity, .. } => named(entity),
+            Event::Relation { subject, .. } => named(subject),
+            Event::Rule { .. } => false,
+        })
     }
 
     pub fn restore(&mut self) -> Result<(), String> {
@@ -59,13 +90,15 @@ impl Stories {
         Self::refuse(reason)
     }
 
-    pub fn respond(&mut self, line: &str) -> Option<StoryReply> {
+    pub fn plan(&self, line: &str) -> StoryPlan {
         let lower = line.trim().to_lowercase();
         if lower
             .trim_end_matches(['.', '?', '!'])
             .contains(['.', '?', ';', '!'])
         {
-            return Some(self.invalidate("Please give one statement or question at a time. Use /reset and restate the facts."));
+            return StoryPlan::Invalidate(
+                "Please give one statement or question at a time. Use /reset and restate the facts.",
+            );
         }
         let first = lower.split_whitespace().next().unwrap_or_default();
         let question = lower.ends_with('?')
@@ -92,18 +125,18 @@ impl Stories {
             // do not alter facts; the ordinary conversation fallback handles them.
             let result = self.world.ask(line.trim().trim_end_matches(['?', '.']));
             if result.reason == "unsupported question" {
-                return None;
+                return StoryPlan::Ignore;
             }
             if self.invalidated {
-                return Some(Self::refuse(
+                return StoryPlan::Reply(Self::refuse(
                     "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
                 ));
             }
             let Some(answer) = result.answer else {
-                return Some(Self::refuse(&result.reason));
+                return StoryPlan::Reply(Self::refuse(&result.reason));
             };
             let derived = result.reason == "derived from story state";
-            return Some(StoryReply {
+            return StoryPlan::Reply(StoryReply {
                 kind: if derived {
                     "story_answer"
                 } else {
@@ -134,7 +167,7 @@ impl Stories {
                 | "tell"
                 | "show"
         ) {
-            return None;
+            return StoryPlan::Ignore;
         }
         let mut statement = lower.trim();
         let mut correction = false;
@@ -162,28 +195,47 @@ impl Stories {
             )
         );
         if !safe || (correction && !replaceable) {
-            return Some(self.invalidate("I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."));
+            return StoryPlan::Invalidate(
+                "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+            );
         }
         if self.invalidated {
-            return Some(Self::refuse(
+            return StoryPlan::Reply(Self::refuse(
                 "Use /reset and restate the facts so I can answer reliably again.",
             ));
         }
         if self.assertions.len() >= MAX_ASSERTIONS
             || self.assertions.iter().map(String::len).sum::<usize>() + statement.len() > MAX_BYTES
         {
-            return Some(self.invalidate(
+            return StoryPlan::Invalidate(
                 "This conversation has reached its fact limit. Use /reset to start a new one.",
-            ));
+            );
         }
-        self.world.observe(statement);
-        self.assertions.push(statement.into());
-        Some(StoryReply {
-            kind: "story_fact",
-            text: "Got it. I'll use that when answering your questions.".into(),
-            answer: None,
-            reason: "event accepted".into(),
-        })
+        StoryPlan::Observe(statement.to_owned())
+    }
+
+    pub fn apply(&mut self, plan: StoryPlan) -> Option<StoryReply> {
+        match plan {
+            StoryPlan::Ignore => None,
+            StoryPlan::Reply(reply) => Some(reply),
+            StoryPlan::Invalidate(reason) => Some(self.invalidate(reason)),
+            StoryPlan::Observe(statement) => {
+                self.world.observe(&statement);
+                self.assertions.push(statement);
+                Some(StoryReply {
+                    kind: "story_fact",
+                    text: "Got it. I'll use that when answering your questions.".into(),
+                    answer: None,
+                    reason: "event accepted".into(),
+                })
+            }
+        }
+    }
+
+    #[cfg(test)]
+    pub fn respond(&mut self, line: &str) -> Option<StoryReply> {
+        let plan = self.plan(line);
+        self.apply(plan)
     }
 }
 
@@ -279,6 +331,36 @@ mod tests {
         let mut story = Stories::default();
         story.restore()?;
         Ok(story)
+    }
+
+    #[test]
+    fn repeated_plans_do_not_mutate_history_or_world() -> Result<(), String> {
+        let mut story = new_story()?;
+        story.respond("Elin went to the kitchen.");
+        let before = serde_json::to_value(&story).unwrap();
+        for _ in 0..2 {
+            assert!(story.plan("Elin went to the garden.").supported());
+            assert!(!story.plan("Elin teleported to the loft.").supported());
+            assert_eq!(serde_json::to_value(&story).unwrap(), before);
+            assert_eq!(
+                story
+                    .respond("Where is Elin?")
+                    .and_then(|r| r.answer)
+                    .as_deref(),
+                Some("kitchen")
+            );
+        }
+        let plan = story.plan("Elin went to the garden.");
+        story.apply(plan);
+        assert_eq!(story.assertions.len(), 2);
+        assert_eq!(
+            story
+                .respond("Where is Elin?")
+                .and_then(|r| r.answer)
+                .as_deref(),
+            Some("garden")
+        );
+        Ok(())
     }
 
     #[test]
