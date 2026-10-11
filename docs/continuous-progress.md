@@ -2,12 +2,12 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. Prior turn made
-progress: PR21 merged and new experiments started. This turn completed independent
-reviews of rejected word grammar and partial inverse facts acquisition, archived
-originals and removed their restored worktrees/auth links. The first implementation candidate was independently reviewed and rejected.
-Explicit fact sets are now integrated and fully validated at runtimeac59ac8;
-publication is next. Implementation-language work remains active.
+Goal active: follow `prompts/grow-continuously.md` until stopped. This turn merged
+PR23 with fully validated explicit factual lists. The implementation-language
+candidate failed its strict contract gate; parent independently reproduced the
+failure, verified its archive and removed the restored worker tree/login link.
+Two separate prospective workers now investigate typed memory authority and
+scratch isolation for native checks. Neither is accepted yet.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -38,6 +38,47 @@ Grammar/inverse evidence and independent audits published; runtime unchanged.
 Do not repeat PR22 checks/merge.
 
 
+
+PR23 MERGED f43b2b72e0afd139db2ee3b5a54490a27562f50f at2026-10-11T07:08:54Z,
+exacthead9b875b854908cbbd5f5a6c8fce73ddcdbbb8ec8f, CI38120271043SUCCESS.
+Runtimeac59ac8 explicitfactsets fullyparentvalidated; originalmodel-free memory41,
+productionmodel40/41 identicallybaseline (Callmetomorrowmisclassified); calc27/
+stories47bothbundlemodes andfull2821ordinaryfactoutputs unchanged. No scoregain.
+Do not repeat PR23 checks or merge. Rootbinary623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac.
+
+IMPLLANGUAGE COMPLETE/REJECTED strictCLI33/34. Original70files961738bytes at
+WORK/impllanguage-run/submitted;69manifest/5freeze/1856rawidentities verified.
+Parent34CLIexactoutcomes+sourcehashes,6environmentexacthashes,34parsercontracts
+and60TRAINparserresults reproducible. Worker3/60testverified =3stylesofonefunction;
+no parentfull765. Original20/20worker suite preserved, not repeatedagainbyparent.
+Failure repairx addsCargo.lock/target viaexistinggenericroute; sourcebytesunchanged.
+Additionalparentparser probes showoverbroad wordreservation interceptsrenamesof
+functions namedimplement/implemented. RuntimeNOTintegrated. tools/coding-implement-
+language/PARENT.md,parent/review.json; rawWORK/coordinator/impllanguage-review.
+Parentjobs54843(exit1expectedstrictgate),19921(exit0) COMPLETE. Archivedpatchcfea6bd0
+andbinaryef5ba7d56a22814f620c322b0205e6a13234c7903aa7325c1eabc1c8096b1f5d retained.
+Restoredworktree removed afterfinalhashverification, scopeinactive/authunlinked.
+Do notrepeatcompletedreplays orrelabelfailedexperimentaccepted.
+
+MEMORYAUTHORITY ACTIVE PID3549185, scopeglassmind-continuous-memoryauthority.scope,
+branchcontinuous/memoryauthority/worktreeWORK/memoryauthority at9b875b8; runandbrief
+WORK/memoryauthority-run andWORK/memoryauthority-task.txt. Ownseverydaymemory+
+minimalCLIeveryday; model/classifier frozen. Investigates typedmemoryauthority and
+focus withlearnedintentfallback, no phraseblacklist orglobalintentdisable. Gate
+unchangedmemory41with/withoutactualintent +frozenindependentcontracts/calc27/stories47.
+PublicCLINCTRAIN/VAL extracteddataonly; no newdata/training. Baselinebinaryfrozen.
+
+CHECKISOLATION ACTIVE PID3558146, scopeglassmind-continuous-checkisolation.scope,
+branchcontinuous/checkisolation/worktreeWORK/checkisolation at9b875b8; runandbrief
+WORK/checkisolation-run andWORK/checkisolation-task.txt. Ownsworldchecks only/newtools.
+Prospectivehypothesis nonmutatingdiagnostics shouldusefreshscratch evenwhen target
+unset. No implementationintegration/repaircommandrefusal/liveartifactcleanup.
+Gate authoredcasesallpass, actualsource/diagnosticcorrectness, parentfull765 retains
+174passes/0fail; all765outcomes expectedunchanged. Preserve originalimplrejections.
+
+Bothworkers forcedAstrafast/ChatGPT loginverified;8GiB0swap scopes verifiedactive.
+No othermodelworker/parentjob live. Oldstoppeddirtyloop untouched. Archive originals
+beforeanyintegration, independentlyreviewthenfullaffecteddev/exact-headCIpublish.
 
 ### Verified current batch
 
@@ -87,7 +128,7 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens85,868,198 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens88,961,060 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,

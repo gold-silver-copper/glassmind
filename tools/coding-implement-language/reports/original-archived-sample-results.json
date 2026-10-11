@@ -1,0 +1,50 @@
+[
+  {
+    "case": "sum",
+    "accepted": true,
+    "expected_accept": true,
+    "ok": true,
+    "exit": 0,
+    "seconds": 0.933,
+    "before": {
+      "Cargo.toml": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+      "src/lib.rs": "5085ed0eefaf563998549f9a95c1d6f9868708723c60652858dea55216bfbd9e"
+    },
+    "after": {
+      "Cargo.toml": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+      "src/lib.rs": "98a71acd5b9e5f6d3f4d6c409487850cc04a1f2b008bdf513c60b6971f11415d"
+    }
+  },
+  {
+    "case": "reverse",
+    "accepted": true,
+    "expected_accept": true,
+    "ok": true,
+    "exit": 0,
+    "seconds": 2.646,
+    "before": {
+      "Cargo.toml": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+      "src/lib.rs": "43194e576be3ffe25a33a62da53fbb891aa50e94727543879166211ddcfea4e6"
+    },
+    "after": {
+      "Cargo.toml": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+      "src/lib.rs": "ca8ce7ca7f231b0ef98a86d4cc6f23fc329501bb8687fe18fb9a084837c191e3"
+    }
+  },
+  {
+    "case": "words",
+    "accepted": true,
+    "expected_accept": true,
+    "ok": true,
+    "exit": 0,
+    "seconds": 0.853,
+    "before": {
+      "Cargo.toml": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+      "src/lib.rs": "5db1e4cbccf85a5c0e30154aa9c6f7e2d4a7cf72a8de4666aa77afad78b57286"
+    },
+    "after": {
+      "Cargo.toml": "99bb25da0ee5022e2bca0de1bae533539ffd170a5eea5c3c463c521134d56ab0",
+      "src/lib.rs": "1cd327950db48e9cc8b23ff93b24655133d709a5647caacaa525bf4ad2f0c3f5"
+    }
+  }
+]

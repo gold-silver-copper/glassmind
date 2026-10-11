@@ -1,0 +1,31 @@
+{
+  "original_patch": {
+    "sha256": "32618f996cfa2d2170aa1f955987e641ce9e5f81b198560968233c4326709d84",
+    "bytes": 28680
+  },
+  "candidate_family_unchanged": true,
+  "candidate_family_sha256": "ee8c657d22c54bb9c34a6190a9aafceb825f2c0467e80722c2b6775f97901e9c",
+  "base_commit": "2be77e092f5337d9d10d5bd024b3d0a35ef66b5a",
+  "files": {
+    "crates/world-rust/src/implement.rs": {
+      "sha256": "55c29fd5615736b42526c97d084d746a5168b5f6cda7ce1f336a249ba6e47650",
+      "bytes": 26770
+    },
+    "crates/english-rust/src/implement.rs": {
+      "sha256": "ab873caaacb09a397b0e59e2e0e17f52d8ef3912d8f686281e3d15518b7252ad",
+      "bytes": 6976
+    },
+    "crates/world-rust/src/lib.rs": {
+      "sha256": "ab4f0a6c088525f411f28427a6f68f8b056a32b865bfddce4622699e7d056f4d",
+      "bytes": 47004
+    },
+    "crates/english-rust/src/lib.rs": {
+      "sha256": "b71be4c5ea4c8975b25c02f0b07239d3cccf887410253828650854d0fe40a7c2",
+      "bytes": 75148
+    },
+    "crates/cli/src/main.rs": {
+      "sha256": "e5f0d7da595f49ebeb2f012dadfd03806198428b1656be01d2f9948e4d9e5d4c",
+      "bytes": 22477
+    }
+  }
+}

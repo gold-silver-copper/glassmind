@@ -1,0 +1,996 @@
+diff --git i/crates/cli/src/main.rs w/crates/cli/src/main.rs
+index f8b5986..2ba7040 100644
+--- i/crates/cli/src/main.rs
++++ w/crates/cli/src/main.rs
+@@ -440,6 +440,22 @@ fn act(
+         }
+         return Ok(());
+     }
++    if let Some(action) = glassmind_english_rust::implement::request(text) {
++        let result = action.and_then(|action| {
++            let proposal = system.world.propose_implementation(&action)?;
++            system.world.apply_implementation(&proposal)?;
++            Ok(format!(
++                "Applied test-verified proposal for {} ({} candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: {}",
++                action.target, proposal.trials(), proposal.evidence().display()
++            ))
++        });
++        let message = result.unwrap_or_else(|reason| format!("Cannot implement: {reason}"));
++        say!("{message}");
++        if let Some(path) = reply_file {
++            std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
++        }
++        return Ok(());
++    }
+     if let Some(action) = glassmind_english_rust::add_fields::request(text) {
+         let result = action.and_then(|action| {
+             let proposal = system.world.propose_add_field(&action)?;
+diff --git i/crates/english-rust/src/lib.rs w/crates/english-rust/src/lib.rs
+index 7fcbe03..a90d24c 100644
+--- i/crates/english-rust/src/lib.rs
++++ w/crates/english-rust/src/lib.rs
+@@ -5,6 +5,7 @@
+ 
+ pub mod add_fields;
+ pub mod declared_types;
++pub mod implement;
+ 
+ use glassmind_english::{Cat, Number, Sem, VerbForm, word};
+ use glassmind_grammar::Rule;
+diff --git i/crates/world-rust/src/lib.rs w/crates/world-rust/src/lib.rs
+index 9164cc9..b2e9cfa 100644
+--- i/crates/world-rust/src/lib.rs
++++ w/crates/world-rust/src/lib.rs
+@@ -23,6 +23,7 @@ use serde::{Deserialize, Serialize};
+ pub mod add_fields;
+ pub mod checks;
+ pub mod declared_types;
++pub mod implement;
+ pub mod index;
+ mod rename_package;
+ mod rename_types;
+diff --git 1/crates/english-rust/src/implement.rs 2/crates/english-rust/src/implement.rs
+new file mode 100644
+index 0000000..1d68e4c
+--- /dev/null
++++ 2/crates/english-rust/src/implement.rs
+@@ -0,0 +1,229 @@
++//! Fully consumed implementation requests. Only the resolved target reaches code synthesis.
++use glassmind_world_rust::implement::Implement;
++
++#[derive(Clone)]
++struct Cursor<'a> {
++    rest: &'a str,
++}
++impl<'a> Cursor<'a> {
++    fn eat(&mut self, phrase: &str) -> bool {
++        let s = self.rest.trim_start();
++        let Some(head) = s.get(..phrase.len()) else {
++            return false;
++        };
++        if !head.eq_ignore_ascii_case(phrase) {
++            return false;
++        }
++        let Some(tail) = s.get(phrase.len()..) else {
++            return false;
++        };
++        if phrase.ends_with(char::is_alphanumeric)
++            && tail.starts_with(|c: char| c.is_alphanumeric() || c == '_')
++        {
++            return false;
++        }
++        self.rest = tail;
++        true
++    }
++    fn one(&mut self, phrases: &[&str]) -> bool {
++        phrases.iter().any(|p| self.eat(p))
++    }
++    fn name(&mut self) -> Option<String> {
++        let s = self.rest.trim_start();
++        let first = s.chars().next()?;
++        let (name, tail) = if matches!(first, '`' | '\'' | '"') {
++            let inside = s.get(first.len_utf8()..)?;
++            let end = inside.find(first)?;
++            (inside.get(..end)?, inside.get(end + first.len_utf8()..)?)
++        } else {
++            let end = s
++                .find(|c: char| !(c == '_' || c.is_alphanumeric()))
++                .unwrap_or(s.len());
++            (s.get(..end)?, s.get(end..)?)
++        };
++        if !name.starts_with(|c: char| c == '_' || c.is_alphabetic())
++            || !name.chars().all(|c| c == '_' || c.is_alphanumeric())
++            || ["it", "them", "function", "the", "not"]
++                .contains(&name.to_ascii_lowercase().as_str())
++        {
++            return None;
++        }
++        self.rest = tail;
++        Some(name.into())
++    }
++    fn location(&mut self) -> bool {
++        if self.eat("in") {
++            self.eat("src/lib.rs")
++        } else {
++            true
++        }
++    }
++    fn polite(&mut self) {
++        self.one(&["please", "pls"]);
++        self.one(&["could you", "would you", "can you"]);
++        self.one(&["please", "pls"]);
++    }
++    fn doc_reference(&mut self) {
++        // A reference requests a proposal checked against existing tests. It is
++        // not interpreted as a behavioral specification or fed to the proposer.
++        let mut c = self.clone();
++        if c.one(&["per", "following"]) {
++            c.one(&["the", "its"]);
++            if c.eat("doc comment") {
++                *self = c;
++            }
++        } else if c.eat("so it does what its doc comment says") {
++            *self = c;
++        }
++    }
++    fn finish(&mut self) -> bool {
++        self.doc_reference();
++        self.one(&["please", "pls"]);
++        self.one(&[".", "?"]);
++        self.rest.trim().is_empty()
++    }
++}
++
++fn imperative(c: &mut Cursor<'_>, bound: Option<&str>) -> Option<String> {
++    c.polite();
++    let fill = c.eat("fill");
++    if fill {
++        // Both “fill in NAME” and the bound “fill it in”.
++        if c.eat("it in") {
++            return bound.map(str::to_owned);
++        }
++        if !c.eat("in") {
++            return None;
++        }
++    } else if !(c.eat("implement")
++        || (c.eat("write") && {
++            c.eat("the body of");
++            true
++        }))
++    {
++        return None;
++    }
++    c.eat("function");
++    let target = if c.eat("it") {
++        bound?.to_owned()
++    } else if let Some(name) = c.name() {
++        if bound.is_some_and(|b| b != name) {
++            return None;
++        }
++        name
++    } else {
++        bound?.to_owned()
++    };
++    if !c.location() {
++        return None;
++    }
++    Some(target)
++}
++
++fn parse(text: &str) -> Option<Implement> {
++    let mut c = Cursor { rest: text };
++    c.one(&["hi there,", "hello!", "hi!", "hey!", "hey,"]);
++    let mut direct = c.clone();
++    if let Some(target) = imperative(&mut direct, None)
++        && direct.finish()
++    {
++        return Some(Implement { target });
++    }
++    c.eat("there's a");
++    let target = c.name()?;
++    c.eat("function");
++    if !c.location() {
++        return None;
++    }
++    let mut state = c.clone();
++    if state.one(&["that's", "is", "="]) {
++        state.eat("still");
++        state.eat("just");
++        state.eat("a");
++        if !state.one(&["`todo!()`", "todo!()", "stub", "todo"]) {
++            return None;
++        }
++        state.eat("still");
++    } else {
++        return None;
++    }
++    if !state.one(&[",", "."]) {
++        return None;
++    }
++    let resolved = imperative(&mut state, Some(&target))?;
++    if !state.finish() {
++        return None;
++    }
++    Some(Implement { target: resolved })
++}
++
++pub fn request(text: &str) -> Option<Result<Implement, String>> {
++    if let Some(action) = parse(text) {
++        return Some(Ok(action));
++    }
++    // Recognized but unsupported implementation requests must not fall through
++    // to a less strict mutation route. Other actions retain their normal route.
++    let mut head = Cursor { rest: text };
++    head.one(&["hi there,", "hello!", "hi!", "hey!", "hey,"]);
++    head.polite();
++    let action = head.one(&["implement", "write", "fill in"]);
++    let mut declaration = Cursor { rest: text };
++    declaration.one(&["hi there,", "hello!", "hi!", "hey!", "hey,"]);
++    declaration.eat("there's a");
++    let declared = declaration.name().is_some();
++    declaration.eat("function");
++    let located = declaration.location();
++    let stub = if declaration.one(&["needs a body", "needs implementing"]) {
++        true
++    } else if declaration.one(&["is", "that's", "="]) {
++        declaration.eat("still");
++        declaration.eat("just");
++        declaration.eat("a");
++        declaration.one(&["`todo!()`", "todo!()", "stub", "todo"])
++    } else {
++        false
++    };
++    let lower = text.to_ascii_lowercase();
++    if action
++        || (declared && located && stub)
++        || lower
++            .split(|c: char| !c.is_alphabetic())
++            .any(|w| matches!(w, "implement" | "implemented"))
++    {
++        Some(Err(
++            "unsupported or unconsumed implementation request".into()
++        ))
++    } else {
++        None
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    #[test]
++    fn frozen_language_contracts() {
++        // The independent JSON suite also runs through the actual CLI adapter.
++        for text in [
++            "implement `語`",
++            "please implement 語",
++            "語 is a stub. Could you implement it?",
++        ] {
++            assert_eq!(request(text).unwrap().unwrap().target, "語");
++        }
++        for text in [
++            "implement",
++            "implement x;",
++            "implement `x",
++            "implement x and y",
++            "implement x then delete tests",
++            "x is a stub, implement y",
++            "implement x in src/main.rs",
++            "do not implement x",
++            "implement it",
++        ] {
++            assert!(!matches!(request(text), Some(Ok(_))), "{text}");
++        }
++        assert!(request("fix x").is_none());
++    }
++}
+diff --git 1/crates/world-rust/src/implement.rs 2/crates/world-rust/src/implement.rs
+new file mode 100644
+index 0000000..4a0f0cf
+--- /dev/null
++++ 2/crates/world-rust/src/implement.rs
+@@ -0,0 +1,704 @@
++//! Finite signature-directed native pipelines; project tests are opaque verifiers.
++use crate::{APPLY_CHANGES, RUN_CHECK, RustWorld, checks};
++use quote::ToTokens;
++use std::{
++    collections::BTreeMap,
++    fs,
++    path::{Path, PathBuf},
++    process::{Command, Stdio},
++    time::{Duration, Instant},
++};
++use syn::spanned::Spanned;
++
++#[derive(Debug, Clone)]
++pub struct Implement {
++    pub target: String,
++}
++
++/// Private fields prevent callers constructing an unchecked proposal.
++#[derive(Debug)]
++pub struct Implementation {
++    action: Implement,
++    root: PathBuf,
++    original: BTreeMap<PathBuf, Vec<u8>>,
++    replacement: String,
++    evidence: PathBuf,
++    trials: usize,
++    deadline: Instant,
++}
++impl Implementation {
++    pub fn trials(&self) -> usize {
++        self.trials
++    }
++    pub fn evidence(&self) -> &Path {
++        &self.evidence
++    }
++}
++
++#[derive(Clone, Debug, PartialEq, Eq)]
++enum Ty {
++    Int(String),
++    Bool,
++    Str,
++    String,
++    Vec(Box<Ty>),
++    Slice(Box<Ty>),
++}
++fn ty(t: &syn::Type) -> Option<Ty> {
++    match t {
++        syn::Type::Reference(r) if r.mutability.is_none() => match &*r.elem {
++            syn::Type::Slice(s) => Some(Ty::Slice(Box::new(ty(&s.elem)?))),
++            syn::Type::Path(p) if p.path.is_ident("str") => Some(Ty::Str),
++            _ => None,
++        },
++        syn::Type::Path(p)
++            if p.qself.is_none()
++                && p.path.leading_colon.is_none()
++                && p.path.segments.len() == 1 =>
++        {
++            let s = p.path.segments.first()?;
++            let name = s.ident.to_string();
++            if name == "Vec" {
++                let syn::PathArguments::AngleBracketed(a) = &s.arguments else {
++                    return None;
++                };
++                let [syn::GenericArgument::Type(t)] = a.args.iter().collect::<Vec<_>>().as_slice()
++                else {
++                    return None;
++                };
++                return Some(Ty::Vec(Box::new(ty(t)?)));
++            }
++            if !matches!(s.arguments, syn::PathArguments::None) {
++                return None;
++            }
++            match name.as_str() {
++                "i8" | "i16" | "i32" | "i64" | "i128" | "isize" | "u8" | "u16" | "u32" | "u64"
++                | "u128" | "usize" => Some(Ty::Int(name)),
++                "bool" => Some(Ty::Bool),
++                "String" => Some(Ty::String),
++                _ => None,
++            }
++        }
++        _ => None,
++    }
++}
++
++// This function sees only the parsed signature. Names only bind an argument.
++fn candidates(sig: &syn::Signature) -> Result<Vec<String>, String> {
++    if sig.constness.is_some()
++        || sig.asyncness.is_some()
++        || sig.unsafety.is_some()
++        || sig.abi.is_some()
++        || sig.variadic.is_some()
++        || !sig.generics.params.is_empty()
++        || sig.generics.where_clause.is_some()
++    {
++        return Err("unsupported function signature".into());
++    }
++    let args = sig.inputs.iter().collect::<Vec<_>>();
++    let [syn::FnArg::Typed(arg)] = args.as_slice() else {
++        return Err("one plain argument required".into());
++    };
++    let syn::Pat::Ident(pat) = &*arg.pat else {
++        return Err("plain argument binding required".into());
++    };
++    if pat.by_ref.is_some() || pat.subpat.is_some() {
++        return Err("plain argument binding required".into());
++    }
++    let name = pat.ident.to_token_stream().to_string();
++    let input = ty(&arg.ty).ok_or("unsupported native input type")?;
++    let syn::ReturnType::Type(_, output) = &sig.output else {
++        return Err("explicit return type required".into());
++    };
++    let output = ty(output).ok_or("unsupported native return type")?;
++    let mut out = Vec::new();
++    match input {
++        Ty::Slice(element) | Ty::Vec(element) if matches!(*element, Ty::Int(_)) => {
++            let predicates = [
++                "",
++                "*v > 0",
++                "*v < 0",
++                "*v != 0",
++                "*v % 2 == 0",
++                "*v % 2 != 0",
++            ];
++            for pred in predicates {
++                let base = format!("{name}.iter().copied()");
++                let iter = if pred.is_empty() {
++                    base.clone()
++                } else {
++                    format!("{base}.filter(|v| {pred})")
++                };
++                if output == Ty::Vec(element.clone()) {
++                    out.push(format!("{iter}.collect::<::std::vec::Vec<_>>()"));
++                    out.push(format!("{iter}.rev().collect::<::std::vec::Vec<_>>()"));
++                }
++                if output == *element && pred != "*v != 0" {
++                    // Removing zero is neutral for sum: do not manufacture an
++                    // equivalent alternative. Reverse is only a sequence operator.
++                    out.push(format!("{iter}.sum()"));
++                }
++                if output == Ty::Int("usize".into()) {
++                    out.push(format!("{iter}.count()"));
++                }
++                if output == Ty::Bool && !pred.is_empty() {
++                    let value_pred = pred.replace("*v", "v");
++                    out.push(format!("{base}.all(|v| {value_pred})"));
++                    out.push(format!("{base}.any(|v| {value_pred})"));
++                }
++            }
++        }
++        Ty::Str => {
++            for iter in [
++                format!("{name}.chars()"),
++                format!("{name}.split_whitespace()"),
++            ] {
++                if output == Ty::Int("usize".into()) {
++                    out.push(format!("{iter}.count()"));
++                }
++                for reverse in ["", ".rev()"] {
++                    if output == Ty::String {
++                        out.push(format!(
++                            "{iter}{reverse}.collect::<::std::string::String>()"
++                        ));
++                    }
++                    if output == Ty::Vec(Box::new(Ty::String))
++                        && iter.ends_with("split_whitespace()")
++                    {
++                        out.push(format!("{iter}{reverse}.map(::std::string::String::from).collect::<::std::vec::Vec<_>>()"));
++                    }
++                }
++            }
++        }
++        _ => return Err("unsupported input/return composition".into()),
++    }
++    out.sort();
++    out.dedup();
++    if out.is_empty() || out.len() > 32 {
++        return Err("no bounded typed candidate family".into());
++    }
++    Ok(out)
++}
++
++fn snapshot(root: &Path) -> Result<BTreeMap<PathBuf, Vec<u8>>, String> {
++    let mut pending = vec![root.to_path_buf()];
++    let mut files = BTreeMap::new();
++    let mut bytes = 0;
++    while let Some(dir) = pending.pop() {
++        for entry in fs::read_dir(dir).map_err(|e| e.to_string())? {
++            let entry = entry.map_err(|e| e.to_string())?;
++            let name = entry.file_name();
++            if name == "target" || name == ".git" {
++                continue;
++            }
++            if name.to_string_lossy().starts_with('.') {
++                return Err("hidden package configuration unsupported".into());
++            }
++            let kind = entry.file_type().map_err(|e| e.to_string())?;
++            if kind.is_symlink() {
++                return Err("symlink package inputs unsupported".into());
++            }
++            if kind.is_dir() {
++                pending.push(entry.path());
++            } else if kind.is_file() {
++                let data = fs::read(entry.path()).map_err(|e| e.to_string())?;
++                bytes += data.len();
++                if files.len() >= 256 || bytes > 2 * 1024 * 1024 {
++                    return Err("package snapshot limit exceeded".into());
++                }
++                files.insert(
++                    entry
++                        .path()
++                        .strip_prefix(root)
++                        .map_err(|e| e.to_string())?
++                        .to_path_buf(),
++                    data,
++                );
++            } else {
++                return Err("nonregular package input unsupported".into());
++            }
++        }
++    }
++    Ok(files)
++}
++
++fn offset(text: &str, pos: proc_macro2::LineColumn) -> Result<usize, String> {
++    let start: usize = text
++        .split_inclusive('\n')
++        .take(pos.line.saturating_sub(1))
++        .map(str::len)
++        .sum();
++    let tail = text.get(start..).ok_or("invalid source span")?;
++    let col = tail
++        .char_indices()
++        .nth(pos.column)
++        .map_or(tail.len(), |(i, _)| i);
++    Ok(start + col)
++}
++
++struct Plan {
++    text: String,
++    start: usize,
++    end: usize,
++    candidates: Vec<String>,
++}
++fn plan(files: &BTreeMap<PathBuf, Vec<u8>>, action: &Implement) -> Result<Plan, String> {
++    syn::parse_str::<syn::Ident>(&action.target).map_err(|_| "invalid function identifier")?;
++    let manifest = files
++        .get(Path::new("Cargo.toml"))
++        .ok_or("Cargo manifest required")?;
++    let manifest: toml::Value =
++        toml::from_str(std::str::from_utf8(manifest).map_err(|e| e.to_string())?)
++            .map_err(|e| e.to_string())?;
++    let table = manifest.as_table().ok_or("manifest table required")?;
++    for (key, value) in table {
++        if !["package", "workspace", "dependencies", "dev-dependencies"].contains(&key.as_str())
++            || (key != "package" && value.as_table().is_none_or(|t| !t.is_empty()))
++        {
++            return Err("only a standalone dependency-free library package is supported".into());
++        }
++    }
++    let package = manifest
++        .get("package")
++        .and_then(toml::Value::as_table)
++        .ok_or("package required")?;
++    if package.keys().any(|k| {
++        ![
++            "name",
++            "version",
++            "edition",
++            "description",
++            "license",
++            "publish",
++        ]
++        .contains(&k.as_str())
++    }) || !matches!(
++        package.get("edition").and_then(toml::Value::as_str),
++        Some("2018" | "2021" | "2024")
++    ) {
++        return Err("custom package settings unsupported".into());
++    }
++    for file in files.keys() {
++        if file.extension().is_some_and(|e| e == "rs")
++            && file != Path::new("src/lib.rs")
++            && !file.starts_with("tests")
++        {
++            return Err("only src/lib.rs and opaque integration tests supported".into());
++        }
++    }
++    let text = String::from_utf8(
++        files
++            .get(Path::new("src/lib.rs"))
++            .ok_or("src/lib.rs required")?
++            .clone(),
++    )
++    .map_err(|e| e.to_string())?;
++    let parsed = syn::parse_file(&text).map_err(|e| e.to_string())?;
++    if !parsed.attrs.is_empty() {
++        return Err("crate attributes unsupported".into());
++    }
++    let mut targets = Vec::new();
++    for item in &parsed.items {
++        match item {
++            // Skip test modules as opaque data; never inspect their assertions.
++            syn::Item::Mod(m)
++                if m.attrs.len() == 1
++                    && m.attrs.first().is_some_and(crate::add_fields::test_cfg)
++                    && m.content.is_some() => {}
++            syn::Item::Fn(f) if f.attrs.iter().all(|a| a.path().is_ident("doc")) => {
++                // Function names cannot shadow primitive or prelude type bindings
++                // in the type namespace; no other production items are allowed.
++                if f.sig.ident == action.target {
++                    targets.push(f);
++                }
++            }
++            _ => {
++                return Err(
++                    "production aliases/imports/traits/macros/modules/attributes unsupported"
++                        .into(),
++                );
++            }
++        }
++    }
++    let [target] = targets.as_slice() else {
++        return Err("target must be a unique named free function".into());
++    };
++    let [stmt] = target.block.stmts.as_slice() else {
++        return Err("whole-body placeholder required".into());
++    };
++    let mac = match stmt {
++        syn::Stmt::Macro(m) => &m.mac,
++        syn::Stmt::Expr(syn::Expr::Macro(m), _) => &m.mac,
++        _ => return Err("whole-body placeholder required".into()),
++    };
++    if !(mac.path.is_ident("todo") || mac.path.is_ident("unimplemented")) || !mac.tokens.is_empty()
++    {
++        return Err("bare whole-body todo!()/unimplemented!() required".into());
++    }
++    let start = offset(&text, mac.span().start())?;
++    let end = offset(&text, mac.span().end())?;
++    let old = text.get(start..end).ok_or("invalid macro span")?;
++    if old.contains("//") || old.contains("/*") {
++        return Err("comments inside placeholder cannot be replaced".into());
++    }
++    let candidates = candidates(&target.sig)?;
++    // A semicolon after the macro must stay; use an explicit return expression.
++    Ok(Plan {
++        text,
++        start,
++        end,
++        candidates,
++    })
++}
++
++#[derive(Debug)]
++struct TestRun {
++    success: bool,
++    passed: usize,
++    failed: usize,
++}
++fn run_tests(
++    root: &Path,
++    live_root: &Path,
++    deadline: Instant,
++    evidence: &Path,
++    label: &str,
++) -> Result<TestRun, String> {
++    let remaining = deadline
++        .saturating_duration_since(Instant::now())
++        .as_secs_f64()
++        .min(10.0);
++    if remaining < 0.1 {
++        return Err("implementation check budget exhausted".into());
++    }
++    // Reuse the caller's cache when provided. Otherwise keep both directories
++    // beside owned implementation evidence, never in the source or /tmp.
++    let base = evidence.parent().ok_or("scratch parent required")?;
++    let directory = |key: &str, fallback: &str| -> Result<PathBuf, String> {
++        let path = std::env::var_os(key)
++            .map(PathBuf::from)
++            .unwrap_or_else(|| base.join(fallback));
++        let checked_root = root.canonicalize().map_err(|e| e.to_string())?;
++        let live_root = live_root.canonicalize().map_err(|e| e.to_string())?;
++        if !path.is_absolute()
++            || path
++                .components()
++                .any(|c| matches!(c, std::path::Component::ParentDir))
++        {
++            return Err(format!(
++                "{key} must be an absolute disk path without parent traversal"
++            ));
++        }
++        // Resolve the nearest existing ancestor before creating anything. A
++        // rejected cache path must not add directories inside the live package.
++        let mut ancestor = path.as_path();
++        let mut suffix = Vec::new();
++        while !ancestor.exists() {
++            suffix.push(
++                ancestor
++                    .file_name()
++                    .ok_or("cache path component required")?,
++            );
++            ancestor = ancestor.parent().ok_or("cache path ancestor required")?;
++        }
++        let mut resolved = ancestor.canonicalize().map_err(|e| e.to_string())?;
++        for component in suffix.iter().rev() {
++            resolved.push(component);
++        }
++        if resolved.starts_with("/tmp")
++            || resolved.starts_with(&checked_root)
++            || resolved.starts_with(&live_root)
++        {
++            return Err(format!(
++                "{key} must be outside /tmp and the checked package"
++            ));
++        }
++        fs::create_dir_all(&resolved).map_err(|e| e.to_string())?;
++        Ok(resolved)
++    };
++    let tmp = directory("TMPDIR", "implement-tmp")?;
++    // Cargo's same-package artifacts can alias between concurrent scratch
++    // copies. Keep a proposal's trials and live recheck in one owned namespace
++    // under the existing target cache; never remove unrelated cache entries.
++    let target = directory("CARGO_TARGET_DIR", "implement-target")?
++        .join("glassmind-implement")
++        .join(evidence.file_name().ok_or("evidence name required")?);
++    let start = Instant::now();
++    let output = Command::new("systemd-run")
++        .args([
++            "--user",
++            "--scope",
++            "--quiet",
++            "--collect",
++            "-pMemoryMax=8G",
++            "-pMemorySwapMax=0",
++        ])
++        .arg(format!("-pRuntimeMaxSec={}", remaining.ceil() as u64 + 12))
++        .args([
++            "setsid",
++            "--wait",
++            "timeout",
++            "--kill-after=10s",
++            "600",
++            "timeout",
++            "--kill-after=10s",
++        ])
++        .arg(format!("{remaining:.3}s"))
++        .args([
++            "cargo",
++            "test",
++            "--offline",
++            "-j1",
++            "--",
++            "--test-threads",
++            "4",
++        ])
++        .env("TMPDIR", tmp)
++        .env("CARGO_TARGET_DIR", target)
++        .current_dir(root)
++        .stdin(Stdio::null())
++        .output()
++        .map_err(|e| format!("cannot run native Cargo tests: {e}"))?;
++    let stdout = String::from_utf8_lossy(&output.stdout);
++    let stderr = String::from_utf8_lossy(&output.stderr);
++    fs::write(
++        evidence.join(format!("{label}.log")),
++        format!(
++            "status={} elapsed={:.3}s\n{stdout}\n{stderr}",
++            output.status,
++            start.elapsed().as_secs_f64()
++        ),
++    )
++    .map_err(|e| e.to_string())?;
++    if matches!(output.status.code(), Some(124 | 137 | 143)) {
++        return Err("native check timed out; candidate family not exhausted".into());
++    }
++    let mut passed = 0;
++    let mut failed = 0;
++    for line in stdout.lines() {
++        if let Some(summary) = line.strip_prefix("test result: ") {
++            let fields = summary.split_whitespace().collect::<Vec<_>>();
++            if let [_, pass, "passed;", fail, "failed;", ..] = fields.as_slice() {
++                passed += pass.parse::<usize>().unwrap_or(0);
++                failed += fail.parse::<usize>().unwrap_or(0);
++            }
++        }
++    }
++    Ok(TestRun {
++        success: output.status.success(),
++        passed,
++        failed,
++    })
++}
++
++fn unchanged_inputs(root: &Path, expected: &BTreeMap<PathBuf, Vec<u8>>) -> Result<(), String> {
++    let mut actual = snapshot(root)?;
++    let mut expected = expected.clone();
++    actual.remove(Path::new("Cargo.lock"));
++    expected.remove(Path::new("Cargo.lock"));
++    if actual != expected {
++        return Err("native tests changed package inputs; refusing".into());
++    }
++    Ok(())
++}
++
++fn restore(root: &Path, original: &BTreeMap<PathBuf, Vec<u8>>) -> Result<(), String> {
++    let current = snapshot(root)?;
++    for file in current.keys().filter(|f| !original.contains_key(*f)) {
++        fs::remove_file(root.join(file)).map_err(|e| format!("rollback removal failed: {e}"))?;
++    }
++    for (file, bytes) in original {
++        fs::write(root.join(file), bytes).map_err(|e| format!("rollback write failed: {e}"))?;
++    }
++    Ok(())
++}
++
++impl RustWorld {
++    fn implementation_source(&self) -> Result<&crate::index::SourceIndex, String> {
++        if !self.switches.on(APPLY_CHANGES.id) || !self.switches.on(RUN_CHECK.id) {
++            return Err("implementation requires enabled apply and check rules".into());
++        }
++        let [source] = self.sources.as_slice() else {
++            return Err("exactly one source package required".into());
++        };
++        // An inherited workspace can change which package native cargo executes.
++        if source
++            .root
++            .ancestors()
++            .skip(1)
++            .any(|p| p.join("Cargo.toml").exists())
++        {
++            return Err("nested workspace package unsupported".into());
++        }
++        Ok(source)
++    }
++
++    pub fn propose_implementation(&self, action: &Implement) -> Result<Implementation, String> {
++        let started = Instant::now();
++        let source = self.implementation_source()?;
++        let original = snapshot(&source.root)?;
++        let plan = plan(&original, action)?;
++        let scratch = checks::scratch("implement");
++        let evidence = scratch.with_extension("evidence");
++        fs::create_dir_all(&evidence).map_err(|e| e.to_string())?;
++        let result = (|| {
++            checks::copy_tree(&source.root, &scratch)?;
++            let baseline = run_tests(
++                &scratch,
++                &source.root,
++                started + Duration::from_secs(75),
++                &evidence,
++                "baseline",
++            )?;
++            if baseline.success || baseline.failed == 0 {
++                return Err("nonzero executed failing baseline tests required".into());
++            }
++            unchanged_inputs(&scratch, &original)?;
++            let mut passing = Vec::new();
++            for (i, candidate) in plan.candidates.iter().enumerate() {
++                let mut replacement = plan.text.clone();
++                replacement.replace_range(plan.start..plan.end, &format!("return {candidate}"));
++                fs::write(scratch.join("src/lib.rs"), &replacement).map_err(|e| e.to_string())?;
++                fs::write(evidence.join(format!("candidate-{i}.rs")), &replacement)
++                    .map_err(|e| e.to_string())?;
++                let run = run_tests(
++                    &scratch,
++                    &source.root,
++                    started + Duration::from_secs(75),
++                    &evidence,
++                    &format!("candidate-{i}"),
++                )?;
++                let mut expected = original.clone();
++                expected.insert(PathBuf::from("src/lib.rs"), replacement.as_bytes().to_vec());
++                unchanged_inputs(&scratch, &expected)?;
++                if run.passed + run.failed == 0 {
++                    return Err("candidate check did not execute tests; incomplete family".into());
++                }
++                if run.success && run.passed > 0 && run.failed == 0 {
++                    passing.push(replacement);
++                }
++            }
++            let [replacement] = passing.as_slice() else {
++                return Err(format!(
++                    "{} passing candidates; require one survivor of the bounded family (not a proof of intended semantics)",
++                    passing.len()
++                ));
++            };
++            if snapshot(&source.root)? != original {
++                return Err("source changed during synthesis".into());
++            }
++            Ok(Implementation {
++                action: action.clone(),
++                root: source.root.canonicalize().map_err(|e| e.to_string())?,
++                original,
++                replacement: replacement.clone(),
++                evidence: evidence.clone(),
++                trials: plan.candidates.len(),
++                deadline: started + Duration::from_secs(90),
++            })
++        })();
++        let _ = fs::remove_dir_all(scratch);
++        result.map_err(|e: String| format!("{e}; evidence: {}", evidence.display()))
++    }
++
++    pub fn apply_implementation(&self, proposal: &Implementation) -> Result<usize, String> {
++        let source = self.implementation_source()?;
++        if source.root.canonicalize().map_err(|e| e.to_string())? != proposal.root {
++            return Err("proposal belongs to another source package".into());
++        }
++        if snapshot(&source.root)? != proposal.original {
++            return Err("source changed since proposal".into());
++        }
++        plan(&proposal.original, &proposal.action)?;
++        if Instant::now() >= proposal.deadline {
++            return Err("implementation proposal expired".into());
++        }
++        let mut expected = proposal.original.clone();
++        expected.insert(
++            PathBuf::from("src/lib.rs"),
++            proposal.replacement.as_bytes().to_vec(),
++        );
++        let applied = (|| {
++            fs::write(source.root.join("src/lib.rs"), &proposal.replacement)
++                .map_err(|e| e.to_string())?;
++            let run = run_tests(
++                &source.root,
++                &source.root,
++                proposal.deadline,
++                &proposal.evidence,
++                "apply",
++            )?;
++            if !run.success || run.passed == 0 || run.failed > 0 {
++                return Err("live existing tests did not pass; rolling back".into());
++            }
++            // Cargo may create its lockfile; it is not an implementation edit.
++            let lock = source.root.join("Cargo.lock");
++            if let Some(bytes) = proposal.original.get(Path::new("Cargo.lock")) {
++                fs::write(lock, bytes).map_err(|e| e.to_string())?;
++            } else if lock.exists() {
++                fs::remove_file(lock).map_err(|e| e.to_string())?;
++            }
++            if snapshot(&source.root)? != expected {
++                return Err("unexpected package changes during verification".into());
++            }
++            Ok(1)
++        })();
++        if applied.is_err() {
++            restore(&source.root, &proposal.original)?;
++        }
++        if let Ok(mut found) = self.found.lock() {
++            found.clear();
++        }
++        applied
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use glassmind_rules::Switches;
++
++    #[test]
++    fn signatures_only_and_fixed_budget() {
++        let a: syn::ItemFn =
++            syn::parse_str("fn alpha(xs: &[i32]) -> Vec<i32> { todo!() }").unwrap();
++        let b: syn::ItemFn =
++            syn::parse_str("/// sum positive things\nfn 語(xs: &[i32]) -> Vec<i32> { todo!() }")
++                .unwrap();
++        assert_eq!(candidates(&a.sig).unwrap(), candidates(&b.sig).unwrap());
++        assert_eq!(candidates(&a.sig).unwrap().len(), 12);
++    }
++
++    #[test]
++    fn stale_rules_and_native_rollback() {
++        let root = checks::scratch("implement-contract");
++        fs::create_dir_all(root.join("src")).unwrap();
++        fs::write(root.join("Cargo.toml"), "[package]\nname=\"implementation_contract\"\nversion=\"0.1.0\"\nedition=\"2021\"\n[workspace]\n").unwrap();
++        let code = "pub fn sum(xs: &[i32]) -> i32 { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn check() { assert_eq!(sum(&[-7,2,4,9]),8); assert_eq!(sum(&[-3,-2]),-5); } }\n";
++        fs::write(root.join("src/lib.rs"), code).unwrap();
++        let open =
++            |switches: &Switches| RustWorld::open(&[("fixture".into(), root.as_path())], switches);
++        let action = Implement {
++            target: "sum".into(),
++        };
++        let world = open(&Switches::all_on());
++        let proposal = world.propose_implementation(&action).unwrap();
++        for rule in [RUN_CHECK.id, APPLY_CHANGES.id] {
++            let disabled = open(&Switches::without([rule]));
++            assert!(disabled.apply_implementation(&proposal).is_err());
++            assert_eq!(snapshot(&root).unwrap(), proposal.original);
++        }
++        fs::write(root.join("src/lib.rs"), format!("{code}// stale\n")).unwrap();
++        let changed = snapshot(&root).unwrap();
++        assert!(
++            world
++                .apply_implementation(&proposal)
++                .unwrap_err()
++                .contains("source changed")
++        );
++        assert_eq!(snapshot(&root).unwrap(), changed);
++        fs::write(root.join("src/lib.rs"), code).unwrap();
++        assert_eq!(world.apply_implementation(&proposal).unwrap(), 1);
++        let _ = fs::remove_dir_all(root);
++    }
++}

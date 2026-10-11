@@ -1,0 +1,68 @@
+{
+  "archive_files": 70,
+  "archive_bytes": 961738,
+  "manifest_entries": 69,
+  "frozen_entries": 5,
+  "raw_artifacts": 1856,
+  "runtime_integrated": false,
+  "decision": "REJECTED, no runtime integrated",
+  "cli": {
+    "total": 34,
+    "passed": 33,
+    "implementations": 9,
+    "failure": "repair x",
+    "original_source_bytes_preserved": true,
+    "new_paths": [
+      "Cargo.lock",
+      "target/.rustc_info.json",
+      "target/CACHEDIR.TAG",
+      "target/debug/.cargo-build-lock",
+      "target/debug/.cargo-lock",
+      "target/debug/.fingerprint/implement_fixture-441d23084241ffd6/dep-test-lib-implement_fixture",
+      "target/debug/.fingerprint/implement_fixture-441d23084241ffd6/invoked.timestamp",
+      "target/debug/.fingerprint/implement_fixture-441d23084241ffd6/output-test-lib-implement_fixture",
+      "target/debug/.fingerprint/implement_fixture-441d23084241ffd6/test-lib-implement_fixture",
+      "target/debug/.fingerprint/implement_fixture-441d23084241ffd6/test-lib-implement_fixture.json",
+      "target/debug/.fingerprint/implement_fixture-b9186237ae9600f9/dep-lib-implement_fixture",
+      "target/debug/.fingerprint/implement_fixture-b9186237ae9600f9/invoked.timestamp",
+      "target/debug/.fingerprint/implement_fixture-b9186237ae9600f9/lib-implement_fixture",
+      "target/debug/.fingerprint/implement_fixture-b9186237ae9600f9/lib-implement_fixture.json",
+      "target/debug/.fingerprint/implement_fixture-b9186237ae9600f9/output-lib-implement_fixture",
+      "target/debug/deps/implement_fixture-441d23084241ffd6.d",
+      "target/debug/deps/implement_fixture-b9186237ae9600f9.d",
+      "target/debug/deps/libimplement_fixture-441d23084241ffd6.rmeta",
+      "target/debug/deps/libimplement_fixture-b9186237ae9600f9.rmeta",
+      "target/debug/incremental/implement_fixture-0vrrqhpy5168z/s-hn3stflyax-0otk1p6-d103o3dt07czaf6toq1z3ef44/dep-graph.bin",
+      "target/debug/incremental/implement_fixture-0vrrqhpy5168z/s-hn3stflyax-0otk1p6-d103o3dt07czaf6toq1z3ef44/metadata.rmeta",
+      "target/debug/incremental/implement_fixture-0vrrqhpy5168z/s-hn3stflyax-0otk1p6-d103o3dt07czaf6toq1z3ef44/query-cache.bin",
+      "target/debug/incremental/implement_fixture-0vrrqhpy5168z/s-hn3stflyax-0otk1p6-d103o3dt07czaf6toq1z3ef44/work-products.bin",
+      "target/debug/incremental/implement_fixture-0vrrqhpy5168z/s-hn3stflyax-0otk1p6.lock",
+      "target/debug/incremental/implement_fixture-3qx7kwx9agp9e/s-hn3stfljfs-0u540mf-483vy3mzkri56zqjkf7wm7qxf/dep-graph.bin",
+      "target/debug/incremental/implement_fixture-3qx7kwx9agp9e/s-hn3stfljfs-0u540mf-483vy3mzkri56zqjkf7wm7qxf/query-cache.bin",
+      "target/debug/incremental/implement_fixture-3qx7kwx9agp9e/s-hn3stfljfs-0u540mf-483vy3mzkri56zqjkf7wm7qxf/work-products.bin",
+      "target/debug/incremental/implement_fixture-3qx7kwx9agp9e/s-hn3stfljfs-0u540mf.lock"
+    ]
+  },
+  "environment": {
+    "total": 6,
+    "passed": 6
+  },
+  "parser": {
+    "contracts": 34,
+    "passed": 34,
+    "train_parsed": 23,
+    "total_train": 60,
+    "reports_byte_identical": true
+  },
+  "additional_probe": {
+    "rename function implemented to ready": "REFUSED",
+    "how many functions are implemented": "REFUSED",
+    "rename function implement to ready": "REFUSED",
+    "implement different_name": "different_name",
+    "repair different_name": "UNRECOGNIZED"
+  },
+  "candidate_family_unchanged": true,
+  "train_runtime_replayed": false,
+  "full765_run": false,
+  "parent_audit_note": "First comparison selected intermediate parser-coverage.json and failed; corrected comparison to frozen parser-coverage-final.json without repeating inference."
+}
