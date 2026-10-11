@@ -56,7 +56,8 @@ Do not poll/restart them. Parent report tools/coding-field-owners/PARENT.md.
 Original export26/27 and AddField14/15 mismatches remain unchanged worker evidence.
 
 FIELDREVIEW COMPLETE:233files353733bytes archived atWORK/fieldreview-run/submitted;
-all archive entries, five identities and two frozen files verified.21independent
+all archive entries,231review manifest entries, five identities and two frozen
+files verified.21independent
 cases: six exact edits including one inherited, fifteen unchanged refusals.
 No unsafe accepted edit found in bounded scope; no general Rust proof. Parent
 integrated release reproduces all21 plus fixedsample; native behavior before/after
@@ -93,7 +94,9 @@ loop untouched. Known completed worker tokens114,694,820, cached input once;
 parent and unfinished percent worker excluded. External five-line PR27 milestone
 appended to /home/gsc/code/notes/projects/glassmind/progress.md.
 
-Next: finish full765, audit every outcome transition, update report/README/journal,
+Next: finish full765 and run tools/coding-field-owners/parent/compare-full.py
+(the same outcome comparer with updated paths/commit), audit every transition,
+update report/README/journal,
 push/open PR for field ownership only if all gates pass, then exact-head CI merge.
 Review percent worker only when terminal, archive before changes, independently
 verify. Keep both coding and conversation moving and periodically revisit weak
