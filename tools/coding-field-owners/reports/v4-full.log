@@ -1,0 +1,17 @@
+direct True True True "I'd rename the `Parcel::count` field to `total` in 3 places.\n  src/lib.rs:1:25  `count` -> `total`\n  src/lib.rs:3:43  `count` -> `total`\n  src/lib.rs:3:54  `count` -> `total`\n  (say yes to rename `Parcel::count`)\nI made 3 changes. No problems with the build.\n"
+typed True True True "I'd rename the `CrateBox::amount` field to `quantity` in 3 places.\n  src/lib.rs:1:27  `amount` -> `quantity`\n  src/lib.rs:3:33  `amount` -> `quantity`\n  src/lib.rs:4:50  `amount` -> `quantity`\n  (say yes to rename `CrateBox::amount`)\nI made 3 changes. No problems with the build.\n"
+reference True True True "I'd rename the `Vessel::level` field to `height` in 3 places.\n  src/lib.rs:1:25  `level` -> `height`\n  src/lib.rs:3:32  `level` -> `height`\n  src/lib.rs:4:49  `level` -> `height`\n  (say yes to rename `Vessel::level`)\nI made 3 changes. No problems with the build.\n"
+nested True True True "I'd rename the `Metric::value` field to `reading` in 3 places.\n  src/lib.rs:2:25  `value` -> `reading`\n  src/lib.rs:4:43  `value` -> `reading`\n  src/lib.rs:4:55  `value` -> `reading`\n  (say yes to rename `Metric::value`)\nI made 3 changes. No problems with the build.\n"
+shadow False True True "I understand, but I can't do that here.\n"
+call False True True "I understand, but I can't do that here.\n"
+alias False True True "I understand, but I can't do that here.\n"
+closure False True True "I understand, but I can't do that here.\n"
+destructure False True True "I understand, but I can't do that here.\n"
+shorthand False True True "I understand, but I can't do that here.\n"
+macro False True True "I understand, but I can't do that here.\n"
+generic False True True "I understand, but I can't do that here.\n"
+collision False True True "I understand, but I can't do that here.\n"
+bare False True True "I can't tell which one you mean: `Parcel::count` and `Ledger::count`.\n"
+missing False True True 'Nothing is called `Missing`.\n'
+ambiguous_owner False True True '`Parcel::count` is the wrong kind of thing for that.\n'
+correct 16 / 16 edits 4

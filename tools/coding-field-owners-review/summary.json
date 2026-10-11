@@ -1,0 +1,38 @@
+{
+  "reports/baseline-sample/results.json": {
+    "cases": 3,
+    "exact_expectations": 3,
+    "changed": 0,
+    "behavior_before_after": 3
+  },
+  "reports/accepted-sample/results.json": {
+    "cases": 3,
+    "exact_expectations": 3,
+    "changed": 3,
+    "behavior_before_after": 3
+  },
+  "reports/baseline-full/results.json": {
+    "cases": 15,
+    "exact_expectations": 15,
+    "changed": 1,
+    "behavior_before_after": 15
+  },
+  "reports/accepted-full/results.json": {
+    "cases": 15,
+    "exact_expectations": 15,
+    "changed": 5,
+    "behavior_before_after": 15
+  },
+  "supplemental/reports/baseline-full/results.json": {
+    "cases": 6,
+    "exact_expectations": 6,
+    "changed": 0,
+    "behavior_before_after": 6
+  },
+  "supplemental/reports/accepted-full/results.json": {
+    "cases": 6,
+    "exact_expectations": 6,
+    "changed": 1,
+    "behavior_before_after": 6
+  }
+}

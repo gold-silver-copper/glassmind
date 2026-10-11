@@ -1,0 +1,15 @@
+Running as unit: run-p4099785-i96395747.scope; invocation ID: 40af4b173a7245b880d261e590384246
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/crates/world-rust)
+error[E0425]: cannot find value `Struct` in this scope
+   --> crates/world-rust/src/lib.rs:611:51
+    |
+611 | ...                   owner.kind == Struct
+    |                                     ^^^^^^ not found in this scope
+    |
+help: consider importing this unit variant
+    |
+ 10 + use crate::RustKind::Struct;
+    |
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `glassmind-world-rust` (lib) due to 1 previous error

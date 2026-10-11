@@ -1,86 +1,100 @@
 # Continuous development checkpoint
 
-## Authoritative current state — 2026-10-11 UTC, runtime 47b6b28
+## Authoritative current state — 2026-10-11 UTC, field-owner dev running
 
-Goal active under `prompts/grow-continuously.md`. Previous turn only restated the
-prompt (no progress); this continuation verified the live checkout and resumes
-publishing completed work. This section supersedes every older ACTIVE/pending
-label below. WORK=`/home/gsc/.cache/glassmind/continuous-20261010`.
-Branch `harness`; PR26 already merged3ad0b952af127f0266066c82a89985b4dfd9f667,
-exacthead6329b3870f1c6b21a8bbb41eedc7677a1aef49f2, CI38122571042SUCCESS.
-No open PR at this audit. Current batch is validated locally, not yet published.
+Goal active under `prompts/grow-continuously.md`; no blocker. This section
+supersedes older ACTIVE/pending labels. WORK=`/home/gsc/.cache/glassmind/continuous-20261010`.
+Branch `harness`, HEAD runtime4a06d788e923ca29e40ddc1e6f5d0e8d50f20015.
+The last turn restated the prompt without progress; this continuation completed
+publishing, independent replay and launched the next bounded experiment.
 
-Runtime47b6b285b5cd23f0580600dcda3011689ab20da1; final release binary
-bd7df8f882bf3fb2d1a5ac4c86ce77083e6305949953630030285256562747dd, retained
-at WORK/coordinator/buffered-route-review/glassmind-integrated.
+PR27 is MERGED: https://github.com/gold-silver-copper/glassmind/pull/27
+Merge9ee1749dcc8100c08b1af9c3985a32cdd22365bf at2026-10-11T08:19:57Z;
+exacthead5af9c4067d12d1f7a0ee05af14b84af4b321f68c; CI38124307162SUCCESS.
+Push84962/create80896/merge24963 COMPLETE. Do not repeat checks or merge.
+Published runtime47b6b285b5cd23f0580600dcda3011689ab20da1, binary
+bd7df8f882bf3fb2d1a5ac4c86ce77083e6305949953630030285256562747dd.
+Includes exact identifier spelling/roles, typed story routing and buffered JSON.
+Coding full765 at5f2859a/ca120ec6:174passes591refusals0fail, every outcome unchanged.
+42/42roles vs33/42; eight independent spelling checks safe, seven behavior-tested
+edits. Full1340grammar/120reading parse outputs unchanged.43Englishtests pass.
+Conversation490social+134memory both modes;122boundary checks each, goodbye6/7,
+calc27/story47/facts36+16/stale2 all pass. CLINC3100 routing1303->1305, all old
+correct retained, no new wrong, same40inherited wrong accepted. Separate routing
+diagnostic, not classifier accuracy. Full3987story/47625turn and2821fact replies
+byte-identical.17conversationtests/workspace gates pass. Model/thresholds unchanged.
+Five interleaved startups2.5866s ->.0933s, identical replies; concurrent jobs, no
+cold-cache claim. Ten malformed/missing cases and saved state remain compatible.
+All final coding/conversation jobs COMPLETE; do not repeat. Detailed reports in
+tools/coding-identifier-roles, tools/conversation/route-authority and buffered-loading.
+Original worker archives and repository copies reverified; inactive trees/auth
+links removed. Wrapper EOF/report-path typo/interrupted unbuffered run retained,
+none credited as passing. Final buffered replay complete.
 
-IDENTIFIER SPELLING + ROLES accepted: explicit call names preserve underscores;
-known English words can be identifiers only in explicit code roles. Parent42/42
-contracts versus33/42, four added verified renames and five queries; all prior
-successes retained. Independent eight spelling probes all safe, seven actual
-edits with unchanged native behavior tests. All43 scoped tests/workspace gates
-pass; full1340 grammar and120reading parse outputs unchanged. V1 broad noun
-promotion remains rejected. Original136-file archive and repository copies were
-reverified before removing the inactive worker and login link.
-Full765 COMPLETE at5f2859a730f6d20a0ac64ca9a7551821ed123e86, binaryca120ec6:
-174passes,591refusals,0fail; every outcome unchanged. Result SHA
+FIELDOWNERS local integration passes, full dev PENDING. Original282files/1,130,972
+bytes archived atWORK/fieldowners-run/submitted. All3189raw artifact hashes pass;
+four removed worktree paths resolve to archived copies. Only glassmind-accepted
+SHA19d2770f8a43cdd9037b8a46747d5a428489b567dcdfd63e40e1bc1e011fb621 and
+accepted-*/regressions-accepted reports are final. Earlier final-* and
+`glassmind-candidate` are stale v3 after a failed build; preserve, exclude.
+Exact two source files integrated at4a06d788e923ca29e40ddc1e6f5d0e8d50f20015;
+release binary8e52835c22bbb335a10fa4f3c9b175f1e7db07b0f5b895803adbcb35a8cc431d
+retained atWORK/coordinator/fieldowners-review/glassmind-integrated.
+Parent worker-binary replay and integrated sample/full/audit reproduce all16+4
+outcomes, source hashes and replies:12expected refusals ->16/16 with4exact edits;
+all four supplemental refusals unchanged. Every original before/after native
+behavior test executed. Workspace fmt/clippy/release/strict4smoke,27unit tests,
+4isolation tests pass. Initial parent test command omitted CARGO_TARGET_DIR and
+2isolation tests unwrapped missing environment; original log retained. Rerunonly
+four unchanged isolation tests with env set, then previously unrun fixture probes.
+No runtime/scorer/test fix. Completed sessions25584(worker replay),7302(initial
+workspace/test script exit101),70336(corrected continuation),25291(independent replay).
+Do not poll/restart them. Parent report tools/coding-field-owners/PARENT.md.
+Original export26/27 and AddField14/15 mismatches remain unchanged worker evidence.
+
+FIELDREVIEW COMPLETE:233files353733bytes archived atWORK/fieldreview-run/submitted;
+all archive entries, five identities and two frozen files verified.21independent
+cases: six exact edits including one inherited, fifteen unchanged refusals.
+No unsafe accepted edit found in bounded scope; no general Rust proof. Parent
+integrated release reproduces all21 plus fixedsample; native behavior before/after
+passes. Nested opposing owners, paths, struct updates, Unicode/CRLF covered.
+Worker runtime restored; archive+232repository copies verified before removing
+inactive worktree/login link. Fieldowner archive+281copies also match; tree/auth
+removed. Reports tools/coding-field-owners-review. All513copies preserved.
+
+Full765 is RUNNING, parent session23591 verified live. Command:
+GLASSMIND=WORK/coordinator/fieldowners-review/glassmind-integrated
+GLASSMIND_SCRATCH=WORK/coordinator/fieldowners-full/native-scratch
+tools/rustbench-dev.sh WORK/coordinator/fieldowners-full.
+8GiB/0swap scopes,setsid--wait,diskTMPDIR,timeout and10s kill grace. Inspect run.log;
+results appear only on completion, so missing results do not imply failure.
+Baseline WORK/coordinator/identifierroles-full/results.jsonl SHA
 cc1daf8604b72ca88978b6c3580c9af5f43b4194bc9980ddb33c0a330f7fa631.
-Raw WORK/coordinator/identifierroles-full; docs/results/coding-identifier-roles.json.
-Session75904 and all previous coding jobs are COMPLETE; do not repeat them.
-Later commits change only two conversation modules, not coding paths.
+Gate>=174passes, all174old passes retained, zero failures. No publish decision yet.
 
-ROUTEAUTHORITY accepted: typed story plans decide state ownership before learned
-fallback. Final buffered binary passes490social +134memory checks in both model
-modes, goodbye6/7,122boundary checks each, calc27/story47/facts36+16/stale2.
-All3100 CLINC inputs retain1303 correct learned proposals and add2, zero newly
-wrong;40 inherited wrong proposals remain. All19changed rows audited. This is a
-routing diagnostic, not full conversation or classifier accuracy. Full3987story
-questions/47625turns and2821ordinaryfacts both modes preserve output bytes.
-All17conversationtests and final workspace fmt/clippy/release/strict4smoke pass.
-Original442files archived;438artifacts/25identities/30inputs/2freezes verified.
-Scope inactive; original archive and66 repository copies verified again before
-removing its worktree and login link.
-Reports: tools/conversation/route-authority/PARENT.md; raw final
-WORK/coordinator/buffered-route-review. Original rejected social route remains
-rejected. Worker wrapper EOF after completed scoring, parent story report-path
-typo, and intentionally interrupted unbuffered model run remain documented;
-none supplies a partial passing score. Final buffered suites completed fully.
+PERCENTCHANGE ACTIVE: launcherPID41861, scopeglassmind-continuous-percentchange.scope,
+worktreeWORK/percentchange at5af9c40, runWORK/percentchange-run,
+briefWORK/percentchange-task.txt. Scope8GiB/0swap verified. Login status confirms
+ChatGPT; controlled worker usesGPT6Astra fast and stripped API-key environment.
+Owns quantities/newtools/quantities/percent-change only. New hypothesis: explicit
+before/after percentage relations and bound bases, distinct from rejected motion
+approaches. Inspect first4000MathQA TRAIN Problem-only texts; freeze representation,
+independent probes and gate before runtime/DEV. Required >=2 new mathematically
+justified v3correct of4475, all25old answered payloads unchanged, no newlywrong or
+unscorable accepted, full3116synthetic triples unchanged. Fixedsamplethenfull; no
+post-full retuning. No downloads or heldout input. Existing production06a651b
+baseline and sparse25-answer report copied; absentindices are refusals, not full
+stored predictions. Parent still independently reviews any candidate.
+One live model worker plus parent; full765 has one cargo job. Old stopped dirty
+loop untouched. Known completed worker tokens114,694,820, cached input once;
+parent and unfinished percent worker excluded. External five-line PR27 milestone
+appended to /home/gsc/code/notes/projects/glassmind/progress.md.
 
-BUFFERED LOADING accepted: same serde JSON parser reads through BufReader.
-Five interleaved fresh-process trials with the same production model measured
-median2.586598s ->0.093314s (27.72x), identical replies. Concurrent development
-jobs were active; no isolated-system or cold-cache claim. Ten malformed/missing
-model/session cases preserve rejection behavior; valid persisted state/replies
-are byte-identical. Report tools/conversation/buffered-loading/PARENT.md.
-All final parent jobs are COMPLETE:38834,99136,29730,95468,29973,25761,22479,
-62890,95523. Do not poll or repeat these completed handles.
-
-FIELDOWNERS complete but NOT integrated/accepted by parent. Original282files
-1,130,972bytes archived/hashverified at WORK/fieldowners-run/submitted.
-Only WORK/fieldowners-run/glassmind-accepted (SHA19d2770f8a43cdd9037b8a46747d5a428489b567dcdfd63e40e1bc1e011fb621)
-and accepted-*/regressions-accepted reports represent final code. Earlier files
-named final-* and glassmind-candidate are stale v3 after a failed build; retained,
-excluded from acceptance. Worker frozen16:12safe refusals ->16/16 including4exact
-owner-only edits; four supplemental refusals pass. Existing export26/27 and
-AddField14/15 failures unchanged. Parent review/replay/full765 remain required.
-Original282-file archive verified again; inactive worktree/login link removed.
-Reviewer accesses the immutable archive and final binary, not that worktree.
-
-FIELDREVIEW is ACTIVE, verified live this continuation: PID22957,
-scopeglassmind-continuous-fieldreview.scope, MemoryMax8GiB/MemorySwapMax0;
-worktree WORK/fieldreview at47b6b28, run WORK/fieldreview-run,
-brief WORK/fieldreview-task.txt. GPT6Astra fast through ChatGPT, no API keys.
-Independent owner/scope/alias/macro/cfg review and behavioral counterexamples;
-no runtime fixes or scorer changes. One model worker plus parent. Do not restart.
-Known completed worker tokens113,602,883; cached input counted once, parent and
-unfinished reviewer excluded. Old stopped dirty loop untouched.
-
-Next: commit reports/journal, push/open PR for validated runtime, wait for exact
-head CI and merge. Meanwhile inspect field reviewer when terminal, archive its
-original evidence, and decide next coding experiment from actual findings.
-No blocker and no goal completion. Keep coding and conversation moving; after
-this batch revisit weak reading/dialogue coverage with a new falsifiable gate.
-
+Next: finish full765, audit every outcome transition, update report/README/journal,
+push/open PR for field ownership only if all gates pass, then exact-head CI merge.
+Review percent worker only when terminal, archive before changes, independently
+verify. Keep both coding and conversation moving and periodically revisit weak
+reading/dialogue coverage with a new measurable hypothesis. Goal remains active.
 
 ## Historical checkpoint before final route replay — superseded below
 

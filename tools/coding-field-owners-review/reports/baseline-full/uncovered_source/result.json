@@ -1,0 +1,24 @@
+{
+  "name": "uncovered_source",
+  "valid_original": true,
+  "exact": true,
+  "changed": false,
+  "behavior": true,
+  "manifest_unchanged": true,
+  "before": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_uncovered_source\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p29393-i96286866.scope; invocation ID: dcef09c7341242a992820e98997dc091\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/baseline-full/uncovered_source)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "edit": {
+    "code": 0,
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p29468-i96506420.scope; invocation ID: f6a89c306d0a48cebeb014674f85f500\n"
+  },
+  "after": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_uncovered_source\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p29470-i96487742.scope; invocation ID: 15bd9509a75c438ead281806a4e7a06f\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "pass": true
+}

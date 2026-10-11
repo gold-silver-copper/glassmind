@@ -1,0 +1,24 @@
+{
+  "name": "match_shadow",
+  "valid_original": true,
+  "exact": true,
+  "changed": false,
+  "behavior": true,
+  "manifest_unchanged": true,
+  "before": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_match_shadow\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p30794-i96479628.scope; invocation ID: 40b4291f1c8441efad251bebaa3eb107\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/match_shadow)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "edit": {
+    "code": 0,
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p30869-i96479630.scope; invocation ID: 569796f1c54f47fb8c568c9d89eb48f4\n"
+  },
+  "after": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_match_shadow\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p30871-i96410812.scope; invocation ID: 6cbd057ca6134fad9e77eab45e88dfe4\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "pass": true
+}

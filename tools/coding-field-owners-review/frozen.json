@@ -1,0 +1,172 @@
+[
+  {
+    "name": "nested_literal",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\nfn pair(g: &&Gauge, b: &Beacon) -> (u32,u32) { ((g).level, (b).level) }\npub fn observe() -> (u32,u32) { pair(&&Gauge { level: Beacon { level: 13 }.level }, &Beacon { level: Gauge { level: 71 }.level }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_nested_literal\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub reading: u32 }\npub struct Beacon { pub level: u32 }\nfn pair(g: &&Gauge, b: &Beacon) -> (u32,u32) { ((g).reading, (b).level) }\npub fn observe() -> (u32,u32) { pair(&&Gauge { reading: Beacon { level: 13 }.level }, &Beacon { level: Gauge { reading: 71 }.reading }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_nested_literal\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": true,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "qualified_files",
+    "before": {
+      "src/lib.rs": "pub mod metrics;\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { metrics::inner::read(&metrics::Gauge { level: 13 }, &crate::Beacon { level: 71 }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_qualified_files\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n",
+      "src/metrics.rs": "pub struct Gauge { pub level: u32 }\npub mod inner {\npub fn read(g: &super::Gauge, b: &crate::Beacon) -> (u32,u32) { (g.level, b.level) }\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub mod metrics;\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { metrics::inner::read(&metrics::Gauge { reading: 13 }, &crate::Beacon { level: 71 }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_qualified_files\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n",
+      "src/metrics.rs": "pub struct Gauge { pub reading: u32 }\npub mod inner {\npub fn read(g: &super::Gauge, b: &crate::Beacon) -> (u32,u32) { (g.reading, b.level) }\n}\n"
+    },
+    "accepted": true,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "struct_update",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\nfn read(g: Gauge, b: Beacon) -> (u32,u32) { (Gauge { ..g }.level, Beacon { ..b }.level) }\npub fn observe() -> (u32,u32) { read(Gauge { level: 13 }, Beacon { level: 71 }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_struct_update\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub reading: u32 }\npub struct Beacon { pub level: u32 }\nfn read(g: Gauge, b: Beacon) -> (u32,u32) { (Gauge { ..g }.reading, Beacon { ..b }.level) }\npub fn observe() -> (u32,u32) { read(Gauge { reading: 13 }, Beacon { level: 71 }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_struct_update\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": true,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "unicode_crlf",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\r\npub struct Beacon { pub level: u32 }\r\npub fn observe() -> (u32,u32) { let café = \"🌡 level\"; let _ = café; (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\r\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_unicode_crlf\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub reading: u32 }\r\npub struct Beacon { pub level: u32 }\r\npub fn observe() -> (u32,u32) { let café = \"🌡 level\"; let _ = café; (Gauge { reading: 13 }.reading, Beacon { level: 71 }.level) }\r\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_unicode_crlf\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": true,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "match_shadow",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\nfn read(g: Gauge, b: Beacon) -> (u32,u32) { let first = g.level; match b { g => (first, g.level) } }\npub fn observe() -> (u32,u32) { read(Gauge { level: 13 }, Beacon { level: 71 }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_match_shadow\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\nfn read(g: Gauge, b: Beacon) -> (u32,u32) { let first = g.level; match b { g => (first, g.level) } }\npub fn observe() -> (u32,u32) { read(Gauge { level: 13 }, Beacon { level: 71 }) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_match_shadow\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "qualified_member",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub struct Holder { pub inner: Gauge }\npub fn observe() -> (u32,u32) { (Holder { inner: Gauge { level: 13 } }.inner.level, Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_qualified_member\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub struct Holder { pub inner: Gauge }\npub fn observe() -> (u32,u32) { (Holder { inner: Gauge { level: 13 } }.inner.level, Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_qualified_member\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "duplicate_identity",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub mod extra { pub struct Gauge { pub spare: u32 } }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_duplicate_identity\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub mod extra { pub struct Gauge { pub spare: u32 } }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_duplicate_identity\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "macro_token",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub fn extra(g: Gauge) { println!(\"{}\", g.level); }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_macro_token\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub fn extra(g: Gauge) { println!(\"{}\", g.level); }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_macro_token\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "cfg_attribute",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\n#[cfg(any())] pub fn disabled() {}\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_cfg_attribute\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\n#[cfg(any())] pub fn disabled() {}\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_cfg_attribute\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "uncovered_source",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_uncovered_source\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n",
+      "unattached.rs": "pub fn unattached() -> u32 { 5 }\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_uncovered_source\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n",
+      "unattached.rs": "pub fn unattached() -> u32 { 5 }\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "new_collision",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub const reading: u32 = 9;\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_new_collision\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub const reading: u32 = 9;\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_new_collision\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "raw_spelling",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.r#level, Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_raw_spelling\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.r#level, Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_raw_spelling\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "alias_parameter",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\ntype LocalGauge = Gauge;\nfn read(g: LocalGauge) -> u32 { g.level }\npub fn observe() -> (u32,u32) { (read(Gauge { level: 13 }), Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_alias_parameter\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\ntype LocalGauge = Gauge;\nfn read(g: LocalGauge) -> u32 { g.level }\npub fn observe() -> (u32,u32) { (read(Gauge { level: 13 }), Beacon { level: 71 }.level) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_alias_parameter\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "generic_parameter",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub fn untouched<Gauge>(g: Gauge) -> Gauge { g }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_generic_parameter\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub level: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { level: 71 }.level) }\npub fn untouched<Gauge>(g: Gauge) -> Gauge { g }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_generic_parameter\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": false,
+    "request": "rename field `level` on `Gauge` to `reading`"
+  },
+  {
+    "name": "inherited_unique",
+    "before": {
+      "src/lib.rs": "pub struct Gauge { pub level: u32 }\npub struct Beacon { pub depth: u32 }\npub fn observe() -> (u32,u32) { (Gauge { level: 13 }.level, Beacon { depth: 71 }.depth) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_inherited_unique\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "expected": {
+      "src/lib.rs": "pub struct Gauge { pub reading: u32 }\npub struct Beacon { pub depth: u32 }\npub fn observe() -> (u32,u32) { (Gauge { reading: 13 }.reading, Beacon { depth: 71 }.depth) }\n\n#[test] fn both_owners() -> Result<(), String> {\n    println!(\"REVIEW_BEHAVIOR_inherited_unique\");\n    if observe() != (13, 71) { return Err(\"owners changed\".into()); }\n    Ok(())\n}\n"
+    },
+    "accepted": true,
+    "request": "rename field `level` on `Gauge` to `reading`",
+    "baseline_accept": true
+  }
+]

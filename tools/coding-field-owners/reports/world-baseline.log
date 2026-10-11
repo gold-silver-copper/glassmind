@@ -1,0 +1,50 @@
+Running as unit: run-p4107571-i96296084.scope; invocation ID: f79bedbd1efd44c0938ced0b34ef2790
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/crates/world-rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.93s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/glassmind_world_rust-fc63fd9bdfbd6025)
+
+running 25 tests
+test checks::tests::reads_failing_tests ... ok
+test checks::tests::applies_changes_across_lines_or_none ... ok
+test declared_types::tests::declaration_uncertainty_is_not_type_resolution ... ok
+test checks::tests::slips_are_in_code_not_tests_named_files_first ... ok
+test rename_package::tests::documentation_is_literal_prose_only ... ok
+test declared_types::tests::declared_syntax_and_provenance_are_reusable_without_english ... ok
+test rename_types::tests::refuses_raw_spelling_and_associated_types ... ok
+test rename_package::tests::package_roots_reexports_and_exact_spans ... ok
+test rename_types::tests::refuses_unexpanded_bindings_and_new_raw_collision ... ok
+test rename_types::tests::resolves_nested_modules_generics_and_unicode_columns ... ok
+test rename_variants::tests::binds_variants_imports_self_and_patterns ... ok
+test rename_variants::tests::variant_ownership_uses_declaration_identity ... ok
+test rename_variants::tests::variants_have_a_distinct_kind_and_owner ... ok
+test rename_variants::tests::rejects_unresolved_or_shadowed_bindings ... ok
+test slips::ambiguity::tests::evidence_is_concrete_and_unsupported_is_not_proof ... ok
+test slips::tests::loop_bounds_only_and_unicode_coordinates_apply ... ok
+test slips::tests::protects_non_code_tests_and_keeps_later_production_code ... ok
+test standard_traits::tests::refuses_ambiguous_conditional_test_and_non_identifier_types ... ok
+test standard_traits::tests::refuses_source_symlink_outside_root ... ok
+test standard_traits::tests::standard_debug_is_atomic_and_preserves_unicode_and_attributes ... ok
+test tests::field_renames_are_exact_or_refused ... ok
+test tests::renames_only_when_exact ... ok
+test slips::ambiguity::tests::checked_widths_and_short_circuit_match_native_rust ... ok
+test checks::tests::native_witness_requires_valid_context_and_executed_probe ... ok
+test checks::tests::withdraws_only_with_two_passing_programs_and_keeps_original_files ... ok
+
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.46s
+
+     Running tests/check_isolation.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/check_isolation-e82b082e20d730df)
+
+running 4 tests
+test tests::copy_rules_scripts_and_unsupported_topology_do_not_fall_back_to_live ... ok
+test tests::same_name_shared_target_and_cache_never_reuse_another_sources_binary ... ok
+test tests::approved_repair_stale_rules_and_failed_verification_preserve_contract ... ok
+test tests::diagnostics_preserve_every_live_byte_with_default_and_owned_places ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 10.50s
+
+   Doc-tests glassmind_world_rust
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

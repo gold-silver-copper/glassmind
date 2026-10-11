@@ -1,0 +1,56 @@
+{
+  "decision": "Local integration gates passed; full765 still running, not approved for publishing",
+  "commit": "4a06d788e923ca29e40ddc1e6f5d0e8d50f20015",
+  "binary_sha256": "8e52835c22bbb335a10fa4f3c9b175f1e7db07b0f5b895803adbcb35a8cc431d",
+  "checks": {
+    "sample": {
+      "cases": 3,
+      "passed": 3,
+      "edits": 3,
+      "all_worker_outcomes_hashes_and_replies_reproduced": true
+    },
+    "full": {
+      "cases": 16,
+      "passed": 16,
+      "edits": 4,
+      "all_worker_outcomes_hashes_and_replies_reproduced": true
+    },
+    "audit": {
+      "cases": 4,
+      "passed": 4,
+      "edits": 0,
+      "all_worker_outcomes_hashes_and_replies_reproduced": true
+    },
+    "independent-sample": {
+      "cases": 3,
+      "passed": 3,
+      "edits": 3,
+      "all_native_behavior_before_and_after_passed": true
+    },
+    "independent-full": {
+      "cases": 15,
+      "passed": 15,
+      "edits": 5,
+      "all_native_behavior_before_and_after_passed": true
+    },
+    "independent-supplemental": {
+      "cases": 6,
+      "passed": 6,
+      "edits": 1,
+      "all_native_behavior_before_and_after_passed": true
+    }
+  },
+  "unit_tests": 27,
+  "isolation_tests": 4,
+  "workspace": "fmt/clippy/release/strict4smoke pass",
+  "archive_files": 282,
+  "raw_artifact_hashes_verified": 3189,
+  "review_archive_files": 233,
+  "review_identity_hashes_verified": 5,
+  "limitations": [
+    "Initial isolation test run passed27unit+2isolation and failed2isolation because parent omitted required CARGO_TARGET_DIR; four isolation tests pass with variable set. No runtime or test modification.",
+    "Only accepted-* worker evidence represents final build; stale v3 final-* retained separately.",
+    "Existing export26/27 and AddField14/15 fixture mismatches remain unchanged in worker evidence.",
+    "Bounded owner resolver is deliberately conservative; no general Rust inference claim."
+  ]
+}

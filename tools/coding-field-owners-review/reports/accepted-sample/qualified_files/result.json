@@ -1,0 +1,24 @@
+{
+  "name": "qualified_files",
+  "valid_original": true,
+  "exact": true,
+  "changed": true,
+  "behavior": true,
+  "manifest_unchanged": true,
+  "before": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_qualified_files\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p28166-i96489934.scope; invocation ID: 2b151f45cab146cc86f8ed9d9a5e7381\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-sample/qualified_files)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "edit": {
+    "code": 0,
+    "stdout": "I'd rename the `Gauge::level` field to `reading` in 3 places.\n  src/lib.rs:3:72  `level` -> `reading`\n  src/metrics.rs:1:24  `level` -> `reading`\n  src/metrics.rs:3:68  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 3 changes. No problems with the build.\n",
+    "stderr": "Running as unit: run-p28243-i96494866.scope; invocation ID: 0e31c92c34da4c60884763f8d42a8c10\n"
+  },
+  "after": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_qualified_files\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p28275-i96286843.scope; invocation ID: 50774321ca5e4fffa360bd0d56b025e0\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-sample/qualified_files)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "pass": true
+}

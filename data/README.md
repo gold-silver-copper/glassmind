@@ -482,3 +482,18 @@ preserved; 1,817 new claims and 1,735 aliasless nodes produced no development
 prediction change. No candidate index is deployed. See
 [provenance and limitations](../tools/facts/inverse-coverage/HANDOFF.md) and
 [independent review](../tools/facts/inverse-coverage/PARENT.md).
+
+
+## Bounded field ownership (2026-10-11 UTC)
+
+New visible development fixtures are locally authored under MIT OR Apache-2.0;
+no external downloads or held-out material. The implementation worker froze16
+contracts containing6,651 input-source bytes and6,666 expected bytes. A separate
+reviewer authored21 additional cases with8,654 input bytes and8,698 expected
+bytes. Both owners' observable behavior is tested before and after each request;
+exact source comparisons preserve unrelated fields, comments and strings. These
+are scoped development contracts, not independent benchmark accuracy.
+[Worker provenance](../tools/coding-field-owners/HANDOFF.md),
+[independent review](../tools/coding-field-owners-review/HANDOFF.md), and
+[parent validation](../tools/coding-field-owners/PARENT.md) preserve frozen hashes,
+failed iterations, conservative refusals and the pending full-dev gate.

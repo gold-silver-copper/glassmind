@@ -1,0 +1,4 @@
+Running as unit: run-p4073627-i96359675.scope; invocation ID: 74312d0c6e5745bfbef74f7ca178689a
+FIELD_DIAG Fitting(Description { kind: Some(Field), conditions: [Called(Name("count")), Related { relation: BelongsTo, position: First, other: Item(RustItem { source: "direct", file: "src/lib.rs", line: 1, name: "Parcel", kind: Struct, owner: None, detail: None }) }] })
+FIELD_DIAG Fitting(Description { kind: None, conditions: [Called(Name("count")), Related { relation: BelongsTo, position: First, other: Item(RustItem { source: "direct", file: "src/lib.rs", line: 1, name: "Parcel", kind: Struct, owner: None, detail: None }) }] })
+I understand, but I can't do that here.

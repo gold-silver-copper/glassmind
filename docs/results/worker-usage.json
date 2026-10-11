@@ -670,6 +670,17 @@
         "reasoning_output_tokens": 7042
       },
       "source": "Original282files archived and hash verified; worker accepted16/16 plus4refusals. Only glassmind-accepted and accepted-* are final; stale v3 evidence excluded. Independent reviewer active; no parent acceptance/full765 claim."
+    },
+    {
+      "track": "fieldreview-continuous",
+      "usage": {
+        "input_tokens": 1075667,
+        "cached_input_tokens": 1004416,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 16270,
+        "reasoning_output_tokens": 4582
+      },
+      "source": "Independent21contracts: six exact edits including one inherited,15unchanged refusals, all original/after behavioral tests executed. No unsafe accepted edit found in bounded review. Original233files353733bytes archived/hashverified; parent integration/full765 pending."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

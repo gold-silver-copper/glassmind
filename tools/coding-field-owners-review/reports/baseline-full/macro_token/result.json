@@ -1,0 +1,24 @@
+{
+  "name": "macro_token",
+  "valid_original": true,
+  "exact": true,
+  "changed": false,
+  "behavior": true,
+  "manifest_unchanged": true,
+  "before": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_macro_token\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p29197-i96498582.scope; invocation ID: 3248f334f645481c9d2dd54bf511d4c5\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/baseline-full/macro_token)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "edit": {
+    "code": 0,
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p29274-i96407452.scope; invocation ID: db59031fe56a413f995bb96c31697cae\n"
+  },
+  "after": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_macro_token\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p29276-i96286861.scope; invocation ID: c187476f7e6a4009842fb2371c8aa0ea\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "pass": true
+}

@@ -1,0 +1,24 @@
+{
+  "name": "new_collision",
+  "valid_original": true,
+  "exact": true,
+  "changed": false,
+  "behavior": true,
+  "manifest_unchanged": true,
+  "before": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_new_collision\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p31357-i96286914.scope; invocation ID: 238c2c4d54ac46869a08570a9e67464a\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/new_collision)\nwarning: constant `reading` should have an upper case name\n --> src/lib.rs:4:11\n  |\n4 | pub const reading: u32 = 9;\n  |           ^^^^^^^ help: convert the identifier to upper case: `READING`\n  |\n  = note: `#[warn(non_upper_case_globals)]` (part of `#[warn(nonstandard_style)]`) on by default\n\nwarning: `field_review_probe` (lib) generated 1 warning\nwarning: `field_review_probe` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "edit": {
+    "code": 0,
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p31432-i96495011.scope; invocation ID: 14b2ed73a4c045b1a208b03146c4deb0\n"
+  },
+  "after": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_new_collision\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p31434-i96189393.scope; invocation ID: ac97f1f6a4924fcd993a3c0f51f807a5\nwarning: constant `reading` should have an upper case name\n --> src/lib.rs:4:11\n  |\n4 | pub const reading: u32 = 9;\n  |           ^^^^^^^ help: convert the identifier to upper case: `READING`\n  |\n  = note: `#[warn(non_upper_case_globals)]` (part of `#[warn(nonstandard_style)]`) on by default\n\nwarning: `field_review_probe` (lib) generated 1 warning\nwarning: `field_review_probe` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "pass": true
+}

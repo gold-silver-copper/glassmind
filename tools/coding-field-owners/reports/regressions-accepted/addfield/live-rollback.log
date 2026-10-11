@@ -1,0 +1,11 @@
+Running as unit: run-p4185684-i96443925.scope; invocation ID: 829c9231ae5441739e531ea9550c205e
+Traceback (most recent call last):
+  File "/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/tools/coding-addfields-dev.py", line 107, in <module>
+    if __name__=='__main__': main()
+                             ~~~~^^
+  File "/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/tools/coding-addfields-dev.py", line 103, in main
+    row=exercise(a.binary.resolve(),root,text,('Parcel','weight','u16','7') if positive else None,a.baseline); row['case']=name; rows.append(row)
+  File "/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/tools/coding-addfields-dev.py", line 30, in exercise
+    owner, field, ty, default = expected
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object

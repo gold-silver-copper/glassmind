@@ -1,0 +1,685 @@
+{
+  "base": "5f2859a730f6d20a0ac64ca9a7551821ed123e86",
+  "baseline_correct": 12,
+  "candidate_correct": 16,
+  "total": 16,
+  "new_exact_edits": 4,
+  "supplemental_refusals": 4,
+  "fixture_source_bytes": 6651,
+  "fixture_expected_bytes": 6666,
+  "license": "MIT OR Apache-2.0",
+  "download_bytes": 0,
+  "regressions": {
+    "addfield/alias/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/alias-self/results.json": [
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true
+      }
+    ],
+    "addfield/cfg/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/collision/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/default/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/local-shadow/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/test-fails/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/trailing/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/type-mismatch/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/unknown-macro/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/unrelated/results.json": [
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true
+      }
+    ],
+    "addfield/unsafe-default/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/unsafe-function/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "addfield/update/results.json": [
+      {
+        "changed": false,
+        "passed": true
+      }
+    ],
+    "coding-answerfiles-dev/results.json": {
+      "usable": 6,
+      "safe": 26,
+      "rows": [
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": false,
+          "changed": [],
+          "passed": false
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        }
+      ]
+    },
+    "coding-answerfiles-regression/results.json": {
+      "rows": [
+        {
+          "passed": true
+        },
+        {
+          "passed": true
+        },
+        {
+          "passed": true
+        },
+        {
+          "passed": true
+        },
+        {
+          "passed": true
+        },
+        {
+          "passed": true
+        },
+        {
+          "passed": true
+        },
+        {
+          "passed": true
+        }
+      ]
+    },
+    "coding-edits-dev/results.json": [
+      {
+        "supported": true,
+        "changed": true,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": true,
+        "changed": true,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": true,
+        "changed": true,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": false,
+        "changed": false,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": false,
+        "changed": false,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": false,
+        "changed": false,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": false,
+        "changed": false,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": false,
+        "changed": false,
+        "exact_source": true,
+        "behavior": true,
+        "pass": true
+      },
+      {
+        "supported": false,
+        "changed": false,
+        "exact_source": true,
+        "behavior": false,
+        "pass": true
+      }
+    ],
+    "coding-metatypes-dev/results.json": {
+      "passed": 35,
+      "usable": 13,
+      "safe": 35,
+      "rows": [
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": true,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        },
+        {
+          "usable": false,
+          "safe": true,
+          "changed": [],
+          "passed": true
+        }
+      ]
+    },
+    "coding-variants-dev/results.json": {
+      "cases": [
+        {
+          "supported": true,
+          "changed": true,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": true,
+          "changed": true,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": true,
+          "changed": true,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": true,
+          "changed": true,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": true,
+          "pass": true
+        },
+        {
+          "supported": false,
+          "changed": false,
+          "exact_source": true,
+          "behavior": false,
+          "pass": true
+        }
+      ],
+      "passed": 14
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "review_head": "47b6b285b5cd23f0580600dcda3011689ab20da1",
+  "archived_base": "5f2859a730f6d20a0ac64ca9a7551821ed123e86",
+  "files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/glassmind-accepted",
+      "bytes": 127487680,
+      "sha256": "19d2770f8a43cdd9037b8a46747d5a428489b567dcdfd63e40e1bc1e011fb621"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/baseline/glassmind",
+      "bytes": 74458648,
+      "sha256": "ca120ec676a8979d9116ef10380e58cd6f7f3d033fc97ade968a7d510c5b1bd7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/submitted/runtime.patch",
+      "bytes": 14319,
+      "sha256": "7b7806e1f8d2c301aee3b9a058770f5ff90c88e7e9ad7d962d8b060b5ad1765d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/submitted/crates/world-rust/src/lib.rs",
+      "bytes": 49407,
+      "sha256": "95e0a1a5e0cb81dc1c20d4c1ab16b522eb7cf602d955dd1a9453e4c33d6a646e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/submitted/crates/world-rust/src/rename_fields.rs",
+      "bytes": 10818,
+      "sha256": "524aa731f0a7624d3a7ad1702c475463e1edd6433d515c75ce8940b0ea3a9921"
+    }
+  ],
+  "archive_patch_reconstruction": "Applied exact archived runtime.patch; cmp matched both archived runtime files; reversed exact patch; git diff empty.",
+  "world_diff_archived_base_to_review_head": "",
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "outer_scope": {
+    "name": "glassmind-continuous-fieldreview.scope",
+    "MemoryMax": 8589934592,
+    "MemorySwapMax": 0
+  }
+}
