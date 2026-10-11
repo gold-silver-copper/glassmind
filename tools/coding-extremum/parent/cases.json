@@ -1,0 +1,200 @@
+[
+  {
+    "name": "i8_max",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i8]) -> Option<i8> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i8::MIN]), Some(i8::MIN));\nassert_eq!(reduce(&[i8::MAX]), Some(i8::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i8::MIN;",
+      "let mut best = ::std::primitive::i8::MIN;",
+      "let mut best = i8::MIN;"
+    ]
+  },
+  {
+    "name": "i8_min",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i8]) -> Option<i8> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element < best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i8::MIN]), Some(i8::MIN));\nassert_eq!(reduce(&[i8::MAX]), Some(i8::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-8));\nassert_eq!(reduce(&[8,3,6]), Some(3));\nassert_eq!(reduce(&[-8,0,6]), Some(-8));\nassert_eq!(reduce(&[6,0,-8]), Some(-8));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i8::MAX;",
+      "let mut best = ::std::primitive::i8::MAX;",
+      "let mut best = i8::MAX;"
+    ]
+  },
+  {
+    "name": "i16_max",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i16]) -> Option<i16> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i16::MIN]), Some(i16::MIN));\nassert_eq!(reduce(&[i16::MAX]), Some(i16::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i16::MIN;",
+      "let mut best = ::std::primitive::i16::MIN;",
+      "let mut best = i16::MIN;"
+    ]
+  },
+  {
+    "name": "i16_min",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i16]) -> Option<i16> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element < best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i16::MIN]), Some(i16::MIN));\nassert_eq!(reduce(&[i16::MAX]), Some(i16::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-8));\nassert_eq!(reduce(&[8,3,6]), Some(3));\nassert_eq!(reduce(&[-8,0,6]), Some(-8));\nassert_eq!(reduce(&[6,0,-8]), Some(-8));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i16::MAX;",
+      "let mut best = ::std::primitive::i16::MAX;",
+      "let mut best = i16::MAX;"
+    ]
+  },
+  {
+    "name": "i32_max",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i32]) -> Option<i32> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i32::MIN]), Some(i32::MIN));\nassert_eq!(reduce(&[i32::MAX]), Some(i32::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i32::MIN;",
+      "let mut best = ::std::primitive::i32::MIN;",
+      "let mut best = i32::MIN;"
+    ]
+  },
+  {
+    "name": "i32_min",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i32]) -> Option<i32> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element < best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i32::MIN]), Some(i32::MIN));\nassert_eq!(reduce(&[i32::MAX]), Some(i32::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-8));\nassert_eq!(reduce(&[8,3,6]), Some(3));\nassert_eq!(reduce(&[-8,0,6]), Some(-8));\nassert_eq!(reduce(&[6,0,-8]), Some(-8));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i32::MAX;",
+      "let mut best = ::std::primitive::i32::MAX;",
+      "let mut best = i32::MAX;"
+    ]
+  },
+  {
+    "name": "i64_max",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i64]) -> Option<i64> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i64::MIN]), Some(i64::MIN));\nassert_eq!(reduce(&[i64::MAX]), Some(i64::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i64::MIN;",
+      "let mut best = ::std::primitive::i64::MIN;",
+      "let mut best = i64::MIN;"
+    ]
+  },
+  {
+    "name": "i64_min",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i64]) -> Option<i64> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element < best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i64::MIN]), Some(i64::MIN));\nassert_eq!(reduce(&[i64::MAX]), Some(i64::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-8));\nassert_eq!(reduce(&[8,3,6]), Some(3));\nassert_eq!(reduce(&[-8,0,6]), Some(-8));\nassert_eq!(reduce(&[6,0,-8]), Some(-8));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i64::MAX;",
+      "let mut best = ::std::primitive::i64::MAX;",
+      "let mut best = i64::MAX;"
+    ]
+  },
+  {
+    "name": "i128_max",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i128]) -> Option<i128> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i128::MIN]), Some(i128::MIN));\nassert_eq!(reduce(&[i128::MAX]), Some(i128::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i128::MIN;",
+      "let mut best = ::std::primitive::i128::MIN;",
+      "let mut best = i128::MIN;"
+    ]
+  },
+  {
+    "name": "i128_min",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i128]) -> Option<i128> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element < best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i128::MIN]), Some(i128::MIN));\nassert_eq!(reduce(&[i128::MAX]), Some(i128::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-8));\nassert_eq!(reduce(&[8,3,6]), Some(3));\nassert_eq!(reduce(&[-8,0,6]), Some(-8));\nassert_eq!(reduce(&[6,0,-8]), Some(-8));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i128::MAX;",
+      "let mut best = ::std::primitive::i128::MAX;",
+      "let mut best = i128::MAX;"
+    ]
+  },
+  {
+    "name": "isize_max",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[isize]) -> Option<isize> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[isize::MIN]), Some(isize::MIN));\nassert_eq!(reduce(&[isize::MAX]), Some(isize::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::isize::MIN;",
+      "let mut best = ::std::primitive::isize::MIN;",
+      "let mut best = isize::MIN;"
+    ]
+  },
+  {
+    "name": "isize_min",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[isize]) -> Option<isize> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element < best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[isize::MIN]), Some(isize::MIN));\nassert_eq!(reduce(&[isize::MAX]), Some(isize::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-8));\nassert_eq!(reduce(&[8,3,6]), Some(3));\nassert_eq!(reduce(&[-8,0,6]), Some(-8));\nassert_eq!(reduce(&[6,0,-8]), Some(-8));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::isize::MAX;",
+      "let mut best = ::std::primitive::isize::MAX;",
+      "let mut best = isize::MAX;"
+    ]
+  },
+  {
+    "name": "field_max",
+    "kind": "repair",
+    "source": "pub struct Batch { pub values: Vec<i32> }\npub fn reduce(batch: &Batch) -> Option<i32> {\n    if batch.values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in &batch.values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&Batch { values: vec![] }), None);\nassert_eq!(reduce(&Batch { values: vec![0] }), Some(0));\nassert_eq!(reduce(&Batch { values: vec![i32::MIN] }), Some(i32::MIN));\nassert_eq!(reduce(&Batch { values: vec![i32::MAX] }), Some(i32::MAX));\nassert_eq!(reduce(&Batch { values: vec![-8,-3,-6] }), Some(-3));\nassert_eq!(reduce(&Batch { values: vec![8,3,6] }), Some(8));\nassert_eq!(reduce(&Batch { values: vec![-8,0,6] }), Some(6));\nassert_eq!(reduce(&Batch { values: vec![6,0,-8] }), Some(6));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i32::MIN;",
+      "let mut best = ::std::primitive::i32::MIN;",
+      "let mut best = i32::MIN;"
+    ]
+  },
+  {
+    "name": "field_min",
+    "kind": "repair",
+    "source": "pub struct Batch { pub values: Vec<i64> }\npub fn reduce(batch: &Batch) -> Option<i64> {\n    if batch.values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in &batch.values {\n        if element < best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&Batch { values: vec![] }), None);\nassert_eq!(reduce(&Batch { values: vec![0] }), Some(0));\nassert_eq!(reduce(&Batch { values: vec![i64::MIN] }), Some(i64::MIN));\nassert_eq!(reduce(&Batch { values: vec![i64::MAX] }), Some(i64::MAX));\nassert_eq!(reduce(&Batch { values: vec![-8,-3,-6] }), Some(-8));\nassert_eq!(reduce(&Batch { values: vec![8,3,6] }), Some(3));\nassert_eq!(reduce(&Batch { values: vec![-8,0,6] }), Some(-8));\nassert_eq!(reduce(&Batch { values: vec![6,0,-8] }), Some(-8));\n}}\n",
+    "old": "let mut best = 0;",
+    "new": [
+      "let mut best = ::core::primitive::i64::MAX;",
+      "let mut best = ::std::primitive::i64::MAX;",
+      "let mut best = i64::MAX;"
+    ]
+  },
+  {
+    "name": "unicode",
+    "kind": "repair",
+    "source": "pub fn reduce(values: &[i32]) -> Option<i32> {\n    if values.is_empty() { return None; }\n    let mut άριστο = 0;\n    for &element in values {\n        if element > άριστο { άριστο = element; }\n    }\n    Some(άριστο)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i32::MIN]), Some(i32::MIN));\nassert_eq!(reduce(&[i32::MAX]), Some(i32::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n",
+    "old": "let mut άριστο = 0;",
+    "new": [
+      "let mut άριστο = ::core::primitive::i32::MIN;",
+      "let mut άριστο = ::std::primitive::i32::MIN;",
+      "let mut άριστο = i32::MIN;"
+    ]
+  },
+  {
+    "name": "unguarded_empty_default",
+    "kind": "unchanged",
+    "source": "pub fn reduce(values: &[i32]) -> Option<i32> {\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), Some(0));\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i32::MIN]), Some(i32::MIN));\nassert_eq!(reduce(&[i32::MAX]), Some(i32::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n"
+  },
+  {
+    "name": "unknown_type_alias",
+    "kind": "unchanged",
+    "source": "type Reading = i32;\npub fn reduce(values: &[Reading]) -> Option<Reading> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    for &element in values {\n        if element > best { best = element; }\n    }\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i32::MIN]), Some(i32::MIN));\nassert_eq!(reduce(&[i32::MAX]), Some(i32::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n"
+  },
+  {
+    "name": "effectful_update",
+    "kind": "unchanged",
+    "source": "pub fn reduce(values: &[i32]) -> Option<i32> {\n    if values.is_empty() { return None; }\n    let mut best = 0;\n    let mut updates = 0;\n    for &element in values {\n        if element > best { best = element; updates += 1; }\n    }\n    let _ = updates;\n    Some(best)\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() {\nassert_eq!(reduce(&[]), None);\nassert_eq!(reduce(&[0]), Some(0));\nassert_eq!(reduce(&[i32::MIN]), Some(i32::MIN));\nassert_eq!(reduce(&[i32::MAX]), Some(i32::MAX));\nassert_eq!(reduce(&[-8,-3,-6]), Some(-3));\nassert_eq!(reduce(&[8,3,6]), Some(8));\nassert_eq!(reduce(&[-8,0,6]), Some(6));\nassert_eq!(reduce(&[6,0,-8]), Some(6));\n}}\n"
+  },
+  {
+    "name": "competing_repairs",
+    "kind": "unresolved",
+    "source": "pub fn upper(values: &[i32]) -> Option<i32> {\n    if values.is_empty() { return None; }\n    let mut first = 0;\n    for &element in values {\n        if element > first { first = element; }\n    }\n    Some(first)\n}\npub fn other(values: &[i32]) -> Option<i32> {\n    if values.is_empty() { return None; }\n    let mut second = 0;\n    for &element in values {\n        if element > second { second = element; }\n    }\n    Some(second)\n}\npub fn joined(a: &[i32], b: &[i32]) -> Option<i32> { Some(upper(a)? + other(b)?) }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract(){ assert_eq!(upper(&[2,1]),Some(2)); assert_eq!(other(&[2,1]),Some(2)); assert_eq!(joined(&[-3],&[-3]),Some(-3)); } }\n",
+    "alternatives": [
+      {
+        "old": "let mut first = 0;",
+        "new": "let mut first = ::core::primitive::i32::MIN;",
+        "expected_probe": -5
+      },
+      {
+        "old": "let mut second = 0;",
+        "new": "let mut second = ::core::primitive::i32::MIN;",
+        "expected_probe": -2
+      }
+    ],
+    "probe": "joined(&[-5], &[-2])"
+  }
+]

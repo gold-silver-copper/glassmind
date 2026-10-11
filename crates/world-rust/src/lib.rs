@@ -25,6 +25,7 @@ mod argument_swap;
 mod ceiling_division;
 pub mod checks;
 pub mod declared_types;
+mod extremum;
 pub mod index;
 mod index_conversion;
 mod rename_fields;
