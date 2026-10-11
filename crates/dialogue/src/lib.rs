@@ -6,3 +6,5 @@ pub mod tracker;
 pub mod multi;
 
 pub mod references;
+
+pub mod offers;

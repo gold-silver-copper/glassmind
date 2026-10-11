@@ -1,0 +1,435 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "1",
+        "person",
+        "to"
+      ],
+      "right": [
+        ","
+      ],
+      "fit_correct": 10,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 11
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "1",
+        "person",
+        "to"
+      ],
+      "right": [
+        ".",
+        "<eos>"
+      ],
+      "fit_correct": 10,
+      "fit_wrong": 0,
+      "calibration_correct": 5,
+      "calibration_wrong": 0,
+      "distinct_values": 12
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "2",
+        "to"
+      ],
+      "right": [
+        "?"
+      ],
+      "fit_correct": 6,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 6
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "2",
+        "to"
+      ],
+      "right": [
+        "?",
+        "<eos>"
+      ],
+      "fit_correct": 5,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 5
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "for",
+        "2",
+        "to"
+      ],
+      "right": [
+        "?"
+      ],
+      "fit_correct": 5,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 5
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "go",
+        "to"
+      ],
+      "right": [
+        ","
+      ],
+      "fit_correct": 7,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 7
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "go",
+        "to"
+      ],
+      "right": [
+        "?"
+      ],
+      "fit_correct": 16,
+      "fit_wrong": 0,
+      "calibration_correct": 4,
+      "calibration_wrong": 0,
+      "distinct_values": 20
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "go",
+        "to"
+      ],
+      "right": [
+        "?",
+        "<eos>"
+      ],
+      "fit_correct": 15,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 19
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "go",
+        "to"
+      ],
+      "right": [
+        "and"
+      ],
+      "fit_correct": 17,
+      "fit_wrong": 0,
+      "calibration_correct": 5,
+      "calibration_wrong": 0,
+      "distinct_values": 20
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "going",
+        "to"
+      ],
+      "right": [
+        "and"
+      ],
+      "fit_correct": 11,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 12
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "people",
+        "going",
+        "to"
+      ],
+      "right": [
+        "."
+      ],
+      "fit_correct": 6,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 6
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "people",
+        "to"
+      ],
+      "right": [
+        ","
+      ],
+      "fit_correct": 7,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 8
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "person",
+        "to"
+      ],
+      "right": [
+        ","
+      ],
+      "fit_correct": 10,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 11
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "person",
+        "to"
+      ],
+      "right": [
+        ".",
+        "<eos>"
+      ],
+      "fit_correct": 10,
+      "fit_wrong": 0,
+      "calibration_correct": 6,
+      "calibration_wrong": 0,
+      "distinct_values": 12
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to"
+      ],
+      "right": [
+        ",",
+        "and"
+      ],
+      "fit_correct": 5,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 5
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to"
+      ],
+      "right": [
+        ",",
+        "is"
+      ],
+      "fit_correct": 13,
+      "fit_wrong": 0,
+      "calibration_correct": 4,
+      "calibration_wrong": 0,
+      "distinct_values": 14
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to"
+      ],
+      "right": [
+        ",",
+        "is",
+        "that"
+      ],
+      "fit_correct": 13,
+      "fit_wrong": 0,
+      "calibration_correct": 4,
+      "calibration_wrong": 0,
+      "distinct_values": 14
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to"
+      ],
+      "right": [
+        ",",
+        "right"
+      ],
+      "fit_correct": 7,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 7
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to"
+      ],
+      "right": [
+        ",",
+        "right",
+        "?"
+      ],
+      "fit_correct": 7,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 7
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to"
+      ],
+      "right": [
+        "for",
+        "2"
+      ],
+      "fit_correct": 8,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 9
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to"
+      ],
+      "right": [
+        "in",
+        "a"
+      ],
+      "fit_correct": 12,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 14
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to",
+        "go",
+        "to"
+      ],
+      "right": [
+        ","
+      ],
+      "fit_correct": 7,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 7
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to",
+        "go",
+        "to"
+      ],
+      "right": [
+        "?"
+      ],
+      "fit_correct": 16,
+      "fit_wrong": 0,
+      "calibration_correct": 4,
+      "calibration_wrong": 0,
+      "distinct_values": 20
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to",
+        "go",
+        "to"
+      ],
+      "right": [
+        "?",
+        "<eos>"
+      ],
+      "fit_correct": 15,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 19
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "left": [
+        "to",
+        "go",
+        "to"
+      ],
+      "right": [
+        "and"
+      ],
+      "fit_correct": 16,
+      "fit_wrong": 0,
+      "calibration_correct": 5,
+      "calibration_wrong": 0,
+      "distinct_values": 19
+    },
+    {
+      "service": "Weather_1",
+      "slot": "city",
+      "left": [
+        "in"
+      ],
+      "right": [
+        "is"
+      ],
+      "fit_correct": 5,
+      "fit_wrong": 0,
+      "calibration_correct": 3,
+      "calibration_wrong": 0,
+      "distinct_values": 5
+    }
+  ]
+}
