@@ -3,11 +3,11 @@
 Unlimited active goal; milestone completion does not complete the goal.
 Root branch `harness`; WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Current source commit c6ac04a; original and corrected experiment reports in
-1529e30, 2a35c17 and b72897a. All workers and native evaluation jobs are complete.
+1529e30, 2a35c17 and b72897a. All coding evaluation jobs are complete. The contextual dialogue worker is active.
 Known completed-worker tokens: 200,145,321, cached input counted once;
-parent and interrupted usage excluded. No new worker is running.
+parent and interrupted usage excluded. One Astra fast/ChatGPT worker is running; details below.
 
-## Current action: publish the verified implementation feature
+## Current action: contextual dialogue source-role experiment
 
 Runtime integrated at c6ac04a. Full coding DEV: 218/765, 547 refusals, zero
 failures; all 215 previous passes retained. Three gains are request styles of
@@ -31,10 +31,40 @@ WORK/implgrammar-fix worktree retained at 07cf5a0; root integration c6ac04a.
 Original implgrammar worker/worktree and temporary authentication link were
 archived, verified, then removed. No worker uses that retained fix worktree.
 
-NEXT: finish score journal/docs, review diff, commit/push harness and open PR45
-against main. Merge only with exact-head green CI. Then append external progress
-log and start the next bounded experiment. PR45 has not yet been created.
-Latest published PR44 details are below; do not republish PR44.
+PR45 MERGED: https://github.com/gold-silver-copper/glassmind/pull/45
+Reviewed head d84ba870465562456fb389805d3703ee12d41f23. CI38152054504
+passed102seconds (2026-10-11T15:37:36Z to15:39:18Z).
+Merge d3350fe3e7a636de6b4b21ace2546f67c377900e at2026-10-11T15:39:37Z.
+Score journal, README, user documentation and full acceptance report committed.
+Do not repeat full DEV or publication. Push1261, PR69887, merge38675 complete.
+
+Worker contextledger PID539613, scope glassmind-continuous-contextledger.scope,
+worktree WORK/contextledger, branch continuous/contextledger, base d84ba87.
+Astra fast via logged-in ChatGPT; API-key variables removed. Scope8GiB/zero-swap,
+1800second timeout, persistent TMPDIR, Cargo-j1. Native CLI flags/login verified.
+Task WORK/contextledger-task.txt; launcher WORK/launch.py; events/summary/process
+under WORK/contextledger-run. Original source package entityledger-source stays
+read-only. New contextledger-source pins3files/20369681bytes: rejected model
+(boundary component ONLY reused), approved baseline TRAIN and utterance inputs.
+Source-model, label/rank weights remain rejected; new role/rank fitting only FIT.
+
+Hypothesis: preceding USER context plus NONE supervision on actual predicted
+SYSTEM spans reduces false source roles. Preserve valid entities from other
+services. Same16 CAL thresholds, samezero-new-wrong gate and fullDEV620/726
+with all610/716 retained. Worker owns crates/dialogue and NEW tools/dialogue/
+context-ledger only. Before fitting it must freeze exact role/rank representation
+and epochs. No DEV unless CAL gate passes; no second grid/representation.
+
+Independent16 fictional-name fixtures and baseline reused unchanged under
+WORK/coordinator/contextledger-independent; PLAN-CONTEXT.md and hashes frozen
+before candidate inspection. The worker's tools/dialogue/*/parent paths are
+masked; reading them through Git expressly forbidden. Review its events for
+compliance. No candidate probes run yet. Same>=2delayed successes, no wrong new
+destination, fourcontrolsunchanged, all unrelatedstate unchanged, provenanceaudit.
+NEXT: monitor this existing worker, archive and verify original source/results
+BEFORE review/rollback/cleanup. Reconstruct its FIT actual-span role/NONE joins,
+preceding-USER features and full16 CAL overlays independently. If rejected,
+record the evidence and change hypothesis or track; don't retune CAL/DEV.
 
 ## Dialogue entity ledger rejected; next hypothesis available
 
@@ -55,7 +85,7 @@ source roles while removing 1,648 wrong roles. Do not use that filter as source
 authority. A new hypothesis can condition source roles on preceding USER text
 and train NONE on actual predicted unaligned/unmodeled spans, while retaining
 valid entities from all services. Freeze a new FIT/CAL plan before training;
-no new task or worker exists yet. Keep existing thresholds fixed, no DEV tuning.
+this hypothesis is now running as contextledger above. Keep thresholds fixed, no DEV tuning.
 Mask tools/dialogue/entity-ledger/parent from future workers: it contains the
 parent's 16 independent fictional-name probes. They were baseline-only because
 this candidate failed CAL before integration.
