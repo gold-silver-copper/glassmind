@@ -1,5 +1,38 @@
 # Continuous development checkpoint
 
+## Latest published evidence and active workers
+
+PR30 MERGED e3ed37ccb68d2829631c95acbf6d460aafc0a619 at2026-10-11T08:48:18Z,
+exacthead a34306ab8d314551d54748189a34ab1f0d82d298;CI38125987960SUCCESS.
+Push36666/create85697/merge25959 COMPLETE; do notrepeat. Publishes dialogue
+rejection andindependentaudit only, no runtimechange. Parentall11indexbaseline
+session84986 COMPLETE, allrefused. No parentnativejob remainslive.
+INDEXPROOF stillactive: workerreports3supplied+7authoredpositiveexactrepairs and
+22negativeunchanged, plusinheritedregressionfailures. These are unreviewedworker
+claims; originalarchive/parentreview/full765 stillrequired. UDSYNTAX active too.
+
+## Active syntax experiment — current worker ownership
+
+UDSYNTAX ACTIVE PID318192, scopeglassmind-continuous-udsyntax.scope, verified8GiB/
+0swap, worktreeWORK/udsyntax ata34306a, branchcontinuous/udsyntax, runWORK/udsyntax-run.
+TaskWORK/udsyntax-task.txt; one frozen candidate: twoepochaveragedperceptronPOS +
+threeepocharcstandarddependencyparser, forms-only inference using predictedtags.
+Owns newreading syntaxlibrary/bin/minimallibexport/newtools/reading/syntax only.
+MainCLI integration remainsparent-owned ifaccepted. Strictlypredictedsyntax,
+nevertruth/repairauthority. Fixedfirst100 thenallDEV; include unsupportedwords
+in denominator; primaryUAS>=55%,LAS>=45%, treevalidity100%, usefulauthoredroles.
+No modeltuning onDEV. Goldtokenizationseparatefromrawtexttokenization. TRAIN/DEV
+exactduplicates audited andseparatelyreported. Parentfroze13independentcontrasts
+beforecandidateinspection inWORK/coordinator/udsyntax-independent.
+
+NewsourceWORK/udsyntax-source: UDEnglishEWTr2.18,b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c,
+CC-BY-SA-4.0; README24522/license20014/TRAIN15034493/DEV1898574bytes. Exactlyfourfiles,
+16,977,603downloadedbytes; officialtest notdownloaded. Provenancehashes retained.
+Logged-inChatGPTverified beforelaunch; forcedGPT6Astrafast/noAPI launcher asbefore.
+Twoactive workers INDEXPROOF+UDSYNTAX, noadditionalagents. Parent11indexbaseline
+completed session84986:allrefused,including2positiveguardedlookups. Frozenfixtures
+andnative runneratWORK/coordinator/indexproof-independent; awaitterminalcandidate.
+
 ## Authoritative checkpoint — token endpoint rejection independently verified
 
 Goal active; branch harness, validated runtime408d16b unchanged. The preceding
