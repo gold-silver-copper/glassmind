@@ -1,0 +1,26 @@
+{
+  "base_commit": "1bab8eef98c78e2d24e3b91bf52fe91af8c35b17",
+  "new_external_data_bytes": 0,
+  "source_files": {
+    "crates/facts/src/lib.rs": {
+      "bytes": 7750,
+      "sha256": "e0f0c6cc24d2123641b8c5b3c93dacb53207b2e8b543f1b48f1ba3e140e9284b"
+    },
+    "crates/facts/examples/continuous_predictions.rs": {
+      "bytes": 845,
+      "sha256": "d38ad548444210cf177a3d647f2dc6e7188ab04f9816f9af34f3ee3521514934"
+    },
+    "tools/facts/continuous/compare.py": {
+      "bytes": 3292,
+      "sha256": "d4c81663ca4b131f0fb02444d35524e44b5c6fe4d621f2062e6ecaae748ff43f"
+    }
+  },
+  "raw_predictions_directory": "/home/gsc/.cache/glassmind/continuous-20261010/facts-run/tmp",
+  "prediction_files": [
+    "facts-baseline-dev.jsonl",
+    "facts-after-dev.jsonl",
+    "facts-baseline-train.jsonl",
+    "facts-after-train.jsonl",
+    "facts-rejected-filter-train.jsonl"
+  ]
+}

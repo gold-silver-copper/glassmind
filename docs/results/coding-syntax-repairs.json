@@ -1,0 +1,47 @@
+{
+  "dataset": "rustbench f79e71a all styles",
+  "split": "dev",
+  "total": 765,
+  "source_commit": "75e3269",
+  "binary_sha256": "f9018a5b737d3b548ea22f9d36245d304238493f07c6421d0c349ba547074d75",
+  "baseline": {
+    "right": 160,
+    "refused": 602,
+    "wrong": 3
+  },
+  "candidate": {
+    "right": 163,
+    "refused": 599,
+    "wrong": 3
+  },
+  "transitions": {
+    "refused->refused": 599,
+    "pass->pass": 160,
+    "fail->fail": 3,
+    "refused->pass": 3
+  },
+  "changed": [
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "result_files": {
+    "/home/gsc/.cache/glassmind/grow-fast-20261010/keep-going-candidate/rustbench-dev/results.jsonl": "bb2287bdb1c9339633cdef7971c225836a37cdc9ca696f0e815b0635dfc6addc",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/coding-full/results.jsonl": "90a41bdccaac600684c436b8e65c92acb81dc5080264d3752a4831474c9fe461"
+  }
+}

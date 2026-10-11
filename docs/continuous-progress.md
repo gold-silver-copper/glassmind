@@ -1,79 +1,113 @@
 # Continuous development checkpoint
 
 Goal active: follow `prompts/grow-continuously.md` until the user stops it.
+Previous goal turns made concrete progress; no blocking condition exists.
 
-## Current batch
+## Current source and publishing
 
-Starting source: `f998e27` on `harness`; merged upstream main `54fc197`.
-Startup audit: no open PRs, loop inactive, no existing glassmind workers,
-ChatGPT login confirmed. Resource audit: 109 GiB available, 1.1 TiB disk free.
-No held-out evaluation is scheduled in this first batch; development only.
+Repository `/home/gsc/code/glassmind`, branch `harness`.
+Merged PR #4 (conversation calculations), main merge `f83aefc`;
+merged PR #5 (exact percentages/MathQA), main merge `d607271`.
+Local source commits awaiting the next PR: `75e3269` (reviewed syntax-based
+repairs) and `c9ed6ed` (facts acronym guard), plus measured reports.
+Do not push worker candidates until their affected full dev evidence passes.
 
-Experiments selected before implementation:
+The latest complete benchmark records are in `docs/results/tracks.jsonl`;
+`docs/results/tracks.html` is regenerated at each batch. Historical reports
+retain their original scope and source revisions.
 
-1. Coding: inspect training/dev-visible repair failures and implement a
-   reusable bounded, verified repair improvement. Baseline rustbench full
-   dev: 160 right, 602 refused, 3 wrong / 765. Accept only measured gains
-   without new wrong answers; never inspect hidden test contents.
-2. Quantities: establish an independently sourced train/dev word-problem
-   benchmark, then improve general parsing if evidence supports it.
-   Existing synthetic baseline: 3056 right (including 762 expected
-   refusals), 60 unsupported, 0 wrong / 3116. Preserve that baseline and
-   report external data as its own series.
-3. Conversation integration: expose the existing verified quantities engine
-   through `glassmind talk`, retaining name/preference priority, persistence
-   and last-message recall. Baseline talk refuses supported arithmetic,
-   conversions and dates without an intent model. Accept correct typed
-   results and unchanged memory behavior on a fixed mixed conversation.
+## Completed and verified this continuous run
 
-## Work ownership and resources
+- Main `talk` calculates exact quantities while preserving memory and session
+  behavior. Mixed synthetic conversation 18/27→27/27 with/without intent
+  model; memory41/41; full3116 synthetic quantities through talk retain
+  3056 correct,60 unsupported,0 wrong, including762 expected refusals.
+  Source `b4b1b3f`, report `docs/talk-quantities.md`.
+- Percentages: source `e3eb10f`; MathQA official dev4475 under the custom
+  exact-numeric/no-choice metric improves5/4469/1→14/4458/3 right/refused/wrong.
+  The two extra scored errors compare exact arithmetic with rounded choices;
+  counts remain unchanged by adjudication. A separate300-case Fraction audit
+  passes. All3116 synthetic status/value/unit outputs unchanged. Gold-option
+  normalization cannot handle1229 rows; they stay in the denominator. No test
+  downloaded. Details `tools/quantities/HANDOFF.md`.
+- Coding: source `75e3269`; full765 rustbench dev at unchanged `f79e71a`
+  improves160/602/3→163/599/3. Exactly three refusal→pass transitions for
+  `fix-tests/steps-moving-average`, one per style; all other762 outcomes
+  unchanged. `docs/results/coding-syntax-repairs.json` records binary/result
+  hashes. Coordinator extended the worker AST guards to protect test-only
+  locals, expressions, arms, fields and enums. Seven focused tests pass.
+  Full evaluation session52107 is COMPLETE; do not restart or keep polling it.
+- Facts: source `c9ed6ed`; unchanged500-entity index/frozen model. Full2821
+  dev256/2526/39→256/2545/20, all correct answers retained, no new claims.
+  Sample12/186/2→12/188/0. Train diagnostics remove154 wrong claims without
+  losing a right answer or adding a claim. Rejecting acronym casing keeps
+  the original ambiguity and never exposes another candidate. First filter
+  design created new train errors and was rejected. Five focused tests pass;
+  coordinator independently reproduced final full dev. Reports in
+  `tools/facts/continuous/`.
 
-Coordinator owns CLI conversation integration, shared manifests, reports
-and merges. Coding and quantities workers use isolated worktrees and are
-limited to one cargo compilation job each. Workers leave changes uncommitted.
-Worker root: `/home/gsc/.cache/glassmind/continuous-20261010`. Coding launcher
-PID 1493627, scope `glassmind-continuous-coding.scope`; quantities launcher
-PID 1493666, scope `glassmind-continuous-quantities.scope`. Each `*-run/`
-contains process metadata, JSONL events, stderr, final summary and disposable
-auth symlink. Bubblewrap masks other code, private data and account history;
-workers receive GPT-6 Astra fast through ChatGPT login with API-key env removed.
-Both scopes verified active after launch. Recheck before acting on PIDs.
-The old loop remains stopped; its checkout and state must be preserved.
+Workspace fmt, all-target clippy, release build and strict4/4 fixture smoke
+pass after integrating coding and facts. No held-out evaluation has been run
+in this continuous batch; none of its items was inspected.
 
-## Queue after this batch
+## Active workers: inspect live state before acting
 
-Conversation integration completed and locally verified: mixed conversation
-18/27 → 27/27 correct, zero wrong, both with/without frozen intent model;
-41/41 memory checks; full 3116 synthetic quantity questions through talk retain
-3056 correct, 60 refused, zero wrong (762 correct expected refusals).
-Workspace fmt/clippy/build and strict 4/4 fixture smoke passed. Source commit
-is recorded in the chat score journal; see `docs/talk-quantities.md`.
-PR #4 merged after green CI at `f83aefc` on main. Coding worker remains in
-progress; poll its scope/events. Quantities worker completed; scope inactive,
-temporary auth symlink removed, worktree retained until evidence is archived.
+All worker files are under
+`/home/gsc/.cache/glassmind/continuous-20261010` (called WORK below).
+Each `NAME-run/` has process.json, events.jsonl, stderr.log, summary.txt when
+complete, and an isolated Codex home. Launcher is `WORK/launch.py`.
 
-Integrated quantities source `e3eb10f`: exact percentage grammar; MathQA
-train/dev adapter. External full dev 5/4469/1 → 14/4458/3 right/refused/wrong
-of 4475; sample 0/100/0 → 1/99/0. Two new scored errors are precision mismatch
-with rounded choices; exact arithmetic independently checked, 300/300
-coordinator Fraction audit correct. Decision: preserve mathematically exact
-answers, report the two scored errors without changing the frozen metric.
-All 3116 synthetic substantive outputs retain status/value/unit; integrated
-talk remains 27/27 and full quantity routing 3056/60/0. Workspace checks and
-strict 4/4 fixture smoke pass on the integrated source.
+- **storychat**: launcher PID1566788, scope
+  `glassmind-continuous-storychat.scope`, worktree `WORK/storychat`, base
+  `e73f68c`. Owns CLI conversation integration, minimal stories persistence
+  API and manifests. Hypothesis: existing story reasoner can answer across
+  main talk turns/restarts without regressing memory or quantities. Reported
+  preliminary47/47 mixed dialogue, original41/41 memory and27/27 quantity
+  dialogue checks, full bAbI dev3966/18/3 of3987 through talk. Still auditing
+  unsupported updates, persistence limits and conservative invalidation;
+  verify final results rather than treating these as accepted.
+- **edits**: launcher PID1589548, scope
+  `glassmind-continuous-edits.scope`, worktree `WORK/edits`, base `e73f68c`.
+  Owns world-rust and necessary typed language interfaces, not CLI. Hypothesis:
+  conservative module-aware syn resolution can support struct/enum rename
+  across references and imports while refusing ambiguous bindings. Installed
+  rust-analyzer is only an unavailable-toolchain shim. Worker is implementing
+  and measuring independent tiny-crate cases. Needs full rustbench dev before
+  shipping; do not inspect hidden tests or expected patches.
 
-The worker read the locally authored synthetic regression generator despite
-an overly broad brief restriction. No held-out access occurred; that suite
-was already documented as same-author synthetic data. The disclosure is
-retained in its handoff. No independent-language claim relies on that suite.
-MathQA cache and PyArrow are under `quantities-run/tmp/{mathqa,quantities-deps}`;
-keep those artifacts. Known completed-worker usage is 22,157,081 tokens,
-including cached input, excluding parent and unfinished coding work.
+Workers use GPT-6 Astra fast through ChatGPT login, with API-key environment
+removed. Their bubblewrap sandboxes hide private data, other code and account
+history. Each cargo command is capped8GiB/zero swap, own process group and
+kill timeout, non-/tmp TMPDIR,1 compilation job. Resource ceilings include
+all workers and benchmark jobs. Check before starting a large job.
 
-- Generalize verified code editing beyond compiler suggestions.
-- Broaden dialogue service coverage and facts retrieval without gold IDs.
-- Improve reading on real English, measured separately from parser coverage.
+## Completed worker cleanup and retained evidence
 
-Known models/data remain under `~/.cache/glassmind/{models,data}`. Historical
-results and provenance: `README.md`, `data/README.md`, track reports and
-`docs/results/tracks.jsonl`. Do not re-run or tune on old held-out evaluations.
+Coding, quantities and facts scopes ended; their temporary auth symlinks
+were removed and worktrees removed. All quantity/facts files were verified
+against integrated files before removal. Original coding submission is
+archived in `WORK/coding-run/submitted` because coordinator guards differ.
+Their logs, targets, development outputs and data remain in `*-run/`.
+Known completed worker tokens:25,523,387 including cached input; parent and
+unfinished worker usage excluded. Update `docs/results/worker-usage.json`
+once per newly completed worker, without double-counting.
+
+Frozen coding binary and full result: `WORK/coordinator/coding-full/`.
+Before-results: `~/.cache/glassmind/grow-fast-20261010/keep-going-candidate/rustbench-dev/`.
+Facts raw before/after train/dev predictions: `WORK/facts-run/tmp/`.
+MathQA and PyArrow: `WORK/quantities-run/tmp/{mathqa,quantities-deps}`.
+Do not delete retained data/models under `~/.cache/glassmind/{data,models}`.
+The old improvement loop remains STOPPED; preserve its dirty checkout/state.
+
+## Immediate next actions
+
+1. Publish measured coding/facts batch; create PR, inspect CI and merge green.
+2. Collect/review storychat and edits independently. Preserve legacy sessions,
+   refuse unsupported story updates, protect source bindings and edit rollback.
+3. Run fixed samples then full affected dev and required checks on integrated
+   candidates. Publish source hashes, failures and limits; then choose next work.
+4. Revisit broader reading, multi-service dialogue and facts coverage after
+   these batches; avoid repeating saturated synthetic-only work.
+
+Read the exact active prompt for standing authorization and stop/cleanup rules.
+This checkpoint is not a request for user approval or a completed goal.
