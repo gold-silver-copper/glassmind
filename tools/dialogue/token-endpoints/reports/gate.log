@@ -1,0 +1,24 @@
+Running as unit: run-p237951-i96661063.scope; invocation ID: 42d9d246a08f411692fc560f81aba967
+{
+  "decision": "REJECT_BEFORE_DEV",
+  "candidate_keys": 1583,
+  "candidate_key_lengths": 1635,
+  "qualifying_rules": 0,
+  "qualifying_CAL_instances": 0,
+  "totals": {
+    "FIT_reference_proposals": 134,
+    "no_bounded_token_context": 82,
+    "unknown_key": 35,
+    "FIT_generated_proposals": 46,
+    "FIT_endpoint_mismatches": 46,
+    "FIT_missing_annotations": 1,
+    "candidate_key": 44,
+    "CAL_reference_proposals": 31,
+    "conflicting_lengths": 3,
+    "existing_punctuation_priority": 1,
+    "CAL_generated_proposals": 4,
+    "CAL_endpoint_mismatches": 4,
+    "CAL_missing_annotations": 1
+  },
+  "limitation": "Frozen classifiers used all TRAIN including CAL; empirical new-rule validation only."
+}

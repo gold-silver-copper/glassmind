@@ -1,0 +1,42 @@
+Running as unit: run-p239299-i96711688.scope; invocation ID: 3a14c7da7ae94355867067ae8f5f1ea5
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling syn v3.0.7
+   Compiling utf8parse v0.2.2
+   Compiling serde_core v1.0.229
+   Compiling anstyle-parse v1.0.0
+   Compiling zmij v1.0.23
+   Compiling anstyle-query v1.1.5
+   Compiling anstyle v1.0.14
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling colorchoice v1.0.5
+   Compiling anstream v1.0.0
+   Compiling serde_json v1.0.151
+   Compiling heck v0.5.0
+   Compiling strsim v0.11.1
+   Compiling clap_lex v1.1.1
+   Compiling serde v1.0.229
+   Compiling clap_builder v4.6.7
+   Compiling clap_derive v4.6.7
+   Compiling serde_derive v1.0.229
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling clap v4.6.7
+   Compiling glassmind-everyday v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/tokenendpoints/crates/everyday)
+   Compiling glassmind-dialogue v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/tokenendpoints/crates/dialogue)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.93s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/tokenendpoints-run/target/debug/deps/glassmind_dialogue-618acd894958df6b)
+
+running 8 tests
+test boundaries::tests::evidence_and_conflicting_rules_refuse ... ok
+test boundaries::tests::exact_unicode_provenance_and_latest_occurrence ... ok
+test multi::tests::runtime_rejects_annotations_and_sparse_models_require_evidence ... ok
+test multi::tests::switching_preserves_independent_states_and_reset_is_empty ... ok
+test offers::tests::session_consumes_source_preserves_filled_slots_and_resets ... ok
+test multi::tests::references_use_prior_predictions_and_preserve_held_and_filled_states ... ok
+test offers::tests::spans_are_verbatim_with_provenance_and_ambiguity_refuses ... ok
+test references::tests::copying_requires_provenance_schema_and_unambiguous_prior ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

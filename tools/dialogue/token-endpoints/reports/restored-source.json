@@ -1,0 +1,152 @@
+{
+  "all_tracked_crate_files_identical_to_HEAD": true,
+  "base_commit": "d59cb121d0c6e0276141283c872e9cd25cb3275e",
+  "aggregate_sha256": "4ff78d2a0e8b34a334b1e0a2f0f9f4cd8cba161f1de95529e3049624a223bfa7",
+  "files": [
+    {
+      "path": "crates/dialogue/.gitignore",
+      "bytes": 19,
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+    },
+    {
+      "path": "crates/dialogue/Cargo.toml",
+      "bytes": 410,
+      "sha256": "511259b2aba9bd095b8f12096e254fedffa16cadc02177da627e9a4ff477be07"
+    },
+    {
+      "path": "crates/dialogue/EXPERIMENT.md",
+      "bytes": 9229,
+      "sha256": "c4c745c482f3ae97390e62d342f906b7f2a46b04acbff1660cdf22fac108c756"
+    },
+    {
+      "path": "crates/dialogue/reports/data-manifest.json",
+      "bytes": 25010,
+      "sha256": "eab4c8053edcb86b52a7b72350d4ffb70a93c1a47051f4cf773b31d590417173"
+    },
+    {
+      "path": "crates/dialogue/reports/dev-centroid.json",
+      "bytes": 973,
+      "sha256": "b6ab82fd0d0f65c7febd0f266e3e0b928ddedafe72b88c871c5f055696827661"
+    },
+    {
+      "path": "crates/dialogue/reports/dev-no-carry.json",
+      "bytes": 956,
+      "sha256": "af82233305ae4fdb52a94cc30dd0b46b0cb239bfee6bb8cd33c39ab1cd45368e"
+    },
+    {
+      "path": "crates/dialogue/reports/dev-trained.json",
+      "bytes": 970,
+      "sha256": "9fb6237a8f4b45a58a033ee074ff1f8a4ab28f73afdecb6501e102d43c5a638b"
+    },
+    {
+      "path": "crates/dialogue/reports/experiment.json",
+      "bytes": 657,
+      "sha256": "c0d849e495c34a41faedcc2734f54f0dd7e9be2e66b56b8879bb241e5bfc6314"
+    },
+    {
+      "path": "crates/dialogue/reports/runtime-audit.json",
+      "bytes": 123,
+      "sha256": "e35d1e0c717c8eb3ceed2f4b9c5904f71cb02ffc46564c693b227deafe6bb008"
+    },
+    {
+      "path": "crates/dialogue/reports/sample-centroid.json",
+      "bytes": 928,
+      "sha256": "0d59aa8bf9cbe25cc698ee21df6bf39a38de5d5452b96acc0301c7946f7441e3"
+    },
+    {
+      "path": "crates/dialogue/reports/sample-no-carry.json",
+      "bytes": 945,
+      "sha256": "fba123edbe409f097679dc0dc9b435f6e0d6ee7c371f7ac6d70be1eba3344fd3"
+    },
+    {
+      "path": "crates/dialogue/reports/sample-trained.json",
+      "bytes": 913,
+      "sha256": "cb6438d259333044f35ecb39578a4fbb943a4805db629648ab363b31d9f5add9"
+    },
+    {
+      "path": "crates/dialogue/src/adapter.rs",
+      "bytes": 1408,
+      "sha256": "7a919603493525a5069d81ac3de5473819c1142cfadbd99380effff1a028d027"
+    },
+    {
+      "path": "crates/dialogue/src/bin/dialogue-multi.rs",
+      "bytes": 6091,
+      "sha256": "95cf9dc4a37747a658bcf676ce5cc0af65a257bd14fba9337d8e5275d4a6d9f1"
+    },
+    {
+      "path": "crates/dialogue/src/boundaries.rs",
+      "bytes": 7201,
+      "sha256": "9c765b1f039e169a1eae5e67f4025a7bd4e9dec0c13760a8541c29759b8b4941"
+    },
+    {
+      "path": "crates/dialogue/src/lib.rs",
+      "bytes": 263,
+      "sha256": "9f68127b01c3929d8a0b92fc7138582ab61c308512999e1b0956419e4326f244"
+    },
+    {
+      "path": "crates/dialogue/src/main.rs",
+      "bytes": 7256,
+      "sha256": "5c101feb4a4167d541dd0e4b6aca8dc12b802ce760925526a6739e44f3e5fe10"
+    },
+    {
+      "path": "crates/dialogue/src/multi.rs",
+      "bytes": 20559,
+      "sha256": "afc34686037e4a532b62748f8ca28ecbe800a4cc215fb89ceab0bd7ae6f39ed1"
+    },
+    {
+      "path": "crates/dialogue/src/offers.rs",
+      "bytes": 11550,
+      "sha256": "9fb10a401bf14f89000a293f4bd09af2dabd7770f17166476232a207b1cf77a1"
+    },
+    {
+      "path": "crates/dialogue/src/references.rs",
+      "bytes": 7379,
+      "sha256": "1d5f7b1210e2826cb69c21592e6d842a0473f3c252d9b1cd5e06433777888127"
+    },
+    {
+      "path": "crates/dialogue/src/tracker.rs",
+      "bytes": 12997,
+      "sha256": "87e53f0791eab162b08c65921e3f853f7ec55f53d27b43c9c58fe8d8d2b0201c"
+    },
+    {
+      "path": "crates/dialogue/tools/LICENSE.metrics",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "crates/dialogue/tools/audit_runtime.py",
+      "bytes": 1975,
+      "sha256": "85bf09d31e9d045e0062ff81bbd0c0145ec0ccc0731110804aa3cad3b78cb868"
+    },
+    {
+      "path": "crates/dialogue/tools/fetch_sgd.py",
+      "bytes": 3508,
+      "sha256": "5e2e18b349f27de69ec3d06d75ec03705a53d54ee4051e920d29b4486dd9665e"
+    },
+    {
+      "path": "crates/dialogue/tools/metrics-source.json",
+      "bytes": 332,
+      "sha256": "06a1b085e0f8778b5b9e2cbebac590cb179ef1c0951c7892c2bbfd1122a33598"
+    },
+    {
+      "path": "crates/dialogue/tools/reproduce.sh",
+      "bytes": 2652,
+      "sha256": "46b0b7e39f1b0f5a42a342e3fc2d441d88421da035c8c660b03a018137152ac7"
+    },
+    {
+      "path": "crates/dialogue/tools/requirements.txt",
+      "bytes": 32,
+      "sha256": "e0aadfdc54d286f16d8de2136c58d3a6a04ea08285565aef0178ede22bd82bfe"
+    },
+    {
+      "path": "crates/dialogue/tools/score.py",
+      "bytes": 2489,
+      "sha256": "554b33a633bbedd2b1ff1517ab7decc1874a9c270bd6eaf9b95b3dd39910c550"
+    },
+    {
+      "path": "crates/dialogue/tools/upstream_metrics.py",
+      "bytes": 11209,
+      "sha256": "709667d982b99d1bf1f2be48fc47418b7b7fc9a5f1c43e9fe8dd987828a51df5"
+    }
+  ]
+}

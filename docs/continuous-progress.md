@@ -1,11 +1,55 @@
 # Continuous development checkpoint
 
-## Authoritative current state — 2026-10-11 UTC, percentage batch validated
+## Authoritative checkpoint — token endpoint rejection independently verified
+
+Goal active; branch harness, validated runtime408d16b unchanged. The preceding
+prompt-only turn made no development progress; this continuation independently
+verified and preserved the dialogue rejection. PR27/28/29 remain merged; no
+reason to repeat their completed benchmark runs. Older ACTIVE labels below
+are historical and superseded here.
+
+TOKENENDPOINTS terminal and REJECTED before DEV. Original30files/1,677,366bytes,
+28ownedmanifest/10external/7freeze/4data/29restoredsource identities verified.
+Runtime patch empty. Parent independently recomputed all165reference rows and
+1,635rule gates: all50extensions wrong, zero qualifyingrules. Excluding one
+existing punctuation correction,158originalvalues already have complete source
+annotations and6have none; no annotatedtruncation in actualTRAINcopies. Five
+contrasts and shellsyntax pass. No repeatednativeinference or candidateDEV.
+Originalarchive and repositorycopies reverified before inactiveworktree/auth
+removal. Reports tools/dialogue/token-endpoints/PARENT.md and parent/; raw
+WORK/tokenendpoints-run and WORK/coordinator/tokenendpoints-review. Third rejected
+span-proposal hypothesis: switch track/representation, no fourth cosmetic retry.
+Known completed worker tokens117,559,088; cachedinput countedonce, parent and
+unfinishedworkerexcluded. No scoring gain claimed for rejection evidence.
+
+INDEXPROOF ACTIVE: PID241565, scopeglassmind-continuous-indexproof.scope,8GiB/0swap,
+worktreeWORK/indexproof atb27dabe, branchcontinuous/indexproof, runWORK/indexproof-run;
+briefWORK/indexproof-task.txt. Revalidated live this continuation. Required
+GPT6Astrafast/ChatGPTlauncher, noAPIkeys. OwnsworldRust helper/libregistration/new
+unit tests plusnewtools/coding-index-proof. Compiler-confirmed signedslice-index
+repair must prove dominatingguards, bindingidentity, definedarithmetic and actual
+target representability; no blindcast. Temporary native constant-width proof
+planned, with originalbehavior preserved. Supplied publicindex-with-i32 workspace
+519bytes and3TRAIN-v3requests only; no hidden/task.toml/solution inputs. Parent
+froze11independent cases before candidateinspection (2positives,9unsafe/unproved)
+atWORK/coordinator/indexproof-independent. Review terminal submission only after
+originalarchive; require meaningful nativebehavior and full765>=174/0fail with
+all174retained before publication. Do not infer completion from log files.
+
+Parent publicprobes disproved redundant genericDebug andderiveHash hypotheses:
+existing compiler suggestions already repair both withnativebehavior checks.
+ArtifactsWORK/coordinator/debugtypes-baseline andderive-baseline; jobscomplete.
+Next: commit rejection evidence, review INDEXPROOF when terminal, select a new
+conversation/reading hypothesis from TRAIN evidence. No blocker. Goal remains
+active until user stops it.
+
+## Authoritative current state — 2026-10-11 UTC, PR29 merged; dialogue token endpoints active
 
 Goal active under prompts/grow-continuously.md. This section supersedes older
 ACTIVE/pending labels. WORK=/home/gsc/.cache/glassmind/continuous-20261010;
 branch harness; runtime408d16b9f52c20ec9d9b6ed3e8c0787131b55a79.
-No blocker, model worker or parent job remains live. Old stopped dirty loop untouched.
+No blocker or parent benchmark job remains live. One dialogue model worker is
+active below; old stopped dirty loop untouched.
 
 PR27 MERGED9ee1749dcc8100c08b1af9c3985a32cdd22365bf at08:19:57Z,
 exacthead5af9c4067d12d1f7a0ee05af14b84af4b321f68c,CI38124307162SUCCESS.
@@ -40,7 +84,10 @@ All parent sessions25584,7302(exit101initialenv),70336,25291,74949,33799 COMPLET
 Raw WORK/coordinator/fieldowners-review andfieldowners-full; reports
  tools/coding-field-owners/PARENT.md andcoding-field-owners-review. No repeatfull765.
 
-PERCENTCHANGE accepted after independent integration; not yet published.
+PERCENTCHANGE published in PR29 after independent integration.
+PR29 MERGEDee5281965b8408cf036f1236daf2feceef806126 at08:34:15Z,
+exactheadd59cb121d0c6e0276141283c872e9cd25cb3275e,CI38125168892SUCCESS.
+Push42072/create54316/merge9374 COMPLETE. Do not repeat CI/checks/merge.
 Original41files3,022,535bytes archived atWORK/percentchange-run/submitted;
 18freezeidentities/35artifact entries verified,36source/reportcopies match.
 Original32smallreports/adapters copied; fullledger/predictions external andindexed
@@ -69,13 +116,35 @@ cachedinputcountedonce;parent/interrupted/unfinishedexcluded. Workeroriginalbina
 quantitiese94f0ba1 andmain6e1de532 retained; archivepatch60cda8ec versusworker53578ccc
 prefixdifference, exactsourcehashes checked beforeintegration. No newdata/model.
 
-Next: commit/push verified percentage reports and open PR29, then exact-head CI
-merge. Preserve currentbenchmarks/README consistency. Choose next useful bounded
-experiment from weak dialogue/reading or coding TRAIN/DEV evidence; no active
-worker to restart. Keep both coding andconversation moving, nevermarkgoaldone
-for a milestone. ExternalPR27five-line milestone alreadyappended; nextmajorlog
-can combinePR28/29 afterpercentagepublishing. Latestreport/journalchanges are
-uncommitted; no further behavior tests needed absent newchanges/concerns.
+TOKENENDPOINTS ACTIVE: PID221626, scopeglassmind-continuous-tokenendpoints.scope,
+worktreeWORK/tokenendpoints atd59cb12, branchcontinuous/tokenendpoints,
+runWORK/tokenendpoints-run; briefWORK/tokenendpoints-task.txt. Scope8GiB/0swap
+verified; requiredGPT6Astrafast/ChatGPTlauncher, API-keyenvironment stripped.
+Only crates/dialogue +newtools/dialogue/token-endpoints. Frozen approvedv2 model
+fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88 andbaseline
+sample/full/audit copiedfromspansequence-run/baseline, modelhashverified. Retained
+SGDtrain/dev/metricsenv read-onlymounted, no heldout data or new downloads.
+Hypothesis: optional TRAIN-supported completion of atmost2adjacent source tokens
+for an EXISTING reference-copy proposal, with exactlatestoccurrence/UTF8provenance.
+Different from rejectedcontiguousBIO andwhole-sequence model; neverclaimfixing
+allOsemanticfreshness. Freezeoneanonymizedtoken-shape representation beforeediting.
+FIT2532/CAL642conversations byexistinghashsplit; proposedrulesFITonly, >=5FIT and
+3CALdistinctconversations/rule, zeroendpointmismatches and>=30actualCALproposals
+beforeDEV. CALmustuseactualfrozenpredicted/referenceproposals, notgoldprefix inputs.
+OldclassifierssawallTRAIN; disclose empiricalnew-rulevalidation, notindependent
+probabilitycalibration. Noentitylexicon/dev-derivedrulesorpost-CALloweredgate.
+IfTRAINgatepasses, fixedfirst10 thenall179DEV1119USERturns/1218frames, preserveall
+610correctjoint,>=716exactframes,zero newlywrongchangedassertions plusrealgain;
+auditall7inheritedwrongslotturns andheld-unscoredstatechanges. Optionalabsentv2/
+legacybyteidentity required. Reject/restore ifgatesfail, archivealloriginal evidence.
+About20minboundedworker; nootheragents/services/modelcalls. Parentchoosesnextstep.
+
+Next: inspect tokenendpoint worker only when terminal; archive/hashverify before
+integration/removal. No parentfullbenchmark/PR publishing remains. This turnmade
+substantiveprogress andmergedPR27/28/29; nevermarkongoinggoalcomplete for milestones.
+Externalfive-linePR28/29 milestone appended. Keepcodingandconversationmoving;
+ifthisthird span-proposal hypothesis rejects, switch representation/track rather
+than another cosmeticspan-rule retry. Goalactiveuntiluserstopsit.
 
 ## Historical checkpoint before final route replay — superseded below
 
