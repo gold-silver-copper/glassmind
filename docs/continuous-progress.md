@@ -2,9 +2,9 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Known completed-worker tokens:201926299, cached input counted once; parent and
-interrupted usage excluded. One isolated Astra fast teacher is running; its final
-usage is pending. Its owned ChatGPT login symlink is recorded below.
+Known completed-worker tokens:202156530, cached input counted once; parent and
+interrupted usage excluded. Semantic teacher completed; no model workers running.
+Its owned ChatGPT login symlink has been removed after archival and scope verification.
 
 ## Current jobs,19:11UTC
 
@@ -65,30 +65,25 @@ vs1000 remainsREJECTED; thisissemantic TRAIN-labelquality, notsolveraccuracy.
 refusebadwaiting-intervalrationale;5449mustrefuseimplicitderived5housecountas
 fixedconstant. Allparentexpectations hidden fromteacher. See worktreePROGRESS.
 
-Teacher96285 RUNNING: supervisor1198492,wrapper1198534,scope
-glassmind-span-references-teacher,thread01a12c5e-57c4-7fd0-94a1-9a7ebe086e6b.
-Started1791745742.716.1200s/8GiB0swap/2MiBannotationcap/on-disktmp.
-Exactgpt-6-astra/fast/high,forcedChatGPTlogin. Localandisolatedloginstatus
-verifiedChatGPT;APIkeyenvscrubbed. OpenAI Docs configurationchecked.
-Bwraponlyexposesselectedbatch/schema/validator/brief;5protectedpathsverified
-absent includingfullTRAIN/CAL,parentexpectations andproject/benchmarktrees.
-OwnedloginlinkRUN/teacher/codex/auth.json points toestablishedlogin; neverread
-orarchivecredentialcontents. WorkerwritesonlyRUN/teacher/work.
+Teacher96285 COMPLETE exit0,152.017s, no cap failure. Exactgpt-6-astra/fast/high,
+forcedChatGPTlogin, noAPIkeys. Scopeglassmind-span-references-teacher inactive;
+ownedlogin symlinkremoved. All15originalfiles463891bytes archived/hashverified in
+RUN/teacher-originals; credentials excluded. Usage230231=220487input(includes185856
+cached)+9744output(includesreasoning); knowncompletedtotal202156530.
 
-NEXTquantity: awaitteacherterminal, preserve+hashoriginalteacher/work andevent/
-stderr/completionmetadata beforechanges (exclude codex/auth.json entirely).
-Thenvalidate.py source/batch.json teacher/work/annotations.json --out NEW.json
---executor WORK/groundedsteps-source/equation_executor inbounded8GiBscope.
-ParentreviewEVERYacceptedsemanticlink andall8frozenreferences/counterfactuals.
-Gate>=24/32parentconfirmedresolved/equivalent,zeroacceptedsemanticcontradictions,
-all8parentcasesagree,all34protocolcontractspass. No secondannotationattempt
-selectedafterresults; nofit/CAL/DEV beforeseparatelyfrozennextplan.
-Atcompletionreadturn.completed usage:inputincludescached,addoutputonce. Update
-201926299completedworkerbaselineonlywithactualcompletedusage; interruptedexcluded.
-Afterpreservationandterminalscopeverification, unlinkONLYownedlogin symlink.
+Pilot PASS:32rows accounted,26resolved3equivalent2unsupported1label_error.
+29/32parentconfirmedaccepted,32nativeoriginalprogramvariants exact; root reviewed
+all202leafassignments, zeroacceptedsemanticcontradictions. All8frozenparentcases
+agree;25postteacheroriginal/counterfactualnativeexecutions match. Thirdrefusal5909
+requiresmissingderivedbike/trashcanwheelcount; cannotencodeasconstant6.
+Semanticreview RUN/semantic-review.json andworktreecopy includesall32decisions,
+source/outputhashes andfixed-graphcaveats. All34protocolcontractspass. No quantity
+runtime,fit,CAL/DEV orscorechange. Old354/7473vs1000gatestillREJECTED.
+NEXTquantity: freeze separateboundedexpansion/trainingplan beforemoreselection.
 
-Continue monitoringnativeclaims89022; rawprovenance/storageaudit remainsindependent
-andmustpass beforeanynewgraphQA. OneboundedteacherusesChatGPTonly asabove; noAPIkeycalls.
+Nativeclaims89022 stillRUNNING at33minutes (PIDs1022832/1022833verified);
+secondaryindexesbuilt1225.432s, finalintegritychecksremaining. Do not restart.
+Continue original3396saudit/witnesses sequence afterterminalresourcepass.
 
 ## PR50 merged: word joining shipped
 
