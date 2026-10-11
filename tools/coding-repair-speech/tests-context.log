@@ -1,0 +1,46 @@
+Running as unit: run-p1179337-i97570640.scope; invocation ID: 5a574b07e4c943ee89ac90c5ec1cbf77
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/english-rust)
+   Compiling glassmind-reading v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/reading)
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.41s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 20 tests
+test coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained ... ok
+test coding::rename_tests::legacy_rename_coverage ... ok
+test coding::rename_tests::explicit_scope_and_open_description_objects_preserve_identity ... ok
+test coding::rename_tests::unsupported_tails_never_escape_into_guesses ... ok
+test edit::tests::nested_assumptions_keep_verified_result_and_clear_pending ... ok
+test edit::tests::remedies_are_not_newly_auto_applied ... ok
+test edit::tests::stale_multifile_proposal_preserves_every_current_byte ... ok
+test everyday::tests::social_turn_preserves_story_but_mixed_clause_invalidates ... ok
+test everyday::tests::story_focus_prevents_implicit_personal_memory_edits ... ok
+test everyday::tests::unresolved_correction_invalidates_story_across_restart ... ok
+test talk_facts::tests::accepts_distinct_bundles_and_rejects_swapped_assets ... ok
+test talk_facts::tests::labels_remain_display_only_and_must_match_the_index ... ok
+test talk_facts::tests::set_prefix_is_fully_consumed_and_does_not_bind_followups ... ok
+test talk_stories::tests::bounded_history_fails_closed ... ok
+test talk_stories::tests::repeated_plans_do_not_mutate_history_or_world ... ok
+test talk_stories::tests::replay_preserves_pronouns_and_has_deterministic_bytes ... ok
+test talk_stories::tests::unsupported_updates_block_stale_answers_even_after_restart ... ok
+test coding::rename_tests::quoted_rename_examples_cannot_become_commands_or_guesses ... ok
+test coding::rename_tests::frozen_authored_rename_requests_and_fallback_controls ... ok
+test coding::repair_speech_tests::frozen_authority_in_understand_and_guesses ... FAILED
+
+failures:
+
+---- coding::repair_speech_tests::frozen_authority_in_understand_and_guesses stdout ----
+
+thread 'coding::repair_speech_tests::frozen_authority_in_understand_and_guesses' (1180192) panicked at crates/cli/src/coding.rs:601:9:
+Make the project compile.: []; guesses=[]
+Does this project compile?: [Reading { meaning: Ask(Locate { thing: Named(Name("project")), kind: None }), rules: [RuleInfo { id: "en.utterance.remark_after_mark", round: 27 }, RuleInfo { id: "en.utterance.question", round: 0 }, RuleInfo { id: "en.question.where", round: 2 }, RuleInfo { id: "en.whence.where_does", round: 9 }, RuleInfo { id: "en.target.mention", round: 3 }, RuleInfo { id: "en.mention.thing", round: 3 }, RuleInfo { id: "en.noun_phrase.name", round: 0 }, RuleInfo { id: "en.remark.check", round: 29 }, RuleInfo { id: "en.check_phrase.bare", round: 29 }, RuleInfo { id: "en.rust.check.compile", round: 29 }, RuleInfo { id: "en.mark.question", round: 5 }, RuleInfo { id: "en.normalizer.edits", round: 4294967295 }], parse: "en.utterance.remark_after_mark[en.utterance.question[en.question.where[en.whence.where_does[\"where\" \"Does\"] en.target.mention[en.mention.thing[en.noun_phrase.name[\"project\"]]]]] en.remark.check[en.check_phrase.bare[en.rust.check.compile[\"compile\"]]] en.mark.question[\"?\"]]", idle: 3, edits: 226, discarded: ["this"] }]; guesses=[]
+Can this crate compile?: []; guesses=[]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    coding::repair_speech_tests::frozen_authority_in_understand_and_guesses
+
+test result: FAILED. 19 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 23.44s
+
+error: test failed, to rerun pass `-p glassmind --bin glassmind`

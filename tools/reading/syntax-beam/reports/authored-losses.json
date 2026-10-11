@@ -1,0 +1,250 @@
+[
+  {
+    "case": {
+      "kind": "fronted_adverb",
+      "forms": [
+        "Yesterday",
+        ",",
+        "Mira",
+        "helped",
+        "Jonas",
+        "."
+      ],
+      "core_edges": [
+        [
+          3,
+          4,
+          "nsubj"
+        ],
+        [
+          4,
+          0,
+          "root"
+        ],
+        [
+          5,
+          4,
+          "obj"
+        ]
+      ]
+    },
+    "lost": [
+      {
+        "edge": [
+          4,
+          0,
+          "root"
+        ],
+        "baseline_correct": true,
+        "beam_correct": false
+      }
+    ]
+  },
+  {
+    "case": {
+      "kind": "parenthetical",
+      "forms": [
+        "Mira",
+        ",",
+        "yesterday",
+        ",",
+        "helped",
+        "Jonas",
+        "."
+      ],
+      "core_edges": [
+        [
+          1,
+          5,
+          "nsubj"
+        ],
+        [
+          5,
+          0,
+          "root"
+        ],
+        [
+          6,
+          5,
+          "obj"
+        ]
+      ]
+    },
+    "lost": [
+      {
+        "edge": [
+          6,
+          5,
+          "obj"
+        ],
+        "baseline_correct": true,
+        "beam_correct": false
+      }
+    ]
+  },
+  {
+    "case": {
+      "kind": "passive",
+      "forms": [
+        "Mira",
+        "was",
+        "helped",
+        "by",
+        "Jonas",
+        "."
+      ],
+      "core_edges": [
+        [
+          1,
+          3,
+          "nsubj:pass"
+        ],
+        [
+          3,
+          0,
+          "root"
+        ],
+        [
+          5,
+          3,
+          "obl:agent"
+        ]
+      ]
+    },
+    "lost": [
+      {
+        "edge": [
+          5,
+          3,
+          "obl:agent"
+        ],
+        "baseline_correct": true,
+        "beam_correct": false
+      }
+    ]
+  },
+  {
+    "case": {
+      "kind": "fronted_adverb",
+      "forms": [
+        "Yesterday",
+        ",",
+        "Nora",
+        "helped",
+        "Felix",
+        "."
+      ],
+      "core_edges": [
+        [
+          3,
+          4,
+          "nsubj"
+        ],
+        [
+          4,
+          0,
+          "root"
+        ],
+        [
+          5,
+          4,
+          "obj"
+        ]
+      ]
+    },
+    "lost": [
+      {
+        "edge": [
+          4,
+          0,
+          "root"
+        ],
+        "baseline_correct": true,
+        "beam_correct": false
+      }
+    ]
+  },
+  {
+    "case": {
+      "kind": "parenthetical",
+      "forms": [
+        "Nora",
+        ",",
+        "yesterday",
+        ",",
+        "helped",
+        "Felix",
+        "."
+      ],
+      "core_edges": [
+        [
+          1,
+          5,
+          "nsubj"
+        ],
+        [
+          5,
+          0,
+          "root"
+        ],
+        [
+          6,
+          5,
+          "obj"
+        ]
+      ]
+    },
+    "lost": [
+      {
+        "edge": [
+          6,
+          5,
+          "obj"
+        ],
+        "baseline_correct": true,
+        "beam_correct": false
+      }
+    ]
+  },
+  {
+    "case": {
+      "kind": "fronted_adverb",
+      "forms": [
+        "Yesterday",
+        ",",
+        "Lena",
+        "helped",
+        "Omar",
+        "."
+      ],
+      "core_edges": [
+        [
+          3,
+          4,
+          "nsubj"
+        ],
+        [
+          4,
+          0,
+          "root"
+        ],
+        [
+          5,
+          4,
+          "obj"
+        ]
+      ]
+    },
+    "lost": [
+      {
+        "edge": [
+          4,
+          0,
+          "root"
+        ],
+        "baseline_correct": true,
+        "beam_correct": false
+      }
+    ]
+  }
+]

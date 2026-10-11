@@ -1,5 +1,52 @@
 # Continuous development checkpoint
 
+## Current checkpoint — PR35 merged; repair revision in progress
+
+The unlimited continuous goal remains active. Root branch harness at86b1e545.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+PR35 merged at2026-10-11T10:16:23Z as c9dd5e3a5bfa4d10c1a1fd2db0ba26900485fcd8;
+exact head86b1e545efbeaa9262d157125fccd9841ada7794 passed CI38131245655.
+No open PR. Published source028ed24: raw exact forms1556/2001 (baseline1370),
+all old retained; dependency model/predictions unchanged. Coding180/765 remains
+published from PR34, all177 prior passes retained. External milestone logs appended.
+
+REPAIRSPEECH original terminal submission is independently rejected:8→4 positive
+do repairs,4/6 status forms, but all9 unrequested do edits eliminated. Original
+67-entry submission,66-entry parent snapshot,85 worker identities verified. Original
+source/binary/output preserved under repairspeech-run; no source integrated in root.
+Parent30 cases/60 modes unchanged; initial ask--apply is correctly read-only for
+new Remedy proposals. See tools/coding-repair-speech/PARENT.md and parent/REVISION.md.
+Coordinator is revising inactive WORK/repairspeech after archive verification:
+singular diagnostics, Rust source nouns, semicolon contexts, behavior-preservation
+tails, bare build predicate and Problems status questions. The original Passes-only
+status proxy must be versioned/rebaselined explicitly for genuine Problems queries;
+original grades retained. One added family test caught code/build noun ambiguity;
+fixed before candidate inference. Capped test/build session97154 COMPLETE:20CLI+43English tests pass. Frozen debug
+binary e7a5c228f36c765f2623dcd054808909624cc7494f4e56d540038719d94ce752
+at coordinator/repairspeech-review/revision/glassmind-debug. Parent60mode replay
+session52911 running; remaining authored/legacy native checks follow; only if
+those pass integrate source into current root and run fresh full765 requiring all180.
+
+SYNTAXBEAM is terminal and REJECTED. Parent independently rescored2001: LAS19423→17879,
+UAS20540→19051/25148; alltreesvalid/zero refusals. Frozen independent20 sentences:
+36→25/40 core edges,16→8/20 complete. Source rolled back, verified identical to root.
+57 original rejected archive entries/58,265,881bytes,29 parent/82,097bytes,69 raw
+identities/109,454,301bytes verified. Originals in syntaxbeam-run; copied small
+reports in tools/reading/syntax-beam with parent audit. No model worker remains
+active; syntaxbeam worktree/auth removed after original/frozen/root re-verification;
+repairspeech inactive checkout retained for the coordinator revision.
+Do not rerun rejected full inference or integrate rejected syntax patch.
+
+Known completed worker tokens146687638; parent/interrupted usage excluded.
+Root pending evidence includes tools/coding-repair-speech, tools/reading/syntax-beam,
+worker usage and this checkpoint. Commit these durable reviews; no runtime change
+in root yet. Next conversation experiment must change objective/representation;
+no width sweep, third work-rate template, or repeated QA-span cosmetic trial.
+Older checkpoint details below are historical; current status above supersedes them.
+
+### Previous checkpoint details (superseded)
+
+
 ## Current checkpoint — PR34 merged; raw tokenizer validated locally
 
 The continuous goal remains active. WORK=/home/gsc/.cache/glassmind/continuous-20261010.

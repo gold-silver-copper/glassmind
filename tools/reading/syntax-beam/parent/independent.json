@@ -1,0 +1,220 @@
+{
+  "status": "rejected",
+  "baseline_edges": 36,
+  "candidate_edges": 25,
+  "lost": 11,
+  "gained": 0,
+  "baseline_sentences": 16,
+  "candidate_sentences": 8,
+  "transitions": [
+    {
+      "case": "contrast_1",
+      "baseline": {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 2,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    },
+    {
+      "case": "contrast_2",
+      "baseline": {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 2,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    },
+    {
+      "case": "contrast_2",
+      "baseline": {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj",
+        "correct": true,
+        "actual_head": 2,
+        "actual_label": "obj"
+      },
+      "candidate": {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj",
+        "correct": false,
+        "actual_head": 2,
+        "actual_label": "xcomp"
+      }
+    },
+    {
+      "case": "contrast_3",
+      "baseline": {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 2,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    },
+    {
+      "case": "contrast_3",
+      "baseline": {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj",
+        "correct": true,
+        "actual_head": 2,
+        "actual_label": "obj"
+      },
+      "candidate": {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj",
+        "correct": false,
+        "actual_head": 2,
+        "actual_label": "xcomp"
+      }
+    },
+    {
+      "case": "contrast_10",
+      "baseline": {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 4,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    },
+    {
+      "case": "contrast_11",
+      "baseline": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 3,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    },
+    {
+      "case": "contrast_12",
+      "baseline": {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj",
+        "correct": true,
+        "actual_head": 2,
+        "actual_label": "obj"
+      },
+      "candidate": {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj",
+        "correct": false,
+        "actual_head": 4,
+        "actual_label": "compound"
+      }
+    },
+    {
+      "case": "contrast_14",
+      "baseline": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 3,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    },
+    {
+      "case": "contrast_15",
+      "baseline": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 3,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    },
+    {
+      "case": "contrast_18",
+      "baseline": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": true,
+        "actual_head": 3,
+        "actual_label": "nsubj"
+      },
+      "candidate": {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj",
+        "correct": false,
+        "actual_head": 0,
+        "actual_label": "root"
+      }
+    }
+  ]
+}

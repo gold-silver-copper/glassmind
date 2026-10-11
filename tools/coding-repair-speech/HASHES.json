@@ -1,0 +1,431 @@
+{
+  "base_source": "1ab5b03643b34fcca338bb1744758ed240b0ef0a",
+  "license": "MIT OR Apache-2.0 for repository-authored code/data; user-supplied evidence has no separately inferred license",
+  "files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/cli/src/coding.rs",
+      "bytes": 24385,
+      "sha256": "1d4707de53b4adc6e4f2115df075f50a41ab998e7773b8995953840c62220490"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/english-rust/src/lib.rs",
+      "bytes": 75247,
+      "sha256": "aa73f466235f2700cc7650a152ed9d61bfe4f1d224f8b2ce2041d6930130613c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/english-rust/src/repair_requests.rs",
+      "bytes": 14573,
+      "sha256": "cbb0aefb8afe5f6291c183b20a221f356d03f74c47359676b701478520d04515"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/EXPERIMENTS.md",
+      "bytes": 2829,
+      "sha256": "b35206026b07192b223f65d0afd53c3f4fa88bc0aee258215aa80a21008dcd58"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/FROZEN.sha256",
+      "bytes": 204,
+      "sha256": "04b3d678bcd266bd84e4b031de26db487d9318bb892db2091b636c2bbabfa0ab"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/HANDOFF.md",
+      "bytes": 6827,
+      "sha256": "e0bbc9a743597e93f3c5ffd21ec9fe648fb0f3b1cff4fde3d1cd1a7efc7ef90d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/PLAN.md",
+      "bytes": 1637,
+      "sha256": "618920e98cc1c2a345d6c0f9949d2aa467690a18d3f24cb26e4da39ca0cdfa4f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/baseline-full.log",
+      "bytes": 50,
+      "sha256": "9ab2f1037403b498a53e36f4a70610e63d1efbebbe0966e923be615885118b22"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/baseline-legacy-summary.json",
+      "bytes": 128,
+      "sha256": "578dd19b69cbe4021f2fd54981a80a06498b651eeb8a3d08ed15ab2d2de60fb6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/baseline-legacy.log",
+      "bytes": 50,
+      "sha256": "8393dbb80bb76a13e7efba120baddb8fb2d669acd55b842bd706ceea69ecba93"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/baseline-sample.log",
+      "bytes": 50,
+      "sha256": "1622235ac62035b27fba8b4067a27dbfe2d2312ab15664a8432e379f7472c4b2"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/baseline-summary.json",
+      "bytes": 376,
+      "sha256": "b38a0178c2335a7999feda99727b6bed9783cf1cb82a114b6fb0aaaa89c64179"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/build-final-source.log",
+      "bytes": 564,
+      "sha256": "094ba8fc70852e29fa2f93ffdd0792572af6167734447aaac7d596cf07070ece"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/build-final.log",
+      "bytes": 270,
+      "sha256": "572289cfca5479bfc5de88263447470494ee4c64231c94caa8b57c6d2a8aaa60"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/build-last.log",
+      "bytes": 510,
+      "sha256": "67402bacd3badb048f64e00979c977cb5bcb7500a8fc5a51c646e0ae4e6ca40b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/build.log",
+      "bytes": 270,
+      "sha256": "5410b32d5d51d83a67751bb6252d8c3a2a6cdd2323780beaeef1f0c05bca0beb"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/candidate-confirm.log",
+      "bytes": 26,
+      "sha256": "2f1f401724c32448a0e303d560a445d7cb09439a23d53fe4149e5e18b56fa9db"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/candidate-full.log",
+      "bytes": 53,
+      "sha256": "80992ac62e4fb817ae625cbcbf05bebee9f425dcfe8651694a94c6166932510c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/candidate-legacy.log",
+      "bytes": 50,
+      "sha256": "8393dbb80bb76a13e7efba120baddb8fb2d669acd55b842bd706ceea69ecba93"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/candidate-sample.log",
+      "bytes": 50,
+      "sha256": "30a09843ef57691188aa4de96e939e67864053a2b4f16001c4b8fae270776785"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/candidate-summary-before-context.json",
+      "bytes": 376,
+      "sha256": "1170c1688150dbfd14357d1167f1be76109baafd8924591d48a3fbab6f83d3c2"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/candidate-supplied.log",
+      "bytes": 50,
+      "sha256": "829cca4b539eedc91f83014f54e2c23733825713043e25d72f10211b7022fbdc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/cases.tsv",
+      "bytes": 2889,
+      "sha256": "b1daac6e84d0d80ae2f27284b6cdfbde9c5ff7113392f8b06760bcca95221043"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/clippy-final-source.log",
+      "bytes": 510,
+      "sha256": "a0a7804e29677dc05ef9c691cd56ea1a7e5e3db6716e3d40e6123277a162e8cb"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/clippy-final.log",
+      "bytes": 510,
+      "sha256": "d0e7d83fc8c80e0a2fd37398149d079fa023679be8dba6657de10f3d325ca3ad"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/clippy-last.log",
+      "bytes": 510,
+      "sha256": "327eb2591c4791b420eea345bd5ba21ee792a46b1f42de32caad2a2e37ca7f22"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/clippy.log",
+      "bytes": 3503,
+      "sha256": "f3439ea91c831939aab436611c60553326d8e2967ba111d62017044d0de185e9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/confirm.py",
+      "bytes": 1679,
+      "sha256": "5adec908975f879d6b201e1cf502dc595a6212a00573666eb0643dd7fa12a657"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/diagnostic-tests-final.log",
+      "bytes": 717,
+      "sha256": "41dc3e2b84204caf49a8d63daa8b0270f0462c9b4dad50669cd3363181717874"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/diagnostic-tests.log",
+      "bytes": 2291,
+      "sha256": "9b81a1280615746d5e7a6524825a426d960710968278c5cc01678c24e97a7761"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/final-confirm.log",
+      "bytes": 26,
+      "sha256": "2f1f401724c32448a0e303d560a445d7cb09439a23d53fe4149e5e18b56fa9db"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/final-full.log",
+      "bytes": 53,
+      "sha256": "d6f033e1bd5c7c98b3d3de5c0c3243ab989498a243191734f3ae172091869ae7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/final-legacy.log",
+      "bytes": 50,
+      "sha256": "f885d8f5d0e5c1801bbe394932e3f883c28a9c29acce2a9dbcc535a7197bd257"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/final-sample.log",
+      "bytes": 50,
+      "sha256": "30a09843ef57691188aa4de96e939e67864053a2b4f16001c4b8fae270776785"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/final-supplied.log",
+      "bytes": 50,
+      "sha256": "54984e2399293df39a2d2947b0ba7f58a58db3c09ecf8292657be0102defd738"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/fmt-context-final.log",
+      "bytes": 95,
+      "sha256": "6bde1df4b8e0f5ca7851bb992e54dfc8c87556900e02b21c6e3c34d1c799186f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/fmt-context.log",
+      "bytes": 95,
+      "sha256": "e1397b1c733835f301e02fd59ee5ab3c53c146e3d01cbfb8e1d77eeed4dad21f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/fmt-final-source.log",
+      "bytes": 95,
+      "sha256": "5f0fbc813a57c87671f03ff98ddaba571c836af6ff2805ef3785f25be4afe51a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/fmt-final.log",
+      "bytes": 95,
+      "sha256": "7fefa29f7f3b1194a1f45fcce52fa83c9a583ffbd2e227696161eefd9cce25b6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/fmt-last.log",
+      "bytes": 95,
+      "sha256": "2bed5ddbfe53a4ea01ed5f1ffc0738dd32a907e3dae086c8246ed18e2269e2e3"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/fmt.log",
+      "bytes": 95,
+      "sha256": "4fc33bb35e534d0d080d5d2d1d333f66dac4d201f6e1b43a98939bfcf15eba67"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/observations.py",
+      "bytes": 1374,
+      "sha256": "bcb515063794f42dddeaec34111f27c43abb5e1d43682fd0fdca3aa8188a0c14"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/probe.py",
+      "bytes": 3069,
+      "sha256": "ed97ac281f3cdf84f18e924033cd9eda029b7f8c138b774ecda1562da0f06b91"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/public-legacy.tsv",
+      "bytes": 1065,
+      "sha256": "824f38f2a9d7e954aebf31e5e9d7b7b484de9df4e2183a8dc8b452e0f076e2ca"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/reproduce.sh",
+      "bytes": 2038,
+      "sha256": "1cc3dc4930bf27193f21b8705fb6dd8cdf3791a97dcd5592fc07521116e6c6ef"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/summarize.py",
+      "bytes": 1222,
+      "sha256": "feeb7d1b5c2a270b934bcd3c615e3e99bdfb9e3cceea466f33804a2aeb0cfc09"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/supplied.tsv",
+      "bytes": 793,
+      "sha256": "df3db645a9f974c5a187224b18841345cbff1cc8b0cb6ce9fe2af024aa529861"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/tests-context-final.log",
+      "bytes": 5365,
+      "sha256": "bf47ef476ffab8da2d0c6fd95fdf75ac3ac531bae93dfde853d7515cedb0d9d7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/tests-context.log",
+      "bytes": 4040,
+      "sha256": "fd50191287e398937e30874fc60f351a8ea8bff8b91c68dba81cc2bb8e0b9eff"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/tests-final-source.log",
+      "bytes": 5304,
+      "sha256": "102202c12b7647b737fb39deadfc7097dd1ee5887948118d77f38ee2f21a8762"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/tests-final.log",
+      "bytes": 5277,
+      "sha256": "39b7e79e53b0488c50d35a552900c5c0e8581345625b832259e9a7a3ddf4d33c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/tests-first.log",
+      "bytes": 6206,
+      "sha256": "977a3587ef736b8350720d24570840e1235a1a3c06fb782bbc0735c2ea48200b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/tests-last.log",
+      "bytes": 5250,
+      "sha256": "972e4090da4f4b576dd5f0197cd69cb053bf04bce9b1ac52db09500ab3df687d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-confirm.log",
+      "bytes": 26,
+      "sha256": "2f1f401724c32448a0e303d560a445d7cb09439a23d53fe4149e5e18b56fa9db"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-full-observations.json",
+      "bytes": 41575,
+      "sha256": "90d41e66bb2b2688f6c1bf5af17360a80621520f85e1eb93af008199d1f9f726"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-full-summary.json",
+      "bytes": 376,
+      "sha256": "5242d7a07e062bbc86250ef16dd8af8784ff4dba9a59eee2eb65614182eb8adc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-full.log",
+      "bytes": 53,
+      "sha256": "d6f033e1bd5c7c98b3d3de5c0c3243ab989498a243191734f3ae172091869ae7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-legacy-observations.json",
+      "bytes": 9540,
+      "sha256": "1ffaf8c5fea1ad6835b5d0c6c50e2896d4e3d870d68361c55e73b281c61765dc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-legacy-summary.json",
+      "bytes": 128,
+      "sha256": "d9b3ef2c1fdabf832fe3172f20391b64efae352b8f2bcbe78c842d0abfa1cf0e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-legacy.log",
+      "bytes": 50,
+      "sha256": "f885d8f5d0e5c1801bbe394932e3f883c28a9c29acce2a9dbcc535a7197bd257"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-sample.log",
+      "bytes": 50,
+      "sha256": "30a09843ef57691188aa4de96e939e67864053a2b4f16001c4b8fae270776785"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-supplied-observations.json",
+      "bytes": 10564,
+      "sha256": "8852f481dda66fb15b5916ba90fc30a51e8f94d86d77ed7fdf670372377df845"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-supplied-summary.json",
+      "bytes": 367,
+      "sha256": "5b6e501de6c8f553b74f29461e6974938c7effe941d83e5febcfae7fa760b84b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/tools/coding-repair-speech/verified-supplied.log",
+      "bytes": 50,
+      "sha256": "54984e2399293df39a2d2947b0ba7f58a58db3c09ecf8292657be0102defd738"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/baseline/glassmind",
+      "bytes": 77701664,
+      "sha256": "f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/baseline-authored/results.json",
+      "bytes": 103140,
+      "sha256": "c60945414d9db000582543154e0cc4440a8f45fcdca6796f8a4ae91b74c73c19"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/baseline-full/results.json",
+      "bytes": 88228,
+      "sha256": "aac4c68bea87439f013c40932c0c743d27569eadfa9352c2dea3375c59dceb76"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/baseline-legacy/results.json",
+      "bytes": 21648,
+      "sha256": "8444c32e22c373c8853b0d0b241ee958a4a9372f7f1221326a7f1d144a713cdf"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/candidate-full/results.json",
+      "bytes": 684419,
+      "sha256": "00bbbb24242ae93ed5b6275146a8ef756954796343666ae9de0c448bf2fecdba"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/candidate-supplied/results.json",
+      "bytes": 139274,
+      "sha256": "857f1a9f06e8c4cbc863f4afb846a10eceba6fea30016cb8a02b282dbeb08074"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/dev-inputs/cases.json",
+      "bytes": 1894,
+      "sha256": "00b23a152b15f2be37eaa491cf0837a16f27f28b686f6d8bffe6cb33c4eea3b0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/dev-inputs/comparison.json",
+      "bytes": 1607,
+      "sha256": "8e83731af0f0b5ead074007ac48a9f79707d85322484d50afdc07650fb4d09ae"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/dev-inputs/native-query.json",
+      "bytes": 922,
+      "sha256": "03de4c3c952dbe395782ba8fb6f5b9aeb76847711890a052fe2ee3866d2fb197"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/frozen-candidate/glassmind",
+      "bytes": 130445592,
+      "sha256": "f8699eb506931014ce833046d86018f18b5cfc0f0c06f708518d2816e705264f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/revision-one/glassmind",
+      "bytes": 130428184,
+      "sha256": "1b88ed3154e9ec72ccde56af8899c160669d8c59cc43d03a166e3dc3c1b07762"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/revision-one/probe-before-isolation.py",
+      "bytes": 3012,
+      "sha256": "3f3336ffb04b39ed4fea4b24d3e44b01a49607d98063b1785cba083506db0294"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/revision-one/repair-before-context.rs",
+      "bytes": 8729,
+      "sha256": "b7aac5905b1690972c6702344639a51963885b67dc9bd9bbfa12303e4ce4b420"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/revision-one/repair_requests.rs",
+      "bytes": 8741,
+      "sha256": "11bcb201f2e2a2d2ce908d1a9ea3a75375f0c00e285752825010cecfec576b77"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/revision-one/runtime.patch",
+      "bytes": 7674,
+      "sha256": "9a566bf29d669cc0d7ed27ae7fdd34ff2cc1c07394391bcc5a822d714e44b205"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/revision-one/tests.log",
+      "bytes": 6206,
+      "sha256": "977a3587ef736b8350720d24570840e1235a1a3c06fb782bbc0735c2ea48200b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-confirm/results.json",
+      "bytes": 6538,
+      "sha256": "63c9bc4de2052ed26a35624b5ea8c11e5e5755bb6bc02cee5554f61c41265d5f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/results.json",
+      "bytes": 700482,
+      "sha256": "1563207958cd5843e1956afd14b11ce082f79db6ce639f601693951f4a8bff8c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-legacy/results.json",
+      "bytes": 193760,
+      "sha256": "8c1abb7031f01989d2ce4520c9ff99aed4f4888757aeb4ee151594433176932f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-sample/results.json",
+      "bytes": 94624,
+      "sha256": "112583c9a73102ce32eb7d44185b8816436fa2a217cb18dffd447d278578b994"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-supplied/results.json",
+      "bytes": 143447,
+      "sha256": "a36a545d109350bbb53b6e52052b3c879aee9a63a7a210a737d4b398acd2a07c"
+    }
+  ]
+}

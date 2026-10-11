@@ -1,0 +1,37 @@
+{
+  "predictions_sha256": "411b002debad6b1575885d3d2c9f1ed23f673118d9e8bf76ca4196b5588a2737",
+  "gold_tokenized": true,
+  "groups": {
+    "all": {
+      "words": 25148,
+      "uas_correct": 19051,
+      "las_correct": 17879,
+      "sentences": 2001,
+      "emitted": 2001,
+      "root_correct": 1511
+    },
+    "nonduplicate_forms": {
+      "words": 25011,
+      "uas_correct": 18914,
+      "las_correct": 17742,
+      "sentences": 1933,
+      "emitted": 1933,
+      "root_correct": 1443
+    },
+    "exclude_punctuation": {
+      "words": 22073,
+      "uas_correct": 17071,
+      "las_correct": 15904
+    },
+    "duplicate_forms": {
+      "words": 137,
+      "uas_correct": 137,
+      "las_correct": 137,
+      "sentences": 68,
+      "emitted": 68,
+      "root_correct": 68
+    }
+  },
+  "independent_tree_validation": true,
+  "unsupported_counted_as_misses": true
+}

@@ -1,0 +1,174 @@
+{
+  "baseline": {
+    "sentences": 2001,
+    "refused": 0,
+    "valid_trees": 2001,
+    "words": 25148,
+    "uas_correct": 20540,
+    "las_correct": 19423
+  },
+  "beam": {
+    "sentences": 2001,
+    "refused": 0,
+    "valid_trees": 2001,
+    "words": 25148,
+    "uas_correct": 19051,
+    "las_correct": 17879
+  },
+  "transitions": {
+    "all": {
+      "uas_correct->correct": 17971,
+      "las_correct->correct": 16892,
+      "uas_correct->wrong": 2569,
+      "las_correct->wrong": 2531,
+      "las_wrong->wrong": 4738,
+      "sentence_wrong->wrong": 1129,
+      "uas_wrong->wrong": 3528,
+      "uas_wrong->correct": 1080,
+      "las_wrong->correct": 987,
+      "sentence_correct->correct": 617,
+      "sentence_correct->wrong": 211,
+      "sentence_wrong->correct": 44
+    },
+    "nonduplicate_forms": {
+      "uas_correct->correct": 17834,
+      "las_correct->correct": 16755,
+      "uas_correct->wrong": 2569,
+      "las_correct->wrong": 2531,
+      "las_wrong->wrong": 4738,
+      "sentence_wrong->wrong": 1129,
+      "uas_wrong->wrong": 3528,
+      "uas_wrong->correct": 1080,
+      "las_wrong->correct": 987,
+      "sentence_correct->wrong": 211,
+      "sentence_correct->correct": 549,
+      "sentence_wrong->correct": 44
+    },
+    "duplicate_forms": {
+      "uas_correct->correct": 137,
+      "las_correct->correct": 137,
+      "sentence_correct->correct": 68
+    }
+  },
+  "authored": {
+    "cases": 24,
+    "edges": 72,
+    "baseline_correct": 60,
+    "beam_correct": 54,
+    "lost_correct": 6
+  },
+  "gates": {
+    "las": false,
+    "uas": false,
+    "trees": true,
+    "no_refusals": true,
+    "authored_preservation": false,
+    "default_forms_byte_identical": true,
+    "default_raw_byte_identical": true,
+    "independent_parent_contrasts": "pending"
+  },
+  "timings": {
+    "default_forms": {
+      "wall_seconds": 0.22964623803272843,
+      "peak_rss_kib": 60148,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/forms.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/default-forms.jsonl"
+      ]
+    },
+    "default_raw": {
+      "wall_seconds": 0.26610114506911486,
+      "peak_rss_kib": 59996,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/raw-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/default-raw.jsonl"
+      ]
+    },
+    "baseline_forms": {
+      "wall_seconds": 0.18132249603513628,
+      "peak_rss_kib": 59768,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/forms.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/baseline-replay.jsonl"
+      ]
+    },
+    "probes_greedy": {
+      "wall_seconds": 0.033793510985560715,
+      "peak_rss_kib": 60040,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/probe-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/probes-greedy.jsonl"
+      ]
+    },
+    "probes_beam": {
+      "wall_seconds": 0.050150466966442764,
+      "peak_rss_kib": 59984,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/probe-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/probes-beam.jsonl",
+        "--beam"
+      ]
+    },
+    "beam_sample": {
+      "wall_seconds": 0.08234654506668448,
+      "peak_rss_kib": 60056,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/sample-inputs.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/sample-predictions.jsonl",
+        "--beam"
+      ]
+    },
+    "beam_full": {
+      "wall_seconds": 0.4534255099715665,
+      "peak_rss_kib": 60032,
+      "command": [
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/reading-syntax",
+        "predict",
+        "--model",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+        "--input",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/forms.jsonl",
+        "--output",
+        "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/beam-predictions.jsonl",
+        "--beam"
+      ]
+    }
+  },
+  "slowdown": 2.50065777764113
+}

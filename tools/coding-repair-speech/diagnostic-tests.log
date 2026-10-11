@@ -1,0 +1,44 @@
+Running as unit: run-p1180575-i97669315.scope; invocation ID: f5be89a3f5624347b0b33d8310228765
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling syn v3.0.7
+   Compiling serde_derive v1.0.229
+   Compiling serde v1.0.229
+   Compiling glassmind-meaning v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/meaning)
+   Compiling memchr v2.8.3
+   Compiling serde_json v1.0.151
+   Compiling glassmind-english v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/english)
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/world-rust)
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech/crates/english-rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.43s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/target/debug/deps/glassmind_english_rust-68649db9805a6cee)
+
+running 2 tests
+test repair_requests::tests::existing_public_diagnostic_requests_and_outer_scope ... FAILED
+test repair_requests::tests::frozen_complete_speech_acts ... FAILED
+
+failures:
+
+---- repair_requests::tests::existing_public_diagnostic_requests_and_outer_scope stdout ----
+
+thread 'repair_requests::tests::existing_public_diagnostic_requests_and_outer_scope' (1182764) panicked at crates/english-rust/src/repair_requests.rs:414:13:
+assertion `left == right` failed: get failing tests green in heck, e.g. lower_camel::tests::test1
+  left: None
+ right: Some(Repair(Test))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- repair_requests::tests::frozen_complete_speech_acts stdout ----
+
+thread 'repair_requests::tests::frozen_complete_speech_acts' (1182765) panicked at crates/english-rust/src/repair_requests.rs:436:13:
+assertion `left == right` failed: Make the project compile.
+  left: None
+ right: Some(Repair(Build))
+
+
+failures:
+    repair_requests::tests::existing_public_diagnostic_requests_and_outer_scope
+    repair_requests::tests::frozen_complete_speech_acts
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 40 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p glassmind-english-rust --lib`

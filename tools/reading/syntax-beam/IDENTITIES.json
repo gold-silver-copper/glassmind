@@ -1,0 +1,47 @@
+{
+  "candidate_library": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/rejected/source/crates/reading/src/syntax.rs",
+    "bytes": 41808,
+    "sha256": "d045f9a83232c78995c5e466e7843b759f9372244b20e93152dc031eff3cf03a"
+  },
+  "candidate_adapter": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/rejected/source/crates/reading/src/bin/reading-syntax.rs",
+    "bytes": 6004,
+    "sha256": "fc9d33f55e3d3cfe574dff1bb9091edb87f3294e6c5b27be91957da8d81181f5"
+  },
+  "candidate_binary": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/candidate/reading-syntax",
+    "bytes": 12382896,
+    "sha256": "04b75f7bcf10d14f808db97013beeb2fc2e91d9d9b5ca69846e991a746ba6b3f"
+  },
+  "restored_library": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam/crates/reading/src/syntax.rs",
+    "bytes": 34168,
+    "sha256": "587209fd2279c49c64c00b9d1fa8c72443213d8adcb6c5f86b9d010574383c91"
+  },
+  "restored_adapter": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam/crates/reading/src/bin/reading-syntax.rs",
+    "bytes": 5448,
+    "sha256": "4d37ae3ca0dc082ad30fdc7815882407ed0c1465ca2b8a952f4070a05d438072"
+  },
+  "model": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/baseline/model.bin",
+    "bytes": 12554724,
+    "sha256": "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6"
+  },
+  "patch": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam/tools/reading/syntax-beam/rejected.patch",
+    "bytes": 11008,
+    "sha256": "bf1e1ef1901d674cd0d30914c5824db7d153abbecb15dd1c8934cbc5e0ed1518"
+  },
+  "authored_contrasts": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam/tools/reading/syntax-beam/contrasts.jsonl",
+    "bytes": 3381,
+    "sha256": "eaef2988bf5f9b3ce6b009927a3340ed0cd8199a3b9337f868241b464affaad9"
+  },
+  "scorer": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam/tools/reading/syntax/parent/audit.py",
+    "bytes": 3803,
+    "sha256": "bed6b7e260e6882fc21af81df9daf06078efae4107f9c18494dba897be8909e0"
+  }
+}

@@ -1,0 +1,1107 @@
+{
+  "groups": {
+    "repair/ask": {
+      "rows": 24,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 24,
+      "native_after_failed": 24,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    },
+    "repair/apply": {
+      "rows": 24,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 24,
+      "native_after_failed": 24,
+      "frozen_mutation_expectation_failed": 24,
+      "frozen_native_expectation_failed": 24
+    },
+    "repair/do": {
+      "rows": 24,
+      "changed": 24,
+      "exact_expected_repair": 24,
+      "native_before_failed": 24,
+      "native_after_failed": 0,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    },
+    "status/ask": {
+      "rows": 12,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 12,
+      "native_after_failed": 12,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    },
+    "status/apply": {
+      "rows": 12,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 12,
+      "native_after_failed": 12,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    },
+    "status/do": {
+      "rows": 12,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 12,
+      "native_after_failed": 12,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    },
+    "refuse/ask": {
+      "rows": 32,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 32,
+      "native_after_failed": 32,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    },
+    "refuse/apply": {
+      "rows": 32,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 32,
+      "native_after_failed": 32,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    },
+    "refuse/do": {
+      "rows": 32,
+      "changed": 0,
+      "exact_expected_repair": 0,
+      "native_before_failed": 32,
+      "native_after_failed": 32,
+      "frozen_mutation_expectation_failed": 0,
+      "frozen_native_expectation_failed": 0
+    }
+  },
+  "fixture_manifests": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-0-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-0-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-0-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-1-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-1-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-1-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-10-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-10-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-10-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-11-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-11-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-11-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-12-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-12-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-12-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-13-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-13-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-13-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-14-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-14-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-14-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-15-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-15-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-15-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-16-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-16-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-16-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-17-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-17-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-17-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-18-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-18-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-18-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-19-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-19-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-19-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-2-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-2-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-2-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-20-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-20-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-20-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-21-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-21-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-21-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-22-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-22-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-22-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-23-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-23-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-23-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-24-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-24-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-24-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-25-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-25-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-25-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-26-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-26-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-26-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-27-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-27-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-27-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-28-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-28-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-28-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-29-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-29-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-29-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-3-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-3-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-3-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-30-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-30-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-30-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-31-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-31-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-31-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-32-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-32-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-32-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-33-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-33-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-33-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-34-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-34-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-34-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-35-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-35-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-35-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-36-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-36-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-36-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-37-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-37-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-37-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-38-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-38-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-38-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-39-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-39-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-39-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-4-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-4-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-4-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-40-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-40-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-40-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-41-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-41-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-41-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-42-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-42-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-42-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-43-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-43-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-43-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-44-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-44-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-44-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-45-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-45-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-45-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-46-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-46-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-46-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-47-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-47-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-47-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-48-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-48-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-48-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-49-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-49-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-49-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-5-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-5-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-5-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-50-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-50-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-50-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-51-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-51-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-51-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-52-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-52-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-52-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-53-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-53-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-53-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-54-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-54-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-54-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-55-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-55-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-55-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-56-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-56-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-56-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-57-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-57-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-57-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-58-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-58-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-58-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-59-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-59-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-59-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-6-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-6-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-6-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-60-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-60-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-60-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-61-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-61-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-61-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-62-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-62-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-62-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-63-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-63-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-63-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-64-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-64-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-64-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-65-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-65-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-65-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-66-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-66-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-66-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-67-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-67-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-67-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-7-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-7-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-7-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-8-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-8-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-8-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-9-apply",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-9-ask",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/repairspeech-run/verified-full/fixture-9-do",
+      "manifest_unchanged": true,
+      "only_authored_source": true
+    }
+  ]
+}

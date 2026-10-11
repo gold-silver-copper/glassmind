@@ -1,0 +1,448 @@
+[
+  {
+    "name": "contrast_0",
+    "forms": [
+      "Nora",
+      "thanked",
+      "Felix",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_1",
+    "forms": [
+      "Felix",
+      "thanked",
+      "Nora",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_2",
+    "forms": [
+      "Ada",
+      "called",
+      "Omar",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_3",
+    "forms": [
+      "Omar",
+      "called",
+      "Ada",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_4",
+    "forms": [
+      "Elias",
+      "did",
+      "n't",
+      "call",
+      "Mina",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_5",
+    "forms": [
+      "Mina",
+      "did",
+      "n't",
+      "call",
+      "Elias",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_6",
+    "forms": [
+      "Who",
+      "did",
+      "Noor",
+      "greet",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 4,
+        "label": "obj"
+      },
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_7",
+    "forms": [
+      "Who",
+      "greeted",
+      "Noor",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_8",
+    "forms": [
+      "Which",
+      "book",
+      "did",
+      "Noor",
+      "read",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 5,
+        "label": "obj"
+      },
+      {
+        "dependent": 4,
+        "head": 5,
+        "label": "nsubj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_9",
+    "forms": [
+      "What",
+      "did",
+      "Mina",
+      "lose",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 4,
+        "label": "obj"
+      },
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_10",
+    "forms": [
+      "The",
+      "old",
+      "robot",
+      "carried",
+      "the",
+      "box",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_11",
+    "forms": [
+      "The",
+      "box",
+      "hit",
+      "the",
+      "robot",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_12",
+    "forms": [
+      "Noor",
+      "saw",
+      "Omar",
+      "yesterday",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_13",
+    "forms": [
+      "Yesterday",
+      "Omar",
+      "saw",
+      "Noor",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_14",
+    "forms": [
+      "The",
+      "child",
+      "opened",
+      "a",
+      "door",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_15",
+    "forms": [
+      "A",
+      "door",
+      "blocked",
+      "the",
+      "child",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_16",
+    "forms": [
+      "Lina",
+      "told",
+      "Mina",
+      "a",
+      "story",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_17",
+    "forms": [
+      "The",
+      "dog",
+      "followed",
+      "the",
+      "cat",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_18",
+    "forms": [
+      "The",
+      "cat",
+      "followed",
+      "the",
+      "dog",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_19",
+    "forms": [
+      "Why",
+      "did",
+      "Noor",
+      "leave",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 0,
+        "label": "root"
+      }
+    ]
+  }
+]

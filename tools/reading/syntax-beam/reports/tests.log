@@ -1,0 +1,23 @@
+Running as unit: run-p1329081-i97804992.scope; invocation ID: 2b13487af75148338cc61a1548b0103e
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/syntaxbeam-run/target/debug/deps/glassmind_reading-2814fd2e8a52ae50)
+
+running 15 tests
+test qa::tests::metadata_is_not_runtime_input ... ok
+test qa::tests::no_support_and_bounds_refuse ... ok
+test qa::tests::unicode_offsets_and_trailing_text ... ok
+test qa::tests::repeated_occurrences_are_deterministic_and_slices ... ok
+test qa::tests::finite_weights_cannot_emit_non_finite_scores ... ok
+test syntax::tests::beam_recovers_a_lower_scoring_prefix ... ok
+test syntax::tests::beam_refuses_nonfinite_transition_scores ... ok
+test syntax::tests::oracle_and_invalid_structures ... ok
+test syntax::tests::raw_apostrophe_bounds_and_controls ... ok
+test syntax::tests::raw_apostrophe_frozen_contrasts ... ok
+test syntax::tests::beam_compatibility_ties_bounds_and_provenance ... ok
+test syntax::tests::strict_inputs_and_unicode_spans ... ok
+test qa::tests::trained_model_roundtrip_and_refusal_policy ... ok
+test syntax::tests::corrupt_weights_and_dimensions ... ok
+test syntax::tests::roundtrip_and_determinism ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+

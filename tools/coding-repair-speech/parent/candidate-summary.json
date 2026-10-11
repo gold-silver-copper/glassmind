@@ -1,0 +1,52 @@
+{
+  "status": "original_candidate_rejected",
+  "positive_do_baseline": 8,
+  "positive_do_candidate": 4,
+  "positive_transitions": [
+    {
+      "name": "positive_0",
+      "baseline": true,
+      "candidate": false
+    },
+    {
+      "name": "positive_1",
+      "baseline": true,
+      "candidate": true
+    },
+    {
+      "name": "positive_2",
+      "baseline": true,
+      "candidate": true
+    },
+    {
+      "name": "positive_3",
+      "baseline": true,
+      "candidate": false
+    },
+    {
+      "name": "positive_4",
+      "baseline": true,
+      "candidate": true
+    },
+    {
+      "name": "positive_5",
+      "baseline": true,
+      "candidate": false
+    },
+    {
+      "name": "positive_6",
+      "baseline": true,
+      "candidate": true
+    },
+    {
+      "name": "positive_7",
+      "baseline": true,
+      "candidate": false
+    }
+  ],
+  "unrequested_edit_mode_cases": 0,
+  "negative_preview_commands": 0,
+  "status_correct_requests": 4,
+  "ask_apply_remedies_remain_readonly": true,
+  "reason": "Four previously working positive repair requests lost; frozen positive and status gates fail. No full765 run warranted on this submission."
+}

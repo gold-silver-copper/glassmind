@@ -1,0 +1,259 @@
+diff --git i/crates/reading/src/bin/reading-syntax.rs w/crates/reading/src/bin/reading-syntax.rs
+index 2e44d85..469d33a 100644
+--- i/crates/reading/src/bin/reading-syntax.rs
++++ w/crates/reading/src/bin/reading-syntax.rs
+@@ -28,6 +28,9 @@ enum Command {
+         input: PathBuf,
+         #[arg(long)]
+         output: PathBuf,
++        /// Use the optional width-4 cumulative-score beam.
++        #[arg(long)]
++        beam: bool,
+     },
+ }
+ #[derive(Default, Serialize)]
+@@ -129,6 +132,7 @@ fn run() -> Result<(), String> {
+             model,
+             input,
+             output,
++            beam,
+         } => {
+             let model = Model::load(BufReader::new(
+                 std::fs::File::open(model).map_err(|e| e.to_string())?,
+@@ -151,11 +155,21 @@ fn run() -> Result<(), String> {
+                 }
+                 let result = serde_json::from_str::<Input>(&line)
+                     .map_err(|e| e.to_string())
+-                    .and_then(|i| model.predict(i));
++                    .and_then(|i| {
++                        if beam {
++                            model.predict_beam(i, 4)
++                        } else {
++                            model.predict(i)
++                        }
++                    });
+                 let value = match result {
+                     Ok(p) => serde_json::to_value(p).map_err(|e| e.to_string())?,
+                     Err(reason) => {
+-                        serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason})
++                        if beam {
++                            serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason,"search_mode":"beam_4_sum_stable"})
++                        } else {
++                            serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason})
++                        }
+                     }
+                 };
+                 serde_json::to_writer(&mut writer, &value).map_err(|e| e.to_string())?;
+diff --git i/crates/reading/src/syntax.rs w/crates/reading/src/syntax.rs
+index 44b56bf..c1a46dd 100644
+--- i/crates/reading/src/syntax.rs
++++ w/crates/reading/src/syntax.rs
+@@ -39,6 +39,9 @@ pub struct Prediction {
+     pub heads: Vec<usize>,
+     pub deprels: Vec<String>,
+     pub structurally_valid: bool,
++    /// Explicit search provenance; absent for the unchanged greedy default.
++    #[serde(skip_serializing_if = "Option::is_none")]
++    pub search_mode: Option<String>,
+ }
+ fn combining(c: char) -> bool {
+     matches!(c as u32, 0x0300..=0x036f | 0x1ab0..=0x1aff | 0x1dc0..=0x1dff | 0x20d0..=0x20ff | 0xfe20..=0xfe2f)
+@@ -312,6 +315,7 @@ fn best(scores: &[f32], legal: impl Fn(usize) -> bool) -> Result<usize> {
+     }
+     b.ok_or_else(|| "no legal transition".into())
+ }
++#[derive(Clone)]
+ struct State {
+     stack: Vec<usize>,
+     next: usize,
+@@ -518,8 +522,113 @@ impl Model {
+             heads,
+             deprels,
+             structurally_valid: true,
++            search_mode: None,
+         })
+     }
++    /// Optional bounded search with unchanged tags, features and legal actions.
++    /// Width 1 is a greedy compatibility path; the only beam candidate is width 4.
++    /// Scores are unnormalized model scores, never probabilities or semantic proof.
++    pub fn infer_beam(&self, forms: &[String], width: usize) -> Result<Prediction> {
++        if !matches!(width, 1 | 4) {
++            return Err("beam width must be 1 or 4".into());
++        }
++        if width == 1 {
++            let mut p = self.infer(forms)?;
++            p.search_mode = Some("beam_1_sum_stable".into());
++            return Ok(p);
++        }
++        validate_forms(forms)?;
++        let n = forms.len();
++        let ws = words(forms);
++        let tags = self.tag(&ws)?;
++        let mut beam = vec![(State::new(n), 0_f64)];
++        for _ in 0..2 * n {
++            // Keep only four descriptors, not a state clone for every expansion.
++            let mut selected: Vec<(usize, usize, f64)> = Vec::with_capacity(width);
++            for (parent, (state, total)) in beam.iter().enumerate() {
++                let features = parse_features(state, &ws, &tags);
++                let scores = self.parser.scores(&features);
++                for (action, score) in scores.into_iter().enumerate() {
++                    if !score.is_finite() {
++                        return Err("nonfinite score".into());
++                    }
++                    if !state.legal(action, n, self.labels.len(), self.root) {
++                        continue;
++                    }
++                    let sum = total + f64::from(score);
++                    if !sum.is_finite() {
++                        return Err("nonfinite cumulative score".into());
++                    }
++                    // Strict comparison preserves parent then action order on ties.
++                    let rank = selected
++                        .iter()
++                        .position(|x| sum > x.2)
++                        .unwrap_or(selected.len());
++                    if rank < width {
++                        if selected.len() == width {
++                            selected.pop();
++                        }
++                        selected.insert(rank, (parent, action, sum));
++                    }
++                }
++            }
++            if selected.is_empty() {
++                return Err("no legal transition".into());
++            }
++            beam = selected
++                .into_iter()
++                .map(|(parent, action, total)| {
++                    let mut state = beam[parent].0.clone();
++                    state.apply(action, self.labels.len());
++                    (state, total)
++                })
++                .collect();
++        }
++        let (state, _) = beam.into_iter().next().ok_or("no legal transition")?;
++        if state.next != n + 1 || state.stack != [0] {
++            return Err("incomplete transitions".into());
++        }
++        let heads = state.heads[1..].to_vec();
++        let deprels = state.labels[1..]
++            .iter()
++            .map(|&label| self.labels[label].clone())
++            .collect::<Vec<_>>();
++        if !valid_tree(&heads, &deprels) {
++            return Err("invalid predicted structure".into());
++        }
++        Ok(Prediction {
++            status: "predicted".into(),
++            model_version: VERSION.into(),
++            tokenization: "provided_forms".into(),
++            forms: forms.to_vec(),
++            spans: None,
++            upos: tags.iter().map(|&tag| self.tags[tag].clone()).collect(),
++            heads,
++            deprels,
++            structurally_valid: true,
++            search_mode: Some("beam_4_sum_stable".into()),
++        })
++    }
++    /// Strict forms/text input; raw segmentation and exact spans are unchanged.
++    pub fn predict_beam(&self, input: Input, width: usize) -> Result<Prediction> {
++        if !matches!(width, 1 | 4) {
++            return Err("beam width must be 1 or 4".into());
++        }
++        match (input.forms, input.text) {
++            (Some(forms), None) => self.infer_beam(&forms, width),
++            (None, Some(text)) => {
++                let spans = tokenize(&text)?;
++                let mut p = self.infer_beam(
++                    &spans.iter().map(|t| t.form.clone()).collect::<Vec<_>>(),
++                    width,
++                )?;
++                p.tokenization = "raw_unicode_apostrophe_v2".into();
++                p.spans = Some(spans);
++                Ok(p)
++            }
++            _ => Err("exactly one of forms or text required".into()),
++        }
++    }
+     pub fn predict(&self, input: Input) -> Result<Prediction> {
+         match (input.forms, input.text) {
+             (Some(forms), None) => self.infer(&forms),
+@@ -966,6 +1075,76 @@ mod tests {
+         assert!(Model::load(bytes.as_slice()).is_err());
+     }
+     #[test]
++    fn beam_compatibility_ties_bounds_and_provenance() {
++        let model = tiny();
++        for n in [1, 2, 3, 128] {
++            let forms = vec!["word".into(); n];
++            let greedy = model.infer(&forms).unwrap();
++            let mut one = model.infer_beam(&forms, 1).unwrap();
++            assert_eq!(one.search_mode.take().as_deref(), Some("beam_1_sum_stable"));
++            assert_eq!(one, greedy);
++            let mut four = model.infer_beam(&forms, 4).unwrap();
++            assert_eq!(four, model.infer_beam(&forms, 4).unwrap());
++            assert_eq!(
++                four.search_mode.take().as_deref(),
++                Some("beam_4_sum_stable")
++            );
++            // Every score is zero: stable ties select the greedy action path.
++            assert_eq!(four, greedy);
++            assert!(
++                !serde_json::to_string(&greedy)
++                    .unwrap()
++                    .contains("search_mode")
++            );
++        }
++        for width in [0, 2, 3, 5, usize::MAX] {
++            assert!(model.infer_beam(&["word".into()], width).is_err());
++        }
++        assert!(model.infer_beam(&[], 4).is_err());
++        assert!(model.infer_beam(&vec!["word".into(); 129], 4).is_err());
++        let text = "Élodie can't—go!";
++        let input = || Input {
++            forms: None,
++            text: Some(text.into()),
++        };
++        let greedy = model.predict(input()).unwrap();
++        let beam = model.predict_beam(input(), 4).unwrap();
++        assert_eq!(greedy.spans, beam.spans);
++        assert_eq!(greedy.forms, beam.forms);
++        assert_eq!(greedy.upos, beam.upos);
++    }
++    #[test]
++    fn beam_recovers_a_lower_scoring_prefix() {
++        let mut model = tiny();
++        let forms = ["alpha", "beta", "gamma"].map(String::from);
++        let mut bias = Vec::new();
++        feature(&mut bias, PARSE_BUCKETS, 0, &[]);
++        model.parser.weights[bias[0] * 5] = 2.; // SHIFT
++        model.parser.weights[bias[0] * 5 + 1] = 1.; // LEFT(dep)
++        let mut delayed = Vec::new();
++        feature(&mut delayed, PARSE_BUCKETS, 60, &[words(&forms)[0].word]);
++        // Reward SHIFT after alpha has become the top token's left child.
++        // Greedy takes the immediate SHIFT=2 instead of LEFT=1 and misses this.
++        model.parser.weights[delayed[0] * 5] = 10.;
++        let greedy = model.infer(&forms).unwrap();
++        let beam = model.infer_beam(&forms, 4).unwrap();
++        assert_eq!(greedy.heads, [3, 3, 0]);
++        assert_eq!(beam.heads, [2, 3, 0]);
++        assert_eq!(greedy.upos, beam.upos);
++        assert!(beam.structurally_valid);
++    }
++    #[test]
++    fn beam_refuses_nonfinite_transition_scores() {
++        let mut model = tiny();
++        model.parser.weights.fill(f32::MAX);
++        assert!(
++            model
++                .infer_beam(&["word".into()], 4)
++                .unwrap_err()
++                .contains("nonfinite score")
++        );
++    }
++    #[test]
+     fn corrupt_weights_and_dimensions() {
+         let mut m = tiny();
+         m.parser.weights[0] = 1.;
