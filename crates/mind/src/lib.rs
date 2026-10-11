@@ -243,7 +243,12 @@ impl<O: Ontology> Session<O> {
     /// With `named` ([`NAMED_IS_TOPIC`]), a thing described by its name is
     /// what was asked about, not the items it is described by.
     pub fn topic(&self, named: bool) -> Option<O::Item> {
-        let meaning = self.settled().find_map(|t| t.meaning.as_ref())?;
+        // A check concerns the whole world, not a new conversational entity.
+        // Inspecting verification results must not erase the prior target.
+        let meaning = self.settled().find_map(|t| match t.meaning.as_ref() {
+            Some(Utterance::Ask(Question::Passes(_) | Question::Problems(_))) => None,
+            meaning => meaning,
+        })?;
         let called = |c: &Condition<O>| matches!(c, Condition::Called(_));
         if meaning
             .subjects()

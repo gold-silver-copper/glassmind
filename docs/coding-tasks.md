@@ -89,7 +89,8 @@ A choice can unblock the current step of an ordered plan. It cannot bypass nativ
 verification, revive a cancelled task or edit stale source. Selecting a field
 retains its explicit owner and uses the same owner-aware position audit as an
 explicit qualified rename. Unsupported targets can still remain blocked. After
-a successful rename, `rename it` refers to the selected item's new name.
+a successful rename, `rename it` refers to the selected item's new name, even
+after a build/test check or diagnostic question about the whole repository.
 
 Function implementation and add-field commands remain available through `do`
 without `--session`. Conditional branches, automatic revision strategies and

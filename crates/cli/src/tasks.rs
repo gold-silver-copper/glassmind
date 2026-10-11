@@ -1249,6 +1249,7 @@ mod tests {
         let f = Fixture::new(CHOICES_SOURCE);
         f.turn(1, "rename field value to count");
         f.turn(8, "choose Second::value");
+        f.turn(8, "check the tests");
         f.turn(8, "rename it to amount");
         assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
         assert!(f.source().contains("Second { pub amount: u32 }"));
