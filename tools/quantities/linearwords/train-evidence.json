@@ -1,0 +1,54 @@
+{
+  "access": "PyArrow columns=['Problem']; no other train column read",
+  "train_rows": 29837,
+  "examples": [
+    {
+      "train_index": 402,
+      "Problem": "the difference between a number and its three - fifth is 50 . what is the number ?"
+    },
+    {
+      "train_index": 1519,
+      "Problem": "find a number such that when 15 is subtracted from 7 times the number , the result is 10 more than twice the number ."
+    },
+    {
+      "train_index": 2272,
+      "Problem": "the sum of two numbers is 44 . 5 times one number is equal to 6 times the other . the smaller of the two numbers is"
+    },
+    {
+      "train_index": 2763,
+      "Problem": "3 seventh of a number is 12 more than 40 % of that number . what will be the 30 % of that number ?"
+    },
+    {
+      "train_index": 3960,
+      "Problem": "12 times a number gives 156 . the number is"
+    },
+    {
+      "train_index": 4622,
+      "Problem": "65 % of a number is 21 less than 4 / 5 th of that number . what is the number ?"
+    },
+    {
+      "train_index": 6735,
+      "Problem": "the difference between a number and its two - fifth is 510 . what is 5 % of that number ?"
+    },
+    {
+      "train_index": 10856,
+      "Problem": "50 % of a number is more than 20 % of 650 by 190 . find the number ?"
+    },
+    {
+      "train_index": 13396,
+      "Problem": "the difference between a number and its two fifth is 510 . what is 10 % of that number ?"
+    }
+  ],
+  "dataset_revision": "fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6",
+  "license": "Apache-2.0",
+  "files": {
+    "train.parquet": {
+      "bytes": 9013733,
+      "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    "validation.parquet": {
+      "bytes": 1350141,
+      "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+    }
+  }
+}
