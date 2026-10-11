@@ -87,3 +87,23 @@ repository).
 
 `rustc`/`cargo` from the stable toolchain run the coding tasks' checks; their
 messages are the problems' details.
+
+## Reading and grammar probes (2026-10-10)
+
+Reused the existing downloads in `~/code/sememe/data/`; no sememe code or
+crate is a dependency. `tools/reading-data.py` samples by a fixed SHA-256
+rank of source member and row number. It prints counts only.
+
+| source | version | size | license | use |
+|---|---|---|---|---|
+| [BLiMP](https://github.com/alexwarstadt/blimp) | local `blimp-master.zip`, SHA-256 `8c043d41701fff01cabf22fb9a2fd8e15cecac5240b777ff41680f4eb7fffc17` | 35,670,094 archive bytes; 1,340 dev pairs (20 per paradigm) | CC BY 4.0, per the archive's README | grammatical preference probe |
+| [BabyLM](https://babylm.github.io/) | 2025 development archive, SHA-256 `b5af75aeb1ee5a36f65ee98f316fdae73b16a0ba3767cca3f3dfa5eaac2dc621` | 19,264,893 archive bytes; 120 dev documents (20 per domain) | mixed source terms: BNC, CHILDES/TalkBank, Gutenberg, OpenSubtitles, Wikipedia and Switchboard; see the distributed dataset README | grammar-to-meaning coverage probe |
+
+`glassmind-reading` disables the normalizer and request-template tagger.
+BLiMP prefers a sentence only if it has an unedited, complete meaning and
+the other sentence does not; ties are reported explicitly, not credited as
+right. This is a parse-only baseline, **not a probability-model BLiMP score**.
+BabyLM counts documents that produce such a meaning, not whether that meaning
+is correct. Documents over 48 tokens remain in the denominator as uncovered;
+the report counts them separately. No bits-per-byte claim is made. BabyLM's
+test archive is not used.
