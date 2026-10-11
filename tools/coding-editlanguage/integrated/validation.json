@@ -1,0 +1,89 @@
+{
+  "source_commit": "eb22519f20325e72549a103cf99180ea0dbc2ba3",
+  "binary_sha256": "bb5dae741d23b84d9ce07707ee536aeaf38089be34330724221ed50bb2f1bacb",
+  "summaries": {
+    "sample": {
+      "total": 2,
+      "passed": 2,
+      "changed": 2
+    },
+    "full": {
+      "total": 5,
+      "passed": 4,
+      "changed": 4
+    },
+    "independent": {
+      "total": 13,
+      "passed": 13,
+      "changed": 6
+    },
+    "metatypes": {
+      "total": 35,
+      "passed": 35,
+      "usable": 13,
+      "safe": 35
+    },
+    "queries": {
+      "total": 8,
+      "right": 8
+    }
+  },
+  "additional_incomplete_clause_refusals": 3,
+  "tests": 38,
+  "workspace": "fmt, all-target clippy, release, strict4/4smoke passed",
+  "full765": "COMPLETE:174pass588refused3fail; all172 priorpasses retained, exactlytwo refusal-to-pass transitions",
+  "parent_fix": "Reject optional trailing conjunction without following clause; reproduced unit failure on original worker and verified fixed unit/CLI behavior.",
+  "files": [
+    {
+      "file": "sample.json",
+      "bytes": 4948,
+      "sha256": "c9f6190ac8661924bc529bfe60638e4330ee540d7dbba59fe7f83b3bc48d7cbe"
+    },
+    {
+      "file": "full.json",
+      "bytes": 10591,
+      "sha256": "5631ac40b7da0365ca2e63c453795014ff9ef8a0b9ffbc03beb213ecd0f237d8"
+    },
+    {
+      "file": "independent.json",
+      "bytes": 19920,
+      "sha256": "ff14e519ca5077163aa924e1ed8082dc753ae3448cfd6c33cc83a0074ae744d7"
+    },
+    {
+      "file": "metatypes.json",
+      "bytes": 54483,
+      "sha256": "c6185545346b4d1e6b0adcb845770186af95442e015da0c977c0d2fbf1f76237"
+    },
+    {
+      "file": "queries.json",
+      "bytes": 1955,
+      "sha256": "33d6172638f3d2de267468866b89ab71618829995bacf84e02551b6234d5a109"
+    },
+    {
+      "file": "tests.log",
+      "bytes": 2837,
+      "sha256": "0b1300e4740483045c9fc727e625e399e35ce7878078b8357f38ed20bcce06cc"
+    },
+    {
+      "file": "workspace.log",
+      "bytes": 717,
+      "sha256": "6e29ec81565081a570cf9af31e9acb426a9e275f809941648a6800fc1f0dd5c3"
+    },
+    {
+      "file": "dangling-before.log",
+      "bytes": 1389,
+      "sha256": "cf87202538fa12714a0233feb73c3207d6ec1b39e72478581d327c5d10f3c414"
+    },
+    {
+      "file": "replay.sh",
+      "bytes": 1128,
+      "sha256": "e07bf9b966317856a9b45fdc23bbedaf17c8309f8ada4db46d2f6bad9c0313dd"
+    },
+    {
+      "file": "incomplete-results.json",
+      "bytes": 1227,
+      "sha256": "82494b653f30beb9f4f5014a0c7a4340a33673d864bd3ca76f3657ea1e24171a"
+    }
+  ],
+  "full765_report": "docs/results/coding-editlanguage.json"
+}

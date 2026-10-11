@@ -1,0 +1,20 @@
+[
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors. and",
+    "unchanged": true,
+    "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+    "source_sha256": "83d0f7367dd66a7f003fb4266354221d2d9f091cc9c6176b310558f8bb6cffb6"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors; and",
+    "unchanged": true,
+    "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+    "source_sha256": "83d0f7367dd66a7f003fb4266354221d2d9f091cc9c6176b310558f8bb6cffb6"
+  },
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors and and",
+    "unchanged": true,
+    "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+    "source_sha256": "83d0f7367dd66a7f003fb4266354221d2d9f091cc9c6176b310558f8bb6cffb6"
+  }
+]

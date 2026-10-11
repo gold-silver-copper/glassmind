@@ -1,0 +1,117 @@
+{
+  "total": 2821,
+  "answer_only": {
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20
+  },
+  "joint_entity_relation_answer": {
+    "right": 252,
+    "refused": 2545,
+    "wrong": 24
+  },
+  "answer_matches_with_wrong_link_or_relation": [
+    {
+      "row": 434,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q588755",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q1029458",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 470,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q7798840",
+        "relation": "P364",
+        "answer": "Q1860"
+      },
+      "predicted": {
+        "entity": "Q1261757",
+        "relation": "P364",
+        "answers": [
+          "Q1860"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1705,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q827172",
+        "relation": "P364",
+        "answer": "Q652"
+      },
+      "predicted": {
+        "entity": "Q1215047",
+        "relation": "P364",
+        "answers": [
+          "Q652"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2423,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q7078999",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q1261757",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    }
+  ],
+  "metric": "joint_annotated_entity_relation_answer",
+  "scope": "Historical validation-subject-seeded500 Wikidata snapshot; frozen relation model",
+  "artifacts": [
+    {
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv",
+      "bytes": 173187,
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/valid.questions",
+      "bytes": 115573,
+      "sha256": "97704ab5a33b6c6ffed1dcf90f08b9296c761dcd5ad4615bb4d46bc342c2fc32"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/old500-valid-frozen.jsonl",
+      "bytes": 270305,
+      "sha256": "9d7fb56e29d8dd52275c93d8edd14c921c5748d8b4c3bc48c7fc7008574005b1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/old500-base-2821.json",
+      "bytes": 110,
+      "sha256": "d98e1e90bc02897c2c7fc8e31d5f9f5f03081349610859dafb10fc1f2e4e75c4"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/tools/facts/joint-audit.py",
+      "bytes": 4585,
+      "sha256": "9921a175a2186f220b05f445cf6934ce30e9c83abc4eb7564164f67cd6890daa"
+    }
+  ],
+  "limitations": "Separate diagnostic; original answer-only scorer and candidate acceptance criteria are unchanged. Exact annotated IDs, no redirect normalization. Dataset errors, snapshot differences, omitted question constraints and incomplete inverse uniqueness remain possible."
+}

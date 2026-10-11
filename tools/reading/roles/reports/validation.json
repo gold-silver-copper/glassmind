@@ -1,0 +1,56 @@
+{
+  "result": "REJECTED; runtime restored",
+  "transitions": {
+    "raw": {
+      "matrix": {
+        "wrong->wrong": 6975,
+        "right->right": 1568,
+        "right->wrong": 964,
+        "wrong->right": 1063
+      },
+      "answers_changed": 7393,
+      "old_correct_lost": 964,
+      "new_correct": 1063,
+      "new_wrong_from_right_or_refused": 964,
+      "changed_wrong_to_wrong": 5256
+    },
+    "selected": {
+      "matrix": {
+        "refused->refused": 8270,
+        "wrong->refused": 659,
+        "right->refused": 446,
+        "right->right": 366,
+        "wrong->wrong": 125,
+        "refused->wrong": 367,
+        "refused->right": 324,
+        "right->wrong": 6,
+        "wrong->right": 7
+      },
+      "answers_changed": 1828,
+      "old_correct_lost": 452,
+      "new_correct": 331,
+      "new_wrong_from_right_or_refused": 373,
+      "changed_wrong_to_wrong": 18
+    }
+  },
+  "calibration_recomputed": {
+    "threshold": 0.20381558,
+    "accepted": 86,
+    "right": 43,
+    "precision": 0.5
+  },
+  "legacy_byte_identical_rows": 10570,
+  "original_fit_cal_byte_equality": true,
+  "qa_tests_passed": 8,
+  "byte_probability_tests_passed": 2,
+  "release_build": "passed",
+  "fmt": "passed",
+  "clippy": "failed:14 experimental indexing/slicing violations; exact evaluated patch retained without post-dev fixes",
+  "probability_source_and_scorer_unchanged": true,
+  "main_cli_integration": "not run: rejected",
+  "candidate_full_runs": 1,
+  "training_runs": 1,
+  "dev_retuning": false,
+  "outer_memory_max": 8589934592,
+  "outer_memory_swap_max": 0
+}

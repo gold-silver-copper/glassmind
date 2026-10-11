@@ -1,0 +1,110 @@
+[
+  {
+    "name": "role-subject-Nora",
+    "context": "Nora thanked Felix.",
+    "question": "Who thanked Felix?",
+    "expected": "Nora"
+  },
+  {
+    "name": "role-object-Felix",
+    "context": "Nora thanked Felix.",
+    "question": "Who did Nora thank?",
+    "expected": "Felix"
+  },
+  {
+    "name": "role-subject-Felix",
+    "context": "Felix thanked Nora.",
+    "question": "Who thanked Nora?",
+    "expected": "Felix"
+  },
+  {
+    "name": "role-object-Nora",
+    "context": "Felix thanked Nora.",
+    "question": "Who did Felix thank?",
+    "expected": "Nora"
+  },
+  {
+    "name": "role-reversed-unsupported-subject",
+    "context": "Felix thanked Nora.",
+    "question": "Who thanked Felix?",
+    "expected": null
+  },
+  {
+    "name": "role-reversed-unsupported-object",
+    "context": "Felix thanked Nora.",
+    "question": "Who did Nora thank?",
+    "expected": null
+  },
+  {
+    "name": "predicate-demolished",
+    "context": "Nora demolished the bridge in 2008.",
+    "question": "When did Nora demolish the bridge?",
+    "expected": "2008"
+  },
+  {
+    "name": "predicate-painted",
+    "context": "Nora painted the bridge in 2008.",
+    "question": "When did Nora demolish the bridge?",
+    "expected": null
+  },
+  {
+    "name": "predicate-never demolished",
+    "context": "Nora never demolished the bridge in 2008.",
+    "question": "When did Nora demolish the bridge?",
+    "expected": null
+  },
+  {
+    "name": "negative-positive",
+    "context": "Nora never demolished the bridge in 2008.",
+    "question": "When did Nora never demolish the bridge?",
+    "expected": "2008"
+  },
+  {
+    "name": "kind-person",
+    "context": "Mira met Soren in Oslo.",
+    "question": "Who did Mira meet?",
+    "expected": "Soren"
+  },
+  {
+    "name": "kind-place",
+    "context": "Mira met Soren in Oslo.",
+    "question": "Where did Mira meet Soren?",
+    "expected": "Oslo"
+  },
+  {
+    "name": "kind-number",
+    "context": "Mira carried three crates.",
+    "question": "How many crates did Mira carry?",
+    "expected": "three"
+  },
+  {
+    "name": "kind-unsupported",
+    "context": "Mira carried crates.",
+    "question": "How many crates did Mira carry?",
+    "expected": null
+  },
+  {
+    "name": "unicode-person",
+    "context": "Élodie visited Zürich.",
+    "question": "Who visited Zürich?",
+    "expected": "Élodie"
+  },
+  {
+    "name": "unicode-place",
+    "context": "Élodie visited Zürich.",
+    "question": "Where did Élodie visit?",
+    "expected": "Zürich"
+  },
+  {
+    "name": "unsupported",
+    "context": "Lena owns a bicycle.",
+    "question": "When did Lena buy the bicycle?",
+    "expected": null
+  },
+  {
+    "name": "supported",
+    "context": "Lena bought a bicycle in 2012.",
+    "question": "When did Lena buy the bicycle?",
+    "expected": "2012"
+  }
+]

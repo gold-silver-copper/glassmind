@@ -1,0 +1,27 @@
+Running as unit: run-p2839587-i95094823.scope; invocation ID: 84f310f9dc9e4f5f95917cf37a347842
+   Compiling serde v1.0.229
+   Compiling glassmind-meaning v0.1.0 (/home/gsc/code/glassmind/crates/meaning)
+   Compiling glassmind-english v0.1.0 (/home/gsc/code/glassmind/crates/english)
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/code/glassmind/crates/world-rust)
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/code/glassmind/crates/english-rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.24s
+     Running unittests src/lib.rs (target/debug/deps/glassmind_english_rust-68649db9805a6cee)
+
+running 1 test
+test add_fields::tests::refuses_incomplete_conflicting_and_compound_commands ... FAILED
+
+failures:
+
+---- add_fields::tests::refuses_incomplete_conflicting_and_compound_commands stdout ----
+
+thread 'add_fields::tests::refuses_incomplete_conflicting_and_compound_commands' (2840421) panicked at crates/english-rust/src/add_fields.rs:507:13:
+Add pub weight: u16 to Parcel. Use 7 for all existing constructors. and
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    add_fields::tests::refuses_incomplete_conflicting_and_compound_commands
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 37 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p glassmind-english-rust --lib`

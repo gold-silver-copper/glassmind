@@ -1,0 +1,61 @@
+{
+  "baseline": {
+    "total": 10570,
+    "raw": {
+      "exact": 23.954588457899717,
+      "f1": 34.51842504801282,
+      "total": 10570
+    },
+    "accepted": {
+      "exact": 7.710501419110691,
+      "f1": 8.700190089811684,
+      "total": 10570
+    },
+    "right": 815,
+    "refused": 8964,
+    "wrong": 791,
+    "precision": 0.5074719800747198,
+    "coverage": 0.15193945127719963
+  },
+  "candidate": {
+    "total": 10570,
+    "raw": {
+      "exact": 24.89120151371807,
+      "f1": 35.972557788253035,
+      "total": 10570
+    },
+    "accepted": {
+      "exact": 6.565752128666036,
+      "f1": 7.232043245677839,
+      "total": 10570
+    },
+    "right": 694,
+    "refused": 9378,
+    "wrong": 498,
+    "precision": 0.5822147651006712,
+    "coverage": 0.11277199621570483
+  },
+  "transitions": {
+    "raw": {
+      "wrong->wrong": 6975,
+      "right->right": 1568,
+      "right->wrong": 964,
+      "wrong->right": 1063
+    },
+    "selected": {
+      "refused->refused": 8270,
+      "wrong->refused": 659,
+      "right->refused": 446,
+      "right->right": 366,
+      "wrong->wrong": 125,
+      "refused->wrong": 367,
+      "refused->right": 324,
+      "right->wrong": 6,
+      "wrong->right": 7
+    }
+  },
+  "raw_right": 2631,
+  "selection": "SHA256(questionID) ascending",
+  "passes_frozen_gate": false,
+  "legacy_byte_identical_all10570": true
+}

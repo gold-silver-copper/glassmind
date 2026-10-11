@@ -1,0 +1,855 @@
+{
+  "total": 2821,
+  "answer_only": {
+    "right": 47,
+    "refused": 2712,
+    "wrong": 62
+  },
+  "joint_entity_relation_answer": {
+    "right": 2,
+    "refused": 2712,
+    "wrong": 107
+  },
+  "answer_matches_with_wrong_link_or_relation": [
+    {
+      "row": 80,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q2056556",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 114,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q7112087",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 187,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q6302478",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 278,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1536239",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 304,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q5578844",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 434,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q588755",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 492,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q4665206",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 534,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q646389",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 617,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q5183226",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 724,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q3064353",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 728,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q3836615",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 785,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1506377",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 793,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q17114498",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1036,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1397802",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1054,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1477859",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1073,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q3926999",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1261,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q8074164",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1401,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1813235",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1421,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q4204869",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1451,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q5609601",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1522,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q6783380",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1540,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q5109037",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1570,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q5123980",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1578,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q8027462",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1692,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q4366287",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1709,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q3481938",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1852,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q3107650",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1853,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q175278",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1909,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1181187",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1938,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q16846099",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1972,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q582380",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2079,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q5263912",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2114,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q17479012",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2190,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q5537495",
+        "relation": "P21",
+        "answer": "Q6581097"
+      },
+      "predicted": {
+        "entity": "Q5538847",
+        "relation": "P21",
+        "answers": [
+          "Q6581097"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2217,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q7603397",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2224,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q475138",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2285,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q3987331",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2411,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1770761",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2423,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q7078999",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2525,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1168018",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2539,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q772451",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2591,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1167685",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2604,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q484442",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2675,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q1261757",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2735,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q634810",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q83440",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    }
+  ],
+  "metric": "joint_annotated_entity_relation_answer",
+  "scope": "TRAIN-selected999 Wikidata snapshot; rejected expansion, frozen relation model",
+  "artifacts": [
+    {
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv",
+      "bytes": 173187,
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/valid.questions",
+      "bytes": 115573,
+      "sha256": "97704ab5a33b6c6ffed1dcf90f08b9296c761dcd5ad4615bb4d46bc342c2fc32"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/new999-valid-frozen.jsonl",
+      "bytes": 275811,
+      "sha256": "31eabcae27f2303c2060e17e86cc5027273079c2624a4ffff1e15a878d920a85"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/new999-base-2821.json",
+      "bytes": 109,
+      "sha256": "59a251138dc799147a8611c6a8ed37940d112938ca5428e737bb30c15ed9b089"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/tools/facts/joint-audit.py",
+      "bytes": 4585,
+      "sha256": "9921a175a2186f220b05f445cf6934ce30e9c83abc4eb7564164f67cd6890daa"
+    }
+  ],
+  "limitations": "Separate diagnostic; original answer-only scorer and candidate acceptance criteria are unchanged. Exact annotated IDs, no redirect normalization. Dataset errors, snapshot differences, omitted question constraints and incomplete inverse uniqueness remain possible."
+}

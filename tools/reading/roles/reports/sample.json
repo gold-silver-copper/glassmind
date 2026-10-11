@@ -1,0 +1,58 @@
+{
+  "baseline": {
+    "total": 200,
+    "raw": {
+      "exact": 23.0,
+      "f1": 31.20875652125652,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 8.0,
+      "f1": 8.844444444444445,
+      "total": 200
+    },
+    "right": 16,
+    "refused": 167,
+    "wrong": 17,
+    "precision": 0.48484848484848486,
+    "coverage": 0.165
+  },
+  "candidate": {
+    "total": 200,
+    "raw": {
+      "exact": 21.5,
+      "f1": 32.86513160752291,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 5.0,
+      "f1": 6.175,
+      "total": 200
+    },
+    "right": 10,
+    "refused": 183,
+    "wrong": 7,
+    "precision": 0.5882352941176471,
+    "coverage": 0.085
+  },
+  "transitions": {
+    "raw": {
+      "wrong->wrong": 135,
+      "right->right": 24,
+      "right->wrong": 22,
+      "wrong->right": 19
+    },
+    "selected": {
+      "refused->refused": 157,
+      "wrong->refused": 15,
+      "right->refused": 11,
+      "right->right": 5,
+      "wrong->wrong": 2,
+      "refused->wrong": 5,
+      "refused->right": 5
+    }
+  },
+  "raw_right": 43,
+  "selection": "SHA256(questionID) ascending",
+  "passes_frozen_gate": null
+}

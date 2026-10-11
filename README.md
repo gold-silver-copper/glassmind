@@ -88,10 +88,11 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 172/765 pass; 590 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 174/765 pass; 588 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
-| Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
+| Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |
+| Same facts scope, joint annotated entity/relation/answer | 252/2,821 right; 2,545 refused; 24 wrong | pending |
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
 | Multi-service dialogue, SGD three-service dev subset | 610/1,119 exact routing-and-state turns; 50 refused; 459 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
@@ -152,11 +153,12 @@ cfg or macros refuse. [Type-query scope](docs/coding-metatypes.md) and
 
 Explicit public scalar fields can now be added through `do`, updating resolved
 constructors with the requested literal default. Structural checks, existing
-tests and rollback guard application. Two structural-edit dev requests now pass,
-bringing the full result to 172/765 with every prior pass preserved. Supported
-language remains narrow; three of five supplied requests still refuse.
-[Field-addition scope](docs/coding-addfields.md) and
-[full comparison](docs/results/coding-addfields.json).
+tests and rollback guard application. Compositional declaration/default clauses
+now handle four of five supplied requests, bringing the full result to174/765
+with every prior pass preserved. Unknown clauses, conflicts and negation refuse;
+one request with broader contextual prose remains unsupported.
+[Field-addition scope](docs/coding-addfields.md), [language and local checks](tools/coding-editlanguage/HANDOFF.md),
+and [full comparison](docs/results/coding-editlanguage.json).
 
 `glassmind read --model tools/reading/qa/artifacts/model.json --context passage.txt
 "Who visited Zürich?"` proposes a source span and shows its passage. Output is
@@ -209,6 +211,12 @@ limited to fully specified ratio-and-sum templates represented in training.
 Requiring casing support for uppercase-only entity aliases removes 19 false
 facts answers, preserving all 256 correct dev answers. It cannot resolve an
 old ambiguity or introduce a different claim. [Facts comparison](tools/facts/continuous/HANDOFF.md).
+
+A separate [joint entity/relation/answer audit](tools/facts/JOINT-AUDIT.md) finds
+that four of those256 answer matches link the wrong subject:252 joint matches
+remain. In the rejected TRAIN-selected999 scope, only2 of47 answer matches
+have the annotated subject and relation. Historical answer-only scores remain
+visible; neither result establishes open-world factual reliability.
 
 The story dev set is a deterministic episode-level partition of the official
 training data. CLINC thresholds were calibrated on official validation;

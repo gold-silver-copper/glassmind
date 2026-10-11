@@ -1,0 +1,22 @@
+{
+  "experiment_count": 1,
+  "feature_version": 2,
+  "weight_dimension": 65536,
+  "optimizer": "unchanged averaged passive-aggressive, maximum update 0.1",
+  "passes": 5,
+  "fit_rows": 4000,
+  "cal_rows": 1000,
+  "fit_article_hashes": 64,
+  "cal_article_hashes": 16,
+  "candidate_search": "unchanged top3 exact-overlap sentences, spans of 1..10 tokens",
+  "runtime_inputs": ["context", "question"],
+  "limits": {"context_bytes":65536,"context_tokens":2048,"question_bytes":2048,"model_json_bytes":2097152},
+  "model_is_inspectable_linear_ranker": true,
+  "annotations_at_runtime": false,
+  "new_data_or_downloads": false,
+  "held_out_access": false,
+  "runtime_llm_or_embedding": false,
+  "dev_tuning": false,
+  "selection": "original maximum coverage at >=50% CAL normalized exact with >=30 accepts; tied margins grouped",
+  "explicit_limit": "Relative lexical anchors and morphology are not a dependency parser, logical proof, entailment, or calibrated confidence. SQuAD TRAIN lacks unanswerable supervision."
+}

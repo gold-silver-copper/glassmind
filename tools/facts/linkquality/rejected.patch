@@ -1,0 +1,235 @@
+diff --git i/crates/facts/src/lib.rs w/crates/facts/src/lib.rs
+index 2bee276..6d6350d 100644
+--- i/crates/facts/src/lib.rs
++++ w/crates/facts/src/lib.rs
+@@ -1,5 +1,7 @@
+ //! A sparse relation proposer and a finite, provenance-backed facts store.
+ //! Answer IDs always come from the store, never from classifier weights.
++pub mod quality;
++
+ use glassmind_everyday::IntentModel;
+ use serde::{Deserialize, Serialize};
+ use std::collections::{BTreeMap, BTreeSet};
+@@ -102,6 +104,20 @@ impl Store {
+         }
+     }
+ 
++    /// Apply an optional quality constraint only after frozen answer selection.
++    pub fn answer_with_quality(
++        &self,
++        model: &IntentModel,
++        question: &str,
++        constraint: Option<quality::QualityConstraint>,
++    ) -> Answer {
++        let mut answer = self.answer(model, question);
++        if let Some(constraint) = constraint {
++            constraint.apply(self, question, &mut answer);
++        }
++        answer
++    }
++
+     pub fn answer(&self, model: &IntentModel, question: &str) -> Answer {
+         let mut answer = Answer {
+             entity: None,
+diff --git 1/crates/facts/src/quality.rs 2/crates/facts/src/quality.rs
+new file mode 100644
+index 0000000..7bbb99b
+--- /dev/null
++++ 2/crates/facts/src/quality.rs
+@@ -0,0 +1,164 @@
++//! Optional, monotonic mention-boundary constraint. No ranking or fallback.
++use crate::{Answer, Store, normalize};
++use serde::{Deserialize, Serialize};
++
++/// Versioned closed configuration: unknown policies fail deserialization.
++#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
++#[serde(rename_all = "snake_case")]
++pub enum QualityConstraint {
++    InterrogativeDeterminerV1,
++}
++
++impl QualityConstraint {
++    pub fn apply(self, store: &Store, question: &str, answer: &mut Answer) {
++        if answer.refusal.is_some() || answer.answers.is_empty() {
++            return;
++        }
++        if self.rejects(store, question, answer) {
++            answer.answers.clear();
++            answer.refusal = Some("alias occupies an interrogative type boundary".into());
++        }
++    }
++
++    fn rejects(self, store: &Store, question: &str, answer: &Answer) -> bool {
++        let Some(entity) = answer.entity.as_ref().and_then(|id| store.entities.get(id)) else {
++            return false;
++        };
++        let normalized = normalize(question);
++        let tokens: Vec<_> = normalized.split_whitespace().collect();
++        let mut longest = 0;
++        let mut all_restricted = false;
++        for alias in &entity.aliases {
++            let normalized_alias = normalize(alias);
++            let length = normalized_alias.len();
++            if length < 2 || length < longest {
++                continue;
++            }
++            let alias_tokens: Vec<_> = normalized_alias.split_whitespace().collect();
++            for (start, window) in tokens.windows(alias_tokens.len()).enumerate() {
++                if window != alias_tokens {
++                    continue;
++                }
++                let restricted = start
++                    .checked_sub(1)
++                    .and_then(|i| tokens.get(i))
++                    .is_some_and(|token| matches!(*token, "what" | "which"));
++                if length > longest {
++                    longest = length;
++                    all_restricted = restricted;
++                } else {
++                    all_restricted &= restricted;
++                }
++            }
++        }
++        longest > 0 && all_restricted
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use crate::{Entity, EntityId};
++    use std::collections::{BTreeMap, BTreeSet};
++
++    fn fixture(aliases: &[&str]) -> (Store, Answer) {
++        let id = EntityId("Q1".into());
++        let store = Store {
++            entities: BTreeMap::from([(
++                id.clone(),
++                Entity {
++                    aliases: aliases.iter().map(|s| (*s).into()).collect(),
++                    claims: BTreeMap::new(),
++                },
++            )]),
++        };
++        (
++            store,
++            Answer {
++                entity: Some(id),
++                relation: Some("P1".into()),
++                answers: BTreeSet::from([EntityId("Q2".into())]),
++                refusal: None,
++            },
++        )
++    }
++
++    #[test]
++    fn restricted_occurrences_only_withdraw_claim() {
++        let (store, mut answer) = fixture(&["Province"]);
++        let entity = answer.entity.clone();
++        let relation = answer.relation.clone();
++        QualityConstraint::InterrogativeDeterminerV1.apply(
++            &store,
++            "Which province contains the village?",
++            &mut answer,
++        );
++        assert!(answer.refusal.is_some());
++        assert!(answer.answers.is_empty());
++        assert_eq!(answer.entity, entity);
++        assert_eq!(answer.relation, relation);
++    }
++
++    #[test]
++    fn real_one_word_names_punctuation_and_another_occurrence_survive() {
++        for question in [
++            "Who founded (Province)?",
++            "Which province borders Province?",
++            "Who wrote ‘Province’?",
++            "Who wrote the title Beyond Province?",
++        ] {
++            let (store, mut answer) = fixture(&["Province"]);
++            let before = serde_json::to_string(&answer).ok();
++            QualityConstraint::InterrogativeDeterminerV1.apply(&store, question, &mut answer);
++            assert_eq!(serde_json::to_string(&answer).ok(), before);
++        }
++    }
++
++    #[test]
++    fn full_name_title_and_literal_limits_are_explicit() {
++        // This narrow role rule cannot certify completeness of these mentions.
++        for question in [
++            "Where was Rowan Bell born?",
++            "Who wrote the title Rowan Rising?",
++            "Who wrote the literal 'Rowan Rising'?",
++        ] {
++            let (store, mut answer) = fixture(&["Rowan"]);
++            QualityConstraint::InterrogativeDeterminerV1.apply(&store, question, &mut answer);
++            assert!(answer.refusal.is_none());
++        }
++        let (store, mut answer) = fixture(&["Province", "Province Hall"]);
++        QualityConstraint::InterrogativeDeterminerV1.apply(
++            &store,
++            "Which Province Hall opened?",
++            &mut answer,
++        );
++        assert!(answer.refusal.is_some());
++    }
++
++    #[test]
++    fn refuses_no_old_refusal_and_cannot_resolve_ties() {
++        let (mut store, mut answer) = fixture(&["Province"]);
++        let duplicate = store.entities.values().next().cloned();
++        if let Some(entity) = duplicate {
++            store.entities.insert(EntityId("Q3".into()), entity);
++        }
++        assert!(store.link("Which province opened?").is_none());
++        answer.answers.clear();
++        answer.refusal = Some("old ambiguity".into());
++        let before = serde_json::to_string(&answer).ok();
++        QualityConstraint::InterrogativeDeterminerV1.apply(
++            &store,
++            "Which province opened?",
++            &mut answer,
++        );
++        assert_eq!(serde_json::to_string(&answer).ok(), before);
++    }
++
++    #[test]
++    fn unknown_configuration_rejects() {
++        assert!(
++            serde_json::from_str::<QualityConstraint>("\"interrogative_determiner_v2\"").is_err()
++        );
++        assert!(serde_json::from_str::<QualityConstraint>("{}").is_err());
++    }
++}
+diff --git 1/crates/facts/examples/linkquality_predictions.rs 2/crates/facts/examples/linkquality_predictions.rs
+new file mode 100644
+index 0000000..7f4db9b
+--- /dev/null
++++ 2/crates/facts/examples/linkquality_predictions.rs
+@@ -0,0 +1,26 @@
++//! Question-only candidate and exact counterfactual; no runtime annotation input.
++use glassmind_everyday::IntentModel;
++use glassmind_facts::{Store, quality::QualityConstraint};
++use std::io::{self, BufRead};
++
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let args: Vec<_> = std::env::args().collect();
++    let [_, model_path, index_path, policy] = args.as_slice() else {
++        return Err("usage: linkquality_predictions MODEL INDEX POLICY_JSON < questions".into());
++    };
++    let model: IntentModel = serde_json::from_slice(&std::fs::read(model_path)?)?;
++    let store: Store = serde_json::from_slice(&std::fs::read(index_path)?)?;
++    let policy: Option<QualityConstraint> = serde_json::from_str(policy)?;
++    model.validate()?;
++    store.validate()?;
++    for line in io::stdin().lock().lines() {
++        let question = line?;
++        let baseline = store.answer(&model, &question);
++        let candidate = store.answer_with_quality(&model, &question, policy);
++        println!(
++            "{}",
++            serde_json::json!({"baseline":baseline,"candidate":candidate})
++        );
++    }
++    Ok(())
++}

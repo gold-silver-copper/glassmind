@@ -1,0 +1,38 @@
+{
+  "source": "176dc89ee9ce0ad2302474f03683334e37514b76",
+  "verified_provenance_files": 101,
+  "train_scope_rows": 15778,
+  "selected_ids": 1000,
+  "actual_scopes": [
+    100,
+    999
+  ],
+  "full": {
+    "100": {
+      "refused": 2725,
+      "wrong": 52,
+      "right": 44
+    },
+    "1000": {
+      "refused": 2712,
+      "wrong": 62,
+      "right": 47
+    }
+  },
+  "transitions": {
+    "refused->refused": 2705,
+    "wrong->wrong": 44,
+    "right->right": 44,
+    "refused->wrong": 18,
+    "wrong->refused": 7,
+    "wrong->right": 1,
+    "refused->right": 2
+  },
+  "standalone_talk_equivalence_rows_per_scope": 2821,
+  "new_raw_bytes": 67094727,
+  "requests": 39,
+  "minimum_request_spacing_seconds": 2.000031,
+  "offline_tests": "5 passed",
+  "decision": "rejected: precision45.8333% to43.1193%, beyond .02 allowance; no runtime or default index change",
+  "limits": "Recomputed selection and outcome/ID equality from retained artifacts; no second network/model/full-inference run. Numeric Wikidata revisions absent as disclosed."
+}

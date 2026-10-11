@@ -1,0 +1,38 @@
+{
+  "source": {
+    "source_commit": "eb22519f20325e72549a103cf99180ea0dbc2ba3",
+    "binary_sha256": "bb5dae741d23b84d9ce07707ee536aeaf38089be34330724221ed50bb2f1bacb",
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "baseline": "172pass590refused3fail/765",
+    "local_validation": "tools/coding-editlanguage/integrated/validation.json"
+  },
+  "total": 765,
+  "baseline": {
+    "refused": 590,
+    "pass": 172,
+    "fail": 3
+  },
+  "candidate": {
+    "refused": 588,
+    "pass": 174,
+    "fail": 3
+  },
+  "unchanged": 763,
+  "changes": [
+    {
+      "task": "edits/add-book-pages",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "edits/add-task-priority",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "baseline_results_sha256": "b21954a8305e0b46791142c884308338343c4da2b8b99830ada3df569ed1e466",
+  "candidate_results_sha256": "eaef77bfe21709e8eb61c2d6aea388536ab795cbc91e08c8b44952abd6e3a5f5",
+  "note": "All172 original passes retained; existing3fails unchanged; two hurried field-addition refusals become passes. No heldout run."
+}
