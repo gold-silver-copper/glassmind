@@ -176,6 +176,13 @@ refusals while preserving every pass. Unsupported cases retain the existing
 policy; passing tests or agreeing on sampled inputs is not a correctness proof.
 [Scope and independent verification](tools/coding-ambiguity/PARENT.md).
 
+`ask --apply` now verifies rename edits through the same world operation as `do`
+and rolls back failed checks. JSON reports one final outcome, and saved sessions
+record successful application instead of leaving the proposal pending. All 20
+authored CLI contracts and three additional parent probes pass; all 765 coding
+dev outcomes remain unchanged at 174 passes, 591 refusals and zero failures.
+[Verification, reproduction and limits](tools/coding-askverify/PARENT.md).
+
 `glassmind read --model tools/reading/qa/artifacts/model.json --context passage.txt
 "Who visited Zürich?"` proposes a source span and shows its passage. Output is
 explicitly unverified; it never enters factual conversation or stored knowledge.

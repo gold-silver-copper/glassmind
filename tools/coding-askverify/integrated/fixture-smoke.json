@@ -1,0 +1,74 @@
+{
+  "turns": {
+    "fix/0#0": {
+      "turn_id": "fix/0#0",
+      "verdict": "right",
+      "cost": 0.0,
+      "worded": true
+    },
+    "fix/1#0": {
+      "turn_id": "fix/1#0",
+      "verdict": "right",
+      "cost": 0.0,
+      "worded": true
+    },
+    "fix/2#0": {
+      "turn_id": "fix/2#0",
+      "verdict": "right",
+      "cost": 0.0,
+      "worded": true
+    },
+    "fix/4#0": {
+      "turn_id": "fix/4#0",
+      "verdict": "right",
+      "cost": 0.0,
+      "worded": true
+    }
+  },
+  "by_split": {
+    "train": {
+      "turns": 4,
+      "right": 4,
+      "refused": 0,
+      "wrong": 0,
+      "wordless": 0,
+      "cost": 0.0
+    }
+  },
+  "by_generator": {
+    "fixture": {
+      "turns": 4,
+      "right": 4,
+      "refused": 0,
+      "wrong": 0,
+      "wordless": 0,
+      "cost": 0.0
+    }
+  },
+  "by_kind": {
+    "callers": {
+      "turns": 3,
+      "right": 3,
+      "refused": 0,
+      "wrong": 0,
+      "wordless": 0,
+      "cost": 0.0
+    },
+    "no_such_name": {
+      "turns": 1,
+      "right": 1,
+      "refused": 0,
+      "wrong": 0,
+      "wordless": 0,
+      "cost": 0.0
+    }
+  },
+  "total": {
+    "turns": 4,
+    "right": 4,
+    "refused": 0,
+    "wrong": 0,
+    "wordless": 0,
+    "cost": 0.0
+  }
+}

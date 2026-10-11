@@ -1,0 +1,146 @@
+{
+  "binary_sha256": "3dbbef685a95a397cae7c928630999e854115699e053f65722a933489168e873",
+  "initial_probe_error": "Initial no-manifest probe used reserved word count as an unquoted new name. It produced unknown_shape before application, correctly left source unchanged and exited0; initial expectation of application-error exit was inapplicable. Corrected request uses measure. No runtime or test fixture weakened.",
+  "cases": [
+    {
+      "case": "disabled_verifier",
+      "command": [
+        "/home/gsc/code/glassmind/target/release/glassmind",
+        "ask",
+        "--source",
+        "case=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/askverify-check/independent/disabled_verifier",
+        "--apply",
+        "--json",
+        "--disable",
+        "rust.check.run",
+        "rename struct Parcel to Package"
+      ],
+      "exit": 1,
+      "json": {
+        "turn_id": "ask",
+        "response": {
+          "type": "refuse",
+          "reason": "unsupported"
+        },
+        "stage": "action",
+        "understood": 5,
+        "tokens": 5,
+        "rules": [
+          "en.utterance.command",
+          "en.command.rename_verb",
+          "en.rename.rename",
+          "en.mention.kind_first",
+          "en.rust.noun.struct",
+          "en.mention.thing",
+          "en.noun_phrase.name",
+          "en.into.to",
+          "rust.lookup.exact",
+          "rust.rename",
+          "rust.rename.type",
+          "rust.apply.changes",
+          "en.reply.unsupported"
+        ],
+        "text": "I understand, but I can't do that here.",
+        "canonical": "Rename the `Parcel` struct to `Package`"
+      },
+      "stderr": "glassmind: could not make and verify the changes: Unsupported\n",
+      "source_before_sha256": "851e52821233a5073834b76a05890a765ed8369d8a8a5fd8831965bee74cc70b",
+      "source_after_sha256": "851e52821233a5073834b76a05890a765ed8369d8a8a5fd8831965bee74cc70b",
+      "passed": true
+    },
+    {
+      "case": "no_manifest",
+      "command": [
+        "/home/gsc/code/glassmind/target/release/glassmind",
+        "ask",
+        "--source",
+        "case=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/askverify-check/independent/no_manifest",
+        "--apply",
+        "--json",
+        "rename function tally to measure"
+      ],
+      "exit": 1,
+      "json": {
+        "turn_id": "ask",
+        "response": {
+          "type": "refuse",
+          "reason": "unsupported"
+        },
+        "stage": "action",
+        "understood": 5,
+        "tokens": 5,
+        "rules": [
+          "en.utterance.command",
+          "en.command.rename_verb",
+          "en.rename.rename",
+          "en.mention.kind_first",
+          "en.rust.noun.function",
+          "en.mention.thing",
+          "en.noun_phrase.name",
+          "en.into.to",
+          "rust.lookup.exact",
+          "rust.rename",
+          "rust.apply.changes",
+          "rust.check.run",
+          "en.reply.unsupported"
+        ],
+        "text": "I understand, but I can't do that here.",
+        "canonical": "Rename the `tally` function to `measure`"
+      },
+      "stderr": "glassmind: could not make and verify the changes: Unsupported\n",
+      "source_before_sha256": "bcb4a956b80de19d6b1a43060ae0eadc13b1ceac426baf4e0e04dd7156dedb67",
+      "source_after_sha256": "bcb4a956b80de19d6b1a43060ae0eadc13b1ceac426baf4e0e04dd7156dedb67",
+      "passed": true
+    },
+    {
+      "case": "unicode",
+      "command": [
+        "/home/gsc/code/glassmind/target/release/glassmind",
+        "ask",
+        "--source",
+        "case=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/askverify-check/independent/unicode",
+        "--apply",
+        "--json",
+        "rename struct \u00c9clair to Dessert"
+      ],
+      "exit": 0,
+      "json": {
+        "turn_id": "ask",
+        "response": {
+          "type": "checked",
+          "check": "build",
+          "passed": true,
+          "problems": []
+        },
+        "stage": "done",
+        "understood": 5,
+        "tokens": 5,
+        "rules": [
+          "en.utterance.command",
+          "en.command.rename_verb",
+          "en.rename.rename",
+          "en.mention.kind_first",
+          "en.rust.noun.struct",
+          "en.mention.thing",
+          "en.noun_phrase.name",
+          "en.into.to",
+          "rust.lookup.exact",
+          "rust.rename",
+          "rust.rename.type",
+          "rust.apply.changes",
+          "rust.check.run",
+          "en.reply.applied",
+          "en.reply.checked_clean",
+          "en.check_phrase.the",
+          "en.rust.check.build"
+        ],
+        "text": "I made 2 changes. No problems with the build.",
+        "canonical": "Rename the `\u00c9clair` struct to `Dessert`"
+      },
+      "stderr": "",
+      "source_before_sha256": "348128838e1d0120070ef0bfb0295afd6c16b5fefef9a691b5a0ae9e999755e4",
+      "source_after_sha256": "344da561218a3513b362a39008a55b9bd8101ef50d84b6469337a2ff9c3ac0c6",
+      "passed": true
+    }
+  ]
+}

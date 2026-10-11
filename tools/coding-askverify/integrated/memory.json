@@ -1,0 +1,10 @@
+{
+  "command": "python crates/everyday/tools/smoke_memory.py target/release/glassmind WORK/coordinator/askverify-check/memory --command talk",
+  "exit_code": 0,
+  "synthetic_memory_smoke": {
+    "right": 41,
+    "wrong": 0
+  },
+  "independent_benchmark": false,
+  "note": "Counts retained from successful parent stdout; original adapter persists session only."
+}

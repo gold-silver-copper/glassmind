@@ -4,20 +4,26 @@
 
 Goal active: follow `prompts/grow-continuously.md` until stopped. Previous turn
 merged PR18 and launched the verified-apply fix (progress). This turn independently
-reviewed rejected unanswerable supervision and accepted a separate label metric.
+reviewed rejected unanswerable supervision, merged a separate label metric and
+integrated the verified-apply fix; full coding regression passed with all765outcomesidentical.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
 PR16 already MERGED `c6c6cd133e485e23f4bb8fe1d8786bcf6442b75e`, exacthead
 69ba975a9f44bd8f3aaf45be355fffe82cbc6577, CI38116227685 passed1m0s.
-Source now `e03437a81f2d047babad5e122aec99a88b1c56af` (repair ambiguity).
+Repairbaseline `e03437a81f2d047babad5e122aec99a88b1c56af`; currentruntime336d5f9 includesverifiedaskapply.
 PR17 MERGED ae69f1853adcb20bafbec9cd6176171048d07eb6 at2026-10-11T06:09:32Z,
 exacthead18b334ed81c59954b200a8de6138d8aa5ccad78e;CI38117005318passed1m17s.
 Do not repeat completed PR15/16/17 checks or merges. All repair publishing done.
 PR18 MERGED4b2ec2ca3e084ce073dfc933d4ff787059c6a447 at2026-10-11T06:21:48Z,
 exactheade0b042a0528a292cc60a08d157e640fa7892588f;CI38117718081passed.
 SQuAD2 baseline/rejected rate/evaluator evidence and reusableprompt now published.
-Do not repoll/remerge/retest PR18. Runtime remains e03437a, baselinebinary unchanged.
+Do not repoll/remerge/retest PR18.
+PR19 MERGED9003cbf8422919e8b38e24960bab7b0409095c09 at2026-10-11T06:29:44Z,
+exacthead5273b21e93814bcd4c9d8044a220e1e4548635d3;CI38118136563passed.
+Metricv3/rebaseline/readingrejection published separately before nextsolverwork.
+Do not repeat PR19 checks/merge. Localruntime336d5f9 (askapply) fullyverified; PR20 publication next.
+
 
 
 ### Verified current batch
@@ -68,7 +74,7 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens75,135,916 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens77,824,724 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,
@@ -150,22 +156,61 @@ Currentquantities source unchangedfrom687f2751ff256f2071330590345ef0652fb09baa.
 ParentPARENT.md/json and327+3probes retained; rawWORK/coordinator/typedmetric-review.
 Publish/rebaseline separately before any prospective capability acceptance.
 
-ASKVERIFY live:PID3172075,scopeglassmind-continuous-askverify.scope;
-worktreeWORK/askverify branchcontinuous/askverify ate0b042a;
-runWORK/askverify-run,briefWORK/askverify-task.txt. ForcedAstrafastChatGPT,
-8GiB/0swapconfirmed. Owns CLI main.rs/edit.rs/newtools/coding-askverify only.
-Parent found ask--apply directlycallsedit::apply bypassing verifiedWorld::apply,
-printsproposalJSONthenplaintextsuccess, leaves sessionpending. Fix caller to use
-existingtypedverification/rollback; preserve no-apply and othercommands. Require
-independent baseline/candidate fixturesforvalidrename,brokenbuildrollback,disabled
-applyrule,JSONonefinaloutcome,sessionapplied/no duplicatepending. MainCLI ownership
-explicit; world-rust/reading/othertracks unchanged. Parentfullcoding and affected
-regressions before shipping. Frozenbaselinebinaryb53e5f21899189d7e51d8a8ce87aeab561ea92e3196d949cb6ff20d37661e133.
+ASKVERIFY COMPLETE, integratedexactworker source at336d5f9 (notyetpushed).
+Original36files/278,578bytes archived byworker atWORK/askverify-run/submitted,
+manifestSHA256.json independentlyreverified twice; authunlinked/worktreeremoved.
+Rootchangesmain.rs/edit.rs only: ask--apply usesexistingtypedWorld::apply before
+rendering, honorschecks/rules/rollback; finalJSONoneoutcome; session/traceApplied
+orTrouble; nestedAssumingpreserved, no newauto-remedy support. Removeddirectwriter.
+Worker20authoredcontracts7→20, originalfixturetestsuntouched;10CLItests pass.
+Parent sample4/full16/supplement4 pass, sixpreview/refusaloutputs byteidentical;
+3freshprobes(disabledverifier,missingmanifest,Unicode)pass. Initialno-manifestprobe
+usedreservedunquotedcount and hitunknown_shapebeforeapply; correctednewname
+measure anddocumentedinrawindependentreport, no implementationchange.
+Parentworkspacefmt/alltargetclippy/release/10CLItests/strict4smoke passed.
+Memory41/calculations27/stories47 allpass. Parentjobs13927/73487 COMPLETE.
+FrozenparentreleasebinarySHA3dbbef685a95a397cae7c928630999e854115699e053f65722a933489168e873.
+RawWORK/coordinator/askverify-check; baselineb53e5f21899189d7e51d8a8ce87aeab561ea92e3196d949cb6ff20d37661e133.
 
-Next: publish separate metric/rebaseline and rejected reading evidence; archive/review
-askverify when terminal, then parent affectedchecks/fullcoding before shipping.
-No activeparentbenchmarkjobs. ASKVERIFY is the sole remaining live worker. Preserve
-oldstoppeddirtyloop; stoponlyownedworkersonuserstop. Goalactive, no blocker.
+PARENTFULL765 COMPLETE toolsession56958:174pass591refused0fail, all765outcomes
+identical toambiguity-fullbaseline, every174oldpass retained. Source336d5f9,
+parentbinary3dbbef above. ResultSHA8218bc544bd292f897d4a9ff7365b50b8314e13b12b6cee8d696a8718a2e1da1.
+Do notpoll/restart56958. Parentoriginalfieldfixtureassertion also1/1passes.
+Allsourcehashes/11originalfixturehashes reverified. tools/coding-askverify/PARENT.md,
+integrated/validation.json,dev-regression.json retainreview. Publishonlythisverified
+codingchange; relative-rate runtime remainsunapplied. No parentbenchmarkjobs live.
+
+RELATIVERATE COMPLETE/REJECTED; scopeinactive,authunlinked. FormerPID3225578,
+scopeglassmind-continuous-relativerate.scope,worktreeWORK/relativerate,
+branchcontinuous/relativerate at336d5f9;runWORK/relativerate-run,
+briefWORK/relativerate-task.txt. ForcedAstrafastChatGPT8GiB/0swapconfirmed.
+Ownscrates/quantities+NEWtools/quantities/relative-rate only. Prospectiveexperiment
+AFTERPR19metricship: typedrelativevelocity/completecrossingfortwoexplicitmoving
+entities, TRAINProblem-onlyfirst4000. Mayreuseunappliedgenericratewordscore; no
+metric/scorerchanges/choicesinruntime/noinferredunit/direction/numericsearch.
+Gatefull4475fixedv3>=31correct (>=3beyondknownrejectedrate28), preserveall28,
+no newwrong/unscorableanswers versusfrozenratewords31records; preserveproduction
+22 andall3116synthetictriples. Independentsemantic/refusalprobes, deriveeverynew
+Englishanswer; first100thenfull, no postfullretuning. Legacy scoresalso reported,
+all4475/1229unsupporteddenominatorretained. IfgatefailsrestoreALLquantityruntime
+includingoldappliedratepatch; archiveoriginalfirst. NoCLIedits; parentfullcoding
+andsharedregressionsrequirecoordinationbeforeintegration. Frozenproduction/rate
+binaries+25/31reports hashverified in ownrun/baseline. No newdownloads/deps.
+
+Workerresultv3:29correct4443refused3wrong vsratewords28/4444/3; requires>=31,
+soREJECT. Legacy24/4443/8 with1229unparseable retained. Only newanswerDEV2382:
+(1150+600)m/(150km/h)=42s. All31ratewords/25productionpayloads preserved;
+29newprobes/43ratewords/50linear/55absolute and3116synthetictriplespass perworker.
+Runtimefullyrestored. Original30files/3,406,541bytes archived/hashverified at
+WORK/relativerate-run/submitted; worktreeretained pendingparentsemantic/artifact
+review. No rootcopy/integration yet. Workerdisclosedreadingpubliclinear devprobe
+generator contrarytooverbroadcommonbrief. No hiddenevaluationmaterial reported;
+launcherfuturewording clarified toforbidhiddenevaluationgenerators whilepermitting
+publicauthoreddevtests, consistentwithactivatedgoal. Keeporiginaldisclosure.
+
+Next: push/open/merge verifiedaskapply PR20 atgreenexacthead; independentlyreview
+relative-rate evidence, thenselectnextcapabilityhypothesis. No live modelworkers,
+no parentbenchmarkjobs, no blocker. Goalactive; preserveoldstoppeddirtyloop.
 
 ## Historical checkpoints (superseded by current state above)
 

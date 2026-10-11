@@ -490,6 +490,32 @@
         "reasoning_output_tokens": 4501
       },
       "source": "Separate exact-label-v3 evaluator accepted after parent15testgroups,330authoredchecks,12byteidenticalreports/full4475. Baseline22/4450/3; legacy and rejectedratewordsdecision unchanged."
+    },
+    {
+      "track": "askverify-continuous",
+      "started_unix": 1791699752.064972,
+      "finished_unix": 1791700031.4131138,
+      "usage": {
+        "input_tokens": 1416503,
+        "cached_input_tokens": 1344768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19631,
+        "reasoning_output_tokens": 4419
+      },
+      "source": "Typed verified ask--apply: authored20contracts7to20; parent20+3probes/10tests/workspace/talk checks pass; full765 complete174/591/0, alloutcomesidentical. Original36files278578bytes archived and reverified before worktree removal."
+    },
+    {
+      "track": "relativerate-continuous",
+      "started_unix": 1791700259.4487815,
+      "finished_unix": 1791700530.4132237,
+      "usage": {
+        "input_tokens": 1234844,
+        "cached_input_tokens": 1167232,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17830,
+        "reasoning_output_tokens": 2389
+      },
+      "source": "Worker reports REJECTED:29labelmatches vs31gate, one beyondratewords28; runtime restored. Original30files3406541bytes archived; parent review pending."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
