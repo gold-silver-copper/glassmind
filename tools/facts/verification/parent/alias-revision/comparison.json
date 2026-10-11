@@ -1,0 +1,40 @@
+{
+  "total": 73,
+  "passed": 71,
+  "failures": [
+    {
+      "group": "original67",
+      "index": 35,
+      "original": {
+        "question": "Was Born in Hope born in Port of Spain?",
+        "status": "refused"
+      },
+      "actual": {
+        "status": "supported",
+        "witness": {
+          "subject": "Q12",
+          "property": "P19",
+          "object": "Q2",
+          "subject_resolution": "alias",
+          "object_resolution": "alias",
+          "source_url": "https://www.wikidata.org/wiki/Q12#P19"
+        },
+        "scope": "local_snapshot"
+      },
+      "pass_": false
+    },
+    {
+      "group": "original67",
+      "index": 36,
+      "original": {
+        "question": "Was Ada born in Port of Spain born in Hope?",
+        "status": "refused"
+      },
+      "actual": {
+        "status": "unknown",
+        "reason": "object_not_unique_or_missing"
+      },
+      "pass_": false
+    }
+  ]
+}

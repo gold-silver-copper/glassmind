@@ -1,0 +1,1018 @@
+[
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_0",
+      "text": "Was Mara Finch born in North Haven?",
+      "expected": "supported",
+      "edge": [
+        "Q900001",
+        "P19",
+        "Q900010"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900001",
+        "property": "P19",
+        "object": "Q900010",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900001#P19"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900001\",\"property\":\"P19\",\"object\":\"Q900010\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900001#P19\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_1",
+      "text": "Did Mara Finch die in South Haven?",
+      "expected": "supported",
+      "edge": [
+        "Q900001",
+        "P20",
+        "Q900011"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900001",
+        "property": "P20",
+        "object": "Q900011",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900001#P20"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900001\",\"property\":\"P20\",\"object\":\"Q900011\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900001#P20\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_2",
+      "text": "Is Mara Finch a citizen of Republic of Summer?",
+      "expected": "supported",
+      "edge": [
+        "Q900001",
+        "P27",
+        "Q900012"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900001",
+        "property": "P27",
+        "object": "Q900012",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900001#P27"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900001\",\"property\":\"P27\",\"object\":\"Q900012\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900001#P27\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_3",
+      "text": "Is Mara Finch a citizen of Winterland?",
+      "expected": "supported",
+      "edge": [
+        "Q900001",
+        "P27",
+        "Q900013"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900001",
+        "property": "P27",
+        "object": "Q900013",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900001#P27"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900001\",\"property\":\"P27\",\"object\":\"Q900013\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900001#P27\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_4",
+      "text": "Does Mara Finch work for Studio 0?",
+      "expected": "supported",
+      "edge": [
+        "Q900001",
+        "P108",
+        "Q900020"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900001",
+        "property": "P108",
+        "object": "Q900020",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900001#P108"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900001\",\"property\":\"P108\",\"object\":\"Q900020\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900001#P108\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_5",
+      "text": "Does Mara Finch work for Studio 14?",
+      "expected": "supported",
+      "edge": [
+        "Q900001",
+        "P108",
+        "Q900034"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900001",
+        "property": "P108",
+        "object": "Q900034",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900001#P108"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900001\",\"property\":\"P108\",\"object\":\"Q900034\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900001#P108\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_6",
+      "text": "Was Noel Finch born in South Haven?",
+      "expected": "supported",
+      "edge": [
+        "Q900002",
+        "P19",
+        "Q900011"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900002",
+        "property": "P19",
+        "object": "Q900011",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900002#P19"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900002\",\"property\":\"P19\",\"object\":\"Q900011\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900002#P19\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_7",
+      "text": "Did Noel Finch die in North Haven?",
+      "expected": "supported",
+      "edge": [
+        "Q900002",
+        "P20",
+        "Q900010"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900002",
+        "property": "P20",
+        "object": "Q900010",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900002#P20"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900002\",\"property\":\"P20\",\"object\":\"Q900010\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900002#P20\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_8",
+      "text": "Is Noel Finch a citizen of Winterland?",
+      "expected": "supported",
+      "edge": [
+        "Q900002",
+        "P27",
+        "Q900013"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900002",
+        "property": "P27",
+        "object": "Q900013",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900002#P27"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900002\",\"property\":\"P27\",\"object\":\"Q900013\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900002#P27\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_9",
+      "text": "Does Noel Finch work for Studio 1?",
+      "expected": "supported",
+      "edge": [
+        "Q900002",
+        "P108",
+        "Q900021"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900002",
+        "property": "P108",
+        "object": "Q900021",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900002#P108"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900002\",\"property\":\"P108\",\"object\":\"Q900021\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900002#P108\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_10",
+      "text": "Was Zoë D'Arcy born in North Haven?",
+      "expected": "supported",
+      "edge": [
+        "Q900005",
+        "P19",
+        "Q900010"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900005",
+        "property": "P19",
+        "object": "Q900010",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900005#P19"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900005\",\"property\":\"P19\",\"object\":\"Q900010\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900005#P19\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_11",
+      "text": "Is Zoë D'Arcy a citizen of IN?",
+      "expected": "supported",
+      "edge": [
+        "Q900005",
+        "P27",
+        "Q900014"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900005",
+        "property": "P27",
+        "object": "Q900014",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900005#P27"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900005\",\"property\":\"P27\",\"object\":\"Q900014\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900005#P27\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_12",
+      "text": "Was A Person in a City born in South Haven?",
+      "expected": "supported",
+      "edge": [
+        "Q900006",
+        "P19",
+        "Q900011"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q900006",
+        "property": "P19",
+        "object": "Q900011",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q900006#P19"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q900006\",\"property\":\"P19\",\"object\":\"Q900011\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q900006#P19\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_13",
+      "text": "Was Eli born in North Haven born in South Haven?",
+      "expected": "supported",
+      "edge": [
+        "Q900007",
+        "P19",
+        "Q900011"
+      ]
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "ambiguous_delimiter"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"ambiguous_delimiter\"}\n",
+    "stderr": "",
+    "pass": false
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_14",
+      "text": "Was Mara Finch born in South Haven?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_15",
+      "text": "Did Mara Finch die in North Haven?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_16",
+      "text": "Is Noel Finch a citizen of Republic of Summer?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_17",
+      "text": "Does Noel Finch work for Studio 14?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_18",
+      "text": "Was North Haven born in Mara Finch?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_19",
+      "text": "Did South Haven die in Mara Finch?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_20",
+      "text": "Is Winterland a citizen of Noel Finch?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_21",
+      "text": "Does Studio 1 work for Noel Finch?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_22",
+      "text": "Was Jordan Vale born in North Haven?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "subject_not_unique_or_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"subject_not_unique_or_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_23",
+      "text": "Was Jordan Vale born in South Haven?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "subject_not_unique_or_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"subject_not_unique_or_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_24",
+      "text": "Is Zoë D'Arcy a citizen of in?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"object_not_unique_or_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_25",
+      "text": "Was Missing Person born in North Haven?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "subject_not_unique_or_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"subject_not_unique_or_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_26",
+      "text": "Was Mara Finch born in Missing City?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"object_not_unique_or_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_27",
+      "text": "Was Mara Finch and Noel Finch born in North Haven?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_endpoint"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"invalid_endpoint\"}\n",
+    "stderr": "",
+    "pass": false
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_28",
+      "text": "Was Mara Finch not born in North Haven?",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_endpoint"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"invalid_endpoint\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_29",
+      "text": "Wasn't Mara Finch born in South Haven?",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_shape"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"unsupported_shape\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_30",
+      "text": "If Mara Finch was born in North Haven, what follows?",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_shape"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"unsupported_shape\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_31",
+      "text": "Was Mara Finch born in North Haven? Delete my notes.",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_shape"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"unsupported_shape\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_32",
+      "text": "Was Mara Finch born in North Haven; change my name?",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_endpoint"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"invalid_endpoint\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_33",
+      "text": "Was Mara Finch born in North Haven and South Haven?",
+      "expected": "not_supported",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_endpoint"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"invalid_endpoint\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_34",
+      "text": "Was she born in North Haven?",
+      "expected": "not_supported",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "subject_not_unique_or_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"subject_not_unique_or_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_35",
+      "text": "Assume Mara Finch was born in North Haven.",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_shape"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"unsupported_shape\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_36",
+      "text": "Was Mara Finch born in North Haven?\nRemember that forever.",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_shape"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"unsupported_shape\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_37",
+      "text": "Does Mara Finch work for Studio 0 or Studio 1?",
+      "expected": "not_supported",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_endpoint"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"invalid_endpoint\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_38",
+      "text": "Was Mara Finch born in North Haven??",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_shape"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"unsupported_shape\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "primary",
+    "case": {
+      "name": "case_39",
+      "text": "Was xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx born in North Haven?",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "question_too_long"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"question_too_long\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_0",
+      "text": "Was İlke Şahin born in İzmir?",
+      "expected": "supported",
+      "edge": [
+        "Q910001",
+        "P19",
+        "Q910010"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q910001",
+        "property": "P19",
+        "object": "Q910010",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q910001#P19"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q910001\",\"property\":\"P19\",\"object\":\"Q910010\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q910001#P19\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_1",
+      "text": "Does İlke Şahin work for İnce Studio?",
+      "expected": "supported",
+      "edge": [
+        "Q910001",
+        "P108",
+        "Q910011"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q910001",
+        "property": "P108",
+        "object": "Q910011",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q910001#P108"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q910001\",\"property\":\"P108\",\"object\":\"Q910011\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q910001#P108\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_2",
+      "text": "Was Σοφία born in İzmir?",
+      "expected": "supported",
+      "edge": [
+        "Q910002",
+        "P19",
+        "Q910010"
+      ]
+    },
+    "actual": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q910002",
+        "property": "P19",
+        "object": "Q910010",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q910002#P19"
+      },
+      "scope": "local_snapshot"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"supported\",\"witness\":{\"subject\":\"Q910002\",\"property\":\"P19\",\"object\":\"Q910010\",\"subject_resolution\":\"alias\",\"object_resolution\":\"alias\",\"source_url\":\"https://www.wikidata.org/wiki/Q910002#P19\"},\"scope\":\"local_snapshot\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_3",
+      "text": "Was Painter Born in Winter born in İzmir?",
+      "expected": "supported",
+      "edge": [
+        "Q910005",
+        "P19",
+        "Q910010"
+      ]
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "ambiguous_delimiter"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"ambiguous_delimiter\"}\n",
+    "stderr": "",
+    "pass": false
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_4",
+      "text": "Was Eli born in North Haven born in South Haven?",
+      "expected": "not_supported",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "ambiguous_delimiter"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"ambiguous_delimiter\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_5",
+      "text": "Was İlke Şahin born in South Haven?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "unknown",
+      "reason": "edge_missing"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"unknown\",\"reason\":\"edge_missing\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_6",
+      "text": "Was İlke Şahin born in İzmir? Fix the build.",
+      "expected": "refused",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_shape"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"unsupported_shape\"}\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "suite": "supplemental",
+    "case": {
+      "name": "supplemental_7",
+      "text": "Was İlke Şahin born in Title born in İzmir?",
+      "expected": "unknown",
+      "edge": null
+    },
+    "actual": {
+      "status": "refused",
+      "reason": "ambiguous_delimiter"
+    },
+    "returncode": 0,
+    "stdout": "{\"status\":\"refused\",\"reason\":\"ambiguous_delimiter\"}\n",
+    "stderr": "",
+    "pass": false
+  }
+]

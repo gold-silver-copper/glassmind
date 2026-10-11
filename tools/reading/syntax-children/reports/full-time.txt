@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxchildren-run/candidate/reading-syntax",
+    "predict",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxchildren-run/candidate/model.bin",
+    "--input",
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxchildren-run/candidate/full-input.jsonl",
+    "--output",
+    "/home/gsc/.cache/glassmind/continuous-20261010/syntaxchildren-run/candidate/full-predictions.jsonl"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 0.20994258299469948,
+  "user_seconds": 0.202036,
+  "system_seconds": 0.0069619999999999994,
+  "max_rss_KiB": 59792,
+  "major_page_faults": 0,
+  "minor_page_faults": 1146
+}

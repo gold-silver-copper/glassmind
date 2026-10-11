@@ -1,0 +1,116 @@
+Running as unit: run-p1542226-i97958310.scope; invocation ID: 9b9a8649a30140d996c4d9cd55c53acd
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/factverify/crates/facts)
+    Finished `release` profile [optimized + debuginfo] target(s) in 2.77s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/target/release/deps/glassmind_facts-11399657cb792ca3)
+
+running 6 tests
+test tests::descriptive_aliases_still_ignore_case ... ok
+test tests::bounded_sets_preserve_legacy_refusal_and_relation_guards ... ok
+test tests::longest_alias_and_ambiguity_are_preserved ... ok
+test tests::explicit_lowercase_alias_remains_valid ... ok
+test tests::rejected_acronym_does_not_resolve_ambiguity_or_expose_shorter_alias ... ok
+test tests::uppercase_alias_does_not_match_an_ordinary_word ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/target/release/deps/glassmind_facts-64c968d4468374d0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/verification.rs (/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/target/release/deps/verification-c359509104926e23)
+
+running 3 tests
+test overlapping_predicate_delimiters_refuse ... ok
+test resolution_and_unbounded_edge_membership ... ok
+test frozen_graph_contracts_and_read_only_store ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests glassmind_facts
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Running as unit: run-p1542434-i97954970.scope; invocation ID: 920e894814504909a6e7542f515289d8
+12/12 CLI contracts passed (prefix 12)
+66/66 CLI contracts passed (prefix 67)
+Running as unit: run-p1542515-i97954971.scope; invocation ID: 005ba8eb29ec431d8d8efd77fb461877
+[
+  {
+    "rows": 200,
+    "byte_identical": true,
+    "native_scorer_byte_identical": true,
+    "bytes": 19120,
+    "sha256": "8015991afccc77932038ca25ae8b9451ab22acd4aa4c53b5c59356dc1e3b34e9",
+    "answer_only": {
+      "right": 12,
+      "refused": 188,
+      "wrong": 0
+    },
+    "joint": {
+      "right": 12,
+      "refused": 188,
+      "wrong": 0
+    },
+    "native_score": {
+      "total": 200,
+      "right": 12,
+      "refused": 188,
+      "wrong": 0,
+      "entity_linked_correct": 28,
+      "relation_top1_correct": 187
+    }
+  },
+  {
+    "rows": 2821,
+    "byte_identical": true,
+    "native_scorer_byte_identical": true,
+    "bytes": 270305,
+    "sha256": "9d7fb56e29d8dd52275c93d8edd14c921c5748d8b4c3bc48c7fc7008574005b1",
+    "answer_only": {
+      "right": 256,
+      "refused": 2545,
+      "wrong": 20
+    },
+    "joint": {
+      "right": 252,
+      "refused": 2545,
+      "wrong": 24
+    },
+    "native_score": {
+      "total": 2821,
+      "right": 256,
+      "refused": 2545,
+      "wrong": 20,
+      "entity_linked_correct": 504,
+      "relation_top1_correct": 2664
+    }
+  }
+]
+Running as unit: run-p1543219-i97958341.scope; invocation ID: a34bece5a0c341a3b9e51acccf869009
+{
+  "question": "Was Q100303 born in Q2533654?",
+  "selection": "first lexical subject/property/object over four supported properties; QID endpoints",
+  "claim": {
+    "subject": "Q100303",
+    "property": "P19",
+    "object": "Q2533654",
+    "published_statements": [
+      {
+        "id": "q100303$EDDE6E93-DC6C-4FC5-BB64-C5E312B85289",
+        "rank": "normal",
+        "qualifiers": {}
+      }
+    ],
+    "cache_file": "/home/gsc/.cache/glassmind/data/simplequestions/wikidata/faea9d8294db2ab9.json",
+    "cache_bytes": 1880743,
+    "cache_sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+    "lastrevid": null
+  },
+  "scope": "500 validation-subject-seeded entities; finite snapshot only",
+  "source": "Wikidata existing cached snapshot retrieved 2026-10-10; CC0-1.0",
+  "new_download_bytes": 0
+}

@@ -1,0 +1,187 @@
+[
+  {
+    "path": "crates/cli/src/coding.rs",
+    "bytes": 40812,
+    "sha256": "c5babd57819c68027d9229c5d34c9e3ec1f9fd7cccbf491250850429ff7713f2"
+  },
+  {
+    "path": "../repairveto-run/baseline/glassmind",
+    "bytes": 77713912,
+    "sha256": "981f8b100cd82ec9edfa23f2c2d379f2dfb17976e6b32ebab2c68d335c6efdb7"
+  },
+  {
+    "path": "../repairveto-run/frozen-final/glassmind",
+    "bytes": 77811976,
+    "sha256": "e4402233b4b1977377f5a8881875444d6fbea17a468ddfa192f346676cb4d532"
+  },
+  {
+    "path": "../repairveto-run/typing-input.json",
+    "bytes": 37382,
+    "sha256": "808b08cf64a82ff16a9e648a91e2b2c559e20b8af609a4084d40aa49d32fe887"
+  },
+  {
+    "path": "../repairveto-run/training-requests.tsv",
+    "bytes": 14110,
+    "sha256": "953064b4aa2966055f34f7149f2dc39f8f4352910235f6c171b6ddd69f6bea27"
+  },
+  {
+    "path": "../repairveto-run/training-provenance.json",
+    "bytes": 522,
+    "sha256": "69c265330e2a67cf6ff7c4d904a02113c573e5e41c4f7116493988b34fc29662"
+  },
+  {
+    "path": "../repairveto-run/oldcases/cases.tsv",
+    "bytes": 2889,
+    "sha256": "b1daac6e84d0d80ae2f27284b6cdfbde9c5ff7113392f8b06760bcca95221043"
+  },
+  {
+    "path": "../repairveto-run/oldcases/public-legacy.tsv",
+    "bytes": 1065,
+    "sha256": "824f38f2a9d7e954aebf31e5e9d7b7b484de9df4e2183a8dc8b452e0f076e2ca"
+  },
+  {
+    "path": "../repairveto-run/baseline-optimized.json",
+    "bytes": 71377,
+    "sha256": "972e820ddeb2b919adee9c711133cc0532a2c004f3e91bb5b3253a84b06a4d3c"
+  },
+  {
+    "path": "../repairveto-run/final-optimized.json",
+    "bytes": 69880,
+    "sha256": "b259a019ad901ac918a022d5a86cc20a1aa2824dd841d1742e895739ce1b2d2a"
+  },
+  {
+    "path": "../repairveto-run/supplemental-baseline.json",
+    "bytes": 2161,
+    "sha256": "5ed5a88f5810628bd735660784628825e62c1204c2cdb0b032f7b0c3d6506124"
+  },
+  {
+    "path": "../repairveto-run/final-supplemental-typing.json",
+    "bytes": 1799,
+    "sha256": "613744bdfe940e7665a168bdb7f91d08337e0cc0a59ea61ebecbcf9a71eeb43e"
+  },
+  {
+    "path": "../repairveto-run/baseline-native-sample/results.json",
+    "bytes": 42121,
+    "sha256": "fcf236cc1f8fe8c8627ecc75e5251a5ba5a6ac6c5a95c07a74a57014f71aa704"
+  },
+  {
+    "path": "../repairveto-run/final-native-sample/results.json",
+    "bytes": 37169,
+    "sha256": "c637fe7563312fc2e0fb70ff2ea250671dd4eb278557c7e9250613bf1649432d"
+  },
+  {
+    "path": "../repairveto-run/final-native-full/results.json",
+    "bytes": 463547,
+    "sha256": "dc6062b4668383b6e3aa61d5592722e3e85c673aaae954f6a3dcbb934194755e"
+  },
+  {
+    "path": "../repairveto-run/final-supplemental-native/results.json",
+    "bytes": 33295,
+    "sha256": "0ff9b6641b93fb43d9d796c638450514354920a9d877ce638a6eb4e898b52667"
+  },
+  {
+    "path": "tools/coding-repair-veto/native.py",
+    "bytes": 3131,
+    "sha256": "3fb6e278b9470543d8f355b945bacf78590cd3f1008a752aa5650b6d850119ad"
+  },
+  {
+    "path": "tools/coding-repair-veto/summarize.py",
+    "bytes": 1711,
+    "sha256": "60de879dc5729dfed2456a8b3e92e3ad8988be1d6d84c9d8c9abf9ea1ec2cc8c"
+  },
+  {
+    "path": "tools/coding-repair-veto/typing.py",
+    "bytes": 1556,
+    "sha256": "497c4f7173330ec3c0c6a56e49e9705c26e898785f7e19ead91a5a849067db04"
+  },
+  {
+    "path": "tools/coding-repair-veto/contrasts.tsv",
+    "bytes": 1652,
+    "sha256": "755d982b49f625df32007ab3b833706bdce429e95e7e897fccc04188666712cf"
+  },
+  {
+    "path": "tools/coding-repair-veto/supplemental.tsv",
+    "bytes": 470,
+    "sha256": "52d4969d61054df3f45b504fc9545f42822394c1e468342ee717de174b11e0e2"
+  },
+  {
+    "path": "tools/coding-repair-veto/typing-outcomes.tsv",
+    "bytes": 44025,
+    "sha256": "43b52f14ae868d8527ac65f268061d3cc242289828591a05b53a742fd679f677"
+  },
+  {
+    "path": "tools/coding-repair-veto/FROZEN.sha256",
+    "bytes": 204,
+    "sha256": "a8252ff1c0ae6684c45568e02ceccc747648ed596cfbb9c9b89349189ded8f9a"
+  },
+  {
+    "path": "tools/coding-repair-veto/SUPPLEMENTAL.sha256",
+    "bytes": 108,
+    "sha256": "73cf85197a87ee26f7175c1896ae10eb4b758cac3c3cbcba4f0f265f01938962"
+  },
+  {
+    "path": "tools/coding-repair-veto/PLAN.md",
+    "bytes": 2471,
+    "sha256": "1472462b387f3c202399d32f48fdac2063ab1e4d79cefb44f2d3bf0950c15214"
+  },
+  {
+    "path": "tools/coding-repair-veto/reproduce.sh",
+    "bytes": 3394,
+    "sha256": "62ead4e5c6fb5c3c9ae56f537ec331bf54081f3a1f07af6696235e1fd004c1db"
+  },
+  {
+    "path": "tools/coding-repair-veto/EXPERIMENTS.md",
+    "bytes": 3579,
+    "sha256": "4010a5db5331d85102fafa4f8c7f7381ab6413749d9dbd34692f969b31db155e"
+  },
+  {
+    "path": "tools/coding-repair-veto/HANDOFF.md",
+    "bytes": 9106,
+    "sha256": "5429c5b20bfdd13666e49b1a1e4bf8acfcf55761caed2935fa572ae1030883c4"
+  },
+  {
+    "path": "tools/coding-repair-veto/typing-summary.json",
+    "bytes": 25519,
+    "sha256": "818f1b1fa4e72f4323033fe6531bced538eb0692b0c6ba04af2fca70e658e661"
+  },
+  {
+    "path": "tools/coding-repair-veto/native-summary.json",
+    "bytes": 1363,
+    "sha256": "9aafa8e92e626908ac5c1d5c157b70dd2a63df531f08ec6859a2e8d7a28ab11b"
+  },
+  {
+    "path": "tools/coding-repair-veto/supplemental-outcomes.tsv",
+    "bytes": 975,
+    "sha256": "cc92b6fef198d550e26ee6e6350ba935b884b33708169c8753cffa2c081fd808"
+  },
+  {
+    "path": "crates/cli/models/coding.tsv",
+    "bytes": 110415,
+    "sha256": "a826ad8653d7902825681682025abc993d92d97e0f0fd5a59010b1b82788accb"
+  },
+  {
+    "path": "../repairveto-run/final-source-tests.log",
+    "bytes": 5014,
+    "sha256": "c88a813f3559eb9465e110cb3fcacf190d50e96e1f1c6e937b3f3f94d947e656"
+  },
+  {
+    "path": "../repairveto-run/final-source-clippy.log",
+    "bytes": 268,
+    "sha256": "7257fb1b515cc846eac4f04b294440ce03198f71130ff429af432ecb9f02cf7f"
+  },
+  {
+    "path": "../repairveto-run/final-source-release.log",
+    "bytes": 271,
+    "sha256": "18063d05500870f2743993277d8f0f9a6ab5d9e9800153577feccdb4911e7022"
+  },
+  {
+    "path": "../repairveto-run/final-fmt-check.log",
+    "bytes": 95,
+    "sha256": "477bce35b7efe9aae532dfad0bbb2acb6594323c18cd864c4999355bf97d70c6"
+  },
+  {
+    "path": "../repairveto-run/final-inventory-audit.json",
+    "bytes": 276,
+    "sha256": "7318a080e6e4262bf67d63d65f7a67ecef012ba9854d66144160b59c049d1df2"
+  }
+]

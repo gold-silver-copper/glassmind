@@ -1,0 +1,13 @@
+Running as unit: glassmind-factverify-talk-legacy-facts.scope; invocation ID: 264649b495cb4a9c99176ba8de6a1b2c
+memory 0 {
+  "synthetic_memory_smoke": {
+    "right": 41,
+    "wrong": 0
+  },
+  "independent_benchmark": false
+}
+
+calculations 0 {"dataset": "talk-calculations-memory-synthetic-dev-v1", "independent_benchmark": false, "total": 27, "right": 27, "refused": 0, "wrong": 0, "model": "/home/gsc/.cache/glassmind/models/everyday/intent.json"}
+
+stories 0 {"dataset": "talk-stories-mixed-dev-v1", "independent_benchmark": false, "total": 47, "totals": {"right": 47}, "binary_sha256": "86551953f0903f03bf1e4eeab8bd5d7a48f350a10333b1df1722ef273d208d49"}
+

@@ -1,0 +1,44 @@
+{
+  "base": "bb619fbaa7d9e0e58dfd76bc6fa9cb72fe9fbe4a",
+  "preregistered_cases": 67,
+  "primary_supported": 16,
+  "primary_unknown": 20,
+  "primary_refused": 31,
+  "native_primary_passed": 67,
+  "native_supplemental_passed": 5,
+  "cli_first12_passed": 12,
+  "cli_full_passed": 66,
+  "cli_skipped": "NUL cannot be argv; exercised in native library",
+  "existing_tests_passed": 6,
+  "new_native_tests_passed": 3,
+  "fmt": true,
+  "clippy_all_targets": true,
+  "release": true,
+  "legacy_first200_bytes_identical": true,
+  "legacy_full2821_bytes_identical": true,
+  "native_scorer_first200_and_full_bytes_identical": true,
+  "new_download_bytes": 0,
+  "fixtures_authored_bytes": 20138,
+  "authored_license": "MIT OR Apache-2.0",
+  "frozen_source_and_binary_hashes_verified": true,
+  "raw_directory": "/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/tmp/verification",
+  "final_archive": "/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/tmp/verification/frozen-candidate-v2",
+  "limitations": [
+    "500 validation-subject-seeded snapshot; no global/current/exhaustive or temporal-qualifier claim",
+    "No conversation integration in this batch; parent owns that",
+    "Index has no statement UUIDs/qualifiers; witness links subject property; caller attaches verified bundle provenance",
+    "Conservative finite grammar and reserved endpoint words can refuse legitimate names"
+  ],
+  "rejected_candidates": [
+    {
+      "candidate": "initial-rejected",
+      "failure": "predicate delimiter at auxiliary boundary omitted; 1 original frozen case failed",
+      "source_archive": "initial-rejected/verification.rs reconstructed exactly by removing added guard; original binary and output preserved"
+    },
+    {
+      "candidate": "frozen-candidate",
+      "failure": "non-overlapping search misses predicate delimiters sharing one space; 4/5 supplemental results incorrect",
+      "evidence": "overlap-before.json; full original archive retained"
+    }
+  ]
+}

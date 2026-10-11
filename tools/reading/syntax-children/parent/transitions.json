@@ -1,0 +1,21 @@
+[
+  {
+    "case": "contrast_13",
+    "baseline": {
+      "dependent": 6,
+      "head": 3,
+      "label": "obj",
+      "correct": true,
+      "actual_head": 3,
+      "actual_label": "obj"
+    },
+    "candidate": {
+      "dependent": 6,
+      "head": 3,
+      "label": "obj",
+      "correct": false,
+      "actual_head": 7,
+      "actual_label": "nsubj"
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "rows": 2821,
+  "predictor_sha256": "8723118fb1d37a44fdc391adf4a8c4196798e2bc9b978b50c1149ce26601bfcf",
+  "prediction_sha256": "9d7fb56e29d8dd52275c93d8edd14c921c5748d8b4c3bc48c7fc7008574005b1",
+  "prediction_bytes": 270305,
+  "native_scorer": {
+    "total": 2821,
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20,
+    "entity_linked_correct": 504,
+    "relation_top1_correct": 2664
+  },
+  "predictions_and_native_score_identical": true
+}

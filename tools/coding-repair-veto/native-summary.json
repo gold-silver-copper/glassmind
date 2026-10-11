@@ -1,0 +1,60 @@
+{
+  "authored": {
+    "rows": 32,
+    "original_semantic_expectations": 32,
+    "positive_exact_repairs": 6,
+    "positive_total": 6,
+    "unrequested_under_original_labels": [],
+    "failures": [],
+    "all_previews_readonly": true,
+    "all_original_tests_present": true,
+    "all_before_fail": true,
+    "old_erroneous_initial_apply_expectation_failures": 6
+  },
+  "old68": {
+    "rows": 68,
+    "original_semantic_expectations": 64,
+    "positive_exact_repairs": 23,
+    "positive_total": 24,
+    "unrequested_under_original_labels": [
+      54,
+      55,
+      57
+    ],
+    "failures": [
+      10,
+      54,
+      55,
+      57
+    ],
+    "all_previews_readonly": true,
+    "all_original_tests_present": true,
+    "all_before_fail": true,
+    "old_erroneous_initial_apply_expectation_failures": 24
+  },
+  "legacy15": {
+    "rows": 15,
+    "original_semantic_expectations": 15,
+    "positive_exact_repairs": 15,
+    "positive_total": 15,
+    "unrequested_under_original_labels": [],
+    "failures": [],
+    "all_previews_readonly": true,
+    "all_original_tests_present": true,
+    "all_before_fail": true,
+    "old_erroneous_initial_apply_expectation_failures": 15
+  },
+  "sample": {
+    "rows": 9,
+    "passed": 9,
+    "confirmations": [
+      true,
+      true
+    ]
+  },
+  "supplemental": {
+    "rows": 9,
+    "passed": 9,
+    "unrequested_edits": 0
+  }
+}

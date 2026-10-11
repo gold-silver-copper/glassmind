@@ -1,0 +1,9 @@
+{
+  "sha256": "cc0bdeb085b22636dea7517609712323d68988cb677ca38ef9de29ee8aab111d",
+  "created_unix": 1791712952.083531,
+  "before_candidate_inspection": true,
+  "positive": 8,
+  "status": 6,
+  "negative": 16,
+  "acceptance": "At least6/8 positive exact native-tested repairs, all baseline-positive repairs retained; all6 status questions yield corresponding read-only Ask(Passes) meanings; every negative/status leaves broken source bytes unchanged in ask--apply and do. No mutating negative previews/guesses. This gate supplements full765 and prior rename tests. No candidate-informed expectation changes."
+}

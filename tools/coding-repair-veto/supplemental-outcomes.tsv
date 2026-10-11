@@ -1,0 +1,10 @@
+index	expected	baseline_understood	candidate_understood	baseline_guesses	candidate_guesses	text
+0	refuse	repair_build,repair_build,repair_build,repair_build,repair_build	-	-	-	Fix the build. Only if I give permission.
+1	refuse	repair_build	-	repair_build,repair_build	-	Fix the build. However, if I approve first.
+2	refuse	repair_tests	-	-	-	Fix the tests. Actually, no.
+3	refuse	repair_build	-	repair_build,repair_build	-	Fix the build. I changed my mind.
+4	refuse	other	other	repair_build	-	There is no need to fix the build.
+5	refuse	repair_build	-	repair_build,repair_build	-	Does the crate compile? Bananas forever.
+6	repair_build	repair_build	repair_build	-	repair_build	The compiler failed and I don't get why. Could you fix the build?
+7	repair_build	repair_build	repair_build	repair_build	repair_build	The project does not compile, please fix it.
+8	repair_build	repair_build	repair_build	repair_build	repair_build	Please fix `get_value`; the compiler cannot find it.

@@ -1,0 +1,65 @@
+{
+  "question": "Was Q100303 born in Q2533654?",
+  "actual": {
+    "status": "supported",
+    "witness": {
+      "subject": "Q100303",
+      "property": "P19",
+      "object": "Q2533654",
+      "subject_resolution": "explicit_id",
+      "object_resolution": "explicit_id",
+      "source_url": "https://www.wikidata.org/wiki/Q100303#P19"
+    },
+    "scope": "local_snapshot"
+  },
+  "cache": "/home/gsc/.cache/glassmind/data/simplequestions/wikidata/faea9d8294db2ab9.json",
+  "cache_sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+  "statements": [
+    {
+      "mainsnak": {
+        "snaktype": "value",
+        "property": "P19",
+        "hash": "e7c41c164b25e38b99d0c9f3c8451a27cec266fb",
+        "datavalue": {
+          "value": {
+            "entity-type": "item",
+            "numeric-id": 2533654,
+            "id": "Q2533654"
+          },
+          "type": "wikibase-entityid"
+        },
+        "datatype": "wikibase-item"
+      },
+      "type": "statement",
+      "id": "q100303$EDDE6E93-DC6C-4FC5-BB64-C5E312B85289",
+      "rank": "normal",
+      "references": [
+        {
+          "hash": "9a24f7c0208b05d6be97077d855671d1dfdbc0dd",
+          "snaks": {
+            "P143": [
+              {
+                "snaktype": "value",
+                "property": "P143",
+                "hash": "d38375ffe6fe142663ff55cd783aa4df4301d83d",
+                "datavalue": {
+                  "value": {
+                    "entity-type": "item",
+                    "numeric-id": 48183,
+                    "id": "Q48183"
+                  },
+                  "type": "wikibase-entityid"
+                },
+                "datatype": "wikibase-item"
+              }
+            ]
+          },
+          "snaks-order": [
+            "P143"
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Independent inspection confirms exact stored edge; does not establish current/global truth."
+}

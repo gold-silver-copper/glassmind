@@ -1,0 +1,27 @@
+{
+  "conllu_rows": {
+    "decimal": 37,
+    "integer": 204578,
+    "range": 2614
+  },
+  "training": {
+    "input_skips": 2,
+    "invalid_tree_skips": 0,
+    "nonprojective_skips": 286,
+    "parser_epochs": 3,
+    "parser_mistakes": [
+      43934,
+      26058,
+      18998
+    ],
+    "parser_sentences": 12256,
+    "sentences": 12544,
+    "tag_epochs": 2,
+    "tag_mistakes": [
+      20605,
+      11984
+    ],
+    "words": 204578
+  },
+  "version": "ewt-arc-standard-children-v2"
+}

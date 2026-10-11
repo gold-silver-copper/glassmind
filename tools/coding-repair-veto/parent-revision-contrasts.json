@@ -1,0 +1,54 @@
+[
+  {
+    "expected": "refuse",
+    "text": "Please repair the crate; leave the source unchanged."
+  },
+  {
+    "expected": "refuse",
+    "text": "Fix the tests, but keep the code untouched."
+  },
+  {
+    "expected": "refuse",
+    "text": "Repair the build once we approve the plan."
+  },
+  {
+    "expected": "refuse",
+    "text": "Could you fix the tests once the review is complete?"
+  },
+  {
+    "expected": "refuse",
+    "text": "I am not requesting a repair. Is the build passing?"
+  },
+  {
+    "expected": "refuse",
+    "text": "I am not asking you to fix the tests."
+  },
+  {
+    "expected": "refuse",
+    "text": "I do not authorize you to repair the source."
+  },
+  {
+    "expected": "repair_build",
+    "text": "Please fix the build and leave its behavior unchanged."
+  },
+  {
+    "expected": "repair_build",
+    "text": "Repair this build once."
+  },
+  {
+    "expected": "repair_build",
+    "text": "I am not requesting deployment. Please fix the build."
+  },
+  {
+    "expected": "status_build",
+    "text": "Is this crate able to compile?"
+  },
+  {
+    "expected": "status_tests",
+    "text": "Is the test suite passing?"
+  },
+  {
+    "expected": "refuse",
+    "text": "Is this crate able to compile after removing the tests?"
+  }
+]

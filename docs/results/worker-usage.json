@@ -824,6 +824,39 @@
         "reasoning_output_tokens": 3937
       },
       "source": "Normalized width4 search rejected: independentLAS19423->19428 fails preregistered19673 gate; UAS20540->20547. All2001valid trees/no refusals; defaultmodel/raw/forms byteidentical. Original73archive/32parent/raw/freeze identities verified; parentcoreedges36/40 unchanged."
+    },
+    {
+      "track": "syntaxchildren-continuous",
+      "usage": {
+        "input_tokens": 1390178,
+        "cached_input_tokens": 1322112,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18269,
+        "reasoning_output_tokens": 3829
+      },
+      "source": "Second-child32-feature candidate rejected: independent2001LAS19443/UAS20515 vs19423/20540; frozenparent31->30/40coreedges. Original73archive/parent28/freeze verified; runtime rolledback byteidentically. OneTRAINfit, no retuning."
+    },
+    {
+      "track": "repairveto-continuous",
+      "usage": {
+        "input_tokens": 5701416,
+        "cached_input_tokens": 5579904,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 50399,
+        "reasoning_output_tokens": 21186
+      },
+      "source": "Speech-act veto worker finished; original source/binary/inputs/rawoutputs hashverified and18entry parent snapshot retained. TRAIN159->167/172, old68typed63/68, native111/115 withoriginalfailuresretained; independent/full765 gates pending, no integration. Coordinator subsequently revised scope handling, retained all original outcomes and accepted full765 200pass565refused0fail with all180 prior passes, integrated in e722d4f; parent usage is not included."
+    },
+    {
+      "track": "factverify-continuous",
+      "usage": {
+        "input_tokens": 1095449,
+        "cached_input_tokens": 1032064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 24082,
+        "reasoning_output_tokens": 6637
+      },
+      "source": "Terminal worker; 96 source/archive/raw identities independently verified. Original frozen native parent suite 44/48; all original outputs retained. No runtime integration; alias-delimiter parsing requires revision. Coordinator subsequently expanded full-alias parsing under an explicit versioned contract, retained original47/48 status score and integrated Check fact: with unchanged ordinary full2821 output in e6a6a4e; parent usage is not included."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

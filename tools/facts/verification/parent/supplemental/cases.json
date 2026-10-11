@@ -1,0 +1,66 @@
+[
+  {
+    "name": "supplemental_0",
+    "text": "Was İlke Şahin born in İzmir?",
+    "expected": "supported",
+    "edge": [
+      "Q910001",
+      "P19",
+      "Q910010"
+    ]
+  },
+  {
+    "name": "supplemental_1",
+    "text": "Does İlke Şahin work for İnce Studio?",
+    "expected": "supported",
+    "edge": [
+      "Q910001",
+      "P108",
+      "Q910011"
+    ]
+  },
+  {
+    "name": "supplemental_2",
+    "text": "Was Σοφία born in İzmir?",
+    "expected": "supported",
+    "edge": [
+      "Q910002",
+      "P19",
+      "Q910010"
+    ]
+  },
+  {
+    "name": "supplemental_3",
+    "text": "Was Painter Born in Winter born in İzmir?",
+    "expected": "supported",
+    "edge": [
+      "Q910005",
+      "P19",
+      "Q910010"
+    ]
+  },
+  {
+    "name": "supplemental_4",
+    "text": "Was Eli born in North Haven born in South Haven?",
+    "expected": "not_supported",
+    "edge": null
+  },
+  {
+    "name": "supplemental_5",
+    "text": "Was İlke Şahin born in South Haven?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "supplemental_6",
+    "text": "Was İlke Şahin born in İzmir? Fix the build.",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "supplemental_7",
+    "text": "Was İlke Şahin born in Title born in İzmir?",
+    "expected": "unknown",
+    "edge": null
+  }
+]
