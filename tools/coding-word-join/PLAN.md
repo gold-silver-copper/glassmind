@@ -37,3 +37,10 @@ full765codingDEV: retain all218passes, gain>=2, zero failed verification. Report
 TRAIN/task overlap honestly; not an unseen-task generalization claim. No held-out
 or expected patches, no new downloads/models/workers/APIcalls. Each runner finite,
 every cargo8GiB/no swap/setsid--wait/on-diskTMPDIR, atmost4testthreads and1buildjob.
+
+Authored new-ambiguity fixture deliberately distinguishes incomplete families:
+the old family accepts character reversal for only one-character words; the new
+family must refuse when word reversal with spaces also passes. This newly
+introduced weak-test fixture is a documented ambiguity contrast, not a change
+to any old TRAIN/DEV or accepted native-contract expectation. Both original and
+revised behaviors are frozen in native.json before runtime edits.

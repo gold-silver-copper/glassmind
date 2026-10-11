@@ -1,0 +1,72 @@
+[
+  {
+    "id": "normalize",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\"  cerise\\tbleu\\nvert \"), \"cerise bleu vert\"); assert_eq!(transform(\"東京 été 🙂!\"), \"東京 été 🙂!\"); assert_eq!(transform(\"x x\\ty\"), \"x x y\"); assert_eq!(transform(\" \\t\\n\"), \"\"); assert_eq!(transform(\" solo \"), \"solo\"); } }\n",
+    "text": "implement transform",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "reverse",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\"  cerise\\tbleu\\nvert \"), \"vert bleu cerise\"); assert_eq!(transform(\"東京 été 🙂!\"), \"🙂! été 東京\"); assert_eq!(transform(\"x x\\ty\"), \"y x x\"); assert_eq!(transform(\" \\t\\n\"), \"\"); assert_eq!(transform(\" solo \"), \"solo\"); } }\n",
+    "text": "implement transform",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "chars",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\"ab🚀\"), \"🚀ba\"); assert_eq!(transform(\"été 東京\"), \"京東 été\"); assert_eq!(transform(\"a\\tb\\n\"), \"\\nb\\ta\"); assert_eq!(transform(\"\"), \"\"); } }\n",
+    "text": "implement transform",
+    "baseline": true,
+    "candidate": true
+  },
+  {
+    "id": "compact",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\" north\\tsouth\\nwest \"), \"northsouthwest\"); assert_eq!(transform(\"東京 été\"), \"東京été\"); assert_eq!(transform(\"\"), \"\"); } }\n",
+    "text": "implement transform",
+    "baseline": true,
+    "candidate": true
+  },
+  {
+    "id": "compact-reverse",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\" north\\tsouth\\nwest \"), \"westsouthnorth\"); assert_eq!(transform(\"東京 été\"), \"été東京\"); assert_eq!(transform(\"\"), \"\"); } }\n",
+    "text": "implement transform",
+    "baseline": true,
+    "candidate": true
+  },
+  {
+    "id": "new-ambiguity",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\"a b\"), \"b a\"); assert_eq!(transform(\"\"), \"\"); } }\n",
+    "text": "implement transform",
+    "baseline": true,
+    "candidate": false
+  },
+  {
+    "id": "old-ambiguity",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\"a\"), \"a\"); } }\n",
+    "text": "implement transform",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "already-implemented",
+    "code": "pub fn transform(text: &str) -> String { text.to_string() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\"a b\"), \"a b\"); } }\n",
+    "text": "implement transform",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "unexercised",
+    "code": "pub fn transform(text: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(2+2,4); } }\n",
+    "text": "implement transform",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "two-inputs",
+    "code": "pub fn transform(text: &str, other: &str) -> String { todo!() }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(transform(\"red\",\"blue\"),\"red blue\"); } }\n",
+    "text": "implement transform",
+    "baseline": false,
+    "candidate": false
+  }
+]
