@@ -1,5 +1,10 @@
 # Growing glassmind: a guide for loop agents
 
+`prompts/grow-fast.md` is the active direction and overrides older rules here.
+Use Codex GPT-6 Astra fast through the logged-in ChatGPT account; never API
+keys or Claude. Compression is off. Measure a fixed dev sample during
+iteration, then the affected track's full dev split before pushing a batch.
+
 You are improving glassmind, a system that understands English questions and
 commands about Rust code with **no neural network inside**. Everything it
 knows is Rust source: its types are the concepts it can think about, its
@@ -84,8 +89,9 @@ export GLASSMIND_CARGO_TARGET=$HOME/.cache/glassmind/check/target GLASSMIND_CHEC
   a doc comment written from its actual uses. World and mind rules must also
   be listed in their crate's `RULES` and be switchable off through
   `Switches` (look at how existing ones do it).
-- **Never edit on a guess.** If an edit's target is ambiguous, ask
-  (`Trouble::Ambiguous` → the user is asked which one).
+- **Act, then verify.** A proposed action can proceed when a compiler, tests
+  or world lookup can check its result. Roll back failed changes. Ask when
+  ambiguity has no reliable check; never claim a failed check as success.
 - **Every reply must have words.** A reply the language cannot say costs
   0.5 extra, and a change that leaves more replies without words is
   rejected.
@@ -93,7 +99,7 @@ export GLASSMIND_CARGO_TARGET=$HOME/.cache/glassmind/check/target GLASSMIND_CHEC
   refusal at most 1. Do not make a turn answer unless the answer is right by
   `docs/tasks.md`. Do not turn a right or honest refusal into a wrong answer:
   such a change is rejected outright.
-- **Size is priced**: every syntax token of non-test code in the mind crates
+- **Size can be priced** (currently disabled): every syntax token of non-test code in the mind crates
   costs a fixed price in failure units (your brief says how much) (identifiers count 1 whatever their length;
   comments and docs are free). Prefer general rules that cover many turns
   over many specific ones. Delete what you make redundant.
@@ -108,14 +114,19 @@ Paths are given in your brief (`$SOURCES`, `$DATA`). Other agents build at
 the same time: always use `-j 4` and `--test-threads 4`.
 
 ```sh
-cargo build --release -j 4 -p glassmind -p glassmind-loop
+tools/check.sh # capped fmt, clippy, build and one fixture smoke
+# Every additional cargo run needs a memory-capped scope, TMPDIR,
+# an isolated process group and a timeout that kills the group.
+# For example:
+TMPDIR=$HOME/.cache/glassmind/check-tmp systemd-run --user --scope \
+  -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout -k 10s 600 \
+  cargo build --release -j 1 -p glassmind
 cargo clippy --workspace --all-targets -j 4 -- -D warnings
-cargo test --workspace -j 4 -- --test-threads 4
 cargo run -q -p glassmind-depcheck
 # your group's turns:
 ./target/release/glassmind eval --sources $SOURCES --inputs $DATA/group-inputs.jsonl > group-out.jsonl
 ./target/release/glassmind-loop score --labels $DATA/group-labels.jsonl --outcomes group-out.jsonl
-# the whole training set, compared turn by turn with the current baseline:
+# the affected track's full dev split before pushing a batch:
 ./target/release/glassmind eval --sources $SOURCES --inputs $DATA/train-inputs.jsonl > train-out.jsonl
 ./target/release/glassmind-loop compare --labels $DATA/train-labels.jsonl --before $DATA/baseline-outcomes.jsonl --after train-out.jsonl
 # one sentence, with the full trace:

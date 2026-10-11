@@ -45,14 +45,14 @@ pub struct Config {
     /// Agents running at once.
     pub max_agents: usize,
     pub model: String,
-    /// `claude` for Claude Code agents, or a command that edits the
+    /// `codex` for ChatGPT-authenticated Codex agents, or a command that edits the
     /// worktree given as its first argument, with the brief as its second
     /// (used by CI's stub agent).
     pub agent: String,
     /// Run agents and evaluations inside bubblewrap, hiding the held-out
     /// data, the user's code and the user's Claude Code history.
     pub sandbox: bool,
-    /// Growth rounds before each compression round.
+    /// Growth rounds before each compression round; zero disables compression.
     pub growth_per_compression: u32,
     /// Stop after this many rounds without a validation improvement.
     pub patience: u32,

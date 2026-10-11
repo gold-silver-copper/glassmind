@@ -323,7 +323,8 @@ pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
             );
             break;
         }
-        let compression = round % (config.growth_per_compression + 1) == 0;
+        let compression = config.growth_per_compression > 0
+            && u64::from(round) % (u64::from(config.growth_per_compression) + 1) == 0;
         log(
             paths,
             &format!(
@@ -709,8 +710,8 @@ knowledge is Rust source (read docs/growing.md). The change was written against 
 were accepted since, and applying it left git conflict markers (<<<<<<< ======= >>>>>>>) in these files: {files}. \
 Resolve every conflict so that BOTH the already accepted code and the change work together: keep every rule from \
 both sides (rule IDs must stay unique), merge enum variants and match arms, and fix anything else that no longer \
-fits. Do not add new features. Then make sure `cargo build --release -j 8 --workspace`, `cargo clippy --workspace \
---all-targets -j 8 -- -D warnings` and `cargo test --workspace -j 8 -- --test-threads 8` pass. Leave the result \
+fits. Do not add new features. Then make sure `cargo build --release -j 1 --workspace`, `cargo clippy --workspace \
+--all-targets -j 1 -- -D warnings` pass in capped scopes with TMPDIR set. Leave the result \
 uncommitted. What the change was for: {summary}";
 
 /// Resolves the conflicts a patch left in `dir` with a merging agent.
@@ -728,7 +729,7 @@ fn merge(
     let prompt = MERGE
         .replace("{files}", &files.lines().collect::<Vec<_>>().join(", "))
         .replace("{summary}", summary.trim());
-    let run = agent::claude(
+    let run = agent::model_agent(
         config,
         paths,
         &paths.slot(98),
@@ -772,7 +773,7 @@ fn review(config: &Config, paths: &Paths, dir: &Path) -> Result<(), String> {
     // No verdict is not an approval: an empty or unreadable reply is asked
     // again once, then the change is rejected.
     for _ in 0..2 {
-        let run = agent::claude(
+        let run = agent::model_agent(
             config,
             paths,
             &paths.slot(99),

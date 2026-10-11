@@ -95,14 +95,14 @@ enum Command {
         size_price: f64,
         #[arg(long, default_value_t = 4)]
         max_agents: usize,
-        #[arg(long, default_value = "claude-opus-5-5")]
+        #[arg(long, default_value = "gpt-6-astra")]
         model: String,
-        /// `claude`, or a stub command `CMD WORKTREE BRIEF`.
-        #[arg(long, default_value = "claude")]
+        /// `codex` (ChatGPT login, fast tier), or a stub `CMD WORKTREE BRIEF`.
+        #[arg(long, default_value = "codex")]
         agent: String,
         #[arg(long)]
         no_sandbox: bool,
-        #[arg(long, default_value_t = 3)]
+        #[arg(long, default_value_t = 0)]
         growth_per_compression: u32,
         #[arg(long, default_value_t = 16)]
         patience: u32,

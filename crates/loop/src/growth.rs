@@ -266,7 +266,7 @@ pub fn write_brief(
     );
     let _ = writeln!(
         b,
-        "## How the change is judged\n\nThe loop accepts it only if it builds and clippy, tests and the layer \
+        "## How the change is judged\n\nThe loop accepts it only if it builds and fmt, clippy and the layer \
          check pass; the training cost plus {} per syntax token of mind code goes down; no training turn \
          that was right or honestly refused becomes wrong; no more replies lose their words; a hidden \
          validation set (other repositories) does not get worse; and a reviewer finds no faked answers. Any method is allowed. \

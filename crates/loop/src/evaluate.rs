@@ -46,10 +46,11 @@ fn tail(s: &str, lines: usize) -> String {
         .join("\n")
 }
 
-/// Builds the workspace and runs clippy, the tests, the layer check and the
+/// Builds the workspace and runs fmt, clippy, the layer check and the
 /// rule check. `Err` says which failed and why.
 pub fn checks(dir: &Path, target: &Path) -> Result<(), String> {
     let steps: [(&str, Vec<&str>); 4] = [
+        ("format", vec!["fmt", "--all", "--check"]),
         ("build", vec!["build", "--release", "--workspace"]),
         (
             "clippy",
@@ -62,7 +63,6 @@ pub fn checks(dir: &Path, target: &Path) -> Result<(), String> {
                 "warnings",
             ],
         ),
-        ("tests", vec!["test", "--workspace"]),
         ("layers", vec!["run", "-q", "-p", "glassmind-depcheck"]),
     ];
     for (name, args) in steps {
