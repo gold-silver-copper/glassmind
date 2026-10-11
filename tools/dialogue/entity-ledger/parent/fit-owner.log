@@ -1,0 +1,18 @@
+{
+  "split": "FIT only; distinct extracted source entities used by missing-slot opportunities",
+  "entities": 13425,
+  "all_entities": {
+    "exact_role_owner_compatible": 3048,
+    "exact_role_owner_incompatible": 8135,
+    "unaligned_span_owner_compatible": 157,
+    "unaligned_span_owner_incompatible": 433,
+    "wrong_role_owner_incompatible": 1648,
+    "wrong_role_owner_compatible": 4
+  },
+  "annotated_owner_in_predicted_context": {
+    "exact_role_owner_compatible": 3048,
+    "wrong_role_owner_incompatible": 4,
+    "wrong_role_owner_compatible": 4
+  },
+  "limitation": "Source-role diagnostic only. No candidate state, CAL gate, model, or threshold changed."
+}

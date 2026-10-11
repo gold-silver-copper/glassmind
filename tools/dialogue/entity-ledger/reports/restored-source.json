@@ -1,0 +1,25 @@
+{
+  "status": "BYTE_EXACT",
+  "original_rust_and_manifest_files": 13,
+  "all_original_archive_files": 32,
+  "removed_only": [
+    "crates/dialogue/examples/entity-ledger.rs",
+    "crates/dialogue/src/entity_ledger_experiment.rs"
+  ],
+  "production_runtime_modified": false,
+  "original_hashes": {
+    "crates/dialogue/examples/draft-session.rs": "3c8cd01f76967854506a0908a6ef0c7edfad3b9696180f79d7440c42749b7f27",
+    "crates/dialogue/src/adapter.rs": "7a919603493525a5069d81ac3de5473819c1142cfadbd99380effff1a028d027",
+    "crates/dialogue/src/boundaries.rs": "9c765b1f039e169a1eae5e67f4025a7bd4e9dec0c13760a8541c29759b8b4941",
+    "crates/dialogue/src/draft.rs": "d15d8cf952286f0ad4a27348de799e1d736d124d89c602a8eaf7cd98a9c39dfa",
+    "crates/dialogue/src/lib.rs": "a44582e91d78f4658d22823f16156af950cb9933f8bb83b24ced24ecc97f9e3c",
+    "crates/dialogue/src/main.rs": "5c101feb4a4167d541dd0e4b6aca8dc12b802ce760925526a6739e44f3e5fe10",
+    "crates/dialogue/src/multi.rs": "afc34686037e4a532b62748f8ca28ecbe800a4cc215fb89ceab0bd7ae6f39ed1",
+    "crates/dialogue/src/offers.rs": "9fb10a401bf14f89000a293f4bd09af2dabd7770f17166476232a207b1cf77a1",
+    "crates/dialogue/src/references.rs": "1d5f7b1210e2826cb69c21592e6d842a0473f3c252d9b1cd5e06433777888127",
+    "crates/dialogue/src/tracker.rs": "87e53f0791eab162b08c65921e3f853f7ec55f53d27b43c9c58fe8d8d2b0201c",
+    "crates/dialogue/src/bin/dialogue-multi.rs": "95cf9dc4a37747a658bcf676ce5cc0af65a257bd14fba9337d8e5275d4a6d9f1",
+    "crates/dialogue/src/draft/tests.rs": "010824bfff0f880f2cb98c38b6eaa05b04c21a0fe90db6416810f5a108c12612",
+    "crates/dialogue/Cargo.toml": "16cb96e886401b3e1c7b73c9ee4ff5bc5fe8bd6c6eb01c08624dd127cf564f24"
+  }
+}

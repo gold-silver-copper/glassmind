@@ -1,0 +1,23 @@
+Running as unit: run-p265857-i100899927.scope; invocation ID: 40f72b0762084ed9a6e6ede5db6abf0e
+   Compiling glassmind-dialogue v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/entityledger/crates/dialogue)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.12s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/entityledger-run/target/debug/deps/glassmind_dialogue-5a20c4b08347bed1)
+
+running 14 tests
+test boundaries::tests::evidence_and_conflicting_rules_refuse ... ok
+test boundaries::tests::exact_unicode_provenance_and_latest_occurrence ... ok
+test draft::tests::authored_system_offer_survives_restart_without_cross_session_leakage ... ok
+test draft::tests::loader_missing_corrupt_version_unknown_fields_and_identity ... ok
+test draft::tests::malformed_history_and_atomic_failures ... ok
+test multi::tests::references_use_prior_predictions_and_preserve_held_and_filled_states ... ok
+test multi::tests::runtime_rejects_annotations_and_sparse_models_require_evidence ... ok
+test multi::tests::switching_preserves_independent_states_and_reset_is_empty ... ok
+test offers::tests::session_consumes_source_preserves_filled_slots_and_resets ... ok
+test offers::tests::spans_are_verbatim_with_provenance_and_ambiguity_refuses ... ok
+test references::tests::copying_requires_provenance_schema_and_unambiguous_prior ... ok
+test draft::tests::sequence_restart_every_boundary_reset_interleave_and_show ... ok
+test draft::tests::loader_enforces_actual_file_size_caps ... ok
+test draft::tests::exact_utf8_turn_and_total_byte_boundaries ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

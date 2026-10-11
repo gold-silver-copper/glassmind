@@ -1,0 +1,19 @@
+Running as unit: run-p311264-i100967993.scope; invocation ID: 66f0bccedadc4b5b981f1a6f5fdaaab0
+{
+  "verified": {
+    "opportunities": 7086,
+    "candidates": 51647,
+    "decisions": 22912
+  },
+  "FIT_role_labels": 128,
+  "max_rank_reconstruction_error_f64_vs_f32": 0.00016121799998813913,
+  "strictest_grid_post_rejection_wrong_scored": {
+    "role_error": 26,
+    "reference_selection": 10,
+    "span_boundary": 5
+  },
+  "inherited_CAL_assertions_untouched": {
+    "strict_existing_nonmatching_assertions": 0
+  },
+  "note": "Cause hierarchy is diagnostic only; annotation absence is not proof of incorrect entity. No threshold/model changed."
+}
