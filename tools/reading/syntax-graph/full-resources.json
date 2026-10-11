@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "setsid",
+    "--wait",
+    "timeout",
+    "--kill-after=10s",
+    "600",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/reading-syntax",
+    "predict",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/model.bin",
+    "--input",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/baseline/forms.jsonl",
+    "--output",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/full-predictions.jsonl"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 1.4400862590409815,
+  "user_seconds": 1.4276659999999999,
+  "system_seconds": 0.008726,
+  "max_rss_KiB": 16856,
+  "major_page_faults": 0,
+  "minor_page_faults": 1287
+}

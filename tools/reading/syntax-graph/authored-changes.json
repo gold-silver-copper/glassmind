@@ -1,0 +1,84 @@
+[
+  {
+    "sentence": 3,
+    "token": 3,
+    "forms": [
+      "Mira",
+      "helped",
+      "Noah",
+      "yesterday",
+      "."
+    ],
+    "gold": [
+      2,
+      "obj"
+    ],
+    "old": [
+      4,
+      "compound"
+    ],
+    "new": [
+      2,
+      "obj"
+    ],
+    "correct": [
+      false,
+      true
+    ]
+  },
+  {
+    "sentence": 15,
+    "token": 5,
+    "forms": [
+      "Dogs",
+      "chase",
+      "cats",
+      "yesterday",
+      "."
+    ],
+    "gold": [
+      2,
+      "punct"
+    ],
+    "old": [
+      4,
+      "punct"
+    ],
+    "new": [
+      2,
+      "punct"
+    ],
+    "correct": [
+      false,
+      true
+    ]
+  },
+  {
+    "sentence": 19,
+    "token": 5,
+    "forms": [
+      "Seeds",
+      "were",
+      "eaten",
+      "by",
+      "birds",
+      "."
+    ],
+    "gold": [
+      3,
+      "obl:agent"
+    ],
+    "old": [
+      3,
+      "obl:agent"
+    ],
+    "new": [
+      3,
+      "obl"
+    ],
+    "correct": [
+      true,
+      false
+    ]
+  }
+]

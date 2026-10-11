@@ -1,0 +1,629 @@
+[
+  {
+    "name": "core_00",
+    "text": "The sailor repaired the lantern.",
+    "forms": [
+      "The",
+      "sailor",
+      "repaired",
+      "the",
+      "lantern",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_01",
+    "text": "A tired baker carried the basket.",
+    "forms": [
+      "A",
+      "tired",
+      "baker",
+      "carried",
+      "the",
+      "basket",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_02",
+    "text": "Yesterday the mechanic inspected a truck.",
+    "forms": [
+      "Yesterday",
+      "the",
+      "mechanic",
+      "inspected",
+      "a",
+      "truck",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_03",
+    "text": "The curious child carefully opened the parcel.",
+    "forms": [
+      "The",
+      "curious",
+      "child",
+      "carefully",
+      "opened",
+      "the",
+      "parcel",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 5,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 5,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_04",
+    "text": "The musician near the fountain greeted Elena.",
+    "forms": [
+      "The",
+      "musician",
+      "near",
+      "the",
+      "fountain",
+      "greeted",
+      "Elena",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 6,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 6,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_05",
+    "text": "After lunch, Rafael polished the mirror.",
+    "forms": [
+      "After",
+      "lunch",
+      ",",
+      "Rafael",
+      "polished",
+      "the",
+      "mirror",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 4,
+        "head": 5,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 5,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_06",
+    "text": "The dog behind the fence chased a rabbit.",
+    "forms": [
+      "The",
+      "dog",
+      "behind",
+      "the",
+      "fence",
+      "chased",
+      "a",
+      "rabbit",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 6,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 8,
+        "head": 6,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_07",
+    "text": "The doctor examined the patient yesterday.",
+    "forms": [
+      "The",
+      "doctor",
+      "examined",
+      "the",
+      "patient",
+      "yesterday",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_08",
+    "text": "Did the pilot notice the storm?",
+    "forms": [
+      "Did",
+      "the",
+      "pilot",
+      "notice",
+      "the",
+      "storm",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_09",
+    "text": "Which painting did Nora restore?",
+    "forms": [
+      "Which",
+      "painting",
+      "did",
+      "Nora",
+      "restore",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 4,
+        "head": 5,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 2,
+        "head": 5,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_10",
+    "text": "Who repaired the bicycle?",
+    "forms": [
+      "Who",
+      "repaired",
+      "the",
+      "bicycle",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_11",
+    "text": "Why did the farmer close the gate?",
+    "forms": [
+      "Why",
+      "did",
+      "the",
+      "farmer",
+      "close",
+      "the",
+      "gate",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 4,
+        "head": 5,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 5,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_12",
+    "text": "The student did not understand the question.",
+    "forms": [
+      "The",
+      "student",
+      "did",
+      "not",
+      "understand",
+      "the",
+      "question",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 5,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 5,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_13",
+    "text": "The chef has prepared the soup.",
+    "forms": [
+      "The",
+      "chef",
+      "has",
+      "prepared",
+      "the",
+      "soup",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_14",
+    "text": "The courier will deliver the package tomorrow.",
+    "forms": [
+      "The",
+      "courier",
+      "will",
+      "deliver",
+      "the",
+      "package",
+      "tomorrow",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_15",
+    "text": "The hikers were watching the eagle.",
+    "forms": [
+      "The",
+      "hikers",
+      "were",
+      "watching",
+      "the",
+      "eagle",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_16",
+    "text": "The parcel was opened by Sofia.",
+    "forms": [
+      "The",
+      "parcel",
+      "was",
+      "opened",
+      "by",
+      "Sofia",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj:pass"
+      },
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "aux:pass"
+      }
+    ]
+  },
+  {
+    "name": "core_17",
+    "text": "The windows were cleaned by the caretaker.",
+    "forms": [
+      "The",
+      "windows",
+      "were",
+      "cleaned",
+      "by",
+      "the",
+      "caretaker",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj:pass"
+      },
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "aux:pass"
+      }
+    ]
+  },
+  {
+    "name": "core_18",
+    "text": "Élodie photographed Zürich.",
+    "forms": [
+      "Élodie",
+      "photographed",
+      "Zürich",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_19",
+    "text": "Łukasz visited Málaga.",
+    "forms": [
+      "Łukasz",
+      "visited",
+      "Málaga",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_20",
+    "text": "The gardener watered roses and trimmed hedges.",
+    "forms": [
+      "The",
+      "gardener",
+      "watered",
+      "roses",
+      "and",
+      "trimmed",
+      "hedges",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 3,
+        "label": "obj"
+      },
+      {
+        "dependent": 6,
+        "head": 3,
+        "label": "conj"
+      },
+      {
+        "dependent": 7,
+        "head": 6,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_21",
+    "text": "The teacher praised the child who solved the puzzle.",
+    "forms": [
+      "The",
+      "teacher",
+      "praised",
+      "the",
+      "child",
+      "who",
+      "solved",
+      "the",
+      "puzzle",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      },
+      {
+        "dependent": 6,
+        "head": 7,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 9,
+        "head": 7,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_22",
+    "text": "Although rain fell, the ranger checked the bridge.",
+    "forms": [
+      "Although",
+      "rain",
+      "fell",
+      ",",
+      "the",
+      "ranger",
+      "checked",
+      "the",
+      "bridge",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 6,
+        "head": 7,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 9,
+        "head": 7,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "core_23",
+    "text": "The scientist quietly recorded the unexpected result.",
+    "forms": [
+      "The",
+      "scientist",
+      "quietly",
+      "recorded",
+      "the",
+      "unexpected",
+      "result",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  }
+]

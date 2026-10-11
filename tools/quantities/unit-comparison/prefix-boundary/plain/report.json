@@ -1,0 +1,91 @@
+{
+  "binary_sha256": "931528b065c361a9580a090392497b9e060a894cf5f1edb824ccb0132836eda4",
+  "total": 14,
+  "passed": 14,
+  "results": [
+    {
+      "name": "ascii-0-0",
+      "wanted": "comparison",
+      "actual": "comparison",
+      "ok": true
+    },
+    {
+      "name": "ascii-0-19",
+      "wanted": "comparison",
+      "actual": "comparison",
+      "ok": true
+    },
+    {
+      "name": "ascii-0-20",
+      "wanted": "comparison",
+      "actual": "comparison",
+      "ok": true
+    },
+    {
+      "name": "ascii-1-0",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    },
+    {
+      "name": "ascii-1-19",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    },
+    {
+      "name": "ascii-1-20",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    },
+    {
+      "name": "unicode-0-0",
+      "wanted": "comparison",
+      "actual": "comparison",
+      "ok": true
+    },
+    {
+      "name": "unicode-0-19",
+      "wanted": "comparison",
+      "actual": "comparison",
+      "ok": true
+    },
+    {
+      "name": "unicode-0-20",
+      "wanted": "comparison",
+      "actual": "comparison",
+      "ok": true
+    },
+    {
+      "name": "unicode-1-0",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    },
+    {
+      "name": "unicode-1-19",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    },
+    {
+      "name": "unicode-1-20",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    },
+    {
+      "name": "nul-0",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    },
+    {
+      "name": "nul-20",
+      "wanted": "refusal",
+      "actual": "refusal",
+      "ok": true
+    }
+  ]
+}

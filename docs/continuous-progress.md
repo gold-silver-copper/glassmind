@@ -2,18 +2,47 @@
 
 Unlimited active goal; milestone completion does not complete the goal. Root
 branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Previous goal turn: PROGRESS (prompt clarified). Current turn: PROGRESS; accepted
-comparator and exact quantity comparison, integrated main, completed all gates.
+Previous goal turn: PROGRESS (implementationgrammarlaunched, nativebaselines).
+Currentturn: PROGRESS (graphparserindependentlyrejected/archived, comparisonprefix
+boundaryfixedandvalidated). Unlimitedgoalremainsactive.
 
-## Current batch ready for PR43
+## Current batch: prefix boundary fix and graph rejection
 
-Source commit04a2289. Both workers terminal, scopes inactive; no active model
-workers. Comparatorfull16303 COMPLETE, workspace50616 COMPLETE, mainbuild1718
+Commits09f1cab graphrejection report; b57c7b9 quantityprefixfix. Push95481 pending
+atcheckpoint, thenopenPR44 againstmain, verifyrequiredCI onexactreviewedhead and
+mergewith--match-head-commit. No accuracyjournalrow: neitherchangeclaimsnewscore.
+Knowncompletedworker tokens192615259 inclcachedonce; parent/interrupted/liveimpl
+excluded (graphworker2069421input incl1973120cached +25502output=2094923).
+
+Quantityprefixbugreproduced: explicitComparequantities: separatorcountedagainst
+4096-bytepayloadcap. Baseline12/14; two validatlimitASCII/Unicodewhitespacecases
+refusedonlywithspaceaftercolon. One-linefix removesatmostoneoptionalASCIIspace,
+keeps4096payloadcapbeforetrimming;4097/NULstillrefuse. Bothplain/intent14/14pass.
+Main52208 COMPLETE:79commands/statechecksEACHmode=158total, restarteach, realfacts/
+draftbundles, memory/story/draftpreserved, humanfalse/equal/rightwitnessespass.
+Requiredworkspace83907 COMPLETEfmt/alltargetclippy/release/strict4smoke.
+NativequantitysourceUNCHANGED fromPR43; no needfullcoding/quantity/factsrerun.
+Frozenmain coordinator/unitcompare-prefix-boundary/glassmind SHA
+931528b065c361a9580a090392497b9e060a894cf5f1edb824ccb0132836eda4.
+Sourcehashes/cases/baselineandcandidateoutputs retainedthere; compactreports
+ tools/quantities/unit-comparison/prefix-boundary/PARENT.md.
+Whenintegratingimplgrammar, preserve this talk_quantities.rs fix: workerowns
+minimalmain.rs DO-route only, do NOToverwriteentireCLIcratedirectory fromitsbase.
+
+## Published PR43 baseline
+
+PR43 MERGED https://github.com/gold-silver-copper/glassmind/pull/43
+Reviewedhead225892adb78afe5d9ea567fe4b08790aa7d93b52; CI38147567718 SUCCESS
+14:32:06→14:33:33UTC (87seconds). Merge14f5f30eb00a60452fbfe8b47e5cfc858453835c
+at2026-10-11T14:33:39Z. Source04a2289; journal225892a.
+Both comparator/unitcompare workers terminal, scopes inactive. Comparatorfull16303 COMPLETE, workspace50616 COMPLETE, mainbuild1718
 COMPLETE, main10770 COMPLETE, authority52463 COMPLETE, facts43900 COMPLETE.
 No running native tool sessions remain. Do not repeat these completed gates.
-Next: publish journal/checkpoint commit, push harness, open PR, wait for CI on
-exact reviewed head, then merge with --match-head-commit. After publication,
-reverify archives before removing the two owned worker worktrees/login links.
+Push56556/PR16952/merge8173 COMPLETE. InitialPRattempt26441 used nonexistent
+masterbase and failedwithoutcreation; correctedmainbase succeeded.
+Cleanup COMPLETE: reverified1890originalfiles331096758bytes, removed ONLYowned
+comparator/unitcompareworktrees andtemporaryloginlinks. Frozenassets retained.
+Reports coordinator/batch43-{archive-review,cleanup}.json. Do not repeat publication.
 
 Coding215/765,550refused0fail; all212previouspassesretained. Three changes are
 styles of one arcade-leaderboard bug. Fullresults coordinator/comparator-full/
@@ -22,10 +51,10 @@ Fullcomparison.json records exact765/no regressions. Parent11:5exactrepairs,
 4unchangednegativecontrols,2ambiguitiesrefused. Olddedupveto evidence unchanged,
 no new fallback attempted. Native5alternatives have distinct passing outputs.
 Originalworker archive1684files280126084bytes verified; frozen1639files279019019.
-WorktreeWORK/comparator retained, frozenbinary2343c2ed6db780ee4b2be674800bfcb168f5acfb4e4c74f532ae2df4aab7ce38.
+WorktreeWORK/comparator removed afterarchiveverification, frozenbinary2343c2ed6db780ee4b2be674800bfcb168f5acfb4e4c74f532ae2df4aab7ce38.
 Reports tools/coding-comparator/PARENT.md andparent/. Source exactfrozen.
 
-UnitcompareworkerformerPID3937908 terminal; worktreeWORK/unitcompare retained.
+UnitcompareworkerformerPID3937908 terminal; worktreeWORK/unitcompare removed afterverification.
 Original terminal-originals206files50970674bytes verifiedBEFOREinspection;
 manifestunitcompare-run/terminal-originals-manifest.json. Frozenfinal-hashes126
 files49345825bytes independentlyverified. Worker886576input incl832128cached +
@@ -62,17 +91,103 @@ Workspacefmt/alltargetclippy/release/strict4fixture passed afterintegration:
 coordinator/combined-comparator-unitcompare-check.log. Earlier comparatorchecked
 buildretained coordinator/comparator-checked, not finalquantityintegration.
 
+## Graph dependency parser rejected and independently reviewed
+
+FormerworkerPID4115132 terminal/inactive; original206files93888678bytes archived
+andverifiedbeforeinspection; frozen97files60767507bytes independentlyverified.
+Botharchivesreverifiedbeforeownedworktreeandtemporaryloginlinkremoved. Retained
+ROOT/graphsyntax-run/frozen-candidate, terminal-originals, originalmanifest;
+coordinator/graphsyntax-independent/cleanup.json. Do notaccessremovedworktree.
+No productionreading/modelchange. Reports tools/reading/syntax-graph/PARENT.md.
+
+SameEWT r2.18 b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c,CC-BY-SA4.0 TRAIN/DEV;
+no newcorpusdownload/officialTEST. Oneexactglobalfirst-orderlabeledarc/MSTmodel,
+threefixedorderedstructuredperceptronepochs, approvedtaggerunchanged. NoDEVretune.
+Nativefull2001/25148words LAS19423→17900,UAS20540→19732, allvalidtrees/zero refusals;
+68TRAINduplicate137edgesincludedandallcorrect. FrozenLAS>=19673/UAS>=20540FAIL.
+Parentunchangedauditindependentlyrescoredallrows, recomputedalledgetransitionsand
+exacttrees:LAS2869oldrightlost1346gained,UAS2293lost1485gained, countsagreeworker.
+
+Frozenparent24sentences52coreedges baseline46/52,19/24complete→41/52,15/24complete
+bothforms/raw;7oldcorrectedgeslost2gained. AllrawUTF8spans/treesvalid. GateFAIL.
+Exactfrozendecoderhelpers extractedintoindependentnativewrapper;12matrices2..5nodes
+matchindependent exhaustive legal single-root maximumscores includingnegative/ties.
+Nofitrepeated. Nativeprobe source/outputs/report underparent/decoder andexternalcache.
+Actual1328492taggerbytes exactSHA0409e47e9376ee1593480461fa35bbe7cfa1c21f6d74fce7ba9bad167dbba39f;
+legacyall2001formsandrawpredictionstreamsbyteidentical. All27prefrozenidentities
+verifiedincludingarchivedsource. Two restoredruntimefilesbyteexactroot; graphmodule
+absent. Newmodel9715189bytesSHA5168e505cfd1a11502a707e403e482a83fde821aaaed270412990d24bec19781.
+Candidatebinaryc57138f62d89d273132e9e6ba67b291006c34c4a67deed998d9adb4406aa2f25.
+
+Parentaudit-evidence.py passesallchecksafterfiveartifact-pathresolutionfailures;
+originalscriptsretained. Nonechangedcandidate/model/expectations. Initialworker
+clippyfailuresfixedbeforefitandarchived. No secondconfiguration. Thisrepresentation
+alsofailed; do nottuneitsfeatures/epochs ontheseobservedDEVfailures. Futureparsing
+workneeds independentTRAINdiagnosis ornewdata/representation; currentimplgrammar
+workerisindependent. No moreparserjobsrunning.
+
+## LIVE: implementation intent grammar and bounded synthesis
+
+WorkerPID4131690 scopeglassmind-continuous-implgrammar.scope active/running,
+MemoryMax8589934592/MemorySwapMax0 verified. Astrafast/ChatGPT only, strippedAPIenv.
+WorktreeWORK/implgrammar, branchcontinuous/implgrammar, base3f7ce8f.
+TaskWORK/implgrammar-task.txt;runWORK/implgrammar-run. No liveworkersource/results
+inspected. Rootcleanexceptcheckpoint; no othermain/worldrustworkerowns thesefiles.
+
+Newprospectivehypothesis afterprior3rejectedimplementationexperiments: typed,
+fullyconsumed action/identifier/owner/path grammar instead ofglobal keyword
+reservation, preservingactualcurrentquery/rename/type/AddField/repair authority.
+Mayreuse/auditold signature-onlyfinitegenerator, NO newtemplatefamily or name/
+English/docs/assertionbasedalgorithmselection. Nativeuniquecompletechoice,
+actuallyexecutedfailingbaseline, no-test/unexecutedtarget/multipassrefusals,
+stale/applyverify/rollback required. DefaultCARGO_TARGET_DIR independence and
+no-live-artifactrefusals required, currentcheck-isolation alreadyaccepted.
+Taskauthorizesminimal do-route mainCLI edit plusworld/bridge modules, nothingin
+reading/everyday. Parentintegratesonlyafternewgates; oldrejections remainrejected.
+
+Readonlyimplgrammar-source43manifestfiles93316468bytes:20publicTRAINsources/
+60requeststyles,40Cargo.toml/src/lib.rs files allsize/SHAverified fromprior
+implementation-routes/reports/train-input-provenance.json. CurrentPR43baseline
+binary included53c6caca..., requestsand sourcecard. RustBenchf79e71a MIT ORApache2;
+no newdownloads/hiddenassets/labels/expectedpatches. Workerfixedsamplethenfull60,
+>=3verifiedrequests andallauthoredboundariespass; parentfull765>=218passes,
+all215oldpassesretained,0fail beforeacceptance. NoDEVworkeraccess.
+
+Parentcoordinator/implgrammar-independent:
+- baseline.py/boundary-cases.json/boundary-freeze.json:12currentquery/rename
+  controlsallpass, separateunambiguousfunctions/fields namedimplement/implemented/
+  write/fill, exactbefore/aftersourcesretained. Theseareobservedcurrentbehavior,
+  notunsupportedassumptions fromrejectedoldfixtures.
+- freeze.py/cases.json/PLAN.md/freeze.json:18freshnativecases=6implementations,
+  1ambiguity,11unchangedcontrols. Same-signaturedifferentbehaviors, unrelated/
+  Unicode names, sumall/negative,oddreverse,characters/word-sequence/count.
+- native.py baseline93213 COMPLETE:0/6implemented,all18wholeprojectsunchanged.
+  15originalscompileandexecutefailingtests;2separate no-tests/unexecuted controls
+  pass;1explicitcompiler-failure. Beforechecksusecopies, no liveCargo.lock.
+- alternatives.py COMPLETE:all-sum andpositive-sum BOTHpasspublic[2]test but
+  nativeoutput8 vs11 for[-3,2,4,5]. Evidence alternatives/report.json+sources/logs.
+- native.py candidateadapterready, --unset-target optionretainspersistentTMPDIR;
+  exactstubbody/outsidebytes+manifest/sourcechecks. Nativeproposercheckseparate
+  fromnativeaftercheck. adapter-freeze.json preservesadapters/fullgatehashes.
+- full-gate.json/compare-full.py frozen:765,>=218/all215retained/0fail. Baseline
+  coordinator/comparator-full/results.jsonl6cdb3be2..., runnerunchangedaddadae4....
+
+NEXT: Onterminalverifyinactive/PIDgone, archiveoriginalpatch/source/reports/results
+andhashverify BEFOREinspection, thenreviewactualgrammar andgeneratoragainstfrozen
+contracts. Nativeparentbaseline/12boundary/2alternativesalreadydone; don'trepeat.
+Candidateparent/full765 onlyafteroriginalsubmissionarchived. Parentpositivecases
+areoutsideworkeraccess. Onlyimplgrammarworkerstilllive; no nativerootjobsremain.
+
 ## Next experiments
 
-Resume usefuldevelopment immediatelyafterpublishing. Current codinggap: zero
-implementationDEVcoverage; choose a new PUBLIC TRAIN failure without looking at
-hiddenmaterial. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
+Implementationgrammar experiment above iscurrent; graphparserrejected. Zero
+implementationDEVcoverage motivated the latter; no gain claimed beforegates. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
 do not duplicate. Deferredthermostatreassociation needs exactoverflowreasoning.
 Facts coverage/inverseedges remain a broadgap; read prior TRAIN999rejection and
 incomingcoverage reports before additionalfetch. Avoidaliasfilterretunes.
 Dialogue accuracyneeds materiallydifferentsemanticrepresentation afterthreefailed
 spanproposalhypotheses. Quantity formalpartiallabelsupervision wasrejected in
-d2902be (alreadyincludedupcomingPR); do not retuneit. Currenttypedcomparison is
+d2902be (publishedinPR43); do not retuneit. Currenttypedcomparison is
 separatecapability, no learnedaccuracygain. Choose a bounded new hypothesis and
 freeze parentcontracts before worker inspection. Atmost4modelslotsincludingroot;
 Astrafast/ChatGPTonly/noAPIkeys. Everycargo8GiB0swap/setsid--waittimeout/persistentTMPDIR.
