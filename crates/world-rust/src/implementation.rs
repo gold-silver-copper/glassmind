@@ -174,6 +174,24 @@ fn candidates(sig: &syn::Signature) -> Result<Vec<String>, String> {
                     }
                 }
             }
+            if output == Ty::String {
+                for reverse in ["", ".rev()"] {
+                    for filter in ["", ".filter(|v| v.is_alphabetic())"] {
+                        let initials = format!(
+                            "{name}.split_whitespace(){reverse}.filter_map(|word| word.chars().next()){filter}"
+                        );
+                        for case in [
+                            "",
+                            ".flat_map(::std::primitive::char::to_uppercase)",
+                            ".flat_map(::std::primitive::char::to_lowercase)",
+                        ] {
+                            out.push(format!(
+                                "{initials}{case}.collect::<::std::string::String>()"
+                            ));
+                        }
+                    }
+                }
+            }
         }
         _ => return Err("unsupported input/return composition".into()),
     }
