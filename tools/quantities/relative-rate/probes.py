@@ -1,0 +1,16 @@
+"""Authored pre-DEV physics probes, not benchmark labels."""
+import json,sys,subprocess
+from pathlib import Path
+from fractions import Fraction
+base='Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other?'
+cases=[(base,'10','seconds'),(base.replace('opposite','the same'),'30','seconds'),(base.replace('36 km/h and 72 km/h','1 km/minute and 5 m/s').replace('100 m and 200 m','1 km and 500 m'),'900/13','seconds'),(base.replace('seconds','minutes'),'1/6','minutes'),(base.replace('100 m and 200 m','1/2 m and 3/2 m'),'1/15','seconds'),('Two trains named Cedar and Maple are moving in opposite directions. The train named Maple is 75 m long. The train named Cedar is moving at 7 m/s. The train named Cedar is 45 m long. The train named Maple is moving at 3 m/s. In how many seconds will they cross each other?','12','seconds'),('Two trains are moving in opposite directions at 60 km/hr and 90 km/hr. Their lengths are 1.75 km and 1.10 km respectively. The time taken by the slower train to cross the faster train in seconds is?','342/5','seconds'),('Two trains 100 m and 200 m long run at the speed of 36 kmph and 72 kmph respectively in opposite directions on parallel tracks. In how many seconds will they cross each other?','10','seconds')]
+for q in [base.replace('36 km/h','72 km/h'),base.replace('opposite directions','directions'),base.replace('in opposite directions ',''),base.replace('200 m','200'),base.replace('seconds','units'),base.replace('100 m','-100 m'),base.replace('100 m','0 m'),base.replace('seconds','metres'),base.replace('Their lengths are 100 m and 200 m respectively. ',''),base.replace('In how many','Their speeds are 37 km/h and 72 km/h. In how many'),base.replace('In how many','They are moving in the same direction. In how many'),base.replace('In how many','The trains stop after 2 seconds. In how many'),base.replace('each other','a driver'),base.replace('In how many','A third train is 50 m long. In how many'),base.replace('In how many','They start 20 seconds apart. In how many'),cases[5][0].replace('Cedar and Maple','Cedar and Cedar'),cases[5][0].replace('named Maple is 75','named Oak is 75'),base.replace('each other','the platform'),base.replace('36 km/h','36 km'),base.replace('In how many','They accelerate. In how many'),base.replace('each other','each other twice')]:cases.append((q,None,None))
+def run(binary):
+ p=subprocess.run([binary,'--jsonl'],input=''.join(json.dumps(q)+'\n' for q,_,_ in cases),text=True,capture_output=True,check=True,timeout=120)
+ a=[json.loads(x) for x in p.stdout.splitlines()];assert len(a)==len(cases);return a
+before=run(sys.argv[1]);after=run(sys.argv[2]);rows=[]
+for (q,v,u),b,a in zip(cases,before,after):
+ ok=a['status']=='refusal' if v is None else a['status']=='answer' and Fraction(a['value'])==Fraction(v) and a.get('unit')==u
+ rows.append(dict(question=q,expected=v,unit=u,before=b,after=a,pass_=ok))
+Path(sys.argv[3]).write_text(json.dumps(dict(total=len(rows),passed=sum(r['pass_'] for r in rows),rows=rows),indent=2)+'\n')
+print(json.dumps([r for r in rows if not r['pass_']],indent=2));assert all(r['pass_'] for r in rows)

@@ -1,0 +1,18 @@
+{
+  "status": "REJECTED; all quantities runtime restored to HEAD",
+  "source": "336d5f9ee5ff70b208d7e2b78ee0b582c6f04a2a",
+  "runtime_diff_empty": true,
+  "restoration_method": "git restore could not lock readonly git administrative directory; used git show HEAD:path to restore three tracked files and removed four owned new files after archive verification",
+  "source_archive": "/home/gsc/.cache/glassmind/continuous-20261010/relativerate-run/candidate/source",
+  "pre_restoration_evidence": "/home/gsc/.cache/glassmind/continuous-20261010/relativerate-run/pre-restoration-evidence",
+  "restored_binaries": {
+    "glassmind-quantities": {
+      "bytes": 25187600,
+      "sha256": "9ed52494c23e60ff1498246f0488934f4cb7af678d34290faa6780cecd675336"
+    },
+    "glassmind": {
+      "bytes": 125862408,
+      "sha256": "31fe5085f68968739f9d870da8b9da90a715a98b4b1692d3db09908d7613a519"
+    }
+  }
+}

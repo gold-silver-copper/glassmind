@@ -2,10 +2,10 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. Previous turn
-merged PR18 and launched the verified-apply fix (progress). This turn independently
-reviewed rejected unanswerable supervision, merged a separate label metric and
-integrated the verified-apply fix; full coding regression passed with all765outcomesidentical.
+Goal active: follow `prompts/grow-continuously.md` until stopped. PR20 verified
+ask-apply fix is merged; all 765 coding outcomes were preserved. Relative-rate
+evidence has been independently reviewed and its restored worktree removed.
+Two prospective workers are running: word grammar and incoming facts coverage.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -22,7 +22,10 @@ Do not repoll/remerge/retest PR18.
 PR19 MERGED9003cbf8422919e8b38e24960bab7b0409095c09 at2026-10-11T06:29:44Z,
 exacthead5273b21e93814bcd4c9d8044a220e1e4548635d3;CI38118136563passed.
 Metricv3/rebaseline/readingrejection published separately before nextsolverwork.
-Do not repeat PR19 checks/merge. Localruntime336d5f9 (askapply) fullyverified; PR20 publication next.
+Do not repeat PR19 checks/merge. PR20 MERGED 5680e9beaf62f7c8c816d27fdc8916aeb17c7478
+at 2026-10-11T06:39:03Z, exact head b569ac0eb0bab5a8b9d39cda904c816e77c08e63,
+CI38118678678 SUCCESS. Runtime336d5f9 (askapply) fully verified. Do not repeat
+PR20 checks, full765 regression or merge.
 
 
 
@@ -156,7 +159,7 @@ Currentquantities source unchangedfrom687f2751ff256f2071330590345ef0652fb09baa.
 ParentPARENT.md/json and327+3probes retained; rawWORK/coordinator/typedmetric-review.
 Publish/rebaseline separately before any prospective capability acceptance.
 
-ASKVERIFY COMPLETE, integratedexactworker source at336d5f9 (notyetpushed).
+ASKVERIFY COMPLETE, exact worker source336d5f9 published and merged in PR20.
 Original36files/278,578bytes archived byworker atWORK/askverify-run/submitted,
 manifestSHA256.json independentlyreverified twice; authunlinked/worktreeremoved.
 Rootchangesmain.rs/edit.rs only: ask--apply usesexistingtypedWorld::apply before
@@ -202,15 +205,42 @@ soREJECT. Legacy24/4443/8 with1229unparseable retained. Only newanswerDEV2382:
 (1150+600)m/(150km/h)=42s. All31ratewords/25productionpayloads preserved;
 29newprobes/43ratewords/50linear/55absolute and3116synthetictriplespass perworker.
 Runtimefullyrestored. Original30files/3,406,541bytes archived/hashverified at
-WORK/relativerate-run/submitted; worktreeretained pendingparentsemantic/artifact
-review. No rootcopy/integration yet. Workerdisclosedreadingpubliclinear devprobe
+WORK/relativerate-run/submitted. Parent reviewed all24frozenidentities, all10saved
+replayreports byte-identical; checked everyoldpayload and new42second derivation.
+Additional same-direction passing-role ambiguity found: slower-passes-faster
+gets the same30seconds as faster-passes-slower. No runtime integrated. Original
+archive reverified against bothcopies before restoredworktree removal. Evidence
+is now tools/quantities/relative-rate includingPARENT.md and parent-role-probes.json. Workerdisclosedreadingpubliclinear devprobe
 generator contrarytooverbroadcommonbrief. No hiddenevaluationmaterial reported;
 launcherfuturewording clarified toforbidhiddenevaluationgenerators whilepermitting
 publicauthoreddevtests, consistentwithactivatedgoal. Keeporiginaldisclosure.
 
-Next: push/open/merge verifiedaskapply PR20 atgreenexacthead; independentlyreview
-relative-rate evidence, thenselectnextcapabilityhypothesis. No live modelworkers,
-no parentbenchmarkjobs, no blocker. Goalactive; preserveoldstoppeddirtyloop.
+WORDGRAMMAR RUNNING, PID3372074, scopeglassmind-continuous-wordgrammar.scope,
+branchcontinuous/wordgrammar atb569ac0, worktreeWORK/wordgrammar, runWORK/wordgrammar-run, briefWORK/wordgrammar-task.txt. Own new word_probability.rs,
+new reading-word-probability binary and tools/reading/word-grammar only; existing
+byte scorer/QA untouched. Classical word trigram trained on six BabyLM TRAIN
+members; freeze tokenizer/vocab/smoothing before DEV. Fixed first20/full1340,
+accept >=747 good preferences (>=40 above byte707). No post-DEV tuning, no token
+perplexity presented as byte likelihood. Model<=150MiB, all rawmodel/data outsidegit.
+
+INVERSEFACTS RUNNING, PID3372721, scopeglassmind-continuous-inversefacts.scope,
+branchcontinuous/inversefacts atb569ac0, worktreeWORK/inversefacts,
+runWORK/inversefacts-run, briefWORK/inversefacts-task.txt. Own tools/facts/inverse-coverage
+only; frozen runtime/aliases/model/scorers. Select top100 incoming entity/property
+pairs by TRAIN-fit frequency within frozen999subjects; never select by DEV or use
+goldanswers as claims. Sequential primary Wikidata queries <=110requests/600seconds/
+20MiB, >=5seconds apart; honor limits. Append actual incoming edges and aliasless
+neighbors to opt-in snapshot. First200/full2821; gate >=7 joint correct (baseline2),
+preservebotholdjointcorrect and no newjointwrong fromcorrect/refused. All answer-only
+and joint transitions and standalone/talk equivalence required. Missing/truncated
+queries remain explicit, no claim of global/temporal uniqueness.
+
+Both workers confirmed forced Astra fast/ChatGPT, API-key environment stripped,
+8GiB memory/zero swap, owned worktrees/authlinks. Two of four worker slots used.
+No parent benchmark jobs. Next: publish relative-rate rejection evidence; review
+worker submissions after terminal state, archive originals BEFORE integration or
+cleanup, verify results and only ship passing candidates. No blocker; goal active.
+Preserve old stopped dirty loop.
 
 ## Historical checkpoints (superseded by current state above)
 

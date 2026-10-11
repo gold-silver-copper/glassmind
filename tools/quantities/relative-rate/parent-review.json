@@ -1,0 +1,40 @@
+{
+  "decision": "REJECT remains:29labelmatches below31gate; additional same-direction passing-role ambiguity found",
+  "original_archive_files": 30,
+  "original_archive_bytes": 3406541,
+  "frozen_source_and_artifact_identities_reconstructed": 24,
+  "replayed_byte_identical": [
+    "sample/predictions.jsonl",
+    "sample/inference.json",
+    "sample/summary.json",
+    "sample/changes.json",
+    "sample/ledger.jsonl",
+    "full/predictions.jsonl",
+    "full/inference.json",
+    "full/summary.json",
+    "full/changes.json",
+    "full/ledger.jsonl"
+  ],
+  "prediction_and_binary_hashes_verified_before_replay": true,
+  "no_repeated_inference": true,
+  "ordered_rows": 4475,
+  "production_payloads_preserved": 25,
+  "ratewords_payloads_preserved": 31,
+  "new_answer": {
+    "index": 2382,
+    "length_metres": "1750",
+    "relative_metres_per_second": "125/3",
+    "seconds": "42"
+  },
+  "candidate": {
+    "correct": 29,
+    "refused": 4443,
+    "wrong": 3,
+    "unscorable": 0
+  },
+  "scope": "Exact typed-label scores match saved evidence, not proof of semantic correctness. Ranked crossing subject is consumed but not retained, so slower-passes-faster same-direction wording receives the faster-passes-slower result. No runtime integrated.",
+  "replay_limitation": "Original --score-only adapter does not itself enforce inference.json binary/prediction hashes; parent verified both externally before copying/replaying frozen artifacts.",
+  "access_note": "Worker disclosed opening public authored linear dev-generator despite overly broad launcher wording. No hidden evaluation data access reported. Future launcher wording clarified to distinguish public dev tests from forbidden hidden evaluation generators.",
+  "final_archive_verified_against_worker_and_repository": true,
+  "restored_worktree_removed": true
+}

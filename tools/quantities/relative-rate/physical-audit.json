@@ -1,0 +1,127 @@
+{
+  "source": "Post-freeze English-only arithmetic transcription; no options consumed by this audit",
+  "license": "MIT OR Apache-2.0",
+  "rows": [
+    {
+      "index": 295,
+      "question": "how many seconds will a train 100 meters long take to cross a bridge 140 meters long if the speed of the train is 36 kmph ?",
+      "lengths_metres": [
+        100,
+        140
+      ],
+      "explicit_speeds": [
+        36
+      ],
+      "geometry": "stationary",
+      "relative_metres_per_second": "10",
+      "independent_seconds": "24",
+      "reason": "Complete clearing requires front-to-rear relative displacement equal to the sum of extents; opposite velocities add; stationary extent has zero velocity.",
+      "new_beyond_ratewords": false,
+      "matches_candidate": true
+    },
+    {
+      "index": 563,
+      "question": "how many seconds will a train 150 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+      "lengths_metres": [
+        150,
+        150
+      ],
+      "explicit_speeds": [
+        36
+      ],
+      "geometry": "stationary",
+      "relative_metres_per_second": "10",
+      "independent_seconds": "30",
+      "reason": "Complete clearing requires front-to-rear relative displacement equal to the sum of extents; opposite velocities add; stationary extent has zero velocity.",
+      "new_beyond_ratewords": false,
+      "matches_candidate": true
+    },
+    {
+      "index": 1128,
+      "question": "how many seconds will a train 60 meters long take to cross a bridge 120 meters long if the speed of the train is 30 m / sec ?",
+      "lengths_metres": [
+        60,
+        120
+      ],
+      "explicit_speeds": [
+        30
+      ],
+      "geometry": "m/s stationary",
+      "relative_metres_per_second": "30",
+      "independent_seconds": "6",
+      "reason": "Complete clearing requires front-to-rear relative displacement equal to the sum of extents; opposite velocities add; stationary extent has zero velocity.",
+      "new_beyond_ratewords": false,
+      "matches_candidate": true
+    },
+    {
+      "index": 1986,
+      "question": "how many seconds will a train 100 meters long take to cross a bridge 170 meters long if the speed of the train is 36 kmph ?",
+      "lengths_metres": [
+        100,
+        170
+      ],
+      "explicit_speeds": [
+        36
+      ],
+      "geometry": "stationary",
+      "relative_metres_per_second": "10",
+      "independent_seconds": "27",
+      "reason": "Complete clearing requires front-to-rear relative displacement equal to the sum of extents; opposite velocities add; stationary extent has zero velocity.",
+      "new_beyond_ratewords": false,
+      "matches_candidate": true
+    },
+    {
+      "index": 2382,
+      "question": "two trains are moving in opposite directions at 60 km / hr and 90 km / hr . their lengths are 1.15 km and 0.6 km respectively . the time taken by the slower train to cross the faster train in seconds is ?",
+      "lengths_metres": [
+        1150,
+        600
+      ],
+      "explicit_speeds": [
+        60,
+        90
+      ],
+      "geometry": "opposite",
+      "relative_metres_per_second": "125/3",
+      "independent_seconds": "42",
+      "reason": "Complete clearing requires front-to-rear relative displacement equal to the sum of extents; opposite velocities add; stationary extent has zero velocity.",
+      "new_beyond_ratewords": true,
+      "matches_candidate": true
+    },
+    {
+      "index": 2836,
+      "question": "how many seconds will a train 140 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+      "lengths_metres": [
+        140,
+        150
+      ],
+      "explicit_speeds": [
+        36
+      ],
+      "geometry": "stationary",
+      "relative_metres_per_second": "10",
+      "independent_seconds": "29",
+      "reason": "Complete clearing requires front-to-rear relative displacement equal to the sum of extents; opposite velocities add; stationary extent has zero velocity.",
+      "new_beyond_ratewords": false,
+      "matches_candidate": true
+    },
+    {
+      "index": 2873,
+      "question": "how many seconds will a train 120 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+      "lengths_metres": [
+        120,
+        150
+      ],
+      "explicit_speeds": [
+        36
+      ],
+      "geometry": "stationary",
+      "relative_metres_per_second": "10",
+      "independent_seconds": "27",
+      "reason": "Complete clearing requires front-to-rear relative displacement equal to the sum of extents; opposite velocities add; stationary extent has zero velocity.",
+      "new_beyond_ratewords": false,
+      "matches_candidate": true
+    }
+  ],
+  "limitations": "Label agreement is separate from physical interpretation; uniform motion and complete clearing are bounded assumptions."
+}

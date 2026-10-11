@@ -1,0 +1,61 @@
+{
+  "baseline_limit": "Sparse missing indices implied refusals; full hash/order and all answer records verified",
+  "correct_losses": {
+    "production": [],
+    "ratewords": []
+  },
+  "full_total": 4475,
+  "gate": false,
+  "legacy_scores": {
+    "candidate": {
+      "correct": 24,
+      "refused": 4443,
+      "wrong": 8
+    },
+    "production": {
+      "correct": 22,
+      "refused": 4450,
+      "wrong": 3
+    },
+    "ratewords": {
+      "correct": 23,
+      "refused": 4444,
+      "wrong": 8
+    }
+  },
+  "legacy_unparseable_full": 1229,
+  "metric": "exact-label-comparison-v3",
+  "new_bad": [],
+  "scores": {
+    "candidate": {
+      "correct": 29,
+      "refused": 4443,
+      "wrong": 3
+    },
+    "production": {
+      "correct": 22,
+      "refused": 4450,
+      "wrong": 3
+    },
+    "ratewords": {
+      "correct": 28,
+      "refused": 4444,
+      "wrong": 3
+    }
+  },
+  "total": 4475,
+  "transitions": {
+    "production": {
+      "correct -> correct": 22,
+      "refused -> correct": 7,
+      "refused -> refused": 4443,
+      "wrong -> wrong": 3
+    },
+    "ratewords": {
+      "correct -> correct": 28,
+      "refused -> correct": 1,
+      "refused -> refused": 4443,
+      "wrong -> wrong": 3
+    }
+  }
+}

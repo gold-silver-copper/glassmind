@@ -1,0 +1,557 @@
+{
+  "total": 55,
+  "right": 55,
+  "cases": [
+    {
+      "question": "The difference between a number and -6 is -1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -6 is -1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -6 is 0. What is the number?",
+      "expected": "-6",
+      "actual": {
+        "status": "answer",
+        "value": "-6",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -6 is 0. What is the difference between the number and 0?",
+      "expected": "6",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -6 is 1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -6 is 1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -6 is 4. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -6 is 4. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is -1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is -1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is 0. What is the number?",
+      "expected": "-2",
+      "actual": {
+        "status": "answer",
+        "value": "-2",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is 0. What is the difference between the number and 0?",
+      "expected": "2",
+      "actual": {
+        "status": "answer",
+        "value": "2",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is 1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is 1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is 4. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and -2 is 4. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is -1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is -1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is 0. What is the number?",
+      "expected": "0",
+      "actual": {
+        "status": "answer",
+        "value": "0",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is 0. What is the difference between the number and 0?",
+      "expected": "0",
+      "actual": {
+        "status": "answer",
+        "value": "0",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is 1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is 1. What is the difference between the number and 0?",
+      "expected": "1",
+      "actual": {
+        "status": "answer",
+        "value": "1",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is 4. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 0 is 4. What is the difference between the number and 0?",
+      "expected": "4",
+      "actual": {
+        "status": "answer",
+        "value": "4",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is -1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is -1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is 0. What is the number?",
+      "expected": "3",
+      "actual": {
+        "status": "answer",
+        "value": "3",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is 0. What is the difference between the number and 0?",
+      "expected": "3",
+      "actual": {
+        "status": "answer",
+        "value": "3",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is 1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is 1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is 4. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 3 is 4. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is -1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is -1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is 0. What is the number?",
+      "expected": "6",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is 0. What is the difference between the number and 0?",
+      "expected": "6",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is 1. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is 1. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is 4. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between a number and 6 is 4. What is the difference between the number and 0?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is -3. The second number is 7. What is twice the difference between the first number and the second number?",
+      "expected": "20",
+      "actual": {
+        "status": "answer",
+        "value": "20",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is -3. The second number is 7. What is the first number minus the second number?",
+      "expected": "-10",
+      "actual": {
+        "status": "answer",
+        "value": "-10",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is -3. The second number is 7. What is the difference between the difference between the first number and the second number and 4?",
+      "expected": "6",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 7. The second number is -3. What is twice the difference between the first number and the second number?",
+      "expected": "20",
+      "actual": {
+        "status": "answer",
+        "value": "20",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 7. The second number is -3. What is the first number minus the second number?",
+      "expected": "10",
+      "actual": {
+        "status": "answer",
+        "value": "10",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 7. The second number is -3. What is the difference between the difference between the first number and the second number and 4?",
+      "expected": "6",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 2. The second number is 3. What is twice the difference between the first number and the second number?",
+      "expected": "2",
+      "actual": {
+        "status": "answer",
+        "value": "2",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 2. The second number is 3. What is the first number minus the second number?",
+      "expected": "-1",
+      "actual": {
+        "status": "answer",
+        "value": "-1",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 2. The second number is 3. What is the difference between the difference between the first number and the second number and 4?",
+      "expected": "3",
+      "actual": {
+        "status": "answer",
+        "value": "3",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 3. The second number is 2. What is twice the difference between the first number and the second number?",
+      "expected": "2",
+      "actual": {
+        "status": "answer",
+        "value": "2",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 3. The second number is 2. What is the first number minus the second number?",
+      "expected": "1",
+      "actual": {
+        "status": "answer",
+        "value": "1",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 3. The second number is 2. What is the difference between the difference between the first number and the second number and 4?",
+      "expected": "3",
+      "actual": {
+        "status": "answer",
+        "value": "3",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 0. The second number is 0. What is twice the difference between the first number and the second number?",
+      "expected": "0",
+      "actual": {
+        "status": "answer",
+        "value": "0",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 0. The second number is 0. What is the first number minus the second number?",
+      "expected": "0",
+      "actual": {
+        "status": "answer",
+        "value": "0",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is 0. The second number is 0. What is the difference between the difference between the first number and the second number and 4?",
+      "expected": "4",
+      "actual": {
+        "status": "answer",
+        "value": "4",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "passed": true
+    }
+  ],
+  "source": "independent finite-root enumeration and direct arithmetic; local development only",
+  "license": "MIT OR Apache-2.0"
+}

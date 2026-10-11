@@ -1,0 +1,32 @@
+[
+  {
+    "index": 2382,
+    "question": "two trains are moving in opposite directions at 60 km / hr and 90 km / hr . their lengths are 1.15 km and 0.6 km respectively . the time taken by the slower train to cross the faster train in seconds is ?",
+    "series": {
+      "candidate": {
+        "actual": {
+          "method": "exact typed relative crossing constraints",
+          "status": "answer",
+          "unit": "seconds",
+          "value": "42"
+        },
+        "grade": "correct",
+        "legacy_grade": "correct"
+      },
+      "production": {
+        "actual": {
+          "status": "refusal"
+        },
+        "grade": "refused",
+        "legacy_grade": "refused"
+      },
+      "ratewords": {
+        "actual": {
+          "status": "refusal"
+        },
+        "grade": "refused",
+        "legacy_grade": "refused"
+      }
+    }
+  }
+]
