@@ -1,0 +1,46 @@
+{
+  "source_revision": "cdd5030a6bfee293c74da99bba52452748a4e1cd",
+  "files": {
+    "/home/gsc/.cache/glassmind/data/train-v3/inputs.jsonl": {
+      "bytes": 1346051,
+      "sha256": "461fa4b0a7157185b231da0aece444342470f84cad8fb3e151845204cc46602f"
+    },
+    "/home/gsc/.cache/glassmind/data/train-v3/labels.jsonl": {
+      "bytes": 3271881,
+      "sha256": "9dd38876af1d7b9adb38f9b13ada4896c691fe84842b20e714658d1d2fe6e845"
+    },
+    "tools/coding-argument-swap/contracts.json": {
+      "bytes": 5519,
+      "sha256": "a622e05be6ffd0fd2dfe88599655eee5049b4ebbe79918536e0fa831bcbf53d5"
+    },
+    "tools/coding-argument-swap/supplement.json": {
+      "bytes": 1151,
+      "sha256": "f99b98be019cc2fb2575253cc10982a75bb46bf2d2c3b5538b24631d1247b2ad"
+    },
+    "Cargo.lock": {
+      "bytes": 17192,
+      "sha256": "318f0de1c2dde0f83d4efcf5c44cf33acc3cfc3e4a22a71ed70909464a09e1a3"
+    },
+    "tools/coding-repair-dev.py": {
+      "bytes": 5536,
+      "sha256": "6739d98436c2b4adf8bb4463e2a52bfd69bc0f7cd62d5270d6139d7726404647"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/argumentswap-run/baseline/glassmind": {
+      "bytes": 80104312,
+      "sha256": "562a774bc98583d487b2bbcabcb53b3b300bae767f8427c7f0491cc2652a07a4"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/argumentswap-run/frozen-candidate/glassmind": {
+      "bytes": 82011288,
+      "sha256": "0b2c2cbcb11906a964022a2edc3daf5d8b8843e4db2a837a53165d972093e462"
+    }
+  },
+  "external_new_data_bytes": 0,
+  "reused_train_source_revision": "rustbench f79e71a (existing project provenance)",
+  "reused_train_source_license": "MIT OR Apache-2.0 (existing project provenance)",
+  "request_data_license": "No separately declared license in local documentation",
+  "authored_contract_license": "MIT OR Apache-2.0",
+  "tmpdir": "/home/gsc/.cache/glassmind/continuous-20261010/argumentswap-run/tmp",
+  "cargo_target_dir": "/home/gsc/.cache/glassmind/continuous-20261010/argumentswap-run/target",
+  "outer_memory_max": 8589934592,
+  "outer_memory_swap_max": 0
+}

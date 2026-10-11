@@ -1,0 +1,25 @@
+{
+  "binary_sha256": "02cb4e4eaddfc7da1220b30511b3750254a9950dbe2da7449457ead17c410bdb",
+  "main_cases": 24,
+  "state_recall_checks": 36,
+  "invalid_bundle_cases": [
+    {
+      "kind": "missing",
+      "error": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/temporal-integrated/main-v2/bundle/temporal.json: No such file or directory (os error 2)\n"
+    },
+    {
+      "kind": "hash_mismatch",
+      "error": "glassmind: temporal.json: size or manifest SHA-256 mismatch\n"
+    },
+    {
+      "kind": "index_binding",
+      "error": "glassmind: temporal schema version or index SHA256 mismatch\n"
+    },
+    {
+      "kind": "version",
+      "error": "glassmind: temporal schema version or index SHA256 mismatch\n"
+    }
+  ],
+  "human_witness": true,
+  "all_passed": true
+}

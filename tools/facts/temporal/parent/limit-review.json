@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "name": "record-limit",
+      "index_bytes": 513,
+      "metadata_bytes": 101901126,
+      "error": "Error: \"input byte cap exceeded\"",
+      "record_count": 100001
+    },
+    {
+      "name": "index-limit",
+      "index_bytes": 33554433,
+      "metadata_bytes": 1127,
+      "error": "Error: \"input byte cap exceeded\"",
+      "record_count": null
+    }
+  ],
+  "note": "100001 schema-valid identical records exceed the tighter metadata byte cap, which rejects first. The initial null-record fixture rejected schema and did not independently exercise a record cap. Valid record count is bounded more tightly by 16MiB in practice."
+}

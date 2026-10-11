@@ -1,0 +1,30 @@
+[
+  {
+    "side": "first",
+    "exit_code": 0,
+    "source_sha256": "68123a6862691b54c8e49995c3187149ee4514ecdddd15b62b69ff5bb06edb63",
+    "test_sha256": "7c442b44ef3436c36ad6dbc2d3bf57a161853b0c0bacb3a8829a739c87dd4832",
+    "patch": {
+      "column": 52,
+      "file": "src/lib.rs",
+      "line": 2,
+      "new": "pair(a,b)",
+      "old": "pair(b,a)",
+      "source": "two_passing"
+    }
+  },
+  {
+    "side": "second",
+    "exit_code": 0,
+    "source_sha256": "f295dc82a13fb8b23599290db5064ec5bd68427dd8cb797163cef91a6ff07c7f",
+    "test_sha256": "7c442b44ef3436c36ad6dbc2d3bf57a161853b0c0bacb3a8829a739c87dd4832",
+    "patch": {
+      "column": 62,
+      "file": "src/lib.rs",
+      "line": 2,
+      "new": "pair(c,d)",
+      "old": "pair(d,c)",
+      "source": "two_passing"
+    }
+  }
+]

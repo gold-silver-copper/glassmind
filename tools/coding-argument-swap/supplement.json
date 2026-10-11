@@ -1,0 +1,7 @@
+[
+ {"name":"protected_string","code":"fn pair(a:u8,b:u8)->(u8,u8){(a,b)}\npub fn run()->&'static str{\"pair(2u8,1u8)\"}\n", "test":"assert_eq!(probe::run(),\"pair(1u8,2u8)\");", "old":null,"new":null},
+ {"name":"protected_test","code":"pub fn run()->u8{0}\n#[cfg(test)] mod t {fn pair(a:u8,b:u8)->(u8,u8){(a,b)} #[test] fn wrong(){assert_eq!(pair(2u8,1u8),(1,2));}}\n", "test":"assert_eq!(probe::run(),0);", "old":null,"new":null},
+ {"name":"protected_type","code":"const fn pair(a:u8,b:u8)->(u8,u8){(a,b)}\npub fn run()->usize{let a:[u8;{pair(2u8,1u8);2}]=[0,0];a.len()}\n", "test":"assert_eq!(probe::run(),3);", "old":null,"new":null},
+ {"name":"macro_use_test","code":"#[cfg(test)] #[macro_use] mod definitions {macro_rules! format {($s:literal,$e:expr)=>{std::format!($s,$e)}}} fn first(a:u8,_b:u8)->u8{a}\npub fn run(a:u8,b:u8)->String{format!(\"{}\",first(b,a))}\n", "test":"assert_eq!(probe::run(1,2),\"1\");", "old":null,"new":null},
+ {"name":"legacy_beats_swap","code":"fn first(a:u8,_b:u8)->u8{a}\npub fn run(a:u8,b:u8)->(bool,u8){(false,first(b,a))}\n", "test":"let r=probe::run(1,2);assert!(r.0 || r.1==1);", "old":"false","new":"true"}
+]

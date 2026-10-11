@@ -1,0 +1,153 @@
+{
+  "corpus": {
+    "cal": 5925,
+    "cal_groups": 2346,
+    "clean": {
+      "CAL": 1182,
+      "FIT": 4590
+    },
+    "exclusions": {
+      "CAL": {
+        "binding_or_execution_refusal": 985,
+        "label_unscorable": 984,
+        "label_wrong": 645,
+        "unsupported_annotation": 2129
+      },
+      "FIT": {
+        "binding_or_execution_refusal": 3989,
+        "label_unscorable": 4341,
+        "label_wrong": 2470,
+        "unsupported_annotation": 8522
+      }
+    },
+    "files": {
+      "PLAN.md": "18159eb5cfeb5f48532161ffc93871daac2650e9d214e93a2615881b390019ca",
+      "clean.jsonl": "806b4e0349789b6cffc53de4be149e55f8fad1d964fff25d3430240992ff4ff1",
+      "membership.jsonl": "782a41882a4899436c1161d20ef3b2616cdc52f59d907da022c65a35579f87d5",
+      "metric.py": "24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0",
+      "model.json": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "split.json": "b16bce2866326a9fe20438f88fca0631d11d62019a75fb2189c9dca6e01411e6",
+      "train.parquet": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    "fit": 23912,
+    "fit_groups": 9521,
+    "structures_fit": 1565,
+    "total": 29837
+  },
+  "metrics": {
+    "CAL": {
+      "forced_horizon": 155,
+      "forced_stop": 1027,
+      "free_exact": 123,
+      "free_numeric_correct": 143,
+      "free_numeric_refused": 46,
+      "free_numeric_wrong": 993,
+      "majority_argument_rows_all": 14,
+      "majority_head0_correct": 1708,
+      "majority_head0_decisions": 5165,
+      "majority_head0_rows_all": 1,
+      "majority_head1_correct": 1286,
+      "majority_head1_decisions": 4138,
+      "majority_head1_rows_all": 115,
+      "majority_head2_correct": 1040,
+      "majority_head2_decisions": 4138,
+      "majority_head2_rows_all": 37,
+      "majority_rows_all": 0,
+      "oracle_args_argument_rows_all": 202,
+      "oracle_args_head1_correct": 2008,
+      "oracle_args_head1_decisions": 4138,
+      "oracle_args_head1_rows_all": 301,
+      "oracle_args_head2_correct": 2116,
+      "oracle_args_head2_decisions": 4138,
+      "oracle_args_head2_rows_all": 273,
+      "oracle_args_rows_all": 202,
+      "oracle_plan_exact": 202,
+      "oracle_plan_numeric_correct": 221,
+      "oracle_plan_numeric_refused": 74,
+      "oracle_plan_numeric_wrong": 887,
+      "refusal_reasons": {
+        "free": {
+          "division by zero": 46
+        },
+        "oracle_plan": {
+          "division by zero": 74
+        }
+      },
+      "rows": 1182,
+      "teacher_argument_rows_all": 202,
+      "teacher_head0_correct": 2765,
+      "teacher_head0_decisions": 5165,
+      "teacher_head0_rows_all": 188,
+      "teacher_head1_correct": 2197,
+      "teacher_head1_decisions": 4138,
+      "teacher_head1_rows_all": 311,
+      "teacher_head2_correct": 2499,
+      "teacher_head2_decisions": 4138,
+      "teacher_head2_rows_all": 351,
+      "teacher_rows_all": 123
+    },
+    "FIT": {
+      "forced_horizon": 466,
+      "forced_stop": 4124,
+      "free_exact": 1775,
+      "free_numeric_correct": 1863,
+      "free_numeric_refused": 93,
+      "free_numeric_wrong": 2634,
+      "majority_argument_rows_all": 71,
+      "majority_head0_correct": 6863,
+      "majority_head0_decisions": 19877,
+      "majority_head0_rows_all": 37,
+      "majority_head1_correct": 4623,
+      "majority_head1_decisions": 15753,
+      "majority_head1_rows_all": 511,
+      "majority_head2_correct": 3988,
+      "majority_head2_decisions": 15753,
+      "majority_head2_rows_all": 186,
+      "majority_rows_all": 0,
+      "oracle_args_argument_rows_all": 2258,
+      "oracle_args_head1_correct": 12406,
+      "oracle_args_head1_decisions": 15753,
+      "oracle_args_head1_rows_all": 2809,
+      "oracle_args_head2_correct": 12301,
+      "oracle_args_head2_decisions": 15753,
+      "oracle_args_head2_rows_all": 2691,
+      "oracle_args_rows_all": 2258,
+      "oracle_plan_exact": 2258,
+      "oracle_plan_numeric_correct": 2334,
+      "oracle_plan_numeric_refused": 93,
+      "oracle_plan_numeric_wrong": 2163,
+      "refusal_reasons": {
+        "free": {
+          "division by zero": 93
+        },
+        "oracle_plan": {
+          "division by zero": 92,
+          "rational overflow": 1
+        }
+      },
+      "rows": 4590,
+      "teacher_argument_rows_all": 2258,
+      "teacher_head0_correct": 16153,
+      "teacher_head0_decisions": 19877,
+      "teacher_head0_rows_all": 2450,
+      "teacher_head1_correct": 12886,
+      "teacher_head1_decisions": 15753,
+      "teacher_head1_rows_all": 2878,
+      "teacher_head2_correct": 12857,
+      "teacher_head2_decisions": 15753,
+      "teacher_head2_rows_all": 2866,
+      "teacher_rows_all": 1775
+    }
+  },
+  "selfchecks": {
+    "baseline_cal_fit_rows": 0,
+    "baseline_fit_rows": 4590,
+    "exact_helper_replay200": 200,
+    "exact_native_clean_FIT": 4590,
+    "exact_retained_clean_CAL": 1182,
+    "no_forward_references": 5772,
+    "perturbed_gold_op_contexts": 39782,
+    "rows_checked": 5772,
+    "stop_denominators_checked": 5772
+  }
+}

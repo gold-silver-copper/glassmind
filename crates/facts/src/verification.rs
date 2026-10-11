@@ -58,9 +58,9 @@ pub enum Verification {
     },
 }
 
-struct Claim<'a> {
+pub(super) struct Claim<'a> {
     subject: &'a str,
-    property: &'static str,
+    pub(super) property: &'static str,
     object: &'a str,
 }
 
@@ -126,7 +126,7 @@ pub(super) fn endpoint(text: &str) -> Result<(), RefusalReason> {
     Ok(())
 }
 
-fn parse(question: &str) -> Result<Vec<Claim<'_>>, RefusalReason> {
+pub(super) fn parse(question: &str) -> Result<Vec<Claim<'_>>, RefusalReason> {
     // Bound before trimming, case conversion, tokenization or store traversal.
     if question.len() > MAX_VERIFY_QUESTION_BYTES {
         return Err(RefusalReason::QuestionTooLong);

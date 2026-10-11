@@ -1,0 +1,1 @@
+{"first_patch":{"column":52,"file":"src/lib.rs","line":2,"new":"pair(a,b)","old":"pair(b,a)","source":"two_passing"},"reason":"unresolved new argument-swap choice; no semantic witness claimed","second_patch":{"column":62,"file":"src/lib.rs","line":2,"new":"pair(c,d)","old":"pair(d,c)","source":"two_passing"},"second_tests_passed":true}

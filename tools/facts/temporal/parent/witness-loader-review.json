@@ -1,0 +1,440 @@
+{
+  "authored_supported_witnesses": [
+    "year_interior",
+    "filled_year_interior",
+    "month_interior",
+    "day_interior",
+    "leap_2000",
+    "citizenship",
+    "explicit_ids"
+  ],
+  "real_queries": [
+    {
+      "subject": "Q1029283",
+      "date": "1961-01-01",
+      "result": {
+        "status": "supported",
+        "date": "1961-01-01",
+        "witness": {
+          "edge": {
+            "subject": "Q1029283",
+            "property": "P108",
+            "object": "Q13371",
+            "subject_resolution": "explicit_id",
+            "object_resolution": "explicit_id",
+            "source_url": "https://www.wikidata.org/wiki/Q1029283#P108"
+          },
+          "claim_id": "Q1029283$0b0bde31-4b47-db91-8556-e2f83caa5f75",
+          "rank": "normal",
+          "start": {
+            "raw": {
+              "time": "+1960-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1960-01-01",
+            "latest": "1960-12-31"
+          },
+          "end": {
+            "raw": {
+              "time": "+1963-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1963-01-01",
+            "latest": "1963-12-31"
+          },
+          "source_url": "https://www.wikidata.org/wiki/Q1029283#P108",
+          "raw_file": "faea9d8294db2ab9.json",
+          "raw_sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "policy": "latest_start_day < requested_day < earliest_end_day"
+        },
+        "scope": "one_recorded_bounded_interval_calendar_day"
+      }
+    },
+    {
+      "subject": "Q1029283",
+      "date": "1960-12-31",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q1029283$0b0bde31-4b47-db91-8556-e2f83caa5f75",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q1029283",
+      "date": "1963-01-01",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q1029283$0b0bde31-4b47-db91-8556-e2f83caa5f75",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q1157672",
+      "date": "1926-01-01",
+      "result": {
+        "status": "supported",
+        "date": "1926-01-01",
+        "witness": {
+          "edge": {
+            "subject": "Q1157672",
+            "property": "P27",
+            "object": "Q149805",
+            "subject_resolution": "explicit_id",
+            "object_resolution": "explicit_id",
+            "source_url": "https://www.wikidata.org/wiki/Q1157672#P27"
+          },
+          "claim_id": "Q1157672$47C9D3C9-F13F-4F3B-BC04-948839501583",
+          "rank": "normal",
+          "start": {
+            "raw": {
+              "time": "+1925-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1925-01-01",
+            "latest": "1925-12-31"
+          },
+          "end": {
+            "raw": {
+              "time": "+1948-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1948-01-01",
+            "latest": "1948-12-31"
+          },
+          "source_url": "https://www.wikidata.org/wiki/Q1157672#P27",
+          "raw_file": "c739512d7faa2662.json",
+          "raw_sha256": "80d3edde986ee530f3db13c9a03df07760a3c0a23f5b075ed7d73fb3e7f21df9",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "policy": "latest_start_day < requested_day < earliest_end_day"
+        },
+        "scope": "one_recorded_bounded_interval_calendar_day"
+      }
+    },
+    {
+      "subject": "Q1157672",
+      "date": "1925-12-31",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q1157672$47C9D3C9-F13F-4F3B-BC04-948839501583",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q1157672",
+      "date": "1948-01-01",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q1157672$47C9D3C9-F13F-4F3B-BC04-948839501583",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q123190",
+      "date": "1930-01-01",
+      "result": {
+        "status": "supported",
+        "date": "1930-01-01",
+        "witness": {
+          "edge": {
+            "subject": "Q123190",
+            "property": "P108",
+            "object": "Q503473",
+            "subject_resolution": "explicit_id",
+            "object_resolution": "explicit_id",
+            "source_url": "https://www.wikidata.org/wiki/Q123190#P108"
+          },
+          "claim_id": "Q123190$183BC9DB-725C-497E-AA0D-0773E3E5821C",
+          "rank": "normal",
+          "start": {
+            "raw": {
+              "time": "+1929-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1929-01-01",
+            "latest": "1929-12-31"
+          },
+          "end": {
+            "raw": {
+              "time": "+1971-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1971-01-01",
+            "latest": "1971-12-31"
+          },
+          "source_url": "https://www.wikidata.org/wiki/Q123190#P108",
+          "raw_file": "4d71726fee4eb964.json",
+          "raw_sha256": "33a3aaa16f4ccb181ef9990468064328d49b58ab1c680aed8c238ceb97336188",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "policy": "latest_start_day < requested_day < earliest_end_day"
+        },
+        "scope": "one_recorded_bounded_interval_calendar_day"
+      }
+    },
+    {
+      "subject": "Q123190",
+      "date": "1929-12-31",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q123190$183BC9DB-725C-497E-AA0D-0773E3E5821C",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q123190",
+      "date": "1971-01-01",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q123190$183BC9DB-725C-497E-AA0D-0773E3E5821C",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q1363756",
+      "date": "1948-01-01",
+      "result": {
+        "status": "supported",
+        "date": "1948-01-01",
+        "witness": {
+          "edge": {
+            "subject": "Q1363756",
+            "property": "P27",
+            "object": "Q842794",
+            "subject_resolution": "explicit_id",
+            "object_resolution": "explicit_id",
+            "source_url": "https://www.wikidata.org/wiki/Q1363756#P27"
+          },
+          "claim_id": "Q1363756$7B4DE848-7B76-4F30-B99F-98D7E750EE53",
+          "rank": "normal",
+          "start": {
+            "raw": {
+              "time": "+1947-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1947-01-01",
+            "latest": "1947-12-31"
+          },
+          "end": {
+            "raw": {
+              "time": "+1989-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1989-01-01",
+            "latest": "1989-12-31"
+          },
+          "source_url": "https://www.wikidata.org/wiki/Q1363756#P27",
+          "raw_file": "34a7f67ff26fdd8d.json",
+          "raw_sha256": "255b3e2b7cb564ddf5890e1643f81a5d525b7c4db023a632cab4270ff17feb7c",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "policy": "latest_start_day < requested_day < earliest_end_day"
+        },
+        "scope": "one_recorded_bounded_interval_calendar_day"
+      }
+    },
+    {
+      "subject": "Q1363756",
+      "date": "1947-12-31",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q1363756$7B4DE848-7B76-4F30-B99F-98D7E750EE53",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q1363756",
+      "date": "1989-01-01",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q1363756$7B4DE848-7B76-4F30-B99F-98D7E750EE53",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q145065",
+      "date": "1946-01-01",
+      "result": {
+        "status": "supported",
+        "date": "1946-01-01",
+        "witness": {
+          "edge": {
+            "subject": "Q145065",
+            "property": "P108",
+            "object": "Q796754",
+            "subject_resolution": "explicit_id",
+            "object_resolution": "explicit_id",
+            "source_url": "https://www.wikidata.org/wiki/Q145065#P108"
+          },
+          "claim_id": "Q145065$f3933d56-4fc7-f275-2278-82d0d2ebcc8e",
+          "rank": "normal",
+          "start": {
+            "raw": {
+              "time": "+1945-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1945-01-01",
+            "latest": "1945-12-31"
+          },
+          "end": {
+            "raw": {
+              "time": "+1953-00-00T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            },
+            "earliest": "1953-01-01",
+            "latest": "1953-12-31"
+          },
+          "source_url": "https://www.wikidata.org/wiki/Q145065#P108",
+          "raw_file": "95fd53a399757ecb.json",
+          "raw_sha256": "b965edb9f46f23aab06c54b9e85fe99ccb7dbb364bb82198832c11c0d7352725",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "policy": "latest_start_day < requested_day < earliest_end_day"
+        },
+        "scope": "one_recorded_bounded_interval_calendar_day"
+      }
+    },
+    {
+      "subject": "Q145065",
+      "date": "1945-12-31",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q145065$f3933d56-4fc7-f275-2278-82d0d2ebcc8e",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    },
+    {
+      "subject": "Q145065",
+      "date": "1953-01-01",
+      "result": {
+        "status": "unknown",
+        "reason": "no_recorded_bounded_interval",
+        "skipped": [
+          {
+            "claim_id": "Q145065$f3933d56-4fc7-f275-2278-82d0d2ebcc8e",
+            "reason": "outside_strict_interior"
+          }
+        ]
+      }
+    }
+  ],
+  "loader_negatives": [
+    {
+      "name": "index_hash",
+      "exit": 1,
+      "error": "Error: \"temporal schema version or index SHA256 mismatch\""
+    },
+    {
+      "name": "edge_object",
+      "exit": 1,
+      "error": "Error: \"inconsistent statement triple\""
+    },
+    {
+      "name": "precomputed_bounds",
+      "exit": 1,
+      "error": "Error: \"unknown field `start`, expected one of `subject`, `property`, `object`, `source_url`, `raw_file`, `raw_sha256`, `statement`\""
+    },
+    {
+      "name": "version",
+      "exit": 1,
+      "error": "Error: \"temporal schema version or index SHA256 mismatch\""
+    },
+    {
+      "name": "record_limit",
+      "exit": 1,
+      "error": "Error: \"invalid type: null, expected struct Record\""
+    },
+    {
+      "name": "byte_limit",
+      "exit": 1,
+      "error": "Error: \"input byte cap exceeded\""
+    },
+    {
+      "name": "duplicate_qualifiers",
+      "exit": 1,
+      "error": "Error: \"duplicate JSON key at line 1 column 1120\""
+    }
+  ]
+}

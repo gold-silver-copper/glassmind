@@ -1,0 +1,234 @@
+{
+  "totals": {
+    "refused": 20,
+    "verified": 7
+  },
+  "details": [
+    {
+      "source": "rb-fix-tests-arcade-leaderboard",
+      "turn_id": "train/rb-fix-tests-arcade-leaderboard/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-blog-tags",
+      "turn_id": "train/rb-fix-tests-blog-tags/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-caesar-wrap",
+      "turn_id": "train/rb-fix-tests-caesar-wrap/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-config-duration",
+      "turn_id": "train/rb-fix-tests-config-duration/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-crossing-light",
+      "turn_id": "train/rb-fix-tests-crossing-light/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-download-progress",
+      "turn_id": "train/rb-fix-tests-download-progress/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-download-progress",
+          "file": "src/lib.rs",
+          "line": 16,
+          "column": 30,
+          "old": "percent(d.size, d.received)",
+          "new": "percent(d.received, d.size)"
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-frost-alert",
+      "turn_id": "train/rb-fix-tests-frost-alert/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-frost-alert",
+          "file": "src/lib.rs",
+          "line": 7,
+          "column": 11,
+          "old": "<",
+          "new": "<="
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-invoice-tax",
+      "turn_id": "train/rb-fix-tests-invoice-tax/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-invoice-tax",
+          "file": "src/lib.rs",
+          "line": 20,
+          "column": 8,
+          "old": "-",
+          "new": "+"
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-leap-year",
+      "turn_id": "train/rb-fix-tests-leap-year/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-ledger-pay",
+      "turn_id": "train/rb-fix-tests-ledger-pay/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-log-first-error",
+      "turn_id": "train/rb-fix-tests-log-first-error/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-log-first-error",
+          "file": "src/lib.rs",
+          "line": 7,
+          "column": 33,
+          "old": "||",
+          "new": "&&"
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-note-word-count",
+      "turn_id": "train/rb-fix-tests-note-word-count/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-page-slice",
+      "turn_id": "train/rb-fix-tests-page-slice/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-pixel-rle",
+      "turn_id": "train/rb-fix-tests-pixel-rle/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-pos-price-cents",
+      "turn_id": "train/rb-fix-tests-pos-price-cents/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-recent-files-ring",
+      "turn_id": "train/rb-fix-tests-recent-files-ring/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-recent-files-ring",
+          "file": "src/lib.rs",
+          "line": 24,
+          "column": 21,
+          "old": ">=",
+          "new": ">"
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-room-bookings-merge",
+      "turn_id": "train/rb-fix-tests-room-bookings-merge/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-sensor-mean-empty",
+      "turn_id": "train/rb-fix-tests-sensor-mean-empty/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-shipping-boxes",
+      "turn_id": "train/rb-fix-tests-shipping-boxes/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-shipping-boxes",
+          "file": "src/lib.rs",
+          "line": 13,
+          "column": 4,
+          "old": "order.items / order.per_box",
+          "new": "::core::primitive::u32::div_ceil(order.items, order.per_box)"
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-shop-reorder",
+      "turn_id": "train/rb-fix-tests-shop-reorder/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-snack-machine",
+      "turn_id": "train/rb-fix-tests-snack-machine/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-steps-moving-average",
+      "turn_id": "train/rb-fix-tests-steps-moving-average/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-steps-moving-average",
+          "file": "src/lib.rs",
+          "line": 10,
+          "column": 18,
+          "old": "..",
+          "new": "..="
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-thermostat-fahrenheit",
+      "turn_id": "train/rb-fix-tests-thermostat-fahrenheit/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-thousands-negative",
+      "turn_id": "train/rb-fix-tests-thousands-negative/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-todo-reminders",
+      "turn_id": "train/rb-fix-tests-todo-reminders/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-undo-menu",
+      "turn_id": "train/rb-fix-tests-undo-menu/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-winter-high",
+      "turn_id": "train/rb-fix-tests-winter-high/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    }
+  ],
+  "inputs_sha256": "6eea206a106aa053c7e458e5975f7a4e2c4c2b19a7a066510ad454f2985e6164"
+}

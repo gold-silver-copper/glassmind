@@ -1,0 +1,68 @@
+{
+  "created_utc": "2026-10-11T12:31:46.339884+00:00",
+  "kind": "fact_verification_at",
+  "cases": [
+    {
+      "name": "supported",
+      "line": "Check fact on 2011-01-01: Did Iris Vale work for Acorn Lab?",
+      "status": "supported"
+    },
+    {
+      "name": "uncertain_start",
+      "line": "Check fact on 2010-12-31: Did Iris Vale work for Acorn Lab?",
+      "status": "unknown"
+    },
+    {
+      "name": "uncertain_end",
+      "line": "Check fact on 2013-01-01: Did Iris Vale work for Acorn Lab?",
+      "status": "unknown"
+    },
+    {
+      "name": "outside",
+      "line": "Check fact on 2014-01-01: Did Iris Vale work for Acorn Lab?",
+      "status": "unknown"
+    },
+    {
+      "name": "missing_alias",
+      "line": "Check fact on 2011-01-01: Did Missing Person work for Acorn Lab?",
+      "status": "unknown"
+    },
+    {
+      "name": "invalid_leap",
+      "line": "Check fact on 1900-02-29: Did Iris Vale work for Acorn Lab?",
+      "status": "refused"
+    },
+    {
+      "name": "date_incomplete",
+      "line": "Check fact on 2011: Did Iris Vale work for Acorn Lab?",
+      "status": "refused"
+    },
+    {
+      "name": "separator_missing",
+      "line": "Check fact on 2011-01-01 Did Iris Vale work for Acorn Lab?",
+      "status": "refused"
+    },
+    {
+      "name": "memory_instruction",
+      "line": "Check fact on 2011-01-01: My name is Changed",
+      "status": "refused"
+    },
+    {
+      "name": "story_instruction",
+      "line": "Check fact on 2011-01-01: Did Iris Vale work for Acorn Lab? Move Mary to the garden.",
+      "status": "refused"
+    },
+    {
+      "name": "pronoun",
+      "line": "Check fact on 2011-01-01: Did she work for Acorn Lab?",
+      "status": "unknown_or_refused"
+    },
+    {
+      "name": "case_space",
+      "line": "  CHECK FACT ON 2011-01-01: Did Iris Vale work for Acorn Lab?  ",
+      "status": "supported"
+    }
+  ],
+  "graph_case": "year_interior from frozen45rawcases",
+  "semantics": "Everyprefixedline reservesdatedroute, updatesonlyturn/last_user_utterance andclearslast_slot; no names/preferences/storymutation. Bothintentmodes required. OriginalCheckfact/Matchfacts/Listanswers andfulllegacybyteoutputs unchanged. Missingtemporalasset orfactsbundle refuses explicitly, neverfallsbacktostaticedge. Explicitlydeclared missing/corrupt/wrongindexbinding/unsupportedversion temporalasset failsload beforeoutput. Fileunmentionedinmanifest isnottrusted. Humanreplyhasquestiondate,strictinteriorbounds,precision,exactclaim/source andsnapshot-onlyscope; no currenttruthclaim. Followupbarecorrection cannoteditpreviousname afterdatedturn. Newroutewillbeimplementedonlyifworkeraccepted."
+}
