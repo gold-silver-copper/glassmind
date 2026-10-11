@@ -115,6 +115,10 @@ def main():
     spec.loader.exec_module(audit)
     old = audit.audit(cal, baseline)
     new = audit.audit(cal, predictions)
+    link_counts = {name: {'linked': sum(p['entity'] is not None for p in stream),
+                          'correct_entity': sum(p['entity'] == row[0] for row, p in zip(cal, stream, strict=True)),
+                          'correct_entity_and_relation': sum(p['entity'] == row[0] and p['relation'] == row[1] for row, p in zip(cal, stream, strict=True))}
+                   for name, stream in [('baseline', baseline), ('candidate', predictions)]}
     transitions = Counter()
     newly_wrong = []
     lost_correct = []
@@ -133,6 +137,7 @@ def main():
     db.close()
     report = {'scope': 'existing every-tenth TRAIN CAL; independent public first-shard graph', 'total': len(cal),
               'baseline': old, 'candidate': new, 'strict_joint_gain': gain,
+              'link_counts': link_counts,
               'transitions': {f'{a}_to_{b}': transitions[f'{a}_to_{b}'] for a in ['right', 'refused', 'wrong'] for b in ['right', 'refused', 'wrong']},
               'newly_wrong': newly_wrong, 'lost_correct': lost_correct,
               'promotion_prerequisite_passed': passed, 'native_cal_knowledge_diagnostic': knowledge,
