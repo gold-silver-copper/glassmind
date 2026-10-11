@@ -45,11 +45,60 @@ pub struct SessionState {
 pub struct DialogueModel {
     pub version: u32,
     pub service: String,
-    pub intent: IntentModel,
-    pub categorical: BTreeMap<String, IntentModel>,
-    pub spans: IntentModel,
+    pub intent: ProposalModel,
+    pub categorical: BTreeMap<String, ProposalModel>,
+    pub spans: ProposalModel,
     pub training_dialogues: usize,
     pub training_frames: usize,
+}
+
+/// A one-class training set has a deterministic empirical prediction. Its
+/// evidence count is persisted; no synthetic examples or service-specific fallback.
+/// Untagged learned representation keeps frozen v2 models loadable unchanged.
+#[derive(Debug, Deserialize, Serialize)]
+#[serde(untagged)]
+pub enum ProposalModel {
+    Learned(IntentModel),
+    Constant {
+        constant_label: String,
+        evidence_rows: usize,
+    },
+}
+impl ProposalModel {
+    pub fn train(rows: &[Example], options: TrainOptions) -> Result<Self, String> {
+        let labels: BTreeSet<_> = rows.iter().map(|r| r.label.as_str()).collect();
+        if labels.len() == 1
+            && let Some(row) = rows.first()
+        {
+            return Ok(Self::Constant {
+                constant_label: row.label.clone(),
+                evidence_rows: rows.len(),
+            });
+        }
+        IntentModel::train(rows, options).map(Self::Learned)
+    }
+    pub fn validate(&self) -> Result<(), String> {
+        match self {
+            Self::Learned(m) => m.validate(),
+            Self::Constant {
+                constant_label,
+                evidence_rows,
+            } if !constant_label.is_empty() && *evidence_rows > 0 => Ok(()),
+            _ => Err("constant proposal requires training evidence".into()),
+        }
+    }
+    pub fn predict(&self, text: &str) -> String {
+        match self {
+            Self::Learned(m) => m.predict(text).label,
+            Self::Constant { constant_label, .. } => constant_label.clone(),
+        }
+    }
+    pub fn feature_count(&self) -> usize {
+        match self {
+            Self::Learned(m) => m.feature_count(),
+            Self::Constant { .. } => 0,
+        }
+    }
 }
 
 #[derive(Debug)]
@@ -204,14 +253,14 @@ impl DialogueModel {
             char_weight: 0.15,
             min_df: 2,
         };
-        let intent = IntentModel::train(&intent_rows, options.clone())?;
+        let intent = ProposalModel::train(&intent_rows, options.clone())?;
         let mut slot_models = BTreeMap::new();
         for (name, rows) in categorical {
             eprintln!("training categorical {name}: {} rows", rows.len());
-            slot_models.insert(name, IntentModel::train(&rows, options.clone())?);
+            slot_models.insert(name, ProposalModel::train(&rows, options.clone())?);
         }
         eprintln!("training span proposals: {} tokens", span_rows.len());
-        let spans = IntentModel::train(&span_rows, options)?;
+        let spans = ProposalModel::train(&span_rows, options)?;
         Ok(Self {
             version: 2,
             service: schema.service_name.clone(),
@@ -251,14 +300,11 @@ impl DialogueModel {
             state.slots.clear();
             state.active_intent = None;
         }
-        let proposed = self
-            .intent
-            .predict(&format!(
-                "{} priorintent{}",
-                context(&state.previous_system, &turn.utterance, false),
-                state.active_intent.as_deref().unwrap_or("NONE")
-            ))
-            .label;
+        let proposed = self.intent.predict(&format!(
+            "{} priorintent{}",
+            context(&state.previous_system, &turn.utterance, false),
+            state.active_intent.as_deref().unwrap_or("NONE")
+        ));
         if let Some(intent) = proposed.strip_prefix("SET:") {
             if intent == "NONE" {
                 state.active_intent = None;
@@ -272,10 +318,10 @@ impl DialogueModel {
                 &turn.utterance,
                 state.slots.contains_key(slot),
             ));
-            if prediction.label == "DELETE" {
+            if prediction == "DELETE" {
                 state.slots.remove(slot);
             }
-            if let Some(value) = prediction.label.strip_prefix("SET:") {
+            if let Some(value) = prediction.strip_prefix("SET:") {
                 if value == "dontcare" {
                     state.slots.insert(slot.clone(), SlotValue::DontCare);
                 } else if schema.slots.iter().any(|s| {
@@ -296,7 +342,7 @@ impl DialogueModel {
             let p = self
                 .spans
                 .predict(&token_context(&words, i, &state.previous_system));
-            if let Some((tag, slot)) = p.label.split_once(':') {
+            if let Some((tag, slot)) = p.split_once(':') {
                 if !schema
                     .slots
                     .iter()

@@ -1,0 +1,33 @@
+{
+  "split": "train only",
+  "counts": {
+    "correct_opportunity": 475,
+    "incorrect_opportunity": 2
+  },
+  "incorrect_examples": [
+    {
+      "source": "Travel_1",
+      "source_slot": "location",
+      "target": "Weather_1",
+      "target_slot": "city",
+      "value": "Washington D.C",
+      "gold": [
+        "Washington D.C."
+      ],
+      "system": "There is a Nature Preserve ie the 56 signers of the Declaration of Independence Memorial",
+      "user": "Ok, how is the weather there on 13th of March?"
+    },
+    {
+      "source": "Travel_1",
+      "source_slot": "location",
+      "target": "Weather_1",
+      "target_slot": "city",
+      "value": "Washington D.C",
+      "gold": [
+        "Washington D.C."
+      ],
+      "system": "There is 28 % chance of rain with temperature hovering around 79 degrees.",
+      "user": "Ok, Please get me cab to get there, shared cab is also ok"
+    }
+  ]
+}

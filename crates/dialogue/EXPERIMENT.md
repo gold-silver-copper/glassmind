@@ -139,3 +139,13 @@ training for another service. The final model's smaller exact score shows that
 span boundaries and categorical decisions still lose complete states. No LLM,
 external API inference, credentials, other agents, or flexion were used.
 
+
+
+## Later multi-service work
+
+The original single-service result above remains the frozen regression.
+A separate `dialogue-multi` command now models three selected services with
+predicted routing and independent state. Initial routing hypotheses were
+rejected; a subsequent learned slot-transfer experiment improves joint state
+coverage while retaining new-copy errors explicitly.
+[Current scope, exact results and reproduction](../../tools/dialogue/references/HANDOFF.md).
