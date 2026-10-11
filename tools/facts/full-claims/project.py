@@ -63,6 +63,7 @@ def select(row, row_id):
 
 def main():
     root = Path(sys.argv[1]).resolve()
+    assert digest(root / 'acquisition.json') == 'e29894e98c4001db53ca5b93d9420e82e4736fd2985c28bd8251c899d2718b18'
     acquisition = json.loads((root / 'acquisition.json').read_text())
     started = time.monotonic()
     pa.set_cpu_count(2)
@@ -85,6 +86,11 @@ def main():
     offset = total = qualified = 0
     for spec in acquisition['files']:
         path = root / 'raw' / spec['table'] / spec['path']
+        # Files become visible atomically only after the separate fetcher verifies them.
+        while not path.is_file():
+            if time.monotonic() - started >= SECONDS:
+                raise RuntimeError('projection time gate exceeded waiting for acquisition')
+            time.sleep(2)
         assert path.stat().st_size == spec['bytes'] and digest(path) == spec['sha256']
         parquet = pq.ParquetFile(path)
         nrows = parquet.metadata.num_rows

@@ -34,6 +34,10 @@ def main():
     root, name, seconds, *command = sys.argv[1:]
     root, seconds = Path(root).resolve(), int(seconds)
     limit = 384*1024**3
+    def interrupted(signum, frame):
+        raise RuntimeError(f"supervisor interrupted by signal {signum}")
+    signal.signal(signal.SIGTERM, interrupted)
+    signal.signal(signal.SIGINT, interrupted)
     started = time.monotonic()
     peak = 0
     failed_at = None

@@ -34,7 +34,7 @@ pub(super) const SCHEMA: &[(&str, &str, &str)] = &[
 ];
 
 /// Source-row positions are zero-based file offsets; stored row IDs add one.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct SourceFile {
     pub table: String,
@@ -49,7 +49,7 @@ pub struct SourceFile {
 
 /// Portable provenance for the exact numeric pilot and its original public files.
 /// The canonical-ID audit is a prerequisite, not an assertion made by import.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct SourceManifest {
     pub schema: u32,
@@ -144,7 +144,7 @@ impl SourceManifest {
     }
 }
 
-fn file_hash(path: &Path) -> Result<(u64, String), String> {
+pub(super) fn file_hash(path: &Path) -> Result<(u64, String), String> {
     let mut file = File::open(path).map_err(error)?;
     let mut sha = Sha256::new();
     let mut bytes = 0u64;
@@ -160,7 +160,7 @@ fn file_hash(path: &Path) -> Result<(u64, String), String> {
     Ok((bytes, format!("{:x}", sha.finalize())))
 }
 
-fn readonly_uri(path: &Path) -> Result<String, String> {
+pub(super) fn readonly_uri(path: &Path) -> Result<String, String> {
     let path = path.canonicalize().map_err(error)?;
     let path = path.to_str().ok_or("pilot path is not UTF-8")?;
     let mut uri = String::from("file:");
@@ -175,7 +175,7 @@ fn readonly_uri(path: &Path) -> Result<String, String> {
     Ok(uri)
 }
 
-fn count(db: &Connection, sql: &str) -> Result<u64, String> {
+pub(super) fn count(db: &Connection, sql: &str) -> Result<u64, String> {
     u64::try_from(
         db.query_row(sql, [], |r| r.get::<_, i64>(0))
             .map_err(error)?,
@@ -183,7 +183,7 @@ fn count(db: &Connection, sql: &str) -> Result<u64, String> {
     .map_err(error)
 }
 
-fn stage(started: Instant, name: &str) {
+pub(super) fn stage(started: Instant, name: &str) {
     eprintln!(
         "{}",
         serde_json::json!({"stage":name,"seconds":started.elapsed().as_secs_f64()})
