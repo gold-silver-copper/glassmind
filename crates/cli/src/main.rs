@@ -442,6 +442,22 @@ fn act(
         }
         return Ok(());
     }
+    if let Some(action) = glassmind_english_rust::add_fields::request(text) {
+        let result = action.and_then(|action| {
+            let proposal = system.world.propose_add_field(&action)?;
+            let count = system.world.apply_add_field(&proposal)?;
+            Ok(format!(
+                "Added public field {}: {} to {}; updated {} constructors ({} verified edits).",
+                action.field, action.ty, action.owner, proposal.constructors, count
+            ))
+        });
+        let message = result.unwrap_or_else(|reason| format!("Cannot add field: {reason}"));
+        say!("{message}");
+        if let Some(path) = reply_file {
+            std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
+        }
+        return Ok(());
+    }
     let mut session = Session::new(system.source_refs());
     let turn = system.respond(&mut session, text);
     if explain {
