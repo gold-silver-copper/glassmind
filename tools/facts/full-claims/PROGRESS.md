@@ -41,7 +41,7 @@ probe84ac1fc499c8eec88aff28ab3d598109ecd426f30fbc7fd48d8784b9d2b79f47.
 NEXT after successful projection-resources.json and complete fetch: run
 RUN/prepare-native.py RUN WORK/coordinator/disk-facts/target/release/glassmind-facts
 under a finite8GiBscope; it pins completedprojection and copiescandidate intoRUN.
-Then run RUN/supervise.py RUN native21600 [native-invocation.json command] under
+Then run RUN/supervise.py RUN native 21600 [native-invocation.json command] under
 8GiB/no swap, setsid--wait,timeout21610s and RUN/tmp bothTMPDIR/SQLITE_TMPDIR.
 Do not start until existingprojection completed; verify all pinned manifests.
 After native succeeds, makeoutputreadonly, runaudit.py under3600s/8GiB/supervisor,
@@ -49,3 +49,8 @@ thenwitnesses.py samecap. Frozenfirsteligible rawsamplepershard bothdirections;
 large-setVMerrors are reported separately, nevercorrectness credit/limitincrease.
 Do not inspectQA/DEV or claimcoverage gain before separateQAplan. Review full
 source/data results before integration/publication. Existing rootPR49merged.
+
+18:02:49 UTC resource observation: both scopes active; memory.max8589934592,
+memory.swap.max0; both report oom0/oom_kill0. File-cache pressure reaches cap.
+Fetch ownedPIDs760445/760446; projection group761884/761926/761927/761928.
+Snapshot RUN/resource-observations.jsonl; do not confuse cgroupcache withprocessRSS.
