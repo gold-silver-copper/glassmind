@@ -89,3 +89,21 @@ progress hook. The experiment supervisor also bounds temporary and retained run
 growth to 32 GiB. It builds secondary indexes after ingestion and checks integrity
 and foreign keys before committing. Existing output files are never overwritten;
 preserve interrupted or failed outputs for diagnosis and choose a new path.
+
+The experimental `import-wikidata-claims --names NATIVE_PILOT --claims
+NUMERIC_PROJECTION --manifest SOURCE.json --database NEW.sqlite` command reuses
+format-2 native alias keys and replaces claims with a separately pinned,
+multi-shard projection. Its format-3 provenance embeds the original names source,
+both input hashes, projection audit hash, and each claims file's global raw row
+range. Each retained statement keeps its original GUID, rank and qualification
+flag. Claims and names use separate raw row spaces. Qualified or historical
+statements remain recorded evidence, not assertions of timeless/current truth.
+
+Inputs must match their recorded sizes and SHA256 hashes. The output must be a
+new literal path; a failed transaction never receives a readable format header.
+The command builds all indexes and checks integrity and references before commit.
+Its separate resource limits are 192 GiB output and six hours; run it under the
+required 8 GiB/no-swap scope and an external disk/time supervisor. These broader
+limits do not change the original pilot's limits. Existing format-1 and format-2
+query behavior remains supported. Full-release ingestion and source validation
+are still in progress; this command does not promote a QA bundle.
