@@ -30,6 +30,7 @@ mod details;
 mod edit;
 mod everyday;
 mod reading;
+mod syntax;
 mod system;
 mod talk_facts;
 mod talk_stories;
@@ -70,6 +71,21 @@ struct Common {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Predict grammatical dependencies; these are not verified semantic claims.
+    Syntax {
+        /// Local dependency model trained on UD English EWT.
+        #[arg(long)]
+        model: PathBuf,
+        /// JSONL rows containing only forms or text; emits JSON predictions.
+        #[arg(long, conflicts_with = "text")]
+        input: Option<PathBuf>,
+        /// Print predicted heads, relations and raw-text source spans as JSON.
+        #[arg(long)]
+        json: bool,
+        /// One sentence (at most 128 tokens and 16 KiB).
+        #[arg(required_unless_present = "input")]
+        text: Vec<String>,
+    },
     /// Propose an unverified answer from a supplied passage, with its source text.
     Read {
         /// Local span-ranking model. Predictions are not verified factual answers.
@@ -211,6 +227,12 @@ enum Command {
 fn main() -> ExitCode {
     let cli = Cli::parse();
     let result = match cli.command {
+        Command::Syntax {
+            model,
+            input,
+            json,
+            text,
+        } => syntax::run(&model, input.as_deref(), &text.join(" "), json),
         Command::Read {
             model,
             context,
