@@ -555,3 +555,16 @@ diagnostics. The value-grounded annotation converter was rejected:354 unique
 native-executable programs fell below the frozen1,000 requirement. No model was
 trained. [Independent review](../tools/quantities/grounded-steps/PARENT.md) records
 source binding, ambiguity, counts and limitations; large data stays outside git.
+
+## Independent Wikidata storage pilot (2026-10-11)
+
+A fixed first claims shard and all English/default-language names from the
+CC0 Wikidata 20260928 snapshot were acquired independently of QA entity labels.
+All six files (1,475,606,067 bytes) passed publisher hashes. The SQLite pilot stores
+5,677,515 statements and 84,990,012 names in 10,367,000,576 bytes; import and integrity
+checking took 602.322 seconds under an 8 GiB memory cap. All source identifiers and
+954 raw-row samples passed independent checks. This is storage feasibility, not
+an answer-accuracy result or a production bundle. The first shard is incomplete,
+and the publisher excludes scholarly works. Python/Rust normalization differs;
+native key rebuilding is required before runtime use. [Plan, source revisions,
+license, exact results and reproduction](../tools/facts/wikidata-snapshot/PARENT.md).

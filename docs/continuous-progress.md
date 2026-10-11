@@ -2,30 +2,58 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — exact target reasoning implemented, fully evaluated and
-merged in PR46; contextual dialogue experiment independently rejected and cleaned.
-Current runtime source3539a2d; coding implementation sourcec6ac04a.
+This turn: PROGRESS — facts FIT diagnosis complete, forward-only expansion
+rejected before acquisition; independent Wikidata storage pilot acquired, imported
+and audited successfully. Current runtime source3539a2d; coding sourcec6ac04a.
 Known completed-worker tokens201,926,299 (cached input counted once; parent and
-interrupted usage excluded). No workers, root tests or publishing jobs remain.
+interrupted usage excluded). No model worker ran; all root jobs are complete.
 
-## Next action: diagnose facts grounding from retained TRAIN evidence
+## Next action: native disk-backed facts compatibility
 
-Change track after two failed SYSTEM-role representations. Read
- tools/facts/JOINT-AUDIT.md and tools/facts/linkquality/HANDOFF.md, then use the
-retained all19481 TRAIN inputs/predictions in WORK/linkquality-run/artifacts
-and the TRAIN-selected999 index in WORK/trainindex-run/tmp/trainindex/bundle1000.
-First inspect artifact manifests to locate/hash-verify exact originals; do not
-repeat unchanged inference. Quantify remaining entity-span/alias grounding errors
-versus inverse-answer ambiguity before selecting a new hypothesis. A learned
-mention/anchor representation is a possibility, not yet a task or frozen plan.
-Do not repeat the rejected interrogative-boundary rule or inverse-edge fetch.
-No new worker has been created for this investigation.
+Read tools/facts/wikidata-snapshot/PARENT.md and its frozen PLAN.md. The independent
+20260928 CC0 Wikidata pilot has5,677,515 statements for1,094,802 subjects and
+84,990,012 names. Six public files1,475,606,067 bytes hash-verified; all94,498,260
+source IDs/languages valid;954 independent raw-row checks pass. SQLite integrity
+and three indexed query paths pass. Import602.322s, processRSS602132KiB, database
+10,367,000,576bytes under frozen12GiB/1800s gates; scope8GiB0swap includescache.
+No QA input, inference or DEV was used. Production scores/bundles unchanged.
 
-Keep the historical500 validation-seeded series separate (ordinary256/2821,
+Artifacts WORK/coordinator/wikidata-snapshot; read-only pilot.sqlite SHA256
+c3f1197705f131e74f8f7b794d3f08eaef7d3b48e8a312170185e6728bff1313.
+Raw Parquet and PyArrow25.0.1 venv retained. Only first of86claims shards acquired;
+full claims44,633,986,614bytes remains unfetched. Public selection by path/language,
+never QA labels. Scholarly works excluded by publisher; first shard is incomplete.
+Statements retain rank/qualifier flags; rawsource retains full qualifiers/references.
+
+Next concrete experiment: a native bounded SQLite facts adapter, using the exact
+same Rust normalization at import and query time. First freeze parity gates against
+existing JSON Store on the same facts, including Unicode, acronym case, equal-length
+ambiguity, inverse deduplication, set counts/order and all refusals. Expose through
+usable facts commands, then assess integration into talk. Do not claim QA gain
+from storage parity. The pilot's Python keys differ from Rust on6167/1112064scalar
+probes: native key rebuild is mandatory, not an optional optimization. Choose a
+separate full-graph acquisition/strict QA plan after native compatibility is proved.
+Do not repeat the completed pilot or download the other85shards yet.
+
+Initial import GUID-casing assumption stopped before insertion; archived and
+corrected from rawdata plus Wikibase docs. Completed fetch75958/import6255/source
+ audit1468/rowaudit58311/hash96220. PID655339 gone. Requiredworkspacecheck passed.
+Tools/reports preserve original executed scripts and exact source artifacts.
+
+## Completed facts selection diagnosis
+
+Report tools/facts/selection-diagnosis/PARENT.md. Reused hash-verified frozen TRAIN
+predictions without inference. EligibleFIT15778: forward12066rows only733anchors
+present,679correctlinks,1109answers/752answer-only/505strictjoint; inverse3712rows,
+1934anchorspresent,1669correctlinks,167answers/1strictjoint. Wrong forward anchors
+include588absent versus only2present. Original1000selected:559P-only/411R-only/30both.
+The frozen additional1000forwardFIT anchors cover only3newforwardCALrows, below
+required10: rejected before acquisition. Do not lower the gate or fetch that list.
+
+Keep historical500 validation-seeded series separate (ordinary256/2821,
 2545refused20wrong; strictjoint252/2821). TRAIN999 remains rejected as a default
-(47right2712refused62wrong; strictjoint2/2821). Existing aliases/claims must retain
-raw source provenance; never construct claims from benchmark answer triples.
-Reuse current assets before any public download. Read prior reports first.
+(47right2712refused62wrong; strictjoint2/2821). No claims from QA answer triples.
+Do not retry the rejected alias-boundary rule or inverse-edge fetch.
 
 ## PR46 published: exact scalar target determination
 

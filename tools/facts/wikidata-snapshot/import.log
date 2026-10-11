@@ -1,0 +1,7 @@
+{"table": "claims", "path": "all/part-00-of-86.parquet", "counts": {"non_item_subject": 324171, "non_item_value": 3419027, "kept": 5677515, "deprecated": 11939, "somevalue": 34893, "novalue": 959}, "seconds": 19.36}
+{"table": "labels", "path": "en/part-0-of-2.parquet", "counts": {"non_item_subject": 13927, "kept": 24687724}, "seconds": 89.04}
+{"table": "labels", "path": "en/part-1-of-2.parquet", "counts": {"kept": 24701651}, "seconds": 196.0}
+{"table": "labels", "path": "mul/part-0-of-1.parquet", "counts": {"non_item_subject": 445, "kept": 19974806}, "seconds": 258.53}
+{"table": "aliases", "path": "en/part-0-of-1.parquet", "counts": {"non_item_subject": 24807, "kept": 14744010}, "seconds": 303.08}
+{"table": "aliases", "path": "mul/part-0-of-1.parquet", "counts": {"non_item_subject": 565, "kept": 881821}, "seconds": 305.92}
+{"schema": 1, "scope": "one fixed claims shard; all en/mul names", "python": "3.14.7 (main, Aug 10 2026, 07:46:56) [GCC 16.1.1 20260728]", "pyarrow": "25.0.1", "sqlite": "3.53.4", "integrity": [["ok"]], "edges": 5677515, "names": 84990012, "edge_subjects": 1094802, "ranks_qualifiers": [[0, 0, 4968743], [0, 1, 704320], [1, 0, 1519], [1, 1, 2933]], "seconds": 602.322, "peak_rss_kib": 602132, "database_bytes": 10367000576}

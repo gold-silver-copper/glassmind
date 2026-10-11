@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/gsc/code/glassmind/tools/facts/wikidata-snapshot/import.py", line 159, in <module>
+    main()
+    ~~~~^^
+  File "/home/gsc/code/glassmind/tools/facts/wikidata-snapshot/import.py", line 102, in main
+    record, reason = claim(row, ordinal)
+                     ~~~~~^^^^^^^^^^^^^^
+  File "/home/gsc/code/glassmind/tools/facts/wikidata-snapshot/import.py", line 50, in claim
+    raise ValueError('malformed statement identity')
+ValueError: malformed statement identity
