@@ -21,7 +21,7 @@ worktreeWORK/argumentswap, branchcontinuous/argumentswap, basecdd5030.
 TaskWORK/argumentswap-task.txt; runWORK/argumentswap-run; launcherWORK/launch.py.
 Latest scopecheck active/running, MemoryMax8589934592,MemorySwapMax0.
 ChatGPTlogin and requiredCLIflags reverified beforelaunch; Astra fast forced,
-APIkeyenvstripped. Oneactive modelworker, uncounted untilterminal. No candidate
+APIkeyenvstripped. Twoactive modelworkers(argumentswap+temporal), uncounted untilterminal. No candidate
 source/results inspected. Do not duplicate on an observation timeout.
 
 PublicTRAIN rb-fix-tests-download-progress calls percent(d.size,d.received)
@@ -44,12 +44,64 @@ CasesSHA0fa442dcb80e9c8f7307d7e4c0e9452fda0cc643702d15d4696614612a2fec58.
 Helperdirecttests preventfixingthehelperarithmeticinstead; entirecallreplacement
 andallotherbytespreserved. Competingcase twoalternatives bothpasssamepublictest
 butdiffer natively at(7,2),5vs3. No labels changed. This is authoredDEV.
-NEXT: writeboundedparentnativeadapter andrunactualbaseline onthese13beforecandidate
-inspection, verifyalloriginalscompileandfailexecutedtests. Baselineexpected0/9 is
-unmeasureduntilthen. Whenworkerterminal, archive/hashverify originalsource,binary,
+Parentbaseline session86248 COMPLETE viafrozenrun.py:all13originalscompileandfail
+executedtests,0/9newrepairs,0negativeedits,0timeouts,manifestsunchanged.
+Separate replay-alternatives.py COMPLETE:bothcompetingpatchespasssamepublictests
+andnativevalue(7,2) is5vs3, reportunderargumentswap-independent/alternatives.
+NEXT: Whenworkerterminal, archive/hashverify originalsource,binary,
 patch,commands/results BEFOREinspection; rununchangedparentcases andonlythenfull765.
-No parentadapter/baseline run yet. Legacyceildivisionadapter suppliesresourcepattern,
-butits exactreplacementmatcher is division-specific and mustnotbesilentlyreused.
+Parentrun.py nowchecksoneexactcallreplacement (onlyinternalwhitespace normalized),
+allotherbytespreserved; originalcompilefailurecannot masquerade as failingtests.
+Unchangedcompetingcase alone is insufficient; manuallyverifycandidatechoiceevidence.
+
+## Active conversation experiment: qualified date verification
+
+Temporal worker LIVE PID2698298, scopeglassmind-continuous-temporal.scope,
+worktreeWORK/temporal, branchcontinuous/temporal, base07f3d0d. TaskWORK/temporal-task.txt;
+runWORK/temporal-run. Latestscopecheck active/running. Astra fast, forcedChatGPTlogin
+verified beforelaunch, APIenvstripped. Ownscrates/facts+tools/facts/temporal only;
+parentowns eventualmainroute. No livecandidate/source/results inspected.
+
+Hypothesis: verifyonepositive P108employer/P27citizenship claim at exactcalendarDATE
+usingoneoriginalstatement's P580/P582bounds. A strictguaranteedinterior requires
+start.latest_possible_day < query_day < end.earliest_possible_day. Year/month/day
+precision becomesfullpossibledayrange, neverJan1certainty. Boundary/outside/open/
+unsupportedqualifiedclaims remainunknown, notfalse. No combiningboundsacrossclaims,
+no temporal/edge-basedaliasdisambiguation, no current/globaltruthguarantee. Supported
+Gregorian0001..9999,precision9/10/11,zerooffset/uncertainty,exacttwoqualifiers only.
+Preserve alllegacycommands/outputbytes; new optionalasset boundtoindexhash andraw
+statementidentities. Standalone verify-at; parentconversationintegrationafteracceptance.
+Fulltask freezesbounds,capsbeforeimplementation,test/replay andretention gates.
+
+Read-onlysourceWORK/temporal-source:20rawresponses,27,696,032bytes copied/hashverified
+againsthistoricalindexmetadata; no networkdatasetdownload. Shared factmatch-source
+suppliesindex/model/TRAIN/DEV/license. BaselinefactsSHAa0209427a48c79b3ede0c851e90de25d21ffdfb5b4a886c751d9e32a1c58b595,
+main562a774bc98583d487b2bbcabcb53b3b300bae767f8427c7f0491cc2652a07a4,
+copiedrun/baseline withmanifest. Originalsourceis500validation-subjectseeded records,
+notanindependentretrievalbenchmark. Primarydate/docs read2026-10-11:
+https://www.wikidata.org/wiki/Help:Dates and
+https://doc.wikimedia.org/Wikibase/master/php/docs_topics_json.html plusP580/P582.
+
+Parentread-onlyaudit WORK/coordinator/temporal-facts-audit:24both-boundclaims,
+20simplemetadata-shapedclaims,18withnonemptystrictinterior. No candidateinspected.
+Parent45authoredrawfixture/querycases frozen inWORK/coordinator/temporal-independent,
+casesSHAb4b37ca4340afd79227d7102535430592a9961a152d4e8f0f1a69d3c829481f5.
+Expectedoutcomesincludeleaps2000/1900/2100,year/month/dayboundaries,filledlowprecision
+subfields,extra/duplicate/missing/deprecatedqualifiers,calendar/offsetuncertainty,
+separateopenclaimscannotcombine,aliasambiguity,unsupporteddates/questions/NUL.
+Schema-onlyextractoradaptation allowed afterinspection; noexpectedsemanticchanges.
+NULlibrary-only gate, indexhash/edge/rawbounds/version andinputcap negatives frozen.
+
+Parentreal-contracts.json freezes5distinctsubjects/15queries(interior+twoboundaries),
+SHA49befcfaf51dc867b4a0ccb58938815479143b7cece14275ebf3664d0eec2358.
+Separateall-same-edge-claimoverlap audit confirms expectedstatuses againsteveryclaim,
+so another qualifyingstatement cannotinvalidateexpectedboundaryunknown. Bothscripts
+andrawclaimIDs/filehashes retainedunder temporal-facts-audit. Adapter/nativecandidate
+runs pending terminalarchive; no baselineaccuracyclaim forabsentdatedcommand.
+NEXT: whenworkerterminalarchive/hashverify first, reviewrawmetadata andRustbounds
+semantics, adaptfrozenrawfixturesonlytoschema, run45native/librarycases and15real
+queries. Ifaccepted integrate explicit Check fact on YYYY-MM-DD: question route
+withoptionalverifiedtemporalasset, preserveoldbundles andfulllegacy2821/mainstate.
 
 ## PR39 validation and retained evidence
 
@@ -123,7 +175,7 @@ regrouping canintroduceintermediateoverflow. Currentargument-swaplead isdistinct
 
 Known completedworker tokens164630460 (factmatch1151559input+26765output,
 1076736cachedinput included ONCE; ceiling1941615input+26250output). Root/interrupted
-excluded. Argumentswapactiveuncounted. Goalremainsactive; milestonesarenotcompletion.
+excluded. Argumentswapandtemporalactiveuncounted. Goalremainsactive; milestonesarenotcompletion.
 
 ## Multiplicative coding revision
 
@@ -184,7 +236,7 @@ cosmetics. Further quantities work needs evidence for better argument grounding
 or supervision. No heldout/DEVformula/parentfixture access by either worker.
 
 Known completed worker tokens164630460, including cachedinput once. Parent and
-interrupted calls excluded. No active model workers. New corpus downloads0.
+interrupted calls excluded. Argumentswapandtemporal active, uncounted. New corpus downloads0.
 
 ## Stable baselines and closed hypotheses
 
