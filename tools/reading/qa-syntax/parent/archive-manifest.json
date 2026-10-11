@@ -1,0 +1,114 @@
+{
+  "base_commit": "078578b0ac350a1b3baa5af20b1a37d21d576d23",
+  "source": "/home/gsc/.cache/glassmind/continuous-20261010/qasyntax",
+  "files": {
+    "Cargo.lock": {
+      "bytes": 17192,
+      "sha256": "0d374e4151b6d53c45015da275d0c738fb6478b66056a03a2bbf8682cbc217bb"
+    },
+    "crates/reading/Cargo.toml": {
+      "bytes": 486,
+      "sha256": "0776f18d6957172f99c54ba1670e8304254ecc62c7640a6b55504e1003484110"
+    },
+    "crates/reading/src/bin/reading-qa-syntax.rs": {
+      "bytes": 2480,
+      "sha256": "ef572286b7dcf5b75f88d1ff3539dc859fcdf38965bb9f46449eb3e5bea88eec"
+    },
+    "crates/reading/src/qa/syntax_v3.rs": {
+      "bytes": 15418,
+      "sha256": "d4235881bf01a6add996c9d39422a4963030e672426ec0e77feab17533b84e54"
+    },
+    "crates/reading/src/qa.rs": {
+      "bytes": 19398,
+      "sha256": "eb9334363a1be80dd98adc0bc5b735686325bed7bc7017a1b8d242afa432fc61"
+    },
+    "tools/reading/qa-syntax/HANDOFF.md": {
+      "bytes": 12641,
+      "sha256": "967b89b0bbb6817f8bdf23175362ffe99bdeacf5b70a7d231be27f9dbdad88f8"
+    },
+    "tools/reading/qa-syntax/PREREGISTER.md": {
+      "bytes": 2772,
+      "sha256": "58c6312e18f30a2a3ac214ace125ff196b3578860cf705233f5656d320bcbd7e"
+    },
+    "tools/reading/qa-syntax/audit.py": {
+      "bytes": 4639,
+      "sha256": "91756e81561f326d45e63d4f7867fe894551758827cd868091cfaaf706f58e39"
+    },
+    "tools/reading/qa-syntax/contracts.py": {
+      "bytes": 2293,
+      "sha256": "75424ad508cee5784e2b35de528e07e1268b2a8b5cfa3b483509b2452a7ae74d"
+    },
+    "tools/reading/qa-syntax/prepare.py": {
+      "bytes": 787,
+      "sha256": "61efd560832486fedcd335fd620854581d4174933b28a4e4b2cb2826da4fc681"
+    },
+    "tools/reading/qa-syntax/probes.json": {
+      "bytes": 4120,
+      "sha256": "f62de8c609a49bfbd7a86c5889e01670fd24c4da3f775cfb5d1a1294663f4ec3"
+    },
+    "tools/reading/qa-syntax/provenance.py": {
+      "bytes": 1128,
+      "sha256": "a0ff3365fb5a7296d83fcf435c605fab626a2ad34787e9f21ad01e647c1ff61d"
+    },
+    "tools/reading/qa-syntax/reports/acceptance.json": {
+      "bytes": 610,
+      "sha256": "1b3dd24210a47873a1da36a6d84f184d294fb4c04658c036ef2c3d2de0c0cadc"
+    },
+    "tools/reading/qa-syntax/reports/calibration.json": {
+      "bytes": 155,
+      "sha256": "be7315f2bb62f4265f6fe6ece8bbaf2c88a53047b39ca768add787c0e8749c93"
+    },
+    "tools/reading/qa-syntax/reports/contracts.json": {
+      "bytes": 276,
+      "sha256": "77f220ca99bb261511f50fb9399f38a705282b6dbc6fc1eb2a9a641cf72b40f4"
+    },
+    "tools/reading/qa-syntax/reports/finite-contract.json": {
+      "bytes": 188,
+      "sha256": "3c9a61b784174845b524e63ace39ce05d3bf5a30a498fd06173e56b3a281c65f"
+    },
+    "tools/reading/qa-syntax/reports/freeze.json": {
+      "bytes": 5884,
+      "sha256": "cd9b911028559a912d596618130405345f9528ccf8548fe370f40d5d242b72f0"
+    },
+    "tools/reading/qa-syntax/reports/full.json": {
+      "bytes": 1237,
+      "sha256": "140ece5fb6e6f5d695ecbc047c61d316b560ddeaf85efc6c84c0b119187d92ee"
+    },
+    "tools/reading/qa-syntax/reports/legacy-probes.json": {
+      "bytes": 41629,
+      "sha256": "2f6b1af1fcb3789a23ddeec0c7d5f9e40a7db274576387c26dd341c92052e6e0"
+    },
+    "tools/reading/qa-syntax/reports/pre-fit-freeze.json": {
+      "bytes": 804,
+      "sha256": "faef339b62147c6de801f12061c886c6ab4f6b7322bc66376c2932fd3e724f96"
+    },
+    "tools/reading/qa-syntax/reports/probes.json": {
+      "bytes": 21408,
+      "sha256": "7fecf6b4d6a800f66bf7603a4560d565f382c6a5cc78b7f53f1cca79b4bee956"
+    },
+    "tools/reading/qa-syntax/reports/provenance.json": {
+      "bytes": 25105,
+      "sha256": "712ffb40ab04a89283b226ed6c8b39bd10c1358195053d050be9450eedf1f2f8"
+    },
+    "tools/reading/qa-syntax/reports/sample.json": {
+      "bytes": 1071,
+      "sha256": "4de6db12caea4ee48cbe8ce3dbd6e811d7bae7897f4f231c8b026a5705543b67"
+    },
+    "tools/reading/qa-syntax/reports/train-audit.json": {
+      "bytes": 18381,
+      "sha256": "07ab17a45f151d9c527b48e8fde3233b8616cc2c2150f77448bec21f0fecc517"
+    },
+    "tools/reading/qa-syntax/reproduce.sh": {
+      "bytes": 1394,
+      "sha256": "c1e9b0f68a06e24ef6dea72f4b6b7079f623b2d7282700cefeb13f4b4f09dab4"
+    },
+    "tools/reading/qa-syntax/run.py": {
+      "bytes": 6479,
+      "sha256": "a639e567aee9f89c29279431143cf5214b0961da4c1e7ce60c0caaccfc82d0f9"
+    },
+    "runtime.patch": {
+      "bytes": 19786,
+      "sha256": "f9f638ee2aa29379c2f1fe5a4b887ab9276a36e74ed00175c58e4b115f8c1517"
+    }
+  }
+}

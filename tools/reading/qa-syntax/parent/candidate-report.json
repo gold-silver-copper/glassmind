@@ -1,0 +1,194 @@
+{
+  "counts": {
+    "positive_cases": 13,
+    "raw_positive_correct": 11,
+    "selected_positive_correct": 6,
+    "wrong_selected": 4,
+    "negative_selected": 4,
+    "refused": 10,
+    "negative_cases": 7
+  },
+  "rows": [
+    {
+      "name": "subject",
+      "supported": true,
+      "raw": "Leila",
+      "selected": true,
+      "raw_correct": true,
+      "selected_correct": true,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "object",
+      "supported": true,
+      "raw": "Rohan",
+      "selected": true,
+      "raw_correct": true,
+      "selected_correct": true,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "reversal",
+      "supported": true,
+      "raw": "Rohan",
+      "selected": true,
+      "raw_correct": true,
+      "selected_correct": true,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "date",
+      "supported": true,
+      "raw": "2014",
+      "selected": true,
+      "raw_correct": true,
+      "selected_correct": true,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "predicate_mismatch",
+      "supported": false,
+      "raw": "2019",
+      "selected": true,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "negation",
+      "supported": false,
+      "raw": "Milo",
+      "selected": true,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "passive",
+      "supported": true,
+      "raw": "Leila",
+      "selected": false,
+      "raw_correct": true,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "place",
+      "supported": true,
+      "raw": "Turin",
+      "selected": true,
+      "raw_correct": true,
+      "selected_correct": true,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "place_distractor",
+      "supported": true,
+      "raw": "Turin",
+      "selected": false,
+      "raw_correct": true,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "count",
+      "supported": true,
+      "raw": "four",
+      "selected": false,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "converse",
+      "supported": true,
+      "raw": "Nico",
+      "selected": false,
+      "raw_correct": true,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "negative_place",
+      "supported": false,
+      "raw": "Turin",
+      "selected": true,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "denial",
+      "supported": false,
+      "raw": "Omar",
+      "selected": false,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "conditional",
+      "supported": false,
+      "raw": "Omar",
+      "selected": true,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "agent_predicate",
+      "supported": false,
+      "raw": "2005",
+      "selected": false,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "unknown",
+      "supported": false,
+      "raw": "Nobody",
+      "selected": false,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "unicode",
+      "supported": true,
+      "raw": "Björn",
+      "selected": false,
+      "raw_correct": true,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "repeated_value",
+      "supported": true,
+      "raw": "2012",
+      "selected": true,
+      "raw_correct": true,
+      "selected_correct": true,
+      "reason": "model_prediction_not_verified"
+    },
+    {
+      "name": "object_distractor",
+      "supported": true,
+      "raw": "clock while Juno repaired the radio",
+      "selected": false,
+      "raw_correct": false,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    },
+    {
+      "name": "time_attachment",
+      "supported": true,
+      "raw": "Thursday",
+      "selected": false,
+      "raw_correct": true,
+      "selected_correct": false,
+      "reason": "below_train_calibrated_threshold"
+    }
+  ],
+  "scope": "Authored probes; unsupported questions require refusal. Raw guesses and selected wrong proposals are separate."
+}

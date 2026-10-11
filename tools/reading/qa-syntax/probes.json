@@ -1,0 +1,162 @@
+[
+  {
+    "name": "subject",
+    "context": "Nora thanked Felix.",
+    "question": "Who thanked Felix?",
+    "expected": "Nora",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "object",
+    "context": "Nora thanked Felix.",
+    "question": "Who did Nora thank?",
+    "expected": "Felix",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "subject_reverse",
+    "context": "Felix thanked Nora.",
+    "question": "Who thanked Nora?",
+    "expected": "Felix",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "object_reverse",
+    "context": "Felix thanked Nora.",
+    "question": "Who did Felix thank?",
+    "expected": "Nora",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "passive",
+    "context": "Felix was thanked by Nora.",
+    "question": "Who thanked Felix?",
+    "expected": "Nora",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "passive_object",
+    "context": "Nora was thanked by Felix.",
+    "question": "Who did Felix thank?",
+    "expected": "Nora",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "distractor",
+    "context": "Nora thanked Felix, while Mira greeted Soren.",
+    "question": "Who greeted Soren?",
+    "expected": "Mira",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "unicode",
+    "context": "Élodie thanked Björn.",
+    "question": "Who thanked Björn?",
+    "expected": "Élodie",
+    "positive_role": true,
+    "clear_mismatch": false
+  },
+  {
+    "name": "predicate_positive",
+    "context": "Nora demolished the bridge in 2008.",
+    "question": "When did Nora demolish the bridge?",
+    "expected": "2008",
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "predicate_mismatch",
+    "context": "Nora painted the bridge in 2008.",
+    "question": "When did Nora demolish the bridge?",
+    "expected": null,
+    "positive_role": false,
+    "clear_mismatch": true
+  },
+  {
+    "name": "negation",
+    "context": "Nora never demolished the bridge in 2008.",
+    "question": "When did Nora demolish the bridge?",
+    "expected": null,
+    "positive_role": false,
+    "clear_mismatch": true
+  },
+  {
+    "name": "time",
+    "context": "Mira visited Oslo in 2012.",
+    "question": "When did Mira visit Oslo?",
+    "expected": "2012",
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "place",
+    "context": "Mira visited Oslo in 2012.",
+    "question": "Where did Mira visit in 2012?",
+    "expected": "Oslo",
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "count",
+    "context": "Mira carried three crates.",
+    "question": "How many crates did Mira carry?",
+    "expected": "three",
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "count_mismatch",
+    "context": "Mira carried crates to three towns.",
+    "question": "How many crates did Mira carry?",
+    "expected": null,
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "unknown",
+    "context": "Mira thanked Soren.",
+    "question": "Who thanked Zora?",
+    "expected": null,
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "ambiguous",
+    "context": "Nora thanked Felix. Mira thanked Felix.",
+    "question": "Who thanked Felix?",
+    "expected": null,
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "repeated",
+    "context": "Nora thanked Felix. Nora thanked Felix.",
+    "question": "Who thanked Felix?",
+    "expected": "Nora",
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "place_mismatch",
+    "context": "Mira read a book about Oslo.",
+    "question": "Where did Mira read a book?",
+    "expected": null,
+    "positive_role": false,
+    "clear_mismatch": false
+  },
+  {
+    "name": "positive_negated_question",
+    "context": "Nora did not thank Felix.",
+    "question": "Who did Nora not thank?",
+    "expected": "Felix",
+    "positive_role": false,
+    "clear_mismatch": false
+  }
+]

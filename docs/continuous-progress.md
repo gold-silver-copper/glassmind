@@ -1,5 +1,38 @@
 # Continuous development checkpoint
 
+## Latest checkpoint — QA syntax rejected by independent negation probe
+
+QASYNTAX is COMPLETE and REJECTED. Its own aggregate gates passed, but the
+parent's previously frozen negation case changed from refusal to a wrong selected
+answer: Ava never hired Milo / Whom did Ava hire? -> Milo. The frozen acceptance
+rule forbids this. A conditional question also changes from refusal to wrong.
+No runtime/model/dependency/main-command changes are integrated. Parent20probes:
+13positive/7unsupported; rawcorrect10->11, selectedcorrect6->6, wrong4->4,
+unsupportedselected3->4. Every outcome retained, no post-DEV retuning.
+
+Independent full10570 offline audit reproduces raw2532->3057, F134.518425->39.869573,
+selected815right791wrong8964refused ->943right647wrong8980refused; alltransitions
+match (4right->wrong,334right->refused,476refused->wrong). CAL166/83right reproduced.
+27archive entries227761bytes,88provenance/29freeze identities verified; all original
+copies reverified before inactive worker worktree/login-link removal. Archive and
+models retained at WORK/qasyntax-run; published evidence tools/reading/qa-syntax/
+PARENT.md +rejected.patch +parent/; docs/results/reading-qa-syntax-rejected.json.
+Root runtime38fd905/mainbinary226a976 unchanged. Knowncompletedworker tokens126066399.
+No new runtime score or full765 rerun claimed. QA evidence publication pending.
+
+FUNCTIONREFS remains ACTIVE in glassmind-continuous-functionrefs.scope, PID617333;
+last verified active. Parent froze16independent cases before inspecting candidate,
+casesSHAae5dcf00b3f661aa222a61eb0c9a937bee98fa2ecd8f060df630c43a0c46d99a.
+Baseline session66529 COMPLETE:8exactnative-testededits,8unchanged,zero unsafe.
+It already supports six simple reference positives; test-glob remains refused.
+Preserve all eight baseline repairs. Parent runner/files at
+WORK/coordinator/functionrefs-independent. Worker supplied multifile fixture and
+24frozen contracts reportedly improve1->9repairs/zero unsafe; not independently
+accepted yet. Await terminal submission, archive first, review proof, then replay
+independentcases and suppliedworkspace. Separate English rename parsing remains
+unsolved. Next reading hypothesis must address support independently; no cosmetic
+threshold retry. Goal active until user stops; no blocker.
+
 ## Latest checkpoint — PR31/32 merged, two new experiments active
 
 PR31 merged723add1b82ee619ecb7ae3544ceaec9d822e5467, exactheadf7034a5;

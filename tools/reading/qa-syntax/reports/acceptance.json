@@ -1,0 +1,21 @@
+{
+  "decision": "ACCEPT_OPTIONAL_UNVERIFIED_CANDIDATE",
+  "gates": {
+    "raw_exact": true,
+    "raw_f1": true,
+    "selected_correct": true,
+    "selected_wrong": true,
+    "role_raw": true,
+    "no_new_selected_clear_mismatch": true
+  },
+  "raw_exact": 3057,
+  "cal_independently_recomputed": true,
+  "v1_full_byte_identical": true,
+  "transition_denominator": 10570,
+  "substantive_selected_correct": 943,
+  "newly_wrong_from_right_or_refused": 480,
+  "raw_strings_changed": 6689,
+  "selected_strings_changed": 1905,
+  "changed_wrong_to_wrong": 15,
+  "normalized_empty_refusals_never_counted_right": true
+}

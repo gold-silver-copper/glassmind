@@ -725,6 +725,17 @@
         "reasoning_output_tokens": 13282
       },
       "source": "Frozen one-candidate syntax experiment. Original32files196045bytes,66external60359758bytes/5source/27repo/10freeze hashes verified. Parent independently recomputes19423LAS20540UAS/25148, all2001validtrees, nonduplicate19286LAS20403UAS/25011. Independent13contrasts forms+text68/70edges; objectquestion failure retained. Main integration pending; syntax is unverified prediction, not truth or QA."
+    },
+    {
+      "track": "qasyntax-continuous",
+      "usage": {
+        "input_tokens": 2496832,
+        "cached_input_tokens": 2411392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 29175,
+        "reasoning_output_tokens": 7630
+      },
+      "source": "Rejected after independent frozen negation probe: Ava never hired Milo now selects Milo. Parent independently reproduces all10570DEV scores and1000CAL selection; aggregate gains retained, no runtime integration. 27archive/88provenance/29freeze identities verified."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

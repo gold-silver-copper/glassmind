@@ -1,0 +1,58 @@
+{
+  "baseline": {
+    "total": 10570,
+    "raw": {
+      "exact": 23.954588457899717,
+      "f1": 34.51842504801282,
+      "total": 10570
+    },
+    "accepted": {
+      "exact": 7.710501419110691,
+      "f1": 8.700190089811684,
+      "total": 10570
+    },
+    "right": 815,
+    "refused": 8964,
+    "wrong": 791,
+    "precision": 0.5074719800747198,
+    "coverage": 0.15193945127719963
+  },
+  "candidate": {
+    "total": 10570,
+    "raw": {
+      "exact": 28.921475875118258,
+      "f1": 39.86957257497198,
+      "total": 10570
+    },
+    "accepted": {
+      "exact": 8.92147587511826,
+      "f1": 9.766928574792118,
+      "total": 10570
+    },
+    "right": 943,
+    "refused": 8980,
+    "wrong": 647,
+    "precision": 0.5930817610062893,
+    "coverage": 0.15042573320719016
+  },
+  "transitions": {
+    "raw": {
+      "wrong->wrong": 6793,
+      "right->right": 1812,
+      "right->wrong": 720,
+      "wrong->right": 1245
+    },
+    "selected": {
+      "refused->refused": 8036,
+      "wrong->refused": 610,
+      "right->refused": 334,
+      "right->right": 477,
+      "refused->right": 452,
+      "refused->wrong": 476,
+      "wrong->wrong": 167,
+      "wrong->right": 14,
+      "right->wrong": 4
+    }
+  },
+  "aggregate_gate": true
+}

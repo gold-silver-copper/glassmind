@@ -1,0 +1,122 @@
+[
+  {
+    "name": "subject",
+    "context": "Leila thanked Rohan.",
+    "question": "Who thanked Rohan?",
+    "answer": "Leila"
+  },
+  {
+    "name": "object",
+    "context": "Leila thanked Rohan.",
+    "question": "Whom did Leila thank?",
+    "answer": "Rohan"
+  },
+  {
+    "name": "reversal",
+    "context": "Rohan thanked Leila.",
+    "question": "Who thanked Leila?",
+    "answer": "Rohan"
+  },
+  {
+    "name": "date",
+    "context": "Ava hired Milo in 2014.",
+    "question": "When did Ava hire Milo?",
+    "answer": "2014"
+  },
+  {
+    "name": "predicate_mismatch",
+    "context": "Ava fired Milo in 2019.",
+    "question": "When did Ava hire Milo?",
+    "answer": null
+  },
+  {
+    "name": "negation",
+    "context": "Ava never hired Milo.",
+    "question": "Whom did Ava hire?",
+    "answer": null
+  },
+  {
+    "name": "passive",
+    "context": "The bridge was built by Leila in 2017.",
+    "question": "Who built the bridge?",
+    "answer": "Leila"
+  },
+  {
+    "name": "place",
+    "context": "Emil studied in Turin.",
+    "question": "Where did Emil study?",
+    "answer": "Turin"
+  },
+  {
+    "name": "place_distractor",
+    "context": "Emil lived in Oslo and studied in Turin.",
+    "question": "Where did Emil study?",
+    "answer": "Turin"
+  },
+  {
+    "name": "count",
+    "context": "Lena owns four bicycles and Sol owns two bicycles.",
+    "question": "How many bicycles does Sol own?",
+    "answer": "two"
+  },
+  {
+    "name": "converse",
+    "context": "Mira sold a camera to Nico.",
+    "question": "Who bought the camera?",
+    "answer": "Nico"
+  },
+  {
+    "name": "negative_place",
+    "context": "Rina did not visit Turin.",
+    "question": "Where did Rina visit?",
+    "answer": null
+  },
+  {
+    "name": "denial",
+    "context": "Mara denied that Omar broke the mug.",
+    "question": "Who broke the mug?",
+    "answer": null
+  },
+  {
+    "name": "conditional",
+    "context": "If Zara wins, Omar receives a medal.",
+    "question": "Who received a medal?",
+    "answer": null
+  },
+  {
+    "name": "agent_predicate",
+    "context": "Niko painted the wall in 2005. Ana cleaned the wall in 2011.",
+    "question": "When did Niko clean the wall?",
+    "answer": null
+  },
+  {
+    "name": "unknown",
+    "context": "Nobody knows who opened the box.",
+    "question": "Who opened the box?",
+    "answer": null
+  },
+  {
+    "name": "unicode",
+    "context": "Élodie thanked Björn in Zürich.",
+    "question": "Whom did Élodie thank?",
+    "answer": "Björn"
+  },
+  {
+    "name": "repeated_value",
+    "context": "Tara visited Bern in 2006. Ivo visited Bern in 2012.",
+    "question": "When did Ivo visit Bern?",
+    "answer": "2012"
+  },
+  {
+    "name": "object_distractor",
+    "context": "Mara repaired the clock while Juno repaired the radio.",
+    "question": "What did Juno repair?",
+    "answer": "the radio"
+  },
+  {
+    "name": "time_attachment",
+    "context": "Selin arrived on Monday and departed on Thursday.",
+    "question": "When did Selin depart?",
+    "answer": "Thursday"
+  }
+]

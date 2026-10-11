@@ -1,0 +1,868 @@
+{
+  "positive_raw_correct": 8,
+  "positive_total": 8,
+  "newly_selected_mismatches": [],
+  "cases": [
+    {
+      "name": "subject",
+      "context": "Nora thanked Felix.",
+      "question": "Who thanked Felix?",
+      "expected": "Nora",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "Nora",
+        "proposal": {
+          "start": 0,
+          "end": 4
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.629098,
+        "margin": 0.5067897,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.9549453258514404,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.225889205932617,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "object",
+      "context": "Nora thanked Felix.",
+      "question": "Who did Nora thank?",
+      "expected": "Felix",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 13,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.082578,
+        "margin": 0.05398619,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.438488245010376,
+        "proposal": {
+          "end": 18,
+          "start": 13
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3364402055740356,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix",
+      "raw_v3": "Felix",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "subject_reverse",
+      "context": "Felix thanked Nora.",
+      "question": "Who thanked Nora?",
+      "expected": "Felix",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "Felix",
+        "proposal": {
+          "start": 0,
+          "end": 5
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.6773757,
+        "margin": 0.6033449,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.816437840461731,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.1566355228424072,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix",
+      "raw_v3": "Felix",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "object_reverse",
+      "context": "Felix thanked Nora.",
+      "question": "Who did Felix thank?",
+      "expected": "Nora",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 6,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.0206609,
+        "margin": 0.13305914,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.5650676488876343,
+        "proposal": {
+          "end": 18,
+          "start": 14
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.615390658378601,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "thanked Nora",
+      "raw_v3": "Nora",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "passive",
+      "context": "Felix was thanked by Nora.",
+      "question": "Who thanked Felix?",
+      "expected": "Nora",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "Nora",
+        "proposal": {
+          "start": 21,
+          "end": 25
+        },
+        "evidence": {
+          "start": 0,
+          "end": 25
+        },
+        "score": 1.8434495,
+        "margin": 0.4232142,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 25,
+          "start": 0
+        },
+        "margin": 0.3726167678833008,
+        "proposal": {
+          "end": 25,
+          "start": 21
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.3730297088623047,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "passive_object",
+      "context": "Nora was thanked by Felix.",
+      "question": "Who did Felix thank?",
+      "expected": "Nora",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 0,
+          "end": 4
+        },
+        "evidence": {
+          "start": 0,
+          "end": 25
+        },
+        "score": 0.853213,
+        "margin": 0.0525257,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 25,
+          "start": 0
+        },
+        "margin": 0.3818432688713074,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.1835060119628906,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "distractor",
+      "context": "Nora thanked Felix, while Mira greeted Soren.",
+      "question": "Who greeted Soren?",
+      "expected": "Mira",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 0,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 44
+        },
+        "score": 2.0216508,
+        "margin": 0.118873715,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Mira",
+        "evidence": {
+          "end": 44,
+          "start": 0
+        },
+        "margin": 0.2511225938796997,
+        "proposal": {
+          "end": 30,
+          "start": 26
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.049013137817383,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora thanked Felix",
+      "raw_v3": "Mira",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "unicode",
+      "context": "Élodie thanked Björn.",
+      "question": "Who thanked Björn?",
+      "expected": "Élodie",
+      "positive_role": true,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "Élodie",
+        "proposal": {
+          "start": 0,
+          "end": 7
+        },
+        "evidence": {
+          "start": 0,
+          "end": 22
+        },
+        "score": 1.6560795,
+        "margin": 0.5794288,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Élodie",
+        "evidence": {
+          "end": 22,
+          "start": 0
+        },
+        "margin": 0.8758789300918579,
+        "proposal": {
+          "end": 7,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.1463074684143066,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Élodie",
+      "raw_v3": "Élodie",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "predicate_positive",
+      "context": "Nora demolished the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": "2008",
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 30,
+          "end": 34
+        },
+        "evidence": {
+          "start": 0,
+          "end": 34
+        },
+        "score": 1.7722096,
+        "margin": 0.5469606,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 34,
+          "start": 0
+        },
+        "margin": 0.5101948976516724,
+        "proposal": {
+          "end": 34,
+          "start": 30
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0471949577331543,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "predicate_mismatch",
+      "context": "Nora painted the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": null,
+      "positive_role": false,
+      "clear_mismatch": true,
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 27,
+          "end": 31
+        },
+        "evidence": {
+          "start": 0,
+          "end": 31
+        },
+        "score": 1.7722096,
+        "margin": 0.5469606,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 31,
+          "start": 0
+        },
+        "margin": 0.5101948976516724,
+        "proposal": {
+          "end": 31,
+          "start": 27
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9051421880722046,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "raw_correct": false,
+      "selected_correct": false
+    },
+    {
+      "name": "negation",
+      "context": "Nora never demolished the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": null,
+      "positive_role": false,
+      "clear_mismatch": true,
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 36,
+          "end": 40
+        },
+        "evidence": {
+          "start": 0,
+          "end": 40
+        },
+        "score": 1.7679087,
+        "margin": 0.55341184,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 40,
+          "start": 0
+        },
+        "margin": 0.5115673542022705,
+        "proposal": {
+          "end": 40,
+          "start": 36
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0715858936309814,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "raw_correct": false,
+      "selected_correct": false
+    },
+    {
+      "name": "time",
+      "context": "Mira visited Oslo in 2012.",
+      "question": "When did Mira visit Oslo?",
+      "expected": "2012",
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "2012",
+        "proposal": {
+          "start": 21,
+          "end": 25
+        },
+        "evidence": {
+          "start": 0,
+          "end": 25
+        },
+        "score": 1.5600775,
+        "margin": 0.3323325,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2012",
+        "evidence": {
+          "end": 25,
+          "start": 0
+        },
+        "margin": 0.45722949504852295,
+        "proposal": {
+          "end": 25,
+          "start": 21
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9608958959579468,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2012",
+      "raw_v3": "2012",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "place",
+      "context": "Mira visited Oslo in 2012.",
+      "question": "Where did Mira visit in 2012?",
+      "expected": "Oslo",
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 13,
+          "end": 17
+        },
+        "evidence": {
+          "start": 0,
+          "end": 25
+        },
+        "score": 0.694663,
+        "margin": 0.12508267,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Oslo",
+        "evidence": {
+          "end": 25,
+          "start": 0
+        },
+        "margin": 0.4059112071990967,
+        "proposal": {
+          "end": 17,
+          "start": 13
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3288805484771729,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Oslo",
+      "raw_v3": "Oslo",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "count",
+      "context": "Mira carried three crates.",
+      "question": "How many crates did Mira carry?",
+      "expected": "three",
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "three",
+        "proposal": {
+          "start": 13,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 25
+        },
+        "score": 1.1643206,
+        "margin": 0.35812408,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "three",
+        "evidence": {
+          "end": 25,
+          "start": 0
+        },
+        "margin": 0.49979913234710693,
+        "proposal": {
+          "end": 18,
+          "start": 13
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3561519384384155,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "three",
+      "raw_v3": "three",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "count_mismatch",
+      "context": "Mira carried crates to three towns.",
+      "question": "How many crates did Mira carry?",
+      "expected": null,
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 23,
+          "end": 28
+        },
+        "evidence": {
+          "start": 0,
+          "end": 34
+        },
+        "score": 0.9394824,
+        "margin": 0.036822498,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 34,
+          "start": 0
+        },
+        "margin": 0.07903724908828735,
+        "proposal": {
+          "end": 28,
+          "start": 23
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.0722695589065552,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "three",
+      "raw_v3": "three",
+      "raw_correct": false,
+      "selected_correct": true
+    },
+    {
+      "name": "unknown",
+      "context": "Mira thanked Soren.",
+      "question": "Who thanked Zora?",
+      "expected": null,
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "Soren",
+        "proposal": {
+          "start": 13,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.3751506,
+        "margin": 0.21901143,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.07153308391571045,
+        "proposal": {
+          "end": 18,
+          "start": 13
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.6106517314910889,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "Soren",
+      "raw_v3": "Soren",
+      "raw_correct": false,
+      "selected_correct": true
+    },
+    {
+      "name": "ambiguous",
+      "context": "Nora thanked Felix. Mira thanked Felix.",
+      "question": "Who thanked Felix?",
+      "expected": null,
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 20,
+          "end": 24
+        },
+        "evidence": {
+          "start": 20,
+          "end": 38
+        },
+        "score": 1.6436291,
+        "margin": 0.014531016,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.06258773803710938,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 2.225889205932617,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "Mira",
+      "raw_v3": "Nora",
+      "raw_correct": false,
+      "selected_correct": true
+    },
+    {
+      "name": "repeated",
+      "context": "Nora thanked Felix. Nora thanked Felix.",
+      "question": "Who thanked Felix?",
+      "expected": "Nora",
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "Nora",
+        "proposal": {
+          "start": 0,
+          "end": 4
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.629098,
+        "margin": 0.5067897,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.9549453258514404,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.225889205932617,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "raw_correct": true,
+      "selected_correct": true
+    },
+    {
+      "name": "place_mismatch",
+      "context": "Mira read a book about Oslo.",
+      "question": "Where did Mira read a book?",
+      "expected": null,
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 23,
+          "end": 27
+        },
+        "evidence": {
+          "start": 0,
+          "end": 27
+        },
+        "score": 1.1978569,
+        "margin": 0.0715338,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 27,
+          "start": 0
+        },
+        "margin": 0.11058533191680908,
+        "proposal": {
+          "end": 27,
+          "start": 23
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.6644986867904663,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "Oslo",
+      "raw_v3": "Oslo",
+      "raw_correct": false,
+      "selected_correct": true
+    },
+    {
+      "name": "positive_negated_question",
+      "context": "Nora did not thank Felix.",
+      "question": "Who did Nora not thank?",
+      "expected": "Felix",
+      "positive_role": false,
+      "clear_mismatch": false,
+      "v1": {
+        "status": "predicted",
+        "answer": "Felix",
+        "proposal": {
+          "start": 19,
+          "end": 24
+        },
+        "evidence": {
+          "start": 0,
+          "end": 24
+        },
+        "score": 1.5664884,
+        "margin": 0.404989,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 24,
+          "start": 0
+        },
+        "margin": 0.6553868055343628,
+        "proposal": {
+          "end": 24,
+          "start": 19
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9797465801239014,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix",
+      "raw_v3": "Felix",
+      "raw_correct": true,
+      "selected_correct": true
+    }
+  ],
+  "gate": true
+}
