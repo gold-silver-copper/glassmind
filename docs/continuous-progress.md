@@ -1,5 +1,44 @@
 # Continuous development checkpoint
 
+## Current state — PR31 merged; syntax main command fully verified locally
+
+PR31 MERGED723add1b82ee619ecb7ae3544ceaec9d822e5467 at2026-10-11T09:04:50Z,
+exactheadf7034a567fad612b56b444d582a39113db4c9347, CI38126961130SUCCESS.
+Push45946/create17823/merge78342 COMPLETE. Do not repeat PR31 orfull765.
+Published coding177/765,588refused0fail,all174oldpassesretained; threeindexstylesgain.
+Evaluatedruntime0f8dbfa, release5fcb1577 retainedindexproof-review; fullresult
+52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d.
+
+UDSYNTAX accepted andintegrated source38fd9050d75a6499c306d802c8a779975cd74c23.
+New explicitmaincommand syntax, rawsentence/strictforms-or-textJSONL; predictions
+only, no factual/memory/codingauthority. Mainrelease226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0,
+retainedWORK/coordinator/udsyntax-review/glassmind-integrated androottarget/release.
+Model12554724bytes, SHA47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6,
+WORK/udsyntax-run/artifacts/model.bin, no retraining. Full2001mainpredictionsbyteidentical
+059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d,first100/authored/
+contracts/independent26 outputs alsoidentical. Parentindependentscore:19423LAS,
+20540UAS/25148goldtokens, all2001structurallyvalidtrees. Excluding68TRAIN-identical
+forms:19286LAS/20403UAS of25011. 65strictall10columnduplicates;68whenunusedcolumns
+excluded. No rawtext/semantic/QAaccuracyclaim. 5725labelededges/307rootswrong;
+Birdsfly,apostrophes andWho didNora thank? failures explicitlypreserved. Parent13
+frozencontrasts forms+text:68/70coreedges,24/26allcorrect, exactUTF8spans.
+
+Parent12readingtests,workspacefmt/allclippy/release/strict4smoke,16newmaincontracts,
+14existingQAcontracts pass. Session93183 COMPLETE; bothmaincontractcommandscomplete.
+No repeatedfullcoding claimed: coding sourceunchanged; explicitnewCLIbranch only.
+Original32files196045bytes,66external60359758bytes/5source/27repo/10freeze verified.
+All31originalcopies andexternalhashes reverified before inactiveworktree/authremoval.
+Original31copies remainbyteidentical; parentCLI/evidenceaddedseparately. Allowned
+modelworkers/nativejobs nowterminal. Reports tools/reading/syntax/PARENT.md+parent/,
+docs/results/reading-syntax.json; rawWORK/udsyntax-run andcoordinator/udsyntax-review.
+Knowncompletedworker tokens123,540,392 (cachedinputonce;parent/unfinishedexcluded).
+Newsyntaxscorejournal uses separate UDgoldtokenmetrics withweakchaincomparator,
+notoldgrammar/BliMP/QAseries. SourceEWT16,977,603bytesdownloaded; noofficialtest.
+
+Next: commit/push syntaxevidence andnewmaincommand, exact-headCI/merge. Then choose
+bounded reading orconversation improvement using actualsyntax/error evidence;
+never treatpredictedgrammar asproof. No blockers. Goal remainsactiveuntilstopped.
+
 ## Signed-index full DEV complete; publishing pending
 
 Full765 session99446 COMPLETE:177pass588refused0fail, all174oldpasses retained.

@@ -1,0 +1,342 @@
+[
+  {
+    "sentence": "Nora thanked Felix.",
+    "forms": [
+      "Nora",
+      "thanked",
+      "Felix",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ],
+      [
+        1,
+        null,
+        "root"
+      ]
+    ],
+    "category": "active_roles"
+  },
+  {
+    "sentence": "Felix thanked Nora.",
+    "forms": [
+      "Felix",
+      "thanked",
+      "Nora",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ],
+      [
+        1,
+        null,
+        "root"
+      ]
+    ],
+    "category": "active_roles"
+  },
+  {
+    "sentence": "Mira followed Theo.",
+    "forms": [
+      "Mira",
+      "followed",
+      "Theo",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ],
+      [
+        1,
+        null,
+        "root"
+      ]
+    ],
+    "category": "active_roles"
+  },
+  {
+    "sentence": "Theo followed Mira.",
+    "forms": [
+      "Theo",
+      "followed",
+      "Mira",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ],
+      [
+        1,
+        null,
+        "root"
+      ]
+    ],
+    "category": "active_roles"
+  },
+  {
+    "sentence": "Elena visited Oscar.",
+    "forms": [
+      "Elena",
+      "visited",
+      "Oscar",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ],
+      [
+        1,
+        null,
+        "root"
+      ]
+    ],
+    "category": "active_roles"
+  },
+  {
+    "sentence": "Oscar visited Elena.",
+    "forms": [
+      "Oscar",
+      "visited",
+      "Elena",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ],
+      [
+        1,
+        null,
+        "root"
+      ]
+    ],
+    "category": "active_roles"
+  },
+  {
+    "sentence": "Felix was thanked by Nora.",
+    "forms": [
+      "Felix",
+      "was",
+      "thanked",
+      "by",
+      "Nora",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        2,
+        "nsubj:pass"
+      ],
+      [
+        1,
+        2,
+        "aux:pass"
+      ],
+      [
+        4,
+        2,
+        "obl:agent"
+      ]
+    ],
+    "category": "passive"
+  },
+  {
+    "sentence": "Nora never thanked Felix.",
+    "forms": [
+      "Nora",
+      "never",
+      "thanked",
+      "Felix",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        2,
+        "nsubj"
+      ],
+      [
+        1,
+        2,
+        "advmod"
+      ],
+      [
+        3,
+        2,
+        "obj"
+      ]
+    ],
+    "category": "negation"
+  },
+  {
+    "sentence": "Who thanked Felix?",
+    "forms": [
+      "Who",
+      "thanked",
+      "Felix",
+      "?"
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ]
+    ],
+    "category": "subject_question"
+  },
+  {
+    "sentence": "Who did Nora thank?",
+    "forms": [
+      "Who",
+      "did",
+      "Nora",
+      "thank",
+      "?"
+    ],
+    "expected_core": [
+      [
+        0,
+        3,
+        "obj"
+      ],
+      [
+        2,
+        3,
+        "nsubj"
+      ]
+    ],
+    "category": "object_question"
+  },
+  {
+    "sentence": "Zoë visited Zürich.",
+    "forms": [
+      "Zoë",
+      "visited",
+      "Zürich",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ]
+    ],
+    "category": "unicode"
+  },
+  {
+    "sentence": "Nora and Felix visited Oslo.",
+    "forms": [
+      "Nora",
+      "and",
+      "Felix",
+      "visited",
+      "Oslo",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        3,
+        "nsubj"
+      ],
+      [
+        2,
+        0,
+        "conj"
+      ],
+      [
+        4,
+        3,
+        "obj"
+      ]
+    ],
+    "category": "coordination"
+  },
+  {
+    "sentence": "Nora saw Felix with binoculars.",
+    "forms": [
+      "Nora",
+      "saw",
+      "Felix",
+      "with",
+      "binoculars",
+      "."
+    ],
+    "expected_core": [
+      [
+        0,
+        1,
+        "nsubj"
+      ],
+      [
+        2,
+        1,
+        "obj"
+      ]
+    ],
+    "category": "attachment_ambiguous",
+    "limitation": "No asserted attachment truth for the prepositional phrase."
+  }
+]

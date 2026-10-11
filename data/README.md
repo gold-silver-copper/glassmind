@@ -510,3 +510,19 @@ All4475 DEV predictions take only Problem text; options/answers stay evaluator-s
 [Provenance and frozen design](../tools/quantities/percent-change/HANDOFF.md) and
 [independent integrated validation](../tools/quantities/percent-change/PARENT.md)
 record seven new justified answers, retained failures and compounding assumptions.
+
+## UD English EWT syntax experiment
+
+Pinned r2.18 revision `b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c`; CC-BY-SA-4.0.
+Downloaded only official TRAIN (15,034,493 bytes), DEV (1,898,574), README (24,522)
+and license (20,014), total 16,977,603 bytes. Official test was not downloaded.
+TRAIN has 12,544 sentences/204,578 integer words; DEV 2,001/25,148. Multiword range
+and decimal rows are counted separately; the model predicts basic dependencies.
+All 68 DEV sentences with TRAIN-identical forms remain scored and are separately
+reported. Primary scores use gold word segmentation, not raw-text tokenization.
+The parser uses only forms at inference and predicted POS tags internally; gold
+annotations stay in training/scoring. One fixed two-epoch tagger and three-epoch
+parser fit; no DEV tuning or probability calibration. Raw models/data stay under
+`~/.cache/glassmind/continuous-20261010/udsyntax-{source,run}`.
+[Provenance and license notice](../tools/reading/syntax/NOTICE.md),
+[independent audit](../tools/reading/syntax/PARENT.md).

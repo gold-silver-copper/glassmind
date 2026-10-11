@@ -1,0 +1,107 @@
+{
+  "total": 14,
+  "passed": 14,
+  "rows": [
+    {
+      "name": "plain_explicit_prediction",
+      "passed": true,
+      "code": 0,
+      "stdout": "Candidate answer (unverified): \u00c9lodie\nSource passage: \u00c9lodie visited Z\u00fcrich in 2018\n",
+      "stderr": ""
+    },
+    {
+      "name": "json_exact_utf8_provenance",
+      "passed": true,
+      "code": 0,
+      "stdout": "{\"status\":\"predicted\",\"answer\":\"\u00c9lodie\",\"proposal\":{\"start\":0,\"end\":7},\"evidence\":{\"start\":0,\"end\":31},\"score\":1.7024875,\"margin\":0.30193532,\"reason\":\"model_prediction_not_verified\"}\n",
+      "stderr": ""
+    },
+    {
+      "name": "explanation_is_not_probability",
+      "passed": true,
+      "code": 0,
+      "stdout": "Candidate answer (unverified): \u00c9lodie\nSource passage: \u00c9lodie visited Z\u00fcrich in 2018\nSelection: model_prediction_not_verified; source bytes: Some(Span { start: 0, end: 7 }); rank score: 1.7024875; margin: 0.30193532 (not probabilities).\n",
+      "stderr": ""
+    },
+    {
+      "name": "reject_annotation_id",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: expected only context and question: unknown field `id`, expected `context` or `question` at line 1 column 100\n"
+    },
+    {
+      "name": "reject_annotation_title",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: expected only context and question: unknown field `title`, expected `context` or `question` at line 1 column 103\n"
+    },
+    {
+      "name": "reject_annotation_answers",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: expected only context and question: unknown field `answers`, expected `context` or `question` at line 1 column 105\n"
+    },
+    {
+      "name": "reject_annotation_answer_start",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: expected only context and question: unknown field `answer_start`, expected `context` or `question` at line 1 column 110\n"
+    },
+    {
+      "name": "reject_annotation_frames",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: expected only context and question: unknown field `frames`, expected `context` or `question` at line 1 column 104\n"
+    },
+    {
+      "name": "bounded_context",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/udsyntax-review/qa-contracts/large.txt exceeds the 65536-byte limit\n"
+    },
+    {
+      "name": "bounded_json_row",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: reading input row exceeds the 512-KiB limit\n"
+    },
+    {
+      "name": "missing_question",
+      "passed": true,
+      "code": 2,
+      "stdout": "",
+      "stderr": "error: the following required arguments were not provided:\n  <TEXT>...\n\nUsage: glassmind-integrated read --model <MODEL> --context <CONTEXT> <TEXT>...\n\nFor more information, try '--help'.\n"
+    },
+    {
+      "name": "conflicting_modes",
+      "passed": true,
+      "code": 2,
+      "stdout": "",
+      "stderr": "error: the argument '--context <CONTEXT>' cannot be used with '--input <INPUT>'\n\nUsage: glassmind-integrated read --model <MODEL> --context <CONTEXT> <TEXT>...\n\nFor more information, try '--help'.\n"
+    },
+    {
+      "name": "malformed_model",
+      "passed": true,
+      "code": 1,
+      "stdout": "",
+      "stderr": "glassmind: invalid reading model: missing field `version` at line 1 column 2\n"
+    },
+    {
+      "name": "overflow_refuses",
+      "passed": true,
+      "code": 0,
+      "stdout": "{\"status\":\"refused\",\"answer\":\"\",\"proposal\":null,\"evidence\":null,\"score\":0.0,\"margin\":0.0,\"reason\":\"non_finite_model_score\"}\n",
+      "stderr": ""
+    }
+  ],
+  "binary_sha256": "226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0",
+  "model_sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5",
+  "scope": "CLI contracts only; semantic failures remain in independent.json"
+}

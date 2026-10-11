@@ -1,0 +1,48 @@
+{
+  "source_revision": "b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c",
+  "train_sentences": 12544,
+  "train_words": 204578,
+  "skipped_metadata_rows": {
+    "train": {
+      "multiword": 2614,
+      "empty_nodes": 37
+    },
+    "dev": {
+      "multiword": 359,
+      "empty_nodes": 4
+    }
+  },
+  "dev": {
+    "sentences": 2001,
+    "words": 25148,
+    "duplicate_form_sentences": 68,
+    "duplicate_annotation_sentences": 68,
+    "over128_sentences": 0,
+    "over128_words": 0
+  },
+  "independent_chain_baseline": {
+    "all": {
+      "words": 25148,
+      "uas_correct": 2528,
+      "las_correct": 481
+    },
+    "nonduplicate_forms": {
+      "words": 25011,
+      "uas_correct": 2429,
+      "las_correct": 421
+    },
+    "exclude_punctuation": {
+      "words": 22073,
+      "uas_correct": 1894,
+      "las_correct": 469
+    },
+    "duplicate_forms": {
+      "words": 137,
+      "uas_correct": 99,
+      "las_correct": 60
+    }
+  },
+  "inference_run": false,
+  "gold_tokenized": true,
+  "full_annotation_duplicate_definition": "exact ordered FORM/UPOS/HEAD/DEPREL sequence; no lemma/FEATS/enhanced edges used"
+}

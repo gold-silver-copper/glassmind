@@ -1,0 +1,1401 @@
+{
+  "cases": 13,
+  "executions": 26,
+  "correct_edges": 68,
+  "expected_edges": 70,
+  "all_core_correct": 24,
+  "rows": [
+    {
+      "sentence": "Nora thanked Felix.",
+      "category": "active_roles",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "thanked",
+          "Felix",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Nora thanked Felix.",
+      "category": "active_roles",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "thanked",
+          "Felix",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 4,
+            "form": "Nora",
+            "start": 0
+          },
+          {
+            "end": 12,
+            "form": "thanked",
+            "start": 5
+          },
+          {
+            "end": 18,
+            "form": "Felix",
+            "start": 13
+          },
+          {
+            "end": 19,
+            "form": ".",
+            "start": 18
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Felix thanked Nora.",
+      "category": "active_roles",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Felix",
+          "thanked",
+          "Nora",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Felix thanked Nora.",
+      "category": "active_roles",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Felix",
+          "thanked",
+          "Nora",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 5,
+            "form": "Felix",
+            "start": 0
+          },
+          {
+            "end": 13,
+            "form": "thanked",
+            "start": 6
+          },
+          {
+            "end": 18,
+            "form": "Nora",
+            "start": 14
+          },
+          {
+            "end": 19,
+            "form": ".",
+            "start": 18
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Mira followed Theo.",
+      "category": "active_roles",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Mira",
+          "followed",
+          "Theo",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Mira followed Theo.",
+      "category": "active_roles",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Mira",
+          "followed",
+          "Theo",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 4,
+            "form": "Mira",
+            "start": 0
+          },
+          {
+            "end": 13,
+            "form": "followed",
+            "start": 5
+          },
+          {
+            "end": 18,
+            "form": "Theo",
+            "start": 14
+          },
+          {
+            "end": 19,
+            "form": ".",
+            "start": 18
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Theo followed Mira.",
+      "category": "active_roles",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Theo",
+          "followed",
+          "Mira",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PRON",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Theo followed Mira.",
+      "category": "active_roles",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Theo",
+          "followed",
+          "Mira",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 4,
+            "form": "Theo",
+            "start": 0
+          },
+          {
+            "end": 13,
+            "form": "followed",
+            "start": 5
+          },
+          {
+            "end": 18,
+            "form": "Mira",
+            "start": 14
+          },
+          {
+            "end": 19,
+            "form": ".",
+            "start": 18
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PRON",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Elena visited Oscar.",
+      "category": "active_roles",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Elena",
+          "visited",
+          "Oscar",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Elena visited Oscar.",
+      "category": "active_roles",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Elena",
+          "visited",
+          "Oscar",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 5,
+            "form": "Elena",
+            "start": 0
+          },
+          {
+            "end": 13,
+            "form": "visited",
+            "start": 6
+          },
+          {
+            "end": 19,
+            "form": "Oscar",
+            "start": 14
+          },
+          {
+            "end": 20,
+            "form": ".",
+            "start": 19
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Oscar visited Elena.",
+      "category": "active_roles",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Oscar",
+          "visited",
+          "Elena",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Oscar visited Elena.",
+      "category": "active_roles",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Oscar",
+          "visited",
+          "Elena",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 5,
+            "form": "Oscar",
+            "start": 0
+          },
+          {
+            "end": 13,
+            "form": "visited",
+            "start": 6
+          },
+          {
+            "end": 19,
+            "form": "Elena",
+            "start": 14
+          },
+          {
+            "end": 20,
+            "form": ".",
+            "start": 19
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Felix was thanked by Nora.",
+      "category": "passive",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj:pass",
+          "aux:pass",
+          "root",
+          "case",
+          "obl:agent",
+          "punct"
+        ],
+        "forms": [
+          "Felix",
+          "was",
+          "thanked",
+          "by",
+          "Nora",
+          "."
+        ],
+        "heads": [
+          3,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "AUX",
+          "VERB",
+          "ADP",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Felix was thanked by Nora.",
+      "category": "passive",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj:pass",
+          "aux:pass",
+          "root",
+          "case",
+          "obl:agent",
+          "punct"
+        ],
+        "forms": [
+          "Felix",
+          "was",
+          "thanked",
+          "by",
+          "Nora",
+          "."
+        ],
+        "heads": [
+          3,
+          3,
+          0,
+          5,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 5,
+            "form": "Felix",
+            "start": 0
+          },
+          {
+            "end": 9,
+            "form": "was",
+            "start": 6
+          },
+          {
+            "end": 17,
+            "form": "thanked",
+            "start": 10
+          },
+          {
+            "end": 20,
+            "form": "by",
+            "start": 18
+          },
+          {
+            "end": 25,
+            "form": "Nora",
+            "start": 21
+          },
+          {
+            "end": 26,
+            "form": ".",
+            "start": 25
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "AUX",
+          "VERB",
+          "ADP",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Nora never thanked Felix.",
+      "category": "negation",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "advmod",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "never",
+          "thanked",
+          "Felix",
+          "."
+        ],
+        "heads": [
+          3,
+          3,
+          0,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "ADV",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Nora never thanked Felix.",
+      "category": "negation",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "advmod",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "never",
+          "thanked",
+          "Felix",
+          "."
+        ],
+        "heads": [
+          3,
+          3,
+          0,
+          3,
+          3
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 4,
+            "form": "Nora",
+            "start": 0
+          },
+          {
+            "end": 10,
+            "form": "never",
+            "start": 5
+          },
+          {
+            "end": 18,
+            "form": "thanked",
+            "start": 11
+          },
+          {
+            "end": 24,
+            "form": "Felix",
+            "start": 19
+          },
+          {
+            "end": 25,
+            "form": ".",
+            "start": 24
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "ADV",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Who thanked Felix?",
+      "category": "subject_question",
+      "input": "forms",
+      "correct_edges": 2,
+      "edges": 2,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Who",
+          "thanked",
+          "Felix",
+          "?"
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PRON",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Who thanked Felix?",
+      "category": "subject_question",
+      "input": "text",
+      "correct_edges": 2,
+      "edges": 2,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Who",
+          "thanked",
+          "Felix",
+          "?"
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "Who",
+            "start": 0
+          },
+          {
+            "end": 11,
+            "form": "thanked",
+            "start": 4
+          },
+          {
+            "end": 17,
+            "form": "Felix",
+            "start": 12
+          },
+          {
+            "end": 18,
+            "form": "?",
+            "start": 17
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PRON",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Who did Nora thank?",
+      "category": "object_question",
+      "input": "forms",
+      "correct_edges": 1,
+      "edges": 2,
+      "all_core_correct": false,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "aux",
+          "nsubj",
+          "root",
+          "punct"
+        ],
+        "forms": [
+          "Who",
+          "did",
+          "Nora",
+          "thank",
+          "?"
+        ],
+        "heads": [
+          2,
+          4,
+          4,
+          0,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PRON",
+          "AUX",
+          "PROPN",
+          "VERB",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Who did Nora thank?",
+      "category": "object_question",
+      "input": "text",
+      "correct_edges": 1,
+      "edges": 2,
+      "all_core_correct": false,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "aux",
+          "nsubj",
+          "root",
+          "punct"
+        ],
+        "forms": [
+          "Who",
+          "did",
+          "Nora",
+          "thank",
+          "?"
+        ],
+        "heads": [
+          2,
+          4,
+          4,
+          0,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 3,
+            "form": "Who",
+            "start": 0
+          },
+          {
+            "end": 7,
+            "form": "did",
+            "start": 4
+          },
+          {
+            "end": 12,
+            "form": "Nora",
+            "start": 8
+          },
+          {
+            "end": 18,
+            "form": "thank",
+            "start": 13
+          },
+          {
+            "end": 19,
+            "form": "?",
+            "start": 18
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PRON",
+          "AUX",
+          "PROPN",
+          "VERB",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Zoë visited Zürich.",
+      "category": "unicode",
+      "input": "forms",
+      "correct_edges": 2,
+      "edges": 2,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Zoë",
+          "visited",
+          "Zürich",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Zoë visited Zürich.",
+      "category": "unicode",
+      "input": "text",
+      "correct_edges": 2,
+      "edges": 2,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Zoë",
+          "visited",
+          "Zürich",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 4,
+            "form": "Zoë",
+            "start": 0
+          },
+          {
+            "end": 12,
+            "form": "visited",
+            "start": 5
+          },
+          {
+            "end": 20,
+            "form": "Zürich",
+            "start": 13
+          },
+          {
+            "end": 21,
+            "form": ".",
+            "start": 20
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Nora and Felix visited Oslo.",
+      "category": "coordination",
+      "input": "forms",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "cc",
+          "conj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "and",
+          "Felix",
+          "visited",
+          "Oslo",
+          "."
+        ],
+        "heads": [
+          4,
+          3,
+          1,
+          0,
+          4,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "CCONJ",
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Nora and Felix visited Oslo.",
+      "category": "coordination",
+      "input": "text",
+      "correct_edges": 3,
+      "edges": 3,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "cc",
+          "conj",
+          "root",
+          "obj",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "and",
+          "Felix",
+          "visited",
+          "Oslo",
+          "."
+        ],
+        "heads": [
+          4,
+          3,
+          1,
+          0,
+          4,
+          4
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 4,
+            "form": "Nora",
+            "start": 0
+          },
+          {
+            "end": 8,
+            "form": "and",
+            "start": 5
+          },
+          {
+            "end": 14,
+            "form": "Felix",
+            "start": 9
+          },
+          {
+            "end": 22,
+            "form": "visited",
+            "start": 15
+          },
+          {
+            "end": 27,
+            "form": "Oslo",
+            "start": 23
+          },
+          {
+            "end": 28,
+            "form": ".",
+            "start": 27
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "CCONJ",
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Nora saw Felix with binoculars.",
+      "category": "attachment_ambiguous",
+      "input": "forms",
+      "correct_edges": 2,
+      "edges": 2,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "case",
+          "obl",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "saw",
+          "Felix",
+          "with",
+          "binoculars",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          5,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": null,
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "provided_forms",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "ADP",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    },
+    {
+      "sentence": "Nora saw Felix with binoculars.",
+      "category": "attachment_ambiguous",
+      "input": "text",
+      "correct_edges": 2,
+      "edges": 2,
+      "all_core_correct": true,
+      "prediction": {
+        "deprels": [
+          "nsubj",
+          "root",
+          "obj",
+          "case",
+          "obl",
+          "punct"
+        ],
+        "forms": [
+          "Nora",
+          "saw",
+          "Felix",
+          "with",
+          "binoculars",
+          "."
+        ],
+        "heads": [
+          2,
+          0,
+          2,
+          5,
+          2,
+          2
+        ],
+        "model_version": "ewt-arc-standard-v1",
+        "spans": [
+          {
+            "end": 4,
+            "form": "Nora",
+            "start": 0
+          },
+          {
+            "end": 8,
+            "form": "saw",
+            "start": 5
+          },
+          {
+            "end": 14,
+            "form": "Felix",
+            "start": 9
+          },
+          {
+            "end": 19,
+            "form": "with",
+            "start": 15
+          },
+          {
+            "end": 30,
+            "form": "binoculars",
+            "start": 20
+          },
+          {
+            "end": 31,
+            "form": ".",
+            "start": 30
+          }
+        ],
+        "status": "predicted",
+        "structurally_valid": true,
+        "tokenization": "raw_unicode_v1",
+        "upos": [
+          "PROPN",
+          "VERB",
+          "PROPN",
+          "ADP",
+          "NOUN",
+          "PUNCT"
+        ]
+      }
+    }
+  ],
+  "limitation": "Small independently frozen authored contrast set; dependency edges do not establish semantic truth."
+}

@@ -1,0 +1,505 @@
+{
+  "created_utc": "2026-10-11T08:58:31.026079+00:00",
+  "outcome": "accepted_frozen_gates; coordinator integration pending",
+  "external_root": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts",
+  "external_files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/authored-input.jsonl",
+      "bytes": 731,
+      "sha256": "bebff4a1b5960ee3b0d5aadec5cfb06238fe086523dde8976ddf55a2c4b91dbe"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/authored-predictions.jsonl",
+      "bytes": 9201,
+      "sha256": "e85fc27f03da6a229e1cb400ba5d5d10f985f1c62471054aa1ffdcc8d6268402"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/authored-report.json",
+      "bytes": 32371,
+      "sha256": "7d474e474147e21ac7c9f9b2d8d0f43021ab35906858ec0c03fa0570eb1eb74e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/authored-time.txt",
+      "bytes": 656,
+      "sha256": "11062d3547589aecd8f2f06d62ba25aac4b84295439304d0c9bd0efb2c79741f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/authored.log",
+      "bytes": 154,
+      "sha256": "d0aaca48e12a5d1e883452496348a3f2b69432f6edb2cdd5e8051d663b21e122"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/build-initial.log",
+      "bytes": 2080,
+      "sha256": "9df9b31c7f7be1c3c19f58485c729c8e2140b65bc12f11ab1467162195e4db44"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/build-workspace.log",
+      "bytes": 2497,
+      "sha256": "71eb404381649858e9702b6821c835dde3b5bcf55f95af26cf72381ba4fbdb73"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/clippy-initial.log",
+      "bytes": 3946,
+      "sha256": "27c2fc95f731e15d4e1c9a01aef359350005ee785504bcfdc4cfd26c2bcae18d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/contracts-input.jsonl",
+      "bytes": 33845,
+      "sha256": "e67a8e517904d3ea47165d7528925de5692f16296fdc65bcd49748674cde4ea7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/contracts-output.jsonl",
+      "bytes": 2488,
+      "sha256": "0bfa9f1f8f88aeac217d58624c78c4e04b2a64824cac468fcbf348914fb88960"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/contracts-report.json",
+      "bytes": 176,
+      "sha256": "94f4f14f94c81e22555af4db226a77635b3744a4df21883a5b8e0dd8c9ea05cb"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/contracts.log",
+      "bytes": 153,
+      "sha256": "c9b7d56f52a2ac64c446012f7d5bfe75b45371c35a2d7a59113f1a3afa83d82b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/corrupt-model.bin",
+      "bytes": 12554724,
+      "sha256": "736362969512caac992b40b703ad04c8f335da2bbc62b236895ce472d9c95001"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/data-notice/DERIVED-NOTICE.md",
+      "bytes": 1078,
+      "sha256": "69788f7faf8a6bfe789d4cfe79e3afbc93b87fd15b5df7ed3fc44a6c1da4e97d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/data-notice/LICENSE.txt",
+      "bytes": 20014,
+      "sha256": "b3d1b0f4c6ae151f7eb78738f46ebd5ee140f8a7f76501ba26af123140d35ae7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/data-notice/README.md",
+      "bytes": 24522,
+      "sha256": "c2dc7edaf5937d18cb3ff142410fde7460e32faa69b2bd0a041abc3f957da281"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/data-notice/provenance.json",
+      "bytes": 1444,
+      "sha256": "aebc7736a585c8b921ebfa6c82ba3498975ddc2fad29c80ee7645c9ca60ada7e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/fmt-final.log",
+      "bytes": 94,
+      "sha256": "ef4ebc7611f7ad08a5eeda6574597118e512b14754cb867c448c9a9a577e5e4c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/fmt-initial.log",
+      "bytes": 72321,
+      "sha256": "0b4256af38e6e72bc789b6db1291de48847786f014b108b367311220fbc03740"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/fmt.log",
+      "bytes": 94,
+      "sha256": "1212f7d1d6566dee64f3adcc423149edf4471d088527ee5e87183dc20f680f51"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/freeze.json",
+      "bytes": 2373,
+      "sha256": "cd429c3df3f72c3793683c4b33f27ec2969b1a28e2980ab9c7d1aaa69e5d309c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/full-input.jsonl",
+      "bytes": 228541,
+      "sha256": "378c98e96d9a201ff1c84749ab969a2e6b3c948c6eed4b856a92d6898da619b6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/full-ledger.jsonl",
+      "bytes": 1503653,
+      "sha256": "e2d4e4fba04c6d88738f020189c6fea09c27ea73dfce6a054163d24d58156c19"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/full-predictions.jsonl",
+      "bytes": 949978,
+      "sha256": "059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/full-report.json",
+      "bytes": 6687,
+      "sha256": "08a1f29b2e464cf71cfaad28c44e79ad84dc25ef781f2c2c501022076b4f6952"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/full-time.txt",
+      "bytes": 646,
+      "sha256": "cfc2c2bf8f7beddc178ae027bfc0e8c438e8eb3e55594809d18cabbce1cc1c62"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/full.log",
+      "bytes": 1045,
+      "sha256": "ca7bf96404805aa895b8f936008e3d373b86797b091e28fde7d28b07395e2922"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/model-check",
+      "bytes": 6724768,
+      "sha256": "d58d8153f559d8ebb53a43ff6c402154f8ca5b3150f9a29c2763084c60d440d9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/model-check-build.log",
+      "bytes": 94,
+      "sha256": "81e4a76e9889db1408845c0db887eaf53610d5e89a82d82fdfa8b6580e6501fe"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/model-check.log",
+      "bytes": 209,
+      "sha256": "815a30096a89ce4e2ca6426c96a17ed083c3d83d0e33a4455d08e3fcde638dfc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/model.bin",
+      "bytes": 12554724,
+      "sha256": "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/reading-syntax",
+      "bytes": 12176336,
+      "sha256": "6aecfd2e1fccf38362f43a9f771b82b2e7cb3c762c4f2241ee6457b6080e3e15"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/reading-syntax-workspace",
+      "bytes": 12176104,
+      "sha256": "9c8f994cc9180a2a68bb582aa279c71076f368c3545ae7607508f9614b15b0a7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample-input.jsonl",
+      "bytes": 20376,
+      "sha256": "e4f6b83c9cb6013ab69e82e0b8531c636fed2c2252baf62df81fd40accfd8452"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample-ledger.jsonl",
+      "bytes": 103436,
+      "sha256": "ea895ce44167f63129d82b048ebc1455b61d1c771ba333fac052f9516fb1c067"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample-predictions.jsonl",
+      "bytes": 73614,
+      "sha256": "6d727f44bcb9fb3717f7a2bc7b2d4adf7987850d9c27088d3e4deac98610fa25"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample-report.json",
+      "bytes": 6152,
+      "sha256": "2ebab026ec44bce4c611a807dba22b9efe1e6f47d9b5ee3c11e81d4474a430cc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample-time.txt",
+      "bytes": 652,
+      "sha256": "b9c2b17d034dd36d7cdbb3ca86ac824f57bd82d37117869e093af5fa700a3c46"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/sample.log",
+      "bytes": 1029,
+      "sha256": "553fab58b0ff380cdfe5544eda6df017e12bb2ab9e0218ba104963509d1bc141"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/crates/reading/src/bin/reading-syntax.rs",
+      "bytes": 5448,
+      "sha256": "4d37ae3ca0dc082ad30fdc7815882407ed0c1465ca2b8a952f4070a05d438072"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/crates/reading/src/lib.rs",
+      "bytes": 145,
+      "sha256": "ebd9e574f524ca6b4f856a7856030abd45f1931a03c729b4c0e4067c4e10867c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/crates/reading/src/syntax.rs",
+      "bytes": 30112,
+      "sha256": "f2a7401e149a2fd01740db8c1a26dc1b91e03237ed48e766eb0ec68b30c7c78a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/COMMANDS.md",
+      "bytes": 4308,
+      "sha256": "02ecb1a910f2702ac43ff3f92cbce484f371db020af030474e5a7df896708bc0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/HANDOFF.md",
+      "bytes": 12635,
+      "sha256": "ebf1a0e696dc379fb95e61be41e10f7e9e40fa2905bcd4b51854ca6ac2dfca75"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/PLAN.md",
+      "bytes": 4008,
+      "sha256": "1b4875beaedc67d4998ba76a994be936dab0e0cfad3c63ead71b8758d240b30d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/audit_train.py",
+      "bytes": 1468,
+      "sha256": "881395e1b52141ae1d1060fd8f184bb80e1a3913fef9a8a64e0e0f51ffff2bdc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/authored.jsonl",
+      "bytes": 1668,
+      "sha256": "7ceecfe7771501982474a3198a35e4bc38f1dc974be41befb6f316a5b9abebe0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/contracts.py",
+      "bytes": 2444,
+      "sha256": "b2477baa59daca7f4d483f61cfe7be82fb96838b8defeba62cb60ab22fe26a57"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/evaluate.py",
+      "bytes": 8931,
+      "sha256": "8014d44824a32ffd93f2836bd9b4ab3c28168c4fd78d1a5992058e97b698b581"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/measure.py",
+      "bytes": 686,
+      "sha256": "99bc52e12ea03f3e2c102c2d8ed44012e1a5219af090ec8efd6b8b0d782a0222"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/model_check.rs",
+      "bytes": 1297,
+      "sha256": "59854767a8f2f8107bc0a5574c79efd277aa07bdd6c8dff5fdda6daf3c24b5b0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/source-snapshot/tools/reading/syntax/reproduce.sh",
+      "bytes": 2357,
+      "sha256": "3f0559c09ab3b03fcdddf90872f24c088700d42b7134023db141136fcf2f56d1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/test-final.log",
+      "bytes": 2534,
+      "sha256": "a0e3d61a94ed21527badf178aa116e090748c2f399923b5a75e5eed26b7c116a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/test-initial.log",
+      "bytes": 2939,
+      "sha256": "4debd19aa3f6a0b7edf45efbc4113dd373c872a59f7a5bb63a0b43d430d82c7e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train-audit-initial-error.json",
+      "bytes": 432,
+      "sha256": "ae4a13617e659e8a538e8ec22475bab7458f11f8603b94820d232c5a4603d8d3"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train-audit.json",
+      "bytes": 431,
+      "sha256": "b4a71e8676732a5bdffd72d302333295b461ec337cd0ef27f25f1147b497b795"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train-launch-error.log",
+      "bytes": 172,
+      "sha256": "9a02627d7b6dae1c0df7cd5fc031d27dce09052d4db0d5024d75deba6e97e481"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train-report.json",
+      "bytes": 470,
+      "sha256": "b2ff48dc1e47c8e7fdfb6bd9d912b88acc9ea23cbbb419e2b23efa128e454258"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train-skips.jsonl",
+      "bytes": 28157,
+      "sha256": "250aa1739550a5f3d2d81d1f4073e22ead4ffac0c7ed26ac5df5c0a58b278374"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train-time.txt",
+      "bytes": 656,
+      "sha256": "b570c3be64c1646e94d0a9ba865953bef30755133c7dbac1ead1868280e9e739"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/train.log",
+      "bytes": 238,
+      "sha256": "e1e10146b26b69f8f48ffb63c5662366f95aae82d03a8f1de7a7d67eded7e72b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/verification.json",
+      "bytes": 4242,
+      "sha256": "dffc4ac96ddad6eda2b377904150002e2dda158d347dd5d8440817b1eaccbd08"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/workspace-predictions.jsonl",
+      "bytes": 949978,
+      "sha256": "059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/workspace-replay-report.json",
+      "bytes": 233,
+      "sha256": "082145f91d769f34866b5e8d2984ab205914fef5a9136ecb2264f23079dd5824"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/workspace-replay-time.json",
+      "bytes": 669,
+      "sha256": "b65c680fad97853367bcefbd466a59d93fd52a368d203e6071d7d255d37b7d65"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-run/artifacts/workspace-replay.log",
+      "bytes": 94,
+      "sha256": "37166caa6b3d23c802f51f060486f07b133b721800d630cf5379a8508738aca2"
+    }
+  ],
+  "external_file_count": 66,
+  "external_bytes": 60359758,
+  "source_files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/LICENSE.txt",
+      "bytes": 20014,
+      "sha256": "b3d1b0f4c6ae151f7eb78738f46ebd5ee140f8a7f76501ba26af123140d35ae7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/README.md",
+      "bytes": 24522,
+      "sha256": "c2dc7edaf5937d18cb3ff142410fde7460e32faa69b2bd0a041abc3f957da281"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/en_ewt-ud-dev.conllu",
+      "bytes": 1898574,
+      "sha256": "39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/en_ewt-ud-train.conllu",
+      "bytes": 15034493,
+      "sha256": "d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/provenance.json",
+      "bytes": 1444,
+      "sha256": "aebc7736a585c8b921ebfa6c82ba3498975ddc2fad29c80ee7645c9ca60ada7e"
+    }
+  ],
+  "small_repository_files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/COMMANDS.md",
+      "bytes": 4308,
+      "sha256": "02ecb1a910f2702ac43ff3f92cbce484f371db020af030474e5a7df896708bc0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/FREEZE.json",
+      "bytes": 2373,
+      "sha256": "cd429c3df3f72c3793683c4b33f27ec2969b1a28e2980ab9c7d1aaa69e5d309c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/HANDOFF.md",
+      "bytes": 12635,
+      "sha256": "ebf1a0e696dc379fb95e61be41e10f7e9e40fa2905bcd4b51854ca6ac2dfca75"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/NOTICE.md",
+      "bytes": 1078,
+      "sha256": "69788f7faf8a6bfe789d4cfe79e3afbc93b87fd15b5df7ed3fc44a6c1da4e97d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/PLAN.md",
+      "bytes": 4008,
+      "sha256": "1b4875beaedc67d4998ba76a994be936dab0e0cfad3c63ead71b8758d240b30d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/audit_train.py",
+      "bytes": 1468,
+      "sha256": "881395e1b52141ae1d1060fd8f184bb80e1a3913fef9a8a64e0e0f51ffff2bdc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/authored.jsonl",
+      "bytes": 1668,
+      "sha256": "7ceecfe7771501982474a3198a35e4bc38f1dc974be41befb6f316a5b9abebe0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/contracts.py",
+      "bytes": 2444,
+      "sha256": "b2477baa59daca7f4d483f61cfe7be82fb96838b8defeba62cb60ab22fe26a57"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/evaluate.py",
+      "bytes": 8931,
+      "sha256": "8014d44824a32ffd93f2836bd9b4ab3c28168c4fd78d1a5992058e97b698b581"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/measure.py",
+      "bytes": 686,
+      "sha256": "99bc52e12ea03f3e2c102c2d8ed44012e1a5219af090ec8efd6b8b0d782a0222"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/model_check.rs",
+      "bytes": 1297,
+      "sha256": "59854767a8f2f8107bc0a5574c79efd277aa07bdd6c8dff5fdda6daf3c24b5b0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/preregistered.sha256",
+      "bytes": 197,
+      "sha256": "f3d3aca315a1ac5359038181605fffc8ee545e124aa6e0dfbb4a594f2c233473"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/authored-report.json",
+      "bytes": 32371,
+      "sha256": "7d474e474147e21ac7c9f9b2d8d0f43021ab35906858ec0c03fa0570eb1eb74e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/authored-time.txt",
+      "bytes": 656,
+      "sha256": "11062d3547589aecd8f2f06d62ba25aac4b84295439304d0c9bd0efb2c79741f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/contracts-report.json",
+      "bytes": 176,
+      "sha256": "94f4f14f94c81e22555af4db226a77635b3744a4df21883a5b8e0dd8c9ea05cb"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/full-report.json",
+      "bytes": 6687,
+      "sha256": "08a1f29b2e464cf71cfaad28c44e79ad84dc25ef781f2c2c501022076b4f6952"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/full-time.txt",
+      "bytes": 646,
+      "sha256": "cfc2c2bf8f7beddc178ae027bfc0e8c438e8eb3e55594809d18cabbce1cc1c62"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/sample-report.json",
+      "bytes": 6152,
+      "sha256": "2ebab026ec44bce4c611a807dba22b9efe1e6f47d9b5ee3c11e81d4474a430cc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/sample-time.txt",
+      "bytes": 652,
+      "sha256": "b9c2b17d034dd36d7cdbb3ca86ac824f57bd82d37117869e093af5fa700a3c46"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/train-audit.json",
+      "bytes": 431,
+      "sha256": "b4a71e8676732a5bdffd72d302333295b461ec337cd0ef27f25f1147b497b795"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/train-report.json",
+      "bytes": 470,
+      "sha256": "b2ff48dc1e47c8e7fdfb6bd9d912b88acc9ea23cbbb419e2b23efa128e454258"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/train-time.txt",
+      "bytes": 656,
+      "sha256": "b570c3be64c1646e94d0a9ba865953bef30755133c7dbac1ead1868280e9e739"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/verification.json",
+      "bytes": 4242,
+      "sha256": "dffc4ac96ddad6eda2b377904150002e2dda158d347dd5d8440817b1eaccbd08"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reports/workspace-replay-report.json",
+      "bytes": 233,
+      "sha256": "082145f91d769f34866b5e8d2984ab205914fef5a9136ecb2264f23079dd5824"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/reproduce.sh",
+      "bytes": 2357,
+      "sha256": "3f0559c09ab3b03fcdddf90872f24c088700d42b7134023db141136fcf2f56d1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/source-provenance.json",
+      "bytes": 1444,
+      "sha256": "aebc7736a585c8b921ebfa6c82ba3498975ddc2fad29c80ee7645c9ca60ada7e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax/tools/reading/syntax/train-inspection.json",
+      "bytes": 1806,
+      "sha256": "805daf856314f13593c6a7d6756d3374abe6986a6e1acb63b472c91e96b572db"
+    }
+  ],
+  "model": "model.bin",
+  "corrupt-model.bin": "intentionally invalid contract artifact; never use for inference"
+}

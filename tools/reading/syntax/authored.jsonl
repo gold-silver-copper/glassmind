@@ -1,0 +1,16 @@
+{"name":"active-1","text":"The nurse called the teacher.","core":[[2,3,"nsubj"],[5,3,"obj"]]}
+{"name":"active-2","text":"The teacher called the nurse.","core":[[2,3,"nsubj"],[5,3,"obj"]]}
+{"name":"active-3","text":"The dog chased the cat.","core":[[2,3,"nsubj"],[5,3,"obj"]]}
+{"name":"active-4","text":"The cat chased the dog.","core":[[2,3,"nsubj"],[5,3,"obj"]]}
+{"name":"active-5","text":"The manager hired the driver.","core":[[2,3,"nsubj"],[5,3,"obj"]]}
+{"name":"active-6","text":"The driver hired the manager.","core":[[2,3,"nsubj"],[5,3,"obj"]]}
+{"name":"passive-1","text":"The teacher was called by the nurse.","core":[[2,4,"nsubj:pass"],[7,4,"obl:agent"]]}
+{"name":"passive-2","text":"The nurse was called by the teacher.","core":[[2,4,"nsubj:pass"],[7,4,"obl:agent"]]}
+{"name":"negation-1","text":"The nurse did not call the teacher.","core":[[2,5,"nsubj"],[4,5,"advmod"],[7,5,"obj"]]}
+{"name":"negation-2","text":"The nurse did call the teacher.","core":[[2,4,"nsubj"],[6,4,"obj"]]}
+{"name":"question","text":"Did the nurse call the teacher?","core":[[3,4,"nsubj"],[6,4,"obj"]]}
+{"name":"statement","text":"The nurse called the teacher!","core":[[2,3,"nsubj"],[5,3,"obj"]]}
+{"name":"unicode","text":"Élodie greeted José — politely.","core":[[1,2,"nsubj"],[3,2,"obj"]]}
+{"name":"coordination","text":"The nurse and the teacher called the driver.","core":[[2,6,"nsubj"],[5,2,"conj"],[8,6,"obj"]]}
+{"name":"attachment-1","text":"The nurse saw the teacher with binoculars.","alternatives":"with binoculars may modify saw or teacher"}
+{"name":"attachment-2","text":"The nurse with binoculars saw the teacher.","core":[[4,2,"nmod"],[2,5,"nsubj"],[7,5,"obj"]]}

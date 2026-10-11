@@ -103,7 +103,7 @@ ordered. This adds six correct MathQA dev answers with existing answers preserve
 ## Current benchmark tracks
 
 Chart and score journal: [tracks](docs/results/tracks.html). Scores below
-are exact answers; wrong and refused answers remain separate. CLINC's OOS
+use the metrics labeled for each track; wrong and refused answers remain separate. CLINC's OOS
 class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
@@ -123,6 +123,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Chat memory, calculations and stories | 490/490 routing and 134/134 memory checks in both model modes; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
+| Syntax, UD English EWT (gold word tokens) | 19,423/25,148 labeled edges (77.23%); 20,540 heads (81.68%); predictions only | pending |
 
 The separate MathQA v3 metric compares bare numeric coefficients or explicit
 compatible quantity labels. Bare-label scores do not check requested units or
@@ -395,3 +396,10 @@ actual compiler target-width check justify the conversion. The full coding dev
 result improves174→177/765 with every previous pass retained and zero failures.
 Original guards and rank behavior are preserved; unsupported cases refuse.
 [Proof scope and independent validation](tools/coding-index-proof/PARENT.md).
+
+`glassmind syntax --model MODEL.bin "Nora thanked Felix."` predicts dependency
+heads and relations, with `--json` for raw-text source spans or `--input FILE`
+for forms/text JSONL. Its small learned parser scores 77.23% labeled and 81.68%
+unlabeled attachment on 25,148 UD English EWT dev words with **gold tokenization**.
+These are unverified syntax predictions; raw-text contractions and some simple
+questions still fail. [Usage, duplicate audit and limitations](tools/reading/syntax/PARENT.md).
