@@ -1,0 +1,14 @@
+{
+  "unchanged_single_argument_and_verifier_code": true,
+  "production_files_changed": [
+    "crates/world-rust/src/implementation.rs"
+  ],
+  "original_sha256": "0cc70e953702944b618c8804c19ff5b1e0e09b5ce3a87e35ed7f102e4301e456",
+  "candidate_sha256": "d36731c654c52907a42ec9f9cb2c3198d70f21f2359d32e4acf75a817e3ca5df",
+  "candidate_family_count": 16,
+  "selection_inputs": "parsed signature only; no function names, request, docs, body or test contents",
+  "integer_operations": "copy, ordering and set membership; no element arithmetic",
+  "bindings": "tuple initialization prevents caller argument shadowing; raw identifiers retained with ToTokens",
+  "budgets": "unchanged 32 candidate ceiling and 90 second apply deadline",
+  "qualification": "same integer type; two plain owned Vec or immutable slice arguments; matching Vec return"
+}

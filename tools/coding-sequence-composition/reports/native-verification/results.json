@@ -1,0 +1,210 @@
+[
+  {
+    "id": "concat_ab",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1353702-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        2
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "reverse_ab",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1356472-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        3
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "concat_ba",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1359250-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        4
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "reverse_ba",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1364338-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        5
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "sorted",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1367654-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        14
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "sorted_reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1370299-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        15
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "union",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1372944-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        0
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "union_reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1375545-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "intersection",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1378223-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        7
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "intersection_reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1380994-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        10
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "difference_ab",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1383570-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        6
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "difference_ab_reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1386164-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        9
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "difference_ba",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1388752-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        13
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "difference_ba_reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1391353-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        12
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "symmetric",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1394080-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        8
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "symmetric_reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1396678-0.evidence",
+    "choice": {
+      "candidate_count": 16,
+      "passing_indices": [
+        11
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  }
+]

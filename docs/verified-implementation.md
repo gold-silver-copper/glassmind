@@ -17,6 +17,12 @@ Word sequences can keep their order or reverse it. String candidates can also
 extract word initials, optionally keep alphabetic initials, and apply Unicode
 upper/lower case conversion. The request selects the target. Existing tests
 verify candidates; doc comments and assertions do not choose an algorithm.
+Two integer sequence arguments can produce concatenation in either order,
+ascending/descending sorting, union, intersection, directional difference or
+symmetric difference. Each argument may be an immutable slice or an owned Vec;
+both element types and the Vec return element type must match. Set operations
+remove duplicates; sorted concatenation retains them. Sixteen candidates cover
+this family without inspecting the function name or its documentation.
 The result reports test verification and links to the saved evidence.
 
 The current scope is a standalone dependency-free library with a unique free
@@ -36,11 +42,11 @@ again on the live package; failure restores the original files. Tests and other
 source bytes remain intact. This establishes the recorded tests' behavior,
 without proving all English requirements or behavior on untested inputs.
 
-The full 765-request coding DEV run reaches **221 passes, 544 refusals and zero
-failures**, retaining all 220 previous passes. The new gain is the initials task's
-terse request, also present in the supplied TRAIN material. Twelve authored
-behaviors cover word-initial extraction, Unicode filtering/case conversion and
-word order; a weak case correctly refuses four passing candidates. All 76
-existing native checks remain passing. These checks are separate from the
-benchmark score.
-[Source, validation and limitations](../tools/coding-word-initials/PARENT.md).
+The full 765-request coding DEV run reaches **223 passes, 542 refusals and zero
+failures**, retaining all 221 previous passes. The two gains are request styles
+for merging sorted integer sequences, also supplied in TRAIN. Sixteen independently
+authored behaviors cover the new sequence compositions; six refusal cases include
+weak tests admitting all 16 candidates. All 89 prior native outcomes are unchanged.
+Every accepted new native and TRAIN output was independently recompiled. These
+checks are separate from the benchmark score and do not prove untested behavior.
+[Source, validation and limitations](../tools/coding-sequence-composition/PARENT.md).

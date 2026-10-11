@@ -1,0 +1,310 @@
+[
+  {
+    "id": "concat_ab",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "aa65509ffbbdfcd4f5504af52e17d6a9fe401e1a9c70af2f94288739c59e60c6"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "e61c66e86637c18f7394ed1cc1002330fe405f8df9f00a637d8010efb388436d"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1353702-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "reverse_ab",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "ce951880795cbcc6a173e6fd91131db61c601f04ca75004490ad11564e8b73c9"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "f4b5d44470ed8ab4c8faaab0d9133c15cc464112d02505c9a651c423e822b3a5"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1356472-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "concat_ba",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "5f53abf79a5adfc4ff242a0877fe9c7446c07bef5782b9bab5afa69a622344da"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "45a3844af5149656c152a9a4c20607287acd9817fa8f3c291db53fb7d09a443f"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1359250-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "reverse_ba",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "b4d79e6501f308fef2e95c781fff71e006af3d95942937958aedb2aa9200be04"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "abc476cc9943a323892c7a14cbdbb711f89b934e2a9d72fea5607635de9a6f13"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1364338-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "sorted",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "2fd67f9d209f16c2a35ce2daa251b7d024756c1e9173b2bce83873f71d8a7a44"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "b49e5547472b1092b4536926d0a98f311240130d04d1958f7b073eb642b843be"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1367654-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "sorted_reverse",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "9c95a3a23ffbfacae06c2738e147bddfc3584a23e79399d48eb0b7b19b1112c3"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "37d36a2478f25eaae48ba83296525294cf6ad459f980677f7475f4a4699cce9a"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1370299-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "union",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "fa8321eb3d42c7162b17ec7df5a3274d38341a3def80ade30e2e68e02a877a63"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "4e8099471457f09fbc246a11add0231ebe197fc2834de4805ed985e2b31ebb31"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1372944-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "union_reverse",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "bd79a3ca58e8ddb47eb9e0b599202849ae8437a41ed5e9bb726d00e7377c8e79"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "8551bf47134e375c6243ea361467230a07a20ab5f04f0d7b4db779f45bd1ec3d"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1375545-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "intersection",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "78eca05d4e7e6d29ed763d1a8c4b66ab7d03fa37dcdae7f19d9d512ca41bac93"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "4de85b3f607580f5d8f63407ee32e4955aebb17dab4aaa0bd1bf16af5d27cabf"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1378223-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "intersection_reverse",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "7a1b72faee70155ed1e25f08a6d443496e47b04f02cab4ca53203bcaeb5215de"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "2c2ef706290d9c25bec7ea0b2afd84126ac7f87cc540254469edbf69f6abd237"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1380994-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "difference_ab",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "182d856aaad30149b7ee280e5413b862eea2d0e5cb649c1ee284bd40fb79a5bd"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "38206558357d4a2f7a9f08fde6257eaaa1bf724c15f0063c18fe3cfa5890d792"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1383570-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "difference_ab_reverse",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "7fecc5ab2a9b56a4b95db03bda2655b4088d05b6f2d372b324654f3137a08a9e"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "38ea5dd823f217fa63e8c4ec5a1f6d14b58b41556024b0cbc8172e7b1750ec1b"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1386164-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "difference_ba",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "566ebec85598ec8b62e2016149a021d5a059e093af585594e7e1313fb1e5f15e"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "92e054e65008580f94fcd9e9795811d129b98ccfdd6fbbbbfbbe277b979ad83e"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1388752-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "difference_ba_reverse",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "7b0065ad352a2f34a7ee2e881c5910a0ec31f1bc29c45d9f4e7921a65f0912a7"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "f8530e7dcf673cba520ebeb99fb09b8cc616be83488dbad6ab7def25feb7bd68"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1391353-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "symmetric",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "efaa1279074b0831ef336aa470177c021e61610bd81922b1bd29f81b699a216b"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "04dd02c6c11d76a46e34d06bd4daee29f948c9ee990c44ff8e55b66cb6fd3198"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1394080-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "symmetric_reverse",
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "1de0ad3d014208766d664da29142126f68964bcfce5163bfa1abd0171317b99b"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "3633601b863989a900b1f0892c6f0ecda421b9707e94908ffe70a355a9a79e66"
+    },
+    "stdout": "Applied test-verified proposal for combine (16 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1396678-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "weak-ambiguity",
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "d638d1e5486a2c76018a80e6bd9c41b2495fef74a10967a5351ef6f1d3228375"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "d638d1e5486a2c76018a80e6bd9c41b2495fef74a10967a5351ef6f1d3228375"
+    },
+    "stdout": "Cannot implement: 16 passing candidates; require one survivor of the bounded family (not a proof of intended semantics); evidence: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/native/scratch/implement-1399251-0.evidence\n",
+    "stderr": ""
+  },
+  {
+    "id": "mismatched-elements",
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "a81e76a889d5f4504454483cafc7f69fbdad452f82650588902f190ed1282e54"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "a81e76a889d5f4504454483cafc7f69fbdad452f82650588902f190ed1282e54"
+    },
+    "stdout": "Cannot implement: matching integer sequences and vector return required\n",
+    "stderr": ""
+  },
+  {
+    "id": "mutable-reference",
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "d951c44add506166bc37981854b88c6eaaa3e2943e21186331d94cce16fccc78"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "d951c44add506166bc37981854b88c6eaaa3e2943e21186331d94cce16fccc78"
+    },
+    "stdout": "Cannot implement: integer sequence arguments required\n",
+    "stderr": ""
+  },
+  {
+    "id": "three-arguments",
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "684cd380e1f1b5108079cdbb6909122b434a646e8fb6842566240d9ba46b37fb"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "684cd380e1f1b5108079cdbb6909122b434a646e8fb6842566240d9ba46b37fb"
+    },
+    "stdout": "Cannot implement: one plain argument required\n",
+    "stderr": ""
+  },
+  {
+    "id": "wrong-return",
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "410c83768943aa9d2746309b024e94129b6a2d3db52a559123626de88c652c0f"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "410c83768943aa9d2746309b024e94129b6a2d3db52a559123626de88c652c0f"
+    },
+    "stdout": "Cannot implement: matching integer sequences and vector return required\n",
+    "stderr": ""
+  },
+  {
+    "id": "already-implemented",
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "d57a46740c5b230eee58d4e1eb626d8f810c5c7b24c74a07bbd3357984e0f3d3"
+    },
+    "after": {
+      "Cargo.toml": "462f76ff3f607c81056418737ec8af2a2b1496f578fa195a872bbb92b7793326",
+      "src/lib.rs": "d57a46740c5b230eee58d4e1eb626d8f810c5c7b24c74a07bbd3357984e0f3d3"
+    },
+    "stdout": "Cannot implement: whole-body placeholder required\n",
+    "stderr": ""
+  }
+]
