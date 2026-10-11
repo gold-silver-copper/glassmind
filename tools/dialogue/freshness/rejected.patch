@@ -1,0 +1,184 @@
+diff --git i/crates/dialogue/src/bin/dialogue-multi.rs w/crates/dialogue/src/bin/dialogue-multi.rs
+index 2c58c56..7c8ec5a 100644
+--- i/crates/dialogue/src/bin/dialogue-multi.rs
++++ w/crates/dialogue/src/bin/dialogue-multi.rs
+@@ -111,6 +111,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+                 BTreeMap::new()
+             };
+             let model = MultiModel {
++                contiguous_spans: false,
+                 boundaries: None,
+                 version: 1,
+                 router,
+diff --git i/crates/dialogue/src/multi.rs w/crates/dialogue/src/multi.rs
+index 1decb86..49504c0 100644
+--- i/crates/dialogue/src/multi.rs
++++ w/crates/dialogue/src/multi.rs
+@@ -7,6 +7,8 @@ use std::collections::{BTreeMap, BTreeSet};
+ 
+ #[derive(Debug, Serialize, Deserialize)]
+ pub struct MultiModel {
++    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
++    pub contiguous_spans: bool,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub boundaries: Option<crate::boundaries::BoundaryModel>,
+     pub version: u32,
+@@ -138,8 +140,12 @@ impl MultiModel {
+     }
+     pub fn validate(&self, schemas: &[Schema]) -> Result<(), String> {
+         if !matches!(
+-            (self.version, self.boundaries.is_some()),
+-            (1, false) | (2, true)
++            (
++                self.version,
++                self.boundaries.is_some(),
++                self.contiguous_spans
++            ),
++            (1, false, false) | (2, true, false) | (3, true, true)
+         ) || schemas.len() != self.services.len()
+             || schemas
+                 .iter()
+@@ -235,7 +241,7 @@ impl MultiModel {
+             if session.active_services.contains(&schema.service_name)
+                 && let Some(model) = self.services.get(&schema.service_name)
+             {
+-                model.advance(state, turn, schema, true);
++                model.advance_with_decoder(state, turn, schema, true, self.contiguous_spans);
+                 if let (Some(resolver), Some(prior)) = (&self.references, &prior) {
+                     for slot in &schema.slots {
+                         if !state.slots.contains_key(&slot.name)
+@@ -342,6 +348,7 @@ mod tests {
+             {"service_name":"B","slots":[],"intents":[{"name":"DoB","required_slots":[],"optional_slots":{}}]}
+         ]"#).expect("schemas");
+         let mut model = MultiModel {
++            contiguous_spans: false,
+             boundaries: None,
+             version: 1,
+             router: constant("A"),
+@@ -431,6 +438,7 @@ mod tests {
+           {"service_name":"B","slots":[{"name":"city","is_categorical":false,"possible_values":[]}],"intents":[{"name":"find","required_slots":["city"],"optional_slots":{}}]}
+         ]"#).expect("schemas");
+         let mut model = MultiModel {
++            contiguous_spans: false,
+             boundaries: None,
+             version: 1,
+             router: constant("A|B"),
+diff --git i/crates/dialogue/src/offers.rs w/crates/dialogue/src/offers.rs
+index 6a0ad12..837d2d6 100644
+--- i/crates/dialogue/src/offers.rs
++++ w/crates/dialogue/src/offers.rs
+@@ -280,6 +280,7 @@ mod tests {
+         }
+         let (schemas, offers) = fixture();
+         let model = MultiModel {
++            contiguous_spans: false,
+             boundaries: None,
+             version: 1,
+             router: constant("A"),
+diff --git i/crates/dialogue/src/tracker.rs w/crates/dialogue/src/tracker.rs
+index 9c59fc0..f58be86 100644
+--- i/crates/dialogue/src/tracker.rs
++++ w/crates/dialogue/src/tracker.rs
+@@ -284,6 +284,27 @@ impl DialogueModel {
+         Ok(())
+     }
+ 
++    /// Diagnostic token labels from the frozen span classifier; character offsets.
++    pub fn span_labels(
++        &self,
++        utterance: &str,
++        system: &str,
++    ) -> Vec<(String, usize, usize, String)> {
++        let words = tokens(utterance);
++        words
++            .iter()
++            .enumerate()
++            .map(|(i, w)| {
++                (
++                    w.text.clone(),
++                    w.start,
++                    w.end,
++                    self.spans.predict(&token_context(&words, i, system)),
++                )
++            })
++            .collect()
++    }
++
+     /// Only the current utterance, schema, and this session's predicted state enter here.
+     pub fn advance(
+         &self,
+@@ -291,6 +312,17 @@ impl DialogueModel {
+         turn: &InputTurn,
+         schema: &Schema,
+         carry: bool,
++    ) {
++        self.advance_with_decoder(state, turn, schema, carry, false);
++    }
++
++    pub(crate) fn advance_with_decoder(
++        &self,
++        state: &mut SessionState,
++        turn: &InputTurn,
++        schema: &Schema,
++        carry: bool,
++        contiguous: bool,
+     ) {
+         if matches!(turn.speaker, Speaker::System) {
+             state.previous_system.clone_from(&turn.utterance);
+@@ -338,6 +370,7 @@ impl DialogueModel {
+         let words = tokens(&turn.utterance);
+         let chars: Vec<char> = turn.utterance.chars().collect();
+         let mut spans: Vec<(String, usize, usize)> = Vec::new();
++        let mut previous_slot_token = None;
+         for (i, word) in words.iter().enumerate() {
+             let p = self
+                 .spans
+@@ -350,7 +383,10 @@ impl DialogueModel {
+                 {
+                     continue;
+                 }
++                let adjacent = previous_slot_token == i.checked_sub(1);
++                previous_slot_token = Some(i);
+                 if tag == "I"
++                    && (!contiguous || adjacent)
+                     && let Some((last_slot, _, end)) = spans.last_mut()
+                     && last_slot == slot
+                 {
+--- /dev/null
++++ b/crates/dialogue/src/bin/dialogue-span-trace.rs
+@@ -0,0 +1,35 @@
++//! Offline frozen classifier diagnostics; inputs contain only utterances.
++use glassmind_dialogue::{
++    multi::MultiModel,
++    tracker::{InputTurn, Speaker},
++};
++use std::{
++    fs::File,
++    io::{BufReader, BufWriter},
++};
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let args: Vec<String> = std::env::args().collect();
++    let [_, model_path, input_path, output_path] = args.as_slice() else {
++        return Err("model input output required".into());
++    };
++    let model: MultiModel = serde_json::from_reader(BufReader::new(File::open(model_path)?))?;
++    let input: Vec<Vec<InputTurn>> =
++        serde_json::from_reader(BufReader::new(File::open(input_path)?))?;
++    let mut output = Vec::new();
++    for conversation in input {
++        let mut system = String::new();
++        let mut rows = Vec::new();
++        for (i, t) in conversation.iter().enumerate() {
++            if matches!(t.speaker, Speaker::System) {
++                system.clone_from(&t.utterance);
++                continue;
++            }
++            for (service, m) in &model.services {
++                rows.push(serde_json::json!({"turn":i,"service":service,"tokens":m.span_labels(&t.utterance,&system)}));
++            }
++        }
++        output.push(rows);
++    }
++    serde_json::to_writer(BufWriter::new(File::create(output_path)?), &output)?;
++    Ok(())
++}

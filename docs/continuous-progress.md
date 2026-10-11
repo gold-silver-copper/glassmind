@@ -27,8 +27,10 @@ PR11 merged: head57eb656ded41d452bf5d8199cfcf182a73951162, merge
 7f847d9ca372d64d9ab82c6815f1336d1594172c; CI38112513112 passed1m25s.
 Linearwords PR12 merged: head712d3a5f1ecf1bae20eca26cfd1211ff6184a72a,
 mergefb47a32ce86493162a338e7a768f7036a6f1cb49; CI38112788701 passed1m9s.
-All gates for PR11/12 are complete. Answerfiles and boundaries workers are complete;
-parent integration checks described below are in progress.
+All gates for PR11/12/13 are complete. PR13 merged25c68a59fba30cbda27306ad25db44cccaf87df6
+at exactheadfa034d77597ac83c63226af41be8f26165cbb2a6, CI38113764924 passed1m8s.
+It includes count/name answer exports (168/765coding) and calibrated dialogue
+boundaries (610/1119joint). Metatypes full765 and readingQA work continue below.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -315,7 +317,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:51,038,797 including cached input; parent and
+Known completed worker tokens:54,855,118 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -329,13 +331,13 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 ## Current coding and dialogue integrations
 
 Both answerfiles and boundaries workers COMPLETE, scopes inactive, temporary
-login symlinks removed. Three new model workers are active below. Original submissions archived
+login symlinks removed. One model worker remains active below. Original submissions archived
 with SHA256 manifests at WORK/{answerfiles,boundaries}-run/submitted/.
 All archived file hashes verified against each completed worktree; both worktrees removed. Both used the
 required GPT-6 Astra fast through ChatGPT; no API-key authentication.
 
 **Metadata answer files:** committed source
-82f2a2e917acbf97958122a0a7c5ef01fe4a7eee, full dev passed; publication pending.
+82f2a2e917acbf97958122a0a7c5ef01fe4a7eee, full dev passed and merged in PR13.
 Fully consumed typed count/name question plus explicit relative output directive;
 plain number/name serialization, directory-descriptor no-symlink traversal,
 complete fsynced staging and atomic no-clobber publication. No field-type export,
@@ -357,7 +359,7 @@ at WORK/coordinator/answerfiles-full/glassmind. source.json/run.log there.
 Compare every(task,style) to WORK/coordinator/repairs2-full/results.jsonl baseline
 166pass596refused3fail, unchanged benchmark f79e71a. The job is complete; do not restart or repoll.
 
-**Dialogue boundary restoration:** committed source38ef238, full replay passed; publication pending. Value-free shape/punctuation rules fit on same3174TRAIN
+**Dialogue boundary restoration:** committed source38ef238, full replay passed and merged in PR13. Value-free shape/punctuation rules fit on same3174TRAIN
 conversations, deterministic2532fit/642calibration split; all noncategorical TRAIN
 schema slots and USER+SYSTEM gold spans, scope amendment disclosed before dev.
 Two accepted rules require >=5fit and>=3calibration conversations, zero endpoint
@@ -385,34 +387,63 @@ tools/dialogue/boundaries/reports; parent results confirmed.
 ## Immediate next actions
 
 1. Coding72237 and dialogue56221 are COMPLETE. Full comparisons/hashes verified.
-2. If gates pass, update shared scoreboard/README with exact evaluated commits,
-   publish coherent PR and merge only after green CI with exact-head match.
+2. PR13 merged25c68a59fba30cbda27306ad25db44cccaf87df6, exacthead
+   fa034d77597ac83c63226af41be8f26165cbb2a6; CI38113764924 passed1m8s.
+   No evaluation or publishing remains for metadata counts/dialogue boundaries.
 3. Completed archive verification and removal of both worktrees; retain all run data.
 4. Next gaps: broader metadata field-type answers, dialogue source freshness and
    contiguous decoded spans, MathQA language22/4475, finite validation-seeded facts,
    reading semantics beyond byte likelihood. Keep coding/conversation progressing.
-5. Goal remains active. Three owned model workers are live below. Old dirty improvement loop stopped.
+5. Goal remains active. One owned model worker is live below. Old dirty improvement loop stopped.
 
-## Next bounded workers
+## Current integrations and next work
 
-- **Metatypes ACTIVE**: launcherPID2445256, scopeglassmind-continuous-metatypes.scope,
-  worktreeWORK/metatypes at38ef238, runWORK/metatypes-run. Owns reusable typed
-  declared-field-type semantics plus minimal CLI/export integration and reports.
-  Same three production-only dev workspaces/seven requests, frozen baseline
-  answerfiles binarya4b625c0. No new hidden/task/solution data. Require genuine
-  uniquely resolved declared syntax, no alias-resolution claim, count/name/safety/
-  ordinary-query regression preservation. Parent full765 required after integration.
-- **Freshness ACTIVE**: launcherPID2455150, scopeglassmind-continuous-freshness.scope,
-  worktreeWORK/freshness at38ef238, runWORK/freshness-run. Owns dialogue only and new
-  freshness reports. Frozen independently verified boundary model/full predictions
-  copied into baseline/. Baseline610right459wrong50refused,716frames, remaining
-  inherited2events7wrongslotturns. Investigate TRAIN evidence for one optional
-  source-freshness/contiguous-span improvement; preserve baseline correct, audit
-  all changed claims and unscored heldstates; reject if acceptance fails.
+**Metatypes COMPLETE and integrated**, source
+bd788fc7543b981e0615ec1f0014dbb546c7bc7c, unpublished pending full765.
+Reusable RustWorld declared-type query with exact UTF8 source spelling/provenance,
+fully consumed English interface, standalone ask/do and existing safe type export.
+Not resolved/inferred types; aliases retain original spelling. Owner/field must be
+unique; cfg/macros/custom attributes anywhere in indexed sources conservatively
+refuse. No generic dialogue-session support. Three chatty supplied requests refuse.
+Original22files archived WORK/metatypes-run/submitted/, allhashes verified against
+worktree before removal. Scope ended/authsymlink removed; no worker jobs remain.
 
-Both scopes verified8GiB/0swap, forced GPT-6 Astra fast/ChatGPT-only, noAPIenv.
-Login status confirmed ChatGPT before launch. Each bounded1800sec, no subworkers.
-Temporary login symlinks remain until each exits. Keep all workers within4cap.
+Parent workspace gate COMPLETE session83318, allfmt/clippy/release/strict4/4smoke.
+Scoped65tests COMPLETE36445 (8CLI,36EnglishRust,21world). Parent sample3/3,
+full4/7 usable/3refused/0wrong, independent35/35, oldquery8/8. Two added probes
+verify CRLF/Unicode exactbyteoffsets and compoundrefusal. Old27suite26pass, one
+frozen unsupported_type expectation now conflicts with correct Vec<u16> export;
+parent verified all originalhashes unchanged and only requestedfile added. Raw
+failure retained, scorer unchanged; replay.sh stopsatold27 exit1, regression8
+ran separately after explicit audit. Evidence docs/coding-metatypes-evidence/integrated/.
+No fullbenchmark gain claimed yet.
+
+**Metatypes full765 RUNNING execsession56538**, frozenreleasebinary
+WORK/coordinator/metatypes-full/glassmind SHA
+9bbedc34d2475a9e1c6ee8c728c50c4449ec2d3b3972b82dcf859e8e84b2495e.
+source.json/run.log there. Baseline WORK/coordinator/answerfiles-full/results.jsonl
+168pass594refused3fail, source82f2a2e. Samef79e71a benchmark, cappedjob1.
+Compare every(task,style), retainall765denominator; no restart on observationtimeout.
+
+**Freshness COMPLETE, hypothesis REJECTED**, all runtimeedits rolledback before
+handoff. Newtools/dialogue/freshness evidence only, includes rejected.patch for
+isolatedreproduction; neverapply/deploycandidate onmain. OptionalcontiguousBIO
+changed610->595correctjoint,716->699frames,20correctassertions becamewrong;
+all7inheritedwrongslotturns remain. Frozenclassifier marks interior truewordsO,
+so gapbridging sometimesrecovers correct spans. Stale correction has allOlabels;
+truncatedname hasmissingI suffix. Next improvement needs better span/correction
+proposals, not this decoder adjustment. Initial100TRAINdiagnostic foundnochanged
+activeframes; devwasnonethelessrun beforeallTRAINdiagnostic, a disclosed deviation.
+All3174TRAIN followupalsofoundnochangesongold-activeframes. No calibration claim.
+No acceptedgain and no runtime/scorerchange. Parent verified emptyruntimediff,
+reviewedfullcausal/auditreport, checkedrejectedpatchapplies, archived25files237856bytes
+withhashmanifest, verifiedallworktreefiles, removedworktree/authsymlink. Worker
+scope ended. Rawmodels/traces/binaries remainWORK/freshness-run; candidatebinary
+is rejected, use approved frozenv2 model. No parentrepeatofrejectedfullrunneeded.
+
+PR13 merged asabove; newmetatypes+rejectedhypothesis/data documents are nextbatch.
+Externalprogress log appended atmerge. Known completedworker total54,855,118,
+includingcachedinput once; parent+unfinishedreadingQA excluded. No freshheldout.
 
 - **ReadingQA ACTIVE**: launcherPID2484347, scopeglassmind-continuous-readingqa.scope,
   worktreeWORK/readingqa atb36970d, runWORK/readingqa-run. Owns crates/reading and new
@@ -430,3 +461,12 @@ Temporary login symlinks remain until each exits. Keep all workers within4cap.
   downloaded dataset files, fetched current official scorer separately. No repeated
   data downloads. Dataset hashes match published sources. Parent mainCLI integration
   and independent full replay required for useful accepted capability.
+
+ReadingQA scope verifiedactive8GiB/0swap, requiredAstrafastChatGPT configuration;
+only live modelworker. Parent overlap audit:0sharedtitles,0exactcontexts,0IDs
+across train/dev; noemptyanswers among10570dev. Source README now records dataset
+without capabilityclaim. Parent must review/modelcalibration/no-labelruntime,
+independently evaluate full10570 and integrate usable command before shipping.
+
+Next actions: finish existing56538 fullcodinghandle; review readingQA when done;
+keep both coding and conversation progressing. No confirmation needed. Goal active.

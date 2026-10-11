@@ -1,0 +1,48 @@
+{
+  "base_commit": "38ef238c560d11f0627adb14a946ceb935bc4288",
+  "decision": "rejected; no runtime changes retained",
+  "rust_unit_tests": {
+    "passed": 8,
+    "failed": 0,
+    "new_candidate_specific_tests": 0,
+    "scope": "existing crate library tests, including reset/provenance/annotation validation"
+  },
+  "fmt": "pass",
+  "all_target_clippy": "pass after diagnostic argument-parser fix",
+  "release_build": "pass",
+  "first10": {
+    "joint_before": 35,
+    "joint_after": 35,
+    "frames_before": 48,
+    "frames_after": 48
+  },
+  "full179": {
+    "joint_before": 610,
+    "joint_after": 595,
+    "frames_before": 716,
+    "frames_after": 699,
+    "wrong_after": 474,
+    "refused_after": 50
+  },
+  "reverse_order_replay": "all179 identical",
+  "annotation_rejection": "pass",
+  "frozen_v2_predictions": "byte-identical",
+  "legacy45_predictions": "byte-identical,202/257 strict;256/257 intents;89.17509727626459% fuzzy inherited unchanged scorer result",
+  "all_unchanged_components_verified": true,
+  "outer_scope": {
+    "MemoryMax": 8589934592,
+    "MemorySwapMax": 0
+  },
+  "runtime_code_restored": true,
+  "limitations": [
+    "No new runtime tests retained because candidate rejected; baseline invariants exercised by existing8tests and complete byte replay.",
+    "Candidate trace binary built before argument-parser-only clippy correction; the scored dialogue-multi source is unchanged by that correction.",
+    "Host model/auth selection not independently attested; no model calls or credential access performed."
+  ],
+  "full_train_diagnostic": {
+    "conversations": 3174,
+    "user_turns": 34022,
+    "changed_raw_spans_on_gold_active_selected_service_frames": 0
+  },
+  "owned_processes_remaining": 0
+}

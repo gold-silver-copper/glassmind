@@ -295,6 +295,32 @@
         "reasoning_output_tokens": 6297
       },
       "source": "Value-free TRAIN span boundaries;609to610joint,712to716frames;4wrong copiedslotturns fixed,7remain; parent independentreplay identical; all gates pass"
+    },
+    {
+      "track": "coding-metatypes-continuous",
+      "started_unix": 1791695006.9955695,
+      "finished_unix": 1791695311.024456,
+      "usage": {
+        "input_tokens": 1975306,
+        "cached_input_tokens": 1889280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19984,
+        "reasoning_output_tokens": 3995
+      },
+      "source": "Declared field type syntax and safe export; local4/7 and35fixtures; parent integration/full765 pending"
+    },
+    {
+      "track": "dialogue-freshness-continuous",
+      "started_unix": 1791695041.187985,
+      "finished_unix": 1791695367.8998294,
+      "usage": {
+        "input_tokens": 1801436,
+        "cached_input_tokens": 1733632,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19595,
+        "reasoning_output_tokens": 3792
+      },
+      "source": "REJECTED contiguous BIO decoder:610to595joint/716to699frames,20newwrongassertions; runtime rolled back, train diagnostic shows no support; all evidence retained"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
