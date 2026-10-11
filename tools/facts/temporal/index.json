@@ -1,0 +1,30 @@
+{
+  "entities": {
+    "Q1": {
+      "aliases": [
+        "Alice",
+        "Shared"
+      ],
+      "claims": {
+        "P108": [
+          "Q2"
+        ],
+        "P27": [
+          "Q3"
+        ]
+      }
+    },
+    "Q4": {
+      "aliases": [
+        "Shared"
+      ],
+      "claims": {}
+    },
+    "Q2": {
+      "aliases": [
+        "Company"
+      ],
+      "claims": {}
+    }
+  }
+}

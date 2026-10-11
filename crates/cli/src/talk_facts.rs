@@ -1,5 +1,8 @@
 //! Opt-in immutable facts bundles. Display labels never enter the linker.
 use glassmind_everyday::IntentModel;
+use glassmind_facts::temporal::{
+    MAX_TEMPORAL_BYTES, TemporalIndex, TemporalRefusalReason, TemporalVerification,
+};
 use glassmind_facts::{
     Answer, MatchRefusalReason, MatchResult, RefusalReason, Store, Verification,
 };
@@ -15,6 +18,8 @@ struct Manifest {
     source: String,
     license: String,
     scope: String,
+    #[serde(default)]
+    temporal_sha256: Option<String>,
 }
 
 pub(crate) struct Facts {
@@ -22,6 +27,7 @@ pub(crate) struct Facts {
     model: IntentModel,
     labels: BTreeMap<String, String>,
     manifest: Manifest,
+    temporal: Option<TemporalIndex>,
 }
 
 #[derive(Deserialize)]
@@ -51,6 +57,36 @@ pub(crate) struct VerificationReply {
     #[serde(flatten)]
     pub verification: Verification,
     pub provenance: Provenance,
+}
+
+#[derive(Serialize)]
+pub(crate) struct TemporalReply {
+    pub kind: &'static str,
+    pub text: String,
+    #[serde(flatten)]
+    pub verification: TemporalVerification,
+    pub provenance: Provenance,
+}
+
+/// Reserve dated requests before the ordinary check and conversational routes.
+pub(crate) fn temporal_request(line: &str) -> Option<Result<(&str, &str), &'static str>> {
+    let line = line.trim_matches(' ');
+    if !line
+        .get(..13)
+        .is_some_and(|s| s.eq_ignore_ascii_case("check fact on"))
+    {
+        return None;
+    }
+    let invalid = "Use Check fact on YYYY-MM-DD: followed by one positive employer or citizenship question with explicit names.";
+    Some((|| {
+        let rest = line.get(13..).ok_or(invalid)?;
+        let rest = rest.strip_prefix(' ').ok_or(invalid)?;
+        let (date, question) = rest.split_once(": ").ok_or(invalid)?;
+        if date.is_empty() || question.is_empty() {
+            return Err(invalid);
+        }
+        Ok((date, question))
+    })())
 }
 
 #[derive(Serialize)]
@@ -198,9 +234,28 @@ impl Facts {
         {
             return Err("manifest.json: unsupported version or missing provenance".into());
         }
-        let store: Store =
-            serde_json::from_slice(&verified(&dir.join("index.json"), &manifest.index_sha256)?)
-                .map_err(|e| e.to_string())?;
+        let index_bytes = verified(&dir.join("index.json"), &manifest.index_sha256)?;
+        let store: Store = serde_json::from_slice(&index_bytes).map_err(|e| e.to_string())?;
+        let temporal = manifest
+            .temporal_sha256
+            .as_ref()
+            .map(|hash| {
+                use std::io::Read;
+                let path = dir.join("temporal.json");
+                let mut bytes = Vec::new();
+                std::fs::File::open(&path)
+                    .map_err(|e| format!("{}: {e}", path.display()))?
+                    .take((MAX_TEMPORAL_BYTES + 1) as u64)
+                    .read_to_end(&mut bytes)
+                    .map_err(|e| e.to_string())?;
+                if bytes.len() > MAX_TEMPORAL_BYTES
+                    || format!("{:x}", Sha256::digest(&bytes)) != *hash
+                {
+                    return Err("temporal.json: size or manifest SHA-256 mismatch".into());
+                }
+                TemporalIndex::from_bytes(&index_bytes, &bytes)
+            })
+            .transpose()?;
         let model: IntentModel = serde_json::from_slice(&verified(
             &dir.join("relation.json"),
             &manifest.relation_model_sha256,
@@ -259,6 +314,51 @@ impl Facts {
             model,
             labels,
             manifest,
+            temporal,
+        })
+    }
+
+    pub fn verify_at(
+        &self,
+        request: Result<(&str, &str), &str>,
+    ) -> Result<TemporalReply, &'static str> {
+        let temporal = self.temporal.as_ref().ok_or("Checking a dated fact requires temporal.json declared in the local facts bundle manifest.")?;
+        let verification = match request {
+            Ok((date, question)) => temporal.verify_at_str(date, question),
+            Err(_) => TemporalVerification::Refused {
+                reason: TemporalRefusalReason::Question(RefusalReason::UnsupportedShape),
+            },
+        };
+        let describe = |id: &str| match self.labels.get(id) {
+            Some(label) => format!("{label} ({id})"),
+            None => id.to_owned(),
+        };
+        let (text, relation_url) = match &verification {
+            TemporalVerification::Supported { date, witness, .. } => (
+                format!("The loaded statement records {} as the {} of {} on {}. The requested calendar day lies strictly after {} and strictly before {}. Start precision: {}; end precision: {}.\nClaim: {}\nSource: {}\nThis supports one recorded bounded interval in this snapshot; it does not establish current or complete historical truth.",
+                    describe(&witness.edge.object.0), if witness.edge.property.0 == "P108" { "employer" } else { "country of citizenship" }, describe(&witness.edge.subject.0), date.as_str(),
+                    witness.start.latest.as_str(), witness.end.earliest.as_str(), witness.start.raw.precision,
+                    witness.end.raw.precision, witness.claim_id, witness.source_url),
+                Some(format!("https://www.wikidata.org/wiki/Property:{}", witness.edge.property.0))),
+            TemporalVerification::Unknown { .. } => (
+                format!("The loaded statements do not establish this relationship on {} within one bounded interval. Uncertain boundaries or missing information do not mean the relationship is false.", request.map(|(date, _)| date).unwrap_or("the requested day")), None),
+            TemporalVerification::Refused { .. } => (
+                request.err().unwrap_or("Use an exact valid YYYY-MM-DD date and one positive employer or citizenship question with explicit names.").into(), None),
+        };
+        Ok(TemporalReply {
+            kind: "fact_verification_at",
+            text,
+            verification,
+            provenance: Provenance {
+                source: self.manifest.source.clone(),
+                license: self.manifest.license.clone(),
+                index_sha256: self.manifest.index_sha256.clone(),
+                relation_model_sha256: self.manifest.relation_model_sha256.clone(),
+                relation_selection: "explicit dated claim; one recorded interval; no learned proposal",
+                scope: self.manifest.scope.clone(),
+                relation_url,
+                relation_direction: Some("forward"),
+            },
         })
     }
 

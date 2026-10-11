@@ -105,6 +105,10 @@ source links and local match counts, while preserving personal and story state.
 Use `Check fact: Was SUBJECT born in OBJECT?` to [verify an explicit relationship](docs/fact-verification.md)
 against the loaded records. Replies distinguish supported, unknown and refused,
 with an exact edge witness; an absent edge never becomes a negative factual claim.
+Use `Check fact on YYYY-MM-DD: Did SUBJECT work for OBJECT?` with a declared
+temporal asset to [verify a recorded dated relationship](docs/temporal-facts.md).
+The date must lie strictly inside one statement's uncertain bounds; boundary
+days remain unknown. Citizenship is also supported.
 Use `Match facts: Who was born in Q220 and died in Q90?` to find subjects
 matching two or three positive conditions, with a witness for every condition.
 [Shared-subject matching](docs/fact-matching.md) intersects the complete loaded

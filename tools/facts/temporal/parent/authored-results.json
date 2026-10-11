@@ -1,0 +1,362 @@
+[
+  {
+    "name": "year_interior",
+    "expected": "supported",
+    "actual": "supported",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "year_start_uncertain",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "year_end_uncertain",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "before_interval",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "after_interval",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "filled_year_lower_digits_not_certain",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "filled_year_end_not_certain",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "filled_year_interior",
+    "expected": "supported",
+    "actual": "supported",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "month_interior",
+    "expected": "supported",
+    "actual": "supported",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "month_start_boundary",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "month_end_boundary",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "day_interior",
+    "expected": "supported",
+    "actual": "supported",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "day_start_boundary",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "day_end_boundary",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "leap_2000",
+    "expected": "supported",
+    "actual": "supported",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "invalid_leap_1900",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "invalid_leap_2100",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "year_zero",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "date_whitespace",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "datetime_not_date",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "unicode_date",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "julian",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "nonzero_before",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "nonzero_after",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "nonzero_timezone",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "coarse_precision",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "fine_precision",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "missing_start",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "missing_end",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "duplicate_start",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "deprecated",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "extra_qualifier",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "somevalue_start",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "cannot_combine_claims",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "reversed_interval",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "no_guaranteed_interior",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "citizenship",
+    "expected": "supported",
+    "actual": "supported",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "explicit_ids",
+    "expected": "supported",
+    "actual": "supported",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "missing_alias",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "ambiguous_despite_one_interval",
+    "expected": "unknown",
+    "actual": "unknown",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "negation",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "trailing_instruction",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "nul_question",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": null
+  },
+  {
+    "name": "unsupported_property",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  },
+  {
+    "name": "question_oversize",
+    "expected": "refused",
+    "actual": "refused",
+    "status_ok": true,
+    "edge_ok": true,
+    "cli_equal": true
+  }
+]
