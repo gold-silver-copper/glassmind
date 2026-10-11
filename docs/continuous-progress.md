@@ -23,42 +23,68 @@ Integrated release7a3d98dfb4eb6428d9d43ceb4cbdb963d20750034d0da223ffaa21dbe9781d
 has identical reviewed source. Workspace session73733 COMPLETE:fmt,clippy,release,
 strict4/4 smoke. No native/build/full-evaluation job remains from that release.
 
-## Active experiment and exact next actions
+## Active experiments and exact next actions
 
-Ceiling-division worker is live: PID2304033,
-`glassmind-continuous-ceildivision.scope`, worktreeWORK/ceildivision,
-branchcontinuous/ceildivision, base609f42e. TaskWORK/ceildivision-task.txt;
-runWORK/ceildivision-run. Latest process/scope check confirmed active/running,
-MemoryMax8589934592, MemorySwapMax0. Astra fast, forced ChatGPT login, stripped
-API-key environment; login status verified before launch. No parent model switch
-is claimed. This is the only model worker; do not start a duplicate on timeout.
+Ceiling-division worker is COMPLETE, scope glassmind-continuous-ceildivision.scope
+inactive; original submission archived and all622files/81,410,732bytes hash-verified
+under WORK/ceildivision-run/terminal-originals BEFORE inspection. Worktree remains
+WORK/ceildivision, base609f42e. Frozen candidate90e463f72105bb3a28fc0b1c17315647af15ba4d4c109dfec0d53b6fd7c67141
+at WORK/ceildivision-run/frozen-candidate/glassmind. Worker43tests/clippy/fmt/build
+passed; authored8exactrepairs and6negative/rollback cases; publicTRAIN5/27→6/27,
+all5previouspatchesunchanged. New shipping-boxes primitiveunsigned div_ceil repair.
+Reviewed archived source is now integrated in root without runtime revisions.
+Workspace session43069 COMPLETE tools/check.sh (-j1):fmt,alltargetclippy,release,
+strict4/4fixture smoke pass. Log WORK/coordinator/ceildivision-integrated/check.log.
+IntegratedmainSHA44ca28a3793eb43147382bd437791deffbf28d4725854866a9f220da6931a84d
+frozen inthatdirectory/glassmind withidentity.json; exact reviewedsourcehashesmatch.
+Sourcehash manifest and pre-copyroot source retained inthatdirectory. Review read fullpatch:
+conservative concrete parameter/field/literal types, rootfiles only, no aliases/imports/
+macros/customtypes; all old proposals precede new ones; exact primitive ambiguity call.
 
-Hypothesis: generic primitive-typed unsigned floor-to-ceiling division repairs,
-with old proposal priority preserved and exact primitive-call ambiguity semantics.
-Public TRAIN shipping-boxes supplies the observed gap. No name/task hardcoding,
-custom/signed type guessing, opaque macro edits or test weakening. Require at least
-one actual public TRAIN gain, no lost passes and full coding DEV regression checks;
-a new repair must retain bounded native ambiguity confirmation. Worker owns only
-world-rust and new tools/coding-ceiling-division. Full task contains exact gates.
+Independent13 frozen cases (SHA d2a53a2a2c9feeb08aa780767c57cf4ccc64e17dcbfca77ba233b5f578b50dfa)
+COMPLETE session44416:8/8exactnative positives across all unsigned widths,maxima,
+zero guards,typedfields,Unicode;4negative/custom/signed/zero/macro unchanged;
+1native-confirmedambiguity withdrawal;0timeouts/manifests unchanged. Baseline0/8.
+Artifacts WORK/coordinator/ceildivision-independent/{baseline,candidate}. Separate
+native-replay COMPLETE:both savedrepairs pass originaltests and differ natively.
+Full765 DEV RUNNING session78883 via unchanged tools/rustbench-dev.sh, output
+WORK/coordinator/ceildivision-full. Progress run.log; results.jsonl only oncompletion.
+Exact baseline WORK/coordinator/multiplicative-full/results.jsonl c2f9fbd3...200/565/0.
+Next: compare all765outcomes; require200retained,0newfailures, inspect changedtaskIDs
+only (no hiddencontent). Use tools/coding-ceiling-division/parent/compare-full.py
+--before WORK/coordinator/multiplicative-full/results.jsonl --after
+WORK/coordinator/ceildivision-full/results.jsonl --binary frozenmain --out freshreport.
+Workspacechecks complete; update PARENT/README/
+scoreboard with exactsourcecommit then push/PR/CI/exactheadmerge when allgatespass.
+Root tools/coding-ceiling-division contains originalworker28compactfiles andparent
+13contracts/nativewitness/replay; PARENT correctly labels fullgatepending.
 
-Parent13 cases frozen BEFORE candidate inspection at
-WORK/coordinator/ceildivision-independent (not sent to worker):
-8unsigned positives covering all primitive widths/maxima, zero guards, typed fields
-and Unicode;4negative/custom/signed/unguarded-zero/macro cases;1two-repair ambiguity.
-CasesSHA d2a53a2a2c9feeb08aa780767c57cf4ccc64e17dcbfca77ba233b5f578b50dfa.
-Original baseline session88857 COMPLETE: all13compile and fail executed tests;
-0/8new repairs, no negative edits, no timeout, manifests unchanged. The ambiguous
-case stays unchanged because no old proposal passes; candidate must produce a
-native witness before withdrawing its competing new repairs. Adapter accepts only
-the frozen equivalent call forms and preserves every byte outside the target expression.
+Independent facts conjunction worker LIVE PID2436004, scope
+ glassmind-continuous-factmatch.scope, worktreeWORK/factmatch, base71a0618,
+branchcontinuous/factmatch; taskWORK/factmatch-task.txt; runWORK/factmatch-run.
+Latestscopecheck active/running. Astra fast, forcedChatGPTlogin verified, no APIkeys.
+Ownscrates/facts+tools/facts/matching; parentowns explicit Match facts: mainroute.
+No live candidate/source read. Hypothesis2..3positiveconstraints sharedsubject,
+P19/P20/P27/P108 ANDintersection beforelimit10, exactedgewitnesses and scopedcounts.
+Fullalias/completeparse ambiguity mustresolve BEFORE edges; no absence-negative.
+Read-only500entity snapshot WORK/factmatch-source,indexSHA923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185,
+relationSHAdb0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6.
+Parent audit WORK/coordinator/factmatch-audit/index-audit.json:47strictlyreducing
+nonempty intersections among644cooccurring pairs; finitevalidation-seeded evidence.
+Parent30contracts/49entitygraph frozen BEFORE candidateinspection under
+WORK/coordinator/factmatch-independent; casesSHA102d1cd1c75601a23e8e416fa3436989f313c596d5dbd10f9d14805bc9c2a92b.
+Covers2/3AND,allpredicates,aliases,edge-onlyIDs,ambiguitydespiteonegraphmatch,
+fullclaimvectors,intersection30∩20→11 beforedisplay10,emptyvsunknown,malformedbounds.
+PLAN prose count19 corrected only in audit.json; frozen expectedcasearrays unchanged.
+Parent rawcacheaudit COMPLETE:8examples/16exactedges, cachedresponse hashesverified,
+WORK/coordinator/factmatch-audit/{raw-edges.py,raw-edge-audit.json}. Qualifier/rank
+metadata retained; no current/globaltruth claim.
+Next: archive+hashverify terminaloriginals BEFORE inspection, adapt CLIshape only,
+run all30contracts then realcachewitness and unchangedlegacy2821/maintalk gates.
 
-Next: verify worker handle; when terminal archive original submission and verify
-hashes BEFORE inspection or edits. Run unchanged parent13 via its run.py using a
-fresh candidate output directory. Inspect typed resolution, call/argument semantics,
-source protection and native ambiguity evidence, then full765 if local gates pass.
-No candidate source/result has been inspected yet. Baseline release7a3d98df... is
-copied and verified inceildivision-run/baseline/glassmind. Known completed worker
-tokens161484271; this live worker is not counted yet. Keep the goal active.
+Known completed worker tokens163452136 (addedceildivision1941615input+26250output;
+1864064cachedinput included ONCE). Root/interruptedexcluded. Factmatchactiveuncounted.
+Keep goalactive; no routine human confirmation or duplicate workers.
 
 ## Multiplicative coding revision
 
@@ -118,8 +144,8 @@ Do not revive these configurations by weakening thresholds or repeating decoder
 cosmetics. Further quantities work needs evidence for better argument grounding
 or supervision. No heldout/DEVformula/parentfixture access by either worker.
 
-Known completed worker tokens161484271, including cachedinput once. Parent and
-interrupted calls excluded. No active uncounted worker. New corpus downloads0.
+Known completed worker tokens163452136, including cachedinput once. Parent and
+interrupted calls excluded. Factmatch remains active and uncounted. New corpus downloads0.
 
 ## Stable baselines and closed hypotheses
 

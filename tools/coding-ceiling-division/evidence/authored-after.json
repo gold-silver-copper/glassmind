@@ -1,0 +1,211 @@
+[
+  {
+    "name": "width_u8",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "width_u8",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 55,
+        "old": "n / d",
+        "new": "::core::primitive::u8::div_ceil(n, d)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "width_u16",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "width_u16",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 58,
+        "old": "n / d",
+        "new": "::core::primitive::u16::div_ceil(n, d)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "width_u32",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "width_u32",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 58,
+        "old": "n / d",
+        "new": "::core::primitive::u32::div_ceil(n, d)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "width_u64",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "width_u64",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 58,
+        "old": "n / d",
+        "new": "::core::primitive::u64::div_ceil(n, d)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "width_u128",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "width_u128",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 61,
+        "old": "n / d",
+        "new": "::core::primitive::u128::div_ceil(n, d)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "width_usize",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "width_usize",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 64,
+        "old": "n / d",
+        "new": "::core::primitive::usize::div_ceil(n, d)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "typed_fields",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "typed_fields",
+        "file": "src/lib.rs",
+        "line": 2,
+        "column": 57,
+        "old": "p.count / p.size",
+        "new": "::core::primitive::u32::div_ceil(p.count, p.size)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "unicode",
+    "kind": "positive",
+    "changes": [
+      {
+        "source": "unicode",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 29,
+        "old": "caf\u00e9 / 3",
+        "new": "::core::primitive::u16::div_ceil(caf\u00e9, 3)"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  },
+  {
+    "name": "signed",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "unknown",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "custom",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "macro",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "protected",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "rollback",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "ambiguous",
+    "kind": "ambiguity",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "legacy",
+    "kind": "legacy",
+    "changes": [
+      {
+        "source": "legacy",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 46,
+        "old": "*",
+        "new": "/"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  }
+]

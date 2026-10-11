@@ -1,0 +1,175 @@
+{
+  "binary_sha256": "90e463f72105bb3a28fc0b1c17315647af15ba4d4c109dfec0d53b6fd7c67141",
+  "cases": [
+    {
+      "name": "primitive_u8",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:u8,d:u8)->u8{if d==0{0}else{::core::primitive::u8::div_ceil(n, d)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(0,0),0); assert_eq!(calc(0,7),0); assert_eq!(calc(1,2),1); assert_eq!(calc(8,4),2); assert_eq!(calc(11,4),3); assert_eq!(calc(255,2),128); assert_eq!(calc(255,255),1); } }\n"
+    },
+    {
+      "name": "primitive_u16",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:u16,d:u16)->u16{if d==0{0}else{::core::primitive::u16::div_ceil(n, d)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(0,0),0); assert_eq!(calc(0,7),0); assert_eq!(calc(1,2),1); assert_eq!(calc(8,4),2); assert_eq!(calc(11,4),3); assert_eq!(calc(65535,2),32768); assert_eq!(calc(65535,65535),1); } }\n"
+    },
+    {
+      "name": "primitive_u32",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:u32,d:u32)->u32{if d==0{0}else{::core::primitive::u32::div_ceil(n, d)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(0,0),0); assert_eq!(calc(0,7),0); assert_eq!(calc(1,2),1); assert_eq!(calc(8,4),2); assert_eq!(calc(11,4),3); assert_eq!(calc(4294967295,2),2147483648); assert_eq!(calc(4294967295,4294967295),1); } }\n"
+    },
+    {
+      "name": "primitive_u64",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:u64,d:u64)->u64{if d==0{0}else{::core::primitive::u64::div_ceil(n, d)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(0,0),0); assert_eq!(calc(0,7),0); assert_eq!(calc(1,2),1); assert_eq!(calc(8,4),2); assert_eq!(calc(11,4),3); assert_eq!(calc(18446744073709551615,2),9223372036854775808); assert_eq!(calc(18446744073709551615,18446744073709551615),1); } }\n"
+    },
+    {
+      "name": "primitive_u128",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:u128,d:u128)->u128{if d==0{0}else{::core::primitive::u128::div_ceil(n, d)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(0,0),0); assert_eq!(calc(0,7),0); assert_eq!(calc(1,2),1); assert_eq!(calc(8,4),2); assert_eq!(calc(11,4),3); assert_eq!(calc(340282366920938463463374607431768211455,2),170141183460469231731687303715884105728); assert_eq!(calc(340282366920938463463374607431768211455,340282366920938463463374607431768211455),1); } }\n"
+    },
+    {
+      "name": "primitive_usize",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:usize,d:usize)->usize{if d==0{0}else{::core::primitive::usize::div_ceil(n, d)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(0,0),0); assert_eq!(calc(0,7),0); assert_eq!(calc(1,2),1); assert_eq!(calc(8,4),2); assert_eq!(calc(11,4),3); assert_eq!(calc(18446744073709551615,2),9223372036854775808); assert_eq!(calc(18446744073709551615,18446744073709551615),1); } }\n"
+    },
+    {
+      "name": "typed_field",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub struct Parcel { pub units:u32, pub capacity:u32 } pub fn calc(p:&Parcel)->u32{if p.capacity==0{0}else{::core::primitive::u32::div_ceil(p.units, p.capacity)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(&Parcel{units:11,capacity:4}),3); assert_eq!(calc(&Parcel{units:0,capacity:0}),0); assert_eq!(calc(&Parcel{units:u32::MAX,capacity:2}),2147483648); } }\n"
+    },
+    {
+      "name": "unicode_parameters",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(\u03c0:u64,\u03b4:u64)->u64{ /* caf\u00e9 */ if \u03b4==0{0}else{::core::primitive::u64::div_ceil(\u03c0, \u03b4)}}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(11,4),3); assert_eq!(calc(0,0),0); assert_eq!(calc(u64::MAX,2),9223372036854775808); } }\n"
+    },
+    {
+      "name": "opaque_macro",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "macro_rules! quotient { ($n:expr,$d:expr)=>{$n/$d}; } pub fn calc(n:u32,d:u32)->u32{quotient!(n,d)}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(11,4),3); } }\n"
+    },
+    {
+      "name": "signed_type",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:i32,d:i32)->i32{n / d}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(11,4),3); assert_eq!(calc(-11,4),-2); } }\n"
+    },
+    {
+      "name": "unguarded_zero",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "pub fn calc(n:u32,d:u32)->u32{n / d}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(0,0),0); assert_eq!(calc(11,4),3); } }\n"
+    },
+    {
+      "name": "custom_method",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "#[derive(Clone,Copy,Debug,PartialEq)] pub struct Count(pub u32); impl std::ops::Div for Count { type Output=Self; fn div(self,rhs:Self)->Self { Self(self.0 / rhs.0) } } impl Count { pub fn div_ceil(self,rhs:Self)->Self { Self(self.0.div_ceil(rhs.0)) } } pub fn calc(a:Count,b:Count)->Count { a / b }\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(Count(11)/Count(4),Count(2)); assert_eq!(calc(Count(11),Count(4)),Count(3)); } }\n"
+    },
+    {
+      "name": "two_rounding_repairs",
+      "expected": "ambiguous",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [
+        {
+          "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/ceildivision-independent/candidate/two_rounding_repairs/scratch/ambiguity-workspace-2449809-1/witness.json",
+          "sha256": "ef7a8dbdbeb0e65978c81aece40d19a98f428948522dc0b51184ab1317522fc1",
+          "native_witness": "both outputs confirmed by executed Rust probes in the original package context",
+          "witness": {
+            "argument": "x : u32",
+            "first_output": "1",
+            "function": "calc",
+            "input": "2",
+            "method": "bounded checked scalar AST evaluation; disagreement only",
+            "second_output": "2"
+          }
+        }
+      ],
+      "after_source": "pub fn calc(x:u32)->u32{x / 2 + x / 3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples(){ assert_eq!(calc(1),1); } }\n"
+    }
+  ]
+}

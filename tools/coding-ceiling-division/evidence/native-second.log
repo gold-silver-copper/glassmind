@@ -1,0 +1,18 @@
+Running as unit: run-p2414039-i98831797.scope; invocation ID: 275ec5cbe37e4de9a042adce9a7b825f
+   Compiling witness_second v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/ceildivision-run/native-replay/second)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/ceildivision-run/target/debug/deps/witness_second-6f29ca8768cb54f7)
+
+running 2 tests
+REPLAY_second
+test tests::visible ... ok
+test independent_replay::native_output ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests witness_second
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

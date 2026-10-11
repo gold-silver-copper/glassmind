@@ -1,0 +1,25 @@
+Running as unit: run-p2418555-i98810659.scope; invocation ID: 009a9c706bbb4089be9f3abda1aadecb
+   Compiling rollback v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/ceildivision-run/rollback-replay)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/ceildivision-run/target/debug/deps/rollback-bc33b2c12c99cbc9)
+
+running 1 test
+test tests::visible ... FAILED
+
+failures:
+
+---- tests::visible stdout ----
+
+thread 'tests::visible' (2418668) panicked at src/lib.rs:2:83:
+assertion `left == right` failed
+  left: 3
+ right: 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::visible
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`
