@@ -1,6 +1,52 @@
 # Continuous development checkpoint
 
-## Current checkpoint — supervised equation proposal experiment running
+## Current checkpoint — finite equation model rejected; compositional and coding workers live
+
+WORK=/home/gsc/.cache/glassmind/continuous-20261010, branchharness.
+Latest evidence commit3f9a646; checkpoint69c3e85 before that. Goal active.
+Finite equation classifier terminal/completed and REJECTED.160original files/
+70,053,395bytes archived and hash-verified before inspection. Parent reproduced
+full4475 raw499correct/1878refused/1179wrong/919unscorable; stronger lexical663.
+All5925 calibration threshold checks fail90%precision/30selected; disabled.
+Independent24semantic2correct/15refused/7wrong, versus oldsolve2/22/0.
+Native8binding+7invalidprogram+9numericinput contracts pass; decimal32MB discrepancy
+retained (loader32MiB). Parent58manifestpaths verified, groupedFIT/cal rebuilt,
+512classes reconstructed from4590cleanFIT, fixed200native replay identical.
+Default200/4475/3116savedoutputpairs byte-identical. No runtime changes integrated.
+Full evidence `tools/quantities/equation-proposals/PARENT.md` and parent/results.
+Sourcepatch/model/binaries/predictions remain WORK/equationproposals-run/frozen-candidate;
+original terminal archive remains terminal-originals. Inactive worktree andtemporary
+loginlink removed onlyafter160file re-verification. Do not recreate/relaunch it.
+Known completed worker tokens158005855; cachedinput countedonce; parent/interrupted
+excluded. New source/dependency downloads0. OrdinaryMathQA29/4443/3 unchanged;
+scorejournal carries this forward with rejected-experiment accounting, not a gain.
+
+Active coding worker PID1989516, glassmind-continuous-multiplicative.scope,
+worktreeWORK/multiplicative, branchcontinuous/multiplicative, basec9d10dc.
+TaskWORK/multiplicative-task.txt. Ownsworld-rust andnewtools/coding-multiplicative.
+Parent14cases frozen beforecandidateinspection undercoordinator/multiplicative-independent.
+Baseline75655COMPLETE: all14compiled/failedassertions;0/8newrepairs,1/1legacy,
+0/4negativeedits;oldambiguouscaseacceptsfirstpatch. Candidateinspection pendingterminal.
+
+New compositional equation worker PID2077287, glassmind-continuous-equationsequence.scope,
+worktreeWORK/equationsequence, branchcontinuous/equationsequence, basec9d10dc.
+TaskWORK/equationsequence-task.txt; ownsquantities andnewtools/quantities/equation-sequence.
+Astra fast/forcedChatGPT/strippedAPIkeys, loginstatusconfirmed,8GiB0swapbounded.
+Hypothesis: factor operation/operand/stop generation with number-context and graphstate
+features, assembling unseen programs instead of choosing a fixedwholeprogramclass.
+TRAIN-onlyaudit:1182cleanCALprograms include348in512bank,133onlyinunrestrictedFIT,
+701exactstructuresunseeninFIT; algebraicequivalence notmeasured, not anaccuracyceiling.
+SameFIT23912/cal5925 grouping and4590cleanFITall1565programs. Samelexicalbaseline663;
+rawgate>=688,90%/30cal selection thenDEV>=50right at80%, fixedall4475denominator.
+NoDEVformula/heldoutaccess orparenttestinspection. Baseline5a94...copiedhashverified.
+Parent independentsemantic/boundcontractsremain; needseparateoutdir fornewcandidate.
+
+Next: verify both exactlivehandles, archiveterminal originals beforeinspection,
+runindependentparentgates, full765codingifcandidatepassesnativechecks. Do not re-run
+or rescue rejectedfinitecentroid withlooserthresholds. Keep originalfailures visible.
+
+
+## Previous checkpoint — supervised equation proposal experiment running
 
 The goal is active. Latest state check confirmed PID1961447 and
 `glassmind-continuous-equationproposals.scope` active/running, capped at8GiB with
