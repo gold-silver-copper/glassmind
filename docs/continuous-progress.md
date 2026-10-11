@@ -31,10 +31,24 @@ Experiments selected before implementation:
 Coordinator owns CLI conversation integration, shared manifests, reports
 and merges. Coding and quantities workers use isolated worktrees and are
 limited to one cargo compilation job each. Workers leave changes uncommitted.
-Worker process/scope details will be recorded after launch. The old loop
-remains stopped; its existing checkout and state must be preserved.
+Worker root: `/home/gsc/.cache/glassmind/continuous-20261010`. Coding launcher
+PID 1493627, scope `glassmind-continuous-coding.scope`; quantities launcher
+PID 1493666, scope `glassmind-continuous-quantities.scope`. Each `*-run/`
+contains process metadata, JSONL events, stderr, final summary and disposable
+auth symlink. Bubblewrap masks other code, private data and account history;
+workers receive GPT-6 Astra fast through ChatGPT login with API-key env removed.
+Both scopes verified active after launch. Recheck before acting on PIDs.
+The old loop remains stopped; its checkout and state must be preserved.
 
 ## Queue after this batch
+
+Conversation integration completed and locally verified: mixed conversation
+18/27 → 27/27 correct, zero wrong, both with/without frozen intent model;
+41/41 memory checks; full 3116 synthetic quantity questions through talk retain
+3056 correct, 60 refused, zero wrong (762 correct expected refusals).
+Workspace fmt/clippy/build and strict 4/4 fixture smoke passed. Source commit
+is recorded in the chat score journal; see `docs/talk-quantities.md`.
+Coding and quantities workers remain in progress; poll their scopes/events.
 
 - Generalize verified code editing beyond compiler suggestions.
 - Broaden dialogue service coverage and facts retrieval without gold IDs.

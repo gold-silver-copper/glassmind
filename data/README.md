@@ -213,3 +213,15 @@ No held-out failures were inspected or used to modify the reasoner.
   are unsupported English paraphrases. No external training data or test
   split was used. Sources, hashes, full reports and reproduction commands:
   [quantities handoff](../crates/quantities/HANDOFF.md).
+
+### Conversation integration development checks
+
+`tools/talk-dev.py` supplies a fixed 27-check synthetic conversation covering
+calculation results, memory priority, correction focus, cross-process session
+persistence, reset and invalid-input refusals. Arithmetic expectations use
+Python Fraction and date expectations use datetime. This is product integration
+coverage, not independent language data. The main `talk` command improves from
+18 correct / 9 refused / 0 wrong to 27 / 0 / 0, both with and without the frozen
+CLINC intent model. Existing 41 memory checks still pass. Routing all 3,116
+existing synthetic quantity questions through `talk` preserves the standalone
+solver's 3,056 / 60 / 0 result, including 762 expected refusals.
