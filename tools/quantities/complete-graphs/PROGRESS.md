@@ -38,3 +38,10 @@ No teacher has started at this freeze. NEXT: prepare/check isolation and login,
 launch the single attempt, preserve/hash originals and remove owned auth link after
 terminal verification, then validate all native prefixes and review every graph.
 No fit/CAL/DEV/runtime changes. All previous gates remain unchanged.
+
+Teacher46506 launched after protocol47c7cc7 and verified isolatedChatGPTlogin.
+Scopeglassmind-quantity-graphs-teacher,supervisor1245190,launcher1245197;
+exactmodelgpt-6-astra/fast/high,APIkeyenvscrubbed,5maskedpaths. Original
+1200s/8GiB0swap/2MiBannotation/256MiBdirectory caps. No restart/repair attempt.
+Parent comparison helper now applies the existing8frozen references and mutates
+coreferential mentions together; semantic review remains mandatory.
