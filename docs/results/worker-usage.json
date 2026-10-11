@@ -812,7 +812,7 @@
         "output_tokens": 26190,
         "reasoning_output_tokens": 7315
       },
-      "source": "Width4 cumulative-score search rejected: full EWT LAS19423->17879/UAS20540->19051, all2001 trees valid, six authored role regressions. Original rejected archive57, parent archive29 and raw artifact identities verified; runtime rolled back byte-identically. Independent parent audit pending."
+      "source": "Width4 cumulative-score search rejected: full EWT LAS19423->17879/UAS20540->19051, all2001 trees valid, six authored role regressions. Original rejected archive57, parent archive29 and raw artifact identities verified; runtime rolled back byte-identically. Parent rescored2001 LAS17879/UAS19051; frozen independent36->25/40 core edges,11losses/no gains. Allfreeze and original/rootcopies verified before inactiveworktree/auth removal."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

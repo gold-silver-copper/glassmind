@@ -1,5 +1,10 @@
 # Original repair-request candidate fails independent coverage
 
+A subsequent coordinator revision restores8/8 positive repairs, blocks all9 old
+unrequested edits and passes15 legacy native repairs. Full765 is running; this is
+not yet a published improvement. See [revision validation](parent/revision/VALIDATION.md).
+The original rejected submission and its scores below remain unchanged.
+
 The original submission removes all nine unrequested do edits from the parent
 baseline, but loses four of eight previously working repair requests. It answers
 only four of six status forms under the frozen proxy. No production runtime is

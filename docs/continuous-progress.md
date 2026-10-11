@@ -1,48 +1,80 @@
 # Continuous development checkpoint
 
-## Current checkpoint — PR35 merged; repair revision in progress
+## Current checkpoint — repair revision passed local gates; full765 running
 
-The unlimited continuous goal remains active. Root branch harness at86b1e545.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-PR35 merged at2026-10-11T10:16:23Z as c9dd5e3a5bfa4d10c1a1fd2db0ba26900485fcd8;
-exact head86b1e545efbeaa9262d157125fccd9841ada7794 passed CI38131245655.
-No open PR. Published source028ed24: raw exact forms1556/2001 (baseline1370),
-all old retained; dependency model/predictions unchanged. Coding180/765 remains
-published from PR34, all177 prior passes retained. External milestone logs appended.
+The unlimited continuous goal remains active. Root branch harness; evaluated source
+8aeb5ac1a888dcea571d4c0710e059005442b215 (repair request boundary). Evidence commit
+a22f613 preserves original rejected repair/beam experiments. WORK=/home/gsc/.cache/
+glassmind/continuous-20261010 (join path without newline). Root publication is still
+PR35: reviewed head86b1e545, mergec9dd5e3a5bfa4d10c1a1fd2db0ba26900485fcd8,
+CI38131245655 SUCCESS. No open PR at last query. PR34 coding180/765,585refused,0fail;
+PR35 raw syntax1556/2001exact,all1370oldretained; dependency model/predictions unchanged.
+Do not claim this new repair candidate merged or accepted until full gate succeeds.
 
-REPAIRSPEECH original terminal submission is independently rejected:8→4 positive
-do repairs,4/6 status forms, but all9 unrequested do edits eliminated. Original
-67-entry submission,66-entry parent snapshot,85 worker identities verified. Original
-source/binary/output preserved under repairspeech-run; no source integrated in root.
-Parent30 cases/60 modes unchanged; initial ask--apply is correctly read-only for
-new Remedy proposals. See tools/coding-repair-speech/PARENT.md and parent/REVISION.md.
-Coordinator is revising inactive WORK/repairspeech after archive verification:
-singular diagnostics, Rust source nouns, semicolon contexts, behavior-preservation
-tails, bare build predicate and Problems status questions. The original Passes-only
-status proxy must be versioned/rebaselined explicitly for genuine Problems queries;
-original grades retained. One added family test caught code/build noun ambiguity;
-fixed before candidate inference. Capped test/build session97154 COMPLETE:20CLI+43English tests pass. Frozen debug
-binary e7a5c228f36c765f2623dcd054808909624cc7494f4e56d540038719d94ce752
-at coordinator/repairspeech-review/revision/glassmind-debug. Parent60mode replay
-session52911 running; remaining authored/legacy native checks follow; only if
-those pass integrate source into current root and run fresh full765 requiring all180.
+REPAIRSPEECH original candidate was rejected:8→4 native positives,4/6statuses,
+but9→0 unrequested edits. Original67/parent66 archives and85workeridentities verified.
+Source/binary/reports immutable in repairspeech-run/submitted and parent-submitted.
+Coordinator revision in inactive WORK/repairspeech adds singular diagnostic nouns,
+Rust source nouns, semicolon failure contexts, exact preservation constraints,
+bare build predicates and Problems(Build/Test) status queries. Initial addedtest
+caught code/build subject ambiguity; fixed before candidate inference; no tests removed.
+Original tracked patch+new source snapshot and debugbinary are in coordinator/
+repairspeech-review/revision. Current root source matches revised snapshot hashes.
 
-SYNTAXBEAM is terminal and REJECTED. Parent independently rescored2001: LAS19423→17879,
-UAS20540→19051/25148; alltreesvalid/zero refusals. Frozen independent20 sentences:
-36→25/40 core edges,16→8/20 complete. Source rolled back, verified identical to root.
-57 original rejected archive entries/58,265,881bytes,29 parent/82,097bytes,69 raw
-identities/109,454,301bytes verified. Originals in syntaxbeam-run; copied small
-reports in tools/reading/syntax-beam with parent audit. No model worker remains
-active; syntaxbeam worktree/auth removed after original/frozen/root re-verification;
-repairspeech inactive checkout retained for the coordinator revision.
-Do not rerun rejected full inference or integrate rejected syntax patch.
+Local gate COMPLETE:20CLI+43English tests (all68 authored/15legacy/oldrenamecases),
+parent30cases×2modes has8/8 exactnative do repairs,0unrequestededits,0negativeCommand
+previews,allinitialask--applyRemediesreadonly. Fifteen legacydo requests exact/native;
+worker's old initialapply expectation remains30/45 with15failures, never relabelled.
+Status originalproxy5/6; explicitly corrected Problems-versus-Passes proxy6/6.
+Baseline and originalcandidate rescored under both proxies,originalgradespreserved;
+see parent/revision/status-contract-v2.md. All mutation/refusal/repair gates unchanged.
+ParentcasesSHA cc0bdeb085b22636dea7517609712323d68988cb677ca38ef9de29ee8aab111d.
+DebugSHA e7a5c228f36c765f2623dcd054808909624cc7494f4e56d540038719d94ce752.
+Sessions97154tests/52911parent/9605legacy/82443workspace/27445releasecontracts COMPLETE.
+Workspacefmt/alltargetclippy/release/strict4smoke passes. All30 integrated release
+meanings identical to tested debug output and sources unchanged. No further rerun
+needed unless source changes. Source8aeb5ac; release atcoordinator/repairspeech-review/
+revision/glassmind-release SHA e7bf6dd5fa6c1f3306cdeb563ceb50c5839ffabac7224c78fe874b90db28639e.
 
-Known completed worker tokens146687638; parent/interrupted usage excluded.
-Root pending evidence includes tools/coding-repair-speech, tools/reading/syntax-beam,
-worker usage and this checkpoint. Commit these durable reviews; no runtime change
-in root yet. Next conversation experiment must change objective/representation;
-no width sweep, third work-rate template, or repeated QA-span cosmetic trial.
-Older checkpoint details below are historical; current status above supersedes them.
+ACTIVE fullcoding765 session51761, unchanged tools/rustbench-dev.sh; artifacts
+coordinator/repairspeech-full, native-scratch explicit; CARGO_TARGET_DIRunset,
+8GiB/0swap scopes/processgroups/timeouts, TMPDIRon disk/jobs1. Results JSONL is written
+at completion; run.log currently progressing through rustc-error-index tasks. Do not
+start a duplicate or infer failure from absent results.jsonl. When COMPLETE run
+coordinator/repairspeech-review/revision/compare-full.py --out NEWPATH. It compares
+against rename-boundary-full (180passes), requiresall180retained/0fails and reportsall
+transitions. If regression, retain failed output/source and investigate visibleDEV
+requests/general language without reading task.toml/solutions/hidden tests. No PR
+until full gate passes; then README/scoreboard/journal/report, push, exact-headCI/merge.
+
+SYNTAXBEAM terminalREJECTED: parent rescored2001 LAS19423→17879,UAS20540→19051/25148,
+allvalidtrees. Independent36→25/40edges,11losses/0gains,16→8/20sentences. Source
+rolledback byteidentical. Original57archive/58,265,881bytes,parent29/82,097bytes,
+raw69identities/109,454,301bytes andallfreeze/source/rootcopies verified. Worker/auth
+removed onlyafterverification. Alloriginals retained syntaxbeam-run. Smallreports
+committed tools/reading/syntax-beam; do notintegraterejectedpatch/rerunfullinference.
+
+ACTIVE SYNTAXNORM worker PID1372109, scopeglassmind-continuous-syntaxnorm.scope,
+branchcontinuous/syntaxnorm at8aeb5ac, WORK/syntaxnorm, runWORK/syntaxnorm-run.
+Astrafast/forcedChatGPT/noAPIenv; loginstatusverified; scope8GiB/0swap,30minouter.
+New hypothesis compares cumulative local logsoftmax overlegaltransitions (temp1,
+width4fixed), removing arbitrary per-state score offsets from prior rawsumobjective.
+No retraining/defaultchanges/widthtemperatureDEVtuning; scoresnotcalibratedprobabilities.
+Samefull gate>=19673LAS/20540UAS,all2001valid,no baselinecoreedgelosses. Default
+raw/forms/model MUST remainbyteidentical. Workerownsreadinglibrary/standaloneonly;
+no mainCLI/coding/sharedreports. Its baselinebundle copied/byteverified.
+Parentfresh20sentences40edges frozen beforecandidateinspection atcoordinator/
+syntaxnorm-independent: casesSHA1a1a5465505f37f8616d668da0c9bc4778754a558f5051d2623949c60b2295f7.
+Baseline COMPLETE36/40edges,16/20complete. Do notinspectcandidatebeforefreeze(it is
+already frozen); use run.py --beam for eventual --normalized-beam standalonemode.
+Archive terminalworker beforeintegration/removal, then parentaudit. Ifthisobjective
+fails, futureparserworkmust change training/features,notathirdscore/widthtweak.
+
+Completed worker tokens146687638; syntaxnormunfinished,parent/interruptedexcluded.
+No othermodelworkeractive. Inactive repairspeechcheckout/auth retained forrevision;
+no pending native/testjobs besidesfull51761. Rawsyntax/rate/workrate/rename oldjobs
+are COMPLETE; do not restart. Evidenceupdates ready to commit; runtime8aeb5ac remains
+local while full gate runs. Oldercheckpointdetailsbelow are historical.
 
 ### Previous checkpoint details (superseded)
 
