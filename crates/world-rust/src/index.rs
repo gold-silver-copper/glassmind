@@ -151,6 +151,23 @@ pub fn index_source(name: &str, root: &Path) -> SourceIndex {
         };
         visitor.visit_file(&syntax);
     }
+    // Expression paths alone do not make enum constructors functions. Leave
+    // ambiguous references unclassified; declaration ownership remains explicit.
+    let variants: BTreeSet<_> = index
+        .records
+        .iter()
+        .filter(|r| r.item.kind == RustKind::Variant)
+        .map(|r| r.item.name.clone())
+        .collect();
+    for name in variants {
+        if let Some(positions) = index.idents.get(&name) {
+            for at in positions {
+                if index.names.get(at) == Some(&Function) {
+                    index.names.remove(at);
+                }
+            }
+        }
+    }
     index.calls.sort();
     index.calls.dedup();
     index
@@ -360,6 +377,15 @@ impl<'ast> Visit<'ast> for Indexer<'_> {
 
     fn visit_item_enum(&mut self, e: &'ast syn::ItemEnum) {
         self.add(&e.ident, RustKind::Enum, None, &e.attrs);
+        for variant in &e.variants {
+            self.add(
+                &variant.ident,
+                RustKind::Variant,
+                Some(e.ident.to_string()),
+                &variant.attrs,
+            );
+            self.names(&variant.ident, RustKind::Variant);
+        }
     }
 
     fn visit_item_mod(&mut self, m: &'ast syn::ItemMod) {

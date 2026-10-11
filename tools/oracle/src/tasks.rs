@@ -88,6 +88,7 @@ fn kind_name(kind: ItemKind) -> &'static str {
         ItemKind::Field => "field",
         ItemKind::Problem => "problem",
         ItemKind::Test => "test",
+        ItemKind::Variant => "variant",
     }
 }
 
@@ -603,7 +604,7 @@ fn no_such_name(ix: &Index, seed: u64) -> Vec<Candidate> {
             ItemKind::Field => (0, false),
             ItemKind::Struct | ItemKind::Enum | ItemKind::Trait => (1, true),
             // The oracle's sources hold no tool reports.
-            ItemKind::Problem | ItemKind::Test => continue,
+            ItemKind::Problem | ItemKind::Test | ItemKind::Variant => continue,
         };
         if let Some((bases, partners)) = pools.get_mut(pool) {
             if base {

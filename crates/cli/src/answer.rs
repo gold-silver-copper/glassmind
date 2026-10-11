@@ -16,6 +16,7 @@ pub fn key(item: &RustItem) -> ItemKey {
             RustKind::Function => ItemKind::Function,
             RustKind::Struct => ItemKind::Struct,
             RustKind::Enum => ItemKind::Enum,
+            RustKind::Variant => ItemKind::Variant,
             RustKind::Trait => ItemKind::Trait,
             RustKind::Field => ItemKind::Field,
             RustKind::Problem => ItemKind::Problem,

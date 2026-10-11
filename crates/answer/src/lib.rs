@@ -21,6 +21,8 @@ pub enum ItemKind {
     Function,
     Struct,
     Enum,
+    /// A unit, tuple or record variant of an enum.
+    Variant,
     Trait,
     /// A named field of a struct.
     Field,

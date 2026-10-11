@@ -82,6 +82,34 @@ pub fn words() -> Vec<Word> {
                 ("en.rust.noun.fn", 2, "fn", Function, Singular),
                 ("en.rust.noun.struct", 2, "struct", Struct, Singular),
                 ("en.rust.noun.enum", 2, "enum", Enum, Singular),
+                (
+                    "en.rust.noun.variant",
+                    glassmind_rules::HAND,
+                    "variant",
+                    Variant,
+                    Singular,
+                ),
+                (
+                    "en.rust.noun.variants",
+                    glassmind_rules::HAND,
+                    "variants",
+                    Variant,
+                    Plural,
+                ),
+                (
+                    "en.rust.noun.enum_variant",
+                    glassmind_rules::HAND,
+                    "enum variant",
+                    Variant,
+                    Singular,
+                ),
+                (
+                    "en.rust.noun.enum_variants",
+                    glassmind_rules::HAND,
+                    "enum variants",
+                    Variant,
+                    Plural,
+                ),
                 ("en.rust.noun.field", 2, "field", Field, Singular),
                 // Short forms in terse requests: "fns called by `cut`",
                 // "where's that func defined".
@@ -371,6 +399,25 @@ mod tests {
         Utterance,
     };
     use glassmind_rules::Switches;
+
+    #[test]
+    fn variant_vocabulary_has_typed_meaning() {
+        let english: English<Rust> = English::new(rules(), &Switches::all_on());
+        let meaning = Utterance::Command(Action::Rename {
+            thing: Thing::Named(Name("State::Ready".into())),
+            kind: Some(RustKind::Variant),
+            name: Some(Name("Active".into())),
+        });
+        for text in [
+            "Rename the variant `State::Ready` to `Active`",
+            "Rename the enum variant `State::Ready` to `Active`",
+        ] {
+            let Understanding::Readings(readings) = english.understand(text) else {
+                panic!("variant vocabulary was not read");
+            };
+            assert!(readings.iter().any(|r| r.meaning == meaning));
+        }
+    }
 
     /// The readings the system would act on: those correcting the fewest
     /// mistyped words (corrected readings are only fallbacks).
