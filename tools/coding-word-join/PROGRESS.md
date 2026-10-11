@@ -51,3 +51,10 @@ scoperun-p879334-i101469804. Existingfixedcandidate and gates unchanged. Parent
 rootbenchmarkrepo f79e71a clean. Results.jsonl appears onlyoncompletion. Do not
 restart based onitsabsence. Current root hasseparatecheckpoint a49af8b; this
 worktree canmerge normallyafter fullgatespass. No newmodelworker usage.
+
+FULL DEV COMPLETE:20945 exited0.220/765,545refused,0fail; all218oldpassesretained.
+Exactlytwochanges: reverse-words hurried/terse. Fullcomparison gatepassed, result
+SHAac1a58deb96ed9a1d084a50937609c8a9231c1c635fc31450af363829fca252a.
+ReportsPARENT.md/full765 and updatedscoreboard/README. No liveword-join jobs.
+NEXT integrate root, verify sourceidentity and exactreviewedheadCI, thenpublish;
+fullclaimssnapshot projection remains independent andrunning.

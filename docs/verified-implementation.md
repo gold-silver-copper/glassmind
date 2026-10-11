@@ -34,9 +34,10 @@ again on the live package; failure restores the original files. Tests and other
 source bytes remain intact. This establishes the recorded tests' behavior,
 without proving all English requirements or behavior on untested inputs.
 
-The full 765-request coding DEV run reaches **218 passes, 547 refusals and zero
-failures**, retaining all 215 previous passes. The three gains are styles of
-the sum-even task also present in the supplied TRAIN material. Independent
-authored checks cover six additional signature/behavior cases, ambiguity and
-unchanged refusals; these are separate from the benchmark score.
-[Source, validation and limitations](../tools/coding-implementation-grammar/correction/PARENT.md).
+The full 765-request coding DEV run reaches **220 passes, 545 refusals and zero
+failures**, retaining all 218 previous passes. The two new gains are styles of
+the reverse-words task also present in the supplied TRAIN material. Ten new
+authored checks cover both joining behaviors, Unicode, whitespace, existing
+string operations and ambiguity; all 66 prior native checks remain passing.
+These are separate from the benchmark score.
+[Source, validation and limitations](../tools/coding-word-join/PARENT.md).
