@@ -14,6 +14,8 @@ def digest(path):
 
 def main():
     root,binary=map(lambda p:Path(p).resolve(),sys.argv[1:])
+    assert digest(binary)=='b0a86c031e6c83d81af3a5672391f6385b9ec7eb1205743d4d79a7c5677cded7'
+    # This is the build that passed the frozen format1/2 compatibility checks.
     projection=json.loads((root/'projection-report.json').read_text())
     resources=json.loads((root/'projection-resources.json').read_text())
     assert resources['passed'] and resources['seconds']<14400

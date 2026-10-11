@@ -66,3 +66,12 @@ RUN/audit-acquisition.py RUN under180s/8GiB. It pins the manifest, rehashes all8
 rawfiles, audits85new-download ledger entries and makes only newrawfilesreadonly.
 prepare-native.py now requires its acquisition-report.json in addition to the
 completed projection resource report. Full raw acquisition gate is unchanged.
+
+ACQUISITION COMPLETE:64342 exited0; all85new shards44104948009bytes downloaded
+without retries in1495.359s (through final verified file), below96GiB/7200s caps.
+Including reusedfirst,86files44633986614bytes. Independent all-file rehash21.354s
+passed; audit78497 COMPLETE, allpublisherhashes match, newrawfiles nowreadonly.
+Reports acquisition-report.json/fetch.jsonl; source inventorySHAe29894e9... .
+Projection29161 stillRUNNING, last44files at1321s. No fullnative output yet.
+prepare-native additionally pins the tested CLI SHA b0a86c03... before copying;
+other track builds must not silently replace the previously verified importer.
