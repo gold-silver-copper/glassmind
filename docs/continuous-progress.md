@@ -1,93 +1,199 @@
 # Continuous development checkpoint
 
-The unlimited goal is active. Milestones do not complete it. Root branch `harness`.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+The unlimited goal is active; milestones do not complete it. Root branch `harness`.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the full coding gate and combined release
+checks below. No routine human confirmation is needed.
 
-## Published milestone and active next experiment
+## Published PR41 and current baseline
 
-PR40 MERGED https://github.com/gold-silver-copper/glassmind/pull/40
-Reviewedhead3c0ad3dace4de37476808347f2012599abb63467; CI38141155006 passed85seconds.
-Merge0b2faad0623156c99e25d4f3a476b962bc48a0c2 at2026-10-11T12:57:38Z.
-Source59494b6c61ae402f88d4ab5495877069729da5f4argument swaps,eb8df4ddatedfacts,
-142cbe1TRAINdiagnostic. Push38194,PRcreation93358,merge76079 COMPLETE.
-Coding206/765,559refused0fail,all203retained;3download-progressstylegains.
-ResultsSHA927848d34a2cbc7a17280a9db6e35360fc1d37d6f5669a0d7163500e73023abd.
-Datedfacts andallregressiongates belowpass. Do not repeat publication or append
-its scoreboardpoints again. Knowncompletedworker tokens179721595.
+PR41 MERGED https://github.com/gold-silver-copper/glassmind/pull/41
+Reviewed head765e92fcfc79f5c51e0b3cd1351d843816063f75; CI38143624507 passed96seconds
+(13:33:08→13:34:44 UTC). Mergef9540a4cd14311aa020e62e1b10f0ddac31a60db,
+2026-10-11T13:35:09Z. Sourceecc2a37 extrema and2e44f25 timed matching;
+179a400 rejected quantity ranker evidence also published. Push24450,PR19451,
+merge16558 COMPLETE. Do not repeat publication or scoreboard rows.
 
-Current experiment state (verified this continuation):
+Coding209/765,556refused0fail,all206 previous passes retained. Gains are three
+winter-high request styles, one bug. Full765session69043 COMPLETE.
+ResultsWORK/coordinator/extremum-full/results.jsonl SHA
+fd8400d01239435fbdf43e89ed295ee8d32d69478af953234d2453906df3262c.
+Comparison records all outcome changes, runner/baseline hashes and kind counts.
+Full-evaluated coding binary at coordinator/extremum-independent/revision/frozen/
+glassmind SHA12f7c1edb0d0c0e309b4ffe2adaf593b91cc71c4703c3543a41258e92cd86035.
 
-- Extremum worker TERMINAL, archived1422files/87096407bytes before review.
-  WorktreeWORK/extremum, original frozen binarya6e9d59a..., TRAIN7→8/27.
-  Original candidate failed all15 parent repairs because inline cfg(test) modules
-  made the production source opaque. Coordinator revision skips only inline modules
-  with exact cfg(test) and doc attributes; production scope remains restricted.
-  Revised51+1 unit/integration/native checks, clippy and release passed, session57861.
-  Revised frozen binary12f7c1edb0d0c0e309b4ffe2adaf593b91cc71c4703c3543a41258e92cd86035.
-  Parent19:15/15 exact repairs,3 negatives unchanged, two-passing competing case
-  refused with complete choice.json evidence. All19 originals compiled/failed tests.
-  Original parent adapter preserved; syntax-only UFCS associated-constant comparison
-  accepts <i32>::MIN as i32::MIN without changing cases/labels/expected values.
-  WORK/coordinator/extremum-independent/revision contains plan, source, frozenbinary,
-  parentresults and choice-review. Full765 COMPLETE session69043:209pass/556refused/0fail,all206retained;
-  threewinter-highstyles gained. ResultsSHAfd8400d01239435fbdf43e89ed295ee8d32d69478af953234d2453906df3262c.
-  coordinator/extremum-full/comparison.json records baseline/runner andallchanges.
-- Timed matching worker TERMINAL (formerPID3109066), scopeinactive. Worktree
-  WORK/timedmatch, basea716079. Original archive245files/232157600bytes hashverified;
-  three publicdata symlinks materialized, credential paths excluded.
-  Worker reports51 authored/455 cache cases and2821 legacybytes pass. Not yet
-  independently accepted or integrated. Owned crates/facts +tools/facts/timed-matching.
-  ParentWORK/coordinator/timedmatch-independent froze35 cases (SHA5d535143...),
-  real101 queries (SHA6d3fbcee...), main16 (SHA2661ad0b...) before candidateinspection.
-  Independent rawclaim oracle agrees all21 matched-status authored cases; old single
-  verifier composition agrees602 queries. Inputs alreadygenerated and hashed.
-  Parent35/real101 passed;182authored+8real fullwitnesses verified;124frozenhashes.
-  Corrected examplehelper's invalid equivalence of fullquestion andlossyparsed
-  constraints onreservedalias. Productionandexpectationsunchanged, originalfailurekept.
-  Integratedandcommitted2e44f25 `Match facts on YYYY-MM-DD:` main32/state44pass,
-  human3cases,oldtemporal45bytes,all2821legacybytes,calc27/story47,memory41plain
-  and93+41productionpass. Integratedbinary0ba0e7d4266926f27df8f5f4924d5991b8886b968829f968f1d47f255f34b238.
-  Artifactcoordinator/timedmatch-integrated. Requiredworkspacecheck36033 passedfmt/alltargetclippy/releaseworkspace/strict4smoke.
-  Finalcombinedbinary4087feb06e9e72f87674be8ddba20bf119cd14537b9c73ae8ff993cad8b10552
-  atcoordinator/combined-timedmatch-extremum matchesallfacts/CLI and24worldrustsourcehashes.
-  Finalmain32/state44passed session37851. Publicationpending.
-- Rolebinding worker TERMINAL/REJECTED. Original archive172files/165694278bytes;
-  all142 frozen manifestentries independentlyverified. Compact evidence committed
-  179a400, tools/quantities/role-binding/PARENT.md. Full1182 cleanTRAIN CAL
-  question-only replay and original native execution independentlymatch.
-  Free143→92 correct; oracle221→170; left2197→2370/right2499→2540 of4138.
-  Three of four frozen continuation gates failed.69 oldcorrectlost/18gained;
-  45 refusals becamewrong. No DEV access or runtime/model integration.
-  Surface token/clause sharing was not an actual semantic role parser.
-  Change supervision/data/representation before any next quantities experiment.
+Final combined binary WORK/coordinator/combined-timedmatch-extremum/glassmind
+SHA4087feb06e9e72f87674be8ddba20bf119cd14537b9c73ae8ff993cad8b10552.
+All24world-rust files match the full765 candidate; allCLI/facts files match the
+independently evaluated timedmatch integration. Manifest and combined-source.json
+retain those checks. Workspace36033 COMPLETE:fmt/alltargetclippy/releaseworkspace/
+strict4fixture smoke. Final main37851 COMPLETE:32cases/44state-recall checks,
+both intent modes and three human-output checks. README/journal/html updated.
+Known completedworker tokens184586362 includingcachedinputonce; root/interrupted
+usage excluded. Latest deduporder2933900 and draftsession1339978. Both terminal.
 
-Known completedworker tokens179721595 includingcachedinputonce; root/interrupted
-usageexcluded. Extremum2353350, rolebinding1686558, timedmatch3785176.
-Groundedsteps worker LIVE PID3445245, scopeglassmind-continuous-groundedsteps.scope,
-8GiB0swap, branchcontinuous/groundedsteps, base2e44f25. TaskWORK/groundedsteps-task.txt;
-runWORK/groundedsteps-run. Onlytools/quantities/grounded-steps; no runtime/train/tune/DEV.
-ChatGPTlogin andsupportedCLI flagsverified; no livecandidate/source/resultinspected.
-Question: can GSM8Kcalculatorannotations provide uniquelybound typedprogram labels?
-SourceWORK/groundedsteps-source: officialTRAIN7473rows4166206bytes, MIT,
-openai/grade-school-math3101c7d5072418e28b9008a6636bde82a006892c,
+## Current integrated batch: dedup ordering and resumable drafts
+
+Root has reviewed source for both capabilities, plus command docs and
+compact independent reports. Original worker evidence was archived/hashverified
+BEFORE inspection or edits. No current modelworkers. PR41 remains last published.
+Current build/check handle is recorded in coordinator/combined-deduporder-draftsession-check.log;
+fmt/alltargetclippy/releaseworkspace/strict4fixture smoke COMPLETE session49737.
+Allcargo8GiB0swap,setsid--waittimeout,persistentTMPDIR,jobs1. Full765session40652
+COMPLETE212/553/0,all209retained. comparison.jsonSHA records exact outcomes;
+resultsSHA44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f.
+Gains threeblog-tagsstyles,onebug. Do not duplicate either run.
+
+Deduporder formerPID3504868/scopeinactive, worktreeWORK/deduporder retained.
+Original terminal-originals1182files173993430bytes verified; frozen1137files172975121bytes
+verified. Frozenbinarydc5f5cccbc76d8749be40b083b003f7d6e2074c16c1bb0829c282ce645fcdb2d.
+Allrootworld-rust files copied byteexact from frozen-candidate/final-source.
+TRAIN8→9/27, all8prioroutcomefilesbyteidentical, fixedsample2/4. 54worldrusttests,
+29authorednativechecks pass. Primitive/String Vec typedadjacentdedup/sort only;
+unknownaliases/imports/shadows/effects excluded. Newboundednativefamily afterold
+families; previousambiguity/error withdrawal veto preserved. Sharedoldextremum
+helper extraction reviewed, oldlegacyproposal/undo/cargo/run_in_until unchanged.
+
+Parentcoordinator/deduporder-independent frozen12casesSHA
+ e4c8ef8cb28dfa15cc55f716fc2206a1f097f364cc53517d7e39d1c7ec7c5259.
+Baseline12actualcompile/failingtests and independent5alternativeoutputs passed.
+Candidate9209 COMPLETE:5/5exactrepairs,5negativeunchanged,2ambiguitiesrefused,
+notimeouts/manifestedits. choice-review.json records2completepassingnewalternatives;
+prior_extremum_veto keeps exactold2passingchoice evidence and createsNOnewchoice.
+Full765 gatecompare-full.py frozen:all209oldpassesretained,0fail,denominator765.
+Frozenfullgate passed; baselinecoordinator/extremum-full/results.jsonl.
+README now212/765. No hiddenitems/labels/generators inspected.
+
+Draftsession formerPID3618382/scopeinactive; worktreeWORK/draftsession retained,
+base49340ae. Original179files94263022bytes verified; frozen116files93364413bytes
+verified. Worker1313785inputincl1250688cached+26193output=1339978tokens.
+Sourcecrates/dialogue onlyaddsimmutablebundle/input-onlyhistory APIs andSHA2;
+alloldmodel/router/inference unchanged. No accuracygain:610right459wrong50refused/1119.
+No newdata:reusedSGDe852981ae34990f4358979625854259302feaa78 CC-BY-SA4.0,
+6readonlyfiles49643602bytes. Model32174720bytesSHAfac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88;
+schema3707SHA b021ae923dbeb7782b99ac6628e65b1b48f3cca2892fb62ce8c77b472324e089.
+InputsonlyUSER/SYSTEM179conversations1119USER; no goldannotations inruntime.
+
+Worker14tests/fmt/clippy/release,91sample+1119fullpredictionparity,reversedorder,
+179SYSTEMmidpointrestores+interleaving pass. Legacyfullpredictionbytesunchanged.
+Originalbaseline filenamecollision correctedandrepeatedbeforeimplementation;
+originalfailure retained. NativeexampleSHA654e6897ade4751364ced3d80ff4a131e434a953ef5e5a7eaedb71122959de0b.
+
+Parentcoordinator/draftsession-independent frozePLAN/6streams/main/loadercontracts
+beforeinspection. Native48132 COMPLETE:13USERpredictions/9processrestartpoints,
+15invalidbundles rejected includingvalidJSONoveractualcaps,10invalidhistorycategories
+atomic,128turns/4096singlebytes/65536totalpositiveboundaries,2rawsame-semantics
+model/schemaidentityrebindsrefused. Full179/1119 exactunderroundrobininterleaving
+and179midpointrestores. review.py+candidate/report.json andrawstreams retained.
+
+Mainintegration crates/cli/src/talk_drafts.rs +everydayoptionalrequest_draft and
+--dialogue-dir. OnlyexplicitDraftrequest:/Servicereply:/Showrequest/Resetrequest
+routes; no personal/story/factsbinding. Exactpayloadbytes,case-insensitiveprefixes,
+unknown/malformed/limits preservehistory, resetwithoutbundleallowed. Inputhistory
+only, replayonfirstuseafterload; inprocessadvancesonce. Showdoesnotadvance/persist
+emptydraft. /reset clearsall. Humanoutputexplicitlyprovisional, no booking/actions.
+Allsnapshotfieldsincludinginactiveframes/proposalsmatcholdnative. Bundlecaps
+64MiBmodel/1MiBschema/64KiBmanifest;history128turns/4096UTF8perturn/65536total.
+Unknownhistoryfields,annotations,wrongidentity,blank/NUL refuse beforemutation.
+
+Initialmainbuild66502 COMPLETE clippy+release. Frozeninitialmain
+coordinator/draftsession-integrated/glassmind SHAc6b9db4312edabde8edfa07fd9a74ce7b6c4ac1b4542dd6ae913d4b72388a310.
+Main82683 COMPLETE:46countedcommands34statechecksEACHintentmode=92/68total;
+restartaftereverycommand;ordinarymemory/story/calc/factisolation;rebound/malformed
+savedhistorypreserved;resetrecovers;invaliddeclaredbundlefailswithoutstatewrite.
+Mainfull179/1119 exactpredictions;humanlabelschecked. Latermain.rs changesonly
+helptext; everyday/talk_drafts/source remain exactinitialevaluatedfiles.
+Legacy COMPLETE41memory/27calc/47story;authority1344 COMPLETE93+41production;
+facts49820 COMPLETEfirst200/full2821standalone/facts-enabled/defaulttalkbytesidentical.
+Reports tools/dialogue/draft-session/PARENT.md +parent/, docs/dialogue-drafts.md.
+Combined frozenbinary coordinator/combined-deduporder-draftsession/glassmind
+SHAb6b093c5a82e76ec08481b5e0c8739e6b9090590f5f06b79d8b41eeb04e8948d.
+All26world-rustfilesmatchfull765; allCLI/dialoguefilesmatchinitialmainexcepthelptext,
+whosepreviousbyteswere reconstructedandhashverified. Manifest/combined-source.json.
+
+Sourcecommitbad94f5 andcodingjournalrow212/765 complete; nextpushPR42 andmerge exactgreenhead.
+Fullgatescompleted. Keepgoalactive.
+Then archiveverify andremoveonlycompletedworkerworktrees/temp loginlinks. Prepare
+nextquantityrepresentation orfactscoverage experiment fromTRAIN evidence; do not
+revive closedthreshold/spanproposalhypotheses. No currentmodelworkers tostop.
+
+## Finished PR41 experiments
+
+Extremum original archive1422files87096407bytes; original candidate parent0/15
+because inline tests made wholefileopaque. Coordinator revision skips only inline
+exactcfg(test)/docmodules. 52worldrusttests passed, including26nativecontracts and
+two additionalshapes. Parent19:15exact native repairs,3unchanged negatives, and
+complete two-passing competing case refused. Alloriginalscompiled/failedtests;
+no timeout/manifestedit. Independent outputsSome(-5) vsSome(-2). Adapter only
+normalizes equivalent primitive UFCS constants; originaladapter/failures retained.
+Source/docs tools/coding-extremum/PARENT.md; coordinator/extremum-independent.
+
+Timed matching original archive245files232157600bytes;124frozenentries verified.
+Parent35statuses/182fullwitnesses;34CLI/libraryequal+NULlibrary. Raw-calendar oracle
+and602oldsingle-verifier componentcalls agree. Completeeligiblepair real101queries,
+4nonempty/twosubjects/8witnesses; existing validation-seeded cache, not retrieval.
+Original worker51authored/455cache. Parent originalhelper failed after29cases on
+invalid typedconstraints/fullquestion equivalence when parsing loses reservedalias
+wording. Correctedexample keeps string/typeddate parity; production and frozen
+expectations unchanged. Originalfailure/source retained.
+Integratedbinary0ba0e7d... passed32main/44state; final4087feb... repeatsboth.
+First200/full2821 standalone/facts-enabled/defaulttalk bytes identical;45oldtemporal
+outputs byte-identical (44CLIplusNULlibrary). Calc27/story47, memory41plain and
+93+41productionpass. Facts remain256/2545/20answer,252/2545/24joint.
+Earlier checkpoint40/41memory limitation was stale; alreadyfixed bymemoryauthority.
+First localbuild24390 failed parentexample collapsible_if clippy; fixed44302passed.
+Reports tools/facts/timed-matching/PARENT.md, coordinator/timedmatch-{independent,integrated}.
+
+Completedextremum/timedmatch/rolebinding worktrees and temporaryloginlinks removed
+ONLYafter1839originalarchivefiles484948285bytes reverified plus25revisedfreezeentries.
+coordinator/batch41-{archive-review,cleanup}.json. Frozen executables/data retained.
+Do not reuse removedworktreepaths; parentadapters use retainedfrozen/sourcearchives.
+
+## Rejected quantity experiments and next representation requirement
+
+Rolebinding independentlyreplayed1182cleanTRAIN-CAL rows:free143→92,
+oracle221→170;left2197→2370/right2499→2540 of4138. Threeoffour gatesfailed.
+69oldcorrectlost/18gained;45refusals→wrong. No DEV/model/runtimeintegration.
+Archive172files165694278bytes,142frozenentriesverified, compactreports179a400.
+Surface/clausefeatures were not actual semanticentity roles. Stop retuning them.
+
+GSM8Kgroundedsteps TERMINAL/REJECTED and independentlyreviewed; commitc0efc7a
+LOCAL AFTERPR41 (not yet published). No activeworker/modeltraining/runtimechange.
+OfficialTRAIN7473rows4166206bytes, MIT, openai/grade-school-math revision
+3101c7d5072418e28b9008a6636bde82a006892c,
 SHA17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465.
-OnlyTRAIN+LICENSE fetched; officialtestneverdownloaded. Exactoldnativeexecutor/
-proposal/rational source suppliedreadonly. Originalbinder/constants/horizon fixed.
-Strict ambiguity includes duplicateinputs,input/priorvalues,constantcollisions;
-no answerderivedconstants. Reportsentiredenominator/exclusions/groupedFIT-CAL;
-these remain TRAINdiagnostics, not officialDEV or predictions. Data-readinessgate
->=1000uniqueexactprograms plus independentcontracts; failure staysrejected.
-Parent19frozenbeforeinspection: coordinator/groundedsteps-independent,
-casesSHA499fdd73d7458eb49d7d2d5132afac41286dfe9ce9ee780f63a6d9364998ed64.
-Archive/hashverify workeroriginals BEFOREinspection/modification when terminal.
-Do not repeat any terminal worker. Preserve originalarchives.
+OnlyTRAIN+LICENSE fetched; officialtest neverdownloaded. SourceWORK/groundedsteps-source
+contains pinneddata andexactoldnativeexecutor/source; preserveit.
+Strictfull alternatives include equalvaluedinput/priorstep/constant collisions.
+Only354uniqueexactprograms (290FIT64CAL) vsfrozen1000minimum; rejectpipeline.
+Parent19allpass;52frozenartifacthashes verified;7473question-onlybindings exact;
+354goldexecutions exact; independentAST arithmetic22777expressions and24050leaf
+candidate sets agree. 7472normalizedgroups/5922FIT1551CAL, zero group overlap.
+3599binderrefusals (3330numberword);3025ambiguousrows,732unboundleaf,611overlong.
+These are convertedgold labels, not predictions or semanticproof. Allcountschecked.
+Archive66files23795248bytes verifiedbeforeinspection andbeforeworktree/loginlink
+removal. Parentcoordinator/groundedsteps-independent (review.py,19cases,nativebaseline,
+candidate/report.json,cleanup.json). Scopeinactive; nativeparent61620finished.
+Compacttools/quantities/grounded-steps/PARENT.md. Nextquantitydirection needs explicit
+span/reference supervision or materiallydifferent representation with independent
+semanticchecks; no first-match value priority or another oldrankerconfiguration.
 
-Completedargumentswap/temporal/groundingaudit worktrees ANDtemporaryauthsymlinks
-removed AFTER re-verifying1155 originalarchivefiles576561232bytes plusretained
-revisionmanifest. Logs coordinator/batch40-{archive-review,cleanup}.json.
-Frozenbinaries/source/reports/runartifactsremain; neverdeleteoriginalevidence.
+## Rolling queue and resources
 
-## Completed validation of combined source
+1. Finish currentdedup-order worker and frozenparent/native/fullDEV gates.
+2. Revisit quantities via explicitspan/reference supervision; source and rejected
+   value-only dataaudit are ready. Avoid anotherthreshold/localfeature rename.
+3. Dialogue draft persistence integrated and under final combined checks; accuracy
+   unchanged610/1119. Tokenendpoints was third rejectedspan-proposalhypothesis;
+   future accuracy work needs a materiallydifferent representation.
+4. Facts coverage/inverseedges are the known broadgap; previousTRAIN999expansion
+   rejected, rawcachedassets retained. Do not repeat aliasfilters or duplicatefetch.
+
+Deduporder anddraftsession workers terminal; fullcoding andcombinedrelease checks COMPLETE.
+Allcargo8GiB/0swap,setsid--waittimeout,persistentTMPDIR,jobs1,testthreads<=4.
+Atmost4modelslotsincludingroot,8cargojobsprojectwide. No unrelatedcleanup/pkill-f.
+Stop exactownedjobs onexplicit userstop. Preserve archives BEFORE worker edits/removal.
+
+## Prior PR40 validation (historical)
 
 WORK/coordinator/combined-temporal-argumentswap/glassmind is frozen final binary
 SHA17b6ceb211602871b22da3afd15c05af8ba409595a220c379afde91ddf540b63.
@@ -188,7 +294,7 @@ proposal.rs; same Rustfeatures/masks/math, gold onlyexplicitnamedoracle modes.
 CleanCAL1182:nonSTOPop1912/4138(46.21%),goldcontextleft2197/4138(53.09%),
 right2499/4138(60.39%). Goldfulloperationplan+length numeric143→221/1182;
 bothplanning/bindingfailbeforeprefixcorruption, nouniquecausalprimary established.
-Knowncompletedworker tokens171896511 includingcachedinputonce; parent/interrupted
+AtPR40, knowncompletedworker tokens171896511 includingcachedinputonce; parent/interrupted
 accountingexcluded. Currentworkercontributions3999906+2118994+1147151. Allterminal.
 
 ## Next experiments after shipping
@@ -232,13 +338,3 @@ Threecodingroute/implementation hypotheses, threesyntaxdecoder/features, tworece
 quantityrategrammars closed. Repairwhitelist200-era180→53rejected. Retiredheldout/
 humanfinal/contaminatedlegacy staydisabled. Neverinspecthiddenitems/predictions.
 
-## Resource ownership and reproduction
-
-OnlymodelworkersareexternalAstra fast viaforcedChatGPTlogin; neverAPIkeys/Opus.
-Three prior workers cleaned asabove. Groundedsteps modelworkeractive. Extremum full DEV COMPLETE; batchpublicationpending.
-WORK/launch.py ownssandboxlauncher; inspect exact owned evaluation handles before resuming.
-Before anynewlaunch verifyCLIflags/loginlocally.
-Allcargo8GiBzeroSwap,setsid--waittimeout,persistentTMPDIR,jobs1,testthreads4.
-Atmost4modelslotsincludingroot,8cargojobsprojectwide; no unrelatedcleanup/pkill-f.
-Afterpublication verifyarchivesagain beforeworktreeremoval. Preservefrozenbinaries,
-patches,commandsandresults. Sourcecredentialsneverread/log/commit.

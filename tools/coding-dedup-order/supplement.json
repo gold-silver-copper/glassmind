@@ -1,0 +1,30 @@
+[
+  {
+    "name": "raw_shadow",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { let mut r#xs = xs; xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "owned_string",
+    "code": "pub fn f(mut xs: Vec<String>) -> Vec<String> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks(){ for (a,b) in [(vec![],vec![]),(vec![\"z\"],vec![\"z\"]),(vec![\"z\",\"a\",\"z\"],vec![\"a\",\"z\"])] {assert_eq!(f(a.into_iter().map(String::from).collect()),b);} }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "owned_char",
+    "code": "pub fn f(mut xs: Vec<char>) -> Vec<char> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks(){assert_eq!(f(vec!['\u00e9','a','\u00e9']),vec!['a','\u00e9']);}",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "owned_bool",
+    "code": "pub fn f(mut xs: Vec<bool>) -> Vec<bool> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks(){assert_eq!(f(vec![true,false,true]),vec![false,true]);}",
+    "count": 1,
+    "accept": true
+  }
+]

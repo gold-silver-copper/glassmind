@@ -200,6 +200,7 @@ version = "0.1.0"
 dependencies = [
  "clap",
  "glassmind-answer",
+ "glassmind-dialogue",
  "glassmind-english",
  "glassmind-english-rust",
  "glassmind-everyday",
@@ -241,6 +242,7 @@ dependencies = [
  "glassmind-everyday",
  "serde",
  "serde_json",
+ "sha2",
 ]
 
 [[package]]

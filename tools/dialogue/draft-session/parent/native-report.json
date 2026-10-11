@@ -1,0 +1,92 @@
+{
+  "binary_sha256": "654e6897ade4751364ced3d80ff4a131e434a953ef5e5a7eaedb71122959de0b",
+  "invalid_bundles": [
+    {
+      "name": "missing_manifest",
+      "error": "Error: \"/home/gsc/.cache/glassmind/continuous-20261010/coordinator/draftsession-independent/bundles/missing_manifest/manifest.json: No such file or directory (os error 2)\""
+    },
+    {
+      "name": "wrong_version",
+      "error": "Error: \"unsupported bundle manifest version\""
+    },
+    {
+      "name": "unknown_manifest_field",
+      "error": "Error: \"manifest: unknown field `frames`, expected one of `version`, `model_sha256`, `schema_sha256`, `source`, `license`, `scope` at line 1 column 414\""
+    },
+    {
+      "name": "empty_source",
+      "error": "Error: \"bundle source, license and scope must be nonempty\""
+    },
+    {
+      "name": "empty_license",
+      "error": "Error: \"bundle source, license and scope must be nonempty\""
+    },
+    {
+      "name": "empty_scope",
+      "error": "Error: \"bundle source, license and scope must be nonempty\""
+    },
+    {
+      "name": "missing_model",
+      "error": "Error: \"/home/gsc/.cache/glassmind/continuous-20261010/coordinator/draftsession-independent/bundles/missing_model/model.json: No such file or directory (os error 2)\""
+    },
+    {
+      "name": "missing_schema",
+      "error": "Error: \"/home/gsc/.cache/glassmind/continuous-20261010/coordinator/draftsession-independent/bundles/missing_schema/schema.json: No such file or directory (os error 2)\""
+    },
+    {
+      "name": "model_hash_mismatch",
+      "error": "Error: \"bundle asset SHA256 mismatch\""
+    },
+    {
+      "name": "schema_hash_mismatch",
+      "error": "Error: \"bundle asset SHA256 mismatch\""
+    },
+    {
+      "name": "schema_model_incompatible",
+      "error": "Error: \"multi model/schema mismatch\""
+    },
+    {
+      "name": "model_valid_json_over_cap",
+      "error": "Error: \"/home/gsc/.cache/glassmind/continuous-20261010/coordinator/draftsession-independent/bundles/model_valid_json_over_cap/model.json: exceeds 67108864 bytes\""
+    },
+    {
+      "name": "schema_valid_json_over_cap",
+      "error": "Error: \"/home/gsc/.cache/glassmind/continuous-20261010/coordinator/draftsession-independent/bundles/schema_valid_json_over_cap/schema.json: exceeds 1048576 bytes\""
+    },
+    {
+      "name": "manifest_valid_json_over_cap",
+      "error": "Error: \"/home/gsc/.cache/glassmind/continuous-20261010/coordinator/draftsession-independent/bundles/manifest_valid_json_over_cap/manifest.json: exceeds 65536 bytes\""
+    },
+    {
+      "name": "model_version",
+      "error": "Error: \"multi model/schema mismatch\""
+    }
+  ],
+  "authored_user_predictions": 13,
+  "restart_points": 9,
+  "invalid_history_atomic": [
+    "unknown_top_field",
+    "annotation_bearing_turn",
+    "unknown_speaker",
+    "bad_version",
+    "wrong_identity",
+    "empty_utterance",
+    "nul_utterance",
+    "multibyte_over_4096",
+    "129_turns",
+    "65537_total_bytes"
+  ],
+  "raw_identity_rebinding_refused": 2,
+  "positive_boundaries": [
+    "128_turns",
+    "4096_single_bytes",
+    "65536_total_bytes"
+  ],
+  "full_dev": {
+    "conversations": 179,
+    "user_predictions": 1119,
+    "interleaved": true,
+    "restarts": 179,
+    "exact": true
+  }
+}

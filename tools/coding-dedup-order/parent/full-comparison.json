@@ -1,0 +1,58 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 553,
+    "pass": 212
+  },
+  "all_previous_passes_retained": 209,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "fix-tests/blog-tags",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/blog-tags",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/blog-tags",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "refused": 54,
+      "pass": 27
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "fd8400d01239435fbdf43e89ed295ee8d32d69478af953234d2453906df3262c",
+  "candidate_result_sha256": "44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f",
+  "binary_sha256": "dc5f5cccbc76d8749be40b083b003f7d6e2074c16c1bb0829c282ce645fcdb2d",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}
