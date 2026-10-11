@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/target/release/reading-syntax",
+    "train",
+    "--train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../udsyntax-source/en_ewt-ud-train.conllu",
+    "--graph-tagger",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../graphsyntax-run/baseline/model.bin",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../graphsyntax-run/candidate/model.bin",
+    "--report",
+    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../graphsyntax-run/candidate/train-report.json"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 48.660601811949164,
+  "user_seconds": 48.483681,
+  "system_seconds": 0.049837,
+  "max_rss_KiB": 176492,
+  "major_page_faults": 0,
+  "minor_page_faults": 32302
+}

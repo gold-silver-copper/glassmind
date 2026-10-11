@@ -1,0 +1,24 @@
+{
+  "conllu_rows": {
+    "decimal": 37,
+    "integer": 204578,
+    "range": 2614
+  },
+  "training": {
+    "input_skips": 2,
+    "invalid_tree_skips": 0,
+    "nonprojective_skips": 0,
+    "parser_epochs": 3,
+    "parser_mistakes": [
+      75681,
+      53905,
+      42352
+    ],
+    "parser_sentences": 12542,
+    "sentences": 12544,
+    "tag_epochs": 0,
+    "tag_mistakes": [],
+    "words": 204578
+  },
+  "version": "ewt-labeled-graph-v2"
+}

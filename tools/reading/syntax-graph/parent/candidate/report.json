@@ -1,0 +1,344 @@
+{
+  "binary_sha256": "c57138f62d89d273132e9e6ba67b291006c34c4a67deed998d9adb4406aa2f25",
+  "model_sha256": "5168e505cfd1a11502a707e403e482a83fde821aaaed270412990d24bec19781",
+  "baseline_right": 46,
+  "modes": [
+    {
+      "mode": "forms",
+      "cases": 24,
+      "edges": 52,
+      "right": 41,
+      "complete": 15,
+      "old_correct_lost": [
+        {
+          "case": "core_06",
+          "edge": {
+            "dependent": 2,
+            "head": 6,
+            "label": "nsubj"
+          }
+        },
+        {
+          "case": "core_13",
+          "edge": {
+            "dependent": 2,
+            "head": 4,
+            "label": "nsubj"
+          }
+        },
+        {
+          "case": "core_15",
+          "edge": {
+            "dependent": 2,
+            "head": 4,
+            "label": "nsubj"
+          }
+        },
+        {
+          "case": "core_16",
+          "edge": {
+            "dependent": 2,
+            "head": 4,
+            "label": "nsubj:pass"
+          }
+        },
+        {
+          "case": "core_20",
+          "edge": {
+            "dependent": 6,
+            "head": 3,
+            "label": "conj"
+          }
+        },
+        {
+          "case": "core_20",
+          "edge": {
+            "dependent": 7,
+            "head": 6,
+            "label": "obj"
+          }
+        },
+        {
+          "case": "core_23",
+          "edge": {
+            "dependent": 7,
+            "head": 4,
+            "label": "obj"
+          }
+        }
+      ],
+      "gate": false,
+      "correctness": [
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          false
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          false
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          false
+        ]
+      ]
+    },
+    {
+      "mode": "text",
+      "cases": 24,
+      "edges": 52,
+      "right": 41,
+      "complete": 15,
+      "old_correct_lost": [
+        {
+          "case": "core_06",
+          "edge": {
+            "dependent": 2,
+            "head": 6,
+            "label": "nsubj"
+          }
+        },
+        {
+          "case": "core_13",
+          "edge": {
+            "dependent": 2,
+            "head": 4,
+            "label": "nsubj"
+          }
+        },
+        {
+          "case": "core_15",
+          "edge": {
+            "dependent": 2,
+            "head": 4,
+            "label": "nsubj"
+          }
+        },
+        {
+          "case": "core_16",
+          "edge": {
+            "dependent": 2,
+            "head": 4,
+            "label": "nsubj:pass"
+          }
+        },
+        {
+          "case": "core_20",
+          "edge": {
+            "dependent": 6,
+            "head": 3,
+            "label": "conj"
+          }
+        },
+        {
+          "case": "core_20",
+          "edge": {
+            "dependent": 7,
+            "head": 6,
+            "label": "obj"
+          }
+        },
+        {
+          "case": "core_23",
+          "edge": {
+            "dependent": 7,
+            "head": 4,
+            "label": "obj"
+          }
+        }
+      ],
+      "gate": false,
+      "correctness": [
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          false
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          false
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          false,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true
+        ],
+        [
+          true,
+          false
+        ]
+      ]
+    }
+  ],
+  "accepted_core_gate": false
+}

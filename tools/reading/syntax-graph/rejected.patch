@@ -1,0 +1,1734 @@
+diff --git a/crates/reading/src/bin/reading-syntax.rs b/crates/reading/src/bin/reading-syntax.rs
+index 2e44d85..659244f 100644
+--- a/crates/reading/src/bin/reading-syntax.rs
++++ b/crates/reading/src/bin/reading-syntax.rs
+@@ -1,7 +1,7 @@
+ // SPDX-License-Identifier: MIT
+ //! Standalone TRAIN adapter and forms/text-only syntax inference. No QA actions.
+ use clap::{Parser, Subcommand};
+-use glassmind_reading::syntax::{Input, Model, TrainingSentence, VERSION, train};
++use glassmind_reading::syntax::{Input, Model, TrainingSentence, train, train_graph};
+ use serde::Serialize;
+ use std::io::{BufRead, BufReader, BufWriter, Read, Write};
+ use std::path::PathBuf;
+@@ -20,6 +20,9 @@ enum Command {
+         model: PathBuf,
+         #[arg(long)]
+         report: PathBuf,
++        /// Fit a graph parser with the tagger copied from this legacy model.
++        #[arg(long)]
++        graph_tagger: Option<PathBuf>,
+     },
+     Predict {
+         #[arg(long)]
+@@ -109,9 +112,19 @@ fn run() -> Result<(), String> {
+             train: source,
+             model,
+             report,
++            graph_tagger,
+         } => {
+             let (data, rows) = corpus(source)?;
+-            let (m, r) = train(&data)?;
++            let (m, r) = if let Some(path) = graph_tagger {
++                train_graph(
++                    &data,
++                    Model::load(BufReader::new(
++                        std::fs::File::open(path).map_err(|e| e.to_string())?,
++                    ))?,
++                )?
++            } else {
++                train(&data)?
++            };
+             let mut writer =
+                 BufWriter::new(std::fs::File::create(model).map_err(|e| e.to_string())?);
+             m.save(&mut writer)?;
+@@ -119,7 +132,7 @@ fn run() -> Result<(), String> {
+             std::fs::write(
+                 report,
+                 serde_json::to_vec_pretty(
+-                    &serde_json::json!({"version":VERSION,"training":r,"conllu_rows":rows}),
++                    &serde_json::json!({"version":m.version(),"training":r,"conllu_rows":rows}),
+                 )
+                 .map_err(|e| e.to_string())?,
+             )
+@@ -155,7 +168,7 @@ fn run() -> Result<(), String> {
+                 let value = match result {
+                     Ok(p) => serde_json::to_value(p).map_err(|e| e.to_string())?,
+                     Err(reason) => {
+-                        serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason})
++                        serde_json::json!({"status":"refused","model_version":model.version(),"reason":reason})
+                     }
+                 };
+                 serde_json::to_writer(&mut writer, &value).map_err(|e| e.to_string())?;
+diff --git a/crates/reading/src/syntax.rs b/crates/reading/src/syntax.rs
+index 44b56bf..924cdac 100644
+--- a/crates/reading/src/syntax.rs
++++ b/crates/reading/src/syntax.rs
+@@ -7,6 +7,9 @@ use serde::{Deserialize, Serialize};
+ use std::collections::BTreeSet;
+ use std::io::{Read, Write};
+ 
++#[path = "syntax_graph.rs"]
++mod graph;
++
+ pub const VERSION: &str = "ewt-arc-standard-v1";
+ pub const MAX_TOKENS: usize = 128;
+ pub const MAX_BYTES: usize = 16 * 1024;
+@@ -468,6 +471,7 @@ fn parse_features(s: &State, ws: &[Word], tags: &[usize]) -> Vec<usize> {
+ }
+ 
+ pub struct Model {
++    graph: bool,
+     tags: Vec<String>,
+     labels: Vec<String>,
+     tagger: Table,
+@@ -475,6 +479,9 @@ pub struct Model {
+     root: usize,
+ }
+ impl Model {
++    pub fn version(&self) -> &'static str {
++        if self.graph { graph::VERSION } else { VERSION }
++    }
+     fn tag(&self, ws: &[Word]) -> Result<Vec<usize>> {
+         let mut tags = Vec::new();
+         for i in 0..ws.len() {
+@@ -489,6 +496,9 @@ impl Model {
+         let n = forms.len();
+         let ws = words(forms);
+         let tags = self.tag(&ws)?;
++        if self.graph {
++            return graph::infer(self, forms, &ws, &tags);
++        }
+         let mut s = State::new(n);
+         for _ in 0..2 * n {
+             let f = parse_features(&s, &ws, &tags);
+@@ -536,7 +546,7 @@ impl Model {
+     }
+     pub fn save(&self, mut w: impl Write) -> Result<()> {
+         let header = Header {
+-            version: VERSION.into(),
++            version: self.version().into(),
+             tags: self.tags.clone(),
+             labels: self.labels.clone(),
+         };
+@@ -585,7 +595,7 @@ impl Model {
+         let mut bytes = vec![0; len];
+         r.read_exact(&mut bytes).map_err(|e| e.to_string())?;
+         let h: Header = serde_json::from_slice(&bytes).map_err(|e| e.to_string())?;
+-        if h.version != VERSION {
++        if h.version != VERSION && h.version != graph::VERSION {
+             return Err("unknown model version".into());
+         }
+         for inventory in [&h.tags, &h.labels] {
+@@ -635,12 +645,18 @@ impl Model {
+             Ok(t)
+         };
+         let tagger = read_table(h.tags.len(), TAG_BUCKETS)?;
+-        let parser = read_table(1 + 2 * h.labels.len(), PARSE_BUCKETS)?;
++        let graph = h.version == graph::VERSION;
++        let parser = if graph {
++            read_table(1, graph::BUCKETS)?
++        } else {
++            read_table(1 + 2 * h.labels.len(), PARSE_BUCKETS)?
++        };
+         let mut extra = [0];
+         if r.read(&mut extra).map_err(|e| e.to_string())? != 0 || r.limit() == 0 {
+             return Err("trailing or oversized model".into());
+         }
+         Ok(Self {
++            graph,
+             tags: h.tags,
+             labels: h.labels,
+             tagger,
+@@ -726,6 +742,13 @@ fn oracle(s: &State, g: &TrainingSentence, labs: &[usize], nlabels: usize) -> Re
+         Err("static oracle stuck".into())
+     }
+ }
++pub fn train_graph(
++    data: &[TrainingSentence],
++    frozen_tagger: Model,
++) -> Result<(Model, TrainingReport)> {
++    graph::train(data, frozen_tagger)
++}
++
+ pub fn train(data: &[TrainingSentence]) -> Result<(Model, TrainingReport)> {
+     if data.is_empty() || data.len() > 100_000 {
+         return Err("training sentence limit".into());
+@@ -802,6 +825,7 @@ pub fn train(data: &[TrainingSentence]) -> Result<(Model, TrainingReport)> {
+         eprintln!("tag epoch {} mistakes {}", epoch + 1, mistakes);
+     }
+     let mut model = Model {
++        graph: false,
+         tags,
+         labels,
+         tagger: tagger.finish(),
+@@ -857,8 +881,9 @@ pub fn train(data: &[TrainingSentence]) -> Result<(Model, TrainingReport)> {
+ #[allow(clippy::unwrap_used)]
+ mod tests {
+     use super::*;
+-    fn tiny() -> Model {
++    pub(super) fn tiny() -> Model {
+         Model {
++            graph: false,
+             tags: vec!["NOUN".into()],
+             labels: vec!["dep".into(), "root".into()],
+             tagger: Table::new(1, TAG_BUCKETS),
+diff --git a/crates/reading/src/syntax_graph.rs b/crates/reading/src/syntax_graph.rs
+new file mode 100644
+index 0000000..8bc2bfb
+--- /dev/null
++++ b/crates/reading/src/syntax_graph.rs
+@@ -0,0 +1,522 @@
++// SPDX-License-Identifier: MIT
++//! Exact first-order labeled graph parser. See syntax-graph/PLAN.md for inventory.
++use super::*;
++pub(super) const VERSION: &str = "ewt-labeled-graph-v2";
++pub(super) const BUCKETS: usize = 1 << 21;
++type Matrix = Vec<Vec<Option<f64>>>;
++
++// Each recursive level strictly reduces node count. Missing edges never use infinity.
++fn edmonds(s: &Matrix) -> Result<Vec<usize>> {
++    let n = s.len();
++    let mut parents = vec![0; n];
++    for d in 1..n {
++        let mut selected = None;
++        for (h, row) in s.iter().enumerate() {
++            if let Some(v) = row[d]
++                && selected.is_none_or(|(_, old)| v > old)
++            {
++                selected = Some((h, v));
++            }
++        }
++        parents[d] = selected.ok_or("disconnected score graph")?.0;
++    }
++    let mut cycle = Vec::new();
++    for start in 1..n {
++        let mut path = Vec::new();
++        let mut v = start;
++        while v != 0 {
++            if let Some(pos) = path.iter().position(|&x| x == v) {
++                cycle = path[pos..].to_vec();
++                break;
++            }
++            path.push(v);
++            v = parents[v];
++        }
++        if !cycle.is_empty() {
++            break;
++        }
++    }
++    if cycle.is_empty() {
++        return Ok(parents);
++    }
++    let mut inside = vec![false; n];
++    for &v in &cycle {
++        inside[v] = true;
++    }
++    let outside: Vec<_> = (0..n).filter(|&v| !inside[v]).collect();
++    let c = outside.len();
++    let mut map = vec![c; n];
++    for (i, &v) in outside.iter().enumerate() {
++        map[v] = i;
++    }
++    let mut contracted = vec![vec![None; c + 1]; c + 1];
++    let mut endpoints = vec![vec![(0, 0); c + 1]; c + 1];
++    for h in 0..n {
++        for d in 1..n {
++            if map[h] == map[d] {
++                continue;
++            }
++            if let Some(mut value) = s[h][d] {
++                if inside[d] {
++                    value -= s[parents[d]][d].ok_or("missing cycle edge")?;
++                }
++                if !value.is_finite() {
++                    return Err("nonfinite contraction".into());
++                }
++                let cell = &mut contracted[map[h]][map[d]];
++                if cell.is_none_or(|old| value > old) {
++                    *cell = Some(value);
++                    endpoints[map[h]][map[d]] = (h, d);
++                }
++            }
++        }
++    }
++    let small = edmonds(&contracted)?;
++    for d in 1..small.len() {
++        let (h, v) = endpoints[small[d]][d];
++        parents[v] = h;
++    }
++    Ok(parents)
++}
++fn decode(s: &Matrix) -> Result<Vec<usize>> {
++    let n = s.len();
++    if !(2..=MAX_TOKENS + 1).contains(&n) || s.iter().any(|r| r.len() != n) {
++        return Err("score dimensions".into());
++    }
++    for (h, row) in s.iter().enumerate() {
++        for (d, v) in row.iter().enumerate() {
++            if v.is_some_and(|v| !v.is_finite()) || ((h == d || d == 0) && v.is_some()) {
++                return Err("invalid score matrix".into());
++            }
++        }
++    }
++    let initial = edmonds(s)?;
++    if initial[1..].iter().filter(|&&h| h == 0).count() == 1 {
++        return Ok(initial);
++    }
++    let mut best_tree = None;
++    let mut best_score = None;
++    for root in 1..n {
++        if s[0][root].is_none() {
++            continue;
++        }
++        let mut constrained = s.clone();
++        for d in 1..n {
++            if d != root {
++                constrained[0][d] = None;
++            } else {
++                for row in constrained.iter_mut().skip(1) {
++                    row[d] = None;
++                }
++            }
++        }
++        let Ok(tree) = edmonds(&constrained) else {
++            continue;
++        };
++        let mut total = 0.;
++        for d in 1..n {
++            total += s[tree[d]][d].ok_or("missing decoded edge")?;
++        }
++        if !total.is_finite() {
++            return Err("nonfinite tree score".into());
++        }
++        if best_score.is_none_or(|old| total > old) {
++            best_score = Some(total);
++            best_tree = Some(tree);
++        }
++    }
++    best_tree.ok_or_else(|| "no single-root tree".into())
++}
++fn features(ws: &[Word], tags: &[usize], h: usize, d: usize, label: Option<usize>) -> Vec<usize> {
++    let w = |i: usize| if i == 0 { 1 } else { ws[i - 1].word };
++    let t = |i: usize| if i == 0 { 1 } else { tags[i - 1] as u64 + 2 };
++    let neighbor = |i: usize, off: isize| {
++        i.checked_add_signed(off)
++            .filter(|&j| j > 0 && j <= tags.len())
++            .map_or(0, t)
++    };
++    let (hw, dw, ht, dt) = (w(h), w(d), t(h), t(d));
++    let direction = u64::from(h < d);
++    let dist = match h.abs_diff(d) {
++        0..=4 => h.abs_diff(d) as u64,
++        5..=7 => 5,
++        8..=15 => 6,
++        _ => 7,
++    };
++    let mut out = Vec::with_capacity(32);
++    if let Some(l) = label {
++        let vals: &[&[u64]] = &[
++            &[],
++            &[ht],
++            &[dt],
++            &[ht, dt],
++            &[hw],
++            &[dw],
++            &[hw, dt],
++            &[ht, dw],
++            &[ht, dt, direction],
++            &[ht, dt, direction, dist],
++            &[hw, direction],
++            &[dw, direction],
++        ];
++        for (i, vals) in vals.iter().enumerate() {
++            feature(&mut out, BUCKETS, 3000 + l as u64 * 64 + i as u64, vals);
++        }
++    } else {
++        for (i, mut vals) in [
++            vec![],
++            vec![ht],
++            vec![dt],
++            vec![hw],
++            vec![dw],
++            vec![ht, dt],
++            vec![hw, dw],
++            vec![hw, dt],
++            vec![ht, dw],
++            vec![hw, ht],
++            vec![dw, dt],
++        ]
++        .into_iter()
++        .enumerate()
++        {
++            feature(&mut out, BUCKETS, 2000 + i as u64, &vals);
++            vals.extend([direction, dist]);
++            feature(&mut out, BUCKETS, 2011 + i as u64, &vals);
++        }
++        let (hl, hr, dl, dr) = (
++            neighbor(h, -1),
++            neighbor(h, 1),
++            neighbor(d, -1),
++            neighbor(d, 1),
++        );
++        for (i, mut vals) in [
++            vec![hl, ht, dt],
++            vec![hr, ht, dt],
++            vec![ht, dl, dt],
++            vec![ht, dr, dt],
++            vec![hl, ht, dl, dt],
++            vec![ht, hr, dt, dr],
++        ]
++        .into_iter()
++        .enumerate()
++        {
++            vals.extend([direction, dist]);
++            feature(&mut out, BUCKETS, 2022 + i as u64, &vals);
++        }
++    }
++    out
++}
++fn parse(
++    table: &Table,
++    ws: &[Word],
++    tags: &[usize],
++    labels: usize,
++    root: usize,
++) -> Result<(Vec<usize>, Vec<usize>)> {
++    let n = ws.len() + 1;
++    let mut scores = vec![vec![None; n]; n];
++    let mut labs = vec![vec![root; n]; n];
++    let score = |f: Vec<usize>| f.iter().map(|&i| f64::from(table.weights[i])).sum::<f64>();
++    for h in 0..n {
++        for d in 1..n {
++            if h == d {
++                continue;
++            }
++            let shared = score(features(ws, tags, h, d, None));
++            let mut winner = None;
++            for l in 0..labels {
++                if (h == 0) != (l == root) {
++                    continue;
++                }
++                let value = shared + score(features(ws, tags, h, d, Some(l)));
++                if !value.is_finite() {
++                    return Err("nonfinite arc score".into());
++                }
++                if winner.is_none_or(|(_, old)| value > old) {
++                    winner = Some((l, value));
++                }
++            }
++            let (l, value) = winner.ok_or("no legal arc label")?;
++            scores[h][d] = Some(value);
++            labs[h][d] = l;
++        }
++    }
++    let heads = decode(&scores)?;
++    let labels = (1..n).map(|d| labs[heads[d]][d]).collect();
++    Ok((heads[1..].to_vec(), labels))
++}
++pub(super) fn infer(
++    m: &Model,
++    forms: &[String],
++    ws: &[Word],
++    tags: &[usize],
++) -> Result<Prediction> {
++    let (heads, labs) = parse(&m.parser, ws, tags, m.labels.len(), m.root)?;
++    let deprels: Vec<_> = labs.iter().map(|&l| m.labels[l].clone()).collect();
++    if !valid_tree(&heads, &deprels) {
++        return Err("invalid graph tree".into());
++    }
++    Ok(Prediction {
++        status: "predicted".into(),
++        model_version: VERSION.into(),
++        tokenization: "provided_forms".into(),
++        forms: forms.to_vec(),
++        spans: None,
++        upos: tags.iter().map(|&t| m.tags[t].clone()).collect(),
++        heads,
++        deprels,
++        structurally_valid: true,
++    })
++}
++/// Consumes an approved legacy model; copies its tagger without any fitting.
++pub(super) fn train(
++    data: &[TrainingSentence],
++    mut frozen: Model,
++) -> Result<(Model, TrainingReport)> {
++    if frozen.graph || data.is_empty() || data.len() > 100_000 {
++        return Err("requires legacy tagger and bounded TRAIN".into());
++    }
++    frozen.graph = true;
++    let mut report = TrainingReport {
++        sentences: data.len(),
++        words: data.iter().map(|s| s.forms.len()).sum(),
++        parser_epochs: 3,
++        ..Default::default()
++    };
++    let mut eligible = Vec::new();
++    for (i, s) in data.iter().enumerate() {
++        if s.forms.len() != s.heads.len()
++            || s.forms.len() != s.labels.len()
++            || s.forms.len() != s.upos.len()
++        {
++            return Err("annotation lengths".into());
++        }
++        if validate_forms(&s.forms).is_err() {
++            report.input_skips += 1;
++            continue;
++        }
++        if !valid_tree(&s.heads, &s.labels) {
++            report.invalid_tree_skips += 1;
++            continue;
++        }
++        let ws = words(&s.forms);
++        let tags = frozen.tag(&ws)?;
++        let labs = s
++            .labels
++            .iter()
++            .map(|l| {
++                frozen
++                    .labels
++                    .binary_search(l)
++                    .map_err(|_| "unknown TRAIN label".into())
++            })
++            .collect::<Result<Vec<_>>>()?;
++        eligible.push((i, ws, tags, labs));
++    }
++    report.parser_sentences = eligible.len();
++    let mut learner = Learner::new(1, BUCKETS);
++    for epoch in 0..3 {
++        let mut mistakes = 0;
++        for (i, ws, tags, labs) in &eligible {
++            let g = &data[*i];
++            let (heads, predlabs) =
++                parse(&learner.table, ws, tags, frozen.labels.len(), frozen.root)?;
++            learner.step += 1;
++            for d in 1..=ws.len() {
++                if (g.heads[d - 1], labs[d - 1]) == (heads[d - 1], predlabs[d - 1]) {
++                    continue;
++                }
++                mistakes += 1;
++                for (h, l, delta) in [
++                    (g.heads[d - 1], labs[d - 1], 1.),
++                    (heads[d - 1], predlabs[d - 1], -1.),
++                ] {
++                    for f in features(ws, tags, h, d, None).into_iter().chain(features(
++                        ws,
++                        tags,
++                        h,
++                        d,
++                        Some(l),
++                    )) {
++                        learner.totals[f] += f64::from(learner.step - learner.last[f])
++                            * f64::from(learner.table.weights[f]);
++                        learner.last[f] = learner.step;
++                        learner.table.weights[f] += delta;
++                    }
++                }
++            }
++        }
++        report.parser_mistakes.push(mistakes);
++        eprintln!("graph epoch {} mistakes {}", epoch + 1, mistakes);
++    }
++    frozen.parser = learner.finish();
++    Ok((frozen, report))
++}
++
++#[cfg(test)]
++#[allow(clippy::unwrap_used)]
++mod tests {
++    use super::*;
++    fn exhaustive(s: &Matrix) -> f64 {
++        let n = s.len() - 1;
++        let mut best = f64::NEG_INFINITY;
++        for mut code in 0..(n + 1).pow(n as u32) {
++            let mut heads = Vec::new();
++            for _ in 0..n {
++                heads.push(code % (n + 1));
++                code /= n + 1;
++            }
++            let labels = heads
++                .iter()
++                .map(|&h| if h == 0 { "root".into() } else { "dep".into() })
++                .collect::<Vec<_>>();
++            if !valid_tree(&heads, &labels) {
++                continue;
++            }
++            let values = heads
++                .iter()
++                .enumerate()
++                .map(|(d, &h)| s[h][d + 1])
++                .collect::<Option<Vec<_>>>();
++            if let Some(values) = values {
++                best = best.max(values.iter().sum());
++            }
++        }
++        best
++    }
++    #[test]
++    fn exhaustive_independent_matrices() {
++        let mut seed = 73u64;
++        for n in 1..=5 {
++            for case in 0..100 {
++                let mut s = vec![vec![None; n + 1]; n + 1];
++                for (h, row) in s.iter_mut().enumerate() {
++                    for (d, cell) in row.iter_mut().enumerate().skip(1) {
++                        if h == d {
++                            continue;
++                        }
++                        seed = seed.wrapping_mul(6364136223846793005).wrapping_add(1);
++                        *cell = Some(if case == 0 {
++                            0.
++                        } else {
++                            (seed >> 32) as i32 as f64 % 7. - 3.
++                        });
++                    }
++                }
++                let p = decode(&s).unwrap();
++                let score: f64 = (1..=n).map(|d| s[p[d]][d].unwrap()).sum();
++                assert_eq!(score, exhaustive(&s), "n={n} case={case}");
++                assert_eq!(p, decode(&s).unwrap());
++            }
++        }
++    }
++    #[test]
++    fn nested_cycles_multiroot_negative_and_invalid() {
++        let mut s = vec![vec![None; 5]; 5];
++        for (h, row) in s.iter_mut().enumerate() {
++            for (d, c) in row.iter_mut().enumerate().skip(1) {
++                if h != d {
++                    *c = Some(-20.);
++                }
++            }
++        }
++        // 1<->2, 3<->4; their contractions form another cycle.
++        for (h, d, v) in [
++            (1, 2, 10.),
++            (2, 1, 10.),
++            (3, 4, 10.),
++            (4, 3, 10.),
++            (2, 3, 9.),
++            (4, 1, 9.),
++        ] {
++            s[h][d] = Some(v);
++        }
++        let p = decode(&s).unwrap();
++        assert_eq!(
++            (1..5).map(|d| s[p[d]][d].unwrap()).sum::<f64>(),
++            exhaustive(&s)
++        );
++        for cell in s[0].iter_mut().skip(1) {
++            *cell = Some(100.);
++        }
++        assert_eq!(edmonds(&s).unwrap()[1..], [0, 0, 0, 0]);
++        let p = decode(&s).unwrap();
++        assert_eq!(p[1..].iter().filter(|&&h| h == 0).count(), 1);
++        assert_eq!(
++            (1..5).map(|d| s[p[d]][d].unwrap()).sum::<f64>(),
++            exhaustive(&s)
++        );
++        s[0][1] = Some(f64::NAN);
++        assert!(decode(&s).is_err());
++        assert!(decode(&vec![vec![None; 3]; 3]).is_err());
++    }
++}
++
++#[cfg(test)]
++#[allow(clippy::unwrap_used)]
++mod compatibility {
++    use super::*;
++    #[test]
++    fn versions_roundtrip_corruption_and_caps() {
++        for graph in [false, true] {
++            let mut m = super::super::tests::tiny();
++            m.graph = graph;
++            if graph {
++                m.parser = Table::new(1, BUCKETS);
++            }
++            m.parser.weights[1] = 1.;
++            let mut b = Vec::new();
++            m.save(&mut b).unwrap();
++            let loaded = Model::load(b.as_slice()).unwrap();
++            assert_eq!(loaded.version(), m.version());
++            let mut again = Vec::new();
++            loaded.save(&mut again).unwrap();
++            assert_eq!(b, again);
++            for n in [1, 4, 128] {
++                let forms = vec!["x".into(); n];
++                let p = loaded.infer(&forms).unwrap();
++                assert!(valid_tree(&p.heads, &p.deprels));
++            }
++            assert!(loaded.infer(&vec!["x".into(); 129]).is_err());
++            assert!(
++                loaded
++                    .predict(Input {
++                        forms: None,
++                        text: Some("x".repeat(MAX_BYTES + 1))
++                    })
++                    .is_err()
++            );
++            let end = b.len();
++            b[end - 4..].copy_from_slice(&f32::INFINITY.to_bits().to_le_bytes());
++            assert!(Model::load(b.as_slice()).is_err());
++            b = again.clone();
++            b[24] = b'!';
++            assert!(Model::load(b.as_slice()).is_err());
++            b = again;
++            b.push(0);
++            assert!(Model::load(b.as_slice()).is_err());
++        }
++    }
++    #[test]
++    fn supplied_models_roundtrip_when_requested() {
++        let Ok(paths) = std::env::var("SYNTAX_GRAPH_MODELS") else {
++            return;
++        };
++        let mut taggers = Vec::new();
++        for path in paths.split(':') {
++            let bytes = std::fs::read(path).unwrap();
++            let m = Model::load(bytes.as_slice()).unwrap();
++            taggers.push(
++                m.tagger
++                    .weights
++                    .iter()
++                    .map(|v| v.to_bits())
++                    .collect::<Vec<_>>(),
++            );
++            let mut again = Vec::new();
++            m.save(&mut again).unwrap();
++            assert_eq!(bytes, again);
++        }
++        assert!(taggers.windows(2).all(|p| p[0] == p[1]));
++    }
++}
+diff --git a/tools/reading/syntax-graph/DECODER.md b/tools/reading/syntax-graph/DECODER.md
+new file mode 100644
+index 0000000..2307b40
+--- /dev/null
++++ b/tools/reading/syntax-graph/DECODER.md
+@@ -0,0 +1,41 @@
++# Exactness and bounds
++
++For a fixed permitted root child, take the highest incoming edge of each nonroot
++node. If acyclic, these independent upper bounds are attained simultaneously.
++Otherwise contract the first discovered directed cycle C. An entering edge h->d
++has adjusted score s(h,d)-s(parent[d],d); outgoing edges keep their score. Choose
++the highest adjusted edge for each contracted endpoint pair and retain original
++endpoints. Every expanded tree contributes the same omitted sum of selected C
++edges. Replacing exactly the selected incoming edge of the chosen entry node
++therefore preserves the objective comparison. Recursive optimality plus expansion
++yields an optimal rooted arborescence. Each contraction reduces nodes strictly.
++
++Enumerating each possible unique root child partitions every feasible single-root
++tree. Maximum over these exact subproblems is exact. A one-root unconstrained
++optimum already attains the unconstrained upper bound and can return immediately.
++This is not root-edge removal or a post-decoding repair. Per-edge labels are
++maximized before tree decoding because the objective decomposes by labeled arc.
++Root edges admit only root label, all other edges exclude it.
++
++Implementation finite input cap129 nodes, <=128 root subproblems, <=127 contraction
++levels per subproblem. Simple dense recursive implementation has conservative
++O(n^4) time with root enumeration and O(n^3) retained matrices in the worst case;
++it does not claim the paper's optimized O(n^2) implementation. No pruning or
++beam. Missing edges are Option values rather than infinities. Nonfinite matrix
++entries/adjusted scores/total comparisons reject; final inference validates the
++complete single-root tree independently. Tie resolution is deterministic ascending
++node/label traversal with strict greater comparisons, not a claim of globally
++lexicographically minimal optimal trees.
++
++Native tests independently enumerate all (n+1)^n parent assignments for each of
++500 generated matrices (100 at each n=1..5). They reject all non-trees, then compare
++maximum score, without using contraction to construct the oracle. Integer negative
++scores and ties avoid numerical tolerance. A hand-authored two-cycle graph forces
++nested contraction; a second graph has four root children in its unconstrained
++optimum. Both are checked against exhaustive enumeration. NaN and disconnected
++inputs reject. This finite test set supports implementation correctness; the
++contraction argument establishes the algorithm's general optimality.
++
++Reference: McDonald, Pereira, Ribarov, Hajič (2005), Non-projective Dependency
++Parsing using Spanning Tree Algorithms, Figure3, https://aclanthology.org/H05-1066.pdf.
++Paper consulted as algorithm documentation only; no text/data copied into training.
+diff --git a/tools/reading/syntax-graph/HANDOFF.md b/tools/reading/syntax-graph/HANDOFF.md
+new file mode 100644
+index 0000000..b95c0c8
+--- /dev/null
++++ b/tools/reading/syntax-graph/HANDOFF.md
+@@ -0,0 +1,169 @@
++# Rejected: one structured first-order graph parser experiment
++
++Base225892adb78afe5d9ea567fe4b08790aa7d93b52. One bounded fit, no second configuration
++or DEV tuning. Runtime source restored exactly after verified archive; do not
++integrate rejected.patch/model. Coordinator owns independent review and integration.
++Only tools/reading/syntax-graph remains uncommitted. No agents, new model calls,
++credentials/API keys, commits, services, corpus downloads, official TEST, hidden
++items/generators or parent case-input access. Parent reports were read as requested.
++The required algorithm paper was consulted online; no new training data acquired.
++Launcher controls model/login settings; this worker did not change or verify them.
++
++## Frozen implementation
++
++PLAN.md and24 authored probes frozen before editing. New syntax_graph.rs implements
++learned labeled arc scores, exact Chu-Liu-Edmonds cycle contraction/expansion, and
++exact enumeration of possible unique root children. An already single-root
++unconstrained optimum returns immediately. Independent root/tree validation follows
++inference. Matrices finite, <=129 nodes, missing edges explicit; deterministic
++strict-greater ties. DECODER.md gives optimality argument, complexity and tests.
++
++One flat2^21 hashed scalar parameter vector;28 shared unlabeled features plus12
++label-specific features for each arc. Lexical lowercased hashes, predicted UPOS,
++direction/distance and adjacent tag context. Exact inventory/namespaces fixed in
++PLAN; no sentence/entity tables. Label maximum computed independently per arc;
++root label iff artificial-root edge. Structured gold-tree minus predicted-tree
++perceptron, one update clock per sentence, average pre-update vectors, exactly
++three ordered TRAIN epochs. No search normalization, beam or child-state feature.
++
++Approved v1 tagger copied without retraining; exact1328492-byte serialized tagger
++payload SHA0409e47e9376ee1593480461fa35bbe7cfa1c21f6d74fce7ba9bad167dbba39f
++matches v2. Predicted tags during both TRAIN and inference. No gold-tag inference.
++TRAIN report tag_epochs0. Parser weights trained from zero, no rejected weights.
++
++Existing Model::load/save/predict/infer dispatch on explicit validated version:
++legacy ewt-arc-standard-v1 or new ewt-labeled-graph-v2. Binary magic unchanged;
++header version determines strict table dimensions; unknown versions reject.
++New train_graph API and standalone train --graph-tagger legacy-model.bin flag.
++Default train API/CLI remains legacy. Main CLI/QA/manifests/scorer untouched.
++128tokens/16KiB text+forms/128KiB JSONL row/128MiB loader limits retained.
++Actual new model9715189 bytes (<32MiB), SHA
++5168e505cfd1a11502a707e403e482a83fde821aaaed270412990d24bec19781.
++
++## Observed gates — failed
++
++Unchanged tools/reading/syntax/parent/audit.py; all integer words including punct.
++One fixed first100 inference then one full2001 inference after FREEZE.json.
++The scorer's historical45%/55% assertions are NOT this experiment's acceptance.
++
++| Scope | Words | Approved LAS | Graph LAS | Approved UAS | Graph UAS |
++|---|---:|---:|---:|---:|---:|
++| First100 |2319|1738|1546|1834|1713|
++| Full2001 |25148|19423|17900|20540|19732|
++| Nonduplicate1933 |25011|19286|17763|20403|19595|
++| TRAIN-duplicate68 |137|137|137|137|137|
++
++LAS delta-1523, below19673 by1773: FAIL. UAS delta-808: FAIL.
++All2001 forms outputs valid single-root trees, zero refusals. Root correctness
++1694->1682. Exact LAS trees828->583; exact UAS1008->794.
++Duplicates remain in all denominators and all137 edges/68 sentences stay correct.
++
++| Full correctness transitions | right->right | right->wrong | wrong->right | wrong->wrong |
++|---|---:|---:|---:|---:|
++| LAS edges |16554|2869|1346|4379|
++| UAS edges |18247|2293|1485|3123|
++| Exact LAS trees |551|277|32|1141|
++| Exact UAS trees |716|292|78|915|
++
++All25148 edge transitions and2001 sentence transitions retained, including unchanged
++ones, with gold/old/new and duplicate flag. Aggregate transitions.json separately
++reports duplicates/nonduplicates. Authored24 cases:92->93/117 labeled edges,
++91 retained,1 lost,2 gained,23 still wrong. Local preservation therefore also fails;
++authored-changes.json records each transition. Parent independent probes untouched
++and unrun; no independent semantic-preservation claim. They cannot rescue corpus
++failure. No QA-answer or raw-tokenizer accuracy claim follows from gold-form LAS.
++
++Prior rejected hypotheses recorded in PLAN: raw beam17879 LAS, normalized19428,
++children19443 against approved19423. This is a different objective/representation,
++but this particular frozen graph feature/training configuration also regresses.
++No second fit, additional epochs or post-DEV feature changes attempted.
++
++## Validation and resources
++
++Passed10 focused syntax library tests (6 existing +4 graph/compatibility tests),
++including exhaustive maximum-score comparisons on500 independent matrices with
++1..5 tokens, explicit nested contractions, multiple-root unconstrained optimum,
++negative weights, ties/determinism, nonfinite/disconnected rejection, v1/v2 tiny
++model roundtrip/unknown version/nonfinite/trailing bytes and128/129-token limits.
++Existing loader-dimension and input/span tests retained. Actual two-model roundtrip
++and exact frozen-tagger equality passed in an additional targeted test invocation.
++The optional actual-model test is one of the10 tests; its real payload branch ran
++in this later invocation. The500-matrix oracle enumerates every possible parent
++assignment and validates trees independently of contraction.
++
++Package fmt, all-target clippy -D warnings, release reading-syntax build passed.
++Two initial clippy failures (needless range loops, one in tests) fixed before fit
++and preserved. No observed decoder or fitting failure. No workspace/main build
++performed; parent owns any integration and rejection makes it unnecessary.
++
++Candidate binary with approved v1 model reproduced all2001 supplied forms outputs
++and all2001 supplied raw outputs BYTEIDENTICALLY. Both models save/load byte-exact.
++Graph raw2001 predictions all valid with exact UTF8 spans and source coverage.
++Ten runtime row contracts/version passed:8 refusals plus128-token and Unicode
++positive cases; oversized128KiB JSONL row rejected. This is raw structural/span
++validation, not gold dependency accuracy after tokenization.
++
++TRAIN12544/204578 words:12542 eligible/204284 words; zero invalid trees;
++286 previously skipped nonprojective trees now included. Two overlength skips:
++zero-based sentence6779 length159,7506 length135 (294 words). Full ledger in
++eligibility.json. Fixed3 epoch labeled-edge mistakes75681,53905,42352.
++Tagger never updated. No denominator or epoch reduction.
++
++Training48.6606s/176492KiB peakRSS. First100 inference0.198557s/16664KiB;
++full2001 inference1.440086s/16856KiB. Includes process/model loading. Binary12538168
++bytes. Exact commands/rusage in candidate/*-resources.json; these short runs are
++not steady-state throughput estimates. All cargo invocations set persistent TMPDIR,
++used supplied CARGO_TARGET_DIR, systemd user8GiB/0swap scope, setsid --wait,
++timeout600s/kill-after10s, -j1 except fmt, --test-threads4 for tests. Training capped
++600s; each full inference capped600s under the verified outer8GiB/0swap scope.
++No /tmp storage or lingering owned jobs.
++
++## Provenance, archive and reproduction
++
++Existing EWT r2.18 revisionb7711cce01cdd4f5fcc0a8199b8a50d951b16c0c,
++CC-BY-SA-4.0; TRAIN15034493 bytes +DEV1898574 bytes, hashes in NOTICE.md and
++provenance.json. New authored probes24 cases3136 bytes plus forms-only projection
++1236 bytes, MIT; identities in pre-edit.json. No new downloaded training data.
++
++Run=/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run.
++Archive run/frozen-candidate contains original/final source, baseline and candidate
++models/binaries, full inputs/predictions/ledgers, adapters, patch including all new
++files, commands, failures, source provenance and frozen identities. Size/SHA256
++manifest is run/frozen-candidate-manifest.json; ARCHIVE.json pins its own identity.
++Every archived file verified BEFORE rollback. rollback.json proves exact restored
++source. FREEZE.json and prefit.json reverified unchanged after evaluation.
++No runtime patch is proposed for integration.
++
++Replay only in a disposable checkout at the stated base with sibling graphsyntax-run
++and udsyntax-source directories. Preserve the assigned existing target and non-/tmp
++TMPDIR. Copy supplied approved baseline bundle into fresh run/baseline; do not
++reuse a run that contains prefit.json/model.bin/FREEZE.json. Apply only production
++hunks from rejected.patch (the tools files already exist in this handoff):
++
++```bash
++git apply --include='crates/reading/src/*' tools/reading/syntax-graph/rejected.patch
++bash tools/reading/syntax-graph/check.sh
++PYTHONDONTWRITEBYTECODE=1 python3 tools/reading/syntax-graph/evaluate.py prepare
++bash tools/reading/syntax-graph/fit.sh
++SYNTAX_GRAPH_MODELS="$PWD/../graphsyntax-run/baseline/model.bin:$PWD/../graphsyntax-run/candidate/model.bin" \
++TMPDIR="$TMPDIR" systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 \
++setsid --wait timeout --kill-after=10s 600 cargo test -p glassmind-reading -j1 \
++--lib supplied_models_roundtrip_when_requested -- --test-threads 4
++PYTHONDONTWRITEBYTECODE=1 python3 tools/reading/syntax-graph/evaluate.py evaluate
++```
++
++Read-only rescore requires no fit/inference:
++
++```bash
++PYTHONDONTWRITEBYTECODE=1 python3 tools/reading/syntax/parent/audit.py \
++ --source ../udsyntax-source \
++ --predictions ../graphsyntax-run/frozen-candidate/candidate/full-predictions.jsonl \
++ --out ../graphsyntax-run/independent-rescore
++```
++
++Limitations: graph scores are not probabilities or semantic proof; exact decoding
++only optimizes this learned first-order objective. Labels and tags retain the
++approved TRAIN inventory. No cross-track/held-out/parent-independent accuracy
++result, no independent retraining reproduction and no claim beyond observed data.
++The architectural experiment is rejected, not evidence that every graph parser
++would regress. The parent continuing goal is unaffected by this finite handoff.
+diff --git a/tools/reading/syntax-graph/IDENTITIES.json b/tools/reading/syntax-graph/IDENTITIES.json
+new file mode 100644
+index 0000000..7a8cc4a
+--- /dev/null
++++ b/tools/reading/syntax-graph/IDENTITIES.json
+@@ -0,0 +1,38 @@
++{
++  "../graphsyntax-run/candidate/model.bin": {
++    "bytes": 9715189,
++    "sha256": "5168e505cfd1a11502a707e403e482a83fde821aaaed270412990d24bec19781"
++  },
++  "../graphsyntax-run/candidate/reading-syntax": {
++    "bytes": 12538168,
++    "sha256": "c57138f62d89d273132e9e6ba67b291006c34c4a67deed998d9adb4406aa2f25"
++  },
++  "../graphsyntax-run/candidate/full-predictions.jsonl": {
++    "bytes": 951391,
++    "sha256": "59dee2351771395ceccd9a634ccabd1b677150c05c26861b514d5a4dac07cd42"
++  },
++  "../graphsyntax-run/candidate/syntax.rs": {
++    "bytes": 34840,
++    "sha256": "111e2046917b7d58dad95450a83bafd085bbc7adbc32fefa289db211b053e90f"
++  },
++  "../graphsyntax-run/candidate/syntax_graph.rs": {
++    "bytes": 17102,
++    "sha256": "9e98516642f10786117a0436906dda6372e3039baa152c8344d0bb21b5fa99f9"
++  },
++  "../graphsyntax-run/candidate/reading-syntax.rs": {
++    "bytes": 5941,
++    "sha256": "723cc694313b3fb602d0381d00902705b78fcb096727b5e536d3e00c086657bd"
++  },
++  "tools/reading/syntax-graph/authored.jsonl": {
++    "bytes": 3136,
++    "sha256": "979a523701ceafb9b7dfd1690bfefb76a68b5b1b8acb886de4614a4af256a2c9"
++  },
++  "tools/reading/syntax-graph/authored-inputs.jsonl": {
++    "bytes": 1236,
++    "sha256": "a211b4d88382c9980ede50141cd4d891f05a5104786faa552218c0f10ec0a5bd"
++  },
++  "frozen_tagger": {
++    "bytes": 1328492,
++    "sha256": "0409e47e9376ee1593480461fa35bbe7cfa1c21f6d74fce7ba9bad167dbba39f"
++  }
++}
+diff --git a/tools/reading/syntax-graph/NOTICE.md b/tools/reading/syntax-graph/NOTICE.md
+new file mode 100644
+index 0000000..3461a2e
+--- /dev/null
++++ b/tools/reading/syntax-graph/NOTICE.md
+@@ -0,0 +1,24 @@
++# Data provenance
++
++No new corpus downloads or external training sources. Existing read-only
++UniversalDependencies/UD_English-EWT r2.18 revision
++b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c, CC-BY-SA-4.0:
++https://github.com/UniversalDependencies/UD_English-EWT/tree/b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c
++
++TRAIN en_ewt-ud-train.conllu 15034493 bytes, SHA256
++ d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143
++DEV en_ewt-ud-dev.conllu 1898574 bytes, SHA256
++ 39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8
++LICENSE.txt 20014 bytes, SHA256
++ b3d1b0f4c6ae151f7eb78738f46ebd5ee140f8a7f76501ba26af123140d35ae7
++
++Only TRAIN used in fitting. DEV used once fixed first100 then full2001 after freeze.
++All integer words including punctuation and68 TRAIN duplicate sentences retained.
++Official TEST/held-out data/hidden generators/old private logs not accessed.
++Parent PARENT/HANDOFF summaries read as requested; parent case inputs not opened.
++
++New authored development probes: authored.jsonl and forms-only projection
++ authored-inputs.jsonl, created for this experiment under MIT. Exact bytes and
++SHA256 in pre-edit.json. They are development evidence, not training examples,
++runtime lookup tables or independent parent tests. Decoder test matrices are
++independently authored development tests and a deterministic public generator.
+diff --git a/tools/reading/syntax-graph/PLAN.md b/tools/reading/syntax-graph/PLAN.md
+new file mode 100644
+index 0000000..e1cee52
+--- /dev/null
++++ b/tools/reading/syntax-graph/PLAN.md
+@@ -0,0 +1,42 @@
++# Frozen graph experiment
++Hypothesis: globally trained first-order labeled arc scores with exact single-root
++nonprojective decoding improve LAS >=19673 and UAS >=20540 /25148, all2001 valid,
++zero refusals, and preserve independent parent core edges. Baseline19423/20540;
++rejected raw beam17879, normalized19428, children19443 LAS. No second fit/tuning.
++
++Model ewt-labeled-graph-v2: exactly2^21 scalar hash weights, existing FNV/mixing
++function, namespace2000 unlabeled and3000+label*64 labeled. Approved v1 tagger
++payload and sorted tags/labels copied exactly. Three ordered TRAIN epochs only.
++One sentence step (including correct sentences); gold-minus-predicted whole-tree
++unit update, average pre-update weight vectors across all sentence steps, f64
++accumulation then f32 final weights. No loss augmentation, shuffling or pruning.
++All valid <=128-token TRAIN trees including nonprojective are eligible.
++
++Arc features: word=lowercase FNV; tag=predicted tag+2, root word/tag=1,
++boundary=0; direction=head<dependent; distance buckets1,2,3,4,5(5..7),6(8..15),7(16+).
++Unlabeled inventory ordered: bias; htag; dtag; hword; dword; htag,dtag;
++hword,dword; hword,dtag; htag,dword; hword,htag; dword,dtag;
++then each preceding feature duplicated with direction,distance suffix;
++then hleft,htag,dtag; hright,htag,dtag; htag,dleft,dtag;
++htag,dright,dtag; hleft,htag,dleft,dtag; htag,hright,dtag,dright;
++all six context features carry direction,distance.
++Labeled inventory: bias; htag; dtag; htag,dtag; hword; dword;
++hword,dtag; htag,dword; htag,dtag,direction; htag,dtag,direction,distance;
++hword,direction; dword,direction. Sum shared unlabeled plus labeled scores.
++Only root label on root arc, never root label elsewhere.
++
++Decoder: finite f64 matrices <=129 nodes; missing edges explicit Option.
++Chu-Liu-Edmonds recursively contracts first discovered cycle, adjusts entering
++edge by subtracting selected incoming score; stores original endpoints for exact
++expansion. Ascending nodes/head enumeration; strict greater comparisons retain
++first tie. Enumerate root child1..n, constrain only that root edge, keep first
++best total. Unconstrained one-root optimum can return immediately (already exact).
++Validate final tree; reject nonfinite input/arithmetic, no invalid fallback.
++
++Before DEV freeze source/model/binary/probes/adapter/unchanged scorer/hashes.
++Exactly first100 then full2001; duplicates retained. Full edge/sentence transitions,
++raw validity/spans, v1 supplied-output parity, model roundtrips/corruption/caps,
++exhaustive small-matrix decoder comparisons, fmt/clippy/release. No hidden/TEST
++access, downloads, agents, runtime LLM, commits or shared production integration.
++Reference: McDonald et al2005 https://aclanthology.org/H05-1066.pdf algorithm3;
++single-root enumeration is our explicit additional exact constraint.
+diff --git a/tools/reading/syntax-graph/archive.py b/tools/reading/syntax-graph/archive.py
+new file mode 100644
+index 0000000..d7130c8
+--- /dev/null
++++ b/tools/reading/syntax-graph/archive.py
+@@ -0,0 +1,30 @@
++#!/usr/bin/env python3
++"""Archive and verify all owned evidence before restoring rejected production source."""
++import hashlib,json,pathlib,shutil,subprocess
++P=pathlib.Path;root=P(__file__).resolve().parents[3];run=root.parent/'graphsyntax-run';own=root/'tools/reading/syntax-graph'
++def ident(p):return dict(bytes=p.stat().st_size,sha256=hashlib.sha256(p.read_bytes()).hexdigest())
++archive=run/'frozen-candidate';assert not archive.exists()
++tracked=['crates/reading/src/syntax.rs','crates/reading/src/bin/reading-syntax.rs']
++patch=subprocess.check_output(['git','diff','--src-prefix=a/','--dst-prefix=b/','--',*tracked],cwd=root)
++for name in ['crates/reading/src/syntax_graph.rs',*[str(p.relative_to(root)) for p in sorted(own.iterdir()) if p.is_file() and p.name not in ['rejected.patch','ARCHIVE.json']]]:
++    result=subprocess.run(['git','diff','--no-index','--src-prefix=a/','--dst-prefix=b/','/dev/null',name],cwd=root,capture_output=True)
++    assert result.returncode==1;patch+=result.stdout
++(own/'rejected.patch').write_bytes(patch)
++archive.mkdir()
++for name in ['original','baseline','candidate']:shutil.copytree(run/name,archive/name)
++shutil.copytree(own,archive/'tools')
++for p in run.iterdir():
++    if p.is_file() and (p.suffix=='.log' and p.name not in ['stderr.log'] or p.name in ['FREEZE.json','prefit.json']):shutil.copy2(p,archive/p.name)
++manifest={str(p.relative_to(archive)):ident(p) for p in sorted(archive.rglob('*')) if p.is_file()}
++manifest_path=run/'frozen-candidate-manifest.json';manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
++for rel,value in manifest.items():assert ident(archive/rel)==value
++(own/'ARCHIVE.json').write_text(json.dumps(dict(path=str(archive),files=len(manifest),bytes=sum(x['bytes'] for x in manifest.values()),manifest=str(manifest_path),manifest_identity=ident(manifest_path)),indent=2)+'\n')
++# Failed gate only: restore exact original production files after verification.
++score=json.loads((run/'candidate/audit/score.json').read_text())['groups']['all']
++assert score['las_correct']<19673 or score['uas_correct']<20540
++for name,target in [('syntax.rs','crates/reading/src/syntax.rs'),('reading-syntax.rs','crates/reading/src/bin/reading-syntax.rs')]:
++    shutil.copy2(run/'original'/name,root/target)
++    assert (root/target).read_bytes()==(run/'original'/name).read_bytes()
++(root/'crates/reading/src/syntax_graph.rs').unlink()
++(own/'rollback.json').write_text(json.dumps({p:ident(root/p) for p in tracked},indent=2)+'\n')
++print(json.dumps(dict(files=len(manifest),bytes=sum(x['bytes'] for x in manifest.values()),restored=True)))
+diff --git a/tools/reading/syntax-graph/authored-changes.json b/tools/reading/syntax-graph/authored-changes.json
+new file mode 100644
+index 0000000..bf1304e
+--- /dev/null
++++ b/tools/reading/syntax-graph/authored-changes.json
+@@ -0,0 +1,84 @@
++[
++  {
++    "sentence": 3,
++    "token": 3,
++    "forms": [
++      "Mira",
++      "helped",
++      "Noah",
++      "yesterday",
++      "."
++    ],
++    "gold": [
++      2,
++      "obj"
++    ],
++    "old": [
++      4,
++      "compound"
++    ],
++    "new": [
++      2,
++      "obj"
++    ],
++    "correct": [
++      false,
++      true
++    ]
++  },
++  {
++    "sentence": 15,
++    "token": 5,
++    "forms": [
++      "Dogs",
++      "chase",
++      "cats",
++      "yesterday",
++      "."
++    ],
++    "gold": [
++      2,
++      "punct"
++    ],
++    "old": [
++      4,
++      "punct"
++    ],
++    "new": [
++      2,
++      "punct"
++    ],
++    "correct": [
++      false,
++      true
++    ]
++  },
++  {
++    "sentence": 19,
++    "token": 5,
++    "forms": [
++      "Seeds",
++      "were",
++      "eaten",
++      "by",
++      "birds",
++      "."
++    ],
++    "gold": [
++      3,
++      "obl:agent"
++    ],
++    "old": [
++      3,
++      "obl:agent"
++    ],
++    "new": [
++      3,
++      "obl"
++    ],
++    "correct": [
++      true,
++      false
++    ]
++  }
++]
+diff --git a/tools/reading/syntax-graph/authored-inputs.jsonl b/tools/reading/syntax-graph/authored-inputs.jsonl
+new file mode 100644
+index 0000000..ad9fdf6
+--- /dev/null
++++ b/tools/reading/syntax-graph/authored-inputs.jsonl
+@@ -0,0 +1,24 @@
++{"forms": ["Mira", "helped", "Noah", "."]}
++{"forms": ["Yesterday", "Mira", "helped", "Noah", "."]}
++{"forms": ["Mira", "quickly", "helped", "Noah", "."]}
++{"forms": ["Mira", "helped", "Noah", "yesterday", "."]}
++{"forms": ["Noah", "thanked", "Mira", "."]}
++{"forms": ["Yesterday", "Noah", "thanked", "Mira", "."]}
++{"forms": ["Noah", "quickly", "thanked", "Mira", "."]}
++{"forms": ["Noah", "thanked", "Mira", "yesterday", "."]}
++{"forms": ["Birds", "eat", "seeds", "."]}
++{"forms": ["Yesterday", "Birds", "eat", "seeds", "."]}
++{"forms": ["Birds", "quickly", "eat", "seeds", "."]}
++{"forms": ["Birds", "eat", "seeds", "yesterday", "."]}
++{"forms": ["Dogs", "chase", "cats", "."]}
++{"forms": ["Yesterday", "Dogs", "chase", "cats", "."]}
++{"forms": ["Dogs", "quickly", "chase", "cats", "."]}
++{"forms": ["Dogs", "chase", "cats", "yesterday", "."]}
++{"forms": ["Who", "helped", "Mira", "?"]}
++{"forms": ["Who", "did", "Mira", "help", "?"]}
++{"forms": ["The", "small", "birds", "eat", "seeds", "."]}
++{"forms": ["Seeds", "were", "eaten", "by", "birds", "."]}
++{"forms": ["Mira", "gave", "Noah", "flowers", "."]}
++{"forms": ["Which", "birds", "eat", "seeds", "?"]}
++{"forms": ["Mira", "and", "Noah", "left", "."]}
++{"forms": ["Mira", "did", "not", "leave", "."]}
+diff --git a/tools/reading/syntax-graph/authored-score.json b/tools/reading/syntax-graph/authored-score.json
+new file mode 100644
+index 0000000..b6c2e1f
+--- /dev/null
++++ b/tools/reading/syntax-graph/authored-score.json
+@@ -0,0 +1,6 @@
++{
++  "11": 91,
++  "00": 23,
++  "01": 2,
++  "10": 1
++}
+diff --git a/tools/reading/syntax-graph/authored.jsonl b/tools/reading/syntax-graph/authored.jsonl
+new file mode 100644
+index 0000000..bd67eda
+--- /dev/null
++++ b/tools/reading/syntax-graph/authored.jsonl
+@@ -0,0 +1,24 @@
++{"forms": ["Mira", "helped", "Noah", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
++{"forms": ["Yesterday", "Mira", "helped", "Noah", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
++{"forms": ["Mira", "quickly", "helped", "Noah", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
++{"forms": ["Mira", "helped", "Noah", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
++{"forms": ["Noah", "thanked", "Mira", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
++{"forms": ["Yesterday", "Noah", "thanked", "Mira", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
++{"forms": ["Noah", "quickly", "thanked", "Mira", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
++{"forms": ["Noah", "thanked", "Mira", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
++{"forms": ["Birds", "eat", "seeds", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
++{"forms": ["Yesterday", "Birds", "eat", "seeds", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
++{"forms": ["Birds", "quickly", "eat", "seeds", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
++{"forms": ["Birds", "eat", "seeds", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
++{"forms": ["Dogs", "chase", "cats", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
++{"forms": ["Yesterday", "Dogs", "chase", "cats", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
++{"forms": ["Dogs", "quickly", "chase", "cats", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
++{"forms": ["Dogs", "chase", "cats", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
++{"forms": ["Who", "helped", "Mira", "?"], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
++{"forms": ["Who", "did", "Mira", "help", "?"], "heads": [4, 4, 4, 0, 4], "labels": ["obj", "aux", "nsubj", "root", "punct"]}
++{"forms": ["The", "small", "birds", "eat", "seeds", "."], "heads": [3, 3, 4, 0, 4, 4], "labels": ["det", "amod", "nsubj", "root", "obj", "punct"]}
++{"forms": ["Seeds", "were", "eaten", "by", "birds", "."], "heads": [3, 3, 0, 5, 3, 3], "labels": ["nsubj:pass", "aux:pass", "root", "case", "obl:agent", "punct"]}
++{"forms": ["Mira", "gave", "Noah", "flowers", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "iobj", "obj", "punct"]}
++{"forms": ["Which", "birds", "eat", "seeds", "?"], "heads": [2, 3, 0, 3, 3], "labels": ["det", "nsubj", "root", "obj", "punct"]}
++{"forms": ["Mira", "and", "Noah", "left", "."], "heads": [4, 3, 1, 0, 4], "labels": ["nsubj", "cc", "conj", "root", "punct"]}
++{"forms": ["Mira", "did", "not", "leave", "."], "heads": [4, 4, 4, 0, 4], "labels": ["nsubj", "aux", "advmod", "root", "punct"]}
+diff --git a/tools/reading/syntax-graph/check.sh b/tools/reading/syntax-graph/check.sh
+new file mode 100644
+index 0000000..efebf7a
+--- /dev/null
++++ b/tools/reading/syntax-graph/check.sh
+@@ -0,0 +1,9 @@
++#!/usr/bin/env bash
++set -euo pipefail
++: "${TMPDIR:?}" "${CARGO_TARGET_DIR:?}"
++capped() { TMPDIR="$TMPDIR" systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 "$@"; }
++capped cargo fmt -p glassmind-reading
++capped cargo test -p glassmind-reading -j1 --lib syntax -- --test-threads 4
++capped cargo clippy -p glassmind-reading --all-targets -j1 -- -D warnings
++capped cargo build -p glassmind-reading --bin reading-syntax --release -j1
++capped cargo fmt -p glassmind-reading -- --check
+diff --git a/tools/reading/syntax-graph/compatibility.json b/tools/reading/syntax-graph/compatibility.json
+new file mode 100644
+index 0000000..0d57dd2
+--- /dev/null
++++ b/tools/reading/syntax-graph/compatibility.json
+@@ -0,0 +1,5 @@
++{
++  "legacy_forms_byteidentical": 2001,
++  "legacy_raw_byteidentical": 2001,
++  "graph_raw_valid_spans": 2001
++}
+diff --git a/tools/reading/syntax-graph/eligibility.json b/tools/reading/syntax-graph/eligibility.json
+new file mode 100644
+index 0000000..427c1bd
+--- /dev/null
++++ b/tools/reading/syntax-graph/eligibility.json
+@@ -0,0 +1,18 @@
++{
++  "total": 12544,
++  "eligible": 12542,
++  "words": 204284,
++  "nonprojective_included": 286,
++  "skips": [
++    {
++      "sentence": 6779,
++      "words": 159,
++      "reason": "overlength"
++    },
++    {
++      "sentence": 7506,
++      "words": 135,
++      "reason": "overlength"
++    }
++  ]
++}
+diff --git a/tools/reading/syntax-graph/evaluate.py b/tools/reading/syntax-graph/evaluate.py
+new file mode 100644
+index 0000000..77a5ef1
+--- /dev/null
++++ b/tools/reading/syntax-graph/evaluate.py
+@@ -0,0 +1,117 @@
++#!/usr/bin/env python3
++"""One frozen candidate, fixed first100 then full2001; unchanged independent scorer."""
++import collections, hashlib, importlib.util, json, os, pathlib, shutil, subprocess, sys
++P=pathlib.Path
++ROOT=P(__file__).resolve().parents[3]
++RUN=ROOT.parent/'graphsyntax-run'
++SOURCE=ROOT.parent/'udsyntax-source'
++OWN=ROOT/'tools/reading/syntax-graph'
++BASE=RUN/'baseline'
++OUT=RUN/'candidate'
++OUT.mkdir(exist_ok=True)
++def write(p,v):p.write_text(json.dumps(v,indent=2)+'\n')
++def identity(p):return {'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
++def call(args, name):
++    with (OUT/(name+'.log')).open('w') as f:
++        result=subprocess.run([sys.executable,str(ROOT/'tools/reading/syntax/measure.py'),str(OUT/(name+'-resources.json')),'setsid','--wait','timeout','--kill-after=10s','600',*map(str,args)],stdout=f,stderr=subprocess.STDOUT)
++    if result.returncode:raise RuntimeError((name,result.returncode))
++def predict(binary,model,inputs,outputs,name):call([binary,'predict','--model',model,'--input',inputs,'--output',outputs],name)
++def read(p):return [json.loads(x) for x in p.read_text().splitlines()]
++spec=importlib.util.spec_from_file_location('audit',ROOT/'tools/reading/syntax/parent/audit.py');audit=importlib.util.module_from_spec(spec);spec.loader.exec_module(audit)
++for name,ident in json.loads((BASE/'manifest.json').read_text()).items():assert identity(BASE/name)==ident
++if sys.argv[1]=='prepare':
++    train=audit.corpus(SOURCE/'en_ewt-ud-train.conllu')
++    ledger=[];nonproj=0;eligible=0;words=0
++    for i,s in enumerate(train):
++        heads=[x[2] for x in s];labs=[x[3] for x in s]
++        reason=None
++        if len(s)>128:reason='overlength'
++        elif not audit.is_tree(heads,labs):reason='invalid_tree'
++        if reason:ledger.append(dict(sentence=i,words=len(s),reason=reason));continue
++        eligible+=1;words+=len(s)
++        projective=True
++        for d,h in enumerate(heads,1):
++            for k in range(min(d,h)+1,max(d,h)):
++                a=k
++                for _ in s:
++                    if a in (0,h):break
++                    a=heads[a-1]
++                if a!=h:projective=False
++        nonproj+=not projective
++    write(OUT/'eligibility.json',dict(total=len(train),eligible=eligible,words=words,nonprojective_included=nonproj,skips=ledger))
++    write(OUT/'provenance.json',dict(version='EWT r2.18',revision='b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c',license='CC-BY-SA-4.0',downloads=0,files={str(p):identity(p) for p in [SOURCE/'en_ewt-ud-train.conllu',SOURCE/'en_ewt-ud-dev.conllu',SOURCE/'LICENSE.txt']}))
++    sys.exit()
++if sys.argv[1]=='evaluate':
++    assert not (RUN/'FREEZE.json').exists()
++    shutil.copy2(P(os.environ['CARGO_TARGET_DIR'])/'release/reading-syntax',OUT/'reading-syntax')
++    for p in [ROOT/'crates/reading/src/syntax.rs',ROOT/'crates/reading/src/syntax_graph.rs',ROOT/'crates/reading/src/bin/reading-syntax.rs']:shutil.copy2(p,OUT/p.name)
++    (OUT/'first100.jsonl').write_bytes(b''.join((BASE/'forms.jsonl').read_bytes().splitlines(keepends=True)[:100]))
++    files=[*OWN.iterdir(),OUT/'model.bin',OUT/'reading-syntax',OUT/'syntax.rs',OUT/'syntax_graph.rs',OUT/'reading-syntax.rs',ROOT/'tools/reading/syntax/parent/audit.py',ROOT/'tools/reading/syntax/measure.py',*BASE.iterdir(),OUT/'first100.jsonl',OUT/'provenance.json',OUT/'eligibility.json']
++    write(RUN/'FREEZE.json',{str(p):identity(p) for p in files if p.is_file()})
++    binary=OUT/'reading-syntax';model=OUT/'model.bin'
++    predict(binary,model,OUT/'first100.jsonl',OUT/'first100-predictions.jsonl','sample')
++    dev=audit.corpus(SOURCE/'en_ewt-ud-dev.conllu')
++    def scores(golds,preds):
++        uas=las=words=0
++        for g,p in zip(golds,preds):
++            assert audit.is_tree(p['heads'],p['deprels'])
++            for j,x in enumerate(g):
++                words+=1;u=p['heads'][j]==x[2];uas+=u;las+=u and p['deprels'][j]==x[3]
++        return dict(words=words,uas=uas,las=las)
++    write(OUT/'sample-score.json',scores(dev[:100],read(OUT/'first100-predictions.jsonl')))
++    predict(binary,model,BASE/'forms.jsonl',OUT/'full-predictions.jsonl','full')
++    call([sys.executable,ROOT/'tools/reading/syntax/parent/audit.py','--source',SOURCE,'--predictions',OUT/'full-predictions.jsonl','--out',OUT/'audit'],'audit')
++    old=read(BASE/'forms-predictions.jsonl');new=read(OUT/'full-predictions.jsonl')
++    train=audit.corpus(SOURCE/'en_ewt-ud-train.conllu');seen={tuple(x[0] for x in s) for s in train}
++    counters=collections.defaultdict(collections.Counter)
++    with (OUT/'edge-transitions.jsonl').open('w') as ef,(OUT/'sentence-transitions.jsonl').open('w') as sf:
++        for i,(g,a,b) in enumerate(zip(dev,old,new)):
++            dup=tuple(x[0] for x in g) in seen
++            ex={m:[True,True] for m in ['uas','las']}
++            for j,x in enumerate(g):
++                row=dict(sentence=i,token=j+1,duplicate=dup,old=[a['heads'][j],a['deprels'][j]],new=[b['heads'][j],b['deprels'][j]],gold=[x[2],x[3]])
++                for m in ex:
++                    bits=[int(p['heads'][j]==x[2] and (m=='uas' or p['deprels'][j]==x[3])) for p in [a,b]]
++                    row[m]=bits
++                    ex[m]=[v and bool(z) for v,z in zip(ex[m],bits)]
++                    for group in ['all','duplicate' if dup else 'nonduplicate']:counters[group][m+'_'+''.join(map(str,bits))]+=1
++                ef.write(json.dumps(row)+'\n')
++            sf.write(json.dumps(dict(sentence=i,duplicate=dup,exact=ex))+'\n')
++            for m,bits in ex.items():
++                for group in ['all','duplicate' if dup else 'nonduplicate']:counters[group]['exact_'+m+'_'+''.join(str(int(x)) for x in bits)]+=1
++    write(OUT/'transitions.json',dict(counters))
++    for mode,inp,expected in [('forms','forms.jsonl','forms-predictions.jsonl'),('raw','raw-inputs.jsonl','raw-predictions.jsonl')]:
++        output=OUT/('legacy-'+mode+'.jsonl');predict(binary,BASE/'model.bin',BASE/inp,output,'legacy-'+mode)
++        assert output.read_bytes()==(BASE/expected).read_bytes()
++    predict(binary,model,BASE/'raw-inputs.jsonl',OUT/'raw-predictions.jsonl','raw')
++    for inp,p in zip(read(BASE/'raw-inputs.jsonl'),read(OUT/'raw-predictions.jsonl')):
++        assert p['status']=='predicted' and audit.is_tree(p['heads'],p['deprels'])
++        text=inp['text'].encode();end=0
++        for span in p['spans']:
++            assert text[span['start']:span['end']].decode()==span['form']
++            assert not text[end:span['start']].decode().strip();end=span['end']
++        assert not text[end:].decode().strip()
++    probes=read(OWN/'authored.jsonl');authored={}
++    for name,b,m in [('old',BASE/'reading-syntax',BASE/'model.bin'),('new',binary,model)]:
++        predict(b,m,OWN/'authored-inputs.jsonl',OUT/(name+'-authored.jsonl'),name+'-authored')
++        authored[name]=read(OUT/(name+'-authored.jsonl'))
++    counts=collections.Counter()
++    for g,a,b in zip(probes,authored['old'],authored['new']):
++        for j,(h,l) in enumerate(zip(g['heads'],g['labels'])):
++            bits=[int(p['heads'][j]==h and p['deprels'][j]==l) for p in [a,b]]
++            counts[''.join(map(str,bits))]+=1
++    write(OUT/'authored-score.json',dict(counts))
++    write(OUT/'compatibility.json',dict(legacy_forms_byteidentical=2001,legacy_raw_byteidentical=2001,graph_raw_valid_spans=2001))
++    print(json.dumps(json.loads((OUT/'audit/score.json').read_text()),indent=2))
++    # Runtime row contracts are distinct from corpus accuracy.
++    contracts=[{}, {'forms':[]}, {'forms':['x']*129}, {'text':'x'*16385}, {'forms':['a b']}, {'forms':['a'], 'heads':[0]}, {'forms':['a'],'text':'a'}, {'text':'a\u0000b'}, {'forms':['x']*128}, {'text':'Élodie can’t leave.'}]
++    (OUT/'contracts.jsonl').write_text(''.join(json.dumps(x)+'\n' for x in contracts))
++    for name,m in [('v1',BASE/'model.bin'),('v2',model)]:
++        predict(binary,m,OUT/'contracts.jsonl',OUT/(name+'-contracts.jsonl'),name+'-contracts')
++        preds=read(OUT/(name+'-contracts.jsonl'))
++        assert all(p['status']=='refused' for p in preds[:8])
++        assert all(p['status']=='predicted' for p in preds[8:])
++    (OUT/'oversized-row.jsonl').write_text(json.dumps({'text':'x'*131073})+'\n')
++    result=subprocess.run(['setsid','--wait','timeout','--kill-after=10s','600',str(binary),'predict','--model',str(model),'--input',str(OUT/'oversized-row.jsonl'),'--output',str(OUT/'oversized-output.jsonl')],capture_output=True)
++    (OUT/'oversized-stderr.txt').write_bytes(result.stderr)
++    assert result.returncode and b'JSONL row exceeds128KiB' in result.stderr
+diff --git a/tools/reading/syntax-graph/fit.sh b/tools/reading/syntax-graph/fit.sh
+new file mode 100644
+index 0000000..d7510d4
+--- /dev/null
++++ b/tools/reading/syntax-graph/fit.sh
+@@ -0,0 +1,12 @@
++#!/usr/bin/env bash
++set -euo pipefail
++: "${TMPDIR:?}" "${CARGO_TARGET_DIR:?}"
++RUN="$(pwd)/../graphsyntax-run"
++SOURCE="$(pwd)/../udsyntax-source"
++[[ ! -e "$RUN/candidate/model.bin" && ! -e "$RUN/prefit.json" ]]
++python3 - <<'PY'
++import hashlib,json,pathlib
++paths=[pathlib.Path(p) for p in ['crates/reading/src/syntax.rs','crates/reading/src/syntax_graph.rs','crates/reading/src/bin/reading-syntax.rs','tools/reading/syntax-graph/PLAN.md','tools/reading/syntax-graph/authored.jsonl','../graphsyntax-run/baseline/model.bin']]
++pathlib.Path('../graphsyntax-run/prefit.json').write_text(json.dumps({str(p):{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths},indent=2))
++PY
++TMPDIR="$TMPDIR" systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 python3 tools/reading/syntax/measure.py "$RUN/candidate/train-resources.json" "$CARGO_TARGET_DIR/release/reading-syntax" train --train "$SOURCE/en_ewt-ud-train.conllu" --graph-tagger "$RUN/baseline/model.bin" --model "$RUN/candidate/model.bin" --report "$RUN/candidate/train-report.json"
+diff --git a/tools/reading/syntax-graph/freeze-verification.json b/tools/reading/syntax-graph/freeze-verification.json
+new file mode 100644
+index 0000000..d0b2db7
+--- /dev/null
++++ b/tools/reading/syntax-graph/freeze-verification.json
+@@ -0,0 +1,7 @@
++{
++  "all_predev_identities_unchanged": 27,
++  "all_prefit_identities_unchanged": true,
++  "tagger_payload_byteidentical": true,
++  "edge_rows": 25148,
++  "sentence_rows": 2001
++}
+diff --git a/tools/reading/syntax-graph/full-resources.json b/tools/reading/syntax-graph/full-resources.json
+new file mode 100644
+index 0000000..e76abe3
+--- /dev/null
++++ b/tools/reading/syntax-graph/full-resources.json
+@@ -0,0 +1,24 @@
++{
++  "argv": [
++    "setsid",
++    "--wait",
++    "timeout",
++    "--kill-after=10s",
++    "600",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/reading-syntax",
++    "predict",
++    "--model",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/model.bin",
++    "--input",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/baseline/forms.jsonl",
++    "--output",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/full-predictions.jsonl"
++  ],
++  "exit_code": 0,
++  "wall_seconds": 1.4400862590409815,
++  "user_seconds": 1.4276659999999999,
++  "system_seconds": 0.008726,
++  "max_rss_KiB": 16856,
++  "major_page_faults": 0,
++  "minor_page_faults": 1287
++}
+diff --git a/tools/reading/syntax-graph/full-score.json b/tools/reading/syntax-graph/full-score.json
+new file mode 100644
+index 0000000..93f7105
+--- /dev/null
++++ b/tools/reading/syntax-graph/full-score.json
+@@ -0,0 +1,37 @@
++{
++  "predictions_sha256": "59dee2351771395ceccd9a634ccabd1b677150c05c26861b514d5a4dac07cd42",
++  "gold_tokenized": true,
++  "groups": {
++    "all": {
++      "words": 25148,
++      "uas_correct": 19732,
++      "las_correct": 17900,
++      "sentences": 2001,
++      "emitted": 2001,
++      "root_correct": 1682
++    },
++    "nonduplicate_forms": {
++      "words": 25011,
++      "uas_correct": 19595,
++      "las_correct": 17763,
++      "sentences": 1933,
++      "emitted": 1933,
++      "root_correct": 1614
++    },
++    "exclude_punctuation": {
++      "words": 22073,
++      "uas_correct": 17688,
++      "las_correct": 15863
++    },
++    "duplicate_forms": {
++      "words": 137,
++      "uas_correct": 137,
++      "las_correct": 137,
++      "sentences": 68,
++      "emitted": 68,
++      "root_correct": 68
++    }
++  },
++  "independent_tree_validation": true,
++  "unsupported_counted_as_misses": true
++}
+diff --git a/tools/reading/syntax-graph/outer-scope.txt b/tools/reading/syntax-graph/outer-scope.txt
+new file mode 100644
+index 0000000..5a875e2
+--- /dev/null
++++ b/tools/reading/syntax-graph/outer-scope.txt
+@@ -0,0 +1,2 @@
++MemoryMax=8589934592
++MemorySwapMax=0
+diff --git a/tools/reading/syntax-graph/pre-edit.json b/tools/reading/syntax-graph/pre-edit.json
+new file mode 100644
+index 0000000..3ba0a65
+--- /dev/null
++++ b/tools/reading/syntax-graph/pre-edit.json
+@@ -0,0 +1,22 @@
++{
++  "tools/reading/syntax-graph/PLAN.md": {
++    "bytes": 2822,
++    "sha256": "63735135b3e4db1dc544921483ef4efab9009e568351172b12c9f96a99a49501"
++  },
++  "tools/reading/syntax-graph/authored.jsonl": {
++    "bytes": 3136,
++    "sha256": "979a523701ceafb9b7dfd1690bfefb76a68b5b1b8acb886de4614a4af256a2c9"
++  },
++  "tools/reading/syntax-graph/authored-inputs.jsonl": {
++    "bytes": 1236,
++    "sha256": "a211b4d88382c9980ede50141cd4d891f05a5104786faa552218c0f10ec0a5bd"
++  },
++  "crates/reading/src/syntax.rs": {
++    "bytes": 34168,
++    "sha256": "587209fd2279c49c64c00b9d1fa8c72443213d8adcb6c5f86b9d010574383c91"
++  },
++  "crates/reading/src/bin/reading-syntax.rs": {
++    "bytes": 5448,
++    "sha256": "4d37ae3ca0dc082ad30fdc7815882407ed0c1465ca2b8a952f4070a05d438072"
++  }
++}
+\ No newline at end of file
+diff --git a/tools/reading/syntax-graph/provenance.json b/tools/reading/syntax-graph/provenance.json
+new file mode 100644
+index 0000000..7716bbe
+--- /dev/null
++++ b/tools/reading/syntax-graph/provenance.json
+@@ -0,0 +1,20 @@
++{
++  "version": "EWT r2.18",
++  "revision": "b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c",
++  "license": "CC-BY-SA-4.0",
++  "downloads": 0,
++  "files": {
++    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/en_ewt-ud-train.conllu": {
++      "bytes": 15034493,
++      "sha256": "d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143"
++    },
++    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/en_ewt-ud-dev.conllu": {
++      "bytes": 1898574,
++      "sha256": "39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8"
++    },
++    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/LICENSE.txt": {
++      "bytes": 20014,
++      "sha256": "b3d1b0f4c6ae151f7eb78738f46ebd5ee140f8a7f76501ba26af123140d35ae7"
++    }
++  }
++}
+diff --git a/tools/reading/syntax-graph/sample-resources.json b/tools/reading/syntax-graph/sample-resources.json
+new file mode 100644
+index 0000000..227db8e
+--- /dev/null
++++ b/tools/reading/syntax-graph/sample-resources.json
+@@ -0,0 +1,24 @@
++{
++  "argv": [
++    "setsid",
++    "--wait",
++    "timeout",
++    "--kill-after=10s",
++    "600",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/reading-syntax",
++    "predict",
++    "--model",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/model.bin",
++    "--input",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/first100.jsonl",
++    "--output",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/candidate/first100-predictions.jsonl"
++  ],
++  "exit_code": 0,
++  "wall_seconds": 0.1985565620707348,
++  "user_seconds": 0.190598,
++  "system_seconds": 0.006972,
++  "max_rss_KiB": 16664,
++  "major_page_faults": 0,
++  "minor_page_faults": 1284
++}
+diff --git a/tools/reading/syntax-graph/sample-score.json b/tools/reading/syntax-graph/sample-score.json
+new file mode 100644
+index 0000000..944fe84
+--- /dev/null
++++ b/tools/reading/syntax-graph/sample-score.json
+@@ -0,0 +1,5 @@
++{
++  "words": 2319,
++  "uas": 1713,
++  "las": 1546
++}
+diff --git a/tools/reading/syntax-graph/train-report.json b/tools/reading/syntax-graph/train-report.json
+new file mode 100644
+index 0000000..8df720d
+--- /dev/null
++++ b/tools/reading/syntax-graph/train-report.json
+@@ -0,0 +1,24 @@
++{
++  "conllu_rows": {
++    "decimal": 37,
++    "integer": 204578,
++    "range": 2614
++  },
++  "training": {
++    "input_skips": 2,
++    "invalid_tree_skips": 0,
++    "nonprojective_skips": 0,
++    "parser_epochs": 3,
++    "parser_mistakes": [
++      75681,
++      53905,
++      42352
++    ],
++    "parser_sentences": 12542,
++    "sentences": 12544,
++    "tag_epochs": 0,
++    "tag_mistakes": [],
++    "words": 204578
++  },
++  "version": "ewt-labeled-graph-v2"
++}
+\ No newline at end of file
+diff --git a/tools/reading/syntax-graph/train-resources.json b/tools/reading/syntax-graph/train-resources.json
+new file mode 100644
+index 0000000..fce7ab2
+--- /dev/null
++++ b/tools/reading/syntax-graph/train-resources.json
+@@ -0,0 +1,21 @@
++{
++  "argv": [
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax-run/target/release/reading-syntax",
++    "train",
++    "--train",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../udsyntax-source/en_ewt-ud-train.conllu",
++    "--graph-tagger",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../graphsyntax-run/baseline/model.bin",
++    "--model",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../graphsyntax-run/candidate/model.bin",
++    "--report",
++    "/home/gsc/.cache/glassmind/continuous-20261010/graphsyntax/../graphsyntax-run/candidate/train-report.json"
++  ],
++  "exit_code": 0,
++  "wall_seconds": 48.660601811949164,
++  "user_seconds": 48.483681,
++  "system_seconds": 0.049837,
++  "max_rss_KiB": 176492,
++  "major_page_faults": 0,
++  "minor_page_faults": 32302
++}
+diff --git a/tools/reading/syntax-graph/transitions.json b/tools/reading/syntax-graph/transitions.json
+new file mode 100644
+index 0000000..659116c
+--- /dev/null
++++ b/tools/reading/syntax-graph/transitions.json
+@@ -0,0 +1,44 @@
++{
++  "all": {
++    "uas_11": 18247,
++    "las_11": 16554,
++    "las_10": 2869,
++    "las_00": 4379,
++    "exact_uas_11": 716,
++    "exact_las_00": 1141,
++    "uas_01": 1485,
++    "las_01": 1346,
++    "exact_uas_01": 78,
++    "uas_10": 2293,
++    "uas_00": 3123,
++    "exact_uas_00": 915,
++    "exact_las_11": 551,
++    "exact_las_10": 277,
++    "exact_uas_10": 292,
++    "exact_las_01": 32
++  },
++  "nonduplicate": {
++    "uas_11": 18110,
++    "las_11": 16417,
++    "las_10": 2869,
++    "las_00": 4379,
++    "exact_uas_11": 648,
++    "exact_las_00": 1141,
++    "uas_01": 1485,
++    "las_01": 1346,
++    "exact_uas_01": 78,
++    "uas_10": 2293,
++    "uas_00": 3123,
++    "exact_uas_00": 915,
++    "exact_las_10": 277,
++    "exact_las_11": 483,
++    "exact_uas_10": 292,
++    "exact_las_01": 32
++  },
++  "duplicate": {
++    "uas_11": 137,
++    "las_11": 137,
++    "exact_uas_11": 68,
++    "exact_las_11": 68
++  }
++}

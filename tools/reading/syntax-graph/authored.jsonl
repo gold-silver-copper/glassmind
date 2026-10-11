@@ -1,0 +1,24 @@
+{"forms": ["Mira", "helped", "Noah", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
+{"forms": ["Yesterday", "Mira", "helped", "Noah", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
+{"forms": ["Mira", "quickly", "helped", "Noah", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
+{"forms": ["Mira", "helped", "Noah", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
+{"forms": ["Noah", "thanked", "Mira", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
+{"forms": ["Yesterday", "Noah", "thanked", "Mira", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
+{"forms": ["Noah", "quickly", "thanked", "Mira", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
+{"forms": ["Noah", "thanked", "Mira", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
+{"forms": ["Birds", "eat", "seeds", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
+{"forms": ["Yesterday", "Birds", "eat", "seeds", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
+{"forms": ["Birds", "quickly", "eat", "seeds", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
+{"forms": ["Birds", "eat", "seeds", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
+{"forms": ["Dogs", "chase", "cats", "."], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
+{"forms": ["Yesterday", "Dogs", "chase", "cats", "."], "heads": [3, 3, 0, 3, 3], "labels": ["advmod", "nsubj", "root", "obj", "punct"]}
+{"forms": ["Dogs", "quickly", "chase", "cats", "."], "heads": [3, 3, 0, 3, 3], "labels": ["nsubj", "advmod", "root", "obj", "punct"]}
+{"forms": ["Dogs", "chase", "cats", "yesterday", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "obj", "advmod", "punct"]}
+{"forms": ["Who", "helped", "Mira", "?"], "heads": [2, 0, 2, 2], "labels": ["nsubj", "root", "obj", "punct"]}
+{"forms": ["Who", "did", "Mira", "help", "?"], "heads": [4, 4, 4, 0, 4], "labels": ["obj", "aux", "nsubj", "root", "punct"]}
+{"forms": ["The", "small", "birds", "eat", "seeds", "."], "heads": [3, 3, 4, 0, 4, 4], "labels": ["det", "amod", "nsubj", "root", "obj", "punct"]}
+{"forms": ["Seeds", "were", "eaten", "by", "birds", "."], "heads": [3, 3, 0, 5, 3, 3], "labels": ["nsubj:pass", "aux:pass", "root", "case", "obl:agent", "punct"]}
+{"forms": ["Mira", "gave", "Noah", "flowers", "."], "heads": [2, 0, 2, 2, 2], "labels": ["nsubj", "root", "iobj", "obj", "punct"]}
+{"forms": ["Which", "birds", "eat", "seeds", "?"], "heads": [2, 3, 0, 3, 3], "labels": ["det", "nsubj", "root", "obj", "punct"]}
+{"forms": ["Mira", "and", "Noah", "left", "."], "heads": [4, 3, 1, 0, 4], "labels": ["nsubj", "cc", "conj", "root", "punct"]}
+{"forms": ["Mira", "did", "not", "leave", "."], "heads": [4, 4, 4, 0, 4], "labels": ["nsubj", "aux", "advmod", "root", "punct"]}
