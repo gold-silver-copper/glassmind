@@ -1,0 +1,23 @@
+{
+  "commit": "404177adbad773b9f191a945f7205dc8e253fdb1",
+  "sha256": "fdb916e61983c1b5cfd48483dc5c331a545f027f0103bd4153db53cd49eba43d",
+  "binary": "/home/gsc/.cache/glassmind/yolo-fields/candidate",
+  "checks": "check-v2.log",
+  "native_tests": "tests-v4.log",
+  "quoted_owner_tests": "quoted-owner-tests.log",
+  "cli_tests": 88,
+  "field_grammar_tests": 3,
+  "native_field_tests": 1,
+  "cli_smoke_processes": 34,
+  "dev_total": 765,
+  "outcomes": {
+    "refused": 542,
+    "pass": 223
+  },
+  "all_outcomes_identical_to_implementation_baseline": true,
+  "baseline_sha256": "b8948bf99a4b0ebf85fd9c82f9da112c2f07fc7f44dad477dac81b6f1d51e2ac",
+  "results_sha256": "e529ac5bf68f6d68ead4e8b4e67588dd5f7d0a8fe5d299919b58d43b00d70e55",
+  "artifacts": "/home/gsc/.cache/glassmind/yolo-fields",
+  "workspace_checks": "fmt, all-target clippy, release workspace, strict 4/4 fixture smoke",
+  "limitations": "Primitive scalar public fields with explicit uniform literal defaults in supported closed constructor graphs. Conditional plans and general conversational constraints remain unsupported; subsequent type renames retain prior proof limits in this candidate."
+}

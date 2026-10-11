@@ -130,6 +130,24 @@ assert state['plan']['status'] == 'Completed' and state['plan']['current'] == 3
 assert 'fn accumulated(' in source.read_text()
 turn('undo')
 assert 'fn gather_values(' in source.read_text() and 'todo!()' not in source.read_text()
+# Field defaults survive separate processes, correction, plan steps and undo.
+root = out / 'fields-project'
+(root / 'src').mkdir(parents=True)
+(root / 'Cargo.toml').write_text('[package]\nname="fields_cli_smoke"\nversion="0.1.0"\nedition="2021"\n[workspace]\n')
+source = root / 'src/lib.rs'
+original_fields = 'pub struct Beacon { pub value: i32 }\npub fn create() -> Beacon { Beacon { value: 17 } }\n#[test] fn keep() -> Result<(), String> { if create().value == 17 { Ok(()) } else { Err(String::from("value changed")) } }\n'
+source.write_text(original_fields)
+session = out / 'fields-session.json'
+turn('where is Beacon?', 1)
+state = turn('Add pub enabled: bool to it; use true for all existing constructors; then rename it to Signal; then check the tests', 1)
+assert state['task']['status'] == 'Ready' and source.read_text() == original_fields
+state = turn('continue', 1)
+assert state['plan']['current'] == 1 and 'enabled: true' in source.read_text()
+state = turn('continue', 8)
+assert state['plan']['status'] == 'Completed' and state['plan']['current'] == 3
+assert 'struct Signal' in source.read_text()
+turn('undo')
+assert 'struct Beacon' in source.read_text() and 'enabled: true' in source.read_text()
 report = dict(processes=len(turns), passed=True,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest())
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

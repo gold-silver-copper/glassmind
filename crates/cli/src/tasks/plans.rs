@@ -12,6 +12,12 @@ pub(super) fn clauses(text: &str) -> Result<Option<Vec<String>>, String> {
     if text.len() > 8192 {
         return Err("task request exceeds 8192 bytes".into());
     }
+    if matches!(
+        glassmind_english_rust::add_fields::request(text),
+        Some(Ok(_))
+    ) {
+        return Ok(None);
+    }
     let mut quote = None;
     let mut parts = Vec::new();
     let mut start = 0;
@@ -72,6 +78,31 @@ pub(super) fn clauses(text: &str) -> Result<Option<Vec<String>>, String> {
         return Err("empty final step in task plan".into());
     }
     parts.push(tail.to_owned());
+    // Semicolons may connect a declaration and its required default, not two
+    // actions. Group only fully consumed specifications before counting steps.
+    if parts.len() > 32 {
+        return Err("at most 32 clauses per task plan".into());
+    }
+    let mut grouped = Vec::new();
+    let mut at = 0;
+    while at < parts.len() {
+        let complete = (at + 1..=parts.len()).find_map(|end| {
+            let text = parts.get(at..end)?.join("; ");
+            matches!(
+                glassmind_english_rust::add_fields::request(&text),
+                Some(Ok(_))
+            )
+            .then_some((end, text))
+        });
+        if let Some((end, text)) = complete {
+            grouped.push(text);
+            at = end;
+        } else {
+            grouped.push(parts.get(at).ok_or("invalid clause position")?.clone());
+            at += 1;
+        }
+    }
+    let parts = grouped;
     if parts.len() > MAX_STEPS {
         return Err("at most four operations per task plan".into());
     }
@@ -79,9 +110,6 @@ pub(super) fn clauses(text: &str) -> Result<Option<Vec<String>>, String> {
 }
 
 fn interpretations(system: &System, text: &str) -> Result<Vec<Utterance<Rust>>, String> {
-    if glassmind_english_rust::add_fields::request(text).is_some() {
-        return Err("add-field actions are not yet plan operations".into());
-    }
     let language = crate::coding::CodingLanguage {
         english: &system.english,
         switches: &system.switches,

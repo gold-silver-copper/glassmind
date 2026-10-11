@@ -520,3 +520,8 @@ Two fixed-width dependency search experiments were rejected: raw cumulative scor
 reduced labeled attachment accuracy, while normalized local scores gained only five
 edges, below the preregistered 250-edge target. The frozen parser and published scores
 remain unchanged. [Normalized search review](tools/reading/syntax-normalized/PARENT.md).
+
+Public field additions can also retain their type and explicit constructor default
+inside persistent coding tasks, corrections and ordered plans. The existing
+constructor proof and native checks validate each proposal and application.
+See [persistent coding tasks](docs/coding-tasks.md).

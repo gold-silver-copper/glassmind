@@ -2,7 +2,8 @@
 
 `glassmind do --session FILE` keeps a typed coding task and conversation between
 invocations. It currently supports the existing rename and build/test/lint repair
-actions, test-verified implementation of supported function stubs, and ordinary
+actions, test-verified implementation of supported function stubs, public field
+addition with explicit constructor defaults, and ordinary
 questions through the existing language frontend.
 
 ```sh
@@ -139,6 +140,33 @@ verification; each action keeps its own proposal/application stages and undo.
 Existing rename restrictions still apply, including collisions with identifiers
 in generated code.
 
-Add-field commands remain available through `do` without `--session`. Conditional
-branches, arbitrary new repair families and general conversational constraints
+Conditional branches, arbitrary new repair families and general conversational constraints
 are not yet implemented by the controller.
+
+## Adding fields with retained specifications
+
+A public field addition retains its owner, field name, primitive type and one
+explicit literal default for every existing constructor. It uses the existing
+closed-package constructor proof, then checks the scratch build and tests before
+proposing. Application recomputes the patch, checks it again, and performs a fresh
+native check in the repository with rollback on failure.
+
+```sh
+glassmind do ./my-library --session ./coding-task.json --steps 1 \
+  'Add pub weight: u16 to Parcel; use 7 for all existing constructors'
+glassmind do ./my-library --session ./coding-task.json 'continue'
+glassmind do ./my-library --session ./coding-task.json 'undo'
+```
+
+After an unambiguous reference to a struct, `Add pub ready: bool to it. Use true
+for every existing constructor.` uses that struct. A quoted owner such as `it`
+remains a literal identifier. A target correction preserves the field name, type
+and default. Plans can add a field, rename its owner, then check tests; semicolons
+inside the field specification belong to the same operation. Plans accept at
+most four operations and 32 separated clauses within the existing byte limit.
+Missing or conflicting defaults, unsupported constraints and unresolved owners
+block execution. A later type rename can still be blocked by its existing
+restrictions on cfg modules and opaque macros; a successful earlier field
+addition remains recorded and can be undone. The existing restrictions on generic structs, opaque macros,
+side-effecting defaults and ambiguous constructor graphs still apply. Existing
+tests establish only their covered behavior.

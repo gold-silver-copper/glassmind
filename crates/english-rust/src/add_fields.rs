@@ -1,18 +1,29 @@
 //! Fully consumed, explicit field-addition requests. Clauses retain their roles
 //! until one declaration, one default and complete constructor coverage unify.
-use glassmind_world_rust::add_fields::AddField;
+use glassmind_meaning::{Name, Thing};
+use glassmind_world_rust::{
+    Rust,
+    add_fields::{AddField, PublicField},
+};
 
 #[derive(Clone, Copy)]
 struct Token<'a> {
     text: &'a str,
     start: usize,
     end: usize,
+    quoted: bool,
 }
 
 // Unlike the general English tokenizer, code here must preserve quotes, signs,
 // escapes and call parentheses. Backticks wrap constituents, never edit them.
 fn tokens(text: &str) -> Option<Vec<Token<'_>>> {
-    fn scan<'a>(text: &'a str, start: usize, end: usize, out: &mut Vec<Token<'a>>) -> Option<()> {
+    fn scan<'a>(
+        text: &'a str,
+        start: usize,
+        end: usize,
+        quoted: bool,
+        out: &mut Vec<Token<'a>>,
+    ) -> Option<()> {
         let mut i = start;
         while i < end {
             let c = text[i..].chars().next()?;
@@ -36,7 +47,7 @@ fn tokens(text: &str) -> Option<Vec<Token<'_>>> {
                 if close == i + 1 {
                     return None;
                 }
-                scan(text, i + 1, close, out)?;
+                scan(text, i + 1, close, true, out)?;
                 i = close + 1;
                 continue;
             }
@@ -71,12 +82,13 @@ fn tokens(text: &str) -> Option<Vec<Token<'_>>> {
                 text: &text[begin..i],
                 start: begin,
                 end: i,
+                quoted,
             });
         }
         Some(())
     }
     let mut out = Vec::new();
-    scan(text, 0, text.len(), &mut out)?;
+    scan(text, 0, text.len(), false, &mut out)?;
     Some(out)
 }
 
@@ -85,6 +97,7 @@ struct Cursor<'a> {
     source: &'a str,
     tokens: &'a [Token<'a>],
     at: usize,
+    owner_previous: bool,
 }
 impl<'a> Cursor<'a> {
     fn eat(&mut self, phrase: &str) -> bool {
@@ -138,6 +151,8 @@ impl<'a> Cursor<'a> {
     fn owner(&mut self) -> Option<String> {
         self.eat("the");
         let before = self.eat("struct");
+        let token = self.tokens.get(self.at)?;
+        self.owner_previous = token.text == "it" && !token.quoted;
         let owner = self.id()?;
         if !before {
             self.eat("struct");
@@ -317,11 +332,12 @@ fn clause(c: &mut Cursor<'_>) -> Option<Clause> {
     })
 }
 
-fn parse(text: &str, tokens: &[Token<'_>]) -> Option<AddField> {
+fn parse(text: &str, tokens: &[Token<'_>]) -> Option<(AddField, bool)> {
     let mut c = Cursor {
         source: text,
         tokens,
         at: 0,
+        owner_previous: false,
     };
     let mut clauses = Vec::new();
     while c.at < tokens.len() {
@@ -386,15 +402,42 @@ fn parse(text: &str, tokens: &[Token<'_>]) -> Option<AddField> {
     if !(all || (new && other)) {
         return None;
     }
-    Some(AddField {
-        owner: owner.clone(),
-        field: field.clone(),
-        ty: ty.clone(),
-        default: default?.clone(),
-    })
+    Some((
+        AddField {
+            owner: owner.clone(),
+            field: field.clone(),
+            ty: ty.clone(),
+            default: default?.clone(),
+        },
+        c.owner_previous,
+    ))
 }
 
 pub fn request(text: &str) -> Option<Result<AddField, String>> {
+    request_target(text).map(|r| r.map(|(field, _)| field))
+}
+
+pub fn task_request(text: &str) -> Option<Result<(Thing<Rust>, PublicField), String>> {
+    request_target(text).map(|r| {
+        r.map(|(field, previous)| {
+            let thing = if previous {
+                Thing::Previous
+            } else {
+                Thing::Named(Name(field.owner))
+            };
+            (
+                thing,
+                PublicField {
+                    name: field.field,
+                    ty: field.ty,
+                    default: field.default,
+                },
+            )
+        })
+    })
+}
+
+fn request_target(text: &str) -> Option<Result<(AddField, bool), String>> {
     let tokens = tokens(text)?;
     let action = parse(text, &tokens);
     // Dispatch only a real declaration constituent at a clause boundary. This
@@ -409,6 +452,7 @@ pub fn request(text: &str) -> Option<Result<AddField, String>> {
                     source: text,
                     tokens: &tokens,
                     at: i,
+                    owner_previous: false,
                 };
                 let _ = cursor.eat("don't") || cursor.eat("do not");
                 declaration(&mut cursor).is_some()
@@ -423,6 +467,27 @@ pub fn request(text: &str) -> Option<Result<AddField, String>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn contextual_owner_and_quoted_identifier_are_distinct() {
+        use glassmind_meaning::{Name, Thing};
+        let (target, member) =
+            task_request("Add pub ready: bool to it. Use true for all existing constructors.")
+                .unwrap()
+                .unwrap();
+        assert_eq!(target, Thing::Previous);
+        assert_eq!(member.default, "true");
+        let (target, _) =
+            task_request("Add pub ready: bool to `it`. Use true for all existing constructors.")
+                .unwrap()
+                .unwrap();
+        assert_eq!(target, Thing::Named(Name("it".into())));
+        let (target, _) =
+            task_request("Add pub ready: bool to ` it `. Use true for all existing constructors.")
+                .unwrap()
+                .unwrap();
+        assert_eq!(target, Thing::Named(Name("it".into())));
+    }
+
     #[test]
     fn composes_declarations_defaults_and_scopes() {
         for (text, owner, field, ty, default) in [

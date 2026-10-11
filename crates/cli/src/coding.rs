@@ -634,6 +634,21 @@ impl Language<Rust> for CodingLanguage<'_> {
         self.english.tokens(text)
     }
     fn understand(&self, text: &str) -> Understanding<Rust> {
+        if let Some(request) = glassmind_english_rust::add_fields::task_request(text) {
+            return match request {
+                Ok((thing, member)) => Understanding::Readings(vec![Reading {
+                    meaning: Utterance::Command(Action::AddMember { thing, member }),
+                    rules: Vec::new(),
+                    parse: "fully consumed field specification and constructor default".into(),
+                    idle: 0,
+                    edits: 0,
+                    discarded: Vec::new(),
+                }]),
+                Err(reason) => Understanding::Failed {
+                    trouble: Trouble::ActionFailed { reason },
+                },
+            };
+        }
         if let Some(request) = glassmind_english_rust::implementation_grammar::task_request(text) {
             return match request {
                 Ok(thing) => Understanding::Readings(vec![Reading {
@@ -732,7 +747,8 @@ impl Language<Rust> for CodingLanguage<'_> {
         understood
     }
     fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
-        if glassmind_english_rust::implementation_grammar::task_request(text).is_some()
+        if glassmind_english_rust::add_fields::request(text).is_some()
+            || glassmind_english_rust::implementation_grammar::task_request(text).is_some()
             || rename_requests::concerns_rename(text)
             || rename_requests::request(text).is_some()
             || Self::contains_rename(&self.english.understand(text))
@@ -747,6 +763,23 @@ impl Language<Rust> for CodingLanguage<'_> {
     fn say(&self, reply: &Reply<Rust>) -> Option<Spoken> {
         use glassmind_meaning::Labelled;
         match reply {
+            Reply::Patch {
+                action: Action::AddMember { thing, member },
+                changes,
+                ..
+            } => Some(Spoken {
+                text: format!(
+                    "I'd add public field {}: {} to {}, with {} at every existing constructor ({} source edits). The scratch build and existing tests pass.",
+                    member.name,
+                    member.ty,
+                    thing
+                        .item()
+                        .map_or_else(|| "the target".into(), |i| i.label()),
+                    member.default,
+                    changes.len()
+                ),
+                rules: Vec::new(),
+            }),
             Reply::Patch {
                 action: Action::Implement { thing },
                 trials,
