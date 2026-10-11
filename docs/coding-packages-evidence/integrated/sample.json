@@ -1,0 +1,56 @@
+{
+  "binary_sha256": "52a113aa63a18dca7449103d57142e24c17d4cdbe11f68b6a09bce92daf474f9",
+  "cases": [
+    {
+      "case": "unicode_reexport",
+      "supported": true,
+      "changed": true,
+      "exact_source": true,
+      "behavior": true,
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I'd rename `\u00c9tat` to `Statut` in 5 places.\n  src/lib.rs:3:12  `\u00c9tat` -> `Statut`\n  src/lib.rs:3:44  `\u00c9tat` -> `Statut`\n  src/lib.rs:3:79  `\u00c9tat` -> `Statut`\n  src/lib.rs:3:98  `\u00c9tat` -> `Statut`\n  src/main.rs:1:22  `\u00c9tat` -> `Statut`\n  (say yes to rename `\u00c9tat`)\nI made 5 changes. No problems with the build.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "before_stdout": "12 \u00c9tat\n",
+      "after_stdout": "12 \u00c9tat\n",
+      "before_stderr": "Running as unit: run-p2064018-i94353140.scope; invocation ID: b6a76eeef7fe4912942485c699ca330a\n",
+      "after_stderr": "Running as unit: run-p2064149-i94280531.scope; invocation ID: 104ce1f322d84603a223f6dcbc17fcf4\n",
+      "pass": true
+    },
+    {
+      "case": "variant_reexport",
+      "supported": true,
+      "changed": true,
+      "exact_source": true,
+      "behavior": true,
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I'd rename `State::Ready` to `Active` in 3 places.\n  src/lib.rs:1:30  `Ready` -> `Active`\n  src/lib.rs:1:125  `Ready` -> `Active`\n  src/main.rs:1:76  `Ready` -> `Active`\n  (say yes to rename `State::Ready`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "before_stdout": "9 Ready\n",
+      "after_stdout": "9 Ready\n",
+      "before_stderr": "Running as unit: run-p2064212-i94364129.scope; invocation ID: b1f5a28093a64102a5c957d19a8fe1ce\n",
+      "after_stderr": "Running as unit: run-p2064318-i94255769.scope; invocation ID: d79e10fd1509469bb31d6a17e53520a5\n",
+      "pass": true
+    },
+    {
+      "case": "builtin_derives",
+      "supported": true,
+      "changed": true,
+      "exact_source": true,
+      "behavior": true,
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I'd rename `Parcel` to `Packet` in 3 places.\n  src/lib.rs:2:59  `Parcel` -> `Packet`\n  src/main.rs:1:17  `Parcel` -> `Packet`\n  src/main.rs:1:45  `Parcel` -> `Packet`\n  (say yes to rename `Parcel`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "before_stdout": "0\n",
+      "after_stdout": "0\n",
+      "before_stderr": "Running as unit: run-p2064374-i94308986.scope; invocation ID: cf66e55918ff4109a5ab4db604257704\n",
+      "after_stderr": "Running as unit: run-p2064493-i94353181.scope; invocation ID: f4fc5c942c324f0c95c02fc9a5c0b973\n",
+      "pass": true
+    }
+  ]
+}

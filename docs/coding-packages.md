@@ -172,4 +172,20 @@ the required scopes, process groups, timeout, TMPDIR and single-job setting;
 focused tests used four threads. No agents, model calls or persistent services
 were launched. Token accounting for this worker is left to the coordinator.
 
-Coordinator provenance: both workspace-only snapshots and prompts came from RustBench revision `f79e71a2a26fdaf15f9bc55225a038b61e66fafb`. No upstream LICENSE file was present; no license is inferred or source dataset redistributed. Worker handoff/provenance and local result JSON are retained in `coding-packages-evidence/`.
+Coordinator provenance: both workspace-only snapshots and prompts came from RustBench revision `f79e71a2a26fdaf15f9bc55225a038b61e66fafb`. No upstream LICENSE file was present; no license is inferred. Raw workspace source snapshots remain outside git. Worker handoff/provenance and local result JSON are retained in `coding-packages-evidence/`.
+
+
+## Coordinator integration
+
+Source `05e80930ef2b06e8e054ece3ab4cc69666d19b98`. Independent integrated CLI
+runs pass sample3/3, full15/15, type9/9 and variant14/14. The same six supplied
+dev prompts still edit nothing, with all before/after builds passing. Workspace
+fmt/all-target clippy/release/strict4/4 smoke and all16 world-rust tests pass.
+Reports and binary hashes are in `coding-packages-evidence/integrated/`.
+Full765 RustBench dev is running against a frozen binary; no benchmark gain or
+completed full-regression claim is made yet.
+
+A separate coordinator probe tested a target-specific dependency colliding with
+the library's crate name: rustc rejected the original program with E0464. It is
+not evidence of a successful rename or a semantic regression. The final worker
+already rejects target-specific dependency tables and extra target declarations.

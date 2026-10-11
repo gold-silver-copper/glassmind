@@ -17,8 +17,9 @@ Their workers completed. Source commits `0bff6a1` (enum variants) and
 `da96f49` (multi-service dialogue with grounded predicted-slot transfer) are
 merged in PR #8, head `fcb81dbf17273dcca4d45f7a8df4d3428fb217a0`,
 merge `cb150965a9d0e95ffd234a7f4bf38299e8370d86`; CI38110755616 passed1m15s. All affected dev
-checks are complete. The offers follow-up is verified; package-binding and word-problem workers
-are active below.
+checks are complete. PR10 (ratio totals) is merged, head `7a5e17627605f6628660c0529a5e96d2a87e96ce`,
+merge `b8c28e5d1b4e8e1029b9d8f5935dc75645ac0226`, CI38111396832 green1m7s.
+Package source05e8093 awaits full765 regression. Repairs2/factchat workers active.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -159,23 +160,55 @@ Candidate is verified and **PR9 MERGED**, head
 README/data/scoreboard reflect609/1119,460wrong50refused. Evidence
 `tools/dialogue/offers/reports/integrated/`. PR8 is already merged.
 
-**Active worker: packages**, launcherPID1964290, scope
-`glassmind-continuous-packages.scope`, worktree `WORK/packages`, base `fcb81db`.
-Owns world-rust/necessary typedEnglish and newcodingpackage fixtures/reports.
-Hypothesis: bounded explicit library/binary package graph and reexports support
-actual type/variant renames. Preserve unknown attrs/macros/cfg refusals, exact
-bindings, rollback, type9/9 andvariant14/14. Dev workspace-only sources/prompts
-for two refused rename tasks copied into ownedrun/dev-inputs; NO hidden tests,
-solutions or expected patches. Worker notes cfg(test),Debug, matches! still
-blockthese realdevcases; avoidclaimingactualbenchmarkgainfromlocalfixtures.
-Latest: firstsample0/3 exposed TOMLdocument parsingbug; worker corrected it
-and is rerunning localchecks. All realdevcases maystillrefuse(cfg/Debug/matches).
-A clippy collapsible-if failure is being fixed. Candidate NOT accepted.
-No extra service/worker/model calls. GPT6Astra fastChatGPT login confirmed.
-Parentmustfull765beforepublishingcandidate. Run artifacts ownTMPDIR/target.
+**Packages worker COMPLETE**, scopeinactive/authremoved, archived submissions
+`WORK/packages-run/submitted/`; worktree removedafterhashverification.
+Integratedsource `05e80930ef2b06e8e054ece3ab4cc69666d19b98`: bounded Cargo
+library/binarygraph, explicitimports/reexports, root-specificidentities, builtin
+inertderives/literalprosedocs. Unknowncfg/macros/Debug/targetambiguity refuse.
+Newtoml0.9.12+spec1.1.0 dependency;10newlockfilearchives782407bytes, licenses/hashes
+in docs/coding-packages-evidence/provenance.json. No datasetdownload. Independent
+fixtures3816bytes, MIT/Apache2. Source-only devsnapshots fromRustBenchf79e71a;
+no upstreamLICENSEavailable, nohidden/solutioncontentread.
+CoordinatorcheckedintegratedCLI: sample3/3, full15/15, type9/9,variant14/14.
+Allsixsuppliedrealdevpromptsstill0edits andbefore/afterbuildpass. Fmt/alltarget
+clippy/release/strict4/4smoke and16worldtests pass. Sessions22773,81603,90645
+COMPLETE; no repoll/rerun. Reports docs/coding-packages-evidence/integrated/.
+**Full765 RustBench dev RUNNING**, execsession32029; outputs
+`WORK/coordinator/packages-full/`, frozenbinarySHA
+52a113aa63a18dca7449103d57142e24c17d4cdbe11f68b6a09bce92daf474f9,
+source05e8093. Baseline WORK/coordinator/variants-full/results.jsonl:
+163pass599refused3fail. Compare every(task,style), preserveall765denominator.
+Do not publishpackagecandidate until fullcomparison complete; no benchmarkgain
+claimed fromlocalfixtures. Keepfrozenbinary; no restarton observationtimeout.
+
+**Active worker: repairs2**, launcherPID2058355, scope
+`glassmind-continuous-repairs2.scope`, worktreeWORK/repairs2, base05e8093.
+Owns checks.rs/repairparts oflib.rs/slips.rs andnewhelper only, notrename/index/CLI.
+Afterthree renamebatches withnoactualdevcoveragegain, audit compilerJSON fromsix
+permittedbrokenworkspaces: derive-debug,copy-struct,collect-needs-type,
+int-float-divide,private-fn,match-missing-variant. No hidden/tests/solutions.
+Hypothesislead nestedcompilerdiagnostics/coherentalternatives or typedtraitrepair;
+mustpreregister afteraudit, no placeholders/erasedassertions/fakedbuildsuccess.
+18promptsgiven, baseline0bff6a1binaryrepairsidenticaltobase; full765 parentgate.
+Newreports docs/coding-diagnostics-repairs.md; artifacts ownrunTMPDIR/target.
+
+**Active worker: factchat**, launcherPID2100023, scope
+`glassmind-continuous-factchat.scope`, worktreeWORK/factchat, base05e8093.
+Owns mainCLI/everyday integration/newhelper+CLIdependency onexistingfacts crate,
+newtools/facts/chat; nofactsalgorithm/index/model/scorer changes. Opt-infrozen
+factsintalk, typedmemory/quantity/storypriority/reset/restart/correctionfocus,
+structuredIDs+source andhumanlabels. Defaulttalk unchanged. Full2821facts
+baseline256right2545refused20wrong mustbe preserved inresetcontexts; newsynthetic
+mixedchecks and41/27/47 oldchecks. No runtimeLLM/network. Sourceindexlabels only
+38of10215claimtargets: mayfetchLABELS ONLY fromofficialWikidata foralreadyindexed
+IDs intoSEPARATEdisplaymap, neverlinker/claims; max12000IDs50/request,1Hzoneatonce,
+10MiB/10min, respect429/RetryAfter/maxlag andstoprepeatedfailure. Reusecachefirst,
+recordCC0rawhashes/date/coverage andexplicitQIDfallback. Allnewdataownedpersistent
+TMPDIR; frozenfactsdata mountedreadonly. Reporttools/facts/chat/HANDOFF.md.
+BothactiveworkersGPT6AstrafastChatGPT/noAPIkeys,8GiB0swap,-j1; noextraagents.
 
 **Wordproblems worker COMPLETE**, scopeinactive/authremoved; source/reports
-archived `WORK/wordproblems-run/submitted/`; worktree retainedpendingcleanup.
+archived `WORK/wordproblems-run/submitted/`; worktree removedafterarchiveverification.
 Integratedsource `6ac211b7452383c52ec3791bee40f0b8f69b31ef`: fully consumed
 ratio totals over2–4 positive rational weights; ordinal/rankqueries andadjacent
 three-number chains. MathQAfull14→16right,4458→4456refused,3wrong unchanged;
@@ -191,7 +224,7 @@ sessions11570,48624,99520,37727; DO NOT repoll/restart. Integratedreports at
 Worker flaggedreadinglocalvisible syntheticdevadapter asprohibited; parent
 clarifiedgoalpermits this repository-visible development tooling, withnohidden
 orheldoutdata access. Archive retainsoriginalreport; frozenJSONLusedforregression.
-Readyforpublication; no additionalcodeverificationneeded unless sourcechanges.
+MergedPR10 asrecordedabove; no additionalverification/publishing remains.
 
 Retained SGD train/dev150files504306737bytes, pinned
 e852981ae34990f4358979625854259302feaa78,CC-BY-SA4, source+selection hashes:
@@ -223,7 +256,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:37,540,442 including cached input; parent and
+Known completed worker tokens:41,683,093 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -238,12 +271,11 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 1. PR8 merged after green CI; no publishing or benchmark work remains for it.
    README/data/scoreboard updated; reports identify exact evaluated source.
-2. PR9 merged. Publish verified ratio-total source6ac211b and evidence next;
-   review packages finalhandoff, integrate and full765dev beforepublishing it.
-3. Next coding experiment: dev rename requests parse but refuse. Permitted
-   workspace sources expose library+binary roots, docs/derive attributes and
-   reexports that the closed resolver rejects. Investigate a sound bounded
-   extension using independent fixtures; do not read hidden tests or solutions.
+2. PR10merged. Finish packages full765session32029, compare to163/599/3,
+   commitreports+README andpublish/CI/merge ifnonregressing.
+3. Review active repairs2/factchat candidates when done. Preserve everynewerror,
+   fullaffecteddev andnormalcheck gates. Do not confuseintegrationgain with
+   expandedfactualcoverage, orlocalrenamefixtures withRustBenchgain.
 4. Keep coding and conversation advancing. Other gaps: full MathQA mostly
    unsupported language; facts open-world retrieval; independent reading
    semantics (current byte likelihood is not comprehension).
