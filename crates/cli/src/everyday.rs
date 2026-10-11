@@ -253,7 +253,7 @@ fn respond_with_facts(
 
 fn read<T: serde::de::DeserializeOwned>(path: &Path) -> Result<T, String> {
     let file = std::fs::File::open(path).map_err(|e| e.to_string())?;
-    serde_json::from_reader(file).map_err(|e| e.to_string())
+    serde_json::from_reader(std::io::BufReader::new(file)).map_err(|e| e.to_string())
 }
 
 fn save(path: &Path, memory: &Session) -> Result<(), String> {

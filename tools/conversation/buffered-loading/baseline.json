@@ -1,0 +1,69 @@
+{
+  "scope": "Exploratory fresh-process startup with tiny fixed input; concurrent development jobs remain active, not an isolated benchmark",
+  "binary_sha256": "f16beba73f4c618bc94cf680ced5326ab65e4b6064d16432b24c33e39e1bba9a",
+  "model_sha256": "a84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408",
+  "median_plain": 0.001907236990518868,
+  "median_model": 2.6143328049220145,
+  "rows": [
+    {
+      "repetition": 0,
+      "model": false,
+      "elapsed_seconds": 0.001994180027395487,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 0,
+      "model": true,
+      "elapsed_seconds": 2.6236526869470254,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 1,
+      "model": false,
+      "elapsed_seconds": 0.00188325101044029,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 1,
+      "model": true,
+      "elapsed_seconds": 2.6066857639234513,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 2,
+      "model": false,
+      "elapsed_seconds": 0.002062338055111468,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 2,
+      "model": true,
+      "elapsed_seconds": 2.6143328049220145,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 3,
+      "model": false,
+      "elapsed_seconds": 0.0017758599715307355,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 3,
+      "model": true,
+      "elapsed_seconds": 2.639158569043502,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 4,
+      "model": false,
+      "elapsed_seconds": 0.001907236990518868,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    },
+    {
+      "repetition": 4,
+      "model": true,
+      "elapsed_seconds": 2.604857199941762,
+      "reply_sha256": "0e3b326a84b8f8a41292823e2922387fc0a44081301969523e2cabd58db4e572"
+    }
+  ]
+}
