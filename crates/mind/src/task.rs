@@ -1,0 +1,89 @@
+//! Durable action state shared by language frontends and verified executors.
+use glassmind_meaning::{Action, Ontology, Reply};
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum TaskStatus {
+    Ready,
+    Applying,
+    Completed,
+    Blocked,
+    Cancelled,
+    Stale,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum TaskStage {
+    Proposed,
+    Applied,
+}
+
+/// Store typed observations, not a claim inferred from the wording of a reply.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub struct TaskEvent<O: Ontology> {
+    pub stage: TaskStage,
+    pub result: Reply<O>,
+}
+
+/// The resolved action retains its target, kind and requested parameters.
+/// The host supplies source freshness, persistence and execution boundaries.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub struct Task<O: Ontology> {
+    pub request: Action<O>,
+    pub original_text: String,
+    pub status: TaskStatus,
+    pub events: Vec<TaskEvent<O>>,
+}
+
+impl<O: Ontology> Task<O> {
+    pub fn proposed(request: Action<O>, original_text: String, result: Reply<O>) -> Self {
+        let status = match &result {
+            Reply::Proposal { spots, .. } if !spots.is_empty() => TaskStatus::Ready,
+            Reply::Remedy { changes, left, .. } if left.is_empty() => {
+                if changes.is_empty() {
+                    TaskStatus::Completed
+                } else {
+                    TaskStatus::Ready
+                }
+            }
+            _ => TaskStatus::Blocked,
+        };
+        Self {
+            request,
+            original_text,
+            status,
+            events: vec![TaskEvent {
+                stage: TaskStage::Proposed,
+                result,
+            }],
+        }
+    }
+
+    pub fn proposal(&self) -> Option<&Reply<O>> {
+        if self.status != TaskStatus::Ready {
+            return None;
+        }
+        self.events
+            .last()
+            .filter(|e| e.stage == TaskStage::Proposed)
+            .map(|e| &e.result)
+    }
+
+    /// Only an actual verified application establishes completion.
+    pub fn applied(&mut self, result: Reply<O>) {
+        self.status = match &result {
+            Reply::Applied {
+                check: Some(_),
+                problems,
+                ..
+            } if problems.is_empty() => TaskStatus::Completed,
+            _ => TaskStatus::Blocked,
+        };
+        self.events.push(TaskEvent {
+            stage: TaskStage::Applied,
+            result,
+        });
+    }
+}

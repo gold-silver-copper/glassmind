@@ -83,6 +83,78 @@ fn ty(t: &syn::Type) -> Option<Ty> {
     }
 }
 
+fn sequence_argument(arg: &syn::FnArg) -> Result<(String, Ty), String> {
+    let syn::FnArg::Typed(arg) = arg else {
+        return Err("plain argument binding required".into());
+    };
+    let syn::Pat::Ident(pat) = &*arg.pat else {
+        return Err("plain argument binding required".into());
+    };
+    if pat.by_ref.is_some() || pat.subpat.is_some() {
+        return Err("plain argument binding required".into());
+    }
+    let element = match ty(&arg.ty) {
+        Some(Ty::Slice(element) | Ty::Vec(element)) if matches!(*element, Ty::Int(_)) => *element,
+        _ => return Err("integer sequence arguments required".into()),
+    };
+    Ok((pat.ident.to_token_stream().to_string(), element))
+}
+
+fn sequence_pair_candidates(
+    left: &syn::FnArg,
+    right: &syn::FnArg,
+    output: &syn::ReturnType,
+) -> Result<Vec<String>, String> {
+    let (left, element) = sequence_argument(left)?;
+    let (right, other) = sequence_argument(right)?;
+    let syn::ReturnType::Type(_, output) = output else {
+        return Err("explicit return type required".into());
+    };
+    if element != other || ty(output) != Some(Ty::Vec(Box::new(element))) {
+        return Err("matching integer sequences and vector return required".into());
+    }
+    let mut out = Vec::new();
+    for (first, second) in [(&left, &right), (&right, &left)] {
+        for reverse in ["", ".rev()"] {
+            out.push(format!(
+                "{first}.iter().copied().chain({second}.iter().copied()){reverse}.collect::<::std::vec::Vec<_>>()"
+            ));
+        }
+    }
+    let concat = format!("{left}.iter().copied().chain({right}.iter().copied())");
+    for reverse in ["", "values.reverse();"] {
+        out.push(format!(
+            "{{ let mut values = {concat}.collect::<::std::vec::Vec<_>>(); values.sort_unstable(); {reverse} values }}"
+        ));
+    }
+    for reverse in ["", ".rev()"] {
+        out.push(format!(
+            "{concat}.collect::<::std::collections::BTreeSet<_>>().into_iter(){reverse}.collect::<::std::vec::Vec<_>>()"
+        ));
+    }
+    // Bind both sets together: an argument named `left_set` or `right_set`
+    // must still refer to the caller's input in both initializers.
+    let sets = format!(
+        "let (left_set, right_set) = ({left}.iter().copied().collect::<::std::collections::BTreeSet<_>>(), {right}.iter().copied().collect::<::std::collections::BTreeSet<_>>());"
+    );
+    for operation in [
+        "left_set.intersection(&right_set)",
+        "left_set.difference(&right_set)",
+        "right_set.difference(&left_set)",
+        "left_set.symmetric_difference(&right_set)",
+    ] {
+        out.push(format!(
+            "{{ {sets} {operation}.copied().collect::<::std::vec::Vec<_>>() }}"
+        ));
+        out.push(format!(
+            "{{ {sets} let mut values = {operation}.copied().collect::<::std::vec::Vec<_>>(); values.reverse(); values }}"
+        ));
+    }
+    out.sort();
+    out.dedup();
+    Ok(out)
+}
+
 // This function sees only the parsed signature. Names only bind an argument.
 fn candidates(sig: &syn::Signature) -> Result<Vec<String>, String> {
     if sig.constness.is_some()
@@ -96,6 +168,9 @@ fn candidates(sig: &syn::Signature) -> Result<Vec<String>, String> {
         return Err("unsupported function signature".into());
     }
     let args = sig.inputs.iter().collect::<Vec<_>>();
+    if let [left, right] = args.as_slice() {
+        return sequence_pair_candidates(left, right, &sig.output);
+    }
     let [syn::FnArg::Typed(arg)] = args.as_slice() else {
         return Err("one plain argument required".into());
     };

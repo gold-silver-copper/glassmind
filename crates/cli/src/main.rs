@@ -36,6 +36,7 @@ mod talk_drafts;
 mod talk_facts;
 mod talk_quantities;
 mod talk_stories;
+mod tasks;
 mod train;
 
 use system::{System, load_session, parse_source, save_session};
@@ -191,6 +192,12 @@ enum Command {
         /// Where to write the final answer or result of applying changes.
         #[arg(long)]
         reply_file: Option<PathBuf>,
+        /// Persist a coding task and its conversation outside the repository.
+        #[arg(long)]
+        session: Option<PathBuf>,
+        /// Maximum task stages this turn (1 proposes; 2 also applies and verifies).
+        #[arg(long, default_value_t = 2, value_parser = clap::value_parser!(u8).range(1..=2), requires = "session")]
+        steps: u8,
         /// Show the whole trace.
         #[arg(long)]
         explain: bool,
@@ -301,9 +308,21 @@ fn main() -> ExitCode {
         Command::Do {
             repo,
             reply_file,
+            session,
+            steps,
             explain,
             text,
-        } => act(&repo, reply_file.as_deref(), explain, &text.join(" ")),
+        } => match session {
+            Some(path) => tasks::run(
+                &repo,
+                &path,
+                reply_file.as_deref(),
+                explain,
+                steps,
+                &text.join(" "),
+            ),
+            None => act(&repo, reply_file.as_deref(), explain, &text.join(" ")),
+        },
         Command::TrainNormalizer {
             inputs,
             outcomes,

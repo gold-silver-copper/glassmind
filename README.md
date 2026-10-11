@@ -78,10 +78,17 @@ passes with zero failures. The three gains are styles of one leaderboard bug.
 [Independent ordering and ambiguity checks](tools/coding-comparator/PARENT.md).
 Whole-body function placeholders can now receive a uniquely test-verified
 implementation from a bounded, signature-directed family, including word joining
-and word initials with optional Unicode filtering and case conversion. Coding DEV
-reaches 221/765, retaining all 220 previous passes with zero failures. The new gain
-is an initials request also present in the supplied TRAIN material.
+and word initials with optional Unicode filtering and case conversion. Two integer
+sequences can also be concatenated, sorted or combined through set operations.
+Coding DEV reaches 223/765, retaining all 221 previous passes with zero failures.
+The two new passes are request styles for a task also supplied in TRAIN.
 [Supported implementation requests and verification](docs/verified-implementation.md).
+
+Coding actions can persist across invocations with `do --session FILE`:
+propose a rename or repair, continue after a restart, refer to the renamed item,
+or undo the last verified change. External edits invalidate stale context.
+[Persistent coding tasks and current limits](docs/coding-tasks.md).
+
 
 ## Conversation and story commands
 
