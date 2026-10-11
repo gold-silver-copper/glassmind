@@ -1,5 +1,54 @@
 # Continuous development checkpoint
 
+## Latest checkpoint — PR31/32 merged, two new experiments active
+
+PR31 merged723add1b82ee619ecb7ae3544ceaec9d822e5467, exactheadf7034a5;
+CI38126961130passed. PR32 mergedfe821fad6acb2b4c3b394824cf68f6144f1d7646
+at2026-10-11T09:11:26Z, exacthead078578b0ac350a1b3baa5af20b1a37d21d576d23;
+CI38127308893passed1m33s. Push99553/create14477/merge79151 COMPLETE. Do not
+repeatcompletedpublishing/full765/syntaxfull. Thisgoalturnmade substantialprogress.
+Currentvalidatedruntime38fd905, mainbinary226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0.
+Coding177/765/0fail, syntax19423LAS/20540UAS of25148goldwords arepublished with
+allpriorlimits/duplicates/errors; main16+QA14contracts and12readingtests/workspacepass.
+No parentbenchmark/nativejob remainslive. Bothfinishedworkerarchives verified;
+inactiveworktrees/loginlinks removed. Knowncompletedworker tokens123,540,392.
+
+QASYNTAX ACTIVE PID592155, scopeglassmind-continuous-qasyntax.scope,8GiB/0swap
+verified, branchcontinuous/qasyntax at078578b, WORK/qasyntax andqasyntax-run;
+briefWORK/qasyntax-task.txt. RequiredGPT6Astrafast/ChatGPT/noAPI launcher. Owns
+readingqa/newhelperbin/newtools/reading/qa-syntax only, noCLI/syntaxmodel edits.
+Hypothesis: predicteddependency relations aid candidate-relative passage ranking.
+Same4000FIT/64articles+1000CAL/16articles, approvedv1QA andsyntaxmodels frozen in
+ownbaseline11files. OriginalSQuADtrain/dev mountedreadonly, no test/newdownloads.
+Onefrozen representation, <=5passes, oldCALrule>=50%exact/min30/ties, noDEVtuning.
+Acceptance rawexact>=2744/10570,F1>=36.518425,selectedcorrect>=815,wrong<=791,
+meaningfulrolecontrasts; v1modebyteidentical. Optionalnewmodel only, unverified
+predictions nevertruth/repairauthority; allperitemregressions mustbereported.
+Parentfroze20independentprobesbeforecandidate atcoordinator/qasyntax-independent.
+V1baseline13positive/7negative:10rawpositivecorrect,6selectedcorrect,4wrongselected
+including3negativequestions,10refused. Baselinecommands/audit complete. No newscore.
+
+FUNCTIONREFS ACTIVE PID617333, scopeglassmind-continuous-functionrefs.scope,
+8GiB/0swapverified, branchcontinuous/functionrefs at078578b, WORK/functionrefs
+andfunctionrefs-run; briefWORK/functionrefs-task.txt. Sameforcedmodel/login.
+OwnsworldRust functionreferencehelper/minimallibroute/newtools only. Actual
+canonical 'rename function parse_line to parse_entry' resolves function correctly
+butworldrename_at refuses unclassified references. Suppliedpublic6files2923bytes
+cover groupedimports/reexports,lib+bin,callbacks,ordinarycalls,publictests/glob/
+assertions. Rustbenchf79e71a MITORApache2; no task.toml/hidden/solutions. Original
+threeTRAIN-v3requests andparenttraces provided. They have separatefrontendfailures:
+terse/hurried shapeerrors; chattymisroutesRepair(Test). Do notclaimbackendfixsolves
+those. Frozenbackendacceptance: providedcanonical+>=5newauthoredpositive identity-
+preservingrenames, zero unsafe negatives, nativebeforeafterbehavior; preserveold
+routes andall177fullDEVpasses/0fail beforepublication. Parentfuturelanguagework
+needed fororiginalrequests, especiallywrongRepair(Test)fallback. No sourcepatchyet.
+
+Next: inspect frozenplans, author independentfunction identitycontrasts, review
+terminal submissions only afteroriginalarchive. QASYNTAX mustpreserveunverified
+status andv1compatibility; FUNCTIONREFS mustprovebindingidentity/aliases/globs and
+preserveunrelatedbytes, notloosengenericglobalguard. Two liveworkers +parent,
+within4model ceiling. Goalactiveuntiluserstops; no blocker.
+
 ## Current state — PR31 merged; syntax main command fully verified locally
 
 PR31 MERGED723add1b82ee619ecb7ae3544ceaec9d822e5467 at2026-10-11T09:04:50Z,
