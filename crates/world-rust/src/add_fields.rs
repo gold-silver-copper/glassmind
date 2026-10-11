@@ -258,7 +258,7 @@ fn plan(source: &SourceIndex, action: &AddField) -> Result<FieldAddition, String
     if !source.skipped.is_empty() {
         return Err("unparsed source files".into());
     }
-    let package = Package::load_add_field(source)
+    let package = Package::load_with_tests(source)
         .ok_or("unsupported or ambiguous package/module/import graph")?;
     let mut selected = Vec::new();
     for module in &package.modules {
@@ -506,7 +506,7 @@ impl<'ast> Visit<'ast> for Sites<'_> {
 }
 fn verify(root: &std::path::Path, name: &str, proposal: &FieldAddition) -> Result<(), String> {
     let source = crate::index::index_source(name, root);
-    let package = Package::load_add_field(&source).ok_or("post-edit package graph invalid")?;
+    let package = Package::load_with_tests(&source).ok_or("post-edit package graph invalid")?;
     let mut found = 0;
     for module in &package.modules {
         for item in &module.items {

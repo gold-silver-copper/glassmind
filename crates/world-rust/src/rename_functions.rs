@@ -5,7 +5,7 @@ use crate::rename_package::{Package, inert};
 use crate::rename_types::{Module, imports, position};
 use crate::{RustItem, RustKind};
 use std::collections::BTreeSet;
-use syn::{parse::Parser, visit::Visit};
+use syn::visit::Visit;
 
 pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Option<BTreeSet<Pos>> {
     if item.kind != RustKind::Function
@@ -22,7 +22,7 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
     }
     // This existing mode admits only conventional cfg(test) modules and
     // resolves super::* by the actual parent's unique bindings.
-    let package = Package::load_add_field(source)?;
+    let package = Package::load_with_tests(source)?;
     let mut target = None;
     let mut marked = BTreeSet::new();
     for m in &package.modules {
@@ -194,35 +194,12 @@ impl<'ast> Visit<'ast> for References<'_> {
         }
     }
     fn visit_macro(&mut self, m: &'ast syn::Macro) {
-        // Package rejects imports/definitions shadowing builtin macro names;
-        // all item macros and block-local items are refused independently.
-        let name = m
-            .path
-            .get_ident()
-            .map(ToString::to_string)
-            .unwrap_or_default();
-        if !crate::add_fields::standard_macro(&name) {
+        let Some(args) = crate::rename_package::rename_macro_arguments(m, self.old) else {
             self.valid = false;
             return;
-        }
-        let parser = syn::punctuated::Punctuated::<syn::Expr, syn::Token![,]>::parse_terminated;
-        match parser.parse2(m.tokens.clone()) {
-            Ok(args) => {
-                for arg in &args {
-                    // Named formatting arguments bind a name inside the
-                    // macro; implicit captures live inside a string rather
-                    // than an editable identifier token. Neither is an
-                    // expression-path reference proof.
-                    if matches!(arg, syn::Expr::Assign(_))
-                        || matches!(arg, syn::Expr::Lit(l) if matches!(&l.lit,
-                            syn::Lit::Str(s) if s.value().contains(&format!("{{{}", self.old))))
-                    {
-                        self.valid = false;
-                    }
-                    self.visit_expr(arg);
-                }
-            }
-            Err(_) => self.valid = false,
+        };
+        for arg in &args {
+            self.visit_expr(arg);
         }
     }
 }

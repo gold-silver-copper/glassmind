@@ -3,6 +3,7 @@ use crate::index::SourceIndex;
 use crate::rename_types::{Module, imports, modules_with_tests};
 use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
+use syn::parse::Parser;
 
 type Name = Vec<String>;
 
@@ -67,6 +68,28 @@ pub(crate) fn output_macro(m: &syn::Macro) -> bool {
     (m.path.is_ident("println") || m.path.is_ident("eprintln")) && plain(m.tokens.clone(), 0)
 }
 
+/// Builtin expression arguments whose bindings a rename visitor can inspect.
+/// The caller must use the closed test-aware package graph, which rejects
+/// imports and definitions shadowing these macro names.
+pub(crate) fn rename_macro_arguments(m: &syn::Macro, old: &str) -> Option<Vec<syn::Expr>> {
+    let name = m.path.get_ident()?.to_string();
+    if !crate::add_fields::standard_macro(&name) {
+        return None;
+    }
+    let parser = syn::punctuated::Punctuated::<syn::Expr, syn::Token![,]>::parse_terminated;
+    let args = parser.parse2(m.tokens.clone()).ok()?;
+    if args.iter().any(|arg| {
+        matches!(arg, syn::Expr::Assign(_))
+            || matches!(arg, syn::Expr::Lit(l) if matches!(&l.lit,
+                syn::Lit::Str(s) if s.value().contains(&format!("{{{old}"))))
+    }) {
+        // Named formatting arguments and implicit captures have no ordinary
+        // expression-path reference proof. Never rewrite their string text.
+        return None;
+    }
+    Some(args.into_iter().collect())
+}
+
 pub(crate) struct Package {
     pub(crate) modules: Vec<Module>,
     symbols: BTreeSet<Name>,
@@ -79,7 +102,7 @@ impl Package {
         Self::load_mode(source, false)
     }
 
-    pub(crate) fn load_add_field(source: &SourceIndex) -> Option<Self> {
+    pub(crate) fn load_with_tests(source: &SourceIndex) -> Option<Self> {
         Self::load_mode(source, true)
     }
 

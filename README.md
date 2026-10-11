@@ -525,3 +525,8 @@ Public field additions can also retain their type and explicit constructor defau
 inside persistent coding tasks, corrections and ordered plans. The existing
 constructor proof and native checks validate each proposal and application.
 See [persistent coding tasks](docs/coding-tasks.md).
+
+Type renames now share the closed test-module graph and builtin macro argument
+proof used by function renames. Supported assertions and parent imports participate
+in binding verification; applying a saved type rename reproves its spans and
+runs native tests with rollback.

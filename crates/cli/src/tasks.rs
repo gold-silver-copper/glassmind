@@ -1822,13 +1822,13 @@ mod tests {
     }
 
     #[test]
-    fn field_plan_does_not_bypass_type_rename_proof_limits() {
+    fn field_plan_renames_through_test_module_bindings() {
         let f = Fixture::new(FIELD_SOURCE);
         f.turn(8, &format!("{FIELD_REQUEST}; then rename it to Packet"));
         let plan = f.state().plan.unwrap();
-        assert_eq!(plan.status, TaskStatus::Blocked);
-        assert_eq!(plan.current, 1);
-        assert!(f.source().contains("struct Parcel"));
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert_eq!(plan.current, 2);
+        assert!(f.source().contains("struct Packet"));
         assert!(f.source().contains("weight: 7"));
     }
 }
