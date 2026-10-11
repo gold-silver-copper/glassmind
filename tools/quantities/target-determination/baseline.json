@@ -1,0 +1,187 @@
+{
+  "binary_sha256": "0b24445f6dbe052827138294396442cfcfc26be9eff60b8ff376eda732e29b7c",
+  "total": 20,
+  "passed": 8,
+  "cases": [
+    {
+      "question": "The sum of two numbers is 10. What is their sum?",
+      "expected": "10",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The sum of two numbers is 10. What is twice their sum?",
+      "expected": "20",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The sum of two numbers is 10. What is the first number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The second number is 7. What is the second number?",
+      "expected": "7",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The second number is 7. What is the first number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The first number is the second number. What is the first number minus the second number?",
+      "expected": "0",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The sum of two numbers is 10. The sum of two numbers is 11. What is their sum?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The sum of two numbers is 10. Twice their sum is 20. What is their sum?",
+      "expected": "10",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The sum of two numbers is 10. Twice their sum is 21. What is their sum?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "A number is the number. What is the number minus the number?",
+      "expected": "0",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "A number is the number. What is the number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between the first number and the second number is 3. What is the difference between the first number and the second number?",
+      "expected": "3",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The difference between the first number and the second number is 3. What is the first number minus the second number?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between the first number and the second number is 0. What is the first number minus the second number?",
+      "expected": "0",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The difference between the first number and the second number is -1. What is their sum?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The sum of the difference between the first number and 0 and the difference between the second number and 0 is 0. What is their sum?",
+      "expected": "0",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The sum of the difference between the first number and 0 and the difference between the second number and 0 is 1. What is their sum?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "The difference between the first number and 0 is the first number. The difference between the first number and 0 is 0 minus the first number. What is the first number?",
+      "expected": "0",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The sum of two numbers is 1/3. What is three times their sum?",
+      "expected": "1",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    },
+    {
+      "question": "The sum of two numbers is -4. What is the difference between their sum and 1?",
+      "expected": "5",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": false
+    }
+  ]
+}

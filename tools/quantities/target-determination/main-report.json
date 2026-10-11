@@ -1,0 +1,445 @@
+{
+  "binary_sha256": "e3ea5e5dcf5549e908c011de3cea23a6b31fdf10cd5520c65bfe429b5c4d99ba",
+  "modes": [
+    {
+      "mode": "plain",
+      "total": 20,
+      "passed": 20,
+      "positive_state_and_recall_checks": 12,
+      "cases": [
+        {
+          "question": "The sum of two numbers is 10. What is their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "10",
+            "value": "10",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. What is twice their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "20",
+            "value": "20",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. What is the first number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The second number is 7. What is the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "7",
+            "value": "7",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The second number is 7. What is the first number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The first number is the second number. What is the first number minus the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. The sum of two numbers is 11. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. Twice their sum is 20. What is their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "10",
+            "value": "10",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. Twice their sum is 21. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "A number is the number. What is the number minus the number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "A number is the number. What is the number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is 3. What is the difference between the first number and the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "3",
+            "value": "3",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is 3. What is the first number minus the second number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is 0. What is the first number minus the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is -1. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of the difference between the first number and 0 and the difference between the second number and 0 is 0. What is their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of the difference between the first number and 0 and the difference between the second number and 0 is 1. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and 0 is the first number. The difference between the first number and 0 is 0 minus the first number. What is the first number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 1/3. What is three times their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "1",
+            "value": "1",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is -4. What is the difference between their sum and 1?",
+          "reply": {
+            "kind": "calculated",
+            "text": "5",
+            "value": "5",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "mode": "intent",
+      "total": 20,
+      "passed": 20,
+      "positive_state_and_recall_checks": 12,
+      "cases": [
+        {
+          "question": "The sum of two numbers is 10. What is their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "10",
+            "value": "10",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. What is twice their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "20",
+            "value": "20",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. What is the first number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The second number is 7. What is the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "7",
+            "value": "7",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The second number is 7. What is the first number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The first number is the second number. What is the first number minus the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. The sum of two numbers is 11. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. Twice their sum is 20. What is their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "10",
+            "value": "10",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 10. Twice their sum is 21. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "A number is the number. What is the number minus the number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "A number is the number. What is the number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is 3. What is the difference between the first number and the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "3",
+            "value": "3",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is 3. What is the first number minus the second number?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is 0. What is the first number minus the second number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and the second number is -1. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of the difference between the first number and 0 and the difference between the second number and 0 is 0. What is their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of the difference between the first number and 0 and the difference between the second number and 0 is 1. What is their sum?",
+          "reply": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          },
+          "passed": true
+        },
+        {
+          "question": "The difference between the first number and 0 is the first number. The difference between the first number and 0 is 0 minus the first number. What is the first number?",
+          "reply": {
+            "kind": "calculated",
+            "text": "0",
+            "value": "0",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is 1/3. What is three times their sum?",
+          "reply": {
+            "kind": "calculated",
+            "text": "1",
+            "value": "1",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        },
+        {
+          "question": "The sum of two numbers is -4. What is the difference between their sum and 1?",
+          "reply": {
+            "kind": "calculated",
+            "text": "5",
+            "value": "5",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          },
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

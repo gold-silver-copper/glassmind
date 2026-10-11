@@ -78,6 +78,7 @@ impl Problem {
             .collect();
         let variables = if self.pair { 2 } else { 1 };
         let mut rank = 0;
+        let mut pivots = Vec::new();
         for column in 0..variables {
             let pivot = (rank..rows.len()).find(|&i| {
                 rows.get(i)
@@ -85,7 +86,7 @@ impl Problem {
                     .is_some_and(|v| *v != zero())
             });
             let Some(pivot) = pivot else {
-                return Err("underdetermined scalar constraints".into());
+                continue;
             };
             rows.swap(rank, pivot);
             let row = *rows.get(rank).ok_or("missing pivot")?;
@@ -106,7 +107,39 @@ impl Problem {
                     *v = v.checked_sub(factor.checked_mul(p)?)?;
                 }
             }
+            pivots.push(column);
             rank += 1;
+        }
+        if rows
+            .iter()
+            .any(|&[a, b, c]| a == zero() && b == zero() && c != zero())
+        {
+            return Ok(None);
+        }
+        if rank < variables {
+            let reduce = |mut expression: ScalarExpr| -> Result<ScalarExpr> {
+                for (&column, &[a, b, c]) in pivots.iter().zip(&rows) {
+                    let factor = *expression
+                        .coefficients
+                        .get(column)
+                        .ok_or("missing column")?;
+                    expression = expression.sub(
+                        ScalarExpr {
+                            coefficients: [a, b],
+                            constant: c,
+                        }
+                        .scale(factor)?,
+                    )?;
+                }
+                Ok(expression)
+            };
+            let target = reduce(self.target)?;
+            let signs = self
+                .differences
+                .into_iter()
+                .map(reduce)
+                .collect::<Result<Vec<_>>>()?;
+            return projected_target(target, signs);
         }
         let x = rows
             .first()
@@ -134,6 +167,98 @@ impl Problem {
             }
         }
         self.target.value([x, y]).map(Some)
+    }
+}
+
+// Each row denotes a*x + b*y + c*target + d >= 0. Projection preserves
+// existence over real numbers; it never assigns arbitrary values to free inputs.
+fn projected_target(target: ScalarExpr, signs: Vec<ScalarExpr>) -> Result<Option<Rational>> {
+    let [a, b] = target.coefficients;
+    let mut rows = vec![
+        [a, b, one().checked_neg()?, target.constant],
+        [
+            a.checked_neg()?,
+            b.checked_neg()?,
+            one(),
+            target.constant.checked_neg()?,
+        ],
+    ];
+    rows.extend(signs.into_iter().map(|e| {
+        let [a, b] = e.coefficients;
+        [a, b, zero(), e.constant]
+    }));
+    for column in 0..2 {
+        let mut positive = Vec::new();
+        let mut negative = Vec::new();
+        let mut remaining = Vec::new();
+        for mut row in rows {
+            let coefficient = *row.get(column).ok_or("missing projection column")?;
+            if coefficient == zero() {
+                remaining.push(row);
+                continue;
+            }
+            let divisor = if coefficient.is_negative() {
+                coefficient.checked_neg()?
+            } else {
+                coefficient
+            };
+            for value in &mut row {
+                *value = value.checked_div(divisor)?;
+            }
+            if coefficient.is_negative() {
+                negative.push(row);
+            } else {
+                positive.push(row);
+            }
+        }
+        for lower in positive {
+            for upper in &negative {
+                let mut combined = lower;
+                for (value, other) in combined.iter_mut().zip(upper) {
+                    *value = value.checked_add(*other)?;
+                }
+                remaining.push(combined);
+                if remaining.len() > 64 {
+                    return Err("too many projected constraints".into());
+                }
+            }
+        }
+        rows = remaining;
+    }
+    let (mut lower, mut upper): (Option<Rational>, Option<Rational>) = (None, None);
+    for [_, _, coefficient, constant] in rows {
+        if coefficient == zero() {
+            if constant.is_negative() {
+                return Ok(None);
+            }
+            continue;
+        }
+        let bound = constant.checked_neg()?.checked_div(coefficient)?;
+        if coefficient.is_negative() {
+            if let Some(u) = upper {
+                if bound.checked_cmp(u)?.is_lt() {
+                    upper = Some(bound);
+                }
+            } else {
+                upper = Some(bound);
+            }
+        } else if let Some(l) = lower {
+            if bound.checked_cmp(l)?.is_gt() {
+                lower = Some(bound);
+            }
+        } else {
+            lower = Some(bound);
+        }
+    }
+    match (lower, upper) {
+        (Some(l), Some(u)) => match l.checked_cmp(u)? {
+            std::cmp::Ordering::Equal => Ok(Some(l)),
+            std::cmp::Ordering::Greater => Ok(None),
+            std::cmp::Ordering::Less => {
+                Err("scalar constraints have multiple target values".into())
+            }
+        },
+        _ => Err("underdetermined scalar target".into()),
     }
 }
 

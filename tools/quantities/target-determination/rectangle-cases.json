@@ -1,0 +1,884 @@
+[
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is -2 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      -2,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is -2 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      -2,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is -2 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      -2,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is 0 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      0,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is 0 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      0,
+      0
+    ],
+    "expected": "0"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is 0 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      0,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is 3 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      3,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is 3 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      3,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and -2 is the second number minus -2. The difference between the second number and 8 is 8 minus the second number. What is 3 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "coefficients": [
+      3,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is -2 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      -2,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is -2 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      -2,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is -2 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      -2,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is 0 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      0,
+      -1
+    ],
+    "expected": "-4"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is 0 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      0,
+      0
+    ],
+    "expected": "0"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is 0 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      0,
+      4
+    ],
+    "expected": "16"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is 3 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      3,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is 3 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      3,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and 7 is 7 minus the first number. The difference between the second number and 4 is the second number minus 4. The difference between the second number and 4 is 4 minus the second number. What is 3 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      7,
+      4,
+      4
+    ],
+    "coefficients": [
+      3,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is -2 times the first number plus -1 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      -2,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is -2 times the first number plus 0 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      -2,
+      0
+    ],
+    "expected": "-4"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is -2 times the first number plus 4 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      -2,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 0 times the first number plus -1 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      0,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 0 times the first number plus 0 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      0,
+      0
+    ],
+    "expected": "0"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 0 times the first number plus 4 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      0,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 3 times the first number plus -1 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      3,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 3 times the first number plus 0 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      3,
+      0
+    ],
+    "expected": "6"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 3 times the first number plus 4 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      3,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is -2 times the first number plus -1 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      -2,
+      -1
+    ],
+    "expected": "-3"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is -2 times the first number plus 0 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      -2,
+      0
+    ],
+    "expected": "-4"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is -2 times the first number plus 4 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      -2,
+      4
+    ],
+    "expected": "-8"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is 0 times the first number plus -1 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      0,
+      -1
+    ],
+    "expected": "1"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is 0 times the first number plus 0 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      0,
+      0
+    ],
+    "expected": "0"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is 0 times the first number plus 4 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      0,
+      4
+    ],
+    "expected": "-4"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is 3 times the first number plus -1 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      3,
+      -1
+    ],
+    "expected": "7"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is 3 times the first number plus 0 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      3,
+      0
+    ],
+    "expected": "6"
+  },
+  {
+    "question": "The difference between the first number and 2 is the first number minus 2. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and -1 is -1 minus the second number. What is 3 times the first number plus 4 times the second number?",
+    "bounds": [
+      2,
+      2,
+      -1,
+      -1
+    ],
+    "coefficients": [
+      3,
+      4
+    ],
+    "expected": "2"
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is -2 times the first number plus -1 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      -2,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is -2 times the first number plus 0 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      -2,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is -2 times the first number plus 4 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      -2,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 0 times the first number plus -1 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      0,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 0 times the first number plus 0 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      0,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 0 times the first number plus 4 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      0,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 3 times the first number plus -1 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      3,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 3 times the first number plus 0 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      3,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and 3 is the first number minus 3. The difference between the first number and 2 is 2 minus the first number. The difference between the second number and -1 is the second number minus -1. The difference between the second number and 5 is 5 minus the second number. What is 3 times the first number plus 4 times the second number?",
+    "bounds": [
+      3,
+      2,
+      -1,
+      5
+    ],
+    "coefficients": [
+      3,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is -2 times the first number plus -1 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      -2,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is -2 times the first number plus 0 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      -2,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is -2 times the first number plus 4 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      -2,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is 0 times the first number plus -1 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      0,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is 0 times the first number plus 0 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      0,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is 0 times the first number plus 4 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      0,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is 3 times the first number plus -1 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      3,
+      -1
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is 3 times the first number plus 0 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      3,
+      0
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -2 is the first number minus -2. The difference between the first number and 4 is 4 minus the first number. The difference between the second number and 3 is the second number minus 3. The difference between the second number and 1 is 1 minus the second number. What is 3 times the first number plus 4 times the second number?",
+    "bounds": [
+      -2,
+      4,
+      3,
+      1
+    ],
+    "coefficients": [
+      3,
+      4
+    ],
+    "expected": null
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is -2 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      -2,
+      -1
+    ],
+    "expected": "13"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is -2 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      -2,
+      0
+    ],
+    "expected": "6"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is -2 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      -2,
+      4
+    ],
+    "expected": "-22"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is 0 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      0,
+      -1
+    ],
+    "expected": "7"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is 0 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      0,
+      0
+    ],
+    "expected": "0"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is 0 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      0,
+      4
+    ],
+    "expected": "-28"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is 3 times the first number plus -1 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      3,
+      -1
+    ],
+    "expected": "-2"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is 3 times the first number plus 0 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      3,
+      0
+    ],
+    "expected": "-9"
+  },
+  {
+    "question": "The difference between the first number and -3 is the first number minus -3. The difference between the first number and -3 is -3 minus the first number. The difference between the second number and -7 is the second number minus -7. The difference between the second number and -7 is -7 minus the second number. What is 3 times the first number plus 4 times the second number?",
+    "bounds": [
+      -3,
+      -3,
+      -7,
+      -7
+    ],
+    "coefficients": [
+      3,
+      4
+    ],
+    "expected": "-37"
+  }
+]

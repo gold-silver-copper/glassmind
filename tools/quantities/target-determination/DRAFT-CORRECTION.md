@@ -1,0 +1,1 @@
+Before any baseline/candidate inference, clarified two sum-of-absolute-values cases with explicit "sum of ... and ...". The initial "difference ... plus ..." could attach plus inside a difference. Original draft preserved; labels unchanged. This is independent of candidate results.
