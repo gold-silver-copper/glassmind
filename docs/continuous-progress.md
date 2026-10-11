@@ -1,10 +1,10 @@
 # Continuous development checkpoint
 
 The unlimited goal is active; milestones do not complete it. Root branch `harness`.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the live equivalent-supervision quantity
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the live comparator repair
 experiment below. No routine human confirmation is needed.
 
-## Published PR42 and active next experiment
+## Published PR42 and active comparator experiment
 
 PR42 MERGED https://github.com/gold-silver-copper/glassmind/pull/42
 Reviewedhead947e01559f428975592202dc280f6a5abc2de242; CI38145656631 success94seconds
@@ -13,7 +13,7 @@ Reviewedhead947e01559f428975592202dc280f6a5abc2de242; CI38145656631 success94sec
 Coding212/765,553refused0fail,all209retained; threeblog-tagsstyles,onebug.
 Dialogue drafts integrated, unchanged1119predictionpayloads and610/459/50accuracy.
 README/journal/html published. Knowncompletedworker tokens184586362 inclcachedonce;
-root/interrupted andliveequivbinding usage excluded. No repeatedscoreboard rows.
+root/interrupted usage excluded; currentknowncount updatedbelow. No repeatedscoreboard rows.
 
 Currentbaseline combinedbinary coordinator/combined-deduporder-draftsession/glassmind
 SHAb6b093c5a82e76ec08481b5e0c8739e6b9090590f5f06b79d8b41eeb04e8948d.
@@ -24,47 +24,92 @@ worktrees andtemporaryauthlinks removed ONLYafterverification. Frozenbinaries/so
 rawdata retained. Cleanupreportscoordinator/batch42-{archive-review,cleanup}.json.
 Do not access removedworktreepaths or rerun finishedgates.
 
-LIVE worker equivbinding PID3823542, scopeglassmind-continuous-equivbinding.scope
-active/running8GiB0swap verified14:05UTC. WorktreeWORK/equivbinding, branch
-continuous/equivbinding, base947e015. TaskWORK/equivbinding-task.txt;runWORK/equivbinding-run;
-launcherWORK/launch.py. Owns ONLYnewtools/quantities/equivalent-binding andexternalRUN.
-Astra fast/forcedChatGPT login+CLI flags verified; API/provider envstripped. No
-liveworker source/results inspected. No DEV, heldout, downloads, extraagents/modelcalls.
-Readonlygroundingaudit-source andexistingquantities-deps; exactoldmodel/source/TRAIN.
+## LIVE: typed sort comparator direction
 
-Hypothesis changes SUPERVISION, notanotherlocalfeature or decoderretune. Distinct
-inputslots remain symbolicatoms evenwhenvalues equal. Priorstep references expand
-into boundedexpressiontrees; onlyAdd/Multiply child-order commutation canonicalized.
-Subtract/Divide ordered; noassociation/cancellation/value-equality/generalalgebra.
-Legal left/rightpairs whosecanonicaltreeequalsgold define partial-label targets.
-Oldfeatures/hash/operationweights/masks/decoder/executor/comparator unchanged.
-Two fixed matched arms fromoldweights, operand-only6epochs inoriginalFITorder:
-originalsingletargetcontrol vsformalpartiallabelsoftmaxmass. Rightcontexts weighted
-perstep acrossvalidlefts. Freeze exactoldoptimizer/schedule, noCALselection/tuning.
-Eacharm<=600s8GiB0swap,model<=16MiB,outer1800s. Reportincompleteifbothcannotfinish.
+WorkerPID3839409, scopeglassmind-continuous-comparator.scope active/running8GiB0swap.
+WorktreeWORK/comparator, branchcontinuous/comparator, based3d5748f. TaskWORK/comparator-task.txt;
+runWORK/comparator-run,launcherWORK/launch.py. Owns ONLYcrates/world-rust andnew
+tools/coding-comparator. Astra fast/forcedChatGPT verified,API/providerenvstripped.
+No liveworker source/results inspected. Readonlyextremum-source110files57265bytes,
+publicTRAIN27sources, rustbenchf79e71a MIT ORApache2. No newdownloads/hiddenmaterial.
+BaselineRUN/baseline/glassmind =combinedb6b093c5..., TRAIN9/27/fullDEV212/765.
 
-Exactclean4590FIT1182CAL, all29837TRAINrowaccounting; original200nativebaseline must
-matchbeforefitting. OriginalCALfree143,oracle221;teacherleft2197/right2499of4138.
-Continuationgates Bfree>=168,oracle>=251 andbothstrictlyabovecontrolA; eachsymbolic
-teacheroperandrate>=3percentagepoints aboveoriginalANDcontrol. Anygatefailrejects.
-No production/DEV evenifpasses, parentreviewsfirst. Alloldcorrectlosses/refusal→wrong
-reported; numericalagreementnotEnglishsemanticproof. This newformal-targetmetric
-mustnotretroactivelyreclassifyoldaccuracy. No selectiveconfidencepolicy.
+Hypothesis: source/type-proven builtin Ord fieldcmp direction insidestandardVec
+sort_by canbe flippedonecomparison atatime, preservingsecondaryties/restofsource.
+Closednamespace/nativeprimitive/Stringfields; noalias/import/customOrd/opaque
+macro/type/sideeffect/inferredintent shortcuts. Newboundednativefamilyafterallold
+familiesincludingdedup. <=8candidates/20sec, eachfromoriginaltree, exactlyonecomplete
+pass+savedchoice; olderambiguity/incomplete/error/savefailure blocksnewfallback.
+OldTRAIN9 outcome files muststaybyteidentical; candidatefull765parentonlyafterreview.
 
-Parentcoordinator/equivbinding-independent freezes13formalpairsets+3invalidrefs.
-casesSHA5e88627f5f326d1d66e39f5169ecf4b327a4945a590af3ba34714bc04b2d8273.
-SeparatePythonFraction/tuple oracleenumeratesalllegalpairs. Originalnativebaseline
-65assignmentgroups/120executions agreeforallowedchoices, inclnegative/zero/equal/
-decimalvalues anddenominatorfailure. Threeinvalidnativechecksrefuse; supplemental
-invalid-native-baseline.json. FrozenPLAN/cases/nativebaseline/script hashes in
-freeze.json. No workeraccess toparentcases. Afterterminalarchive/hashverify first,
-thenindependentlycompareeveryTRAINtargetpairset, OPweights, matchedschedule,
-gradient/formalchecks, exactsource/split andallnumericcomparisons. Do notinspectlive.
+Parentcoordinator/comparator-independent froze11cases beforeinspection:5repairs
+(u32/i64/String/char/bool; primaryties andUnicodecomments),4excludedcontrols,
+2ambiguities. casesSHA07e435c448d9eedc30065c9727e77e324f08bc5b7fd6bbf15708285743f5b1f0.
+Baseline85669 COMPLETE:all11compileandfailactualtests,0/5repairs,4controlsand
+2unresolvedunchanged,notimeouts/manifestedits. Exacteditoutsideonecmp required;
+operandexchangeorcmp.reverse allowed. Nativealternatives40579 COMPLETE:2different
+comparatorrepairs passsamepublictest butproduce differentcompleteorders; olddedup
+2alternatives+newcomparator1 passbutproduce3differentoutputs. Two-fileveto fixture
+keepslib.rs olddedup closednamespace andmain.rs comparatorrecord separately.
+Baseline-veto-review.json confirmsoldfamily2completeOk[]/passing2/incompletefalse/
+acceptedfalse. Mereunchangedsourceisnotenoughforcandidateambiguity gate.
+Full-gate.json andcompare-full.py frozen:765rows,all212retained,0fail, unchanged
+runnerSHAaddadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06;
+baselineresultSHA44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f.
 
-NEXT: whileworker runs, prepare independent numeric/target-set review using old
-native assets withoutduplicatetraining. Ifterminal, archive allownedsource/models/
-commands/results beforeinspection. Continueanothertrackifhypothesisfails. Active
-continuousgoal, nohumanconfirmationneeded andno milestonecompletion.
+NEXT afterauthoritativeterminal:archive/hashverify source/patch/commands/results
+BEFOREinspection, reviewtypednamespace/field/comparatoranchor andoldfamilyveto,
+runfrozenparentcandidate thenfull765 iflocalgatespass. Donotduplicatebaseline or
+alternativeexecutions. Checkexistingworkerhandle, notmissingoutputassumptions.
+
+## Completed/rejected: formal operand-supervision matched experiment
+
+Source/report commitd2902be LOCALafterPR42, notyetpublished. Workerterminal; former
+PID3823542/scopeinactive; worktreeandtemporaryauthlinkremovedafterarchiveverification.
+Originalarchive146files151366628bytes verifiedbeforeinspectionandcleanup;
+frozen121files150935819bytes independentlyverified. Models/source/nativeoutputs
+retainedunderWORK/equivbinding-run/frozen-candidate andterminal-originals.
+Knowncompletedworker tokens186040440 (previous184586362+1454078), cachedinputcounted
+once; root/interrupted andlivecomparatorusage excluded. Worker1430473inputincl
+1350912cached+23605output. No productionmodel/runtime/confidence/DEV change.
+
+Two matchedoperand-only6epoch continuations fromoriginalweights, epochs12..17,
+rate0.08/(1+0.2*epoch), exactoldFITrotation(k+epoch*997)%4590. Operationweights,
+8192hashfeatures/decoder/masks/executor unchanged. Aoriginalsingletarget; Bformal
+partial-labelmass. BcanonicalizesonlyAdd/Multiplychildorder inexpandedtrees;
+inputslotsdistinctevenwhenvaluesmatch, orderedSubtract/Divide, noassociation/
+cancellation/valueequivalence. Conditionalrightgradients computedatsharedpreupdate
+weights, averagedovervalidleftcontexts. Righttotalweight15753perFITepoch botharms;
+B22797contexts. NoCALselection/checkpoint/thresholdtuning oradditionaldata.
+
+All8gates FAIL. CALfree original143/1182,A146,B127; oracle221,A225,B203.
+Equivalentteacherleft original2474/4138,A2474,B2562 (+88below125gate);
+right2499,A2508,B2487. B27oldcorrectfree→wrong and29refusal→wrong.
+Originalexactleft2197 isnotnewformalbaseline2474; historicalaccuracyunchanged.
+Noformalrighttargetexpansiongivenfixedgoldleft inthiscorpus. Complete4590FIT/
+1182CAL preserved; all29837TRAINrowsinoriginalsplit/exclusionaccounting.
+Treatthisfixedsupervisionhypothesisasclosed; do notweaken gates orshipcontrolA.
+
+Parentcoordinator/equivbinding-independent froze13formalsets+3invalidrefs before
+inspection, native65assignmentgroups/120executions+3invalidchecks. Independent
+Fraction/tupletreeoracle generated19891step sets (FIT15753/CAL4138); verifiedall
+59673reportedsets across3arms, all5772originalfree/oracle recordsandmemberships.
+Parentreview58716 COMPLETE:question-onlyfreshBfree1182records exact; originalnative
+executor2282proposedBfree/oracleCALprogramsexact; unchangedtypedlabelcomparator
+allFIT/CALtotals/transitions agree,8gatesallfalse. Sourceoriginalproposalexactplus
+2includes, Rationalexact; OPf32hash9f8445a807a39ce7478757cf92ac6816110ff2392d56666b38d4038b1fd8cb86
+identicaloriginal/A/B. Bothtrainedmodels<16MiB; no duplicatedtraining.
+Parentprobe13502 COMPLETE:wrapperaroundarchivedprivatefunctions passes13sets/
+3invalidrefs and15gradientcases60coordinates inclties/extremeprobabilities;
+maxfinitedifferenceerror2.53e-9. Frozenparentprobe/source/binary retained.
+NativeartifactSHA55567ff108c345dfe6a28b1df7744db69bcea49e23bb49d181e9b4eba9a9cde4.
+
+Reports tools/quantities/equivalent-binding/PARENT.md+parent/, originalREPORT.md.
+SourceMathQATRAINfafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6 Apache2,9013733bytes,
+SHAc16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99.
+No newexternaldata. source/clean split samegroundingaudit-source. Parentcorpus
+snapshot targetsSHA152aed3414937acaadb0062a57cf796c96d4397683df280c1274745d75e11697.
+Do notreruncompletedprobes,trainingorformalbaseline; sourceandhashes retained.
 
 ## Published PR41 (historical baseline)
 
@@ -239,9 +284,10 @@ semanticchecks; no first-match value priority or another oldrankerconfiguration.
 
 ## Rolling queue and resources
 
-1. Finish active equivalent-supervision matched TRAIN experiment and parent review.
-2. Further quantity work requires explicitspan/reference supervision if formal
-   partial-label targets also fail; no value-equality grounding or localfeature rename.
+1. Finish active comparator worker, frozenparentcontracts andfull765 gate.
+2. Formal partial-label targets failed; futurequantitywork requires explicitspan/
+   relation supervision or a materiallydifferentsemanticrepresentation. No value-
+   equality grounding, partial-label retune or oldlocalfeature rename.
 3. Dialogue draft persistence published in PR42; accuracy
    unchanged610/1119. Tokenendpoints was third rejectedspan-proposalhypothesis;
    future accuracy work needs a materiallydifferent representation.
