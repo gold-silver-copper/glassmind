@@ -2,17 +2,32 @@
 
 Unlimited active goal; milestone completion does not complete the goal. Root
 branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Previous goal turn: PROGRESS (implementationgrammarlaunched, nativebaselines).
-Currentturn: PROGRESS (graphparserindependentlyrejected/archived, comparisonprefix
-boundaryfixedandvalidated). Unlimitedgoalremainsactive.
+Previous goal turn: independently rejected the graph parser and verified the
+quantity command boundary fix. Current turn: published PR44 and prepared the
+independent implementation-grammar regression adapter. The unlimited goal
+remains active.
 
-## Current batch: prefix boundary fix and graph rejection
+## Published PR44; implementation experiment still running
 
-Commits09f1cab graphrejection report; b57c7b9 quantityprefixfix. Push95481 pending
-atcheckpoint, thenopenPR44 againstmain, verifyrequiredCI onexactreviewedhead and
-mergewith--match-head-commit. No accuracyjournalrow: neitherchangeclaimsnewscore.
-Knowncompletedworker tokens192615259 inclcachedonce; parent/interrupted/liveimpl
-excluded (graphworker2069421input incl1973120cached +25502output=2094923).
+PR44 merged: https://github.com/gold-silver-copper/glassmind/pull/44
+Reviewed head: 8d86b8d66f035f5ceb61a024c0a7ec2095e3b150.
+CI 38148917594 passed in 66 seconds, 14:52:06–14:53:12 UTC.
+Merge: 3814a9ae7721919c6f038316bc8503de574ed12c, 2026-10-11T14:53:37Z.
+Push55960, PR4743, CI5309 and merge84046 completed successfully. Do not repeat
+publication. Commits09f1cab records the rejected parser; b57c7b9 fixes the
+quantity prefix. Neither changes a benchmark score, so no accuracy row was added.
+The two whitespace diagnostics from git diff --check are literal blank context
+lines inside the preserved rejected.patch; the original evidence stays intact.
+
+Known completed-worker tokens: 192,615,259, including cached input once; root,
+interrupted workers and the live implementation worker are excluded. The graph
+worker used 2,069,421 input (1,973,120 cached) plus 25,502 output = 2,094,923.
+
+Worker4131690 was verified live at 15:21 elapsed immediately after the merge.
+No root native jobs remain. Next: when the worker finishes, verify its scope is
+inactive and PID gone, archive and hash-check the original submission before
+inspection, then run the frozen independent grammar/native contracts. Preserve
+the separately accepted talk_quantities.rs boundary fix during integration.
 
 Quantityprefixbugreproduced: explicitComparequantities: separatorcountedagainst
 4096-bytepayloadcap. Baseline12/14; two validatlimitASCII/Unicodewhitespacecases
@@ -158,6 +173,11 @@ Parentcoordinator/implgrammar-independent:
   controlsallpass, separateunambiguousfunctions/fields namedimplement/implemented/
   write/fill, exactbefore/aftersourcesretained. Theseareobservedcurrentbehavior,
   notunsupportedassumptions fromrejectedoldfixtures.
+- boundary-review.py and boundary-review-freeze.json are ready. The adapter
+  checks all 12 frozen cases against exact baseline stdout, stderr, exit status
+  and complete project file hashes. Its own baseline replay passed 12/12; output
+  is boundary-adapter-baseline/report.json. Do not rerun the baseline. Candidate
+  command: python3 boundary-review.py --binary FROZEN_BINARY --out NEW_DIRECTORY.
 - freeze.py/cases.json/PLAN.md/freeze.json:18freshnativecases=6implementations,
   1ambiguity,11unchangedcontrols. Same-signaturedifferentbehaviors, unrelated/
   Unicode names, sumall/negative,oddreverse,characters/word-sequence/count.
