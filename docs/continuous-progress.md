@@ -16,8 +16,8 @@ merge495d9f85e9d47380c93168867e3683a885618d47. Reviewedheade240ae93b63c0ccb1d48a
 passed CI38134843165 in86seconds. Push42940/create63443/merge65840 allCOMPLETE.
 Both source improvements andupdatedREADME/scorejournal are published. No openPR or
 active model/native/full/build job remains. This is a checkpoint, not goalcompletion.
-Next: investigate a new quantities representation using permitted TRAIN/DEV,
-starting with existing quantity source and rejected rate reports; do not repeat
+Next: continue the TRAIN program-representation audit below; freeze meaningful
+baselines and fit/calibration before implementing a new proposer. Do not repeat
 rate templates or syntax tweaks. Preserve all existing synthetic/full4475 baselines.
 
 ### Accepted repair scope change
@@ -101,6 +101,31 @@ Full200/2821 standalone,facts-enabledtalk,defaulttalk bytesidentical toretainedb
 Main source/reportse6a6a4e committed. Root docs/fact-verification.md,READMEanddataREADME
 explainnewinterface andlimitations. Newfixturebytes55589includingversionedcopies;
 newdownloads0. Scorejournal recordsordinaryQA unchanged, notauthoredaccuracy asQA gain.
+
+### Next experiment started: quantities program representation
+
+TRAIN-only audit COMPLETE, no model training or inference yet. Source is
+WORK/quantities-run/tmp/mathqa/train.parquet (not the stale train.json path),
+29837rows,9013733bytes,SHA c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99.
+Only Problem,linear_formula,category columns read. Existing source-card identifies
+Apache-2.0; existing pinnedrevisionfafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6.
+No newdownloads orofficialtestitems. Existing quantities executable remains exact
+5a94dba0b893fafed21906c2150e51de7fab94c67cadefba10008b2a187e4b9f.
+Audit code/results:coordinator/equation-proposal-audit/{train-audit.py,train-audit.json}.
+23794TRAIN programs use onlyadd/subtract/multiply/divide;20100haveatmost6steps,
+6501distincttemplates. These are annotation coverage counts, not solveraccuracy.
+
+Concrete next action: inspect TRAIN number-slot/constant/program semantics and
+annotation reliability, then freeze grouped disjoint TRAIN fit/calibration and a
+lexical retrieval baseline before any DEV selection. Design a bounded learned
+operation-program proposer with exact typed execution; compare it to thatbaseline,
+not merely to all-refusal. Preserve current solve() and all3116synthetic/full4475
+metrics. Modelconfidence alone cannot establish English entailment: any unverified
+proposal must remain explicitly unverified, not silently become a factual answer.
+The audit does not yet decide the final architecture or acceptance threshold.
+Use existing pyarrow under quantities-run/tmp/quantities-deps; cappedPython audit
+finishes inunder1second. No audit process remains active. This changes representation
+rather than reviving three rejected rate-template hypotheses.
 
 ### Next work and retained ownership
 
