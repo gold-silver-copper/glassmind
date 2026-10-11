@@ -44,13 +44,14 @@ cancelled/completed/stale tasks cannot resume via a parameter correction.
 declined-context test PASS(shared-mind-test.log,44829). Requiredchecks19874COMPLETE0.
 Pinned candidate SHA256994b5f3ed26d37fd4708a57d0a5d4fcdf600d4f25fd65adf92c76102bcbc954c,
 candidate.json. CLI40process smoke PASS(cli-smoke/report.json,99517COMPLETE0).
-Full765DEV running71679; full765/run.log/results.jsonl. Compare all outcomes with
-yolo-type-tests/full765, then publish/merge exactgreenhead. Runtime files compared
+Full765DEV71679COMPLETE0:223pass542refused0fail, all765outcomes identical to
+yolo-type-tests/full765. Evidence tools/coding-tasks/amendments-validation.json.
+All amendment jobs terminal; next publish and merge exactgreenhead. Runtime files compared
 identical after integration. Initial clippy failure retained in tests.log.
 
-Independent missing-parameter integration is uncommitted in
+Missing-parameter candidate is committed in
 /home/gsc/.cache/glassmind/yolo-missing-parameters, branchcontinuous/missing-parameters
-from032e3eb. RUN=/home/gsc/.cache/glassmind/yolo-missing.
+at efd319f2178e340d98bc3faba93e34f6159b5ff4, from032e3eb. RUN=/home/gsc/.cache/glassmind/yolo-missing.
 PublicField.default becomes Option, retaining the previous JSON string encoding
 for supplied defaults. Fully consumed declarations without defaults create a
 blocked Task with typed MissingParameter; no invented value or source change.
@@ -59,8 +60,11 @@ selection. Native proposal/rollback and plan tails reused. Unsupported types,
 conflicting values and partial constructor scope remain errors. Standalone do
 still requires explicit complete defaults. Initial98CLI +4field grammar PASS,
 tests.log session73908 COMPLETE0. After adding bare-literal routing, final focused
-pipeline77986 is running, tests-v2.log. No candidate pinned/integrated; prepared43
-real-process smoke. Next finish tests, requiredchecks, smoke and fullDEV.
+pipeline77986 COMPLETE0:98CLI/4grammar PASS(tests-v2.log). Requiredchecks5370
+COMPLETE0(check.log). Pinned candidate SHA256
+06cba3225bb66c6096ca33612ae1884f28a777a1d012469f0cc9c6ee582ef46b; candidate.json.
+CLI43process smoke25031 running(cli-smoke.log), full765DEV launchedfull765/run.log.
+Not integrated. Next verify smoke, compare regression, publish after amendment PR.
 
 Shared cargo cache yolo-plans/target. Pinned binaries isolate live regressions
 from later cache writes. Every cargo run bounded8G0swap, finite timeout, on-disk
