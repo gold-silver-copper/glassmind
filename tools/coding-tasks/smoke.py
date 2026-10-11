@@ -64,6 +64,32 @@ assert source.read_text() == external.replace('Probe', 'Meter')
 state = turn('rename Meter to Reader; then delete every file', 8)
 assert source.read_text() == external.replace('Probe', 'Meter')
 assert state['plan']['status'] == 'Cancelled'
+# Ambiguous owner choices persist, keep the new name, and update follow-up context.
+root = out / 'choice-project'
+(root / 'src').mkdir(parents=True)
+(root / 'Cargo.toml').write_text('[package]\nname="choice_cli_smoke"\nversion="0.1.0"\nedition="2021"\n[workspace]\n')
+source = root / 'src/lib.rs'
+original_choice = 'pub struct North { pub value: u32 }\npub struct South { pub value: u32 }\npub fn south(s: South) -> u32 { s.value }\n'
+source.write_text(original_choice)
+session = out / 'choice-session.json'
+state = turn('rename field value to count; then check the tests', 8)
+assert state['plan']['status'] == 'Blocked' and source.read_text() == original_choice
+assert len(state['task']['choices']['candidates']) == 2
+state = turn('choose North::value', 1)
+assert state['task']['status'] == 'Ready' and source.read_text() == original_choice
+state = turn('use the other one', 1)
+assert state['task']['choices']['selected'] == 1
+state = turn('continue', 8)
+assert state['plan']['status'] == 'Completed'
+assert 'South { pub count: u32 }' in source.read_text()
+assert 'North { pub value: u32 }' in source.read_text()
+state = turn('rename it to amount', 8)
+assert state['task']['status'] == 'Completed'
+assert 'South { pub amount: u32 }' in source.read_text()
+assert 's.amount' in source.read_text()
+turn('undo')
+assert 'South { pub count: u32 }' in source.read_text()
+assert 'North { pub value: u32 }' in source.read_text()
 report = dict(processes=len(turns), passed=True,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest())
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
