@@ -3,21 +3,32 @@
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Known completed-worker tokens:203193886, cached input counted once; parent and
-interrupted usage excluded. All quantity teachers are terminal; no model workers
-are running. Their owned auth symlinks were removed after verified archival.
+interrupted usage excluded. Five prior quantity teachers are terminal and archived; their auth links were
+removed. One complete-graph teacher is running, as recorded below.
 
-## Current handoff: full claims integrated; graph teacher running
+## Current handoff: PR53 merged; full graph QA rejected; graph teacher running
 
-Fullclaims storage/source validation COMPLETE. Worktreecontinuous/full-claims
-headd88d72e merged centrallya489c02. All25facts/lockfiles byte-identical. Required
-centralworkspace36773 COMPLETE exit0:fmt/alltargetclippy/release/strict4smoke pass.
+PR53 MERGEDa063cf13c064d67a59846ffd2708eb6ead4564a9 at19:50:02UTC.
+Reviewed7eb3de8cccf315766460223318852b97ceacc612, CI38169506217 SUCCESS99s.
+Allstorage/source/query gates passed; no publication work remains for importer.
+Centralfactsbinary71ae5f437aed6f11db336662a51cee8c663770633ec23553194a53fe937cdfba.
+Centralmainbinary0d551879056cc5e0356b7e36adea1f274c2e0e30182122aa538dfb4b895dbc1b.
+Read tools/facts/full-claims/PARENT.md, integration.json andpublished.json.
 Native62,772,387,840bytes SHAfc04ca4ac6f30468f619395a310181e23ebb45a44f776b81bb74178b357f0172.
-Audit77590 COMPLETE:8009rawsamples,854aliases andindependentcounts agree;
-combinedreference+audit671.175s. Witness64463 COMPLETE54.040s:157cases,
-49ordinaryanswers108refusals79sets24truncated;1setVMbudgeterror for8073242matches.
-All successful results matchcompleteprojection scans. Originallimitsunchanged.
-Read tools/facts/full-claims/PARENT.md andintegration.json. Allclaimsprocesses
-terminal. NEXTpublish reviewedcentralhead withgreenCI. NoQA/defaultpromotion.
+Allclaimsprocesses terminal; do not repeat completedimport/audit/querychecks.
+
+SeparatefullgraphQA worktreeWORK/full-claims-qa,branchcontinuous/full-claims-qa,
+head7b1aa0e integrated centrally. Frozenplan6fa9581,runnerc22d730. RUN=WORK/
+coordinator/full-claims-qa. Session85868 COMPLETE0,36.008s,103604KiBprocessRSS,
+32587776peakaddedbytes; original600s/120sinference/8GiB0swap/256MiB gates passed.
+CAL1949baseline2right1863refused84wrong; fullgraph554right1365refused30wrong.
+Net552,29newwrongfromrefused,no lostright => promotionREJECTED. NoDEV/default
+promotion. Newwrong12anchor/7relation/10source-answer disagreements. Runtime
+onlyreceivedquestions/model/graph; predictionspinnedbeforeannotationjoin.
+Reports tools/facts/full-claims-qa/PARENT.md andsummary.json. Scorejournal updated
+separateCALseries. NEXTfacts freeze an entity-mention localization hypothesis on
+TRAIN-FIT, motivated by generic requestwords incorrectly selected as entities.
+Do not relax rejectedgate or acquire data using benchmarkanswer entities.
 
 Quantitygraph worktreeWORK/quantity-graphs protocolfrozen47c7cc7:51contracts,
 6nativeprefixchecks passed. Batch/parent hashes unchanged. Exactlyone teacher
