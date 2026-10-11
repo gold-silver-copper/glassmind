@@ -20,6 +20,11 @@ pub struct CodingLanguage<'a> {
 }
 
 impl CodingLanguage<'_> {
+    fn contains_rename(understood: &Understanding<Rust>) -> bool {
+        matches!(understood, Understanding::Readings(rs) if rs.iter().any(|r|
+            matches!(r.meaning, Utterance::Command(Action::Rename { .. }))))
+    }
+
     fn exact(&self, r: &Reading<Rust>) -> bool {
         r.edits == 0
             && r.discarded.is_empty()
@@ -136,7 +141,10 @@ impl Language<Rust> for CodingLanguage<'_> {
             }
             return Understanding::Readings(readings);
         }
-        if rename_requests::concerns_rename(text) {
+        // The generic grammar can find a command inside a quoted example.
+        // Every rename must have passed one of the complete-request proofs
+        // above, even when the lexical guard treats its words as quoted data.
+        if rename_requests::concerns_rename(text) || Self::contains_rename(&understood) {
             return Understanding::Failed {
                 trouble: Trouble::Unsupported,
             };
@@ -150,10 +158,14 @@ impl Language<Rust> for CodingLanguage<'_> {
         understood
     }
     fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
-        if rename_requests::concerns_rename(text) || rename_requests::request(text).is_some() {
+        if rename_requests::concerns_rename(text)
+            || rename_requests::request(text).is_some()
+            || Self::contains_rename(&self.english.understand(text))
+        {
             return Vec::new();
         }
         let mut guesses = self.english.guesses(text);
+        guesses.retain(|r| !matches!(r.meaning, Utterance::Command(Action::Rename { .. })));
         guesses.extend(self.coding(text));
         guesses
     }
@@ -434,5 +446,40 @@ mod rename_tests {
                 ..
             })
         )));
+    }
+
+    #[test]
+    fn quoted_rename_examples_cannot_become_commands_or_guesses() {
+        let switches = Switches::all_on();
+        let english = English::new(glassmind_english_rust::rules(), &switches);
+        let language = CodingLanguage {
+            english: &english,
+            switches: &switches,
+        };
+        for text in [
+            "The guide says \"rename read_count to decode_count\". Why do its tests fail?",
+            "This is an example: \"rename read_count to decode_count\". Explain it.",
+            "The test output says `rename read_count to decode_count`. Please explain the message.",
+            "Can you explain the instruction \"rename read_count to decode_count\" in the tests?",
+            "Why does the documentation say \"rename read_count to decode_count\"?",
+            "I found the words \"rename read_count to decode_count\" in a failing unit test. What do they mean?",
+            "\"rename read_count to decode_count\" is an example, not a request. The tests are failing.",
+            "The README says \"rename read_count to decode_count\"; do not execute that command.",
+        ] {
+            if let Understanding::Readings(rs) = language.understand(text) {
+                assert!(
+                    rs.iter()
+                        .all(|r| !matches!(r.meaning, Utterance::Command(_))),
+                    "{text}: {rs:?}"
+                );
+            }
+            assert!(
+                language
+                    .guesses(text)
+                    .iter()
+                    .all(|r| !matches!(r.meaning, Utterance::Command(_))),
+                "{text}"
+            );
+        }
     }
 }

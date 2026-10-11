@@ -463,6 +463,40 @@ fn legacy_command(c: &mut Cursor<'_>, topic: bool) -> bool {
     legacy_tail(c)
 }
 
+// A bounded type description in an observational clause, not code to execute.
+// Named types, qualification and nested generic arguments stay delimited from
+// the following naming request; arbitrary prose cannot stand in for a type.
+fn legacy_type(c: &mut Cursor<'_>, depth: usize) -> bool {
+    if depth >= 8 {
+        return false;
+    }
+    if c.eat("&") {
+        c.eat("mut");
+    }
+    if c.id().is_none() {
+        return false;
+    }
+    while c.eat(": :") {
+        if c.id().is_none() {
+            return false;
+        }
+    }
+    if c.eat("<") {
+        if !legacy_type(c, depth + 1) {
+            return false;
+        }
+        while c.eat(",") {
+            if !legacy_type(c, depth + 1) {
+                return false;
+            }
+        }
+        if !c.eat(">") {
+            return false;
+        }
+    }
+    true
+}
+
 /// Proof that an old rename reading's surrounding text is within bounded
 /// descriptive/courtesy forms. Never accepts unknown sentence tails.
 pub fn legacy_compatible(text: &str) -> bool {
@@ -485,12 +519,56 @@ pub fn legacy_compatible(text: &str) -> bool {
     {
         return true;
     }
+    let mut arrow = c.clone();
+    if !arrow
+        .tokens
+        .get(arrow.at)
+        .is_some_and(|t| !t.quoted && t.text.eq_ignore_ascii_case("rename"))
+        && legacy_name(&mut arrow)
+        && arrow.eat("->")
+        && arrow.id().is_some()
+        && legacy_tail(&mut arrow)
+    {
+        return true;
+    }
+    // Without an imperative or arrow, both identifiers must be explicitly
+    // quoted. This preserves code-name shorthand without treating an ordinary
+    // question such as "how to rename" as an instruction.
+    let mut quoted = c.clone();
+    if quoted.tokens.get(quoted.at).is_some_and(|t| t.quoted)
+        && quoted.id().is_some()
+        && quoted.eat("to")
+        && quoted.tokens.get(quoted.at).is_some_and(|t| t.quoted)
+        && quoted.id().is_some()
+        && legacy_tail(&mut quoted)
+    {
+        return true;
+    }
+    let mut typed = c.clone();
+    if typed.one(&["um", "uh"]) && !typed.eat(",") {
+        return false;
+    }
+    if legacy_name(&mut typed)
+        && typed.eat("returns")
+        && legacy_type(&mut typed, 0)
+        && typed.eat(",")
+    {
+        typed.courtesy();
+        if typed.eat("call it")
+            && typed.id().is_some()
+            && typed.eat("instead")
+            && legacy_tail(&mut typed)
+        {
+            return true;
+        }
+    }
     // Topic with a naming judgment, or a name-to-name arrow followed by an
     // explicit rename instruction. These preserve the old unresolved readings.
     c.eat("i think");
     if legacy_name(&mut c) {
         if c.eat("is") && judgment(&mut c) && c.one(&[".", ","]) {
-            return legacy_command(&mut c, true);
+            return legacy_command(&mut c.clone(), true)
+                || (c.one(&["go with", "go w /"]) && c.id().is_some() && legacy_tail(&mut c));
         }
         if c.one(&["should be", "shoud be"]) {
             c.eat("called");
