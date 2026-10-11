@@ -13,6 +13,7 @@ def digest(path):
 
 def main():
     root=Path(sys.argv[1]).resolve();started=time.monotonic()
+    assert digest(root/'acquisition.json')=='e29894e98c4001db53ca5b93d9420e82e4736fd2985c28bd8251c899d2718b18'
     manifest=json.loads((root/'acquisition.json').read_text())
     ledger=[json.loads(line) for line in (root/'fetch.jsonl').read_text().splitlines()]
     files=manifest['files'];assert len(files)==86

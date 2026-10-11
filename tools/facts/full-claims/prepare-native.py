@@ -19,6 +19,9 @@ def main():
     assert resources['passed'] and resources['seconds']<14400
     assert projection['source_rows']==789435443
     assert projection['canonical_retained_ids']==3*projection['statements']
+    acquired=json.loads((root/'acquisition-report.json').read_text())
+    assert acquired['all_publisher_hashes_match'] and acquired['source_bytes']==44633986614
+    assert acquired['acquisition_sha256']==digest(root/'acquisition.json')
     acquisition=json.loads((root/'acquisition.json').read_text())
     assert projection['acquisition_sha256']==digest(root/'acquisition.json')
     assert len(acquisition['files'])==len(projection['files'])==86
@@ -31,10 +34,11 @@ def main():
     assert digest(path)==projection['projection_sha256']
     names=root.parent/'wikidata-native/native.sqlite'
     assert names.stat().st_size==12306595840
-    assert digest(names)=='f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b'
+    names_hash=digest(names)
+    assert names_hash=='f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b'
     base=json.loads((root.parent/'wikidata-native/source-manifest.json').read_text())
     manifest=dict(schema=1,scope='All86 public claims shards plus unchanged en/mul native names; publisher excludes scholarly works',
-                  names_sha256=digest(names),names_bytes=names.stat().st_size,names_source=base,
+                  names_sha256=names_hash,names_bytes=names.stat().st_size,names_source=base,
                   projection_sha256=projection['projection_sha256'],projection_bytes=projection['projection_bytes'],
                   canonical_audit_sha256=digest(root/'projection-report.json'),
                   statements=projection['statements'],qualified_statements=projection['qualified_statements'],

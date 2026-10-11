@@ -60,3 +60,9 @@ independent answer sets, avoiding repeated materialization of common large inver
 sets. All original per-case checks remain. Second retained-pilot smoke reproduces
 same110cases/hash/counts in0.451s;59distinct lookupgroups. Updated RUN/witnesses.py;
 prior version preserved as witnesses-before-grouping.py. No runtime behavior change.
+
+Before prepare-native: after fetch session64342 exits successfully, run
+RUN/audit-acquisition.py RUN under180s/8GiB. It pins the manifest, rehashes all86
+rawfiles, audits85new-download ledger entries and makes only newrawfilesreadonly.
+prepare-native.py now requires its acquisition-report.json in addition to the
+completed projection resource report. Full raw acquisition gate is unchanged.
