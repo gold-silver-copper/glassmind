@@ -164,6 +164,11 @@ The requested expression can now be determined while its operands remain
 unknown: a known sum of 10 implies twice that sum is 20. Ambiguous targets
 still refuse. [Determined answers and limits](docs/determined-quantities.md).
 
+A training-label source-reference pilot passed at 29/32 examples, but its separate
+replication reached 95/128 against a frozen minimum of 96 and was rejected.
+[Annotation evidence and representation limits](docs/quantity-source-references.md)
+are separate from quantity answering scores.
+
 ## Current benchmark tracks
 
 Chart and score journal: [tracks](docs/results/tracks.html). Scores below

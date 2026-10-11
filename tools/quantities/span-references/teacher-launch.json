@@ -1,0 +1,18 @@
+{
+  "model": "gpt-6-astra",
+  "service_tier": "fast",
+  "forced_login_method": "chatgpt",
+  "reasoning": "high",
+  "seconds_cap": 1200,
+  "memory_max": 8589934592,
+  "memory_swap_max": 0,
+  "annotation_bytes_cap": 2097152,
+  "official_configuration": "https://learn.chatgpt.com/docs/config-file/config-reference",
+  "inputs": {
+    "batch.json": "b4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e",
+    "schema.json": "41f58fb4515cbad7840cca7af34c3ec48551d7fd60971503f4f47aeffa1aa7ea",
+    "validate.py": "107472a226f7b9247c6faaeceea31089d29ec4d826e9485525ba09d623879fd6",
+    "teacher-brief.txt": "487cf95e09bb52cdf708700a030d4e4c383e54bc2e03f7b831255b2b84731146"
+  },
+  "script_sha256": "0328f2c9d378a05120a21d5f3137113a58d00fbfd4cf43614338549185ea7437"
+}

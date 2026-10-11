@@ -2,10 +2,11 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Known completed-worker tokens:201926299, cached input counted once; parent and
-interrupted usage excluded. No model workers, teacher calls or auth mounts.
+Known completed-worker tokens:203193886, cached input counted once; parent and
+interrupted usage excluded. All quantity teachers are terminal; no model workers
+are running. Their owned auth symlinks were removed after verified archival.
 
-## Current jobs,18:52UTC
+## Current jobs,19:30UTC
 
 Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
 coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
@@ -20,14 +21,15 @@ Fullsource manifestSHA782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a12
 Native89022 RUNNING,scopeglassmind-full-claims-native,supervisor1022832,child
 1022833 (verify).8GiB/no swap,21600s,192GiBoutput,384GiBaddedrun cap; TMPDIRand
 SQLITE_TMPDIR=RUN/tmp. At197.591s sourcehashes/projectionvalidated andnativealiases
-copied without renormalization. Fullclaims/witnessloading remains; do not restart.
+copied without renormalization. Claims/witnesses loaded807.318s; secondaryindexes
+built1225.432s. Finalintegrity/references remain; do not restart.
 NEXT: after successfulnative-resources.json, readonlyoutput thenaudit.py under
 3396sremaining original3600s combinedsourceaudit budget (referenceused203.173s),
 thenwitnesses.py3600s; bothviasupervise.py+8GiB0swap+setsid--waittimeout.
 No fullnative success/finalaudit/newgraphQA yet. Keepoldartifactsimmutable.
 Readworktree tools/facts/full-claims/PROGRESS.md andVALIDATION-PLAN.md.
 
-Coding wordinitials fullDEV COMPLETE and integrated; publicationnext.
+Coding wordinitials fullDEV COMPLETE, integrated and published in PR51.
 WORK/word-initials cleanhead5a45bd7; rootmerge7c034b0 matchesall196evaluated
 crate/source/manifest/lockfiles and exactbinarySHA
 efb48471993e9fb63181a7f171ffef428ef8938e24f29af20f5192a59d5b101b.
@@ -44,9 +46,69 @@ authoredoutputs and6TRAINoutputs independentlyrecompiled/verifierevidenceverifie
 terminal. No need to rerunidenticalsources. Tools/coding-word-initials/PARENT.md,
 pre-dev.json,source-review.json,integration.json preserve exactevidence.
 README/docs/scorejournal now221. Previousb04baseline preserved externally.
-NEXT: pushcoherentbatch, openPR, inspectCI for exactreviewedheadandmergeonlygreen.
-Continue monitoringnativeclaims89022; rawprovenance/storageaudit remainsindependent
-andmustpass beforeanynewgraphQA. No newmodelworkers/accountcalls.
+PR51 MERGED48ac2a89ff9a1644bf1f1cf6c536c401116dce02 at18:56:12UTC.
+Reviewedhead9a1fa5420cebc8f98f91a0249aa44080ae66d320;CI38165713044 SUCCESS102s.
+Push93513/create77478/merge43361 allCOMPLETE. FirstpostmergeGitHubquery TLS
+timeout; retryconfirmedmergedstate. No publicationwork remainsforcodingbatch.
+NEXT: monitor existingnativeclaimsjob89022, then frozenstorageaudit/witnesses.
+Independentquantitypilot nowactive: WORK/span-references,branchcontinuous/span-references
+head39effbd (later review/report commits follow). RUN=WORK/coordinator/span-references. Plan d4efe58 frozenbeforeselection.
+32TRAIN-FIT rows selectedby(group_sha256,row_id), solepriorreasonambiguous_leaf;
+all6sourcefiles/52oldarchivefileshashverified and32nativebindingsreproduced.
+BatchSHAb4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e.
+NoCAL/DEV/newdata orquantityruntimechanges. Originalvalue-onlyconverter354/7473
+vs1000 remainsREJECTED; thisissemantic TRAIN-labelquality, notsolveraccuracy.
+
+34authoredprotocolcontractspass; schema/validator/preteacherhashesfrozen5bd40bf.
+8parentFIT semanticreferences/counterfactualsfrozenatRUN/parent beforeteacher;
+26nativeoriginal/counterfactual/negativechecks matchmanualvalues. Parent5436must
+refusebadwaiting-intervalrationale;5449mustrefuseimplicitderived5housecountas
+fixedconstant. Allparentexpectations hidden fromteacher. See worktreePROGRESS.
+
+Teacher96285 COMPLETE exit0,152.017s, no cap failure. Exactgpt-6-astra/fast/high,
+forcedChatGPTlogin, noAPIkeys. Scopeglassmind-span-references-teacher inactive;
+ownedlogin symlinkremoved. All15originalfiles463891bytes archived/hashverified in
+RUN/teacher-originals; credentials excluded. Usage230231=220487input(includes185856
+cached)+9744output(includesreasoning); knowncompletedtotal202156530.
+
+Pilot PASS:32rows accounted,26resolved3equivalent2unsupported1label_error.
+29/32parentconfirmedaccepted,32nativeoriginalprogramvariants exact; root reviewed
+all202leafassignments, zeroacceptedsemanticcontradictions. All8frozenparentcases
+agree;25postteacheroriginal/counterfactualnativeexecutions match. Thirdrefusal5909
+requiresmissingderivedbike/trashcanwheelcount; cannotencodeasconstant6.
+Semanticreview RUN/semantic-review.json andworktreecopy includesall32decisions,
+source/outputhashes andfixed-graphcaveats. All34protocolcontractspass. No quantity
+runtime,fit,CAL/DEV orscorechange. Old354/7473vs1000gatestillREJECTED.
+NEXTquantity replicationnowACTIVE: WORK/span-references tools/quantities/span-expansion,
+plan d9f9fdc beforeselection, preparation982b936 beforeteachers. RUN=WORK/coordinator/
+span-expansion. Next128uniqueFITgroups in4x32frozenbatches; allsourcehashes/native
+bindingsverified. CombinedbatchSHA1863c210d4e566a939b568fe7a70db8db53bc46a979011c990e3f5f27bb47a10.
+Eightparentcases frozen,24nativechecks passed;4498mustrefuseconflictingboardlengths.
+Replication COMPLETE and REJECTED:95/128parentconfirmedaccepted vs frozen96minimum.
+All4teachers terminal47083/13879/74867/4711 exit0,174.398/168.386/176.402/186.443s,
+no cap failures. All56originalfiles hashverified; all4ownedauthlinks removed after
+inactive scopes. Each exactAstrafast/high viaChatGPT,1200s8G0swap2MiBannotations
+256MiBdirectory. NoAPIkeys/fallback. No modelworkers nowrunning.
+
+All128rows reviewed:85resolved10equivalent19unsupported9ambiguous5label_error.
+Accepted95rows/105nativevariants exact; rootreviewed643assignments,zeroaccepted
+semanticcontradictions. All34contracts pass,all8frozenparentcasesagree,27native
+original/counterfactualchecks match. Perbatchaccepted26/24/22/23. See worktree
+semantic-review-01..04.json,final-report.json,PROGRESS.md andexternalRUN copies.
+33exclusions:12missingcalculations,6exactoccurrence/permutationambiguities,
+10missingpremise/targetinterpretations,5rationale/targetcontradictions. Some are
+conservativewordingrefusals,notprovenincorrectsourceanswers. Gateisnotrelaxed.
+Usage1037356=993295input(includes800000cached)+44061output;completedtotal203193886.
+
+NEXTquantity: freeze materiallydifferentrepresentation beforefurtherselection.
+Candidate: complete question-grounded graphs permittingexplicitmissingderivedsteps
+and justifiedcoreferentialquantityreferences,withinunchangednativebounds. Do not
+expand/refit thisrejected frozen-skeleton occurrencepolicy. No currenttraining,
+CAL/DEV,quantityruntime orscorechange. Original354/7473vs1000staysREJECTED.
+
+Nativeclaims89022 stillRUNNING at44minutes (PIDs1022832/1022833verified);
+secondaryindexesbuilt1225.432s, finalintegritychecksremaining. Do not restart.
+Continue original3396saudit/witnesses sequence afterterminalresourcepass.
 
 ## PR50 merged: word joining shipped
 

@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "decision": "reject",
+  "reason": "95/128 parent-confirmed examples below frozen minimum96; no threshold change",
+  "selected": 128,
+  "parent_confirmed_accepted": 95,
+  "minimum_accepted": 96,
+  "accepted_semantic_contradictions": 0,
+  "status_counts": {
+    "resolved": 85,
+    "equivalent": 10,
+    "unsupported": 19,
+    "label_error": 5,
+    "ambiguous": 9
+  },
+  "native_original_program_variants": 105,
+  "assignments_reviewed": 643,
+  "protocol_contracts": 34,
+  "frozen_parent_agreement": 8,
+  "parent_native_requests": 27,
+  "batches": [
+    {
+      "batch": 1,
+      "selected": 32,
+      "accepted": 26,
+      "program_variants": 28,
+      "assignments_reviewed": 163,
+      "seconds": 174.39827877201606,
+      "sampled_peak_teacher_bytes": 68935680,
+      "archived_files": 14,
+      "archived_bytes": 528673,
+      "semantic_review_sha256": "ca8d386d0092afc996e62de39a1b1dee5cda6726519b8aef4e75ac4866b08e6e"
+    },
+    {
+      "batch": 2,
+      "selected": 32,
+      "accepted": 24,
+      "program_variants": 26,
+      "assignments_reviewed": 153,
+      "seconds": 168.38645188196097,
+      "sampled_peak_teacher_bytes": 68841472,
+      "archived_files": 14,
+      "archived_bytes": 434360,
+      "semantic_review_sha256": "0f2fd41f437ae4f0285ba45f0495921296280f8fbc93c088f690a3f6231a8729"
+    },
+    {
+      "batch": 3,
+      "selected": 32,
+      "accepted": 22,
+      "program_variants": 25,
+      "assignments_reviewed": 151,
+      "seconds": 176.40243086300325,
+      "sampled_peak_teacher_bytes": 68849664,
+      "archived_files": 14,
+      "archived_bytes": 443041,
+      "semantic_review_sha256": "3e3cb87b21782c174c469e8c0cd105fc8e66758fd8d78296ac1933b471343cd6"
+    },
+    {
+      "batch": 4,
+      "selected": 32,
+      "accepted": 23,
+      "program_variants": 26,
+      "assignments_reviewed": 176,
+      "seconds": 186.4434592879843,
+      "sampled_peak_teacher_bytes": 68886528,
+      "archived_files": 14,
+      "archived_bytes": 478107,
+      "semantic_review_sha256": "b810ff8038cf548f237598149f9d1ee29e69a296e00c9438b61dfd3f0c98178f"
+    }
+  ],
+  "usage": {
+    "completed_batches": 4,
+    "input_tokens": 993295,
+    "cached_input_tokens": 800000,
+    "output_tokens": 44061,
+    "cached_counted_once": true,
+    "total_counted": 1037356,
+    "known_completed_worker_total": 203193886
+  },
+  "exclusion_categories": {
+    "missing_calculation_or_unrepresentable_source": [
+      2869,
+      6028,
+      389,
+      315,
+      4889,
+      6393,
+      6162,
+      5589,
+      1719,
+      168,
+      6390,
+      4754
+    ],
+    "exact_occurrence_or_broader_permutation_ambiguity": [
+      6854,
+      7023,
+      7180,
+      4935,
+      7227,
+      3559
+    ],
+    "missing_premise_or_target_interpretation": [
+      5273,
+      5751,
+      5112,
+      5655,
+      6044,
+      3719,
+      1684,
+      2514,
+      3891,
+      3727
+    ],
+    "rationale_or_target_contradiction": [
+      1593,
+      2875,
+      4498,
+      2515,
+      5045
+    ]
+  },
+  "secondary_issues": {
+    "fit-3559": "Rationale also calls intermediate per-loaf price a per-slice price."
+  },
+  "limitations": [
+    "TRAIN-FIT annotation yield, not an inference score or independent test.",
+    "Some refused cases admit ordinary word-problem conventions, including closed-category or colloquial target readings. Refusal counts are not proof all rejected reference answers are false.",
+    "Input reference choices are deliberately restricted to exact occurrences and direct commutations. Missing calculator nodes are not repaired.",
+    "All accepted links were reviewed by root; mechanical and numeric checks alone do not establish semantic identity.",
+    "The passing pilot remains29/32; the original value-only354/7473vs1000 experiment remains rejected. No training,CAL,DEV,runtime or quantity-score change."
+  ],
+  "artifact_hashes": {
+    "parent-comparison.json": "daccba9b46317b5f2aa359b7cab96e90111193247eee7df641c0ea68c35cecdf",
+    "source/batch.json": "1863c210d4e566a939b568fe7a70db8db53bc46a979011c990e3f5f27bb47a10",
+    "pre-teacher.json": "c3601909ddecae20d07d29afe00dd24dfddc8420fde4958682a9f527d7c43d1e"
+  }
+}

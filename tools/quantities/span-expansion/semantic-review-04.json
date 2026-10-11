@@ -1,0 +1,337 @@
+{
+  "schema": 1,
+  "batch": 4,
+  "scope": "TRAIN-FIT source-reference replication, no inference accuracy",
+  "rows": [
+    {
+      "id": "fit-5266",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Game-count5 and book-price5 use different input occurrences. Computed revenue less game spending yields book budget; divide by book price. Matches prospective reference and integral-book-count caveat."
+    },
+    {
+      "id": "fit-917",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Both own climbing rates multiply shared duration; computed Jason distance minus Matt distance. Matches prospective reference."
+    },
+    {
+      "id": "fit-5346",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 10,
+      "reason": "Box count times capacity gives boxed donations; original nested sum includes all other donated books. Subtract completed donation total from collection and add newly acquired books."
+    },
+    {
+      "id": "fit-2515",
+      "teacher_status": "label_error",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed conservative label-error decision: explicit100-point trigger is reached by the second throw; only one throw leaves Jerry below it. Supplied2 answers until reaching rather than strictly before the trigger."
+    },
+    {
+      "id": "fit-3679",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Remaining savings requirement is the computed price-minus-savings result, not equal-valued already-saved input. Divide computed shortfall by weekly saving rate."
+    },
+    {
+      "id": "fit-7145",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 11,
+      "reason": "Cube side input reused on all three axes. Completed volume scales by density; computed mass scales by price; sale multiplier scales computed purchase value. Profit subtracts purchase cost from computed sale proceeds."
+    },
+    {
+      "id": "fit-2890",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "Numeric comparison multiplier3 and lexical one-third divisor3 are different sources. Initial money uses input3; spending uses licensed constant3. Subtract computed expenditure from computed initial money."
+    },
+    {
+      "id": "fit-1684",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed conservative refusal: supplied graph counts bags while target says chips. Ordinary ellipsis could yield20bags; literal individual-chip count is not supplied. This exclusion is wording uncertainty, not demonstrated wrong arithmetic."
+    },
+    {
+      "id": "fit-5045",
+      "teacher_status": "label_error",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed target-noun mismatch: all purchases are rope but requested quantity is ribbon. Accepting96 requires repairing the target noun."
+    },
+    {
+      "id": "fit-4351",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Notebook-count7 and book-price7 are distinct inputs. Match each product to its category, sum computed costs and subtract from initial money."
+    },
+    {
+      "id": "fit-2772",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Each crop yield pairs with its packet count; sum computed crop totals. Sunflower60 is a computed count, not a unit constant."
+    },
+    {
+      "id": "fit-3455",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 8,
+      "reason": "Computed remaining cakes6 and input candles/cake6 each occur once in both direct multiply variants. Equal values do not justify squaring either quantity alone."
+    },
+    {
+      "id": "fit-2130",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 9,
+      "reason": "Second-course price computed from first price plus increment; explicit percentage subtree computes dessert price. Final deductions use computed dessert5, not equal-valued increment5."
+    },
+    {
+      "id": "fit-1272",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 5,
+      "reason": "Explicit salary-times-percent divided by100 computes raise; add completed raise to original salary."
+    },
+    {
+      "id": "fit-2514",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed conservative refusal: summit elevations are not necessarily ascent distances or route lengths. Rationale assumes starting elevations/distance interpretation not supplied."
+    },
+    {
+      "id": "fit-7083",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 10,
+      "reason": "Lexical fourth/third license divisors separate from purchase-count3. Two computed ten-book donations remain distinct: the second subtraction uses library step2, not nephew step0."
+    },
+    {
+      "id": "fit-4081",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Equal-valued pack counts are tied to different shirt colors and respective capacities. Both computed color totals are added."
+    },
+    {
+      "id": "fit-2595",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Input match-hours2 converts using60minutes/hour; divide computed duration by scoring interval; multiply computed intervals by distinct goals-per-interval2."
+    },
+    {
+      "id": "fit-3891",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed conservative refusal under an open category reading: graph identifies all unlisted colors as red. Ordinary closed-category word-problem reading would give120, as elsewhere in this corpus, so this is a conservative coverage loss rather than proof of an incorrect source label."
+    },
+    {
+      "id": "fit-6741",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "Series size product feeds explicit watched-fraction calculation using both fraction inputs; subtract completed watched count from computed series total."
+    },
+    {
+      "id": "fit-2058",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 9,
+      "reason": "Jay score uses Tobee plus gap; Sean score uses computed combined Tobee/Jay score minus shortfall. Original final recomputation of Tobee/Jay subtotal is retained before adding Sean."
+    },
+    {
+      "id": "fit-7227",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed exact-occurrence ambiguity: initial and repeated20-dollar budget denote the same quantity; current schema cannot express such source alternatives beyond a direct commutative swap."
+    },
+    {
+      "id": "fit-4242",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Recovered page count divided by pages/comic gives reconstructed comics; add original untorn comics. Question states reconstruction completed; original count is integral."
+    },
+    {
+      "id": "fit-4754",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed missing-node refusal: Mickey value60 is computed only in unannotated prose. Constant60 cannot substitute for Jay result plus excess20."
+    },
+    {
+      "id": "fit-3810",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Danielle rooms times Heidi multiplier yields Heidi rooms; divide computed result by denominator of one-ninth share. Fixed graph normalizes the unit numerator; arbitrary numerator changes are outside this representation."
+    },
+    {
+      "id": "fit-6921",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Initial money and gift form subtotal; add found money; subtract exact toy-price input1.6. Computed remainder converts to cents using100cents/dollar."
+    },
+    {
+      "id": "fit-5378",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 10,
+      "reason": "Remaining-floor count10 is computed total-minus-firstgroup, distinct from original firstgroup10. Remaining-group height uses computed count and computed taller height; sum group totals."
+    },
+    {
+      "id": "fit-3559",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed exact-occurrence ambiguity between two mentions of purchased loaf count. Also retain rationale error: intermediate8dollars is per loaf, despite being described as per slice."
+    },
+    {
+      "id": "fit-878",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Mango yield20 is an input, whereas final papaya20 is a computed product. Each tree count pairs with its crop-specific yield and computed totals sum."
+    },
+    {
+      "id": "fit-6084",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 12,
+      "reason": "Class count gives computed per-student allocation. Both product variants use girl count15 and computed allocation15 once, differing only in direct order."
+    },
+    {
+      "id": "fit-7118",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 12,
+      "reason": "Table count pairs with table-rose rate. Both bouquet multiplication variants use distinct bouquet-count5 and roses/bouquet5 once; computed totals sum."
+    },
+    {
+      "id": "fit-3727",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Confirmed conservative target-unit refusal: graph counts chicken pieces, while target can read whole chickens. Colloquial fried pieces would yield44; this is unresolved wording rather than demonstrated arithmetic error."
+    }
+  ],
+  "parent_confirmed_accepted": 23,
+  "accepted_semantic_contradictions": 0,
+  "program_variants": 26,
+  "assignments_reviewed": 176,
+  "hashes": {
+    "source/batch-04/batch.json": "676b6dd6aedd52f7426b6098adf1ce76df5b1ece60d55f6ba556a4eba5014f3d",
+    "batch-04/teacher-originals/work/annotations.json": "c3b676b2f5f947257d14e99a9bafae6b72f1eaf71d5e162bb9a3e1758c85a0e8",
+    "batch-04/mechanical-report.json": "9509e25323fac3ae70b173aa8cf55bee52429b1fba49e5778dfb990b996ded39"
+  },
+  "replication_gate": "coverage already fails:95mechanicallyaccepted versus96minimum; full semantic audit continues"
+}

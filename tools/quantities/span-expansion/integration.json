@@ -1,0 +1,36 @@
+{
+  "reviewed_integration_commit": "0dbd1290ac5424dab43dd78abdae1c90957c6132",
+  "runtime_same_as_origin_main": "48ac2a89ff9a1644bf1f1cf6c536c401116dce02",
+  "runtime_source_unchanged": true,
+  "python_modules_parse": [
+    "tools/quantities/span-references/contracts.py",
+    "tools/quantities/span-references/prepare.py",
+    "tools/quantities/span-references/teacher.py",
+    "tools/quantities/span-references/validate.py",
+    "tools/quantities/span-expansion/check-parent.py",
+    "tools/quantities/span-expansion/freeze-parent.py",
+    "tools/quantities/span-expansion/prepare.py",
+    "tools/quantities/span-expansion/preserve.py",
+    "tools/quantities/span-expansion/teacher.py"
+  ],
+  "annotation_duplicate_key_check": "allfourpass",
+  "required_checks": {
+    "command": "TMPDIR=/home/gsc/.cache/glassmind/check-tmp CARGO_BUILD_JOBS=1 tools/check.sh",
+    "session": 79058,
+    "exit_code": 0,
+    "fmt": true,
+    "clippy_all_targets": true,
+    "release_build": true,
+    "strict_fixture_smoke": {
+      "total": 4,
+      "right": 4,
+      "wrong": 0,
+      "refused": 0
+    },
+    "log_sha256": "84e1ce02813325b47c89b2169687706321245584914a5a8c988c167930ee4f83"
+  },
+  "executable_sha256": "87cc2927ca354cfbfcec8dae24d18c8c6d314818b802c2449708500bbfbd8017",
+  "replication_decision": "reject95/128vs96",
+  "full_quantity_dev_not_rerun": "No runtime changes; full selected annotation batches and native variants validated instead.",
+  "unix_time": 1791747201.1356125
+}
