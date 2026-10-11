@@ -43,15 +43,20 @@ session51706 COMPLETE0, RUN/cli-smoke-v2/report.json andturns.json.
 Earlier failed tests/CLI logs retained. Bugs fixed: cancelled plan revival,
 blocked choices surviving replacement requests, and final check erasing topic.
 
-Owned LIVE job: full765 coding DEV, session33146, via tools/rustbench-dev.sh,
-pinned RUN/candidate-v2. RUN/full765/run.log/results.jsonl; process metadata in
-RUN/running-job.json. Confirm handle/process state before waiting or restarting.
-Baseline /home/gsc/.cache/glassmind/yolo-plans/full765/results.jsonl.
-All test/build/CLI jobs terminal. Cargo cache for choices uses RUNplans/target;
-pinned candidates never depend on later writes to that cache.
-NEXT: wait fullDEV, compare every(task,style)outcome, record candidate evidence,
-review/push/openPR/merge only exact greenhead. Root currently clean before this
-checkpoint commit. No choice publication claimed yet.
+Full765DEV session33146 COMPLETE0:223pass542refused0fail. All765(task,style)
+outcomes identical to RUNplans/full765/results.jsonl. Evidence
+ tools/coding-tasks/choices-validation.json and RUN/validation.json.
+All choice jobs terminal. NEXT publish root choice batch and merge exactgreenhead.
+
+Independent bounded revision work is uncommitted in
+/home/gsc/.cache/glassmind/yolo-task-revisions, branchcontinuous/task-revisions
+from2c807ed. RUNrev=/home/gsc/.cache/glassmind/yolo-revisions; uses RUNplans/target
+for cargo cache. No pinned candidate yet. Initial clippy74224 COMPLETE0; native
+session6748 COMPLETE0:44tasktests pass (6new revision cases,24oldCLI tests filtered).
+RUNrev/tests.log. Compiler->test repair works without touching real source until
+all checks pass, persists across stages, and is replayed independently before apply.
+Need expand native coverage and complete fullCLI/workspace/realCLI checks before
+integrating. No live revision jobs at this checkpoint. No workers.
 
 Next architecture gap: bounded result-driven revision of a coding task when its
 verification leaves remaining problems. Preserve intent/constraints, track actual
