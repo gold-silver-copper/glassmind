@@ -4,6 +4,9 @@ use syn::{spanned::Spanned, visit::Visit};
 
 use crate::checks::RustChange;
 
+#[path = "ambiguity.rs"]
+pub(crate) mod ambiguity;
+
 fn mentions_test(tokens: proc_macro2::TokenStream) -> bool {
     tokens.into_iter().any(|t| match t {
         TokenTree::Ident(i) => i == "test",

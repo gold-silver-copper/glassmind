@@ -113,21 +113,30 @@ const TOOL_MEMORY: &str = "8G";
 /// `cargo`, in a required scope with a memory limit and a
 /// time limit, and in a process group of its own, so a timeout ends the
 /// tests it started too.
-fn cargo_command() -> Command {
+fn cargo_command(deadline: Option<Instant>) -> Command {
     let mut command = Command::new("systemd-run");
     command
         .args(["--user", "--scope", "--quiet", "--collect"])
         .arg(format!("-pMemoryMax={TOOL_MEMORY}"))
         .arg("-pMemorySwapMax=0")
-        .arg(format!("-pRuntimeMaxSec={}", TOOL_TIME.as_secs() + 30))
-        .args([
-            "setsid",
-            "--wait",
-            "timeout",
-            "--kill-after=10s",
-            "600",
-            "cargo",
-        ]);
+        .arg(format!(
+            "-pRuntimeMaxSec={}",
+            deadline.map_or(TOOL_TIME.as_secs() + 30, |d| d
+                .saturating_duration_since(Instant::now())
+                .as_secs()
+                + 2)
+        ))
+        .args(["setsid", "--wait", "timeout", "--kill-after=10s", "600"]);
+    if let Some(deadline) = deadline {
+        command.args(["timeout", "--kill-after=1s"]).arg(format!(
+            "{:.3}s",
+            deadline
+                .saturating_duration_since(Instant::now())
+                .as_secs_f64()
+                .max(0.001)
+        ));
+    }
+    command.arg("cargo");
     std::os::unix::process::CommandExt::process_group(&mut command, 0);
     command
 }
@@ -184,9 +193,13 @@ fn cargo(
     root: &Path,
     subcommand: &str,
     args: &[&str],
+    deadline: Option<Instant>,
 ) -> Result<(bool, String), String> {
     let _turn = CargoTurn::take();
-    let mut command = cargo_command();
+    if deadline.is_some_and(|d| Instant::now() >= d) {
+        return Err("ambiguity search budget exhausted".into());
+    }
+    let mut command = cargo_command(deadline);
     if let Some(target) = &places.target {
         command.env("CARGO_TARGET_DIR", target.join(source));
     }
@@ -447,6 +460,19 @@ pub fn run_in(
     source: &str,
     root: &Path,
 ) -> Result<Vec<Finding>, String> {
+    run_in_until(places, check, source, root, None)
+}
+
+fn run_in_until(
+    places: &Places,
+    check: RustCheck,
+    source: &str,
+    root: &Path,
+    deadline: Option<Instant>,
+) -> Result<Vec<Finding>, String> {
+    if deadline.is_some_and(|d| Instant::now() >= d) {
+        return Err("ambiguity search budget exhausted".into());
+    }
     let cache = places.cache.as_ref().map(|dir| {
         dir.join(format!(
             "{check:?}-{source}-{:016x}-{RESULTS}.json",
@@ -468,12 +494,12 @@ pub fn run_in(
             let copy = target
                 .join("copies")
                 .join(format!("{source}-{}", std::process::id()));
-            let found =
-                copy_tree(root, &copy).and_then(|()| run_tools(places, check, source, &copy));
+            let found = copy_tree(root, &copy)
+                .and_then(|()| run_tools(places, check, source, &copy, deadline));
             let _ = std::fs::remove_dir_all(&copy);
             found?
         }
-        None => run_tools(places, check, source, root)?,
+        None => run_tools(places, check, source, root, deadline)?,
     };
     if let Some(path) = &cache {
         if let Some(dir) = path.parent() {
@@ -491,6 +517,7 @@ fn run_tools(
     check: RustCheck,
     source: &str,
     root: &Path,
+    deadline: Option<Instant>,
 ) -> Result<Vec<Finding>, String> {
     match check {
         RustCheck::Build => {
@@ -507,6 +534,7 @@ fn run_tools(
                     &["--keep-going", "--message-format=json", "-q"],
                 ]
                 .concat(),
+                deadline,
             )?;
             let found = findings(source, root, &out, &["error"]);
             // A failed build with no error read from it is not a pass.
@@ -526,6 +554,7 @@ fn run_tools(
                     &["--keep-going", "--message-format=json", "-q"],
                 ]
                 .concat(),
+                deadline,
             )?;
             let found = findings(source, root, &out, &["error", "warning"]);
             if !ok && found.is_empty() {
@@ -534,7 +563,7 @@ fn run_tools(
             Ok(found)
         }
         RustCheck::Test => {
-            let build = run_tools(places, RustCheck::Build, source, root)?;
+            let build = run_tools(places, RustCheck::Build, source, root, deadline)?;
             if !build.is_empty() {
                 return Ok(build);
             }
@@ -544,6 +573,7 @@ fn run_tools(
                 root,
                 "test",
                 &["--no-fail-fast", "--", "--test-threads", "4"],
+                deadline,
             )?;
             let failing = failing_tests(source, &out);
             // Failed tests with none read from the output is not a pass.
@@ -738,15 +768,71 @@ pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
     changes
 }
 
-/// The first slip (see [`slips`]) after whose undoing every test of the
-/// source at `root` passes, each tried alone in a fresh scratch copy, for
-/// at most [`SLIP_TIME`].
+/// Confirm a proposed witness in the original package's compilation context.
+/// A file can be included in a scope that shadows a primitive type name; the
+/// isolated AST interpreter cannot establish those surrounding bindings.
+fn native_witness(
+    places: &Places,
+    source: &str,
+    root: &Path,
+    file: &str,
+    texts: [&str; 2],
+    witness: &Value,
+    deadline: Instant,
+) -> bool {
+    let Some(function) = witness.get("function").and_then(Value::as_str) else {
+        return false;
+    };
+    let Some(input) = witness.get("input").and_then(Value::as_str) else {
+        return false;
+    };
+    static NEXT: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    let serial = NEXT.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+    for ((side, text), field) in ["first", "second"]
+        .into_iter()
+        .zip(texts)
+        .zip(["first_output", "second_output"])
+    {
+        let Some(output) = witness.get(field).and_then(Value::as_str) else {
+            return false;
+        };
+        let marker = format!("__glassmind_witness_{}_{serial}_{side}", std::process::id());
+        let probe = format!(
+            "{text}\n#[cfg(test)] mod {marker} {{\n#[test] fn confirms() {{\n\
+             ::std::assert_eq!(super::{function}({input}), {output});\n\
+             ::std::println!(\"{marker}\");\n}}\n}}\n"
+        );
+        if std::fs::write(root.join(file), probe).is_err() {
+            return false;
+        }
+        // A successful command alone is insufficient: cfg, custom harnesses or
+        // an include inside a function can prevent the probe from executing.
+        if !cargo(
+            places,
+            source,
+            root,
+            "test",
+            &["--", "--nocapture", "--test-threads", "4"],
+            Some(deadline),
+        )
+        .is_ok_and(|(ok, out)| ok && out.lines().any(|line| line == marker))
+        {
+            return false;
+        }
+    }
+    true
+}
+
+/// The first test-passing slip, unless a bounded follow-up finds another
+/// test-passing slip with a concrete different defined scalar behavior.
+/// Unsupported code or sampled agreement leaves the first slip unchanged.
 pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustChange> {
     let scratch = scratch(source);
     let roots = BTreeMap::from([(source.to_owned(), scratch.clone())]);
     let start = Instant::now();
-    let found = slips(source, root, tests)
-        .into_iter()
+    let mut candidates = slips(source, root, tests).into_iter();
+    let found = candidates
+        .by_ref()
         .take_while(|_| start.elapsed() < SLIP_TIME)
         .find(|slip| {
             copy_tree(root, &scratch)
@@ -754,6 +840,88 @@ pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustCh
                 .and_then(|_| run(RustCheck::Test, source, &scratch))
                 .is_ok_and(|f| f.is_empty())
         });
+    if let Some(first) = &found {
+        let extra = Instant::now();
+        let first_text = std::fs::read_to_string(scratch.join(&first.file)).ok();
+        let original_text = std::fs::read_to_string(root.join(&first.file)).ok();
+        let mut trials = 0;
+        for second in candidates.take(64) {
+            if trials >= 8
+                || extra.elapsed() >= Duration::from_secs(10)
+                || start.elapsed() >= SLIP_TIME.min(Duration::from_secs(80))
+            {
+                break;
+            }
+            if second.file != first.file {
+                continue;
+            }
+            let Some(first_text) = &first_text else { break };
+            let Some(original_text) = &original_text else {
+                break;
+            };
+            let Some(second_text) = crate::slips::ambiguity::variant(original_text, &second) else {
+                continue;
+            };
+            let Some(witness) = crate::slips::ambiguity::difference(
+                first_text,
+                &second_text,
+                first.line,
+                second.line,
+            ) else {
+                continue;
+            };
+            trials += 1;
+            if copy_tree(root, &scratch)
+                .and_then(|()| apply(std::slice::from_ref(&second), &roots))
+                .is_err()
+            {
+                continue;
+            }
+            if !run_in_until(
+                &Places::from_env(),
+                RustCheck::Test,
+                source,
+                &scratch,
+                Some(extra + Duration::from_secs(10)),
+            )
+            .is_ok_and(|f| f.is_empty())
+            {
+                continue;
+            }
+            if !native_witness(
+                &Places::from_env(),
+                source,
+                &scratch,
+                &first.file,
+                [first_text, &second_text],
+                &witness,
+                extra + Duration::from_secs(10),
+            ) {
+                continue;
+            }
+            // Preserve evidence even though the ordinary remedy is withdrawn.
+            // Failure to persist must not turn established ambiguity into a claim.
+            let evidence = scratch_base().join(format!(
+                "ambiguity-{}",
+                scratch.file_name()?.to_string_lossy()
+            ));
+            let record = serde_json::json!({"first_patch": first, "second_patch": second,
+                "witness": witness, "original_source": original_text, "original_tree_fingerprint": format!("{:016x}", fingerprint(root)),
+                "first_source": first_text, "second_source": second_text,
+                "visible_tests": "both candidates passed unchanged tests",
+                "native_witness": "both outputs confirmed by executed Rust probes in the original package context",
+                "limitation": "bounded search; no equivalence or correct-answer claim"});
+            let saved = std::fs::create_dir_all(&evidence)
+                .and_then(|()| std::fs::write(evidence.join("witness.json"), record.to_string()));
+            eprintln!(
+                "repair withdrawn: concrete ambiguity: {record}; evidence={} saved={}",
+                evidence.display(),
+                saved.is_ok()
+            );
+            let _ = std::fs::remove_dir_all(&scratch);
+            return None;
+        }
+    }
     let _ = std::fs::remove_dir_all(&scratch);
     found
 }
@@ -772,6 +940,122 @@ pub fn scratch(source: &str) -> PathBuf {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn native_witness_requires_valid_context_and_executed_probe() {
+        let source = "ambiguity-native-context";
+        let dir = scratch(source);
+        std::fs::create_dir_all(dir.join("src")).unwrap();
+        std::fs::write(dir.join("Cargo.toml"), "[package]\nname=\"native_context\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n").unwrap();
+        let a = "pub fn pick(x: u8) -> bool { x <= 127 }";
+        let b = "pub fn pick(x: u8) -> bool { x == x }";
+        let witness = crate::slips::ambiguity::difference(a, b, 1, 1).unwrap();
+        assert_eq!(witness["input"], "128");
+        let places = Places::from_env();
+        // As actual u8 functions this is a defined disagreement.
+        assert!(native_witness(
+            &places,
+            source,
+            &dir,
+            "src/lib.rs",
+            [a, b],
+            &witness,
+            Instant::now() + Duration::from_secs(15)
+        ));
+        // The same included text can resolve u8 to i8. Both functions now
+        // agree on every input; 128 is not even a valid argument.
+        std::fs::write(
+            dir.join("src/lib.rs"),
+            "#[allow(non_camel_case_types)] type u8 = i8;\ninclude!(\"included.rs\");\n",
+        )
+        .unwrap();
+        assert!(!native_witness(
+            &places,
+            source,
+            &dir,
+            "src/included.rs",
+            [a, b],
+            &witness,
+            Instant::now() + Duration::from_secs(15)
+        ));
+        // A source file outside the module graph must not produce evidence
+        // merely because cargo succeeds without running its appended test.
+        std::fs::write(dir.join("src/lib.rs"), "pub fn unrelated() {}\n").unwrap();
+        assert!(!native_witness(
+            &places,
+            source,
+            &dir,
+            "src/unused.rs",
+            [a, b],
+            &witness,
+            Instant::now() + Duration::from_secs(15)
+        ));
+        std::fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn withdraws_only_with_two_passing_programs_and_keeps_original_files() {
+        for constrained in [false, true] {
+            let source = if constrained {
+                "ambiguity-constrained"
+            } else {
+                "ambiguity-open"
+            };
+            let dir = scratch(source);
+            std::fs::create_dir_all(dir.join("src")).unwrap();
+            std::fs::create_dir_all(dir.join("tests")).unwrap();
+            let code = "pub fn select(x: u8) -> bool { x < 3 && x < 9 }\n";
+            let test = format!(
+                "#[test] fn boundary() {{ assert!(probe::select(3)); {} }}\n",
+                if constrained {
+                    "assert!(!probe::select(4));"
+                } else {
+                    ""
+                }
+            );
+            std::fs::write(dir.join("Cargo.toml"), "[package]\nname = \"probe\"\nversion = \"0.0.0\"\nedition = \"2024\"\n[workspace]\n").unwrap();
+            std::fs::write(dir.join("src/lib.rs"), code).unwrap();
+            std::fs::write(dir.join("tests/visible.rs"), &test).unwrap();
+            let initial = run(RustCheck::Test, source, &dir).unwrap();
+            assert!(!initial.is_empty());
+            let found = undo_slip(
+                source,
+                &dir,
+                &initial.into_iter().map(|f| f.item).collect::<Vec<_>>(),
+            );
+            assert_eq!(
+                std::fs::read_to_string(dir.join("src/lib.rs")).unwrap(),
+                code
+            );
+            assert_eq!(
+                std::fs::read_to_string(dir.join("tests/visible.rs")).unwrap(),
+                test
+            );
+            if constrained {
+                let change = found.unwrap();
+                assert_eq!((&*change.old, &*change.new), ("<", "<="));
+                let roots = BTreeMap::from([(source.to_owned(), dir.clone())]);
+                apply(&[change], &roots).unwrap();
+                assert!(run(RustCheck::Test, source, &dir).unwrap().is_empty());
+                std::fs::write(dir.join("tests/visible.rs"), format!("{test}\n#[test] fn slow() {{ std::thread::sleep(std::time::Duration::from_secs(60)); }}")).unwrap();
+                let started = Instant::now();
+                assert!(
+                    run_in_until(
+                        &Places::default(),
+                        RustCheck::Test,
+                        source,
+                        &dir,
+                        Some(started + Duration::from_millis(500))
+                    )
+                    .is_err()
+                );
+                assert!(started.elapsed() < Duration::from_secs(5));
+            } else {
+                assert!(found.is_none());
+            }
+            std::fs::remove_dir_all(&dir).unwrap();
+        }
+    }
 
     #[test]
     fn reads_failing_tests() {
