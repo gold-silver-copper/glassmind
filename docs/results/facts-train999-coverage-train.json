@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "total": 19481,
+    "annotated_entity_in_index": 3031,
+    "entity_link_correct": 2658,
+    "entity_and_relation_correct": 2651
+  },
+  "annotated_relation_directions": {
+    "P": 738,
+    "R": 2293
+  },
+  "gold_relation_claim_diagnostic": {
+    "unique_gold": 555,
+    "missing": 466,
+    "gold_absent_from_nonempty": 1853,
+    "nonunique_including_gold": 157
+  },
+  "correct_link_and_relation_outcomes": {
+    "answered": 715,
+    "claim missing from this finite snapshot": 430,
+    "this snapshot has multiple answers; narrow the question": 1497,
+    "uncertain relation": 9
+  },
+  "artifacts": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/scope1000/index.json",
+      "bytes": 650045,
+      "sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/train.tsv",
+      "bytes": 1193868,
+      "sha256": "25c5994c4e3a4dad39bacf3c457b3ff4cf7b199630eb78045a0b478e4fda145b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/train.questions",
+      "bytes": 797196,
+      "sha256": "d3cd1c39d916195757a304ce254a19e5f3b6b6b7fa19f6356cddbf9fff675eaf"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/new999-train-pairs.jsonl",
+      "bytes": 4329196,
+      "sha256": "8d9347b70a452f910e1dadd98387ad684c049963fa5c77afeb4b2af0740aff24"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/tools/facts/coverage-audit.py",
+      "bytes": 3453,
+      "sha256": "e093b00476419af1d3f06f4cbdd41ea9b8627225c715a5399b889444a6f58509"
+    }
+  ],
+  "note": "Gold entity/relation used only to diagnose snapshot coverage; not model predictions, attainable accuracy or global inverse uniqueness. No runtime/index/scorer changes or inference."
+}

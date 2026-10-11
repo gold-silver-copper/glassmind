@@ -1,0 +1,200 @@
+{
+  "base_commit": "69ba975a9f44bd8f3aaf45be355fffe82cbc6577",
+  "source_revision": "e852981ae34990f4358979625854259302feaa78",
+  "license": "CC-BY-SA-4.0",
+  "download_bytes": 0,
+  "source": [
+    {
+      "path": "crates/dialogue/src/adapter.rs",
+      "bytes": 1408,
+      "sha256": "7a919603493525a5069d81ac3de5473819c1142cfadbd99380effff1a028d027"
+    },
+    {
+      "path": "crates/dialogue/src/bin/dialogue-multi.rs",
+      "bytes": 6336,
+      "sha256": "5f5215bb814462b6d44cf889ccb7ec7b569d776aa08ba3939f63fa625ab4a3d8"
+    },
+    {
+      "path": "crates/dialogue/src/bin/dialogue-spansequence-probe.rs",
+      "bytes": 1877,
+      "sha256": "dd3c08fa86699e3ca7d719c288fc3ce5352f74ce68f6b76b9c450596302187be"
+    },
+    {
+      "path": "crates/dialogue/src/bin/dialogue-spansequence-train.rs",
+      "bytes": 8425,
+      "sha256": "7ddc3d161a7c8882e51fdc6cd7cdff827c935ab6c604061cb213695a70c968b4"
+    },
+    {
+      "path": "crates/dialogue/src/boundaries.rs",
+      "bytes": 7201,
+      "sha256": "9c765b1f039e169a1eae5e67f4025a7bd4e9dec0c13760a8541c29759b8b4941"
+    },
+    {
+      "path": "crates/dialogue/src/lib.rs",
+      "bytes": 286,
+      "sha256": "07b1684d85b91124e9db0e63d35f917c1c8bbd03195f2f099fc9fb8c1c321a33"
+    },
+    {
+      "path": "crates/dialogue/src/main.rs",
+      "bytes": 7256,
+      "sha256": "5c101feb4a4167d541dd0e4b6aca8dc12b802ce760925526a6739e44f3e5fe10"
+    },
+    {
+      "path": "crates/dialogue/src/multi.rs",
+      "bytes": 21757,
+      "sha256": "e28aec2c9a7dd2a880bc9f0cc501544854b575f2113ca36fb69ce7daf6cc2a93"
+    },
+    {
+      "path": "crates/dialogue/src/offers.rs",
+      "bytes": 11582,
+      "sha256": "71666a3eb9d71f6f573708e6e331619b5827b20320d98be8b17f37b79ba55ee2"
+    },
+    {
+      "path": "crates/dialogue/src/references.rs",
+      "bytes": 7379,
+      "sha256": "1d5f7b1210e2826cb69c21592e6d842a0473f3c252d9b1cd5e06433777888127"
+    },
+    {
+      "path": "crates/dialogue/src/spansequence.rs",
+      "bytes": 18219,
+      "sha256": "9008cb2407ce114accc4d28daf4a3fb63f6744546524761c1a39072428c0dcc2"
+    },
+    {
+      "path": "crates/dialogue/src/tracker.rs",
+      "bytes": 12997,
+      "sha256": "87e53f0791eab162b08c65921e3f853f7ec55f53d27b43c9c58fe8d8d2b0201c"
+    },
+    {
+      "path": "crates/dialogue/Cargo.toml",
+      "bytes": 410,
+      "sha256": "511259b2aba9bd095b8f12096e254fedffa16cadc02177da627e9a4ff477be07"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 17183,
+      "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 1440,
+      "sha256": "a3652a713fa4b3c805b41207c3197c2b8f811ceb7a54d1c31437a65f08571825"
+    },
+    {
+      "path": "tools/dialogue/spansequence/audit.py",
+      "bytes": 3346,
+      "sha256": "1a85f806cdc8de0ca4de2a2c88655c3dbb6dfe8e5158241a05f6555abcdb144e"
+    },
+    {
+      "path": "tools/dialogue/spansequence/cal_audit.py",
+      "bytes": 2606,
+      "sha256": "00e43f4f08bbce6c2a2f002879fab854f639e3fca3afe84bad9450cf1a111db8"
+    },
+    {
+      "path": "tools/dialogue/spansequence/freeze.py",
+      "bytes": 2095,
+      "sha256": "876129a7ab24e30c3378b1191e70b2ec0ab3aba222ee66cafc492b10b3c6d218"
+    },
+    {
+      "path": "tools/dialogue/spansequence/prepare.py",
+      "bytes": 1471,
+      "sha256": "4406f75070afe71f067b2f86ef680334a9a5a194c6d18a7ab11fdf80c48caebe"
+    },
+    {
+      "path": "tools/dialogue/spansequence/EXPERIMENT.md",
+      "bytes": 3166,
+      "sha256": "f1ae17522525d5d00a6257c042625e09dd0b259d87f6372e6ef5d02797acbe5b"
+    }
+  ],
+  "data": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/data-sgd-full/selected/train.json",
+      "bytes": 45291003,
+      "sha256": "f347a5708e4444998ddcb7546ab5ecab68cac1c7785a12db18d7ad12920619f3"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/data-sgd-full/selected/dev.json",
+      "bytes": 1207178,
+      "sha256": "89cc1943a0310354be053988235ff64e0cc232fd57a86b82b5f0f1dc354f8bf7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/data-sgd-full/train/schema.json",
+      "bytes": 75764,
+      "sha256": "97b6c21673aa7e5c2d1ceef52aa35170c565223cdcbf33bb24c69739bda04a82"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/data-sgd-full/selected/dev-schema.json",
+      "bytes": 3707,
+      "sha256": "b021ae923dbeb7782b99ac6628e65b1b48f3cca2892fb62ce8c77b472324e089"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/data-sgd-full/LICENSE.txt",
+      "bytes": 20139,
+      "sha256": "71a43a169b52bb1b39510b65ec5b43b4bbb59196d449a835fe58b50af6a72742"
+    }
+  ],
+  "models": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/baseline/model.json",
+      "bytes": 32174720,
+      "sha256": "fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/tmp/spansequence/sequence.unselected.json",
+      "bytes": 652222,
+      "sha256": "70aadf00846b9434fcafdf958a3b83b2d1f62dfa1599562f14337b520cb9dafe"
+    }
+  ],
+  "baseline_predictions": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/baseline/first/predictions.json",
+      "bytes": 34694,
+      "sha256": "91afdda73ca8e79afcc1a51d204fc15d1c8fb26efbfbec5b4e69b9cbeafd6761"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/baseline/full/predictions.json",
+      "bytes": 405228,
+      "sha256": "8887d88afbf18462d10a70574be030df8a6d33071a5c201fa84dc1f99efacc8d"
+    }
+  ],
+  "evaluators": [
+    {
+      "path": "tools/dialogue/evaluate.py",
+      "bytes": 5148,
+      "sha256": "79281f154628a44956df7e60b368165e1ff405692be057b37518b855b3577b24"
+    },
+    {
+      "path": "tools/dialogue/compare.py",
+      "bytes": 1943,
+      "sha256": "442c7d348d79b5c38f6ebd760376c8836a89793300753a5f309e0369c11da693"
+    },
+    {
+      "path": "crates/dialogue/tools/upstream_metrics.py",
+      "bytes": 11209,
+      "sha256": "709667d982b99d1bf1f2be48fc47418b7b7fc9a5f1c43e9fe8dd987828a51df5"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/target/release/dialogue-multi",
+      "bytes": 17872496,
+      "sha256": "22dd8ff65853a6811d05ce0222a4f678b853f5d1272b4c85c6610c6922b23ccc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/target/release/dialogue-spansequence-train",
+      "bytes": 15786856,
+      "sha256": "652c06513aefa2013a99f05eeeab01181c53b3a87f6474f112b0cc3bac47dc2a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/target/release/dialogue-spansequence-probe",
+      "bytes": 15171136,
+      "sha256": "186de8feb2f1e60d459ef3aeb933df181f33508622587ad867d35519e5a3cd8e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/spansequence-run/target/release/glassmind-dialogue",
+      "bytes": 16556736,
+      "sha256": "a4544e6af4ca13ee51340e10f695d581cb497d1f0373499d70f6096b993fe9a9"
+    }
+  ],
+  "decision": "rejected CAL; no candidate model assembled; baseline DEV replay only",
+  "source_sha256": "8361d7d30053e8bffc95aec5a1ebaf0a0361b79987b5c358fdc0ea9a2cdb02e8"
+}

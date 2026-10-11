@@ -1,0 +1,955 @@
+diff --git i/crates/dialogue/src/bin/dialogue-multi.rs w/crates/dialogue/src/bin/dialogue-multi.rs
+index 2c58c56..5e3ddb0 100644
+--- i/crates/dialogue/src/bin/dialogue-multi.rs
++++ w/crates/dialogue/src/bin/dialogue-multi.rs
+@@ -58,6 +58,8 @@ fn write<T: Serialize>(p: &PathBuf, value: &T) -> Result<(), Box<dyn std::error:
+ }
+ #[derive(Serialize)]
+ struct Snapshot {
++    #[serde(skip_serializing_if = "Vec::is_empty")]
++    sequence_proposals: Vec<glassmind_dialogue::spansequence::Proposal>,
+     #[serde(skip_serializing_if = "Vec::is_empty")]
+     boundary_proposals: Vec<glassmind_dialogue::boundaries::BoundaryProposal>,
+     turn_index: usize,
+@@ -111,6 +113,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+                 BTreeMap::new()
+             };
+             let model = MultiModel {
++                spansequence: None,
+                 boundaries: None,
+                 version: 1,
+                 router,
+@@ -158,6 +161,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+                             })
+                             .collect();
+                         predictions.push(Snapshot {
++                            sequence_proposals: session.sequence_proposals.clone(),
+                             boundary_proposals: session.boundary_proposals.clone(),
+                             turn_index,
+                             active_services: session.active_services.clone(),
+diff --git i/crates/dialogue/src/lib.rs w/crates/dialogue/src/lib.rs
+index af8e292..11f3133 100644
+--- i/crates/dialogue/src/lib.rs
++++ w/crates/dialogue/src/lib.rs
+@@ -10,3 +10,5 @@ pub mod references;
+ pub mod offers;
+ 
+ pub mod boundaries;
++
++pub mod spansequence;
+diff --git i/crates/dialogue/src/multi.rs w/crates/dialogue/src/multi.rs
+index 1decb86..2e354c4 100644
+--- i/crates/dialogue/src/multi.rs
++++ w/crates/dialogue/src/multi.rs
+@@ -7,6 +7,8 @@ use std::collections::{BTreeMap, BTreeSet};
+ 
+ #[derive(Debug, Serialize, Deserialize)]
+ pub struct MultiModel {
++    #[serde(default, skip_serializing_if = "Option::is_none")]
++    pub spansequence: Option<crate::spansequence::SequenceModel>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub boundaries: Option<crate::boundaries::BoundaryModel>,
+     pub version: u32,
+@@ -21,6 +23,7 @@ pub struct MultiModel {
+ }
+ #[derive(Debug, Default)]
+ pub struct MultiSession {
++    pub sequence_proposals: Vec<crate::spansequence::Proposal>,
+     pub states: BTreeMap<String, SessionState>,
+     pub active_services: BTreeSet<String>,
+     previous_system: String,
+@@ -138,8 +141,12 @@ impl MultiModel {
+     }
+     pub fn validate(&self, schemas: &[Schema]) -> Result<(), String> {
+         if !matches!(
+-            (self.version, self.boundaries.is_some()),
+-            (1, false) | (2, true)
++            (
++                self.version,
++                self.boundaries.is_some(),
++                self.spansequence.is_some()
++            ),
++            (1, false, false) | (2, true, false) | (3, true, true)
+         ) || schemas.len() != self.services.len()
+             || schemas
+                 .iter()
+@@ -151,6 +158,9 @@ impl MultiModel {
+             return Err("multi model/schema mismatch".into());
+         }
+         self.router.validate()?;
++        if let Some(s) = &self.spansequence {
++            s.validate(schemas)?;
++        }
+         if let Some(b) = &self.boundaries {
+             b.validate()?;
+         }
+@@ -182,6 +192,7 @@ impl MultiModel {
+         let turn_index = session.turn_count;
+         session.turn_count += 1;
+         session.offer_proposals.clear();
++        session.sequence_proposals.clear();
+         session.boundary_proposals.clear();
+         if matches!(turn.speaker, Speaker::System) {
+             if self.offers.is_some() {
+@@ -236,6 +247,21 @@ impl MultiModel {
+                 && let Some(model) = self.services.get(&schema.service_name)
+             {
+                 model.advance(state, turn, schema, true);
++                if let Some(sequence) = &self.spansequence {
++                    let mut proposals = sequence.propose(
++                        &schema.service_name,
++                        &turn.utterance,
++                        &session.previous_system,
++                    );
++                    proposals.sort_by_key(|p| p.end - p.start);
++                    for p in &proposals {
++                        state.slots.insert(
++                            p.slot.clone(),
++                            crate::tracker::SlotValue::Text(p.value.clone()),
++                        );
++                    }
++                    session.sequence_proposals.extend(proposals);
++                }
+                 if let (Some(resolver), Some(prior)) = (&self.references, &prior) {
+                     for slot in &schema.slots {
+                         if !state.slots.contains_key(&slot.name)
+@@ -342,6 +368,7 @@ mod tests {
+             {"service_name":"B","slots":[],"intents":[{"name":"DoB","required_slots":[],"optional_slots":{}}]}
+         ]"#).expect("schemas");
+         let mut model = MultiModel {
++            spansequence: None,
+             boundaries: None,
+             version: 1,
+             router: constant("A"),
+@@ -431,6 +458,7 @@ mod tests {
+           {"service_name":"B","slots":[{"name":"city","is_categorical":false,"possible_values":[]}],"intents":[{"name":"find","required_slots":["city"],"optional_slots":{}}]}
+         ]"#).expect("schemas");
+         let mut model = MultiModel {
++            spansequence: None,
+             boundaries: None,
+             version: 1,
+             router: constant("A|B"),
+diff --git i/crates/dialogue/src/offers.rs w/crates/dialogue/src/offers.rs
+index 6a0ad12..aa2e367 100644
+--- i/crates/dialogue/src/offers.rs
++++ w/crates/dialogue/src/offers.rs
+@@ -280,6 +280,7 @@ mod tests {
+         }
+         let (schemas, offers) = fixture();
+         let model = MultiModel {
++            spansequence: None,
+             boundaries: None,
+             version: 1,
+             router: constant("A"),
+diff --git 1/crates/dialogue/src/spansequence.rs 2/crates/dialogue/src/spansequence.rs
+new file mode 100644
+index 0000000..b04240f
+--- /dev/null
++++ 2/crates/dialogue/src/spansequence.rs
+@@ -0,0 +1,519 @@
++//! Optional bounded linear-chain BIO proposals. Runtime consumes text only.
++use serde::{Deserialize, Serialize};
++use std::collections::{BTreeMap, BTreeSet};
++const MAX_TOKENS: usize = 256;
++const MAX_BYTES: usize = 4096;
++const NEG: f64 = -1e100;
++#[derive(Debug, Serialize, Deserialize)]
++pub struct SequenceModel {
++    pub version: u32,
++    pub threshold: f64,
++    pub services: BTreeMap<String, Chain>,
++}
++#[derive(Debug, Serialize, Deserialize)]
++pub struct Chain {
++    pub labels: Vec<String>,
++    pub vocabulary: BTreeMap<String, usize>,
++    pub emissions: Vec<Vec<f64>>,
++    /// Last row is start-of-sequence; other rows are learned transitions.
++    pub transitions: Vec<Vec<f64>>,
++}
++#[derive(Debug, Clone, Serialize, Deserialize)]
++pub struct Proposal {
++    pub service: String,
++    pub slot: String,
++    pub value: String,
++    pub start: usize,
++    pub end: usize,
++    pub char_start: usize,
++    pub char_end: usize,
++    pub margin: f64,
++}
++#[derive(Debug)]
++pub struct Token {
++    pub text: String,
++    pub start: usize,
++    pub end: usize,
++    pub char_start: usize,
++    pub char_end: usize,
++}
++pub fn tokenize(text: &str) -> Option<Vec<Token>> {
++    if text.len() > MAX_BYTES {
++        return None;
++    }
++    let mut out = Vec::new();
++    let mut start = None;
++    for (ci, (bi, c)) in text
++        .char_indices()
++        .chain(std::iter::once((text.len(), ' ')))
++        .enumerate()
++    {
++        if c.is_alphanumeric() || c == '\'' || c == '-' {
++            start.get_or_insert((bi, ci));
++        } else if let Some((b, ch)) = start.take() {
++            out.push(Token {
++                text: text.get(b..bi)?.into(),
++                start: b,
++                end: bi,
++                char_start: ch,
++                char_end: ci,
++            });
++            if out.len() > MAX_TOKENS {
++                return None;
++            }
++        }
++    }
++    Some(out)
++}
++fn shape(word: &str) -> String {
++    let mut s = String::new();
++    let mut last = '\0';
++    for c in word.chars() {
++        let x = if c.is_uppercase() {
++            'A'
++        } else if c.is_lowercase() {
++            'a'
++        } else if c.is_numeric() {
++            '0'
++        } else {
++            c
++        };
++        if x != last {
++            s.push(x);
++            last = x;
++        }
++    }
++    s
++}
++pub fn features(words: &[Token], system: &str) -> Vec<Vec<String>> {
++    let sys: BTreeSet<_> = tokenize(system)
++        .unwrap_or_default()
++        .into_iter()
++        .map(|t| t.text.to_lowercase())
++        .collect();
++    words
++        .iter()
++        .enumerate()
++        .map(|(i, t)| {
++            let mut f = vec![
++                "bias".into(),
++                format!("first={}", i == 0),
++                format!("last={}", i + 1 == words.len()),
++            ];
++            for offset in -2isize..=2 {
++                if let Some(w) = i.checked_add_signed(offset).and_then(|j| words.get(j)) {
++                    f.push(format!("w{offset}={}", w.text.to_lowercase()));
++                    f.push(format!("s{offset}={}", shape(&w.text)));
++                    f.push(format!(
++                        "cap{offset}={}",
++                        w.text.chars().next().is_some_and(char::is_uppercase)
++                    ));
++                    f.push(format!(
++                        "num{offset}={}",
++                        w.text.chars().all(char::is_numeric)
++                    ));
++                }
++            }
++            let cs: Vec<_> = t.text.to_lowercase().chars().collect();
++            for n in 1..=3 {
++                if let Some(p) = cs.get(..n) {
++                    f.push(format!("pre{n}={}", p.iter().collect::<String>()));
++                }
++                if let Some(p) = cs.len().checked_sub(n).and_then(|b| cs.get(b..)) {
++                    f.push(format!("suf{n}={}", p.iter().collect::<String>()));
++                }
++            }
++            f.extend(sys.iter().take(32).map(|w| format!("sys={w}")));
++            f.sort();
++            f.dedup();
++            f
++        })
++        .collect()
++}
++fn val(rows: &[Vec<f64>], i: usize, j: usize) -> f64 {
++    rows.get(i).and_then(|r| r.get(j)).copied().unwrap_or(0.)
++}
++fn set(rows: &mut [Vec<f64>], i: usize, j: usize, value: f64) {
++    if let Some(x) = rows.get_mut(i).and_then(|r| r.get_mut(j)) {
++        *x = value;
++    }
++}
++impl Chain {
++    pub fn encode(&self, f: &[Vec<String>]) -> Vec<Vec<usize>> {
++        f.iter()
++            .map(|r| {
++                r.iter()
++                    .filter_map(|x| self.vocabulary.get(x).copied())
++                    .collect()
++            })
++            .collect()
++    }
++    fn legal(&self, previous: usize, next: usize) -> bool {
++        let Some(label) = self.labels.get(next) else {
++            return false;
++        };
++        if let Some(slot) = label.strip_prefix("I:") {
++            self.labels
++                .get(previous)
++                .and_then(|s| s.split_once(':'))
++                .is_some_and(|(_, p)| p == slot)
++        } else {
++            true
++        }
++    }
++    /// Viterbi plus exact token max marginals, never independent BIO decisions.
++    pub fn decode(&self, rows: &[Vec<usize>]) -> (Vec<usize>, Vec<f64>) {
++        let k = self.labels.len();
++        let n = rows.len();
++        if n == 0 || n > MAX_TOKENS || k == 0 || k > 32 {
++            return (vec![], vec![]);
++        }
++        let emit: Vec<Vec<f64>> = rows
++            .iter()
++            .map(|fs| {
++                (0..k)
++                    .map(|y| fs.iter().map(|f| val(&self.emissions, *f, y)).sum())
++                    .collect()
++            })
++            .collect();
++        let mut forward = vec![vec![NEG; k]; n];
++        let mut backptr = vec![vec![0.; k]; n];
++        for i in 0..n {
++            for y in 0..k {
++                let (mut best, mut arg) = (NEG, 0);
++                if i == 0 {
++                    if self.legal(k, y) {
++                        best = val(&self.transitions, k, y);
++                    }
++                } else {
++                    for p in 0..k {
++                        if self.legal(p, y) {
++                            let score = val(&forward, i - 1, p) + val(&self.transitions, p, y);
++                            if score > best {
++                                best = score;
++                                arg = p;
++                            }
++                        }
++                    }
++                }
++                set(&mut forward, i, y, best + val(&emit, i, y));
++                set(&mut backptr, i, y, arg as f64);
++            }
++        }
++        let mut path = vec![0; n];
++        let mut y = (0..k)
++            .max_by(|a, b| {
++                val(&forward, n - 1, *a)
++                    .total_cmp(&val(&forward, n - 1, *b))
++                    .then_with(|| b.cmp(a))
++            })
++            .unwrap_or(0);
++        let best = val(&forward, n - 1, y);
++        for i in (0..n).rev() {
++            if let Some(p) = path.get_mut(i) {
++                *p = y;
++            }
++            y = val(&backptr, i, y) as usize;
++        }
++        let mut backward = vec![vec![0.; k]; n];
++        for i in (0..n - 1).rev() {
++            for p in 0..k {
++                let mut score = NEG;
++                for y in 0..k {
++                    if self.legal(p, y) {
++                        score = score.max(
++                            val(&self.transitions, p, y)
++                                + val(&emit, i + 1, y)
++                                + val(&backward, i + 1, y),
++                        );
++                    }
++                }
++                set(&mut backward, i, p, score);
++            }
++        }
++        let margins = path
++            .iter()
++            .enumerate()
++            .map(|(i, y)| {
++                let alt = (0..k)
++                    .filter(|p| p != y)
++                    .map(|p| val(&forward, i, p) + val(&backward, i, p))
++                    .fold(NEG, f64::max);
++                (best - alt).max(0.)
++            })
++            .collect();
++        (path, margins)
++    }
++    pub fn propose(
++        &self,
++        service: &str,
++        text: &str,
++        system: &str,
++        threshold: f64,
++    ) -> Vec<Proposal> {
++        let Some(words) = tokenize(text) else {
++            return vec![];
++        };
++        if system.len() > MAX_BYTES {
++            return vec![];
++        }
++        let (path, margins) = self.decode(&self.encode(&features(&words, system)));
++        let mut out = Vec::new();
++        let mut i = 0;
++        while i < path.len() {
++            let Some(slot) = path
++                .get(i)
++                .and_then(|y| self.labels.get(*y))
++                .and_then(|s| s.strip_prefix("B:"))
++            else {
++                i += 1;
++                continue;
++            };
++            let mut end = i + 1;
++            while path
++                .get(end)
++                .and_then(|y| self.labels.get(*y))
++                .is_some_and(|s| s.strip_prefix("I:") == Some(slot))
++            {
++                end += 1;
++            }
++            let margin = margins
++                .get(i.saturating_sub(1)..(end + 1).min(path.len()))
++                .unwrap_or_default()
++                .iter()
++                .copied()
++                .fold(f64::INFINITY, f64::min);
++            if margin >= threshold
++                && let (Some(first), Some(last)) = (words.get(i), words.get(end - 1))
++                && let Some(value) = text.get(first.start..last.end)
++            {
++                out.push(Proposal {
++                    service: service.into(),
++                    slot: slot.into(),
++                    value: value.into(),
++                    start: first.start,
++                    end: last.end,
++                    char_start: first.char_start,
++                    char_end: last.char_end,
++                    margin,
++                });
++            }
++            i = end;
++        }
++        out
++    }
++}
++impl SequenceModel {
++    pub fn validate(&self, schemas: &[crate::adapter::Schema]) -> Result<(), String> {
++        if self.version != 1
++            || !self.threshold.is_finite()
++            || self.threshold < 0.
++            || self.services.len() > 8
++        {
++            return Err("invalid sequence header".into());
++        }
++        for (s, c) in &self.services {
++            let schema = schemas
++                .iter()
++                .find(|x| &x.service_name == s)
++                .ok_or("unknown sequence service")?;
++            let k = c.labels.len();
++            if k == 0
++                || k > 32
++                || c.labels.first().map(String::as_str) != Some("O")
++                || c.labels.iter().collect::<BTreeSet<_>>().len() != k
++                || c.vocabulary.len() > 50000
++                || c.emissions.len() != c.vocabulary.len()
++                || c.transitions.len() != k + 1
++            {
++                return Err("invalid sequence dimensions".into());
++            }
++            if c.vocabulary.values().copied().collect::<BTreeSet<_>>()
++                != (0..c.vocabulary.len()).collect()
++                || c.vocabulary.keys().any(|s| s.len() > 8192)
++            {
++                return Err("invalid sequence dictionary".into());
++            }
++            for l in c.labels.iter().skip(1) {
++                let (tag, slot) = l.split_once(':').ok_or("invalid BIO label")?;
++                if !matches!(tag, "B" | "I")
++                    || !schema
++                        .slots
++                        .iter()
++                        .any(|s| s.name == slot && !s.is_categorical)
++                    || !c.labels.contains(&format!("B:{slot}"))
++                    || !c.labels.contains(&format!("I:{slot}"))
++                {
++                    return Err("invalid BIO slot".into());
++                }
++            }
++            if c.emissions
++                .iter()
++                .chain(&c.transitions)
++                .any(|r| r.len() != k || r.iter().any(|v| !v.is_finite() || v.abs() > 1e6))
++            {
++                return Err("invalid sequence weights".into());
++            }
++        }
++        Ok(())
++    }
++    pub fn propose(&self, service: &str, text: &str, system: &str) -> Vec<Proposal> {
++        self.services.get(service).map_or_else(Vec::new, |c| {
++            c.propose(service, text, system, self.threshold)
++        })
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    fn chain() -> Chain {
++        Chain {
++            labels: vec!["O".into(), "B:city".into(), "I:city".into()],
++            vocabulary: BTreeMap::from([
++                ("cap0=true".into(), 0),
++                ("w-1=in".into(), 1),
++                ("bias".into(), 2),
++            ]),
++            emissions: vec![vec![0., 8., 8.], vec![0., 8., 0.], vec![2., -5., -5.]],
++            transitions: vec![vec![0.; 3], vec![0., 0., 1.], vec![0., 0., 1.], vec![0.; 3]],
++        }
++    }
++    #[test]
++    fn novel_unicode_multiword_and_punctuation() {
++        let c = chain();
++        for name in ["Zürich Vale", "Novera Heights"] {
++            let text = format!("no, instead in {name}!");
++            let p = c.propose("s", &text, "", 0.);
++            assert_eq!(p.len(), 1);
++            let p = &p[0];
++            assert_eq!(p.value, name);
++            assert_eq!(text.get(p.start..p.end), Some(name));
++            assert_eq!(
++                text.chars()
++                    .skip(p.char_start)
++                    .take(p.char_end - p.char_start)
++                    .collect::<String>(),
++                name
++            );
++        }
++        assert!(
++            c.propose("s", "no thanks, nothing else.", "", 0.)
++                .is_empty()
++        );
++    }
++    #[test]
++    fn constrained_transition_and_bounds() {
++        let mut c = chain();
++        c.emissions = vec![vec![0., 0., 100.]; 3];
++        let (p, _) = c.decode(&[vec![0], vec![0]]);
++        assert_ne!(p.first(), Some(&2));
++        assert!(tokenize(&"a".repeat(4097)).is_none());
++        assert!(tokenize(&"a ".repeat(257)).is_none());
++        assert!(c.propose("s", "hello", &"x".repeat(4097), 0.).is_empty());
++    }
++    #[test]
++    fn viterbi_marginals_match_exhaustive_paths() {
++        let c = chain();
++        let rows = vec![vec![2], vec![0, 1, 2], vec![0, 2]];
++        let (path, margins) = c.decode(&rows);
++        let mut paths = Vec::new();
++        for a in 0..3 {
++            for b in 0..3 {
++                for d in 0..3 {
++                    let p = vec![a, b, d];
++                    let mut previous = 3;
++                    let mut score = 0.;
++                    let mut valid = true;
++                    for (fs, y) in rows.iter().zip(&p) {
++                        valid &= c.legal(previous, *y);
++                        score += val(&c.transitions, previous, *y)
++                            + fs.iter().map(|f| val(&c.emissions, *f, *y)).sum::<f64>();
++                        previous = *y;
++                    }
++                    if valid {
++                        paths.push((p, score));
++                    }
++                }
++            }
++        }
++        let best = paths.iter().map(|(_, s)| *s).fold(NEG, f64::max);
++        assert_eq!(
++            paths.iter().find(|(p, _)| p == &path).map(|(_, s)| *s),
++            Some(best)
++        );
++        for (i, (y, m)) in path.iter().zip(margins).enumerate() {
++            let alt = paths
++                .iter()
++                .filter(|(p, _)| p.get(i) != Some(y))
++                .map(|(_, s)| *s)
++                .fold(NEG, f64::max);
++            assert!((m - (best - alt)).abs() < 1e-9);
++        }
++    }
++    #[test]
++    fn optional_sequence_correction_persistence_reset_and_validation() {
++        use crate::{
++            boundaries::BoundaryModel,
++            multi::{MultiModel, MultiSession},
++            tracker::{DialogueModel, InputTurn, ProposalModel, Speaker},
++        };
++        let schemas:Vec<crate::adapter::Schema>=serde_json::from_str(r#"[{"service_name":"s","slots":[{"name":"city","is_categorical":false,"possible_values":[]}],"intents":[{"name":"find","required_slots":["city"],"optional_slots":{}}]}]"#).expect("schema");
++        let constant = |s: &str| ProposalModel::Constant {
++            constant_label: s.into(),
++            evidence_rows: 1,
++        };
++        let mut m = MultiModel {
++            version: 3,
++            boundaries: Some(BoundaryModel {
++                version: 1,
++                rules: vec![],
++            }),
++            spansequence: Some(SequenceModel {
++                version: 1,
++                threshold: 0.,
++                services: BTreeMap::from([("s".into(), chain())]),
++            }),
++            router: constant("s"),
++            independent_router: BTreeMap::new(),
++            references: None,
++            offers: None,
++            services: BTreeMap::from([(
++                "s".into(),
++                DialogueModel {
++                    version: 2,
++                    service: "s".into(),
++                    intent: constant("SET:find"),
++                    categorical: BTreeMap::new(),
++                    spans: constant("O"),
++                    training_dialogues: 1,
++                    training_frames: 1,
++                },
++            )]),
++        };
++        m.validate(&schemas).expect("valid");
++        let mut session = MultiSession::default();
++        let user = |s: &str| InputTurn {
++            speaker: Speaker::User,
++            utterance: s.into(),
++        };
++        m.advance(&mut session, &user("in Novera Heights"), &schemas);
++        assert_eq!(session.states["s"].slots["city"].text(), "Novera Heights");
++        m.advance(&mut session, &user("no, instead in Zürich Vale!"), &schemas);
++        assert_eq!(session.states["s"].slots["city"].text(), "Zürich Vale");
++        assert_eq!(session.sequence_proposals.len(), 1);
++        m.advance(&mut session, &user("no thanks"), &schemas);
++        assert_eq!(session.states["s"].slots["city"].text(), "Zürich Vale");
++        assert!(session.sequence_proposals.is_empty());
++        let mut fresh = MultiSession::default();
++        m.advance(&mut fresh, &user("no thanks"), &schemas);
++        assert!(fresh.states["s"].slots.is_empty());
++        m.version = 2;
++        assert!(m.validate(&schemas).is_err());
++        m.version = 3;
++        if let Some(q) = m.spansequence.as_mut() {
++            q.threshold = f64::NAN;
++        }
++        assert!(m.validate(&schemas).is_err());
++    }
++}
+diff --git 1/crates/dialogue/src/bin/dialogue-spansequence-train.rs 2/crates/dialogue/src/bin/dialogue-spansequence-train.rs
+new file mode 100644
+index 0000000..a8fd189
+--- /dev/null
++++ 2/crates/dialogue/src/bin/dialogue-spansequence-train.rs
+@@ -0,0 +1,228 @@
++//! Offline, TRAIN-only averaged structured perceptron. No runtime annotations.
++use clap::Parser;
++use glassmind_dialogue::spansequence::{Chain, SequenceModel, features, tokenize};
++use serde::Deserialize;
++use std::{
++    collections::{BTreeMap, BTreeSet},
++    fs::File,
++    io::{BufReader, BufWriter},
++    path::PathBuf,
++};
++#[derive(Parser)]
++struct Args {
++    #[arg(long)]
++    input: PathBuf,
++    #[arg(long)]
++    output: PathBuf,
++    #[arg(long)]
++    report: PathBuf,
++}
++#[derive(Deserialize)]
++struct Data {
++    slots: BTreeMap<String, Vec<String>>,
++    rows: Vec<Row>,
++}
++#[derive(Deserialize)]
++struct Row {
++    cal: bool,
++    service: String,
++    system: String,
++    utterance: String,
++    spans: Vec<Span>,
++}
++#[derive(Deserialize, serde::Serialize)]
++struct Span {
++    slot: String,
++    start: usize,
++    exclusive_end: usize,
++}
++#[derive(Clone, Default)]
++struct Average {
++    total: f64,
++    last: usize,
++}
++fn update(
++    weights: &mut [Vec<f64>],
++    averages: &mut [Vec<Average>],
++    i: usize,
++    j: usize,
++    delta: f64,
++    step: usize,
++) {
++    if let (Some(w), Some(a)) = (
++        weights.get_mut(i).and_then(|r| r.get_mut(j)),
++        averages.get_mut(i).and_then(|r| r.get_mut(j)),
++    ) {
++        a.total += (step - a.last) as f64 * *w;
++        a.last = step;
++        *w += delta;
++    }
++}
++fn finish(weights: &mut [Vec<f64>], averages: &[Vec<Average>], step: usize) {
++    for (ws, aa) in weights.iter_mut().zip(averages) {
++        for (w, a) in ws.iter_mut().zip(aa) {
++            *w = (a.total + (step - a.last) as f64 * *w) / step.max(1) as f64;
++        }
++    }
++}
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let a = Args::parse();
++    let data: Data = serde_json::from_reader(BufReader::new(File::open(a.input)?))?;
++    if data.rows.len() > 100000 || data.slots.len() > 8 {
++        return Err("training bounds".into());
++    }
++    let mut model = SequenceModel {
++        version: 1,
++        threshold: 0.,
++        services: BTreeMap::new(),
++    };
++    let mut reports = BTreeMap::new();
++    for (service, slots) in &data.slots {
++        let mut labels = vec!["O".to_string()];
++        for s in slots {
++            labels.push(format!("B:{s}"));
++            labels.push(format!("I:{s}"));
++        }
++        let k = labels.len();
++        if k > 32 {
++            return Err("label bounds".into());
++        }
++        let mut train = Vec::new();
++        let mut counts = BTreeMap::<String, usize>::new();
++        for r in data.rows.iter().filter(|r| !r.cal && &r.service == service) {
++            let words = tokenize(&r.utterance).ok_or("oversized train input")?;
++            let fs = features(&words, &r.system);
++            let mut gold = Vec::new();
++            for (i, w) in words.iter().enumerate() {
++                let span = r
++                    .spans
++                    .iter()
++                    .find(|s| w.char_start >= s.start && w.char_end <= s.exclusive_end);
++                let label = span.map_or_else(
++                    || "O".into(),
++                    |s| {
++                        let same = i
++                            .checked_sub(1)
++                            .and_then(|j| words.get(j))
++                            .is_some_and(|p| {
++                                p.char_start >= s.start && p.char_end <= s.exclusive_end
++                            });
++                        format!("{}:{}", if same { "I" } else { "B" }, s.slot)
++                    },
++                );
++                gold.push(
++                    labels
++                        .iter()
++                        .position(|s| s == &label)
++                        .ok_or("unknown gold label")?,
++                );
++            }
++            let unique: BTreeSet<_> = fs.iter().flatten().cloned().collect();
++            for f in unique {
++                *counts.entry(f).or_default() += 1;
++            }
++            train.push((fs, gold));
++        }
++        let mut ranked: Vec<_> = counts.into_iter().filter(|(_, n)| *n >= 2).collect();
++        ranked.sort_by(|a, b| b.1.cmp(&a.1).then_with(|| a.0.cmp(&b.0)));
++        ranked.truncate(50000);
++        let vocabulary: BTreeMap<_, _> = ranked
++            .into_iter()
++            .map(|x| x.0)
++            .collect::<BTreeSet<_>>()
++            .into_iter()
++            .enumerate()
++            .map(|(i, s)| (s, i))
++            .collect();
++        let mut c = Chain {
++            labels,
++            vocabulary,
++            emissions: vec![],
++            transitions: vec![vec![0.; k]; k + 1],
++        };
++        c.emissions = vec![vec![0.; k]; c.vocabulary.len()];
++        let train: Vec<_> = train.into_iter().map(|(f, g)| (c.encode(&f), g)).collect();
++        let mut ea = vec![vec![Average::default(); k]; c.emissions.len()];
++        let mut ta = vec![vec![Average::default(); k]; k + 1];
++        let mut step = 0;
++        let mut mistakes = Vec::new();
++        for epoch in 0..8 {
++            let mut errors = 0;
++            for (fs, gold) in &train {
++                let (pred, _) = c.decode(fs);
++                if &pred != gold {
++                    errors += 1;
++                    for (i, ((row, g), p)) in fs.iter().zip(gold).zip(&pred).enumerate() {
++                        if g != p {
++                            for f in row {
++                                update(&mut c.emissions, &mut ea, *f, *g, 1., step);
++                                update(&mut c.emissions, &mut ea, *f, *p, -1., step);
++                            }
++                        }
++                        let gp = i
++                            .checked_sub(1)
++                            .and_then(|j| gold.get(j))
++                            .copied()
++                            .unwrap_or(k);
++                        let pp = i
++                            .checked_sub(1)
++                            .and_then(|j| pred.get(j))
++                            .copied()
++                            .unwrap_or(k);
++                        update(&mut c.transitions, &mut ta, gp, *g, 1., step);
++                        update(&mut c.transitions, &mut ta, pp, *p, -1., step);
++                    }
++                }
++                step += 1;
++            }
++            mistakes.push(errors);
++            eprintln!(
++                "{service} epoch{} mistakes{errors}/{}",
++                epoch + 1,
++                train.len()
++            );
++        }
++        finish(&mut c.emissions, &ea, step);
++        finish(&mut c.transitions, &ta, step);
++        reports.insert(service.clone(),serde_json::json!({"fit_sequences":train.len(),"features":c.vocabulary.len(),"epoch_mistakes":mistakes}));
++        model.services.insert(service.clone(), c);
++    }
++    let thresholds = [0., 2., 4., 8., 16., 32.];
++    let mut totals = vec![(0usize, 0usize); thresholds.len()];
++    let mut calibration_rows = Vec::new();
++    for r in data.rows.iter().filter(|r| r.cal) {
++        let Some(c) = model.services.get(&r.service) else {
++            continue;
++        };
++        let proposals = c.propose(&r.service, &r.utterance, &r.system, 0.);
++        calibration_rows.push(serde_json::json!({"service":r.service,"utterance":r.utterance,"system":r.system,"gold":r.spans,"proposals":proposals}));
++        for p in proposals {
++            let correct = r.spans.iter().any(|s| {
++                s.slot == p.slot && s.start == p.char_start && s.exclusive_end == p.char_end
++            });
++            for (threshold, (total, right)) in thresholds.iter().zip(&mut totals) {
++                if p.margin >= *threshold {
++                    *total += 1;
++                    *right += usize::from(correct);
++                }
++            }
++        }
++    }
++    let selected = thresholds
++        .iter()
++        .zip(&totals)
++        .find(|(_, (n, r))| *n >= 30 && r * 100 >= n * 99)
++        .map(|(t, _)| *t);
++    let report = serde_json::json!({"services":reports,"thresholds":thresholds,"cal_proposals_correct":totals,"selected":selected,"epochs":8,"calibration_rows":calibration_rows});
++    serde_json::to_writer_pretty(BufWriter::new(File::create(a.report)?), &report)?;
++    if selected.is_none() {
++        serde_json::to_writer(
++            BufWriter::new(File::create(a.output.with_extension("unselected.json"))?),
++            &serde_json::json!({"version":1,"services":model.services}),
++        )?;
++    }
++    model.threshold = selected.ok_or("CAL gate failed; no candidate")?;
++    serde_json::to_writer(BufWriter::new(File::create(a.output)?), &model)?;
++    println!("{report}");
++    Ok(())
++}
+diff --git 1/crates/dialogue/src/bin/dialogue-spansequence-probe.rs 2/crates/dialogue/src/bin/dialogue-spansequence-probe.rs
+new file mode 100644
+index 0000000..8f823cb
+--- /dev/null
++++ 2/crates/dialogue/src/bin/dialogue-spansequence-probe.rs
+@@ -0,0 +1,47 @@
++//! Utterance-only raw proposal diagnostics, separate from gold auditing.
++use clap::Parser;
++use glassmind_dialogue::{
++    spansequence::{SequenceModel, features, tokenize},
++    tracker::{InputTurn, Speaker},
++};
++use std::{
++    fs::File,
++    io::{BufReader, BufWriter},
++    path::PathBuf,
++};
++#[derive(Parser)]
++struct Args {
++    #[arg(long)]
++    model: PathBuf,
++    #[arg(long)]
++    input: PathBuf,
++    #[arg(long)]
++    output: PathBuf,
++}
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    let a = Args::parse();
++    let model: SequenceModel = serde_json::from_reader(BufReader::new(File::open(a.model)?))?;
++    let conversations: Vec<Vec<InputTurn>> =
++        serde_json::from_reader(BufReader::new(File::open(a.input)?))?;
++    let mut result = Vec::new();
++    for turns in conversations {
++        let mut system = String::new();
++        let mut rows = Vec::new();
++        for (i, t) in turns.iter().enumerate() {
++            if matches!(t.speaker, Speaker::System) {
++                system.clone_from(&t.utterance);
++                continue;
++            }
++            let mut services = std::collections::BTreeMap::new();
++            for (s, c) in &model.services {
++                let words = tokenize(&t.utterance).ok_or("oversized input")?;
++                let (tags, margins) = c.decode(&c.encode(&features(&words, &system)));
++                services.insert(s,serde_json::json!({"tokens":words.iter().zip(tags).zip(margins).map(|((w,l),m)|serde_json::json!({"word":w.text,"label":c.labels.get(l),"margin":m})).collect::<Vec<_>>(),"raw":c.propose(s,&t.utterance,&system,0.),"selected":c.propose(s,&t.utterance,&system,model.threshold)}));
++            }
++            rows.push(serde_json::json!({"turn_index":i,"services":services}));
++        }
++        result.push(rows);
++    }
++    serde_json::to_writer(BufWriter::new(File::create(a.output)?), &result)?;
++    Ok(())
++}

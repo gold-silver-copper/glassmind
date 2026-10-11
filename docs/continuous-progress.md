@@ -2,108 +2,94 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. This turn made
-concrete progress: completed the full coding comparison, independently audited
-reading/facts, merged PR16, and launched the next dialogue experiment.
-No persistent blocker. Older sections below are historical, including ACTIVE
-labels; this section supersedes them.
-
+Goal active: follow `prompts/grow-continuously.md` until stopped. The preceding
+turn made progress (PR16 merged), and this turn implemented native confirmation
+of ambiguity, verified full765, rejected a dialogue model and started ratewords.
+No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
-Source HEAD `eb22519f20325e72549a103cf99180ea0dbc2ba3`; PR15 already MERGED
-`e1fd2d2fb1634ceb3361f1fc05e4bc89a8db58f9` at exacthead176dc89, CI38115264848.
-PR16 MERGED `c6c6cd133e485e23f4bb8fe1d8786bcf6442b75e` at2026-10-11T05:54:19Z,
-exact reviewed head`69ba975a9f44bd8f3aaf45be355fffe82cbc6577`. CI38116227685
-passed1m0s. e8fc354 records rejectedTRAIN facts expansion; eb22519 integrates
-compositional field-language parsing. All required gates/publishing complete.
-No repoll/remerge of PR15/16 or completed parent evaluations.
 
-### Completed, verified and merged
+PR16 already MERGED `c6c6cd133e485e23f4bb8fe1d8786bcf6442b75e`, exacthead
+69ba975a9f44bd8f3aaf45be355fffe82cbc6577, CI38116227685 passed1m0s.
+Source now `e03437a81f2d047babad5e122aec99a88b1c56af` (repair ambiguity).
+Next batch PR17 not yet opened. Do not repeat completed PR15/16 checks or merges.
 
-- EDITLANGUAGE: archived original5files/50,089bytes, worktree/auth removed.
-  Parent reproduced and fixed dangling `. and` / `; and` acceptance. Independent
-  sample2/2, supplied full4/5,13/13 behavioral probes,35/35 typechecks,8/8 queries,
-  three incomplete-clause refusals,38 English tests, workspace fmt/all-clippy/
-  release/strict4/4smoke all pass. Sourceeb22519, binarySHA
-  bb5dae741d23b84d9ce07707ee536aeaf38089be34330724221ed50bb2f1bacb.
-  Full765 COMPLETE session52941:174pass588refused3fail. Exactlytwo hurried
-  field-addition refusals become passes; all172 previous passes retained and
-  allother763 outcomes unchanged. ResultSHA
-  eaef77bfe21709e8eb61c2d6aea388536ab795cbc91e08c8b44952abd6e3a5f5.
-  `docs/results/coding-editlanguage.json`, `tools/coding-editlanguage/integrated/`.
-  No active parent jobs; completed52941/33880/51191/69315 must not be restarted.
-- LINKQUALITY REJECTED. Original15files/72,850bytes archived/hashverified;
-  worktree/auth removed. Parent verified51hashes and recomputed all19481TRAIN
-  and2821DEV paired transitions in both500/999scopes. Typed what/which adjacency
-  removes3correctTRAIN entity links, failing frozen gate. New999DEV47/2712/62
-  becomes8/2792/21 right/refused/wrong, losing39scoredright. Old500 unchanged.
-  Learned gate was impossible at min50/95%:CAL had only14correctentityanswers.
-  Runtime restored; unapplied patch/evidence in `tools/facts/linkquality/`.
-- Separate joint facts audit: unchanged historical500 predictions score
-  252right2545refused24wrong versus answer-only256/2545/20. RejectedTRAIN999
-  scores2/2712/107 versus answer-only47/2712/62. All differences are wrong-subject
-  answer coincidences. New metric distinct; old scorer/gates unchanged.
-  Offline coverage/order/official-total checks and2focused tests pass.
-  `tools/facts/JOINT-AUDIT.md`, `docs/results/facts-{old500,train999}-joint.json`.
-- QAROLES COMPLETE/REJECTED. Original20files/277,065bytes archived and rechecked;
- 82provenancehashes verified, worktree/auth removed. Runtime fully restored.
-  Raw2532→2631 exact (required2638), F134.5184→35.9726. Selected815→694correct,
-  791→498wrong,8964→9378refused;precision58.22% but correct-count gate fails.
-  Parent recomputed all10570 officialscores/transitions and43/86CAL threshold.
-  Worker transition helper misclassified3unchangedrefusals due to empty-normalized
-  gold variants; corrected right→right363, refused→refused8273. Official aggregates
-  unchanged. Original artifacts preserved, parent-review.json authoritative.
-  All10570v1outputs byte-identical;10worker tests pass, experimentalclippy fails14
-  indexing violations. No rejected model shipped; no newtrain/inference rerun.
-  Evidence `tools/reading/roles/`, raw `WORK/qaroles-run/roles`.
+### Verified current batch
 
-Known completed worker tokens67,107,462 including cached input once. Parent and
-unfinished/interrupted usage excluded. Scoreboard adds174coding and separate252
-joint-facts point; rejected999/reading candidates are evidence, not shipped gains.
+REPAIRAMBIGUITY2 COMPLETE. Original7files/87,499bytes archived/hashverified before
+parent changes and again before worktree removal; scopeinactive/authunlinked.
+Originalworker pure scalar interpreter found two original-test-passing variants
+that disagree; full27six→fiveverified, one underconstrained repairwithdrawn.
+Parent found surrounding type-binding gap:included source can shadowu8 asi8.
+Added required native confirmation in original scratch package, with executed
+probe markers and same10-second extra-search deadline. Out-of-domain/unusedfile
+probes refuse evidence. No intendedcorrectanswer or equivalenceproof inferred.
 
-### Live work and next actions
+Parent25worldtests, workspacefmt/allclippy/release/strict4smoke pass. Independent
+sample2verified2refused/full27fiveverified22refused matchworker exactly, allfive
+retainedpatches identical. Original108fixturehashes rechecked; separate native
+replay confirms bothoriginaltests and the retained outputs. Parentfull765 COMPLETE
+session33176:174pass591refused0fail. Exactlythree fail→refused transitions for
+three styles ofone ambiguousrepair; all174oldpasses/allother762outcomes unchanged.
+No newcorrectsolution claimed, no heldout. `tools/coding-ambiguity/PARENT.md`,
+`integrated/validation.json`, `docs/results/coding-ambiguity.json`.
+FrozenbinarySHA b53e5f21899189d7e51d8a8ce87aeab561ea92e3196d949cb6ff20d37661e133;
+fullresultSHA284d386d16e15a187fd842f11a0514f5d34536dc80cd6de86ad7437737b32f6d.
+RawWORK/coordinator/ambiguity-{check,full}; scripts ambiguity-replay.sh and
+unchangedtools/rustbench-dev.sh. Parentjobs62005/75876/18192/33176 allCOMPLETE,
+do not repoll/restart. Firstabortedrepairambiguityfixture copy lacked publictests;
+itslogs preserved separately, no metricsreused; cleanworktree/authremoved earlier.
 
-Two model workers are live, both confirmed systemd ACTIVE.
+SPANSEQUENCE COMPLETE/REJECTED at original99%CALprecision/min30gate:best458/470
+97.45%. One8epochstructuredBIOmodel,2532FIT/642CAL, all2505CALrows retained.
+No candidateDEVthreshold orcandidateDEVevaluation. Same schedule rerun onlyto
+preservefailedweights; firstweighthash unavailable, disclosed. Runtimefullyrestored.
+Parent verified50distinctartifactpaths, reconstructed exactfrozen sourcefrompatch,
+and independently recalculatedallsixCALthresholds plusUTF8/charprovenance. Original
+22files/1,605,593bytes archived/hashverified, worktree/auth removed. Worker12tests/
+clippy/fmtpass, v2fullbyteidentical610/1119joint716frames, legacy202/257unchanged;
+all7inheritedwrongslotturns remain. Evidence tools/dialogue/spansequence, unapplied
+patchandunselectedweights (no threshold, not a runtime model). No parentretraining.
 
-REPAIRAMBIGUITY2:
-PID2927471, scopeglassmind-continuous-repairambiguity2.scope, worktree
-WORK/repairambiguity2 at eb22519, runWORK/repairambiguity2-run,
-briefWORK/repairambiguity2-task.txt. Owns world-Rust checks/slips/new pure-scalar
-ambiguity helper and tools/coding-ambiguity. Forced GPT6Astra fast/ChatGPT login,
-API environment removed,8GiB/zero-swap scope. Do not restart on observationtimeout.
-Hypothesis: two original-test-passing candidate repairs with concrete differing
-outputs on the same defined typed input establish underconstrained repair.
-No expected-answer invention or test changes; unsupported analysis preserves old
-behavior, sampled agreement is not proof. Worker replays original27TRAINrequests,
-parent must independently verify and run full765 before shipping any repairchange.
+FACTS diagnostic:rejected999snapshot covers232/2821validationentities;228inverse
+relations,fourforward. Given annotatedentity/relation,205nonemptyclaimsets omitgold,
+24missing,only3uniquematchingclaims. Linker alreadyfinds193entities/190relations;
+actualjoint2matches cannotgrowmuchviaaliasfilteralone. TRAIN3031covered/19481,
+2293inverse,555uniquematches,466missing,1853goldabsent,157nonuniqueincludinggold.
+Separate offline coverage-audit.py checksquestionorder/fullcoverage and records
+inputhashes; no runtime/data/scorer/acceptance changes. Investigate TRAINselection
+and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
+256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
+Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-First repairambiguity attempt PID2921391 was deliberately stopped after discovering
-parent omitted original PUBLIC tests/visible.rs from fixture copies. No accepted
-metrics; original clean worktree removed and auth unlinked. Bad preparation and
-abort explanation retained in WORK/repairambiguity-run/PREPARATION-ABORT.txt.
-Replacement bundle108files/29,232bytes includes27original visible integrationtests,
-27Cargo.toml,27src/lib.rs,27cachedCargo.lock. No hidden/generator/solution content.
+Knowncompletedworker tokens70,754,516 inclcachedinputonce;parent/unfinished/
+interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
+Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
+791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,
+60unsupported0wrong/3116; memory41/calculations27/stories47. No new evaluation
+needed on unchangedtracks; PR16 readingroles/linkedfacts experiments remainrejected.
 
-SPANSEQUENCE PID2972208, scopeglassmind-continuous-spansequence.scope, worktree
-WORK/spansequence at69ba975, runWORK/spansequence-run, briefWORK/spansequence-task.txt.
-Verified8GiB/zero-swap, forcedGPT6Astrafast/ChatGPT login (statuschecked), APIenv
-removed. Ownscrates/dialogue +newtools/dialogue/spansequence; no mainCLI/scorers.
-Hypothesis:new small inspectable structured BIO sequence proposal model recovers
-missing/correction spans; frozenrouter/intent/categorical/references/offers stay.
-Newweights use2532FIT/642CAL conversationhashsplit, no wholeTRAINrefit ordevtuning.
-Frozen approved32,174,720bytev2model/fullpreds/inheritedaudit copied intoownrun.
-Acceptance preserves610correctjoint and716frames plus substantivegain orrepair
-ofinheritederrors, zero new wrongchangedslotassertions. Full179/1119/1218 and
-all7inheritedwrongslotturns audited, v2full/legacybyteequivalence required.
-Worker mustpreregisteronefamily/schedule beforeDEV, rejectandrestoreiffails; parent
-independentretrain/replayrequiredifaccepted. Originalfirstlauncherattempt failed
-beforeprocessstart due taskregistrationorder; fixedbeforeactualsinglelaunch.
+### Sole live worker and next actions
 
-Next: review repair worker when terminal (archive before integration), then
-independenttest/witnessreplay and full765gate for any candidate. Reading needs
-better supervision/representation, not another threshold or acceptance relaxation.
-Revisit dialogue proposal quality after rejected boundary filter; keep coding and
-conversation moving. Preserve stopped dirty old loop; on stop terminate onlyowned
-jobs and remove temporary auth links. No goal completion at a milestone.
+RATEWORDS PID3036374, scopeglassmind-continuous-ratewords.scope confirmedACTIVE
+8GiB/0swap. WorktreeWORK/ratewords at e03437a, runWORK/ratewords-run,
+briefWORK/ratewords-task.txt. ForcedGPT6Astrafast/ChatGPT,noAPIenv. Ownscrates/
+quantities +newtools/quantities/ratewords. Extends reusable exacttypedconstraints
+for multi-clause rate/amount/duration, fullyconsumedEnglish; no template/answerlookup,
+implicitunit/positivity assumptions. BoundedTRAIN Problem-only inspection, one
+preregisteredrepresentation, no devretuning. Frozen corrected22rightMathQAbinary/
+full/sample/synthetic reports copiedintoownrun; existingtrain/validationparquet and
+pyarrow readonlymounted. Acceptance>=3additional semanticallyvalidcorrectanswers,
+all25oldanswerrecords unchanged, all3116synthetictriples identical, nonewwrong;
+independentFraction/unitrecomputation ofEVERYnewanswer. First100thenfull4475,
+all1229unparseablegoldrowsretained. Parent main-talk and fullindependentreplay
+beforepublishing acceptedcandidate. No newdata/dependencies/models expected.
+
+Next: publishverifiedrepair+auditbatch after exact-headrequiredCI, then review
+ratewords when terminal/archiveoriginalsfirst. Reading needs stronger supervision
+for unsupported questions; previoussupport androlefeature experiments failed.
+Dialogue needs semantic span/usefulness representation, not aloweredCALgate.
+Preserve stopped dirty oldloop. Stoponlyownedjobs onuserstop; nevercompletegoal
+at a milestone. No active parent benchmarkjobs remain.
 
 ## Historical checkpoints (superseded by current state above)
 

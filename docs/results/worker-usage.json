@@ -412,6 +412,32 @@
         "reasoning_output_tokens": 2636
       },
       "source": "REJECTED relation-aware span ranker:2631rawcorrect below2638gate;694selectedcorrect below815; no runtimechange. Times from retained artifact metadata."
+    },
+    {
+      "track": "repairambiguity2-continuous",
+      "started_unix": 1791697643.059895,
+      "finished_unix": 1791698143.206042,
+      "usage": {
+        "input_tokens": 1968769,
+        "cached_input_tokens": 1883520,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 26557,
+        "reasoning_output_tokens": 8351
+      },
+      "source": "Locally accepted scalar ambiguityguard:full27six-to-five verified; native disagreement reproduced; parent review/full765pending."
+    },
+    {
+      "track": "spansequence-continuous",
+      "started_unix": 1791698016.1298535,
+      "finished_unix": 1791698486.47371,
+      "usage": {
+        "input_tokens": 1620665,
+        "cached_input_tokens": 1537280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 31063,
+        "reasoning_output_tokens": 8828
+      },
+      "source": "REJECTED at preregistered99%CALspanprecision:458/470at32; no candidateDEV. Runtime restored; parent independently recomputed all thresholds."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

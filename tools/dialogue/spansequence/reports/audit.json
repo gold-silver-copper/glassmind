@@ -1,0 +1,341 @@
+{
+  "counts": {},
+  "all_changes": [],
+  "new_wrong": [],
+  "correct_losses": [],
+  "new_correct": [],
+  "held_unscored": [],
+  "inherited": [
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "That's great. Can you find me some attractions there? Preferably a museum."
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "What is their contact number? Is there an entrance fee?"
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Perfect. Please find me a cab to go there."
+    },
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C."
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "correct",
+      "status": "correct",
+      "utterance": "That's great. I want to be close to the nature. Help me look for a cab for 3 people."
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C."
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "correct",
+      "status": "correct",
+      "utterance": "Can you find a free attraction, preferably a child friendly historical spot?"
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C."
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "correct",
+      "status": "correct",
+      "utterance": "What's their number?"
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C."
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "correct",
+      "status": "correct",
+      "utterance": "Can you get a cab there for me?"
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Okay, that is noted. Can you help me find an attraction without an entre fee? I would like to visit a child friendly garden."
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Do you know their contact number?"
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Thanks! I will be calling them soon. And what are the other attractions that you know?"
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Yes, I heard its beautiful there. I need a cab to visit it, for 2 people please."
+    }
+  ],
+  "inherited_seven": [
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "That's great. Can you find me some attractions there? Preferably a museum."
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "What is their contact number? Is there an entrance fee?"
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Perfect. Please find me a cab to go there."
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Okay, that is noted. Can you help me find an attraction without an entre fee? I would like to visit a child friendly garden."
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Do you know their contact number?"
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Thanks! I will be calling them soon. And what are the other attractions that you know?"
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "utterance": "Yes, I heard its beautiful there. I need a cab to visit it, for 2 people please."
+    }
+  ],
+  "proposal_events": [],
+  "proposal_status": {},
+  "routing_unchanged": true,
+  "intents_unchanged": true,
+  "offers_unchanged": true
+}

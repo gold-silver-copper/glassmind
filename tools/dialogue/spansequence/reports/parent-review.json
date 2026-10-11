@@ -1,0 +1,43 @@
+{
+  "archive_files": 22,
+  "archive_bytes": 1605593,
+  "verified_distinct_artifact_paths": 50,
+  "cal_rows": 2505,
+  "thresholds": [
+    0.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0
+  ],
+  "recomputed_proposals_correct": [
+    [
+      535,
+      512
+    ],
+    [
+      533,
+      510
+    ],
+    [
+      528,
+      507
+    ],
+    [
+      517,
+      499
+    ],
+    [
+      505,
+      490
+    ],
+    [
+      470,
+      458
+    ]
+  ],
+  "decision": "REJECTED at original99%CALprecision/min30gate; no candidateDEVthreshold/evaluation; runtime restored and exact frozen source reconstructed from unapplied patch",
+  "training_runs": 2,
+  "training_rerun_disclosure": "Same schedule rerun to retain failed weights; first weights hash unavailable."
+}

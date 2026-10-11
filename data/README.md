@@ -429,3 +429,27 @@ question-only predictions and public validation annotations, downloads no data,
 and changes no original scorer or acceptance criterion. It reveals wrong-subject
 answer coincidences:500-scope256 answer matches versus252 joint matches;
 rejected999-scope47 versus2. These are distinct metrics and index scopes.
+
+
+## Native repair witnesses and sequence proposals (2026-10-11 UTC)
+
+The repair guard reuses27 original TRAIN requests and108 copied Cargo/source/public
+test/lock files (29,232bytes). Every original file hash was rechecked. Typed scalar
+witnesses are confirmed by native Rust in the original package before withdrawing
+a repair. No expected solution, hidden test or generator content was inspected.
+The parent added binding-context and executed-probe checks; all174 full-dev passes
+remain and three failed requests become refusals. [Parent evidence](../tools/coding-ambiguity/PARENT.md).
+
+The dialogue sequence model is rejected at TRAIN calibration:best458/470 spans
+(97.45%) fails the frozen99% gate.2532FIT/642CAL conversations are split by hash;
+new weights exclude CAL, though old baseline models used all TRAIN. The same
+schedule was rerun to preserve failed weights; no first-run model hash exists.
+No candidate DEV threshold or inference was used. All old v2/legacy predictions
+remain unchanged. Zero new downloads; SGD source/license remain as documented
+above. [Full rejection and parent audit](../tools/dialogue/spansequence/HANDOFF.md).
+
+An offline coverage audit of the rejected999-entity facts snapshot finds only
+three unique matching validation claims even with annotated entity/relation IDs.
+This is a knowledge-coverage diagnostic, not a model score. It downloads no data
+and does not alter the index, scorer or historical measurements.
+[Definition and report links](../tools/facts/JOINT-AUDIT.md).

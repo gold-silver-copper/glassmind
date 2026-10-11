@@ -1,0 +1,26 @@
+{
+  "decision": "rejected before candidate DEV: CAL gate failure",
+  "rust_library_tests": 12,
+  "clippy_all_targets": "pass -D warnings",
+  "fmt": "pass",
+  "python_ast": "pass",
+  "bash_syntax": "pass",
+  "baseline_first_bytes_identical": true,
+  "baseline_full_bytes_identical": true,
+  "legacy_bytes_identical": true,
+  "reverse_order_and_annotation_rejection": {
+    "utterance_only": true,
+    "reversed_batch_identical": true,
+    "annotation_input_rejected": true,
+    "conversations": 179,
+    "gold_routing": false
+  },
+  "candidate_dev_evaluations": 0,
+  "training_schedule_runs": 2,
+  "training_rerun_reason": "First run rejected before serializing weights; repeat unchanged schedule to retain failed weights and detailed CAL rows. No refit on CAL.",
+  "runtime_restored": true,
+  "rejected_patch_applies": true,
+  "initial_fixture_failure": "Authored toy model overextended lowercase words; corrected only toy weights before final four sequence tests. Learned representation/schedule unchanged.",
+  "old_models_trained_on_CAL": true,
+  "new_model_weights_fit_only": true
+}
