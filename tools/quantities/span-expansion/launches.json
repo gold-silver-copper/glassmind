@@ -1,0 +1,128 @@
+[
+  {
+    "batch": 1,
+    "launch": {
+      "model": "gpt-6-astra",
+      "service_tier": "fast",
+      "forced_login_method": "chatgpt",
+      "reasoning": "high",
+      "seconds_cap": 1200,
+      "memory_max": 8589934592,
+      "memory_swap_max": 0,
+      "annotation_bytes_cap": 2097152,
+      "teacher_directory_bytes_cap": 268435456,
+      "official_configuration": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "inputs": {
+        "batch.json": "c31e5a46936429d4981890325a57cade7622a457ba9641481e0bd90670e588ea",
+        "schema.json": "41f58fb4515cbad7840cca7af34c3ec48551d7fd60971503f4f47aeffa1aa7ea",
+        "validate.py": "107472a226f7b9247c6faaeceea31089d29ec4d826e9485525ba09d623879fd6",
+        "teacher-brief.txt": "487cf95e09bb52cdf708700a030d4e4c383e54bc2e03f7b831255b2b84731146"
+      },
+      "script_sha256": "2a00cecbb0eb6a3a99905c7f03086e2bf2709276f5ed6fdb9f5ab2ab1b6d865e"
+    },
+    "isolation": {
+      "masked_paths": 5,
+      "selected_batch_visible": true,
+      "key_environment_removed": true
+    },
+    "process": {
+      "pid": 1217993,
+      "supervisor_pid": 1217986,
+      "scope": "glassmind-span-expansion-01.scope",
+      "started_unix": 1791746388.8045359
+    }
+  },
+  {
+    "batch": 2,
+    "launch": {
+      "model": "gpt-6-astra",
+      "service_tier": "fast",
+      "forced_login_method": "chatgpt",
+      "reasoning": "high",
+      "seconds_cap": 1200,
+      "memory_max": 8589934592,
+      "memory_swap_max": 0,
+      "annotation_bytes_cap": 2097152,
+      "teacher_directory_bytes_cap": 268435456,
+      "official_configuration": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "inputs": {
+        "batch.json": "148bae8653ed05d5c2d30a615fc18a923a33f14992a2fa6e9b7a854d2373a585",
+        "schema.json": "41f58fb4515cbad7840cca7af34c3ec48551d7fd60971503f4f47aeffa1aa7ea",
+        "validate.py": "107472a226f7b9247c6faaeceea31089d29ec4d826e9485525ba09d623879fd6",
+        "teacher-brief.txt": "487cf95e09bb52cdf708700a030d4e4c383e54bc2e03f7b831255b2b84731146"
+      },
+      "script_sha256": "2a00cecbb0eb6a3a99905c7f03086e2bf2709276f5ed6fdb9f5ab2ab1b6d865e"
+    },
+    "isolation": {
+      "masked_paths": 5,
+      "selected_batch_visible": true,
+      "key_environment_removed": true
+    },
+    "process": {
+      "pid": 1218096,
+      "supervisor_pid": 1218089,
+      "scope": "glassmind-span-expansion-02.scope",
+      "started_unix": 1791746389.966696
+    }
+  },
+  {
+    "batch": 3,
+    "launch": {
+      "model": "gpt-6-astra",
+      "service_tier": "fast",
+      "forced_login_method": "chatgpt",
+      "reasoning": "high",
+      "seconds_cap": 1200,
+      "memory_max": 8589934592,
+      "memory_swap_max": 0,
+      "annotation_bytes_cap": 2097152,
+      "teacher_directory_bytes_cap": 268435456,
+      "official_configuration": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "inputs": {
+        "batch.json": "5fdad1a3ccae0141eb6862766f616584fae734d480d682ee817d6882806ffbb2",
+        "schema.json": "41f58fb4515cbad7840cca7af34c3ec48551d7fd60971503f4f47aeffa1aa7ea",
+        "validate.py": "107472a226f7b9247c6faaeceea31089d29ec4d826e9485525ba09d623879fd6",
+        "teacher-brief.txt": "487cf95e09bb52cdf708700a030d4e4c383e54bc2e03f7b831255b2b84731146"
+      },
+      "script_sha256": "2a00cecbb0eb6a3a99905c7f03086e2bf2709276f5ed6fdb9f5ab2ab1b6d865e"
+    },
+    "isolation": {
+      "masked_paths": 5,
+      "selected_batch_visible": true,
+      "key_environment_removed": true
+    },
+    "process": {
+      "pid": 1218202,
+      "supervisor_pid": 1218195,
+      "scope": "glassmind-span-expansion-03.scope",
+      "started_unix": 1791746391.12273
+    }
+  },
+  {
+    "batch": 4,
+    "launch": {
+      "model": "gpt-6-astra",
+      "service_tier": "fast",
+      "forced_login_method": "chatgpt",
+      "reasoning": "high",
+      "seconds_cap": 1200,
+      "memory_max": 8589934592,
+      "memory_swap_max": 0,
+      "annotation_bytes_cap": 2097152,
+      "teacher_directory_bytes_cap": 268435456,
+      "official_configuration": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "inputs": {
+        "batch.json": "676b6dd6aedd52f7426b6098adf1ce76df5b1ece60d55f6ba556a4eba5014f3d",
+        "schema.json": "41f58fb4515cbad7840cca7af34c3ec48551d7fd60971503f4f47aeffa1aa7ea",
+        "validate.py": "107472a226f7b9247c6faaeceea31089d29ec4d826e9485525ba09d623879fd6",
+        "teacher-brief.txt": "487cf95e09bb52cdf708700a030d4e4c383e54bc2e03f7b831255b2b84731146"
+      },
+      "script_sha256": "2a00cecbb0eb6a3a99905c7f03086e2bf2709276f5ed6fdb9f5ab2ab1b6d865e"
+    },
+    "isolation": {
+      "masked_paths": 5,
+      "selected_batch_visible": true,
+      "key_environment_removed": true
+    }
+  }
+]
