@@ -3,7 +3,8 @@
 ## Authoritative current state — 2026-10-11 UTC
 
 Goal active: follow `prompts/grow-continuously.md` until stopped. This turn merged
-PR23 with fully validated explicit factual lists. The implementation-language
+PR23 with fully validated explicit factual lists and PR24 with rejected
+implementation-language evidence after independent replay. The implementation-language
 candidate failed its strict contract gate; parent independently reproduced the
 failure, verified its archive and removed the restored worker tree/login link.
 Two separate prospective workers now investigate typed memory authority and
@@ -45,6 +46,26 @@ Runtimeac59ac8 explicitfactsets fullyparentvalidated; originalmodel-free memory4
 productionmodel40/41 identicallybaseline (Callmetomorrowmisclassified); calc27/
 stories47bothbundlemodes andfull2821ordinaryfactoutputs unchanged. No scoregain.
 Do not repeat PR23 checks or merge. Rootbinary623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac.
+
+PR24 MERGED b257e10c94487d9341f58e1289453ee493529be8 at2026-10-11T07:14:04Z,
+exacthead29deec883e6dcb99879404a966568a884523b5f2, CI38120596496SUCCESS.
+Rejectedimplementationlanguage evidence/parentreview published, runtimeunchanged.
+Do not repeat PR24 checks/merge. Push43446/create47886/merge53793 COMPLETE.
+
+Parent has corrected tools/rustbench-dev.sh shutdown grace5s→10s for bothgenerated
+cargo and agent wrappers, matchingthegoalresourcecontract. 80s/100s/120s/3600s
+executionlimits/scorer/splits unchanged; shellsyntax anddiffchecks pass. This small
+supervisionchange awaits next runtimebatch validation/publishing; no new765 runyet.
+Previouscompleted765 wrapperhad5sgrace; do notclaimretroactive10scompliance.
+
+Parent prepared fresh seven-session memory/provenance contrasts across model/no-
+model modes atWORK/coordinator/memoryauthority-review/independent.py. Baseline
+job60176: inspectreport/sessionstatusbeforeanyrerun. It tests social/lastutterance/
+missing-slot/factlist/storyinterruptions, preservedcalculationfocus andexplicit
+correctionafterinterruption. Newauthoredproductchecks, notindependentbenchmark.
+Candidate replay awaitsfinalarchivedworker andparentintegration. Memoryworker
+hasfoundCLIstoryfallbackroutinginteractions; reviewthosecarefully andrunaffected
+fullordinaryfacts/storyconversation regressions ifchanged. Do notweakenoldgates.
 
 IMPLLANGUAGE COMPLETE/REJECTED strictCLI33/34. Original70files961738bytes at
 WORK/impllanguage-run/submitted;69manifest/5freeze/1856rawidentities verified.
