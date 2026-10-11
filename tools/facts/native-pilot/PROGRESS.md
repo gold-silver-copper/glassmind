@@ -77,3 +77,9 @@ exactsource/eligible/excluded/groupcounts fromthishelperaswellasrawsamplechecks.
 Thisstrengthenstheexistinggate; theimport3600sandaudit600s limits stayunchanged.
 Retainedhelpers externalrun/pilot-counts andexternalrun/raw-view-parity; original
 importcandidate andfinalreader remain unchanged. Newhelper hasno production effect.
+
+Rawsampleviews also retain sampledclaimtriples. The publicqueryaudit nowchecks
+allconfident ordinarygraphresults againsttheoriginalnumericpilot (uniqueanswer,
+missingclaim ormultiple-answerrefusal), separatelyfromaliasambiguity. Thisdoesnot
+scorethesemantics ofrelationproposals. Auditstillhas600stimeout; nogaterelaxed.
+Largeimport completedsecondaryindexesat335.085s andischeckingintegrity/references.

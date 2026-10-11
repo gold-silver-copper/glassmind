@@ -59,6 +59,7 @@ def main():
                                         int(raw['rank'] == 'preferred'), int(bool(raw['qualifiers'])), raw['statement_id'])
                             assert witness == expected, (witness, expected)
                             assert db.execute('SELECT 1 FROM edges WHERE subject=? AND property=? AND object=?', expected[1:4]).fetchone() == (1,)
+                            golden['entities'].setdefault(raw['id'], {'aliases': [], 'claims': {}})['claims'].setdefault(raw['property'], []).append(raw['datavalue']['id'])
                             statement_checks += 1
                         else:
                             assert witness is None
@@ -112,6 +113,27 @@ def main():
     outputs = [json.loads(line) for line in (ROOT / 'source-name-predictions.jsonl').read_text().splitlines()]
     assert len(outputs) == len(expected_entities)
     assert [r['entity'] for r in outputs] == expected_entities
+    graph_checks = 0
+    substantive_answers = 0
+    for output in outputs:
+        if output['entity'] is None or output['refusal'] == 'uncertain relation':
+            continue
+        label = output['relation']
+        assert re.fullmatch(r'[PR][0-9]+', label)
+        anchor, prop = int(output['entity'][1:]), int(label[1:])
+        if label.startswith('P'):
+            query = 'SELECT DISTINCT object FROM edges WHERE subject=? AND property=? LIMIT 2'
+        else:
+            query = 'SELECT DISTINCT subject FROM edges WHERE object=? AND property=? LIMIT 2'
+        values = {'Q' + str(row[0]) for row in source.execute(query, (anchor, prop))}
+        if len(values) == 1:
+            assert output['refusal'] is None and set(output['answers']) == values
+            substantive_answers += 1
+        elif not values:
+            assert output['refusal'] == 'claim missing from this finite snapshot' and output['answers'] == []
+        else:
+            assert output['refusal'] == 'this snapshot has multiple answers; narrow the question' and output['answers'] == []
+        graph_checks += 1
     metadata = dict(db.execute('SELECT key,value FROM metadata'))
     with (ROOT / 'source-name-accounting.json').open('wb') as result:
         subprocess.run([str(ROOT / 'pilot-counts'), str(SOURCE / 'pilot.sqlite')], stdout=result, check=True)
@@ -144,6 +166,7 @@ def main():
               'sampled_statement_witnesses': statement_checks, 'sampled_names': len(sampled),
               'sampled_ineligible_names': excluded, 'query_skipped_for_line_or_size_limits': query_skipped,
               'source_name_queries': len(public_queries), 'linked': sum(e is not None for e in expected_entities),
+              'graph_results_checked_against_original_pilot': graph_checks, 'substantive_recorded_answers': substantive_answers,
               'ambiguous': sum(e is None for e in expected_entities), 'query_seconds': query_seconds,
               'entities': expected_entities_count, 'aliases': observed_aliases, 'edges': expected_edges,
               'accepted_name_rows': occurrences, 'excluded_short_name_rows': int(metadata['excluded_short_name_rows']),
