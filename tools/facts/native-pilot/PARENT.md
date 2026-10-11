@@ -91,7 +91,8 @@ add helpers and reports only.
 Initial `u64` SQLite conversion and clippy failures are retained. The first path
 regression caught an incomplete writer-only correction before the reader was
 fixed. No data selection, resource gate, normalization rule or acceptance
-criterion was weakened. No model worker, API call or new download was used.
+criterion was weakened. No model worker or external model call was launched,
+and no new data was downloaded.
 Known completed worker accounting remains 201,926,299 tokens, excluding parent
 and interrupted usage, with cached input counted once.
 
