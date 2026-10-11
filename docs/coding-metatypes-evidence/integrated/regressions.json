@@ -1,0 +1,50 @@
+{
+  "total": 8,
+  "right": 8,
+  "rows": [
+    {
+      "question": "How many functions call write?",
+      "passed": true,
+      "stdout": "1 function calls `write`.\n"
+    },
+    {
+      "question": "How many functions call `write`?",
+      "passed": true,
+      "stdout": "1 function calls `write`.\n"
+    },
+    {
+      "question": "How many functions call put?",
+      "passed": true,
+      "stdout": "1 function calls `put`.\n"
+    },
+    {
+      "question": "How many functions call `put`?",
+      "passed": true,
+      "stdout": "1 function calls `put`.\n"
+    },
+    {
+      "question": "How many functions call save?",
+      "passed": true,
+      "stdout": "1 function calls `save`.\n"
+    },
+    {
+      "question": "How many functions call `save`?",
+      "passed": true,
+      "stdout": "1 function calls `save`.\n"
+    },
+    {
+      "question": "How many functions call save?Write the number to count-False.txt.",
+      "explain": false,
+      "passed": true,
+      "stdout": "Wrote 1 to count-False.txt.\n"
+    },
+    {
+      "question": "How many functions call save?Write the number to count-True.txt.",
+      "explain": true,
+      "passed": true,
+      "stdout": "Answer export: Number to count-True.txt\nMetadata question: Count(Description { kind: Some(Function), conditions: [Related { relation: Calls, position: First, other: Named(Name(\"save\")) }] })\nResolved answer: Count { description: Description { kind: Some(Function), conditions: [Related { relation: Calls, position: First, other: Item(RustItem { source: \"source\", file: \"src/lib.rs\", line: 3, name: \"save\", kind: Function, owner: None, detail: None }) }] }, count: 1 }\nWorld rule: rust.lookup.exact (seed)\nWorld rule: rust.relation.calls (seed)\nWrote 1 to count-True.txt.\n"
+    }
+  ],
+  "binary_sha256": "9bbedc34d2475a9e1c6ee8c728c50c4449ec2d3b3972b82dcf859e8e84b2495e",
+  "source_sha256": "8468645997e16e971a13f26bac5c2519f2d23cd348b80c7fc7b650bbb0bb449b"
+}

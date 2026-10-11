@@ -3,6 +3,8 @@
 //! A world never adds grammar, and the English crate knows no world; this
 //! bridge adds one rule per word form, each reading as a Rust concept.
 
+pub mod declared_types;
+
 use glassmind_english::{Cat, Number, Sem, VerbForm, word};
 use glassmind_grammar::Rule;
 use glassmind_meaning::Position;

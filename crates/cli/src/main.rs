@@ -285,6 +285,16 @@ fn open(common: &Common) -> System {
 
 fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
     let system = open(common);
+    if glassmind_english_rust::declared_types::question(text).is_some() && common.session.is_some()
+    {
+        return Err(
+            "declared-type questions currently require a standalone ask (no --session)".into(),
+        );
+    }
+    if let Some(message) = declared_type_reply(&system, text, common.explain, common.json) {
+        say!("{message}");
+        return Ok(());
+    }
     let mut session = match &common.session {
         Some(path) => load_session(path, system.source_refs())?,
         None => Session::new(system.source_refs()),
@@ -330,6 +340,42 @@ fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
     Ok(())
 }
 
+// Both ordinary replies and exports use the same typed world operation.
+fn declared_type_reply(system: &System, text: &str, explain: bool, json: bool) -> Option<String> {
+    let question = glassmind_english_rust::declared_types::question(text)?;
+    let mut fired = Vec::new();
+    let answer = question.and_then(|question| {
+        if explain && !json {
+            say!("Metadata question: {question:?}");
+        }
+        system
+            .world
+            .declared_type(&question, &mut fired)
+            .map_err(|e| format!("{e:?}"))
+    });
+    if explain && !json {
+        say!("Resolved answer: {answer:?}");
+        for rule in fired {
+            say!(
+                "World rule: {} ({})",
+                rule.id,
+                glassmind_rules::provenance(rule.round)
+            );
+        }
+    }
+    Some(if json {
+        match answer {
+            Ok(answer) => serde_json::json!({"declared_type": answer}).to_string(),
+            Err(reason) => serde_json::json!({"refused": reason}).to_string(),
+        }
+    } else {
+        match answer {
+            Ok(answer) => glassmind_english_rust::declared_types::say(&answer),
+            Err(reason) => format!("Cannot establish a declared type: {reason}"),
+        }
+    })
+}
+
 fn act(
     repo: &std::path::Path,
     reply_file: Option<&std::path::Path>,
@@ -348,6 +394,13 @@ fn act(
             if answer_file::transcript_conflicts(repo, path, text) {
                 return Err(message);
             }
+            std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
+        }
+        return Ok(());
+    }
+    if let Some(message) = declared_type_reply(&system, text, explain, false) {
+        say!("{message}");
+        if let Some(path) = reply_file {
             std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
         }
         return Ok(());

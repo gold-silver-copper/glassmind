@@ -23,6 +23,7 @@ pub struct Record {
     pub doc: Vec<String>,
     /// For a field, the identifiers in its type.
     pub type_idents: Vec<String>,
+    pub declared_type: Option<crate::declared_types::DeclaredType>,
 }
 
 /// A call found in a function body: by the function at index `caller`, of `name`.
@@ -57,6 +58,8 @@ pub struct SourceIndex {
     pub names: BTreeMap<Pos, RustKind>,
     /// Files that could not be read or parsed, with the reason.
     pub skipped: Vec<(String, String)>,
+    pub declared_types_uncertain: bool,
+    pub declared_owner_names: Vec<String>,
 }
 
 /// Every `.rs` file under `root`, relative and sorted, skipping `target`
@@ -118,6 +121,10 @@ pub fn index_source(name: &str, root: &Path) -> SourceIndex {
                     continue;
                 }
             };
+        index.declared_types_uncertain |= crate::declared_types::uncertain(&syntax);
+        index
+            .declared_owner_names
+            .extend(crate::declared_types::owner_names(&syntax));
         let file_index = index.files.len();
         let lines: Vec<&str> = text.lines().collect();
         // Only tokens written as they are: a doc comment lexes as a `doc`
@@ -271,6 +278,7 @@ impl Indexer<'_> {
             signature: self.first_line(name.span()),
             doc: doc_lines(attrs),
             type_idents: Vec::new(),
+            declared_type: None,
         });
         // A function's or field's declaration names its kind.
         if matches!(kind, Function | Field) {
@@ -359,12 +367,26 @@ impl<'ast> Visit<'ast> for Indexer<'_> {
     }
 
     fn visit_item_struct(&mut self, s: &'ast syn::ItemStruct) {
-        self.add(&s.ident, RustKind::Struct, None, &s.attrs);
+        let owner_at = self.add(&s.ident, RustKind::Struct, None, &s.attrs);
+        let Some(owner) = self.index.records.get(owner_at).map(|r| r.item.clone()) else {
+            self.index.declared_types_uncertain = true;
+            return;
+        };
         if let syn::Fields::Named(fields) = &s.fields {
             for field in &fields.named {
                 if let Some(ident) = &field.ident {
                     self.add(ident, Field, Some(s.ident.to_string()), &field.attrs);
                     if let Some(record) = self.index.records.last_mut() {
+                        record.declared_type =
+                            crate::declared_types::spelling(self.text, &field.ty).map(
+                                |(spelling, start, end)| crate::declared_types::DeclaredType {
+                                    owner: owner.clone(),
+                                    field: record.item.clone(),
+                                    spelling,
+                                    start,
+                                    end,
+                                },
+                            );
                         record.type_idents = idents_in(field.ty.to_token_stream())
                             .iter()
                             .map(ToString::to_string)

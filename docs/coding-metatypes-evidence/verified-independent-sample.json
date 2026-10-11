@@ -1,0 +1,99 @@
+{
+  "total": 3,
+  "passed": 3,
+  "usable": 3,
+  "safe": 3,
+  "fixture_bytes": 553,
+  "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+  "rows": [
+    {
+      "case": "form-0",
+      "prompt": "What is the type of CrateBox.payload? Save the type to reports/deeper/type.txt.",
+      "expected": "Vec < Option < u32 > >\n",
+      "answer": "Vec < Option < u32 > >\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "reports/deeper/type.txt"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote Vec < Option < u32 > > to reports/deeper/type.txt.\n",
+      "stderr": "",
+      "transcript": "Wrote Vec < Option < u32 > > to reports/deeper/type.txt.\n",
+      "before": {
+        "Cargo.toml": "0f7edd897f1952c63b1f46cf7ee787f59d288b7ffa47c0adf356b38248761073",
+        "src/lib.rs": "1c2ed1a722b1a8df7764c4e37d654d108f2a4c4a5e9f448f24337417458828e2",
+        "src/nested/payload.rs": "766b973ed5362d764896d058339fb29c36d31acf4597f542ece5e436ce82caa0"
+      },
+      "after": {
+        "Cargo.toml": "0f7edd897f1952c63b1f46cf7ee787f59d288b7ffa47c0adf356b38248761073",
+        "src/lib.rs": "1c2ed1a722b1a8df7764c4e37d654d108f2a4c4a5e9f448f24337417458828e2",
+        "reports/deeper/type.txt": "18f6d02f3a518298229cd3abaf6026a62a9506ce8221636fe92c7782b56c5e6b",
+        "src/nested/payload.rs": "766b973ed5362d764896d058339fb29c36d31acf4597f542ece5e436ce82caa0"
+      },
+      "passed": true,
+      "ordinary_stdout": "{\"declared_type\":{\"end\":96,\"field\":{\"detail\":null,\"file\":\"src/nested/payload.rs\",\"kind\":\"Field\",\"line\":2,\"name\":\"payload\",\"owner\":\"CrateBox\",\"source\":\"form-0\"},\"owner\":{\"detail\":null,\"file\":\"src/nested/payload.rs\",\"kind\":\"Struct\",\"line\":2,\"name\":\"CrateBox\",\"owner\":null,\"source\":\"form-0\"},\"spelling\":\"Vec < Option < u32 > >\",\"start\":74}}\n",
+      "ordinary_explain": "Metadata question: DeclaredTypeQuestion { owner: \"CrateBox\", field: \"payload\" }\nResolved answer: Ok(DeclaredType { owner: RustItem { source: \"form-0\", file: \"src/nested/payload.rs\", line: 2, name: \"CrateBox\", kind: Struct, owner: None, detail: None }, field: RustItem { source: \"form-0\", file: \"src/nested/payload.rs\", line: 2, name: \"payload\", kind: Field, owner: Some(\"CrateBox\"), detail: None }, spelling: \"Vec < Option < u32 > >\", start: 74, end: 96 })\nWorld rule: rust.metadata.declared_type (by hand)\nThe declared type of `CrateBox.payload` is `Vec < Option < u32 > >` (src/nested/payload.rs:2; source spelling, not resolved).\n",
+      "export_explain": "Answer export: Type to reports/deeper/explained.txt\nMetadata question: DeclaredTypeQuestion { owner: \"CrateBox\", field: \"payload\" }\nResolved answer: DeclaredType { owner: RustItem { source: \"form-0\", file: \"src/nested/payload.rs\", line: 2, name: \"CrateBox\", kind: Struct, owner: None, detail: None }, field: RustItem { source: \"form-0\", file: \"src/nested/payload.rs\", line: 2, name: \"payload\", kind: Field, owner: Some(\"CrateBox\"), detail: None }, spelling: \"Vec < Option < u32 > >\", start: 74, end: 96 }\nWorld rule: rust.metadata.declared_type (by hand)\nWrote Vec < Option < u32 > > to reports/deeper/explained.txt.\n"
+    },
+    {
+      "case": "form-1",
+      "prompt": "What is the type of CrateBox.payload? Save the type to reports/deeper/type.txt.",
+      "expected": "&'a mut [u16]\n",
+      "answer": "&'a mut [u16]\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "reports/deeper/type.txt"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote &'a mut [u16] to reports/deeper/type.txt.\n",
+      "stderr": "",
+      "transcript": "Wrote &'a mut [u16] to reports/deeper/type.txt.\n",
+      "before": {
+        "Cargo.toml": "0f7edd897f1952c63b1f46cf7ee787f59d288b7ffa47c0adf356b38248761073",
+        "src/lib.rs": "1c2ed1a722b1a8df7764c4e37d654d108f2a4c4a5e9f448f24337417458828e2",
+        "src/nested/payload.rs": "ef0f086c1d6ac9920392967187f2f6a590c07de2fc66b7eeea08d2a2859f6ea5"
+      },
+      "after": {
+        "Cargo.toml": "0f7edd897f1952c63b1f46cf7ee787f59d288b7ffa47c0adf356b38248761073",
+        "src/lib.rs": "1c2ed1a722b1a8df7764c4e37d654d108f2a4c4a5e9f448f24337417458828e2",
+        "reports/deeper/type.txt": "517a617e4c7c6191c7c961966e377cbad8b91fe0bd3eb56f4f6299275f324969",
+        "src/nested/payload.rs": "ef0f086c1d6ac9920392967187f2f6a590c07de2fc66b7eeea08d2a2859f6ea5"
+      },
+      "passed": true,
+      "ordinary_stdout": "{\"declared_type\":{\"end\":87,\"field\":{\"detail\":null,\"file\":\"src/nested/payload.rs\",\"kind\":\"Field\",\"line\":2,\"name\":\"payload\",\"owner\":\"CrateBox\",\"source\":\"form-1\"},\"owner\":{\"detail\":null,\"file\":\"src/nested/payload.rs\",\"kind\":\"Struct\",\"line\":2,\"name\":\"CrateBox\",\"owner\":null,\"source\":\"form-1\"},\"spelling\":\"&'a mut [u16]\",\"start\":74}}\n"
+    },
+    {
+      "case": "form-2",
+      "prompt": "What is the type of CrateBox.payload? Save the type to reports/deeper/type.txt.",
+      "expected": "(u8, bool,)\n",
+      "answer": "(u8, bool,)\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "reports/deeper/type.txt"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote (u8, bool,) to reports/deeper/type.txt.\n",
+      "stderr": "",
+      "transcript": "Wrote (u8, bool,) to reports/deeper/type.txt.\n",
+      "before": {
+        "Cargo.toml": "0f7edd897f1952c63b1f46cf7ee787f59d288b7ffa47c0adf356b38248761073",
+        "src/lib.rs": "1c2ed1a722b1a8df7764c4e37d654d108f2a4c4a5e9f448f24337417458828e2",
+        "src/nested/payload.rs": "00731b03b08824ee9ce416d03aa9a5b3e56c1fad0d8c4fd332154d7bc97078d0"
+      },
+      "after": {
+        "Cargo.toml": "0f7edd897f1952c63b1f46cf7ee787f59d288b7ffa47c0adf356b38248761073",
+        "src/lib.rs": "1c2ed1a722b1a8df7764c4e37d654d108f2a4c4a5e9f448f24337417458828e2",
+        "reports/deeper/type.txt": "6092842c7405377cb778c5dc6c353c338e6439e9399b4a5f0f59886ec5152af8",
+        "src/nested/payload.rs": "00731b03b08824ee9ce416d03aa9a5b3e56c1fad0d8c4fd332154d7bc97078d0"
+      },
+      "passed": true,
+      "ordinary_stdout": "{\"declared_type\":{\"end\":85,\"field\":{\"detail\":null,\"file\":\"src/nested/payload.rs\",\"kind\":\"Field\",\"line\":2,\"name\":\"payload\",\"owner\":\"CrateBox\",\"source\":\"form-2\"},\"owner\":{\"detail\":null,\"file\":\"src/nested/payload.rs\",\"kind\":\"Struct\",\"line\":2,\"name\":\"CrateBox\",\"owner\":null,\"source\":\"form-2\"},\"spelling\":\"(u8, bool,)\",\"start\":74}}\n"
+    }
+  ]
+}

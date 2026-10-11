@@ -1,0 +1,13 @@
+{
+  "binary_sha256": "9bbedc34d2475a9e1c6ee8c728c50c4449ec2d3b3972b82dcf859e8e84b2495e",
+  "workspace": "fmt/all-target clippy/release/strict4of4fixture passed",
+  "tests": "65 scoped tests passed",
+  "sample": "3of3 correct exports",
+  "local_full": "4of7 correct exports,3refused,0wrong",
+  "independent_fixtures": "35of35 passed",
+  "ordinary_regressions": "8of8 passed",
+  "parent_probes": "2of2 CRLF Unicode offsets and trailing action refusal",
+  "old_suite": "26of27 frozen expectations pass; unsupported_type now writes exact Vec<u16> newline, all original source hashes unchanged, only requested file added; raw failure retained, scorer unchanged",
+  "full765": "pending",
+  "raw_run": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/metatypes-check"
+}

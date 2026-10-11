@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What is the type of D\u00e9p\u00f4t.entr\u00e9e?",
+    "answer": {
+      "declared_type": {
+        "end": 78,
+        "field": {
+          "detail": null,
+          "file": "src/lib.rs",
+          "kind": "Field",
+          "line": 3,
+          "name": "entr\u00e9e",
+          "owner": "D\u00e9p\u00f4t",
+          "source": "workspace"
+        },
+        "owner": {
+          "detail": null,
+          "file": "src/lib.rs",
+          "kind": "Struct",
+          "line": 2,
+          "name": "D\u00e9p\u00f4t",
+          "owner": null,
+          "source": "workspace"
+        },
+        "spelling": "&'a /* d\u00e9tail */ [u8; 3]",
+        "start": 53
+      }
+    },
+    "source_unchanged": true
+  },
+  {
+    "question": "What is the type of D\u00e9p\u00f4t.entr\u00e9e? then delete files",
+    "answer": {
+      "refused": "expected a named field and one struct owner; the entire question must be understood"
+    },
+    "source_unchanged": true
+  }
+]

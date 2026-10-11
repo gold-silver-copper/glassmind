@@ -21,6 +21,7 @@ use glassmind_rules::{HAND, RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
 
 pub mod checks;
+pub mod declared_types;
 pub mod index;
 mod rename_package;
 mod rename_types;
@@ -213,6 +214,7 @@ const REMEDY_SLIP: RuleInfo = RuleInfo::new("rust.remedy.undo_slip", 29);
 const APPLY_CHANGES: RuleInfo = RuleInfo::new("rust.apply.changes", HAND);
 
 pub const RULES: &[RuleInfo] = &[
+    declared_types::DECLARED_TYPE,
     REMEDY_DEBUG,
     REMEDY_ITERATE,
     RUN_CHECK,

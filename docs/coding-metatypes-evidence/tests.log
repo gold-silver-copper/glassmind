@@ -1,0 +1,87 @@
+Running as unit: run-p2486717-i94770770.scope; invocation ID: fb80172f34de401ebbaccc816c6b6f49
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/metatypes/crates/cli)
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/metatypes/crates/english-rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.77s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/target/debug/deps/glassmind-3d1bdf8a1176953a)
+
+running 8 tests
+test edit::tests::applies_every_change_or_none ... ok
+test talk_facts::tests::accepts_distinct_bundles_and_rejects_swapped_assets ... ok
+test talk_facts::tests::labels_remain_display_only_and_must_match_the_index ... ok
+test talk_stories::tests::replay_preserves_pronouns_and_has_deterministic_bytes ... ok
+test talk_stories::tests::bounded_history_fails_closed ... ok
+test talk_stories::tests::unsupported_updates_block_stale_answers_even_after_restart ... ok
+test everyday::tests::unresolved_correction_invalidates_story_across_restart ... ok
+test everyday::tests::story_focus_prevents_implicit_personal_memory_edits ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/target/debug/deps/glassmind_english_rust-c3772cebd0f749d3)
+
+running 36 tests
+test declared_types::tests::consumes_question_and_requires_owner ... ok
+test tests::a_known_word_before_its_kind_is_a_name ... ok
+test tests::a_field_set_off_by_name_is_asked_about_by_name ... ok
+test tests::a_known_word_with_its_kind_is_a_name ... ok
+test tests::every_trouble_can_be_said ... ok
+test tests::a_count_in_total_is_the_count ... ok
+test tests::an_owned_thing_can_be_asked_what_it_calls ... ok
+test tests::a_part_after_its_whole_is_part_of_it ... ok
+test tests::names_the_user_gave_stand_for_things ... ok
+test tests::hurried_ways_of_asking_for_callers_agree ... ok
+test tests::variant_vocabulary_has_typed_meaning ... ok
+test tests::remarks_and_politeness_do_not_change_the_request ... ok
+test tests::remarks_around_a_rename_leave_it_as_it_is ... ok
+test tests::ways_of_asking_for_a_field_rename_agree ... ok
+test tests::ways_of_asking_for_callers_agree ... ok
+test tests::ways_of_asking_for_callees_agree ... ok
+test tests::ways_of_asking_for_passing_tests_agree ... ok
+test tests::ways_of_asking_for_structs_by_field_name_agree ... ok
+test tests::ways_of_asking_for_the_callers_of_what_was_said_agree ... ok
+test tests::ways_of_asking_for_structs_by_field_type_agree ... ok
+test tests::ways_of_asking_for_the_fields_on_a_struct_agree ... ok
+test tests::ways_of_asking_to_rename_a_field_agree ... ok
+test tests::ways_of_asking_to_fix_the_build_agree ... ok
+test tests::ways_of_asking_for_a_rename_agree ... ok
+test tests::ways_of_asking_what_a_struct_holds_agree ... ok
+test tests::ways_of_asking_what_is_remembered_agree ... ok
+test tests::ways_of_asking_where_it_is_agree ... ok
+test tests::ways_of_asking_where_mean_the_same ... ok
+test tests::ways_of_asking_why_agree ... ok
+test tests::ways_of_correcting_agree ... ok
+test tests::ways_of_asking_whether_tests_pass_agree ... ok
+test tests::ways_of_stating_an_alias_agree ... ok
+test tests::ways_of_taking_back_agree ... ok
+test tests::ways_of_asking_what_a_thing_does_agree ... ok
+test tests::ways_of_counting_callers_agree ... ok
+test tests::spoken_questions_parse_back_to_their_meaning ... ok
+
+test result: ok. 36 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.90s
+
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/target/debug/deps/glassmind_world_rust-5a82726f719f9825)
+
+running 21 tests
+test checks::tests::reads_failing_tests ... ok
+test checks::tests::applies_changes_across_lines_or_none ... ok
+test rename_package::tests::documentation_is_literal_prose_only ... ok
+test declared_types::tests::declaration_uncertainty_is_not_type_resolution ... ok
+test checks::tests::slips_are_in_code_not_tests_named_files_first ... ok
+test declared_types::tests::declared_syntax_and_provenance_are_reusable_without_english ... ok
+test rename_types::tests::resolves_nested_modules_generics_and_unicode_columns ... ok
+test rename_types::tests::refuses_raw_spelling_and_associated_types ... ok
+test rename_types::tests::refuses_unexpanded_bindings_and_new_raw_collision ... ok
+test rename_variants::tests::variant_ownership_uses_declaration_identity ... ok
+test rename_package::tests::package_roots_reexports_and_exact_spans ... ok
+test slips::tests::loop_bounds_only_and_unicode_coordinates_apply ... ok
+test rename_variants::tests::variants_have_a_distinct_kind_and_owner ... ok
+test rename_variants::tests::binds_variants_imports_self_and_patterns ... ok
+test slips::tests::protects_non_code_tests_and_keeps_later_production_code ... ok
+test standard_traits::tests::refuses_source_symlink_outside_root ... ok
+test standard_traits::tests::refuses_ambiguous_conditional_test_and_non_identifier_types ... ok
+test standard_traits::tests::standard_debug_is_atomic_and_preserves_unicode_and_attributes ... ok
+test tests::field_renames_are_exact_or_refused ... ok
+test rename_variants::tests::rejects_unresolved_or_shadowed_bindings ... ok
+test tests::renames_only_when_exact ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

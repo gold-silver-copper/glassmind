@@ -1,0 +1,653 @@
+{
+  "binary": "/home/gsc/code/glassmind/target/release/glassmind",
+  "binary_sha256": "9bbedc34d2475a9e1c6ee8c728c50c4449ec2d3b3972b82dcf859e8e84b2495e",
+  "total": 27,
+  "usable": 6,
+  "safe": 26,
+  "rows": [
+    {
+      "case": "count",
+      "prompt": "How many variants of `Signal`? Write just the number to a file named tally.txt.",
+      "expected": "3\n",
+      "answer": "3\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "tally.txt"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote 3 to tally.txt.\n",
+      "stderr": "",
+      "transcript": "Wrote 3 to tally.txt.\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "tally.txt": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "caller_count",
+      "prompt": "How many functions call `pulse`? Put only the number into reports/call-count.",
+      "expected": "1\n",
+      "answer": "1\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "reports/call-count"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote 1 to reports/call-count.\n",
+      "stderr": "",
+      "transcript": "Wrote 1 to reports/call-count.\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8",
+        "reports/call-count": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      },
+      "passed": true
+    },
+    {
+      "case": "unique_name",
+      "prompt": "Which functions call `pulse`? Save the name to a file named caller-id.",
+      "expected": "dispatch\n",
+      "answer": "dispatch\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "caller-id"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote dispatch to caller-id.\n",
+      "stderr": "",
+      "transcript": "Wrote dispatch to caller-id.\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "caller-id": "5f6f23af0e4436b1005b88a6cfbdeb44336386971994d6a2662f7057c0e68c17",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "have_members",
+      "prompt": "How many variants does the `Signal` enum have? Write the number to size.",
+      "expected": "3\n",
+      "answer": "3\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "size"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote 3 to size.\n",
+      "stderr": "",
+      "transcript": "Wrote 3 to size.\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "size": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "quoted_filename",
+      "prompt": "How many variants of `Signal`? Write the number to \"r\u00e9sultat-count.txt\".",
+      "expected": "3\n",
+      "answer": "3\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "r\u00e9sultat-count.txt"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote 3 to r\u00e9sultat-count.txt.\n",
+      "stderr": "",
+      "transcript": "Wrote 3 to r\u00e9sultat-count.txt.\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "r\u00e9sultat-count.txt": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "unclosed_quote",
+      "prompt": "How many variants of `Signal`? Write the number to `unsafe.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unclosed filename quote\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unclosed filename quote\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "zero",
+      "prompt": "How many functions call `unused`? Write the number to zero.",
+      "expected": "0\n",
+      "answer": "0\n",
+      "usable": true,
+      "safe": true,
+      "changed": [],
+      "added": [
+        "zero"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote 0 to zero.\n",
+      "stderr": "",
+      "transcript": "Wrote 0 to zero.\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "zero": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "unknown",
+      "prompt": "How many functions call `missing`? Write the number to unknown.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unknown or ambiguous reference\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unknown or ambiguous reference\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "ambiguous",
+      "prompt": "How many functions call `pulse`? Write the number to ambiguous.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unknown or ambiguous reference\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unknown or ambiguous reference\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c85b46211556723bab6eb44cf63463b222cc6f1be8b3a3882dded0064225ccfa"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c85b46211556723bab6eb44cf63463b222cc6f1be8b3a3882dded0064225ccfa"
+      },
+      "passed": true
+    },
+    {
+      "case": "multiple_names",
+      "prompt": "Which variants of `Signal`? Write the name to many.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: name output requires exactly one item\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: name output requires exactly one item\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "incompatible",
+      "prompt": "How many variants of `Signal`? Write the name to mismatch.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: answer does not match requested format\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: answer does not match requested format\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "unsupported_type",
+      "prompt": "What is the type of `Basket.values`? Write the type to field-type.",
+      "expected": null,
+      "answer": "Vec<u16>\n",
+      "usable": false,
+      "safe": false,
+      "changed": [],
+      "added": [
+        "field-type"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote Vec<u16> to field-type.\n",
+      "stderr": "",
+      "transcript": "Wrote Vec<u16> to field-type.\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "field-type": "e5541a77f9296b04514db19eae8b237a05da589aaed94cb9afd767b976ce7ee5",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": false
+    },
+    {
+      "case": "trailing_action",
+      "prompt": "How many variants of `Signal`? Write the number to unsafe and rename `pulse` to `beat`.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unconsumed output instruction\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unconsumed output instruction\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "query_action",
+      "prompt": "Rename `pulse` to `beat`? Write the number to unsafe.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: question is not fully understood\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: question is not fully understood\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "query_tail",
+      "prompt": "How many variants of `Signal` and fix the build? Write the number to unsafe.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: question is not fully understood\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: question is not fully understood\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "extra_sentence",
+      "prompt": "How many variants of `Signal`? Write the number to unsafe. Fix the build.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unconsumed output instruction\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unconsumed output instruction\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "preamble",
+      "prompt": "I want to repair code. How many variants of `Signal`? Write the number to unsafe.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: question is not fully understood\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: question is not fully understood\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "occupied",
+      "prompt": "How many variants of `Signal`? Write the number to occupied.",
+      "expected": null,
+      "answer": "keep me\n",
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: destination already exists; overwrite is forbidden\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: destination already exists; overwrite is forbidden\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "occupied": "2b8425c4d20e743705f4787b4dda39344b4242bc8636228a00b7d65378aa7694",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "occupied": "2b8425c4d20e743705f4787b4dda39344b4242bc8636228a00b7d65378aa7694",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "source",
+      "prompt": "How many variants of `Signal`? Write the number to src/lib.rs.",
+      "expected": null,
+      "answer": "pub enum Signal { Open, Data(u8), Close }\npub fn pulse() {}\npub fn dispatch() { pulse(); pulse(); }\npub fn unused() {}\npub struct Basket { pub values: Vec<u16> }\n",
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: destination already exists; overwrite is forbidden\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: destination already exists; overwrite is forbidden\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "symlink",
+      "prompt": "How many variants of `Signal`? Write the number to linked.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: destination already exists; overwrite is forbidden\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: destination already exists; overwrite is forbidden\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "parent_symlink",
+      "prompt": "How many variants of `Signal`? Write the number to linked-dir/escape.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: Not a directory (os error 20)\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: Not a directory (os error 20)\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "traversal",
+      "prompt": "How many variants of `Signal`? Write the number to ../escape.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: destination must be a relative path without traversal\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: destination must be a relative path without traversal\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "absolute",
+      "prompt": "How many variants of `Signal`? Write the number to /home/gsc/.cache/glassmind/continuous-20261010/coordinator/metatypes-check/old27/absolute-outside/escape.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: destination must be a relative path without traversal\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: destination must be a relative path without traversal\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "partial_parse",
+      "prompt": "How many variants of `Signal`? Write the number to answer with explanatory prose.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: unconsumed output instruction\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: unconsumed output instruction\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "unknown_format",
+      "prompt": "How many variants of `Signal`? Write the number as JSON to answer.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: missing output destination\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: missing output destination\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    },
+    {
+      "case": "bad_source",
+      "prompt": "How many variants of `Signal`? Write the number to answer.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 0,
+      "stdout": "Cannot write an answer: source index is incomplete\n",
+      "stderr": "",
+      "transcript": "Cannot write an answer: source index is incomplete\n",
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "948545cd93b1e4cc2debea1f07c7815eeb6fc1acd68cb36122d7b493e0221ac0"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "948545cd93b1e4cc2debea1f07c7815eeb6fc1acd68cb36122d7b493e0221ac0"
+      },
+      "passed": true
+    },
+    {
+      "case": "transcript_alias",
+      "prompt": "How many variants of `Signal`? Write the number to answer.",
+      "expected": null,
+      "answer": null,
+      "usable": false,
+      "safe": true,
+      "changed": [],
+      "added": [],
+      "returncode": 1,
+      "stdout": "Cannot write an answer: answer and --reply-file must have different destinations\n",
+      "stderr": "glassmind: Cannot write an answer: answer and --reply-file must have different destinations\n",
+      "transcript": null,
+      "before": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "after": {
+        "Cargo.toml": "6edce7cd3f3e1c2023f7330c30484bf18bb14c9a165106eb8604a84259557780",
+        "src/lib.rs": "c2ed4eb63258cfbd44c7edc819e7f90b84e48fb28ad519470f4c3301fc6c73e8"
+      },
+      "passed": true
+    }
+  ]
+}
