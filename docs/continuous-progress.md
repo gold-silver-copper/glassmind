@@ -2,10 +2,48 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-PROGRESS: word joining shipped in PR50. Full independent claims acquisition
-passed; projection is still running.
 Known completed-worker tokens:201926299, cached input counted once; parent and
 interrupted usage excluded. No model workers, teacher calls or auth mounts.
+
+## Current jobs,18:41UTC
+
+Fullclaims WORK/full-claims branchcontinuous/full-claims headc0488ca. RUN=WORK/
+coordinator/full-claims. Acquisition and independent86file rehash COMPLETE.
+Projection29161 stillRUNNING at44minutes: all86files processed789435443rawrows
+and364044919statements; final SQLcounts/integrity/hash stillrunning. PID761928
+under supervisor761927,8GiB/no swap,14400s/96GiBprojection/384GiBaddedrun.
+Do not restart. No nativeimport or fullgraph QA yet.
+
+Independent rawreference session2492 COMPLETE exit0:8009samples3647eligible,
+203.173s695308KiBpeakRSS. ReferenceSHA3fcd1c82d6fc1563121dc33e0f81b81481ffd773aa89f3e1003e4c56c429e15c.
+All8009literalrawsamples agree with projection-progress records; external
+reference-projection-samples.json retains hashes. Database comparison remains.
+Worktreeb6dfe3f refactorsaudit to independentlypreparedsource references; no
+sample/eligibility/gatechanges. prepare-native pins report/reference BEFORE import.
+Original3600s audit budget includes203.173sreference; finalcomparison gets3396s.
+Next: await successfulprojection-resources.json, runRUN/prepare-native.py RUN
+WORK/coordinator/disk-facts/target/release/glassmind-facts bounded8GiB/300s.
+Then launch invocationcommand withRUN/supervise.py RUN native21600 under8GiB0swap
+setsid--wait timeout21610s,TMPDIR/SQLITE_TMPDIR=RUN/tmp. PreserveCLI b0a86c03... .
+After native success readonlyoutput, audit3396s andwitnesses3600s perworktreeplan.
+
+Independentcoding WORK/word-initials branchcontinuous/word-initials head703de14.
+RUN=WORK/coordinator/word-initials. Plan53ce67b frozenbeforecode; runtime23e7525
+adds12signature-only &str->String compositions: wordfirstchar,optionalUnicode
+alphabeticfilter/caseconversion,bothwordorders. Retains6oldcandidates,32/90s
+budgets,exactlyonesurvivor,targetexecution/livecheck/rollback. No grammar change.
+23nativefixtures frozen:12newbehaviors,1weakambiguity,10oldwordjoincontracts.
+Baseline54315 COMPLETE,24.967s:5oldimplementations18refusals as expected.
+All43retained TRAIN sourcefiles hashverified. No newdata/hiddeninspection.
+Build2100 RUNNING,scopeglassmind-word-initials-build:worldtests thenrelease.
+Usescentral /home/gsc/code/glassmind/target; executable WILL change upon release.
+Previousroot/evaluatedb04binary preserved atRUN/baseline andword-join/candidate.
+Next: afterbuildpassesfreezeRUN/candidate/hash, runnewnative23,oldnative66,
+TRAINsample9 thenfull60; all5oldsuccessfulsources mustmatch,gain>=1; independent
+native/evidenceverification. Requiredworkspacegates thenfull765DEV:retain220,
+pass>=221,0fail. Do not runDEV untilpreDEVgatespass. ReadPLAN andreuseoldhelpers;
+completeindependentfixture archive iscoordinator/implgrammar-independent, not
+repo partialarchive missingfreeze.py. No sourcechangesfullclaims fromcoding.
 
 ## PR50 merged: word joining shipped
 
