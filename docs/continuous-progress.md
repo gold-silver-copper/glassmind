@@ -59,7 +59,7 @@ selection. Native proposal/rollback and plan tails reused. Unsupported types,
 conflicting values and partial constructor scope remain errors. Standalone do
 still requires explicit complete defaults. Initial98CLI +4field grammar PASS,
 tests.log session73908 COMPLETE0. After adding bare-literal routing, final focused
-pipeline just launched tests-v2.log. No candidate pinned/integrated; prepared43
+pipeline77986 is running, tests-v2.log. No candidate pinned/integrated; prepared43
 real-process smoke. Next finish tests, requiredchecks, smoke and fullDEV.
 
 Shared cargo cache yolo-plans/target. Pinned binaries isolate live regressions
