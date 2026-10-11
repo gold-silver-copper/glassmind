@@ -3,13 +3,46 @@
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 This turn: PROGRESS — native bounded SQLite facts queries implemented and centrally
-integrated; exact22302question answer/set parity, main28/28eachmode, five mainunit
-checks, workspacefmt/clippy/release/strict4smoke pass. Publishing this batch next.
+integrated and merged inPR48; exact22302question answer/set parity, main28/28eachmode,
+five mainunit checks andworkspacegates pass. Nextpublicingestion prerequisite passed.
 Facts native source3de724e (worktree70a446a); quantities3539a2d; codingc6ac04a.
 Known completed-worker tokens201,926,299 (cached input counted once; parent and
 interrupted usage excluded). No model worker ran. All root experiment jobs complete.
 
-## Current: publish native disk facts, then ingest the independent pilot
+## PR48 merged; current task is native public pilot ingestion
+
+PR48 MERGED https://github.com/gold-silver-copper/glassmind/pull/48.
+Reviewedhead91d702b6111515c722a498334f8fb67101f5c327; CI38156857839 passed111s
+(16:46:36–16:48:27UTC). Merge86088de0ce3cd6e12a6f6c0fa9f5520ecf7f7cac
+at2026-10-11T16:49:11Z. Push13991, PR95241, CIwatch50437, merge57256 COMPLETE.
+Do not rerun or republish the completed compatibility batch.
+
+Nextworktree WORK/wikidata-native, branchcontinuous/wikidata-native at08fb892,
+clean; base91d702b. Root-owned, no modelworker/authmount. Frozenplan58a172c at
+ tools/facts/NATIVE-PILOT-PLAN.md andtools/facts/native-pilot/PLAN.md. Read its
+PROGRESS.md before coding. Only plan/audit exists; no native public transform yet.
+Externalrun WORK/coordinator/wikidata-native; existing PyArrowvenv fromwikidata-snapshot.
+Prerequisite complete: all94498260rawsubject/name IDs,9468504properties and5677515
+selectedclaimtargets losslessly roundtrip signedinteger->originalstring. Allsource
+hashes andpilotdatabaseSHAc3f11977... match. Counts84990012Qnames/5677515claims.
+Time15.595s under180s8GiB0swap; canonical sessions73739(failedhelper)/86740(pass)
+TERMINAL. Initial Arrow large_string/string kernel mismatch andempty-batch guard
+fix preserved. No altered gate, source-selection ordatarepair; no QA data used.
+Do not rerun this passed canonical audit. It permits reconstructing Q/Pstring IDs
+from the numeric pilot; preserve literal IDs for the existing version1 importer.
+
+Nextconcrete implementation: a separate native output andformat2provenance that
+reads the immutable Pythonpilot viareadonlyattachment, rebuilds normalized/case
+keys withRust, preserves graphdeduplication andallstatement witnesses plusrank/
+qualification/sourcerow andlanguage/kind aliasprovenance. Source schema is in
+ tools/facts/native-pilot/PROGRESS.md. Do not use Python's normalized column.
+Keep version1JSONformat reader/importer compatible. rusqlite functions feature
+may be added now whenactuallyused for native scalar normalization. Buildsecondary
+indexes afterloading whereuseful. Fixedoutput24GiB, addedrun32GiB,3600s under8GiB0swap;
+no publicdownloads orQAevaluation yet. Existing10.367GBpilot/rawParquet stayread-only.
+After nativeingestion succeeds, freeze a distinct strictjoint QAcoverage experiment.
+
+## Completed native disk facts compatibility
 
 Read tools/facts/disk/PARENT.md and integration/. Newdedicated commands index-disk,
 ask-disk andpredict-disk use the same Rust normalizer, bounded indexedqueries,
@@ -39,18 +72,6 @@ at70a446a, clean. No modelworker/authmount. Nativebuildcache .../coordinator/dis
 Sessions33643/1834/58289/33559/51784/75868/99856/44510 allCOMPLETE.
 CentralCLI target/release/glassmind-facts SHA53e410241f8dbe87a0a4ff850daed48f4b7bbcef26ae5532ee9df44aad9750df;
 mainSHA0b80dd3a152a55adbea998f3f1ce754c9fc619e8f838176a4ad1aaeaf295e872.
-
-Next: freeze a native ingestion experiment for the retained publicWikidata pilot.
-Do not settle at same-data compatibility: the purpose is substantially broader
-independently sourced coverage. Use cachedrawsource/pilot only; no other85claims
-shards yet. Rebuild keys with Rust, retainstatement/rank/qualifier/sourceprovenance,
-and verify no name/edge loss beyond explicitdeduplication. The oldPythonpilot is
-read-only; do not mutate it. A nativeSQLite transformation withsafe Rust scalar
-normalization can avoid huge JSON materialization. NumericIDs inpilot must first
-roundtrip-check againstallrawsources; version2source metadata must distinguish
-publicsnapshot provenance fromversion1JSONimports. Choose boundedtime/disk/RAM
-and raw-row/native-query checks before implementation; QA acceptance needs a
-separate frozen gate. Existing publicpilot details belowremain authoritative.
 
 ## PR47 published; native disk-backed facts experiment started
 
