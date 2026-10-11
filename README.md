@@ -139,6 +139,10 @@ answer rules and bounded indexed access.
 `import-wikidata-pilot` also builds a native index from an audited public snapshot,
 preserving source provenance and statement witnesses; see the
 [public ingestion results](tools/facts/native-pilot/PARENT.md) for scope and limits.
+`import-wikidata-claims` extends this to audited multi-file snapshots: the complete
+86-file release stores362.3million distinct edges with source witnesses.
+[Storage and query validation](tools/facts/full-claims/PARENT.md) passed; this does
+not promote the snapshot as the default QA graph.
 Use `Check fact: Was SUBJECT born in OBJECT?` to [verify an explicit relationship](docs/fact-verification.md)
 against the loaded records. Replies distinguish supported, unknown and refused,
 with an exact edge witness; an absent edge never becomes a negative factual claim.

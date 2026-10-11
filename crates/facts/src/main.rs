@@ -12,6 +12,17 @@ struct Args {
 }
 #[derive(Subcommand)]
 enum Command {
+    /// Import a pinned multi-shard claims projection with existing native aliases.
+    ImportWikidataClaims {
+        #[arg(long)]
+        names: PathBuf,
+        #[arg(long)]
+        claims: PathBuf,
+        #[arg(long)]
+        manifest: PathBuf,
+        #[arg(long)]
+        database: PathBuf,
+    },
     /// Import an audited numeric Wikidata pilot, rebuilding native alias keys.
     ImportWikidataPilot {
         #[arg(long)]
@@ -181,6 +192,16 @@ struct Totals {
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     match Args::parse().command {
+        Command::ImportWikidataClaims {
+            names,
+            claims,
+            manifest,
+            database,
+        } => {
+            let store =
+                glassmind_facts::disk::claims::import_file(&names, &claims, &manifest, &database)?;
+            println!("{}", serde_json::to_string(store.info())?);
+        }
         Command::ImportWikidataPilot {
             pilot,
             manifest,
