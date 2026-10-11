@@ -1,0 +1,86 @@
+{
+  "dataset": "MathQA",
+  "split": "official-validation",
+  "total": 4475,
+  "right": 5,
+  "refused": 4469,
+  "wrong": 1,
+  "non_numeric_gold": 1229,
+  "metric": "exact numeric value in requested units; no choice input; all rows count",
+  "questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+  "binary_sha256": "293369f742d4d26cda8af6ca51e5ccd33e971890c67d4dddfde6e5e9f10ef97a",
+  "answered": [
+    {
+      "index": 509,
+      "question": "what is 121 times 11 ?",
+      "expected": "1331",
+      "actual": {
+        "status": "answer",
+        "value": "1331",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2087,
+      "question": "( 3080 + 6160 ) / 28",
+      "expected": "330",
+      "actual": {
+        "status": "answer",
+        "value": "330",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2113,
+      "question": "2001 + 1015",
+      "expected": "3016",
+      "actual": {
+        "status": "answer",
+        "value": "3016",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2398,
+      "question": "10 + 19",
+      "expected": "29",
+      "actual": {
+        "status": "answer",
+        "value": "29",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2911,
+      "question": "( 3220 + 6160 ) / 28",
+      "expected": "335",
+      "actual": {
+        "status": "answer",
+        "value": "335",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 3795,
+      "question": "convert 300 miles into km ?",
+      "expected": "None",
+      "actual": {
+        "status": "answer",
+        "value": "301752/625",
+        "unit": "km",
+        "method": "dimension-checked exact SI conversion"
+      },
+      "outcome": "wrong"
+    }
+  ]
+}

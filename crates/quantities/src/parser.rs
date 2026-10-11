@@ -177,12 +177,11 @@ pub fn solve(question: &str) -> Result<Solved> {
         let date: Date = field(&c, 1)?.parse()?;
         return Ok((date.weekday().into(), None, "Gregorian weekday"));
     }
-    if let Some(c) = capture(&format!(r"^what is {NUMBER} percent of {NUMBER}$"), &text)? {
-        return Ok(numeric(
-            num(&c, 1)?
-                .checked_mul(num(&c, 2)?)?
-                .checked_div(Rational::integer(100))?,
-            "exact percentage",
+    if let Some((value, is_ratio)) = crate::percent::solve(&text)? {
+        return Ok((
+            value.to_string(),
+            is_ratio.then(|| "percent".into()),
+            "exact percentage relation",
         ));
     }
     if let Some(c) = capture(
