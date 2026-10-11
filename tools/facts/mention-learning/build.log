@@ -1,0 +1,13 @@
+    Checking glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/mention-candidates/crates/facts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.12s
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/mention-candidates/crates/facts)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.31s
+     Running unittests examples/mention_context.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/examples/mention_context-0283671af3157a64)
+
+running 1 test
+test tests::features_hide_names_ids_and_model_receives_only_grammar_and_shape ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/mention-candidates/crates/facts)
+    Finished `release` profile [optimized + debuginfo] target(s) in 1.11s
