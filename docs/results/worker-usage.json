@@ -451,6 +451,19 @@
         "reasoning_output_tokens": 6079
       },
       "source": "REJECTED typedtraversal:22to23correct,3to8wrong under frozenlegacy metric; all25oldanswers/3116synthetictriplespreserved. Five newly scoredwrong have unparseablegold; independentmetric audit queued, not a retroactiveacceptance."
+    },
+    {
+      "track": "mathmetric-continuous",
+      "started_unix": 1791699135.5670009,
+      "finished_unix": 1791699377.9757676,
+      "usage": {
+        "input_tokens": 784771,
+        "cached_input_tokens": 722816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15998,
+        "reasoning_output_tokens": 2267
+      },
+      "source": "REJECTED evaluator v2: six initial tests pass but ambiguous/background request-unit probes fail. Parent replay all4475byteidentical; no legacy/runtime change."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

@@ -1,0 +1,26 @@
+{
+  "utc": "2026-10-11T06:07:31.245288+00:00",
+  "runtime_git_diff_empty": true,
+  "new_runtime_files_removed": true,
+  "patch_applies_to_clean_base": true,
+  "restored_smoke": {
+    "question": "How many seconds will a train 100 meters long take to cross a bridge 140 meters long if the speed of the train is 36 kmph?",
+    "actual": {
+      "status": "refusal",
+      "reason": "unsupported English cardinal"
+    }
+  },
+  "restored_binaries": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/ratewords-run/target/debug/glassmind-quantities",
+      "bytes": 25187592,
+      "sha256": "6bfa718f10823d868546a35419fb49d3ede53f30a1cf27f37e78270c8355c7c1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/ratewords-run/target/debug/glassmind",
+      "bytes": 126476432,
+      "sha256": "ffa6bc90e6eccf31a11533d8e06f39050f2ee45cbd26c175039817083a778441"
+    }
+  ],
+  "live_owned_jobs": 0
+}

@@ -1,0 +1,111 @@
+{
+  "decision": "REJECT remains unchanged under frozen legacy gate",
+  "manifest_entries_verified": 22,
+  "frozen_source_hashes_reconstructed": 17,
+  "baseline_answer_records_identical": 25,
+  "new_answers_independently_recomputed": [
+    {
+      "index": 295,
+      "length_m": 100,
+      "extent_m": 140,
+      "speed_m_per_s": "10",
+      "duration_s": "24"
+    },
+    {
+      "index": 563,
+      "length_m": 150,
+      "extent_m": 150,
+      "speed_m_per_s": "10",
+      "duration_s": "30"
+    },
+    {
+      "index": 1128,
+      "length_m": 60,
+      "extent_m": 120,
+      "speed_m_per_s": "30",
+      "duration_s": "6"
+    },
+    {
+      "index": 1986,
+      "length_m": 100,
+      "extent_m": 170,
+      "speed_m_per_s": "10",
+      "duration_s": "27"
+    },
+    {
+      "index": 2836,
+      "length_m": 140,
+      "extent_m": 150,
+      "speed_m_per_s": "10",
+      "duration_s": "29"
+    },
+    {
+      "index": 2873,
+      "length_m": 120,
+      "extent_m": 150,
+      "speed_m_per_s": "10",
+      "duration_s": "27"
+    }
+  ],
+  "authored_parent_probes": [
+    {
+      "question": "A tram named iris is 48 meters long. The speed of the tram named iris is 12 meters per second. In how many seconds will it cross a bridge 72 meters long?",
+      "expected": "10",
+      "actual": {
+        "status": "answer",
+        "value": "10",
+        "unit": "seconds",
+        "method": "exact typed traversal constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "A train running at 60 km/h crosses a pole in 9 seconds. In how many minutes will it cross a bridge 350 meters long at the same speed?",
+      "expected": "1/2",
+      "actual": {
+        "status": "answer",
+        "value": "1/2",
+        "unit": "minutes",
+        "method": "exact typed traversal constraints"
+      },
+      "passed": true
+    },
+    {
+      "question": "A train 10 meters long is running at 18 km/h. In how many seconds will it cross the train?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown tens word"
+      },
+      "passed": true
+    },
+    {
+      "question": "A train 10 meters long is running at 18 km/h. In how many seconds will it cross a pole? The train stops halfway.",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown tens word"
+      },
+      "passed": true
+    },
+    {
+      "question": "A train running at 60 km/h crosses a pole in 9 seconds. In how many seconds will it cross a bridge 350 meters long?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "A train 10 meters long is running at 18 km/h. In how many seconds will it cross a bridge 20 meters long moving at 5 km/h?",
+      "expected": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown tens word"
+      },
+      "passed": true
+    }
+  ],
+  "scope": "No runtime integrated; no repeat full benchmark or build; six fresh probes against exact retained candidate binary. Typed affine core and fully consumed English grammar inspected. Complete-crossing interpretation, constant speed, one moving entity and explicit duration requests only."
+}

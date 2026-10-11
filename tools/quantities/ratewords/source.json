@@ -1,0 +1,78 @@
+{
+  "source_head": "e03437a81f2d047babad5e122aec99a88b1c56af",
+  "candidate_files": [
+    {
+      "path": "crates/quantities/src/lib.rs",
+      "bytes": 877,
+      "sha256": "c97148b2ee14311624dc2ef4c61ca7622f17f346af8f7f32db9b8d9add1faf70"
+    },
+    {
+      "path": "crates/quantities/src/parser.rs",
+      "bytes": 18982,
+      "sha256": "0bf04b8753600690798093f7b6d8926b6f603bb0180534ca01600bf7f11786c1"
+    },
+    {
+      "path": "crates/quantities/src/linear.rs",
+      "bytes": 16607,
+      "sha256": "7f48e46b5307fd76260d0e5322b0064e6ecbec989d43908719dbd544e6226a75"
+    },
+    {
+      "path": "crates/quantities/src/rate.rs",
+      "bytes": 5058,
+      "sha256": "98a28f5bd4854be1e9adf7602c57d94dc9f40c1cd0348035b9476d6ed14b9ce8"
+    },
+    {
+      "path": "crates/quantities/src/rate_language.rs",
+      "bytes": 15816,
+      "sha256": "2653522193e584e1460dbb91e4aa59283db386946ecb0c56930daae5b881f1f1"
+    },
+    {
+      "path": "crates/quantities/tests/rate_language.rs",
+      "bytes": 2726,
+      "sha256": "00452cb4beca2f327bcca5645c84b8a71df334701b0a6afbdb8f7b3118ad438c"
+    }
+  ],
+  "patch_bytes": 28975,
+  "patch_sha256": "b7e820663422ab3f0d7aad97d271fef464cdcdcc86a4de13eb6b201f43bb2a78",
+  "new_downloaded_data_bytes": 0,
+  "license": "MIT OR Apache-2.0 (workspace)",
+  "binaries": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/ratewords-run/candidate/glassmind-quantities",
+      "bytes": 25534224,
+      "sha256": "a5d8aa25a10d11b0f90f36639ab36568d40934a75e63ed0475199f9b17d36f41"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/ratewords-run/candidate/glassmind",
+      "bytes": 126816496,
+      "sha256": "9c7420e53e9dea2d8a68192473ee88f899de5902a3137c79e79eb3628b604915"
+    }
+  ],
+  "data": {
+    "source": "AllenAI MathQA",
+    "homepage": "https://math-qa.github.io/math-QA/",
+    "license": "Apache-2.0 (AllenAI dataset card)",
+    "version": "fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6",
+    "card_version": "c4f1cc784c04c4957b50c97858f23893b633eea6",
+    "files": [
+      {
+        "split": "train",
+        "url": "https://huggingface.co/datasets/allenai/math_qa/resolve/fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6/default/train/0000.parquet",
+        "bytes": 9013733,
+        "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+      },
+      {
+        "split": "validation",
+        "url": "https://huggingface.co/datasets/allenai/math_qa/resolve/fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6/default/validation/0000.parquet",
+        "bytes": 1350141,
+        "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+      }
+    ],
+    "official_splits": {
+      "train": 29837,
+      "validation": 4475
+    },
+    "test_downloaded": false
+  },
+  "new_data_bytes": 0
+}

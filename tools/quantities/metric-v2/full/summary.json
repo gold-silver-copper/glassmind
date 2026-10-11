@@ -1,0 +1,124 @@
+{
+  "all_gold_categories": {
+    "ambiguous_requested_unit": 2,
+    "bare_requested_unit_contract": 2828,
+    "explicit_unit_conversion": 78,
+    "malformed_numeric": 75,
+    "malformed_percent": 6,
+    "missing_explicit_percent_request": 120,
+    "missing_explicit_requested_unit": 294,
+    "non_scalar_choice_text": 10,
+    "option_binding:option_binding": 66,
+    "percentage_points": 242,
+    "unsupported_suffix_or_expression": 419,
+    "unsupported_text_or_expression": 335
+  },
+  "baseline_to_candidate_transitions": {
+    "correct -> correct": 22,
+    "refused -> correct": 6,
+    "refused -> refused": 4444,
+    "unscorable -> unscorable": 1,
+    "wrong -> wrong": 2
+  },
+  "freeze": {
+    "files": {
+      "DEFINITION.md": "3ab7a777ab7931d574d89f9aaccbc22dc162ab921e1e50af9e5d99b40b1f5d31",
+      "metric.py": "a2448b572d7a845eac81727b154e0ab013123854b8db569e166ddd3b18937c73",
+      "test_metric.py": "992bc7062afe643e5eda76778df07a9feb07e7d2b1de7919e139348fb62d5384"
+    },
+    "frozen_before_dev": true,
+    "utc": "2026-10-11T06:13:46.383609+00:00"
+  },
+  "full_questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+  "legacy_adapter_sha256": "226f416ddff557bb752a41ae1e799235b0bcab72d2d07287ece12630db48f69d",
+  "legacy_to_v2_transitions": {
+    "baseline": {
+      "correct -> correct": 22,
+      "refused -> refused": 4450,
+      "wrong -> unscorable": 1,
+      "wrong -> wrong": 2
+    },
+    "candidate": {
+      "correct -> correct": 23,
+      "refused -> refused": 4444,
+      "wrong -> correct": 5,
+      "wrong -> unscorable": 1,
+      "wrong -> wrong": 2
+    }
+  },
+  "legacy_unparseable_categories": {
+    "ambiguous_requested_unit": 2,
+    "bare_requested_unit_contract": 59,
+    "explicit_unit_conversion": 78,
+    "malformed_numeric": 24,
+    "malformed_percent": 3,
+    "missing_explicit_percent_request": 2,
+    "missing_explicit_requested_unit": 294,
+    "non_scalar_choice_text": 10,
+    "option_binding:option_binding": 1,
+    "percentage_points": 2,
+    "unsupported_suffix_or_expression": 419,
+    "unsupported_text_or_expression": 335
+  },
+  "legacy_unparseable_full": 1229,
+  "metric": "mathqa-exact-explicit-units-v2",
+  "new_data_bytes": 0,
+  "parquet": {
+    "train": {
+      "bytes": 9013733,
+      "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    "validation": {
+      "bytes": 1350141,
+      "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+    }
+  },
+  "parse_transitions": {
+    "parseable -> parseable": 3009,
+    "parseable -> unparseable": 237,
+    "unparseable -> parseable": 139,
+    "unparseable -> unparseable": 1090
+  },
+  "scores": {
+    "baseline": {
+      "correct": 22,
+      "refused": 4450,
+      "unscorable": 1,
+      "wrong": 2
+    },
+    "candidate": {
+      "correct": 28,
+      "refused": 4444,
+      "unscorable": 1,
+      "wrong": 2
+    }
+  },
+  "source": {
+    "baseline": {
+      "answered": 25,
+      "binary_sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a",
+      "bytes": 7947,
+      "historical_counts": [
+        22,
+        4450,
+        3
+      ],
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/mathmetric-run/baseline/baseline-full.json",
+      "sha256": "205da7cff1dafa306500ba47b50dbf4819d9889a3795f0911a6030f0f728af53"
+    },
+    "candidate": {
+      "answered": 31,
+      "binary_sha256": "a5d8aa25a10d11b0f90f36639ab36568d40934a75e63ed0475199f9b17d36f41",
+      "bytes": 10278,
+      "historical_counts": [
+        23,
+        4444,
+        8
+      ],
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/mathmetric-run/baseline/candidate-full.json",
+      "sha256": "9264e0903e0f5c0cb41ad276d17c01254efd7bdb6d1e2e4c4d2d9dcfbf76826d"
+    }
+  },
+  "total": 4475,
+  "unscorable_gold": 1327
+}

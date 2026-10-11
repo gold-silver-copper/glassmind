@@ -1,0 +1,44 @@
+{
+  "decision": "REJECT evaluator v2; retain diagnostic evidence only",
+  "original_archive_files": 17,
+  "original_archive_bytes": 1623111,
+  "manifest_entries_verified": 16,
+  "reproduced_byte_identical": [
+    "sample/summary.json",
+    "sample/changed-grades.json",
+    "sample/gold-audit.jsonl",
+    "full/summary.json",
+    "full/changed-grades.json",
+    "full/gold-audit.jsonl",
+    "full/review.json"
+  ],
+  "unit_tests_passed": 6,
+  "worker_postfreeze_failures_confirmed": 2,
+  "additional_parent_context_failures": [
+    {
+      "gold": "3 hours",
+      "question": "Time is measured in hours. What is the distance?",
+      "actual": {
+        "value": "3",
+        "reason": "explicit_unit_conversion",
+        "gold_unit": "hours",
+        "requested_unit": "hours",
+        "raw_value": "3"
+      },
+      "expected": "unscorable"
+    },
+    {
+      "gold": "3 hours",
+      "question": "How many hours (or days) will it take?",
+      "actual": {
+        "value": "3",
+        "reason": "explicit_unit_conversion",
+        "gold_unit": "hours",
+        "requested_unit": "hours",
+        "raw_value": "3"
+      },
+      "expected": "unscorable"
+    }
+  ],
+  "scope": "No runtime/scorer/history change. Global in-UNIT matching can bind background units; request alternatives in parentheses evade ambiguity rejection. Do not tune this frozen metric or retroactively accept ratewords."
+}
