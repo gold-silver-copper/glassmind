@@ -1,9 +1,12 @@
-# Parent integration review: full dev still pending
+# Parent decision: accepted after full dev and independent review
 
 Runtime `4a06d788e923ca29e40ddc1e6f5d0e8d50f20015` contains the exact two submitted
 source files. The parent-built release binary is
 `8e52835c22bbb335a10fa4f3c9b175f1e7db07b0f5b895803adbcb35a8cc431d`.
-It is integrated locally for evaluation; publication still requires full765.
+Full765 is complete: all174 prior passes retained,591refusals and zero failures.
+Every outcome is unchanged; the local capability gains are separate from this
+benchmark. Result SHA256 is
+`6bb70923ac905413d059f4882ca7edf88b90a2707fe244bbd531bc85bb36cb34`.
 
 The new route resolves the explicitly requested struct owner before assigning
 every same-spelling field occurrence. It edits only that owner's declarations,
@@ -51,8 +54,7 @@ frozen fixture files verified. All513 original repository copies match archives;
 inactive worktrees/login links were removed only after repeat verification.
 
 Original regressions retain export26/27 and AddField14/15 fixture mismatches;
-these are not green results or repaired by field ownership. Full765 is running
-against the final release. Raw parent work is under
+these are not green results or repaired by field ownership. Full765 ran against the final release. Raw parent work is under
 `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/fieldowners-review`;
 full run is sibling `fieldowners-full`. No hidden items, model changes, new
 external data, altered scorers or weakened expectations were used.

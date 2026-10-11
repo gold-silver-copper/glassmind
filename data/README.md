@@ -496,4 +496,4 @@ are scoped development contracts, not independent benchmark accuracy.
 [Worker provenance](../tools/coding-field-owners/HANDOFF.md),
 [independent review](../tools/coding-field-owners-review/HANDOFF.md), and
 [parent validation](../tools/coding-field-owners/PARENT.md) preserve frozen hashes,
-failed iterations, conservative refusals and the pending full-dev gate.
+failed iterations, conservative refusals and the completed full-dev gate.

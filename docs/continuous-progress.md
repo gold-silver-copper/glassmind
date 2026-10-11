@@ -1,6 +1,6 @@
 # Continuous development checkpoint
 
-## Authoritative current state — 2026-10-11 UTC, field-owner dev running
+## Authoritative current state — 2026-10-11 UTC, field-owner dev complete; percentage integration next
 
 Goal active under `prompts/grow-continuously.md`; no blocker. This section
 supersedes older ACTIVE/pending labels. WORK=`/home/gsc/.cache/glassmind/continuous-20261010`.
@@ -31,7 +31,7 @@ Original worker archives and repository copies reverified; inactive trees/auth
 links removed. Wrapper EOF/report-path typo/interrupted unbuffered run retained,
 none credited as passing. Final buffered replay complete.
 
-FIELDOWNERS local integration passes, full dev PENDING. Original282files/1,130,972
+FIELDOWNERS accepted after local integration and full dev. Original282files/1,130,972
 bytes archived atWORK/fieldowners-run/submitted. All3189raw artifact hashes pass;
 four removed worktree paths resolve to archived copies. Only glassmind-accepted
 SHA19d2770f8a43cdd9037b8a46747d5a428489b567dcdfd63e40e1bc1e011fb621 and
@@ -66,40 +66,45 @@ Worker runtime restored; archive+232repository copies verified before removing
 inactive worktree/login link. Fieldowner archive+281copies also match; tree/auth
 removed. Reports tools/coding-field-owners-review. All513copies preserved.
 
-Full765 is RUNNING, parent session23591 verified live. Command:
+Full765 is COMPLETE, session23591 exited0. All174oldpasses retained,591refusals,
+zero failures; every765outcome unchanged. Result SHA
+6bb70923ac905413d059f4882ca7edf88b90a2707fe244bbd531bc85bb36cb34.
+Exact outcome comparer passes; docs/results/coding-field-owners.json. Do not
+repeat/poll completed run. Command was:
 GLASSMIND=WORK/coordinator/fieldowners-review/glassmind-integrated
 GLASSMIND_SCRATCH=WORK/coordinator/fieldowners-full/native-scratch
 tools/rustbench-dev.sh WORK/coordinator/fieldowners-full.
-8GiB/0swap scopes,setsid--wait,diskTMPDIR,timeout and10s kill grace. Inspect run.log;
-results appear only on completion, so missing results do not imply failure.
+8GiB/0swap scopes,setsid--wait,diskTMPDIR,timeout and10s kill grace.
 Baseline WORK/coordinator/identifierroles-full/results.jsonl SHA
 cc1daf8604b72ca88978b6c3580c9af5f43b4194bc9980ddb33c0a330f7fa631.
-Gate>=174passes, all174old passes retained, zero failures. No publish decision yet.
+Full integration gate passed. Field-only publishing is next; percentage runtime
+is not integrated and must remain out of this PR.
 
-PERCENTCHANGE ACTIVE: launcherPID41861, scopeglassmind-continuous-percentchange.scope,
-worktreeWORK/percentchange at5af9c40, runWORK/percentchange-run,
-briefWORK/percentchange-task.txt. Scope8GiB/0swap verified. Login status confirms
-ChatGPT; controlled worker usesGPT6Astra fast and stripped API-key environment.
-Owns quantities/newtools/quantities/percent-change only. New hypothesis: explicit
-before/after percentage relations and bound bases, distinct from rejected motion
-approaches. Inspect first4000MathQA TRAIN Problem-only texts; freeze representation,
-independent probes and gate before runtime/DEV. Required >=2 new mathematically
-justified v3correct of4475, all25old answered payloads unchanged, no newlywrong or
-unscorable accepted, full3116synthetic triples unchanged. Fixedsamplethenfull; no
-post-full retuning. No downloads or heldout input. Existing production06a651b
-baseline and sparse25-answer report copied; absentindices are refusals, not full
-stored predictions. Parent still independently reviews any candidate.
-One live model worker plus parent; full765 has one cargo job. Old stopped dirty
-loop untouched. Known completed worker tokens114,694,820, cached input once;
-parent and unfinished percent worker excluded. External five-line PR27 milestone
-appended to /home/gsc/code/notes/projects/glassmind/progress.md.
+PERCENTCHANGE COMPLETE, promising but not integrated. Original41files/3,022,535
+bytes archived/hashverified atWORK/percentchange-run/submitted;18freeze identities
+and35artifact entries verified. Scope inactive; originalworktree/loginlink remain.
+Worker full4475:22->29correct,4450->4443refused,3wrong unchanged, all25answered
+payloads retained;3116synthetic triples unchanged. Scoped12tests/fmt/clippy/debug
+CLI build;38probes/linear50/absolute55 pass. Parent original-prediction rescore
+reproduces full report;78independent rational/domain/reference checks pass, all7
+newanswers independently reviewed. Exact baseline sparse25answer scope disclosed.
+No post-full changes. Core is explicit bound percentage stages, not relative motion.
+Original worker binaries WORK/percentchange-run/candidate/glassmind-quantities
+SHAe94f0ba1b05ce12aee1dfd015815af0f6825bf0f3049c0501fb2a5eb2cfacf15,
+main6e1de5323493f759231525cd5347eb0324a851f469a300d3c3de89970af6f9a1.
+Archivepatch60cda8ec8f1389fa077bbb683ba8d6682dcb08dfb0dd96a909e01b9bdd21fb29;
+workerpatch53578ccc5629ea02bfd366d973413420640fc6d19564abf966e029e42b0df7bd.
+32small original reports/adapters copied into UNTRACKED tools/quantities/percent-change;
+full ledger/predictions remain external (originalARTIFACTS indexes fullarchive).
+Parent raw WORK/coordinator/percentchange-review (independent.py/json,frozen-cases,
+rescore/). Next integrate exact archived source after field PR opens, run final
+release full4475/synthetic and conversation regressions, then publish separately.
+No active model workers or parent benchmark jobs now. Old dirty loop untouched.
+Known completed worker tokens116,217,906 inclcachedinput once; parentexcluded.
+External PR27 five-line milestone already appended.
 
-Next: finish full765 and run tools/coding-field-owners/parent/compare-full.py
-(the same outcome comparer with updated paths/commit), audit every transition,
-update report/README/journal,
-push/open PR for field ownership only if all gates pass, then exact-head CI merge.
-Review percent worker only when terminal, archive before changes, independently
-verify. Keep both coding and conversation moving and periodically revisit weak
+Next: push/open field-ownership PR with all gates passed, then exact-head CI merge.
+Continue percentage integration from the verified archive; do not restart worker. Keep both coding and conversation moving and periodically revisit weak
 reading/dialogue coverage with a new measurable hypothesis. Goal remains active.
 
 ## Historical checkpoint before final route replay — superseded below

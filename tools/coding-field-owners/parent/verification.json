@@ -1,5 +1,5 @@
 {
-  "decision": "Local integration gates passed; full765 still running, not approved for publishing",
+  "decision": "Accepted after full affected dev and independent integration gates",
   "commit": "4a06d788e923ca29e40ddc1e6f5d0e8d50f20015",
   "binary_sha256": "8e52835c22bbb335a10fa4f3c9b175f1e7db07b0f5b895803adbcb35a8cc431d",
   "checks": {
@@ -59,5 +59,48 @@
     "with_CARGO_TARGET_DIR": 4,
     "fmt": "pass",
     "scoped_clippy": "pass"
+  },
+  "full765": {
+    "scope": "Full fixed765 Rust coding dev; no held-out evaluation",
+    "commit": "4a06d788e923ca29e40ddc1e6f5d0e8d50f20015",
+    "binary_sha256": "8e52835c22bbb335a10fa4f3c9b175f1e7db07b0f5b895803adbcb35a8cc431d",
+    "total": 765,
+    "outcomes": {
+      "refused": 591,
+      "pass": 174
+    },
+    "all_previous_passes_retained": 174,
+    "outcome_changes": [],
+    "per_kind": {
+      "ask": {
+        "pass": 18
+      },
+      "edit": {
+        "refused": 77,
+        "pass": 4
+      },
+      "explain": {
+        "refused": 38,
+        "pass": 4
+      },
+      "fix-error": {
+        "pass": 133,
+        "refused": 350
+      },
+      "fix-test": {
+        "refused": 66,
+        "pass": 15
+      },
+      "implement": {
+        "refused": 60
+      }
+    },
+    "baseline_result_sha256": "cc1daf8604b72ca88978b6c3580c9af5f43b4194bc9980ddb33c0a330f7fa631",
+    "candidate_result_sha256": "6bb70923ac905413d059f4882ca7edf88b90a2707fe244bbd531bc85bb36cb34",
+    "timing": {
+      "sum_agent_seconds": 392.513517737,
+      "median_agent_seconds": 0.300845193
+    },
+    "runner": "Unchanged tools/rustbench-dev.sh; persistent TMPDIR and explicit GLASSMIND_SCRATCH; memory8GiB/0swap, setsid --wait, bounded timeouts10s shutdown grace"
   }
 }

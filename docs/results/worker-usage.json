@@ -669,7 +669,7 @@
         "output_tokens": 27134,
         "reasoning_output_tokens": 7042
       },
-      "source": "Original282files archived and hash verified; worker accepted16/16 plus4refusals. Only glassmind-accepted and accepted-* are final; stale v3 evidence excluded. Independent reviewer active; no parent acceptance/full765 claim."
+      "source": "Accepted after original282files/3189raw hashes verified, parent16+4 exact replays and independent21 behavioral probes,31world tests/workspace and full765 retainsall174passes/591refusals/0fail with every outcome unchanged. Only accepted-* final evidence; stalev3 retained separately."
     },
     {
       "track": "fieldreview-continuous",
@@ -680,7 +680,18 @@
         "output_tokens": 16270,
         "reasoning_output_tokens": 4582
       },
-      "source": "Independent21contracts: six exact edits including one inherited,15unchanged refusals, all original/after behavioral tests executed. No unsafe accepted edit found in bounded review. Original233files353733bytes archived/hashverified; parent integration/full765 pending."
+      "source": "Independent21contracts: six exact edits including one inherited,15unchanged refusals, all original/after behavior tests. Original233files/231manifest entries/fiveidentities/twofreezes verified. Parent final release reproducesall21; archive/repositorycopies reverified before worktree/auth removal."
+    },
+    {
+      "track": "percentchange-continuous",
+      "usage": {
+        "input_tokens": 1506692,
+        "cached_input_tokens": 1438208,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 16394,
+        "reasoning_output_tokens": 2450
+      },
+      "source": "Worker gate29/4475vs22,all25oldanswers+3116synthetic retained;38probes/linear50/absolute55 pass. Original41files3022535bytes archived and18freeze identities verified. Parent78independent arithmetic/domain probes pass; integrated replay pending, not yet accepted/published."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
