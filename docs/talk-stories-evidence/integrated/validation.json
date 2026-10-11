@@ -1,0 +1,14 @@
+{
+  "source_commit": "797ba62c735909d8132ce816e06d00c3fb832b86",
+  "binary_sha256": "d504e39cabe4df6516f83c3493bb485bbbd0a3af6084419c1131ecd31ef68093",
+  "memory": {
+    "right": 41,
+    "wrong": 0
+  },
+  "rust_world_tests": 10,
+  "cli_tests": 5,
+  "workspace_fmt_clippy_build_smoke": "passed",
+  "correction_regression": "unresolved correction invalidates only existing story context, including after restart",
+  "earlier_rejected_coordinator_attempt": "routing every Missing reply invalidated personal-memory clarifications without story context; narrowed and rechecked",
+  "rename_runner_retry": "first invocation lacked required CARGO_TARGET_DIR; separate capped rerun passed nine cases"
+}

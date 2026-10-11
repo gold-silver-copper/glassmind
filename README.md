@@ -80,9 +80,9 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
 | Word problems, MathQA (numeric answers without choices) | 14/4,475 right; 4,458 refused; 3 wrong | pending |
-| Chat memory and calculations | 41/41 memory checks; 27/27 mixed conversation checks | synthetic; no independent chat benchmark |
-| Reading, BabyLM 2025 dev | 1/120 sampled documents parsed; 15 exceed the 48-token cap | pending |
-| Grammar, BLiMP parse-only probe | 1 good preference, 3 bad, 1,336 ties on 1,340 pairs | no probability-model score yet |
+| Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
+| Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
+| Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
 
 The diagnostic-completeness follow-up leaves all 765 rustbench dev outcomes
 unchanged and fixes both wrong answers in a 32-turn status sample (27 → 29 right,
@@ -100,6 +100,11 @@ model, preserves memory priority and recalls calculation requests across
 sessions. The same 3,116 synthetic quantity questions through `talk` retain
 3,056 correct, 60 unsupported and zero wrong. [Integration evidence](docs/talk-quantities.md).
 
+`talk` also keeps story facts across turns and session restarts, with typed
+answers and separately labeled predictions. Its full bAbI dev result matches
+the standalone reasoner; unsupported updates invalidate story answers until
+reset. [Conversation scope and evidence](docs/talk-stories.md).
+
 Exact percentage relations raise MathQA dev coverage from 5 to 14 correct.
 Two additional exact-match failures compare exact results with rounded answer
 choices; both remain counted wrong. This custom numeric metric does not supply
@@ -114,7 +119,13 @@ old ambiguity or introduce a different claim. [Facts comparison](tools/facts/con
 The story dev set is a deterministic episode-level partition of the official
 training data. CLINC thresholds were calibrated on official validation;
 its official train and validation splits overlap on three utterances.
-The reading probes measure parser coverage, not correctness of meanings.
+The earlier parse-only probes remain 1/120 reading documents and
+1 good / 3 bad / 1,336 tied grammar pairs. The new fixed byte scorer
+raises grammar good preferences from 578 to 707, but also raises bad
+preferences from 579 to 633 and regresses 23/67 categories. Its reading
+probe has 33/120 exact training-line overlaps. These are probability
+measurements, not semantic understanding or clean held-out performance.
+[Full probability evidence and limitations](tools/reading/HANDOFF.md).
 The dialogue result covers one service; the quantity suites are synthetic
 development checks, not an external word-problem benchmark. The facts
 index is seeded by validation subject IDs and has limited coverage; it is not
