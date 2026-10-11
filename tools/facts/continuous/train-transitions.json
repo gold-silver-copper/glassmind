@@ -1,0 +1,1000 @@
+{
+  "split": "train",
+  "total": 19481,
+  "counts": {
+    "before": {
+      "refused": 19251,
+      "wrong": 218,
+      "right": 12
+    },
+    "after": {
+      "refused": 19405,
+      "wrong": 64,
+      "right": 12
+    }
+  },
+  "transitions": {
+    "refused->refused": 19251,
+    "wrong->refused": 154,
+    "wrong->wrong": 64,
+    "right->right": 12
+  },
+  "wrong_symptoms": {
+    "before": {
+      "entity_mismatch": 193,
+      "inverse_answer_mismatch": 25
+    },
+    "after": {
+      "inverse_answer_mismatch": 25,
+      "entity_mismatch": 39
+    }
+  },
+  "scored_right_with_entity_mismatch_rows": {
+    "before": [
+      3166,
+      3395,
+      4267,
+      4826,
+      6996,
+      7929,
+      8692,
+      8945,
+      12009,
+      13372,
+      15592
+    ],
+    "after": [
+      3166,
+      3395,
+      4267,
+      4826,
+      6996,
+      7929,
+      8692,
+      8945,
+      12009,
+      13372,
+      15592
+    ]
+  },
+  "status_changes": [
+    {
+      "row": 93,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 143,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 156,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 319,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 436,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 808,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 884,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 931,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1068,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1105,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1436,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1444,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1511,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1604,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1611,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1785,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1821,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2143,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2149,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2672,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2687,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2828,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3006,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3162,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3195,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3302,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3331,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3384,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3393,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3581,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3609,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3709,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3867,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3869,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 3960,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4004,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4190,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4240,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4416,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4603,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4646,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4761,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4886,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4894,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 4970,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 5022,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 5645,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 5783,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6014,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6148,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6155,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6342,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6361,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6624,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6823,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 6850,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 7065,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 7440,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 7573,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 7624,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 7878,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 7987,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8107,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8122,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8268,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8432,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8464,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8478,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8536,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8575,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8587,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8644,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8807,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8855,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 8877,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 9016,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 9073,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 9422,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 9436,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 9453,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10125,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10277,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10326,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10424,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10501,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10687,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10776,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 10895,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 11008,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 11046,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 11378,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 11720,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 11936,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 11996,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 12213,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 12216,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 12253,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 12326,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 12434,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 12638,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 12971,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13092,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13351,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13369,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13491,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13604,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13646,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13648,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13679,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 13839,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14005,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14061,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14129,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14146,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14262,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14285,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14298,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14326,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14538,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14596,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14597,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14712,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14736,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14756,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14864,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14877,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14927,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 14980,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 15079,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 15210,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 15795,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 15813,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 15824,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 15835,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 15852,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 16184,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 16497,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 16595,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 16739,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 16787,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 16959,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 17108,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 17321,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 17348,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 17777,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 17779,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 17857,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 18207,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 18293,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 18789,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 18887,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 19045,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 19261,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 19341,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    }
+  ],
+  "files": {
+    "annotations": {
+      "sha256": "25c5994c4e3a4dad39bacf3c457b3ff4cf7b199630eb78045a0b478e4fda145b",
+      "bytes": 1193868
+    },
+    "before": {
+      "sha256": "d8f81ff1b9f5551b54ec132037f438d8fe8fd603a684b7ab890af018a60e16c6",
+      "bytes": 1930113
+    },
+    "after": {
+      "sha256": "0ca1c2e905778bc5cd344ef229289062fc8330e9f1214dd47bb96ed7f4efe2c2",
+      "bytes": 1898323
+    }
+  }
+}

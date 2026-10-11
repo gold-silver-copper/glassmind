@@ -30,8 +30,11 @@ pub struct Answer {
 }
 
 fn normalize(text: &str) -> String {
-    text.to_lowercase()
-        .split(|c: char| !c.is_alphanumeric())
+    tokenize(&text.to_lowercase())
+}
+
+fn tokenize(text: &str) -> String {
+    text.split(|c: char| !c.is_alphanumeric())
         .filter(|word| !word.is_empty())
         .collect::<Vec<_>>()
         .join(" ")
@@ -57,12 +60,18 @@ impl Store {
     }
 
     /// Longest whole-token alias; equal-length matches to distinct entities refuse.
+    /// Single-token uppercase aliases need their original casing: folding an
+    /// acronym can turn an ordinary word in the question into an entity mention.
     pub fn link(&self, question: &str) -> Option<EntityId> {
+        let cased_question = format!(" {} ", tokenize(question));
         let question = format!(" {} ", normalize(question));
         let mut best_length = 0;
         let mut candidates = BTreeSet::new();
+        let mut supported = BTreeSet::new();
         for (id, entity) in &self.entities {
             for alias in &entity.aliases {
+                let case_supported = !alias.chars().all(|c| c.is_alphabetic() && c.is_uppercase())
+                    || cased_question.contains(&format!(" {alias} "));
                 let alias = normalize(alias);
                 if alias.len() < 2
                     || alias.len() < best_length
@@ -72,13 +81,22 @@ impl Store {
                 }
                 if alias.len() > best_length {
                     candidates.clear();
+                    supported.clear();
                     best_length = alias.len();
                 }
                 candidates.insert(id.clone());
+                if case_supported {
+                    supported.insert(id.clone());
+                }
             }
         }
+        // A failed casing check must not resolve an existing ambiguity or
+        // expose a shorter alias. It only withdraws the original link.
         if candidates.len() == 1 {
-            candidates.into_iter().next()
+            candidates
+                .into_iter()
+                .next()
+                .filter(|id| supported.contains(id))
         } else {
             None
         }
@@ -129,5 +147,72 @@ impl Store {
             answer.refusal = Some("this snapshot has multiple answers; narrow the question".into());
         }
         answer
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn store(rows: &[(&str, &[&str])]) -> Store {
+        Store {
+            entities: rows
+                .iter()
+                .map(|(id, aliases)| {
+                    (
+                        EntityId((*id).into()),
+                        Entity {
+                            aliases: aliases.iter().map(|s| (*s).into()).collect(),
+                            claims: BTreeMap::new(),
+                        },
+                    )
+                })
+                .collect(),
+        }
+    }
+
+    #[test]
+    fn uppercase_alias_does_not_match_an_ordinary_word() {
+        let store = store(&[("Q1", &["IN", "Example Institute"])]);
+        assert_eq!(store.link("Which language is spoken in this film?"), None);
+        assert_eq!(store.link("In which city is the film set?"), None);
+        assert_eq!(store.link("Where is (IN)?"), Some(EntityId("Q1".into())));
+        assert_eq!(store.link("Where is INNER?"), None);
+    }
+
+    #[test]
+    fn descriptive_aliases_still_ignore_case() {
+        let store = store(&[("Q1", &["IN", "Example Institute"])]);
+        assert_eq!(
+            store.link("Where is example institute?"),
+            Some(EntityId("Q1".into()))
+        );
+    }
+
+    #[test]
+    fn explicit_lowercase_alias_remains_valid() {
+        let store = store(&[("Q1", &["ACME", "Acme"])]);
+        assert_eq!(store.link("Who founded acme?"), Some(EntityId("Q1".into())));
+    }
+
+    #[test]
+    fn longest_alias_and_ambiguity_are_preserved() {
+        let store = store(&[
+            ("Q1", &["IN", "Example Institute"]),
+            ("Q2", &["Example Institute"]),
+            ("Q3", &["Example Institute of Music"]),
+        ]);
+        assert_eq!(store.link("Where is example institute?"), None);
+        assert_eq!(
+            store.link("Where is example institute of music?"),
+            Some(EntityId("Q3".into()))
+        );
+    }
+
+    #[test]
+    fn rejected_acronym_does_not_resolve_ambiguity_or_expose_shorter_alias() {
+        let store = store(&[("Q1", &["IN", "ACME"]), ("Q2", &["Go"])]);
+        assert_eq!(store.link("What language is go in?"), None);
+        assert_eq!(store.link("Does acme go abroad?"), None);
     }
 }

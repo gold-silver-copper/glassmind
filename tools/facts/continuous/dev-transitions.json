@@ -1,0 +1,180 @@
+{
+  "split": "valid",
+  "total": 2821,
+  "counts": {
+    "before": {
+      "refused": 2526,
+      "right": 256,
+      "wrong": 39
+    },
+    "after": {
+      "refused": 2545,
+      "right": 256,
+      "wrong": 20
+    }
+  },
+  "transitions": {
+    "refused->refused": 2526,
+    "right->right": 256,
+    "wrong->refused": 19,
+    "wrong->wrong": 20
+  },
+  "wrong_symptoms": {
+    "before": {
+      "entity_mismatch": 27,
+      "snapshot_answer_mismatch": 5,
+      "inverse_answer_mismatch": 4,
+      "relation_mismatch": 3
+    },
+    "after": {
+      "entity_mismatch": 8,
+      "snapshot_answer_mismatch": 5,
+      "inverse_answer_mismatch": 4,
+      "relation_mismatch": 3
+    }
+  },
+  "scored_right_with_entity_mismatch_rows": {
+    "before": [
+      434,
+      470,
+      1705,
+      2423
+    ],
+    "after": [
+      434,
+      470,
+      1705,
+      2423
+    ]
+  },
+  "status_changes": [
+    {
+      "row": 98,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 121,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 246,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 313,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 357,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 508,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 740,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 803,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 867,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1058,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1082,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1294,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1739,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1902,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 1988,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2078,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2091,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2305,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    },
+    {
+      "row": 2657,
+      "before": "wrong",
+      "after": "refused",
+      "before_symptom": "entity_mismatch"
+    }
+  ],
+  "files": {
+    "annotations": {
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48",
+      "bytes": 173187
+    },
+    "before": {
+      "sha256": "c6b94d8ea6dfbef8270be91301dc1bdff07cfa60010668122b57ad3a229ed238",
+      "bytes": 273309
+    },
+    "after": {
+      "sha256": "9d7fb56e29d8dd52275c93d8edd14c921c5748d8b4c3bc48c7fc7008574005b1",
+      "bytes": 270305
+    }
+  }
+}
