@@ -13,8 +13,6 @@ env:
 jobs:
   check:
     runs-on: ubuntu-latest
-    env:
-      TMPDIR: ${{ runner.temp }}/glassmind-tmp
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
@@ -23,7 +21,8 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - name: Prepare memory-capped checks
         run: |
-          mkdir -p "$TMPDIR"
+          mkdir -p "$RUNNER_TEMP/glassmind-tmp"
+          echo "TMPDIR=$RUNNER_TEMP/glassmind-tmp" >> "$GITHUB_ENV"
           sudo systemctl start "user@$(id -u).service"
           echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> "$GITHUB_ENV"
           echo "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus" >> "$GITHUB_ENV"
