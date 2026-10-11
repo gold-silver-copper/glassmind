@@ -1,0 +1,96 @@
+{
+  "baseline_answers_preserved": 19,
+  "new_answers": [
+    {
+      "index": 1094,
+      "question": "11 times a number gives 132 . the number is",
+      "expected": "12",
+      "actual": {
+        "status": "answer",
+        "value": "12",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right",
+      "independent_exact_value": "12"
+    },
+    {
+      "index": 1252,
+      "question": "if 15 % of 30 % of 50 % of a number is 108 , then what is the number ?",
+      "expected": "4800",
+      "actual": {
+        "status": "answer",
+        "value": "4800",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right",
+      "independent_exact_value": "4800"
+    },
+    {
+      "index": 1702,
+      "question": "14 times a number gives 210 . the number is",
+      "expected": "15",
+      "actual": {
+        "status": "answer",
+        "value": "15",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right",
+      "independent_exact_value": "15"
+    },
+    {
+      "index": 2410,
+      "question": "50 % of a number is more than 40 % of 120 by 180 . find the number ?",
+      "expected": "456",
+      "actual": {
+        "status": "answer",
+        "value": "456",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right",
+      "independent_exact_value": "456"
+    },
+    {
+      "index": 3339,
+      "question": "if 35 % of a number is 24 less than 50 % of that number , then the number is ?",
+      "expected": "160",
+      "actual": {
+        "status": "answer",
+        "value": "160",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right",
+      "independent_exact_value": "160"
+    },
+    {
+      "index": 4461,
+      "question": "20 % of a number is more than 30 % of 120 by 80 . find the number ?",
+      "expected": "580",
+      "actual": {
+        "status": "answer",
+        "value": "580",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right",
+      "independent_exact_value": "580"
+    }
+  ],
+  "new_semantic_errors": 0,
+  "removed_worker_assumptions": [
+    {
+      "index": 1410,
+      "reason": "absolute difference fixes |x|=850, requested12percent has values+102 and-102"
+    },
+    {
+      "index": 3079,
+      "reason": "absolute difference fixes |x|=400, requested25percent has values+100 and-100"
+    }
+  ],
+  "source_commit": "687f2751ff256f2071330590345ef0652fb09baa",
+  "comparison_metric_unchanged": true
+}

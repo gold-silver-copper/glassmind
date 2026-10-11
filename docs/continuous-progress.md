@@ -23,7 +23,9 @@ Package source05e8093 passed full765 regression with every outcome unchanged.
 Repair source2ce9230 passed full765:166pass596refused3fail; onlythree
 derive-debug styles improve, everyother762 outcome unchanged.
 Facts source d1076c4 passed full facts and all conversation/config replay.
-Combined verified coding/facts batch is preparing publication; linearwords active.
+PR11 merged: head57eb656ded41d452bf5d8199cfcf182a73951162, merge
+7f847d9ca372d64d9ab82c6815f1336d1594172c; CI38112513112 passed1m25s.
+Linearwords source687f275 is integrated and fully verified, preparing publication.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -234,17 +236,31 @@ Manifest hashing adds8locked cached dependencies219434archive bytes; licenses,
 checksums recorded in reports/dependencies.json. All raw data remains in worker
 run; optional reproduction uses cached responses without downloading.
 
-**Active worker: linearwords**, launcherPID2304052, scope
-`glassmind-continuous-linearwords.scope`, worktreeWORK/linearwords, base2986605.
-Owns quantities and newtools/quantities/linearwords only. Official MathQA TRAIN
-Problem-only inspection; shared exact affine expressions/equalities with full
-consumption, unique-solution requirement and explicit target. Acceptance:
->=3newcorrect full4475 withnointroducedsemanticerrors/no baselinecorrectloss,
-all3116synthetic status/value/unit unchanged, independent novel combinations and
-contradictions/omissions/units refusals. Baseline16/4456/3,first1001/99/0; baseline
-binary+reports in ownTMPDIR; existing data/deps read-only. No annotationsruntime,
-heldout/generators/LLMs or additional workers. GPT6AstrafastChatGPT/noAPIkeys,
-8GiB0swap,-j1. Login status verified before launch. About20min bounded batch.
+**Linearwords worker COMPLETE**, scope inactive, auth link removed, submission
+archived/hash-verified and worktree removed. Original worker24right/4448refused/
+3wrong rejected: ordered interpretation of English difference returned-1 for
+"difference between2and3". Parent correction enumerates both signs of at most4
+absolute differences, checks their nonnegative conditions and all equalities,
+and requires agreement among all feasible solutions. Explicit minus stays
+ordered. Two worker-scored-correct cases now refuse because both signs of the
+unknown are possible; no positivity assumption. Source
+`687f2751ff256f2071330590345ef0652fb09baa` integrated locally, not yet published.
+
+Parent full4475MathQA **COMPLETE**:16→22right,4456→4450refused,3wrong unchanged;
+all19baseline answer records preserved; six new values independently recomputed.
+Fixedfirst1001/99/0;1229unparseable gold rows retained. All3116synthetic triples
+unchanged3056right(including762expectedrefusals),60unsupported,0wrong.
+All50 independent composition +55 difference checks pass;9 quantity tests,
+focusedclippy andworkspacefmt/allclippy/release/strict4/4smoke pass. Main talk
+8/8newmixed checks in allfour facts/model configurations; old27/27 each with/
+without model unchanged. Source/binary/log identities and original assumptions
+in tools/quantities/linearwords/{PARENT.md,integrated/validation.json}.
+Frozenquantitybinary SHA06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a,
+WORK/coordinator/linearwords-check. All jobs complete:19270focused,97485workspace,
+27303main-talk. No repoll/restart. Original24 score is superseded by22.
+All measured new benchmark gains areone-unknown; two-variablecomposition has
+localfixture evidence only. No newdatasets/models/dependencies orheldoutaccess.
+No active modelworker; launch settings remainGPT6AstrafastChatGPT/noAPIkeys.
 
 **Wordproblems worker COMPLETE**, scopeinactive/authremoved; source/reports
 archived `WORK/wordproblems-run/submitted/`; worktree removedafterarchiveverification.
@@ -295,7 +311,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:46,119,869 including cached input; parent and
+Known completed worker tokens:47,162,504 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -308,17 +324,15 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 ## Immediate next actions
 
-1. PR8 merged after green CI; no publishing or benchmark work remains for it.
-   README/data/scoreboard updated; reports identify exact evaluated source.
-2. PR10 merged. Both coding full765 evaluations complete; publish combined
-   coding/facts verified batch, then required CI and exact-head merge.
-3. Factchat replay86463 complete, evidence retained and documented.
-   Review linearwords when done.
-   Preserve everynewerror,
-   fullaffecteddev andnormalcheck gates. Do not confuseintegrationgain with
-   expandedfactualcoverage, orlocalrenamefixtures withRustBenchgain.
-4. Keep coding and conversation advancing. Other gaps: full MathQA mostly
-   unsupported language; facts open-world retrieval; independent reading
-   semantics (current byte likelihood is not comprehension).
-5. Active goal continues until user stops. Stop owned jobs on pause/stop,
-   preserve artifacts, never restart the old stopped loop blindly.
+1. PR11 merged after all coding/facts gates and green exact-head CI. No pending
+   publishing or evaluation for that batch; do not re-run its full765 jobs.
+2. Publish corrected linearwords source687f275 plus complete evidence; required
+   CI and exact-head merge. All local gates are complete. Scoreboard/README22/4475.
+3. Next coding investigation:42/42 RustBench dev explanation requests refuse;
+   inspect the existing typed purpose/body evidence path and permitted dev
+   request/source-only examples to choose a falsifiable explanation hypothesis.
+   Do not inspect benchmark hidden replies/tests/solutions or change scorers.
+4. Broader gaps remain MathQA natural language (22/4475), finite validation-seeded
+   facts coverage, and genuine reading semantics beyond byte likelihood.
+5. Goal stays active until user stops. Current owned modelworkers all stopped;
+   old dirty improvement loop remains stopped. Preserve artifacts and exact refs.

@@ -24,3 +24,4 @@ for version in baseline candidate; do
         --report "$TMPDIR/reproduced-$version-full.json"
 done
 capped python3 tools/quantities/linearwords/check.py
+capped python3 tools/quantities/linearwords/absolute.py --binary "$CARGO_TARGET_DIR/debug/glassmind-quantities" --output "$TMPDIR/reproduced-absolute.json"

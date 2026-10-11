@@ -1,0 +1,365 @@
+{
+  "binary_sha256": "cbe42583c56482cec7f8dca21a368f6984e5ecb491757714318af692f9fcfad8",
+  "runs": [
+    {
+      "model": false,
+      "facts": false,
+      "total": 8,
+      "right": 8,
+      "checks": [
+        {
+          "question": "My name is Mira",
+          "passed": true,
+          "actual": {
+            "kind": "remembered",
+            "text": "I'll call you Mira.",
+            "slot": "Name"
+          }
+        },
+        {
+          "question": "Twice a number plus 7 is 31. What is 25 percent of the number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "3",
+            "value": "3",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 3 more than the second number; their sum is 31. Find twice the second number.",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "28",
+            "value": "28",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 2. The second number is 3. What is the difference between the first number and the second number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "1",
+            "value": "1",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 0 is 5. What is the difference between the number and 0?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "5",
+            "value": "5",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 10 is 3. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "A number is 7. The number is 8. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "What is my name?",
+          "passed": true,
+          "actual": {
+            "kind": "recalled",
+            "text": "Your name is Mira.",
+            "source_turn": 1
+          }
+        }
+      ]
+    },
+    {
+      "model": false,
+      "facts": true,
+      "total": 8,
+      "right": 8,
+      "checks": [
+        {
+          "question": "My name is Mira",
+          "passed": true,
+          "actual": {
+            "kind": "remembered",
+            "text": "I'll call you Mira.",
+            "slot": "Name"
+          }
+        },
+        {
+          "question": "Twice a number plus 7 is 31. What is 25 percent of the number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "3",
+            "value": "3",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 3 more than the second number; their sum is 31. Find twice the second number.",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "28",
+            "value": "28",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 2. The second number is 3. What is the difference between the first number and the second number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "1",
+            "value": "1",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 0 is 5. What is the difference between the number and 0?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "5",
+            "value": "5",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 10 is 3. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "A number is 7. The number is 8. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "What is my name?",
+          "passed": true,
+          "actual": {
+            "kind": "recalled",
+            "text": "Your name is Mira.",
+            "source_turn": 1
+          }
+        }
+      ]
+    },
+    {
+      "model": true,
+      "facts": false,
+      "total": 8,
+      "right": 8,
+      "checks": [
+        {
+          "question": "My name is Mira",
+          "passed": true,
+          "actual": {
+            "kind": "remembered",
+            "text": "I'll call you Mira.",
+            "slot": "Name"
+          }
+        },
+        {
+          "question": "Twice a number plus 7 is 31. What is 25 percent of the number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "3",
+            "value": "3",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 3 more than the second number; their sum is 31. Find twice the second number.",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "28",
+            "value": "28",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 2. The second number is 3. What is the difference between the first number and the second number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "1",
+            "value": "1",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 0 is 5. What is the difference between the number and 0?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "5",
+            "value": "5",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 10 is 3. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "A number is 7. The number is 8. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "What is my name?",
+          "passed": true,
+          "actual": {
+            "kind": "recalled",
+            "text": "Your name is Mira.",
+            "source_turn": 1
+          }
+        }
+      ]
+    },
+    {
+      "model": true,
+      "facts": true,
+      "total": 8,
+      "right": 8,
+      "checks": [
+        {
+          "question": "My name is Mira",
+          "passed": true,
+          "actual": {
+            "kind": "remembered",
+            "text": "I'll call you Mira.",
+            "slot": "Name"
+          }
+        },
+        {
+          "question": "Twice a number plus 7 is 31. What is 25 percent of the number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "3",
+            "value": "3",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 3 more than the second number; their sum is 31. Find twice the second number.",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "28",
+            "value": "28",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The first number is 2. The second number is 3. What is the difference between the first number and the second number?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "1",
+            "value": "1",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 0 is 5. What is the difference between the number and 0?",
+          "passed": true,
+          "actual": {
+            "kind": "calculated",
+            "text": "5",
+            "value": "5",
+            "unit": null,
+            "method": "exact scalar linear constraints"
+          }
+        },
+        {
+          "question": "The difference between a number and 10 is 3. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "A number is 7. The number is 8. Find the number.",
+          "passed": true,
+          "actual": {
+            "kind": "refusal",
+            "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+            "answer": null,
+            "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+          }
+        },
+        {
+          "question": "What is my name?",
+          "passed": true,
+          "actual": {
+            "kind": "recalled",
+            "text": "Your name is Mira.",
+            "source_turn": 1
+          }
+        }
+      ]
+    }
+  ]
+}

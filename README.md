@@ -72,6 +72,12 @@ affect display only. Explicit memory, calculations and established stories keep
 their priority. The demonstrated bundle is a finite 500-entity snapshot with
 known errors, not an open-world fact service.
 
+Scalar word problems can combine fractions, percentages, sums and comparisons
+in multiple clauses. Glassmind solves exact constraints and requires a unique
+requested value; ambiguous differences refuse, while explicit subtraction stays
+ordered. This adds six correct MathQA dev answers with existing answers preserved.
+[Scope, independent checks and semantic review](tools/quantities/linearwords/PARENT.md).
+
 ## Current benchmark tracks
 
 Chart and score journal: [tracks](docs/results/tracks.html). Scores below
@@ -87,7 +93,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
 | Multi-service dialogue, SGD three-service dev subset | 609/1,119 exact routing-and-state turns; 50 refused; 460 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
-| Word problems, MathQA (numeric answers without choices) | 16/4,475 right; 4,456 refused; 3 wrong | pending |
+| Word problems, MathQA (numeric answers without choices) | 22/4,475 right; 4,450 refused; 3 wrong | pending |
 | Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |

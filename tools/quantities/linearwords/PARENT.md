@@ -32,3 +32,28 @@ The first training-concept unit check now uses explicit “minus”; new unit ch
 cover signed operands, nested/target differences, ambiguous roots, disambiguation
 by another equality and negative difference contradictions. This is a corrected
 meaning, not a weakened assertion. Exact enumeration checks are in absolute.py.
+
+
+## Final coordinator measurements
+
+Source `687f2751ff256f2071330590345ef0652fb09baa`, quantity binary SHA256
+`06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a`; final CLI SHA256
+`cbe42583c56482cec7f8dca21a368f6984e5ecb491757714318af692f9fcfad8`. Full4475 MathQA dev: **16→22 right,
+4456→4450 refused,3 wrong unchanged**. Every19 baseline answer record is identical.
+All six new values were independently recomputed with Fraction. Worker rows1410
+and3079 now refuse because both signs remain possible; its24-correct total is
+superseded. Fixedfirst100 stays1/99/0, all1229 unparseable gold rows remain in the
+denominator, and the existing three scored errors stay counted wrong.
+
+All3116 synthetic status/value/unit triples are unchanged. The50 independent
+composition cases and55 finite-root/difference checks pass, as do all9 quantity
+tests. Workspace fmt/all-clippy/release/strict4/4smoke pass. Main talk passes8/8
+new mixed cases in allfour facts/model configurations, including preserving the
+remembered name; old27/27 calculation/memory checks pass with/without model.
+Two-variable and absolute-difference composition have local evidence only;
+all six benchmark gains use one unknown. Coverage remains22 of4475.
+
+[Integrated validation](integrated/validation.json),
+[exhaustive new-answer audit](integrated/audit.json), and
+[absolute-difference evidence](integrated/absolute.json). Raw artifacts remain at
+`/home/gsc/.cache/glassmind/continuous-20261010/coordinator/linearwords-check`. No new datasets/dependencies/models downloaded, no held-out access.
