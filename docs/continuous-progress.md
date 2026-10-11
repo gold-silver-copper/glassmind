@@ -2,12 +2,12 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-PROGRESS: word joining passed every fixed gate and is integrated; publication
-is next. Full independent claims acquisition passed; projection is still running.
+PROGRESS: word joining shipped in PR50. Full independent claims acquisition
+passed; projection is still running.
 Known completed-worker tokens:201926299, cached input counted once; parent and
 interrupted usage excluded. No model workers, teacher calls or auth mounts.
 
-## Word joining passed; publish the integrated change
+## PR50 merged: word joining shipped
 
 Root merge4cf3015817020438c0820a93de65154fda391c28 integrates WORK/word-join
 ateb4ed14. Runtime7282d2e adds5lines: signature-directed single-space joining of
@@ -26,11 +26,13 @@ Workspacefmt/clippy/release/strict4smoke passed on identical source/binary.
 Reports, hashes and originals RUN=WORK/coordinator/word-join. All coding jobs,
 including fullDEV20945, COMPLETE. No need to repeat finished checks.
 
-NEXT: finish checkpoint/report commit, pushharness, createPR againstmain, review
-exactheadand mergeonlywithgreenCI and --match-head-commit. Currentbatch also
-records PR49's rejectedQA CAL and the prospectively frozen fullclaims plan;
-experimental fullclaims Rust importer remains onlyin its isolated worktree.
-NoPRcreatedyet for this batch. SourcegraphQA defaults remain unchanged.
+PR50 https://github.com/gold-silver-copper/glassmind/pull/50 MERGED
+45b6a1fc6c45a0cb70c5c4193dcd0049aca56f3a at2026-10-11T18:26:06Z.
+Reviewed head4da48eab6348f7c399ef613b4a2fb4ac6e4d964c; CI38163669290 passed
+in76s (18:24:25–18:25:41UTC). Push9562, PR29055 and merge13809 COMPLETE.
+Do not republish or rerun the completed coding batch. Published evidence also
+includes rejected single-shard QA CAL and the frozen fullclaims acquisition plan.
+NEXT is the live facts projection and subsequent native ingestion below.
 
 ## Full independent claims snapshot: projection remains live
 
@@ -50,7 +52,7 @@ includingfirsttotal44633986614bytes. Independentall-file audit78497 COMPLETE,
 andfetch.jsonl committedinworktree; originalpilot/native/raw untouched.
 
 Projection29161 RUNNING, scopeglassmind-full-claims-projection, supervisor761927,
-child761928 lastverifiedlive. Lastobserved49completedfilesat1450s; readcurrentlog.
+child761928 lastverifiedlive. At PR50 merge:62completedfiles,546805361rawrows,289241086statements; readcurrentlog.
 Caps14400s/96GiBprojection/384GiBaddedrun,8GiB/no swap. Do notrestart intoexisting
 outputs. Fetchscopeisgone; projection scope includesfilecache, observedoom0.
 No fullnative output and no fullgraphQA evaluation have run.
