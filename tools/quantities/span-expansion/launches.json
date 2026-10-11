@@ -198,6 +198,29 @@
       "supervisor_pid": 1219143,
       "scope": "glassmind-span-expansion-04.scope",
       "started_unix": 1791746571.107585
+    },
+    "completion": {
+      "sampled_peak_teacher_bytes": 68886528,
+      "returncode": 0,
+      "seconds": 186.4434592879843,
+      "limit_failure": null,
+      "worker_exited_cleanly": true,
+      "annotations_exist": true,
+      "semantic_approval": false
+    },
+    "usage": {
+      "turns": 1,
+      "input_tokens": 217243,
+      "cached_input_tokens": 178688,
+      "output_tokens": 11543,
+      "cached_counted_once": true,
+      "total_counted": 228786
+    },
+    "cleanup": {
+      "scope_state": "inactive",
+      "owned_login_symlink_removed": true,
+      "originals_hash_verified": true,
+      "credential_contents_read": false
     }
   }
 ]

@@ -1,0 +1,337 @@
+{
+  "schema": 1,
+  "batch": 2,
+  "scope": "TRAIN-FIT source-reference replication, no inference accuracy",
+  "rows": [
+    {
+      "id": "fit-818",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "All three task counts feed the nested sum; stated per-task minutes scale completed total;60minutes/hour converts computed duration. Matches frozen prospective reference and its distributive task reading."
+    },
+    {
+      "id": "fit-3095",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Twice licenses2 for penguin population. Explicit100/percentage conversion scales computed penguins to total animals; elephant percentage over100 scales computed total. All variable counts/rates use question inputs."
+    },
+    {
+      "id": "fit-6028",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "The weekly sum needs computed60minutes converted to1hour; the supplied nodes never perform that conversion. Other input1 has a different daily-duration role."
+    },
+    {
+      "id": "fit-389",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Remaining November days are derived from month length minus elapsed days. First-period15 is a different quantity, even though the original periods coincide."
+    },
+    {
+      "id": "fit-2471",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Nightly price times nights gives gross hotel cost; subtract stated discount from computed gross cost."
+    },
+    {
+      "id": "fit-315",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Unannotated remaining-provision duration and population ratio cannot become constants60 and2/3."
+    },
+    {
+      "id": "fit-2857",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Each color pack count pairs with its own pack capacity; sum computed white and blue shirt totals."
+    },
+    {
+      "id": "fit-3108",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Each food price pairs with its matching purchased quantity; subtract computed combined expenditure from initial cash."
+    },
+    {
+      "id": "fit-5229",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Clusters/spoon times spoons/bowl gives bowl capacity; divide box contents by this computed capacity rather than constant100."
+    },
+    {
+      "id": "fit-6854",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Two mentions of the same14-year averaging interval cause exact-occurrence ambiguity at division. The protocol cannot express coreferential alternatives here."
+    },
+    {
+      "id": "fit-7023",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Monday and Friday3-mile summands can be exchanged across different nested addition nodes. The restricted direct-swap equivalence representation cannot express that whole-sum permutation."
+    },
+    {
+      "id": "fit-4889",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "The chicken fraction is the unannotated complement of the duck fraction. Its numerator2 is neither the feeding-price input nor a justified fixed constant."
+    },
+    {
+      "id": "fit-1614",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 12,
+      "reason": "Out-and-back licenses two legs. Both variants use routeBduration input2 and structural leg-count constant2 once, swapping only their direct multiplication order. Subtract computed round-trip durations under ordinary equal outbound/return travel-time reading."
+    },
+    {
+      "id": "fit-2875",
+      "teacher_status": "label_error",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Question supports Dawn-to-Mary2miles, but rationale explicitly calls that Ken-to-Mary distance. Correcting its semantic role would silently repair a premise; final12 alone does not validate that step description."
+    },
+    {
+      "id": "fit-4291",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Loan principal input15 is reused for repayment principal and interest base. Final sum instead uses retained-cash step15 plus completed repayment result. Interest conversion is explicit; equal values do not conflate these quantities."
+    },
+    {
+      "id": "fit-6393",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Four wash cycles are computed only outside calculator annotations. Constant4 would hide the missing capacity division; prose also misstates20 rather than15 items/cycle."
+    },
+    {
+      "id": "fit-1201",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Age sum minus Doug age yields Betty age; twice numerically maps that age to pack price as explicitly stated. Packs multiply computed price rather than constant100."
+    },
+    {
+      "id": "fit-6746",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Double current membership, add stated excess to form target, subtract original membership for recruitment count."
+    },
+    {
+      "id": "fit-491",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 5,
+      "reason": "Three successive route legs form original nested total; subtract progress already walked."
+    },
+    {
+      "id": "fit-5110",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Known candy counts form computed non-Butterfinger subtotal; subtract from total candy count."
+    },
+    {
+      "id": "fit-1167",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Quoted price divided by matching quoted weight gives unit price; multiply purchased weight by computed unit price."
+    },
+    {
+      "id": "fit-2863",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Homes times panels/home gives requirement; subtract shortfall, then divide computed available panels by original per-home requirement. Original counts allow whole homes."
+    },
+    {
+      "id": "fit-1982",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "First product6-meter width pairs with second2-wall input; second product4-meter width pairs with first2-wall input. Computed totals sum without conflating equal counts."
+    },
+    {
+      "id": "fit-3271",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Two named recipients license constant2 on both days; each daily per-recipient input scales to a computed total, then sum daily totals."
+    },
+    {
+      "id": "fit-3472",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Hours/day times rental days yields computed billable hours; multiply by hourly rate."
+    },
+    {
+      "id": "fit-4179",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Used space minus deleted files plus added files gives transferred data size; subtract computed size from new capacity. Old free-space input is irrelevant."
+    },
+    {
+      "id": "fit-7224",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 18,
+      "reason": "Each bill count pairs with its denomination. Two variants swap only ten-dollar count and denomination; both occur once. Final100 is computed ten-dollar subtotal, not hundred-dollar denomination input."
+    },
+    {
+      "id": "fit-7114",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Tendered cash minus change yields net purchase price; divide by barbell count under ordinary common-price reading requested by each."
+    },
+    {
+      "id": "fit-2703",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "Box counts scale their stated color-specific box capacities. Add computed orange and blue totals plus red count from the single red box. Fixed graph normalizes the one-box factor; no arbitrary red-box-count generalization is claimed."
+    },
+    {
+      "id": "fit-7052",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Lexical twice licenses2 multiplying speed; computed doubled speed multiplies duration."
+    },
+    {
+      "id": "fit-3711",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Numeric input3 supplies pear/apple ratio, distinct from constant3. Apple input reused for pear calculation and fruit subtotal; subtract completed apples-plus-pears from total. Rationale phrase3*4apples denotes the comparison base and explicitly concludes pears."
+    },
+    {
+      "id": "fit-3786",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Donation length plus retained length yields target; subtract current hair length for required additional growth."
+    }
+  ],
+  "parent_confirmed_accepted": 24,
+  "accepted_semantic_contradictions": 0,
+  "program_variants": 26,
+  "assignments_reviewed": 153,
+  "hashes": {
+    "source/batch-02/batch.json": "148bae8653ed05d5c2d30a615fc18a923a33f14992a2fa6e9b7a854d2373a585",
+    "batch-02/teacher-originals/work/annotations.json": "81af4308dffb9f4795d029d0e51be1f87ca7b4cea1cc8db4579f721560642214",
+    "batch-02/mechanical-report.json": "fe631221496ec084e819e9abbdc335f0491f5faff213106696b391e4f3a76b92"
+  },
+  "replication_gate": "coverage already fails:95mechanicallyaccepted versus96minimum; full semantic audit continues"
+}
