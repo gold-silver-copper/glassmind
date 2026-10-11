@@ -1,33 +1,64 @@
 # Continuous development checkpoint
 
-The unlimited goal is active. This is a resumable checkpoint, never completion.
+The unlimited goal is active. Continue from live evidence; milestones do not complete it.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010; root branch `harness`.
-Validated coding source commit 508b43513868f06cde300dfee1b0a52636d8298d.
-The rejected sequence experiment and this handoff are being committed before PR publication.
-No model workers are running. Do not restart completed workers or old loops.
 
-## Live work and immediate next action
+## Published milestone
 
-Full765 coding DEV session82568 is COMPLETE:200pass/565refused/0fail, all765
-outcomes identical and all200previouspasses retained. No benchmark score gain.
-Output WORK/coordinator/multiplicative-full; unchanged `tools/rustbench-dev.sh`.
-Frozen evaluated binary is
-WORK/coordinator/multiplicative-independent/revision/frozen/glassmind,
-SHA825df340f06a81024d4620fee92cd5cea7a0813abd675cf3f2cfe59a15f63cc6.
-Every (task,style) compared with WORK/coordinator/repairveto-full/results.jsonl.
-NewresultsSHA c2f9fbd3aba3f11558e9872973b6fb0aa4d3714d7ce9c79d5f3a95e58b9625f6;
-comparison in tools/coding-multiplicative/parent/revision/full-comparison.json.
+PR38 MERGED: https://github.com/gold-silver-copper/glassmind/pull/38
+Reviewed head609f42ecdd9071c0888e1f402ee08b8d8616793a; source commit
+508b43513868f06cde300dfee1b0a52636d8298d. CI38137149457 passed in79seconds.
+Merge663d966087f06bbb981b8b6c930046b692f1a126 at2026-10-11T11:53:57Z.
+Push40317, PR creation42472 and merge16241 are COMPLETE. Do not repeat them.
 
-Integrated workspace check session73733 is COMPLETE: fmt, all-target clippy,
-release workspace and strict4/4 fixture smoke pass. Log at
-WORK/coordinator/multiplicative-integrated/check.log. All jobs use8GiB/0swap,
-setsid--wait, boundedtimeouts, on-disk TMPDIR, cargo1 and testthreads4.
+Multiplication/division repairs and inline-unit-test ambiguity correction are shipped.
+Independent14 cases:8new and1legacy exact native repair,4negative cases unchanged,
+1native-confirmed ambiguity withdrawal. Full765 session82568 is COMPLETE:
+200pass/565refused/0fail, every outcome identical to the previous release.
+Results: WORK/coordinator/multiplicative-full/results.jsonl,
+SHA c2f9fbd3aba3f11558e9872973b6fb0aa4d3714d7ce9c79d5f3a95e58b9625f6.
+Full evaluated release825df340f06a81024d4620fee92cd5cea7a0813abd675cf3f2cfe59a15f63cc6
+is frozen undercoordinator/multiplicative-independent/revision/frozen/glassmind.
+Integrated release7a3d98dfb4eb6428d9d43ceb4cbdb963d20750034d0da223ffaa21dbe9781d81
+has identical reviewed source. Workspace session73733 COMPLETE:fmt,clippy,release,
+strict4/4 smoke. No native/build/full-evaluation job remains from that release.
 
-All local gates, PARENT/report/README and source commit are complete. Integrated
-release7a3d98dfb4eb6428d9d43ceb4cbdb963d20750034d0da223ffaa21dbe9781d81
-matches the frozen evaluated source; root workspace checks pass.
-Next: push harness, openPR and merge exact reviewed head after required CI passes.
-Do not claim this feature shipped while CI/merge remain pending.
+## Active experiment and exact next actions
+
+Ceiling-division worker is live: PID2304033,
+`glassmind-continuous-ceildivision.scope`, worktreeWORK/ceildivision,
+branchcontinuous/ceildivision, base609f42e. TaskWORK/ceildivision-task.txt;
+runWORK/ceildivision-run. Latest process/scope check confirmed active/running,
+MemoryMax8589934592, MemorySwapMax0. Astra fast, forced ChatGPT login, stripped
+API-key environment; login status verified before launch. No parent model switch
+is claimed. This is the only model worker; do not start a duplicate on timeout.
+
+Hypothesis: generic primitive-typed unsigned floor-to-ceiling division repairs,
+with old proposal priority preserved and exact primitive-call ambiguity semantics.
+Public TRAIN shipping-boxes supplies the observed gap. No name/task hardcoding,
+custom/signed type guessing, opaque macro edits or test weakening. Require at least
+one actual public TRAIN gain, no lost passes and full coding DEV regression checks;
+a new repair must retain bounded native ambiguity confirmation. Worker owns only
+world-rust and new tools/coding-ceiling-division. Full task contains exact gates.
+
+Parent13 cases frozen BEFORE candidate inspection at
+WORK/coordinator/ceildivision-independent (not sent to worker):
+8unsigned positives covering all primitive widths/maxima, zero guards, typed fields
+and Unicode;4negative/custom/signed/unguarded-zero/macro cases;1two-repair ambiguity.
+CasesSHA d2a53a2a2c9feeb08aa780767c57cf4ccc64e17dcbfca77ba233b5f578b50dfa.
+Original baseline session88857 COMPLETE: all13compile and fail executed tests;
+0/8new repairs, no negative edits, no timeout, manifests unchanged. The ambiguous
+case stays unchanged because no old proposal passes; candidate must produce a
+native witness before withdrawing its competing new repairs. Adapter accepts only
+the frozen equivalent call forms and preserves every byte outside the target expression.
+
+Next: verify worker handle; when terminal archive original submission and verify
+hashes BEFORE inspection or edits. Run unchanged parent13 via its run.py using a
+fresh candidate output directory. Inspect typed resolution, call/argument semantics,
+source protection and native ambiguity evidence, then full765 if local gates pass.
+No candidate source/result has been inspected yet. Baseline release7a3d98df... is
+copied and verified inceildivision-run/baseline/glassmind. Known completed worker
+tokens161484271; this live worker is not counted yet. Keep the goal active.
 
 ## Multiplicative coding revision
 
@@ -35,8 +66,9 @@ Original worker completed:8/8authored new repairs,6/6negative preservation,legac
 priority; publicTRAIN5/27 unchanged,39world-rust tests/clippy/fmt/release passed.
 Original709files/79,969,637bytes archived/hash-verified BEFORE inspection under
 WORK/multiplicative-run/terminal-originals. Original release deec095b... remains
-WORK/multiplicative-run/frozen-candidate. Worktree WORK/multiplicative is now
-coordinator-owned with a revision; preserve both original and revised evidence.
+WORK/multiplicative-run/frozen-candidate. The inactive worker worktree and temporary login link are removed after verifying
+all709 original and59 final files. Final source/report archive is
+WORK/multiplicative-run/coordinator-final-submitted; all original evidence remains.
 
 Parent original14cases frozen before inspection:8new+1legacy exactnative repairs,
 4unchanged negatives, but ambiguity case acceptedone of two differing repairs.
@@ -105,8 +137,8 @@ keyword/route patch. Three syntax decoder/feature tweaks are closed. Two quantit
 rate-grammar attempts failed; do not resume them. Repair positive-whitelist work
 lost127passes and is rejected. Originals/reasons remain in relevant PARENT reports.
 
-Next useful coding lead (TRAIN source read, no changes yet): shipping-boxes uses
-unsigned floor division where a partial box needs a rounded-up quotient. Consider
+The active ceiling-division experiment follows public TRAIN evidence: shipping-boxes uses
+unsigned floor division where a partial box needs a rounded-up quotient. Its task is
 a generic, primitive-typed, test-checked division-rounding repair with preserved
 old priority, zero/overflow boundaries and independent native cases; require a
 real publicTRAIN gain and full765 regression checks. Another lead is integer
