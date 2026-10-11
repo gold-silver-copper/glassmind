@@ -6,6 +6,9 @@ Goal active: follow `prompts/grow-continuously.md` until stopped. PR20 verified
 ask-apply fix is merged; all 765 coding outcomes were preserved. Relative-rate
 evidence has been independently reviewed and its restored worktree removed.
 Two prospective workers are running: word grammar and incoming facts coverage.
+At06:45UTC word grammar passed five local tests and is building/training next;
+inverse facts has frozen selection and primary endpoint policy, fetch pending.
+No worker result, token total, or acceptance decision is available yet.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -26,6 +29,10 @@ Do not repeat PR19 checks/merge. PR20 MERGED 5680e9beaf62f7c8c816d27fdc8916aeb17
 at 2026-10-11T06:39:03Z, exact head b569ac0eb0bab5a8b9d39cda904c816e77c08e63,
 CI38118678678 SUCCESS. Runtime336d5f9 (askapply) fully verified. Do not repeat
 PR20 checks, full765 regression or merge.
+PR21 MERGED a2a74918022472a3fa903030af630d847b491685 at2026-10-11T06:45:37Z,
+exact head12934256db0c5dd0226568c7af4a7444f03b11e8, CI38119019617SUCCESS.
+Rejected relative-rate evidence and parent role audit published; no runtime change.
+Do not repeat PR21 checks/merge.
 
 
 
@@ -237,8 +244,8 @@ queries remain explicit, no claim of global/temporal uniqueness.
 
 Both workers confirmed forced Astra fast/ChatGPT, API-key environment stripped,
 8GiB memory/zero swap, owned worktrees/authlinks. Two of four worker slots used.
-No parent benchmark jobs. Next: publish relative-rate rejection evidence; review
-worker submissions after terminal state, archive originals BEFORE integration or
+No parent benchmark jobs. PR21 published the relative-rate rejection evidence.
+Next: review worker submissions after terminal state, archive originals BEFORE integration or
 cleanup, verify results and only ship passing candidates. No blocker; goal active.
 Preserve old stopped dirty loop.
 
