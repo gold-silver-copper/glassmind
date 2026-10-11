@@ -47,3 +47,45 @@ their existing bundle paths.
 [Compatibility results and provenance](../tools/facts/disk/PARENT.md) cover all
 19,481 TRAIN and 2,821 DEV questions on the same 999-entity snapshot. This is
 storage equivalence, not an increase in knowledge coverage or QA accuracy.
+# Public Wikidata pilot import
+
+`glassmind-facts import-wikidata-pilot --pilot pilot.sqlite --manifest source-manifest.json --database new.sqlite`
+converts an independently audited numeric Wikidata projection into native format 2.
+The committed example manifest is `tools/facts/native-pilot/source-manifest.json`.
+Before using a numeric projection, audit the raw Q/P identifiers for exact
+string-to-integer-to-string round trips; the importer cannot recover spelling
+already lost upstream. The manifest pins that audit, the pilot hash and size,
+and each original public file's revision, hash, row range and retained count.
+It records the publisher, snapshot, license and incomplete selection scope.
+Raw files resolve under
+`https://huggingface.co/datasets/permutans/wikidata-{table}/resolve/{revision}/{path}`.
+
+The importer verifies the pilot hash, attaches it read-only, validates source
+row ranges and counts, and creates a separate database in one transaction.
+It never reads the Python `normalized` column: Rust rebuilds both normalization
+and acronym-case keys. Only normalized aliases shorter than two UTF-8 bytes are
+ineligible. Distinct original aliases and graph triples are deduplicated by
+their exact values, with no entity selection from QA data.
+
+Format 2 keeps each statement in `statements`, with original GUID, source row,
+normal/preferred rank and qualifier presence. The original Parquet remains the
+authority for full qualifiers and references. Aliases retain an occurrence count,
+first source-row witness, and a bitmask: English label=1, English alias=2,
+default-language label=4, default-language alias=8. Row IDs are one plus the
+raw row ordinal plus the manifest's file offset. Multiple provenance bits may
+apply to one alias. These are recorded relationships, including qualified and
+historical statements; they are not assertions that every relationship holds now.
+
+The database embeds the complete manifest and exact import counters. Format 2
+reports `public_source` instead of `source_json_sha256`; the latter continues to
+describe only version 1 JSON imports. Existing `ask-disk` and `predict-disk`
+commands read either format, using the same bounded query engine. Existing talk
+bundles and default commands are unchanged.
+
+Use a memory-capped scope (`MemoryMax=8G`, `MemorySwapMax=0`), an external timeout,
+and a private on-disk `TMPDIR`/`SQLITE_TMPDIR` while importing. The importer limits
+the output to less than 24 GiB and checks a 3,600-second deadline through SQLite's
+progress hook. The experiment supervisor also bounds temporary and retained run
+growth to 32 GiB. It builds secondary indexes after ingestion and checks integrity
+and foreign keys before committing. Existing output files are never overwritten;
+preserve interrupted or failed outputs for diagnosis and choose a new path.

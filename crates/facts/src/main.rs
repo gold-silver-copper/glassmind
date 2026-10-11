@@ -12,6 +12,15 @@ struct Args {
 }
 #[derive(Subcommand)]
 enum Command {
+    /// Import an audited numeric Wikidata pilot, rebuilding native alias keys.
+    ImportWikidataPilot {
+        #[arg(long)]
+        pilot: PathBuf,
+        #[arg(long)]
+        manifest: PathBuf,
+        #[arg(long)]
+        database: PathBuf,
+    },
     /// Create a new native SQLite index from a bounded JSON facts store.
     IndexDisk {
         #[arg(long)]
@@ -172,6 +181,14 @@ struct Totals {
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     match Args::parse().command {
+        Command::ImportWikidataPilot {
+            pilot,
+            manifest,
+            database,
+        } => {
+            let store = glassmind_facts::disk::pilot::import_file(&pilot, &manifest, &database)?;
+            println!("{}", serde_json::to_string(store.info())?);
+        }
         Command::IndexDisk { index, database } => {
             let store = glassmind_facts::disk::DiskStore::import_file(&index, &database)?;
             println!("{}", serde_json::to_string(store.info())?);

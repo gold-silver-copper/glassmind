@@ -1,42 +1,31 @@
-# Native public pilot ingestion: prerequisite passed, transformation pending
+# Native public pilot ingestion: implementation validated, full import next
 
-The frozen canonical-ID prerequisite passed in15.595seconds under8GiB/no-swap.
-All94,498,260 rawsubject/name IDs,9,468,504 property IDs and5,677,515 selected
-claimtarget IDs roundtrip through signedinteger storage without change. The raw
-file hashes andimmutablepilot database hash match the prior manifests. Exact
-Qitem counts are84,990,012names and5,677,515selectedstatements. No QA inputs used.
+Format2 importer implemented in crates/facts/src/disk/pilot.rs with CLI command
+import-wikidata-pilot. It pins the source database hash, attaches read-only, validates
+numeric rows/source-file mappings, rebuilds Rust keys, retains statement witnesses
+and alias provenance, embeds the portable manifest, and commits only after integrity
+and foreign-key checks. Format1 JSON outputs retain the same serialized shape.
 
-The first helper failed on Arrow large_string/string scalar type mismatch before
-finishing the first file; its original code/log are preserved. The corrected
-helper uses a matching large_string separator and handles empty selected batches.
-No data gate, row selection, resource limit or expected result was changed.
+33 facts tests passed including3new pilot test groups. Workspacefmt/clippy/release
+andstrict4/4smoke passed. Firstcompile rejected u64 SQLite conversions; corrected
+with checked i64 conversions. Clippy flagged read-buffer slicing; corrected with
+checked access. Logs focused.log/focused-fixed.log/workspace.log in externalrun.
+No resource gate or selection changed. No model worker, new downloads or QA input.
 
-Next implement the native transformation described in PLAN.md. No new database
-has been created. Do not mutate the Pythonpilot or consume its normalized field.
-Native code is in crates/facts/src/disk.rs, source3de724e; JSON/native parity passed.
+Full import is next using externalrun/run-import.py under8GiB/no-swap/3600seconds.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010; externalrun=WORK/coordinator/wikidata-native.
+The runner reserves native.sqlite,tmp,andcandidate, copies the tested binary, and
+tracks run growth including unlinked SQLite sort files through /proc/PID/fd.
+Do not rerun in place: preserve anypartial. Fixedlimits remain24GiBoutput/32GiBaddedrun.
 
-Pilot schema (read-only):
-- names(row_id INTEGER PK, entity INTEGER, name TEXT, normalized TEXT,
-  language INTEGER, kind INTEGER). language0=en,1=mul; kind0=label,1=alias.
-- edges(row_id INTEGER PK, subject INTEGER, property INTEGER, object INTEGER,
-  preferred INTEGER, qualified INTEGER, statement TEXT).
-Allnumeric IDs can now be reconstructed as the original Q/Pstrings. Namesrow_id
-is the global source-row ordinal plus1; file offsets are in the original
-wikidata-snapshot/import-report.json. Edgesrow_id is claims source ordinal plus1.
+After import passes, run externalrun/audit-native.py with retainedPyArrowvenv,
+8GiBscope,privateondiskTMPDIR/SQLITE_TMPDIRand600stimeout. It checks954fixedrawrow
+positions, fullstatementwitnesses, aliasprovenance/nativekeys viaa smallversion1
+rawsampleview, independententity/edgededup counts, rank/qualifiercounts, queryplans
+andsource-namealiasresolution. It uses a freshsmall launcher forqueryRSS. NotQAaccuracy.
+Then run boundedraw-view parity and existingformat1 parity; requiredintegration/main
+regressions beforepublishing. Canonicalprerequisite already passed; do not rerun it.
 
-A format2 schema should distinguish public snapshot provenance from the format1
-JSON input hash. Keep sourcefile/revision/license/scope/dataset hashes portable;
-preserve the JSONformat1 reader/importer. Keep allstatement witnesses separately
-from unique graph edges. For deduplicated aliases retain language/kind provenance
-(e.g. a source mask, occurrence count and source row reference) so en/mul labels
-and aliases remain traceable. Rebuild normalized/casing fields through the same
-Rust functions; SQL length tests must use UTF-8 bytes, matching Rust String::len.
-Create secondary indexes after import where appropriate. Reuse query semantics,
-read-only snapshots andresource bounds, rather than adding another answer engine.
-
-A safe Rust SQLite scalar function plus read-only attachment can rebuild keys
-without dumping a huge JSON Store. rusqlite functions feature was deliberately
-removed from the completed format1 change because unused; add it only when used
-by this transformation. The fixed resource gate is24GiB output,32GiB added run
-space and3600seconds under8GiB/no-swap. Onlycachedpilot/rawdata are allowed here.
-Strict QA evaluation and wider downloads require separate frozen experiments.
+OriginalPythonpilot10,367,000,576bytes SHAc3f1197705f131e74f8f7b794d3f08eaef7d3b48e8a312170185e6728bff1313
+remainsimmutable. SixrawParquetfiles, manifestandprioraudit remain retained. Keep
+fullqualifiers/references inrawsource; thisgraph includesqualified/historical claims.
