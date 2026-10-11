@@ -61,6 +61,8 @@ struct Snapshot {
     turn_index: usize,
     active_services: BTreeSet<String>,
     frames: Vec<Frame>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    offer_proposals: Vec<glassmind_dialogue::offers::OfferProposal>,
 }
 #[derive(Serialize)]
 struct Frame {
@@ -111,6 +113,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 router,
                 independent_router,
                 references: None,
+                offers: None,
                 services,
             };
             model.validate(&schemas)?;
@@ -155,6 +158,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                             turn_index,
                             active_services: session.active_services.clone(),
                             frames,
+                            offer_proposals: session.offer_proposals.clone(),
                         });
                     }
                 }

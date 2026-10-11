@@ -14,6 +14,8 @@ pub struct MultiModel {
     pub services: BTreeMap<String, DialogueModel>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub references: Option<crate::references::ReferenceModel>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub offers: Option<crate::offers::OfferModel>,
 }
 #[derive(Debug, Default)]
 pub struct MultiSession {
@@ -21,6 +23,9 @@ pub struct MultiSession {
     pub active_services: BTreeSet<String>,
     previous_system: String,
     history: Vec<String>,
+    offer_source: Option<(usize, String)>,
+    turn_count: usize,
+    pub offer_proposals: Vec<crate::offers::OfferProposal>,
 }
 fn features(system: &str, user: &str, previous: &BTreeSet<String>) -> String {
     let system = system
@@ -141,6 +146,9 @@ impl MultiModel {
             return Err("multi model/schema mismatch".into());
         }
         self.router.validate()?;
+        if let Some(o) = &self.offers {
+            o.validate(schemas)?;
+        }
         if let Some(r) = &self.references {
             r.validate(schemas)?;
         }
@@ -163,7 +171,13 @@ impl MultiModel {
     /// No annotation-bearing type crosses this runtime boundary. All service
     /// states are available after every turn, including inactive services.
     pub fn advance(&self, session: &mut MultiSession, turn: &InputTurn, schemas: &[Schema]) {
+        let turn_index = session.turn_count;
+        session.turn_count += 1;
+        session.offer_proposals.clear();
         if matches!(turn.speaker, Speaker::System) {
+            if self.offers.is_some() {
+                session.offer_source = Some((turn_index, turn.utterance.clone()));
+            }
             session.previous_system.clone_from(&turn.utterance);
             if self.references.is_some() {
                 session.history.push(turn.utterance.clone());
@@ -202,6 +216,7 @@ impl MultiModel {
                 .map(|(s, _)| s.clone())
                 .collect()
         };
+        let offer_source = session.offer_source.take();
         let prior = self.references.as_ref().map(|_| session.states.clone());
         for schema in schemas {
             let state = session
@@ -227,6 +242,25 @@ impl MultiModel {
                                 slot.name.clone(),
                                 crate::tracker::SlotValue::Text(p.value),
                             );
+                        }
+                    }
+                }
+                if let (Some(resolver), Some((index, source))) = (&self.offers, &offer_source) {
+                    for slot in &schema.slots {
+                        if !state.slots.contains_key(&slot.name)
+                            && let Some(p) = resolver.propose(
+                                &schema.service_name,
+                                &slot.name,
+                                (*index, source),
+                                &turn.utterance,
+                                schemas,
+                            )
+                        {
+                            state.slots.insert(
+                                slot.name.clone(),
+                                crate::tracker::SlotValue::Text(p.value.clone()),
+                            );
+                            session.offer_proposals.push(p);
                         }
                     }
                 }
@@ -294,6 +328,7 @@ mod tests {
             router: constant("A"),
             independent_router: BTreeMap::new(),
             references: None,
+            offers: None,
             services: schemas
                 .iter()
                 .map(|s| {
@@ -380,6 +415,7 @@ mod tests {
             version: 1,
             router: constant("A|B"),
             independent_router: BTreeMap::new(),
+            offers: None,
             references: Some(crate::references::ReferenceModel {
                 version: 1,
                 minimum_support: 20,

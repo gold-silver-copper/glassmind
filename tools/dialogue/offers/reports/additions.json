@@ -1,0 +1,1017 @@
+{
+  "counts": {
+    "correct": 32
+  },
+  "events": [
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "Bloedel Conservatory",
+      "source_turn": 11,
+      "start": 41,
+      "end": 61,
+      "rule": 15,
+      "dialogue_id": "17_00007",
+      "turn_index": 12,
+      "source_utterance": "Okay you want a shared cab for 1 fare to Bloedel Conservatory, is that correct?",
+      "user_utterance": "Wait my friend decided to come after all so make the cab for three please."
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "Angel Stadium of Anaheim",
+      "source_turn": 9,
+      "start": 23,
+      "end": 47,
+      "rule": 8,
+      "dialogue_id": "17_00013",
+      "turn_index": 10,
+      "source_utterance": "So you'd like to go to Angel Stadium of Anaheim and you'd like a shared ride for 1 person. Is this correct?",
+      "user_utterance": "Yes, that sounds good."
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "92nd Street Y",
+      "source_turn": 11,
+      "start": 20,
+      "end": 33,
+      "rule": 20,
+      "dialogue_id": "17_00030",
+      "turn_index": 12,
+      "source_utterance": "You want 2 seats to 92nd Street Y in a shared cab, correct?",
+      "user_utterance": "Yes that's correct."
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "92nd Street Y",
+      "source_turn": 9,
+      "start": 74,
+      "end": 87,
+      "rule": 1,
+      "dialogue_id": "17_00033",
+      "turn_index": 10,
+      "source_utterance": "Can you verify the following: You'd like me to call a cab for 1 person to 92nd Street Y.",
+      "user_utterance": "Yes, that is correct. What will be the total cost, and how long of a ride will this be?"
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "National Academy of Sciences",
+      "source_turn": 15,
+      "start": 18,
+      "end": 46,
+      "rule": 2,
+      "dialogue_id": "17_00034",
+      "turn_index": 16,
+      "source_utterance": "So a cab for 2 to National Academy of Sciences?",
+      "user_utterance": "Yes please. How long is the ride? How much will it be?"
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "Christmas Tree Lane",
+      "source_turn": 15,
+      "start": 53,
+      "end": 72,
+      "rule": 0,
+      "dialogue_id": "17_00035",
+      "turn_index": 16,
+      "source_utterance": "Okay. So, you want a shared cab ride for 1 person to Christmas Tree Lane, correct?",
+      "user_utterance": "Yes, that's correct. How long does it take to get there?"
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "Arte Carrillo Gil Museum",
+      "source_turn": 15,
+      "start": 47,
+      "end": 71,
+      "rule": 0,
+      "dialogue_id": "17_00045",
+      "turn_index": 16,
+      "source_utterance": "Ok, to confirm, you want a cab for 1 person to Arte Carrillo Gil Museum, right?",
+      "user_utterance": "Yes, that's right."
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "Featherdale Wildlife Park",
+      "source_turn": 13,
+      "start": 46,
+      "end": 71,
+      "rule": 1,
+      "dialogue_id": "17_00046",
+      "turn_index": 14,
+      "source_utterance": "Please confirm: a shared ride for 1 person to Featherdale Wildlife Park.",
+      "user_utterance": "Yes, sounds good."
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "Aquarium of the Bay",
+      "source_turn": 7,
+      "start": 90,
+      "end": 109,
+      "rule": 5,
+      "dialogue_id": "17_00050",
+      "turn_index": 8,
+      "source_utterance": "Sure. Please can you confirm me that you wish to have a shared ride for 1 people to go to Aquarium of the Bay, right?",
+      "user_utterance": "Yup, sounds good. What would be the ride cost and how long is the travel?"
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "DISCOVERY Children's Museum",
+      "source_turn": 9,
+      "start": 18,
+      "end": 45,
+      "rule": 8,
+      "dialogue_id": "17_00052",
+      "turn_index": 10,
+      "source_utterance": "So you will go to DISCOVERY Children's Museum and you are just 1 person who needs a shared ride?",
+      "user_utterance": "Yeah that is correct. What is journey time and what will I be charged?"
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "value": "360 CHICAGO",
+      "source_turn": 9,
+      "start": 73,
+      "end": 84,
+      "rule": 17,
+      "dialogue_id": "17_00053",
+      "turn_index": 10,
+      "source_utterance": "Okay, so you want to order a shared cab ride for 2 people to take you to 360 CHICAGO, right?",
+      "user_utterance": "Yup, that's right."
+    }
+  ],
+  "all_changes": [
+    {
+      "dialogue_id": "17_00007",
+      "turn_index": 12,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Bloedel Conservatory"
+      ],
+      "gold": [
+        "Bloedel Conservatory"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Bloedel Conservatory",
+        "source_turn": 11,
+        "start": 41,
+        "end": 61,
+        "rule": 15,
+        "dialogue_id": "17_00007",
+        "turn_index": 12,
+        "source_utterance": "Okay you want a shared cab for 1 fare to Bloedel Conservatory, is that correct?",
+        "user_utterance": "Wait my friend decided to come after all so make the cab for three please."
+      }
+    },
+    {
+      "dialogue_id": "17_00007",
+      "turn_index": 14,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Bloedel Conservatory"
+      ],
+      "gold": [
+        "Bloedel Conservatory"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Bloedel Conservatory",
+        "source_turn": 11,
+        "start": 41,
+        "end": 61,
+        "rule": 15,
+        "dialogue_id": "17_00007",
+        "turn_index": 12,
+        "source_utterance": "Okay you want a shared cab for 1 fare to Bloedel Conservatory, is that correct?",
+        "user_utterance": "Wait my friend decided to come after all so make the cab for three please."
+      }
+    },
+    {
+      "dialogue_id": "17_00007",
+      "turn_index": 16,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Bloedel Conservatory"
+      ],
+      "gold": [
+        "Bloedel Conservatory"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Bloedel Conservatory",
+        "source_turn": 11,
+        "start": 41,
+        "end": 61,
+        "rule": 15,
+        "dialogue_id": "17_00007",
+        "turn_index": 12,
+        "source_utterance": "Okay you want a shared cab for 1 fare to Bloedel Conservatory, is that correct?",
+        "user_utterance": "Wait my friend decided to come after all so make the cab for three please."
+      }
+    },
+    {
+      "dialogue_id": "17_00007",
+      "turn_index": 18,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Bloedel Conservatory"
+      ],
+      "gold": [
+        "Bloedel Conservatory"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Bloedel Conservatory",
+        "source_turn": 11,
+        "start": 41,
+        "end": 61,
+        "rule": 15,
+        "dialogue_id": "17_00007",
+        "turn_index": 12,
+        "source_utterance": "Okay you want a shared cab for 1 fare to Bloedel Conservatory, is that correct?",
+        "user_utterance": "Wait my friend decided to come after all so make the cab for three please."
+      }
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 10,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Angel Stadium of Anaheim"
+      ],
+      "gold": [
+        "Angel Stadium of Anaheim"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Angel Stadium of Anaheim",
+        "source_turn": 9,
+        "start": 23,
+        "end": 47,
+        "rule": 8,
+        "dialogue_id": "17_00013",
+        "turn_index": 10,
+        "source_utterance": "So you'd like to go to Angel Stadium of Anaheim and you'd like a shared ride for 1 person. Is this correct?",
+        "user_utterance": "Yes, that sounds good."
+      }
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 12,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Angel Stadium of Anaheim"
+      ],
+      "gold": [
+        "Angel Stadium of Anaheim"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Angel Stadium of Anaheim",
+        "source_turn": 9,
+        "start": 23,
+        "end": 47,
+        "rule": 8,
+        "dialogue_id": "17_00013",
+        "turn_index": 10,
+        "source_utterance": "So you'd like to go to Angel Stadium of Anaheim and you'd like a shared ride for 1 person. Is this correct?",
+        "user_utterance": "Yes, that sounds good."
+      }
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 12,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "92nd Street Y"
+      ],
+      "gold": [
+        "92nd Street Y"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "92nd Street Y",
+        "source_turn": 11,
+        "start": 20,
+        "end": 33,
+        "rule": 20,
+        "dialogue_id": "17_00030",
+        "turn_index": 12,
+        "source_utterance": "You want 2 seats to 92nd Street Y in a shared cab, correct?",
+        "user_utterance": "Yes that's correct."
+      }
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 14,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "92nd Street Y"
+      ],
+      "gold": [
+        "92nd Street Y"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "92nd Street Y",
+        "source_turn": 11,
+        "start": 20,
+        "end": 33,
+        "rule": 20,
+        "dialogue_id": "17_00030",
+        "turn_index": 12,
+        "source_utterance": "You want 2 seats to 92nd Street Y in a shared cab, correct?",
+        "user_utterance": "Yes that's correct."
+      }
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 16,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "92nd Street Y"
+      ],
+      "gold": [
+        "92nd Street Y"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "92nd Street Y",
+        "source_turn": 11,
+        "start": 20,
+        "end": 33,
+        "rule": 20,
+        "dialogue_id": "17_00030",
+        "turn_index": 12,
+        "source_utterance": "You want 2 seats to 92nd Street Y in a shared cab, correct?",
+        "user_utterance": "Yes that's correct."
+      }
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 10,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "92nd Street Y"
+      ],
+      "gold": [
+        "92nd Street Y"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "92nd Street Y",
+        "source_turn": 9,
+        "start": 74,
+        "end": 87,
+        "rule": 1,
+        "dialogue_id": "17_00033",
+        "turn_index": 10,
+        "source_utterance": "Can you verify the following: You'd like me to call a cab for 1 person to 92nd Street Y.",
+        "user_utterance": "Yes, that is correct. What will be the total cost, and how long of a ride will this be?"
+      }
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 12,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "92nd Street Y"
+      ],
+      "gold": [
+        "92nd Street Y"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "92nd Street Y",
+        "source_turn": 9,
+        "start": 74,
+        "end": 87,
+        "rule": 1,
+        "dialogue_id": "17_00033",
+        "turn_index": 10,
+        "source_utterance": "Can you verify the following: You'd like me to call a cab for 1 person to 92nd Street Y.",
+        "user_utterance": "Yes, that is correct. What will be the total cost, and how long of a ride will this be?"
+      }
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 16,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "National Academy of Sciences"
+      ],
+      "gold": [
+        "National Academy of Sciences"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "National Academy of Sciences",
+        "source_turn": 15,
+        "start": 18,
+        "end": 46,
+        "rule": 2,
+        "dialogue_id": "17_00034",
+        "turn_index": 16,
+        "source_utterance": "So a cab for 2 to National Academy of Sciences?",
+        "user_utterance": "Yes please. How long is the ride? How much will it be?"
+      }
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 18,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "National Academy of Sciences"
+      ],
+      "gold": [
+        "National Academy of Sciences"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "National Academy of Sciences",
+        "source_turn": 15,
+        "start": 18,
+        "end": 46,
+        "rule": 2,
+        "dialogue_id": "17_00034",
+        "turn_index": 16,
+        "source_utterance": "So a cab for 2 to National Academy of Sciences?",
+        "user_utterance": "Yes please. How long is the ride? How much will it be?"
+      }
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 16,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Christmas Tree Lane"
+      ],
+      "gold": [
+        "Christmas Tree Lane"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Christmas Tree Lane",
+        "source_turn": 15,
+        "start": 53,
+        "end": 72,
+        "rule": 0,
+        "dialogue_id": "17_00035",
+        "turn_index": 16,
+        "source_utterance": "Okay. So, you want a shared cab ride for 1 person to Christmas Tree Lane, correct?",
+        "user_utterance": "Yes, that's correct. How long does it take to get there?"
+      }
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 18,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Christmas Tree Lane"
+      ],
+      "gold": [
+        "Christmas Tree Lane"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Christmas Tree Lane",
+        "source_turn": 15,
+        "start": 53,
+        "end": 72,
+        "rule": 0,
+        "dialogue_id": "17_00035",
+        "turn_index": 16,
+        "source_utterance": "Okay. So, you want a shared cab ride for 1 person to Christmas Tree Lane, correct?",
+        "user_utterance": "Yes, that's correct. How long does it take to get there?"
+      }
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 20,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Christmas Tree Lane"
+      ],
+      "gold": [
+        "Christmas Tree Lane"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Christmas Tree Lane",
+        "source_turn": 15,
+        "start": 53,
+        "end": 72,
+        "rule": 0,
+        "dialogue_id": "17_00035",
+        "turn_index": 16,
+        "source_utterance": "Okay. So, you want a shared cab ride for 1 person to Christmas Tree Lane, correct?",
+        "user_utterance": "Yes, that's correct. How long does it take to get there?"
+      }
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 16,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Arte Carrillo Gil Museum"
+      ],
+      "gold": [
+        "Arte Carrillo Gil Museum"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Arte Carrillo Gil Museum",
+        "source_turn": 15,
+        "start": 47,
+        "end": 71,
+        "rule": 0,
+        "dialogue_id": "17_00045",
+        "turn_index": 16,
+        "source_utterance": "Ok, to confirm, you want a cab for 1 person to Arte Carrillo Gil Museum, right?",
+        "user_utterance": "Yes, that's right."
+      }
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 18,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Arte Carrillo Gil Museum"
+      ],
+      "gold": [
+        "Arte Carrillo Gil Museum"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Arte Carrillo Gil Museum",
+        "source_turn": 15,
+        "start": 47,
+        "end": 71,
+        "rule": 0,
+        "dialogue_id": "17_00045",
+        "turn_index": 16,
+        "source_utterance": "Ok, to confirm, you want a cab for 1 person to Arte Carrillo Gil Museum, right?",
+        "user_utterance": "Yes, that's right."
+      }
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 20,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Arte Carrillo Gil Museum"
+      ],
+      "gold": [
+        "Arte Carrillo Gil Museum"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Arte Carrillo Gil Museum",
+        "source_turn": 15,
+        "start": 47,
+        "end": 71,
+        "rule": 0,
+        "dialogue_id": "17_00045",
+        "turn_index": 16,
+        "source_utterance": "Ok, to confirm, you want a cab for 1 person to Arte Carrillo Gil Museum, right?",
+        "user_utterance": "Yes, that's right."
+      }
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 14,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Featherdale Wildlife Park"
+      ],
+      "gold": [
+        "Featherdale Wildlife Park"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Featherdale Wildlife Park",
+        "source_turn": 13,
+        "start": 46,
+        "end": 71,
+        "rule": 1,
+        "dialogue_id": "17_00046",
+        "turn_index": 14,
+        "source_utterance": "Please confirm: a shared ride for 1 person to Featherdale Wildlife Park.",
+        "user_utterance": "Yes, sounds good."
+      }
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 16,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Featherdale Wildlife Park"
+      ],
+      "gold": [
+        "Featherdale Wildlife Park"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Featherdale Wildlife Park",
+        "source_turn": 13,
+        "start": 46,
+        "end": 71,
+        "rule": 1,
+        "dialogue_id": "17_00046",
+        "turn_index": 14,
+        "source_utterance": "Please confirm: a shared ride for 1 person to Featherdale Wildlife Park.",
+        "user_utterance": "Yes, sounds good."
+      }
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 18,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Featherdale Wildlife Park"
+      ],
+      "gold": [
+        "Featherdale Wildlife Park"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Featherdale Wildlife Park",
+        "source_turn": 13,
+        "start": 46,
+        "end": 71,
+        "rule": 1,
+        "dialogue_id": "17_00046",
+        "turn_index": 14,
+        "source_utterance": "Please confirm: a shared ride for 1 person to Featherdale Wildlife Park.",
+        "user_utterance": "Yes, sounds good."
+      }
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 20,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Featherdale Wildlife Park"
+      ],
+      "gold": [
+        "Featherdale Wildlife Park"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Featherdale Wildlife Park",
+        "source_turn": 13,
+        "start": 46,
+        "end": 71,
+        "rule": 1,
+        "dialogue_id": "17_00046",
+        "turn_index": 14,
+        "source_utterance": "Please confirm: a shared ride for 1 person to Featherdale Wildlife Park.",
+        "user_utterance": "Yes, sounds good."
+      }
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 22,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Featherdale Wildlife Park"
+      ],
+      "gold": [
+        "Featherdale Wildlife Park"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Featherdale Wildlife Park",
+        "source_turn": 13,
+        "start": 46,
+        "end": 71,
+        "rule": 1,
+        "dialogue_id": "17_00046",
+        "turn_index": 14,
+        "source_utterance": "Please confirm: a shared ride for 1 person to Featherdale Wildlife Park.",
+        "user_utterance": "Yes, sounds good."
+      }
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 8,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Aquarium of the Bay"
+      ],
+      "gold": [
+        "Aquarium of the Bay"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Aquarium of the Bay",
+        "source_turn": 7,
+        "start": 90,
+        "end": 109,
+        "rule": 5,
+        "dialogue_id": "17_00050",
+        "turn_index": 8,
+        "source_utterance": "Sure. Please can you confirm me that you wish to have a shared ride for 1 people to go to Aquarium of the Bay, right?",
+        "user_utterance": "Yup, sounds good. What would be the ride cost and how long is the travel?"
+      }
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 10,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Aquarium of the Bay"
+      ],
+      "gold": [
+        "Aquarium of the Bay"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Aquarium of the Bay",
+        "source_turn": 7,
+        "start": 90,
+        "end": 109,
+        "rule": 5,
+        "dialogue_id": "17_00050",
+        "turn_index": 8,
+        "source_utterance": "Sure. Please can you confirm me that you wish to have a shared ride for 1 people to go to Aquarium of the Bay, right?",
+        "user_utterance": "Yup, sounds good. What would be the ride cost and how long is the travel?"
+      }
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 12,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "Aquarium of the Bay"
+      ],
+      "gold": [
+        "Aquarium of the Bay"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "Aquarium of the Bay",
+        "source_turn": 7,
+        "start": 90,
+        "end": 109,
+        "rule": 5,
+        "dialogue_id": "17_00050",
+        "turn_index": 8,
+        "source_utterance": "Sure. Please can you confirm me that you wish to have a shared ride for 1 people to go to Aquarium of the Bay, right?",
+        "user_utterance": "Yup, sounds good. What would be the ride cost and how long is the travel?"
+      }
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 10,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "DISCOVERY Children's Museum"
+      ],
+      "gold": [
+        "DISCOVERY Children's Museum"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "DISCOVERY Children's Museum",
+        "source_turn": 9,
+        "start": 18,
+        "end": 45,
+        "rule": 8,
+        "dialogue_id": "17_00052",
+        "turn_index": 10,
+        "source_utterance": "So you will go to DISCOVERY Children's Museum and you are just 1 person who needs a shared ride?",
+        "user_utterance": "Yeah that is correct. What is journey time and what will I be charged?"
+      }
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 12,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "DISCOVERY Children's Museum"
+      ],
+      "gold": [
+        "DISCOVERY Children's Museum"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "DISCOVERY Children's Museum",
+        "source_turn": 9,
+        "start": 18,
+        "end": 45,
+        "rule": 8,
+        "dialogue_id": "17_00052",
+        "turn_index": 10,
+        "source_utterance": "So you will go to DISCOVERY Children's Museum and you are just 1 person who needs a shared ride?",
+        "user_utterance": "Yeah that is correct. What is journey time and what will I be charged?"
+      }
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 10,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "360 CHICAGO"
+      ],
+      "gold": [
+        "360 CHICAGO"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "360 CHICAGO",
+        "source_turn": 9,
+        "start": 73,
+        "end": 84,
+        "rule": 17,
+        "dialogue_id": "17_00053",
+        "turn_index": 10,
+        "source_utterance": "Okay, so you want to order a shared cab ride for 2 people to take you to 360 CHICAGO, right?",
+        "user_utterance": "Yup, that's right."
+      }
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 12,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "360 CHICAGO"
+      ],
+      "gold": [
+        "360 CHICAGO"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "360 CHICAGO",
+        "source_turn": 9,
+        "start": 73,
+        "end": 84,
+        "rule": 17,
+        "dialogue_id": "17_00053",
+        "turn_index": 10,
+        "source_utterance": "Okay, so you want to order a shared cab ride for 2 people to take you to 360 CHICAGO, right?",
+        "user_utterance": "Yup, that's right."
+      }
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 14,
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "before": null,
+      "after": [
+        "360 CHICAGO"
+      ],
+      "gold": [
+        "360 CHICAGO"
+      ],
+      "status": "correct",
+      "origin": {
+        "service": "RideSharing_1",
+        "slot": "destination",
+        "value": "360 CHICAGO",
+        "source_turn": 9,
+        "start": 73,
+        "end": 84,
+        "rule": 17,
+        "dialogue_id": "17_00053",
+        "turn_index": 10,
+        "source_utterance": "Okay, so you want to order a shared cab ride for 2 people to take you to 360 CHICAGO, right?",
+        "user_utterance": "Yup, that's right."
+      }
+    }
+  ],
+  "all_wrong_claims": []
+}

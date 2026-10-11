@@ -305,3 +305,21 @@ Enum-variant editing uses 14 independently authored local fixtures, 1,902 source
 bytes, under the workspace MIT OR Apache-2.0 license, with no downloaded training
 data. Four successful edits, nine expected refusals and rollback pass; all 765
 RustBench dev outcomes remain unchanged. [Evidence](../docs/coding-variants.md).
+
+
+A follow-up learned span selector uses the same train/dev files, with zero new
+external bytes. SHA256(dialogue_id) splits the 3,174 train conversations into
+2,532 fit and 642 calibration conversations; thresholds are fixed before dev.
+Its 26 context-boundary rules store surrounding words/counts, never entity values.
+The 8,132-byte rules and data-bearing reports retain CC-BY-SA-4.0 attribution.
+The 32,174,437-byte combined model is outside git, SHA256
+`deddfaac2f596c5090aeb65bf77d24470d1d44f61d2aad69469792cd26232781`.
+
+On the same complete dev selection, exact joint turns rise 595→609/1,119,
+exact frames 689→712/1,218, multi-service RideSharing 0→23/265. All 595 baseline
+correct turns remain correct; 460 wrong and 50 refused remain. Eleven selections
+add 32 correct scored slot-turn claims with no new wrong/unscored claims; the
+inherited four copy errors across 11 slot-turns remain. All gains use later
+system confirmations; initial indirect destination requests generally remain
+unresolved. Independent training/full replay/legacy/isolation checks reproduce
+worker results. [Span-selection provenance and limits](../tools/dialogue/offers/HANDOFF.md).

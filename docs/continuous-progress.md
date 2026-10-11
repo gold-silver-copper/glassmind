@@ -15,8 +15,9 @@ Included verified source commits:
 (fixed byte probability scorer), `422d754` (story focus correction).
 Their workers completed. Source commits `0bff6a1` (enum variants) and
 `da96f49` (multi-service dialogue with grounded predicted-slot transfer) are
-verified locally and awaiting publication as the next PR. All affected dev
-checks are complete. Only the next offers experiment is active below.
+merged in PR #8, head `fcb81dbf17273dcca4d45f7a8df4d3428fb217a0`,
+merge `cb150965a9d0e95ffd234a7f4bf38299e8370d86`; CI38110755616 passed1m15s. All affected dev
+checks are complete. Offers and package-binding experiments are active below.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -134,17 +135,38 @@ WORK = `/home/gsc/.cache/glassmind/continuous-20261010`.
   SHA9991b341b4da7e775e0fa7e3ca55a2a00f4935a0a7b94db16f02b2b6596be83c.
   All coordinator evals complete(86827,56716); no repoll/restart.
 
-**Active worker: offers**, launcherPID1928393, scope
-`glassmind-continuous-offers.scope`, worktree `WORK/offers`, base `da96f49`.
-Owns crates/dialogue and tools/dialogue/offers only. RequiredGPT-6Astra fast,
-ChatGPT login,8GiB0swap. Hypothesis: learned utterance spans from previous system
-reply fill missing input slots, especially RideSharing destinations. Gate:
-sample>31/91,full>595/1119 and some actual RideSharing exactmulti state coverage;
-complete new-error audit, baselinecorrect/legacypreservation. No scorer edits.
-H1 boundary rules acceptedzero usingtrain-onlycalibration; rejectedbeforedev.
-H2 proper-name-shapedcandidate spans accepted26rules(25Ride,1Weather); evaluation
-not yet reviewed. Do not assume acceptance. Reports `tools/dialogue/offers/`;
-all new models/data must stay `WORK/offers-run/{tmp,target}`. Auth needed active.
+**Offers worker COMPLETE**, scopeinactive/authremoved; submission archived in
+`WORK/offers-run/submitted/` with sourcehashmanifest; worktree retained for now.
+Integrated source `ba98b5a`: optional learned bounded span selector after frozen
+reference resolver, immediately previous SYSTEMsource only, exact UTF8provenance,
+missing active input slots only, consumes source on nextUSER. H1rejectedtrainonly
+zeroacceptedrules; H2propername shape yields26rules(25destination,1city).
+Worker sample31→35/91, full595→609/1119, frames689→712/1218,
+Ride0→23/265. All595correctretained,460wrong50refused;11events32correctnew
+slotturns,zero newwrong/unscoredclaims. Inherited4wrongcopies/11slotturns unchanged.
+Six tests and frozenbaseline/legacy replay pass inworker. Source/train/audit
+reviewed. Candidate modelSHA deddfaac2f596c5090aeb65bf77d24470d1d44f61d2aad69469792cd26232781,
+32174437bytes at `WORK/offers-run/tmp/offers/model.json`.
+**Coordinator verification COMPLETE**: workspacecheck38227 andsix focusedtests80512
+passed. Independenttrain/sample/full/isolation/baseline/legacy replay92470 completed;
+model/full/legacy bytes identical. Do not repoll/rerun completedjobs.
+Script `WORK/coordinator/offers-replay.sh` omitsduplicatecargo from reproducibility
+script; setTMPDIR=`WORK/coordinator/offers-check`,CARGO_TARGET_DIR=root/target.
+Candidate is verified and ready to publish; updatedREADME/data/scoreboard reflect
+609/1119,460wrong50refused. Evidence `tools/dialogue/offers/reports/integrated/`.
+PR8 is already merged.
+
+**Active worker: packages**, launcherPID1964290, scope
+`glassmind-continuous-packages.scope`, worktree `WORK/packages`, base `fcb81db`.
+Owns world-rust/necessary typedEnglish and newcodingpackage fixtures/reports.
+Hypothesis: bounded explicit library/binary package graph and reexports support
+actual type/variant renames. Preserve unknown attrs/macros/cfg refusals, exact
+bindings, rollback, type9/9 andvariant14/14. Dev workspace-only sources/prompts
+for two refused rename tasks copied into ownedrun/dev-inputs; NO hidden tests,
+solutions or expected patches. Worker notes cfg(test),Debug, matches! still
+blockthese realdevcases; avoidclaimingactualbenchmarkgainfromlocalfixtures.
+No generic service/worker/model calls. GPT6Astra fastChatGPT login confirmed.
+Parentmustfull765beforepublishingcandidate. Run artifacts ownTMPDIR/target.
 
 Retained SGD train/dev150files504306737bytes, pinned
 e852981ae34990f4358979625854259302feaa78,CC-BY-SA4, source+selection hashes:
@@ -153,7 +175,8 @@ original temporary namespace no longer exists. Reproduction scripts accept
 SGD_ROOT and default to this persistent path. Do not redownload.
 Initial dialogue prototype archived `WORK/dialogue-run/submitted/`;
 references/variants submissions archived with hash manifests in their run dirs.
-Their scopes ended/auth symlinks removed; worktrees still retained for review.
+Their scopes ended/auth symlinks removed; archived worktrees removed after
+verifying every changed-file hash against its archive.
 
 Workspace fmt/all-target clippy/release build/strict4/4 smoke pass after
 all integrations. Scalar bits-per-byte report support added to
@@ -175,7 +198,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:35,003,934 including cached input; parent and
+Known completed worker tokens:36,747,202 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -188,10 +211,10 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 ## Immediate next actions
 
-1. Publish verified enum/dialogue batch, CI then merge exact checked PR head.
+1. PR8 merged after green CI; no publishing or benchmark work remains for it.
    README/data/scoreboard updated; reports identify exact evaluated source.
-2. Review offers worker when complete. Independently reproduce any accepted
-   candidate, audit added wrong slots, retain rejected hypotheses honestly.
+2. Publish verified offers sourceba98b5a and its integrated evidence; CI thenmerge.
+   All independentreplay/checks complete; no need to repeat before publishing.
 3. Next coding experiment: dev rename requests parse but refuse. Permitted
    workspace sources expose library+binary roots, docs/derive attributes and
    reexports that the closed resolver rejects. Investigate a sound bounded

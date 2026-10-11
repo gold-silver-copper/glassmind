@@ -1,0 +1,107 @@
+{
+  "model_sha256": "deddfaac2f596c5090aeb65bf77d24470d1d44f61d2aad69469792cd26232781",
+  "ids": [
+    "17_00004",
+    "17_00005",
+    "17_00006",
+    "17_00007",
+    "17_00008",
+    "17_00009",
+    "17_00010",
+    "17_00011",
+    "17_00012",
+    "17_00013"
+  ],
+  "all": {
+    "dialogues": 10,
+    "user_turns": 91,
+    "gold_frames": 108,
+    "predicted_frames": 273,
+    "tp": 86,
+    "fp": 5,
+    "fn": 22,
+    "route_exact": 69,
+    "strict_frame_correct": 48,
+    "intent_correct": 80,
+    "full_joint_correct": 35,
+    "fuzzy_joint_sum": 49.17,
+    "gold_switches": 33,
+    "correct_switches": 8,
+    "service": {
+      "Weather_1": {
+        "frames": 31,
+        "strict": 28,
+        "fuzzy_sum": 29.17
+      },
+      "Travel_1": {
+        "frames": 26,
+        "strict": 16,
+        "fuzzy_sum": 16.0
+      },
+      "RideSharing_1": {
+        "frames": 51,
+        "strict": 4,
+        "fuzzy_sum": 4.0
+      }
+    },
+    "active_precision": 0.945054945054945,
+    "active_recall": 0.7962962962962963,
+    "active_f1": 0.864321608040201
+  },
+  "single": {
+    "dialogues": 0,
+    "user_turns": 0,
+    "gold_frames": 0,
+    "predicted_frames": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "route_exact": 0,
+    "strict_frame_correct": 0,
+    "intent_correct": 0,
+    "full_joint_correct": 0,
+    "fuzzy_joint_sum": 0.0,
+    "gold_switches": 0,
+    "correct_switches": 0,
+    "service": {},
+    "active_precision": 0,
+    "active_recall": 0,
+    "active_f1": 0
+  },
+  "multi": {
+    "dialogues": 10,
+    "user_turns": 91,
+    "gold_frames": 108,
+    "predicted_frames": 273,
+    "tp": 86,
+    "fp": 5,
+    "fn": 22,
+    "route_exact": 69,
+    "strict_frame_correct": 48,
+    "intent_correct": 80,
+    "full_joint_correct": 35,
+    "fuzzy_joint_sum": 49.17,
+    "gold_switches": 33,
+    "correct_switches": 8,
+    "service": {
+      "Weather_1": {
+        "frames": 31,
+        "strict": 28,
+        "fuzzy_sum": 29.17
+      },
+      "Travel_1": {
+        "frames": 26,
+        "strict": 16,
+        "fuzzy_sum": 16.0
+      },
+      "RideSharing_1": {
+        "frames": 51,
+        "strict": 4,
+        "fuzzy_sum": 4.0
+      }
+    },
+    "active_precision": 0.945054945054945,
+    "active_recall": 0.7962962962962963,
+    "active_f1": 0.864321608040201
+  }
+}
