@@ -1,0 +1,43 @@
+{
+  "scope": "TRAIN calibration annotation coverage only; no DEV formulas read. Exact generic program identity is not equivalence or model performance.",
+  "clean_fit": 4590,
+  "clean_calibration": 1182,
+  "all_calibration": 5925,
+  "coverage": {
+    "unseen_program": 701,
+    "fit_only_bank": 133,
+    "candidate_bank": 348
+  },
+  "by_steps": {
+    "3": {
+      "unseen_program": 149,
+      "candidate_bank": 127,
+      "fit_only_bank": 55
+    },
+    "5": {
+      "fit_only_bank": 21,
+      "unseen_program": 113,
+      "candidate_bank": 35
+    },
+    "6": {
+      "unseen_program": 126,
+      "candidate_bank": 21,
+      "fit_only_bank": 8
+    },
+    "4": {
+      "unseen_program": 163,
+      "fit_only_bank": 18,
+      "candidate_bank": 19
+    },
+    "1": {
+      "candidate_bank": 55,
+      "unseen_program": 17,
+      "fit_only_bank": 12
+    },
+    "2": {
+      "unseen_program": 133,
+      "candidate_bank": 91,
+      "fit_only_bank": 19
+    }
+  }
+}

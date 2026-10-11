@@ -1,0 +1,283 @@
+{
+  "source": "/home/gsc/.cache/glassmind/continuous-20261010/quantities-run/tmp/mathqa/train.parquet",
+  "source_sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99",
+  "train_rows": 29837,
+  "split": "TRAIN only; annotations audited offline, never runtime input",
+  "number_binding": "bounded left-to-right numeric lexemes; fraction components remain separate; no number words or English entailment claim",
+  "program_family": "at most6 add/subtract/multiply/divide steps, backward refs, numeric constants, at most16 numeric inputs; const_pi unsupported",
+  "counts": {
+    "unscorable": 7348,
+    "outside_family": 9737,
+    "correct": 7767,
+    "wrong": 4763,
+    "execution_refusal": 222
+  },
+  "execution_refusal_reasons": {
+    "unsupported_program_syntax_or_constant": 206,
+    "Fraction(1, 0)": 8,
+    "input_bound": 8
+  },
+  "metric": "unchanged exact-label-comparison-v3; dimensionless proposed program; unsupported/unit labels remain in denominator",
+  "disagreements_sample": [
+    {
+      "index": 0,
+      "question": "the banker ' s gain of a certain sum due 3 years hence at 10 % per annum is rs . 36 . what is the present worth ?",
+      "formula": "multiply(n2,const_100)|multiply(n0,n1)|divide(#0,#1)|multiply(#2,const_100)|divide(#3,#1)|",
+      "numbers": [
+        "3",
+        "10",
+        "36"
+      ],
+      "program_value": "400",
+      "selected_train_gold": {
+        "case": "unsupported",
+        "reason": "unsupported_or_malformed_label",
+        "coefficient": null,
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": null
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 3,
+      "question": "120 is what percent of 50 ?",
+      "formula": "divide(n0,n1)|multiply(#0,const_100)|",
+      "numbers": [
+        "120",
+        "50"
+      ],
+      "program_value": "240",
+      "selected_train_gold": {
+        "case": "explicit_unit",
+        "reason": "exact_explicit_unit",
+        "coefficient": "240",
+        "dimension": "percentage_points",
+        "scale": "1",
+        "unit": "%",
+        "canonical": "240"
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 6,
+      "question": "an article is bought for rs . 823 and sold for rs . 1000 , find the gain percent ?",
+      "formula": "multiply(n1,const_100)|divide(#0,n0)|subtract(const_100,#1)|",
+      "numbers": [
+        "823",
+        "1000"
+      ],
+      "program_value": "-17700/823",
+      "selected_train_gold": {
+        "case": "explicit_unit",
+        "reason": "exact_explicit_unit",
+        "coefficient": "43/2",
+        "dimension": "percentage_points",
+        "scale": "1",
+        "unit": "%",
+        "canonical": "43/2"
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 10,
+      "question": "the average weight of 8 person ' s increases by 1.5 kg when a new person comes in place of one of them weighing 75 kg . what might be the weight of the new person ?",
+      "formula": "multiply(n0,n1)|add(n2,#0)|",
+      "numbers": [
+        "8",
+        "3/2",
+        "75"
+      ],
+      "program_value": "87",
+      "selected_train_gold": {
+        "case": "explicit_unit",
+        "reason": "exact_explicit_unit",
+        "coefficient": "81",
+        "dimension": "mass",
+        "scale": "1",
+        "unit": "kg",
+        "canonical": "81"
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 11,
+      "question": "a train 125 m long passes a man , running at 15 km / hr in the same direction in which the train is going , in 10 seconds . the speed of the train is ?",
+      "formula": "multiply(n1,const_0_2778)|multiply(n1,#0)|subtract(n0,#1)|divide(#2,n1)|divide(#3,const_0_2778)|",
+      "numbers": [
+        "125",
+        "15",
+        "10"
+      ],
+      "program_value": "62495/4167",
+      "selected_train_gold": {
+        "case": "bare_scalar",
+        "reason": "exact_scalar",
+        "coefficient": "60",
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": "60"
+      },
+      "grade": "wrong"
+    },
+    {
+      "index": 12,
+      "question": "the average of 15 result is 60 . average of the first 10 of them is 10 and that of the last 10 is 80 . find the 8 th result ?",
+      "formula": "multiply(n2,n3)|multiply(n2,n5)|multiply(n0,n1)|add(#0,#1)|subtract(#3,#2)|",
+      "numbers": [
+        "15",
+        "60",
+        "10",
+        "10",
+        "10",
+        "80",
+        "8"
+      ],
+      "program_value": "0",
+      "selected_train_gold": {
+        "case": "bare_scalar",
+        "reason": "exact_scalar",
+        "coefficient": "200",
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": "200"
+      },
+      "grade": "wrong"
+    },
+    {
+      "index": 13,
+      "question": "a salesman \u00e2 \u20ac \u2122 s terms were changed from a flat commission of 5 % on all his sales to a fixed salary of rs . 1000 plus 2.5 % commission on all sales exceeding rs . 4,000 . if his remuneration as per new scheme was rs . 500 more than that by the previous schema , his sales were worth ?",
+      "formula": "multiply(n0,const_4)|subtract(#0,const_12)|",
+      "numbers": [
+        "5",
+        "1000",
+        "5/2",
+        "4000",
+        "500"
+      ],
+      "program_value": "8",
+      "selected_train_gold": {
+        "case": "unsupported",
+        "reason": "unsupported_or_malformed_label",
+        "coefficient": null,
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": null
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 14,
+      "question": "a rectangular floor that measures 15 meters by 18 meters is to be covered with carpet squares that each measure 3 meters by 3 meters . if the carpet squares cost $ 12 apiece , what is the total cost for the number of carpet squares needed to cover the floor ?",
+      "formula": "multiply(n0,n0)|",
+      "numbers": [
+        "15",
+        "18",
+        "3",
+        "3",
+        "12"
+      ],
+      "program_value": "225",
+      "selected_train_gold": {
+        "case": "unsupported",
+        "reason": "unsupported_or_malformed_label",
+        "coefficient": null,
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": null
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 17,
+      "question": "in 1970 there were 8,902 women stockbrokers in the united states . by 1978 the number had increased to 18,947 . approximately what was the percent increase ?",
+      "formula": "subtract(n3,n1)|divide(#0,n1)|",
+      "numbers": [
+        "1970",
+        "8902",
+        "1978",
+        "18947"
+      ],
+      "program_value": "10045/8902",
+      "selected_train_gold": {
+        "case": "explicit_unit",
+        "reason": "exact_explicit_unit",
+        "coefficient": "113",
+        "dimension": "percentage_points",
+        "scale": "1",
+        "unit": "%",
+        "canonical": "113"
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 22,
+      "question": "in the above number , a and b represent the tens and units digits , respectively . if the above number is divisible by 45 , what is the greatest possible value of b x a ?",
+      "formula": "add(const_3,const_4)|add(const_2,const_3)|multiply(#0,#1)|",
+      "numbers": [
+        "45"
+      ],
+      "program_value": "35",
+      "selected_train_gold": {
+        "case": "bare_scalar",
+        "reason": "exact_scalar",
+        "coefficient": "20",
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": "20"
+      },
+      "grade": "wrong"
+    },
+    {
+      "index": 23,
+      "question": "the profit obtained by selling an article for rs . 57 is the same as the loss obtained by selling it for rs . 43 . what is the cost price of the article ?",
+      "formula": "add(n0,n1)|divide(#0,const_2)|",
+      "numbers": [
+        "57",
+        "43"
+      ],
+      "program_value": "50",
+      "selected_train_gold": {
+        "case": "unsupported",
+        "reason": "unsupported_or_malformed_label",
+        "coefficient": null,
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": null
+      },
+      "grade": "unscorable"
+    },
+    {
+      "index": 24,
+      "question": "in 2008 , the profits of company n were 8 percent of revenues . in 2009 , the revenues of company n fell by 20 percent , but profits were 15 percent of revenues . the profits in 2009 were what percent of the profits in 2008 ?",
+      "formula": "divide(n3,const_100)|subtract(const_1,#0)|multiply(n4,#1)|divide(#2,n1)|multiply(#3,const_100)|",
+      "numbers": [
+        "2008",
+        "8",
+        "2009",
+        "20",
+        "15",
+        "2009",
+        "2008"
+      ],
+      "program_value": "150",
+      "selected_train_gold": {
+        "case": "explicit_unit",
+        "reason": "exact_explicit_unit",
+        "coefficient": "150",
+        "dimension": "percentage_points",
+        "scale": "1",
+        "unit": "%",
+        "canonical": "150"
+      },
+      "grade": "unscorable"
+    }
+  ]
+}

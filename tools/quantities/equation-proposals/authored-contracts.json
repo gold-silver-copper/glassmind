@@ -1,0 +1,212 @@
+{
+  "boundary_checks_pass": true,
+  "contrasts": [
+    {
+      "question": "A crate contains 8 packs of 2 bolts. How many bolts are in the crate?",
+      "expected": "16",
+      "actual": {
+        "status": "proposed",
+        "semantics": "unverified",
+        "numbers": [
+          {
+            "start": 17,
+            "end": 18,
+            "literal": "8",
+            "value": "8"
+          },
+          {
+            "start": 28,
+            "end": 29,
+            "literal": "2",
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "op": "multiply",
+              "left": {
+                "kind": "input",
+                "index": 1
+              },
+              "right": {
+                "kind": "constant",
+                "index": 12
+              }
+            },
+            {
+              "op": "divide",
+              "left": {
+                "kind": "step",
+                "index": 0
+              },
+              "right": {
+                "kind": "input",
+                "index": 0
+              }
+            }
+          ]
+        },
+        "value": "25",
+        "score": 0.10565605503595367,
+        "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "A crate contains 8 bolts, of which 2 are defective. How many bolts are usable?",
+      "expected": "6",
+      "actual": {
+        "status": "proposed",
+        "semantics": "unverified",
+        "numbers": [
+          {
+            "start": 17,
+            "end": 18,
+            "literal": "8",
+            "value": "8"
+          },
+          {
+            "start": 35,
+            "end": 36,
+            "literal": "2",
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "op": "multiply",
+              "left": {
+                "kind": "input",
+                "index": 1
+              },
+              "right": {
+                "kind": "constant",
+                "index": 12
+              }
+            },
+            {
+              "op": "divide",
+              "left": {
+                "kind": "step",
+                "index": 0
+              },
+              "right": {
+                "kind": "input",
+                "index": 0
+              }
+            }
+          ]
+        },
+        "value": "25",
+        "score": 0.14129583086891975,
+        "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "Mira has 8 coins and gives away 2 coins. How many coins does Mira have now?",
+      "expected": "6",
+      "actual": {
+        "status": "proposed",
+        "semantics": "unverified",
+        "numbers": [
+          {
+            "start": 9,
+            "end": 10,
+            "literal": "8",
+            "value": "8"
+          },
+          {
+            "start": 32,
+            "end": 33,
+            "literal": "2",
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "op": "divide",
+              "left": {
+                "kind": "input",
+                "index": 0
+              },
+              "right": {
+                "kind": "constant",
+                "index": 12
+              }
+            }
+          ]
+        },
+        "value": "2/25",
+        "score": 0.09851041880989837,
+        "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "Mira has 8 coins and receives 2 coins. How many coins does Mira have now?",
+      "expected": "10",
+      "actual": {
+        "status": "proposed",
+        "semantics": "unverified",
+        "numbers": [
+          {
+            "start": 9,
+            "end": 10,
+            "literal": "8",
+            "value": "8"
+          },
+          {
+            "start": 30,
+            "end": 31,
+            "literal": "2",
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "op": "divide",
+              "left": {
+                "kind": "input",
+                "index": 0
+              },
+              "right": {
+                "kind": "constant",
+                "index": 12
+              }
+            }
+          ]
+        },
+        "value": "2/25",
+        "score": 0.10645743326439265,
+        "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "A machine makes 8 parts in 2 hours. How many parts does it make per hour?",
+      "expected": "4",
+      "actual": {
+        "status": "refusal",
+        "reason": "missing numeric slot"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "A machine makes 8 parts per hour for 2 hours. How many parts does it make?",
+      "expected": "16",
+      "actual": {
+        "status": "refusal",
+        "reason": "missing numeric slot"
+      },
+      "numeric_match": false
+    }
+  ],
+  "contrast_numeric_matches": 0,
+  "binary_sha256": "f7b728e30ccdcce5f1b99b1d185f197e13fa6d2914cfe5b866376d3ac678fa4e",
+  "model_sha256": "5594aebe9ab9f29cb4e017a380a9119c3603bb2e4e85e272337f028c93f2abc6"
+}

@@ -1,0 +1,962 @@
+[
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/Cargo.toml",
+    "archive": "source/crates/quantities/Cargo.toml",
+    "bytes": 342,
+    "sha256": "df239632478115077be512e6bf13f183c0e69e47a5b03b835038917936ff5b8b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/HANDOFF.md",
+    "archive": "source/crates/quantities/HANDOFF.md",
+    "bytes": 5914,
+    "sha256": "d2100664da94224585edd41f1b7a7e70b333857e8ebe5fef7cbb381a3adf8ff7"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/aggregate.json",
+    "archive": "source/crates/quantities/dev/aggregate.json",
+    "bytes": 1331,
+    "sha256": "a28dee447b6b2c8bd6f82931238cefbeb2955086aa3fa1a2993c7da20d67ca6e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/aggregate.py",
+    "archive": "source/crates/quantities/dev/aggregate.py",
+    "bytes": 861,
+    "sha256": "c14dfd2584de10dd16e08292436d5c012213bc222c3aad8460fe06f33f52b2ed"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/baseline-sample.json",
+    "archive": "source/crates/quantities/dev/baseline-sample.json",
+    "bytes": 10654,
+    "sha256": "83ad6060c9afb47138600334d66033ede9ea6f5b8cdda17402814a4d07232bb9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/evaluate.py",
+    "archive": "source/crates/quantities/dev/evaluate.py",
+    "bytes": 13047,
+    "sha256": "f4a564a339d33e3fbaab78f2ab98fa083ccbb8dba23915d228e4efa1dc3e97bc"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/extended-dev-provenance.json",
+    "archive": "source/crates/quantities/dev/extended-dev-provenance.json",
+    "bytes": 485,
+    "sha256": "7592e8e5fe68a17fddd43fb1c14f4e03ac503a52f34d61842523a42e470f34b0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/extended-dev.jsonl",
+    "archive": "source/crates/quantities/dev/extended-dev.jsonl",
+    "bytes": 174437,
+    "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/extended-full-dev.json",
+    "archive": "source/crates/quantities/dev/extended-full-dev.json",
+    "bytes": 20319,
+    "sha256": "0ff43bb89be83cd514c40c12aa1b802665d17af1a534c479a583ec123a86cf2a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/extended-sample.json",
+    "archive": "source/crates/quantities/dev/extended-sample.json",
+    "bytes": 3927,
+    "sha256": "44ff5481105d208403e8ad50a5ee9047d15b6759edb8d82be54b42556a6b0b1d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/final-sample.json",
+    "archive": "source/crates/quantities/dev/final-sample.json",
+    "bytes": 2877,
+    "sha256": "ddb3d24e4d8fcc9519497bd9eb57e5c758338d9bc7e7920a7820f79c48605aa5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/full-dev.json",
+    "archive": "source/crates/quantities/dev/full-dev.json",
+    "bytes": 2898,
+    "sha256": "557a0edbe167f18511630b23ab2d6cd05ae7815a61f18dfef74b2c58cb7925e9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/reproduce.log",
+    "archive": "source/crates/quantities/dev/reproduce.log",
+    "bytes": 13138,
+    "sha256": "46b9f8d60e05eadfb3bf9369eac9472da1c93b2953a450820f926396e2465bee"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/reproduce.sh",
+    "archive": "source/crates/quantities/dev/reproduce.sh",
+    "bytes": 1044,
+    "sha256": "4c315d5d6f4b5f137b6d9fec62b850264eeb7c269acaa6209329014559809954"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/synthetic-dev-provenance.json",
+    "archive": "source/crates/quantities/dev/synthetic-dev-provenance.json",
+    "bytes": 486,
+    "sha256": "9ac546a7a3f012c30c4bcbbb3e2527ac3866f286322175ac7fc12612d4e01fe9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/dev/synthetic-dev.jsonl",
+    "archive": "source/crates/quantities/dev/synthetic-dev.jsonl",
+    "bytes": 314258,
+    "sha256": "cd36b7d8053d53fe84b1dc7e1aefefc0c6cee98e00cab0714379ce6b6d76e66c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/calendar.rs",
+    "archive": "source/crates/quantities/src/calendar.rs",
+    "bytes": 4021,
+    "sha256": "e5c25f8281a8c938e4ddb18468b377fd05a90b0267e896e665b4d09441dce6ca"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/inventory.rs",
+    "archive": "source/crates/quantities/src/inventory.rs",
+    "bytes": 1779,
+    "sha256": "a3f48765518754664f86e084e8b428925ccbdc345b9665fac8a3eafe3352497e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/lib.rs",
+    "archive": "source/crates/quantities/src/lib.rs",
+    "bytes": 868,
+    "sha256": "d05dbdd91ca0fe1bd3e568341117548533150d2e6ce06cdd9c74a71749c6721b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/linear.rs",
+    "archive": "source/crates/quantities/src/linear.rs",
+    "bytes": 15869,
+    "sha256": "92ee55d057dd098356f17a7bade17b1f4dfbace04b679a09aefaae73e10264eb"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/main.rs",
+    "archive": "source/crates/quantities/src/main.rs",
+    "bytes": 872,
+    "sha256": "d66376e89fbe68a03449a5577cf23a42c2b3767d3bfafeb1d4fad686a8918e4e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/number_words.rs",
+    "archive": "source/crates/quantities/src/number_words.rs",
+    "bytes": 3062,
+    "sha256": "8fd3c91f3176ffb71da48c3511e6978ee80fe5c8ef498e3ec814c02a64b95df1"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/parser.rs",
+    "archive": "source/crates/quantities/src/parser.rs",
+    "bytes": 19092,
+    "sha256": "8bfcb4bbf76ae03c07ba761326b24a58d20e3c1b55ebccd9b058d05111145fe5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/percent.rs",
+    "archive": "source/crates/quantities/src/percent.rs",
+    "bytes": 3830,
+    "sha256": "052a4ae9f91661547d1a05f770cf7a8b71c5408e6ce65d9e7a0cc219dd99642b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/percent_change.rs",
+    "archive": "source/crates/quantities/src/percent_change.rs",
+    "bytes": 7301,
+    "sha256": "bb75b8b6aeee552f58583f716151450172122e682c9395a39c9027aaf11bafbc"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/ratio_total.rs",
+    "archive": "source/crates/quantities/src/ratio_total.rs",
+    "bytes": 6492,
+    "sha256": "b08d5a838210944cd73a716f0f4d0f4329f2d6504aebeabe23d71428abb2446f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/rational.rs",
+    "archive": "source/crates/quantities/src/rational.rs",
+    "bytes": 4346,
+    "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/src/units.rs",
+    "archive": "source/crates/quantities/src/units.rs",
+    "bytes": 6790,
+    "sha256": "f2d45cd3a0916525149c7d752d8f6a414c09a3a6547192512adef75adadfb04c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/tests/linear_language.rs",
+    "archive": "source/crates/quantities/tests/linear_language.rs",
+    "bytes": 4437,
+    "sha256": "7078fc36bb07e8b2ca624a80babbeadc7de1fc87bce7f400208ef4789ee82709"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/tests/percent_change.rs",
+    "archive": "source/crates/quantities/tests/percent_change.rs",
+    "bytes": 3555,
+    "sha256": "35f29514a7bd0516eff48e39d67d1ee85feb354a9a3c19d9d9878610b4eda12f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/tests/percent_language.rs",
+    "archive": "source/crates/quantities/tests/percent_language.rs",
+    "bytes": 1792,
+    "sha256": "3360df448e19ca6824416ea7e48a2bdefea227325365817d8b4598a33a370698"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/crates/quantities/tests/ratio_totals.rs",
+    "archive": "source/crates/quantities/tests/ratio_totals.rs",
+    "bytes": 4622,
+    "sha256": "95a6a87eb0ecac3dfeb7c9ffbcc259bbe0c064605bfd133cc54762f8a46c4487"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/HANDOFF.md",
+    "archive": "source/tools/quantities/equation-proposals/HANDOFF.md",
+    "bytes": 12037,
+    "sha256": "58c950f02c648ae2ca6477c9c23dceabd90c28242c60f2ebec6f7cb74af7237d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/METRIC.md",
+    "archive": "source/tools/quantities/equation-proposals/METRIC.md",
+    "bytes": 1780,
+    "sha256": "8395d3476dd73c13eb2af304cb850ed39fdc5a1c4316ac76462a4cbbc8699fd4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/PLAN.md",
+    "archive": "source/tools/quantities/equation-proposals/PLAN.md",
+    "bytes": 4770,
+    "sha256": "b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/SUBMISSION-MANIFEST.json",
+    "archive": "source/tools/quantities/equation-proposals/SUBMISSION-MANIFEST.json",
+    "bytes": 20591,
+    "sha256": "0635af79bf1565872bff8532d065fd58542d68df46af2f8891b29fa5fb52058c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/audit-saved.log",
+    "archive": "source/tools/quantities/equation-proposals/audit-saved.log",
+    "bytes": 494,
+    "sha256": "22cfd5f581f327051fd883275236aa716b941b32bd3c4457d214f79155847daf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/audit_saved.py",
+    "archive": "source/tools/quantities/equation-proposals/audit_saved.py",
+    "bytes": 2027,
+    "sha256": "e0442befdf2b3e1b91985cbc37e9a65b58bc94ff09f08f0bae3f5b77def3da80"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/authored-contracts.json",
+    "archive": "source/tools/quantities/equation-proposals/authored-contracts.json",
+    "bytes": 5849,
+    "sha256": "cce129c92569a691652d35b792ac801bbc2ee5cb309d7396ffc921ad0a3c9cc0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/build.log",
+    "archive": "source/tools/quantities/equation-proposals/build.log",
+    "bytes": 754,
+    "sha256": "3b10520ac6e503a271e6f9bbbdbb820bb4f14a2e7b0e747c59e044f84402da96"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/build2.log",
+    "archive": "source/tools/quantities/equation-proposals/build2.log",
+    "bytes": 295,
+    "sha256": "0b8cfc78c225620680ca002bd984ef0bfe0c26f0a65c648d4cd2949e1a71627f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/calibration-prescore-manifest.json",
+    "archive": "source/tools/quantities/equation-proposals/calibration-prescore-manifest.json",
+    "bytes": 1437,
+    "sha256": "b5c0f58fd02707bfcebd3fec115cd0178113455a54e4ffa92f04cc27c6d215ed"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/calibration-report.json",
+    "archive": "source/tools/quantities/equation-proposals/calibration-report.json",
+    "bytes": 869,
+    "sha256": "72af78a9c0934e7b513777a2260ad7c5a04f54ac72ded3e23355660fc024b7d7"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/clippy.log",
+    "archive": "source/tools/quantities/equation-proposals/clippy.log",
+    "bytes": 3612,
+    "sha256": "c7c7a12fb8cafbdf0a6d1a4a253af26f909104bc488fe3860ca7583a137a44a6"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/clippy2.log",
+    "archive": "source/tools/quantities/equation-proposals/clippy2.log",
+    "bytes": 293,
+    "sha256": "713c3e8c78e4c34d0ac53e62e79fd7eb0c87113b35013b48278557e632562305"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/compatibility.json",
+    "archive": "source/tools/quantities/equation-proposals/compatibility.json",
+    "bytes": 725,
+    "sha256": "d4d4a105e0ac6d54817ab39bca58c9a4aadf7a2766d1b3731889366c0c28ea5b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/contracts.log",
+    "archive": "source/tools/quantities/equation-proposals/contracts.log",
+    "bytes": 326,
+    "sha256": "a6d3aa2fb65dcad5ea41060b7ad7db1c7d803d1d2dc39dc6411e7a313d17cb53"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/contracts.py",
+    "archive": "source/tools/quantities/equation-proposals/contracts.py",
+    "bytes": 2502,
+    "sha256": "3d7db70fafce712474e69b4630ee526119e0d5dad9ef7162274f480621111d69"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/eligibility-audit.json",
+    "archive": "source/tools/quantities/equation-proposals/eligibility-audit.json",
+    "bytes": 439,
+    "sha256": "cbc9e52d6bb0391b1f57d94d4a9242b2974afe91e0a37020189f276c9cc69a43"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/experiment.log",
+    "archive": "source/tools/quantities/equation-proposals/experiment.log",
+    "bytes": 2993,
+    "sha256": "6694ec89405c0b995925c1379f8851a2c7264dfc965bbb90a1eda4078208a8d9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/experiment.py",
+    "archive": "source/tools/quantities/equation-proposals/experiment.py",
+    "bytes": 12466,
+    "sha256": "24a0751a2f093ec61cfa81c0daaa11fe8cf9168e73f2c9e9f604236a40d1787d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/final-manifest.json",
+    "archive": "source/tools/quantities/equation-proposals/final-manifest.json",
+    "bytes": 11651,
+    "sha256": "6aa1f684f95c670e8b2620c8719e3ef2e1140f5e441ed4a3246ab7b2ab735fe8"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/fit-report.json",
+    "archive": "source/tools/quantities/equation-proposals/fit-report.json",
+    "bytes": 430,
+    "sha256": "7eef7c4bd37190e19b6b1b2ebada109037692d9354f85c7e0ba32619db6b496f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/full-prescore-manifest.json",
+    "archive": "source/tools/quantities/equation-proposals/full-prescore-manifest.json",
+    "bytes": 1416,
+    "sha256": "236fcab25de4282d05deeec6bcecb489f44bb0105fa5b8f9ab6b0dea8dc6da27"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/full-report.json",
+    "archive": "source/tools/quantities/equation-proposals/full-report.json",
+    "bytes": 669,
+    "sha256": "8b0bec8f00605c811fe467322ee0169f1ac2773a0bd37ddaaca0fd473dd128c8"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/prefit-manifest.json",
+    "archive": "source/tools/quantities/equation-proposals/prefit-manifest.json",
+    "bytes": 4937,
+    "sha256": "5168fdb0ba5fca95b40b843715e6b821ed794a0d7858ae8fe9540ad0a34cce3f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/rejected-runtime.patch",
+    "archive": "source/tools/quantities/equation-proposals/rejected-runtime.patch",
+    "bytes": 18223,
+    "sha256": "17178663a04dc1eff9546138ace59649a408c2cdac01d4fe8f663573920b6d09"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/reproduce.sh",
+    "archive": "source/tools/quantities/equation-proposals/reproduce.sh",
+    "bytes": 1030,
+    "sha256": "bc607be737a409afdb5ec1b65180644919547623f2242c2469b356719cb9563c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/sample-prescore-manifest.json",
+    "archive": "source/tools/quantities/equation-proposals/sample-prescore-manifest.json",
+    "bytes": 1416,
+    "sha256": "ea2b58bca6464fca13a317f427464a3455a534f583a3cd3a4b8ad8e49f9c106f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/sample-report.json",
+    "archive": "source/tools/quantities/equation-proposals/sample-report.json",
+    "bytes": 642,
+    "sha256": "296848ce758a0eecf6ef67291cfcd3f972ae66244692466f2f886f0042852c6d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/test.log",
+    "archive": "source/tools/quantities/equation-proposals/test.log",
+    "bytes": 3685,
+    "sha256": "e6274ca2a405e523f3bb19419678c8a346014b5e9b9e61c8f5a95fde59babc1c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/test2.log",
+    "archive": "source/tools/quantities/equation-proposals/test2.log",
+    "bytes": 3226,
+    "sha256": "6e3e7c23b10b95962d316829bcf46057a119845341dc4876ef33c318d27b5b7f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/tools/quantities/equation-proposals/thresholds.json",
+    "archive": "source/tools/quantities/equation-proposals/thresholds.json",
+    "bytes": 60,
+    "sha256": "dff0a3b8bc04c54f345007c8733d430e681d28f0d402d37ca69c2332ba26101a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals/Cargo.lock",
+    "archive": "source/Cargo.lock",
+    "bytes": 17183,
+    "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/summary.txt",
+    "archive": "run/summary.txt",
+    "bytes": 671,
+    "sha256": "beada479fbd4373cda21fe5ef6f60f90f8e189fc32e8659ecb86e6020a84c098"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/events.jsonl",
+    "archive": "run/events.jsonl",
+    "bytes": 396471,
+    "sha256": "c7c68422d1f68a39731e67fbcf5c1a75014a636f4d0f613ffcacc54723fa517c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/stderr.log",
+    "archive": "run/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/brief.txt",
+    "archive": "run/brief.txt",
+    "bytes": 10581,
+    "sha256": "96965794ef4db756bdbe8089781f9f69b5b371e948f38fb41b1eed2c3815d5f7"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/process.json",
+    "archive": "run/process.json",
+    "bytes": 161,
+    "sha256": "c261b09d4df00c5767fad2f38f493e306754993df9ad133df28139948f84ec04"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/SUBMISSION-MANIFEST.json",
+    "archive": "frozen-candidate/SUBMISSION-MANIFEST.json",
+    "bytes": 20591,
+    "sha256": "0635af79bf1565872bff8532d065fd58542d68df46af2f8891b29fa5fb52058c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/authored-contracts.json",
+    "archive": "frozen-candidate/authored-contracts.json",
+    "bytes": 13764,
+    "sha256": "c1dca07882702a6b64465dab264684aa63f7298d5ddc04a9021b3dbe525b497a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/calibration-candidate.jsonl",
+    "archive": "frozen-candidate/calibration-candidate.jsonl",
+    "bytes": 2896124,
+    "sha256": "e424ac831499dbf3286ca96f0f6dfaa79d891485919011d62bca90605ba1ec76"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/calibration-lexical-execution.jsonl",
+    "archive": "frozen-candidate/calibration-lexical-execution.jsonl",
+    "bytes": 2145427,
+    "sha256": "01a641daf7b09623e62923a179da05b7407da17531caaecdee0bc1e3be920d68"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/calibration-lexical.jsonl",
+    "archive": "frozen-candidate/calibration-lexical.jsonl",
+    "bytes": 2303072,
+    "sha256": "29af7b18551dcbe0c4b1426446e54efdf1b890267723f6524c39966ed9647263"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/calibration-lexical_restricted-execution.jsonl",
+    "archive": "frozen-candidate/calibration-lexical_restricted-execution.jsonl",
+    "bytes": 2003250,
+    "sha256": "daa4f1429e58b40bfc3d7852a21222f2408e20a4e643c9c5b1b2da9c8c25819f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/calibration-lexical_restricted.jsonl",
+    "archive": "frozen-candidate/calibration-lexical_restricted.jsonl",
+    "bytes": 2162163,
+    "sha256": "52ee53606fe2f13dc19ed044bd7ff581f699e20a67c6eda6ee8474f78b18d914"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/calibration-prescore-manifest.json",
+    "archive": "frozen-candidate/calibration-prescore-manifest.json",
+    "bytes": 1437,
+    "sha256": "b5c0f58fd02707bfcebd3fec115cd0178113455a54e4ffa92f04cc27c6d215ed"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/calibration-report.json",
+    "archive": "frozen-candidate/calibration-report.json",
+    "bytes": 869,
+    "sha256": "72af78a9c0934e7b513777a2260ad7c5a04f54ac72ded3e23355660fc024b7d7"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/compatibility.json",
+    "archive": "frozen-candidate/compatibility.json",
+    "bytes": 725,
+    "sha256": "d4d4a105e0ac6d54817ab39bca58c9a4aadf7a2766d1b3731889366c0c28ea5b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/eligibility-audit.json",
+    "archive": "frozen-candidate/eligibility-audit.json",
+    "bytes": 439,
+    "sha256": "cbc9e52d6bb0391b1f57d94d4a9242b2974afe91e0a37020189f276c9cc69a43"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/equation_executor",
+    "archive": "frozen-candidate/equation_executor",
+    "bytes": 16711528,
+    "sha256": "d5f54ab5d311736aa6863509f2cbb5d6c007f934845cd98b92bc94809702f24a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/final-manifest.json",
+    "archive": "frozen-candidate/final-manifest.json",
+    "bytes": 11651,
+    "sha256": "6aa1f684f95c670e8b2620c8719e3ef2e1140f5e441ed4a3246ab7b2ab735fe8"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/fit-report.json",
+    "archive": "frozen-candidate/fit-report.json",
+    "bytes": 430,
+    "sha256": "7eef7c4bd37190e19b6b1b2ebada109037692d9354f85c7e0ba32619db6b496f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/full-candidate.jsonl",
+    "archive": "frozen-candidate/full-candidate.jsonl",
+    "bytes": 2163047,
+    "sha256": "1464b543b3fee58994021d2a2a925d34819e408a5bfaa7b0b14ba2fe14610fb6"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/full-lexical-execution.jsonl",
+    "archive": "frozen-candidate/full-lexical-execution.jsonl",
+    "bytes": 1634364,
+    "sha256": "2791a9e22629d7ed5d8e0b1659dff1038be5f0615df3672555763782a6fbd85e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/full-lexical.jsonl",
+    "archive": "frozen-candidate/full-lexical.jsonl",
+    "bytes": 1749025,
+    "sha256": "6ed3d8acba275e3432364977d5ae9a32d4474f71c4f2d8ad91c61677fde5734b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/full-lexical_restricted-execution.jsonl",
+    "archive": "frozen-candidate/full-lexical_restricted-execution.jsonl",
+    "bytes": 1524772,
+    "sha256": "848edd2d0c99f051a4b7d781a1260670e866839d32987035d6f10ee42c2f576a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/full-lexical_restricted.jsonl",
+    "archive": "frozen-candidate/full-lexical_restricted.jsonl",
+    "bytes": 1641669,
+    "sha256": "99b3163344eecd8620560d44f7b480258e8dea20744f813cd58e72c21cb3ed77"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/full-prescore-manifest.json",
+    "archive": "frozen-candidate/full-prescore-manifest.json",
+    "bytes": 1416,
+    "sha256": "236fcab25de4282d05deeec6bcecb489f44bb0105fa5b8f9ab6b0dea8dc6da27"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/full-report.json",
+    "archive": "frozen-candidate/full-report.json",
+    "bytes": 669,
+    "sha256": "8b0bec8f00605c811fe467322ee0169f1ac2773a0bd37ddaaca0fd473dd128c8"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/glassmind-quantities",
+    "archive": "frozen-candidate/glassmind-quantities",
+    "bytes": 16811504,
+    "sha256": "f7b728e30ccdcce5f1b99b1d185f197e13fa6d2914cfe5b866376d3ac678fa4e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/model.json",
+    "archive": "frozen-candidate/model.json",
+    "bytes": 1151545,
+    "sha256": "5594aebe9ab9f29cb4e017a380a9119c3603bb2e4e85e272337f028c93f2abc6"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/prefit-manifest.json",
+    "archive": "frozen-candidate/prefit-manifest.json",
+    "bytes": 4937,
+    "sha256": "5168fdb0ba5fca95b40b843715e6b821ed794a0d7858ae8fe9540ad0a34cce3f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/rejected-runtime.patch",
+    "archive": "frozen-candidate/rejected-runtime.patch",
+    "bytes": 18223,
+    "sha256": "17178663a04dc1eff9546138ace59649a408c2cdac01d4fe8f663573920b6d09"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-candidate.jsonl",
+    "archive": "frozen-candidate/sample-candidate.jsonl",
+    "bytes": 96862,
+    "sha256": "93ebd757f1916da77193826d2e2737fa0b14183a448910044c85bd778b51cc6f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-indices.json",
+    "archive": "frozen-candidate/sample-indices.json",
+    "bytes": 951,
+    "sha256": "178afa7bd298fba39eed5cf051b3c3ed2adb688ffb5dbf140de17111ee1cc6c4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-lexical-execution.jsonl",
+    "archive": "frozen-candidate/sample-lexical-execution.jsonl",
+    "bytes": 75598,
+    "sha256": "68a78e809f23cfba3e23278a08ca1515a88acb5da0b659a37a105b3cdae46b79"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-lexical.jsonl",
+    "archive": "frozen-candidate/sample-lexical.jsonl",
+    "bytes": 80741,
+    "sha256": "8dce4dd81a3cecda3d5eb219b695d97b6af78aad89cb8e52fc83ce8cb31f2baa"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-lexical_restricted-execution.jsonl",
+    "archive": "frozen-candidate/sample-lexical_restricted-execution.jsonl",
+    "bytes": 68656,
+    "sha256": "9dd3a3a1d96f64662e2b4367a267b3e9143f00c8de19abc26721ae6f95938a93"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-lexical_restricted.jsonl",
+    "archive": "frozen-candidate/sample-lexical_restricted.jsonl",
+    "bytes": 73893,
+    "sha256": "2d465c9ec3f97ff83a3fa86f70ab436ad8fcc32bf7b767cebcaef4e21f7a5f2c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-prescore-manifest.json",
+    "archive": "frozen-candidate/sample-prescore-manifest.json",
+    "bytes": 1416,
+    "sha256": "ea2b58bca6464fca13a317f427464a3455a534f583a3cd3a4b8ad8e49f9c106f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/sample-report.json",
+    "archive": "frozen-candidate/sample-report.json",
+    "bytes": 642,
+    "sha256": "296848ce758a0eecf6ef67291cfcd3f972ae66244692466f2f886f0042852c6d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/solve-full-baseline.jsonl",
+    "archive": "frozen-candidate/solve-full-baseline.jsonl",
+    "bytes": 258256,
+    "sha256": "5cf77234ace536a7f147c3a1bc4ac832a1052e2ac50c05ea232a1ce4a175eb98"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/solve-full-candidate.jsonl",
+    "archive": "frozen-candidate/solve-full-candidate.jsonl",
+    "bytes": 258256,
+    "sha256": "5cf77234ace536a7f147c3a1bc4ac832a1052e2ac50c05ea232a1ce4a175eb98"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/solve-sample-baseline.jsonl",
+    "archive": "frozen-candidate/solve-sample-baseline.jsonl",
+    "bytes": 11474,
+    "sha256": "dc6b9f8d10bcf64c23295e666e67edd63f10616ad9068b9b34458a87aa0a85bf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/solve-sample-candidate.jsonl",
+    "archive": "frozen-candidate/solve-sample-candidate.jsonl",
+    "bytes": 11474,
+    "sha256": "dc6b9f8d10bcf64c23295e666e67edd63f10616ad9068b9b34458a87aa0a85bf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/solve-synthetic-baseline.jsonl",
+    "archive": "frozen-candidate/solve-synthetic-baseline.jsonl",
+    "bytes": 296711,
+    "sha256": "ab818fdee8b4b383c8e0439dae83d9136926c6a5b4558c66033dfff4dac895ab"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/solve-synthetic-candidate.jsonl",
+    "archive": "frozen-candidate/solve-synthetic-candidate.jsonl",
+    "bytes": 296711,
+    "sha256": "ab818fdee8b4b383c8e0439dae83d9136926c6a5b4558c66033dfff4dac895ab"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/Cargo.toml",
+    "archive": "frozen-candidate/source/crates/quantities/Cargo.toml",
+    "bytes": 342,
+    "sha256": "df239632478115077be512e6bf13f183c0e69e47a5b03b835038917936ff5b8b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/examples/equation_executor.rs",
+    "archive": "frozen-candidate/source/crates/quantities/examples/equation_executor.rs",
+    "bytes": 1184,
+    "sha256": "dc346e0648194df414551aff26bfbc056b73b0ccec92be1fa5960ce1842c13a3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/calendar.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/calendar.rs",
+    "bytes": 4021,
+    "sha256": "e5c25f8281a8c938e4ddb18468b377fd05a90b0267e896e665b4d09441dce6ca"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/inventory.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/inventory.rs",
+    "bytes": 1779,
+    "sha256": "a3f48765518754664f86e084e8b428925ccbdc345b9665fac8a3eafe3352497e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/lib.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/lib.rs",
+    "bytes": 886,
+    "sha256": "1053df9b620fefcba44cb4b8235ca72d651e76901e6115d705cb34bd6346d59f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/linear.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/linear.rs",
+    "bytes": 15869,
+    "sha256": "92ee55d057dd098356f17a7bade17b1f4dfbace04b679a09aefaae73e10264eb"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/main.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/main.rs",
+    "bytes": 2242,
+    "sha256": "dc030ba5d729b5d156b3d8b547df687a2bcfe8d33f3016301dca4b528f955c00"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/number_words.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/number_words.rs",
+    "bytes": 3062,
+    "sha256": "8fd3c91f3176ffb71da48c3511e6978ee80fe5c8ef498e3ec814c02a64b95df1"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/parser.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/parser.rs",
+    "bytes": 19092,
+    "sha256": "8bfcb4bbf76ae03c07ba761326b24a58d20e3c1b55ebccd9b058d05111145fe5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/percent.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/percent.rs",
+    "bytes": 3830,
+    "sha256": "052a4ae9f91661547d1a05f770cf7a8b71c5408e6ce65d9e7a0cc219dd99642b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/percent_change.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/percent_change.rs",
+    "bytes": 7301,
+    "sha256": "bb75b8b6aeee552f58583f716151450172122e682c9395a39c9027aaf11bafbc"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/proposal.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/proposal.rs",
+    "bytes": 10741,
+    "sha256": "5edbca3795d86dd2cd82cc1fbc3e118c0a2523d4afca0147e3177eb2e9b68f6b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/ratio_total.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/ratio_total.rs",
+    "bytes": 6492,
+    "sha256": "b08d5a838210944cd73a716f0f4d0f4329f2d6504aebeabe23d71428abb2446f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/rational.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/rational.rs",
+    "bytes": 4346,
+    "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/src/units.rs",
+    "archive": "frozen-candidate/source/crates/quantities/src/units.rs",
+    "bytes": 6790,
+    "sha256": "f2d45cd3a0916525149c7d752d8f6a414c09a3a6547192512adef75adadfb04c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/crates/quantities/tests/proposals.rs",
+    "archive": "frozen-candidate/source/crates/quantities/tests/proposals.rs",
+    "bytes": 2834,
+    "sha256": "fc19729b91f820556af6f505426d2606c691b36a6f377dd5dfced13fa64a770c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/tools/quantities/equation-proposals/PLAN.md",
+    "archive": "frozen-candidate/source/tools/quantities/equation-proposals/PLAN.md",
+    "bytes": 4770,
+    "sha256": "b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/tools/quantities/equation-proposals/experiment.py",
+    "archive": "frozen-candidate/source/tools/quantities/equation-proposals/experiment.py",
+    "bytes": 12466,
+    "sha256": "24a0751a2f093ec61cfa81c0daaa11fe8cf9168e73f2c9e9f604236a40d1787d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/source/tools/quantities/equation-proposals/reproduce.sh",
+    "archive": "frozen-candidate/source/tools/quantities/equation-proposals/reproduce.sh",
+    "bytes": 720,
+    "sha256": "a80099a430f3abd5415edfe6e352e4b032145048b954a35b9a45c2512973c039"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/split.json",
+    "archive": "frozen-candidate/split.json",
+    "bytes": 2167034,
+    "sha256": "b16bce2866326a9fe20438f88fca0631d11d62019a75fb2189c9dca6e01411e6"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/HANDOFF.md",
+    "archive": "frozen-candidate/submission/HANDOFF.md",
+    "bytes": 12037,
+    "sha256": "58c950f02c648ae2ca6477c9c23dceabd90c28242c60f2ebec6f7cb74af7237d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/METRIC.md",
+    "archive": "frozen-candidate/submission/METRIC.md",
+    "bytes": 1780,
+    "sha256": "8395d3476dd73c13eb2af304cb850ed39fdc5a1c4316ac76462a4cbbc8699fd4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/PLAN.md",
+    "archive": "frozen-candidate/submission/PLAN.md",
+    "bytes": 4770,
+    "sha256": "b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/audit-saved.log",
+    "archive": "frozen-candidate/submission/audit-saved.log",
+    "bytes": 494,
+    "sha256": "22cfd5f581f327051fd883275236aa716b941b32bd3c4457d214f79155847daf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/audit_saved.py",
+    "archive": "frozen-candidate/submission/audit_saved.py",
+    "bytes": 2027,
+    "sha256": "e0442befdf2b3e1b91985cbc37e9a65b58bc94ff09f08f0bae3f5b77def3da80"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/authored-contracts.json",
+    "archive": "frozen-candidate/submission/authored-contracts.json",
+    "bytes": 5849,
+    "sha256": "cce129c92569a691652d35b792ac801bbc2ee5cb309d7396ffc921ad0a3c9cc0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/build.log",
+    "archive": "frozen-candidate/submission/build.log",
+    "bytes": 754,
+    "sha256": "3b10520ac6e503a271e6f9bbbdbb820bb4f14a2e7b0e747c59e044f84402da96"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/build2.log",
+    "archive": "frozen-candidate/submission/build2.log",
+    "bytes": 295,
+    "sha256": "0b8cfc78c225620680ca002bd984ef0bfe0c26f0a65c648d4cd2949e1a71627f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/calibration-prescore-manifest.json",
+    "archive": "frozen-candidate/submission/calibration-prescore-manifest.json",
+    "bytes": 1437,
+    "sha256": "b5c0f58fd02707bfcebd3fec115cd0178113455a54e4ffa92f04cc27c6d215ed"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/calibration-report.json",
+    "archive": "frozen-candidate/submission/calibration-report.json",
+    "bytes": 869,
+    "sha256": "72af78a9c0934e7b513777a2260ad7c5a04f54ac72ded3e23355660fc024b7d7"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/clippy.log",
+    "archive": "frozen-candidate/submission/clippy.log",
+    "bytes": 3612,
+    "sha256": "c7c7a12fb8cafbdf0a6d1a4a253af26f909104bc488fe3860ca7583a137a44a6"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/clippy2.log",
+    "archive": "frozen-candidate/submission/clippy2.log",
+    "bytes": 293,
+    "sha256": "713c3e8c78e4c34d0ac53e62e79fd7eb0c87113b35013b48278557e632562305"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/compatibility.json",
+    "archive": "frozen-candidate/submission/compatibility.json",
+    "bytes": 725,
+    "sha256": "d4d4a105e0ac6d54817ab39bca58c9a4aadf7a2766d1b3731889366c0c28ea5b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/contracts.log",
+    "archive": "frozen-candidate/submission/contracts.log",
+    "bytes": 326,
+    "sha256": "a6d3aa2fb65dcad5ea41060b7ad7db1c7d803d1d2dc39dc6411e7a313d17cb53"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/contracts.py",
+    "archive": "frozen-candidate/submission/contracts.py",
+    "bytes": 2502,
+    "sha256": "3d7db70fafce712474e69b4630ee526119e0d5dad9ef7162274f480621111d69"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/eligibility-audit.json",
+    "archive": "frozen-candidate/submission/eligibility-audit.json",
+    "bytes": 439,
+    "sha256": "cbc9e52d6bb0391b1f57d94d4a9242b2974afe91e0a37020189f276c9cc69a43"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/experiment.log",
+    "archive": "frozen-candidate/submission/experiment.log",
+    "bytes": 2993,
+    "sha256": "6694ec89405c0b995925c1379f8851a2c7264dfc965bbb90a1eda4078208a8d9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/experiment.py",
+    "archive": "frozen-candidate/submission/experiment.py",
+    "bytes": 12466,
+    "sha256": "24a0751a2f093ec61cfa81c0daaa11fe8cf9168e73f2c9e9f604236a40d1787d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/final-manifest.json",
+    "archive": "frozen-candidate/submission/final-manifest.json",
+    "bytes": 11651,
+    "sha256": "6aa1f684f95c670e8b2620c8719e3ef2e1140f5e441ed4a3246ab7b2ab735fe8"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/fit-report.json",
+    "archive": "frozen-candidate/submission/fit-report.json",
+    "bytes": 430,
+    "sha256": "7eef7c4bd37190e19b6b1b2ebada109037692d9354f85c7e0ba32619db6b496f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/full-prescore-manifest.json",
+    "archive": "frozen-candidate/submission/full-prescore-manifest.json",
+    "bytes": 1416,
+    "sha256": "236fcab25de4282d05deeec6bcecb489f44bb0105fa5b8f9ab6b0dea8dc6da27"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/full-report.json",
+    "archive": "frozen-candidate/submission/full-report.json",
+    "bytes": 669,
+    "sha256": "8b0bec8f00605c811fe467322ee0169f1ac2773a0bd37ddaaca0fd473dd128c8"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/prefit-manifest.json",
+    "archive": "frozen-candidate/submission/prefit-manifest.json",
+    "bytes": 4937,
+    "sha256": "5168fdb0ba5fca95b40b843715e6b821ed794a0d7858ae8fe9540ad0a34cce3f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/rejected-runtime.patch",
+    "archive": "frozen-candidate/submission/rejected-runtime.patch",
+    "bytes": 18223,
+    "sha256": "17178663a04dc1eff9546138ace59649a408c2cdac01d4fe8f663573920b6d09"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/reproduce.sh",
+    "archive": "frozen-candidate/submission/reproduce.sh",
+    "bytes": 1030,
+    "sha256": "bc607be737a409afdb5ec1b65180644919547623f2242c2469b356719cb9563c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/sample-prescore-manifest.json",
+    "archive": "frozen-candidate/submission/sample-prescore-manifest.json",
+    "bytes": 1416,
+    "sha256": "ea2b58bca6464fca13a317f427464a3455a534f583a3cd3a4b8ad8e49f9c106f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/sample-report.json",
+    "archive": "frozen-candidate/submission/sample-report.json",
+    "bytes": 642,
+    "sha256": "296848ce758a0eecf6ef67291cfcd3f972ae66244692466f2f886f0042852c6d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/test.log",
+    "archive": "frozen-candidate/submission/test.log",
+    "bytes": 3685,
+    "sha256": "e6274ca2a405e523f3bb19419678c8a346014b5e9b9e61c8f5a95fde59babc1c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/test2.log",
+    "archive": "frozen-candidate/submission/test2.log",
+    "bytes": 3226,
+    "sha256": "6e3e7c23b10b95962d316829bcf46057a119845341dc4876ef33c318d27b5b7f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/submission/thresholds.json",
+    "archive": "frozen-candidate/submission/thresholds.json",
+    "bytes": 60,
+    "sha256": "dff0a3b8bc04c54f345007c8733d430e681d28f0d402d37ca69c2332ba26101a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/thresholds.json",
+    "archive": "frozen-candidate/thresholds.json",
+    "bytes": 60,
+    "sha256": "dff0a3b8bc04c54f345007c8733d430e681d28f0d402d37ca69c2332ba26101a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationproposals-run/frozen-candidate/train-executions.jsonl",
+    "archive": "frozen-candidate/train-executions.jsonl",
+    "bytes": 9970742,
+    "sha256": "a05b336340cabbd3870e7bbf136532d5bba3d9ecdcb72aa3aa7524010090eb25"
+  }
+]

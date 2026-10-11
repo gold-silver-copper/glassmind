@@ -1,0 +1,44 @@
+[
+  {
+    "name": "forward",
+    "question": "What is 2 plus 3?",
+    "program": "add(n0,#0)",
+    "expected": "refuse"
+  },
+  {
+    "name": "cycle",
+    "question": "What is 2 plus 3?",
+    "program": "add(n0,#1)|add(#0,n1)",
+    "expected": "refuse"
+  },
+  {
+    "name": "number_index",
+    "question": "What is 2 plus 3?",
+    "program": "add(n0,n9)",
+    "expected": "refuse"
+  },
+  {
+    "name": "unknown_operation",
+    "question": "What is 2 plus 3?",
+    "program": "system(n0,n1)",
+    "expected": "refuse"
+  },
+  {
+    "name": "unknown_constant",
+    "question": "What is 2 plus 3?",
+    "program": "add(n0,const_answer)",
+    "expected": "refuse"
+  },
+  {
+    "name": "too_many_steps",
+    "question": "What is 2 plus 3?",
+    "program": "add(n0,n1)|add(n0,n1)|add(n0,n1)|add(n0,n1)|add(n0,n1)|add(n0,n1)|add(n0,n1)",
+    "expected": "refuse"
+  },
+  {
+    "name": "overflow",
+    "question": "Multiply 170141183460469231731687303715884105727 by 2.",
+    "program": "multiply(n0,n1)",
+    "expected": "refuse"
+  }
+]

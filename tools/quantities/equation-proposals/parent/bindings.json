@@ -1,0 +1,151 @@
+[
+  {
+    "name": "binding_0",
+    "question": "Balance changed from -3 to 5. What is the increase?",
+    "expected_spans": [
+      {
+        "text": "-3",
+        "start": 21,
+        "end": 23
+      },
+      {
+        "text": "5",
+        "start": 27,
+        "end": 28
+      }
+    ],
+    "program": "subtract(n1,n0)",
+    "value": "8"
+  },
+  {
+    "name": "binding_1",
+    "question": "Buy 3 boxes costing 2,500 credits each. What is the total?",
+    "expected_spans": [
+      {
+        "text": "3",
+        "start": 4,
+        "end": 5
+      },
+      {
+        "text": "2,500",
+        "start": 20,
+        "end": 25
+      }
+    ],
+    "program": "multiply(n0,n1)",
+    "value": "7500"
+  },
+  {
+    "name": "binding_2",
+    "question": "What is 0.5 plus 1.25?",
+    "expected_spans": [
+      {
+        "text": "0.5",
+        "start": 8,
+        "end": 11
+      },
+      {
+        "text": "1.25",
+        "start": 17,
+        "end": 21
+      }
+    ],
+    "program": "add(n0,n1)",
+    "value": "7/4"
+  },
+  {
+    "name": "binding_3",
+    "question": "What is 3 / 5 of 100?",
+    "expected_spans": [
+      {
+        "text": "3",
+        "start": 8,
+        "end": 9
+      },
+      {
+        "text": "5",
+        "start": 12,
+        "end": 13
+      },
+      {
+        "text": "100",
+        "start": 17,
+        "end": 20
+      }
+    ],
+    "program": "divide(n0,n1)|multiply(#0,n2)",
+    "value": "60"
+  },
+  {
+    "name": "binding_4",
+    "question": "Café has 9 cakes and gets 14 more. What is the total?",
+    "expected_spans": [
+      {
+        "text": "9",
+        "start": 10,
+        "end": 11
+      },
+      {
+        "text": "14",
+        "start": 27,
+        "end": 29
+      }
+    ],
+    "program": "add(n0,n1)",
+    "value": "23"
+  },
+  {
+    "name": "binding_5",
+    "question": "What is 9 plus 9?",
+    "expected_spans": [
+      {
+        "text": "9",
+        "start": 8,
+        "end": 9
+      },
+      {
+        "text": "9",
+        "start": 15,
+        "end": 16
+      }
+    ],
+    "program": "add(n0,n1)",
+    "value": "18"
+  },
+  {
+    "name": "binding_6",
+    "question": "What is 5 percent of 120?",
+    "expected_spans": [
+      {
+        "text": "5",
+        "start": 8,
+        "end": 9
+      },
+      {
+        "text": "120",
+        "start": 21,
+        "end": 24
+      }
+    ],
+    "program": "multiply(n0,n1)|divide(#0,const_100)",
+    "value": "6"
+  },
+  {
+    "name": "binding_7",
+    "question": "What is 12 divided by 0?",
+    "expected_spans": [
+      {
+        "text": "12",
+        "start": 8,
+        "end": 10
+      },
+      {
+        "text": "0",
+        "start": 22,
+        "end": 23
+      }
+    ],
+    "program": "divide(n0,n1)",
+    "value": null
+  }
+]
