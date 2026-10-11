@@ -76,6 +76,11 @@ passes with zero failures. The three gains are styles of one blog-tags bug.
 Typed record comparator direction repairs reach 215/765, retaining all 212 prior
 passes with zero failures. The three gains are styles of one leaderboard bug.
 [Independent ordering and ambiguity checks](tools/coding-comparator/PARENT.md).
+Whole-body function placeholders can now receive a uniquely test-verified
+implementation from a bounded, signature-directed family. Coding DEV reaches
+218/765, retaining all 215 previous passes with zero failures. The three gains
+are request styles for sum-even, also present in the supplied TRAIN material.
+[Supported implementation requests and verification](docs/verified-implementation.md).
 
 ## Conversation and story commands
 

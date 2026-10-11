@@ -1,72 +1,72 @@
 # Continuous development checkpoint
 
-Unlimited active goal; milestone completion does not complete the goal. Root
-branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Previous goal turn: PROGRESS (PR44 merged, independent boundary adapter prepared).
-Current turn: PROGRESS (TRAIN dialogue diagnosis, independent implementation
-review, archived rejection, and a prospective declaration-grammar correction).
-Unlimited goal remains active. Root HEAD1529e30 before this checkpoint;
-606e341 records dialogue diagnosis, 1529e30 the implementation rejection.
+Unlimited active goal; milestone completion does not complete the goal.
+Root branch `harness`; WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+Current source commit c6ac04a; original and corrected experiment reports in
+1529e30, 2a35c17 and b72897a. All workers and native evaluation jobs are complete.
+Known completed-worker tokens: 200,145,321, cached input counted once;
+parent and interrupted usage excluded. No new worker is running.
 
-## Current action: build and validate the corrected implementation grammar
+## Current action: publish the verified implementation feature
 
-No model workers remain. Original implgrammar worker4131690 is terminal/inactive;
-its original submission was archived, reviewed and rejected, then the owned
-worktree and temporary login link removed after both archives were reverified.
-Original4565 entries/1223261648bytes incl6 symlinks; frozen2240files/612259441bytes.
-See tools/coding-implementation-grammar/PARENT.md and parent/cleanup.json.
-Known completed-worker tokens197840528 inclcachedinputonce; root/interrupted
-excluded. Latest worker5170049 input incl5032704cached +55220output=5225269.
+Runtime integrated at c6ac04a. Full coding DEV: 218/765, 547 refusals, zero
+failures; all 215 previous passes retained. Three gains are request styles of
+sum-even, also supplied in TRAIN; no unseen-task generalization claim.
+Full results: WORK/coordinator/implgrammar-corrected/full765-v2. Candidate SHA
+371b0c1fcb1c7102a5ca6228ed8f228c8460cac23fa9d82ac9d7dc35f10b03f9.
+All 172 source/manifest/contracts files match the integrated checkout exactly.
+Root binary SHA b38233e5e1fb0e13bd1264c459661a8d268ae0fac015f0ff27c9b43da69d72e1.
+Both workspace checks passed fmt/all-target clippy/release/strict four-turn smoke.
+Final candidate: 44 parser, 46 boundaries, 66 native cases, full TRAIN 3/60 with
+57 unchanged refusals. Integrated root additionally passes 12 boundaries and
+10 identifier/declaration cases. All completed; do not repeat full765.
+Review: tools/coding-implementation-grammar/correction/PARENT.md.
 
-Fresh worktree WORK/implgrammar-fix, branch continuous/implgrammar-fix, base919e14a.
-Only candidate runtime files were applied; original contracts/reports copied for
-its include-based tests. The production checkout has no implementation feature.
-Correction: Declaration::Accepted(String) versus Unsupported prevents recognized
-`needs a body` / `needs implementing` descriptions from binding an accepted
-imperative. Six new refusal contrasts plus an accepted declaration pass. Native
-implementation module is byte-identical to the rejected candidate; current
-quantity-prefix fix is preserved. Prospective plan and source hashes are under
-coordinator/implgrammar-corrected and tools/coding-implementation-grammar/correction.
+Original worker remains rejected for unsupported declarations. Coordinator
+revision one was deliberately interrupted after independent review found that
+`implement function` refused a valid literal identifier. Its archive and process
+cleanup are retained. Revision two fixed that grammar error before full DEV.
+No hidden test contents were inspected. Original generator remains unchanged.
+WORK/implgrammar-fix worktree retained at 07cf5a0; root integration c6ac04a.
+Original implgrammar worker/worktree and temporary authentication link were
+archived, verified, then removed. No worker uses that retained fix worktree.
 
-Parser tests53325 COMPLETE:43 passed. CLI release build50730 RUNNING at checkpoint,
-log coordinator/implgrammar-corrected/build.log; target is that directory/target,
-TMPDIR its tmp directory. Cargo is scoped8GiB/zero-swap, setsid--wait/600s timeout,
--j1. Do not start a duplicate build. Poll50730 then freeze target/release/glassmind
-and its SHA before further checks. Original native55866 COMPLETE18/18; cleanup53201
-COMPLETE. No other root jobs remain.
+NEXT: finish score journal/docs, review diff, commit/push harness and open PR45
+against main. Merge only with exact-head green CI. Then append external progress
+log and start the next bounded experiment. PR45 has not yet been created.
+Latest published PR44 details are below; do not republish PR44.
 
-NEXT after build: run corrected 34 original boundaries, 12 independent boundaries,
-18 independent native cases (including unset-target variant), then fixed TRAIN
-sample3/native verify, full60/native verify. Adapted run.py and verify.py are in
-coordinator/implgrammar-corrected, with immutable original expectations and a
-copied baseline-boundaries-complete/results.json. Set persistent TMPDIR and
-external CARGO_TARGET_DIR for those scripts. These helpers write only corrected
-artifact directories. Parent native.py/boundary-review.py remain in
-coordinator/implgrammar-independent. Keep output directories fresh.
-Only after these gates pass run parent full765 for the FIRST time:>=218 passes,
-all215 retained,0fail. full-gate.json/compare-full.py and comparator-full baseline
-remain frozen. Then source/evidence review, affected tests, required workspace
-checks, integrate exact source centrally and publish with exact-head green CI.
-Original rejected worker and earlier three implementations stay rejected; this
-correction does not retroactively relabel their evidence.
+## Dialogue entity ledger rejected; next hypothesis available
 
-## Dialogue TRAIN diagnosis completed
+All 3174 approved TRAIN dialogues were processed, with 2532 FIT and 642 CAL.
+The worker learned SYSTEM entity boundaries, source roles and a value-free
+reference ranker. All 16 frozen CAL thresholds failed: 41–71 newly wrong slots,
+2–4 lost previously correct states. No candidate DEV or runtime integration.
+Production dialogue remains 610/1119 joint and 716/1218 frames.
+Review: tools/dialogue/entity-ledger/PARENT.md and parent/cal-review.json.
+Parent independently reconstructed all 51,647 candidates, 22,912 decisions,
+16 persistent overlays, original TRAIN gold joins and source/weight identities.
+All reports match. Original archive 114 files/223,211,085 bytes and 70-member
+pre-rollback archive were verified before owned worktree/auth link removal.
+Worker usage 2,304,793 tokens (input includes cached tokens once).
 
-No runtime/model change. tools/dialogue/history-diagnosis/PARENT.md (606e341).
-All144 complete TRAIN conversations limited to approved three-service schema:
-1171 USER turns/1323frames;787 jointcorrect,384slotwrong; routing/intents perfect
-on this in-sample subset. 382wrongturns lack ride destination;2 Travel location
-wrong. 87 initial missing destinations persist295turns. Gold text appears earlier
-than lastSYSTEM for83/87 and inlastSYSTEM for4/87, an availability upper bound.
-Native unchanged OfferModel probe overlast32SYSTEMs produces only2othercorrect
-rows and ZERO proposals for the87 initialmissing destinations. Extending offer
-history alone is unsupported. New candidate representation/entity grounding is
-needed before a future reference-selection model; no new training launched.
-Raw inputs/predictions/probe/source/metadata in coordinator/dialogue-train-diagnosis.
-Sample10/full144 andnativeprobe complete, no repeatneeded. Existing610/1119DEV
-score/model remain unchanged. Do not call this in-sample diagnostic a DEV gain.
+FIT diagnostic: an old-router source-owner filter would discard 8,135 valid
+source roles while removing 1,648 wrong roles. Do not use that filter as source
+authority. A new hypothesis can condition source roles on preceding USER text
+and train NONE on actual predicted unaligned/unmodeled spans, while retaining
+valid entities from all services. Freeze a new FIT/CAL plan before training;
+no new task or worker exists yet. Keep existing thresholds fixed, no DEV tuning.
+Mask tools/dialogue/entity-ledger/parent from future workers: it contains the
+parent's 16 independent fictional-name probes. They were baseline-only because
+this candidate failed CAL before integration.
 
-## Published PR44; implementation experiment still running
+Earlier TRAIN diagnosis (606e341) found 87 initial missing ride destinations
+and 295 propagated misses among 1171 USER turns/144 complete selected-service
+conversations. Extending the unchanged offer model's history found zero of
+those 87; it does not solve grounding. This in-sample diagnostic is documented
+in tools/dialogue/history-diagnosis/PARENT.md. All runs completed; reuse results.
+
+## Published PR44 (historical checkpoint)
 
 PR44 merged: https://github.com/gold-silver-copper/glassmind/pull/44
 Reviewed head: 8d86b8d66f035f5ceb61a024c0a7ec2095e3b150.

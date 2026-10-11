@@ -40,8 +40,9 @@ and 55,220 output tokens: 5,225,269 total. No new download or additional model
 call was made during parent review. Source remains RustBench TRAIN revision
 `f79e71a2a26fdaf15f9bc55225a038b61e66fafb`, MIT OR Apache-2.0.
 
-A separate prospective correction is underway in `continuous/implgrammar-fix`:
-distinguish a recognized unsupported declaration from an accepted binding.
-Its plan preserves the generator and every original acceptance gate, including
->=218/765 with all 215 old passes retained and zero failures. It has not yet
-been accepted, integrated or published. The production code remains unchanged.
+A separate coordinator correction subsequently passed the original acceptance
+gate at 218/765, retaining all 215 old passes with zero failures, and was
+integrated. It distinguishes unsupported declarations from accepted bindings
+and preserves a literal `function` identifier. See the
+[correction review](correction/PARENT.md). This original submission and its
+historical evidence remain rejected.
