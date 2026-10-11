@@ -187,7 +187,7 @@ mod tests {
             panic!("lost inner assumption")
         };
         assert!(
-            matches!(reply.as_ref(), Reply::Applied { check: Some(RustCheck::Build), problems, .. } if problems.is_empty())
+            matches!(reply.as_ref(), Reply::Applied { check: Some(RustCheck::Test), problems, .. } if problems.is_empty())
         );
         assert!(session.pending().is_none());
         assert_eq!(turn.trace.reply, Some(turn.reply.clone()));

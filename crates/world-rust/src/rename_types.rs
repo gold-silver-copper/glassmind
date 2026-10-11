@@ -1,9 +1,10 @@
 //! Conservative type renaming with explicit module/import binding checks.
 //!
 //! This deliberately accepts a closed subset: conventional roots in one package,
-//! ordinary modules and explicit imports. Every old-name token must be bound
-//! to the selected declaration. Unknown syntax, shadow declarations, macros
-//! containing the name, glob imports, and unaccounted source files refuse.
+//! ordinary/test modules, explicit imports and resolved parent globs. Every
+//! old-name token must be bound to the selected declaration, including supported
+//! builtin macro arguments. Unknown syntax, shadow declarations, unresolved
+//! imports and unaccounted source files refuse.
 use std::collections::{BTreeMap, BTreeSet};
 use std::path::Path;
 
@@ -11,7 +12,7 @@ use proc_macro2::Ident;
 use syn::visit::Visit;
 
 use crate::index::{Pos, SourceIndex};
-use crate::rename_package::{Package, inert, output_macro};
+use crate::rename_package::{Package, inert};
 use crate::{RustItem, RustKind};
 
 pub(crate) struct Module {
@@ -141,7 +142,7 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
     {
         return None;
     }
-    let package = Package::load(source)?;
+    let package = Package::load_with_tests(source)?;
     let all = &package.modules;
     let mut target = None;
     let mut declaration = None;
@@ -172,6 +173,11 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
         let bindings = package.bindings(m)?;
         for node in &m.items {
             if let syn::Item::Use(u) = node {
+                // The closed graph has resolved this exact parent glob; it
+                // contributes bindings but no target-name edit span.
+                if quote::quote!(#u).to_string().replace(' ', "") == "usesuper::*;" {
+                    continue;
+                }
                 if u.leading_colon.is_some()
                     || !u.attrs.iter().all(|a| a.path().is_ident("doc") && inert(a))
                 {
@@ -275,11 +281,12 @@ impl<'ast> Visit<'ast> for References<'_> {
         syn::visit::visit_expr_path(self, p);
     }
     fn visit_macro(&mut self, m: &'ast syn::Macro) {
-        // Only standard output macros, which cannot introduce outer bindings.
-        // Definitions/attributes are rejected separately; imports of these
-        // macro names are forbidden, so a dependency cannot replace them.
-        if !output_macro(m) {
+        let Some(args) = crate::rename_package::rename_macro_arguments(m, self.old) else {
             self.valid = false;
+            return;
+        };
+        for arg in &args {
+            self.visit_expr(arg);
         }
     }
     fn visit_item_mod(&mut self, _: &'ast syn::ItemMod) {}
@@ -417,5 +424,96 @@ mod tests {
             )
             .is_none()
         );
+    }
+    #[test]
+    fn test_modules_and_builtin_macro_arguments_have_bound_spans() {
+        let code = "pub struct Parcel { pub n:u8 }\n#[cfg(test)] mod tests { use super::*; #[test] fn works() { assert_eq!(Parcel{n:7}.n,7); assert!(Parcel{n:3}.n>0); } }";
+        let at = rename("test-macros", code, "Parcel", "Packet").unwrap();
+        assert_eq!(at.len(), 3);
+        for (_, line, col) in at {
+            assert_eq!(
+                code.lines()
+                    .nth(line as usize - 1)
+                    .unwrap()
+                    .chars()
+                    .skip(col as usize)
+                    .take(6)
+                    .collect::<String>(),
+                "Parcel"
+            );
+        }
+        let code = "pub struct Parcel; #[cfg(test)] mod tests { use super::Parcel as Kept; #[test] fn works() { let _:Kept = Kept; assert_eq!(1,1); } }";
+        assert_eq!(
+            rename("test-alias", code, "Parcel", "Packet")
+                .unwrap()
+                .len(),
+            2
+        );
+    }
+
+    #[test]
+    fn expanded_test_proof_rejects_shadowing_and_opaque_arguments() {
+        for (case, extra) in [
+            (
+                "macro-shadow",
+                "macro_rules! assert_eq { ($($t:tt)*) => {} }",
+            ),
+            ("macro-import", "use external::assert_eq;"),
+            ("other-cfg", "#[cfg(feature=\"hidden\")] struct Hidden;"),
+            ("unknown-macro", "fn other(){ unknown!(); }"),
+            ("implicit-capture", "fn other(){ println!(\"{Parcel}\"); }"),
+            (
+                "format-binding",
+                "fn other(){ println!(\"{x}\", x=Parcel{n:1}.n); }",
+            ),
+            ("shadow-local", "fn other(){ let Parcel=1; }"),
+            ("nested-item", "fn other(){ struct Inner; }"),
+        ] {
+            let code = format!(
+                "struct Parcel {{ n:u8 }} #[cfg(test)] mod tests {{ use super::*; #[test] fn works() {{ assert_eq!(Parcel{{n:7}}.n,7); }} }} {extra}"
+            );
+            assert!(rename(case, &code, "Parcel", "Packet").is_none(), "{case}");
+        }
+    }
+
+    #[test]
+    fn type_application_reproves_bindings_before_touching_saved_spans() {
+        use glassmind_meaning::{Action, Name, Thing, interface::World};
+        let root = crate::checks::scratch("type-stale-proof");
+        std::fs::create_dir_all(root.join("src")).unwrap();
+        std::fs::write(
+            root.join("Cargo.toml"),
+            "[package]\nname='type_stale'\nversion='0.0.0'\nedition='2021'\n[workspace]\n",
+        )
+        .unwrap();
+        let original = "pub struct Parcel;\n#[test] fn works(){ let _=Parcel; }\n";
+        std::fs::write(root.join("src/lib.rs"), original).unwrap();
+        let world = crate::RustWorld::open(
+            &[("test".into(), root.as_path())],
+            &glassmind_rules::Switches::all_on(),
+        );
+        let item = world
+            .lookup(&Name("Parcel".into()), &mut Vec::new())
+            .first()
+            .unwrap()
+            .clone();
+        let proposal = world
+            .propose(
+                &Action::Rename {
+                    thing: Thing::Item(item),
+                    kind: None,
+                    name: Some(Name("Packet".into())),
+                },
+                &mut Vec::new(),
+            )
+            .unwrap();
+        let changed = format!("{original}macro_rules! injected {{ () => {{}} }}\n");
+        std::fs::write(root.join("src/lib.rs"), &changed).unwrap();
+        assert!(world.apply(&proposal, &mut Vec::new()).is_err());
+        assert_eq!(
+            std::fs::read_to_string(root.join("src/lib.rs")).unwrap(),
+            changed
+        );
+        std::fs::remove_dir_all(root).unwrap();
     }
 }

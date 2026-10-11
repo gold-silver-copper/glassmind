@@ -1133,6 +1133,7 @@ impl World<Rust> for RustWorld {
                 spots,
             } => {
                 let source = self.sources.iter().find(|s| s.name == item.source);
+                let type_proof = matches!(item.kind, RustKind::Struct | RustKind::Enum);
                 let module_proof = item.kind == RustKind::Function
                     && source.is_some_and(|s| {
                         s.idents.get(&item.name).is_some_and(|at| {
@@ -1140,13 +1141,17 @@ impl World<Rust> for RustWorld {
                                 .any(|p| s.names.get(p) != Some(&RustKind::Function))
                         })
                     });
-                if module_proof {
+                if module_proof || type_proof {
                     // A preview's token text may survive a change of binding.
                     // Reprove identity before writing any bytes.
                     let source = source.ok_or(Unsupported)?;
                     let fresh = index::index_source(&source.name, &source.root);
-                    let proven =
-                        rename_functions::positions(&fresh, item, &name.0).ok_or(Unsupported)?;
+                    let proven = if type_proof {
+                        rename_types::positions(&fresh, item, &name.0)
+                    } else {
+                        rename_functions::positions(&fresh, item, &name.0)
+                    }
+                    .ok_or(Unsupported)?;
                     if crate::spots(&fresh, &proven) != *spots {
                         return Err(Unsupported);
                     }
@@ -1163,7 +1168,7 @@ impl World<Rust> for RustWorld {
                             new: name.0.clone(),
                         })
                         .collect(),
-                    Some(if module_proof {
+                    Some(if module_proof || type_proof {
                         RustCheck::Test
                     } else {
                         RustCheck::Build

@@ -135,7 +135,7 @@ root = out / 'fields-project'
 (root / 'src').mkdir(parents=True)
 (root / 'Cargo.toml').write_text('[package]\nname="fields_cli_smoke"\nversion="0.1.0"\nedition="2021"\n[workspace]\n')
 source = root / 'src/lib.rs'
-original_fields = 'pub struct Beacon { pub value: i32 }\npub fn create() -> Beacon { Beacon { value: 17 } }\n#[test] fn keep() -> Result<(), String> { if create().value == 17 { Ok(()) } else { Err(String::from("value changed")) } }\n'
+original_fields = 'pub struct Beacon { pub value: i32 }\npub fn create() -> Beacon { Beacon { value: 17 } }\n#[cfg(test)] mod tests { use super::*; #[test] fn keep() { assert_eq!(create().value,17); assert_eq!(Beacon { value: 5 }.value,5); } }\n'
 source.write_text(original_fields)
 session = out / 'fields-session.json'
 turn('where is Beacon?', 1)

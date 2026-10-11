@@ -165,8 +165,11 @@ and default. Plans can add a field, rename its owner, then check tests; semicolo
 inside the field specification belong to the same operation. Plans accept at
 most four operations and 32 separated clauses within the existing byte limit.
 Missing or conflicting defaults, unsupported constraints and unresolved owners
-block execution. A later type rename can still be blocked by its existing
-restrictions on cfg modules and opaque macros; a successful earlier field
-addition remains recorded and can be undone. The existing restrictions on generic structs, opaque macros,
+block execution. Type renames resolve supported `cfg(test)` modules, parent
+imports, and builtin assertion arguments before editing and run native tests
+afterward. Shadowed macros, other conditional configurations, implicit formatting
+captures and unclassified references still block the rename. A successful earlier
+field addition remains recorded and can be undone. Existing restrictions on
+generic field owners, opaque macros,
 side-effecting defaults and ambiguous constructor graphs still apply. Existing
 tests establish only their covered behavior.
