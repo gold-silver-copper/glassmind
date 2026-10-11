@@ -1,6 +1,57 @@
 # Continuous development checkpoint
 
-## Current checkpoint — coding200/765 and explicit fact verification integrated
+## Current checkpoint — supervised equation proposal experiment running
+
+The goal is active. Latest state check confirmed PID1961447 and
+`glassmind-continuous-equationproposals.scope` active/running, capped at8GiB with
+zero swap. Worker worktree `WORK/equationproposals`, branch
+`continuous/equationproposals`, base c9d10dc. WORK remains
+`/home/gsc/.cache/glassmind/continuous-20261010`. Exact task is
+`WORK/equationproposals-task.txt`; output under `WORK/equationproposals-run`.
+Astra fast uses forced ChatGPT login and stripped API-key environment. No parent
+model switch is claimed. Do not restart this worker on an observation timeout.
+
+New representation: FIT-trained bounded generic arithmetic-program classifier,
+exact rational execution, explicitly unverified semantic proposals. Default solver
+must remain unchanged. TRAIN29837 and DEV4475 only; no official test material.
+Preregistered raw gate >=250 DEV matches and >=25 above stronger lexical baseline;
+selection calibrated on ALL TRAIN-cal at90% precision and >=30selected, then DEV
+>=50correct/80%precision and >=10correct above baseline, <=.02precision loss.
+One model fit; no DEV tuning. Details in immutable worker task, not this shorthand.
+
+Parent TRAIN annotation audit found7767 exact label matches,4763wrong,
+7348unscorable,222execution refusals and9737outside the bounded four-op family.
+This is annotation compatibility, not model performance. Scripts/results and
+independent frozen contracts are now in `tools/quantities/equation-proposal-audit`.
+Twenty-four authored semantic questions, eight binding/execution contracts and
+seven invalid programs were frozen before candidate inspection. Semantic gate is
+>=12/24raw correct with no selected error on paired reversed ratio/comparison/rate.
+Current default solve gets2correct/22refused/0wrong on these24; proposal mode has no
+baseline yet. Candidate remains uninspected until terminal archive/hash verification.
+
+Next: archive terminal worker originals, evaluate the frozen parent contracts,
+audit learning splits/model/runtime bounds and reproduce claimed metrics. Reject
+if a declared gate fails; retain the evidence without changing thresholds or labels.
+A separate coding hypothesis will test missing multiplication/division slip
+proposals while preserving existing candidate priority, tests and ambiguity checks.
+Previous merged runtime scores below remain authoritative; no new gain claimed.
+
+Multiplicative coding worker now live: PID1989516,
+`glassmind-continuous-multiplicative.scope`, branch `continuous/multiplicative`,
+base c9d10dc. Task `WORK/multiplicative-task.txt`; owns world-rust and
+new tools/coding-multiplicative only. Login status confirmed ChatGPT before launch;
+API-key variables stripped, Astra fast fixed, same8GiB/0swap bounds. This worker
+must preserve all old candidate priority across files before new */ candidates.
+Parent froze14independent crates before candidate inspection under
+`WORK/coordinator/multiplicative-independent`, casesSHA0eda43fdf5f2a51d9b7e85f7dd176acbc4010bd619049f3b0b80cd06f64d9f14.
+Baseline session75655 COMPLETE: all14compiled and failed executed original
+assertions;0/8new repairs,1/1legacy exact repair,0/4negative edits. Old policy
+accepts the ambiguous fixture; new native-witness withdrawal is separately required.
+No parent fixture contents were sent to either worker. Await terminal submissions
+and archive originals before source review or changes; no benchmark gain claimed.
+
+
+## Previous checkpoint — coding200/765 and explicit fact verification integrated
 
 The unlimited continuous goal remains active. This turn made concrete progress:
 revised repair authority handling, full765 improvement180→200 with no lost pass or
