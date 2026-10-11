@@ -1,29 +1,31 @@
-# Native public pilot ingestion passed; central integration next
+# Native public pilot: validated and centrally integrated
 
-Worktree implementation and reports are complete. No model worker ran.
-The full import, source audit, positive query probes and raw-view parity passed.
-Production source is b44df61 plus literal-path correction bba402d; subsequent
-commits add validation helpers and reports. See PARENT.md for exact evidence.
+The importer and public database passed all frozen gates. Root merge e5487ef
+integrates worktree c873f4b. All 23 facts files and Cargo.lock match; central
+workspace checks and strict 4/4 smoke pass. Central CLI reproduces all 853 public
+source-name predictions. See PARENT.md and the central-* reports.
 
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Run: WORK/coordinator/wikidata-native. Immutable native.sqlite is12,306,595,840bytes,
-SHA256 f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b.
-59,853,388entities,74,983,525aliases,5,659,191edges,5,677,515statementwitnesses.
-816.399seconds,277,036KiB processRSS,20,852,143,958sampled peakrunbytes: allfrozen
-gates pass. Source audit69.283seconds;954rawrows, allindependentcounts match.
-110positivequeryprobes pass (37ordinary answers,59sets,13truncated,largest1756).
-853raw-view questions matchboth JSON/nativeordinaryandset outputs.
+Run: WORK/coordinator/wikidata-native. The native.sqlite artifact is read-only,
+12,306,595,840 bytes, SHA256
+f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b.
+It has 59,853,388 entities, 74,983,525 aliases, 5,659,191 distinct edges and all
+5,677,515 statement witnesses. Import/index/integrity took 816.399 seconds,
+277,036 KiB process RSS and 20,852,143,958 sampled peak run bytes. Limits unchanged.
 
-All jobs COMPLETE: import87682, audit47772, accountingbuild33676, witnessbuild28974,
-witness/raw-view directcalls. Scopesinactive; no owned modelworkers/authmounts.
-Retained candidate/import source b44df61; final-candidate/reader bba402d. Source
-pilot remainsread-only; originalrawfiles andallfailedhelper/testlogs preserved.
+Independent audit: 954 raw rows, exact independent counts, 853 public name
+queries and 110 additional witness probes pass. Witness probes include 37
+ordinary answers, 59 sets and 13 truncated sets; largest count 1,756. They use
+synthetic prescribed relations, not a QA accuracy evaluation. Raw-view JSON/
+native parity matches all 853 ordinary/set outputs. Existing 22,302 TRAIN/DEV
+outputs and main 28/28 checks in both modes remain unchanged.
 
-Next integrate the full branch since91d702b (including58a172c and08fb892 plans/audit,
-whichare notyetinroot), then runcentralworkspace checks and compare source/binary
-provenance. Worktreecompatibility alreadyprovedall22302knownquestions bothmodes
-andmain28/28eachplain/intent. Do notrerunlargeimport orauditwithoutnewdata/code
-reason. Publishonly reviewedhead withgreenCI. Keep scores unchanged: theseare
-storage/query checks, notQAaccuracy. Then freeze a separate strictjoint QA
-coverage experiment onapprovedCAL/DEV using the fixed publicgraph andmodel.
-Do notfetchtheother85claimshards withouta separateboundedplan.
+All experiment/build jobs complete. Import87682, audit47772, helper33676 and
+28974, central build3005 are terminal; no model workers or auth mounts. Preserve
+all inputs, original binaries, partial-helper logs and artifacts. Do not rerun
+completed large import/audits without a new reason.
+
+Next publish the reviewed root head after CI passes. Then freeze a separate
+strict entity/relation/answer QA experiment on approved CAL/DEV, using the fixed
+public graph and existing model. No QA questions have run against it yet. The
+other 85 claim shards remain unfetched pending a separate bounded plan.

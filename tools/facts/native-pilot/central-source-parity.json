@@ -1,0 +1,98 @@
+{
+  "root_commit": "e5487efb4dab7dbc1e7f62ada7a819c01fb0965f",
+  "worktree_commit": "c873f4bbe1f900a063b90a3d7dfe241d2e1820a9",
+  "files": [
+    {
+      "path": "Cargo.lock",
+      "sha256": "a90784d62bb9d7ff5a48af02ae766fca3ccab7700ec5ddd76e32feb16fee5bd8"
+    },
+    {
+      "path": "crates/facts/Cargo.toml",
+      "sha256": "560ae3ae1850aa70cc1367b87a0df38c76d4f3229ea2957cf89ed809ff7183ad"
+    },
+    {
+      "path": "crates/facts/examples/continuous_predictions.rs",
+      "sha256": "d38ad548444210cf177a3d647f2dc6e7188ab04f9816f9af34f3ee3521514934"
+    },
+    {
+      "path": "crates/facts/examples/disk_parity.rs",
+      "sha256": "89433e20fb161af46854c8a2ad0ec2dcc624d04ce3f62bd4dd66b26261770008"
+    },
+    {
+      "path": "crates/facts/examples/disk_witness_probe.rs",
+      "sha256": "47738871a0c70f222fac76992756ae7e499358a80da6e7dd93bf42aea88c1afb"
+    },
+    {
+      "path": "crates/facts/examples/pilot_counts.rs",
+      "sha256": "6c22c3a998bef475c627f4ca1724b456b9b443fbd0bd168512c58f086033b5d3"
+    },
+    {
+      "path": "crates/facts/examples/temporal_proof.rs",
+      "sha256": "ecfcca9c9b588516e61a3b3cecff8afc35cf8fb21ffd2e9a408880226f6379d2"
+    },
+    {
+      "path": "crates/facts/examples/timed_matching_proof.rs",
+      "sha256": "33753137496657832c2196398d5491b20b139db2588d90498d24afc2bf33e856"
+    },
+    {
+      "path": "crates/facts/src/disk.rs",
+      "sha256": "4eae046c18f4506e3bdcea4a9ad0d23f3a1844195bc23d90aa3f0c431540bebe"
+    },
+    {
+      "path": "crates/facts/src/disk/pilot.rs",
+      "sha256": "d2dcdfff14ad043a8218759475b8df1ae51e3d0a5c0c1a5f9bfd3ca2f3358e8c"
+    },
+    {
+      "path": "crates/facts/src/lib.rs",
+      "sha256": "4aaf3ef99951f0558cd981bcd68b6da1eaa3b9a362c8732033e82c39e75bf6c1"
+    },
+    {
+      "path": "crates/facts/src/main.rs",
+      "sha256": "fb3cc5077379eeee683f18cfccde4baf8c634599b2c0d9a73e4e7631446101a0"
+    },
+    {
+      "path": "crates/facts/src/matching.rs",
+      "sha256": "c96cc0e655fc044c20a5cdcf61c5b3982d4b639599b0027ef3420248b1b8f82a"
+    },
+    {
+      "path": "crates/facts/src/temporal.rs",
+      "sha256": "0a88d18e18f7ae0682cc132d24df3bca97a23576cb5807e60626703f12866740"
+    },
+    {
+      "path": "crates/facts/src/timed_matching.rs",
+      "sha256": "44f9ff8b6b9ed254a36fc91ad64f48576f27aed03cbbd6e7f29ec631ce881a3c"
+    },
+    {
+      "path": "crates/facts/src/verification.rs",
+      "sha256": "c385ea702f42ecc7c9fae43af40835ed7b3eb613fdec868bedd26077a4575add"
+    },
+    {
+      "path": "crates/facts/tests/disk.rs",
+      "sha256": "5292a986586c7c69a6cebf12d86888a9b0198a2bbb4d9a121cee72171966dfb6"
+    },
+    {
+      "path": "crates/facts/tests/matching.rs",
+      "sha256": "b695704e5400d89c7046ebfeddaf45d49f91015eecbb82a742121e70b772dd6a"
+    },
+    {
+      "path": "crates/facts/tests/parent_matching.rs",
+      "sha256": "d8dd0964f66098cb13aa9e383b7b6e97ceb166b0f902f831139fa5e2d424fa24"
+    },
+    {
+      "path": "crates/facts/tests/pilot.rs",
+      "sha256": "f9c73c93c8ed1a12a5e5c8a60af597b0e18f0c7b248fa6e1bcaa48910cc8e647"
+    },
+    {
+      "path": "crates/facts/tests/temporal.rs",
+      "sha256": "5fb560092a4325a5f718764c77a3d792ee75b541f2ca4526803a8bf4e3254f5f"
+    },
+    {
+      "path": "crates/facts/tests/timed_matching.rs",
+      "sha256": "28c393902b719b0037aa072eae0fc4fe38fca41b39d8fe56e649b1cec6a3ec99"
+    },
+    {
+      "path": "crates/facts/tests/verification.rs",
+      "sha256": "f7e49cd2de59ff2806bee4d06be18880e62a9bba97a43285c039d823734e4c36"
+    }
+  ]
+}

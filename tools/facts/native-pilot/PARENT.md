@@ -107,3 +107,12 @@ blindly rerun over completed outputs. Commands and source manifests are included
 The next experiment must freeze a separate strict entity/relation/answer QA
 comparison before running approved calibration or development questions against
 this graph. Broader claim acquisition requires its own justified, bounded plan.
+
+## Central integration
+
+Root merge `e5487ef` integrates the reviewed worktree at `c873f4b`. All 23 tracked
+facts files and Cargo.lock match byte for byte. Central workspace formatting,
+clippy, release build and strict 4/4 fixture smoke passed. The integrated CLI
+also reproduced all 853 public source-name predictions exactly. Reports and
+binary hashes are in `central-source-parity.json`, `central-workspace.log` and
+`central-query-report.json`. No new graph construction or QA tuning was needed.

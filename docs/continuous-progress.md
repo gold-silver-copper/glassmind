@@ -2,55 +2,53 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — native public Wikidata importer implemented and validated;
-full84,990,012-name/5,677,515-statement import RUNNING underfrozenresourcegates.
-Worktreecontinuous/wikidata-native at58427be. Productionroot notyetintegrated.
-Known completed-worker tokens201,926,299 (cached input counted once; parent and
-interrupted usage excluded). No model worker ran. One rootimportjob active.
+This turn: PROGRESS — the independent public Wikidata graph passed native
+ingestion, source accounting and positive query checks, and is integrated.
+Known completed-worker tokens: 201,926,299 (cached input counted once; parent
+and interrupted usage excluded). No model workers ran in this batch.
 
-## ACTIVE native public ingestion: monitor existing job87682
+## Native public ingestion passed; publishing is next
 
-WORK/wikidata-native, branchcontinuous/wikidata-native, HEAD58427be, clean.
-Sourceimplementationb44df61; subsequentliteral-output-pathfixbba402d.
-Read tools/facts/native-pilot/PROGRESS.md beforework. Fullimplementationnowexists;
-do not follow oldersections sayingonlyplan/auditexists.
-Externalrun WORK/coordinator/wikidata-native. Session87682 RUNNING, scope
- glassmind-wikidata-native-import.scope, supervisorPID749960/importPID749961.
-FrozenimportcandidateSHA601e16d776c129a65998f6f650b5d5b5b189ece95af8743bd6fc075ebdfb7620
-copiedseparatelyfrombuildcache; sourceb44df61. Sourcehashverified4.995s, rowsvalidated
-20.683s, entitiesloaded45.365s, aliasesloaded249.083s, edges/witnesses263.802s;
-secondaryindexesbuilding. Checkimport-stages.jsonl,
-import-supervisor.log andactualPID/scope. Newnative.sqlite is UNCOMMITTED/PARTIAL
-untilimportcompletes. Do not startduplicatejob, alterrunningbinary, or overwriteoutputs.
-Fixedlimits24GiBoutput/32GiBaddedrun/3600s8GiB0swap; supervisorcountsdeletedsortfiles.
+Root merge e5487ef integrates WORK/wikidata-native at c873f4b. Worktree is clean
+and root-owned. Production source b44df61 plus literal SQLite path fix bba402d;
+subsequent commits add helpers/reports. All 23 facts files and Cargo.lock match
+between root and worktree. Read tools/facts/native-pilot/PARENT.md and PROGRESS.md.
 
-Format2hasportablepublicsourceprovenance, Rustnormalized/casingkeys, originalstatement
-GUID/rank/qualifier/source-rowwitnesses, dedupgraph, aliaslanguage/kindmask, occurrence
-count/firstrow. NoPythonkeysconsumed. V1serializedJSONinfo shapeunchanged. Sixrawfiles
-and10.367GBpilot remainreadonly. No modelworkers/newdownloads/QAinputinconstruction.
+Run: WORK/coordinator/wikidata-native. Read-only native.sqlite is 12,306,595,840
+bytes, SHA256 f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b.
+59,853,388 entities; 74,983,525 aliases; 5,659,191 distinct edges; all 5,677,515
+statement witnesses, including 707,253 qualified. Rust keys rebuilt from original
+names; no Python keys, QA selection, new downloads or model calls. Embedded
+provenance covers six public files, row mappings, license, revisions and scope.
 
-ReviewfoundSQLitecouldreinterpretrelativefile:names; fixedallnativeoutput/readpaths
-bycanonicalizingliteralpaths. Firstpathregressionfailurepreserved, finalbothformat
-CLItestsproveexistingURItargetunchanged. Runningimportusesabsolutepathsandisunaffected;
-no needrepeatfrozenlargeimport. 33factstests, workspacefmt/clippy/release and4/4smoke
-pass. UpdatedCLImatchesall19481TRAIN+2821DEV ordinary/setoldoutputs; main28/28bothmodes.
-Currentfinalfactsbinaryincoordinator/disk-facts/targetSHA8a284fd1f4c377f61d97bc78d30a80abcb116a3e15d794c93b6aa0a8e6af5492;
-mainSHA9b80e692728b204ba2dd118a663fec3b0818a4fb4768a5c39a1406b1b1eb26c9.
-Finalreader copiedtoexternalrun/final-candidate; preparedauditusesit. Original
-importcandidate remainsunchanged. No extra model calls or changed acceptance gates.
-Completejobs99690/86376/37363/36372/58672/16569; onlyimport87682active.
+Import/index/integrity completed in 816.399s under fixed 3600s/24GiB output/32GiB
+added-run/8GiB/no-swap gates. Process peak RSS 277,036KiB; sampled peak run bytes
+20,852,143,958. Scope hit its cache-inclusive cap without OOM. Source audit took
+69.283s: all954 raw samples and independent entity/alias/edge/rank counts match.
+Exactly34,481 raw name rows excluded by the existing native two-byte boundary.
+853 source-name queries:677 unique links/176 ambiguities;50 graph refusals match
+the original source, no substantive answers. Additional fixed59-witness probes
+check110 cases (8 unnamed anchors):37 ordinary answers,59 sets,13 truncations,
+maximum1756 matches. Synthetic prescribed relations; NOT QA accuracy. All853
+raw-view JSON/native ordinary/set comparisons pass.
 
-NEXT: monitor87682. Afterpass, runexternalrun/audit-native.py withpriorPyArrowvenv
- WORK/coordinator/wikidata-snapshot/venv/bin/python under600s8GiB0swap scope;
-TMPDIRandSQLITE_TMPDIR=externalrun/tmp. It checks954fixedrawsamples, fullwitnesses,
-aliasprovenance/nativekeysagainstsmallv1rawview, independententity/edgededupcounts,
-rank/qualifiercounts,indexedplansandsource-namequeries. Querymemorymeasuredfreshlauncher.
-Thenrun disk_parity example onraw-sample-view.json/raw-sample-view.sqlite with
-source-name-queries.txt (boundedrawviewparity; rebuildexampleinrequiredcargoscope).
-Do notrepeatcanonicalprerequisiteoroldcompatibility withoutnewcode/reason. Preserve
-failuresanddo notrelaxgates. Integration/PRpublishingawaitpublicgateandauditresults.
-Afteringestionpasses, freeze separate strictjointQAexperiment; nonehasrunyet.
+33 facts tests and exhaustive Unicode eligibility helper pass. Existing19481
+TRAIN+2821DEV ordinary/set outputs match; main28/28 each plain/intent unchanged.
+Central workspace fmt/clippy/release and strict4/4 smoke pass. Integrated CLI
+reproduces all853 public name predictions. See central-* reports for binaries.
+Import source/binary retained separately from final reader; literal-path fix does
+not affect the absolute-path import. Original source pilot/raw files remain
+read-only. All experiments complete:87682/47772/33676/28974/3005 and prior tests.
+No owned workers, auth mounts or active experiment scopes. Do not repeat them.
 
+NEXT: finish report/checkpoint commit, push `harness`, open PR against `main`,
+review exact head and merge only with its green CI and --match-head-commit. No
+PR was open at the last read. Scores stay unchanged for this storage batch.
+Then freeze a separate strict joint QA experiment on approved every-tenth TRAIN
+CAL/DEV with the pinned public graph and existing relation model. No such QA
+inference has run yet. Do not fetch remaining85 shards without a separate plan.
+
+Historical checkpoints below are superseded by this current handoff.
 
 ## PR48 merged; current task is native public pilot ingestion
 
