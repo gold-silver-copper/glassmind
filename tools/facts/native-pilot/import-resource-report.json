@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/candidate",
+    "import-wikidata-pilot",
+    "--pilot",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/pilot.sqlite",
+    "--manifest",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/source-manifest.json",
+    "--database",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/native.sqlite"
+  ],
+  "binary_sha256": "601e16d776c129a65998f6f650b5d5b5b189ece95af8743bd6fc075ebdfb7620",
+  "max_seconds": 3600,
+  "max_output_bytes": 25769803776,
+  "max_added_run_bytes": 34359738368,
+  "memory_max": "8G",
+  "memory_swap_max": 0,
+  "returncode": 0,
+  "failure": null,
+  "seconds": 816.3992840689607,
+  "peak_process_rss_kib": 277036,
+  "peak_added_run_bytes_sampled": 20852143958,
+  "output_bytes": 12306595840,
+  "passed_resource_gate": true
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/final-candidate",
+    "predict-disk",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+    "--database",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/native.sqlite"
+  ],
+  "seconds": 0.12008661997970194,
+  "peak_rss_kib": 74136,
+  "launcher_peak_rss_kib": 12672,
+  "returncode": 0,
+  "note": "One local source-name batch including startup; no QA accuracy or general latency claim."
+}

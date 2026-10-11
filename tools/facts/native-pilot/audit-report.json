@@ -1,0 +1,125 @@
+{
+  "raw_file_checks": [
+    {
+      "table": "claims",
+      "path": "all/part-00-of-86.parquet",
+      "raw_samples": 96
+    },
+    {
+      "table": "labels",
+      "path": "en/part-0-of-2.parquet",
+      "raw_samples": 249
+    },
+    {
+      "table": "labels",
+      "path": "en/part-1-of-2.parquet",
+      "raw_samples": 249
+    },
+    {
+      "table": "labels",
+      "path": "mul/part-0-of-1.parquet",
+      "raw_samples": 201
+    },
+    {
+      "table": "aliases",
+      "path": "en/part-0-of-1.parquet",
+      "raw_samples": 149
+    },
+    {
+      "table": "aliases",
+      "path": "mul/part-0-of-1.parquet",
+      "raw_samples": 10
+    }
+  ],
+  "raw_samples": 954,
+  "sampled_statement_witnesses": 59,
+  "sampled_names": 854,
+  "sampled_ineligible_names": 1,
+  "query_skipped_for_line_or_size_limits": 0,
+  "source_name_queries": 853,
+  "linked": 677,
+  "graph_results_checked_against_original_pilot": 50,
+  "substantive_recorded_answers": 0,
+  "ambiguous": 176,
+  "query_seconds": 0.1408665970666334,
+  "entities": 59853388,
+  "aliases": 74983525,
+  "edges": 5659191,
+  "accepted_name_rows": 84955531,
+  "excluded_short_name_rows": 34481,
+  "independent_name_accounting": {
+    "distinct_original_aliases": 75010931,
+    "eligible_aliases": 74983525,
+    "eligible_name_rows": 84955531,
+    "excluded_name_rows": 34481,
+    "seconds": 46.623240382,
+    "source_rows": 84990012
+  },
+  "ranks_qualifiers": [
+    [
+      0,
+      0,
+      4968743
+    ],
+    [
+      0,
+      1,
+      704320
+    ],
+    [
+      1,
+      0,
+      1519
+    ],
+    [
+      1,
+      1,
+      2933
+    ]
+  ],
+  "query_plans": {
+    "forward": [
+      [
+        2,
+        0,
+        55,
+        "SEARCH edges USING PRIMARY KEY (subject=? AND property=?)"
+      ]
+    ],
+    "inverse": [
+      [
+        2,
+        0,
+        55,
+        "SEARCH edges USING COVERING INDEX edges_inverse (property=? AND object=?)"
+      ]
+    ],
+    "alias": [
+      [
+        2,
+        0,
+        56,
+        "SEARCH aliases USING COVERING INDEX aliases_lookup (normalized=?)"
+      ]
+    ]
+  },
+  "database_sha256": "f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b",
+  "seconds": 69.28331210894976,
+  "audit_peak_rss_kib": 804096,
+  "query_resources": {
+    "command": [
+      "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/final-candidate",
+      "predict-disk",
+      "--model",
+      "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+      "--database",
+      "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/native.sqlite"
+    ],
+    "seconds": 0.12008661997970194,
+    "peak_rss_kib": 74136,
+    "launcher_peak_rss_kib": 12672,
+    "returncode": 0,
+    "note": "One local source-name batch including startup; no QA accuracy or general latency claim."
+  },
+  "limitation": "Source-name consistency and runtime checks only; no QA accuracy claim."
+}
