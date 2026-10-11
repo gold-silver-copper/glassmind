@@ -1,6 +1,7 @@
 //! Persistent coding tasks using the existing meaning, dialogue and Rust verifier.
 mod choices;
 mod plans;
+mod revisions;
 use std::{
     collections::BTreeMap,
     fs,
@@ -182,6 +183,10 @@ fn status(session: &CodingSession) -> String {
     if let Some(plan) = &session.plan {
         let mut message = plans::status(plan);
         if let Some(task) = &session.task {
+            let revision = revisions::status(task);
+            if !revision.is_empty() {
+                message.push_str(&format!("\n{revision}"));
+            }
             let choices = choices::status(task);
             if !choices.is_empty() {
                 message.push_str(&format!("\n{choices}"));
@@ -198,6 +203,10 @@ fn status(session: &CodingSession) -> String {
                 t.original_text,
                 t.events.len()
             );
+            let revision = revisions::status(t);
+            if !revision.is_empty() {
+                message.push_str(&format!("\n{revision}"));
+            }
             let choices = choices::status(t);
             if !choices.is_empty() {
                 message.push_str(&format!("\n{choices}"));
@@ -238,7 +247,19 @@ fn apply(session: &mut CodingSession, path: &Path) -> Result<String, String> {
     };
     let system = open(&session.repository);
     let request = session.task.as_ref().ok_or("task missing")?.request.clone();
-    let refreshed = match system.world.propose(&request, &mut Vec::new()) {
+    let fresh = if session
+        .task
+        .as_ref()
+        .is_some_and(|task| task.revision.is_some())
+    {
+        revisions::proposal(session)
+    } else {
+        system
+            .world
+            .propose(&request, &mut Vec::new())
+            .map_err(|e| format!("{e:?}"))
+    };
+    let refreshed = match fresh {
         Ok(reply) => reply,
         Err(trouble) => {
             if let Some(task) = &mut session.task {
@@ -474,7 +495,7 @@ pub fn run(
                 if session.plan.is_some() {
                     plans::resume(&mut session, &path, explain, steps)?
                 } else {
-                    apply(&mut session, &path)?
+                    revisions::advance(&mut session, &path, steps)?
                 }
             }
             "undo" | "undo that change" | "undo the last change" => undo(&mut session, &path)?,
@@ -492,7 +513,10 @@ pub fn run(
                 || glassmind_english_rust::add_fields::request(text).is_some() =>
             {
                 if let Some(task) = &mut session.task
-                    && matches!(task.status, TaskStatus::Ready | TaskStatus::Blocked)
+                    && matches!(
+                        task.status,
+                        TaskStatus::Ready | TaskStatus::Blocked | TaskStatus::Revising
+                    )
                 {
                     task.status = TaskStatus::Cancelled;
                 }
@@ -583,7 +607,10 @@ fn request(
     );
     if !answered_question
         && let Some(task) = &mut session.task
-        && matches!(task.status, TaskStatus::Ready | TaskStatus::Blocked)
+        && matches!(
+            task.status,
+            TaskStatus::Ready | TaskStatus::Blocked | TaskStatus::Revising
+        )
     {
         task.status = TaskStatus::Cancelled;
         if !matches!(meaning, Some(Utterance::Command(_))) {
@@ -599,6 +626,18 @@ fn request(
             text.to_owned(),
             plain(&turn.reply).clone(),
         ));
+        if let Some(task) = &mut session.task {
+            revisions::begin(task);
+            if task.status == TaskStatus::Revising {
+                if !explain {
+                    message =
+                        "No complete repair yet. Preparing bounded revisions in an isolated copy."
+                            .into();
+                } else {
+                    message.push_str("\nPreparing bounded revisions in an isolated copy.");
+                }
+            }
+        }
         let after = fingerprint(&snapshot(&session.repository)?);
         if after != session.revision {
             invalidate(session, after);
@@ -607,7 +646,10 @@ fn request(
         }
         save(path, session)?;
         if steps > 1 {
-            message.push_str(&format!("\n{}", apply(session, path)?));
+            message.push_str(&format!(
+                "\n{}",
+                revisions::advance(session, path, steps - 1)?
+            ));
         } else if !within_plan {
             message.push_str(&format!("\n{}", status(session)));
             if session
@@ -616,6 +658,12 @@ fn request(
                 .is_some_and(|task| task.status == TaskStatus::Ready)
             {
                 message.push_str("\nUse continue to execute the recorded proposal.");
+            } else if session
+                .task
+                .as_ref()
+                .is_some_and(|task| task.status == TaskStatus::Revising)
+            {
+                message.push_str("\nUse continue to try the next supported repair in scratch.");
             }
         }
     }
@@ -1296,5 +1344,205 @@ mod tests {
         f.turn(1, "other one");
         assert_eq!(f.source(), source);
         assert_eq!(f.state().task.unwrap().choices.unwrap().selected, Some(0));
+    }
+    const REVISION_SOURCE: &str = "pub fn combine(a: i32, b: i32) -> i32 { let result = a - b; result += 0; result }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(combine(7,3),10); assert_eq!(combine(-5,2),-3); } }\n";
+
+    #[test]
+    fn repair_uses_compiler_then_test_evidence_before_touching_source() {
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(1, "fix the tests");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Revising);
+        assert_eq!(f.source(), REVISION_SOURCE);
+        f.turn(1, "continue");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Revising);
+        let evidence = task.revision.unwrap();
+        assert_eq!(evidence.attempts.len(), 1);
+        assert!(
+            evidence
+                .attempts
+                .first()
+                .unwrap()
+                .after
+                .iter()
+                .any(|p| p.kind == glassmind_world_rust::RustKind::Test)
+        );
+        assert_eq!(f.source(), REVISION_SOURCE);
+        f.turn(1, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Ready);
+        assert_eq!(f.source(), REVISION_SOURCE);
+        f.turn(1, "continue");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Completed);
+        assert_eq!(task.revision.unwrap().attempts.len(), 2);
+        assert!(f.source().contains("let mut result"));
+        assert!(f.source().contains("a + b"));
+        f.turn(1, "undo");
+        assert_eq!(f.source(), REVISION_SOURCE);
+    }
+
+    #[test]
+    fn revision_completes_within_the_default_stage_budget() {
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(4, "fix the tests");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("a + b"));
+    }
+
+    #[test]
+    fn revision_can_unblock_later_plan_operations() {
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(
+            8,
+            "fix the tests; then rename function combine to sum; then check the tests",
+        );
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert_eq!(plan.current, 3);
+        assert_eq!(
+            plan.steps
+                .first()
+                .unwrap()
+                .task
+                .as_ref()
+                .unwrap()
+                .revision
+                .as_ref()
+                .unwrap()
+                .attempts
+                .len(),
+            2
+        );
+        assert!(f.source().contains("fn sum("));
+        assert!(f.source().contains("a + b"));
+    }
+
+    #[test]
+    fn an_unsupported_repair_stops_without_repeating_or_editing() {
+        let f = Fixture::new("pub fn broken() -> u32 { false }\n");
+        let original = f.source();
+        f.turn(8, "fix the tests");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Blocked);
+        assert!(task.revision.as_ref().unwrap().stopped.is_some());
+        f.turn(8, "continue");
+        assert_eq!(f.state().task.unwrap(), task);
+        assert_eq!(f.source(), original);
+    }
+
+    #[test]
+    fn saved_repair_changes_are_not_execution_authority() {
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(2, "fix the tests");
+        let mut state = f.state();
+        let revision = state.task.as_mut().unwrap().revision.as_mut().unwrap();
+        revision
+            .attempts
+            .first_mut()
+            .unwrap()
+            .changes
+            .first_mut()
+            .unwrap()
+            .new = "tampered".into();
+        save(&f.session, &state).unwrap();
+        f.turn(8, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        assert_eq!(f.source(), REVISION_SOURCE);
+    }
+
+    #[test]
+    fn revision_does_not_overwrite_external_changes_or_resume_after_cancel() {
+        for control in ["cancel task", "undo", "choose 1", "implement other"] {
+            let f = Fixture::new(REVISION_SOURCE);
+            f.turn(2, "fix the tests");
+            f.turn(1, control);
+            f.turn(8, "continue");
+            assert_eq!(f.source(), REVISION_SOURCE, "{control}");
+            assert_eq!(f.state().task.unwrap().status, TaskStatus::Cancelled);
+        }
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(2, "fix the tests");
+        let changed = format!("{REVISION_SOURCE}// external change\n");
+        fs::write(f.root.join("src/lib.rs"), &changed).unwrap();
+        f.turn(8, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), changed);
+    }
+    #[test]
+    fn derived_trait_then_test_repair_uses_the_new_diagnostics() {
+        let source = "pub struct Marker;\npub fn show() -> String { format!(\"{:?}\", Marker) }\npub fn combine(a: i32, b: i32) -> i32 { a - b }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(combine(7,3),10); assert_eq!(combine(-5,2),-3); } }\n";
+        let f = Fixture::new(source);
+        f.turn(8, "fix the tests");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Completed);
+        assert_eq!(task.revision.unwrap().attempts.len(), 2);
+        assert!(f.source().contains("a + b"));
+        assert!(f.source().contains("Debug"));
+        f.turn(1, "undo");
+        assert_eq!(f.source(), source);
+    }
+
+    #[test]
+    fn a_composed_repair_is_reproved_before_application() {
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(3, "fix the tests");
+        let mut state = f.state();
+        assert_eq!(state.task.as_ref().unwrap().status, TaskStatus::Ready);
+        let Reply::Remedy { changes, .. } = &mut state
+            .task
+            .as_mut()
+            .unwrap()
+            .events
+            .last_mut()
+            .unwrap()
+            .result
+        else {
+            panic!("composed remedy missing")
+        };
+        changes
+            .first_mut()
+            .unwrap()
+            .new
+            .push_str("// forged extra change\n");
+        save(&f.session, &state).unwrap();
+        f.turn(8, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), REVISION_SOURCE);
+    }
+
+    #[test]
+    fn revision_evidence_ignores_process_prose_but_rechecks_code() {
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(2, "fix the tests");
+        let mut state = f.state();
+        let attempt = state
+            .task
+            .as_mut()
+            .unwrap()
+            .revision
+            .as_mut()
+            .unwrap()
+            .attempts
+            .first_mut()
+            .unwrap();
+        for item in attempt.before.iter_mut().chain(&mut attempt.after) {
+            item.detail = Some("diagnostic process ID changed".into());
+        }
+        save(&f.session, &state).unwrap();
+        f.turn(8, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("a + b"));
+    }
+
+    #[test]
+    fn an_interrupted_revision_is_never_replayed_as_authorization() {
+        let f = Fixture::new(REVISION_SOURCE);
+        f.turn(2, "fix the tests");
+        let mut state = f.state();
+        state.task.as_mut().unwrap().status = TaskStatus::Applying;
+        save(&f.session, &state).unwrap();
+        f.turn(8, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), REVISION_SOURCE);
     }
 }

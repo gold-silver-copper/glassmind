@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum TaskStatus {
     Ready,
+    Revising,
     Applying,
     Completed,
     Blocked,
@@ -16,6 +17,7 @@ pub enum TaskStatus {
 pub enum TaskStage {
     Proposed,
     Applied,
+    Revised,
 }
 
 /// Store typed observations, not a claim inferred from the wording of a reply.
@@ -37,6 +39,8 @@ pub struct Task<O: Ontology> {
     pub events: Vec<TaskEvent<O>>,
     #[serde(default)]
     pub choices: Option<TaskChoices<O>>,
+    #[serde(default)]
+    pub revision: Option<TaskRevision<O>>,
 }
 
 impl<O: Ontology> Task<O> {
@@ -65,6 +69,7 @@ impl<O: Ontology> Task<O> {
             _ => None,
         };
         Self {
+            revision: None,
             choices,
             request,
             original_text,
@@ -129,4 +134,23 @@ pub struct PlanStep<O: Ontology> {
 pub struct TaskChoices<O: Ontology> {
     pub candidates: Vec<O::Item>,
     pub selected: Option<usize>,
+}
+
+/// Bounded repair evidence. Intermediate changes belong to an isolated trial;
+/// only the host can turn a fully checked trial into an applicable proposal.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub struct TaskRevision<O: Ontology> {
+    pub initial: Vec<O::Item>,
+    pub attempts: Vec<RevisionAttempt<O>>,
+    pub stopped: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub struct RevisionAttempt<O: Ontology> {
+    pub changes: Vec<O::Change>,
+    pub before: Vec<O::Item>,
+    pub after: Vec<O::Item>,
+    pub source_after: String,
 }

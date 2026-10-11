@@ -19,7 +19,7 @@ glassmind do ./my-library --session ./coding-task.json 'show task'
 ```
 
 The default four-stage budget proposes and applies through the existing Rust
-verifier. `--steps` accepts 1 through 8 semantic stages per invocation. `--steps 1` stops after proposing; `continue`, `apply it` or `yes` executes
+verifier. `--steps` accepts 1 through 8 semantic stages per invocation. `--steps 1` stops after initial inspection; `continue`, `apply it` or `yes` advances
 the saved task. It does not repeatedly retry a blocked or completed task. A saved
 repair with no remaining problems is already complete. `fix the tests` uses native
 test verification; some renames use a build check, which does not prove behavior
@@ -70,7 +70,7 @@ Unsupported or conditional clauses refuse the whole new plan before any edits.
 A proposal and its application each consume a stage; a read-only question uses
 one. `continue` resumes the recorded next stage after a restart. Each edit uses
 the existing native verifier. A failed check or blocked action stops the tail;
-completed earlier edits remain in place. There is no automatic retry. `show task`
+completed earlier edits remain in place. A repair can use the bounded revision process described below. `show task`
 reports completed operations and the next clause. Undo restores only the last
 verified edit and cancels the remaining plan. Answered read-only questions can
 interrupt a pending plan without discarding it. A new action replaces the plan.
@@ -92,6 +92,29 @@ explicit qualified rename. Unsupported targets can still remain blocked. After
 a successful rename, `rename it` refers to the selected item's new name, even
 after a build/test check or diagnostic question about the whole repository.
 
+## Bounded repair revisions
+
+A repair request that has no complete proposal can try up to four revisions in
+an isolated copy. Each trial uses the existing compiler suggestions, supported
+trait/index repairs or checked test-repair models. The resulting diagnostics
+select the next supported candidate. This can fix a compiler error first and
+then repair the test failure that compilation exposes.
+
+The real repository stays untouched throughout the trial. Every candidate and
+its before/after diagnostics are recorded in the task. One trial uses one stage
+of `--steps`; `continue` reconstructs the saved trial and checks its candidates
+again. The four-attempt limit persists across invocations. Repeated source or
+diagnostics, an unsupported next repair, or exhausted attempts stop the task.
+An interrupted or externally stale task is never automatically replayed.
+
+Once the requested check passes in scratch, Glassmind composes one final
+proposal. Applying it consumes another stage, independently replays the trial,
+and uses the native verifier and rollback on the real source. A build check
+still proves compilation only; a test check covers only those tests. Undo restores
+all edits from the successful composed action together. A repair inside an
+ordered plan must finish before later operations run. `show task` reports the
+attempt count, diagnostic counts and stopping reason.
+
 Function implementation and add-field commands remain available through `do`
-without `--session`. Conditional branches, automatic revision strategies and
+without `--session`. Conditional branches, arbitrary new repair families and
 general conversational constraints are not yet implemented by the controller.

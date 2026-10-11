@@ -234,18 +234,24 @@ pub(super) fn resume(
         }
         save(path, session)?;
         let (message, result, task, completed, blocked) = if let Some(task) = step.task {
-            if task.status != TaskStatus::Ready || session.task.as_ref() != Some(&task) {
+            if !matches!(task.status, TaskStatus::Ready | TaskStatus::Revising)
+                || session.task.as_ref() != Some(&task)
+            {
                 invalidate(session, session.revision.clone());
                 break;
             }
-            let message = apply(session, path)?;
+            let message = revisions::advance(session, path, 1)?;
             let task = session
                 .task
                 .clone()
                 .ok_or("current plan task disappeared")?;
             let completed = task.status == TaskStatus::Completed;
             let result = task.events.last().map(|e| e.result.clone());
-            (message, result, Some(task), completed, !completed)
+            let blocked = !matches!(
+                task.status,
+                TaskStatus::Ready | TaskStatus::Revising | TaskStatus::Completed
+            );
+            (message, result, Some(task), completed, blocked)
         } else {
             session.task = None;
             let observed = request(session, path, &step.text, explain, 1, true)?;
@@ -255,7 +261,10 @@ pub(super) fn resume(
                     .clone()
                     .ok_or("action did not produce a task")?;
                 let completed = task.status == TaskStatus::Completed;
-                let blocked = !matches!(task.status, TaskStatus::Ready | TaskStatus::Completed);
+                let blocked = !matches!(
+                    task.status,
+                    TaskStatus::Ready | TaskStatus::Revising | TaskStatus::Completed
+                );
                 let result = completed.then_some(observed.reply);
                 (observed.message, result, Some(task), completed, blocked)
             } else {
