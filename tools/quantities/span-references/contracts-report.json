@@ -1,0 +1,177 @@
+{
+  "total": 34,
+  "passed": true,
+  "semantic_limit_demonstrated": true,
+  "results": [
+    {
+      "name": "complete-native-shapes",
+      "rejected": false,
+      "mechanically_accepted": 3
+    },
+    {
+      "name": "extra-top-field",
+      "rejected": true,
+      "reason": "unexpected object fields"
+    },
+    {
+      "name": "missing-row",
+      "rejected": true,
+      "reason": "row count"
+    },
+    {
+      "name": "duplicate-row",
+      "rejected": true,
+      "reason": "row identity"
+    },
+    {
+      "name": "wrong-id",
+      "rejected": true,
+      "reason": "row identity"
+    },
+    {
+      "name": "unknown-status",
+      "rejected": true,
+      "reason": "assessment"
+    },
+    {
+      "name": "refusal-with-program",
+      "rejected": true,
+      "reason": "nonaccepted row has programs"
+    },
+    {
+      "name": "resolved-without-program",
+      "rejected": true,
+      "reason": "accepted program count"
+    },
+    {
+      "name": "missing-leaf",
+      "rejected": true,
+      "reason": "assignment count"
+    },
+    {
+      "name": "duplicate-leaf",
+      "rejected": true,
+      "reason": "leaf identity"
+    },
+    {
+      "name": "boolean-leaf",
+      "rejected": true,
+      "reason": "leaf identity"
+    },
+    {
+      "name": "boolean-source",
+      "rejected": true,
+      "reason": "source reference"
+    },
+    {
+      "name": "negative-source",
+      "rejected": true,
+      "reason": "source reference"
+    },
+    {
+      "name": "unknown-source-kind",
+      "rejected": true,
+      "reason": "source reference"
+    },
+    {
+      "name": "new-constant",
+      "rejected": true,
+      "reason": "source outside full original alternatives"
+    },
+    {
+      "name": "no-role",
+      "rejected": true,
+      "reason": "semantic role text"
+    },
+    {
+      "name": "bad-byte-range",
+      "rejected": true,
+      "reason": "evidence range"
+    },
+    {
+      "name": "split-utf8-codepoint",
+      "rejected": true,
+      "reason": "evidence bytes"
+    },
+    {
+      "name": "invented-quote",
+      "rejected": true,
+      "reason": "evidence bytes"
+    },
+    {
+      "name": "unknown-evidence-field",
+      "rejected": true,
+      "reason": "evidence field"
+    },
+    {
+      "name": "extra-output-field",
+      "rejected": true,
+      "reason": "unexpected object fields"
+    },
+    {
+      "name": "input-cites-other-occurrence",
+      "rejected": true,
+      "reason": "input evidence misses occurrence"
+    },
+    {
+      "name": "constant-only-rationale",
+      "rejected": true,
+      "reason": "constant lacks question justification"
+    },
+    {
+      "name": "step-cites-later-annotation",
+      "rejected": true,
+      "reason": "step evidence misses source calculation"
+    },
+    {
+      "name": "future-reference",
+      "rejected": true,
+      "reason": "future source reference"
+    },
+    {
+      "name": "correlated-commuting-pair",
+      "rejected": false,
+      "mechanically_accepted": 3
+    },
+    {
+      "name": "uncorrelated-repeated-input",
+      "rejected": true,
+      "reason": "program alternatives differ beyond direct commutation"
+    },
+    {
+      "name": "duplicate-program",
+      "rejected": true,
+      "reason": "duplicate correlated program"
+    },
+    {
+      "name": "equivalent-needs-alternatives",
+      "rejected": true,
+      "reason": "accepted program count"
+    },
+    {
+      "name": "noncommuting-numerical-coincidence",
+      "rejected": true,
+      "reason": "program alternatives differ beyond direct commutation"
+    },
+    {
+      "name": "changed-annotated-arithmetic",
+      "rejected": true,
+      "reason": "changed annotated arithmetic"
+    },
+    {
+      "name": "changed-final",
+      "rejected": true,
+      "reason": "final arithmetic"
+    },
+    {
+      "name": "honest-nonacceptance",
+      "rejected": false,
+      "mechanically_accepted": 2
+    },
+    {
+      "name": "equal-valued-distractor-needs-parent-review",
+      "rejected": false,
+      "mechanically_accepted": 3
+    }
+  ]
+}
