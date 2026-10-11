@@ -1,0 +1,23 @@
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt --all 
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4 
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo clippy -p glassmind-dialogue --all-targets -j1 -- -D warnings 
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt --all 
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4 
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo clippy -p glassmind-dialogue --all-targets -j1 -- -D warnings 
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo build -p glassmind-dialogue --release --example context-ledger -j1 
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 tools/dialogue/context-ledger/artifacts/context-ledger tools/dialogue/context-ledger/artifacts/dataset.json tools/dialogue/context-ledger/artifacts /home/gsc/.cache/glassmind/continuous-20261010/contextledger-source/rejected-model.json 
+# Before fit: python3 tools/dialogue/context-ledger/prepare.py (exact input alignment, all source hashes).
+# Initial validation: capped cargo fmt --all; capped cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4 (4 tests).
+# Initial run-checks.sh: 7 tests passed; clippy too_many_arguments failed; helper arguments grouped, features unchanged; initial log preserved.
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/audit.py
+# Initial audit rejected an invalid audit assumption that every TRAIN gold frame was selected. Preserved original script/log; select supported gold frames for metrics, retain all USER turns and all raw gold frames. No fit/model/grid change.
+# Shell environment for every Cargo command: TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/tmp; CARGO_TARGET_DIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/target
+# Construction (historical; do not rerun over final source): python3 tools/dialogue/context-ledger/implement.py, retained as originals/mechanical-construction.py; subsequent test additions/refactor retained in final source.
+# Both audits used the same capped invocation below; first assumption failure and original script retained.
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/audit.py
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/reconstruct.py
+TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/tmp systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt --all -- --check
+TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/tmp systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo build -p glassmind-dialogue --release -j1
+systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/boundary-parity.py
+python3 tools/dialogue/context-ledger/write-report.py
+python3 tools/dialogue/context-ledger/archive.py

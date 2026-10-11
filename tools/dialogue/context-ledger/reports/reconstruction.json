@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "source_rows": 34223,
+    "all_source_class_scores": 4380544,
+    "opportunities": 7086,
+    "rank_scores": 46789,
+    "baseline_CAL_slot_errors": 1073
+  },
+  "source_role_predictions_by_owner": {
+    "Travel_1": 3152,
+    "Calendar_1": 649,
+    "RideSharing_2": 342,
+    "RideSharing_1": 1668,
+    "Hotels_3": 3799,
+    "RentalCars_2": 1928,
+    "Media_1": 313,
+    "Flights_1": 3478,
+    "Events_1": 119,
+    "Weather_1": 2926,
+    "Events_2": 1261,
+    "RentalCars_1": 89,
+    "Services_3": 577,
+    "Services_1": 122,
+    "Restaurants_1": 1013,
+    "Buses_1": 1586,
+    "Services_2": 157,
+    "Buses_2": 1902,
+    "Hotels_2": 2125,
+    "Movies_1": 547,
+    "Homes_1": 512,
+    "Hotels_1": 1535,
+    "Music_2": 211,
+    "Flights_2": 371,
+    "Music_1": 231
+  },
+  "all_source_scores_and_all_rank_scores_reconstructed": true,
+  "all_raw_source_and_candidate_provenance_verified": true,
+  "FIT_label_selection_independently_reconstructed": true
+}

@@ -1,0 +1,515 @@
+{
+  "archive_files_verified": 87,
+  "source_files_verified": 11,
+  "all_train_runtime_inputs_verified": 3174,
+  "baseline_inputs_exactly_aligned": true,
+  "source_checks": {
+    "source_rows": 34223,
+    "class_scores": 4380544,
+    "FIT_rows": 27241,
+    "FIT_NONE_targets": 1912,
+    "CAL_rows": 6982,
+    "CAL_NONE_targets": 663
+  },
+  "max_role_error": 0.00012567510157168726,
+  "FIT_role_labels": 128,
+  "verified": {
+    "FIT_opportunities": 5654,
+    "CAL_opportunities": 1432,
+    "candidate_scores_and_sources": 46789,
+    "decisions": 22912
+  },
+  "max_rank_error": 0.00017847872999254832,
+  "grids": [
+    {
+      "grid": [
+        0.0,
+        2.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1959,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6284,
+        "initial_events": 171,
+        "correct_scored": 510,
+        "correct_inactive": 0,
+        "changed_slot_turns": 698,
+        "inactive_changes": 123,
+        "held_unscored": 123,
+        "wrong_scored": 65
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        2.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1958,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6283,
+        "initial_events": 168,
+        "correct_scored": 509,
+        "correct_inactive": 0,
+        "changed_slot_turns": 687,
+        "inactive_changes": 117,
+        "held_unscored": 117,
+        "wrong_scored": 61
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        4.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1959,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6284,
+        "initial_events": 171,
+        "correct_scored": 510,
+        "correct_inactive": 0,
+        "changed_slot_turns": 698,
+        "inactive_changes": 123,
+        "held_unscored": 123,
+        "wrong_scored": 65
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        4.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1958,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6283,
+        "initial_events": 168,
+        "correct_scored": 509,
+        "correct_inactive": 0,
+        "changed_slot_turns": 687,
+        "inactive_changes": 117,
+        "held_unscored": 117,
+        "wrong_scored": 61
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        8.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1957,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6282,
+        "initial_events": 171,
+        "correct_scored": 508,
+        "correct_inactive": 0,
+        "changed_slot_turns": 696,
+        "inactive_changes": 123,
+        "held_unscored": 123,
+        "wrong_scored": 65
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        8.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1956,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6281,
+        "initial_events": 168,
+        "correct_scored": 507,
+        "correct_inactive": 0,
+        "changed_slot_turns": 685,
+        "inactive_changes": 117,
+        "held_unscored": 117,
+        "wrong_scored": 61
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        16.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1941,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6266,
+        "initial_events": 163,
+        "correct_scored": 489,
+        "correct_inactive": 0,
+        "changed_slot_turns": 649,
+        "inactive_changes": 105,
+        "held_unscored": 105,
+        "wrong_scored": 55
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        16.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1940,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6265,
+        "initial_events": 161,
+        "correct_scored": 488,
+        "correct_inactive": 0,
+        "changed_slot_turns": 639,
+        "inactive_changes": 99,
+        "held_unscored": 99,
+        "wrong_scored": 52
+      },
+      "lost_joint": [
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1960,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6285,
+        "initial_events": 168,
+        "correct_scored": 507,
+        "correct_inactive": 0,
+        "changed_slot_turns": 677,
+        "inactive_changes": 117,
+        "held_unscored": 117,
+        "wrong_scored": 53
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        2.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1959,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6284,
+        "initial_events": 165,
+        "correct_scored": 506,
+        "correct_inactive": 0,
+        "changed_slot_turns": 666,
+        "inactive_changes": 111,
+        "held_unscored": 111,
+        "wrong_scored": 49
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        4.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1960,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6285,
+        "initial_events": 168,
+        "correct_scored": 507,
+        "correct_inactive": 0,
+        "changed_slot_turns": 677,
+        "inactive_changes": 117,
+        "held_unscored": 117,
+        "wrong_scored": 53
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        4.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1959,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6284,
+        "initial_events": 165,
+        "correct_scored": 506,
+        "correct_inactive": 0,
+        "changed_slot_turns": 666,
+        "inactive_changes": 111,
+        "held_unscored": 111,
+        "wrong_scored": 49
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        8.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1958,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6283,
+        "initial_events": 168,
+        "correct_scored": 505,
+        "correct_inactive": 0,
+        "changed_slot_turns": 675,
+        "inactive_changes": 117,
+        "held_unscored": 117,
+        "wrong_scored": 53
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        8.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1957,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6282,
+        "initial_events": 165,
+        "correct_scored": 504,
+        "correct_inactive": 0,
+        "changed_slot_turns": 664,
+        "inactive_changes": 111,
+        "held_unscored": 111,
+        "wrong_scored": 49
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        16.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1940,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6265,
+        "initial_events": 160,
+        "correct_scored": 484,
+        "correct_inactive": 0,
+        "changed_slot_turns": 631,
+        "inactive_changes": 99,
+        "held_unscored": 99,
+        "wrong_scored": 48
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        16.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1939,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6264,
+        "initial_events": 158,
+        "correct_scored": 483,
+        "correct_inactive": 0,
+        "changed_slot_turns": 621,
+        "inactive_changes": 93,
+        "held_unscored": 93,
+        "wrong_scored": 45
+      },
+      "lost_joint": [],
+      "lost_frames": [],
+      "passed": false
+    }
+  ],
+  "result": "REJECTED_CAL; all 16 original gates independently reproduced",
+  "limitation": "Frozen-state overlay; not integrated candidate inference or DEV accuracy"
+}
