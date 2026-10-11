@@ -11,7 +11,12 @@ router/service/reference weights, and all 595 baseline-right turns are retained.
 The baseline is NOT error-free: its **four erroneous copy events persisting
 for 11 scored slot-turns remain unchanged**. New offer additions introduce zero
 wrong claims in this declared dev selection; no broad error-free claim is made.
-Coordinator should independently reproduce before integrating. No commit made.
+Coordinator integration source is `ba98b5a56cef82ba57357256775e7b461fbcf017`.
+Independent training reproduces the model bytes; the integrated binary reproduces
+full predictions and legacy predictions exactly. Frozen baseline replay and
+179-conversation isolation pass. Workspace fmt/clippy/build/strict4/4 smoke and
+six focused tests pass. See `reports/integrated/validation.json`. The worker
+made no commit or publishing action.
 
 ## Hypotheses and training-only decisions
 

@@ -191,6 +191,19 @@
         "reasoning_output_tokens": 5880
       },
       "source": "Grounded predicted-slot transfer with complete new-error audit"
+    },
+    {
+      "track": "dialogue-offers-continuous",
+      "started_unix": 1791691591.9090652,
+      "finished_unix": 1791692009.390227,
+      "usage": {
+        "input_tokens": 1716938,
+        "cached_input_tokens": 1627392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 26330,
+        "reasoning_output_tokens": 6550
+      },
+      "source": "Learned system-offer span selection; final sample/full, added-claim audit and frozen replay"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
