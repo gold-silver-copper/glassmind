@@ -5,15 +5,20 @@ branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Previous goal turn: PROGRESS (prompt clarified). Current turn: PROGRESS; accepted
 comparator and exact quantity comparison, integrated main, completed all gates.
 
-## Current batch ready for PR43
+## PR43 published; next parser experiment active
 
-Source commit04a2289. Both workers terminal, scopes inactive; no active model
-workers. Comparatorfull16303 COMPLETE, workspace50616 COMPLETE, mainbuild1718
+PR43 MERGED https://github.com/gold-silver-copper/glassmind/pull/43
+Reviewedhead225892adb78afe5d9ea567fe4b08790aa7d93b52; CI38147567718 SUCCESS
+14:32:06→14:33:33UTC (87seconds). Merge14f5f30eb00a60452fbfe8b47e5cfc858453835c
+at2026-10-11T14:33:39Z. Source04a2289; journal225892a.
+Both comparator/unitcompare workers terminal, scopes inactive. Comparatorfull16303 COMPLETE, workspace50616 COMPLETE, mainbuild1718
 COMPLETE, main10770 COMPLETE, authority52463 COMPLETE, facts43900 COMPLETE.
 No running native tool sessions remain. Do not repeat these completed gates.
-Next: publish journal/checkpoint commit, push harness, open PR, wait for CI on
-exact reviewed head, then merge with --match-head-commit. After publication,
-reverify archives before removing the two owned worker worktrees/login links.
+Push56556/PR16952/merge8173 COMPLETE. InitialPRattempt26441 used nonexistent
+masterbase and failedwithoutcreation; correctedmainbase succeeded.
+Cleanup COMPLETE: reverified1890originalfiles331096758bytes, removed ONLYowned
+comparator/unitcompareworktrees andtemporaryloginlinks. Frozenassets retained.
+Reports coordinator/batch43-{archive-review,cleanup}.json. Do not repeat publication.
 
 Coding215/765,550refused0fail; all212previouspassesretained. Three changes are
 styles of one arcade-leaderboard bug. Fullresults coordinator/comparator-full/
@@ -22,10 +27,10 @@ Fullcomparison.json records exact765/no regressions. Parent11:5exactrepairs,
 4unchangednegativecontrols,2ambiguitiesrefused. Olddedupveto evidence unchanged,
 no new fallback attempted. Native5alternatives have distinct passing outputs.
 Originalworker archive1684files280126084bytes verified; frozen1639files279019019.
-WorktreeWORK/comparator retained, frozenbinary2343c2ed6db780ee4b2be674800bfcb168f5acfb4e4c74f532ae2df4aab7ce38.
+WorktreeWORK/comparator removed afterarchiveverification, frozenbinary2343c2ed6db780ee4b2be674800bfcb168f5acfb4e4c74f532ae2df4aab7ce38.
 Reports tools/coding-comparator/PARENT.md andparent/. Source exactfrozen.
 
-UnitcompareworkerformerPID3937908 terminal; worktreeWORK/unitcompare retained.
+UnitcompareworkerformerPID3937908 terminal; worktreeWORK/unitcompare removed afterverification.
 Original terminal-originals206files50970674bytes verifiedBEFOREinspection;
 manifestunitcompare-run/terminal-originals-manifest.json. Frozenfinal-hashes126
 files49345825bytes independentlyverified. Worker886576input incl832128cached +
@@ -62,9 +67,47 @@ Workspacefmt/alltargetclippy/release/strict4fixture passed afterintegration:
 coordinator/combined-comparator-unitcompare-check.log. Earlier comparatorchecked
 buildretained coordinator/comparator-checked, not finalquantityintegration.
 
+## LIVE: graph-based dependency parser experiment
+
+WorkerPID4115132 scopeglassmind-continuous-graphsyntax.scope active/running,
+MemoryMax8589934592/MemorySwapMax0 verified; Astrafast/ChatGPTlogin verified,
+provider/API-keyenvstripped. WorktreeWORK/graphsyntax, branchcontinuous/graphsyntax,
+base225892a. TaskWORK/graphsyntax-task.txt; runWORK/graphsyntax-run. Do NOTinspect
+liveworker source/results. No newexternaldata/downloads/teacher calls.
+
+Hypothesis materiallydifferentfromthreefailedbeam/normalization/childfeature
+experiments: learnedfirst-orderlabeledarcscore+exactglobal single-root nonprojective
+maximumspanningtree, structuredaveragedperceptron THREEfixed orderedTRAINepochs.
+Frozenapprovedtaggerreused exactly; no goldtaginference; noDEVretuning/secondfit.
+Explicitnewversion/trainflag, legacydefaultv1model/form/rawbytesunchanged. Model<32MiB,
+128tokens/16KiBtext/128KiBrow/128MiBload, nativejobsbounded600seconds. Workerowns
+readingsyntaxsource/newgraphmodule/bin andnewtools/reading/syntax-graph; maincoordinator.
+CorpusacceptanceLAS>=19673,UAS>=20540/25148words, all2001valid/zerorefusal;68duplicate
+sentences137edgesincludedandreported, no denominatorchanges. First100beforefull.
+Primaryalgorithmreferencehttps://aclanthology.org/H05-1066.pdf openedbyparent;
+exactsingle-rootrequirement isadditionalexplicitcontract, notheuristicrepair.
+
+Readonlyudsyntax-source EWT r2.18 b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c,
+CC-BY-SA4.0. TRAIN15034493bytesSHA d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143;
+DEV1898574SHA39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8.
+Bothhashesverifiedbeforelaunch. NoofficialTESTavailable. ownrun/baseline6files
+28067787bytesverifiedfromsyntaxchildren-run/baseline: model,standalone,forms/raw
+inputs+predictions. Model12554724bytesSHA47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6.
+
+Parentcoordinator/graphsyntax-independent freeze.py/PLAN/cases/freeze.json:
+24freshsentences52corelabelededges; nativebaseline46/52,19/24complete,forms+raw
+outputsretained. No oldcorrectcoreedge maybelost; cannotrescuefailedcorpusgate.
+12independentarbitrary scorematrices2..5nodes with exhaustive legal single-root
+maximumscores+tiecounts frozen decoder-cases.json. Lateradaptermustmatchoptimal
+scoreandvalidtree, notspecifictiedtree. Parentcases notavailable toworker.
+NEXT whileworkeractive: inspectotherindependenttrack evidence or prepareparent
+review adapters withoutreadingcandidate. When terminal, archiveoriginalsource/
+patch/reports/results andverifyhashesBEFOREinspection, thenreviewfrozenmodelgates
+andindependentlyrescore. Allotherjobscomplete; no reason to repeat closedgates.
+
 ## Next experiments
 
-Resume usefuldevelopment immediatelyafterpublishing. Current codinggap: zero
+Graphparserexperiment above iscurrent. Independentnextcodinggap: zero
 implementationDEVcoverage; choose a new PUBLIC TRAIN failure without looking at
 hiddenmaterial. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
 do not duplicate. Deferredthermostatreassociation needs exactoverflowreasoning.
