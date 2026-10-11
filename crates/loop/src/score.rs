@@ -31,6 +31,12 @@ pub struct Label {
     /// The task kind, or the conversation move (`reference`, `meta`, ...).
     pub kind: String,
     pub expected: Response,
+    /// For a "repaired" turn: a directory, relative to the sources, of
+    /// files copied over the repaired source before judging it (tests the
+    /// request did not show, as rustbench hides them). With it, the tests
+    /// must pass too, whatever check was asked for.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub hidden: Option<String>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
@@ -90,8 +96,10 @@ pub fn judge(expected: &Response, outcome: &Outcome) -> Verdict {
                 Verdict::Refused
             }
         }
-        // Not answering is honest whatever was expected.
+        // Not answering is honest whatever was expected; so is offering no
+        // change for a fix.
         (_, Response::Refuse { .. }) => Verdict::Refused,
+        (_, Response::Remedy { changes, .. }) if changes.is_empty() => Verdict::Refused,
         // Asking back is honest for a question, and right when it was expected
         // with the same candidates.
         (Response::Ask { candidates: e }, Response::Ask { candidates: g }) => {
@@ -224,6 +232,7 @@ mod tests {
             tokens: 2,
             rules: Vec::new(),
             text: String::new(),
+            canonical: None,
         }
     }
 

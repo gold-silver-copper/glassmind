@@ -10,6 +10,23 @@ use glassmind_meaning::{
 pub enum Cat {
     /// A whole user turn. The start category.
     Utterance,
+    /// A noun naming a check: "build", "tests".
+    CheckName,
+    /// A noun phrase naming a check: "the build".
+    CheckPhrase,
+    /// A request to fix something that leaves what to fix to a remark
+    /// before it: "(the build is broken,) can you fix it please".
+    Fix,
+    /// A word saying a check does not pass: "failing", "broken".
+    Ailing,
+    /// A check said to pass: "the failing tests pass".
+    PassClause,
+    /// Words after a check saying it is to pass: "passing", "to pass",
+    /// "green".
+    Pass,
+    /// Words between "fix" and what the fix is for, saying nothing more:
+    /// "so", "things so", "it so".
+    FixSo,
     /// A request to change something, without its final punctuation:
     /// "rename `x` to `y`", "`S.x` -> `y`".
     Command,
@@ -321,6 +338,25 @@ pub enum Cat {
     /// A clause saying a thing is inside another: "it's wrapped in
     /// something", "the type just contains `Key`".
     Wrapped,
+    /// A verb saying a check comes out well, perhaps placed: "pass",
+    /// "passing", "all pass right now", "green".
+    Passing,
+    /// A verb saying some of what a check tries comes out badly, perhaps
+    /// placed: "fail", "are failing", "currently failing", "red".
+    Failing,
+    /// A clause saying how a check comes out, which asks whether it does,
+    /// or which of its parts fail: "the tests pass", "tests all passing",
+    /// "any tests failing rn".
+    Outcome,
+    /// A word opening a question whether a check comes out so: "do",
+    /// "are", "whether", "if".
+    Whether,
+    /// Words saying when or where a check is run: "right now", "at the
+    /// moment", "in `dunce`".
+    Setting,
+    /// Words standing for some of what the check just asked about tries,
+    /// left unnamed: "which ones", "some of them", "any", "anything".
+    Portion,
 }
 
 /// English grammatical number, used for agreement.
@@ -406,4 +442,6 @@ pub enum Sem<O: Ontology> {
     Count(u64),
     /// A text the system quotes, such as an unknown word.
     Quote(String),
+    /// A way the world checks itself: building, testing.
+    Check(O::Check),
 }

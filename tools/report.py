@@ -37,6 +37,9 @@ def timeline(history):
             "train_turns": s["train_turns"],
             "size": s["size"],
             "rules": s.get("rules", 0),
+            # One line per task family, training and held-out style.
+            **{f"{fam}_{side}": pct(f.get(f"{side}_right", 0), f.get(f"{side}_turns", 0))
+               for fam, f in s.get("families", {}).items() for side in ("train", "heldout")},
         })
     return points
 
@@ -90,6 +93,9 @@ details{margin-top:16px}table{border-collapse:collapse;font-size:12px;width:100%
 <p>Share of turns answered exactly right, against tokens spent by the loop's agents. Training and validation phrasings come from the training generators; held-out phrasings come from a separate generator, about repositories never seen in training. All requests were written by Claude Opus 5.5; none by a person.</p>
 <div class="legend"><span><i style="background:var(--s1)"></i>training</span><span><i style="background:var(--s2)"></i>held-out</span><span><i style="background:var(--s3)"></i>validation (training styles, unseen repos)</span><span><i style="background:var(--mark)"></i>training data added / changed by hand</span></div>
 <svg id="acc" viewBox="0 0 940 330" role="img" aria-label="Share of turns right over tokens spent"></svg>
+<h2>By task family (questions about code, coding tasks, rustbench)</h2>
+<p>Each family's share right on training and on the held-out style. The held-out set was replaced on 2026-10-10 (dashed line): the first one had been seen by the operator.</p>
+<svg id="fam" viewBox="0 0 940 260" role="img" aria-label="Share right by task family"></svg>
 <h2>Code size (syntax tokens of the mind crates)</h2>
 <svg id="size" viewBox="0 0 940 200" role="img" aria-label="Code size over tokens spent"></svg>
 <details><summary>Table view</summary><div class="wrap"><table id="tbl"></table></div></details>
@@ -123,6 +129,9 @@ function panel(id,H,top,bottom,ymax,ticks,fmt,series){
   hit.addEventListener('mouseleave',()=>{tip.style.display='none';cross.setAttribute('visibility','hidden');});
 }
 panel('acc',330,12,40,100,[0,25,50,75,100],v=>v+'%',[['train','--s1','training'],['heldout','--s2','held-out'],['valid','--s3','validation']]);
+const fams=[...new Set(P.flatMap(p=>Object.keys(p).filter(k=>k.endsWith('_heldout')).map(k=>k.slice(0,-8))))];
+if(fams.length){const cols=['--s1','--s2','--s3','--size'];
+  panel('fam',260,12,40,100,[0,50,100],v=>v+'%',fams.flatMap((f,i)=>[[f+'_train',cols[i%4],f+' training'],[f+'_heldout',cols[i%4],f+' held-out']]));}
 const smax=Math.ceil(Math.max(...P.map(p=>p.size))/10000)*10000;
 panel('size',200,12,40,smax,[0,smax/2,smax],v=>(v/1000).toFixed(0)+'k',[['size','--size','']]);
 document.getElementById('tbl').innerHTML='<tr><th>round</th><th>kind</th><th>tokens (M)</th><th>training %</th><th>validation %</th><th>held-out %</th><th>size</th></tr>'+

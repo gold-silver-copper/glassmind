@@ -2,7 +2,7 @@
 //! applied on top of the accepted version, checked, scored, reviewed, and
 //! committed only if it is better.
 
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 use std::fmt::Write as _;
 use std::path::{Path, PathBuf};
 
@@ -195,27 +195,94 @@ fn rescore(
     Ok(b)
 }
 
-/// Whether the held-out score has not improved for `patience` rounds.
+/// Whether the validation score has not improved for `patience` rounds
+/// (the held-out score decides nothing, not even when to stop).
 pub fn stale(history: &[Entry], patience: u32, round: u32) -> bool {
     // A change made by hand can change how cost is counted, so improvement
     // is measured from the last one on.
     let since = history
         .iter()
-        .rposition(|e| e.kind == "manual")
+        .rposition(|e| e.kind == "manual" || e.kind == "data")
         .unwrap_or(0);
     let mut best = f64::INFINITY;
     let mut best_round = 0;
     for e in history.iter().skip(since).filter(|e| e.accepted) {
-        if e.scores.heldout_cost < best - 1e-9 {
-            best = e.scores.heldout_cost;
+        if e.scores.valid_cost < best - 1e-9 {
+            best = e.scores.valid_cost;
             best_round = e.round;
         }
     }
     round > best_round + patience
 }
 
+/// Merges the upstream branch's new commits into the loop's branch, if
+/// there are any and they merge cleanly; the merged subject line.
+fn pick_up(config: &Config) -> Result<Option<String>, String> {
+    let Some((repo, branch)) = &config.upstream else {
+        return Ok(None);
+    };
+    git(
+        &config.repo,
+        &["fetch", "-q", &repo.to_string_lossy(), branch],
+    )?;
+    let theirs = git(&config.repo, &["rev-parse", "FETCH_HEAD"])?;
+    let ours = head(config)?;
+    let merged = git(
+        &config.repo,
+        &["merge-base", "--is-ancestor", &theirs, &ours],
+    )
+    .is_ok();
+    if merged {
+        return Ok(None);
+    }
+    let subject = git(&config.repo, &["log", "-1", "--format=%s", &theirs])?;
+    let new = if git(
+        &config.repo,
+        &["merge-base", "--is-ancestor", &ours, &theirs],
+    )
+    .is_ok()
+    {
+        theirs
+    } else {
+        // Both moved: a merge commit, made in a scratch worktree.
+        let dir = config.repo.join(".git").join("pick-up");
+        let _ = git(
+            &config.repo,
+            &["worktree", "remove", "--force", &dir.to_string_lossy()],
+        );
+        git(
+            &config.repo,
+            &[
+                "worktree",
+                "add",
+                "-q",
+                "--detach",
+                &dir.to_string_lossy(),
+                &ours,
+            ],
+        )?;
+        let made = git(&dir, &["merge", "-q", "--no-edit", &theirs])
+            .and_then(|_| git(&dir, &["rev-parse", "HEAD"]));
+        let _ = git(
+            &config.repo,
+            &["worktree", "remove", "--force", &dir.to_string_lossy()],
+        );
+        made.map_err(|e| format!("merging {theirs} into {ours}: {e}"))?
+    };
+    git(
+        &config.repo,
+        &[
+            "update-ref",
+            &format!("refs/heads/{}", config.branch),
+            &new,
+            &ours,
+        ],
+    )?;
+    Ok(Some(subject))
+}
+
 /// Runs rounds until stopped (a `STOP` file in the state directory, or no
-/// held-out improvement for `patience` rounds), or just one with `once`.
+/// validation improvement for `patience` rounds), or just one with `once`.
 pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
     let config: Config = state::read_json(&paths.config())?;
     let data = Data::load(&config)?;
@@ -234,19 +301,30 @@ pub fn run(paths: &Paths, once: bool) -> Result<(), String> {
             log(paths, "stop file found; stopping");
             break;
         }
+        // Changes made by hand meanwhile: merged, scored, and on.
+        match pick_up(&config) {
+            Ok(Some(subject)) => {
+                let at = head(&config)?;
+                let why = format!("changed by hand: {subject}");
+                base = rescore(&config, paths, &data, &base, &at, "manual", &why)?;
+            }
+            Ok(None) => {}
+            Err(e) => log(paths, &format!("could not take up hand changes: {e}")),
+        }
         let history = state::history(paths);
         let round = history.iter().map(|e| e.round).max().unwrap_or(0) + 1;
         if stale(&history, config.patience, round) {
             log(
                 paths,
                 &format!(
-                    "no held-out improvement for {} rounds; stopping",
+                    "no validation improvement for {} rounds; stopping",
                     config.patience
                 ),
             );
             break;
         }
-        let compression = round % (config.growth_per_compression + 1) == 0;
+        let compression = config.growth_per_compression > 0
+            && u64::from(round) % (u64::from(config.growth_per_compression) + 1) == 0;
         log(
             paths,
             &format!(
@@ -314,7 +392,15 @@ fn growth_round(
     // one already chosen wait for a later round, since their fixes would collide.
     let mut chosen: Vec<growth::Group> = Vec::new();
     let mut taken: std::collections::BTreeSet<String> = std::collections::BTreeSet::new();
-    for g in growth::groups(&data.train, &base.train, &verdicts) {
+    let focused: Vec<crate::score::Label> = data
+        .train
+        .iter()
+        .filter(|l| {
+            config.focus.is_empty() || config.focus.iter().any(|f| f == evaluate::family(&l.kind))
+        })
+        .cloned()
+        .collect();
+    for g in growth::groups(&focused, &base.train, &verdicts) {
         if chosen.len() >= config.max_agents {
             break;
         }
@@ -500,8 +586,9 @@ fn consider(
     let at = head(config)?;
     let dir = worktree(config, paths, "apply", &at)?;
     let result = (|| {
+        let patch = unique_rule_ids(&dir, patch, round);
         let patch_file = paths.root.join("candidate.patch");
-        std::fs::write(&patch_file, patch).map_err(|e| e.to_string())?;
+        std::fs::write(&patch_file, &patch).map_err(|e| e.to_string())?;
         let applied = git(
             &dir,
             &[
@@ -564,13 +651,67 @@ fn consider(
     result
 }
 
+/// The rule IDs given to `RuleInfo::new` on the lines of `text`.
+fn rule_ids<'t>(lines: impl Iterator<Item = &'t str>) -> BTreeSet<String> {
+    const MARK: &str = "RuleInfo::new(\"";
+    lines
+        .flat_map(|l| {
+            l.match_indices(MARK)
+                .map(move |(i, _)| l.get(i + MARK.len()..))
+        })
+        .flatten()
+        .filter_map(|rest| rest.split('"').next())
+        .map(str::to_owned)
+        .collect()
+}
+
+/// The patch with every rule it adds under an ID the accepted version in
+/// `dir` already has renamed (`id` becomes `id.r<round><n>`): agents working
+/// in parallel pick the same names.
+fn unique_rule_ids(dir: &Path, patch: &str, round: u32) -> String {
+    let added = rule_ids(
+        patch
+            .lines()
+            .filter(|l| l.starts_with('+') && !l.starts_with("+++")),
+    );
+    let removed = rule_ids(
+        patch
+            .lines()
+            .filter(|l| l.starts_with('-') && !l.starts_with("---")),
+    );
+    let existing = git(dir, &["grep", "-h", "RuleInfo::new(\"", "--", "crates"])
+        .map(|out| rule_ids(out.lines()))
+        .unwrap_or_default();
+    let mut patch = patch.to_owned();
+    for (n, id) in added
+        .iter()
+        .filter(|id| existing.contains(*id) && !removed.contains(*id))
+        .enumerate()
+    {
+        let (old, new) = (format!("\"{id}\""), format!("\"{id}.r{round}{n}\""));
+        patch = patch
+            .lines()
+            .map(|l| {
+                if l.starts_with('+') && l.contains("RuleInfo::new(") {
+                    l.replace(&old, &new)
+                } else {
+                    l.to_owned()
+                }
+            })
+            .collect::<Vec<_>>()
+            .join("\n")
+            + "\n";
+    }
+    patch
+}
+
 const MERGE: &str = "You are merging one change into glassmind, a symbolic English-understanding system whose \
 knowledge is Rust source (read docs/growing.md). The change was written against an older version; other changes \
 were accepted since, and applying it left git conflict markers (<<<<<<< ======= >>>>>>>) in these files: {files}. \
 Resolve every conflict so that BOTH the already accepted code and the change work together: keep every rule from \
 both sides (rule IDs must stay unique), merge enum variants and match arms, and fix anything else that no longer \
-fits. Do not add new features. Then make sure `cargo build --release -j 8 --workspace`, `cargo clippy --workspace \
---all-targets -j 8 -- -D warnings` and `cargo test --workspace -j 8 -- --test-threads 8` pass. Leave the result \
+fits. Do not add new features. Then make sure `cargo build --release -j 1 --workspace`, `cargo clippy --workspace \
+--all-targets -j 1 -- -D warnings` pass in capped scopes with TMPDIR set. Leave the result \
 uncommitted. What the change was for: {summary}";
 
 /// Resolves the conflicts a patch left in `dir` with a merging agent.
@@ -588,7 +729,7 @@ fn merge(
     let prompt = MERGE
         .replace("{files}", &files.lines().collect::<Vec<_>>().join(", "))
         .replace("{summary}", summary.trim());
-    let run = agent::claude(
+    let run = agent::model_agent(
         config,
         paths,
         &paths.slot(98),
@@ -629,34 +770,43 @@ method, style, size or doubts about usefulness: the scorer judges those. \
 Reply with only JSON: {\"veto\": true|false, \"reason\": \"...\"}";
 
 fn review(config: &Config, paths: &Paths, dir: &Path) -> Result<(), String> {
-    let slot = paths.slot(99);
-    let run = agent::claude(
-        config,
-        paths,
-        &slot,
-        dir,
-        REVIEW,
-        Some("Read,Grep,Glob,Bash"),
-        Vec::new(),
-    )?;
-    let text = run.summary;
-    let start = text.find('{').unwrap_or(0);
-    let verdict: serde_json::Value = serde_json::from_str(
-        text.get(start..)
-            .unwrap_or_default()
-            .trim_end_matches('`')
-            .trim(),
-    )
-    .unwrap_or(serde_json::Value::Null);
-    let _ = std::fs::write(paths.logs().join("last-review.txt"), &text);
-    if verdict.get("veto").and_then(serde_json::Value::as_bool) == Some(true) {
-        let reason = verdict
-            .get("reason")
-            .and_then(serde_json::Value::as_str)
-            .unwrap_or("vetoed");
-        return Err(format!("reviewer veto: {reason}"));
+    // No verdict is not an approval: an empty or unreadable reply is asked
+    // again once, then the change is rejected.
+    for _ in 0..2 {
+        let run = agent::model_agent(
+            config,
+            paths,
+            &paths.slot(99),
+            dir,
+            REVIEW,
+            Some("Read,Grep,Glob,Bash"),
+            Vec::new(),
+        )?;
+        let text = run.summary;
+        let _ = std::fs::write(paths.logs().join("last-review.txt"), &text);
+        let verdict: Option<serde_json::Value> = text
+            .find('{')
+            .zip(text.rfind('}'))
+            .and_then(|(a, b)| text.get(a..=b))
+            .and_then(|json| serde_json::from_str(json).ok());
+        match verdict
+            .as_ref()
+            .and_then(|v| v.get("veto"))
+            .and_then(serde_json::Value::as_bool)
+        {
+            Some(false) => return Ok(()),
+            Some(true) => {
+                let reason = verdict
+                    .as_ref()
+                    .and_then(|v| v.get("reason"))
+                    .and_then(serde_json::Value::as_str)
+                    .unwrap_or("vetoed");
+                return Err(format!("reviewer veto: {reason}"));
+            }
+            None => continue,
+        }
     }
-    Ok(())
+    Err("the reviewer gave no readable verdict".into())
 }
 
 fn compression_round(

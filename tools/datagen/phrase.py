@@ -52,8 +52,13 @@ def prompt_for(batch):
     for plan in batch:
         turns = []
         for t in plan["turns"]:
-            target = (t.get("info") or {}).get("target") or {}
+            info = t.get("info") or {}
+            target = info.get("target") or {}
             facts = {k: v for k, v in target.items() if k in ("kind", "signature", "doc", "owner", "struct")}
+            # Coding tasks: what the user would have seen (errors, failing tests).
+            for k in ("crate", "problems", "failing"):
+                if k in info:
+                    facts[k] = info[k][:3] if isinstance(info[k], list) else info[k]
             turns.append({"instruction": t["instruction"], "facts": facts})
         items.append({"conv_id": plan["conv_id"], "turns": turns})
     return "Conversation plans:\n" + json.dumps(items, indent=1) + "\n\nReply with the JSON array only."

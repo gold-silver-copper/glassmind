@@ -53,6 +53,13 @@ fn again<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
             .then(|| c.first().cloned())
             .flatten(),
         [_, Sem::Role { .. }] => None,
+        // "do the tests pass? which tests fail?": a check asked of again
+        // is the same check.
+        [
+            Sem::Utterance(Ask(meaning::Question::Passes(a) | meaning::Question::Problems(a))),
+            Sem::Check(b),
+        ] => (a == b).then(|| c.first().cloned()).flatten(),
+        [_, Sem::Check(_)] => None,
         _ => c.first().cloned(),
     }
 }

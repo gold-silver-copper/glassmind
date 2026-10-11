@@ -43,6 +43,36 @@ fn is_word_char(c: char) -> bool {
     c.is_alphanumeric() || c == '_' || c == '\'' || c == '-'
 }
 
+/// If a single or double quote at `i` opens a quoted identifier (letters,
+/// digits, `_`, `::` or `.` between them, an optional `()`, then the same
+/// quote, then no word character), the index of the closing quote.
+fn quoted_name(chars: &[(usize, char)], i: usize) -> Option<usize> {
+    let &(_, quote) = chars.get(i)?;
+    if quote != '\'' && quote != '"' {
+        return None;
+    }
+    let mut j = i + 1;
+    while chars
+        .get(j)
+        .is_some_and(|&(_, d)| d.is_alphanumeric() || d == '_' || d == ':' || d == '.')
+    {
+        j += 1;
+    }
+    if chars.get(j).is_some_and(|&(_, d)| d == '(')
+        && chars.get(j + 1).is_some_and(|&(_, d)| d == ')')
+    {
+        j += 2;
+    }
+    let starts_like_a_name = chars
+        .get(i + 1)
+        .is_some_and(|&(_, d)| d.is_alphabetic() || d == '_');
+    (j > i + 1
+        && starts_like_a_name
+        && chars.get(j).is_some_and(|&(_, d)| d == quote)
+        && !chars.get(j + 1).is_some_and(|&(_, d)| is_word_char(d)))
+    .then_some(j)
+}
+
 /// Splits `text` into tokens, given the words the grammar knows.
 pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
     let mut tokens = Vec::new();
@@ -67,6 +97,12 @@ pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
             let inner = inner.strip_suffix("()").unwrap_or(inner);
             // Past the closing backtick, if there is one.
             (inner, Shape::Code, (j + 1).min(chars.len()))
+        } else if let Some(close) = quoted_name(&chars, i) {
+            // One identifier in quotes ('Pinned', "out_dir()") is code, as
+            // in backticks: people quote names that way too.
+            let inner = text.get(end_of(i + 1)..end_of(close)).unwrap_or_default();
+            let inner = inner.strip_suffix("()").unwrap_or(inner);
+            (inner, Shape::Code, close + 1)
         } else if is_word_char(c) && c != '\'' && c != '-' {
             // A word (a leading apostrophe opens a quote, and a leading
             // hyphen is a dash, so both are punctuation), joined across `::` and `.` when both sides are word characters.

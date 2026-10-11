@@ -32,19 +32,24 @@ of material:
    words, ranking readings, correcting typos, guessing which module a request
    needs, predicting a likely next step. Each is small, trained from data, has
    a held-out accuracy and a calibrated confidence, and can be inspected. The
-   user's `~/code/flexion` is the model for this: a Wiktionary dump goes in,
-   a small Rust crate with a confidence for every answer comes out.
+   user's `~/code/flexion` shows the idea (read it; never depend on it): a
+   Wiktionary dump goes in, a small Rust model with a confidence for every
+   answer comes out.
 3. **Queryable data.** Facts that don't compress (names, documentation, crate
    APIs, dictionary entries, encyclopedic facts) live in indexed stores the
    code looks up, not in models and not in code.
 
-**Word forms come from flexion.** Use `~/code/flexion` (GitHub
-`gold-silver-copper/flexion`) for inflection. When glassmind needs a language
-flexion doesn't have yet, add that language to flexion. Don't use the old
-hand-written English crates (`english`, `english-core`, `english-phrase`,
-`english-ccg`, anything in `~/code/english/` or `~/code/linguistics/`). When
-flexion is wrong or missing something glassmind needs, fix it upstream in
-flexion (a PR there) instead of working around it in glassmind.
+**Never depend on flexion.** The user's `~/code/flexion` is under active
+development, so glassmind must not use it in any way: no crate dependency,
+no vendored copy, none of its tools or training code, no edits to it and no
+PRs or issues on it. Do read its
+source for ideas (how it turns a Wiktionary dump plus a short grammar
+description into a small inflection model with calibrated confidences), and
+build glassmind's own word-form models with glassmind's own model trainer,
+in glassmind's own crates. Don't use
+the old hand-written English crates either (`english`, `english-core`,
+`english-phrase`, `english-ccg`, anything in `~/code/english/` or
+`~/code/linguistics/`).
 
 **No LLM runs inside it.** Opus builds it; glassmind runs without one,
 deterministically, with a trace for every answer (`--explain`). That is the
@@ -117,6 +122,49 @@ turns a source plus a short description into a module with:
 Adding the hundredth source should mostly be configuration. Watch disk and
 memory: there is room for tens of gigabytes of sources, not terabytes, and a
 download or a training run must never take down the machine.
+
+## The models it needs
+
+Inflection is only the bottom layer. The pattern for every model is: **models
+propose and rank, typed code decides.** The grammar and the types define
+what is possible; a model says which possibility is most likely. Answers stay
+checkable while data handles the messy parts.
+
+A starting list, bottom to top. Reorder it by measured value and add what
+the failures call for:
+
+| Layer | Model | What it predicts | Data |
+|---|---|---|---|
+| Spelling | Normalizer | "teh fn" → "the fn"; texting style; splitting identifiers | Wikipedia typo edits, synthetic noise, chat logs |
+| Morphology | Inflection (glassmind's own, in the spirit of flexion) and its inverse, analysis | Lemma + features → form; form → lemma + features | Wiktionary |
+| Lexical | Category tagger (a "supertagger") | Each word's likely grammatical category in context | Universal Dependencies treebanks, plus glassmind's own accepted parses |
+| Syntax | Parse ranker | Which of the grammar's readings people mean: attachment ("rename the field in Player"), scope of "and" | Treebanks, plus its own parses |
+| Semantics | Sense chooser | Which concept a word means here ("crate" as a Rust package vs. a box) | Wiktionary senses, Wikidata types, context |
+| Semantics | Role labeler and plausibility model | Who did what to whom; what can be an agent of "compile" or a target of "rename" | PropBank/FrameNet-style data, its own worlds |
+| Reference | Coreference and entity linking | Which earlier thing "it" means; which item a name refers to | Its own dialogues, Wikidata, the code index |
+| Discourse | Intent / speech-act classifier | Question, command, correction, complaint, or chit-chat | Generated conversations |
+| Planning | Next-action model (for the harness) | Given the request and state, the likely next step: search, read, edit, build, test, ask | Agent transcripts, git histories |
+| Code | Error → fix model | Given a rustc error, the likely kind of fix | The rustc error index, commits that fix build failures in open-source repos |
+| Code | Syntax-level code model | Likely next item, API call or name over Rust syntax trees | Open-source Rust (docs.rs, crates.io) |
+| Generation | Realization ranker | Which of the grammar's possible sentences sounds most natural | Corpora, plus a fluency model over its own outputs |
+
+The ones likely to matter most first:
+
+1. **The category tagger.** It prunes the parser's search, making parsing
+   both faster and more accurate. CCG parsers are only practical because of
+   supertaggers.
+2. **The parse ranker.** Understanding sloppy, varied phrasing is
+   glassmind's biggest gap: held-out phrasing styles score far below
+   training ones.
+3. **Intent and entity linking.** They route requests and resolve names: the
+   glue that makes many modules feel like one system.
+4. **Next action and error → fix.** This is where the harness starts to
+   stand in for an LLM.
+
+**Self-training.** Everything glassmind gets right (parses, resolutions,
+fixes that made the tests pass) becomes training data for these models. As
+the typed system grows, the models improve, and they make the typed system
+faster and less brittle.
 
 ## Measuring progress
 

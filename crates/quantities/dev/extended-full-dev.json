@@ -1,0 +1,726 @@
+{
+  "dataset": "quantities-extended-dev-v1",
+  "split": "full-dev",
+  "total": 1036,
+  "right": 976,
+  "refusal": 60,
+  "wrong": 0,
+  "correct_refusals": 362,
+  "categories": {
+    "calendar_span": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "calendar_unit_ambiguity": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "century_boundary": {
+      "right": 9,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_between": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_range": {
+      "right": 2,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "distance": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "entity_mismatch": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "kelvin": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "leap_year_shift": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "named_product": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "negative_inventory": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "number_words": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "overflow": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "paraphrase_gap": {
+      "right": 0,
+      "refusal": 60,
+      "wrong": 0
+    },
+    "rate": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "rational_cancellation": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "recipient_mismatch": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition_mismatch": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weeks": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "failures": [
+    {
+      "id": "paraphrase_gap-0000",
+      "question": "Initially, Mira owned 126 coins; after receiving another 89, what was her total?",
+      "expected": "215",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0001",
+      "question": "Initially, Mira owned 92 coins; after receiving another 123, what was her total?",
+      "expected": "215",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0002",
+      "question": "Initially, Mira owned 196 coins; after receiving another 172, what was her total?",
+      "expected": "368",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0003",
+      "question": "Initially, Mira owned 33 coins; after receiving another 121, what was her total?",
+      "expected": "154",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0004",
+      "question": "Initially, Mira owned 50 coins; after receiving another 95, what was her total?",
+      "expected": "145",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0005",
+      "question": "Initially, Mira owned 36 coins; after receiving another 66, what was her total?",
+      "expected": "102",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0006",
+      "question": "Initially, Mira owned 78 coins; after receiving another 57, what was her total?",
+      "expected": "135",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0007",
+      "question": "Initially, Mira owned 177 coins; after receiving another 116, what was her total?",
+      "expected": "293",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0008",
+      "question": "Initially, Mira owned 94 coins; after receiving another 74, what was her total?",
+      "expected": "168",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0009",
+      "question": "Initially, Mira owned 13 coins; after receiving another 31, what was her total?",
+      "expected": "44",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0010",
+      "question": "Initially, Mira owned 63 coins; after receiving another 104, what was her total?",
+      "expected": "167",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0011",
+      "question": "Initially, Mira owned 144 coins; after receiving another 83, what was her total?",
+      "expected": "227",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0012",
+      "question": "Initially, Mira owned 108 coins; after receiving another 152, what was her total?",
+      "expected": "260",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0013",
+      "question": "Initially, Mira owned 159 coins; after receiving another 89, what was her total?",
+      "expected": "248",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0014",
+      "question": "Initially, Mira owned 134 coins; after receiving another 132, what was her total?",
+      "expected": "266",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0015",
+      "question": "Initially, Mira owned 47 coins; after receiving another 155, what was her total?",
+      "expected": "202",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0016",
+      "question": "Initially, Mira owned 87 coins; after receiving another 158, what was her total?",
+      "expected": "245",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0017",
+      "question": "Initially, Mira owned 2 coins; after receiving another 99, what was her total?",
+      "expected": "101",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0018",
+      "question": "Initially, Mira owned 85 coins; after receiving another 116, what was her total?",
+      "expected": "201",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0019",
+      "question": "Initially, Mira owned 50 coins; after receiving another 114, what was her total?",
+      "expected": "164",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0020",
+      "question": "Initially, Mira owned 153 coins; after receiving another 9, what was her total?",
+      "expected": "162",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0021",
+      "question": "Initially, Mira owned 196 coins; after receiving another 130, what was her total?",
+      "expected": "326",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0022",
+      "question": "Initially, Mira owned 131 coins; after receiving another 113, what was her total?",
+      "expected": "244",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0023",
+      "question": "Initially, Mira owned 169 coins; after receiving another 154, what was her total?",
+      "expected": "323",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0024",
+      "question": "Initially, Mira owned 188 coins; after receiving another 77, what was her total?",
+      "expected": "265",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0025",
+      "question": "Initially, Mira owned 3 coins; after receiving another 127, what was her total?",
+      "expected": "130",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0026",
+      "question": "Initially, Mira owned 87 coins; after receiving another 15, what was her total?",
+      "expected": "102",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0027",
+      "question": "Initially, Mira owned 108 coins; after receiving another 181, what was her total?",
+      "expected": "289",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0028",
+      "question": "Initially, Mira owned 193 coins; after receiving another 160, what was her total?",
+      "expected": "353",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0029",
+      "question": "Initially, Mira owned 148 coins; after receiving another 181, what was her total?",
+      "expected": "329",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0030",
+      "question": "Initially, Mira owned 130 coins; after receiving another 165, what was her total?",
+      "expected": "295",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0031",
+      "question": "Initially, Mira owned 128 coins; after receiving another 117, what was her total?",
+      "expected": "245",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0032",
+      "question": "Initially, Mira owned 105 coins; after receiving another 35, what was her total?",
+      "expected": "140",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0033",
+      "question": "Initially, Mira owned 158 coins; after receiving another 61, what was her total?",
+      "expected": "219",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0034",
+      "question": "Initially, Mira owned 24 coins; after receiving another 160, what was her total?",
+      "expected": "184",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0035",
+      "question": "Initially, Mira owned 22 coins; after receiving another 77, what was her total?",
+      "expected": "99",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0036",
+      "question": "Initially, Mira owned 5 coins; after receiving another 129, what was her total?",
+      "expected": "134",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0037",
+      "question": "Initially, Mira owned 184 coins; after receiving another 85, what was her total?",
+      "expected": "269",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0038",
+      "question": "Initially, Mira owned 49 coins; after receiving another 198, what was her total?",
+      "expected": "247",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0039",
+      "question": "Initially, Mira owned 177 coins; after receiving another 76, what was her total?",
+      "expected": "253",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0040",
+      "question": "Initially, Mira owned 154 coins; after receiving another 137, what was her total?",
+      "expected": "291",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0041",
+      "question": "Initially, Mira owned 153 coins; after receiving another 155, what was her total?",
+      "expected": "308",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0042",
+      "question": "Initially, Mira owned 108 coins; after receiving another 172, what was her total?",
+      "expected": "280",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0043",
+      "question": "Initially, Mira owned 129 coins; after receiving another 82, what was her total?",
+      "expected": "211",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0044",
+      "question": "Initially, Mira owned 105 coins; after receiving another 11, what was her total?",
+      "expected": "116",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0045",
+      "question": "Initially, Mira owned 47 coins; after receiving another 156, what was her total?",
+      "expected": "203",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0046",
+      "question": "Initially, Mira owned 109 coins; after receiving another 98, what was her total?",
+      "expected": "207",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0047",
+      "question": "Initially, Mira owned 108 coins; after receiving another 195, what was her total?",
+      "expected": "303",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0048",
+      "question": "Initially, Mira owned 154 coins; after receiving another 58, what was her total?",
+      "expected": "212",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0049",
+      "question": "Initially, Mira owned 6 coins; after receiving another 40, what was her total?",
+      "expected": "46",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0050",
+      "question": "Initially, Mira owned 48 coins; after receiving another 124, what was her total?",
+      "expected": "172",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0051",
+      "question": "Initially, Mira owned 4 coins; after receiving another 138, what was her total?",
+      "expected": "142",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0052",
+      "question": "Initially, Mira owned 13 coins; after receiving another 144, what was her total?",
+      "expected": "157",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0053",
+      "question": "Initially, Mira owned 13 coins; after receiving another 48, what was her total?",
+      "expected": "61",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0054",
+      "question": "Initially, Mira owned 36 coins; after receiving another 98, what was her total?",
+      "expected": "134",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0055",
+      "question": "Initially, Mira owned 34 coins; after receiving another 128, what was her total?",
+      "expected": "162",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0056",
+      "question": "Initially, Mira owned 9 coins; after receiving another 146, what was her total?",
+      "expected": "155",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0057",
+      "question": "Initially, Mira owned 2 coins; after receiving another 17, what was her total?",
+      "expected": "19",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0058",
+      "question": "Initially, Mira owned 200 coins; after receiving another 34, what was her total?",
+      "expected": "234",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0059",
+      "question": "Initially, Mira owned 59 coins; after receiving another 1, what was her total?",
+      "expected": "60",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    }
+  ],
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-extended-dev-v1",
+    "seed": 20261011,
+    "rows": 1036,
+    "bytes": 174437,
+    "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}

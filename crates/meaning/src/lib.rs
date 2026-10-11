@@ -34,6 +34,10 @@ pub trait Ontology: Copy + Eq + Ord + Hash + Debug + Default + 'static {
     /// A place where something is written in the world's data, which an
     /// edit can rewrite (a line and column in a file).
     type Spot: Concept;
+    /// A way the world checks itself, such as building or testing code.
+    type Check: Concept;
+    /// One change to the world's data, such as replacing text in a file.
+    type Change: Concept;
 }
 
 /// The bounds every concept a world defines must meet.
@@ -137,6 +141,10 @@ pub enum Question<O: Ontology> {
     },
     /// Say how many things fit the description.
     Count(Description<O>),
+    /// Say whether the world passes the check ("does it build?").
+    Passes(O::Check),
+    /// Say what the check finds wrong ("why does the build fail?").
+    Problems(O::Check),
 }
 
 /// A request to change the world's data.
@@ -151,6 +159,8 @@ pub enum Action<O: Ontology> {
         kind: Option<O::Kind>,
         name: Option<Name>,
     },
+    /// Make the world pass the check ("fix the build", "make the tests pass").
+    Repair(O::Check),
 }
 
 /// Something the user tells the system, for it to keep in mind.
@@ -185,6 +195,8 @@ pub enum Utterance<O: Ontology> {
     /// Corrects the request just made: it was meant to be about this thing,
     /// in place of the one it was about.
     Correct(Thing<O>),
+    /// Agrees to (true) or declines (false) what the system proposed.
+    Consent(bool),
 }
 
 /// A claim that a set of things is exactly what fits a description.
@@ -214,6 +226,8 @@ pub enum Trouble<O: Ontology> {
     Ambiguous { candidates: Vec<O::Item> },
     /// The meaning was understood, but this world cannot carry it out.
     Unsupported,
+    /// Asked to apply or decline a proposal when none is waiting.
+    NothingPending,
 }
 
 /// Everything a reply can mean, before a language puts it into words.
@@ -246,6 +260,31 @@ pub enum Reply<O: Ontology> {
     /// What the system holds of the conversation: the items it has spoken
     /// of, most recent first.
     Recall(Vec<O::Item>),
+    /// What a check found: nothing wrong if `problems` is empty.
+    Checked {
+        check: O::Check,
+        problems: Vec<O::Item>,
+    },
+    /// Changes that would make the check pass, offered for the user to
+    /// accept: the problems they fix, and those they leave.
+    Remedy {
+        check: O::Check,
+        changes: Vec<O::Change>,
+        fixed: Vec<O::Item>,
+        left: Vec<O::Item>,
+    },
+    /// The proposed changes were made; what the check found afterwards, if
+    /// there was a check to run.
+    Applied {
+        changes: usize,
+        check: Option<O::Check>,
+        problems: Vec<O::Item>,
+    },
+    /// The user declined what was proposed; nothing was changed.
+    Declined,
+    /// Not sure the input was understood: asks whether it meant this
+    /// reading; "yes" answers it.
+    Clarify { reading: Utterance<O> },
     /// The request could not be understood or carried out.
     Trouble(Trouble<O>),
     /// A reply that rests on the system taking the input, which could be
@@ -257,6 +296,19 @@ pub enum Reply<O: Ontology> {
 }
 
 impl<O: Ontology> Utterance<O> {
+    /// The names the utterance says things are called (see
+    /// [`Description::called`]).
+    pub fn called(&self) -> Vec<&Name> {
+        match self {
+            Utterance::Ask(Question::Identify(d) | Question::Count(d)) => d.called(),
+            _ => self
+                .things_within(&|_| false)
+                .into_iter()
+                .flat_map(Thing::called)
+                .collect(),
+        }
+    }
+
     /// The things the utterance is about, without looking inside those it
     /// describes: for "which functions call `tick` on `Health`", the thing
     /// called `tick`, not `Health`.
@@ -269,7 +321,12 @@ impl<O: Ontology> Utterance<O> {
             | Utterance::Command(Action::Rename { thing, .. })
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => vec![thing],
-            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
+            Utterance::Ask(Question::Passes(_) | Question::Problems(_))
+            | Utterance::Command(Action::Repair(_))
+            | Utterance::Consent(_)
+            | Utterance::AskReason
+            | Utterance::Forget
+            | Utterance::AskRecall => Vec::new(),
         }
     }
 
@@ -286,7 +343,11 @@ impl<O: Ontology> Utterance<O> {
             Utterance::Command(Action::Rename { thing, .. })
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => thing.things_within(within),
-            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => Vec::new(),
+            Utterance::Command(Action::Repair(_))
+            | Utterance::Consent(_)
+            | Utterance::AskReason
+            | Utterance::Forget
+            | Utterance::AskRecall => Vec::new(),
         }
     }
 
@@ -299,7 +360,11 @@ impl<O: Ontology> Utterance<O> {
             Utterance::Command(Action::Rename { thing, .. })
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => *thing = thing.map_things(f),
-            Utterance::AskReason | Utterance::Forget | Utterance::AskRecall => {}
+            Utterance::Command(Action::Repair(_))
+            | Utterance::Consent(_)
+            | Utterance::AskReason
+            | Utterance::Forget
+            | Utterance::AskRecall => {}
         }
         out
     }
@@ -316,6 +381,7 @@ impl<O: Ontology> Question<O> {
             Question::Locate { thing, .. } | Question::Describe { thing, .. } => {
                 thing.things_within(within)
             }
+            Question::Passes(_) | Question::Problems(_) => Vec::new(),
         }
     }
 
@@ -326,6 +392,7 @@ impl<O: Ontology> Question<O> {
             Question::Locate { thing, .. } | Question::Describe { thing, .. } => {
                 *thing = thing.map_things(f);
             }
+            Question::Passes(_) | Question::Problems(_) => {}
         }
         out
     }
@@ -334,6 +401,23 @@ impl<O: Ontology> Question<O> {
 impl<O: Ontology> Description<O> {
     pub fn things(&self) -> Vec<&Thing<O>> {
         self.things_within(&|_| true)
+    }
+
+    /// Every name the description (and every description inside it) says
+    /// a thing is called. Unlike a name matched ([`Condition::Named`]), a
+    /// name nothing is called makes the description fit nothing.
+    pub fn called(&self) -> Vec<&Name> {
+        self.conditions
+            .iter()
+            .flat_map(|c| match c {
+                Condition::Called(name) => vec![name],
+                Condition::Related { other: thing, .. }
+                | Condition::Is(thing)
+                | Condition::NamedLike(thing)
+                | Condition::PartOf(thing) => thing.called(),
+                Condition::Named(_) => Vec::new(),
+            })
+            .collect()
     }
 
     pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
@@ -398,6 +482,15 @@ impl<O: Ontology> Thing<O> {
     /// The named or resolved things this one is, or refers to inside it.
     pub fn things(&self) -> Vec<&Thing<O>> {
         self.things_within(&|_| true)
+    }
+
+    /// The names a described thing is said to be called (see
+    /// [`Description::called`]).
+    pub fn called(&self) -> Vec<&Name> {
+        match self {
+            Thing::Fitting(d) => d.called(),
+            Thing::Named(_) | Thing::Item(_) | Thing::Previous => Vec::new(),
+        }
     }
 
     pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {

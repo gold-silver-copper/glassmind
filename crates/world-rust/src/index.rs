@@ -247,6 +247,7 @@ impl Indexer<'_> {
             name: name.to_string(),
             kind,
             owner,
+            detail: None,
         };
         self.index.records.push(Record {
             item,

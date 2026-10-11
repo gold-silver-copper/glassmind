@@ -1,5 +1,10 @@
 # Growing glassmind: a guide for loop agents
 
+`prompts/grow-fast.md` is the active direction and overrides older rules here.
+Use Codex GPT-6 Astra fast through the logged-in ChatGPT account; never API
+keys or Claude. Compression is off. Measure a fixed dev sample during
+iteration, then the affected track's full dev split before pushing a batch.
+
 You are improving glassmind, a system that understands English questions and
 commands about Rust code with **no neural network inside**. Everything it
 knows is Rust source: its types are the concepts it can think about, its
@@ -42,13 +47,40 @@ A rule is `Rule::new(RuleInfo::new(id, round), lhs, rhs, sem)`. `Sem::Both(build
 split)` reads and speaks; `.read_only()` marks forms the system should accept
 but never say (sloppy or rare input). Single words use `english::word(...)`.
 
+## Coding tasks (the harness)
+
+Some training turns are coding tasks on a broken copy of a small crate
+(`kind` `build_status`, `fix_build`, `test_status`, `fix_tests`): "does it
+build?", "fix the build", "which tests fail?", "make the tests pass". The
+Rust world runs the crate's own tools for them (`crates/world-rust/src/checks.rs`):
+`cargo check`, `cargo test`, `clippy`, whose reports become items of kind
+`Problem` and `Test`. A remedy is a set of changes; the scorer applies it to
+a scratch copy and runs the check, so **a remedy that does not make the
+check pass costs like a wrong answer**, while offering none, or saying some
+problems would remain, is an honest refusal. Today the only remedies are the
+compiler's own suggestions; making failing tests pass needs more (finding
+the code a failing test exercises and trying changes there, always verified
+by running the tests).
+
+Checks are slow, so their results are cached by the files' contents. Scratch copies never go to `/tmp` (it is in memory on this machine). Set
+these when you run `eval` on coding tasks, and score with `--sources`:
+
+```sh
+export GLASSMIND_CARGO_TARGET=$HOME/.cache/glassmind/check/target GLASSMIND_CHECK_CACHE=$HOME/.cache/glassmind/check/results GLASSMIND_SCRATCH=$HOME/.cache/glassmind/check/scratch
+./target/release/glassmind eval --sources $SOURCES --inputs $DATA/group-inputs.jsonl > group-out.jsonl
+./target/release/glassmind-loop score --labels $DATA/group-labels.jsonl --outcomes group-out.jsonl --sources $SOURCES
+# talk to a broken crate yourself:
+./target/release/glassmind code $SOURCES/<task source>
+```
+
 ## Rules for every change
 
 - **Any method is allowed** if it measurably helps: grammar rules, fuzzy or
   learned matching of words and names, probabilities, outside data, a new
-  formalism. Prefer what generalizes to phrasings you have not seen: the
-  held-out set is written by people with other habits, about other
-  repositories. Never fake answers (no tables of particular sentences or
+  formalism. Prefer what generalizes to phrasings you have not seen: a hidden
+  held-out set, written by people with other habits about other
+  repositories, measures that (it decides nothing; a hidden validation set
+  of other repositories guards acceptance). Never fake answers (no tables of particular sentences or
   names with their answers).
 - **Every new rule** (grammar rule, word, world relation, preference) gets a
   stable unique dotted ID (`en.question.where_defined`,
@@ -57,8 +89,9 @@ but never say (sloppy or rare input). Single words use `english::word(...)`.
   a doc comment written from its actual uses. World and mind rules must also
   be listed in their crate's `RULES` and be switchable off through
   `Switches` (look at how existing ones do it).
-- **Never edit on a guess.** If an edit's target is ambiguous, ask
-  (`Trouble::Ambiguous` → the user is asked which one).
+- **Act, then verify.** A proposed action can proceed when a compiler, tests
+  or world lookup can check its result. Roll back failed changes. Ask when
+  ambiguity has no reliable check; never claim a failed check as success.
 - **Every reply must have words.** A reply the language cannot say costs
   0.5 extra, and a change that leaves more replies without words is
   rejected.
@@ -66,7 +99,7 @@ but never say (sloppy or rare input). Single words use `english::word(...)`.
   refusal at most 1. Do not make a turn answer unless the answer is right by
   `docs/tasks.md`. Do not turn a right or honest refusal into a wrong answer:
   such a change is rejected outright.
-- **Size is priced**: every syntax token of non-test code in the mind crates
+- **Size can be priced** (currently disabled): every syntax token of non-test code in the mind crates
   costs a fixed price in failure units (your brief says how much) (identifiers count 1 whatever their length;
   comments and docs are free). Prefer general rules that cover many turns
   over many specific ones. Delete what you make redundant.
@@ -81,14 +114,19 @@ Paths are given in your brief (`$SOURCES`, `$DATA`). Other agents build at
 the same time: always use `-j 4` and `--test-threads 4`.
 
 ```sh
-cargo build --release -j 4 -p glassmind -p glassmind-loop
+tools/check.sh # capped fmt, clippy, build and one fixture smoke
+# Every additional cargo run needs a memory-capped scope, TMPDIR,
+# an isolated process group and a timeout that kills the group.
+# For example:
+TMPDIR=$HOME/.cache/glassmind/check-tmp systemd-run --user --scope \
+  -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout -k 10s 600 \
+  cargo build --release -j 1 -p glassmind
 cargo clippy --workspace --all-targets -j 4 -- -D warnings
-cargo test --workspace -j 4 -- --test-threads 4
 cargo run -q -p glassmind-depcheck
 # your group's turns:
 ./target/release/glassmind eval --sources $SOURCES --inputs $DATA/group-inputs.jsonl > group-out.jsonl
 ./target/release/glassmind-loop score --labels $DATA/group-labels.jsonl --outcomes group-out.jsonl
-# the whole training set, compared turn by turn with the current baseline:
+# the affected track's full dev split before pushing a batch:
 ./target/release/glassmind eval --sources $SOURCES --inputs $DATA/train-inputs.jsonl > train-out.jsonl
 ./target/release/glassmind-loop compare --labels $DATA/train-labels.jsonl --before $DATA/baseline-outcomes.jsonl --after train-out.jsonl
 # one sentence, with the full trace:

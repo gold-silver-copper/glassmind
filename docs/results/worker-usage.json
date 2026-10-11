@@ -1,0 +1,68 @@
+{
+  "model": "gpt-6-astra",
+  "service_tier": "fast",
+  "authentication": "chatgpt",
+  "workers": [
+    {
+      "track": "coding",
+      "started_unix": 1791684342.7665699,
+      "finished_unix": 1791685080.9819057,
+      "usage": {
+        "input_tokens": 8193997,
+        "cached_input_tokens": 8047616,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 41861,
+        "reasoning_output_tokens": 17038
+      }
+    },
+    {
+      "track": "stories",
+      "started_unix": 1791684537.0245452,
+      "finished_unix": 1791685031.9625618,
+      "usage": {
+        "input_tokens": 2816488,
+        "cached_input_tokens": 2714880,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 32709,
+        "reasoning_output_tokens": 12405
+      }
+    },
+    {
+      "track": "dialogue",
+      "started_unix": 1791684342.76999,
+      "finished_unix": 1791684901.3966146,
+      "usage": {
+        "input_tokens": 2013627,
+        "cached_input_tokens": 1923840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 35893,
+        "reasoning_output_tokens": 13169
+      }
+    },
+    {
+      "track": "sgd",
+      "started_unix": 1791685693.1907816,
+      "finished_unix": 1791686163.4046876,
+      "usage": {
+        "input_tokens": 2808671,
+        "cached_input_tokens": 2729344,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27920,
+        "reasoning_output_tokens": 7285
+      }
+    },
+    {
+      "track": "numbers",
+      "started_unix": 1791685693.1899705,
+      "finished_unix": 1791686260.513261,
+      "usage": {
+        "input_tokens": 2001369,
+        "cached_input_tokens": 1930368,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 35921,
+        "reasoning_output_tokens": 10068
+      }
+    }
+  ],
+  "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
+}

@@ -8,6 +8,8 @@ use std::time::{Duration, Instant};
 /// What a sandboxed process may see and write.
 #[derive(Debug, Clone, Default)]
 pub struct Sandbox {
+    /// Read-only paths restored inside otherwise hidden directories.
+    pub readable: Vec<PathBuf>,
     /// Directories it may write.
     pub writable: Vec<PathBuf>,
     /// Directories hidden from it (replaced by empty ones).
@@ -33,7 +35,9 @@ impl Sandbox {
             "--proc".into(),
             "/proc".into(),
         ];
-        for h in &self.hidden {
+        // A directory inside one already hidden is hidden with it.
+        let inside = |h: &PathBuf| self.hidden.iter().any(|o| o != h && h.starts_with(o));
+        for h in self.hidden.iter().filter(|h| !inside(h)) {
             let path = h.to_string_lossy().into_owned();
             if h.is_dir() {
                 a.extend(["--tmpfs".into(), path]);
@@ -47,6 +51,10 @@ impl Sandbox {
                 tmp.to_string_lossy().into_owned(),
                 "/tmp".into(),
             ]);
+        }
+        for r in &self.readable {
+            let r = r.to_string_lossy().into_owned();
+            a.extend(["--ro-bind".into(), r.clone(), r]);
         }
         for w in &self.writable {
             let w = w.to_string_lossy().into_owned();
@@ -86,6 +94,7 @@ pub struct Run<'a> {
     stdin: Option<String>,
     timeout: Option<Duration>,
     sandbox: Option<&'a Sandbox>,
+    memory: Option<&'static str>,
 }
 
 impl<'a> Run<'a> {
@@ -99,6 +108,7 @@ impl<'a> Run<'a> {
             stdin: None,
             timeout: None,
             sandbox: None,
+            memory: None,
         }
     }
 
@@ -128,12 +138,56 @@ impl<'a> Run<'a> {
         self
     }
 
+    /// Runs it in a systemd scope of its own capped at `memory` (such as
+    /// "6G", no swap), where the machine has them: code under test can loop
+    /// allocating.
+    pub fn memory(mut self, memory: &'static str) -> Self {
+        self.memory = Some(memory);
+        self
+    }
+
     pub fn go(self) -> Result<Output, String> {
+        static SCOPE_ID: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+        if self.memory.is_some() && !scopes() {
+            return Err("a memory-capped systemd user scope is required".into());
+        }
+        let scope_unit = self.memory.map(|_| {
+            format!(
+                "glassmind-job-{}-{}.scope",
+                std::process::id(),
+                SCOPE_ID.fetch_add(1, std::sync::atomic::Ordering::Relaxed)
+            )
+        });
         let (program, args) = match self.sandbox {
             Some(s) => s.wrap(&self.program, &self.args),
             None => (self.program.clone(), self.args.clone()),
         };
+        let (program, args) = match self.memory {
+            Some(memory) => {
+                let mut a: Vec<String> = [
+                    "--user",
+                    "--scope",
+                    "--quiet",
+                    "--collect",
+                    "-pMemorySwapMax=0",
+                ]
+                .map(String::from)
+                .to_vec();
+                a.push(format!("-pMemoryMax={memory}"));
+                if let Some(unit) = &scope_unit {
+                    a.push(format!("--unit={unit}"));
+                }
+                a.push("--".into());
+                a.push(program);
+                a.extend(args);
+                ("systemd-run".to_owned(), a)
+            }
+            None => (program, args),
+        };
         let mut cmd = Command::new(&program);
+        // A group of its own, so a timeout ends everything it started (an
+        // orphan would also keep the output pipes open).
+        std::os::unix::process::CommandExt::process_group(&mut cmd, 0);
         cmd.args(&args)
             .current_dir(self.cwd)
             .stdin(if self.stdin.is_some() {
@@ -172,6 +226,14 @@ impl<'a> Run<'a> {
                 Ok(Some(status)) => break Some(status),
                 Ok(None) => {
                     if self.timeout.is_some_and(|t| start.elapsed() > t) {
+                        if let Some(unit) = &scope_unit {
+                            let _ = Command::new("systemctl")
+                                .args(["--user", "kill", "--signal=KILL", unit])
+                                .status();
+                        }
+                        let _ = Command::new("kill")
+                            .args(["-KILL", "--", &format!("-{}", child.id())])
+                            .status();
                         let _ = child.kill();
                         timed_out = true;
                         break child.wait().ok();
@@ -190,6 +252,20 @@ impl<'a> Run<'a> {
             timed_out,
         })
     }
+}
+
+/// Whether commands can run in systemd scopes of their own.
+fn scopes() -> bool {
+    static SCOPES: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    *SCOPES.get_or_init(|| {
+        Command::new("systemd-run")
+            .args(["--user", "--scope", "--quiet", "--collect", "true"])
+            .stdin(Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .status()
+            .is_ok_and(|s| s.success())
+    })
 }
 
 fn read_all<R: std::io::Read>(pipe: Option<R>) -> String {
@@ -211,17 +287,23 @@ pub fn git(repo: &Path, args: &[&str]) -> Result<String, String> {
     }
 }
 
-/// Runs cargo with the machine caps: 8 jobs, and 8 test threads.
+/// Runs cargo in a capped scope, with disk-backed temporary files.
 pub fn cargo(dir: &Path, target: &Path, args: &[&str]) -> Result<Output, String> {
     let mut a: Vec<String> = args.iter().map(|s| (*s).to_owned()).collect();
     let tests = a.first().is_some_and(|c| c == "test");
-    a.insert(1, "-j".into());
-    a.insert(2, "8".into());
-    if tests {
-        a.extend(["--".into(), "--test-threads".into(), "8".into()]);
+    if !a.first().is_some_and(|c| c == "fmt") {
+        a.insert(1, "-j".into());
+        a.insert(2, "4".into());
     }
+    if tests {
+        a.extend(["--".into(), "--test-threads".into(), "4".into()]);
+    }
+    let tmp = target.join("tmp");
+    std::fs::create_dir_all(&tmp).map_err(|e| e.to_string())?;
     Run::new("cargo", &a, dir)
         .env("CARGO_TARGET_DIR", &target.to_string_lossy())
+        .env("TMPDIR", &tmp.to_string_lossy())
+        .memory("8G")
         .timeout(Duration::from_secs(1800))
         .go()
 }

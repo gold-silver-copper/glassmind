@@ -1,0 +1,176 @@
+{
+  "dataset": "quantities-extended-dev-v1",
+  "split": "fixed-dev-sample",
+  "total": 97,
+  "right": 92,
+  "refusal": 5,
+  "wrong": 0,
+  "correct_refusals": 32,
+  "categories": {
+    "calendar_span": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "calendar_unit_ambiguity": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "century_boundary": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_between": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_range": {
+      "right": 2,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "distance": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "entity_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "kelvin": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "leap_year_shift": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "named_product": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "negative_inventory": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "number_words": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "overflow": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "paraphrase_gap": {
+      "right": 0,
+      "refusal": 5,
+      "wrong": 0
+    },
+    "rate": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "rational_cancellation": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "recipient_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weeks": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "failures": [
+    {
+      "id": "paraphrase_gap-0000",
+      "question": "Initially, Mira owned 126 coins; after receiving another 89, what was her total?",
+      "expected": "215",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0001",
+      "question": "Initially, Mira owned 92 coins; after receiving another 123, what was her total?",
+      "expected": "215",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0002",
+      "question": "Initially, Mira owned 196 coins; after receiving another 172, what was her total?",
+      "expected": "368",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0003",
+      "question": "Initially, Mira owned 33 coins; after receiving another 121, what was her total?",
+      "expected": "154",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "paraphrase_gap-0004",
+      "question": "Initially, Mira owned 50 coins; after receiving another 95, what was her total?",
+      "expected": "145",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "outcome": "refusal"
+    }
+  ],
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-extended-dev-v1",
+    "seed": 20261011,
+    "rows": 1036,
+    "bytes": 174437,
+    "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}

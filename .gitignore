@@ -3,5 +3,9 @@ references/*.pdf
 references/*.html
 /target
 # Generated data, loop state and scratch output never go in git.
-/data
+/data/*
+!/data/README.md
 /scratch
+
+/.cache
+**/__pycache__/

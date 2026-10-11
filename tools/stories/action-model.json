@@ -1,0 +1,54 @@
+{
+  "observations": [
+    {
+      "state": "bored",
+      "action": "Destination",
+      "target": "garden",
+      "count": 78
+    },
+    {
+      "state": "bored",
+      "action": "Acquisition",
+      "target": "football",
+      "count": 54
+    },
+    {
+      "state": "hungry",
+      "action": "Destination",
+      "target": "kitchen",
+      "count": 68
+    },
+    {
+      "state": "hungry",
+      "action": "Acquisition",
+      "target": "apple",
+      "count": 50
+    },
+    {
+      "state": "thirsty",
+      "action": "Destination",
+      "target": "kitchen",
+      "count": 81
+    },
+    {
+      "state": "thirsty",
+      "action": "Acquisition",
+      "target": "milk",
+      "count": 52
+    },
+    {
+      "state": "tired",
+      "action": "Destination",
+      "target": "bedroom",
+      "count": 75
+    },
+    {
+      "state": "tired",
+      "action": "Acquisition",
+      "target": "pajamas",
+      "count": 50
+    }
+  ],
+  "stories_seen": 5015,
+  "stories_skipped": 0
+}

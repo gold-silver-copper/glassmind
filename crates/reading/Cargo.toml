@@ -1,0 +1,19 @@
+[package]
+name = "glassmind-reading"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+glassmind-english.workspace = true
+glassmind-english-rust.workspace = true
+glassmind-world-rust.workspace = true
+glassmind-meaning.workspace = true
+glassmind-rules.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+clap.workspace = true
+
+[lints]
+workspace = true

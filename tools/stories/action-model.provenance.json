@@ -1,0 +1,91 @@
+{
+  "seed": "glassmind-stories-v1",
+  "split": "train",
+  "questions_or_answers_used": false,
+  "training_stories": 5015,
+  "per_task": {
+    "10": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "11": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "12": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "13": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "14": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "15": {
+      "train_episodes": 200,
+      "dev_episodes": 50
+    },
+    "16": {
+      "train_episodes": 800,
+      "dev_episodes": 200
+    },
+    "17": {
+      "train_episodes": 100,
+      "dev_episodes": 25
+    },
+    "18": {
+      "train_episodes": 159,
+      "dev_episodes": 39
+    },
+    "19": {
+      "train_episodes": 800,
+      "dev_episodes": 200
+    },
+    "1": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "20": {
+      "train_episodes": 76,
+      "dev_episodes": 18
+    },
+    "2": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "3": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "4": {
+      "train_episodes": 800,
+      "dev_episodes": 200
+    },
+    "5": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "6": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "7": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "8": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    },
+    "9": {
+      "train_episodes": 160,
+      "dev_episodes": 40
+    }
+  },
+  "training_input_sha256": "802377d06bc8278c252b945e27a5fc4972bf97d4569d04092d4787a44f8af116",
+  "model_sha256": "8b4ce4359a10e31948dba8cfa4b32c378b206487c04a987176aea2a56c8e0bf8",
+  "binary_sha256": "f0fbf001410e75ecc447599b09bc1f5f373e044c50ecb515d6fe99ff3c73019b"
+}

@@ -1,0 +1,3755 @@
+# calibrated on the hidden texting-style dev set (497 turns): total 30 bits and at most 5 bits per edit gave 420 right, none wrong (off 401; 7 bits per edit gave the first wrong answer)
+pairs	4776
+trusted_bits	30
+trusted_edit_bits	5
+added	!	86
+added	"	2
+added	&	1
+added	's	1
+added	(	16
+added	)	16
+added	,	1207
+added	-	85
+added	.	534
+added	/	4
+added	:	218
+added	<	5
+added	<name>	780
+added	>	7
+added	?	1606
+added	a	186
+added	abbreviation	1
+added	about	9
+added	accept	1
+added	account	1
+added	across	4
+added	act	2
+added	action	1
+added	active	1
+added	actually	9
+added	actualy	3
+added	acutally	1
+added	advance	10
+added	advances	1
+added	advisory	1
+added	after	2
+added	again	2
+added	akward	1
+added	alignment	1
+added	all	6
+added	alone	7
+added	also	10
+added	ambiguous	1
+added	an	8
+added	anchor	1
+added	and	53
+added	angle	1
+added	another	1
+added	any	10
+added	anything	47
+added	anyway	3
+added	anywhere	1
+added	api	1
+added	app	6
+added	arc	2
+added	are	124
+added	arm	1
+added	around	38
+added	art	1
+added	as	12
+added	assume	4
+added	assumed	1
+added	assuming	6
+added	at	68
+added	awake	1
+added	awkwardly	1
+added	backends	1
+added	background	1
+added	bad	2
+added	ballistics	1
+added	basically	1
+added	be	14
+added	bearings	2
+added	before	1
+added	behave	1
+added	behavior	2
+added	berm	1
+added	beter	3
+added	better	27
+added	binding	1
+added	bit	78
+added	blast	1
+added	blob	1
+added	blood	1
+added	board	1
+added	boardlist	1
+added	boards	1
+added	bob	1
+added	body	2
+added	bool	3
+added	boolean	1
+added	bots	1
+added	box	2
+added	brick	1
+added	builds	2
+added	but	26
+added	by	1
+added	cache	2
+added	caching	3
+added	call	13
+added	called	57
+added	callers	11
+added	calling	52
+added	calls	41
+added	came	4
+added	camera	1
+added	can	437
+added	can't	32
+added	cant	3
+added	captcha	1
+added	care	8
+added	carries	1
+added	cartridge	1
+added	catalog	1
+added	centered	1
+added	challenge	1
+added	chamber	1
+added	change	5
+added	changing	7
+added	channel	1
+added	chat	6
+added	check	2
+added	checking	6
+added	checks	1
+added	child	1
+added	clashes	1
+added	clean	7
+added	cleaner	1
+added	cleaning	27
+added	clear	23
+added	clearer	28
+added	clearly	6
+added	clicks	1
+added	client	1
+added	closely	1
+added	clunky	1
+added	cmds	1
+added	code	73
+added	codebase	20
+added	collection	1
+added	collider	1
+added	colors	1
+added	come	1
+added	command	1
+added	commit	1
+added	condition	1
+added	config	4
+added	confirmation	1
+added	confused	3
+added	confuses	2
+added	confusing	31
+added	confusng	2
+added	consistently	1
+added	contain	4
+added	containing	15
+added	contains	7
+added	content	2
+added	contian	1
+added	contributions	1
+added	conv	1
+added	copies	1
+added	could	292
+added	couldn't	2
+added	count	13
+added	counted	1
+added	counting	3
+added	counts	3
+added	crumble	1
+added	cryptic	10
+added	curent	1
+added	curious	4
+added	current	30
+added	damage	3
+added	damping	1
+added	data	2
+added	defined	72
+added	definition	7
+added	delete	1
+added	depends	1
+added	describes	8
+added	descriptive	8
+added	deserializes	1
+added	diff	4
+added	dir	1
+added	directly	2
+added	display	1
+added	do	38
+added	doe	1
+added	does	55
+added	doesn't	13
+added	doesnt	1
+added	doing	4
+added	don't	4
+added	dosnt	1
+added	down	6
+added	download	1
+added	drawing	3
+added	draws	1
+added	driver	1
+added	editor	1
+added	either	1
+added	encoding	1
+added	encryption	1
+added	end	23
+added	ends	44
+added	enough	1
+added	entity	1
+added	entry	2
+added	environment	1
+added	episode	1
+added	error	3
+added	even	63
+added	event	1
+added	everywhere	4
+added	exaclty	2
+added	exacly	1
+added	exact	1
+added	exactlly	1
+added	exactly	12
+added	explain	30
+added	explicit	1
+added	expressions	1
+added	facts	1
+added	failing	1
+added	families	1
+added	feature	2
+added	feed	1
+added	feels	6
+added	feild	1
+added	few	1
+added	fg	1
+added	fiedl	1
+added	field	77
+added	fields	55
+added	figure	186
+added	file	3
+added	filename	1
+added	files	4
+added	fills	1
+added	filter	2
+added	filterable	2
+added	filtering	1
+added	find	79
+added	finder	1
+added	finding	15
+added	fine	1
+added	fires	1
+added	first	1
+added	fits	3
+added	flag	5
+added	flow	7
+added	fn	3
+added	fns	4
+added	focus	2
+added	follow	3
+added	for	259
+added	forget	1
+added	formatting	1
+added	found	1
+added	frame	2
+added	frames	1
+added	fro	1
+added	from	28
+added	fucntions	2
+added	full	1
+added	function	19
+added	functions	30
+added	fuzz	1
+added	gameplay	1
+added	gauge	1
+added	generic	11
+added	gesture	1
+added	get	68
+added	gets	28
+added	getting	4
+added	gives	3
+added	glass	1
+added	glove	2
+added	goes	3
+added	going	1
+added	got	2
+added	grip	1
+added	groundsheet	2
+added	guarded	1
+added	guess	6
+added	guessing	2
+added	handle	1
+added	handled	2
+added	handler	1
+added	handlers	1
+added	handling	11
+added	happening	1
+added	happens	2
+added	hard	1
+added	has	29
+added	have	10
+added	haven't	1
+added	head	3
+added	health	1
+added	heights	1
+added	held	1
+added	help	1
+added	helper	2
+added	helpers	3
+added	here	12
+added	hey	323
+added	hi	53
+added	hiding	1
+added	highlighted	1
+added	hint	1
+added	hips	1
+added	history	2
+added	hit	1
+added	hits	1
+added	hm	9
+added	hmm	18
+added	hold	7
+added	holding	2
+added	holds	9
+added	honestly	2
+added	hood	1
+added	hooked	1
+added	how	44
+added	hud	1
+added	i	176
+added	i'd	241
+added	i'm	513
+added	id	1
+added	idea	3
+added	if	22
+added	im	2
+added	images	1
+added	in	128
+added	in-memory	1
+added	incl	6
+added	includes	3
+added	including	5
+added	index	2
+added	info	2
+added	input	1
+added	insdie	3
+added	inside	44
+added	instead	6
+added	intent	1
+added	internally	1
+added	into	29
+added	inventory	1
+added	is	340
+added	isn't	3
+added	isntead	1
+added	it	414
+added	it'll	1
+added	it's	119
+added	item	1
+added	its	15
+added	itself	1
+added	joint	1
+added	json	1
+added	just	21
+added	keep	31
+added	keeping	1
+added	keeps	1
+added	key	6
+added	keypair	1
+added	keys	2
+added	kind	24
+added	kinda	11
+added	kitted	1
+added	know	184
+added	knowing	1
+added	language	1
+added	layout	2
+added	learning	1
+added	least	1
+added	less	1
+added	like	315
+added	limit	1
+added	line	4
+added	links	1
+added	list	64
+added	listener	2
+added	little	11
+added	live	9
+added	lives	9
+added	load	1
+added	loaded	1
+added	loading	1
+added	logic	4
+added	logs	1
+added	lol	1
+added	long	4
+added	look	2
+added	looked	1
+added	looking	79
+added	looks	1
+added	lost	9
+added	lot	4
+added	lsit	1
+added	made	3
+added	magazine	1
+added	make	9
+added	makes	4
+added	many	7
+added	matches	1
+added	maybe	8
+added	me	386
+added	mean	4
+added	means	4
+added	meant	2
+added	measure	1
+added	measuring	1
+added	members	1
+added	mentioned	2
+added	menu	2
+added	message	1
+added	messages	2
+added	methods	2
+added	mid	1
+added	might	1
+added	mind	2
+added	misleadng	1
+added	mixed	1
+added	mixing	1
+added	models	1
+added	more	44
+added	mounted	1
+added	mouse	3
+added	much	25
+added	mul	1
+added	muscles	2
+added	my	20
+added	myself	1
+added	name	111
+added	named	2
+added	names	5
+added	naming	14
+added	naturally	1
+added	navigation	1
+added	need	5
+added	needs	7
+added	nested	1
+added	new	14
+added	next	1
+added	node	1
+added	not	65
+added	note	2
+added	nothing	2
+added	number	10
+added	obvious	7
+added	of	72
+added	off	2
+added	offline	2
+added	offset	1
+added	ok	121
+added	old	2
+added	on	30
+added	one	40
+added	ones	18
+added	only	4
+added	option	7
+added	or	24
+added	other	1
+added	otherwise	1
+added	our	1
+added	out	187
+added	own	1
+added	owned	1
+added	ownership	1
+added	owns	1
+added	packing	1
+added	page	2
+added	pagination	1
+added	painted	1
+added	pane	1
+added	panics	1
+added	param	1
+added	parsing	1
+added	part	2
+added	parts	1
+added	passed	1
+added	paste	1
+added	path	2
+added	pathfinding	1
+added	paths	1
+added	payload	1
+added	per	1
+added	permissions	1
+added	physics	2
+added	pick	1
+added	picture	1
+added	place	1
+added	placeholder	1
+added	placement	1
+added	places	5
+added	plain	1
+added	plays	1
+added	please	214
+added	pls	106
+added	plz	1
+added	point	23
+added	pointing	1
+added	poking	2
+added	popup	1
+added	post	2
+added	poster	1
+added	press	2
+added	pretty	3
+added	produces	1
+added	proxy	2
+added	purpose	2
+added	put	1
+added	question	195
+added	quick	224
+added	quite	2
+added	quote	2
+added	r	1
+added	ranges	1
+added	rate	1
+added	ratio	1
+added	read	6
+added	readable	5
+added	reader	2
+added	readied	1
+added	reading	7
+added	reads	17
+added	real	1
+added	really	6
+added	receiver	1
+added	refactoring	15
+added	refilter	1
+added	refusal	1
+added	regrid	1
+added	relies	2
+added	rename	45
+added	renamed	7
+added	rendering	13
+added	reply	1
+added	repo	1
+added	represent	1
+added	request	11
+added	resolved	1
+added	responses	1
+added	rest	1
+added	results	1
+added	returns	9
+added	reusable	1
+added	revealed	1
+added	review	1
+added	reviewing	2
+added	reworking	3
+added	rgb	1
+added	rig	1
+added	right	3
+added	rising	1
+added	rng	1
+added	role	1
+added	rollup	1
+added	rough	1
+added	roughly	3
+added	round	1
+added	run	1
+added	running	4
+added	runs	2
+added	s	1
+added	same	1
+added	saved	2
+added	saw	11
+added	say	8
+added	says	6
+added	scope	1
+added	screen	3
+added	scrolling	1
+added	search	5
+added	seat	1
+added	section	1
+added	security	1
+added	see	24
+added	seeing	21
+added	seem	3
+added	seems	2
+added	self-explanatory	1
+added	sender	1
+added	sense	8
+added	session	2
+added	set	1
+added	settings	5
+added	setup	6
+added	sha	1
+added	shared	1
+added	shell	1
+added	shot	1
+added	shoud	2
+added	should	8
+added	shoved	1
+added	show	15
+added	shown	2
+added	shows	1
+added	side	2
+added	sig	1
+added	signature	2
+added	signed	1
+added	since	10
+added	sites	2
+added	sleeping	1
+added	slot	1
+added	small	1
+added	smoke	1
+added	smth	8
+added	so	208
+added	some	35
+added	somehow	4
+added	someone	3
+added	something	34
+added	somewhere	20
+added	sorry	13
+added	sounds	9
+added	source	1
+added	span	2
+added	spawned	1
+added	spawnign	1
+added	spelled	1
+added	stamina	1
+added	starts	1
+added	state	7
+added	status	2
+added	step	1
+added	steps	2
+added	still	21
+added	stop	1
+added	storage	2
+added	store	6
+added	stored	12
+added	storing	1
+added	str	2
+added	strange	1
+added	strap	1
+added	stride	1
+added	string	1
+added	struct	59
+added	structs	8
+added	stuff	7
+added	styling	2
+added	subject	2
+added	suggestion	1
+added	sumary	2
+added	sun	1
+added	supposed	1
+added	sure	54
+added	synchronization	1
+added	system	1
+added	systems	2
+added	tab	3
+added	take	8
+added	takes	1
+added	taking	1
+added	tape	1
+added	target	1
+added	tasks	1
+added	teh	11
+added	tell	296
+added	tells	2
+added	terminator	1
+added	terse	2
+added	test	13
+added	tests	5
+added	text	2
+added	thanks	110
+added	that	196
+added	that's	9
+added	thats	2
+added	the	451
+added	their	5
+added	them	19
+added	theme	2
+added	then	1
+added	there	87
+added	there's	5
+added	they	1
+added	thing	1
+added	things	2
+added	think	76
+added	thinking	6
+added	this	12
+added	thnks	1
+added	thought	1
+added	thread	4
+added	threw	1
+added	through	12
+added	thx	2
+added	tick	1
+added	tidying	18
+added	time	1
+added	timeouts	1
+added	timestamps	2
+added	title	2
+added	to	613
+added	together	1
+added	too	22
+added	took	4
+added	topic	1
+added	totally	1
+added	tracing	12
+added	track	2
+added	tracked	1
+added	tracking	3
+added	tracks	1
+added	transaction	2
+added	tree	1
+added	trouble	1
+added	trying	315
+added	tweaking	4
+added	type	34
+added	typed	8
+added	u	12
+added	uh	1
+added	um	90
+added	unclear	2
+added	under	1
+added	understand	59
+added	unit	1
+added	until	1
+added	up	113
+added	update	5
+added	urls	1
+added	usage	1
+added	use	5
+added	used	68
+added	user	1
+added	uses	12
+added	vague	24
+added	validation	1
+added	value	2
+added	variables	1
+added	vauge	4
+added	vec	9
+added	verified	1
+added	very	6
+added	view	1
+added	views	1
+added	voxel	1
+added	w/	5
+added	waht	6
+added	waht's	1
+added	walker	1
+added	wallet	1
+added	want	18
+added	was	3
+added	wasn't	1
+added	way	23
+added	we	21
+added	we'd	1
+added	wehre	1
+added	what	233
+added	what's	20
+added	whats	19
+added	whcih	4
+added	when	4
+added	wher	1
+added	where	102
+added	where's	12
+added	which	55
+added	while	2
+added	who	21
+added	whole	1
+added	whose	1
+added	whre	1
+added	why	1
+added	widely	5
+added	wiring	1
+added	with	28
+added	within	1
+added	wondering	1
+added	work	2
+added	worker	2
+added	working	10
+added	works	1
+added	would	10
+added	wraping	1
+added	wrapped	7
+added	wrapper	1
+added	wrapping	10
+added	wraps	8
+added	wrists	1
+added	writes	1
+added	yet	1
+added	you	684
+added	zoned	1
+added	zoomed	1
+added	—	21
+dropped	<name>	call	34
+dropped	<name>	defined	23
+dropped	<name>	do	18
+dropped	<name>	field	5
+dropped	<name>	function	12
+dropped	<name>	have	15
+dropped	^	rename	13
+dropped	^	what	200
+dropped	^	where	115
+dropped	^	which	220
+dropped	a	field	74
+dropped	a	function	2
+dropped	belong	to	2
+dropped	call	a	1
+dropped	contains	<name>	7
+dropped	does	<name>	1
+dropped	does	a	25
+dropped	does	the	4
+dropped	field	named	48
+dropped	field	whose	50
+dropped	fields	belong	54
+dropped	fields	does	31
+dropped	function	defined	1
+dropped	functions	call	4
+dropped	functions	does	11
+dropped	has	a	1
+dropped	have	a	92
+dropped	is	<name>	2
+dropped	is	or	28
+dropped	is	the	4
+dropped	named	<name>	66
+dropped	or	contains	20
+dropped	rename	the	35
+dropped	struct	do	1
+dropped	struct	named	124
+dropped	structs	have	56
+dropped	type	is	36
+dropped	what	calls	1
+dropped	what	does	145
+dropped	where	is	114
+dropped	which	fields	4
+dropped	which	functions	16
+dropped	which	structs	3
+dropped	whose	type	25
+swapped	!	<name>	7
+swapped	!	call	8
+swapped	!	defined	7
+swapped	!	do	3
+swapped	!	have	12
+swapped	#	how	1
+swapped	's	<name>	5
+swapped	's	named	1
+swapped	(	a	1
+swapped	(	is	26
+swapped	(	type	3
+swapped	(	which	1
+swapped	)	<name>	20
+swapped	)	contains	9
+swapped	)	have	1
+swapped	)	structs	1
+swapped	,	<name>	16
+swapped	,	a	8
+swapped	,	belong	1
+swapped	,	contains	2
+swapped	,	does	31
+swapped	,	field	12
+swapped	,	fields	3
+swapped	,	functions	9
+swapped	,	have	3
+swapped	,	is	44
+swapped	,	named	13
+swapped	,	or	10
+swapped	,	rename	20
+swapped	,	struct	5
+swapped	,	the	3
+swapped	,	to	2
+swapped	,	type	8
+swapped	,	what	6
+swapped	,	where	1
+swapped	,	which	7
+swapped	,	whose	1
+swapped	-	<name>	12
+swapped	-	does	7
+swapped	-	field	12
+swapped	-	function	4
+swapped	-	functions	1
+swapped	-	is	2
+swapped	-	named	2
+swapped	-	rename	4
+swapped	-	struct	1
+swapped	-	the	3
+swapped	-	what	14
+swapped	-	where	3
+swapped	-	which	4
+swapped	.	<name>	23
+swapped	.	call	24
+swapped	.	defined	17
+swapped	.	do	12
+swapped	.	does	2
+swapped	.	have	24
+swapped	.	is	1
+swapped	.	named	1
+swapped	.	or	1
+swapped	.	rename	1
+swapped	.	whose	2
+swapped	/	does	1
+swapped	/	is	2
+swapped	:	rename	2
+swapped	:	the	1
+swapped	<	<name>	1
+swapped	<	contains	2
+swapped	<	is	3
+swapped	<	or	2
+swapped	<	rename	1
+swapped	<	type	2
+swapped	<	whose	2
+swapped	<name>	a	165
+swapped	<name>	belong	2
+swapped	<name>	call	11
+swapped	<name>	calls	4
+swapped	<name>	contains	13
+swapped	<name>	defined	6
+swapped	<name>	do	3
+swapped	<name>	does	91
+swapped	<name>	field	79
+swapped	<name>	fields	5
+swapped	<name>	function	55
+swapped	<name>	functions	12
+swapped	<name>	have	10
+swapped	<name>	is	51
+swapped	<name>	named	60
+swapped	<name>	or	2
+swapped	<name>	rename	16
+swapped	<name>	struct	83
+swapped	<name>	structs	5
+swapped	<name>	the	1
+swapped	<name>	to	2
+swapped	<name>	type	19
+swapped	<name>	what	27
+swapped	<name>	where	13
+swapped	<name>	which	17
+swapped	<name>	whose	8
+swapped	>	<name>	6
+swapped	>	contains	5
+swapped	>	defined	1
+swapped	>	is	2
+swapped	>	or	2
+swapped	>	rename	12
+swapped	>	the	5
+swapped	>	to	63
+swapped	?	<name>	198
+swapped	?	a	2
+swapped	?	call	88
+swapped	?	defined	89
+swapped	?	do	119
+swapped	?	does	1
+swapped	?	field	2
+swapped	?	function	2
+swapped	?	functions	1
+swapped	?	have	180
+swapped	?	is	2
+swapped	?	named	14
+swapped	?	or	2
+swapped	?	struct	1
+swapped	?	to	2
+swapped	?	type	1
+swapped	?	what	1
+swapped	?	which	2
+swapped	?	whose	1
+swapped	a	contains	8
+swapped	a	does	1
+swapped	a	field	2
+swapped	a	have	4
+swapped	a	is	1
+swapped	a	named	2
+swapped	a	or	5
+swapped	a	type	2
+swapped	a	which	1
+swapped	a	whose	9
+swapped	aad	a	1
+swapped	accent	<name>	1
+swapped	account	<name>	2
+swapped	account	a	1
+swapped	acoustics	a	1
+swapped	action	<name>	1
+swapped	active	field	1
+swapped	activity	<name>	1
+swapped	actor	<name>	1
+swapped	actually	<name>	3
+swapped	actually	have	1
+swapped	acurate	<name>	1
+swapped	admit	<name>	1
+swapped	advance	<name>	1
+swapped	afoot	<name>	1
+swapped	alice	belong	1
+swapped	alice	function	1
+swapped	alice	what	1
+swapped	all	to	2
+swapped	allegiance	is	1
+swapped	also	field	2
+swapped	an	a	1
+swapped	an	field	7
+swapped	an	type	1
+swapped	an	whose	1
+swapped	anchor	<name>	1
+swapped	anchor	struct	1
+swapped	and	rename	2
+swapped	annotation	a	1
+swapped	announcements	<name>	1
+swapped	another	contains	1
+swapped	any	structs	1
+swapped	any	which	34
+swapped	anythign	what	1
+swapped	anything	functions	5
+swapped	anything	what	4
+swapped	anything	which	4
+swapped	anywhere	is	1
+swapped	appearance	<name>	1
+swapped	arc	<name>	1
+swapped	arc	is	1
+swapped	arc	type	1
+swapped	are	<name>	4
+swapped	are	a	1
+swapped	are	belong	31
+swapped	are	does	3
+swapped	are	fields	2
+swapped	are	named	3
+swapped	are	to	5
+swapped	arm	or	1
+swapped	around	do	5
+swapped	around	have	1
+swapped	around	named	3
+swapped	art	<name>	1
+swapped	art	is	1
+swapped	as	a	2
+swapped	as	field	7
+swapped	as	have	6
+swapped	as	named	1
+swapped	as	to	1
+swapped	as	whose	5
+swapped	ask	<name>	2
+swapped	asker	<name>	1
+swapped	asking	a	1
+swapped	assemblies	<name>	1
+swapped	at	defined	1
+swapped	at	does	1
+swapped	attempt	<name>	1
+swapped	attempt	named	1
+swapped	attend	a	1
+swapped	back	do	1
+swapped	backoff	a	1
+swapped	badge	<name>	1
+swapped	bag	<name>	2
+swapped	balance	a	1
+swapped	banner	<name>	1
+swapped	batch	named	1
+swapped	be	rename	4
+swapped	be	the	2
+swapped	before	<name>	1
+swapped	below	a	1
+swapped	better	rename	1
+swapped	bit	<name>	1
+swapped	bit	named	1
+swapped	blob	<name>	2
+swapped	block	<name>	2
+swapped	blocked	<name>	1
+swapped	board	does	1
+swapped	bob	<name>	2
+swapped	body	<name>	2
+swapped	body	call	1
+swapped	book	<name>	1
+swapped	both	contains	1
+swapped	box	<name>	1
+swapped	braking	a	1
+swapped	branch	<name>	1
+swapped	branch	fields	1
+swapped	bucket	a	1
+swapped	budget	<name>	1
+swapped	builds	is	1
+swapped	built	call	1
+swapped	bumplimit	rename	1
+swapped	bundle	does	1
+swapped	buttons	<name>	1
+swapped	buttons	a	1
+swapped	by	<name>	5
+swapped	by	does	39
+swapped	by	functions	2
+swapped	by	many	5
+swapped	byte	<name>	2
+swapped	byte	what	1
+swapped	caled	calls	3
+swapped	caled	does	3
+swapped	caled	named	2
+swapped	calendar	<name>	2
+swapped	call	<name>	4
+swapped	call	a	1
+swapped	call	calls	5
+swapped	call	field	1
+swapped	calld	functions	1
+swapped	called	calls	10
+swapped	called	does	4
+swapped	called	functions	26
+swapped	called	how	6
+swapped	called	named	43
+swapped	called	rename	1
+swapped	called	to	3
+swapped	called	which	2
+swapped	callees	call	5
+swapped	callees	does	2
+swapped	callees	what	7
+swapped	callers	<name>	5
+swapped	callers	a	1
+swapped	callers	calls	1
+swapped	callers	what	66
+swapped	calles	does	1
+swapped	calling	<name>	6
+swapped	calling	call	77
+swapped	calling	calls	11
+swapped	calll	call	7
+swapped	callling	call	1
+swapped	callls	call	2
+swapped	calls	<name>	64
+swapped	calls	call	45
+swapped	calls	does	17
+swapped	calls	function	1
+swapped	calls	functions	2
+swapped	calls	what	3
+swapped	cals	calls	1
+swapped	can	rename	4
+swapped	candidate	is	1
+swapped	cant	a	1
+swapped	cant	is	1
+swapped	canvas	<name>	1
+swapped	canvas	what	1
+swapped	capcode	field	1
+swapped	capped	named	1
+swapped	card	<name>	1
+swapped	card	to	1
+swapped	carry	a	1
+swapped	carry	have	7
+swapped	carry	type	1
+swapped	carrying	what	1
+swapped	carve	<name>	1
+swapped	caught	<name>	1
+swapped	centered	function	1
+swapped	chain	<name>	1
+swapped	chain	does	1
+swapped	change	<name>	1
+swapped	change	rename	6
+swapped	change	the	2
+swapped	chars	does	1
+swapped	chart	<name>	1
+swapped	check	do	1
+swapped	check	function	1
+swapped	checking	do	1
+swapped	checking	does	1
+swapped	checklist	<name>	1
+swapped	checks	do	1
+swapped	chekcing	do	1
+swapped	chekcs	do	1
+swapped	chip	call	1
+swapped	chip	to	1
+swapped	chosen	<name>	1
+swapped	ck	defined	1
+swapped	cleaning	rename	1
+swapped	clear	<name>	1
+swapped	clearer	<name>	1
+swapped	clearer	rename	2
+swapped	client	is	1
+swapped	clip	<name>	1
+swapped	clipboard	<name>	1
+swapped	clipboard	named	1
+swapped	cluster	<name>	1
+swapped	cmd	is	1
+swapped	code	<name>	2
+swapped	codebase	do	1
+swapped	command	<name>	1
+swapped	comment	have	1
+swapped	comment	is	1
+swapped	commit	<name>	1
+swapped	commit	contains	1
+swapped	commit	have	1
+swapped	comparison	have	1
+swapped	compose	<name>	2
+swapped	conatins	contains	1
+swapped	condition	type	1
+swapped	cone	<name>	1
+swapped	cone	to	1
+swapped	confirm	<name>	1
+swapped	confirm	defined	1
+swapped	confusing	function	1
+swapped	connected	<name>	1
+swapped	contain	<name>	2
+swapped	contain	have	3
+swapped	contain	is	1
+swapped	contain	or	1
+swapped	containers	or	1
+swapped	containg	a	1
+swapped	containg	contains	1
+swapped	containing	a	3
+swapped	containing	contains	17
+swapped	containing	have	2
+swapped	containing	or	1
+swapped	containing	type	1
+swapped	containing	which	1
+swapped	contains	<name>	3
+swapped	contains	field	1
+swapped	contaning	contains	1
+swapped	contianing	a	2
+swapped	contianing	contains	2
+swapped	contians	contains	4
+swapped	contributions	<name>	1
+swapped	conv	<name>	1
+swapped	conversation	rename	1
+swapped	conversation	which	1
+swapped	copies	<name>	1
+swapped	corners	<name>	1
+swapped	corners	functions	1
+swapped	could	rename	3
+swapped	count	<name>	2
+swapped	count	contains	1
+swapped	count	how	7
+swapped	counted	<name>	1
+swapped	counting	whose	1
+swapped	counts	field	2
+swapped	counts	which	1
+swapped	counts	whose	2
+swapped	credentials	structs	1
+swapped	crossing	a	1
+swapped	crumble	<name>	1
+swapped	cryptc	<name>	1
+swapped	cryptic	<name>	1
+swapped	cube	<name>	1
+swapped	cut	<name>	5
+swapped	cut	is	1
+swapped	damage	<name>	1
+swapped	database	<name>	1
+swapped	day	<name>	1
+swapped	day	does	1
+swapped	declare	a	1
+swapped	declared	<name>	1
+swapped	declared	defined	9
+swapped	declared	has	1
+swapped	def	<name>	4
+swapped	def	defined	1
+swapped	def	is	7
+swapped	def	where	1
+swapped	deffined	defined	1
+swapped	defiend	defined	35
+swapped	defind	defined	1
+swapped	definde	defined	5
+swapped	definded	defined	2
+swapped	define	have	4
+swapped	defined	<name>	41
+swapped	defined	belong	5
+swapped	defined	function	1
+swapped	defined	is	1
+swapped	definedd	defined	1
+swapped	defines	<name>	1
+swapped	definition	<name>	1
+swapped	definition	defined	4
+swapped	definition	have	1
+swapped	definition	where	1
+swapped	definiton	<name>	1
+swapped	definiton	defined	1
+swapped	defn	<name>	5
+swapped	defned	<name>	1
+swapped	defnied	defined	14
+swapped	deifned	defined	2
+swapped	describe	does	1
+swapped	destination	<name>	1
+swapped	device	<name>	1
+swapped	diff	<name>	1
+swapped	digest	<name>	2
+swapped	digest	named	1
+swapped	direct	is	1
+swapped	directly	is	7
+swapped	directly	or	3
+swapped	directly	whose	1
+swapped	do	<name>	1
+swapped	do	function	1
+swapped	doe	do	3
+swapped	does	<name>	11
+swapped	does	calls	1
+swapped	does	do	21
+swapped	does	is	26
+swapped	does	named	7
+swapped	does	which	2
+swapped	doess	do	1
+swapped	doing	<name>	1
+swapped	doing	a	1
+swapped	doo	<name>	1
+swapped	doo	do	10
+swapped	doors	<name>	1
+swapped	doubt	<name>	1
+swapped	downloads	have	1
+swapped	drawing	named	1
+swapped	drawn	field	1
+swapped	drop	<name>	1
+swapped	ear	<name>	1
+swapped	echo	does	1
+swapped	edit	<name>	1
+swapped	editor	does	1
+swapped	editor	function	1
+swapped	either	is	1
+swapped	else	contains	1
+swapped	embed	type	1
+swapped	endpoint	have	1
+swapped	ends	which	2
+swapped	engine	<name>	1
+swapped	entries	the	1
+swapped	errors	a	1
+swapped	esc	<name>	1
+swapped	esc	call	1
+swapped	etc	<name>	3
+swapped	etc	contains	5
+swapped	etc	or	1
+swapped	even	field	1
+swapped	even	is	1
+swapped	even	whose	1
+swapped	everything	does	1
+swapped	everywher	<name>	1
+swapped	everywhere	<name>	2
+swapped	evict	<name>	1
+swapped	evrywhere	<name>	1
+swapped	exaclty	do	1
+swapped	exacly	do	1
+swapped	exactly	<name>	2
+swapped	exactly	do	1
+swapped	explain	<name>	2
+swapped	explain	does	14
+swapped	explain	the	1
+swapped	eye	<name>	1
+swapped	fabric	<name>	1
+swapped	facing	or	1
+swapped	failed	<name>	1
+swapped	fall	<name>	1
+swapped	far	<name>	1
+swapped	feed	<name>	1
+swapped	feild	<name>	13
+swapped	feild	contains	1
+swapped	feild	field	6
+swapped	feild	is	2
+swapped	feild	named	6
+swapped	feild	whose	1
+swapped	feilds	belong	2
+swapped	feilds	does	17
+swapped	feilds	fields	5
+swapped	feilds	have	3
+swapped	feilds	named	2
+swapped	fiedl	<name>	2
+swapped	fiedl	field	2
+swapped	field	<name>	131
+swapped	field	a	5
+swapped	field	contains	2
+swapped	field	have	3
+swapped	field	is	4
+swapped	field	named	9
+swapped	field	rename	4
+swapped	field	structs	1
+swapped	field	the	27
+swapped	field	type	3
+swapped	field	which	3
+swapped	field	whose	10
+swapped	field-wise	have	3
+swapped	fields	<name>	17
+swapped	fields	a	15
+swapped	fields	belong	6
+swapped	fields	does	32
+swapped	fields	field	3
+swapped	fields	have	47
+swapped	fields	is	3
+swapped	fields	named	7
+swapped	fields	or	1
+swapped	fields	struct	14
+swapped	fields	structs	1
+swapped	fields	to	4
+swapped	fields	type	1
+swapped	fields	what	30
+swapped	fields	which	5
+swapped	fields	whose	7
+swapped	fight	function	1
+swapped	figure	fields	4
+swapped	figure	which	7
+swapped	fild	contains	1
+swapped	fild	field	2
+swapped	file	defined	2
+swapped	file	is	1
+swapped	fileds	<name>	2
+swapped	fileds	a	2
+swapped	fileds	belong	1
+swapped	fileds	does	6
+swapped	fileds	fields	9
+swapped	fileds	have	1
+swapped	fileds	named	1
+swapped	fileds	struct	1
+swapped	fileds	what	1
+swapped	filter	<name>	1
+swapped	filter	named	1
+swapped	find	is	7
+swapped	find	the	1
+swapped	find	where	7
+swapped	find	which	5
+swapped	finder	<name>	2
+swapped	finder	does	1
+swapped	finding	to	2
+swapped	findings	<name>	1
+swapped	finish	<name>	2
+swapped	finishes	<name>	1
+swapped	flood	<name>	1
+swapped	fn	<name>	7
+swapped	fn	a	2
+swapped	fn	defined	2
+swapped	fn	do	4
+swapped	fn	does	4
+swapped	fn	function	9
+swapped	fn	is	1
+swapped	fn	named	1
+swapped	fn	the	14
+swapped	fn	where	1
+swapped	fnid	<name>	1
+swapped	fns	<name>	5
+swapped	fns	call	9
+swapped	fns	does	32
+swapped	fns	functions	140
+swapped	fns	many	6
+swapped	fns	which	30
+swapped	fo	calls	1
+swapped	focus	<name>	1
+swapped	foolfuuka	<name>	1
+swapped	footer	struct	1
+swapped	for	<name>	46
+swapped	for	calls	2
+swapped	for	do	133
+swapped	for	does	3
+swapped	for	function	1
+swapped	for	named	5
+swapped	for	what	1
+swapped	for	which	2
+swapped	forget	<name>	1
+swapped	found	a	1
+swapped	found	have	1
+swapped	fro	do	1
+swapped	from	<name>	13
+swapped	from	does	18
+swapped	from	many	1
+swapped	fucntion	function	1
+swapped	fucntions	<name>	9
+swapped	fucntions	call	6
+swapped	fucntions	does	7
+swapped	fucntions	functions	27
+swapped	fucntions	many	1
+swapped	func	<name>	1
+swapped	funcitons	functions	3
+swapped	funcs	does	2
+swapped	funcs	functions	27
+swapped	funcs	many	1
+swapped	functinos	does	1
+swapped	function	<name>	51
+swapped	function	functions	2
+swapped	function	named	2
+swapped	function	the	5
+swapped	functions	<name>	8
+swapped	functions	call	5
+swapped	functions	does	1
+swapped	functoins	<name>	1
+swapped	functoins	functions	7
+swapped	functons	does	4
+swapped	functons	functions	10
+swapped	funtcions	functions	1
+swapped	funtions	does	1
+swapped	furniture	named	1
+swapped	fuzz	calls	1
+swapped	gallery	<name>	1
+swapped	gate	a	1
+swapped	gate	what	1
+swapped	generated	field	1
+swapped	generics	<name>	1
+swapped	gestures	is	1
+swapped	get	<name>	1
+swapped	get	functions	2
+swapped	get	what	2
+swapped	gets	what	1
+swapped	getting	what	2
+swapped	gift	<name>	1
+swapped	git	<name>	1
+swapped	glare	which	1
+swapped	glass	<name>	1
+swapped	gloss	fields	1
+swapped	glow	<name>	1
+swapped	go	function	1
+swapped	go	the	1
+swapped	goes	named	1
+swapped	got	<name>	5
+swapped	got	a	4
+swapped	got	field	1
+swapped	got	have	45
+swapped	grid	<name>	1
+swapped	grip	<name>	1
+swapped	grip	a	1
+swapped	ground	<name>	1
+swapped	groundsheet	<name>	1
+swapped	grown	<name>	1
+swapped	guns	named	1
+swapped	handle	type	1
+swapped	hands	is	1
+swapped	hard	field	1
+swapped	has	<name>	63
+swapped	has	a	3
+swapped	has	contains	1
+swapped	has	does	9
+swapped	has	field	1
+swapped	has	have	22
+swapped	has	is	2
+swapped	has	struct	3
+swapped	has	structs	4
+swapped	has	type	1
+swapped	has	which	1
+swapped	hash	is	1
+swapped	hass	have	1
+swapped	hav	a	2
+swapped	hav	does	1
+swapped	hav	have	25
+swapped	hav	named	1
+swapped	have	<name>	67
+swapped	have	a	7
+swapped	have	contains	1
+swapped	have	named	3
+swapped	header	<name>	1
+swapped	heatmap	<name>	1
+swapped	height	field	1
+swapped	helm	<name>	1
+swapped	helper	<name>	1
+swapped	helper	struct	1
+swapped	here	<name>	5
+swapped	hey	which	1
+swapped	highlight	<name>	1
+swapped	highlight	field	1
+swapped	highlighted	<name>	1
+swapped	highlighted	named	1
+swapped	hinged	<name>	1
+swapped	hits	<name>	1
+swapped	hm	<name>	1
+swapped	hold	<name>	2
+swapped	hold	fields	1
+swapped	hold	have	39
+swapped	hold	whose	1
+swapped	holders	<name>	1
+swapped	holding	<name>	1
+swapped	holding	contains	2
+swapped	holding	have	6
+swapped	holds	field	1
+swapped	holds	have	5
+swapped	holds	named	1
+swapped	hole	<name>	1
+swapped	hood	call	1
+swapped	how	functions	6
+swapped	hsa	have	1
+swapped	http	contains	1
+swapped	hvae	have	1
+swapped	hve	have	4
+swapped	i	<name>	2
+swapped	i	rename	3
+swapped	i	which	1
+swapped	i'm	which	7
+swapped	icons	<name>	1
+swapped	identity	what	1
+swapped	ids	<name>	1
+swapped	idx	a	1
+swapped	if	type	2
+swapped	if	whose	5
+swapped	in	<name>	9
+swapped	in	a	7
+swapped	in	belong	5
+swapped	in	contains	9
+swapped	in	does	7
+swapped	in	field	2
+swapped	in	fields	1
+swapped	in	have	8
+swapped	in	is	5
+swapped	in	named	8
+swapped	in	or	15
+swapped	in	rename	1
+swapped	in	struct	1
+swapped	in	the	2
+swapped	in	to	36
+swapped	in	which	2
+swapped	incidence	<name>	1
+swapped	incl	contains	1
+swapped	incl	field	2
+swapped	incl	is	1
+swapped	incl	or	1
+swapped	incl	structs	1
+swapped	incl	type	1
+swapped	incl	whose	2
+swapped	incldues	contains	1
+swapped	include	contains	1
+swapped	include	is	1
+swapped	includes	contains	5
+swapped	inculding	or	1
+swapped	index	<name>	1
+swapped	info	<name>	1
+swapped	input	<name>	1
+swapped	insdie	call	1
+swapped	insdie	contains	3
+swapped	inside	<name>	5
+swapped	inside	contains	1
+swapped	inside	does	10
+swapped	inside	fields	4
+swapped	inside	is	3
+swapped	inside	named	2
+swapped	inside	or	1
+swapped	inside	to	1
+swapped	inside	type	1
+swapped	instant	<name>	1
+swapped	interface	<name>	3
+swapped	into	call	3
+swapped	into	the	2
+swapped	into	to	6
+swapped	intrusion	<name>	1
+swapped	intrusion	do	1
+swapped	intrusion	function	1
+swapped	invoke	call	10
+swapped	invokes	call	2
+swapped	invokes	calls	1
+swapped	is	<name>	17
+swapped	is	belong	1
+swapped	is	does	101
+swapped	is	field	3
+swapped	is	fields	1
+swapped	is	function	1
+swapped	is	the	3
+swapped	is	type	3
+swapped	is	whose	6
+swapped	it	<name>	309
+swapped	it	call	9
+swapped	it	contains	20
+swapped	it	defined	7
+swapped	it	do	4
+swapped	it	does	24
+swapped	it	field	10
+swapped	it	function	16
+swapped	it	have	11
+swapped	it	is	1
+swapped	it	named	16
+swapped	it	or	1
+swapped	it	struct	3
+swapped	it	to	20
+swapped	it	what	2
+swapped	it	whose	1
+swapped	it's	<name>	1
+swapped	it's	does	2
+swapped	it's	is	5
+swapped	it's	named	2
+swapped	it's	type	5
+swapped	its	<name>	9
+swapped	its	does	2
+swapped	its	field	2
+swapped	its	named	1
+swapped	its	the	3
+swapped	its	to	2
+swapped	its	whose	4
+swapped	izz	<name>	2
+swapped	job	belong	1
+swapped	jobs	a	1
+swapped	jockey	<name>	1
+swapped	joints	field	1
+swapped	journal	<name>	1
+swapped	jschan	<name>	1
+swapped	jump	where	2
+swapped	just	or	2
+swapped	just	the	1
+swapped	just	to	2
+swapped	keep	have	1
+swapped	key	<name>	1
+swapped	key	is	1
+swapped	keybindings	to	1
+swapped	keypair	is	1
+swapped	keys	<name>	1
+swapped	keys	field	1
+swapped	kick	<name>	1
+swapped	kind	<name>	1
+swapped	knobs	<name>	2
+swapped	know	<name>	2
+swapped	know	what	2
+swapped	know	where	1
+swapped	know	which	3
+swapped	known	<name>	1
+swapped	knwo	<name>	1
+swapped	label	<name>	1
+swapped	label	field	1
+swapped	leaf	<name>	2
+swapped	leaf	have	1
+swapped	ledger	<name>	3
+swapped	letter	<name>	1
+swapped	lighting	<name>	1
+swapped	like	belong	1
+swapped	like	contains	1
+swapped	like	functions	2
+swapped	like	is	3
+swapped	like	rename	11
+swapped	like	to	1
+swapped	like	type	4
+swapped	like	whose	1
+swapped	limb	does	1
+swapped	limb	fields	1
+swapped	limit	<name>	2
+swapped	limiter	<name>	2
+swapped	limits	<name>	2
+swapped	limp	<name>	1
+swapped	links	<name>	1
+swapped	list	<name>	2
+swapped	list	a	2
+swapped	list	contains	1
+swapped	list	does	10
+swapped	list	functions	1
+swapped	list	have	1
+swapped	list	named	1
+swapped	list	or	3
+swapped	list	what	9
+swapped	list	which	29
+swapped	listed	<name>	1
+swapped	listener	named	1
+swapped	lists	<name>	1
+swapped	live	<name>	4
+swapped	live	defined	15
+swapped	live	field	1
+swapped	lives	<name>	2
+swapped	loaction	where	1
+swapped	load	<name>	1
+swapped	loc	where	2
+swapped	locate	<name>	1
+swapped	locate	is	3
+swapped	locate	the	1
+swapped	location	defined	10
+swapped	location	where	2
+swapped	lock	<name>	1
+swapped	lol	do	1
+swapped	looking	fields	1
+swapped	lost	<name>	1
+swapped	lost	field	1
+swapped	lsit	have	1
+swapped	made	does	3
+swapped	makaba	<name>	1
+swapped	make	<name>	3
+swapped	make	belong	2
+swapped	make	field	2
+swapped	make	function	1
+swapped	many	call	5
+swapped	map	does	1
+swapped	mark	<name>	1
+swapped	marker	<name>	1
+swapped	matcher	<name>	1
+swapped	matter	<name>	1
+swapped	maybe	to	2
+swapped	me	<name>	15
+swapped	me	belong	1
+swapped	me	do	3
+swapped	me	does	2
+swapped	me	fields	1
+swapped	me	is	1
+swapped	me	named	1
+swapped	me	to	1
+swapped	me	what	10
+swapped	me	where	4
+swapped	me	which	7
+swapped	mean	call	1
+swapped	mean	functions	1
+swapped	mean	have	2
+swapped	measure	what	1
+swapped	meets	<name>	1
+swapped	members	<name>	1
+swapped	members	have	4
+swapped	members	struct	1
+swapped	memebers	have	1
+swapped	memo	<name>	1
+swapped	memo	does	1
+swapped	mentions	<name>	1
+swapped	menu	<name>	1
+swapped	menu	defined	1
+swapped	merge	<name>	1
+swapped	mergeable	field	1
+swapped	message	does	2
+swapped	message	or	1
+swapped	method	function	1
+swapped	milestone	<name>	1
+swapped	milestone	have	1
+swapped	min	field	1
+swapped	minds	a	1
+swapped	mismatch	<name>	3
+swapped	mnay	many	21
+swapped	mny	call	1
+swapped	mny	many	2
+swapped	mobility	<name>	1
+swapped	mobility	does	1
+swapped	more	to	2
+swapped	mover	to	1
+swapped	muscles	a	1
+swapped	mutate	<name>	1
+swapped	muzzle	a	1
+swapped	my	a	2
+swapped	my	named	1
+swapped	namde	named	1
+swapped	name	<name>	3
+swapped	name	field	1
+swapped	name	named	5
+swapped	name	the	3
+swapped	name	to	2
+swapped	name's	field	1
+swapped	named	<name>	1
+swapped	need	rename	1
+swapped	nestd	<name>	1
+swapped	nested	<name>	4
+swapped	nested	contains	2
+swapped	nested	is	2
+swapped	nested	or	1
+swapped	nested	type	1
+swapped	network	defined	1
+swapped	new	belong	1
+swapped	next	field	1
+swapped	nonce	<name>	1
+swapped	not	to	1
+swapped	note	<name>	1
+swapped	notes	<name>	1
+swapped	notice	<name>	1
+swapped	notice	a	1
+swapped	notice	field	1
+swapped	notification	<name>	1
+swapped	notified	<name>	1
+swapped	now	<name>	1
+swapped	num	how	2
+swapped	number	how	2
+swapped	objects	<name>	1
+swapped	of	<name>	30
+swapped	of	a	8
+swapped	of	calls	64
+swapped	of	contains	1
+swapped	of	does	41
+swapped	of	field	2
+swapped	of	have	1
+swapped	of	how	8
+swapped	of	is	13
+swapped	of	many	12
+swapped	of	named	12
+swapped	of	or	1
+swapped	of	rename	1
+swapped	of	struct	9
+swapped	of	what	11
+swapped	of	which	2
+swapped	of	whose	49
+swapped	ok	field	1
+swapped	oldest	rename	1
+swapped	on	<name>	1
+swapped	on	a	4
+swapped	on	belong	28
+swapped	on	call	1
+swapped	on	does	1
+swapped	on	fields	4
+swapped	on	named	2
+swapped	on	struct	3
+swapped	on	to	58
+swapped	one	<name>	2
+swapped	one	contains	1
+swapped	one	do	1
+swapped	ones	<name>	15
+swapped	ones	have	2
+swapped	ones	named	2
+swapped	only	<name>	6
+swapped	only	whose	1
+swapped	opened	<name>	1
+swapped	opening	<name>	1
+swapped	option	<name>	1
+swapped	option	contains	1
+swapped	option	field	2
+swapped	option	is	3
+swapped	option	or	2
+swapped	option	type	3
+swapped	option	whose	1
+swapped	or	a	1
+swapped	or	contains	7
+swapped	or	is	1
+swapped	or	type	1
+swapped	or	whose	3
+swapped	origin	the	1
+swapped	oscillation	have	1
+swapped	other	contains	5
+swapped	other	whose	2
+swapped	out	belong	4
+swapped	out	fields	7
+swapped	out	which	1
+swapped	overboard	does	1
+swapped	overlay	<name>	2
+swapped	owners	<name>	1
+swapped	page	<name>	2
+swapped	page	a	1
+swapped	page	named	1
+swapped	pages	the	1
+swapped	paint	does	1
+swapped	palette	<name>	1
+swapped	parcel	does	1
+swapped	park	functions	1
+swapped	part	named	1
+swapped	partial	<name>	1
+swapped	passenger	<name>	1
+swapped	passenger	does	1
+swapped	physiology	a	1
+swapped	ping	<name>	1
+swapped	pixels	where	1
+swapped	place	<name>	1
+swapped	place	a	1
+swapped	place	field	1
+swapped	places	do	1
+swapped	places	functions	1
+swapped	plan	<name>	1
+swapped	please	<name>	49
+swapped	please	contains	1
+swapped	please	field	1
+swapped	please	named	13
+swapped	please	rename	4
+swapped	please	to	1
+swapped	pls	<name>	21
+swapped	pls	call	2
+swapped	pls	defined	2
+swapped	pls	do	1
+swapped	pls	have	11
+swapped	pls	rename	5
+swapped	pls	to	3
+swapped	plz	<name>	1
+swapped	pockets	<name>	1
+swapped	point	does	1
+swapped	point	where	1
+swapped	pointer	<name>	1
+swapped	pool	<name>	1
+swapped	popup	<name>	1
+swapped	portrait	<name>	1
+swapped	pose	type	1
+swapped	possible	field	2
+swapped	preview	a	1
+swapped	previews	<name>	1
+swapped	profile	the	1
+swapped	prompt	have	1
+swapped	prompt	which	1
+swapped	pubkey	structs	1
+swapped	public	field	1
+swapped	pull	what	1
+swapped	purpose	<name>	4
+swapped	purpose	does	2
+swapped	purpose	function	1
+swapped	purpose	the	2
+swapped	purpose	what	4
+swapped	purpse	<name>	1
+swapped	queue	does	1
+swapped	quick	<name>	1
+swapped	quick	what	2
+swapped	quickly	do	1
+swapped	quit	<name>	1
+swapped	r	<name>	4
+swapped	r	belong	1
+swapped	range	<name>	1
+swapped	raw	<name>	2
+swapped	readied	is	1
+swapped	readiness	does	1
+swapped	reason	<name>	1
+swapped	rebind	what	1
+swapped	receipt	does	2
+swapped	redo	<name>	1
+swapped	ref	is	1
+swapped	reference	<name>	1
+swapped	refits	<name>	1
+swapped	refusal	<name>	1
+swapped	regions	a	1
+swapped	reindex	<name>	1
+swapped	release	a	1
+swapped	renam	the	1
+swapped	rename	<name>	26
+swapped	rename	field	10
+swapped	rename	function	1
+swapped	rename	the	18
+swapped	rename	to	12
+swapped	renamed	field	8
+swapped	renamed	function	1
+swapped	renaming	rename	1
+swapped	renmae	<name>	1
+swapped	renmae	rename	4
+swapped	renmae	the	3
+swapped	renmae	to	1
+swapped	reply	<name>	1
+swapped	report	<name>	1
+swapped	represents	<name>	1
+swapped	represents	do	2
+swapped	request	rename	1
+swapped	resistance	<name>	1
+swapped	results	<name>	1
+swapped	retrying	<name>	1
+swapped	return	what	1
+swapped	returns	<name>	1
+swapped	reveal	or	1
+swapped	rider	<name>	1
+swapped	right	to	1
+swapped	riser	<name>	1
+swapped	rn	<name>	1
+swapped	roster	<name>	1
+swapped	rotated	<name>	1
+swapped	rough	<name>	2
+swapped	round	does	1
+swapped	route	have	1
+swapped	route	is	1
+swapped	row	does	1
+swapped	rpc	<name>	1
+swapped	run	<name>	2
+swapped	runner	<name>	3
+swapped	runner	does	1
+swapped	running	<name>	1
+swapped	s	structs	1
+swapped	saved	<name>	1
+swapped	saved	is	1
+swapped	scanner	<name>	2
+swapped	screen	function	1
+swapped	scribe	<name>	2
+swapped	search	<name>	1
+swapped	search	a	1
+swapped	second	<name>	2
+swapped	section	function	2
+swapped	sections	<name>	1
+swapped	see	a	1
+swapped	seed	field	1
+swapped	seeds	<name>	2
+swapped	segment	<name>	1
+swapped	segments	<name>	2
+swapped	select	<name>	1
+swapped	selected	<name>	1
+swapped	selected	field	1
+swapped	sender	is	1
+swapped	serve	<name>	4
+swapped	setting	is	1
+swapped	settings	<name>	1
+swapped	setup	<name>	1
+swapped	sheet	<name>	1
+swapped	shell	<name>	1
+swapped	shift	<name>	1
+swapped	shooters	where	1
+swapped	short	the	1
+swapped	should	rename	2
+swapped	show	belong	1
+swapped	show	fields	1
+swapped	show	what	3
+swapped	show	which	2
+swapped	shown	or	1
+swapped	signature	<name>	2
+swapped	signature	type	1
+swapped	simulate	<name>	1
+swapped	site	<name>	1
+swapped	sitelist	<name>	1
+swapped	sites	what	1
+swapped	skin	<name>	1
+swapped	slab	<name>	1
+swapped	slot	<name>	1
+swapped	smth	<name>	1
+swapped	so	rename	5
+swapped	so	what	2
+swapped	so	which	3
+swapped	some	contains	1
+swapped	some	or	3
+swapped	some	which	1
+swapped	somehow	contains	3
+swapped	something	<name>	9
+swapped	something	field	1
+swapped	something	or	1
+swapped	somewhere	do	1
+swapped	somewhere	have	1
+swapped	somewhere	structs	1
+swapped	somewhere	type	1
+swapped	sorry	<name>	1
+swapped	source	<name>	1
+swapped	source	a	1
+swapped	span	<name>	2
+swapped	span	contains	1
+swapped	specs	<name>	1
+swapped	spinner	<name>	1
+swapped	spinning	<name>	2
+swapped	stain	<name>	1
+swapped	stain	defined	1
+swapped	star	function	1
+swapped	stash	<name>	1
+swapped	state	contains	1
+swapped	status	<name>	1
+swapped	status	a	1
+swapped	stdin	<name>	1
+swapped	steer	what	1
+swapped	stiffness	<name>	1
+swapped	still	belong	2
+swapped	stock	does	1
+swapped	store	have	1
+swapped	store	type	1
+swapped	stored	<name>	1
+swapped	stored	does	1
+swapped	stored	named	1
+swapped	stores	<name>	1
+swapped	stores	has	1
+swapped	strcut	<name>	1
+swapped	strcuts	structs	2
+swapped	strucs	structs	3
+swapped	strucst	structs	2
+swapped	struct	<name>	18
+swapped	struct	a	10
+swapped	struct	contains	1
+swapped	struct	does	11
+swapped	struct	fields	3
+swapped	struct	have	19
+swapped	struct	named	88
+swapped	struct	structs	6
+swapped	struct	the	2
+swapped	struct	to	4
+swapped	struct	what	4
+swapped	struct	which	9
+swapped	structs	<name>	6
+swapped	structs	contains	2
+swapped	structs	field	3
+swapped	structs	named	4
+swapped	structs	or	1
+swapped	structs	which	13
+swapped	strutcs	structs	1
+swapped	stuff	call	1
+swapped	stuff	have	1
+swapped	stuff	whose	1
+swapped	sub	is	1
+swapped	subject	<name>	1
+swapped	submenu	functions	1
+swapped	suggestion	<name>	1
+swapped	sumary	does	2
+swapped	summary	<name>	1
+swapped	summary	a	1
+swapped	sun	does	1
+swapped	sure	have	1
+swapped	sure	rename	2
+swapped	sure	what	1
+swapped	sym	<name>	1
+swapped	table	<name>	2
+swapped	tag	have	1
+swapped	taht	<name>	1
+swapped	taht	functions	2
+swapped	tally	<name>	1
+swapped	tape	<name>	1
+swapped	target	<name>	1
+swapped	target	to	1
+swapped	target	type	1
+swapped	task	<name>	1
+swapped	team	a	1
+swapped	team	does	1
+swapped	teh	<name>	6
+swapped	teh	a	1
+swapped	teh	contains	2
+swapped	teh	does	2
+swapped	teh	fields	1
+swapped	teh	functions	1
+swapped	teh	is	2
+swapped	teh	the	6
+swapped	teh	what	1
+swapped	tehir	contains	1
+swapped	tehm	<name>	1
+swapped	tehy	<name>	1
+swapped	tell	what	1
+swapped	term	<name>	1
+swapped	terse	the	1
+swapped	tesst	do	1
+swapped	test	call	1
+swapped	test	named	9
+swapped	test	the	1
+swapped	testing	do	5
+swapped	testing	does	1
+swapped	tests	call	1
+swapped	tests	do	1
+swapped	text	<name>	1
+swapped	thanks	<name>	31
+swapped	thanks	contains	2
+swapped	thanks	function	1
+swapped	thanks	named	3
+swapped	that	<name>	3
+swapped	that	a	1
+swapped	that	belong	1
+swapped	that	does	7
+swapped	that	field	5
+swapped	that	functions	14
+swapped	that	have	9
+swapped	that	named	1
+swapped	that	or	2
+swapped	that	structs	17
+swapped	that	type	4
+swapped	that	which	1
+swapped	that	whose	5
+swapped	that's	type	1
+swapped	thats	type	3
+swapped	the	<name>	4
+swapped	the	a	129
+swapped	the	belong	7
+swapped	the	call	1
+swapped	the	contains	2
+swapped	the	does	78
+swapped	the	field	2
+swapped	the	fields	4
+swapped	the	function	9
+swapped	the	is	1
+swapped	the	named	7
+swapped	the	rename	7
+swapped	the	struct	5
+swapped	the	to	36
+swapped	the	type	1
+swapped	the	what	4
+swapped	the	which	26
+swapped	the	whose	4
+swapped	their	contains	1
+swapped	their	field	2
+swapped	them	contains	4
+swapped	them	named	4
+swapped	there	<name>	1
+swapped	there	how	5
+swapped	there	named	1
+swapped	there	which	6
+swapped	they	<name>	2
+swapped	they	have	10
+swapped	think	field	1
+swapped	think	rename	2
+swapped	think	the	2
+swapped	thinking	rename	1
+swapped	this	rename	1
+swapped	thread	<name>	1
+swapped	thread	a	1
+swapped	thred	<name>	1
+swapped	thsi	<name>	1
+swapped	tht	<name>	1
+swapped	tick	<name>	5
+swapped	ticket	<name>	1
+swapped	tip	rename	1
+swapped	to	<name>	3
+swapped	to	belong	1
+swapped	to	does	5
+swapped	to	field	1
+swapped	to	fields	1
+swapped	to	is	2
+swapped	to	named	1
+swapped	to	rename	2
+swapped	to	the	10
+swapped	to	which	6
+swapped	tones	field	1
+swapped	too	<name>	1
+swapped	too	field	1
+swapped	too	rename	2
+swapped	too	to	1
+swapped	toolkit	<name>	1
+swapped	top	<name>	1
+swapped	top	the	1
+swapped	total	field	1
+swapped	touched	field	1
+swapped	treated	<name>	2
+swapped	tree	named	1
+swapped	trigger	<name>	1
+swapped	triggers	<name>	1
+swapped	trying	fields	1
+swapped	trying	functions	5
+swapped	trying	which	1
+swapped	tset	do	2
+swapped	turning	named	1
+swapped	twig	<name>	1
+swapped	tx	<name>	2
+swapped	type	<name>	16
+swapped	type	contains	5
+swapped	type	is	3
+swapped	type	structs	1
+swapped	type	whose	1
+swapped	typed	a	1
+swapped	typed	field	1
+swapped	typed	have	1
+swapped	typed	structs	1
+swapped	typed	type	7
+swapped	typed	whose	5
+swapped	types	<name>	2
+swapped	types	or	1
+swapped	u	rename	3
+swapped	u	the	1
+swapped	um	which	1
+swapped	unblock	<name>	1
+swapped	unclear	function	1
+swapped	under	does	1
+swapped	understand	<name>	1
+swapped	understand	a	5
+swapped	understand	does	1
+swapped	understand	fields	2
+swapped	understand	rename	1
+swapped	understand	to	1
+swapped	understand	what	1
+swapped	unescape	<name>	2
+swapped	unread	named	1
+swapped	unwatch	<name>	1
+swapped	unwatch	which	1
+swapped	up	does	2
+swapped	up	functions	2
+swapped	up	rename	3
+swapped	up	the	1
+swapped	up	to	2
+swapped	up	what	7
+swapped	url	a	1
+swapped	url	field	1
+swapped	url	named	1
+swapped	usages	<name>	1
+swapped	use	<name>	3
+swapped	use	call	6
+swapped	use	contains	1
+swapped	use	have	3
+swapped	use	or	2
+swapped	use	whose	2
+swapped	used	<name>	5
+swapped	used	does	2
+swapped	used	have	1
+swapped	used	structs	2
+swapped	uses	<name>	1
+swapped	uses	call	1
+swapped	uses	calls	5
+swapped	uses	contains	1
+swapped	vague	<name>	1
+swapped	vague	field	4
+swapped	value	<name>	2
+swapped	vars	<name>	1
+swapped	vars	does	1
+swapped	vauge	<name>	1
+swapped	vauge	to	1
+swapped	vault	<name>	1
+swapped	vec	<name>	1
+swapped	vec	is	4
+swapped	vec	or	5
+swapped	vec	type	1
+swapped	vec	whose	1
+swapped	verb	field	1
+swapped	version	<name>	1
+swapped	viewport	<name>	1
+swapped	vocab	a	1
+swapped	vulnerability	<name>	1
+swapped	vulnerability	does	1
+swapped	w/	a	21
+swapped	w/	field	2
+swapped	w/	have	42
+swapped	w/	is	1
+swapped	w/	or	1
+swapped	w/	structs	3
+swapped	w/	to	1
+swapped	w/	type	2
+swapped	w/	which	3
+swapped	w/	whose	6
+swapped	waht	<name>	2
+swapped	waht	a	1
+swapped	waht	call	1
+swapped	waht	does	17
+swapped	waht	functions	1
+swapped	waht	struct	2
+swapped	waht	what	8
+swapped	waht	which	5
+swapped	waht's	does	4
+swapped	waiter	<name>	1
+swapped	waiter	does	1
+swapped	wall	<name>	1
+swapped	want	belong	2
+swapped	want	rename	3
+swapped	want	the	1
+swapped	wardrobe	functions	1
+swapped	wat	field	1
+swapped	wat	what	4
+swapped	wat	which	4
+swapped	way	<name>	1
+swapped	way	struct	2
+swapped	we	rename	1
+swapped	we	the	1
+swapped	wearing	<name>	1
+swapped	wears	<name>	1
+swapped	weeks	<name>	1
+swapped	wehre	where	2
+swapped	wehre's	is	1
+swapped	weights	<name>	1
+swapped	what	<name>	15
+swapped	what	a	3
+swapped	what	belong	2
+swapped	what	call	5
+swapped	what	do	1
+swapped	what	does	23
+swapped	what	fields	39
+swapped	what	functions	37
+swapped	what	have	1
+swapped	what	is	1
+swapped	what	named	4
+swapped	what	rename	2
+swapped	what	struct	3
+swapped	what	the	2
+swapped	what	which	516
+swapped	what's	<name>	2
+swapped	what's	a	1
+swapped	what's	does	79
+swapped	what's	named	1
+swapped	what's	struct	4
+swapped	what's	what	5
+swapped	what's	which	2
+swapped	whatever	<name>	1
+swapped	whats	does	15
+swapped	whats	fields	2
+swapped	whats	named	3
+swapped	whats	struct	2
+swapped	whats	the	1
+swapped	whats	what	1
+swapped	whats	which	3
+swapped	whcih	<name>	16
+swapped	whcih	a	1
+swapped	whcih	call	2
+swapped	whcih	calls	1
+swapped	whcih	contains	3
+swapped	whcih	fields	2
+swapped	whcih	functions	3
+swapped	whcih	named	1
+swapped	whcih	struct	4
+swapped	whcih	which	57
+swapped	wheel	does	1
+swapped	wheeling	do	1
+swapped	when	type	1
+swapped	wher	is	1
+swapped	wher	where	2
+swapped	where	<name>	4
+swapped	where	calls	1
+swapped	where	defined	3
+swapped	where	is	14
+swapped	where	named	3
+swapped	where	the	1
+swapped	where	what	1
+swapped	where	which	2
+swapped	where	whose	2
+swapped	where's	<name>	1
+swapped	where's	is	78
+swapped	where's	the	1
+swapped	where's	where	1
+swapped	which	<name>	8
+swapped	which	a	1
+swapped	which	call	12
+swapped	which	contains	6
+swapped	which	named	8
+swapped	which	where	1
+swapped	whihc	which	3
+swapped	while	function	2
+swapped	who	structs	3
+swapped	who	what	72
+swapped	who	which	4
+swapped	whose	a	1
+swapped	whre	is	1
+swapped	whre	where	1
+swapped	wht	the	1
+swapped	whta	<name>	2
+swapped	whta	does	3
+swapped	whta	fields	1
+swapped	whta	named	2
+swapped	whta	struct	1
+swapped	whta	what	2
+swapped	whta's	does	1
+swapped	wich	<name>	4
+swapped	wich	call	1
+swapped	wich	functions	1
+swapped	wich	which	5
+swapped	width	<name>	1
+swapped	wield	<name>	1
+swapped	window	<name>	1
+swapped	with	a	8
+swapped	with	contains	1
+swapped	with	field	2
+swapped	with	have	20
+swapped	with	whose	18
+swapped	words	a	1
+swapped	worker	<name>	2
+swapped	worn	<name>	1
+swapped	worn	type	1
+swapped	wounds	to	1
+swapped	wrap	<name>	1
+swapped	wrapped	<name>	3
+swapped	wrapped	a	1
+swapped	wrapped	contains	1
+swapped	wrapped	is	2
+swapped	wrapped	or	7
+swapped	wrapped	type	1
+swapped	wrapped	whose	2
+swapped	wrapping	contains	2
+swapped	wraps	contains	5
+swapped	wraps	type	1
+swapped	writer	<name>	1
+swapped	writer	a	1
+swapped	you	does	1
+swapped	you	is	2
+swapped	you	rename	6
+swapped	you	the	5
+swapped	you	what	1
+swapped	—	does	2
+swapped	—	field	1
+swapped	—	function	1
+swapped	—	is	1
+swapped	—	rename	1
+swapped	—	what	1
+swapped	—	where	1
+swapped	→	rename	2
+swapped	→	to	3
+typed	!	123
+typed	"	2
+typed	#	1
+typed	&	1
+typed	's	7
+typed	(	47
+typed	)	47
+typed	,	1412
+typed	-	154
+typed	.	642
+typed	/	7
+typed	:	221
+typed	<	18
+typed	<name>	4918
+typed	>	103
+typed	?	2314
+typed	a	657
+typed	aad	1
+typed	abbreviation	1
+typed	about	9
+typed	accent	1
+typed	accept	1
+typed	account	4
+typed	acoustics	1
+typed	across	4
+typed	act	2
+typed	action	2
+typed	active	2
+typed	activity	1
+typed	actor	1
+typed	actually	13
+typed	actualy	3
+typed	acurate	1
+typed	acutally	1
+typed	admit	1
+typed	advance	11
+typed	advances	1
+typed	advisory	1
+typed	afoot	1
+typed	after	2
+typed	again	2
+typed	akward	1
+typed	alice	3
+typed	alignment	1
+typed	all	8
+typed	allegiance	1
+typed	alone	7
+typed	also	12
+typed	ambiguous	1
+typed	an	18
+typed	anchor	3
+typed	and	55
+typed	angle	1
+typed	annotation	1
+typed	announcements	1
+typed	another	2
+typed	any	45
+typed	anythign	1
+typed	anything	60
+typed	anyway	3
+typed	anywhere	2
+typed	api	1
+typed	app	6
+typed	appearance	1
+typed	arc	5
+typed	are	173
+typed	arm	2
+typed	around	47
+typed	art	3
+typed	as	34
+typed	ask	2
+typed	asker	1
+typed	asking	1
+typed	assemblies	1
+typed	assume	4
+typed	assumed	1
+typed	assuming	6
+typed	at	70
+typed	attempt	2
+typed	attend	1
+typed	awake	1
+typed	awkwardly	1
+typed	back	1
+typed	backends	1
+typed	background	1
+typed	backoff	1
+typed	bad	2
+typed	badge	1
+typed	bag	2
+typed	balance	1
+typed	ballistics	1
+typed	banner	1
+typed	basically	1
+typed	batch	1
+typed	be	20
+typed	bearings	2
+typed	before	2
+typed	behave	1
+typed	behavior	2
+typed	below	1
+typed	berm	1
+typed	beter	3
+typed	better	28
+typed	binding	1
+typed	bit	80
+typed	blast	1
+typed	blob	3
+typed	block	2
+typed	blocked	1
+typed	blood	1
+typed	board	2
+typed	boardlist	1
+typed	boards	1
+typed	bob	3
+typed	body	5
+typed	book	1
+typed	bool	3
+typed	boolean	1
+typed	both	1
+typed	bots	1
+typed	box	3
+typed	braking	1
+typed	branch	2
+typed	brick	1
+typed	bucket	1
+typed	budget	1
+typed	builds	3
+typed	built	1
+typed	bumplimit	1
+typed	bundle	1
+typed	but	26
+typed	buttons	2
+typed	by	52
+typed	byte	3
+typed	cache	2
+typed	caching	3
+typed	caled	8
+typed	calendar	2
+typed	call	862
+typed	calld	1
+typed	called	152
+typed	callees	14
+typed	callers	84
+typed	calles	1
+typed	calling	146
+typed	calll	7
+typed	callling	1
+typed	callls	2
+typed	calls	251
+typed	cals	1
+typed	came	4
+typed	camera	1
+typed	can	441
+typed	can't	32
+typed	candidate	1
+typed	cant	5
+typed	canvas	2
+typed	capcode	1
+typed	capped	1
+typed	captcha	1
+typed	card	2
+typed	care	8
+typed	carries	1
+typed	carry	9
+typed	carrying	1
+typed	cartridge	1
+typed	carve	1
+typed	catalog	1
+typed	caught	1
+typed	centered	2
+typed	chain	2
+typed	challenge	1
+typed	chamber	1
+typed	change	14
+typed	changing	7
+typed	channel	1
+typed	chars	1
+typed	chart	1
+typed	chat	6
+typed	check	4
+typed	checking	8
+typed	checklist	1
+typed	checks	2
+typed	chekcing	1
+typed	chekcs	1
+typed	child	1
+typed	chip	2
+typed	chosen	1
+typed	ck	1
+typed	clashes	1
+typed	clean	7
+typed	cleaner	1
+typed	cleaning	28
+typed	clear	24
+typed	clearer	31
+typed	clearly	6
+typed	clicks	1
+typed	client	2
+typed	clip	1
+typed	clipboard	2
+typed	closely	1
+typed	clunky	1
+typed	cluster	1
+typed	cmd	1
+typed	cmds	1
+typed	code	75
+typed	codebase	21
+typed	collection	1
+typed	collider	1
+typed	colors	1
+typed	come	1
+typed	command	2
+typed	comment	2
+typed	commit	4
+typed	comparison	1
+typed	compose	2
+typed	conatins	1
+typed	condition	2
+typed	cone	2
+typed	config	4
+typed	confirm	2
+typed	confirmation	1
+typed	confused	3
+typed	confuses	2
+typed	confusing	32
+typed	confusng	2
+typed	connected	1
+typed	consistently	1
+typed	contain	11
+typed	containers	1
+typed	containg	2
+typed	containing	40
+typed	contains	121
+typed	contaning	1
+typed	content	2
+typed	contian	1
+typed	contianing	4
+typed	contians	4
+typed	contributions	2
+typed	conv	2
+typed	conversation	2
+typed	copies	2
+typed	corners	2
+typed	could	295
+typed	couldn't	2
+typed	count	23
+typed	counted	2
+typed	counting	4
+typed	counts	8
+typed	credentials	1
+typed	crossing	1
+typed	crumble	2
+typed	cryptc	1
+typed	cryptic	11
+typed	cube	1
+typed	curent	1
+typed	curious	4
+typed	current	30
+typed	cut	6
+typed	damage	4
+typed	damping	1
+typed	data	2
+typed	database	1
+typed	day	2
+typed	declare	1
+typed	declared	11
+typed	def	13
+typed	deffined	1
+typed	defiend	35
+typed	defind	1
+typed	definde	5
+typed	definded	2
+typed	define	4
+typed	defined	471
+typed	definedd	1
+typed	defines	1
+typed	definition	14
+typed	definiton	2
+typed	defn	5
+typed	defned	1
+typed	defnied	14
+typed	deifned	2
+typed	delete	1
+typed	depends	1
+typed	describe	1
+typed	describes	8
+typed	descriptive	8
+typed	deserializes	1
+typed	destination	1
+typed	device	1
+typed	diff	5
+typed	digest	3
+typed	dir	1
+typed	direct	1
+typed	directly	13
+typed	display	1
+typed	do	257
+typed	doe	4
+typed	does	754
+typed	doesn't	13
+typed	doesnt	1
+typed	doess	1
+typed	doing	6
+typed	don't	4
+typed	doo	11
+typed	doors	1
+typed	dosnt	1
+typed	doubt	1
+typed	down	6
+typed	download	1
+typed	downloads	1
+typed	drawing	4
+typed	drawn	1
+typed	draws	1
+typed	driver	1
+typed	drop	1
+typed	ear	1
+typed	echo	1
+typed	edit	1
+typed	editor	3
+typed	either	2
+typed	else	1
+typed	embed	1
+typed	encoding	1
+typed	encryption	1
+typed	end	23
+typed	endpoint	1
+typed	ends	46
+typed	engine	1
+typed	enough	1
+typed	entity	1
+typed	entries	1
+typed	entry	2
+typed	enum	3
+typed	environment	1
+typed	episode	1
+typed	error	3
+typed	errors	1
+typed	esc	2
+typed	etc	9
+typed	even	66
+typed	event	1
+typed	everything	1
+typed	everywher	1
+typed	everywhere	6
+typed	evict	1
+typed	evrywhere	1
+typed	exaclty	3
+typed	exacly	2
+typed	exact	1
+typed	exactlly	1
+typed	exactly	15
+typed	explain	47
+typed	explicit	1
+typed	expressions	1
+typed	eye	1
+typed	fabric	1
+typed	facing	1
+typed	facts	1
+typed	failed	1
+typed	failing	1
+typed	fall	1
+typed	families	1
+typed	far	1
+typed	feature	2
+typed	feed	2
+typed	feels	6
+typed	feild	30
+typed	feilds	29
+typed	few	1
+typed	fg	1
+typed	fiedl	5
+typed	field	871
+typed	field-wise	3
+typed	fields	754
+typed	fight	1
+typed	figure	197
+typed	fild	3
+typed	file	6
+typed	fileds	24
+typed	filename	1
+typed	files	4
+typed	fills	1
+typed	filter	4
+typed	filterable	2
+typed	filtering	1
+typed	find	99
+typed	finder	4
+typed	finding	17
+typed	findings	1
+typed	fine	1
+typed	finish	2
+typed	finishes	1
+typed	fires	1
+typed	first	1
+typed	fits	3
+typed	flag	5
+typed	flood	1
+typed	flow	7
+typed	fn	48
+typed	fnid	1
+typed	fns	226
+typed	fo	1
+typed	focus	3
+typed	follow	3
+typed	foolfuuka	1
+typed	footer	1
+typed	for	452
+typed	forget	2
+typed	formatting	1
+typed	found	3
+typed	frame	2
+typed	frames	1
+typed	fro	2
+typed	from	60
+typed	fucntion	1
+typed	fucntions	52
+typed	full	1
+typed	func	1
+typed	funcitons	3
+typed	funcs	30
+typed	functinos	1
+typed	function	101
+typed	functions	819
+typed	functoins	8
+typed	functons	14
+typed	funtcions	1
+typed	funtions	1
+typed	furniture	1
+typed	fuzz	2
+typed	gallery	1
+typed	gameplay	1
+typed	gate	2
+typed	gauge	1
+typed	generated	1
+typed	generic	11
+typed	generics	1
+typed	gesture	1
+typed	gestures	1
+typed	get	73
+typed	gets	29
+typed	getting	6
+typed	gift	1
+typed	git	1
+typed	gives	3
+typed	glare	1
+typed	glass	2
+typed	gloss	1
+typed	glove	2
+typed	glow	1
+typed	go	2
+typed	goes	4
+typed	going	1
+typed	got	57
+typed	grid	1
+typed	grip	3
+typed	ground	1
+typed	groundsheet	3
+typed	grown	1
+typed	guarded	1
+typed	guess	6
+typed	guessing	2
+typed	guns	1
+typed	handle	2
+typed	handled	2
+typed	handler	1
+typed	handlers	1
+typed	handling	11
+typed	hands	1
+typed	happening	1
+typed	happens	2
+typed	hard	2
+typed	has	144
+typed	hash	1
+typed	hass	1
+typed	hav	29
+typed	have	671
+typed	haven't	1
+typed	head	3
+typed	header	1
+typed	health	1
+typed	heatmap	1
+typed	height	1
+typed	heights	1
+typed	held	1
+typed	helm	1
+typed	help	1
+typed	helper	4
+typed	helpers	3
+typed	here	17
+typed	hey	324
+typed	hi	53
+typed	hiding	1
+typed	highlight	2
+typed	highlighted	3
+typed	hinged	1
+typed	hint	1
+typed	hips	1
+typed	history	2
+typed	hit	1
+typed	hits	2
+typed	hm	10
+typed	hmm	18
+typed	hold	50
+typed	holders	1
+typed	holding	11
+typed	holds	16
+typed	hole	1
+typed	honestly	2
+typed	hood	2
+typed	hooked	1
+typed	how	392
+typed	hsa	1
+typed	http	1
+typed	hud	1
+typed	hvae	1
+typed	hve	4
+typed	i	182
+typed	i'd	241
+typed	i'm	520
+typed	icons	1
+typed	id	1
+typed	idea	3
+typed	identity	1
+typed	ids	1
+typed	idx	1
+typed	if	29
+typed	im	2
+typed	images	1
+typed	in	246
+typed	in-memory	1
+typed	incidence	1
+typed	incl	15
+typed	incldues	1
+typed	include	2
+typed	includes	8
+typed	including	5
+typed	inculding	1
+typed	index	3
+typed	info	3
+typed	input	2
+typed	insdie	7
+typed	inside	72
+typed	instant	1
+typed	instead	6
+typed	intent	1
+typed	interface	3
+typed	internally	1
+typed	into	40
+typed	intrusion	3
+typed	inventory	1
+typed	invoke	10
+typed	invokes	3
+typed	is	887
+typed	isn't	3
+typed	isntead	1
+typed	it	868
+typed	it'll	1
+typed	it's	134
+typed	item	1
+typed	its	38
+typed	itself	1
+typed	izz	2
+typed	job	1
+typed	jobs	1
+typed	jockey	1
+typed	joint	1
+typed	joints	1
+typed	journal	1
+typed	jschan	1
+typed	json	1
+typed	jump	2
+typed	just	26
+typed	keep	32
+typed	keeping	1
+typed	keeps	1
+typed	key	8
+typed	keybindings	1
+typed	keypair	2
+typed	keys	4
+typed	kick	1
+typed	kind	25
+typed	kinda	11
+typed	kitted	1
+typed	knobs	2
+typed	know	192
+typed	knowing	1
+typed	known	1
+typed	knwo	1
+typed	label	2
+typed	language	1
+typed	layout	2
+typed	leaf	3
+typed	learning	1
+typed	least	1
+typed	ledger	3
+typed	less	1
+typed	letter	1
+typed	lighting	1
+typed	like	339
+typed	limb	2
+typed	limit	3
+typed	limiter	2
+typed	limits	2
+typed	limp	1
+typed	line	4
+typed	links	2
+typed	list	123
+typed	listed	1
+typed	listener	3
+typed	lists	1
+typed	little	11
+typed	live	29
+typed	lives	11
+typed	loaction	1
+typed	load	2
+typed	loaded	1
+typed	loading	1
+typed	loc	2
+typed	locate	5
+typed	location	12
+typed	lock	1
+typed	logic	4
+typed	logs	1
+typed	lol	2
+typed	long	4
+typed	look	2
+typed	looked	1
+typed	looking	80
+typed	looks	1
+typed	lost	11
+typed	lot	4
+typed	lsit	2
+typed	made	6
+typed	magazine	1
+typed	makaba	1
+typed	make	17
+typed	makes	4
+typed	many	336
+typed	map	1
+typed	mark	1
+typed	marker	1
+typed	matcher	1
+typed	matches	1
+typed	matter	1
+typed	maybe	10
+typed	me	432
+typed	mean	8
+typed	means	4
+typed	meant	2
+typed	measure	2
+typed	measuring	1
+typed	meets	1
+typed	members	7
+typed	memebers	1
+typed	memo	2
+typed	mentioned	2
+typed	mentions	1
+typed	menu	4
+typed	merge	1
+typed	mergeable	1
+typed	message	4
+typed	messages	2
+typed	method	1
+typed	methods	2
+typed	mid	1
+typed	might	1
+typed	milestone	2
+typed	min	1
+typed	mind	2
+typed	minds	1
+typed	misleadng	1
+typed	mismatch	3
+typed	mixed	1
+typed	mixing	1
+typed	mnay	21
+typed	mny	3
+typed	mobility	2
+typed	models	1
+typed	more	46
+typed	mounted	1
+typed	mouse	3
+typed	mover	1
+typed	much	25
+typed	mul	1
+typed	muscles	3
+typed	mutate	1
+typed	muzzle	1
+typed	my	23
+typed	myself	1
+typed	namde	1
+typed	name	125
+typed	name's	1
+typed	named	129
+typed	names	5
+typed	naming	14
+typed	naturally	1
+typed	navigation	1
+typed	need	6
+typed	needs	7
+typed	nestd	1
+typed	nested	11
+typed	network	1
+typed	new	15
+typed	next	2
+typed	node	1
+typed	nonce	1
+typed	not	66
+typed	note	3
+typed	notes	1
+typed	nothing	2
+typed	notice	3
+typed	notification	1
+typed	notified	1
+typed	now	1
+typed	num	2
+typed	number	12
+typed	objects	1
+typed	obvious	7
+typed	of	337
+typed	off	2
+typed	offline	2
+typed	offset	1
+typed	ok	122
+typed	old	2
+typed	oldest	1
+typed	on	132
+typed	one	44
+typed	ones	37
+typed	only	11
+typed	opened	1
+typed	opening	1
+typed	option	20
+typed	or	242
+typed	origin	1
+typed	oscillation	1
+typed	other	8
+typed	otherwise	1
+typed	our	1
+typed	out	199
+typed	overboard	1
+typed	overlay	2
+typed	own	1
+typed	owned	1
+typed	owners	1
+typed	ownership	1
+typed	owns	1
+typed	packing	1
+typed	page	6
+typed	pages	1
+typed	pagination	1
+typed	paint	1
+typed	painted	1
+typed	palette	1
+typed	pane	1
+typed	panics	1
+typed	param	1
+typed	parcel	1
+typed	park	1
+typed	parsing	1
+typed	part	3
+typed	partial	1
+typed	parts	1
+typed	passed	1
+typed	passenger	2
+typed	paste	1
+typed	path	2
+typed	pathfinding	1
+typed	paths	1
+typed	payload	1
+typed	per	1
+typed	permissions	1
+typed	physics	2
+typed	physiology	1
+typed	pick	1
+typed	picture	1
+typed	ping	1
+typed	pixels	1
+typed	place	4
+typed	placeholder	1
+typed	placement	1
+typed	places	7
+typed	plain	1
+typed	plan	1
+typed	plays	1
+typed	please	283
+typed	pls	151
+typed	plz	2
+typed	pockets	1
+typed	point	25
+typed	pointer	1
+typed	pointing	1
+typed	poking	2
+typed	pool	1
+typed	popup	2
+typed	portrait	1
+typed	pose	1
+typed	possible	2
+typed	post	2
+typed	poster	1
+typed	press	2
+typed	pretty	3
+typed	preview	1
+typed	previews	1
+typed	produces	1
+typed	profile	1
+typed	prompt	2
+typed	proxy	2
+typed	pubkey	1
+typed	public	1
+typed	pull	1
+typed	purpose	15
+typed	purpse	1
+typed	put	1
+typed	question	195
+typed	queue	1
+typed	quick	227
+typed	quickly	1
+typed	quit	1
+typed	quite	2
+typed	quote	2
+typed	r	6
+typed	range	1
+typed	ranges	1
+typed	rate	1
+typed	ratio	1
+typed	raw	2
+typed	read	6
+typed	readable	5
+typed	reader	2
+typed	readied	2
+typed	readiness	1
+typed	reading	7
+typed	reads	17
+typed	real	1
+typed	really	6
+typed	reason	1
+typed	rebind	1
+typed	receipt	2
+typed	receiver	1
+typed	redo	1
+typed	ref	1
+typed	refactoring	15
+typed	reference	1
+typed	refilter	1
+typed	refits	1
+typed	refusal	2
+typed	regions	1
+typed	regrid	1
+typed	reindex	1
+typed	release	1
+typed	relies	2
+typed	renam	1
+typed	rename	621
+typed	renamed	16
+typed	renaming	1
+typed	rendering	13
+typed	renmae	9
+typed	reply	2
+typed	repo	1
+typed	report	1
+typed	represent	1
+typed	represents	3
+typed	request	12
+typed	resistance	1
+typed	resolved	1
+typed	responses	1
+typed	rest	1
+typed	results	2
+typed	retrying	1
+typed	return	1
+typed	returns	10
+typed	reusable	1
+typed	reveal	1
+typed	revealed	1
+typed	review	1
+typed	reviewing	2
+typed	reworking	3
+typed	rgb	1
+typed	rider	1
+typed	rig	1
+typed	right	4
+typed	riser	1
+typed	rising	1
+typed	rn	1
+typed	rng	1
+typed	role	1
+typed	rollup	1
+typed	roster	1
+typed	rotated	1
+typed	rough	3
+typed	roughly	3
+typed	round	2
+typed	route	2
+typed	row	1
+typed	rpc	1
+typed	run	3
+typed	runner	4
+typed	running	5
+typed	runs	2
+typed	s	2
+typed	same	1
+typed	saved	4
+typed	saw	11
+typed	say	8
+typed	says	6
+typed	scanner	2
+typed	scope	1
+typed	screen	4
+typed	scribe	2
+typed	scrolling	1
+typed	search	7
+typed	seat	1
+typed	second	2
+typed	section	3
+typed	sections	1
+typed	security	1
+typed	see	25
+typed	seed	1
+typed	seeds	2
+typed	seeing	21
+typed	seem	3
+typed	seems	2
+typed	segment	1
+typed	segments	2
+typed	select	1
+typed	selected	2
+typed	self-explanatory	1
+typed	sender	2
+typed	sense	8
+typed	serve	4
+typed	session	2
+typed	set	1
+typed	setting	1
+typed	settings	6
+typed	setup	7
+typed	sha	1
+typed	shared	1
+typed	sheet	1
+typed	shell	2
+typed	shift	1
+typed	shooters	1
+typed	short	1
+typed	shot	1
+typed	shoud	2
+typed	should	10
+typed	shoved	1
+typed	show	22
+typed	shown	3
+typed	shows	1
+typed	side	2
+typed	sig	1
+typed	signature	5
+typed	signed	1
+typed	simulate	1
+typed	since	10
+typed	site	1
+typed	sitelist	1
+typed	sites	3
+typed	skin	1
+typed	slab	1
+typed	sleeping	1
+typed	slot	2
+typed	small	1
+typed	smoke	1
+typed	smth	9
+typed	so	218
+typed	some	40
+typed	somehow	7
+typed	someone	3
+typed	something	45
+typed	somewhere	24
+typed	sorry	14
+typed	sounds	9
+typed	source	3
+typed	span	5
+typed	spawned	1
+typed	spawnign	1
+typed	specs	1
+typed	spelled	1
+typed	spinner	1
+typed	spinning	2
+typed	stain	2
+typed	stamina	1
+typed	star	1
+typed	starts	1
+typed	stash	1
+typed	state	8
+typed	status	4
+typed	stdin	1
+typed	steer	1
+typed	step	1
+typed	steps	2
+typed	stiffness	1
+typed	still	23
+typed	stock	1
+typed	stop	1
+typed	storage	2
+typed	store	8
+typed	stored	15
+typed	stores	2
+typed	storing	1
+typed	str	2
+typed	strange	1
+typed	strap	1
+typed	strcut	1
+typed	strcuts	2
+typed	stride	1
+typed	string	1
+typed	strucs	3
+typed	strucst	2
+typed	struct	467
+typed	structs	624
+typed	strutcs	1
+typed	stuff	10
+typed	styling	2
+typed	sub	1
+typed	subject	3
+typed	submenu	1
+typed	suggestion	2
+typed	sumary	4
+typed	summary	2
+typed	sun	2
+typed	supposed	1
+typed	sure	58
+typed	sym	1
+typed	synchronization	1
+typed	system	1
+typed	systems	2
+typed	tab	3
+typed	table	2
+typed	tag	1
+typed	taht	3
+typed	take	8
+typed	takes	1
+typed	taking	1
+typed	tally	1
+typed	tape	2
+typed	target	4
+typed	task	1
+typed	tasks	1
+typed	team	2
+typed	teh	33
+typed	tehir	1
+typed	tehm	1
+typed	tehy	1
+typed	tell	297
+typed	tells	2
+typed	term	1
+typed	terminator	1
+typed	terse	3
+typed	tesst	1
+typed	test	24
+typed	testing	6
+typed	tests	7
+typed	text	3
+typed	thanks	147
+typed	that	266
+typed	that's	10
+typed	thats	5
+typed	the	1013
+typed	their	8
+typed	them	27
+typed	theme	2
+typed	then	1
+typed	there	100
+typed	there's	5
+typed	they	13
+typed	thing	1
+typed	things	2
+typed	think	81
+typed	thinking	7
+typed	this	13
+typed	thnks	1
+typed	thought	1
+typed	thread	6
+typed	thred	1
+typed	threw	1
+typed	through	12
+typed	thsi	1
+typed	tht	1
+typed	thx	2
+typed	tick	6
+typed	ticket	1
+typed	tidying	18
+typed	time	1
+typed	timeouts	1
+typed	timestamps	2
+typed	tip	1
+typed	title	2
+typed	to	1201
+typed	together	1
+typed	tones	1
+typed	too	27
+typed	took	4
+typed	toolkit	1
+typed	top	2
+typed	topic	1
+typed	total	1
+typed	totally	1
+typed	touched	1
+typed	tracing	12
+typed	track	2
+typed	tracked	1
+typed	tracking	3
+typed	tracks	1
+typed	transaction	2
+typed	treated	2
+typed	tree	2
+typed	trigger	1
+typed	triggers	1
+typed	trouble	1
+typed	trying	322
+typed	tset	2
+typed	turning	1
+typed	tweaking	4
+typed	twig	1
+typed	tx	2
+typed	type	260
+typed	typed	24
+typed	types	3
+typed	u	16
+typed	uh	1
+typed	um	91
+typed	unblock	1
+typed	unclear	3
+typed	under	2
+typed	understand	71
+typed	unescape	2
+typed	unit	1
+typed	unread	1
+typed	until	1
+typed	unwatch	2
+typed	up	130
+typed	update	5
+typed	url	3
+typed	urls	1
+typed	usage	1
+typed	usages	1
+typed	use	22
+typed	used	78
+typed	user	1
+typed	uses	20
+typed	vague	29
+typed	validation	1
+typed	value	4
+typed	variables	1
+typed	vars	2
+typed	vauge	6
+typed	vault	1
+typed	vec	21
+typed	verb	1
+typed	verified	1
+typed	version	1
+typed	very	6
+typed	view	1
+typed	viewport	1
+typed	views	1
+typed	vocab	1
+typed	voxel	1
+typed	vulnerability	2
+typed	w/	87
+typed	waht	43
+typed	waht's	5
+typed	waiter	2
+typed	walker	1
+typed	wall	1
+typed	wallet	1
+typed	want	24
+typed	wardrobe	1
+typed	was	3
+typed	wasn't	1
+typed	wat	9
+typed	way	26
+typed	we	23
+typed	we'd	1
+typed	wearing	1
+typed	wears	1
+typed	weeks	1
+typed	wehre	3
+typed	wehre's	1
+typed	weights	1
+typed	what	1403
+typed	what's	114
+typed	whatever	1
+typed	whats	46
+typed	whcih	94
+typed	wheel	1
+typed	wheeling	1
+typed	when	5
+typed	wher	4
+typed	where	586
+typed	where's	93
+typed	which	1054
+typed	whihc	3
+typed	while	4
+typed	who	100
+typed	whole	1
+typed	whose	98
+typed	whre	3
+typed	wht	1
+typed	whta	11
+typed	whta's	1
+typed	why	1
+typed	wich	11
+typed	widely	5
+typed	width	1
+typed	wield	1
+typed	window	1
+typed	wiring	1
+typed	with	77
+typed	within	1
+typed	wondering	1
+typed	words	1
+typed	work	2
+typed	worker	4
+typed	working	10
+typed	works	1
+typed	worn	2
+typed	would	10
+typed	wounds	1
+typed	wrap	1
+typed	wraping	1
+typed	wrapped	24
+typed	wrapper	1
+typed	wrapping	12
+typed	wraps	14
+typed	wrists	1
+typed	writer	2
+typed	writes	1
+typed	yet	1
+typed	you	699
+typed	zoned	1
+typed	zoomed	1
+typed	—	29
+typed	→	5
+canonical	<name>	5464
+canonical	a	1036
+canonical	belong	164
+canonical	call	1236
+canonical	calls	191
+canonical	contains	321
+canonical	defined	618
+canonical	do	588
+canonical	does	1673
+canonical	enum	3
+canonical	field	916
+canonical	fields	618
+canonical	function	159
+canonical	functions	1150
+canonical	has	7
+canonical	have	1284
+canonical	how	373
+canonical	is	939
+canonical	many	373
+canonical	named	715
+canonical	or	321
+canonical	rename	688
+canonical	struct	384
+canonical	structs	649
+canonical	the	426
+canonical	to	852
+canonical	type	321
+canonical	what	1053
+canonical	where	618
+canonical	which	2044
+canonical	whose	321

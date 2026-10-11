@@ -41,7 +41,12 @@ pub(crate) fn of_kind<O: Ontology>(c: &[Sem<O>]) -> Option<Sem<O>> {
 fn refer_back<O: Ontology>(later: &Question<O>, earlier: &Question<O>) -> Option<Question<O>> {
     let (thing, kind) = match earlier {
         Question::Describe { thing, kind } | Question::Locate { thing, kind } => (thing, kind),
-        Question::Identify(_) | Question::Count(_) => return None,
+        Question::Identify(_)
+        | Question::Count(_)
+        | Question::Passes(_)
+        | Question::Problems(_) => {
+            return None;
+        }
     };
     // "field credentials, which structs have it": asking which things
     // stand in a relation to a thing named with its kind is asking about

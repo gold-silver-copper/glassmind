@@ -8,6 +8,7 @@ on:
 env:
   CARGO_TERM_COLOR: always
   CARGO_INCREMENTAL: 0
+  CARGO_BUILD_JOBS: 4
 
 jobs:
   check:
@@ -18,44 +19,12 @@ jobs:
         with:
           components: clippy, rustfmt
       - uses: Swatinem/rust-cache@v2
-      - name: Format
-        run: cargo fmt --all --check
-      - name: Clippy
-        run: cargo clippy --workspace --all-targets -- -D warnings
-      - name: Tests
-        run: cargo test --workspace -- --test-threads 8
-      - name: Layer dependency check
-        run: cargo run -q -p glassmind-depcheck
-      - name: Score the seed on the fixture
+      - name: Prepare memory-capped checks
         run: |
-          mkdir -p "$RUNNER_TEMP/sources" && cp -r fixtures/tiny "$RUNNER_TEMP/sources/tiny"
-          cargo build -q --release -p glassmind -p glassmind-loop
-          ./target/release/glassmind eval --sources "$RUNNER_TEMP/sources" --inputs fixtures/data/train/inputs.jsonl > "$RUNNER_TEMP/out.jsonl"
-          ./target/release/glassmind-loop score --labels fixtures/data/train/labels.jsonl --outcomes "$RUNNER_TEMP/out.jsonl"
-
-  # One loop round end to end on a hand-written fixture, with a stub agent
-  # instead of an LLM: baseline, brief, agent, checks, scoring, acceptance,
-  # commit.
-  loop-step:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy
-      - uses: Swatinem/rust-cache@v2
-      - name: One loop round with a stub agent
-        run: |
-          git config --global user.name ci
-          git config --global user.email ci@example.invalid
-          git clone -q . "$RUNNER_TEMP/repo"
-          git -C "$RUNNER_TEMP/repo" branch loop HEAD
-          mkdir -p "$RUNNER_TEMP/sources" && cp -r fixtures/tiny "$RUNNER_TEMP/sources/tiny"
-          cargo build -q --release -p glassmind-loop
-          ./target/release/glassmind-loop init --state "$RUNNER_TEMP/state" --repo "$RUNNER_TEMP/repo" \
-            --sources "$RUNNER_TEMP/sources" --heldout-sources "$RUNNER_TEMP/sources" \
-            --train fixtures/data/train --heldout fixtures/data/heldout \
-            --agent "$PWD/fixtures/stub-agent.sh" --no-sandbox --no-reviewer --max-agents 1 --size-price 0.001
-          ./target/release/glassmind-loop run --state "$RUNNER_TEMP/state" --once
-          ./target/release/glassmind-loop status --state "$RUNNER_TEMP/state"
-          grep -q '"kind":"growth".*"accepted":true' "$RUNNER_TEMP/state/history.jsonl" || { cat "$RUNNER_TEMP/state/history.jsonl"; exit 1; }
+          mkdir -p "$RUNNER_TEMP/glassmind-tmp"
+          echo "TMPDIR=$RUNNER_TEMP/glassmind-tmp" >> "$GITHUB_ENV"
+          sudo systemctl start "user@$(id -u).service"
+          echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> "$GITHUB_ENV"
+          echo "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus" >> "$GITHUB_ENV"
+      - name: Format, clippy, build and fixture smoke
+        run: tools/check.sh

@@ -4,9 +4,11 @@
 //! enums, traits, fields), indexed with `syn`. It defines their kinds and
 //! relations, how to look them up by name, and how to answer meanings about
 //! them. It knows no human language.
+// A world's errors are rare and small in number; their size does not matter.
+#![allow(clippy::result_large_err)]
 
-use std::collections::BTreeSet;
-use std::path::Path;
+use std::collections::{BTreeMap, BTreeSet};
+use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 use glassmind_meaning::Trouble::{Ambiguous, NoSuchName, Unsupported, WrongKind};
@@ -15,12 +17,14 @@ use glassmind_meaning::{
     Action, Condition, Description, Extent, Fact, Labelled, Name, Ontology, Position, Question,
     Reply, Thing, Trouble,
 };
-use glassmind_rules::{RuleInfo, SEED, Switches};
+use glassmind_rules::{HAND, RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
 
+pub mod checks;
 pub mod index;
 
 use RustKind::{Field, Function};
+use checks::{RustChange, RustCheck};
 use index::SourceIndex;
 
 /// The Rust world's concepts.
@@ -32,6 +36,8 @@ impl Ontology for Rust {
     type Relation = RustRelation;
     type Item = RustItem;
     type Spot = RustSpot;
+    type Check = RustCheck;
+    type Change = RustChange;
 }
 
 /// Kinds of Rust items.
@@ -44,6 +50,11 @@ pub enum RustKind {
     Trait,
     /// A named field of a struct.
     Field,
+    /// A problem a tool reported: a compiler error or a lint warning (its
+    /// code is the name, its message the detail).
+    Problem,
+    /// A test that failed.
+    Test,
 }
 
 /// Relations between Rust items.
@@ -75,6 +86,9 @@ pub struct RustItem {
     pub kind: RustKind,
     /// The type or trait a function belongs to, or the struct a field belongs to.
     pub owner: Option<String>,
+    /// What a tool said about a problem or a failing test, as it said it.
+    #[serde(default)]
+    pub detail: Option<String>,
 }
 
 /// Where an identifier is written: a 1-based line and a 0-based column, in
@@ -96,7 +110,11 @@ impl Labelled for RustItem {
     }
 
     fn place(&self) -> String {
-        format!("{}:{}", self.file, self.line)
+        if self.file.is_empty() {
+            self.name.clone()
+        } else {
+            format!("{}:{}", self.file, self.line)
+        }
     }
 }
 
@@ -160,7 +178,33 @@ const ALIAS_UNIQUE: RuleInfo = RuleInfo::new("rust.alias.unique", 6);
 const NAMED_OTHER_KIND: RuleInfo = RuleInfo::new("rust.condition.named.other_kind", 7);
 
 /// Every world rule, for listing and switching.
+/// Checking a source with its own tools (cargo check, test, clippy).
+const RUN_CHECK: RuleInfo = RuleInfo::new("rust.check.run", HAND);
+/// A remedy: the compiler's suggested fixes, kept only if the build then
+/// passes in a scratch copy.
+const REMEDY_SUGGESTED: RuleInfo = RuleInfo::new("rust.remedy.compiler_suggestions", HAND);
+/// The compiler's suggestions for one place are alternatives ("use
+/// `crate::fmt`", "use `core::fmt`", ...): a remedy makes only the first
+/// it offers there, as no two replacements of the same text can both be
+/// made.
+const REMEDY_ONE_PER_PLACE: RuleInfo = RuleInfo::new("rust.remedy.one_per_place", 29);
+/// Compiler fixes can expose further errors; compose bounded rounds only
+/// when the final requested check passes.
+const REMEDY_ITERATE: RuleInfo = RuleInfo::new("rust.remedy.iterate_suggestions", HAND);
+/// A remedy for failing tests: undoing one slip of an operator or a truth
+/// value in the source's own code (`checks::slips`), kept only if every
+/// test then passes in a scratch copy.
+const REMEDY_SLIP: RuleInfo = RuleInfo::new("rust.remedy.undo_slip", 29);
+/// Applying changes the user accepted, then checking again.
+const APPLY_CHANGES: RuleInfo = RuleInfo::new("rust.apply.changes", HAND);
+
 pub const RULES: &[RuleInfo] = &[
+    REMEDY_ITERATE,
+    RUN_CHECK,
+    REMEDY_SUGGESTED,
+    REMEDY_ONE_PER_PLACE,
+    REMEDY_SLIP,
+    APPLY_CHANGES,
     LOOKUP_EXACT,
     LOOKUP_ANY_CASE,
     RELATION_CALLS,
@@ -185,6 +229,8 @@ type Found<T> = Result<T, Trouble<Rust>>;
 pub struct RustWorld {
     pub sources: Vec<Arc<SourceIndex>>,
     switches: Switches,
+    /// What each check last found, per source, until a change is applied.
+    found: std::sync::Mutex<BTreeMap<(String, RustCheck), Vec<checks::Finding>>>,
 }
 
 /// The item a thing stands for once its name is resolved: "no such name" if
@@ -212,7 +258,34 @@ impl RustWorld {
         RustWorld {
             sources,
             switches: switches.clone(),
+            found: std::sync::Mutex::new(BTreeMap::new()),
         }
+    }
+
+    /// What a check finds in every source, run once until a change is applied.
+    fn findings(&self, check: RustCheck, fired: &mut Vec<RuleInfo>) -> Found<Vec<checks::Finding>> {
+        if !self.switches.on(RUN_CHECK.id) {
+            return Err(Unsupported);
+        }
+        fired.push(RUN_CHECK);
+        let mut all = Vec::new();
+        for source in &self.sources {
+            let key = (source.name.clone(), check);
+            let cached = self.found.lock().ok().and_then(|f| f.get(&key).cloned());
+            let found = match cached {
+                Some(f) => f,
+                None => {
+                    let f =
+                        checks::run(check, &source.name, &source.root).map_err(|_| Unsupported)?;
+                    if let Ok(mut cache) = self.found.lock() {
+                        cache.insert(key, f.clone());
+                    }
+                    f
+                }
+            };
+            all.extend(found);
+        }
+        Ok(all)
     }
 
     fn records(&self) -> impl Iterator<Item = &index::Record> {
@@ -534,7 +607,16 @@ impl RustWorld {
         let mut candidates: Option<BTreeSet<RustItem>> = None;
         for condition in &description.conditions {
             let fitting = match condition {
-                Condition::Called(name) => self.lookup(name, fired).into_iter().collect(),
+                // Called a name nothing has: not "none of them", but no such
+                // name ("an attribute with that name" read as "a thing
+                // called `attribute`").
+                Condition::Called(name) => {
+                    let called: BTreeSet<RustItem> = self.lookup(name, fired).into_iter().collect();
+                    if called.is_empty() {
+                        return Err(NoSuchName { name: name.clone() });
+                    }
+                    called
+                }
                 Condition::Is(thing) => self.things(thing, fired)?,
                 Condition::Named(name) => self.named(name, description.kind, fired)?,
                 // Named like an item: by the item's own name.
@@ -638,6 +720,7 @@ impl World<Rust> for RustWorld {
                 *kind,
                 fired,
             )?)),
+            Question::Passes(check) | Question::Problems(check) => self.check(check, fired),
             Question::Describe { thing, kind } => {
                 let item = self.only(DESCRIBE_UNIQUE, thing, *kind, fired)?;
                 if item.kind == Field {
@@ -652,7 +735,10 @@ impl World<Rust> for RustWorld {
     }
 
     fn propose(&self, action: &Action<Rust>, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {
-        let Action::Rename { thing, kind, name } = action;
+        let (thing, kind, name) = match action {
+            Action::Rename { thing, kind, name } => (thing, kind, name),
+            Action::Repair(check) => return self.remedy(check, fired),
+        };
         // With no new name there is no edit to propose.
         let Some(name) = name else {
             resolved(thing)?;
@@ -679,6 +765,227 @@ impl World<Rust> for RustWorld {
             kind: *kind,
             alias: alias.clone(),
         }))
+    }
+
+    fn check(&self, check: &RustCheck, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {
+        let problems = self
+            .findings(*check, fired)?
+            .into_iter()
+            .map(|f| f.item)
+            .collect();
+        Ok(Reply::Checked {
+            check: *check,
+            problems,
+        })
+    }
+
+    fn remedy(&self, check: &RustCheck, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {
+        let found = self.findings(*check, fired)?;
+        if !self.switches.on(REMEDY_SUGGESTED.id) {
+            return Err(Unsupported);
+        }
+        fired.push(REMEDY_SUGGESTED);
+        let problems: Vec<RustItem> = found.iter().map(|f| f.item.clone()).collect();
+        let mut changes: Vec<RustChange> =
+            found.iter().flat_map(|f| f.fixes.iter().cloned()).collect();
+        if self.switches.on(REMEDY_ONE_PER_PLACE.id) {
+            fired.push(REMEDY_ONE_PER_PLACE);
+            let mut places = BTreeSet::new();
+            changes.retain(|c| {
+                places.insert((
+                    c.source.clone(),
+                    c.file.clone(),
+                    c.line,
+                    c.column,
+                    c.old.clone(),
+                ))
+            });
+        }
+        changes.sort();
+        changes.dedup();
+        // Failing tests come with no fixes of the compiler's.
+        if problems.iter().all(|p| p.kind == RustKind::Test)
+            && self.switches.on(REMEDY_SLIP.id)
+            && let Some(undone) = self
+                .sources
+                .iter()
+                .filter(|s| problems.iter().any(|p| p.source == s.name))
+                .map(|s| checks::undo_slip(&s.name, &s.root, &problems))
+                .collect::<Option<Vec<_>>>()
+        {
+            fired.push(REMEDY_SLIP);
+            changes = undone;
+        }
+        if problems.is_empty() || changes.is_empty() {
+            return Ok(Reply::Remedy {
+                check: *check,
+                changes: Vec::new(),
+                fixed: Vec::new(),
+                left: problems,
+            });
+        }
+        // Try the changes in a scratch copy; offer them only if they help.
+        // Problems in untouched sources remain unresolved.
+        let mut left: Vec<RustItem> = problems
+            .iter()
+            .filter(|p| !changes.iter().any(|c| c.source == p.source))
+            .cloned()
+            .collect();
+        for source in &self.sources {
+            let mine: Vec<RustChange> = changes
+                .iter()
+                .filter(|c| c.source == source.name)
+                .cloned()
+                .collect();
+            if mine.is_empty() {
+                continue;
+            }
+            let scratch = checks::scratch(&source.name);
+            let tried = checks::copy_tree(&source.root, &scratch)
+                .and_then(|()| {
+                    checks::apply(
+                        &mine,
+                        &BTreeMap::from([(source.name.clone(), scratch.clone())]),
+                    )
+                })
+                .and_then(|_| checks::run(*check, &source.name, &scratch));
+            let tried = match tried {
+                Ok(after) if !after.is_empty() && self.switches.on(REMEDY_ITERATE.id) => {
+                    fired.push(REMEDY_ITERATE);
+                    match checks::complete_suggestions(
+                        *check,
+                        &source.name,
+                        &source.root,
+                        &scratch,
+                        &mine,
+                        after.clone(),
+                    ) {
+                        Some(composed) => {
+                            changes.retain(|c| c.source != source.name);
+                            changes.extend(composed);
+                            Ok(Vec::new())
+                        }
+                        None => Ok(after),
+                    }
+                }
+                other => other,
+            };
+            let _ = std::fs::remove_dir_all(&scratch);
+            match tried {
+                Ok(after) => left.extend(after.into_iter().map(|f| f.item)),
+                Err(_) => return Err(Unsupported),
+            }
+        }
+        if left.len() >= problems.len() {
+            return Ok(Reply::Remedy {
+                check: *check,
+                changes: Vec::new(),
+                fixed: Vec::new(),
+                left: problems,
+            });
+        }
+        let fixed = if left.is_empty() {
+            problems
+        } else {
+            Vec::new()
+        };
+        Ok(Reply::Remedy {
+            check: *check,
+            changes,
+            fixed,
+            left,
+        })
+    }
+
+    fn apply(&self, proposal: &Reply<Rust>, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {
+        if !self.switches.on(APPLY_CHANGES.id) {
+            return Err(Unsupported);
+        }
+        let (changes, check) = match proposal {
+            Reply::Remedy { changes, check, .. } if !changes.is_empty() => {
+                (changes.clone(), Some(*check))
+            }
+            Reply::Proposal {
+                action:
+                    Action::Rename {
+                        thing: Thing::Item(item),
+                        name: Some(name),
+                        ..
+                    },
+                spots,
+            } => (
+                spots
+                    .iter()
+                    .map(|s| RustChange {
+                        source: s.source.clone(),
+                        file: s.file.clone(),
+                        line: s.line,
+                        column: s.column,
+                        old: item.name.clone(),
+                        new: name.0.clone(),
+                    })
+                    .collect(),
+                Some(RustCheck::Build),
+            ),
+            Reply::Assuming { reply, .. } => return self.apply(reply, fired),
+            _ => return Err(Trouble::NothingPending),
+        };
+        fired.push(APPLY_CHANGES);
+        let roots: BTreeMap<String, PathBuf> = self
+            .sources
+            .iter()
+            .map(|s| (s.name.clone(), s.root.clone()))
+            .collect();
+        // Keep originals until verification succeeds, including when cargo
+        // fails without readable diagnostics. A rejected edit changes nothing.
+        let mut originals = BTreeMap::new();
+        for change in &changes {
+            let path = roots
+                .get(&change.source)
+                .ok_or(Unsupported)?
+                .join(&change.file);
+            if let std::collections::btree_map::Entry::Vacant(entry) = originals.entry(path.clone())
+            {
+                let bytes = std::fs::read(&path).map_err(|_| Unsupported)?;
+                entry.insert(bytes);
+            }
+        }
+        let applied = checks::apply(&changes, &roots);
+        if let Ok(mut found) = self.found.lock() {
+            found.clear();
+        }
+        let verified = applied.map_err(|_| Unsupported).and_then(|count| {
+            let problems = match check {
+                Some(c) => self.findings(c, fired)?,
+                None => Vec::new(),
+            };
+            if problems.is_empty() {
+                Ok(count)
+            } else {
+                Err(Unsupported)
+            }
+        });
+        let count = match verified {
+            Ok(count) => count,
+            Err(trouble) => {
+                let mut restored = true;
+                for (path, bytes) in originals {
+                    restored &= std::fs::write(path, bytes).is_ok();
+                }
+                if let Ok(mut found) = self.found.lock() {
+                    found.clear();
+                }
+                if !restored {
+                    eprintln!("glassmind: could not restore every file after a rejected edit");
+                }
+                return Err(trouble);
+            }
+        };
+        Ok(Reply::Applied {
+            changes: count,
+            check,
+            problems: Vec::new(),
+        })
     }
 
     fn names(&self) -> Vec<String> {

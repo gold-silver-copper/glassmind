@@ -33,6 +33,10 @@ ASK = {
     "rename_function": "Ask to rename the function `{old}` to a better name that you choose (snake_case).",
     "fields_of_function": "Ask what fields `{name}` has, as if you believed it was a struct (it is really a function).",
     "ambiguous_rename_field": "Ask to rename the field `{old}` to a better name that you choose, WITHOUT saying which struct it belongs to.",
+    "build_status": "Ask whether the code builds (compiles), or what errors the build reports. You may mention what you saw (an error code or message from the facts), as people paste errors.",
+    "fix_build": "Ask the assistant to fix the build (the compile errors). You may mention an error you saw.",
+    "test_status": "Ask whether the tests pass, or which tests fail.",
+    "fix_tests": "Ask the assistant to make the failing tests pass. You may name a failing test.",
 }
 
 REFER = {
@@ -112,6 +116,20 @@ def main():
 
     def gen_for(key):
         return generators[stable(a.seed, key) % len(generators)]
+
+    # Coding tasks on one broken source: asking about the build, then "fix it".
+    by_broken = {}
+    for t in tasks:
+        if t["kind"] in ("build_status", "fix_build", "test_status", "fix_tests"):
+            by_broken.setdefault(t["source"], {})[t["kind"]] = t
+    for src, ts in sorted(by_broken.items()):
+        for ask, fix in (("build_status", "fix_build"), ("test_status", "fix_tests")):
+            if ask in ts and fix in ts and stable(a.seed, src, ask) % 3 == 0:
+                cid = f"{a.split}/followfix/{src}/{ask}"
+                plans.append({"conv_id": cid, "split": a.split, "generator": gen_for(cid), "source": src,
+                              "turns": [turn(cid, 0, "task", ask, instruction(ts[ask]), ts[ask].get("expected"), ts[ask]),
+                                        turn(cid, 1, "refer", fix, "Ask the assistant to fix that (refer to it as 'it' or 'that', e.g. 'ok fix it').",
+                                             ts[fix].get("expected"), ts[fix])]})
 
     # Single-turn conversations: one per task.
     for t in tasks:

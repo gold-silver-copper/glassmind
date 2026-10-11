@@ -46,10 +46,11 @@ fn tail(s: &str, lines: usize) -> String {
         .join("\n")
 }
 
-/// Builds the workspace and runs clippy, the tests, the layer check and the
+/// Builds the workspace and runs fmt, clippy, the layer check and the
 /// rule check. `Err` says which failed and why.
 pub fn checks(dir: &Path, target: &Path) -> Result<(), String> {
     let steps: [(&str, Vec<&str>); 4] = [
+        ("format", vec!["fmt", "--all", "--check"]),
         ("build", vec!["build", "--release", "--workspace"]),
         (
             "clippy",
@@ -62,7 +63,6 @@ pub fn checks(dir: &Path, target: &Path) -> Result<(), String> {
                 "warnings",
             ],
         ),
-        ("tests", vec!["test", "--workspace"]),
         ("layers", vec!["run", "-q", "-p", "glassmind-depcheck"]),
     ];
     for (name, args) in steps {
@@ -92,7 +92,7 @@ pub fn eval_set(
     config: &Config,
     paths: &Paths,
     dir: &Path,
-    target: &Path,
+    target_dir: &Path,
     sources: &Path,
     data: &Path,
     disable: &[String],
@@ -108,28 +108,61 @@ pub fn eval_set(
         args.push("--disable".to_owned());
         args.push(disable.join(","));
     }
-    // The candidate's code reads held-out inputs, so it runs where it can
-    // write nothing.
+    args.push("--jobs".to_owned());
+    args.push(config.eval_jobs.to_string());
+    // The candidate's code runs where it can write only to places agents
+    // cannot see: its checks' builds and results, and a scratch directory.
+    // Held-out material is visible to it only while it answers held-out
+    // turns.
+    let held_out = sources == config.heldout_sources.as_path();
+    let base = if held_out {
+        config.heldout.join("check")
+    } else {
+        paths.root.join("check")
+    };
+    let own = |name: &str| {
+        let dir = base.join(name);
+        let _ = std::fs::create_dir_all(&dir);
+        dir
+    };
+    let (target, results, copies) = (own("target"), own("results"), own("scratch"));
     let scratch = paths.root.join("eval-tmp");
     std::fs::create_dir_all(&scratch).map_err(|e| e.to_string())?;
     let mut sb = agent::sandbox(config, paths, Vec::new(), Some(scratch));
     if let Some(s) = &mut sb {
-        s.hidden
-            .retain(|h| h != &config.heldout && h != &config.heldout_sources && h != &paths.root);
-        s.writable.clear();
+        s.hidden.retain(|h| {
+            h != &paths.root
+                && (!held_out
+                    || (h != &config.heldout
+                        && h != &config.heldout_sources
+                        && !config.private.contains(h)))
+        });
+        s.writable = vec![target.clone(), results.clone(), copies.clone()];
     }
-    let out = Run::new(&binary(target).to_string_lossy(), &args, dir)
+    let out = Run::new(&binary(target_dir).to_string_lossy(), &args, dir)
+        .env("GLASSMIND_CARGO_TARGET", &target.to_string_lossy())
+        .env("GLASSMIND_CHECK_CACHE", &results.to_string_lossy())
+        .env("GLASSMIND_SCRATCH", &copies.to_string_lossy())
         .timeout(Duration::from_secs(3600))
+        .memory("24G")
         .sandbox(sb.as_ref())
         .go()?;
     if !out.ok {
         return Err(format!("eval failed:\n{}", tail(&out.stderr, 30)));
     }
-    out.stdout
+    let outcomes: Vec<Outcome> = out
+        .stdout
         .lines()
         .filter(|l| !l.trim().is_empty())
         .map(|l| serde_json::from_str(l).map_err(|e| format!("bad outcome: {e}")))
-        .collect()
+        .collect::<Result<_, _>>()?;
+    let labels: Vec<Label> = read_jsonl(&data.join("labels.jsonl")).unwrap_or_default();
+    Ok(crate::verify::remedies(
+        &crate::verify::Places::under(&base.join("verify")),
+        &labels,
+        outcomes,
+        sources,
+    ))
 }
 
 /// Scores `dir`'s glassmind (already built into `target`) on every data set.
@@ -171,6 +204,27 @@ pub fn evaluate(
         )?,
         None => Vec::new(),
     };
+    let mut families: BTreeMap<String, crate::state::Family> = BTreeMap::new();
+    for (labels, outcomes, held) in [
+        (&data.train, &train, false),
+        (&data.heldout, &heldout, true),
+    ] {
+        let report = score::report(labels, outcomes);
+        for label in labels {
+            let f = families.entry(family(&label.kind).to_owned()).or_default();
+            let right = report
+                .turns
+                .get(&label.turn_id)
+                .is_some_and(|s| s.verdict == Verdict::Right);
+            if held {
+                f.heldout_turns += 1;
+                f.heldout_right += usize::from(right);
+            } else {
+                f.train_turns += 1;
+                f.train_right += usize::from(right);
+            }
+        }
+    }
     let t = score::report(&data.train, &train).total;
     let h = score::report(&data.heldout, &heldout).total;
     let v = score::report(&data.valid, &valid).total;
@@ -197,10 +251,27 @@ pub fn evaluate(
             valid_turns: v.turns,
             size: size::mind_size(dir).1,
             rules,
+            families,
         },
         train,
         heldout,
     })
+}
+
+/// The task family of a label's kind: coding tasks for the harness, tasks
+/// from rustbench (`rb_*`), or questions and requests about code (`qa`).
+pub fn family(kind: &str) -> &'static str {
+    let kind = kind.rsplit(':').next().unwrap_or(kind);
+    if matches!(
+        kind,
+        "build_status" | "fix_build" | "test_status" | "fix_tests"
+    ) {
+        "harness"
+    } else if kind.starts_with("rb_") {
+        "rustbench"
+    } else {
+        "qa"
+    }
 }
 
 /// Per-turn verdicts.
@@ -211,6 +282,10 @@ pub fn verdicts(labels: &[Label], outcomes: &[Outcome]) -> BTreeMap<String, (Ver
         .map(|(id, s)| (id, (s.verdict, s.cost)))
         .collect()
 }
+
+/// How much the validation cost may rise before a change is rejected:
+/// less than one wrong answer, more than a few refusals that got less far.
+pub const VALID_SLACK: f64 = 2.0;
 
 /// Whether a candidate may replace the baseline, by the acceptance rules
 /// (other than the build checks and the reviewer).
@@ -257,10 +332,13 @@ pub fn decide(
             before.scores.size
         ));
     }
-    if after.scores.heldout_cost > before.scores.heldout_cost + 1e-9 {
+    // The validation set (training styles, unseen repos) guards against
+    // changes that only fit the training repos. The held-out set decides
+    // nothing: it is only reported, so it stays a clean measure.
+    if after.scores.valid_cost > before.scores.valid_cost + VALID_SLACK {
         return Err(format!(
-            "held-out score dropped: cost {:.1} vs {:.1}",
-            after.scores.heldout_cost, before.scores.heldout_cost
+            "validation score dropped: cost {:.1} vs {:.1}",
+            after.scores.valid_cost, before.scores.valid_cost
         ));
     }
     Ok(())

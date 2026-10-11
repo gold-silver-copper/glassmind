@@ -1,0 +1,42 @@
+{
+  "service": "RideSharing_1",
+  "scope": "fixed first sorted dialogue IDs",
+  "dialogues": 10,
+  "frames": 59,
+  "active_intent_correct": 17,
+  "active_intent_accuracy": 0.288135593220339,
+  "strict_joint_correct": 14,
+  "strict_joint_accuracy": 0.23728813559322035,
+  "metrics": {
+    "joint_goal_accuracy": {
+      "sum": 14.0,
+      "count": 59,
+      "mean": 0.23728813559322035
+    },
+    "joint_cat_accuracy": {
+      "sum": 15.0,
+      "count": 59,
+      "mean": 0.2542372881355932
+    },
+    "joint_noncat_accuracy": {
+      "sum": 22.83,
+      "count": 59,
+      "mean": 0.38694915254237283
+    },
+    "average_goal_accuracy": {
+      "sum": 16.44333333333333,
+      "count": 54,
+      "mean": 0.30450617283950615
+    },
+    "average_cat_accuracy": {
+      "sum": 15.0,
+      "count": 53,
+      "mean": 0.2830188679245283
+    },
+    "average_noncat_accuracy": {
+      "sum": 13.83,
+      "count": 50,
+      "mean": 0.2766
+    }
+  }
+}

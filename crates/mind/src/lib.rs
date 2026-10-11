@@ -14,7 +14,7 @@
 use std::cmp::Reverse;
 use std::collections::BTreeSet;
 
-use glassmind_meaning::interface::{Language, Spoken, TokenSpan, Understanding, World};
+use glassmind_meaning::interface::{Language, Reading, Spoken, TokenSpan, Understanding, World};
 use glassmind_meaning::{
     Condition, Description, Fact, Name, Ontology, Question, Reply, Thing, Trouble, Utterance,
 };
@@ -84,8 +84,49 @@ pub const SHARED_NAME_ANY: RuleInfo = RuleInfo::new("mind.name.any", 23);
 pub const PREFER_FEWEST_EDITS: RuleInfo =
     RuleInfo::new("mind.prefer.fewest_corrections", glassmind_rules::HAND);
 
+/// Preference: of the readings the world can answer, those that say
+/// nothing is called a name that names nothing ("structs with a `Sender`
+/// in tehir fields": "fields called `tehir`" fits nothing, "their fields"
+/// does), before fewer corrections.
+pub const PREFER_NAMES_THAT_EXIST: RuleInfo =
+    RuleInfo::new("mind.prefer.names_that_exist", glassmind_rules::HAND);
+
+/// When no reading works in the world, the language's guesses are weighed
+/// too (the request-category tagger's readings, when the grammar's
+/// readings all fail: "which structs declare a member with that name").
+pub const GUESS_WHEN_STUCK: RuleInfo =
+    RuleInfo::new("mind.guess_when_stuck", glassmind_rules::HAND);
+
+/// "yes" to a waiting proposal makes its changes; "no" declines it.
+pub const CONSENT_APPLIES: RuleInfo = RuleInfo::new("mind.consent.applies", glassmind_rules::HAND);
+
+/// `Reading::edits` at or above which a reading came through the
+/// language's normalizer rather than as typed.
+const NORMALIZED: u32 = 100;
+/// `Reading::edits` at or above which a reading needed an edit the
+/// language is unsure of.
+const UNSURE: u32 = 200;
+
+/// Asking "did you mean ...?" instead of answering a reading the language
+/// is unsure it understood.
+pub const ASK_WHEN_UNSURE: RuleInfo = RuleInfo::new("mind.ask_when_unsure", glassmind_rules::HAND);
+
+/// A guessed check or repair may be answered when the world has verified
+/// that exact check. Conflicting readings still require clarification.
+pub const ACCEPT_VERIFIED: RuleInfo = RuleInfo::new("mind.accept_verified", glassmind_rules::HAND);
+
+/// A reading that leaves out (or reads as another word) a word naming
+/// something in the world is not taken.
+pub const KEEP_NAMES: RuleInfo = RuleInfo::new("mind.keep_names", glassmind_rules::HAND);
+
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
+    ASK_WHEN_UNSURE,
+    ACCEPT_VERIFIED,
+    KEEP_NAMES,
+    CONSENT_APPLIES,
+    GUESS_WHEN_STUCK,
+    PREFER_NAMES_THAT_EXIST,
     PREFER_FEWEST_EDITS,
     PREFER_FEWEST_IDLE,
     PREFER_RECENT_MENTION,
@@ -130,6 +171,25 @@ pub struct Session<O: Ontology> {
 }
 
 impl<O: Ontology> Session<O> {
+    /// The proposal still waiting for a yes or no: the latest edit
+    /// proposal or remedy with changes, unless a later turn applied or
+    /// declined something.
+    pub fn pending(&self) -> Option<Reply<O>> {
+        for turn in self.turns.iter().rev() {
+            let mut reply = &turn.reply;
+            while let Reply::Assuming { reply: inner, .. } = reply {
+                reply = inner;
+            }
+            match reply {
+                Reply::Applied { .. } | Reply::Declined => return None,
+                Reply::Proposal { .. } | Reply::Clarify { .. } => return Some(reply.clone()),
+                Reply::Remedy { changes, .. } if !changes.is_empty() => return Some(reply.clone()),
+                _ => {}
+            }
+        }
+        None
+    }
+
     pub fn new(sources: Vec<SourceRef>) -> Self {
         Session {
             sources,
@@ -142,7 +202,7 @@ impl<O: Ontology> Session<O> {
     /// mention nothing.
     pub fn mentions(&self) -> Vec<O::Item> {
         let mut out = Vec::new();
-        for turn in self.remembered() {
+        for turn in self.settled() {
             for item in spoken_of(turn).chain(turn.reply.items()) {
                 if !out.contains(item) {
                     out.push(item.clone());
@@ -150,6 +210,13 @@ impl<O: Ontology> Session<O> {
             }
         }
         out
+    }
+
+    /// The remembered turns whose reading was taken, not only asked about
+    /// ("did you mean ...?"): what the conversation is about.
+    fn settled(&self) -> impl Iterator<Item = &TurnRecord<O>> {
+        self.remembered()
+            .filter(|t| !matches!(t.reply, Reply::Clarify { .. }))
     }
 
     /// The turns, most recent first, leaving out each turn the user asked
@@ -175,7 +242,7 @@ impl<O: Ontology> Session<O> {
     /// With `named` ([`NAMED_IS_TOPIC`]), a thing described by its name is
     /// what was asked about, not the items it is described by.
     pub fn topic(&self, named: bool) -> Option<O::Item> {
-        let meaning = self.remembered().find_map(|t| t.meaning.as_ref())?;
+        let meaning = self.settled().find_map(|t| t.meaning.as_ref())?;
         let called = |c: &Condition<O>| matches!(c, Condition::Called(_));
         if meaning
             .subjects()
@@ -313,8 +380,63 @@ impl<O: Ontology> Mind<'_, O> {
             }
             Understanding::Readings(readings) => readings,
         };
+        // "yes" to "did you mean ...?" answers the reading asked about.
+        let readings = match (session.pending(), readings.first().map(|r| &r.meaning)) {
+            (Some(Reply::Clarify { reading }), Some(Utterance::Consent(true))) => vec![Reading {
+                meaning: reading,
+                rules: vec![CONSENT_APPLIES],
+                parse: "(yes to: did you mean ...)".to_owned(),
+                idle: 0,
+                edits: 0,
+                discarded: Vec::new(),
+            }],
+            _ => readings,
+        };
+        let mut candidates = self.weigh(session, &readings, 0, trace);
+        // When no reading works in the world, the language's guesses (its
+        // models' readings) are weighed too, and kept if one works.
+        if candidates.iter().all(|c| c.result.is_err()) && self.switches.on(GUESS_WHEN_STUCK.id) {
+            let guesses = self.language.guesses(text);
+            let more = self.weigh(session, &guesses, readings.len(), trace);
+            if more.iter().any(|c| c.result.is_ok()) {
+                trace.preferences.push(GUESS_WHEN_STUCK);
+                candidates.extend(more);
+            }
+        }
+        let (reply, chosen) = self.choose(session, &candidates, trace);
+        trace.chosen = chosen.map(|c| c.reading);
+        (reply, chosen.map(|c| c.meaning.clone()))
+    }
+
+    /// Every way of taking each reading (numbered from `first`), with what
+    /// the world makes of it; each reading's trace goes into `trace`.
+    fn weigh(
+        &self,
+        session: &Session<O>,
+        readings: &[Reading<O>],
+        first: usize,
+        trace: &mut Trace<O>,
+    ) -> Vec<Candidate<O>> {
         let mut candidates = Vec::new();
         for (i, reading) in readings.iter().enumerate() {
+            let i = first + i;
+            // A reading that discards a word naming something in the world
+            // ignores what the user asked about.
+            let mut fired = Vec::new();
+            // A check or repair of the whole crate is about no named thing:
+            // the names said with it are what the user saw ("cannot find
+            // `fmt`, pls fix").
+            let whole = matches!(
+                reading.meaning,
+                Utterance::Ask(Question::Passes(_) | Question::Problems(_))
+                    | Utterance::Command(glassmind_meaning::Action::Repair(_))
+            );
+            let discards_name = self.switches.on(KEEP_NAMES.id)
+                && !whole
+                && reading
+                    .discarded
+                    .iter()
+                    .any(|w| !self.world.lookup(&Name(w.clone()), &mut fired).is_empty());
             let mut rt = ReadingTrace {
                 parse: reading.parse.clone(),
                 rules: reading.rules.clone(),
@@ -323,6 +445,13 @@ impl<O: Ontology> Mind<'_, O> {
                 world_rules: Vec::new(),
                 outcomes: Vec::new(),
             };
+            if discards_name {
+                rt.world_rules.push(KEEP_NAMES);
+                rt.outcomes
+                    .push((reading.meaning.clone(), Err(Trouble::Unsupported)));
+                trace.readings.push(rt);
+                continue;
+            }
             // A correction asks the corrected request, if that rule is on.
             let meaning = match &reading.meaning {
                 Utterance::Correct(thing)
@@ -347,6 +476,13 @@ impl<O: Ontology> Mind<'_, O> {
                         .map(|()| Reply::Recall(session.mentions())),
                     Utterance::Tell(f) => self.world.note(f, fired),
                     Utterance::Correct(_) => Err(Trouble::Unsupported),
+                    Utterance::Consent(yes) => match session.pending() {
+                        None => Err(Trouble::NothingPending),
+                        Some(_) if !*yes => Ok(Reply::Declined),
+                        Some(proposal) => self
+                            .using(CONSENT_APPLIES, fired)
+                            .and_then(|()| self.world.apply(&proposal, fired)),
+                    },
                 };
                 rt.outcomes.push((meaning.clone(), result.clone()));
                 candidates.push(Candidate {
@@ -360,9 +496,7 @@ impl<O: Ontology> Mind<'_, O> {
             }
             trace.readings.push(rt);
         }
-        let (reply, chosen) = self.choose(session, &candidates, trace);
-        trace.chosen = chosen.map(|c| c.reading);
-        (reply, chosen.map(|c| c.meaning.clone()))
+        candidates
     }
 
     /// Pushes `rule` onto `fired` if it is switched on; a meaning that needs
@@ -459,20 +593,52 @@ impl<O: Ontology> Mind<'_, O> {
             .iter()
             .filter_map(|c| Some((c, c.result.as_ref().ok()?)))
             .collect();
-        // Of the readings the world can answer, those that correct the fewest
-        // mistyped words: a correction is a guess at what was typed.
+        // Of the readings the world can answer, those calling nothing by a
+        // name nothing has.
+        let mut fired = Vec::new();
+        let missing = |c: &Candidate<O>, fired: &mut Vec<RuleInfo>| {
+            c.meaning
+                .called()
+                .into_iter()
+                .filter(|n| self.world.lookup(n, fired).is_empty())
+                .count()
+        };
+        let counts: Vec<usize> = good.iter().map(|(c, _)| missing(c, &mut fired)).collect();
+        if let Some(&least) = counts.iter().min()
+            && counts.iter().any(|&n| n != least)
+            && self.switches.on(PREFER_NAMES_THAT_EXIST.id)
+        {
+            let mut keep = counts.iter().map(|&n| n == least);
+            good.retain(|_| keep.next().unwrap_or(false));
+            trace.preferences.push(PREFER_NAMES_THAT_EXIST);
+        }
+        // Of those, the ones read most directly: as typed or with slips
+        // corrected, before the normalizer's edits, before guesses.
+        let tier = |c: &Candidate<O>| c.edits / NORMALIZED;
+        let lowest = good.iter().map(|(c, _)| tier(c)).min();
+        if good.iter().any(|(c, _)| Some(tier(c)) != lowest)
+            && self.switches.on(PREFER_FEWEST_EDITS.id)
+        {
+            good.retain(|(c, _)| Some(tier(c)) == lowest);
+            trace.preferences.push(PREFER_FEWEST_EDITS);
+        }
+        // Then those leaving the fewest words unread: a reading that skips
+        // what was typed ("a field thats `ArmourRow`" read as a field named
+        // `a`) is worse than one that corrects a slip.
+        let replies: BTreeSet<&Reply<O>> = good.iter().map(|&(_, r)| r).collect();
+        let least = good.iter().map(|(c, _)| c.idle).min();
+        if replies.len() > 1 && self.switches.on(PREFER_FEWEST_IDLE.id) {
+            good.retain(|(c, _)| Some(c.idle) == least);
+            trace.preferences.push(PREFER_FEWEST_IDLE);
+        }
+        // Then those correcting the fewest mistyped words: a correction is
+        // a guess at what was typed.
         let fewest = good.iter().map(|(c, _)| c.edits).min();
         if good.iter().any(|(c, _)| Some(c.edits) != fewest)
             && self.switches.on(PREFER_FEWEST_EDITS.id)
         {
             good.retain(|(c, _)| Some(c.edits) == fewest);
             trace.preferences.push(PREFER_FEWEST_EDITS);
-        }
-        let replies: BTreeSet<&Reply<O>> = good.iter().map(|&(_, r)| r).collect();
-        let least = good.iter().map(|(c, _)| c.idle).min();
-        if replies.len() > 1 && self.switches.on(PREFER_FEWEST_IDLE.id) {
-            good.retain(|(c, _)| Some(c.idle) == least);
-            trace.preferences.push(PREFER_FEWEST_IDLE);
         }
         let Some(&(first, first_reply)) = good.first() else {
             // Nothing survived: report the trouble of the reading that got
@@ -516,6 +682,43 @@ impl<O: Ontology> Mind<'_, O> {
                 "{} surviving reading(s), all with the same answer",
                 good.len()
             );
+            // A reading that needed an unlikely edit of the input: ask
+            // whether it is what was meant rather than answer it.
+            let verified = self.switches.on(ACCEPT_VERIFIED.id)
+                && match (&first.meaning, first_reply) {
+                    (
+                        Utterance::Ask(Question::Passes(wanted) | Question::Problems(wanted)),
+                        Reply::Checked { check, .. },
+                    ) => wanted == check,
+                    (
+                        Utterance::Command(glassmind_meaning::Action::Repair(wanted)),
+                        Reply::Remedy { check, left, .. },
+                    ) => wanted == check && left.is_empty(),
+                    _ => false,
+                };
+            if first.edits >= UNSURE && verified {
+                trace.preferences.push(ACCEPT_VERIFIED);
+            }
+            if first.edits >= UNSURE && self.switches.on(ASK_WHEN_UNSURE.id) && !verified {
+                trace.preferences.push(ASK_WHEN_UNSURE);
+                return (
+                    Reply::Clarify {
+                        reading: first.meaning.clone(),
+                    },
+                    Some(first),
+                );
+            }
+            // A reading that needed the normalizer's edits is a guess at
+            // what was meant: say which reading the answer rests on.
+            if first.edits >= NORMALIZED {
+                return (
+                    Reply::Assuming {
+                        reading: first.meaning.clone(),
+                        reply: Box::new(first_reply.clone()),
+                    },
+                    Some(first),
+                );
+            }
             return (first_reply.clone(), Some(first));
         }
         // The readings disagree: prefer recent mentions, then the first reading.
@@ -553,6 +756,17 @@ impl<O: Ontology> Mind<'_, O> {
             pick.reading + 1,
             rule.id
         );
+        // A reading the language is unsure of is asked about, whichever way
+        // it was picked.
+        if pick.edits >= UNSURE && self.switches.on(ASK_WHEN_UNSURE.id) {
+            trace.preferences.push(ASK_WHEN_UNSURE);
+            return (
+                Reply::Clarify {
+                    reading: pick.meaning.clone(),
+                },
+                Some(pick),
+            );
+        }
         // Say what was assumed: the reading chosen.
         (
             Reply::Assuming {
@@ -627,7 +841,9 @@ fn trouble_progress<O: Ontology>(t: &Trouble<O>) -> Progress {
         Trouble::UnknownWord { .. } => Progress::Words,
         Trouble::UnknownShape { .. } => Progress::Sentence,
         Trouble::NoSuchName { .. } | Trouble::Ambiguous { .. } => Progress::Reference,
-        Trouble::WrongKind { .. } | Trouble::Unsupported => Progress::Action,
+        Trouble::WrongKind { .. } | Trouble::Unsupported | Trouble::NothingPending => {
+            Progress::Action
+        }
     }
 }
 

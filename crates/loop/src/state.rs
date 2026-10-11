@@ -21,29 +21,50 @@ pub struct Config {
     /// Directories holding `inputs.jsonl` and `labels.jsonl`.
     pub train: PathBuf,
     pub heldout: PathBuf,
-    /// Training generators on held-out repos: reported, never used to accept.
+    /// Training generators on held-out repos: guards acceptance (a change
+    /// may not make it worse) and decides when to stop. The held-out set
+    /// decides nothing.
     pub valid: Option<PathBuf>,
+    /// More directories agents never see: everything else held out (its
+    /// generator prompts, dev sets, outside benchmarks' held-out splits).
+    #[serde(default)]
+    pub private: Vec<PathBuf>,
+    /// Growth rounds work only on failures of these task families (`qa`,
+    /// `harness`, `rustbench`); empty: all.
+    #[serde(default)]
+    pub focus: Vec<String>,
+    /// A repository and branch whose new commits (changes made by hand) the
+    /// loop merges at each round boundary, then rescores and goes on.
+    #[serde(default)]
+    pub upstream: Option<(PathBuf, String)>,
+    /// Conversations each evaluation answers at once.
+    #[serde(default = "default_eval_jobs")]
+    pub eval_jobs: usize,
     /// Failure units per syntax token of mind code.
     pub size_price: f64,
     /// Agents running at once.
     pub max_agents: usize,
     pub model: String,
-    /// `claude` for Claude Code agents, or a command that edits the
+    /// `codex` for ChatGPT-authenticated Codex agents, or a command that edits the
     /// worktree given as its first argument, with the brief as its second
     /// (used by CI's stub agent).
     pub agent: String,
     /// Run agents and evaluations inside bubblewrap, hiding the held-out
     /// data, the user's code and the user's Claude Code history.
     pub sandbox: bool,
-    /// Growth rounds before each compression round.
+    /// Growth rounds before each compression round; zero disables compression.
     pub growth_per_compression: u32,
-    /// Stop after this many rounds without a held-out improvement.
+    /// Stop after this many rounds without a validation improvement.
     pub patience: u32,
     /// Ask an LLM reviewer to veto changes that put language knowledge in
     /// as special cases or knowledge in the wrong layer.
     pub reviewer: bool,
     /// Minutes an agent may run.
     pub agent_minutes: u64,
+}
+
+fn default_eval_jobs() -> usize {
+    8
 }
 
 /// Token use of agent sessions.
@@ -86,6 +107,19 @@ pub struct Scores {
     pub valid_turns: usize,
     pub size: u64,
     pub rules: usize,
+    /// Right answers and turns per task family (`qa`, `harness`), for
+    /// training and held-out, so each family keeps its own history.
+    #[serde(default)]
+    pub families: BTreeMap<String, Family>,
+}
+
+/// One task family's numbers on training and held-out turns.
+#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+pub struct Family {
+    pub train_right: usize,
+    pub train_turns: usize,
+    pub heldout_right: usize,
+    pub heldout_turns: usize,
 }
 
 impl Scores {

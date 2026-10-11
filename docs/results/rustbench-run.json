@@ -1,0 +1,13 @@
+{
+  "benchmark_commit": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+  "tracked_tasks_clean": true,
+  "benchmark_binary_sha256": "315b0446615193e18dbcdb89e3121017818fa8c8167a77c71b23215953c1ef18",
+  "agent_commit": "efe65b82b61d0df82833946cadcd751f029b742f",
+  "jobs": 1,
+  "cargo_jobs": 1,
+  "cargo_timeout_seconds": 80,
+  "agent_timeout_seconds": 100,
+  "runner_agent_timeout_seconds": 120,
+  "styles": "all",
+  "notes": "MemoryMax=8G and MemorySwapMax=0 per cargo scope; each timeout kills its process group. Held-out results are viewed as totals only."
+}

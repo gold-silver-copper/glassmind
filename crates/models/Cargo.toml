@@ -1,0 +1,12 @@
+[package]
+name = "glassmind-models"
+description = "Small, inspectable models glassmind learns from data: propose and rank, never decide"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+
+[lints]
+workspace = true

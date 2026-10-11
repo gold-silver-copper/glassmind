@@ -24,6 +24,11 @@ pub enum ItemKind {
     Trait,
     /// A named field of a struct.
     Field,
+    /// A problem a tool reported (a compiler error or a lint): `name` is its
+    /// code, such as `E0425`.
+    Problem,
+    /// A failing test: `name` is its path; `file` is empty and `line` 0.
+    Test,
 }
 
 /// One item in one source, identified by where its name is written.
@@ -65,6 +70,8 @@ pub enum Refusal {
     /// The request asks for something the named thing cannot have or do,
     /// such as the fields of a function.
     WrongKind,
+    /// Asked to apply or decline a proposal when none was waiting.
+    NothingPending,
     /// A reference has several candidates and nothing decides between them.
     Ambiguous,
     /// Understood, but the system cannot do it.
@@ -84,6 +91,8 @@ pub enum MetaAct {
     ExplainAction { turn: u32 },
     /// Took note of a fact the user stated.
     Noted,
+    /// The user declined a proposal; nothing was changed.
+    Declined,
 }
 
 /// What the system did with one turn.
@@ -108,6 +117,22 @@ pub enum Response {
         #[serde(flatten)]
         act: MetaAct,
     },
+    /// What a check found: `check` is `build`, `test` or `lint`; `passed`
+    /// when `problems` is empty.
+    Checked {
+        check: String,
+        passed: bool,
+        problems: BTreeSet<ItemKey>,
+    },
+    /// Changes offered to make a check pass (empty if the system knows none).
+    Remedy {
+        check: String,
+        changes: BTreeSet<Change>,
+    },
+    /// Expected only, never given: any changes that make `check` pass on
+    /// the task's source are right. The scorer applies the given remedy to
+    /// a scratch copy and runs the check to judge it.
+    Repaired { check: String },
 }
 
 /// How far the system got before it stopped. Used to price refusals: a
@@ -140,6 +165,11 @@ pub struct Outcome {
     pub rules: Vec<String>,
     /// The reply as the user would see it.
     pub text: String,
+    /// What the system says for the reading it chose, before names were
+    /// looked up: the canonical form of the request, for learning how
+    /// people's phrasing differs from it.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub canonical: Option<String>,
 }
 
 /// One conversation as given to `glassmind eval`: sources and user turns only.
@@ -168,6 +198,9 @@ impl Response {
             Response::Ask { .. } => "ask",
             Response::Refuse { .. } => "refuse",
             Response::Meta { .. } => "meta",
+            Response::Checked { .. } => "checked",
+            Response::Remedy { .. } => "remedy",
+            Response::Repaired { .. } => "repaired",
         }
     }
 }

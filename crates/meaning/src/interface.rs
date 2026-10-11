@@ -31,6 +31,10 @@ pub struct Reading<O: Ontology> {
     /// What the corrections of mistyped words cost this reading; 0 if it
     /// reads the words as typed.
     pub edits: u32,
+    /// Words the user typed that this reading leaves out or reads as other
+    /// words (the normalizer's edits): a reading that discards a name of
+    /// something in the world ignores what the user asked about.
+    pub discarded: Vec<String>,
 }
 
 /// What the language made of the input.
@@ -71,6 +75,11 @@ pub trait Language<O: Ontology> {
     fn say(&self, reply: &Reply<O>) -> Option<Spoken>;
     /// Says what may follow the complete tokens of `prefix`.
     fn next(&self, prefix: &str) -> Vec<Next>;
+    /// Readings its models guess for the input, for when none of its
+    /// readings works: proposals the world still checks.
+    fn guesses(&self, _text: &str) -> Vec<Reading<O>> {
+        Vec::new()
+    }
 }
 
 /// A world: the data glassmind can see.
@@ -97,6 +106,29 @@ pub trait World<O: Ontology> {
     /// noted, or why it cannot be (the name may mean several items). Pushes
     /// the world rules it used onto `fired`.
     fn note(&self, fact: &Fact<O>, fired: &mut Vec<RuleInfo>) -> Result<Reply<O>, Trouble<O>>;
+    /// Runs a check of the world (builds the code, runs the tests) and
+    /// says what it found. Pushes the world rules it used onto `fired`.
+    fn check(&self, _check: &O::Check, _fired: &mut Vec<RuleInfo>) -> Result<Reply<O>, Trouble<O>> {
+        Err(Trouble::Unsupported)
+    }
+    /// Changes that would make a check pass, as a remedy to offer; nothing
+    /// is changed. Pushes the world rules it used onto `fired`.
+    fn remedy(
+        &self,
+        _check: &O::Check,
+        _fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<O>, Trouble<O>> {
+        Err(Trouble::Unsupported)
+    }
+    /// Makes the changes of a proposal or remedy the user accepted, then
+    /// says what the check (if any) finds afterwards.
+    fn apply(
+        &self,
+        _proposal: &Reply<O>,
+        _fired: &mut Vec<RuleInfo>,
+    ) -> Result<Reply<O>, Trouble<O>> {
+        Err(Trouble::Unsupported)
+    }
     /// The names of all items, for completion, sorted and deduplicated.
     fn names(&self) -> Vec<String>;
 }

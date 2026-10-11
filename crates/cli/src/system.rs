@@ -20,6 +20,7 @@ pub fn all_rules() -> Vec<RuleInfo> {
     rules.extend(glassmind_english::RULES.iter().copied());
     rules.extend(glassmind_world_rust::RULES.iter().copied());
     rules.extend(glassmind_mind::RULES.iter().copied());
+    rules.push(crate::coding::CODING_INTENT);
     rules
 }
 
@@ -53,6 +54,10 @@ pub fn all_rules_detailed() -> Vec<(RuleInfo, String)> {
             .iter()
             .map(|r| (*r, "dialogue rule".to_owned())),
     );
+    out.push((
+        crate::coding::CODING_INTENT,
+        "coding intent model".to_owned(),
+    ));
     out
 }
 
@@ -109,16 +114,17 @@ impl System {
         System::new(indices, switches)
     }
 
-    pub fn mind(&self) -> Mind<'_, Rust> {
+    pub fn respond(&self, session: &mut Session<Rust>, text: &str) -> Turn<Rust> {
+        let language = crate::coding::CodingLanguage {
+            english: &self.english,
+            switches: &self.switches,
+        };
         Mind {
-            language: &self.english,
+            language: &language,
             world: &self.world,
             switches: &self.switches,
         }
-    }
-
-    pub fn respond(&self, session: &mut Session<Rust>, text: &str) -> Turn<Rust> {
-        self.mind().respond(session, text)
+        .respond(session, text)
     }
 
     pub fn source_refs(&self) -> Vec<SourceRef> {

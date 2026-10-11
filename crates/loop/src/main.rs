@@ -25,6 +25,7 @@ mod rounds;
 mod score;
 mod size;
 mod state;
+mod verify;
 
 #[derive(Parser)]
 #[command(
@@ -45,6 +46,10 @@ enum Command {
         labels: PathBuf,
         #[arg(long)]
         outcomes: PathBuf,
+        /// The sources the outcomes are about: remedies for coding tasks
+        /// are applied to scratch copies of them and checked.
+        #[arg(long)]
+        sources: Option<PathBuf>,
         /// Print the full report as JSON.
         #[arg(long)]
         json: bool,
@@ -83,18 +88,21 @@ enum Command {
         heldout: PathBuf,
         #[arg(long)]
         valid: Option<PathBuf>,
+        /// More directories agents never see (everything else held out).
+        #[arg(long)]
+        private: Vec<PathBuf>,
         #[arg(long, default_value_t = 0.01)]
         size_price: f64,
         #[arg(long, default_value_t = 4)]
         max_agents: usize,
-        #[arg(long, default_value = "claude-opus-5-5")]
+        #[arg(long, default_value = "gpt-6-astra")]
         model: String,
-        /// `claude`, or a stub command `CMD WORKTREE BRIEF`.
-        #[arg(long, default_value = "claude")]
+        /// `codex` (ChatGPT login, fast tier), or a stub `CMD WORKTREE BRIEF`.
+        #[arg(long, default_value = "codex")]
         agent: String,
         #[arg(long)]
         no_sandbox: bool,
-        #[arg(long, default_value_t = 3)]
+        #[arg(long, default_value_t = 0)]
         growth_per_compression: u32,
         #[arg(long, default_value_t = 16)]
         patience: u32,
@@ -144,10 +152,18 @@ fn main() -> ExitCode {
         Command::Score {
             labels,
             outcomes,
+            sources,
             json,
         } => (|| {
             let labels: Vec<score::Label> = read_jsonl(&labels)?;
-            let outcomes: Vec<Outcome> = read_jsonl(&outcomes)?;
+            let mut outcomes: Vec<Outcome> = read_jsonl(&outcomes)?;
+            if let Some(sources) = sources {
+                let home = std::env::var_os("HOME")
+                    .map(PathBuf::from)
+                    .unwrap_or_default();
+                let places = verify::Places::under(&home.join(".cache/glassmind/score-check"));
+                outcomes = verify::remedies(&places, &labels, outcomes, &sources);
+            }
             let report = score::report(&labels, &outcomes);
             if json {
                 say!(
@@ -205,6 +221,7 @@ fn main() -> ExitCode {
             train,
             heldout,
             valid,
+            private,
             size_price,
             max_agents,
             model,
@@ -224,6 +241,10 @@ fn main() -> ExitCode {
                 train: abs(train),
                 heldout: abs(heldout),
                 valid: valid.map(abs),
+                private: private.into_iter().map(abs).collect(),
+                focus: Vec::new(),
+                upstream: None,
+                eval_jobs: 8,
                 size_price,
                 max_agents: max_agents.min(4),
                 model,

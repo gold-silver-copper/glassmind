@@ -20,6 +20,8 @@ use serde_json::Value;
 enum Layer {
     /// Rule identity and switches: shared by every layer, depends on nothing.
     Rules,
+    /// Small learned models: usable by every layer, depend on nothing.
+    Models,
     Meaning,
     Grammar,
     Language,
@@ -40,6 +42,7 @@ fn layer(name: &str) -> Layer {
     };
     match rest {
         "rules" => Layer::Rules,
+        "models" => Layer::Models,
         "meaning" => Layer::Meaning,
         "grammar" => Layer::Grammar,
         "mind" => Layer::Mind,
@@ -59,8 +62,11 @@ fn allowed(from: Layer, to: Layer) -> bool {
     if to == Rules {
         return from != Rules;
     }
+    if to == Models {
+        return !matches!(from, Rules | Models);
+    }
     match from {
-        Rules => false,
+        Rules | Models => false,
         Meaning => false,
         Grammar => false,
         Answer => false,
