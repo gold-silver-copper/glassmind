@@ -24,6 +24,7 @@ pub mod add_fields;
 pub mod checks;
 pub mod declared_types;
 pub mod index;
+mod rename_fields;
 mod rename_package;
 mod rename_types;
 mod rename_variants;
@@ -583,6 +584,60 @@ impl RustWorld {
             return None;
         }
         fired.push(RENAME_FIELD);
+        // Preserve the old unique-spelling path. Homonymous fields require an
+        // explicit owner description and a complete owner-aware position audit.
+        if self.sharing(&item.name, Some(Field)).len() > 1 {
+            let explicit_owner = if let Thing::Fitting(d) = thing {
+                d.conditions
+                    .iter()
+                    .filter_map(|condition| match condition {
+                        Condition::PartOf(owner)
+                        | Condition::Related {
+                            relation: RustRelation::Member | RustRelation::HasField,
+                            position: Position::Second,
+                            other: owner,
+                        }
+                        | Condition::Related {
+                            relation: RustRelation::BelongsTo,
+                            position: Position::First,
+                            other: owner,
+                        } => Some(owner),
+                        _ => None,
+                    })
+                    .any(|owner| {
+                        self.things(owner, &mut Vec::new()).is_ok_and(|owners| {
+                            owners.len() == 1
+                                && owners.first().is_some_and(|owner| {
+                                    owner.kind == RustKind::Struct
+                                        && owner.source == item.source
+                                        && item.owner.as_deref() == Some(owner.name.as_str())
+                                })
+                        })
+                    })
+            } else {
+                false
+            };
+            if !explicit_owner || self.sources.len() != 1 {
+                return Some(Err(Unsupported));
+            }
+            let result = self
+                .sources
+                .iter()
+                .find(|s| s.name == item.source)
+                .and_then(|source| {
+                    rename_fields::positions(source, &item, &name.0).map(|at| spots(source, &at))
+                })
+                .ok_or(Unsupported)
+                .map(|spots| Reply::Proposal {
+                    action: Action::Rename {
+                        thing: Thing::Item(item),
+                        kind,
+                        name: Some(name.clone()),
+                    },
+                    spots,
+                });
+            return Some(result);
+        }
         Some(self.rename_at(item, kind, name, false))
     }
 
