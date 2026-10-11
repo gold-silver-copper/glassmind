@@ -1,53 +1,45 @@
-# Explicit source-reference annotation pilot: teacher running
+# Explicit source-reference annotation pilot: passed
 
-WORK=/home/gsc/.cache/glassmind/continuous-20261010. Root-owned WORK/span-references
-branchcontinuous/span-references. RUN=WORK/coordinator/span-references. No runtime
-changes or newsolver/model-training claims. Existing quantities scores unchanged.
-Plan d4efe58 beforeselection. ReadPLAN.md forunchangedfrozen gates andscope.
+Plan d4efe58 was frozen before selection. This is official GSM8K TRAIN-FIT
+label-quality evidence, not quantity inference performance. No runtime, fitting,
+CAL, DEV or published quantity-score change. The original value-only converter
+remains rejected at 354/7473 against its unchanged 1000-program gate.
 
-Preparationdb3f630 COMPLETE: all6sourcefiles and52oldarchivefileshashverified;
-first32unique TRAIN-FIT groups sorted(group_sha256,row_id), sole oldreason
-ambiguous_leaf. All32native numericbindingsreproduced; no TRAIN-CAL/DEVselection.
-BatchSHA b4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e.
-Fullbatch/sourceoutputs externalRUN/source. Originaldataset7473TRAIN unchanged;
-originalconverter stillREJECTED354vs1000, no change tothatgate.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. RUN=WORK/coordinator/span-references.
+Preparation db3f630 verified all 6 source files, 52 original archive files and 32
+native question-number bindings. Batch b4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e.
+Schema, validator, 34 passing contracts and parent expectations frozen 5bd40bf.
+The first eight selected FIT cases had independent semantic references and 26
+native original/counterfactual/negative checks frozen before teacher execution.
 
-Beforeteacher: schema/validator/34authoredcontracts frozen5bd40bf. All34pass,
-including directcommutationonly,correlatedalternatives,UTF8bytes,future refs and
-explicitdemonstrationthat mechanicalchecks alone admit wrong equal-valued sources.
-Parentfirst8FIT expectationsfrozen atRUN/parent/expectations.json;26nativechecks
-(original+counterfactual+numeric-onlynegative demonstrations) allmatchmanualvalues.
-Parent5436requiresnonacceptance(waitingbetween5products !=5intervals,unknown
-applicationtime);5449requiresnonacceptance(final5isderived2+3houseswithoutan
-explicitpriorcalculation, notfixedconstant). Nativeexecutionalonewouldacceptboth.
-Otherparentcases require semantic input/prior references;4166 permitsdirect
-commutative orderofcoinvalue*coincount. Parentexpectationsnotvisible toteacher.
+One isolated GPT-6 Astra fast/high teacher, forced ChatGPT login, completed in
+152.017 seconds with exit 0 and no cap failure (1200s, 8GiB, no swap, 2MiB output).
+Session 96285 is complete; scope glassmind-span-references-teacher is inactive.
+Only selected batch/schema/validator/brief were exposed. Parent references, full
+TRAIN/CAL data and benchmark/project trees were masked. No API keys or fallback.
+All 15 original output/metadata files (463891 bytes) were archived and hash-verified
+in RUN/teacher-originals. Credentials were excluded. The owned auth symlink was
+removed after terminal scope verification; existing account login was untouched.
 
-Teacherlaunchf33570a; session96285 RUNNING. Supervisor1198492,wrapper1198534,
-scopeglassmind-span-references-teacher,thread01a12c5e-57c4-7fd0-94a1-9a7ebe086e6b.
-1200s/8GiB/no swap,annotations2MiBcap,on-disktmp. Exactgpt-6-astra,fast,high,
-forced_login_methodchatgpt; statusverifiedlocallyandinsideisolation. NoAPIkeys in
-env,no providerfallback. Officialconfigurationchecked viaOpenAI Docs skill.
-Knowncompletedworker usage remains201926299; thisrunningteacherusagepending.
+Decision PASS: all 32 rows accounted; 26 resolved, 3 equivalent, 2 unsupported and
+1 label_error. All 32 accepted program variants reproduce exact original native
+answers. Root reviewed all 202 leaf assignments across those variants, confirming
+29/32 accepted examples with zero semantic contradictions. All eight frozen parent
+cases agree; all 25 post-teacher native original/counterfactual executions match.
+Read semantic-review.json for per-row decisions, caveats and exact artifact hashes.
+Mechanical-only validation is not semantic approval.
 
-Bwrap masksprojecttrees,full TRAIN/CAL/sourcecache,parentartifacts,credentials
-locations apartfromread-onlyCLI loginintegration. Onlyselectedbatch/schema/validator/
-brief exposed, read-only. Preflightverifies5protectedpathsabsent. Teacherwrites
-RUN/teacher/work/annotations.json; briefexplicitlyforbidsnestedworkers/downloads
-andcredentialreads. Ownedlogin symlinkRUN/teacher/codex/auth.json exists.
-Neverarchiveorreadcodex/auth.json. Preserveandhashteacher/work originals plus
-event/stderr/completionmetadata beforeanymodification; thenunlinkonlyownedlogin
-symlink afterterminalstatus. No productionworktree edits delegated.
+The three exclusions are retained: fit-5436 invents five between-product waits;
+fit-5449 requires a missing derived house-count node; fit-5909 requires a missing
+bike/trash-can wheel-subtotal node. Equivalent rows 4166, 7306 and 6428 retain
+correlated complete programs differing only by direct commutative operand swaps.
+Fixed graph labels preserve original unit-numerator normalization or repeated-term
+unrolling where present; they do not establish arbitrary counterfactual completeness.
 
-NEXT: monitor96285, inspectcompletion.json andexactownedscope. Preserveoriginal
-outputbefore review. Validate withvalidate.py RUN/source/batch.json
-RUN/teacher/work/annotations.json --out NEW.json --executor
-WORK/groundedsteps-source/equation_executor underfinite8GiBscope. All32accounted,
-allacceptedgraphs native/arithmeticexact, allsourceevidencebytesmatch. Thenparent
-semanticreview EVERYacceptedlink, compareall8frozenexpectations/counterfactuals,
-counttrueconfirmedresolved/equivalent. Gate>=24/32confirmed,zeroacceptedsemantic
-contradictions,all8parentcasesagree,allprotocolcontractspass. Preserveambiguity;
-no newannotationattempt chosenafterseeingresults. Onlypassingpilotpermitsa
-separatelyfrozen expansion/trainingexperiment. No CAL/DEV untilnewprospectiveplan.
-Read completeeventusage atterminal turn.completed; inputalreadyincludescached,
-addoutputonce. Do not count running/interruptedusage ascompleted worker usage.
+Teacher usage: 220487 input tokens including 185856 cached, plus 9744 output
+(including reasoning), total 230231. Known completed-worker total is 202156530;
+parent and interrupted usage remain excluded. teacher-usage.json records accounting.
+
+NEXT: freeze a separate bounded expansion/training plan before selecting more data.
+This pilot permits that experiment only; it does not satisfy the original data gate,
+prove a learned proposer works, or permit inference/runtime promotion.
