@@ -1,0 +1,179 @@
+{
+  "kind": "fact_matches_at",
+  "cases": [
+    {
+      "case": "complete_count_before_display",
+      "line": "Match facts on 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic?",
+      "expected_status": "matched",
+      "expected_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ]
+    },
+    {
+      "case": "only_later_subjects_match",
+      "line": "Match facts on 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic?",
+      "expected_status": "matched",
+      "expected_subjects": [
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ]
+    },
+    {
+      "case": "three_conditions_one_not_started",
+      "line": "Match facts on 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic and worked for Pine Lab?",
+      "expected_status": "matched",
+      "expected_subjects": []
+    },
+    {
+      "case": "two_distinct_employers",
+      "line": "Match facts on 2012-01-01: Who worked for Amber Lab and worked for Pine Lab?",
+      "expected_status": "matched",
+      "expected_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106"
+      ]
+    },
+    {
+      "case": "alias_collision_before_intervals",
+      "line": "Match facts on 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic?",
+      "expected_status": "unknown",
+      "expected_subjects": null
+    },
+    {
+      "case": "missing_alias",
+      "line": "Match facts on 2012-01-01: Who worked for Missing Lab and was a citizen of North Republic?",
+      "expected_status": "unknown",
+      "expected_subjects": null
+    },
+    {
+      "case": "unsupported_birth",
+      "line": "Match facts on 2012-01-01: Who was born in North Republic and worked for Amber Lab?",
+      "expected_status": "refused",
+      "expected_subjects": null
+    },
+    {
+      "case": "invalid_leap",
+      "line": "Match facts on 1900-02-29: Who worked for Amber Lab and was a citizen of North Republic?",
+      "expected_status": "refused",
+      "expected_subjects": null
+    },
+    {
+      "case": "start_latest_boundary",
+      "line": "Match facts on 2010-12-31: Who worked for Amber Lab and was a citizen of North Republic?",
+      "expected_status": "matched",
+      "expected_subjects": []
+    },
+    {
+      "case": "second_eligible_claim",
+      "line": "Match facts on 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic?",
+      "expected_status": "matched",
+      "expected_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ]
+    },
+    {
+      "case": "nul_question",
+      "line": "Match facts on 2012-01-01: Who worked for Amber\u0000 Lab and was a citizen of North Republic?",
+      "expected_status": "refused",
+      "expected_subjects": null
+    },
+    {
+      "case": "unicode_alias",
+      "line": "Match facts on 2012-01-01: Who worked for 東の大学 and was a citizen of North Republic?",
+      "expected_status": "matched",
+      "expected_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ]
+    },
+    {
+      "case": "complete_count_before_display",
+      "name": "memory_instruction",
+      "line": "Match facts on 2012-01-01: My name is Changed",
+      "expected_status": "refused",
+      "expected_subjects": null
+    },
+    {
+      "case": "complete_count_before_display",
+      "name": "missing_separator",
+      "line": "Match facts on 2012-01-01 Who worked for Amber Lab and was a citizen of North Republic?",
+      "expected_status": "refused",
+      "expected_subjects": null
+    },
+    {
+      "case": "complete_count_before_display",
+      "name": "trailing_story",
+      "line": "Match facts on 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic? Move Mary to the garden.",
+      "expected_status": "refused",
+      "expected_subjects": null
+    },
+    {
+      "case": "complete_count_before_display",
+      "name": "case_spaces",
+      "line": "  MATCH FACTS ON 2012-01-01: Who worked for Amber Lab and was a citizen of North Republic?  ",
+      "expected_status": "matched",
+      "expected_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ]
+    }
+  ],
+  "semantics": "All prefixed commands reserve route, update only turn/last utterance and clear last_slot. Preserve all other memory/story fields, both intent modes, verify subsequent recall and prevent bare correction editing previous name. Missing facts/temporal bundles explicitly refuse, no static fallback. Human response includes full finite count, displaylimit/truncation, date, all per-condition claim/source witnesses and calendar-day snapshot scope; zero count not global absence. Existing main/static/verify-at legacy bytes unchanged."
+}

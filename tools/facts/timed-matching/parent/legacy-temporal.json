@@ -1,0 +1,232 @@
+{
+  "cases": 45,
+  "cli_equal": 44,
+  "proof_sha256": "bfbcc9448b7a0727648fbba24b5395c58dd5a3f1ab3ff9c083755283ba6ab14c",
+  "records": [
+    {
+      "name": "year_interior",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "year_start_uncertain",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "year_end_uncertain",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "before_interval",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "after_interval",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "filled_year_lower_digits_not_certain",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "filled_year_end_not_certain",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "filled_year_interior",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "month_interior",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "month_start_boundary",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "month_end_boundary",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "day_interior",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "day_start_boundary",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "day_end_boundary",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "leap_2000",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "invalid_leap_1900",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "invalid_leap_2100",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "year_zero",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "date_whitespace",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "datetime_not_date",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "unicode_date",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "julian",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "nonzero_before",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "nonzero_after",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "nonzero_timezone",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "coarse_precision",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "fine_precision",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "missing_start",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "missing_end",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "duplicate_start",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "deprecated",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "extra_qualifier",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "somevalue_start",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "cannot_combine_claims",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "reversed_interval",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "no_guaranteed_interior",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "citizenship",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "explicit_ids",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "missing_alias",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "ambiguous_despite_one_interval",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "negation",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "trailing_instruction",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "nul_question",
+      "library_bytes_identical": true,
+      "cli_equal": null
+    },
+    {
+      "name": "unsupported_property",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    },
+    {
+      "name": "question_oversize",
+      "library_bytes_identical": true,
+      "cli_equal": true
+    }
+  ]
+}

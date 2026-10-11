@@ -225,7 +225,7 @@ impl Store {
     // not silently reinterpret such an alias as several shorter constraints.
     // Only full normalized alias equality is consulted, never claims or counts.
     // With at most three clauses this checks at most three spans, each bounded.
-    fn has_reserved_separator_alias(
+    pub(crate) fn has_reserved_separator_alias(
         &self,
         question: &str,
         constraints: &[MatchConstraint],
@@ -266,15 +266,18 @@ impl Store {
     /// Resolve every endpoint before consulting any claims, then intersect all
     /// directed conditions over the entire store before display truncation.
     /// Duplicate conditions are idempotent; the raw count must still be 2..3.
-    pub fn match_constraints(&self, constraints: &[MatchConstraint]) -> MatchResult {
+    pub(crate) fn resolve_match_constraints(
+        &self,
+        constraints: &[MatchConstraint],
+    ) -> Result<Vec<ResolvedMatchConstraint>, MatchResult> {
         if !(2..=MAX_MATCH_CONDITIONS).contains(&constraints.len()) {
-            return MatchResult::Refused {
+            return Err(MatchResult::Refused {
                 reason: MatchRefusalReason::InvalidConditionCount,
-            };
+            });
         }
         for constraint in constraints {
             if let Err(reason) = match_endpoint(&constraint.object) {
-                return MatchResult::Refused { reason };
+                return Err(MatchResult::Refused { reason });
             }
         }
         // Collect all endpoint resolutions first; graph membership cannot choose
@@ -298,9 +301,9 @@ impl Store {
             }
         }
         if unknown {
-            return MatchResult::Unknown {
+            return Err(MatchResult::Unknown {
                 reason: MatchUnknownReason::ObjectNotUniqueOrMissing,
-            };
+            });
         }
         // Prefer explicit-ID provenance deterministically if a duplicate edge
         // was specified using both an alias and its ID.
@@ -313,17 +316,36 @@ impl Store {
                 })
         });
         resolved.dedup_by(|a, b| a.property == b.property && a.object == b.object);
+        Ok(resolved)
+    }
+
+    /// Complete ordered intersection: callers apply their own evidence policy
+    /// before counting and display truncation.
+    pub(crate) fn matching_subjects<'a>(
+        &'a self,
+        resolved: &'a [ResolvedMatchConstraint],
+    ) -> impl Iterator<Item = &'a EntityId> {
+        self.entities
+            .iter()
+            .filter(move |(_, entity)| {
+                resolved.iter().all(|c| {
+                    entity
+                        .claims
+                        .get(&c.property)
+                        .is_some_and(|objects| objects.contains(&c.object))
+                })
+            })
+            .map(|(subject, _)| subject)
+    }
+
+    pub fn match_constraints(&self, constraints: &[MatchConstraint]) -> MatchResult {
+        let resolved = match self.resolve_match_constraints(constraints) {
+            Ok(resolved) => resolved,
+            Err(result) => return result,
+        };
         let mut matches = Vec::new();
         let mut total_snapshot_matches = 0;
-        for (subject, entity) in &self.entities {
-            if !resolved.iter().all(|c| {
-                entity
-                    .claims
-                    .get(&c.property)
-                    .is_some_and(|objects| objects.contains(&c.object))
-            }) {
-                continue;
-            }
+        for subject in self.matching_subjects(&resolved) {
             total_snapshot_matches += 1;
             if matches.len() < SET_DISPLAY_LIMIT {
                 matches.push(SubjectMatch {

@@ -1,0 +1,155 @@
+{
+  "manifest_entries_verified": 124,
+  "authored_cases": 35,
+  "cli_library_equal": 34,
+  "nul_library_only": 1,
+  "authored_full_witnesses": 182,
+  "real_queries": 101,
+  "real_nonempty": 4,
+  "real_full_witnesses": 8,
+  "cases": [
+    {
+      "name": "complete_count_before_display",
+      "status": "matched"
+    },
+    {
+      "name": "only_later_subjects_match",
+      "status": "matched"
+    },
+    {
+      "name": "three_conditions_overlap",
+      "status": "matched"
+    },
+    {
+      "name": "three_conditions_one_not_started",
+      "status": "matched"
+    },
+    {
+      "name": "two_distinct_employers",
+      "status": "matched"
+    },
+    {
+      "name": "alias_collision_before_intervals",
+      "status": "unknown"
+    },
+    {
+      "name": "missing_alias",
+      "status": "unknown"
+    },
+    {
+      "name": "unsupported_birth",
+      "status": "refused"
+    },
+    {
+      "name": "negative_condition",
+      "status": "refused"
+    },
+    {
+      "name": "trailing_instruction",
+      "status": "refused"
+    },
+    {
+      "name": "invalid_leap",
+      "status": "refused"
+    },
+    {
+      "name": "noncanonical_date",
+      "status": "refused"
+    },
+    {
+      "name": "date_whitespace",
+      "status": "refused"
+    },
+    {
+      "name": "start_latest_boundary",
+      "status": "matched"
+    },
+    {
+      "name": "end_earliest_boundary",
+      "status": "matched"
+    },
+    {
+      "name": "month_boundary",
+      "status": "matched"
+    },
+    {
+      "name": "month_interior",
+      "status": "matched"
+    },
+    {
+      "name": "month_end_boundary",
+      "status": "matched"
+    },
+    {
+      "name": "leap_day_interior",
+      "status": "matched"
+    },
+    {
+      "name": "missing_end",
+      "status": "matched"
+    },
+    {
+      "name": "separate_claims_cannot_combine",
+      "status": "matched"
+    },
+    {
+      "name": "extra_qualifier",
+      "status": "matched"
+    },
+    {
+      "name": "duplicate_start",
+      "status": "matched"
+    },
+    {
+      "name": "deprecated",
+      "status": "matched"
+    },
+    {
+      "name": "unsupported_calendar",
+      "status": "matched"
+    },
+    {
+      "name": "second_eligible_claim",
+      "status": "matched"
+    },
+    {
+      "name": "duplicate_condition_idempotent",
+      "status": "matched"
+    },
+    {
+      "name": "one_condition",
+      "status": "refused"
+    },
+    {
+      "name": "four_conditions",
+      "status": "refused"
+    },
+    {
+      "name": "reserved_alias_separator",
+      "status": "refused"
+    },
+    {
+      "name": "nul_question",
+      "status": "refused"
+    },
+    {
+      "name": "multiline_question",
+      "status": "refused"
+    },
+    {
+      "name": "oversize_question",
+      "status": "refused"
+    },
+    {
+      "name": "unicode_alias",
+      "status": "matched"
+    },
+    {
+      "name": "case_and_spaces",
+      "status": "matched"
+    }
+  ],
+  "proof_sha256": "3a85e8acb0b4889493b4e727ea2a43b96c0aabf7cd6b1d7119e02546a7c08326",
+  "cli_sha256": "9e4319930e4045db50dcc84dbc5e686616f398a8343cb1aa00e1b1346de088bc",
+  "scope": "Parent frozen authored and complete eligible cached distinct pairs; cache validation-subject seeded; no independent retrieval claim"
+}

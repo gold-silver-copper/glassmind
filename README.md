@@ -116,6 +116,9 @@ Use `Match facts: Who was born in Q220 and died in Q90?` to find subjects
 matching two or three positive conditions, with a witness for every condition.
 [Shared-subject matching](docs/fact-matching.md) intersects the complete loaded
 records before displaying up to ten sorted IDs.
+Use `Match facts on YYYY-MM-DD: Who worked for EMPLOYER and was a citizen of COUNTRY?`
+to require a recorded interval for each condition on the same day. Dated matching
+reports complete counts and per-claim evidence; see [dated facts](docs/temporal-facts.md).
 The demonstrated bundle is a finite 500-entity snapshot with known errors.
 
 Scalar word problems can combine fractions, percentages, sums and comparisons

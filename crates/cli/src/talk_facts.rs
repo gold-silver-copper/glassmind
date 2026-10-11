@@ -4,7 +4,8 @@ use glassmind_facts::temporal::{
     MAX_TEMPORAL_BYTES, TemporalIndex, TemporalRefusalReason, TemporalVerification,
 };
 use glassmind_facts::{
-    Answer, MatchRefusalReason, MatchResult, RefusalReason, Store, Verification,
+    Answer, MatchRefusalReason, MatchResult, RefusalReason, Store, TemporalMatchRefusalReason,
+    TemporalMatchResult, Verification,
 };
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -66,6 +67,37 @@ pub(crate) struct TemporalReply {
     #[serde(flatten)]
     pub verification: TemporalVerification,
     pub provenance: Provenance,
+}
+
+#[derive(Serialize)]
+pub(crate) struct TemporalMatchingReply {
+    pub kind: &'static str,
+    pub text: String,
+    #[serde(flatten)]
+    pub result: TemporalMatchResult,
+    pub provenance: Provenance,
+}
+
+pub(crate) fn temporal_matching_request(line: &str) -> Option<Result<(&str, &str), &'static str>> {
+    let line = line.trim_matches(' ');
+    if !line
+        .get(..14)
+        .is_some_and(|s| s.eq_ignore_ascii_case("match facts on"))
+    {
+        return None;
+    }
+    let invalid = "Use Match facts on YYYY-MM-DD: followed by a Who question with two or three positive employer or citizenship conditions joined by and.";
+    Some((|| {
+        let rest = line
+            .get(14..)
+            .and_then(|s| s.strip_prefix(' '))
+            .ok_or(invalid)?;
+        let (date, question) = rest.split_once(": ").ok_or(invalid)?;
+        if date.is_empty() || question.is_empty() {
+            return Err(invalid);
+        }
+        Ok((date, question))
+    })())
 }
 
 /// Reserve dated requests before the ordinary check and conversational routes.
@@ -357,6 +389,55 @@ impl Facts {
                 relation_selection: "explicit dated claim; one recorded interval; no learned proposal",
                 scope: self.manifest.scope.clone(),
                 relation_url,
+                relation_direction: Some("forward"),
+            },
+        })
+    }
+
+    pub fn match_at(
+        &self,
+        request: Result<(&str, &str), &str>,
+    ) -> Result<TemporalMatchingReply, &'static str> {
+        let temporal = self.temporal.as_ref().ok_or("Matching dated facts requires temporal.json declared in the local facts bundle manifest.")?;
+        let result = match request {
+            Ok((date, question)) => temporal.match_at_str(date, question),
+            Err(_) => TemporalMatchResult::Refused {
+                reason: TemporalMatchRefusalReason::Question(
+                    MatchRefusalReason::UnsupportedGrammar,
+                ),
+            },
+        };
+        let text = match &result {
+            TemporalMatchResult::Matched { date, matches, total_recorded_interval_matches, returned, truncated, .. } => {
+                let mut text = format!("Recorded interval matches on {} in the loaded snapshot: {total_recorded_interval_matches}.", date.as_str());
+                if *truncated { text.push_str(&format!(" Showing the first {returned} by ID.")); }
+                for subject in matches {
+                    let id = &subject.subject.0;
+                    let display = self.labels.get(id).map(|label| format!("{label} ({id})")).unwrap_or_else(|| id.clone());
+                    text.push_str(&format!("\n{display}"));
+                    for witness in &subject.witnesses {
+                        text.push_str(&format!("\n  {} → {}: strictly after {} and before {} (start precision {}; end precision {}).\n  Claim: {}\n  Source: {}",
+                            witness.edge.property.0, witness.edge.object.0, witness.start.latest.as_str(), witness.end.earliest.as_str(), witness.start.raw.precision, witness.end.raw.precision, witness.claim_id, witness.source_url));
+                    }
+                }
+                text.push_str("\nEach condition has one recorded claim whose bounded interval contains this calendar day. This partial snapshot does not establish complete historical or current truth; zero matches is not global absence.");
+                text
+            }
+            TemporalMatchResult::Unknown { .. } => "I could not uniquely resolve every employer or country in the question. This does not establish that there are no matches.".into(),
+            TemporalMatchResult::Refused { .. } => request.err().unwrap_or("Use an exact valid YYYY-MM-DD date and two or three positive employer or citizenship conditions joined by and, with explicit names or QIDs.").into(),
+        };
+        Ok(TemporalMatchingReply {
+            kind: "fact_matches_at",
+            text,
+            result,
+            provenance: Provenance {
+                source: self.manifest.source.clone(),
+                license: self.manifest.license.clone(),
+                index_sha256: self.manifest.index_sha256.clone(),
+                relation_model_sha256: self.manifest.relation_model_sha256.clone(),
+                relation_selection: "explicit dated conjunction; one recorded interval per condition; no learned proposal",
+                scope: self.manifest.scope.clone(),
+                relation_url: None,
                 relation_direction: Some("forward"),
             },
         })

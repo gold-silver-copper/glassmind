@@ -1,0 +1,267 @@
+{
+  "cases": 21,
+  "individual_queries": 602,
+  "records": [
+    {
+      "name": "complete_count_before_display",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "only_later_subjects_match",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "three_conditions_overlap",
+      "individual_queries": 42,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "three_conditions_one_not_started",
+      "individual_queries": 42,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "two_distinct_employers",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "start_latest_boundary",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "end_earliest_boundary",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "month_boundary",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "month_interior",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "month_end_boundary",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "leap_day_interior",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "missing_end",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "separate_claims_cannot_combine",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "extra_qualifier",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "duplicate_start",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "deprecated",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "unsupported_calendar",
+      "individual_queries": 28,
+      "composed_subjects": [],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "second_eligible_claim",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "duplicate_condition_idempotent",
+      "individual_queries": 14,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "unicode_alias",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    },
+    {
+      "name": "case_and_spaces",
+      "individual_queries": 28,
+      "composed_subjects": [
+        "Q100",
+        "Q101",
+        "Q102",
+        "Q103",
+        "Q104",
+        "Q105",
+        "Q106",
+        "Q107",
+        "Q108",
+        "Q109",
+        "Q110",
+        "Q111",
+        "Q112",
+        "Q113"
+      ],
+      "full_witness_claims_match": true
+    }
+  ],
+  "binary_sha256": "0e5bbf2a57565658f2f557f2bec94a4644876869180af572a43a90f11b0a244c",
+  "scope": "Composition check of existing single-edge temporal verification, not an existing multi-constraint command"
+}
