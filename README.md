@@ -530,3 +530,7 @@ Type renames now share the closed test-module graph and builtin macro argument
 proof used by function renames. Supported assertions and parent imports participate
 in binding verification; applying a saved type rename reproves its spans and
 runs native tests with rollback.
+
+Pending coding actions accept typed parameter corrections such as changing a
+field default or a rename destination. Corrections retain the other parameters,
+revalidate the proposal, and preserve the remaining ordered plan.

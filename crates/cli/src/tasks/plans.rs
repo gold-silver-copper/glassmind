@@ -137,10 +137,16 @@ fn interpretations(system: &System, text: &str) -> Result<Vec<Utterance<Rust>>, 
 }
 
 pub(super) fn status(plan: &TaskPlan<Rust>) -> String {
-    let next = plan
-        .steps
-        .get(plan.current)
-        .map_or(String::new(), |s| format!("\nNext: {}", s.text));
+    let next = plan.steps.get(plan.current).map_or(String::new(), |s| {
+        let amendment = s
+            .task
+            .as_ref()
+            .filter(|t| t.original_text != s.text)
+            .map_or(String::new(), |t| {
+                format!("\nCurrent correction: {}", t.original_text)
+            });
+        format!("\nNext: {}{amendment}", s.text)
+    });
     format!(
         "Plan {:?}: {}/{} operations completed.{next}",
         plan.status,

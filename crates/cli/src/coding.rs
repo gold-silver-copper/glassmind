@@ -649,6 +649,21 @@ impl Language<Rust> for CodingLanguage<'_> {
                 },
             };
         }
+        if let Some(request) = glassmind_english_rust::add_fields::amendment_request(text) {
+            return match request {
+                Ok(amendment) => Understanding::Readings(vec![Reading {
+                    meaning: Utterance::Amend(amendment),
+                    rules: Vec::new(),
+                    parse: "fully consumed action parameter correction".into(),
+                    idle: 0,
+                    edits: 0,
+                    discarded: Vec::new(),
+                }]),
+                Err(reason) => Understanding::Failed {
+                    trouble: Trouble::ActionFailed { reason },
+                },
+            };
+        }
         if let Some(request) = glassmind_english_rust::implementation_grammar::task_request(text) {
             return match request {
                 Ok(thing) => Understanding::Readings(vec![Reading {
@@ -747,7 +762,8 @@ impl Language<Rust> for CodingLanguage<'_> {
         understood
     }
     fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
-        if glassmind_english_rust::add_fields::request(text).is_some()
+        if glassmind_english_rust::add_fields::amendment_request(text).is_some()
+            || glassmind_english_rust::add_fields::request(text).is_some()
             || glassmind_english_rust::implementation_grammar::task_request(text).is_some()
             || rename_requests::concerns_rename(text)
             || rename_requests::request(text).is_some()

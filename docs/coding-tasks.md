@@ -173,3 +173,31 @@ field addition remains recorded and can be undone. Existing restrictions on
 generic field owners, opaque macros,
 side-effecting defaults and ambiguous constructor graphs still apply. Existing
 tests establish only their covered behavior.
+
+
+## Correcting action parameters
+
+Pending actions accept a correction of one explicit parameter. For example:
+
+```sh
+glassmind do ./my-library --session ./coding-task.json --steps 1 \
+  'Add pub weight: u16 to Parcel; use 7 for all existing constructors; then rename it to Package; then check the tests'
+glassmind do ./my-library --session ./coding-task.json --steps 1 \
+  'actually use 11 as the default instead'
+glassmind do ./my-library --session ./coding-task.json --steps 8 'continue'
+```
+
+The correction retains the owner, field name and type and prepares a fresh checked
+proposal. The plan tail remains intact. Other explicit corrections include
+`change the field type to u8`, `name the field priority instead`, and, for a
+pending rename, `use Shipment as the new name` or `call it Shipment instead`.
+A plain `call it nickname` keeps its existing alias interpretation.
+
+Corrections survive restarts and answered inspection questions. An invalid
+scalar/type combination leaves the task blocked and can be corrected again.
+An incompatible parameter or an unconsumed trailing instruction cancels pending
+execution. Cancelled, completed or stale tasks cannot be revived by a parameter
+correction; state a fresh action. Every application revalidates the new typed
+proposal, with the same rollback and undo behavior as the original action.
+Literal name references in later plan steps are not silently rewritten when a
+rename destination changes; unresolved later references block at that step.

@@ -21,6 +21,7 @@ use glassmind_rules::{HAND, RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
 
 pub mod add_fields;
+pub mod amendments;
 mod argument_swap;
 mod ceiling_division;
 pub mod checks;
@@ -50,6 +51,7 @@ pub struct Rust;
 
 impl Ontology for Rust {
     type Member = add_fields::PublicField;
+    type Amendment = amendments::RustAmendment;
     type Kind = RustKind;
     type Relation = RustRelation;
     type Item = RustItem;
@@ -927,6 +929,14 @@ impl World<Rust> for RustWorld {
         let taken = syn::parse_str::<syn::Ident>(&name.0).is_err()
             || self.sources.iter().any(|s| s.idents.contains_key(&name.0));
         self.rename_at(item, *kind, name, taken)
+    }
+
+    fn amend(
+        &self,
+        action: &Action<Rust>,
+        amendment: &amendments::RustAmendment,
+    ) -> Found<Action<Rust>> {
+        amendments::revise(action, amendment)
     }
 
     fn note(&self, fact: &Fact<Rust>, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {

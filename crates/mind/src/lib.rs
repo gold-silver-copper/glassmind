@@ -279,6 +279,23 @@ impl<O: Ontology> Session<O> {
         Some(meaning.map_things(&mut |t| if t == *old { thing } else { t }.clone()))
     }
 
+    /// The active conversational action across answered inspection turns.
+    /// Unknown input, declined consent and forgotten turns cannot resurrect one.
+    fn action_for_amendment(&self) -> Option<&glassmind_meaning::Action<O>> {
+        for turn in self.remembered() {
+            match &turn.meaning {
+                Some(Utterance::Command(action)) => return Some(action),
+                Some(Utterance::Ask(_) | Utterance::AskReason | Utterance::AskRecall)
+                    if !matches!(
+                        turn.reply,
+                        Reply::Trouble(_) | Reply::Declined | Reply::Clarify { .. }
+                    ) => {}
+                _ => return None,
+            }
+        }
+        None
+    }
+
     /// The item the user last said they would call `name`, if any.
     pub fn aliased(&self, name: &Name) -> Option<O::Item> {
         self.turns.iter().rev().find_map(|turn| match &turn.reply {
@@ -461,35 +478,49 @@ impl<O: Ontology> Mind<'_, O> {
                 continue;
             }
             // A correction asks the corrected request, if that rule is on.
-            let meaning = match &reading.meaning {
+            let prepared = match &reading.meaning {
                 Utterance::Correct(thing)
                     if self.using(CORRECTION_REPLACES, &mut rt.world_rules).is_ok() =>
                 {
-                    session.corrected(thing)
+                    Ok(session
+                        .corrected(thing)
+                        .unwrap_or_else(|| reading.meaning.clone()))
                 }
-                _ => None,
-            }
-            .unwrap_or_else(|| reading.meaning.clone());
+                Utterance::Amend(amendment) => self
+                    .using(CORRECTION_REPLACES, &mut rt.world_rules)
+                    .and_then(|()| {
+                        session
+                            .action_for_amendment()
+                            .ok_or(Trouble::NothingPending)
+                    })
+                    .and_then(|action| self.world.amend(action, amendment))
+                    .map(Utterance::Command),
+                _ => Ok(reading.meaning.clone()),
+            };
+            let meaning = prepared.as_ref().unwrap_or(&reading.meaning).clone();
             for (meaning, means) in self.resolve(session, &meaning, &mut rt) {
                 let fired = &mut rt.world_rules;
-                let result = match &meaning {
-                    Utterance::Ask(q) => self.world.answer(q, fired),
-                    Utterance::Command(a) => self.world.propose(a, fired),
-                    Utterance::AskReason => self
-                        .using(REASON_IS_REQUEST, fired)
-                        .and_then(|()| reason(session)),
-                    Utterance::Forget => Ok(Reply::Forgotten),
-                    Utterance::AskRecall => self
-                        .using(RECALL_IS_MENTIONS, fired)
-                        .map(|()| Reply::Recall(session.mentions())),
-                    Utterance::Tell(f) => self.world.note(f, fired),
-                    Utterance::Correct(_) => Err(Trouble::Unsupported),
-                    Utterance::Consent(yes) => match session.pending() {
-                        None => Err(Trouble::NothingPending),
-                        Some(_) if !*yes => Ok(Reply::Declined),
-                        Some(proposal) => self
-                            .using(CONSENT_APPLIES, fired)
-                            .and_then(|()| self.world.apply(&proposal, fired)),
+                let result = match &prepared {
+                    Err(trouble) => Err(trouble.clone()),
+                    Ok(_) => match &meaning {
+                        Utterance::Ask(q) => self.world.answer(q, fired),
+                        Utterance::Command(a) => self.world.propose(a, fired),
+                        Utterance::AskReason => self
+                            .using(REASON_IS_REQUEST, fired)
+                            .and_then(|()| reason(session)),
+                        Utterance::Forget => Ok(Reply::Forgotten),
+                        Utterance::AskRecall => self
+                            .using(RECALL_IS_MENTIONS, fired)
+                            .map(|()| Reply::Recall(session.mentions())),
+                        Utterance::Tell(f) => self.world.note(f, fired),
+                        Utterance::Correct(_) | Utterance::Amend(_) => Err(Trouble::Unsupported),
+                        Utterance::Consent(yes) => match session.pending() {
+                            None => Err(Trouble::NothingPending),
+                            Some(_) if !*yes => Ok(Reply::Declined),
+                            Some(proposal) => self
+                                .using(CONSENT_APPLIES, fired)
+                                .and_then(|()| self.world.apply(&proposal, fired)),
+                        },
                     },
                 };
                 rt.outcomes.push((meaning.clone(), result.clone()));
