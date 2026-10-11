@@ -1,10 +1,72 @@
 # Continuous development checkpoint
 
 The unlimited goal is active; milestones do not complete it. Root branch `harness`.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the full coding gate and combined release
-checks below. No routine human confirmation is needed.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the live equivalent-supervision quantity
+experiment below. No routine human confirmation is needed.
 
-## Published PR41 and current baseline
+## Published PR42 and active next experiment
+
+PR42 MERGED https://github.com/gold-silver-copper/glassmind/pull/42
+Reviewedhead947e01559f428975592202dc280f6a5abc2de242; CI38145656631 success94seconds
+14:03:48→14:05:22UTC. Merge603ce15a079bea83645353559719f9c2064bea39,
+2026-10-11T14:05:40Z. Push81556,PR52210,merge82054 COMPLETE. Sourcebad94f5.
+Coding212/765,553refused0fail,all209retained; threeblog-tagsstyles,onebug.
+Dialogue drafts integrated, unchanged1119predictionpayloads and610/459/50accuracy.
+README/journal/html published. Knowncompletedworker tokens184586362 inclcachedonce;
+root/interrupted andliveequivbinding usage excluded. No repeatedscoreboard rows.
+
+Currentbaseline combinedbinary coordinator/combined-deduporder-draftsession/glassmind
+SHAb6b093c5a82e76ec08481b5e0c8739e6b9090590f5f06b79d8b41eeb04e8948d.
+Fullcodingresultscoordinator/deduporder-full/results.jsonl SHA
+44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f.
+Allpriorgates complete. Originaldedup/draft archives reverified1361files268256452bytes;
+worktrees andtemporaryauthlinks removed ONLYafterverification. Frozenbinaries/source/
+rawdata retained. Cleanupreportscoordinator/batch42-{archive-review,cleanup}.json.
+Do not access removedworktreepaths or rerun finishedgates.
+
+LIVE worker equivbinding PID3823542, scopeglassmind-continuous-equivbinding.scope
+active/running8GiB0swap verified14:05UTC. WorktreeWORK/equivbinding, branch
+continuous/equivbinding, base947e015. TaskWORK/equivbinding-task.txt;runWORK/equivbinding-run;
+launcherWORK/launch.py. Owns ONLYnewtools/quantities/equivalent-binding andexternalRUN.
+Astra fast/forcedChatGPT login+CLI flags verified; API/provider envstripped. No
+liveworker source/results inspected. No DEV, heldout, downloads, extraagents/modelcalls.
+Readonlygroundingaudit-source andexistingquantities-deps; exactoldmodel/source/TRAIN.
+
+Hypothesis changes SUPERVISION, notanotherlocalfeature or decoderretune. Distinct
+inputslots remain symbolicatoms evenwhenvalues equal. Priorstep references expand
+into boundedexpressiontrees; onlyAdd/Multiply child-order commutation canonicalized.
+Subtract/Divide ordered; noassociation/cancellation/value-equality/generalalgebra.
+Legal left/rightpairs whosecanonicaltreeequalsgold define partial-label targets.
+Oldfeatures/hash/operationweights/masks/decoder/executor/comparator unchanged.
+Two fixed matched arms fromoldweights, operand-only6epochs inoriginalFITorder:
+originalsingletargetcontrol vsformalpartiallabelsoftmaxmass. Rightcontexts weighted
+perstep acrossvalidlefts. Freeze exactoldoptimizer/schedule, noCALselection/tuning.
+Eacharm<=600s8GiB0swap,model<=16MiB,outer1800s. Reportincompleteifbothcannotfinish.
+
+Exactclean4590FIT1182CAL, all29837TRAINrowaccounting; original200nativebaseline must
+matchbeforefitting. OriginalCALfree143,oracle221;teacherleft2197/right2499of4138.
+Continuationgates Bfree>=168,oracle>=251 andbothstrictlyabovecontrolA; eachsymbolic
+teacheroperandrate>=3percentagepoints aboveoriginalANDcontrol. Anygatefailrejects.
+No production/DEV evenifpasses, parentreviewsfirst. Alloldcorrectlosses/refusal→wrong
+reported; numericalagreementnotEnglishsemanticproof. This newformal-targetmetric
+mustnotretroactivelyreclassifyoldaccuracy. No selectiveconfidencepolicy.
+
+Parentcoordinator/equivbinding-independent freezes13formalpairsets+3invalidrefs.
+casesSHA5e88627f5f326d1d66e39f5169ecf4b327a4945a590af3ba34714bc04b2d8273.
+SeparatePythonFraction/tuple oracleenumeratesalllegalpairs. Originalnativebaseline
+65assignmentgroups/120executions agreeforallowedchoices, inclnegative/zero/equal/
+decimalvalues anddenominatorfailure. Threeinvalidnativechecksrefuse; supplemental
+invalid-native-baseline.json. FrozenPLAN/cases/nativebaseline/script hashes in
+freeze.json. No workeraccess toparentcases. Afterterminalarchive/hashverify first,
+thenindependentlycompareeveryTRAINtargetpairset, OPweights, matchedschedule,
+gradient/formalchecks, exactsource/split andallnumericcomparisons. Do notinspectlive.
+
+NEXT: whileworker runs, prepare independent numeric/target-set review using old
+native assets withoutduplicatetraining. Ifterminal, archive allownedsource/models/
+commands/results beforeinspection. Continueanothertrackifhypothesisfails. Active
+continuousgoal, nohumanconfirmationneeded andno milestonecompletion.
+
+## Published PR41 (historical baseline)
 
 PR41 MERGED https://github.com/gold-silver-copper/glassmind/pull/41
 Reviewed head765e92fcfc79f5c51e0b3cd1351d843816063f75; CI38143624507 passed96seconds
@@ -31,12 +93,12 @@ both intent modes and three human-output checks. README/journal/html updated.
 Known completedworker tokens184586362 includingcachedinputonce; root/interrupted
 usage excluded. Latest deduporder2933900 and draftsession1339978. Both terminal.
 
-## Current integrated batch: dedup ordering and resumable drafts
+## Completed PR42 validation: dedup ordering and resumable drafts
 
 Root has reviewed source for both capabilities, plus command docs and
 compact independent reports. Original worker evidence was archived/hashverified
-BEFORE inspection or edits. No current modelworkers. PR41 remains last published.
-Current build/check handle is recorded in coordinator/combined-deduporder-draftsession-check.log;
+BEFORE inspection or edits. These two workers are terminal. PR42 is published; equivbinding now runs separately.
+Completed build/check handle is recorded in coordinator/combined-deduporder-draftsession-check.log;
 fmt/alltargetclippy/releaseworkspace/strict4fixture smoke COMPLETE session49737.
 Allcargo8GiB0swap,setsid--waittimeout,persistentTMPDIR,jobs1. Full765session40652
 COMPLETE212/553/0,all209retained. comparison.jsonSHA records exact outcomes;
@@ -110,11 +172,9 @@ SHAb6b093c5a82e76ec08481b5e0c8739e6b9090590f5f06b79d8b41eeb04e8948d.
 All26world-rustfilesmatchfull765; allCLI/dialoguefilesmatchinitialmainexcepthelptext,
 whosepreviousbyteswere reconstructedandhashverified. Manifest/combined-source.json.
 
-Sourcecommitbad94f5 andcodingjournalrow212/765 complete; nextpushPR42 andmerge exactgreenhead.
-Fullgatescompleted. Keepgoalactive.
-Then archiveverify andremoveonlycompletedworkerworktrees/temp loginlinks. Prepare
-nextquantityrepresentation orfactscoverage experiment fromTRAIN evidence; do not
-revive closedthreshold/spanproposalhypotheses. No currentmodelworkers tostop.
+Sourcecommitbad94f5 andcodingjournalrow212/765 publishedPR42; fullgatescompleted.
+Archiveverification/ownedworktree cleanup COMPLETE. Nextformalquantitysupervision
+experiment activeabove; do not reviveclosedthreshold/spanproposalhypotheses.
 
 ## Finished PR41 experiments
 
@@ -179,10 +239,10 @@ semanticchecks; no first-match value priority or another oldrankerconfiguration.
 
 ## Rolling queue and resources
 
-1. Finish currentdedup-order worker and frozenparent/native/fullDEV gates.
-2. Revisit quantities via explicitspan/reference supervision; source and rejected
-   value-only dataaudit are ready. Avoid anotherthreshold/localfeature rename.
-3. Dialogue draft persistence integrated and under final combined checks; accuracy
+1. Finish active equivalent-supervision matched TRAIN experiment and parent review.
+2. Further quantity work requires explicitspan/reference supervision if formal
+   partial-label targets also fail; no value-equality grounding or localfeature rename.
+3. Dialogue draft persistence published in PR42; accuracy
    unchanged610/1119. Tokenendpoints was third rejectedspan-proposalhypothesis;
    future accuracy work needs a materiallydifferent representation.
 4. Facts coverage/inverseedges are the known broadgap; previousTRAIN999expansion
