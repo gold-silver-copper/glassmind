@@ -7,6 +7,37 @@ ingestion, source accounting and positive query checks, and is integrated.
 Known completed-worker tokens: 201,926,299 (cached input counted once; parent
 and interrupted usage excluded). No model workers ran in this batch.
 
+## PR49 merged; independent public QA CAL rejected
+
+PR49 https://github.com/gold-silver-copper/glassmind/pull/49 MERGED
+663819d70f9bd2f220ba4d5452d4665597b2639e at2026-10-11T17:31:53Z.
+Reviewedhead9e5bdcc4b4736669a891395c97ef4ea43fa1fb89; CI38159805008 passed94s.
+Root has fast-forwarded through QA report400e555. QA worktree clean, all jobs
+complete. No model workers or auth mounts. Native importer remains shipped;
+QA rejection does not invalidate storage/source correctness.
+
+Frozen tools/facts/public-qa/PLAN.md gate: >=10 net strict correct on1949 approved
+TRAIN every-tenth CAL and zero prior right/refused -> wrong. Result baseline
+2right/1863refused/84wrong; publicpilot2/1940/7. Net0,7newwrong,2lostcorrect:
+REJECTED. No DEV run, no production bundle/model/threshold changes. Source
+inference only consumed questions, graph and model; separate annotation join.
+Full evidence tools/facts/public-qa/PARENT.md, summary.json and external
+WORK/coordinator/wikidata-qa; runtime6.542s. Knownworker tokens unchanged.
+
+Links improved594->1013 (correct anchors153->843; anchor+relation146->792), but
+source contains a unique annotated answer for only6rows. Native aliases exist
+for1946/1949anchors. All7newwrong linked correct anchor+inverse relation and a
+locally unique alternative; exact annotation metric remains fixed. The shard
+lacks both lostforwardclaims. Do not try another alias-only gate or fetch
+CAL-selected entities. Scoreboard has separately labelled CAL series.
+
+NEXT: freeze broader independent acquisition/resource plan from pinned86-file
+public claims tree, then implement multi-shard projection/native ingestion
+reusing the audited native alias keys. No additional claims acquired yet.
+Preserve old single-shard gates and artifacts; use a separate dataset/run.
+
+Historical native ingestion details below; publication/QA NEXT text is stale.
+
 ## Native public ingestion passed; publishing is next
 
 Root merge e5487ef integrates WORK/wikidata-native at c873f4b. Worktree is clean
