@@ -1,0 +1,35 @@
+rename	function:decode:read_entry	rename function decode to read_entry everywhere (definition, callers, tests).
+rename	_:scan:scan_record	rename scan -> scan_record everywhere pls, all callers + tests too
+rename	function:Load:Read	Please rename function `Load` to `Read`; keep tests.
+rename	function:café:Écrire	Rename function `café` to `Écrire` everywhere.
+rename	function:r#type:r#match	rename function r#type to r#match; preserve behavior.
+rename	function:decode:read_record	The function decode reads a record, so I'd like it called read_record instead. Could you rename it everywhere it's used? Behavior should stay exactly the same.
+rename	function:load:read_config	Hey! In this small config reader, the function load really reads a whole config record, so I'd like it called read_config instead. Could you rename it everywhere it's used, including main and the unit tests? Behaviour should stay exactly the same.
+rename	field:width:span:Panel	rename field width of Panel to span everywhere
+rename	function:poll:receive:Queue	rename method poll on Queue to receive everywhere; preserve behavior
+rename	struct:Parcel:Packet	rename struct Parcel to Packet everywhere
+rename	_:read:read_item	Could you please rename read -> read_item everywhere (callers, definition, tests)?
+rename	_:format:render	rename format to render; keep tests
+refuse	-	Do not rename function decode to read_entry; keep tests
+refuse	-	Never rename decode to read_entry, fix tests
+refuse	-	If tests pass, rename decode to read_entry
+refuse	-	Check whether renaming decode to read_entry would break tests
+refuse	-	Explain "rename decode to read_entry"; do not change tests
+refuse	-	rename decode to read_entry and rename load to read_config
+refuse	-	rename decode to read_entry or read_record
+refuse	-	rename decode to read_entry; call it read_record instead
+refuse	-	rename decode to read_entry; delete tests
+refuse	-	rename decode to read_entry; bananas forever
+refuse	-	rename decode everywhere, keep tests
+refuse	-	rename to read_entry; keep tests
+refuse	-	rename function decode to read_entry and change its behavior
+refuse	-	rename local variable decode to read_entry; keep tests
+refuse	-	rename decode to read_entry only in tests
+refuse	-	rename decode to read_entry if tests pass
+refuse	-	Could you rename it everywhere including tests?
+refuse	-	The function decode reads a record, so I'd like it called read_entry instead. Could you rename it everywhere? Also remove validation.
+repair	Test	fix the test named rename_foo
+repair	Test	fix failing tests for function test_rename_entry
+refuse	-	What does the word `rename` mean?
+refuse	-	I might rename decode to read_entry; keep tests
+refuse	-	rename decode to read_entry; don't preserve behavior
