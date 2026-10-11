@@ -78,6 +78,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
+| Multi-service dialogue, SGD three-service dev subset | 595/1,119 exact routing-and-state turns; 50 refused; 474 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
 | Word problems, MathQA (numeric answers without choices) | 14/4,475 right; 4,458 refused; 3 wrong | pending |
 | Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
@@ -99,6 +100,19 @@ Struct/enum renames now resolve explicit module/import bindings and verify
 application through `do`. All nine local source/runtime/refusal checks pass;
 all 765 RustBench outcomes remain unchanged, including its 81 refused edit
 requests. [Rename scope and evidence](docs/coding-edits-continuous.md).
+
+Enum-variant renames now resolve constructors, patterns, explicit imports and
+inherent `Self` paths. All 14 local checks pass, including four successful edits,
+nine refusals and rollback. Type checks remain 9/9; all 765 RustBench outcomes
+remain unchanged. Unsupported attributes, macros and ambiguous bindings refuse.
+[Variant scope and evidence](docs/coding-variants.md).
+
+On 179 complete SGD dev conversations involving RideSharing, Travel and Weather,
+learned transfers between grounded predicted slots raise exact routing-and-state
+turns from 549 to 595/1,119, preserving all baseline-correct turns. Four incorrect
+copies persist for 11 scored slot-turns; multi-service RideSharing frames remain
+0/265 exact. This is a separate, scoped command and metric, with unchanged routing.
+[Dialogue evidence and reproduction](tools/dialogue/references/HANDOFF.md).
 
 `talk` now answers supported quantity questions with or without an intent
 model, preserves memory priority and recalls calculation requests across
@@ -131,7 +145,7 @@ preferences from 579 to 633 and regresses 23/67 categories. Its reading
 probe has 33/120 exact training-line overlaps. These are probability
 measurements, not semantic understanding or clean held-out performance.
 [Full probability evidence and limitations](tools/reading/HANDOFF.md).
-The dialogue result covers one service; the quantity suites are synthetic
+Dialogue results cover the stated one- and three-service subsets; the quantity suites are synthetic
 development checks, not an external word-problem benchmark. The facts
 index is seeded by validation subject IDs and has limited coverage; it is not
 an open-world entity-retrieval result. [Data provenance and limitations](data/README.md).

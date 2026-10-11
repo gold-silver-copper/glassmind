@@ -1,0 +1,637 @@
+{
+  "status": "rejected: neither hypothesis meets preregistered end-to-end criteria",
+  "experimental_source_commit": "cb6fb28",
+  "scope": "179 selected official dev conversations, 1119 user turns, 1218 gold frames; 54 multi-service conversations",
+  "archive": "/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/submitted",
+  "source_revision": "e852981ae34990f4358979625854259302feaa78",
+  "source_license": "CC-BY-SA-4.0",
+  "source_bytes": 504306737,
+  "runtime_inputs": "speaker and utterance only; no gold service routing",
+  "reports": {
+    "joint-first-0": {
+      "model_sha256": "18303a59e90591b318961ffd00e98daa583923aed76e3ef93f0eb6a7af508ada",
+      "all": {
+        "dialogues": 10,
+        "user_turns": 91,
+        "gold_frames": 108,
+        "predicted_frames": 273,
+        "tp": 92,
+        "fp": 12,
+        "fn": 16,
+        "route_exact": 74,
+        "strict_frame_correct": 28,
+        "intent_correct": 93,
+        "full_joint_correct": 21,
+        "fuzzy_joint_sum": 29.17,
+        "gold_switches": 33,
+        "correct_switches": 6,
+        "service": {
+          "Weather_1": {
+            "frames": 31,
+            "strict": 28,
+            "fuzzy_sum": 29.17
+          },
+          "Travel_1": {
+            "frames": 26,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 51,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.8846153846153846,
+        "active_recall": 0.8518518518518519,
+        "active_f1": 0.8679245283018868
+      },
+      "single": {
+        "dialogues": 0,
+        "user_turns": 0,
+        "gold_frames": 0,
+        "predicted_frames": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "route_exact": 0,
+        "strict_frame_correct": 0,
+        "intent_correct": 0,
+        "full_joint_correct": 0,
+        "fuzzy_joint_sum": 0.0,
+        "gold_switches": 0,
+        "correct_switches": 0,
+        "service": {},
+        "active_precision": 0,
+        "active_recall": 0,
+        "active_f1": 0
+      },
+      "multi": {
+        "dialogues": 10,
+        "user_turns": 91,
+        "gold_frames": 108,
+        "predicted_frames": 273,
+        "tp": 92,
+        "fp": 12,
+        "fn": 16,
+        "route_exact": 74,
+        "strict_frame_correct": 28,
+        "intent_correct": 93,
+        "full_joint_correct": 21,
+        "fuzzy_joint_sum": 29.17,
+        "gold_switches": 33,
+        "correct_switches": 6,
+        "service": {
+          "Weather_1": {
+            "frames": 31,
+            "strict": 28,
+            "fuzzy_sum": 29.17
+          },
+          "Travel_1": {
+            "frames": 26,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 51,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.8846153846153846,
+        "active_recall": 0.8518518518518519,
+        "active_f1": 0.8679245283018868
+      }
+    },
+    "joint-first-12": {
+      "model_sha256": "7ad9f82b9adfd5671511feeca787193ce82ea2bf5f781ea5c6353befdff3428f",
+      "all": {
+        "dialogues": 10,
+        "user_turns": 91,
+        "gold_frames": 108,
+        "predicted_frames": 273,
+        "tp": 86,
+        "fp": 5,
+        "fn": 22,
+        "route_exact": 69,
+        "strict_frame_correct": 28,
+        "intent_correct": 80,
+        "full_joint_correct": 21,
+        "fuzzy_joint_sum": 29.17,
+        "gold_switches": 33,
+        "correct_switches": 8,
+        "service": {
+          "Weather_1": {
+            "frames": 31,
+            "strict": 28,
+            "fuzzy_sum": 29.17
+          },
+          "Travel_1": {
+            "frames": 26,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 51,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.945054945054945,
+        "active_recall": 0.7962962962962963,
+        "active_f1": 0.864321608040201
+      },
+      "single": {
+        "dialogues": 0,
+        "user_turns": 0,
+        "gold_frames": 0,
+        "predicted_frames": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "route_exact": 0,
+        "strict_frame_correct": 0,
+        "intent_correct": 0,
+        "full_joint_correct": 0,
+        "fuzzy_joint_sum": 0.0,
+        "gold_switches": 0,
+        "correct_switches": 0,
+        "service": {},
+        "active_precision": 0,
+        "active_recall": 0,
+        "active_f1": 0
+      },
+      "multi": {
+        "dialogues": 10,
+        "user_turns": 91,
+        "gold_frames": 108,
+        "predicted_frames": 273,
+        "tp": 86,
+        "fp": 5,
+        "fn": 22,
+        "route_exact": 69,
+        "strict_frame_correct": 28,
+        "intent_correct": 80,
+        "full_joint_correct": 21,
+        "fuzzy_joint_sum": 29.17,
+        "gold_switches": 33,
+        "correct_switches": 8,
+        "service": {
+          "Weather_1": {
+            "frames": 31,
+            "strict": 28,
+            "fuzzy_sum": 29.17
+          },
+          "Travel_1": {
+            "frames": 26,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 51,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.945054945054945,
+        "active_recall": 0.7962962962962963,
+        "active_f1": 0.864321608040201
+      }
+    },
+    "joint-full-0": {
+      "model_sha256": "18303a59e90591b318961ffd00e98daa583923aed76e3ef93f0eb6a7af508ada",
+      "all": {
+        "dialogues": 179,
+        "user_turns": 1119,
+        "gold_frames": 1218,
+        "predicted_frames": 3357,
+        "tp": 1102,
+        "fp": 127,
+        "fn": 116,
+        "route_exact": 943,
+        "strict_frame_correct": 596,
+        "intent_correct": 1068,
+        "full_joint_correct": 501,
+        "fuzzy_joint_sum": 663.6196000000004,
+        "gold_switches": 184,
+        "correct_switches": 38,
+        "service": {
+          "Weather_1": {
+            "frames": 316,
+            "strict": 193,
+            "fuzzy_sum": 233.43960000000013
+          },
+          "Travel_1": {
+            "frames": 380,
+            "strict": 201,
+            "fuzzy_sum": 201.0
+          },
+          "RideSharing_1": {
+            "frames": 522,
+            "strict": 202,
+            "fuzzy_sum": 229.17999999999998
+          }
+        },
+        "active_precision": 0.8966639544344996,
+        "active_recall": 0.9047619047619048,
+        "active_f1": 0.9006947282386596
+      },
+      "single": {
+        "dialogues": 125,
+        "user_turns": 627,
+        "gold_frames": 627,
+        "predicted_frames": 1881,
+        "tp": 599,
+        "fp": 65,
+        "fn": 28,
+        "route_exact": 545,
+        "strict_frame_correct": 468,
+        "intent_correct": 595,
+        "full_joint_correct": 412,
+        "fuzzy_joint_sum": 516.8900000000003,
+        "gold_switches": 0,
+        "correct_switches": 0,
+        "service": {
+          "RideSharing_1": {
+            "frames": 257,
+            "strict": 202,
+            "fuzzy_sum": 229.17999999999998
+          },
+          "Weather_1": {
+            "frames": 148,
+            "strict": 68,
+            "fuzzy_sum": 89.71
+          },
+          "Travel_1": {
+            "frames": 222,
+            "strict": 198,
+            "fuzzy_sum": 198.0
+          }
+        },
+        "active_precision": 0.9021084337349398,
+        "active_recall": 0.9553429027113237,
+        "active_f1": 0.9279628195197521
+      },
+      "multi": {
+        "dialogues": 54,
+        "user_turns": 492,
+        "gold_frames": 591,
+        "predicted_frames": 1476,
+        "tp": 503,
+        "fp": 62,
+        "fn": 88,
+        "route_exact": 398,
+        "strict_frame_correct": 128,
+        "intent_correct": 473,
+        "full_joint_correct": 89,
+        "fuzzy_joint_sum": 146.7296,
+        "gold_switches": 184,
+        "correct_switches": 38,
+        "service": {
+          "Weather_1": {
+            "frames": 168,
+            "strict": 125,
+            "fuzzy_sum": 143.7296
+          },
+          "Travel_1": {
+            "frames": 158,
+            "strict": 3,
+            "fuzzy_sum": 3.0
+          },
+          "RideSharing_1": {
+            "frames": 265,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.8902654867256637,
+        "active_recall": 0.8510998307952623,
+        "active_f1": 0.870242214532872
+      }
+    },
+    "joint-full-12": {
+      "model_sha256": "7ad9f82b9adfd5671511feeca787193ce82ea2bf5f781ea5c6353befdff3428f",
+      "all": {
+        "dialogues": 179,
+        "user_turns": 1119,
+        "gold_frames": 1218,
+        "predicted_frames": 3357,
+        "tp": 1076,
+        "fp": 15,
+        "fn": 142,
+        "route_exact": 977,
+        "strict_frame_correct": 598,
+        "intent_correct": 1004,
+        "full_joint_correct": 549,
+        "fuzzy_joint_sum": 664.1996000000004,
+        "gold_switches": 184,
+        "correct_switches": 42,
+        "service": {
+          "Weather_1": {
+            "frames": 316,
+            "strict": 198,
+            "fuzzy_sum": 237.0196000000001
+          },
+          "Travel_1": {
+            "frames": 380,
+            "strict": 198,
+            "fuzzy_sum": 198.0
+          },
+          "RideSharing_1": {
+            "frames": 522,
+            "strict": 202,
+            "fuzzy_sum": 229.17999999999998
+          }
+        },
+        "active_precision": 0.9862511457378552,
+        "active_recall": 0.8834154351395731,
+        "active_f1": 0.9320051970550022
+      },
+      "single": {
+        "dialogues": 125,
+        "user_turns": 627,
+        "gold_frames": 627,
+        "predicted_frames": 1881,
+        "tp": 604,
+        "fp": 0,
+        "fn": 23,
+        "route_exact": 604,
+        "strict_frame_correct": 468,
+        "intent_correct": 601,
+        "full_joint_correct": 457,
+        "fuzzy_joint_sum": 516.8900000000003,
+        "gold_switches": 0,
+        "correct_switches": 0,
+        "service": {
+          "RideSharing_1": {
+            "frames": 257,
+            "strict": 202,
+            "fuzzy_sum": 229.17999999999998
+          },
+          "Weather_1": {
+            "frames": 148,
+            "strict": 68,
+            "fuzzy_sum": 89.71
+          },
+          "Travel_1": {
+            "frames": 222,
+            "strict": 198,
+            "fuzzy_sum": 198.0
+          }
+        },
+        "active_precision": 1.0,
+        "active_recall": 0.9633173843700159,
+        "active_f1": 0.9813160032493907
+      },
+      "multi": {
+        "dialogues": 54,
+        "user_turns": 492,
+        "gold_frames": 591,
+        "predicted_frames": 1476,
+        "tp": 472,
+        "fp": 15,
+        "fn": 119,
+        "route_exact": 373,
+        "strict_frame_correct": 130,
+        "intent_correct": 403,
+        "full_joint_correct": 92,
+        "fuzzy_joint_sum": 147.3096,
+        "gold_switches": 184,
+        "correct_switches": 42,
+        "service": {
+          "Weather_1": {
+            "frames": 168,
+            "strict": 130,
+            "fuzzy_sum": 147.3096
+          },
+          "Travel_1": {
+            "frames": 158,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 265,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.9691991786447639,
+        "active_recall": 0.7986463620981388,
+        "active_f1": 0.87569573283859
+      }
+    },
+    "independent-first-12": {
+      "model_sha256": "f76a8996c8bac8aa23b8d82ff2f3c225c6539e75fafe1d6a355b483d14fd1af6",
+      "all": {
+        "dialogues": 10,
+        "user_turns": 91,
+        "gold_frames": 108,
+        "predicted_frames": 273,
+        "tp": 99,
+        "fp": 4,
+        "fn": 9,
+        "route_exact": 79,
+        "strict_frame_correct": 28,
+        "intent_correct": 90,
+        "full_joint_correct": 21,
+        "fuzzy_joint_sum": 29.17,
+        "gold_switches": 33,
+        "correct_switches": 18,
+        "service": {
+          "Weather_1": {
+            "frames": 31,
+            "strict": 28,
+            "fuzzy_sum": 29.17
+          },
+          "Travel_1": {
+            "frames": 26,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 51,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.9611650485436893,
+        "active_recall": 0.9166666666666666,
+        "active_f1": 0.9383886255924171
+      },
+      "single": {
+        "dialogues": 0,
+        "user_turns": 0,
+        "gold_frames": 0,
+        "predicted_frames": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "route_exact": 0,
+        "strict_frame_correct": 0,
+        "intent_correct": 0,
+        "full_joint_correct": 0,
+        "fuzzy_joint_sum": 0.0,
+        "gold_switches": 0,
+        "correct_switches": 0,
+        "service": {},
+        "active_precision": 0,
+        "active_recall": 0,
+        "active_f1": 0
+      },
+      "multi": {
+        "dialogues": 10,
+        "user_turns": 91,
+        "gold_frames": 108,
+        "predicted_frames": 273,
+        "tp": 99,
+        "fp": 4,
+        "fn": 9,
+        "route_exact": 79,
+        "strict_frame_correct": 28,
+        "intent_correct": 90,
+        "full_joint_correct": 21,
+        "fuzzy_joint_sum": 29.17,
+        "gold_switches": 33,
+        "correct_switches": 18,
+        "service": {
+          "Weather_1": {
+            "frames": 31,
+            "strict": 28,
+            "fuzzy_sum": 29.17
+          },
+          "Travel_1": {
+            "frames": 26,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 51,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.9611650485436893,
+        "active_recall": 0.9166666666666666,
+        "active_f1": 0.9383886255924171
+      }
+    },
+    "independent-full-12": {
+      "model_sha256": "f76a8996c8bac8aa23b8d82ff2f3c225c6539e75fafe1d6a355b483d14fd1af6",
+      "all": {
+        "dialogues": 179,
+        "user_turns": 1119,
+        "gold_frames": 1218,
+        "predicted_frames": 3357,
+        "tp": 1123,
+        "fp": 8,
+        "fn": 95,
+        "route_exact": 1018,
+        "strict_frame_correct": 595,
+        "intent_correct": 1065,
+        "full_joint_correct": 548,
+        "fuzzy_joint_sum": 661.1996000000004,
+        "gold_switches": 184,
+        "correct_switches": 116,
+        "service": {
+          "Weather_1": {
+            "frames": 316,
+            "strict": 195,
+            "fuzzy_sum": 234.0196000000001
+          },
+          "Travel_1": {
+            "frames": 380,
+            "strict": 198,
+            "fuzzy_sum": 198.0
+          },
+          "RideSharing_1": {
+            "frames": 522,
+            "strict": 202,
+            "fuzzy_sum": 229.17999999999998
+          }
+        },
+        "active_precision": 0.9929266136162688,
+        "active_recall": 0.9220032840722496,
+        "active_f1": 0.9561515538527032
+      },
+      "single": {
+        "dialogues": 125,
+        "user_turns": 627,
+        "gold_frames": 627,
+        "predicted_frames": 1881,
+        "tp": 605,
+        "fp": 0,
+        "fn": 22,
+        "route_exact": 605,
+        "strict_frame_correct": 468,
+        "intent_correct": 602,
+        "full_joint_correct": 458,
+        "fuzzy_joint_sum": 516.8900000000003,
+        "gold_switches": 0,
+        "correct_switches": 0,
+        "service": {
+          "RideSharing_1": {
+            "frames": 257,
+            "strict": 202,
+            "fuzzy_sum": 229.17999999999998
+          },
+          "Weather_1": {
+            "frames": 148,
+            "strict": 68,
+            "fuzzy_sum": 89.71
+          },
+          "Travel_1": {
+            "frames": 222,
+            "strict": 198,
+            "fuzzy_sum": 198.0
+          }
+        },
+        "active_precision": 1.0,
+        "active_recall": 0.9649122807017544,
+        "active_f1": 0.9821428571428571
+      },
+      "multi": {
+        "dialogues": 54,
+        "user_turns": 492,
+        "gold_frames": 591,
+        "predicted_frames": 1476,
+        "tp": 518,
+        "fp": 8,
+        "fn": 73,
+        "route_exact": 413,
+        "strict_frame_correct": 127,
+        "intent_correct": 463,
+        "full_joint_correct": 90,
+        "fuzzy_joint_sum": 144.3096,
+        "gold_switches": 184,
+        "correct_switches": 116,
+        "service": {
+          "Weather_1": {
+            "frames": 168,
+            "strict": 127,
+            "fuzzy_sum": 144.3096
+          },
+          "Travel_1": {
+            "frames": 158,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          },
+          "RideSharing_1": {
+            "frames": 265,
+            "strict": 0,
+            "fuzzy_sum": 0.0
+          }
+        },
+        "active_precision": 0.9847908745247148,
+        "active_recall": 0.8764805414551607,
+        "active_f1": 0.927484333034915
+      },
+      "isolation": {
+        "utterance_only": true,
+        "reversed_batch_identical": true,
+        "annotation_input_rejected": true,
+        "conversations": 179,
+        "gold_routing": false
+      }
+    }
+  }
+}

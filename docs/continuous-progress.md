@@ -13,8 +13,10 @@ evaluated PR head `ed81553`. Merged PR #7, head `0616ecc`, merge `16757c3`, CI38
 Included verified source commits:
 `ea52c58` (type renaming), `797ba62` (story conversation), `ebd9817`
 (fixed byte probability scorer), `422d754` (story focus correction).
-Their workers completed. Dialogue and variant-rename workers are active below.
-Do not push worker candidates until their affected full dev evidence passes.
+Their workers completed. Source commits `0bff6a1` (enum variants) and
+`da96f49` (multi-service dialogue with grounded predicted-slot transfer) are
+verified locally and awaiting publication as the next PR. All affected dev
+checks are complete. Only the next offers experiment is active below.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -93,45 +95,65 @@ WORK = `/home/gsc/.cache/glassmind/continuous-20261010`.
   `docs/results/coding-type-renames.json`. Frozen result/binary retained in
   `WORK/coordinator/edits-full/`. No held-out evaluation.
 
-**Active worker: dialogue**, launcherPID1756969, scope
-`glassmind-continuous-dialogue.scope`, worktree `WORK/dialogue`, base `eb15517`.
-Owns crates/dialogue and new tools/dialogue only; no shared CLI/scorer changes.
-GPT-6 Astra fast via ChatGPT, capped8GiB/zero swap. Goal: actual learned
-service routing and separate state from utterance-only inputs. Initially
-selected RideSharing_1+Travel_1 using training co-occurrences; no multi-service
-dev conversations, so rejected before scoring. Added Weather_1 from training
-availability. Fixed complete selection now179 dev conversations (54multi),
-1119user turns,1218frames; model training/evaluation in progress. Frozen
-RideSharing regression reproduced202/257 exact,89.1751%fuzzy. Inspect final
-handoff; do not assume candidate accepted.
+- **Enum variants**: source `0bff6a1704dcdd840058069c9e279a8fd61aa41e`.
+  Unit/tuple/record constructors, patterns, explicit imports and inherent Self
+  resolve conservatively. Main CLI kind bridge integrated; compiler-required
+  oracle arms only label/skip the new kind, without evaluation changes.
+  Sequential main-CLI sample3/3, full14/14 (four edits, nine refusals, rollback),
+  previous type9/9. World14 + English35 tests pass. Full765 RustBench dev
+  **COMPLETE**, session12870 terminal:163pass599refused3fail, every outcome
+  unchanged including81 edit refusals. No benchmark gain. Source/binary/result
+  hashes in `docs/results/coding-variant-renames.json`; local CLI evidence in
+  `docs/coding-variants-evidence/integrated/`. Frozen binary/results remain
+  `WORK/coordinator/variants-full/`. Do not rerun or poll completed evaluations.
+- **Multi-service dialogue**: source `da96f494d4a6865924cb0aa5eea138b029158fc2`.
+  Initial joint/independent-router hypotheses REJECTED under their original
+  sample/full joint-state criteria. Reports `docs/dialogue-routing-experiment.md`
+  and `docs/results/dialogue-routing-rejected.json`; no rejected chart gain.
+  Their frozen joint12 is the ablation baseline for learned slot transfer.
+  Fixed train-derived three-service selection: RideSharing_1, Travel_1, Weather_1;
+  dev179 complete conversations(54multi),1119user turns,1218frames. Runtime sees
+  speaker/utterance arrays only, never gold frame/service/ID metadata.
+  Value-free455-byte relation model learns Travel.location↔Weather.city from
+  train evidence83/83 and82/82. Copies only missing active-service input slots
+  from prior predicted states supported in prior utterance text; no values
+  stored in relation model, no overwrites or current-turn label transfer.
+  Sample21→31/91 exactjoint, full549→595/1119, exactframes598→689/1218,
+  multi92→138/492 turns and130→221/591 frames. All549 baseline-correct retained;
+  remaining474wrong50refused. Routing unchanged(F1 93.20%,42/184 switches).
+  MultiTravel0→91/158; **RideSharing0/265 still zero**.
+  **Four incorrect copy events persist11 scored slot-turns**: stale city,
+  missing final punctuation and truncated source; no dev-specific fix applied.
+  New claims111correct/11incorrect scoredslotturns,182heldunscored. Preserve
+  this error disclosure despite no correct→wrong whole-frame transitions.
+  Coordinator independently refit/assembled and reran full with isolation,
+  baseline replay and legacy regression: relation/full/legacy bytes identical.
+  Old single-service202/257 exact89.1751%fuzzy unchanged. Four focusedtests pass.
+  Full reports `tools/dialogue/references/HANDOFF.md` and `reports/integrated/`.
+  Candidate model `WORK/references-run/tmp/references/model.json`,32169632bytes,
+  SHA9991b341b4da7e775e0fa7e3ca55a2a00f4935a0a7b94db16f02b2b6596be83c.
+  All coordinator evals complete(86827,56716); no repoll/restart.
 
-Latest dialogue findings: joint trained router failed its fixed sample gate.
-Independent service classifiers improved full active-service F1 to95.62% and
-correctly routed switches42->116/184, but sample full-joint turns stayed21/91
-and full joint turns549->548 versus joint trained routing. Worker says it is
-ending iteration and recording **both rejected experiments**. Do not ship
-as accepted joint state-tracking improvement. Review final report before any
-integration; next hypothesis should address cross-service references with
-train-only learning/typed grounding, preserving prediction isolation.
+**Active worker: offers**, launcherPID1928393, scope
+`glassmind-continuous-offers.scope`, worktree `WORK/offers`, base `da96f49`.
+Owns crates/dialogue and tools/dialogue/offers only. RequiredGPT-6Astra fast,
+ChatGPT login,8GiB0swap. Hypothesis: learned utterance spans from previous system
+reply fill missing input slots, especially RideSharing destinations. Gate:
+sample>31/91,full>595/1119 and some actual RideSharing exactmulti state coverage;
+complete new-error audit, baselinecorrect/legacypreservation. No scorer edits.
+H1 boundary rules acceptedzero usingtrain-onlycalibration; rejectedbeforedev.
+H2 proper-name-shapedcandidate spans accepted26rules(25Ride,1Weather); evaluation
+not yet reviewed. Do not assume acceptance. Reports `tools/dialogue/offers/`;
+all new models/data must stay `WORK/offers-run/{tmp,target}`. Auth needed active.
 
-**Active worker: variants**, launcherPID1787990, scope
-`glassmind-continuous-variants.scope`, worktree `WORK/variants`, base `0616ecc`.
-Owns world-rust and necessary typed English/meaning changes, no sharedCLI.
-Goal: real enum-variant renames through constructors, patterns, Self paths
-and explicit bindings, with collisions/ambiguous names/rollback checks.
-Must retain type-rename9/9 and prior10 world-rust tests; coordinator still
-must run full765 RustBench dev before shipping a candidate. Hypothesis fixed
-before coding. Run dir `WORK/variants-run`; auth needed while active.
-
-Worker downloaded permitted pinned train/dev into its namespace's temporary
-cache `/home/gsc/.cache/glassmind/data/sgd-full`. Coordinator preserved all150
-source files with manifest hash verification, plus selected files, at
-**`WORK/dialogue-run/data-sgd-full`**. Do not lose this data or redownload.
-The worker's internal path disappears when its namespace closes; fix/parameterize
-reproduction paths during integration. Current namespace ownerPID1756977
-(`/proc/1756977/root/...`) if further permitted artifact recovery is needed.
-Do not read unrelated paths or credentials. Worker model/reports under
-`WORK/dialogue-run/tmp/multi` persist normally.
+Retained SGD train/dev150files504306737bytes, pinned
+e852981ae34990f4358979625854259302feaa78,CC-BY-SA4, source+selection hashes:
+`WORK/dialogue-run/data-sgd-full`. Rescued and hashverified before namespace exit;
+original temporary namespace no longer exists. Reproduction scripts accept
+SGD_ROOT and default to this persistent path. Do not redownload.
+Initial dialogue prototype archived `WORK/dialogue-run/submitted/`;
+references/variants submissions archived with hash manifests in their run dirs.
+Their scopes ended/auth symlinks removed; worktrees still retained for review.
 
 Workspace fmt/all-target clippy/release build/strict4/4 smoke pass after
 all integrations. Scalar bits-per-byte report support added to
@@ -153,7 +175,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:29,566,822 including cached input; parent and
+Known completed worker tokens:35,003,934 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -166,19 +188,16 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 ## Immediate next actions
 
-1. PR7 is merged; no publishing action or benchmark remains for that batch.
-   Inspect dialogue/variants workers, preserve artifacts and measure the next
-   coherent improvement. Do not duplicate completed full-dev evaluations.
-2. Review active dialogue worker when done, reproduce full declared selection
-   and annotation isolation, preserve frozen single-service regression. Fix
-   namespace-only data paths using the preserved cache above. Do not claim
-   multi-service routing from oracle service names or score only easy frames.
-3. Review the active variant worker against real source bindings and fixed
-   acceptance criteria; then full coding dev. No hidden tests/generators or
-   expected patches may be inspected.
-4. Facts expansion should use independently selected/training-derived entities;
-   existing index is validation-seeded. Reading follow-up needs a declared
-   independent dev design with overlap diagnostics. Keep measured scopes honest.
-
-Read the active prompt for standing authorization and stop/cleanup rules.
-This checkpoint is not a request for user approval or a completed goal.
+1. Publish verified enum/dialogue batch, CI then merge exact checked PR head.
+   README/data/scoreboard updated; reports identify exact evaluated source.
+2. Review offers worker when complete. Independently reproduce any accepted
+   candidate, audit added wrong slots, retain rejected hypotheses honestly.
+3. Next coding experiment: dev rename requests parse but refuse. Permitted
+   workspace sources expose library+binary roots, docs/derive attributes and
+   reexports that the closed resolver rejects. Investigate a sound bounded
+   extension using independent fixtures; do not read hidden tests or solutions.
+4. Keep coding and conversation advancing. Other gaps: full MathQA mostly
+   unsupported language; facts open-world retrieval; independent reading
+   semantics (current byte likelihood is not comprehension).
+5. Active goal continues until user stops. Stop owned jobs on pause/stop,
+   preserve artifacts, never restart the old stopped loop blindly.

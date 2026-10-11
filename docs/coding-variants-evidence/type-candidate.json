@@ -1,0 +1,110 @@
+[
+  {
+    "case": "struct_cross_file",
+    "supported": true,
+    "changed": true,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Proposal: Proposal { action: Rename { thing: Item(RustItem { source: \"dev\", file: \"src/model.rs\", line: 2, name: \"Packet\", kind: Struct, owner: None, detail: None }), kind: None, name: Some(Name(\"Message\")) }, spots: [RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 29 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 56 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 65 }, RustSpot { source: \"dev\", file: \"src/model.rs\", line: 2, column: 11 }, RustSpot { source: \"dev\", file: \"src/model.rs\", line: 2, column: 42 }] }\nApply: Ok(Applied { changes: 5, check: Some(Build), problems: [] })\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "enum_paths",
+    "supported": true,
+    "changed": true,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Proposal: Proposal { action: Rename { thing: Item(RustItem { source: \"dev\", file: \"src/model.rs\", line: 1, name: \"State\", kind: Enum, owner: None, detail: None }), kind: None, name: Some(Name(\"Phase\")) }, spots: [RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 29 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 47 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 73 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 95 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 142 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 166 }, RustSpot { source: \"dev\", file: \"src/model.rs\", line: 1, column: 9 }, RustSpot { source: \"dev\", file: \"src/model.rs\", line: 1, column: 42 }] }\nApply: Ok(Applied { changes: 8, check: Some(Build), problems: [] })\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "unicode_alias",
+    "supported": true,
+    "changed": true,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Proposal: Proposal { action: Rename { thing: Item(RustItem { source: \"dev\", file: \"src/model.rs\", line: 1, name: \"\u00c9tat\", kind: Struct, owner: None, detail: None }), kind: None, name: Some(Name(\"Statut\")) }, spots: [RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 29 }, RustSpot { source: \"dev\", file: \"src/model.rs\", line: 1, column: 11 }] }\nApply: Ok(Applied { changes: 2, check: Some(Build), problems: [] })\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "shadow",
+    "supported": false,
+    "changed": false,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Refused: Unsupported\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "collision",
+    "supported": false,
+    "changed": false,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Refused: Unsupported\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "same_name",
+    "supported": false,
+    "changed": false,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Refused: Ambiguous { candidates: [RustItem { source: \"dev\", file: \"src/main.rs\", line: 1, name: \"Packet\", kind: Struct, owner: None, detail: None }, RustItem { source: \"dev\", file: \"src/main.rs\", line: 1, name: \"Packet\", kind: Struct, owner: None, detail: None }] }\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "macro",
+    "supported": false,
+    "changed": false,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Refused: Unsupported\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "glob",
+    "supported": false,
+    "changed": false,
+    "exact_source": true,
+    "behavior": true,
+    "before_exit": 0,
+    "after_exit": 0,
+    "reply": "Refused: Unsupported\n",
+    "stderr": "",
+    "pass": true
+  },
+  {
+    "case": "rollback",
+    "supported": false,
+    "changed": false,
+    "exact_source": true,
+    "behavior": false,
+    "before_exit": 101,
+    "after_exit": 101,
+    "reply": "Proposal: Proposal { action: Rename { thing: Item(RustItem { source: \"dev\", file: \"src/main.rs\", line: 1, name: \"Packet\", kind: Struct, owner: None, detail: None }), kind: None, name: Some(Name(\"Message\")) }, spots: [RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 7 }, RustSpot { source: \"dev\", file: \"src/main.rs\", line: 1, column: 35 }] }\nApply: Err(Unsupported)\n",
+    "stderr": "",
+    "pass": true
+  }
+]

@@ -9,8 +9,11 @@ turns improve **549→595/1119**, retaining all 549 baseline-right turns. This i
 not a new successful router: routing weights and every routing prediction are
 unchanged. There are **four incorrect copy events, persisting for 11 scored
 slot-turns**, detailed below; do not describe this as error-free resolution.
-Parent should independently rerun full dev before promotion. No commit or
-publishing action was performed.
+Coordinator integration is committed as `da96f494d4a6865924cb0aa5eea138b029158fc2`.
+Independent relation fitting, full dev with annotation/isolation audit, frozen
+resolver-absent replay and legacy replay reproduce the worker's bytes exactly.
+Four focused tests and workspace fmt/clippy/build/strict4/4 smoke pass.
+Evidence is in `reports/integrated/`. The worker performed no publishing action.
 
 ## Hypothesis and acceptance, fixed before editing
 

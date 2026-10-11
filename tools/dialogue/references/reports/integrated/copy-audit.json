@@ -1,0 +1,5073 @@
+{
+  "counts": {
+    "correct_added": 111,
+    "held_unscored": 182,
+    "incorrect_added": 11
+  },
+  "copy_events": [
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": [
+        "Nairobi"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": [
+        "San Francisco"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": [
+        "San Diego"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": [
+        "Paris"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00011",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": [
+        "Toronto, Ontario"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        4
+      ]
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim"
+      ],
+      "gold": [
+        "Anaheim"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": [
+        "Paris, France"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": [
+        "SFO"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": [
+        "Anaheim, CA"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": [
+        "CDMX"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00019",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": [
+        "Delhi, India"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": [
+        "Seattle, WA"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "exact": false,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00023",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": [
+        "SD"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0,
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00024",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": [
+        "San Diego"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00026",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "anaheim"
+      ],
+      "gold": [
+        "anaheim"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "NY"
+      ],
+      "gold": [
+        "NY"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": [
+        "Long Beach"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00032",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sacramento"
+      ],
+      "gold": [
+        "Sacramento"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": [
+        "Fresno"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00037",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chicago"
+      ],
+      "gold": [
+        "Chicago"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": [
+        "SD"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": [
+        "Ciudad de Mexico"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": [
+        "Sydney, NSW"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": [
+        "atlanta, GA"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00048",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi, Kenya"
+      ],
+      "gold": [
+        "Nairobi, Kenya"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": [
+        "Philadelphia"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00051",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": [
+        "Los Angeles"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Vegas"
+      ],
+      "gold": [
+        "Vegas"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chi-town"
+      ],
+      "gold": [
+        "Chi-town"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00054",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": [
+        "Toronto, Ontario"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00055",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": [
+        "Los Angeles"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    },
+    {
+      "dialogue_id": "17_00056",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": [
+        "Fresno"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        2
+      ]
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": [
+        "Sydney, NSW"
+      ],
+      "exact": true,
+      "sources": [
+        [
+          "Weather_1",
+          "city"
+        ]
+      ],
+      "support_turns": [
+        0
+      ]
+    }
+  ],
+  "changed_slot_turns": [
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": [
+        "Nairobi"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": [
+        "Nairobi"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": [
+        "Nairobi"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": [
+        "Nairobi"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00004",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": [
+        "San Francisco"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": [
+        "San Francisco"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00008",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Francisco"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": [
+        "San Diego"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": [
+        "San Diego"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00009",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": [
+        "Paris"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": [
+        "Paris"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": [
+        "Paris"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": [
+        "Paris"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00010",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00011",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": [
+        "Toronto, Ontario"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00011",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": [
+        "Toronto, Ontario"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00011",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00011",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00011",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00012",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim"
+      ],
+      "gold": [
+        "Anaheim"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim"
+      ],
+      "gold": [
+        "Anaheim"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00013",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": [
+        "Paris, France"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": [
+        "Paris, France"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": [
+        "Paris, France"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": [
+        "Paris, France"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00014",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Paris, France"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": [
+        "SFO"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": [
+        "SFO"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": [
+        "SFO"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": [
+        "SFO"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00016",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SFO"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": [
+        "Anaheim, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": [
+        "Anaheim, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": [
+        "Anaheim, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00017",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Anaheim, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": [
+        "CDMX"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": [
+        "CDMX"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00018",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "CDMX"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00019",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00019",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00019",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00019",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00019",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00019",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": [
+        "Delhi, India"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": [
+        "Delhi, India"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00020",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Delhi, India"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": [
+        "Seattle, WA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": [
+        "Seattle, WA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": [
+        "Seattle, WA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": [
+        "Seattle, WA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00021",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Seattle, WA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00023",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": [
+        "SD"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00023",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": [
+        "SD"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00023",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": [
+        "SD"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00023",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00023",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00023",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00024",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": [
+        "San Diego"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00024",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00024",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00024",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00024",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00024",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Diego"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00026",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "anaheim"
+      ],
+      "gold": [
+        "anaheim"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00026",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "anaheim"
+      ],
+      "gold": [
+        "anaheim"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00026",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "anaheim"
+      ],
+      "gold": [
+        "anaheim"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00026",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "anaheim"
+      ],
+      "gold": [
+        "anaheim"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00026",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "anaheim"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00026",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "anaheim"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00029",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "NY"
+      ],
+      "gold": [
+        "NY"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "NY"
+      ],
+      "gold": [
+        "NY"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "NY"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "NY"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "NY"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00030",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "NY"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": [
+        "Long Beach"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": [
+        "Long Beach"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": [
+        "Long Beach"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": [
+        "Long Beach"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": [
+        "Long Beach"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00031",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00032",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sacramento"
+      ],
+      "gold": [
+        "Sacramento"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00032",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sacramento"
+      ],
+      "gold": [
+        "Sacramento"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00032",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sacramento"
+      ],
+      "gold": [
+        "Sacramento"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00032",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sacramento"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00032",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sacramento"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00033",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": [
+        "Fresno"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": [
+        "Fresno"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00035",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00037",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chicago"
+      ],
+      "gold": [
+        "Chicago"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00037",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chicago"
+      ],
+      "gold": [
+        "Chicago"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00037",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chicago"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00037",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chicago"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00037",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chicago"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00037",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chicago"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": [
+        "New York"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00039",
+      "turn_index": 22,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "New York"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": [
+        "Long Beach, CA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00040",
+      "turn_index": 22,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Long Beach, CA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": [
+        "SD"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": [
+        "SD"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00043",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SD"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": [
+        "Ciudad de Mexico"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": [
+        "Ciudad de Mexico"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": [
+        "Ciudad de Mexico"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": [
+        "Ciudad de Mexico"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00045",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Ciudad de Mexico"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": [
+        "Sydney, NSW"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": [
+        "Sydney, NSW"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00046",
+      "turn_index": 22,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": [
+        "atlanta, GA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": [
+        "atlanta, GA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": [
+        "atlanta, GA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": [
+        "atlanta, GA"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 22,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00047",
+      "turn_index": 24,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "atlanta, GA"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00048",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi, Kenya"
+      ],
+      "gold": [
+        "Nairobi, Kenya"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00048",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi, Kenya"
+      ],
+      "gold": [
+        "Nairobi, Kenya"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00048",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi, Kenya"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00048",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi, Kenya"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00048",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi, Kenya"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00048",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Nairobi, Kenya"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": [
+        "Philadelphia"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": [
+        "Philadelphia"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": [
+        "Philadelphia"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00049",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Philadelphia"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": [
+        "SF"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00050",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "SF"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00051",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": [
+        "Los Angeles"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00051",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": [
+        "Los Angeles"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00051",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00051",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00051",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00051",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 2,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Vegas"
+      ],
+      "gold": [
+        "Vegas"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Vegas"
+      ],
+      "gold": [
+        "Vegas"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Vegas"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Vegas"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Vegas"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00052",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Vegas"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chi-town"
+      ],
+      "gold": [
+        "Chi-town"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chi-town"
+      ],
+      "gold": [
+        "Chi-town"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chi-town"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chi-town"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chi-town"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00053",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Chi-town"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00054",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": [
+        "Toronto, Ontario"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00054",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": [
+        "Toronto, Ontario"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00054",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00054",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00054",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00054",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Toronto, Ontario"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00055",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": [
+        "Los Angeles"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00055",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": [
+        "Los Angeles"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00055",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00055",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00055",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00055",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Los Angeles"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00056",
+      "turn_index": 4,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": [
+        "Fresno"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00056",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": [
+        "Fresno"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00056",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": [
+        "Fresno"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00056",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00056",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00056",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Fresno"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": [
+        "Sydney, NSW"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": [
+        "Sydney, NSW"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": [
+        "Sydney, NSW"
+      ],
+      "exact": true
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 20,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    },
+    {
+      "dialogue_id": "17_00057",
+      "turn_index": 22,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Sydney, NSW"
+      ],
+      "gold": null,
+      "exact": null
+    }
+  ],
+  "new_incorrect_slot_turns": [
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "Washington D.C"
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": null,
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "exact": false
+    }
+  ],
+  "routing_unchanged": true
+}
