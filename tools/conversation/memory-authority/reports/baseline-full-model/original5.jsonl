@@ -1,0 +1,6 @@
+{"kind":"refusal","text":"I'm not confident which supported request you mean. Could you rephrase it?","proposal":{"label":"change_user_name","accepted":false,"score":0.9215786,"margin":0.033325315,"dev_confidence":0.4051282,"confidence_support":195,"known_features":29}}
+{"kind":"missing","text":"I don't know your name yet."}
+{"kind":"intent","text":"I understand this as: change user name. I can identify this request, but no service is connected to carry it out.","proposal":{"label":"change_user_name","accepted":true,"score":1.7266953,"margin":0.52997744,"dev_confidence":0.9037037,"confidence_support":135,"known_features":37}}
+{"kind":"missing","text":"I don't know your name yet."}
+{"kind":"remembered","text":"I'll call you Dr. Kim.","slot":"Name"}
+{"kind":"recalled","text":"Your name is Dr. Kim.","source_turn":5}

@@ -1,0 +1,263 @@
+{
+  "mode": "plain",
+  "sample": true,
+  "contracts": {
+    "right": 13,
+    "total": 23
+  },
+  "original": {
+    "right": 0,
+    "total": 0
+  },
+  "checks": [
+    {
+      "name": "contract0-0:0:My name is 李明",
+      "expected": {
+        "kind": "remembered",
+        "contains": "李明"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you 李明.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:1:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "李明"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is 李明.",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:2:Actually, my name is İpek",
+      "expected": {
+        "kind": "remembered",
+        "contains": "İpek"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you İpek.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:3:Call me Dr. Neri",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Dr. Neri"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Dr. Neri.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:name.value",
+      "expected": "Dr. Neri",
+      "actual": "Dr. Neri",
+      "right": true
+    },
+    {
+      "name": "contract0-0:name.stated_on_turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "contract0-0:last_correction.previous.value",
+      "expected": "İpek",
+      "actual": "İpek",
+      "right": true
+    },
+    {
+      "name": "contract1-0:0:My name is Leila",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Leila.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract1-0:1:please change the name you refer to me by",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract1-0:2:Actually, it's Mara",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Mara.",
+        "slot": "Name"
+      },
+      "right": false
+    },
+    {
+      "name": "contract1-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Leila"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mara.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract1-0:name.value",
+      "expected": "Leila",
+      "actual": "Mara",
+      "right": false
+    },
+    {
+      "name": "contract1-0:name.stated_on_turn",
+      "expected": 1,
+      "actual": 3,
+      "right": false
+    },
+    {
+      "name": "contract2-0:0:My name is Sora",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Sora.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract2-0:1:Call me next week",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract2-0:2:No, it's dawn",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you dawn.",
+        "slot": "Name"
+      },
+      "right": false
+    },
+    {
+      "name": "contract2-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Sora"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is dawn.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract2-0:name.value",
+      "expected": "Sora",
+      "actual": "dawn",
+      "right": false
+    },
+    {
+      "name": "contract3-0:0:I prefer quiet rooms",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer quiet rooms.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "contract3-0:1:what will the temperature be tomorrow",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract3-0:2:Actually, it's sunny",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer sunny.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "right": false
+    },
+    {
+      "name": "contract3-0:3:What do I prefer?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "quiet rooms"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your preference is sunny.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract3-0:preferences.general.value",
+      "expected": "quiet rooms",
+      "actual": "sunny",
+      "right": false
+    }
+  ]
+}

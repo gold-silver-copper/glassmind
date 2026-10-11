@@ -66,6 +66,10 @@ bash crates/everyday/tools/reproduce.sh
 For example, `glassmind talk` remembers “my name is Mira”, answers “what is
 my name?”, and applies “actually, my name is Jo”. Story input uses one
 assertion or question per line; `/reset` starts a new story.
+An unrelated turn clears the target of a bare correction such as “actually, it's coffee”.
+Name the field explicitly to correct it, or ask about that field first. A learned
+name-change request without a usable name leaves memory unchanged.
+[Memory behavior and verification](tools/conversation/memory-authority/PARENT.md).
 [Dialogue tracking](crates/dialogue/EXPERIMENT.md) has a separate trained-model
 command. [Local Wikidata bundles](tools/facts/chat/HANDOFF.md) can also answer
 questions in `talk`: replies include source links, and JSON includes entity IDs
@@ -102,7 +106,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Same MathQA scope, exact-label comparison v3 (separate rebaseline) | 22/4,475 label matches; 4,450 refused; 3 wrong; 0 unscorable answers | pending |
 | Passage QA, SQuAD 1.1 (unverified proposals) | 23.95% raw normalized EM; selected: 815 right, 8,964 refused, 791 wrong / 10,570 | pending |
 | Passage QA, SQuAD2 public-dev baseline (same v1 reader) | 433 correct answers; 5,140 correct expected refusals; 5,064 unsupported; 1,236 wrong / 11,873 | pending |
-| Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
+| Chat memory, calculations and stories | 41/41 memory with or without the intent model; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
 
@@ -184,6 +188,12 @@ record successful application instead of leaving the proposal pending. All 20
 authored CLI contracts and three additional parent probes pass; all 765 coding
 dev outcomes remain unchanged at 174 passes, 591 refusals and zero failures.
 [Verification, reproduction and limits](tools/coding-askverify/PARENT.md).
+
+Native diagnostics now run in fresh scratch copies even without custom cache
+settings. Checking a project leaves its lockfile and build artifacts unchanged;
+a verified repair changes only its intended source. All 16 authored isolation
+cases pass, and all 765 coding dev outcomes remain unchanged.
+[Isolation scope and independent checks](tools/coding-check-isolation/PARENT.md).
 
 `glassmind read --model tools/reading/qa/artifacts/model.json --context passage.txt
 "Who visited Zürich?"` proposes a source span and shows its passage. Output is

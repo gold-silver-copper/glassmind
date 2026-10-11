@@ -1,0 +1,11 @@
+Running as unit: run-p3594302-i95875599.scope; invocation ID: 3aec094ad7fd49dc8e000b7e36149c25
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/memoryauthority/crates/cli)
+    Finished `release` profile [optimized + debuginfo] target(s) in 9.43s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/memoryauthority-run/target/release/deps/glassmind-b4a29ca4482421ce)
+
+running 2 tests
+test everyday::tests::unresolved_correction_invalidates_story_across_restart ... ok
+test everyday::tests::story_focus_prevents_implicit_personal_memory_edits ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+

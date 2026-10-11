@@ -1,0 +1,31 @@
+{
+  "turn": 4,
+  "name": null,
+  "preferences": {
+    "i̇çecek": {
+      "value": "Oolong",
+      "stated_on_turn": 3
+    }
+  },
+  "last_slot": {
+    "Preference": "i̇çecek"
+  },
+  "last_user_utterance": "Thanks",
+  "last_correction": {
+    "slot": {
+      "Preference": "i̇çecek"
+    },
+    "previous": {
+      "value": "Café con leche",
+      "stated_on_turn": 1
+    },
+    "replacement": {
+      "value": "Oolong",
+      "stated_on_turn": 3
+    }
+  },
+  "stories": {
+    "assertions": [],
+    "invalidated": false
+  }
+}

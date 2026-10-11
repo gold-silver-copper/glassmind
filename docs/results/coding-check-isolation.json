@@ -1,0 +1,51 @@
+{
+  "scope": "Full fixed rustbench dev; no held-out evaluation",
+  "commit": "77bc2467266072577378c4dd9632c7922dc04837",
+  "binary_sha256": "452ec2ea0c39a7a35c83f227839fcec9e0172d42fbc4ebcf9185dfa82181d44d",
+  "binary_bytes": 74284256,
+  "source_sha256": "96d23e689048b56d2b5a72dc901308484f8a2289c8a614249980e055890a5815",
+  "total": 765,
+  "outcomes": {
+    "refused": 591,
+    "pass": 174
+  },
+  "baseline_result_sha256": "8218bc544bd292f897d4a9ff7365b50b8314e13b12b6cee8d696a8718a2e1da1",
+  "candidate_result_sha256": "c478ff2400ac6d947dfba6eb89aec0e7c8deb14268f898edd9095ca396817594",
+  "all_previous_passes_retained": 174,
+  "outcome_changes": [],
+  "baseline_timing": {
+    "sum_agent_seconds": 401.876337903,
+    "median_agent_seconds": 0.300845016,
+    "max_agent_seconds": 6.059044466
+  },
+  "candidate_timing": {
+    "sum_agent_seconds": 392.948851243,
+    "median_agent_seconds": 0.300739776,
+    "max_agent_seconds": 5.957775939
+  },
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 77,
+      "pass": 4
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 133,
+      "refused": 350
+    },
+    "fix-test": {
+      "refused": 66,
+      "pass": 15
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "runner_note": "Shutdown grace10s replaces5s;80s cargo/100s agent/120s harness/3600s outer executionlimits unchanged."
+}

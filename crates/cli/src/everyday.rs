@@ -68,7 +68,11 @@ fn respond_with_facts(
     // Persist one turn per utterance. Explicit memory always wins; learned
     // intent proposals run only after typed reasoning, from the prior state.
     let previous = model.map(|_| memory.clone());
-    let reply = memory.respond(line, None);
+    let calculation_focus = memory.last_slot.clone();
+    let (reply, memory_authority) = memory.respond_with_authority(line, None);
+    if memory_authority && matches!(reply, Reply::Refusal { .. }) {
+        return TalkReply::Conversation(reply);
+    }
     if matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
         && let Answer::Answer {
             value,
@@ -76,6 +80,9 @@ fn respond_with_facts(
             method,
         } = glassmind_quantities::solve(line)
     {
+        // Preserve the established typed-calculation continuation contract.
+        // Generic intent/refusal turns still invalidate personal-memory focus.
+        memory.last_slot = calculation_focus;
         let text = match &unit {
             Some(unit) => format!("{value} {unit}"),
             None => value.clone(),
@@ -101,6 +108,34 @@ fn respond_with_facts(
         session.memory.last_slot = None;
         return TalkReply::Fact(Box::new(fact));
     }
+    let proposed = if matches!(reply, Reply::Refusal { .. }) {
+        previous.map(|mut previous| {
+            let proposal = previous.respond(line, model);
+            (previous, proposal)
+        })
+    } else {
+        None
+    };
+    // Without a story referent, a learned memory-read request can resolve
+    // against typed personal state. Do not feed it to a story write parser.
+    if !session.stories.has_context()
+        && proposed.as_ref().is_some_and(|(_, reply)| {
+            matches!(reply, Reply::Recalled { .. } | Reply::Missing { .. })
+        })
+        && {
+            // Check typed story operations first without letting an unsupported
+            // personal question invalidate otherwise absent story context.
+            let mut probe = Stories::default();
+            probe.restore().is_ok()
+                && probe
+                    .respond(line)
+                    .is_none_or(|reply| reply.kind == "refusal")
+        }
+        && let Some((previous, proposal)) = proposed
+    {
+        session.memory = previous;
+        return TalkReply::Conversation(proposal);
+    }
     if (matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
         || (matches!(reply, Reply::Missing { .. }) && session.stories.has_context()))
         && let Some(story) = session.stories.respond(line)
@@ -116,12 +151,9 @@ fn respond_with_facts(
         session.memory.last_slot = None;
         return TalkReply::Fact(Box::new(fact));
     }
-    if matches!(reply, Reply::Refusal { .. })
-        && let Some(mut previous) = previous
-    {
-        let reply = previous.respond(line, model);
+    if let Some((previous, proposal)) = proposed {
         session.memory = previous;
-        return TalkReply::Conversation(reply);
+        return TalkReply::Conversation(proposal);
     }
     TalkReply::Conversation(reply)
 }

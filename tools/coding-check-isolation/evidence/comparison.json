@@ -1,0 +1,138 @@
+{
+  "baseline_passed": 8,
+  "candidate_passed": 16,
+  "total": 16,
+  "fixture_sha256": "21d16a0b8a0699e95277401344d1089862f0d46dba42dac1e6d8a3b28d295bb7",
+  "baseline_binary_sha256": "623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac",
+  "candidate_binary_sha256": "47c7d41fc13dd63cf0bd8d507ac271d8bb5cb0854ca5ad0fad49a91db3cd5a29",
+  "cases": [
+    {
+      "case": "pass-lock0-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 88,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "fail-lock0-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 88,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "compiler-lock0-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 44,
+      "candidate_changed_entries": 1
+    },
+    {
+      "case": "todo-lock0-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 37,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "pass-lock1-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 88,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "fail-lock1-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 88,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "compiler-lock1-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 44,
+      "candidate_changed_entries": 1
+    },
+    {
+      "case": "todo-lock1-owned0",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 37,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "pass-lock0-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 0,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "fail-lock0-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 0,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "compiler-lock0-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 1,
+      "candidate_changed_entries": 1
+    },
+    {
+      "case": "todo-lock0-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 0,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "pass-lock1-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 0,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "fail-lock1-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 0,
+      "candidate_changed_entries": 0
+    },
+    {
+      "case": "compiler-lock1-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 1,
+      "candidate_changed_entries": 1
+    },
+    {
+      "case": "todo-lock1-owned1",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "diagnostics_equal_except_thread_id": true,
+      "baseline_changed_entries": 0,
+      "candidate_changed_entries": 0
+    }
+  ]
+}

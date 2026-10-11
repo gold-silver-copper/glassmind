@@ -1,0 +1,480 @@
+{
+  "binary_sha256": "47c7d41fc13dd63cf0bd8d507ac271d8bb5cb0854ca5ad0fad49a91db3cd5a29",
+  "fixture_sha256": "21d16a0b8a0699e95277401344d1089862f0d46dba42dac1e6d8a3b28d295bb7",
+  "passed": 16,
+  "total": 16,
+  "cases": [
+    {
+      "case": "pass-lock0-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [] }\nspoken by: en.reply.checked_clean (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand)\n\nNo problems with the tests.\n",
+      "stderr": ""
+    },
+    {
+      "case": "fail-lock0-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3592850) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3592850) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\nspoken by: en.reply.checked_problem (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.item_list.one (seed)\n\nI found one problem with the tests: `broken`.\n  broken  thread 'broken' (3592850) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\n",
+      "stderr": ""
+    },
+    {
+      "case": "compiler-lock0-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [
+        "src/lib.rs"
+      ],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c54043b2ac29db5ef37d1289b2dfea4cacb04849525e38ae0b5622306ad39666",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c5bcb02a7d697c028485df96086a86d88a9ef246604e901ce5df92c08a9ef762",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  fix the build\nwords:  [fix] [the] [build]\nreading 1 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\nspoken by: en.reply.remedy_one (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI'd make one change to fix the build.\n  src/lib.rs:1:24  `` -> `mut `\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+      "stderr": ""
+    },
+    {
+      "case": "todo-lock0-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  repair x\nwords:  [repair] [x]\nreading 1:\n  parse:   en.utterance.question[en.question.where[en.whence.where[\"where\"] en.target.mention[en.mention.thing[en.noun_phrase.unknown[en.unknown.one[\"repair\"] \"x\"]]]]]\n  meaning: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  rules:   en.utterance.question (seed), en.question.where (round 2), en.whence.where (round 9), en.target.mention (round 3), en.mention.thing (round 3), en.noun_phrase.unknown (round 7), en.unknown.one (round 6), en.normalizer.edits (by hand)\n  name `repair x` -> nothing\n  resolved: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  dropped:  NoSuchName { name: Name(\"repair x\") }\n  world rules: rust.lookup.exact (seed), rust.lookup.any_case (seed), rust.locate.unique (round 2)\nreading 2 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.intents.template (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [], fixed: [], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29), rust.remedy.undo_slip (round 29)\nchoice: 1 surviving reading(s), all with the same answer\npreferences: mind.guess_when_stuck (by hand), mind.accept_verified (by hand)\nreply:  Assuming { reading: Command(Repair(Build)), reply: Remedy { check: Build, changes: [], fixed: [], left: [] } }\nspoken by: en.reply.assuming (seed), en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.reply.no_remedy (by hand)\n\nI take that to mean: fix the build I don't know how to fix the build.\n",
+      "stderr": ""
+    },
+    {
+      "case": "pass-lock1-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [] }\nspoken by: en.reply.checked_clean (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand)\n\nNo problems with the tests.\n",
+      "stderr": ""
+    },
+    {
+      "case": "fail-lock1-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3593283) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3593283) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\nspoken by: en.reply.checked_problem (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.item_list.one (seed)\n\nI found one problem with the tests: `broken`.\n  broken  thread 'broken' (3593283) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\n",
+      "stderr": ""
+    },
+    {
+      "case": "compiler-lock1-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [
+        "src/lib.rs"
+      ],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c54043b2ac29db5ef37d1289b2dfea4cacb04849525e38ae0b5622306ad39666",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c5bcb02a7d697c028485df96086a86d88a9ef246604e901ce5df92c08a9ef762",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  fix the build\nwords:  [fix] [the] [build]\nreading 1 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\nspoken by: en.reply.remedy_one (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI'd make one change to fix the build.\n  src/lib.rs:1:24  `` -> `mut `\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+      "stderr": ""
+    },
+    {
+      "case": "todo-lock1-owned0",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  repair x\nwords:  [repair] [x]\nreading 1:\n  parse:   en.utterance.question[en.question.where[en.whence.where[\"where\"] en.target.mention[en.mention.thing[en.noun_phrase.unknown[en.unknown.one[\"repair\"] \"x\"]]]]]\n  meaning: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  rules:   en.utterance.question (seed), en.question.where (round 2), en.whence.where (round 9), en.target.mention (round 3), en.mention.thing (round 3), en.noun_phrase.unknown (round 7), en.unknown.one (round 6), en.normalizer.edits (by hand)\n  name `repair x` -> nothing\n  resolved: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  dropped:  NoSuchName { name: Name(\"repair x\") }\n  world rules: rust.lookup.exact (seed), rust.lookup.any_case (seed), rust.locate.unique (round 2)\nreading 2 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.intents.template (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [], fixed: [], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29), rust.remedy.undo_slip (round 29)\nchoice: 1 surviving reading(s), all with the same answer\npreferences: mind.guess_when_stuck (by hand), mind.accept_verified (by hand)\nreply:  Assuming { reading: Command(Repair(Build)), reply: Remedy { check: Build, changes: [], fixed: [], left: [] } }\nspoken by: en.reply.assuming (seed), en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.reply.no_remedy (by hand)\n\nI take that to mean: fix the build I don't know how to fix the build.\n",
+      "stderr": ""
+    },
+    {
+      "case": "pass-lock0-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [] }\nspoken by: en.reply.checked_clean (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand)\n\nNo problems with the tests.\n",
+      "stderr": ""
+    },
+    {
+      "case": "fail-lock0-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3593725) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3593725) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\nspoken by: en.reply.checked_problem (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.item_list.one (seed)\n\nI found one problem with the tests: `broken`.\n  broken  thread 'broken' (3593725) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\n",
+      "stderr": ""
+    },
+    {
+      "case": "compiler-lock0-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [
+        "src/lib.rs"
+      ],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c54043b2ac29db5ef37d1289b2dfea4cacb04849525e38ae0b5622306ad39666",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c5bcb02a7d697c028485df96086a86d88a9ef246604e901ce5df92c08a9ef762",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  fix the build\nwords:  [fix] [the] [build]\nreading 1 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\nspoken by: en.reply.remedy_one (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI'd make one change to fix the build.\n  src/lib.rs:1:24  `` -> `mut `\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+      "stderr": ""
+    },
+    {
+      "case": "todo-lock0-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  repair x\nwords:  [repair] [x]\nreading 1:\n  parse:   en.utterance.question[en.question.where[en.whence.where[\"where\"] en.target.mention[en.mention.thing[en.noun_phrase.unknown[en.unknown.one[\"repair\"] \"x\"]]]]]\n  meaning: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  rules:   en.utterance.question (seed), en.question.where (round 2), en.whence.where (round 9), en.target.mention (round 3), en.mention.thing (round 3), en.noun_phrase.unknown (round 7), en.unknown.one (round 6), en.normalizer.edits (by hand)\n  name `repair x` -> nothing\n  resolved: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  dropped:  NoSuchName { name: Name(\"repair x\") }\n  world rules: rust.lookup.exact (seed), rust.lookup.any_case (seed), rust.locate.unique (round 2)\nreading 2 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.intents.template (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [], fixed: [], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29), rust.remedy.undo_slip (round 29)\nchoice: 1 surviving reading(s), all with the same answer\npreferences: mind.guess_when_stuck (by hand), mind.accept_verified (by hand)\nreply:  Assuming { reading: Command(Repair(Build)), reply: Remedy { check: Build, changes: [], fixed: [], left: [] } }\nspoken by: en.reply.assuming (seed), en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.reply.no_remedy (by hand)\n\nI take that to mean: fix the build I don't know how to fix the build.\n",
+      "stderr": ""
+    },
+    {
+      "case": "pass-lock1-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3411e8beaf50a63927741f2c091a0330e195f4fdbee65d4645f69f7023eb7fa7",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [] }\nspoken by: en.reply.checked_clean (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand)\n\nNo problems with the tests.\n",
+      "stderr": ""
+    },
+    {
+      "case": "fail-lock1-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "3d27031960c58aebe04af25d4526db1fc8830d0252a2fabdacde610db532e45f",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  do the tests pass\nwords:  [do] [the] [tests] [pass]\nreading 1 (chosen):\n  parse:   en.utterance.question[en.question.whether[en.whether.do[\"do\"] en.outcome.passing[en.check_phrase.the[\"the\" en.rust.check.tests[\"tests\"]] en.passing.pass[\"pass\"]]]]\n  meaning: Ask(Passes(Test))\n  rules:   en.utterance.question (seed), en.question.whether (round 29), en.whether.do (round 29), en.outcome.passing (round 29), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.passing.pass (round 29)\n  resolved: Ask(Passes(Test))\n  world:    Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3594002) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\n  world rules: rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Checked { check: Test, problems: [RustItem { source: \"package\", file: \"\", line: 0, name: \"broken\", kind: Test, owner: None, detail: Some(\"thread 'broken' (3594002) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\") }] }\nspoken by: en.reply.checked_problem (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.item_list.one (seed)\n\nI found one problem with the tests: `broken`.\n  broken  thread 'broken' (3594002) panicked at src/lib.rs:2:23: assertion `left == right` failed left: 7 right: 8\n",
+      "stderr": ""
+    },
+    {
+      "case": "compiler-lock1-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [
+        "src/lib.rs"
+      ],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c54043b2ac29db5ef37d1289b2dfea4cacb04849525e38ae0b5622306ad39666",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "c5bcb02a7d697c028485df96086a86d88a9ef246604e901ce5df92c08a9ef762",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  fix the build\nwords:  [fix] [the] [build]\nreading 1 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 1, column: 23, old: \"\", new: \"mut \" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0384\", kind: Problem, owner: None, detail: Some(\"cannot assign twice to immutable variable `n`\") }], left: [] }\nspoken by: en.reply.remedy_one (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI'd make one change to fix the build.\n  src/lib.rs:1:24  `` -> `mut `\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+      "stderr": ""
+    },
+    {
+      "case": "todo-lock1-owned1",
+      "passed": true,
+      "exit": 0,
+      "delta": [],
+      "source_ok": true,
+      "diagnostic_ok": true,
+      "before": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "after": {
+        ".kept": "dir",
+        ".kept/sentinel": "ef7fa638231ae5d6c33b1f0c4559c55fbf69950e1d1348d96b350e29d92de369",
+        "Cargo.lock": "2371f309ea3f4e8561f4f4fd775cd773354cbe9f21bb602327e24e2b09eabc53",
+        "Cargo.toml": "bdeb5652c69acc45a7df7cb1c5a8d2b5c5b6f67ccc8d2998f14cdaba4336f56b",
+        "src": "dir",
+        "src/lib.rs": "112ac8f11ef8f2db6d74b4bf1b00ac4dda698918b153c3371969cc6b9a19b767",
+        "target": "dir",
+        "target/sentinel": "82cb94308bed0b9603a514f1f7aa9d357964d0b6cbe7fd71ca66038bd5c8be55"
+      },
+      "stdout": "input:  repair x\nwords:  [repair] [x]\nreading 1:\n  parse:   en.utterance.question[en.question.where[en.whence.where[\"where\"] en.target.mention[en.mention.thing[en.noun_phrase.unknown[en.unknown.one[\"repair\"] \"x\"]]]]]\n  meaning: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  rules:   en.utterance.question (seed), en.question.where (round 2), en.whence.where (round 9), en.target.mention (round 3), en.mention.thing (round 3), en.noun_phrase.unknown (round 7), en.unknown.one (round 6), en.normalizer.edits (by hand)\n  name `repair x` -> nothing\n  resolved: Ask(Locate { thing: Named(Name(\"repair x\")), kind: None })\n  dropped:  NoSuchName { name: Name(\"repair x\") }\n  world rules: rust.lookup.exact (seed), rust.lookup.any_case (seed), rust.locate.unique (round 2)\nreading 2 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.the[\"the\" en.rust.check.build[\"build\"]]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.intents.template (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [], fixed: [], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29), rust.remedy.undo_slip (round 29)\nchoice: 1 surviving reading(s), all with the same answer\npreferences: mind.guess_when_stuck (by hand), mind.accept_verified (by hand)\nreply:  Assuming { reading: Command(Repair(Build)), reply: Remedy { check: Build, changes: [], fixed: [], left: [] } }\nspoken by: en.reply.assuming (seed), en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.reply.no_remedy (by hand)\n\nI take that to mean: fix the build I don't know how to fix the build.\n",
+      "stderr": ""
+    }
+  ]
+}

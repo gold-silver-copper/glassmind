@@ -581,6 +581,32 @@
         "reasoning_output_tokens": 10288
       },
       "source": "Rejected strict33/34CLI gate. Parent34contracts/6environment/34parser reproduced;70archivefiles/1856rawartifacts verified,5extrareservation probes. No full765 or accepted gain; restoredworktree/authremoved."
+    },
+    {
+      "track": "checkisolation-continuous",
+      "started_unix": 1791702637.027306,
+      "finished_unix": 1791703040.746633,
+      "usage": {
+        "input_tokens": 1999913,
+        "cached_input_tokens": 1913856,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22958,
+        "reasoning_output_tokens": 7445
+      },
+      "source": "Accepted native isolation: parent16authoredexactreplay/29tests/workspace andfull765 all174passes retained,591refused0fail,alloutcomes unchanged. Original21files332251bytes/21provenanceentries archived;worktree/authremoved."
+    },
+    {
+      "track": "memoryauthority-continuous",
+      "started_unix": 1791702586.3076808,
+      "finished_unix": 1791703166.0002303,
+      "usage": {
+        "input_tokens": 2962990,
+        "cached_input_tokens": 2871936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 29241,
+        "reasoning_output_tokens": 10634
+      },
+      "source": "Accepted typed memory authority: integrated93+41bothmodes,4+2tests/workspace,full3987story47625turns and2821facts byteidentical;calc27/story47 pass.12/14additionalprobes,twoinheritedstoryrefusal-kindmismatches retained.375files602172bytes/28identities370artifacts archived;worktree/authremoved."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

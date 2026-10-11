@@ -1,0 +1,15 @@
+Running as unit: run-p3586537-i95817467.scope; invocation ID: c7e716a52b46482882ff6b782ae89a68
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/checkisolation/crates/world-rust)
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/checkisolation/crates/english-rust)
+   Compiling glassmind-reading v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/checkisolation/crates/reading)
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/checkisolation/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.57s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/checkisolation-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 3 tests
+test edit::tests::remedies_are_not_newly_auto_applied ... ok
+test edit::tests::stale_multifile_proposal_preserves_every_current_byte ... ok
+test edit::tests::nested_assumptions_keep_verified_result_and_clear_pending ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.15s
+

@@ -2,12 +2,11 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. This turn merged
-PR23 with fully validated explicit factual lists. The implementation-language
-candidate failed its strict contract gate; parent independently reproduced the
-failure, verified its archive and removed the restored worker tree/login link.
-Two separate prospective workers now investigate typed memory authority and
-scratch isolation for native checks. Neither is accepted yet.
+Goal active: follow `prompts/grow-continuously.md` until stopped. This turn made
+concrete progress: native diagnostic isolation and typed memory authority are
+integrated and independently validated, including full affected dev regressions.
+Publication is next. A separate social-routing worker investigates the retained
+goodbye/story interception. No acceptance gate or old rejection was weakened.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -46,39 +45,100 @@ productionmodel40/41 identicallybaseline (Callmetomorrowmisclassified); calc27/
 stories47bothbundlemodes andfull2821ordinaryfactoutputs unchanged. No scoregain.
 Do not repeat PR23 checks or merge. Rootbinary623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac.
 
-IMPLLANGUAGE COMPLETE/REJECTED strictCLI33/34. Original70files961738bytes at
-WORK/impllanguage-run/submitted;69manifest/5freeze/1856rawidentities verified.
-Parent34CLIexactoutcomes+sourcehashes,6environmentexacthashes,34parsercontracts
-and60TRAINparserresults reproducible. Worker3/60testverified =3stylesofonefunction;
-no parentfull765. Original20/20worker suite preserved, not repeatedagainbyparent.
-Failure repairx addsCargo.lock/target viaexistinggenericroute; sourcebytesunchanged.
-Additionalparentparser probes showoverbroad wordreservation interceptsrenamesof
-functions namedimplement/implemented. RuntimeNOTintegrated. tools/coding-implement-
-language/PARENT.md,parent/review.json; rawWORK/coordinator/impllanguage-review.
-Parentjobs54843(exit1expectedstrictgate),19921(exit0) COMPLETE. Archivedpatchcfea6bd0
-andbinaryef5ba7d56a22814f620c322b0205e6a13234c7903aa7325c1eabc1c8096b1f5d retained.
-Restoredworktree removed afterfinalhashverification, scopeinactive/authunlinked.
-Do notrepeatcompletedreplays orrelabelfailedexperimentaccepted.
+PR24 MERGED b257e10c94487d9341f58e1289453ee493529be8 at2026-10-11T07:14:04Z,
+exacthead29deec883e6dcb99879404a966568a884523b5f2, CI38120596496SUCCESS.
+Rejectedimplementationlanguage evidence/parentreview published, runtimeunchanged.
+Do not repeat PR24 checks/merge. Push43446/create47886/merge53793 COMPLETE.
 
-MEMORYAUTHORITY ACTIVE PID3549185, scopeglassmind-continuous-memoryauthority.scope,
-branchcontinuous/memoryauthority/worktreeWORK/memoryauthority at9b875b8; runandbrief
-WORK/memoryauthority-run andWORK/memoryauthority-task.txt. Ownseverydaymemory+
-minimalCLIeveryday; model/classifier frozen. Investigates typedmemoryauthority and
-focus withlearnedintentfallback, no phraseblacklist orglobalintentdisable. Gate
-unchangedmemory41with/withoutactualintent +frozenindependentcontracts/calc27/stories47.
-PublicCLINCTRAIN/VAL extracteddataonly; no newdata/training. Baselinebinaryfrozen.
+### Current validated batch and active work
 
-CHECKISOLATION ACTIVE PID3558146, scopeglassmind-continuous-checkisolation.scope,
-branchcontinuous/checkisolation/worktreeWORK/checkisolation at9b875b8; runandbrief
-WORK/checkisolation-run andWORK/checkisolation-task.txt. Ownsworldchecks only/newtools.
-Prospectivehypothesis nonmutatingdiagnostics shouldusefreshscratch evenwhen target
-unset. No implementationintegration/repaircommandrefusal/liveartifactcleanup.
-Gate authoredcasesallpass, actualsource/diagnosticcorrectness, parentfull765 retains
-174passes/0fail; all765outcomes expectedunchanged. Preserve originalimplrejections.
+Runtime commit `1331ac715eadcf7b9169423e947cedf861eb42a3` combines native check
+isolation (`77bc246`) and memory authority. Integrated binary SHA256:
+`8cde5dc486025e05932db946ba4accb7b5401fcd27c530bc8539eb4dca5bb78b`.
+Both changes are locally accepted. PR25 preparation and publication are next.
+Known completed-worker tokens: 93,976,162, with cached input included once;
+parent usage and the unfinished social-routing worker are excluded.
 
-Bothworkers forcedAstrafast/ChatGPT loginverified;8GiB0swap scopes verifiedactive.
-No othermodelworker/parentjob live. Oldstoppeddirtyloop untouched. Archive originals
-beforeanyintegration, independentlyreviewthenfullaffecteddev/exact-headCIpublish.
+CHECKISOLATION is COMPLETE. Its original 21 files (332,251 bytes) are archived at
+WORK/checkisolation-run/submitted. All 21 provenance entries were verified.
+Independent replay matches all 16 outcomes, source hashes and changed paths;
+diagnostic text differs only in OS-assigned panic thread IDs. Baseline: 8/16.
+All 29 world-Rust tests, workspace fmt/clippy/release and strict four-fixture
+smoke pass. Reports: tools/coding-check-isolation/PARENT.md and parent/.
+Raw artifacts: WORK/coordinator/checkisolation-review and checkisolation-full.
+The worker's ordinary-HOME checks used the launcher's temporary cache mount;
+path spelling alone did not establish persistent storage. Parent replay used
+actual Btrfs, and integrated tests/full765 used explicit owned disk scratch.
+Keep this limitation. The scope is inactive; its login link and worktree were
+removed only after verifying the archive and repository copies again.
+
+Full765 is COMPLETE at coding commit `77bc2467266072577378c4dd9632c7922dc04837`:
+174 passes, 591 refusals, zero failures; every outcome is unchanged.
+Evaluated binary: `452ec2ea0c39a7a35c83f227839fcec9e0172d42fbc4ebcf9185dfa82181d44d`.
+Result SHA256: `c478ff2400ac6d947dfba6eb89aec0e7c8deb14268f898edd9095ca396817594`.
+Baseline: `8218bc544bd292f897d4a9ff7365b50b8314e13b12b6cee8d696a8718a2e1da1`.
+See docs/results/coding-check-isolation.json. Median agent time was .3007s
+versus .3008s; no performance gain is claimed. Subsequent memory-only changes
+leave coding paths unchanged; the combined workspace also passes.
+The dev runner's shutdown grace is now 10s instead of 5s. Its 80/100/120/3600s
+execution limits and scoring are unchanged. Earlier runs used the old grace.
+Do not repeat full765 without a new coding change or unresolved concern.
+
+MEMORYAUTHORITY is COMPLETE. Its original 375 files (602,172 bytes) are archived
+at WORK/memoryauthority-run/submitted. All 28 identities, 370 artifacts and both
+fixture freezes were verified. Parent replay of both the worker and integrated
+binaries gives 93/93 new contracts plus 41/41 original checks in both model modes.
+New-contract baselines were 64/93 with the model and 68/93 without it. Original
+memory with the production model improves from 40/41 to 41/41; model-free memory
+stays 41/41. The classifier, weights and thresholds are unchanged.
+Four everyday tests, two CLI tests and workspace fmt/clippy/release/smoke pass.
+Calc27 and story47 remain unchanged. Factsets36 plus session16 checks pass;
+four 19-turn streams preserve outputs and saved state in both model/bundle modes.
+Parent full story replay with the production model preserves all 47,625 turns:
+3,966 correct, 18 refused and three wrong of 3,987 dev questions.
+Output SHA256: `8df8189e8022cf436aa1aaf6e0aaeaabced18cd3b01b41faedb4f1d19010b480`.
+First200 and full2821 ordinary facts/default talk outputs are byte-identical.
+Raw CLINC3100 was not rerun; only unchanged model/classifier identities are claimed.
+Reports/scripts: tools/conversation/memory-authority/PARENT.md and parent/.
+Raw artifacts: WORK/coordinator/memoryauthority-review. Original worker binary:
+`62b812cad756d4044eb3272871055002cf488cf0179663f64df6967831c0d198`.
+The scope is inactive; login link and worktree were removed after verification.
+
+Fresh parent session probes improve from 6/14 to 12/14. Two remaining probes
+expect Missing after a story turn and bare correction, while both binaries
+return the inherited Refusal. Personal values, source turns and correction state
+are preserved. Keep these mismatches; do not relabel them as passing checks.
+Supplemental goodbye routing also remains plain5/6 and model4/7 in talk, versus
+6/6 and7/7 in standalone chat. Memory's original 93+41 acceptance gates pass.
+The narrow Call me capitalization heuristic remains ambiguous; calculation focus
+is an explicit compatibility exception. The first parent archive copy omitted
+executable modes; these were restored from the untouched worker before cleanup.
+File bytes were unchanged, and archive-batch.py now uses copy2.
+
+All parent jobs in this batch are COMPLETE: 31726, 30882, 3582, 11841, 42008,
+73861, 8830, 87077, 35781, 13384 and8517. Do not poll or restart them.
+The earlier implementation-language experiment remains REJECTED at33/34; its
+70-file archive and review were published in PR24. Its three TRAIN successes
+are three styles of one function, with no full765 candidate run. Overbroad action
+reservation also remains a problem. Check isolation does not accept it retroactively.
+
+SOCIALROUTING is the only active model worker: PID3692820, scope
+`glassmind-continuous-socialrouting.scope`, branch `continuous/socialrouting`,
+worktree WORK/socialrouting at1331ac7. Run directory: WORK/socialrouting-run;
+brief: WORK/socialrouting-task.txt. Astra fast/ChatGPT login and8GiB/zero-swap
+scope were verified. It owns CLI routing and a minimal non-mutating story probe;
+no solver changes or model training. A fully consumed social route must preserve
+story context while supported typed story operations retain priority. Unsupported
+potential assertions must still invalidate stale beliefs. Its frozen contrasts,
+original supplemental social checks, memory93+41 in both modes, calc27/story47,
+facts52 and full3987 story checks must pass. Parent later replays full ordinary
+facts2821. No held-out data or new downloads. Its frozen baseline binary62b812
+has identical conversation source but lacks native isolation, as documented.
+
+Next: commit and push the verified batch, create PR25, then merge its exact head
+once required CI passes. Review socialrouting only when terminal, archiving its
+original submission before any modifications. Keep the goal active. The old
+stopped dirty loop remains untouched; no other workers or parent jobs are live.
 
 ### Verified current batch
 
@@ -128,7 +188,7 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens88,961,060 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens93,976,162 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,

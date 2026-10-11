@@ -16,12 +16,12 @@ set -eu
 export CARGO_BUILD_JOBS=1 RUST_TEST_THREADS=4
 exec systemd-run --user --scope --quiet --collect \
   -pMemoryMax=8G -pMemorySwapMax=0 \
-  setsid --wait timeout --kill-after=5s 80 "$GLASSMIND_REAL_CARGO" "$@"
+  setsid --wait timeout --kill-after=10s 80 "$GLASSMIND_REAL_CARGO" "$@"
 CARGO
 cat > "$out/bin/agent" <<'AGENT'
 #!/bin/sh
 set -eu
-exec setsid --wait timeout --kill-after=5s 100 "$GLASSMIND" do "$RB_WORK" \
+exec setsid --wait timeout --kill-after=10s 100 "$GLASSMIND" do "$RB_WORK" \
   --reply-file "$RB_WORK/.rustbench-reply" "$(cat "$RB_PROMPT_FILE")"
 AGENT
 chmod +x "$out/bin/cargo" "$out/bin/agent"

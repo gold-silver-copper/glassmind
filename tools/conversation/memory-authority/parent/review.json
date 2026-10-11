@@ -1,0 +1,31 @@
+{
+  "archive_files": 375,
+  "archive_bytes": 602172,
+  "identity_entries": 28,
+  "artifact_entries": 370,
+  "frozen_contracts": 93,
+  "original_memory": 41,
+  "parent_fresh": {
+    "passed": 12,
+    "total": 14,
+    "remaining": [
+      "story-plain",
+      "story-model"
+    ],
+    "description": "Only expected missing versus inherited refusal differs; personal values/source turns/correction state preserved."
+  },
+  "full_story": {
+    "questions": 3987,
+    "turns": 47625,
+    "byte_identical": true
+  },
+  "full_facts": {
+    "questions": 2821,
+    "modes": [
+      "talk",
+      "default"
+    ],
+    "byte_identical": true
+  },
+  "root_integration_pending_verification": true
+}

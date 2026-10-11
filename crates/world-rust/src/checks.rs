@@ -55,8 +55,9 @@ const AHEAD: Duration = Duration::from_secs(24 * 60 * 60);
 /// find: before 2, a check could read a build of another copy; before 3,
 /// builds took in benches; before 4, a failed linter without readable
 /// diagnostics could be cached as a pass; before 5, a failed target could
-/// stop cargo before it reported errors in other independent targets.
-const RESULTS: &str = "v5";
+/// stop cargo before it reported errors in other independent targets; before
+/// 6, checks without an explicit target ran in the original source tree.
+const RESULTS: &str = "v6";
 
 /// How long one tool run may take.
 const TOOL_TIME: Duration = Duration::from_secs(600);
@@ -65,7 +66,7 @@ const TOOL_TIME: Duration = Duration::from_secs(600);
 #[derive(Debug, Clone, Default)]
 pub struct Places {
     /// Builds go here, one directory per source (shared by its scratch
-    /// copies), instead of each source's own `target`.
+    /// copies), instead of each check's disposable scratch `target`.
     pub target: Option<PathBuf>,
     /// Results are kept here by check, source and a fingerprint of its
     /// files, so the same code is only ever checked once.
@@ -485,22 +486,22 @@ fn run_in_until(
     {
         return Ok(found);
     }
-    // When every copy of a source builds in one directory, cargo may take
-    // a build newer than the files for a build of them: the tools run on a
-    // fresh copy, newer than any build, so another copy's build (one with
-    // the tests fixed, say) is never taken for this one's.
-    let found = match &places.target {
-        Some(target) => {
-            let copy = target
-                .join("copies")
-                .join(format!("{source}-{}", std::process::id()));
-            let found = copy_tree(root, &copy)
-                .and_then(|()| run_tools(places, check, source, &copy, deadline));
-            let _ = std::fs::remove_dir_all(&copy);
-            found?
-        }
-        None => run_tools(places, check, source, root, deadline)?,
+    // Diagnostics must not create lockfiles or build artifacts in the live
+    // source, even with ordinary unset build environment. Use a unique copy
+    // for every check, including concurrent checks of the same source name.
+    // copy_tree keeps the future mtimes that force shared targets to rebuild
+    // after testing another variant; never reuse that variant's test binary.
+    let copy = scratch("check");
+    let isolated = Places {
+        // Set this explicitly so inherited CARGO_TARGET_DIR cannot redirect
+        // an ordinary diagnostic back into the live project's build tree.
+        target: Some(places.target.clone().unwrap_or_else(|| copy.join("target"))),
+        cache: None,
     };
+    let found =
+        copy_tree(root, &copy).and_then(|()| run_tools(&isolated, check, source, &copy, deadline));
+    let _ = std::fs::remove_dir_all(&copy);
+    let found = found?;
     if let Some(path) = &cache {
         if let Some(dir) = path.parent() {
             let _ = std::fs::create_dir_all(dir);

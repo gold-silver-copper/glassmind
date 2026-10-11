@@ -88,10 +88,30 @@ fn after<'a>(text: &'a str, prefix: &str) -> Option<&'a str> {
 
 impl Conversation {
     pub fn respond(&mut self, utterance: &str, model: Option<&IntentModel>) -> Reply {
+        self.respond_with_authority(utterance, model).0
+    }
+
+    /// The flag identifies a typed personal-memory response, including an
+    /// incomplete write. Routers must not replace that refusal with a proposal.
+    pub fn respond_with_authority(
+        &mut self,
+        utterance: &str,
+        model: Option<&IntentModel>,
+    ) -> (Reply, bool) {
         self.turn = self.turn.saturating_add(1);
         let text = tidy(utterance);
         let lower = text.to_lowercase().replace('’', "'");
-        let reply = self.memory_reply(text, &lower).unwrap_or_else(|| {
+        // Old session JSON can carry a focus established by an unsuccessful
+        // recall. A correction still requires a value that actually exists.
+        self.last_slot = self.last_slot.take().filter(|slot| match slot {
+            Slot::Name => self.name.is_some(),
+            Slot::Preference(category) => self.preferences.contains_key(category),
+        });
+        let typed = self.memory_reply(text, &lower);
+        let authoritative = typed.is_some();
+        let reply = typed.unwrap_or_else(|| {
+            // A proposal or unrelated turn is not a personal-memory referent.
+            self.last_slot = None;
             if matches!(lower.as_str(), "hi" | "hello" | "hey") {
                 return Reply::Social { text: self.name.as_ref().map_or_else(|| "Hello!".into(), |n| format!("Hello, {}!", n.value)) };
             }
@@ -107,6 +127,12 @@ impl Conversation {
                 "are_you_a_bot" => "I'm Glassmind, a software assistant.".into(),
                 "how_are_you" => "I'm ready to help. What's on your mind?".into(),
                 "what_can_i_ask_you" => "I can remember your name and preferences, recall your last message, and recognize everyday requests. External services aren't connected yet.".into(),
+                // Typed parsing already had the opportunity to supply a name.
+                // A learned operation label cannot authorize a write without it.
+                "change_user_name" => return Reply::Refusal {
+                    text: "I haven't changed your name. Tell me the name explicitly, for example: My name is …".into(),
+                    proposal: Some(proposal),
+                },
                 "user_name" => return self.recall(Slot::Name),
                 "repeat" => return self.recall_utterance(),
                 _ => format!("I understand this as: {}. I can identify this request, but no service is connected to carry it out.", proposal.label.replace('_', " ")),
@@ -114,7 +140,7 @@ impl Conversation {
             Reply::Intent { text: response, proposal }
         });
         self.last_user_utterance = Some(utterance.to_owned());
-        reply
+        (reply, authoritative)
     }
 
     fn memory_reply(&mut self, original: &str, lower: &str) -> Option<Reply> {
@@ -248,6 +274,26 @@ impl Conversation {
                 }
             }
         }
+        // Recognize incomplete supported statement syntax without letting a
+        // learned proposal turn the missing operand into an accepted operation.
+        if ["my name is", "my name's", "call me", "i prefer", "i like"]
+            .iter()
+            .any(|prefix| statement.eq_ignore_ascii_case(prefix))
+            || ["my favorite ", "my favourite "].iter().any(|prefix| {
+                after(statement, prefix)
+                    .is_some_and(|rest| rest.to_ascii_lowercase().ends_with(" is"))
+            })
+            || (statement != original
+                && ["it's", "it is", "make that"]
+                    .iter()
+                    .any(|prefix| statement.eq_ignore_ascii_case(prefix)))
+        {
+            self.last_slot = None;
+            return Some(Reply::Refusal {
+                text: "I haven't changed your memory. Include a value, such as: My name is … or I prefer …".into(),
+                proposal: None,
+            });
+        }
         None
     }
 
@@ -281,7 +327,6 @@ impl Conversation {
     }
 
     fn recall(&mut self, slot: Slot) -> Reply {
-        self.last_slot = Some(slot.clone());
         let (value, subject) = match &slot {
             Slot::Name => (self.name.as_ref(), "Your name".into()),
             Slot::Preference(category) if category == "general" => {
@@ -292,6 +337,8 @@ impl Conversation {
                 format!("Your favorite {category}"),
             ),
         };
+        // Asking about an absent value does not establish a correction target.
+        self.last_slot = value.map(|_| slot);
         value.map_or_else(
             || Reply::Missing {
                 text: format!("I don't know {} yet.", subject.to_lowercase()),
@@ -303,7 +350,8 @@ impl Conversation {
         )
     }
 
-    fn recall_utterance(&self) -> Reply {
+    fn recall_utterance(&mut self) -> Reply {
+        self.last_slot = None;
         self.last_user_utterance.as_ref().map_or_else(
             || Reply::Missing {
                 text: "You haven't said anything before this turn.".into(),
@@ -313,5 +361,99 @@ impl Conversation {
                 source_turn: self.turn.saturating_sub(1),
             },
         )
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn unrelated_turns_cannot_supply_a_correction_reference() {
+        for interruption in [
+            "Hello",
+            "A completely unsupported request",
+            "What did I just say?",
+            "What is my favorite flower?",
+            "My name is",
+            "I prefer",
+        ] {
+            let mut memory = Conversation::default();
+            memory.respond("My name is Zoë", None);
+            memory.respond(interruption, None);
+            assert!(matches!(
+                memory.respond("Actually, it's Rain", None),
+                Reply::Missing { .. }
+            ));
+            assert_eq!(memory.name.as_ref().map(|v| v.value.as_str()), Some("Zoë"));
+            assert_eq!(memory.name.as_ref().map(|v| v.stated_on_turn), Some(1));
+            assert!(memory.preferences.is_empty());
+            assert!(memory.last_correction.is_none());
+        }
+    }
+
+    #[test]
+    fn explicit_recall_restores_focus_and_correction_provenance() -> Result<(), serde_json::Error> {
+        let mut memory = Conversation::default();
+        memory.respond("My favorite İÇECEK is Café con leche", None);
+        memory.respond("Thanks", None);
+        let mut memory: Conversation = serde_json::from_str(&serde_json::to_string(&memory)?)?;
+        assert!(matches!(
+            memory.respond("Actually, it's tea", None),
+            Reply::Missing { .. }
+        ));
+        assert!(matches!(
+            memory.respond("What is my favorite İÇECEK?", None),
+            Reply::Recalled { source_turn: 1, .. }
+        ));
+        assert!(matches!(
+            memory.respond("No, it's Oolong", None),
+            Reply::Remembered { .. }
+        ));
+        assert_eq!(
+            memory.last_correction.as_ref().map(|v| (
+                v.previous.value.as_str(),
+                v.previous.stated_on_turn,
+                v.replacement.stated_on_turn
+            )),
+            Some(("Café con leche", 1, 5))
+        );
+        assert!(matches!(
+            memory.respond("What did I just say?", None),
+            Reply::Recalled { source_turn: 5, .. }
+        ));
+        assert!(memory.last_slot.is_none());
+        Ok(())
+    }
+
+    #[test]
+    fn legacy_missing_referent_cannot_be_corrected() -> Result<(), serde_json::Error> {
+        let mut memory: Conversation = serde_json::from_str(
+            r#"{"turn":1,"name":null,"preferences":{},"last_slot":"Name","last_user_utterance":"What is my name?"}"#,
+        )?;
+        assert!(matches!(
+            memory.respond("Actually, it's Ana", None),
+            Reply::Missing { .. }
+        ));
+        assert!(memory.name.is_none());
+        assert!(memory.last_slot.is_none());
+        Ok(())
+    }
+
+    #[test]
+    fn legacy_session_without_correction_field_remains_readable() -> Result<(), serde_json::Error> {
+        let mut memory: Conversation = serde_json::from_str(
+            r#"{"turn":4,"name":{"value":"Zoë","stated_on_turn":2},"preferences":{},"last_slot":"Name","last_user_utterance":"hello"}"#,
+        )?;
+        assert!(matches!(
+            memory.respond("What is my name?", None),
+            Reply::Recalled { source_turn: 2, .. }
+        ));
+        assert!(matches!(
+            memory.respond("Actually, it's Ana", None),
+            Reply::Remembered { .. }
+        ));
+        assert_eq!(memory.name.as_ref().map(|v| v.value.as_str()), Some("Ana"));
+        Ok(())
     }
 }
