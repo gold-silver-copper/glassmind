@@ -2,11 +2,55 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — facts FIT diagnosis complete, forward-only expansion
-rejected before acquisition; independent Wikidata storage pilot acquired, imported
-and audited successfully. Current runtime source3539a2d; coding sourcec6ac04a.
+This turn: PROGRESS — native bounded SQLite facts queries implemented and centrally
+integrated; exact22302question answer/set parity, main28/28eachmode, five mainunit
+checks, workspacefmt/clippy/release/strict4smoke pass. Publishing this batch next.
+Facts native source3de724e (worktree70a446a); quantities3539a2d; codingc6ac04a.
 Known completed-worker tokens201,926,299 (cached input counted once; parent and
-interrupted usage excluded). No model worker ran; all root jobs are complete.
+interrupted usage excluded). No model worker ran. All root experiment jobs complete.
+
+## Current: publish native disk facts, then ingest the independent pilot
+
+Read tools/facts/disk/PARENT.md and integration/. Newdedicated commands index-disk,
+ask-disk andpredict-disk use the same Rust normalizer, bounded indexedqueries,
+original acronymcase, complete setcounts andliteral lexical IDs. Read-only one
+snapshot perconnection; schema/Unicodeversion mismatches fail. JSONimport32MiB,
+model64MiB, question4096bytes/128tokens, SQLitecache64MiB, no mmap, VMprogressbudget.
+Only standaloneordinary/set queries use it; existing talk/temporal paths preserved.
+
+All19481TRAIN+2821DEV exactAnswer/AnswerSet parity againstunchangedJSONstore and
+retainedold ordinarypredictions; actualCLI modes match too. Frozenmodel andTRAIN999
+graph reused, no labelsininference, no QAaccuracygain ordefaultbundlechange.
+NativeDB2281472bytesSHA1c0450201e9992bf7ee33f77f5a38039d045634efc020e44ff8323b7ac3958cd.
+Finalcoordinator20.378s within600s8GiB0swap; fresh1000TRAINpair JSON0.476311s70564KiB,
+disk0.109055s74092KiB (singlelocalbatch includingstartup; no largegraphmemoryclaim).
+InitialcoordinatorRSS hadPythonlauncherfloor; correctedfresh-launcherreports retained.
+
+Rootsource3de724e matches19worktreefiles at70a446a. Newtests cover aliasUnicode/
+ambiguity, refusal/cardinality, schema/limits, snapshotstabilityunderWALwriter,
+VMinterruptionrecovery, CLI newline/UTF8/limit handling. Earlierper-querysnapshot
+revision andallresults/binaries archived in WORK/coordinator/disk-facts/first-parity-originals
+before changing to lifetime snapshot; bothpassedknown-data parity, finalretested.
+InitialusizeFromSql/clippy fixes andmissingGNUtime helperfailure preserved.
+No main paths lost:28mixedchecks eachplain/intent and5mainfacts units pass.
+
+Artifacts WORK/coordinator/disk-facts; retainedroot-owned WORK/disk-facts worktree
+at70a446a, clean. No modelworker/authmount. Nativebuildcache .../coordinator/disk-facts/target.
+Sessions33643/1834/58289/33559/51784/75868/99856/44510 allCOMPLETE.
+CentralCLI target/release/glassmind-facts SHA53e410241f8dbe87a0a4ff850daed48f4b7bbcef26ae5532ee9df44aad9750df;
+mainSHA0b80dd3a152a55adbea998f3f1ce754c9fc619e8f838176a4ad1aaeaf295e872.
+
+Next: freeze a native ingestion experiment for the retained publicWikidata pilot.
+Do not settle at same-data compatibility: the purpose is substantially broader
+independently sourced coverage. Use cachedrawsource/pilot only; no other85claims
+shards yet. Rebuild keys with Rust, retainstatement/rank/qualifier/sourceprovenance,
+and verify no name/edge loss beyond explicitdeduplication. The oldPythonpilot is
+read-only; do not mutate it. A nativeSQLite transformation withsafe Rust scalar
+normalization can avoid huge JSON materialization. NumericIDs inpilot must first
+roundtrip-check againstallrawsources; version2source metadata must distinguish
+publicsnapshot provenance fromversion1JSONimports. Choose boundedtime/disk/RAM
+and raw-row/native-query checks before implementation; QA acceptance needs a
+separate frozen gate. Existing publicpilot details belowremain authoritative.
 
 ## PR47 published; native disk-backed facts experiment started
 
@@ -17,26 +61,7 @@ at2026-10-11T16:22:49Z. Push44172, PR92746, CIwatch63376, merge94653 COMPLETE.
 Includes contextual-dialogue rejection audit and facts diagnosis/storage pilot;
 production source/models/scores unchanged. Do not republish or rerun this batch.
 
-## Next action: implement native disk-backed facts compatibility
-
-Root-owned isolated worktree WORK/disk-facts, branchcontinuous/disk-facts at
- d2bb2ae (frozen tools/facts/DISK-PLAN.md), based on160872a. No model worker.
-Same plan at WORK/coordinator/disk-facts/PLAN.md. Exactly two uncommitted preparatory
-files: crates/facts/Cargo.toml andCargo.lock addrusqlite0.40.2 with bundled/hooks/
-limits/functions. Dependency cargo check -pglassmind-facts -j1 passed13.70s in
-scopeglassmind-disk-facts-dependencies, session76854 COMPLETE. No adapter exists yet.
-Retained buildcache WORK/coordinator/disk-facts/target anddiskTMPDIR .../tmp.
-All further Cargo uses8GiB0swap, setsid --wait timeouts, -j1 withthat target/TMPDIR.
-First implement the versioned native SQLite representation/import andreadonlyquery
-API plusCLI, then frozen same-data parity; do not restart source acquisition.
-Use literal string IDs (including lexical ordering), original aliases and the same
-Rust normalize helper at ingestion/query; avoid the pilot's Python keys. Inspect
-current Store.answer versusanswer_set refusal semantics before sharinglogic.
-Native dependencies are now locally available at ~/.cargo/registry/src/*/rusqlite-0.40.2;
-progress_handler andset_limit returnResult. Query plans/limits andno whole-graph
-load must be verified. Existing plan fixes19481TRAIN+2821DEV answer/set parity,
-10-minute8GiB cap; no newaccuracyclaim. No further public graph download yet.
-
+## Completed independent Wikidata storage pilot
 
 Read tools/facts/wikidata-snapshot/PARENT.md and its frozen PLAN.md. The independent
 20260928 CC0 Wikidata pilot has5,677,515 statements for1,094,802 subjects and
@@ -52,16 +77,6 @@ Raw Parquet and PyArrow25.0.1 venv retained. Only first of86claims shards acquir
 full claims44,633,986,614bytes remains unfetched. Public selection by path/language,
 never QA labels. Scholarly works excluded by publisher; first shard is incomplete.
 Statements retain rank/qualifier flags; rawsource retains full qualifiers/references.
-
-Next concrete experiment: a native bounded SQLite facts adapter, using the exact
-same Rust normalization at import and query time. First freeze parity gates against
-existing JSON Store on the same facts, including Unicode, acronym case, equal-length
-ambiguity, inverse deduplication, set counts/order and all refusals. Expose through
-usable facts commands, then assess integration into talk. Do not claim QA gain
-from storage parity. The pilot's Python keys differ from Rust on6167/1112064scalar
-probes: native key rebuild is mandatory, not an optional optimization. Choose a
-separate full-graph acquisition/strict QA plan after native compatibility is proved.
-Do not repeat the completed pilot or download the other85shards yet.
 
 Initial import GUID-casing assumption stopped before insertion; archived and
 corrected from rawdata plus Wikibase docs. Completed fetch75958/import6255/source

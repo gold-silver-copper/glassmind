@@ -88,3 +88,17 @@ Artifacts: `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-fact
 zero swap, persistent disk TMPDIR, process-group timeouts and one build job;
 tests used at most four threads. No model worker, runtime network, external
 teacher, API key or held-out data was used.
+
+## Central integration
+
+Source worktree commit `70a446a` integrated as `3de724e`. All 19 facts source,
+test, example and manifest/lock identities match between worktrees. Central
+release binaries repeat exact streaming Answer/AnswerSet parity for all 22,302
+questions. Existing conversation fixtures pass 28/28 in each of plain and
+intent-model modes, including persisted memory/story state, default routing,
+provenance, invalid bundles and display-only labels. Five existing main facts
+unit tests pass. Workspace fmt/clippy/release and the strict four-turn smoke pass.
+Hashes and results are in `integration/`; raw predictions remain in the owned
+run directory, pinned by `artifacts.json`. The compatibility experiment is
+complete. Next work is native ingestion of the independently acquired public
+pilot, with its own resource/provenance plan and no new downloads yet.

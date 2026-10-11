@@ -1,0 +1,97 @@
+[
+  {
+    "path": "Cargo.lock",
+    "bytes": 23080,
+    "sha256": "a90784d62bb9d7ff5a48af02ae766fca3ccab7700ec5ddd76e32feb16fee5bd8"
+  },
+  {
+    "path": "crates/facts/Cargo.toml",
+    "bytes": 470,
+    "sha256": "58342a92d239218a5eec1f00dbc25612b3f8d922daac80add766ccdf32094f86"
+  },
+  {
+    "path": "crates/facts/src/disk.rs",
+    "bytes": 18856,
+    "sha256": "624ecb54f917e3b2a022028daefd967de386eed80b69d6c63d014ef9184c5cc4"
+  },
+  {
+    "path": "crates/facts/src/lib.rs",
+    "bytes": 13990,
+    "sha256": "4aaf3ef99951f0558cd981bcd68b6da1eaa3b9a362c8732033e82c39e75bf6c1"
+  },
+  {
+    "path": "crates/facts/src/main.rs",
+    "bytes": 12279,
+    "sha256": "1c017dffa803f231c95c1c5656a17c792e53d5ec62ac2c012e56e310c85cc707"
+  },
+  {
+    "path": "crates/facts/src/matching.rs",
+    "bytes": 13951,
+    "sha256": "c96cc0e655fc044c20a5cdcf61c5b3982d4b639599b0027ef3420248b1b8f82a"
+  },
+  {
+    "path": "crates/facts/src/temporal.rs",
+    "bytes": 18792,
+    "sha256": "0a88d18e18f7ae0682cc132d24df3bca97a23576cb5807e60626703f12866740"
+  },
+  {
+    "path": "crates/facts/src/timed_matching.rs",
+    "bytes": 5891,
+    "sha256": "44f9ff8b6b9ed254a36fc91ad64f48576f27aed03cbbd6e7f29ec631ce881a3c"
+  },
+  {
+    "path": "crates/facts/src/verification.rs",
+    "bytes": 10558,
+    "sha256": "c385ea702f42ecc7c9fae43af40835ed7b3eb613fdec868bedd26077a4575add"
+  },
+  {
+    "path": "crates/facts/tests/disk.rs",
+    "bytes": 12880,
+    "sha256": "5292a986586c7c69a6cebf12d86888a9b0198a2bbb4d9a121cee72171966dfb6"
+  },
+  {
+    "path": "crates/facts/tests/matching.rs",
+    "bytes": 6971,
+    "sha256": "b695704e5400d89c7046ebfeddaf45d49f91015eecbb82a742121e70b772dd6a"
+  },
+  {
+    "path": "crates/facts/tests/parent_matching.rs",
+    "bytes": 2349,
+    "sha256": "d8dd0964f66098cb13aa9e383b7b6e97ceb166b0f902f831139fa5e2d424fa24"
+  },
+  {
+    "path": "crates/facts/tests/temporal.rs",
+    "bytes": 6601,
+    "sha256": "5fb560092a4325a5f718764c77a3d792ee75b541f2ca4526803a8bf4e3254f5f"
+  },
+  {
+    "path": "crates/facts/tests/timed_matching.rs",
+    "bytes": 6509,
+    "sha256": "28c393902b719b0037aa072eae0fc4fe38fca41b39d8fe56e649b1cec6a3ec99"
+  },
+  {
+    "path": "crates/facts/tests/verification.rs",
+    "bytes": 3326,
+    "sha256": "f7e49cd2de59ff2806bee4d06be18880e62a9bba97a43285c039d823734e4c36"
+  },
+  {
+    "path": "crates/facts/examples/continuous_predictions.rs",
+    "bytes": 845,
+    "sha256": "d38ad548444210cf177a3d647f2dc6e7188ab04f9816f9af34f3ee3521514934"
+  },
+  {
+    "path": "crates/facts/examples/disk_parity.rs",
+    "bytes": 1957,
+    "sha256": "89433e20fb161af46854c8a2ad0ec2dcc624d04ce3f62bd4dd66b26261770008"
+  },
+  {
+    "path": "crates/facts/examples/temporal_proof.rs",
+    "bytes": 755,
+    "sha256": "ecfcca9c9b588516e61a3b3cecff8afc35cf8fb21ffd2e9a408880226f6379d2"
+  },
+  {
+    "path": "crates/facts/examples/timed_matching_proof.rs",
+    "bytes": 932,
+    "sha256": "33753137496657832c2196398d5491b20b139db2588d90498d24afc2bf33e856"
+  }
+]

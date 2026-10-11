@@ -1,0 +1,27 @@
+   Compiling foldhash v0.2.0
+   Compiling hashbrown v0.17.1
+   Compiling libsqlite3-sys v0.38.2
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/code/glassmind/crates/world-rust)
+   Compiling hashlink v0.12.2
+   Compiling fallible-iterator v0.3.0
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling smallvec v1.16.3
+   Compiling rusqlite v0.40.2
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/code/glassmind/crates/english-rust)
+   Compiling glassmind-reading v0.1.0 (/home/gsc/code/glassmind/crates/reading)
+   Compiling glassmind-facts v0.1.0 (/home/gsc/code/glassmind/crates/facts)
+   Compiling glassmind-dialogue v0.1.0 (/home/gsc/code/glassmind/crates/dialogue)
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/code/glassmind/crates/quantities)
+   Compiling glassmind v0.1.0 (/home/gsc/code/glassmind/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.71s
+     Running unittests src/main.rs (target/debug/deps/glassmind-aba61b68d3ce0237)
+
+running 5 tests
+test talk_facts::tests::verification_prefix_reserves_malformed_commands_without_binding_names ... ok
+test talk_facts::tests::set_prefix_is_fully_consumed_and_does_not_bind_followups ... ok
+test talk_facts::tests::accepts_distinct_bundles_and_rejects_swapped_assets ... ok
+test talk_facts::tests::verification_uses_snapshot_provenance_and_never_negates_missing_edges ... ok
+test talk_facts::tests::labels_remain_display_only_and_must_match_the_index ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 19 filtered out; finished in 0.00s
+
