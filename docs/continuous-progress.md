@@ -2,10 +2,69 @@
 
 Unlimited active goal; milestone completion does not complete the goal. Root
 branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Previous goal turn: independently rejected the graph parser and verified the
-quantity command boundary fix. Current turn: published PR44 and prepared the
-independent implementation-grammar regression adapter. The unlimited goal
-remains active.
+Previous goal turn: PROGRESS (PR44 merged, independent boundary adapter prepared).
+Current turn: PROGRESS (TRAIN dialogue diagnosis, independent implementation
+review, archived rejection, and a prospective declaration-grammar correction).
+Unlimited goal remains active. Root HEAD1529e30 before this checkpoint;
+606e341 records dialogue diagnosis, 1529e30 the implementation rejection.
+
+## Current action: build and validate the corrected implementation grammar
+
+No model workers remain. Original implgrammar worker4131690 is terminal/inactive;
+its original submission was archived, reviewed and rejected, then the owned
+worktree and temporary login link removed after both archives were reverified.
+Original4565 entries/1223261648bytes incl6 symlinks; frozen2240files/612259441bytes.
+See tools/coding-implementation-grammar/PARENT.md and parent/cleanup.json.
+Known completed-worker tokens197840528 inclcachedinputonce; root/interrupted
+excluded. Latest worker5170049 input incl5032704cached +55220output=5225269.
+
+Fresh worktree WORK/implgrammar-fix, branch continuous/implgrammar-fix, base919e14a.
+Only candidate runtime files were applied; original contracts/reports copied for
+its include-based tests. The production checkout has no implementation feature.
+Correction: Declaration::Accepted(String) versus Unsupported prevents recognized
+`needs a body` / `needs implementing` descriptions from binding an accepted
+imperative. Six new refusal contrasts plus an accepted declaration pass. Native
+implementation module is byte-identical to the rejected candidate; current
+quantity-prefix fix is preserved. Prospective plan and source hashes are under
+coordinator/implgrammar-corrected and tools/coding-implementation-grammar/correction.
+
+Parser tests53325 COMPLETE:43 passed. CLI release build50730 RUNNING at checkpoint,
+log coordinator/implgrammar-corrected/build.log; target is that directory/target,
+TMPDIR its tmp directory. Cargo is scoped8GiB/zero-swap, setsid--wait/600s timeout,
+-j1. Do not start a duplicate build. Poll50730 then freeze target/release/glassmind
+and its SHA before further checks. Original native55866 COMPLETE18/18; cleanup53201
+COMPLETE. No other root jobs remain.
+
+NEXT after build: run corrected 34 original boundaries, 12 independent boundaries,
+18 independent native cases (including unset-target variant), then fixed TRAIN
+sample3/native verify, full60/native verify. Adapted run.py and verify.py are in
+coordinator/implgrammar-corrected, with immutable original expectations and a
+copied baseline-boundaries-complete/results.json. Set persistent TMPDIR and
+external CARGO_TARGET_DIR for those scripts. These helpers write only corrected
+artifact directories. Parent native.py/boundary-review.py remain in
+coordinator/implgrammar-independent. Keep output directories fresh.
+Only after these gates pass run parent full765 for the FIRST time:>=218 passes,
+all215 retained,0fail. full-gate.json/compare-full.py and comparator-full baseline
+remain frozen. Then source/evidence review, affected tests, required workspace
+checks, integrate exact source centrally and publish with exact-head green CI.
+Original rejected worker and earlier three implementations stay rejected; this
+correction does not retroactively relabel their evidence.
+
+## Dialogue TRAIN diagnosis completed
+
+No runtime/model change. tools/dialogue/history-diagnosis/PARENT.md (606e341).
+All144 complete TRAIN conversations limited to approved three-service schema:
+1171 USER turns/1323frames;787 jointcorrect,384slotwrong; routing/intents perfect
+on this in-sample subset. 382wrongturns lack ride destination;2 Travel location
+wrong. 87 initial missing destinations persist295turns. Gold text appears earlier
+than lastSYSTEM for83/87 and inlastSYSTEM for4/87, an availability upper bound.
+Native unchanged OfferModel probe overlast32SYSTEMs produces only2othercorrect
+rows and ZERO proposals for the87 initialmissing destinations. Extending offer
+history alone is unsupported. New candidate representation/entity grounding is
+needed before a future reference-selection model; no new training launched.
+Raw inputs/predictions/probe/source/metadata in coordinator/dialogue-train-diagnosis.
+Sample10/full144 andnativeprobe complete, no repeatneeded. Existing610/1119DEV
+score/model remain unchanged. Do not call this in-sample diagnostic a DEV gain.
 
 ## Published PR44; implementation experiment still running
 
@@ -19,15 +78,9 @@ quantity prefix. Neither changes a benchmark score, so no accuracy row was added
 The two whitespace diagnostics from git diff --check are literal blank context
 lines inside the preserved rejected.patch; the original evidence stays intact.
 
-Known completed-worker tokens: 192,615,259, including cached input once; root,
-interrupted workers and the live implementation worker are excluded. The graph
+At PR44, known completed-worker tokens were 192,615,259, including cached input
+once; the current count is recorded above. The graph
 worker used 2,069,421 input (1,973,120 cached) plus 25,502 output = 2,094,923.
-
-Worker4131690 was verified live at 15:21 elapsed immediately after the merge.
-No root native jobs remain. Next: when the worker finishes, verify its scope is
-inactive and PID gone, archive and hash-check the original submission before
-inspection, then run the frozen independent grammar/native contracts. Preserve
-the separately accepted talk_quantities.rs boundary fix during integration.
 
 Quantityprefixbugreproduced: explicitComparequantities: separatorcountedagainst
 4096-bytepayloadcap. Baseline12/14; two validatlimitASCII/Unicodewhitespacecases
@@ -141,66 +194,22 @@ alsofailed; do nottuneitsfeatures/epochs ontheseobservedDEVfailures. Futureparsi
 workneeds independentTRAINdiagnosis ornewdata/representation; currentimplgrammar
 workerisindependent. No moreparserjobsrunning.
 
-## LIVE: implementation intent grammar and bounded synthesis
+## Original implementation submission: rejected and cleaned
 
-WorkerPID4131690 scopeglassmind-continuous-implgrammar.scope active/running,
-MemoryMax8589934592/MemorySwapMax0 verified. Astrafast/ChatGPT only, strippedAPIenv.
-WorktreeWORK/implgrammar, branchcontinuous/implgrammar, base3f7ce8f.
-TaskWORK/implgrammar-task.txt;runWORK/implgrammar-run. No liveworkersource/results
-inspected. Rootcleanexceptcheckpoint; no othermain/worldrustworkerowns thesefiles.
-
-Newprospectivehypothesis afterprior3rejectedimplementationexperiments: typed,
-fullyconsumed action/identifier/owner/path grammar instead ofglobal keyword
-reservation, preservingactualcurrentquery/rename/type/AddField/repair authority.
-Mayreuse/auditold signature-onlyfinitegenerator, NO newtemplatefamily or name/
-English/docs/assertionbasedalgorithmselection. Nativeuniquecompletechoice,
-actuallyexecutedfailingbaseline, no-test/unexecutedtarget/multipassrefusals,
-stale/applyverify/rollback required. DefaultCARGO_TARGET_DIR independence and
-no-live-artifactrefusals required, currentcheck-isolation alreadyaccepted.
-Taskauthorizesminimal do-route mainCLI edit plusworld/bridge modules, nothingin
-reading/everyday. Parentintegratesonlyafternewgates; oldrejections remainrejected.
-
-Readonlyimplgrammar-source43manifestfiles93316468bytes:20publicTRAINsources/
-60requeststyles,40Cargo.toml/src/lib.rs files allsize/SHAverified fromprior
-implementation-routes/reports/train-input-provenance.json. CurrentPR43baseline
-binary included53c6caca..., requestsand sourcecard. RustBenchf79e71a MIT ORApache2;
-no newdownloads/hiddenassets/labels/expectedpatches. Workerfixedsamplethenfull60,
->=3verifiedrequests andallauthoredboundariespass; parentfull765>=218passes,
-all215oldpassesretained,0fail beforeacceptance. NoDEVworkeraccess.
-
-Parentcoordinator/implgrammar-independent:
-- baseline.py/boundary-cases.json/boundary-freeze.json:12currentquery/rename
-  controlsallpass, separateunambiguousfunctions/fields namedimplement/implemented/
-  write/fill, exactbefore/aftersourcesretained. Theseareobservedcurrentbehavior,
-  notunsupportedassumptions fromrejectedoldfixtures.
-- boundary-review.py and boundary-review-freeze.json are ready. The adapter
-  checks all 12 frozen cases against exact baseline stdout, stderr, exit status
-  and complete project file hashes. Its own baseline replay passed 12/12; output
-  is boundary-adapter-baseline/report.json. Do not rerun the baseline. Candidate
-  command: python3 boundary-review.py --binary FROZEN_BINARY --out NEW_DIRECTORY.
-- freeze.py/cases.json/PLAN.md/freeze.json:18freshnativecases=6implementations,
-  1ambiguity,11unchangedcontrols. Same-signaturedifferentbehaviors, unrelated/
-  Unicode names, sumall/negative,oddreverse,characters/word-sequence/count.
-- native.py baseline93213 COMPLETE:0/6implemented,all18wholeprojectsunchanged.
-  15originalscompileandexecutefailingtests;2separate no-tests/unexecuted controls
-  pass;1explicitcompiler-failure. Beforechecksusecopies, no liveCargo.lock.
-- alternatives.py COMPLETE:all-sum andpositive-sum BOTHpasspublic[2]test but
-  nativeoutput8 vs11 for[-3,2,4,5]. Evidence alternatives/report.json+sources/logs.
-- native.py candidateadapterready, --unset-target optionretainspersistentTMPDIR;
-  exactstubbody/outsidebytes+manifest/sourcechecks. Nativeproposercheckseparate
-  fromnativeaftercheck. adapter-freeze.json preservesadapters/fullgatehashes.
-- full-gate.json/compare-full.py frozen:765,>=218/all215retained/0fail. Baseline
-  coordinator/comparator-full/results.jsonl6cdb3be2..., runnerunchangedaddadae4....
-
-NEXT: Onterminalverifyinactive/PIDgone, archiveoriginalpatch/source/reports/results
-andhashverify BEFOREinspection, thenreviewactualgrammar andgeneratoragainstfrozen
-contracts. Nativeparentbaseline/12boundary/2alternativesalreadydone; don'trepeat.
-Candidateparent/full765 onlyafteroriginalsubmissionarchived. Parentpositivecases
-areoutsideworkeraccess. Onlyimplgrammarworkerstilllive; no nativerootjobsremain.
+See tools/coding-implementation-grammar/PARENT.md for the complete independent
+review. Original release1822949b... passes all12 frozen boundary controls and all
+18 native cases (6implementations/12unchanged). Saved choice logs confirm every
+candidate exhausted and unique native success for all six. A separate native
+parser probe reproduces two accepted forms outside the frozen grammar, so the
+original remains rejected and no full765 ran. Worker TRAIN3/60 onlyonefunction
+in3styles; this parent did not repeat original TRAIN. Old source restored exactly.
+Original archives retained at implgrammar-run/{terminal-originals,frozen-candidate};
+worktree and temporary auth link removed only after complete hash reverification.
+The current prospective correction is recorded at the top of this checkpoint.
 
 ## Next experiments
 
-Implementationgrammar experiment above iscurrent; graphparserrejected. Zero
+The corrected implementation grammar above is current; graph parser rejected. Zero
 implementationDEVcoverage motivated the latter; no gain claimed beforegates. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
 do not duplicate. Deferredthermostatreassociation needs exactoverflowreasoning.
 Facts coverage/inverseedges remain a broadgap; read prior TRAIN999rejection and
