@@ -84,6 +84,12 @@ Coding DEV reaches 223/765, retaining all 221 previous passes with zero failures
 The two new passes are request styles for a task also supplied in TRAIN.
 [Supported implementation requests and verification](docs/verified-implementation.md).
 
+Coding actions can persist across invocations with `do --session FILE`:
+propose a rename or repair, continue after a restart, refer to the renamed item,
+or undo the last verified change. External edits invalidate stale context.
+[Persistent coding tasks and current limits](docs/coding-tasks.md).
+
+
 ## Conversation and story commands
 
 Literal quantity comparisons work directly in `talk`: `Is 2 kg greater than

@@ -21,6 +21,7 @@ use glassmind_meaning::{
 use glassmind_rules::{RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
 
+pub mod task;
 pub mod trace;
 
 pub use trace::{ReadingTrace, Trace, WorldResult};
