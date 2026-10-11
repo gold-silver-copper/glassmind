@@ -12,7 +12,8 @@ glassmind do ./my-library 'sum_even is a stub, implement it'
 
 The function signature supplies candidate operations over integer slices/Vecs
 and strings: filtering, reversal, sums, counts, boolean reductions, character
-sequences and word sequences. The request selects the target. Existing tests
+sequences and word sequences with concatenation or single-space joining.
+Word sequences can keep their order or reverse it. The request selects the target. Existing tests
 verify candidates; doc comments and assertions do not choose an algorithm.
 The result reports test verification and links to the saved evidence.
 
