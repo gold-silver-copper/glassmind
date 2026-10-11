@@ -6,9 +6,9 @@ Known completed-worker tokens:203193886, cached input counted once; parent and
 interrupted usage excluded. All quantity teachers are terminal; no model workers
 are running. Their owned auth symlinks were removed after verified archival.
 
-## Current jobs,19:30UTC
+## Current jobs,19:38UTC
 
-Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
+Fullclaims WORK/full-claims branchcontinuous/full-claims head800ff44. RUN=WORK/
 coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
 29161 exit0,2711.674s,556268KiBpeakRSS,70529619240sampledpeakaddedbytes; allgatespass.
 789435443rawrows,364044919statements,46448050qualified. Projection0444
@@ -18,16 +18,18 @@ coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projectio
 Preparation18606 COMPLETE; nativeinput/reference/binary pinnedbeforenativeimport.
 Fullsource manifestSHA782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a1251dba2.
 
-Native89022 RUNNING,scopeglassmind-full-claims-native,supervisor1022832,child
-1022833 (verify).8GiB/no swap,21600s,192GiBoutput,384GiBaddedrun cap; TMPDIRand
-SQLITE_TMPDIR=RUN/tmp. At197.591s sourcehashes/projectionvalidated andnativealiases
-copied without renormalization. Claims/witnesses loaded807.318s; secondaryindexes
-built1225.432s. Finalintegrity/references remain; do not restart.
-NEXT: after successfulnative-resources.json, readonlyoutput thenaudit.py under
-3396sremaining original3600s combinedsourceaudit budget (referenceused203.173s),
-thenwitnesses.py3600s; bothviasupervise.py+8GiB0swap+setsid--waittimeout.
-No fullnative success/finalaudit/newgraphQA yet. Keepoldartifactsimmutable.
-Readworktree tools/facts/full-claims/PROGRESS.md andVALIDATION-PLAN.md.
+Native89022 COMPLETE exit0,3052.182s,371540KiBpeakprocessRSS,
+142749644072sampledpeakaddedrunbytes; alloriginalresourcegates passed.
+Native output62772387840bytes now0444:74445176entities,74983525aliases,
+362302267distinctedges,364044919statements,46448050qualified. Integrity/reference
+checks3050.936s,committed3051.003s. FormerPIDs1022832/1022833terminal.
+Independent audit77590 RUNNING,scopeglassmind-full-claims-audit,
+supervisor1230237,child1230238;3396secondsoriginalremainingbudget,8GiB0swap,
+384GiBaddedrun cap,outertimeout3406s,on-diskTMPDIR/SQLITE_TMPDIR=RUN/tmp.
+All86samplecomparisons finished2.426s;aggregate/distinct/unionchecks andhashpending.
+NEXTafter successfulaudit-resources.json: runwitnesses.py withsupervise.py3600s,
+8GiB0swap,setsid--waittimeout3610s,on-disktmp. No newgraphQA/defaultpromotion yet.
+ReadWORK/full-claims tools/facts/full-claims/PROGRESS.md andVALIDATION-PLAN.md.
 
 Coding wordinitials fullDEV COMPLETE, integrated and published in PR51.
 WORK/word-initials cleanhead5a45bd7; rootmerge7c034b0 matchesall196evaluated
@@ -50,9 +52,9 @@ PR51 MERGED48ac2a89ff9a1644bf1f1cf6c536c401116dce02 at18:56:12UTC.
 Reviewedhead9a1fa5420cebc8f98f91a0249aa44080ae66d320;CI38165713044 SUCCESS102s.
 Push93513/create77478/merge43361 allCOMPLETE. FirstpostmergeGitHubquery TLS
 timeout; retryconfirmedmergedstate. No publicationwork remainsforcodingbatch.
-NEXT: monitor existingnativeclaimsjob89022, then frozenstorageaudit/witnesses.
+NEXT: monitor existingclaims audit77590, then frozen source-query witnesses.
 Independentquantitypilot nowactive: WORK/span-references,branchcontinuous/span-references
-head39effbd (later review/report commits follow). RUN=WORK/coordinator/span-references. Plan d4efe58 frozenbeforeselection.
+head92bac7b integrated root0dbd129. RUN=WORK/coordinator/span-references. Plan d4efe58 frozenbeforeselection.
 32TRAIN-FIT rows selectedby(group_sha256,row_id), solepriorreasonambiguous_leaf;
 all6sourcefiles/52oldarchivefileshashverified and32nativebindingsreproduced.
 BatchSHAb4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e.
@@ -100,15 +102,29 @@ semantic-review-01..04.json,final-report.json,PROGRESS.md andexternalRUN copies.
 conservativewordingrefusals,notprovenincorrectsourceanswers. Gateisnotrelaxed.
 Usage1037356=993295input(includes800000cached)+44061output;completedtotal203193886.
 
-NEXTquantity: freeze materiallydifferentrepresentation beforefurtherselection.
-Candidate: complete question-grounded graphs permittingexplicitmissingderivedsteps
-and justifiedcoreferentialquantityreferences,withinunchangednativebounds. Do not
-expand/refit thisrejected frozen-skeleton occurrencepolicy. No currenttraining,
-CAL/DEV,quantityruntime orscorechange. Original354/7473vs1000staysREJECTED.
+Quantity reports integratedroot0dbd129;docsandrequiredchecks9c8237f.
+PR52 MERGEDcfc602f18f6ae4e72d6256979b3c62709b9c000d at19:37:16UTC.
+Reviewedhead9c8237f3fb23d14a495c936c1c22980997ea1ca3;CI38168533996SUCCESS101s.
+Push17091/create63312/merge57894 complete. Workspacecheck79058 exit0:
+fmt/alltargetclippy/release/strict4smoke passed; runtime/binaryunchangedefb48471...
+No quantityscorechange. Read docs/quantity-source-references.md andpublished.json.
 
-Nativeclaims89022 stillRUNNING at44minutes (PIDs1022832/1022833verified);
-secondaryindexesbuilt1225.432s, finalintegritychecksremaining. Do not restart.
-Continue original3396saudit/witnesses sequence afterterminalresourcepass.
+NEXTquantity newrepresentation ACTIVE: WORK/quantity-graphs branchcontinuous/
+quantity-graphs heada1bbb84. RUN=WORK/coordinator/quantity-graphs.
+Plan3ccea2b frozen beforeselection: next32uniqueFITgroups afterprior160,
+fullquestion-grounded graphs and justifiedcoreferentialnumericmentions, unchanged
+native16inputs/6steps/4ops/20constants. Originalcalculatornodesnotconstraints.
+All6source/52archivehashes and32nativebindingsverified. BatchSHA
+56a62c5a75dbb42bb6c6279aa1f34e7c9ce5750d70eb34de0e328cd5a72062db.
+First8question-onlyparentreferences frozen BEFOREsourceanswers/rationales:
+5799,312,5151,7044,2791,5197,3325,1626.17nativeoriginal/counterfactualchecks match.
+ExpectationsSHA5a1bef22a2abc27de7bc1ec12429e732111f3814945c45de60ccedc3467da885.
+Thenall5acceptedoriginalvaluesmatchedsourcelabels. Requiredconservative refusals:
+7044group/perknifetierpricing,5197ambiguous10timesmore,3325conditionalgaragestorage.
+No teacher prepared/launched, no authlinks created, nofit/CAL/DEV/runtimechange.
+NEXTimplement schema/compiler/validator+authoredcontracts in tools/quantities/
+complete-graphs perPLAN.md, freezeprotocol beforeoneisolatedAstrafastteacher.
+No moreexpansion/refittingofrejectedfixed-skeletonpolicy. Alloldgatesunchanged.
 
 ## PR50 merged: word joining shipped
 
