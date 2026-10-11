@@ -1,0 +1,156 @@
+[
+  {
+    "id": "concat_ab",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i8], right: &[i8]) -> Vec<i8> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[8, 4, -2, 4, 7]), vec![3, -2, 3, 0, 8, 8, 4, -2, 4, 7]);\nassert_eq!(combine(&[], &[8, 4, -2, 4, 7]), vec![8, 4, -2, 4, 7]);\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[]), vec![3, -2, 3, 0, 8]);\nassert_eq!(combine(&[], &[]), vec![]);\nassert_eq!(combine(&[-128, 127, -128], &[127, 0]), vec![-128, 127, -128, 127, 0]);\nassert_eq!(combine(&[1, 3, 5], &[2, 4, 6]), vec![1, 3, 5, 2, 4, 6]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "reverse_ab",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: Vec<i64>, right: Vec<i64>) -> Vec<i64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![8, 4, -2, 4, 7]), vec![7, 4, -2, 4, 8, 8, 0, 3, -2, 3]);\nassert_eq!(combine(vec![], vec![8, 4, -2, 4, 7]), vec![7, 4, -2, 4, 8]);\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![]), vec![8, 0, 3, -2, 3]);\nassert_eq!(combine(vec![], vec![]), vec![]);\nassert_eq!(combine(vec![-9223372036854775808, 9223372036854775807, -9223372036854775808], vec![9223372036854775807, 0]), vec![0, 9223372036854775807, -9223372036854775808, 9223372036854775807, -9223372036854775808]);\nassert_eq!(combine(vec![1, 3, 5], vec![2, 4, 6]), vec![6, 4, 2, 5, 3, 1]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "concat_ba",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[u64], right: Vec<u64>) -> Vec<u64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![8, 4, 2, 4, 7]), vec![8, 4, 2, 4, 7, 3, 2, 3, 0, 8]);\nassert_eq!(combine(&[], vec![8, 4, 2, 4, 7]), vec![8, 4, 2, 4, 7]);\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![]), vec![3, 2, 3, 0, 8]);\nassert_eq!(combine(&[], vec![]), vec![]);\nassert_eq!(combine(&[0, 18446744073709551615, 0], vec![18446744073709551615, 0]), vec![18446744073709551615, 0, 0, 18446744073709551615, 0]);\nassert_eq!(combine(&[1, 3, 5], vec![2, 4, 6]), vec![2, 4, 6, 1, 3, 5]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "reverse_ba",
+    "text": "Implement combine",
+    "code": "pub fn combine(r#type: Vec<usize>, right: &[usize]) -> Vec<usize> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[8, 4, 2, 4, 7]), vec![8, 0, 3, 2, 3, 7, 4, 2, 4, 8]);\nassert_eq!(combine(vec![], &[8, 4, 2, 4, 7]), vec![7, 4, 2, 4, 8]);\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[]), vec![8, 0, 3, 2, 3]);\nassert_eq!(combine(vec![], &[]), vec![]);\nassert_eq!(combine(vec![0, 65535, 0], &[65535, 0]), vec![0, 65535, 0, 0, 65535]);\nassert_eq!(combine(vec![1, 3, 5], &[2, 4, 6]), vec![5, 3, 1, 6, 4, 2]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "sorted",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i8], right: &[i8]) -> Vec<i8> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[8, 4, -2, 4, 7]), vec![-2, -2, 0, 3, 3, 4, 4, 7, 8, 8]);\nassert_eq!(combine(&[], &[8, 4, -2, 4, 7]), vec![-2, 4, 4, 7, 8]);\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[]), vec![-2, 0, 3, 3, 8]);\nassert_eq!(combine(&[], &[]), vec![]);\nassert_eq!(combine(&[-128, 127, -128], &[127, 0]), vec![-128, -128, 0, 127, 127]);\nassert_eq!(combine(&[1, 3, 5], &[2, 4, 6]), vec![1, 2, 3, 4, 5, 6]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "sorted_reverse",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: Vec<i64>, right: Vec<i64>) -> Vec<i64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![8, 4, -2, 4, 7]), vec![8, 8, 7, 4, 4, 3, 3, 0, -2, -2]);\nassert_eq!(combine(vec![], vec![8, 4, -2, 4, 7]), vec![8, 7, 4, 4, -2]);\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![]), vec![8, 3, 3, 0, -2]);\nassert_eq!(combine(vec![], vec![]), vec![]);\nassert_eq!(combine(vec![-9223372036854775808, 9223372036854775807, -9223372036854775808], vec![9223372036854775807, 0]), vec![9223372036854775807, 9223372036854775807, 0, -9223372036854775808, -9223372036854775808]);\nassert_eq!(combine(vec![1, 3, 5], vec![2, 4, 6]), vec![6, 5, 4, 3, 2, 1]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "union",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[u64], right: Vec<u64>) -> Vec<u64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![8, 4, 2, 4, 7]), vec![0, 2, 3, 4, 7, 8]);\nassert_eq!(combine(&[], vec![8, 4, 2, 4, 7]), vec![2, 4, 7, 8]);\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![]), vec![0, 2, 3, 8]);\nassert_eq!(combine(&[], vec![]), vec![]);\nassert_eq!(combine(&[0, 18446744073709551615, 0], vec![18446744073709551615, 0]), vec![0, 18446744073709551615]);\nassert_eq!(combine(&[1, 3, 5], vec![2, 4, 6]), vec![1, 2, 3, 4, 5, 6]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "union_reverse",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: Vec<usize>, right: &[usize]) -> Vec<usize> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[8, 4, 2, 4, 7]), vec![8, 7, 4, 3, 2, 0]);\nassert_eq!(combine(vec![], &[8, 4, 2, 4, 7]), vec![8, 7, 4, 2]);\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[]), vec![8, 3, 2, 0]);\nassert_eq!(combine(vec![], &[]), vec![]);\nassert_eq!(combine(vec![0, 65535, 0], &[65535, 0]), vec![65535, 0]);\nassert_eq!(combine(vec![1, 3, 5], &[2, 4, 6]), vec![6, 5, 4, 3, 2, 1]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "intersection",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i8], right: &[i8]) -> Vec<i8> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[8, 4, -2, 4, 7]), vec![-2, 8]);\nassert_eq!(combine(&[], &[8, 4, -2, 4, 7]), vec![]);\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[]), vec![]);\nassert_eq!(combine(&[], &[]), vec![]);\nassert_eq!(combine(&[-128, 127, -128], &[127, 0]), vec![127]);\nassert_eq!(combine(&[1, 3, 5], &[2, 4, 6]), vec![]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "intersection_reverse",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: Vec<i64>, right: Vec<i64>) -> Vec<i64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![8, 4, -2, 4, 7]), vec![8, -2]);\nassert_eq!(combine(vec![], vec![8, 4, -2, 4, 7]), vec![]);\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![]), vec![]);\nassert_eq!(combine(vec![], vec![]), vec![]);\nassert_eq!(combine(vec![-9223372036854775808, 9223372036854775807, -9223372036854775808], vec![9223372036854775807, 0]), vec![9223372036854775807]);\nassert_eq!(combine(vec![1, 3, 5], vec![2, 4, 6]), vec![]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "difference_ab",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[u64], right: Vec<u64>) -> Vec<u64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![8, 4, 2, 4, 7]), vec![0, 3]);\nassert_eq!(combine(&[], vec![8, 4, 2, 4, 7]), vec![]);\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![]), vec![0, 2, 3, 8]);\nassert_eq!(combine(&[], vec![]), vec![]);\nassert_eq!(combine(&[0, 18446744073709551615, 0], vec![18446744073709551615, 0]), vec![]);\nassert_eq!(combine(&[1, 3, 5], vec![2, 4, 6]), vec![1, 3, 5]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "difference_ab_reverse",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: Vec<usize>, right: &[usize]) -> Vec<usize> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[8, 4, 2, 4, 7]), vec![3, 0]);\nassert_eq!(combine(vec![], &[8, 4, 2, 4, 7]), vec![]);\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[]), vec![8, 3, 2, 0]);\nassert_eq!(combine(vec![], &[]), vec![]);\nassert_eq!(combine(vec![0, 65535, 0], &[65535, 0]), vec![]);\nassert_eq!(combine(vec![1, 3, 5], &[2, 4, 6]), vec![5, 3, 1]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "difference_ba",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i8], right: &[i8]) -> Vec<i8> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[8, 4, -2, 4, 7]), vec![4, 7]);\nassert_eq!(combine(&[], &[8, 4, -2, 4, 7]), vec![-2, 4, 7, 8]);\nassert_eq!(combine(&[3, -2, 3, 0, 8], &[]), vec![]);\nassert_eq!(combine(&[], &[]), vec![]);\nassert_eq!(combine(&[-128, 127, -128], &[127, 0]), vec![0]);\nassert_eq!(combine(&[1, 3, 5], &[2, 4, 6]), vec![2, 4, 6]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "difference_ba_reverse",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: Vec<i64>, right: Vec<i64>) -> Vec<i64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![8, 4, -2, 4, 7]), vec![7, 4]);\nassert_eq!(combine(vec![], vec![8, 4, -2, 4, 7]), vec![8, 7, 4, -2]);\nassert_eq!(combine(vec![3, -2, 3, 0, 8], vec![]), vec![]);\nassert_eq!(combine(vec![], vec![]), vec![]);\nassert_eq!(combine(vec![-9223372036854775808, 9223372036854775807, -9223372036854775808], vec![9223372036854775807, 0]), vec![0]);\nassert_eq!(combine(vec![1, 3, 5], vec![2, 4, 6]), vec![6, 4, 2]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "symmetric",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[u64], right: Vec<u64>) -> Vec<u64> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![8, 4, 2, 4, 7]), vec![0, 3, 4, 7]);\nassert_eq!(combine(&[], vec![8, 4, 2, 4, 7]), vec![2, 4, 7, 8]);\nassert_eq!(combine(&[3, 2, 3, 0, 8], vec![]), vec![0, 2, 3, 8]);\nassert_eq!(combine(&[], vec![]), vec![]);\nassert_eq!(combine(&[0, 18446744073709551615, 0], vec![18446744073709551615, 0]), vec![]);\nassert_eq!(combine(&[1, 3, 5], vec![2, 4, 6]), vec![1, 2, 3, 4, 5, 6]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "symmetric_reverse",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: Vec<usize>, right: &[usize]) -> Vec<usize> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() {\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[8, 4, 2, 4, 7]), vec![7, 4, 3, 0]);\nassert_eq!(combine(vec![], &[8, 4, 2, 4, 7]), vec![8, 7, 4, 2]);\nassert_eq!(combine(vec![3, 2, 3, 0, 8], &[]), vec![8, 3, 2, 0]);\nassert_eq!(combine(vec![], &[]), vec![]);\nassert_eq!(combine(vec![0, 65535, 0], &[65535, 0]), vec![]);\nassert_eq!(combine(vec![1, 3, 5], &[2, 4, 6]), vec![6, 5, 4, 3, 2, 1]);\n} }\n",
+    "baseline": false,
+    "candidate": true
+  },
+  {
+    "id": "weak-ambiguity",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i32], right: &[i32]) -> Vec<i32> { todo!() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() { assert_eq!(combine(&[], &[]), Vec::<i32>::new()); } }\n",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "mismatched-elements",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i32], right: &[i64]) -> Vec<i32> { todo!() }\n#[cfg(test)] mod tests { #[test] fn unrelated() { assert_eq!(2+2,4); } }\n",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "mutable-reference",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &mut [i32], right: &[i32]) -> Vec<i32> { todo!() }\n#[cfg(test)] mod tests { #[test] fn unrelated() { assert_eq!(2+2,4); } }\n",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "three-arguments",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i32], right: &[i32], extra: i32) -> Vec<i32> { todo!() }\n#[cfg(test)] mod tests { #[test] fn unrelated() { assert_eq!(2+2,4); } }\n",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "wrong-return",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i32], right: &[i32]) -> bool { todo!() }\n#[cfg(test)] mod tests { #[test] fn unrelated() { assert!(true); } }\n",
+    "baseline": false,
+    "candidate": false
+  },
+  {
+    "id": "already-implemented",
+    "text": "Implement combine",
+    "code": "pub fn combine(left: &[i32], right: &[i32]) -> Vec<i32> { Vec::new() }\n#[cfg(test)] mod tests { use super::combine; #[test] fn behavior() { assert_eq!(combine(&[], &[]), Vec::<i32>::new()); } }\n",
+    "baseline": false,
+    "candidate": false
+  }
+]
