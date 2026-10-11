@@ -4,10 +4,7 @@ use std::collections::BTreeSet;
 use std::sync::OnceLock;
 
 use glassmind_english::English;
-use glassmind_english_rust::{
-    rename_requests,
-    repair_requests::{self, SpeechAct},
-};
+use glassmind_english_rust::rename_requests;
 use glassmind_meaning::interface::{Language, Next, Reading, Spoken, TokenSpan, Understanding};
 use glassmind_meaning::{Action, Question, Reply, Trouble, Utterance};
 use glassmind_models::IntentModel;
@@ -70,18 +67,8 @@ impl CodingLanguage<'_> {
         let meaning = match intent {
             "build_status" => Utterance::Ask(Question::Passes(RustCheck::Build)),
             "test_status" => Utterance::Ask(Question::Passes(RustCheck::Test)),
-            "fix_build"
-                if repair_requests::speech_act(text)
-                    == Some(SpeechAct::Repair(RustCheck::Build)) =>
-            {
-                Utterance::Command(Action::Repair(RustCheck::Build))
-            }
-            "fix_tests"
-                if repair_requests::speech_act(text)
-                    == Some(SpeechAct::Repair(RustCheck::Test)) =>
-            {
-                Utterance::Command(Action::Repair(RustCheck::Test))
-            }
+            "fix_build" => Utterance::Command(Action::Repair(RustCheck::Build)),
+            "fix_tests" => Utterance::Command(Action::Repair(RustCheck::Test)),
             _ => return Vec::new(),
         };
         // Negated requests need a richer reading than a bag of words.
@@ -108,25 +95,6 @@ impl Language<Rust> for CodingLanguage<'_> {
         self.english.tokens(text)
     }
     fn understand(&self, text: &str) -> Understanding<Rust> {
-        self.repair_boundary(text, self.legacy_understand(text))
-    }
-    fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
-        let guesses = self.legacy_guesses(text);
-        match self.repair_boundary(text, Understanding::Readings(guesses)) {
-            Understanding::Readings(rs) => rs,
-            _ => Vec::new(),
-        }
-    }
-    fn say(&self, reply: &Reply<Rust>) -> Option<Spoken> {
-        self.english.say(reply)
-    }
-    fn next(&self, prefix: &str) -> Vec<Next> {
-        self.english.next(prefix)
-    }
-}
-
-impl CodingLanguage<'_> {
-    fn legacy_understand(&self, text: &str) -> Understanding<Rust> {
         let understood = self.english.understand(text);
         if let Understanding::Readings(ref rs) = understood
             && (rename_requests::legacy_compatible(text)
@@ -189,7 +157,7 @@ impl CodingLanguage<'_> {
         }
         understood
     }
-    fn legacy_guesses(&self, text: &str) -> Vec<Reading<Rust>> {
+    fn guesses(&self, text: &str) -> Vec<Reading<Rust>> {
         if rename_requests::concerns_rename(text)
             || rename_requests::request(text).is_some()
             || Self::contains_rename(&self.english.understand(text))
@@ -201,46 +169,11 @@ impl CodingLanguage<'_> {
         guesses.extend(self.coding(text));
         guesses
     }
-    fn repair_boundary(&self, text: &str, understood: Understanding<Rust>) -> Understanding<Rust> {
-        let act = repair_requests::speech_act(text);
-        let meaning = act.map(|a| match a {
-            SpeechAct::Repair(k) => Utterance::Command(Action::Repair(k)),
-            SpeechAct::Status(k) => Utterance::Ask(Question::Passes(k)),
-            SpeechAct::Problems(k) => Utterance::Ask(Question::Problems(k)),
-        });
-        let mut rs = match understood {
-            Understanding::Readings(rs) => rs,
-            failed if meaning.is_none() => return failed,
-            _ => Vec::new(),
-        };
-        rs.retain(|r| match r.meaning {
-            Utterance::Command(Action::Repair(RustCheck::Build | RustCheck::Test)) => {
-                meaning.as_ref() == Some(&r.meaning)
-            }
-            _ => true,
-        });
-        if let Some(meaning) = meaning {
-            // A complete status/request clause establishes its kind, independent
-            // of model confidence. Retain original exact readings for provenance.
-            rs.retain(|r| r.meaning == meaning);
-            if rs.is_empty() {
-                rs.push(Reading {
-                    meaning,
-                    rules: vec![RuleInfo::new("en.rust.repair_speech", HAND)],
-                    parse: "fully consumed repair speech act".into(),
-                    idle: 0,
-                    edits: 0,
-                    discarded: Vec::new(),
-                });
-            }
-        }
-        if rs.is_empty() {
-            Understanding::Failed {
-                trouble: Trouble::Unsupported,
-            }
-        } else {
-            Understanding::Readings(rs)
-        }
+    fn say(&self, reply: &Reply<Rust>) -> Option<Spoken> {
+        self.english.say(reply)
+    }
+    fn next(&self, prefix: &str) -> Vec<Next> {
+        self.english.next(prefix)
     }
 }
 
@@ -548,57 +481,5 @@ mod rename_tests {
                 "{text}"
             );
         }
-    }
-}
-
-#[cfg(test)]
-mod repair_speech_tests {
-    use super::*;
-    #[test]
-    fn frozen_authority_in_understand_and_guesses() {
-        let switches = Switches::all_on();
-        let english = English::new(glassmind_english_rust::rules(), &switches);
-        let language = CodingLanguage {
-            english: &english,
-            switches: &switches,
-        };
-        let mut failures = Vec::new();
-        for row in include_str!("../../../tools/coding-repair-speech/cases.tsv").lines() {
-            let (expected, text) = row.split_once('\t').unwrap();
-            let want = match expected {
-                "repair_build" => Some(Utterance::Command(Action::Repair(RustCheck::Build))),
-                "repair_tests" => Some(Utterance::Command(Action::Repair(RustCheck::Test))),
-                "status_build" => Some(Utterance::Ask(Question::Passes(RustCheck::Build))),
-                "status_tests" => Some(Utterance::Ask(Question::Passes(RustCheck::Test))),
-                "refuse" => None,
-                _ => panic!("invalid authored case"),
-            };
-            let understood = language.understand(text);
-            let rs = match understood {
-                Understanding::Readings(rs) => rs,
-                _ => vec![],
-            };
-            let guesses = language.guesses(text);
-            let safe = |rs: &[Reading<Rust>]| {
-                rs.iter().all(|r| {
-                    !matches!(
-                        r.meaning,
-                        Utterance::Command(Action::Repair(RustCheck::Build | RustCheck::Test))
-                    )
-                })
-            };
-            let okay = match want {
-                Some(ref m) => {
-                    !rs.is_empty()
-                        && rs.iter().all(|r| &r.meaning == m)
-                        && guesses.iter().all(|r| &r.meaning == m)
-                }
-                None => safe(&rs) && safe(&guesses),
-            };
-            if !okay {
-                failures.push(format!("{text}: {rs:?}; guesses={guesses:?}"));
-            }
-        }
-        assert!(failures.is_empty(), "{}", failures.join("\n"));
     }
 }
