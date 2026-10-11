@@ -162,6 +162,11 @@ fn candidates(sig: &syn::Signature) -> Result<Vec<String>, String> {
                             "{iter}{reverse}.collect::<::std::string::String>()"
                         ));
                     }
+                    if output == Ty::String && iter.ends_with("split_whitespace()") {
+                        out.push(format!(
+                            "{iter}{reverse}.collect::<::std::vec::Vec<_>>().join(\" \")"
+                        ));
+                    }
                     if output == Ty::Vec(Box::new(Ty::String))
                         && iter.ends_with("split_whitespace()")
                     {
