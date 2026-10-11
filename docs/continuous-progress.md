@@ -90,8 +90,8 @@ Merged `79b418bda8168496bdf29c2bc47ea7ff1ff88bda` at2026-10-11T07:31:32Z,
 matching reviewed head `412f11eaedbf4d69e4d084a94cfe283762a515ed` exactly.
 CI38121545390 passed. Push31650, create65060 and merge75501 are COMPLETE.
 Do not repeat this PR's checks, merge or completed full dev evaluations.
-Known completed-worker tokens: 101,222,731, with cached input included once;
-parent usage and unfinished identifier-role/route-authority workers are excluded.
+Known completed-worker tokens: 105,079,930, with cached input included once;
+parent usage and unfinished field-owner/route-authority workers are excluded.
 
 CHECKISOLATION is COMPLETE. Its original 21 files (332,251 bytes) are archived at
 WORK/checkisolation-run/submitted. All 21 provenance entries were verified.
@@ -191,16 +191,48 @@ Scope inactive; auth link and restored worktree removed after archival verificat
 This is the third rejected implementation-family attempt: change hypothesis,
 not a fourth cosmetic retry. Prior rejections remain rejected.
 
-IDENTIFIERROLES is ACTIVE: PID3838215, scope
-`glassmind-continuous-identifierroles.scope`, branch continuous/identifierroles,
-WORK/identifierroles atfd01b9b; run WORK/identifierroles-run;
-brief WORK/identifierroles-task.txt. It independently established the actual
-lexical cause: caller is an English role noun and renamed a known English word;
-implement_again itself already works. Quoted controls15/15 pass. Preregistered
-explicit identifier constituents at Rust name/kind/destination positions,
-42 authored contracts and native exact-edit checks; no synthesis revival.
-Owns minimal English lexicon and Rust bridge plus new reports. No world or
-CLI edits. Parent full765 and relevant grammar regressions required before merge.
+IDENTIFIERROLES is COMPLETE. Original submission136files/1,264,386bytes
+archived atWORK/identifierroles-run/submitted;129manifest entries,4frozen files,
+12source/binary/adapter identities verified. Parent applied exact V2 source and
+combined it with the separate tokenizer fix. Runtime commit
+5f2859a730f6d20a0ac64ca9a7551821ed123e86; integrated binary
+ca120ec676a8979d9116ef10380e58cd6f7f3d033fc97ade968a7d510c5b1bd7.
+Parent fixed8 sample and full42 contracts reproduce all worker outcomes and
+actual source files exactly:33/42 ->42/42,10 ->14 verified renames,33retained.
+All8 spelling checks safe; combined grammar adds one correct edit (7total).
+All43 scoped English tests and workspace fmt/clippy/release/strict4smoke pass.
+Full1340grammar and120reading parse reports are byte-identical to baseline.
+Neither byte-probability nor QA scores were rerun or reinterpreted.
+Parent sessions28741,66301,78427,78469 COMPLETE. Raw:
+WORK/coordinator/identifierroles-review; small checks in tools/coding-identifier-roles/parent.
+Original V1 remains rejected for three existing English test failures; narrower
+V2 introduces IdentifierMention only for explicit location/edit roles. Known
+export26/27 and AddField14/15 failures remain unchanged and disclosed. AddField
+live-path rollback assumption fails under inherited native relocation; not fixed
+by this grammar change. Scope inactive, login link/worktree removed after another
+archive/repository-copy verification. Worker usage now included.
+
+Full765 is RUNNING on exact5f2859a/ca120ec6, parent session75904.
+Command: GLASSMIND=WORK/coordinator/identifierroles-review/glassmind-integrated
+GLASSMIND_SCRATCH=WORK/coordinator/identifierroles-full/native-scratch
+tools/rustbench-dev.sh WORK/coordinator/identifierroles-full.
+Results are written only at completion; inspect run.log for progress, do not
+restart or call a missing results file a failure. Keep full gate>=174passes,
+all174 old passes retained,0fail. Prior baseline results:
+WORK/coordinator/checkisolation-full/results.jsonl SHA c478ff2400ac6d947dfba6eb89aec0e7c8deb14268f898edd9095ca396817594.
+No final acceptance or merge claim yet. Root target/release binary isca120ec6.
+
+FIELDOWNERS is ACTIVE: PID3992602, scope
+`glassmind-continuous-fieldowners.scope`, branch continuous/fieldowners,
+WORK/fieldowners at5f2859a; runWORK/fieldowners-run; briefWORK/fieldowners-task.txt.
+Independent quoted owner audit identifies a world limitation: rename_field
+resolves a unique owner but rename_at rejects homonymous fields globally. Worker
+must implement bounded owner-aware occurrence resolution, not delete that safety
+check. Only world lib/new rename_fields helper and new owned reports. Requires
+actual native behavior and exact unrelated-owner preservation, ambiguity/alias/
+macro/shorthand/unknown-receiver refusal where unsupported. No English/CLI/checks
+changes. Baselineca120ec6 has pending full765 as explicitly disclosed; world code
+is identical to validated1331ac7. Worker8GiB/0swap and Astra fast/ChatGPT verified.
 
 ROUTEAUTHORITY is ACTIVE: PID3856024, scope
 `glassmind-continuous-routeauthority.scope`, branch continuous/routeauthority,
@@ -213,13 +245,13 @@ both modes, memory93+41 both, stale-answer/goodbye gates, calc27/story47/facts52
 full3987 story byte equality, all1303 previously correct learned proposals
 retained with new coverage and no newly wrong accepted proposal on3100.
 Parent later independently verifies integrated runtime and full2821 facts.
-Both new workers use verified Astra fast/ChatGPT, no API keys, scope8GiB/0swap,
+Both active workers use verified Astra fast/ChatGPT, no API keys, scope8GiB/0swap,
 explicit persistent TMPDIR and owned GLASSMIND_SCRATCH. Current model workers:2.
-No parent evaluation remains running. Old stopped dirty loop untouched.
+Parent full765 session75904 is running. Old stopped dirty loop untouched.
 
 Next: finish preserving the rejection evidence, review each new worker only
 when terminal, archive the original before any changes/removal, then run full
-affected gates for promising candidates. Published runtime is still1331ac7; local tokenizer fix d212378/aa27ec44 is
+affected gates for promising candidates. Published runtime is still1331ac7; combined coding5f2859a/ca120ec6 is
 awaiting full dev as described above. No blocker or goal completion.
 
 ### Verified current batch
