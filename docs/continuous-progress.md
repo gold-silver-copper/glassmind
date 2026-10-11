@@ -2,10 +2,45 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — full independent claims acquisition and projection are
-running. The new multi-shard importer and existing-artifact regressions pass.
+This turn: PROGRESS — facts acquisition/projection continue; a bounded coding
+improvement passed native/TRAIN gates and is running the full DEV benchmark.
 Known completed-worker tokens: 201,926,299 (cached input counted once; parent
 and interrupted usage excluded). No model workers ran in this batch.
+
+## Concurrent coding improvement: full DEV is running
+
+WORK/word-join, branchcontinuous/word-join at5e4924a. Frozenplan55a04d9,
+cases743530a, runtime7282d2e (only5lines in implementation.rs). Reused public
+TRAIN reveals missing word-sequence joining; adds original/reversed word order
+joined by one space, generated solely from &str->String signature. Existing
+candidates/grammar/32candidate90s budgets/unique-survivor verification preserved.
+No modelworkers, authentication changes, new downloads or held-out access.
+
+RUN=WORK/coordinator/word-join. Baseline7473e886... preserved asRUN/baseline.
+CandidateRUN/candidate SHA b04a929a56f4fff3e1e748477856311a2098a5e95044b04bb1a5662fe3d99a78.
+Sourcehash and inputs in candidate.json; pre-dev.json freezes all passed gates.
+59world-rust tests pass;10new authored nativecases pass (5implementations,
+5unchangedrefusals, including2survivor ambiguity). All66oldnative contracts pass,
+including18withtargetenvunset. All20oldnative sourceoutcomes exactbyteparity.
+Originalhelper invocation missed archivedfreeze.py before candidate execution;
+originallogs retained, rerunused hash-identicalcomplete archivedfixtures.
+
+TRAIN sample5/6 and full5/60 vsold3/60. Two gains are reverse-words hurried/terse;
+all3oldsum-even bodies byte-identical. Independentnative verification on all5
+acceptedTRAIN outputs passes; no tests/sourceoutsideplaceholder modified.
+Workspacefmt/clippy/release/strict4smoke passed. Build60530, candidate44326,
+oldnative69580,sample63542,extra50647,independent47439,unset78083,full58912,
+verify40297,workspace60463 COMPLETE. Do not repeat these successful gates.
+
+Full765 codingDEV session20945 RUNNING via unchangedtools/rustbench-dev.sh,
+with fixedcandidate, benchmarkf79e71a clean and runnerSHAaddadae4... . Output
+RUN/full765/run.log; results.jsonl is written at completion (its current absence
+is not failure). Gate >=220passes/all218previouspasses/0failed. Baseline
+WORK/coordinator/implgrammar-corrected/full765-v2/results.jsonl SHAf76e6f43... .
+After terminalsuccess run tools/coding-word-join/compare-full.py withpaths from
+full-gate.json. PreserveTRAIN overlap caveat; no unseen-task claim. Thenintegrate,
+updatejournal/README/reports and ship exactreviewedheadwithgreenCI. Factsjobsbelow
+remain separate andmustcontinue. Root hasnotintegrated word-joinruntimeyet.
 
 ## Active full claims experiment: preserve and monitor existing jobs
 
