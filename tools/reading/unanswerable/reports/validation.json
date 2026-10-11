@@ -1,0 +1,51 @@
+{
+  "status": "REJECTED_CAL",
+  "tests_passed": 8,
+  "clippy": "passed --lib --bin reading-qa -D warnings",
+  "independently_recomputed_cal_frontier": true,
+  "default_v1_full11873_replay_byte_identical": true,
+  "default_prediction_sha256": "6dd02aa2757011bec9971e47aef04e08260426f089eea004396ac13f0f9666a4",
+  "original_v1_model_sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5",
+  "runtime_restored_byte_exact": true,
+  "rejected_patch_applies": true,
+  "all_selected_article_title_context_id_overlaps": 0,
+  "removed_train_contexts": 0,
+  "max_correct_at_precision60": 48,
+  "first_weights_sha256": "0d9b397a11cd1f825320d6808d3dc70118875ef05507dadd99e13843a7cd7588",
+  "candidate_dev_run": false,
+  "source": {
+    "source_revision": "eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+    "source_url": "https://rajpurkar.github.io/SQuAD-explorer/",
+    "license": "Dataset CC-BY-SA-4.0; repository and official evaluation script MIT",
+    "downloaded_at": "2026-10-11T06:07:48.491668+00:00",
+    "new_download_bytes": 46494161,
+    "files": [
+      {
+        "file": "train-v2.0.json",
+        "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/train-v2.0.json",
+        "bytes": 42123633,
+        "sha256": "68dcfbb971bd3e96d5b46c7177b16c1a4e7d4bdef19fb204502738552dede002",
+        "articles": 442,
+        "questions": 130319,
+        "unanswerable": 43498
+      },
+      {
+        "file": "dev-v2.0.json",
+        "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/dev-v2.0.json",
+        "bytes": 4370528,
+        "sha256": "80a5225e94905956a6446d296ca1093975c4d3b3260f1d6c8f68bc2ab77182d8",
+        "articles": 35,
+        "questions": 11873,
+        "unanswerable": 5945
+      }
+    ],
+    "scorer_sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4",
+    "note": "Only official public TRAIN/DEV downloaded. No test, leaderboard predictions, example predictions or hidden evaluations. Existing v1 experiment remains unchanged; no model trained or evaluated yet."
+  },
+  "old_squad1_outcomes": "Preserved by byte-exact original runtime restoration and unchanged default proposal code; no v1 DEV data read or replayed.",
+  "limitations": [
+    "No passing CAL threshold; no candidate DEV scores",
+    "Hashed lexical alignment is not entailment",
+    "No main CLI or workspace-wide cross-track gate run"
+  ]
+}

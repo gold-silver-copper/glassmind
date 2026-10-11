@@ -1,0 +1,80 @@
+{
+  "source_sha256": "24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0",
+  "cases": [
+    {
+      "gold": "3 Km",
+      "parsed": {
+        "case": "unsupported",
+        "reason": "unsupported_or_malformed_label",
+        "coefficient": null,
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": null
+      },
+      "prediction": {
+        "status": "answer",
+        "value": "3",
+        "unit": "km"
+      },
+      "result": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      },
+      "expected": "unsupported non-ASCII unit alias"
+    },
+    {
+      "gold": "3 Kg",
+      "parsed": {
+        "case": "unsupported",
+        "reason": "unsupported_or_malformed_label",
+        "coefficient": null,
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": null
+      },
+      "prediction": {
+        "status": "answer",
+        "value": "3",
+        "unit": "kg"
+      },
+      "result": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      },
+      "expected": "unsupported non-ASCII unit alias"
+    },
+    {
+      "gold": "3 Kph",
+      "parsed": {
+        "case": "unsupported",
+        "reason": "unsupported_or_malformed_label",
+        "coefficient": null,
+        "dimension": null,
+        "scale": null,
+        "unit": null,
+        "canonical": null
+      },
+      "prediction": {
+        "status": "answer",
+        "value": "3",
+        "unit": "kph"
+      },
+      "result": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      },
+      "expected": "unsupported non-ASCII unit alias"
+    }
+  ]
+}

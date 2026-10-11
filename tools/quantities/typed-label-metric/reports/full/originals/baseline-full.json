@@ -1,0 +1,314 @@
+{
+  "dataset": "MathQA",
+  "split": "official-validation",
+  "total": 4475,
+  "right": 22,
+  "refused": 4450,
+  "wrong": 3,
+  "non_numeric_gold": 1229,
+  "metric": "exact numeric value in requested units; no choice input; all rows count",
+  "questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+  "binary_sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a",
+  "answered": [
+    {
+      "index": 94,
+      "question": "what is 30 % of 80 ?",
+      "expected": "24",
+      "actual": {
+        "status": "answer",
+        "value": "24",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 145,
+      "question": "160 % of 5 / 8 =",
+      "expected": "1",
+      "actual": {
+        "status": "answer",
+        "value": "1",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 454,
+      "question": "what percent of 150 is 40 ?",
+      "expected": "2667/100",
+      "actual": {
+        "status": "answer",
+        "value": "80/3",
+        "unit": "percent",
+        "method": "exact percentage relation"
+      },
+      "outcome": "wrong"
+    },
+    {
+      "index": 509,
+      "question": "what is 121 times 11 ?",
+      "expected": "1331",
+      "actual": {
+        "status": "answer",
+        "value": "1331",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 687,
+      "question": "32 % of 1500 is",
+      "expected": "480",
+      "actual": {
+        "status": "answer",
+        "value": "480",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 819,
+      "question": "what percent of 14 is 14 percent of 1 ?",
+      "expected": "1",
+      "actual": {
+        "status": "answer",
+        "value": "1",
+        "unit": "percent",
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 882,
+      "question": "the ratio of three numbers is 5 : 1 : 4 and their sum is 1000 . the last number of the three numbers is ?",
+      "expected": "400",
+      "actual": {
+        "status": "answer",
+        "value": "400",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 1094,
+      "question": "11 times a number gives 132 . the number is",
+      "expected": "12",
+      "actual": {
+        "status": "answer",
+        "value": "12",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 1239,
+      "question": "what is 82 % of 3 / 5 ?",
+      "expected": "123/250",
+      "actual": {
+        "status": "answer",
+        "value": "123/250",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 1252,
+      "question": "if 15 % of 30 % of 50 % of a number is 108 , then what is the number ?",
+      "expected": "4800",
+      "actual": {
+        "status": "answer",
+        "value": "4800",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 1587,
+      "question": "what percent of 250 is 45 ?",
+      "expected": "18",
+      "actual": {
+        "status": "answer",
+        "value": "18",
+        "unit": "percent",
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 1702,
+      "question": "14 times a number gives 210 . the number is",
+      "expected": "15",
+      "actual": {
+        "status": "answer",
+        "value": "15",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2087,
+      "question": "( 3080 + 6160 ) / 28",
+      "expected": "330",
+      "actual": {
+        "status": "answer",
+        "value": "330",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2113,
+      "question": "2001 + 1015",
+      "expected": "3016",
+      "actual": {
+        "status": "answer",
+        "value": "3016",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2398,
+      "question": "10 + 19",
+      "expected": "29",
+      "actual": {
+        "status": "answer",
+        "value": "29",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2410,
+      "question": "50 % of a number is more than 40 % of 120 by 180 . find the number ?",
+      "expected": "456",
+      "actual": {
+        "status": "answer",
+        "value": "456",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2454,
+      "question": "the ratio of three numbers is 2 : 3 : 4 and their sum is 180 . the second number of the three numbers is ?",
+      "expected": "60",
+      "actual": {
+        "status": "answer",
+        "value": "60",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2911,
+      "question": "( 3220 + 6160 ) / 28",
+      "expected": "335",
+      "actual": {
+        "status": "answer",
+        "value": "335",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 3339,
+      "question": "if 35 % of a number is 24 less than 50 % of that number , then the number is ?",
+      "expected": "160",
+      "actual": {
+        "status": "answer",
+        "value": "160",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 3358,
+      "question": "what is 0.1 percent of 12,356 ?",
+      "expected": "3089/250",
+      "actual": {
+        "status": "answer",
+        "value": "3089/250",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 3795,
+      "question": "convert 300 miles into km ?",
+      "expected": "None",
+      "actual": {
+        "status": "answer",
+        "value": "301752/625",
+        "unit": "km",
+        "method": "dimension-checked exact SI conversion"
+      },
+      "outcome": "wrong"
+    },
+    {
+      "index": 3887,
+      "question": "what is 15 % of 2 / 3 of 0.6 ?",
+      "expected": "3/50",
+      "actual": {
+        "status": "answer",
+        "value": "3/50",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 4045,
+      "question": "what is 66.67 % of 804 ?",
+      "expected": "536",
+      "actual": {
+        "status": "answer",
+        "value": "1340067/2500",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "wrong"
+    },
+    {
+      "index": 4244,
+      "question": "what is 78 % of 4 / 5 ?",
+      "expected": "78/125",
+      "actual": {
+        "status": "answer",
+        "value": "78/125",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 4461,
+      "question": "20 % of a number is more than 30 % of 120 by 80 . find the number ?",
+      "expected": "580",
+      "actual": {
+        "status": "answer",
+        "value": "580",
+        "unit": null,
+        "method": "exact scalar linear constraints"
+      },
+      "outcome": "right"
+    }
+  ]
+}

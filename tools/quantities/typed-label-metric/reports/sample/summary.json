@@ -1,0 +1,171 @@
+{
+  "baseline_to_candidate": {
+    "correct -> correct": 1,
+    "refused -> refused": 99
+  },
+  "case_counts": {
+    "bare_scalar": 62,
+    "explicit_unit": 17,
+    "unsupported": 21
+  },
+  "case_scores": {
+    "bare_scalar": {
+      "baseline": {
+        "correct": 1,
+        "refused": 61,
+        "unscorable": 0,
+        "wrong": 0
+      },
+      "candidate": {
+        "correct": 1,
+        "refused": 61,
+        "unscorable": 0,
+        "wrong": 0
+      }
+    },
+    "explicit_unit": {
+      "baseline": {
+        "correct": 0,
+        "refused": 17,
+        "unscorable": 0,
+        "wrong": 0
+      },
+      "candidate": {
+        "correct": 0,
+        "refused": 17,
+        "unscorable": 0,
+        "wrong": 0
+      }
+    },
+    "unsupported": {
+      "baseline": {
+        "correct": 0,
+        "refused": 21,
+        "unscorable": 0,
+        "wrong": 0
+      },
+      "candidate": {
+        "correct": 0,
+        "refused": 21,
+        "unscorable": 0,
+        "wrong": 0
+      }
+    }
+  },
+  "changed_grades": 0,
+  "comparability_break": true,
+  "conservative": {
+    "baseline": {
+      "correct": 1,
+      "refused": 99,
+      "wrong": 0
+    },
+    "candidate": {
+      "correct": 1,
+      "refused": 99,
+      "wrong": 0
+    }
+  },
+  "freeze": {
+    "dev_read": false,
+    "files": {
+      "DEFINITION.md": "93169dd0aae36c2f8f8a5576889c709ac035ee0491b9009f85f8b6b129f42223",
+      "INPUTS.json": "33ffb06e03b06ebf6f273ae80ffc243baae165a424881aa357a0a15612609d7c",
+      "metric.py": "24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0",
+      "replay.py": "501b496cc40606570364e13a6a273f7e623a3c3b7981c4d2dd7eb2383b242972",
+      "reproduce.py": "f8ce48dcb237163a5c1007bcf348a2635909582a6e67989fc5320e57a8235e86",
+      "test_metric.py": "5aad2087232379329e1343ef6ddaa774c727272842b410c911109e8b4c342057"
+    },
+    "metric": "exact-label-comparison-v3",
+    "pre_freeze_tests": "15 groups passed; deterministic scalar/conversion property loops included",
+    "utc": "2026-10-11T06:21:37.240556+00:00"
+  },
+  "full_questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+  "full_total": 4475,
+  "gold_reasons": {
+    "exact_explicit_unit": 17,
+    "exact_scalar": 62,
+    "option_binding:empty_or_embedded_label": 3,
+    "unsupported_or_malformed_label": 18
+  },
+  "legacy_to_v3": {
+    "baseline": {
+      "correct -> correct": 1,
+      "refused -> refused": 99
+    },
+    "candidate": {
+      "correct -> correct": 1,
+      "refused -> refused": 99
+    }
+  },
+  "legacy_unparseable_full": 1229,
+  "limitations": [
+    "Sparse refusals inferred from indices and full-question hash; payloads unavailable.",
+    "Bare-label accuracy ignores prediction dimension.",
+    "Physical-label equality does not verify dataset/question semantics.",
+    "No candidate acceptance; parent review/rebaseline required."
+  ],
+  "metric": "exact-label-comparison-v3",
+  "new_source_data_bytes": 0,
+  "normalization_change_count": 23,
+  "official_mathqa_metric": false,
+  "parquet": {
+    "train": [
+      "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99",
+      9013733
+    ],
+    "validation": [
+      "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20",
+      1350141
+    ]
+  },
+  "parse_transitions": {
+    "scalar -> bare_scalar": 60,
+    "scalar -> explicit_unit": 4,
+    "scalar -> unsupported": 4,
+    "unsupported -> bare_scalar": 2,
+    "unsupported -> explicit_unit": 13,
+    "unsupported -> unsupported": 17
+  },
+  "question_requested_units_evaluated": false,
+  "scalar_case_ignores_prediction_dimension": true,
+  "scores": {
+    "baseline": {
+      "correct": 1,
+      "refused": 99,
+      "unscorable": 0,
+      "wrong": 0
+    },
+    "candidate": {
+      "correct": 1,
+      "refused": 99,
+      "unscorable": 0,
+      "wrong": 0
+    }
+  },
+  "source": {
+    "baseline": {
+      "answers": 25,
+      "binary_sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a",
+      "bytes": 7947,
+      "legacy_counts": [
+        22,
+        4450,
+        3
+      ],
+      "sha256": "205da7cff1dafa306500ba47b50dbf4819d9889a3795f0911a6030f0f728af53"
+    },
+    "candidate": {
+      "answers": 31,
+      "binary_sha256": "a5d8aa25a10d11b0f90f36639ab36568d40934a75e63ed0475199f9b17d36f41",
+      "bytes": 10278,
+      "legacy_counts": [
+        23,
+        4444,
+        8
+      ],
+      "sha256": "9264e0903e0f5c0cb41ad276d17c01254efd7bdb6d1e2e4c4d2d9dcfbf76826d"
+    }
+  },
+  "total": 100
+}

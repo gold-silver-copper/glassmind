@@ -1,0 +1,399 @@
+diff --git i/crates/reading/src/bin/reading-qa.rs w/crates/reading/src/bin/reading-qa.rs
+index 527f75c..fa47296 100644
+--- i/crates/reading/src/bin/reading-qa.rs
++++ w/crates/reading/src/bin/reading-qa.rs
+@@ -3,7 +3,7 @@
+ use clap::{Parser, Subcommand};
+ use glassmind_reading::qa::{self, Input, Model, TrainingRow};
+ use std::fs::File;
+-use std::io::{BufRead, BufReader, BufWriter, Write};
++use std::io::{BufRead, BufReader, BufWriter, Read, Write};
+ use std::path::PathBuf;
+ #[derive(Parser)]
+ struct Args {
+@@ -23,6 +23,10 @@ enum Command {
+         input: PathBuf,
+         #[arg(long)]
+         model: Option<PathBuf>,
++        #[arg(long, requires = "model")]
++        null_model: Option<PathBuf>,
++        #[arg(long, requires = "model", conflicts_with = "null_model")]
++        null_features: bool,
+     },
+ }
+ fn run() -> Result<(), Box<dyn std::error::Error>> {
+@@ -36,7 +40,23 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
+             m.validate()?;
+             serde_json::to_writer(BufWriter::new(File::create(model)?), &m)?;
+         }
+-        Command::Predict { input, model } => {
++        Command::Predict {
++            input,
++            model,
++            null_model,
++            null_features,
++        } => {
++            let selector: Option<qa::null::NullModel> = null_model
++                .map(|p| -> Result<_, Box<dyn std::error::Error>> {
++                    let f = File::open(p)?;
++                    if f.metadata()?.len() > 1048576 {
++                        return Err("null model exceeds 1MiB".into());
++                    }
++                    let m: qa::null::NullModel = serde_json::from_reader(f.take(1048577))?;
++                    m.validate()?;
++                    Ok(m)
++                })
++                .transpose()?;
+             let model: Option<Model> = model
+                 .map(|p| -> Result<_, Box<dyn std::error::Error>> {
+                     Ok(serde_json::from_reader(BufReader::new(File::open(p)?))?)
+@@ -52,7 +72,19 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
+                     || qa::baseline(&row.context, &row.question),
+                     |m| m.predict(&row.context, &row.question),
+                 );
+-                serde_json::to_writer(&mut out, &result)?;
++                if null_features {
++                    serde_json::to_writer(
++                        &mut out,
++                        &serde_json::json!({"features":qa::null::features(&row.context,&row.question,&result),"prediction":result}),
++                    )?;
++                } else {
++                    let result = if let Some(m) = &selector {
++                        m.select(&row.context, &row.question, result)
++                    } else {
++                        result
++                    };
++                    serde_json::to_writer(&mut out, &result)?;
++                }
+                 writeln!(out)?;
+             }
+         }
+diff --git i/crates/reading/src/qa.rs w/crates/reading/src/qa.rs
+index 7769aea..f6f6394 100644
+--- i/crates/reading/src/qa.rs
++++ w/crates/reading/src/qa.rs
+@@ -579,3 +579,6 @@ mod tests {
+         Ok(())
+     }
+ }
++
++/// Optional answer-versus-null proposal selector.
++pub mod null;
+diff --git 1/crates/reading/src/qa/null.rs 2/crates/reading/src/qa/null.rs
+new file mode 100644
+index 0000000..95ffd00
+--- /dev/null
++++ 2/crates/reading/src/qa/null.rs
+@@ -0,0 +1,312 @@
++// SPDX-License-Identifier: MIT
++//! Optional TRAIN-supervised selector. Scores are not entailment or probabilities.
++use super::*;
++use std::collections::BTreeMap;
++pub const NULL_DIM: usize = 8192;
++#[derive(Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct NullModel {
++    pub version: u32,
++    pub weights: Vec<f64>,
++    pub threshold: f64,
++}
++impl NullModel {
++    pub fn validate(&self) -> Result<(), String> {
++        if self.version != 1
++            || self.weights.len() != NULL_DIM
++            || !self.threshold.is_finite()
++            || self
++                .weights
++                .iter()
++                .any(|w| !w.is_finite() || w.abs() > 1000.0)
++        {
++            return Err("invalid null selector".into());
++        }
++        Ok(())
++    }
++    pub fn select(&self, context: &str, question: &str, mut p: Prediction) -> Prediction {
++        let f = features(context, question, &p);
++        let score: f64 = f
++            .iter()
++            .map(|(i, x)| self.weights.get(*i).copied().unwrap_or(0.0) * x)
++            .sum();
++        let answer = p
++            .proposal
++            .as_ref()
++            .and_then(|s| s.text(context))
++            .unwrap_or("");
++        let accepted = self.validate().is_ok()
++            && !f.is_empty()
++            && score.is_finite()
++            && score >= self.threshold
++            && !answer.is_empty();
++        p.status = if accepted {
++            Status::Predicted
++        } else {
++            Status::Refused
++        };
++        p.answer = if accepted {
++            answer.into()
++        } else {
++            String::new()
++        };
++        p.reason = if accepted {
++            "null_selector_proposal_not_verified"
++        } else {
++            "null_selector_refused"
++        }
++        .into();
++        p
++    }
++}
++fn stem(w: &str) -> &str {
++    for suffix in ["ing", "ed", "es", "s"] {
++        if let Some(s) = w.strip_suffix(suffix)
++            && s.chars().count() >= 3
++        {
++            return s;
++        }
++    }
++    w
++}
++fn neg(w: &str) -> bool {
++    matches!(w, "not" | "never" | "no" | "neither" | "without")
++}
++pub fn features(context: &str, question: &str, p: &Prediction) -> Vec<(usize, f64)> {
++    if context.len() > 65536
++        || question.len() > 2048
++        || !p.score.is_finite()
++        || !p.margin.is_finite()
++        || p.reason == "no_lexical_support"
++    {
++        return vec![];
++    }
++    let (Some(span), Some(ev)) = (&p.proposal, &p.evidence) else {
++        return vec![];
++    };
++    let (Some(answer), Some(evidence)) = (span.text(context), ev.text(context)) else {
++        return vec![];
++    };
++    if answer.is_empty() || ev.start > span.start || span.end > ev.end {
++        return vec![];
++    }
++    let ts = tokens(context);
++    let qs = tokens(question);
++    let es = tokens(evidence);
++    let ans = tokens(answer);
++    if ts.len() > MAX_TOKENS || qs.is_empty() || ans.is_empty() {
++        return vec![];
++    }
++    let wh = qs.first().map_or("", |t| t.word.as_str());
++    let anchors: BTreeMap<&str, &Token> = qs
++        .iter()
++        .filter(|t| !stop(&t.word))
++        .map(|t| (stem(&t.word), t))
++        .collect();
++    if anchors.is_empty() {
++        return vec![];
++    }
++    let mut f = BTreeMap::<usize, f64>::new();
++    let mut emit = |parts: &[&str], v: f64| {
++        if v != 0.0 {
++            *f.entry(hash(parts) % NULL_DIM).or_default() += v;
++        }
++    };
++    let n = anchors.len() as f64;
++    let mut numeric = vec![
++        ("bias", 1.0),
++        ("score", f64::from(p.score).clamp(-10.0, 10.0) / 10.0),
++        ("margin", f64::from(p.margin).clamp(0.0, 2.0) / 2.0),
++        ("qlen", qs.len().min(64) as f64 / 64.0),
++        ("elen", es.len().min(128) as f64 / 128.0),
++        ("alen", ans.len().min(10) as f64 / 10.0),
++        (
++            "caps",
++            ans.iter().filter(|t| t.cap).count() as f64 / ans.len() as f64,
++        ),
++        (
++            "digits",
++            ans.iter().filter(|t| t.digit).count() as f64 / ans.len() as f64,
++        ),
++        ("firstcap", ans.first().is_some_and(|t| t.cap) as u8 as f64),
++        (
++            "firstdigit",
++            ans.first().is_some_and(|t| t.digit) as u8 as f64,
++        ),
++    ];
++    let bucket = if p.margin < 0.05 {
++        "0"
++    } else if p.margin < 0.1 {
++        "1"
++    } else if p.margin < 0.2 {
++        "2"
++    } else if p.margin < 0.4 {
++        "3"
++    } else {
++        "4"
++    };
++    emit(&["margin_bucket", bucket], 1.0);
++    let mut context_hit = 0.0;
++    let mut evidence_hit = 0.0;
++    let mut outside = 0.0;
++    let mut missingcap = 0.0;
++    let mut missingdigit = 0.0;
++    let mut before = 0.0;
++    let mut after = 0.0;
++    let mut inside = 0.0;
++    let mut distance = 0.0;
++    let mut positions = Vec::new();
++    let ai = ts
++        .iter()
++        .position(|t| t.span.start == span.start)
++        .unwrap_or(0);
++    for (word, q) in &anchors {
++        let matches: Vec<_> = ts
++            .iter()
++            .enumerate()
++            .filter(|(_, t)| stem(&t.word) == *word)
++            .collect();
++        context_hit += (!matches.is_empty()) as u8 as f64;
++        let local: Vec<_> = matches
++            .into_iter()
++            .filter(|(_, t)| t.span.start >= ev.start && t.span.end <= ev.end)
++            .collect();
++        evidence_hit += (!local.is_empty()) as u8 as f64;
++        missingcap += (local.is_empty() && q.cap) as u8 as f64;
++        missingdigit += (local.is_empty() && q.digit) as u8 as f64;
++        emit(
++            &[
++                "anchor",
++                word,
++                if local.is_empty() {
++                    "missing"
++                } else {
++                    "present"
++                },
++            ],
++            1.0 / n.sqrt(),
++        );
++        if let Some((i, t)) = local.iter().min_by_key(|(i, _)| i.abs_diff(ai)) {
++            let side = if t.span.end <= span.start {
++                before += 1.0;
++                "before"
++            } else if t.span.start >= span.end {
++                after += 1.0;
++                "after"
++            } else {
++                inside += 1.0;
++                "inside"
++            };
++            outside += (side != "inside") as u8 as f64;
++            distance += i.abs_diff(ai).min(32) as f64 / 32.0;
++            positions.push((q.span.start, *i, side));
++            emit(&["anchor_side", word, side], 1.0 / n.sqrt());
++        } else {
++            distance += 1.0;
++        }
++    }
++    positions.sort_by_key(|x| x.0);
++    if let Some(x) = positions.first() {
++        emit(&["first_anchor", x.2], 1.0);
++    }
++    if let Some(x) = positions.last() {
++        emit(&["last_anchor", x.2], 1.0);
++    }
++    let ordered = positions
++        .windows(2)
++        .filter(|p| p.first().zip(p.get(1)).is_some_and(|(a, b)| a.1 < b.1))
++        .count() as f64
++        / positions.len().saturating_sub(1).max(1) as f64;
++    let qneg = qs.iter().any(|t| neg(&t.word));
++    let eneg = es.iter().any(|t| neg(&t.word));
++    numeric.extend([
++        ("context_hit", context_hit / n),
++        ("evidence_hit", evidence_hit / n),
++        ("outside", outside / n),
++        ("missingcap", missingcap / n),
++        ("missingdigit", missingdigit / n),
++        ("before", before / n),
++        ("after", after / n),
++        ("inside", inside / n),
++        ("distance", distance / n),
++        ("ordered", ordered),
++        ("qneg", qneg as u8 as f64),
++        ("eneg", eneg as u8 as f64),
++        ("neg_disagree", (qneg != eneg) as u8 as f64),
++        (
++            "repeated",
++            context.matches(answer).take(4).count() as f64 / 4.0,
++        ),
++    ]);
++    for (name, v) in numeric {
++        emit(&["numeric", name], v);
++        emit(&["wh_numeric", wh, name], v);
++    }
++    let left = ts
++        .iter()
++        .rev()
++        .find(|t| t.span.end <= span.start)
++        .map_or("<s>", |t| stem(&t.word));
++    let right = ts
++        .iter()
++        .find(|t| t.span.start >= span.end)
++        .map_or("</s>", |t| stem(&t.word));
++    emit(&["left", wh, left], 1.0);
++    emit(&["right", wh, right], 1.0);
++    f.into_iter().collect()
++}
++#[cfg(test)]
++mod tests {
++    use super::*;
++    #[test]
++    fn serialization_and_bounds() -> Result<(), Box<dyn std::error::Error>> {
++        let mut m = NullModel {
++            version: 1,
++            weights: vec![0.0; NULL_DIM],
++            threshold: 0.0,
++        };
++        let bytes = serde_json::to_vec(&m)?;
++        let loaded: NullModel = serde_json::from_slice(&bytes)?;
++        loaded.validate()?;
++        m.weights.pop();
++        assert!(m.validate().is_err());
++        m.weights.push(f64::INFINITY);
++        assert!(m.validate().is_err());
++        assert!(
++            serde_json::from_str::<NullModel>(
++                "{\"version\":1,\"weights\":[],\"threshold\":0,\"answers\":[]}"
++            )
++            .is_err()
++        );
++        Ok(())
++    }
++    #[test]
++    fn provenance_determinism_and_invalid_inputs() {
++        let c = "Éva visited Zürich. Éva visited Zürich.";
++        let q = "Who visited Zürich?";
++        let p = baseline(c, q);
++        let f = features(c, q, &p);
++        assert!(!f.is_empty());
++        assert_eq!(f, features(c, q, &baseline(c, q)));
++        let m = NullModel {
++            version: 1,
++            weights: vec![0.0; NULL_DIM],
++            threshold: 0.0,
++        };
++        let out = m.select(c, q, p);
++        assert_eq!(
++            out.proposal.as_ref().and_then(|s| s.text(c)),
++            Some(out.answer.as_str())
++        );
++        assert_eq!(
++            m.select(
++                "Pavel owns a bike.",
++                "When did volcano erupt?",
++                baseline("Pavel owns a bike.", "When did volcano erupt?")
++            )
++            .status,
++            Status::Refused
++        );
++        assert!(features(&"x".repeat(65537), q, &out).is_empty());
++    }
++}

@@ -1,0 +1,52 @@
+{
+  "decision": "ACCEPT exact-label-comparison-v3 as a separately scoped offline metric and rebaseline only; ratewords runtime remains REJECTED",
+  "original_archive_files": 25,
+  "original_archive_bytes": 5006377,
+  "manifest_entries_verified": 24,
+  "reproduced_byte_identical": [
+    "sample/summary.json",
+    "sample/changed-grades.json",
+    "sample/ledger.jsonl",
+    "sample/gold-normalization-changes.jsonl",
+    "sample/originals/baseline-full.json",
+    "sample/originals/candidate-full.json",
+    "full/summary.json",
+    "full/changed-grades.json",
+    "full/ledger.jsonl",
+    "full/gold-normalization-changes.jsonl",
+    "full/originals/baseline-full.json",
+    "full/originals/candidate-full.json"
+  ],
+  "unit_test_groups": 15,
+  "parent_authored_contract_probes": 20,
+  "parent_exact_conversion_and_near_miss_checks": 304,
+  "parent_malformed_container_probes": 3,
+  "parent_unicode_alias_rejections": 3,
+  "complete_ordered_rows": 4475,
+  "baseline_scores": {
+    "refused": 4450,
+    "correct": 22,
+    "wrong": 3
+  },
+  "frozen_rejected_candidate_scores": {
+    "refused": 4444,
+    "correct": 28,
+    "wrong": 3
+  },
+  "independently_checked_changed_answer_indices": [
+    563,
+    1128,
+    1986,
+    2836,
+    2873
+  ],
+  "current_quantity_source_unchanged_from": "687f2751ff256f2071330590345ef0652fb09baa",
+  "limitations": [
+    "No official MathQA score claim; metric change starts a separate series.",
+    "Bare labels compare numeric coefficient only and do not check requested units or prediction dimensions.",
+    "Explicit units compare exact labels, not whether the dataset answer is mathematically or linguistically correct.",
+    "All unsupported rows retained; answered unsupported gold is unscorable, also report conservative wrong aggregation.",
+    "Old sparse reports preserve no individual refusal payloads; hashes/counts/index coverage imply refusals.",
+    "Rejected runtime candidate receives no acceptance or gain point."
+  ]
+}

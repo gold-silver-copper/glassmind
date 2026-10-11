@@ -1,0 +1,14 @@
+{
+  "metric": "exact-label-comparison-v3",
+  "utc": "2026-10-11T06:21:37.240556+00:00",
+  "dev_read": false,
+  "pre_freeze_tests": "15 groups passed; deterministic scalar/conversion property loops included",
+  "files": {
+    "DEFINITION.md": "93169dd0aae36c2f8f8a5576889c709ac035ee0491b9009f85f8b6b129f42223",
+    "metric.py": "24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0",
+    "test_metric.py": "5aad2087232379329e1343ef6ddaa774c727272842b410c911109e8b4c342057",
+    "replay.py": "501b496cc40606570364e13a6a273f7e623a3c3b7981c4d2dd7eb2383b242972",
+    "reproduce.py": "f8ce48dcb237163a5c1007bcf348a2635909582a6e67989fc5320e57a8235e86",
+    "INPUTS.json": "33ffb06e03b06ebf6f273ae80ffc243baae165a424881aa357a0a15612609d7c"
+  }
+}

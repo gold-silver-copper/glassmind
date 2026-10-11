@@ -1,0 +1,147 @@
+[
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "30"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "comparison": {
+      "grade": "correct",
+      "predicted_canonical": "30",
+      "prediction_dimension_evaluated": true,
+      "question_requested_units_evaluated": false,
+      "reason": "exact_physical_label"
+    },
+    "gold": {
+      "canonical": "30",
+      "case": "explicit_unit",
+      "coefficient": "30",
+      "dimension": "time",
+      "reason": "exact_explicit_unit",
+      "scale": "1",
+      "unit": "sec"
+    },
+    "index": 563,
+    "selected": "30 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "6"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "comparison": {
+      "grade": "correct",
+      "predicted_canonical": "6",
+      "prediction_dimension_evaluated": true,
+      "question_requested_units_evaluated": false,
+      "reason": "exact_physical_label"
+    },
+    "gold": {
+      "canonical": "6",
+      "case": "explicit_unit",
+      "coefficient": "6",
+      "dimension": "time",
+      "reason": "exact_explicit_unit",
+      "scale": "1",
+      "unit": "sec"
+    },
+    "index": 1128,
+    "selected": "6 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "27"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "comparison": {
+      "grade": "correct",
+      "predicted_canonical": "27",
+      "prediction_dimension_evaluated": true,
+      "question_requested_units_evaluated": false,
+      "reason": "exact_physical_label"
+    },
+    "gold": {
+      "canonical": "27",
+      "case": "explicit_unit",
+      "coefficient": "27",
+      "dimension": "time",
+      "reason": "exact_explicit_unit",
+      "scale": "1",
+      "unit": "sec"
+    },
+    "index": 1986,
+    "selected": "27 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "29"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "comparison": {
+      "grade": "correct",
+      "predicted_canonical": "29",
+      "prediction_dimension_evaluated": true,
+      "question_requested_units_evaluated": false,
+      "reason": "exact_physical_label"
+    },
+    "gold": {
+      "canonical": "29",
+      "case": "explicit_unit",
+      "coefficient": "29",
+      "dimension": "time",
+      "reason": "exact_explicit_unit",
+      "scale": "1",
+      "unit": "sec"
+    },
+    "index": 2836,
+    "selected": "29 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "27"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "comparison": {
+      "grade": "correct",
+      "predicted_canonical": "27",
+      "prediction_dimension_evaluated": true,
+      "question_requested_units_evaluated": false,
+      "reason": "exact_physical_label"
+    },
+    "gold": {
+      "canonical": "27",
+      "case": "explicit_unit",
+      "coefficient": "27",
+      "dimension": "time",
+      "reason": "exact_explicit_unit",
+      "scale": "1",
+      "unit": "sec"
+    },
+    "index": 2873,
+    "selected": "27 sec",
+    "series": "candidate"
+  }
+]

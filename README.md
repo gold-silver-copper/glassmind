@@ -97,11 +97,19 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Multi-service dialogue, SGD three-service dev subset | 610/1,119 exact routing-and-state turns; 50 refused; 459 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
 | Word problems, MathQA (numeric answers without choices) | 22/4,475 right; 4,450 refused; 3 wrong | pending |
+| Same MathQA scope, exact-label comparison v3 (separate rebaseline) | 22/4,475 label matches; 4,450 refused; 3 wrong; 0 unscorable answers | pending |
 | Passage QA, SQuAD 1.1 (unverified proposals) | 23.95% raw normalized EM; selected: 815 right, 8,964 refused, 791 wrong / 10,570 | pending |
 | Passage QA, SQuAD2 public-dev baseline (same v1 reader) | 433 correct answers; 5,140 correct expected refusals; 5,064 unsupported; 1,236 wrong / 11,873 | pending |
 | Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
+
+The separate MathQA v3 metric compares bare numeric coefficients or explicit
+compatible quantity labels. Bare-label scores do not check requested units or
+prediction dimensions; matching a label does not prove its mathematical truth.
+All rows remain, including unsupported labels. This rebaseline changes no solver
+or historical score and does not accept the rejected rate candidate.
+[Definition, independent review and reproduction](tools/quantities/typed-label-metric/PARENT.md).
 
 The diagnostic-completeness follow-up leaves all 765 rustbench dev outcomes
 unchanged and fixes both wrong answers in a 32-turn status sample (27 → 29 right,
