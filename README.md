@@ -98,6 +98,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
 | Word problems, MathQA (numeric answers without choices) | 22/4,475 right; 4,450 refused; 3 wrong | pending |
 | Passage QA, SQuAD 1.1 (unverified proposals) | 23.95% raw normalized EM; selected: 815 right, 8,964 refused, 791 wrong / 10,570 | pending |
+| Passage QA, SQuAD2 public-dev baseline (same v1 reader) | 433 correct answers; 5,140 correct expected refusals; 5,064 unsupported; 1,236 wrong / 11,873 | pending |
 | Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
@@ -336,3 +337,9 @@ CI runs `tools/check.sh`: fmt, clippy, build and one fixture smoke, in a
 memory-capped scope. The smoke gate requires every fixture turn to be correct
 and rejects an empty evaluation. Full development runs happen per track before pushing
 a feature batch, rather than after every edit.
+
+The [SQuAD2 baseline](tools/reading/qa2/README.md) separates substantive answers
+from expected refusals. Its official selected EM is46.95%, below an always-refuse
+comparator. One prediction ofA receives official normalization credit despite
+being a wrong substantive answer; the table and separate diagnostic retain it
+as wrong. No new reading model is deployed.

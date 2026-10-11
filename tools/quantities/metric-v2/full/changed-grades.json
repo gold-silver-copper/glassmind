@@ -1,0 +1,156 @@
+[
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "30"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "index": 563,
+    "normalization": {
+      "gold_unit": "sec",
+      "raw_value": "30",
+      "reason": "explicit_unit_conversion",
+      "requested_unit": "seconds",
+      "value": "30"
+    },
+    "normalized_actual": "30",
+    "question": "how many seconds will a train 150 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+    "selected": "30 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "6"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "index": 1128,
+    "normalization": {
+      "gold_unit": "sec",
+      "raw_value": "6",
+      "reason": "explicit_unit_conversion",
+      "requested_unit": "seconds",
+      "value": "6"
+    },
+    "normalized_actual": "6",
+    "question": "how many seconds will a train 60 meters long take to cross a bridge 120 meters long if the speed of the train is 30 m / sec ?",
+    "selected": "6 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "27"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "index": 1986,
+    "normalization": {
+      "gold_unit": "sec",
+      "raw_value": "27",
+      "reason": "explicit_unit_conversion",
+      "requested_unit": "seconds",
+      "value": "27"
+    },
+    "normalized_actual": "27",
+    "question": "how many seconds will a train 100 meters long take to cross a bridge 170 meters long if the speed of the train is 36 kmph ?",
+    "selected": "27 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "29"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "index": 2836,
+    "normalization": {
+      "gold_unit": "sec",
+      "raw_value": "29",
+      "reason": "explicit_unit_conversion",
+      "requested_unit": "seconds",
+      "value": "29"
+    },
+    "normalized_actual": "29",
+    "question": "how many seconds will a train 140 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+    "selected": "29 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "exact typed traversal constraints",
+      "status": "answer",
+      "unit": "seconds",
+      "value": "27"
+    },
+    "after": "correct",
+    "before": "wrong",
+    "index": 2873,
+    "normalization": {
+      "gold_unit": "sec",
+      "raw_value": "27",
+      "reason": "explicit_unit_conversion",
+      "requested_unit": "seconds",
+      "value": "27"
+    },
+    "normalized_actual": "27",
+    "question": "how many seconds will a train 120 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+    "selected": "27 sec",
+    "series": "candidate"
+  },
+  {
+    "actual": {
+      "method": "dimension-checked exact SI conversion",
+      "status": "answer",
+      "unit": "km",
+      "value": "301752/625"
+    },
+    "after": "unscorable",
+    "before": "wrong",
+    "index": 3795,
+    "normalization": {
+      "gold_unit": "km",
+      "raw_value": "480",
+      "reason": "missing_explicit_requested_unit",
+      "requested_unit": null,
+      "value": null
+    },
+    "normalized_actual": null,
+    "question": "convert 300 miles into km ?",
+    "selected": "480 km",
+    "series": "baseline"
+  },
+  {
+    "actual": {
+      "method": "dimension-checked exact SI conversion",
+      "status": "answer",
+      "unit": "km",
+      "value": "301752/625"
+    },
+    "after": "unscorable",
+    "before": "wrong",
+    "index": 3795,
+    "normalization": {
+      "gold_unit": "km",
+      "raw_value": "480",
+      "reason": "missing_explicit_requested_unit",
+      "requested_unit": null,
+      "value": null
+    },
+    "normalized_actual": null,
+    "question": "convert 300 miles into km ?",
+    "selected": "480 km",
+    "series": "candidate"
+  }
+]

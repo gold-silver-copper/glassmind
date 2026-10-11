@@ -1,0 +1,54 @@
+{
+  "decision": "rejected; runtime restored after audit",
+  "candidate_frozen": true,
+  "sample": {
+    "total": 100,
+    "right": 1,
+    "refused": 99,
+    "wrong": 0
+  },
+  "full": {
+    "total": 4475,
+    "right": 23,
+    "refused": 4444,
+    "wrong": 8,
+    "non_numeric_gold": 1229
+  },
+  "quantity_tests": {
+    "passed": 13,
+    "failed": 0
+  },
+  "fmt": "passed",
+  "clippy_all_quantity_targets": "passed",
+  "quantity_build": "passed",
+  "main_cli_build": "passed",
+  "probes": {
+    "passed": 43,
+    "failed": 0
+  },
+  "old_linear_composition": {
+    "passed": 50,
+    "failed": 0
+  },
+  "old_absolute_difference": {
+    "passed": 55,
+    "failed": 0
+  },
+  "synthetic": {
+    "total": 3116,
+    "correct": 3056,
+    "expected_refusals_in_correct": 762,
+    "unsupported": 60,
+    "wrong": 0,
+    "changed_triples": 0
+  },
+  "old_mathqa_answer_records_unchanged": 25,
+  "new_answers_independently_recomputed": 6,
+  "new_semantic_errors_detected": 0,
+  "new_scored_wrong": 5,
+  "new_scored_correct": 1,
+  "main_talk_memory_calculation_story_replay": "not run; parent-owned and candidate rejected",
+  "new_data_bytes": 0,
+  "new_model_calls": 0,
+  "agents_launched": 0
+}

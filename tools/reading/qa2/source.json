@@ -1,0 +1,29 @@
+{
+  "source_revision": "eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+  "source_url": "https://rajpurkar.github.io/SQuAD-explorer/",
+  "license": "Dataset CC-BY-SA-4.0; repository and official evaluation script MIT",
+  "downloaded_at": "2026-10-11T06:07:48.491668+00:00",
+  "new_download_bytes": 46494161,
+  "files": [
+    {
+      "file": "train-v2.0.json",
+      "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/train-v2.0.json",
+      "bytes": 42123633,
+      "sha256": "68dcfbb971bd3e96d5b46c7177b16c1a4e7d4bdef19fb204502738552dede002",
+      "articles": 442,
+      "questions": 130319,
+      "unanswerable": 43498
+    },
+    {
+      "file": "dev-v2.0.json",
+      "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/dev-v2.0.json",
+      "bytes": 4370528,
+      "sha256": "80a5225e94905956a6446d296ca1093975c4d3b3260f1d6c8f68bc2ab77182d8",
+      "articles": 35,
+      "questions": 11873,
+      "unanswerable": 5945
+    }
+  ],
+  "scorer_sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4",
+  "note": "Only official public TRAIN/DEV downloaded. No test, leaderboard predictions, example predictions or hidden evaluations. Existing v1 experiment remains unchanged; no model trained or evaluated yet."
+}

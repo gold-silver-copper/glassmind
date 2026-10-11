@@ -1,0 +1,306 @@
+test_binding (test_metric.Tests.test_binding) ... ok
+test_context_refusals (test_metric.Tests.test_context_refusals) ... ok
+test_exact (test_metric.Tests.test_exact) ... ok
+test_hand_computed_train (test_metric.Tests.test_hand_computed_train) ... ok
+test_malformed (test_metric.Tests.test_malformed) ... ok
+test_units (test_metric.Tests.test_units) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
+{
+  "metric": "mathqa-exact-explicit-units-v2",
+  "total": 100,
+  "full_questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+  "legacy_unparseable_full": 1229,
+  "parse_transitions": {
+    "parseable -> parseable": 63,
+    "unparseable -> unparseable": 29,
+    "parseable -> unparseable": 5,
+    "unparseable -> parseable": 3
+  },
+  "all_gold_categories": {
+    "bare_requested_unit_contract": 62,
+    "missing_explicit_requested_unit": 9,
+    "malformed_numeric": 1,
+    "unsupported_suffix_or_expression": 11,
+    "missing_explicit_percent_request": 1,
+    "unsupported_text_or_expression": 9,
+    "option_binding:option_binding": 3,
+    "percentage_points": 3,
+    "explicit_unit_conversion": 1
+  },
+  "legacy_unparseable_categories": {
+    "missing_explicit_requested_unit": 9,
+    "unsupported_suffix_or_expression": 11,
+    "unsupported_text_or_expression": 9,
+    "bare_requested_unit_contract": 2,
+    "explicit_unit_conversion": 1
+  },
+  "unscorable_gold": 34,
+  "source": {
+    "baseline": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/mathmetric-run/baseline/baseline-full.json",
+      "bytes": 7947,
+      "sha256": "205da7cff1dafa306500ba47b50dbf4819d9889a3795f0911a6030f0f728af53",
+      "binary_sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a",
+      "historical_counts": [
+        22,
+        4450,
+        3
+      ],
+      "answered": 25
+    },
+    "candidate": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/mathmetric-run/baseline/candidate-full.json",
+      "bytes": 10278,
+      "sha256": "9264e0903e0f5c0cb41ad276d17c01254efd7bdb6d1e2e4c4d2d9dcfbf76826d",
+      "binary_sha256": "a5d8aa25a10d11b0f90f36639ab36568d40934a75e63ed0475199f9b17d36f41",
+      "historical_counts": [
+        23,
+        4444,
+        8
+      ],
+      "answered": 31
+    }
+  },
+  "legacy_adapter_sha256": "226f416ddff557bb752a41ae1e799235b0bcab72d2d07287ece12630db48f69d",
+  "freeze": {
+    "frozen_before_dev": true,
+    "utc": "2026-10-11T06:13:46.383609+00:00",
+    "files": {
+      "DEFINITION.md": "3ab7a777ab7931d574d89f9aaccbc22dc162ab921e1e50af9e5d99b40b1f5d31",
+      "metric.py": "a2448b572d7a845eac81727b154e0ab013123854b8db569e166ddd3b18937c73",
+      "test_metric.py": "992bc7062afe643e5eda76778df07a9feb07e7d2b1de7919e139348fb62d5384"
+    }
+  },
+  "scores": {
+    "baseline": {
+      "correct": 1,
+      "refused": 99,
+      "wrong": 0,
+      "unscorable": 0
+    },
+    "candidate": {
+      "correct": 1,
+      "refused": 99,
+      "wrong": 0,
+      "unscorable": 0
+    }
+  },
+  "baseline_to_candidate_transitions": {
+    "refused -> refused": 99,
+    "correct -> correct": 1
+  },
+  "legacy_to_v2_transitions": {
+    "baseline": {
+      "refused -> refused": 99,
+      "correct -> correct": 1
+    },
+    "candidate": {
+      "refused -> refused": 99,
+      "correct -> correct": 1
+    }
+  },
+  "new_data_bytes": 0,
+  "parquet": {
+    "train": {
+      "bytes": 9013733,
+      "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    "validation": {
+      "bytes": 1350141,
+      "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+    }
+  }
+}
+{
+  "metric": "mathqa-exact-explicit-units-v2",
+  "total": 4475,
+  "full_questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+  "legacy_unparseable_full": 1229,
+  "parse_transitions": {
+    "parseable -> parseable": 3009,
+    "unparseable -> unparseable": 1090,
+    "parseable -> unparseable": 237,
+    "unparseable -> parseable": 139
+  },
+  "all_gold_categories": {
+    "bare_requested_unit_contract": 2828,
+    "missing_explicit_requested_unit": 294,
+    "malformed_numeric": 75,
+    "unsupported_suffix_or_expression": 419,
+    "missing_explicit_percent_request": 120,
+    "unsupported_text_or_expression": 335,
+    "option_binding:option_binding": 66,
+    "percentage_points": 242,
+    "explicit_unit_conversion": 78,
+    "non_scalar_choice_text": 10,
+    "ambiguous_requested_unit": 2,
+    "malformed_percent": 6
+  },
+  "legacy_unparseable_categories": {
+    "missing_explicit_requested_unit": 294,
+    "unsupported_suffix_or_expression": 419,
+    "unsupported_text_or_expression": 335,
+    "bare_requested_unit_contract": 59,
+    "explicit_unit_conversion": 78,
+    "malformed_numeric": 24,
+    "non_scalar_choice_text": 10,
+    "ambiguous_requested_unit": 2,
+    "percentage_points": 2,
+    "malformed_percent": 3,
+    "missing_explicit_percent_request": 2,
+    "option_binding:option_binding": 1
+  },
+  "unscorable_gold": 1327,
+  "source": {
+    "baseline": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/mathmetric-run/baseline/baseline-full.json",
+      "bytes": 7947,
+      "sha256": "205da7cff1dafa306500ba47b50dbf4819d9889a3795f0911a6030f0f728af53",
+      "binary_sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a",
+      "historical_counts": [
+        22,
+        4450,
+        3
+      ],
+      "answered": 25
+    },
+    "candidate": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/mathmetric-run/baseline/candidate-full.json",
+      "bytes": 10278,
+      "sha256": "9264e0903e0f5c0cb41ad276d17c01254efd7bdb6d1e2e4c4d2d9dcfbf76826d",
+      "binary_sha256": "a5d8aa25a10d11b0f90f36639ab36568d40934a75e63ed0475199f9b17d36f41",
+      "historical_counts": [
+        23,
+        4444,
+        8
+      ],
+      "answered": 31
+    }
+  },
+  "legacy_adapter_sha256": "226f416ddff557bb752a41ae1e799235b0bcab72d2d07287ece12630db48f69d",
+  "freeze": {
+    "frozen_before_dev": true,
+    "utc": "2026-10-11T06:13:46.383609+00:00",
+    "files": {
+      "DEFINITION.md": "3ab7a777ab7931d574d89f9aaccbc22dc162ab921e1e50af9e5d99b40b1f5d31",
+      "metric.py": "a2448b572d7a845eac81727b154e0ab013123854b8db569e166ddd3b18937c73",
+      "test_metric.py": "992bc7062afe643e5eda76778df07a9feb07e7d2b1de7919e139348fb62d5384"
+    }
+  },
+  "scores": {
+    "baseline": {
+      "correct": 22,
+      "refused": 4450,
+      "wrong": 2,
+      "unscorable": 1
+    },
+    "candidate": {
+      "correct": 28,
+      "refused": 4444,
+      "wrong": 2,
+      "unscorable": 1
+    }
+  },
+  "baseline_to_candidate_transitions": {
+    "refused -> refused": 4444,
+    "correct -> correct": 22,
+    "refused -> correct": 6,
+    "wrong -> wrong": 2,
+    "unscorable -> unscorable": 1
+  },
+  "legacy_to_v2_transitions": {
+    "baseline": {
+      "refused -> refused": 4450,
+      "correct -> correct": 22,
+      "wrong -> wrong": 2,
+      "wrong -> unscorable": 1
+    },
+    "candidate": {
+      "refused -> refused": 4444,
+      "correct -> correct": 23,
+      "wrong -> wrong": 2,
+      "wrong -> correct": 5,
+      "wrong -> unscorable": 1
+    }
+  },
+  "new_data_bytes": 0,
+  "parquet": {
+    "train": {
+      "bytes": 9013733,
+      "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    "validation": {
+      "bytes": 1350141,
+      "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+    }
+  }
+}
+{
+  "legacy_unparseable_diagnostic_categories": {
+    "recognized_unit_but_missing_explicit_requested_unit": 294,
+    "colon_ratio_or_time": 155,
+    "symbolic_or_compound": 29,
+    "currency_prefix": 288,
+    "remaining:unsupported_suffix_or_expression": 224,
+    "now_parseable:bare_requested_unit_contract": 59,
+    "now_parseable:explicit_unit_conversion": 78,
+    "remaining:malformed_numeric": 23,
+    "powers_or_area_volume": 27,
+    "remaining:unsupported_text_or_expression": 32,
+    "none_or_neither": 10,
+    "recognized_unit_but_ambiguous_requested_unit": 2,
+    "now_parseable:percentage_points": 2,
+    "remaining:malformed_percent": 3,
+    "remaining:missing_explicit_percent_request": 2,
+    "remaining:option_binding:option_binding": 1
+  },
+  "postfreeze_context_probes": [
+    {
+      "name": "background_unit_not_request",
+      "gold": "3 hours",
+      "question": "The display reports duration in hours. How many meters did the car travel?",
+      "expected": "unscorable",
+      "observed": {
+        "value": null,
+        "reason": "ambiguous_requested_unit",
+        "gold_unit": "hours",
+        "requested_unit": null,
+        "raw_value": "3"
+      },
+      "passed": true
+    },
+    {
+      "name": "background_percent_not_request",
+      "gold": "25 %",
+      "question": "The percentage of waste is known. What fraction remains?",
+      "expected": "unscorable",
+      "observed": {
+        "value": "25",
+        "reason": "percentage_points",
+        "gold_unit": "percent",
+        "requested_unit": "percent",
+        "raw_value": "25"
+      },
+      "passed": false
+    },
+    {
+      "name": "punctuated_alternative",
+      "gold": "3 hours",
+      "question": "How many hours, or days, does it take?",
+      "expected": "unscorable",
+      "observed": {
+        "value": "3",
+        "reason": "explicit_unit_conversion",
+        "gold_unit": "hours",
+        "requested_unit": "hours",
+        "raw_value": "3"
+      },
+      "passed": false
+    }
+  ],
+  "decision": "DO NOT PROMOTE frozen v2: request-clause and ambiguity recognition fail authored post-freeze probes. Retain scores as diagnostic only; no retuning or runtime acceptance."
+}

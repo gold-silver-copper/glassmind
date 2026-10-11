@@ -2,16 +2,18 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. The preceding
-turn made progress (PR16 merged), and this turn implemented native confirmation
-of ambiguity, verified full765, rejected a dialogue model and started ratewords.
+Goal active: follow `prompts/grow-continuously.md` until stopped. Previous turn
+updated the requested reusable prompt (progress). This turn independently reviewed
+and archived the rejected rate solver/evaluator, then launched two new experiments.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
 PR16 already MERGED `c6c6cd133e485e23f4bb8fe1d8786bcf6442b75e`, exacthead
 69ba975a9f44bd8f3aaf45be355fffe82cbc6577, CI38116227685 passed1m0s.
 Source now `e03437a81f2d047babad5e122aec99a88b1c56af` (repair ambiguity).
-Next batch PR17 not yet opened. Do not repeat completed PR15/16 checks or merges.
+PR17 MERGED ae69f1853adcb20bafbec9cd6176171048d07eb6 at2026-10-11T06:09:32Z,
+exacthead18b334ed81c59954b200a8de6138d8aa5ccad78e;CI38117005318passed1m17s.
+Do not repeat completed PR15/16/17 checks or merges. All repair publishing done.
 
 ### Verified current batch
 
@@ -61,35 +63,80 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens70,754,516 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens72,802,169 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,
 60unsupported0wrong/3116; memory41/calculations27/stories47. No new evaluation
 needed on unchangedtracks; PR16 readingroles/linkedfacts experiments remainrejected.
 
-### Sole live worker and next actions
+### Latest completed experiments and live workers
 
-RATEWORDS PID3036374, scopeglassmind-continuous-ratewords.scope confirmedACTIVE
-8GiB/0swap. WorktreeWORK/ratewords at e03437a, runWORK/ratewords-run,
-briefWORK/ratewords-task.txt. ForcedGPT6Astrafast/ChatGPT,noAPIenv. Ownscrates/
-quantities +newtools/quantities/ratewords. Extends reusable exacttypedconstraints
-for multi-clause rate/amount/duration, fullyconsumedEnglish; no template/answerlookup,
-implicitunit/positivity assumptions. BoundedTRAIN Problem-only inspection, one
-preregisteredrepresentation, no devretuning. Frozen corrected22rightMathQAbinary/
-full/sample/synthetic reports copiedintoownrun; existingtrain/validationparquet and
-pyarrow readonlymounted. Acceptance>=3additional semanticallyvalidcorrectanswers,
-all25oldanswerrecords unchanged, all3116synthetictriples identical, nonewwrong;
-independentFraction/unitrecomputation ofEVERYnewanswer. First100thenfull4475,
-all1229unparseablegoldrowsretained. Parent main-talk and fullindependentreplay
-beforepublishing acceptedcandidate. No newdata/dependencies/models expected.
+RATEWORDS COMPLETE/REJECTED. Scopeinactive, authunlinked. Original24files/121,018
+bytes archived/hashverified atWORK/ratewords-run/submitted, copied to roottools/
+quantities/ratewords with parent-review.json; ready for evidence publication. Original
+worktreeWORK/ratewords removed after parent reconstruction of all17frozen source
+hashes, semantic review, independent six answer derivations, six fresh runtime
+probes and final archive byte verification. Parent review now in parent-review.json. Runtimefullyrestored. Candidatefull4475:23right4444refused8wrong vs
+22/4450/3. All25oldanswerrecords and3116synthetictriples preserved; sixnewanswers
+independentlycomputed, five scoredwrong becauselegacygoldnormalizer returnsNone.
+Original acceptance>=3newcorrect/nonewwrong FAILED; notretroactivelyrescued.
+Worker13tests/43probes/50composition/55absolutechecks pass. No newdownloads.
 
-Next: publishverifiedrepair+auditbatch after exact-headrequiredCI, then review
-ratewords when terminal/archiveoriginalsfirst. Reading needs stronger supervision
-for unsupported questions; previoussupport androlefeature experiments failed.
-Dialogue needs semantic span/usefulness representation, not aloweredCALgate.
-Preserve stopped dirty oldloop. Stoponlyownedjobs onuserstop; nevercompletegoal
-at a milestone. No active parent benchmarkjobs remain.
+SQuAD2 baseline COMPLETE. PinnedpublicTRAIN/DEV46,494,161bytes downloaded into
+WORK/readingqa2-source, same eee5fdbrevision, CCBYSA4; officialscorer/MITlicense
+reused. TRAIN130319incl43498unanswerable;DEV11873incl5945unanswerable. No test or
+externalpredictions. Frozenv1first200 thenfull:433substantivecorrect,5140correct
+expectedrefusals,5064unsupportedanswerable,1236wrong. Selectedprecision25.9437%,
+officialEM46.94685/F147.43594, rawEM11.74935/F117.08871. All-refuse5945exact beats
+v1official5574, so futureacceptance needs substantivecoverage and thatcomparator.
+One wrongpredictionA normalizestoempty andearns officialcredit; preservedofficial
+metric plusseparate5573correct diagnostic. Initialcount assertion caught it AFTER
+completeinference; reusedfrozenpredictions forcorrection, no repeatinference.
+Datajob30781 andbaseline16989/93769 COMPLETE;16989exit1wasdiagnosticassertion,
+notinferencefailure. tools/reading/qa2/{README.md,source.json,baseline.json,baseline.py}
+are newlocalunpublishedartifacts; rawWORK/coordinator/qa2-baseline. No newmodel yet.
+
+MATHMETRIC COMPLETE/REJECTED evaluator v2. Scopeinactive; authunlinked. Original
+17files/1,623,111bytes archived atWORK/mathmetric-run/submitted and hashverified
+before review; worktree removed after final byte verification. New evidence in
+ tools/quantities/metric-v2; unchanged legacy scorer/history and ratewords rejection.
+Parent reproduced six testgroups, first100/full4475, and allseven report files
+byte-identically. Four context failures confirmed: two worker postfreeze probes
+(backgroundpercent,punctuatedunitchoice), plus backgroundin-hours and parenthesized
+unitchoice. Global question pattern matching cannot establish requested units.
+Diagnostic v2 baseline22correct4450refused2wrong1unscorable; candidate28/4444/2/1.
+These are rejected metric results, NOT an accepted improvement. Fullledger preserved.
+Worker incidental TRAINcard rationale/formula exposure disclosed in handoff; not used
+for solver or normalization design. No such parquetcolumns read. Pythononly/noinference.
+
+UNANSWERABLE live:PID3157642,scopeglassmind-continuous-unanswerable.scope,
+worktreeWORK/unanswerable branchcontinuous/unanswerable at80b9f63;
+runWORK/unanswerable-run;briefWORK/unanswerable-task.txt. ForcedAstrafastChatGPT,
+8GiB/0swap confirmed. Owns reading QA optional model/newtools/reading/unanswerable.
+One supervised answer-versus-null model using actual SQuAD2 TRAIN negatives;
+oldv1frozenmodel/default unchanged. Exclude original80FIT/CAL article titles;
+SHA(title) remaining96FIT/32CAL, SHA(id) caps8000/2000. CAL gate>=60%precision,
+>=100correct substantive, strictcorrect>all-refuse; maximumcoverage inclties.
+If CALfails stop beforeDEV. Ifpasses source/model/thresholdfreeze then first200/
+full11873. DEVgate>=433substantivecorrect,<1236wrong,>=50%precision,strictcorrect
+>5945,officialEM>=50.5%; no threshold rescue. All outputs unverified/noautofacts.
+
+TYPEDMETRIC live:PID3159418,scopeglassmind-continuous-typedmetric.scope,
+worktreeWORK/typedmetric branchcontinuous/typedmetric at80b9f63;
+runWORK/typedmetric-run;briefWORK/typedmetric-task.txt. ForcedAstrafastChatGPT,
+8GiB/0swapconfirmed. Owns NEWtools/quantities/typed-label-metric ONLY. Independent
+question-free exact-label contract: bare gold keeps declared legacy numeric-only
+comparison (unitmeaning NOT assessed); explicit-unit gold requires explicit actual
+compatibleunits and exact canonicalvalue. Missing/unknown units unscorable,
+incompatiblewrong. No inference/request-unit guessing. TRAIN-first freeze/test
+before DEVoffline4475replayof25/31frozenanswers; metricacceptance independentof
+candidate score. Legacy/runtime/rejectedcandidate unchanged. Parent must review
+and rebaseline separately before any prospective runtimeacceptance.
+
+Next: publish reviewed baseline/rejected evidence; inspect liveworkers when done,
+archive before review. No activeparentbenchmarkjobs. Two workers total. Preserve
+oldstoppeddirtyloop; stoponlyownedworkersonuserstop. Goalactive, no blocker.
 
 ## Historical checkpoints (superseded by current state above)
 

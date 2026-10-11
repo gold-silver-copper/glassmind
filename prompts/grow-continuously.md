@@ -116,6 +116,12 @@ Repeat this cycle for as long as the goal is active:
 6. Choose and begin the next experiment without asking me. Keep a short
    rolling queue with reasons and evidence, replenished from observed gaps.
 
+Choose the next action yourself even when the queue is empty: reproduce a
+real train/dev failure, identify the missing general capability, and test a
+bounded improvement. Keep each experiment finite so its results can inform
+the next one; the development goal itself has no predetermined end. A
+worker finishing or timing out returns control to this cycle, not to me.
+
 After three experiments on the same hypothesis fail to produce a useful
 gain, change the hypothesis, representation, data or track. Do not repeat
 the same evaluation without a new reason. A plateau triggers investigation
@@ -204,6 +210,12 @@ Track exact owned PIDs, process groups, scopes, worktrees and temporary login
 mounts. Never use `pkill -f` or kill another project's work. Start long jobs
 as supervised background work, inspect results on completion, and do useful
 independent work while they run. Avoid blocking waits longer than 60 seconds.
+
+Before modifying or removing a worker's worktree, preserve its original
+patch, report, commands and results in an owned artifact directory and
+verify their hashes. Review the preserved submission before integration.
+Record whether each experiment is running, completed, rejected or
+interrupted; retain enough evidence to avoid repeating it after a restart.
 
 The existing improvement loop is optional infrastructure. Before restarting
 it, verify its current binary, config, baseline, authentication, sandbox,

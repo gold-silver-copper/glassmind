@@ -1,0 +1,147 @@
+{
+  "decision": "REJECT",
+  "reason": "Only +1 scored correct, below +3; five new scored wrong. Unparseable gold remains wrong by frozen metric. No retuning.",
+  "baseline": {
+    "total": 4475,
+    "right": 22,
+    "refused": 4450,
+    "wrong": 3,
+    "non_numeric_gold": 1229,
+    "binary_sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a"
+  },
+  "candidate": {
+    "total": 4475,
+    "right": 23,
+    "refused": 4444,
+    "wrong": 8,
+    "non_numeric_gold": 1229,
+    "binary_sha256": "a5d8aa25a10d11b0f90f36639ab36568d40934a75e63ed0475199f9b17d36f41"
+  },
+  "baseline_records_preserved": 25,
+  "losses": [],
+  "new_answer_audit": [
+    {
+      "index": 295,
+      "question": "how many seconds will a train 100 meters long take to cross a bridge 140 meters long if the speed of the train is 36 kmph ?",
+      "transcribed_train_m": 100,
+      "transcribed_bridge_m": 140,
+      "transcribed_speed": 36,
+      "transcribed_speed_unit": "km/h",
+      "independent_m_per_s": "10",
+      "independent_seconds": "24",
+      "actual": {
+        "status": "answer",
+        "value": "24",
+        "unit": "seconds",
+        "method": "exact typed traversal constraints"
+      },
+      "scored_outcome": "right",
+      "semantic_review": "Unique complete-crossing duration from both explicit extents and the explicit event speed. No unit default, option, rationale or formula input.",
+      "gold_normalizer_failed": false
+    },
+    {
+      "index": 563,
+      "question": "how many seconds will a train 150 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+      "transcribed_train_m": 150,
+      "transcribed_bridge_m": 150,
+      "transcribed_speed": 36,
+      "transcribed_speed_unit": "km/h",
+      "independent_m_per_s": "10",
+      "independent_seconds": "30",
+      "actual": {
+        "status": "answer",
+        "value": "30",
+        "unit": "seconds",
+        "method": "exact typed traversal constraints"
+      },
+      "scored_outcome": "wrong",
+      "semantic_review": "Unique complete-crossing duration from both explicit extents and the explicit event speed. No unit default, option, rationale or formula input.",
+      "gold_normalizer_failed": true
+    },
+    {
+      "index": 1128,
+      "question": "how many seconds will a train 60 meters long take to cross a bridge 120 meters long if the speed of the train is 30 m / sec ?",
+      "transcribed_train_m": 60,
+      "transcribed_bridge_m": 120,
+      "transcribed_speed": 30,
+      "transcribed_speed_unit": "m/s",
+      "independent_m_per_s": "30",
+      "independent_seconds": "6",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": "seconds",
+        "method": "exact typed traversal constraints"
+      },
+      "scored_outcome": "wrong",
+      "semantic_review": "Unique complete-crossing duration from both explicit extents and the explicit event speed. No unit default, option, rationale or formula input.",
+      "gold_normalizer_failed": true
+    },
+    {
+      "index": 1986,
+      "question": "how many seconds will a train 100 meters long take to cross a bridge 170 meters long if the speed of the train is 36 kmph ?",
+      "transcribed_train_m": 100,
+      "transcribed_bridge_m": 170,
+      "transcribed_speed": 36,
+      "transcribed_speed_unit": "km/h",
+      "independent_m_per_s": "10",
+      "independent_seconds": "27",
+      "actual": {
+        "status": "answer",
+        "value": "27",
+        "unit": "seconds",
+        "method": "exact typed traversal constraints"
+      },
+      "scored_outcome": "wrong",
+      "semantic_review": "Unique complete-crossing duration from both explicit extents and the explicit event speed. No unit default, option, rationale or formula input.",
+      "gold_normalizer_failed": true
+    },
+    {
+      "index": 2836,
+      "question": "how many seconds will a train 140 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+      "transcribed_train_m": 140,
+      "transcribed_bridge_m": 150,
+      "transcribed_speed": 36,
+      "transcribed_speed_unit": "km/h",
+      "independent_m_per_s": "10",
+      "independent_seconds": "29",
+      "actual": {
+        "status": "answer",
+        "value": "29",
+        "unit": "seconds",
+        "method": "exact typed traversal constraints"
+      },
+      "scored_outcome": "wrong",
+      "semantic_review": "Unique complete-crossing duration from both explicit extents and the explicit event speed. No unit default, option, rationale or formula input.",
+      "gold_normalizer_failed": true
+    },
+    {
+      "index": 2873,
+      "question": "how many seconds will a train 120 meters long take to cross a bridge 150 meters long if the speed of the train is 36 kmph ?",
+      "transcribed_train_m": 120,
+      "transcribed_bridge_m": 150,
+      "transcribed_speed": 36,
+      "transcribed_speed_unit": "km/h",
+      "independent_m_per_s": "10",
+      "independent_seconds": "27",
+      "actual": {
+        "status": "answer",
+        "value": "27",
+        "unit": "seconds",
+        "method": "exact typed traversal constraints"
+      },
+      "scored_outcome": "wrong",
+      "semantic_review": "Unique complete-crossing duration from both explicit extents and the explicit event speed. No unit default, option, rationale or formula input.",
+      "gold_normalizer_failed": true
+    }
+  ],
+  "transitions": {
+    "refused_to_right": 1,
+    "refused_to_wrong": 5,
+    "unchanged_right": 22,
+    "unchanged_wrong": 3,
+    "unchanged_refused": 4444
+  },
+  "new_semantic_errors_detected": 0,
+  "scope": "All six new dev answers independently recomputed from English using Fraction; local probes are authored development diagnostics, not independent held-out evaluation."
+}
