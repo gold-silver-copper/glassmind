@@ -30,7 +30,9 @@ Validation:50CLItests pass (26tasktests,11new plan cases), session21034 COMPLETE
 RUN/tests-v4.log. Required fmt/alltargetclippy/releaseworkspace/4of4fixture checks
 session25194 COMPLETE0, RUN/check-final.log. Real CLI smoke13separate processes
 PASS, RUN/cli-smoke/report.json andturns.json; script tools/coding-tasks/smoke.py.
-Failed tests/diagnosis retained. Fixed grammatical idle words incorrectly rejected
+One additional named-dependency/courtesy case passes (51CLItests total),
+session6911 COMPLETE0, RUN/language-check.log; alltargetclippy also passed.
+Only a test was added after runtime candidate pinning. Failed tests/diagnosis retained. Fixed grammatical idle words incorrectly rejected
 as unconsumed input, unknown-name questions bypassing plan preflight, and cancelled
 plans falling through to a ready single task. Mixed repair->rename->test and undo,
 restart budgets, invalid tails, stale sources and native rollback all tested.
