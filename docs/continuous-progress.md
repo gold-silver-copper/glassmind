@@ -48,7 +48,27 @@ Conversation integration completed and locally verified: mixed conversation
 3056 correct, 60 refused, zero wrong (762 correct expected refusals).
 Workspace fmt/clippy/build and strict 4/4 fixture smoke passed. Source commit
 is recorded in the chat score journal; see `docs/talk-quantities.md`.
-Coding and quantities workers remain in progress; poll their scopes/events.
+PR #4 merged after green CI at `f83aefc` on main. Coding worker remains in
+progress; poll its scope/events. Quantities worker completed; scope inactive,
+temporary auth symlink removed, worktree retained until evidence is archived.
+
+Integrated quantities source `e3eb10f`: exact percentage grammar; MathQA
+train/dev adapter. External full dev 5/4469/1 → 14/4458/3 right/refused/wrong
+of 4475; sample 0/100/0 → 1/99/0. Two new scored errors are precision mismatch
+with rounded choices; exact arithmetic independently checked, 300/300
+coordinator Fraction audit correct. Decision: preserve mathematically exact
+answers, report the two scored errors without changing the frozen metric.
+All 3116 synthetic substantive outputs retain status/value/unit; integrated
+talk remains 27/27 and full quantity routing 3056/60/0. Workspace checks and
+strict 4/4 fixture smoke pass on the integrated source.
+
+The worker read the locally authored synthetic regression generator despite
+an overly broad brief restriction. No held-out access occurred; that suite
+was already documented as same-author synthetic data. The disclosure is
+retained in its handoff. No independent-language claim relies on that suite.
+MathQA cache and PyArrow are under `quantities-run/tmp/{mathqa,quantities-deps}`;
+keep those artifacts. Known completed-worker usage is 22,157,081 tokens,
+including cached input, excluding parent and unfinished coding work.
 
 - Generalize verified code editing beyond compiler suggestions.
 - Broaden dialogue service coverage and facts retrieval without gold IDs.

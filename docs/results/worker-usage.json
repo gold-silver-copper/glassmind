@@ -74,6 +74,19 @@
         "output_tokens": 10391
       },
       "source": "accepted loop round 30, including review"
+    },
+    {
+      "track": "numbers-mathqa-continuous",
+      "started_unix": 1791688690.3526623,
+      "finished_unix": 1791688894.1149075,
+      "usage": {
+        "input_tokens": 1139293,
+        "cached_input_tokens": 1063168,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14224,
+        "reasoning_output_tokens": 2600
+      },
+      "source": "continuous batch, MathQA train/dev and exact percentages"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

@@ -78,7 +78,8 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,526 refused; 39 wrong | pending |
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
-| Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | external benchmark pending |
+| Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
+| Word problems, MathQA (numeric answers without choices) | 14/4,475 right; 4,458 refused; 3 wrong | pending |
 | Chat memory and calculations | 41/41 memory checks; 27/27 mixed conversation checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | 1/120 sampled documents parsed; 15 exceed the 48-token cap | pending |
 | Grammar, BLiMP parse-only probe | 1 good preference, 3 bad, 1,336 ties on 1,340 pairs | no probability-model score yet |
@@ -92,6 +93,13 @@ unchanged and fixes both wrong answers in a 32-turn status sample (27 → 29 rig
 model, preserves memory priority and recalls calculation requests across
 sessions. The same 3,116 synthetic quantity questions through `talk` retain
 3,056 correct, 60 unsupported and zero wrong. [Integration evidence](docs/talk-quantities.md).
+
+Exact percentage relations raise MathQA dev coverage from 5 to 14 correct.
+Two additional exact-match failures compare exact results with rounded answer
+choices; both remain counted wrong. This custom numeric metric does not supply
+choices to the solver and cannot normalize 1,229 gold options, which stay in
+the denominator. It is not official multiple-choice accuracy.
+[MathQA scope and reproduction](tools/quantities/HANDOFF.md).
 
 The story dev set is a deterministic episode-level partition of the official
 training data. CLINC thresholds were calibrated on official validation;
