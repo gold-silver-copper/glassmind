@@ -1,0 +1,127 @@
+{
+  "utc": "2026-10-11T10:03:35.734697+00:00",
+  "base_source": "1ab5b03643b34fcca338bb1744758ed240b0ef0a",
+  "stage": "Before first candidate DEV evaluation. No candidate DEV has been inspected.",
+  "files": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/crates/reading/src/syntax.rs": {
+      "bytes": 34168,
+      "sha256": "587209fd2279c49c64c00b9d1fa8c72443213d8adcb6c5f86b9d010574383c91"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/crates/reading/src/lib.rs": {
+      "bytes": 145,
+      "sha256": "ebd9e574f524ca6b4f856a7856030abd45f1931a03c729b4c0e4067c4e10867c"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/crates/reading/src/bin/reading-syntax.rs": {
+      "bytes": 5448,
+      "sha256": "4d37ae3ca0dc082ad30fdc7815882407ed0c1465ca2b8a952f4070a05d438072"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/crates/cli/src/syntax.rs": {
+      "bytes": 3000,
+      "sha256": "a915942f98034f6550297b62eb4ef53e6122318dc949b50f78ab313754c67f32"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/Cargo.lock": {
+      "bytes": 17183,
+      "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/Cargo.toml": {
+      "bytes": 1440,
+      "sha256": "a3652a713fa4b3c805b41207c3197c2b8f811ceb7a54d1c31437a65f08571825"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/reading-syntax": {
+      "bytes": 12189568,
+      "sha256": "91a444107279f19d63e7f2f00042ac073ee70455ca7768d9a7823d7466c382c2"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/model.bin": {
+      "bytes": 12554724,
+      "sha256": "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline/reading-syntax": {
+      "bytes": 12176112,
+      "sha256": "7ca407975aa20deea0aff353ac528e5072e15ff62f9310959fa6b76b1fb6d3bc"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline/glassmind": {
+      "bytes": 77701664,
+      "sha256": "f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline/forms-predictions.jsonl": {
+      "bytes": 949978,
+      "sha256": "059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline/forms.jsonl": {
+      "bytes": 228541,
+      "sha256": "378c98e96d9a201ff1c84749ab969a2e6b3c948c6eed4b856a92d6898da619b6"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline/raw/inputs.jsonl": {
+      "bytes": 149565,
+      "sha256": "a8b55cdb92a2cecf38a753ad64fd247965ad3632d650a20eb93e07782d6a166c"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline/raw/gold.json": {
+      "bytes": 378107,
+      "sha256": "c6d478b23c6c7b584a241dd62a51faae4b37a8d7e3b18709a5e2c89abda85158"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline/raw/predictions.jsonl": {
+      "bytes": 1990039,
+      "sha256": "0d89494f6d05f463da103caacae310eda40c40a4d47bbdbbcacd2ede92741ed7"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/syntax/contracts.py": {
+      "bytes": 2444,
+      "sha256": "b2477baa59daca7f4d483f61cfe7be82fb96838b8defeba62cb60ab22fe26a57"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/syntax/model_check.rs": {
+      "bytes": 1297,
+      "sha256": "59854767a8f2f8107bc0a5574c79efd277aa07bdd6c8dff5fdda6daf3c24b5b0"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/NOTICE.md": {
+      "bytes": 1078,
+      "sha256": "944756ecbb87be1a50298b249bb5503b7818622377a2d1afb2dcc8f24a69eb8b"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/PLAN.md": {
+      "bytes": 3778,
+      "sha256": "d10978b789d50c323e1975b814bbde3990f6793ff77fea176703db9b69f2adf7"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/authored.jsonl": {
+      "bytes": 2069,
+      "sha256": "20410c8d84da616d9a5ae6c52dbc9036c67873cafb2705b962f4ff02b09c0957"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/evaluate.py": {
+      "bytes": 8096,
+      "sha256": "5ca530ed9bcac4fefcb57b0395d6c47e893a4e0873bae387087685a38259ca8b"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/inspect_train.py": {
+      "bytes": 1760,
+      "sha256": "5b079b678cbce3667509d8a84b640202f33322301c56308ebdcb996b37e53320"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/pre-edit.sha256": {
+      "bytes": 155,
+      "sha256": "dbe0a573c44a0615d061dcba1f381f376dfa6cb98a9aa3ba6fbe6239e057ca62"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/reproduce.sh": {
+      "bytes": 1691,
+      "sha256": "dcc63c18042a467fbd5e399f4cf2d4f95b175cc8b9dc0ac8a2a2bd2678b88472"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/source-provenance.json": {
+      "bytes": 1444,
+      "sha256": "aebc7736a585c8b921ebfa6c82ba3498975ddc2fad29c80ee7645c9ca60ada7e"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax/tools/reading/raw-syntax/train-inspection.json": {
+      "bytes": 10523,
+      "sha256": "c017b406b8f6c0207890acbf4dbc75f73d7b1f3edfd96c10fdbcd6f9d186c246"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/en_ewt-ud-train.conllu": {
+      "bytes": 15034493,
+      "sha256": "d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/en_ewt-ud-dev.conllu": {
+      "bytes": 1898574,
+      "sha256": "39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/README.md": {
+      "bytes": 24522,
+      "sha256": "c2dc7edaf5937d18cb3ff142410fde7460e32faa69b2bd0a041abc3f957da281"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/udsyntax-source/LICENSE.txt": {
+      "bytes": 20014,
+      "sha256": "b3d1b0f4c6ae151f7eb78738f46ebd5ee140f8a7f76501ba26af123140d35ae7"
+    }
+  }
+}

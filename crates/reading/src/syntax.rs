@@ -43,41 +43,83 @@ pub struct Prediction {
 fn combining(c: char) -> bool {
     matches!(c as u32, 0x0300..=0x036f | 0x1ab0..=0x1aff | 0x1dc0..=0x1dff | 0x20d0..=0x20ff | 0xfe20..=0xfe2f)
 }
-/// No clitic or multiword expansion. Punctuation scalars are individual tokens.
+fn apostrophe(c: char) -> bool {
+    matches!(c, '\'' | '’')
+}
+fn push_span(text: &str, start: usize, end: usize, out: &mut Vec<TokenSpan>) {
+    out.push(TokenSpan {
+        form: text[start..end].into(),
+        start,
+        end,
+    });
+}
+/// Split only productive terminal clitics, retaining source spelling. Working
+/// backwards also handles compound clitics without a lexical exception table.
+fn push_word(text: &str, start: usize, mut end: usize, out: &mut Vec<TokenSpan>) {
+    let mut suffixes = Vec::new();
+    while let Some((offset, mark)) = text[start..end]
+        .char_indices()
+        .rfind(|(_, c)| apostrophe(*c))
+    {
+        let pos = start + offset;
+        let tail = &text[pos + mark.len_utf8()..end];
+        let cut = if tail.eq_ignore_ascii_case("t")
+            && offset > 1
+            && matches!(text.as_bytes()[pos - 1], b'n' | b'N')
+        {
+            pos - 1
+        } else if offset > 0
+            && ["s", "m", "d", "ll", "re", "ve"]
+                .iter()
+                .any(|s| tail.eq_ignore_ascii_case(s))
+        {
+            pos
+        } else {
+            break;
+        };
+        suffixes.push((cut, end));
+        end = cut;
+    }
+    push_span(text, start, end, out);
+    for (s, e) in suffixes.into_iter().rev() {
+        push_span(text, s, e, out);
+    }
+}
+/// Bounded orthographic segmentation with exact UTF8 source slices. Internal
+/// apostrophes join letters; terminal English clitics are separate words.
+/// Outer quotes and other punctuation remain individual scalars. This does not
+/// expand missing apostrophes, normalize words, or resolve lexical ambiguity.
 pub fn tokenize(text: &str) -> Result<Vec<TokenSpan>> {
     if text.len() > MAX_BYTES {
         return Err("text exceeds 16KiB".into());
     }
     let mut out = Vec::new();
     let mut start = None;
-    for (i, c) in text.char_indices() {
-        if c.is_alphanumeric() || combining(c) {
+    let mut letter_tail = false;
+    let mut chars = text.char_indices().peekable();
+    while let Some((i, c)) = chars.next() {
+        let internal = apostrophe(c)
+            && letter_tail
+            && chars.peek().is_some_and(|(_, next)| next.is_alphabetic());
+        if c.is_alphanumeric() || combining(c) || internal {
             if start.is_none() {
                 start = Some(i);
             }
+            if !combining(c) {
+                letter_tail = c.is_alphabetic();
+            }
         } else {
             if let Some(s) = start.take() {
-                out.push(TokenSpan {
-                    form: text[s..i].into(),
-                    start: s,
-                    end: i,
-                });
+                push_word(text, s, i, &mut out);
             }
+            letter_tail = false;
             if !c.is_whitespace() {
-                out.push(TokenSpan {
-                    form: c.to_string(),
-                    start: i,
-                    end: i + c.len_utf8(),
-                });
+                push_span(text, i, i + c.len_utf8(), &mut out);
             }
         }
     }
     if let Some(s) = start {
-        out.push(TokenSpan {
-            form: text[s..].into(),
-            start: s,
-            end: text.len(),
-        });
+        push_word(text, s, text.len(), &mut out);
     }
     validate_forms(&out.iter().map(|t| t.form.clone()).collect::<Vec<_>>())?;
     Ok(out)
@@ -485,7 +527,7 @@ impl Model {
                 let spans = tokenize(&text)?;
                 let mut p =
                     self.infer(&spans.iter().map(|t| t.form.clone()).collect::<Vec<_>>())?;
-                p.tokenization = "raw_unicode_v1".into();
+                p.tokenization = "raw_unicode_apostrophe_v2".into();
                 p.spans = Some(spans);
                 Ok(p)
             }
@@ -832,7 +874,7 @@ mod tests {
         let ts = tokenize(text).unwrap();
         assert_eq!(
             ts.iter().map(|t| t.form.as_str()).collect::<Vec<_>>(),
-            ["Élodie", "can", "'", "t", "—", "go", "!", "e\u{301}"]
+            ["Élodie", "ca", "n't", "—", "go", "!", "e\u{301}"]
         );
         for t in ts {
             assert_eq!(&text[t.start..t.end], t.form);
@@ -840,6 +882,69 @@ mod tests {
         assert!(tokenize(&"x".repeat(MAX_BYTES + 1)).is_err());
         assert!(tokenize("").is_err());
         assert!(tiny().infer(&vec!["x".into(); 129]).is_err());
+    }
+    fn assert_source_coverage(text: &str, spans: &[TokenSpan]) {
+        let mut end = 0;
+        for span in spans {
+            assert!(span.start >= end && span.end > span.start);
+            assert!(text[end..span.start].chars().all(char::is_whitespace));
+            assert_eq!(&text[span.start..span.end], span.form);
+            assert!(!span.form.chars().any(char::is_whitespace));
+            end = span.end;
+        }
+        assert!(text[end..].chars().all(char::is_whitespace));
+    }
+    #[test]
+    fn raw_apostrophe_frozen_contrasts() {
+        for line in include_str!("../../../tools/reading/raw-syntax/authored.jsonl").lines() {
+            let input: Input = serde_json::from_str(line).unwrap();
+            let text = input.text.unwrap();
+            let spans = tokenize(&text).unwrap();
+            assert_eq!(
+                spans.iter().map(|t| t.form.clone()).collect::<Vec<_>>(),
+                input.forms.unwrap(),
+                "{text}"
+            );
+            assert_source_coverage(&text, &spans);
+        }
+    }
+    #[test]
+    fn raw_apostrophe_bounds_and_controls() {
+        for (text, expected) in [
+            ("x ".repeat(128), 128),
+            ("won't ".repeat(64), 128),
+            ("é".repeat(MAX_BYTES / 2), 1),
+        ] {
+            let spans = tokenize(&text).unwrap();
+            assert_eq!(spans.len(), expected);
+            assert_source_coverage(&text, &spans);
+        }
+        for text in [
+            "x ".repeat(129),
+            "won't ".repeat(65),
+            "é".repeat(MAX_BYTES / 2 + 1),
+            "a\0b".into(),
+            "a\u{7f}b".into(),
+            "a\u{80}b".into(),
+            " \t\n".into(),
+        ] {
+            assert!(tokenize(&text).is_err());
+        }
+        // Boundary adversaries: marks without a base, multibyte letters, quotes,
+        // whitespace, numbers and compound punctuation in every short ordering.
+        let atoms = ["é", "\u{301}", "'", "’", " ", "7", "n", "t", "—"];
+        for a in atoms {
+            for b in atoms {
+                for c in atoms {
+                    let text = format!("{a}{b}{c}");
+                    if let Ok(spans) = tokenize(&text) {
+                        assert_source_coverage(&text, &spans);
+                    } else {
+                        assert!(text.chars().all(char::is_whitespace));
+                    }
+                }
+            }
+        }
     }
     #[test]
     fn roundtrip_and_determinism() {

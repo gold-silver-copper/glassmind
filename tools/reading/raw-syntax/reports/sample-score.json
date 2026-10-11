@@ -1,0 +1,61 @@
+{
+  "mode": "sample",
+  "groups": {
+    "all": {
+      "sentences": 100,
+      "baseline_exact": 65,
+      "candidate_exact": 89,
+      "preserved": 65,
+      "lost": 0,
+      "gained": 24,
+      "valid_source_and_tree": 100,
+      "predicted": 100
+    },
+    "train_nonduplicate": {
+      "sentences": 99,
+      "baseline_exact": 65,
+      "candidate_exact": 89,
+      "preserved": 65,
+      "lost": 0,
+      "gained": 24,
+      "valid_source_and_tree": 99,
+      "predicted": 99
+    },
+    "dev_singleton": {
+      "sentences": 100,
+      "baseline_exact": 65,
+      "candidate_exact": 89,
+      "preserved": 65,
+      "lost": 0,
+      "gained": 24,
+      "valid_source_and_tree": 100,
+      "predicted": 100
+    },
+    "train_duplicate": {
+      "sentences": 1,
+      "baseline_exact": 0,
+      "candidate_exact": 0,
+      "preserved": 0,
+      "lost": 0,
+      "gained": 0,
+      "valid_source_and_tree": 1,
+      "predicted": 1
+    }
+  },
+  "transitions": {
+    "exact->exact": 65,
+    "mismatch->mismatch": 11,
+    "mismatch->exact": 24
+  },
+  "tokens": {
+    "baseline": 2374,
+    "candidate": 2337,
+    "gold": 2319
+  },
+  "changed_form_sequences": 28,
+  "new_refusals": 0,
+  "raw_gate": null,
+  "prediction_sha256": "2d5d5be078d39875dcfa1f72831c7c014afc7e692880fe414c4edee547c3b208",
+  "binary_sha256": "91a444107279f19d63e7f2f00042ac073ee70455ca7768d9a7823d7466c382c2",
+  "metric": "Exact integer-word FORM sequence; no normalization. Duplicate subgroups retain official total. Not dependency or semantic accuracy."
+}

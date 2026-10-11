@@ -1,0 +1,55 @@
+Running as unit: glassmind-parent-rawsyntax-tests.scope; invocation ID: d8431c8f91384edc9d515883ca2cb9db
+   Compiling glassmind-world-rust v0.1.0 (/home/gsc/code/glassmind/crates/world-rust)
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/code/glassmind/crates/english-rust)
+   Compiling glassmind-reading v0.1.0 (/home/gsc/code/glassmind/crates/reading)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.15s
+     Running unittests src/lib.rs (target/debug/deps/glassmind_reading-2814fd2e8a52ae50)
+
+running 12 tests
+test qa::tests::metadata_is_not_runtime_input ... ok
+test qa::tests::no_support_and_bounds_refuse ... ok
+test qa::tests::finite_weights_cannot_emit_non_finite_scores ... ok
+test qa::tests::repeated_occurrences_are_deterministic_and_slices ... ok
+test qa::tests::unicode_offsets_and_trailing_text ... ok
+test syntax::tests::oracle_and_invalid_structures ... ok
+test syntax::tests::raw_apostrophe_frozen_contrasts ... ok
+test syntax::tests::raw_apostrophe_bounds_and_controls ... ok
+test syntax::tests::strict_inputs_and_unicode_spans ... ok
+test syntax::tests::corrupt_weights_and_dimensions ... ok
+test qa::tests::trained_model_roundtrip_and_refusal_policy ... ok
+test syntax::tests::roundtrip_and_determinism ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running unittests src/main.rs (target/debug/deps/glassmind_reading-ae857fb637713807)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/reading-probability.rs (target/debug/deps/reading_probability-9c45c461d7f007bd)
+
+running 2 tests
+test probability::tests::serialization_is_exact_deterministic_and_rejects_corruption ... ok
+test probability::tests::normalized_seen_unseen_and_unknown_bytes ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/reading-qa.rs (target/debug/deps/reading_qa-c91e2d2408c761b6)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/reading-syntax.rs (target/debug/deps/reading_syntax-f4f0d36c70f374ca)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests glassmind_reading
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,5 +1,70 @@
 # Continuous development checkpoint
 
+## Current checkpoint — PR34 merged; raw tokenizer validated locally
+
+The continuous goal remains active. WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+PR34 merged at2026-10-11T10:10:17Z, mergecec4b73dbf604681b05b641426d854cb339d89df.
+Reviewed headd152493d4256979408d5267230496073ee395369 passed CI38130912939
+in61seconds. Push3208/create91179/merge3881 are COMPLETE. Coding180/765 with
+all177 previous passes,585 refusals,zero failures is now published. External
+progress log has the five-line PR34 milestone. Do not repeat the full coding run.
+
+Root branch harness; new evaluated source028ed241fbc7de684409ab9a577944daf0618088
+adds only raw syntax tokenization and its compile-time authored test fixture.
+Reading source SHA587209fd2279c49c64c00b9d1fa8c72443213d8adcb6c5f86b9d010574383c91
+matches the archived worker exactly. Release atcoordinator/rawsyntax-review/glassmind-integrated:
+981f8b100cd82ec9edfa23f2c2d379f2dfb17976e6b32ebab2c68d335c6efdb7.
+Standalone integrated SHA c35b6361f3f7524049cfecf0452adf30d5223539a5b6cd84d19fc5e49ec2507a.
+Known completed worker tokens140148730; repairspeech and parent still excluded.
+
+RAWSYNTAX is independently accepted locally. Exact raw FORM sequences1370->1556
+of2001; all1370 retained,445 mismatches,zero refusals. Parent audit validates27446
+spans and complete ordered source coverage;1753 unchanged token sequences have
+all other fields byte-equivalent except the intentional raw marker. Nonduplicates
+1309->1494/1933; duplicates61->62/68, with all2001 retained. Raw full predictions
+4c7b1b65161ebb82bd4c5f1bb7a18646dba2b2d6c613f5986f6c0cd51dbe676a.
+The fixed model47d8d245... and all supplied-form predictions059e5ca... are unchanged.
+No dependency/semantic accuracy gain is claimed. Raw markerraw_unicode_apostrophe_v2.
+
+Parent frozen28:20/20 linguistic (baseline0),28 exact source-span cases and6 invalid
+refusals. Source review verifies bounded UTF8 slicing and productive suffix handling;
+no exception table. Main17 syntax contracts reproduce full raw/form and all native
+probe outputs byte for byte; unchanged14QA contracts and14readingtests pass.
+Workspace fmt/all-target clippy/release/strict4smoke passes. Sessions51781/21726
+COMPLETE; main/QA commands completed directly. No main/native job currently running.
+
+30 archive entries1,665,136bytes,28 repository entries,42 external artifacts
+49,131,913bytes and30 frozen identities verified. Originals/root copies/raw/frozen
+files reverified before inactive rawsyntax worktree/login removal. All originals
+remain WORK/rawsyntax-run/submitted and candidate. Parent review/audit and run.py
+are in coordinator/rawsyntax-review and rawsyntax-independent. Do not repeat full
+candidate inference or train a new model. Large ledgers stay external with manifests.
+
+Reports tools/reading/raw-syntax/PARENT.md, parent/, docs/results/reading-raw-syntax.json,
+README and separate raw-tokenization journal series are prepared. Next: commit the
+pending evidence/scoreboard, push harness, open separate PR35 (number not yet assigned),
+review exact-head CI and merge. Keep the repairspeech candidate out of this release.
+No new full coding/QA accuracy run is warranted because their paths are unchanged.
+
+REPAIRSPEECH remains the only active model worker: PID1072538,
+scopeglassmind-continuous-repairspeech.scope, branchcontinuous/repairspeech at1ab5b03,
+workWORK/repairspeech, runWORK/repairspeech-run; Astra fast/forced ChatGPT/no API keys.
+Baseline independent session92989 is COMPLETE:8/8 positive do repairs exact/native,
+9 unrequested negative/status do edits,2/6 correct status meanings. ask--apply keeps
+Remedy confirmation as required by the existing contract; see contract-note.md and
+preserved erroneous initial-summary.json. All30 cases/60 modes and original labels
+remain unchanged. Frozen casesSHA cc0bdeb085b22636dea7517609712323d68988cb677ca38ef9de29ee8aab111d.
+Await terminal submission; archive before review/removal, replay the frozen cases,
+then full765 against180 if the source survives independent gates. No candidate
+source inspected yet. Broad inherited Repair routing bug remains explicitly documented.
+
+RATECLAUSES/WORKRATES are complete and rejected; original archives and approved
+quantity runtime29/4475 remain unchanged. Their independent positive coverage was
+1/16 and0/17. Do not retry the same templates. Rawsyntax passed a different track.
+Older checkpoint details below are historical; current status above supersedes them.
+
+### Previous checkpoint details (superseded)
+
 ## Current checkpoint — rename full gate passed; publishing next
 
 WORK=/home/gsc/.cache/glassmind/continuous-20261010. The continuous goal is active.

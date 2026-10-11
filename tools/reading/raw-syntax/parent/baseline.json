@@ -1,0 +1,497 @@
+{
+  "binary_sha256": "f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6",
+  "model_sha256": "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6",
+  "positive_correct": 0,
+  "source_span_cases": 28,
+  "invalid_refusals": 6,
+  "cases": [
+    {
+      "name": "linguistic_0",
+      "expected": [
+        "We",
+        "did",
+        "n't",
+        "leave",
+        "."
+      ],
+      "actual": [
+        "We",
+        "didn",
+        "'",
+        "t",
+        "leave",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_1",
+      "expected": [
+        "I",
+        "ca",
+        "n't",
+        "stay",
+        "."
+      ],
+      "actual": [
+        "I",
+        "can",
+        "'",
+        "t",
+        "stay",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_2",
+      "expected": [
+        "They",
+        "wo",
+        "n't",
+        "agree",
+        "."
+      ],
+      "actual": [
+        "They",
+        "won",
+        "'",
+        "t",
+        "agree",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_3",
+      "expected": [
+        "You",
+        "could",
+        "n't",
+        "tell",
+        "."
+      ],
+      "actual": [
+        "You",
+        "couldn",
+        "'",
+        "t",
+        "tell",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_4",
+      "expected": [
+        "I",
+        "'m",
+        "listening",
+        "."
+      ],
+      "actual": [
+        "I",
+        "'",
+        "m",
+        "listening",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_5",
+      "expected": [
+        "We",
+        "'re",
+        "waiting",
+        "."
+      ],
+      "actual": [
+        "We",
+        "'",
+        "re",
+        "waiting",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_6",
+      "expected": [
+        "They",
+        "'ve",
+        "arrived",
+        "."
+      ],
+      "actual": [
+        "They",
+        "'",
+        "ve",
+        "arrived",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_7",
+      "expected": [
+        "You",
+        "'ll",
+        "hear",
+        "it",
+        "."
+      ],
+      "actual": [
+        "You",
+        "'",
+        "ll",
+        "hear",
+        "it",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_8",
+      "expected": [
+        "I",
+        "'d",
+        "prefer",
+        "tea",
+        "."
+      ],
+      "actual": [
+        "I",
+        "'",
+        "d",
+        "prefer",
+        "tea",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_9",
+      "expected": [
+        "She",
+        "'s",
+        "ready",
+        "."
+      ],
+      "actual": [
+        "She",
+        "'",
+        "s",
+        "ready",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_10",
+      "expected": [
+        "Nora",
+        "'s",
+        "coat",
+        "fell",
+        "."
+      ],
+      "actual": [
+        "Nora",
+        "'",
+        "s",
+        "coat",
+        "fell",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_11",
+      "expected": [
+        "We",
+        "are",
+        "n’t",
+        "late",
+        "."
+      ],
+      "actual": [
+        "We",
+        "aren",
+        "’",
+        "t",
+        "late",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_12",
+      "expected": [
+        "I",
+        "’m",
+        "listening",
+        "."
+      ],
+      "actual": [
+        "I",
+        "’",
+        "m",
+        "listening",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_13",
+      "expected": [
+        "They",
+        "’ve",
+        "arrived",
+        "."
+      ],
+      "actual": [
+        "They",
+        "’",
+        "ve",
+        "arrived",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_14",
+      "expected": [
+        "Élodie",
+        "'s",
+        "notebook",
+        "closed",
+        "."
+      ],
+      "actual": [
+        "Élodie",
+        "'",
+        "s",
+        "notebook",
+        "closed",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_15",
+      "expected": [
+        "Émile",
+        "'s",
+        "notebook",
+        "closed",
+        "."
+      ],
+      "actual": [
+        "Émile",
+        "'",
+        "s",
+        "notebook",
+        "closed",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_16",
+      "expected": [
+        "O'Connell",
+        "arrived",
+        "."
+      ],
+      "actual": [
+        "O",
+        "'",
+        "Connell",
+        "arrived",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_17",
+      "expected": [
+        "D’Arcy",
+        "waved",
+        "."
+      ],
+      "actual": [
+        "D",
+        "’",
+        "Arcy",
+        "waved",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_18",
+      "expected": [
+        "\"",
+        "We",
+        "'re",
+        "ready",
+        ",",
+        "\"",
+        "said",
+        "Noor",
+        "."
+      ],
+      "actual": [
+        "\"",
+        "We",
+        "'",
+        "re",
+        "ready",
+        ",",
+        "\"",
+        "said",
+        "Noor",
+        "."
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "linguistic_19",
+      "expected": [
+        "DO",
+        "N'T",
+        "GO",
+        "!"
+      ],
+      "actual": [
+        "DON",
+        "'",
+        "T",
+        "GO",
+        "!"
+      ],
+      "exact": false,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_0",
+      "expected": null,
+      "actual": [
+        "Nora",
+        "thanked",
+        "Felix",
+        "."
+      ],
+      "exact": null,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_1",
+      "expected": null,
+      "actual": [
+        "A",
+        "—",
+        "B",
+        ":",
+        "C",
+        "!"
+      ],
+      "exact": null,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_2",
+      "expected": null,
+      "actual": [
+        "'",
+        "hello",
+        "'"
+      ],
+      "exact": null,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_3",
+      "expected": null,
+      "actual": [
+        "🙂",
+        "Élodie",
+        "é"
+      ],
+      "exact": null,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_4",
+      "expected": null,
+      "actual": [
+        "A",
+        "B",
+        "C"
+      ],
+      "exact": null,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_5",
+      "expected": null,
+      "actual": [
+        "3",
+        ".",
+        "14",
+        "+",
+        "2",
+        ".",
+        "0"
+      ],
+      "exact": null,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_6",
+      "expected": null,
+      "actual": [
+        "email",
+        "@",
+        "example",
+        ".",
+        "org"
+      ],
+      "exact": null,
+      "valid_spans": true
+    },
+    {
+      "name": "span_control_7",
+      "expected": null,
+      "actual": [
+        "rock",
+        "’",
+        "n",
+        "’",
+        "roll"
+      ],
+      "exact": null,
+      "valid_spans": true
+    }
+  ]
+}

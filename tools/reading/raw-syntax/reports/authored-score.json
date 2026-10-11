@@ -1,0 +1,645 @@
+{
+  "cases": 40,
+  "exact": 40,
+  "source_valid": 40,
+  "rows": [
+    {
+      "index": 1,
+      "exact": true,
+      "source_valid": true,
+      "text": "I can't go.",
+      "expected": [
+        "I",
+        "ca",
+        "n't",
+        "go",
+        "."
+      ],
+      "actual": [
+        "I",
+        "ca",
+        "n't",
+        "go",
+        "."
+      ]
+    },
+    {
+      "index": 2,
+      "exact": true,
+      "source_valid": true,
+      "text": "We won't.",
+      "expected": [
+        "We",
+        "wo",
+        "n't",
+        "."
+      ],
+      "actual": [
+        "We",
+        "wo",
+        "n't",
+        "."
+      ]
+    },
+    {
+      "index": 3,
+      "exact": true,
+      "source_valid": true,
+      "text": "DON'T!",
+      "expected": [
+        "DO",
+        "N'T",
+        "!"
+      ],
+      "actual": [
+        "DO",
+        "N'T",
+        "!"
+      ]
+    },
+    {
+      "index": 4,
+      "exact": true,
+      "source_valid": true,
+      "text": "isn’t",
+      "expected": [
+        "is",
+        "n’t"
+      ],
+      "actual": [
+        "is",
+        "n’t"
+      ]
+    },
+    {
+      "index": 5,
+      "exact": true,
+      "source_valid": true,
+      "text": "I'm ready",
+      "expected": [
+        "I",
+        "'m",
+        "ready"
+      ],
+      "actual": [
+        "I",
+        "'m",
+        "ready"
+      ]
+    },
+    {
+      "index": 6,
+      "exact": true,
+      "source_valid": true,
+      "text": "she’s here",
+      "expected": [
+        "she",
+        "’s",
+        "here"
+      ],
+      "actual": [
+        "she",
+        "’s",
+        "here"
+      ]
+    },
+    {
+      "index": 7,
+      "exact": true,
+      "source_valid": true,
+      "text": "you’re next",
+      "expected": [
+        "you",
+        "’re",
+        "next"
+      ],
+      "actual": [
+        "you",
+        "’re",
+        "next"
+      ]
+    },
+    {
+      "index": 8,
+      "exact": true,
+      "source_valid": true,
+      "text": "we've arrived",
+      "expected": [
+        "we",
+        "'ve",
+        "arrived"
+      ],
+      "actual": [
+        "we",
+        "'ve",
+        "arrived"
+      ]
+    },
+    {
+      "index": 9,
+      "exact": true,
+      "source_valid": true,
+      "text": "He'll go",
+      "expected": [
+        "He",
+        "'ll",
+        "go"
+      ],
+      "actual": [
+        "He",
+        "'ll",
+        "go"
+      ]
+    },
+    {
+      "index": 10,
+      "exact": true,
+      "source_valid": true,
+      "text": "I’d agree",
+      "expected": [
+        "I",
+        "’d",
+        "agree"
+      ],
+      "actual": [
+        "I",
+        "’d",
+        "agree"
+      ]
+    },
+    {
+      "index": 11,
+      "exact": true,
+      "source_valid": true,
+      "text": "shouldn't've",
+      "expected": [
+        "should",
+        "n't",
+        "'ve"
+      ],
+      "actual": [
+        "should",
+        "n't",
+        "'ve"
+      ]
+    },
+    {
+      "index": 12,
+      "exact": true,
+      "source_valid": true,
+      "text": "Zora's book",
+      "expected": [
+        "Zora",
+        "'s",
+        "book"
+      ],
+      "actual": [
+        "Zora",
+        "'s",
+        "book"
+      ]
+    },
+    {
+      "index": 13,
+      "exact": true,
+      "source_valid": true,
+      "text": "O'Brien's",
+      "expected": [
+        "O'Brien",
+        "'s"
+      ],
+      "actual": [
+        "O'Brien",
+        "'s"
+      ]
+    },
+    {
+      "index": 14,
+      "exact": true,
+      "source_valid": true,
+      "text": "D’Arcy",
+      "expected": [
+        "D’Arcy"
+      ],
+      "actual": [
+        "D’Arcy"
+      ]
+    },
+    {
+      "index": 15,
+      "exact": true,
+      "source_valid": true,
+      "text": "O'NEILL",
+      "expected": [
+        "O'NEILL"
+      ],
+      "actual": [
+        "O'NEILL"
+      ]
+    },
+    {
+      "index": 16,
+      "exact": true,
+      "source_valid": true,
+      "text": "rock'n'roll",
+      "expected": [
+        "rock'n'roll"
+      ],
+      "actual": [
+        "rock'n'roll"
+      ]
+    },
+    {
+      "index": 17,
+      "exact": true,
+      "source_valid": true,
+      "text": "café’s",
+      "expected": [
+        "café",
+        "’s"
+      ],
+      "actual": [
+        "café",
+        "’s"
+      ]
+    },
+    {
+      "index": 18,
+      "exact": true,
+      "source_valid": true,
+      "text": "café's",
+      "expected": [
+        "café",
+        "'s"
+      ],
+      "actual": [
+        "café",
+        "'s"
+      ]
+    },
+    {
+      "index": 19,
+      "exact": true,
+      "source_valid": true,
+      "text": "'word'",
+      "expected": [
+        "'",
+        "word",
+        "'"
+      ],
+      "actual": [
+        "'",
+        "word",
+        "'"
+      ]
+    },
+    {
+      "index": 20,
+      "exact": true,
+      "source_valid": true,
+      "text": "‘word’",
+      "expected": [
+        "‘",
+        "word",
+        "’"
+      ],
+      "actual": [
+        "‘",
+        "word",
+        "’"
+      ]
+    },
+    {
+      "index": 21,
+      "exact": true,
+      "source_valid": true,
+      "text": "'I'm'",
+      "expected": [
+        "'",
+        "I",
+        "'m",
+        "'"
+      ],
+      "actual": [
+        "'",
+        "I",
+        "'m",
+        "'"
+      ]
+    },
+    {
+      "index": 22,
+      "exact": true,
+      "source_valid": true,
+      "text": "dogs' toys",
+      "expected": [
+        "dogs",
+        "'",
+        "toys"
+      ],
+      "actual": [
+        "dogs",
+        "'",
+        "toys"
+      ]
+    },
+    {
+      "index": 23,
+      "exact": true,
+      "source_valid": true,
+      "text": "a''b",
+      "expected": [
+        "a",
+        "'",
+        "'",
+        "b"
+      ],
+      "actual": [
+        "a",
+        "'",
+        "'",
+        "b"
+      ]
+    },
+    {
+      "index": 24,
+      "exact": true,
+      "source_valid": true,
+      "text": "a’ ’b",
+      "expected": [
+        "a",
+        "’",
+        "’",
+        "b"
+      ],
+      "actual": [
+        "a",
+        "’",
+        "’",
+        "b"
+      ]
+    },
+    {
+      "index": 25,
+      "exact": true,
+      "source_valid": true,
+      "text": "a ' s",
+      "expected": [
+        "a",
+        "'",
+        "s"
+      ],
+      "actual": [
+        "a",
+        "'",
+        "s"
+      ]
+    },
+    {
+      "index": 26,
+      "exact": true,
+      "source_valid": true,
+      "text": "'s",
+      "expected": [
+        "'",
+        "s"
+      ],
+      "actual": [
+        "'",
+        "s"
+      ]
+    },
+    {
+      "index": 27,
+      "exact": true,
+      "source_valid": true,
+      "text": "5'11\"",
+      "expected": [
+        "5",
+        "'",
+        "11",
+        "\""
+      ],
+      "actual": [
+        "5",
+        "'",
+        "11",
+        "\""
+      ]
+    },
+    {
+      "index": 28,
+      "exact": true,
+      "source_valid": true,
+      "text": "90's",
+      "expected": [
+        "90",
+        "'",
+        "s"
+      ],
+      "actual": [
+        "90",
+        "'",
+        "s"
+      ]
+    },
+    {
+      "index": 29,
+      "exact": true,
+      "source_valid": true,
+      "text": "x'2",
+      "expected": [
+        "x",
+        "'",
+        "2"
+      ],
+      "actual": [
+        "x",
+        "'",
+        "2"
+      ]
+    },
+    {
+      "index": 30,
+      "exact": true,
+      "source_valid": true,
+      "text": "2'x",
+      "expected": [
+        "2",
+        "'",
+        "x"
+      ],
+      "actual": [
+        "2",
+        "'",
+        "x"
+      ]
+    },
+    {
+      "index": 31,
+      "exact": true,
+      "source_valid": true,
+      "text": "A-B / C.D",
+      "expected": [
+        "A",
+        "-",
+        "B",
+        "/",
+        "C",
+        ".",
+        "D"
+      ],
+      "actual": [
+        "A",
+        "-",
+        "B",
+        "/",
+        "C",
+        ".",
+        "D"
+      ]
+    },
+    {
+      "index": 32,
+      "exact": true,
+      "source_valid": true,
+      "text": "don't—stop",
+      "expected": [
+        "do",
+        "n't",
+        "—",
+        "stop"
+      ],
+      "actual": [
+        "do",
+        "n't",
+        "—",
+        "stop"
+      ]
+    },
+    {
+      "index": 33,
+      "exact": true,
+      "source_valid": true,
+      "text": "don't́",
+      "expected": [
+        "don't́"
+      ],
+      "actual": [
+        "don't́"
+      ]
+    },
+    {
+      "index": 34,
+      "exact": true,
+      "source_valid": true,
+      "text": "́'x",
+      "expected": [
+        "́",
+        "'",
+        "x"
+      ],
+      "actual": [
+        "́",
+        "'",
+        "x"
+      ]
+    },
+    {
+      "index": 35,
+      "exact": true,
+      "source_valid": true,
+      "text": "A‘b",
+      "expected": [
+        "A",
+        "‘",
+        "b"
+      ],
+      "actual": [
+        "A",
+        "‘",
+        "b"
+      ]
+    },
+    {
+      "index": 36,
+      "exact": true,
+      "source_valid": true,
+      "text": "Éloïse can’t\tgo\n!",
+      "expected": [
+        "Éloïse",
+        "ca",
+        "n’t",
+        "go",
+        "!"
+      ],
+      "actual": [
+        "Éloïse",
+        "ca",
+        "n’t",
+        "go",
+        "!"
+      ]
+    },
+    {
+      "index": 37,
+      "exact": true,
+      "source_valid": true,
+      "text": "猫's 🐈",
+      "expected": [
+        "猫",
+        "'s",
+        "🐈"
+      ],
+      "actual": [
+        "猫",
+        "'s",
+        "🐈"
+      ]
+    },
+    {
+      "index": 38,
+      "exact": true,
+      "source_valid": true,
+      "text": "a​b",
+      "expected": [
+        "a",
+        "​",
+        "b"
+      ],
+      "actual": [
+        "a",
+        "​",
+        "b"
+      ]
+    },
+    {
+      "index": 39,
+      "exact": true,
+      "source_valid": true,
+      "text": "n't",
+      "expected": [
+        "n't"
+      ],
+      "actual": [
+        "n't"
+      ]
+    },
+    {
+      "index": 40,
+      "exact": true,
+      "source_valid": true,
+      "text": "CAN'T'VE",
+      "expected": [
+        "CA",
+        "N'T",
+        "'VE"
+      ],
+      "actual": [
+        "CA",
+        "N'T",
+        "'VE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "source_revision": "b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c",
+  "license": "CC-BY-SA-4.0",
+  "metric": "Exact integer-word FORM sequence per official DEV sentence; no normalization or exclusions; not dependency/semantic accuracy",
+  "total": 2001,
+  "baseline_exact": 1370,
+  "candidate_exact": 1556,
+  "remaining_mismatch": 445,
+  "transitions": {
+    "(True, True)": 1370,
+    "(False, False)": 445,
+    "(False, True)": 186
+  },
+  "candidate_spans_valid": 27446,
+  "complete_source_coverage_sentences": 2001,
+  "valid_predicted_trees": 2001,
+  "new_refusals": 0,
+  "unchanged_sequences_with_all_other_fields_identical": 1753,
+  "changed_sequences_still_mismatching": 62,
+  "groups": {
+    "nonduplicate_forms": {
+      "sentences": 1933,
+      "baseline_exact": 1309,
+      "candidate_exact": 1494
+    },
+    "train_duplicate_forms": {
+      "sentences": 68,
+      "baseline_exact": 61,
+      "candidate_exact": 62
+    }
+  },
+  "full_prediction_sha256": "4c7b1b65161ebb82bd4c5f1bb7a18646dba2b2d6c613f5986f6c0cd51dbe676a",
+  "provided_form_byte_identical_sha256": "059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d",
+  "model_sha256": "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6",
+  "frozen_full_gate_pass": true,
+  "main_integration": {
+    "source_commit": "028ed241fbc7de684409ab9a577944daf0618088",
+    "main_sha256": "981f8b100cd82ec9edfa23f2c2d379f2dfb17976e6b32ebab2c68d335c6efdb7",
+    "standalone_sha256": "c35b6361f3f7524049cfecf0452adf30d5223539a5b6cd84d19fc5e49ec2507a",
+    "syntax_source_sha256": "587209fd2279c49c64c00b9d1fa8c72443213d8adcb6c5f86b9d010574383c91"
+  },
+  "main_contracts": 17,
+  "qa_contracts": 14,
+  "parent_probe": {
+    "positive_correct": 20,
+    "positive_total": 20,
+    "source_span_cases": 28,
+    "invalid_refusals": 6
+  },
+  "report": "tools/reading/raw-syntax/PARENT.md"
+}

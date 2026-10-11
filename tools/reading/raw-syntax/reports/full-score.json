@@ -1,0 +1,71 @@
+{
+  "mode": "full",
+  "groups": {
+    "all": {
+      "sentences": 2001,
+      "baseline_exact": 1370,
+      "candidate_exact": 1556,
+      "preserved": 1370,
+      "lost": 0,
+      "gained": 186,
+      "valid_source_and_tree": 2001,
+      "predicted": 2001
+    },
+    "train_nonduplicate": {
+      "sentences": 1933,
+      "baseline_exact": 1309,
+      "candidate_exact": 1494,
+      "preserved": 1309,
+      "lost": 0,
+      "gained": 185,
+      "valid_source_and_tree": 1933,
+      "predicted": 1933
+    },
+    "dev_singleton": {
+      "sentences": 1868,
+      "baseline_exact": 1263,
+      "candidate_exact": 1449,
+      "preserved": 1263,
+      "lost": 0,
+      "gained": 186,
+      "valid_source_and_tree": 1868,
+      "predicted": 1868
+    },
+    "train_duplicate": {
+      "sentences": 68,
+      "baseline_exact": 61,
+      "candidate_exact": 62,
+      "preserved": 61,
+      "lost": 0,
+      "gained": 1,
+      "valid_source_and_tree": 68,
+      "predicted": 68
+    },
+    "dev_repeated": {
+      "sentences": 133,
+      "baseline_exact": 107,
+      "candidate_exact": 107,
+      "preserved": 107,
+      "lost": 0,
+      "gained": 0,
+      "valid_source_and_tree": 133,
+      "predicted": 133
+    }
+  },
+  "transitions": {
+    "exact->exact": 1370,
+    "mismatch->mismatch": 445,
+    "mismatch->exact": 186
+  },
+  "tokens": {
+    "baseline": 27745,
+    "candidate": 27446,
+    "gold": 25148
+  },
+  "changed_form_sequences": 248,
+  "new_refusals": 0,
+  "raw_gate": true,
+  "prediction_sha256": "4c7b1b65161ebb82bd4c5f1bb7a18646dba2b2d6c613f5986f6c0cd51dbe676a",
+  "binary_sha256": "91a444107279f19d63e7f2f00042ac073ee70455ca7768d9a7823d7466c382c2",
+  "metric": "Exact integer-word FORM sequence; no normalization. Duplicate subgroups retain official total. Not dependency or semantic accuracy."
+}

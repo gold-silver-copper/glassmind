@@ -1,0 +1,8 @@
+{
+  "sha256": "695395449bb8970867b9a982d81e7e58e4ba5c0470fc528d78b5c19ba9bc6f2e",
+  "created_unix": 1791712719.5216491,
+  "before_candidate_inspection": true,
+  "positive": 20,
+  "span_controls": 8,
+  "gate": "At least16/20 exact expected linguistic token sequences, no lost baseline exact case; all28 valid ordered exact UTF8 spans cover every nonwhitespace byte exactly once; fixed invalid/oversize input contracts must hold. No candidate-informed retuning."
+}

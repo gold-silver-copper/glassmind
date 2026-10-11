@@ -1,0 +1,288 @@
+{
+  "base_source": "1ab5b03643b34fcca338bb1744758ed240b0ef0a",
+  "raw_gate_passed": true,
+  "repo": {
+    "crates/reading/src/syntax.rs": {
+      "bytes": 34168,
+      "sha256": "587209fd2279c49c64c00b9d1fa8c72443213d8adcb6c5f86b9d010574383c91"
+    },
+    "tools/reading/raw-syntax/FREEZE.json": {
+      "bytes": 6485,
+      "sha256": "d9fc0a8b5cef3bfeeb92ba62fab6b24e9c778c4b3a22e9b6ac1f5fb496ee0f21"
+    },
+    "tools/reading/raw-syntax/HANDOFF.md": {
+      "bytes": 8708,
+      "sha256": "8a168ad4864b176571a4e596568373e08364f60e137b0fe2e06709df0e9d0581"
+    },
+    "tools/reading/raw-syntax/NOTICE.md": {
+      "bytes": 1078,
+      "sha256": "944756ecbb87be1a50298b249bb5503b7818622377a2d1afb2dcc8f24a69eb8b"
+    },
+    "tools/reading/raw-syntax/PLAN.md": {
+      "bytes": 3778,
+      "sha256": "d10978b789d50c323e1975b814bbde3990f6793ff77fea176703db9b69f2adf7"
+    },
+    "tools/reading/raw-syntax/authored.jsonl": {
+      "bytes": 2069,
+      "sha256": "20410c8d84da616d9a5ae6c52dbc9036c67873cafb2705b962f4ff02b09c0957"
+    },
+    "tools/reading/raw-syntax/evaluate.py": {
+      "bytes": 8096,
+      "sha256": "5ca530ed9bcac4fefcb57b0395d6c47e893a4e0873bae387087685a38259ca8b"
+    },
+    "tools/reading/raw-syntax/inspect_train.py": {
+      "bytes": 1760,
+      "sha256": "5b079b678cbce3667509d8a84b640202f33322301c56308ebdcb996b37e53320"
+    },
+    "tools/reading/raw-syntax/pre-edit.sha256": {
+      "bytes": 155,
+      "sha256": "dbe0a573c44a0615d061dcba1f381f376dfa6cb98a9aa3ba6fbe6239e057ca62"
+    },
+    "tools/reading/raw-syntax/reports/authored-score.json": {
+      "bytes": 9936,
+      "sha256": "b01e9aee2a8fdb29b3a033daac12cbfc287e9035b318c18d7213e1eaa19d529a"
+    },
+    "tools/reading/raw-syntax/reports/baseline-authored-score.json": {
+      "bytes": 10393,
+      "sha256": "70140476ff21c7e15814994ca250f16ceb1288cfabe0617576bad3796f177a06"
+    },
+    "tools/reading/raw-syntax/reports/build.log": {
+      "bytes": 2089,
+      "sha256": "a9f26b9a61c08f29f21d77e7f5a040af9ee6455e9c95198744a79959ee002af3"
+    },
+    "tools/reading/raw-syntax/reports/clippy.log": {
+      "bytes": 2062,
+      "sha256": "fd8ae11195d803990b52aab4f2dd4a2fda08cf71dac8aeb4b5e65586014527d1"
+    },
+    "tools/reading/raw-syntax/reports/contracts-report.json": {
+      "bytes": 176,
+      "sha256": "94f4f14f94c81e22555af4db226a77635b3744a4df21883a5b8e0dd8c9ea05cb"
+    },
+    "tools/reading/raw-syntax/reports/contracts.log": {
+      "bytes": 154,
+      "sha256": "6ac1b607cd01f83d2151ce2a17098008b60b7247c1c5e5b0be70303040dbb909"
+    },
+    "tools/reading/raw-syntax/reports/fmt.log": {
+      "bytes": 95,
+      "sha256": "70c73c6afd30631b7cf0ad785a07b40ce07783a634ecc41d20a9e866ac4c056b"
+    },
+    "tools/reading/raw-syntax/reports/forms-score.json": {
+      "bytes": 224,
+      "sha256": "889da486b00a812166255e8a4ad676410c5e7ed1291be0165920e427f34c1de3"
+    },
+    "tools/reading/raw-syntax/reports/full-remaining-mismatches.jsonl": {
+      "bytes": 316004,
+      "sha256": "f2ac06ef2b98c7336d6df94ccbbd18064f32c0d107d7702364440dc9be20c58c"
+    },
+    "tools/reading/raw-syntax/reports/full-score.json": {
+      "bytes": 1804,
+      "sha256": "e25494aa846ad25e2be5b2d0b40e52a722453ae967c6be7ea07108f0b412b825"
+    },
+    "tools/reading/raw-syntax/reports/full-transitions.jsonl": {
+      "bytes": 1210818,
+      "sha256": "7fbd3b77009827eabf065fbfa802ff76e9b7882b7892357dde8c0d1e6f1bc9f4"
+    },
+    "tools/reading/raw-syntax/reports/model-check.log": {
+      "bytes": 210,
+      "sha256": "7d78d8afa3297bba0f7d621bb903908f846ae4efe3d1bf7ffcb7b05b9bda4c6e"
+    },
+    "tools/reading/raw-syntax/reports/remaining-analysis.json": {
+      "bytes": 3714,
+      "sha256": "d0afae9ed35d758a64302a95552d51a067b39e0f74e1378cebcf3810e59d2369"
+    },
+    "tools/reading/raw-syntax/reports/sample-score.json": {
+      "bytes": 1528,
+      "sha256": "913d98da8a484fbb91556dff31644e9633cae50f96e177cd8cda1251f753aaa5"
+    },
+    "tools/reading/raw-syntax/reports/tests.log": {
+      "bytes": 4470,
+      "sha256": "6d8f6f740fb646875bce2924f3eb6892c1075dcdab9bcf47456aba4bf59298bb"
+    },
+    "tools/reading/raw-syntax/reports/verification.json": {
+      "bytes": 471,
+      "sha256": "c7fcdd9b6db41b787d9ad7216166651a744ca76ac0e58b837416c29efbcdf1f1"
+    },
+    "tools/reading/raw-syntax/reproduce.sh": {
+      "bytes": 1691,
+      "sha256": "dcc63c18042a467fbd5e399f4cf2d4f95b175cc8b9dc0ac8a2a2bd2678b88472"
+    },
+    "tools/reading/raw-syntax/source-provenance.json": {
+      "bytes": 1444,
+      "sha256": "aebc7736a585c8b921ebfa6c82ba3498975ddc2fad29c80ee7645c9ca60ada7e"
+    },
+    "tools/reading/raw-syntax/train-inspection.json": {
+      "bytes": 10523,
+      "sha256": "c017b406b8f6c0207890acbf4dbc75f73d7b1f3edfd96c10fdbcd6f9d186c246"
+    }
+  },
+  "external": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline-probes/authored-inputs.jsonl": {
+      "bytes": 848,
+      "sha256": "96963cb93137709c1a8bcd845aa204aa2411f59f6fa6b13b24ac623ecea77ce7"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline-probes/authored-predictions.jsonl": {
+      "bytes": 15179,
+      "sha256": "b0efb4b81a989a39ee1bcb8c562995b1d08004c1b0b7b77cac57f5c5dbae6fb0"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/baseline-probes/authored-score.json": {
+      "bytes": 10393,
+      "sha256": "70140476ff21c7e15814994ca250f16ceb1288cfabe0617576bad3796f177a06"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/FREEZE.json": {
+      "bytes": 6485,
+      "sha256": "d9fc0a8b5cef3bfeeb92ba62fab6b24e9c778c4b3a22e9b6ac1f5fb496ee0f21"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/authored-inputs.jsonl": {
+      "bytes": 848,
+      "sha256": "96963cb93137709c1a8bcd845aa204aa2411f59f6fa6b13b24ac623ecea77ce7"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/authored-predictions.jsonl": {
+      "bytes": 13782,
+      "sha256": "5248fc185b17597e4465be7070a0a232eed371e1f1bdd349cb9b68c8176aeb21"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/authored-score.json": {
+      "bytes": 9936,
+      "sha256": "b01e9aee2a8fdb29b3a033daac12cbfc287e9035b318c18d7213e1eaa19d529a"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/build.log": {
+      "bytes": 2089,
+      "sha256": "a9f26b9a61c08f29f21d77e7f5a040af9ee6455e9c95198744a79959ee002af3"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/candidate.patch": {
+      "bytes": 7406,
+      "sha256": "c2bb0ea279da3fee0f8f0ea4f1e677982badcfa6eacfca02539e931b5cdb1631"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/clippy.log": {
+      "bytes": 2062,
+      "sha256": "fd8ae11195d803990b52aab4f2dd4a2fda08cf71dac8aeb4b5e65586014527d1"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/contracts-input.jsonl": {
+      "bytes": 33845,
+      "sha256": "e67a8e517904d3ea47165d7528925de5692f16296fdc65bcd49748674cde4ea7"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/contracts-output.jsonl": {
+      "bytes": 2448,
+      "sha256": "5aa42d92344c0eb0fc2179130b6d53ac0608bea2c6769680d2a33f391fd665d8"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/contracts-report.json": {
+      "bytes": 176,
+      "sha256": "94f4f14f94c81e22555af4db226a77635b3744a4df21883a5b8e0dd8c9ea05cb"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/contracts.log": {
+      "bytes": 154,
+      "sha256": "6ac1b607cd01f83d2151ce2a17098008b60b7247c1c5e5b0be70303040dbb909"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/corrupt-model.bin": {
+      "bytes": 12554724,
+      "sha256": "736362969512caac992b40b703ad04c8f335da2bbc62b236895ce472d9c95001"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/fmt.log": {
+      "bytes": 95,
+      "sha256": "70c73c6afd30631b7cf0ad785a07b40ce07783a634ecc41d20a9e866ac4c056b"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/forms-predictions.jsonl": {
+      "bytes": 949978,
+      "sha256": "059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/forms-score.json": {
+      "bytes": 224,
+      "sha256": "889da486b00a812166255e8a4ad676410c5e7ed1291be0165920e427f34c1de3"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/forms.log": {
+      "bytes": 309,
+      "sha256": "a1439536e9b75f34236e827582c3260f35ec61061528d4697a02caad697a4fa8"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/full-inputs.jsonl": {
+      "bytes": 149565,
+      "sha256": "a8b55cdb92a2cecf38a753ad64fd247965ad3632d650a20eb93e07782d6a166c"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/full-predictions.jsonl": {
+      "bytes": 1995803,
+      "sha256": "4c7b1b65161ebb82bd4c5f1bb7a18646dba2b2d6c613f5986f6c0cd51dbe676a"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/full-remaining-mismatches.jsonl": {
+      "bytes": 316004,
+      "sha256": "f2ac06ef2b98c7336d6df94ccbbd18064f32c0d107d7702364440dc9be20c58c"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/full-score.json": {
+      "bytes": 1804,
+      "sha256": "e25494aa846ad25e2be5b2d0b40e52a722453ae967c6be7ea07108f0b412b825"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/full-transitions.jsonl": {
+      "bytes": 1210818,
+      "sha256": "7fbd3b77009827eabf065fbfa802ff76e9b7882b7892357dde8c0d1e6f1bc9f4"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/full.log": {
+      "bytes": 1899,
+      "sha256": "4bc8faff673ab4d565d50896fec40bd132d95fc4443be507c46a07652b947da5"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/model-check": {
+      "bytes": 6735920,
+      "sha256": "a5fa5e02c85a3b8fc14adea2d45a3e2b02aca92c6d4db2ea9ff15f147e74d659"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/model-check-build.log": {
+      "bytes": 95,
+      "sha256": "641da19e2b3bd291b9ed50ccca278acccfad5f6ea06b1cab0bf580ff03624f19"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/model-check.log": {
+      "bytes": 210,
+      "sha256": "7d78d8afa3297bba0f7d621bb903908f846ae4efe3d1bf7ffcb7b05b9bda4c6e"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/model.bin": {
+      "bytes": 12554724,
+      "sha256": "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/reading-syntax": {
+      "bytes": 12189568,
+      "sha256": "91a444107279f19d63e7f2f00042ac073ee70455ca7768d9a7823d7466c382c2"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/remaining-analysis.json": {
+      "bytes": 3714,
+      "sha256": "d0afae9ed35d758a64302a95552d51a067b39e0f74e1378cebcf3810e59d2369"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/sample-inputs.jsonl": {
+      "bytes": 13096,
+      "sha256": "8fad413e8b23334b5321372d677bd5bbd76cf223d10a280e2d81aa78d3d4274a"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/sample-predictions.jsonl": {
+      "bytes": 160414,
+      "sha256": "2d5d5be078d39875dcfa1f72831c7c014afc7e692880fe414c4edee547c3b208"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/sample-remaining-mismatches.jsonl": {
+      "bytes": 12285,
+      "sha256": "33191e61ae118c7bbb496fb628004b813d002ad34d69e9a2914c6b3d86052788"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/sample-score.json": {
+      "bytes": 1528,
+      "sha256": "913d98da8a484fbb91556dff31644e9633cae50f96e177cd8cda1251f753aaa5"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/sample-transitions.jsonl": {
+      "bytes": 92118,
+      "sha256": "aeb3238e3cb02669b024667d256802af3ce8967389e2ebb732c86d4a81bf02bb"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/sample.log": {
+      "bytes": 1623,
+      "sha256": "ed45681d00a5762b4ccda3de6869f09404e52bdd02a4e4fde0b23dfde9284d8b"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/syntax-baseline.rs": {
+      "bytes": 30112,
+      "sha256": "f2a7401e149a2fd01740db8c1a26dc1b91e03237ed48e766eb0ec68b30c7c78a"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/syntax-candidate.rs": {
+      "bytes": 34168,
+      "sha256": "587209fd2279c49c64c00b9d1fa8c72443213d8adcb6c5f86b9d010574383c91"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/tests.log": {
+      "bytes": 4470,
+      "sha256": "6d8f6f740fb646875bce2924f3eb6892c1075dcdab9bcf47456aba4bf59298bb"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/train-inspection-replay.json": {
+      "bytes": 10523,
+      "sha256": "c017b406b8f6c0207890acbf4dbc75f73d7b1f3edfd96c10fdbcd6f9d186c246"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/rawsyntax-run/candidate/verification.json": {
+      "bytes": 471,
+      "sha256": "c7fcdd9b6db41b787d9ad7216166651a744ca76ac0e58b837416c29efbcdf1f1"
+    }
+  }
+}
