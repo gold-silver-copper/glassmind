@@ -1,4 +1,5 @@
 //! Persistent coding tasks using the existing meaning, dialogue and Rust verifier.
+mod choices;
 mod plans;
 use std::{
     collections::BTreeMap,
@@ -179,17 +180,29 @@ fn say(system: &System, reply: &Reply<Rust>) -> String {
 
 fn status(session: &CodingSession) -> String {
     if let Some(plan) = &session.plan {
-        return plans::status(plan);
+        let mut message = plans::status(plan);
+        if let Some(task) = &session.task {
+            let choices = choices::status(task);
+            if !choices.is_empty() {
+                message.push_str(&format!("\n{choices}"));
+            }
+        }
+        return message;
     }
     session.task.as_ref().map_or_else(
         || "No coding task is recorded.".into(),
         |t| {
-            format!(
+            let mut message = format!(
                 "Task {:?}: {}\n{} recorded stages.",
                 t.status,
                 t.original_text,
                 t.events.len()
-            )
+            );
+            let choices = choices::status(t);
+            if !choices.is_empty() {
+                message.push_str(&format!("\n{choices}"));
+            }
+            message
         },
     )
 }
@@ -265,7 +278,12 @@ fn apply(session: &mut CodingSession, path: &Path) -> Result<String, String> {
     let spoken = say(&system, &reply);
     if let Some(task) = &mut session.task {
         task.applied(reply.clone());
-        let mut request = task.request.clone();
+        // The verified proposal can resolve an owner-qualified description to
+        // one item. Use that item when rebinding the conversational target.
+        let mut request = match &refreshed {
+            Reply::Proposal { action, .. } => action.clone(),
+            _ => task.request.clone(),
+        };
         // Follow-up references name the renamed item, not its stale identifier.
         let mut topic_valid = true;
         if matches!(reply, Reply::Applied { .. })
@@ -306,6 +324,9 @@ fn apply(session: &mut CodingSession, path: &Path) -> Result<String, String> {
 }
 
 fn undo(session: &mut CodingSession, path: &Path) -> Result<String, String> {
+    if let Some(task) = &mut session.task {
+        task.status = TaskStatus::Cancelled;
+    }
     if let Some(plan) = &mut session.plan {
         plan.status = TaskStatus::Cancelled;
     }
@@ -471,7 +492,7 @@ pub fn run(
                 || glassmind_english_rust::add_fields::request(text).is_some() =>
             {
                 if let Some(task) = &mut session.task
-                    && task.status == TaskStatus::Ready
+                    && matches!(task.status, TaskStatus::Ready | TaskStatus::Blocked)
                 {
                     task.status = TaskStatus::Cancelled;
                 }
@@ -479,6 +500,11 @@ pub fn run(
                     plan.status = TaskStatus::Cancelled;
                 }
                 "This action is not yet supported in a persistent task. Use do without --session for function implementation or adding fields.".into()
+            }
+            _ if glassmind_english::selection::request(text).is_some() => {
+                let selection =
+                    glassmind_english::selection::request(text).ok_or("selection missing")?;
+                choices::select(&mut session, &path, selection, text, explain, steps)?
             }
             _ => match plans::clauses(text) {
                 Ok(Some(parts)) => plans::start(&mut session, &path, text, parts, explain, steps)?,
@@ -545,20 +571,26 @@ fn request(
         .turns
         .last()
         .and_then(|r| r.meaning.clone());
-    if !matches!(
+    // A guessed question that could not resolve its subject is not evidence
+    // that a replacement instruction was understood as read-only. Preserve a
+    // pending task only for answered questions; report uncertainty explicitly.
+    let answered_question = matches!(
         meaning,
         Some(Utterance::Ask(_) | Utterance::AskRecall | Utterance::AskReason)
-    ) && let Some(task) = &mut session.task
-        && task.status == TaskStatus::Ready
+    ) && !matches!(
+        plain(&turn.reply),
+        Reply::Trouble(_) | Reply::Declined | Reply::Clarify { .. }
+    );
+    if !answered_question
+        && let Some(task) = &mut session.task
+        && matches!(task.status, TaskStatus::Ready | TaskStatus::Blocked)
     {
         task.status = TaskStatus::Cancelled;
+        if !matches!(meaning, Some(Utterance::Command(_))) {
+            message.push_str("\nPending action cancelled because the new request could not be resolved as a read-only question. State a fresh action to continue.");
+        }
     }
-    if !within_plan
-        && !matches!(
-            meaning,
-            Some(Utterance::Ask(_) | Utterance::AskRecall | Utterance::AskReason)
-        )
-    {
+    if !within_plan && !answered_question {
         session.plan = None;
     }
     if let Some(Utterance::Command(action)) = meaning.clone() {
@@ -577,10 +609,14 @@ fn request(
         if steps > 1 {
             message.push_str(&format!("\n{}", apply(session, path)?));
         } else if !within_plan {
-            message.push_str(&format!(
-                "\n{}\nUse continue to execute the recorded proposal.",
-                status(session)
-            ));
+            message.push_str(&format!("\n{}", status(session)));
+            if session
+                .task
+                .as_ref()
+                .is_some_and(|task| task.status == TaskStatus::Ready)
+            {
+                message.push_str("\nUse continue to execute the recorded proposal.");
+            }
         }
     }
     Ok(RequestResult {
@@ -1069,5 +1105,196 @@ mod tests {
             plan.steps.last().unwrap().result,
             Some(Reply::Location(_))
         ));
+    }
+    const CHOICES_SOURCE: &str = "pub struct First { pub value: u32 }\npub struct Second { pub value: u32 }\npub fn read_first(x: First) -> u32 { x.value }\npub fn read_second(x: Second) -> u32 { x.value }\n";
+
+    #[test]
+    fn explicit_choice_after_restart_renames_only_the_selected_owner() {
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        let state = f.state();
+        assert_eq!(state.task.as_ref().unwrap().status, TaskStatus::Blocked);
+        assert_eq!(state.task.unwrap().choices.unwrap().candidates.len(), 2);
+        assert_eq!(f.source(), CHOICES_SOURCE);
+        f.turn(1, "use the second one");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Ready);
+        assert_eq!(f.source(), CHOICES_SOURCE);
+        f.turn(2, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("First { pub value: u32 }"));
+        assert!(f.source().contains("Second { pub count: u32 }"));
+        assert!(
+            f.source()
+                .contains("read_first(x: First) -> u32 { x.value }")
+        );
+        assert!(
+            f.source()
+                .contains("read_second(x: Second) -> u32 { x.count }")
+        );
+        f.turn(2, "undo");
+        assert_eq!(f.source(), CHOICES_SOURCE);
+    }
+
+    #[test]
+    fn another_choice_replaces_the_preview_without_losing_the_destination() {
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        f.turn(1, "choose First::value");
+        f.turn(1, "use the other one");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.choices.unwrap().selected, Some(1));
+        assert!(matches!(task.request, Action::Rename { name: Some(ref n), .. } if n.0 == "count"));
+        assert_eq!(f.source(), CHOICES_SOURCE);
+        f.turn(2, "continue");
+        assert!(f.source().contains("Second { pub count: u32 }"));
+        assert!(f.source().contains("First { pub value: u32 }"));
+    }
+
+    #[test]
+    fn a_plan_can_resume_after_an_explicit_target_choice() {
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(8, "rename field value to count; then check the tests");
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Blocked);
+        f.turn(8, "select Second.value");
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.current, 2);
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert!(f.source().contains("Second { pub count: u32 }"));
+        assert!(f.source().contains("First { pub value: u32 }"));
+    }
+
+    #[test]
+    fn ambiguous_and_out_of_range_choices_never_select_a_default() {
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        for text in [
+            "other one",
+            "choose 0",
+            "option 9",
+            "choose value",
+            "choose Missing::value",
+        ] {
+            f.turn(8, text);
+            assert_eq!(f.source(), CHOICES_SOURCE, "{text}");
+            assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        }
+        f.turn(8, "choose 1");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+    }
+
+    #[test]
+    fn selecting_a_stale_or_cancelled_choice_cannot_edit() {
+        for cancel in ["cancel task", "undo"] {
+            let f = Fixture::new(CHOICES_SOURCE);
+            f.turn(1, "rename field value to count; then check the tests");
+            f.turn(1, cancel);
+            f.turn(8, "choose 1");
+            f.turn(8, "continue");
+            assert_eq!(f.source(), CHOICES_SOURCE, "{cancel}");
+        }
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        f.turn(1, "undo");
+        f.turn(8, "choose 1");
+        assert_eq!(f.source(), CHOICES_SOURCE);
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Cancelled);
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        let external = format!("{CHOICES_SOURCE}// user's change\n");
+        fs::write(f.root.join("src/lib.rs"), &external).unwrap();
+        f.turn(8, "choose 2");
+        assert_eq!(f.source(), external);
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+    }
+
+    #[test]
+    fn a_tampered_alternative_is_not_a_verified_target() {
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        let mut state = f.state();
+        state
+            .task
+            .as_mut()
+            .unwrap()
+            .choices
+            .as_mut()
+            .unwrap()
+            .candidates
+            .first_mut()
+            .unwrap()
+            .line += 10;
+        save(&f.session, &state).unwrap();
+        f.turn(8, "choose 1");
+        assert_eq!(f.source(), CHOICES_SOURCE);
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+    }
+
+    #[test]
+    fn a_question_preserves_choices_but_a_replacement_action_does_not() {
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        f.turn(1, "where is First?");
+        assert!(f.state().task.unwrap().choices.is_some());
+        f.turn(8, "use Second::value");
+        assert!(f.source().contains("Second { pub count: u32 }"));
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        f.turn(1, "rename struct First to Alpha");
+        f.turn(8, "choose 2");
+        f.turn(8, "continue");
+        assert_eq!(f.source(), CHOICES_SOURCE);
+    }
+    #[test]
+    fn followup_after_a_selected_field_refers_to_its_new_name() {
+        let f = Fixture::new(CHOICES_SOURCE);
+        f.turn(1, "rename field value to count");
+        f.turn(8, "choose Second::value");
+        f.turn(8, "check the tests");
+        f.turn(8, "rename it to amount");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("Second { pub amount: u32 }"));
+        assert!(
+            f.source()
+                .contains("read_second(x: Second) -> u32 { x.amount }")
+        );
+        assert!(f.source().contains("First { pub value: u32 }"));
+    }
+
+    #[test]
+    fn selected_targets_still_roll_back_when_native_verification_fails() {
+        let source = format!("{CHOICES_SOURCE}pub fn broken() -> bool {{ 17 }}\n");
+        let f = Fixture::new(&source);
+        f.turn(1, "rename field value to count");
+        f.turn(8, "choose Second::value");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        assert_eq!(f.source(), source);
+    }
+    #[test]
+    fn unsupported_replacements_cancel_unresolved_choices() {
+        for text in [
+            "implement total",
+            "do not rename value",
+            "delete every file",
+            "choose 2 and remove tests",
+        ] {
+            let f = Fixture::new(CHOICES_SOURCE);
+            f.turn(1, "rename field value to count");
+            f.turn(1, text);
+            f.turn(8, "choose 1");
+            f.turn(8, "continue");
+            assert_eq!(f.source(), CHOICES_SOURCE, "{text}");
+            assert_ne!(f.state().task.unwrap().status, TaskStatus::Completed);
+        }
+    }
+
+    #[test]
+    fn other_requires_exactly_one_remaining_alternative() {
+        let source = format!("{CHOICES_SOURCE}pub struct Third {{ pub value: u32 }}\n");
+        let f = Fixture::new(&source);
+        f.turn(1, "rename field value to count");
+        f.turn(1, "choose 1");
+        f.turn(1, "other one");
+        assert_eq!(f.source(), source);
+        assert_eq!(f.state().task.unwrap().choices.unwrap().selected, Some(0));
     }
 }

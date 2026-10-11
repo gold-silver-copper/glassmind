@@ -1,5 +1,5 @@
 //! Durable action state shared by language frontends and verified executors.
-use glassmind_meaning::{Action, Ontology, Reply};
+use glassmind_meaning::{Action, Ontology, Reply, Trouble};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -35,6 +35,8 @@ pub struct Task<O: Ontology> {
     pub original_text: String,
     pub status: TaskStatus,
     pub events: Vec<TaskEvent<O>>,
+    #[serde(default)]
+    pub choices: Option<TaskChoices<O>>,
 }
 
 impl<O: Ontology> Task<O> {
@@ -50,7 +52,20 @@ impl<O: Ontology> Task<O> {
             }
             _ => TaskStatus::Blocked,
         };
+        let choices = match &result {
+            Reply::Trouble(Trouble::Ambiguous { candidates }) if candidates.len() <= 32 => {
+                let mut candidates = candidates.clone();
+                candidates.sort();
+                candidates.dedup();
+                (candidates.len() > 1).then_some(TaskChoices {
+                    candidates,
+                    selected: None,
+                })
+            }
+            _ => None,
+        };
         Self {
+            choices,
             request,
             original_text,
             status,
@@ -105,4 +120,13 @@ pub struct PlanStep<O: Ontology> {
     pub interpretations: Vec<glassmind_meaning::Utterance<O>>,
     pub task: Option<Task<O>>,
     pub result: Option<Reply<O>>,
+}
+
+/// Persisted alternatives preserve the unresolved choice and the selected item.
+/// Selection itself is not permission to bypass the host's proposal or verifier.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub struct TaskChoices<O: Ontology> {
+    pub candidates: Vec<O::Item>,
+    pub selected: Option<usize>,
 }

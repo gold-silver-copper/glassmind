@@ -147,6 +147,15 @@ pub enum Question<O: Ontology> {
     Problems(O::Check),
 }
 
+/// An explicit selection from alternatives already offered to the user.
+/// Numbers are one-based, matching the displayed alternatives.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub enum Selection {
+    Number(usize),
+    Other,
+    Named(Name),
+}
+
 /// A request to change the world's data.
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[serde(bound = "")]

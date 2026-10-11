@@ -1,0 +1,18 @@
+{
+  "commit": "6f345e56efa7eb8269cd284e9661b4e0e3425545",
+  "sha256": "bfe6ae62bdf7c3c43dd98d095471098b9dead60033d7092c9dd4b555e8b9e7da",
+  "cli_tests": 62,
+  "new_choice_tests": 11,
+  "cli_smoke_processes": 19,
+  "dev_total": 765,
+  "outcomes": {
+    "refused": 542,
+    "pass": 223
+  },
+  "all_outcomes_identical_to_ordered_plan_baseline": true,
+  "baseline_sha256": "8162991b03fe58f14dec203b9974b7f59f57f1549a414c601b89e6c210df0ae0",
+  "results_sha256": "40ba1684d4692ead0af11b4f23d7655344fafad7c80c79bedda153cfafe3073c",
+  "artifacts": "/home/gsc/.cache/glassmind/yolo-choices",
+  "workspace_checks": "fmt, all-target clippy, release workspace, strict 4/4 fixture smoke",
+  "limitations": "Choices preserve rename parameters and can resume plans. Unresolved replacement inputs cancel pending execution. Conditional branches and automatic revision are not in this candidate."
+}

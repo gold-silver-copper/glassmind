@@ -28,7 +28,8 @@ on untested inputs. The recorded result identifies which check ran.
 Existing paraphrases and target corrections use the same meaning layer. For
 example, after proposing `rename struct Parcel to Package`, `sorry, I meant
 Bundle` replaces the target while preserving `Package` as the requested name.
-Read-only questions keep a pending task. A replacement action, cancellation or
+Answered read-only questions keep a pending task. An unresolved request cancels
+pending execution and reports that a fresh action is needed. A replacement action, cancellation or
 unsupported new instruction cannot silently authorize an older proposal.
 
 Source fingerprints bind the session to one canonical repository. Any external
@@ -71,10 +72,26 @@ one. `continue` resumes the recorded next stage after a restart. Each edit uses
 the existing native verifier. A failed check or blocked action stops the tail;
 completed earlier edits remain in place. There is no automatic retry. `show task`
 reports completed operations and the next clause. Undo restores only the last
-verified edit and cancels the remaining plan. Ordinary read-only questions can
+verified edit and cancels the remaining plan. Answered read-only questions can
 interrupt a pending plan without discarding it. A new action replaces the plan.
 
+## Choosing among targets
+
+When a rename has multiple supported targets, the session lists up to 32 stable,
+numbered alternatives with qualified names and source locations. Select one in
+a later invocation with `choose 2`, `use the second one` or
+`choose Second::value`. The destination name and requested kind stay unchanged.
+With `--steps 1`, selection only prepares a fresh proposal; `continue` applies it.
+After previewing one of exactly two alternatives, `use the other one` switches
+the proposal. With more alternatives, name or number the target explicitly.
+
+A choice can unblock the current step of an ordered plan. It cannot bypass native
+verification, revive a cancelled task or edit stale source. Selecting a field
+retains its explicit owner and uses the same owner-aware position audit as an
+explicit qualified rename. Unsupported targets can still remain blocked. After
+a successful rename, `rename it` refers to the selected item's new name, even
+after a build/test check or diagnostic question about the whole repository.
+
 Function implementation and add-field commands remain available through `do`
-without `--session`. Conditional branches, automatic revision strategies, choice
-among unresolved targets and general conversational constraints are not yet
-implemented by the task controller. These remain work beyond ordered execution.
+without `--session`. Conditional branches, automatic revision strategies and
+general conversational constraints are not yet implemented by the controller.
