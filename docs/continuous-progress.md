@@ -5,45 +5,56 @@ WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Known completed-worker tokens:201926299, cached input counted once; parent and
 interrupted usage excluded. No model workers, teacher calls or auth mounts.
 
-## Current jobs,18:41UTC
+## Current jobs,18:47UTC
 
-Fullclaims WORK/full-claims branchcontinuous/full-claims headc0488ca. RUN=WORK/
-coordinator/full-claims. Acquisition and independent86file rehash COMPLETE.
-Projection29161 stillRUNNING at44minutes: all86files processed789435443rawrows
-and364044919statements; final SQLcounts/integrity/hash stillrunning. PID761928
-under supervisor761927,8GiB/no swap,14400s/96GiBprojection/384GiBaddedrun.
-Do not restart. No nativeimport or fullgraph QA yet.
+Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
+coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
+29161 exit0,2711.674s,556268KiBpeakRSS,70529619240sampledpeakaddedbytes; allgatespass.
+789435443rawrows,364044919statements,46448050qualified. Projection0444
+25821511680bytes SHA7fd86d572ba1f0b91de7cb4165543162195247b164d69363571bbf67c7128622.
+8009independentrawsamples(3647eligible) agree withfinalprojectionreport. Reference
+2492 COMPLETE,203.173s; literalreferenceSHA3fcd1c82d6fc1563121dc33e0f81b81481ffd773aa89f3e1003e4c56c429e15c.
+Preparation18606 COMPLETE; nativeinput/reference/binary pinnedbeforenativeimport.
+Fullsource manifestSHA782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a1251dba2.
 
-Independent rawreference session2492 COMPLETE exit0:8009samples3647eligible,
-203.173s695308KiBpeakRSS. ReferenceSHA3fcd1c82d6fc1563121dc33e0f81b81481ffd773aa89f3e1003e4c56c429e15c.
-All8009literalrawsamples agree with projection-progress records; external
-reference-projection-samples.json retains hashes. Database comparison remains.
-Worktreeb6dfe3f refactorsaudit to independentlypreparedsource references; no
-sample/eligibility/gatechanges. prepare-native pins report/reference BEFORE import.
-Original3600s audit budget includes203.173sreference; finalcomparison gets3396s.
-Next: await successfulprojection-resources.json, runRUN/prepare-native.py RUN
-WORK/coordinator/disk-facts/target/release/glassmind-facts bounded8GiB/300s.
-Then launch invocationcommand withRUN/supervise.py RUN native21600 under8GiB0swap
-setsid--wait timeout21610s,TMPDIR/SQLITE_TMPDIR=RUN/tmp. PreserveCLI b0a86c03... .
-After native success readonlyoutput, audit3396s andwitnesses3600s perworktreeplan.
+Native89022 RUNNING,scopeglassmind-full-claims-native,supervisor1022832,child
+1022833 (verify).8GiB/no swap,21600s,192GiBoutput,384GiBaddedrun cap; TMPDIRand
+SQLITE_TMPDIR=RUN/tmp. At197.591s sourcehashes/projectionvalidated andnativealiases
+copied without renormalization. Fullclaims/witnessloading remains; do not restart.
+NEXT: after successfulnative-resources.json, readonlyoutput thenaudit.py under
+3396sremaining original3600s combinedsourceaudit budget (referenceused203.173s),
+thenwitnesses.py3600s; bothviasupervise.py+8GiB0swap+setsid--waittimeout.
+No fullnative success/finalaudit/newgraphQA yet. Keepoldartifactsimmutable.
+Readworktree tools/facts/full-claims/PROGRESS.md andVALIDATION-PLAN.md.
 
-Independentcoding WORK/word-initials branchcontinuous/word-initials head703de14.
+Coding WORK/word-initials branchcontinuous/word-initials head377beda.
 RUN=WORK/coordinator/word-initials. Plan53ce67b frozenbeforecode; runtime23e7525
 adds12signature-only &str->String compositions: wordfirstchar,optionalUnicode
 alphabeticfilter/caseconversion,bothwordorders. Retains6oldcandidates,32/90s
 budgets,exactlyonesurvivor,targetexecution/livecheck/rollback. No grammar change.
-23nativefixtures frozen:12newbehaviors,1weakambiguity,10oldwordjoincontracts.
-Baseline54315 COMPLETE,24.967s:5oldimplementations18refusals as expected.
-All43retained TRAIN sourcefiles hashverified. No newdata/hiddeninspection.
-Build2100 RUNNING,scopeglassmind-word-initials-build:worldtests thenrelease.
-Usescentral /home/gsc/code/glassmind/target; executable WILL change upon release.
-Previousroot/evaluatedb04binary preserved atRUN/baseline andword-join/candidate.
-Next: afterbuildpassesfreezeRUN/candidate/hash, runnewnative23,oldnative66,
-TRAINsample9 thenfull60; all5oldsuccessfulsources mustmatch,gain>=1; independent
-native/evidenceverification. Requiredworkspacegates thenfull765DEV:retain220,
-pass>=221,0fail. Do not runDEV untilpreDEVgatespass. ReadPLAN andreuseoldhelpers;
-completeindependentfixture archive iscoordinator/implgrammar-independent, not
-repo partialarchive missingfreeze.py. No sourcechangesfullclaims fromcoding.
+CandidateSHAefb48471993e9fb63181a7f171ffef428ef8938e24f29af20f5192a59d5b101b.
+Central target/release/glassmind nowhasthiscandidate, root sourcesnotintegratedyet.
+Previousb04binary preserved atRUN/baseline andcoordinator/word-join/candidate.
+
+ALLpreDEVgates pass;tools/coding-word-initials/pre-dev.json pins evidence.
+23nativecases:12new+5oldimplementations,6refusals. Weakcase4passingcandidates
+correctlyrefused.30oldsourceoutcomes identical(20oldnative+10wordjoin).
+Independent18and18unsettarget+10extra allpass; existing76checks includesunset
+repeats.59worldtests,workspacefmt/alltargetclippy/release/strict4smoke pass.
+All17acceptednativeoutputs independentlyrecompiled/verifierevidenceverified.
+TRAIN9sample6accepted; full60:6acceptedvs5; all5oldsourceoutputs byteidentical;
+onlygaininitials/terse fromsuppliedTRAIN, notunseen-taskgeneralization. All6accepted
+TRAIN independentlyrecompiled andtargetexecution/uniquechoice/livechecks verified.
+All43retainedTRAINsourcefiles hashverified; no newdata/hiddeninspection/modelcalls.
+
+Full765DEV73728 RUNNING viaunchangedtools/rustbench-dev.sh:8GiB0swap/3600s/jobs1,
+ownfull765/native-target+check-cache. No runtimeedits whileit runs.
+NEXT: oncompletion runtools/coding-word-initials/compare-full.py --before
+WORK/coordinator/word-join/full765/results.jsonl --after RUN/full765/results.jsonl
+--binary RUN/candidate --out RUN/full765/comparison.json. Gate retainall220,
+pass>=221,0fail. Thenifpass review/integratebyteidenticalsources, reportexactresults,
+updateREADME/docs/scorejournal andpublish/mergeexactreviewedgreenhead. No shipping
+claimyet. See worktreePROGRESS forcompleted sessions andsourcehashes.
 
 ## PR50 merged: word joining shipped
 
