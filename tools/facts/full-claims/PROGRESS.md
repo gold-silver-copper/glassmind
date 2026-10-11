@@ -1,20 +1,35 @@
-# Full independent claims release: native complete, independent audit running
+# Full claims storage and source-query validation complete
 
-Current19:38UTC: acquisition/projection/rawreference/native import COMPLETE.
-Native89022 exit0,3052.182seconds,371540KiBpeakprocessRSS,
-142749644072sampledpeakaddedrunbytes. Original resource gates passed.
-Native database62772387840bytes, now0444;74445176entities,74983525aliases,
-362302267distinctedges,364044919statements,46448050qualified. Integrity and
-foreign references checked3050.936s; committed3051.003s. No restart needed.
+All experiment jobs are terminal: acquisition, projection, reference, native import,
+audit77590 and witnesses64463. Existing gates passed. No model calls in this track.
+RUN=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims.
 
-Independent audit77590 RUNNING,scopeglassmind-full-claims-audit,
-supervisor1230237,child1230238.8GiB/no swap,3396seconds remaining from original
-3600second source-audit budget after203.173srawreference; outertimeout3406s.
-TMPDIR/SQLITE_TMPDIR=RUN/tmp,supervise.py384GiBaddedrun cap. All86file sample
-comparisons finished by2.426s; aggregate counts,distinct/union checks andhashremain.
-NEXT: after audit-resources.json passes, runwitnesses.py via supervisor with
-3600seconds,8GiB/no swap andon-disktmp. Do not claim newgraphQA or promote default
-assets before allsource/storage/probe gates and a separate QA experiment.
+Native import3052.182s,371540KiB processRSS,142749644072sampledpeakaddedbytes.
+Readonly native.sqlite62772387840bytes SHA
+fc04ca4ac6f30468f619395a310181e23ebb45a44f776b81bb74178b357f0172.
+74445176entities,74983525aliases,362302267distinctedges,364044919statementwitnesses,
+46448050qualified. All86rawfiles,789435443rows independently inventoried.
+
+Independent audit468.345s supervised; reference+comparison671.175s within3600s.
+All8009rawsamples(3647eligible) match both databases. All854alias samples match;
+independent ranks, distincttriples, entityunion and counts agree. Indexed forward,
+inverse and alias plans verified. Auditresources passed; fulloutputhash pinned.
+
+Witnesses64463 completed54.040s supervised,123832KiBprocessRSS. Firsteligible
+samplefromeach86shards, bothdirections,15missingnames =>157cases.79successfulsets,
+49ordinaryanswers/108refusals,77aliasambiguities,24truncatedsets; allsuccessful
+answers/counts/first10 match independent completeprojection scans. Largest
+successful set1530765; one8073242-cardinality query returned existing VMbudget
+error. That error is separately reported, not success or correctness credit.
+Original limits unchanged. Read witness-report.json, audit-report.json andPARENT.md.
+
+36facts tests,22302oldTRAIN/DEV ordinary/set byteparity,853oldformat2namequeries,
+110oldpositivewitnesses,28mixedmaincases bothmodes and requiredworkspacechecks
+already passed unchanged facts sources. NEXT integrate reviewed branch centrally,
+verify source parity and run required central checks, then publish exactgreenhead.
+No newgraphQA or defaultpromotion. Later QA needs a separatefrozenplan.
+
+## Earlier execution detail (current completed status above takes precedence)
 
 Projection29161 COMPLETE exit0:789435443rawrows,364044919statements,46448050
 qualified,1092134757canonical retainedIDs. 25821511680bytes SHA

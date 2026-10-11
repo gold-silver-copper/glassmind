@@ -31,8 +31,8 @@ normalizer version; incompatible schemas or normalizers require rebuilding.
 The recorded source hash describes the import input, not subsequent external
 edits to the database.
 
-This importer accepts JSON up to 32 MiB; it does not yet import raw Wikidata
-Parquet or the experimental Python SQLite pilot. Relation model loading is
+The JSON importer accepts inputs up to 32 MiB. Separate audited-projection
+importers are described below; raw Parquet is not a direct CLI input. Relation model loading is
 limited to 64 MiB. A query is limited to 4,096 bytes and 128 normalized tokens.
 SQLite uses a 64 MiB page cache, no memory mapping, a 1 MiB row-value limit and
 an instruction-progress budget. Exceeding a bound returns an error rather than
@@ -107,3 +107,10 @@ required 8 GiB/no-swap scope and an external disk/time supervisor. These broader
 limits do not change the original pilot's limits. Existing format-1 and format-2
 query behavior remains supported. Full-release ingestion and source validation
 are still in progress; this command does not promote a QA bundle.
+
+The full86-file claims release has now passed independent raw-source and query
+checks:362,302,267distinct edges and364,044,919statement witnesses in62.77GB.
+All8,009rawsamples agree with both projections. Source-derived probes return
+49correct ordinary answers and79correct sets; one8,073,242-match set exceeds the
+unchanged query budget and is reported as an error. These are storage/API checks,
+not a QA accuracy result. [Full import evidence](../tools/facts/full-claims/PARENT.md).

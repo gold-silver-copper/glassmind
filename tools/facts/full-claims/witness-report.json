@@ -1,0 +1,25 @@
+{
+  "cases": 157,
+  "largest_set": 1530765,
+  "limitation": "Synthetic prescribed relations; storage/query correctness only, not QA accuracy.",
+  "ordinary_answers": 49,
+  "ordinary_refusals": 108,
+  "set_answers": 79,
+  "set_budget_errors": [
+    {
+      "error": "interrupted",
+      "expected_cardinality": 8073242,
+      "row": 147
+    }
+  ],
+  "truncated_sets": 24,
+  "witnesses": 86,
+  "distinct_lookup_groups": 78,
+  "missing_names": 15,
+  "over_query_limit": 0,
+  "ambiguous": 77,
+  "independent_largest_cardinality": 8073242,
+  "seconds": 52.146539638983086,
+  "cases_sha256": "f6b06d7e421cbc627e963c15215e3bbf9b9a907313bb8e681675a430301f39cd",
+  "binary_sha256": "84ac1fc499c8eec88aff28ab3d598109ecd426f30fbc7fd48d8784b9d2b79f47"
+}
