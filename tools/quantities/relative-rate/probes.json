@@ -1,0 +1,428 @@
+{
+  "total": 29,
+  "passed": 29,
+  "rows": [
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": "10",
+      "unit": "seconds",
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "answer",
+        "value": "10",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in the same directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": "30",
+      "unit": "seconds",
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "answer",
+        "value": "30",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 1 km/minute and 5 m/s. Their lengths are 1 km and 500 m respectively. In how many seconds will they cross each other?",
+      "expected": "900/13",
+      "unit": "seconds",
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "answer",
+        "value": "900/13",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many minutes will they cross each other?",
+      "expected": "1/6",
+      "unit": "minutes",
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "answer",
+        "value": "1/6",
+        "unit": "minutes",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 1/2 m and 3/2 m respectively. In how many seconds will they cross each other?",
+      "expected": "1/15",
+      "unit": "seconds",
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "answer",
+        "value": "1/15",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains named Cedar and Maple are moving in opposite directions. The train named Maple is 75 m long. The train named Cedar is moving at 7 m/s. The train named Cedar is 45 m long. The train named Maple is moving at 3 m/s. In how many seconds will they cross each other?",
+      "expected": "12",
+      "unit": "seconds",
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "answer",
+        "value": "12",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 60 km/hr and 90 km/hr. Their lengths are 1.75 km and 1.10 km respectively. The time taken by the slower train to cross the faster train in seconds is?",
+      "expected": "342/5",
+      "unit": "seconds",
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "answer",
+        "value": "342/5",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains 100 m and 200 m long run at the speed of 36 kmph and 72 kmph respectively in opposite directions on parallel tracks. In how many seconds will they cross each other?",
+      "expected": "10",
+      "unit": "seconds",
+      "before": {
+        "status": "refusal",
+        "reason": "unknown ones word"
+      },
+      "after": {
+        "status": "answer",
+        "value": "10",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 72 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 respectively. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many units will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are -100 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 0 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many metres will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. Their speeds are 37 km/h and 72 km/h. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. They are moving in the same direction. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. The trains stop after 2 seconds. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross a driver?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. A third train is 50 m long. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. They start 20 seconds apart. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains named Cedar and Cedar are moving in opposite directions. The train named Maple is 75 m long. The train named Cedar is moving at 7 m/s. The train named Cedar is 45 m long. The train named Maple is moving at 3 m/s. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains named Cedar and Maple are moving in opposite directions. The train named Oak is 75 m long. The train named Cedar is moving at 7 m/s. The train named Cedar is 45 m long. The train named Maple is moving at 3 m/s. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross the platform?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. They accelerate. In how many seconds will they cross each other?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    },
+    {
+      "question": "Two trains are moving in opposite directions at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will they cross each other twice?",
+      "expected": null,
+      "unit": null,
+      "before": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "after": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "pass_": true
+    }
+  ]
+}

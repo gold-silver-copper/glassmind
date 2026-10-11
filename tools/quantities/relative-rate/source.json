@@ -1,0 +1,69 @@
+{
+  "head": "336d5f9ee5ff70b208d7e2b78ee0b582c6f04a2a",
+  "quantities_production_source": "687f2751ff256f2071330590345ef0652fb09baa",
+  "metric_merge": "9003cbf8422919e8b38e24960bab7b0409095c09",
+  "metric_reviewed_head": "5273b21",
+  "workspace_license": "MIT OR Apache-2.0",
+  "data": {
+    "source": "AllenAI MathQA",
+    "homepage": "https://math-qa.github.io/math-QA/",
+    "license": "Apache-2.0 (AllenAI dataset card)",
+    "version": "fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6",
+    "card_version": "c4f1cc784c04c4957b50c97858f23893b633eea6",
+    "files": [
+      {
+        "split": "train",
+        "url": "https://huggingface.co/datasets/allenai/math_qa/resolve/fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6/default/train/0000.parquet",
+        "bytes": 9013733,
+        "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+      },
+      {
+        "split": "validation",
+        "url": "https://huggingface.co/datasets/allenai/math_qa/resolve/fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6/default/validation/0000.parquet",
+        "bytes": 1350141,
+        "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+      }
+    ],
+    "official_splits": {
+      "train": 29837,
+      "validation": 4475
+    },
+    "test_downloaded": false
+  },
+  "new_external_data_bytes": 0,
+  "new_dependencies": 0,
+  "train_inspection": {
+    "columns": [
+      "Problem"
+    ],
+    "prefix": 4000,
+    "selected": 58,
+    "filter": "same/opposite direction AND train/trains",
+    "evidence": {
+      "bytes": 14218,
+      "sha256": "0a44ee94a136568fe8e14588f42cda18c7a2ee89c536b8f7981318419a00f9bb"
+    }
+  },
+  "original_ratewords_patch": {
+    "bytes": 28975,
+    "sha256": "b7e820663422ab3f0d7aad97d271fef464cdcdcc86a4de13eb6b201f43bb2a78"
+  },
+  "candidate_patch": {
+    "bytes": 43394,
+    "sha256": "b8256c104c1f4055491872e1082781b5ec93fb87aa3ae0bef5d493b7ffb02d16"
+  },
+  "authored_probes": {
+    "bytes": 3219,
+    "sha256": "3817577c041161e3fe88b2a0dbf3629472dc47a9a943ee274ebd5550d4d58044"
+  },
+  "baseline_binaries": {
+    "production": {
+      "bytes": 15709360,
+      "sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a"
+    },
+    "ratewords": {
+      "bytes": 25534224,
+      "sha256": "a5d8aa25a10d11b0f90f36639ab36568d40934a75e63ed0475199f9b17d36f41"
+    }
+  }
+}

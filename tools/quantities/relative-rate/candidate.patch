@@ -1,0 +1,1217 @@
+diff --git i/crates/quantities/src/lib.rs w/crates/quantities/src/lib.rs
+index a314572..4260b46 100644
+--- i/crates/quantities/src/lib.rs
++++ w/crates/quantities/src/lib.rs
+@@ -5,8 +5,11 @@ mod linear;
+ pub mod number_words;
+ mod parser;
+ mod percent;
++mod rate;
++mod rate_language;
+ mod ratio_total;
+ pub mod rational;
++mod relative_rate;
+ pub mod units;
+ 
+ use serde::Serialize;
+diff --git i/crates/quantities/src/linear.rs w/crates/quantities/src/linear.rs
+index cd1e04b..c32539b 100644
+--- i/crates/quantities/src/linear.rs
++++ w/crates/quantities/src/linear.rs
+@@ -10,18 +10,18 @@ fn one() -> Rational {
+ }
+ 
+ #[derive(Clone, Copy)]
+-struct ScalarExpr {
++pub(crate) struct ScalarExpr {
+     coefficients: [Rational; 2],
+     constant: Rational,
+ }
+ impl ScalarExpr {
+-    fn constant(constant: Rational) -> Self {
++    pub(crate) fn constant(constant: Rational) -> Self {
+         Self {
+             coefficients: [zero(); 2],
+             constant,
+         }
+     }
+-    fn variable(second: bool) -> Self {
++    pub(crate) fn variable(second: bool) -> Self {
+         Self {
+             coefficients: if second {
+                 [zero(), one()]
+@@ -31,7 +31,7 @@ impl ScalarExpr {
+             constant: zero(),
+         }
+     }
+-    fn add(self, rhs: Self) -> Result<Self> {
++    pub(crate) fn add(self, rhs: Self) -> Result<Self> {
+         let [a, b] = self.coefficients;
+         let [c, d] = rhs.coefficients;
+         Ok(Self {
+@@ -39,17 +39,17 @@ impl ScalarExpr {
+             constant: self.constant.checked_add(rhs.constant)?,
+         })
+     }
+-    fn scale(self, factor: Rational) -> Result<Self> {
++    pub(crate) fn scale(self, factor: Rational) -> Result<Self> {
+         let [a, b] = self.coefficients;
+         Ok(Self {
+             coefficients: [a.checked_mul(factor)?, b.checked_mul(factor)?],
+             constant: self.constant.checked_mul(factor)?,
+         })
+     }
+-    fn sub(self, rhs: Self) -> Result<Self> {
++    pub(crate) fn sub(self, rhs: Self) -> Result<Self> {
+         self.add(rhs.scale(one().checked_neg()?)?)
+     }
+-    fn value(self, values: [Rational; 2]) -> Result<Rational> {
++    pub(crate) fn value(self, values: [Rational; 2]) -> Result<Rational> {
+         let [a, b] = self.coefficients;
+         let [x, y] = values;
+         self.constant
+@@ -403,7 +403,7 @@ impl Parser {
+     }
+ }
+ 
+-fn tokenize(text: &str) -> Result<Vec<String>> {
++pub(crate) fn tokenize(text: &str) -> Result<Vec<String>> {
+     let chars: Vec<char> = text.chars().collect();
+     let mut tokens = Vec::new();
+     let mut at = 0;
+@@ -475,3 +475,23 @@ pub(crate) fn solve(text: &str) -> Result<Option<Rational>> {
+         .map(Some)
+         .ok_or("inconsistent scalar constraints".into())
+ }
++
++/// Canonical-coordinate elimination for dimension-checked callers.
++/// Physical dimensions are checked before erasing the expression types here.
++pub(crate) fn solve_typed(
++    constraints: Vec<ScalarExpr>,
++    target: ScalarExpr,
++    variables: usize,
++) -> Result<Rational> {
++    if !(1..=2).contains(&variables) || constraints.len() > 8 {
++        return Err("typed affine bounds exceeded".into());
++    }
++    Problem {
++        constraints: constraints.into_iter().map(Equality).collect(),
++        target,
++        pair: variables == 2,
++        differences: Vec::new(),
++    }
++    .execute()?
++    .ok_or("contradictory physical constraints".into())
++}
+diff --git i/crates/quantities/src/parser.rs w/crates/quantities/src/parser.rs
+index 33ae97b..4e45d06 100644
+--- i/crates/quantities/src/parser.rs
++++ w/crates/quantities/src/parser.rs
+@@ -177,6 +177,20 @@ pub fn solve(question: &str) -> Result<Solved> {
+         let date: Date = field(&c, 1)?.parse()?;
+         return Ok((date.weekday().into(), None, "Gregorian weekday"));
+     }
++    if let Ok(Some((value, unit))) = crate::rate_language::solve(&text) {
++        return Ok((
++            value.to_string(),
++            Some(unit),
++            "exact typed traversal constraints",
++        ));
++    }
++    if let Ok(Some((value, unit))) = crate::relative_rate::solve(&text) {
++        return Ok((
++            value.to_string(),
++            Some(unit),
++            "exact typed relative crossing constraints",
++        ));
++    }
+     if let Ok(Some(value)) = crate::linear::solve(&text) {
+         return Ok(numeric(value, "exact scalar linear constraints"));
+     }
+diff --git 1/crates/quantities/src/rate.rs 2/crates/quantities/src/rate.rs
+new file mode 100644
+index 0000000..9ce347d
+--- /dev/null
++++ 2/crates/quantities/src/rate.rs
+@@ -0,0 +1,150 @@
++//! Dimension-checked affine constraints, erased only for exact elimination.
++use crate::linear::{ScalarExpr, solve_typed};
++use crate::rational::{Rational, Result};
++use crate::units::{AdditiveKind, Duration, Length, Quantity, Speed, TypedUnit};
++use std::marker::PhantomData;
++
++pub(crate) trait Canonical: AdditiveKind {
++    const UNIT: &'static str;
++}
++impl Canonical for Length {
++    const UNIT: &'static str = "m";
++}
++impl Canonical for Duration {
++    const UNIT: &'static str = "s";
++}
++impl Canonical for Speed {
++    const UNIT: &'static str = "m/s";
++}
++
++pub(crate) struct Expr<D: Canonical> {
++    scalar: ScalarExpr,
++    dimension: PhantomData<D>,
++}
++impl<D: Canonical> Clone for Expr<D> {
++    fn clone(&self) -> Self {
++        *self
++    }
++}
++impl<D: Canonical> Copy for Expr<D> {}
++impl<D: Canonical> Expr<D> {
++    fn wrap(scalar: ScalarExpr) -> Self {
++        Self {
++            scalar,
++            dimension: PhantomData,
++        }
++    }
++    pub(crate) fn known(value: Rational, unit: &str) -> Result<Self> {
++        let value = Quantity::<D>::new(value, TypedUnit::parse(unit)?)
++            .in_unit(&TypedUnit::parse(D::UNIT)?)?;
++        Ok(Self::wrap(ScalarExpr::constant(value)))
++    }
++    pub(crate) fn add(self, other: Self) -> Result<Self> {
++        Ok(Self::wrap(self.scalar.add(other.scalar)?))
++    }
++}
++impl Expr<Duration> {
++    pub(crate) fn at_speed(self, speed: &Quantity<Speed>) -> Result<Expr<Length>> {
++        Ok(Expr::wrap(
++            self.scalar
++                .scale(speed.in_unit(&TypedUnit::parse("m/s")?)?)?,
++        ))
++    }
++}
++impl Expr<Speed> {
++    #[allow(dead_code)] // Symmetric reusable operation; English currently asks duration.
++    pub(crate) fn for_duration(self, duration: &Quantity<Duration>) -> Result<Expr<Length>> {
++        Ok(Expr::wrap(
++            self.scalar
++                .scale(duration.in_unit(&TypedUnit::parse("s")?)?)?,
++        ))
++    }
++}
++
++pub(crate) struct Constraints {
++    variables: usize,
++    equalities: Vec<ScalarExpr>,
++}
++impl Constraints {
++    pub(crate) fn new() -> Self {
++        Self {
++            variables: 0,
++            equalities: Vec::new(),
++        }
++    }
++    pub(crate) fn unknown<D: Canonical>(&mut self) -> Result<Expr<D>> {
++        if self.variables >= 2 {
++            return Err("too many physical unknowns".into());
++        }
++        let result = Expr::wrap(ScalarExpr::variable(self.variables == 1));
++        self.variables += 1;
++        Ok(result)
++    }
++    pub(crate) fn equal<D: Canonical>(&mut self, left: Expr<D>, right: Expr<D>) -> Result<()> {
++        if self.equalities.len() >= 8 {
++            return Err("too many physical constraints".into());
++        }
++        self.equalities.push(left.scalar.sub(right.scalar)?);
++        Ok(())
++    }
++    pub(crate) fn solve<D: Canonical>(&self, target: Expr<D>, unit: &str) -> Result<Rational> {
++        // These slots denote magnitudes, not signed velocities or displacements.
++        for second in 0..self.variables {
++            let value = solve_typed(
++                self.equalities.clone(),
++                ScalarExpr::variable(second == 1),
++                self.variables,
++            )?;
++            if value.is_negative() {
++                return Err("negative physical magnitude".into());
++            }
++        }
++        let value = solve_typed(self.equalities.clone(), target.scalar, self.variables)?;
++        Quantity::<D>::new(value, TypedUnit::parse(D::UNIT)?).in_unit(&TypedUnit::parse(unit)?)
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    #[test]
++    fn unknown_rate_and_duration_are_dimensionally_distinct() -> Result<()> {
++        let mut c = Constraints::new();
++        let rate = c.unknown::<Speed>()?;
++        let time = c.unknown::<Duration>()?;
++        c.equal(
++            rate.for_duration(&Quantity::new(
++                Rational::integer(2),
++                TypedUnit::parse("minutes")?,
++            ))?,
++            Expr::known(Rational::integer(3), "km")?,
++        )?;
++        c.equal(
++            time.at_speed(&Quantity::new(
++                Rational::integer(90),
++                TypedUnit::parse("km/h")?,
++            ))?,
++            Expr::known(Rational::integer(3), "km")?,
++        )?;
++        assert_eq!(c.solve(rate, "km/h")?, Rational::integer(90));
++        assert_eq!(c.solve(time, "minutes")?, Rational::integer(2));
++        assert!(Expr::<Length>::known(Rational::integer(1), "celsius").is_err());
++        Ok(())
++    }
++    #[test]
++    fn zero_rank_negative_and_contradiction_refuse() -> Result<()> {
++        let mut c = Constraints::new();
++        let time = c.unknown::<Duration>()?;
++        let stopped = Quantity::new(Rational::integer(0), TypedUnit::parse("m/s")?);
++        c.equal(
++            time.at_speed(&stopped)?,
++            Expr::known(Rational::integer(0), "m")?,
++        )?;
++        assert!(c.solve(time, "s").is_err());
++        c.equal(time, Expr::known(Rational::integer(-2), "s")?)?;
++        assert!(c.solve(time, "s").is_err());
++        c.equal(time, Expr::known(Rational::integer(3), "s")?)?;
++        assert!(c.solve(time, "s").is_err());
++        Ok(())
++    }
++}
+diff --git 1/crates/quantities/src/rate_language.rs 2/crates/quantities/src/rate_language.rs
+new file mode 100644
+index 0000000..4f4fff2
+--- /dev/null
++++ 2/crates/quantities/src/rate_language.rs
+@@ -0,0 +1,446 @@
++//! Bounded clause grammar over bound moving objects and stationary extents.
++//! No numeric search: each token must belong to an attribute, event or query.
++use crate::rate::{Constraints, Expr};
++use crate::rational::{Rational, Result};
++use crate::units::{Duration, Length, Quantity, Speed, TypedUnit, Unit};
++
++#[derive(Clone)]
++struct Entity {
++    noun: String,
++    name: Option<String>,
++    length: Option<Rational>, // canonical metres
++    speed: Option<Rational>,  // canonical metres per second
++}
++struct Crossing {
++    object: usize,
++    duration: Rational,
++}
++struct Parser {
++    tokens: Vec<String>,
++    at: usize,
++    entities: Vec<Entity>,
++    mover: Option<usize>,
++    events: Vec<Crossing>,
++}
++fn set(slot: &mut Option<Rational>, value: Rational) -> Result<()> {
++    if slot.is_some_and(|old| old != value) {
++        return Err("contradictory physical attribute".into());
++    }
++    *slot = Some(value);
++    Ok(())
++}
++impl Parser {
++    fn eat(&mut self, phrase: &str) -> bool {
++        let words: Vec<_> = phrase.split_whitespace().collect();
++        if self
++            .tokens
++            .get(self.at..self.at + words.len())
++            .is_some_and(|s| s.iter().map(String::as_str).eq(words.iter().copied()))
++        {
++            self.at += words.len();
++            true
++        } else {
++            false
++        }
++    }
++    fn need(&mut self, phrase: &str) -> Result<()> {
++        if self.eat(phrase) {
++            Ok(())
++        } else {
++            Err(format!("expected traversal token {phrase}"))
++        }
++    }
++    fn peek(&self) -> Option<&str> {
++        self.tokens.get(self.at).map(String::as_str)
++    }
++    fn word(&mut self) -> Result<String> {
++        let word = self
++            .tokens
++            .get(self.at)
++            .ok_or("missing traversal word")?
++            .clone();
++        self.at += 1;
++        Ok(word)
++    }
++    fn number(&mut self) -> Result<Rational> {
++        let negative = self.eat("-");
++        let token = self.word()?;
++        let mut value = match token.as_str() {
++            "one" => Rational::integer(1),
++            "two" => Rational::integer(2),
++            _ => token.parse()?,
++        };
++        if self.eat("/") {
++            value = value.checked_div(self.word()?.parse()?)?;
++        }
++        if negative {
++            value = value.checked_neg()?;
++        }
++        if value.is_negative() {
++            return Err("negative physical magnitude".into());
++        }
++        Ok(value)
++    }
++    fn unit(&mut self) -> Result<String> {
++        let first = self.word()?;
++        let first = match first.as_str() {
++            "sec" => "seconds",
++            "hr" | "hrs" => "hours",
++            "kmph" | "kmh" => "km/h",
++            _ => &first,
++        }
++        .to_string();
++        if self.eat("/") || self.eat("per") {
++            let second = self.word()?;
++            let second = match second.as_str() {
++                "hr" | "hrs" => "hours",
++                "sec" => "seconds",
++                _ => &second,
++            };
++            // Derive a speed scale from separately validated length and duration units.
++            let l = Unit::parse(&first)?;
++            let t = Unit::parse(second)?;
++            if l.dimension() != crate::units::Dimension::Length
++                || t.dimension() != crate::units::Dimension::Duration
++            {
++                return Err("speed needs length per duration".into());
++            }
++            return Ok(format!("{first}/{second}"));
++        }
++        Unit::parse(&first)?;
++        Ok(first)
++    }
++    fn length(&mut self) -> Result<Rational> {
++        let n = self.number()?;
++        self.eat("-");
++        let u = self.unit()?;
++        Quantity::<Length>::new(n, TypedUnit::parse(&u)?).in_unit(&TypedUnit::parse("m")?)
++    }
++    fn duration(&mut self) -> Result<Rational> {
++        let n = self.number()?;
++        let u = self.unit()?;
++        Quantity::<Duration>::new(n, TypedUnit::parse(&u)?).in_unit(&TypedUnit::parse("s")?)
++    }
++    fn speed(&mut self) -> Result<Rational> {
++        let n = self.number()?;
++        let u = self.unit()?;
++        let value = if let Some((l, t)) = u.split_once('/') {
++            let length = Quantity::<Length>::new(n, TypedUnit::parse(l)?);
++            let time = Quantity::<Duration>::new(Rational::integer(1), TypedUnit::parse(t)?);
++            length
++                .divided_by_duration(&time)?
++                .in_unit(&TypedUnit::parse("m/s")?)?
++        } else {
++            Quantity::<Speed>::new(n, TypedUnit::parse(&u)?).in_unit(&TypedUnit::parse("m/s")?)?
++        };
++        if value == Rational::integer(0) {
++            return Err("zero speed cannot determine a crossing duration".into());
++        }
++        Ok(value)
++    }
++    fn entity(&mut self) -> Result<usize> {
++        if self.eat("it") {
++            return self.mover.ok_or("unbound moving-object pronoun".into());
++        }
++        let definite = self.eat("the");
++        let indefinite = if definite {
++            false
++        } else {
++            self.eat("a") || self.eat("an")
++        };
++        self.eat("whole");
++        let mut prefix_length = None;
++        if self
++            .peek()
++            .is_some_and(|s| s.bytes().next().is_some_and(|b| b.is_ascii_digit()))
++        {
++            prefix_length = Some(self.length()?);
++            self.need("long")?;
++        }
++        // Adjectives have explicit geometric meanings; no unrestricted modifier skipping.
++        let modifier = if matches!(
++            self.peek(),
++            Some("railway" | "station" | "electric" | "telegraph" | "signal")
++        ) {
++            Some(self.word()?)
++        } else {
++            None
++        };
++        let noun = self.word()?;
++        if modifier.as_deref().is_some_and(|m| {
++            !matches!(
++                (m, noun.as_str()),
++                ("railway" | "station", "platform")
++                    | ("electric", "pole")
++                    | ("telegraph" | "signal", "post")
++            )
++        }) {
++            return Err("unsupported extent modifier".into());
++        }
++        let moving = matches!(noun.as_str(), "train" | "tram" | "bus" | "car");
++        let point = matches!(noun.as_str(), "pole" | "post" | "tree");
++        if !moving && !point && !matches!(noun.as_str(), "platform" | "bridge" | "tunnel") {
++            return Err("unsupported traversal entity".into());
++        }
++        let name = if self.eat("named") {
++            let name = self.word()?;
++            if !name.bytes().all(|b| b.is_ascii_alphabetic()) {
++                return Err("invalid entity name".into());
++            }
++            Some(name)
++        } else {
++            None
++        };
++        let matching: Vec<_> = self
++            .entities
++            .iter()
++            .enumerate()
++            .filter(|(_, e)| e.noun == noun && (name.is_none() || e.name == name))
++            .map(|(i, _)| i)
++            .collect();
++        let index = if definite {
++            if matching.len() != 1 {
++                return Err("ambiguous or unbound entity".into());
++            }
++            *matching.first().ok_or("unbound entity")?
++        } else if !indefinite && matching.len() == 1 {
++            *matching.first().ok_or("unbound entity")?
++        } else {
++            if moving && self.mover.is_some() {
++                return Err("multiple moving entities unsupported".into());
++            }
++            if self.entities.len() >= 4 {
++                return Err("too many entities".into());
++            }
++            let i = self.entities.len();
++            self.entities.push(Entity {
++                noun,
++                name,
++                length: if point {
++                    Some(Rational::integer(0))
++                } else {
++                    None
++                },
++                speed: None,
++            });
++            if moving {
++                self.mover = Some(i);
++            }
++            i
++        };
++        if let Some(value) = prefix_length {
++            set(
++                &mut self.entities.get_mut(index).ok_or("missing entity")?.length,
++                value,
++            )?;
++        }
++        Ok(index)
++    }
++    fn attributes(&mut self, index: usize) -> Result<bool> {
++        let start = self.at;
++        loop {
++            let saved = self.at;
++            self.eat(",");
++            self.eat("and");
++            self.eat("is");
++            if self
++                .peek()
++                .is_some_and(|s| s == "-" || s.bytes().next().is_some_and(|b| b.is_ascii_digit()))
++            {
++                let length = self.length()?;
++                if !(self.eat("long") || self.eat("in length")) {
++                    return Err("length needs extent binding".into());
++                }
++                set(
++                    &mut self.entities.get_mut(index).ok_or("missing entity")?.length,
++                    length,
++                )?;
++                continue;
++            }
++            let motion = self.eat("running")
++                || self.eat("moving")
++                || self.eat("travelling")
++                || self.eat("traveling");
++            if motion {
++                if !(self.eat("at") || self.eat("with")) {
++                    return Err("motion missing explicit rate".into());
++                }
++                let _ = self.eat("a speed of") || self.eat("the speed of") || self.eat("speed of");
++                let speed = self.speed()?;
++                if Some(index) != self.mover {
++                    return Err("moving crossing extent unsupported".into());
++                }
++                set(
++                    &mut self.entities.get_mut(index).ok_or("missing entity")?.speed,
++                    speed,
++                )?;
++                continue;
++            }
++            self.at = saved;
++            break;
++        }
++        Ok(self.at != start)
++    }
++    fn property_fact(&mut self) -> Result<bool> {
++        let start = self.at;
++        let speed = if self.eat("the speed of") {
++            true
++        } else if self.eat("the length of") {
++            false
++        } else {
++            return Ok(false);
++        };
++        let index = self.entity()?;
++        self.need("is")?;
++        if speed {
++            if Some(index) != self.mover {
++                return Err("moving crossing extent unsupported".into());
++            }
++            let value = self.speed()?;
++            set(
++                &mut self.entities.get_mut(index).ok_or("missing entity")?.speed,
++                value,
++            )?;
++        } else {
++            let value = self.length()?;
++            set(
++                &mut self.entities.get_mut(index).ok_or("missing entity")?.length,
++                value,
++            )?;
++        }
++        Ok(self.at > start)
++    }
++    fn crossing_verb(&mut self) -> bool {
++        self.eat("cross") || self.eat("pass") || self.eat("crosses") || self.eat("passes")
++    }
++    fn fact(&mut self) -> Result<()> {
++        if self.property_fact()? {
++            return Ok(());
++        }
++        let subject = self.entity()?;
++        let attrs = self.attributes(subject)?;
++        if self.crossing_verb() {
++            if Some(subject) != self.mover {
++                return Err("stationary subject crossing".into());
++            }
++            let object = self.entity()?;
++            self.attributes(object)?;
++            self.need("in")?;
++            let duration = self.duration()?;
++            if self.events.len() >= 3 {
++                return Err("too many traversal events".into());
++            }
++            self.events.push(Crossing { object, duration });
++        } else if !attrs {
++            return Err("entity without physical fact".into());
++        }
++        Ok(())
++    }
++    fn query(&mut self) -> Result<(usize, String, bool)> {
++        self.eat("in");
++        self.need("how many")?;
++        let unit = self.unit()?;
++        TypedUnit::<Duration>::parse(&unit)?;
++        self.need("will")?;
++        let subject = self.entity()?;
++        if Some(subject) != self.mover {
++            return Err("query subject is not moving object".into());
++        }
++        self.attributes(subject)?;
++        self.eat("take to");
++        if !self.crossing_verb() {
++            return Err("missing crossing relation".into());
++        }
++        let object = self.entity()?;
++        self.attributes(object)?;
++        self.eat(",");
++        let same_speed = self.eat("at the same speed");
++        if self.eat("if") && !self.property_fact()? {
++            return Err("unsupported conditional rate fact".into());
++        }
++        Ok((object, unit, same_speed))
++    }
++    fn parse(mut self) -> Result<(Rational, String)> {
++        let mut target = None;
++        for _ in 0..8 {
++            if self.at == self.tokens.len() {
++                break;
++            }
++            if self.peek() == Some("how") || self.peek() == Some("in") {
++                if target.is_some() {
++                    return Err("multiple target clauses".into());
++                }
++                target = Some(self.query()?);
++            } else {
++                self.fact()?;
++            }
++            if self.at == self.tokens.len() {
++                break;
++            }
++            if !(self.eat(".") || self.eat(";")) {
++                return Err("unconsumed traversal clause".into());
++            }
++        }
++        if self.at != self.tokens.len() {
++            return Err("unconsumed traversal input".into());
++        }
++        let (object, unit, same_speed) = target.ok_or("missing explicit duration target")?;
++        if !self.events.is_empty() && !same_speed {
++            return Err("multiple events require explicit same speed".into());
++        }
++        let mover_id = self.mover.ok_or("missing mover")?;
++        let mover = self.entities.get(mover_id).ok_or("missing mover")?;
++        let speed = mover.speed.ok_or("missing explicit speed")?;
++        // All introduced stationary objects must participate in a relation.
++        for i in 0..self.entities.len() {
++            if i != mover_id && i != object && !self.events.iter().any(|e| e.object == i) {
++                return Err("unused contextual extent".into());
++            }
++        }
++        let mut constraints = Constraints::new();
++        let length = if let Some(value) = mover.length {
++            Expr::<Length>::known(value, "m")?
++        } else {
++            constraints.unknown::<Length>()?
++        };
++        let rate = Quantity::<Speed>::new(speed, TypedUnit::parse("m/s")?);
++        for event in &self.events {
++            let extent = self.entities.get(event.object).ok_or("missing extent")?;
++            if event.object == mover_id || extent.speed.is_some() {
++                return Err("crossing needs stationary extent".into());
++            }
++            let distance = length.add(Expr::known(
++                extent.length.ok_or("unknown stationary length")?,
++                "m",
++            )?)?;
++            let duration = Expr::<Duration>::known(event.duration, "s")?;
++            constraints.equal(distance, duration.at_speed(&rate)?)?;
++        }
++        let extent = self.entities.get(object).ok_or("missing extent")?;
++        if object == mover_id || extent.speed.is_some() {
++            return Err("crossing needs stationary extent".into());
++        }
++        let distance = length.add(Expr::known(
++            extent.length.ok_or("unknown stationary length")?,
++            "m",
++        )?)?;
++        let duration = constraints.unknown::<Duration>()?;
++        constraints.equal(distance, duration.at_speed(&rate)?)?;
++        Ok((constraints.solve(duration, &unit)?, unit))
++    }
++}
++
++pub(crate) fn solve(text: &str) -> Result<Option<(Rational, String)>> {
++    if !text.contains("cross") && !text.contains("pass") {
++        return Ok(None);
++    }
++    Parser {
++        tokens: crate::linear::tokenize(text)?,
++        at: 0,
++        entities: Vec::new(),
++        mover: None,
++        events: Vec::new(),
++    }
++    .parse()
++    .map(Some)
++}
+diff --git 1/crates/quantities/src/relative_rate.rs 2/crates/quantities/src/relative_rate.rs
+new file mode 100644
+index 0000000..dcaa430
+--- /dev/null
++++ 2/crates/quantities/src/relative_rate.rs
+@@ -0,0 +1,409 @@
++//! Complete crossing of two explicitly bound, uniformly moving trains.
++use crate::rate::{Constraints, Expr};
++use crate::rational::{Rational, Result};
++use crate::units::{Duration, Length, Quantity, Speed, TypedUnit, Unit};
++
++#[derive(Default)]
++struct Body {
++    name: Option<String>,
++    length: Option<Rational>,
++    speed: Option<Rational>,
++}
++struct Parser {
++    tokens: Vec<String>,
++    at: usize,
++    bodies: [Body; 2],
++    introduced: bool,
++    opposite: Option<bool>,
++}
++fn assign(slot: &mut Option<Rational>, value: Rational) -> Result<()> {
++    if value == Rational::integer(0) || value.is_negative() {
++        return Err("positive physical magnitude required".into());
++    }
++    if slot.is_some_and(|v| v != value) {
++        return Err("contradictory attribute".into());
++    }
++    *slot = Some(value);
++    Ok(())
++}
++impl Parser {
++    fn eat(&mut self, phrase: &str) -> bool {
++        let words: Vec<_> = phrase.split_whitespace().collect();
++        if self
++            .tokens
++            .get(self.at..self.at + words.len())
++            .is_some_and(|s| s.iter().map(String::as_str).eq(words.iter().copied()))
++        {
++            self.at += words.len();
++            true
++        } else {
++            false
++        }
++    }
++    fn need(&mut self, phrase: &str) -> Result<()> {
++        if self.eat(phrase) {
++            Ok(())
++        } else {
++            Err(format!("expected traversal token {phrase}"))
++        }
++    }
++    fn peek(&self) -> Option<&str> {
++        self.tokens.get(self.at).map(String::as_str)
++    }
++    fn word(&mut self) -> Result<String> {
++        let word = self
++            .tokens
++            .get(self.at)
++            .ok_or("missing traversal word")?
++            .clone();
++        self.at += 1;
++        Ok(word)
++    }
++    fn number(&mut self) -> Result<Rational> {
++        let negative = self.eat("-");
++        let token = self.word()?;
++        let mut value = match token.as_str() {
++            "one" => Rational::integer(1),
++            "two" => Rational::integer(2),
++            _ => token.parse()?,
++        };
++        if self.eat("/") {
++            value = value.checked_div(self.word()?.parse()?)?;
++        }
++        if negative {
++            value = value.checked_neg()?;
++        }
++        if value.is_negative() {
++            return Err("negative physical magnitude".into());
++        }
++        Ok(value)
++    }
++    fn unit(&mut self) -> Result<String> {
++        let first = self.word()?;
++        let first = match first.as_str() {
++            "sec" => "seconds",
++            "hr" | "hrs" => "hours",
++            "kmph" | "kmh" => "km/h",
++            _ => &first,
++        }
++        .to_string();
++        if self.eat("/") || self.eat("per") {
++            let second = self.word()?;
++            let second = match second.as_str() {
++                "hr" | "hrs" => "hours",
++                "sec" => "seconds",
++                _ => &second,
++            };
++            // Derive a speed scale from separately validated length and duration units.
++            let l = Unit::parse(&first)?;
++            let t = Unit::parse(second)?;
++            if l.dimension() != crate::units::Dimension::Length
++                || t.dimension() != crate::units::Dimension::Duration
++            {
++                return Err("speed needs length per duration".into());
++            }
++            return Ok(format!("{first}/{second}"));
++        }
++        Unit::parse(&first)?;
++        Ok(first)
++    }
++    fn length(&mut self) -> Result<Rational> {
++        let n = self.number()?;
++        self.eat("-");
++        let u = self.unit()?;
++        Quantity::<Length>::new(n, TypedUnit::parse(&u)?).in_unit(&TypedUnit::parse("m")?)
++    }
++    fn speed(&mut self) -> Result<Rational> {
++        let n = self.number()?;
++        let u = self.unit()?;
++        let value = if let Some((l, t)) = u.split_once('/') {
++            let length = Quantity::<Length>::new(n, TypedUnit::parse(l)?);
++            let time = Quantity::<Duration>::new(Rational::integer(1), TypedUnit::parse(t)?);
++            length
++                .divided_by_duration(&time)?
++                .in_unit(&TypedUnit::parse("m/s")?)?
++        } else {
++            Quantity::<Speed>::new(n, TypedUnit::parse(&u)?).in_unit(&TypedUnit::parse("m/s")?)?
++        };
++        if value == Rational::integer(0) {
++            return Err("zero speed cannot determine a crossing duration".into());
++        }
++        Ok(value)
++    }
++    fn direction(&mut self) -> Result<bool> {
++        let start = self.at;
++        if !self.eat("in") {
++            return Ok(false);
++        }
++        self.eat("the");
++        let value = if self.eat("opposite") {
++            true
++        } else if self.eat("same") {
++            false
++        } else {
++            self.at = start;
++            return Ok(false);
++        };
++        if !(self.eat("directions") || self.eat("direction")) {
++            return Err("missing explicit direction".into());
++        }
++        if self.opposite.is_some_and(|old| old != value) {
++            return Err("contradictory direction".into());
++        }
++        self.opposite = Some(value);
++        Ok(true)
++    }
++    fn pair_lengths(&mut self) -> Result<()> {
++        let a = self.length()?;
++        self.need("and")?;
++        let b = self.length()?;
++        assign(&mut self.bodies[0].length, a)?;
++        assign(&mut self.bodies[1].length, b)?;
++        Ok(())
++    }
++    fn pair_speeds(&mut self) -> Result<()> {
++        let a = self.speed()?;
++        self.need("and")?;
++        let b = self.speed()?;
++        assign(&mut self.bodies[0].speed, a)?;
++        assign(&mut self.bodies[1].speed, b)?;
++        Ok(())
++    }
++    fn names(&mut self) -> Result<()> {
++        let a = self.word()?;
++        self.need("and")?;
++        let b = self.word()?;
++        if a == b || !a.bytes().chain(b.bytes()).all(|x| x.is_ascii_alphabetic()) {
++            return Err("ambiguous names".into());
++        }
++        self.bodies[0].name = Some(a);
++        self.bodies[1].name = Some(b);
++        Ok(())
++    }
++    fn motion(&mut self) -> Result<()> {
++        self.eat("are");
++        if !(self.eat("moving") || self.eat("running") || self.eat("run") || self.eat("move")) {
++            return Err("missing motion predicate".into());
++        }
++        self.direction()?;
++        if self.eat("at") || self.eat("with") {
++            let _ = self.eat("the speed of")
++                || self.eat("speeds of")
++                || self.eat("speed of")
++                || self.eat("speeds");
++            self.pair_speeds()?;
++            self.eat("respectively");
++        }
++        self.direction()?;
++        let _ = self.eat("on parallel tracks")
++            || self.eat("in parallel tracks")
++            || self.eat("on parallel lines");
++        Ok(())
++    }
++    fn fact(&mut self) -> Result<()> {
++        if self.eat("two trains") {
++            if self.introduced {
++                return Err("multiple train pairs".into());
++            }
++            self.introduced = true;
++            if self.eat("named") {
++                self.names()?;
++            }
++            if self
++                .peek()
++                .is_some_and(|s| s.bytes().next().is_some_and(|b| b.is_ascii_digit()))
++            {
++                self.pair_lengths()?;
++                self.need("long")?;
++            }
++            return self.motion();
++        }
++        if !self.introduced {
++            return Err("unbound train pair".into());
++        }
++        if self.eat("their lengths are") {
++            self.pair_lengths()?;
++            self.eat("respectively");
++            return Ok(());
++        }
++        if self.eat("their speeds are") {
++            self.pair_speeds()?;
++            self.eat("respectively");
++            return Ok(());
++        }
++        if self.eat("they") {
++            return self.motion();
++        }
++        self.eat("the");
++        self.need("train named")?;
++        let name = self.word()?;
++        let index = self
++            .bodies
++            .iter()
++            .position(|b| b.name.as_ref() == Some(&name))
++            .ok_or("unknown train name")?;
++        self.need("is")?;
++        if self.eat("moving at") || self.eat("running at") {
++            let n = self.speed()?;
++            assign(
++                &mut self.bodies.get_mut(index).ok_or("unbound train")?.speed,
++                n,
++            )?;
++        } else {
++            let n = self.length()?;
++            self.need("long")?;
++            assign(
++                &mut self.bodies.get_mut(index).ok_or("unbound train")?.length,
++                n,
++            )?;
++        }
++        Ok(())
++    }
++    fn verb(&mut self) -> bool {
++        self.eat("cross") || self.eat("crosses") || self.eat("pass") || self.eat("passes")
++    }
++    fn ranked(&mut self) -> Result<bool> {
++        self.need("the")?;
++        let faster = if self.eat("faster") {
++            true
++        } else {
++            self.need("slower")?;
++            false
++        };
++        self.need("train")?;
++        Ok(faster)
++    }
++    fn crossing(&mut self) -> Result<()> {
++        if self.eat("they") {
++            self.eat("take to");
++            if !self.verb() {
++                return Err("missing crossing verb".into());
++            }
++            if !(self.eat("each other") || self.eat("one another")) {
++                return Err("unbound crossing object".into());
++            }
++        } else {
++            let first = self.ranked()?;
++            self.eat("to");
++            if !self.verb() {
++                return Err("missing crossing verb".into());
++            }
++            if self.eat("the other train") {
++                return Ok(());
++            }
++            if first == self.ranked()? {
++                return Err("self crossing".into());
++            }
++        }
++        self.eat("completely");
++        Ok(())
++    }
++    fn query(&mut self) -> Result<String> {
++        if self.eat("in how many") {
++            let unit = self.unit()?;
++            TypedUnit::<Duration>::parse(&unit)?;
++            self.need("will")?;
++            self.crossing()?;
++            return Ok(unit);
++        }
++        if self.eat("the time") {
++            if self.eat("taken by") {
++                self.crossing()?;
++            } else if self.eat("which") || self.eat("they will take to") {
++                // The latter has consumed its subject and infinitive.
++                if self
++                    .tokens
++                    .get(self.at.wrapping_sub(1))
++                    .is_some_and(|t| t == "to")
++                {
++                    if !self.verb() {
++                        return Err("missing crossing verb".into());
++                    }
++                    self.need("each other")?;
++                    self.eat("completely");
++                } else {
++                    self.crossing()?;
++                }
++            } else {
++                return Err("unsupported time query".into());
++            }
++        } else {
++            self.crossing()?;
++        }
++        self.need("in")?;
++        let unit = self.unit()?;
++        TypedUnit::<Duration>::parse(&unit)?;
++        self.eat("is");
++        Ok(unit)
++    }
++    fn parse(mut self) -> Result<(Rational, String)> {
++        let mut target = None;
++        for _ in 0..8 {
++            if self.at == self.tokens.len() {
++                break;
++            }
++            let query = self.peek() == Some("in")
++                || self.tokens.get(self.at..self.at + 2).is_some_and(|w| {
++                    w == ["the", "time"] || w == ["the", "slower"] || w == ["the", "faster"]
++                });
++            if query {
++                if target.is_some() {
++                    return Err("multiple crossing events".into());
++                }
++                target = Some(self.query()?);
++            } else {
++                self.fact()?;
++            }
++            if self.at == self.tokens.len() {
++                break;
++            }
++            if !(self.eat(".") || self.eat(";")) {
++                return Err("unconsumed crossing clause".into());
++            }
++        }
++        if self.at != self.tokens.len() {
++            return Err("unconsumed input".into());
++        }
++        let unit = target.ok_or("missing duration query")?;
++        let opposite = self.opposite.ok_or("ambiguous direction")?;
++        let [a, b] = &self.bodies;
++        let va = a.speed.ok_or("missing first speed")?;
++        let vb = b.speed.ok_or("missing second speed")?;
++        if va == vb {
++            return Err("equal rates outside relative crossing scope".into());
++        }
++        let speed = if opposite {
++            va.checked_add(vb)?
++        } else {
++            let difference = va.checked_sub(vb)?;
++            if difference.is_negative() {
++                difference.checked_neg()?
++            } else {
++                difference
++            }
++        };
++        let distance = Expr::<Length>::known(a.length.ok_or("missing first length")?, "m")?
++            .add(Expr::known(b.length.ok_or("missing second length")?, "m")?)?;
++        let mut constraints = Constraints::new();
++        let duration = constraints.unknown::<Duration>()?;
++        constraints.equal(
++            distance,
++            duration.at_speed(&Quantity::new(speed, TypedUnit::<Speed>::parse("m/s")?))?,
++        )?;
++        Ok((constraints.solve(duration, &unit)?, unit))
++    }
++}
++pub(crate) fn solve(text: &str) -> Result<Option<(Rational, String)>> {
++    if !text.contains("two trains") {
++        return Ok(None);
++    }
++    Parser {
++        tokens: crate::linear::tokenize(text)?,
++        at: 0,
++        bodies: Default::default(),
++        introduced: false,
++        opposite: None,
++    }
++    .parse()
++    .map(Some)
++}
+diff --git 1/crates/quantities/tests/rate_language.rs 2/crates/quantities/tests/rate_language.rs
+new file mode 100644
+index 0000000..e3bd460
+--- /dev/null
++++ 2/crates/quantities/tests/rate_language.rs
+@@ -0,0 +1,58 @@
++use glassmind_quantities::{Answer, solve};
++fn value(q: &str, expected: &str, unit: &str) {
++    match solve(q) {
++        Answer::Answer {
++            value,
++            unit: actual,
++            ..
++        } => {
++            assert_eq!(value, expected, "{q}");
++            assert_eq!(actual.as_deref(), Some(unit));
++        }
++        a => assert!(matches!(a, Answer::Answer { .. }), "{q}: {a:?}"),
++    }
++}
++fn refuses(q: &str) {
++    assert!(matches!(solve(q), Answer::Refusal { .. }), "{q}");
++}
++#[test]
++fn dimensional_crossings_and_bindings() {
++    value(
++        "How many seconds will a train 110 meters long take to cross a railway platform 165 meters long if the speed of the train is 132 kmph?",
++        "15/2",
++        "seconds",
++    );
++    value(
++        "A tram named iris is 30 meters long. The speed of the tram named iris is 18 km per hour. In how many seconds will the tram named iris cross a bridge 120 meters long?",
++        "30",
++        "seconds",
++    );
++    value(
++        "A train is moving at 60 miles per hour. The length of the train is 1 mile. In how many minutes will it pass a bridge 5280 feet long?",
++        "2",
++        "minutes",
++    );
++    value(
++        "A train running at 36 km/h crosses a pole in 12 seconds. In how many seconds will the train pass a platform 360 meters long at the same speed?",
++        "48",
++        "seconds",
++    );
++}
++#[test]
++fn contextual_and_physical_refusals() {
++    for q in [
++        "A train 100 meters long is running at 0 km/h. In how many seconds will it pass a pole?",
++        "A train -100 meters long is running at 36 km/h. In how many seconds will it pass a pole?",
++        "A train 100 celsius long is running at 36 km/h. In how many seconds will it pass a pole?",
++        "A train 100 meters long is running at 36 km/h. The length of the train is 110 meters. In how many seconds will it pass a pole?",
++        "A train 100 meters long is running at 36 km/h. A train 100 meters long is running at 36 km/h. In how many seconds will it pass a pole?",
++        "A train 100 meters long is running at 36 km/h. In how many seconds will it pass a platform?",
++        "A train 100 meters long is running at 36 km/h. In how many seconds will it pass a platform 50 meters long running at 10 km/h?",
++        "A train running at 36 km/h crosses a pole in 12 seconds. In how many seconds will it pass a platform 360 meters long?",
++        "A train 100 meters long is running at 36 km/h. The driver stops. In how many seconds will it pass a pole?",
++        "A train 100 meters long is running at 36 km/h. How long will it pass a pole?",
++        "A train 100 meters long is running at 36 km/h. In how many kilograms will it pass a pole?",
++    ] {
++        refuses(q);
++    }
++}

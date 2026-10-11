@@ -1,0 +1,103 @@
+{
+  "utc": "2026-10-11T06:33:32.300344+00:00",
+  "head": "336d5f9ee5ff70b208d7e2b78ee0b582c6f04a2a",
+  "dev_read": false,
+  "files": {
+    "crates/quantities/src/calendar.rs": {
+      "sha256": "e5c25f8281a8c938e4ddb18468b377fd05a90b0267e896e665b4d09441dce6ca",
+      "bytes": 4021
+    },
+    "crates/quantities/src/inventory.rs": {
+      "sha256": "a3f48765518754664f86e084e8b428925ccbdc345b9665fac8a3eafe3352497e",
+      "bytes": 1779
+    },
+    "crates/quantities/src/main.rs": {
+      "sha256": "d66376e89fbe68a03449a5577cf23a42c2b3767d3bfafeb1d4fad686a8918e4e",
+      "bytes": 872
+    },
+    "crates/quantities/src/number_words.rs": {
+      "sha256": "8fd3c91f3176ffb71da48c3511e6978ee80fe5c8ef498e3ec814c02a64b95df1",
+      "bytes": 3062
+    },
+    "crates/quantities/src/percent.rs": {
+      "sha256": "052a4ae9f91661547d1a05f770cf7a8b71c5408e6ce65d9e7a0cc219dd99642b",
+      "bytes": 3830
+    },
+    "crates/quantities/src/ratio_total.rs": {
+      "sha256": "b08d5a838210944cd73a716f0f4d0f4329f2d6504aebeabe23d71428abb2446f",
+      "bytes": 6492
+    },
+    "crates/quantities/src/rational.rs": {
+      "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d",
+      "bytes": 4346
+    },
+    "crates/quantities/src/units.rs": {
+      "sha256": "f2d45cd3a0916525149c7d752d8f6a414c09a3a6547192512adef75adadfb04c",
+      "bytes": 6790
+    },
+    "crates/quantities/src/lib.rs": {
+      "sha256": "abcb3c978dc372d428c794301f86da2a2888a42173e74dbe041d8c79e4053b0e",
+      "bytes": 896
+    },
+    "crates/quantities/src/linear.rs": {
+      "sha256": "7f48e46b5307fd76260d0e5322b0064e6ecbec989d43908719dbd544e6226a75",
+      "bytes": 16607
+    },
+    "crates/quantities/src/parser.rs": {
+      "sha256": "469bd61cc8c1e18d4b5b95bd2feeff3311422f9c531048eaccf6081b7069c744",
+      "bytes": 19206
+    },
+    "crates/quantities/src/rate.rs": {
+      "sha256": "98a28f5bd4854be1e9adf7602c57d94dc9f40c1cd0348035b9476d6ed14b9ce8",
+      "bytes": 5058
+    },
+    "crates/quantities/src/rate_language.rs": {
+      "sha256": "2653522193e584e1460dbb91e4aa59283db386946ecb0c56930daae5b881f1f1",
+      "bytes": 15816
+    },
+    "crates/quantities/src/relative_rate.rs": {
+      "sha256": "3a141ef14bd09657178868012296f07ff168a6b6775fbfbc2ed2d25312d7a75f",
+      "bytes": 13519
+    },
+    "crates/quantities/tests/linear_language.rs": {
+      "sha256": "7078fc36bb07e8b2ca624a80babbeadc7de1fc87bce7f400208ef4789ee82709",
+      "bytes": 4437
+    },
+    "crates/quantities/tests/percent_language.rs": {
+      "sha256": "3360df448e19ca6824416ea7e48a2bdefea227325365817d8b4598a33a370698",
+      "bytes": 1792
+    },
+    "crates/quantities/tests/ratio_totals.rs": {
+      "sha256": "95a6a87eb0ecac3dfeb7c9ffbcc259bbe0c064605bfd133cc54762f8a46c4487",
+      "bytes": 4622
+    },
+    "crates/quantities/tests/rate_language.rs": {
+      "sha256": "00452cb4beca2f327bcca5645c84b8a71df334701b0a6afbdb8f7b3118ad438c",
+      "bytes": 2726
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/relativerate-run/candidate/glassmind-quantities": {
+      "sha256": "5047be66fe497f70094d36a45812c69f70d87360937bce868752031337234d54",
+      "bytes": 25661624
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/relativerate-run/candidate/glassmind": {
+      "sha256": "ef9c98c23b21c2a8b015f5ff03d67c9ed337c312657c64c9683af2fdc5f31c35",
+      "bytes": 126331248
+    },
+    "tools/quantities/relative-rate/candidate.patch": {
+      "sha256": "b8256c104c1f4055491872e1082781b5ec93fb87aa3ae0bef5d493b7ffb02d16",
+      "bytes": 43394
+    },
+    "tools/quantities/relative-rate/PLAN.md": {
+      "sha256": "8ef0b09b499f4ed7d3b43d3fea64d4a45fb4216e236ebf7d65608cea1c458351",
+      "bytes": 4452
+    },
+    "tools/quantities/relative-rate/probes.py": {
+      "sha256": "3817577c041161e3fe88b2a0dbf3629472dc47a9a943ee274ebd5550d4d58044",
+      "bytes": 3219
+    },
+    "tools/quantities/relative-rate/train-evidence.json": {
+      "sha256": "0a44ee94a136568fe8e14588f42cda18c7a2ee89c536b8f7981318419a00f9bb",
+      "bytes": 14218
+    }
+  }
+}

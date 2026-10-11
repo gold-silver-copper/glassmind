@@ -1,0 +1,225 @@
+{
+  "source": "ratewords authored physical probes v1",
+  "license": "MIT OR Apache-2.0",
+  "total": 43,
+  "answer_cases": 14,
+  "failures": [],
+  "cases": [
+    {
+      "question": "A tram named iris is 35 meters long. The length of the tram named iris is 35 meters. The speed of the tram named iris is 18 km per hour. In how many seconds will the tram named iris cross a bridge 90 meters long?",
+      "expected": "25",
+      "unit": "seconds"
+    },
+    {
+      "question": "A tram named iris is 35 meters long. The speed of the tram named iris is 18 km per hour. The length of the tram named iris is 35 meters. In how many seconds will the tram named iris cross a bridge 90 meters long?",
+      "expected": "25",
+      "unit": "seconds"
+    },
+    {
+      "question": "In how many seconds will a 35 meter long tram named iris moving at 18 km/h cross a 90 meter long bridge?",
+      "expected": "25",
+      "unit": "seconds"
+    },
+    {
+      "question": "A tram named iris is 35 meters long. The speed of the tram named iris is 18 km/h. In how many seconds will the tram named wrong cross a bridge 90 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A tram named iris is 35 meters long. The speed of the tram is 18 km/h. The length of the tram is 36 meters. In how many seconds will it cross a pole?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A tram named sable is 25/2 meters long. The length of the tram named sable is 25/2 meters. The speed of the tram named sable is 81/2 km per hour. In how many seconds will the tram named sable cross a bridge 137/2 meters long?",
+      "expected": "36/5",
+      "unit": "seconds"
+    },
+    {
+      "question": "A tram named sable is 25/2 meters long. The speed of the tram named sable is 81/2 km per hour. The length of the tram named sable is 25/2 meters. In how many seconds will the tram named sable cross a bridge 137/2 meters long?",
+      "expected": "36/5",
+      "unit": "seconds"
+    },
+    {
+      "question": "In how many seconds will a 25/2 meter long tram named sable moving at 81/2 km/h cross a 137/2 meter long bridge?",
+      "expected": "36/5",
+      "unit": "seconds"
+    },
+    {
+      "question": "A tram named sable is 25/2 meters long. The speed of the tram named sable is 81/2 km/h. In how many seconds will the tram named wrong cross a bridge 137/2 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A tram named sable is 25/2 meters long. The speed of the tram is 81/2 km/h. The length of the tram is 27/2 meters. In how many seconds will it cross a pole?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A tram named taro is 501 meters long. The length of the tram named taro is 501 meters. The speed of the tram named taro is 144 km per hour. In how many seconds will the tram named taro cross a bridge 299 meters long?",
+      "expected": "20",
+      "unit": "seconds"
+    },
+    {
+      "question": "A tram named taro is 501 meters long. The speed of the tram named taro is 144 km per hour. The length of the tram named taro is 501 meters. In how many seconds will the tram named taro cross a bridge 299 meters long?",
+      "expected": "20",
+      "unit": "seconds"
+    },
+    {
+      "question": "In how many seconds will a 501 meter long tram named taro moving at 144 km/h cross a 299 meter long bridge?",
+      "expected": "20",
+      "unit": "seconds"
+    },
+    {
+      "question": "A tram named taro is 501 meters long. The speed of the tram named taro is 144 km/h. In how many seconds will the tram named wrong cross a bridge 299 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A tram named taro is 501 meters long. The speed of the tram is 144 km/h. The length of the tram is 502 meters. In how many seconds will it cross a pole?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train running at 27 km/h crosses a pole in 16 seconds. In how many minutes will it cross a bridge 300 meters long at the same speed?",
+      "expected": "14/15",
+      "unit": "minutes"
+    },
+    {
+      "question": "A train running at 27 km/h crosses a pole in 16 seconds. In how many minutes will it cross a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 1 meter long running at 27 km/h crosses a pole in 16 seconds. In how many minutes will it cross a bridge 300 meters long at the same speed?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train running at 72 km/h crosses a pole in 11/2 seconds. In how many minutes will it cross a bridge 220 meters long at the same speed?",
+      "expected": "11/40",
+      "unit": "minutes"
+    },
+    {
+      "question": "A train running at 72 km/h crosses a pole in 11/2 seconds. In how many minutes will it cross a bridge 220 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 1 meter long running at 72 km/h crosses a pole in 11/2 seconds. In how many minutes will it cross a bridge 220 meters long at the same speed?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A bus 30 feet long is moving at 45 mph. In how many seconds will the bus cross a bridge 90 yards long?",
+      "expected": "50/11",
+      "unit": "seconds"
+    },
+    {
+      "question": "A car 4 meters long is moving at 10 meters per second. In how many seconds will it pass a pole?",
+      "expected": "2/5",
+      "unit": "seconds"
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": "50",
+      "unit": "seconds"
+    },
+    {
+      "question": "A train 200 meters long is running at 0 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at -36 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train -200 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 celsius long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 kg/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many kilograms will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will it pass a bridge?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will the bus pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is accelerating at 36 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long while accelerating?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long? The train stops halfway.",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long? The speed of the train is 72 km/h.",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. A train 100 meters long is running at 36 km/h. In how many seconds will it cross a pole?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. A platform is 50 meters long. A platform is 100 meters long. In how many seconds will it cross the platform?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will it pass an electric platform 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 200 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long moving at 5 km/h?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 1/0 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "A train 999999999999999999999999999999999999999999999 meters long is running at 36 km/h. In how many seconds will it pass a bridge 300 meters long?",
+      "expected": null,
+      "unit": null
+    },
+    {
+      "question": "The difference between a number and 2 is 5. What is the number?",
+      "expected": null,
+      "unit": null
+    }
+  ],
+  "binary_sha256": "5047be66fe497f70094d36a45812c69f70d87360937bce868752031337234d54"
+}

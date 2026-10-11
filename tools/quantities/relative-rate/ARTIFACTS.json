@@ -1,0 +1,122 @@
+{
+  "files": {
+    "train-evidence.json": {
+      "bytes": 14218,
+      "sha256": "0a44ee94a136568fe8e14588f42cda18c7a2ee89c536b8f7981318419a00f9bb"
+    },
+    "PLAN.md": {
+      "bytes": 4452,
+      "sha256": "8ef0b09b499f4ed7d3b43d3fea64d4a45fb4216e236ebf7d65608cea1c458351"
+    },
+    "probes.py": {
+      "bytes": 3219,
+      "sha256": "3817577c041161e3fe88b2a0dbf3629472dc47a9a943ee274ebd5550d4d58044"
+    },
+    "evaluate.py": {
+      "bytes": 5419,
+      "sha256": "44c237ce990fc99f523826d12f4e3869765b0069def17b99cd8bb9d0f3f84d37"
+    },
+    "probes.json": {
+      "bytes": 14750,
+      "sha256": "afbf512b209da8d65a4cc6593ddc6926e7497c76a0278094f48bfced42a5d28c"
+    },
+    "regressions.log": {
+      "bytes": 590,
+      "sha256": "69c50f9393583fc2240ca7fa319bb4453b1c77b3a30a23dbd8e2135d60dac42e"
+    },
+    "regressions.json": {
+      "bytes": 590,
+      "sha256": "69c50f9393583fc2240ca7fa319bb4453b1c77b3a30a23dbd8e2135d60dac42e"
+    },
+    "absolute.json": {
+      "bytes": 16544,
+      "sha256": "f681dacb6dd59a3800daaef4c41c2c5adb4e84f37abd7ce6e59692d6805aaf5d"
+    },
+    "old-ratewords-probes.json": {
+      "bytes": 9544,
+      "sha256": "8fad58c756b27731ecff0345fde4d90c369f5e3a12ee4c1a365c390415d1cabe"
+    },
+    "validate.sh": {
+      "bytes": 517,
+      "sha256": "4eb5fa95bd2fa8ce4fd94ffc5ee856f35447508943be9724aa63c4d6eb325acb"
+    },
+    "validation.log": {
+      "bytes": 3598,
+      "sha256": "a9ad8f00187d5f95f05dc7c1577c8a5a1198d4d32557a450f70abf99d1a26741"
+    },
+    "candidate.patch": {
+      "bytes": 43394,
+      "sha256": "b8256c104c1f4055491872e1082781b5ec93fb87aa3ae0bef5d493b7ffb02d16"
+    },
+    "FROZEN.json": {
+      "bytes": 4031,
+      "sha256": "ca7e9adf5044bbad79ffa96d0267b8668ce2c59eb05eb0732f0e9f59834c7218"
+    },
+    "physical-audit.json": {
+      "bytes": 4848,
+      "sha256": "69ed72ff0b7a75631ef120c9c29c09effb1fdce346b9e427e233b885d781312d"
+    },
+    "restored-validation.log": {
+      "bytes": 3095,
+      "sha256": "46f073f7ee0c9c8279ccedbd1b820038f1c35877f927b5133b732dd15e32cc19"
+    },
+    "reproduce.sh": {
+      "bytes": 1349,
+      "sha256": "75a84cfc6ccd9e88a0e273826e0c7a4438499a0dedd6fee05ea348e429e77691"
+    },
+    "source.json": {
+      "bytes": 2333,
+      "sha256": "29b1e8e53b6245fbfb6d0de800319c4cb0dace4388d4bb506ddc86c522b569b5"
+    },
+    "restoration.json": {
+      "bytes": 897,
+      "sha256": "7216e5a7f9f138a83a37076cca351485a74a2de3ed2543506536ca27c47186b9"
+    },
+    "HANDOFF.md": {
+      "bytes": 9818,
+      "sha256": "bad7e9577309a0c5b7b2d97123ff8dd0cff1491be159c5cb36a6828e92e3c65e"
+    },
+    "sample/predictions.jsonl": {
+      "bytes": 17291,
+      "sha256": "bf2de0b6fdf5c854117b65024eef0563f60f999d7a11abc0c75c7d96958e4539"
+    },
+    "sample/inference.json": {
+      "bytes": 293,
+      "sha256": "de54516ad7d016c545da327a37d11dd90f7261bbb48b8018f5ec84d747743f54"
+    },
+    "sample/summary.json": {
+      "bytes": 973,
+      "sha256": "c6bdf0733c6c8888b8f3c4470477b983b8198c874d44b2d06eb6fd758377c0ae"
+    },
+    "sample/changes.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "sample/ledger.jsonl": {
+      "bytes": 55407,
+      "sha256": "3c85ea33f6dae19555ce910fbd37cb2c48ea71d9c2c12a0b62c1581bc25a2c72"
+    },
+    "full/predictions.jsonl": {
+      "bytes": 780164,
+      "sha256": "7f21b60427bf0890c468708d1a805e8152bc7ec515b2dcaa6af3d0a69aaccd0d"
+    },
+    "full/inference.json": {
+      "bytes": 294,
+      "sha256": "b5109bfa23f9de6715caf937919f6e050a8edd3dfe2449d0944970e8eeaaf0c9"
+    },
+    "full/summary.json": {
+      "bytes": 1222,
+      "sha256": "2649948d85ffb5935fe95123de510c4708f508ff93f6e95cf4843411d8576ec9"
+    },
+    "full/changes.json": {
+      "bytes": 854,
+      "sha256": "114b59fde00378a452d57e9755576f1400b9730aff362e17cfab788536a8a547"
+    },
+    "full/ledger.jsonl": {
+      "bytes": 2402808,
+      "sha256": "e93d525ee33c4326741211b58db487cf2fc4dff6e6c6087cbb9fa5aff83e7398"
+    }
+  },
+  "count": 29,
+  "bytes": 3402515
+}

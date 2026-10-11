@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "question": "Two trains are moving in the same direction at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will the faster train pass the slower train?",
+      "actual": {
+        "status": "answer",
+        "value": "30",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "expected": "30 seconds"
+    },
+    {
+      "question": "Two trains are moving in the same direction at 36 km/h and 72 km/h. Their lengths are 100 m and 200 m respectively. In how many seconds will the slower train pass the faster train?",
+      "actual": {
+        "status": "answer",
+        "value": "30",
+        "unit": "seconds",
+        "method": "exact typed relative crossing constraints"
+      },
+      "expected": "refuse inconsistent same-direction passing roles"
+    }
+  ],
+  "finding": "Candidate discards which speed-ranked body is the passing subject. Same-direction overtaking interpretation requires the faster body as passer; the slower-subject wording should not be given the identical result without resolving this contradiction/ambiguity."
+}
