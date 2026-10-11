@@ -2,12 +2,52 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — native bounded SQLite facts queries implemented and centrally
-integrated and merged inPR48; exact22302question answer/set parity, main28/28eachmode,
-five mainunit checks andworkspacegates pass. Nextpublicingestion prerequisite passed.
-Facts native source3de724e (worktree70a446a); quantities3539a2d; codingc6ac04a.
+This turn: PROGRESS — native public Wikidata importer implemented and validated;
+full84,990,012-name/5,677,515-statement import RUNNING underfrozenresourcegates.
+Worktreecontinuous/wikidata-native atbba402d. Productionroot notyetintegrated.
 Known completed-worker tokens201,926,299 (cached input counted once; parent and
-interrupted usage excluded). No model worker ran. All root experiment jobs complete.
+interrupted usage excluded). No model worker ran. One rootimportjob active.
+
+## ACTIVE native public ingestion: monitor existing job87682
+
+WORK/wikidata-native, branchcontinuous/wikidata-native, HEADbba402d, clean.
+Sourceimplementationb44df61; subsequentliteral-output-pathfixbba402d.
+Read tools/facts/native-pilot/PROGRESS.md beforework. Fullimplementationnowexists;
+do not follow oldersections sayingonlyplan/auditexists.
+Externalrun WORK/coordinator/wikidata-native. Session87682 RUNNING, scope
+ glassmind-wikidata-native-import.scope, supervisorPID749960/importPID749961.
+FrozenimportcandidateSHA601e16d776c129a65998f6f650b5d5b5b189ece95af8743bd6fc075ebdfb7620
+copiedseparatelyfrombuildcache; sourceb44df61. Sourcehashverified4.995s, rowsvalidated
+20.683s, entitiesloaded45.365s; presentlyrebuildingaliaskeys. Checkimport-stages.jsonl,
+import-supervisor.log andactualPID/scope. Newnative.sqlite is UNCOMMITTED/PARTIAL
+untilimportcompletes. Do not startduplicatejob, alterrunningbinary, or overwriteoutputs.
+Fixedlimits24GiBoutput/32GiBaddedrun/3600s8GiB0swap; supervisorcountsdeletedsortfiles.
+
+Format2hasportablepublicsourceprovenance, Rustnormalized/casingkeys, originalstatement
+GUID/rank/qualifier/source-rowwitnesses, dedupgraph, aliaslanguage/kindmask, occurrence
+count/firstrow. NoPythonkeysconsumed. V1serializedJSONinfo shapeunchanged. Sixrawfiles
+and10.367GBpilot remainreadonly. No modelworkers/newdownloads/QAinputinconstruction.
+
+ReviewfoundSQLitecouldreinterpretrelativefile:names; fixedallnativeoutput/readpaths
+bycanonicalizingliteralpaths. Firstpathregressionfailurepreserved, finalbothformat
+CLItestsproveexistingURItargetunchanged. Runningimportusesabsolutepathsandisunaffected;
+no needrepeatfrozenlargeimport. 33factstests, workspacefmt/clippy/release and4/4smoke
+pass. UpdatedCLImatchesall19481TRAIN+2821DEV ordinary/setoldoutputs; main28/28bothmodes.
+Currentfinalfactsbinaryincoordinator/disk-facts/targetSHA8a284fd1f4c377f61d97bc78d30a80abcb116a3e15d794c93b6aa0a8e6af5492;
+mainSHA9b80e692728b204ba2dd118a663fec3b0818a4fb4768a5c39a1406b1b1eb26c9.
+Completejobs99690/86376/37363/36372/58672/16569; onlyimport87682active.
+
+NEXT: monitor87682. Afterpass, runexternalrun/audit-native.py withpriorPyArrowvenv
+ WORK/coordinator/wikidata-snapshot/venv/bin/python under600s8GiB0swap scope;
+TMPDIRandSQLITE_TMPDIR=externalrun/tmp. It checks954fixedrawsamples, fullwitnesses,
+aliasprovenance/nativekeysagainstsmallv1rawview, independententity/edgededupcounts,
+rank/qualifiercounts,indexedplansandsource-namequeries. Querymemorymeasuredfreshlauncher.
+Thenrun disk_parity example onraw-sample-view.json/raw-sample-view.sqlite with
+source-name-queries.txt (boundedrawviewparity; rebuildexampleinrequiredcargoscope).
+Do notrepeatcanonicalprerequisiteoroldcompatibility withoutnewcode/reason. Preserve
+failuresanddo notrelaxgates. Integration/PRpublishingawaitpublicgateandauditresults.
+Afteringestionpasses, freeze separate strictjointQAexperiment; nonehasrunyet.
+
 
 ## PR48 merged; current task is native public pilot ingestion
 
