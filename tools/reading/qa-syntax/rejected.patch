@@ -1,0 +1,591 @@
+diff --git c/Cargo.lock w/Cargo.lock
+index bb19ed4..cd0ba60 100644
+--- c/Cargo.lock
++++ w/Cargo.lock
+@@ -358,6 +358,7 @@ dependencies = [
+  "glassmind-world-rust",
+  "serde",
+  "serde_json",
++ "sha2",
+ ]
+ 
+ [[package]]
+diff --git c/crates/reading/Cargo.toml w/crates/reading/Cargo.toml
+index 0fb380e..f92629b 100644
+--- c/crates/reading/Cargo.toml
++++ w/crates/reading/Cargo.toml
+@@ -7,6 +7,7 @@ license.workspace = true
+ repository.workspace = true
+ 
+ [dependencies]
++sha2 = "0.10.9"
+ glassmind-english.workspace = true
+ glassmind-english-rust.workspace = true
+ glassmind-world-rust.workspace = true
+diff --git c/crates/reading/src/qa.rs w/crates/reading/src/qa.rs
+index 7769aea..4718728 100644
+--- c/crates/reading/src/qa.rs
++++ w/crates/reading/src/qa.rs
+@@ -579,3 +579,6 @@ mod tests {
+         Ok(())
+     }
+ }
++
++/// Optional version3 model requiring an explicit frozen syntax companion.
++pub mod syntax_v3;
+diff --git 1/crates/reading/src/bin/reading-qa-syntax.rs 2/crates/reading/src/bin/reading-qa-syntax.rs
+new file mode 100644
+index 0000000..ea2e2b5
+--- /dev/null
++++ 2/crates/reading/src/bin/reading-qa-syntax.rs
+@@ -0,0 +1,79 @@
++// SPDX-License-Identifier: MIT
++use clap::{Parser, Subcommand};
++use glassmind_reading::qa::{
++    Input, TrainingRow,
++    syntax_v3::{Companion, Session, SyntaxModel},
++};
++use std::{
++    fs::File,
++    io::{BufRead, BufReader, BufWriter, Read, Write},
++    path::PathBuf,
++};
++#[derive(Parser)]
++struct Args {
++    #[arg(long)]
++    syntax: PathBuf,
++    #[command(subcommand)]
++    command: Command,
++}
++#[derive(Subcommand)]
++enum Command {
++    Train {
++        #[arg(long)]
++        input: PathBuf,
++        #[arg(long)]
++        model: PathBuf,
++    },
++    Predict {
++        #[arg(long)]
++        input: PathBuf,
++        #[arg(long)]
++        model: PathBuf,
++    },
++}
++fn run() -> Result<(), Box<dyn std::error::Error>> {
++    let args = Args::parse();
++    let mut bytes = Vec::new();
++    File::open(args.syntax)?
++        .take(128 * 1024 * 1024 + 1)
++        .read_to_end(&mut bytes)?;
++    let companion = Companion::load(&bytes)?;
++    let mut session = Session::new(&companion);
++    match args.command {
++        Command::Train { input, model } => {
++            let rows: Vec<TrainingRow> = BufReader::new(File::open(input)?)
++                .lines()
++                .map(|l| Ok(serde_json::from_str(&l?)?))
++                .collect::<Result<_, Box<dyn std::error::Error>>>()?;
++            let m = session.train(&rows);
++            m.validate()?;
++            serde_json::to_writer(BufWriter::new(File::create(model)?), &m)?;
++        }
++        Command::Predict { input, model } => {
++            let m: SyntaxModel = serde_json::from_reader(File::open(model)?.take(2 * 1024 * 1024))?;
++            m.validate()?;
++            let mut out = BufWriter::new(std::io::stdout().lock());
++            for line in BufReader::new(File::open(input)?).lines() {
++                let row: Input = serde_json::from_str(&line?)?;
++                let p = session.predict(&row.context, &row.question, &m);
++                let mut value = serde_json::to_value(p)?;
++                value
++                    .as_object_mut()
++                    .ok_or("prediction must be object")?
++                    .insert("semantic_status".into(), serde_json::json!("unverified"));
++                serde_json::to_writer(&mut out, &value)?;
++                writeln!(out)?;
++            }
++        }
++    }
++    Ok(())
++}
++fn main() -> std::process::ExitCode {
++    match run() {
++        Ok(()) => std::process::ExitCode::SUCCESS,
++        Err(e) => {
++            eprintln!("{e}");
++            std::process::ExitCode::FAILURE
++        }
++    }
++}
+diff --git 1/crates/reading/src/qa/syntax_v3.rs 2/crates/reading/src/qa/syntax_v3.rs
+new file mode 100644
+index 0000000..b5d2796
+--- /dev/null
++++ 2/crates/reading/src/qa/syntax_v3.rs
+@@ -0,0 +1,465 @@
++// SPDX-License-Identifier: MIT
++//! Optional unverified dependency-feature ranker; v1 is untouched.
++use super::*;
++use crate::syntax;
++use sha2::{Digest, Sha256};
++use std::collections::HashMap;
++use std::sync::Arc;
++pub const SYNTAX_SHA256: &str = "47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6";
++pub struct Companion {
++    model: syntax::Model,
++}
++impl Companion {
++    pub fn load(bytes: &[u8]) -> Result<Self, String> {
++        if bytes.len() > 128 * 1024 * 1024
++            || format!("{:x}", Sha256::digest(bytes)) != SYNTAX_SHA256
++        {
++            return Err("incompatible syntax companion".into());
++        }
++        Ok(Self {
++            model: syntax::Model::load(bytes)?,
++        })
++    }
++}
++#[derive(Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct SyntaxModel {
++    pub version: u32,
++    pub syntax_sha256: String,
++    pub ranker: Model,
++}
++impl SyntaxModel {
++    pub fn validate(&self) -> Result<(), String> {
++        if self.version != 3 || self.syntax_sha256 != SYNTAX_SHA256 {
++            return Err("invalid syntax QA pair".into());
++        }
++        self.ranker.validate()
++    }
++}
++struct Parsed {
++    spans: Vec<syntax::TokenSpan>,
++    words: Vec<String>,
++    pos: Vec<String>,
++    heads: Vec<usize>,
++    labels: Vec<String>,
++}
++impl Parsed {
++    fn parent(&self, i: usize) -> Option<usize> {
++        self.heads.get(i).and_then(|h| h.checked_sub(1))
++    }
++    fn label(&self, i: usize) -> &str {
++        self.labels.get(i).map_or("missing", String::as_str)
++    }
++    fn pos(&self, i: usize) -> &str {
++        self.pos.get(i).map_or("missing", String::as_str)
++    }
++    fn path(&self, from: usize, to: usize) -> String {
++        if from == to {
++            return "self".into();
++        }
++        for (a, b, d) in [(from, to, "up"), (to, from, "down")] {
++            let mut node = a;
++            let mut labels = String::from(d);
++            for _ in 0..3 {
++                labels.push(':');
++                labels.push_str(self.label(node));
++                let Some(p) = self.parent(node) else {
++                    break;
++                };
++                if p == b {
++                    return labels;
++                }
++                node = p;
++            }
++        }
++        if self.parent(from).is_some() && self.parent(from) == self.parent(to) {
++            "sibling".into()
++        } else {
++            "distant".into()
++        }
++    }
++    fn signals(&self, node: usize) -> String {
++        let mut labels = BTreeSet::new();
++        for (i, w) in self.words.iter().enumerate() {
++            if self.parent(i) == Some(node) {
++                let l = self.label(i);
++                if l.starts_with("nsubj") || l == "obj" || l == "iobj" || l.starts_with("aux") {
++                    labels.insert(l);
++                }
++                if matches!(w.as_str(), "not" | "never" | "n't") {
++                    labels.insert("NEG");
++                }
++            }
++        }
++        labels.into_iter().collect::<Vec<_>>().join("+")
++    }
++}
++fn stem(w: &str) -> &str {
++    for s in ["ing", "ed", "es", "s"] {
++        if w.len() > s.len() + 3
++            && let Some(v) = w.strip_suffix(s)
++        {
++            return v;
++        }
++    }
++    w
++}
++fn dependency_features(
++    s: &Parsed,
++    q: &Parsed,
++    anchors: &[(usize, usize)],
++    wh: &str,
++    head: usize,
++) -> Features {
++    let mut features = Vec::new();
++    let f = &mut features;
++    let qwh = q
++        .words
++        .iter()
++        .position(|w| {
++            matches!(
++                w.as_str(),
++                "who" | "what" | "which" | "when" | "where" | "how" | "why"
++            )
++        })
++        .unwrap_or(0);
++    let qp = q.parent(qwh).unwrap_or(qwh);
++    let sp = s.parent(head).unwrap_or(head);
++    for (name, value) in [
++        ("head_label", s.label(head)),
++        ("head_pos", s.pos(head)),
++        ("parent_pos", s.pos(sp)),
++    ] {
++        add(f, &["syn3", name, wh, value], 1.);
++        add(f, &["syn3", name, q.label(qwh), value], 1.);
++    }
++    add(
++        f,
++        &["syn3", "wh_pos", q.pos(qwh), s.pos(head), s.label(head)],
++        1.,
++    );
++    add(
++        f,
++        &["syn3", "signals", wh, &q.signals(qp), &s.signals(sp)],
++        1.,
++    );
++    let qneg = q
++        .words
++        .iter()
++        .any(|w| matches!(w.as_str(), "not" | "never" | "n't"));
++    let sneg = s
++        .words
++        .iter()
++        .any(|w| matches!(w.as_str(), "not" | "never" | "n't"));
++    add(
++        f,
++        &[
++            "syn3",
++            "neg",
++            wh,
++            if qneg { "yes" } else { "no" },
++            if sneg { "yes" } else { "no" },
++            s.label(head),
++        ],
++        1.,
++    );
++    for &(si, qi) in anchors {
++        let path = s.path(head, si);
++        let qpath = q.path(qwh, qi);
++        add(f, &["syn3", "path", wh, &qpath, &path], 1.);
++        add(
++            f,
++            &[
++                "syn3",
++                "anchor_role",
++                q.label(qi),
++                s.label(si),
++                s.label(head),
++            ],
++            1.,
++        );
++        add(
++            f,
++            &[
++                "syn3",
++                "attachment",
++                wh,
++                if si == sp {
++                    "parent"
++                } else if si == head {
++                    "self"
++                } else {
++                    "other"
++                },
++                if qi == qp { "qparent" } else { "other" },
++            ],
++            1.,
++        );
++    }
++    features
++}
++pub struct Session<'a> {
++    companion: &'a Companion,
++    cache: HashMap<String, Option<Arc<Parsed>>>,
++}
++impl<'a> Session<'a> {
++    pub fn new(companion: &'a Companion) -> Self {
++        Self {
++            companion,
++            cache: HashMap::new(),
++        }
++    }
++    fn parse(&mut self, text: &str) -> Option<Arc<Parsed>> {
++        if let Some(p) = self.cache.get(text) {
++            return p.clone();
++        }
++        let p = syntax::tokenize(text).ok().and_then(|spans| {
++            let forms = spans.iter().map(|s| s.form.clone()).collect::<Vec<_>>();
++            self.companion.model.infer(&forms).ok().map(|p| {
++                Arc::new(Parsed {
++                    spans,
++                    words: forms.iter().map(|s| s.to_lowercase()).collect(),
++                    pos: p.upos,
++                    heads: p.heads,
++                    labels: p.deprels,
++                })
++            })
++        });
++        if self.cache.len() >= 16384 {
++            self.cache.clear();
++        }
++        self.cache.insert(text.into(), p.clone());
++        p
++    }
++    fn prepare(&mut self, context: &str, question: &str) -> Prepared {
++        let mut p = super::prepare(context, question);
++        if p.candidates.is_empty() {
++            return p;
++        }
++        let q = self.parse(question);
++        let wh = tokens(question)
++            .first()
++            .map_or(String::new(), |t| t.word.clone());
++        let mut evidence = HashMap::new();
++        for c in &p.candidates {
++            let key = (c.evidence.start, c.evidence.end);
++            if let std::collections::hash_map::Entry::Vacant(e) = evidence.entry(key) {
++                let parsed = self.parse(c.evidence.text(context).unwrap_or(""));
++                let mut anchors = Vec::new();
++                if let (Some(q), Some(s)) = (&q, &parsed) {
++                    for (si, sw) in s.words.iter().enumerate() {
++                        if stop(sw) {
++                            continue;
++                        }
++                        if let Some(qi) = q
++                            .words
++                            .iter()
++                            .position(|qw| !stop(qw) && stem(qw) == stem(sw))
++                        {
++                            anchors.push((si, qi));
++                            if anchors.len() == 8 {
++                                break;
++                            }
++                        }
++                    }
++                }
++                let head_features = if let (Some(q), Some(s)) = (&q, &parsed) {
++                    (0..s.words.len())
++                        .map(|head| dependency_features(s, q, &anchors, &wh, head))
++                        .collect::<Vec<_>>()
++                } else {
++                    Vec::new()
++                };
++                e.insert((parsed, head_features));
++            }
++        }
++        for c in &mut p.candidates {
++            let f = &mut c.features;
++            let Some((Some(s), head_features)) = evidence.get(&(c.evidence.start, c.evidence.end))
++            else {
++                add(f, &["syn3", "missing_sentence", &wh], 1.);
++                continue;
++            };
++            let Some(_) = &q else {
++                add(f, &["syn3", "missing_question", &wh], 1.);
++                continue;
++            };
++            let a = c.span.start - c.evidence.start;
++            let b = c.span.end - c.evidence.start;
++            let start = s.spans.iter().position(|t| t.start == a);
++            let end = s.spans.iter().position(|t| t.end == b);
++            let (Some(start), Some(end)) = (start, end) else {
++                add(f, &["syn3", "unaligned", &wh], 1.);
++                continue;
++            };
++            let head = (start..=end)
++                .find(|&i| s.parent(i).is_none_or(|h| h < start || h > end))
++                .unwrap_or(start);
++            if let Some(extra) = head_features.get(head) {
++                f.extend_from_slice(extra);
++            }
++        }
++        p
++    }
++    pub fn train(&mut self, rows: &[TrainingRow]) -> SyntaxModel {
++        let mut model = Model {
++            version: 1,
++            weights: vec![0.0; DIM],
++            threshold: f32::MAX,
++            fit_rows: rows.len(),
++            representable_rows: 0,
++        };
++        let mut sums = vec![0.0f64; DIM];
++        let mut touched = vec![0usize; DIM];
++        let mut step = 0usize;
++        for epoch in 0..5 {
++            let mut usable = 0;
++            for row in rows {
++                step += 1;
++                let p = self.prepare(&row.context, &row.question);
++                let Some(gold) = p.candidates.iter().find(|c| c.span == row.answer) else {
++                    continue;
++                };
++                usable += 1;
++                let Some(best) = p.candidates.iter().max_by(|a, b| {
++                    dot(&model.weights, &a.features).total_cmp(&dot(&model.weights, &b.features))
++                }) else {
++                    continue;
++                };
++                let loss =
++                    1.0 + dot(&model.weights, &best.features) - dot(&model.weights, &gold.features);
++                if loss <= 0.0 || best.span == gold.span {
++                    continue;
++                }
++                let mut delta = std::collections::BTreeMap::<usize, f32>::new();
++                for (i, x) in &gold.features {
++                    *delta.entry(*i).or_default() += x;
++                }
++                for (i, x) in &best.features {
++                    *delta.entry(*i).or_default() -= x;
++                }
++                let norm = delta.values().map(|x| x * x).sum::<f32>().max(0.001);
++                let rate = (loss / norm).min(0.1);
++                for (i, x) in delta {
++                    if let (Some(w), Some(sum), Some(last)) = (
++                        model.weights.get_mut(i),
++                        sums.get_mut(i),
++                        touched.get_mut(i),
++                    ) {
++                        *sum += f64::from(*w) * (step - *last) as f64;
++                        *last = step;
++                        *w += rate * x;
++                    }
++                }
++            }
++            model.representable_rows = usable;
++            eprintln!("epoch {}: {usable}/{} representable", epoch + 1, rows.len());
++        }
++        for ((w, sum), last) in model.weights.iter_mut().zip(sums).zip(touched) {
++            *w = ((sum + f64::from(*w) * (step - last) as f64) / (step.max(1) as f64)) as f32;
++        }
++        SyntaxModel {
++            version: 3,
++            syntax_sha256: SYNTAX_SHA256.into(),
++            ranker: model,
++        }
++    }
++    pub fn predict(&mut self, context: &str, question: &str, paired: &SyntaxModel) -> Prediction {
++        if paired.validate().is_err() {
++            return refusal("invalid_syntax_pair");
++        }
++        let model = Some(&paired.ranker);
++        let p = self.prepare(context, question);
++        let mut ranked: Vec<(&Candidate, f32)> = p
++            .candidates
++            .iter()
++            .map(|c| {
++                (
++                    c,
++                    model.map_or(c.baseline, |m| dot(&m.weights, &c.features)),
++                )
++            })
++            .collect();
++        if ranked.iter().any(|(_, score)| !score.is_finite()) {
++            return refusal("non_finite_model_score");
++        }
++        ranked.sort_by(|a, b| {
++            b.1.total_cmp(&a.1)
++                .then(a.0.span.start.cmp(&b.0.span.start))
++                .then(a.0.span.end.cmp(&b.0.span.end))
++        });
++        let Some((best, score)) = ranked.first() else {
++            return refusal("empty_or_input_limit");
++        };
++        let answer = best.span.text(context).unwrap_or("");
++        let second = ranked
++            .iter()
++            .skip(1)
++            .find(|(c, _)| c.span.text(context) != Some(answer))
++            .map_or(*score, |(_, s)| *s);
++        let margin = score - second;
++        if !margin.is_finite() {
++            return refusal("non_finite_model_score");
++        }
++        let accepted = p.supported && margin >= model.map_or(0.0, |m| m.threshold);
++        Prediction {
++            status: if accepted {
++                Status::Predicted
++            } else {
++                Status::Refused
++            },
++            answer: if accepted {
++                answer.into()
++            } else {
++                String::new()
++            },
++            proposal: Some(best.span.clone()),
++            evidence: Some(best.evidence.clone()),
++            score: *score,
++            margin,
++            reason: if !p.supported {
++                "no_lexical_support"
++            } else if !accepted {
++                "below_train_calibrated_threshold"
++            } else {
++                "model_prediction_not_verified"
++            }
++            .into(),
++        }
++    }
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    #[test]
++    fn pair_and_finite_validation() {
++        assert!(Companion::load(b"missing or incompatible").is_err());
++        let mut m = SyntaxModel {
++            version: 3,
++            syntax_sha256: SYNTAX_SHA256.into(),
++            ranker: Model {
++                version: 1,
++                weights: vec![0.; DIM],
++                threshold: 0.,
++                fit_rows: 0,
++                representable_rows: 0,
++            },
++        };
++        assert!(m.validate().is_ok());
++        m.syntax_sha256 = "other".into();
++        assert!(m.validate().is_err());
++        m.syntax_sha256 = SYNTAX_SHA256.into();
++        m.ranker.threshold = f32::NAN;
++        assert!(m.validate().is_err());
++    }
++    #[test]
++    fn unicode_alignment_and_bounded_raw_tokenization() {
++        let s = syntax::tokenize("Élodie thanked Björn.").unwrap_or_default();
++        assert_eq!(s.first().map(|s| (s.start, s.end)), Some((0, 7)));
++        assert!(syntax::tokenize(&"x ".repeat(129)).is_err());
++        assert!(
++            serde_json::from_str::<Input>(r#"{"context":"x","question":"y","heads":[0]}"#).is_err()
++        );
++    }
++}

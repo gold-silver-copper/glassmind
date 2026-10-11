@@ -1,0 +1,56 @@
+{
+  "baseline": {
+    "total": 200,
+    "raw": {
+      "exact": 23.0,
+      "f1": 31.20875652125652,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 8.0,
+      "f1": 8.844444444444445,
+      "total": 200
+    },
+    "right": 16,
+    "refused": 167,
+    "wrong": 17,
+    "precision": 0.48484848484848486,
+    "coverage": 0.165
+  },
+  "candidate": {
+    "total": 200,
+    "raw": {
+      "exact": 30.0,
+      "f1": 42.54116161616162,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 10.5,
+      "f1": 11.46111111111111,
+      "total": 200
+    },
+    "right": 21,
+    "refused": 169,
+    "wrong": 10,
+    "precision": 0.6774193548387096,
+    "coverage": 0.155
+  },
+  "transitions": {
+    "raw": {
+      "wrong->wrong": 124,
+      "right->right": 30,
+      "right->wrong": 16,
+      "wrong->right": 30
+    },
+    "selected": {
+      "refused->refused": 145,
+      "wrong->refused": 14,
+      "right->refused": 10,
+      "right->right": 6,
+      "refused->right": 15,
+      "refused->wrong": 7,
+      "wrong->wrong": 3
+    }
+  },
+  "aggregate_gate": null
+}

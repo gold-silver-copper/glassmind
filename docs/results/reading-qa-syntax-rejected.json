@@ -1,0 +1,61 @@
+{
+  "status": "rejected",
+  "reason": "newly_selected_independent_negation_mismatch",
+  "runtime_unchanged": true,
+  "baseline_model_sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5",
+  "candidate_model_sha256": "7cd2afb5fbb726f2bf09d98e54ae0e98807b178a7e49dcf85513be1f396315ad",
+  "aggregate": {
+    "total": 10570,
+    "baseline": {
+      "raw_exact": 2532,
+      "refused": 8964,
+      "wrong": 791,
+      "right": 815,
+      "raw_f1_percent": 34.51842504801276
+    },
+    "candidate": {
+      "raw_exact": 3057,
+      "refused": 8980,
+      "right": 943,
+      "wrong": 647,
+      "raw_f1_percent": 39.86957257497188
+    },
+    "transitions": {
+      "raw": {
+        "wrong->wrong": 6793,
+        "right->right": 1812,
+        "right->wrong": 720,
+        "wrong->right": 1245
+      },
+      "selected": {
+        "refused->refused": 8036,
+        "wrong->refused": 610,
+        "right->refused": 334,
+        "right->right": 477,
+        "refused->right": 452,
+        "refused->wrong": 476,
+        "wrong->wrong": 167,
+        "wrong->right": 14,
+        "right->wrong": 4
+      }
+    },
+    "calibration": {
+      "threshold": 0.20622891187667847,
+      "accepted": 166,
+      "right": 83,
+      "wrong": 83
+    },
+    "scope": "Independent recomputation on frozen DEV outputs; does not override independent negation rejection."
+  },
+  "parent_probes": {
+    "positive_cases": 13,
+    "raw_positive_correct": 11,
+    "selected_positive_correct": 6,
+    "wrong_selected": 4,
+    "negative_selected": 4,
+    "refused": 10,
+    "negative_cases": 7
+  },
+  "known_completed_worker_tokens": 126066399,
+  "report": "tools/reading/qa-syntax/PARENT.md"
+}

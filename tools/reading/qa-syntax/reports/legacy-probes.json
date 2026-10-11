@@ -1,0 +1,1657 @@
+{
+  "note": "Post-DEV diagnostic replay of existing public authored probes, NOT acceptance examples or parameter selection; duplicate cases retained by source.",
+  "sources": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasyntax/tools/reading/roles/probes.json",
+      "sha256": "8413cc1ae2864f4b4b8740b084c930001a30a87aca5af550854a48d80c1a37d3"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasyntax/tools/reading/support/reports/probes.json",
+      "sha256": "a5373279ffbebec36767031a014d8111e494972714436b1e4e484d5895532539"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qasyntax/tools/reading/qa/reports/independent.json",
+      "sha256": "dcfac76159a485b6f6274f5b8b6e27dfe34beebd19b28c1b763911161ba387eb"
+    }
+  ],
+  "cases": [
+    {
+      "source": "roles",
+      "name": "role-subject-Nora",
+      "context": "Nora thanked Felix.",
+      "question": "Who thanked Felix?",
+      "expected": "Nora",
+      "v1": {
+        "status": "predicted",
+        "answer": "Nora",
+        "proposal": {
+          "start": 0,
+          "end": 4
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.629098,
+        "margin": 0.5067897,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.9549453258514404,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.225889205932617,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "role-object-Felix",
+      "context": "Nora thanked Felix.",
+      "question": "Who did Nora thank?",
+      "expected": "Felix",
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 13,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.082578,
+        "margin": 0.05398619,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.438488245010376,
+        "proposal": {
+          "end": 18,
+          "start": 13
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3364402055740356,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix",
+      "raw_v3": "Felix",
+      "v1_selected_correct": false,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "role-subject-Felix",
+      "context": "Felix thanked Nora.",
+      "question": "Who thanked Nora?",
+      "expected": "Felix",
+      "v1": {
+        "status": "predicted",
+        "answer": "Felix",
+        "proposal": {
+          "start": 0,
+          "end": 5
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.6773757,
+        "margin": 0.6033449,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.816437840461731,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.1566355228424072,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix",
+      "raw_v3": "Felix",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "role-object-Nora",
+      "context": "Felix thanked Nora.",
+      "question": "Who did Felix thank?",
+      "expected": "Nora",
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 6,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.0206609,
+        "margin": 0.13305914,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.5650676488876343,
+        "proposal": {
+          "end": 18,
+          "start": 14
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.615390658378601,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "thanked Nora",
+      "raw_v3": "Nora",
+      "v1_selected_correct": false,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "role-reversed-unsupported-subject",
+      "context": "Felix thanked Nora.",
+      "question": "Who thanked Felix?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "Nora",
+        "proposal": {
+          "start": 14,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.7365611,
+        "margin": 0.6313571,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.8294962644577026,
+        "proposal": {
+          "end": 18,
+          "start": 14
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0972225666046143,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "roles",
+      "name": "role-reversed-unsupported-object",
+      "context": "Felix thanked Nora.",
+      "question": "Who did Nora thank?",
+      "expected": null,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 0,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 0.9323812,
+        "margin": 0.010076821,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.43423688411712646,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3080120086669922,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix thanked Nora",
+      "raw_v3": "Felix",
+      "v1_selected_correct": true,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "roles",
+      "name": "predicate-demolished",
+      "context": "Nora demolished the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": "2008",
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 30,
+          "end": 34
+        },
+        "evidence": {
+          "start": 0,
+          "end": 34
+        },
+        "score": 1.7722096,
+        "margin": 0.5469606,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 34,
+          "start": 0
+        },
+        "margin": 0.5101948976516724,
+        "proposal": {
+          "end": 34,
+          "start": 30
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0471949577331543,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "predicate-painted",
+      "context": "Nora painted the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 27,
+          "end": 31
+        },
+        "evidence": {
+          "start": 0,
+          "end": 31
+        },
+        "score": 1.7722096,
+        "margin": 0.5469606,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 31,
+          "start": 0
+        },
+        "margin": 0.5101948976516724,
+        "proposal": {
+          "end": 31,
+          "start": 27
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9051421880722046,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "roles",
+      "name": "predicate-never demolished",
+      "context": "Nora never demolished the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 36,
+          "end": 40
+        },
+        "evidence": {
+          "start": 0,
+          "end": 40
+        },
+        "score": 1.7679087,
+        "margin": 0.55341184,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 40,
+          "start": 0
+        },
+        "margin": 0.5115673542022705,
+        "proposal": {
+          "end": 40,
+          "start": 36
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0715858936309814,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "roles",
+      "name": "negative-positive",
+      "context": "Nora never demolished the bridge in 2008.",
+      "question": "When did Nora never demolish the bridge?",
+      "expected": "2008",
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 36,
+          "end": 40
+        },
+        "evidence": {
+          "start": 0,
+          "end": 40
+        },
+        "score": 1.8564299,
+        "margin": 0.5362085,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 40,
+          "start": 0
+        },
+        "margin": 0.5074495077133179,
+        "proposal": {
+          "end": 40,
+          "start": 36
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.1893184185028076,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "kind-person",
+      "context": "Mira met Soren in Oslo.",
+      "question": "Who did Mira meet?",
+      "expected": "Soren",
+      "v1": {
+        "status": "predicted",
+        "answer": "Soren in Oslo",
+        "proposal": {
+          "start": 9,
+          "end": 22
+        },
+        "evidence": {
+          "start": 0,
+          "end": 22
+        },
+        "score": 1.1221141,
+        "margin": 0.28346336,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Soren in Oslo",
+        "evidence": {
+          "end": 22,
+          "start": 0
+        },
+        "margin": 0.32018327713012695,
+        "proposal": {
+          "end": 22,
+          "start": 9
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.5474640130996704,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Soren in Oslo",
+      "raw_v3": "Soren in Oslo",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "roles",
+      "name": "kind-place",
+      "context": "Mira met Soren in Oslo.",
+      "question": "Where did Mira meet Soren?",
+      "expected": "Oslo",
+      "v1": {
+        "status": "predicted",
+        "answer": "Oslo",
+        "proposal": {
+          "start": 18,
+          "end": 22
+        },
+        "evidence": {
+          "start": 0,
+          "end": 22
+        },
+        "score": 1.092664,
+        "margin": 0.30583227,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Oslo",
+        "evidence": {
+          "end": 22,
+          "start": 0
+        },
+        "margin": 0.3325316905975342,
+        "proposal": {
+          "end": 22,
+          "start": 18
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.5956265926361084,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Oslo",
+      "raw_v3": "Oslo",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "kind-number",
+      "context": "Mira carried three crates.",
+      "question": "How many crates did Mira carry?",
+      "expected": "three",
+      "v1": {
+        "status": "predicted",
+        "answer": "three",
+        "proposal": {
+          "start": 13,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 25
+        },
+        "score": 1.1643206,
+        "margin": 0.35812408,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "three",
+        "evidence": {
+          "end": 25,
+          "start": 0
+        },
+        "margin": 0.49979913234710693,
+        "proposal": {
+          "end": 18,
+          "start": 13
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3561519384384155,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "three",
+      "raw_v3": "three",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "kind-unsupported",
+      "context": "Mira carried crates.",
+      "question": "How many crates did Mira carry?",
+      "expected": null,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 5,
+          "end": 12
+        },
+        "evidence": {
+          "start": 0,
+          "end": 19
+        },
+        "score": 0.62667555,
+        "margin": 0.0869115,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 19,
+          "start": 0
+        },
+        "margin": 0.10053682327270508,
+        "proposal": {
+          "end": 19,
+          "start": 5
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.0541832447052002,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "carried",
+      "raw_v3": "carried crates",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "unicode-person",
+      "context": "Élodie visited Zürich.",
+      "question": "Who visited Zürich?",
+      "expected": "Élodie",
+      "v1": {
+        "status": "predicted",
+        "answer": "Élodie",
+        "proposal": {
+          "start": 0,
+          "end": 7
+        },
+        "evidence": {
+          "start": 0,
+          "end": 23
+        },
+        "score": 1.7024875,
+        "margin": 0.4736085,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Élodie",
+        "evidence": {
+          "end": 23,
+          "start": 0
+        },
+        "margin": 0.8434007167816162,
+        "proposal": {
+          "end": 7,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0511345863342285,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Élodie",
+      "raw_v3": "Élodie",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "unicode-place",
+      "context": "Élodie visited Zürich.",
+      "question": "Where did Élodie visit?",
+      "expected": "Zürich",
+      "v1": {
+        "status": "predicted",
+        "answer": "Zürich",
+        "proposal": {
+          "start": 16,
+          "end": 23
+        },
+        "evidence": {
+          "start": 0,
+          "end": 23
+        },
+        "score": 1.0009949,
+        "margin": 0.31219816,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Zürich",
+        "evidence": {
+          "end": 23,
+          "start": 0
+        },
+        "margin": 0.28852081298828125,
+        "proposal": {
+          "end": 23,
+          "start": 16
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.2566901445388794,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Zürich",
+      "raw_v3": "Zürich",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "roles",
+      "name": "unsupported",
+      "context": "Lena owns a bicycle.",
+      "question": "When did Lena buy the bicycle?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "owns",
+        "proposal": {
+          "start": 5,
+          "end": 9
+        },
+        "evidence": {
+          "start": 0,
+          "end": 19
+        },
+        "score": 0.92791307,
+        "margin": 0.31896383,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "owns",
+        "evidence": {
+          "end": 19,
+          "start": 0
+        },
+        "margin": 0.2457597255706787,
+        "proposal": {
+          "end": 9,
+          "start": 5
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 0.9079675674438477,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "owns",
+      "raw_v3": "owns",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "roles",
+      "name": "supported",
+      "context": "Lena bought a bicycle in 2012.",
+      "question": "When did Lena buy the bicycle?",
+      "expected": "2012",
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 25,
+          "end": 29
+        },
+        "evidence": {
+          "start": 0,
+          "end": 29
+        },
+        "score": 1.5935291,
+        "margin": 0.15761518,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "2012",
+        "evidence": {
+          "end": 29,
+          "start": 0
+        },
+        "margin": 0.40296757221221924,
+        "proposal": {
+          "end": 29,
+          "start": 25
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.8678573369979858,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2012",
+      "raw_v3": "2012",
+      "v1_selected_correct": false,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "subject_Nora",
+      "context": "Nora thanked Felix.",
+      "question": "Who thanked Felix?",
+      "expected": "Nora",
+      "v1": {
+        "status": "predicted",
+        "answer": "Nora",
+        "proposal": {
+          "start": 0,
+          "end": 4
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.629098,
+        "margin": 0.5067897,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.9549453258514404,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.225889205932617,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "object_Felix",
+      "context": "Nora thanked Felix.",
+      "question": "Who did Nora thank?",
+      "expected": "Felix",
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 13,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.082578,
+        "margin": 0.05398619,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.438488245010376,
+        "proposal": {
+          "end": 18,
+          "start": 13
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3364402055740356,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix",
+      "raw_v3": "Felix",
+      "v1_selected_correct": false,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "subject_Felix",
+      "context": "Felix thanked Nora.",
+      "question": "Who thanked Felix?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "Nora",
+        "proposal": {
+          "start": 14,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.7365611,
+        "margin": 0.6313571,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Nora",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.8294962644577026,
+        "proposal": {
+          "end": 18,
+          "start": 14
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0972225666046143,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Nora",
+      "raw_v3": "Nora",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "reports",
+      "name": "object_Nora",
+      "context": "Felix thanked Nora.",
+      "question": "Who did Nora thank?",
+      "expected": null,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 0,
+          "end": 18
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 0.9323812,
+        "margin": 0.010076821,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "Felix",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.43423688411712646,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.3080120086669922,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Felix thanked Nora",
+      "raw_v3": "Felix",
+      "v1_selected_correct": true,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "reports",
+      "name": "unrelated_predicate",
+      "context": "Nora painted the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 27,
+          "end": 31
+        },
+        "evidence": {
+          "start": 0,
+          "end": 31
+        },
+        "score": 1.7722096,
+        "margin": 0.5469606,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 31,
+          "start": 0
+        },
+        "margin": 0.5101948976516724,
+        "proposal": {
+          "end": 31,
+          "start": 27
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9051421880722046,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "reports",
+      "name": "changed_relation_positive",
+      "context": "Nora demolished the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": "2008",
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 30,
+          "end": 34
+        },
+        "evidence": {
+          "start": 0,
+          "end": 34
+        },
+        "score": 1.7722096,
+        "margin": 0.5469606,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 34,
+          "start": 0
+        },
+        "margin": 0.5101948976516724,
+        "proposal": {
+          "end": 34,
+          "start": 30
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0471949577331543,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "negation",
+      "context": "Nora never demolished the bridge in 2008.",
+      "question": "When did Nora demolish the bridge?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "2008",
+        "proposal": {
+          "start": 36,
+          "end": 40
+        },
+        "evidence": {
+          "start": 0,
+          "end": 40
+        },
+        "score": 1.7679087,
+        "margin": 0.55341184,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2008",
+        "evidence": {
+          "end": 40,
+          "start": 0
+        },
+        "margin": 0.5115673542022705,
+        "proposal": {
+          "end": 40,
+          "start": 36
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0715858936309814,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2008",
+      "raw_v3": "2008",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "reports",
+      "name": "person_kind",
+      "context": "Tessa visited Bergen in 2017.",
+      "question": "Who visited Bergen?",
+      "expected": "Tessa",
+      "v1": {
+        "status": "predicted",
+        "answer": "Tessa",
+        "proposal": {
+          "start": 0,
+          "end": 5
+        },
+        "evidence": {
+          "start": 0,
+          "end": 28
+        },
+        "score": 1.595079,
+        "margin": 0.2869897,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Tessa",
+        "evidence": {
+          "end": 28,
+          "start": 0
+        },
+        "margin": 0.5777287483215332,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0751068592071533,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Tessa",
+      "raw_v3": "Tessa",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "place_kind",
+      "context": "Tessa visited Bergen in 2017.",
+      "question": "Where did Tessa visit?",
+      "expected": "Bergen",
+      "v1": {
+        "status": "predicted",
+        "answer": "Bergen",
+        "proposal": {
+          "start": 14,
+          "end": 20
+        },
+        "evidence": {
+          "start": 0,
+          "end": 28
+        },
+        "score": 0.88714993,
+        "margin": 0.21122646,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Bergen",
+        "evidence": {
+          "end": 28,
+          "start": 0
+        },
+        "margin": 0.25146687030792236,
+        "proposal": {
+          "end": 20,
+          "start": 14
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.2681974172592163,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Bergen",
+      "raw_v3": "Bergen",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "date_kind",
+      "context": "Tessa visited Bergen in 2017.",
+      "question": "When did Tessa visit Bergen?",
+      "expected": "2017",
+      "v1": {
+        "status": "predicted",
+        "answer": "2017",
+        "proposal": {
+          "start": 24,
+          "end": 28
+        },
+        "evidence": {
+          "start": 0,
+          "end": 28
+        },
+        "score": 1.4849517,
+        "margin": 0.5493065,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2017",
+        "evidence": {
+          "end": 28,
+          "start": 0
+        },
+        "margin": 0.627456545829773,
+        "proposal": {
+          "end": 28,
+          "start": 24
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.8899849653244019,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2017",
+      "raw_v3": "2017",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "person_vs_number",
+      "context": "2017 was printed on the wall.",
+      "question": "Who was printed on the wall?",
+      "expected": null,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 17,
+          "end": 28
+        },
+        "evidence": {
+          "start": 0,
+          "end": 28
+        },
+        "score": 0.977903,
+        "margin": 0.022244692,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 28,
+          "start": 0
+        },
+        "margin": 0.17093133926391602,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.1902533769607544,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "on the wall",
+      "raw_v3": "2017",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "place_vs_number",
+      "context": "Tessa counted 2017 stones.",
+      "question": "Where did Tessa count stones?",
+      "expected": null,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 19,
+          "end": 25
+        },
+        "evidence": {
+          "start": 0,
+          "end": 25
+        },
+        "score": 0.4983408,
+        "margin": 0.027623922,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "2017",
+        "evidence": {
+          "end": 25,
+          "start": 0
+        },
+        "margin": 0.35551029443740845,
+        "proposal": {
+          "end": 18,
+          "start": 14
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.0616610050201416,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "stones",
+      "raw_v3": "2017",
+      "v1_selected_correct": true,
+      "v3_selected_correct": false
+    },
+    {
+      "source": "reports",
+      "name": "role_swap_positive",
+      "context": "Ivo hired Mara in 2003.",
+      "question": "Who hired Mara?",
+      "expected": "Ivo",
+      "v1": {
+        "status": "predicted",
+        "answer": "Ivo",
+        "proposal": {
+          "start": 0,
+          "end": 3
+        },
+        "evidence": {
+          "start": 0,
+          "end": 22
+        },
+        "score": 1.6419004,
+        "margin": 0.52092314,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Ivo",
+        "evidence": {
+          "end": 22,
+          "start": 0
+        },
+        "margin": 0.49703848361968994,
+        "proposal": {
+          "end": 3,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.114422559738159,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Ivo",
+      "raw_v3": "Ivo",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "role_swap_negative",
+      "context": "Mara hired Ivo in 2003.",
+      "question": "Who hired Mara?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "Ivo",
+        "proposal": {
+          "start": 11,
+          "end": 14
+        },
+        "evidence": {
+          "start": 0,
+          "end": 22
+        },
+        "score": 1.6266251,
+        "margin": 0.21365047,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 22,
+          "start": 0
+        },
+        "margin": 0.05663609504699707,
+        "proposal": {
+          "end": 14,
+          "start": 11
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 2.1074166297912598,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "Ivo",
+      "raw_v3": "Ivo",
+      "v1_selected_correct": false,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "unicode",
+      "context": "Maël greeted Zoë.",
+      "question": "Who greeted Zoë?",
+      "expected": "Maël",
+      "v1": {
+        "status": "predicted",
+        "answer": "Maël",
+        "proposal": {
+          "start": 0,
+          "end": 5
+        },
+        "evidence": {
+          "start": 0,
+          "end": 18
+        },
+        "score": 1.7303741,
+        "margin": 0.5521381,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Maël",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.9197306632995605,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.184537649154663,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Maël",
+      "raw_v3": "Maël",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "unicode",
+      "context": "Élodie visited Zürich in 2018.",
+      "question": "Who visited Zürich?",
+      "expected": "Élodie",
+      "v1": {
+        "status": "predicted",
+        "answer": "Élodie",
+        "proposal": {
+          "start": 0,
+          "end": 7
+        },
+        "evidence": {
+          "start": 0,
+          "end": 31
+        },
+        "score": 1.7024875,
+        "margin": 0.30193532,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Élodie",
+        "evidence": {
+          "end": 31,
+          "start": 0
+        },
+        "margin": 0.48576831817626953,
+        "proposal": {
+          "end": 7,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 2.0511345863342285,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Élodie",
+      "raw_v3": "Élodie",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "no_support",
+      "context": "Lena owns a bicycle.",
+      "question": "When did the volcano erupt?",
+      "expected": null,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 0,
+          "end": 4
+        },
+        "evidence": {
+          "start": 0,
+          "end": 19
+        },
+        "score": 0.50166476,
+        "margin": 0.20206249,
+        "reason": "no_lexical_support"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 19,
+          "start": 0
+        },
+        "margin": 0.004104644060134888,
+        "proposal": {
+          "end": 9,
+          "start": 0
+        },
+        "reason": "no_lexical_support",
+        "score": 0.3177480697631836,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "Lena",
+      "raw_v3": "Lena owns",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "ambiguous",
+      "context": "Ana visited Lima. Bea visited Lima.",
+      "question": "Who visited Lima?",
+      "expected": null,
+      "v1": {
+        "status": "refused",
+        "answer": "",
+        "proposal": {
+          "start": 0,
+          "end": 3
+        },
+        "evidence": {
+          "start": 0,
+          "end": 16
+        },
+        "score": 1.6807382,
+        "margin": 0.023079157,
+        "reason": "below_train_calibrated_threshold"
+      },
+      "v3": {
+        "answer": "",
+        "evidence": {
+          "end": 16,
+          "start": 0
+        },
+        "margin": 0.07447075843811035,
+        "proposal": {
+          "end": 3,
+          "start": 0
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.9739751815795898,
+        "semantic_status": "unverified",
+        "status": "refused"
+      },
+      "raw_v1": "Ana",
+      "raw_v3": "Ana",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "multioccurrence",
+      "context": "Ana visited Lima. Ana visited Lima.",
+      "question": "Who visited Lima?",
+      "expected": "Ana",
+      "v1": {
+        "status": "predicted",
+        "answer": "Ana",
+        "proposal": {
+          "start": 0,
+          "end": 3
+        },
+        "evidence": {
+          "start": 0,
+          "end": 16
+        },
+        "score": 1.6807382,
+        "margin": 0.5898392,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "Ana",
+        "evidence": {
+          "end": 16,
+          "start": 0
+        },
+        "margin": 0.7778095006942749,
+        "proposal": {
+          "end": 3,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9739751815795898,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "Ana",
+      "raw_v3": "Ana",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "trailing_text",
+      "context": "Mira founded the club in 2004. The unrelated bakery sells bread.",
+      "question": "When did Mira found the club?",
+      "expected": "2004",
+      "v1": {
+        "status": "predicted",
+        "answer": "2004",
+        "proposal": {
+          "start": 25,
+          "end": 29
+        },
+        "evidence": {
+          "start": 0,
+          "end": 29
+        },
+        "score": 1.5236082,
+        "margin": 0.37465107,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "2004",
+        "evidence": {
+          "end": 29,
+          "start": 0
+        },
+        "margin": 0.42259466648101807,
+        "proposal": {
+          "end": 29,
+          "start": 25
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.875626802444458,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "2004",
+      "raw_v3": "2004",
+      "v1_selected_correct": true,
+      "v3_selected_correct": true
+    },
+    {
+      "source": "reports",
+      "name": "unsupported_relation",
+      "context": "Lena painted a bicycle.",
+      "question": "When did Lena buy the bicycle?",
+      "expected": null,
+      "v1": {
+        "status": "predicted",
+        "answer": "painted",
+        "proposal": {
+          "start": 5,
+          "end": 12
+        },
+        "evidence": {
+          "start": 0,
+          "end": 22
+        },
+        "score": 0.9324444,
+        "margin": 0.27997923,
+        "reason": "model_prediction_not_verified"
+      },
+      "v3": {
+        "answer": "painted",
+        "evidence": {
+          "end": 22,
+          "start": 0
+        },
+        "margin": 0.2275404930114746,
+        "proposal": {
+          "end": 12,
+          "start": 5
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 0.9071767330169678,
+        "semantic_status": "unverified",
+        "status": "predicted"
+      },
+      "raw_v1": "painted",
+      "raw_v3": "painted",
+      "v1_selected_correct": false,
+      "v3_selected_correct": false
+    }
+  ]
+}

@@ -1,5 +1,87 @@
 # Continuous development checkpoint
 
+## Latest checkpoint — QA syntax rejected by independent negation probe
+
+QASYNTAX is COMPLETE and REJECTED. Its own aggregate gates passed, but the
+parent's previously frozen negation case changed from refusal to a wrong selected
+answer: Ava never hired Milo / Whom did Ava hire? -> Milo. The frozen acceptance
+rule forbids this. A conditional question also changes from refusal to wrong.
+No runtime/model/dependency/main-command changes are integrated. Parent20probes:
+13positive/7unsupported; rawcorrect10->11, selectedcorrect6->6, wrong4->4,
+unsupportedselected3->4. Every outcome retained, no post-DEV retuning.
+
+Independent full10570 offline audit reproduces raw2532->3057, F134.518425->39.869573,
+selected815right791wrong8964refused ->943right647wrong8980refused; alltransitions
+match (4right->wrong,334right->refused,476refused->wrong). CAL166/83right reproduced.
+27archive entries227761bytes,88provenance/29freeze identities verified; all original
+copies reverified before inactive worker worktree/login-link removal. Archive and
+models retained at WORK/qasyntax-run; published evidence tools/reading/qa-syntax/
+PARENT.md +rejected.patch +parent/; docs/results/reading-qa-syntax-rejected.json.
+Root runtime38fd905/mainbinary226a976 unchanged. Knowncompletedworker tokens126066399.
+No new runtime score or full765 rerun claimed. QA evidence publication pending.
+
+FUNCTIONREFS remains ACTIVE in glassmind-continuous-functionrefs.scope, PID617333;
+last verified active. Parent froze16independent cases before inspecting candidate,
+casesSHAae5dcf00b3f661aa222a61eb0c9a937bee98fa2ecd8f060df630c43a0c46d99a.
+Baseline session66529 COMPLETE:8exactnative-testededits,8unchanged,zero unsafe.
+It already supports six simple reference positives; test-glob remains refused.
+Preserve all eight baseline repairs. Parent runner/files at
+WORK/coordinator/functionrefs-independent. Worker supplied multifile fixture and
+24frozen contracts reportedly improve1->9repairs/zero unsafe; not independently
+accepted yet. Await terminal submission, archive first, review proof, then replay
+independentcases and suppliedworkspace. Separate English rename parsing remains
+unsolved. Next reading hypothesis must address support independently; no cosmetic
+threshold retry. Goal active until user stops; no blocker.
+
+## Latest checkpoint — PR31/32 merged, two new experiments active
+
+PR31 merged723add1b82ee619ecb7ae3544ceaec9d822e5467, exactheadf7034a5;
+CI38126961130passed. PR32 mergedfe821fad6acb2b4c3b394824cf68f6144f1d7646
+at2026-10-11T09:11:26Z, exacthead078578b0ac350a1b3baa5af20b1a37d21d576d23;
+CI38127308893passed1m33s. Push99553/create14477/merge79151 COMPLETE. Do not
+repeatcompletedpublishing/full765/syntaxfull. Thisgoalturnmade substantialprogress.
+Currentvalidatedruntime38fd905, mainbinary226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0.
+Coding177/765/0fail, syntax19423LAS/20540UAS of25148goldwords arepublished with
+allpriorlimits/duplicates/errors; main16+QA14contracts and12readingtests/workspacepass.
+No parentbenchmark/nativejob remainslive. Bothfinishedworkerarchives verified;
+inactiveworktrees/loginlinks removed. Knowncompletedworker tokens123,540,392.
+
+QASYNTAX ACTIVE PID592155, scopeglassmind-continuous-qasyntax.scope,8GiB/0swap
+verified, branchcontinuous/qasyntax at078578b, WORK/qasyntax andqasyntax-run;
+briefWORK/qasyntax-task.txt. RequiredGPT6Astrafast/ChatGPT/noAPI launcher. Owns
+readingqa/newhelperbin/newtools/reading/qa-syntax only, noCLI/syntaxmodel edits.
+Hypothesis: predicteddependency relations aid candidate-relative passage ranking.
+Same4000FIT/64articles+1000CAL/16articles, approvedv1QA andsyntaxmodels frozen in
+ownbaseline11files. OriginalSQuADtrain/dev mountedreadonly, no test/newdownloads.
+Onefrozen representation, <=5passes, oldCALrule>=50%exact/min30/ties, noDEVtuning.
+Acceptance rawexact>=2744/10570,F1>=36.518425,selectedcorrect>=815,wrong<=791,
+meaningfulrolecontrasts; v1modebyteidentical. Optionalnewmodel only, unverified
+predictions nevertruth/repairauthority; allperitemregressions mustbereported.
+Parentfroze20independentprobesbeforecandidate atcoordinator/qasyntax-independent.
+V1baseline13positive/7negative:10rawpositivecorrect,6selectedcorrect,4wrongselected
+including3negativequestions,10refused. Baselinecommands/audit complete. No newscore.
+
+FUNCTIONREFS ACTIVE PID617333, scopeglassmind-continuous-functionrefs.scope,
+8GiB/0swapverified, branchcontinuous/functionrefs at078578b, WORK/functionrefs
+andfunctionrefs-run; briefWORK/functionrefs-task.txt. Sameforcedmodel/login.
+OwnsworldRust functionreferencehelper/minimallibroute/newtools only. Actual
+canonical 'rename function parse_line to parse_entry' resolves function correctly
+butworldrename_at refuses unclassified references. Suppliedpublic6files2923bytes
+cover groupedimports/reexports,lib+bin,callbacks,ordinarycalls,publictests/glob/
+assertions. Rustbenchf79e71a MITORApache2; no task.toml/hidden/solutions. Original
+threeTRAIN-v3requests andparenttraces provided. They have separatefrontendfailures:
+terse/hurried shapeerrors; chattymisroutesRepair(Test). Do notclaimbackendfixsolves
+those. Frozenbackendacceptance: providedcanonical+>=5newauthoredpositive identity-
+preservingrenames, zero unsafe negatives, nativebeforeafterbehavior; preserveold
+routes andall177fullDEVpasses/0fail beforepublication. Parentfuturelanguagework
+needed fororiginalrequests, especiallywrongRepair(Test)fallback. No sourcepatchyet.
+
+Next: inspect frozenplans, author independentfunction identitycontrasts, review
+terminal submissions only afteroriginalarchive. QASYNTAX mustpreserveunverified
+status andv1compatibility; FUNCTIONREFS mustprovebindingidentity/aliases/globs and
+preserveunrelatedbytes, notloosengenericglobalguard. Two liveworkers +parent,
+within4model ceiling. Goalactiveuntiluserstops; no blocker.
+
 ## Current state — PR31 merged; syntax main command fully verified locally
 
 PR31 MERGED723add1b82ee619ecb7ae3544ceaec9d822e5467 at2026-10-11T09:04:50Z,

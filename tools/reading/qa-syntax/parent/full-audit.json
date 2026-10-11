@@ -1,0 +1,43 @@
+{
+  "total": 10570,
+  "baseline": {
+    "raw_exact": 2532,
+    "refused": 8964,
+    "wrong": 791,
+    "right": 815,
+    "raw_f1_percent": 34.51842504801276
+  },
+  "candidate": {
+    "raw_exact": 3057,
+    "refused": 8980,
+    "right": 943,
+    "wrong": 647,
+    "raw_f1_percent": 39.86957257497188
+  },
+  "transitions": {
+    "raw": {
+      "wrong->wrong": 6793,
+      "right->right": 1812,
+      "right->wrong": 720,
+      "wrong->right": 1245
+    },
+    "selected": {
+      "refused->refused": 8036,
+      "wrong->refused": 610,
+      "right->refused": 334,
+      "right->right": 477,
+      "refused->right": 452,
+      "refused->wrong": 476,
+      "wrong->wrong": 167,
+      "wrong->right": 14,
+      "right->wrong": 4
+    }
+  },
+  "calibration": {
+    "threshold": 0.20622891187667847,
+    "accepted": 166,
+    "right": 83,
+    "wrong": 83
+  },
+  "scope": "Independent recomputation on frozen DEV outputs; does not override independent negation rejection."
+}
