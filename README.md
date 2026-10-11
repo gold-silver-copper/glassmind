@@ -46,8 +46,10 @@ rustbench run --agent ./tools/rustbench-agent.sh
 ## Conversation and story commands
 
 ```sh
-# Names, preferences, corrections and previous-message recall; no model needed
+# Memory, arithmetic, units and dates; no model needed
 ./target/release/glassmind talk --session conversation.json
+# Calculations also work within the same conversation
+printf '%s\n' 'Convert 1/3 hours to minutes' | ./target/release/glassmind talk
 # Add learned everyday-intent recognition after training (services are not connected)
 bash crates/everyday/tools/reproduce.sh
 ./target/release/glassmind talk --model scratch/everyday/intent.json --session conversation.json
@@ -77,7 +79,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,526 refused; 39 wrong | pending |
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | external benchmark pending |
-| Basic chat memory | 41/41 synthetic smoke checks | no independent chat benchmark |
+| Chat memory and calculations | 41/41 memory checks; 27/27 mixed conversation checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | 1/120 sampled documents parsed; 15 exceed the 48-token cap | pending |
 | Grammar, BLiMP parse-only probe | 1 good preference, 3 bad, 1,336 ties on 1,340 pairs | no probability-model score yet |
 
@@ -85,6 +87,11 @@ The diagnostic-completeness follow-up leaves all 765 rustbench dev outcomes
 unchanged and fixes both wrong answers in a 32-turn status sample (27 → 29 right,
 2 → 0 wrong). Coding held-out totals above were measured before that follow-up.
 [Regression evidence](docs/results/diagnostics-keep-going.json).
+
+`talk` now answers supported quantity questions with or without an intent
+model, preserves memory priority and recalls calculation requests across
+sessions. The same 3,116 synthetic quantity questions through `talk` retain
+3,056 correct, 60 unsupported and zero wrong. [Integration evidence](docs/talk-quantities.md).
 
 The story dev set is a deterministic episode-level partition of the official
 training data. CLINC thresholds were calibrated on official validation;
