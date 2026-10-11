@@ -2,11 +2,11 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Known completed-worker tokens:203193886, cached input counted once; parent and
-interrupted usage excluded. Five prior quantity teachers are terminal and archived; their auth links were
-removed. One complete-graph teacher is running, as recorded below.
+Known completed-worker tokens:203481375, cached input counted once; parent and
+interrupted usage excluded. All six quantity teachers are terminal and archived;
+all owned auth links removed. No model workers or experiment jobs running.
 
-## Current handoff: PR53 merged; full graph QA rejected; graph teacher running
+## Current handoff: PR53 merged; full graph QA and complete graph pilot rejected
 
 PR53 MERGEDa063cf13c064d67a59846ffd2708eb6ead4564a9 at19:50:02UTC.
 Reviewed7eb3de8cccf315766460223318852b97ceacc612, CI38169506217 SUCCESS99s.
@@ -30,14 +30,25 @@ separateCALseries. NEXTfacts freeze an entity-mention localization hypothesis on
 TRAIN-FIT, motivated by generic requestwords incorrectly selected as entities.
 Do not relax rejectedgate or acquire data using benchmarkanswer entities.
 
-Quantitygraph worktreeWORK/quantity-graphs protocolfrozen47c7cc7:51contracts,
-6nativeprefixchecks passed. Batch/parent hashes unchanged. Exactlyone teacher
-46506 RUNNING;scopeglassmind-quantity-graphs-teacher,supervisor1245190,
-launcher1245197. Astrafast/high,forcedChatGPTloginverified,APIkeyenvremoved,
-masked5paths,1200s8GiB0swap2MiBannotations256MiBdirectory; TMPDIRon disk.
-RUN=WORK/coordinator/quantity-graphs. Do not restart. Afterterminal runpreserve.py,
-validate.py withnativeexecutor,check-parent.py,thenrootsemanticreviewall32.
-No model fit,CAL/DEV orruntimechange. Workerusagepending;knowntotal203193886.
+Quantitygraph worktreeWORK/quantity-graphs completed19d0497, integratedcentrally.
+Protocol47c7cc7:51contracts passed. Teacher46506 COMPLETE0,352.916s, allcaps pass;
+14originalfiles472676bytes hashverified;inactive scope andauthlinkcleanup verified.
+RUN=WORK/coordinator/quantity-graphs. Usage287489=272802input(includes211328cached)
++14687output. Knowncompletedtotal203481375. Allworkers/jobs nowterminal.
+
+PilotREJECTED22/32vsfrozen24minimum:22resolved8ambiguous2unsupported. Rootreviewed
+all84quantitygroups,84operations,168operandroles;zeroacceptedcontradictions.
+All84nativeprefixes exact,all8parentcasesagree,17nativeoriginal/counterfactualchecks
+match. Onecoreferencegroup3510months[1,3] justified. Severalrefusals areconservative
+pragmaticexclusions, notprovenwrongreferenceanswers. Noexpansion/fit/CAL/DEV/runtime
+change. Read tools/quantities/complete-graphs/PROGRESS.md andsemantic-review.json.
+
+NEXTfinish publication of QA/pilot reports, then investigate a learned entitymention
+selector onTRAIN-FIT. Existing tools/facts/linkquality/HANDOFF.md already rejects
+what/which adjacencyveto; do not repeat it. Learnedselection had previously notbeen
+fitted becauseoldCALcorrectlinks were too few; fullgraph now has843correctlinks.
+Freeze newrepresentation/data/acceptance plan beforefitting, preserve fullgraphQA
+rejection andnever use a retry to relax the originalpromotion criterion.
 
 ## Earlier handoff (current status above takes precedence)
 
