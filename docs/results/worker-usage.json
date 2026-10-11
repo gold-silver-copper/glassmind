@@ -100,6 +100,19 @@
         "reasoning_output_tokens": 6015
       },
       "source": "continuous batch, AST repair proposals and training-only verification"
+    },
+    {
+      "track": "facts-acronym-continuous",
+      "started_unix": 1791689089.609373,
+      "finished_unix": 1791689362.5681067,
+      "usage": {
+        "input_tokens": 958772,
+        "cached_input_tokens": 909824,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 13720,
+        "reasoning_output_tokens": 1891
+      },
+      "source": "continuous batch, acronym casing with monotonic inference"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

@@ -173,11 +173,16 @@ No held-out failures were inspected or used to modify the reasoner.
   populate the store; claims come independently from Wikidata. This is not
   an open-world entity-retrieval result. Rate limits stopped the crawl;
   missing coverage stays in the full validation denominator.
-- Full validation: 256 right, 2,526 refused, 39 wrong / 2,821.
+- Initial validation: 256 right, 2,526 refused, 39 wrong / 2,821.
   Multiple-answer claims are refused. Live facts may differ from the historical
   benchmark. Index, hashes, calibration totals and reproduction commands:
   [facts notes](../tools/facts/README.md). Relation weights remain in
   `~/.cache/glassmind/data/simplequestions/relation.json`.
+- The later acronym-casing guard preserves all 256 correct answers and
+  withdraws 19 false entity links: 256 right, 2,545 refused, 20 wrong.
+  Index and model are unchanged; no new data was downloaded. It does not
+  resolve old ambiguity or make new claims. Exact train/dev transitions and
+  artifact hashes are in `tools/facts/continuous/`.
 
 ### Schema-Guided Dialogue (2026-10-10)
 

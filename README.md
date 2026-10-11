@@ -73,10 +73,10 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 160/765 pass; 602 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 163/765 pass; 599 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
-| Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,526 refused; 39 wrong | pending |
+| Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
 | Word problems, MathQA (numeric answers without choices) | 14/4,475 right; 4,458 refused; 3 wrong | pending |
@@ -86,8 +86,14 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 The diagnostic-completeness follow-up leaves all 765 rustbench dev outcomes
 unchanged and fixes both wrong answers in a 32-turn status sample (27 → 29 right,
-2 → 0 wrong). Coding held-out totals above were measured before that follow-up.
+2 → 0 wrong). Coding held-out totals above precede both that follow-up and
+the later syntax-based repairs.
 [Regression evidence](docs/results/diagnostics-keep-going.json).
+
+Syntax-based test repairs add the three request styles of the moving-average
+loop-bound task: all 160 baseline passes remain passes, 599 refusals remain
+refusals, and the three existing failures remain failures. Candidates exclude
+explicit test code and non-code text. [Full dev comparison](docs/results/coding-syntax-repairs.json).
 
 `talk` now answers supported quantity questions with or without an intent
 model, preserves memory priority and recalls calculation requests across
@@ -100,6 +106,10 @@ choices; both remain counted wrong. This custom numeric metric does not supply
 choices to the solver and cannot normalize 1,229 gold options, which stay in
 the denominator. It is not official multiple-choice accuracy.
 [MathQA scope and reproduction](tools/quantities/HANDOFF.md).
+
+Requiring casing support for uppercase-only entity aliases removes 19 false
+facts answers, preserving all 256 correct dev answers. It cannot resolve an
+old ambiguity or introduce a different claim. [Facts comparison](tools/facts/continuous/HANDOFF.md).
 
 The story dev set is a deterministic episode-level partition of the official
 training data. CLINC thresholds were calibrated on official validation;

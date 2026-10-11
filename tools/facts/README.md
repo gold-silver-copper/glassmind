@@ -21,9 +21,12 @@ Missing entities remain in the full validation denominator. Current Wikidata
 claims may differ from the historical benchmark. Provenance hashes cover all
 20 raw responses (27,696,032 bytes), retained in the local data cache.
 
-The first 200 validation rows form the fixed sample: 12 right, 183 refused,
-5 wrong before refusing multi-answer claims; final totals are in
-`sample-final.json`. Full validation: **256 right, 2,526 refused, 39 wrong / 2,821**.
+The first 200 validation rows form the fixed sample: initially 12 right,
+183 refused, 5 wrong, then 12/186/2 after refusing multi-answer claims.
+The latest acronym-casing guard gives 12/188/0 on that sample and full
+validation **256 right, 2,545 refused, 20 wrong / 2,821**, preserving all
+previously correct answers. It withdraws false lowercase acronym matches
+without exposing a different candidate. [Exact transitions and limitations](continuous/HANDOFF.md).
 Entity linking is correct on 504/2,821, and uncalibrated relation top-1 on
 2,664/2,821. These diagnostics are not answer accuracy. The initial full dev run
 had 169 wrong; 130 were multi-answer outputs, now explicitly refused. No official

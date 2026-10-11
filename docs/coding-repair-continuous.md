@@ -145,6 +145,16 @@ discriminants. All seven focused tests pass. The source above describes
 the worker candidate; full rustbench evaluation uses the subsequently
 reviewed source and its separately recorded binary hash.
 
+Full rustbench dev at unchanged benchmark commit `f79e71a` completed on
+reviewed source `75e3269`: **163 pass, 599 refused, 3 fail / 765**.
+All 160 baseline passes remain passes; all three baseline failures remain
+failures; 599 refusals are unchanged. The only changes are refusal→pass
+for all three styles of `fix-tests/steps-moving-average`. No new wrong
+answers or dropped passes. This establishes benchmark improvement beyond
+the worker's visible-test measure; no held-out evaluation was used.
+`docs/results/coding-syntax-repairs.json` records the exact binary and
+result-file hashes and every changed verdict. Workspace checks passed.
+
 Baseline reproduction uses the retained
 `$CARGO_TARGET_DIR/debug/glassmind-repair-baseline` with the same adapter and
 separate output paths. All scopes/jobs must finish before handoff.
