@@ -1,0 +1,1526 @@
+{
+  "mode": "plain",
+  "sample": false,
+  "contracts": {
+    "right": 68,
+    "total": 93
+  },
+  "original": {
+    "right": 41,
+    "total": 41
+  },
+  "checks": [
+    {
+      "name": "contract0-0:0:My name is 李明",
+      "expected": {
+        "kind": "remembered",
+        "contains": "李明"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you 李明.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:1:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "李明"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is 李明.",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:2:Actually, my name is İpek",
+      "expected": {
+        "kind": "remembered",
+        "contains": "İpek"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you İpek.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:3:Call me Dr. Neri",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Dr. Neri"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Dr. Neri.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract0-0:name.value",
+      "expected": "Dr. Neri",
+      "actual": "Dr. Neri",
+      "right": true
+    },
+    {
+      "name": "contract0-0:name.stated_on_turn",
+      "expected": 4,
+      "actual": 4,
+      "right": true
+    },
+    {
+      "name": "contract0-0:last_correction.previous.value",
+      "expected": "İpek",
+      "actual": "İpek",
+      "right": true
+    },
+    {
+      "name": "contract1-0:0:My name is Leila",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Leila.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract1-0:1:please change the name you refer to me by",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract1-0:2:Actually, it's Mara",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Mara.",
+        "slot": "Name"
+      },
+      "right": false
+    },
+    {
+      "name": "contract1-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Leila"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mara.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract1-0:name.value",
+      "expected": "Leila",
+      "actual": "Mara",
+      "right": false
+    },
+    {
+      "name": "contract1-0:name.stated_on_turn",
+      "expected": 1,
+      "actual": 3,
+      "right": false
+    },
+    {
+      "name": "contract2-0:0:My name is Sora",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Sora.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract2-0:1:Call me next week",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract2-0:2:No, it's dawn",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you dawn.",
+        "slot": "Name"
+      },
+      "right": false
+    },
+    {
+      "name": "contract2-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Sora"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is dawn.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract2-0:name.value",
+      "expected": "Sora",
+      "actual": "dawn",
+      "right": false
+    },
+    {
+      "name": "contract3-0:0:I prefer quiet rooms",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer quiet rooms.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "contract3-0:1:what will the temperature be tomorrow",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract3-0:2:Actually, it's sunny",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer sunny.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "right": false
+    },
+    {
+      "name": "contract3-0:3:What do I prefer?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "quiet rooms"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your preference is sunny.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract3-0:preferences.general.value",
+      "expected": "quiet rooms",
+      "actual": "sunny",
+      "right": false
+    },
+    {
+      "name": "contract4-0:0:My name is Sol",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Sol.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract4-0:1:My name is",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": true
+    },
+    {
+      "name": "contract4-0:2:Actually, it's Rain",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": false
+    },
+    {
+      "name": "contract4-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Sol"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Sol.",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract4-0:name.value",
+      "expected": "Sol",
+      "actual": "Sol",
+      "right": true
+    },
+    {
+      "name": "contract5-0:0:My name is Sol",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Sol.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract5-0:1:I prefer",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": true
+    },
+    {
+      "name": "contract5-0:2:Actually, it's Rain",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": false
+    },
+    {
+      "name": "contract5-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Sol"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Sol.",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract5-0:name.value",
+      "expected": "Sol",
+      "actual": "Sol",
+      "right": true
+    },
+    {
+      "name": "contract6-0:0:My name is Sol",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Sol.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract6-0:1:My favorite color is",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": true
+    },
+    {
+      "name": "contract6-0:2:Actually, it's Rain",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": false
+    },
+    {
+      "name": "contract6-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Sol"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Sol.",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract6-0:name.value",
+      "expected": "Sol",
+      "actual": "Sol",
+      "right": true
+    },
+    {
+      "name": "contract7-0:0:My name is Sol",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Sol.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract7-0:1:Call me",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract7-0:2:Actually, it's Rain",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Rain.",
+        "slot": "Name"
+      },
+      "right": false
+    },
+    {
+      "name": "contract7-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Sol"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Rain.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract7-0:name.value",
+      "expected": "Sol",
+      "actual": "Rain",
+      "right": false
+    },
+    {
+      "name": "contract8-0:0:My favorite drink is Café",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite drink is Café.",
+        "slot": {
+          "Preference": "drink"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "contract8-0:1:Hello",
+      "expected": {
+        "kind": "social"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "Hello!"
+      },
+      "right": true
+    },
+    {
+      "name": "contract8-0:2:Actually, it's Oolong",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite drink is Oolong.",
+        "slot": {
+          "Preference": "drink"
+        }
+      },
+      "right": false
+    },
+    {
+      "name": "contract8-0:3:What is my favorite drink?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Café"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite drink is Oolong.",
+        "source_turn": 3
+      },
+      "right": false
+    },
+    {
+      "name": "contract9-0:0:My name is Yara",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Yara.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract9-0:1:What is my favorite flower?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your favorite flower yet."
+      },
+      "right": true
+    },
+    {
+      "name": "contract9-0:2:Actually, it's iris",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite flower is iris.",
+        "slot": {
+          "Preference": "flower"
+        }
+      },
+      "right": false
+    },
+    {
+      "name": "contract9-0:name.value",
+      "expected": "Yara",
+      "actual": "Yara",
+      "right": true
+    },
+    {
+      "name": "contract9-0:preferences",
+      "expected": {},
+      "actual": {
+        "flower": {
+          "value": "iris",
+          "stated_on_turn": 3
+        }
+      },
+      "right": false
+    },
+    {
+      "name": "contract9-0:last_slot",
+      "expected": null,
+      "actual": {
+        "Preference": "flower"
+      },
+      "right": false
+    },
+    {
+      "name": "contract10-0:0:My name is Yara",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Yara.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract10-0:1:What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "My name is Yara"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: My name is Yara",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract10-0:2:Actually, it's Mara",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Mara.",
+        "slot": "Name"
+      },
+      "right": false
+    },
+    {
+      "name": "contract10-0:name.value",
+      "expected": "Yara",
+      "actual": "Mara",
+      "right": false
+    },
+    {
+      "name": "contract11-0:0:My name is Yara",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Yara.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract11-0:1:Thanks",
+      "expected": {
+        "kind": "social"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "You're welcome."
+      },
+      "right": true
+    },
+    {
+      "name": "contract11-0:2:Actually, my name is Nia",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Nia.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract11-0:3:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 3,
+        "contains": "Nia"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Nia.",
+        "source_turn": 3
+      },
+      "right": true
+    },
+    {
+      "name": "contract11-0:4:No, it's Noor",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Noor"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Noor.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract11-0:last_correction.previous.value",
+      "expected": "Nia",
+      "actual": "Nia",
+      "right": true
+    },
+    {
+      "name": "contract11-0:last_correction.previous.stated_on_turn",
+      "expected": 3,
+      "actual": 3,
+      "right": true
+    },
+    {
+      "name": "contract11-0:name.value",
+      "expected": "Noor",
+      "actual": "Noor",
+      "right": true
+    },
+    {
+      "name": "contract11-0:name.stated_on_turn",
+      "expected": 5,
+      "actual": 5,
+      "right": true
+    },
+    {
+      "name": "contract12-0:0:My name is Anouk",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Anouk.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract12-0:1:by what name do you refer to me",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": true
+    },
+    {
+      "name": "contract12-0:name.value",
+      "expected": "Anouk",
+      "actual": "Anouk",
+      "right": true
+    },
+    {
+      "name": "contract13-0:0:set a timer for ten minutes",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract13-0:1:remind me to call my mother saturday morning",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "contract13-0:name",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "contract13-0:preferences",
+      "expected": {},
+      "actual": {},
+      "right": true
+    },
+    {
+      "name": "contract14-0:0:My favorite İÇECEK is Café con leche",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite i̇çecek is Café con leche.",
+        "slot": {
+          "Preference": "i̇çecek"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "contract14-0:preferences.i̇çecek.value",
+      "expected": "Café con leche",
+      "actual": "Café con leche",
+      "right": true
+    },
+    {
+      "name": "contract14-1:0:What about that?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Café con leche"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite i̇çecek is Café con leche.",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract14-1:1:No, it's Oolong",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite i̇çecek is Oolong.",
+        "slot": {
+          "Preference": "i̇çecek"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "contract14-1:preferences.i̇çecek.value",
+      "expected": "Oolong",
+      "actual": "Oolong",
+      "right": true
+    },
+    {
+      "name": "contract14-1:last_correction.previous.stated_on_turn",
+      "expected": 1,
+      "actual": 1,
+      "right": true
+    },
+    {
+      "name": "contract14-2:0:Thanks",
+      "expected": {
+        "kind": "social"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "You're welcome."
+      },
+      "right": true
+    },
+    {
+      "name": "contract14-2:last_slot",
+      "expected": null,
+      "actual": {
+        "Preference": "i̇çecek"
+      },
+      "right": false
+    },
+    {
+      "name": "contract14-3:0:Actually, it's tea",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite i̇çecek is tea.",
+        "slot": {
+          "Preference": "i̇çecek"
+        }
+      },
+      "right": false
+    },
+    {
+      "name": "contract14-3:1:/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "right": true
+    },
+    {
+      "name": "contract14-3:2:What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "right": true
+    },
+    {
+      "name": "contract14-3:3:What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "What is my name?"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: What is my name?",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "contract14-3:turn",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "contract14-3:preferences",
+      "expected": {},
+      "actual": {},
+      "right": true
+    },
+    {
+      "name": "contract14-3:name",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "contract14-3:last_correction",
+      "expected": null,
+      "actual": null,
+      "right": true
+    },
+    {
+      "name": "contract15-0:0:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 2,
+        "contains": "Zoë"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Zoë.",
+        "source_turn": 2
+      },
+      "right": true
+    },
+    {
+      "name": "contract15-0:1:Actually, it's Ana",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Ana.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "contract15-0:name.value",
+      "expected": "Ana",
+      "actual": "Ana",
+      "right": true
+    },
+    {
+      "name": "contract15-0:last_correction.previous.stated_on_turn",
+      "expected": 2,
+      "actual": 2,
+      "right": true
+    },
+    {
+      "name": "original0:0:What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "right": true
+    },
+    {
+      "name": "original0:1:My name is Ada Lovelace.",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Ada Lovelace"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Ada Lovelace.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "original0:2:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "Ada Lovelace",
+        "source_turn": 2
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Ada Lovelace.",
+        "source_turn": 2
+      },
+      "right": true
+    },
+    {
+      "name": "original0:3:Actually, my name is Grace Hopper.",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Grace Hopper"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Grace Hopper.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "original0:4:What about that?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "Grace Hopper",
+        "source_turn": 4
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Grace Hopper.",
+        "source_turn": 4
+      },
+      "right": true
+    },
+    {
+      "name": "original0:5:My favorite color is blue.",
+      "expected": {
+        "kind": "remembered",
+        "contains": "blue"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite color is blue.",
+        "slot": {
+          "Preference": "color"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "original0:6:My favorite drink is tea.",
+      "expected": {
+        "kind": "remembered",
+        "contains": "tea"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite drink is tea.",
+        "slot": {
+          "Preference": "drink"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "original0:7:What about my favorite color?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "blue",
+        "source_turn": 6
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite color is blue.",
+        "source_turn": 6
+      },
+      "right": true
+    },
+    {
+      "name": "original0:8:Actually, it's green.",
+      "expected": {
+        "kind": "remembered",
+        "contains": "green"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite color is green.",
+        "slot": {
+          "Preference": "color"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "original0:9:What is my favorite color?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "green",
+        "source_turn": 9
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite color is green.",
+        "source_turn": 9
+      },
+      "right": true
+    },
+    {
+      "name": "original0:10:And my favorite drink?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "tea",
+        "source_turn": 7
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite drink is tea.",
+        "source_turn": 7
+      },
+      "right": true
+    },
+    {
+      "name": "original0:11:I prefer quiet rooms.",
+      "expected": {
+        "kind": "remembered",
+        "contains": "quiet rooms"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer quiet rooms.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "original0:12:What do I prefer?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "quiet rooms",
+        "source_turn": 12
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your preference is quiet rooms.",
+        "source_turn": 12
+      },
+      "right": true
+    },
+    {
+      "name": "original0:13:No, I prefer noisy cafes.",
+      "expected": {
+        "kind": "remembered",
+        "contains": "noisy cafes"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that you prefer noisy cafes.",
+        "slot": {
+          "Preference": "general"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "original0:14:What about that?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "noisy cafes",
+        "source_turn": 14
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your preference is noisy cafes.",
+        "source_turn": 14
+      },
+      "right": true
+    },
+    {
+      "name": "original0:15:What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "What about that?",
+        "source_turn": 15
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: What about that?",
+        "source_turn": 15
+      },
+      "right": true
+    },
+    {
+      "name": "original0:16:Hello",
+      "expected": {
+        "kind": "social",
+        "contains": "Grace Hopper"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "Hello, Grace Hopper!"
+      },
+      "right": true
+    },
+    {
+      "name": "original0:17:What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "Hello",
+        "source_turn": 17
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: Hello",
+        "source_turn": 17
+      },
+      "right": true
+    },
+    {
+      "name": "original0:18:Forget my name",
+      "expected": {
+        "kind": "social"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "I've forgotten your name."
+      },
+      "right": true
+    },
+    {
+      "name": "original0:19:What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "right": true
+    },
+    {
+      "name": "original0:20:And my favorite drink?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "tea",
+        "source_turn": 7
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite drink is tea.",
+        "source_turn": 7
+      },
+      "right": true
+    },
+    {
+      "name": "original0:21:Forget my preferences",
+      "expected": {
+        "kind": "social"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "I've forgotten your preferences."
+      },
+      "right": true
+    },
+    {
+      "name": "original0:22:What do I prefer?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your preference yet."
+      },
+      "right": true
+    },
+    {
+      "name": "original0:23:A completely unsupported request",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "right": true
+    },
+    {
+      "name": "original0:24:What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "A completely unsupported request",
+        "source_turn": 24
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: A completely unsupported request",
+        "source_turn": 24
+      },
+      "right": true
+    },
+    {
+      "name": "original1:0:My name is İpek",
+      "expected": {
+        "kind": "remembered",
+        "contains": "İpek"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you İpek.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "original1:1:MY FAVORITE drink IS Café con leche",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Café con leche"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite drink is Café con leche.",
+        "slot": {
+          "Preference": "drink"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "original2:0:And my name?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "İpek",
+        "source_turn": 1
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is İpek.",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "original2:1:What is my favorite drink?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "Café con leche",
+        "source_turn": 2
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite drink is Café con leche.",
+        "source_turn": 2
+      },
+      "right": true
+    },
+    {
+      "name": "original2:2:No, it's Oolong",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Oolong"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite drink is Oolong.",
+        "slot": {
+          "Preference": "drink"
+        }
+      },
+      "right": true
+    },
+    {
+      "name": "original-provenance",
+      "expected": true,
+      "actual": true,
+      "right": true
+    },
+    {
+      "name": "original3:0:/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "right": true
+    },
+    {
+      "name": "original3:1:What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "right": true
+    },
+    {
+      "name": "original3:2:What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "What is my name?",
+        "source_turn": 1
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: What is my name?",
+        "source_turn": 1
+      },
+      "right": true
+    },
+    {
+      "name": "original4:0:Actually, it's Alice",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "Which name or preference are you correcting?"
+      },
+      "right": true
+    },
+    {
+      "name": "original5:0:Call me a taxi",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "original5:1:What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "right": true
+    },
+    {
+      "name": "original5:2:Call me tomorrow",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "right": true
+    },
+    {
+      "name": "original5:3:What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "right": true
+    },
+    {
+      "name": "original5:4:Call me Dr. Kim",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Dr. Kim"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Dr. Kim.",
+        "slot": "Name"
+      },
+      "right": true
+    },
+    {
+      "name": "original5:5:What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "contains": "Dr. Kim",
+        "source_turn": 5
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Dr. Kim.",
+        "source_turn": 5
+      },
+      "right": true
+    }
+  ]
+}

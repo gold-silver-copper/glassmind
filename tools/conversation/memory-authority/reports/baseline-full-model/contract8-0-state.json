@@ -1,0 +1,31 @@
+{
+  "turn": 4,
+  "name": null,
+  "preferences": {
+    "drink": {
+      "value": "Oolong",
+      "stated_on_turn": 3
+    }
+  },
+  "last_slot": {
+    "Preference": "drink"
+  },
+  "last_user_utterance": "What is my favorite drink?",
+  "last_correction": {
+    "slot": {
+      "Preference": "drink"
+    },
+    "previous": {
+      "value": "Café",
+      "stated_on_turn": 1
+    },
+    "replacement": {
+      "value": "Oolong",
+      "stated_on_turn": 3
+    }
+  },
+  "stories": {
+    "assertions": [],
+    "invalidated": false
+  }
+}

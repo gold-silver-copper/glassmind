@@ -1,0 +1,114 @@
+{
+  "crates/everyday/src/model.rs": {
+    "bytes": 14411,
+    "sha256": "41ee730bb6351f29ff8d0d0ef9791062405f0b3f62fb3e35c115d43dec21e5a7"
+  },
+  "crates/everyday/src/adapter.rs": {
+    "bytes": 2639,
+    "sha256": "b32200faa06b8ec078a2882eaf7552dd74196666452f2cd56c3c04981c703883"
+  },
+  "crates/everyday/src/memory.rs": {
+    "bytes": 18081,
+    "sha256": "291fa35b91a608af485c723925c9bea431e6006b060205993ba3ffa56e211c11"
+  },
+  "crates/cli/src/everyday.rs": {
+    "bytes": 10680,
+    "sha256": "baa765a6c624fb8a721f5284c22f97d5f5dd607c4a2d164f8ae02ac7e747e55d"
+  },
+  "crates/cli/src/talk_facts.rs": {
+    "bytes": 17461,
+    "sha256": "fc683db9000fa07513567fdfc30d9a049e0a2a36afd691a49fc68783a356723d"
+  },
+  "crates/cli/src/talk_stories.rs": {
+    "bytes": 12488,
+    "sha256": "57b99de07ea0c650ecf1f8073e82187cf7b6f231c925b939067660b6a0682b5c"
+  },
+  "crates/everyday/tools/smoke_memory.py": {
+    "bytes": 4726,
+    "sha256": "eee606b8dd2dc3497dac124625a260371ac087352f3c5a649950e90434a01729"
+  },
+  "tools/talk-dev.py": {
+    "bytes": 6243,
+    "sha256": "32e128f90edbb1b8c94341c4f429e3e7c380ac6ca949f32ff5dedef16c88ca14"
+  },
+  "tools/talk-story-dev.py": {
+    "bytes": 7435,
+    "sha256": "e169d783e9df000aa383f2d4926f51917bf5360c5c12076201672e1751fa4a0f"
+  },
+  "/home/gsc/.cache/glassmind/models/everyday/intent.json": {
+    "bytes": 25524518,
+    "sha256": "a84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408"
+  },
+  "/home/gsc/.cache/glassmind/data/clinc150/train.jsonl": {
+    "bytes": 1165484,
+    "sha256": "f27778e9c16448d040d9c364a1b369493711865419613a277270a54781ea87c2"
+  },
+  "/home/gsc/.cache/glassmind/data/clinc150/val.jsonl": {
+    "bytes": 239360,
+    "sha256": "39afa094ba8495e9b8b30595394937bdd7b5b8e6dcdba71a9a380047759c88f9"
+  },
+  "/home/gsc/.cache/glassmind/continuous-20261010/memoryauthority-run/baseline/glassmind": {
+    "bytes": 74285584,
+    "sha256": "623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac"
+  },
+  "tools/conversation/memory-authority/freeze.py": {
+    "bytes": 4283,
+    "sha256": "3122c7bf198847ec43cf9732aa8f962626bbf9a76d0fc91eaefcde3afe9d5b75"
+  },
+  "tools/conversation/memory-authority/contracts.json": {
+    "bytes": 12617,
+    "sha256": "4309d3c42eb7c5256cddbf7f9cc7474e4525356e52a6246d16a3e0af2d1e4db5"
+  },
+  "tools/conversation/memory-authority/evaluate.py": {
+    "bytes": 3802,
+    "sha256": "ae648040e4430d48d9c4690265cf4e37894c2b993d8d221205fdcb236864d3ad"
+  },
+  "tools/conversation/memory-authority/PLAN.md": {
+    "bytes": 1593,
+    "sha256": "69e33e82fec45ea25350a7fa6e6c29beda6fae659e020120213d53543e4cfe1f"
+  },
+  "tools/conversation/memory-authority/frozen.sha256": {
+    "bytes": 453,
+    "sha256": "984092f7967aced3f4b0bd25191b488ab5b4b8e82bde4a2f5a918e6e925fa231"
+  },
+  "tools/conversation/memory-authority/baseline-hashes.json": {
+    "bytes": 1978,
+    "sha256": "930e3014921d76d0ddd1427f8fff15874ecd00d04aa15fe4e4680a40db397b3e"
+  },
+  "tools/conversation/memory-authority/train-evidence.json": {
+    "bytes": 2274,
+    "sha256": "8da467e95a1a3616b49fa6dfd28d1770299bb63dfe382fdbfba0f6ae9c336d8b"
+  },
+  "tools/conversation/memory-authority/reproduce.sh": {
+    "bytes": 3615,
+    "sha256": "baf713fd1d54432746997bbbfbf118d4e1968d849c2fd5ca513cf4d9b959b5af"
+  },
+  "tools/conversation/memory-authority/facts_equivalence.py": {
+    "bytes": 1558,
+    "sha256": "ef2df2d54e7c57824caabe909ea56a92bfbe92bf7cdd380863924d65f1fafe2c"
+  },
+  "tools/conversation/memory-authority/learned_social.py": {
+    "bytes": 1519,
+    "sha256": "903a3d8f43fa245ae8e9c79c56a8984f62dbc3e5d0326fc64417b6ae1635ded3"
+  },
+  "tools/conversation/memory-authority/learned-social-frozen.sha256": {
+    "bytes": 120,
+    "sha256": "e8a88c2f20956c713c1596bcfdf2f9e0aa6809f993e665180fe0c1765ccedffb"
+  },
+  "tools/conversation/memory-authority/standalone-chat.sh": {
+    "bytes": 234,
+    "sha256": "77057d8109bf7291b38954f5c074d7b766e49e288165914b04cd655f5af5c1d3"
+  },
+  "docs/memory-authority.md": {
+    "bytes": 3260,
+    "sha256": "40e2773337e4f291cea021e9adccfd185e6816155ca2ec8827223eb7e5036f4f"
+  },
+  "/home/gsc/.cache/glassmind/continuous-20261010/memoryauthority-run/target/release/glassmind": {
+    "bytes": 74316272,
+    "sha256": "62b812cad756d4044eb3272871055002cf488cf0179663f64df6967831c0d198"
+  },
+  "/home/gsc/.cache/glassmind/continuous-20261010/memoryauthority-run/target/release/glassmind-everyday": {
+    "bytes": 13332752,
+    "sha256": "6d639341e598a7ce69ce05eb1d20d225e2d5118748e3fc1048a8d370f6ce20a0"
+  }
+}

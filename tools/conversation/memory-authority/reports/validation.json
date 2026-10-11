@@ -1,0 +1,74 @@
+{
+  "base_source": "9b875b854908cbbd5f5a6c8fce73ddcdbbb8ec8f",
+  "uncommitted": true,
+  "sample": {
+    "baseline_plain": 13,
+    "baseline_model": 11,
+    "candidate_plain": 23,
+    "candidate_model": 23,
+    "total": 23
+  },
+  "full_contracts": {
+    "baseline_plain": 68,
+    "baseline_model": 64,
+    "candidate_plain": 93,
+    "candidate_model": 93,
+    "total": 93
+  },
+  "original_memory": {
+    "baseline_plain": 41,
+    "baseline_model": 40,
+    "candidate_plain": 41,
+    "candidate_model": 41,
+    "total": 41
+  },
+  "calc27_and_story47": {
+    "baseline_candidate_identical_except_binary_provenance": true,
+    "calc27": 27,
+    "story47": 47
+  },
+  "facts52": 52,
+  "explicit_facts_four_streams": {
+    "each_replies": 19,
+    "reply_and_session_bytes_identical": true,
+    "route_source_identical": true
+  },
+  "rust_tests": {
+    "everyday": 4,
+    "cli_everyday": 2
+  },
+  "checks": [
+    "workspace fmt --check",
+    "affected all-targets clippy -D warnings",
+    "release build everyday and main CLI"
+  ],
+  "classifier_model_inputs_unchanged": true,
+  "fresh_full3100_intent_evaluation": false,
+  "supplemental_social": {
+    "frozen_after_implementation": true,
+    "talk_baseline_and_candidate_plain": {
+      "right": 5,
+      "total": 6
+    },
+    "talk_baseline_and_candidate_model": {
+      "right": 4,
+      "total": 7
+    },
+    "candidate_standalone_plain": {
+      "right": 6,
+      "total": 6
+    },
+    "candidate_standalone_model": {
+      "right": 7,
+      "total": 7
+    },
+    "limitation": "Inherited main talk story parser intercepts bare goodbye; no runtime edits after supplemental checks."
+  },
+  "new_external_data_bytes": 0,
+  "authored_contracts": {
+    "bytes": 12617,
+    "license": "MIT OR Apache-2.0",
+    "sessions": 16
+  },
+  "rejected_experiments": []
+}

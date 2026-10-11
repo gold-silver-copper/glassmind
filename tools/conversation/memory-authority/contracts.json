@@ -1,0 +1,650 @@
+[
+  {
+    "name": "explicit-unicode",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is 李明",
+            {
+              "kind": "remembered",
+              "contains": "李明"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "李明"
+            }
+          ],
+          [
+            "Actually, my name is İpek",
+            {
+              "kind": "remembered",
+              "contains": "İpek"
+            }
+          ],
+          [
+            "Call me Dr. Neri",
+            {
+              "kind": "remembered",
+              "contains": "Dr. Neri"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Dr. Neri",
+          "name.stated_on_turn": 4,
+          "last_correction.previous.value": "İpek"
+        }
+      }
+    ]
+  },
+  {
+    "name": "name-proposal",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Leila",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "please change the name you refer to me by",
+            {
+              "kind": {
+                "model": "refusal",
+                "plain": "refusal"
+              }
+            }
+          ],
+          [
+            "Actually, it's Mara",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Leila"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Leila",
+          "name.stated_on_turn": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "ambiguous-call",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Sora",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "Call me next week",
+            {
+              "kind": "refusal"
+            }
+          ],
+          [
+            "No, it's dawn",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Sora"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Sora"
+        }
+      }
+    ]
+  },
+  {
+    "name": "external-focus",
+    "phases": [
+      {
+        "rows": [
+          [
+            "I prefer quiet rooms",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "what will the temperature be tomorrow",
+            {
+              "kind": {
+                "model": "intent",
+                "plain": "refusal"
+              }
+            }
+          ],
+          [
+            "Actually, it's sunny",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What do I prefer?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "quiet rooms"
+            }
+          ]
+        ],
+        "state": {
+          "preferences.general.value": "quiet rooms"
+        }
+      }
+    ]
+  },
+  {
+    "name": "empty-My name is",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Sol",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "My name is",
+            {
+              "kind": "refusal"
+            }
+          ],
+          [
+            "Actually, it's Rain",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Sol"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Sol"
+        }
+      }
+    ]
+  },
+  {
+    "name": "empty-I prefer",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Sol",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "I prefer",
+            {
+              "kind": "refusal"
+            }
+          ],
+          [
+            "Actually, it's Rain",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Sol"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Sol"
+        }
+      }
+    ]
+  },
+  {
+    "name": "empty-My favorite color is",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Sol",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "My favorite color is",
+            {
+              "kind": "refusal"
+            }
+          ],
+          [
+            "Actually, it's Rain",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Sol"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Sol"
+        }
+      }
+    ]
+  },
+  {
+    "name": "empty-Call me",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Sol",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "Call me",
+            {
+              "kind": "refusal"
+            }
+          ],
+          [
+            "Actually, it's Rain",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Sol"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Sol"
+        }
+      }
+    ]
+  },
+  {
+    "name": "social-focus",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My favorite drink is Café",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "Hello",
+            {
+              "kind": "social"
+            }
+          ],
+          [
+            "Actually, it's Oolong",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What is my favorite drink?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Café"
+            }
+          ]
+        ],
+        "state": {}
+      }
+    ]
+  },
+  {
+    "name": "missing-reference",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Yara",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "What is my favorite flower?",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "Actually, it's iris",
+            {
+              "kind": "missing"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Yara",
+          "preferences": {},
+          "last_slot": null
+        }
+      }
+    ]
+  },
+  {
+    "name": "last-utterance-focus",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Yara",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "What did I just say?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "My name is Yara"
+            }
+          ],
+          [
+            "Actually, it's Mara",
+            {
+              "kind": "missing"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Yara"
+        }
+      }
+    ]
+  },
+  {
+    "name": "explicit-after-invalidation",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Yara",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "Thanks",
+            {
+              "kind": "social"
+            }
+          ],
+          [
+            "Actually, my name is Nia",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 3,
+              "contains": "Nia"
+            }
+          ],
+          [
+            "No, it's Noor",
+            {
+              "kind": "remembered",
+              "contains": "Noor"
+            }
+          ]
+        ],
+        "state": {
+          "last_correction.previous.value": "Nia",
+          "last_correction.previous.stated_on_turn": 3,
+          "name.value": "Noor",
+          "name.stated_on_turn": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "learned-reads",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My name is Anouk",
+            {
+              "kind": "remembered"
+            }
+          ],
+          [
+            "by what name do you refer to me",
+            {
+              "kind": {
+                "model": "recalled",
+                "plain": "refusal"
+              }
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Anouk"
+        }
+      }
+    ]
+  },
+  {
+    "name": "external-services",
+    "phases": [
+      {
+        "rows": [
+          [
+            "set a timer for ten minutes",
+            {
+              "kind": {
+                "model": "intent",
+                "plain": "refusal"
+              }
+            }
+          ],
+          [
+            "remind me to call my mother saturday morning",
+            {
+              "kind": {
+                "model": "intent",
+                "plain": "refusal"
+              }
+            }
+          ]
+        ],
+        "state": {
+          "name": null,
+          "preferences": {}
+        }
+      }
+    ]
+  },
+  {
+    "name": "restart-correction",
+    "phases": [
+      {
+        "rows": [
+          [
+            "My favorite İÇECEK is Café con leche",
+            {
+              "kind": "remembered"
+            }
+          ]
+        ],
+        "state": {
+          "preferences.i̇çecek.value": "Café con leche"
+        }
+      },
+      {
+        "rows": [
+          [
+            "What about that?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "Café con leche"
+            }
+          ],
+          [
+            "No, it's Oolong",
+            {
+              "kind": "remembered"
+            }
+          ]
+        ],
+        "state": {
+          "preferences.i̇çecek.value": "Oolong",
+          "last_correction.previous.stated_on_turn": 1
+        }
+      },
+      {
+        "rows": [
+          [
+            "Thanks",
+            {
+              "kind": "social"
+            }
+          ]
+        ],
+        "state": {
+          "last_slot": null
+        }
+      },
+      {
+        "rows": [
+          [
+            "Actually, it's tea",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "/reset",
+            {
+              "kind": "reset"
+            }
+          ],
+          [
+            "What is my name?",
+            {
+              "kind": "missing"
+            }
+          ],
+          [
+            "What did I just say?",
+            {
+              "kind": "recalled",
+              "source_turn": 1,
+              "contains": "What is my name?"
+            }
+          ]
+        ],
+        "state": {
+          "turn": 2,
+          "preferences": {},
+          "name": null,
+          "last_correction": null
+        }
+      }
+    ]
+  },
+  {
+    "name": "legacy-session",
+    "phases": [
+      {
+        "rows": [
+          [
+            "What is my name?",
+            {
+              "kind": "recalled",
+              "source_turn": 2,
+              "contains": "Zoë"
+            }
+          ],
+          [
+            "Actually, it's Ana",
+            {
+              "kind": "remembered"
+            }
+          ]
+        ],
+        "state": {
+          "name.value": "Ana",
+          "last_correction.previous.stated_on_turn": 2
+        }
+      }
+    ],
+    "initial": {
+      "turn": 4,
+      "name": {
+        "value": "Zoë",
+        "stated_on_turn": 2
+      },
+      "preferences": {},
+      "last_slot": "Name",
+      "last_user_utterance": "hello"
+    }
+  }
+]

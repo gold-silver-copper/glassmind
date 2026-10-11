@@ -1,0 +1,25 @@
+{"kind":"missing","text":"I don't know your name yet."}
+{"kind":"remembered","text":"I'll call you Ada Lovelace.","slot":"Name"}
+{"kind":"recalled","text":"Your name is Ada Lovelace.","source_turn":2}
+{"kind":"remembered","text":"I'll call you Grace Hopper.","slot":"Name"}
+{"kind":"recalled","text":"Your name is Grace Hopper.","source_turn":4}
+{"kind":"remembered","text":"I'll remember that your favorite color is blue.","slot":{"Preference":"color"}}
+{"kind":"remembered","text":"I'll remember that your favorite drink is tea.","slot":{"Preference":"drink"}}
+{"kind":"recalled","text":"Your favorite color is blue.","source_turn":6}
+{"kind":"remembered","text":"I'll remember that your favorite color is green.","slot":{"Preference":"color"}}
+{"kind":"recalled","text":"Your favorite color is green.","source_turn":9}
+{"kind":"recalled","text":"Your favorite drink is tea.","source_turn":7}
+{"kind":"remembered","text":"I'll remember that you prefer quiet rooms.","slot":{"Preference":"general"}}
+{"kind":"recalled","text":"Your preference is quiet rooms.","source_turn":12}
+{"kind":"remembered","text":"I'll remember that you prefer noisy cafes.","slot":{"Preference":"general"}}
+{"kind":"recalled","text":"Your preference is noisy cafes.","source_turn":14}
+{"kind":"recalled","text":"You said: What about that?","source_turn":15}
+{"kind":"social","text":"Hello, Grace Hopper!"}
+{"kind":"recalled","text":"You said: Hello","source_turn":17}
+{"kind":"social","text":"I've forgotten your name."}
+{"kind":"missing","text":"I don't know your name yet."}
+{"kind":"recalled","text":"Your favorite drink is tea.","source_turn":7}
+{"kind":"social","text":"I've forgotten your preferences."}
+{"kind":"missing","text":"I don't know your preference yet."}
+{"kind":"refusal","text":"I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.","answer":null,"reason":"I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."}
+{"kind":"recalled","text":"You said: A completely unsupported request","source_turn":24}

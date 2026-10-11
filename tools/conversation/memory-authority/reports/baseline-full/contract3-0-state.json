@@ -1,0 +1,31 @@
+{
+  "turn": 4,
+  "name": null,
+  "preferences": {
+    "general": {
+      "value": "sunny",
+      "stated_on_turn": 3
+    }
+  },
+  "last_slot": {
+    "Preference": "general"
+  },
+  "last_user_utterance": "What do I prefer?",
+  "last_correction": {
+    "slot": {
+      "Preference": "general"
+    },
+    "previous": {
+      "value": "quiet rooms",
+      "stated_on_turn": 1
+    },
+    "replacement": {
+      "value": "sunny",
+      "stated_on_turn": 3
+    }
+  },
+  "stories": {
+    "assertions": [],
+    "invalidated": false
+  }
+}
