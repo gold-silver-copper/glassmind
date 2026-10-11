@@ -1,0 +1,73 @@
+{
+  "tests": {
+    "command": "TMPDIR=\"$TMPDIR\" systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo test -p glassmind-reading --bin reading-word-probability -j1 -- --test-threads 4",
+    "passed": 5,
+    "failed": 0,
+    "elapsed_build_seconds": 25.56,
+    "test_names": [
+      "word_probability::tests::normalized_seen_and_unseen_contexts",
+      "word_probability::tests::unicode_punctuation_empty_and_oov",
+      "word_probability::tests::deterministic_roundtrip_and_malformed",
+      "probability::tests::normalized_seen_unseen_and_unknown_bytes",
+      "probability::tests::serialization_is_exact_deterministic_and_rejects_corruption"
+    ],
+    "note": "Captured from completed tool session 52837; raw test stdout in conversation, no rerun claimed."
+  },
+  "fmt": {
+    "command": "TMPDIR=\"$TMPDIR\" systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt -p glassmind-reading --check",
+    "exit_code": 0
+  },
+  "outer_scope": {
+    "unit": "glassmind-continuous-wordgrammar.scope",
+    "MemoryMax": 8589934592,
+    "MemorySwapMax": 0
+  },
+  "new_external_download_bytes": 0,
+  "clippy": {
+    "command": [
+      "cargo",
+      "clippy",
+      "-p",
+      "glassmind-reading",
+      "--bin",
+      "reading-word-probability",
+      "--tests",
+      "-j1",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 11.271245424984954,
+    "peak_rss_kib": 320240,
+    "user_seconds": 9.691632,
+    "system_seconds": 1.294529
+  },
+  "build": {
+    "command": [
+      "cargo",
+      "build",
+      "--release",
+      "-p",
+      "glassmind-reading",
+      "--bin",
+      "reading-word-probability",
+      "-j1"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 64.59618190291803,
+    "peak_rss_kib": 510192,
+    "user_seconds": 61.315799,
+    "system_seconds": 2.17471
+  },
+  "source_unchanged_after_freeze": true,
+  "runtime_restored": true,
+  "archived_patch_apply_check_exit_code": 0,
+  "baseline_replay": {
+    "all_67_groups_match_retained_report": true,
+    "good": 707,
+    "bad": 633,
+    "tie": 0,
+    "pairs": 1340
+  }
+}

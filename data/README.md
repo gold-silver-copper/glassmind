@@ -468,3 +468,17 @@ Frozen v1 fullDEV baseline:433 substantivecorrect,5140correctexpectedrefusals,
 coincidence:predictionA on an unanswerable item. Official metric is preserved,
 with a separate5573-correct diagnostic excluding that substantive error. No new
 model trained. [Hashes, definitions and reproduction](../tools/reading/qa2/README.md).
+
+### TRAIN-selected inverse Wikidata acquisition (rejected partial experiment)
+
+On 2026-10-11, a frozen TRAIN-only selection of 100 entity/inverse-property pairs
+was queried through the primary Wikidata Query Service. Nineteen sequential
+requests yielded 18 truncated 101-subject sets and one timeout; 81 pairs remain
+unqueried. New decompressed CC0-1.0 data: **1,117,488 bytes**, retained outside Git
+under `/home/gsc/.cache/glassmind/continuous-20261010/inversefacts-run/tmp/inverse-coverage/`.
+Raw response/query hashes and acquisition times pin the snapshot; per-entity
+revision IDs were unavailable. All 999 original entity records and aliases were
+preserved; 1,817 new claims and 1,735 aliasless nodes produced no development
+prediction change. No candidate index is deployed. See
+[provenance and limitations](../tools/facts/inverse-coverage/HANDOFF.md) and
+[independent review](../tools/facts/inverse-coverage/PARENT.md).

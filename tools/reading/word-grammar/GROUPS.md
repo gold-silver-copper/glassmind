@@ -1,0 +1,73 @@
+# All 67 frozen grammar-dev groups
+
+Counts are good / bad / tie; all groups retain exactly 20 original rows.
+
+| Group | Byte6 | Word3 | Δ good |
+| --- | ---: | ---: | ---: |
+| adjunct_island | 12 / 8 / 0 | 11 / 7 / 2 | -1 |
+| anaphor_gender_agreement | 14 / 6 / 0 | 13 / 7 / 0 | -1 |
+| anaphor_number_agreement | 13 / 7 / 0 | 12 / 8 / 0 | -1 |
+| animate_subject_passive | 9 / 11 / 0 | 7 / 13 / 0 | -2 |
+| animate_subject_trans | 15 / 5 / 0 | 17 / 3 / 0 | +2 |
+| causative | 12 / 8 / 0 | 11 / 9 / 0 | -1 |
+| complex_NP_island | 9 / 11 / 0 | 10 / 9 / 1 | +1 |
+| coordinate_structure_constraint_complex_left_branch | 1 / 19 / 0 | 2 / 18 / 0 | +1 |
+| coordinate_structure_constraint_object_extraction | 7 / 13 / 0 | 9 / 11 / 0 | +2 |
+| determiner_noun_agreement_1 | 7 / 13 / 0 | 7 / 13 / 0 | +0 |
+| determiner_noun_agreement_2 | 10 / 10 / 0 | 16 / 4 / 0 | +6 |
+| determiner_noun_agreement_irregular_1 | 10 / 10 / 0 | 14 / 6 / 0 | +4 |
+| determiner_noun_agreement_irregular_2 | 12 / 8 / 0 | 14 / 6 / 0 | +2 |
+| determiner_noun_agreement_with_adj_2 | 12 / 8 / 0 | 11 / 9 / 0 | -1 |
+| determiner_noun_agreement_with_adj_irregular_1 | 10 / 10 / 0 | 6 / 14 / 0 | -4 |
+| determiner_noun_agreement_with_adj_irregular_2 | 12 / 8 / 0 | 9 / 11 / 0 | -3 |
+| determiner_noun_agreement_with_adjective_1 | 12 / 8 / 0 | 12 / 8 / 0 | +0 |
+| distractor_agreement_relational_noun | 6 / 14 / 0 | 11 / 9 / 0 | +5 |
+| distractor_agreement_relative_clause | 8 / 12 / 0 | 10 / 10 / 0 | +2 |
+| drop_argument | 12 / 8 / 0 | 10 / 10 / 0 | -2 |
+| ellipsis_n_bar_1 | 7 / 13 / 0 | 9 / 11 / 0 | +2 |
+| ellipsis_n_bar_2 | 3 / 17 / 0 | 5 / 15 / 0 | +2 |
+| existential_there_object_raising | 17 / 3 / 0 | 16 / 4 / 0 | -1 |
+| existential_there_quantifiers_1 | 16 / 4 / 0 | 18 / 2 / 0 | +2 |
+| existential_there_quantifiers_2 | 9 / 11 / 0 | 1 / 19 / 0 | -8 |
+| existential_there_subject_raising | 10 / 10 / 0 | 13 / 7 / 0 | +3 |
+| expletive_it_object_raising | 11 / 9 / 0 | 11 / 9 / 0 | +0 |
+| inchoative | 8 / 12 / 0 | 9 / 11 / 0 | +1 |
+| intransitive | 8 / 12 / 0 | 10 / 10 / 0 | +2 |
+| irregular_past_participle_adjectives | 15 / 5 / 0 | 17 / 3 / 0 | +2 |
+| irregular_past_participle_verbs | 15 / 5 / 0 | 15 / 5 / 0 | +0 |
+| irregular_plural_subject_verb_agreement_1 | 12 / 8 / 0 | 8 / 12 / 0 | -4 |
+| irregular_plural_subject_verb_agreement_2 | 5 / 15 / 0 | 10 / 10 / 0 | +5 |
+| left_branch_island_echo_question | 14 / 6 / 0 | 14 / 6 / 0 | +0 |
+| left_branch_island_simple_question | 6 / 14 / 0 | 4 / 16 / 0 | -2 |
+| matrix_question_npi_licensor_present | 1 / 19 / 0 | 1 / 19 / 0 | +0 |
+| npi_present_1 | 12 / 8 / 0 | 9 / 11 / 0 | -3 |
+| npi_present_2 | 10 / 10 / 0 | 8 / 12 / 0 | -2 |
+| only_npi_licensor_present | 5 / 15 / 0 | 14 / 6 / 0 | +9 |
+| only_npi_scope | 13 / 7 / 0 | 9 / 11 / 0 | -4 |
+| passive_1 | 15 / 5 / 0 | 16 / 4 / 0 | +1 |
+| passive_2 | 11 / 9 / 0 | 13 / 7 / 0 | +2 |
+| principle_A_c_command | 6 / 14 / 0 | 8 / 12 / 0 | +2 |
+| principle_A_case_1 | 20 / 0 / 0 | 20 / 0 / 0 | +0 |
+| principle_A_case_2 | 7 / 13 / 0 | 10 / 10 / 0 | +3 |
+| principle_A_domain_1 | 20 / 0 / 0 | 20 / 0 / 0 | +0 |
+| principle_A_domain_2 | 13 / 7 / 0 | 12 / 8 / 0 | -1 |
+| principle_A_domain_3 | 12 / 8 / 0 | 8 / 12 / 0 | -4 |
+| principle_A_reconstruction | 4 / 16 / 0 | 4 / 16 / 0 | +0 |
+| regular_plural_subject_verb_agreement_1 | 9 / 11 / 0 | 8 / 12 / 0 | -1 |
+| regular_plural_subject_verb_agreement_2 | 11 / 9 / 0 | 10 / 10 / 0 | -1 |
+| sentential_negation_npi_licensor_present | 20 / 0 / 0 | 20 / 0 / 0 | +0 |
+| sentential_negation_npi_scope | 7 / 13 / 0 | 6 / 14 / 0 | -1 |
+| sentential_subject_island | 8 / 12 / 0 | 9 / 11 / 0 | +1 |
+| superlative_quantifiers_1 | 2 / 18 / 0 | 11 / 9 / 0 | +9 |
+| superlative_quantifiers_2 | 10 / 10 / 0 | 15 / 5 / 0 | +5 |
+| tough_vs_raising_1 | 9 / 11 / 0 | 8 / 12 / 0 | -1 |
+| tough_vs_raising_2 | 12 / 8 / 0 | 14 / 6 / 0 | +2 |
+| transitive | 9 / 11 / 0 | 10 / 10 / 0 | +1 |
+| wh_island | 17 / 3 / 0 | 13 / 7 / 0 | -4 |
+| wh_questions_object_gap | 10 / 10 / 0 | 8 / 12 / 0 | -2 |
+| wh_questions_subject_gap | 18 / 2 / 0 | 18 / 2 / 0 | +0 |
+| wh_questions_subject_gap_long_distance | 16 / 4 / 0 | 17 / 3 / 0 | +1 |
+| wh_vs_that_no_gap | 20 / 0 / 0 | 17 / 3 / 0 | -3 |
+| wh_vs_that_no_gap_long_distance | 20 / 0 / 0 | 20 / 0 / 0 | +0 |
+| wh_vs_that_with_gap | 1 / 19 / 0 | 3 / 17 / 0 | +2 |
+| wh_vs_that_with_gap_long_distance | 0 / 20 / 0 | 3 / 17 / 0 | +3 |

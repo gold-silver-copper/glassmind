@@ -1,0 +1,118 @@
+{
+  "input": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar-run/experiment/grammar-sample.jsonl",
+    "bytes": 3162,
+    "sha256": "73df001c264964382acd385447f2a51263373a6dd938d5b90ea807739e72eae6"
+  },
+  "raw_scores": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar-run/experiment/sample-costs.jsonl",
+    "bytes": 5330,
+    "sha256": "2827e4e9313deedeb2242bba365a7125779ec72c679fadda05451ebd27f8ba09"
+  },
+  "total": {
+    "pairs": 20,
+    "baseline": {
+      "good": 12,
+      "bad": 8,
+      "tie": 0
+    },
+    "candidate": {
+      "good": 11,
+      "bad": 7,
+      "tie": 2
+    },
+    "transitions": [
+      [
+        9,
+        2,
+        1
+      ],
+      [
+        2,
+        5,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "groups": {
+    "adjunct_island": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 11,
+        "bad": 7,
+        "tie": 2
+      },
+      "transitions": [
+        [
+          9,
+          2,
+          1
+        ],
+        [
+          2,
+          5,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "transition_order": [
+    "good",
+    "bad",
+    "tie"
+  ],
+  "baseline_regressions": [
+    {
+      "baseline_bad_bits": 129.05420618751768,
+      "baseline_choice": "good",
+      "baseline_good_bits": 128.44766371683238,
+      "candidate_bad_token_bits": 124.59751132578347,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 126.01941511942593,
+      "group": "adjunct_island",
+      "id": null,
+      "row": 10,
+      "input_row_sha256": "07502582bf833d02927ce9999ff759eaf42fc44f8b0e6151371a98476cd6acc9"
+    },
+    {
+      "baseline_bad_bits": 110.27107639318325,
+      "baseline_choice": "good",
+      "baseline_good_bits": 105.79635441587752,
+      "candidate_bad_token_bits": 102.9959163958554,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 105.9534541312498,
+      "group": "adjunct_island",
+      "id": null,
+      "row": 12,
+      "input_row_sha256": "148e761966acdc06af6efdbc039856f17e9886658877c0ea14f255bb057f7efa"
+    },
+    {
+      "baseline_bad_bits": 129.04229552316116,
+      "baseline_choice": "good",
+      "baseline_good_bits": 122.28917416765212,
+      "candidate_bad_token_bits": 131.5055473262264,
+      "candidate_choice": "tie",
+      "candidate_good_token_bits": 131.5055473262264,
+      "group": "adjunct_island",
+      "id": null,
+      "row": 19,
+      "input_row_sha256": "6bbb50cd24e3ba3323a9c1de4659746fd00e26ff554319e84d90eedf523f5287"
+    }
+  ],
+  "policy": "original row order; total costs including EOS; tie abs(diff)<=1e-9; word token cost is NOT byte likelihood"
+}

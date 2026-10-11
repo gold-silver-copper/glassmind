@@ -515,7 +515,33 @@
         "output_tokens": 17830,
         "reasoning_output_tokens": 2389
       },
-      "source": "Worker reports REJECTED:29labelmatches vs31gate, one beyondratewords28; runtime restored. Original30files3406541bytes archived; parent review pending."
+      "source": "REJECTED29<31labelmatches; parent24frozenidentities,10byte-identicalreports,alloldpayloads and42sderivationverified; same-directionpassing-roleambiguityfound. Original30files3406541bytes archived and restoredworktree/authremoved."
+    },
+    {
+      "track": "wordgrammar-continuous",
+      "started_unix": 1791700940.2835696,
+      "finished_unix": 1791701355.8059504,
+      "usage": {
+        "input_tokens": 1590993,
+        "cached_input_tokens": 1533952,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 21885,
+        "reasoning_output_tokens": 3540
+      },
+      "source": "REJECTED734<747 grammar preferences; runtime restored. Parent14frozen/20input identities,4byte-identical reports,16independent persisted-count scores verified; original26files archived; worktree/authremoved."
+    },
+    {
+      "track": "inversefacts-continuous",
+      "started_unix": 1791700987.5294073,
+      "finished_unix": 1791701524.7239606,
+      "usage": {
+        "input_tokens": 2196431,
+        "cached_input_tokens": 2102912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27338,
+        "reasoning_output_tokens": 4989
+      },
+      "source": "Rejected partial graph:1817newclaims/1735aliaslessnodes, all2821predictions unchanged. Parent130artifact identities/20freeze/selection/independentedge reconstruction/7tests verified; original10files77808bytes archived and restoredworktree/authremoved."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

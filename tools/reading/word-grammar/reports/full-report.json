@@ -1,0 +1,3941 @@
+{
+  "input": {
+    "path": "/home/gsc/.cache/glassmind/grow-fast-20261010/reading-data/grammar.jsonl",
+    "bytes": 210468,
+    "sha256": "37ad0a1eba3a9cd9c5eae850973c376b5e32a7968ecb95833eb2d32115f6304b"
+  },
+  "raw_scores": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar-run/experiment/full-costs.jsonl",
+    "bytes": 373548,
+    "sha256": "2f65898e78ed6cad96417bf7c8f08654086a33615d67c42fd3d3a82c9124157f"
+  },
+  "total": {
+    "pairs": 1340,
+    "baseline": {
+      "good": 707,
+      "bad": 633,
+      "tie": 0
+    },
+    "candidate": {
+      "good": 734,
+      "bad": 603,
+      "tie": 3
+    },
+    "transitions": [
+      [
+        551,
+        154,
+        2
+      ],
+      [
+        183,
+        449,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "groups": {
+    "adjunct_island": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 11,
+        "bad": 7,
+        "tie": 2
+      },
+      "transitions": [
+        [
+          9,
+          2,
+          1
+        ],
+        [
+          2,
+          5,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "anaphor_gender_agreement": {
+      "pairs": 20,
+      "baseline": {
+        "good": 14,
+        "bad": 6,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 13,
+        "bad": 7,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          13,
+          1,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "anaphor_number_agreement": {
+      "pairs": 20,
+      "baseline": {
+        "good": 13,
+        "bad": 7,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          10,
+          3,
+          0
+        ],
+        [
+          2,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "animate_subject_passive": {
+      "pairs": 20,
+      "baseline": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 7,
+        "bad": 13,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          3,
+          0
+        ],
+        [
+          1,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "animate_subject_trans": {
+      "pairs": 20,
+      "baseline": {
+        "good": 15,
+        "bad": 5,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 17,
+        "bad": 3,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          14,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "causative": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "complex_NP_island": {
+      "pairs": 20,
+      "baseline": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 9,
+        "tie": 1
+      },
+      "transitions": [
+        [
+          5,
+          3,
+          1
+        ],
+        [
+          5,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "coordinate_structure_constraint_complex_left_branch": {
+      "pairs": 20,
+      "baseline": {
+        "good": 1,
+        "bad": 19,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 2,
+        "bad": 18,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "coordinate_structure_constraint_object_extraction": {
+      "pairs": 20,
+      "baseline": {
+        "good": 7,
+        "bad": 13,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          4,
+          3,
+          0
+        ],
+        [
+          5,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 7,
+        "bad": 13,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 7,
+        "bad": 13,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          1,
+          0
+        ],
+        [
+          1,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 16,
+        "bad": 4,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          9,
+          1,
+          0
+        ],
+        [
+          7,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_irregular_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 14,
+        "bad": 6,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          7,
+          3,
+          0
+        ],
+        [
+          7,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_irregular_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 14,
+        "bad": 6,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_with_adj_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          10,
+          2,
+          0
+        ],
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_with_adj_irregular_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 6,
+        "bad": 14,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          5,
+          5,
+          0
+        ],
+        [
+          1,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_with_adj_irregular_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "determiner_noun_agreement_with_adjective_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          9,
+          3,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "distractor_agreement_relational_noun": {
+      "pairs": 20,
+      "baseline": {
+        "good": 6,
+        "bad": 14,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          4,
+          2,
+          0
+        ],
+        [
+          7,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "distractor_agreement_relative_clause": {
+      "pairs": 20,
+      "baseline": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          2,
+          0
+        ],
+        [
+          4,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "drop_argument": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          9,
+          3,
+          0
+        ],
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "ellipsis_n_bar_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 7,
+        "bad": 13,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          4,
+          3,
+          0
+        ],
+        [
+          5,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "ellipsis_n_bar_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 3,
+        "bad": 17,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 5,
+        "bad": 15,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          2,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "existential_there_object_raising": {
+      "pairs": 20,
+      "baseline": {
+        "good": 17,
+        "bad": 3,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 16,
+        "bad": 4,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          14,
+          3,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "existential_there_quantifiers_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 16,
+        "bad": 4,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 18,
+        "bad": 2,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          16,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "existential_there_quantifiers_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 1,
+        "bad": 19,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          1,
+          8,
+          0
+        ],
+        [
+          0,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "existential_there_subject_raising": {
+      "pairs": 20,
+      "baseline": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 13,
+        "bad": 7,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          9,
+          1,
+          0
+        ],
+        [
+          4,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "expletive_it_object_raising": {
+      "pairs": 20,
+      "baseline": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          9,
+          2,
+          0
+        ],
+        [
+          2,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "inchoative": {
+      "pairs": 20,
+      "baseline": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          2,
+          0
+        ],
+        [
+          3,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "intransitive": {
+      "pairs": 20,
+      "baseline": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          2,
+          0
+        ],
+        [
+          4,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "irregular_past_participle_adjectives": {
+      "pairs": 20,
+      "baseline": {
+        "good": 15,
+        "bad": 5,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 17,
+        "bad": 3,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          14,
+          1,
+          0
+        ],
+        [
+          3,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "irregular_past_participle_verbs": {
+      "pairs": 20,
+      "baseline": {
+        "good": 15,
+        "bad": 5,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 15,
+        "bad": 5,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          14,
+          1,
+          0
+        ],
+        [
+          1,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "irregular_plural_subject_verb_agreement_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          6,
+          0
+        ],
+        [
+          2,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "irregular_plural_subject_verb_agreement_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 5,
+        "bad": 15,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          2,
+          3,
+          0
+        ],
+        [
+          8,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "left_branch_island_echo_question": {
+      "pairs": 20,
+      "baseline": {
+        "good": 14,
+        "bad": 6,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 14,
+        "bad": 6,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          11,
+          3,
+          0
+        ],
+        [
+          3,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "left_branch_island_simple_question": {
+      "pairs": 20,
+      "baseline": {
+        "good": 6,
+        "bad": 14,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 4,
+        "bad": 16,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          2,
+          4,
+          0
+        ],
+        [
+          2,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "matrix_question_npi_licensor_present": {
+      "pairs": 20,
+      "baseline": {
+        "good": 1,
+        "bad": 19,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 1,
+        "bad": 19,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          19,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "npi_present_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          6,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "npi_present_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          7,
+          3,
+          0
+        ],
+        [
+          1,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "only_npi_licensor_present": {
+      "pairs": 20,
+      "baseline": {
+        "good": 5,
+        "bad": 15,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 14,
+        "bad": 6,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          5,
+          0,
+          0
+        ],
+        [
+          9,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "only_npi_scope": {
+      "pairs": 20,
+      "baseline": {
+        "good": 13,
+        "bad": 7,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          8,
+          5,
+          0
+        ],
+        [
+          1,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "passive_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 15,
+        "bad": 5,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 16,
+        "bad": 4,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          11,
+          4,
+          0
+        ],
+        [
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "passive_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 13,
+        "bad": 7,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          9,
+          2,
+          0
+        ],
+        [
+          4,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "principle_A_c_command": {
+      "pairs": 20,
+      "baseline": {
+        "good": 6,
+        "bad": 14,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          4,
+          2,
+          0
+        ],
+        [
+          4,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "principle_A_case_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "principle_A_case_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 7,
+        "bad": 13,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          5,
+          2,
+          0
+        ],
+        [
+          5,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "principle_A_domain_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "principle_A_domain_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 13,
+        "bad": 7,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          12,
+          1,
+          0
+        ],
+        [
+          0,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "principle_A_domain_3": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "principle_A_reconstruction": {
+      "pairs": 20,
+      "baseline": {
+        "good": 4,
+        "bad": 16,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 4,
+        "bad": 16,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          3,
+          13,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "regular_plural_subject_verb_agreement_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          3,
+          0
+        ],
+        [
+          2,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "regular_plural_subject_verb_agreement_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          7,
+          4,
+          0
+        ],
+        [
+          3,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "sentential_negation_npi_licensor_present": {
+      "pairs": 20,
+      "baseline": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "sentential_negation_npi_scope": {
+      "pairs": 20,
+      "baseline": {
+        "good": 7,
+        "bad": 13,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 6,
+        "bad": 14,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          4,
+          3,
+          0
+        ],
+        [
+          2,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "sentential_subject_island": {
+      "pairs": 20,
+      "baseline": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          6,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "superlative_quantifiers_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 2,
+        "bad": 18,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 11,
+        "bad": 9,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          9,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "superlative_quantifiers_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 15,
+        "bad": 5,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          9,
+          1,
+          0
+        ],
+        [
+          6,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "tough_vs_raising_1": {
+      "pairs": 20,
+      "baseline": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          8,
+          1,
+          0
+        ],
+        [
+          0,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "tough_vs_raising_2": {
+      "pairs": 20,
+      "baseline": {
+        "good": 12,
+        "bad": 8,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 14,
+        "bad": 6,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "transitive": {
+      "pairs": 20,
+      "baseline": {
+        "good": 9,
+        "bad": 11,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          7,
+          2,
+          0
+        ],
+        [
+          3,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_island": {
+      "pairs": 20,
+      "baseline": {
+        "good": 17,
+        "bad": 3,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 13,
+        "bad": 7,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          12,
+          5,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_questions_object_gap": {
+      "pairs": 20,
+      "baseline": {
+        "good": 10,
+        "bad": 10,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 8,
+        "bad": 12,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          6,
+          4,
+          0
+        ],
+        [
+          2,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_questions_subject_gap": {
+      "pairs": 20,
+      "baseline": {
+        "good": 18,
+        "bad": 2,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 18,
+        "bad": 2,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          16,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_questions_subject_gap_long_distance": {
+      "pairs": 20,
+      "baseline": {
+        "good": 16,
+        "bad": 4,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 17,
+        "bad": 3,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          16,
+          0,
+          0
+        ],
+        [
+          1,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_vs_that_no_gap": {
+      "pairs": 20,
+      "baseline": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 17,
+        "bad": 3,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          17,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_vs_that_no_gap_long_distance": {
+      "pairs": 20,
+      "baseline": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 20,
+        "bad": 0,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_vs_that_with_gap": {
+      "pairs": 20,
+      "baseline": {
+        "good": 1,
+        "bad": 19,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 3,
+        "bad": 17,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          3,
+          16,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "wh_vs_that_with_gap_long_distance": {
+      "pairs": 20,
+      "baseline": {
+        "good": 0,
+        "bad": 20,
+        "tie": 0
+      },
+      "candidate": {
+        "good": 3,
+        "bad": 17,
+        "tie": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "transition_order": [
+    "good",
+    "bad",
+    "tie"
+  ],
+  "baseline_regressions": [
+    {
+      "baseline_bad_bits": 129.05420618751768,
+      "baseline_choice": "good",
+      "baseline_good_bits": 128.44766371683238,
+      "candidate_bad_token_bits": 124.59751132578347,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 126.01941511942593,
+      "group": "adjunct_island",
+      "id": null,
+      "row": 10,
+      "input_row_sha256": "07502582bf833d02927ce9999ff759eaf42fc44f8b0e6151371a98476cd6acc9"
+    },
+    {
+      "baseline_bad_bits": 110.27107639318325,
+      "baseline_choice": "good",
+      "baseline_good_bits": 105.79635441587752,
+      "candidate_bad_token_bits": 102.9959163958554,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 105.9534541312498,
+      "group": "adjunct_island",
+      "id": null,
+      "row": 12,
+      "input_row_sha256": "148e761966acdc06af6efdbc039856f17e9886658877c0ea14f255bb057f7efa"
+    },
+    {
+      "baseline_bad_bits": 129.04229552316116,
+      "baseline_choice": "good",
+      "baseline_good_bits": 122.28917416765212,
+      "candidate_bad_token_bits": 131.5055473262264,
+      "candidate_choice": "tie",
+      "candidate_good_token_bits": 131.5055473262264,
+      "group": "adjunct_island",
+      "id": null,
+      "row": 19,
+      "input_row_sha256": "6bbb50cd24e3ba3323a9c1de4659746fd00e26ff554319e84d90eedf523f5287"
+    },
+    {
+      "baseline_bad_bits": 64.65783064387999,
+      "baseline_choice": "good",
+      "baseline_good_bits": 63.783206605092275,
+      "candidate_bad_token_bits": 41.89374773581659,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 44.303682152582994,
+      "group": "anaphor_gender_agreement",
+      "id": null,
+      "row": 37,
+      "input_row_sha256": "632fb70a0c070c533b84c3ba226cd3e51878182da19545582e7f360339dc5637"
+    },
+    {
+      "baseline_bad_bits": 78.21211715603273,
+      "baseline_choice": "good",
+      "baseline_good_bits": 77.88802035473226,
+      "candidate_bad_token_bits": 61.25249368734269,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 62.33069481123758,
+      "group": "anaphor_number_agreement",
+      "id": null,
+      "row": 42,
+      "input_row_sha256": "794409aa11cb7fa3e4f48f3030a755139a4ac585c20e46f2e8ed2f702085692f"
+    },
+    {
+      "baseline_bad_bits": 51.55051102044459,
+      "baseline_choice": "good",
+      "baseline_good_bits": 49.04612371839364,
+      "candidate_bad_token_bits": 54.76819712366504,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 60.195668744881985,
+      "group": "anaphor_number_agreement",
+      "id": null,
+      "row": 43,
+      "input_row_sha256": "ddfb3e63d6b2136b90e5ae8f75e77e15b41fa9bde32bd84a15d9ab59db989216"
+    },
+    {
+      "baseline_bad_bits": 59.83903651796148,
+      "baseline_choice": "good",
+      "baseline_good_bits": 56.83971761558433,
+      "candidate_bad_token_bits": 54.21635380208251,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 60.809333356944556,
+      "group": "anaphor_number_agreement",
+      "id": null,
+      "row": 60,
+      "input_row_sha256": "aa26140f674e5495e26240de084bf1766feea547e05efb6c02752bc087844fd8"
+    },
+    {
+      "baseline_bad_bits": 95.20711442905807,
+      "baseline_choice": "good",
+      "baseline_good_bits": 82.69608557865347,
+      "candidate_bad_token_bits": 84.57038912017211,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 94.65317498305124,
+      "group": "animate_subject_passive",
+      "id": null,
+      "row": 70,
+      "input_row_sha256": "b08190cc212ab07f1dc772877f9763d944941caa5fb0cf3c9e542ad1f89cd758"
+    },
+    {
+      "baseline_bad_bits": 102.42283305817914,
+      "baseline_choice": "good",
+      "baseline_good_bits": 99.93207634615308,
+      "candidate_bad_token_bits": 109.57003150223619,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 112.61596437967079,
+      "group": "animate_subject_passive",
+      "id": null,
+      "row": 76,
+      "input_row_sha256": "f0ff7596b9f3d26b4904ef9e08dc08b985eefafcdce0dd63b5bf469e5ebea597"
+    },
+    {
+      "baseline_bad_bits": 104.92176809778073,
+      "baseline_choice": "good",
+      "baseline_good_bits": 94.04711766368085,
+      "candidate_bad_token_bits": 87.98491818659728,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 99.1920860200169,
+      "group": "animate_subject_passive",
+      "id": null,
+      "row": 77,
+      "input_row_sha256": "7f804b262c9a353020cd4c3a57a79929674b6e8d6b0887d00e911af5ebff4493"
+    },
+    {
+      "baseline_bad_bits": 58.56948409826661,
+      "baseline_choice": "good",
+      "baseline_good_bits": 57.450614651467724,
+      "candidate_bad_token_bits": 57.86341545362353,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 57.939827250343136,
+      "group": "animate_subject_trans",
+      "id": null,
+      "row": 97,
+      "input_row_sha256": "9286d0ac25ad85b954034fafe2bc44bf7112dea3d5767c1f41442ac0f8f337f1"
+    },
+    {
+      "baseline_bad_bits": 72.83421806716969,
+      "baseline_choice": "good",
+      "baseline_good_bits": 72.62094829760638,
+      "candidate_bad_token_bits": 83.31162474296653,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 85.64128077856066,
+      "group": "causative",
+      "id": null,
+      "row": 101,
+      "input_row_sha256": "9ed11032266f050bf9f8d68cf99680c6beb5a67bfeb4bccb484623530fff85d4"
+    },
+    {
+      "baseline_bad_bits": 74.79743661847468,
+      "baseline_choice": "good",
+      "baseline_good_bits": 72.00711629337415,
+      "candidate_bad_token_bits": 76.1945841563586,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 78.34478275295692,
+      "group": "causative",
+      "id": null,
+      "row": 104,
+      "input_row_sha256": "91e39ae41b917349062b2f0f940e11d075c7ae458bd0b4b52aaccb64d3806d3c"
+    },
+    {
+      "baseline_bad_bits": 69.40375774054289,
+      "baseline_choice": "good",
+      "baseline_good_bits": 53.790785098372815,
+      "candidate_bad_token_bits": 55.34851207730779,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 62.01925453080611,
+      "group": "causative",
+      "id": null,
+      "row": 111,
+      "input_row_sha256": "408287f7a68d47e84512c98544661e09629502862c528d2bff7bf0e3fa372b0f"
+    },
+    {
+      "baseline_bad_bits": 91.08918968405958,
+      "baseline_choice": "good",
+      "baseline_good_bits": 86.21993709866013,
+      "candidate_bad_token_bits": 92.70566468463517,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 93.93598996547409,
+      "group": "causative",
+      "id": null,
+      "row": 115,
+      "input_row_sha256": "4dfa94b63a12c9c98a986146d6dccbe7d0ce9c8d4e542a2faba8bf4e6a8c12c0"
+    },
+    {
+      "baseline_bad_bits": 172.87896833703343,
+      "baseline_choice": "good",
+      "baseline_good_bits": 169.46888888888967,
+      "candidate_bad_token_bits": 177.95400444323818,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 178.72632313289697,
+      "group": "complex_NP_island",
+      "id": null,
+      "row": 121,
+      "input_row_sha256": "07d3538a94fd75646994bc248e17437732de23045fea9317a2ec256b7269bf5d"
+    },
+    {
+      "baseline_bad_bits": 133.30864697051342,
+      "baseline_choice": "good",
+      "baseline_good_bits": 132.71512531236863,
+      "candidate_bad_token_bits": 145.31014617342979,
+      "candidate_choice": "tie",
+      "candidate_good_token_bits": 145.31014617342979,
+      "group": "complex_NP_island",
+      "id": null,
+      "row": 125,
+      "input_row_sha256": "51052dff354b05bde32c77bdc4c0cc542f541caa45e751fc69d71eb13b9bf328"
+    },
+    {
+      "baseline_bad_bits": 112.46838875068568,
+      "baseline_choice": "good",
+      "baseline_good_bits": 106.85833549457335,
+      "candidate_bad_token_bits": 110.45180835688473,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 111.7968975150561,
+      "group": "complex_NP_island",
+      "id": null,
+      "row": 127,
+      "input_row_sha256": "80848f7cbed50e1f228179d3c5a908817cf64f833366ea36919e5f2aaf1b6323"
+    },
+    {
+      "baseline_bad_bits": 157.87560654093028,
+      "baseline_choice": "good",
+      "baseline_good_bits": 150.5669818334394,
+      "candidate_bad_token_bits": 140.526638430811,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 146.34977787578936,
+      "group": "complex_NP_island",
+      "id": null,
+      "row": 139,
+      "input_row_sha256": "f4416c3b65455bf171dd1185a55cd161cf91405085a8d1e0054d0108a6eb343a"
+    },
+    {
+      "baseline_bad_bits": 133.756906519669,
+      "baseline_choice": "good",
+      "baseline_good_bits": 132.7793267252934,
+      "candidate_bad_token_bits": 132.77362199958048,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 137.2233392515374,
+      "group": "coordinate_structure_constraint_complex_left_branch",
+      "id": null,
+      "row": 153,
+      "input_row_sha256": "1e4e30fdee5a9b4f87adeade7312b359c2c8fa161b161cacf2fa81924daf0e50"
+    },
+    {
+      "baseline_bad_bits": 127.03369571418402,
+      "baseline_choice": "good",
+      "baseline_good_bits": 120.65734635800693,
+      "candidate_bad_token_bits": 83.50632555506907,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 86.71411527321172,
+      "group": "coordinate_structure_constraint_object_extraction",
+      "id": null,
+      "row": 162,
+      "input_row_sha256": "3a90e42d61ee81cd7273a4647c1301e81296793c118533c5810cb8653dcf0ba7"
+    },
+    {
+      "baseline_bad_bits": 98.15676312721594,
+      "baseline_choice": "good",
+      "baseline_good_bits": 93.15546608719096,
+      "candidate_bad_token_bits": 84.14852296771676,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 87.31288175601904,
+      "group": "coordinate_structure_constraint_object_extraction",
+      "id": null,
+      "row": 176,
+      "input_row_sha256": "adbbc5e556a9be8cc915e1ce1c0bf06b423d4df78ad92eb2a723fc23816ac875"
+    },
+    {
+      "baseline_bad_bits": 93.04914072360606,
+      "baseline_choice": "good",
+      "baseline_good_bits": 90.47878832478182,
+      "candidate_bad_token_bits": 91.8533046617843,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 95.50987823294793,
+      "group": "coordinate_structure_constraint_object_extraction",
+      "id": null,
+      "row": 177,
+      "input_row_sha256": "d598931c4edb30d46e29b106d18c3c87d6e2228d91d9affb527545a6c34d9d7a"
+    },
+    {
+      "baseline_bad_bits": 62.74596820696823,
+      "baseline_choice": "good",
+      "baseline_good_bits": 62.55814962828276,
+      "candidate_bad_token_bits": 70.77956097456615,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 71.05842746803039,
+      "group": "determiner_noun_agreement_1",
+      "id": null,
+      "row": 183,
+      "input_row_sha256": "7c49dab7486d5b2636acfac6ba5b4b3886677f22363b449b054e31efa5975ec0"
+    },
+    {
+      "baseline_bad_bits": 82.10680274229959,
+      "baseline_choice": "good",
+      "baseline_good_bits": 76.74519981686575,
+      "candidate_bad_token_bits": 73.53685744428903,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 73.80316173614071,
+      "group": "determiner_noun_agreement_2",
+      "id": null,
+      "row": 212,
+      "input_row_sha256": "90753b064571fd395cb11b16f3ff8d068cb394e24cbb18420292d8159440b421"
+    },
+    {
+      "baseline_bad_bits": 93.92521325296643,
+      "baseline_choice": "good",
+      "baseline_good_bits": 84.29746721928403,
+      "candidate_bad_token_bits": 64.49159186139303,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 74.3423999242885,
+      "group": "determiner_noun_agreement_irregular_1",
+      "id": null,
+      "row": 228,
+      "input_row_sha256": "732735d1b97d2c829572dcab1f0b9112d694f0044aaac440adc65fbb2f850e10"
+    },
+    {
+      "baseline_bad_bits": 76.86055364871892,
+      "baseline_choice": "good",
+      "baseline_good_bits": 76.3151541272227,
+      "candidate_bad_token_bits": 58.16327219953497,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 73.05608263110977,
+      "group": "determiner_noun_agreement_irregular_1",
+      "id": null,
+      "row": 232,
+      "input_row_sha256": "c66663bd6d23c0f57e7c115b09817931b60455e5eca07ab1ca8d3969811415f0"
+    },
+    {
+      "baseline_bad_bits": 88.90032388090778,
+      "baseline_choice": "good",
+      "baseline_good_bits": 79.04324152134971,
+      "candidate_bad_token_bits": 67.3739653535298,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 82.28679478697296,
+      "group": "determiner_noun_agreement_irregular_1",
+      "id": null,
+      "row": 239,
+      "input_row_sha256": "346cc5d41c35c52a8574cc273a07fa6f9fe4aed4e11a91794e00d6de99dbe2ee"
+    },
+    {
+      "baseline_bad_bits": 74.00368374057719,
+      "baseline_choice": "good",
+      "baseline_good_bits": 71.02856045576446,
+      "candidate_bad_token_bits": 69.15000920312536,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 72.69096673385016,
+      "group": "determiner_noun_agreement_irregular_2",
+      "id": null,
+      "row": 243,
+      "input_row_sha256": "9b98fa3e65997076e4f91078fef5a4c9a096a7c21b50440147a1d1ce0cf7b495"
+    },
+    {
+      "baseline_bad_bits": 99.68637987040157,
+      "baseline_choice": "good",
+      "baseline_good_bits": 98.48865038999969,
+      "candidate_bad_token_bits": 90.79117978176303,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 91.793772299417,
+      "group": "determiner_noun_agreement_with_adj_2",
+      "id": null,
+      "row": 265,
+      "input_row_sha256": "4ea360880691b752b623b86ded410b1d9d8f5563c4e038d08ef174577f0e2b0a"
+    },
+    {
+      "baseline_bad_bits": 98.34134029946398,
+      "baseline_choice": "good",
+      "baseline_good_bits": 96.47988094974637,
+      "candidate_bad_token_bits": 101.74422939520821,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 103.95233988559912,
+      "group": "determiner_noun_agreement_with_adj_2",
+      "id": null,
+      "row": 273,
+      "input_row_sha256": "06daa9a6a54f56aef0ca13d4ca23930f87e006c87914f30eaa4b19bcfc5875f4"
+    },
+    {
+      "baseline_bad_bits": 106.56072624105903,
+      "baseline_choice": "good",
+      "baseline_good_bits": 103.25449362620526,
+      "candidate_bad_token_bits": 69.49481103005921,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 82.82561021284111,
+      "group": "determiner_noun_agreement_with_adj_irregular_1",
+      "id": null,
+      "row": 281,
+      "input_row_sha256": "52246412604aa9a8d0c5262108f49281578e9187e182c426cb955da769d351e1"
+    },
+    {
+      "baseline_bad_bits": 130.94218716016397,
+      "baseline_choice": "good",
+      "baseline_good_bits": 107.57674640049122,
+      "candidate_bad_token_bits": 89.07523136359704,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 102.35497310180253,
+      "group": "determiner_noun_agreement_with_adj_irregular_1",
+      "id": null,
+      "row": 288,
+      "input_row_sha256": "b2edce84490a2137054b90874de86f905782a1fd355ecfe81d854dc6681618d6"
+    },
+    {
+      "baseline_bad_bits": 109.84643295200836,
+      "baseline_choice": "good",
+      "baseline_good_bits": 103.69293383117414,
+      "candidate_bad_token_bits": 83.78682155779248,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 93.73847554042185,
+      "group": "determiner_noun_agreement_with_adj_irregular_1",
+      "id": null,
+      "row": 295,
+      "input_row_sha256": "38bef752db9eac892d7522cd564ba2be1a4864cdc950c0b16db1a1f7d52624a1"
+    },
+    {
+      "baseline_bad_bits": 109.98449326446857,
+      "baseline_choice": "good",
+      "baseline_good_bits": 86.61905250479582,
+      "candidate_bad_token_bits": 73.49623322866739,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 86.77597496687287,
+      "group": "determiner_noun_agreement_with_adj_irregular_1",
+      "id": null,
+      "row": 296,
+      "input_row_sha256": "809cf775028f9d203ce8064eff1841bc2eb87d6a0902a2d9be06aaa9bd1e295c"
+    },
+    {
+      "baseline_bad_bits": 80.67720674117578,
+      "baseline_choice": "good",
+      "baseline_good_bits": 80.13180721967956,
+      "candidate_bad_token_bits": 71.99493616724568,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 84.79624164401905,
+      "group": "determiner_noun_agreement_with_adj_irregular_1",
+      "id": null,
+      "row": 300,
+      "input_row_sha256": "f8e952c3e19aae592ad1cc5ab2a429fd516709d311fea0c7f8747bb7f79048eb"
+    },
+    {
+      "baseline_bad_bits": 80.23632151167509,
+      "baseline_choice": "good",
+      "baseline_good_bits": 78.39561876760773,
+      "candidate_bad_token_bits": 81.77278653759178,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 83.63875098408302,
+      "group": "determiner_noun_agreement_with_adj_irregular_2",
+      "id": null,
+      "row": 301,
+      "input_row_sha256": "2e89b8fec62c90a5cf859356c52d58201ba55bce1ef6df8b1ad8ee8986175c85"
+    },
+    {
+      "baseline_bad_bits": 115.35711324547866,
+      "baseline_choice": "good",
+      "baseline_good_bits": 113.25025927489152,
+      "candidate_bad_token_bits": 88.6762904022588,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 89.15841520537123,
+      "group": "determiner_noun_agreement_with_adj_irregular_2",
+      "id": null,
+      "row": 302,
+      "input_row_sha256": "7d54bb3ab46df6a4e0536af59366ae706d78eac42cea3ad29c3bed2c2c1c360a"
+    },
+    {
+      "baseline_bad_bits": 79.87748485704667,
+      "baseline_choice": "good",
+      "baseline_good_bits": 77.31101288655934,
+      "candidate_bad_token_bits": 80.93973351198822,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 82.66679722689348,
+      "group": "determiner_noun_agreement_with_adj_irregular_2",
+      "id": null,
+      "row": 308,
+      "input_row_sha256": "eaa88d58d83f875002487d5a67d3452f7a468e65eca172375fcfe4b9f1da3508"
+    },
+    {
+      "baseline_bad_bits": 102.77637515781157,
+      "baseline_choice": "good",
+      "baseline_good_bits": 101.91350899671639,
+      "candidate_bad_token_bits": 94.79042205313452,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 97.1430364905221,
+      "group": "determiner_noun_agreement_with_adj_irregular_2",
+      "id": null,
+      "row": 315,
+      "input_row_sha256": "74caf25a828ba53bf706bd222fa0ba92fa2d48bba771e1f01b3973f2db4bbdf3"
+    },
+    {
+      "baseline_bad_bits": 97.20059703229053,
+      "baseline_choice": "good",
+      "baseline_good_bits": 94.06033120256419,
+      "candidate_bad_token_bits": 78.28664730626778,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 85.55899044165736,
+      "group": "determiner_noun_agreement_with_adjective_1",
+      "id": null,
+      "row": 323,
+      "input_row_sha256": "bc4dd5fef1146b5bba444ee8cdaf1170f1c2b6e928da04603a39c561fdaec64e"
+    },
+    {
+      "baseline_bad_bits": 82.51219038224541,
+      "baseline_choice": "good",
+      "baseline_good_bits": 80.19685256943119,
+      "candidate_bad_token_bits": 85.09858745664715,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 85.93787733361903,
+      "group": "determiner_noun_agreement_with_adjective_1",
+      "id": null,
+      "row": 326,
+      "input_row_sha256": "205429bf56e40c136fa1b598a92ebf94f7e314aaad67a291903ddec20c156555"
+    },
+    {
+      "baseline_bad_bits": 61.36729702373233,
+      "baseline_choice": "good",
+      "baseline_good_bits": 59.61660723407006,
+      "candidate_bad_token_bits": 64.9701939751101,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 65.51559297880218,
+      "group": "determiner_noun_agreement_with_adjective_1",
+      "id": null,
+      "row": 337,
+      "input_row_sha256": "0fffc7344b920400155d99eb606f07c5c5a7ea9aaf3d8c5c0a5fe0ab5bc3e434"
+    },
+    {
+      "baseline_bad_bits": 118.29016821399354,
+      "baseline_choice": "good",
+      "baseline_good_bits": 115.42011638659996,
+      "candidate_bad_token_bits": 109.56676026812255,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 112.4861671879574,
+      "group": "distractor_agreement_relational_noun",
+      "id": null,
+      "row": 350,
+      "input_row_sha256": "6b092803d37031916984a651e21d276706cd438e69804b24064638149e245ed5"
+    },
+    {
+      "baseline_bad_bits": 97.86978582659721,
+      "baseline_choice": "good",
+      "baseline_good_bits": 92.34162444989298,
+      "candidate_bad_token_bits": 78.64805935650173,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 89.40522041509493,
+      "group": "distractor_agreement_relational_noun",
+      "id": null,
+      "row": 358,
+      "input_row_sha256": "4f05f636e51be782220e7f72d79c204ce0327eeb77c8a104b2ac6aeed8b9824f"
+    },
+    {
+      "baseline_bad_bits": 129.4001702888926,
+      "baseline_choice": "good",
+      "baseline_good_bits": 129.33488437455597,
+      "candidate_bad_token_bits": 137.5143381509332,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 143.20843763892185,
+      "group": "distractor_agreement_relative_clause",
+      "id": null,
+      "row": 367,
+      "input_row_sha256": "7fb50e6c74de0a970c35e8b0de0bb3486fff0db110fcdc17ac938c7ba05ff618"
+    },
+    {
+      "baseline_bad_bits": 127.86942378618403,
+      "baseline_choice": "good",
+      "baseline_good_bits": 123.26870262609069,
+      "candidate_bad_token_bits": 125.50167152401998,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 126.51448510859562,
+      "group": "distractor_agreement_relative_clause",
+      "id": null,
+      "row": 369,
+      "input_row_sha256": "4b69282a371d19523c106498255a16163cdbceaa01aa7991d020881be42ea0c2"
+    },
+    {
+      "baseline_bad_bits": 87.349595590609,
+      "baseline_choice": "good",
+      "baseline_good_bits": 83.40789106392268,
+      "candidate_bad_token_bits": 88.53932300601986,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 93.31475869110089,
+      "group": "drop_argument",
+      "id": null,
+      "row": 383,
+      "input_row_sha256": "68954bbe951eac8814ea0cff9a32bb1061b713508a55287cb506323bbbaa938f"
+    },
+    {
+      "baseline_bad_bits": 61.422823361696,
+      "baseline_choice": "good",
+      "baseline_good_bits": 58.70484525913268,
+      "candidate_bad_token_bits": 70.72286995727819,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 71.17207983248659,
+      "group": "drop_argument",
+      "id": null,
+      "row": 384,
+      "input_row_sha256": "259e865d1a17e7397c4cdf3be29146a054ed48c0f03dd8646302f317aac71d16"
+    },
+    {
+      "baseline_bad_bits": 48.45340522713736,
+      "baseline_choice": "good",
+      "baseline_good_bits": 47.04533381306401,
+      "candidate_bad_token_bits": 42.26160554524109,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 44.7887588576313,
+      "group": "drop_argument",
+      "id": null,
+      "row": 399,
+      "input_row_sha256": "725b68e19359c86c724d3e5b72fe26273a2f403f6bb3409f174e722af7490046"
+    },
+    {
+      "baseline_bad_bits": 168.59531407635637,
+      "baseline_choice": "good",
+      "baseline_good_bits": 167.3597784119994,
+      "candidate_bad_token_bits": 185.00975124871457,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 186.14463887976135,
+      "group": "ellipsis_n_bar_1",
+      "id": null,
+      "row": 401,
+      "input_row_sha256": "2d6f728f7d77fa0e97a008794a89a8f626fe8481966b5544210735143517658a"
+    },
+    {
+      "baseline_bad_bits": 169.22899442597978,
+      "baseline_choice": "good",
+      "baseline_good_bits": 165.64065342707258,
+      "candidate_bad_token_bits": 165.56613613176188,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 168.3537674620745,
+      "group": "ellipsis_n_bar_1",
+      "id": null,
+      "row": 404,
+      "input_row_sha256": "bb09f8d32069a267c89d28c9ee371b9176556ae75007e2cd69dbafc70194f9eb"
+    },
+    {
+      "baseline_bad_bits": 176.03243615726598,
+      "baseline_choice": "good",
+      "baseline_good_bits": 175.63794724787581,
+      "candidate_bad_token_bits": 182.51712903535227,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 182.67710937057808,
+      "group": "ellipsis_n_bar_1",
+      "id": null,
+      "row": 417,
+      "input_row_sha256": "2cf6bfc8872996b1ab56202a4690ddd43e634871aa2aa3ee03e6252735ce984b"
+    },
+    {
+      "baseline_bad_bits": 102.623648363781,
+      "baseline_choice": "good",
+      "baseline_good_bits": 96.69200225847639,
+      "candidate_bad_token_bits": 103.52814075783172,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 103.80002927382225,
+      "group": "existential_there_object_raising",
+      "id": null,
+      "row": 454,
+      "input_row_sha256": "23965b96ded9e0f905a396089d82f0c2d2645f8464a3a9b9e12072c616bf8c47"
+    },
+    {
+      "baseline_bad_bits": 144.19663143327458,
+      "baseline_choice": "good",
+      "baseline_good_bits": 141.36445698981768,
+      "candidate_bad_token_bits": 147.94967120047855,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 148.2442530909423,
+      "group": "existential_there_object_raising",
+      "id": null,
+      "row": 455,
+      "input_row_sha256": "9f94106db3e83fe2edede2cd52860fe78ff3c5d40b0e7236b9207e9425d96958"
+    },
+    {
+      "baseline_bad_bits": 120.1961952862216,
+      "baseline_choice": "good",
+      "baseline_good_bits": 117.41596347836207,
+      "candidate_bad_token_bits": 118.79365631553596,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 119.8141445791876,
+      "group": "existential_there_object_raising",
+      "id": null,
+      "row": 456,
+      "input_row_sha256": "1f4b3ca0854b31f381abf9b090789f4e83ebe8fae85f9d0946369233f40a61a7"
+    },
+    {
+      "baseline_bad_bits": 125.86994647981028,
+      "baseline_choice": "good",
+      "baseline_good_bits": 124.85953345939477,
+      "candidate_bad_token_bits": 117.11059917666691,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 122.06955353895876,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 482,
+      "input_row_sha256": "d063bf2f66c9f0b0a08a8dba89abbc171e3c0832823b4eeed4bad6fd0e337762"
+    },
+    {
+      "baseline_bad_bits": 71.16487963130497,
+      "baseline_choice": "good",
+      "baseline_good_bits": 69.1212459720686,
+      "candidate_bad_token_bits": 76.12484020328579,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 82.16868450281966,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 483,
+      "input_row_sha256": "8d9fcd4ba4d13bd573b6d636e60106e040469267e13de1bc768434c0bb65b6d2"
+    },
+    {
+      "baseline_bad_bits": 107.15367391908354,
+      "baseline_choice": "good",
+      "baseline_good_bits": 106.12174263530893,
+      "candidate_bad_token_bits": 104.52760311237364,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 117.36588014010971,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 486,
+      "input_row_sha256": "011f13faa0a95a93671f1eca475129ddba77ed6b719eeca890342bb0e23e0392"
+    },
+    {
+      "baseline_bad_bits": 89.55688426249672,
+      "baseline_choice": "good",
+      "baseline_good_bits": 89.10538916628609,
+      "candidate_bad_token_bits": 96.85374924742823,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 98.83626822621514,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 489,
+      "input_row_sha256": "70326fab54481f2085c5ecc13543ba99173b1d7eb5c1cc688bfa149ba7923913"
+    },
+    {
+      "baseline_bad_bits": 68.27892330501378,
+      "baseline_choice": "good",
+      "baseline_good_bits": 64.75801097895888,
+      "candidate_bad_token_bits": 75.41857740424598,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 81.16498042455096,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 490,
+      "input_row_sha256": "6d9afcd30e03b28653255d3aa734af8dd0c85bca05d6f5646dfacd752a8cfcc5"
+    },
+    {
+      "baseline_bad_bits": 85.3871223332771,
+      "baseline_choice": "good",
+      "baseline_good_bits": 83.83965019800098,
+      "candidate_bad_token_bits": 91.79758060008103,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 97.43206166509691,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 495,
+      "input_row_sha256": "72f972d966bc642f9b8e3d3f38e429d4fb323bb539b4c83dafcba4c19241aad4"
+    },
+    {
+      "baseline_bad_bits": 78.37763771697023,
+      "baseline_choice": "good",
+      "baseline_good_bits": 76.33821368469539,
+      "candidate_bad_token_bits": 74.97558545041916,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 87.44665625961433,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 496,
+      "input_row_sha256": "f1b3efec951f9ca22c54079074a74a166bf335b3cafaa208a2151e4346228774"
+    },
+    {
+      "baseline_bad_bits": 98.27855779772703,
+      "baseline_choice": "good",
+      "baseline_good_bits": 96.74439642636219,
+      "candidate_bad_token_bits": 103.64772675718733,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 108.40960908856563,
+      "group": "existential_there_quantifiers_2",
+      "id": null,
+      "row": 498,
+      "input_row_sha256": "d0576ef6cb68a70e06485715a52c14be559eee4e50323156c4454350b4b5aa6b"
+    },
+    {
+      "baseline_bad_bits": 129.2820002501082,
+      "baseline_choice": "good",
+      "baseline_good_bits": 127.08676466329254,
+      "candidate_bad_token_bits": 126.92992217292709,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 139.20881838051767,
+      "group": "existential_there_subject_raising",
+      "id": null,
+      "row": 505,
+      "input_row_sha256": "3175b4143e1c67c4182ffb2fe23c8bc372b4d7d90009b8f46a13215cbb5a3601"
+    },
+    {
+      "baseline_bad_bits": 160.41465578600932,
+      "baseline_choice": "good",
+      "baseline_good_bits": 158.49433421851356,
+      "candidate_bad_token_bits": 161.52735585664257,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 162.77623530030093,
+      "group": "expletive_it_object_raising",
+      "id": null,
+      "row": 528,
+      "input_row_sha256": "26541080b7019459b4c5e21f1deb7d07661c923e27c726f17ae13329fe6c9767"
+    },
+    {
+      "baseline_bad_bits": 140.63263153311482,
+      "baseline_choice": "good",
+      "baseline_good_bits": 126.08448069470744,
+      "candidate_bad_token_bits": 122.79353058952312,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 138.1150953043496,
+      "group": "expletive_it_object_raising",
+      "id": null,
+      "row": 529,
+      "input_row_sha256": "be3be2d93586e919c148bcbd93817410caa7b6601143ab2a2e8d2503c2eb02d5"
+    },
+    {
+      "baseline_bad_bits": 64.34498075442416,
+      "baseline_choice": "good",
+      "baseline_good_bits": 64.122866560581,
+      "candidate_bad_token_bits": 79.91857643146547,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 80.19410538396353,
+      "group": "inchoative",
+      "id": null,
+      "row": 541,
+      "input_row_sha256": "fee7500f7bd8b482957a4ce3d94d02df28fd9f34614d1de9cb9ff51a2967e163"
+    },
+    {
+      "baseline_bad_bits": 49.33070331311098,
+      "baseline_choice": "good",
+      "baseline_good_bits": 47.50489219176221,
+      "candidate_bad_token_bits": 41.62855860904669,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 53.20911549713151,
+      "group": "inchoative",
+      "id": null,
+      "row": 551,
+      "input_row_sha256": "151378f47ad17abed755c6f16d06798b38a82531fa34248d091eb22144244f58"
+    },
+    {
+      "baseline_bad_bits": 57.632038633962125,
+      "baseline_choice": "good",
+      "baseline_good_bits": 56.9401089334217,
+      "candidate_bad_token_bits": 58.19681423657044,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 59.97157728268793,
+      "group": "intransitive",
+      "id": null,
+      "row": 564,
+      "input_row_sha256": "50c5dee2515a612450130a4adf7c2a4396aa05c184d3fdd44e06ed7f94b9cc2e"
+    },
+    {
+      "baseline_bad_bits": 95.36601267903151,
+      "baseline_choice": "good",
+      "baseline_good_bits": 94.66094709607623,
+      "candidate_bad_token_bits": 84.02050184423574,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 87.58632080120759,
+      "group": "intransitive",
+      "id": null,
+      "row": 569,
+      "input_row_sha256": "98087749d4485fab4c88a257c67946b0e39bb1e967a336ee801b85a5fe5438af"
+    },
+    {
+      "baseline_bad_bits": 68.7085693541433,
+      "baseline_choice": "good",
+      "baseline_good_bits": 65.31749193841038,
+      "candidate_bad_token_bits": 67.20766584336452,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 70.87349858336431,
+      "group": "irregular_past_participle_adjectives",
+      "id": null,
+      "row": 584,
+      "input_row_sha256": "ccfc868eab7dbeefcba74d26d4aace96eae89814f20f9df150616e9747ea5c3e"
+    },
+    {
+      "baseline_bad_bits": 66.29128803024413,
+      "baseline_choice": "good",
+      "baseline_good_bits": 64.3678578120142,
+      "candidate_bad_token_bits": 68.38326800047166,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 68.75248671042198,
+      "group": "irregular_past_participle_verbs",
+      "id": null,
+      "row": 608,
+      "input_row_sha256": "7aeb31ac6eb83d6f6046bca3ae2ba64251b79858a974bff52fe86d8b36bfcda1"
+    },
+    {
+      "baseline_bad_bits": 128.4304667454734,
+      "baseline_choice": "good",
+      "baseline_good_bits": 122.22560975653349,
+      "candidate_bad_token_bits": 127.08225992292805,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 127.29984436397606,
+      "group": "irregular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 623,
+      "input_row_sha256": "9fe9b1914f99cb7f5411be422993a8dee3c2ae2872316a6f66ae69089fe00a6e"
+    },
+    {
+      "baseline_bad_bits": 118.70820434278261,
+      "baseline_choice": "good",
+      "baseline_good_bits": 117.95691560242236,
+      "candidate_bad_token_bits": 124.72688349479023,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 126.48588954017562,
+      "group": "irregular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 627,
+      "input_row_sha256": "1bff4d0a14001295c493d2190ebfeb01b53458e3e1fcbf7d482f3515f5939e92"
+    },
+    {
+      "baseline_bad_bits": 91.99041508614066,
+      "baseline_choice": "good",
+      "baseline_good_bits": 90.1170751809065,
+      "candidate_bad_token_bits": 90.18652442606323,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 91.92070154392896,
+      "group": "irregular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 630,
+      "input_row_sha256": "befdcd0af968a8102886ae98addcac8985ca7dc3d28e5ad2a2fa1d4a420bf6ec"
+    },
+    {
+      "baseline_bad_bits": 88.90789716982378,
+      "baseline_choice": "good",
+      "baseline_good_bits": 84.79792089445117,
+      "candidate_bad_token_bits": 81.87306741514062,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 82.94003865874161,
+      "group": "irregular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 631,
+      "input_row_sha256": "59f4c079bd840ed919d7e127f38d569ae395fcd0bb8e62731da8bfc82c78e6d6"
+    },
+    {
+      "baseline_bad_bits": 102.01566263032784,
+      "baseline_choice": "good",
+      "baseline_good_bits": 99.33758392410334,
+      "candidate_bad_token_bits": 110.72592131287507,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 112.4600984307408,
+      "group": "irregular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 634,
+      "input_row_sha256": "9f1e94f0a373ee67523944f110715dcf4cd26f03a3d9154cc86c5431a516f1c0"
+    },
+    {
+      "baseline_bad_bits": 115.4622334669168,
+      "baseline_choice": "good",
+      "baseline_good_bits": 113.11718680137515,
+      "candidate_bad_token_bits": 108.65667821634018,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 114.80891693048841,
+      "group": "irregular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 640,
+      "input_row_sha256": "cdc74fc48f40d52b75211e0d72c8579247a1170c62c619df8148dc629ece3430"
+    },
+    {
+      "baseline_bad_bits": 44.527206685513995,
+      "baseline_choice": "good",
+      "baseline_good_bits": 44.02187988106995,
+      "candidate_bad_token_bits": 45.89163186581597,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 46.41674531857116,
+      "group": "irregular_plural_subject_verb_agreement_2",
+      "id": null,
+      "row": 641,
+      "input_row_sha256": "aad7524427a78beaaaab4d7b8295a220f398f68bfbc54b9656eb39d40dc04897"
+    },
+    {
+      "baseline_bad_bits": 73.99368841566063,
+      "baseline_choice": "good",
+      "baseline_good_bits": 67.29781319478873,
+      "candidate_bad_token_bits": 71.73475176542229,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 73.62548754938211,
+      "group": "irregular_plural_subject_verb_agreement_2",
+      "id": null,
+      "row": 643,
+      "input_row_sha256": "844611d6217a5403bf55781c19753c06a2ade4f5fdf8c166347904bfd8d88ba4"
+    },
+    {
+      "baseline_bad_bits": 58.75385697202926,
+      "baseline_choice": "good",
+      "baseline_good_bits": 57.27283200392949,
+      "candidate_bad_token_bits": 57.65270381473818,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 59.543439598698,
+      "group": "irregular_plural_subject_verb_agreement_2",
+      "id": null,
+      "row": 655,
+      "input_row_sha256": "5a4bf40cdffa21000397847dab6c76ad3b8277c7567e90c8d38675f40b91f0de"
+    },
+    {
+      "baseline_bad_bits": 95.93680436354232,
+      "baseline_choice": "good",
+      "baseline_good_bits": 94.1459873670219,
+      "candidate_bad_token_bits": 96.11800413323044,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 98.09441923637714,
+      "group": "left_branch_island_echo_question",
+      "id": null,
+      "row": 667,
+      "input_row_sha256": "5a47717c0311a3c9c80d4ac9cc8dd5de116ae33aca5f360cc60679b81f61a9b4"
+    },
+    {
+      "baseline_bad_bits": 71.1726302613202,
+      "baseline_choice": "good",
+      "baseline_good_bits": 70.74567285820991,
+      "candidate_bad_token_bits": 81.92920775053656,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 86.03619901406887,
+      "group": "left_branch_island_echo_question",
+      "id": null,
+      "row": 668,
+      "input_row_sha256": "7a89bb9473e8e7a084010a492b4d51d78de4655d008d97983df922d23dd28cb5"
+    },
+    {
+      "baseline_bad_bits": 92.97646252393167,
+      "baseline_choice": "good",
+      "baseline_good_bits": 81.48981680911118,
+      "candidate_bad_token_bits": 78.33859135379923,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 82.17862987785986,
+      "group": "left_branch_island_echo_question",
+      "id": null,
+      "row": 670,
+      "input_row_sha256": "bcbcf8857938a84c7b40a4bfcc11d698a838714f24238c5ed9fa52e6390a3ca2"
+    },
+    {
+      "baseline_bad_bits": 85.97678939111219,
+      "baseline_choice": "good",
+      "baseline_good_bits": 83.43752914081549,
+      "candidate_bad_token_bits": 84.14818647012555,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 93.06560880738299,
+      "group": "left_branch_island_simple_question",
+      "id": null,
+      "row": 683,
+      "input_row_sha256": "d05fe7926cd37683ba5c43e330881c41af384235b579e314ac870a6823b286c6"
+    },
+    {
+      "baseline_bad_bits": 88.27524714224666,
+      "baseline_choice": "good",
+      "baseline_good_bits": 86.80720371227194,
+      "candidate_bad_token_bits": 92.072784174574,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 96.96591686149398,
+      "group": "left_branch_island_simple_question",
+      "id": null,
+      "row": 694,
+      "input_row_sha256": "fc4faf3ed55d501a704ea604b6bd041f0d676ac6b8158b8c32bffe1d86a01ffe"
+    },
+    {
+      "baseline_bad_bits": 97.94368355038822,
+      "baseline_choice": "good",
+      "baseline_good_bits": 88.68164333959416,
+      "candidate_bad_token_bits": 96.22410173690615,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 97.2222481573597,
+      "group": "left_branch_island_simple_question",
+      "id": null,
+      "row": 696,
+      "input_row_sha256": "2f354032cf38d537792c766e41534d4b148bf6aee2be35763345623e6513f7ce"
+    },
+    {
+      "baseline_bad_bits": 82.04272080352007,
+      "baseline_choice": "good",
+      "baseline_good_bits": 80.86887871043078,
+      "candidate_bad_token_bits": 82.72413432222154,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 88.29058391091877,
+      "group": "left_branch_island_simple_question",
+      "id": null,
+      "row": 697,
+      "input_row_sha256": "90346f829db31a293e05b60eddc08f8859ffacf94aeef4dab3e0ca3ccdf187d5"
+    },
+    {
+      "baseline_bad_bits": 90.2583975480265,
+      "baseline_choice": "good",
+      "baseline_good_bits": 88.51400180092352,
+      "candidate_bad_token_bits": 89.22023003591543,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 90.88600856981078,
+      "group": "npi_present_1",
+      "id": null,
+      "row": 721,
+      "input_row_sha256": "c970fc99434577fffc41ad728c8e4952ec6d990ee6c5a0bce54135902a3a931d"
+    },
+    {
+      "baseline_bad_bits": 131.26188950963947,
+      "baseline_choice": "good",
+      "baseline_good_bits": 127.99297703530732,
+      "candidate_bad_token_bits": 127.94234459890603,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 130.2739267558219,
+      "group": "npi_present_1",
+      "id": null,
+      "row": 722,
+      "input_row_sha256": "0ed35c7879f6bca6700279a4f5c79a17c212a89a0e7bb0ce327ffbff4211bfc2"
+    },
+    {
+      "baseline_bad_bits": 90.22889338908783,
+      "baseline_choice": "good",
+      "baseline_good_bits": 88.34435037615485,
+      "candidate_bad_token_bits": 82.95600165676845,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 89.87157034162753,
+      "group": "npi_present_1",
+      "id": null,
+      "row": 726,
+      "input_row_sha256": "a03a2587e242fea0330d41c132786651f00575225d10556ef0143dd94e75cc5e"
+    },
+    {
+      "baseline_bad_bits": 59.00036636034331,
+      "baseline_choice": "good",
+      "baseline_good_bits": 58.241204272719415,
+      "candidate_bad_token_bits": 58.314036466833976,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 58.7605976085031,
+      "group": "npi_present_1",
+      "id": null,
+      "row": 736,
+      "input_row_sha256": "d37ec0c618aa00efe4776b416ba6e83c95a0ca5e8f391d41f416186a22be046e"
+    },
+    {
+      "baseline_bad_bits": 88.77097778026457,
+      "baseline_choice": "good",
+      "baseline_good_bits": 85.39028703498946,
+      "candidate_bad_token_bits": 92.82874042183798,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 93.07077321876777,
+      "group": "npi_present_1",
+      "id": null,
+      "row": 737,
+      "input_row_sha256": "880899829052da564d0600597e21688c0abd201d03886f35eab574cc7deb36a8"
+    },
+    {
+      "baseline_bad_bits": 112.92826175727679,
+      "baseline_choice": "good",
+      "baseline_good_bits": 112.42921994025507,
+      "candidate_bad_token_bits": 85.99918198638626,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 87.1030891514,
+      "group": "npi_present_1",
+      "id": null,
+      "row": 739,
+      "input_row_sha256": "4863eb756dd08c5efc4c9ec1328f6e350f3882fea9f43b47d8fa7218c33ca26c"
+    },
+    {
+      "baseline_bad_bits": 60.73444466434526,
+      "baseline_choice": "good",
+      "baseline_good_bits": 59.98646887470621,
+      "candidate_bad_token_bits": 49.736805398014724,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 50.599515006681536,
+      "group": "npi_present_2",
+      "id": null,
+      "row": 741,
+      "input_row_sha256": "3940483157375bd3f8b23cc09df3567c86bd89e68022b7864d54cccc014d34e2"
+    },
+    {
+      "baseline_bad_bits": 89.28629737241012,
+      "baseline_choice": "good",
+      "baseline_good_bits": 87.88673500166091,
+      "candidate_bad_token_bits": 94.7429091601066,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 96.86400015862667,
+      "group": "npi_present_2",
+      "id": null,
+      "row": 743,
+      "input_row_sha256": "5aff0e1a8e7f50da42bbb88c8294314ed85694f950600dbacea182504d6236ba"
+    },
+    {
+      "baseline_bad_bits": 82.67197208134291,
+      "baseline_choice": "good",
+      "baseline_good_bits": 80.94400367704249,
+      "candidate_bad_token_bits": 83.18069930783821,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 86.64239378842143,
+      "group": "npi_present_2",
+      "id": null,
+      "row": 753,
+      "input_row_sha256": "86a44a1683526169ee4fb274d3929d85fc4c16d57f1ba3c8a69c4d300988bf76"
+    },
+    {
+      "baseline_bad_bits": 131.56455412954585,
+      "baseline_choice": "good",
+      "baseline_good_bits": 128.11209444610665,
+      "candidate_bad_token_bits": 125.57494772941126,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 127.72113575221323,
+      "group": "only_npi_scope",
+      "id": null,
+      "row": 784,
+      "input_row_sha256": "4d357a3d8b5772838532cc2d5b76830f326e2eb6a9b4c540962c5db648cb064b"
+    },
+    {
+      "baseline_bad_bits": 194.8242350103019,
+      "baseline_choice": "good",
+      "baseline_good_bits": 190.2249979367229,
+      "candidate_bad_token_bits": 180.4162061187313,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 183.0513201233522,
+      "group": "only_npi_scope",
+      "id": null,
+      "row": 785,
+      "input_row_sha256": "d6fa276374ce9b1d027d080d5e53b30780706a3898f85fe5ab553d7ba11cea8e"
+    },
+    {
+      "baseline_bad_bits": 232.5514701790757,
+      "baseline_choice": "good",
+      "baseline_good_bits": 227.53712933384435,
+      "candidate_bad_token_bits": 227.71163878752137,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 231.2388547892984,
+      "group": "only_npi_scope",
+      "id": null,
+      "row": 791,
+      "input_row_sha256": "a08c3cea97347913fa06e31e4a224df8afe72c669cb8f8ce5fc055a612fa6441"
+    },
+    {
+      "baseline_bad_bits": 193.0024659045874,
+      "baseline_choice": "good",
+      "baseline_good_bits": 187.7475329369469,
+      "candidate_bad_token_bits": 197.8822421078228,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 199.9226417420778,
+      "group": "only_npi_scope",
+      "id": null,
+      "row": 792,
+      "input_row_sha256": "d44cc7dc1fed05e86fe0e023b99edaf2c801ff90816a2eaf6261d8574c6519c6"
+    },
+    {
+      "baseline_bad_bits": 211.68057902401839,
+      "baseline_choice": "good",
+      "baseline_good_bits": 205.77231096278175,
+      "candidate_bad_token_bits": 229.41867146717587,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 232.13158246958025,
+      "group": "only_npi_scope",
+      "id": null,
+      "row": 794,
+      "input_row_sha256": "140d6906baed040c49c740691f7a58afc918a0e72b3b8fd3805ae1ca371708cc"
+    },
+    {
+      "baseline_bad_bits": 101.41671071449741,
+      "baseline_choice": "good",
+      "baseline_good_bits": 98.22645333173654,
+      "candidate_bad_token_bits": 103.0152488010134,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 103.82342399963063,
+      "group": "passive_1",
+      "id": null,
+      "row": 810,
+      "input_row_sha256": "c6a3f2db940c3b893eae79b7f43c999f417303ddaf0e506fb964612ecdc942db"
+    },
+    {
+      "baseline_bad_bits": 89.48899022887434,
+      "baseline_choice": "good",
+      "baseline_good_bits": 82.81777577890885,
+      "candidate_bad_token_bits": 79.34280940260865,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 80.51094074886248,
+      "group": "passive_1",
+      "id": null,
+      "row": 814,
+      "input_row_sha256": "f7e2838137d3fabffc48831a9614c27cfa1eda0e8eff643f9db57e86b47f479d"
+    },
+    {
+      "baseline_bad_bits": 79.14089940126539,
+      "baseline_choice": "good",
+      "baseline_good_bits": 78.49284486686244,
+      "candidate_bad_token_bits": 76.27327170840705,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 80.12557091364744,
+      "group": "passive_1",
+      "id": null,
+      "row": 817,
+      "input_row_sha256": "5a367ef20df622c70eb6ac729aa43f4cf7c4cae771365e58ad584532d181c820"
+    },
+    {
+      "baseline_bad_bits": 89.03273559470219,
+      "baseline_choice": "good",
+      "baseline_good_bits": 88.03720368678637,
+      "candidate_bad_token_bits": 92.78706531163398,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 94.97442296941361,
+      "group": "passive_1",
+      "id": null,
+      "row": 819,
+      "input_row_sha256": "91b5629f28e4a49ec6d61673279ad37527a2715e6e610958b9e726dd1ee506c3"
+    },
+    {
+      "baseline_bad_bits": 72.60725084546057,
+      "baseline_choice": "good",
+      "baseline_good_bits": 70.72852951025783,
+      "candidate_bad_token_bits": 57.04685541693849,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 66.75508394990698,
+      "group": "passive_2",
+      "id": null,
+      "row": 833,
+      "input_row_sha256": "91816113167bd498e98213c23049815c9c9a9e23295937b6d11bae9df5ed7354"
+    },
+    {
+      "baseline_bad_bits": 88.57726336516006,
+      "baseline_choice": "good",
+      "baseline_good_bits": 87.97097031764352,
+      "candidate_bad_token_bits": 100.40628923481003,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 102.44589745782004,
+      "group": "passive_2",
+      "id": null,
+      "row": 836,
+      "input_row_sha256": "78e925d11063cf00b9918b620e1d7957e8ab4634a1a6858d5f398156528a217c"
+    },
+    {
+      "baseline_bad_bits": 125.94655697749708,
+      "baseline_choice": "good",
+      "baseline_good_bits": 125.43320091191279,
+      "candidate_bad_token_bits": 122.38377130987642,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 133.2032039068117,
+      "group": "principle_A_c_command",
+      "id": null,
+      "row": 841,
+      "input_row_sha256": "e6662f648d7791408ed011dde613f74578e09bc5ea9ab3d5bc95df84d7bd3780"
+    },
+    {
+      "baseline_bad_bits": 142.59007392011148,
+      "baseline_choice": "good",
+      "baseline_good_bits": 140.58136224319193,
+      "candidate_bad_token_bits": 135.4637112263883,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 135.94526961962148,
+      "group": "principle_A_c_command",
+      "id": null,
+      "row": 845,
+      "input_row_sha256": "0e0bf80c8b3cd47361e60f4c36d702b27bab6ff597ed259bd483e6ddc0fb791f"
+    },
+    {
+      "baseline_bad_bits": 136.03993992551997,
+      "baseline_choice": "good",
+      "baseline_good_bits": 135.89553848026813,
+      "candidate_bad_token_bits": 125.34092977543007,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 126.59246854242605,
+      "group": "principle_A_case_2",
+      "id": null,
+      "row": 888,
+      "input_row_sha256": "41f9fa97d4faf4b1b8c0084febfdd4537a8a12de334bb5d43ec3ef2b4c2c5ec3"
+    },
+    {
+      "baseline_bad_bits": 129.54833557581213,
+      "baseline_choice": "good",
+      "baseline_good_bits": 129.37708232799497,
+      "candidate_bad_token_bits": 113.37993934313137,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 120.81456038415408,
+      "group": "principle_A_case_2",
+      "id": null,
+      "row": 899,
+      "input_row_sha256": "997c531104f4a3f3126fbaafd567c15a9ce1223dc9f933e47ce9785c488d9339"
+    },
+    {
+      "baseline_bad_bits": 128.509106102251,
+      "baseline_choice": "good",
+      "baseline_good_bits": 128.33194425487153,
+      "candidate_bad_token_bits": 136.67444548680808,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 138.9838744777814,
+      "group": "principle_A_domain_2",
+      "id": null,
+      "row": 930,
+      "input_row_sha256": "8a5c4388ef363611dd355c6a02c8639eb40ddaec0a0c3a798e5c5e274d0cef2e"
+    },
+    {
+      "baseline_bad_bits": 90.78765235767423,
+      "baseline_choice": "good",
+      "baseline_good_bits": 87.2128350985701,
+      "candidate_bad_token_bits": 89.29813818902092,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 89.62543982805191,
+      "group": "principle_A_domain_3",
+      "id": null,
+      "row": 944,
+      "input_row_sha256": "b1c7327db8decdc07edd78776fff3dbca94e2190832931027a500249b512e7d8"
+    },
+    {
+      "baseline_bad_bits": 138.00828395045548,
+      "baseline_choice": "good",
+      "baseline_good_bits": 136.02486148395923,
+      "candidate_bad_token_bits": 136.7590720971096,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 138.33379186213557,
+      "group": "principle_A_domain_3",
+      "id": null,
+      "row": 945,
+      "input_row_sha256": "4e3ab7b27a4f7c4c0cda6779fea57dfba481d6a1596ff205ff91186cee64c3ce"
+    },
+    {
+      "baseline_bad_bits": 119.33067936769746,
+      "baseline_choice": "good",
+      "baseline_good_bits": 111.46108089908344,
+      "candidate_bad_token_bits": 104.91457423850528,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 106.99559870605151,
+      "group": "principle_A_domain_3",
+      "id": null,
+      "row": 952,
+      "input_row_sha256": "0aaef9b30ae0463a57f3807df77441991f3db15ee10bbfe289c91e2bf1d00d72"
+    },
+    {
+      "baseline_bad_bits": 104.0167741944959,
+      "baseline_choice": "good",
+      "baseline_good_bits": 96.46745072848267,
+      "candidate_bad_token_bits": 108.29541512778512,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 108.58921758172694,
+      "group": "principle_A_domain_3",
+      "id": null,
+      "row": 956,
+      "input_row_sha256": "13724f6e01b7d8b1d76d9f0ebca725bf2bb5f9f08c7bb637bc6ff269c4b92bb6"
+    },
+    {
+      "baseline_bad_bits": 76.33447892934245,
+      "baseline_choice": "good",
+      "baseline_good_bits": 72.91042644361322,
+      "candidate_bad_token_bits": 82.68446200221713,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 90.25826441627066,
+      "group": "principle_A_reconstruction",
+      "id": null,
+      "row": 962,
+      "input_row_sha256": "45b11ff539426278cac67e9e8e0d2515770bcb2a0664c34793fc3c1f75e3d30f"
+    },
+    {
+      "baseline_bad_bits": 86.62984984181486,
+      "baseline_choice": "good",
+      "baseline_good_bits": 80.46067086232742,
+      "candidate_bad_token_bits": 75.46295088017621,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 84.10541617144955,
+      "group": "principle_A_reconstruction",
+      "id": null,
+      "row": 968,
+      "input_row_sha256": "cab8a60ba23192edb60c46f3914da74138c50eb2b725c2dfb13641a8882aedb1"
+    },
+    {
+      "baseline_bad_bits": 81.34076884024455,
+      "baseline_choice": "good",
+      "baseline_good_bits": 81.33459253056402,
+      "candidate_bad_token_bits": 86.80587321662507,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 97.94534702239191,
+      "group": "principle_A_reconstruction",
+      "id": null,
+      "row": 979,
+      "input_row_sha256": "9937e9abb6ccd726dd01757826e93ab7d3573f20b9734b6f2ae4da0fec37eb57"
+    },
+    {
+      "baseline_bad_bits": 80.10567396075783,
+      "baseline_choice": "good",
+      "baseline_good_bits": 78.40875887707573,
+      "candidate_bad_token_bits": 89.62859680858014,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 91.38760285396552,
+      "group": "regular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 984,
+      "input_row_sha256": "e444bc2008ee23af2a71dd9fb20d7985eb1c76beb75b0727d4557e3c00e8a1a4"
+    },
+    {
+      "baseline_bad_bits": 100.04993531248675,
+      "baseline_choice": "good",
+      "baseline_good_bits": 99.22700063873698,
+      "candidate_bad_token_bits": 102.51783178397181,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 104.2768378293572,
+      "group": "regular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 987,
+      "input_row_sha256": "e71a76a8b130118d693c2f69625d31711dba6bbdbc4cf586ae1cbbb1afa42275"
+    },
+    {
+      "baseline_bad_bits": 51.12708835242478,
+      "baseline_choice": "good",
+      "baseline_good_bits": 48.715053272039626,
+      "candidate_bad_token_bits": 59.933536889973595,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 60.59273109028109,
+      "group": "regular_plural_subject_verb_agreement_1",
+      "id": null,
+      "row": 995,
+      "input_row_sha256": "18a5b749b202749b35ede6bf829fd8661c6b955ca99fcdb1d98bea1cea9b557c"
+    },
+    {
+      "baseline_bad_bits": 58.12771112524159,
+      "baseline_choice": "good",
+      "baseline_good_bits": 57.866612994077215,
+      "candidate_bad_token_bits": 65.47417381478267,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 66.03540211522395,
+      "group": "regular_plural_subject_verb_agreement_2",
+      "id": null,
+      "row": 1003,
+      "input_row_sha256": "939280ed9c080c2b04be7940bc5d5915de2e74abaac525459cf5dcca361b84e8"
+    },
+    {
+      "baseline_bad_bits": 59.87827830870411,
+      "baseline_choice": "good",
+      "baseline_good_bits": 58.38308594415513,
+      "candidate_bad_token_bits": 62.251934036069244,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 64.02206766316428,
+      "group": "regular_plural_subject_verb_agreement_2",
+      "id": null,
+      "row": 1007,
+      "input_row_sha256": "ee291745fd9aca1dd4ce291458ae901faf26f5e30ffcba3a7c402852490d7b84"
+    },
+    {
+      "baseline_bad_bits": 66.25197121774374,
+      "baseline_choice": "good",
+      "baseline_good_bits": 61.69371276974428,
+      "candidate_bad_token_bits": 69.19949140685151,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 72.20204994956913,
+      "group": "regular_plural_subject_verb_agreement_2",
+      "id": null,
+      "row": 1009,
+      "input_row_sha256": "791249296a3f1a1fe1be4248d8bb4feb468d600019f11197889250016f67c995"
+    },
+    {
+      "baseline_bad_bits": 62.668621936312114,
+      "baseline_choice": "good",
+      "baseline_good_bits": 61.8197090751917,
+      "candidate_bad_token_bits": 60.31677585200018,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 60.78983690461571,
+      "group": "regular_plural_subject_verb_agreement_2",
+      "id": null,
+      "row": 1018,
+      "input_row_sha256": "bcd918c88095bdb232e15cd37c5b6df6a145952d53a86144c55db5e67b53ff34"
+    },
+    {
+      "baseline_bad_bits": 149.69064436106498,
+      "baseline_choice": "good",
+      "baseline_good_bits": 148.77364011440883,
+      "candidate_bad_token_bits": 169.79370211747,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 177.1636394382972,
+      "group": "sentential_negation_npi_scope",
+      "id": null,
+      "row": 1047,
+      "input_row_sha256": "53c96e9ed0441cb437244f28dc42af3fee412a6325d21dbd557ae2c5545adb55"
+    },
+    {
+      "baseline_bad_bits": 152.92858718759757,
+      "baseline_choice": "good",
+      "baseline_good_bits": 151.28436349250163,
+      "candidate_bad_token_bits": 168.85425068665828,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 174.8453399671106,
+      "group": "sentential_negation_npi_scope",
+      "id": null,
+      "row": 1052,
+      "input_row_sha256": "7720c7e82cd97ae8c2223adebbc749dd2abedff1147f7a7bc3827d7770d13926"
+    },
+    {
+      "baseline_bad_bits": 139.7008963766357,
+      "baseline_choice": "good",
+      "baseline_good_bits": 138.70608784167405,
+      "candidate_bad_token_bits": 125.39899928775343,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 129.69796576052835,
+      "group": "sentential_negation_npi_scope",
+      "id": null,
+      "row": 1059,
+      "input_row_sha256": "ddb86c2c6299da753d137a299f04ffb2286e051e806df1f687f14ab2e37f8080"
+    },
+    {
+      "baseline_bad_bits": 131.1651822773116,
+      "baseline_choice": "good",
+      "baseline_good_bits": 129.1483410330671,
+      "candidate_bad_token_bits": 123.35424389723474,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 125.46225598576751,
+      "group": "sentential_subject_island",
+      "id": null,
+      "row": 1062,
+      "input_row_sha256": "fcb5622a27c4e74164918e628cdb4b6d74526e55042daa1b76936cc1c5bff336"
+    },
+    {
+      "baseline_bad_bits": 84.2964413951913,
+      "baseline_choice": "good",
+      "baseline_good_bits": 83.07077586856137,
+      "candidate_bad_token_bits": 90.1191750910707,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 90.37445022118241,
+      "group": "sentential_subject_island",
+      "id": null,
+      "row": 1064,
+      "input_row_sha256": "1b23cd6e14d41fd9d2e29b247ead96bc800753e8588cfe0467d9c5531f068196"
+    },
+    {
+      "baseline_bad_bits": 125.5709554666776,
+      "baseline_choice": "good",
+      "baseline_good_bits": 114.8363959491529,
+      "candidate_bad_token_bits": 110.60323074931131,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 110.70719650411537,
+      "group": "sentential_subject_island",
+      "id": null,
+      "row": 1067,
+      "input_row_sha256": "aa0a6df317526143dc5efbdb3364c2bf3cbc7bca81a1a70362af6e78637d434d"
+    },
+    {
+      "baseline_bad_bits": 128.61326184962974,
+      "baseline_choice": "good",
+      "baseline_good_bits": 121.22954862751385,
+      "candidate_bad_token_bits": 122.6635796693309,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 124.49725720993762,
+      "group": "sentential_subject_island",
+      "id": null,
+      "row": 1072,
+      "input_row_sha256": "8ce24edb563068eb40fe8cf4c4c933943376fa33e6ee3ecfdbc3209c59256eff"
+    },
+    {
+      "baseline_bad_bits": 118.0670228276897,
+      "baseline_choice": "good",
+      "baseline_good_bits": 117.72777899126469,
+      "candidate_bad_token_bits": 117.79342612397026,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 118.10903063364208,
+      "group": "sentential_subject_island",
+      "id": null,
+      "row": 1074,
+      "input_row_sha256": "9328859c1b7f94ba93797aad8ac77556d0f7d21e6d243d5afe99a2fd4dcbbd99"
+    },
+    {
+      "baseline_bad_bits": 109.74921198016168,
+      "baseline_choice": "good",
+      "baseline_good_bits": 106.53937610482258,
+      "candidate_bad_token_bits": 110.50525833679652,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 110.78708592314965,
+      "group": "superlative_quantifiers_2",
+      "id": null,
+      "row": 1111,
+      "input_row_sha256": "92356443f11b535dfc45e61ef12ac4d73436bd6cfd092c487a2cfd74c12768d6"
+    },
+    {
+      "baseline_bad_bits": 75.04209810521185,
+      "baseline_choice": "good",
+      "baseline_good_bits": 72.76960072585044,
+      "candidate_bad_token_bits": 70.73063529827536,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 87.10338212751677,
+      "group": "tough_vs_raising_1",
+      "id": null,
+      "row": 1121,
+      "input_row_sha256": "a0f8e010dcfecb2e382481cf7111c9bff2e80a5ad366f2a9c18d5cae5b663591"
+    },
+    {
+      "baseline_bad_bits": 147.6846683032631,
+      "baseline_choice": "good",
+      "baseline_good_bits": 143.2435925391541,
+      "candidate_bad_token_bits": 155.8964183737183,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 161.53639445715166,
+      "group": "tough_vs_raising_2",
+      "id": null,
+      "row": 1155,
+      "input_row_sha256": "cb6e4b1e8bb5d25d9628b5a6a86e2250adf28c06d855e9bc1cab25def8b6e206"
+    },
+    {
+      "baseline_bad_bits": 108.03112860148066,
+      "baseline_choice": "good",
+      "baseline_good_bits": 100.39638307688014,
+      "candidate_bad_token_bits": 96.49575480710702,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 102.00786391015504,
+      "group": "transitive",
+      "id": null,
+      "row": 1165,
+      "input_row_sha256": "18f6c9b940375194773c9980328b5c185b3b81b4315890285d277ad8b21af734"
+    },
+    {
+      "baseline_bad_bits": 76.8055978428459,
+      "baseline_choice": "good",
+      "baseline_good_bits": 76.5904215239193,
+      "candidate_bad_token_bits": 63.671015255300816,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 83.6446049263879,
+      "group": "transitive",
+      "id": null,
+      "row": 1167,
+      "input_row_sha256": "3e2d7fedc293642c6d0048e627a49fdf6625e52415b444d0cffcd807cf634a38"
+    },
+    {
+      "baseline_bad_bits": 96.78366010159058,
+      "baseline_choice": "good",
+      "baseline_good_bits": 96.42628257003943,
+      "candidate_bad_token_bits": 116.12029631243846,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 117.17944849368075,
+      "group": "wh_island",
+      "id": null,
+      "row": 1181,
+      "input_row_sha256": "da9d62f185c79cc4b08a4d62ba9135c0ccb319a4cea7c183c78df275af5a8987"
+    },
+    {
+      "baseline_bad_bits": 102.7323089936164,
+      "baseline_choice": "good",
+      "baseline_good_bits": 93.37729202921497,
+      "candidate_bad_token_bits": 94.57448387297258,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 95.50947763670084,
+      "group": "wh_island",
+      "id": null,
+      "row": 1184,
+      "input_row_sha256": "3671ae16b63507a54b37921a8e0cad600f846a9c730e18e5e72e75dd909c914b"
+    },
+    {
+      "baseline_bad_bits": 91.94704196637875,
+      "baseline_choice": "good",
+      "baseline_good_bits": 91.37431686214416,
+      "candidate_bad_token_bits": 95.03742999399671,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 95.98042320948379,
+      "group": "wh_island",
+      "id": null,
+      "row": 1193,
+      "input_row_sha256": "0def7091ab75cf766cc0f98a6ff69c69e178a5a05ea08d973e564508efb4cf4a"
+    },
+    {
+      "baseline_bad_bits": 85.25222509006507,
+      "baseline_choice": "good",
+      "baseline_good_bits": 85.18491675834407,
+      "candidate_bad_token_bits": 98.98974739197048,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 100.67721637761547,
+      "group": "wh_island",
+      "id": null,
+      "row": 1195,
+      "input_row_sha256": "6d82acd7d64f756a7d0184c2b2746dadd81d92962a22fe0c9e46cdf892f8e244"
+    },
+    {
+      "baseline_bad_bits": 99.38076206860903,
+      "baseline_choice": "good",
+      "baseline_good_bits": 97.20666896451105,
+      "candidate_bad_token_bits": 103.32123409675611,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 105.46597061371413,
+      "group": "wh_island",
+      "id": null,
+      "row": 1200,
+      "input_row_sha256": "c4ad4a06877b08bc92d86378a528999d512d55c529d65281b98004a2a8c69a53"
+    },
+    {
+      "baseline_bad_bits": 143.570263072064,
+      "baseline_choice": "good",
+      "baseline_good_bits": 129.65641182308403,
+      "candidate_bad_token_bits": 121.058925084194,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 124.6111275057964,
+      "group": "wh_questions_object_gap",
+      "id": null,
+      "row": 1206,
+      "input_row_sha256": "4a5627b34d8bd90d300f83a498029e1ed08de88a1355e75f581802bd76e4ffad"
+    },
+    {
+      "baseline_bad_bits": 145.2242782196667,
+      "baseline_choice": "good",
+      "baseline_good_bits": 145.1334349332294,
+      "candidate_bad_token_bits": 121.54920846232312,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 129.32880059521443,
+      "group": "wh_questions_object_gap",
+      "id": null,
+      "row": 1209,
+      "input_row_sha256": "faab642704eaf9452d180e9ae6d64e61cb89a017289957610aa0267c90d9e46e"
+    },
+    {
+      "baseline_bad_bits": 150.3381033012331,
+      "baseline_choice": "good",
+      "baseline_good_bits": 147.0900979613756,
+      "candidate_bad_token_bits": 129.25255052888423,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 132.7881581624982,
+      "group": "wh_questions_object_gap",
+      "id": null,
+      "row": 1210,
+      "input_row_sha256": "5c89ea485716986d20e585db5c9c36aeffdbfa083e5d855e1f36ba79ad08dd2f"
+    },
+    {
+      "baseline_bad_bits": 141.48930842008477,
+      "baseline_choice": "good",
+      "baseline_good_bits": 135.33423408230317,
+      "candidate_bad_token_bits": 162.48471851680753,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 162.94590793265408,
+      "group": "wh_questions_object_gap",
+      "id": null,
+      "row": 1212,
+      "input_row_sha256": "fd9c315c1a8de507f531d24596cb908a422672c3c5820ed31cdd018cbf8522b2"
+    },
+    {
+      "baseline_bad_bits": 135.7703070261452,
+      "baseline_choice": "good",
+      "baseline_good_bits": 120.33869835740067,
+      "candidate_bad_token_bits": 122.02542894354488,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 122.90836865682195,
+      "group": "wh_questions_subject_gap",
+      "id": null,
+      "row": 1222,
+      "input_row_sha256": "edf954ed90f373ad6e0a7326dbd12d7bd50b92c35eca81dc6a26e0b696bbc649"
+    },
+    {
+      "baseline_bad_bits": 141.27005146460837,
+      "baseline_choice": "good",
+      "baseline_good_bits": 136.4816249370634,
+      "candidate_bad_token_bits": 156.18836278360007,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 156.6998066522055,
+      "group": "wh_questions_subject_gap",
+      "id": null,
+      "row": 1240,
+      "input_row_sha256": "fba2c804331feafbe0199b2744f859a7109d5b0fd93af47c76fc80f067a911ed"
+    },
+    {
+      "baseline_bad_bits": 159.65360648377185,
+      "baseline_choice": "good",
+      "baseline_good_bits": 158.04785296263336,
+      "candidate_bad_token_bits": 143.13625879154748,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 144.81621821416806,
+      "group": "wh_vs_that_no_gap",
+      "id": null,
+      "row": 1262,
+      "input_row_sha256": "5187cfb94afbd3e045d779d333c316d2ff94de443fa6d5743c4c0129482df36f"
+    },
+    {
+      "baseline_bad_bits": 114.26114651348279,
+      "baseline_choice": "good",
+      "baseline_good_bits": 112.53517965930955,
+      "candidate_bad_token_bits": 111.43309321724956,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 112.0827397544092,
+      "group": "wh_vs_that_no_gap",
+      "id": null,
+      "row": 1264,
+      "input_row_sha256": "5f5589799a6318bf6c4e35b746f30c4b67928e7aa09480aec287f9e91351c861"
+    },
+    {
+      "baseline_bad_bits": 137.05716986942616,
+      "baseline_choice": "good",
+      "baseline_good_bits": 135.807367856162,
+      "candidate_bad_token_bits": 115.58411649313896,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 118.3015823951053,
+      "group": "wh_vs_that_no_gap",
+      "id": null,
+      "row": 1265,
+      "input_row_sha256": "50102b40d2bf1e588ed3f8275c23b9e2ea255638646e794e0544792c71079f99"
+    },
+    {
+      "baseline_bad_bits": 109.41639649277239,
+      "baseline_choice": "good",
+      "baseline_good_bits": 108.60327792651736,
+      "candidate_bad_token_bits": 114.52819874522541,
+      "candidate_choice": "bad",
+      "candidate_good_token_bits": 120.24837149688219,
+      "group": "wh_vs_that_with_gap",
+      "id": null,
+      "row": 1302,
+      "input_row_sha256": "c04f73616dcb16ff5fff5e2536dd1db6548c743a7da29c817491205fcdd562aa"
+    }
+  ],
+  "policy": "original row order; total costs including EOS; tie abs(diff)<=1e-9; word token cost is NOT byte likelihood",
+  "accepted": false,
+  "acceptance": "at least 747 good preferences / exactly 1340; one candidate, no retuning",
+  "group_changes": {
+    "regressed": 25,
+    "improved": 30,
+    "equal": 12
+  }
+}

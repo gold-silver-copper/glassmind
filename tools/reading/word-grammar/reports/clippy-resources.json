@@ -1,0 +1,20 @@
+{
+  "command": [
+    "cargo",
+    "clippy",
+    "-p",
+    "glassmind-reading",
+    "--bin",
+    "reading-word-probability",
+    "--tests",
+    "-j1",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 11.271245424984954,
+  "peak_rss_kib": 320240,
+  "user_seconds": 9.691632,
+  "system_seconds": 1.294529
+}
