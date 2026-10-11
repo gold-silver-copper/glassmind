@@ -174,3 +174,10 @@ all Cargo configurations. The complete requested check must still pass on the
 current build configuration before any new derive is offered. Detailed compiler
 logs remain outside git; summarized worker evidence and hashes are in
 `coding-diagnostics-evidence/`.
+
+
+Coordinator full development gate: source2ce9230 on RustBench f79e71a,
+all765 requests, improves163pass599refused3fail to166pass596refused3fail.
+Only fix-errors/derive-debug changes, for all three request styles; every other
+outcome is identical. Frozen binary/result hashes and each transition are in
+[the comparison](results/coding-standard-debug.json). No held-out evaluation.

@@ -182,8 +182,9 @@ runs pass sample3/3, full15/15, type9/9 and variant14/14. The same six supplied
 dev prompts still edit nothing, with all before/after builds passing. Workspace
 fmt/all-target clippy/release/strict4/4 smoke and all16 world-rust tests pass.
 Reports and binary hashes are in `coding-packages-evidence/integrated/`.
-Full765 RustBench dev is running against a frozen binary; no benchmark gain or
-completed full-regression claim is made yet.
+Full765 RustBench dev is complete:163 pass,599 refused,3 fail, with every
+(task,style) outcome unchanged. This is a local package capability, not a
+benchmark gain. Exact comparison: `results/coding-package-renames.json`.
 
 A separate coordinator probe tested a target-specific dependency colliding with
 the library's crate name: rustc rejected the original program with E0464. It is

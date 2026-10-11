@@ -16,7 +16,7 @@ python3 tools/facts/chat/package.py --index tools/facts/index.json --model "$FAC
     --labels "$TMPDIR/labels/labels.json" --output "$TMPDIR/bundle" \
     --source 'Wikidata snapshot 2026-10-10; relation model trained on SimpleQuestions df69267' \
     --license 'Wikidata CC0-1.0; SimpleQuestions CC-BY-3.0' \
-    --scope '500 validation-subject-seeded entities; finite demonstration, not open-world retrieval' 
+    --scope '500 validation-subject-seeded entities; finite demonstration, not open-world retrieval'
 BIN="$CARGO_TARGET_DIR/release/glassmind"
 python3 tools/facts/chat/evaluate.py --binary "$BIN" --facts-binary "$CARGO_TARGET_DIR/release/glassmind-facts" --predictor "$CARGO_TARGET_DIR/release/examples/continuous_predictions" --facts-dir "$TMPDIR/bundle" --valid "$FACTS_DATA/valid.tsv" --limit 200 --output "$TMPDIR/reproduced-sample"
 python3 tools/facts/chat/evaluate.py --binary "$BIN" --facts-binary "$CARGO_TARGET_DIR/release/glassmind-facts" --predictor "$CARGO_TARGET_DIR/release/examples/continuous_predictions" --facts-dir "$TMPDIR/bundle" --valid "$FACTS_DATA/valid.tsv" --output "$TMPDIR/reproduced-full"

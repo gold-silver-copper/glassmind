@@ -20,8 +20,10 @@ merge `cb150965a9d0e95ffd234a7f4bf38299e8370d86`; CI38110755616 passed1m15s. All
 checks are complete. PR10 (ratio totals) is merged, head `7a5e17627605f6628660c0529a5e96d2a87e96ce`,
 merge `b8c28e5d1b4e8e1029b9d8f5935dc75645ac0226`, CI38111396832 green1m7s.
 Package source05e8093 passed full765 regression with every outcome unchanged.
-Repair source2ce9230 is integrated and locally verified; full765 is running.
-Factchat worker is finishing its submission; parent generic bundle-loader review pending.
+Repair source2ce9230 passed full765:166pass596refused3fail; onlythree
+derive-debug styles improve, everyother762 outcome unchanged.
+Facts source d1076c4 passed full facts and all conversation/config replay.
+Combined verified coding/facts batch is preparing publication; linearwords active.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -195,27 +197,54 @@ local sample1/3, full3/18 repaired; independent4repairs4refusals. Changed cases
 build and pass functional probes; refusals retain original source and errors.
 Sessions10901,39926,96015 COMPLETE. Integrated reports
 `docs/coding-diagnostics-evidence/integrated/`.
-**Full765 RustBench dev RUNNING**, exec57671, frozen source2ce9230 binary SHA
+**Full765 RustBench dev COMPLETE**, exec57671 terminal, frozen source2ce9230 binary SHA
 dfd7453d8a9a3dd11174f40683bf4225972e4e1f7022f595b53ea4b37e6d4bdf
 Exact digest also in
 WORK/coordinator/repairs2-full/source.json. Separate cargo target/check cache/
-scratch. Compare to completed packages-full and variants-full163/599/3.
-Do not restart on an observation timeout or publish before the full gate.
+scratch. Compared to completed packages-full163/599/3:166/596/3, exactly
+three refusal→pass transitions for derive-debug, allother762unchanged. Report
+docs/results/coding-standard-debug.json. No remaining coding gate or repoll.
 
-**Active worker: factchat**, launcherPID2100023, scope
-`glassmind-continuous-factchat.scope`, worktreeWORK/factchat, base05e8093.
-Owns mainCLI/everyday integration/newhelper+CLIdependency onexistingfacts crate,
-newtools/facts/chat; nofactsalgorithm/index/model/scorer changes. Opt-infrozen
-factsintalk, typedmemory/quantity/storypriority/reset/restart/correctionfocus,
-structuredIDs+source andhumanlabels. Defaulttalk unchanged. Full2821facts
-baseline256right2545refused20wrong mustbe preserved inresetcontexts; newsynthetic
-mixedchecks and41/27/47 oldchecks. No runtimeLLM/network. Sourceindexlabels only
-38of10215claimtargets: mayfetchLABELS ONLY fromofficialWikidata foralreadyindexed
-IDs intoSEPARATEdisplaymap, neverlinker/claims; max12000IDs50/request,1Hzoneatonce,
-10MiB/10min, respect429/RetryAfter/maxlag andstoprepeatedfailure. Reusecachefirst,
-recordCC0rawhashes/date/coverage andexplicitQIDfallback. Allnewdataownedpersistent
-TMPDIR; frozenfactsdata mountedreadonly. Reporttools/facts/chat/HANDOFF.md.
-Factchat uses GPT6AstrafastChatGPT/noAPIkeys,8GiB0swap,-j1; noextraagents.
+**Factchat worker COMPLETE**, scope inactive, auth link removed; original
+submission archived/hash-verified, worktree removed. Integrated source
+`d1076c4c97638f7750d8d7745ce1ef5a8db16827` adds optional `talk --facts-dir`,
+immutable index/model, display-only labels and persisted correction-focus clearing.
+Parent replaced hardcoded asset hashes/counts/FNV with version1 manifest+SHA256,
+portable packaging script and concise source-linked output. Independent bundle/
+label-isolation unit tests pass. Facts algorithm/model/index/scorer unchanged.
+Full parent facts replay COMPLETE: sample12/188/0, full256/2545/20 of2821;
+all276 baseline accepted ID sets preserved. Existing20 wrong remain. Finite500
+validation-subject-seeded index, no open-world/new coverage claim.
+Workspace fmt/all-clippy/release/strict4/4smoke COMPLETE passed; exec78986 terminal.
+Initial clippy large enum warning fixed by boxing FactReply; final check passed.
+**Parent conversation/config replay COMPLETE**, exec86463 terminal, outputs
+WORK/coordinator/factchat-check, script WORK/coordinator/factchat-replay.sh.
+Full source/binary metadata in factchat-check/source.json, binary SHA
+3a2431e7e0a2b686c831b94da32180f3dcbbb5da7686b1e5e5ceaa96836b01a0.
+Final8 CLI tests passed after boxing; tests-final.log retained. Allfourlegacy
+configurations retain memory41/41,calculations27/27,stories47/47. Both mixed
+config/display runs28/28. Reports/integrated complete with hashes/log pointers.
+Completed fact predictor build80376, first tests77389; no repoll.
+Worker reports tools/facts/chat/HANDOFF.md and reports/; parent reports/integrated
+complete. No runtime network/LLM. Optional English labels improve accepted-answer
+presentation19→112/276;164 still need QID fallback. New70officialWikidata label
+responses363928bytes CC0; final3806eligibleIDs3361claimtargetlabels. Bounded fetch
+stopped on429, no further requests; initial HTTP error counts unknown/disclosed.
+Manifest hashing adds8locked cached dependencies219434archive bytes; licenses,
+checksums recorded in reports/dependencies.json. All raw data remains in worker
+run; optional reproduction uses cached responses without downloading.
+
+**Active worker: linearwords**, launcherPID2304052, scope
+`glassmind-continuous-linearwords.scope`, worktreeWORK/linearwords, base2986605.
+Owns quantities and newtools/quantities/linearwords only. Official MathQA TRAIN
+Problem-only inspection; shared exact affine expressions/equalities with full
+consumption, unique-solution requirement and explicit target. Acceptance:
+>=3newcorrect full4475 withnointroducedsemanticerrors/no baselinecorrectloss,
+all3116synthetic status/value/unit unchanged, independent novel combinations and
+contradictions/omissions/units refusals. Baseline16/4456/3,first1001/99/0; baseline
+binary+reports in ownTMPDIR; existing data/deps read-only. No annotationsruntime,
+heldout/generators/LLMs or additional workers. GPT6AstrafastChatGPT/noAPIkeys,
+8GiB0swap,-j1. Login status verified before launch. About20min bounded batch.
 
 **Wordproblems worker COMPLETE**, scopeinactive/authremoved; source/reports
 archived `WORK/wordproblems-run/submitted/`; worktree removedafterarchiveverification.
@@ -266,7 +295,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:43,113,569 including cached input; parent and
+Known completed worker tokens:46,119,869 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -281,11 +310,10 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 1. PR8 merged after green CI; no publishing or benchmark work remains for it.
    README/data/scoreboard updated; reports identify exact evaluated source.
-2. PR10 merged. Package full765 is complete/nonregressing. Finish repairs2
-   full765session57671, then publish the verified coding batch with exact-head CI.
-3. Review factchat when done; replace compiled dataset fingerprints with a
-   manifest and SHA256 verification, and replay affected dev checks. Draft
-   WORK/coordinator/talk_facts.rs includes two independent-bundle/label tests.
+2. PR10 merged. Both coding full765 evaluations complete; publish combined
+   coding/facts verified batch, then required CI and exact-head merge.
+3. Factchat replay86463 complete, evidence retained and documented.
+   Review linearwords when done.
    Preserve everynewerror,
    fullaffecteddev andnormalcheck gates. Do not confuseintegrationgain with
    expandedfactualcoverage, orlocalrenamefixtures withRustBenchgain.

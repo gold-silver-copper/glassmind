@@ -53,6 +53,24 @@ Package relocatable copies with `tools/facts/chat/package.py --index INDEX
 assets refuse overwriting. See `reproduce.sh` for the frozen demonstration.
 SHA256 dependencies and licenses are in [dependencies](reports/dependencies.json).
 
+## Coordinator verification of the integrated source
+
+Source `d1076c4c97638f7750d8d7745ce1ef5a8db16827`, frozen binary SHA256
+`3a2431e7e0a2b686c831b94da32180f3dcbbb5da7686b1e5e5ceaa96836b01a0`.
+Independent sample200/full2821 replay preserves every accepted answer set and
+exact totals above. All four default/facts and model/no-model legacy runs retain
+41 memory,27 calculation and47 story checks. Both final mixed/config/display
+runs pass28/28. All8 CLI tests pass after the final boxing change, and workspace
+fmt/all-target clippy/release/strict4/4 fixture smoke pass. Initial clippy flagged
+large enum size; boxing the fact reply fixed it before the final checks.
+The unchanged standalone facts predictor/scorer and index were compared against
+the worker base; no algorithm, model or score definition changed.
+
+[Integrated results, binary identities and logs](reports/integrated/validation.json)
+and [actual concise reply](reports/integrated/human-example.txt). Raw data, logs,
+portable bundle and frozen binary remain in
+`/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/`.
+
 ## Original worker measurements (before coordinator loader changes)
 
 | Check | Result |
