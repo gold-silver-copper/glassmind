@@ -1,0 +1,263 @@
+{
+  "total": 51,
+  "passed": true,
+  "mechanical_semantic_limits_demonstrated": true,
+  "native_prefixes": 6,
+  "native_executed": true,
+  "results": [
+    {
+      "name": "complete-reconstruction-coreference-and-honest-refusal",
+      "rejected": false,
+      "accepted": 3
+    },
+    {
+      "name": "unordered-coreference-canonical-representative",
+      "rejected": false,
+      "accepted": 3
+    },
+    {
+      "name": "extra-top-field",
+      "rejected": true,
+      "reason": "object fields"
+    },
+    {
+      "name": "wrong-schema",
+      "rejected": true,
+      "reason": "schema version"
+    },
+    {
+      "name": "missing-row",
+      "rejected": true,
+      "reason": "row count"
+    },
+    {
+      "name": "duplicate-row",
+      "rejected": true,
+      "reason": "row identity"
+    },
+    {
+      "name": "unknown-row",
+      "rejected": true,
+      "reason": "row identity"
+    },
+    {
+      "name": "unknown-status",
+      "rejected": true,
+      "reason": "status"
+    },
+    {
+      "name": "nonacceptance-with-graph",
+      "rejected": true,
+      "reason": "nonaccepted graph"
+    },
+    {
+      "name": "resolved-empty-graph",
+      "rejected": true,
+      "reason": "native graph bounds"
+    },
+    {
+      "name": "too-many-steps",
+      "rejected": true,
+      "reason": "native graph bounds"
+    },
+    {
+      "name": "too-many-native-inputs",
+      "rejected": true,
+      "reason": "native input bound"
+    },
+    {
+      "name": "native-constants-unchanged",
+      "rejected": true,
+      "reason": "native constants changed"
+    },
+    {
+      "name": "extra-quantity-field",
+      "rejected": true,
+      "reason": "object fields"
+    },
+    {
+      "name": "duplicate-mention",
+      "rejected": true,
+      "reason": "duplicate mention"
+    },
+    {
+      "name": "overlapping-quantity-groups",
+      "rejected": true,
+      "reason": "overlapping groups"
+    },
+    {
+      "name": "boolean-mention",
+      "rejected": true,
+      "reason": "mention index"
+    },
+    {
+      "name": "out-of-range-mention",
+      "rejected": true,
+      "reason": "mention index"
+    },
+    {
+      "name": "unequal-coreference-values",
+      "rejected": true,
+      "reason": "unequal coreference values"
+    },
+    {
+      "name": "missing-coreference-explanation",
+      "rejected": true,
+      "reason": "coreference explanation"
+    },
+    {
+      "name": "missing-quantity-unit",
+      "rejected": true,
+      "reason": "quantity semantics"
+    },
+    {
+      "name": "uncited-group-mention",
+      "rejected": true,
+      "reason": "uncited mention"
+    },
+    {
+      "name": "quantity-rationale-only",
+      "rejected": true,
+      "reason": "question evidence required"
+    },
+    {
+      "name": "split-utf8-codepoint",
+      "rejected": true,
+      "reason": "evidence bytes"
+    },
+    {
+      "name": "boolean-evidence-offset",
+      "rejected": true,
+      "reason": "evidence range"
+    },
+    {
+      "name": "invented-quote",
+      "rejected": true,
+      "reason": "evidence bytes"
+    },
+    {
+      "name": "negative-evidence-offset",
+      "rejected": true,
+      "reason": "evidence range"
+    },
+    {
+      "name": "extra-evidence-key",
+      "rejected": true,
+      "reason": "object fields"
+    },
+    {
+      "name": "future-step",
+      "rejected": true,
+      "reason": "future step reference"
+    },
+    {
+      "name": "negative-step",
+      "rejected": true,
+      "reason": "source reference"
+    },
+    {
+      "name": "boolean-source",
+      "rejected": true,
+      "reason": "source reference"
+    },
+    {
+      "name": "unknown-source-kind",
+      "rejected": true,
+      "reason": "source reference"
+    },
+    {
+      "name": "unknown-quantity",
+      "rejected": true,
+      "reason": "quantity reference"
+    },
+    {
+      "name": "new-native-constant",
+      "rejected": true,
+      "reason": "constant reference"
+    },
+    {
+      "name": "constant-rationale-only",
+      "rejected": true,
+      "reason": "question evidence required"
+    },
+    {
+      "name": "operand-misses-quantity",
+      "rejected": true,
+      "reason": "operand misses quantity"
+    },
+    {
+      "name": "empty-operand-role",
+      "rejected": true,
+      "reason": "operand role"
+    },
+    {
+      "name": "extra-operand-field",
+      "rejected": true,
+      "reason": "object fields"
+    },
+    {
+      "name": "unknown-operation",
+      "rejected": true,
+      "reason": "operation"
+    },
+    {
+      "name": "missing-step-unit",
+      "rejected": true,
+      "reason": "step semantics"
+    },
+    {
+      "name": "step-rationale-only",
+      "rejected": true,
+      "reason": "question evidence required"
+    },
+    {
+      "name": "wrong-intermediate",
+      "rejected": true,
+      "reason": "intermediate arithmetic"
+    },
+    {
+      "name": "nonfinite-value",
+      "rejected": true,
+      "reason": "rational value"
+    },
+    {
+      "name": "fraction-zero-denominator",
+      "rejected": true,
+      "reason": "rational value"
+    },
+    {
+      "name": "changed-source-final",
+      "rejected": true,
+      "reason": "reference final mismatch"
+    },
+    {
+      "name": "zero-divisor",
+      "rejected": true,
+      "reason": "division zero"
+    },
+    {
+      "name": "unused-quantity",
+      "rejected": true,
+      "reason": "unused quantity"
+    },
+    {
+      "name": "dead-calculation",
+      "rejected": true,
+      "reason": "dead step"
+    },
+    {
+      "name": "equal-value-distractor-needs-semantic-review",
+      "rejected": false,
+      "accepted": 3
+    },
+    {
+      "name": "false-coreference-needs-semantic-review",
+      "rejected": false,
+      "accepted": 3
+    },
+    {
+      "name": "duplicate-json-key",
+      "rejected": true
+    }
+  ]
+}

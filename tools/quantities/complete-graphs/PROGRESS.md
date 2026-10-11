@@ -24,10 +24,17 @@ reference numbers are arithmetically false. Parent312 uses ordinary emu anatomy
 (one head,two legs), with its assumption explicit. Read parent-freeze.json and
 externalparent/expectations.json; keep all parent material invisible to teacher.
 
-No teacher session or fit/CAL/DEV/runtime change. Schema/compiler/validator and
-contracts are NOT IMPLEMENTED yet. NEXT: implement strict complete-graph annotation
-format described inPLAN.md, question-quantity groups with exact citation coverage,
-per-operand/step semantics and existing native bounds. Validate coreference only
-mechanically where possible; identical values never establish semantic identity.
-Author the prescribed contracts before freezing protocol hashes and launching the
-single isolatedAstrafast/ChatGPT teacher. Preserve all earlier gates/results.
+Protocol implemented and frozen before teacher execution. Strict schema2 annotations
+compile quantity groups into existing native Input/Step/Constant references. All51
+authored contracts pass, including6native intermediate-prefix executions. Accepted
+numeric distractor and false-coreference examples demonstrate the remaining need for
+semantic review. Every quantity must be used and every step must reach the result.
+See pre-teacher.json for exact protocol, batch and parent hashes.
+
+One1200s/8GiB/no-swap Astrafast/high teacher is prepared by teacher.py, forced to
+ChatGPT login with API-key environment removed. Readonly supplied files, masked
+project/full-source/parent trees,2MiB annotation and256MiB teacher-directory caps.
+No teacher has started at this freeze. NEXT: prepare/check isolation and login,
+launch the single attempt, preserve/hash originals and remove owned auth link after
+terminal verification, then validate all native prefixes and review every graph.
+No fit/CAL/DEV/runtime changes. All previous gates remain unchanged.
