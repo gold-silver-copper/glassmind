@@ -543,3 +543,15 @@ Original worker and independent case files remain unchanged; the grammar revisio
 has separate expectations and preserves the original disagreements in its report.
 These fixtures measure finite local behavior, not independent world knowledge or
 ordinary QA benchmark improvement.
+
+## GSM8K TRAIN supervision audit (2026-10-11)
+
+Official OpenAI `grade-school-math` revision `3101c7d5072418e28b9008a6636bde82a006892c`,
+MIT: only `grade_school_math/data/train.jsonl` (7,473 rows; 4,166,206 bytes) and
+LICENSE were downloaded. TRAIN SHA-256:
+`17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465`.
+No official test data was fetched or read. Grouped FIT/CAL partitions remain TRAIN
+diagnostics. The value-grounded annotation converter was rejected:354 unique
+native-executable programs fell below the frozen1,000 requirement. No model was
+trained. [Independent review](../tools/quantities/grounded-steps/PARENT.md) records
+source binding, ambiguity, counts and limitations; large data stays outside git.
