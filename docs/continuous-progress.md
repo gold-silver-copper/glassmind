@@ -5,8 +5,8 @@
 Goal active: follow `prompts/grow-continuously.md` until stopped. This turn made
 concrete progress: native diagnostic isolation and typed memory authority are
 integrated and independently validated, including full affected dev regressions.
-Publication is next. A separate social-routing worker investigates the retained
-goodbye/story interception. No acceptance gate or old rejection was weakened.
+PR25 is merged. Separate social-routing and implementation-route workers now
+pursue the next conversation and coding improvements. No acceptance gate or old rejection was weakened.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -55,7 +55,12 @@ Do not repeat PR24 checks/merge. Push43446/create47886/merge53793 COMPLETE.
 Runtime commit `1331ac715eadcf7b9169423e947cedf861eb42a3` combines native check
 isolation (`77bc246`) and memory authority. Integrated binary SHA256:
 `8cde5dc486025e05932db946ba4accb7b5401fcd27c530bc8539eb4dca5bb78b`.
-Both changes are locally accepted. PR25 preparation and publication are next.
+Both changes are published in PR25:
+https://github.com/gold-silver-copper/glassmind/pull/25
+Merged `79b418bda8168496bdf29c2bc47ea7ff1ff88bda` at2026-10-11T07:31:32Z,
+matching reviewed head `412f11eaedbf4d69e4d084a94cfe283762a515ed` exactly.
+CI38121545390 passed. Push31650, create65060 and merge75501 are COMPLETE.
+Do not repeat this PR's checks, merge or completed full dev evaluations.
 Known completed-worker tokens: 93,976,162, with cached input included once;
 parent usage and the unfinished social-routing worker are excluded.
 
@@ -122,7 +127,7 @@ The earlier implementation-language experiment remains REJECTED at33/34; its
 are three styles of one function, with no full765 candidate run. Overbroad action
 reservation also remains a problem. Check isolation does not accept it retroactively.
 
-SOCIALROUTING is the only active model worker: PID3692820, scope
+SOCIALROUTING is active: PID3692820, scope
 `glassmind-continuous-socialrouting.scope`, branch `continuous/socialrouting`,
 worktree WORK/socialrouting at1331ac7. Run directory: WORK/socialrouting-run;
 brief: WORK/socialrouting-task.txt. Astra fast/ChatGPT login and8GiB/zero-swap
@@ -135,10 +140,29 @@ facts52 and full3987 story checks must pass. Parent later replays full ordinary
 facts2821. No held-out data or new downloads. Its frozen baseline binary62b812
 has identical conversation source but lacks native isolation, as documented.
 
-Next: commit and push the verified batch, create PR25, then merge its exact head
-once required CI passes. Review socialrouting only when terminal, archiving its
-original submission before any modifications. Keep the goal active. The old
-stopped dirty loop remains untouched; no other workers or parent jobs are live.
+IMPLEMENTATIONROUTES is active: PID3745551, scope
+`glassmind-continuous-implementationroutes.scope`, branch
+`continuous/implementationroutes`, worktree WORK/implementationroutes at412f11e.
+Run directory: WORK/implementationroutes-run; brief:
+WORK/implementationroutes-task.txt. Astra fast/ChatGPT and8GiB/zero-swap scope
+verified. Its baseline binary is8cde5dc4, the integrated1331ac7 runtime;412f11e
+adds only evidence and docs. Both earlier implementation attempts remain rejected.
+It may reuse the archived implementation-language patch after its new PLAN,
+keeping the signature-directed candidate family byte-identical. It must fix
+broad action reservation that intercepts unrelated commands/identifiers, preserve
+all original20+34+6 checks, and add frozen actual query/rename boundary contracts.
+Existing native isolation addresses the earlier live-artifact failure separately.
+At least three original TRAIN requests must be test-verified before parentfull765:
+>=177 passes, every174 old pass retained, zero failures. Report distinct functions
+and styles. No benchmark run by the worker; opaque public tests only, no solutions
+or hidden assets. Owns implementation modules/exports/minimal main do route;
+no overlap with the social worker's everyday/story files.
+
+Next: inspect both workers when terminal, archive each original submission with
+coordinator/archive-batch.py before any integration, then independently review
+and run full affected dev gates. The helper preserves executable modes. Keep
+old rejections and all failed checks unchanged. Two model workers are active;
+no parent evaluation jobs remain. The old stopped dirty loop is untouched.
 
 ### Verified current batch
 
