@@ -1,0 +1,134 @@
+[
+  {
+    "request": "Hi! I want to start tracking page counts in the library catalog. Could you add a public field `pages: u32` to the `Book` struct? Books get created with struct literals in a few spots (the seed data, main, the tests), and I don't know the page counts for those yet, so just put 0 for them for now.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": false,
+    "case": "add-book-pages-chatty"
+  },
+  {
+    "request": "add pages: u32 (pub) to Book struct + fix everywhere books get created, just use 0 pages for the existing ones",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field pages: u32 to Book; updated 5 constructors (6 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/book.rs",
+      "src/catalog.rs",
+      "src/main.rs",
+      "src/seed.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest catalog::tests::finds_by_author ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2868194-i95104072.scope; invocation ID: 06781cf941a147eb8b6028aaa1967885\n   Compiling task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/full/add-book-pages-hurried)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.26s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-b217b6fd00e19b88)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-58dfc75406b42ae8)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/addfield_contract-0c6c0edc2f29941e)\n   Doc-tests task\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "4 books\nclassic: The River Road (M. Okafor, 1938)\nclassic: Lanterns (M. Okafor, 1945)\n",
+      "stderr": "Running as unit: run-p2868318-i95096380.scope; invocation ID: f4c7495f4047406e8c2908655ae6a935\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/task`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "add-book-pages-hurried"
+  },
+  {
+    "request": "Add a `pub pages: u32` field to `Book`. Update every place a Book is built; use 0 for the existing books.",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field pages: u32 to Book; updated 5 constructors (6 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/book.rs",
+      "src/catalog.rs",
+      "src/main.rs",
+      "src/seed.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest catalog::tests::finds_by_author ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2868818-i95108116.scope; invocation ID: 2ba0e349546f43d2b6bc453b0fa3812a\n   Compiling task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/full/add-book-pages-terse)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-b217b6fd00e19b88)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-58dfc75406b42ae8)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/addfield_contract-0c6c0edc2f29941e)\n   Doc-tests task\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "4 books\nclassic: The River Road (M. Okafor, 1938)\nclassic: Lanterns (M. Okafor, 1945)\n",
+      "stderr": "Running as unit: run-p2868915-i95108118.scope; invocation ID: 7aaf37592b5d4642bbb5c6c0e72ed2cd\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/task`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "add-book-pages-terse"
+  },
+  {
+    "request": "need a priority field on Task (pub, u8). default 3 in Task::new and use 3 for all the other Task { .. } literals",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field priority: u8 to Task; updated 5 constructors (6 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/list.rs",
+      "src/main.rs",
+      "src/task.rs",
+      "src/templates.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest list::tests::completes_once ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2869644-i95163167.scope; invocation ID: 39e7ec78f9d14cb09e163e8c555ad83c\n   Compiling task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/full/add-task-priority-hurried)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.23s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-b217b6fd00e19b88)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-58dfc75406b42ae8)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/addfield_contract-0c6c0edc2f29941e)\n   Doc-tests task\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "[ ] pack the kitchen\n[ ] return the keys\n[ ] call the bank\n[ ] cancel internet\nexample: read the manual\n",
+      "stderr": "Running as unit: run-p2869742-i95178801.scope; invocation ID: af67c6ab1dd945f3855032c6dc0a1c78\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.01s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/task`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "add-task-priority-hurried"
+  },
+  {
+    "request": "Add `pub priority: u8` to `Task`. `Task::new` sets it to 3; every other place that builds a Task uses 3 too.",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field priority: u8 to Task; updated 5 constructors (6 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/list.rs",
+      "src/main.rs",
+      "src/task.rs",
+      "src/templates.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest list::tests::completes_once ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2870169-i95092589.scope; invocation ID: c25e219eef8e48bba4129995f23c71df\n   Compiling task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/full/add-task-priority-terse)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.30s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-b217b6fd00e19b88)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/task-58dfc75406b42ae8)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/addfield_contract-0c6c0edc2f29941e)\n   Doc-tests task\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "[ ] pack the kitchen\n[ ] return the keys\n[ ] call the bank\n[ ] cancel internet\nexample: read the manual\n",
+      "stderr": "Running as unit: run-p2870267-i95046677.scope; invocation ID: b40fa8e39ec84981882a1145a90a78ad\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/task`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "add-task-priority-terse"
+  }
+]

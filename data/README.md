@@ -396,3 +396,36 @@ enumerated absolute-difference cases, workspace MIT OR Apache-2.0. These are
 development checks, not independent held-out benchmarks; two-variable coverage
 has local evidence only. [Original training provenance](../tools/quantities/linearwords/HANDOFF.md)
 and [corrected results and source hashes](../tools/quantities/linearwords/PARENT.md).
+
+
+## Passage QA and rejected follow-ups (2026-10-11 UTC)
+
+SQuAD1.1 TRAIN/DEV revision `eee5fdbf62f8613a7812b03419e6b29617b74fd1`
+contains35,142,551 bytes (TRAIN30,288,272; DEV4,854,279), CC-BY-SA-4.0.
+The pinned official scorer and source repository are MIT. Original fitting uses
+4000 questions from64 TRAIN articles and1000 calibration questions from16 other
+articles; all10570 DEV questions remain in the denominator. Inputs are context
+and question only. [Original provenance and parent replay](../tools/reading/qa/PARENT.md).
+
+The support selector and role-aware ranker experiments are rejected; their
+patches stay unapplied and add no deployed models. The latter reuses exactly the
+original fit/cal data with no downloads. Parent verified82 provenance hashes
+and independently audited frozen predictions; [evidence and failures](../tools/reading/roles/HANDOFF.md).
+
+## Rejected TRAIN-selected facts and joint audit (2026-10-11 UTC)
+
+The new facts scope selects subjects from15778 TRAIN rows, excluding the old
+every-tenth calibration rows and final10% prefix boundary. Its bounded Wikidata
+fetch made39 requests and retained67,094,727 new raw bytes, CC0;28 subject
+responses were reused. One redirect leaves999 of1000 chosen subjects. Raw
+response hashes and timestamps exist, but revision IDs were omitted by the
+original fetch parameters. The100-to999 expansion failed its precision gate;
+neither index replaces the historical500-entity index.
+[Selection, licenses and exact fetch evidence](../tools/facts/trainindex/HANDOFF.md).
+
+A subsequent entity filter also failed its original gates and is not deployed.
+The separate [joint annotation audit](../tools/facts/JOINT-AUDIT.md) reuses frozen
+question-only predictions and public validation annotations, downloads no data,
+and changes no original scorer or acceptance criterion. It reveals wrong-subject
+answer coincidences:500-scope256 answer matches versus252 joint matches;
+rejected999-scope47 versus2. These are distinct metrics and index scopes.

@@ -373,6 +373,45 @@
         "reasoning_output_tokens": 5962
       },
       "source": "REJECTED TRAIN-selected finite100to999 index expansion:44to47right/2821 but52to62wrong; original500 unchanged. Inverse local uniqueness and partial aliases remain unreliable."
+    },
+    {
+      "track": "editlanguage-continuous",
+      "started_unix": 1791696790.549906,
+      "finished_unix": 1791697121.5588768,
+      "usage": {
+        "input_tokens": 1428242,
+        "cached_input_tokens": 1361408,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18550,
+        "reasoning_output_tokens": 3927
+      },
+      "source": "Compositional public-field request parser: worker4/5 and13independent; parent reviewing incomplete conjunction edge before independent/full765."
+    },
+    {
+      "track": "linkquality-continuous",
+      "started_unix": 1791697063.8646555,
+      "finished_unix": 1791697353.5440564,
+      "usage": {
+        "input_tokens": 1330165,
+        "cached_input_tokens": 1260928,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20026,
+        "reasoning_output_tokens": 4578
+      },
+      "source": "REJECTED question-type adjacency:3TRAIN correct entitylinks removed; new999dev47to8scoredright. Coincidentalanswer audit prompts separate parentjointmetric; runtime restored."
+    },
+    {
+      "track": "qaroles-continuous",
+      "started_unix": 1791697431.4072616,
+      "finished_unix": 1791697752.816111,
+      "usage": {
+        "input_tokens": 1568085,
+        "cached_input_tokens": 1502720,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19847,
+        "reasoning_output_tokens": 2636
+      },
+      "source": "REJECTED relation-aware span ranker:2631rawcorrect below2638gate;694selectedcorrect below815; no runtimechange. Times from retained artifact metadata."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

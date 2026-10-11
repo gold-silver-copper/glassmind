@@ -1,0 +1,412 @@
+diff --git i/crates/reading/src/bin/reading-qa.rs w/crates/reading/src/bin/reading-qa.rs
+index 527f75c..874ba00 100644
+--- i/crates/reading/src/bin/reading-qa.rs
++++ w/crates/reading/src/bin/reading-qa.rs
+@@ -17,6 +17,8 @@ enum Command {
+         input: PathBuf,
+         #[arg(long)]
+         model: PathBuf,
++        #[arg(long, default_value_t = 1, value_parser = clap::value_parser!(u32).range(1..=2))]
++        feature_version: u32,
+     },
+     Predict {
+         #[arg(long)]
+@@ -27,12 +29,20 @@ enum Command {
+ }
+ fn run() -> Result<(), Box<dyn std::error::Error>> {
+     match Args::parse().command {
+-        Command::Train { input, model } => {
++        Command::Train {
++            input,
++            model,
++            feature_version,
++        } => {
+             let rows: Vec<TrainingRow> = BufReader::new(File::open(input)?)
+                 .lines()
+                 .map(|l| Ok(serde_json::from_str(&l?)?))
+                 .collect::<Result<_, Box<dyn std::error::Error>>>()?;
+-            let m = Model::train(&rows);
++            let m = if feature_version == 2 {
++                Model::train_roles(&rows)
++            } else {
++                Model::train(&rows)
++            };
+             m.validate()?;
+             serde_json::to_writer(BufWriter::new(File::create(model)?), &m)?;
+         }
+diff --git i/crates/reading/src/qa.rs w/crates/reading/src/qa.rs
+index 7769aea..3e8722a 100644
+--- i/crates/reading/src/qa.rs
++++ w/crates/reading/src/qa.rs
+@@ -154,6 +154,222 @@ fn dot(w: &[f32], f: &Features) -> f32 {
+         .sum()
+ }
+ 
++// Version2 adds relative anchors; none of these operations execute for version1.
++fn stem(word: &str) -> &str {
++    for suffix in ["ing", "ied", "ed", "es", "s"] {
++        if let Some(base) = word.strip_suffix(suffix)
++            && base.len() >= 3
++        {
++            return base;
++        }
++    }
++    word
++}
++fn negative(word: &str) -> bool {
++    matches!(word, "not" | "never" | "no" | "neither" | "without")
++        || word.ends_with("n't")
++        || word.ends_with("n’t")
++}
++fn auxiliary(word: &str) -> bool {
++    matches!(
++        word,
++        "did"
++            | "does"
++            | "do"
++            | "was"
++            | "were"
++            | "is"
++            | "are"
++            | "has"
++            | "have"
++            | "had"
++            | "can"
++            | "could"
++            | "would"
++            | "will"
++    )
++}
++fn distance(n: usize) -> &'static str {
++    match n {
++        0 => "0",
++        1 => "1",
++        2 => "2",
++        3..=4 => "3-4",
++        5..=8 => "5-8",
++        _ => "9+",
++    }
++}
++struct Alignment {
++    // Context position -> first matching content question token (no labels).
++    matches: Vec<Option<usize>>,
++    content: Vec<usize>,
++    qnegative: bool,
++}
++impl Alignment {
++    fn new(ts: &[Token], qs: &[Token]) -> Self {
++        let content: Vec<usize> = qs
++            .iter()
++            .enumerate()
++            .filter(|(_, t)| !stop(&t.word))
++            .map(|(i, _)| i)
++            .collect();
++        let matches = ts
++            .iter()
++            .map(|t| {
++                if stop(&t.word) {
++                    return None;
++                }
++                content
++                    .iter()
++                    .copied()
++                    .find(|q| stem(&qs[*q].word) == stem(&t.word))
++            })
++            .collect();
++        Self {
++            matches,
++            content,
++            qnegative: qs.iter().any(|t| negative(&t.word)),
++        }
++    }
++    #[allow(clippy::too_many_arguments)]
++    fn features(
++        &self,
++        f: &mut Features,
++        ts: &[Token],
++        qs: &[Token],
++        s: usize,
++        e: usize,
++        i: usize,
++        j: usize,
++        wh: &str,
++        head: &str,
++    ) {
++        let mut coverage = BTreeSet::new();
++        let mut near_left = None;
++        let mut near_right = None;
++        let mut side_counts = [0.0f32; 3];
++        for k in s..e {
++            let Some(q) = self.matches[k] else {
++                continue;
++            };
++            coverage.insert(q);
++            let (side, gap, slot) = if k < i {
++                ("left", i - k, 0)
++            } else if k >= j {
++                ("right", k - j + 1, 1)
++            } else {
++                ("inside", 0, 2)
++            };
++            side_counts[slot] += 1.0 / (gap.max(1) as f32);
++            if k < i {
++                near_left = Some((k, q));
++            }
++            if k >= j && near_right.is_none() {
++                near_right = Some((k, q));
++            }
++            if gap > 16 {
++                continue;
++            }
++            let d = distance(gap);
++            let role = if self.content.first() == Some(&q) {
++                "first"
++            } else if self.content.last() == Some(&q) {
++                "last"
++            } else {
++                "middle"
++            };
++            let aux = if q > 0 && auxiliary(&qs[q - 1].word) {
++                "aux"
++            } else {
++                "plain"
++            };
++            let morphology = if qs[q].word.ends_with("ing") {
++                "ing"
++            } else if qs[q].word.ends_with("ed") {
++                "ed"
++            } else if qs[q].cap {
++                "cap"
++            } else {
++                "other"
++            };
++            let parts: &[&[&str]] = &[
++                &["align", role, side, d],
++                &["alignwh", wh, role, side, d],
++                &["alignaux", wh, aux, role, side, d],
++                &["alignmorph", wh, morphology, side, d],
++                &["alignword", wh, stem(&qs[q].word), side, d],
++            ];
++            for parts in parts {
++                add(f, parts, 1.0);
++            }
++            let local_negative = ts[k.saturating_sub(3).max(s)..(k + 4).min(e)]
++                .iter()
++                .any(|t| negative(&t.word));
++            if local_negative || self.qnegative {
++                let agreement = if local_negative == self.qnegative {
++                    "agree"
++                } else {
++                    "mismatch"
++                };
++                add(f, &["alignneg", wh, agreement, side, d], 1.0);
++            }
++        }
++        for (side, value) in ["left", "right", "inside"].into_iter().zip(side_counts) {
++            add(f, &["aligncount", side], value);
++            add(f, &["aligncountwh", wh, side], value);
++            add(f, &["aligncounthead", head, side], value);
++        }
++        let covered = coverage.len() as f32 / self.content.len().max(1) as f32;
++        add(f, &["stemcoverage"], covered);
++        add(f, &["stemcoveragewh", wh], covered);
++        for (side, nearest) in [("left", near_left), ("right", near_right)] {
++            if let Some((k, q)) = nearest {
++                let d = distance(if k < i { i - k } else { k - j + 1 });
++                let before = q.checked_sub(1).map_or("<s>", |n| qs[n].word.as_str());
++                let after = qs.get(q + 1).map_or("</s>", |t| t.word.as_str());
++                add(f, &["nearest", wh, side, d, before], 1.0);
++                add(f, &["nearestafter", wh, side, d, after], 1.0);
++                add(f, &["nearesthead", head, side, d], 1.0);
++            }
++        }
++        if let (Some((l, ql)), Some((r, qr))) = (near_left, near_right) {
++            let order = if ql < qr {
++                "forward"
++            } else if ql == qr {
++                "same"
++            } else {
++                "reverse"
++            };
++            add(
++                f,
++                &[
++                    "anchororder",
++                    wh,
++                    order,
++                    distance(i - l),
++                    distance(r - j + 1),
++                ],
++                1.0,
++            );
++        }
++        for (role, word) in [
++            (
++                "left",
++                if i > s {
++                    ts[i - 1].word.as_str()
++                } else {
++                    "<s>"
++                },
++            ),
++            ("right", if j < e { ts[j].word.as_str() } else { "</s>" }),
++            ("first", ts[i].word.as_str()),
++            ("last", ts[j - 1].word.as_str()),
++        ] {
++            add(f, &["headboundary", stem(head), role, stem(word)], 1.0);
++        }
++    }
++}
++
+ struct Candidate {
+     span: Span,
+     evidence: Span,
+@@ -164,7 +380,7 @@ struct Prepared {
+     candidates: Vec<Candidate>,
+     supported: bool,
+ }
+-fn prepare(context: &str, question: &str) -> Prepared {
++fn prepare(context: &str, question: &str, version: u32) -> Prepared {
+     let mut output = Prepared {
+         candidates: Vec::new(),
+         supported: false,
+@@ -190,6 +406,7 @@ fn prepare(context: &str, question: &str) -> Prepared {
+         .iter()
+         .find(|t| !stop(&t.word))
+         .map_or("", |t| t.word.as_str());
++    let alignment = (version == 2).then(|| Alignment::new(&ts, &qs));
+     let mut sentences = Vec::new();
+     let mut s = 0;
+     for (i, t) in ts.iter().enumerate() {
+@@ -323,6 +540,9 @@ fn prepare(context: &str, question: &str) -> Prepared {
+                         add(&mut f, &[role, &c.to_string()], 1.0);
+                     }
+                 }
++                if let Some(a) = &alignment {
++                    a.features(&mut f, &ts, &qs, s, e, i, j, wh, qhead);
++                }
+                 output.candidates.push(Candidate {
+                     span,
+                     evidence,
+@@ -336,7 +556,7 @@ fn prepare(context: &str, question: &str) -> Prepared {
+ }
+ impl Model {
+     pub fn validate(&self) -> Result<(), String> {
+-        if self.version != 1
++        if !matches!(self.version, 1 | 2)
+             || self.weights.len() != DIM
+             || self.weights.iter().any(|x| !x.is_finite())
+             || !self.threshold.is_finite()
+@@ -346,8 +566,15 @@ impl Model {
+         Ok(())
+     }
+     pub fn train(rows: &[TrainingRow]) -> Self {
++        Self::train_version(rows, 1)
++    }
++    /// Train the optional anchor-alignment representation on the same span task.
++    pub fn train_roles(rows: &[TrainingRow]) -> Self {
++        Self::train_version(rows, 2)
++    }
++    fn train_version(rows: &[TrainingRow], version: u32) -> Self {
+         let mut model = Self {
+-            version: 1,
++            version,
+             weights: vec![0.0; DIM],
+             threshold: f32::MAX,
+             fit_rows: rows.len(),
+@@ -360,7 +587,7 @@ impl Model {
+             let mut usable = 0;
+             for row in rows {
+                 step += 1;
+-                let p = prepare(&row.context, &row.question);
++                let p = prepare(&row.context, &row.question, version);
+                 let Some(gold) = p.candidates.iter().find(|c| c.span == row.answer) else {
+                     continue;
+                 };
+@@ -426,7 +653,7 @@ fn refusal(reason: &str) -> Prediction {
+     }
+ }
+ fn predict(context: &str, question: &str, model: Option<&Model>) -> Prediction {
+-    let p = prepare(context, question);
++    let p = prepare(context, question, model.map_or(1, |m| m.version));
+     let mut ranked: Vec<(&Candidate, f32)> = p
+         .candidates
+         .iter()
+@@ -489,6 +716,77 @@ fn predict(context: &str, question: &str, model: Option<&Model>) -> Prediction {
+ mod tests {
+     use super::*;
+     #[test]
++    fn roles_model_validation_bounds_and_utf8_provenance() -> Result<(), Box<dyn std::error::Error>>
++    {
++        let mut m = Model {
++            version: 2,
++            weights: vec![0.0; DIM],
++            threshold: 0.0,
++            fit_rows: 0,
++            representable_rows: 0,
++        };
++        m.validate()?;
++        let c = "Élodie thanked Zürich. Felix thanked Élodie.";
++        let p = m.predict(c, "Who thanked Zürich?");
++        let span = p.proposal.as_ref().ok_or("missing proposal")?;
++        let evidence = p.evidence.as_ref().ok_or("missing evidence")?;
++        assert_eq!(span.text(c), Some(p.answer.as_str()));
++        assert!(evidence.start <= span.start && span.end <= evidence.end);
++        assert!(evidence.text(c).is_some());
++        for (context, question) in [
++            ("x".repeat(65537), "Who x?".into()),
++            ("x ".repeat(2049), "Who x?".into()),
++            (c.into(), "x".repeat(2049)),
++        ] {
++            assert_eq!(
++                m.predict(&context, &question).reason,
++                "empty_or_input_limit"
++            );
++        }
++        let encoded = serde_json::to_vec(&m)?;
++        assert!(encoded.len() < 2 * 1024 * 1024);
++        let loaded: Model = serde_json::from_slice(&encoded)?;
++        loaded.validate()?;
++        m.weights[0] = f32::NAN;
++        assert!(m.validate().is_err());
++        m.weights = vec![f32::MAX; DIM];
++        assert_eq!(
++            m.predict(c, "Who thanked Zürich?").reason,
++            "non_finite_model_score"
++        );
++        m.weights.pop();
++        assert!(m.validate().is_err());
++        Ok(())
++    }
++    #[test]
++    fn relative_anchors_change_with_roles_and_preserve_candidate_bounds() {
++        let context = "Nora thanked Felix. Felix thanked Nora.";
++        let q = "Who thanked Felix?";
++        let v1 = prepare(context, q, 1);
++        let v2 = prepare(context, q, 2);
++        assert_eq!(v1.candidates.len(), v2.candidates.len());
++        for (a, b) in v1.candidates.iter().zip(&v2.candidates) {
++            assert_eq!(a.span, b.span);
++            assert_eq!(a.evidence, b.evidence);
++            assert_eq!(a.features, b.features[..a.features.len()]);
++        }
++        let ts = tokens(context);
++        let qs = tokens(q);
++        let align = Alignment::new(&ts, &qs);
++        let (mut subject, mut object) = (vec![], vec![]);
++        align.features(&mut subject, &ts, &qs, 0, 3, 0, 1, "who", "thanked");
++        align.features(&mut object, &ts, &qs, 3, 6, 5, 6, "who", "thanked");
++        assert_ne!(subject, object);
++        let negts = tokens("Nora never thanked Felix.");
++        let neg = Alignment::new(&negts, &qs);
++        let mut negf = vec![];
++        neg.features(&mut negf, &negts, &qs, 0, 4, 0, 1, "who", "thanked");
++        assert!(
++            negf.iter()
++                .any(|(i, _)| *i == hash(&["alignneg", "who", "mismatch", "right", "2"]))
++        );
++    }
++    #[test]
+     fn finite_weights_cannot_emit_non_finite_scores() {
+         let model = Model {
+             version: 1,

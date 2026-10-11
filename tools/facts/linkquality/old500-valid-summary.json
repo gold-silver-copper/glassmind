@@ -1,0 +1,64 @@
+{
+  "split": "valid",
+  "total": 2821,
+  "counts": {
+    "baseline": {
+      "refused": 2545,
+      "right": 256,
+      "wrong": 20
+    },
+    "candidate": {
+      "refused": 2545,
+      "right": 256,
+      "wrong": 20
+    }
+  },
+  "transitions": {
+    "refused->refused": 2545,
+    "right->right": 256,
+    "wrong->wrong": 20
+  },
+  "unchanged": 2821,
+  "withdrawn": 0,
+  "answered_entity_correct": {
+    "baseline": 264,
+    "candidate": 264
+  },
+  "scored_right_entity_mismatch": {
+    "baseline": [
+      434,
+      470,
+      1705,
+      2423
+    ],
+    "candidate": [
+      434,
+      470,
+      1705,
+      2423
+    ]
+  },
+  "changed_claims": [],
+  "revived_refusals": [],
+  "new_wrong_rows": [],
+  "correct_to_refused_rows": [],
+  "wrong_to_refused_rows": [],
+  "correct_entity_links_removed": [],
+  "files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv",
+      "bytes": 173187,
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/old500-valid-pairs.jsonl",
+      "bytes": 611135,
+      "sha256": "434d50bc960720d6dedc2503f8de26f2aa0a85e9672af4f302b320103b22c5da"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/old500-valid-audit.jsonl",
+      "bytes": 1138768,
+      "sha256": "dd9db5703f696da5b5d946f20f482d620125936badd15eca62cce5ffb0081a39"
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "selection": "First floor(0.9 * 19481)=17532 TRAIN rows minus zero-based i%10==0; frozen top1000 selected by frequency and SHA256 tie-break, one redirect excluded, actual999. No new entity selection in this batch.",
+  "old500": {
+    "index_entities": 500,
+    "partitions": {
+      "fit": {
+        "rows": 17532,
+        "unique_subjects": 15605,
+        "rows_subject_in_index": 346,
+        "answered": 69,
+        "answered_entity_correct": 22
+      },
+      "cal": {
+        "rows": 1949,
+        "unique_subjects": 1855,
+        "rows_subject_in_index": 40,
+        "answered": 7,
+        "answered_entity_correct": 4
+      },
+      "selection": {
+        "rows": 15778,
+        "unique_subjects": 14109,
+        "rows_subject_in_index": 314,
+        "answered": 63,
+        "answered_entity_correct": 19
+      },
+      "valid": {
+        "rows": 2821,
+        "unique_subjects": 2682,
+        "rows_subject_in_index": 538,
+        "answered": 276,
+        "answered_entity_correct": 264
+      }
+    },
+    "overlaps": {
+      "fit/cal": {
+        "subjects": {
+          "left_unique": 15605,
+          "right_unique": 1855,
+          "intersection_unique": 189
+        },
+        "questions": {
+          "left_unique": 17322,
+          "right_unique": 1943,
+          "intersection_unique": 31
+        },
+        "linked_alias_phrases": {
+          "left_unique": 97,
+          "right_unique": 42,
+          "intersection_unique": 32
+        }
+      },
+      "selection/cal": {
+        "subjects": {
+          "left_unique": 14109,
+          "right_unique": 1855,
+          "intersection_unique": 181
+        },
+        "questions": {
+          "left_unique": 15597,
+          "right_unique": 1943,
+          "intersection_unique": 26
+        },
+        "linked_alias_phrases": {
+          "left_unique": 93,
+          "right_unique": 42,
+          "intersection_unique": 32
+        }
+      },
+      "fit/valid": {
+        "subjects": {
+          "left_unique": 15605,
+          "right_unique": 2682,
+          "intersection_unique": 231
+        },
+        "questions": {
+          "left_unique": 17322,
+          "right_unique": 2813,
+          "intersection_unique": 58
+        },
+        "linked_alias_phrases": {
+          "left_unique": 97,
+          "right_unique": 475,
+          "intersection_unique": 78
+        }
+      },
+      "selection/valid": {
+        "subjects": {
+          "left_unique": 14109,
+          "right_unique": 2682,
+          "intersection_unique": 216
+        },
+        "questions": {
+          "left_unique": 15597,
+          "right_unique": 2813,
+          "intersection_unique": 51
+        },
+        "linked_alias_phrases": {
+          "left_unique": 93,
+          "right_unique": 475,
+          "intersection_unique": 75
+        }
+      },
+      "cal/valid": {
+        "subjects": {
+          "left_unique": 1855,
+          "right_unique": 2682,
+          "intersection_unique": 72
+        },
+        "questions": {
+          "left_unique": 1943,
+          "right_unique": 2813,
+          "intersection_unique": 9
+        },
+        "linked_alias_phrases": {
+          "left_unique": 42,
+          "right_unique": 475,
+          "intersection_unique": 37
+        }
+      }
+    }
+  },
+  "new999": {
+    "index_entities": 999,
+    "partitions": {
+      "fit": {
+        "rows": 17532,
+        "unique_subjects": 15605,
+        "rows_subject_in_index": 2851,
+        "answered": 1370,
+        "answered_entity_correct": 701
+      },
+      "cal": {
+        "rows": 1949,
+        "unique_subjects": 1855,
+        "rows_subject_in_index": 180,
+        "answered": 86,
+        "answered_entity_correct": 14
+      },
+      "selection": {
+        "rows": 15778,
+        "unique_subjects": 14109,
+        "rows_subject_in_index": 2667,
+        "answered": 1276,
+        "answered_entity_correct": 682
+      },
+      "valid": {
+        "rows": 2821,
+        "unique_subjects": 2682,
+        "rows_subject_in_index": 232,
+        "answered": 109,
+        "answered_entity_correct": 11
+      }
+    },
+    "overlaps": {
+      "fit/cal": {
+        "subjects": {
+          "left_unique": 15605,
+          "right_unique": 1855,
+          "intersection_unique": 189
+        },
+        "questions": {
+          "left_unique": 17322,
+          "right_unique": 1943,
+          "intersection_unique": 31
+        },
+        "linked_alias_phrases": {
+          "left_unique": 1071,
+          "right_unique": 154,
+          "intersection_unique": 146
+        }
+      },
+      "selection/cal": {
+        "subjects": {
+          "left_unique": 14109,
+          "right_unique": 1855,
+          "intersection_unique": 181
+        },
+        "questions": {
+          "left_unique": 15597,
+          "right_unique": 1943,
+          "intersection_unique": 26
+        },
+        "linked_alias_phrases": {
+          "left_unique": 1065,
+          "right_unique": 154,
+          "intersection_unique": 145
+        }
+      },
+      "fit/valid": {
+        "subjects": {
+          "left_unique": 15605,
+          "right_unique": 2682,
+          "intersection_unique": 231
+        },
+        "questions": {
+          "left_unique": 17322,
+          "right_unique": 2813,
+          "intersection_unique": 58
+        },
+        "linked_alias_phrases": {
+          "left_unique": 1071,
+          "right_unique": 191,
+          "intersection_unique": 181
+        }
+      },
+      "selection/valid": {
+        "subjects": {
+          "left_unique": 14109,
+          "right_unique": 2682,
+          "intersection_unique": 216
+        },
+        "questions": {
+          "left_unique": 15597,
+          "right_unique": 2813,
+          "intersection_unique": 51
+        },
+        "linked_alias_phrases": {
+          "left_unique": 1065,
+          "right_unique": 191,
+          "intersection_unique": 180
+        }
+      },
+      "cal/valid": {
+        "subjects": {
+          "left_unique": 1855,
+          "right_unique": 2682,
+          "intersection_unique": 72
+        },
+        "questions": {
+          "left_unique": 1943,
+          "right_unique": 2813,
+          "intersection_unique": 9
+        },
+        "linked_alias_phrases": {
+          "left_unique": 154,
+          "right_unique": 191,
+          "intersection_unique": 96
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "base": "cfa343e9948a61699061230f720d15f77b81ca52",
+  "parser": {
+    "bytes": 16697,
+    "sha256": "c28265c739409bc3ede44af54e55a42098323b0502f3cf14bef31a5a9cec69a3"
+  },
+  "baseline_binary": {
+    "bytes": 73894288,
+    "sha256": "5f76302ccde394ebf74e2b7d7bc0030ab12f0f34a2915b1f1618d68ba17cd11a"
+  },
+  "candidate_binary": {
+    "bytes": 125344352,
+    "sha256": "2d08433640d312e7a102a3257c05656591f17ca797c3092cc2858ba3561ac93f"
+  },
+  "artifacts": {
+    "baseline-sample": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/baseline-sample/results.json",
+      "bytes": 789,
+      "sha256": "4a062a0c423ba112b75287e899c912407209d894f1926cbdae51b1bcfd9e04f9"
+    },
+    "baseline-sample-absolute": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/baseline-sample-absolute/results.json",
+      "bytes": 4796,
+      "sha256": "b1f2dc5e07454f93ca3225dfe43df3267085b433fa651c32d625b4a512daf5b0"
+    },
+    "baseline-full": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/baseline-full/results.json",
+      "bytes": 6616,
+      "sha256": "5714b3fe45cee8fdaa5f02750170181f8d49e9424e19050dc47126603e110388"
+    },
+    "candidate-sample": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/candidate-sample/results.json",
+      "bytes": 4780,
+      "sha256": "6a7b8ccf8fcd43c4f31c8a9ed6eff861943050a9917190754f76b5ff36cd3745"
+    },
+    "candidate-full": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/candidate-full/results.json",
+      "bytes": 10530,
+      "sha256": "89c2beb9e7d2fc0f88aeef92d39093a234c12efde2a2b6cd47559fd195116ed8"
+    },
+    "independent": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/independent/results.json",
+      "bytes": 19537,
+      "sha256": "bbbaa93c23b00e45a87d47affd9cfe3bee51bedb87406c5e4b6822c00673e589"
+    },
+    "baseline-independent": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/baseline-independent/results.json",
+      "bytes": 6050,
+      "sha256": "61c576915e80c2adc9212df519222654d7dd4c90f55baf6169ca1b093098fd18"
+    },
+    "metatypes": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/metatypes/results.json",
+      "bytes": 54483,
+      "sha256": "4a267c5f079816eaa41bbacc7eb7e98750677185dfa7b0b52001209d2061c729"
+    },
+    "answerfiles": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/answerfiles/results.json",
+      "bytes": 25427,
+      "sha256": "e1097bc734d2122939be389eeaae67f19b400138926661edfaba18786c7bc755"
+    },
+    "baseline-answerfiles": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/baseline-answerfiles/results.json",
+      "bytes": 25432,
+      "sha256": "440628b7ec8ca64a09c4f2e28ef96b26ef485e561f0091b9bedebde230fff8d8"
+    },
+    "final-metatypes": {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/editlanguage-run/final-metatypes/results.json",
+      "bytes": 54483,
+      "sha256": "75494aff140fd077e5b7d9f4833266b48d14bba2219b0dc8d7aa35ca85e0ebb0"
+    }
+  },
+  "outcomes": {
+    "baseline-full": [
+      {
+        "changed": false,
+        "exact_rollback": true,
+        "passed": false,
+        "case": "add-book-pages-chatty",
+        "reply": "I can't follow the sentence from the marked spot."
+      },
+      {
+        "changed": false,
+        "exact_rollback": true,
+        "passed": false,
+        "case": "add-book-pages-hurried",
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored"
+      },
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true,
+        "case": "add-book-pages-terse",
+        "reply": "Added public field pages: u32 to Book; updated 5 constructors (6 verified edits)."
+      },
+      {
+        "changed": false,
+        "exact_rollback": true,
+        "passed": false,
+        "case": "add-task-priority-hurried",
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored"
+      },
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true,
+        "case": "add-task-priority-terse",
+        "reply": "Added public field priority: u8 to Task; updated 5 constructors (6 verified edits)."
+      }
+    ],
+    "candidate-full": [
+      {
+        "changed": false,
+        "exact_rollback": true,
+        "passed": false,
+        "case": "add-book-pages-chatty",
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      },
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true,
+        "case": "add-book-pages-hurried",
+        "reply": "Added public field pages: u32 to Book; updated 5 constructors (6 verified edits)."
+      },
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true,
+        "case": "add-book-pages-terse",
+        "reply": "Added public field pages: u32 to Book; updated 5 constructors (6 verified edits)."
+      },
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true,
+        "case": "add-task-priority-hurried",
+        "reply": "Added public field priority: u8 to Task; updated 5 constructors (6 verified edits)."
+      },
+      {
+        "changed": true,
+        "preserved": true,
+        "structural": true,
+        "behavior_preserved": true,
+        "passed": true,
+        "case": "add-task-priority-terse",
+        "reply": "Added public field priority: u8 to Task; updated 5 constructors (6 verified edits)."
+      }
+    ],
+    "independent": [
+      {
+        "case": "polite-reordered",
+        "expected_edit": true,
+        "changed": true,
+        "preserved": true,
+        "passed": true,
+        "reply": "Added public field offset: i32 to Sensor; updated 2 constructors (3 verified edits)."
+      },
+      {
+        "case": "hurried-bool",
+        "expected_edit": true,
+        "changed": true,
+        "preserved": true,
+        "passed": true,
+        "reply": "Added public field active: bool to Beacon; updated 2 constructors (3 verified edits)."
+      },
+      {
+        "case": "partition-char",
+        "expected_edit": true,
+        "changed": true,
+        "preserved": true,
+        "passed": true,
+        "reply": "Added public field marker: char to Rune; updated 2 constructors (3 verified edits)."
+      },
+      {
+        "case": "contraction-context",
+        "expected_edit": true,
+        "changed": true,
+        "preserved": true,
+        "passed": true,
+        "reply": "Added public field code: u64 to Ledger; updated 2 constructors (3 verified edits)."
+      },
+      {
+        "case": "scope-first",
+        "expected_edit": true,
+        "changed": true,
+        "preserved": true,
+        "passed": true,
+        "reply": "Added public field depth: usize to Crate; updated 2 constructors (3 verified edits)."
+      },
+      {
+        "case": "literal-backtick",
+        "expected_edit": true,
+        "changed": true,
+        "preserved": true,
+        "passed": true,
+        "reply": "Added public field tick: char to Clock; updated 2 constructors (3 verified edits)."
+      },
+      {
+        "case": "negative-compound",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      },
+      {
+        "case": "negative-negation",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      },
+      {
+        "case": "negative-conflict",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      },
+      {
+        "case": "negative-owner",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      },
+      {
+        "case": "negative-unconsumed",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      },
+      {
+        "case": "negative-context-action",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      },
+      {
+        "case": "negative-call",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored"
+      }
+    ],
+    "baseline-independent": [
+      {
+        "case": "polite-reordered",
+        "expected_edit": true,
+        "changed": false,
+        "passed": false,
+        "reply": "I can't follow the sentence from the marked spot."
+      },
+      {
+        "case": "hurried-bool",
+        "expected_edit": true,
+        "changed": false,
+        "passed": false,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored"
+      },
+      {
+        "case": "partition-char",
+        "expected_edit": true,
+        "changed": false,
+        "passed": false,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored"
+      },
+      {
+        "case": "contraction-context",
+        "expected_edit": true,
+        "changed": false,
+        "passed": false,
+        "reply": "I can't follow the sentence from the marked spot."
+      },
+      {
+        "case": "scope-first",
+        "expected_edit": true,
+        "changed": false,
+        "passed": false,
+        "reply": "I don't know the word `every`."
+      },
+      {
+        "case": "literal-backtick",
+        "expected_edit": true,
+        "changed": false,
+        "passed": false,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored"
+      },
+      {
+        "case": "negative-compound",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored"
+      },
+      {
+        "case": "negative-negation",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "I don't know the word `add`."
+      },
+      {
+        "case": "negative-conflict",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: expected a complete public field addition with explicit type and default for every existing constructor; unsupported clauses are not ignored"
+      },
+      {
+        "case": "negative-owner",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "I can't follow the sentence from the marked spot."
+      },
+      {
+        "case": "negative-unconsumed",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "I can't follow the sentence from the marked spot."
+      },
+      {
+        "case": "negative-context-action",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "I can't follow the sentence from the marked spot."
+      },
+      {
+        "case": "negative-call",
+        "expected_edit": false,
+        "changed": false,
+        "passed": true,
+        "reply": "Cannot add field: default expressions with calls, blocks or side effects are unsupported"
+      }
+    ]
+  },
+  "dev_provenance": {
+    "revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "license": "Unknown; no upstream LICENSE supplied; raw sources stay outsidegit",
+    "source_bytes": 5025,
+    "prompt_bytes": 972,
+    "files": {
+      "add-book-pages/prompts.json": {
+        "bytes": 655,
+        "sha256": "f4f8a1a5b81a7f4f73304e1f5da859249d985b28665faeb47d9f4bd6e8d0919d"
+      },
+      "add-book-pages/workspace/Cargo.toml": {
+        "bytes": 130,
+        "sha256": "f147ff636c8f578b5bcd672b31379d21a5632b5cd4a1a886dff8e85b6d609bd4"
+      },
+      "add-book-pages/workspace/src/book.rs": {
+        "bytes": 354,
+        "sha256": "493b17919dc6293e94d49b84b4f88bbc9275d9291414b804b73738cd13e953ba"
+      },
+      "add-book-pages/workspace/src/catalog.rs": {
+        "bytes": 1056,
+        "sha256": "cf96e025f34741816a912247f1b7e2b0c793cecf305711e82dfd1958946b2ae6"
+      },
+      "add-book-pages/workspace/src/lib.rs": {
+        "bytes": 121,
+        "sha256": "84dc7dcc1e727d6bd3d7d3de9c8ca2f38f3751ffadf32e8a15c77ca5fb90ebe8"
+      },
+      "add-book-pages/workspace/src/main.rs": {
+        "bytes": 330,
+        "sha256": "d33f13ccf2546740d1a5993361060ecb7156c747ba3f83bd68e76651fcc228bf"
+      },
+      "add-book-pages/workspace/src/seed.rs": {
+        "bytes": 555,
+        "sha256": "812b05ce8913f72eca4bc58706557a87cfa724cd09913ec970ffb702b42d154e"
+      },
+      "add-task-priority/prompts.json": {
+        "bytes": 317,
+        "sha256": "9f2e9c90acad561313d87b6b27b32bd151d5354dc71a0dbaa7f16e1fd62cce93"
+      },
+      "add-task-priority/workspace/Cargo.toml": {
+        "bytes": 130,
+        "sha256": "f147ff636c8f578b5bcd672b31379d21a5632b5cd4a1a886dff8e85b6d609bd4"
+      },
+      "add-task-priority/workspace/src/lib.rs": {
+        "bytes": 116,
+        "sha256": "b61c7ce56238de1b4072d4640fda50e2f0debf9ba33e5501c0d60805a7726914"
+      },
+      "add-task-priority/workspace/src/list.rs": {
+        "bytes": 989,
+        "sha256": "8e56ae15f7f992ffa383089c117bdfca8ee4034e44a4d7873926046f22f290ef"
+      },
+      "add-task-priority/workspace/src/main.rs": {
+        "bytes": 468,
+        "sha256": "7c8545f3abb20b6a317358cb5cd2e9c1eb75b8b137a688c6db1680ec00b48f30"
+      },
+      "add-task-priority/workspace/src/task.rs": {
+        "bytes": 315,
+        "sha256": "3b02cfb3bd9d096c005f943d4cb57545679f97775e9bf40a1904178a90188126"
+      },
+      "add-task-priority/workspace/src/templates.rs": {
+        "bytes": 461,
+        "sha256": "2f3d8d3c1dd6d2f338f140234fed3408183e5c02539a0851bd713d944703b1e9"
+      },
+      "provenance.json": {
+        "bytes": 3055,
+        "sha256": "53ceb71dcefa3d73a4cc5d43a2e49a368bd67d6f0402a8006b51915063f8b2ed"
+      }
+    }
+  },
+  "validation": {
+    "english_rust_tests": {
+      "passed": 38,
+      "failed": 0
+    },
+    "clippy": "pass -D warnings",
+    "fmt": "pass",
+    "build": "pass debug main CLI",
+    "declared_type_exports": {
+      "passed": 35,
+      "total": 35
+    },
+    "answer_exports": {
+      "unchanged_rows": 27,
+      "adapter_passed": 26,
+      "adapter_failed": 1,
+      "baseline_identical": true,
+      "mismatch": "unsupported_type expects refusal of already-supported Vec<u16> declared type"
+    }
+  },
+  "new_data": {
+    "downloads": 0,
+    "probes_source": {
+      "bytes": 5280,
+      "sha256": "d9667de6de5572d5a88ae65495f9e9d3058585a40a8b099b63bb51ed41e21505"
+    },
+    "license": "MIT OR Apache-2.0",
+    "source": "independently authored by this worker; fixtures embedded in probes.py; not official benchmark items",
+    "cases": 13,
+    "positives": 6,
+    "negatives": 7
+  }
+}

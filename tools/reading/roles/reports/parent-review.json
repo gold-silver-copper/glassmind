@@ -1,0 +1,77 @@
+{
+  "verified_provenance_files": 82,
+  "archived_original_files": 20,
+  "archived_original_bytes": 277065,
+  "complete_rows": 10570,
+  "official_scores": {
+    "baseline": {
+      "raw": {
+        "counts": {
+          "wrong": 8038,
+          "right": 2532
+        },
+        "official_exact": 2532,
+        "official_f1_percent": 34.51842504801282
+      },
+      "selected": {
+        "counts": {
+          "refused": 8964,
+          "wrong": 791,
+          "right": 815
+        },
+        "official_exact": 815,
+        "official_f1_percent": 8.700190089811684
+      }
+    },
+    "candidate": {
+      "raw": {
+        "counts": {
+          "wrong": 7939,
+          "right": 2631
+        },
+        "official_exact": 2631,
+        "official_f1_percent": 35.972557788253035
+      },
+      "selected": {
+        "counts": {
+          "refused": 9378,
+          "right": 694,
+          "wrong": 498
+        },
+        "official_exact": 694,
+        "official_f1_percent": 7.232043245677839
+      }
+    }
+  },
+  "corrected_transitions": {
+    "raw": {
+      "wrong->wrong": 6975,
+      "right->right": 1568,
+      "right->wrong": 964,
+      "wrong->right": 1063
+    },
+    "selected": {
+      "refused->refused": 8273,
+      "wrong->refused": 659,
+      "right->refused": 446,
+      "right->right": 363,
+      "wrong->wrong": 125,
+      "refused->wrong": 367,
+      "refused->right": 324,
+      "right->wrong": 6,
+      "wrong->right": 7
+    }
+  },
+  "worker_selected_transition_corrections": {
+    "refused->refused": 3,
+    "right->right": -3
+  },
+  "calibration": {
+    "threshold": 0.20381558,
+    "right": 43,
+    "accepted": 86
+  },
+  "legacy_predictions_byte_identical": true,
+  "note": "Original worker transition artifacts preserved; official aggregate metrics unchanged. Three refusals were mislabeled right-to-right by worker helper.",
+  "decision": "REJECTED:2631 rawcorrect below2638;694 selectedcorrect below815. No retraining or inference repeated."
+}

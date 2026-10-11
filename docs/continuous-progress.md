@@ -1,5 +1,93 @@
 # Continuous development checkpoint
 
+## Authoritative current state — 2026-10-11 UTC
+
+Goal active: follow `prompts/grow-continuously.md` until stopped. The preceding
+prompt-only response made no project progress; this turn revalidated live jobs,
+completed the full coding comparison and independently audited reading/facts.
+No persistent blocker. Older sections below are historical, including ACTIVE
+labels; this section supersedes them.
+
+WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
+Source HEAD `eb22519f20325e72549a103cf99180ea0dbc2ba3`; PR15 already MERGED
+`e1fd2d2fb1634ceb3361f1fc05e4bc89a8db58f9` at exacthead176dc89, CI38115264848.
+Next publishing batch is PR16, not yet opened. Local e8fc354 records rejected
+TRAIN facts expansion; eb22519 integrates compositional field-language parsing.
+
+### Completed, verified, ready to publish
+
+- EDITLANGUAGE: archived original5files/50,089bytes, worktree/auth removed.
+  Parent reproduced and fixed dangling `. and` / `; and` acceptance. Independent
+  sample2/2, supplied full4/5,13/13 behavioral probes,35/35 typechecks,8/8 queries,
+  three incomplete-clause refusals,38 English tests, workspace fmt/all-clippy/
+  release/strict4/4smoke all pass. Sourceeb22519, binarySHA
+  bb5dae741d23b84d9ce07707ee536aeaf38089be34330724221ed50bb2f1bacb.
+  Full765 COMPLETE session52941:174pass588refused3fail. Exactlytwo hurried
+  field-addition refusals become passes; all172 previous passes retained and
+  allother763 outcomes unchanged. ResultSHA
+  eaef77bfe21709e8eb61c2d6aea388536ab795cbc91e08c8b44952abd6e3a5f5.
+  `docs/results/coding-editlanguage.json`, `tools/coding-editlanguage/integrated/`.
+  No active parent jobs; completed52941/33880/51191/69315 must not be restarted.
+- LINKQUALITY REJECTED. Original15files/72,850bytes archived/hashverified;
+  worktree/auth removed. Parent verified51hashes and recomputed all19481TRAIN
+  and2821DEV paired transitions in both500/999scopes. Typed what/which adjacency
+  removes3correctTRAIN entity links, failing frozen gate. New999DEV47/2712/62
+  becomes8/2792/21 right/refused/wrong, losing39scoredright. Old500 unchanged.
+  Learned gate was impossible at min50/95%:CAL had only14correctentityanswers.
+  Runtime restored; unapplied patch/evidence in `tools/facts/linkquality/`.
+- Separate joint facts audit: unchanged historical500 predictions score
+  252right2545refused24wrong versus answer-only256/2545/20. RejectedTRAIN999
+  scores2/2712/107 versus answer-only47/2712/62. All differences are wrong-subject
+  answer coincidences. New metric distinct; old scorer/gates unchanged.
+  Offline coverage/order/official-total checks and2focused tests pass.
+  `tools/facts/JOINT-AUDIT.md`, `docs/results/facts-{old500,train999}-joint.json`.
+- QAROLES COMPLETE/REJECTED. Original20files/277,065bytes archived and rechecked;
+ 82provenancehashes verified, worktree/auth removed. Runtime fully restored.
+  Raw2532→2631 exact (required2638), F134.5184→35.9726. Selected815→694correct,
+  791→498wrong,8964→9378refused;precision58.22% but correct-count gate fails.
+  Parent recomputed all10570 officialscores/transitions and43/86CAL threshold.
+  Worker transition helper misclassified3unchangedrefusals due to empty-normalized
+  gold variants; corrected right→right363, refused→refused8273. Official aggregates
+  unchanged. Original artifacts preserved, parent-review.json authoritative.
+  All10570v1outputs byte-identical;10worker tests pass, experimentalclippy fails14
+  indexing violations. No rejected model shipped; no newtrain/inference rerun.
+  Evidence `tools/reading/roles/`, raw `WORK/qaroles-run/roles`.
+
+Known completed worker tokens67,107,462 including cached input once. Parent and
+unfinished/interrupted usage excluded. Scoreboard adds174coding and separate252
+joint-facts point; rejected999/reading candidates are evidence, not shipped gains.
+
+### Live work and next actions
+
+REPAIRAMBIGUITY2 is the sole live model worker, confirmed systemd ACTIVE.
+PID2927471, scopeglassmind-continuous-repairambiguity2.scope, worktree
+WORK/repairambiguity2 at eb22519, runWORK/repairambiguity2-run,
+briefWORK/repairambiguity2-task.txt. Owns world-Rust checks/slips/new pure-scalar
+ambiguity helper and tools/coding-ambiguity. Forced GPT6Astra fast/ChatGPT login,
+API environment removed,8GiB/zero-swap scope. Do not restart on observationtimeout.
+Hypothesis: two original-test-passing candidate repairs with concrete differing
+outputs on the same defined typed input establish underconstrained repair.
+No expected-answer invention or test changes; unsupported analysis preserves old
+behavior, sampled agreement is not proof. Worker replays original27TRAINrequests,
+parent must independently verify and run full765 before shipping any repairchange.
+
+First repairambiguity attempt PID2921391 was deliberately stopped after discovering
+parent omitted original PUBLIC tests/visible.rs from fixture copies. No accepted
+metrics; original clean worktree removed and auth unlinked. Bad preparation and
+abort explanation retained in WORK/repairambiguity-run/PREPARATION-ABORT.txt.
+Replacement bundle108files/29,232bytes includes27original visible integrationtests,
+27Cargo.toml,27src/lib.rs,27cachedCargo.lock. No hidden/generator/solution content.
+
+Next: publish current verified parser+audit batch after required exact-head CI;
+review repair worker when terminal (archive before integration). Reading needs
+better supervision/representation, not another threshold or acceptance relaxation.
+Revisit dialogue proposal quality after rejected boundary filter; keep coding and
+conversation moving. Preserve stopped dirty old loop; on stop terminate onlyowned
+jobs and remove temporary auth links. No goal completion at a milestone.
+
+## Historical checkpoints (superseded by current state above)
+
+
 Goal active: follow `prompts/grow-continuously.md` until the user stops it.
 Previous goal turns made concrete progress; no blocking condition exists.
 

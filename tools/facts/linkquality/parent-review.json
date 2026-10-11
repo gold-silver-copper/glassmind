@@ -1,0 +1,46 @@
+{
+  "verified_artifact_files": 51,
+  "splits": {
+    "old500-train": {
+      "total": 19481,
+      "transitions": {
+        "refused->refused": 19405,
+        "wrong->wrong": 64,
+        "right->right": 12
+      },
+      "correct_entity_links_withdrawn": 0
+    },
+    "old500-valid": {
+      "total": 2821,
+      "transitions": {
+        "refused->refused": 2545,
+        "right->right": 256,
+        "wrong->wrong": 20
+      },
+      "correct_entity_links_withdrawn": 0
+    },
+    "new999-train": {
+      "total": 19481,
+      "transitions": {
+        "refused->refused": 18025,
+        "right->refused": 268,
+        "wrong->refused": 360,
+        "right->right": 538,
+        "wrong->wrong": 290
+      },
+      "correct_entity_links_withdrawn": 3
+    },
+    "new999-valid": {
+      "total": 2821,
+      "transitions": {
+        "refused->refused": 2712,
+        "wrong->refused": 41,
+        "right->right": 8,
+        "right->refused": 39,
+        "wrong->wrong": 21
+      },
+      "correct_entity_links_withdrawn": 1
+    }
+  },
+  "decision": "rejected under original TRAIN entity-preservation and full-dev answer-preservation gates; new joint audit does not rescue candidate"
+}

@@ -1,0 +1,420 @@
+{
+  "base_commit": "eb22519f20325e72549a103cf99180ea0dbc2ba3",
+  "source_revision": "eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+  "data_license": "SQuAD1.1 CC-BY-SA-4.0; repository/scorer MIT",
+  "source_url": "https://github.com/rajpurkar/SQuAD-explorer/tree/eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+  "new_external_data_bytes": 0,
+  "dataset_bytes": 35142551,
+  "files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/model.json",
+      "bytes": 873881,
+      "sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/full.candidate.outputs.jsonl",
+      "bytes": 1962199,
+      "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/full.input.jsonl",
+      "bytes": 9235127,
+      "sha256": "88e26d11c9827053401182ac81a5ed6bee3c1784c36240b12971b4595cef2a3a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/full.json",
+      "bytes": 983,
+      "sha256": "b254cb6b6248ab4a560b2476a78e73ef32719bf2ea6b5ac17aeb9e86768ee9ab"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/selection.json",
+      "bytes": 176275,
+      "sha256": "8a0708eb7f02b5ac9f6c38e9bed27414c753f10328f14d414d063b2e96606831"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/calibration.json",
+      "bytes": 409,
+      "sha256": "ea66b93104cc42c31545c16e6c4a8eab83899c45025ba87889432b8076c8caf9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/independent.json",
+      "bytes": 3122,
+      "sha256": "dcfac76159a485b6f6274f5b8b6e27dfe34beebd19b28c1b763911161ba387eb"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/fit.input.jsonl",
+      "bytes": 3423180,
+      "sha256": "8a7d2c6aa69c8f0eeb44f637be09a3252e994b06388b8c9a2f820b878ac77cac"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/fit.train.jsonl",
+      "bytes": 3573508,
+      "sha256": "e1b8efc792d08b16cd3a56bafa76f4d23b418e7f767fa70672fffea99581aea1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/cal.input.jsonl",
+      "bytes": 869071,
+      "sha256": "2791c0fc987ebcf5d8777f277f9823bd47bdc6682c0337fefbb709f8adc2fbad"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/cal.labels.json",
+      "bytes": 1029325,
+      "sha256": "3a8795dec065762ee506991be3f5e10f761011c9540bd94861ff1467754cc309"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/baseline/cal.outputs.jsonl",
+      "bytes": 183875,
+      "sha256": "e7660b6c6ce6574c954f5de0a676bbd19f2646f116929aecc5bde3b56227e728"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/train-v1.1.json",
+      "bytes": 30288272,
+      "sha256": "3527663986b8295af4f7fcdff1ba1ff3f72d07d61a20f487cb238a6ef92fd955"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/dev-v1.1.json",
+      "bytes": 4854279,
+      "sha256": "95aa6a52d5d6a735563366753ca50492a658031da74f301ac5238b03966972c9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/evaluate-v2.0.py",
+      "bytes": 10547,
+      "sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/LICENSE",
+      "bytes": 1073,
+      "sha256": "9c92e90621a47dc8508ddd78f0ee41a7b6a8fd5d37fd00709ff1c6eb1a7d7019"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-source/revision.txt",
+      "bytes": 41,
+      "sha256": "3701e662bb5e52c4333600da017c3cc6d1bc31ab817cf58de600a66bf48dac9f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/original-qa.rs",
+      "bytes": 19303,
+      "sha256": "0eaef788ed493c0fa23ca81354e6d1b26e609a1f38449df212764cd966b0c991"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/original-reading-qa.rs",
+      "bytes": 2300,
+      "sha256": "2b7f4f2ceded611de303fbe5097df2f405b2c504fb5307ab577b14d7904f2de1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/edit.py",
+      "bytes": 7114,
+      "sha256": "2baec0f82adf482073aefe294a5c2693816065d25981b46062021198039e833d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/build.log",
+      "bytes": 2073,
+      "sha256": "0b8d905c13ce65cf47b46aaffee4a825507c9bc6bba279129a2e3abba99a842d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/fit.input.jsonl",
+      "bytes": 3423180,
+      "sha256": "8a7d2c6aa69c8f0eeb44f637be09a3252e994b06388b8c9a2f820b878ac77cac"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/fit.train.jsonl",
+      "bytes": 3573508,
+      "sha256": "e1b8efc792d08b16cd3a56bafa76f4d23b418e7f767fa70672fffea99581aea1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/cal.input.jsonl",
+      "bytes": 869071,
+      "sha256": "2791c0fc987ebcf5d8777f277f9823bd47bdc6682c0337fefbb709f8adc2fbad"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/cal.labels.json",
+      "bytes": 1029325,
+      "sha256": "3a8795dec065762ee506991be3f5e10f761011c9540bd94861ff1467754cc309"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/probes.input.jsonl",
+      "bytes": 1492,
+      "sha256": "0616129d4e5369f42eb72680586048abb2f2ec461c6a2ac689cefd43ec5c4f1a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/build-final.log",
+      "bytes": 279,
+      "sha256": "b6915571417f3f80e936db9ff72f46174e219cf30e62f8407d784907a193ba48"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/tests.log",
+      "bytes": 2863,
+      "sha256": "b2c0f71f1df471f3ca7b2f7670b1383a4336fd9780642b36822d34723b0fbef5"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/reading-qa",
+      "bytes": 11686896,
+      "sha256": "c1a53debe43020960d60f083e2010bc75ef04958de4bf993e2f88f8af98fc4c2"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/train.log",
+      "bytes": 260,
+      "sha256": "074674c0e41745dd68e2d7fab7d456c7ae8f43c2cf55835626dd73042e1af234"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/model.json",
+      "bytes": 1077405,
+      "sha256": "b33fd772f5c6f57896c99bee5754eb91eef7d0419178514d2488a0ae1879d6ad"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/probability-tests.log",
+      "bytes": 429,
+      "sha256": "68c575e7e974cc260e7d4806595244e860d7d9b1217a8d698823480cf57944ef"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/calibrate.log",
+      "bytes": 479,
+      "sha256": "d25eeab10c9e859c8f2c42a48caee510bd26ebb30c1a138852f01d7acda5b5c1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/cal.outputs.jsonl",
+      "bytes": 184052,
+      "sha256": "5d6b7c401778b4ee09d3d919e410d0f55b0a66d34cc9441d5b46892a2b68f44f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.log",
+      "bytes": 1221,
+      "sha256": "36c1261922cdfe41584571e737d37eac302e38e0534cd1c9f2b7f2da17a08c84"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.input.jsonl",
+      "bytes": 171912,
+      "sha256": "d74eba694c80e6371fbd78cb8cf0bc1b76c56a87cb5aedfa7b887aa75f9e5b1e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.outputs.jsonl",
+      "bytes": 37014,
+      "sha256": "c412fa3801623c89457dec2ce030654f88a1d9a07f058d7fd5081ef43d45c654"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.baseline.raw.json",
+      "bytes": 9998,
+      "sha256": "b5d50759604c886be97507838fad8a565e247bba4603b3378d55ca1812f6c53b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.baseline.accepted.json",
+      "bytes": 7195,
+      "sha256": "a3866c062aacba83a5ef08f26b349d26629417876263f4b6c592d3be8c282d3d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.candidate.raw.json",
+      "bytes": 9851,
+      "sha256": "9afac83fab9b1d26a4285dcafc0b61f317980cc935f75785f84c419591b63119"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.candidate.accepted.json",
+      "bytes": 6963,
+      "sha256": "b94cb99e9ff1ec31dcf667a3d0287f57b50872b32ec67fd0bd110a5ea1e841e9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/sample.transitions.json",
+      "bytes": 64717,
+      "sha256": "3be6d19025fed6c8040e9bbb158b83b3a6a97057af61ffccee7f3ca54ffece1b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.log",
+      "bytes": 1447,
+      "sha256": "a99c0b4c556474a96a7ab7d0d05049de79bd31db7fdfd137d8b3984a86eb45ab"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.input.jsonl",
+      "bytes": 9235127,
+      "sha256": "88e26d11c9827053401182ac81a5ed6bee3c1784c36240b12971b4595cef2a3a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.outputs.jsonl",
+      "bytes": 1958778,
+      "sha256": "4b6aff8bfcaf33a2360f547e3c89030cf07e73d307a8e0280559d922eac507ef"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/clippy.log",
+      "bytes": 7381,
+      "sha256": "c09cb9c2918d1f71bdfa408c380360690b52c1327c70c0c69c56db63ab424ba4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/probability-bin-tests.log",
+      "bytes": 780,
+      "sha256": "af1e725bae6375855f3622343549584b22229e9934786150c2cc3cf5a5c9027e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.baseline.raw.json",
+      "bytes": 520183,
+      "sha256": "07a29adda9ef0d3a715903d47e1775235750e3af59f81251844a4c4d0153cd73"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.baseline.accepted.json",
+      "bytes": 376905,
+      "sha256": "21224d894abb2c94af04dba5896c9336e2c247fb09507130a00c1221607a01d7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.candidate.raw.json",
+      "bytes": 522850,
+      "sha256": "2136489712fa092860970a4f6029abdd226bc59bcb6eb02f8c7ce80d482f83a2"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.candidate.accepted.json",
+      "bytes": 371264,
+      "sha256": "eefc6bd59a4f68b3db52ce5dc150717a09988ecdadb26f8b4b6775f1cdf898bc"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/full.transitions.json",
+      "bytes": 3414714,
+      "sha256": "42e4b0e1654388a5387b3fcc084041f179838a45b8e13ae3a7f6e329a14aa8de"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/v1.replay.outputs.jsonl",
+      "bytes": 1962199,
+      "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/probes.log",
+      "bytes": 635,
+      "sha256": "04566819649cd19f37df20cbb5dfb4a4cc3f43f72a6ab8c3c2dde7daa4f26f53"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/baseline.probes.outputs.jsonl",
+      "bytes": 3276,
+      "sha256": "0fd4538f7fdcf6cbce06348086fb916b90bb72be417a050c4ebaae1d13551005"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/candidate.probes.outputs.jsonl",
+      "bytes": 3266,
+      "sha256": "8a11e52c00064941446fc0531dd2965c6a5dfc584d64edb16d26e0d86c9a013c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/evaluated-qa.rs",
+      "bytes": 29369,
+      "sha256": "7c0a987178130c472405af900b9caa25b7c442c72eeb83e7895cae86787d39a1"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/evaluated-reading-qa.rs",
+      "bytes": 2607,
+      "sha256": "cf8614c34461aae48dc454de835e179cff6c7ab8c38346b0987f166bb116d88e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/fmt.log",
+      "bytes": 95,
+      "sha256": "9f09721bf7d4f4b020154f155f85b83c17a51c1a6d5771299337afbf99d2b84f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles-run/roles/cal.frontier.json",
+      "bytes": 109946,
+      "sha256": "da85212daedf42c0278e3f1bba3365539e1cc0fb2ba3465668b5c8e18558791e"
+    },
+    {
+      "path": "crates/reading/src/qa.rs",
+      "bytes": 19303,
+      "sha256": "0eaef788ed493c0fa23ca81354e6d1b26e609a1f38449df212764cd966b0c991"
+    },
+    {
+      "path": "crates/reading/src/bin/reading-qa.rs",
+      "bytes": 2300,
+      "sha256": "2b7f4f2ceded611de303fbe5097df2f405b2c504fb5307ab577b14d7904f2de1"
+    },
+    {
+      "path": "crates/reading/src/probability.rs",
+      "bytes": 7619,
+      "sha256": "de905ee5e83bbfeb71912cedcf8f3c0875e65cfa1c7ac83a541f98c8c7ce1096"
+    },
+    {
+      "path": "tools/reading/qa/run.py",
+      "bytes": 9230,
+      "sha256": "13afaf3b8962c8720e16a57403fe4814d0e61ba8a9e3d33a85b63ecc17dc480e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/experiment.py",
+      "bytes": 7140,
+      "sha256": "3fc77cdc08924b5ba93d59741eaad1d2004f728cd83474c9af034236defaa1fe"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/provenance.py",
+      "bytes": 1416,
+      "sha256": "f002a88952cef349ba9ca7ad9dc0f962de136b9236ba69552478dc307934975e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/audit.py",
+      "bytes": 3358,
+      "sha256": "6763597af2d9504f4cf3e3caed3601b50c1c1762f28a3dd058034eb5934a4f2b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/PREREGISTER.md",
+      "bytes": 3046,
+      "sha256": "1dbe8a43832b044899bcfdcb44126cefc3099c16f5715da662427305ad5a7314"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/HANDOFF.md",
+      "bytes": 11180,
+      "sha256": "0345a8e1a7f186e36e6b6e65da4caa9124678d558362b964f59f73ca7ca65a9e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reproduce.sh",
+      "bytes": 1206,
+      "sha256": "91565bfd593a3c996478b3a1d651ce979ae682b88ca7a3dcd84495ef688ff69b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/rejected.patch",
+      "bytes": 14478,
+      "sha256": "6010fee4a3ea775d49d467e4dd8352f6b847c4dd446b699d1a6616c409ca8039"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/selection.json",
+      "bytes": 176275,
+      "sha256": "8a0708eb7f02b5ac9f6c38e9bed27414c753f10328f14d414d063b2e96606831"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/baseline.json",
+      "bytes": 983,
+      "sha256": "b254cb6b6248ab4a560b2476a78e73ef32719bf2ea6b5ac17aeb9e86768ee9ab"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/train-inspection.json",
+      "bytes": 11334,
+      "sha256": "1cab3cdcfd56deab01ace76c1b08f2dd95db5f8388f3782fa0e42726f91c5513"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/preregister-hashes.json",
+      "bytes": 488,
+      "sha256": "5f1fe84401edf08f99232a5f9ada7f1e23e05cb3086417cb4ebec746a6ad62fa"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/design-audit.json",
+      "bytes": 1014,
+      "sha256": "7a9c3524ec0efcdfb0e37a9f004097f6a98f1967dd21832576e8287c1150f83c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/calibration.json",
+      "bytes": 408,
+      "sha256": "19b531f21a33503ed00ac8028a4e2ee3ccc5ed4947e11daad33245d0ac08b1ed"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/freeze.json",
+      "bytes": 202,
+      "sha256": "33b11c825043a87d38fd40d664019f21d2884f230ba9667252d7977e67d84bb4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/sample.json",
+      "bytes": 1126,
+      "sha256": "ec92906e2315e2a25aea6fca5636b2e718c0461ca8a543350ca9f404f0d9976c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/full.json",
+      "bytes": 1352,
+      "sha256": "612e594ef489809c6e7e8075e7725018c607ee607a274beb2e9cae961c486b5e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/probes.json",
+      "bytes": 19436,
+      "sha256": "a197f2ad07dd1d15549156db8459c950f769a2af3e71c1456f8350404a14cf5d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/qaroles/tools/reading/roles/reports/validation.json",
+      "bytes": 1566,
+      "sha256": "aba8408d0dab443da16921f302cade3c10ad7d3144d520dcc50f7e9fd23c448c"
+    }
+  ]
+}

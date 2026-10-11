@@ -1,0 +1,78 @@
+{
+  "split": "train",
+  "total": 19481,
+  "counts": {
+    "baseline": {
+      "refused": 19405,
+      "wrong": 64,
+      "right": 12
+    },
+    "candidate": {
+      "refused": 19405,
+      "wrong": 64,
+      "right": 12
+    }
+  },
+  "transitions": {
+    "refused->refused": 19405,
+    "wrong->wrong": 64,
+    "right->right": 12
+  },
+  "unchanged": 19481,
+  "withdrawn": 0,
+  "answered_entity_correct": {
+    "baseline": 26,
+    "candidate": 26
+  },
+  "scored_right_entity_mismatch": {
+    "baseline": [
+      3166,
+      3395,
+      4267,
+      4826,
+      6996,
+      7929,
+      8692,
+      8945,
+      12009,
+      13372,
+      15592
+    ],
+    "candidate": [
+      3166,
+      3395,
+      4267,
+      4826,
+      6996,
+      7929,
+      8692,
+      8945,
+      12009,
+      13372,
+      15592
+    ]
+  },
+  "changed_claims": [],
+  "revived_refusals": [],
+  "new_wrong_rows": [],
+  "correct_to_refused_rows": [],
+  "wrong_to_refused_rows": [],
+  "correct_entity_links_removed": [],
+  "files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/train.tsv",
+      "bytes": 1193868,
+      "sha256": "25c5994c4e3a4dad39bacf3c457b3ff4cf7b199630eb78045a0b478e4fda145b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/old500-train-pairs.jsonl",
+      "bytes": 4283671,
+      "sha256": "cb6538889046c8f4eafeeea6785433603a540233b4a570a4171b118fb9039428"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/old500-train-audit.jsonl",
+      "bytes": 7953814,
+      "sha256": "18f62657dd8f410c2baa1d9ee5bbc6104b386f077bc463aac05cdf6a35228d68"
+    }
+  ]
+}

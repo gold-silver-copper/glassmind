@@ -1,0 +1,254 @@
+[
+  {
+    "case": "polite-reordered",
+    "request": "Use -12 for all existing constructors. Could you please add a public field offset: i32 to the Sensor struct?",
+    "expected_edit": true,
+    "changed": true,
+    "result": {
+      "code": 0,
+      "stdout": "Added public field offset: i32 to Sensor; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "preserved": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest original ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest contract ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2870816-i95119583.scope; invocation ID: 7f22600f7a2846f6a4b3ba135f18c78d\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/polite-reordered)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/contract-14d042635279d3f5)\n   Doc-tests independent\n"
+    },
+    "behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2870913-i95143122.scope; invocation ID: 7f8d02adecf84b578bd760ef69021ce0\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "old_behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2870281-i95119558.scope; invocation ID: 5e80d1834ccf4c2481e7e1c924cd3975\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/polite-reordered)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "passed": true
+  },
+  {
+    "case": "hurried-bool",
+    "request": "add active: bool (pub) to Beacon struct + fix everywhere beacons get created, just use true active for the existing ones",
+    "expected_edit": true,
+    "changed": true,
+    "result": {
+      "code": 0,
+      "stdout": "Added public field active: bool to Beacon; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "preserved": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest original ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest contract ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2871322-i95123296.scope; invocation ID: c4a73ae2d55048a18f43209d0be4d279\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/hurried-bool)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/contract-14d042635279d3f5)\n   Doc-tests independent\n"
+    },
+    "behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2871422-i95087490.scope; invocation ID: c82c448b21ae441f9710074e3c856c6d\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "old_behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2870925-i94924310.scope; invocation ID: 37f79c2190b74f2bb2b1c7ecc4d75380\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/hurried-bool)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "passed": true
+  },
+  {
+    "case": "partition-char",
+    "request": "need a marker field on Rune (pub, char). default '\u03bb' in Rune::new and use '\u03bb' for all the other Rune { .. } literals",
+    "expected_edit": true,
+    "changed": true,
+    "result": {
+      "code": 0,
+      "stdout": "Added public field marker: char to Rune; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "preserved": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest original ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest contract ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2871783-i95104193.scope; invocation ID: 213287cfa03248b8a426e04e560ae2b4\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/partition-char)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.17s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/contract-14d042635279d3f5)\n   Doc-tests independent\n"
+    },
+    "behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2871888-i95123333.scope; invocation ID: cc551e925d3e434487d4f76969492611\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "old_behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2871434-i95154476.scope; invocation ID: 96f5784d61644bef8ae6833a6ada5520\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/partition-char)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "passed": true
+  },
+  {
+    "case": "contraction-context",
+    "request": "Hi! I'd like you to add pub code: u64 to Ledger. I don't know the default yet. Use 0x2A_u64 for every existing constructor. Thanks!",
+    "expected_edit": true,
+    "changed": true,
+    "result": {
+      "code": 0,
+      "stdout": "Added public field code: u64 to Ledger; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "preserved": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest original ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest contract ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2872249-i94924377.scope; invocation ID: e4fb4ff878854e86b2dc8ee01c9c4786\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/contraction-context)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/contract-14d042635279d3f5)\n   Doc-tests independent\n"
+    },
+    "behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2872348-i95151452.scope; invocation ID: 1589cc1c1d344146bff9404df686d979\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "old_behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2871901-i95127391.scope; invocation ID: deae3754db2a4d42b41a3622727ca034\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/contraction-context)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "passed": true
+  },
+  {
+    "case": "scope-first",
+    "request": "Update every place a Crate is built. Use 5 for the existing crates. Add a pub depth: usize field to Crate.",
+    "expected_edit": true,
+    "changed": true,
+    "result": {
+      "code": 0,
+      "stdout": "Added public field depth: usize to Crate; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "preserved": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest original ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest contract ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2872714-i95182880.scope; invocation ID: cef79b795d774b459a7d36e10c6d15d6\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/scope-first)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/contract-14d042635279d3f5)\n   Doc-tests independent\n"
+    },
+    "behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2872812-i95182891.scope; invocation ID: 2b181f38138346ca993cd4a9674e58fe\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "old_behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2872360-i95083929.scope; invocation ID: 329c5b5df5de433881265bb3a9910b97\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/scope-first)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "passed": true
+  },
+  {
+    "case": "literal-backtick",
+    "request": "Add pub tick: char to Clock. Use '`' for all existing constructors.",
+    "expected_edit": true,
+    "changed": true,
+    "result": {
+      "code": 0,
+      "stdout": "Added public field tick: char to Clock; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "preserved": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\ntest original ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest contract ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p2873177-i95151508.scope; invocation ID: 63b5ccd958584a51b8a0164de22e2673\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/literal-backtick)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/independent-319165b408077c60)\n     Running tests/contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/deps/contract-14d042635279d3f5)\n   Doc-tests independent\n"
+    },
+    "behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2873277-i95143257.scope; invocation ID: 4b55d5414a08485f81a72593ab2b1f57\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "old_behavior": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p2872824-i95182892.scope; invocation ID: 76311370a3d54cffa8d71325eb9f3926\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/independent/literal-backtick)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/editlanguage-check/cargo-target/debug/independent`\n"
+    },
+    "passed": true
+  },
+  {
+    "case": "negative-compound",
+    "request": "Add pub offset: i32 to Sensor. Use -12 for all existing constructors and rename Sensor to Gauge.",
+    "expected_edit": false,
+    "changed": false,
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "passed": true
+  },
+  {
+    "case": "negative-negation",
+    "request": "Don't add pub offset: i32 to Sensor. Use -12 for all existing constructors.",
+    "expected_edit": false,
+    "changed": false,
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "passed": true
+  },
+  {
+    "case": "negative-conflict",
+    "request": "Add pub offset: i32 to Sensor. Sensor::new sets it to -12; every other place that builds a Sensor uses -13 too.",
+    "expected_edit": false,
+    "changed": false,
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "passed": true
+  },
+  {
+    "case": "negative-owner",
+    "request": "Use -12 for all existing constructors. Add pub offset: i32 to Sensor. Update every place a Gauge is built.",
+    "expected_edit": false,
+    "changed": false,
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "passed": true
+  },
+  {
+    "case": "negative-unconsumed",
+    "request": "Could you add pub offset: i32 to Sensor? Use -12 for all existing constructors except tests.",
+    "expected_edit": false,
+    "changed": false,
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "passed": true
+  },
+  {
+    "case": "negative-context-action",
+    "request": "I don't know the default yet and delete the tests. Add pub offset: i32 to Sensor. Use -12 for all existing constructors.",
+    "expected_edit": false,
+    "changed": false,
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "passed": true
+  },
+  {
+    "case": "negative-call",
+    "request": "Add pub offset: i32 to Sensor. Use 12() for all existing constructors.",
+    "expected_edit": false,
+    "changed": false,
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "passed": true
+  }
+]
