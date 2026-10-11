@@ -1,6 +1,6 @@
 # Continuous development checkpoint
 
-## Current checkpoint — PR36 merged; repair veto and child-feature workers active
+## Current checkpoint — child features rejected; repair veto and fact verification active
 
 The unlimited continuous goal remains active. WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Root branch harness, lastsourcechange6a346c3 rolls back rejected8aeb5ac. Root crate
@@ -10,8 +10,8 @@ published rawsyntax. PR36 merged at2026-10-11T10:41:57Z as643929fc72fdddaacde68b
 reviewed head84c088479adef31a7c9ad2e1094ec39abc9f2717 passed CI38132804777
 in62seconds. Push76354/create45165/merge12324 COMPLETE; no openPR. External
 five-line milestone appended. PR35 remains the last actual runtime improvement. Coding180/765 andrawsyntax1556/2001
-remain published; no new runtime gain. Completed worker tokens148045514, excluding
-parent/interrupted and active repairveto/syntaxchildren workers.
+remain published; no new runtime gain. Completed worker tokens149453961, excluding
+parent/interrupted and active repairveto/factverify workers.
 
 REPAIRSPEECH coordinator candidate8aeb5ac FAILED full765:53pass712refused0fail,
 all53retainedbut127 of180oldpasses lost. Session51761 COMPLETE; do notrerun. Exact
@@ -64,32 +64,60 @@ Worktree/auth removed onlyafterreverification. Originals remain syntaxnorm-run;
 smallreports tools/reading/syntax-normalized +parent; docsresultsrejectedJSON.
 Two decoderobjectives exhausted; no thirdscore/width/temperaturetweak.
 
-ACTIVE SYNTAXCHILDREN: PID1410721, scopeglassmind-continuous-syntaxchildren.scope,
-WORK/syntaxchildren branchcontinuous/syntaxchildren at6a346c3; runWORK/syntaxchildren-run.
-RequiredAstrafast/ChatGPTlogin/noAPIkeys;outer8GiB0swapverified. Newtraining feature
-hypothesis secondoutermostleft/rightchild+head/tag/labelconjunctions(top2stack),
-<=32additionalfeatures, same2tag/3parserTRAINepochs/staticoracle/greedydecoder,
-oneTRAINmodel only,noDEVtuning. Newexplicit train --child-features/version dispatch;
-legacyv1load/save/defaulttrain/fullraw/forms muststaybyteidentical. Model<32MiB,
-allbounds unchanged. Workerreadinglib/standalone/newtools only; parentmainintegration.
-Gate>=19673LAS and>=20540UAS/all2001valid/no newrefusals plusparentcoreedgepreservation.
-Freshparent20modifier/question/rolecontrasts40edges frozen beforeinspection at
-coordinator/syntaxchildren-independent, casesSHA
-98474dd00e465f90b27f618165308b2d3fccd8efb3a1a5d2015f729db7e0b135.
-Baseline COMPLETE31/40coreedges,15/20allcorrect. No candidateinspected. Trainingdata
-pinnedEWTTRAIN/DEVonly,noofficialtest/download. Baselinebundle byteverified.
+SYNTAXCHILDREN terminalREJECTED androlledback. Independentlyrescored all2001:
+LAS19423→19443 (+20<250gate), UAS20540→20515 (−25),0refusals/alltreesvalid.
+Parentfrozen20/40 baseline31→30edges,15→14complete; oneoldcorrectobject becomes
+nsubjunderfinaladverb in “The nurse thanked the young doctor yesterday.” No gains.
+FullLAS789correct→wrong/809wrong→correct; UAS767/742;50exactlabeledtreeslost.
+Model06f84e0df48aa57044cc2f88a872a1bbc8fbad274ed57d406db24ad09a3d38dd;
+binary93ab78d3b6800f91a620e98fe0cbbc918990292ee16a6ebd4cf86b2672e95383;
+fullpredictions3bcd37f158c2744a044b4884030ea9aea661abf4cc74b9c962bc325e359bda91.
+OneTRAIN fit4.58sec/291808KiB;32newfeatures,oldtaggeridentical,defaultv1fullforms/raw
+byteidentical. Newmodel/source NOTintegrated. Original73archive98,513,691bytes,
+parent28/78,662bytes,20freeze42,739,823bytes verified. Alllivecandidate/archive/
+parent/rootcopies reverified beforeinactiveworktree/auth removal(nowremoved).
+Rawartifacts syntaxchildren-run/candidate and rejected-archive; parentfullreview
+coordinator/syntaxchildren-review; independentcases in syntaxchildren-independent.
+Smallreports copied tools/reading/syntax-children withparentaudit and
+ docs/results/reading-syntax-children-rejected.json. No fourthparserexperiment now.
+
+ACTIVE FACTVERIFY: PID1470081, scopeglassmind-continuous-factverify.scope,
+WORK/factverify branchcontinuous/factverify atbb619fb; runWORK/factverify-run.
+Astrafast/ChatGPTlogin/noAPIenv verified; outer8GiB0swap. Workerowns crates/facts
+library/standaloneCLI andnewtools/facts/verification only; parentmain/talkintegration.
+Newtyped `verify --index INDEX QUESTION` operation forpositivebirth(P19),death(P20),
+citizenship(P27),employer(P108) relationships. Exactfullendpointaliases+directed
+indexededge witness; Supported/Unknown/Refused,neverNo/Falsefromabsence. Ordinary
+answer/answer_set/link/models/index unchanged,full2821bytesmustmatchbaseline
+256/2545/20 answer-only,252/2545/24joint. No benchmarkgain claim. Source/labelassets
+immutable; no newdownloads/retraining. Main/predictor/factsbin/full2821baselinebundle
+copied/byteverified. Bothmainandfactslibrarymatchpublishedbaseline.
+Parent40cases+authoredgraph frozen beforecandidateinspection atcoordinator/
+factverify-independent: casesSHA862ee76f8cdeffd30f59221af74b476129fbac3cc00313945877142d782fa27f.
+14Supported/14Unknown/9Refused/3notSupported(compounds/pronouns allowUnknownorRefused),
+exactedgewitnesses independentlycheckedagainstgraph. Aliaswithpredicatewords tests
+fullmentionmatching; multivalueemployer targetbeyond10displaylimit; wrongdirections,
+unknownentities/ambiguousnames/negation/actions/4096bounds. Baselineverify unavailable
+(exit2 unrecognizedsubcommand), recordednotinventedaccuracy. Original40unmodified.
+Supplemental8Unicodecasefold/ambiguousdelimiters frozen separatelybeforeinspection:
+supplemental/casesSHAe181cd4d699846a6a2a03104b61cf22db2de395439367b5cfa35c1cf1cbe5dff.
+4Supported inclİlke/Σοφία,2Unknown,1Refused,1notSupported for two valid endpointpairs.
+No candidateinspectedyet; terminalarchivebefore source review. Adaptoutputschema
+only afterinspection withoutchanging theseexpectedstatuses/edge witnesses.
+Parent browsed official WikidataP19/P20/P27/P108 definitions; URLs and scope findings
+in factverify-independent/schema-review.json. P27/P108 allowtimequalifiers thatthe
+localStoredoesnotretain. Human-facingintegration MUST say loadedrecordslistthe
+relationship, not unqualifiedcurrent-worldyes. Explicittemporalmodifiers unsupported;
+Supportedmeansstorededgepresence, notcurrent/globalproof. Workerdata0downloads still
+true; parentproperty-definitionbrowsingisdisclosedseparately. No externalpersondata
+orbenchmarklabelsobtainedfromweb.
 
 PublishedPR36 contains rejected-evidence/README/results/checkpoint only; netcrate
 diff since86b1e545 is empty. No redundant fullbenchmark warranted foridenticalrestoredruntime.
 Next reviewterminalworkers/archiveoriginals,runfrozenparentgates,integrateonlyaccepted
 candidateandfullaffectedDEV/checks beforepublishing. Noothermodel/native/fulljobs
-remainactive; alloldfulls complete. Nextaftercurrentparserfeature experiment should
-revisit facts. Concrete gap fromcode: Store::answer/answer_set resolveoneentity
-and returnrelatedIDs; no typed two-entity fact-membership verification. Explore
-positive snapshot-backed relation verification withexplicitunknown forabsent claims,
-never closed-worldfalse, preserving ordinaryfacts/full2821 anddisclosingexisting20
-wrong answers. Freezeendpoint/ambiguity/negation/inverserelation contrasts before
-implementation; thisisqueued, notyetstarted ormeasured.
+remainactive; alloldfulls complete. The queued facts hypothesis is now running as above; aftercurrentworkers, revisit
+dialogue or quantity representation rather than another syntaxfeature/score tweak.
 Oldercheckpointdetailsbelow arehistorical.
 
 ### Previous checkpoint details (superseded)

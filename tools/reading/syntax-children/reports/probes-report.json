@@ -1,0 +1,952 @@
+{
+  "new_authored_cases": 24,
+  "legacy_authored_cases": 16,
+  "raw_contrasts": 40,
+  "core_edges": 94,
+  "before_correct": 82,
+  "after_correct": 84,
+  "lost": 0,
+  "gained": 2,
+  "ledger": [
+    {
+      "case": 0,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 0,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 1,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 1,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 2,
+      "edge": [
+        3,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 2,
+      "edge": [
+        6,
+        4,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 3,
+      "edge": [
+        2,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 3,
+      "edge": [
+        6,
+        4,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 3,
+      "edge": [
+        3,
+        4,
+        "advmod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 4,
+      "edge": [
+        3,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 4,
+      "edge": [
+        7,
+        4,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 4,
+      "edge": [
+        2,
+        3,
+        "amod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 4,
+      "edge": [
+        6,
+        7,
+        "amod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 5,
+      "edge": [
+        3,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 5,
+      "edge": [
+        7,
+        4,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 6,
+      "edge": [
+        3,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 6,
+      "edge": [
+        6,
+        4,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 6,
+      "edge": [
+        1,
+        4,
+        "aux"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 7,
+      "edge": [
+        1,
+        2,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 7,
+      "edge": [
+        4,
+        2,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 8,
+      "edge": [
+        1,
+        5,
+        "obj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 8,
+      "edge": [
+        4,
+        5,
+        "nsubj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 9,
+      "edge": [
+        2,
+        4,
+        "nsubj:pass"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 9,
+      "edge": [
+        7,
+        4,
+        "obl:agent"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 10,
+      "edge": [
+        2,
+        4,
+        "nsubj:pass"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 10,
+      "edge": [
+        7,
+        4,
+        "obl:agent"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 11,
+      "edge": [
+        2,
+        6,
+        "nsubj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 11,
+      "edge": [
+        5,
+        2,
+        "conj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 12,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 12,
+      "edge": [
+        5,
+        3,
+        "conj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 13,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": false,
+      "after": true
+    },
+    {
+      "case": 13,
+      "edge": [
+        4,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 13,
+      "edge": [
+        6,
+        4,
+        "conj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 14,
+      "edge": [
+        1,
+        4,
+        "nsubj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 14,
+      "edge": [
+        3,
+        1,
+        "conj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 15,
+      "edge": [
+        4,
+        5,
+        "nsubj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 15,
+      "edge": [
+        6,
+        5,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 15,
+      "edge": [
+        2,
+        4,
+        "amod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 15,
+      "edge": [
+        3,
+        4,
+        "amod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 16,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 16,
+      "edge": [
+        6,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 16,
+      "edge": [
+        4,
+        6,
+        "amod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 16,
+      "edge": [
+        5,
+        6,
+        "amod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 17,
+      "edge": [
+        2,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 17,
+      "edge": [
+        5,
+        4,
+        "obj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 17,
+      "edge": [
+        3,
+        4,
+        "advmod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 18,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": false,
+      "after": true
+    },
+    {
+      "case": 18,
+      "edge": [
+        6,
+        3,
+        "obl"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 19,
+      "edge": [
+        2,
+        6,
+        "nsubj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 19,
+      "edge": [
+        5,
+        2,
+        "nmod"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 20,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 20,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 20,
+      "edge": [
+        8,
+        3,
+        "obl"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 21,
+      "edge": [
+        1,
+        5,
+        "advmod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 21,
+      "edge": [
+        4,
+        5,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 22,
+      "edge": [
+        2,
+        5,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 22,
+      "edge": [
+        3,
+        5,
+        "aux"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 22,
+      "edge": [
+        4,
+        5,
+        "advmod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 23,
+      "edge": [
+        2,
+        5,
+        "nsubj"
+      ],
+      "before": false,
+      "after": false
+    },
+    {
+      "case": 23,
+      "edge": [
+        3,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 23,
+      "edge": [
+        4,
+        2,
+        "acl:relcl"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 24,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 24,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 25,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 25,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 26,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 26,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 27,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 27,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 28,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 28,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 29,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 29,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 30,
+      "edge": [
+        2,
+        4,
+        "nsubj:pass"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 30,
+      "edge": [
+        7,
+        4,
+        "obl:agent"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 31,
+      "edge": [
+        2,
+        4,
+        "nsubj:pass"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 31,
+      "edge": [
+        7,
+        4,
+        "obl:agent"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 32,
+      "edge": [
+        2,
+        5,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 32,
+      "edge": [
+        4,
+        5,
+        "advmod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 32,
+      "edge": [
+        7,
+        5,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 33,
+      "edge": [
+        2,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 33,
+      "edge": [
+        6,
+        4,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 34,
+      "edge": [
+        3,
+        4,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 34,
+      "edge": [
+        6,
+        4,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 35,
+      "edge": [
+        2,
+        3,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 35,
+      "edge": [
+        5,
+        3,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 36,
+      "edge": [
+        1,
+        2,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 36,
+      "edge": [
+        3,
+        2,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 37,
+      "edge": [
+        2,
+        6,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 37,
+      "edge": [
+        5,
+        2,
+        "conj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 37,
+      "edge": [
+        8,
+        6,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 39,
+      "edge": [
+        4,
+        2,
+        "nmod"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 39,
+      "edge": [
+        2,
+        5,
+        "nsubj"
+      ],
+      "before": true,
+      "after": true
+    },
+    {
+      "case": 39,
+      "edge": [
+        7,
+        5,
+        "obj"
+      ],
+      "before": true,
+      "after": true
+    }
+  ]
+}

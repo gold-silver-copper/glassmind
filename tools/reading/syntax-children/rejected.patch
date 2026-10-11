@@ -1,0 +1,363 @@
+diff --git i/crates/reading/src/bin/reading-syntax.rs w/crates/reading/src/bin/reading-syntax.rs
+index 2e44d85..78af985 100644
+--- i/crates/reading/src/bin/reading-syntax.rs
++++ w/crates/reading/src/bin/reading-syntax.rs
+@@ -1,7 +1,7 @@
+ // SPDX-License-Identifier: MIT
+ //! Standalone TRAIN adapter and forms/text-only syntax inference. No QA actions.
+ use clap::{Parser, Subcommand};
+-use glassmind_reading::syntax::{Input, Model, TrainingSentence, VERSION, train};
++use glassmind_reading::syntax::{Input, Model, TrainingSentence, train, train_with_child_features};
+ use serde::Serialize;
+ use std::io::{BufRead, BufReader, BufWriter, Read, Write};
+ use std::path::PathBuf;
+@@ -14,6 +14,8 @@ struct Args {
+ #[derive(Subcommand)]
+ enum Command {
+     Train {
++        #[arg(long)]
++        child_features: bool,
+         #[arg(long)]
+         train: PathBuf,
+         #[arg(long)]
+@@ -106,12 +108,17 @@ fn corpus(path: PathBuf) -> Result<(Vec<TrainingSentence>, Rows), String> {
+ fn run() -> Result<(), String> {
+     match Args::parse().command {
+         Command::Train {
++            child_features,
+             train: source,
+             model,
+             report,
+         } => {
+             let (data, rows) = corpus(source)?;
+-            let (m, r) = train(&data)?;
++            let (m, r) = if child_features {
++                train_with_child_features(&data)?
++            } else {
++                train(&data)?
++            };
+             let mut writer =
+                 BufWriter::new(std::fs::File::create(model).map_err(|e| e.to_string())?);
+             m.save(&mut writer)?;
+@@ -119,7 +126,7 @@ fn run() -> Result<(), String> {
+             std::fs::write(
+                 report,
+                 serde_json::to_vec_pretty(
+-                    &serde_json::json!({"version":VERSION,"training":r,"conllu_rows":rows}),
++                    &serde_json::json!({"version":m.version(),"training":r,"conllu_rows":rows}),
+                 )
+                 .map_err(|e| e.to_string())?,
+             )
+@@ -155,7 +162,7 @@ fn run() -> Result<(), String> {
+                 let value = match result {
+                     Ok(p) => serde_json::to_value(p).map_err(|e| e.to_string())?,
+                     Err(reason) => {
+-                        serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason})
++                        serde_json::json!({"status":"refused","model_version":model.version(),"reason":reason})
+                     }
+                 };
+                 serde_json::to_writer(&mut writer, &value).map_err(|e| e.to_string())?;
+diff --git i/crates/reading/src/syntax.rs w/crates/reading/src/syntax.rs
+index 44b56bf..c3d1bcd 100644
+--- i/crates/reading/src/syntax.rs
++++ w/crates/reading/src/syntax.rs
+@@ -8,6 +8,22 @@ use std::collections::BTreeSet;
+ use std::io::{Read, Write};
+ 
+ pub const VERSION: &str = "ewt-arc-standard-v1";
++pub const CHILD_VERSION: &str = "ewt-arc-standard-children-v2";
++
++#[derive(Clone, Copy, Debug, PartialEq)]
++enum FeatureVersion {
++    Legacy,
++    Children,
++}
++impl FeatureVersion {
++    fn name(self) -> &'static str {
++        match self {
++            Self::Legacy => VERSION,
++            Self::Children => CHILD_VERSION,
++        }
++    }
++}
++
+ pub const MAX_TOKENS: usize = 128;
+ pub const MAX_BYTES: usize = 16 * 1024;
+ const TAG_BUCKETS: usize = 1 << 16;
+@@ -319,6 +335,8 @@ struct State {
+     labels: Vec<usize>,
+     left: Vec<usize>,
+     right: Vec<usize>,
++    second_left: Vec<usize>,
++    second_right: Vec<usize>,
+     valency: Vec<usize>,
+ }
+ impl State {
+@@ -330,6 +348,8 @@ impl State {
+             labels: vec![0; n + 1],
+             left: vec![0; n + 1],
+             right: vec![0; n + 1],
++            second_left: vec![0; n + 1],
++            second_right: vec![0; n + 1],
+             valency: vec![0; n + 1],
+         }
+     }
+@@ -366,16 +386,22 @@ impl State {
+         self.labels[d] = (a - 1) % l;
+         if d < h {
+             if self.left[h] == 0 || d < self.left[h] {
++                self.second_left[h] = self.left[h];
+                 self.left[h] = d;
++            } else if self.second_left[h] == 0 || d < self.second_left[h] {
++                self.second_left[h] = d;
+             }
+         } else if d > self.right[h] {
++            self.second_right[h] = self.right[h];
+             self.right[h] = d;
++        } else if d > self.second_right[h] {
++            self.second_right[h] = d;
+         }
+         self.valency[h] += 1;
+         self.stack.remove(z - if left { 2 } else { 1 });
+     }
+ }
+-fn parse_features(s: &State, ws: &[Word], tags: &[usize]) -> Vec<usize> {
++fn parse_features(s: &State, ws: &[Word], tags: &[usize], version: FeatureVersion) -> Vec<usize> {
+     let n = ws.len();
+     let mut f = Vec::with_capacity(100);
+     feature(&mut f, PARSE_BUCKETS, 0, &[]);
+@@ -464,10 +490,57 @@ fn parse_features(s: &State, ws: &[Word], tags: &[usize]) -> Vec<usize> {
+             feature(&mut f, PARSE_BUCKETS, base + 5, &[word(i), tag(child)]);
+         }
+     }
++    if version == FeatureVersion::Children {
++        // Exactly 32 bounded features. Zero explicitly means a missing child,
++        // distinct from the root tag/word sentinel used by legacy features.
++        let child_tag = |c| if c == 0 { 0 } else { tag(c) };
++        let child_label = |c| if c == 0 { 0 } else { s.labels[c] as u64 + 1 };
++        for (p, &h) in idx[..2].iter().enumerate() {
++            for (side, (first, second)) in [
++                (s.left[h], s.second_left[h]),
++                (s.right[h], s.second_right[h]),
++            ]
++            .into_iter()
++            .enumerate()
++            {
++                let base = 100 + (p * 16 + side * 8) as u64;
++                let (a, b) = (child_tag(first), child_tag(second));
++                feature(
++                    &mut f,
++                    PARSE_BUCKETS,
++                    base,
++                    &[if second == 0 { 0 } else { word(second) }],
++                );
++                feature(&mut f, PARSE_BUCKETS, base + 1, &[b]);
++                feature(&mut f, PARSE_BUCKETS, base + 2, &[child_label(second)]);
++                feature(
++                    &mut f,
++                    PARSE_BUCKETS,
++                    base + 3,
++                    &[tag(h), b, child_label(second)],
++                );
++                feature(&mut f, PARSE_BUCKETS, base + 4, &[a, b]);
++                feature(
++                    &mut f,
++                    PARSE_BUCKETS,
++                    base + 5,
++                    &[tag(h), child_label(first), child_label(second)],
++                );
++                feature(&mut f, PARSE_BUCKETS, base + 6, &[tag(h), a, b]);
++                feature(
++                    &mut f,
++                    PARSE_BUCKETS,
++                    base + 7,
++                    &[tag(idx[1 - p]), tag(h), a, b],
++                );
++            }
++        }
++    }
+     f
+ }
+ 
+ pub struct Model {
++    feature_version: FeatureVersion,
+     tags: Vec<String>,
+     labels: Vec<String>,
+     tagger: Table,
+@@ -475,6 +548,9 @@ pub struct Model {
+     root: usize,
+ }
+ impl Model {
++    pub fn version(&self) -> &'static str {
++        self.feature_version.name()
++    }
+     fn tag(&self, ws: &[Word]) -> Result<Vec<usize>> {
+         let mut tags = Vec::new();
+         for i in 0..ws.len() {
+@@ -491,7 +567,7 @@ impl Model {
+         let tags = self.tag(&ws)?;
+         let mut s = State::new(n);
+         for _ in 0..2 * n {
+-            let f = parse_features(&s, &ws, &tags);
++            let f = parse_features(&s, &ws, &tags, self.feature_version);
+             let a = best(&self.parser.scores(&f), |a| {
+                 s.legal(a, n, self.labels.len(), self.root)
+             })?;
+@@ -510,7 +586,7 @@ impl Model {
+         }
+         Ok(Prediction {
+             status: "predicted".into(),
+-            model_version: VERSION.into(),
++            model_version: self.version().into(),
+             tokenization: "provided_forms".into(),
+             forms: forms.to_vec(),
+             spans: None,
+@@ -536,7 +612,7 @@ impl Model {
+     }
+     pub fn save(&self, mut w: impl Write) -> Result<()> {
+         let header = Header {
+-            version: VERSION.into(),
++            version: self.version().into(),
+             tags: self.tags.clone(),
+             labels: self.labels.clone(),
+         };
+@@ -585,9 +661,11 @@ impl Model {
+         let mut bytes = vec![0; len];
+         r.read_exact(&mut bytes).map_err(|e| e.to_string())?;
+         let h: Header = serde_json::from_slice(&bytes).map_err(|e| e.to_string())?;
+-        if h.version != VERSION {
+-            return Err("unknown model version".into());
+-        }
++        let feature_version = match h.version.as_str() {
++            VERSION => FeatureVersion::Legacy,
++            CHILD_VERSION => FeatureVersion::Children,
++            _ => return Err("unknown model version".into()),
++        };
+         for inventory in [&h.tags, &h.labels] {
+             if inventory.is_empty()
+                 || inventory.len() > 64
+@@ -641,6 +719,7 @@ impl Model {
+             return Err("trailing or oversized model".into());
+         }
+         Ok(Self {
++            feature_version,
+             tags: h.tags,
+             labels: h.labels,
+             tagger,
+@@ -726,7 +805,18 @@ fn oracle(s: &State, g: &TrainingSentence, labs: &[usize], nlabels: usize) -> Re
+         Err("static oracle stuck".into())
+     }
+ }
++/// Legacy training remains the default for compatibility.
+ pub fn train(data: &[TrainingSentence]) -> Result<(Model, TrainingReport)> {
++    train_version(data, FeatureVersion::Legacy)
++}
++/// Explicit opt-in to the frozen second-child representation.
++pub fn train_with_child_features(data: &[TrainingSentence]) -> Result<(Model, TrainingReport)> {
++    train_version(data, FeatureVersion::Children)
++}
++fn train_version(
++    data: &[TrainingSentence],
++    feature_version: FeatureVersion,
++) -> Result<(Model, TrainingReport)> {
+     if data.is_empty() || data.len() > 100_000 {
+         return Err("training sentence limit".into());
+     }
+@@ -802,6 +892,7 @@ pub fn train(data: &[TrainingSentence]) -> Result<(Model, TrainingReport)> {
+         eprintln!("tag epoch {} mistakes {}", epoch + 1, mistakes);
+     }
+     let mut model = Model {
++        feature_version,
+         tags,
+         labels,
+         tagger: tagger.finish(),
+@@ -830,7 +921,7 @@ pub fn train(data: &[TrainingSentence]) -> Result<(Model, TrainingReport)> {
+                 })
+                 .collect::<Result<Vec<_>>>()?;
+             for _ in 0..2 * n {
+-                let f = parse_features(&s, &cached[i], &predicted[i]);
++                let f = parse_features(&s, &cached[i], &predicted[i], feature_version);
+                 let gold = oracle(&s, g, &labs, model.labels.len())?;
+                 if !s.legal(gold, n, model.labels.len(), root) {
+                     return Err("illegal TRAIN oracle".into());
+@@ -859,6 +950,7 @@ mod tests {
+     use super::*;
+     fn tiny() -> Model {
+         Model {
++            feature_version: FeatureVersion::Legacy,
+             tags: vec!["NOUN".into()],
+             labels: vec!["dep".into(), "root".into()],
+             tagger: Table::new(1, TAG_BUCKETS),
+@@ -867,6 +959,72 @@ mod tests {
+         }
+     }
+     #[test]
++    fn second_children_are_index_ordered_and_features_are_additive() {
++        let mut state = State::new(9);
++        // Exercise both replacing the outer child and filling the inner slot.
++        for d in [3, 1, 2] {
++            state.stack = vec![0, d, 5];
++            state.apply(1, 2);
++        }
++        for d in [7, 9, 8] {
++            state.stack = vec![0, 5, d];
++            state.apply(3, 2);
++        }
++        assert_eq!((state.left[5], state.second_left[5]), (1, 2));
++        assert_eq!((state.right[5], state.second_right[5]), (9, 8));
++        let ws = words(&vec!["word".into(); 9]);
++        let tags = vec![0; 9];
++        let old = parse_features(&state, &ws, &tags, FeatureVersion::Legacy);
++        let new = parse_features(&state, &ws, &tags, FeatureVersion::Children);
++        assert_eq!(&new[..old.len()], old);
++        assert_eq!(new.len(), old.len() + 32);
++        assert!(new.iter().all(|&f| f < PARSE_BUCKETS));
++        let empty = State::new(9);
++        let old = parse_features(&empty, &ws, &tags, FeatureVersion::Legacy);
++        let new = parse_features(&empty, &ws, &tags, FeatureVersion::Children);
++        let mut expected = Vec::new();
++        feature(&mut expected, PARSE_BUCKETS, 101, &[0]);
++        assert_eq!(new[old.len() + 1], expected[0]);
++    }
++    #[test]
++    fn both_versions_roundtrip_and_reject_corruption() {
++        for version in [FeatureVersion::Legacy, FeatureVersion::Children] {
++            let mut m = tiny();
++            m.feature_version = version;
++            m.parser.weights[0] = 1.;
++            let mut bytes = Vec::new();
++            m.save(&mut bytes).unwrap();
++            let loaded = Model::load(bytes.as_slice()).unwrap();
++            assert_eq!(loaded.version(), version.name());
++            assert_eq!(
++                loaded.infer(&["word".into()]).unwrap().model_version,
++                version.name()
++            );
++            let mut again = Vec::new();
++            loaded.save(&mut again).unwrap();
++            assert_eq!(bytes, again);
++            let mut bad_version = bytes.clone();
++            let len = u32::from_le_bytes(bytes[8..12].try_into().unwrap()) as usize;
++            let end = 12 + len;
++            let at = bytes[12..end]
++                .windows(version.name().len())
++                .position(|w| w == version.name().as_bytes())
++                .unwrap()
++                + 12;
++            bad_version[at] = b'x';
++            assert!(Model::load(bad_version.as_slice()).is_err());
++            for value in [f32::NAN, f32::INFINITY, 1_000_001., 0.] {
++                let mut bad = bytes.clone();
++                let n = bad.len();
++                bad[n - 4..].copy_from_slice(&value.to_bits().to_le_bytes());
++                assert!(Model::load(bad.as_slice()).is_err());
++            }
++            let mut bad = bytes.clone();
++            bad[end..end + 4].copy_from_slice(&u32::MAX.to_le_bytes());
++            assert!(Model::load(bad.as_slice()).is_err());
++        }
++    }
++    #[test]
+     fn strict_inputs_and_unicode_spans() {
+         assert!(serde_json::from_str::<Input>(r#"{"forms":["cat"],"heads":[0]}"#).is_err());
+         assert!(serde_json::from_str::<Input>(r#"{"text":"cat","id":"gold"}"#).is_err());

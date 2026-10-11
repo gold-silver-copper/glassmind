@@ -1,0 +1,490 @@
+[
+  {
+    "name": "contrast_0",
+    "forms": [
+      "Those",
+      "small",
+      "birds",
+      "helped",
+      "the",
+      "quiet",
+      "fox",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_1",
+    "forms": [
+      "The",
+      "quiet",
+      "fox",
+      "helped",
+      "those",
+      "small",
+      "birds",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_2",
+    "forms": [
+      "Yesterday",
+      ",",
+      "the",
+      "young",
+      "teacher",
+      "carefully",
+      "thanked",
+      "the",
+      "student",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 5,
+        "head": 7,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 9,
+        "head": 7,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_3",
+    "forms": [
+      "The",
+      "student",
+      "thanked",
+      "the",
+      "young",
+      "teacher",
+      "yesterday",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_4",
+    "forms": [
+      "Which",
+      "teacher",
+      "did",
+      "the",
+      "student",
+      "thank",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 5,
+        "head": 6,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 2,
+        "head": 6,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_5",
+    "forms": [
+      "Who",
+      "carefully",
+      "helped",
+      "the",
+      "student",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_6",
+    "forms": [
+      "Small",
+      "birds",
+      "never",
+      "chase",
+      "the",
+      "old",
+      "fox",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_7",
+    "forms": [
+      "Riley",
+      "gave",
+      "Dana",
+      "a",
+      "book",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_8",
+    "forms": [
+      "After",
+      "lunch",
+      ",",
+      "Dana",
+      "thanked",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 4,
+        "head": 5,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 5,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_9",
+    "forms": [
+      "Dana",
+      "thanked",
+      "Riley",
+      "after",
+      "lunch",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_10",
+    "forms": [
+      "Those",
+      "small",
+      "cats",
+      "helped",
+      "the",
+      "quiet",
+      "dog",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_11",
+    "forms": [
+      "The",
+      "quiet",
+      "dog",
+      "helped",
+      "those",
+      "small",
+      "cats",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_12",
+    "forms": [
+      "Yesterday",
+      ",",
+      "the",
+      "young",
+      "doctor",
+      "carefully",
+      "thanked",
+      "the",
+      "nurse",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 5,
+        "head": 7,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 9,
+        "head": 7,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_13",
+    "forms": [
+      "The",
+      "nurse",
+      "thanked",
+      "the",
+      "young",
+      "doctor",
+      "yesterday",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_14",
+    "forms": [
+      "Which",
+      "doctor",
+      "did",
+      "the",
+      "nurse",
+      "thank",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 5,
+        "head": 6,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 2,
+        "head": 6,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_15",
+    "forms": [
+      "Who",
+      "carefully",
+      "helped",
+      "the",
+      "nurse",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_16",
+    "forms": [
+      "Small",
+      "cats",
+      "never",
+      "chase",
+      "the",
+      "old",
+      "dog",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 7,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_17",
+    "forms": [
+      "Casey",
+      "gave",
+      "Morgan",
+      "a",
+      "letter",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_18",
+    "forms": [
+      "After",
+      "dinner",
+      ",",
+      "Morgan",
+      "thanked",
+      "Casey",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 4,
+        "head": 5,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 6,
+        "head": 5,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_19",
+    "forms": [
+      "Morgan",
+      "thanked",
+      "Casey",
+      "after",
+      "dinner",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  }
+]

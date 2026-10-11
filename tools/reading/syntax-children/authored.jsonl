@@ -1,0 +1,24 @@
+{"forms": ["The", "nurse", "called", "the", "teacher", "."], "core_edges": [[2, 3, "nsubj"], [5, 3, "obj"]]}
+{"forms": ["The", "teacher", "called", "the", "nurse", "."], "core_edges": [[2, 3, "nsubj"], [5, 3, "obj"]]}
+{"forms": ["Yesterday", "the", "nurse", "called", "the", "teacher", "."], "core_edges": [[3, 4, "nsubj"], [6, 4, "obj"]]}
+{"forms": ["The", "nurse", "quickly", "called", "the", "teacher", "."], "core_edges": [[2, 4, "nsubj"], [6, 4, "obj"], [3, 4, "advmod"]]}
+{"forms": ["The", "young", "nurse", "called", "the", "old", "teacher", "."], "core_edges": [[3, 4, "nsubj"], [7, 4, "obj"], [2, 3, "amod"], [6, 7, "amod"]]}
+{"forms": ["The", "old", "teacher", "called", "the", "young", "nurse", "."], "core_edges": [[3, 4, "nsubj"], [7, 4, "obj"]]}
+{"forms": ["Did", "the", "nurse", "call", "the", "teacher", "?"], "core_edges": [[3, 4, "nsubj"], [6, 4, "obj"], [1, 4, "aux"]]}
+{"forms": ["Who", "called", "the", "teacher", "?"], "core_edges": [[1, 2, "nsubj"], [4, 2, "obj"]]}
+{"forms": ["Who", "did", "the", "teacher", "call", "?"], "core_edges": [[1, 5, "obj"], [4, 5, "nsubj"]]}
+{"forms": ["The", "teacher", "was", "called", "by", "the", "nurse", "."], "core_edges": [[2, 4, "nsubj:pass"], [7, 4, "obl:agent"]]}
+{"forms": ["The", "nurse", "was", "called", "by", "the", "teacher", "."], "core_edges": [[2, 4, "nsubj:pass"], [7, 4, "obl:agent"]]}
+{"forms": ["The", "nurse", "and", "the", "teacher", "laughed", "."], "core_edges": [[2, 6, "nsubj"], [5, 2, "conj"]]}
+{"forms": ["The", "nurse", "laughed", "and", "sang", "."], "core_edges": [[2, 3, "nsubj"], [5, 3, "conj"]]}
+{"forms": ["The", "nurse", "bought", "apples", "and", "pears", "."], "core_edges": [[2, 3, "nsubj"], [4, 3, "obj"], [6, 4, "conj"]]}
+{"forms": ["Apples", "and", "pears", "fell", "."], "core_edges": [[1, 4, "nsubj"], [3, 1, "conj"]]}
+{"forms": ["The", "small", "red", "bird", "ate", "seeds", "."], "core_edges": [[4, 5, "nsubj"], [6, 5, "obj"], [2, 4, "amod"], [3, 4, "amod"]]}
+{"forms": ["The", "bird", "ate", "small", "red", "seeds", "."], "core_edges": [[2, 3, "nsubj"], [6, 3, "obj"], [4, 6, "amod"], [5, 6, "amod"]]}
+{"forms": ["The", "bird", "slowly", "ate", "seeds", "yesterday", "."], "core_edges": [[2, 4, "nsubj"], [5, 4, "obj"], [3, 4, "advmod"]]}
+{"forms": ["Yesterday", "seeds", "fell", "near", "the", "tree", "."], "core_edges": [[2, 3, "nsubj"], [6, 3, "obl"]]}
+{"forms": ["The", "book", "on", "the", "table", "fell", "."], "core_edges": [[2, 6, "nsubj"], [5, 2, "nmod"]]}
+{"forms": ["The", "child", "put", "the", "book", "on", "the", "table", "."], "core_edges": [[2, 3, "nsubj"], [5, 3, "obj"], [8, 3, "obl"]]}
+{"forms": ["When", "did", "the", "child", "leave", "?"], "core_edges": [[1, 5, "advmod"], [4, 5, "nsubj"]]}
+{"forms": ["The", "child", "did", "not", "leave", "."], "core_edges": [[2, 5, "nsubj"], [3, 5, "aux"], [4, 5, "advmod"]]}
+{"forms": ["The", "child", "who", "laughed", "left", "."], "core_edges": [[2, 5, "nsubj"], [3, 4, "nsubj"], [4, 2, "acl:relcl"]]}

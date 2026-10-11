@@ -1,0 +1,52 @@
+{
+  "groups": {
+    "all": {
+      "uas_edge_1->1": 19773,
+      "uas_edge_1->0": 767,
+      "uas_sentence_1->0": 57,
+      "las_edge_1->1": 18634,
+      "las_edge_1->0": 789,
+      "las_edge_0->0": 4916,
+      "las_sentence_0->0": 1119,
+      "uas_edge_0->1": 742,
+      "uas_sentence_0->0": 937,
+      "las_edge_0->1": 809,
+      "uas_edge_0->0": 3866,
+      "uas_sentence_1->1": 951,
+      "las_sentence_1->1": 778,
+      "uas_sentence_0->1": 56,
+      "las_sentence_1->0": 50,
+      "las_sentence_0->1": 54
+    },
+    "nonduplicate_forms": {
+      "uas_edge_1->1": 19636,
+      "uas_edge_1->0": 767,
+      "uas_sentence_1->0": 57,
+      "las_edge_1->1": 18497,
+      "las_edge_1->0": 789,
+      "las_edge_0->0": 4916,
+      "las_sentence_0->0": 1119,
+      "uas_edge_0->1": 742,
+      "uas_sentence_0->0": 937,
+      "las_edge_0->1": 809,
+      "uas_edge_0->0": 3866,
+      "uas_sentence_0->1": 56,
+      "uas_sentence_1->1": 883,
+      "las_sentence_1->1": 710,
+      "las_sentence_1->0": 50,
+      "las_sentence_0->1": 54
+    },
+    "duplicate_forms": {
+      "uas_edge_1->1": 137,
+      "uas_sentence_1->1": 68,
+      "las_edge_1->1": 137,
+      "las_sentence_1->1": 68
+    }
+  },
+  "gates": {
+    "las": false,
+    "uas": false,
+    "all_valid_emitted": true
+  },
+  "parent_core_retention": "outstanding; parent inputs not accessed"
+}

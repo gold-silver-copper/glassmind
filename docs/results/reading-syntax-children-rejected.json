@@ -1,0 +1,48 @@
+{
+  "status": "rejected",
+  "source_base": "6a346c3080a5dd94d7a6bc7dae32af7f6d969798",
+  "model_sha256": "06f84e0df48aa57044cc2f88a872a1bbc8fbad274ed57d406db24ad09a3d38dd",
+  "binary_sha256": "93ab78d3b6800f91a620e98fe0cbbc918990292ee16a6ebd4cf86b2672e95383",
+  "predictions_sha256": "3bcd37f158c2744a044b4884030ea9aea661abf4cc74b9c962bc325e359bda91",
+  "words": 25148,
+  "sentences": 2001,
+  "refused": 0,
+  "baseline_las": 19423,
+  "candidate_las": 19443,
+  "baseline_uas": 20540,
+  "candidate_uas": 20515,
+  "las_transitions": {
+    "1->1": 18634,
+    "1->0": 789,
+    "0->0": 4916,
+    "0->1": 809
+  },
+  "uas_transitions": {
+    "1->1": 19773,
+    "1->0": 767,
+    "0->1": 742,
+    "0->0": 3866
+  },
+  "las_sentences": {
+    "0->0": 1119,
+    "1->1": 778,
+    "1->0": 50,
+    "0->1": 54
+  },
+  "uas_sentences": {
+    "1->0": 57,
+    "0->0": 937,
+    "1->1": 951,
+    "0->1": 56
+  },
+  "independent_edges": {
+    "baseline": 31,
+    "candidate": 30,
+    "total": 40,
+    "correct_to_wrong": 1,
+    "wrong_to_correct": 0
+  },
+  "gate": "LAS>=19673 and UAS>=20540 plus baselinecoreedge preservation; allthree fail",
+  "runtime_integrated": false,
+  "report": "tools/reading/syntax-children/PARENT.md"
+}

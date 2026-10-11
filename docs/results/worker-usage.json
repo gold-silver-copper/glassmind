@@ -824,6 +824,17 @@
         "reasoning_output_tokens": 3937
       },
       "source": "Normalized width4 search rejected: independentLAS19423->19428 fails preregistered19673 gate; UAS20540->20547. All2001valid trees/no refusals; defaultmodel/raw/forms byteidentical. Original73archive/32parent/raw/freeze identities verified; parentcoreedges36/40 unchanged."
+    },
+    {
+      "track": "syntaxchildren-continuous",
+      "usage": {
+        "input_tokens": 1390178,
+        "cached_input_tokens": 1322112,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18269,
+        "reasoning_output_tokens": 3829
+      },
+      "source": "Second-child32-feature candidate rejected: independent2001LAS19443/UAS20515 vs19423/20540; frozenparent31->30/40coreedges. Original73archive/parent28/freeze verified; runtime rolledback byteidentically. OneTRAINfit, no retuning."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
