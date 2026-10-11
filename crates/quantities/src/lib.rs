@@ -4,6 +4,7 @@ pub mod inventory;
 pub mod number_words;
 mod parser;
 mod percent;
+mod ratio_total;
 pub mod rational;
 pub mod units;
 

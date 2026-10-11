@@ -199,6 +199,9 @@ pub fn solve(question: &str) -> Result<Solved> {
         };
         return Ok(numeric(value, "named binary rational operation"));
     }
+    if let Some(value) = crate::ratio_total::solve(&text)? {
+        return Ok(numeric(value, "exact checked ratio and total"));
+    }
     if let Some(answer) = word_problem(&text)? {
         return Ok(answer);
     }

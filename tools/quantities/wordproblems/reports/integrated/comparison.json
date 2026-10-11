@@ -1,0 +1,58 @@
+{
+  "synthetic_total": 3116,
+  "synthetic_changed": [],
+  "baseline_synthetic_status_value_unit_sha256": "687aa81d37da226a8a3369195d2330868bb804dcc64f1a2956e10d7cf295cf2d",
+  "candidate_synthetic_status_value_unit_sha256": "687aa81d37da226a8a3369195d2330868bb804dcc64f1a2956e10d7cf295cf2d",
+  "lost_correct": [],
+  "changed_baseline_answers": [],
+  "new_answers": [
+    {
+      "index": 882,
+      "question": "the ratio of three numbers is 5 : 1 : 4 and their sum is 1000 . the last number of the three numbers is ?",
+      "expected": "400",
+      "actual": {
+        "status": "answer",
+        "value": "400",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      "outcome": "right"
+    },
+    {
+      "index": 2454,
+      "question": "the ratio of three numbers is 2 : 3 : 4 and their sum is 180 . the second number of the three numbers is ?",
+      "expected": "60",
+      "actual": {
+        "status": "answer",
+        "value": "60",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      "outcome": "right"
+    }
+  ],
+  "baseline": {
+    "dataset": "MathQA",
+    "split": "official-validation",
+    "total": 4475,
+    "right": 14,
+    "refused": 4458,
+    "wrong": 3,
+    "non_numeric_gold": 1229,
+    "metric": "exact numeric value in requested units; no choice input; all rows count",
+    "questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+    "binary_sha256": "80a2120912f95a8266a15d7e756c2cec145fd12ce4b12737e30e6d27e8fa57d2"
+  },
+  "candidate": {
+    "dataset": "MathQA",
+    "split": "official-validation",
+    "total": 4475,
+    "right": 16,
+    "refused": 4456,
+    "wrong": 3,
+    "non_numeric_gold": 1229,
+    "metric": "exact numeric value in requested units; no choice input; all rows count",
+    "questions_sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2",
+    "binary_sha256": "edfea2283ea785986b192b16d27de35cef91e1bf6db972f2553836f2cc87e102"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "source_commit": "6ac211b7452383c52ec3791bee40f0b8f69b31ef",
+  "standalone_binary_sha256": "edfea2283ea785986b192b16d27de35cef91e1bf6db972f2553836f2cc87e102",
+  "main_cli_sha256": "f88241589006d87f021c7774bb16ea6428ed22393b61966d7c77d51784d46ac6",
+  "workspace_fmt_clippy_build_fixture_smoke": "passed 4/4",
+  "focused_quantity_tests": 5,
+  "mathqa_full_answers_identical_to_worker": true,
+  "synthetic_cases": 3116,
+  "synthetic_changed": 0,
+  "talk_existing_checks_without_and_with_model": [
+    27,
+    27
+  ],
+  "talk_new_ratio_answers_baseline_candidate": [
+    0,
+    4
+  ],
+  "new_ratio_checks_run_with_and_without_model": true,
+  "memory_and_calculation_recall_preserved": true
+}

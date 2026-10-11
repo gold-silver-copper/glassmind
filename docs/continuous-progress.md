@@ -17,7 +17,8 @@ Their workers completed. Source commits `0bff6a1` (enum variants) and
 `da96f49` (multi-service dialogue with grounded predicted-slot transfer) are
 merged in PR #8, head `fcb81dbf17273dcca4d45f7a8df4d3428fb217a0`,
 merge `cb150965a9d0e95ffd234a7f4bf38299e8370d86`; CI38110755616 passed1m15s. All affected dev
-checks are complete. Offers and package-binding experiments are active below.
+checks are complete. The offers follow-up is verified; package-binding and word-problem workers
+are active below.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -136,7 +137,7 @@ WORK = `/home/gsc/.cache/glassmind/continuous-20261010`.
   All coordinator evals complete(86827,56716); no repoll/restart.
 
 **Offers worker COMPLETE**, scopeinactive/authremoved; submission archived in
-`WORK/offers-run/submitted/` with sourcehashmanifest; worktree retained for now.
+`WORK/offers-run/submitted/` with sourcehashmanifest; worktree removed after archive hash verification.
 Integrated source `ba98b5a`: optional learned bounded span selector after frozen
 reference resolver, immediately previous SYSTEMsource only, exact UTF8provenance,
 missing active input slots only, consumes source on nextUSER. H1rejectedtrainonly
@@ -152,9 +153,11 @@ passed. Independenttrain/sample/full/isolation/baseline/legacy replay92470 compl
 model/full/legacy bytes identical. Do not repoll/rerun completedjobs.
 Script `WORK/coordinator/offers-replay.sh` omitsduplicatecargo from reproducibility
 script; setTMPDIR=`WORK/coordinator/offers-check`,CARGO_TARGET_DIR=root/target.
-Candidate is verified and ready to publish; updatedREADME/data/scoreboard reflect
-609/1119,460wrong50refused. Evidence `tools/dialogue/offers/reports/integrated/`.
-PR8 is already merged.
+Candidate is verified and **PR9 MERGED**, head
+`742cc2a9a0ac501f8de5d93d54f55c6476b168c5`, merge
+`91b001505e88cbc65770f0f4b1ff52bb21034670`, CI38111006906 green1m8s.
+README/data/scoreboard reflect609/1119,460wrong50refused. Evidence
+`tools/dialogue/offers/reports/integrated/`. PR8 is already merged.
 
 **Active worker: packages**, launcherPID1964290, scope
 `glassmind-continuous-packages.scope`, worktree `WORK/packages`, base `fcb81db`.
@@ -165,8 +168,30 @@ bindings, rollback, type9/9 andvariant14/14. Dev workspace-only sources/prompts
 for two refused rename tasks copied into ownedrun/dev-inputs; NO hidden tests,
 solutions or expected patches. Worker notes cfg(test),Debug, matches! still
 blockthese realdevcases; avoidclaimingactualbenchmarkgainfromlocalfixtures.
-No generic service/worker/model calls. GPT6Astra fastChatGPT login confirmed.
+Latest: firstsample0/3 exposed TOMLdocument parsingbug; worker corrected it
+and is rerunning localchecks. All realdevcases maystillrefuse(cfg/Debug/matches).
+A clippy collapsible-if failure is being fixed. Candidate NOT accepted.
+No extra service/worker/model calls. GPT6Astra fastChatGPT login confirmed.
 Parentmustfull765beforepublishingcandidate. Run artifacts ownTMPDIR/target.
+
+**Wordproblems worker COMPLETE**, scopeinactive/authremoved; source/reports
+archived `WORK/wordproblems-run/submitted/`; worktree retainedpendingcleanup.
+Integratedsource `6ac211b7452383c52ec3791bee40f0b8f69b31ef`: fully consumed
+ratio totals over2–4 positive rational weights; ordinal/rankqueries andadjacent
+three-number chains. MathQAfull14→16right,4458→4456refused,3wrong unchanged;
+all17oldansweredrecords preserved; fixedfirst1001/99/0 unchanged. Bothnewdev
+answers sharetrainingtemplates, notbroadwordproblemunderstanding. All3116
+syntheticstatus/value/unitoutputs unchanged. Coordinatorindependentfull/sample
+replay identical toworker. Main talk4newindependentratioquestions0→4correct
+with/withoutmodel;3memory/recall checks preserved; old27/27 each unchanged.
+Fivequantitytests +workspacefmt/clippy/release/strict4/4smoke pass. Completed
+sessions11570,48624,99520,37727; DO NOT repoll/restart. Integratedreports at
+`tools/quantities/wordproblems/reports/integrated/`, frozenartifacts
+`WORK/coordinator/ratio-check/`. Sourcehash/binaryhashes in validation.json.
+Worker flaggedreadinglocalvisible syntheticdevadapter asprohibited; parent
+clarifiedgoalpermits this repository-visible development tooling, withnohidden
+orheldoutdata access. Archive retainsoriginalreport; frozenJSONLusedforregression.
+Readyforpublication; no additionalcodeverificationneeded unless sourcechanges.
 
 Retained SGD train/dev150files504306737bytes, pinned
 e852981ae34990f4358979625854259302feaa78,CC-BY-SA4, source+selection hashes:
@@ -198,7 +223,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:36,747,202 including cached input; parent and
+Known completed worker tokens:37,540,442 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -213,8 +238,8 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 1. PR8 merged after green CI; no publishing or benchmark work remains for it.
    README/data/scoreboard updated; reports identify exact evaluated source.
-2. Publish verified offers sourceba98b5a and its integrated evidence; CI thenmerge.
-   All independentreplay/checks complete; no need to repeat before publishing.
+2. PR9 merged. Publish verified ratio-total source6ac211b and evidence next;
+   review packages finalhandoff, integrate and full765dev beforepublishing it.
 3. Next coding experiment: dev rename requests parse but refuse. Permitted
    workspace sources expose library+binary roots, docs/derive attributes and
    reexports that the closed resolver rejects. Investigate a sound bounded

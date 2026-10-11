@@ -80,7 +80,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
 | Multi-service dialogue, SGD three-service dev subset | 609/1,119 exact routing-and-state turns; 50 refused; 460 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
-| Word problems, MathQA (numeric answers without choices) | 14/4,475 right; 4,458 refused; 3 wrong | pending |
+| Word problems, MathQA (numeric answers without choices) | 16/4,475 right; 4,456 refused; 3 wrong | pending |
 | Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
@@ -134,6 +134,13 @@ choices; both remain counted wrong. This custom numeric metric does not supply
 choices to the solver and cannot normalize 1,229 gold options, which stay in
 the denominator. It is not official multiple-choice accuracy.
 [MathQA scope and reproduction](tools/quantities/HANDOFF.md).
+
+Checked ratio totals add two more correct MathQA answers, reaching 16/4,475
+with no new errors or lost answers. All 3,116 existing synthetic outputs remain
+unchanged. The same solver works through `talk`: four independent ratio questions
+now succeed while memory and calculation recall remain intact. Coverage is
+limited to fully specified ratio-and-sum templates represented in training.
+[Ratio evidence and limitations](tools/quantities/wordproblems/HANDOFF.md).
 
 Requiring casing support for uppercase-only entity aliases removes 19 false
 facts answers, preserving all 256 correct dev answers. It cannot resolve an
