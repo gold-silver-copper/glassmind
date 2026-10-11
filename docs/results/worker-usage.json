@@ -757,7 +757,7 @@
         "output_tokens": 42373,
         "reasoning_output_tokens": 17696
       },
-      "source": "Original worker and parent8cae74 rejected by independent coverage/context and quoted-command probes. Finalbb89964 full180/765,all177priorpasses,0fail;26independent/8quoted/context/supplied6,19CLI+40English/workspacechecks pass. Original archives/failures preserved; PR publication pending."
+      "source": "Original worker and parent8cae74 rejected by independent coverage/context and quoted-command probes. Finalbb89964 full180/765,all177priorpasses,0fail;26independent/8quoted/context/supplied6,19CLI+40English/workspacechecks pass. Original archives/failures preserved; PR34 merged cec4b73 after exact-head d152493 CI success."
     },
     {
       "track": "workrates-continuous",
@@ -780,6 +780,17 @@
         "reasoning_output_tokens": 9232
       },
       "source": "Rejected fullDEV31<34, one new metric wrong; all32 old objects/rawlines preserved. Parent28 probes1/16positive12negative refusals0wrong; parent4475rescore and three rational derivations verified. 73parent/71report/85raw/35freeze identities verified; runtime restored. Reciprocal-label discrepancy disclosed without changing gate."
+    },
+    {
+      "track": "rawsyntax-continuous",
+      "usage": {
+        "input_tokens": 2062760,
+        "cached_input_tokens": 1987968,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 26816,
+        "reasoning_output_tokens": 7575
+      },
+      "source": "30archive/28repo/42external/30freeze identities verified. Independent2001raw audit1370->1556 exact sequences/alloldretained;20/20linguistic+28source-span+6invalidprobes pass. Main17syntax/14QA contracts and14readingtests/workspacepass; fullraw andforms byteidentical to frozen native outputs. Source028ed24; no model change, no dependency-accuracy claim."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

@@ -10,11 +10,12 @@
 
 Use `--json` for heads, dependency labels and exact UTF-8 source spans. Batch
 `--input FILE` accepts JSONL rows containing only `text` or `forms`. Raw text is
-bounded to 16 KiB and 128 tokens; it uses simple Unicode tokenization without
-sentence segmentation or contraction expansion. Model and row loading are bounded.
+bounded to16KiB and128 tokens. The later [apostrophe tokenizer](../raw-syntax/PARENT.md)
+adds productive clitic boundaries with exact source bytes; sentence segmentation
+is still unsupported. Model and row loading are bounded.
 These predictions do not authorize factual answers, memory updates or code actions.
 
-The integrated runtime is `38fd9050d75a6499c306d802c8a779975cd74c23`; main release
+The original integrated runtime was `38fd9050d75a6499c306d802c8a779975cd74c23`; main release
 SHA256 `226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0`.
 The frozen model is 12,554,724 bytes, SHA256
 `47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6`.
@@ -39,8 +40,9 @@ Across thirteen sentences, both supplied-form and raw-text modes recover 68 of 7
 requested core edges. Twelve sentences pass all requested edges in both modes.
 “Who did Nora thank?” incorrectly attaches “Who” as a subject of “did”; the
 expected object relation to “thank” is missing. The ambiguous prepositional phrase
-has no asserted gold attachment. Exact UTF-8 spans pass. Original worker errors
-on “Birds fly.” and apostrophe splitting remain unchanged. These small authored
+has no asserted gold attachment. Exact UTF-8 spans pass. The original integration retained worker errors
+on “Birds fly.” and apostrophe splitting; the later tokenizer addresses apostrophe
+boundaries without changing parser weights or supplied-form predictions. These small authored
 checks are not a general raw-text benchmark or semantic verification.
 
 The main command's complete 2,001-row output is byte-identical to frozen native

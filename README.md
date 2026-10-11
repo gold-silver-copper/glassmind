@@ -124,6 +124,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
 | Syntax, UD English EWT (gold word tokens) | 19,423/25,148 labeled edges (77.23%); 20,540 heads (81.68%); predictions only | pending |
+| Raw tokenization, UD English EWT | 1,556/2,001 exact word sequences (77.76%); 445 mismatches | pending |
 
 The separate MathQA v3 metric compares bare numeric coefficients or explicit
 compatible quantity labels. Bare-label scores do not check requested units or
@@ -401,8 +402,7 @@ Original guards and rank behavior are preserved; unsupported cases refuse.
 heads and relations, with `--json` for raw-text source spans or `--input FILE`
 for forms/text JSONL. Its small learned parser scores 77.23% labeled and 81.68%
 unlabeled attachment on 25,148 UD English EWT dev words with **gold tokenization**.
-These are unverified syntax predictions; raw-text contractions and some simple
-questions still fail. [Usage, duplicate audit and limitations](tools/reading/syntax/PARENT.md).
+These are unverified syntax predictions; some simple questions still fail. [Usage, duplicate audit and limitations](tools/reading/syntax/PARENT.md).
 
 Function renames now verify bindings across supported modules, imports, callbacks
 and assertion macros. Complete request parsing handles the supplied conversational
@@ -414,3 +414,9 @@ A separate inherited issue remains in build/test repair routing: some status or
 quoted repair questions become repair commands, and `do` can then edit files.
 [The reproduced baseline](docs/results/repair-speechact-baseline.json) is retained;
 the repair-routing experiment has not yet been integrated.
+
+Raw-text syntax input now separates productive English clitics while preserving
+exact source bytes. Complete word-sequence matches improve1,370→1,556/2,001 EWT
+dev sentences, with every old match retained;445 mismatches remain. Supplied-form
+parser output and weights are unchanged.
+[Independent tokenization audit and limits](tools/reading/raw-syntax/PARENT.md).
