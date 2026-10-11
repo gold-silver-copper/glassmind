@@ -1,0 +1,90 @@
+{
+  "total": 4475,
+  "counts": {
+    "baseline_v3": {
+      "refused": 4443,
+      "correct": 29,
+      "wrong": 3
+    },
+    "candidate_v3": {
+      "refused": 4440,
+      "correct": 31,
+      "wrong": 4
+    },
+    "baseline_legacy": {
+      "refused": 4443,
+      "correct": 29,
+      "wrong": 3
+    },
+    "candidate_legacy": {
+      "refused": 4440,
+      "correct": 30,
+      "wrong": 5
+    }
+  },
+  "old_answer_objects_and_raw_lines_preserved": 32,
+  "new_answers": [
+    {
+      "index": 2469,
+      "question": "if a , b and c together can finish a piece of work in 4 days . a alone in 12 days and b in 18 days , then c alone can do it in ?",
+      "combined_completion_days": 4,
+      "known_individual_days": [
+        12,
+        18
+      ],
+      "missing_rate_jobs_per_day": "1/9",
+      "missing_completion_days": "9",
+      "candidate": {
+        "status": "answer",
+        "value": "9",
+        "unit": "days",
+        "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload"
+      },
+      "v3_grade": "correct",
+      "selected_option": "a ) 7 days , b ) 3 days , c ) 9 days , d ) 8 days , e ) 2 days",
+      "correct_choice": "c"
+    },
+    {
+      "index": 3869,
+      "question": "a and b together can do a work in 6 days . if a alone can do it in 10 days . in how many days can b alone do it ?",
+      "combined_completion_days": 6,
+      "known_individual_days": [
+        10
+      ],
+      "missing_rate_jobs_per_day": "1/15",
+      "missing_completion_days": "15",
+      "candidate": {
+        "status": "answer",
+        "value": "15",
+        "unit": "days",
+        "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload"
+      },
+      "v3_grade": "correct",
+      "selected_option": "a ) 10 , b ) 15 , c ) 77 , d ) 55 , e ) 21",
+      "correct_choice": "b"
+    },
+    {
+      "index": 4126,
+      "question": "a and b together can do a piece of work in 1 days . if a alone can do the same work in 20 days , then b alone can do the same work in ?",
+      "combined_completion_days": 1,
+      "known_individual_days": [
+        20
+      ],
+      "missing_rate_jobs_per_day": "19/20",
+      "missing_completion_days": "20/19",
+      "candidate": {
+        "status": "answer",
+        "value": "20/19",
+        "unit": "days",
+        "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload"
+      },
+      "v3_grade": "wrong",
+      "selected_option": "a ) 0.35 days , b ) 0.45 days , c ) 0.55 days , d ) 0.25 days , e ) 0.95 days",
+      "correct_choice": "e"
+    }
+  ],
+  "gate_pass": false,
+  "required_correct": 34,
+  "prediction_sha256": "905aa4df540cf65c743415dae8a5e03428ad9e132e4d12fdda6f0d2878b87229",
+  "scope": "Independent frozen-output rescore and rational derivation; no new candidate inference or tuning. Index4126 metric mismatch remains counted despite reciprocal-rate label discrepancy."
+}

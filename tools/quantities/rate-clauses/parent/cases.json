@@ -1,0 +1,170 @@
+[
+  {
+    "name": "two_clauses",
+    "question": "Iris can finish a job in 9 hours. Tomas can finish the same job in 18 hours. How many hours will they need together?",
+    "expected": "6",
+    "unit": "hour"
+  },
+  {
+    "name": "reordered",
+    "question": "Tomas can finish a job in 18 hours. Iris can finish the same job in 9 hours. How many hours will they need together?",
+    "expected": "6",
+    "unit": "hour"
+  },
+  {
+    "name": "sentence_and",
+    "question": "K can complete a task in 7 hours and L can complete the same task in 14 hours. How long does completing it together take?",
+    "expected": "14/3",
+    "unit": "hour"
+  },
+  {
+    "name": "days",
+    "question": "Nadia alone takes 12 days to finish a job. Pavel alone takes 20 days to finish the same job. How many days will they take together?",
+    "expected": "15/2",
+    "unit": "day"
+  },
+  {
+    "name": "coordinated",
+    "question": "D, E and F can finish a job in 4, 8 and 8 hours respectively. How long will they take working together?",
+    "expected": "2",
+    "unit": "hour"
+  },
+  {
+    "name": "three_facts",
+    "question": "D can complete a job in 4 hours. E can complete the same job in 8 hours. F can complete the same job in 8 hours. How many hours do all three need together?",
+    "expected": "2",
+    "unit": "hour"
+  },
+  {
+    "name": "inverse_group_first",
+    "question": "R and S together can complete a job in 5 hours. R alone can complete it in 15 hours. How many hours would S alone take?",
+    "expected": "15/2",
+    "unit": "hour"
+  },
+  {
+    "name": "inverse_group_last",
+    "question": "R alone can complete a job in 15 hours. R and S together can complete it in 5 hours. How many hours would S alone take?",
+    "expected": "15/2",
+    "unit": "hour"
+  },
+  {
+    "name": "fill_clauses",
+    "question": "Pipe X can fill an empty tank in 10 hours. Pipe Y can fill the same tank in 15 hours. How many hours will both pipes together take to fill the empty tank?",
+    "expected": "6",
+    "unit": "hour"
+  },
+  {
+    "name": "fill_drain",
+    "question": "Pipe X can fill an empty tank in 5 hours. Pipe Y can empty the same full tank in 20 hours. How many hours will filling the empty tank take with both pipes open?",
+    "expected": "20/3",
+    "unit": "hour"
+  },
+  {
+    "name": "minute_hours",
+    "question": "Alma can finish a job in 120 minutes. Boris can finish the same job in 6 hours. How many minutes would they take together?",
+    "expected": "90",
+    "unit": "minute"
+  },
+  {
+    "name": "fractional",
+    "question": "M can complete a job in 1.5 hours. N can complete the same job in 3 hours. How many hours would they take together?",
+    "expected": "1",
+    "unit": "hour"
+  },
+  {
+    "name": "explicit_agents",
+    "question": "Hugo can do a job in 14 hours. June can do the same job in 21 hours. How many hours do Hugo and June need working together?",
+    "expected": "42/5",
+    "unit": "hour"
+  },
+  {
+    "name": "three_inverse",
+    "question": "A and B and C together can complete a job in 2 hours. A alone takes 6 hours to complete it. B alone takes 12 hours to complete it. How many hours does C alone take?",
+    "expected": "4",
+    "unit": "hour"
+  },
+  {
+    "name": "grouped_two",
+    "question": "U and V can complete a piece of work in 16 and 24 days respectively. In how many days will U and V complete the work together?",
+    "expected": "48/5",
+    "unit": "day"
+  },
+  {
+    "name": "grouped_three",
+    "question": "P, Q and R can fill a tank in 12, 18 and 36 hours respectively. If all three pipes are opened together, how many hours will filling the empty tank take?",
+    "expected": "6",
+    "unit": "hour"
+  },
+  {
+    "name": "different_jobs",
+    "question": "Iris can finish a painting job in 9 hours. Tomas can finish a plumbing job in 18 hours. How many hours will they need together?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "unknown_agent",
+    "question": "Iris can finish a job in 9 hours. Tomas can finish the same job in 18 hours. How many hours will Iris and Uma need together?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "contradiction",
+    "question": "Iris alone finishes a job in 9 hours. Iris alone finishes the same job in 18 hours. Tomas finishes it in 6 hours. How long will they take together?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "no_individual_constraint",
+    "question": "R and S together can complete a job in 5 hours. How many hours would S alone take?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "impossible_positive_rate",
+    "question": "R and S together can complete a job in 15 hours. R alone completes it in 5 hours. How many hours would S alone take?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "zero_time",
+    "question": "Iris can finish a job in 0 hours. Tomas can finish the same job in 18 hours. How long will they take together?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "unknown_initial_volume",
+    "question": "Pipe X can fill a tank in 10 hours. Pipe Y can fill it in 15 hours. The tank already contains an unknown amount of water. How many hours will they need to fill it?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "varying_rate",
+    "question": "Iris can finish a job in 9 hours. Tomas can finish it in 18 hours. Iris slows down by an unknown amount after an hour. How long will they need together?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "unknown_delayed_start",
+    "question": "Iris can finish a job in 9 hours. Tomas can finish it in 18 hours. Tomas starts an unspecified time later than Iris. How long will completion take?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "rate_equal_opposition",
+    "question": "Pipe X fills an empty tank in 10 hours. Pipe Y empties the full tank in 10 hours. How many hours will they take to fill the empty tank with both open?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "conditional_unresolved",
+    "question": "If Iris works at full speed she can finish a job in 9 hours; otherwise her rate is unknown. Tomas finishes the same job in 18 hours. How long do they take together?",
+    "expected": null,
+    "unit": "hour"
+  },
+  {
+    "name": "negated_fact",
+    "question": "Iris cannot finish a job in 9 hours. Tomas can finish the same job in 18 hours. How many hours will they need together?",
+    "expected": null,
+    "unit": "hour"
+  }
+]

@@ -1,0 +1,30 @@
+Running as unit: run-p984009-i97396998.scope; invocation ID: 35b35bbe7dc54b5aadcc8dca017afe54
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses/crates/quantities)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.47s
+     Running tests/rate_clauses.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/rate_clauses-216f81741c27babb)
+
+running 2 tests
+test supplemental_clause_forms ... FAILED
+test frozen_compositional_clauses ... FAILED
+
+failures:
+
+---- supplemental_clause_forms stdout ----
+
+thread 'supplemental_clause_forms' (985185) panicked at crates/quantities/tests/rate_clauses.rs:24:39:
+Isha and Omar together can do a work in 3 days. If Isha alone can do it in 12 days. In how many days can Omar alone do it?: unsupported English cardinal
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- frozen_compositional_clauses stdout ----
+
+thread 'frozen_compositional_clauses' (985184) panicked at crates/quantities/tests/rate_clauses.rs:12:40:
+Mira can do a job in 6 days. Noah can do the same work in 3 days. If Mira and Noah work together, how long will they take to complete the job?: unsupported English cardinal
+
+
+failures:
+    frozen_compositional_clauses
+    supplemental_clause_forms
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p glassmind-quantities --test rate_clauses`

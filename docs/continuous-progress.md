@@ -1,80 +1,95 @@
 # Continuous development checkpoint
 
-## Current checkpoint — corrected rename release validated; fresh full run active
+## Current checkpoint — rename full gate passed; publishing next
 
-WORK=/home/gsc/.cache/glassmind/continuous-20261010. Goal remains active.
-Root branch harness, evaluated sourcebb89964dd887b2b68ae01fb8f0a9a92a4901f490,
-including backend4effc66. No newer runtime published; last PR33 merge8d18377.
-No open PR at last query. Known completed worker tokens135247228; unfinished
-RATECLAUSES/parent/interrupted excluded, cached inputs counted once.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. The continuous goal is active.
+Root branch: harness. Evaluated runtime: bb89964dd887b2b68ae01fb8f0a9a92a4901f490,
+including function-reference backend4effc66. Root crate files still match that
+commit. Last published PR33 merged as8d18377; no open PR at last query. The current
+rename/evidence batch has not been pushed yet. Completed worker usage is138059154;
+rawsyntax just completed but is not yet counted; repairspeech and parent excluded.
 
-RENAME: corrected guard fences every unvalidated typed Rename and filters Rename
-guesses; bounded legacy clauses preserve all27 old forms. 19CLI+40EnglishRust
-tests, workspacefmt/alltargetclippy/release/strict4smoke PASS. Debug/release26
-independentcases agree:8 exact native-tested edits,16 no-command/no-edit negatives,
-2correct repair controls. Context omitted-target refuses while explicitpronoun
-renames/tests correctly. All8 quoted diagnostics expose no Command; CLItest also
-checks guesses. Supplied3styles x2modes allpass: exact9 edits each, nativebefore/
-after tests and executableoutputidentical. All54 previews checked againstoriginal
-bytes (1-basedlines,0-basedbytecolumns; initial1-basedcol audit assumption corrected).
-No sourcechanged during spancheck. Reports tools/coding-rename-language/PARENT.md
-and parent/boundary-*; originals preserved externally.
-
-Release WORK/coordinator/renameenglish-review/glassmind-boundary SHA256
+The corrected rename release passes full765:180 pass,585 refused,zero failures.
+All177 baseline passes remain. The only transitions are the supplied rename task's
+chatty/hurried/terse forms. Session7330 is COMPLETE; never restart it. Results:
+WORK/coordinator/rename-boundary-full/results.jsonl, SHA256
+6af4aba6d01ee829f2235494398eb76b894582cdd3f64f396293c55aea22e01b.
+The independently recomputed comparison is in tools/coding-rename-language/parent/
+full-comparison.json. Approved baseline was indexproof-full, SHA52d3d1a... .
+Release WORK/coordinator/renameenglish-review/glassmind-boundary has SHA256
 f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6.
-Debug glassmind-boundary-debug SHA256
-18562ac62f7c4aed8775f033eaa03047b52f8e27ae67a4c4b73fca262652385d.
-Sessions37455(boundarytests),11841(debugprobes),45290(workspace),88684(releaseprobes)
-are COMPLETE/success; do not repeat without sourcechange. Earlier failures in
-quoted-validation.log/boundary-validation.log retained. Worker originals/archive
-were verified before its inactiveworktree/login removal; no renameworker active.
+Debug glassmind-boundary-debug:18562ac62f7c4aed8775f033eaa03047b52f8e27ae67a4c4b73fca262652385d.
 
-FULL765 CORRECTED RELEASE ACTIVE session7330. ShellPID958863, timeoutPGID958872,
-rustbenchPID958873 lastverified. Output WORK/coordinator/rename-boundary-full,
-on-diskTMPDIR and native-scratch; unchangedtools/rustbench-dev.sh with8GiB/0swap,
-setsid--wait/timeouts. results.jsonl appears only at completion. Do not start a
-duplicate. On terminalsuccess compare all765 task/style outcomes against
-indexproof-full/results.jsonl SHA52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d.
-Require every177priorpass retained,zero failures, inspect everytransition. Then
-update finalreport/fullidentities/README/tracks (same765series,sourcebb89964), render
-tracks.html, commit/pushPR and exactheadgreenCI merge. No score claim/push before
-gate. BackendPARENT currently says fullpending; update it too when validated.
+Completed validation:19CLI+40English tests, workspace fmt/clippy/release/strict4smoke;
+26 independent cases (8 native edits,16 nonmutating negatives,2 repair controls);
+8 quoted-command probes; omitted-target/pronoun context check; six supplied native
+runs and54 original-byte preview spans. Backend34unit+4isolation and16 independent
+native identity cases passed earlier. Sessions37455,11841,45290,88684 are complete.
+Original worker and first parent revision8cae74 were rejected; their archives,
+failed checks and first full180/765 remain unchanged. See the PARENT reports.
 
-Rejected first8cae74 release a4e82bf... remains glassmind-integrated. Its fullrun
-COMPLETE180pass585refused0fail,all177priorpasses retained,3 rename-request gains.
-Rejected for two independently discovered quoted-command readings, regardless of
-that score. Preserve coordinator/rename-full and parent/rejected-full-comparison.json;
-never repoll/restartsession83448. Original worker also rejected for lostpositive/
-omittedtargetcontextmutation. Each revision/failure remains explicitlyreported.
+README, both rename PARENT reports, identities and coding journal/chart now show
+the final180/765 result at sourcebb89964. Next: review/stage the pending documentation
+and rejected-rate evidence, commit, push harness, open PR, await CI on the exact
+head, then merge using --match-head-commit. Do not integrate another runtime while
+that PR is pending. No extra full/native rerun needed for documentation changes.
+Verbatim archived patches/logs retain original whitespace; source checks are clean.
 
-WORKRATES COMPLETE/REJECTED, runtime restored. Full4475v3:29->33 correct,
-4439refused3wrong;required34;all32oldpayloadspreserved. Parent independently audits
-all4475+fournewrationalanswers. Frozen30 gives0/17positives,13/13safe negatives.
-Quantityruntime408d16b andapproved29/4475unchanged. Source-card annotation exposure
-disclosed. WORK/workrates-run/submitted,parent-submitted/rawmanifests retained;
-inactiveworker/auth removedafterhashverify. tools/quantities/work-rates/PARENT.md
-and docs/results/quantities-work-rates-rejected.json record failure; no chartgain.
+RATECLAUSES is COMPLETE and REJECTED; its inactive worktree/login link were removed
+only after repeated hash verification. Full4475 v3:31 correct,4440 refused,4 wrong,
+failing required34/no new metric wrong. Parent recomputed every grade, all32 old
+objects/raw lines, and three new rational answers. Their arithmetic is correct;
+one label appears to confuse rate with duration, but the metric/gate stays intact.
+Parent frozen28 gives1/16 positive answers,12 safe negatives,zero wrong; required8.
+73 archive entries/71 reports/85 raw artifacts/35 frozen identities verified.
+Candidate ff0f94d8... and every original remain in WORK/rateclauses-run/submitted,
+rejected and candidate. Quantity runtime408d16b and29/4475 remain unchanged.
+Reports tools/quantities/rate-clauses/PARENT.md and corresponding docs/results JSON.
+Large ledgers/predictions stay external; repository copies retain hashes/summaries.
+Two rate representations failed independent coverage; change direction, no template
+retry against these probes. WORKRATES was also rejected and already archived.
 
-RATECLAUSES ACTIVE PID947134, scopeglassmind-continuous-rateclauses.scope,
-8GiB/0swap verified; branchcontinuous/rateclauses atbb89964, workWORK/rateclauses,
-runWORK/rateclauses-run. LoginstatusverifiedChatGPT; requiredGPT6Astrafast/forced
-ChatGPT/keyenvstrippinglauncher. TaskWORK/rateclauses-task.txt: new compositional
-fact-clause representation for simultaneous/inverse rates, arbitrary agents,
-fullyconsumedfacts/query, no stagedjoins/departures or complete-question templates.
-Ownquantitiesnewmodule/minimalregistration/newtools only. Approvedbaseline copied
-andhashchecked. No source-card read permitted; onlyMathQAProblemtrain/parquetdev,
-readonlyPyArrow mounts,nonewofficialtest/downloads. Freeze beforeDEV;full>=34correct,
-all32oldpayloads/3116synthetic preserved,nonewwrong, meaningfulgeneralization.
+RAWSYNTAX is COMPLETE, awaiting parent review; inactive worktree remains intact.
+Worker claims1370->1556 exact FORM sequences/2001, all1370 old matches retained,
+zero refused, all spans valid, supplied-form outputs/model byte-identical. No
+acceptance yet. Archive helper has preserved crates/reading/src/syntax.rs and
+all owned reports under WORK/rawsyntax-run/submitted with archive-manifest.json.
+Original worker branch continuous/rawsyntax at1ab5b03; no root runtime integration.
+Read/archive-verify the terminal handoff, candidate and frozen identities next.
 
-Parent froze28 NEW cases before any candidate inspection at
-WORK/coordinator/rateclauses-independent, SHA256
-9eb6e7835c3a76ffaaf2073decfbf07db8717b625f232126d4ae94310cf86465.
-16positives/12negatives;require>=8positiveexact andallnegativesrefuse,no newwrong.
-Baseline COMPLETE0/16positiveanswers,12safe negatives,0wrong. No candidate/source
-inspection yet. Archive terminalsubmission beforeintegration/removal; check whether
-worker creates submitted, neveroverwrite. Preserve originalreport/patch/binary/logs.
-Next: await correctedcodingfull while rateworkerprogresses; archive/review terminal
-rateworker and run frozen28 independently. A failed milestone nevercompletesgoal.
+Parent raw baseline is fully measured at coordinator/rawsyntax-baseline:
+1370/2001 exact word sequences,27745 source-span tokens, complete ordered coverage.
+Nonduplicates1309/1933; duplicates61/68; all2001 remain in the official denominator.
+This is tokenization, not dependency/semantic accuracy. Gold-form output SHA256
+059e5ca85b312f9ea692d01fcb30e67f6334fad002b704e686c59ecb7638710d is unchanged.
+Frozen model47d8d245... uses pinned EWT r2.18 TRAIN/DEV, CC-BY-SA4, no test/downloads.
+Parent28 probes frozen before candidate inspection at coordinator/rawsyntax-independent,
+SHA695395449bb8970867b9a982d81e7e58e4ba5c0470fc528d78b5c19ba9bc6f2e:
+20 linguistic/8 span controls, require>=16 linguistic, no old match lost, all spans
+valid and6 invalid-input refusals. Baseline0/20,28 valid spans,6 safe refusals.
+run.py requires --binary MAIN --model MODEL --out NEWDIR. Main CLI integration and
+workspace checks remain required if the candidate survives independent review.
+
+REPAIRSPEECH is ACTIVE PID1072538, scopeglassmind-continuous-repairspeech.scope,
+8GiB/0swap, branchcontinuous/repairspeech at1ab5b03. Work/run: WORK/repairspeech and
+repairspeech-run. Required Astra fast/ChatGPT login verified; no API keys. Owns
+coding-language bridge/new repair-request helper, no world/rename-helper changes.
+Inherited14-case audit found six unrequested Repair readings in both previous and
+current rename binaries. Actual do status query rewrites7u8->7u32 in both. This
+is explicitly documented in README and docs/results/repair-speechact-baseline.json.
+Audit sessions77166,33822,19159 are complete. No candidate source inspected yet.
+
+Parent froze30 new cases before candidate inspection at coordinator/repairspeech-independent,
+SHAcc0bdeb085b22636dea7517609712323d68988cb677ca38ef9de29ee8aab111d.
+Baseline session92989 is COMPLETE: all8 positive do repairs pass exact/native checks;
+9 negative/status requests actually edit through do; only2/6 status meanings are
+correct. All ask--apply Remedy cases stay read-only under the existing confirmation
+contract. Initial summary incorrectly required both modes to edit; preserved in
+initial-summary.json, corrected before candidate review with contract-note.md.
+No inputs/labels changed. Require all8 old positive do repairs, correct6 status
+meanings and no negative mutation in either mode; do not weaken Remedy confirmation.
+Await terminal worker, archive original submission before review or cleanup, then
+replay the frozen60 mode cases and full765 against the newly approved180 baseline.
 
 ## Latest checkpoint — QA rejection merged; rename backend verified locally
 

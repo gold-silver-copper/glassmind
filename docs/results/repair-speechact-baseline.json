@@ -1,0 +1,77 @@
+{
+  "status": "inherited defect; no rename regression",
+  "cases": 14,
+  "identical_meanings": true,
+  "unrequested_command_count": 6,
+  "cases_with_unrequested_commands": [
+    {
+      "name": "quote_tests",
+      "text": "Why does the README say \"fix the tests\"?",
+      "expected": "no_mutating_action",
+      "meaning": "Command(Repair(Build))",
+      "exit": 0
+    },
+    {
+      "name": "quote_please",
+      "text": "Explain the instruction \"please fix the compiler errors\".",
+      "expected": "no_mutating_action",
+      "meaning": "Command(Repair(Build))",
+      "exit": 0
+    },
+    {
+      "name": "hypothetical",
+      "text": "If I asked you to fix the build, what would you change?",
+      "expected": "no_mutating_action",
+      "meaning": "Command(Repair(Build))",
+      "exit": 0
+    },
+    {
+      "name": "capability",
+      "text": "Could you explain how someone would fix these compiler errors?",
+      "expected": "no_mutating_action",
+      "meaning": "Command(Repair(Build))",
+      "exit": 0
+    },
+    {
+      "name": "conditional",
+      "text": "Fix the build only if I later confirm.",
+      "expected": "no_mutating_action",
+      "meaning": "Command(Repair(Build))",
+      "exit": 0
+    },
+    {
+      "name": "query_build",
+      "text": "Does this project compile?",
+      "expected": "no_mutating_action",
+      "meaning": "Command(Repair(Build))",
+      "exit": 0
+    }
+  ],
+  "baseline_binary_sha256": "53d6e10aaa9d715eb1b8963c5cacaf4f41f06111f49e462161597bf91f7db2b9",
+  "current_binary_sha256": "f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6",
+  "native_query_reproduction": [
+    {
+      "binary": "baseline",
+      "binary_sha256": "53d6e10aaa9d715eb1b8963c5cacaf4f41f06111f49e462161597bf91f7db2b9",
+      "before_failed": true,
+      "question": "Does this project compile?",
+      "changed": true,
+      "source_before": "pub fn number()->u32 { 7u8 }\n#[test] fn value(){assert_eq!(number(),7);}\n",
+      "source_after": "pub fn number()->u32 { 7u32 }\n#[test] fn value(){assert_eq!(number(),7);}\n",
+      "exit": 0,
+      "native_after_exit": 0
+    },
+    {
+      "binary": "current",
+      "binary_sha256": "f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6",
+      "before_failed": true,
+      "question": "Does this project compile?",
+      "changed": true,
+      "source_before": "pub fn number()->u32 { 7u8 }\n#[test] fn value(){assert_eq!(number(),7);}\n",
+      "source_after": "pub fn number()->u32 { 7u32 }\n#[test] fn value(){assert_eq!(number(),7);}\n",
+      "exit": 0,
+      "native_after_exit": 0
+    }
+  ],
+  "scope": "Public authored diagnostic; both previous backend binary and current rename release. No held-out data. Repair speech-act worker active; no fix claimed."
+}

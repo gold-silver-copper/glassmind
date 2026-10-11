@@ -1,8 +1,10 @@
 # Complete rename requests with verified function references
 
 Source `bb89964dd887b2b68ae01fb8f0a9a92a4901f490` passes the independent
-language and native behavior checks below. Its fresh full765 run is in progress;
-**runtime publication remains pending**. It combines complete-request parsing
+language/native checks and full coding DEV: **180/765 pass,585 refused,zero failures**,
+retaining all177 prior passes. The three gains cover the supplied function rename
+in chatty,hurried,and terse styles. The [full comparison](parent/full-comparison.json)
+records every transition and the exact evaluated release. It combines complete-request parsing
 with the separately reviewed [function-reference proof](../coding-function-refs/PARENT.md).
 Neither layer alone handled all three supplied requests.
 
@@ -87,7 +89,14 @@ artifacts260,061,502bytes were verified. Originals/root report copies were reche
 before removing the inactive worktree and temporary login link. Raw originals:
 `/home/gsc/.cache/glassmind/continuous-20261010/renameenglish-run`; parent binaries,
 checks and native outputs: `coordinator/renameenglish-review`. Rejected first full:
-`coordinator/rename-full`; fresh corrected full: `coordinator/rename-boundary-full`.
+`coordinator/rename-full`; completed corrected full: `coordinator/rename-boundary-full`.
 No new dependencies, downloads or runtime model. Generic English standalone
 callers remain outside this CLI routing change; this is bounded request handling,
 not unrestricted English comprehension.
+
+A separate subsequent14-case audit found six inherited Repair command readings
+for quoted/hypothetical/status questions, identical before and after this change.
+A build-status question actually edits an owned broken fixture through do in both
+binaries. This broader Repair routing defect is outside the rename fix and remains
+open; [baseline evidence](../../docs/results/repair-speechact-baseline.json) is retained.
+The separate repair-routing worker is not integrated into this evaluated release.

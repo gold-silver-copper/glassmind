@@ -1,4 +1,4 @@
-# Function-reference rename: independent review, publication pending
+# Function-reference rename with independent native validation
 
 A bounded module/binding proof extends free-function rename to references in
 imports, reexports, callbacks and ordinary assertion macros. The existing generic
@@ -42,8 +42,11 @@ The integrated release replays all 16 independent cases with identical source
 hashes and outcomes to the worker binary. Integrated source commit is
 `4effc66fb430f130ca8c97fb8eed586d28af8676`; release SHA256 is
 `53d6e10aaa9d715eb1b8963c5cacaf4f41f06111f49e462161597bf91f7db2b9`.
-Full765 remains pending; the approved 177/765 coding score is not remeasured or
-increased here. Publication waits for that gate.
+The combined final language/backend release at source
+`bb89964dd887b2b68ae01fb8f0a9a92a4901f490` passes full765:180 passes,585 refusals,
+zero failures,all177 prior passes retained. The three gains require both layers;
+this is not a separate backend-only score. See the
+[language review and full comparison](../coding-rename-language/PARENT.md).
 
 Existing adapter limitations remain explicit: exports 26/27 and AddField 14/15.
 Ask/apply scores 15/16 against an unchanged expectation of refusal for an ordinary

@@ -19,5 +19,68 @@
     "preview_original_spans_checked": 54,
     "preview_coordinates": "1-based lines, 0-based byte columns"
   },
-  "full765": "running; not yet accepted"
+  "full765": {
+    "scope": "Full fixed765 Rust coding DEV; no held-out evaluation",
+    "source_commit": "bb89964dd887b2b68ae01fb8f0a9a92a4901f490",
+    "binary_sha256": "f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6",
+    "total": 765,
+    "outcomes": {
+      "refused": 585,
+      "pass": 180
+    },
+    "all_previous_passes_retained": 177,
+    "regressions": [],
+    "outcome_changes": [
+      {
+        "task": "edits/rename-parse-line",
+        "style": "chatty",
+        "before": "refused",
+        "after": "pass"
+      },
+      {
+        "task": "edits/rename-parse-line",
+        "style": "hurried",
+        "before": "refused",
+        "after": "pass"
+      },
+      {
+        "task": "edits/rename-parse-line",
+        "style": "terse",
+        "before": "refused",
+        "after": "pass"
+      }
+    ],
+    "per_kind": {
+      "ask": {
+        "pass": 18
+      },
+      "edit": {
+        "refused": 74,
+        "pass": 7
+      },
+      "explain": {
+        "refused": 38,
+        "pass": 4
+      },
+      "fix-error": {
+        "pass": 136,
+        "refused": 347
+      },
+      "fix-test": {
+        "refused": 66,
+        "pass": 15
+      },
+      "implement": {
+        "refused": 60
+      }
+    },
+    "baseline_result_sha256": "52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d",
+    "candidate_result_sha256": "6af4aba6d01ee829f2235494398eb76b894582cdd3f64f396293c55aea22e01b",
+    "timing": {
+      "sum_agent_seconds": 685.959756675,
+      "median_agent_seconds": 0.401670866
+    },
+    "runner": "Unchanged tools/rustbench-dev.sh; on-disk TMPDIR and explicit native scratch;8GiB/0swap,setsid--wait,bounded timeouts and10second shutdown grace",
+    "independent_gates": "26 language cases,8 quoted diagnostics, contextual omitted/explicit target,6 supplied native runs pass separately; benchmark alone does not establish request interpretation."
+  }
 }

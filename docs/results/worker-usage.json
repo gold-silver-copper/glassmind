@@ -757,7 +757,7 @@
         "output_tokens": 42373,
         "reasoning_output_tokens": 17696
       },
-      "source": "Original worker rejected by independent coverage/omitted-target checks; 63entries298538bytes/62freeze/365raw identities verified. Parent8cae74 full180/765 rejected for quoted-command routing. Correctedbb89964 passes26 independent/8quoted/context/supplied6,19CLI+40English/workspacechecks; freshfull765 active. No publication claim."
+      "source": "Original worker and parent8cae74 rejected by independent coverage/context and quoted-command probes. Finalbb89964 full180/765,all177priorpasses,0fail;26independent/8quoted/context/supplied6,19CLI+40English/workspacechecks pass. Original archives/failures preserved; PR publication pending."
     },
     {
       "track": "workrates-continuous",
@@ -769,6 +769,17 @@
         "reasoning_output_tokens": 4025
       },
       "source": "Rejected fullDEV33<34 frozen gate; parent17positive/13negative probes produce0positiveanswers/13refusals/0wrong. Parent independently rescored4475, all32prioranswerpayloads preserved, independently verified4newrate answers. 19parent/15original/26raw/12freeze identities verified; no runtime integration."
+    },
+    {
+      "track": "rateclauses-continuous",
+      "usage": {
+        "input_tokens": 2772572,
+        "cached_input_tokens": 2668544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 39354,
+        "reasoning_output_tokens": 9232
+      },
+      "source": "Rejected fullDEV31<34, one new metric wrong; all32 old objects/rawlines preserved. Parent28 probes1/16positive12negative refusals0wrong; parent4475rescore and three rational derivations verified. 73parent/71report/85raw/35freeze identities verified; runtime restored. Reciprocal-label discrepancy disclosed without changing gate."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

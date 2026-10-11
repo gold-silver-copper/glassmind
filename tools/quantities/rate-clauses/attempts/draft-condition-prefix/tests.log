@@ -1,0 +1,64 @@
+Running as unit: run-p1000064-i97441966.scope; invocation ID: 288fb3e5bbdd44ed823df9491b9d09c2
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses/crates/quantities)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.51s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/glassmind_quantities-41bb52794b2e9d1b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/glassmind_quantities-29dea034d19a1fdd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/linear_language.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/linear_language-cc9e1cc3276e8c85)
+
+running 4 tests
+test training_concepts_use_shared_scalar_constraints ... ok
+test novel_clause_combinations_and_order ... ok
+test absolute_differences_require_agreement_across_solutions ... ok
+test omissions_contradictions_units_and_ambiguous_referents_refuse ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/percent_change.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/percent_change-73f61424646b3739)
+
+running 3 tests
+test annual_forward_inverse_and_bound_entity ... ok
+test directed_bases_and_successive_changes ... ok
+test refuses_incomplete_ambiguous_or_invalid_relations ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running tests/percent_language.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/percent_language-f72e1503b5e076eb)
+
+running 2 tests
+test malformed_or_unconsumed_percentage_relations_refuse ... ok
+test percentage_relations_and_composition ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/rate_clauses.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/rate_clauses-216f81741c27babb)
+
+running 3 tests
+test tank_conditions_and_unused_clauses ... FAILED
+test supplemental_clause_forms ... ok
+test frozen_compositional_clauses ... ok
+
+failures:
+
+---- tank_conditions_and_unused_clauses stdout ----
+
+thread 'tank_conditions_and_unused_clauses' (1001198) panicked at crates/quantities/tests/rate_clauses.rs:36:39:
+Pipes red and blue can fill a tank in 6 and 3 hours respectively. If both the pipes are opened when the tank is empty, in how many hours will the tank be filled?: unsupported English cardinal
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tank_conditions_and_unused_clauses
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+error: test failed, to rerun pass `-p glassmind-quantities --test rate_clauses`

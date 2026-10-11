@@ -1,0 +1,13 @@
+Running as unit: run-p1023071-i97505671.scope; invocation ID: e8b28d638e1c45fe9f4367e26fbcd935
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses/crates/quantities)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.74s
+     Running tests/rate_clauses.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/rate_clauses-216f81741c27babb)
+
+running 4 tests
+test locally_bound_ellipsis ... ok
+test tank_conditions_and_unused_clauses ... ok
+test supplemental_clause_forms ... ok
+test frozen_compositional_clauses ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+

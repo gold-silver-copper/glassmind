@@ -1,0 +1,67 @@
+{
+  "arithmetic_and_units_verified": 3,
+  "metric_correct": 2,
+  "metric_wrong": 1,
+  "label_discrepancy": "4126: given1day joint and20days for A imply20/19days for B; selected0.95days is19/20, numerically the jobs/day rate. No scorer or label was changed.",
+  "independent_reviewer": false,
+  "derivations": {
+    "2469": {
+      "common_days": 36,
+      "joint_jobs": 9,
+      "known_individual_jobs": [
+        3,
+        2
+      ],
+      "unknown_jobs": 4,
+      "expected": "9",
+      "label": "9 days",
+      "unit": "days",
+      "question": "if a , b and c together can finish a piece of work in 4 days . a alone in 12 days and b in 18 days , then c alone can do it in ?",
+      "candidate": {
+        "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload",
+        "status": "answer",
+        "unit": "days",
+        "value": "9"
+      },
+      "v3_grade": "correct"
+    },
+    "3869": {
+      "common_days": 30,
+      "joint_jobs": 5,
+      "known_individual_jobs": [
+        3
+      ],
+      "unknown_jobs": 2,
+      "expected": "15",
+      "label": "15",
+      "unit": "days",
+      "question": "a and b together can do a work in 6 days . if a alone can do it in 10 days . in how many days can b alone do it ?",
+      "candidate": {
+        "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload",
+        "status": "answer",
+        "unit": "days",
+        "value": "15"
+      },
+      "v3_grade": "correct"
+    },
+    "4126": {
+      "common_days": 20,
+      "joint_jobs": 20,
+      "known_individual_jobs": [
+        1
+      ],
+      "unknown_jobs": 19,
+      "expected": "20/19",
+      "label": "0.95 days",
+      "unit": "days",
+      "question": "a and b together can do a piece of work in 1 days . if a alone can do the same work in 20 days , then b alone can do the same work in ?",
+      "candidate": {
+        "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload",
+        "status": "answer",
+        "unit": "days",
+        "value": "20/19"
+      },
+      "v3_grade": "wrong"
+    }
+  }
+}

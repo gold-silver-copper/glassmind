@@ -1,0 +1,50 @@
+[
+  {
+    "baseline": {
+      "reason": "unknown tens word",
+      "status": "refusal"
+    },
+    "baseline_grade": "refused",
+    "candidate": {
+      "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload",
+      "status": "answer",
+      "unit": "days",
+      "value": "9"
+    },
+    "candidate_grade": "correct",
+    "index": 2469,
+    "question": "if a , b and c together can finish a piece of work in 4 days . a alone in 12 days and b in 18 days , then c alone can do it in ?"
+  },
+  {
+    "baseline": {
+      "reason": "unsupported English cardinal",
+      "status": "refusal"
+    },
+    "baseline_grade": "refused",
+    "candidate": {
+      "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload",
+      "status": "answer",
+      "unit": "days",
+      "value": "15"
+    },
+    "candidate_grade": "correct",
+    "index": 3869,
+    "question": "a and b together can do a work in 6 days . if a alone can do it in 10 days . in how many days can b alone do it ?"
+  },
+  {
+    "baseline": {
+      "reason": "unsupported English cardinal",
+      "status": "refusal"
+    },
+    "baseline_grade": "refused",
+    "candidate": {
+      "method": "fully consumed completion clauses; assumes constant independent simultaneous rates for one workload",
+      "status": "answer",
+      "unit": "days",
+      "value": "20/19"
+    },
+    "candidate_grade": "wrong",
+    "index": 4126,
+    "question": "a and b together can do a piece of work in 1 days . if a alone can do the same work in 20 days , then b alone can do the same work in ?"
+  }
+]
