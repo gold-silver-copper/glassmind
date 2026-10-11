@@ -14,6 +14,11 @@ Source now `e03437a81f2d047babad5e122aec99a88b1c56af` (repair ambiguity).
 PR17 MERGED ae69f1853adcb20bafbec9cd6176171048d07eb6 at2026-10-11T06:09:32Z,
 exacthead18b334ed81c59954b200a8de6138d8aa5ccad78e;CI38117005318passed1m17s.
 Do not repeat completed PR15/16/17 checks or merges. All repair publishing done.
+PR18 MERGED4b2ec2ca3e084ce073dfc933d4ff787059c6a447 at2026-10-11T06:21:48Z,
+exactheade0b042a0528a292cc60a08d157e640fa7892588f;CI38117718081passed.
+SQuAD2 baseline/rejected rate/evaluator evidence and reusableprompt now published.
+Do not repoll/remerge/retest PR18. Runtime remains e03437a, baselinebinary unchanged.
+
 
 ### Verified current batch
 
@@ -110,7 +115,7 @@ These are rejected metric results, NOT an accepted improvement. Fullledger prese
 Worker incidental TRAINcard rationale/formula exposure disclosed in handoff; not used
 for solver or normalization design. No such parquetcolumns read. Pythononly/noinference.
 
-UNANSWERABLE live:PID3157642,scopeglassmind-continuous-unanswerable.scope,
+UNANSWERABLE live, finishing REJECTED_CAL:PID3157642,scopeglassmind-continuous-unanswerable.scope,
 worktreeWORK/unanswerable branchcontinuous/unanswerable at80b9f63;
 runWORK/unanswerable-run;briefWORK/unanswerable-task.txt. ForcedAstrafastChatGPT,
 8GiB/0swap confirmed. Owns reading QA optional model/newtools/reading/unanswerable.
@@ -121,6 +126,11 @@ SHA(title) remaining96FIT/32CAL, SHA(id) caps8000/2000. CAL gate>=60%precision,
 If CALfails stop beforeDEV. Ifpasses source/model/thresholdfreeze then first200/
 full11873. DEVgate>=433substantivecorrect,<1236wrong,>=50%precision,strictcorrect
 >5945,officialEM>=50.5%; no threshold rescue. All outputs unverified/noautofacts.
+Observed CAL gatefails:bestprecisionwith100correct=100/220=45.4545%, required60%;
+at60%precision atmost48correct. No candidateDEV. Worker restoredruntime, savedfirst
+weightsSHA0d9b397a11cd1f825320d6808d3dc70118875ef05507dadd99e13843a7cd7588;
+not terminal yet, archive/review only after completion. Defaultv1 full11873 predictions
+worker reports byte-identical; parent verification pending.
 
 TYPEDMETRIC live:PID3159418,scopeglassmind-continuous-typedmetric.scope,
 worktreeWORK/typedmetric branchcontinuous/typedmetric at80b9f63;
@@ -134,8 +144,27 @@ before DEVoffline4475replayof25/31frozenanswers; metricacceptance independentof
 candidate score. Legacy/runtime/rejectedcandidate unchanged. Parent must review
 and rebaseline separately before any prospective runtimeacceptance.
 
-Next: publish reviewed baseline/rejected evidence; inspect liveworkers when done,
-archive before review. No activeparentbenchmarkjobs. Two workers total. Preserve
+Typedmetric code/definition/tests/replay frozen2026-10-11T06:21:37UTC beforeDEV;
+worker15testgroups pass. Parent separately authored20contract probes and304 exact
+conversion/near-miss checks plus3malformedcontainers pass against frozenparser
+SHA24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0.
+Rawparentreports WORK/coordinator/typedmetric-parent-{cases,probes}.json.
+Still pending finalarchive/fullledger/semanticreview; no evaluator accepted yet.
+
+ASKVERIFY live:PID3172075,scopeglassmind-continuous-askverify.scope;
+worktreeWORK/askverify branchcontinuous/askverify ate0b042a;
+runWORK/askverify-run,briefWORK/askverify-task.txt. ForcedAstrafastChatGPT,
+8GiB/0swapconfirmed. Owns CLI main.rs/edit.rs/newtools/coding-askverify only.
+Parent found ask--apply directlycallsedit::apply bypassing verifiedWorld::apply,
+printsproposalJSONthenplaintextsuccess, leaves sessionpending. Fix caller to use
+existingtypedverification/rollback; preserve no-apply and othercommands. Require
+independent baseline/candidate fixturesforvalidrename,brokenbuildrollback,disabled
+applyrule,JSONonefinaloutcome,sessionapplied/no duplicatepending. MainCLI ownership
+explicit; world-rust/reading/othertracks unchanged. Parentfullcoding and affected
+regressions before shipping. Frozenbaselinebinaryb53e5f21899189d7e51d8a8ce87aeab561ea92e3196d949cb6ff20d37661e133.
+
+Next: archive/review unanswerable and typedmetric when terminal; review/integrate
+askverify when ready. No activeparentbenchmarkjobs. Three workers currently owned. Preserve
 oldstoppeddirtyloop; stoponlyownedworkersonuserstop. Goalactive, no blocker.
 
 ## Historical checkpoints (superseded by current state above)
