@@ -1,0 +1,116 @@
+[
+  {
+    "name": "two_steps",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "The box total is <<7+8=15>>15. The pencil total is <<15*9=135>>135.\n#### 135",
+    "unique_program_expected": true
+  },
+  {
+    "name": "ordered_division",
+    "question": "There were 23 meters. After using 7 meters, the rest filled 8 equal pieces. How long was each piece?",
+    "answer": "Remaining: <<23-7=16>>16. Per piece: <<16/8=2>>2.\n#### 2",
+    "unique_program_expected": true
+  },
+  {
+    "name": "unicode_spans",
+    "question": "Élodie packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "<<7+8=15>>15 boxes and <<15*9=135>>135 pencils.\n#### 135",
+    "unique_program_expected": true
+  },
+  {
+    "name": "duplicate_occurrences",
+    "question": "Mira has 7 red beads and 7 blue beads. How many beads?",
+    "answer": "<<7+7=14>>14.\n#### 14",
+    "unique_program_expected": false
+  },
+  {
+    "name": "input_prior_collision",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils? There were 15 crates nearby.",
+    "answer": "<<7+8=15>>15. <<15*9=135>>135.\n#### 135",
+    "unique_program_expected": false
+  },
+  {
+    "name": "constant_collision",
+    "question": "There are 8 boxes with 12 pencils each. How many pencils?",
+    "answer": "<<8*12=96>>96.\n#### 96",
+    "unique_program_expected": false
+  },
+  {
+    "name": "number_words",
+    "question": "Mira packed seven green boxes and 8 red boxes. How many boxes?",
+    "answer": "<<7+8=15>>15.\n#### 15",
+    "unique_program_expected": false
+  },
+  {
+    "name": "unicode_number",
+    "question": "Mira has ７ red beads and 8 blue beads. How many beads?",
+    "answer": "<<7+8=15>>15.\n#### 15",
+    "unique_program_expected": false
+  },
+  {
+    "name": "wrong_intermediate",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "<<7+8=16>>16. <<16*9=144>>144.\n#### 144",
+    "unique_program_expected": false
+  },
+  {
+    "name": "wrong_final",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "<<7+8=15>>15. <<15*9=135>>135.\n#### 136",
+    "unique_program_expected": false
+  },
+  {
+    "name": "missing_number",
+    "question": "Mira has 7 green boxes and 8 red boxes. How many boxes?",
+    "answer": "<<7+11=18>>18.\n#### 18",
+    "unique_program_expected": false
+  },
+  {
+    "name": "forward_value",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "<<15*9=135>>135. <<7+8=15>>15.\n#### 135",
+    "unique_program_expected": false
+  },
+  {
+    "name": "division_zero",
+    "question": "There are 7 beads and 0 boxes. How many beads per box?",
+    "answer": "<<7/0=0>>0.\n#### 0",
+    "unique_program_expected": false
+  },
+  {
+    "name": "malformed_annotation",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "<<7+8==15>>15.\n#### 15",
+    "unique_program_expected": false
+  },
+  {
+    "name": "code_in_annotation",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "<<__import__('os').getpid()=15>>15.\n#### 15",
+    "unique_program_expected": false
+  },
+  {
+    "name": "no_calculator",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "The total is 135.\n#### 135",
+    "unique_program_expected": false
+  },
+  {
+    "name": "no_final",
+    "question": "Mira packed 7 green boxes and 8 red boxes. Each box held 9 pencils. How many pencils?",
+    "answer": "<<7+8=15>>15. <<15*9=135>>135.",
+    "unique_program_expected": false
+  },
+  {
+    "name": "rationale_not_question",
+    "question": "Mira has 7 green boxes. How many boxes after the delivery?",
+    "answer": "The delivery was 8 boxes. <<7+8=15>>15.\n#### 15",
+    "unique_program_expected": false
+  },
+  {
+    "name": "too_many_steps",
+    "question": "Start with 7 and add 8 repeatedly. What is the total?",
+    "answer": "<<7+8=15>>15. <<15+8=23>>23. <<23+8=31>>31. <<31+8=39>>39. <<39+8=47>>47. <<47+8=55>>55. <<55+8=63>>63.\n#### 63",
+    "unique_program_expected": false
+  }
+]

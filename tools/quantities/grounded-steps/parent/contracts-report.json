@@ -1,0 +1,151 @@
+[
+  {
+    "name": "two_steps",
+    "expected": true,
+    "actual": true,
+    "reasons": []
+  },
+  {
+    "name": "ordered_division",
+    "expected": true,
+    "actual": true,
+    "reasons": []
+  },
+  {
+    "name": "unicode_spans",
+    "expected": true,
+    "actual": true,
+    "reasons": []
+  },
+  {
+    "name": "duplicate_occurrences",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "ambiguous_leaf"
+    ]
+  },
+  {
+    "name": "input_prior_collision",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "ambiguous_leaf"
+    ]
+  },
+  {
+    "name": "constant_collision",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "ambiguous_leaf"
+    ]
+  },
+  {
+    "name": "number_words",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "native_binder_refusal"
+    ]
+  },
+  {
+    "name": "unicode_number",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "native_binder_refusal"
+    ]
+  },
+  {
+    "name": "wrong_intermediate",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "wrong_annotated_value",
+      "unbound_leaf"
+    ]
+  },
+  {
+    "name": "wrong_final",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "wrong_final_value"
+    ]
+  },
+  {
+    "name": "missing_number",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "unbound_leaf"
+    ]
+  },
+  {
+    "name": "forward_value",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "wrong_final_value",
+      "unbound_leaf",
+      "impossible_forward_reference"
+    ]
+  },
+  {
+    "name": "division_zero",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "division_by_zero"
+    ]
+  },
+  {
+    "name": "malformed_annotation",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "malformed_annotation"
+    ]
+  },
+  {
+    "name": "code_in_annotation",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "unsupported_expression"
+    ]
+  },
+  {
+    "name": "no_calculator",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "missing_annotation"
+    ]
+  },
+  {
+    "name": "no_final",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "malformed_final_answer"
+    ]
+  },
+  {
+    "name": "rationale_not_question",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "unbound_leaf"
+    ]
+  },
+  {
+    "name": "too_many_steps",
+    "expected": false,
+    "actual": false,
+    "reasons": [
+      "overlong_program"
+    ]
+  }
+]

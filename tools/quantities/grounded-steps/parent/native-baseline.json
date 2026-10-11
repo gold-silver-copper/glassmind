@@ -1,0 +1,247 @@
+{
+  "scope": "Gold provided parent programs and original numeric binding, not free solver accuracy",
+  "question_binding_cases": 19,
+  "positive_exact_native_executions": [
+    {
+      "name": "two_steps",
+      "program": {
+        "steps": [
+          {
+            "op": "add",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          },
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 2
+            }
+          }
+        ]
+      },
+      "native": {
+        "numbers": [
+          {
+            "end": 13,
+            "literal": "7",
+            "start": 12,
+            "value": "7"
+          },
+          {
+            "end": 31,
+            "literal": "8",
+            "start": 30,
+            "value": "8"
+          },
+          {
+            "end": 58,
+            "literal": "9",
+            "start": 57,
+            "value": "9"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "add",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "step"
+              },
+              "op": "multiply",
+              "right": {
+                "index": 2,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "135"
+      }
+    },
+    {
+      "name": "ordered_division",
+      "program": {
+        "steps": [
+          {
+            "op": "subtract",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          },
+          {
+            "op": "divide",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 2
+            }
+          }
+        ]
+      },
+      "native": {
+        "numbers": [
+          {
+            "end": 13,
+            "literal": "23",
+            "start": 11,
+            "value": "23"
+          },
+          {
+            "end": 35,
+            "literal": "7",
+            "start": 34,
+            "value": "7"
+          },
+          {
+            "end": 61,
+            "literal": "8",
+            "start": 60,
+            "value": "8"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "subtract",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "step"
+              },
+              "op": "divide",
+              "right": {
+                "index": 2,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "2"
+      }
+    },
+    {
+      "name": "unicode_spans",
+      "program": {
+        "steps": [
+          {
+            "op": "add",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          },
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 2
+            }
+          }
+        ]
+      },
+      "native": {
+        "numbers": [
+          {
+            "end": 16,
+            "literal": "7",
+            "start": 15,
+            "value": "7"
+          },
+          {
+            "end": 34,
+            "literal": "8",
+            "start": 33,
+            "value": "8"
+          },
+          {
+            "end": 61,
+            "literal": "9",
+            "start": 60,
+            "value": "9"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "add",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "step"
+              },
+              "op": "multiply",
+              "right": {
+                "index": 2,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "135"
+      }
+    }
+  ],
+  "binary_sha256": "40e6a6e975cf8474231ac0e3bcc2e3df5c1ce8196dead0b9159586aa5935ea6f"
+}

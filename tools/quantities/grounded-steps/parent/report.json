@@ -1,0 +1,44 @@
+{
+  "manifest_entries_verified": 52,
+  "parent_contracts": 19,
+  "all_parent_contracts_passed": true,
+  "train_rows": 7473,
+  "groups": 7472,
+  "subsets": {
+    "TRAIN-FIT": 5922,
+    "TRAIN-CAL": 1551
+  },
+  "question_only_native_bindings_exact": 7473,
+  "gold_native_executions_exact": 354,
+  "independent_arithmetic_expressions": 22777,
+  "independent_leaf_candidate_sets": 24050,
+  "stages": {
+    "annotation_present": 7378,
+    "annotation_parses": 7037,
+    "arithmetic_valid": 7037,
+    "final_consistent": 6693,
+    "exact_native_binder_accepted": 3874,
+    "uniquely_grounded_typed_program": 354,
+    "ambiguity": 3025,
+    "accepted": 354
+  },
+  "exclusions": {
+    "native_binder_refusal": 3599,
+    "ambiguous_leaf": 3025,
+    "overlong_program": 611,
+    "unsupported_expression": 341,
+    "wrong_final_value": 344,
+    "unbound_leaf": 732,
+    "missing_annotation": 95,
+    "impossible_forward_reference": 11,
+    "cyclic_reference": 5
+  },
+  "accepted_by_subset": {
+    "TRAIN-FIT": 290,
+    "TRAIN-CAL": 64
+  },
+  "gate_required": 1000,
+  "gate_actual": 354,
+  "decision": "rejected",
+  "scope": "Converted gold TRAIN labels, not predictions or semantic proof"
+}

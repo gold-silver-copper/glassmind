@@ -1,0 +1,21 @@
+[
+ {"id":"two_step","question":"There are 7 red, 8 blue, and 9 crates.","answer":"<<7+8=15>> <<15*9=135>> #### 135","accepted":true},
+ {"id":"repeated_input","question":"There are 7 red, 7 blue, and 8 crates.","answer":"<<7+8=15>> #### 15","reason":"ambiguous_leaf","choices":2},
+ {"id":"input_prior_collision","question":"There are 7 red, 8 blue, 15 boxes, and 9 crates.","answer":"<<7+8=15>> <<15*9=135>> #### 135","reason":"ambiguous_leaf","choices":2},
+ {"id":"constant_collision","question":"There are 7 red and 2 blue.","answer":"<<7*2=14>> #### 14","reason":"ambiguous_leaf","choices":2},
+ {"id":"unicode_numeral","question":"There are ７ red and 8 blue.","answer":"<<7+8=15>> #### 15","reason":"native_binder_refusal"},
+ {"id":"number_word","question":"There are seven red and 8 blue.","answer":"<<7+8=15>> #### 15","reason":"native_binder_refusal"},
+ {"id":"malformed","question":"There are 7 red and 8 blue.","answer":"<<7+8=15> #### 15","reason":"malformed_annotation"},
+ {"id":"wrong_intermediate","question":"There are 7 red, 8 blue, and 9 crates.","answer":"<<7+8=16>> <<16*9=144>> #### 144","reason":"wrong_annotated_value"},
+ {"id":"wrong_final","question":"There are 7 red and 8 blue.","answer":"<<7+8=15>> #### 16","reason":"wrong_final_value"},
+ {"id":"missing_number","question":"There are 7 red and 8 blue.","answer":"<<7+19=26>> #### 26","reason":"unbound_leaf"},
+ {"id":"forward_reference","question":"There are 7 red, 8 blue, and 9 crates.","answer":"<<15*9=135>> <<7+8=15>> #### 15","reason":"impossible_forward_reference"},
+ {"id":"nested","question":"There are 7 red, 8 blue, 9 green, and 11 crates.","answer":"<<(7+8)*(9+11)=300>> #### 300","accepted":true},
+ {"id":"overlong_horizon","question":"Values: 7, 8, 9, 11, 13, 14, 16, 17.","answer":"<<((((((7+8)+9)+11)+13)+14)+16)+17=95>> #### 95","reason":"overlong_program"},
+ {"id":"divide_zero","question":"There are 7 red.","answer":"<<7/0=0>> #### 0","reason":"division_by_zero"},
+ {"id":"utf8_span","question":"Café: 7 red and 8 blue.","answer":"<<7+8=15>> #### 15","accepted":true,"first_start":7},
+ {"id":"cycle","question":"There are 7 red and 8 blue.","answer":"<<19+0=19>> #### 19","reason":"cyclic_reference"},
+ {"id":"unary_sign","question":"There are 7 red and 8 blue.","answer":"<<-7+8=1>> #### 1","reason":"unsupported_expression"},
+ {"id":"overflow","question":"There are 7 red.","answer":"<<170141183460469231731687303715884105727+1=0>> #### 0","reason":"rational_overflow"},
+ {"id":"decimal_parentheses","question":"There are 7.5 red and 8.5 blue.","answer":"<<(7.5+8.5)/2=8>> #### 8","accepted":true}
+]
