@@ -16,6 +16,7 @@ use std::{
     },
 };
 
+pub mod claims;
 pub mod pilot;
 
 pub const MAX_DISK_QUESTION_BYTES: usize = 4096;
@@ -66,6 +67,8 @@ pub struct DiskInfo {
     pub source_json_sha256: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub public_source: Option<pilot::SourceManifest>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub public_claims: Option<claims::SourceManifest>,
     pub entities: usize,
     pub aliases: usize,
     pub edges: usize,
@@ -214,13 +217,13 @@ impl DiskStore {
         let version: i64 = db
             .query_row("PRAGMA user_version", [], |r| r.get(0))
             .map_err(error)?;
-        if application != APPLICATION_ID || ![1, 2].contains(&version) {
+        if application != APPLICATION_ID || ![1, 2, 3].contains(&version) {
             return Err("unsupported disk facts format".into());
         }
         for (kind, name, expected) in SCHEMA
             .iter()
             .filter(|(_, name, _)| version == 1 || *name != "aliases")
-            .chain(pilot::SCHEMA.iter().filter(|_| version == 2))
+            .chain(pilot::SCHEMA.iter().filter(|_| version >= 2))
         {
             let found: Option<String> = db
                 .query_row(
@@ -243,24 +246,33 @@ impl DiskStore {
         if meta("normalizer")? != normalizer_version() {
             return Err("incompatible disk facts normalizer; rebuild the index".into());
         }
-        let (source_json_sha256, public_source) = if version == 1 {
+        let (source_json_sha256, public_source, public_claims) = if version == 1 {
             let hash = meta("source_json_sha256")?;
             if !pilot::hex_hash(&hash, 64) {
                 return Err("invalid disk facts source hash".into());
             }
-            (Some(hash), None)
-        } else {
+            (Some(hash), None, None)
+        } else if version == 2 {
             let manifest: pilot::SourceManifest =
                 serde_json::from_str(&meta("public_source")?).map_err(error)?;
             manifest.validate()?;
             if meta("source_kind")? != "audited-wikidata-parquet-pilot" {
                 return Err("unsupported public facts source".into());
             }
-            (None, Some(manifest))
+            (None, Some(manifest), None)
+        } else {
+            let manifest: claims::SourceManifest =
+                serde_json::from_str(&meta("public_claims")?).map_err(error)?;
+            manifest.validate()?;
+            if meta("source_kind")? != "audited-wikidata-claims-snapshot" {
+                return Err("unsupported claims snapshot source".into());
+            }
+            (None, None, Some(manifest))
         };
         let info = DiskInfo {
             source_json_sha256,
             public_source,
+            public_claims,
             entities: meta("entities")?.parse().map_err(error)?,
             aliases: meta("aliases")?.parse().map_err(error)?,
             edges: meta("edges")?.parse().map_err(error)?,

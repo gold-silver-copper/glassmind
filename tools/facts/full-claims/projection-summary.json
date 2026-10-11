@@ -1,0 +1,1397 @@
+{
+  "schema": 1,
+  "acquisition_sha256": "e29894e98c4001db53ca5b93d9420e82e4736fd2985c28bd8251c899d2718b18",
+  "pyarrow": "25.0.1",
+  "python": "3.14.7 (main, Aug 10 2026, 07:46:56) [GCC 16.1.1 20260728]",
+  "canonical_retained_ids": 1092134757,
+  "source_rows": 789435443,
+  "statements": 364044919,
+  "qualified_statements": 46448050,
+  "projection_bytes": 25821511680,
+  "projection_sha256": "7fd86d572ba1f0b91de7cb4165543162195247b164d69363571bbf67c7128622",
+  "seconds": 2711.2927514690673,
+  "peak_rss_kib": 556268,
+  "files": 86,
+  "raw_samples": 8009,
+  "eligible_raw_samples": 3647,
+  "full_report_sha256": "ab9db1aea24985d29c7696b147c84c202fb4adae6246d5bf666ac01dc54872cb",
+  "per_file_accounting": [
+    {
+      "counts": {
+        "non_item_subject": 324171,
+        "non_item_value": 3419027,
+        "kept": 5677515,
+        "deprecated": 11939,
+        "somevalue": 34893,
+        "novalue": 959
+      },
+      "ranks": {
+        "0,1": 704320,
+        "0,0": 4968743,
+        "1,1": 2933,
+        "1,0": 1519
+      },
+      "path": "all/part-00-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4254267,
+        "non_item_value": 3999097,
+        "deprecated": 21487,
+        "novalue": 1263,
+        "somevalue": 8817
+      },
+      "ranks": {
+        "0,0": 3733223,
+        "0,1": 515511,
+        "1,1": 2649,
+        "1,0": 2884
+      },
+      "path": "all/part-01-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4087548,
+        "non_item_value": 4184626,
+        "deprecated": 7721,
+        "somevalue": 3924,
+        "novalue": 1099
+      },
+      "ranks": {
+        "0,0": 3380817,
+        "0,1": 703975,
+        "1,0": 1301,
+        "1,1": 1455
+      },
+      "path": "all/part-02-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4688615,
+        "kept": 4747058,
+        "deprecated": 11494,
+        "somevalue": 19701,
+        "novalue": 1629
+      },
+      "ranks": {
+        "0,0": 4234973,
+        "0,1": 508277,
+        "1,0": 1414,
+        "1,1": 2394
+      },
+      "path": "all/part-03-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4889589,
+        "kept": 5747179,
+        "deprecated": 7884,
+        "somevalue": 5918,
+        "novalue": 1480
+      },
+      "ranks": {
+        "0,0": 5468998,
+        "0,1": 273550,
+        "1,0": 1509,
+        "1,1": 3122
+      },
+      "path": "all/part-04-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 3678689,
+        "kept": 4518077,
+        "deprecated": 75814,
+        "somevalue": 4669,
+        "novalue": 7691
+      },
+      "ranks": {
+        "0,0": 4056683,
+        "0,1": 456951,
+        "1,1": 2506,
+        "1,0": 1937
+      },
+      "path": "all/part-05-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4473979,
+        "kept": 4927129,
+        "somevalue": 6261,
+        "novalue": 40330,
+        "deprecated": 20782
+      },
+      "ranks": {
+        "0,0": 4052986,
+        "0,1": 870380,
+        "1,0": 1793,
+        "1,1": 1970
+      },
+      "path": "all/part-06-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4578837,
+        "non_item_value": 3679248,
+        "deprecated": 19088,
+        "somevalue": 6641,
+        "novalue": 1117
+      },
+      "ranks": {
+        "0,0": 4160453,
+        "0,1": 414019,
+        "1,1": 2019,
+        "1,0": 2346
+      },
+      "path": "all/part-07-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5138990,
+        "non_item_value": 4301973,
+        "deprecated": 19770,
+        "novalue": 1503,
+        "somevalue": 6249
+      },
+      "ranks": {
+        "0,0": 4679855,
+        "0,1": 454666,
+        "1,0": 1750,
+        "1,1": 2719
+      },
+      "path": "all/part-08-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4514948,
+        "non_item_value": 3743342,
+        "deprecated": 16086,
+        "somevalue": 7854,
+        "novalue": 2709
+      },
+      "ranks": {
+        "0,0": 3942088,
+        "0,1": 545218,
+        "1,1": 26482,
+        "1,0": 1160
+      },
+      "path": "all/part-09-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5801157,
+        "non_item_value": 3619959,
+        "somevalue": 32909,
+        "deprecated": 11358,
+        "novalue": 3099
+      },
+      "ranks": {
+        "0,0": 4934413,
+        "0,1": 862604,
+        "1,1": 2704,
+        "1,0": 1436
+      },
+      "path": "all/part-10-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4133986,
+        "kept": 5312562,
+        "deprecated": 11773,
+        "novalue": 1924,
+        "somevalue": 8255
+      },
+      "ranks": {
+        "0,0": 4900629,
+        "0,1": 408588,
+        "1,0": 1456,
+        "1,1": 1889
+      },
+      "path": "all/part-11-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5121784,
+        "non_item_value": 4262708,
+        "deprecated": 13236,
+        "novalue": 1228,
+        "somevalue": 69529
+      },
+      "ranks": {
+        "0,0": 4245289,
+        "0,1": 871258,
+        "1,0": 1985,
+        "1,1": 3252
+      },
+      "path": "all/part-12-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4375636,
+        "non_item_value": 3839370,
+        "deprecated": 54457,
+        "novalue": 1578,
+        "somevalue": 13890
+      },
+      "ranks": {
+        "0,0": 3820785,
+        "0,1": 542753,
+        "1,0": 2032,
+        "1,1": 10066
+      },
+      "path": "all/part-13-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5327259,
+        "non_item_value": 4116370,
+        "deprecated": 10833,
+        "somevalue": 10364,
+        "novalue": 3667
+      },
+      "ranks": {
+        "0,0": 4795318,
+        "0,1": 528045,
+        "1,0": 1337,
+        "1,1": 2559
+      },
+      "path": "all/part-14-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5734375,
+        "non_item_value": 3714248,
+        "somevalue": 10120,
+        "deprecated": 7349,
+        "novalue": 2393
+      },
+      "ranks": {
+        "0,0": 5195632,
+        "0,1": 530837,
+        "1,0": 2073,
+        "1,1": 5833
+      },
+      "path": "all/part-15-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5240354,
+        "non_item_value": 4196678,
+        "deprecated": 7844,
+        "somevalue": 16067,
+        "novalue": 7551
+      },
+      "ranks": {
+        "0,0": 4691976,
+        "0,1": 542150,
+        "1,1": 4367,
+        "1,0": 1861
+      },
+      "path": "all/part-16-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5512355,
+        "non_item_value": 3929153,
+        "novalue": 2752,
+        "deprecated": 13557,
+        "somevalue": 10670
+      },
+      "ranks": {
+        "0,0": 4926258,
+        "0,1": 578475,
+        "1,1": 5574,
+        "1,0": 2048
+      },
+      "path": "all/part-17-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5791693,
+        "non_item_value": 3661937,
+        "deprecated": 6476,
+        "somevalue": 6954,
+        "novalue": 1434
+      },
+      "ranks": {
+        "0,0": 5013421,
+        "0,1": 775087,
+        "1,0": 1353,
+        "1,1": 1832
+      },
+      "path": "all/part-18-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 6137938,
+        "non_item_value": 4499513,
+        "somevalue": 4717,
+        "deprecated": 8919,
+        "novalue": 971
+      },
+      "ranks": {
+        "0,0": 5944906,
+        "0,1": 190640,
+        "1,1": 1387,
+        "1,0": 1005
+      },
+      "path": "all/part-19-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5595851,
+        "non_item_value": 3850575,
+        "deprecated": 8727,
+        "somevalue": 11415,
+        "novalue": 1917
+      },
+      "ranks": {
+        "0,0": 5090083,
+        "0,1": 501798,
+        "1,0": 1310,
+        "1,1": 2660
+      },
+      "path": "all/part-20-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5974601,
+        "non_item_value": 4661795,
+        "somevalue": 7393,
+        "novalue": 1558,
+        "deprecated": 6729
+      },
+      "ranks": {
+        "0,0": 5346876,
+        "0,1": 623368,
+        "1,1": 2320,
+        "1,0": 2037
+      },
+      "path": "all/part-21-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5648184,
+        "non_item_value": 3807978,
+        "somevalue": 5380,
+        "deprecated": 5455,
+        "novalue": 1468
+      },
+      "ranks": {
+        "0,0": 5176649,
+        "0,1": 468430,
+        "1,0": 1217,
+        "1,1": 1888
+      },
+      "path": "all/part-22-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5953028,
+        "non_item_value": 3503964,
+        "deprecated": 3462,
+        "somevalue": 5047,
+        "novalue": 2994
+      },
+      "ranks": {
+        "0,0": 3943048,
+        "0,1": 2007663,
+        "1,0": 775,
+        "1,1": 1542
+      },
+      "path": "all/part-23-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 3808683,
+        "kept": 5636478,
+        "deprecated": 7661,
+        "somevalue": 11453,
+        "novalue": 4216
+      },
+      "ranks": {
+        "0,0": 5144497,
+        "0,1": 487902,
+        "1,0": 1569,
+        "1,1": 2510
+      },
+      "path": "all/part-24-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4096387,
+        "non_item_value": 5352195,
+        "novalue": 1696,
+        "deprecated": 16852,
+        "somevalue": 1362
+      },
+      "ranks": {
+        "0,0": 3792888,
+        "0,1": 296437,
+        "1,1": 4983,
+        "1,0": 2079
+      },
+      "path": "all/part-25-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2650648,
+        "non_item_value": 5620931,
+        "deprecated": 10237,
+        "novalue": 2049,
+        "somevalue": 1060
+      },
+      "ranks": {
+        "0,0": 2462717,
+        "0,1": 184169,
+        "1,1": 2112,
+        "1,0": 1650
+      },
+      "path": "all/part-26-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4487488,
+        "kept": 3757945,
+        "deprecated": 32493,
+        "novalue": 4480,
+        "somevalue": 2533
+      },
+      "ranks": {
+        "0,0": 3395694,
+        "0,1": 355191,
+        "1,1": 3901,
+        "1,0": 3159
+      },
+      "path": "all/part-27-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4058017,
+        "non_item_value": 4200925,
+        "deprecated": 19597,
+        "somevalue": 3101,
+        "novalue": 3308
+      },
+      "ranks": {
+        "0,0": 3618284,
+        "0,1": 429383,
+        "1,1": 6461,
+        "1,0": 3889
+      },
+      "path": "all/part-28-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4413508,
+        "kept": 3844555,
+        "deprecated": 17885,
+        "novalue": 5570,
+        "somevalue": 3394
+      },
+      "ranks": {
+        "0,0": 3243291,
+        "0,1": 559868,
+        "1,1": 39191,
+        "1,0": 2205
+      },
+      "path": "all/part-29-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3875846,
+        "non_item_value": 4389173,
+        "deprecated": 13804,
+        "somevalue": 3696,
+        "novalue": 2404
+      },
+      "ranks": {
+        "0,0": 3005962,
+        "0,1": 864132,
+        "1,1": 3906,
+        "1,0": 1846
+      },
+      "path": "all/part-30-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4817021,
+        "non_item_value": 4622489,
+        "deprecated": 21836,
+        "somevalue": 4428,
+        "novalue": 2714
+      },
+      "ranks": {
+        "0,1": 485157,
+        "0,0": 4321120,
+        "1,1": 5934,
+        "1,0": 4810
+      },
+      "path": "all/part-31-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4035029,
+        "non_item_value": 4222929,
+        "deprecated": 14595,
+        "somevalue": 8358,
+        "novalue": 4124
+      },
+      "ranks": {
+        "0,0": 3589503,
+        "0,1": 431668,
+        "1,1": 7832,
+        "1,0": 6026
+      },
+      "path": "all/part-32-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3470642,
+        "non_item_value": 3609878,
+        "deprecated": 13706,
+        "novalue": 3396,
+        "somevalue": 3646
+      },
+      "ranks": {
+        "0,0": 2737058,
+        "0,1": 726521,
+        "1,1": 3267,
+        "1,0": 3796
+      },
+      "path": "all/part-33-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4092810,
+        "non_item_value": 4166804,
+        "deprecated": 13794,
+        "somevalue": 4633,
+        "novalue": 6883
+      },
+      "ranks": {
+        "0,0": 3391032,
+        "0,1": 688601,
+        "1,0": 8058,
+        "1,1": 5119
+      },
+      "path": "all/part-34-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4575648,
+        "kept": 4872803,
+        "deprecated": 14960,
+        "novalue": 1936,
+        "somevalue": 3151
+      },
+      "ranks": {
+        "0,0": 4260570,
+        "0,1": 605848,
+        "1,0": 2899,
+        "1,1": 3486
+      },
+      "path": "all/part-35-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5048700,
+        "non_item_value": 3211673,
+        "deprecated": 9202,
+        "somevalue": 14213,
+        "novalue": 1137
+      },
+      "ranks": {
+        "0,0": 3915531,
+        "0,1": 1095696,
+        "1,1": 3288,
+        "1,0": 34185
+      },
+      "path": "all/part-36-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4690167,
+        "non_item_value": 3571911,
+        "deprecated": 16284,
+        "somevalue": 5312,
+        "novalue": 1258
+      },
+      "ranks": {
+        "0,0": 3803087,
+        "0,1": 874614,
+        "1,0": 3558,
+        "1,1": 8908
+      },
+      "path": "all/part-37-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4293701,
+        "non_item_value": 3964742,
+        "novalue": 2096,
+        "deprecated": 20826,
+        "somevalue": 3561
+      },
+      "ranks": {
+        "0,0": 3803389,
+        "0,1": 469366,
+        "1,1": 15704,
+        "1,0": 5242
+      },
+      "path": "all/part-38-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3137433,
+        "non_item_value": 3946565,
+        "deprecated": 13265,
+        "novalue": 1330,
+        "somevalue": 2780
+      },
+      "ranks": {
+        "0,0": 2668856,
+        "0,1": 462929,
+        "1,0": 1887,
+        "1,1": 3761
+      },
+      "path": "all/part-39-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4504191,
+        "kept": 3757632,
+        "deprecated": 13448,
+        "somevalue": 8195,
+        "novalue": 1460
+      },
+      "ranks": {
+        "0,0": 3146966,
+        "0,1": 597032,
+        "1,0": 10581,
+        "1,1": 3053
+      },
+      "path": "all/part-40-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5214487,
+        "non_item_value": 4214050,
+        "deprecated": 26597,
+        "somevalue": 10561,
+        "novalue": 2795
+      },
+      "ranks": {
+        "0,0": 4420651,
+        "0,1": 786137,
+        "1,1": 4141,
+        "1,0": 3558
+      },
+      "path": "all/part-41-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4656754,
+        "non_item_value": 3611625,
+        "deprecated": 9462,
+        "somevalue": 5104,
+        "novalue": 2023
+      },
+      "ranks": {
+        "0,0": 3533119,
+        "1,1": 2683,
+        "0,1": 1118392,
+        "1,0": 2560
+      },
+      "path": "all/part-42-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4106779,
+        "non_item_value": 4158027,
+        "deprecated": 15868,
+        "novalue": 1968,
+        "somevalue": 2256
+      },
+      "ranks": {
+        "0,0": 3658801,
+        "0,1": 429610,
+        "1,0": 3373,
+        "1,1": 14995
+      },
+      "path": "all/part-43-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4101337,
+        "kept": 4154487,
+        "novalue": 2782,
+        "deprecated": 24692,
+        "somevalue": 1653
+      },
+      "ranks": {
+        "0,0": 3808454,
+        "0,1": 334899,
+        "1,1": 8080,
+        "1,0": 3054
+      },
+      "path": "all/part-44-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 3844503,
+        "kept": 3238161,
+        "somevalue": 2168,
+        "deprecated": 14153,
+        "novalue": 2362
+      },
+      "ranks": {
+        "0,0": 2911346,
+        "0,1": 314372,
+        "1,0": 2937,
+        "1,1": 9506
+      },
+      "path": "all/part-45-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3607924,
+        "non_item_value": 4609592,
+        "deprecated": 60910,
+        "novalue": 4245,
+        "somevalue": 2259
+      },
+      "ranks": {
+        "0,0": 3156375,
+        "0,1": 427598,
+        "1,1": 19618,
+        "1,0": 4333
+      },
+      "path": "all/part-46-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4337882,
+        "kept": 3910007,
+        "deprecated": 29796,
+        "novalue": 4382,
+        "somevalue": 2886
+      },
+      "ranks": {
+        "0,0": 3486752,
+        "0,1": 393289,
+        "1,1": 12090,
+        "1,0": 17876
+      },
+      "path": "all/part-47-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4147868,
+        "non_item_value": 4103622,
+        "deprecated": 27505,
+        "somevalue": 4641,
+        "novalue": 1267
+      },
+      "ranks": {
+        "0,0": 3642602,
+        "0,1": 450773,
+        "1,0": 35025,
+        "1,1": 19468
+      },
+      "path": "all/part-48-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4382061,
+        "non_item_value": 3869228,
+        "deprecated": 24741,
+        "somevalue": 7540,
+        "novalue": 1398
+      },
+      "ranks": {
+        "0,0": 4031559,
+        "0,1": 337146,
+        "1,1": 5733,
+        "1,0": 7623
+      },
+      "path": "all/part-49-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3945903,
+        "non_item_value": 4315710,
+        "deprecated": 15657,
+        "somevalue": 5076,
+        "novalue": 2546
+      },
+      "ranks": {
+        "0,0": 3518404,
+        "0,1": 420022,
+        "1,0": 2540,
+        "1,1": 4937
+      },
+      "path": "all/part-50-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4360657,
+        "kept": 3899492,
+        "deprecated": 18203,
+        "somevalue": 4819,
+        "novalue": 1762
+      },
+      "ranks": {
+        "0,0": 3506897,
+        "0,1": 386157,
+        "1,1": 3859,
+        "1,0": 2579
+      },
+      "path": "all/part-51-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3775540,
+        "non_item_value": 4409408,
+        "deprecated": 33215,
+        "somevalue": 64243,
+        "novalue": 2518
+      },
+      "ranks": {
+        "0,0": 3219374,
+        "0,1": 549995,
+        "1,0": 2637,
+        "1,1": 3534
+      },
+      "path": "all/part-52-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4159854,
+        "non_item_value": 4097368,
+        "deprecated": 20844,
+        "novalue": 3000,
+        "somevalue": 3861
+      },
+      "ranks": {
+        "0,0": 3597670,
+        "0,1": 555555,
+        "1,0": 2787,
+        "1,1": 3842
+      },
+      "path": "all/part-53-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 3529855,
+        "kept": 3534446,
+        "deprecated": 28617,
+        "novalue": 2410,
+        "somevalue": 6047
+      },
+      "ranks": {
+        "0,0": 3117278,
+        "0,1": 406192,
+        "1,0": 1862,
+        "1,1": 9114
+      },
+      "path": "all/part-54-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 3134655,
+        "kept": 3944869,
+        "novalue": 2583,
+        "somevalue": 5179,
+        "deprecated": 14082
+      },
+      "ranks": {
+        "0,0": 3070423,
+        "0,1": 852369,
+        "1,1": 19918,
+        "1,0": 2159
+      },
+      "path": "all/part-55-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5246991,
+        "non_item_value": 4153046,
+        "deprecated": 44769,
+        "somevalue": 20294,
+        "novalue": 3401
+      },
+      "ranks": {
+        "0,0": 3632868,
+        "0,1": 1607275,
+        "1,0": 1855,
+        "1,1": 4993
+      },
+      "path": "all/part-56-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4742724,
+        "non_item_value": 3502927,
+        "deprecated": 13948,
+        "somevalue": 20155,
+        "novalue": 5168
+      },
+      "ranks": {
+        "0,1": 1001161,
+        "0,0": 3737566,
+        "1,1": 2306,
+        "1,0": 1691
+      },
+      "path": "all/part-57-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 7560210,
+        "non_item_value": 3031549,
+        "somevalue": 50450,
+        "novalue": 976,
+        "deprecated": 8859
+      },
+      "ranks": {
+        "0,0": 4353419,
+        "0,1": 3203902,
+        "1,1": 1446,
+        "1,0": 1443
+      },
+      "path": "all/part-58-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5010947,
+        "non_item_value": 4435465,
+        "somevalue": 9219,
+        "novalue": 2066,
+        "deprecated": 10797
+      },
+      "ranks": {
+        "0,0": 4573054,
+        "0,1": 433588,
+        "1,1": 2650,
+        "1,0": 1655
+      },
+      "path": "all/part-59-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5346649,
+        "non_item_value": 4061048,
+        "deprecated": 10636,
+        "somevalue": 48508,
+        "novalue": 1656
+      },
+      "ranks": {
+        "0,0": 4737111,
+        "0,1": 601624,
+        "1,0": 2434,
+        "1,1": 5480
+      },
+      "path": "all/part-60-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 4800794,
+        "non_item_value": 5432653,
+        "novalue": 1378,
+        "deprecated": 415030,
+        "somevalue": 2190
+      },
+      "ranks": {
+        "0,0": 4431084,
+        "0,1": 365079,
+        "1,1": 2963,
+        "1,0": 1668
+      },
+      "path": "all/part-61-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4685654,
+        "kept": 4734596,
+        "deprecated": 41665,
+        "novalue": 3640,
+        "somevalue": 3021
+      },
+      "ranks": {
+        "0,0": 3891445,
+        "0,1": 837681,
+        "1,0": 2251,
+        "1,1": 3219
+      },
+      "path": "all/part-62-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3587562,
+        "non_item_value": 4610363,
+        "deprecated": 82188,
+        "novalue": 2574,
+        "somevalue": 2189
+      },
+      "ranks": {
+        "0,0": 3257198,
+        "0,1": 324615,
+        "1,1": 3811,
+        "1,0": 1938
+      },
+      "path": "all/part-63-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 6446921,
+        "kept": 2674312,
+        "deprecated": 343914,
+        "novalue": 1407,
+        "somevalue": 1914
+      },
+      "ranks": {
+        "0,0": 2455340,
+        "0,1": 216758,
+        "1,0": 745,
+        "1,1": 1469
+      },
+      "path": "all/part-64-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 4217859,
+        "kept": 5110204,
+        "deprecated": 126499,
+        "somevalue": 12807,
+        "novalue": 1118
+      },
+      "ranks": {
+        "0,0": 4559070,
+        "0,1": 548592,
+        "1,1": 1407,
+        "1,0": 1135
+      },
+      "path": "all/part-65-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2586814,
+        "non_item_value": 7674078,
+        "deprecated": 387044,
+        "somevalue": 2889,
+        "novalue": 1222
+      },
+      "ranks": {
+        "0,0": 2479008,
+        "0,1": 106246,
+        "1,0": 716,
+        "1,1": 844
+      },
+      "path": "all/part-66-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 6625179,
+        "kept": 2477398,
+        "deprecated": 360951,
+        "novalue": 2078,
+        "somevalue": 2894
+      },
+      "ranks": {
+        "0,0": 2343062,
+        "0,1": 127753,
+        "1,0": 516,
+        "1,1": 6067
+      },
+      "path": "all/part-67-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 7372773,
+        "kept": 2851378,
+        "deprecated": 421333,
+        "somevalue": 5453,
+        "novalue": 1108
+      },
+      "ranks": {
+        "0,0": 2687978,
+        "0,1": 161301,
+        "1,1": 1316,
+        "1,0": 783
+      },
+      "path": "all/part-68-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 7497250,
+        "kept": 2728190,
+        "deprecated": 424878,
+        "novalue": 1124,
+        "somevalue": 615
+      },
+      "ranks": {
+        "0,0": 2556746,
+        "0,1": 169188,
+        "1,1": 1318,
+        "1,0": 938
+      },
+      "path": "all/part-69-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 8530685,
+        "kept": 2790404,
+        "deprecated": 513931,
+        "novalue": 297,
+        "somevalue": 309
+      },
+      "ranks": {
+        "0,0": 2719190,
+        "0,1": 70025,
+        "1,1": 672,
+        "1,0": 517
+      },
+      "path": "all/part-70-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2218551,
+        "non_item_value": 8214975,
+        "deprecated": 217926,
+        "somevalue": 432,
+        "novalue": 151
+      },
+      "ranks": {
+        "0,0": 2152106,
+        "0,1": 65349,
+        "1,0": 439,
+        "1,1": 657
+      },
+      "path": "all/part-71-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2500584,
+        "non_item_value": 7807474,
+        "deprecated": 342438,
+        "novalue": 270,
+        "somevalue": 1295
+      },
+      "ranks": {
+        "0,0": 2373764,
+        "0,1": 125429,
+        "1,1": 876,
+        "1,0": 515
+      },
+      "path": "all/part-72-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2737894,
+        "non_item_value": 7437717,
+        "deprecated": 473371,
+        "somevalue": 2723,
+        "novalue": 361
+      },
+      "ranks": {
+        "0,0": 2617006,
+        "0,1": 118925,
+        "1,0": 882,
+        "1,1": 1081
+      },
+      "path": "all/part-73-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2533806,
+        "non_item_value": 7461921,
+        "deprecated": 655191,
+        "somevalue": 614,
+        "novalue": 505
+      },
+      "ranks": {
+        "0,0": 2382020,
+        "0,1": 150546,
+        "1,0": 550,
+        "1,1": 690
+      },
+      "path": "all/part-74-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 8317724,
+        "deprecated": 750175,
+        "kept": 2766791,
+        "novalue": 290,
+        "somevalue": 643
+      },
+      "ranks": {
+        "0,0": 2622622,
+        "0,1": 142723,
+        "1,1": 832,
+        "1,0": 614
+      },
+      "path": "all/part-75-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 7603498,
+        "kept": 2406810,
+        "deprecated": 640099,
+        "somevalue": 1283,
+        "novalue": 367
+      },
+      "ranks": {
+        "0,0": 2228231,
+        "0,1": 177536,
+        "1,1": 681,
+        "1,0": 362
+      },
+      "path": "all/part-76-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2420432,
+        "non_item_value": 7548559,
+        "deprecated": 681770,
+        "novalue": 446,
+        "somevalue": 829
+      },
+      "ranks": {
+        "0,0": 2259951,
+        "0,1": 159732,
+        "1,1": 471,
+        "1,0": 278
+      },
+      "path": "all/part-77-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 7471840,
+        "kept": 2530257,
+        "deprecated": 648659,
+        "somevalue": 1050,
+        "novalue": 252
+      },
+      "ranks": {
+        "0,0": 2375148,
+        "0,1": 154010,
+        "1,1": 747,
+        "1,0": 352
+      },
+      "path": "all/part-78-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2625219,
+        "non_item_value": 6321029,
+        "deprecated": 518838,
+        "novalue": 278,
+        "somevalue": 3122
+      },
+      "ranks": {
+        "0,0": 2409755,
+        "0,1": 214245,
+        "1,1": 835,
+        "1,0": 384
+      },
+      "path": "all/part-79-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3054518,
+        "non_item_value": 7031674,
+        "deprecated": 564354,
+        "somevalue": 1035,
+        "novalue": 476
+      },
+      "ranks": {
+        "0,0": 2770933,
+        "0,1": 281446,
+        "1,1": 1350,
+        "1,0": 789
+      },
+      "path": "all/part-80-of-86.parquet"
+    },
+    {
+      "counts": {
+        "non_item_value": 6330842,
+        "deprecated": 469148,
+        "kept": 2667386,
+        "somevalue": 734,
+        "novalue": 381
+      },
+      "ranks": {
+        "0,0": 2440702,
+        "0,1": 225038,
+        "1,1": 984,
+        "1,0": 662
+      },
+      "path": "all/part-81-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 2535570,
+        "non_item_value": 6461142,
+        "deprecated": 469787,
+        "somevalue": 1665,
+        "novalue": 319
+      },
+      "ranks": {
+        "0,0": 2383821,
+        "0,1": 149413,
+        "1,1": 1480,
+        "1,0": 856
+      },
+      "path": "all/part-82-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 3566493,
+        "non_item_value": 4580397,
+        "deprecated": 134863,
+        "somevalue": 2865,
+        "novalue": 312
+      },
+      "ranks": {
+        "0,0": 3306576,
+        "0,1": 256075,
+        "1,1": 2650,
+        "1,0": 1192
+      },
+      "path": "all/part-83-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5010578,
+        "non_item_value": 4271865,
+        "deprecated": 166423,
+        "somevalue": 17102,
+        "novalue": 2528
+      },
+      "ranks": {
+        "0,0": 4164734,
+        "0,1": 842396,
+        "1,1": 2051,
+        "1,0": 1397
+      },
+      "path": "all/part-84-of-86.parquet"
+    },
+    {
+      "counts": {
+        "kept": 5688086,
+        "non_item_value": 3768034,
+        "somevalue": 5318,
+        "deprecated": 6446,
+        "novalue": 600
+      },
+      "ranks": {
+        "0,0": 4748216,
+        "0,1": 935268,
+        "1,0": 1456,
+        "1,1": 3146
+      },
+      "path": "all/part-85-of-86.parquet"
+    }
+  ]
+}
