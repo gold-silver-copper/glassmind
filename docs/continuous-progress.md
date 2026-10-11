@@ -7,7 +7,7 @@ Current source commit 3539a2d; coding feature source c6ac04a; original and corre
 Known completed-worker tokens: 200,145,321, cached input counted once;
 parent and interrupted usage excluded. One Astra fast/ChatGPT worker is running; details below.
 
-## Current action: publish determined scalar targets; review dialogue rejection
+## Current action: independently review contextual dialogue rejection
 
 PROGRESS this turn: source3539a2d implements exact target determination without
 requiring every operand to be unique. Fully consumed grammar unchanged. Exact
@@ -24,8 +24,15 @@ Main20cases EACHplain+intent mode pass;12successes each preserve/recheck persist
 memory/story/draft state with realbundles andrestart. 23source/test/manifests exact.
 Package tests/three newgroups/fmt/alltargetclippy/release/strict4smoke passed.
 Rootworkspace90346 andmain49570 COMPLETE; no rootverification job remains.
-NEXT: commit/pushreports and openPR46, mergeexactheadgreenCI. Then archive/review
-contextledger original submission before modifying/removing its worktree.
+PR46 MERGED https://github.com/gold-silver-copper/glassmind/pull/46.
+Reviewedhead fa1370dcef48307b1909706681b45e052f13d206; CI38152742274 passed94s
+(15:47:18–15:48:52UTC). Merge e5de0b19a5031ab9d9b52b026d298ffcf201ab83
+at2026-10-11T15:49:01Z. Push36544, PR42654, merge43786 COMPLETE. Do not repeat.
+NEXT: archive/review contextledger original submission before modifying/removing
+its worktree. Prepared coordinator/archive-contextledger.py waits for neither:
+it asserts scope inactive/failed, PID absent and summary present before running.
+Use only after the worker is terminal; then inspect terminal-originals copies.
+
 
 Contextledger worker PID539613 is confirmed active atthischeckpoint; it reports
 all16CALgrids fail (45–65newwrong) and is finishing independent reconstruction and
