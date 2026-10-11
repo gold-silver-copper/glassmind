@@ -686,7 +686,13 @@ impl<O: Ontology> Mind<'_, O> {
             // rather than as a second unknown name), the earliest of those
             // (which understood the most of what was said), or ask back.
             let asking = self.switches.on(PREFER_ASKING.id);
-            let asks = |t: &Trouble<O>| asking && matches!(t, Trouble::Ambiguous { .. });
+            let asks = |t: &Trouble<O>| {
+                asking
+                    && matches!(
+                        t,
+                        Trouble::Ambiguous { .. } | Trouble::MissingParameter { .. }
+                    )
+            };
             let referring = self.switches.on(PREFER_REFERRING.id);
             let refers =
                 |c: &Candidate<O>| !referring || !c.meaning.things().contains(&&Thing::Previous);
@@ -883,7 +889,8 @@ fn trouble_progress<O: Ontology>(t: &Trouble<O>) -> Progress {
         Trouble::WrongKind { .. }
         | Trouble::Unsupported
         | Trouble::NothingPending
-        | Trouble::ActionFailed { .. } => Progress::Action,
+        | Trouble::ActionFailed { .. }
+        | Trouble::MissingParameter { .. } => Progress::Action,
     }
 }
 

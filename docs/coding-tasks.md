@@ -201,3 +201,24 @@ correction; state a fresh action. Every application revalidates the new typed
 proposal, with the same rollback and undo behavior as the original action.
 Literal name references in later plan steps are not silently rewritten when a
 rename destination changes; unresolved later references block at that step.
+
+
+## Supplying a missing default
+
+A complete field declaration without a default is retained as a blocked task
+with an explicit missing parameter. Glassmind asks for one literal to use at
+every existing constructor. It does not guess a value or edit the repository.
+
+```sh
+glassmind do ./my-library --session ./coding-task.json \
+  'Add pub enabled: bool to Parcel; then rename it to Package; then check the tests'
+glassmind do ./my-library --session ./coding-task.json --steps 1 'true'
+glassmind do ./my-library --session ./coding-task.json --steps 8 'continue'
+```
+
+The task and unexecuted plan survive process restarts. A bare literal is accepted
+only when that task has exactly the missing field default; ordinary numeric
+selection remains a target choice. Explicit `change the default to VALUE` also
+works. Conflicting defaults, defaults scoped to only some constructors, unsupported
+field types and unconsumed instructions remain errors. Standalone `do` without a
+session still requires a complete request, including the explicit default.

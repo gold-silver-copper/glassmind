@@ -141,7 +141,9 @@ pub fn response(reply: &Reply<Rust>) -> Response {
             Trouble::Ambiguous { candidates } => Response::Ask {
                 candidates: candidates.iter().map(key).collect(),
             },
-            Trouble::Unsupported | Trouble::ActionFailed { .. } => Response::Refuse {
+            Trouble::Unsupported
+            | Trouble::ActionFailed { .. }
+            | Trouble::MissingParameter { .. } => Response::Refuse {
                 refusal: Refusal::Unsupported,
             },
             Trouble::NothingPending => Response::Refuse {

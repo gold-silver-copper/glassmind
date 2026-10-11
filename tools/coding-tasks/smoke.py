@@ -168,6 +168,23 @@ assert 'struct Sample' in source.read_text() and 'retries: 13' in source.read_te
 assert 'pub retries: u8' in source.read_text()
 turn('undo')
 assert 'struct Reading' in source.read_text() and 'retries: 13' in source.read_text()
+# Missing defaults remain typed, then accept a literal in a separate process.
+root = out / 'missing-project'
+(root / 'src').mkdir(parents=True)
+(root / 'Cargo.toml').write_text('[package]\nname="missing_cli_smoke"\nversion="0.1.0"\nedition="2021"\n[workspace]\n')
+source = root / 'src/lib.rs'
+original_missing = 'pub struct Switch { pub state: bool }\npub fn init() -> Switch { Switch { state: false } }\n#[cfg(test)] mod tests { use super::*; #[test] fn unchanged() { assert!(!init().state); } }\n'
+source.write_text(original_missing)
+session = out / 'missing-session.json'
+state = turn('Add pub retries: u8 to Switch; then rename it to Toggle; then check the tests', 8)
+assert state['task']['status'] == 'Blocked' and state['plan']['current'] == 0
+assert state['task']['request']['AddMember']['member']['default'] is None
+assert source.read_text() == original_missing
+state = turn('8', 1)
+assert state['task']['status'] == 'Ready' and source.read_text() == original_missing
+state = turn('continue', 8)
+assert state['plan']['status'] == 'Completed' and state['plan']['current'] == 3
+assert 'struct Toggle' in source.read_text() and 'retries: 8' in source.read_text()
 report = dict(processes=len(turns), passed=True,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest())
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

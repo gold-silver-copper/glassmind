@@ -1,0 +1,21 @@
+{
+  "commit": "efd319f2178e340d98bc3faba93e34f6159b5ff4",
+  "sha256": "06cba3225bb66c6096ca33612ae1884f28a777a1d012469f0cc9c6ee582ef46b",
+  "binary": "/home/gsc/.cache/glassmind/yolo-missing/candidate",
+  "checks": "check.log",
+  "native_tests": "tests-v2.log",
+  "cli_tests": 98,
+  "field_grammar_tests": 4,
+  "cli_smoke_processes": 43,
+  "dev_total": 765,
+  "outcomes": {
+    "refused": 542,
+    "pass": 223
+  },
+  "all_outcomes_identical_to_amendments_baseline": true,
+  "baseline_sha256": "2f63aea8cf81d9ac677d45296fa6963bfc3237a219d25b43eb1a40366cad3b7b",
+  "results_sha256": "4fcb8812e190dbb70c657ceb056699a57cfd0b20ebf61c853eebed97350eef5c",
+  "artifacts": "/home/gsc/.cache/glassmind/yolo-missing",
+  "workspace_checks": "fmt, all-target clippy, release workspace, strict 4/4 fixture smoke",
+  "limitations": "Missing field defaults only; primitive fields and explicit literal answers. Conflicting defaults, partial constructor coverage, unsupported types and unresolved targets remain blocked. Tests establish covered behavior, not general language understanding."
+}

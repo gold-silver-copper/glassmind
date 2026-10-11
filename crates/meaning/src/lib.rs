@@ -234,6 +234,8 @@ pub struct Extent<O: Ontology> {
 pub enum Trouble<O: Ontology> {
     /// A supported action failed its native preconditions or verification.
     ActionFailed { reason: String },
+    /// A recognized action lacks an explicit value needed for verification.
+    MissingParameter { parameter: String },
     /// The token at `at` is not a word the language knows.
     UnknownWord { at: usize, word: String },
     /// The words are known, but no sentence shape continues at `at`

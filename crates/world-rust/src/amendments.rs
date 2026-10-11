@@ -21,7 +21,7 @@ pub(crate) fn revise(
             *name = Some(destination.clone())
         }
         (Action::AddMember { member, .. }, RustAmendment::FieldDefault(value)) => {
-            member.default = value.clone()
+            member.default = Some(value.clone())
         }
         (Action::AddMember { member, .. }, RustAmendment::FieldType(ty)) => member.ty = ty.clone(),
         (Action::AddMember { member, .. }, RustAmendment::FieldName(name)) => {

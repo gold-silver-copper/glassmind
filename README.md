@@ -534,3 +534,7 @@ runs native tests with rollback.
 Pending coding actions accept typed parameter corrections such as changing a
 field default or a rename destination. Corrections retain the other parameters,
 revalidate the proposal, and preserve the remaining ordered plan.
+
+An omitted field default remains an explicit missing parameter in the persistent
+task. Supply a literal after a restart to validate the completed specification
+and resume its original plan; no default is guessed.

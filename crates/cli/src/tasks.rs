@@ -526,6 +526,9 @@ pub fn run(
                 session.conversation.turns.clear();
                 "Task cancelled; no pending action will run.".into()
             }
+            _ if amendments::answer_missing(&session, text).is_some() => {
+                amendments::amend(&mut session, &path, text, explain, steps)?
+            }
             _ if glassmind_english_rust::add_fields::amendment_request(text).is_some()
                 && !matches!(
                     glassmind_english_rust::add_fields::request(text),
@@ -1102,12 +1105,12 @@ mod tests {
     }
 
     #[test]
-    fn an_unsupported_replacement_cancels_a_whole_pending_plan() {
+    fn an_incomplete_new_action_replaces_a_whole_pending_plan() {
         let f = Fixture::new(SOURCE);
         f.turn(1, "rename Parcel to Package then rename Bundle to Shipment");
         f.turn(2, "add public field count: u32 to Parcel");
         assert!(f.state().plan.is_none());
-        assert_eq!(f.state().task.unwrap().status, TaskStatus::Cancelled);
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
         f.turn(8, "continue");
         assert_eq!(f.source(), SOURCE);
     }
@@ -1714,7 +1717,7 @@ mod tests {
         let task = f.state().task.unwrap();
         assert_eq!(task.status, TaskStatus::Ready);
         assert!(
-            matches!(task.request, Action::AddMember { member, .. } if member.name == "weight" && member.ty == "u16" && member.default == "7")
+            matches!(task.request, Action::AddMember { member, .. } if member.name == "weight" && member.ty == "u16" && member.default.as_deref() == Some("7"))
         );
         assert_eq!(f.source(), FIELD_SOURCE);
         f.turn(1, "continue");
@@ -1851,7 +1854,7 @@ mod tests {
         let task = f.state().task.unwrap();
         assert_eq!(task.status, TaskStatus::Ready);
         assert!(
-            matches!(task.request, Action::AddMember { thing: Thing::Item(owner), member } if owner.name == "Parcel" && member.name == "priority" && member.ty == "u8" && member.default == "11")
+            matches!(task.request, Action::AddMember { thing: Thing::Item(owner), member } if owner.name == "Parcel" && member.name == "priority" && member.ty == "u8" && member.default.as_deref() == Some("11"))
         );
         assert_eq!(f.source(), FIELD_SOURCE);
         f.turn(1, "continue");
@@ -1952,12 +1955,72 @@ mod tests {
         system.respond(&mut conversation, "check the tests");
         let changed = system.respond(&mut conversation, "use 19 as the default instead");
         assert!(
-            matches!(plain(&changed.reply), Reply::Patch { action: Action::AddMember { member, .. }, .. } if member.default == "19" && member.name == "weight" && member.ty == "u16")
+            matches!(plain(&changed.reply), Reply::Patch { action: Action::AddMember { member, .. }, .. } if member.default.as_deref() == Some("19") && member.name == "weight" && member.ty == "u16")
         );
         assert_eq!(f.source(), FIELD_SOURCE);
         system.respond(&mut conversation, "no");
         let refused = system.respond(&mut conversation, "use 3 as the default instead");
         assert!(matches!(plain(&refused.reply), Reply::Trouble(_)));
+        assert_eq!(f.source(), FIELD_SOURCE);
+    }
+    #[test]
+    fn missing_default_is_a_typed_waiting_task_until_explicitly_supplied() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(8, "Add pub weight: u16 to Parcel");
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Blocked);
+        assert!(
+            matches!(task.request, Action::AddMember { member, .. } if member.default.is_none())
+        );
+        assert!(
+            matches!(&task.events.last().unwrap().result, Reply::Trouble(glassmind_meaning::Trouble::MissingParameter { parameter }) if parameter == "field default")
+        );
+        f.turn(8, "continue");
+        assert_eq!(f.source(), FIELD_SOURCE);
+        f.turn(1, "6");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Ready);
+        assert_eq!(f.source(), FIELD_SOURCE);
+        f.turn(1, "continue");
+        assert!(f.source().contains("weight: 6"));
+        f.turn(1, "undo");
+        assert_eq!(f.source(), FIELD_SOURCE);
+    }
+
+    #[test]
+    fn filling_a_missing_parameter_resumes_the_original_plan_after_restart() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(
+            8,
+            "Add pub enabled: bool to Parcel; then rename it to Shipment; then check the tests",
+        );
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Blocked);
+        assert_eq!(f.source(), FIELD_SOURCE);
+        f.turn(1, "true");
+        assert_eq!(f.state().plan.as_ref().unwrap().current, 0);
+        f.turn(8, "continue");
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("struct Shipment") && f.source().contains("enabled: true"));
+    }
+
+    #[test]
+    fn unsupported_or_conflicting_specifications_are_not_missing_defaults() {
+        for text in [
+            "Add pub weight: u16 to Parcel. Parcel::new sets it to 3",
+            "Add pub weight: u16 to Parcel; delete every file",
+            "Add pub weight: u16 to Parcel. Use 3 for all existing constructors. Use 4 for all existing constructors",
+            "Don't add pub weight: u16 to Parcel",
+        ] {
+            let f = Fixture::new(FIELD_SOURCE);
+            f.turn(8, text);
+            assert!(f.state().task.is_none(), "{text}");
+            assert_eq!(f.source(), FIELD_SOURCE);
+        }
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(8, "Add pub label: String to Parcel");
+        assert!(matches!(
+            &f.state().task.unwrap().events.last().unwrap().result,
+            Reply::Trouble(glassmind_meaning::Trouble::ActionFailed { .. })
+        ));
         assert_eq!(f.source(), FIELD_SOURCE);
     }
 }

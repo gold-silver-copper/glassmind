@@ -866,7 +866,18 @@ impl World<Rust> for RustWorld {
         let (thing, kind, name) = match action {
             Action::Rename { thing, kind, name } => (thing, kind, name),
             Action::Repair(check) => return self.remedy(check, fired),
-            Action::AddMember { .. } => {
+            Action::AddMember { thing, member } => {
+                add_fields::validate_member_shape(member)
+                    .map_err(|reason| Trouble::ActionFailed { reason })?;
+                if member.default.is_none()
+                    && let Thing::Item(item) = thing
+                    && item.kind == RustKind::Struct
+                    && self.lookup(&Name(item.name.clone()), fired).contains(item)
+                {
+                    return Err(Trouble::MissingParameter {
+                        parameter: "field default".into(),
+                    });
+                }
                 return self
                     .propose_typed_field(action)
                     .map_err(|reason| Trouble::ActionFailed { reason });
