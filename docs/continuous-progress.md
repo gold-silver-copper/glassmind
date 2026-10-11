@@ -1,90 +1,52 @@
 # Continuous development checkpoint
 
-Active goal: follow prompts/grow-yolo.md until stopped. Shared language, verified
-coding and persistent task context. Root branch harness. No model workers or
-API calls; any workers must use Astra fast and the existing ChatGPT login.
+Active goal: prompts/grow-yolo.md until stopped. Prioritize shared language,
+verified coding and persistent task context. Root branch harness. No model
+workers or model API calls; workers must use Astra fast with ChatGPT login.
 
-Latest published milestone: PR60 merged2026-10-11T21:35:03Z as
-883eb4b2fb69f1008856b73ee50f17328652147a. Persistent verified implementations;
-reviewedhead87c8d00, CI38176826196 SUCCESS. Full765DEV unchanged223/542/0.
+Latest published: PR61 merged2026-10-11T21:42:41Z as
+ d6c4aa6fa942b66a88a9a16dd8029aa59d573c8a. Reviewedhead16eb6f6;
+ CI38177277414 SUCCESS. Typed public-field specs persist with targets, defaults,
+corrections, plan tails, native constructor proof and undo. 88CLI/3grammar/1native
+proof/34process smoke/required checks PASS. Full765DEV223pass542refused0fail,
+all outcomes identical to implementation baseline. Evidence tools/coding-tasks/fields-validation.json.
+RUN=/home/gsc/.cache/glassmind/yolo-fields. All field jobs terminal.
+PR60 implementation, PR59 revisions, PR58 choices, PR57 plans and PR56 tasks
+previously merged; retained validation artifacts in tools/coding-tasks/.
 
-Previous milestone: PR59 merged at 2026-10-11T21:23:37Z as
-b83a1061c0689161d378c4e1a5701492c412068e. Reviewed head f28aa0c;
-CI38176025588 succeeded. Bounded repair revisions passed 72 CLI tests,
-24 real CLI processes and full765 DEV:223 pass/542 refused/0 fail, all outcomes
-identical to the prior choices baseline. Evidence tools/coding-tasks/revisions-validation.json.
-PR58 choices, PR57 ordered plans and PR56 persistent tasks previously merged.
+Integrated type-binding candidate: source07090010fb0e5ddeddab6a8c9600572267fb6004,
+rootcherryc26253a. Worktree/home/gsc/.cache/glassmind/yolo-type-test-bindings.
+Reuses test-aware package graph and shares builtin macro argument parsing with
+function renames. Reproves type identity before applying saved spans, then runs
+native tests. Field-add/rename/check now works through cfg(test), parent globs
+and supported assertions; opaque/shadowed syntax remains blocked.
+RUN=/home/gsc/.cache/glassmind/yolo-type-tests. Pinned candidate SHA256
+5fbc48cc540249662d96c00a3deb48c2651af2e646064d8a00e61ccc55fca0c0;
+candidate.json. 88CLI/18rename proof tests PASS (tests-v2.log,22372COMPLETE0).
+Requiredchecks PASS(check.log,6835), finalbuild PASS(final-build.log,86022).
+CLI34process smoke PASS(cli-smoke/report.json,66111). Full765DEV36113COMPLETE0:
+223pass542refused0fail; all765outcomes identical to fields baseline.
+Evidence tools/coding-tasks/type-bindings-validation.json. All type jobs terminal.
+NEXT publish PR and merge exact reviewed green head.
 
-Integrated candidate: native-verified function implementation in persistent
-Action::Implement tasks and plans. Context, corrections, restart, fresh proof,
-rollback and undo use the same executor. The standalone native target-execution
-witness now requires a standalone panic payload; compiler warnings quoting the
-injected marker no longer count. Unsupported/unexecuted/ambiguous candidates
-remain blocked; existing rename collision guards remain intact.
-Source be519af38767d3e04c0eaa54e91f4f7c732e7621 in worktree
-/home/gsc/.cache/glassmind/yolo-task-implementation; root cherry-pick606815d.
-Runtime files compared equal. Root063bf92 updates the prompt to resume existing
-capabilities rather than rebuilding completed work.
-RUN=/home/gsc/.cache/glassmind/yolo-implementation.
-Pinned candidate SHA256 b99b23284f830e0d4713271da6692e6a73470ee7448dad9a527b55c2dd506577;
-metadata candidate.json. 80 CLI tests,4 frozen implementation grammar tests,
-3 native implementation tests PASS (tests-v2.log). Required fmt/all-target clippy,
-release workspace and strict4/4 fixture smoke PASS (check.log). Real CLI29process
-smoke PASS (cli-smoke/report.json, turns.json), session55619 COMPLETE0.
-Full765DEV session8598 COMPLETE0:223 pass/542 refused/0 fail, all765 outcomes
-identical to yolo-revisions/full765. Evidence tools/coding-tasks/implementation-validation.json.
-All implementation jobs terminal. PR60 merged2026-10-11T21:35:03Z as
-883eb4b2fb69f1008856b73ee50f17328652147a, reviewedhead
-87c8d00cb041dc60964c3930cca4dd7f7f2bbef1; CI38176826196 SUCCESS.
+Independent action amendments are uncommitted in
+/home/gsc/.cache/glassmind/yolo-action-amendments, branchcontinuous/action-amendments
+fromc26253a. RUN=/home/gsc/.cache/glassmind/yolo-amendments.
+Adds shared Utterance::Amend and world-typed parameter corrections; native proposals
+remain authoritative. Explicit field default/type/name and rename destination
+corrections preserve other parameters and pending plan tail. Cancelled/completed/
+stale task guards retained. Fully consumed grammar preserves plain alias requests.
+94CLItests +1amendment grammar PASS(tests-v2.log,83822COMPLETE0); separate added
+shared-Mind/session serialization/declined-context test PASS(shared-mind-test.log,
+44829COMPLETE0). Requiredworkspacechecks running19874, check.log.
+Initial clippy closure result-size failure retained in tests.log and fixed with
+an explicit match. No amendment binary pinned or integrated. Next finish checks,
+run prepared40process CLI smoke, pin source/binary and evaluate full765DEV.
 
-Next integrated candidate: typed field specifications carried through tasks,
-corrections and plans. Worktree /home/gsc/.cache/glassmind/yolo-task-fields,
-branchcontinuous/task-fields at404177adbad773b9f191a945f7205dc8e253fdb1, integrated
-via root cherry-pick (runtime files compared equal). RUNfields=
-/home/gsc/.cache/glassmind/yolo-fields. Pinned candidate SHA256
-fdb916e61983c1b5cfd48483dc5c331a545f027f0103bd4153db53cd49eba43d;
-metadata candidate.json. Existing add-field constructor proof, scratch build/tests
-and live native verification with rollback are reused. Shared Action::AddMember
-carries world-typed PublicField(name,type,explicit default). Fully consumed field
-clauses stay together in plans. Quoted owner identifiers are distinct from 'it'.
-88CLItests/3grammar tests/1native saved-patch proof test PASS, tests-v4.log,
-session61636 COMPLETE0. Extra spaced-quoted-owner parser check PASS,
-quoted-owner-tests.log, session65515 COMPLETE0. Required workspacechecks PASS,
-check-v2.log, session42215 COMPLETE0. Real CLI34process smoke PASS,
-cli-smoke/report.json, session99827 COMPLETE0. Initial failures retained.
-Full765DEV session27971 COMPLETE0:223 pass/542 refused/0 fail; all765 outcomes
-identical to yolo-implementation/full765. Evidence tools/coding-tasks/fields-validation.json.
-All field jobs terminal. Next publish field batch and merge its exact green head.
-
-Next gap from integrated usage: type renaming still rejects cfg(test) modules
-and assertion macros supported by other verifiers. Keep those guards until a
-binding proof covers the additional syntax; don't merely allow opaque tokens.
-Field-plan tests preserve this Blocked boundary and separately demonstrate a
-successful add/rename/test plan using inert root #[test] functions returning
-Result. Consider sharing the existing rename_functions/add_fields macro argument
-proof with rename_types, plus explicit imports and adversarial shadow tests.
-General conversational constraints and conditional plans also remain unfinished.
-
-Shared cargo cache yolo-plans/target; pinned binaries isolate live regressions
-from cache writes. Every cargo run is bounded8G0swap with finite timeout and
-on-disk tmp. No unrelated jobs touched. These milestones do not complete the goal.
-
-Historical facts/quantity candidates remain rejected. Do not repeat unchanged
-tuning. Known completed-worker usage203481375tokens includes cached input once,
-excludes parent and interrupted calls; no new worker usage in these slices.
-Milestones do not complete this continuing goal.
-
-Next type-binding candidate is committed in
-/home/gsc/.cache/glassmind/yolo-type-test-bindings, branchcontinuous/type-test-bindings,
-at07090010fb0e5ddeddab6a8c9600572267fb6004, based on9a06081. RUN=/home/gsc/.cache/glassmind/yolo-type-tests. Extends rename_types
-using existing closed test-module graph and builtin expression-list traversal;
-reproves typed binding spans before application and requests native tests.
-Added tests for cfg(test), parent globs, aliases, assertion arguments, macro
-shadowing, opaque syntax and stale direct World.apply proposals. First focused
-tests-v2.log session22372 COMPLETE0:88CLI tests and18rename proof tests PASS.
-Requiredchecks session6835 and finalbuild session86022 COMPLETE0. Original tests.log
-retains one obsolete Build-vs-Test expectation failure; updated to native Test.
-Pinned candidate SHA2565fbc48cc540249662d96c00a3deb48c2651af2e646064d8a00e61ccc55fca0c0;
-candidate.json. CLI34process smoke session66111 running, cli-smoke.log. Not integrated.
-Next: inspect failures, preserve existing identifier guards and verify the full
-field-add/rename/test workflow on ordinary assertion-based tests.
+Shared cargo cache yolo-plans/target. Pinned binaries isolate live regressions
+from later cache writes. Every cargo run bounded8G0swap, finite timeout, on-disk
+tmp, <=4jobs/run <=8project. No unrelated processes or artifacts touched.
+Known completed-worker tokens203481375 includes cached input once, excludes
+parent/interrupted calls; no new model workers in these batches. Historical
+rejected facts/quantity models remain rejected. Do not repeat unchanged tuning.
+These milestones do not complete the continuing goal.
