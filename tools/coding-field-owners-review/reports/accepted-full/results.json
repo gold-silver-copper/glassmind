@@ -1,0 +1,362 @@
+[
+  {
+    "name": "nested_literal",
+    "valid_original": true,
+    "exact": true,
+    "changed": true,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_nested_literal\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30057-i96410754.scope; invocation ID: 4bb557738cd843c3b29097643186d34e\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/nested_literal)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I'd rename the `Gauge::level` field to `reading` in 5 places.\n  src/lib.rs:1:24  `level` -> `reading`\n  src/lib.rs:3:53  `level` -> `reading`\n  src/lib.rs:4:48  `level` -> `reading`\n  src/lib.rs:4:110  `level` -> `reading`\n  src/lib.rs:4:122  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 5 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p30132-i96464265.scope; invocation ID: 2856dc035d8e4732a9a82d213bd6f568\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_nested_literal\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30164-i96410767.scope; invocation ID: 77986732d2e0479880c249f9094020d2\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/nested_literal)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "qualified_files",
+    "valid_original": true,
+    "exact": true,
+    "changed": true,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_qualified_files\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30242-i96464275.scope; invocation ID: 1e2182bde053491493bfee7d9648e5a7\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/qualified_files)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I'd rename the `Gauge::level` field to `reading` in 3 places.\n  src/lib.rs:3:72  `level` -> `reading`\n  src/metrics.rs:1:24  `level` -> `reading`\n  src/metrics.rs:3:68  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p30319-i96464276.scope; invocation ID: 50ec78944e8c466d99efb1afe7d7bfbf\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_qualified_files\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30351-i96518462.scope; invocation ID: eb4f05baedc94d359dddad3b2200a090\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/qualified_files)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "struct_update",
+    "valid_original": true,
+    "exact": true,
+    "changed": true,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_struct_update\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30428-i96518463.scope; invocation ID: 0c9554eef660460f9c79472fd1f30851\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/struct_update)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I'd rename the `Gauge::level` field to `reading` in 3 places.\n  src/lib.rs:1:24  `level` -> `reading`\n  src/lib.rs:3:60  `level` -> `reading`\n  src/lib.rs:4:46  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p30503-i96506470.scope; invocation ID: 89123dcbd5d145289fd765acaf3a89f7\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_struct_update\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30537-i96451595.scope; invocation ID: 34e9ece5e5d64ad2bf9cc8558d31c3f7\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/struct_update)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "unicode_crlf",
+    "valid_original": true,
+    "exact": true,
+    "changed": true,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_unicode_crlf\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30612-i96279600.scope; invocation ID: 829ae52de4c34e01bf97d5a83d316745\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/unicode_crlf)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I'd rename the `Gauge::level` field to `reading` in 3 places.\n  src/lib.rs:1:24  `level` -> `reading`\n  src/lib.rs:3:78  `level` -> `reading`\n  src/lib.rs:3:90  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p30687-i96487782.scope; invocation ID: 0873dd1f78d148b993741e94c073ee4a\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_unicode_crlf\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30719-i96377812.scope; invocation ID: 927cf8720c354b8a9bac92b3c081e09e\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/unicode_crlf)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "match_shadow",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_match_shadow\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30794-i96479628.scope; invocation ID: 40b4291f1c8441efad251bebaa3eb107\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/match_shadow)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p30869-i96479630.scope; invocation ID: 569796f1c54f47fb8c568c9d89eb48f4\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_match_shadow\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30871-i96410812.scope; invocation ID: 6cbd057ca6134fad9e77eab45e88dfe4\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "qualified_member",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_qualified_member\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30887-i96506476.scope; invocation ID: ed58ac56373544a58f19b6313284cc1b\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/qualified_member)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p30962-i96479631.scope; invocation ID: 88f905b441a446f29355a869d9400d22\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_qualified_member\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30964-i96307642.scope; invocation ID: d6232b2809fc41d9aa463df5e9e044b2\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "duplicate_identity",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_duplicate_identity\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p30980-i96415617.scope; invocation ID: a717f4550afc44c1b8d65b2c78b85806\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/duplicate_identity)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31057-i96286887.scope; invocation ID: 600afe707a69474c863ff0715bc418f6\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_duplicate_identity\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31059-i96307647.scope; invocation ID: 099b757b872e4b47b2fa586cbc2884ca\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "macro_token",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_macro_token\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31075-i96286889.scope; invocation ID: a2c0fb99c4c947419ae8e81d6225eee5\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/macro_token)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31152-i96502606.scope; invocation ID: a5f69ae980304544b67596eece4ca5b8\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_macro_token\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31155-i96381681.scope; invocation ID: 775dd4d4a0914d5f9b4bf95f869bb604\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "cfg_attribute",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_cfg_attribute\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31171-i96336767.scope; invocation ID: ea397ea346cf438783e79be79afc183e\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/cfg_attribute)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31246-i96494985.scope; invocation ID: 98a1a56a992344f885d62268b3adb9db\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_cfg_attribute\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31248-i96506482.scope; invocation ID: 057de94a72aa474fbd78a82b66260bb7\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "uncovered_source",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_uncovered_source\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31264-i96467559.scope; invocation ID: 666d4d5084d7456ea88dae4e1faa7d97\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/uncovered_source)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31339-i96506483.scope; invocation ID: ab577bccf46e4aee91bcc21fb71aa5eb\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_uncovered_source\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31341-i96510681.scope; invocation ID: 1bc1cd154c1d4d19b2444070bd61815f\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "new_collision",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_new_collision\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31357-i96286914.scope; invocation ID: 238c2c4d54ac46869a08570a9e67464a\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/new_collision)\nwarning: constant `reading` should have an upper case name\n --> src/lib.rs:4:11\n  |\n4 | pub const reading: u32 = 9;\n  |           ^^^^^^^ help: convert the identifier to upper case: `READING`\n  |\n  = note: `#[warn(non_upper_case_globals)]` (part of `#[warn(nonstandard_style)]`) on by default\n\nwarning: `field_review_probe` (lib) generated 1 warning\nwarning: `field_review_probe` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31432-i96495011.scope; invocation ID: 14b2ed73a4c045b1a208b03146c4deb0\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_new_collision\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31434-i96189393.scope; invocation ID: ac97f1f6a4924fcd993a3c0f51f807a5\nwarning: constant `reading` should have an upper case name\n --> src/lib.rs:4:11\n  |\n4 | pub const reading: u32 = 9;\n  |           ^^^^^^^ help: convert the identifier to upper case: `READING`\n  |\n  = note: `#[warn(non_upper_case_globals)]` (part of `#[warn(nonstandard_style)]`) on by default\n\nwarning: `field_review_probe` (lib) generated 1 warning\nwarning: `field_review_probe` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "raw_spelling",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_raw_spelling\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31450-i96518566.scope; invocation ID: b100f9090f534c4a83a25e8f233b79e4\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/raw_spelling)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31525-i96286917.scope; invocation ID: 1b757f67e2ff44949d6bba446ea061cc\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_raw_spelling\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31527-i96286918.scope; invocation ID: 23b8f7abca48473497617d29f79a17fa\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "alias_parameter",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_alias_parameter\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31543-i96286919.scope; invocation ID: ec26a7557cb34b70a8b94c2a8104b979\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/alias_parameter)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31619-i96472122.scope; invocation ID: 10400726793e4f5cbe942f9621edef6b\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_alias_parameter\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31621-i96286920.scope; invocation ID: 8f6680201e344eb79ced33942d457f85\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "generic_parameter",
+    "valid_original": true,
+    "exact": true,
+    "changed": false,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_generic_parameter\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31637-i96479632.scope; invocation ID: 34fdd88c82fc4244bb5e9064b4816ba0\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/generic_parameter)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p31714-i96479633.scope; invocation ID: fc7bd6751c4f49dab6f4474b589ae016\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_generic_parameter\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31716-i96286921.scope; invocation ID: 48a45b4ee1ff4f5791cd5dff0f6a0b4c\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  },
+  {
+    "name": "inherited_unique",
+    "valid_original": true,
+    "exact": true,
+    "changed": true,
+    "behavior": true,
+    "manifest_unchanged": true,
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_inherited_unique\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31732-i96189394.scope; invocation ID: b2cc12ba5d4e40bab3e05c23b8d31b14\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/inherited_unique)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I'd rename the `Gauge::level` field to `reading` in 3 places.\n  src/lib.rs:1:24  `level` -> `reading`\n  src/lib.rs:3:42  `level` -> `reading`\n  src/lib.rs:3:54  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 3 changes. No problems with the build.\n",
+      "stderr": "Running as unit: run-p31807-i96479634.scope; invocation ID: c0d843aec30c47b3b4751cba95d40997\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_inherited_unique\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p31839-i96377848.scope; invocation ID: 6a1094ab69304cf2abb8c0e5bb7ddf0c\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/inherited_unique)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+    },
+    "pass": true
+  }
+]

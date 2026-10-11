@@ -1,0 +1,24 @@
+{
+  "name": "lib_bin_paths",
+  "valid_original": true,
+  "exact": true,
+  "changed": true,
+  "behavior": true,
+  "manifest_unchanged": true,
+  "before": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_lib_bin_paths\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\nREVIEW_BEHAVIOR_lib_bin_paths\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p32868-i96410991.scope; invocation ID: ca1c59c25f4a4640bf992867214e6172\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/lib_bin_paths)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-4dbb3da576e78f22)\n   Doc-tests field_review_probe\n"
+  },
+  "edit": {
+    "code": 0,
+    "stdout": "I'd rename the `Gauge::level` field to `reading` in 5 places.\n  src/lib.rs:1:24  `level` -> `reading`\n  src/lib.rs:3:42  `level` -> `reading`\n  src/lib.rs:3:54  `level` -> `reading`\n  src/main.rs:1:58  `level` -> `reading`\n  src/main.rs:1:70  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 5 changes. No problems with the build.\n",
+    "stderr": "Running as unit: run-p32997-i96410992.scope; invocation ID: 4a40082dbbe04cb4aa5ca4c2f9dc2b36\n"
+  },
+  "after": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_lib_bin_paths\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\nREVIEW_BEHAVIOR_lib_bin_paths\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p33038-i96460591.scope; invocation ID: 9a4b85610d4048ba841268a8da08c105\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/lib_bin_paths)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-4dbb3da576e78f22)\n   Doc-tests field_review_probe\n"
+  },
+  "pass": true
+}

@@ -49,6 +49,10 @@ Explicit kinds help with names that are also English words: `where is function c
 and `rename function weigh to called`. Code notation preserves significant
 underscores: `renamed_()` refers to `renamed_`.
 [Identifier scope and verification](tools/coding-identifier-roles/PARENT.md).
+An explicitly selected struct field can also be renamed when other structs use
+the same field name. Resolved declarations, literals and typed parameter accesses
+change together; unsupported bindings refuse.
+[Field ownership and independent review](tools/coding-field-owners/PARENT.md).
 
 ## Conversation and story commands
 

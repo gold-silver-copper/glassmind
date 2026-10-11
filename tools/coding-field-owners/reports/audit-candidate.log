@@ -1,0 +1,5 @@
+duplicate-owner False True True "I can't tell which one you mean: `Parcel::count` and `Parcel::count`.\n"
+import-alias True False True "I'd rename the `Parcel::count` field to `total` in 3 places.\n  src/lib.rs:1:25  `count` -> `total`\n  src/lib.rs:3:42  `count` -> `total`\n  src/lib.rs:3:53  `count` -> `total`\n  (say yes to rename `Parcel::count`)\nI made 3 changes. No problems with the build.\n"
+deref False True True "I understand, but I can't do that here.\n"
+inferred-local False True True "I understand, but I can't do that here.\n"
+correct 3 / 4 edits 1

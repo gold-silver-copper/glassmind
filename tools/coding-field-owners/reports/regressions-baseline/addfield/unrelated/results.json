@@ -1,0 +1,30 @@
+[
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Added public field weight: u16 to Parcel; updated 2 constructors (3 verified edits).\n",
+      "stderr": ""
+    },
+    "changed": true,
+    "files": [
+      "src/lib.rs",
+      "src/main.rs"
+    ],
+    "preserved": true,
+    "structural": true,
+    "tests": {
+      "code": 0,
+      "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest added_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4053144-i96247016.scope; invocation ID: 9785b2bcfdfe4740865e7668f20609e1\n   Compiling independent v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/regressions-baseline/addfield/unrelated/unrelated)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.29s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/independent-3da7c4f0a28a9811)\n     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/independent-319165b408077c60)\n     Running tests/addfield_contract.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/addfield_contract-fb6c2d807ecfade2)\n   Doc-tests independent\n"
+    },
+    "runtime": {
+      "code": 0,
+      "stdout": "2 9\n",
+      "stderr": "Running as unit: run-p4053331-i96330773.scope; invocation ID: ca2d7283166e4f0482b783835aee76e4\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running `/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/independent`\n"
+    },
+    "behavior_preserved": true,
+    "passed": true,
+    "case": "unrelated"
+  }
+]

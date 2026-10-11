@@ -1,0 +1,4 @@
+direct True True True "I'd rename the `Parcel::count` field to `total` in 3 places.\n  src/lib.rs:1:25  `count` -> `total`\n  src/lib.rs:3:43  `count` -> `total`\n  src/lib.rs:3:54  `count` -> `total`\n  (say yes to rename `Parcel::count`)\nI made 3 changes. No problems with the build.\n"
+typed True True True "I'd rename the `CrateBox::amount` field to `quantity` in 3 places.\n  src/lib.rs:1:27  `amount` -> `quantity`\n  src/lib.rs:3:33  `amount` -> `quantity`\n  src/lib.rs:4:50  `amount` -> `quantity`\n  (say yes to rename `CrateBox::amount`)\nI made 3 changes. No problems with the build.\n"
+reference True True True "I'd rename the `Vessel::level` field to `height` in 3 places.\n  src/lib.rs:1:25  `level` -> `height`\n  src/lib.rs:3:32  `level` -> `height`\n  src/lib.rs:4:49  `level` -> `height`\n  (say yes to rename `Vessel::level`)\nI made 3 changes. No problems with the build.\n"
+correct 3 / 3 edits 3

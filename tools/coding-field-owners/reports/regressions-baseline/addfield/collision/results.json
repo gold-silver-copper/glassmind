@@ -1,0 +1,14 @@
+[
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: struct name must identify exactly one declaration\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "collision"
+  }
+]

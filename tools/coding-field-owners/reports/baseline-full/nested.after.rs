@@ -1,0 +1,9 @@
+pub mod model {
+pub struct Metric { pub value: u32 }
+pub struct Counter { pub value: u32 }
+pub fn observe() -> (u32,u32) { (Metric { value: 11 }.value, Counter { value: 33 }.value) }
+}
+pub fn observe() -> (u32,u32) { model::observe() }
+// value stays in prose
+pub const NOTE: &str = "value";
+#[test] fn behavior() -> Result<(), String> { println!("OWNER_BEHAVIOR_nested"); if observe() == (11,33) { Ok(()) } else { Err("behavior changed".into()) } }

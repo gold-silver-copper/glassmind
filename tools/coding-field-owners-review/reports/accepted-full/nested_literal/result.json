@@ -1,0 +1,24 @@
+{
+  "name": "nested_literal",
+  "valid_original": true,
+  "exact": true,
+  "changed": true,
+  "behavior": true,
+  "manifest_unchanged": true,
+  "before": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_nested_literal\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p30057-i96410754.scope; invocation ID: 4bb557738cd843c3b29097643186d34e\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/nested_literal)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "edit": {
+    "code": 0,
+    "stdout": "I'd rename the `Gauge::level` field to `reading` in 5 places.\n  src/lib.rs:1:24  `level` -> `reading`\n  src/lib.rs:3:53  `level` -> `reading`\n  src/lib.rs:4:48  `level` -> `reading`\n  src/lib.rs:4:110  `level` -> `reading`\n  src/lib.rs:4:122  `level` -> `reading`\n  (say yes to rename `Gauge::level`)\nI made 5 changes. No problems with the build.\n",
+    "stderr": "Running as unit: run-p30132-i96464265.scope; invocation ID: 2856dc035d8e4732a9a82d213bd6f568\n"
+  },
+  "after": {
+    "code": 0,
+    "stdout": "\nrunning 1 test\nREVIEW_BEHAVIOR_nested_literal\ntest both_owners ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+    "stderr": "Running as unit: run-p30164-i96410767.scope; invocation ID: 77986732d2e0479880c249f9094020d2\n   Compiling field_review_probe v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/probes/accepted-full/nested_literal)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldreview-run/target/debug/deps/field_review_probe-fd7890c0707e8abf)\n   Doc-tests field_review_probe\n"
+  },
+  "pass": true
+}

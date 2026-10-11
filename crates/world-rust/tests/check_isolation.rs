@@ -46,7 +46,9 @@ mod tests {
             if owned {
                 Places {
                     target: Some(
-                        PathBuf::from(std::env::var_os("CARGO_TARGET_DIR").unwrap())
+                        std::env::var_os("CARGO_TARGET_DIR")
+                            .map(PathBuf::from)
+                            .unwrap_or_else(|| self.0.join("cargo-target"))
                             .join(self.0.file_name().unwrap()),
                     ),
                     cache: Some(self.0.join("results")),

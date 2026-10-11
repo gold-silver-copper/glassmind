@@ -1,0 +1,17 @@
+direct False False True "I understand, but I can't do that here.\n"
+typed False False True "I understand, but I can't do that here.\n"
+reference False False True "I understand, but I can't do that here.\n"
+nested False False True "I understand, but I can't do that here.\n"
+shadow False True True "I understand, but I can't do that here.\n"
+call False True True "I understand, but I can't do that here.\n"
+alias False True True "I understand, but I can't do that here.\n"
+closure False True True "I understand, but I can't do that here.\n"
+destructure False True True "I understand, but I can't do that here.\n"
+shorthand False True True "I understand, but I can't do that here.\n"
+macro False True True "I understand, but I can't do that here.\n"
+generic False True True "I understand, but I can't do that here.\n"
+collision False True True "I understand, but I can't do that here.\n"
+bare False True True "I can't tell which one you mean: `Parcel::count` and `Ledger::count`.\n"
+missing False True True 'Nothing is called `Missing`.\n'
+ambiguous_owner False True True '`Parcel::count` is the wrong kind of thing for that.\n'
+correct 12 / 16 edits 0

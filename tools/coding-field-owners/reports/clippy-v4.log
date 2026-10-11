@@ -1,0 +1,45 @@
+Running as unit: run-p4165547-i96464904.scope; invocation ID: 9085787168ad4c099f8d113490ddc09b
+    Checking serde_core v1.0.229
+   Compiling unicode-ident v1.0.26
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling syn v3.0.7
+   Compiling serde_derive v1.0.229
+    Checking winnow v1.0.4
+    Checking toml_parser v1.1.5+spec-1.1.0
+    Checking serde v1.0.229
+    Checking zmij v1.0.23
+    Checking serde_spanned v1.1.2
+    Checking toml_datetime v0.7.5+spec-1.1.0
+    Checking winnow v0.7.15
+    Checking memchr v2.8.3
+    Checking toml_writer v1.1.3+spec-1.1.0
+    Checking glassmind-rules v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/crates/rules)
+    Checking itoa v1.0.18
+    Checking serde_json v1.0.151
+    Checking glassmind-meaning v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/crates/meaning)
+    Checking toml v0.9.12+spec-1.1.0
+    Checking syn v2.0.119
+    Checking glassmind-world-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners/crates/world-rust)
+error: this `if` statement can be collapsed
+  --> crates/world-rust/src/rename_fields.rs:46:25
+   |
+46 | /                         if item.owner.as_deref() == Some(s.ident.to_string().as_str())
+47 | |                             && source.files.get(m.file)? == &item.file
+48 | |                             && at.1 == item.line
+...  |
+53 | |                         }
+   | |_________________________^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#collapsible_if
+   = note: `-D clippy::collapsible-if` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::collapsible_if)]`
+help: collapse nested if block
+   |
+48 ~                             && at.1 == item.line
+49 ~                             && target.replace(owner.clone()).is_some() {
+50 |                                 return None;
+51 ~                             }
+   |
+
+error: could not compile `glassmind-world-rust` (lib) due to 1 previous error

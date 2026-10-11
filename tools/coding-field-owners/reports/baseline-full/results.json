@@ -1,0 +1,418 @@
+[
+  {
+    "id": "direct",
+    "supported": true,
+    "changed": false,
+    "exact": false,
+    "behavior": true,
+    "source_sha": "3557cbb405b1e2547a03aa7c290f53df0de62664269fb6c9f114319b0ae9745f",
+    "actual_sha": "3557cbb405b1e2547a03aa7c290f53df0de62664269fb6c9f114319b0ae9745f",
+    "expected_sha": "e285d92ef298abaed5d64666695b9b2ab440bba7a80a074aafc40a710066ffb3",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_direct\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4007933-i96243289.scope; invocation ID: 3297047c1e8b4ec6810470e868437039\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/direct)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4008086-i96243291.scope; invocation ID: 41dd5b3e678e4c5081e98521ee2a9466\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_direct\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008112-i96267152.scope; invocation ID: 80c458e298664ef5b8999c206afd593f\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": false
+  },
+  {
+    "id": "typed",
+    "supported": true,
+    "changed": false,
+    "exact": false,
+    "behavior": true,
+    "source_sha": "1c6bff178b65720ce57a13b5e1a28717df895e15f0e4fa0fea33d0b218733fea",
+    "actual_sha": "1c6bff178b65720ce57a13b5e1a28717df895e15f0e4fa0fea33d0b218733fea",
+    "expected_sha": "b9f641a4840ef2a7ec02b23a1285ff4974f5ef098c7499a720154867fafe4523",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_typed\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008129-i96267154.scope; invocation ID: 5d6d397d953949ce96e83dc10ddc6579\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/typed)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4008239-i96226265.scope; invocation ID: 9fe7664fc0e745ff87a70887c4636385\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_typed\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008245-i96243295.scope; invocation ID: 00441db15cc948c4ac4fcb8799587a33\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": false
+  },
+  {
+    "id": "reference",
+    "supported": true,
+    "changed": false,
+    "exact": false,
+    "behavior": true,
+    "source_sha": "de336199ee37c6108f0823e3b51c823d3545c4457ea26b70dcfe5e36d9136950",
+    "actual_sha": "de336199ee37c6108f0823e3b51c823d3545c4457ea26b70dcfe5e36d9136950",
+    "expected_sha": "1df24e1f1eacb2fc299c4adf816d943fed3798b1313db4b0224f68a0b9a8ab1f",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_reference\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008261-i96243296.scope; invocation ID: 13734517e3f14c62985e1019b307c6f3\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/reference)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4008372-i96301716.scope; invocation ID: 0f9cf9782c4241509d706abe63d10e58\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_reference\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008383-i96274183.scope; invocation ID: 90cd5863231941a4bbb4d5118ade06da\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": false
+  },
+  {
+    "id": "nested",
+    "supported": true,
+    "changed": false,
+    "exact": false,
+    "behavior": true,
+    "source_sha": "565028239ead4c1dd3aac1ebba3637b0ce8d32db793c800a757fe2bbe115f9e8",
+    "actual_sha": "565028239ead4c1dd3aac1ebba3637b0ce8d32db793c800a757fe2bbe115f9e8",
+    "expected_sha": "1036f48df09b94684523d5fb4b57c44ffba7a1a24de7cc32e333c378c885c624",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_nested\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008427-i96257562.scope; invocation ID: f420a5058699457397fe531553010291\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/nested)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4008559-i96274186.scope; invocation ID: 7a2e9f6c57e64ebab2a8a800c6aa2979\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_nested\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008561-i96274187.scope; invocation ID: cfb016e5ec614e1a9b10287effdd044c\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": false
+  },
+  {
+    "id": "shadow",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "09cc98d0746204ef00f6dbe4734df4810c06a8301f933cc4aeed6a49bc5089bc",
+    "actual_sha": "09cc98d0746204ef00f6dbe4734df4810c06a8301f933cc4aeed6a49bc5089bc",
+    "expected_sha": "09cc98d0746204ef00f6dbe4734df4810c06a8301f933cc4aeed6a49bc5089bc",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_shadow\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008598-i96239019.scope; invocation ID: 43d63757a8f2441986b27916ff27462a\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/shadow)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4008693-i96281161.scope; invocation ID: bbdc4a5b340d403aa22411e7cfc65613\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_shadow\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008695-i96250944.scope; invocation ID: 4fc148be0ce34d15a3ce6ff348bcd180\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "call",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "0285697bd97ce4d4dea45d16dc8fccc417e69fa4e440a320014c2ec0fa6492ba",
+    "actual_sha": "0285697bd97ce4d4dea45d16dc8fccc417e69fa4e440a320014c2ec0fa6492ba",
+    "expected_sha": "0285697bd97ce4d4dea45d16dc8fccc417e69fa4e440a320014c2ec0fa6492ba",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_call\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008731-i96250948.scope; invocation ID: 5a7f9454bf53442f98dc1aa12ff2af5c\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/call)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4008878-i96246216.scope; invocation ID: ec5260982faa45d6a5e61d6c7f2ade38\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_call\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008908-i96277282.scope; invocation ID: ef733c53ea344e9e94732727e7a1517d\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "alias",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "e0a14dedca5426907e41d0fa5cf0c0b132c04c57236c8e3c6f0dfd801cfebc25",
+    "actual_sha": "e0a14dedca5426907e41d0fa5cf0c0b132c04c57236c8e3c6f0dfd801cfebc25",
+    "expected_sha": "e0a14dedca5426907e41d0fa5cf0c0b132c04c57236c8e3c6f0dfd801cfebc25",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_alias\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4008945-i96202690.scope; invocation ID: bb4b5b2fdb684c659c78672e2e8d3dd7\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/alias)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4009040-i96243331.scope; invocation ID: 56f935e65608491fb0eed7b304c5a4fc\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_alias\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009052-i96243332.scope; invocation ID: 15a0981c7af54901a55945ad85533cec\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "closure",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "a2228baf468742ca87539f9313c97d1ffab63de2ea5721345f1487d779bca3f6",
+    "actual_sha": "a2228baf468742ca87539f9313c97d1ffab63de2ea5721345f1487d779bca3f6",
+    "expected_sha": "a2228baf468742ca87539f9313c97d1ffab63de2ea5721345f1487d779bca3f6",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_closure\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009073-i96214240.scope; invocation ID: e3a8d83205814d80b75dc2beeebb9f7e\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/closure)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4009156-i96214241.scope; invocation ID: 5737e4b85def4eb9a135fc6346a31717\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_closure\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009173-i96309325.scope; invocation ID: 59751381cabd4428a760306715478fb7\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "destructure",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "ccb6a4eba31cdd1c7e4ac63095a947a37a434e7961b2c7493a346bd9305fe760",
+    "actual_sha": "ccb6a4eba31cdd1c7e4ac63095a947a37a434e7961b2c7493a346bd9305fe760",
+    "expected_sha": "ccb6a4eba31cdd1c7e4ac63095a947a37a434e7961b2c7493a346bd9305fe760",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_destructure\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009198-i96261290.scope; invocation ID: 1b6d57d06e09430ea415e53675404c3f\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/destructure)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4009367-i96202693.scope; invocation ID: 979e22cd964d4c5dbf2fdc46df346536\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_destructure\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009389-i96021410.scope; invocation ID: 24792bbf68124e649b6ec9a00e1c0760\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "shorthand",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "f2157c021f6a3e9b3d343bc9e21ae33956a1b42a0fa31c2fd92fb911d1222123",
+    "actual_sha": "f2157c021f6a3e9b3d343bc9e21ae33956a1b42a0fa31c2fd92fb911d1222123",
+    "expected_sha": "f2157c021f6a3e9b3d343bc9e21ae33956a1b42a0fa31c2fd92fb911d1222123",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_shorthand\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009406-i96261293.scope; invocation ID: ca8fe5db1d50417193246273e0e04d60\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/shorthand)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4009488-i96297586.scope; invocation ID: bd43186982d94a7a876c8487f5632453\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_shorthand\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009490-i96261295.scope; invocation ID: d010650e03aa43f5a707d6145b6b86be\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "macro",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "9dbadcc00d2a033874220052311fc126ed28d61adff3bcd85e5b1c4705e1c00e",
+    "actual_sha": "9dbadcc00d2a033874220052311fc126ed28d61adff3bcd85e5b1c4705e1c00e",
+    "expected_sha": "9dbadcc00d2a033874220052311fc126ed28d61adff3bcd85e5b1c4705e1c00e",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_macro\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009506-i96202695.scope; invocation ID: 354705a38aa9432a80906d1d617ea249\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/macro)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4009581-i96289380.scope; invocation ID: 5feda556a04046989275271aa7b561ca\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_macro\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009583-i96289381.scope; invocation ID: 1f90ddc75315439397eaa7ded7998476\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "generic",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "bfd1067a164a157d6a19195e15d57ebeb72b5c67f73e8d56b9a07f37f1cc7af8",
+    "actual_sha": "bfd1067a164a157d6a19195e15d57ebeb72b5c67f73e8d56b9a07f37f1cc7af8",
+    "expected_sha": "bfd1067a164a157d6a19195e15d57ebeb72b5c67f73e8d56b9a07f37f1cc7af8",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_generic\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009599-i96289382.scope; invocation ID: e7a736a0e5d645fa94e9223661035968\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/generic)\nwarning: function `unused` is never used\n --> src/lib.rs:3:4\n  |\n3 | fn unused<Parcel>(x: Parcel) -> Parcel { x }\n  |    ^^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: `owner_case` (lib) generated 1 warning\nwarning: `owner_case` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4009676-i96257686.scope; invocation ID: 6c56214a8a8e40998f2727368b28ab92\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_generic\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009678-i96309330.scope; invocation ID: 7bfd6e2c154845b7a5e60570cc72b608\nwarning: function `unused` is never used\n --> src/lib.rs:3:4\n  |\n3 | fn unused<Parcel>(x: Parcel) -> Parcel { x }\n  |    ^^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: `owner_case` (lib) generated 1 warning\nwarning: `owner_case` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "collision",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "ff1d3393cffdc769e57a6796357676ac962ce718f7af8a2aed16d61f4776e494",
+    "actual_sha": "ff1d3393cffdc769e57a6796357676ac962ce718f7af8a2aed16d61f4776e494",
+    "expected_sha": "ff1d3393cffdc769e57a6796357676ac962ce718f7af8a2aed16d61f4776e494",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_collision\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009694-i96239030.scope; invocation ID: 4c433a676aee468f88cd68e6a5de0f9a\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/collision)\nwarning: constant `total` should have an upper case name\n --> src/lib.rs:7:11\n  |\n7 | pub const total: u32 = 99;\n  |           ^^^^^ help: convert the identifier to upper case: `TOTAL`\n  |\n  = note: `#[warn(non_upper_case_globals)]` (part of `#[warn(nonstandard_style)]`) on by default\n\nwarning: `owner_case` (lib) generated 1 warning\nwarning: `owner_case` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I understand, but I can't do that here.\n",
+      "stderr": "Running as unit: run-p4009769-i96257690.scope; invocation ID: 29adf11f91fc4c3fa33e94c7f37fd644\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_collision\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009771-i96257691.scope; invocation ID: abac978021d2467c9f38ce07b6cbe439\nwarning: constant `total` should have an upper case name\n --> src/lib.rs:7:11\n  |\n7 | pub const total: u32 = 99;\n  |           ^^^^^ help: convert the identifier to upper case: `TOTAL`\n  |\n  = note: `#[warn(non_upper_case_globals)]` (part of `#[warn(nonstandard_style)]`) on by default\n\nwarning: `owner_case` (lib) generated 1 warning\nwarning: `owner_case` (lib test) generated 1 warning (1 duplicate)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "bare",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "798c0bf6c843fcb5f288045e7e14373ca15e874897a82f1f8311c559b342d575",
+    "actual_sha": "798c0bf6c843fcb5f288045e7e14373ca15e874897a82f1f8311c559b342d575",
+    "expected_sha": "798c0bf6c843fcb5f288045e7e14373ca15e874897a82f1f8311c559b342d575",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_bare\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009787-i96277302.scope; invocation ID: 9dcef3ffee324fa5a71c9a2e4b53d046\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/bare)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "I can't tell which one you mean: `Parcel::count` and `Ledger::count`.\n",
+      "stderr": "Running as unit: run-p4009863-i96149377.scope; invocation ID: e5150538c36541109b93f90d6897a0ef\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_bare\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009865-i96251024.scope; invocation ID: dfb5590398b9467ab84bedc4a9dcb648\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "missing",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "bea889f87e23e8a7272b65882d074f64b2bfd99c97e408727b6fc7338d33011f",
+    "actual_sha": "bea889f87e23e8a7272b65882d074f64b2bfd99c97e408727b6fc7338d33011f",
+    "expected_sha": "bea889f87e23e8a7272b65882d074f64b2bfd99c97e408727b6fc7338d33011f",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_missing\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009881-i96222576.scope; invocation ID: 1a0df4d133f1454a804ac18cfcef4721\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/missing)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "Nothing is called `Missing`.\n",
+      "stderr": "Running as unit: run-p4009956-i96188664.scope; invocation ID: 7736be48bd664a678894ac5334207e9d\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_missing\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009958-i96202704.scope; invocation ID: 6b6ef1fe07304c409de2aa7ca99345cc\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  },
+  {
+    "id": "ambiguous_owner",
+    "supported": false,
+    "changed": false,
+    "exact": true,
+    "behavior": true,
+    "source_sha": "648b6180ea868151cb72d0d38a27e76c2dd4df8c3b041c22456b5132b2f75b6e",
+    "actual_sha": "648b6180ea868151cb72d0d38a27e76c2dd4df8c3b041c22456b5132b2f75b6e",
+    "expected_sha": "648b6180ea868151cb72d0d38a27e76c2dd4df8c3b041c22456b5132b2f75b6e",
+    "before": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_ambiguous_owner\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4009974-i96202705.scope; invocation ID: 434a722a9bdd4d669f5f0648de35b1da\n   Compiling owner_case v0.0.0 (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/baseline-full/ambiguous_owner)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "edit": {
+      "code": 0,
+      "stdout": "`Parcel::count` is the wrong kind of thing for that.\n",
+      "stderr": "Running as unit: run-p4010082-i96202718.scope; invocation ID: b00eb10fc8ba4c869feb8859b98679d9\n"
+    },
+    "after": {
+      "code": 0,
+      "stdout": "\nrunning 1 test\nOWNER_BEHAVIOR_ambiguous_owner\ntest behavior ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "stderr": "Running as unit: run-p4010090-i96267207.scope; invocation ID: daf43f94ed654b2c9254620e0c6125ec\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.00s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/fieldowners-run/target/debug/deps/owner_case-fad561d856875663)\n   Doc-tests owner_case\n"
+    },
+    "pass": true
+  }
+]
