@@ -1,0 +1,208 @@
+[
+  {
+    "name": "grouped_reexport_callback",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "mod math;\npub use math::{parse_num, Marker};\npub fn run() -> i32 { [14].into_iter().map(parse_num).sum() }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\npub struct Marker;\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "mod math;\npub use math::{decode_num, Marker};\npub fn run() -> i32 { [14].into_iter().map(decode_num).sum() }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\npub struct Marker;\n"
+    },
+    "required": true,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "aliased_import",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "mod math;\nuse math::parse_num as chosen;\npub fn run() -> i32 { chosen(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "mod math;\nuse math::decode_num as chosen;\npub fn run() -> i32 { chosen(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\n"
+    },
+    "required": true,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "aliased_reexport",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "mod math;\npub use math::parse_num as chosen;\npub fn run() -> i32 { chosen(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "mod math;\npub use math::decode_num as chosen;\npub fn run() -> i32 { chosen(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\n"
+    },
+    "required": true,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "qualified_nested",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub mod math;\npub fn run() -> i32 { self::math::parse_num(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub mod math;\npub fn run() -> i32 { self::math::decode_num(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/math.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\n"
+    },
+    "required": true,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "function_pointer",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run() -> i32 { let callback: fn(i32) -> i32 = parse_num; callback(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run() -> i32 { let callback: fn(i32) -> i32 = decode_num; callback(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "required": true,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "lib_bin_identity",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run() -> i32 { parse_num(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/main.rs": "use identity_parent::parse_num as chosen;\nfn main() { println!(\"{}\", chosen(14)); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run() -> i32 { decode_num(14) }\n#[test] fn behavior() { assert_eq!(run(), 43); }\n",
+      "src/main.rs": "use identity_parent::decode_num as chosen;\nfn main() { println!(\"{}\", chosen(14)); }\n"
+    },
+    "required": true,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "test_glob",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run() -> i32 { parse_num(14) }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(parse_num(14), 43); } }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run() -> i32 { decode_num(14) }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(decode_num(14), 43); } }\n"
+    },
+    "required": true,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "strings_comments_crlf",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "// parse_num remains a comment; café\r\npub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\r\npub const NOTE: &str = \"parse_num\";\r\npub fn run() -> i32 { parse_num(14) }\r\n#[test] fn behavior() { assert_eq!(run(), 43); }\r\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "// parse_num remains a comment; café\r\npub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\r\npub const NOTE: &str = \"parse_num\";\r\npub fn run() -> i32 { decode_num(14) }\r\n#[test] fn behavior() { assert_eq!(run(), 43); }\r\n"
+    },
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "destination_collision",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\npub fn decode_num(x:i32)->i32{x+8}\npub fn run()->i32{parse_num(14)}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": null,
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "custom_macro",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\nmacro_rules! invoke { ($f:ident) => { $f(14) }; }\npub fn run()->i32{invoke!(parse_num)}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": null,
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "shadowed_assert_macro",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\nmacro_rules! assert_eq { ($f:ident) => { $f(14) }; }\npub fn run()->i32{assert_eq!(parse_num)}\n#[test] fn behavior(){assert!(run()==43);}\n"
+    },
+    "expected": null,
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "parameter_homonym",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\nfn local(parse_num:i32)->i32{parse_num}\npub fn run()->i32{parse_num(local(14))}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\nfn local(parse_num:i32)->i32{parse_num}\npub fn run()->i32{decode_num(local(14))}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "closure_homonym",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run()->i32{let add=|parse_num:i32|parse_num+1; parse_num(add(13))}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run()->i32{let add=|parse_num:i32|parse_num+1; decode_num(add(13))}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "field_homonym",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\nstruct Holder{parse_num:i32}\npub fn run()->i32{let h=Holder{parse_num:14}; parse_num(h.parse_num)}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\nstruct Holder{parse_num:i32}\npub fn run()->i32{let h=Holder{parse_num:14}; decode_num(h.parse_num)}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "duplicate_functions",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "mod left { pub fn parse_num(x:i32)->i32{x*3+1} }\nmod right { pub fn parse_num(x:i32)->i32{x+1} }\npub fn run()->i32{left::parse_num(14)+right::parse_num(0)-1}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": null,
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  },
+  {
+    "name": "unicode_identifier_context",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn parse_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run()->i32{let café=14; parse_num(café)}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"identity_parent\"\nversion=\"0.1.0\"\nedition=\"2024\"\n",
+      "src/lib.rs": "pub fn decode_num(x: i32) -> i32 { x * 3 + 1 }\npub fn run()->i32{let café=14; decode_num(café)}\n#[test] fn behavior() { assert_eq!(run(), 43); }\n"
+    },
+    "required": false,
+    "request": "rename function parse_num to decode_num"
+  }
+]

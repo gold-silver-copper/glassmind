@@ -1,0 +1,11 @@
+Running as unit: run-p713024-i97005203.scope; invocation ID: 36dfef983c0f4192835f5270dc50b929
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.01s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 2 tests
+test coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained ... ok
+test coding::rename_tests::frozen_authored_rename_requests_and_fallback_controls ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 13 filtered out; finished in 13.67s
+

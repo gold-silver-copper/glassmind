@@ -1,0 +1,92 @@
+{
+  "status": "rejected",
+  "reason": "full_DEV33_below34_and_independent_language_coverage0_of17",
+  "runtime_unchanged": true,
+  "independent": {
+    "total": 4475,
+    "counts": {
+      "baseline_v3": {
+        "refused": 4443,
+        "correct": 29,
+        "wrong": 3
+      },
+      "candidate_v3": {
+        "refused": 4439,
+        "correct": 33,
+        "wrong": 3
+      },
+      "baseline_legacy": {
+        "refused": 4443,
+        "correct": 29,
+        "wrong": 3
+      },
+      "candidate_legacy": {
+        "refused": 4439,
+        "correct": 32,
+        "wrong": 4
+      }
+    },
+    "old_answer_payloads_preserved": 32,
+    "new_answers": [
+      {
+        "index": 390,
+        "question": "pipe p can fill a tank in 3 hours , pipe q in 9 hours and pipe r in 18 hours . if all the pipes are open , in how many hours will the tank be filled ?",
+        "individual_times": [
+          3,
+          9,
+          18
+        ],
+        "net_rate": "1/2",
+        "completion_time": "2",
+        "unit": "hours"
+      },
+      {
+        "index": 706,
+        "question": "a , b , c can complete a piece of work in 25 , 5,10 days . working together , they complete the same work in how many days ?",
+        "individual_times": [
+          25,
+          5,
+          10
+        ],
+        "net_rate": "17/50",
+        "completion_time": "50/17",
+        "unit": "days"
+      },
+      {
+        "index": 1082,
+        "question": "a , b , c can complete a piece of work in 24 , 8,12 days . working together , they complete the same work in how many days ?",
+        "individual_times": [
+          24,
+          8,
+          12
+        ],
+        "net_rate": "1/4",
+        "completion_time": "4",
+        "unit": "days"
+      },
+      {
+        "index": 1828,
+        "question": "a , b , c can complete a piece of work in 3,9 and 15 days respectively . working together , they will complete the same work in how many days ?",
+        "individual_times": [
+          3,
+          9,
+          15
+        ],
+        "net_rate": "23/45",
+        "completion_time": "45/23",
+        "unit": "days"
+      }
+    ],
+    "frozen_gate_pass": false,
+    "required_correct": 34,
+    "source": "Frozen MathQA validation; no inference or retuning in this audit."
+  },
+  "parent_probes": {
+    "positive": 17,
+    "correct_positive": 0,
+    "negative": 13,
+    "negative_refusals": 13,
+    "wrong_answers": 0
+  },
+  "report": "tools/quantities/work-rates/PARENT.md"
+}

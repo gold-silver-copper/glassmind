@@ -1,0 +1,7 @@
+{
+  "cases_sha256": "ae5dcf00b3f661aa222a61eb0c9a937bee98fa2ecd8f060df630c43a0c46d99a",
+  "cases": 16,
+  "required_positive": 7,
+  "created_before_candidate_inspection": true,
+  "criterion": "Every edit must byte-match frozen identity mapping and pass unchanged before/after native behavior; conservative refusals permitted except required positives. No scoring from candidate implementation."
+}

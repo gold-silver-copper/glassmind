@@ -1,0 +1,35 @@
+{
+  "gate": false,
+  "legacy_scores": {
+    "baseline": {
+      "correct": 29,
+      "refused": 4443,
+      "wrong": 3
+    },
+    "candidate": {
+      "correct": 30,
+      "refused": 4440,
+      "wrong": 5
+    }
+  },
+  "new_answered": 3,
+  "new_bad": [
+    4126
+  ],
+  "old_answer_count": 32,
+  "old_answer_payloads_identical": true,
+  "old_raw_answer_lines_identical": true,
+  "scores": {
+    "baseline": {
+      "correct": 29,
+      "refused": 4443,
+      "wrong": 3
+    },
+    "candidate": {
+      "correct": 31,
+      "refused": 4440,
+      "wrong": 4
+    }
+  },
+  "total": 4475
+}

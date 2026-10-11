@@ -1,0 +1,368 @@
+{
+  "binary_sha256": "5a94dba0b893fafed21906c2150e51de7fab94c67cadefba10008b2a187e4b9f",
+  "cases": [
+    {
+      "name": "two_named",
+      "expected": "2",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "two_days",
+      "expected": "6",
+      "expected_unit": "day",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "three_agents",
+      "expected": "3",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown number word"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "symmetric",
+      "expected": "4",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "inverse",
+      "expected": "6",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "inverse_reversed",
+      "expected": "6",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "fill",
+      "expected": "4",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "opposed",
+      "expected": "12",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "leak",
+      "expected": "12",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "leaves_remaining",
+      "expected": "3",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "leaves_total",
+      "expected": "4",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "other_leaves",
+      "expected": "3/2",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "joins",
+      "expected": "1",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "mixed_units",
+      "expected": "60",
+      "expected_unit": "minute",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "rational",
+      "expected": "15/8",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "time_swap",
+      "expected": "3",
+      "expected_unit": "day",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "zero_duration",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "negative_time",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "zero_net",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "negative_net",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "impossible_inverse",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "different_jobs",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "variable_rate",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "ambiguous_remaining",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "same_name",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "extra_clause",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "unspecified_fraction",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "capacity_changed",
+      "expected": "6/5",
+      "expected_unit": "hour",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "two_questions",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    },
+    {
+      "name": "unknown_agent",
+      "expected": null,
+      "expected_unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "answered": false,
+      "correct": false,
+      "unsafe": false
+    }
+  ],
+  "positive_correct": 0,
+  "wrong_answers": 0,
+  "negative_refusals": 13
+}

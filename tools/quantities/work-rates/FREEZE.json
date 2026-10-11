@@ -1,0 +1,55 @@
+{
+  "source_revision": "65e7240b074473ef761e6a81a64bbf64c2fb03f6",
+  "metric": "exact-label-comparison-v3",
+  "dev_read": false,
+  "files": {
+    "crates/quantities/src/work_rates.rs": {
+      "bytes": 15967,
+      "sha256": "9d872a9db7b098158b8dafc73d5b25d4b9440a0fc6217b224cf93be9f52ae8fe"
+    },
+    "crates/quantities/src/parser.rs": {
+      "bytes": 19187,
+      "sha256": "eefb7d7e5cfdf17cd177f79770d2e909cfcbac9df13b29afb904b6a30ddd9c40"
+    },
+    "crates/quantities/src/lib.rs": {
+      "bytes": 884,
+      "sha256": "61f1d17a4c6fcc2f30e7be7eddc826a9918f068f003b9d45ac4397f582698d86"
+    },
+    "crates/quantities/tests/work_rates.rs": {
+      "bytes": 843,
+      "sha256": "876cf1f5a8ddc899c452510d7b1b5d289d912db9261e8b6a69bdccd620267e00"
+    },
+    "tools/quantities/work-rates/PLAN.md": {
+      "bytes": 3178,
+      "sha256": "c3f821bb932641629564145493148704f4296f8295c50759f35be84ec5e281f5"
+    },
+    "tools/quantities/work-rates/probes.py": {
+      "bytes": 5385,
+      "sha256": "90be5af84f09e9b8325f07fc86961f8c326cc16c6e03be6564e53ac6a01a178f"
+    },
+    "tools/quantities/work-rates/validate.sh": {
+      "bytes": 513,
+      "sha256": "5e637e9b587da5d62f5eedcfda36fa71a495b5f998a8372c42d7f81d139fc7c6"
+    },
+    "tools/quantities/work-rates/cases.json": {
+      "bytes": 7220,
+      "sha256": "b87410e382c872851b9e19b87e0b8e8a02d5737796747437da179b4a2b3c3224"
+    },
+    "tools/quantities/work-rates/evaluate.py": {
+      "bytes": 5607,
+      "sha256": "6f044cb269b7a7450268e7b885b91900e16aaeb98cc9e59e1a174cd9ab889ebf"
+    },
+    "tools/quantities/work-rates/regressions.py": {
+      "bytes": 869,
+      "sha256": "ca2b045f714dbc3f38335cf45cf38cbb452f31a66ae9f80e8d3c0fa55c2eb2e9"
+    },
+    "tools/quantities/work-rates/reproduce.sh": {
+      "bytes": 1568,
+      "sha256": "f4db97cbb0e7f9f8d7033c8bbe9719e872a372bb189889981046fc87d0945a3d"
+    },
+    "../workrates-run/evidence/candidate-quantities": {
+      "bytes": 26314176,
+      "sha256": "19a3acfb072b32b7d79ff4d5894b946b083857d552ec05a0220664cdf3d30d55"
+    }
+  }
+}

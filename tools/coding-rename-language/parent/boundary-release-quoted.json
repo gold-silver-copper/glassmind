@@ -1,0 +1,45 @@
+{
+  "scope": "Post-source-review diagnostic; no applied edits",
+  "rows": [
+    {
+      "text": "The guide says \"rename read_count to decode_count\". Why do its tests fail?",
+      "meaning": null,
+      "exit": 0
+    },
+    {
+      "text": "This is an example: \"rename read_count to decode_count\". Explain it.",
+      "meaning": null,
+      "exit": 0
+    },
+    {
+      "text": "The test output says `rename read_count to decode_count`. Please explain the message.",
+      "meaning": "Ask(Describe { thing: Named(Name(\"message\")), kind: None })",
+      "exit": 0
+    },
+    {
+      "text": "Can you explain the instruction \"rename read_count to decode_count\" in the tests?",
+      "meaning": null,
+      "exit": 0
+    },
+    {
+      "text": "Why does the documentation say \"rename read_count to decode_count\"?",
+      "meaning": null,
+      "exit": 0
+    },
+    {
+      "text": "I found the words \"rename read_count to decode_count\" in a failing unit test. What do they mean?",
+      "meaning": null,
+      "exit": 0
+    },
+    {
+      "text": "\"rename read_count to decode_count\" is an example, not a request. The tests are failing.",
+      "meaning": null,
+      "exit": 0
+    },
+    {
+      "text": "The README says \"rename read_count to decode_count\"; do not execute that command.",
+      "meaning": null,
+      "exit": 0
+    }
+  ]
+}

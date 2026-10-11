@@ -1,0 +1,15 @@
+Running as unit: run-p745924-i97219167.scope; invocation ID: be3a58eba7344885ad772458c04f1de2
+input:  rename decode to read_entry everywhere except tests
+words:  [rename] [decode] [to] [read_entry] [everywhere] [except] [tests]
+reading 1 (chosen):
+  parse:   en.utterance.remark_after[en.utterance.follow_up[en.utterance.command[en.command.rename_verb[en.rename.rename["rename"] en.mention.thing[en.noun_phrase.name["decode"]] en.into.to["to"] "read_entry"]] en.follow_up.everywhere["everywhere"]] en.remark.check[en.check_phrase.bare[en.check_name.of["except" en.rust.check.tests["tests"]]]]]
+  meaning: Command(Rename { thing: Named(Name("decode")), kind: None, name: Some(Name("read_entry")) })
+  rules:   en.utterance.remark_after (round 1), en.utterance.follow_up (round 5), en.utterance.command (round 5), en.command.rename_verb (round 5), en.rename.rename (round 5), en.mention.thing (round 3), en.noun_phrase.name (seed), en.into.to (round 5), en.follow_up.everywhere (round 5), en.remark.check (round 29), en.check_phrase.bare (round 29), en.check_name.of (round 29), en.rust.check.tests (by hand)
+  name `decode` -> nothing
+  resolved: Command(Rename { thing: Named(Name("decode")), kind: None, name: Some(Name("read_entry")) })
+  dropped:  NoSuchName { name: Name("decode") }
+  world rules: rust.lookup.exact (seed), rust.lookup.any_case (seed), rust.rename (round 5)
+reply:  Trouble(NoSuchName { name: Name("decode") })
+spoken by: en.reply.no_such_name (seed)
+
+Nothing is called `decode`.

@@ -1,0 +1,484 @@
+diff --git i/crates/quantities/src/lib.rs w/crates/quantities/src/lib.rs
+index 33df6dd..60ff11b 100644
+--- i/crates/quantities/src/lib.rs
++++ w/crates/quantities/src/lib.rs
+@@ -9,6 +9,7 @@ mod percent_change;
+ mod ratio_total;
+ pub mod rational;
+ pub mod units;
++mod work_rates;
+ 
+ use serde::Serialize;
+ 
+diff --git i/crates/quantities/src/parser.rs w/crates/quantities/src/parser.rs
+index 259709e..44217c2 100644
+--- i/crates/quantities/src/parser.rs
++++ w/crates/quantities/src/parser.rs
+@@ -177,6 +177,9 @@ pub fn solve(question: &str) -> Result<Solved> {
+         let date: Date = field(&c, 1)?.parse()?;
+         return Ok((date.weekday().into(), None, "Gregorian weekday"));
+     }
++    if let Ok(Some(value)) = crate::work_rates::solve(&text) {
++        return Ok(value);
++    }
+     if let Ok(Some(value)) = crate::linear::solve(&text) {
+         return Ok(numeric(value, "exact scalar linear constraints"));
+     }
+diff --git a/crates/quantities/src/work_rates.rs b/crates/quantities/src/work_rates.rs
+new file mode 100644
+--- /dev/null
++++ b/crates/quantities/src/work_rates.rs
+@@ -0,0 +1,425 @@
++//! Constant independent whole-job rates and exact, capacity-bounded stages.
++//! Every clause is consumed; no benchmark identifiers or answer choices are inputs.
++use crate::rational::{Rational, Result};
++use regex::Regex;
++use std::collections::BTreeMap;
++
++const N: &str = r"-?\d+(?:\.\d+|/\d+)?";
++const U: &str = r"seconds?|minutes?|hours?|hrs?|days?";
++const OBJECT: &str =
++    r"(?:a |the |the same |same )?(?:piece of work|painting work|work|job|task|tank|cistern)|it";
++const METHOD: &str =
++    "constant independent rates: signed whole job / time; exact stage work and remaining work";
++type Solved = (String, Option<String>, &'static str);
++fn re(s: &str) -> Result<Regex> {
++    Regex::new(s).map_err(|e| e.to_string())
++}
++fn positive(v: Rational) -> Result<Rational> {
++    if v.is_negative() || v == Rational::integer(0) {
++        Err("nonpositive completion time or rate".into())
++    } else {
++        Ok(v)
++    }
++}
++#[derive(Clone, Copy, Debug)]
++struct Time(Rational);
++#[derive(Clone, Copy, Debug)]
++struct Rate(Rational);
++#[derive(Clone, Copy)]
++struct Work(Rational);
++impl Rate {
++    fn from_time(t: Time, negative: bool) -> Result<Self> {
++        let r = Rational::integer(1).checked_div(positive(t.0)?)?;
++        Ok(Self(if negative { r.checked_neg()? } else { r }))
++    }
++    fn duration(self, work: Work) -> Result<Time> {
++        Ok(Time(work.0.checked_div(positive(self.0)?)?))
++    }
++}
++fn unit(s: &str) -> Result<(&'static str, Rational)> {
++    Ok(match s {
++        "second" | "seconds" => ("seconds", Rational::integer(1)),
++        "minute" | "minutes" => ("minutes", Rational::integer(60)),
++        "hour" | "hours" | "hr" | "hrs" => ("hours", Rational::integer(3600)),
++        "day" | "days" => ("days", Rational::integer(86400)),
++        _ => return Err("unsupported time unit".into()),
++    })
++}
++fn time(n: &str, u: &str) -> Result<Time> {
++    Ok(Time(n.parse::<Rational>()?.checked_mul(unit(u)?.1)?))
++}
++fn names(s: &str) -> Result<Vec<String>> {
++    let s = re(r"^(?:two |three )?(?:pipes|persons|workers|machines|pumps) ")?.replace(s, "");
++    let s = s.replace(" & ", " and ").replace(" and ", ",");
++    let mut out = Vec::new();
++    for part in s.split(',').map(str::trim).filter(|s| !s.is_empty()) {
++        let part = re(r"^(?:worker|machine|pipe|pump) ")?.replace(part, "");
++        if !re(r"^[a-z]+$")?.is_match(&part)
++            || ["they", "both", "it", "he", "she", "the", "all"].contains(&part.as_ref())
++            || out.iter().any(|x| x == part.as_ref())
++        {
++            return Err("ambiguous agent list".into());
++        }
++        out.push(part.to_string());
++    }
++    if out.is_empty() || out.len() > 3 {
++        return Err("expected one to three agents".into());
++    }
++    Ok(out)
++}
++#[derive(Default)]
++struct Model {
++    rates: BTreeMap<String, Rate>,
++    combined: Option<(Vec<String>, Rate)>,
++    kind: Option<&'static str>,
++    output: Option<String>,
++}
++impl Model {
++    fn object(&mut self, s: &str) -> Result<()> {
++        if s == "it" {
++            if self.kind.is_none() {
++                return Err("unbound work reference".into());
++            }
++            return Ok(());
++        }
++        let k = if s.ends_with("tank") {
++            "tank"
++        } else if s.ends_with("cistern") {
++            "cistern"
++        } else {
++            "work"
++        };
++        if self.kind.is_some_and(|old| old != k) {
++            return Err("different work objects".into());
++        }
++        self.kind = Some(k);
++        Ok(())
++    }
++    fn declaration(&mut self, s: &str) -> Result<()> {
++        let rewritten;
++        let s = if let Some(c) = re(&format!(
++            r"^(.+?) takes ({N}) ({U}) to (do|complete|finish|fill|empty) ({OBJECT})$"
++        ))?
++        .captures(s)
++        {
++            rewritten = format!("{} can {} {} in {} {}", &c[1], &c[4], &c[5], &c[2], &c[3]);
++            rewritten.as_str()
++        } else {
++            s
++        };
++        let pat = format!(
++            r"^(.+?) (?:can |is able to )?(?:alone |together )?(do|complete|finish|fill|empty|drain) (?:(?:alone|together) )?({OBJECT}) (?:alone |together )?in (.+?)(?: respectively)?$"
++        );
++        let (ns, verb, obj, ts) = if let Some(c) = re(&pat)?.captures(s) {
++            (
++                c[1].trim_end_matches(" alone")
++                    .trim_end_matches(" together")
++                    .to_string(),
++                c[2].to_string(),
++                Some(c[3].to_string()),
++                c[4].to_string(),
++            )
++        } else if let Some(c) = re(r"^(.+?) in (.+)$")?.captures(s) {
++            if self.kind.is_none() {
++                return Err("unbound elliptical work clause".into());
++            }
++            (c[1].to_string(), "do".into(), None, c[2].to_string())
++        } else {
++            return Err("unsupported completion clause".into());
++        };
++        let agents = names(&ns)?;
++        if let Some(obj) = obj {
++            self.object(&obj)?;
++        }
++        let negative = verb == "empty" || verb == "drain";
++        if (negative || verb == "fill") && self.kind == Some("work") {
++            return Err("flow action on non-container".into());
++        }
++        let ts = ts.replace(" and ", ",");
++        let parts: Vec<_> = ts
++            .split(',')
++            .map(str::trim)
++            .filter(|p| !p.is_empty())
++            .collect();
++        let last = re(&format!(r"^({N}) ({U})$"))?
++            .captures(parts.last().ok_or("missing time")?)
++            .ok_or("missing time unit")?;
++        let default_unit = last[2].to_string();
++        if self.output.is_none() {
++            self.output = Some(unit(&default_unit)?.0.into());
++        }
++        let mut values = Vec::new();
++        for p in parts {
++            let c = re(&format!(r"^({N})(?: ({U}))?$"))?
++                .captures(p)
++                .ok_or("unsupported time list")?;
++            values.push(Rate::from_time(
++                time(
++                    &c[1],
++                    c.get(2).map_or(default_unit.as_str(), |v| v.as_str()),
++                )?,
++                negative,
++            )?);
++        }
++        if values.len() == 1 && agents.len() > 1 {
++            if negative || self.combined.is_some() {
++                return Err("unsupported or redundant combined constraint".into());
++            }
++            self.combined = Some((agents, *values.first().ok_or("missing rate")?));
++        } else {
++            if values.len() != agents.len() {
++                return Err("agent/time cardinality mismatch".into());
++            }
++            for (name, value) in agents.into_iter().zip(values) {
++                if self.rates.insert(name, value).is_some() {
++                    return Err("duplicate agent constraint".into());
++                }
++            }
++        }
++        Ok(())
++    }
++    fn finish(&mut self) -> Result<()> {
++        if let Some((ns, target)) = &self.combined {
++            let missing: Vec<_> = ns.iter().filter(|n| !self.rates.contains_key(*n)).collect();
++            if missing.len() != 1 || self.rates.keys().any(|n| !ns.contains(n)) {
++                return Err("underdetermined or redundant combined constraint".into());
++            }
++            let mut remaining = target.0;
++            for r in self.rates.values() {
++                remaining = remaining.checked_sub(r.0)?;
++            }
++            self.rates.insert(
++                (*missing.first().ok_or("missing unknown")?).clone(),
++                Rate(positive(remaining)?),
++            );
++        }
++        if !(2..=3).contains(&self.rates.len()) {
++            return Err("expected two or three bound agents".into());
++        }
++        Ok(())
++    }
++    fn sum(&self, ns: &[String]) -> Result<Rate> {
++        let mut rate = Rational::integer(0);
++        for n in ns {
++            rate = rate.checked_add(self.rates.get(n).ok_or("unknown agent")?.0)?;
++        }
++        Ok(Rate(rate))
++    }
++}
++struct Stage {
++    before: Vec<String>,
++    after: Vec<String>,
++    duration: Time,
++}
++fn stage(s: &str, m: &Model) -> Result<Stage> {
++    let all: Vec<_> = m.rates.keys().cloned().collect();
++    if let Some(c) = re(&format!(r"^(?:they|both) (?:work|worked) together for ({N}) ({U}) (?:and then|then) (.+?) (?:leaves|left|goes away)$"))?.captures(s) {
++        let leaver = names(&c[3])?;
++        if leaver.len() != 1 || !all.contains(leaver.first().ok_or("missing leaver")?) { return Err("unknown departing agent".into()); }
++        return Ok(Stage { before: all.clone(), after: all.into_iter().filter(|n| Some(n) != leaver.first()).collect(), duration: time(&c[1], &c[2])? });
++    }
++    if let Some(c) = re(&format!(
++        r"^(.+?) (?:works|worked) alone for ({N}) ({U}) (?:and then|then) (.+?) joins$"
++    ))?
++    .captures(s)
++    {
++        let before = names(&c[1])?;
++        let joiner = names(&c[4])?;
++        if before.len() != 1
++            || joiner.len() != 1
++            || before == joiner
++            || all.len() != 2
++            || !all.contains(before.first().ok_or("missing starter")?)
++            || !all.contains(joiner.first().ok_or("missing joiner")?)
++        {
++            return Err("unknown starting agents".into());
++        }
++        return Ok(Stage {
++            before,
++            after: all,
++            duration: time(&c[2], &c[3])?,
++        });
++    }
++    Err("unsupported stage".into())
++}
++#[derive(PartialEq)]
++enum Asked {
++    Full,
++    Remaining,
++    Total,
++}
++struct Query {
++    agents: Option<Vec<String>>,
++    asked: Asked,
++    unit: Option<String>,
++    drain: bool,
++}
++fn query(s: &str, m: &mut Model) -> Result<Query> {
++    let s = s.trim();
++    let s = re(r"^(?:if (?:they work together|both the pipes are opened simultaneously|all the pipes are open|all pipes are opened together)\s*,?\s*(?:then )?|working together\s*,\s*)")?.replace(s, "");
++    if let Some(c) = re(&format!(
++        r"^what is the total time in ({U}) to (?:finish|complete|fill) ({OBJECT})$"
++    ))?
++    .captures(&s)
++    {
++        m.object(&c[2])?;
++        return Ok(Query {
++            agents: None,
++            asked: Asked::Total,
++            unit: Some(unit(&c[1])?.0.into()),
++            drain: false,
++        });
++    }
++    if let Some(c) = re(&format!(
++        r"^how much time will be taken to (?:fill|finish|complete) ({OBJECT})$"
++    ))?
++    .captures(&s)
++    {
++        m.object(&c[1])?;
++        return Ok(Query {
++            agents: None,
++            asked: Asked::Full,
++            unit: None,
++            drain: false,
++        });
++    }
++    if let Some(c) = re(&format!(
++        r"^(?:in )?how many ({U}) will ({OBJECT}) be (filled|completed|finished)$"
++    ))?
++    .captures(&s)
++    {
++        m.object(&c[2])?;
++        return Ok(Query {
++            agents: None,
++            asked: Asked::Full,
++            unit: Some(unit(&c[1])?.0.into()),
++            drain: false,
++        });
++    }
++    let pat = format!(
++        r"^(?:in )?how many (more |remaining )?({U}) (?:will|does) (.+?) (?:take to |need to )?(?:finish|complete|do|fill|empty|drain) (.+)$"
++    );
++    let alternate =
++        format!(r"^(.+?) (?:will )?(?:complete|finish|do|fill) ({OBJECT}) in how many ({U})$");
++    let (who, object, out, remaining) = if let Some(c) = re(&pat)?.captures(&s) {
++        (c[3].to_string(), c[4].to_string(), Some(unit(&c[2])?.0.into()), c.get(1).is_some())
++    } else if let Some(c) = re(r"^how (?:long|much time) (?:will )?(?:it take )?(.+?) (?:take to |to )?(?:finish|complete|do|fill|empty|drain) (.+)$")?.captures(&s) {
++        (c[1].to_string(), c[2].to_string(), None, false)
++    } else if let Some(c) = re(&alternate)?.captures(&s) {
++        (c[1].to_string(), c[2].to_string(), Some(unit(&c[3])?.0.into()), false)
++    } else if let Some(c) = re(&format!(r"^how much time will be taken to (?:fill|finish|complete) ({OBJECT})$"))?.captures(&s) {
++        ("they".into(), c[1].to_string(), None, false)
++    } else { return Err("unsupported work-time query".into()); };
++    let who = who.trim_end_matches(" together").trim_end_matches(" alone");
++    let object = object
++        .trim_end_matches(" together")
++        .trim_end_matches(" alone");
++    let is_remaining = object == "the remaining work" || object == "the remaining job";
++    if !is_remaining {
++        if !re(&format!(r"^(?:{OBJECT})$"))?.is_match(object) {
++            return Err("unsupported query object".into());
++        }
++        m.object(object)?;
++    }
++    let agents = if ["they", "both", "all the pipes", "both the pipes"].contains(&who) {
++        None
++    } else {
++        Some(names(who)?)
++    };
++    Ok(Query {
++        agents,
++        asked: if remaining || is_remaining {
++            Asked::Remaining
++        } else {
++            Asked::Full
++        },
++        unit: out,
++        drain: s.contains(" empty ") || s.contains(" drain "),
++    })
++}
++
++pub(crate) fn solve(text: &str) -> Result<Option<Solved>> {
++    if !["work", "job", "task", "tank", "cistern"]
++        .iter()
++        .any(|s| text.contains(s))
++    {
++        return Ok(None);
++    }
++    // Sentence boundaries retain decimal dots. Internal question marks are refused.
++    if text.contains('?') {
++        return Ok(None);
++    }
++    let text = re(r"\s*,\s*")?.replace_all(text, ", ");
++    let text = re(r"\s*/\s*")?.replace_all(&text, "/");
++    let text = re(r"\s*\.\s+")?.replace_all(&text, ". ");
++    let mut clauses: Vec<_> = text.split(". ").map(str::trim).collect();
++    let qtext = clauses.pop().ok_or("missing question")?;
++    let mut model = Model::default();
++    let mut schedule = None;
++    for clause in clauses {
++        if clause.contains(" for ") || clause.contains(" joins") {
++            if schedule.is_some() {
++                return Err("multiple stages".into());
++            }
++            schedule = Some(clause);
++        } else {
++            // Split only after a time unit; coordinated subjects/times remain intact.
++            let separator = re(&format!(r"({U})\s*(?:,\s*(?:and )?|and |while )"))?;
++            let separated = separator.replace_all(clause, "$1| ");
++            for part in separated.split('|') {
++                model.declaration(part.trim())?;
++            }
++        }
++    }
++    model.finish()?;
++    let query = query(qtext, &mut model)?;
++    let all: Vec<_> = model.rates.keys().cloned().collect();
++    let requested = query.agents.as_ref().unwrap_or(&all);
++    model.sum(requested)?; // Bind even a zero remaining-work query.
++    let result = if let Some(s) = schedule {
++        if query.asked == Asked::Full || query.drain {
++            return Err("ambiguous staged query".into());
++        }
++        let stage = stage(s, &model)?;
++        if stage.duration.0.is_negative() {
++            return Err("negative elapsed duration".into());
++        }
++        if query.agents.is_some() && *requested != stage.after {
++            return Err("query does not name continuing agents".into());
++        }
++        let before = model.sum(&stage.before)?;
++        let completion = before.duration(Work(Rational::integer(1)))?;
++        let left = Rational::integer(1).checked_sub(before.0.checked_mul(stage.duration.0)?)?;
++        if left.is_negative() || left == Rational::integer(0) {
++            if query.asked == Asked::Total {
++                completion
++            } else {
++                Time(Rational::integer(0))
++            }
++        } else {
++            let remaining = model.sum(&stage.after)?.duration(Work(left))?;
++            if query.asked == Asked::Total {
++                Time(stage.duration.0.checked_add(remaining.0)?)
++            } else {
++                remaining
++            }
++        }
++    } else {
++        if query.asked != Asked::Full {
++            return Err("remaining/total query needs explicit stage".into());
++        }
++        let r = model.sum(requested)?;
++        let r = if query.drain {
++            Rate(r.0.checked_neg()?)
++        } else {
++            r
++        };
++        r.duration(Work(Rational::integer(1)))?
++    };
++    let output = query.unit.or(model.output).ok_or("no output time unit")?;
++    Ok(Some((
++        result.0.checked_div(unit(&output)?.1)?.to_string(),
++        Some(output),
++        METHOD,
++    )))
++}
+diff --git a/crates/quantities/tests/work_rates.rs b/crates/quantities/tests/work_rates.rs
+new file mode 100644
+--- /dev/null
++++ b/crates/quantities/tests/work_rates.rs
+@@ -0,0 +1,23 @@
++use glassmind_quantities::{Answer, solve};
++#[test]
++fn frozen_rate_and_stage_contracts() {
++    let cases: serde_json::Value = serde_json::from_str(include_str!(
++        "../../../tools/quantities/work-rates/cases.json"
++    ))
++    .unwrap();
++    for c in cases.as_array().unwrap() {
++        let question = c["question"].as_str().unwrap();
++        match solve(question) {
++            Answer::Answer {
++                value,
++                unit,
++                method,
++            } => {
++                assert_eq!(Some(value.as_str()), c["expected"].as_str(), "{question}");
++                assert_eq!(unit.as_deref(), c["unit"].as_str(), "{question}");
++                assert!(method.contains("constant independent rates"));
++            }
++            Answer::Refusal { .. } => assert!(c["expected"].is_null(), "{question}"),
++        }
++    }
++}

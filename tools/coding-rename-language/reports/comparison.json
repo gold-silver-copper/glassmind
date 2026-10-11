@@ -1,0 +1,274 @@
+{
+  "baseline": {
+    "total": 38,
+    "rename_correct": 5,
+    "rename_refused": 7,
+    "rename_wrong": 3,
+    "negative_safe": 8,
+    "negative_mutating": 13,
+    "repair_correct": 1,
+    "repair_refused": 1
+  },
+  "candidate": {
+    "total": 38,
+    "rename_correct": 15,
+    "rename_refused": 0,
+    "rename_wrong": 0,
+    "negative_safe": 21,
+    "negative_mutating": 0,
+    "repair_correct": 1,
+    "repair_refused": 1
+  },
+  "ask_do_equal": 38,
+  "sources_unchanged": 38,
+  "changed": [
+    {
+      "text": "Hey! In this little log parser, the function `parse_line` really parses a whole log entry, so I'd like it called `parse_entry` instead. Could you rename it everywhere it's used, including the report code, main and the unit tests? Behaviour should stay exactly the same.",
+      "baseline": [
+        "Command(Repair(Test))"
+      ],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"parse_line\")), kind: Some(Function), name: Some(Name(\"parse_entry\")) })"
+      ]
+    },
+    {
+      "text": "rename parse_line -> parse_entry everywhere pls, all callers + tests too",
+      "baseline": [],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"parse_line\")), kind: None, name: Some(Name(\"parse_entry\")) })"
+      ]
+    },
+    {
+      "text": "Rename `parse_line` to `parse_entry` everywhere (definition, callers, tests).",
+      "baseline": [],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"parse_line\")), kind: None, name: Some(Name(\"parse_entry\")) })"
+      ]
+    },
+    {
+      "text": "rename function decode to read_entry everywhere (definition, callers, tests).",
+      "baseline": [],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Function), name: Some(Name(\"read_entry\")) })"
+      ]
+    },
+    {
+      "text": "rename scan -> scan_record everywhere pls, all callers + tests too",
+      "baseline": [],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"scan\")), kind: None, name: Some(Name(\"scan_record\")) })"
+      ]
+    },
+    {
+      "text": "Please rename function `Load` to `Read`; keep tests.",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"Load\")), kind: Some(Function), name: Some(Name(\"Read\")) })",
+        "Command(Rename { thing: Named(Name(\"Load\")), kind: Some(Function), name: Some(Name(\"Read\")) })"
+      ],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"Load\")), kind: Some(Function), name: Some(Name(\"Read\")) })"
+      ]
+    },
+    {
+      "text": "rename function r#type to r#match; preserve behavior.",
+      "baseline": [],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"r#type\")), kind: Some(Function), name: Some(Name(\"r#match\")) })"
+      ]
+    },
+    {
+      "text": "The function decode reads a record, so I'd like it called read_record instead. Could you rename it everywhere it's used? Behavior should stay exactly the same.",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: None })",
+        "Command(Rename { thing: Named(Name(\"read_record\")), kind: None, name: None })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Function), name: None })",
+        "Command(Rename { thing: Previous, kind: Some(Function), name: None })",
+        "Command(Rename { thing: Previous, kind: None, name: None })"
+      ],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Function), name: Some(Name(\"read_record\")) })"
+      ]
+    },
+    {
+      "text": "Hey! In this small config reader, the function load really reads a whole config record, so I'd like it called read_config instead. Could you rename it everywhere it's used, including main and the unit tests? Behaviour should stay exactly the same.",
+      "baseline": [],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"load\")), kind: Some(Function), name: Some(Name(\"read_config\")) })"
+      ]
+    },
+    {
+      "text": "rename method poll on Queue to receive everywhere; preserve behavior",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"Queue\")) })",
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"receive\")) })",
+        "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"receive\")) })",
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"preserve\")) })",
+        "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"preserve\")) })",
+        "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"preserve\")) })",
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"behavior\")) })",
+        "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"behavior\")) })",
+        "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"behavior\")) })",
+        "Command(Rename { thing: Named(Name(\"preserve\")), kind: None, name: Some(Name(\"behavior\")) })",
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"Queue\")) })",
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"receive\")) })",
+        "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"receive\")) })",
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"preserve\")) })",
+        "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"preserve\")) })",
+        "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"preserve\")) })",
+        "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"behavior\")) })",
+        "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"behavior\")) })",
+        "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"behavior\")) })",
+        "Command(Rename { thing: Named(Name(\"preserve\")), kind: None, name: Some(Name(\"behavior\")) })"
+      ],
+      "candidate": [
+        "Command(Rename { thing: Fitting(Description { kind: Some(Function), conditions: [Called(Name(\"poll\")), Related { relation: BelongsTo, position: First, other: Named(Name(\"Queue\")) }] }), kind: Some(Function), name: Some(Name(\"receive\")) })"
+      ]
+    },
+    {
+      "text": "Could you please rename read -> read_item everywhere (callers, definition, tests)?",
+      "baseline": [],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"read\")), kind: None, name: Some(Name(\"read_item\")) })"
+      ]
+    },
+    {
+      "text": "rename format to render; keep tests",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"format\")), kind: None, name: Some(Name(\"render\")) })",
+        "Command(Rename { thing: Named(Name(\"format\")), kind: None, name: Some(Name(\"render\")) })"
+      ],
+      "candidate": [
+        "Command(Rename { thing: Named(Name(\"format\")), kind: None, name: Some(Name(\"render\")) })"
+      ]
+    },
+    {
+      "text": "Never rename decode to read_entry, fix tests",
+      "baseline": [
+        "Command(Repair(Test))"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "If tests pass, rename decode to read_entry",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "Check whether renaming decode to read_entry would break tests",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"break\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"break\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename decode to read_entry and rename load to read_config",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"load\")), kind: None, name: Some(Name(\"read_config\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"read_config\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename decode to read_entry or read_record",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"read_record\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"read_record\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename decode to read_entry; delete tests",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"delete\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"delete\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename decode to read_entry; bananas forever",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"bananas\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"forever\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"bananas\")) })",
+        "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"forever\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename decode everywhere, keep tests",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: None })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename function decode to read_entry and change its behavior",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename local variable decode to read_entry; keep tests",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"the local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"the decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"the local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"the decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename decode to read_entry only in tests",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "rename decode to read_entry if tests pass",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "What does the word `rename` mean?",
+      "baseline": [
+        "Ask(Identify(Description { kind: None, conditions: [Related { relation: Calls, position: Second, other: Named(Name(\"rename\")) }] }))",
+        "Ask(Identify(Description { kind: None, conditions: [Related { relation: Calls, position: Second, other: Named(Name(\"rename\")) }] }))"
+      ],
+      "candidate": []
+    },
+    {
+      "text": "I might rename decode to read_entry; keep tests",
+      "baseline": [
+        "Command(Rename { thing: Named(Name(\"might\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"might\")), kind: None, name: Some(Name(\"read_entry\")) })",
+        "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+      ],
+      "candidate": []
+    }
+  ]
+}

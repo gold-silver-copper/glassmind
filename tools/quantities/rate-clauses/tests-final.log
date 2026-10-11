@@ -1,0 +1,67 @@
+Running as unit: run-p1045297-i97446529.scope; invocation ID: 5e43da70f28443238e8103419958a499
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses/crates/quantities)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.73s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/glassmind_quantities-41bb52794b2e9d1b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/glassmind_quantities-29dea034d19a1fdd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/linear_language.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/linear_language-cc9e1cc3276e8c85)
+
+running 4 tests
+test training_concepts_use_shared_scalar_constraints ... ok
+test novel_clause_combinations_and_order ... ok
+test absolute_differences_require_agreement_across_solutions ... ok
+test omissions_contradictions_units_and_ambiguous_referents_refuse ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/percent_change.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/percent_change-73f61424646b3739)
+
+running 3 tests
+test annual_forward_inverse_and_bound_entity ... ok
+test directed_bases_and_successive_changes ... ok
+test refuses_incomplete_ambiguous_or_invalid_relations ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+
+     Running tests/percent_language.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/percent_language-f72e1503b5e076eb)
+
+running 2 tests
+test percentage_relations_and_composition ... ok
+test malformed_or_unconsumed_percentage_relations_refuse ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/rate_clauses.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/rate_clauses-216f81741c27babb)
+
+running 4 tests
+test supplemental_clause_forms ... ok
+test tank_conditions_and_unused_clauses ... ok
+test locally_bound_ellipsis ... ok
+test frozen_compositional_clauses ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/ratio_totals.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/ratio_totals-1602576a599040e0)
+
+running 3 tests
+test independent_exact_cases_bind_order_and_rank ... ok
+test unsupported_or_inconsistent_constraints_refuse ... ok
+test train_problem_only_examples_with_independent_arithmetic ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+   Doc-tests glassmind_quantities
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

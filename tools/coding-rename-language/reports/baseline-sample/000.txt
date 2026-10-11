@@ -1,0 +1,18 @@
+input:  Hey! In this little log parser, the function `parse_line` really parses a whole log entry, so I'd like it called `parse_entry` instead. Could you rename it everywhere it's used, including the report code, main and the unit tests? Behaviour should stay exactly the same.
+words:  [Hey] [!] [In] [this] [little] [log] [parser] [,] [the] [function] [parse_line] [really] [parses] [a] [whole] [log] [entry] [,] [so] [I'd] [like] [it] [called] [parse_entry] [instead] [.] [Could] [you] [rename] [it] [everywhere] [it's] [used] [,] [including] [the] [report] [code] [,] [main] [and] [the] [unit] [tests] [?] [Behaviour] [should] [stay] [exactly] [the] [same] [.]
+reading 1 (chosen):
+  parse:   coding intent: fix_tests (1.0000)
+  meaning: Command(Repair(Test))
+  rules:   coding.intent.fallback (by hand)
+  resolved: Command(Repair(Test))
+  world:    Remedy { check: Test, changes: [], fixed: [], left: [] }
+  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29), rust.remedy.undo_slip (round 29)
+choice: 1 surviving reading(s), all with the same answer
+preferences: mind.accept_verified (by hand)
+reply:  Assuming { reading: Command(Repair(Test)), reply: Remedy { check: Test, changes: [], fixed: [], left: [] } }
+spoken by: en.reply.assuming (seed), en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.tests (by hand), en.reply.no_remedy (by hand)
+
+I take that to mean: fix the tests I don't know how to fix the tests.
+
+STDERR:
+Running as unit: run-p706778-i97087332.scope; invocation ID: a26adab800cf4f088df972664e962c6c

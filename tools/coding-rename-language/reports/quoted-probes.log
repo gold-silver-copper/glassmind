@@ -1,0 +1,23 @@
+Running as unit: run-p749791-i97212204.scope; invocation ID: 35d9d47c88e741fd958eecedfbbdf11f
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.48s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 1 test
+test coding::rename_tests::unsupported_tails_never_escape_into_guesses ... FAILED
+
+failures:
+
+---- coding::rename_tests::unsupported_tails_never_escape_into_guesses stdout ----
+
+thread 'coding::rename_tests::unsupported_tails_never_escape_into_guesses' (750038) panicked at crates/cli/src/coding.rs:288:13:
+What does the word `rename` mean in the unit tests?
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    coding::rename_tests::unsupported_tails_never_escape_into_guesses
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 16 filtered out; finished in 1.45s
+
+error: test failed, to rerun pass `-p glassmind --bin glassmind`

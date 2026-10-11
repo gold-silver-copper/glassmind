@@ -1,0 +1,188 @@
+[
+  {
+    "text": "Rename function tally to count_items everywhere (definition, callers, tests).",
+    "mode": "ask",
+    "before": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p767716-i97235947.scope; invocation ID: c23b8d7690654f08bdeb85c1fe552b3e\n"
+    },
+    "tests_before": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p767761-i97235949.scope; invocation ID: a15aabdb8f0b44c2a9762fc07d9b9887\n"
+    },
+    "action": {
+      "code": 0,
+      "out": "input:  Rename function tally to count_items everywhere (definition, callers, tests).\nwords:  [Rename] [function] [tally] [to] [count_items] [everywhere] [(] [definition] [,] [callers] [,] [tests] [)] [.]\nreading 1 (chosen):\n  parse:   fully consumed rename clauses\n  meaning: Command(Rename { thing: Named(Name(\"tally\")), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  rules:   en.rust.rename_request (by hand)\n  name `tally` -> tally\n  resolved: Command(Rename { thing: Item(RustItem { source: \"0-ask\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  world:    Proposal { action: Rename { thing: Item(RustItem { source: \"0-ask\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"0-ask\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"0-ask\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"0-ask\", file: \"src/main.rs\", line: 6, column: 49 }] }\n  world rules: rust.lookup.exact (seed), rust.rename (round 5), rust.apply.changes (by hand), rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Applied { changes: 3, check: Some(Build), problems: [] }\nspoken by: en.reply.applied (by hand), en.reply.checked_clean (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI made 3 changes. No problems with the build.\n",
+      "err": "Running as unit: run-p767823-i97259665.scope; invocation ID: de9950ea0d084701b92447eaf34a6a5e\n"
+    },
+    "after": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p767872-i97263870.scope; invocation ID: 5ff783ed682140128ccfde686982966b\n"
+    },
+    "tests_after": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p767934-i97215446.scope; invocation ID: d698ca7df9b64e75b8d67f94a8aee91a\n"
+    },
+    "exact_source": true,
+    "pass": true
+  },
+  {
+    "text": "Rename function tally to count_items everywhere (definition, callers, tests).",
+    "mode": "do",
+    "before": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p767998-i97192902.scope; invocation ID: d76490d7867345a7a79f4b1be1a063e7\n"
+    },
+    "tests_before": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p768047-i97188708.scope; invocation ID: 19e6c45b215c4cba854665804b1d5e3d\n"
+    },
+    "action": {
+      "code": 0,
+      "out": "input:  Rename function tally to count_items everywhere (definition, callers, tests).\nwords:  [Rename] [function] [tally] [to] [count_items] [everywhere] [(] [definition] [,] [callers] [,] [tests] [)] [.]\nreading 1 (chosen):\n  parse:   fully consumed rename clauses\n  meaning: Command(Rename { thing: Named(Name(\"tally\")), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  rules:   en.rust.rename_request (by hand)\n  name `tally` -> tally\n  resolved: Command(Rename { thing: Item(RustItem { source: \"0-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  world:    Proposal { action: Rename { thing: Item(RustItem { source: \"0-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"0-do\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"0-do\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"0-do\", file: \"src/main.rs\", line: 6, column: 49 }] }\n  world rules: rust.lookup.exact (seed), rust.rename (round 5)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Proposal { action: Rename { thing: Item(RustItem { source: \"0-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"0-do\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"0-do\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"0-do\", file: \"src/main.rs\", line: 6, column: 49 }] }\nspoken by: en.reply.proposal (round 5), en.command.rename_verb (round 5), en.rename.rename (round 5), en.mention.the_kind (round 3), en.mention.thing (round 3), en.noun_phrase.item (seed), en.rust.noun.function (seed), en.into.to (round 5)\n\nI'd rename the `tally` function to `count_items` in 3 places.\n  src/main.rs:2:4  `tally` -> `count_items`\n  src/main.rs:4:25  `tally` -> `count_items`\n  src/main.rs:6:50  `tally` -> `count_items`\n  (say yes to rename `tally`)\nI made 3 changes. No problems with the build.\n",
+      "err": "Running as unit: run-p768108-i97188711.scope; invocation ID: 042a6a5ed38c4fd598a0c36d08d2a2b7\n"
+    },
+    "after": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p768144-i97228795.scope; invocation ID: b0cd6778b88d4dc8995a099ae2b315d1\n"
+    },
+    "tests_after": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p768188-i97228807.scope; invocation ID: 7da69aa35e1e407bab279e495a51b2d0\n"
+    },
+    "exact_source": true,
+    "pass": true
+  },
+  {
+    "text": "rename tally -> count_items everywhere pls, all callers + tests too",
+    "mode": "ask",
+    "before": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p768249-i97213381.scope; invocation ID: d48be369ee4f426db717d509846c3c9d\n"
+    },
+    "tests_before": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p768297-i97213384.scope; invocation ID: 6896e3bb3c664509b2f1268288e46e81\n"
+    },
+    "action": {
+      "code": 0,
+      "out": "input:  rename tally -> count_items everywhere pls, all callers + tests too\nwords:  [rename] [tally] [-] [>] [count_items] [everywhere] [pls] [,] [all] [callers] [+] [tests] [too]\nreading 1 (chosen):\n  parse:   fully consumed rename clauses\n  meaning: Command(Rename { thing: Named(Name(\"tally\")), kind: None, name: Some(Name(\"count_items\")) })\n  rules:   en.rust.rename_request (by hand)\n  name `tally` -> tally\n  resolved: Command(Rename { thing: Item(RustItem { source: \"1-ask\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: None, name: Some(Name(\"count_items\")) })\n  world:    Proposal { action: Rename { thing: Item(RustItem { source: \"1-ask\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: None, name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"1-ask\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"1-ask\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"1-ask\", file: \"src/main.rs\", line: 6, column: 49 }] }\n  world rules: rust.lookup.exact (seed), rust.rename (round 5), rust.apply.changes (by hand), rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Applied { changes: 3, check: Some(Build), problems: [] }\nspoken by: en.reply.applied (by hand), en.reply.checked_clean (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI made 3 changes. No problems with the build.\n",
+      "err": "Running as unit: run-p768360-i97213401.scope; invocation ID: f55a57afbf1546799e07e86eb7f25cc6\n"
+    },
+    "after": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p768406-i97213411.scope; invocation ID: 1dd80ed790da4d1198ece03ba2a361ae\n"
+    },
+    "tests_after": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p768450-i97213412.scope; invocation ID: a7a0a141d3f94efeb5ac5ee3ce11c233\n"
+    },
+    "exact_source": true,
+    "pass": true
+  },
+  {
+    "text": "rename tally -> count_items everywhere pls, all callers + tests too",
+    "mode": "do",
+    "before": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p768511-i97213415.scope; invocation ID: 1db6e1bf97d14513837d299ccf0fd635\n"
+    },
+    "tests_before": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p768564-i97228843.scope; invocation ID: 4bec7575f32d47dcb27d5c4ac03ad98e\n"
+    },
+    "action": {
+      "code": 0,
+      "out": "input:  rename tally -> count_items everywhere pls, all callers + tests too\nwords:  [rename] [tally] [-] [>] [count_items] [everywhere] [pls] [,] [all] [callers] [+] [tests] [too]\nreading 1 (chosen):\n  parse:   fully consumed rename clauses\n  meaning: Command(Rename { thing: Named(Name(\"tally\")), kind: None, name: Some(Name(\"count_items\")) })\n  rules:   en.rust.rename_request (by hand)\n  name `tally` -> tally\n  resolved: Command(Rename { thing: Item(RustItem { source: \"1-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: None, name: Some(Name(\"count_items\")) })\n  world:    Proposal { action: Rename { thing: Item(RustItem { source: \"1-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: None, name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"1-do\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"1-do\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"1-do\", file: \"src/main.rs\", line: 6, column: 49 }] }\n  world rules: rust.lookup.exact (seed), rust.rename (round 5)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Proposal { action: Rename { thing: Item(RustItem { source: \"1-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: None, name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"1-do\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"1-do\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"1-do\", file: \"src/main.rs\", line: 6, column: 49 }] }\nspoken by: en.reply.proposal (round 5), en.command.rename_verb (round 5), en.rename.rename (round 5), en.mention.thing (round 3), en.noun_phrase.item (seed), en.into.to (round 5)\n\nI'd rename `tally` to `count_items` in 3 places.\n  src/main.rs:2:4  `tally` -> `count_items`\n  src/main.rs:4:25  `tally` -> `count_items`\n  src/main.rs:6:50  `tally` -> `count_items`\n  (say yes to rename `tally`)\nI made 3 changes. No problems with the build.\n",
+      "err": "Running as unit: run-p768654-i97196893.scope; invocation ID: 24dcf30860094569860a0e9d48cc4e99\n"
+    },
+    "after": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p768845-i97213423.scope; invocation ID: bf373e17de474ed58bdf3d847e688c60\n"
+    },
+    "tests_after": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p768889-i97213440.scope; invocation ID: cb5f8342e3754b3794b7fa0c20898b0c\n"
+    },
+    "exact_source": true,
+    "pass": true
+  },
+  {
+    "text": "The function tally processes a value, so I'd like it called count_items instead. Could you rename it everywhere it's used? Behavior should stay exactly the same.",
+    "mode": "ask",
+    "before": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p768958-i97223862.scope; invocation ID: f146eb68ff4a4119bc1fb7967642803e\n"
+    },
+    "tests_before": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p769012-i97223865.scope; invocation ID: 51ae5b6eb84a4cbdb9bbd639ec67e19e\n"
+    },
+    "action": {
+      "code": 0,
+      "out": "input:  The function tally processes a value, so I'd like it called count_items instead. Could you rename it everywhere it's used? Behavior should stay exactly the same.\nwords:  [The] [function] [tally] [processes] [a] [value] [,] [so] [I'd] [like] [it] [called] [count_items] [instead] [.] [Could] [you] [rename] [it] [everywhere] [it's] [used] [?] [Behavior] [should] [stay] [exactly] [the] [same] [.]\nreading 1 (chosen):\n  parse:   fully consumed rename clauses\n  meaning: Command(Rename { thing: Named(Name(\"tally\")), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  rules:   en.rust.rename_request (by hand)\n  name `tally` -> tally\n  resolved: Command(Rename { thing: Item(RustItem { source: \"2-ask\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  world:    Proposal { action: Rename { thing: Item(RustItem { source: \"2-ask\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"2-ask\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"2-ask\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"2-ask\", file: \"src/main.rs\", line: 6, column: 49 }] }\n  world rules: rust.lookup.exact (seed), rust.rename (round 5), rust.apply.changes (by hand), rust.check.run (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Applied { changes: 3, check: Some(Build), problems: [] }\nspoken by: en.reply.applied (by hand), en.reply.checked_clean (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI made 3 changes. No problems with the build.\n",
+      "err": "Running as unit: run-p769100-i97223881.scope; invocation ID: 11bc49eb585643e29e79f5027bb55696\n"
+    },
+    "after": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p769136-i97151595.scope; invocation ID: 1b58cc4188cd4617a9813486819dac2a\n"
+    },
+    "tests_after": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p769180-i97256800.scope; invocation ID: 7fdfb2d6ea2a43bfa9c75fc9ba07a833\n"
+    },
+    "exact_source": true,
+    "pass": true
+  },
+  {
+    "text": "The function tally processes a value, so I'd like it called count_items instead. Could you rename it everywhere it's used? Behavior should stay exactly the same.",
+    "mode": "do",
+    "before": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p769242-i97196945.scope; invocation ID: 1775c47fba474cbf8539d98787ee6ec1\n"
+    },
+    "tests_before": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p769290-i97240042.scope; invocation ID: 0cb5bc36410c41cb8fee5b0ab4ea85e8\n"
+    },
+    "action": {
+      "code": 0,
+      "out": "input:  The function tally processes a value, so I'd like it called count_items instead. Could you rename it everywhere it's used? Behavior should stay exactly the same.\nwords:  [The] [function] [tally] [processes] [a] [value] [,] [so] [I'd] [like] [it] [called] [count_items] [instead] [.] [Could] [you] [rename] [it] [everywhere] [it's] [used] [?] [Behavior] [should] [stay] [exactly] [the] [same] [.]\nreading 1 (chosen):\n  parse:   fully consumed rename clauses\n  meaning: Command(Rename { thing: Named(Name(\"tally\")), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  rules:   en.rust.rename_request (by hand)\n  name `tally` -> tally\n  resolved: Command(Rename { thing: Item(RustItem { source: \"2-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) })\n  world:    Proposal { action: Rename { thing: Item(RustItem { source: \"2-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"2-do\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"2-do\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"2-do\", file: \"src/main.rs\", line: 6, column: 49 }] }\n  world rules: rust.lookup.exact (seed), rust.rename (round 5)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Proposal { action: Rename { thing: Item(RustItem { source: \"2-do\", file: \"src/main.rs\", line: 2, name: \"tally\", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name(\"count_items\")) }, spots: [RustSpot { source: \"2-do\", file: \"src/main.rs\", line: 2, column: 3 }, RustSpot { source: \"2-do\", file: \"src/main.rs\", line: 4, column: 24 }, RustSpot { source: \"2-do\", file: \"src/main.rs\", line: 6, column: 49 }] }\nspoken by: en.reply.proposal (round 5), en.command.rename_verb (round 5), en.rename.rename (round 5), en.mention.the_kind (round 3), en.mention.thing (round 3), en.noun_phrase.item (seed), en.rust.noun.function (seed), en.into.to (round 5)\n\nI'd rename the `tally` function to `count_items` in 3 places.\n  src/main.rs:2:4  `tally` -> `count_items`\n  src/main.rs:4:25  `tally` -> `count_items`\n  src/main.rs:6:50  `tally` -> `count_items`\n  (say yes to rename `tally`)\nI made 3 changes. No problems with the build.\n",
+      "err": "Running as unit: run-p769360-i97240050.scope; invocation ID: 6f547204796a4066a3879c810b5f61a9\n"
+    },
+    "after": {
+      "code": 0,
+      "out": "22 tally stays in this string\n",
+      "err": "Running as unit: run-p769446-i97244078.scope; invocation ID: 7c5069daa0ec40fd84d0ca71fe21d01a\n"
+    },
+    "tests_after": {
+      "code": 0,
+      "out": "\nrunning 1 test\n.\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "err": "Running as unit: run-p769490-i97252347.scope; invocation ID: a5d5bb6fb02442778a9d6950bd67af70\n"
+    },
+    "exact_source": true,
+    "pass": true
+  }
+]

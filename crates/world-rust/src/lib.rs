@@ -26,6 +26,7 @@ pub mod declared_types;
 pub mod index;
 mod index_conversion;
 mod rename_fields;
+mod rename_functions;
 mod rename_package;
 mod rename_types;
 mod rename_variants;
@@ -668,6 +669,18 @@ impl RustWorld {
             || self.sharing(&item.name, Some(item.kind)).len() > 1
             || at.iter().any(|p| source.names.get(p) != Some(&item.kind))
         {
+            if !taken && item.kind == RustKind::Function && self.sources.len() == 1 {
+                let proven =
+                    rename_functions::positions(source, &item, &name.0).ok_or(Unsupported)?;
+                return Ok(Reply::Proposal {
+                    action: Action::Rename {
+                        thing: Thing::Item(item),
+                        kind,
+                        name: Some(name.clone()),
+                    },
+                    spots: spots(source, &proven),
+                });
+            }
             return Err(Unsupported);
         }
         Ok(Reply::Proposal {
@@ -1082,20 +1095,45 @@ impl World<Rust> for RustWorld {
                         ..
                     },
                 spots,
-            } => (
-                spots
-                    .iter()
-                    .map(|s| RustChange {
-                        source: s.source.clone(),
-                        file: s.file.clone(),
-                        line: s.line,
-                        column: s.column,
-                        old: item.name.clone(),
-                        new: name.0.clone(),
-                    })
-                    .collect(),
-                Some(RustCheck::Build),
-            ),
+            } => {
+                let source = self.sources.iter().find(|s| s.name == item.source);
+                let module_proof = item.kind == RustKind::Function
+                    && source.is_some_and(|s| {
+                        s.idents.get(&item.name).is_some_and(|at| {
+                            at.iter()
+                                .any(|p| s.names.get(p) != Some(&RustKind::Function))
+                        })
+                    });
+                if module_proof {
+                    // A preview's token text may survive a change of binding.
+                    // Reprove identity before writing any bytes.
+                    let source = source.ok_or(Unsupported)?;
+                    let fresh = index::index_source(&source.name, &source.root);
+                    let proven =
+                        rename_functions::positions(&fresh, item, &name.0).ok_or(Unsupported)?;
+                    if crate::spots(&fresh, &proven) != *spots {
+                        return Err(Unsupported);
+                    }
+                }
+                (
+                    spots
+                        .iter()
+                        .map(|s| RustChange {
+                            source: s.source.clone(),
+                            file: s.file.clone(),
+                            line: s.line,
+                            column: s.column,
+                            old: item.name.clone(),
+                            new: name.0.clone(),
+                        })
+                        .collect(),
+                    Some(if module_proof {
+                        RustCheck::Test
+                    } else {
+                        RustCheck::Build
+                    }),
+                )
+            }
             Reply::Assuming { reply, .. } => return self.apply(reply, fired),
             _ => return Err(Trouble::NothingPending),
         };

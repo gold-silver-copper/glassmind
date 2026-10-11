@@ -1,0 +1,23 @@
+Running as unit: run-p719963-i97202321.scope; invocation ID: 08cbb9e3b6664c3ebd26bc9f0ffcd61c
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.81s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 1 test
+test coding::rename_tests::legacy_rename_coverage ... FAILED
+
+failures:
+
+---- coding::rename_tests::legacy_rename_coverage stdout ----
+
+thread 'coding::rename_tests::legacy_rename_coverage' (720241) panicked at crates/cli/src/coding.rs:193:9:
+lost legacy: ["tick should be drain_events, rename it", "can we rename `tick` to something clearer? maybe `drain_events`", "rename tick to smth better pls, maybe drain_events", "rename tick, want it called drain_events isntead", "tick shoud be called drain_events, rename pls", "tick -> drain_events pls rename evrywhere", "scroll field -> offset, rename it", "I think `scroll` field should be called offset, could you rename it?"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    coding::rename_tests::legacy_rename_coverage
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 15 filtered out; finished in 0.80s
+
+error: test failed, to rerun pass `-p glassmind --bin glassmind`

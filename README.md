@@ -108,7 +108,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 177/765 pass; 588 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 180/765 pass; 585 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -403,3 +403,14 @@ for forms/text JSONL. Its small learned parser scores 77.23% labeled and 81.68%
 unlabeled attachment on 25,148 UD English EWT dev words with **gold tokenization**.
 These are unverified syntax predictions; raw-text contractions and some simple
 questions still fail. [Usage, duplicate audit and limitations](tools/reading/syntax/PARENT.md).
+
+Function renames now verify bindings across supported modules, imports, callbacks
+and assertion macros. Complete request parsing handles the supplied conversational
+forms and rejects incomplete or quoted rename instructions. Coding DEV improves
+177→180/765 with every prior pass retained and zero failures.
+[Scope, independent native checks and rejected revisions](tools/coding-rename-language/PARENT.md).
+
+A separate inherited issue remains in build/test repair routing: some status or
+quoted repair questions become repair commands, and `do` can then edit files.
+[The reproduced baseline](docs/results/repair-speechact-baseline.json) is retained;
+the repair-routing experiment has not yet been integrated.

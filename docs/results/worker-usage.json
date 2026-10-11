@@ -736,6 +736,50 @@
         "reasoning_output_tokens": 7630
       },
       "source": "Rejected after independent frozen negation probe: Ava never hired Milo now selects Milo. Parent independently reproduces all10570DEV scores and1000CAL selection; aggregate gains retained, no runtime integration. 27archive/88provenance/29freeze identities verified."
+    },
+    {
+      "track": "functionrefs-continuous",
+      "usage": {
+        "input_tokens": 2915845,
+        "cached_input_tokens": 2817664,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 31794,
+        "reasoning_output_tokens": 11363
+      },
+      "source": "Original13entries119342bytes/3361artifacts521827063bytes/71authoredfiles/11source/3freeze identities verified. Parent16cases8->9exactnative-testedrepairs,zero unsafe/alloldretained; suppliedcanonical9edits5files2923bytes,originaltests andbinaryoutputbeforeafterpass. Integratedchecks/full765 pending."
+    },
+    {
+      "track": "renameenglish-continuous",
+      "usage": {
+        "input_tokens": 4819636,
+        "cached_input_tokens": 4697600,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 42373,
+        "reasoning_output_tokens": 17696
+      },
+      "source": "Original worker and parent8cae74 rejected by independent coverage/context and quoted-command probes. Finalbb89964 full180/765,all177priorpasses,0fail;26independent/8quoted/context/supplied6,19CLI+40English/workspacechecks pass. Original archives/failures preserved; PR publication pending."
+    },
+    {
+      "track": "workrates-continuous",
+      "usage": {
+        "input_tokens": 1350172,
+        "cached_input_tokens": 1282816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 21009,
+        "reasoning_output_tokens": 4025
+      },
+      "source": "Rejected fullDEV33<34 frozen gate; parent17positive/13negative probes produce0positiveanswers/13refusals/0wrong. Parent independently rescored4475, all32prioranswerpayloads preserved, independently verified4newrate answers. 19parent/15original/26raw/12freeze identities verified; no runtime integration."
+    },
+    {
+      "track": "rateclauses-continuous",
+      "usage": {
+        "input_tokens": 2772572,
+        "cached_input_tokens": 2668544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 39354,
+        "reasoning_output_tokens": 9232
+      },
+      "source": "Rejected fullDEV31<34, one new metric wrong; all32 old objects/rawlines preserved. Parent28 probes1/16positive12negative refusals0wrong; parent4475rescore and three rational derivations verified. 73parent/71report/85raw/35freeze identities verified; runtime restored. Reciprocal-label discrepancy disclosed without changing gate."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

@@ -1,0 +1,9 @@
+{
+  "sha256": "48f5f922a8a974583be73d758018f711796c2bd4f9701a7353427a1e992b86e3",
+  "cases": 30,
+  "positive": 17,
+  "negative": 13,
+  "created_before_candidate_inspection": true,
+  "acceptance": "At least8positive exact dimensionally valid answers, all negative inputs refuse, all baseline answers preserved. These parent authored cases supplement worker/fullDEV gates; no retuning after independent review.",
+  "correction_before_any_execution_or_candidate_inspection": "Capacity case has a defined volume-normalized solution: (10 liters)/(10/6+20/3 liters/hour)=6/5hours, so it is positive. Variable-rate negative now explicitly has unknown slowdown. Original pre-run drafts preserved, no candidate-informed retuning."
+}

@@ -1,0 +1,26 @@
+Running as unit: run-p1019512-i97466054.scope; invocation ID: 054b249c227b469884a58f3aeb1eed01
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses/crates/quantities)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.76s
+     Running tests/rate_clauses.rs (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses-run/target/debug/deps/rate_clauses-216f81741c27babb)
+
+running 4 tests
+test locally_bound_ellipsis ... FAILED
+test tank_conditions_and_unused_clauses ... ok
+test supplemental_clause_forms ... ok
+test frozen_compositional_clauses ... ok
+
+failures:
+
+---- locally_bound_ellipsis stdout ----
+
+thread 'locally_bound_ellipsis' (1020058) panicked at crates/quantities/tests/rate_clauses.rs:48:39:
+Isha and Omar together can finish a job in 4 days. Isha alone in 12 days. Omar alone can do the job in?: unsupported English cardinal
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    locally_bound_ellipsis
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+error: test failed, to rerun pass `-p glassmind-quantities --test rate_clauses`

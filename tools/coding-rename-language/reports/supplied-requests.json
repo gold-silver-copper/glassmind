@@ -1,0 +1,14 @@
+[
+  {
+    "id": "train/rb-edits-rename-parse-line/chatty#0",
+    "text": "Hey! In this little log parser, the function `parse_line` really parses a whole log entry, so I'd like it called `parse_entry` instead. Could you rename it everywhere it's used, including the report code, main and the unit tests? Behaviour should stay exactly the same."
+  },
+  {
+    "id": "train/rb-edits-rename-parse-line/hurried#0",
+    "text": "rename parse_line -> parse_entry everywhere pls, all callers + tests too"
+  },
+  {
+    "id": "train/rb-edits-rename-parse-line/terse#0",
+    "text": "Rename `parse_line` to `parse_entry` everywhere (definition, callers, tests)."
+  }
+]

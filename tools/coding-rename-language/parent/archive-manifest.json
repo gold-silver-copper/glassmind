@@ -1,0 +1,258 @@
+{
+  "base_commit": "8e12be3f884720a9ba6065fbec49e274d37589c4",
+  "source": "/home/gsc/.cache/glassmind/continuous-20261010/renameenglish",
+  "files": {
+    "crates/cli/src/coding.rs": {
+      "bytes": 14491,
+      "sha256": "83945cac6fef0f249c3ddcd34fdab405502aa31b096d8a66112b0b67a54d6b40"
+    },
+    "crates/english-rust/src/lib.rs": {
+      "bytes": 75222,
+      "sha256": "a8214a80f8c9f649748c0f339a8d080a82d342adc0c69e70553a56659ac9254d"
+    },
+    "crates/english-rust/src/rename_requests.rs": {
+      "bytes": 17245,
+      "sha256": "7c568fbbc437253bc92e68031c6a029377f40c3a1dc4f6ab04f507f43a455b3a"
+    },
+    "tools/coding-rename-language/HANDOFF.md": {
+      "bytes": 7406,
+      "sha256": "1c989493e577452b56deaab531081571c52db8ebc94269a6249e18a3a3a4cb45"
+    },
+    "tools/coding-rename-language/PLAN.md": {
+      "bytes": 2245,
+      "sha256": "68917ed9b3633a8ebad4a94730aa202679d106b146f3801f2ec39726ae3c5f11"
+    },
+    "tools/coding-rename-language/cases.tsv": {
+      "bytes": 2731,
+      "sha256": "063de451c50ed34134600e2cdb5e25f1401b195179fecc7330a540b9ced14fdb"
+    },
+    "tools/coding-rename-language/legacy.json": {
+      "bytes": 1630,
+      "sha256": "92bd11cfb46ce574c37f5fbf365ed416a2d57dd75e466e9ef3da02e8a096da66"
+    },
+    "tools/coding-rename-language/native.py": {
+      "bytes": 3080,
+      "sha256": "4c321835120a3555a1712f170639434cdb2f9b6248eadddda5bc18da7a573fb7"
+    },
+    "tools/coding-rename-language/reports/authored-fifth.log": {
+      "bytes": 1594,
+      "sha256": "5253f4b23aa79fe0a653bb3f8eb5cc0cd0401043dbe9a34f9461da863831d184"
+    },
+    "tools/coding-rename-language/reports/authored-fourth.log": {
+      "bytes": 1561,
+      "sha256": "2bab5a0f860107d0171abeb0713f31f997443502910a5d4c049b02d9a189c2dd"
+    },
+    "tools/coding-rename-language/reports/authored-initial.log": {
+      "bytes": 15670,
+      "sha256": "c1105903a2fa1e1e614e434b43444db8de08fa2dae570e2d4e7b0bc655c1f6d2"
+    },
+    "tools/coding-rename-language/reports/authored-second.log": {
+      "bytes": 707,
+      "sha256": "4c7b3bf8bb6038b000252ab13f509a274f57ee00d20417eccf44dfe7fede6d75"
+    },
+    "tools/coding-rename-language/reports/authored-sixth.log": {
+      "bytes": 842,
+      "sha256": "a86d2324dd5d7f2f77ba91bed0c18638b3aa0cd5f0ff05b9581b148a20c4008e"
+    },
+    "tools/coding-rename-language/reports/authored-third.log": {
+      "bytes": 1541,
+      "sha256": "6f461fdea9dd7dc1984b27b6a927ae670b7d745ff94f97111edd1c18074d5ad8"
+    },
+    "tools/coding-rename-language/reports/baseline-full.json": {
+      "bytes": 15364,
+      "sha256": "d1a567f13c99814dce929589813eed01b9893c37356b6462d6dd4ce9f9add3b5"
+    },
+    "tools/coding-rename-language/reports/baseline-full.log": {
+      "bytes": 135,
+      "sha256": "ca2ca32d92f671f699cb6eb0ac7bc3642063242d5e4dcbc3b198abecfa87a6c6"
+    },
+    "tools/coding-rename-language/reports/baseline-sample/000.txt": {
+      "bytes": 1646,
+      "sha256": "3530393939a22683907d89585664f9cf1fcee79b85cd4f648d9c32ad32b5310f"
+    },
+    "tools/coding-rename-language/reports/baseline-sample/001.txt": {
+      "bytes": 548,
+      "sha256": "6dada197734200da45025efb2f82a28ef032579fe10545d9258501faa66c7502"
+    },
+    "tools/coding-rename-language/reports/baseline-sample/002.txt": {
+      "bytes": 560,
+      "sha256": "2363553565cc0a4229f935618af2bf92ecb943637544edd3fbaffbc61f2c67b5"
+    },
+    "tools/coding-rename-language/reports/baseline-sample.json": {
+      "bytes": 828,
+      "sha256": "8bf78529239b9f234aa3102b9c2559bd2686c21ed7d4385ce9f8b1eeb55c812b"
+    },
+    "tools/coding-rename-language/reports/baseline-sample.log": {
+      "bytes": 133,
+      "sha256": "dfa9d50b7cb28447cca533a090ba04f3b6627c3b922b3f7c99ef81e69643f32e"
+    },
+    "tools/coding-rename-language/reports/build-final.log": {
+      "bytes": 270,
+      "sha256": "ed06866dbed1682c1332dca3407d0c757dad291db111740f6e5cf91efee52a2a"
+    },
+    "tools/coding-rename-language/reports/build-frozen.log": {
+      "bytes": 270,
+      "sha256": "f2e00eb8c60c5f69ad8b5197b04dd02469144c950a2206c8d4c504257d9a74d8"
+    },
+    "tools/coding-rename-language/reports/build-second.log": {
+      "bytes": 270,
+      "sha256": "c114c2c9e40dc4f467ef831cdb0dee3ef618e4ccfb51c969cda90709e74459f8"
+    },
+    "tools/coding-rename-language/reports/build.log": {
+      "bytes": 270,
+      "sha256": "4d89c67614128f8b221d13add8c1e50e54e6dbb97488a059568c46e83b085702"
+    },
+    "tools/coding-rename-language/reports/candidate-full.log": {
+      "bytes": 135,
+      "sha256": "5d3368944223a3e913a07b60ca2403374adc065ed6b34c66663c6307d03af44e"
+    },
+    "tools/coding-rename-language/reports/candidate-sample.log": {
+      "bytes": 133,
+      "sha256": "05eb52880e8749ef7367fc33eb2b9f849eefc9a81cbdd66a8e35530695b41870"
+    },
+    "tools/coding-rename-language/reports/clippy-initial.log": {
+      "bytes": 3517,
+      "sha256": "21a07f59290ffa3175441651356b9ceb70e59c1f0f345a09cca268598e8eaf46"
+    },
+    "tools/coding-rename-language/reports/comparison.json": {
+      "bytes": 13939,
+      "sha256": "94af4be7a04a5880b5c8353e43657778dd226ad6202d84ef5a4b2bf0d7b2a03f"
+    },
+    "tools/coding-rename-language/reports/edits-regression.json": {
+      "bytes": 3468,
+      "sha256": "354dd82441fdda0b9912fa56522cfc280350a30d763fd4536849f319aca36a39"
+    },
+    "tools/coding-rename-language/reports/edits-regression.log": {
+      "bytes": 3136,
+      "sha256": "c8d58506e3567afcf3da17d85bc0a382d82d1397f1a008fe469da67c53972cbd"
+    },
+    "tools/coding-rename-language/reports/final-clippy.log": {
+      "bytes": 512,
+      "sha256": "7f176240f8fa54c110c1f62c280baa9beff12c5955fd2f51179a5e0257b74cc4"
+    },
+    "tools/coding-rename-language/reports/final-fmt-check.log": {
+      "bytes": 94,
+      "sha256": "b514d207ea7db35e6b002df8610c68f27d309233fb029d3cf1f35c7eed52a36e"
+    },
+    "tools/coding-rename-language/reports/final-full.log": {
+      "bytes": 135,
+      "sha256": "36e3dba93f0dd970a527aa5d5d7e88d099588cc3e8dd91ede3373b803d9f72c7"
+    },
+    "tools/coding-rename-language/reports/final-sample.log": {
+      "bytes": 133,
+      "sha256": "85d2c82aaa858705be9054bbef98654858aa9a3808bb3b46cb04b8498f365878"
+    },
+    "tools/coding-rename-language/reports/final-tests.log": {
+      "bytes": 4946,
+      "sha256": "f513ac86d69840dd23562ac90106f299434f8b04d9580ff9d47d30b5e6b53e33"
+    },
+    "tools/coding-rename-language/reports/fmt.log": {
+      "bytes": 94,
+      "sha256": "e78544d3a5c21ebf611d7caae9bc0b922ae58aa96e892538afdc495d6ed8f37a"
+    },
+    "tools/coding-rename-language/reports/frozen-full.json": {
+      "bytes": 14377,
+      "sha256": "f2ff57befdfb2c0f6df2c9113e6972a5f4feeceaa867642da686f62c4cc34f08"
+    },
+    "tools/coding-rename-language/reports/frozen-full.log": {
+      "bytes": 135,
+      "sha256": "36effc9fc92c0cfedb06e8fb7abf0f58ab6632806e796fdd2242a6bb1a666fb0"
+    },
+    "tools/coding-rename-language/reports/frozen-native.json": {
+      "bytes": 19774,
+      "sha256": "85e4d5a8aa2c1624543067118e764fb1947396ac8f64b844c6e5ef783da707ee"
+    },
+    "tools/coding-rename-language/reports/frozen-native.log": {
+      "bytes": 120,
+      "sha256": "0037a7926e4f28f9c42a8dc7f9665afdd528ff019be7d0ce5e6f3c7324f8718c"
+    },
+    "tools/coding-rename-language/reports/frozen-plan.sha256": {
+      "bytes": 208,
+      "sha256": "98b9e55b90a8171263f562ae9e87683a305358d4fcfe93c50bca4953be9753b0"
+    },
+    "tools/coding-rename-language/reports/frozen-sample/000-do.txt": {
+      "bytes": 1450,
+      "sha256": "77938515b89487bc2dc66f3fb77fc4a84ea0d3728ef49c1cdde0b2c213d0ca98"
+    },
+    "tools/coding-rename-language/reports/frozen-sample/000.txt": {
+      "bytes": 1450,
+      "sha256": "f6743b80ef4db43c4d25b969e93ab9904ab64ae6789e4a8c65a38470a6a55e65"
+    },
+    "tools/coding-rename-language/reports/frozen-sample/001-do.txt": {
+      "bytes": 956,
+      "sha256": "8746d79fea6923f1bfd5837f3266381667c890b2c622714e15661cb8fba019c8"
+    },
+    "tools/coding-rename-language/reports/frozen-sample/001.txt": {
+      "bytes": 956,
+      "sha256": "eb906cc7091379cb22e6831f2d65cb7fedbaa197d6542971920c9d259253e2b6"
+    },
+    "tools/coding-rename-language/reports/frozen-sample/002-do.txt": {
+      "bytes": 965,
+      "sha256": "6577884d3a3af5125baf0f132ff79fe369c37c1de11a49e35c7b59ce68f24f58"
+    },
+    "tools/coding-rename-language/reports/frozen-sample/002.txt": {
+      "bytes": 965,
+      "sha256": "427ca72543259ee1cddb5345ced94ed5e936fce64ed0be29c1af90c5853787e1"
+    },
+    "tools/coding-rename-language/reports/frozen-sample.json": {
+      "bytes": 1743,
+      "sha256": "9aa1da1b73c5b97d2c57520ba0ba452746444bf0421eb2c4b0e54d19860bd986"
+    },
+    "tools/coding-rename-language/reports/frozen-sample.log": {
+      "bytes": 133,
+      "sha256": "a4f58689651ce04161ca7b0f95d85a8b855731508fe5a56d2e009deb439935a6"
+    },
+    "tools/coding-rename-language/reports/initial-tests.log": {
+      "bytes": 7732,
+      "sha256": "f06744b3ea51a59c167ab7a8c1b4105df27a09a370ab4d649e23a0c95701395d"
+    },
+    "tools/coding-rename-language/reports/legacy-initial.log": {
+      "bytes": 1414,
+      "sha256": "b19f787018d384d61dc735c5244bf6bb84bcdb9ba2d2f4e9b656ba4e67cc1041"
+    },
+    "tools/coding-rename-language/reports/native.log": {
+      "bytes": 120,
+      "sha256": "5c6fad763c1921f3a6580334f4db169020735fc1f2e7e3f92dd5025bf5bcb11d"
+    },
+    "tools/coding-rename-language/reports/provenance.json": {
+      "bytes": 1027,
+      "sha256": "c567e7b0d4379ac429a425c8cf6921b2eae8128b2f883212eff4daf69fb4b654"
+    },
+    "tools/coding-rename-language/reports/quoted-probes.log": {
+      "bytes": 1119,
+      "sha256": "ecc80a3c528f16c1331853fe0b30bc1a21011a0beb14d3a749c209a880942e58"
+    },
+    "tools/coding-rename-language/reports/regressions.log": {
+      "bytes": 4946,
+      "sha256": "618fdff3351d9f1bb27fbdf9b3bb61cbc75e5a99103764c0a725802948116f52"
+    },
+    "tools/coding-rename-language/reports/rejected-exact-scope.txt": {
+      "bytes": 1501,
+      "sha256": "f3030491f0af3b0800d563b59948caea7ebe035c86000b8023f466adaeb3ca1b"
+    },
+    "tools/coding-rename-language/reports/supplied-provenance.json": {
+      "bytes": 1757,
+      "sha256": "53add324cdbd032cb4ba3abbf41b28bf2f3b2aa9a1392c44548881611e8ff623"
+    },
+    "tools/coding-rename-language/reports/supplied-requests.json": {
+      "bytes": 658,
+      "sha256": "c14f0efe1d2941b2aeb9c3274d7f8bac3786b5429c7f2f66d84a26ecf05ca232"
+    },
+    "tools/coding-rename-language/reproduce.sh": {
+      "bytes": 1966,
+      "sha256": "557478075db2a88f2c4cc14f9eae8112f247db8bd6e546cf0544cc482d947999"
+    },
+    "tools/coding-rename-language/run.py": {
+      "bytes": 2839,
+      "sha256": "ba389a019d13aa66653e93e9b8a948af8cfe70d08c97bcab98aefcd217f4cedb"
+    },
+    "tools/coding-rename-language/summarize.py": {
+      "bytes": 2308,
+      "sha256": "799c91889c4e5c6036f5cd5fd289910bfb1c38fef35e3d409c26a57ff117b528"
+    },
+    "runtime.patch": {
+      "bytes": 31418,
+      "sha256": "bc38f45733ee0a7198f240aac442e942415291abdfe498d8aed01e276016e379"
+    }
+  }
+}

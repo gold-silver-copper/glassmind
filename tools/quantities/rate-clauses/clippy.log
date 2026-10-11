@@ -1,0 +1,111 @@
+Running as unit: run-p1030508-i97458721.scope; invocation ID: b798b7ec5c5941de8180a911368e2742
+    Checking memchr v2.8.3
+    Checking serde_core v1.0.229
+    Checking aho-corasick v1.1.5
+    Checking regex-syntax v0.8.11
+    Checking regex-automata v0.4.18
+    Checking zmij v1.0.23
+    Checking itoa v1.0.18
+    Checking serde_json v1.0.151
+    Checking serde v1.0.229
+    Checking regex v1.13.1
+    Checking glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/rateclauses/crates/quantities)
+error: indexing may panic
+   --> crates/quantities/src/rate_clauses.rs:128:70
+    |
+128 |         if out.is_empty() || out.len() > 3 || out.windows(2).any(|w| w[0] == w[1]) {
+    |                                                                      ^^^^
+    |
+    = help: consider using `.get(n)` or `.get_mut(n)` instead
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#indexing_slicing
+    = note: requested on the command line with `-D clippy::indexing-slicing`
+
+error: indexing may panic
+   --> crates/quantities/src/rate_clauses.rs:128:78
+    |
+128 |         if out.is_empty() || out.len() > 3 || out.windows(2).any(|w| w[0] == w[1]) {
+    |                                                                              ^^^^
+    |
+    = help: consider using `.get(n)` or `.get_mut(n)` instead
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#indexing_slicing
+
+error: indexing may panic
+   --> crates/quantities/src/rate_clauses.rs:213:29
+    |
+213 |                     .insert(f.agents[0].clone(), rate)
+    |                             ^^^^^^^^^^^
+    |
+    = help: consider using `.get(n)` or `.get_mut(n)` instead
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#indexing_slicing
+
+error: this `if` statement can be collapsed
+   --> crates/quantities/src/rate_clauses.rs:236:13
+    |
+236 | /             if let Some((a, r)) = &group {
+237 | |                 if a != &query.agents || *r != sum {
+238 | |                     return Err("conflicting group rate".into());
+239 | |                 }
+240 | |             }
+    | |_____________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#collapsible_if
+    = note: `-D clippy::collapsible-if` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::collapsible_if)]`
+help: collapse nested if block
+    |
+236 ~             if let Some((a, r)) = &group
+237 ~                 && (a != &query.agents || *r != sum) {
+238 |                     return Err("conflicting group rate".into());
+239 ~                 }
+    |
+
+error: indexing may panic
+   --> crates/quantities/src/rate_clauses.rs:243:28
+    |
+243 |             let unknown = &query.agents[0];
+    |                            ^^^^^^^^^^^^^^^
+    |
+    = help: consider using `.get(n)` or `.get_mut(n)` instead
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#indexing_slicing
+
+error: this `if` statement can be collapsed
+   --> crates/quantities/src/rate_clauses.rs:336:9
+    |
+336 | /         if rest.starts_with("how ") || rest.starts_with("in how ") || rest.starts_with("in what ") {
+337 | |             if let Some((condition_text, offset)) = suffix_condition.take() {
+338 | |                 let clause = format!("if {condition_text}");
+339 | |                 let c = condition
+...   |
+357 | |         }
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#collapsible_if
+help: collapse nested if block
+    |
+336 ~         if (rest.starts_with("how ") || rest.starts_with("in how ") || rest.starts_with("in what ")) {
+337 ~             && let Some((condition_text, offset)) = suffix_condition.take() {
+338 |                 let clause = format!("if {condition_text}");
+...
+355 |                 ));
+356 ~             }
+    |
+
+error: indexing may panic
+   --> crates/quantities/src/rate_clauses.rs:546:54
+    |
+546 |                     .map(|s| model.agents(s).map(|a| a[0].clone()))
+    |                                                      ^^^^
+    |
+    = help: consider using `.get(n)` or `.get_mut(n)` instead
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#indexing_slicing
+
+error: indexing may panic
+   --> crates/quantities/src/rate_clauses.rs:563:39
+    |
+563 |                     seconds: positive(values[0])?.checked_mul(Rational::integer(scale))?,
+    |                                       ^^^^^^^^^
+    |
+    = help: consider using `.get(n)` or `.get_mut(n)` instead
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#indexing_slicing
+
+error: could not compile `glassmind-quantities` (lib) due to 8 previous errors

@@ -1,0 +1,253 @@
+{
+  "binary_sha256": "226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0",
+  "cases": [
+    {
+      "name": "grouped_reexport_callback",
+      "changed": true,
+      "required": true,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 3 places.\n  src/lib.rs:2:16  `parse_num` -> `decode_num`\n  src/lib.rs:3:44  `parse_num` -> `decode_num`\n  src/math.rs:1:8  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 3 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "ade55056fbb912f9d6b0bc357849bfb3a579abff053df25b07eb4b21c9cb8051",
+        "src/math.rs": "18fa9d12a63d53e9532c9f74face8588a34368a7c832eebff4b05ecaa864f805"
+      }
+    },
+    {
+      "name": "aliased_import",
+      "changed": true,
+      "required": true,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 2 places.\n  src/lib.rs:2:11  `parse_num` -> `decode_num`\n  src/math.rs:1:8  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 2 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "73c61a19f288ab11b0eb2b5253c545b11e2613b844d2666a153f22543b067fbb",
+        "src/math.rs": "8909d4bc2ce2da23c394dc0296cbcf0b9cbe0f1fa8d6518c16bd96224820fdba"
+      }
+    },
+    {
+      "name": "aliased_reexport",
+      "changed": true,
+      "required": true,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 2 places.\n  src/lib.rs:2:15  `parse_num` -> `decode_num`\n  src/math.rs:1:8  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 2 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "6462499339ad324d76efa3630086649a0c50ad16e59655d26ab9c8b328a7e04e",
+        "src/math.rs": "8909d4bc2ce2da23c394dc0296cbcf0b9cbe0f1fa8d6518c16bd96224820fdba"
+      }
+    },
+    {
+      "name": "qualified_nested",
+      "changed": true,
+      "required": true,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 2 places.\n  src/lib.rs:2:35  `parse_num` -> `decode_num`\n  src/math.rs:1:8  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 2 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "2a28933ec136f92d96bec086a671f01ca11fd7f63af3aa1f66172e0fbbd00bd8",
+        "src/math.rs": "8909d4bc2ce2da23c394dc0296cbcf0b9cbe0f1fa8d6518c16bd96224820fdba"
+      }
+    },
+    {
+      "name": "function_pointer",
+      "changed": true,
+      "required": true,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 2 places.\n  src/lib.rs:1:8  `parse_num` -> `decode_num`\n  src/lib.rs:2:54  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 2 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "efbe9303743fddf827d4c24c0baa583049c379a90ec205c3dd172c42e49233c7"
+      }
+    },
+    {
+      "name": "lib_bin_identity",
+      "changed": true,
+      "required": true,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 3 places.\n  src/lib.rs:1:8  `parse_num` -> `decode_num`\n  src/lib.rs:2:23  `parse_num` -> `decode_num`\n  src/main.rs:1:22  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 3 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "f39070514fd7355e0db3285ee48bc7ab41f22f543794b52a78be1bafb613d451",
+        "src/main.rs": "9258c946fe20fffcb619b566f357eab852cb07d61e0740b88fe3e9d7a0b40429"
+      }
+    },
+    {
+      "name": "test_glob",
+      "changed": false,
+      "required": true,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "c81c0f0089289999b047f628a743c11cafa6f5d3db257fdbbbaaba0e896e38e2"
+      }
+    },
+    {
+      "name": "strings_comments_crlf",
+      "changed": true,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 2 places.\n  src/lib.rs:2:8  `parse_num` -> `decode_num`\n  src/lib.rs:4:23  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 2 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "c17198539003234e4cc7dc675d8bdb06a6cf0bf7fa05f0d459d5a7e9c642b11f"
+      }
+    },
+    {
+      "name": "destination_collision",
+      "changed": false,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "c7946ff7d8b4511b78c7329b21478671591a2ff564244de23c370768f3b2ed19"
+      }
+    },
+    {
+      "name": "custom_macro",
+      "changed": false,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "5bd1219a9d5c30d2c295360b843a152b2bdac2b09a20da58a53dd2d20f51a642"
+      }
+    },
+    {
+      "name": "shadowed_assert_macro",
+      "changed": false,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "e89a2dfa88b324377e0069df3b08b83acab96d86033f62c97f886353048d4ae7"
+      }
+    },
+    {
+      "name": "parameter_homonym",
+      "changed": false,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "ca8e7a3757566a870d0b5c4a9ac2bdb4b43e21e6a150aeccc2650332e775ecfc"
+      }
+    },
+    {
+      "name": "closure_homonym",
+      "changed": false,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "4702c90d8b964de916bf1ff445125e956bbd9eb8573109bc715483567cb96e0a"
+      }
+    },
+    {
+      "name": "field_homonym",
+      "changed": false,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "27248514d6261929ff42dcfd2b96c2a35fea2d8a9fc71a6e93290c3ef48b3791"
+      }
+    },
+    {
+      "name": "duplicate_functions",
+      "changed": false,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I can't tell which one you mean: `parse_num` and `parse_num`.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "2315b26f5a69c580ea0165a3f32b5691a94f5c7198901b40193bbb0cf4801ce5"
+      }
+    },
+    {
+      "name": "unicode_identifier_context",
+      "changed": true,
+      "required": false,
+      "exact": true,
+      "native_before": 0,
+      "native_after": 0,
+      "binary_output_preserved": true,
+      "solver_exit": 0,
+      "reply": "I'd rename the `parse_num` function to `decode_num` in 2 places.\n  src/lib.rs:1:8  `parse_num` -> `decode_num`\n  src/lib.rs:2:32  `parse_num` -> `decode_num`\n  (say yes to rename `parse_num`)\nI made 2 changes. No problems with the build.\n",
+      "after_hashes": {
+        "Cargo.toml": "fcdbe83cc6a196c062d2ae51248b552c7bacc51bd307a5f00c335bb44bfa537e",
+        "src/lib.rs": "595dcd77bed43ecabd16a37df5dac8baa0feaa955fb6535a9e75e582800c0503"
+      }
+    }
+  ],
+  "edits": 8,
+  "unsafe_edits": 0,
+  "required_pass": 6
+}
