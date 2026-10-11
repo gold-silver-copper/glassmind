@@ -1,67 +1,52 @@
 # Continuous development checkpoint
 
-Active goal: follow prompts/grow-yolo.md until stopped. The user explicitly
-replaced the previous goal with this direction. Prioritize shared language/task
-state, multi-step verified coding and conversational continuity. Root: harness.
+Active goal: follow prompts/grow-yolo.md until stopped. Prioritize shared language,
+verified multi-step coding and persistent conversational context. Root: harness.
+No model workers or API calls. Required workers remain Astra fast/ChatGPT login.
 
-Current implementation: crates/mind/src/task.rs provides a domain-independent
-Task<Action> state and typed evidence; crates/cli/src/tasks.rs connects it to
-`do --session FILE [--steps 1|2]`. Existing `do` without a session is unchanged.
-Tasks persist proposals/results, resume after restart, rebind renamed targets,
-accept existing corrections, undo the last verified edit, and invalidate stale
-context. Session/output files stay outside the repository; snapshots are bounded.
-No model workers or API calls. User's required workers remain Astra fast/ChatGPT.
+Published: PR56 merged 2026-10-11T20:53:18Z as
+ a662fdaa8d0ccff36fc4f5f4d54a76c6102efd59, reviewed head
+ a78351627617cc0e3b9fae2e8990701cd4cfa043; CI38173901142 SUCCESS.
+That delivery includes persistent tasks and the previously validated sequence
+composition implementation. Full coding DEV:223pass542refused0fail (765total).
+Task additions preserved all outcomes. Earlier two sequence gains are supplied
+TRAIN tasks, not unseen generalization. Evidence tools/coding-tasks/validation.json.
 
-Run artifacts: /home/gsc/.cache/glassmind/yolo-tasks.
-All39CLItests pass, including15task-specific cases. The15cases were repeated
-once after fixing an intermittent lock-release issue; both runs pass. Mind
-library and doc-test targets build (no separate mind tests). Session23188 COMPLETE0,
-log lock-fix.log. Initial tests/diagnosis logs retained in RUN.
-Two real bugs fixed: native repair diagnostics contain changing process IDs, so
-revalidation compares exact patches/checks and requires no unresolved problems;
-OS session locks now explicitly unlock on drop, avoiding inherited-descriptor
-retention during concurrent subprocess creation. No source/edit check weakened.
+New candidate: ordered coding plans, up to4operations separated by then/semicolon,
+1..8semanticstages/invocation(default4). Complete preflight, typed unresolved
+interpretations, per-step fresh reference resolution and verification, persisted
+continuation, failure stops tail, last-action undo cancels plan. Source changes
+and interrupted execution invalidate the plan. Function implementation/addfields
+remain outside session mode; no conditional branches or automatic revision yet.
 
-Required workspacecheck1308 COMPLETE0: fmt/alltargetclippy/release/strict4smoke.
-RealCLI smoke passed7separate processes (tools/coding-tasks/smoke.py).
-Candidate fbd4d0615b80e8faa09c707b1779399ce67562f2, executableSHA256
- a41506e76918e98f7c30c4b7baac1a275c9fd22adc571d7a1b8c0b52b6dc3abb.
-Pinned RUN/candidate; all logs and cli-smoke/report.json retained.
+Candidate worktree /home/gsc/.cache/glassmind/yolo-task-plans,
+branchcontinuous/task-plans e297c2ecf5a2ba318d09a30dd40014ee22a6d10c.
+Cherry-picked into root. RUN=/home/gsc/.cache/glassmind/yolo-plans.
+Pinned RUN/candidate SHA256
+5d86471adc8b50e8f2d196377b67ebd350e1e70d76eb01f7bcab4b5cbe8f9ac6.
+Candidate metadata RUN/candidate.json. Runtime remains exactly that candidate.
 
-Full765DEV60981 COMPLETE0. All765per-request outcomes identical to the223pass
-sequencebaseline:223passes542refusals0failures. Evidence tools/coding-tasks/validation.json.
-Root runtime unchanged fromfbd4d06. NEXT publish reviewed root batch and mergeonly
-exactgreenhead; no publication claim until GitHub confirms it.
+Validation:50CLItests pass (26tasktests,11new plan cases), session21034 COMPLETE0,
+RUN/tests-v4.log. Required fmt/alltargetclippy/releaseworkspace/4of4fixture checks
+session25194 COMPLETE0, RUN/check-final.log. Real CLI smoke13separate processes
+PASS, RUN/cli-smoke/report.json andturns.json; script tools/coding-tasks/smoke.py.
+Failed tests/diagnosis retained. Fixed grammatical idle words incorrectly rejected
+as unconsumed input, unknown-name questions bypassing plan preflight, and cancelled
+plans falling through to a ready single task. Mixed repair->rename->test and undo,
+restart budgets, invalid tails, stale sources and native rollback all tested.
 
-Next development is isolated in /home/gsc/.cache/glassmind/yolo-task-plans,
-branchcontinuous/task-plans from7b4feee. Bounded ordered clauses, complete preflight,
-per-step native verification and persistent continuation are implemented but not
-validated yet. PrivateRUN=/home/gsc/.cache/glassmind/yolo-plans, target andtmpinside.
-Initialfmtfailed on misplacedmodule doccomment; corrected beforebuild-v2.log.
-Build-v2 is the only active newdevelopment job; next nativeplan tests. No workers.
+Owned live job: full765 coding DEV, session55445, launched with pinned candidate
+through tools/rustbench-dev.sh. RUN/full765/results.jsonl andrun.log. Confirm the
+session/process state before waiting or restarting. Baseline is
+/home/gsc/.cache/glassmind/yolo-tasks/full765/results.jsonl.
+NEXT: await fullDEV, compare all(task,style)outcomes, record exact results, review
+rootdiff, publish and merge only exact green CI head. No newplan publication yet.
 
-Further work required by the goal: a bounded plan with multiple meaningful
-operations and result-driven revision; explicit choices among unresolved targets;
-more shared constraints/interpretations across commands. This first slice is a
-working foundation, not completion of the architecture or the ongoing goal.
+After this milestone, extend actual task execution toward explicit unresolved
+choices and bounded result-driven revision. Ordered execution is a working slice,
+not the completion of the requested architecture or continuing goal.
 
-Previous coding batch is locally integrated in c37fd15, not yet published:
-16 two-integer-sequence compositions,22newnative +89oldnative checks and59Rust
-worldtests pass. Full765DEV completed223passes542refusals0failures, all221oldpasses
-retained; gains merge-sorted-unique hurried/terse also suppliedTRAIN. Candidate
-SHA256 dd6a823946637dd5daacba2f1033a1c3e1fc4421b147dabc8dacf8b16aef92bf.
-Baseline for next fullDEV:
-/home/gsc/.cache/glassmind/continuous-20261010/coordinator/sequence-composition/full765/results.jsonl.
-Evidence: tools/coding-sequence-composition/PARENT.md and full765/comparison.json.
-All old sequence jobs terminal. Do not rerun the original experiment.
-
-Last remote delivery: PR55 merged e13ccbc718f23d323ad9f0373531e9a51e228d59;
-reviewed c6d03d58726cf761a018205da2a791a64c611165, CI38170842839 successful.
-No open PRs at activation. Facts/quantity experiments remain rejected; do not
-promote their models or repeat threshold tuning. Evidence is in
- tools/facts/mention-learning/PARENT.md,
- tools/facts/full-claims-qa/PARENT.md,
- tools/quantities/complete-graphs/PROGRESS.md.
-Known completed-worker usage203481375tokens,cachedinputonce,parent/interrupted
-excluded. All previous teachers terminal and credential links removed.
-Historical checkpoint details remain in git history before the YOLO goal.
+All earlier facts/quantity experiments remain rejected; do not promote their
+models or repeat old tuning. Historical evidence remains in git and the previous
+checkpoint. Known completed-worker usage203481375tokens, cachedinputonce,
+parent/interrupted excluded. New goal has launched no workers or teacher calls.
