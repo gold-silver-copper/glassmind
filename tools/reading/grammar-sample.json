@@ -1,0 +1,83 @@
+{
+  "groups": {
+    "adjunct_island": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          12,
+          8,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    }
+  },
+  "policy": "raw UTF-8; BOS context only; EOS scored; pair total bits; document bits / text bytes",
+  "total": {
+    "bytes": 0,
+    "documents": 0,
+    "documents_equal_bits": 0,
+    "documents_higher_bits": 0,
+    "documents_lower_bits": 0,
+    "pairs": 20,
+    "sixgram": {
+      "bad": 8,
+      "bits": 0.0,
+      "bits_per_byte": null,
+      "good": 12,
+      "ties": 0
+    },
+    "transitions": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        12,
+        8,
+        0
+      ]
+    ],
+    "unigram": {
+      "bad": 0,
+      "bits": 0.0,
+      "bits_per_byte": null,
+      "good": 0,
+      "ties": 20
+    }
+  }
+}

@@ -1,0 +1,2657 @@
+{
+  "groups": {
+    "adjunct_island": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          12,
+          8,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "anaphor_gender_agreement": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 6,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 14,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          1,
+          6,
+          0
+        ],
+        [
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 13,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 7,
+        "ties": 0
+      }
+    },
+    "anaphor_number_agreement": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 7,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 13,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          8,
+          2,
+          0
+        ],
+        [
+          5,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      }
+    },
+    "animate_subject_passive": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          4,
+          3,
+          0
+        ],
+        [
+          5,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 13,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 7,
+        "ties": 0
+      }
+    },
+    "animate_subject_trans": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 5,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 15,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          15,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 3,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 17,
+        "ties": 0
+      }
+    },
+    "causative": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          7,
+          4,
+          0
+        ],
+        [
+          5,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      }
+    },
+    "complex_NP_island": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          9,
+          11,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "coordinate_structure_constraint_complex_left_branch": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 19,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 1,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          19,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "coordinate_structure_constraint_object_extraction": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 13,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 7,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          3,
+          9,
+          0
+        ],
+        [
+          3,
+          2,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 3,
+        "ties": 5
+      }
+    },
+    "determiner_noun_agreement_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 13,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 7,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          7,
+          1,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      }
+    },
+    "determiner_noun_agreement_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          9,
+          2,
+          0
+        ],
+        [
+          1,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      }
+    },
+    "determiner_noun_agreement_irregular_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          4,
+          9,
+          0
+        ],
+        [
+          6,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 7,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 13,
+        "ties": 0
+      }
+    },
+    "determiner_noun_agreement_irregular_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      }
+    },
+    "determiner_noun_agreement_with_adj_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          11,
+          0,
+          0
+        ],
+        [
+          1,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      }
+    },
+    "determiner_noun_agreement_with_adj_irregular_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          2,
+          6,
+          0
+        ],
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      }
+    },
+    "determiner_noun_agreement_with_adj_irregular_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          11,
+          0,
+          0
+        ],
+        [
+          1,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      }
+    },
+    "determiner_noun_agreement_with_adjective_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          11,
+          1,
+          0
+        ],
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      }
+    },
+    "distractor_agreement_relational_noun": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 14,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 6,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          5,
+          5,
+          0
+        ],
+        [
+          1,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      }
+    },
+    "distractor_agreement_relative_clause": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          5,
+          5,
+          0
+        ],
+        [
+          3,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      }
+    },
+    "drop_argument": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          10,
+          4,
+          0
+        ],
+        [
+          2,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 6,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 14,
+        "ties": 0
+      }
+    },
+    "ellipsis_n_bar_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 13,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 7,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          13,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "ellipsis_n_bar_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 17,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 3,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      }
+    },
+    "existential_there_object_raising": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 3,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 17,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          9,
+          0,
+          0
+        ],
+        [
+          8,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      }
+    },
+    "existential_there_quantifiers_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 4,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 16,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          14,
+          2,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 4,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 16,
+        "ties": 0
+      }
+    },
+    "existential_there_quantifiers_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 18,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 2,
+        "ties": 0
+      }
+    },
+    "existential_there_subject_raising": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          6,
+          4,
+          0
+        ],
+        [
+          4,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      }
+    },
+    "expletive_it_object_raising": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          6,
+          0,
+          0
+        ],
+        [
+          5,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 14,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 6,
+        "ties": 0
+      }
+    },
+    "inchoative": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          7,
+          6,
+          0
+        ],
+        [
+          1,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 7,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 13,
+        "ties": 0
+      }
+    },
+    "intransitive": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          6,
+          5,
+          0
+        ],
+        [
+          2,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      }
+    },
+    "irregular_past_participle_adjectives": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 5,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 15,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          15,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 20,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "irregular_past_participle_verbs": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 5,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 15,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          15,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      }
+    },
+    "irregular_plural_subject_verb_agreement_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          5,
+          1,
+          0
+        ],
+        [
+          7,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 14,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 6,
+        "ties": 0
+      }
+    },
+    "irregular_plural_subject_verb_agreement_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 15,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 5,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          3,
+          10,
+          0
+        ],
+        [
+          2,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 7,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 13,
+        "ties": 0
+      }
+    },
+    "left_branch_island_echo_question": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 6,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 14,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          13,
+          6,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 1,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 19,
+        "ties": 0
+      }
+    },
+    "left_branch_island_simple_question": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 14,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 6,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          14,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "matrix_question_npi_licensor_present": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 19,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 1,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 18,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 2,
+        "ties": 0
+      }
+    },
+    "npi_present_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          10,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 17,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 3,
+        "ties": 0
+      }
+    },
+    "npi_present_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          5,
+          0,
+          0
+        ],
+        [
+          5,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 15,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 5,
+        "ties": 0
+      }
+    },
+    "only_npi_licensor_present": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 15,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 5,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          5,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      }
+    },
+    "only_npi_scope": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 7,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 13,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          4,
+          1,
+          0
+        ],
+        [
+          9,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 15,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 5,
+        "ties": 0
+      }
+    },
+    "passive_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 5,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 15,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          10,
+          2,
+          0
+        ],
+        [
+          5,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      }
+    },
+    "passive_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          7,
+          3,
+          0
+        ],
+        [
+          4,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      }
+    },
+    "principle_A_c_command": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 14,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 6,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          5,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      }
+    },
+    "principle_A_case_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      }
+    },
+    "principle_A_case_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 13,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 7,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          13,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 20,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "principle_A_domain_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      }
+    },
+    "principle_A_domain_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 7,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 13,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          6,
+          5,
+          0
+        ],
+        [
+          7,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      }
+    },
+    "principle_A_domain_3": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          11,
+          7,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 2,
+        "ties": 18
+      }
+    },
+    "principle_A_reconstruction": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 16,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 4,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          16,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "regular_plural_subject_verb_agreement_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          8,
+          4,
+          0
+        ],
+        [
+          1,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      }
+    },
+    "regular_plural_subject_verb_agreement_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          6,
+          3,
+          0
+        ],
+        [
+          5,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      }
+    },
+    "sentential_negation_npi_licensor_present": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      }
+    },
+    "sentential_negation_npi_scope": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 13,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 7,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          13,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "sentential_subject_island": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          12,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 20
+      }
+    },
+    "superlative_quantifiers_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 18,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 2,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          18,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 20,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 0
+      }
+    },
+    "superlative_quantifiers_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          8,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 18,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 2,
+        "ties": 0
+      }
+    },
+    "tough_vs_raising_1": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          4,
+          0,
+          0
+        ],
+        [
+          5,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 16,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 4,
+        "ties": 0
+      }
+    },
+    "tough_vs_raising_2": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          8,
+          5,
+          0
+        ],
+        [
+          4,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 7,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 13,
+        "ties": 0
+      }
+    },
+    "transitive": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          9,
+          3,
+          0
+        ],
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 8,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 12,
+        "ties": 0
+      }
+    },
+    "wh_island": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 3,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 17,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          17,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      }
+    },
+    "wh_questions_object_gap": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          7,
+          8,
+          0
+        ],
+        [
+          3,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 5,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 15,
+        "ties": 0
+      }
+    },
+    "wh_questions_subject_gap": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 2,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 18,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          3,
+          1,
+          0
+        ],
+        [
+          15,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 16,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 4,
+        "ties": 0
+      }
+    },
+    "wh_questions_subject_gap_long_distance": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 4,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 16,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          5,
+          4,
+          0
+        ],
+        [
+          11,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 11,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 9,
+        "ties": 0
+      }
+    },
+    "wh_vs_that_no_gap": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 17,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 3,
+        "ties": 0
+      }
+    },
+    "wh_vs_that_no_gap_long_distance": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 0,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 20,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 12,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 8,
+        "ties": 0
+      }
+    },
+    "wh_vs_that_with_gap": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 19,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 1,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          1,
+          9,
+          0
+        ],
+        [
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 10,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 10,
+        "ties": 0
+      }
+    },
+    "wh_vs_that_with_gap_long_distance": {
+      "bytes": 0,
+      "documents": 0,
+      "documents_equal_bits": 0,
+      "documents_higher_bits": 0,
+      "documents_lower_bits": 0,
+      "pairs": 20,
+      "sixgram": {
+        "bad": 20,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 0,
+        "ties": 0
+      },
+      "transitions": [
+        [
+          0,
+          11,
+          0
+        ],
+        [
+          0,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "unigram": {
+        "bad": 9,
+        "bits": 0.0,
+        "bits_per_byte": null,
+        "good": 11,
+        "ties": 0
+      }
+    }
+  },
+  "policy": "raw UTF-8; BOS context only; EOS scored; pair total bits; document bits / text bytes",
+  "total": {
+    "bytes": 0,
+    "documents": 0,
+    "documents_equal_bits": 0,
+    "documents_higher_bits": 0,
+    "documents_lower_bits": 0,
+    "pairs": 1340,
+    "sixgram": {
+      "bad": 633,
+      "bits": 0.0,
+      "bits_per_byte": null,
+      "good": 707,
+      "ties": 0
+    },
+    "transitions": [
+      [
+        393,
+        185,
+        0
+      ],
+      [
+        246,
+        333,
+        0
+      ],
+      [
+        68,
+        115,
+        0
+      ]
+    ],
+    "unigram": {
+      "bad": 579,
+      "bits": 0.0,
+      "bits_per_byte": null,
+      "good": 578,
+      "ties": 183
+    }
+  }
+}
