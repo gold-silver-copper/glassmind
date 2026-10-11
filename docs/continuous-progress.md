@@ -186,10 +186,14 @@ claimed fromlocalfixtures. Keepfrozenbinary; no restarton observationtimeout.
 Owns checks.rs/repairparts oflib.rs/slips.rs andnewhelper only, notrename/index/CLI.
 Afterthree renamebatches withnoactualdevcoveragegain, audit compilerJSON fromsix
 permittedbrokenworkspaces: derive-debug,copy-struct,collect-needs-type,
-int-float-divide,private-fn,match-missing-variant. No hidden/tests/solutions.
+int-float-divide,private-fn,match-missing-variant. No hidden-test/solution content.
 Hypothesislead nestedcompilerdiagnostics/coherentalternatives or typedtraitrepair;
 mustpreregister afteraudit, no placeholders/erasedassertions/fakedbuildsuccess.
 18promptsgiven, baseline0bff6a1binaryrepairsidenticaltobase; full765 parentgate.
+Latestworkerfinding: fixedsample0/3→1/3, sensorworkspace builds andpasses2
+independentfunctionalchecks;19worldtests/focusedclippy pass. Workeranchoring
+newedit tofulldeclaration againststaleproposals; finalreplay/handoffpending.
+Do not assumeacceptance orintegrateongoingworkerfiles.
 Newreports docs/coding-diagnostics-repairs.md; artifacts ownrunTMPDIR/target.
 
 **Active worker: factchat**, launcherPID2100023, scope
