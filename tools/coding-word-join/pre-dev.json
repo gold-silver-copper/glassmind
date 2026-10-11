@@ -1,0 +1,59 @@
+{
+  "candidate": {
+    "binary": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/word-join/candidate",
+    "sha256": "b04a929a56f4fff3e1e748477856311a2098a5e95044b04bb1a5662fe3d99a78",
+    "bytes": 107423976,
+    "runtime_commit": "7282d2e",
+    "head": "5e4924ac8b50c57863a60d48db055f7efdd7c9c8",
+    "sources": {
+      "crates/world-rust/src/implementation.rs": "283355b46d1732009fb9536cad290efca347424bd7fa040c5513b4a74f621674",
+      "Cargo.lock": "a90784d62bb9d7ff5a48af02ae766fca3ccab7700ec5ddd76e32feb16fee5bd8",
+      "tools/rustbench-dev.sh": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+    }
+  },
+  "unchanged_old_native_sources": 20,
+  "world_tests": 59,
+  "new_native": 10,
+  "old_native": 66,
+  "train_total": 60,
+  "train_accepted": 5,
+  "all_pre_dev_gates_passed": true,
+  "evidence": {
+    "native/report.json": {
+      "bytes": 178,
+      "sha256": "16e8a48ffedfb5cde95529241cac17adbf0c417ecaa6a15e2663dea24501bfdc"
+    },
+    "old-native/report.json": {
+      "bytes": 179,
+      "sha256": "76bbfcee8d7ff3ba5951f8ea1def52963d17071f50acb16da9644d0d975d55f3"
+    },
+    "independent/report.json": {
+      "bytes": 15390,
+      "sha256": "f47c98b79177c622e09cc6aa1ceab882d219452408ccc7f320b6f0d81a968ab9"
+    },
+    "unset-target/report.json": {
+      "bytes": 15390,
+      "sha256": "f47c98b79177c622e09cc6aa1ceab882d219452408ccc7f320b6f0d81a968ab9"
+    },
+    "extra/report.json": {
+      "bytes": 4938,
+      "sha256": "811ac5fb3489e294c0e4b24c692a01f97b9cbad56db420c75bf013e80d95e37b"
+    },
+    "train-comparison.json": {
+      "bytes": 496,
+      "sha256": "8a6fd8896cd7aac7f36966bfb0cd6fc8d9997235a3f30be214211de5955fb808"
+    },
+    "train-full-verification/results.json": {
+      "bytes": 1833,
+      "sha256": "64b213ad64f9fd54a9023c364129c06d909de673cbae33d26ed35f240cb4c290"
+    },
+    "workspace.log": {
+      "bytes": 3364,
+      "sha256": "d2ddc93b77e063628147ff1424551fc7d4071f82a5d96fe4e2bee2f6e34e9679"
+    },
+    "build.log": {
+      "bytes": 8680,
+      "sha256": "008e4fcf3e6284e6ab704141a456280ae974e85af4faf3bcf22620cbae546458"
+    }
+  }
+}
