@@ -44,7 +44,7 @@ fetch ledger and projection-resources.json passed. Run RUN/prepare-native.py RUN
 WORK/coordinator/disk-facts/target/release/glassmind-facts in a bounded scope; it
 pins source manifest and copied candidate. Then invoke RUN/supervise.py RUN native
 21600 followed by native-invocation.json's command, within8GiB/no swap,
-setsid --wait timeout --kill-after=10s21610s, RUN/tmp forTMPDIR/SQLITE_TMPDIR.
+setsid --wait timeout --kill-after=10s 21610s, RUN/tmp forTMPDIR/SQLITE_TMPDIR.
 After nativepasses, makeoutputreadonly and run independentaudit.py thenwitnesses.py
 under3600s/8GiB/supervision. Full source accounting and raw samples must pass before
 integration or publication. Preserve queryVMlimits and report largeset budgeterrors
