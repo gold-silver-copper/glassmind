@@ -143,6 +143,9 @@ preserving source provenance and statement witnesses; see the
 86-file release stores362.3million distinct edges with source witnesses.
 [Storage and query validation](tools/facts/full-claims/PARENT.md) passed; this does
 not promote the snapshot as the default QA graph.
+The [separate calibration gate](tools/facts/full-claims-qa/PARENT.md) reached
+554/1,949 strict correct answers but introduced 29 newly wrong cases, so promotion
+was rejected and DEV was not run.
 Use `Check fact: Was SUBJECT born in OBJECT?` to [verify an explicit relationship](docs/fact-verification.md)
 against the loaded records. Replies distinguish supported, unknown and refused,
 with an exact edge witness; an absent edge never becomes a negative factual claim.
@@ -170,6 +173,7 @@ still refuse. [Determined answers and limits](docs/determined-quantities.md).
 
 A training-label source-reference pilot passed at 29/32 examples, but its separate
 replication reached 95/128 against a frozen minimum of 96 and was rejected.
+A separate complete-graph pilot also missed its gate at 22/32 versus 24.
 [Annotation evidence and representation limits](docs/quantity-source-references.md)
 are separate from quantity answering scores.
 

@@ -1,0 +1,371 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "rows"
+  ],
+  "properties": {
+    "schema": {
+      "type": "integer",
+      "const": 2
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/row"
+      },
+      "minItems": 32,
+      "maxItems": 32
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Cross-field identity, exact rational arithmetic, citations, byte lengths, coreference equality and graph reachability are enforced by validate.py; semantic approval requires review.",
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "start",
+        "end",
+        "quote"
+      ],
+      "properties": {
+        "field": {
+          "type": "string",
+          "enum": [
+            "question",
+            "answer"
+          ]
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "questionEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field",
+        "start",
+        "end",
+        "quote"
+      ],
+      "properties": {
+        "field": {
+          "const": "question"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "index"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "quantity",
+            "step",
+            "constant"
+          ]
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 19
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "quantity"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "index": {
+                "maximum": 15
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "step"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "index": {
+                "maximum": 5
+              }
+            }
+          }
+        }
+      ]
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mentions",
+        "meaning",
+        "unit",
+        "coreference",
+        "evidence"
+      ],
+      "properties": {
+        "mentions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 15
+          },
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true
+        },
+        "meaning": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "UTF-8 byte limit is additionally enforced by validate.py."
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "UTF-8 byte limit is additionally enforced by validate.py."
+        },
+        "coreference": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000,
+          "description": "UTF-8 byte limit is additionally enforced by validate.py."
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/questionEvidence"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        }
+      }
+    },
+    "operand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "role",
+        "evidence"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "UTF-8 byte limit is additionally enforced by validate.py."
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/questionEvidence"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        }
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "left",
+        "right",
+        "meaning",
+        "unit",
+        "value",
+        "evidence"
+      ],
+      "properties": {
+        "op": {
+          "type": "string",
+          "enum": [
+            "add",
+            "subtract",
+            "multiply",
+            "divide"
+          ]
+        },
+        "left": {
+          "$ref": "#/$defs/operand"
+        },
+        "right": {
+          "$ref": "#/$defs/operand"
+        },
+        "meaning": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "UTF-8 byte limit is additionally enforced by validate.py."
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "UTF-8 byte limit is additionally enforced by validate.py."
+        },
+        "value": {
+          "type": "string",
+          "maxLength": 128,
+          "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]+)?|\\.[0-9]+)(?:/[0-9]+)?$"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/questionEvidence"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        }
+      }
+    },
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "reason",
+        "evidence",
+        "rationale_issues",
+        "quantities",
+        "steps"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "resolved",
+            "ambiguous",
+            "unsupported",
+            "label_error"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000,
+          "description": "UTF-8 byte limit is additionally enforced by validate.py."
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "rationale_issues": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "description": "UTF-8 byte limit is additionally enforced by validate.py."
+          },
+          "minItems": 0,
+          "maxItems": 8
+        },
+        "quantities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/quantity"
+          },
+          "minItems": 0,
+          "maxItems": 16
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/step"
+          },
+          "minItems": 0,
+          "maxItems": 6
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "resolved"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "steps": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "steps": {
+                "maxItems": 0
+              },
+              "quantities": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

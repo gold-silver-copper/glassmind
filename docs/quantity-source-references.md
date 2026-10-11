@@ -1,13 +1,14 @@
 # Source references for quantity training labels
 
 Explicit semantic source references resolved useful GSM8K training labels, but a
-larger replication missed its frozen coverage gate. Neither experiment changes
+larger replication missed its frozen coverage gate. None of these experiments changes
 quantity inference, production behavior, or published answer scores.
 
 | Experiment | Selected TRAIN-FIT examples | Parent-confirmed labels | Frozen minimum | Decision |
 | --- | ---: | ---: | ---: | --- |
 | Initial pilot | 32 | 29 | 24 | Pass for replication only |
 | Separate replication | 128 | 95 | 96 | Reject |
+| Complete graph pilot | 32 | 22 | 24 | Reject |
 
 The original value-only converter remains rejected at 354/7473 against its unchanged
 1,000-program minimum. These new experiments do not retroactively repair that result.
@@ -54,10 +55,28 @@ For example, repeated mentions can denote the same budget while the format insis
 on one occurrence; a valid intermediate calculation can appear in prose but be
 absent from calculator annotations. Lowering the minimum would not fix either gap.
 
-The next representation study must be frozen separately before further selection.
-Complete question-grounded graphs and justified coreferential quantity references
-are candidate changes. No training continuation is approved from this rejected
-replication, and native execution alone will remain insufficient semantic evidence.
+A separately frozen complete-graph pilot selected the next 32 unique FIT groups,
+allowing complete question-grounded calculations and justified coreferential quantity
+references. Native limits stayed at 16 numeric occurrences, six binary operations
+and the existing constants. It confirmed 22/32 graphs, below the unchanged minimum
+of 24, and is also rejected. There were eight ambiguous and two unsupported rows.
+Many exclusions concern conservative readings of ellipsis, frequency or cost scope;
+they do not establish ten wrong reference answers.
+
+All 51 new protocol contracts passed. Root reviewed 84 quantity groups, 84 operations
+and 168 operand roles, finding zero contradictions in accepted graphs. Every one of
+84 native intermediate calculations matched. All eight independently frozen parent
+cases and 17 original/counterfactual native checks agreed. One accepted group joined
+two mentions of the same twelve-month savings period. Descriptive units and matching
+arithmetic remain review evidence, not automatic semantic proof.
+
+The single additional Astra fast/ChatGPT teacher completed in 352.916 seconds within
+all caps. Its 14 original files were archived and verified, and the owned login link
+removed. It added 287,489 counted tokens (272,802 input including 211,328 cached,
+plus 14,687 output), bringing the known completed-worker total to 203,481,375.
+[Complete-graph evidence](../tools/quantities/complete-graphs/PROGRESS.md) preserves
+all decisions and hashes. No expansion or fitting follows this rejected policy;
+future quantity work needs a materially different supervision or learning hypothesis.
 
 The [pilot report](../tools/quantities/span-references/PROGRESS.md),
 [replication report](../tools/quantities/span-expansion/PROGRESS.md),
