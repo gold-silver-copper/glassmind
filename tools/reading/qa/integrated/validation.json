@@ -1,0 +1,99 @@
+{
+  "source_commit": "2a968eccb073e55aa86561e92cb10796cd338ebc",
+  "main_binary": {
+    "path": "/home/gsc/code/glassmind/target/release/glassmind",
+    "bytes": 72713192,
+    "sha256": "8659839583857656c1fdf2d0f22e4fd57de245db84778f9ab5b4d754de62af41"
+  },
+  "reading_binary": {
+    "path": "/home/gsc/code/glassmind/target/release/reading-qa",
+    "bytes": 11343320,
+    "sha256": "6763ae097f8163e575e040f37250743b3d3e53500460bef86309ee8475bc3a3b"
+  },
+  "model": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/readingqa-check/artifacts/model.json",
+    "bytes": 873881,
+    "sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5"
+  },
+  "full_predictions": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/readingqa-check/artifacts/full.candidate.outputs.jsonl",
+    "bytes": 1962199,
+    "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+  },
+  "main_full_predictions": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/readingqa-check/artifacts/main.full.outputs.jsonl",
+    "bytes": 1962199,
+    "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+  },
+  "source_files": [
+    {
+      "path": "/home/gsc/code/glassmind/crates/reading/src/main.rs",
+      "bytes": 3777,
+      "sha256": "28fe7f1bd0b800fd2c40b574b9672276a8ddb3b716d53bf20313fb71e8398083"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/reading/src/probability.rs",
+      "bytes": 7619,
+      "sha256": "de905ee5e83bbfeb71912cedcf8f3c0875e65cfa1c7ac83a541f98c8c7ce1096"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/reading/src/lib.rs",
+      "bytes": 128,
+      "sha256": "5afe9711e70df23ed3c44696f3520d62984ee5ccce38d487bfba774ad306044b"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/reading/src/qa.rs",
+      "bytes": 19303,
+      "sha256": "0eaef788ed493c0fa23ca81354e6d1b26e609a1f38449df212764cd966b0c991"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/reading/src/bin/reading-probability.rs",
+      "bytes": 6707,
+      "sha256": "4dfceef46a971a7fa7ccbd238a2c1bfc663d3c87bd9717a6182d76ac95ce49ec"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/reading/src/bin/reading-qa.rs",
+      "bytes": 2300,
+      "sha256": "2b7f4f2ceded611de303fbe5097df2f405b2c504fb5307ab577b14d7904f2de1"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/cli/src/reading.rs",
+      "bytes": 3674,
+      "sha256": "ae4953ccc750fe4b700c94f8e73fedac2b522c2ac9728f14872f2a91b4361f52"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/cli/src/main.rs",
+      "bytes": 20908,
+      "sha256": "509c014102f4b2df68c7406ccb04dd410af810ea9adc0a76d5fb97b5c9d0423e"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/crates/cli/Cargo.toml",
+      "bytes": 873,
+      "sha256": "8595104e6f8f1d4cb8cf8175d98cd55603d9d3b8f14c505004b1081fbd36172f"
+    },
+    {
+      "path": "/home/gsc/code/glassmind/Cargo.lock",
+      "bytes": 17183,
+      "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+    }
+  ],
+  "checks": {
+    "workspace": "fmt/clippy/release/strict4of4smoke passed",
+    "scoped_tests": "6 QA + 2 original probability tests passed",
+    "independent_retrain_byte_identical": true,
+    "sample_and_full_baseline_candidate_byte_identical": true,
+    "main_all10570_predictions_byte_identical": true,
+    "main_contracts": "14of14 passed",
+    "cross_coding": "3of3 metadata exports and8of8 ordinary query regressions"
+  },
+  "limitations": [
+    "Predictions only, not verified answers or automatic talk routing",
+    "815 exact /791 wrong /8964 refused on dev",
+    "67 baseline selected correct become wrong; raw641 baseline correct become wrong",
+    "Unsupported-relation probe still fails (5of6 behavioral probes)",
+    "No general unanswerable calibration",
+    "No heldout evaluation"
+  ],
+  "original_worker_archive": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa-run/submitted",
+  "raw_replay": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/readingqa-check"
+}

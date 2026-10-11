@@ -317,7 +317,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:54,855,118 including cached input; parent and
+Known completed worker tokens:56,295,812 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -331,7 +331,7 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 ## Current coding and dialogue integrations
 
 Both answerfiles and boundaries workers COMPLETE, scopes inactive, temporary
-login symlinks removed. One model worker remains active below. Original submissions archived
+login symlinks removed. All model workers complete; parent reading replay runs below. Original submissions archived
 with SHA256 manifests at WORK/{answerfiles,boundaries}-run/submitted/.
 All archived file hashes verified against each completed worktree; both worktrees removed. Both used the
 required GPT-6 Astra fast through ChatGPT; no API-key authentication.
@@ -394,100 +394,109 @@ tools/dialogue/boundaries/reports; parent results confirmed.
 4. Next gaps: broader metadata field-type answers, dialogue source freshness and
    contiguous decoded spans, MathQA language22/4475, finite validation-seeded facts,
    reading semantics beyond byte likelihood. Keep coding/conversation progressing.
-5. Goal remains active. One owned model worker is live below. Old dirty improvement loop stopped.
+5. Goal remains active. No model worker is live. Old dirty improvement loop stopped.
 
-## Current integrations and next work
+## Verified next batch, pending publication
 
-**Metatypes COMPLETE and integrated**, source
-bd788fc7543b981e0615ec1f0014dbb546c7bc7c, unpublished pending full765.
-Reusable RustWorld declared-type query with exact UTF8 source spelling/provenance,
-fully consumed English interface, standalone ask/do and existing safe type export.
-Not resolved/inferred types; aliases retain original spelling. Owner/field must be
-unique; cfg/macros/custom attributes anywhere in indexed sources conservatively
-refuse. No generic dialogue-session support. Three chatty supplied requests refuse.
-Original22files archived WORK/metatypes-run/submitted/, allhashes verified against
-worktree before removal. Scope ended/authsymlink removed; no worker jobs remain.
+**Metatypes COMPLETE**, sourcebd788fc7543b981e0615ec1f0014dbb546c7bc7c.
+Reusable declared-type query with exactUTF8 source spelling/provenance; standalone
+ask/do and safe typeexports. Source syntax, not compilerresolution; aliases stay
+spelledasaliases. Uniqueowner/field required; cfg/macros/customattributes inindexed
+sources conservativelyrefuse. No genericdialoguesession support. All3chattyinputs
+stillrefuse. Worker22files archived WORK/metatypes-run/submitted/, hashverified
+beforeworktree removal; scopeended/authsymlinkremoved.
 
-Parent workspace gate COMPLETE session83318, allfmt/clippy/release/strict4/4smoke.
-Scoped65tests COMPLETE36445 (8CLI,36EnglishRust,21world). Parent sample3/3,
-full4/7 usable/3refused/0wrong, independent35/35, oldquery8/8. Two added probes
-verify CRLF/Unicode exactbyteoffsets and compoundrefusal. Old27suite26pass, one
-frozen unsupported_type expectation now conflicts with correct Vec<u16> export;
-parent verified all originalhashes unchanged and only requestedfile added. Raw
-failure retained, scorer unchanged; replay.sh stopsatold27 exit1, regression8
-ran separately after explicit audit. Evidence docs/coding-metatypes-evidence/integrated/.
-No fullbenchmark gain claimed yet.
-
-**Metatypes full765 RUNNING execsession56538**, frozenreleasebinary
+Parent full765 COMPLETE56538:170pass592refused3fail vs168/594/3. Exactlytwofieldtype
+requests become passes; allother763 outcomes unchanged, all168priorpasses retained.
+Comparison docs/results/coding-metatypes.json. Frozenbinary
 WORK/coordinator/metatypes-full/glassmind SHA
 9bbedc34d2475a9e1c6ee8c728c50c4449ec2d3b3972b82dcf859e8e84b2495e.
-source.json/run.log there. Baseline WORK/coordinator/answerfiles-full/results.jsonl
-168pass594refused3fail, source82f2a2e. Samef79e71a benchmark, cappedjob1.
-Compare every(task,style), retainall765denominator; no restart on observationtimeout.
+No repoll/restart. Scoped65tests passed (8CLI,36EnglishRust,21world); workspace
+fmt/allclippy/release/strict4/4smoke passed. Localsample3/3,full4/7,fixtures35/35,
+ordinaryquery8/8, parentCRLF/Unicode/trailingaction2/2. Old27suite26pass; old
+unsupported_type expectedrefusal nowconflictswithcorrectVec<u16> output. Alloriginal
+hashesunchanged, onlyrequestedfileadded. Rawfailure preserved; scorernotchanged.
+Parentnewreadcommand retains metadata3/3andordinary8/8; codingengineunchanged.
 
-**Freshness COMPLETE, hypothesis REJECTED**, all runtimeedits rolledback before
-handoff. Newtools/dialogue/freshness evidence only, includes rejected.patch for
-isolatedreproduction; neverapply/deploycandidate onmain. OptionalcontiguousBIO
-changed610->595correctjoint,716->699frames,20correctassertions becamewrong;
-all7inheritedwrongslotturns remain. Frozenclassifier marks interior truewordsO,
-so gapbridging sometimesrecovers correct spans. Stale correction has allOlabels;
-truncatedname hasmissingI suffix. Next improvement needs better span/correction
-proposals, not this decoder adjustment. Initial100TRAINdiagnostic foundnochanged
-activeframes; devwasnonethelessrun beforeallTRAINdiagnostic, a disclosed deviation.
-All3174TRAIN followupalsofoundnochangesongold-activeframes. No calibration claim.
-No acceptedgain and no runtime/scorerchange. Parent verified emptyruntimediff,
-reviewedfullcausal/auditreport, checkedrejectedpatchapplies, archived25files237856bytes
-withhashmanifest, verifiedallworktreefiles, removedworktree/authsymlink. Worker
-scope ended. Rawmodels/traces/binaries remainWORK/freshness-run; candidatebinary
-is rejected, use approved frozenv2 model. No parentrepeatofrejectedfullrunneeded.
+**Freshness COMPLETE, REJECTED**: optionalcontiguousBIO610->595joint,716->699frames,
+20correctassertionsbecamewrong; all7inheritedwrongslotturnsremain. Runtimefully
+rolledback. Reports/rejected.patch in tools/dialogue/freshness; neverdeploypatch.
+ClassifierO labelsinsidevalidspans meanoldgapbridging sometimesrecoverscorrecttext.
+Stalecorrection allO; truncatedname missingI suffix. Needbetterproposals, notthis
+adjacencyrule. Initial100TRAINdiagnostic no changes; devrunbeforeallTRAINfollowup
+isdiscloseddeviation. All3174TRAINfollowup likewisezerochangesongoldactiveframes;
+notindependentcalibration. Parent reviewedcausal/audit andverifiedemptyruntimediff,
+patchcheck;25files237856bytes archived/hashverified, worktree/authremoved.
+Rawrejectedmodels/binaries remainWORK/freshness-run;approvedv2modelunchanged.
 
-PR13 merged asabove; newmetatypes+rejectedhypothesis/data documents are nextbatch.
-Externalprogress log appended atmerge. Known completedworker total54,855,118,
-includingcachedinput once; parent+unfinishedreadingQA excluded. No freshheldout.
+**ReadingQA COMPLETE and independently verified as unverified proposals only.**
+Source2a968ec (model/CLI; subsequentreproduction/reporting-onlychanges pendingcommit).
+Main `glassmind read --model MODEL --context PASSAGE QUESTION` printsCandidateanswer
+(unverified)+exactsourcepassage. --json typedprediction; --inputstrictcontext/question
+JSONL, noIDs/titles/annotations. --explainrankscore/margin arenotprobabilities.
+Neverautomaticfactualtalk, persistedknowledge orentailedanswer. Boundedcontext64KiB,
+model4MiB,row512KiB; malformedmodel rejects. Parent nonfinite-score/marginguard
+refusesoverflow evenifindividualweightsfinite; tested. No runtimeLLM.
 
-- **ReadingQA ACTIVE**: launcherPID2484347, scopeglassmind-continuous-readingqa.scope,
-  worktreeWORK/readingqa atb36970d, runWORK/readingqa-run. Owns crates/reading and new
-  QA adapter/reports. New passage-grounded semantic-reading track, separate from
-  probability/BabyLM scores. Public SQuAD1.1 onlyTRAIN87599/DEV10570, pinned
-  eee5fdbf62f8613a7812b03419e6b29617b74fd1, downloaded35142551datasetbytes,
-  CC-BY-SA4. Source/provenance/scorer in WORK/readingqa-source (read-only mount).
-  Existing runtime has no context+question QA interface. Worker must preregister,
-  beat simple lexical span baseline with small inspectable TRAIN-only model,
-  article-disjoint fit/calibration, truthful uncertainty/provenance, strict input
-  annotation rejection, sample200 thenfull10570 unchanged official EM/F1.
-  Official evaluate-v2.0.py is used unmodified on all-answerable v1.1; require every
-  devID prediction before scoring (it otherwise drops missing IDs). No test items
-  or model predictions fetched. First attempted obsolete v1 scorer URL404; retained
-  downloaded dataset files, fetched current official scorer separately. No repeated
-  data downloads. Dataset hashes match published sources. Parent mainCLI integration
-  and independent full replay required for useful accepted capability.
+PublicSQuAD1.1 sourceeee5fdbf62f8613a7812b03419e6b29617b74fd1, TRAIN87599/DEV10570,
+35,142,551datasetbytes,CCBYSA4. Noheldout/modelpredictions fetched. Officialv2scorer
+hashpinnedunchangedfunctionASTs onallanswerablev1.1; everyID requiredbeforescoring.
+0sharedtitles/contexts/IDs; noemptydevanswers. Fixed4000fit from64articles,1000cal
+from16otherarticles, article-disjoint.3214/4000fitspansrepresentable. Model873881bytes,
+65536f32weights. Calibrationmargin0.18979406 selects74right74wrong/148accepts;
+thisisthresholdselectionat50%precision, notprobabilitycalibration orentailment.
 
-ReadingQA scope verifiedactive8GiB/0swap, requiredAstrafastChatGPT configuration;
-only live modelworker. Parent overlap audit:0sharedtitles,0exactcontexts,0IDs
-across train/dev; noemptyanswers among10570dev. Source README now records dataset
-without capabilityclaim. Parent must review/modelcalibration/no-labelruntime,
-independently evaluate full10570 and integrate usable command before shipping.
+Parentindependentretrain/sample/full COMPLETE86837: model andallbaseline/candidate
+predictionbytes exactlymatchworker. All10570mainCLIoutputs byte-identical too.
+Raw EM1310/10570=12.393567%->2532/10570=23.954588%; F119.001517->34.518425.
+Selected815right791wrong8964refused,50.7472%precision15.1939%coverage. Baseline
+selected1305/9157/108;67baselinecorrectbecomeacceptedwrong,976becomerefused.
+Raw641baselinecorrectlost,1863newcorrect. Knownunsupportedrelationprobeincorrect;
+5/6behavioralprobes pass. These failures prohibit automaticfactualanswerintegration.
+Do not hide them, claim semanticproof, or tune thresholdondev.
 
-Next actions: finish existing56538 fullcodinghandle; review readingQA when done;
-keep both coding and conversation progressing. No confirmation needed. Goal active.
+Parentworkspace30417 COMPLETE fmt/allclippy/release/strict4/4smoke. Tests6QA+2byte,
+14mainCLIcontracts (notsemanticaccuracy), annotationrejection, limits/modeloverflow,
+3metadataexports+8ordinaryqueryregressions pass. Newtrackrecords separaterawand
+selectedEM, distinctfrombyteprobability. tools/reading/qa/PARENT.md andintegrated/
+retainfullmetrics/provenance/replay/sourcehashes. MainbinarySHA
+8659839583857656c1fdf2d0f22e4fd57de245db84778f9ab5b4d754de62af41;
+modelb7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5;
+fullpred37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7.
 
-### ReadingQA preliminary review (worker still active; not integrated)
+Originalreadingworker29files inWORK/readingqa-run/submitted/. Raw22artifacts25163100
+bytes inWORK/readingqa-run/artifacts withmanifest;allsource/rawhashesverifiedbefore
+worktree removal. Authremoved/scopeinactive. Parentreplay artifacts/logs at
+WORK/coordinator/readingqa-check. Consolidatedreproduce.sh nowhonorsoutputdirectory
+envvars andchecks mainfullbyteequivalence/contracts; commandsrunindividuallyalready,
+no secondwholeconsolidatedrunclaimed. Updatedattestsource/ID/model verification passed.
+Knowncompletedworker tokens56,295,812 inclcachedinputonce;parent/unfinishedexcluded.
 
-Worker full report: baseline rawEM12.3936%/F119.0015%; trainedranker rawEM23.9546%/
-F134.5184%. Its fixed TRAIN-calibration gate was only50%exactprecision (74/148
-of1000cal; margin0.18979406), not a reliable-answer guarantee. Onfull10570dev,
-selected815right791wrong8964refused,50.7472%precision at15.1939%coverage. Raw
-proposal improves but641baseline rawcorrect becomeincorrect; selectedbaseline
-has67right->wrong (baseline was itself a new unsafe heuristic, not a shipped
-capability). Independent unsupported-relationprobe "when buy" over "painted"
-returns an incorrect candidate. Sourceoccurrence is not entailment.
+## Active next coding experiment
 
-Parent decision: do NOT integrate this as automatic factual conversation answers.
-Review it as an explicitly unverified source-grounded proposal/ranking component;
-if retained, require independent exactfullreplay/provenance/strictinput audit and
-useful honest interface, or improve verifier/proposer first. Do not quietly weaken
-this limit, tune threshold ondev, or conceal knownnewwrongclaims. Worker says its
-preregistered weaker experimentalgate passes; that does not establish product
-answerreliability. Model873881bytes SHAb7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5,
-raw artifacts currently underWORK/readingqa/tools/reading/qa/artifacts; move/archive
-large data outsidegit before anyintegration. No source copied toparent yet.
+**Addfields ACTIVE** launcherPID2608856, scopeglassmind-continuous-addfields.scope,
+worktreeWORK/addfields at2a968ec, runWORK/addfields-run. OwnsworldRusttypedfieldaddition
+plusnecessarygenericinterfaces/minimalCLIactionhook, newlocaladapter/report. No
+reading/talk/dialogue/quantity/fact/scorer changes. Explicitfieldtype/default from
+request, updateallresolvedconstructors, verifystructuralpostconditions/behavior,
+compile/test/rollback. Fullconsumption/binding/macros/defaults/ambiguity risks must
+beaddressed, no globaltextreplacement orweakenedtests. Parentfull765beforepublishing.
+
+ProvidedTWO visibleDEVworkspaces add-book-pages/add-task-priority,5025bytes,
+FIVEoriginalparse-failurerequests. Taskchattyrequestnotintranscript omitted.
+Originalpublicinline tests INCLUDED: initialpreparation wronglyassumedproduction
+hadnoinline tests, stoppedbeforelaunch; correctedbecause workspacepublictests are
+permitted, unlikehidden/tests. No strippingtests orreadingtask.toml/solutions/hidden
+contents. Allrequests/sourceshashes inrun/dev-inputs/provenance.json. No newlicense
+inferred. Frozenbaseline86598395binary,170/765. Scopeverified8GiB0swap; logged-in
+ChatGPT statusconfirmed, forcedGPT6Astrafast/noAPIenv. One live modelworker only.
+
+## Immediate next actions
+
+1. Commitreviewedreports/reproductionupdates, publishcoherentPR14 andmergeonlygreen
+   exact-headCI. Allaffecteddev gates above complete; no needrepeatbenchmarks.
+2. Reviewaddfieldswhenfinished, preserveoriginalsubmissionandbehavioralevidence.
+3. Nextreading improvement mustaddressrelations/support/precision, notpretend a
+   sourcequoteprovesananswer. Futuretrainedproposal/typed-verificationexperiment
+   shouldpreregisterTRAIN-onlycalibration andkeepfull10570denominator.
+4. Goalactiveuntilstopped; preserveoldstoppeddirtyloop. Stoponlyownedworkersonstop.

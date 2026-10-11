@@ -1,0 +1,244 @@
+{
+  "base_commit": "2a968eccb073e55aa86561e92cb10796cd338ebc",
+  "source_files": {
+    "crates/reading/src/lib.rs": {
+      "bytes": 128,
+      "sha256": "5afe9711e70df23ed3c44696f3520d62984ee5ccce38d487bfba774ad306044b"
+    },
+    "crates/reading/src/qa.rs": {
+      "bytes": 19303,
+      "sha256": "0eaef788ed493c0fa23ca81354e6d1b26e609a1f38449df212764cd966b0c991"
+    },
+    "crates/reading/src/bin/reading-qa.rs": {
+      "bytes": 2300,
+      "sha256": "2b7f4f2ceded611de303fbe5097df2f405b2c504fb5307ab577b14d7904f2de1"
+    },
+    "crates/cli/src/reading.rs": {
+      "bytes": 3674,
+      "sha256": "ae4953ccc750fe4b700c94f8e73fedac2b522c2ac9728f14872f2a91b4361f52"
+    },
+    "crates/cli/src/main.rs": {
+      "bytes": 20908,
+      "sha256": "509c014102f4b2df68c7406ccb04dd410af810ea9adc0a76d5fb97b5c9d0423e"
+    },
+    "crates/cli/Cargo.toml": {
+      "bytes": 873,
+      "sha256": "8595104e6f8f1d4cb8cf8175d98cd55603d9d3b8f14c505004b1081fbd36172f"
+    },
+    "Cargo.lock": {
+      "bytes": 17183,
+      "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+    },
+    "tools/reading/qa/run.py": {
+      "bytes": 9230,
+      "sha256": "13afaf3b8962c8720e16a57403fe4814d0e61ba8a9e3d33a85b63ecc17dc480e"
+    },
+    "tools/reading/qa/attest.py": {
+      "bytes": 4136,
+      "sha256": "b9bdddb37e3c92ce24b889d0cedfacf81e91ee0960beaee1a2ea36f9b1e7dc34"
+    },
+    "tools/reading/qa/reproduce.sh": {
+      "bytes": 1757,
+      "sha256": "6ba0d075083186c1e12b5601f98386d40bae51d28de9544fef8b5cba83f8f15d"
+    },
+    "tools/reading/qa/check-main.py": {
+      "bytes": 3580,
+      "sha256": "cf76ee7e308a5d74a105442499555d4eaca6fb665dc7e1be358902ea281e3048"
+    },
+    "tools/reading/qa/PLAN.md": {
+      "bytes": 1783,
+      "sha256": "c4bdeb78c5531b1d03c2601e08a52ef24770e957acaf804d876b13b8b895100f"
+    }
+  },
+  "source_manifest_sha256": "c91b580a05121a0f43b2a888854abc0032abe3f9bf3ebd3ca5dd95bc87fb2aba",
+  "binary": {
+    "path": "/home/gsc/code/glassmind/target/release/reading-qa",
+    "bytes": 11343320,
+    "sha256": "6763ae097f8163e575e040f37250743b3d3e53500460bef86309ee8475bc3a3b"
+  },
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+  "dataset": {
+    "repository": "rajpurkar/SQuAD-explorer",
+    "revision": "eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+    "version": "1.1",
+    "dataset_license": "CC-BY-SA-4.0",
+    "license_source": "https://rajpurkar.github.io/SQuAD-explorer/",
+    "repository_license": "MIT (2020)",
+    "scorer": "Unmodified official evaluate-v2.0.py EM/F1 on all-answerable v1.1, with no-answer probabilities absent",
+    "files": [
+      {
+        "file": "train-v1.1.json",
+        "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/train-v1.1.json",
+        "bytes": 30288272,
+        "sha256": "3527663986b8295af4f7fcdff1ba1ff3f72d07d61a20f487cb238a6ef92fd955"
+      },
+      {
+        "file": "dev-v1.1.json",
+        "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/dataset/dev-v1.1.json",
+        "bytes": 4854279,
+        "sha256": "95aa6a52d5d6a735563366753ca50492a658031da74f301ac5238b03966972c9"
+      },
+      {
+        "file": "LICENSE",
+        "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/LICENSE",
+        "bytes": 1073,
+        "sha256": "9c92e90621a47dc8508ddd78f0ee41a7b6a8fd5d37fd00709ff1c6eb1a7d7019"
+      },
+      {
+        "file": "evaluate-v2.0.py",
+        "url": "https://raw.githubusercontent.com/rajpurkar/SQuAD-explorer/eee5fdbf62f8613a7812b03419e6b29617b74fd1/evaluate-v2.0.py",
+        "bytes": 10547,
+        "sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4"
+      }
+    ],
+    "scope": "Public train and development only; no test or predictions."
+  },
+  "source_files_verified": {
+    "train-v1.1.json": {
+      "bytes": 30288272,
+      "sha256": "3527663986b8295af4f7fcdff1ba1ff3f72d07d61a20f487cb238a6ef92fd955"
+    },
+    "dev-v1.1.json": {
+      "bytes": 4854279,
+      "sha256": "95aa6a52d5d6a735563366753ca50492a658031da74f301ac5238b03966972c9"
+    },
+    "evaluate-v2.0.py": {
+      "bytes": 10547,
+      "sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4"
+    },
+    "LICENSE": {
+      "bytes": 1073,
+      "sha256": "9c92e90621a47dc8508ddd78f0ee41a7b6a8fd5d37fd00709ff1c6eb1a7d7019"
+    }
+  },
+  "artifacts": {
+    "cal.input.jsonl": {
+      "bytes": 869071,
+      "sha256": "2791c0fc987ebcf5d8777f277f9823bd47bdc6682c0337fefbb709f8adc2fbad"
+    },
+    "cal.labels.json": {
+      "bytes": 1029325,
+      "sha256": "3a8795dec065762ee506991be3f5e10f761011c9540bd94861ff1467754cc309"
+    },
+    "cal.outputs.jsonl": {
+      "bytes": 183875,
+      "sha256": "e7660b6c6ce6574c954f5de0a676bbd19f2646f116929aecc5bde3b56227e728"
+    },
+    "fit.input.jsonl": {
+      "bytes": 3423180,
+      "sha256": "8a7d2c6aa69c8f0eeb44f637be09a3252e994b06388b8c9a2f820b878ac77cac"
+    },
+    "fit.train.jsonl": {
+      "bytes": 3573508,
+      "sha256": "e1b8efc792d08b16cd3a56bafa76f4d23b418e7f767fa70672fffea99581aea1"
+    },
+    "full.baseline.accepted.json": {
+      "bytes": 424804,
+      "sha256": "bf7c8ad1869f241db8a6001835609bc65a2ee1d442ee96c7643b56fa71171551"
+    },
+    "full.baseline.outputs.jsonl": {
+      "bytes": 1984129,
+      "sha256": "b6c99a4dbb6d32435345a36520676fd2f47fc0e031f2d83f56f716ec50bcc28c"
+    },
+    "full.baseline.raw.json": {
+      "bytes": 425346,
+      "sha256": "ce1ca715e509c5d554fe6a4c3a602f63b7be62ccbe8a7bbb2c0165577034c7ea"
+    },
+    "full.candidate.accepted.json": {
+      "bytes": 376905,
+      "sha256": "21224d894abb2c94af04dba5896c9336e2c247fb09507130a00c1221607a01d7"
+    },
+    "full.candidate.outputs.jsonl": {
+      "bytes": 1962199,
+      "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+    },
+    "full.candidate.raw.json": {
+      "bytes": 520183,
+      "sha256": "07a29adda9ef0d3a715903d47e1775235750e3af59f81251844a4c4d0153cd73"
+    },
+    "full.input.jsonl": {
+      "bytes": 9235127,
+      "sha256": "88e26d11c9827053401182ac81a5ed6bee3c1784c36240b12971b4595cef2a3a"
+    },
+    "independent.input.jsonl": {
+      "bytes": 541,
+      "sha256": "6ef17b01b38a52b3bcc124abafba38a14e3e623d55448c957d88933fda86d6e9"
+    },
+    "independent.outputs.jsonl": {
+      "bytes": 1075,
+      "sha256": "7ad9330bd0e73900052c78b9b8683a208210452f0690f740e5bd83c5cf0071a9"
+    },
+    "main.full.outputs.jsonl": {
+      "bytes": 1962199,
+      "sha256": "37db70ae0c949a89427a707c37812a666d9507a2192bcb75ed3e4145d3a598a7"
+    },
+    "model.json": {
+      "bytes": 873881,
+      "sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5"
+    },
+    "sample.baseline.accepted.json": {
+      "bytes": 8025,
+      "sha256": "bb65e7445607351d5c56792708f54fe20ffaa64c72b7c10737416436ed269731"
+    },
+    "sample.baseline.outputs.jsonl": {
+      "bytes": 37581,
+      "sha256": "caa3c8d5b352b77d6fabcede7ebc9f3445d12033ed5e08a17af6839a1f099185"
+    },
+    "sample.baseline.raw.json": {
+      "bytes": 8025,
+      "sha256": "bb65e7445607351d5c56792708f54fe20ffaa64c72b7c10737416436ed269731"
+    },
+    "sample.candidate.accepted.json": {
+      "bytes": 7195,
+      "sha256": "a3866c062aacba83a5ef08f26b349d26629417876263f4b6c592d3be8c282d3d"
+    },
+    "sample.candidate.outputs.jsonl": {
+      "bytes": 37215,
+      "sha256": "2840068cacf7c9b1465167c044ef6a0bea347b349d3e326304a53e4ff13eab20"
+    },
+    "sample.candidate.raw.json": {
+      "bytes": 9998,
+      "sha256": "b5d50759604c886be97507838fad8a565e247bba4603b3378d55ca1812f6c53b"
+    },
+    "sample.input.jsonl": {
+      "bytes": 171912,
+      "sha256": "d74eba694c80e6371fbd78cb8cf0bc1b76c56a87cb5aedfa7b887aa75f9e5b1e"
+    }
+  },
+  "unchanged_paths": {
+    "crates/reading/src/main.rs": {
+      "bytes": 3777,
+      "sha256": "28fe7f1bd0b800fd2c40b574b9672276a8ddb3b716d53bf20313fb71e8398083"
+    },
+    "crates/reading/src/probability.rs": {
+      "bytes": 7619,
+      "sha256": "de905ee5e83bbfeb71912cedcf8f3c0875e65cfa1c7ac83a541f98c8c7ce1096"
+    },
+    "crates/reading/src/bin/reading-probability.rs": {
+      "bytes": 6707,
+      "sha256": "4dfceef46a971a7fa7ccbd238a2c1bfc663d3c87bd9717a6182d76ac95ce49ec"
+    },
+    "crates/reading/Cargo.toml": {
+      "bytes": 470,
+      "sha256": "3dc318e094f77ad798a6967b0628993236b87f2de14ea62aad54b09d2079797d"
+    },
+    "Cargo.toml": {
+      "bytes": 1440,
+      "sha256": "a3652a713fa4b3c805b41207c3197c2b8f811ceb7a54d1c31437a65f08571825"
+    },
+    "Cargo.lock": {
+      "bytes": 17183,
+      "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+    }
+  },
+  "final_rebuild_predictions_byte_identical": true,
+  "code_license": "MIT",
+  "derived_weights_reports_license": "CC-BY-SA-4.0",
+  "new_download_bytes": 0,
+  "main_binary": {
+    "path": "/home/gsc/code/glassmind/target/release/glassmind",
+    "bytes": 72713192,
+    "sha256": "8659839583857656c1fdf2d0f22e4fd57de245db84778f9ab5b4d754de62af41"
+  },
+  "main_cli_full_predictions_byte_identical": true
+}

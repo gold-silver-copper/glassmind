@@ -1,0 +1,50 @@
+{
+  "source": {
+    "source_commit": "bd788fc7543b981e0615ec1f0014dbb546c7bc7c",
+    "binary_sha256": "9bbedc34d2475a9e1c6ee8c728c50c4449ec2d3b3972b82dcf859e8e84b2495e",
+    "baseline_source": "82f2a2e917acbf97958122a0a7c5ef01fe4a7eee",
+    "baseline": "168pass594refused3fail of765",
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "local_validation": "docs/coding-metatypes-evidence/integrated/validation.json"
+  },
+  "before": {
+    "refused": 594,
+    "pass": 168,
+    "fail": 3
+  },
+  "after": {
+    "refused": 592,
+    "pass": 170,
+    "fail": 3
+  },
+  "transitions": {
+    "refused->refused": 592,
+    "pass->pass": 168,
+    "fail->fail": 3,
+    "refused->pass": 2
+  },
+  "changed": [
+    {
+      "task": "talk/items-field-type",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "talk/items-field-type",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "all_baseline_pass_retained": true,
+  "new_failures": [],
+  "before_artifact": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/answerfiles-full/results.jsonl",
+    "sha256": "c0d966da57878cd30a8f47ae8bd4ba1f682d3187d0733c0c65e3c3c92dcedccb"
+  },
+  "after_artifact": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/metatypes-full/results.jsonl",
+    "sha256": "232db863e5aa45b3ec1ff99ae2f856742f5bcf6f8c7c23e4225373391b192627"
+  }
+}

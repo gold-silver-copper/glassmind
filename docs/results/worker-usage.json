@@ -321,6 +321,19 @@
         "reasoning_output_tokens": 3792
       },
       "source": "REJECTED contiguous BIO decoder:610to595joint/716to699frames,20newwrongassertions; runtime rolled back, train diagnostic shows no support; all evidence retained"
+    },
+    {
+      "track": "readingqa-continuous",
+      "started_unix": 1791695201.2430367,
+      "finished_unix": 1791695605.5142784,
+      "usage": {
+        "input_tokens": 1414216,
+        "cached_input_tokens": 1354240,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 26478,
+        "reasoning_output_tokens": 7269
+      },
+      "source": "Raw SQuAD1.1 dev EM12.3936to23.9546; selected815right791wrong8964refused; parent forbids automatic factual answers, reviewing unverified source proposals"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

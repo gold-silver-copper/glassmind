@@ -161,3 +161,14 @@ zero original-file changes and only the requested file added. No scorer was
 changed. Raw results and parent evidence are in
 [coding-metatypes-evidence/integrated/](coding-metatypes-evidence/integrated/).
 Full765 against the latest168/594/3 baseline is required before publication.
+
+## Full coding development result
+
+Source `bd788fc7543b981e0615ec1f0014dbb546c7bc7c` now passes **170/765** RustBench
+dev requests, with **592 refused and 3 existing failures**. Exactly two field-type
+requests change refusal to pass; all other763 outcomes are unchanged and all168
+prior passes remain. Frozen binary SHA256
+`9bbedc34d2475a9e1c6ee8c728c50c4449ec2d3b3972b82dcf859e8e84b2495e`.
+[Full comparison and hashes](results/coding-metatypes.json). No held-out run.
+The subsequent passage command adds no coding-engine change; metadata sample3/3
+and ordinary-query regressions8/8 also pass on the integrated main binary.
