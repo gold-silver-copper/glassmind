@@ -29,9 +29,9 @@ release workspace and strict4/4 fixture smoke PASS (check.log). Real CLI29proces
 smoke PASS (cli-smoke/report.json, turns.json), session55619 COMPLETE0.
 Full765DEV session8598 COMPLETE0:223 pass/542 refused/0 fail, all765 outcomes
 identical to yolo-revisions/full765. Evidence tools/coding-tasks/implementation-validation.json.
-All implementation jobs terminal. PR60 is open at head87c8d00cb041dc60964c3930cca4dd7f7f2bbef1;
-CI38176826196 is running. Merge only that exact reviewed head after success.
-Local root may now include the subsequent field batch; do not push it to PR60.
+All implementation jobs terminal. PR60 merged2026-10-11T21:35:03Z as
+883eb4b2fb69f1008856b73ee50f17328652147a, reviewedhead
+87c8d00cb041dc60964c3930cca4dd7f7f2bbef1; CI38176826196 SUCCESS.
 
 Next integrated candidate: typed field specifications carried through tasks,
 corrections and plans. Worktree /home/gsc/.cache/glassmind/yolo-task-fields,
@@ -50,7 +50,7 @@ check-v2.log, session42215 COMPLETE0. Real CLI34process smoke PASS,
 cli-smoke/report.json, session99827 COMPLETE0. Initial failures retained.
 Full765DEV running session27971; full765/run.log, results.jsonl when complete.
 Compare all outcomes against yolo-implementation/full765 before publishing.
-Do not merge/push this batch over PR60 while its reviewed head awaits CI.
+PR60 has merged. Publish this field batch after its full regression completes.
 
 Next gap from integrated usage: type renaming still rejects cfg(test) modules
 and assertion macros supported by other verifiers. Keep those guards until a
@@ -69,3 +69,14 @@ Historical facts/quantity candidates remain rejected. Do not repeat unchanged
 tuning. Known completed-worker usage203481375tokens includes cached input once,
 excludes parent and interrupted calls; no new worker usage in these slices.
 Milestones do not complete this continuing goal.
+
+Next type-binding work is uncommitted in
+/home/gsc/.cache/glassmind/yolo-type-test-bindings, branchcontinuous/type-test-bindings,
+based on9a06081. RUN=/home/gsc/.cache/glassmind/yolo-type-tests. Extends rename_types
+using existing closed test-module graph and builtin expression-list traversal;
+reproves typed binding spans before application and requests native tests.
+Added tests for cfg(test), parent globs, aliases, assertion arguments, macro
+shadowing, opaque syntax and stale direct World.apply proposals. First focused
+clippy/native test pipeline launched; tests.log. Not integrated or pinned.
+Next: inspect failures, preserve existing identifier guards and verify the full
+field-add/rename/test workflow on ordinary assertion-based tests.
