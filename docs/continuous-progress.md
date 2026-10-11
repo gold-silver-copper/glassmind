@@ -331,7 +331,7 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 ## Current coding and dialogue integrations
 
 Both answerfiles and boundaries workers COMPLETE, scopes inactive, temporary
-login symlinks removed. All model workers complete; parent reading replay runs below. Original submissions archived
+login symlinks removed. Previous workers complete; addfields and qasupport run below. Original submissions archived
 with SHA256 manifests at WORK/{answerfiles,boundaries}-run/submitted/.
 All archived file hashes verified against each completed worktree; both worktrees removed. Both used the
 required GPT-6 Astra fast through ChatGPT; no API-key authentication.
@@ -394,9 +394,9 @@ tools/dialogue/boundaries/reports; parent results confirmed.
 4. Next gaps: broader metadata field-type answers, dialogue source freshness and
    contiguous decoded spans, MathQA language22/4475, finite validation-seeded facts,
    reading semantics beyond byte likelihood. Keep coding/conversation progressing.
-5. Goal remains active. No model worker is live. Old dirty improvement loop stopped.
+5. Goal remains active. Two model workers are live below. Old dirty improvement loop stopped.
 
-## Verified next batch, pending publication
+## Verified merged batch
 
 **Metatypes COMPLETE**, sourcebd788fc7543b981e0615ec1f0014dbb546c7bc7c.
 Reusable declared-type query with exactUTF8 source spelling/provenance; standalone
@@ -430,7 +430,7 @@ patchcheck;25files237856bytes archived/hashverified, worktree/authremoved.
 Rawrejectedmodels/binaries remainWORK/freshness-run;approvedv2modelunchanged.
 
 **ReadingQA COMPLETE and independently verified as unverified proposals only.**
-Source2a968ec (model/CLI; subsequentreproduction/reporting-onlychanges pendingcommit).
+Source2a968ec (model/CLI), mergedinPR14 with reproduction/reporting updates.
 Main `glassmind read --model MODEL --context PASSAGE QUESTION` printsCandidateanswer
 (unverified)+exactsourcepassage. --json typedprediction; --inputstrictcontext/question
 JSONL, noIDs/titles/annotations. --explainrankscore/margin arenotprobabilities.
@@ -493,10 +493,33 @@ ChatGPT statusconfirmed, forcedGPT6Astrafast/noAPIenv. One live modelworker only
 
 ## Immediate next actions
 
-1. Commitreviewedreports/reproductionupdates, publishcoherentPR14 andmergeonlygreen
-   exact-headCI. Allaffecteddev gates above complete; no needrepeatbenchmarks.
+1. PR14 MERGED bd065ef8dd91bbf7745e03fb3aef5df084291185, exacthead1003add43fe9e1970ee0a5380fc15c7304f94aa1;
+   CI38114609746 passed1m19s. Allaffecteddev gates complete; no publishing/retests remain.
 2. Reviewaddfieldswhenfinished, preserveoriginalsubmissionandbehavioralevidence.
 3. Nextreading improvement mustaddressrelations/support/precision, notpretend a
    sourcequoteprovesananswer. Futuretrainedproposal/typed-verificationexperiment
    shouldpreregisterTRAIN-onlycalibration andkeepfull10570denominator.
 4. Goalactiveuntilstopped; preserveoldstoppeddirtyloop. Stoponlyownedworkersonstop.
+
+## Reading support follow-up
+
+**QAsupport ACTIVE** launcherPID2639183, scopeglassmind-continuous-qasupport.scope,
+worktreeWORK/qasupport at1003add43fe9e1970ee0a5380fc15c7304f94aa1,
+runWORK/qasupport-run. Ownscrates/reading +newtools/reading/support, no mainCLI
+orothertrack/scorer changes. Frozenv1model/10570predictions copiedtobaseline/;
+publicSQuADsource read-onlymounted. Scopeverified8GiB/0swap, sameforcedAstrafast
+ChatGPT/noAPIenv. Two modelworkers live total, addfieldsandqasupport.
+
+Preregistered onehypothesis: smallinspectable compatibilityrepresentation with
+questionkind/answershape/stem/orderedanchor/clausefeatures. New8000fitquestions
+fromnext96TRAINarticles and2000calfromnext32, disjoint fromoriginal64fit/16cal;
+fitoldselectedrows only.60depth2boostedtrees, minleaf15,learningrate.1,15fit-only
+quantilecutpoints. Nohyperparametersearch. Cal target90%exactprecision,min30accepts,
+tiegrouped; comparemargin-only selector withsamecalcriterion. No qualifyingthreshold
+meansreject. Fullacceptance>=400correct and>=80%precision, morecorrectthanmargin-only
+atprecisionnomorethan.02lower. Preserve rawproposalsandoldrefusals/answertext exactly;
+onlyselected->refused permitted. Notproof/automaticfactualanswer; independentcontrast
+probesmustreportnegation/roles/relationfailures. No devtuning/scorerchanges.
+
+PR14 merged, all benchmark/replay jobs complete. Only model workers addfields2608856
+andqasupport2639183 remain live. Check their actual scopes/handles before any action.
