@@ -1,0 +1,56 @@
+{
+  "totals": {
+    "user_turns": 1171,
+    "gold_frames": 1323
+  },
+  "turn_error_overlap": {
+    "correct": 787,
+    "slots": 384
+  },
+  "slot_errors": [
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "role": "text",
+      "kind": "missing",
+      "count": 382
+    },
+    {
+      "service": "Travel_1",
+      "slot": "location",
+      "role": "text",
+      "kind": "wrong",
+      "count": 2
+    }
+  ],
+  "gold_operations": [
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "operation": "unchanged_gold",
+      "persisted_prediction": true,
+      "count": 295
+    },
+    {
+      "service": "RideSharing_1",
+      "slot": "destination",
+      "operation": "set_gold",
+      "persisted_prediction": true,
+      "count": 87
+    },
+    {
+      "service": "Travel_1",
+      "slot": "location",
+      "operation": "set_gold",
+      "persisted_prediction": false,
+      "count": 1
+    },
+    {
+      "service": "Travel_1",
+      "slot": "location",
+      "operation": "unchanged_gold",
+      "persisted_prediction": true,
+      "count": 1
+    }
+  ]
+}

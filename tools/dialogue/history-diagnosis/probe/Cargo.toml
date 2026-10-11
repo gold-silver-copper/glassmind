@@ -1,0 +1,10 @@
+[package]
+name = "glassmind-history-probe"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+glassmind-dialogue = { path = "/home/gsc/code/glassmind/crates/dialogue" }
+serde_json = "1"
+
+[workspace]
