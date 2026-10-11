@@ -28,6 +28,8 @@ change; resume14291complete. Originalfailurelog retained. No runtimechanges.
 
 Full765DEV67238 RUNNING, unchangedtools/rustbench-dev.sh3600s8GiB0swap,jobs1,
 privateRUN/full765/native-target,check-cache,check-scratch,tmp. Nootherjobs/models.
+Owned supervisor1525332,timeout/PGID1525348,benchmark1525349; session67238.
+Root build cache currently contains pinnedcandidate; root source is notintegratedyet.
 NEXT await existingjob, compare withtools/coding-sequence-composition/compare-full.py
 --before WORK/coordinator/word-initials/full765/results.jsonl --after
 RUN/full765/results.jsonl --binary RUN/candidate --out RUN/full765/comparison.json.
