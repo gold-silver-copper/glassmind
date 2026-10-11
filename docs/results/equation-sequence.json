@@ -1,0 +1,95 @@
+{
+  "disposition": "rejected",
+  "manifest_paths_verified": 63,
+  "raw_full": {
+    "wrong": 1722,
+    "refused": 1314,
+    "unscorable": 1176,
+    "correct": 263
+  },
+  "calibration_best_min30": [
+    0.5051020408163265,
+    196,
+    99,
+    -0.45969149342281107
+  ],
+  "calibration_threshold": null,
+  "composition": {
+    "clean_fit": 4590,
+    "fit_structures": 1565,
+    "novel_rows": 2174,
+    "distinct_novel_programs": 1146,
+    "novel_correct": 12,
+    "max_steps": 6
+  },
+  "semantic_correct": 2,
+  "semantic_refused": 1,
+  "semantic_wrong": 21,
+  "semantic_total": 24,
+  "selected": 0,
+  "semantics_and_model_hash": true,
+  "contracts": {
+    "bindings.json": {
+      "passed": 8,
+      "total": 8
+    },
+    "invalid-programs.json": {
+      "passed": 7,
+      "total": 7
+    },
+    "input-contracts.json": {
+      "passed": 9,
+      "total": 9
+    }
+  },
+  "model_bounds": [
+    {
+      "name": "unknown_schema",
+      "rejected": true,
+      "bytes": 8045943
+    },
+    {
+      "name": "head_count",
+      "rejected": true,
+      "bytes": 4276140
+    },
+    {
+      "name": "weight_count",
+      "rejected": true,
+      "bytes": 8045943
+    },
+    {
+      "name": "nan",
+      "rejected": true,
+      "bytes": 8045948
+    },
+    {
+      "name": "oversized_provenance",
+      "rejected": true,
+      "bytes": 8046780
+    },
+    {
+      "name": "decimal_size_limit",
+      "rejected": true,
+      "bytes": 32000001
+    }
+  ],
+  "default_solve": {
+    "sample": {
+      "rows": 200,
+      "sha256": "dc6b9f8d10bcf64c23295e666e67edd63f10616ad9068b9b34458a87aa0a85bf"
+    },
+    "full": {
+      "rows": 4475,
+      "sha256": "5cf77234ace536a7f147c3a1bc4ac832a1052e2ac50c05ea232a1ce4a175eb98"
+    },
+    "synthetic": {
+      "rows": 3116,
+      "sha256": "ab818fdee8b4b383c8e0439dae83d9136926c6a5b4558c66033dfff4dac895ab"
+    }
+  },
+  "sample_replay_identical": true,
+  "binary_sha256": "7f8f6f8658cedde3590fbf7dd2e462cb88f505e3f0dcc22e6249dd1f9079c0d3",
+  "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+  "known_completed_worker_tokens": 161484271
+}

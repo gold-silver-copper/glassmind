@@ -40,7 +40,7 @@ Root21 CLI tests,10 facts tests, workspace fmt/all-target clippy/release and str
 d5f77ece135204e8b4839c01b2e69015b16164072274899125fe58c5fedbae89.
 Root workspace release reproduces those same bytes. Detailed raw logs remain
 WORK/coordinator/factverify-review/alias-revision; small summaries and hashes in
-parent/alias-revision. Remote publishing remains pending. No new data/model calls.
+parent/alias-revision. Published in PR37 (merge495d9f85e9d47380c93168867e3683a885618d47). No new data/model calls.
 
 ## Original independent review (preserved)
 
@@ -93,3 +93,8 @@ reproduces the47 single-line verification cases and18 session invariants unchang
 Combined24CLI+40English tests and workspace fmt/clippy/release/strict4smoke pass.
 Ordinary full2821 outputs were evaluated on the facts-only main above; subsequent
 coding.rs changes do not enter the talk/facts paths. No redundant full QA rerun.
+
+Published in [PR37](https://github.com/gold-silver-copper/glassmind/pull/37), reviewed
+heade240ae93b63c0ccb1d48ab403724820632d52345 with CI38134843165 successful.
+Original and final archives were reverified before removing the inactive worktree
+and temporary login link; raw runs and frozen binaries remain outside Git.

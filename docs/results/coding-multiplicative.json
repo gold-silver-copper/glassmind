@@ -1,0 +1,40 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no heldout or hidden-test inspection",
+  "total": 765,
+  "outcomes": {
+    "refused": 565,
+    "pass": 200
+  },
+  "all_previous_passes_retained": 200,
+  "regressions": [],
+  "outcome_changes": [],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "refused": 66,
+      "pass": 15
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "cf7a8a25c7d90d53e02ada1ca8fb66c7a7e2307b6416c91f506321e6927357ac",
+  "candidate_result_sha256": "c2f9fbd3aba3f11558e9872973b6fb0aa4d3714d7ce9c79d5f3a95e58b9625f6",
+  "binary_sha256": "825df340f06a81024d4620fee92cd5cea7a0813abd675cf3f2cfe59a15f63cc6",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06",
+  "native_contracts": "Original14 fixtures on coordinator revision:8new+1legacy exactnative,4negativeunchanged,1native-confirmedambiguitywithdrawal; original worker submission failed ambiguity and is retained."
+}

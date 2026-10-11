@@ -1,0 +1,199 @@
+[
+  {
+    "name": "signed_div_to_mul",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x: i32) -> i32 { x / 4 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(-100), -400);\nassert_eq!(scale(-1), -4);\nassert_eq!(scale(0), 0);\nassert_eq!(scale(1), 4);\nassert_eq!(scale(100), 400);\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "x / 4",
+    "new": "x * 4"
+  },
+  {
+    "name": "signed_mul_to_div",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x: i32) -> i32 { x * 4 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(-100), -25);\nassert_eq!(scale(-7), -1);\nassert_eq!(scale(0), 0);\nassert_eq!(scale(7), 1);\nassert_eq!(scale(100), 25);\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "x * 4",
+    "new": "x / 4"
+  },
+  {
+    "name": "unsigned_div_to_mul",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x: u16) -> u16 { x / 4 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(0), 0);\nassert_eq!(scale(1), 4);\nassert_eq!(scale(2), 8);\nassert_eq!(scale(16383), 65532);\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "x / 4",
+    "new": "x * 4"
+  },
+  {
+    "name": "unsigned_mul_to_div",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x: u16) -> u16 { x * 4 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(0), 0);\nassert_eq!(scale(1), 0);\nassert_eq!(scale(3), 0);\nassert_eq!(scale(16383), 4095);\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "x * 4",
+    "new": "x / 4"
+  },
+  {
+    "name": "float_div_to_mul",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x: f64) -> f64 { x / 4.0 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(-8.0), -32.0);\nassert_eq!(scale(-0.5), -2.0);\nassert_eq!(scale(0.0), 0.0);\nassert_eq!(scale(0.25), 1.0);\nassert_eq!(scale(8.0), 32.0);\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "x / 4.0",
+    "new": "x * 4.0"
+  },
+  {
+    "name": "float_mul_to_div",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x: f64) -> f64 { x * 4.0 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(-8.0), -2.0);\nassert_eq!(scale(-0.5), -0.125);\nassert_eq!(scale(0.0), 0.0);\nassert_eq!(scale(0.25), 0.0625);\nassert_eq!(scale(8.0), 2.0);\n}\n"
+    },
+    "file": "src/lib.rs",
+    "old": "x * 4.0",
+    "new": "x / 4.0"
+  },
+  {
+    "name": "module_unicode",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/units.rs": "pub fn scale(caf\u00e9: i64) -> i64 { caf\u00e9 / 4 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::units::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(-2), -8);\nassert_eq!(scale(0), 0);\nassert_eq!(scale(2), 8);\nassert_eq!(scale(100), 400);\n}\n",
+      "src/lib.rs": "pub mod units;\n"
+    },
+    "file": "src/units.rs",
+    "old": "caf\u00e9 / 4",
+    "new": "caf\u00e9 * 4"
+  },
+  {
+    "name": "module_signed_division",
+    "kind": "positive",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/units.rs": "pub fn scale(x: i64) -> i64 { x * 4 }\n// * / are not proposals here.\nconst _TEXT: &str = \"x * 4 / 4\";\n",
+      "tests/visible.rs": "use probe::units::scale;\n#[test] fn boundaries() {\nassert_eq!(scale(-99), -24);\nassert_eq!(scale(-1), 0);\nassert_eq!(scale(0), 0);\nassert_eq!(scale(1), 0);\nassert_eq!(scale(99), 24);\n}\n",
+      "src/lib.rs": "pub mod units;\n"
+    },
+    "file": "src/units.rs",
+    "old": "x * 4",
+    "new": "x / 4"
+  },
+  {
+    "name": "macro_exclusion",
+    "kind": "negative",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x:i32)->i32 { std::convert::identity({ macro_rules! calc { ($x:expr) => { $x * 4 }; } calc!(x) }) }\n",
+      "tests/visible.rs": "#[test] fn fails(){ assert_eq!(probe::scale(8),2); assert_eq!(probe::scale(4),1); }\n"
+    },
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "assignment_exclusion",
+    "kind": "negative",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(mut x:i32)->i32 { x *= 4; x }\n",
+      "tests/visible.rs": "#[test] fn fails(){ assert_eq!(probe::scale(8),2); }\n"
+    },
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "unsafe_zero_divisor",
+    "kind": "negative",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x:i32)->i32 { x * 0 }\n",
+      "tests/visible.rs": "#[test] fn fails(){ assert_eq!(probe::scale(0),0); assert_eq!(probe::scale(8),8); }\n"
+    },
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "two_edits_rollback",
+    "kind": "negative",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn a(x:i32)->i32 { x * 4 }\npub fn b(x:i32)->i32 { x * 4 }\n",
+      "tests/visible.rs": "#[test] fn fails(){ assert_eq!(probe::a(8),2); assert_eq!(probe::b(8),2); assert_eq!(probe::a(0),0); }\n"
+    },
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "compile_failed_candidate",
+    "kind": "negative",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Only;\nimpl std::ops::Mul<i32> for Only { type Output=i32; fn mul(self,r:i32)->i32 {r} }\npub fn scale()->i32 { Only * 4 }\n",
+      "tests/visible.rs": "#[test] fn fails(){ assert_eq!(probe::scale(),8); }\n"
+    },
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "test_exclusion",
+    "kind": "negative",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x:i32)->i32 { x }\n#[cfg(test)] mod helper;\n#[cfg(test)] mod inline { #[test] fn fails(){ assert_eq!(8*4,2); } }\n",
+      "tests/visible.rs": "#[test] fn fails(){ assert_eq!(8*4,2); }\n",
+      "src/helper.rs": "#[test] fn fails(){ assert_eq!(8*4,2); }\n"
+    },
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "old_cross_file_priority",
+    "kind": "legacy",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub mod early;\npub mod late;\n",
+      "tests/visible.rs": "#[test] fn works(){ assert_eq!(probe::early::f(4)+probe::late::g(4),9); }\n",
+      "src/early.rs": "pub fn f(x:i32)->i32 { x / 2 }\n",
+      "src/late.rs": "pub fn g(x:i32)->i32 { x - 3 }\n"
+    },
+    "file": "src/late.rs",
+    "old": "x - 3",
+    "new": "x + 3"
+  },
+  {
+    "name": "native_ambiguity",
+    "kind": "ambiguity",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x:i32)->i32 { x / 2 - 3 }\n",
+      "tests/visible.rs": "#[test] fn underconstrained(){ assert_eq!(probe::scale(4),5); }\n"
+    },
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null
+  }
+]

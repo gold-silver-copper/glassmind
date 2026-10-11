@@ -1,0 +1,86 @@
+[
+  {
+    "name": "scale_unsigned",
+    "source": "pub fn calc(x:u32)->u32{x / 6}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(3),18); assert_eq!(calc(11),66); } }\n",
+    "expected_source": "pub fn calc(x:u32)->u32{x * 6}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(3),18); assert_eq!(calc(11),66); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "share_unsigned",
+    "source": "pub fn calc(x:u32)->u32{x * 4}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(3),0); assert_eq!(calc(19),4); } }\n",
+    "expected_source": "pub fn calc(x:u32)->u32{x / 4}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(3),0); assert_eq!(calc(19),4); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "negative_multiplier",
+    "source": "pub fn calc(x:i32)->i32{x / -3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-4),12); assert_eq!(calc(7),-21); } }\n",
+    "expected_source": "pub fn calc(x:i32)->i32{x * -3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-4),12); assert_eq!(calc(7),-21); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "negative_divisor",
+    "source": "pub fn calc(x:i32)->i32{x * -3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-4),1); assert_eq!(calc(7),-2); } }\n",
+    "expected_source": "pub fn calc(x:i32)->i32{x / -3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-4),1); assert_eq!(calc(7),-2); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "float_product",
+    "source": "pub fn calc(x:f64)->f64{x / 2.5}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0.0),0.0); assert_eq!(calc(4.0),10.0); assert_eq!(calc(-2.0),-5.0); } }\n",
+    "expected_source": "pub fn calc(x:f64)->f64{x * 2.5}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0.0),0.0); assert_eq!(calc(4.0),10.0); assert_eq!(calc(-2.0),-5.0); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "float_quotient",
+    "source": "pub fn calc(x:f64)->f64{x * 2.5}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0.0),0.0); assert_eq!(calc(5.0),2.0); assert_eq!(calc(-10.0),-4.0); } }\n",
+    "expected_source": "pub fn calc(x:f64)->f64{x / 2.5}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0.0),0.0); assert_eq!(calc(5.0),2.0); assert_eq!(calc(-10.0),-4.0); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "nested_module",
+    "source": "pub mod inner { pub fn calc(x:usize)->usize{x * 3} }\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(inner::calc(0),0); assert_eq!(inner::calc(8),2); assert_eq!(inner::calc(12),4); } }\n",
+    "expected_source": "pub mod inner { pub fn calc(x:usize)->usize{x / 3} }\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(inner::calc(0),0); assert_eq!(inner::calc(8),2); assert_eq!(inner::calc(12),4); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "unicode_span",
+    "source": "pub fn calc(é:i64)->i64{ /* × café ÷ */ é / 7 }\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-3),-21); assert_eq!(calc(2),14); } }\n",
+    "expected_source": "pub fn calc(é:i64)->i64{ /* × café ÷ */ é * 7 }\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-3),-21); assert_eq!(calc(2),14); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "opaque_macro",
+    "source": "macro_rules! op { ($x:expr) => { $x / 6 }; } pub fn calc(x:u32)->u32{op!(x)}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(3),18); } }\n",
+    "expected_source": "macro_rules! op { ($x:expr) => { $x / 6 }; } pub fn calc(x:u32)->u32{op!(x)}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(3),18); } }\n",
+    "expected": "unchanged"
+  },
+  {
+    "name": "test_only_operator",
+    "source": "pub fn calc(x:u32)->u32{x}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(4), 4 * 2); } }\n",
+    "expected_source": "pub fn calc(x:u32)->u32{x}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(4), 4 * 2); } }\n",
+    "expected": "unchanged"
+  },
+  {
+    "name": "two_changes_required",
+    "source": "pub fn left(x:u32)->u32{x / 2} pub fn right(x:u32)->u32{x * 4}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(left(5),10); assert_eq!(right(9),2); } }\n",
+    "expected_source": "pub fn left(x:u32)->u32{x / 2} pub fn right(x:u32)->u32{x * 4}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(left(5),10); assert_eq!(right(9),2); } }\n",
+    "expected": "unchanged"
+  },
+  {
+    "name": "zero_divisor_rejected",
+    "source": "pub fn calc(x:i32)->i32{x * 0}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(3),1); } }\n",
+    "expected_source": "pub fn calc(x:i32)->i32{x * 0}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(3),1); } }\n",
+    "expected": "unchanged"
+  },
+  {
+    "name": "legacy_addition",
+    "source": "pub fn calc(x:i32)->i32{x - 3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),3); assert_eq!(calc(-4),-1); assert_eq!(calc(9),12); } }\n",
+    "expected_source": "pub fn calc(x:i32)->i32{x + 3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),3); assert_eq!(calc(-4),-1); assert_eq!(calc(9),12); } }\n",
+    "expected": "repair"
+  },
+  {
+    "name": "native_ambiguity",
+    "source": "pub fn calc(x:i32)->i32{x / 2 - 3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(4),5); } }\n",
+    "expected_source": "pub fn calc(x:i32)->i32{x / 2 - 3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(4),5); } }\n",
+    "expected": "ambiguous"
+  }
+]

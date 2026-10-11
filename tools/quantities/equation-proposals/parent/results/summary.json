@@ -1,0 +1,136 @@
+{
+  "binary_sha256": "f7b728e30ccdcce5f1b99b1d185f197e13fa6d2914cfe5b866376d3ac678fa4e",
+  "model_sha256": "5594aebe9ab9f29cb4e017a380a9119c3603bb2e4e85e272337f028c93f2abc6",
+  "semantic_correct": 2,
+  "semantic_refused": 15,
+  "semantic_total": 24,
+  "selected": 0,
+  "semantics_explicit": true,
+  "contracts": {
+    "bindings.json": {
+      "passed": 8,
+      "total": 8
+    },
+    "invalid-programs.json": {
+      "passed": 7,
+      "total": 7
+    },
+    "input-contracts.json": {
+      "passed": 9,
+      "total": 9
+    }
+  },
+  "model_bounds": [
+    {
+      "name": "unknown_schema",
+      "bytes": 1245034,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "wrong_idf_length",
+      "bytes": 1088998,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "nan_weight",
+      "bytes": 1245057,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "out_of_range_weight",
+      "bytes": 1245060,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "unknown_operation",
+      "bytes": 1245045,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "forward_reference",
+      "bytes": 1245046,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "oversized_provenance",
+      "bytes": 1245893,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "over_32MiB",
+      "bytes": 33554433,
+      "exit": 1,
+      "rejected": true,
+      "result": []
+    },
+    {
+      "name": "over_decimal_32MB",
+      "bytes": 32000001,
+      "exit": 0,
+      "rejected": false,
+      "result": [
+        {
+          "status": "proposed",
+          "semantics": "unverified",
+          "numbers": [
+            {
+              "start": 8,
+              "end": 9,
+              "literal": "2",
+              "value": "2"
+            },
+            {
+              "start": 15,
+              "end": 16,
+              "literal": "3",
+              "value": "3"
+            }
+          ],
+          "program": {
+            "steps": [
+              {
+                "op": "multiply",
+                "left": {
+                  "kind": "input",
+                  "index": 1
+                },
+                "right": {
+                  "kind": "constant",
+                  "index": 12
+                }
+              },
+              {
+                "op": "divide",
+                "left": {
+                  "kind": "step",
+                  "index": 0
+                },
+                "right": {
+                  "kind": "input",
+                  "index": 0
+                }
+              }
+            ]
+          },
+          "value": "150",
+          "score": 0.1977333138762025,
+          "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,521 @@
+diff --git i/crates/quantities/src/lib.rs w/crates/quantities/src/lib.rs
+index 33df6dd..f8be4b9 100644
+--- i/crates/quantities/src/lib.rs
++++ w/crates/quantities/src/lib.rs
+@@ -6,6 +6,7 @@ pub mod number_words;
+ mod parser;
+ mod percent;
+ mod percent_change;
++pub mod proposal;
+ mod ratio_total;
+ pub mod rational;
+ pub mod units;
+diff --git i/crates/quantities/src/main.rs w/crates/quantities/src/main.rs
+index c445efa..fa82b71 100644
+--- i/crates/quantities/src/main.rs
++++ w/crates/quantities/src/main.rs
+@@ -4,7 +4,37 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+     let args: Vec<String> = std::env::args().skip(1).collect();
+     let stdout = io::stdout();
+     let mut output = stdout.lock();
+-    if args.first().is_some_and(|s| s == "--jsonl") {
++    if args.first().is_some_and(|s| s == "--propose-model") {
++        let path = args.get(1).ok_or("missing model path")?;
++        let model = glassmind_quantities::proposal::Model::load(std::path::Path::new(path))?;
++        if args.get(2).is_some_and(|s| s == "--jsonl") && args.len() == 3 {
++            // Bound encoded rows before deserialization, including escaped input.
++            let mut input = io::stdin().lock();
++            loop {
++                let mut row = Vec::new();
++                let n = std::io::Read::take(&mut input, 32770).read_until(b'\n', &mut row)?;
++                if n == 0 {
++                    break;
++                }
++                if row.len() > 32768 {
++                    return Err("proposal JSONL row exceeds bound".into());
++                }
++                let question: String = serde_json::from_slice(&row)?;
++                serde_json::to_writer(&mut output, &model.propose(&question))?;
++                writeln!(output)?;
++            }
++        } else if args.len() == 3 {
++            serde_json::to_writer(
++                &mut output,
++                &model.propose(args.get(2).ok_or("missing question")?),
++            )?;
++            writeln!(output)?;
++        } else {
++            return Err(
++                "usage: --propose-model MODEL QUESTION | --propose-model MODEL --jsonl".into(),
++            );
++        }
++    } else if args.first().is_some_and(|s| s == "--jsonl") {
+         for line in io::stdin().lock().lines() {
+             let line = line?;
+             let question: String = serde_json::from_str(&line)?;
+diff --git 1/crates/quantities/src/proposal.rs 2/crates/quantities/src/proposal.rs
+new file mode 100644
+index 0000000..e4205ab
+--- /dev/null
++++ 2/crates/quantities/src/proposal.rs
+@@ -0,0 +1,324 @@
++//! Opt-in finite learned program proposals. Execution is not semantic verification.
++use crate::rational::{Rational, Result};
++use regex::Regex;
++use serde::{Deserialize, Serialize};
++use std::{
++    collections::{BTreeMap, BTreeSet},
++    io::Read,
++    path::Path,
++    sync::OnceLock,
++};
++
++pub const CONSTANTS: [&str; 20] = [
++    "0", "1", "2", "3", "4", "5", "6", "10", "12", "26", "52", "60", "100", "180", "360", "1000",
++    "3600", "0.25", "3.6", "1.6",
++];
++pub const FEATURES: usize = 8192;
++#[derive(Clone, Debug, Deserialize, Serialize)]
++#[serde(
++    tag = "kind",
++    content = "index",
++    rename_all = "snake_case",
++    deny_unknown_fields
++)]
++pub enum Arg {
++    Input(u8),
++    Step(u8),
++    Constant(u8),
++}
++#[derive(Clone, Debug, Deserialize, Serialize)]
++#[serde(rename_all = "snake_case")]
++pub enum Op {
++    Add,
++    Subtract,
++    Multiply,
++    Divide,
++}
++#[derive(Clone, Debug, Deserialize, Serialize)]
++#[serde(deny_unknown_fields)]
++pub struct Step {
++    pub op: Op,
++    pub left: Arg,
++    pub right: Arg,
++}
++#[derive(Clone, Debug, Deserialize, Serialize)]
++#[serde(deny_unknown_fields)]
++pub struct Program {
++    pub steps: Vec<Step>,
++}
++#[derive(Clone, Debug, Serialize)]
++pub struct Number {
++    pub start: usize,
++    pub end: usize,
++    pub literal: String,
++    pub value: String,
++}
++
++pub fn numbers(question: &str) -> Result<Vec<Number>> {
++    if question.len() > 4096 {
++        return Err("input exceeds 4096 bytes".into());
++    }
++    if question
++        .chars()
++        .any(|c| c.is_numeric() && !c.is_ascii_digit())
++    {
++        return Err("unsupported Unicode numeric spelling".into());
++    }
++    let lower = question.to_ascii_lowercase();
++    let unsupported = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand million billion dozen half quarter";
++    if lower
++        .split(|c: char| !c.is_ascii_alphabetic())
++        .any(|w| !w.is_empty() && unsupported.split(' ').any(|n| n == w))
++    {
++        return Err("unsupported number word".into());
++    }
++    static RE: OnceLock<Result<Regex>> = OnceLock::new();
++    let re = RE
++        .get_or_init(|| {
++            Regex::new(r"[+-]?(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\.[0-9]+)?|[+-]?\.[0-9]+")
++                .map_err(|e| e.to_string())
++        })
++        .as_ref()
++        .map_err(Clone::clone)?;
++    let mut result = Vec::new();
++    for m in re.find_iter(question) {
++        let prefix = &question[..m.start()];
++        let before = prefix.chars().next_back();
++        if prefix.trim_end().ends_with(['+', '-', '−', '–', '—']) {
++            return Err("unsupported separated or Unicode numeric sign".into());
++        }
++        let after = question[m.end()..].chars().next();
++        let bad_neighbor = |c: char| {
++            c.is_alphanumeric() || c == '_' || c == '.' || c == ',' || c == '+' || c == '-'
++        };
++        // A final sentence period or comma followed by whitespace is punctuation.
++        let punctuation = matches!(after, Some('.' | ','))
++            && question[m.end() + 1..]
++                .chars()
++                .next()
++                .is_none_or(char::is_whitespace);
++        if before.is_some_and(bad_neighbor) || (after.is_some_and(bad_neighbor) && !punctuation) {
++            return Err("unsupported numeric spelling or boundary".into());
++        }
++        let value: Rational = m.as_str().replace(',', "").parse()?;
++        result.push(Number {
++            start: m.start(),
++            end: m.end(),
++            literal: m.as_str().into(),
++            value: value.to_string(),
++        });
++        if result.len() > 16 {
++            return Err("more than 16 numeric slots".into());
++        }
++    }
++    // Every digit must belong to a retained literal.
++    if question
++        .char_indices()
++        .any(|(i, c)| c.is_ascii_digit() && !result.iter().any(|n| n.start <= i && i < n.end))
++    {
++        return Err("unbound digit".into());
++    }
++    Ok(result)
++}
++impl Program {
++    pub fn validate(&self) -> Result<()> {
++        if self.steps.is_empty() || self.steps.len() > 6 {
++            return Err("program must contain 1..6 steps".into());
++        }
++        for (i, s) in self.steps.iter().enumerate() {
++            for a in [&s.left, &s.right] {
++                let valid = match a {
++                    Arg::Input(n) => *n < 16,
++                    Arg::Step(n) => usize::from(*n) < i,
++                    Arg::Constant(n) => usize::from(*n) < CONSTANTS.len(),
++                };
++                if !valid {
++                    return Err("invalid or forward program reference".into());
++                }
++            }
++        }
++        Ok(())
++    }
++    pub fn execute(&self, question: &str) -> Result<(Vec<Number>, Rational)> {
++        self.validate()?;
++        let nums = numbers(question)?;
++        let inputs = nums
++            .iter()
++            .map(|n| n.value.parse::<Rational>())
++            .collect::<Result<Vec<_>>>()?;
++        let mut values: Vec<Rational> = Vec::new();
++        for s in &self.steps {
++            let get = |a: &Arg| -> Result<Rational> {
++                match a {
++                    Arg::Input(i) => inputs
++                        .get(usize::from(*i))
++                        .copied()
++                        .ok_or_else(|| "missing numeric slot".into()),
++                    Arg::Step(i) => values
++                        .get(usize::from(*i))
++                        .copied()
++                        .ok_or_else(|| "missing step".into()),
++                    Arg::Constant(i) => CONSTANTS
++                        .get(usize::from(*i))
++                        .ok_or("invalid constant")?
++                        .parse(),
++                }
++            };
++            let a = get(&s.left)?;
++            let b = get(&s.right)?;
++            values.push(match s.op {
++                Op::Add => a.checked_add(b),
++                Op::Subtract => a.checked_sub(b),
++                Op::Multiply => a.checked_mul(b),
++                Op::Divide => a.checked_div(b),
++            }?);
++        }
++        Ok((nums, *values.last().ok_or("empty program")?))
++    }
++}
++pub fn features(question: &str, number_count: usize) -> BTreeSet<usize> {
++    let lower = question.to_ascii_lowercase();
++    let words: Vec<_> = lower
++        .split(|c: char| !c.is_ascii_alphabetic())
++        .filter(|w| !w.is_empty())
++        .collect();
++    let hash = |s: &str| {
++        let mut h = 14695981039346656037_u64;
++        for b in s.bytes() {
++            h = (h ^ u64::from(b)).wrapping_mul(1099511628211);
++        }
++        (h as usize) % FEATURES
++    };
++    let mut out = BTreeSet::new();
++    for w in &words {
++        out.insert(hash(&format!("u:{w}")));
++    }
++    for w in words.windows(2) {
++        if let [a, b] = w {
++            out.insert(hash(&format!("b:{a} {b}")));
++        }
++    }
++    out.insert(hash(&format!("n:{number_count}")));
++    out
++}
++#[derive(Debug, Deserialize, Serialize)]
++#[serde(deny_unknown_fields)]
++pub struct Class {
++    pub program: Program,
++    pub weights: BTreeMap<usize, f64>,
++}
++#[derive(Debug, Deserialize, Serialize)]
++#[serde(deny_unknown_fields)]
++pub struct Model {
++    pub schema: String,
++    pub provenance: String,
++    pub idf: Vec<f64>,
++    pub classes: Vec<Class>,
++}
++#[derive(Debug, Serialize)]
++#[serde(tag = "status", rename_all = "snake_case")]
++pub enum Proposal {
++    Proposed {
++        semantics: &'static str,
++        numbers: Vec<Number>,
++        program: Program,
++        value: String,
++        score: f64,
++        model_provenance: String,
++    },
++    Refusal {
++        reason: String,
++    },
++}
++impl Model {
++    pub fn load(path: &Path) -> Result<Self> {
++        let f = std::fs::File::open(path).map_err(|e| e.to_string())?;
++        let mut bytes = Vec::new();
++        f.take(32 * 1024 * 1024 + 1)
++            .read_to_end(&mut bytes)
++            .map_err(|e| e.to_string())?;
++        Self::from_bytes(&bytes)
++    }
++    pub fn from_bytes(bytes: &[u8]) -> Result<Self> {
++        if bytes.len() > 32 * 1024 * 1024 {
++            return Err("model exceeds 32MiB".into());
++        }
++        let m: Self = serde_json::from_slice(bytes).map_err(|e| e.to_string())?;
++        m.validate()?;
++        Ok(m)
++    }
++    pub fn validate(&self) -> Result<()> {
++        if self.schema != "equation-centroid-v1"
++            || self.provenance.is_empty()
++            || self.provenance.len() > 1024
++            || self.idf.len() != FEATURES
++            || self.classes.is_empty()
++            || self.classes.len() > 512
++        {
++            return Err("invalid model shape".into());
++        }
++        if self
++            .idf
++            .iter()
++            .any(|v| !v.is_finite() || *v < 1.0 || *v > 32.0)
++        {
++            return Err("invalid idf".into());
++        }
++        for c in &self.classes {
++            c.program.validate()?;
++            if c.weights.is_empty()
++                || c.weights
++                    .iter()
++                    .any(|(i, v)| *i >= FEATURES || !v.is_finite() || *v < 0.0 || *v > 1.0)
++            {
++                return Err("invalid model weight".into());
++            }
++        }
++        Ok(())
++    }
++    pub fn propose(&self, question: &str) -> Proposal {
++        match self.propose_checked(question) {
++            Ok(p) => p,
++            Err(reason) => Proposal::Refusal { reason },
++        }
++    }
++    fn propose_checked(&self, question: &str) -> Result<Proposal> {
++        self.validate()?;
++        let nums = numbers(question)?;
++        let fs = features(question, nums.len());
++        let norm = fs
++            .iter()
++            .filter_map(|i| self.idf.get(*i))
++            .map(|v| v * v)
++            .sum::<f64>()
++            .sqrt();
++        let mut best: Option<(usize, f64)> = None;
++        for (i, c) in self.classes.iter().enumerate() {
++            let score = fs
++                .iter()
++                .map(|f| {
++                    c.weights.get(f).copied().unwrap_or(0.0)
++                        * self.idf.get(*f).copied().unwrap_or(0.0)
++                        / norm
++                })
++                .sum::<f64>();
++            if !score.is_finite() {
++                return Err("nonfinite score".into());
++            }
++            if best.is_none_or(|(_, s)| score > s) {
++                best = Some((i, score));
++            }
++        }
++        let (i, score) = best.ok_or("empty model")?;
++        let c = self.classes.get(i).ok_or("missing class")?;
++        let (numbers, value) = c.program.execute(question)?;
++        Ok(Proposal::Proposed {
++            semantics: "unverified",
++            numbers,
++            program: c.program.clone(),
++            value: value.to_string(),
++            score,
++            model_provenance: self.provenance.clone(),
++        })
++    }
++}
+diff --git 1/crates/quantities/examples/equation_executor.rs 2/crates/quantities/examples/equation_executor.rs
+new file mode 100644
+index 0000000..af2bdcf
+--- /dev/null
++++ 2/crates/quantities/examples/equation_executor.rs
+@@ -0,0 +1,30 @@
++//! Offline TRAIN annotation / lexical-baseline execution helper; not a question solver.
++use glassmind_quantities::proposal::{Program, numbers};
++use serde::Deserialize;
++use std::io::{self, BufRead};
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct Input {
++    question: String,
++    program: Option<Program>,
++}
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    for line in io::stdin().lock().lines() {
++        let input: Input = serde_json::from_str(&line?)?;
++        let out = if let Some(p) = input.program {
++            match p.execute(&input.question) {
++                Ok((n, v)) => {
++                    serde_json::json!({"status":"proposed","semantics":"unverified","numbers":n,"value":v.to_string(),"program":p})
++                }
++                Err(reason) => serde_json::json!({"status":"refusal","reason":reason}),
++            }
++        } else {
++            match numbers(&input.question) {
++                Ok(n) => serde_json::json!({"status":"bound","numbers":n}),
++                Err(reason) => serde_json::json!({"status":"refusal","reason":reason}),
++            }
++        };
++        println!("{}", serde_json::to_string(&out)?);
++    }
++    Ok(())
++}
+diff --git 1/crates/quantities/tests/proposals.rs 2/crates/quantities/tests/proposals.rs
+new file mode 100644
+index 0000000..fc30283
+--- /dev/null
++++ 2/crates/quantities/tests/proposals.rs
+@@ -0,0 +1,94 @@
++use glassmind_quantities::proposal::{Arg, FEATURES, Model, Op, Program, Step, numbers};
++fn divide(a: Arg, b: Arg) -> Program {
++    Program {
++        steps: vec![Step {
++            op: Op::Divide,
++            left: a,
++            right: b,
++        }],
++    }
++}
++#[test]
++fn source_spans_and_fraction_slots() {
++    let q = "Éva has 1,200.50 and 3/4.";
++    let ns = numbers(q).unwrap();
++    assert_eq!(
++        ns.iter().map(|n| n.value.as_str()).collect::<Vec<_>>(),
++        ["2401/2", "3", "4"]
++    );
++    for n in ns {
++        assert_eq!(&q[n.start..n.end], n.literal);
++    }
++    let (_, v) = divide(Arg::Input(1), Arg::Input(2)).execute(q).unwrap();
++    assert_eq!(v.to_string(), "3/4");
++}
++#[test]
++fn unsupported_spelling_and_limits_refuse() {
++    for q in [
++        "1e3 plus 2",
++        "2nd and 3",
++        "1,23 and 4",
++        "1.2.3",
++        "１２ plus 3",
++        "two and 2",
++        "1--2",
++        "−2",
++        "- 2",
++    ] {
++        assert!(numbers(q).is_err(), "{q}");
++    }
++    assert!(numbers(&"x".repeat(4097)).is_err());
++    assert!(numbers(&"1 ".repeat(17)).is_err());
++    assert!(numbers("-0.5 and +.25").is_ok());
++}
++#[test]
++fn exact_execution_bounds() {
++    assert!(
++        divide(Arg::Input(0), Arg::Input(1))
++            .execute("10 and 0")
++            .is_err()
++    );
++    assert!(
++        divide(Arg::Input(2), Arg::Constant(1))
++            .execute("10")
++            .is_err()
++    );
++    assert!(divide(Arg::Step(0), Arg::Constant(1)).validate().is_err());
++    assert!(
++        divide(Arg::Constant(20), Arg::Constant(1))
++            .validate()
++            .is_err()
++    );
++    assert!(Program { steps: vec![] }.validate().is_err());
++    let p = Program {
++        steps: vec![Step {
++            op: Op::Multiply,
++            left: Arg::Input(0),
++            right: Arg::Input(0),
++        }],
++    };
++    assert!(
++        p.execute("170141183460469231731687303715884105727")
++            .is_err()
++    );
++    assert!(serde_json::from_str::<Program>(r#"{"steps":[{"op":"power","left":{"kind":"input","index":0},"right":{"kind":"constant","index":1}}]}"#).is_err());
++}
++#[test]
++fn malformed_models_and_semantic_status() {
++    let mut m = Model {
++        schema: "equation-centroid-v1".into(),
++        provenance: "authored test".into(),
++        idf: vec![1.; FEATURES],
++        classes: vec![glassmind_quantities::proposal::Class {
++            program: divide(Arg::Input(0), Arg::Input(1)),
++            weights: std::collections::BTreeMap::from([(0, 1.)]),
++        }],
++    };
++    let out = serde_json::to_value(m.propose("8 and 2")).unwrap();
++    assert_eq!(out["status"], "proposed");
++    assert_eq!(out["semantics"], "unverified");
++    assert_eq!(out["value"], "4");
++    m.idf[0] = f64::NAN;
++    assert!(m.validate().is_err());
++    assert!(Model::from_bytes(&vec![b' '; 32 * 1024 * 1024 + 1]).is_err());
++}

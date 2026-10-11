@@ -11,6 +11,11 @@ goal. Reading, reviewing or editing this file does not activate it. Old
 checkpoint text saying "goal active" is historical evidence, not permission
 to override my latest stop, pause or request to work on something else.
 
+When activated through `/goal`, use that existing goal; do not create a
+second goal or launch a separate unattended supervisor to keep yourself
+alive. Let the goal runner manage continuations. On each continuation,
+recover current state and carry out the next useful work.
+
 Work in `/home/gsc/code/glassmind`, GitHub `gold-silver-copper/glassmind`.
 Continuously make glassmind a more capable, reliable general semantic
 language system and coding agent. Improve coding, conversation, reasoning,
@@ -249,6 +254,11 @@ Append a five-line update to the existing external progress log every few
 hours and at a major milestone. Keep README scores consistent at merges.
 
 Give brief progress updates about findings and decisions while working.
+Each active turn should advance implementation, an experiment, validation
+or delivery whenever an authorized path is available. Reading checkpoints,
+rewriting plans and reporting status alone are not a development cycle.
+While a job runs, advance independent work; when only that job can unblock
+progress, monitor its existing handle instead of starting duplicate jobs.
 An ordinary turn-ending summary is a checkpoint, not a reason to stop:
 preserve the active goal and resume from the recorded next action. Do not
 restart completed investigations after compaction or claim a process is

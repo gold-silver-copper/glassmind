@@ -1,0 +1,1320 @@
+[
+  {
+    "name": "semantic_0",
+    "question": "How much do 4 notebooks cost at 9 credits each?",
+    "value": "36",
+    "family": "product",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 13,
+          "literal": "4",
+          "start": 12,
+          "value": "4"
+        },
+        {
+          "end": 33,
+          "literal": "9",
+          "start": 32,
+          "value": "9"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.9255634302831551,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "4/9"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_1",
+    "question": "A box holds 7 packets with 6 cards in each packet. How many cards are in the box?",
+    "value": "42",
+    "family": "product",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 13,
+          "literal": "7",
+          "start": 12,
+          "value": "7"
+        },
+        {
+          "end": 28,
+          "literal": "6",
+          "start": 27,
+          "value": "6"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.6504133115480295,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "7/6"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_2",
+    "question": "Mira has 13 marbles and receives 8 more. How many marbles does she have now?",
+    "value": "21",
+    "family": "sum",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 11,
+          "literal": "13",
+          "start": 9,
+          "value": "13"
+        },
+        {
+          "end": 34,
+          "literal": "8",
+          "start": 33,
+          "value": "8"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "add",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "divide",
+            "right": {
+              "index": 2,
+              "kind": "constant"
+            }
+          }
+        ]
+      },
+      "score": -0.6977148075612646,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "21/2"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_3",
+    "question": "There are 24 red tiles and 17 blue tiles. How many tiles are there altogether?",
+    "value": "41",
+    "family": "sum",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 12,
+          "literal": "24",
+          "start": 10,
+          "value": "24"
+        },
+        {
+          "end": 29,
+          "literal": "17",
+          "start": 27,
+          "value": "17"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "add",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.7188069348200907,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "41"
+    },
+    "correct": true,
+    "selected": false
+  },
+  {
+    "name": "semantic_4",
+    "question": "A basket held 31 pears. After 12 pears were sold, how many remain?",
+    "value": "19",
+    "family": "difference",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 16,
+          "literal": "31",
+          "start": 14,
+          "value": "31"
+        },
+        {
+          "end": 32,
+          "literal": "12",
+          "start": 30,
+          "value": "12"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "subtract",
+            "right": {
+              "index": 1,
+              "kind": "constant"
+            }
+          }
+        ]
+      },
+      "score": -0.8597491308918555,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "19/12"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_5",
+    "question": "A tank contains 45 liters and loses 16 liters. How many liters remain?",
+    "value": "29",
+    "family": "difference",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 18,
+          "literal": "45",
+          "start": 16,
+          "value": "45"
+        },
+        {
+          "end": 38,
+          "literal": "16",
+          "start": 36,
+          "value": "16"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.6361541845702163,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "45/16"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_6",
+    "question": "Share 84 counters equally among 7 children. How many counters does each child receive?",
+    "value": "12",
+    "family": "division",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 8,
+          "literal": "84",
+          "start": 6,
+          "value": "84"
+        },
+        {
+          "end": 33,
+          "literal": "7",
+          "start": 32,
+          "value": "7"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.7801346765049777,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "12"
+    },
+    "correct": true,
+    "selected": false
+  },
+  {
+    "name": "semantic_7",
+    "question": "A 96 centimeter ribbon is cut into 8 equal pieces. How long is each piece?",
+    "value": "12",
+    "family": "division",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 4,
+          "literal": "96",
+          "start": 2,
+          "value": "96"
+        },
+        {
+          "end": 36,
+          "literal": "8",
+          "start": 35,
+          "value": "8"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 0,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.668082472214701,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "1152"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_8",
+    "question": "What is 25 percent of 80?",
+    "value": "20",
+    "family": "percent",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 10,
+          "literal": "25",
+          "start": 8,
+          "value": "25"
+        },
+        {
+          "end": 24,
+          "literal": "80",
+          "start": 22,
+          "value": "80"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 12,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 1,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 12,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.5446388615611509,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "5/16"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_9",
+    "question": "What is 15 percent of 240?",
+    "value": "36",
+    "family": "percent",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 10,
+          "literal": "15",
+          "start": 8,
+          "value": "15"
+        },
+        {
+          "end": 25,
+          "literal": "240",
+          "start": 22,
+          "value": "240"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 12,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 1,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 12,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.5446388615611509,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "1/16"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_10",
+    "question": "What fraction of 60 is 18?",
+    "value": "3/10",
+    "family": "ratio",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 19,
+          "literal": "60",
+          "start": 17,
+          "value": "60"
+        },
+        {
+          "end": 25,
+          "literal": "18",
+          "start": 23,
+          "value": "18"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.6367950495504874,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "10/3"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_11",
+    "question": "What fraction of 18 is 60?",
+    "value": "10/3",
+    "family": "ratio_reverse",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 19,
+          "literal": "18",
+          "start": 17,
+          "value": "18"
+        },
+        {
+          "end": 25,
+          "literal": "60",
+          "start": 23,
+          "value": "60"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.7475007585718639,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "3/10"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_12",
+    "question": "Lena has 19 stamps, which is 6 more than Omar has. How many stamps does Omar have?",
+    "value": "13",
+    "family": "comparative",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 11,
+          "literal": "19",
+          "start": 9,
+          "value": "19"
+        },
+        {
+          "end": 30,
+          "literal": "6",
+          "start": 29,
+          "value": "6"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 1,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 12,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 0,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.8519000454856442,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "57/50"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_13",
+    "question": "Lena has 19 stamps, which is 6 fewer than Omar has. How many stamps does Omar have?",
+    "value": "25",
+    "family": "comparative_reverse",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 11,
+          "literal": "19",
+          "start": 9,
+          "value": "19"
+        },
+        {
+          "end": 30,
+          "literal": "6",
+          "start": 29,
+          "value": "6"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 0,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.7861805759934419,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "361/6"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_14",
+    "question": "A train travels 180 kilometers in 3 hours. What is its average speed in kilometers per hour?",
+    "value": "60",
+    "family": "rate",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 19,
+          "literal": "180",
+          "start": 16,
+          "value": "180"
+        },
+        {
+          "end": 35,
+          "literal": "3",
+          "start": 34,
+          "value": "3"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "divide",
+            "right": {
+              "index": 16,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 1,
+              "kind": "step"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.6478234166338763,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_15",
+    "question": "A train travels at 60 kilometers per hour for 3 hours. How far does it travel in kilometers?",
+    "value": "180",
+    "family": "rate_reverse",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 21,
+          "literal": "60",
+          "start": 19,
+          "value": "60"
+        },
+        {
+          "end": 47,
+          "literal": "3",
+          "start": 46,
+          "value": "3"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 11,
+              "kind": "constant"
+            }
+          }
+        ]
+      },
+      "score": -0.8051107880584477,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "1200"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_16",
+    "question": "What is the average of 12, 18 and 24?",
+    "value": "18",
+    "family": "average",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 25,
+          "literal": "12",
+          "start": 23,
+          "value": "12"
+        },
+        {
+          "end": 29,
+          "literal": "18",
+          "start": 27,
+          "value": "18"
+        },
+        {
+          "end": 36,
+          "literal": "24",
+          "start": 34,
+          "value": "24"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "add",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 2,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 2,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 2,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 0,
+              "kind": "step"
+            }
+          },
+          {
+            "left": {
+              "index": 2,
+              "kind": "step"
+            },
+            "op": "add",
+            "right": {
+              "index": 1,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.7139903546225258,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "768"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_17",
+    "question": "What is the average of 6, 10 and 20?",
+    "value": "12",
+    "family": "average",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 24,
+          "literal": "6",
+          "start": 23,
+          "value": "6"
+        },
+        {
+          "end": 28,
+          "literal": "10",
+          "start": 26,
+          "value": "10"
+        },
+        {
+          "end": 35,
+          "literal": "20",
+          "start": 33,
+          "value": "20"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "add",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 2,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 2,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 2,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 0,
+              "kind": "step"
+            }
+          },
+          {
+            "left": {
+              "index": 2,
+              "kind": "step"
+            },
+            "op": "add",
+            "right": {
+              "index": 1,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.7139903546225258,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "360"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_18",
+    "question": "Five notebooks cost 30 credits. If the notebooks are identical, what do 8 notebooks cost?",
+    "value": "48",
+    "family": "number_word_multistep",
+    "result": {
+      "reason": "unsupported number word",
+      "status": "refusal"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_19",
+    "question": "A pack of 5 notebooks costs 30 credits. What do 8 notebooks cost at the same rate?",
+    "value": "48",
+    "family": "multistep",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 11,
+          "literal": "5",
+          "start": 10,
+          "value": "5"
+        },
+        {
+          "end": 30,
+          "literal": "30",
+          "start": 28,
+          "value": "30"
+        },
+        {
+          "end": 49,
+          "literal": "8",
+          "start": 48,
+          "value": "8"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "subtract",
+            "right": {
+              "index": 0,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 1,
+              "kind": "step"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.7353542482475488,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_20",
+    "question": "Increase 80 by 25 percent. What is the result?",
+    "value": "100",
+    "family": "percent_increase",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 11,
+          "literal": "80",
+          "start": 9,
+          "value": "80"
+        },
+        {
+          "end": 17,
+          "literal": "25",
+          "start": 15,
+          "value": "25"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 12,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 1,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 0,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.5431867248133108,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "20"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_21",
+    "question": "Decrease 200 by 15 percent. What is the result?",
+    "value": "170",
+    "family": "percent_decrease",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 12,
+          "literal": "200",
+          "start": 9,
+          "value": "200"
+        },
+        {
+          "end": 18,
+          "literal": "15",
+          "start": 16,
+          "value": "15"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 12,
+              "kind": "constant"
+            }
+          },
+          {
+            "left": {
+              "index": 1,
+              "kind": "input"
+            },
+            "op": "multiply",
+            "right": {
+              "index": 0,
+              "kind": "step"
+            }
+          }
+        ]
+      },
+      "score": -0.572521489151353,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "30"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_22",
+    "question": "Café Soleil sold 9 cakes in the morning and 14 in the afternoon. How many cakes were sold?",
+    "value": "23",
+    "family": "unicode_sum",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 19,
+          "literal": "9",
+          "start": 18,
+          "value": "9"
+        },
+        {
+          "end": 47,
+          "literal": "14",
+          "start": 45,
+          "value": "14"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "subtract",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          },
+          {
+            "left": {
+              "index": 0,
+              "kind": "step"
+            },
+            "op": "divide",
+            "right": {
+              "index": 2,
+              "kind": "constant"
+            }
+          }
+        ]
+      },
+      "score": -0.6606645278651581,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "-5/2"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_23",
+    "question": "A shop has 9 red cups and 9 blue cups. How many cups does it have in total?",
+    "value": "18",
+    "family": "repeated_numbers",
+    "result": {
+      "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+      "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+      "numbers": [
+        {
+          "end": 12,
+          "literal": "9",
+          "start": 11,
+          "value": "9"
+        },
+        {
+          "end": 27,
+          "literal": "9",
+          "start": 26,
+          "value": "9"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "left": {
+              "index": 0,
+              "kind": "input"
+            },
+            "op": "divide",
+            "right": {
+              "index": 1,
+              "kind": "input"
+            }
+          }
+        ]
+      },
+      "score": -0.7341000359015948,
+      "semantics": "unverified",
+      "status": "proposed",
+      "value": "1"
+    },
+    "correct": false,
+    "selected": false
+  }
+]

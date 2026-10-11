@@ -1,0 +1,91 @@
+diff --git c/crates/world-rust/src/ambiguity.rs w/crates/world-rust/src/ambiguity.rs
+index 6a33ea6..196eef0 100644
+--- c/crates/world-rust/src/ambiguity.rs
++++ w/crates/world-rust/src/ambiguity.rs
+@@ -282,10 +282,26 @@ pub(crate) fn difference(
+         return None;
+     }
+     // Imports/type declarations can shadow primitive names or overload operators.
++    // A plain inline test module has its own lexical scope. It must not disable
++    // analysis of a sibling function; native probes still confirm both outputs
++    // in the complete original package, including these unchanged tests.
++    let test_module = |item: &syn::Item| {
++        let syn::Item::Mod(module) = item else {
++            return false;
++        };
++        let [attr] = module.attrs.as_slice() else {
++            return false;
++        };
++        module.content.is_some()
++            && attr.path().is_ident("cfg")
++            && attr
++                .parse_args::<syn::Path>()
++                .is_ok_and(|path| path.is_ident("test"))
++    };
+     if a.items
+         .iter()
+         .chain(&b.items)
+-        .any(|i| !matches!(i, syn::Item::Fn(_)))
++        .any(|i| !matches!(i, syn::Item::Fn(_)) && !test_module(i))
+     {
+         return None;
+     }
+@@ -402,4 +418,31 @@ mod tests {
+             assert!(difference(code, b, 1, 1).is_none(), "{code}");
+         }
+     }
++
++    #[test]
++    fn sibling_inline_tests_do_not_hide_scalar_disagreement() {
++        let left = "fn f(x: i32) -> i32 { x / 2 + 3 }\n";
++        let right = "fn f(x: i32) -> i32 { x * 2 - 3 }\n";
++        let tests =
++            "#[cfg(test)] mod tests { use super::*; #[test] fn check() { assert_eq!(f(4), 5); } }";
++        assert!(difference(&format!("{left}{tests}"), &format!("{right}{tests}"), 1, 1).is_some());
++        for sibling in [
++            "mod tests {}",
++            "#[cfg(test)] mod tests;",
++            "#[cfg(test)] #[macro_use] mod tests {}",
++            "#[cfg(any(test, feature = \"extra\"))] mod tests {}",
++            "type i32 = u32;",
++        ] {
++            assert!(
++                difference(
++                    &format!("{left}{sibling}"),
++                    &format!("{right}{sibling}"),
++                    1,
++                    1
++                )
++                .is_none(),
++                "{sibling}"
++            );
++        }
++    }
+ }
+diff --git c/crates/world-rust/src/checks.rs w/crates/world-rust/src/checks.rs
+index 38e9e54..22917c2 100644
+--- c/crates/world-rust/src/checks.rs
++++ w/crates/world-rust/src/checks.rs
+@@ -766,6 +766,9 @@ pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
+         let text = std::fs::read_to_string(root.join(&f)).unwrap_or_default();
+         changes.extend(crate::slips::proposals(source, &f.to_string_lossy(), &text));
+     }
++    // Stable partition across ALL files and lines, not just each source file.
++    // New operators must never displace or consume the budget of old proposals.
++    changes.sort_by_key(|change| matches!(change.old.as_str(), "*" | "/"));
+     changes
+ }
+ 
+diff --git c/crates/world-rust/src/slips.rs w/crates/world-rust/src/slips.rs
+index a2f1a0a..75bda1a 100644
+--- c/crates/world-rust/src/slips.rs
++++ w/crates/world-rust/src/slips.rs
+@@ -302,6 +302,8 @@ impl<'ast> Visit<'ast> for Slips<'_> {
+         let new = match node.op {
+             Add(_) => Some("-"),
+             Sub(_) => Some("+"),
++            Mul(_) => Some("/"),
++            Div(_) => Some("*"),
+             Lt(_) => Some("<="),
+             Le(_) => Some("<"),
+             Gt(_) => Some(">="),

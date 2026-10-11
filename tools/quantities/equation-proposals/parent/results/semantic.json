@@ -1,0 +1,655 @@
+[
+  {
+    "name": "semantic_0",
+    "question": "How much do 4 notebooks cost at 9 credits each?",
+    "value": "36",
+    "family": "product",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_1",
+    "question": "A box holds 7 packets with 6 cards in each packet. How many cards are in the box?",
+    "value": "42",
+    "family": "product",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 12,
+          "end": 13,
+          "literal": "7",
+          "value": "7"
+        },
+        {
+          "start": 27,
+          "end": 28,
+          "literal": "6",
+          "value": "6"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "add",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          }
+        ]
+      },
+      "value": "13",
+      "score": 0.1683907056790726,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_2",
+    "question": "Mira has 13 marbles and receives 8 more. How many marbles does she have now?",
+    "value": "21",
+    "family": "sum",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 9,
+          "end": 11,
+          "literal": "13",
+          "value": "13"
+        },
+        {
+          "start": 33,
+          "end": 34,
+          "literal": "8",
+          "value": "8"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "divide",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          }
+        ]
+      },
+      "value": "13/8",
+      "score": 0.10021995796660775,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_3",
+    "question": "There are 24 red tiles and 17 blue tiles. How many tiles are there altogether?",
+    "value": "41",
+    "family": "sum",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_4",
+    "question": "A basket held 31 pears. After 12 pears were sold, how many remain?",
+    "value": "19",
+    "family": "difference",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 14,
+          "end": 16,
+          "literal": "31",
+          "value": "31"
+        },
+        {
+          "start": 30,
+          "end": 32,
+          "literal": "12",
+          "value": "12"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "add",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          },
+          {
+            "op": "subtract",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "constant",
+              "index": 1
+            }
+          }
+        ]
+      },
+      "value": "42",
+      "score": 0.1339381088840755,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_5",
+    "question": "A tank contains 45 liters and loses 16 liters. How many liters remain?",
+    "value": "29",
+    "family": "difference",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_6",
+    "question": "Share 84 counters equally among 7 children. How many counters does each child receive?",
+    "value": "12",
+    "family": "division",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_7",
+    "question": "A 96 centimeter ribbon is cut into 8 equal pieces. How long is each piece?",
+    "value": "12",
+    "family": "division",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 2,
+          "end": 4,
+          "literal": "96",
+          "value": "96"
+        },
+        {
+          "start": 35,
+          "end": 36,
+          "literal": "8",
+          "value": "8"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "input",
+              "index": 1
+            },
+            "right": {
+              "kind": "constant",
+              "index": 12
+            }
+          },
+          {
+            "op": "divide",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 0
+            }
+          }
+        ]
+      },
+      "value": "25/3",
+      "score": 0.10659606122783208,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_8",
+    "question": "What is 25 percent of 80?",
+    "value": "20",
+    "family": "percent",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 8,
+          "end": 10,
+          "literal": "25",
+          "value": "25"
+        },
+        {
+          "start": 22,
+          "end": 24,
+          "literal": "80",
+          "value": "80"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          },
+          {
+            "op": "divide",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "constant",
+              "index": 12
+            }
+          }
+        ]
+      },
+      "value": "20",
+      "score": 0.547108995521676,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": true,
+    "selected": false
+  },
+  {
+    "name": "semantic_9",
+    "question": "What is 15 percent of 240?",
+    "value": "36",
+    "family": "percent",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 8,
+          "end": 10,
+          "literal": "15",
+          "value": "15"
+        },
+        {
+          "start": 22,
+          "end": 25,
+          "literal": "240",
+          "value": "240"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          },
+          {
+            "op": "divide",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "constant",
+              "index": 12
+            }
+          }
+        ]
+      },
+      "value": "36",
+      "score": 0.547108995521676,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": true,
+    "selected": false
+  },
+  {
+    "name": "semantic_10",
+    "question": "What fraction of 60 is 18?",
+    "value": "3/10",
+    "family": "ratio",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 17,
+          "end": 19,
+          "literal": "60",
+          "value": "60"
+        },
+        {
+          "start": 23,
+          "end": 25,
+          "literal": "18",
+          "value": "18"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "input",
+              "index": 1
+            },
+            "right": {
+              "kind": "constant",
+              "index": 12
+            }
+          },
+          {
+            "op": "divide",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 0
+            }
+          }
+        ]
+      },
+      "value": "30",
+      "score": 0.24344390964987708,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_11",
+    "question": "What fraction of 18 is 60?",
+    "value": "10/3",
+    "family": "ratio_reverse",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 17,
+          "end": 19,
+          "literal": "18",
+          "value": "18"
+        },
+        {
+          "start": 23,
+          "end": 25,
+          "literal": "60",
+          "value": "60"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "input",
+              "index": 1
+            },
+            "right": {
+              "kind": "constant",
+              "index": 12
+            }
+          },
+          {
+            "op": "divide",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 0
+            }
+          }
+        ]
+      },
+      "value": "1000/3",
+      "score": 0.24344390964987708,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_12",
+    "question": "Lena has 19 stamps, which is 6 more than Omar has. How many stamps does Omar have?",
+    "value": "13",
+    "family": "comparative",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_13",
+    "question": "Lena has 19 stamps, which is 6 fewer than Omar has. How many stamps does Omar have?",
+    "value": "25",
+    "family": "comparative_reverse",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_14",
+    "question": "A train travels 180 kilometers in 3 hours. What is its average speed in kilometers per hour?",
+    "value": "60",
+    "family": "rate",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_15",
+    "question": "A train travels at 60 kilometers per hour for 3 hours. How far does it travel in kilometers?",
+    "value": "180",
+    "family": "rate_reverse",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_16",
+    "question": "What is the average of 12, 18 and 24?",
+    "value": "18",
+    "family": "average",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_17",
+    "question": "What is the average of 6, 10 and 20?",
+    "value": "12",
+    "family": "average",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_18",
+    "question": "Five notebooks cost 30 credits. If the notebooks are identical, what do 8 notebooks cost?",
+    "value": "48",
+    "family": "number_word_multistep",
+    "result": {
+      "status": "refusal",
+      "reason": "unsupported number word"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_19",
+    "question": "A pack of 5 notebooks costs 30 credits. What do 8 notebooks cost at the same rate?",
+    "value": "48",
+    "family": "multistep",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_20",
+    "question": "Increase 80 by 25 percent. What is the result?",
+    "value": "100",
+    "family": "percent_increase",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_21",
+    "question": "Decrease 200 by 15 percent. What is the result?",
+    "value": "170",
+    "family": "percent_decrease",
+    "result": {
+      "status": "proposed",
+      "semantics": "unverified",
+      "numbers": [
+        {
+          "start": 9,
+          "end": 12,
+          "literal": "200",
+          "value": "200"
+        },
+        {
+          "start": 16,
+          "end": 18,
+          "literal": "15",
+          "value": "15"
+        }
+      ],
+      "program": {
+        "steps": [
+          {
+            "op": "multiply",
+            "left": {
+              "kind": "input",
+              "index": 0
+            },
+            "right": {
+              "kind": "input",
+              "index": 1
+            }
+          },
+          {
+            "op": "divide",
+            "left": {
+              "kind": "step",
+              "index": 0
+            },
+            "right": {
+              "kind": "constant",
+              "index": 12
+            }
+          }
+        ]
+      },
+      "value": "30",
+      "score": 0.18161996107261985,
+      "model_provenance": "TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; plan b11ffa00682002b50f82ff788aad3494949e7fee3d72f213ffaf6d14a6026303; grouped-fit-only; finite-centroid-v1"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_22",
+    "question": "Café Soleil sold 9 cakes in the morning and 14 in the afternoon. How many cakes were sold?",
+    "value": "23",
+    "family": "unicode_sum",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  },
+  {
+    "name": "semantic_23",
+    "question": "A shop has 9 red cups and 9 blue cups. How many cups does it have in total?",
+    "value": "18",
+    "family": "repeated_numbers",
+    "result": {
+      "status": "refusal",
+      "reason": "missing numeric slot"
+    },
+    "correct": false,
+    "selected": false
+  }
+]

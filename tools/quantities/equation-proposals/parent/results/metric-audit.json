@@ -1,0 +1,76 @@
+{
+  "manifest_paths_verified": 58,
+  "fit_rows": 23912,
+  "calibration_rows": 5925,
+  "fit_groups": 9521,
+  "calibration_groups": 2346,
+  "disjoint_groups": true,
+  "clean_fit": 4590,
+  "unrestricted_programs": 1565,
+  "candidate_programs": 512,
+  "raw_full": {
+    "candidate": {
+      "refused": 1878,
+      "unscorable": 919,
+      "correct": 499,
+      "wrong": 1179
+    },
+    "lexical": {
+      "wrong": 1132,
+      "refused": 1747,
+      "unscorable": 933,
+      "correct": 663
+    },
+    "lexical_restricted": {
+      "refused": 1850,
+      "wrong": 1183,
+      "unscorable": 924,
+      "correct": 518
+    }
+  },
+  "calibration_frontiers": {
+    "candidate": {
+      "threshold": null,
+      "best_precision_min30": [
+        0.5260663507109005,
+        211,
+        111,
+        0.8433824720822717
+      ]
+    },
+    "lexical": {
+      "threshold": null,
+      "best_precision_min30": [
+        0.43320610687022904,
+        524,
+        227,
+        0.9191734678375423
+      ]
+    },
+    "lexical_restricted": {
+      "threshold": null,
+      "best_precision_min30": [
+        0.5102040816326531,
+        98,
+        50,
+        1.0
+      ]
+    }
+  },
+  "default_solve_compatibility": {
+    "sample": {
+      "rows": 200,
+      "sha256": "dc6b9f8d10bcf64c23295e666e67edd63f10616ad9068b9b34458a87aa0a85bf"
+    },
+    "full": {
+      "rows": 4475,
+      "sha256": "5cf77234ace536a7f147c3a1bc4ac832a1052e2ac50c05ea232a1ce4a175eb98"
+    },
+    "synthetic": {
+      "rows": 3116,
+      "sha256": "ab818fdee8b4b383c8e0439dae83d9136926c6a5b4558c66033dfff4dac895ab"
+    }
+  },
+  "sample_replay_rows": 200,
+  "sample_replay_identical": true
+}

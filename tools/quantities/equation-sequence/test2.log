@@ -1,0 +1,13 @@
+Running as unit: run-p2112220-i98433408.scope; invocation ID: efc2727f981444fabc894fcba68623da
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.76s
+     Running tests/sequence.rs (/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/target/debug/deps/sequence-37fd60e2482b5004)
+
+running 4 tests
+test source_spans_and_fraction_slots ... ok
+test exact_execution_bounds ... ok
+test unsupported_spelling_and_limits_refuse ... ok
+test model_and_feature_state_contracts ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+

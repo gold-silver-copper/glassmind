@@ -1,0 +1,459 @@
+{
+  "bindings.json": [
+    {
+      "name": "binding_0",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "numbers": [
+          {
+            "end": 23,
+            "literal": "-3",
+            "start": 21,
+            "value": "-3"
+          },
+          {
+            "end": 28,
+            "literal": "5",
+            "start": 27,
+            "value": "5"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 1,
+                "kind": "input"
+              },
+              "op": "subtract",
+              "right": {
+                "index": 0,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "8"
+      }
+    },
+    {
+      "name": "binding_1",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "numbers": [
+          {
+            "end": 5,
+            "literal": "3",
+            "start": 4,
+            "value": "3"
+          },
+          {
+            "end": 25,
+            "literal": "2,500",
+            "start": 20,
+            "value": "2500"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "multiply",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "7500"
+      }
+    },
+    {
+      "name": "binding_2",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "numbers": [
+          {
+            "end": 11,
+            "literal": "0.5",
+            "start": 8,
+            "value": "1/2"
+          },
+          {
+            "end": 21,
+            "literal": "1.25",
+            "start": 17,
+            "value": "5/4"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "add",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "7/4"
+      }
+    },
+    {
+      "name": "binding_3",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "numbers": [
+          {
+            "end": 9,
+            "literal": "3",
+            "start": 8,
+            "value": "3"
+          },
+          {
+            "end": 13,
+            "literal": "5",
+            "start": 12,
+            "value": "5"
+          },
+          {
+            "end": 20,
+            "literal": "100",
+            "start": 17,
+            "value": "100"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "step"
+              },
+              "op": "multiply",
+              "right": {
+                "index": 2,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "60"
+      }
+    },
+    {
+      "name": "binding_4",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "numbers": [
+          {
+            "end": 11,
+            "literal": "9",
+            "start": 10,
+            "value": "9"
+          },
+          {
+            "end": 29,
+            "literal": "14",
+            "start": 27,
+            "value": "14"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "add",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "23"
+      }
+    },
+    {
+      "name": "binding_5",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "numbers": [
+          {
+            "end": 9,
+            "literal": "9",
+            "start": 8,
+            "value": "9"
+          },
+          {
+            "end": 16,
+            "literal": "9",
+            "start": 15,
+            "value": "9"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "add",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "18"
+      }
+    },
+    {
+      "name": "binding_6",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "numbers": [
+          {
+            "end": 9,
+            "literal": "5",
+            "start": 8,
+            "value": "5"
+          },
+          {
+            "end": 24,
+            "literal": "120",
+            "start": 21,
+            "value": "120"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "multiply",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "step"
+              },
+              "op": "divide",
+              "right": {
+                "index": 12,
+                "kind": "constant"
+              }
+            }
+          ]
+        },
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "6"
+      }
+    },
+    {
+      "name": "binding_7",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "division by zero",
+        "status": "refusal"
+      }
+    }
+  ],
+  "invalid-programs.json": [
+    {
+      "name": "forward",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "invalid or forward program reference",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "cycle",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "invalid or forward program reference",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "number_index",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "missing numeric slot",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "unknown_operation",
+      "pass_": true,
+      "exit": 1,
+      "result": null
+    },
+    {
+      "name": "unknown_constant",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "invalid or forward program reference",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "too_many_steps",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "program must contain 1..6 steps",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "overflow",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "rational overflow",
+        "status": "refusal"
+      }
+    }
+  ],
+  "input-contracts.json": [
+    {
+      "name": "scientific",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "unsupported numeric spelling or boundary",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "decimal_exponent",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "unsupported numeric spelling or boundary",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "malformed_grouping",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "unsupported numeric spelling or boundary",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "multiple_decimal_points",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "unsupported numeric spelling or boundary",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "unicode_digits",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "unsupported Unicode numeric spelling",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "hexadecimal",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "unsupported numeric spelling or boundary",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "slot_limit",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "more than 16 numeric slots",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "byte_limit",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "input exceeds 4096 bytes",
+        "status": "refusal"
+      }
+    },
+    {
+      "name": "integer_overflow",
+      "pass_": true,
+      "exit": 0,
+      "result": {
+        "reason": "invalid number",
+        "status": "refusal"
+      }
+    }
+  ]
+}
