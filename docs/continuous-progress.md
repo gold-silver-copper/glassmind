@@ -25,7 +25,9 @@ derive-debug styles improve, everyother762 outcome unchanged.
 Facts source d1076c4 passed full facts and all conversation/config replay.
 PR11 merged: head57eb656ded41d452bf5d8199cfcf182a73951162, merge
 7f847d9ca372d64d9ab82c6815f1336d1594172c; CI38112513112 passed1m25s.
-Linearwords source687f275 is integrated and fully verified, preparing publication.
+Linearwords PR12 merged: head712d3a5f1ecf1bae20eca26cfd1211ff6184a72a,
+mergefb47a32ce86493162a338e7a768f7036a6f1cb49; CI38112788701 passed1m9s.
+All gates for PR11/12 are complete. Answerfiles worker is active.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -244,7 +246,7 @@ absolute differences, checks their nonnegative conditions and all equalities,
 and requires agreement among all feasible solutions. Explicit minus stays
 ordered. Two worker-scored-correct cases now refuse because both signs of the
 unknown are possible; no positivity assumption. Source
-`687f2751ff256f2071330590345ef0652fb09baa` integrated locally, not yet published.
+`687f2751ff256f2071330590345ef0652fb09baa` is merged in PR12 as recorded above.
 
 Parent full4475MathQA **COMPLETE**:16→22right,4456→4450refused,3wrong unchanged;
 all19baseline answer records preserved; six new values independently recomputed.
@@ -260,7 +262,8 @@ WORK/coordinator/linearwords-check. All jobs complete:19270focused,97485workspac
 27303main-talk. No repoll/restart. Original24 score is superseded by22.
 All measured new benchmark gains areone-unknown; two-variablecomposition has
 localfixture evidence only. No newdatasets/models/dependencies orheldoutaccess.
-No active modelworker; launch settings remainGPT6AstrafastChatGPT/noAPIkeys.
+All linearwords work complete; no repoll/publishing remains. Original worktree
+removed after archive verification. Launch settings remainGPT6AstrafastChatGPT/noAPIkeys.
 
 **Wordproblems worker COMPLETE**, scopeinactive/authremoved; source/reports
 archived `WORK/wordproblems-run/submitted/`; worktree removedafterarchiveverification.
@@ -322,17 +325,45 @@ MathQA and PyArrow: `WORK/quantities-run/tmp/{mathqa,quantities-deps}`.
 Do not delete retained data/models under `~/.cache/glassmind/{data,models}`.
 The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
+## Active coding follow-up
+
+**Answerfiles worker active**, launcherPID2355484, scope
+`glassmind-continuous-answerfiles.scope`; worktreeWORK/answerfiles at712d3a5,
+runWORK/answerfiles-run. Live scope verified8GiB/0swap; GPT6AstrafastChatGPT,
+no API keys, no extra workers. Owns CLI act path/newhelper and only necessary
+reusable typed query interfaces; no quantity/facts/conversation/scorer changes.
+
+Audit corrected the initial "explanation" hypothesis: many of42 refused dev
+explain-kind cases are metadata questions PLUS file-output instructions, not
+function-purpose descriptions. Two hurried count cases already answer correct
+metadata to stdout but create no requested file. The product gap is general
+fully consumed query/output composition, typed plain-value serialization and
+safe requested output. No hardcodedANSWER/path/task names, suffix ignoring,
+mutating repair/rename through query route or output on unsupported/ambiguous
+answers. Scope must reject unsafe paths, symlink escape and accidental existing
+file overwrites, preserve reply-file transcript and avoid partial writes.
+Worker must preregister after local code audit; no acceptance claim yet.
+
+Provided THREE source-only dev workspaces, SEVEN original requests:
+callers-of-apply-damage2,command-variant-count2,items-field-type3. Two hurried
+request strings weren't present in result transcripts and were omitted, not
+inferred. Inputs derive only from already-evaluatedDEV outputs and production
+workspace Cargo/src; no task.toml/solution/hidden tests/generators opened.
+Inline test markers absent in copiedproduction. Exact sourcehashes and no-upstream-
+LICENSE disclosure in run/dev-inputs/provenance.json. Firstfixed3terse thenall7;
+independent meaningful I/O/source/semantic fixtures required. Frozen baseline
+CLI in run/tmp/glassmind-baseline, engine2ce9230 plusverifiedscalar687f275.
+Parent must review then run full765 coding before publishing candidate.
+
 ## Immediate next actions
 
-1. PR11 merged after all coding/facts gates and green exact-head CI. No pending
-   publishing or evaluation for that batch; do not re-run its full765 jobs.
-2. Publish corrected linearwords source687f275 plus complete evidence; required
-   CI and exact-head merge. All local gates are complete. Scoreboard/README22/4475.
-3. Next coding investigation:42/42 RustBench dev explanation requests refuse;
-   inspect the existing typed purpose/body evidence path and permitted dev
-   request/source-only examples to choose a falsifiable explanation hypothesis.
-   Do not inspect benchmark hidden replies/tests/solutions or change scorers.
-4. Broader gaps remain MathQA natural language (22/4475), finite validation-seeded
-   facts coverage, and genuine reading semantics beyond byte likelihood.
-5. Goal stays active until user stops. Current owned modelworkers all stopped;
-   old dirty improvement loop remains stopped. Preserve artifacts and exact refs.
+1. PR11 and PR12 merged after green exact-head CI; no required publishing or
+   evaluation remains for either. Do not re-run their completed gates.
+2. Review answerfiles when complete. Preserve raw submission before parent edits,
+   verify output correctness and I/O boundaries, then sample/full7/local fixtures
+   and full765 RustBench dev baseline166pass596refused3fail. No benchmark gain
+   may be claimed from local fixtures alone. Keep frozen binary/reuse live handle.
+3. Broader gaps remain MathQA language22/4475, finite validation-seeded facts,
+   genuine reading semantics beyond byte likelihood and general coding actions.
+4. Goal active until stopped. Stop only owned jobs on pause/stop and preserve
+   artifacts; old dirty loop remains stopped. One owned modelworker above is live.
