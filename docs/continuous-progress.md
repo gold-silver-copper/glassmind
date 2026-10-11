@@ -1,10 +1,10 @@
 # Continuous development checkpoint
 
 The unlimited goal is active; milestones do not complete it. Root branch `harness`.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the live comparator repair
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the comparator full765 run and live unit-comparison
 experiment below. No routine human confirmation is needed.
 
-## Published PR42 and active comparator experiment
+## Published PR42 and current two-track batch
 
 PR42 MERGED https://github.com/gold-silver-copper/glassmind/pull/42
 Reviewedhead947e01559f428975592202dc280f6a5abc2de242; CI38145656631 success94seconds
@@ -24,43 +24,97 @@ worktrees andtemporaryauthlinks removed ONLYafterverification. Frozenbinaries/so
 rawdata retained. Cleanupreportscoordinator/batch42-{archive-review,cleanup}.json.
 Do not access removedworktreepaths or rerun finishedgates.
 
-## LIVE: typed sort comparator direction
+## Comparator submitted and integrated; full765 RUNNING
 
-WorkerPID3839409, scopeglassmind-continuous-comparator.scope active/running8GiB0swap.
-WorktreeWORK/comparator, branchcontinuous/comparator, based3d5748f. TaskWORK/comparator-task.txt;
-runWORK/comparator-run,launcherWORK/launch.py. Owns ONLYcrates/world-rust andnew
-tools/coding-comparator. Astra fast/forcedChatGPT verified,API/providerenvstripped.
-No liveworker source/results inspected. Readonlyextremum-source110files57265bytes,
-publicTRAIN27sources, rustbenchf79e71a MIT ORApache2. No newdownloads/hiddenmaterial.
-BaselineRUN/baseline/glassmind =combinedb6b093c5..., TRAIN9/27/fullDEV212/765.
+Workerterminal/formerPID3839409, scopeinactive. WorktreeWORK/comparator retained,
+branchcontinuous/comparator,base3d5748f. Original1684files280126084bytes archived
+andhashverifiedBEFOREinspection; frozen1639files279019019bytes independentlyverified.
+RUN/frozen-candidate/glassmind SHA2343c2ed6db780ee4b2be674800bfcb168f5acfb4e4c74f532ae2df4aab7ce38.
+Onlycrates/world-rust/newtools/coding-comparator changed. Root sourceUNCOMMITTED,
+copiedexactfromfrozenfinal-source; do notoverwrite witholdrootbaseline sources.
+Workerusage3536872inputincl3436544cached+33239output=3570111. Knowncompletedtotal
+189610551 includingcachedonce; root/interrupted/liveunitcompare excluded.
 
-Hypothesis: source/type-proven builtin Ord fieldcmp direction insidestandardVec
-sort_by canbe flippedonecomparison atatime, preservingsecondaryties/restofsource.
-Closednamespace/nativeprimitive/Stringfields; noalias/import/customOrd/opaque
-macro/type/sideeffect/inferredintent shortcuts. Newboundednativefamilyafterallold
-familiesincludingdedup. <=8candidates/20sec, eachfromoriginaltree, exactlyonecomplete
-pass+savedchoice; olderambiguity/incomplete/error/savefailure blocksnewfallback.
-OldTRAIN9 outcome files muststaybyteidentical; candidatefull765parentonlyafterreview.
+TRAIN9→10/27 (arcadeleaderboard), fixedsample2→3/4; all9oldoutcomefilesbyteidentical,
+0failedverification. SelectionSHA6eea206a106aa053c7e458e5975f7a4e2c4c2b19a7a066510ad454f2985e6164.
+57worldrusttests/30nativecontracts/fmt/clippy/releasepassed. Firstbaselinewronglyran
+fullbeforerequestedsample andwasredundantlyrepeated; bothoriginalsretained,notclaimed
+compliant. Candidatecorrectsample-before-full. Onefmtfailurefixed; oldercompiler-
+finding observation andnarrowtypepath guardsaddedbeforerepeatfinaltests/build.
+No hiddenmaterial, fullDEVbyworker,newdata,taskID/English/name-basedrules.
 
-Parentcoordinator/comparator-independent froze11cases beforeinspection:5repairs
-(u32/i64/String/char/bool; primaryties andUnicodecomments),4excludedcontrols,
-2ambiguities. casesSHA07e435c448d9eedc30065c9727e77e324f08bc5b7fd6bbf15708285743f5b1f0.
-Baseline85669 COMPLETE:all11compileandfailactualtests,0/5repairs,4controlsand
-2unresolvedunchanged,notimeouts/manifestedits. Exacteditoutsideonecmp required;
-operandexchangeorcmp.reverse allowed. Nativealternatives40579 COMPLETE:2different
-comparatorrepairs passsamepublictest butproduce differentcompleteorders; olddedup
-2alternatives+newcomparator1 passbutproduce3differentoutputs. Two-fileveto fixture
-keepslib.rs olddedup closednamespace andmain.rs comparatorrecord separately.
-Baseline-veto-review.json confirmsoldfamily2completeOk[]/passing2/incompletefalse/
-acceptedfalse. Mereunchangedsourceisnotenoughforcandidateambiguity gate.
-Full-gate.json andcompare-full.py frozen:765rows,all212retained,0fail, unchanged
-runnerSHAaddadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06;
-baselineresultSHA44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f.
+ReviewedASTproof: closedtransparentfn/ownedstructnamespace, safe builtin derives,
+exactinlinecfg(test) skipping; allfieldsintrinsicOrdprimitive/String; Vecparameter,
+explicitlocalVecoruniqueslicearg.to_vec anchors. Entirecmp/then_withchain recognized,
+puresamefieldbetweenbothclosureparams, uniqueallbindings; fliponeexactfieldspanpair,
+keepgap/comments/tiechain/outsidebytes. Noimports/aliases/customOrd/generics/opaque
+macros/types/effects/floats. Newfamilyafteroldfamilies. Existingverifier<=8/20sec;
+uniquecompletepass+savedchoice. comparator_veto observesoldercompilerfindings/errors
+withoutchangingoldreturnsemantics; olddedupandextremum ambiguityveto stillblocksnew.
 
-NEXT afterauthoritativeterminal:archive/hashverify source/patch/commands/results
-BEFOREinspection, reviewtypednamespace/field/comparatoranchor andoldfamilyveto,
-runfrozenparentcandidate thenfull765 iflocalgatespass. Donotduplicatebaseline or
-alternativeexecutions. Checkexistingworkerhandle, notmissingoutputassumptions.
+Parentcoordinator/comparator-independent froze11cases beforeinspection:5repairs,
+4controls,2ambiguities. casesSHA07e435c448d9eedc30065c9727e77e324f08bc5b7fd6bbf15708285743f5b1f0.
+Baseline85669 COMPLETE all11compile/failexecutedtests,0/5repairs,4controls/2unresolved
+unchanged. Alternatives40579 COMPLETE2passingdifferentcomparatorordersand3passing
+old-dedup/newcmpoutputs. Candidate50072 COMPLETE5/5exactrepairs,4controlsunchanged,
+2unresolvedunchanged,notimeouts/manifestedits. Choice-review confirmsnew2complete
+passingrefused; olddedup2passingrefusalevidenceEXACTbaselineandNOnewfallback.
+Olddedupchoicesha7fe953ac9a291a95447d785efae6dd27e5527b65b6cb22fd32a72d8c89b20c07.
+Newcompetingchoicesha97230dc23ecb476465bc3b59ad892d108766f1635c5ee9a4ba281885e5a71612.
+
+Full765session16303 RUNNING, coordinator/comparator-full/run.log, frozenbinaryabove.
+Unchangedtools/rustbench-dev.sh caps8G0swap/setsid--waittimeout/persistentTMPDIR/jobs1.
+Frozenfull-gate.json/compare-full.py requireall212previouspassesretained,0fail,total765.
+Baselinecoordinator/deduporder-full/results.jsonl
+SHA44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f.
+NEXT pollsame16303, comparefullwhencomplete. Do notrepeatparentbaseline/alternatives.
+Thencompactparentreport+scoreboard/README, combinedrequiredchecks withunitcomparison
+ifaccepted, sourcehashfreeze, commit/pushPR43/merge exactgreenhead. Goalremainsactive.
+
+## LIVE: exact dimensional quantity comparison capability
+
+WorkerPID3937908, scopeglassmind-continuous-unitcompare.scope active8GiB0swap,
+worktreeWORK/unitcompare, branchcontinuous/unitcompare, basecddb065.
+TaskWORK/unitcompare-task.txt;runWORK/unitcompare-run;launcherWORK/launch.py.
+Astra fast/forcedChatGPTlogin+supportedflags verified, API/providerenvstripped.
+Owns ONLYcrates/quantities/newtools/quantities/unit-comparison. MainCLIcoordinator;
+mainnoteditedyet. No liveworker source/results inspected. No models/training/newdata.
+
+Observedgap: existingexactunitconversioncannotanswerunitcomparisons, all24parent
+naturalquestionscurrentlyrefused. Addseparate typedcomparisonAPI+native
+--compare-jsonl, oldscalarAnswer/solve untouched. GenericIs Qgreater/less/equal/
+atleast/atmostQ; Whichislonger/shorter/heavier/lighter/faster/slower/hotter/colder,
+withadjectivematchingdimension. Qexact signedinteger/decimal/fraction+explicitknown
+unit. Fullyconsumequestion, optional?, case-insensitivegrammar, noimplicitunits/
+pronouns/arithmeticfragments/numberwordexpansion. All6existingdimensions including
+exactaffinetemperatures. Equality/false distinctfromrefusal; selectionequalexplicit.
+Typedoperand/dimension/order/predicate/selection andexactconvertedwitness required.
+No f64; checkedoverfloworbadunits/dimensions/NUL/>4096UTF8bytes refuse. Literal
+mathematicalmagnitudes, no newphysicalplausibilityrules. ReuseUnitdefinitions,
+notduplicatedscaletables. Thisisnewtypedcapability, NOTnewMathQAaccuracy.
+
+Readonlyunitcompare-source8files17370024bytes+manifest: nativebaselinequantities,
+publicMathQADEV question-onlysample200/full4475,synthetic3116questions+oldoutputs,
+sourcecard. All8hashesfrozen, oldnativebytes independentlymatcholdretainedbaseline.
+Validationparquet1350141bytes SHA488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20
+verifiedagainstsource manifest; no labels mounted. MathQA revisionfafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6
+Apache2; authoredfixturesMIT ORApache2. Everyordinaryoutputmustremainbyteidentical.
+
+Parentcoordinator/unitcompare-independent: frozen41cases (24compared/17refused),
+independentFraction/SIconversionoracle. casesSHA619db79709ef642050ba44fd4b151e6c9c2b1ad480e47b52a1c4f2a5d9fb1854.
+Baseline24naturalmainrequests allrefused usingcurrentb6b093... binary. Coversall6dims,
+allrelations/selections,negative/fraction/affine/case-space,rawnumberordercontradictions,
+wrongdims/ambiguousunits/overflowliteral/nonfinite/extra-text/NUL/oversize. freeze.json.
+main-contracts.json/main-freeze.json requirekindquantity_comparison, naturalformsand
+explicitComparequantities: payloadparity, reservedmalformedquantitativestems/prefix,
+exactwitness+false/equalhumanrendering, no personals/story/draftstatechange except
+turn/lastutterance/clearedlastslot. Bothintentmodes+restart+facts/draftcoexistence.
+No newpersistedstateforcomparisons. AdaptAPIfields onlyafterterminalarchive/review,
+notexpectedtruths/statuses. Maindirectstandaloneordinaryregressionsbeforepublish.
+
+NEXT onterminal: archiveallsource/commands/results/binaries+hashverifybeforeinspection,
+reviewexactarithmetic/dimension/parser/limits, run41parentcases anddirectAPIchecks;
+thenmainintegration+frozenstatecontracts. Whilelive, finishcodingfullgateabove.
 
 ## Completed/rejected: formal operand-supervision matched experiment
 
