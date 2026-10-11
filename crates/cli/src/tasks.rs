@@ -1057,4 +1057,17 @@ mod tests {
         assert_eq!(f.state().plan.unwrap().status, TaskStatus::Completed);
         assert_eq!(f.source(), SOURCE.replace("Parcel", "Delivery"));
     }
+    #[test]
+    fn named_dependencies_and_courtesy_use_the_shared_language() {
+        let f = Fixture::new(SOURCE);
+        f.turn(8, "Could you rename the Parcel struct to Package, please?; then rename Package to Shipment; then where is Shipment?");
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert_eq!(plan.current, 3);
+        assert_eq!(f.source(), SOURCE.replace("Parcel", "Shipment"));
+        assert!(matches!(
+            plan.steps.last().unwrap().result,
+            Some(Reply::Location(_))
+        ));
+    }
 }
