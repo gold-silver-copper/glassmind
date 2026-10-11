@@ -54,3 +54,11 @@ and `coordinator/timedmatch-integrated`. Small reports/fixtures are copied here;
 large native streams, frozen executables and raw data remain external. The corrected
 parent adapter binary is retained next to run.py. Repo reproduction scripts use
 the same existing cache paths; their original worker reports are historical.
+
+The final combined binary is
+`4087feb06e9e72f87674be8ddba20bf119cd14537b9c73ae8ff993cad8b10552`.
+All CLI/facts source hashes match the independently evaluated integration; the
+additional world-rust source exactly matches the full765 candidate. Final main32
+and state44 pass again. Workspace fmt/clippy/release/strict4fixture smoke pass.
+Fresh production-model memory replay confirms93/93 authority contracts and41/41
+original checks; the old checkpoint40/41 limitation was stale.
