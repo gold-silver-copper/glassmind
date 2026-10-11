@@ -90,6 +90,27 @@ assert 's.amount' in source.read_text()
 turn('undo')
 assert 'South { pub count: u32 }' in source.read_text()
 assert 'North { pub value: u32 }' in source.read_text()
+# A compiler fix exposes a test failure; intermediate repairs remain isolated.
+root = out / 'revision-project'
+(root / 'src').mkdir(parents=True)
+(root / 'Cargo.toml').write_text('[package]\nname="revision_cli_smoke"\nversion="0.1.0"\nedition="2021"\n[workspace]\n')
+source = root / 'src/lib.rs'
+original_revision = 'pub fn combine(a: i32, b: i32) -> i32 { let answer = a - b; answer += 0; answer }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(combine(9,4),13); assert_eq!(combine(-6,2),-4); } }\n'
+source.write_text(original_revision)
+session = out / 'revision-session.json'
+state = turn('fix the tests', 1)
+assert state['task']['status'] == 'Revising' and source.read_text() == original_revision
+state = turn('continue', 1)
+assert len(state['task']['revision']['attempts']) == 1
+assert state['task']['status'] == 'Revising' and source.read_text() == original_revision
+state = turn('continue', 1)
+assert state['task']['status'] == 'Ready' and source.read_text() == original_revision
+state = turn('continue', 1)
+assert state['task']['status'] == 'Completed'
+assert len(state['task']['revision']['attempts']) == 2
+assert 'let mut answer' in source.read_text() and 'a + b' in source.read_text()
+turn('undo')
+assert source.read_text() == original_revision
 report = dict(processes=len(turns), passed=True,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest())
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

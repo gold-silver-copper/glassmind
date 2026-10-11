@@ -42,11 +42,12 @@ pub(super) fn select(
     {
         return Ok("This plan no longer has an active target choice.".into());
     }
-    let Some(old) = session
-        .task
-        .clone()
-        .filter(|t| matches!(t.status, TaskStatus::Ready | TaskStatus::Blocked))
-    else {
+    let Some(old) = session.task.clone().filter(|t| {
+        matches!(
+            t.status,
+            TaskStatus::Ready | TaskStatus::Blocked | TaskStatus::Revising
+        )
+    }) else {
         return Ok("No unresolved target choice is available. State a fresh request.".into());
     };
     let Some(mut choices) = old.choices.clone() else {

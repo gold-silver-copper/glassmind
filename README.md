@@ -90,7 +90,8 @@ or undo the last verified change. External edits invalidate stale context.
 Up to four operations joined by `then` can run as a persisted plan, stopping
 on failed verification and resuming with `continue`. Ambiguous target choices
 persist too: `choose 2` selects the displayed target while keeping the requested
-new name.
+new name. Repairs can persist up to four isolated revisions, using new compiler
+and test diagnostics before applying a verified composed change.
 [Persistent coding tasks and current limits](docs/coding-tasks.md).
 
 

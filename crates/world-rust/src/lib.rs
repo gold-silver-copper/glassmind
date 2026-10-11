@@ -36,6 +36,7 @@ mod rename_functions;
 mod rename_package;
 mod rename_types;
 mod rename_variants;
+pub mod revision;
 mod slips;
 mod standard_traits;
 
