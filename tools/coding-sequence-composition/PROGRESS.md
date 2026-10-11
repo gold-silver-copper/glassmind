@@ -23,3 +23,25 @@ NEXT afterterminal local suite: python tools/coding-sequence-composition/pre-dev
 FrozenfullDEV comparator requiresretain221passes +>=1gain,0failures onall765.
 Launch unchangedtools/rustbench-dev.sh onlyafterpre-dev gate. No runtimechanges
 whileevaluating. Do not claim fullDEV gain orshipmentbeforecomparison/integration.
+
+All pre-DEV gates passed, report RUN/pre-dev.json. Native22(16accepted), existing89
+source outcomes unchanged, full59Rusttests, workspace requiredchecks pass.
+TRAINsample12accepted8; full60accepted8, all6previousacceptedsourceoutputs exactly
+retained. Gains merge-sorted-unique hurried/terse, both suppliedTRAIN; notunseen.
+Independent native16/TRAIN8 recompiled, targetexecution/uniquesurvivor/livecheck
+and baselinefailure evidence allverified. Runtimehashes unchanged.
+
+Initial local83876 stopped on missing historicalfreeze.py before independent cases.
+Restoredoriginal exactmanifest hash in46cc2e8, didnotexecute generator orchange
+cases/runner/scorer. First43oldchecks preserved; remaining suite14291 COMPLETE0.
+Original errorlog retained. No runtimefix or test relaxation.
+
+Full765DEV67238 RUNNING under unchanged tools/rustbench-dev.sh3600s8GiB0swap,
+jobs1/threads4, private RUN/full765 native-target/check-cache/check-scratch/tmp.
+NEXT await terminal job, then compare:
+python tools/coding-sequence-composition/compare-full.py --before
+WORK/coordinator/word-initials/full765/results.jsonl --after RUN/full765/results.jsonl
+--binary RUN/candidate --out RUN/full765/comparison.json
+Require221retained,>=222passes,0failures. If pass integrate reviewed source,
+update README/scorejournal, centralrequiredchecks and exactgreen PRmerge.
+No fullDEVgain or shippingclaim yet. Candidate and production unchanged.

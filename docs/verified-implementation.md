@@ -17,6 +17,12 @@ Word sequences can keep their order or reverse it. String candidates can also
 extract word initials, optionally keep alphabetic initials, and apply Unicode
 upper/lower case conversion. The request selects the target. Existing tests
 verify candidates; doc comments and assertions do not choose an algorithm.
+Two integer sequence arguments can produce concatenation in either order,
+ascending/descending sorting, union, intersection, directional difference or
+symmetric difference. Each argument may be an immutable slice or an owned Vec;
+both element types and the Vec return element type must match. Set operations
+remove duplicates; sorted concatenation retains them. Sixteen candidates cover
+this family without inspecting the function name or its documentation.
 The result reports test verification and links to the saved evidence.
 
 The current scope is a standalone dependency-free library with a unique free
