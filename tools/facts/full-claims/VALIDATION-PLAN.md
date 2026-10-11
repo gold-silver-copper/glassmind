@@ -36,3 +36,14 @@ and format2 alias/query source fixtures, using the new reader. These are old
 artifact regressions, not a QA evaluation of the full new graph. Preserve main
 mixed28cases in both modes and required workspace checks. A later QA promotion
 experiment requires a separate frozen gate; none has been run for full claims.
+
+Execution detail, frozen before native ingestion: compute the same all-file raw
+samples now, while projection finishes, using reference.py with no database or
+project.py input. It independently reconstructs file offsets from Parquet metadata
+and reads full qualifiers. Pin raw-reference.json/report hashes in the native
+invocation record before import. The subsequent audit compares BOTH databases to
+these literal raw records; native code never consumes this reference. No sample,
+eligibility rule or acceptance criterion changes. Raw reference work is bounded
+at600seconds; its elapsed time counts toward the original3600second source audit
+budget, so the final comparison gets only the remaining time. This avoids decoding
+the same raw row groups a second time after the large native import.
