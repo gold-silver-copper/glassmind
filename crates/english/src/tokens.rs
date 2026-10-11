@@ -149,18 +149,20 @@ pub fn tokenize(text: &str, known: &dyn Fn(&str) -> bool) -> Vec<Token> {
             if j == i + 1 && chars.get(j).is_some_and(|&(_, d)| d == '/') {
                 j += 1;
             }
-            // A known word with underscores after it ("what teh_ point") is
-            // the word, the underscores a slip of the hand.
+            // Adjacent parentheses establish code notation before prose typo
+            // normalization: trailing underscores are part of a Rust name.
+            let call = text.get(end_of(j)..).is_some_and(|r| r.starts_with("()"));
+            // A known prose word with underscores after it ("what teh_ point")
+            // is the word, the underscores a slip of the hand.
             let whole = text.get(start..end_of(j)).unwrap_or_default();
             let stem = whole.trim_end_matches('_');
-            let word = if known(&stem.to_lowercase()) {
+            let word = if !call && known(&stem.to_lowercase()) {
                 stem
             } else {
                 whole
             };
             // A call's parentheses after a name ("the fn yes() one") are not
             // part of it, and show it to be code.
-            let call = text.get(end_of(j)..).is_some_and(|r| r.starts_with("()"));
             let shape = if call { Shape::Code } else { shape_of(word) };
             (word, shape, j + 2 * usize::from(call))
         } else if c == '\''
@@ -209,6 +211,26 @@ fn shape_of(word: &str) -> Shape {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn code_calls_preserve_names_while_prose_keeps_typo_normalization() {
+        let tokens = tokenize("renamed_() called__() renamed_ `renamed_()`", &|word| {
+            matches!(word, "renamed" | "called")
+        });
+        let values: Vec<_> = tokens
+            .iter()
+            .map(|token| (token.text.as_str(), token.shape))
+            .collect();
+        assert_eq!(
+            values,
+            vec![
+                ("renamed_", Shape::Code),
+                ("called__", Shape::Code),
+                ("renamed", Shape::Word),
+                ("renamed_", Shape::Code),
+            ]
+        );
+    }
 
     #[test]
     fn splits_words_code_and_punctuation() {
