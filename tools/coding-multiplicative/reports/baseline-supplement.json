@@ -1,0 +1,40 @@
+[
+  {
+    "name": "variable_zero_divisor",
+    "kind": "negative",
+    "ok": true,
+    "exact": true,
+    "changed": false,
+    "returncode": 0,
+    "verify": null,
+    "before": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "19a92d4f3044e0acb1c16e13aab22d87c5e523d4f15d95f9c6cd8b4c9e9544ac",
+      "tests/visible.rs": "a485eef7966f2cb7cd39779e527e1fafb808f763a7692ae280078befd5a29348"
+    },
+    "after": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "19a92d4f3044e0acb1c16e13aab22d87c5e523d4f15d95f9c6cd8b4c9e9544ac",
+      "tests/visible.rs": "a485eef7966f2cb7cd39779e527e1fafb808f763a7692ae280078befd5a29348"
+    }
+  },
+  {
+    "name": "compile_failure_then_success",
+    "kind": "positive",
+    "ok": true,
+    "exact": false,
+    "changed": false,
+    "returncode": 0,
+    "verify": null,
+    "before": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "8d5bf1036590fcaa29d313119b6ac48a8059a1df0c71e50787359bb4828817d7",
+      "tests/visible.rs": "689bab11460f4c8d05fae3450b9ef4f5310d309839d03234643f3e68b037aa0a"
+    },
+    "after": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "8d5bf1036590fcaa29d313119b6ac48a8059a1df0c71e50787359bb4828817d7",
+      "tests/visible.rs": "689bab11460f4c8d05fae3450b9ef4f5310d309839d03234643f3e68b037aa0a"
+    }
+  }
+]

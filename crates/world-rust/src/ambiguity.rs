@@ -282,10 +282,26 @@ pub(crate) fn difference(
         return None;
     }
     // Imports/type declarations can shadow primitive names or overload operators.
+    // A plain inline test module has its own lexical scope. It must not disable
+    // analysis of a sibling function; native probes still confirm both outputs
+    // in the complete original package, including these unchanged tests.
+    let test_module = |item: &syn::Item| {
+        let syn::Item::Mod(module) = item else {
+            return false;
+        };
+        let [attr] = module.attrs.as_slice() else {
+            return false;
+        };
+        module.content.is_some()
+            && attr.path().is_ident("cfg")
+            && attr
+                .parse_args::<syn::Path>()
+                .is_ok_and(|path| path.is_ident("test"))
+    };
     if a.items
         .iter()
         .chain(&b.items)
-        .any(|i| !matches!(i, syn::Item::Fn(_)))
+        .any(|i| !matches!(i, syn::Item::Fn(_)) && !test_module(i))
     {
         return None;
     }
@@ -400,6 +416,33 @@ mod tests {
             "fn f(x: f64) -> bool { x < 5.0 }",
         ] {
             assert!(difference(code, b, 1, 1).is_none(), "{code}");
+        }
+    }
+
+    #[test]
+    fn sibling_inline_tests_do_not_hide_scalar_disagreement() {
+        let left = "fn f(x: i32) -> i32 { x / 2 + 3 }\n";
+        let right = "fn f(x: i32) -> i32 { x * 2 - 3 }\n";
+        let tests =
+            "#[cfg(test)] mod tests { use super::*; #[test] fn check() { assert_eq!(f(4), 5); } }";
+        assert!(difference(&format!("{left}{tests}"), &format!("{right}{tests}"), 1, 1).is_some());
+        for sibling in [
+            "mod tests {}",
+            "#[cfg(test)] mod tests;",
+            "#[cfg(test)] #[macro_use] mod tests {}",
+            "#[cfg(any(test, feature = \"extra\"))] mod tests {}",
+            "type i32 = u32;",
+        ] {
+            assert!(
+                difference(
+                    &format!("{left}{sibling}"),
+                    &format!("{right}{sibling}"),
+                    1,
+                    1
+                )
+                .is_none(),
+                "{sibling}"
+            );
         }
     }
 }

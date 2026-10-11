@@ -1,0 +1,187 @@
+{
+  "binary_sha256": "825df340f06a81024d4620fee92cd5cea7a0813abd675cf3f2cfe59a15f63cc6",
+  "cases": [
+    {
+      "name": "scale_unsigned",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:u32)->u32{x * 6}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(3),18); assert_eq!(calc(11),66); } }\n"
+    },
+    {
+      "name": "share_unsigned",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:u32)->u32{x / 4}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(3),0); assert_eq!(calc(19),4); } }\n"
+    },
+    {
+      "name": "negative_multiplier",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:i32)->i32{x * -3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-4),12); assert_eq!(calc(7),-21); } }\n"
+    },
+    {
+      "name": "negative_divisor",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:i32)->i32{x / -3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-4),1); assert_eq!(calc(7),-2); } }\n"
+    },
+    {
+      "name": "float_product",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:f64)->f64{x * 2.5}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0.0),0.0); assert_eq!(calc(4.0),10.0); assert_eq!(calc(-2.0),-5.0); } }\n"
+    },
+    {
+      "name": "float_quotient",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:f64)->f64{x / 2.5}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0.0),0.0); assert_eq!(calc(5.0),2.0); assert_eq!(calc(-10.0),-4.0); } }\n"
+    },
+    {
+      "name": "nested_module",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub mod inner { pub fn calc(x:usize)->usize{x / 3} }\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(inner::calc(0),0); assert_eq!(inner::calc(8),2); assert_eq!(inner::calc(12),4); } }\n"
+    },
+    {
+      "name": "unicode_span",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(\u00e9:i64)->i64{ /* \u00d7 caf\u00e9 \u00f7 */ \u00e9 * 7 }\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),0); assert_eq!(calc(-3),-21); assert_eq!(calc(2),14); } }\n"
+    },
+    {
+      "name": "opaque_macro",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "macro_rules! op { ($x:expr) => { $x / 6 }; } pub fn calc(x:u32)->u32{op!(x)}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(3),18); } }\n"
+    },
+    {
+      "name": "test_only_operator",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:u32)->u32{x}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(4), 4 * 2); } }\n"
+    },
+    {
+      "name": "two_changes_required",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "pub fn left(x:u32)->u32{x / 2} pub fn right(x:u32)->u32{x * 4}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(left(5),10); assert_eq!(right(9),2); } }\n"
+    },
+    {
+      "name": "zero_divisor_rejected",
+      "expected": "unchanged",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:i32)->i32{x * 0}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(3),1); } }\n"
+    },
+    {
+      "name": "legacy_addition",
+      "expected": "repair",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": true,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": 0,
+      "witnesses": [],
+      "after_source": "pub fn calc(x:i32)->i32{x + 3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(0),3); assert_eq!(calc(-4),-1); assert_eq!(calc(9),12); } }\n"
+    },
+    {
+      "name": "native_ambiguity",
+      "expected": "ambiguous",
+      "original_test_exit": 101,
+      "action_exit": 0,
+      "changed": false,
+      "exact_source": true,
+      "manifest_unchanged": true,
+      "native_exit": null,
+      "witnesses": [
+        {
+          "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/multiplicative-independent/revised/native_ambiguity/scratch/ambiguity-workspace-2111871-1/witness.json",
+          "sha256": "789ba2df7cb5cb62d3e234cdfbe830eb22ef34ec8fd0bc020d88dfb6f1a34360",
+          "native_witness": "both outputs confirmed by executed Rust probes in the original package context",
+          "witness": {
+            "argument": "x : i32",
+            "first_output": "-61",
+            "function": "calc",
+            "input": "-128",
+            "method": "bounded checked scalar AST evaluation; disagreement only",
+            "second_output": "-259"
+          }
+        }
+      ],
+      "after_source": "pub fn calc(x:i32)->i32{x / 2 - 3}\n#[cfg(test)] mod tests { use super::*; #[test] fn examples() { assert_eq!(calc(4),5); } }\n"
+    }
+  ]
+}

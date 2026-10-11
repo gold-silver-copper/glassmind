@@ -1,0 +1,48 @@
+{
+  "baseline": {
+    "authored": {
+      "total": 16,
+      "checks_passed": 16,
+      "positive_exact": 0,
+      "negative_leaks": 0
+    },
+    "supplement": {
+      "total": 2,
+      "checks_passed": 2,
+      "positive_exact": 0,
+      "negative_leaks": 0
+    },
+    "sample": {
+      "refused": 2,
+      "verified": 2
+    },
+    "full": {
+      "refused": 22,
+      "verified": 5
+    }
+  },
+  "candidate": {
+    "authored": {
+      "total": 16,
+      "checks_passed": 16,
+      "positive_exact": 8,
+      "negative_leaks": 0
+    },
+    "supplement": {
+      "total": 2,
+      "checks_passed": 2,
+      "positive_exact": 1,
+      "negative_leaks": 0
+    },
+    "sample": {
+      "refused": 2,
+      "verified": 2
+    },
+    "full": {
+      "refused": 22,
+      "verified": 5
+    }
+  },
+  "sample_transitions": [],
+  "full_transitions": []
+}

@@ -302,6 +302,8 @@ impl<'ast> Visit<'ast> for Slips<'_> {
         let new = match node.op {
             Add(_) => Some("-"),
             Sub(_) => Some("+"),
+            Mul(_) => Some("/"),
+            Div(_) => Some("*"),
             Lt(_) => Some("<="),
             Le(_) => Some("<"),
             Gt(_) => Some(">="),

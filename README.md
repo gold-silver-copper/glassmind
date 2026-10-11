@@ -54,6 +54,12 @@ the same field name. Resolved declarations, literals and typed parameter accesse
 change together; unsupported bindings refuse.
 [Field ownership and independent review](tools/coding-field-owners/PARENT.md).
 
+Test repair can try multiplication/division swaps after the existing candidates.
+It preserves tests and withdraws a repair when native checks demonstrate competing
+test-passing fixes with different behavior, including beside inline unit tests.
+Eight independent authored repairs pass; the full coding score remains 200/765.
+[Repair scope and limitations](tools/coding-multiplicative/PARENT.md).
+
 ## Conversation and story commands
 
 ```sh

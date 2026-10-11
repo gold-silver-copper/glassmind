@@ -1,0 +1,26 @@
+[
+  {
+    "name": "variable_zero_divisor",
+    "kind": "negative",
+    "file": "src/lib.rs",
+    "old": null,
+    "new": null,
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub fn scale(x:i32)->i32 { 8 * x }\n",
+      "tests/visible.rs": "#[test] fn zero(){ assert_eq!(probe::scale(0),0); }\n#[test] fn nonzero(){ assert_eq!(probe::scale(2),4); }\n"
+    }
+  },
+  {
+    "name": "compile_failure_then_success",
+    "kind": "positive",
+    "file": "src/lib.rs",
+    "old": "x / 4",
+    "new": "x * 4",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"probe\"\nversion=\"0.0.0\"\nedition=\"2024\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Only;\nimpl std::ops::Mul<i32> for Only { type Output=i32; fn mul(self,r:i32)->i32 {r} }\npub fn decoy()->i32 { Only * 4 }\npub fn scale(x:i32)->i32 { x / 4 }\n",
+      "tests/visible.rs": "#[test] fn boundaries(){ assert_eq!(probe::decoy(),4); assert_eq!(probe::scale(-2),-8); assert_eq!(probe::scale(0),0); assert_eq!(probe::scale(2),8); }\n"
+    }
+  }
+]
