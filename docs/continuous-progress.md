@@ -2,92 +2,71 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — facts acquisition/projection continue; a bounded coding
-improvement passed native/TRAIN gates and is running the full DEV benchmark.
-Known completed-worker tokens: 201,926,299 (cached input counted once; parent
-and interrupted usage excluded). No model workers ran in this batch.
+PROGRESS: word joining passed every fixed gate and is integrated; publication
+is next. Full independent claims acquisition passed; projection is still running.
+Known completed-worker tokens:201926299, cached input counted once; parent and
+interrupted usage excluded. No model workers, teacher calls or auth mounts.
 
-## Concurrent coding improvement: full DEV is running
+## Word joining passed; publish the integrated change
 
-WORK/word-join, branchcontinuous/word-join at5e4924a. Frozenplan55a04d9,
-cases743530a, runtime7282d2e (only5lines in implementation.rs). Reused public
-TRAIN reveals missing word-sequence joining; adds original/reversed word order
-joined by one space, generated solely from &str->String signature. Existing
-candidates/grammar/32candidate90s budgets/unique-survivor verification preserved.
-No modelworkers, authentication changes, new downloads or held-out access.
+Root merge4cf3015817020438c0820a93de65154fda391c28 integrates WORK/word-join
+ateb4ed14. Runtime7282d2e adds5lines: signature-directed single-space joining of
+words in original/reversed order. No parser/budget/verifier/test changes.
+196crate source/manifest/lock files match evaluated worktree byte-for-byte.
+Root executable exactly matches evaluated SHA
+b04a929a56f4fff3e1e748477856311a2098a5e95044b04bb1a5662fe3d99a78.
+Read tools/coding-word-join/PARENT.md and integration.json.
 
-RUN=WORK/coordinator/word-join. Baseline7473e886... preserved asRUN/baseline.
-CandidateRUN/candidate SHA b04a929a56f4fff3e1e748477856311a2098a5e95044b04bb1a5662fe3d99a78.
-Sourcehash and inputs in candidate.json; pre-dev.json freezes all passed gates.
-59world-rust tests pass;10new authored nativecases pass (5implementations,
-5unchangedrefusals, including2survivor ambiguity). All66oldnative contracts pass,
-including18withtargetenvunset. All20oldnative sourceoutcomes exactbyteparity.
-Originalhelper invocation missed archivedfreeze.py before candidate execution;
-originallogs retained, rerunused hash-identicalcomplete archivedfixtures.
+Full765DEV:220passes,545refused,0failed; all218priorpasses retained. Exactlytwo
+gains, reverse-words hurried/terse, also supplied inTRAIN. Not unseen-task evidence.
+All59Rust world tests,76native checks(10new+66old), fixed6TRAINsample, full60TRAIN
+and independentverification pass. TRAIN5/60vs3; all3oldbodies and20oldnative
+sourceoutcomes byte-identical. Newweaktest correctlyrefuses2survivingcandidates.
+Workspacefmt/clippy/release/strict4smoke passed on identical source/binary.
+Reports, hashes and originals RUN=WORK/coordinator/word-join. All coding jobs,
+including fullDEV20945, COMPLETE. No need to repeat finished checks.
 
-TRAIN sample5/6 and full5/60 vsold3/60. Two gains are reverse-words hurried/terse;
-all3oldsum-even bodies byte-identical. Independentnative verification on all5
-acceptedTRAIN outputs passes; no tests/sourceoutsideplaceholder modified.
-Workspacefmt/clippy/release/strict4smoke passed. Build60530, candidate44326,
-oldnative69580,sample63542,extra50647,independent47439,unset78083,full58912,
-verify40297,workspace60463 COMPLETE. Do not repeat these successful gates.
+NEXT: finish checkpoint/report commit, pushharness, createPR againstmain, review
+exactheadand mergeonlywithgreenCI and --match-head-commit. Currentbatch also
+records PR49's rejectedQA CAL and the prospectively frozen fullclaims plan;
+experimental fullclaims Rust importer remains onlyin its isolated worktree.
+NoPRcreatedyet for this batch. SourcegraphQA defaults remain unchanged.
 
-Full765 codingDEV session20945 RUNNING via unchangedtools/rustbench-dev.sh,
-with fixedcandidate, benchmarkf79e71a clean and runnerSHAaddadae4... . Output
-RUN/full765/run.log; results.jsonl is written at completion (its current absence
-is not failure). Gate >=220passes/all218previouspasses/0failed. Baseline
-WORK/coordinator/implgrammar-corrected/full765-v2/results.jsonl SHAf76e6f43... .
-After terminalsuccess run tools/coding-word-join/compare-full.py withpaths from
-full-gate.json. PreserveTRAIN overlap caveat; no unseen-task claim. Thenintegrate,
-updatejournal/README/reports and ship exactreviewedheadwithgreenCI. Factsjobsbelow
-remain separate andmustcontinue. Root hasnotintegrated word-joinruntimeyet.
+## Full independent claims snapshot: projection remains live
 
-## Active full claims experiment: preserve and monitor existing jobs
+WorktreeWORK/full-claims, branchcontinuous/full-claims at2d39058, clean.
+Read its tools/facts/full-claims/PROGRESS.md, PLAN.md and VALIDATION-PLAN.md.
+RUN=WORK/coordinator/full-claims; PyArrowvenv=WORK/coordinator/wikidata-snapshot/venv.
+Newformat3 importer/sourcebcc796c andvalidation835d9f8 passed36facts tests,
+22302oldTRAIN/DEV ordinary/set byteparity,853format2source-query parity,
+110oldpositivewitnesses, main28/28bothmodes andrequiredworkspacechecks.
+CandidatefactsCLI SHA b0a86c031e6c83d81af3a5672391f6385b9ec7eb1205743d4d79a7c5677cded7.
+Preserve WORK/coordinator/disk-facts/target/release/glassmind-facts until native
+preparation pins/copies it. Wordjoining builds used the separate root target.
 
-Root branch harness at84803eb before this checkpoint; isolated root-owned
-WORK/full-claims branchcontinuous/full-claims at056959f, clean. Read its
- tools/facts/full-claims/PROGRESS.md and PLAN.md. Root has not integrated the
-experimental format3 importer; wait for full public source correctness gates.
-No model workers/auth mounts/API calls. No default QA promotion or new QA run.
+Fetch64342 COMPLETE:85newshards44104948009bytes,1495.359s,0retries. All86files
+includingfirsttotal44633986614bytes. Independentall-file audit78497 COMPLETE,
+21.354s, allpublisherhashes match; newrawfiles readonly. acquisition-report.json
+andfetch.jsonl committedinworktree; originalpilot/native/raw untouched.
 
-RUN=WORK/coordinator/full-claims. Fetch session64342, scopeglassmind-full-claims-fetch
-RUNNING; projection session29161, scopeglassmind-full-claims-projection RUNNING.
-Supervisor761927/child761928 last observed live; verify before acting. Fetch reads
-all86 pinned public files, reusing first. Last sample29new verified shards,
-15044572106receivedbytes at504.917s. Projection11files/99419158rawrows/
-53992705retainedstatements. Hashes pass for completed files. Do not restart either.
-Bounded fetch7200s/96GiBreceived, projection14400s/96GiBoutput, total384GiBaddedrun;
-eachscope8GiB/no swap. Scope memory includes file cache; inspect memory.events
-before making process-memory/OOM claims. Original pilot/native/raw remain intact.
+Projection29161 RUNNING, scopeglassmind-full-claims-projection, supervisor761927,
+child761928 lastverifiedlive. Lastobserved49completedfilesat1450s; readcurrentlog.
+Caps14400s/96GiBprojection/384GiBaddedrun,8GiB/no swap. Do notrestart intoexisting
+outputs. Fetchscopeisgone; projection scope includesfilecache, observedoom0.
+No fullnative output and no fullgraphQA evaluation have run.
 
-Implementation bcc796c: separate format3/provenance, native alias copy from
-hash-pinned format2 base, global raw claims row ranges, all witnesses/rank/qualifier
-flags, dedupedges, integrity/FKs before header. New output192GiB/21600s cap.
-Native full import NOT STARTED. Source verification plan59950f7, probes835d9f8.
+NEXT after projection finishes successfully: verify projection-resources.json,
+then run RUN/prepare-native.py RUN WORK/coordinator/disk-facts/target/release/glassmind-facts
+under finite8GiBscope. It requiresacquisitionaudit, pins projection/base andtested
+binary, and writesnative-invocation.json. Run RUN/supervise.py RUN native 21600
+followedbytheJSONcommand under8GiB/no swap, setsid --wait timeout --kill-after=10s
+21610s; useRUN/tmp for TMPDIR andSQLITE_TMPDIR. Newoutput192GiB/21600s gate.
+After successchmodoutputreadonly, runaudit.py thenwitnesses.py under3600s/8GiB
+andtheexistingdisk supervisor. Rawsource samples/fullcounts mustpassbefore
+integration/publication. Report setVMbudgeterrors separately, neveras correct.
+Only after storagepasses freeze a separateQA CAL gate; no newDEV/heldout now.
 
-Completed36facts tests;500000raw projection smoke exactly matches oldpilot,
-86536kept. Workspacefmt/clippy/release/strict4smoke passed, helperclippy passed
-following example change. Existing19481TRAIN+2821DEV ordinary/set byte-identical,
-main28/28bothmodes,853oldformat2source-query predictions byte-identical. Old110
-witness probes unchanged37answers73refusals59sets; new independent scan reproduces
-same caseSHAcaeccf0249d6e16c5119385562bda55ee889a0eb6934c282899a8fca5b848100.
-These are old-artifact regressions, NOT fullgraphQA. Sessions46178/18599/56281/94911
-COMPLETE. Evidence committed in worktree tools/facts/full-claims; no need rerun.
-
-NEXT: continue work in WORK/full-claims. Monitor64342/29161; on completion verify
-fetch ledger and projection-resources.json passed. Run RUN/prepare-native.py RUN
-WORK/coordinator/disk-facts/target/release/glassmind-facts in a bounded scope; it
-pins source manifest and copied candidate. Then invoke RUN/supervise.py RUN native
-21600 followed by native-invocation.json's command, within8GiB/no swap,
-setsid --wait timeout --kill-after=10s 21610s, RUN/tmp forTMPDIR/SQLITE_TMPDIR.
-After nativepasses, makeoutputreadonly and run independentaudit.py thenwitnesses.py
-under3600s/8GiB/supervision. Full source accounting and raw samples must pass before
-integration or publication. Preserve queryVMlimits and report largeset budgeterrors
-separately. Freeze separateCALQA gate only after storagepasses; no newDEV now.
-
-Do useful independent implementation/review while current finite jobs run. Do not
-start duplicate data jobs, re-create the goal or return to prompt-writing. Goal
-remains active without budget until explicit user stop/platform limits.
+Historical checkpoints below are superseded by this current handoff.
 
 ## PR49 merged; independent public QA CAL rejected
 

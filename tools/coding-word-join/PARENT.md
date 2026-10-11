@@ -49,3 +49,8 @@ reruns used the complete original archive with identical pinned hashes. No
 candidate or expectation changed in response. Known completed-worker usage
 remains 201,926,299 tokens, cached input counted once; parent/interrupted usage
 is excluded. The continuing development goal remains active.
+
+Integration merge `4cf3015` preserves all 196 crate source, manifest and lock
+files byte-for-byte from the evaluated worktree. The central executable has
+the same evaluated SHA256; [integration evidence](integration.json) records
+the comparison. No repeat of the full benchmark was needed for identical code.
