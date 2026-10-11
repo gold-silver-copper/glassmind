@@ -1,0 +1,28 @@
+{
+  "binary_sha256": "dfd7453d8a9a3dd11174f40683bf4225972e4e1f7022f595b53ea4b37e6d4bdf",
+  "cases": [
+    {
+      "case": "derive-debug-terse",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "collect-needs-type-terse",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "match-missing-variant-terse",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    }
+  ],
+  "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/repairs2-check/sample/results.json",
+  "raw_sha256": "93661c98abbf2894d69f0b6b3e962d375502f1811bd74cf333e1f2dcc8fbdb09"
+}

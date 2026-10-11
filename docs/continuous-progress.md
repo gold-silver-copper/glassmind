@@ -19,7 +19,9 @@ merged in PR #8, head `fcb81dbf17273dcca4d45f7a8df4d3428fb217a0`,
 merge `cb150965a9d0e95ffd234a7f4bf38299e8370d86`; CI38110755616 passed1m15s. All affected dev
 checks are complete. PR10 (ratio totals) is merged, head `7a5e17627605f6628660c0529a5e96d2a87e96ce`,
 merge `b8c28e5d1b4e8e1029b9d8f5935dc75645ac0226`, CI38111396832 green1m7s.
-Package source05e8093 awaits full765 regression. Repairs2/factchat workers active.
+Package source05e8093 passed full765 regression with every outcome unchanged.
+Repair source2ce9230 is integrated and locally verified; full765 is running.
+Factchat worker is finishing its submission; parent generic bundle-loader review pending.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -173,28 +175,32 @@ CoordinatorcheckedintegratedCLI: sample3/3, full15/15, type9/9,variant14/14.
 Allsixsuppliedrealdevpromptsstill0edits andbefore/afterbuildpass. Fmt/alltarget
 clippy/release/strict4/4smoke and16worldtests pass. Sessions22773,81603,90645
 COMPLETE; no repoll/rerun. Reports docs/coding-packages-evidence/integrated/.
-**Full765 RustBench dev RUNNING**, execsession32029; outputs
-`WORK/coordinator/packages-full/`, frozenbinarySHA
+**Full765 RustBench dev COMPLETE**, execsession32029 terminal; do not repoll.
+All outcomes unchanged: 163 pass, 599 refused, 3 fail. Comparison includes every
+(task, style) and all765 cases. Frozen binary SHA
 52a113aa63a18dca7449103d57142e24c17d4cdbe11f68b6a09bce92daf474f9,
-source05e8093. Baseline WORK/coordinator/variants-full/results.jsonl:
-163pass599refused3fail. Compare every(task,style), preserveall765denominator.
-Do not publishpackagecandidate until fullcomparison complete; no benchmarkgain
-claimed fromlocalfixtures. Keepfrozenbinary; no restarton observationtimeout.
+source05e8093, outputs WORK/coordinator/packages-full. Report
+`docs/results/coding-package-renames.json`; local package capability is not a
+RustBench gain. Await repair full gate before publishing the combined batch.
 
-**Active worker: repairs2**, launcherPID2058355, scope
-`glassmind-continuous-repairs2.scope`, worktreeWORK/repairs2, base05e8093.
-Owns checks.rs/repairparts oflib.rs/slips.rs andnewhelper only, notrename/index/CLI.
-Afterthree renamebatches withnoactualdevcoveragegain, audit compilerJSON fromsix
-permittedbrokenworkspaces: derive-debug,copy-struct,collect-needs-type,
-int-float-divide,private-fn,match-missing-variant. No hidden-test/solution content.
-Hypothesislead nestedcompilerdiagnostics/coherentalternatives or typedtraitrepair;
-mustpreregister afteraudit, no placeholders/erasedassertions/fakedbuildsuccess.
-18promptsgiven, baseline0bff6a1binaryrepairsidenticaltobase; full765 parentgate.
-Latestworkerfinding: fixedsample0/3→1/3, sensorworkspace builds andpasses2
-independentfunctionalchecks;19worldtests/focusedclippy pass. Workeranchoring
-newedit tofulldeclaration againststaleproposals; finalreplay/handoffpending.
-Do not assumeacceptance orintegrateongoingworkerfiles.
-Newreports docs/coding-diagnostics-repairs.md; artifacts ownrunTMPDIR/target.
+**Repairs2 worker COMPLETE**, scope inactive, auth link removed, submission
+archived under WORK/repairs2-run/submitted. Source integrated as
+`2ce9230ce5f7ca940f1b822667036212daf2420d`. Compiler E0277 identifies a unique
+struct/enum missing Debug; add standard fully-qualified derive with a whole
+item anchor. No placeholder bodies or changes to fields/functions/tests.
+Refuse direct conditional/custom attributes and ambiguous declarations;
+conditional out-of-line parent module semantics are not fully resolved.
+Parent workspace fmt/clippy/build/strict4/4 smoke and19world tests pass;
+local sample1/3, full3/18 repaired; independent4repairs4refusals. Changed cases
+build and pass functional probes; refusals retain original source and errors.
+Sessions10901,39926,96015 COMPLETE. Integrated reports
+`docs/coding-diagnostics-evidence/integrated/`.
+**Full765 RustBench dev RUNNING**, exec57671, frozen source2ce9230 binary SHA
+dfd7453d8a9a3dd11174f40683bf4225972e4e1f7022f595b53ea4b37e6d4bdf
+Exact digest also in
+WORK/coordinator/repairs2-full/source.json. Separate cargo target/check cache/
+scratch. Compare to completed packages-full and variants-full163/599/3.
+Do not restart on an observation timeout or publish before the full gate.
 
 **Active worker: factchat**, launcherPID2100023, scope
 `glassmind-continuous-factchat.scope`, worktreeWORK/factchat, base05e8093.
@@ -209,7 +215,7 @@ IDs intoSEPARATEdisplaymap, neverlinker/claims; max12000IDs50/request,1Hzoneaton
 10MiB/10min, respect429/RetryAfter/maxlag andstoprepeatedfailure. Reusecachefirst,
 recordCC0rawhashes/date/coverage andexplicitQIDfallback. Allnewdataownedpersistent
 TMPDIR; frozenfactsdata mountedreadonly. Reporttools/facts/chat/HANDOFF.md.
-BothactiveworkersGPT6AstrafastChatGPT/noAPIkeys,8GiB0swap,-j1; noextraagents.
+Factchat uses GPT6AstrafastChatGPT/noAPIkeys,8GiB0swap,-j1; noextraagents.
 
 **Wordproblems worker COMPLETE**, scopeinactive/authremoved; source/reports
 archived `WORK/wordproblems-run/submitted/`; worktree removedafterarchiveverification.
@@ -260,7 +266,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:41,683,093 including cached input; parent and
+Known completed worker tokens:43,113,569 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -275,9 +281,12 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 1. PR8 merged after green CI; no publishing or benchmark work remains for it.
    README/data/scoreboard updated; reports identify exact evaluated source.
-2. PR10merged. Finish packages full765session32029, compare to163/599/3,
-   commitreports+README andpublish/CI/merge ifnonregressing.
-3. Review active repairs2/factchat candidates when done. Preserve everynewerror,
+2. PR10 merged. Package full765 is complete/nonregressing. Finish repairs2
+   full765session57671, then publish the verified coding batch with exact-head CI.
+3. Review factchat when done; replace compiled dataset fingerprints with a
+   manifest and SHA256 verification, and replay affected dev checks. Draft
+   WORK/coordinator/talk_facts.rs includes two independent-bundle/label tests.
+   Preserve everynewerror,
    fullaffecteddev andnormalcheck gates. Do not confuseintegrationgain with
    expandedfactualcoverage, orlocalrenamefixtures withRustBenchgain.
 4. Keep coding and conversation advancing. Other gaps: full MathQA mostly

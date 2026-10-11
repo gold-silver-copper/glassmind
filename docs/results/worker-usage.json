@@ -230,6 +230,19 @@
         "reasoning_output_tokens": 15849
       },
       "source": "Cargo root/reexport resolution;15/15local, sixdevprompts unchanged, full765 parent gate"
+    },
+    {
+      "track": "coding-repairs2-continuous",
+      "started_unix": 1791692734.5959122,
+      "finished_unix": 1791693052.9611783,
+      "usage": {
+        "input_tokens": 1411727,
+        "cached_input_tokens": 1340544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18749,
+        "reasoning_output_tokens": 4315
+      },
+      "source": "Compiler-identified standard Debug derivation;3/18 supplied fixes and4 independent repairs, full765 parentgate"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
