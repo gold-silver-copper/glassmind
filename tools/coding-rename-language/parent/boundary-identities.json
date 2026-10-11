@@ -1,0 +1,23 @@
+{
+  "source_commit": "bb89964dd887b2b68ae01fb8f0a9a92a4901f490",
+  "release_sha256": "f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6",
+  "debug_sha256": "18562ac62f7c4aed8775f033eaa03047b52f8e27ae67a4c4b73fca262652385d",
+  "source_files": {
+    "crates/cli/src/coding.rs": "4c72c82cdab9693be13f66b1a1e3be8ec17f57e3f16448500b3bf7769cc08077",
+    "crates/english-rust/src/rename_requests.rs": "348ec78481a22cae3bc1032eb16e959886a92019893bc29bc14a3c5fadb4ad75",
+    "crates/english-rust/src/lib.rs": "a8214a80f8c9f649748c0f339a8d080a82d342adc0c69e70553a56659ac9254d",
+    "crates/world-rust/src/rename_functions.rs": "ea035d722bbd3b3f39c13fb0b389d2d45394db634985c209f8274fb7eb126bc1",
+    "crates/world-rust/src/lib.rs": "8b6b3c525fd108669ef83e40719e47d14c01bf0e68a780603f012433b80ae747"
+  },
+  "native_validation": {
+    "independent_cases": 26,
+    "exact_edits": 8,
+    "negative_no_commands": 16,
+    "repair_controls": 2,
+    "quoted_no_commands": 8,
+    "supplied_native_cases": 6,
+    "preview_original_spans_checked": 54,
+    "preview_coordinates": "1-based lines, 0-based byte columns"
+  },
+  "full765": "running; not yet accepted"
+}

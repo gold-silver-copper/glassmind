@@ -1,0 +1,41 @@
+Running as unit: glassmind-parent-rename-quoted-tests.scope; invocation ID: ec0bcafbd1334cf6a27a7fa9eb023ed5
+   Compiling glassmind v0.1.0 (/home/gsc/code/glassmind/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.03s
+     Running unittests src/main.rs (target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 19 tests
+test coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained ... ok
+test coding::rename_tests::legacy_rename_coverage ... FAILED
+test coding::rename_tests::explicit_scope_and_open_description_objects_preserve_identity ... ok
+test edit::tests::nested_assumptions_keep_verified_result_and_clear_pending ... ok
+test edit::tests::remedies_are_not_newly_auto_applied ... ok
+test edit::tests::stale_multifile_proposal_preserves_every_current_byte ... ok
+test everyday::tests::social_turn_preserves_story_but_mixed_clause_invalidates ... ok
+test everyday::tests::story_focus_prevents_implicit_personal_memory_edits ... ok
+test everyday::tests::unresolved_correction_invalidates_story_across_restart ... ok
+test talk_facts::tests::accepts_distinct_bundles_and_rejects_swapped_assets ... ok
+test talk_facts::tests::labels_remain_display_only_and_must_match_the_index ... ok
+test talk_facts::tests::set_prefix_is_fully_consumed_and_does_not_bind_followups ... ok
+test talk_stories::tests::bounded_history_fails_closed ... ok
+test talk_stories::tests::repeated_plans_do_not_mutate_history_or_world ... ok
+test talk_stories::tests::replay_preserves_pronouns_and_has_deterministic_bytes ... ok
+test talk_stories::tests::unsupported_updates_block_stale_answers_even_after_restart ... ok
+test coding::rename_tests::unsupported_tails_never_escape_into_guesses ... ok
+test coding::rename_tests::quoted_rename_examples_cannot_become_commands_or_guesses ... ok
+test coding::rename_tests::frozen_authored_rename_requests_and_fallback_controls ... ok
+
+failures:
+
+---- coding::rename_tests::legacy_rename_coverage stdout ----
+
+thread 'coding::rename_tests::legacy_rename_coverage' (900104) panicked at crates/cli/src/coding.rs:357:9:
+lost legacy: ["tick -> drain_events pls", "`tick` to `drain_events`, thx", "`tick` is a bit vague, go w/ `drain_events`", "um, `tick` returns Option<Event>, can we call it `drain_events` instead?"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    coding::rename_tests::legacy_rename_coverage
+
+test result: FAILED. 18 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 16.14s
+
+error: test failed, to rerun pass `-p glassmind --bin glassmind`

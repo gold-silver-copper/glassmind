@@ -747,6 +747,28 @@
         "reasoning_output_tokens": 11363
       },
       "source": "Original13entries119342bytes/3361artifacts521827063bytes/71authoredfiles/11source/3freeze identities verified. Parent16cases8->9exactnative-testedrepairs,zero unsafe/alloldretained; suppliedcanonical9edits5files2923bytes,originaltests andbinaryoutputbeforeafterpass. Integratedchecks/full765 pending."
+    },
+    {
+      "track": "renameenglish-continuous",
+      "usage": {
+        "input_tokens": 4819636,
+        "cached_input_tokens": 4697600,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 42373,
+        "reasoning_output_tokens": 17696
+      },
+      "source": "Original worker rejected by independent coverage/omitted-target checks; 63entries298538bytes/62freeze/365raw identities verified. Parent8cae74 full180/765 rejected for quoted-command routing. Correctedbb89964 passes26 independent/8quoted/context/supplied6,19CLI+40English/workspacechecks; freshfull765 active. No publication claim."
+    },
+    {
+      "track": "workrates-continuous",
+      "usage": {
+        "input_tokens": 1350172,
+        "cached_input_tokens": 1282816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 21009,
+        "reasoning_output_tokens": 4025
+      },
+      "source": "Rejected fullDEV33<34 frozen gate; parent17positive/13negative probes produce0positiveanswers/13refusals/0wrong. Parent independently rescored4475, all32prioranswerpayloads preserved, independently verified4newrate answers. 19parent/15original/26raw/12freeze identities verified; no runtime integration."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

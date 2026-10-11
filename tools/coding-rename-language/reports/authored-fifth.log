@@ -1,0 +1,28 @@
+Running as unit: run-p744020-i97148919.scope; invocation ID: 12584d5ffead4834926ebdc151522307
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/english-rust)
+   Compiling glassmind-reading v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/reading)
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.43s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 4 tests
+test coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained ... ok
+test coding::rename_tests::unsupported_tails_never_escape_into_guesses ... FAILED
+test coding::rename_tests::legacy_rename_coverage ... ok
+test coding::rename_tests::frozen_authored_rename_requests_and_fallback_controls ... ok
+
+failures:
+
+---- coding::rename_tests::unsupported_tails_never_escape_into_guesses stdout ----
+
+thread 'coding::rename_tests::unsupported_tails_never_escape_into_guesses' (744549) panicked at crates/cli/src/coding.rs:285:13:
+rename decode to read_entry everywhere except tests
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    coding::rename_tests::unsupported_tails_never_escape_into_guesses
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 13 filtered out; finished in 13.92s
+
+error: test failed, to rerun pass `-p glassmind --bin glassmind`

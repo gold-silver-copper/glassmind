@@ -1,0 +1,27 @@
+Running as unit: run-p732170-i97195273.scope; invocation ID: 1e548bddba764644911ea5c9bf4d8b91
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/english-rust)
+   Compiling glassmind-reading v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/reading)
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.01s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/renameenglish-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 3 tests
+test coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained ... FAILED
+test coding::rename_tests::legacy_rename_coverage ... ok
+test coding::rename_tests::frozen_authored_rename_requests_and_fallback_controls ... ok
+
+failures:
+
+---- coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained stdout ----
+
+thread 'coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained' (733268) panicked at crates/cli/src/coding.rs:204:81:
+new reading absent: rename the to field to dest_node
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 13 filtered out; finished in 13.66s
+
+error: test failed, to rerun pass `-p glassmind --bin glassmind`

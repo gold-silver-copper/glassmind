@@ -1,0 +1,17 @@
+input:  Rename `parse_line` to `parse_entry` everywhere (definition, callers, tests).
+words:  [Rename] [parse_line] [to] [parse_entry] [everywhere] [(] [definition] [,] [callers] [,] [tests] [)] [.]
+reading 1 (chosen):
+  parse:   fully consumed rename clauses
+  meaning: Command(Rename { thing: Named(Name("parse_line")), kind: None, name: Some(Name("parse_entry")) })
+  rules:   en.rust.rename_request (by hand)
+  name `parse_line` -> parse_line
+  resolved: Command(Rename { thing: Item(RustItem { source: "workspace", file: "src/parser.rs", line: 16, name: "parse_line", kind: Function, owner: None, detail: None }), kind: None, name: Some(Name("parse_entry")) })
+  dropped:  Unsupported
+  world rules: rust.lookup.exact (seed), rust.rename (round 5)
+reply:  Trouble(Unsupported)
+spoken by: en.reply.unsupported (seed)
+
+I understand, but I can't do that here.
+
+STDERR:
+Running as unit: run-p763938-i97232370.scope; invocation ID: c6b22cd31b4d4a2eac201e3c7d855e36

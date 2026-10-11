@@ -1,0 +1,182 @@
+[
+  {
+    "name": "two_named",
+    "question": "Leila can complete a job in 6 hours. Rohan can complete the same job in 3 hours. How long will they take working together?",
+    "expected": "2",
+    "unit": "hour"
+  },
+  {
+    "name": "two_days",
+    "question": "A can do a piece of work in 10 days and B can do the same work in 15 days. In how many days can they complete the work together?",
+    "expected": "6",
+    "unit": "day"
+  },
+  {
+    "name": "three_agents",
+    "question": "A, B and C can complete a job in 6, 12 and 12 hours respectively. How many hours will they take working together?",
+    "expected": "3",
+    "unit": "hour"
+  },
+  {
+    "name": "symmetric",
+    "question": "Mira can finish a job in 8 hours. Nico can finish the same job in 8 hours. How many hours will they take together?",
+    "expected": "4",
+    "unit": "hour"
+  },
+  {
+    "name": "inverse",
+    "question": "A and B together can finish a job in 4 hours. A alone can finish it in 12 hours. How many hours does B alone need?",
+    "expected": "6",
+    "unit": "hour"
+  },
+  {
+    "name": "inverse_reversed",
+    "question": "A can finish a job in 12 hours. A and B together finish it in 4 hours. How long would B alone take?",
+    "expected": "6",
+    "unit": "hour"
+  },
+  {
+    "name": "fill",
+    "question": "Pipe A can fill a tank in 6 hours and pipe B can fill the same tank in 12 hours. How long will they take together?",
+    "expected": "4",
+    "unit": "hour"
+  },
+  {
+    "name": "opposed",
+    "question": "Pipe A can fill a tank in 6 hours. Pipe B can empty the tank in 12 hours. If both are open, how many hours will it take to fill the empty tank?",
+    "expected": "12",
+    "unit": "hour"
+  },
+  {
+    "name": "leak",
+    "question": "A pump fills a tank in 4 hours. With a leak, it takes 6 hours to fill the tank. How many hours would the leak take to empty a full tank?",
+    "expected": "12",
+    "unit": "hour"
+  },
+  {
+    "name": "leaves_remaining",
+    "question": "A can complete a job in 6 hours and B can complete the same job in 3 hours. They work together for 1 hour, then B leaves. How many more hours does A need to finish?",
+    "expected": "3",
+    "unit": "hour"
+  },
+  {
+    "name": "leaves_total",
+    "question": "A can complete a job in 6 hours and B can complete the same job in 3 hours. They work together for 1 hour, then B leaves. How many hours does the whole job take?",
+    "expected": "4",
+    "unit": "hour"
+  },
+  {
+    "name": "other_leaves",
+    "question": "A can complete a job in 6 hours and B can complete the same job in 3 hours. They work together for 1 hour, then A leaves. How many more hours does B need?",
+    "expected": "3/2",
+    "unit": "hour"
+  },
+  {
+    "name": "joins",
+    "question": "A can finish a job in 6 hours and B can finish it in 3 hours. A works alone for 3 hours, then B joins A. How many more hours will they take?",
+    "expected": "1",
+    "unit": "hour"
+  },
+  {
+    "name": "mixed_units",
+    "question": "A can finish a job in 2 hours. B can finish the same job in 120 minutes. How many minutes do they need together?",
+    "expected": "60",
+    "unit": "minute"
+  },
+  {
+    "name": "rational",
+    "question": "A can complete a job in 3 hours and B can complete the same job in 5 hours. How long do they need together?",
+    "expected": "15/8",
+    "unit": "hour"
+  },
+  {
+    "name": "time_swap",
+    "question": "A can finish a job in 12 days. B can finish it in 4 days. How many days will they need together?",
+    "expected": "3",
+    "unit": "day"
+  },
+  {
+    "name": "zero_duration",
+    "question": "A can finish a job in 0 hours and B can finish it in 4 hours. How long do they take together?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "negative_time",
+    "question": "A can finish a job in -6 hours and B can finish it in 3 hours. How long do they take together?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "zero_net",
+    "question": "Pipe A fills a tank in 4 hours. Pipe B empties it in 4 hours. How long will both together take to fill an empty tank?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "negative_net",
+    "question": "Pipe A fills a tank in 8 hours. Pipe B empties it in 4 hours. How long will both together take to fill an empty tank?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "impossible_inverse",
+    "question": "A and B finish a job together in 12 hours. A alone takes 6 hours. How long would B alone take?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "different_jobs",
+    "question": "A can finish painting a fence in 6 hours. B can finish washing a car in 3 hours. How long do they take together to paint the fence?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "variable_rate",
+    "question": "A finishes a job in 6 hours and B finishes it in 3 hours. A works at an unknown slower rate whenever B is present. How long do they take together?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "ambiguous_remaining",
+    "question": "A and B finish a job together in 4 hours. A leaves after 1 hour. How much longer does B need?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "same_name",
+    "question": "A can finish a job in 6 hours. A can finish the same job in 3 hours. How long does A take?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "extra_clause",
+    "question": "A can finish a job in 6 hours and B can finish it in 3 hours. They take a break of unknown length. How long does the job take?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "unspecified_fraction",
+    "question": "A fills a tank in 6 hours and B fills it in 3 hours. The tank is partly full. How long will they need together to fill it?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "capacity_changed",
+    "question": "Pipe A fills a 10 liter tank in 6 hours. Pipe B fills a 20 liter tank in 3 hours. How long do they take to fill the first tank together?",
+    "expected": "6/5",
+    "unit": "hour"
+  },
+  {
+    "name": "two_questions",
+    "question": "A finishes a job in 6 hours and B finishes it in 3 hours. How long do they take together and how much should each be paid?",
+    "expected": null,
+    "unit": null
+  },
+  {
+    "name": "unknown_agent",
+    "question": "A finishes a job in 6 hours and B finishes it in 3 hours. How long will A and C take together?",
+    "expected": null,
+    "unit": null
+  }
+]

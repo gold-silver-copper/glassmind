@@ -1,0 +1,44 @@
+{
+  "source": "Public workspace source and existing train-v3 requests; no task.toml, solutions or hidden contents",
+  "revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+  "license": "MIT OR Apache-2.0",
+  "files": {
+    "Cargo.toml": {
+      "bytes": 130,
+      "sha256": "f147ff636c8f578b5bcd672b31379d21a5632b5cd4a1a886dff8e85b6d609bd4"
+    },
+    "src/lib.rs": {
+      "bytes": 184,
+      "sha256": "c3c9dd90a161346ae7d01c1a697d5ad7874d7737590ce37a7f256d67f872389e"
+    },
+    "src/parser.rs": {
+      "bytes": 1181,
+      "sha256": "93765d5a620f36967899df496566172464e37fed4d1ff03a9565d4ce6a724941"
+    },
+    "src/report.rs": {
+      "bytes": 887,
+      "sha256": "4023d9f40574eb4ff06dfb145fb08d58775014b8f878f8f9f00b38a39b565b5b"
+    },
+    "src/main.rs": {
+      "bytes": 541,
+      "sha256": "73bd2d5ff3d3ef33187530b55a0a98afc3b3d4d2dc47061f25c9df385300726e"
+    }
+  },
+  "bytes": 2923,
+  "requests": [
+    {
+      "id": "train/rb-edits-rename-parse-line/chatty#0",
+      "text": "Hey! In this little log parser, the function `parse_line` really parses a whole log entry, so I'd like it called `parse_entry` instead. Could you rename it everywhere it's used, including the report code, main and the unit tests? Behaviour should stay exactly the same."
+    },
+    {
+      "id": "train/rb-edits-rename-parse-line/hurried#0",
+      "text": "rename parse_line -> parse_entry everywhere pls, all callers + tests too"
+    },
+    {
+      "id": "train/rb-edits-rename-parse-line/terse#0",
+      "text": "Rename `parse_line` to `parse_entry` everywhere (definition, callers, tests)."
+    }
+  ],
+  "canonical_request": "rename function parse_line to parse_entry",
+  "baseline_sha256": "226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0"
+}

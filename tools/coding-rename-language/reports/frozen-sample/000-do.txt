@@ -1,0 +1,17 @@
+input:  Hey! In this little log parser, the function `parse_line` really parses a whole log entry, so I'd like it called `parse_entry` instead. Could you rename it everywhere it's used, including the report code, main and the unit tests? Behaviour should stay exactly the same.
+words:  [Hey] [!] [In] [this] [little] [log] [parser] [,] [the] [function] [parse_line] [really] [parses] [a] [whole] [log] [entry] [,] [so] [I'd] [like] [it] [called] [parse_entry] [instead] [.] [Could] [you] [rename] [it] [everywhere] [it's] [used] [,] [including] [the] [report] [code] [,] [main] [and] [the] [unit] [tests] [?] [Behaviour] [should] [stay] [exactly] [the] [same] [.]
+reading 1 (chosen):
+  parse:   fully consumed rename clauses
+  meaning: Command(Rename { thing: Named(Name("parse_line")), kind: Some(Function), name: Some(Name("parse_entry")) })
+  rules:   en.rust.rename_request (by hand)
+  name `parse_line` -> parse_line
+  resolved: Command(Rename { thing: Item(RustItem { source: "workspace", file: "src/parser.rs", line: 16, name: "parse_line", kind: Function, owner: None, detail: None }), kind: Some(Function), name: Some(Name("parse_entry")) })
+  dropped:  Unsupported
+  world rules: rust.lookup.exact (seed), rust.rename (round 5)
+reply:  Trouble(Unsupported)
+spoken by: en.reply.unsupported (seed)
+
+I understand, but I can't do that here.
+
+STDERR:
+Running as unit: run-p762951-i97219549.scope; invocation ID: 24a108312b9c4323a6d1db4d40576e32

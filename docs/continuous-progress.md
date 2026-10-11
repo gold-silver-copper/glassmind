@@ -1,5 +1,81 @@
 # Continuous development checkpoint
 
+## Current checkpoint — corrected rename release validated; fresh full run active
+
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. Goal remains active.
+Root branch harness, evaluated sourcebb89964dd887b2b68ae01fb8f0a9a92a4901f490,
+including backend4effc66. No newer runtime published; last PR33 merge8d18377.
+No open PR at last query. Known completed worker tokens135247228; unfinished
+RATECLAUSES/parent/interrupted excluded, cached inputs counted once.
+
+RENAME: corrected guard fences every unvalidated typed Rename and filters Rename
+guesses; bounded legacy clauses preserve all27 old forms. 19CLI+40EnglishRust
+tests, workspacefmt/alltargetclippy/release/strict4smoke PASS. Debug/release26
+independentcases agree:8 exact native-tested edits,16 no-command/no-edit negatives,
+2correct repair controls. Context omitted-target refuses while explicitpronoun
+renames/tests correctly. All8 quoted diagnostics expose no Command; CLItest also
+checks guesses. Supplied3styles x2modes allpass: exact9 edits each, nativebefore/
+after tests and executableoutputidentical. All54 previews checked againstoriginal
+bytes (1-basedlines,0-basedbytecolumns; initial1-basedcol audit assumption corrected).
+No sourcechanged during spancheck. Reports tools/coding-rename-language/PARENT.md
+and parent/boundary-*; originals preserved externally.
+
+Release WORK/coordinator/renameenglish-review/glassmind-boundary SHA256
+f5bda2d3d73085eea1790bcd8d34a767d40e381e61e5b9c7fb2efdb332f311a6.
+Debug glassmind-boundary-debug SHA256
+18562ac62f7c4aed8775f033eaa03047b52f8e27ae67a4c4b73fca262652385d.
+Sessions37455(boundarytests),11841(debugprobes),45290(workspace),88684(releaseprobes)
+are COMPLETE/success; do not repeat without sourcechange. Earlier failures in
+quoted-validation.log/boundary-validation.log retained. Worker originals/archive
+were verified before its inactiveworktree/login removal; no renameworker active.
+
+FULL765 CORRECTED RELEASE ACTIVE session7330. ShellPID958863, timeoutPGID958872,
+rustbenchPID958873 lastverified. Output WORK/coordinator/rename-boundary-full,
+on-diskTMPDIR and native-scratch; unchangedtools/rustbench-dev.sh with8GiB/0swap,
+setsid--wait/timeouts. results.jsonl appears only at completion. Do not start a
+duplicate. On terminalsuccess compare all765 task/style outcomes against
+indexproof-full/results.jsonl SHA52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d.
+Require every177priorpass retained,zero failures, inspect everytransition. Then
+update finalreport/fullidentities/README/tracks (same765series,sourcebb89964), render
+tracks.html, commit/pushPR and exactheadgreenCI merge. No score claim/push before
+gate. BackendPARENT currently says fullpending; update it too when validated.
+
+Rejected first8cae74 release a4e82bf... remains glassmind-integrated. Its fullrun
+COMPLETE180pass585refused0fail,all177priorpasses retained,3 rename-request gains.
+Rejected for two independently discovered quoted-command readings, regardless of
+that score. Preserve coordinator/rename-full and parent/rejected-full-comparison.json;
+never repoll/restartsession83448. Original worker also rejected for lostpositive/
+omittedtargetcontextmutation. Each revision/failure remains explicitlyreported.
+
+WORKRATES COMPLETE/REJECTED, runtime restored. Full4475v3:29->33 correct,
+4439refused3wrong;required34;all32oldpayloadspreserved. Parent independently audits
+all4475+fournewrationalanswers. Frozen30 gives0/17positives,13/13safe negatives.
+Quantityruntime408d16b andapproved29/4475unchanged. Source-card annotation exposure
+disclosed. WORK/workrates-run/submitted,parent-submitted/rawmanifests retained;
+inactiveworker/auth removedafterhashverify. tools/quantities/work-rates/PARENT.md
+and docs/results/quantities-work-rates-rejected.json record failure; no chartgain.
+
+RATECLAUSES ACTIVE PID947134, scopeglassmind-continuous-rateclauses.scope,
+8GiB/0swap verified; branchcontinuous/rateclauses atbb89964, workWORK/rateclauses,
+runWORK/rateclauses-run. LoginstatusverifiedChatGPT; requiredGPT6Astrafast/forced
+ChatGPT/keyenvstrippinglauncher. TaskWORK/rateclauses-task.txt: new compositional
+fact-clause representation for simultaneous/inverse rates, arbitrary agents,
+fullyconsumedfacts/query, no stagedjoins/departures or complete-question templates.
+Ownquantitiesnewmodule/minimalregistration/newtools only. Approvedbaseline copied
+andhashchecked. No source-card read permitted; onlyMathQAProblemtrain/parquetdev,
+readonlyPyArrow mounts,nonewofficialtest/downloads. Freeze beforeDEV;full>=34correct,
+all32oldpayloads/3116synthetic preserved,nonewwrong, meaningfulgeneralization.
+
+Parent froze28 NEW cases before any candidate inspection at
+WORK/coordinator/rateclauses-independent, SHA256
+9eb6e7835c3a76ffaaf2073decfbf07db8717b625f232126d4ae94310cf86465.
+16positives/12negatives;require>=8positiveexact andallnegativesrefuse,no newwrong.
+Baseline COMPLETE0/16positiveanswers,12safe negatives,0wrong. No candidate/source
+inspection yet. Archive terminalsubmission beforeintegration/removal; check whether
+worker creates submitted, neveroverwrite. Preserve originalreport/patch/binary/logs.
+Next: await correctedcodingfull while rateworkerprogresses; archive/review terminal
+rateworker and run frozen28 independently. A failed milestone nevercompletesgoal.
+
 ## Latest checkpoint — QA rejection merged; rename backend verified locally
 
 PR33 merged at 2026-10-11T09:22:53Z, merge commit

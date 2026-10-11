@@ -1,0 +1,33 @@
+{
+  "status": "rejected_for_quoted_command_routing",
+  "source_commit": "8cae74ecc3f04d65d2ee0cc3c9a8af11213083b8",
+  "total": 765,
+  "outcomes": {
+    "refused": 585,
+    "pass": 180
+  },
+  "previous_passes_retained": 177,
+  "changes": [
+    {
+      "task": "edits/rename-parse-line",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "edits/rename-parse-line",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "edits/rename-parse-line",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "baseline_result_sha256": "52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d",
+  "candidate_result_sha256": "d22f7f1eb96495bb23fed406cbe9a03f67116b08ff266452771e24fc07edb320",
+  "limitation": "Full DEV result does not establish correct request interpretation; two independent quoted diagnostic commands failed."
+}

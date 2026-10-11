@@ -1,0 +1,366 @@
+{
+  "total": 33,
+  "passed": 33,
+  "cases": [
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. How many hours will they take to finish the job together?",
+      "expected": "4",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "4",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "A and B can do a piece of work in 12 and 18 days respectively. In how many days will they finish it together?",
+      "expected": "36/5",
+      "unit": "days",
+      "actual": {
+        "status": "answer",
+        "value": "36/5",
+        "unit": "days",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "X, Y and Z can complete a piece of work in 12, 18 and 36 days respectively. Working together, they will complete the same work in how many days?",
+      "expected": "6",
+      "unit": "days",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": "days",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Pipe red can fill a tank in 6 hours. Pipe blue can empty the same tank in 12 hours. How many hours will they take to fill the tank together?",
+      "expected": "12",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "12",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira and Niko together can do a job in 4 hours. Mira can do the same job in 12 hours. How many hours will Niko take to finish the job alone?",
+      "expected": "6",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for 2 hours and then Niko leaves. How many more hours will Mira take to finish the remaining work?",
+      "expected": "6",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for 2 hours and then Niko leaves. What is the total time in hours to finish the job?",
+      "expected": "8",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "8",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. Mira works alone for 3 hours and then Niko joins. How many more hours will they take to finish the remaining work together?",
+      "expected": "3",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "3",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. Mira works alone for 3 hours and then Niko joins. What is the total time in hours to finish the job?",
+      "expected": "6",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "6",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Lena can do a job in 2 hours. Omar can do the same job in 120 minutes. In how many minutes will they finish it together?",
+      "expected": "60",
+      "unit": "minutes",
+      "actual": {
+        "status": "answer",
+        "value": "60",
+        "unit": "minutes",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "P can do a work in 15 days and Q in 20 days. In how many days will they finish it together?",
+      "expected": "60/7",
+      "unit": "days",
+      "actual": {
+        "status": "answer",
+        "value": "60/7",
+        "unit": "days",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Two pipes P and Q can fill a cistern in 12 and 24 minutes respectively. If both the pipes are opened simultaneously, how much time will be taken to fill the cistern?",
+      "expected": "8",
+      "unit": "minutes",
+      "actual": {
+        "status": "answer",
+        "value": "8",
+        "unit": "minutes",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for 5 hours and then Niko leaves. What is the total time in hours to finish the job?",
+      "expected": "4",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "4",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for 4 hours and then Niko leaves. How many more hours will Mira take to finish the remaining work?",
+      "expected": "0",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "0",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Pipe red can fill a tank in 6 hours. Pipe blue can fill the same tank in 12 hours. Pipe green can empty it in 24 hours. How many hours will they take to fill the tank together?",
+      "expected": "24/5",
+      "unit": "hours",
+      "actual": {
+        "status": "answer",
+        "value": "24/5",
+        "unit": "hours",
+        "method": "constant independent rates: signed whole job / time; exact stage work and remaining work"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. How many hours will Zara take to finish the job alone?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. How many hours will they take to finish the job together? How much does it cost?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. Their rates double every hour. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for -2 hours and then Niko leaves. How many more hours will Mira take to finish the remaining work?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. Mira can do the same job in 15 hours. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. Mira can do the same job in 12 hours. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for 2 hours and then Niko leaves. How many more hours will Niko take to finish the remaining work?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 0 hours. Niko can do the same job in 6 hours. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in -3 hours. Niko can do the same job in 6 hours. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Pipe red can fill a tank in 6 hours. Pipe blue can empty the same tank in 6 hours. How many hours will they take to fill the tank together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Pipe red can fill a tank in 12 hours. Pipe blue can empty the same tank in 6 hours. How many hours will they take to fill the tank together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Pipe red can fill a tank in 6 hours. Pipe blue can empty the same tank in 12 hours. The tank is half full. How many hours will they take to fill the tank together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira and Niko together can do a job in 4 hours. How many hours will Niko take to finish the job alone?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira and Niko together can do a job in 12 hours. Mira can do the same job in 6 hours. How many hours will Niko take to finish the job alone?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 2 weeks. Niko can do the same job in 6 hours. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do a different job in 6 hours. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for 2 hours and then Zara leaves. How many more hours will Mira take to finish the remaining work?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    },
+    {
+      "question": "Mira can do a job in 12 hours. Niko can do the same job in 6 hours. They work together for 2 hours. How many hours will they take to finish the job together?",
+      "expected": null,
+      "unit": null,
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English cardinal"
+      },
+      "passed": true
+    }
+  ]
+}

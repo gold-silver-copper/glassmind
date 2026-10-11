@@ -1,0 +1,27 @@
+{
+  "new_download_bytes": 0,
+  "source_version": "fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6",
+  "source_license": "Apache-2.0 (supplied AllenAI card)",
+  "source_files": {
+    "train.parquet": {
+      "bytes": 9013733,
+      "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    "validation.parquet": {
+      "bytes": 1350141,
+      "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+    },
+    "source-card.md": {
+      "bytes": 7438,
+      "sha256": "8051c9a1e42245600985ff1b890dfe3ecce804c47555d83ca7a02a2e3f4b4cc2"
+    }
+  },
+  "design_access": "Official TRAIN Problem only, first4000; no validation before source freeze. Source-card accidental unrelated annotated example disclosed in PLAN.",
+  "authored_cases": {
+    "version": "work-rates-public-development-v1",
+    "license": "MIT OR Apache-2.0",
+    "rows": 33,
+    "bytes": 7220,
+    "sha256": "b87410e382c872851b9e19b87e0b8e8a02d5737796747437da179b4a2b3c3224"
+  }
+}

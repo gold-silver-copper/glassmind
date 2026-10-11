@@ -1,0 +1,33 @@
+{
+  "repository_revision": "8e12be3f884720a9ba6065fbec49e274d37589c4",
+  "license": "MIT OR Apache-2.0",
+  "authored_date": "2026-10-11",
+  "authored_cases_bytes": 2731,
+  "authored_cases_rows": 35,
+  "existing_public_english_regressions_bytes": 1630,
+  "existing_public_english_regressions_rows": 27,
+  "native_source_bytes": 322,
+  "native_generator_bytes": 3080,
+  "supplied_request_bytes": 658,
+  "supplied_workspace_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+  "supplied_workspace_bytes": 2923,
+  "supplied_workspace_file_count": 5,
+  "supplied_original_hashes_verified": {
+    "Cargo.toml": true,
+    "src/lib.rs": true,
+    "src/parser.rs": true,
+    "src/report.rs": true,
+    "src/main.rs": true
+  },
+  "downloads": 0,
+  "binary": {
+    "baseline": {
+      "bytes": 76910056,
+      "sha256": "226a97606e46889ac7d1005b513b13c9cb2c9343fd11c027752d3ec8dbd6dbf0"
+    },
+    "candidate": {
+      "bytes": 129837728,
+      "sha256": "9cba58d1363d3983e0377ca13e818522b0db245058d0351491fe6ed809efa5ff"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+input:  rename parse_line -> parse_entry everywhere pls, all callers + tests too
+words:  [rename] [parse_line] [-] [>] [parse_entry] [everywhere] [pls] [,] [all] [callers] [+] [tests] [too]
+parse:  no reading: UnknownShape { at: 10 }
+reply:  Trouble(UnknownShape { at: 10 })
+spoken by: en.reply.unknown_shape (seed)
+
+I can't follow the sentence from the marked spot.
+  rename parse_line -> parse_entry everywhere pls, all callers ▮+ tests too
+
+STDERR:
+Running as unit: run-p707071-i97143556.scope; invocation ID: 6cccf095b4c04869936b8545d8c6d25a

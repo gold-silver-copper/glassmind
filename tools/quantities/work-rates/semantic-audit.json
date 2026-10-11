@@ -1,0 +1,94 @@
+[
+  {
+    "index": 390,
+    "question": "pipe p can fill a tank in 3 hours , pipe q in 9 hours and pipe r in 18 hours . if all the pipes are open , in how many hours will the tank be filled ?",
+    "independent_completion_times": [
+      3,
+      9,
+      18
+    ],
+    "net_rate": "1/2",
+    "expected": "2",
+    "unit": "hours",
+    "semantic_correct": true,
+    "selected_label": "2 hours",
+    "gold": "Gold(case='explicit_unit', reason='exact_explicit_unit', coefficient=Fraction(2, 1), dimension='time', scale=Fraction(3600, 1), unit='hours')",
+    "comparison": {
+      "grade": "correct",
+      "reason": "exact_physical_label",
+      "predicted_canonical": "7200",
+      "question_requested_units_evaluated": false,
+      "prediction_dimension_evaluated": true
+    },
+    "legacy_grade": "wrong"
+  },
+  {
+    "index": 706,
+    "question": "a , b , c can complete a piece of work in 25 , 5,10 days . working together , they complete the same work in how many days ?",
+    "independent_completion_times": [
+      25,
+      5,
+      10
+    ],
+    "net_rate": "17/50",
+    "expected": "50/17",
+    "unit": "days",
+    "semantic_correct": true,
+    "selected_label": "50 / 17",
+    "gold": "Gold(case='bare_scalar', reason='exact_scalar', coefficient=Fraction(50, 17), dimension=None, scale=None, unit=None)",
+    "comparison": {
+      "grade": "correct",
+      "reason": "scalar_coefficient_only",
+      "predicted_canonical": "50/17",
+      "question_requested_units_evaluated": false,
+      "prediction_dimension_evaluated": false
+    },
+    "legacy_grade": "correct"
+  },
+  {
+    "index": 1082,
+    "question": "a , b , c can complete a piece of work in 24 , 8,12 days . working together , they complete the same work in how many days ?",
+    "independent_completion_times": [
+      24,
+      8,
+      12
+    ],
+    "net_rate": "1/4",
+    "expected": "4",
+    "unit": "days",
+    "semantic_correct": true,
+    "selected_label": "4",
+    "gold": "Gold(case='bare_scalar', reason='exact_scalar', coefficient=Fraction(4, 1), dimension=None, scale=None, unit=None)",
+    "comparison": {
+      "grade": "correct",
+      "reason": "scalar_coefficient_only",
+      "predicted_canonical": "4",
+      "question_requested_units_evaluated": false,
+      "prediction_dimension_evaluated": false
+    },
+    "legacy_grade": "correct"
+  },
+  {
+    "index": 1828,
+    "question": "a , b , c can complete a piece of work in 3,9 and 15 days respectively . working together , they will complete the same work in how many days ?",
+    "independent_completion_times": [
+      3,
+      9,
+      15
+    ],
+    "net_rate": "23/45",
+    "expected": "45/23",
+    "unit": "days",
+    "semantic_correct": true,
+    "selected_label": "45 / 23",
+    "gold": "Gold(case='bare_scalar', reason='exact_scalar', coefficient=Fraction(45, 23), dimension=None, scale=None, unit=None)",
+    "comparison": {
+      "grade": "correct",
+      "reason": "scalar_coefficient_only",
+      "predicted_canonical": "45/23",
+      "question_requested_units_evaluated": false,
+      "prediction_dimension_evaluated": false
+    },
+    "legacy_grade": "correct"
+  }
+]

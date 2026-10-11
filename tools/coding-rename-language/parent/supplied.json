@@ -1,0 +1,53 @@
+{
+  "binary_sha256": "a4e82bf8a64592da7d43a95a18f8588496c4c6e2e46fe2884e1b76b2afe63117",
+  "cases": [
+    {
+      "style": "chatty",
+      "mode": "ask",
+      "preview_readonly": true,
+      "exact_edits": 9,
+      "native_before_after": true,
+      "binary_output_identical": true
+    },
+    {
+      "style": "chatty",
+      "mode": "do",
+      "preview_readonly": true,
+      "exact_edits": 9,
+      "native_before_after": true,
+      "binary_output_identical": true
+    },
+    {
+      "style": "hurried",
+      "mode": "ask",
+      "preview_readonly": true,
+      "exact_edits": 9,
+      "native_before_after": true,
+      "binary_output_identical": true
+    },
+    {
+      "style": "hurried",
+      "mode": "do",
+      "preview_readonly": true,
+      "exact_edits": 9,
+      "native_before_after": true,
+      "binary_output_identical": true
+    },
+    {
+      "style": "terse",
+      "mode": "ask",
+      "preview_readonly": true,
+      "exact_edits": 9,
+      "native_before_after": true,
+      "binary_output_identical": true
+    },
+    {
+      "style": "terse",
+      "mode": "do",
+      "preview_readonly": true,
+      "exact_edits": 9,
+      "native_before_after": true,
+      "binary_output_identical": true
+    }
+  ]
+}

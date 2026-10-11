@@ -1,0 +1,371 @@
+[
+  {
+    "expected": "rename",
+    "value": "parse_line:parse_entry",
+    "text": "Hey! In this little log parser, the function `parse_line` really parses a whole log entry, so I'd like it called `parse_entry` instead. Could you rename it everywhere it's used, including the report code, main and the unit tests? Behaviour should stay exactly the same.",
+    "meanings": [
+      "Command(Repair(Test))"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "parse_line:parse_entry",
+    "text": "rename parse_line -> parse_entry everywhere pls, all callers + tests too",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "parse_line:parse_entry",
+    "text": "Rename `parse_line` to `parse_entry` everywhere (definition, callers, tests).",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "function:decode:read_entry",
+    "text": "rename function decode to read_entry everywhere (definition, callers, tests).",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "_:scan:scan_record",
+    "text": "rename scan -> scan_record everywhere pls, all callers + tests too",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "function:Load:Read",
+    "text": "Please rename function `Load` to `Read`; keep tests.",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"Load\")), kind: Some(Function), name: Some(Name(\"Read\")) })",
+      "Command(Rename { thing: Named(Name(\"Load\")), kind: Some(Function), name: Some(Name(\"Read\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "function:café:Écrire",
+    "text": "Rename function `café` to `Écrire` everywhere.",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"café\")), kind: Some(Function), name: Some(Name(\"Écrire\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "function:r#type:r#match",
+    "text": "rename function r#type to r#match; preserve behavior.",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "function:decode:read_record",
+    "text": "The function decode reads a record, so I'd like it called read_record instead. Could you rename it everywhere it's used? Behavior should stay exactly the same.",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: None })",
+      "Command(Rename { thing: Named(Name(\"read_record\")), kind: None, name: None })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Function), name: None })",
+      "Command(Rename { thing: Previous, kind: Some(Function), name: None })",
+      "Command(Rename { thing: Previous, kind: None, name: None })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "function:load:read_config",
+    "text": "Hey! In this small config reader, the function load really reads a whole config record, so I'd like it called read_config instead. Could you rename it everywhere it's used, including main and the unit tests? Behaviour should stay exactly the same.",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "field:width:span:Panel",
+    "text": "rename field width of Panel to span everywhere",
+    "meanings": [
+      "Command(Rename { thing: Fitting(Description { kind: Some(Field), conditions: [Called(Name(\"width\")), Related { relation: BelongsTo, position: First, other: Named(Name(\"Panel\")) }] }), kind: Some(Field), name: Some(Name(\"span\")) })",
+      "Command(Rename { thing: Fitting(Description { kind: None, conditions: [Called(Name(\"width\")), Related { relation: BelongsTo, position: First, other: Named(Name(\"Panel\")) }] }), kind: Some(Field), name: Some(Name(\"span\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "function:poll:receive:Queue",
+    "text": "rename method poll on Queue to receive everywhere; preserve behavior",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"Queue\")) })",
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"receive\")) })",
+      "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"receive\")) })",
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"preserve\")) })",
+      "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"preserve\")) })",
+      "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"preserve\")) })",
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"behavior\")) })",
+      "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"behavior\")) })",
+      "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"behavior\")) })",
+      "Command(Rename { thing: Named(Name(\"preserve\")), kind: None, name: Some(Name(\"behavior\")) })",
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"Queue\")) })",
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"receive\")) })",
+      "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"receive\")) })",
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"preserve\")) })",
+      "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"preserve\")) })",
+      "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"preserve\")) })",
+      "Command(Rename { thing: Named(Name(\"poll\")), kind: None, name: Some(Name(\"behavior\")) })",
+      "Command(Rename { thing: Named(Name(\"Queue\")), kind: None, name: Some(Name(\"behavior\")) })",
+      "Command(Rename { thing: Named(Name(\"receive\")), kind: None, name: Some(Name(\"behavior\")) })",
+      "Command(Rename { thing: Named(Name(\"preserve\")), kind: None, name: Some(Name(\"behavior\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "struct:Parcel:Packet",
+    "text": "rename struct Parcel to Packet everywhere",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"Parcel\")), kind: Some(Struct), name: Some(Name(\"Packet\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "_:read:read_item",
+    "text": "Could you please rename read -> read_item everywhere (callers, definition, tests)?",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "rename",
+    "value": "_:format:render",
+    "text": "rename format to render; keep tests",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"format\")), kind: None, name: Some(Name(\"render\")) })",
+      "Command(Rename { thing: Named(Name(\"format\")), kind: None, name: Some(Name(\"render\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "Do not rename function decode to read_entry; keep tests",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "Never rename decode to read_entry, fix tests",
+    "meanings": [
+      "Command(Repair(Test))"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "If tests pass, rename decode to read_entry",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "Check whether renaming decode to read_entry would break tests",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"break\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"break\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "Explain \"rename decode to read_entry\"; do not change tests",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry and rename load to read_config",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"load\")), kind: None, name: Some(Name(\"read_config\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"read_config\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry or read_record",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"read_record\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"read_record\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry; call it read_record instead",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry; delete tests",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"delete\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"delete\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry; bananas forever",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"bananas\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"forever\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"bananas\")) })",
+      "Command(Rename { thing: Named(Name(\"read_entry\")), kind: None, name: Some(Name(\"forever\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode everywhere, keep tests",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: None })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename to read_entry; keep tests",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename function decode to read_entry and change its behavior",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename local variable decode to read_entry; keep tests",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"the local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"the decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"the local\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"the decode\")), kind: Some(Field), name: Some(Name(\"read_entry\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry only in tests",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry if tests pass",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "Could you rename it everywhere including tests?",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "The function decode reads a record, so I'd like it called read_entry instead. Could you rename it everywhere? Also remove validation.",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "repair",
+    "value": "Test",
+    "text": "fix the test named rename_foo",
+    "meanings": [],
+    "exit": 0
+  },
+  {
+    "expected": "repair",
+    "value": "Test",
+    "text": "fix failing tests for function test_rename_entry",
+    "meanings": [
+      "Command(Repair(Test))"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "What does the word `rename` mean?",
+    "meanings": [
+      "Ask(Identify(Description { kind: None, conditions: [Related { relation: Calls, position: Second, other: Named(Name(\"rename\")) }] }))",
+      "Ask(Identify(Description { kind: None, conditions: [Related { relation: Calls, position: Second, other: Named(Name(\"rename\")) }] }))"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "I might rename decode to read_entry; keep tests",
+    "meanings": [
+      "Command(Rename { thing: Named(Name(\"might\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"might\")), kind: None, name: Some(Name(\"read_entry\")) })",
+      "Command(Rename { thing: Named(Name(\"decode\")), kind: None, name: Some(Name(\"read_entry\")) })"
+    ],
+    "exit": 0
+  },
+  {
+    "expected": "refuse",
+    "value": "-",
+    "text": "rename decode to read_entry; don't preserve behavior",
+    "meanings": [],
+    "exit": 0
+  }
+]

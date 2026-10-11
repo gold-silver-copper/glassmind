@@ -1,0 +1,161 @@
+{
+  "cases": [
+    {
+      "name": "positive_0",
+      "text": "rename function read_count to decode_count",
+      "expected": "rename",
+      "required": true
+    },
+    {
+      "name": "positive_1",
+      "text": "Rename `read_count` to `decode_count` everywhere (definition, callers, tests).",
+      "expected": "rename",
+      "required": true
+    },
+    {
+      "name": "positive_2",
+      "text": "rename read_count -> decode_count everywhere pls, all callers + tests too",
+      "expected": "rename",
+      "required": true
+    },
+    {
+      "name": "positive_3",
+      "text": "Hey! The function `read_count` parses a count, so I would like it called `decode_count` instead. Could you rename it everywhere, including the callers and unit tests? Behaviour should stay exactly the same.",
+      "expected": "rename",
+      "required": true
+    },
+    {
+      "name": "positive_4",
+      "text": "Please rename function read_count to decode_count and update all its references.",
+      "expected": "rename",
+      "required": false
+    },
+    {
+      "name": "positive_5",
+      "text": "Could you rename `read_count` to `decode_count`, please?",
+      "expected": "rename",
+      "required": false
+    },
+    {
+      "name": "positive_6",
+      "text": "rename function read_count to decode_count; keep behavior unchanged",
+      "expected": "rename",
+      "required": false
+    },
+    {
+      "name": "positive_7",
+      "text": "rename read_count to decode_count everywhere",
+      "expected": "rename",
+      "required": false
+    },
+    {
+      "name": "negative_0",
+      "text": "Do not rename read_count to decode_count; the tests should stay the same.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_1",
+      "text": "Never rename read_count to decode_count.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_2",
+      "text": "If the tests fail, rename read_count to decode_count.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_3",
+      "text": "Would renaming read_count to decode_count affect tests?",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_4",
+      "text": "Explain how to rename read_count to decode_count, but change nothing.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_5",
+      "text": "Rename read_count to decode_count and delete its tests.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_6",
+      "text": "Rename read_count to decode_count and change the return value to zero.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_7",
+      "text": "Rename read_count to decode_count, or perhaps load_count.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_8",
+      "text": "Rename read_count to decode_count and rename other to second.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_9",
+      "text": "Rename read_count to decode_count only in its definition, leave callers alone.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_10",
+      "text": "I do not want read_count renamed to decode_count. Please run the tests.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_11",
+      "text": "The docs contain the example \"rename read_count to decode_count\". Explain that example.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_12",
+      "text": "Rename read_count to decode_count nonsense banana.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_13",
+      "text": "rename read_count to",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_14",
+      "text": "rename to decode_count",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "negative_15",
+      "text": "Please do not fix tests or rename anything.",
+      "expected": "no_mutating_action",
+      "required": true
+    },
+    {
+      "name": "test_repair_control",
+      "text": "Fix the failing tests.",
+      "expected": "repair_test",
+      "required": true
+    },
+    {
+      "name": "build_repair_control",
+      "text": "Fix the compiler errors.",
+      "expected": "repair_build",
+      "required": true
+    }
+  ],
+  "source": "pub fn read_count(x: i32) -> i32 { x * 2 + 3 }\npub fn run()->i32 { read_count(20) }\n#[test] fn original_behavior() { assert_eq!(run(),43); }\n// read_count and decode_count here are commentary.\n"
+}
