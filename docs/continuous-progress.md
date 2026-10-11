@@ -4,13 +4,13 @@ Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 This turn: PROGRESS — native public Wikidata importer implemented and validated;
 full84,990,012-name/5,677,515-statement import RUNNING underfrozenresourcegates.
-Worktreecontinuous/wikidata-native atbba402d. Productionroot notyetintegrated.
+Worktreecontinuous/wikidata-native at58427be. Productionroot notyetintegrated.
 Known completed-worker tokens201,926,299 (cached input counted once; parent and
 interrupted usage excluded). No model worker ran. One rootimportjob active.
 
 ## ACTIVE native public ingestion: monitor existing job87682
 
-WORK/wikidata-native, branchcontinuous/wikidata-native, HEADbba402d, clean.
+WORK/wikidata-native, branchcontinuous/wikidata-native, HEAD58427be, clean.
 Sourceimplementationb44df61; subsequentliteral-output-pathfixbba402d.
 Read tools/facts/native-pilot/PROGRESS.md beforework. Fullimplementationnowexists;
 do not follow oldersections sayingonlyplan/auditexists.
@@ -18,7 +18,8 @@ Externalrun WORK/coordinator/wikidata-native. Session87682 RUNNING, scope
  glassmind-wikidata-native-import.scope, supervisorPID749960/importPID749961.
 FrozenimportcandidateSHA601e16d776c129a65998f6f650b5d5b5b189ece95af8743bd6fc075ebdfb7620
 copiedseparatelyfrombuildcache; sourceb44df61. Sourcehashverified4.995s, rowsvalidated
-20.683s, entitiesloaded45.365s; presentlyrebuildingaliaskeys. Checkimport-stages.jsonl,
+20.683s, entitiesloaded45.365s, aliasesloaded249.083s, edges/witnesses263.802s;
+secondaryindexesbuilding. Checkimport-stages.jsonl,
 import-supervisor.log andactualPID/scope. Newnative.sqlite is UNCOMMITTED/PARTIAL
 untilimportcompletes. Do not startduplicatejob, alterrunningbinary, or overwriteoutputs.
 Fixedlimits24GiBoutput/32GiBaddedrun/3600s8GiB0swap; supervisorcountsdeletedsortfiles.
@@ -35,6 +36,8 @@ no needrepeatfrozenlargeimport. 33factstests, workspacefmt/clippy/release and4/4
 pass. UpdatedCLImatchesall19481TRAIN+2821DEV ordinary/setoldoutputs; main28/28bothmodes.
 Currentfinalfactsbinaryincoordinator/disk-facts/targetSHA8a284fd1f4c377f61d97bc78d30a80abcb116a3e15d794c93b6aa0a8e6af5492;
 mainSHA9b80e692728b204ba2dd118a663fec3b0818a4fb4768a5c39a1406b1b1eb26c9.
+Finalreader copiedtoexternalrun/final-candidate; preparedauditusesit. Original
+importcandidate remainsunchanged. No extra model calls or changed acceptance gates.
 Completejobs99690/86376/37363/36372/58672/16569; onlyimport87682active.
 
 NEXT: monitor87682. Afterpass, runexternalrun/audit-native.py withpriorPyArrowvenv
