@@ -1,6 +1,6 @@
 # glassmind
 
-A system you talk to about Rust code, short stories and everyday requests,
+A system you talk to about Rust code, short stories, everyday requests, facts and quantities,
 with **no LLM at runtime**. Typed Rust code reasons and checks actions;
 small inspectable models propose interpretations. The coding frontend can
 show the trace behind its answers (`--explain`).
@@ -31,7 +31,8 @@ Edits are proposed as a set of changes and applied only with `--apply`; it
 never commits.
 
 As a coding agent (it runs `cargo check`, `cargo test` and `clippy` itself,
-in a memory-capped scope, and reads their messages):
+in a memory-capped scope, and reads their messages). Build and lint checks
+continue across independent targets so one failure does not hide other diagnostics:
 
 ```sh
 # talk about a crate, its build and its tests; "yes" applies a proposed fix
@@ -66,7 +67,7 @@ assertion or question per line; `/reset` starts a new story.
 
 Chart and score journal: [tracks](docs/results/tracks.html). Scores below
 are exact answers; wrong and refused answers remain separate. CLINC's OOS
-class counts a correct refusal as right.
+class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
@@ -79,6 +80,11 @@ class counts a correct refusal as right.
 | Basic chat memory | 41/41 synthetic smoke checks | no independent chat benchmark |
 | Reading, BabyLM 2025 dev | 1/120 sampled documents parsed; 15 exceed the 48-token cap | pending |
 | Grammar, BLiMP parse-only probe | 1 good preference, 3 bad, 1,336 ties on 1,340 pairs | no probability-model score yet |
+
+The diagnostic-completeness follow-up leaves all 765 rustbench dev outcomes
+unchanged and fixes both wrong answers in a 32-turn status sample (27 → 29 right,
+2 → 0 wrong). Coding held-out totals above were measured before that follow-up.
+[Regression evidence](docs/results/diagnostics-keep-going.json).
 
 The story dev set is a deterministic episode-level partition of the official
 training data. CLINC thresholds were calibrated on official validation;
@@ -182,5 +188,6 @@ is outside what they may change. Every check on code runs in a
 memory-capped scope that ends everything it started.
 
 CI runs `tools/check.sh`: fmt, clippy, build and one fixture smoke, in a
-memory-capped scope. Full development runs happen per track before pushing
+memory-capped scope. The smoke gate requires every fixture turn to be correct
+and rejects an empty evaluation. Full development runs happen per track before pushing
 a feature batch, rather than after every edit.

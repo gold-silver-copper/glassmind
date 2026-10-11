@@ -1,0 +1,71 @@
+{
+  "source_base": "36fce79d3f84a43c0335364fb843107d3c2f2ace",
+  "patch_sha256": "d41c825cc07c54d10eb9d0e8a26e0199a0cc88ae04c8849ac76e3191aa3c538b",
+  "agent_binary_sha256": "9e4d570a3d1a4fe8eba439b74d379b852f22060dd2e00672d477cdd7304c164f",
+  "benchmark_commit": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+  "focused_status_sample": {
+    "before": {
+      "turns": 32,
+      "right": 27,
+      "refused": 3,
+      "wrong": 2,
+      "wordless": 0,
+      "cost": 22.266008771929826
+    },
+    "after": {
+      "turns": 32,
+      "right": 29,
+      "refused": 3,
+      "wrong": 0,
+      "wordless": 0,
+      "cost": 2.2660087719298247
+    }
+  },
+  "full_dev": {
+    "total": 765,
+    "right": 160,
+    "refused": 602,
+    "wrong": 3
+  },
+  "per_case_comparison": {
+    "compared": 765,
+    "changed": 0,
+    "transitions": [
+      {
+        "before": "fail",
+        "after": "fail",
+        "count": 3
+      },
+      {
+        "before": "pass",
+        "after": "pass",
+        "count": 160
+      },
+      {
+        "before": "refused",
+        "after": "refused",
+        "count": 602
+      }
+    ]
+  },
+  "heldout": "not rerun for this diagnostic-only follow-up; existing report belongs to efe65b8",
+  "checks": "workspace fmt, clippy, release build, and strict 4/4 fixture smoke passed",
+  "agent_commit": "4e28167813f803e84173031738d0585c5c6058c9",
+  "loop_commit": "03deec54e71b0a056aeeb9aec75e45612bc51502",
+  "loop_training_sample": {
+    "before": {
+      "right": 69,
+      "wrong": 4,
+      "refused": 67,
+      "total": 140
+    },
+    "after": {
+      "right": 70,
+      "wrong": 2,
+      "refused": 68,
+      "total": 140
+    },
+    "accepted": true,
+    "human_final_and_validation_disabled": true
+  }
+}

@@ -62,6 +62,18 @@
         "output_tokens": 35921,
         "reasoning_output_tokens": 10068
       }
+    },
+    {
+      "track": "loop-r30",
+      "started_unix": 1791686132,
+      "finished_unix": 1791687221,
+      "usage": {
+        "input_tokens": 2984717,
+        "cached_input_tokens": 2914816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 10391
+      },
+      "source": "accepted loop round 30, including review"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

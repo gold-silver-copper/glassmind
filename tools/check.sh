@@ -19,5 +19,15 @@ exec systemd-run --user --scope --quiet --collect \
     "${CARGO_TARGET_DIR:-target}/release/glassmind" eval \
       --sources "$scratch/sources" --inputs fixtures/data/train/inputs.jsonl > "$scratch/out.jsonl"
     "${CARGO_TARGET_DIR:-target}/release/glassmind-loop" score \
-      --labels fixtures/data/train/labels.jsonl --outcomes "$scratch/out.jsonl"
+      --labels fixtures/data/train/labels.jsonl --outcomes "$scratch/out.jsonl" \
+      --json > "$scratch/score.json"
+    python3 - "$scratch/score.json" <<"PY"
+import json
+import sys
+with open(sys.argv[1]) as report:
+    total = json.load(report)["total"]
+print("Fixture smoke:", total)
+if total["turns"] == 0 or total["right"] != total["turns"]:
+    raise SystemExit("fixture smoke must answer every labelled turn correctly")
+PY
   '
