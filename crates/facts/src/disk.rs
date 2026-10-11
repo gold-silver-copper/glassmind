@@ -16,6 +16,8 @@ use std::{
     },
 };
 
+pub mod pilot;
+
 pub const MAX_DISK_QUESTION_BYTES: usize = 4096;
 pub const MAX_DISK_QUESTION_TOKENS: usize = 128;
 pub const MAX_DISK_IMPORT_BYTES: usize = 32 * 1024 * 1024;
@@ -60,7 +62,10 @@ const SCHEMA: &[(&str, &str, &str)] = &[
 
 #[derive(Debug, Serialize)]
 pub struct DiskInfo {
-    pub source_json_sha256: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub source_json_sha256: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub public_source: Option<pilot::SourceManifest>,
     pub entities: usize,
     pub aliases: usize,
     pub edges: usize,
@@ -125,7 +130,7 @@ impl DiskStore {
             .open(output)
             .map_err(error)?;
         let mut db = Connection::open_with_flags(
-            output,
+            output.canonicalize().map_err(error)?,
             OpenFlags::SQLITE_OPEN_READ_WRITE | OpenFlags::SQLITE_OPEN_NO_MUTEX,
         )
         .map_err(error)?;
@@ -189,7 +194,7 @@ impl DiskStore {
     /// resolution and edges cannot drift between requests if a writer commits.
     pub fn open(path: &Path) -> Result<Self, String> {
         let db = Connection::open_with_flags(
-            path,
+            path.canonicalize().map_err(error)?,
             OpenFlags::SQLITE_OPEN_READ_ONLY | OpenFlags::SQLITE_OPEN_NO_MUTEX,
         )
         .map_err(error)?;
@@ -209,10 +214,14 @@ impl DiskStore {
         let version: i64 = db
             .query_row("PRAGMA user_version", [], |r| r.get(0))
             .map_err(error)?;
-        if application != APPLICATION_ID || version != 1 {
+        if application != APPLICATION_ID || ![1, 2].contains(&version) {
             return Err("unsupported disk facts format".into());
         }
-        for (kind, name, expected) in SCHEMA {
+        for (kind, name, expected) in SCHEMA
+            .iter()
+            .filter(|(_, name, _)| version == 1 || *name != "aliases")
+            .chain(pilot::SCHEMA.iter().filter(|_| version == 2))
+        {
             let found: Option<String> = db
                 .query_row(
                     "SELECT sql FROM sqlite_schema WHERE type=? AND name=?",
@@ -234,16 +243,24 @@ impl DiskStore {
         if meta("normalizer")? != normalizer_version() {
             return Err("incompatible disk facts normalizer; rebuild the index".into());
         }
-        let source_json_sha256 = meta("source_json_sha256")?;
-        if source_json_sha256.len() != 64
-            || !source_json_sha256
-                .bytes()
-                .all(|c| c.is_ascii_digit() || (b'a'..=b'f').contains(&c))
-        {
-            return Err("invalid disk facts source hash".into());
-        }
+        let (source_json_sha256, public_source) = if version == 1 {
+            let hash = meta("source_json_sha256")?;
+            if !pilot::hex_hash(&hash, 64) {
+                return Err("invalid disk facts source hash".into());
+            }
+            (Some(hash), None)
+        } else {
+            let manifest: pilot::SourceManifest =
+                serde_json::from_str(&meta("public_source")?).map_err(error)?;
+            manifest.validate()?;
+            if meta("source_kind")? != "audited-wikidata-parquet-pilot" {
+                return Err("unsupported public facts source".into());
+            }
+            (None, Some(manifest))
+        };
         let info = DiskInfo {
             source_json_sha256,
+            public_source,
             entities: meta("entities")?.parse().map_err(error)?,
             aliases: meta("aliases")?.parse().map_err(error)?,
             edges: meta("edges")?.parse().map_err(error)?,

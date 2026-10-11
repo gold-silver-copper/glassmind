@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "split": "train",
+      "mode": "answer",
+      "matched": 19481,
+      "expected_sha256": "eb09e5fc44e699e2ab08b94a44409ab8ad5a623224bd7340372c4326bcb0aee8",
+      "output_sha256": "eb09e5fc44e699e2ab08b94a44409ab8ad5a623224bd7340372c4326bcb0aee8"
+    },
+    {
+      "split": "train",
+      "mode": "set",
+      "matched": 19481,
+      "expected_sha256": "4ffc9256e02ddc05dd636d0ba9c3305ee0c2b60ecad025c568a55b3608a1617f",
+      "output_sha256": "4ffc9256e02ddc05dd636d0ba9c3305ee0c2b60ecad025c568a55b3608a1617f"
+    },
+    {
+      "split": "valid",
+      "mode": "answer",
+      "matched": 2821,
+      "expected_sha256": "31eabcae27f2303c2060e17e86cc5027273079c2624a4ffff1e15a878d920a85",
+      "output_sha256": "31eabcae27f2303c2060e17e86cc5027273079c2624a4ffff1e15a878d920a85"
+    },
+    {
+      "split": "valid",
+      "mode": "set",
+      "matched": 2821,
+      "expected_sha256": "76898e8c53b883eedc8a663d78e3bae6a36f015f791c2affcf2155913313a61e",
+      "output_sha256": "76898e8c53b883eedc8a663d78e3bae6a36f015f791c2affcf2155913313a61e"
+    },
+    {
+      "main_mode": "plain",
+      "result": {
+        "total": 28,
+        "right": 28
+      }
+    },
+    {
+      "main_mode": "intent",
+      "result": {
+        "total": 28,
+        "right": 28
+      }
+    }
+  ],
+  "facts_binary_sha256": "8a284fd1f4c377f61d97bc78d30a80abcb116a3e15d794c93b6aa0a8e6af5492",
+  "main_binary_sha256": "9b80e692728b204ba2dd118a663fec3b0818a4fb4768a5c39a1406b1b1eb26c9"
+}
