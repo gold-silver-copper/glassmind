@@ -6,6 +6,7 @@
 pub mod add_fields;
 pub mod declared_types;
 pub mod identifier_roles;
+pub mod implementation_grammar;
 pub mod rename_requests;
 
 use glassmind_english::{Cat, Number, Sem, VerbForm, word};
