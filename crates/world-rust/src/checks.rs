@@ -783,7 +783,7 @@ mod tests {
 
     #[test]
     fn slips_are_in_code_not_tests_named_files_first() {
-        let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../target/test-slips");
+        let dir = scratch("test-slips");
         let _ = std::fs::remove_dir_all(&dir);
         std::fs::create_dir_all(dir.join("src")).unwrap();
         std::fs::create_dir_all(dir.join("tests")).unwrap();
@@ -830,7 +830,7 @@ mod tests {
 
     #[test]
     fn applies_changes_across_lines_or_none() {
-        let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../target/test-checks");
+        let dir = scratch("test-checks");
         std::fs::create_dir_all(&dir).unwrap();
         std::fs::write(
             dir.join("a.rs"),

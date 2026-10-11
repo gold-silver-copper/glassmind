@@ -217,6 +217,45 @@
         "reasoning_output_tokens": 1729
       },
       "source": "Exact ratio totals; MathQA14\u219216 correct, exhaustive new-answer and frozen synthetic audit"
+    },
+    {
+      "track": "coding-packages-continuous",
+      "started_unix": 1791691845.4322786,
+      "finished_unix": 1791692493.8568077,
+      "usage": {
+        "input_tokens": 4104123,
+        "cached_input_tokens": 3991808,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 38528,
+        "reasoning_output_tokens": 15849
+      },
+      "source": "Cargo root/reexport resolution;15/15local, sixdevprompts unchanged, full765 parent gate"
+    },
+    {
+      "track": "coding-repairs2-continuous",
+      "started_unix": 1791692734.5959122,
+      "finished_unix": 1791693052.9611783,
+      "usage": {
+        "input_tokens": 1411727,
+        "cached_input_tokens": 1340544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18749,
+        "reasoning_output_tokens": 4315
+      },
+      "source": "Compiler-identified standard Debug derivation;3/18 supplied fixes and4 independent repairs, full765 parentgate"
+    },
+    {
+      "track": "facts-chat-continuous",
+      "started_unix": 1791692897.9833136,
+      "finished_unix": 1791693527.7567706,
+      "usage": {
+        "input_tokens": 2971286,
+        "cached_input_tokens": 2870144,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 35014,
+        "reasoning_output_tokens": 11238
+      },
+      "source": "Opt-in talk facts;276 accepted dev answer sets preserved; partial display-only labels; parent generic bundle loader replaces pinned fingerprint"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

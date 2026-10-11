@@ -60,7 +60,8 @@ Choose an in-scope alternative when one of those would otherwise be needed.
 
 ## Establish current state, then start work
 
-Read `README.md`, `data/README.md`, `docs/results/tracks.jsonl`, the latest
+Read `docs/continuous-progress.md` first if it exists, then `README.md`,
+`data/README.md`, `docs/results/tracks.jsonl`, the latest
 entries in `/home/gsc/code/notes/projects/glassmind/progress.md`, applicable
 `AGENTS.md` files and the relevant track reports. Use `prompts/grow-fast.md`
 and `prompts/glassmind.md` for architectural context, not stale instructions
@@ -71,11 +72,12 @@ workers, loop state and available resources. Preserve existing changes.
 Prefer an isolated worktree over disturbing an occupied or dirty checkout.
 Verify present facts rather than trusting a historical commit or scoreboard.
 
-The last handoff recorded merged PRs #2 and #3, a stopped loop, retained
-models and data, and useful next work on real code edits, stronger repairs,
-external word problems, broader dialogue/facts and learned English reading.
-Those are starting leads, not a fixed checklist or an assumption about the
-current state. Start the first useful bounded experiment after this audit.
+Resume verified unfinished work from the current checkpoint before opening
+duplicate experiments. Confirm whether recorded jobs are still running or
+have completed; an observation timeout is not a failed experiment. Reuse
+retained models, datasets and results when their provenance matches. Treat
+historical handoffs as leads, not as current state or a fixed checklist.
+Start the first useful bounded experiment after this audit.
 
 ## The continuing work cycle
 

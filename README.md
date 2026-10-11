@@ -53,6 +53,8 @@ printf '%s\n' 'Convert 1/3 hours to minutes' | ./target/release/glassmind talk
 # Add learned everyday-intent recognition after training (services are not connected)
 bash crates/everyday/tools/reproduce.sh
 ./target/release/glassmind talk --model scratch/everyday/intent.json --session conversation.json
+# Add an offline facts bundle, prepared with tools/facts/chat/package.py
+./target/release/glassmind talk --facts-dir scratch/facts-bundle --session conversation.json
 # Follow assertions and answer questions about a short story
 ./target/release/glassmind-stories --model tools/stories/action-model.json
 # Exact arithmetic, typed units and calendar dates
@@ -62,8 +64,13 @@ bash crates/everyday/tools/reproduce.sh
 For example, `glassmind talk` remembers “my name is Mira”, answers “what is
 my name?”, and applies “actually, my name is Jo”. Story input uses one
 assertion or question per line; `/reset` starts a new story.
-[Dialogue tracking](crates/dialogue/EXPERIMENT.md) and
-[Wikidata facts](tools/facts/README.md) have separate trained-model commands.
+[Dialogue tracking](crates/dialogue/EXPERIMENT.md) has a separate trained-model
+command. [Local Wikidata bundles](tools/facts/chat/HANDOFF.md) can also answer
+questions in `talk`: replies include source links, and JSON includes entity IDs
+and provenance. Bundles declare their own asset hashes and coverage; labels
+affect display only. Explicit memory, calculations and established stories keep
+their priority. The demonstrated bundle is a finite 500-entity snapshot with
+known errors, not an open-world fact service.
 
 ## Current benchmark tracks
 
@@ -73,7 +80,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 163/765 pass; 599 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 166/765 pass; 596 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -88,7 +95,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 The diagnostic-completeness follow-up leaves all 765 rustbench dev outcomes
 unchanged and fixes both wrong answers in a 32-turn status sample (27 → 29 right,
 2 → 0 wrong). Coding held-out totals above precede both that follow-up and
-the later syntax-based repairs.
+the later syntax-based and standard-trait repairs.
 [Regression evidence](docs/results/diagnostics-keep-going.json).
 
 Syntax-based test repairs add the three request styles of the moving-average
@@ -106,6 +113,20 @@ inherent `Self` paths. All 14 local checks pass, including four successful edits
 nine refusals and rollback. Type checks remain 9/9; all 765 RustBench outcomes
 remain unchanged. Unsupported attributes, macros and ambiguous bindings refuse.
 [Variant scope and evidence](docs/coding-variants.md).
+
+Package-aware renames follow library/binary roots, imports and reexports.
+All 15 package checks pass, including three edits; the previous type and variant
+checks remain unchanged. Full RustBench dev still has the same 163 passes,
+599 refusals and three failures. [Package evidence](docs/coding-packages.md).
+
+Compiler-directed standard `Debug` derivation adds three RustBench passes,
+one per request style for the same missing-trait case. All other 762 outcomes
+are unchanged, including three existing failures. The repair anchors the whole
+declaration, preserves function/test bodies and requires requested checks to
+pass; independent probes verify behavior for four additional repairs.
+[Repair scope](docs/coding-diagnostics-repairs.md) and
+[full comparison](docs/results/coding-standard-debug.json).
+
 
 On 179 complete SGD dev conversations involving RideSharing, Travel and Weather,
 learned slot transfers raise exact routing-and-state turns from 549 to 595/1,119;

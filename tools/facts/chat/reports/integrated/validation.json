@@ -1,0 +1,43 @@
+{
+  "source_commit": "d1076c4c97638f7750d8d7745ce1ef5a8db16827",
+  "binary_sha256": "3a2431e7e0a2b686c831b94da32180f3dcbbb5da7686b1e5e5ceaa96836b01a0",
+  "workspace_check": "fmt, all-target clippy, release, strict 4/4 smoke passed",
+  "cli_tests": 8,
+  "scope": "Existing 500 validation-subject-seeded facts index, unchanged predictor and scorer",
+  "full_dev": {
+    "total": 2821,
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20,
+    "accepted_answer_sets_preserved": 276
+  },
+  "sample": {
+    "total": 200,
+    "right": 12,
+    "refused": 188,
+    "wrong": 0
+  },
+  "legacy": "Memory41/41, calculations27/27, stories47/47; default/facts, with/without model (memory fixture has no model flag)",
+  "mixed": "28/28 each, with/without model",
+  "final_tests": "tests-final.log passed after boxed FactReply",
+  "unchanged_sources": [
+    "crates/facts",
+    "crates/everyday/src/model.rs",
+    "tools/facts/index.json"
+  ],
+  "bundle": {
+    "version": 1,
+    "source": "Wikidata snapshot 2026-10-10; relation model trained on SimpleQuestions df69267",
+    "license": "Wikidata CC0-1.0; SimpleQuestions CC-BY-3.0",
+    "scope": "500 validation-subject-seeded entities; finite demonstration, not open-world retrieval",
+    "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+    "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+  },
+  "logs": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/workspace-final.log": "83d7d57cabde1474102d8565428dc7c4cbd40ef8d40402c5698e93650e42fa59",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/tests-final.log": "8890360b11e58f990cf5a83e4851f09e969b8306b7c9808ed31985fdc3dcce93",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/replay.log": "180ebfd809a094e343496fc52529d1c622e187b037c52e77058ae12db0963a01"
+  },
+  "standalone_scorer_sha256": "32b6fdc2f9762d65632cc35cdbad1d5faec1c575f1c4d843c9a362f1fa81e164",
+  "predictor_sha256": "b17221d33a0ce95690d58ec72a981ed1692561630c49e26274d6e91325897c14"
+}

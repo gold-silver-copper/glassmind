@@ -22,9 +22,11 @@ use serde::{Deserialize, Serialize};
 
 pub mod checks;
 pub mod index;
+mod rename_package;
 mod rename_types;
 mod rename_variants;
 mod slips;
+mod standard_traits;
 
 use RustKind::{Field, Function};
 use checks::{RustChange, RustCheck};
@@ -198,6 +200,8 @@ const REMEDY_SUGGESTED: RuleInfo = RuleInfo::new("rust.remedy.compiler_suggestio
 /// it offers there, as no two replacements of the same text can both be
 /// made.
 const REMEDY_ONE_PER_PLACE: RuleInfo = RuleInfo::new("rust.remedy.one_per_place", 29);
+/// Add standard Debug only to a unique compiler-identified local declaration.
+const REMEDY_DEBUG: RuleInfo = RuleInfo::new("rust.remedy.derive_debug", HAND);
 /// Compiler fixes can expose further errors; compose bounded rounds only
 /// when the final requested check passes.
 const REMEDY_ITERATE: RuleInfo = RuleInfo::new("rust.remedy.iterate_suggestions", HAND);
@@ -209,6 +213,7 @@ const REMEDY_SLIP: RuleInfo = RuleInfo::new("rust.remedy.undo_slip", 29);
 const APPLY_CHANGES: RuleInfo = RuleInfo::new("rust.apply.changes", HAND);
 
 pub const RULES: &[RuleInfo] = &[
+    REMEDY_DEBUG,
     REMEDY_ITERATE,
     RUN_CHECK,
     REMEDY_SUGGESTED,
@@ -796,6 +801,10 @@ impl World<Rust> for RustWorld {
                 },
                 fired,
             )?;
+            // A package graph cannot account for references in another source.
+            if self.sources.len() != 1 {
+                return Err(Unsupported);
+            }
             let source = self
                 .sources
                 .iter()
@@ -869,6 +878,16 @@ impl World<Rust> for RustWorld {
                 ))
             });
         }
+        let mut derived_debug = false;
+        if changes.is_empty() && self.switches.on(REMEDY_DEBUG.id) {
+            for source in &self.sources {
+                changes.extend(standard_traits::debug(&source.name, &source.root, &found));
+            }
+            derived_debug = !changes.is_empty();
+            if derived_debug {
+                fired.push(REMEDY_DEBUG);
+            }
+        }
         changes.sort();
         changes.dedup();
         // Failing tests come with no fixes of the compiler's.
@@ -918,7 +937,11 @@ impl World<Rust> for RustWorld {
                 })
                 .and_then(|_| checks::run(*check, &source.name, &scratch));
             let tried = match tried {
-                Ok(after) if !after.is_empty() && self.switches.on(REMEDY_ITERATE.id) => {
+                Ok(after)
+                    if !after.is_empty()
+                        && !derived_debug
+                        && self.switches.on(REMEDY_ITERATE.id) =>
+                {
                     fired.push(REMEDY_ITERATE);
                     match checks::complete_suggestions(
                         *check,
@@ -944,7 +967,7 @@ impl World<Rust> for RustWorld {
                 Err(_) => return Err(Unsupported),
             }
         }
-        if left.len() >= problems.len() {
+        if left.len() >= problems.len() || (derived_debug && !left.is_empty()) {
             return Ok(Reply::Remedy {
                 check: *check,
                 changes: Vec::new(),

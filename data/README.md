@@ -339,3 +339,27 @@ ratio/sum questions; both share training templates, so this is narrow template
 coverage. First100 stays1/99/0, all3,116 synthetic outputs match the baseline,
 and independent main-talk checks preserve memory/recall. No held-out data read.
 [Full audit, source hashes and reproduction](../tools/quantities/wordproblems/HANDOFF.md).
+
+
+## Facts in conversation and display labels (2026-10-11 UTC)
+
+The existing frozen 500-entity Wikidata index and SimpleQuestions relation model
+are now optional conversation assets. A portable manifest records their SHA256
+identities and declared source/license/scope; alternate compatible bundles do
+not require recompilation. The source index remains validation-subject-seeded,
+so this integration makes no claim of open-world retrieval or new fact coverage.
+
+A separate display-only map reuses original cached labels and 70 new official
+Wikidata English-label responses (363,928 bytes, CC0-1.0). Only existing subject
+and claim-object IDs were requested. The bounded fetch stopped after HTTP429;
+initial error counts were not logged, and the report discloses that limitation.
+Coverage is 3,806/10,677 eligible IDs and3,361/10,215 claim targets. Of276 accepted
+dev replies,112 have answer labels (previously19); missing labels use QIDs/links.
+Labels never enter entity matching or prediction. Model/index weights are unchanged.
+
+The coordinator's fresh-context full2,821 dev replay matches the standalone
+engine exactly:256 right,2,545 refused,20 wrong, all276 accepted ID sets preserved.
+The SHA256 implementation adds8 locked dependencies totaling219,434 registry
+archive bytes, already cached locally. Source revisions, per-response hashes,
+licenses, remaining limitations and reproduction are recorded in the
+[facts conversation handoff](../tools/facts/chat/HANDOFF.md).

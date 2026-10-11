@@ -1,0 +1,133 @@
+{
+  "binary_sha256": "dfd7453d8a9a3dd11174f40683bf4225972e4e1f7022f595b53ea4b37e6d4bdf",
+  "cases": [
+    {
+      "case": "derive-debug-terse",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "derive-debug-chatty",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "derive-debug-hurried",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "collect-needs-type-terse",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "collect-needs-type-chatty",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "collect-needs-type-hurried",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "match-missing-variant-terse",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "match-missing-variant-chatty",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "match-missing-variant-hurried",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "copy-struct-terse",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "copy-struct-chatty",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "copy-struct-hurried",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "int-float-divide-terse",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "int-float-divide-chatty",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "int-float-divide-hurried",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "private-fn-terse",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "private-fn-chatty",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "private-fn-hurried",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    }
+  ],
+  "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/repairs2-check/full/results.json",
+  "raw_sha256": "f2893cda5807c767e0714d3851ffffbccf791ecba1745f679d1d10c9cd43455f"
+}

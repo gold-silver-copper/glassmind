@@ -1,0 +1,47 @@
+{
+  "dataset": "rustbench f79e71a all styles",
+  "split": "dev",
+  "total": 765,
+  "coding_source_commit": "2ce9230ce5f7ca940f1b822667036212daf2420d",
+  "binary_sha256": "dfd7453d8a9a3dd11174f40683bf4225972e4e1f7022f595b53ea4b37e6d4bdf",
+  "baseline": {
+    "refused": 599,
+    "pass": 163,
+    "fail": 3
+  },
+  "candidate": {
+    "refused": 596,
+    "pass": 166,
+    "fail": 3
+  },
+  "transitions": {
+    "refused->refused": 596,
+    "pass->pass": 163,
+    "refused->pass": 3,
+    "fail->fail": 3
+  },
+  "changed": [
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "result_files": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/packages-full/results.jsonl": "37b3420b60325d3eb67e1010f64a3f68d40bf9142c3d58cf03214e72fe9f55d6",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/repairs2-full/results.jsonl": "43f10b66fe19bc476bb984034752eb659db04273d4fc655ac3493e4bf731cbd9"
+  }
+}

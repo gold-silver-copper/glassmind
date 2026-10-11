@@ -1,0 +1,74 @@
+{
+  "base_commit": "05e80930ef2b06e8e054ece3ab4cc69666d19b98",
+  "source_state": "uncommitted; coordinator integrates",
+  "files": {
+    "Cargo.lock": {
+      "bytes": 15321,
+      "sha256": "c9fe34cf0de0733b43d312224735c743af8d870396331026da577248cc52d925"
+    },
+    "crates/cli/Cargo.toml": {
+      "bytes": 815,
+      "sha256": "1826001197aabff260c15658068173cdcdc1e044a444314c8dece8cb8d6a6709"
+    },
+    "crates/cli/src/everyday.rs": {
+      "bytes": 8568,
+      "sha256": "ca6d9f0ee56cf3a2b7fe16fe83bf50dd09a8d66066e5ed182aa244af6b4fa4b0"
+    },
+    "crates/cli/src/main.rs": {
+      "bytes": 17118,
+      "sha256": "31bca9c14aa26ca35c874a0e96e918cd285e3ec429a2241bbbc4c92428a9b3de"
+    },
+    "crates/cli/src/talk_facts.rs": {
+      "bytes": 7827,
+      "sha256": "f190e1b7a0b5b8c50f5c2e721ab1e6cf6b7243ff2924c236a84fc198e0d863ac"
+    },
+    "tools/facts/chat/labels.py": {
+      "bytes": 8328,
+      "sha256": "e8aa32420feb4832ffc80006214173a10abdd67e3382fa4f55e5d32d72420a6e"
+    },
+    "tools/facts/chat/evaluate.py": {
+      "bytes": 3540,
+      "sha256": "648f19d39e8ab522408a8fc8024c4dfcf2a2fa042c6e5ca1f3bce913b0aeb14d"
+    },
+    "tools/facts/chat/legacy.py": {
+      "bytes": 1755,
+      "sha256": "8a43f0b552e2e0ebee3a7ae64bec00e3a6bf3a8739ab84cee9f87b0b8f92b58f"
+    },
+    "tools/facts/chat/mixed.py": {
+      "bytes": 8638,
+      "sha256": "c4bb3532c100ff671e4979053d13f3ce75c9c599b2648a70b6015220fd8b370b"
+    },
+    "tools/facts/chat/reproduce.sh": {
+      "bytes": 2395,
+      "sha256": "06466afd938088055a0b2633a5d753be10e6a6fc68327a9fbefe117e65ee9613"
+    },
+    "tools/facts/index.json": {
+      "bytes": 287236,
+      "sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+    },
+    "crates/facts/src/lib.rs": {
+      "bytes": 7750,
+      "sha256": "e0f0c6cc24d2123641b8c5b3c93dacb53207b2e8b543f1b48f1ba3e140e9284b"
+    },
+    "crates/facts/src/main.rs": {
+      "bytes": 5065,
+      "sha256": "3abf5d6ca2a09dc1004b72f20098fe1b4101cfdf62236ded84ff585f1c6a17e4"
+    },
+    "crates/facts/examples/continuous_predictions.rs": {
+      "bytes": 845,
+      "sha256": "d38ad548444210cf177a3d647f2dc6e7188ab04f9816f9af34f3ee3521514934"
+    },
+    "/home/gsc/.cache/glassmind/data/simplequestions/relation.json": {
+      "bytes": 35773124,
+      "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factchat-run/tmp/labels/labels.json": {
+      "bytes": 126989,
+      "sha256": "21f0ecb65523c09562bfcf1efae44362d3222082ca71dcbce06ce7ba063ae9c1"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factchat-run/target/release/glassmind": {
+      "bytes": 68046640,
+      "sha256": "ebf91e3354b5809da19d68bc59273b41159c79fc63ac0271753cfc4053dc058b"
+    }
+  }
+}

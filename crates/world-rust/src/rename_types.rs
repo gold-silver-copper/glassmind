@@ -1,6 +1,6 @@
 //! Conservative type renaming with explicit module/import binding checks.
 //!
-//! This deliberately accepts a closed subset: one conventional crate root,
+//! This deliberately accepts a closed subset: conventional roots in one package,
 //! ordinary modules and explicit imports. Every old-name token must be bound
 //! to the selected declaration. Unknown syntax, shadow declarations, macros
 //! containing the name, glob imports, and unaccounted source files refuse.
@@ -11,6 +11,7 @@ use proc_macro2::Ident;
 use syn::visit::Visit;
 
 use crate::index::{Pos, SourceIndex};
+use crate::rename_package::{Package, inert, output_macro};
 use crate::{RustItem, RustKind};
 
 pub(crate) struct Module {
@@ -32,10 +33,13 @@ pub(crate) fn modules(
     items: Vec<syn::Item>,
     out: &mut Vec<Module>,
 ) -> Option<()> {
+    if path.len() > 64 {
+        return None;
+    }
     let file_index = source.files.iter().position(|f| f == file)?;
     for item in &items {
         if let syn::Item::Mod(m) = item {
-            if !m.attrs.is_empty() {
+            if !m.attrs.iter().all(|a| a.path().is_ident("doc") && inert(a)) {
                 return None;
             }
             let mut child_path = path.clone();
@@ -56,7 +60,11 @@ pub(crate) fn modules(
                 };
                 let text = std::fs::read_to_string(source.root.join(&chosen)).ok()?;
                 let parsed = syn::parse_file(&text).ok()?;
-                if !parsed.attrs.is_empty() {
+                if !parsed
+                    .attrs
+                    .iter()
+                    .all(|a| a.path().is_ident("doc") && inert(a))
+                {
                     return None;
                 }
                 modules(
@@ -76,30 +84,6 @@ pub(crate) fn modules(
         items,
     });
     Some(())
-}
-
-// Only lexical module paths, never dependency paths or implicit preludes.
-pub(crate) fn absolute(module: &[String], path: &[String]) -> Option<Vec<String>> {
-    let mut result = module.to_vec();
-    let mut parts = path.iter().peekable();
-    match parts.peek().map(|s| s.as_str()) {
-        Some("crate") => {
-            result.clear();
-            parts.next();
-        }
-        Some("self") => {
-            parts.next();
-        }
-        Some("super") => {
-            while parts.peek().is_some_and(|s| s.as_str() == "super") {
-                result.pop()?;
-                parts.next();
-            }
-        }
-        _ => {}
-    }
-    result.extend(parts.cloned());
-    Some(result)
 }
 
 pub(crate) fn imports(
@@ -144,34 +128,11 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
     {
         return None;
     }
-    let roots: Vec<_> = ["src/lib.rs", "src/main.rs"]
-        .into_iter()
-        .filter(|f| source.files.iter().any(|s| s == f))
-        .collect();
-    if roots.len() != 1 {
-        return None;
-    }
-    let root = roots.first()?;
-    let text = std::fs::read_to_string(source.root.join(root)).ok()?;
-    let parsed = syn::parse_file(&text).ok()?;
-    if !parsed.attrs.is_empty() {
-        return None;
-    }
-    let mut all = Vec::new();
-    modules(
-        source,
-        root,
-        Vec::new(),
-        Path::new("src"),
-        parsed.items,
-        &mut all,
-    )?;
-    if all.iter().map(|m| m.file).collect::<BTreeSet<_>>().len() != source.files.len() {
-        return None;
-    }
+    let package = Package::load(source)?;
+    let all = &package.modules;
     let mut target = None;
     let mut declaration = None;
-    for m in &all {
+    for m in all {
         for node in &m.items {
             let found = match node {
                 syn::Item::Struct(s) if item.kind == RustKind::Struct => Some(&s.ident),
@@ -194,11 +155,13 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
     }
     let target = target?;
     let mut marked = BTreeSet::from([declaration?]);
-    for m in &all {
-        let mut bindings = BTreeMap::new();
+    for m in all {
+        let bindings = package.bindings(m)?;
         for node in &m.items {
             if let syn::Item::Use(u) = node {
-                if u.leading_colon.is_some() || !u.attrs.is_empty() {
+                if u.leading_colon.is_some()
+                    || !u.attrs.iter().all(|a| a.path().is_ident("doc") && inert(a))
+                {
                     return None;
                 }
                 let mut leaves = Vec::new();
@@ -208,16 +171,10 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
                         return None;
                     }
                     let path: Vec<_> = ids.iter().map(ToString::to_string).collect();
-                    let resolved = absolute(&m.path, &path)?;
-                    if bindings
-                        .insert(alias.to_string(), resolved.clone())
-                        .is_some()
-                    {
-                        return None;
-                    }
+                    package.resolve(&m.path, &path)?;
                     for (i, id) in ids.iter().enumerate() {
                         if *id == item.name.as_str() {
-                            if absolute(&m.path, path.get(..=i)?)? != target {
+                            if package.resolve(&m.path, path.get(..=i)?)? != target {
                                 return None;
                             }
                             marked.insert(position(m.file, id));
@@ -236,6 +193,7 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
         }
         let mut visitor = References {
             module: m,
+            package: &package,
             target: &target,
             old: &item.name,
             bindings,
@@ -260,6 +218,7 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
 
 struct References<'a> {
     module: &'a Module,
+    package: &'a Package,
     target: &'a [String],
     old: &'a str,
     bindings: BTreeMap<String, Vec<String>>,
@@ -284,6 +243,12 @@ impl<'ast> Visit<'ast> for References<'_> {
         }
         syn::visit::visit_type_param(self, p);
     }
+    fn visit_pat_ident(&mut self, p: &'ast syn::PatIdent) {
+        if self.bindings.contains_key(&p.ident.to_string()) {
+            self.valid = false;
+        }
+        syn::visit::visit_pat_ident(self, p);
+    }
     fn visit_type_path(&mut self, p: &'ast syn::TypePath) {
         if p.qself.is_some() {
             self.valid = false;
@@ -300,7 +265,7 @@ impl<'ast> Visit<'ast> for References<'_> {
         // Only standard output macros, which cannot introduce outer bindings.
         // Definitions/attributes are rejected separately; imports of these
         // macro names are forbidden, so a dependency cannot replace them.
-        if !(m.path.is_ident("println") || m.path.is_ident("eprintln")) {
+        if !output_macro(m) {
             self.valid = false;
         }
     }
@@ -317,9 +282,9 @@ impl<'ast> Visit<'ast> for References<'_> {
         self.valid = false;
     }
     fn visit_attribute(&mut self, a: &'ast syn::Attribute) {
-        // Derive/proc attributes and cfg can introduce invisible bindings or
-        // name-sensitive behavior. Doc text is deliberately left unchanged.
-        if !a.path().is_ident("doc") && !a.path().is_ident("test") {
+        // Only literal documentation and the explicitly inert builtin derives
+        // pass; cfg, Debug and custom attributes remain unsupported.
+        if !inert(a) {
             self.valid = false;
         }
     }
@@ -330,12 +295,8 @@ impl<'ast> Visit<'ast> for References<'_> {
                 let prefix = names.get(..=i).unwrap_or_default();
                 let resolved = if p.leading_colon.is_some() {
                     None
-                } else if let Some(binding) = prefix.first().and_then(|n| self.bindings.get(n)) {
-                    let mut full = binding.clone();
-                    full.extend(prefix.iter().skip(1).cloned());
-                    Some(full)
                 } else {
-                    absolute(&self.module.path, prefix)
+                    self.package.resolve(&self.module.path, prefix)
                 };
                 if resolved.as_deref() == Some(self.target) {
                     self.marked

@@ -1,0 +1,519 @@
+{
+  "total": 27,
+  "right": 27,
+  "checks": [
+    {
+      "name": "known accepted question reaches frozen facts",
+      "passed": true,
+      "actual": {
+        "kind": "fact_answer",
+        "text": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched Ismo Kallio (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.",
+        "entity": "Q11865151",
+        "relation": "P27",
+        "answers": [
+          "Q33"
+        ],
+        "refusal": null,
+        "entities": [
+          {
+            "id": "Q11865151",
+            "label": "Ismo Kallio",
+            "url": "https://www.wikidata.org/wiki/Q11865151"
+          },
+          {
+            "id": "Q33",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q33"
+          }
+        ],
+        "provenance": {
+          "source": "local Wikidata snapshot retrieved 2026-10-10",
+          "license": "CC0-1.0",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+          "relation_selection": "learned proposal, not logical certainty",
+          "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+          "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+          "relation_direction": "forward"
+        }
+      }
+    },
+    {
+      "name": "real singleton QID",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "entity and learned relation provenance",
+      "passed": true,
+      "actual": {
+        "kind": "fact_answer",
+        "text": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched Ismo Kallio (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.",
+        "entity": "Q11865151",
+        "relation": "P27",
+        "answers": [
+          "Q33"
+        ],
+        "refusal": null,
+        "entities": [
+          {
+            "id": "Q11865151",
+            "label": "Ismo Kallio",
+            "url": "https://www.wikidata.org/wiki/Q11865151"
+          },
+          {
+            "id": "Q33",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q33"
+          }
+        ],
+        "provenance": {
+          "source": "local Wikidata snapshot retrieved 2026-10-10",
+          "license": "CC0-1.0",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+          "relation_selection": "learned proposal, not logical certainty",
+          "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+          "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+          "relation_direction": "forward"
+        }
+      }
+    },
+    {
+      "name": "fact clears name focus",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "bare correction after fact survives restart without editing name",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Mira.",
+          "source_turn": 1
+        }
+      ]
+    },
+    {
+      "name": "bare correction after fact preserves preference",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your favorite color is blue.",
+          "source_turn": 5
+        }
+      ]
+    },
+    {
+      "name": "explicit memory override works",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "remembered",
+          "text": "I'll call you Alice.",
+          "slot": "Name"
+        },
+        {
+          "kind": "remembered",
+          "text": "I'll remember that your favorite color is green.",
+          "slot": {
+            "Preference": "color"
+          }
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Alice.",
+          "source_turn": 9
+        },
+        {
+          "kind": "recalled",
+          "text": "Your favorite color is green.",
+          "source_turn": 10
+        }
+      ]
+    },
+    {
+      "name": "unsupported fact refuses and clears focus",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the local Wikidata snapshot: no unique entity alias in this snapshot. This snapshot covers 500 selected entities, not all of Wikidata.",
+          "entity": null,
+          "relation": null,
+          "answers": [],
+          "refusal": "no unique entity alias in this snapshot",
+          "entities": [],
+          "provenance": {
+            "source": "local Wikidata snapshot retrieved 2026-10-10",
+            "license": "CC0-1.0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+            "relation_url": null,
+            "relation_direction": null
+          }
+        },
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Alice.",
+          "source_turn": 9
+        }
+      ]
+    },
+    {
+      "name": "calculation and established story priority",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "calculated",
+          "text": "14",
+          "value": "14",
+          "unit": null,
+          "method": "exact rational expression with standard precedence"
+        },
+        {
+          "kind": "story_fact",
+          "text": "Got it. I'll use that when answering your questions.",
+          "answer": null,
+          "reason": "event accepted"
+        },
+        {
+          "kind": "story_answer",
+          "text": "kitchen",
+          "answer": "kitchen",
+          "reason": "derived from story state"
+        }
+      ]
+    },
+    {
+      "name": "facts coexist with established story",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "fact_answer",
+          "text": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched Ismo Kallio (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": "Ismo Kallio",
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "local Wikidata snapshot retrieved 2026-10-10",
+            "license": "CC0-1.0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "story_answer",
+          "text": "kitchen",
+          "answer": "kitchen",
+          "reason": "derived from story state"
+        }
+      ]
+    },
+    {
+      "name": "reset clears memory but retains frozen facts",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "reset"
+        },
+        {
+          "kind": "fact_answer",
+          "text": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched Ismo Kallio (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": "Ismo Kallio",
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "local Wikidata snapshot retrieved 2026-10-10",
+            "license": "CC0-1.0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "missing",
+          "text": "I don't know your name yet."
+        }
+      ]
+    },
+    {
+      "name": "explicit memory wins for snapshot entities",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "remembered",
+          "text": "I'll call you Ismo Kallio.",
+          "slot": "Name"
+        },
+        {
+          "kind": "remembered",
+          "text": "I'll remember that your favorite country is Finland.",
+          "slot": {
+            "Preference": "country"
+          }
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Ismo Kallio.",
+          "source_turn": 3
+        },
+        {
+          "kind": "recalled",
+          "text": "Your favorite country is Finland.",
+          "source_turn": 4
+        }
+      ]
+    },
+    {
+      "name": "established story overrides indexed entity",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "story_fact",
+          "text": "Got it. I'll use that when answering your questions.",
+          "answer": null,
+          "reason": "event accepted"
+        },
+        {
+          "kind": "story_answer",
+          "text": "kitchen",
+          "answer": "kitchen",
+          "reason": "derived from story state"
+        }
+      ]
+    },
+    {
+      "name": "facts with established story cannot correct old personal name",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "fact_answer",
+          "text": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched Ismo Kallio (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": "Ismo Kallio",
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "local Wikidata snapshot retrieved 2026-10-10",
+            "license": "CC0-1.0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Ismo Kallio.",
+          "source_turn": 3
+        }
+      ]
+    },
+    {
+      "name": "legacy session and persisted fact focus",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Ada.",
+          "source_turn": 1
+        }
+      ]
+    },
+    {
+      "name": "human attribution and links",
+      "passed": true,
+      "actual": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched Ismo Kallio (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.\n"
+    },
+    {
+      "name": "index immutable",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "empty fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/factchat-run/tmp/final-mixed-labels-model/empty/index.json: No such file or directory (os error 2)\n"
+    },
+    {
+      "name": "index-only fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/factchat-run/tmp/final-mixed-labels-model/index-only/relation.json: No such file or directory (os error 2)\n"
+    },
+    {
+      "name": "model-only fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/factchat-run/tmp/final-mixed-labels-model/model-only/index.json: No such file or directory (os error 2)\n"
+    },
+    {
+      "name": "index-mismatch fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/factchat-run/tmp/final-mixed-labels-model/index-mismatch/index.json: wrong byte length for the supported frozen facts asset\n"
+    },
+    {
+      "name": "model-mismatch fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/factchat-run/tmp/final-mixed-labels-model/model-mismatch/relation.json: wrong byte length for the supported frozen facts asset\n"
+    },
+    {
+      "name": "labels-mismatch fails cleanly",
+      "passed": true,
+      "actual": "glassmind: labels.json: snapshot or provenance mismatch\n"
+    },
+    {
+      "name": "default ignores facts assets",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "missing labels explicitly disclose QIDs",
+      "passed": true,
+      "actual": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched English label unavailable (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.\n"
+    },
+    {
+      "name": "display labels do not link or change IDs",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "fact_answer",
+          "text": "Local Wikidata snapshot: English label unavailable (Q33; https://www.wikidata.org/wiki/Q33). Matched Zzzdisplayonly (Q11865151; https://www.wikidata.org/wiki/Q11865151); my learned interpretation of your question may be mistaken. This snapshot covers 500 selected entities, not all of Wikidata.",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": "Zzzdisplayonly",
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "local Wikidata snapshot retrieved 2026-10-10",
+            "license": "CC0-1.0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "reset"
+        },
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the local Wikidata snapshot: no unique entity alias in this snapshot. This snapshot covers 500 selected entities, not all of Wikidata.",
+          "entity": null,
+          "relation": null,
+          "answers": [],
+          "refusal": "no unique entity alias in this snapshot",
+          "entities": [],
+          "provenance": {
+            "source": "local Wikidata snapshot retrieved 2026-10-10",
+            "license": "CC0-1.0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; closed scope, not open world",
+            "relation_url": null,
+            "relation_direction": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "labels outside snapshot rejected",
+      "passed": true,
+      "actual": "glassmind: labels.json: labels must describe existing snapshot IDs only\n"
+    }
+  ]
+}

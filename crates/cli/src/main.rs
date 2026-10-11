@@ -29,6 +29,7 @@ mod details;
 mod edit;
 mod everyday;
 mod system;
+mod talk_facts;
 mod talk_stories;
 mod train;
 
@@ -75,6 +76,9 @@ enum Command {
         /// Persist memory and story facts between runs; /reset clears both.
         #[arg(long)]
         session: Option<PathBuf>,
+        /// Local facts bundle: manifest.json, index.json, relation.json, optional labels.json.
+        #[arg(long)]
+        facts_dir: Option<PathBuf>,
         /// Optional learned everyday-intent model (no services are executed).
         #[arg(long)]
         model: Option<PathBuf>,
@@ -187,8 +191,9 @@ fn main() -> ExitCode {
         Command::Talk {
             session,
             model,
+            facts_dir,
             json,
-        } => everyday::run(session, model, json),
+        } => everyday::run(session, model, facts_dir, json),
         Command::Ask {
             common,
             apply,

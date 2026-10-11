@@ -1,0 +1,65 @@
+{
+  "total": 2821,
+  "counts": {
+    "baseline": {
+      "refused": 2545,
+      "right": 256,
+      "wrong": 20
+    },
+    "talk": {
+      "refused": 2545,
+      "right": 256,
+      "wrong": 20
+    }
+  },
+  "frozen_scorer": {
+    "total": 2821,
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20,
+    "entity_linked_correct": 504,
+    "relation_top1_correct": 2664
+  },
+  "baseline_accepted": 276,
+  "preserved_accepted": 276,
+  "answer_id_changes": [],
+  "files": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/glassmind": {
+      "bytes": 68604392,
+      "sha256": "3a2431e7e0a2b686c831b94da32180f3dcbbb5da7686b1e5e5ceaa96836b01a0"
+    },
+    "/home/gsc/code/glassmind/target/release/examples/continuous_predictions": {
+      "bytes": 7584944,
+      "sha256": "b17221d33a0ce95690d58ec72a981ed1692561630c49e26274d6e91325897c14"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/bundle/manifest.json": {
+      "bytes": 456,
+      "sha256": "19118010bf6db71020dd2739d0457b649649720676a0c637fbb65392e080bd14"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/bundle/index.json": {
+      "bytes": 287236,
+      "sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/bundle/relation.json": {
+      "bytes": 35773124,
+      "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+    },
+    "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv": {
+      "bytes": 173187,
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/full/questions.txt": {
+      "bytes": 115573,
+      "sha256": "97704ab5a33b6c6ffed1dcf90f08b9296c761dcd5ad4615bb4d46bc342c2fc32"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/full/baseline.jsonl": {
+      "bytes": 270305,
+      "sha256": "9d7fb56e29d8dd52275c93d8edd14c921c5748d8b4c3bc48c7fc7008574005b1"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factchat-check/full/predictions.jsonl": {
+      "bytes": 285284,
+      "sha256": "8918c7f44702215f00d68d1149e022c039956b8166f9a2ae34001635e6daf8cf"
+    }
+  },
+  "scope": "500 validation-subject-seeded entities; no new factual coverage; question text only with /reset per question"
+}

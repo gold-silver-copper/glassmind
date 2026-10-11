@@ -1,0 +1,63 @@
+{
+  "binary_sha256": "dfd7453d8a9a3dd11174f40683bf4225972e4e1f7022f595b53ea4b37e6d4bdf",
+  "cases": [
+    {
+      "case": "record",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "tuple_unicode",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "enum",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "nested",
+      "before_exit": 101,
+      "after_exit": 0,
+      "changed": true,
+      "functional": true
+    },
+    {
+      "case": "ambiguous",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "conditional",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "unrelated_error",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    },
+    {
+      "case": "non_debug_field",
+      "before_exit": 101,
+      "after_exit": 101,
+      "changed": false,
+      "functional": null
+    }
+  ],
+  "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/repairs2-check/fixtures/results.json",
+  "raw_sha256": "717f86a083c59a5b3574d93a8138e9200358857d5e44a9182b86c2fb7e7ff5c8"
+}

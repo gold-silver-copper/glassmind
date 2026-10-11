@@ -1,12 +1,12 @@
 //! Closed-world variant binding resolution. No token is changed by spelling alone.
 use std::collections::{BTreeMap, BTreeSet};
-use std::path::Path;
 
 use proc_macro2::Ident;
 use syn::visit::Visit;
 
 use crate::index::{Pos, SourceIndex};
-use crate::rename_types::{Module, absolute, imports, modules, position};
+use crate::rename_package::{Package, inert, output_macro};
+use crate::rename_types::{Module, imports, position};
 use crate::{RustItem, RustKind};
 
 pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Option<BTreeSet<Pos>> {
@@ -21,32 +21,11 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
     {
         return None;
     }
-    let roots: Vec<_> = ["src/lib.rs", "src/main.rs", "lib.rs", "main.rs"]
-        .into_iter()
-        .filter(|f| source.files.iter().any(|s| s == f))
-        .collect();
-    let [root] = roots.as_slice() else {
-        return None;
-    };
-    let parsed = syn::parse_file(&std::fs::read_to_string(source.root.join(root)).ok()?).ok()?;
-    if !parsed.attrs.is_empty() {
-        return None;
-    }
-    let mut all = Vec::new();
-    modules(
-        source,
-        root,
-        Vec::new(),
-        Path::new(root).parent()?,
-        parsed.items,
-        &mut all,
-    )?;
-    if all.iter().map(|m| m.file).collect::<BTreeSet<_>>().len() != source.files.len() {
-        return None;
-    }
+    let package = Package::load(source)?;
+    let all = &package.modules;
     let mut target = None;
     let mut marked = BTreeSet::new();
-    for m in &all {
+    for m in all {
         for node in &m.items {
             if let syn::Item::Enum(e) = node {
                 for variant in &e.variants {
@@ -94,31 +73,14 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
     // All module names and the owner are protected against generic/local shadows.
     let mut protected: BTreeSet<_> = all.iter().flat_map(|m| m.path.iter().cloned()).collect();
     protected.insert(item.owner.clone()?);
-    for m in &all {
-        let mut bindings = BTreeMap::new();
-        // Explicit local definitions prevent imports from silently replacing roots.
-        for node in &m.items {
-            let ident = match node {
-                syn::Item::Enum(n) => Some(&n.ident),
-                syn::Item::Struct(n) => Some(&n.ident),
-                syn::Item::Mod(n) => Some(&n.ident),
-                syn::Item::Type(n) => Some(&n.ident),
-                syn::Item::Trait(n) => Some(&n.ident),
-                _ => None,
-            };
-            if let Some(ident) = ident {
-                let mut path = m.path.clone();
-                path.push(ident.to_string());
-                if bindings.insert(ident.to_string(), path).is_some() {
-                    return None;
-                }
-            }
-        }
-        // Uses are resolved from explicit lexical paths. Chained reexports and
-        // imports through aliases intentionally remain outside this subset.
+    for m in all {
+        let bindings = package.bindings(m)?;
+        // Imports and reexports resolve through the same bounded package graph.
         for node in &m.items {
             if let syn::Item::Use(u) = node {
-                if u.leading_colon.is_some() || !u.attrs.is_empty() {
+                if u.leading_colon.is_some()
+                    || !u.attrs.iter().all(|a| a.path().is_ident("doc") && inert(a))
+                {
                     return None;
                 }
                 let mut leaves = Vec::new();
@@ -132,18 +94,10 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
                     if self_import {
                         names.pop();
                     }
-                    let resolved = absolute(&m.path, &names)?;
-                    let local = if self_import && alias == "self" {
-                        names.last()?.clone()
-                    } else {
-                        alias.to_string()
-                    };
-                    if bindings.insert(local, resolved).is_some() {
-                        return None;
-                    }
+                    package.resolve(&m.path, &names)?;
                     for (i, id) in ids.iter().enumerate() {
                         if *id == item.name.as_str() {
-                            if absolute(&m.path, names.get(..=i)?)? != target {
+                            if package.resolve(&m.path, names.get(..=i)?)? != target {
                                 return None;
                             }
                             marked.insert(position(m.file, id));
@@ -163,6 +117,7 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
         protected.extend(bindings.keys().cloned());
         let mut visitor = References {
             module: m,
+            package: &package,
             target: &target,
             old: &item.name,
             bindings,
@@ -188,6 +143,7 @@ pub(crate) fn positions(source: &SourceIndex, item: &RustItem, new: &str) -> Opt
 
 struct References<'a> {
     module: &'a Module,
+    package: &'a Package,
     target: &'a [String],
     old: &'a str,
     bindings: BTreeMap<String, Vec<String>>,
@@ -200,20 +156,12 @@ struct References<'a> {
 
 impl References<'_> {
     fn resolve(&self, names: &[String]) -> Option<Vec<String>> {
-        let first = names.first()?;
-        let binding = if first == "Self" {
-            self.self_type.as_ref()
+        if names.first().is_some_and(|s| s == "Self") {
+            let mut path = self.self_type.clone()?;
+            path.extend(names.iter().skip(1).cloned());
+            Some(path)
         } else {
-            self.bindings.get(first)
-        };
-        if let Some(binding) = binding {
-            let mut result = binding.clone();
-            result.extend(names.iter().skip(1).cloned());
-            Some(result)
-        } else if first == "Self" {
-            None
-        } else {
-            absolute(&self.module.path, names)
+            self.package.resolve(&self.module.path, names)
         }
     }
 }
@@ -310,12 +258,12 @@ impl<'ast> Visit<'ast> for References<'_> {
         self.valid = false;
     }
     fn visit_macro(&mut self, m: &'ast syn::Macro) {
-        if !(m.path.is_ident("println") || m.path.is_ident("eprintln")) {
+        if !output_macro(m) {
             self.valid = false;
         }
     }
     fn visit_attribute(&mut self, a: &'ast syn::Attribute) {
-        if !a.path().is_ident("doc") && !a.path().is_ident("test") {
+        if !inert(a) {
             self.valid = false;
         }
     }

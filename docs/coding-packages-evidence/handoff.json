@@ -1,0 +1,102 @@
+{
+  "base": "fcb81dbf17273dcca4d45f7a8df4d3428fb217a0",
+  "source_state": "uncommitted; no commit created",
+  "baseline_sha256": "13616ad1f953bd6a3dde53155011d52ac49fd209fbe2bd794bba5c558018ebb6",
+  "candidate_sha256": "8da34939a7de111626740405f0d99a57c9ce5586586d2abe07151dd2e3fb388f",
+  "source_sha256": {
+    "Cargo.lock": "db04dbc7e299b6eaf44b133222cb9eaf29042df166d68b0e929bb1123a9eb292",
+    "crates/world-rust/Cargo.toml": "b2713b77dddbd1d7e087ce34396db4e0d656ea1880fe843a6ee6986b34370dfe",
+    "crates/world-rust/src/lib.rs": "e335fb02a08aaff06108affe8834bcfd7adc9e17490e04d6ee50f08de5048e7f",
+    "crates/world-rust/src/rename_package.rs": "d532f60a5e6f3f3100594556e422484c23e6bd46b68792999bb4714737371159",
+    "crates/world-rust/src/rename_types.rs": "65feac96ac2a0b9defb42de4721163dfb67a57e39c4a4814bf42a0429c244dcc",
+    "crates/world-rust/src/rename_variants.rs": "c7055ad105328306d68349a8a9c94b05fedd5e0d9e3d427085635a2111fac9dd",
+    "tools/coding-packages-dev.py": "aa3d7e28a8aee5bbca2d33d69f1e2e53f1ae75e648a9b9478d465ef6b3a8225c"
+  },
+  "suites": {
+    "package-final-sample": {
+      "baseline_passed": 0,
+      "candidate_passed": 3,
+      "total": 3,
+      "no_baseline_right_lost": true
+    },
+    "package-final-full": {
+      "baseline_passed": 12,
+      "candidate_passed": 15,
+      "total": 15,
+      "no_baseline_right_lost": true
+    },
+    "types-final": {
+      "baseline_passed": 9,
+      "candidate_passed": 9,
+      "total": 9,
+      "no_baseline_right_lost": true
+    },
+    "variants-final": {
+      "baseline_passed": 14,
+      "candidate_passed": 14,
+      "total": 14,
+      "no_baseline_right_lost": true
+    }
+  },
+  "raw_permitted_dev": {
+    "total": 6,
+    "changed": 0,
+    "before_checks_passed": 6,
+    "after_checks_passed": 6,
+    "replies_unchanged": true,
+    "cases": [
+      {
+        "case": "rename-item-struct-terse",
+        "changed": [],
+        "before_exit": 0,
+        "after_exit": 0,
+        "reply": "I understand, but I can't do that here.\n"
+      },
+      {
+        "case": "rename-item-struct-chatty",
+        "changed": [],
+        "before_exit": 0,
+        "after_exit": 0,
+        "reply": "I can't follow the sentence from the marked spot.\n  Hi \u25aethere, `Item` is getting too generic a name in this inventory code now that we're adding other kinds of items. Could you rename the struct to `StockItem` everywhere: the definition, its impl, the warehouse and restock modules, and main? Nothing else should change.\n"
+      },
+      {
+        "case": "rename-item-struct-hurried",
+        "changed": [],
+        "before_exit": 0,
+        "after_exit": 0,
+        "reply": "I can't follow the sentence from the marked spot.\n  rename Item struct to StockItem, everywhere its used (all modules \u25ae+ main)\n"
+      },
+      {
+        "case": "rename-done-variant-terse",
+        "changed": [],
+        "before_exit": 0,
+        "after_exit": 0,
+        "reply": "I understand, but I can't do that here.\n"
+      },
+      {
+        "case": "rename-done-variant-chatty",
+        "changed": [],
+        "before_exit": 0,
+        "after_exit": 0,
+        "reply": "I take that to mean: fix the tests I don't know how to fix the tests.\n"
+      },
+      {
+        "case": "rename-done-variant-hurried",
+        "changed": [],
+        "before_exit": 0,
+        "after_exit": 0,
+        "reply": "I understand, but I can't do that here.\n"
+      }
+    ]
+  },
+  "focused_unit_tests": {
+    "passed": 9,
+    "total": 9,
+    "filter": "rename_"
+  },
+  "fmt": "pass",
+  "clippy_world_lib_deny_warnings": "pass",
+  "integrated_release_build": "pass",
+  "full765": "not run; coordinator required",
+  "provenance": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/tmp/provenance.json"
+}

@@ -1,0 +1,30 @@
+{
+  "source_commit": "05e80930ef2b06e8e054ece3ab4cc69666d19b98",
+  "binary_sha256": "52a113aa63a18dca7449103d57142e24c17d4cdbe11f68b6a09bce92daf474f9",
+  "workspace_fmt_clippy_build_strict_smoke": "passed4/4",
+  "world_tests": 16,
+  "suites": {
+    "sample": {
+      "total": 3,
+      "passed": 3
+    },
+    "full": {
+      "total": 15,
+      "passed": 15
+    },
+    "types": {
+      "total": 9,
+      "passed": 9
+    },
+    "variants": {
+      "total": 14,
+      "passed": 14
+    },
+    "dev": {
+      "total": 6,
+      "edits": 0,
+      "all_before_after_builds_pass": true
+    }
+  },
+  "full765": "running, session32029, frozenbinary coordinator/packages-full/glassmind"
+}
