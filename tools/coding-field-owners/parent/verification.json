@@ -52,5 +52,12 @@
     "Only accepted-* worker evidence represents final build; stale v3 final-* retained separately.",
     "Existing export26/27 and AddField14/15 fixture mismatches remain unchanged in worker evidence.",
     "Bounded owner resolver is deliberately conservative; no general Rust inference claim."
-  ]
+  ],
+  "test_fixture_environment_followup": {
+    "scope": "test helper only; runtime and assertions unchanged",
+    "without_CARGO_TARGET_DIR": 4,
+    "with_CARGO_TARGET_DIR": 4,
+    "fmt": "pass",
+    "scoped_clippy": "pass"
+  }
 }

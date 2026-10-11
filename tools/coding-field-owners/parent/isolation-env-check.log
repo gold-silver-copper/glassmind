@@ -1,0 +1,17 @@
+Running as unit: glassmind-parent-isolation-env-check.scope; invocation ID: 016309caff05420eadf8239660c5b505
+    Checking serde v1.0.229
+    Checking serde_json v1.0.151
+    Checking glassmind-meaning v0.1.0 (/home/gsc/code/glassmind/crates/meaning)
+    Checking glassmind-world-rust v0.1.0 (/home/gsc/code/glassmind/crates/world-rust)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.79s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s
+     Running tests/check_isolation.rs (target/debug/deps/check_isolation-e82b082e20d730df)
+
+running 4 tests
+test tests::copy_rules_scripts_and_unsupported_topology_do_not_fall_back_to_live ... ok
+test tests::approved_repair_stale_rules_and_failed_verification_preserve_contract ... ok
+test tests::same_name_shared_target_and_cache_never_reuse_another_sources_binary ... ok
+test tests::diagnostics_preserve_every_live_byte_with_default_and_owned_places ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.98s
+

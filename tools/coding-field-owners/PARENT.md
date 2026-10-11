@@ -31,8 +31,16 @@ Workspace fmt/clippy/release/strict4smoke and all27 world unit tests pass. The
 first parent test command omitted CARGO_TARGET_DIR, which two existing isolation
 tests require; their unwrap failures and the initial log remain preserved. With
 that environment variable supplied, all four unchanged isolation tests pass.
-No test or runtime fix was made to obtain those results. The interrupted script
-never reached its planned fixture replays; continue.sh runs those once.
+No test or runtime fix was made to obtain those initial results. The interrupted
+script never reached its planned fixture replays; continue.sh runs those once.
+
+A separate subsequent test-only fix removes the environment assumption: absent
+CARGO_TARGET_DIR, the owned-target fixture now uses a directory under its own
+scratch root. Every original assertion and shared-target scenario remains. All
+four isolation tests pass with the variable unset and with an explicit target;
+workspace formatting and scoped all-target clippy also pass. This changes no
+runtime code or evaluated release binary. Both command logs are retained in
+parent/isolation-env-*.
 
 Original282files and all3189 raw artifact hashes are verified. Four manifest
 paths refer to the removed worktree and resolve to its byte-preserved archive.

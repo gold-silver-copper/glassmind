@@ -47,7 +47,10 @@ behavior test executed. Workspace fmt/clippy/release/strict4smoke,27unit tests,
 4isolation tests pass. Initial parent test command omitted CARGO_TARGET_DIR and
 2isolation tests unwrapped missing environment; original log retained. Rerunonly
 four unchanged isolation tests with env set, then previously unrun fixture probes.
-No runtime/scorer/test fix. Completed sessions25584(worker replay),7302(initial
+A subsequent test-only helper fix supplies its own target fallback when
+CARGO_TARGET_DIR is absent, preserving all assertions. All4 isolationtests pass
+both unset and explicit target; fmt/scopedalltargetclippy pass. Sessions74949 and
+33799 COMPLETE. Runtime/binary unchanged. Completed sessions25584(worker replay),7302(initial
 workspace/test script exit101),70336(corrected continuation),25291(independent replay).
 Do not poll/restart them. Parent report tools/coding-field-owners/PARENT.md.
 Original export26/27 and AddField14/15 mismatches remain unchanged worker evidence.
