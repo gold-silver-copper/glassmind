@@ -64,3 +64,16 @@ source-name-queries.txt; rebuildtheexampleunderrequiredcargoscopeifneeded.
 InspectactualpublicqueryprocessRSS fromquery-resource-report.json (freshlauncher).
 Do notclaim broadQAaccuracy. Preservefailures anddonotrelax3600s/24GiB/32GiBgates.
 Rootintegration/publishingawaitsthepublicingestionandauditresults.
+
+## Independent alias accounting added before the public audit
+
+The original audit reconciled alias totals toimporter metadata, but didnotderive
+all eligibility/deduplication counts independently. pilot_counts nowstreams
+original(entity,name)groups fromtheimmutablepilot andcounts eligibility using
+lowercasedalphanumericbytecount, withoutproducingnormalizedkeys orreadingoutput
+counters. Its eligibilityboundarymatches fullRustnormalization onall1,112,064
+Unicode scalars andcompoundcases. Helpertest/build/clippy passed. Auditnowrequires
+exactsource/eligible/excluded/groupcounts fromthishelperaswellasrawsamplechecks.
+Thisstrengthenstheexistinggate; theimport3600sandaudit600s limits stayunchanged.
+Retainedhelpers externalrun/pilot-counts andexternalrun/raw-view-parity; original
+importcandidate andfinalreader remain unchanged. Newhelper hasno production effect.

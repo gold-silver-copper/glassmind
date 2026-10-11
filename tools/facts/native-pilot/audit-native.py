@@ -113,10 +113,17 @@ def main():
     assert len(outputs) == len(expected_entities)
     assert [r['entity'] for r in outputs] == expected_entities
     metadata = dict(db.execute('SELECT key,value FROM metadata'))
+    with (ROOT / 'source-name-accounting.json').open('wb') as result:
+        subprocess.run([str(ROOT / 'pilot-counts'), str(SOURCE / 'pilot.sqlite')], stdout=result, check=True)
+    independent_names = json.loads((ROOT / 'source-name-accounting.json').read_text())
+    assert independent_names['source_rows'] == retained['names']
     observed_aliases, occurrences = db.execute('SELECT count(*),sum(occurrences) FROM aliases').fetchone()
     assert observed_aliases == int(metadata['aliases'])
     assert occurrences == int(metadata['accepted_name_rows'])
     assert occurrences + int(metadata['excluded_short_name_rows']) == retained['names']
+    assert observed_aliases == independent_names['eligible_aliases']
+    assert occurrences == independent_names['eligible_name_rows']
+    assert int(metadata['excluded_short_name_rows']) == independent_names['excluded_name_rows']
     expected_edges = source.execute('SELECT count(*) FROM (SELECT subject,property,object FROM edges GROUP BY subject,property,object)').fetchone()[0]
     assert expected_edges == db.execute('SELECT count(*) FROM edges').fetchone()[0] == int(metadata['edges'])
     expected_entities_count = source.execute('SELECT count(*) FROM (SELECT entity FROM names UNION SELECT subject FROM edges)').fetchone()[0]
@@ -140,6 +147,7 @@ def main():
               'ambiguous': sum(e is None for e in expected_entities), 'query_seconds': query_seconds,
               'entities': expected_entities_count, 'aliases': observed_aliases, 'edges': expected_edges,
               'accepted_name_rows': occurrences, 'excluded_short_name_rows': int(metadata['excluded_short_name_rows']),
+              'independent_name_accounting': independent_names,
               'ranks_qualifiers': ranks, 'query_plans': plans, 'database_sha256': output_hash,
               'seconds': time.monotonic() - started, 'audit_peak_rss_kib': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
               'query_resources': json.loads((ROOT / 'query-resource-report.json').read_text()),
