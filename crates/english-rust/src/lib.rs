@@ -1066,11 +1066,14 @@ mod tests {
                 "{text:?}"
             );
         }
-        // Words after the request without a break may be part of it.
-        assert!(matches!(
-            english.understand("rename tick to drain_events tick is vague"),
-            Understanding::Failed { .. }
-        ));
+        // Words after the request without a break may be part of it: it is
+        // not read for sure (a guess at most, which is asked about first).
+        assert!(
+            match english.understand("rename tick to drain_events tick is vague") {
+                Understanding::Failed { .. } => true,
+                Understanding::Readings(readings) => readings.iter().all(|r| r.edits >= 200),
+            }
+        );
     }
 
     /// A remark around a rename may run past a comma, hold brackets, or be

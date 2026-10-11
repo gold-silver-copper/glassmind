@@ -309,7 +309,7 @@ impl<O: Ontology> English<O> {
                 if p < m.offer {
                     break;
                 }
-                if !m.explains(template, words) {
+                if !m.explains(template, &intents::asking(words)) {
                     continue;
                 }
                 // A word with logical force ("not", "except", "only") that

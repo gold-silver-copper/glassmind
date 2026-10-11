@@ -61,6 +61,29 @@ pub const LOGICAL: &[&str] = &[
     "less", "fewer", "most", "least", "than", "besides", "other", "else", "also", "too", "by",
 ];
 
+/// English's function words (determiners, pronouns, prepositions,
+/// conjunctions, auxiliaries): they frame a request, they never ask one,
+/// so they never show that something else is asked.
+const FUNCTION_WORDS: &[&str] = &[
+    "a", "an", "the", "this", "that", "these", "those", "some", "it", "its", "they", "them",
+    "their", "one", "ones", "i", "me", "my", "you", "your", "we", "us", "our", "he", "she", "of",
+    "to", "in", "on", "at", "for", "with", "from", "into", "about", "as", "up", "out", "and", "or",
+    "so", "if", "then", "is", "are", "was", "were", "be", "been", "being", "am", "do", "does",
+    "did", "has", "have", "had", "can", "could", "will", "would", "should", "may", "might", "must",
+    "there", "here", "now", "please", "pls", "thanks",
+];
+
+/// The words of `words` (and pairs) that ask something: a pair of
+/// function words and name marks ("of the", "a <n>") asks nothing.
+pub fn asking(words: &BTreeSet<String>) -> BTreeSet<String> {
+    let framing = |w: &str| FUNCTION_WORDS.contains(&w) || w == NAME || w == "^";
+    words
+        .iter()
+        .filter(|w| !w.split(' ').all(framing))
+        .cloned()
+        .collect()
+}
+
 /// What stands for a name in the model's word pairs.
 pub const NAME: &str = "<n>";
 

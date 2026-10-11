@@ -23,10 +23,11 @@ pub struct Found {
 }
 
 /// Whether switching rules off left every training turn at most as costly
-/// and the held-out cost no higher.
+/// and the validation cost no worse than acceptance allows (the held-out
+/// set decides nothing).
 fn no_worse(data: &Data, base: &Baseline, ev: &evaluate::Evaluated) -> bool {
     train_no_worse(data, base, &ev.train)
-        && ev.scores.heldout_cost <= base.scores.heldout_cost + 1e-9
+        && ev.scores.valid_cost <= base.scores.valid_cost + evaluate::VALID_SLACK
 }
 
 /// Whether every training turn is at most as costly as in the baseline.
@@ -91,7 +92,7 @@ pub fn find(
             let handles: Vec<_> = chunk
                 .iter()
                 .map(|id| {
-                    // Training only here; the held-out set is checked on the
+                    // Training only here; validation is checked on the
                     // rules that pass, together, below.
                     s.spawn(move || {
                         evaluate::eval_set(
@@ -121,31 +122,46 @@ pub fn find(
             }
         }
     }
-    // Check that they can all go together; if not, keep a greedy subset.
+    // Check that they can all go together; if not, keep a greedy subset,
+    // judged on training alone (a whole evaluation takes far longer), and
+    // check what is kept once on everything.
     if found.removable.len() > 1 {
-        let ev = evaluate::evaluate(config, paths, data, dir, target, &found.removable)?;
-        if !no_worse(data, base, &ev) {
+        let train_ok = |off: &[String]| -> Result<bool, String> {
+            evaluate::eval_set(
+                config,
+                paths,
+                dir,
+                target,
+                &config.sources,
+                &config.train,
+                off,
+            )
+            .map(|train| train_no_worse(data, base, &train))
+        };
+        if !train_ok(&found.removable)? {
             // Add them sixteen at a time, and one at a time only within a
             // group of sixteen that does not pass as a whole.
             let mut keep: Vec<String> = Vec::new();
             for chunk in found.removable.chunks(16) {
                 let mut trial = keep.clone();
                 trial.extend(chunk.iter().cloned());
-                let ev = evaluate::evaluate(config, paths, data, dir, target, &trial)?;
-                if no_worse(data, base, &ev) {
+                if train_ok(&trial)? {
                     keep = trial;
                     continue;
                 }
                 for id in chunk {
                     let mut trial = keep.clone();
                     trial.push(id.clone());
-                    let ev = evaluate::evaluate(config, paths, data, dir, target, &trial)?;
-                    if no_worse(data, base, &ev) {
+                    if train_ok(&trial)? {
                         keep = trial;
                     }
                 }
             }
             found.removable = keep;
+        }
+        let ev = evaluate::evaluate(config, paths, data, dir, target, &found.removable)?;
+        if !no_worse(data, base, &ev) {
+            found.removable.clear();
         }
     }
     Ok(found)
@@ -165,7 +181,7 @@ pub fn write_brief(
         "The codebase is not append-only. Make glassmind smaller and clearer without making it worse. \
          The loop accepts your change only if the training cost plus {} per syntax token of mind code goes \
          down, no training turn that was right or honestly refused becomes wrong, no more replies lose their \
-         words, and the hidden held-out set does not get worse. Size counts syntax tokens of non-test code \
+         words, and a hidden validation set (other repositories) does not get worse. Size counts syntax tokens of non-test code \
          (identifiers count 1 whatever their length; comments and docs are free), so good names and docs \
          cost nothing. Prefer one general rule over several phrase-specific ones.\n",
         config.size_price
@@ -173,7 +189,7 @@ pub fn write_brief(
     let _ = writeln!(
         b,
         "## 1. Delete these rules\n\nSwitching each of these off (and all of them together) made nothing \
-         worse on training or held-out data. Delete them from the source, and anything only they use:\n"
+         worse on training or validation data. Delete them from the source, and anything only they use:\n"
     );
     for id in &found.removable {
         let _ = writeln!(b, "- `{id}`");

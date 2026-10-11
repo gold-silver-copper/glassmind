@@ -155,10 +155,13 @@ impl IntentModel {
             if seen == 0 || (w.contains(' ') && seen < LEAST_TELLING) {
                 return true;
             }
+            // Another request about some thing: the words of requests about
+            // the whole crate ("need it to compile, pls fix") are mostly
+            // what frames any request.
             let elsewhere = self
                 .templates
                 .keys()
-                .filter(|t| t.as_str() != template)
+                .filter(|t| t.as_str() != template && slots_of(t) > 0)
                 .map(|t| count(t, w))
                 .max()
                 .unwrap_or(0);

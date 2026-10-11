@@ -283,7 +283,7 @@ pub fn verdicts(labels: &[Label], outcomes: &[Outcome]) -> BTreeMap<String, (Ver
 
 /// How much the validation cost may rise before a change is rejected:
 /// less than one wrong answer, more than a few refusals that got less far.
-const VALID_SLACK: f64 = 2.0;
+pub const VALID_SLACK: f64 = 2.0;
 
 /// Whether a candidate may replace the baseline, by the acceptance rules
 /// (other than the build checks and the reviewer).
