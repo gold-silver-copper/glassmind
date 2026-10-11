@@ -1,6 +1,8 @@
 //! Opt-in immutable facts bundles. Display labels never enter the linker.
 use glassmind_everyday::IntentModel;
-use glassmind_facts::{Answer, RefusalReason, Store, Verification};
+use glassmind_facts::{
+    Answer, MatchRefusalReason, MatchResult, RefusalReason, Store, Verification,
+};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::{collections::BTreeMap, path::Path};
@@ -49,6 +51,37 @@ pub(crate) struct VerificationReply {
     #[serde(flatten)]
     pub verification: Verification,
     pub provenance: Provenance,
+}
+
+#[derive(Serialize)]
+pub(crate) struct MatchingReply {
+    pub kind: &'static str,
+    pub text: String,
+    #[serde(flatten)]
+    pub result: MatchResult,
+    pub provenance: Provenance,
+}
+
+/// Reserve malformed explicit commands before conversational state interpreters.
+pub(crate) fn matching_request(line: &str) -> Option<Result<&str, &'static str>> {
+    let line = line.trim_matches(' ');
+    if !line
+        .get(..11)
+        .is_some_and(|s| s.eq_ignore_ascii_case("match facts"))
+    {
+        return None;
+    }
+    let invalid = "Use Match facts: followed by a Who question with two or three positive conditions joined by and.";
+    Some(
+        if line
+            .get(..13)
+            .is_some_and(|s| s.eq_ignore_ascii_case("match facts: "))
+        {
+            line.get(13..).filter(|s| !s.is_empty()).ok_or(invalid)
+        } else {
+            Err(invalid)
+        },
+    )
 }
 
 /// Explicit verification does not infer an entity from conversation history.
@@ -232,6 +265,66 @@ impl Facts {
     pub fn respond(&self, question: &str) -> FactReply {
         let answer = self.store.answer(&self.model, question);
         self.present(answer)
+    }
+
+    pub fn match_subjects(&self, request: Result<&str, &str>) -> MatchingReply {
+        let result = match request {
+            Ok(question) => self.store.match_question(question),
+            Err(_) => MatchResult::Refused {
+                reason: MatchRefusalReason::UnsupportedGrammar,
+            },
+        };
+        let text = match &result {
+            MatchResult::Matched {
+                matches,
+                total_snapshot_matches,
+                returned,
+                truncated,
+                ..
+            } => {
+                let mut text = if *total_snapshot_matches == 0 {
+                    "No subjects match all conditions in the loaded snapshot.".to_owned()
+                } else {
+                    format!("Matches in the loaded snapshot: {total_snapshot_matches}.")
+                };
+                if *truncated {
+                    text.push_str(&format!(" Showing the first {returned} by ID."));
+                }
+                for subject in matches {
+                    let id = &subject.subject.0;
+                    let display = match self.labels.get(id) {
+                        Some(label) => format!("{label} ({id})"),
+                        None => id.clone(),
+                    };
+                    text.push_str(&format!("\n{display}"));
+                    for witness in &subject.witnesses {
+                        text.push_str(&format!(
+                            "\n  {} → {}: {}",
+                            witness.property.0, witness.object.0, witness.source_url
+                        ));
+                    }
+                }
+                text.push_str("\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.");
+                text
+            }
+            MatchResult::Unknown { .. } => "I could not uniquely resolve every place, country or employer in the question. This does not establish that there are no matches.".into(),
+            MatchResult::Refused { .. } => request.err().unwrap_or("I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.").into(),
+        };
+        MatchingReply {
+            kind: "fact_matches",
+            text,
+            result,
+            provenance: Provenance {
+                source: self.manifest.source.clone(),
+                license: self.manifest.license.clone(),
+                index_sha256: self.manifest.index_sha256.clone(),
+                relation_model_sha256: self.manifest.relation_model_sha256.clone(),
+                relation_selection: "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+                scope: self.manifest.scope.clone(),
+                relation_url: None,
+                relation_direction: Some("forward"),
+            },
+        }
     }
 
     pub fn verify(&self, request: Result<&str, &str>) -> VerificationReply {

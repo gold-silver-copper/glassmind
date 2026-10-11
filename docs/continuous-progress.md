@@ -23,75 +23,71 @@ Integrated release7a3d98dfb4eb6428d9d43ceb4cbdb963d20750034d0da223ffaa21dbe9781d
 has identical reviewed source. Workspace session73733 COMPLETE:fmt,clippy,release,
 strict4/4 smoke. No native/build/full-evaluation job remains from that release.
 
-## Active experiments and exact next actions
+## Current batch: validated, publication next
 
-Ceiling-division worker is COMPLETE, scope glassmind-continuous-ceildivision.scope
-inactive; original submission archived and all622files/81,410,732bytes hash-verified
-under WORK/ceildivision-run/terminal-originals BEFORE inspection. Worktree remains
-WORK/ceildivision, base609f42e. Frozen candidate90e463f72105bb3a28fc0b1c17315647af15ba4d4c109dfec0d53b6fd7c67141
-at WORK/ceildivision-run/frozen-candidate/glassmind. Worker43tests/clippy/fmt/build
-passed; authored8exactrepairs and6negative/rollback cases; publicTRAIN5/27→6/27,
-all5previouspatchesunchanged. New shipping-boxes primitiveunsigned div_ceil repair.
-Reviewed archived source committed locally as13673438624ce290c369b563a286534e3da326fd,
-without runtime revisions; notpushed. No openPR atlastcheck.
-Workspace session43069 COMPLETE tools/check.sh (-j1):fmt,alltargetclippy,release,
-strict4/4fixture smoke pass. Log WORK/coordinator/ceildivision-integrated/check.log.
-IntegratedmainSHA44ca28a3793eb43147382bd437791deffbf28d4725854866a9f220da6931a84d
-frozen inthatdirectory/glassmind withidentity.json; exact reviewedsourcehashesmatch.
-Sourcehash manifest and pre-copyroot source retained inthatdirectory. Review read fullpatch:
-conservative concrete parameter/field/literal types, rootfiles only, no aliases/imports/
-macros/customtypes; all old proposals precede new ones; exact primitive ambiguity call.
+Previous goal turn was PROGRESS: accepted independent ceiling-division contracts,
+completed source integration/workspace checks, and froze independent facts contracts.
+Current turn completed facts integration, native regressions and full coding DEV.
 
-Independent13 frozen cases (SHA d2a53a2a2c9feeb08aa780767c57cf4ccc64e17dcbfca77ba233b5f578b50dfa)
-COMPLETE session44416:8/8exactnative positives across all unsigned widths,maxima,
-zero guards,typedfields,Unicode;4negative/custom/signed/zero/macro unchanged;
-1native-confirmedambiguity withdrawal;0timeouts/manifests unchanged. Baseline0/8.
-Artifacts WORK/coordinator/ceildivision-independent/{baseline,candidate}. Separate
-native-replay COMPLETE:both savedrepairs pass originaltests and differ natively.
-Full765 DEV RUNNING session78883 via unchanged tools/rustbench-dev.sh, output
-WORK/coordinator/ceildivision-full. Progress run.log; results.jsonl only oncompletion.
-Exact baseline WORK/coordinator/multiplicative-full/results.jsonl c2f9fbd3...200/565/0.
-Next: compare all765outcomes; require200retained,0newfailures, inspect changedtaskIDs
-only (no hiddencontent). Use tools/coding-ceiling-division/parent/compare-full.py
---before WORK/coordinator/multiplicative-full/results.jsonl --after
-WORK/coordinator/ceildivision-full/results.jsonl --binary frozenmain --out freshreport.
-Workspacechecks complete; update PARENT/README/
-scoreboard with exactsourcecommit then push/PR/CI/exactheadmerge when allgatespass.
-Root tools/coding-ceiling-division contains originalworker28compactfiles andparent
-13contracts/nativewitness/replay; PARENT correctly labels fullgatepending.
+Coding sourcecommit13673438624ce290c369b563a286534e3da326fd; full765 session78883
+COMPLETE:203pass/562refused/0fail, all200priorpassesretained. Only3gains are
+fix-tests/shipping-boxes acrosschatty/hurried/terse. Comparison committedpath
+ tools/coding-ceiling-division/parent/full-comparison.json; results
+WORK/coordinator/ceildivision-full/results.jsonl SHA
+0b491f90bc85c9b6e8900f8ce87a2b5b6542f78020b79a10483d9958e411431a.
+Frozen evaluatedmain90e463f72105bb3a28fc0b1c17315647af15ba4d4c109dfec0d53b6fd7c67141
+WORK/ceildivision-run/frozen-candidate/glassmind. Integratedcodingmain44ca28a...,
+sourcehashesidentical, WORK/coordinator/ceildivision-integrated; workspace43069COMPLETE.
+Parent13:8exactnativepositives,4negativeunchanged,1nativeambiguitywithdrawal;
+separatereplaybothpublictests+nativeoutputs passed. WorkerpublicTRAIN5→6/27,
+alloldpatchesunchanged. Original622files/81,410,732bytes preserved/hashverified
+WORK/ceildivision-run/terminal-originals. WorktreeWORK/ceildivision stillretained.
 
-Independent facts conjunction worker LIVE PID2436004, scope
- glassmind-continuous-factmatch.scope, worktreeWORK/factmatch, base71a0618,
-branchcontinuous/factmatch; taskWORK/factmatch-task.txt; runWORK/factmatch-run.
-Latestscopecheck active/running. Astra fast, forcedChatGPTlogin verified, no APIkeys.
-Ownscrates/facts+tools/facts/matching; parentowns explicit Match facts: mainroute.
-No live candidate/source read. Hypothesis2..3positiveconstraints sharedsubject,
-P19/P20/P27/P108 ANDintersection beforelimit10, exactedgewitnesses and scopedcounts.
-Fullalias/completeparse ambiguity mustresolve BEFORE edges; no absence-negative.
-Read-only500entity snapshot WORK/factmatch-source,indexSHA923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185,
+Facts worker COMPLETE: original226files/85,040,204bytes includingCargo.lock
+preserved/hashverified BEFOREinspection underWORK/factmatch-run/terminal-originals.
+Scopeglassmind-continuous-factmatch.scope inactive/dead; no modelworker remains.
+Frozen standalone90861d7dfe781d45c7eccfe10253edefbe197e47fb4e2bbc57a14472205e7203
+WORK/factmatch-run/frozen-candidate/binary/glassmind-facts. Archived library
+integrated unchanged; parent adds Match facts: conversationroute andindependenttests.
+Existinglockedsha2 dependencyedge only; no packageversion/download changes.
+Worker44CLI+45library contracts,5invariants,152legacyqueries/answer_set bytespass;
+its originalseparatoralias failure is preserved, finalguardcorrected beforehandoff.
+
+Parent30cases/49entitygraph frozenbeforeinspection,casesSHA
+102d1cd1c75601a23e8e416fa3436989f313c596d5dbd10f9d14805bc9c2a92b:
+29/29nativeCLIcases and30/30librarycases pass (NUL libraryonly). Eightrealindex
+conjunctions strictlyreducebothinputsets;16edges confirmed againsthashverified
+rawWikidataresponses. ArtifactsWORK/coordinator/factmatch-{independent,audit}.
+OriginalPLAN prosecount19 correctedonly in audit.json; frozenexpectedarrayscorrect.
+500entityindex remainsvalidation-subject seeded, notindependentretrievalbenchmark.
+IndexSHA923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185;
 relationSHAdb0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6.
-Parent audit WORK/coordinator/factmatch-audit/index-audit.json:47strictlyreducing
-nonempty intersections among644cooccurring pairs; finitevalidation-seeded evidence.
-Parent30contracts/49entitygraph frozen BEFORE candidateinspection under
-WORK/coordinator/factmatch-independent; casesSHA102d1cd1c75601a23e8e416fa3436989f313c596d5dbd10f9d14805bc9c2a92b.
-Covers2/3AND,allpredicates,aliases,edge-onlyIDs,ambiguitydespiteonegraphmatch,
-fullclaimvectors,intersection30∩20→11 beforedisplay10,emptyvsunknown,malformedbounds.
-PLAN prose count19 corrected only in audit.json; frozen expectedcasearrays unchanged.
-Parent rawcacheaudit COMPLETE:8examples/16exactedges, cachedresponse hashesverified,
-WORK/coordinator/factmatch-audit/{raw-edges.py,raw-edge-audit.json}. Qualifier/rank
-metadata retained; no current/globaltruth claim.
-Main baselines COMPLETE sessions42229/24773 underfactmatch-independent:
-main-baseline has standalone/facts-enabled/defaulttalk bytes forfirst200/full2821;
-legacy-baseline41/41memory(no intent),27/27calculations,47/47mixedstory pass.
-Bundle real-bundle has sourceindex/model verifiedmanifest, baseline-identity.json
-records main44ca28a... and copied baseline-continuous-predictions. Futuremain
-regression.py uses --baseline main-baseline; do not substitutebundleprovenance.
-Next: archive+hashverify terminaloriginals BEFORE inspection, adapt CLIshape only,
-run all30contracts then realcachewitness and unchangedlegacy2821/maintalk gates.
 
-Known completed worker tokens163452136 (addedceildivision1941615input+26250output;
-1864064cachedinput included ONCE). Root/interruptedexcluded. Factmatchactiveuncounted.
-Keep goalactive; no routine human confirmation or duplicate workers.
+Parentmain integration COMPLETE at WORK/coordinator/factmatch-integrated:
+mainSHA562a774bc98583d487b2bbcabcb53b3b300bae767f8427c7f0491cc2652a07a4.
+Session53373:24main+16facts tests,fmt,alltargetclippy,release,strict4/4smoke pass.
+Session52504:29nativeconversationcases,26state/recallchecks bothproductionintent
+modes,2prefix/namechecks,humantruncation/source/scope andrealcacheexample pass.
+Session88481:all6first200/full2821 standalone/facts-enabled/defaulttalk outputfiles
+byteidenticaltobaseline. Facts256/2545/20 answer,252/2545/24joint unchanged.
+Session93455:memory41/41(nointent),calculations27/27,mixedstory47/47 pass.
+Mainbaseline42229/24773 COMPLETE underfactmatch-independent; copiedpredictor and
+baseline-identity.json preserved. Maincoding/world-rust sourceunchangedbyfacts.
+
+Next: review/commit integratedfacts source and measuredreports, append scopedtrack
+records using exactsourcecommits, renderchart, pushharness, openPR, requiregreenCI
+forreviewedexacthead andmergewith--match-head-commit. No openPR atlastcheck.
+Do not reruncompletedvalidation withoutnewchanges. Retainoriginalevidence before
+removinginactiveworkerworktrees/loginlinks. External5linemilestone log dueatmerge.
+Afterpublish startnextmeasurableexperiment; lead: auditTRAINsubjectcoverage in
+existingrawcache before choosing an independentTRAIN-seeded facts-index expansion.
+No newindex/download experiment yetauthorizedbymeasurement; don't useDEVanswers
+forselection orclaimopenworldcoverage. Otherqueuedlead integerreassociation needs
+nativeoverflow/rounding evidence, notanotherphrasepatch.
+
+Known completedworker tokens164630460 (factmatch1151559input+26765output,
+1076736cachedinput included ONCE; ceiling1941615input+26250output). Root/interrupted
+excluded. No activeuncountedworker. Goalremainsactive; milestonesarenotcompletion.
 
 ## Multiplicative coding revision
 
@@ -151,8 +147,8 @@ Do not revive these configurations by weakening thresholds or repeating decoder
 cosmetics. Further quantities work needs evidence for better argument grounding
 or supervision. No heldout/DEVformula/parentfixture access by either worker.
 
-Known completed worker tokens163452136, including cachedinput once. Parent and
-interrupted calls excluded. Factmatch remains active and uncounted. New corpus downloads0.
+Known completed worker tokens164630460, including cachedinput once. Parent and
+interrupted calls excluded. No active model workers. New corpus downloads0.
 
 ## Stable baselines and closed hypotheses
 

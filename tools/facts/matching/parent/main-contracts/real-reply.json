@@ -1,0 +1,51 @@
+{
+  "kind": "fact_matches",
+  "text": "Matches in the loaded snapshot: 1.\nQ1029284\n  P19 \u2192 Q220: https://www.wikidata.org/wiki/Q1029284#P19\n  P20 \u2192 Q90: https://www.wikidata.org/wiki/Q1029284#P20\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+  "status": "matched",
+  "constraints": [
+    {
+      "property": "P19",
+      "object": "Q220",
+      "object_resolution": "explicit_id"
+    },
+    {
+      "property": "P20",
+      "object": "Q90",
+      "object_resolution": "explicit_id"
+    }
+  ],
+  "matches": [
+    {
+      "subject": "Q1029284",
+      "witnesses": [
+        {
+          "subject": "Q1029284",
+          "property": "P19",
+          "object": "Q220",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P19"
+        },
+        {
+          "subject": "Q1029284",
+          "property": "P20",
+          "object": "Q90",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P20"
+        }
+      ]
+    }
+  ],
+  "total_snapshot_matches": 1,
+  "returned": 1,
+  "truncated": false,
+  "scope": "local_snapshot",
+  "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+  "provenance": {
+    "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+    "license": "Questions CC BY 3.0; Wikidata CC0",
+    "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+    "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+    "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+    "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+    "relation_url": null,
+    "relation_direction": "forward"
+  }
+}

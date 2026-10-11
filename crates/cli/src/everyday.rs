@@ -2,7 +2,7 @@
 use std::io::{BufRead, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
-use crate::talk_facts::{FactReply, Facts, VerificationReply};
+use crate::talk_facts::{FactReply, Facts, MatchingReply, VerificationReply};
 use crate::talk_stories::{Stories, StoryPlan, StoryReply};
 use glassmind_everyday::{Conversation, IntentModel, Reply};
 use glassmind_quantities::Answer;
@@ -24,6 +24,7 @@ enum TalkReply {
     Story(StoryReply),
     Fact(Box<FactReply>),
     Verification(Box<VerificationReply>),
+    Matching(Box<MatchingReply>),
 }
 
 #[derive(serde::Serialize)]
@@ -43,6 +44,7 @@ impl TalkReply {
             Self::Story(reply) => &reply.text,
             Self::Fact(reply) => &reply.text,
             Self::Verification(reply) => &reply.text,
+            Self::Matching(reply) => &reply.text,
         }
     }
 }
@@ -133,6 +135,19 @@ fn respond_with_facts(
     model: Option<&IntentModel>,
     facts: Option<&Facts>,
 ) -> TalkReply {
+    if let Some(request) = crate::talk_facts::matching_request(line) {
+        session.memory.turn = session.memory.turn.saturating_add(1);
+        session.memory.last_user_utterance = Some(line.to_owned());
+        session.memory.last_slot = None;
+        return match facts {
+            Some(facts) => TalkReply::Matching(Box::new(facts.match_subjects(request))),
+            None => TalkReply::Conversation(Reply::Refusal {
+                text: "Matching factual relationships requires a local facts bundle (--facts-dir)."
+                    .into(),
+                proposal: None,
+            }),
+        };
+    }
     if let Some(request) = crate::talk_facts::verification_request(line) {
         session.memory.turn = session.memory.turn.saturating_add(1);
         session.memory.last_user_utterance = Some(line.to_owned());

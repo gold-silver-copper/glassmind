@@ -1,0 +1,28 @@
+[
+  {
+    "case": 35,
+    "question": "Was Born in Hope born in Port of Spain?",
+    "old_expected": "refused",
+    "baseline_and_candidate": {
+      "status": "supported",
+      "witness": {
+        "subject": "Q12",
+        "property": "P19",
+        "object": "Q2",
+        "subject_resolution": "alias",
+        "object_resolution": "alias",
+        "source_url": "https://www.wikidata.org/wiki/Q12#P19"
+      },
+      "scope": "local_snapshot"
+    }
+  },
+  {
+    "case": 36,
+    "question": "Was Ada born in Port of Spain born in Hope?",
+    "old_expected": "refused",
+    "baseline_and_candidate": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing"
+    }
+  }
+]

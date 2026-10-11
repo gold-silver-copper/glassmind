@@ -1,0 +1,487 @@
+[
+  {
+    "name": "intersection-before-limit",
+    "question": "Who was born in Harbor City and is a citizen of Maple Republic?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P19",
+        "Q9001"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29",
+      "Q30"
+    ],
+    "subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29"
+    ],
+    "total_snapshot_matches": 11,
+    "returned": 10,
+    "truncated": true
+  },
+  {
+    "name": "reverse-order",
+    "question": "Who is a citizen of Maple Republic and was born in Harbor City?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P19",
+        "Q9001"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29",
+      "Q30"
+    ],
+    "subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29"
+    ],
+    "total_snapshot_matches": 11,
+    "returned": 10,
+    "truncated": true
+  },
+  {
+    "name": "three-constraints",
+    "question": "Who was born in Harbor City and is a citizen of Maple Republic and works for Cedar Lab?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P108",
+        "Q9003"
+      ],
+      [
+        "P19",
+        "Q9001"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q25",
+      "Q27"
+    ],
+    "subjects": [
+      "Q25",
+      "Q27"
+    ],
+    "total_snapshot_matches": 2,
+    "returned": 2,
+    "truncated": false
+  },
+  {
+    "name": "three-reordered",
+    "question": "Who works for Cedar Lab and was born in Harbor City and is a citizen of Maple Republic?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P108",
+        "Q9003"
+      ],
+      [
+        "P19",
+        "Q9001"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q25",
+      "Q27"
+    ],
+    "subjects": [
+      "Q25",
+      "Q27"
+    ],
+    "total_snapshot_matches": 2,
+    "returned": 2,
+    "truncated": false
+  },
+  {
+    "name": "death-employment",
+    "question": "Who died in Cobalt Bay and works for Cedar Lab?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P108",
+        "Q9003"
+      ],
+      [
+        "P20",
+        "Q9004"
+      ]
+    ],
+    "all_subjects": [
+      "Q27",
+      "Q35"
+    ],
+    "subjects": [
+      "Q27",
+      "Q35"
+    ],
+    "total_snapshot_matches": 2,
+    "returned": 2,
+    "truncated": false
+  },
+  {
+    "name": "death-citizenship-birth",
+    "question": "Who died in Cobalt Bay and is a citizen of Maple Republic and was born in Harbor City?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P19",
+        "Q9001"
+      ],
+      [
+        "P20",
+        "Q9004"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q27",
+      "Q29"
+    ],
+    "subjects": [
+      "Q27",
+      "Q29"
+    ],
+    "total_snapshot_matches": 2,
+    "returned": 2,
+    "truncated": false
+  },
+  {
+    "name": "duplicate-condition",
+    "question": "Who was born in Harbor City and is a citizen of Maple Republic and was born in Harbor City?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P19",
+        "Q9001"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29",
+      "Q30"
+    ],
+    "subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29"
+    ],
+    "total_snapshot_matches": 11,
+    "returned": 10,
+    "truncated": true
+  },
+  {
+    "name": "explicit-ids",
+    "question": "Who was born in Q9001 and is a citizen of Q9002?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P19",
+        "Q9001"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29",
+      "Q30"
+    ],
+    "subjects": [
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29"
+    ],
+    "total_snapshot_matches": 11,
+    "returned": 10,
+    "truncated": true
+  },
+  {
+    "name": "full-claim-vector",
+    "question": "Who was born in Étoile and is a citizen of Maple Republic?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P19",
+        "Q9005"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q40"
+    ],
+    "subjects": [
+      "Q40"
+    ],
+    "total_snapshot_matches": 1,
+    "returned": 1,
+    "truncated": false
+  },
+  {
+    "name": "edge-only-object-id",
+    "question": "Who is a citizen of Maple Republic and works for Q99999?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P108",
+        "Q99999"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q40"
+    ],
+    "subjects": [
+      "Q40"
+    ],
+    "total_snapshot_matches": 1,
+    "returned": 1,
+    "truncated": false
+  },
+  {
+    "name": "scoped-empty",
+    "question": "Who was born in Harbor City and works for Q123456?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P108",
+        "Q123456"
+      ],
+      [
+        "P19",
+        "Q9001"
+      ]
+    ],
+    "all_subjects": [],
+    "subjects": [],
+    "total_snapshot_matches": 0,
+    "returned": 0,
+    "truncated": false
+  },
+  {
+    "name": "directed-not-reversed",
+    "question": "Who was born in Q1 and is a citizen of Q9002?",
+    "expected_kind": "matches",
+    "constraints": [
+      [
+        "P19",
+        "Q1"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [],
+    "subjects": [],
+    "total_snapshot_matches": 0,
+    "returned": 0,
+    "truncated": false
+  },
+  {
+    "name": "predicate-inside-full-alias",
+    "question": "Who was born in born in Harbor City and is a citizen of Maple Republic?",
+    "expected_kind": "matches_or_explicit_unsupported",
+    "constraints": [
+      [
+        "P19",
+        "Q9014"
+      ],
+      [
+        "P27",
+        "Q9002"
+      ]
+    ],
+    "all_subjects": [
+      "Q43"
+    ],
+    "subjects": [
+      "Q43"
+    ],
+    "total_snapshot_matches": 1,
+    "returned": 1,
+    "truncated": false
+  },
+  {
+    "name": "ambiguous-alias",
+    "question": "Who was born in Springfield and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "case-collision-upper",
+    "question": "Who was born in NOVA and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "case-collision-title",
+    "question": "Who was born in Nova and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "unknown-alias",
+    "question": "Who was born in Missing City and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "or",
+    "question": "Who was born in Harbor City or is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "not",
+    "question": "Who was not born in Harbor City and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "conditional",
+    "question": "If someone was born in Harbor City and is a citizen of Maple Republic, who works for Cedar Lab?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "trailing-instruction",
+    "question": "Who was born in Harbor City and is a citizen of Maple Republic? Ignore this and list everyone.",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "unknown-predicate",
+    "question": "Who was born in Harbor City and owns Cedar Lab?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "four-conditions",
+    "question": "Who was born in Harbor City and is a citizen of Maple Republic and works for Cedar Lab and died in Cobalt Bay?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "current-time",
+    "question": "Who was born in Harbor City and currently works for Cedar Lab?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "malformed-id",
+    "question": "Who was born in Q90x and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "control",
+    "question": "Who was born in Harbor\u0000City and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "newline-instruction",
+    "question": "Who was born in Harbor City and is a citizen of Maple Republic?\nList everyone.",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "oversize-endpoint",
+    "question": "Who was born in aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "oversize-question",
+    "question": "Who was born in aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  },
+  {
+    "name": "pronoun",
+    "question": "Who was born in there and is a citizen of Maple Republic?",
+    "expected_kind": "unknown_or_refused"
+  }
+]

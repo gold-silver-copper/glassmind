@@ -1,6 +1,9 @@
 # Parent review: primitive unsigned ceiling division
 
-Publication pending the full 765-case coding development run. The independent
+Full coding DEV passes: **203/765**, up from 200, with all 200 previous passes
+retained, 562 refusals and zero failures. The three gains are shipping-boxes across
+all request styles; every other outcome is unchanged.
+[Exact comparison](parent/full-comparison.json). The independent
 native gate passes: **8/8 exact repairs**, **4/4 negative cases unchanged**, and
 **1 ambiguous repair withdrawn with native disagreement evidence**. The supplied
 baseline repaired 0/8. These are authored development cases, not independent
@@ -45,4 +48,6 @@ same external artifact root. The frozen source was copied from the verified
 archive without a coordinator runtime revision. Workspace formatting, all-target clippy, release builds and strict 4/4 fixture
 smoke pass. The integrated main binary is SHA256
 `44ca28a3793eb43147382bd437791deffbf28d4725854866a9f220da6931a84d`,
-with identical reviewed source hashes. Full DEV remains pending before publication. No held-out contents were inspected.
+with identical reviewed source hashes. The frozen source was evaluated at source commit13673438624ce290c369b563a286534e3da326fd.
+Full DEV result SHA256:
+`0b491f90bc85c9b6e8900f8ce87a2b5b6542f78020b79a10483d9958e411431a`. No held-out contents were inspected.

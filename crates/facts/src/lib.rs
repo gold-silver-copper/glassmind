@@ -4,6 +4,13 @@ use glassmind_everyday::IntentModel;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 
+mod matching;
+pub use matching::{
+    MAX_MATCH_CONDITIONS, MAX_MATCH_PARSE_ALTERNATIVES, MAX_MATCH_QUESTION_BYTES, MatchConstraint,
+    MatchPredicate, MatchRefusalReason, MatchResult, MatchUnknownReason, MatchWitness,
+    ResolvedMatchConstraint, SubjectMatch, parse_match_question,
+};
+
 mod verification;
 pub use verification::{
     EdgeWitness, EndpointResolution, MAX_ENDPOINT_BYTES, MAX_VERIFY_QUESTION_BYTES, RefusalReason,

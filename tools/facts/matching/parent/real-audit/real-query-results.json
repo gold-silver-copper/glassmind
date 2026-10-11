@@ -1,0 +1,383 @@
+{
+  "scope": "Exact cached directed edges only; historical/qualified claims and validation-subject seeded partial index, not current or global truth. No network or heldout data.",
+  "native_binary_sha256": "90861d7dfe781d45c7eccfe10253edefbe197e47fb4e2bbc57a14472205e7203",
+  "passed": 8,
+  "records": [
+    {
+      "question": "Who was born in Q7473516 and is a citizen of Q17?",
+      "single_counts": [
+        2,
+        9
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P19",
+            "object": "Q7473516",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P27",
+            "object": "Q17",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q1013868",
+            "witnesses": [
+              {
+                "subject": "Q1013868",
+                "property": "P19",
+                "object": "Q7473516",
+                "source_url": "https://www.wikidata.org/wiki/Q1013868#P19"
+              },
+              {
+                "subject": "Q1013868",
+                "property": "P27",
+                "object": "Q17",
+                "source_url": "https://www.wikidata.org/wiki/Q1013868#P27"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    },
+    {
+      "question": "Who was born in Q220 and died in Q90?",
+      "single_counts": [
+        2,
+        2
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P19",
+            "object": "Q220",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P20",
+            "object": "Q90",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q1029284",
+            "witnesses": [
+              {
+                "subject": "Q1029284",
+                "property": "P19",
+                "object": "Q220",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P19"
+              },
+              {
+                "subject": "Q1029284",
+                "property": "P20",
+                "object": "Q90",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P20"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    },
+    {
+      "question": "Who was born in Q220 and is a citizen of Q142?",
+      "single_counts": [
+        2,
+        10
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P19",
+            "object": "Q220",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P27",
+            "object": "Q142",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q1029284",
+            "witnesses": [
+              {
+                "subject": "Q1029284",
+                "property": "P19",
+                "object": "Q220",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P19"
+              },
+              {
+                "subject": "Q1029284",
+                "property": "P27",
+                "object": "Q142",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P27"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    },
+    {
+      "question": "Who died in Q90 and is a citizen of Q142?",
+      "single_counts": [
+        2,
+        10
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P20",
+            "object": "Q90",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P27",
+            "object": "Q142",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q1029284",
+            "witnesses": [
+              {
+                "subject": "Q1029284",
+                "property": "P20",
+                "object": "Q90",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P20"
+              },
+              {
+                "subject": "Q1029284",
+                "property": "P27",
+                "object": "Q142",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P27"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    },
+    {
+      "question": "Who died in Q90 and is a citizen of Q172579?",
+      "single_counts": [
+        2,
+        4
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P20",
+            "object": "Q90",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P27",
+            "object": "Q172579",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q1029284",
+            "witnesses": [
+              {
+                "subject": "Q1029284",
+                "property": "P20",
+                "object": "Q90",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P20"
+              },
+              {
+                "subject": "Q1029284",
+                "property": "P27",
+                "object": "Q172579",
+                "source_url": "https://www.wikidata.org/wiki/Q1029284#P27"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    },
+    {
+      "question": "Who was born in Q490 and is a citizen of Q172579?",
+      "single_counts": [
+        2,
+        4
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P19",
+            "object": "Q490",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P27",
+            "object": "Q172579",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q1056757",
+            "witnesses": [
+              {
+                "subject": "Q1056757",
+                "property": "P19",
+                "object": "Q490",
+                "source_url": "https://www.wikidata.org/wiki/Q1056757#P19"
+              },
+              {
+                "subject": "Q1056757",
+                "property": "P27",
+                "object": "Q172579",
+                "source_url": "https://www.wikidata.org/wiki/Q1056757#P27"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    },
+    {
+      "question": "Who was born in Q84 and is a citizen of Q145?",
+      "single_counts": [
+        3,
+        21
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P19",
+            "object": "Q84",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P27",
+            "object": "Q145",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q10748975",
+            "witnesses": [
+              {
+                "subject": "Q10748975",
+                "property": "P19",
+                "object": "Q84",
+                "source_url": "https://www.wikidata.org/wiki/Q10748975#P19"
+              },
+              {
+                "subject": "Q10748975",
+                "property": "P27",
+                "object": "Q145",
+                "source_url": "https://www.wikidata.org/wiki/Q10748975#P27"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    },
+    {
+      "question": "Who was born in Q84 and is a citizen of Q174193?",
+      "single_counts": [
+        3,
+        12
+      ],
+      "result": {
+        "status": "matched",
+        "constraints": [
+          {
+            "property": "P19",
+            "object": "Q84",
+            "object_resolution": "explicit_id"
+          },
+          {
+            "property": "P27",
+            "object": "Q174193",
+            "object_resolution": "explicit_id"
+          }
+        ],
+        "matches": [
+          {
+            "subject": "Q10748975",
+            "witnesses": [
+              {
+                "subject": "Q10748975",
+                "property": "P19",
+                "object": "Q84",
+                "source_url": "https://www.wikidata.org/wiki/Q10748975#P19"
+              },
+              {
+                "subject": "Q10748975",
+                "property": "P27",
+                "object": "Q174193",
+                "source_url": "https://www.wikidata.org/wiki/Q10748975#P27"
+              }
+            ]
+          }
+        ],
+        "total_snapshot_matches": 1,
+        "returned": 1,
+        "truncated": false,
+        "scope": "local_snapshot",
+        "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+        "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+      }
+    }
+  ]
+}

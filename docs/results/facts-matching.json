@@ -1,0 +1,33 @@
+{
+  "scope": "Independent authored development contracts and finite validation-subject-seeded index capability; not independent benchmark coverage",
+  "library_cases": 30,
+  "library_passed": 30,
+  "cli_cases": 29,
+  "cli_passed": 29,
+  "expected_outcome_counts": {
+    "matched": 13,
+    "unknown": 5,
+    "refused": 12
+  },
+  "main_cases": 29,
+  "main_passed": 29,
+  "state_and_recall_checks": 26,
+  "real_conjunctions": 8,
+  "cached_edge_witnesses": 16,
+  "legacy_answer": {
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20,
+    "total": 2821
+  },
+  "legacy_joint": {
+    "right": 252,
+    "refused": 2545,
+    "wrong": 24,
+    "total": 2821
+  },
+  "legacy_output_bytes_unchanged": true,
+  "main_binary_sha256": "562a774bc98583d487b2bbcabcb53b3b300bae767f8427c7f0491cc2652a07a4",
+  "standalone_binary_sha256": "90861d7dfe781d45c7eccfe10253edefbe197e47fb4e2bbc57a14472205e7203",
+  "parent_cases_sha256": "102d1cd1c75601a23e8e416fa3436989f313c596d5dbd10f9d14805bc9c2a92b"
+}

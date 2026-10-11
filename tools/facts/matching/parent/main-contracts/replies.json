@@ -1,0 +1,1703 @@
+[
+  {
+    "name": "intersection-before-limit",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 11. Showing the first 10 by ID.\nQ20\n  P19 → Q9001: https://www.wikidata.org/wiki/Q20#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q20#P27\nQ21\n  P19 → Q9001: https://www.wikidata.org/wiki/Q21#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q21#P27\nQ22\n  P19 → Q9001: https://www.wikidata.org/wiki/Q22#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q22#P27\nQ23\n  P19 → Q9001: https://www.wikidata.org/wiki/Q23#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q23#P27\nQ24\n  P19 → Q9001: https://www.wikidata.org/wiki/Q24#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q24#P27\nQ25\n  P19 → Q9001: https://www.wikidata.org/wiki/Q25#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q25#P27\nQ26\n  P19 → Q9001: https://www.wikidata.org/wiki/Q26#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q26#P27\nQ27\n  P19 → Q9001: https://www.wikidata.org/wiki/Q27#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q27#P27\nQ28\n  P19 → Q9001: https://www.wikidata.org/wiki/Q28#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q28#P27\nQ29\n  P19 → Q9001: https://www.wikidata.org/wiki/Q29#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q29#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "reverse-order",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 11. Showing the first 10 by ID.\nQ20\n  P19 → Q9001: https://www.wikidata.org/wiki/Q20#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q20#P27\nQ21\n  P19 → Q9001: https://www.wikidata.org/wiki/Q21#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q21#P27\nQ22\n  P19 → Q9001: https://www.wikidata.org/wiki/Q22#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q22#P27\nQ23\n  P19 → Q9001: https://www.wikidata.org/wiki/Q23#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q23#P27\nQ24\n  P19 → Q9001: https://www.wikidata.org/wiki/Q24#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q24#P27\nQ25\n  P19 → Q9001: https://www.wikidata.org/wiki/Q25#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q25#P27\nQ26\n  P19 → Q9001: https://www.wikidata.org/wiki/Q26#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q26#P27\nQ27\n  P19 → Q9001: https://www.wikidata.org/wiki/Q27#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q27#P27\nQ28\n  P19 → Q9001: https://www.wikidata.org/wiki/Q28#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q28#P27\nQ29\n  P19 → Q9001: https://www.wikidata.org/wiki/Q29#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q29#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "three-constraints",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 2.\nQ25\n  P108 → Q9003: https://www.wikidata.org/wiki/Q25#P108\n  P19 → Q9001: https://www.wikidata.org/wiki/Q25#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q25#P27\nQ27\n  P108 → Q9003: https://www.wikidata.org/wiki/Q27#P108\n  P19 → Q9001: https://www.wikidata.org/wiki/Q27#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q27#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q9003",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P108"
+            },
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P108"
+            },
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "three-reordered",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 2.\nQ25\n  P108 → Q9003: https://www.wikidata.org/wiki/Q25#P108\n  P19 → Q9001: https://www.wikidata.org/wiki/Q25#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q25#P27\nQ27\n  P108 → Q9003: https://www.wikidata.org/wiki/Q27#P108\n  P19 → Q9001: https://www.wikidata.org/wiki/Q27#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q27#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q9003",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P108"
+            },
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P108"
+            },
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "death-employment",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 2.\nQ27\n  P108 → Q9003: https://www.wikidata.org/wiki/Q27#P108\n  P20 → Q9004: https://www.wikidata.org/wiki/Q27#P20\nQ35\n  P108 → Q9003: https://www.wikidata.org/wiki/Q35#P108\n  P20 → Q9004: https://www.wikidata.org/wiki/Q35#P20\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q9003",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P20",
+          "object": "Q9004",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P108"
+            },
+            {
+              "subject": "Q27",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P20"
+            }
+          ]
+        },
+        {
+          "subject": "Q35",
+          "witnesses": [
+            {
+              "subject": "Q35",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q35#P108"
+            },
+            {
+              "subject": "Q35",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q35#P20"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "death-citizenship-birth",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 2.\nQ27\n  P19 → Q9001: https://www.wikidata.org/wiki/Q27#P19\n  P20 → Q9004: https://www.wikidata.org/wiki/Q27#P20\n  P27 → Q9002: https://www.wikidata.org/wiki/Q27#P27\nQ29\n  P19 → Q9001: https://www.wikidata.org/wiki/Q29#P19\n  P20 → Q9004: https://www.wikidata.org/wiki/Q29#P20\n  P27 → Q9002: https://www.wikidata.org/wiki/Q29#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P20",
+          "object": "Q9004",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P20"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P20"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "duplicate-condition",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 11. Showing the first 10 by ID.\nQ20\n  P19 → Q9001: https://www.wikidata.org/wiki/Q20#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q20#P27\nQ21\n  P19 → Q9001: https://www.wikidata.org/wiki/Q21#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q21#P27\nQ22\n  P19 → Q9001: https://www.wikidata.org/wiki/Q22#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q22#P27\nQ23\n  P19 → Q9001: https://www.wikidata.org/wiki/Q23#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q23#P27\nQ24\n  P19 → Q9001: https://www.wikidata.org/wiki/Q24#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q24#P27\nQ25\n  P19 → Q9001: https://www.wikidata.org/wiki/Q25#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q25#P27\nQ26\n  P19 → Q9001: https://www.wikidata.org/wiki/Q26#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q26#P27\nQ27\n  P19 → Q9001: https://www.wikidata.org/wiki/Q27#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q27#P27\nQ28\n  P19 → Q9001: https://www.wikidata.org/wiki/Q28#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q28#P27\nQ29\n  P19 → Q9001: https://www.wikidata.org/wiki/Q29#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q29#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "explicit-ids",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 11. Showing the first 10 by ID.\nQ20\n  P19 → Q9001: https://www.wikidata.org/wiki/Q20#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q20#P27\nQ21\n  P19 → Q9001: https://www.wikidata.org/wiki/Q21#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q21#P27\nQ22\n  P19 → Q9001: https://www.wikidata.org/wiki/Q22#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q22#P27\nQ23\n  P19 → Q9001: https://www.wikidata.org/wiki/Q23#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q23#P27\nQ24\n  P19 → Q9001: https://www.wikidata.org/wiki/Q24#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q24#P27\nQ25\n  P19 → Q9001: https://www.wikidata.org/wiki/Q25#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q25#P27\nQ26\n  P19 → Q9001: https://www.wikidata.org/wiki/Q26#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q26#P27\nQ27\n  P19 → Q9001: https://www.wikidata.org/wiki/Q27#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q27#P27\nQ28\n  P19 → Q9001: https://www.wikidata.org/wiki/Q28#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q28#P27\nQ29\n  P19 → Q9001: https://www.wikidata.org/wiki/Q29#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q29#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "full-claim-vector",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 1.\nQ40\n  P19 → Q9005: https://www.wikidata.org/wiki/Q40#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q40#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9005",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q40",
+          "witnesses": [
+            {
+              "subject": "Q40",
+              "property": "P19",
+              "object": "Q9005",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P19"
+            },
+            {
+              "subject": "Q40",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "edge-only-object-id",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 1.\nQ40\n  P108 → Q99999: https://www.wikidata.org/wiki/Q40#P108\n  P27 → Q9002: https://www.wikidata.org/wiki/Q40#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q99999",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q40",
+          "witnesses": [
+            {
+              "subject": "Q40",
+              "property": "P108",
+              "object": "Q99999",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P108"
+            },
+            {
+              "subject": "Q40",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "scoped-empty",
+    "result": {
+      "kind": "fact_matches",
+      "text": "No subjects match all conditions in the loaded snapshot.\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q123456",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [],
+      "total_snapshot_matches": 0,
+      "returned": 0,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "directed-not-reversed",
+    "result": {
+      "kind": "fact_matches",
+      "text": "No subjects match all conditions in the loaded snapshot.\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q1",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [],
+      "total_snapshot_matches": 0,
+      "returned": 0,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "predicate-inside-full-alias",
+    "result": {
+      "kind": "fact_matches",
+      "text": "Matches in the loaded snapshot: 1.\nQ43\n  P19 → Q9014: https://www.wikidata.org/wiki/Q43#P19\n  P27 → Q9002: https://www.wikidata.org/wiki/Q43#P27\nThese are recorded relationships in a partial snapshot; dates and current status are not verified.",
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9014",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q43",
+          "witnesses": [
+            {
+              "subject": "Q43",
+              "property": "P19",
+              "object": "Q9014",
+              "source_url": "https://www.wikidata.org/wiki/Q43#P19"
+            },
+            {
+              "subject": "Q43",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q43#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "ambiguous-alias",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I could not uniquely resolve every place, country or employer in the question. This does not establish that there are no matches.",
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "case-collision-upper",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I could not uniquely resolve every place, country or employer in the question. This does not establish that there are no matches.",
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "case-collision-title",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I could not uniquely resolve every place, country or employer in the question. This does not establish that there are no matches.",
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "unknown-alias",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I could not uniquely resolve every place, country or employer in the question. This does not establish that there are no matches.",
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "or",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "invalid_condition_count",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "not",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "conditional",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "trailing-instruction",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "unknown-predicate",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "four-conditions",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "invalid_condition_count",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "current-time",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "malformed-id",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "control",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "oversize-endpoint",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "oversize-question",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I can match two or three positive conditions about birthplace, place of death, citizenship or employer, joined by and, using explicit names or QIDs.",
+      "status": "refused",
+      "reason": "question_too_long",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  },
+  {
+    "name": "pronoun",
+    "result": {
+      "kind": "fact_matches",
+      "text": "I could not uniquely resolve every place, country or employer in the question. This does not establish that there are no matches.",
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "provenance": {
+        "source": "Independent preinspection authored conjunction graph",
+        "license": "MIT OR Apache-2.0",
+        "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389",
+        "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+        "relation_selection": "explicit positive conjunction; exact directed snapshot edges; no learned proposal",
+        "scope": "Finite authored development graph; no current or global truth",
+        "relation_url": null,
+        "relation_direction": "forward"
+      }
+    }
+  }
+]
