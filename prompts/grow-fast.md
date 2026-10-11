@@ -74,7 +74,8 @@ cd ~/code/glassmind && tools/loop-service.sh start ~/.cache/glassmind/loop/state
   - it only proposes candidates;
   - types and tests decide.
 - **Codex GPT-6 Astra, fast mode only**, through `codex exec --model
-  gpt-6-astra -c 'service_tier="fast"' --ephemeral` on the user's login.
+  gpt-6-astra -c 'service_tier="fast"' --ephemeral` on the user's logged-in ChatGPT account.
+  Remove API-key environment variables from worker processes.
   This supersedes all earlier Opus/Claude instructions. Never use an API
   key or read credential files.
 - **Never depend on `~/code/flexion`.** Read it for ideas only.
