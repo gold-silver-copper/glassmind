@@ -65,8 +65,11 @@ tooling. Chart: `docs/results/chart.html` (numbers in `docs/results/summary.json
   training side), the round-28 grammar alone gets **2.8%** right. The hand
   grammar fits the styles it was grown on. With the request-category tagger
   (a small learned model that reads the request and hands a template to the
-  grammar) it gets 17%, with no confident wrong answers left after the
-  fixes in this branch.
+  grammar), a word bridge from Wikidata's programming concepts, and typed
+  checks on what the models propose, it gets **37.8%** (269 of 711), with 1
+  confident wrong answer. This set has since been used to choose between
+  designs, so it is a selection set now; the final measure is a separate
+  set that nobody on the training side reads.
 - No confident wrong answers on the training, validation or dev sets:
   unknown requests are refused, and the ▮ in the reply marks the word that
   wasn't understood.
