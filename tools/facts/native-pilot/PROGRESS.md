@@ -1,85 +1,29 @@
-# Native public pilot ingestion: full import running; compatibility passed
+# Native public pilot ingestion passed; central integration next
 
-Format2 importer implemented in crates/facts/src/disk/pilot.rs with CLI command
-import-wikidata-pilot. It pins the source database hash, attaches read-only, validates
-numeric rows/source-file mappings, rebuilds Rust keys, retains statement witnesses
-and alias provenance, embeds the portable manifest, and commits only after integrity
-and foreign-key checks. Format1 JSON outputs retain the same serialized shape.
+Worktree implementation and reports are complete. No model worker ran.
+The full import, source audit, positive query probes and raw-view parity passed.
+Production source is b44df61 plus literal-path correction bba402d; subsequent
+commits add validation helpers and reports. See PARENT.md for exact evidence.
 
-33 facts tests passed including3new pilot test groups. Workspacefmt/clippy/release
-andstrict4/4smoke passed. Firstcompile rejected u64 SQLite conversions; corrected
-with checked i64 conversions. Clippy flagged read-buffer slicing; corrected with
-checked access. Logs focused.log/focused-fixed.log/workspace.log in externalrun.
-No resource gate or selection changed. No model worker, new downloads or QA input.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+Run: WORK/coordinator/wikidata-native. Immutable native.sqlite is12,306,595,840bytes,
+SHA256 f11f5f93363e037c94261187d06461f39e6f7bade9cec4674e1205073847131b.
+59,853,388entities,74,983,525aliases,5,659,191edges,5,677,515statementwitnesses.
+816.399seconds,277,036KiB processRSS,20,852,143,958sampled peakrunbytes: allfrozen
+gates pass. Source audit69.283seconds;954rawrows, allindependentcounts match.
+110positivequeryprobes pass (37ordinary answers,59sets,13truncated,largest1756).
+853raw-view questions matchboth JSON/nativeordinaryandset outputs.
 
-Full import RUNNING using externalrun/run-import.py under8GiB/no-swap/3600seconds.
-Session87682; scopeglassmind-wikidata-native-import.scope; supervisorPID749960,
-importPID749961. Frozenimportsourceb44df61 andcandidateSHA
-601e16d776c129a65998f6f650b5d5b5b189ece95af8743bd6fc075ebdfb7620.
-Sourcehashverified4.995s, rowsvalidated20.683s, entitiesloaded45.365s.
-Currentlyrebuildingnames; monitor existingjob/log, do not startanotherimport.
-The runningbinaryusesabsolute outputpaths andis unaffectedbythe subsequentpathfix.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010; externalrun=WORK/coordinator/wikidata-native.
-The runner reserves native.sqlite,tmp,andcandidate, copies the tested binary, and
-tracks run growth including unlinked SQLite sort files through /proc/PID/fd.
-Do not rerun in place: preserve anypartial. Fixedlimits remain24GiBoutput/32GiBaddedrun.
+All jobs COMPLETE: import87682, audit47772, accountingbuild33676, witnessbuild28974,
+witness/raw-view directcalls. Scopesinactive; no owned modelworkers/authmounts.
+Retained candidate/import source b44df61; final-candidate/reader bba402d. Source
+pilot remainsread-only; originalrawfiles andallfailedhelper/testlogs preserved.
 
-After import passes, run externalrun/audit-native.py with retainedPyArrowvenv,
-8GiBscope,privateondiskTMPDIR/SQLITE_TMPDIRand600stimeout. It checks954fixedrawrow
-positions, fullstatementwitnesses, aliasprovenance/nativekeys viaa smallversion1
-rawsampleview, independententity/edgededup counts, rank/qualifiercounts, queryplans
-andsource-namealiasresolution. It uses a freshsmall launcher forqueryRSS. NotQAaccuracy.
-Then run boundedraw-view parity and existingformat1 parity; requiredintegration/main
-regressions beforepublishing. Canonicalprerequisite already passed; do not rerun it.
-
-OriginalPythonpilot10,367,000,576bytes SHAc3f1197705f131e74f8f7b794d3f08eaef7d3b48e8a312170185e6728bff1313
-remainsimmutable. SixrawParquetfiles, manifestandprioraudit remain retained. Keep
-fullqualifiers/references inrawsource; thisgraph includesqualified/historical claims.
-
-## Subsequent output-path fix and compatibility
-
-Review found that SQLite URI mode could reinterpret a relative filename beginning
-file:. Canonicalize newlyreservedoutput paths andreadpaths forbothimportformats.
-Firstregression caughtthatfixingonlythewriter stillleftthereaderpath affected;
-output-path-tests.log preserves thatfailure. Finaltest coversbothformatCLIimports
-andproves anexistingURItargetfile stays byte-identical. Final33factstests andclippy
-pass (output-path-fixed.log). Allworkspacefmt/clippy/release and4/4smoke pass again
-(workspace-final.log). Compatibilitymatchesall19481TRAIN+2821DEV ordinary/set
-streams againstretainedv1outputs. Mainmixed28/28 eachplain/intent unchanged.
-No additionalQA inference againstthenewpublicdatabase hasrun.
-
-Current facts binary in coordinator/disk-facts/target SHA
-8a284fd1f4c377f61d97bc78d30a80abcb116a3e15d794c93b6aa0a8e6af5492;
-mainSHA9b80e692728b204ba2dd118a663fec3b0818a4fb4768a5c39a1406b1b1eb26c9.
-Runningimportcandidate isseparatelycopiedandunchanged. The pathfix doesnotchange
-transformation/querysemantics or require repeatingthefrozenlargeimport.
-Sessions99690(initialcompilefailure),86376(testpass/clippyfailure),37363(initial
-workspacepass),36372(pathregressionfailure),58672(finaltests/clippypass),16569(final
-workspace+compatibilitypass) areCOMPLETE. Onlyimport87682 remainsactive.
-
-Next: monitorimport87682. Ifpass, runprepared audit-native.py under600s8GiBscope,
-withSQLITE_TMPDIR/TMPDIR=externalrun/tmp,usingwikidata-snapshot/venv/bin/python.
-ThencomparethegeneratedrawsampleJSON/v1SQLiteview withdisk_parity exampleusing
-source-name-queries.txt; rebuildtheexampleunderrequiredcargoscopeifneeded.
-InspectactualpublicqueryprocessRSS fromquery-resource-report.json (freshlauncher).
-Do notclaim broadQAaccuracy. Preservefailures anddonotrelax3600s/24GiB/32GiBgates.
-Rootintegration/publishingawaitsthepublicingestionandauditresults.
-
-## Independent alias accounting added before the public audit
-
-The original audit reconciled alias totals toimporter metadata, but didnotderive
-all eligibility/deduplication counts independently. pilot_counts nowstreams
-original(entity,name)groups fromtheimmutablepilot andcounts eligibility using
-lowercasedalphanumericbytecount, withoutproducingnormalizedkeys orreadingoutput
-counters. Its eligibilityboundarymatches fullRustnormalization onall1,112,064
-Unicode scalars andcompoundcases. Helpertest/build/clippy passed. Auditnowrequires
-exactsource/eligible/excluded/groupcounts fromthishelperaswellasrawsamplechecks.
-Thisstrengthenstheexistinggate; theimport3600sandaudit600s limits stayunchanged.
-Retainedhelpers externalrun/pilot-counts andexternalrun/raw-view-parity; original
-importcandidate andfinalreader remain unchanged. Newhelper hasno production effect.
-
-Rawsampleviews also retain sampledclaimtriples. The publicqueryaudit nowchecks
-allconfident ordinarygraphresults againsttheoriginalnumericpilot (uniqueanswer,
-missingclaim ormultiple-answerrefusal), separatelyfromaliasambiguity. Thisdoesnot
-scorethesemantics ofrelationproposals. Auditstillhas600stimeout; nogaterelaxed.
-Largeimport completedsecondaryindexesat335.085s andischeckingintegrity/references.
+Next integrate the full branch since91d702b (including58a172c and08fb892 plans/audit,
+whichare notyetinroot), then runcentralworkspace checks and compare source/binary
+provenance. Worktreecompatibility alreadyprovedall22302knownquestions bothmodes
+andmain28/28eachplain/intent. Do notrerunlargeimport orauditwithoutnewdata/code
+reason. Publishonly reviewedhead withgreenCI. Keep scores unchanged: theseare
+storage/query checks, notQAaccuracy. Then freeze a separate strictjoint QA
+coverage experiment onapprovedCAL/DEV using the fixed publicgraph andmodel.
+Do notfetchtheother85claimshards withouta separateboundedplan.

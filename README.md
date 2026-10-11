@@ -135,6 +135,9 @@ source links and local match counts, while preserving personal and story state.
 For dedicated offline queries, [native disk indexes](docs/disk-facts.md) provide
 `glassmind-facts index-disk`, `ask-disk` and `predict-disk`, with the same alias and
 answer rules and bounded indexed access.
+`import-wikidata-pilot` also builds a native index from an audited public snapshot,
+preserving source provenance and statement witnesses; see the
+[public ingestion results](tools/facts/native-pilot/PARENT.md) for scope and limits.
 Use `Check fact: Was SUBJECT born in OBJECT?` to [verify an explicit relationship](docs/fact-verification.md)
 against the loaded records. Replies distinguish supported, unknown and refused,
 with an exact edge witness; an absent edge never becomes a negative factual claim.
