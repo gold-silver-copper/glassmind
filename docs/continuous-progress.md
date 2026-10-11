@@ -2,12 +2,53 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-PROGRESS: word joining passed every fixed gate and is integrated; publication
-is next. Full independent claims acquisition passed; projection is still running.
 Known completed-worker tokens:201926299, cached input counted once; parent and
 interrupted usage excluded. No model workers, teacher calls or auth mounts.
 
-## Word joining passed; publish the integrated change
+## Current jobs,18:52UTC
+
+Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
+coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
+29161 exit0,2711.674s,556268KiBpeakRSS,70529619240sampledpeakaddedbytes; allgatespass.
+789435443rawrows,364044919statements,46448050qualified. Projection0444
+25821511680bytes SHA7fd86d572ba1f0b91de7cb4165543162195247b164d69363571bbf67c7128622.
+8009independentrawsamples(3647eligible) agree withfinalprojectionreport. Reference
+2492 COMPLETE,203.173s; literalreferenceSHA3fcd1c82d6fc1563121dc33e0f81b81481ffd773aa89f3e1003e4c56c429e15c.
+Preparation18606 COMPLETE; nativeinput/reference/binary pinnedbeforenativeimport.
+Fullsource manifestSHA782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a1251dba2.
+
+Native89022 RUNNING,scopeglassmind-full-claims-native,supervisor1022832,child
+1022833 (verify).8GiB/no swap,21600s,192GiBoutput,384GiBaddedrun cap; TMPDIRand
+SQLITE_TMPDIR=RUN/tmp. At197.591s sourcehashes/projectionvalidated andnativealiases
+copied without renormalization. Fullclaims/witnessloading remains; do not restart.
+NEXT: after successfulnative-resources.json, readonlyoutput thenaudit.py under
+3396sremaining original3600s combinedsourceaudit budget (referenceused203.173s),
+thenwitnesses.py3600s; bothviasupervise.py+8GiB0swap+setsid--waittimeout.
+No fullnative success/finalaudit/newgraphQA yet. Keepoldartifactsimmutable.
+Readworktree tools/facts/full-claims/PROGRESS.md andVALIDATION-PLAN.md.
+
+Coding wordinitials fullDEV COMPLETE and integrated; publicationnext.
+WORK/word-initials cleanhead5a45bd7; rootmerge7c034b0 matchesall196evaluated
+crate/source/manifest/lockfiles and exactbinarySHA
+efb48471993e9fb63181a7f171ffef428ef8938e24f29af20f5192a59d5b101b.
+Runtime23e7525 adds18lines ofsignature-only wordfirstchar/filter/case/order
+compositions. No grammar,budget,verifier or testchange.
+Full765DEV73728 COMPLETE:221passes544refusals0failures;all220priorpassesretained.
+Onlygaininitials/terse,alsoinTRAIN. ResultSHA
+f9554a39072279faad89ec977f12cacb6f4d6afe9e4e23551b59b4a3b9e476b8.
+TRAIN6/60vs5, all5oldsuccessfuloutputsbyteidentical; sample6/9.
+13newnativechecks(12impl+1weakambiguity) and76existingchecks pass, including18
+repeatcases withunsettarget. All30oldsourceoutcomesidentical. All17accepted
+authoredoutputs and6TRAINoutputs independentlyrecompiled/verifierevidenceverified.
+59worldtests andworkspacefmt/clippy/release/strict4smoke pass. Allcodingjobs
+terminal. No need to rerunidenticalsources. Tools/coding-word-initials/PARENT.md,
+pre-dev.json,source-review.json,integration.json preserve exactevidence.
+README/docs/scorejournal now221. Previousb04baseline preserved externally.
+NEXT: pushcoherentbatch, openPR, inspectCI for exactreviewedheadandmergeonlygreen.
+Continue monitoringnativeclaims89022; rawprovenance/storageaudit remainsindependent
+andmustpass beforeanynewgraphQA. No newmodelworkers/accountcalls.
+
+## PR50 merged: word joining shipped
 
 Root merge4cf3015817020438c0820a93de65154fda391c28 integrates WORK/word-join
 ateb4ed14. Runtime7282d2e adds5lines: signature-directed single-space joining of
@@ -26,11 +67,13 @@ Workspacefmt/clippy/release/strict4smoke passed on identical source/binary.
 Reports, hashes and originals RUN=WORK/coordinator/word-join. All coding jobs,
 including fullDEV20945, COMPLETE. No need to repeat finished checks.
 
-NEXT: finish checkpoint/report commit, pushharness, createPR againstmain, review
-exactheadand mergeonlywithgreenCI and --match-head-commit. Currentbatch also
-records PR49's rejectedQA CAL and the prospectively frozen fullclaims plan;
-experimental fullclaims Rust importer remains onlyin its isolated worktree.
-NoPRcreatedyet for this batch. SourcegraphQA defaults remain unchanged.
+PR50 https://github.com/gold-silver-copper/glassmind/pull/50 MERGED
+45b6a1fc6c45a0cb70c5c4193dcd0049aca56f3a at2026-10-11T18:26:06Z.
+Reviewed head4da48eab6348f7c399ef613b4a2fb4ac6e4d964c; CI38163669290 passed
+in76s (18:24:25–18:25:41UTC). Push9562, PR29055 and merge13809 COMPLETE.
+Do not republish or rerun the completed coding batch. Published evidence also
+includes rejected single-shard QA CAL and the frozen fullclaims acquisition plan.
+NEXT is the live facts projection and subsequent native ingestion below.
 
 ## Full independent claims snapshot: projection remains live
 
@@ -50,7 +93,7 @@ includingfirsttotal44633986614bytes. Independentall-file audit78497 COMPLETE,
 andfetch.jsonl committedinworktree; originalpilot/native/raw untouched.
 
 Projection29161 RUNNING, scopeglassmind-full-claims-projection, supervisor761927,
-child761928 lastverifiedlive. Lastobserved49completedfilesat1450s; readcurrentlog.
+child761928 lastverifiedlive. At PR50 merge:62completedfiles,546805361rawrows,289241086statements; readcurrentlog.
 Caps14400s/96GiBprojection/384GiBaddedrun,8GiB/no swap. Do notrestart intoexisting
 outputs. Fetchscopeisgone; projection scope includesfilecache, observedoom0.
 No fullnative output and no fullgraphQA evaluation have run.
