@@ -1,0 +1,17 @@
+{
+  "command": [
+    "cargo",
+    "build",
+    "--release",
+    "-p",
+    "glassmind-reading",
+    "--bin",
+    "reading-word-probability",
+    "-j1"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 64.59618190291803,
+  "peak_rss_kib": 510192,
+  "user_seconds": 61.315799,
+  "system_seconds": 2.17471
+}

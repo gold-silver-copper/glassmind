@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar-run/target/release/reading-word-probability",
+    "train",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar-run/experiment/word3.bin",
+    "--input",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/bnc_spoken.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/childes.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/gutenberg.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/open_subtitles.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/simple_wiki.train",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/switchboard.train"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 5.054621685994789,
+  "peak_rss_kib": 366268,
+  "user_seconds": 4.924484,
+  "system_seconds": 0.11471999999999999
+}

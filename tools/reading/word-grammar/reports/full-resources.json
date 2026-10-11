@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar-run/experiment/reading-word-probability",
+    "evaluate",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar-run/experiment/word3.bin",
+    "--baseline",
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/byte6.bin",
+    "--input",
+    "/home/gsc/.cache/glassmind/grow-fast-20261010/reading-data/grammar.jsonl"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 1.813207819010131,
+  "peak_rss_kib": 512680,
+  "user_seconds": 1.705793,
+  "system_seconds": 0.100682
+}

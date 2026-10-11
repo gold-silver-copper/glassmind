@@ -1,0 +1,209 @@
+{
+  "pairs": [
+    {
+      "target": "Q130232",
+      "relation": "R136",
+      "status": "truncated",
+      "baseline_sources": 67,
+      "candidate_sources": 168,
+      "dev_predicted_pairs": 18,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 16,
+        "uncertain relation": 2
+      }
+    },
+    {
+      "target": "Q208850",
+      "relation": "R404",
+      "status": "truncated",
+      "baseline_sources": 25,
+      "candidate_sources": 126,
+      "dev_predicted_pairs": 9,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 9
+      }
+    },
+    {
+      "target": "Q193592",
+      "relation": "R413",
+      "status": "truncated",
+      "baseline_sources": 16,
+      "candidate_sources": 117,
+      "dev_predicted_pairs": 8,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 8
+      }
+    },
+    {
+      "target": "Q336286",
+      "relation": "R413",
+      "status": "truncated",
+      "baseline_sources": 11,
+      "candidate_sources": 112,
+      "dev_predicted_pairs": 2,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 2
+      }
+    },
+    {
+      "target": "Q280658",
+      "relation": "R413",
+      "status": "truncated",
+      "baseline_sources": 13,
+      "candidate_sources": 114,
+      "dev_predicted_pairs": 2,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 2
+      }
+    },
+    {
+      "target": "Q201330",
+      "relation": "R413",
+      "status": "truncated",
+      "baseline_sources": 2,
+      "candidate_sources": 103,
+      "dev_predicted_pairs": 6,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 6
+      }
+    },
+    {
+      "target": "Q33999",
+      "relation": "R106",
+      "status": "truncated",
+      "baseline_sources": 66,
+      "candidate_sources": 167,
+      "dev_predicted_pairs": 3,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 3
+      }
+    },
+    {
+      "target": "Q93204",
+      "relation": "R136",
+      "status": "truncated",
+      "baseline_sources": 3,
+      "candidate_sources": 104,
+      "dev_predicted_pairs": 5,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 5
+      }
+    },
+    {
+      "target": "Q1048902",
+      "relation": "R413",
+      "status": "truncated",
+      "baseline_sources": 10,
+      "candidate_sources": 111,
+      "dev_predicted_pairs": 4,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 4
+      }
+    },
+    {
+      "target": "Q6895044",
+      "relation": "R404",
+      "status": "truncated",
+      "baseline_sources": 19,
+      "candidate_sources": 120,
+      "dev_predicted_pairs": 2,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 2
+      }
+    },
+    {
+      "target": "Q11399",
+      "relation": "R136",
+      "status": "truncated",
+      "baseline_sources": 19,
+      "candidate_sources": 120,
+      "dev_predicted_pairs": 4,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 4
+      }
+    },
+    {
+      "target": "Q49085",
+      "relation": "R172",
+      "status": "truncated",
+      "baseline_sources": 7,
+      "candidate_sources": 107,
+      "dev_predicted_pairs": 3,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 3
+      }
+    },
+    {
+      "target": "Q8341",
+      "relation": "R136",
+      "status": "truncated",
+      "baseline_sources": 17,
+      "candidate_sources": 118,
+      "dev_predicted_pairs": 2,
+      "baseline_refusals": {
+        "uncertain relation": 1,
+        "this snapshot has multiple answers; narrow the question": 1
+      }
+    },
+    {
+      "target": "Q37073",
+      "relation": "R136",
+      "status": "truncated",
+      "baseline_sources": 16,
+      "candidate_sources": 117,
+      "dev_predicted_pairs": 5,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 4,
+        "uncertain relation": 1
+      }
+    },
+    {
+      "target": "Q11366",
+      "relation": "R136",
+      "status": "truncated",
+      "baseline_sources": 5,
+      "candidate_sources": 106,
+      "dev_predicted_pairs": 2,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 2
+      }
+    },
+    {
+      "target": "Q6607",
+      "relation": "R1303",
+      "status": "truncated",
+      "baseline_sources": 22,
+      "candidate_sources": 123,
+      "dev_predicted_pairs": 1,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 1
+      }
+    },
+    {
+      "target": "Q362",
+      "relation": "R607",
+      "status": "truncated",
+      "baseline_sources": 14,
+      "candidate_sources": 115,
+      "dev_predicted_pairs": 2,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 2
+      }
+    },
+    {
+      "target": "Q226730",
+      "relation": "R136",
+      "status": "truncated",
+      "baseline_sources": 13,
+      "candidate_sources": 114,
+      "dev_predicted_pairs": 2,
+      "baseline_refusals": {
+        "this snapshot has multiple answers; narrow the question": 2
+      }
+    }
+  ],
+  "queried_pairs": 18,
+  "all_already_multiple": true,
+  "dev_predictions_matching_queried_pairs": 80,
+  "scope": "Post-evaluation diagnostic only; frozen selection unchanged. Adding edges to already multiple-answer relations cannot make the inherited unique-answer API return a new singleton."
+}

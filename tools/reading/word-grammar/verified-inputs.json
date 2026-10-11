@@ -1,0 +1,124 @@
+{
+  "verified_utc": "2026-10-11T06:43:19.599538+00:00",
+  "inputs": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/bnc_spoken.train": {
+      "bytes": 4884146,
+      "sha256": "e932ab5c552c8205aad28880c52a610d929c6f90f5b24d52b790f7e7d2df8d21"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/childes.train": {
+      "bytes": 15485295,
+      "sha256": "8095a2aa318e51c40ee10fa28ea311025a5879f42b23289268cf00447b796bfc"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/gutenberg.train": {
+      "bytes": 14001510,
+      "sha256": "9f151d44847f257232f00724f541f429265710ca1c7e02ac37edf2ff84bdb4c3"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/open_subtitles.train": {
+      "bytes": 10828244,
+      "sha256": "72a0be59362c41c8681a08403feead3b7d100f8a8a7e6ff664c6aae93e4dfa74"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/simple_wiki.train": {
+      "bytes": 8432882,
+      "sha256": "e0a80b05c9521c6080c2b30fa92870e0e02f7c23d15d73218043d2236db96e05"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/switchboard.train": {
+      "bytes": 719322,
+      "sha256": "65d6dee919f28386a907842ada3bf56dde4eb961f4e6e56e1529500c1d6ec0a4"
+    },
+    "/home/gsc/.cache/glassmind/grow-fast-20261010/reading-data/grammar.jsonl": {
+      "bytes": 210468,
+      "sha256": "37ad0a1eba3a9cd9c5eae850973c376b5e32a7968ecb95833eb2d32115f6304b"
+    },
+    "/home/gsc/.cache/glassmind/grow-fast-20261010/reading-data/reading.jsonl": {
+      "bytes": 14854,
+      "sha256": "66b0c802ea52161fbf819770697f96e6f0aa5e1f9aeab836681f0b8c49f30983"
+    },
+    "/home/gsc/code/sememe/data/babylm/train_10M.zip": {
+      "bytes": 18139949,
+      "sha256": "6d9d2cb3b3feccf0669e74173edb55de6c7f12412ee02935d16b1b6b44160b39"
+    },
+    "/home/gsc/code/sememe/data/babylm/README.md": {
+      "bytes": 3589,
+      "sha256": "20d4993f0f36a965add35cbf0554cbb42b131f60f29bd80db16ab56a3f40c9c0"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/crates/reading/Cargo.toml": {
+      "bytes": 470,
+      "sha256": "3dc318e094f77ad798a6967b0628993236b87f2de14ea62aad54b09d2079797d"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/crates/reading/src/probability.rs": {
+      "bytes": 7619,
+      "sha256": "de905ee5e83bbfeb71912cedcf8f3c0875e65cfa1c7ac83a541f98c8c7ce1096"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/crates/reading/src/bin/reading-probability.rs": {
+      "bytes": 6707,
+      "sha256": "4dfceef46a971a7fa7ccbd238a2c1bfc663d3c87bd9717a6182d76ac95ce49ec"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/tools/reading/PREREGISTERED.md": {
+      "bytes": 1898,
+      "sha256": "b6729fbd2c5a0a6e341906cc407638df28ebdf0c4a5db7074c6e2cdef9b328fc"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/tools/reading/audit-overlap.py": {
+      "bytes": 1098,
+      "sha256": "b8946100c852672a4de9407cb9c43870ae5bf36fcd4e412468de3bcee68fb132"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/tools/reading/measure.py": {
+      "bytes": 836,
+      "sha256": "8eec7190fc5513f7a8752e83740a9ee7ab7a7dc92bbe0b1d436652e4fdfc734d"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/tools/reading/prepare.py": {
+      "bytes": 1672,
+      "sha256": "5b2d7382147f923b5ad3f7ff0347b85afd51ccbb8de6b54487c7b99b438a52e1"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/wordgrammar/tools/reading/reproduce.sh": {
+      "bytes": 2150,
+      "sha256": "3e92134bc826029694f1cc579b903c03372f13c1882105b240806efedc66c7cb"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/byte6.bin": {
+      "bytes": 68861296,
+      "sha256": "fb187a60997ea56bb9433f1e9ccd9ab81c571d519e648523750277b865999c93"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/reading-run/probability/grammar-full.json": {
+      "bytes": 46427,
+      "sha256": "7d33a6a508b9eb7c41b3575fadbeaa969585ff6abb62212dcfd8f546e9a55ce6"
+    }
+  },
+  "retained_baseline": {
+    "bytes": 0,
+    "documents": 0,
+    "documents_equal_bits": 0,
+    "documents_higher_bits": 0,
+    "documents_lower_bits": 0,
+    "pairs": 1340,
+    "sixgram": {
+      "bad": 633,
+      "bits": 0.0,
+      "bits_per_byte": null,
+      "good": 707,
+      "ties": 0
+    },
+    "transitions": [
+      [
+        393,
+        185,
+        0
+      ],
+      [
+        246,
+        333,
+        0
+      ],
+      [
+        68,
+        115,
+        0
+      ]
+    ],
+    "unigram": {
+      "bad": 579,
+      "bits": 0.0,
+      "bits_per_byte": null,
+      "good": 578,
+      "ties": 183
+    }
+  }
+}

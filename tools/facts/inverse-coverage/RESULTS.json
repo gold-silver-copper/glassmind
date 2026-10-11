@@ -1,0 +1,155 @@
+{
+  "all_changed": [],
+  "all_new_wrong": [],
+  "all_old_correct_lost": [],
+  "decision": "rejected; evidence only, no deployment or default replacement",
+  "fetch": {
+    "elapsed_seconds": 291.14969256543554,
+    "finished_utc": "2026-10-11T06:50:02.879551+00:00",
+    "minimum_request_start_spacing": 5.001444495050237,
+    "new_decompressed_bytes": 1117488,
+    "requests": 19,
+    "started_utc": "2026-10-11T06:45:11.725342+00:00",
+    "statuses": {
+      "missing": 1,
+      "not_requested": 81,
+      "truncated": 18
+    },
+    "stop_reason": "first failure: The read operation timed out"
+  },
+  "full": {
+    "accepted": false,
+    "gates": {
+      "exact_alias_links": true,
+      "joint_at_least_7": false,
+      "no_new_joint_wrong": true,
+      "precision_not_worse": true,
+      "relocated_byte_identical": true,
+      "retained_old_joint_correct": true,
+      "standalone_talk_ids_equal": true
+    },
+    "hazards": 0,
+    "results": {
+      "baseline": {
+        "answer": {
+          "refused": 2712,
+          "right": 47,
+          "wrong": 62
+        },
+        "joint": {
+          "refused": 2712,
+          "right": 2,
+          "wrong": 107
+        }
+      },
+      "candidate": {
+        "answer": {
+          "refused": 2712,
+          "right": 47,
+          "wrong": 62
+        },
+        "joint": {
+          "refused": 2712,
+          "right": 2,
+          "wrong": 107
+        }
+      }
+    },
+    "total": 2821,
+    "transitions": {
+      "answer": {
+        "refused->refused": 2712,
+        "right->right": 47,
+        "wrong->wrong": 62
+      },
+      "joint": {
+        "refused->refused": 2712,
+        "right->right": 2,
+        "wrong->wrong": 107
+      }
+    },
+    "valid": {
+      "bytes": 173187,
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv",
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    }
+  },
+  "graph": {
+    "base_aliases_preserved": true,
+    "base_claim_lists_preserved_as_prefix": true,
+    "base_entities": 999,
+    "candidate_entities": 2734,
+    "independent_edges": 1818,
+    "new_aliases_empty": true,
+    "new_nodes": 1735
+  },
+  "limitations": [
+    "Main WDQS endpoint only; all incomplete/truncated sets remain incomplete.",
+    "Sampled statement witnesses; no temporal/qualifier truth or global uniqueness guarantee.",
+    "Optional numeric revisions may be absent; exact raw replies and request timestamps retained.",
+    "Two pre-DEV local parser corrections, no additional budget or DEV tuning.",
+    "No held-out access; baseline999 is rejected experimental series, unrelated to historical500."
+  ],
+  "sample": {
+    "accepted": false,
+    "gates": {
+      "exact_alias_links": true,
+      "joint_at_least_7": false,
+      "no_new_joint_wrong": true,
+      "precision_not_worse": true,
+      "relocated_byte_identical": true,
+      "retained_old_joint_correct": true,
+      "standalone_talk_ids_equal": true
+    },
+    "hazards": 0,
+    "results": {
+      "baseline": {
+        "answer": {
+          "refused": 191,
+          "right": 3,
+          "wrong": 6
+        },
+        "joint": {
+          "refused": 191,
+          "right": 0,
+          "wrong": 9
+        }
+      },
+      "candidate": {
+        "answer": {
+          "refused": 191,
+          "right": 3,
+          "wrong": 6
+        },
+        "joint": {
+          "refused": 191,
+          "right": 0,
+          "wrong": 9
+        }
+      }
+    },
+    "total": 200,
+    "transitions": {
+      "answer": {
+        "refused->refused": 191,
+        "right->right": 3,
+        "wrong->wrong": 6
+      },
+      "joint": {
+        "refused->refused": 191,
+        "wrong->wrong": 9
+      }
+    },
+    "valid": {
+      "bytes": 173187,
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv",
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    }
+  },
+  "selection": {
+    "bytes": 17699,
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/inversefacts/tools/facts/inverse-coverage/selection.json",
+    "sha256": "e83ebf84d3574b2fcea42254bfb65fc4077a5d6250e9317b65f35c8933af0a45"
+  },
+  "source": "b569ac0eb0bab5a8b9d39cda904c816e77c08e63"
+}

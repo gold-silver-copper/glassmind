@@ -2,10 +2,11 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. PR20 verified
-ask-apply fix is merged; all 765 coding outcomes were preserved. Relative-rate
-evidence has been independently reviewed and its restored worktree removed.
-Two prospective workers are running: word grammar and incoming facts coverage.
+Goal active: follow `prompts/grow-continuously.md` until stopped. Prior turn made
+progress: PR21 merged and new experiments started. This turn completed independent
+reviews of rejected word grammar and partial inverse facts acquisition, archived
+originals and removed their restored worktrees/auth links. New implementation and
+explicit fact-set product experiments are active; no accepted runtime change yet.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -26,6 +27,10 @@ Do not repeat PR19 checks/merge. PR20 MERGED 5680e9beaf62f7c8c816d27fdc8916aeb17
 at 2026-10-11T06:39:03Z, exact head b569ac0eb0bab5a8b9d39cda904c816e77c08e63,
 CI38118678678 SUCCESS. Runtime336d5f9 (askapply) fully verified. Do not repeat
 PR20 checks, full765 regression or merge.
+PR21 MERGED a2a74918022472a3fa903030af630d847b491685 at2026-10-11T06:45:37Z,
+exact head12934256db0c5dd0226568c7af4a7444f03b11e8, CI38119019617SUCCESS.
+Rejected relative-rate evidence and parent role audit published; no runtime change.
+Do not repeat PR21 checks/merge.
 
 
 
@@ -77,7 +82,7 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens77,824,724 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens81,661,371 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,
@@ -215,32 +220,69 @@ generator contrarytooverbroadcommonbrief. No hiddenevaluationmaterial reported;
 launcherfuturewording clarified toforbidhiddenevaluationgenerators whilepermitting
 publicauthoreddevtests, consistentwithactivatedgoal. Keeporiginaldisclosure.
 
-WORDGRAMMAR RUNNING, PID3372074, scopeglassmind-continuous-wordgrammar.scope,
-branchcontinuous/wordgrammar atb569ac0, worktreeWORK/wordgrammar, runWORK/wordgrammar-run, briefWORK/wordgrammar-task.txt. Own new word_probability.rs,
-new reading-word-probability binary and tools/reading/word-grammar only; existing
-byte scorer/QA untouched. Classical word trigram trained on six BabyLM TRAIN
-members; freeze tokenizer/vocab/smoothing before DEV. Fixed first20/full1340,
-accept >=747 good preferences (>=40 above byte707). No post-DEV tuning, no token
-perplexity presented as byte likelihood. Model<=150MiB, all rawmodel/data outsidegit.
+WORDGRAMMAR COMPLETE/REJECTED: 734good603bad3ties/1340 versus byte707/633/0;
+fixed gate>=747 failed. Transitions551goodretained,156regressions,183newgood;
+30groupsimprove/25regress/12equal. One frozen TRAIN-only word3 model, no retuning.
+Parent14frozen+20inputidentities verified, four offline replay files byte-identical,
+all1340decisions/67groups checked. Independent persisted-count reader scanned
+6,227,234 entries and matched12sampledDEV+4fresh scores to1e-10. No retraining or
+repeatedfullinference. Original26files/709,800bytes archived WORK/wordgrammar-run/
+submitted, archive-manifest adjacent; reverified before restoredworktree removal.
+Scopeinactive/authunlinked. Evidence tools/reading/word-grammar inclPARENT.md,
+parent-review.json,parent-independent.json,parent-count-audit.py. Rawparent
+WORK/coordinator/wordgrammar-review. Model125,312,749bytes SHA5a28d340062003fb1962d931b595abd10cf049b3cd762700be973beae6ed14f5;
+binary8d354c78f6e8bde1518d6ead517275230166d90812c24a69f885eff6ac8353ee.
+Productionbyte707point recorded at79,437,602tokens; rejected734 notcharted.
 
-INVERSEFACTS RUNNING, PID3372721, scopeglassmind-continuous-inversefacts.scope,
-branchcontinuous/inversefacts atb569ac0, worktreeWORK/inversefacts,
-runWORK/inversefacts-run, briefWORK/inversefacts-task.txt. Own tools/facts/inverse-coverage
-only; frozen runtime/aliases/model/scorers. Select top100 incoming entity/property
-pairs by TRAIN-fit frequency within frozen999subjects; never select by DEV or use
-goldanswers as claims. Sequential primary Wikidata queries <=110requests/600seconds/
-20MiB, >=5seconds apart; honor limits. Append actual incoming edges and aliasless
-neighbors to opt-in snapshot. First200/full2821; gate >=7 joint correct (baseline2),
-preservebotholdjointcorrect and no newjointwrong fromcorrect/refused. All answer-only
-and joint transitions and standalone/talk equivalence required. Missing/truncated
-queries remain explicit, no claim of global/temporal uniqueness.
+INVERSEFACTS COMPLETE/REJECTED PARTIAL: original100TRAIN-selectedpairs frozen;
+18truncated101-subjectresponses, request19timeout,81notrequested. No retryafter
+networkfailure. Two localparsercorrections preserved (statementIDcase/endpointIRI
+ordering), originalbudgets retained. 1,117,488newCC0bytes/291.154209seconds.
+1818witnessededges incl1old,1817newclaims/1735aliaslessnodes; all999base records
+unchanged. Full2821standalonepredictions byte-identical, answer47/2712/62 and
+joint2/2712/107 unchanged; gatejoint>=7 failed. No newbundle/default deployed.
+Parent130artifactidentities/20freeze/selection/independentrawedge reconstruction,
+7offlinetests, sample200/full2821totals/standalone-talkID equality/relocation verified.
+No repeatedinference/network. All18queriedpairs ALREADYhad2..67matches; they match
+80DEVpredictions(76multipleanswerrefusals,4uncertainrelation). Moreedges cannotmake
+these setsunique; this motivated separate explicitset product capability below.
+Original10files77,808bytes archived WORK/inversefacts-run/submitted, reverified
+before restoredworktree removal; scopeinactive/authunlinked. Evidence now
+ tools/facts/inverse-coverage inclPARENT.md,parent-review.json,coverage-diagnostic.json,
+parent-audit.py; rawWORK/coordinator/inversefacts-review. Newdata noteddata/README.
+Knowncompletedworker tokens81,661,371 inclcachedonce; parent/unfinished excluded.
 
-Both workers confirmed forced Astra fast/ChatGPT, API-key environment stripped,
-8GiB memory/zero swap, owned worktrees/authlinks. Two of four worker slots used.
-No parent benchmark jobs. Next: publish relative-rate rejection evidence; review
-worker submissions after terminal state, archive originals BEFORE integration or
-cleanup, verify results and only ship passing candidates. No blocker; goal active.
-Preserve old stopped dirty loop.
+IMPLEMENT RUNNING (assembling rejected handoff), PID3380603,
+scopeglassmind-continuous-implement.scope, branchcontinuous/implement at35d3ea8,
+worktreeWORK/implement/runWORK/implement-run, briefWORK/implement-task.txt.
+Own world-rust implementationAPI, Englishbridge, minimalmainCLIrouting, authored
+fixtures/tools/coding-implement. Type-directed native std pipelines, no English/
+docs/testanswers into generator, scratch nonempty originaltests, boundedsearch,
+refuse multiple passing candidates. Worker reports sample3/3, authored20/20 with
+6implementations14saferefusals,76scopedtests; initial1secondtimeoutgrace correctedto10
+and sample rerun with originalevidence retained. Extraabsentcargo refusalsafe.
+TRAINsyntax audit0/60 accepted (backticknames/otherlanguage unsupported); worker
+rejects fixed parent>=177full765gate asunattainable and has archived/reverted
+runtime. No full765run or newcodinggain claimed. Await terminalhandoff, archive
+original and independentlyreview BEFORE anycleanup/reuse. Prospective nextbatch
+can repair languagebridge/reuse typedproposer under SAME>=177/preserve174/0failgate,
+with publicTRAINrequest coveragechecked BEFORE newcandidate implementation.
+
+FACTSETS RUNNING, PID3403711, scopeglassmind-continuous-factsets.scope,
+branchcontinuous/factsets at35d3ea8, worktreeWORK/factsets, runWORK/factsets-run,
+briefWORK/factsets-task.txt. Own factsnewboundedsetAPI,talk_facts.rs,minimal everyday.rs,
+newtools/facts/sets anddoc; no main.rs conflict. Explicit natural list-answers prefix
+selectssetmode, unchangedalias/relationproposer onquestion remainder. Max10sorted
+uniqueactualIDs withtotals/truncation/snapshotprovenance; no completeworldclaim.
+LegacyStore::answer/defaulttalk/2821predictions mustremainbyte-identical; allauthored
+positive/refusal/sessioncontracts required. Newproductcoverage, notbenchmarkgain.
+No newdownloads/LLMs/models; onlyexistingreadonlydefault500/TRAIN999bundles.
+
+Two live workers, both forced Astra fast/ChatGPT, API-key environment stripped,
+8GiB/0swap. No parent jobs; independent word count audit session97521 COMPLETE.
+Next: publish reviewed grammar/inverse evidence; inspect implementation terminal
+submission; reviewfactsets and only ship passing candidates after affectedfullDEV
+and relevantregressions. No blocker; goal active. Preserve old stopped dirty loop.
 
 ## Historical checkpoints (superseded by current state above)
 

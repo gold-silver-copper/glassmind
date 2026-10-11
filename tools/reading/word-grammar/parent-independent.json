@@ -1,0 +1,150 @@
+{
+  "checks": 16,
+  "count_orders": [
+    15313949,
+    15313949,
+    15313949
+  ],
+  "documents": 1179014,
+  "tokens": 14134935,
+  "vocabulary": 69156,
+  "entries": 6227234,
+  "model_sha256": "5a28d340062003fb1962d931b595abd10cf049b3cd762700be973beae6ed14f5",
+  "sampled_cost_checks": [
+    {
+      "source": {
+        "dev_row": 1,
+        "side": "good"
+      },
+      "independent_bits": 120.9185995115763,
+      "saved_or_rust_bits": 120.9185995115763
+    },
+    {
+      "source": {
+        "dev_row": 1,
+        "side": "bad"
+      },
+      "independent_bits": 122.12225102940387,
+      "saved_or_rust_bits": 122.12225102940387
+    },
+    {
+      "source": {
+        "dev_row": 20,
+        "side": "good"
+      },
+      "independent_bits": 112.35776607281717,
+      "saved_or_rust_bits": 112.35776607281717
+    },
+    {
+      "source": {
+        "dev_row": 20,
+        "side": "bad"
+      },
+      "independent_bits": 114.4601299693954,
+      "saved_or_rust_bits": 114.4601299693954
+    },
+    {
+      "source": {
+        "dev_row": 234,
+        "side": "good"
+      },
+      "independent_bits": 58.447122679088146,
+      "saved_or_rust_bits": 58.447122679088146
+    },
+    {
+      "source": {
+        "dev_row": 234,
+        "side": "bad"
+      },
+      "independent_bits": 62.795428926461064,
+      "saved_or_rust_bits": 62.795428926461064
+    },
+    {
+      "source": {
+        "dev_row": 501,
+        "side": "good"
+      },
+      "independent_bits": 121.80008539942595,
+      "saved_or_rust_bits": 121.80008539942595
+    },
+    {
+      "source": {
+        "dev_row": 501,
+        "side": "bad"
+      },
+      "independent_bits": 110.51025332558444,
+      "saved_or_rust_bits": 110.51025332558444
+    },
+    {
+      "source": {
+        "dev_row": 1000,
+        "side": "good"
+      },
+      "independent_bits": 88.68910592584096,
+      "saved_or_rust_bits": 88.68910592584096
+    },
+    {
+      "source": {
+        "dev_row": 1000,
+        "side": "bad"
+      },
+      "independent_bits": 87.89427885819804,
+      "saved_or_rust_bits": 87.89427885819804
+    },
+    {
+      "source": {
+        "dev_row": 1340,
+        "side": "good"
+      },
+      "independent_bits": 138.4174870849116,
+      "saved_or_rust_bits": 138.4174870849116
+    },
+    {
+      "source": {
+        "dev_row": 1340,
+        "side": "bad"
+      },
+      "independent_bits": 130.2800827795827,
+      "saved_or_rust_bits": 130.2800827795827
+    },
+    {
+      "source": {
+        "fresh_text": ""
+      },
+      "independent_bits": 6.424859065138465,
+      "saved_or_rust_bits": 6.424859065138465
+    },
+    {
+      "source": {
+        "fresh_text": "\u00c9lan can't jump!"
+      },
+      "independent_bits": 37.73148391763567,
+      "saved_or_rust_bits": 37.73148391763567
+    },
+    {
+      "source": {
+        "fresh_text": "\tA   cat\n"
+      },
+      "independent_bits": 27.083113859224497,
+      "saved_or_rust_bits": 27.083113859224497
+    },
+    {
+      "source": {
+        "fresh_text": "quuxxyzzy \ud83d\udc19"
+      },
+      "independent_bits": 18.017611404398714,
+      "saved_or_rust_bits": 18.017611404398714
+    }
+  ],
+  "transitions": {
+    "bad -> good": 183,
+    "good -> good": 551,
+    "bad -> bad": 449,
+    "bad -> tie": 1,
+    "good -> bad": 154,
+    "good -> tie": 2
+  },
+  "rows": 1340,
+  "groups": 67,
+  "scope": "Independent persisted-count Witten-Bell arithmetic on 12 saved costs and 4 fresh strings; all saved decisions/ordering/finite values audited. No retraining or repeated full inference."
+}
