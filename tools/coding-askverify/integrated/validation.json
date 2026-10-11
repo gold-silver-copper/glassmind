@@ -1,0 +1,51 @@
+{
+  "source": "336d5f9",
+  "binary_sha256": "3dbbef685a95a397cae7c928630999e854115699e053f65722a933489168e873",
+  "worker_archive_files": 36,
+  "worker_archive_bytes": 278578,
+  "original_fixture_files_rehashed": 11,
+  "authored_contracts": {
+    "baseline": 7,
+    "candidate": 20,
+    "total": 20
+  },
+  "parent_sample": 4,
+  "parent_primary": 16,
+  "parent_supplement": 4,
+  "independent_parent_contracts": 3,
+  "preview_outputs_byte_identical": 6,
+  "cli_unit_tests": 10,
+  "original_behavior_test": 1,
+  "workspace_fmt": true,
+  "workspace_all_target_clippy": true,
+  "release_build": true,
+  "strict_fixture_smoke": 4,
+  "memory": 41,
+  "calculations": 27,
+  "stories": 47,
+  "full_dev": {
+    "source": "336d5f9",
+    "binary_sha256": "3dbbef685a95a397cae7c928630999e854115699e053f65722a933489168e873",
+    "total": 765,
+    "baseline_sha256": "284d386d16e15a187fd842f11a0514f5d34536dc80cd6de86ad7437737b32f6d",
+    "candidate_sha256": "8218bc544bd292f897d4a9ff7365b50b8314e13b12b6cee8d696a8718a2e1da1",
+    "baseline": {
+      "pass_count": 174,
+      "refused": 591,
+      "failed": 0
+    },
+    "candidate": {
+      "pass_count": 174,
+      "refused": 591,
+      "failed": 0
+    },
+    "changed": [],
+    "all_previous_passes_retained": true,
+    "all_outcomes_identical": true
+  },
+  "limits": [
+    "Uses existing world build verification for renames; not a behavioral equivalence proof.",
+    "No crash-atomicity, restoration-failure or session-save filesystem fault injection.",
+    "A failed application can leave an older proposal retryable under existing session rules."
+  ]
+}

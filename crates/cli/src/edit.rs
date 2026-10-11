@@ -1,8 +1,4 @@
-//! Showing and applying a proposed edit. Files are only written with
-//! `--apply`, and nothing is ever committed.
-
-use std::collections::BTreeMap;
-use std::path::PathBuf;
+//! Showing proposed edits and applying ask renames through the verified world.
 
 use glassmind_answer::{Change, Response};
 
@@ -32,96 +28,219 @@ pub fn describe(changes: &[Change]) -> String {
         .join("\n")
 }
 
-/// Applies every change, or none: each spot must still hold the old name.
-/// `roots` maps a source name to its directory.
-pub fn apply(changes: &[Change], roots: &BTreeMap<String, PathBuf>) -> Result<usize, String> {
-    let mut by_file: BTreeMap<PathBuf, Vec<&Change>> = BTreeMap::new();
-    for c in changes {
-        let root = roots
-            .get(&c.source)
-            .ok_or_else(|| format!("unknown source {}", c.source))?;
-        by_file.entry(root.join(&c.file)).or_default().push(c);
+/// Apply only the rename proposals historically supported by `ask --apply`.
+/// The world owns rule gating, stale checks, cargo verification and rollback.
+pub fn apply_rename(
+    system: &crate::System,
+    session: &mut glassmind_mind::Session<glassmind_world_rust::Rust>,
+    turn: &mut glassmind_mind::Turn<glassmind_world_rust::Rust>,
+) -> Result<(), String> {
+    use glassmind_meaning::Reply;
+    use glassmind_meaning::interface::{Language as _, World as _};
+    use glassmind_mind::Progress;
+
+    if changes(&crate::answer::response(&turn.reply)).is_none() {
+        return Ok(());
     }
-    // Check and rewrite every file in memory before writing any.
-    let mut rewritten = Vec::new();
-    for (path, mut file_changes) in by_file {
-        let text = std::fs::read_to_string(&path)
-            .map_err(|e| format!("cannot read {}: {e}", path.display()))?;
-        let mut lines: Vec<String> = text.split('\n').map(str::to_owned).collect();
-        // Later spots first, so earlier columns stay valid.
-        file_changes.sort_by_key(|c| std::cmp::Reverse((c.line, c.column)));
-        for c in file_changes {
-            let index = usize::try_from(c.line)
-                .unwrap_or(usize::MAX)
-                .wrapping_sub(1);
-            let line = lines
-                .get_mut(index)
-                .ok_or_else(|| format!("{}:{} no longer exists", path.display(), c.line))?;
-            let chars: Vec<char> = line.chars().collect();
-            let start = usize::try_from(c.column).unwrap_or(usize::MAX);
-            let old: Vec<char> = c.old.chars().collect();
-            let end = start.saturating_add(old.len());
-            if chars.get(start..end) != Some(old.as_slice()) {
-                return Err(format!(
-                    "{}:{}:{} no longer holds `{}`; nothing was changed",
-                    path.display(),
-                    c.line,
-                    c.column + 1,
-                    c.old
-                ));
-            }
-            let mut new_line: String = chars.get(..start).unwrap_or_default().iter().collect();
-            new_line.push_str(&c.new);
-            new_line.extend(chars.get(end..).unwrap_or_default().iter());
-            *line = new_line;
-        }
-        rewritten.push((path, lines.join("\n")));
+    let mut fired = Vec::new();
+    let result = system.world.apply(&turn.reply, &mut fired);
+    let error = result
+        .as_ref()
+        .err()
+        .map(|e| format!("could not make and verify the changes: {e:?}"));
+    let reply = result.unwrap_or_else(Reply::Trouble);
+    turn.progress = if error.is_some() {
+        Progress::Action
+    } else {
+        Progress::Done
+    };
+    // Keep any assumptions visible while replacing only the proposed action.
+    replace_proposal(&mut turn.reply, reply);
+    let said = system.english.say(&turn.reply);
+    turn.spoken = said.as_ref().map_or_else(
+        || format!("(I have no words for this reply: {:?})", turn.reply),
+        |said| said.text.clone(),
+    );
+    turn.trace.reply = Some(turn.reply.clone());
+    turn.trace.reply_rules = said.map_or_else(Vec::new, |said| said.rules);
+    if let Some(reading) = turn
+        .trace
+        .chosen
+        .and_then(|i| turn.trace.readings.get_mut(i))
+    {
+        reading.world_rules.extend(fired);
     }
-    for (path, text) in &rewritten {
-        std::fs::write(path, text).map_err(|e| format!("cannot write {}: {e}", path.display()))?;
+    if let Some(record) = session.turns.last_mut() {
+        record.reply = turn.reply.clone();
+        record.spoken = turn.spoken.clone();
     }
-    Ok(changes.len())
+    match error {
+        Some(error) => Err(error),
+        None => Ok(()),
+    }
+}
+
+fn replace_proposal(
+    proposal: &mut glassmind_meaning::Reply<glassmind_world_rust::Rust>,
+    result: glassmind_meaning::Reply<glassmind_world_rust::Rust>,
+) {
+    match proposal {
+        glassmind_meaning::Reply::Assuming { reply, .. } => replace_proposal(reply, result),
+        _ => *proposal = result,
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::System;
+    use glassmind_meaning::{Reply, Trouble};
+    use glassmind_mind::Session;
+    use glassmind_rules::Switches;
+    use glassmind_world_rust::checks::{RustChange, RustCheck};
+    use std::path::PathBuf;
 
-    fn change(line: u32, column: u32) -> Change {
-        Change {
-            source: "s".into(),
-            file: "lib.rs".into(),
-            line,
-            column,
-            old: "hp".into(),
-            new: "health".into(),
+    struct Fixture(PathBuf);
+    impl Fixture {
+        fn new(name: &str, files: &[(&str, &str)]) -> Self {
+            let root =
+                std::env::temp_dir().join(format!("askverify-{name}-{}", std::process::id()));
+            std::fs::create_dir_all(&root).unwrap();
+            for (file, text) in files {
+                let path = root.join(file);
+                std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+                std::fs::write(path, text).unwrap();
+            }
+            Self(root)
+        }
+        fn system(&self) -> System {
+            System::open(&[("public".into(), self.0.clone())], Switches::all_on())
+        }
+    }
+    impl Drop for Fixture {
+        fn drop(&mut self) {
+            let _ = std::fs::remove_dir_all(&self.0);
         }
     }
 
     #[test]
-    fn applies_every_change_or_none() {
-        let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../target/test-edit");
-        std::fs::create_dir_all(&dir).unwrap();
-        let file = dir.join("lib.rs");
-        std::fs::write(
-            &file,
-            "struct P { hp: u32 }\nfn f(p: P) -> u32 { p.hp + p.hp }\n",
-        )
-        .unwrap();
-        let roots = BTreeMap::from([("s".to_owned(), dir.clone())]);
-        // A spot that no longer holds `hp` stops the whole edit.
-        let stale = [change(1, 11), change(2, 0)];
-        assert!(apply(&stale, &roots).is_err());
-        assert!(
-            std::fs::read_to_string(&file)
-                .unwrap()
-                .contains("{ hp: u32 }")
-        );
-        let good = [change(1, 11), change(2, 22), change(2, 29)];
-        assert_eq!(apply(&good, &roots), Ok(3));
+    fn stale_multifile_proposal_preserves_every_current_byte() {
+        let first = "pub fn weigh() -> u32 { 7 }\n";
+        let second = "pub fn shipment() -> u32 { weigh() }\n";
+        let fixture = Fixture::new("stale", &[("a.rs", first), ("b.rs", second)]);
+        let system = fixture.system();
+        let mut session = Session::new(system.source_refs());
+        let mut turn = system.respond(&mut session, "rename function weigh to measure");
         assert_eq!(
-            std::fs::read_to_string(&file).unwrap(),
-            "struct P { health: u32 }\nfn f(p: P) -> u32 { p.health + p.health }\n"
+            changes(&crate::answer::response(&turn.reply))
+                .unwrap()
+                .len(),
+            2
         );
+        let stale = "pub fn shipment() -> u32 { other() }\n";
+        std::fs::write(fixture.0.join("b.rs"), stale).unwrap();
+        assert!(apply_rename(&system, &mut session, &mut turn).is_err());
+        assert_eq!(
+            std::fs::read_to_string(fixture.0.join("a.rs")).unwrap(),
+            first
+        );
+        assert_eq!(
+            std::fs::read_to_string(fixture.0.join("b.rs")).unwrap(),
+            stale
+        );
+        assert!(matches!(turn.reply, Reply::Trouble(_)));
+        assert_eq!(turn.trace.reply, Some(turn.reply.clone()));
+        assert_eq!(session.turns.last().unwrap().reply, turn.reply);
+    }
+
+    #[test]
+    fn nested_assumptions_keep_verified_result_and_clear_pending() {
+        let fixture = Fixture::new(
+            "assuming",
+            &[
+                (
+                    "Cargo.toml",
+                    include_str!("../../../tools/coding-askverify/fixtures/bounded/Cargo.toml"),
+                ),
+                (
+                    "src/lib.rs",
+                    include_str!("../../../tools/coding-askverify/fixtures/bounded/src/lib.rs"),
+                ),
+            ],
+        );
+        let system = fixture.system();
+        let mut session = Session::new(system.source_refs());
+        let mut turn = system.respond(&mut session, "rename struct Parcel to Package");
+        assert!(changes(&crate::answer::response(&turn.reply)).is_some());
+        let reading = session.turns.last().unwrap().meaning.clone().unwrap();
+        for _ in 0..2 {
+            turn.reply = Reply::Assuming {
+                reading: reading.clone(),
+                reply: Box::new(turn.reply),
+            };
+        }
+        apply_rename(&system, &mut session, &mut turn).unwrap();
+        let Reply::Assuming { reply, .. } = &turn.reply else {
+            panic!("lost outer assumption")
+        };
+        let Reply::Assuming { reply, .. } = reply.as_ref() else {
+            panic!("lost inner assumption")
+        };
+        assert!(
+            matches!(reply.as_ref(), Reply::Applied { check: Some(RustCheck::Build), problems, .. } if problems.is_empty())
+        );
+        assert!(session.pending().is_none());
+        assert_eq!(turn.trace.reply, Some(turn.reply.clone()));
+        assert_eq!(session.turns.last().unwrap().spoken, turn.spoken);
+        assert!(
+            turn.rules()
+                .iter()
+                .any(|rule| rule.id == "rust.apply.changes")
+        );
+        let yes = system.respond(&mut session, "yes");
+        assert!(matches!(yes.reply, Reply::Trouble(Trouble::NothingPending)));
+    }
+
+    #[test]
+    fn remedies_are_not_newly_auto_applied() {
+        let original = "pub fn weigh() -> u32 { 7 }\n";
+        let fixture = Fixture::new("remedy", &[("lib.rs", original)]);
+        let system = fixture.system();
+        let mut session = Session::new(system.source_refs());
+        let mut turn = system.respond(&mut session, "rename function weigh to measure");
+        let Reply::Proposal {
+            action:
+                glassmind_meaning::Action::Rename {
+                    thing: glassmind_meaning::Thing::Item(item),
+                    ..
+                },
+            ..
+        } = &turn.reply
+        else {
+            panic!("expected proposal")
+        };
+        let item = item.clone();
+        for left in [vec![], vec![item]] {
+            turn.reply = Reply::Remedy {
+                check: RustCheck::Build,
+                changes: vec![RustChange {
+                    source: "public".into(),
+                    file: "lib.rs".into(),
+                    line: 1,
+                    column: 7,
+                    old: "weigh".into(),
+                    new: "measure".into(),
+                }],
+                fixed: vec![],
+                left,
+            };
+            let before = turn.reply.clone();
+            apply_rename(&system, &mut session, &mut turn).unwrap();
+            assert_eq!(turn.reply, before);
+            assert_eq!(
+                std::fs::read_to_string(fixture.0.join("lib.rs")).unwrap(),
+                original
+            );
+        }
     }
 }

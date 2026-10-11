@@ -336,7 +336,14 @@ fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
         Some(path) => load_session(path, system.source_refs())?,
         None => Session::new(system.source_refs()),
     };
-    let turn = system.respond(&mut session, text);
+    let mut turn = system.respond(&mut session, text);
+    // Apply before rendering so JSON, trace and saved history describe the
+    // verified result rather than a proposal that is no longer pending.
+    let applied = if apply {
+        edit::apply_rename(&system, &mut session, &mut turn)
+    } else {
+        Ok(())
+    };
     if common.json {
         let outcome = answer::outcome("ask", &turn, answer::canonical(&system.english, &turn));
         say!(
@@ -358,23 +365,14 @@ fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
         if !common.json {
             say!("{}", edit::describe(&changes));
         }
-        if apply {
-            let roots = system
-                .world
-                .sources
-                .iter()
-                .map(|s| (s.name.clone(), s.root.clone()))
-                .collect();
-            let n = edit::apply(&changes, &roots)?;
-            say!("Applied {n} changes. Nothing was committed.");
-        } else if !common.json {
+        if !common.json {
             say!("(Nothing changed. Run the same request with --apply to make these changes.)");
         }
     }
     if let Some(path) = &common.session {
         save_session(path, &session)?;
     }
-    Ok(())
+    applied
 }
 
 // Both ordinary replies and exports use the same typed world operation.

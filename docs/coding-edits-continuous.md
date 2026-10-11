@@ -97,9 +97,10 @@ rename targets. These restrictions trade coverage for explicit bindings.
 External/downstream crates and name-reflection behavior are outside the closed
 source guarantee. Application verifies compilation, not arbitrary program
 semantics; the independent runtime/source checks provide additional evidence
-for these examples only. Existing `ask --apply` uses the CLI's older direct
-edit route; this worker did not change that route and makes no verification
-claim for it. Use `do` or `World::apply` for the verified path.
+for these examples only. At the time of this experiment, `ask --apply` used
+the CLI's older direct edit route. A later independently verified change now
+routes it through `World::apply`, with build checks and rollback:
+[current application contract](../tools/coding-askverify/PARENT.md).
 
 ## Provenance and reproduction
 

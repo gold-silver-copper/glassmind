@@ -1,0 +1,19 @@
+Running as unit: run-p3184965-i95439109.scope; invocation ID: 83323c9511e2410195e1bc2a39d4f395
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/askverify/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.47s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/askverify-run/target/debug/deps/glassmind-c8ba83345eb60d80)
+
+running 10 tests
+test edit::tests::remedies_are_not_newly_auto_applied ... ok
+test edit::tests::stale_multifile_proposal_preserves_every_current_byte ... ok
+test talk_facts::tests::accepts_distinct_bundles_and_rejects_swapped_assets ... ok
+test talk_facts::tests::labels_remain_display_only_and_must_match_the_index ... ok
+test talk_stories::tests::bounded_history_fails_closed ... ok
+test talk_stories::tests::replay_preserves_pronouns_and_has_deterministic_bytes ... ok
+test everyday::tests::story_focus_prevents_implicit_personal_memory_edits ... ok
+test everyday::tests::unresolved_correction_invalidates_story_across_restart ... ok
+test talk_stories::tests::unsupported_updates_block_stale_answers_even_after_restart ... ok
+test edit::tests::nested_assumptions_keep_verified_result_and_clear_pending ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
