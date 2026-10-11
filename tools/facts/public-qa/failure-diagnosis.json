@@ -1,0 +1,48 @@
+{
+  "newly_wrong_inverse_checks": [
+    {
+      "train_index": 350,
+      "correct_anchor_and_relation": true,
+      "local_cardinality": 1,
+      "annotated_answer_present": false
+    },
+    {
+      "train_index": 4080,
+      "correct_anchor_and_relation": true,
+      "local_cardinality": 1,
+      "annotated_answer_present": false
+    },
+    {
+      "train_index": 5090,
+      "correct_anchor_and_relation": true,
+      "local_cardinality": 1,
+      "annotated_answer_present": false
+    },
+    {
+      "train_index": 7680,
+      "correct_anchor_and_relation": true,
+      "local_cardinality": 1,
+      "annotated_answer_present": false
+    },
+    {
+      "train_index": 7990,
+      "correct_anchor_and_relation": true,
+      "local_cardinality": 1,
+      "annotated_answer_present": false
+    },
+    {
+      "train_index": 14190,
+      "correct_anchor_and_relation": true,
+      "local_cardinality": 1,
+      "annotated_answer_present": false
+    },
+    {
+      "train_index": 18660,
+      "correct_anchor_and_relation": true,
+      "local_cardinality": 1,
+      "annotated_answer_present": false
+    }
+  ],
+  "lost_correct_forward_missing": 2,
+  "note": "No score or annotation changed; this explains exact-annotation failures without asserting that alternative records are globally false."
+}

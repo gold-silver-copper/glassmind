@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-qa/predictor",
+    "predict-disk",
+    "--model",
+    "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+    "--database",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/native.sqlite"
+  ],
+  "seconds": 0.2167069159913808,
+  "returncode": 0,
+  "questions": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-qa/cal-questions.txt",
+    "bytes": 80196,
+    "sha256": "c1cb8845f5429c3d5af90d7b9f399cdc5f92c583bafcbb93838747645109150a"
+  },
+  "predictions": {
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-qa/cal-predictions.jsonl",
+    "bytes": 194766,
+    "sha256": "602ca8ec4cd82a92f5929fa9f0f49e866b4e40061731cc5719684542bbc60644"
+  }
+}
