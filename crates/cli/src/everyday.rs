@@ -70,6 +70,9 @@ fn respond(session: &mut Session, line: &str, model: Option<&IntentModel>) -> Ta
         || (matches!(reply, Reply::Missing { .. }) && session.stories.has_context()))
         && let Some(story) = session.stories.respond(line)
     {
+        // A story turn changes the conversational focus. A later bare
+        // correction must not overwrite an earlier name or preference.
+        session.memory.last_slot = None;
         return TalkReply::Story(story);
     }
     if matches!(reply, Reply::Refusal { .. })
@@ -180,5 +183,27 @@ mod tests {
         let value = serde_json::to_value(reply).unwrap();
         assert_eq!(value["kind"], "refusal");
         assert!(value["answer"].is_null());
+    }
+
+    #[test]
+    fn story_focus_prevents_implicit_personal_memory_edits() {
+        let mut session = Session::default();
+        session.stories.restore().unwrap();
+        respond(&mut session, "My name is Mira", None);
+        respond(&mut session, "Mary is in the kitchen.", None);
+        let mut restored: Session =
+            serde_json::from_str(&serde_json::to_string(&session).unwrap()).unwrap();
+        restored.stories.restore().unwrap();
+        respond(&mut restored, "Actually, it is the garden", None);
+        assert_eq!(restored.memory.name.as_ref().unwrap().value, "Mira");
+        assert_eq!(restored.memory.turn, 3);
+        assert_eq!(
+            serde_json::to_value(respond(&mut restored, "Where is Mary?", None)).unwrap()["kind"],
+            "refusal"
+        );
+        // An explicit personal-memory question establishes that focus again.
+        respond(&mut restored, "What is my name?", None);
+        respond(&mut restored, "Actually, it is Alice", None);
+        assert_eq!(restored.memory.name.as_ref().unwrap().value, "Alice");
     }
 }

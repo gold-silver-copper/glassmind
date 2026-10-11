@@ -63,7 +63,10 @@ Starting source: `e73f68c36e183b4060468cc6e752b8709f0662a0`.
 Coordinator integration also routes unresolved personal-memory replies through
 story invalidation when story context exists. This prevents an ambiguous
 “Actually, it is the garden” correction from preserving a stale location,
-while retaining the original clarification when no story exists. A focused
+while retaining the original clarification when no story exists. A story reply
+also clears the previous personal-memory focus, so a later bare correction
+cannot silently replace a name/preference from an earlier topic. Explicit
+name/preference statements and questions establish that focus again. A focused
 restart regression covers both cases. Exact evaluated
 binary SHA-256 values are in `talk-stories-evidence/*.json`.
 
