@@ -16,6 +16,10 @@ def main():
     root,binary=map(lambda p:Path(p).resolve(),sys.argv[1:])
     assert digest(binary)=='b0a86c031e6c83d81af3a5672391f6385b9ec7eb1205743d4d79a7c5677cded7'
     # This is the build that passed the frozen format1/2 compatibility checks.
+    reference=json.loads((root/'reference-report.json').read_text())
+    assert reference['source_rows']==789435443 and reference['files']==86 and reference['seconds']<600
+    assert reference['source_manifest_sha256']==digest(root/'acquisition.json')
+    assert reference['reference_sha256']==digest(root/'raw-reference.json')
     projection=json.loads((root/'projection-report.json').read_text())
     resources=json.loads((root/'projection-resources.json').read_text())
     assert resources['passed'] and resources['seconds']<14400
@@ -54,6 +58,9 @@ def main():
     with (root/'native-invocation.json').open('x') as f:
         f.write(json.dumps(dict(command=command,binary_sha256=digest(root/'candidate'),
                   manifest_sha256=digest(root/'source-manifest.json'),seconds_cap=21600,
+                  raw_reference_sha256=reference['reference_sha256'],
+                  reference_report_sha256=digest(root/'reference-report.json'),
+                  audit_seconds_remaining=int(3600-reference['seconds']),
                   output_bytes_cap=192*1024**3,added_run_bytes_cap=384*1024**3),indent=2)+'\n')
     print(json.dumps(dict(command=command,statements=projection['statements'],qualified=projection['qualified_statements'])),flush=True)
 

@@ -4,13 +4,11 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
-import re
 import resource
 import sqlite3
 import sys
 import time
 
-import pyarrow.parquet as pq
 
 
 def digest(path):
@@ -32,45 +30,44 @@ def main():
     numeric=readonly(root/'claims.sqlite')
     native=readonly(root/'native.sqlite')
     base=readonly(root.parent/'wikidata-native/native.sqlite')
+    invocation=json.loads((root/'native-invocation.json').read_text())
+    reference_report=json.loads((root/'reference-report.json').read_text())
+    assert digest(root/'reference-report.json')==invocation['reference_report_sha256']
+    assert digest(root/'raw-reference.json')==invocation['raw_reference_sha256']==reference_report['reference_sha256']
+    reference=json.loads((root/'raw-reference.json').read_text())
+    assert reference['schema']==1 and reference['source_rows']==789435443
+    samples_by_file={}
+    for sample in reference['samples']:samples_by_file.setdefault(sample['file'],[]).append(sample)
+    assert set(samples_by_file)=={f['path'] for f in manifest['files']}
     file_checks=[];witnesses=[];ranks=Counter();offset=0;statement_checks=0
-    for spec,prior in zip(manifest['files'],projection['files'],strict=True):
+    for spec,prior,raw in zip(manifest['files'],projection['files'],reference['files'],strict=True):
         assert spec==prior['source'] and spec['row_id_offset']==offset
+        assert all(raw[k]==spec[k] for k in ['path','sha256','bytes','source_rows','row_id_offset'])
         ranks.update(prior['ranks'])
-        path=root/'raw/claims'/spec['path']
-        assert path.stat().st_size==spec['bytes'] and digest(path)==spec['sha256']
-        raw=pq.ParquetFile(path)
-        assert raw.metadata.num_rows==spec['source_rows']
+        samples=samples_by_file[spec['path']]
         positions={0,spec['source_rows']-1,*range(0,spec['source_rows'],100003)}
-        within=checked=kept=0;first=None
-        for group in range(raw.num_row_groups):
-            nrows=raw.metadata.row_group(group).num_rows
-            wanted=sorted(p for p in positions if within<=p<within+nrows)
-            if wanted:
-                table=raw.read_row_group(group,columns=['id','property','datavalue.id','datatype','rank','snaktype','statement_id','qualifiers'],use_threads=False)
-                for ordinal in wanted:
-                    row=table.slice(ordinal-within,1).to_pylist()[0]
-                    row_id=offset+ordinal+1
-                    eligible=bool(re.fullmatch(r'Q[0-9]+',row['id'])) and row['rank'] in ('normal','preferred') and row['snaktype']=='value' and row['datatype']=='wikibase-item'
-                    a=numeric.execute('SELECT * FROM edges WHERE row_id=?',(row_id,)).fetchone()
-                    b=native.execute('SELECT * FROM statements WHERE source_row=?',(row_id,)).fetchone()
-                    if eligible:
-                        expected=(row_id,row['id'],row['property'],row['datavalue']['id'],int(row['rank']=='preferred'),int(bool(row['qualifiers'])),row['statement_id'])
-                        assert b==expected,(spec['path'],ordinal,b,expected)
-                        numbers=(row_id,*(int(x[1:]) for x in expected[1:4]),*expected[4:])
-                        assert a==numbers,(spec['path'],ordinal,a,numbers)
-                        assert native.execute('SELECT 1 FROM edges WHERE subject=? AND property=? AND object=?',expected[1:4]).fetchone()==(1,)
-                        kept+=1;statement_checks+=1
-                        if first is None:first=dict(file=spec['path'],ordinal=ordinal,row_id=row_id,subject=expected[1],property=expected[2],object=expected[3])
-                    else:
-                        assert a is None and b is None,(spec['path'],ordinal)
-                    checked+=1
-            within+=nrows
-        assert checked==len(positions)
+        assert len(samples)==len(positions) and {s['ordinal'] for s in samples}==positions
+        kept=0;first=None
+        for sample in sorted(samples,key=lambda s:s['ordinal']):
+            row_id=sample['row_id'];assert row_id==offset+sample['ordinal']+1
+            a=numeric.execute('SELECT * FROM edges WHERE row_id=?',(row_id,)).fetchone()
+            b=native.execute('SELECT * FROM statements WHERE source_row=?',(row_id,)).fetchone()
+            if sample['expected'] is not None:
+                expected=tuple(sample['expected']);assert expected[0]==row_id
+                assert b==expected,(spec['path'],sample['ordinal'],b,expected)
+                numbers=(row_id,*(int(x[1:]) for x in expected[1:4]),*expected[4:])
+                assert a==numbers,(spec['path'],sample['ordinal'],a,numbers)
+                assert native.execute('SELECT 1 FROM edges WHERE subject=? AND property=? AND object=?',expected[1:4]).fetchone()==(1,)
+                kept+=1;statement_checks+=1
+                if first is None:first=dict(file=spec['path'],ordinal=sample['ordinal'],row_id=row_id,subject=expected[1],property=expected[2],object=expected[3])
+            else:
+                assert a is None and b is None,(spec['path'],sample['ordinal'])
+        assert len(samples)==raw['samples'] and kept==raw['eligible']
         offset+=spec['source_rows']
-        file_checks.append(dict(path=spec['path'],samples=checked,eligible=kept))
+        file_checks.append(dict(path=spec['path'],samples=len(samples),eligible=kept))
         if first is not None:witnesses.append(first)
-        print(json.dumps(dict(file=spec['path'],samples=checked,eligible=kept,seconds=time.monotonic()-started)),flush=True)
-    assert offset==789435443
+        print(json.dumps(dict(file=spec['path'],samples=len(samples),eligible=kept,seconds=time.monotonic()-started)),flush=True)
+    assert offset==789435443 and len(reference['files'])==86
     observed_ranks={f'{a},{b}':n for a,b,n in native.execute('SELECT preferred,qualified,count(*) FROM statements GROUP BY preferred,qualified')}
     assert dict(ranks)==observed_ranks
     meta=dict(native.execute('SELECT key,value FROM metadata'));old_meta=dict(base.execute('SELECT key,value FROM metadata'))
@@ -105,7 +102,10 @@ def main():
     report=dict(files=file_checks,raw_samples=sum(f['samples'] for f in file_checks),statement_samples=statement_checks,
                 alias_samples=checked_names,entities=expected_entities,aliases=aliases,edges=distinct,ranks=observed_ranks,
                 query_plans=plans,database_bytes=(root/'native.sqlite').stat().st_size,database_sha256=digest(root/'native.sqlite'),
-                seconds=time.monotonic()-started,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+                reference_seconds=reference_report['seconds'],comparison_seconds=time.monotonic()-started,
+                seconds=reference_report['seconds']+time.monotonic()-started,
+                raw_reference_sha256=invocation['raw_reference_sha256'],
+                peak_rss_kib=max(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,reference_report['peak_rss_kib']),
                 limitation='Independent source/storage checks, not QA accuracy')
     assert report['seconds']<3600 and report['database_bytes']<192*1024**3
     (root/'audit-report.json').write_text(json.dumps(report,indent=2)+'\n')
