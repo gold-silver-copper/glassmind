@@ -15,6 +15,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("binary", type=pathlib.Path)
     parser.add_argument("output", type=pathlib.Path)
+    parser.add_argument("--command", choices=["chat", "talk"], default="chat")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     cases = [
@@ -48,7 +49,7 @@ def main():
 
     def run(rows, session=None):
         nonlocal checks
-        command = [str(args.binary.resolve()), "chat", "--json"]
+        command = [str(args.binary.resolve()), args.command, "--json"]
         if session:
             command += ["--session", str(session)]
         result = subprocess.run(command, input="\n".join(row[0] for row in rows) + "\n", text=True, capture_output=True, check=True)

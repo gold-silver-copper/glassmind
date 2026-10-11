@@ -1,8 +1,60 @@
-//! The basic conversation frontend, with typed memory and optional intent proposals.
+//! Conversation with typed memory, exact calculations and optional intent proposals.
 use std::io::{BufRead, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
-use glassmind_everyday::{Conversation, IntentModel};
+use glassmind_everyday::{Conversation, IntentModel, Reply};
+use glassmind_quantities::Answer;
+
+/// Preserve existing conversation JSON while exposing the calculation's typed result.
+#[derive(serde::Serialize)]
+#[serde(untagged)]
+enum TalkReply {
+    Conversation(Reply),
+    Calculation(Calculation),
+}
+
+#[derive(serde::Serialize)]
+#[serde(tag = "kind", rename = "calculated")]
+struct Calculation {
+    text: String,
+    value: String,
+    unit: Option<String>,
+    method: String,
+}
+
+impl TalkReply {
+    fn text(&self) -> &str {
+        match self {
+            Self::Conversation(reply) => reply.text(),
+            Self::Calculation(reply) => &reply.text,
+        }
+    }
+}
+
+fn respond(memory: &mut Conversation, line: &str, model: Option<&IntentModel>) -> TalkReply {
+    // Respond once so every utterance, including a calculation, participates in
+    // turn provenance and last-message recall. Explicit memory always wins.
+    let reply = memory.respond(line, model);
+    if matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
+        && let Answer::Answer {
+            value,
+            unit,
+            method,
+        } = glassmind_quantities::solve(line)
+    {
+        let text = match &unit {
+            Some(unit) => format!("{value} {unit}"),
+            None => value.clone(),
+        };
+        return TalkReply::Calculation(Calculation {
+            text,
+            value,
+            unit,
+            method,
+        });
+    }
+    TalkReply::Conversation(reply)
+}
 
 fn read<T: serde::de::DeserializeOwned>(path: &Path) -> Result<T, String> {
     let file = std::fs::File::open(path).map_err(|e| e.to_string())?;
@@ -65,7 +117,7 @@ pub fn run(session: Option<PathBuf>, model: Option<PathBuf>, json: bool) -> Resu
             )
             .map_err(|e| e.to_string())?;
         } else {
-            let reply = memory.respond(&line, model.as_ref());
+            let reply = respond(&mut memory, &line, model.as_ref());
             if json {
                 serde_json::to_writer(&mut output, &reply).map_err(|e| e.to_string())?;
                 writeln!(output).map_err(|e| e.to_string())?;

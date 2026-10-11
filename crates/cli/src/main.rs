@@ -66,7 +66,7 @@ struct Common {
 
 #[derive(Subcommand)]
 enum Command {
-    /// Basic conversation: names, preferences, corrections and message recall.
+    /// Conversation: memory, exact arithmetic, units and dates.
     Talk {
         /// Persist conversation memory between runs.
         #[arg(long)]
