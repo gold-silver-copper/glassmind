@@ -18,8 +18,8 @@ glassmind do ./my-library --session ./coding-task.json 'undo that change'
 glassmind do ./my-library --session ./coding-task.json 'show task'
 ```
 
-The default two-stage budget proposes and then applies through the existing Rust
-verifier. `--steps 1` stops after proposing; `continue`, `apply it` or `yes` executes
+The default four-stage budget proposes and applies through the existing Rust
+verifier. `--steps` accepts 1 through 8 semantic stages per invocation. `--steps 1` stops after proposing; `continue`, `apply it` or `yes` executes
 the saved task. It does not repeatedly retry a blocked or completed task. A saved
 repair with no remaining problems is already complete. `fix the tests` uses native
 test verification; some renames use a build check, which does not prove behavior
@@ -51,8 +51,30 @@ session per repository; the lock serializes one session file, not all programs
 that might edit the repository. Session state uses a separate format from
 `ask`/`chat` conversation files.
 
+## Ordered plans
+
+Separate up to four supported operations with `then` or semicolons:
+
+```sh
+glassmind do ./my-library --session ./coding-task.json --steps 8 \
+  'fix the tests; then rename function combine to sum; then check the tests'
+```
+
+Every clause must pass complete-request parsing before the first operation runs.
+The plan stores unresolved meanings, then resolves each operation against current
+code and conversation when it reaches that step. A rename followed by `rename it`
+therefore refers to the renamed item. Quoted delimiters remain part of the text.
+Unsupported or conditional clauses refuse the whole new plan before any edits.
+
+A proposal and its application each consume a stage; a read-only question uses
+one. `continue` resumes the recorded next stage after a restart. Each edit uses
+the existing native verifier. A failed check or blocked action stops the tail;
+completed earlier edits remain in place. There is no automatic retry. `show task`
+reports completed operations and the next clause. Undo restores only the last
+verified edit and cancels the remaining plan. Ordinary read-only questions can
+interrupt a pending plan without discarding it. A new action replaces the plan.
+
 Function implementation and add-field commands remain available through `do`
-without `--session`. Arbitrary multi-action plans, automatic retry strategies,
-choice among unresolved targets and general conversational constraints are not
-yet implemented by the task controller. This is the shared execution and context
-foundation for those capabilities.
+without `--session`. Conditional branches, automatic revision strategies, choice
+among unresolved targets and general conversational constraints are not yet
+implemented by the task controller. These remain work beyond ordered execution.

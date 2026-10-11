@@ -1,4 +1,5 @@
 //! Persistent coding tasks using the existing meaning, dialogue and Rust verifier.
+mod plans;
 use std::{
     collections::BTreeMap,
     fs,
@@ -38,6 +39,8 @@ struct CodingSession {
     revision: String,
     conversation: Session<Rust>,
     task: Option<Task<Rust>>,
+    #[serde(default)]
+    plan: Option<glassmind_mind::task::TaskPlan<Rust>>,
     /// Only files actually changed by the last successful action are retained.
     undo: BTreeMap<String, Option<Vec<u8>>>,
 }
@@ -175,6 +178,9 @@ fn say(system: &System, reply: &Reply<Rust>) -> String {
 }
 
 fn status(session: &CodingSession) -> String {
+    if let Some(plan) = &session.plan {
+        return plans::status(plan);
+    }
     session.task.as_ref().map_or_else(
         || "No coding task is recorded.".into(),
         |t| {
@@ -198,6 +204,9 @@ fn open(root: &Path) -> System {
 fn invalidate(session: &mut CodingSession, revision: String) {
     if let Some(task) = &mut session.task {
         task.status = TaskStatus::Stale;
+    }
+    if let Some(plan) = &mut session.plan {
+        plan.status = TaskStatus::Stale;
     }
     session.conversation.turns.clear();
     session.undo.clear();
@@ -289,10 +298,17 @@ fn apply(session: &mut CodingSession, path: &Path) -> Result<String, String> {
         });
     }
     save(path, session)?;
-    Ok(format!("{spoken}\n{}", status(session)))
+    if session.plan.is_some() {
+        Ok(spoken)
+    } else {
+        Ok(format!("{spoken}\n{}", status(session)))
+    }
 }
 
 fn undo(session: &mut CodingSession, path: &Path) -> Result<String, String> {
+    if let Some(plan) = &mut session.plan {
+        plan.status = TaskStatus::Cancelled;
+    }
     if session.undo.is_empty() {
         return Ok("No verified change is available to undo.".into());
     }
@@ -407,6 +423,7 @@ pub fn run(
             revision: revision.clone(),
             conversation: Session::new(system.source_refs()),
             task: None,
+            plan: None,
             undo: BTreeMap::new(),
         },
         Err(e) => return Err(e.to_string()),
@@ -414,6 +431,10 @@ pub fn run(
     if session.version != 1 || session.repository != root {
         return Err("session version or repository does not match".into());
     }
+    let interrupted_plan = session
+        .plan
+        .as_ref()
+        .is_some_and(|p| p.status == TaskStatus::Applying);
     let interrupted = session
         .task
         .as_ref()
@@ -422,17 +443,24 @@ pub fn run(
         .trim()
         .trim_end_matches(['.', '!'])
         .to_ascii_lowercase();
-    let message = if session.revision != revision || interrupted {
+    let message = if session.revision != revision || interrupted || interrupted_plan {
         invalidate(&mut session, revision);
         "Source changed or execution was interrupted. Context invalidated; repeat a fresh explicit request.".into()
     } else {
         match control.as_str() {
             "show task" | "task status" => status(&session),
             "continue" | "continue task" | "apply it" | "yes" | "yes please" => {
-                apply(&mut session, &path)?
+                if session.plan.is_some() {
+                    plans::resume(&mut session, &path, explain, steps)?
+                } else {
+                    apply(&mut session, &path)?
+                }
             }
             "undo" | "undo that change" | "undo the last change" => undo(&mut session, &path)?,
             "cancel task" | "stop" | "no" => {
+                if let Some(plan) = &mut session.plan {
+                    plan.status = TaskStatus::Cancelled;
+                }
                 if let Some(task) = &mut session.task {
                     task.status = TaskStatus::Cancelled;
                 }
@@ -447,62 +475,24 @@ pub fn run(
                 {
                     task.status = TaskStatus::Cancelled;
                 }
+                if let Some(plan) = &mut session.plan {
+                    plan.status = TaskStatus::Cancelled;
+                }
                 "This action is not yet supported in a persistent task. Use do without --session for function implementation or adding fields.".into()
             }
-            _ => {
-                // New input may correct the previous meaning, but cannot consent
-                // to a proposal by a path outside the journalled task executor.
-                for turn in &mut session.conversation.turns {
-                    if matches!(
-                        plain(&turn.reply),
-                        Reply::Proposal { .. } | Reply::Remedy { .. } | Reply::Clarify { .. }
-                    ) {
-                        turn.reply = Reply::Declined;
+            _ => match plans::clauses(text) {
+                Ok(Some(parts)) => plans::start(&mut session, &path, text, parts, explain, steps)?,
+                Ok(None) => request(&mut session, &path, text, explain, steps, false)?.message,
+                Err(error) => {
+                    if let Some(plan) = &mut session.plan {
+                        plan.status = TaskStatus::Cancelled;
                     }
-                }
-                let turn = system.respond(&mut session.conversation, text);
-                let mut message = if explain {
-                    format!("{}\n{}", turn.trace.render(), turn.spoken)
-                } else {
-                    turn.spoken.clone()
-                };
-                let meaning = session
-                    .conversation
-                    .turns
-                    .last()
-                    .and_then(|r| r.meaning.clone());
-                if !matches!(
-                    meaning,
-                    Some(Utterance::Ask(_) | Utterance::AskRecall | Utterance::AskReason)
-                ) && let Some(task) = &mut session.task
-                    && task.status == TaskStatus::Ready
-                {
-                    task.status = TaskStatus::Cancelled;
-                }
-                if let Some(Utterance::Command(action)) = meaning {
-                    session.task = Some(Task::proposed(
-                        action,
-                        text.to_owned(),
-                        plain(&turn.reply).clone(),
-                    ));
-                    let after = fingerprint(&snapshot(&root)?);
-                    if after != session.revision {
-                        invalidate(&mut session, after);
-                        save(&path, &session)?;
-                        return Err("source changed during proposal; task invalidated".into());
+                    if let Some(task) = &mut session.task {
+                        task.status = TaskStatus::Cancelled;
                     }
-                    save(&path, &session)?;
-                    if steps > 1 {
-                        message.push_str(&format!("\n{}", apply(&mut session, &path)?));
-                    } else {
-                        message.push_str(&format!(
-                            "\n{}\nUse continue to execute the recorded proposal.",
-                            status(&session)
-                        ));
-                    }
+                    format!("Cannot start plan: {error}. Pending actions cancelled.")
                 }
-                message
-            }
+            },
         }
     };
     if session.conversation.turns.len() > 64 {
@@ -517,6 +507,87 @@ pub fn run(
     }
     say!("{message}");
     Ok(())
+}
+
+struct RequestResult {
+    message: String,
+    meaning: Option<Utterance<Rust>>,
+    reply: Reply<Rust>,
+}
+
+fn request(
+    session: &mut CodingSession,
+    path: &Path,
+    text: &str,
+    explain: bool,
+    steps: u8,
+    within_plan: bool,
+) -> Result<RequestResult, String> {
+    let system = open(&session.repository);
+    // New input may correct the previous meaning, but cannot consent
+    // to a proposal by a path outside the journalled task executor.
+    for turn in &mut session.conversation.turns {
+        if matches!(
+            plain(&turn.reply),
+            Reply::Proposal { .. } | Reply::Remedy { .. } | Reply::Clarify { .. }
+        ) {
+            turn.reply = Reply::Declined;
+        }
+    }
+    let turn = system.respond(&mut session.conversation, text);
+    let mut message = if explain {
+        format!("{}\n{}", turn.trace.render(), turn.spoken)
+    } else {
+        turn.spoken.clone()
+    };
+    let meaning = session
+        .conversation
+        .turns
+        .last()
+        .and_then(|r| r.meaning.clone());
+    if !matches!(
+        meaning,
+        Some(Utterance::Ask(_) | Utterance::AskRecall | Utterance::AskReason)
+    ) && let Some(task) = &mut session.task
+        && task.status == TaskStatus::Ready
+    {
+        task.status = TaskStatus::Cancelled;
+    }
+    if !within_plan
+        && !matches!(
+            meaning,
+            Some(Utterance::Ask(_) | Utterance::AskRecall | Utterance::AskReason)
+        )
+    {
+        session.plan = None;
+    }
+    if let Some(Utterance::Command(action)) = meaning.clone() {
+        session.task = Some(Task::proposed(
+            action,
+            text.to_owned(),
+            plain(&turn.reply).clone(),
+        ));
+        let after = fingerprint(&snapshot(&session.repository)?);
+        if after != session.revision {
+            invalidate(session, after);
+            save(path, session)?;
+            return Err("source changed during proposal; task invalidated".into());
+        }
+        save(path, session)?;
+        if steps > 1 {
+            message.push_str(&format!("\n{}", apply(session, path)?));
+        } else if !within_plan {
+            message.push_str(&format!(
+                "\n{}\nUse continue to execute the recorded proposal.",
+                status(session)
+            ));
+        }
+    }
+    Ok(RequestResult {
+        message,
+        meaning,
+        reply: turn.reply,
+    })
 }
 
 #[cfg(test)]
@@ -712,7 +783,7 @@ mod tests {
                 "--session",
                 "state.json",
                 "--steps",
-                "3",
+                "9",
                 "fix tests"
             ])
             .is_err()
@@ -813,5 +884,177 @@ mod tests {
         f.turn(2, "implement total");
         assert_eq!(snapshot(&f.root).unwrap(), before);
         assert!(f.state().task.is_none());
+    }
+    #[test]
+    fn ordered_plan_rebinds_each_target_and_checks_the_final_result() {
+        let f = Fixture::new(SOURCE);
+        f.turn(
+            8,
+            "rename Parcel to Package; then rename it to Delivery; then check the tests",
+        );
+        let state = f.state();
+        let plan = state.plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert_eq!(plan.current, 3);
+        assert_eq!(f.source(), SOURCE.replace("Parcel", "Delivery"));
+        assert!(
+            matches!(&plan.steps[1].task.as_ref().unwrap().request, Action::Rename { thing: Thing::Item(item), .. } if item.name == "Package")
+        );
+        assert!(
+            matches!(plan.steps[2].result, Some(Reply::Checked { ref problems, .. }) if problems.is_empty())
+        );
+    }
+
+    #[test]
+    fn plan_budget_resumes_each_stage_across_sessions() {
+        let f = Fixture::new(SOURCE);
+        f.turn(1, "rename Parcel to Package then rename it to Delivery");
+        assert_eq!(f.state().plan.unwrap().current, 0);
+        assert_eq!(f.source(), SOURCE);
+        f.turn(1, "continue");
+        assert_eq!(f.state().plan.unwrap().current, 1);
+        assert_eq!(f.source(), SOURCE.replace("Parcel", "Package"));
+        f.turn(1, "continue");
+        assert_eq!(f.state().plan.unwrap().current, 1);
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Ready);
+        f.turn(1, "continue");
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Completed);
+        assert_eq!(f.source(), SOURCE.replace("Parcel", "Delivery"));
+        let last = f.source();
+        f.turn(8, "continue");
+        assert_eq!(f.source(), last);
+    }
+
+    #[test]
+    fn entire_plan_is_understood_before_any_edit() {
+        for tail in [
+            "delete every file",
+            "if I approve rename Bundle to Other",
+            "don't fix the tests",
+        ] {
+            let f = Fixture::new(SOURCE);
+            f.turn(8, &format!("rename Parcel to Package; then {tail}"));
+            assert_eq!(f.source(), SOURCE, "{tail}");
+            assert!(f.state().plan.is_none());
+        }
+    }
+
+    #[test]
+    fn a_failed_check_stops_before_later_edits() {
+        let source = format!("{SOURCE}#[test] fn broken() {{ assert_eq!(2, 3); }}\n");
+        let f = Fixture::new(&source);
+        f.turn(8, "check the tests then rename Parcel to Package");
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Blocked);
+        assert_eq!(plan.current, 0);
+        assert!(plan.steps[1].task.is_none());
+        f.turn(8, "continue");
+        assert_eq!(f.source(), source);
+    }
+
+    #[test]
+    fn a_rejected_edit_stops_the_plan_and_restores_source() {
+        let source = format!("{SOURCE}pub fn broken() -> bool {{ 7 }}\n");
+        let f = Fixture::new(&source);
+        f.turn(
+            8,
+            "rename Parcel to Package; then rename Bundle to Shipment",
+        );
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Blocked);
+        assert_eq!(plan.current, 0);
+        assert_eq!(f.source(), source);
+        assert!(plan.steps[1].task.is_none());
+    }
+
+    #[test]
+    fn external_change_invalidates_all_remaining_plan_steps() {
+        let f = Fixture::new(SOURCE);
+        f.turn(2, "rename Parcel to Package then rename it to Delivery");
+        assert_eq!(f.state().plan.unwrap().current, 1);
+        let external = format!("{}// outside change\n", f.source());
+        fs::write(f.root.join("src/lib.rs"), &external).unwrap();
+        f.turn(8, "continue");
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), external);
+    }
+
+    #[test]
+    fn plan_delimiters_do_not_consume_quoted_text_or_identifiers() {
+        assert!(
+            plans::clauses("rename `then` to `after`")
+                .unwrap()
+                .is_none()
+        );
+        assert!(
+            plans::clauses("rename `name; then other` to `after`")
+                .unwrap()
+                .is_none()
+        );
+        assert!(plans::clauses("rename `unclosed then other").is_err());
+        assert!(plans::clauses("a then b then c then d then e").is_err());
+        let f = Fixture::new("pub struct then;\n");
+        f.turn(2, "rename struct then to Later");
+        assert_eq!(f.source(), "pub struct Later;\n");
+        assert!(f.state().plan.is_none());
+    }
+
+    #[test]
+    fn an_unsupported_replacement_cancels_a_whole_pending_plan() {
+        let f = Fixture::new(SOURCE);
+        f.turn(1, "rename Parcel to Package then rename Bundle to Shipment");
+        f.turn(2, "implement total");
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Cancelled);
+        f.turn(8, "continue");
+        assert_eq!(f.source(), SOURCE);
+    }
+    #[test]
+    fn repair_then_rename_uses_verified_code_and_undo_keeps_the_repair() {
+        let source = "pub fn combine(a: i32, b: i32) -> i32 { a - b }\n#[cfg(test)] mod tests { use super::*; #[test] fn behavior() { assert_eq!(combine(7,3),10); assert_eq!(combine(-5,2),-3); } }\n";
+        let f = Fixture::new(source);
+        f.turn(
+            8,
+            "fix the tests; then rename function combine to sum; then check the tests",
+        );
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert_eq!(plan.current, 3);
+        assert!(f.source().contains("fn sum("));
+        f.turn(8, "undo");
+        assert!(f.source().contains("fn combine("));
+        assert!(!f.source().contains("a - b"));
+        let repaired = f.source();
+        f.turn(8, "continue");
+        assert_eq!(f.source(), repaired);
+    }
+
+    #[test]
+    fn cancelled_and_interrupted_plans_cannot_replay_a_ready_edit() {
+        for stop in ["undo", "rename Parcel to Box then", "cancel task"] {
+            let f = Fixture::new(SOURCE);
+            f.turn(1, "rename Parcel to Package then rename it to Delivery");
+            f.turn(1, stop);
+            f.turn(8, "continue");
+            assert_eq!(f.source(), SOURCE, "{stop}");
+            assert_eq!(f.state().plan.unwrap().status, TaskStatus::Cancelled);
+        }
+        let f = Fixture::new(SOURCE);
+        f.turn(1, "rename Parcel to Package then rename it to Delivery");
+        let mut state = f.state();
+        state.plan.as_mut().unwrap().status = TaskStatus::Applying;
+        save(&f.session, &state).unwrap();
+        f.turn(8, "continue");
+        assert_eq!(f.source(), SOURCE);
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Stale);
+    }
+
+    #[test]
+    fn question_during_plan_preserves_the_next_verified_stage() {
+        let f = Fixture::new(SOURCE);
+        f.turn(1, "rename Parcel to Package then rename it to Delivery");
+        f.turn(1, "where is Parcel?");
+        f.turn(8, "continue");
+        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Completed);
+        assert_eq!(f.source(), SOURCE.replace("Parcel", "Delivery"));
     }
 }

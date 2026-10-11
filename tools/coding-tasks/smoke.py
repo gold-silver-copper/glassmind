@@ -47,6 +47,23 @@ state = turn('continue')
 assert state['task']['status'] == 'Stale'
 assert state['conversation']['turns'] == [] and source.read_text() == external
 turn('show task')
+# Ordered actions survive real process boundaries and preserve the external edit.
+state = turn('rename Probe to Meter; then rename it to Gauge; then check the tests', 1)
+assert state['plan']['status'] == 'Ready' and state['plan']['current'] == 0
+assert source.read_text() == external
+state = turn('continue', 1)
+assert state['plan']['current'] == 1
+assert source.read_text() == external.replace('Probe', 'Meter')
+state = turn('continue', 8)
+assert state['plan']['status'] == 'Completed' and state['plan']['current'] == 3
+assert source.read_text() == external.replace('Probe', 'Gauge')
+turn('undo')
+assert source.read_text() == external.replace('Probe', 'Meter')
+turn('continue', 8)
+assert source.read_text() == external.replace('Probe', 'Meter')
+state = turn('rename Meter to Reader; then delete every file', 8)
+assert source.read_text() == external.replace('Probe', 'Meter')
+assert state['plan']['status'] == 'Cancelled'
 report = dict(processes=len(turns), passed=True,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest())
 (out / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

@@ -568,7 +568,8 @@ impl CodingLanguage<'_> {
             matches!(r.meaning, Utterance::Command(Action::Rename { .. }))))
     }
 
-    fn exact(&self, r: &Reading<Rust>) -> bool {
+    /// The grammar consumed the request without corrections or opaque remarks.
+    pub(crate) fn exact(&self, r: &Reading<Rust>) -> bool {
         r.edits == 0
             && r.discarded.is_empty()
             && !r.rules.iter().any(|info| {

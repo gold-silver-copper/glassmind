@@ -87,6 +87,8 @@ The two new passes are request styles for a task also supplied in TRAIN.
 Coding actions can persist across invocations with `do --session FILE`:
 propose a rename or repair, continue after a restart, refer to the renamed item,
 or undo the last verified change. External edits invalidate stale context.
+Up to four operations joined by `then` can run as a persisted plan, stopping
+on failed verification and resuming with `continue`.
 [Persistent coding tasks and current limits](docs/coding-tasks.md).
 
 

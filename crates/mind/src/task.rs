@@ -87,3 +87,22 @@ impl<O: Ontology> Task<O> {
         });
     }
 }
+
+/// An ordered request whose next step depends on completion of the current one.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub struct TaskPlan<O: Ontology> {
+    pub steps: Vec<PlanStep<O>>,
+    pub current: usize,
+    pub status: TaskStatus,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(bound = "")]
+pub struct PlanStep<O: Ontology> {
+    pub text: String,
+    /// Unresolved interpretations, checked before any step is allowed to edit.
+    pub interpretations: Vec<glassmind_meaning::Utterance<O>>,
+    pub task: Option<Task<O>>,
+    pub result: Option<Reply<O>>,
+}
