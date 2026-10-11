@@ -37,12 +37,18 @@ as unconsumed input, unknown-name questions bypassing plan preflight, and cancel
 plans falling through to a ready single task. Mixed repair->rename->test and undo,
 restart budgets, invalid tails, stale sources and native rollback all tested.
 
-Owned live job: full765 coding DEV, session55445, launched with pinned candidate
-through tools/rustbench-dev.sh. RUN/full765/results.jsonl andrun.log. Confirm the
-session/process state before waiting or restarting. Baseline is
-/home/gsc/.cache/glassmind/yolo-tasks/full765/results.jsonl.
-NEXT: await fullDEV, compare all(task,style)outcomes, record exact results, review
-rootdiff, publish and merge only exact green CI head. No newplan publication yet.
+Full765DEV session55445 COMPLETE0:223pass542refused0fail. All765(task,style)
+outcomes identical to /home/gsc/.cache/glassmind/yolo-tasks/full765/results.jsonl.
+Evidence tools/coding-tasks/plans-validation.json andRUN/validation.json.
+No live plan jobs. NEXT publish reviewed root plan batch and merge exact greenhead.
+
+Independent next batch is uncommitted in /home/gsc/.cache/glassmind/yolo-task-choices,
+branchcontinuous/task-choices from878bc37. Shared typed Selection, persisted
+alternatives, owner-preserving selection and plan resumption implemented.
+RUN2=/home/gsc/.cache/glassmind/yolo-choices. Uses RUN/target for cargo cache only;
+RUN/candidate is pinned and untouched. Test session53062 active; RUN2/tests.log.
+Initial clippy33564 failed on collapsible-if; fixed, full checks still required.
+No choices publication/integration claim. Next inspect native results and fix.
 
 After this milestone, extend actual task execution toward explicit unresolved
 choices and bounded result-driven revision. Ordered execution is a working slice,
