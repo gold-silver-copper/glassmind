@@ -1,13 +1,15 @@
 # Continuous development checkpoint
 
-## Current checkpoint — full repair regression rejected; runtime restored
+## Current checkpoint — PR36 merged; repair veto and child-feature workers active
 
 The unlimited continuous goal remains active. WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Root branch harness, lastsourcechange6a346c3 rolls back rejected8aeb5ac. Root crate
 files match published86b1e545 exactly; capped rollbackbuild19645 completed and main
 binary hash981f8b100cd82ec9edfa23f2c2d379f2dfb17976e6b32ebab2c68d335c6efdb7 matches
-published rawsyntax. PR35 remains latest merged (mergec9dd5e3, reviewed86b1e545,
-CI38131245655success); no openPR atlastquery. Coding180/765 andrawsyntax1556/2001
+published rawsyntax. PR36 merged at2026-10-11T10:41:57Z as643929fc72fdddaacde68bba0b35eca7f289940d;
+reviewed head84c088479adef31a7c9ad2e1094ec39abc9f2717 passed CI38132804777
+in62seconds. Push76354/create45165/merge12324 COMPLETE; no openPR. External
+five-line milestone appended. PR35 remains the last actual runtime improvement. Coding180/765 andrawsyntax1556/2001
 remain published; no new runtime gain. Completed worker tokens148045514, excluding
 parent/interrupted and active repairveto/syntaxchildren workers.
 
@@ -77,13 +79,17 @@ coordinator/syntaxchildren-independent, casesSHA
 Baseline COMPLETE31/40coreedges,15/20allcorrect. No candidateinspected. Trainingdata
 pinnedEWTTRAIN/DEVonly,noofficialtest/download. Baselinebundle byteverified.
 
-Pendingrootchanges are rejected-evidence/README/results/checkpoint only; netcrate
-diff since86b1e545 is empty. Nextcommit/push these reviews as evidence-onlyPR36,
-exactheadCI+merge; no redundant fullbenchmark warranted foridenticalrestoredruntime.
-Then reviewterminalworkers/archiveoriginals,runfrozenparentgates,integrateonlyaccepted
+PublishedPR36 contains rejected-evidence/README/results/checkpoint only; netcrate
+diff since86b1e545 is empty. No redundant fullbenchmark warranted foridenticalrestoredruntime.
+Next reviewterminalworkers/archiveoriginals,runfrozenparentgates,integrateonlyaccepted
 candidateandfullaffectedDEV/checks beforepublishing. Noothermodel/native/fulljobs
 remainactive; alloldfulls complete. Nextaftercurrentparserfeature experiment should
-revisit facts/dialogue or quantities with a genuinely differentrepresentation.
+revisit facts. Concrete gap fromcode: Store::answer/answer_set resolveoneentity
+and returnrelatedIDs; no typed two-entity fact-membership verification. Explore
+positive snapshot-backed relation verification withexplicitunknown forabsent claims,
+never closed-worldfalse, preserving ordinaryfacts/full2821 anddisclosingexisting20
+wrong answers. Freezeendpoint/ambiguity/negation/inverserelation contrasts before
+implementation; thisisqueued, notyetstarted ormeasured.
 Oldercheckpointdetailsbelow arehistorical.
 
 ### Previous checkpoint details (superseded)
