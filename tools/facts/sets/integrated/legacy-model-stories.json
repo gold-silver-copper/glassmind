@@ -1,0 +1,626 @@
+{
+  "dataset": "talk-stories-mixed-dev-v1",
+  "independent_benchmark": false,
+  "total": 47,
+  "totals": {
+    "right": 47
+  },
+  "outcomes": [
+    {
+      "utterance": "My name is Mira",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Mira.",
+        "slot": "Name"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary went to the kitchen.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary picked up the apple.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Calculate 2 + 3 * 4",
+      "expected": {
+        "kind": "calculated",
+        "value": "14"
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "14",
+        "value": "14",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Hello",
+      "expected": {
+        "kind": "social"
+      },
+      "actual": {
+        "kind": "social",
+        "text": "Hello, Mira!"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary moved to the garden.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is the apple?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "garden"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "garden",
+        "answer": "garden",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 7,
+        "contains": "Where is the apple?"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: Where is the apple?",
+        "source_turn": 7
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary gave the apple to John.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Who has the apple?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "john"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "john",
+        "answer": "john",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "John dropped the apple.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "How many objects is John carrying?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "none"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "none",
+        "answer": "none",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Actually, Mary is in the bedroom.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "bedroom"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "bedroom",
+        "answer": "bedroom",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary is either in the kitchen or the garden.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. missing or ambiguous evidence",
+        "answer": null,
+        "reason": "missing or ambiguous evidence"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Is Mary in the kitchen?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "maybe"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "maybe",
+        "answer": "maybe",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary is in the office.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "My favorite color is green",
+      "expected": {
+        "kind": "remembered"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite color is green.",
+        "slot": {
+          "Preference": "color"
+        }
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "office"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "office",
+        "answer": "office",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is the apple?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "garden"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "garden",
+        "answer": "garden",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my favorite color?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 20
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite color is green.",
+        "source_turn": 20
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Mary teleported to the attic.",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Calculate 7 * 8",
+      "expected": {
+        "kind": "calculated",
+        "value": "56"
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "56",
+        "value": "56",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is the apple?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Mary?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. unknown location",
+        "answer": null,
+        "reason": "unknown location"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "The kitchen is north of the office.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is north of the office?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "kitchen"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "kitchen",
+        "answer": "kitchen",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 4
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: What is north of the office?",
+        "source_turn": 4
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Actually, the kitchen is south of the office.",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+        "answer": null,
+        "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is north of the office?",
+      "expected": {
+        "kind": "refusal"
+      },
+      "actual": {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "An earlier statement could change the answer, but I couldn't understand it. Use /reset and restate the facts."
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Lily is a swan.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Lily is white.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Ruby is a swan.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What color is Ruby?",
+      "expected": {
+        "kind": "story_prediction",
+        "answer": "white"
+      },
+      "actual": {
+        "kind": "story_prediction",
+        "text": "My best inference is white. induced from unanimous observed members of the same kind; defeasible",
+        "answer": "white",
+        "reason": "induced from unanimous observed members of the same kind; defeasible"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Bill is hungry.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where will Bill go?",
+      "expected": {
+        "kind": "story_prediction",
+        "answer": "kitchen"
+      },
+      "actual": {
+        "kind": "story_prediction",
+        "text": "My best inference is kitchen. predicted from unanimous training state/action observations",
+        "answer": "kitchen",
+        "reason": "predicted from unanimous training state/action observations"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Ada"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Ada.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Ada went to the hall.",
+      "expected": {
+        "kind": "story_fact"
+      },
+      "actual": {
+        "kind": "story_fact",
+        "text": "Got it. I'll use that when answering your questions.",
+        "answer": null,
+        "reason": "event accepted"
+      },
+      "outcome": "right"
+    },
+    {
+      "utterance": "Where is Ada?",
+      "expected": {
+        "kind": "story_answer",
+        "answer": "hall"
+      },
+      "actual": {
+        "kind": "story_answer",
+        "text": "hall",
+        "answer": "hall",
+        "reason": "derived from story state"
+      },
+      "outcome": "right"
+    }
+  ],
+  "binary_sha256": "9a2b7ee750f8c0d9ae8f6a30429e5a9d4fd96a6bbc34dc66505f07f7f7accfe7"
+}

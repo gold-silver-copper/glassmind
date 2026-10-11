@@ -5,9 +5,9 @@
 Goal active: follow `prompts/grow-continuously.md` until stopped. Prior turn made
 progress: PR21 merged and new experiments started. This turn completed independent
 reviews of rejected word grammar and partial inverse facts acquisition, archived
-originals and removed their restored worktrees/auth links. The first implementation candidate was also independently reviewed and rejected;
-a new language/invocation experiment and explicit fact-set product work are active.
-No accepted runtime change yet.
+originals and removed their restored worktrees/auth links. The first implementation candidate was independently reviewed and rejected.
+Explicit fact sets are now integrated and fully validated at runtimeac59ac8;
+publication is next. Implementation-language work remains active.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -87,7 +87,7 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens83,714,527 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens85,868,198 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,
@@ -255,7 +255,7 @@ Original10files77,808bytes archived WORK/inversefacts-run/submitted, reverified
 before restoredworktree removal; scopeinactive/authunlinked. Evidence now
  tools/facts/inverse-coverage inclPARENT.md,parent-review.json,coverage-diagnostic.json,
 parent-audit.py; rawWORK/coordinator/inversefacts-review. Newdata noteddata/README.
-Knowncompletedworker tokens83,714,527 inclcachedonce; parent/unfinished excluded.
+Knowncompletedworker tokens85,868,198 inclcachedonce; parent/unfinished excluded.
 
 IMPLEMENT COMPLETE/REJECTED; scopeinactive/authunlinked, restoredworktreeremoved.
 Original313files467,927bytes archived WORK/implement-run/submitted with adjacent
@@ -283,21 +283,39 @@ Gate unchanged: original20+newcontracts pass, >=3distinctTRAINrequests originalt
 verified beforehandoff, parentfull765>=177passes/all174retained/0failures. No old
 rejection rescued. Do notconfuse requestsyntaxcoverage withcorrectimplementations.
 
-FACTSETS RUNNING, PID3403711, scopeglassmind-continuous-factsets.scope,
-branchcontinuous/factsets at35d3ea8, worktreeWORK/factsets, runWORK/factsets-run,
-briefWORK/factsets-task.txt. Own factsnewboundedsetAPI,talk_facts.rs,minimal everyday.rs,
-newtools/facts/sets anddoc; no main.rs conflict. Explicit natural list-answers prefix
-selectssetmode, unchangedalias/relationproposer onquestion remainder. Max10sorted
-uniqueactualIDs withtotals/truncation/snapshotprovenance; no completeworldclaim.
-LegacyStore::answer/defaulttalk/2821predictions mustremainbyte-identical; allauthored
-positive/refusal/sessioncontracts required. Newproductcoverage, notbenchmarkgain.
-No newdownloads/LLMs/models; onlyexistingreadonlydefault500/TRAIN999bundles.
+FACTSETS COMPLETE/ACCEPTED, exact worker runtime integrated atac59ac82f8fa4cc154057c74dce29ed4edbee178.
+Three files: factsnewboundedsetAPI,talk_facts.rs,13lineexplicit everydayrouting.
+List/Show answers to: completequestion? selectssetmode; max10sorteduniqueIDs,
+localcounts/truncation/source/propertylinks; personal/storybeliefs preserved.
+Originalanswer/defaultpaths unchanged. Original25files108,120bytes archived
+WORK/factsets-run/submitted, manifestadjacent; 29artifacthashes+frozencontracts
+verified beforeintegration andarchiveagain beforeworktree removal. Scopeinactive,
+authunlinked. Worker52contracts/17tests/fmt/clippy/release andlegacy2821bytespass.
+Parent36+16contracts,7independentboundary/productionintentstatechecks,17Rusttests,
+workspacefmt/allclippy/release/strict4smoke pass. First200/full2821 sixstreams
+standalone/talkfacts/talkdefault byte-identical. Scores256/2545/20, joint252/2545/24
+unchanged. Real3answerexample checkedagainstcachedpublishedclaims. No newdata.
+Memory41withoutintent passesbothbundlemodes; calc27/stories47withproductionmodel
+passbothmodes. Additionalproductionmemorysmoke foundinheritedCallmetomorrow→
+change_user_nameintent mismatch. Allsixoriginalstreams/savedstates comparedbaseline
+andcandidatebothbundlemodes: EXACTLYidentical, both40/41expectations. No personal
+name stored; originaltestunchanged, failurepreserved. Notreported41/41withmodel.
+Parentbinary623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac.
+Evidence tools/facts/sets/PARENT.md andintegrated/validation.json; rawparent
+WORK/coordinator/factsets-check. Sessions62713(workspace),3457(replay),3721(independent),
+22918(initialmodelsmokeFAIL/inherited),67726(completebaselinecomparison) allTERMINAL;
+do notrepoll/repeat. CurrentproductionintentmodelSHAa84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408.
+Knowncompletedworker tokens85,868,198 inclcachedonce,parent/unfinishedexcluded.
+Productionfactsflatpoints recorded atsourceac59ac8; newproductcoverageisnotaccuracygain.
 
-Two live workers, both forced Astra fast/ChatGPT, API-key environment stripped,
-8GiB/0swap. No parent jobs; independent word count audit session97521 and implementation
-replay49179 COMPLETE. PR22publishing done. Reviewed originalimplementation evidence is committed locally; publishing can join
-the next coherent batch. Next: review factsets and impllanguage terminal submissions, archivefirst and
-only ship passing candidates after affectedfullDEV and relevantregressions. No blocker; goal active. Preserve old stopped dirty loop.
+IMPLLANGUAGE remains soleliveworker, PID3429738, scopeglassmind-continuous-impllanguage.scope,
+forcedAstrafastChatGPT8GiB0swap. PreliminaryTRAINverified3requests(all3stylesofone
+sum_evenfunction), but rerunning after discoveryofrefusal-fallthrough mutations
+and sharedtargetcache fixturecollision; preservefailedruns. Parentgateunchanged.
+No parentjobs live. Next: commit/push/open/merge factsets onlyaftergreenexacthead;
+inspectimpllanguage terminalhandoff, archiveoriginal thenparentreview/integrate;
+full765>=177/all174retained/0failure beforecodingpublication. Keepoldrejection.
+No blocker; goalactive. Preserve old stopped dirty loop.
 
 ## Historical checkpoints (superseded by current state above)
 

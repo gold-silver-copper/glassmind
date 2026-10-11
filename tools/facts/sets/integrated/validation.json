@@ -1,0 +1,56 @@
+{
+  "source": "ac59ac82f8fa4cc154057c74dce29ed4edbee178",
+  "binary_sha256": "623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac",
+  "original_archive_files": 25,
+  "original_archive_bytes": 108120,
+  "worker_artifact_hashes_verified": 29,
+  "original_archive_reverified_before_worktree_removal": true,
+  "original_runtime_source_integrated_exactly": true,
+  "primary_contracts": 36,
+  "supplemental_state_contracts": 16,
+  "independent_production_intent_and_boundary_checks": 7,
+  "rust_tests": 17,
+  "workspace_fmt_clippy_release": true,
+  "strict_fixture_smoke": 4,
+  "full_dev_rows": 2821,
+  "legacy_output_streams_byte_identical": 6,
+  "memory_without_intent_model": {
+    "right": 41,
+    "wrong": 0,
+    "facts_modes": 2
+  },
+  "memory_with_production_model": {
+    "matched": 40,
+    "total": 41,
+    "baseline_and_candidate_identical": true,
+    "known_inherited_mismatch": "Call me tomorrow -> change_user_name intent; expected refusal; personal name remains unset"
+  },
+  "calculations_with_production_model": 27,
+  "stories_with_production_model": 47,
+  "facts_modes_for_calculations_and_stories": 2,
+  "real_example_ids": [
+    "Q1321",
+    "Q150",
+    "Q652"
+  ],
+  "real_example_raw_claims_independently_checked": true,
+  "default_answer_only": {
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20
+  },
+  "default_joint": {
+    "right": 252,
+    "refused": 2545,
+    "wrong": 24
+  },
+  "no_benchmark_gain_claimed": true,
+  "scope_inactive": true,
+  "auth_link_removed": true,
+  "worktree_removed": true,
+  "limitations": [
+    "Finite snapshot sets and learned relation proposals are not globally exhaustive or logically verified answers.",
+    "Historical 500-entity index is validation-subject-seeded; inherited errors remain.",
+    "Request parser validates a bounded shape, not all English semantics."
+  ]
+}

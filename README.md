@@ -70,9 +70,11 @@ assertion or question per line; `/reset` starts a new story.
 command. [Local Wikidata bundles](tools/facts/chat/HANDOFF.md) can also answer
 questions in `talk`: replies include source links, and JSON includes entity IDs
 and provenance. Bundles declare their own asset hashes and coverage; labels
-affect display only. Explicit memory, calculations and established stories keep
-their priority. The demonstrated bundle is a finite 500-entity snapshot with
-known errors, not an open-world fact service.
+affect display only. Ordinary memory, calculation and story questions keep their
+existing priority. For multiple matches, use `List answers to: Who wrote TITLE?`.
+[Explicit factual lists](docs/fact-sets.md) return up to ten sorted matching IDs,
+source links and local match counts, while preserving personal and story state.
+The demonstrated bundle is a finite 500-entity snapshot with known errors.
 
 Scalar word problems can combine fractions, percentages, sums and comparisons
 in multiple clauses. Glassmind solves exact constraints and requires a unique

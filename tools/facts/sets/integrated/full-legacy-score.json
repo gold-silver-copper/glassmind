@@ -1,0 +1,87 @@
+{
+  "total": 2821,
+  "answer_only": {
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20
+  },
+  "joint_entity_relation_answer": {
+    "right": 252,
+    "refused": 2545,
+    "wrong": 24
+  },
+  "answer_matches_with_wrong_link_or_relation": [
+    {
+      "row": 434,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q588755",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q1029458",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 470,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q7798840",
+        "relation": "P364",
+        "answer": "Q1860"
+      },
+      "predicted": {
+        "entity": "Q1261757",
+        "relation": "P364",
+        "answers": [
+          "Q1860"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 1705,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q827172",
+        "relation": "P364",
+        "answer": "Q652"
+      },
+      "predicted": {
+        "entity": "Q1215047",
+        "relation": "P364",
+        "answers": [
+          "Q652"
+        ],
+        "refusal": null
+      }
+    },
+    {
+      "row": 2423,
+      "entity_matches": false,
+      "relation_matches": true,
+      "gold": {
+        "entity": "Q7078999",
+        "relation": "P495",
+        "answer": "Q30"
+      },
+      "predicted": {
+        "entity": "Q1261757",
+        "relation": "P495",
+        "answers": [
+          "Q30"
+        ],
+        "refusal": null
+      }
+    }
+  ]
+}

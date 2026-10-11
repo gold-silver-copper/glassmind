@@ -1,0 +1,115 @@
+{
+  "source_sha256": "eee606b8dd2dc3497dac124625a260371ac087352f3c5a649950e90434a01729",
+  "baseline_sha256": "0d5c9ea8be0e4d3c83b17508e5666ed814bb8b8f4e78364f478fd7d3e3a0ba21",
+  "candidate_sha256": "623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac",
+  "model_sha256": "a84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408",
+  "all_six_conversation_streams_byte_identical_each_mode": true,
+  "persisted_states_identical": true,
+  "scope": "Additional production-model compatibility audit against unchanged original expectations. Original no-model smoke remains unchanged; mismatches are recorded, not waived or relabeled as passes. Runtime receives only utterances.",
+  "results": [
+    {
+      "binary": "baseline",
+      "facts_enabled": false,
+      "total_expectations": 41,
+      "matched_expectations": 40,
+      "mismatches": [
+        {
+          "row": 37,
+          "utterance": "Call me tomorrow",
+          "expected_kind": "refusal",
+          "actual": {
+            "kind": "intent",
+            "text": "I understand this as: change user name. I can identify this request, but no service is connected to carry it out.",
+            "proposal": {
+              "label": "change_user_name",
+              "accepted": true,
+              "score": 1.7266953,
+              "margin": 0.52997744,
+              "dev_confidence": 0.9037037,
+              "confidence_support": 135,
+              "known_features": 37
+            }
+          }
+        }
+      ]
+    },
+    {
+      "binary": "candidate",
+      "facts_enabled": false,
+      "total_expectations": 41,
+      "matched_expectations": 40,
+      "mismatches": [
+        {
+          "row": 37,
+          "utterance": "Call me tomorrow",
+          "expected_kind": "refusal",
+          "actual": {
+            "kind": "intent",
+            "text": "I understand this as: change user name. I can identify this request, but no service is connected to carry it out.",
+            "proposal": {
+              "label": "change_user_name",
+              "accepted": true,
+              "score": 1.7266953,
+              "margin": 0.52997744,
+              "dev_confidence": 0.9037037,
+              "confidence_support": 135,
+              "known_features": 37
+            }
+          }
+        }
+      ]
+    },
+    {
+      "binary": "baseline",
+      "facts_enabled": true,
+      "total_expectations": 41,
+      "matched_expectations": 40,
+      "mismatches": [
+        {
+          "row": 37,
+          "utterance": "Call me tomorrow",
+          "expected_kind": "refusal",
+          "actual": {
+            "kind": "intent",
+            "text": "I understand this as: change user name. I can identify this request, but no service is connected to carry it out.",
+            "proposal": {
+              "label": "change_user_name",
+              "accepted": true,
+              "score": 1.7266953,
+              "margin": 0.52997744,
+              "dev_confidence": 0.9037037,
+              "confidence_support": 135,
+              "known_features": 37
+            }
+          }
+        }
+      ]
+    },
+    {
+      "binary": "candidate",
+      "facts_enabled": true,
+      "total_expectations": 41,
+      "matched_expectations": 40,
+      "mismatches": [
+        {
+          "row": 37,
+          "utterance": "Call me tomorrow",
+          "expected_kind": "refusal",
+          "actual": {
+            "kind": "intent",
+            "text": "I understand this as: change user name. I can identify this request, but no service is connected to carry it out.",
+            "proposal": {
+              "label": "change_user_name",
+              "accepted": true,
+              "score": 1.7266953,
+              "margin": 0.52997744,
+              "dev_confidence": 0.9037037,
+              "confidence_support": 135,
+              "known_features": 37
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
