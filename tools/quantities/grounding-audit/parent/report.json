@@ -1,0 +1,53 @@
+{
+  "train_rows": 29837,
+  "groups_reconstructed": true,
+  "clean_rows": 5772,
+  "native200_exact": true,
+  "gold29837_exact": true,
+  "free4590_exact": true,
+  "totals": {
+    "FIT": {
+      "rows": 4590,
+      "forced_stop": 4124,
+      "forced_horizon": 466,
+      "free_exact": 1775,
+      "free_numeric_wrong": 2634,
+      "oracle_plan_exact": 2258,
+      "oracle_plan_numeric_correct": 2334,
+      "teacher_head0_decisions": 19877,
+      "teacher_head0_correct": 16153,
+      "nonstop_total": 15753,
+      "nonstop_correct": 12354,
+      "teacher_head1_decisions": 15753,
+      "teacher_head1_correct": 12886,
+      "teacher_head2_decisions": 15753,
+      "teacher_head2_correct": 12857,
+      "free_numeric_correct": 1863,
+      "oracle_plan_numeric_wrong": 2163,
+      "free_numeric_refused": 93,
+      "oracle_plan_numeric_refused": 93
+    },
+    "CAL": {
+      "rows": 1182,
+      "forced_stop": 1027,
+      "forced_horizon": 155,
+      "free_exact": 123,
+      "free_numeric_wrong": 993,
+      "oracle_plan_exact": 202,
+      "oracle_plan_numeric_wrong": 887,
+      "teacher_head0_decisions": 5165,
+      "teacher_head0_correct": 2765,
+      "nonstop_total": 4138,
+      "nonstop_correct": 1912,
+      "teacher_head1_decisions": 4138,
+      "teacher_head1_correct": 2197,
+      "teacher_head2_decisions": 4138,
+      "teacher_head2_correct": 2499,
+      "oracle_plan_numeric_refused": 74,
+      "free_numeric_correct": 143,
+      "oracle_plan_numeric_correct": 221,
+      "free_numeric_refused": 46
+    }
+  },
+  "scope": "TRAIN diagnostic with explicit oracle conditions; model remains rejected"
+}
