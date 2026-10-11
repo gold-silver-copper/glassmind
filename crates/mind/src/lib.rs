@@ -111,6 +111,10 @@ const UNSURE: u32 = 200;
 /// is unsure it understood.
 pub const ASK_WHEN_UNSURE: RuleInfo = RuleInfo::new("mind.ask_when_unsure", glassmind_rules::HAND);
 
+/// A guessed check or repair may be answered when the world has verified
+/// that exact check. Conflicting readings still require clarification.
+pub const ACCEPT_VERIFIED: RuleInfo = RuleInfo::new("mind.accept_verified", glassmind_rules::HAND);
+
 /// A reading that leaves out (or reads as another word) a word naming
 /// something in the world is not taken.
 pub const KEEP_NAMES: RuleInfo = RuleInfo::new("mind.keep_names", glassmind_rules::HAND);
@@ -118,6 +122,7 @@ pub const KEEP_NAMES: RuleInfo = RuleInfo::new("mind.keep_names", glassmind_rule
 /// Every dialogue rule, for listing and switching.
 pub const RULES: &[RuleInfo] = &[
     ASK_WHEN_UNSURE,
+    ACCEPT_VERIFIED,
     KEEP_NAMES,
     CONSENT_APPLIES,
     GUESS_WHEN_STUCK,
@@ -679,7 +684,22 @@ impl<O: Ontology> Mind<'_, O> {
             );
             // A reading that needed an unlikely edit of the input: ask
             // whether it is what was meant rather than answer it.
-            if first.edits >= UNSURE && self.switches.on(ASK_WHEN_UNSURE.id) {
+            let verified = self.switches.on(ACCEPT_VERIFIED.id)
+                && match (&first.meaning, first_reply) {
+                    (
+                        Utterance::Ask(Question::Passes(wanted) | Question::Problems(wanted)),
+                        Reply::Checked { check, .. },
+                    ) => wanted == check,
+                    (
+                        Utterance::Command(glassmind_meaning::Action::Repair(wanted)),
+                        Reply::Remedy { check, left, .. },
+                    ) => wanted == check && left.is_empty(),
+                    _ => false,
+                };
+            if first.edits >= UNSURE && verified {
+                trace.preferences.push(ACCEPT_VERIFIED);
+            }
+            if first.edits >= UNSURE && self.switches.on(ASK_WHEN_UNSURE.id) && !verified {
                 trace.preferences.push(ASK_WHEN_UNSURE);
                 return (
                     Reply::Clarify {

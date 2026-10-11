@@ -188,6 +188,9 @@ const REMEDY_SUGGESTED: RuleInfo = RuleInfo::new("rust.remedy.compiler_suggestio
 /// it offers there, as no two replacements of the same text can both be
 /// made.
 const REMEDY_ONE_PER_PLACE: RuleInfo = RuleInfo::new("rust.remedy.one_per_place", 29);
+/// Compiler fixes can expose further errors; compose bounded rounds only
+/// when the final requested check passes.
+const REMEDY_ITERATE: RuleInfo = RuleInfo::new("rust.remedy.iterate_suggestions", HAND);
 /// A remedy for failing tests: undoing one slip of an operator or a truth
 /// value in the source's own code (`checks::slips`), kept only if every
 /// test then passes in a scratch copy.
@@ -196,6 +199,7 @@ const REMEDY_SLIP: RuleInfo = RuleInfo::new("rust.remedy.undo_slip", 29);
 const APPLY_CHANGES: RuleInfo = RuleInfo::new("rust.apply.changes", HAND);
 
 pub const RULES: &[RuleInfo] = &[
+    REMEDY_ITERATE,
     RUN_CHECK,
     REMEDY_SUGGESTED,
     REMEDY_ONE_PER_PLACE,
@@ -821,7 +825,12 @@ impl World<Rust> for RustWorld {
             });
         }
         // Try the changes in a scratch copy; offer them only if they help.
-        let mut left = Vec::new();
+        // Problems in untouched sources remain unresolved.
+        let mut left: Vec<RustItem> = problems
+            .iter()
+            .filter(|p| !changes.iter().any(|c| c.source == p.source))
+            .cloned()
+            .collect();
         for source in &self.sources {
             let mine: Vec<RustChange> = changes
                 .iter()
@@ -840,6 +849,27 @@ impl World<Rust> for RustWorld {
                     )
                 })
                 .and_then(|_| checks::run(*check, &source.name, &scratch));
+            let tried = match tried {
+                Ok(after) if !after.is_empty() && self.switches.on(REMEDY_ITERATE.id) => {
+                    fired.push(REMEDY_ITERATE);
+                    match checks::complete_suggestions(
+                        *check,
+                        &source.name,
+                        &source.root,
+                        &scratch,
+                        &mine,
+                        after.clone(),
+                    ) {
+                        Some(composed) => {
+                            changes.retain(|c| c.source != source.name);
+                            changes.extend(composed);
+                            Ok(Vec::new())
+                        }
+                        None => Ok(after),
+                    }
+                }
+                other => other,
+            };
             let _ = std::fs::remove_dir_all(&scratch);
             match tried {
                 Ok(after) => left.extend(after.into_iter().map(|f| f.item)),
@@ -906,22 +936,55 @@ impl World<Rust> for RustWorld {
             .iter()
             .map(|s| (s.name.clone(), s.root.clone()))
             .collect();
-        let count = checks::apply(&changes, &roots).map_err(|_| Unsupported)?;
+        // Keep originals until verification succeeds, including when cargo
+        // fails without readable diagnostics. A rejected edit changes nothing.
+        let mut originals = BTreeMap::new();
+        for change in &changes {
+            let path = roots
+                .get(&change.source)
+                .ok_or(Unsupported)?
+                .join(&change.file);
+            if let std::collections::btree_map::Entry::Vacant(entry) = originals.entry(path.clone())
+            {
+                let bytes = std::fs::read(&path).map_err(|_| Unsupported)?;
+                entry.insert(bytes);
+            }
+        }
+        let applied = checks::apply(&changes, &roots);
         if let Ok(mut found) = self.found.lock() {
             found.clear();
         }
-        let problems = match check {
-            Some(c) => self
-                .findings(c, fired)?
-                .into_iter()
-                .map(|f| f.item)
-                .collect(),
-            None => Vec::new(),
+        let verified = applied.map_err(|_| Unsupported).and_then(|count| {
+            let problems = match check {
+                Some(c) => self.findings(c, fired)?,
+                None => Vec::new(),
+            };
+            if problems.is_empty() {
+                Ok(count)
+            } else {
+                Err(Unsupported)
+            }
+        });
+        let count = match verified {
+            Ok(count) => count,
+            Err(trouble) => {
+                let mut restored = true;
+                for (path, bytes) in originals {
+                    restored &= std::fs::write(path, bytes).is_ok();
+                }
+                if let Ok(mut found) = self.found.lock() {
+                    found.clear();
+                }
+                if !restored {
+                    eprintln!("glassmind: could not restore every file after a rejected edit");
+                }
+                return Err(trouble);
+            }
         };
         Ok(Reply::Applied {
             changes: count,
             check,
-            problems,
+            problems: Vec::new(),
         })
     }
 

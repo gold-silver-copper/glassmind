@@ -53,14 +53,13 @@ const AHEAD: Duration = Duration::from_secs(24 * 60 * 60);
 
 /// The version of the kept results, raised when checks change what they
 /// find: before 2, a check could read a build of another copy; before 3,
-/// builds took in benches.
-const RESULTS: &str = "v3";
+/// builds took in benches; before 4, a failed linter without readable
+/// diagnostics could be cached as a pass.
+const RESULTS: &str = "v4";
 
 /// How long one tool run may take.
-const TOOL_TIME: Duration = Duration::from_secs(15 * 60);
+const TOOL_TIME: Duration = Duration::from_secs(600);
 
-/// Runs `cargo SUBCOMMAND -j 4 ARGS...` in `root`, returning whether it
-/// succeeded and its stdout.
 /// Where checks keep their builds and their results.
 #[derive(Debug, Clone, Default)]
 pub struct Places {
@@ -108,38 +107,26 @@ fn scratch_base() -> PathBuf {
 
 /// The most memory one check may use: tests of broken code can loop
 /// allocating, and must not take the machine with them.
-const TOOL_MEMORY: &str = "6G";
+const TOOL_MEMORY: &str = "8G";
 
-/// Whether checks can run in a systemd scope of their own, which caps their
-/// memory and kills everything they started when time runs out.
-fn scoped() -> bool {
-    static SCOPED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    *SCOPED.get_or_init(|| {
-        Command::new("systemd-run")
-            .args(["--user", "--scope", "--quiet", "--collect", "true"])
-            .stdin(Stdio::null())
-            .stdout(Stdio::null())
-            .stderr(Stdio::null())
-            .status()
-            .is_ok_and(|s| s.success())
-    })
-}
-
-/// `cargo`, capped where it can be: in a scope with a memory limit and a
+/// `cargo`, in a required scope with a memory limit and a
 /// time limit, and in a process group of its own, so a timeout ends the
 /// tests it started too.
 fn cargo_command() -> Command {
-    let mut command = if scoped() {
-        let mut c = Command::new("systemd-run");
-        c.args(["--user", "--scope", "--quiet", "--collect"])
-            .arg(format!("-pMemoryMax={TOOL_MEMORY}"))
-            .arg("-pMemorySwapMax=0")
-            .arg(format!("-pRuntimeMaxSec={}", TOOL_TIME.as_secs() + 30))
-            .args(["--", "cargo"]);
-        c
-    } else {
-        Command::new("cargo")
-    };
+    let mut command = Command::new("systemd-run");
+    command
+        .args(["--user", "--scope", "--quiet", "--collect"])
+        .arg(format!("-pMemoryMax={TOOL_MEMORY}"))
+        .arg("-pMemorySwapMax=0")
+        .arg(format!("-pRuntimeMaxSec={}", TOOL_TIME.as_secs() + 30))
+        .args([
+            "setsid",
+            "--wait",
+            "timeout",
+            "--kill-after=5s",
+            "600",
+            "cargo",
+        ]);
     std::os::unix::process::CommandExt::process_group(&mut command, 0);
     command
 }
@@ -153,9 +140,9 @@ fn kill_group(child: &mut std::process::Child) {
     let _ = child.wait();
 }
 
-/// How many cargo runs one process makes at once (each `-j 4`): requests
+/// How many cargo runs one process makes at once (each `-j 1`): requests
 /// answered side by side share the machine.
-const CARGO_AT_ONCE: usize = 2;
+const CARGO_AT_ONCE: usize = 1;
 
 /// A turn to run cargo, held while it runs.
 struct CargoTurn;
@@ -209,7 +196,7 @@ fn cargo(
     command.env("TMPDIR", &tmp);
     let mut child = command
         .arg(subcommand)
-        .args(["-j", "4"])
+        .args(["-j", "1"])
         .args(args)
         .current_dir(root)
         .stdin(Stdio::null())
@@ -237,7 +224,7 @@ fn cargo(
     let success = loop {
         match child.try_wait() {
             Ok(Some(status)) => break status.success(),
-            Ok(None) if start.elapsed() > TOOL_TIME => {
+            Ok(None) if start.elapsed() > TOOL_TIME + Duration::from_secs(10) => {
                 kill_group(&mut child);
                 return Err("cargo took too long".into());
             }
@@ -521,14 +508,18 @@ fn run_tools(
             Ok(found)
         }
         RustCheck::Lint => {
-            let (_, out) = cargo(
+            let (ok, out) = cargo(
                 places,
                 source,
                 root,
                 "clippy",
                 &[targets(root), &["--message-format=json", "-q"]].concat(),
             )?;
-            Ok(findings(source, root, &out, &["error", "warning"]))
+            let found = findings(source, root, &out, &["error", "warning"]);
+            if !ok && found.is_empty() {
+                return Err("the linter failed in a way I cannot read".into());
+            }
+            Ok(found)
         }
         RustCheck::Test => {
             let build = run_tools(places, RustCheck::Build, source, root)?;
@@ -609,6 +600,83 @@ pub fn apply(changes: &[RustChange], roots: &BTreeMap<String, PathBuf>) -> Resul
         std::fs::write(path, text).map_err(|e| format!("cannot write {}: {e}", path.display()))?;
     }
     Ok(changes.len())
+}
+
+/// Continue compiler suggestions in an already edited scratch tree. Later
+/// diagnostics refer to the edited text; compose them back onto the original
+/// only after the requested check passes. Stop after three further rounds.
+pub fn complete_suggestions(
+    check: RustCheck,
+    source: &str,
+    original: &Path,
+    scratch: &Path,
+    initial: &[RustChange],
+    mut remaining: Vec<Finding>,
+) -> Option<Vec<RustChange>> {
+    let roots = BTreeMap::from([(source.to_owned(), scratch.to_owned())]);
+    let mut touched: BTreeSet<String> = initial.iter().map(|c| c.file.clone()).collect();
+    let mut seen = BTreeSet::new();
+    for _ in 0..3 {
+        if remaining.is_empty() {
+            break;
+        }
+        let mut places = BTreeSet::new();
+        let fixes: Vec<RustChange> = remaining
+            .iter()
+            .flat_map(|f| &f.fixes)
+            .filter(|c| places.insert((c.file.clone(), c.line, c.column, c.old.clone())))
+            .cloned()
+            .collect();
+        if fixes.is_empty() || !seen.insert(fingerprint(scratch)) {
+            return None;
+        }
+        touched.extend(fixes.iter().map(|c| c.file.clone()));
+        apply(&fixes, &roots).ok()?;
+        remaining = run(check, source, scratch).ok()?;
+    }
+    if !remaining.is_empty() {
+        return None;
+    }
+    let mut changes = Vec::new();
+    for file in touched {
+        let old: Vec<char> = std::fs::read_to_string(original.join(&file))
+            .ok()?
+            .chars()
+            .collect();
+        let new: Vec<char> = std::fs::read_to_string(scratch.join(&file))
+            .ok()?
+            .chars()
+            .collect();
+        if old == new {
+            continue;
+        }
+        let prefix = old.iter().zip(&new).take_while(|(a, b)| a == b).count();
+        let suffix = old
+            .iter()
+            .rev()
+            .zip(new.iter().rev())
+            .take(old.len().min(new.len()).saturating_sub(prefix))
+            .take_while(|(a, b)| a == b)
+            .count();
+        let before = old.get(..prefix)?;
+        let line = u32::try_from(before.iter().filter(|&&c| c == '\n').count() + 1).ok()?;
+        let column = u32::try_from(before.iter().rev().take_while(|&&c| c != '\n').count()).ok()?;
+        changes.push(RustChange {
+            source: source.to_owned(),
+            file,
+            line,
+            column,
+            old: old
+                .get(prefix..old.len().checked_sub(suffix)?)?
+                .iter()
+                .collect(),
+            new: new
+                .get(prefix..new.len().checked_sub(suffix)?)?
+                .iter()
+                .collect(),
+        });
+    }
+    Some(changes)
 }
 
 /// Copies a source tree (without `target` and hidden entries) into `to`,

@@ -24,6 +24,7 @@ macro_rules! say {
 
 mod answer;
 mod chat;
+mod coding;
 mod details;
 mod edit;
 mod everyday;
@@ -135,7 +136,7 @@ enum Command {
     Do {
         /// The repository to work in.
         repo: PathBuf,
-        /// Where to write the reply when no change is made.
+        /// Where to write the final answer or result of applying changes.
         #[arg(long)]
         reply_file: Option<PathBuf>,
         /// Show the whole trace.
@@ -355,10 +356,20 @@ fn act(
                     glassmind_meaning::interface::Language::say(&system.english, &applied)
                 {
                     say!("{}", said.text);
+                    if let Some(path) = reply_file {
+                        std::fs::write(path, format!("{}\n", said.text))
+                            .map_err(|e| e.to_string())?;
+                    }
                 }
                 return Ok(());
             }
-            Err(e) => say!("could not make the changes: {e:?}"),
+            Err(e) => {
+                let message = format!("could not make and verify the changes: {e:?}");
+                if let Some(path) = reply_file {
+                    std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
+                }
+                return Err(message);
+            }
         }
     }
     if let Some(path) = reply_file {
@@ -418,8 +429,12 @@ fn eval(
             .filter_map(|n| indices.get(n).cloned())
             .collect();
         let world = RustWorld::from_indices(shared, &switches);
+        let language = coding::CodingLanguage {
+            english: &english,
+            switches: &switches,
+        };
         let mind = Mind {
-            language: &english,
+            language: &language,
             world: &world,
             switches: &switches,
         };
