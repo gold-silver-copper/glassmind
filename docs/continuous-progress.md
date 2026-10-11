@@ -22,10 +22,18 @@ revalidation compares exact patches/checks and requires no unresolved problems;
 OS session locks now explicitly unlock on drop, avoiding inherited-descriptor
 retention during concurrent subprocess creation. No source/edit check weakened.
 
-NEXT requiredtools/check.sh, realCLI subprocess smoke, then unchangedfull765DEV
-against223pass baseline. Session mode is opt-in; unmodifiedstatelessbehavior must
-retain all223passes and produce no failures. Documented in docs/coding-tasks.md.
-No task worker or benchmark currently running; requiredworkspacecheck next.
+Required workspacecheck1308 COMPLETE0: fmt/alltargetclippy/release/strict4smoke.
+RealCLI smoke passed7separate processes (tools/coding-tasks/smoke.py).
+Candidate fbd4d0615b80e8faa09c707b1779399ce67562f2, executableSHA256
+ a41506e76918e98f7c30c4b7baac1a275c9fd22adc571d7a1b8c0b52b6dc3abb.
+Pinned RUN/candidate; all logs and cli-smoke/report.json retained.
+
+Full765DEV60981 RUNNING through unchangedtools/rustbench-dev.sh,3600s8GiB0swap,
+jobs1,privateRUN/full765 caches. Sessionmode is opt-in; require all223priorpasses,
+zero failures and identical per-request outcomes versus retainedsequencebaseline.
+NEXT await existingjob, compare outcomes without reading hidden taskcontents,
+record results/scorejournal, publish andmerge exactreviewedgreenhead. Do not
+change runtime while the pinned candidate is evaluated.
 
 Further work required by the goal: a bounded plan with multiple meaningful
 operations and result-driven revision; explicit choices among unresolved targets;
