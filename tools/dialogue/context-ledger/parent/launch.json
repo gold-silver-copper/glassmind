@@ -1,0 +1,16 @@
+{
+  "pid": 539613,
+  "scope": "glassmind-continuous-contextledger.scope",
+  "worktree": "/home/gsc/.cache/glassmind/continuous-20261010/contextledger",
+  "base_commit": "d84ba870465562456fb389805d3703ee12d41f23",
+  "task_sha256": "9b8c210a9e1541ae4f74434a4d455d443023294aaba6d63070fc10756eb40361",
+  "launcher_sha256": "5be92ce2ac4ab6769d0f5f115ad5201ed6eed2b51d5e040c6ab93fd453a48dcb",
+  "model": "gpt-6-astra",
+  "service_tier": "fast",
+  "authentication": "chatgpt",
+  "api_key_environment": "removed",
+  "memory_max": 8589934592,
+  "memory_swap_max": 0,
+  "timeout_seconds": 1800,
+  "review_fixtures": "tools/dialogue/*/parent paths masked; Git access to these explicitly forbidden"
+}

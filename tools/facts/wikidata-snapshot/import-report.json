@@ -1,0 +1,4911 @@
+{
+  "schema": 1,
+  "scope": "one fixed claims shard; all en/mul names",
+  "python": "3.14.7 (main, Aug 10 2026, 07:46:56) [GCC 16.1.1 20260728]",
+  "pyarrow": "25.0.1",
+  "sqlite": "3.53.4",
+  "files": [
+    {
+      "table": "claims",
+      "revision": "39e6837bef8b6f982fbf23acd19134e882400db7",
+      "path": "all/part-00-of-86.parquet",
+      "bytes": 529038605,
+      "sha256": "c6988fa659b6bf34db7c456986e31e76d44a03440d549fa1f2d66d162eeb5ffb",
+      "url": "https://huggingface.co/datasets/permutans/wikidata-claims/resolve/39e6837bef8b6f982fbf23acd19134e882400db7/all/part-00-of-86.parquet",
+      "source_rows": 9468504,
+      "counts": {
+        "non_item_subject": 324171,
+        "non_item_value": 3419027,
+        "kept": 5677515,
+        "deprecated": 11939,
+        "somevalue": 34893,
+        "novalue": 959
+      },
+      "samples": [
+        {
+          "source_ordinal": 0,
+          "row_id": 1,
+          "kept": false
+        },
+        {
+          "source_ordinal": 100003,
+          "row_id": 100004,
+          "kept": false
+        },
+        {
+          "source_ordinal": 200006,
+          "row_id": 200007,
+          "kept": false
+        },
+        {
+          "source_ordinal": 300009,
+          "row_id": 300010,
+          "kept": false
+        },
+        {
+          "source_ordinal": 400012,
+          "row_id": 400013,
+          "kept": true
+        },
+        {
+          "source_ordinal": 500015,
+          "row_id": 500016,
+          "kept": true
+        },
+        {
+          "source_ordinal": 600018,
+          "row_id": 600019,
+          "kept": true
+        },
+        {
+          "source_ordinal": 700021,
+          "row_id": 700022,
+          "kept": true
+        },
+        {
+          "source_ordinal": 800024,
+          "row_id": 800025,
+          "kept": true
+        },
+        {
+          "source_ordinal": 900027,
+          "row_id": 900028,
+          "kept": false
+        },
+        {
+          "source_ordinal": 1000030,
+          "row_id": 1000031,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1100033,
+          "row_id": 1100034,
+          "kept": false
+        },
+        {
+          "source_ordinal": 1200036,
+          "row_id": 1200037,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1300039,
+          "row_id": 1300040,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1400042,
+          "row_id": 1400043,
+          "kept": false
+        },
+        {
+          "source_ordinal": 1500045,
+          "row_id": 1500046,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1600048,
+          "row_id": 1600049,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1700051,
+          "row_id": 1700052,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1800054,
+          "row_id": 1800055,
+          "kept": false
+        },
+        {
+          "source_ordinal": 1900057,
+          "row_id": 1900058,
+          "kept": false
+        },
+        {
+          "source_ordinal": 2000060,
+          "row_id": 2000061,
+          "kept": false
+        },
+        {
+          "source_ordinal": 2100063,
+          "row_id": 2100064,
+          "kept": false
+        },
+        {
+          "source_ordinal": 2200066,
+          "row_id": 2200067,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2300069,
+          "row_id": 2300070,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2400072,
+          "row_id": 2400073,
+          "kept": false
+        },
+        {
+          "source_ordinal": 2500075,
+          "row_id": 2500076,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2600078,
+          "row_id": 2600079,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2700081,
+          "row_id": 2700082,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2800084,
+          "row_id": 2800085,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2900087,
+          "row_id": 2900088,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3000090,
+          "row_id": 3000091,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3100093,
+          "row_id": 3100094,
+          "kept": false
+        },
+        {
+          "source_ordinal": 3200096,
+          "row_id": 3200097,
+          "kept": false
+        },
+        {
+          "source_ordinal": 3300099,
+          "row_id": 3300100,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3400102,
+          "row_id": 3400103,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3500105,
+          "row_id": 3500106,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3600108,
+          "row_id": 3600109,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3700111,
+          "row_id": 3700112,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3800114,
+          "row_id": 3800115,
+          "kept": false
+        },
+        {
+          "source_ordinal": 3900117,
+          "row_id": 3900118,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4000120,
+          "row_id": 4000121,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4100123,
+          "row_id": 4100124,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4200126,
+          "row_id": 4200127,
+          "kept": false
+        },
+        {
+          "source_ordinal": 4300129,
+          "row_id": 4300130,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4400132,
+          "row_id": 4400133,
+          "kept": false
+        },
+        {
+          "source_ordinal": 4500135,
+          "row_id": 4500136,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4600138,
+          "row_id": 4600139,
+          "kept": false
+        },
+        {
+          "source_ordinal": 4700141,
+          "row_id": 4700142,
+          "kept": false
+        },
+        {
+          "source_ordinal": 4800144,
+          "row_id": 4800145,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4900147,
+          "row_id": 4900148,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5000150,
+          "row_id": 5000151,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5100153,
+          "row_id": 5100154,
+          "kept": false
+        },
+        {
+          "source_ordinal": 5200156,
+          "row_id": 5200157,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5300159,
+          "row_id": 5300160,
+          "kept": false
+        },
+        {
+          "source_ordinal": 5400162,
+          "row_id": 5400163,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5500165,
+          "row_id": 5500166,
+          "kept": false
+        },
+        {
+          "source_ordinal": 5600168,
+          "row_id": 5600169,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5700171,
+          "row_id": 5700172,
+          "kept": false
+        },
+        {
+          "source_ordinal": 5800174,
+          "row_id": 5800175,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5900177,
+          "row_id": 5900178,
+          "kept": false
+        },
+        {
+          "source_ordinal": 6000180,
+          "row_id": 6000181,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6100183,
+          "row_id": 6100184,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6200186,
+          "row_id": 6200187,
+          "kept": false
+        },
+        {
+          "source_ordinal": 6300189,
+          "row_id": 6300190,
+          "kept": false
+        },
+        {
+          "source_ordinal": 6400192,
+          "row_id": 6400193,
+          "kept": false
+        },
+        {
+          "source_ordinal": 6500195,
+          "row_id": 6500196,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6600198,
+          "row_id": 6600199,
+          "kept": false
+        },
+        {
+          "source_ordinal": 6700201,
+          "row_id": 6700202,
+          "kept": false
+        },
+        {
+          "source_ordinal": 6800204,
+          "row_id": 6800205,
+          "kept": false
+        },
+        {
+          "source_ordinal": 6900207,
+          "row_id": 6900208,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7000210,
+          "row_id": 7000211,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7100213,
+          "row_id": 7100214,
+          "kept": false
+        },
+        {
+          "source_ordinal": 7200216,
+          "row_id": 7200217,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7300219,
+          "row_id": 7300220,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7400222,
+          "row_id": 7400223,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7500225,
+          "row_id": 7500226,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7600228,
+          "row_id": 7600229,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7700231,
+          "row_id": 7700232,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7800234,
+          "row_id": 7800235,
+          "kept": false
+        },
+        {
+          "source_ordinal": 7900237,
+          "row_id": 7900238,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8000240,
+          "row_id": 8000241,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8100243,
+          "row_id": 8100244,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8200246,
+          "row_id": 8200247,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8300249,
+          "row_id": 8300250,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8400252,
+          "row_id": 8400253,
+          "kept": false
+        },
+        {
+          "source_ordinal": 8500255,
+          "row_id": 8500256,
+          "kept": false
+        },
+        {
+          "source_ordinal": 8600258,
+          "row_id": 8600259,
+          "kept": false
+        },
+        {
+          "source_ordinal": 8700261,
+          "row_id": 8700262,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8800264,
+          "row_id": 8800265,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8900267,
+          "row_id": 8900268,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9000270,
+          "row_id": 9000271,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9100273,
+          "row_id": 9100274,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9200276,
+          "row_id": 9200277,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9300279,
+          "row_id": 9300280,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9400282,
+          "row_id": 9400283,
+          "kept": false
+        },
+        {
+          "source_ordinal": 9468503,
+          "row_id": 9468504,
+          "kept": false
+        }
+      ],
+      "row_id_offset": 0
+    },
+    {
+      "table": "labels",
+      "revision": "51005b1a1495beae6371838584ad73eaf170ebc9",
+      "path": "en/part-0-of-2.parquet",
+      "bytes": 298597410,
+      "sha256": "a8f8c0099165f170a681958a2e2ee42a994128b985cd0a36e08be708395f65cc",
+      "url": "https://huggingface.co/datasets/permutans/wikidata-labels/resolve/51005b1a1495beae6371838584ad73eaf170ebc9/en/part-0-of-2.parquet",
+      "source_rows": 24701651,
+      "counts": {
+        "non_item_subject": 13927,
+        "kept": 24687724
+      },
+      "samples": [
+        {
+          "source_ordinal": 0,
+          "row_id": 1,
+          "kept": false
+        },
+        {
+          "source_ordinal": 100003,
+          "row_id": 100004,
+          "kept": true
+        },
+        {
+          "source_ordinal": 200006,
+          "row_id": 200007,
+          "kept": true
+        },
+        {
+          "source_ordinal": 300009,
+          "row_id": 300010,
+          "kept": true
+        },
+        {
+          "source_ordinal": 400012,
+          "row_id": 400013,
+          "kept": true
+        },
+        {
+          "source_ordinal": 500015,
+          "row_id": 500016,
+          "kept": true
+        },
+        {
+          "source_ordinal": 600018,
+          "row_id": 600019,
+          "kept": true
+        },
+        {
+          "source_ordinal": 700021,
+          "row_id": 700022,
+          "kept": true
+        },
+        {
+          "source_ordinal": 800024,
+          "row_id": 800025,
+          "kept": true
+        },
+        {
+          "source_ordinal": 900027,
+          "row_id": 900028,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1000030,
+          "row_id": 1000031,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1100033,
+          "row_id": 1100034,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1200036,
+          "row_id": 1200037,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1300039,
+          "row_id": 1300040,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1400042,
+          "row_id": 1400043,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1500045,
+          "row_id": 1500046,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1600048,
+          "row_id": 1600049,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1700051,
+          "row_id": 1700052,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1800054,
+          "row_id": 1800055,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1900057,
+          "row_id": 1900058,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2000060,
+          "row_id": 2000061,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2100063,
+          "row_id": 2100064,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2200066,
+          "row_id": 2200067,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2300069,
+          "row_id": 2300070,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2400072,
+          "row_id": 2400073,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2500075,
+          "row_id": 2500076,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2600078,
+          "row_id": 2600079,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2700081,
+          "row_id": 2700082,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2800084,
+          "row_id": 2800085,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2900087,
+          "row_id": 2900088,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3000090,
+          "row_id": 3000091,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3100093,
+          "row_id": 3100094,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3200096,
+          "row_id": 3200097,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3300099,
+          "row_id": 3300100,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3400102,
+          "row_id": 3400103,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3500105,
+          "row_id": 3500106,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3600108,
+          "row_id": 3600109,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3700111,
+          "row_id": 3700112,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3800114,
+          "row_id": 3800115,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3900117,
+          "row_id": 3900118,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4000120,
+          "row_id": 4000121,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4100123,
+          "row_id": 4100124,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4200126,
+          "row_id": 4200127,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4300129,
+          "row_id": 4300130,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4400132,
+          "row_id": 4400133,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4500135,
+          "row_id": 4500136,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4600138,
+          "row_id": 4600139,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4700141,
+          "row_id": 4700142,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4800144,
+          "row_id": 4800145,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4900147,
+          "row_id": 4900148,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5000150,
+          "row_id": 5000151,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5100153,
+          "row_id": 5100154,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5200156,
+          "row_id": 5200157,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5300159,
+          "row_id": 5300160,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5400162,
+          "row_id": 5400163,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5500165,
+          "row_id": 5500166,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5600168,
+          "row_id": 5600169,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5700171,
+          "row_id": 5700172,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5800174,
+          "row_id": 5800175,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5900177,
+          "row_id": 5900178,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6000180,
+          "row_id": 6000181,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6100183,
+          "row_id": 6100184,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6200186,
+          "row_id": 6200187,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6300189,
+          "row_id": 6300190,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6400192,
+          "row_id": 6400193,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6500195,
+          "row_id": 6500196,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6600198,
+          "row_id": 6600199,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6700201,
+          "row_id": 6700202,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6800204,
+          "row_id": 6800205,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6900207,
+          "row_id": 6900208,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7000210,
+          "row_id": 7000211,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7100213,
+          "row_id": 7100214,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7200216,
+          "row_id": 7200217,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7300219,
+          "row_id": 7300220,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7400222,
+          "row_id": 7400223,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7500225,
+          "row_id": 7500226,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7600228,
+          "row_id": 7600229,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7700231,
+          "row_id": 7700232,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7800234,
+          "row_id": 7800235,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7900237,
+          "row_id": 7900238,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8000240,
+          "row_id": 8000241,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8100243,
+          "row_id": 8100244,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8200246,
+          "row_id": 8200247,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8300249,
+          "row_id": 8300250,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8400252,
+          "row_id": 8400253,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8500255,
+          "row_id": 8500256,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8600258,
+          "row_id": 8600259,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8700261,
+          "row_id": 8700262,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8800264,
+          "row_id": 8800265,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8900267,
+          "row_id": 8900268,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9000270,
+          "row_id": 9000271,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9100273,
+          "row_id": 9100274,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9200276,
+          "row_id": 9200277,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9300279,
+          "row_id": 9300280,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9400282,
+          "row_id": 9400283,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9500285,
+          "row_id": 9500286,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9600288,
+          "row_id": 9600289,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9700291,
+          "row_id": 9700292,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9800294,
+          "row_id": 9800295,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9900297,
+          "row_id": 9900298,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10000300,
+          "row_id": 10000301,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10100303,
+          "row_id": 10100304,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10200306,
+          "row_id": 10200307,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10300309,
+          "row_id": 10300310,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10400312,
+          "row_id": 10400313,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10500315,
+          "row_id": 10500316,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10600318,
+          "row_id": 10600319,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10700321,
+          "row_id": 10700322,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10800324,
+          "row_id": 10800325,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10900327,
+          "row_id": 10900328,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11000330,
+          "row_id": 11000331,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11100333,
+          "row_id": 11100334,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11200336,
+          "row_id": 11200337,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11300339,
+          "row_id": 11300340,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11400342,
+          "row_id": 11400343,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11500345,
+          "row_id": 11500346,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11600348,
+          "row_id": 11600349,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11700351,
+          "row_id": 11700352,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11800354,
+          "row_id": 11800355,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11900357,
+          "row_id": 11900358,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12000360,
+          "row_id": 12000361,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12100363,
+          "row_id": 12100364,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12200366,
+          "row_id": 12200367,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12300369,
+          "row_id": 12300370,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12400372,
+          "row_id": 12400373,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12500375,
+          "row_id": 12500376,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12600378,
+          "row_id": 12600379,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12700381,
+          "row_id": 12700382,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12800384,
+          "row_id": 12800385,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12900387,
+          "row_id": 12900388,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13000390,
+          "row_id": 13000391,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13100393,
+          "row_id": 13100394,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13200396,
+          "row_id": 13200397,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13300399,
+          "row_id": 13300400,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13400402,
+          "row_id": 13400403,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13500405,
+          "row_id": 13500406,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13600408,
+          "row_id": 13600409,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13700411,
+          "row_id": 13700412,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13800414,
+          "row_id": 13800415,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13900417,
+          "row_id": 13900418,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14000420,
+          "row_id": 14000421,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14100423,
+          "row_id": 14100424,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14200426,
+          "row_id": 14200427,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14300429,
+          "row_id": 14300430,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14400432,
+          "row_id": 14400433,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14500435,
+          "row_id": 14500436,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14600438,
+          "row_id": 14600439,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14700441,
+          "row_id": 14700442,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14800444,
+          "row_id": 14800445,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14900447,
+          "row_id": 14900448,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15000450,
+          "row_id": 15000451,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15100453,
+          "row_id": 15100454,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15200456,
+          "row_id": 15200457,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15300459,
+          "row_id": 15300460,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15400462,
+          "row_id": 15400463,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15500465,
+          "row_id": 15500466,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15600468,
+          "row_id": 15600469,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15700471,
+          "row_id": 15700472,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15800474,
+          "row_id": 15800475,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15900477,
+          "row_id": 15900478,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16000480,
+          "row_id": 16000481,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16100483,
+          "row_id": 16100484,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16200486,
+          "row_id": 16200487,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16300489,
+          "row_id": 16300490,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16400492,
+          "row_id": 16400493,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16500495,
+          "row_id": 16500496,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16600498,
+          "row_id": 16600499,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16700501,
+          "row_id": 16700502,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16800504,
+          "row_id": 16800505,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16900507,
+          "row_id": 16900508,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17000510,
+          "row_id": 17000511,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17100513,
+          "row_id": 17100514,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17200516,
+          "row_id": 17200517,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17300519,
+          "row_id": 17300520,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17400522,
+          "row_id": 17400523,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17500525,
+          "row_id": 17500526,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17600528,
+          "row_id": 17600529,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17700531,
+          "row_id": 17700532,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17800534,
+          "row_id": 17800535,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17900537,
+          "row_id": 17900538,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18000540,
+          "row_id": 18000541,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18100543,
+          "row_id": 18100544,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18200546,
+          "row_id": 18200547,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18300549,
+          "row_id": 18300550,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18400552,
+          "row_id": 18400553,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18500555,
+          "row_id": 18500556,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18600558,
+          "row_id": 18600559,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18700561,
+          "row_id": 18700562,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18800564,
+          "row_id": 18800565,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18900567,
+          "row_id": 18900568,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19000570,
+          "row_id": 19000571,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19100573,
+          "row_id": 19100574,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19200576,
+          "row_id": 19200577,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19300579,
+          "row_id": 19300580,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19400582,
+          "row_id": 19400583,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19500585,
+          "row_id": 19500586,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19600588,
+          "row_id": 19600589,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19700591,
+          "row_id": 19700592,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19800594,
+          "row_id": 19800595,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19900597,
+          "row_id": 19900598,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20000600,
+          "row_id": 20000601,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20100603,
+          "row_id": 20100604,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20200606,
+          "row_id": 20200607,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20300609,
+          "row_id": 20300610,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20400612,
+          "row_id": 20400613,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20500615,
+          "row_id": 20500616,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20600618,
+          "row_id": 20600619,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20700621,
+          "row_id": 20700622,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20800624,
+          "row_id": 20800625,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20900627,
+          "row_id": 20900628,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21000630,
+          "row_id": 21000631,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21100633,
+          "row_id": 21100634,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21200636,
+          "row_id": 21200637,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21300639,
+          "row_id": 21300640,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21400642,
+          "row_id": 21400643,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21500645,
+          "row_id": 21500646,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21600648,
+          "row_id": 21600649,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21700651,
+          "row_id": 21700652,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21800654,
+          "row_id": 21800655,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21900657,
+          "row_id": 21900658,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22000660,
+          "row_id": 22000661,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22100663,
+          "row_id": 22100664,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22200666,
+          "row_id": 22200667,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22300669,
+          "row_id": 22300670,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22400672,
+          "row_id": 22400673,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22500675,
+          "row_id": 22500676,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22600678,
+          "row_id": 22600679,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22700681,
+          "row_id": 22700682,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22800684,
+          "row_id": 22800685,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22900687,
+          "row_id": 22900688,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23000690,
+          "row_id": 23000691,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23100693,
+          "row_id": 23100694,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23200696,
+          "row_id": 23200697,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23300699,
+          "row_id": 23300700,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23400702,
+          "row_id": 23400703,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23500705,
+          "row_id": 23500706,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23600708,
+          "row_id": 23600709,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23700711,
+          "row_id": 23700712,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23800714,
+          "row_id": 23800715,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23900717,
+          "row_id": 23900718,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24000720,
+          "row_id": 24000721,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24100723,
+          "row_id": 24100724,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24200726,
+          "row_id": 24200727,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24300729,
+          "row_id": 24300730,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24400732,
+          "row_id": 24400733,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24500735,
+          "row_id": 24500736,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24600738,
+          "row_id": 24600739,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24700741,
+          "row_id": 24700742,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24701650,
+          "row_id": 24701651,
+          "kept": true
+        }
+      ],
+      "row_id_offset": 0
+    },
+    {
+      "table": "labels",
+      "revision": "51005b1a1495beae6371838584ad73eaf170ebc9",
+      "path": "en/part-1-of-2.parquet",
+      "bytes": 293137553,
+      "sha256": "b418a70d1d7b1120e1f6a9308c97a438cb093b49e1cd598053b3e056581c62be",
+      "url": "https://huggingface.co/datasets/permutans/wikidata-labels/resolve/51005b1a1495beae6371838584ad73eaf170ebc9/en/part-1-of-2.parquet",
+      "source_rows": 24701651,
+      "counts": {
+        "kept": 24701651
+      },
+      "samples": [
+        {
+          "source_ordinal": 0,
+          "row_id": 24701652,
+          "kept": true
+        },
+        {
+          "source_ordinal": 100003,
+          "row_id": 24801655,
+          "kept": true
+        },
+        {
+          "source_ordinal": 200006,
+          "row_id": 24901658,
+          "kept": true
+        },
+        {
+          "source_ordinal": 300009,
+          "row_id": 25001661,
+          "kept": true
+        },
+        {
+          "source_ordinal": 400012,
+          "row_id": 25101664,
+          "kept": true
+        },
+        {
+          "source_ordinal": 500015,
+          "row_id": 25201667,
+          "kept": true
+        },
+        {
+          "source_ordinal": 600018,
+          "row_id": 25301670,
+          "kept": true
+        },
+        {
+          "source_ordinal": 700021,
+          "row_id": 25401673,
+          "kept": true
+        },
+        {
+          "source_ordinal": 800024,
+          "row_id": 25501676,
+          "kept": true
+        },
+        {
+          "source_ordinal": 900027,
+          "row_id": 25601679,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1000030,
+          "row_id": 25701682,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1100033,
+          "row_id": 25801685,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1200036,
+          "row_id": 25901688,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1300039,
+          "row_id": 26001691,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1400042,
+          "row_id": 26101694,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1500045,
+          "row_id": 26201697,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1600048,
+          "row_id": 26301700,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1700051,
+          "row_id": 26401703,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1800054,
+          "row_id": 26501706,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1900057,
+          "row_id": 26601709,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2000060,
+          "row_id": 26701712,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2100063,
+          "row_id": 26801715,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2200066,
+          "row_id": 26901718,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2300069,
+          "row_id": 27001721,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2400072,
+          "row_id": 27101724,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2500075,
+          "row_id": 27201727,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2600078,
+          "row_id": 27301730,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2700081,
+          "row_id": 27401733,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2800084,
+          "row_id": 27501736,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2900087,
+          "row_id": 27601739,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3000090,
+          "row_id": 27701742,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3100093,
+          "row_id": 27801745,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3200096,
+          "row_id": 27901748,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3300099,
+          "row_id": 28001751,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3400102,
+          "row_id": 28101754,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3500105,
+          "row_id": 28201757,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3600108,
+          "row_id": 28301760,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3700111,
+          "row_id": 28401763,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3800114,
+          "row_id": 28501766,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3900117,
+          "row_id": 28601769,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4000120,
+          "row_id": 28701772,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4100123,
+          "row_id": 28801775,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4200126,
+          "row_id": 28901778,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4300129,
+          "row_id": 29001781,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4400132,
+          "row_id": 29101784,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4500135,
+          "row_id": 29201787,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4600138,
+          "row_id": 29301790,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4700141,
+          "row_id": 29401793,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4800144,
+          "row_id": 29501796,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4900147,
+          "row_id": 29601799,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5000150,
+          "row_id": 29701802,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5100153,
+          "row_id": 29801805,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5200156,
+          "row_id": 29901808,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5300159,
+          "row_id": 30001811,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5400162,
+          "row_id": 30101814,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5500165,
+          "row_id": 30201817,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5600168,
+          "row_id": 30301820,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5700171,
+          "row_id": 30401823,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5800174,
+          "row_id": 30501826,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5900177,
+          "row_id": 30601829,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6000180,
+          "row_id": 30701832,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6100183,
+          "row_id": 30801835,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6200186,
+          "row_id": 30901838,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6300189,
+          "row_id": 31001841,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6400192,
+          "row_id": 31101844,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6500195,
+          "row_id": 31201847,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6600198,
+          "row_id": 31301850,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6700201,
+          "row_id": 31401853,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6800204,
+          "row_id": 31501856,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6900207,
+          "row_id": 31601859,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7000210,
+          "row_id": 31701862,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7100213,
+          "row_id": 31801865,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7200216,
+          "row_id": 31901868,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7300219,
+          "row_id": 32001871,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7400222,
+          "row_id": 32101874,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7500225,
+          "row_id": 32201877,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7600228,
+          "row_id": 32301880,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7700231,
+          "row_id": 32401883,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7800234,
+          "row_id": 32501886,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7900237,
+          "row_id": 32601889,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8000240,
+          "row_id": 32701892,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8100243,
+          "row_id": 32801895,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8200246,
+          "row_id": 32901898,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8300249,
+          "row_id": 33001901,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8400252,
+          "row_id": 33101904,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8500255,
+          "row_id": 33201907,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8600258,
+          "row_id": 33301910,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8700261,
+          "row_id": 33401913,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8800264,
+          "row_id": 33501916,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8900267,
+          "row_id": 33601919,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9000270,
+          "row_id": 33701922,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9100273,
+          "row_id": 33801925,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9200276,
+          "row_id": 33901928,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9300279,
+          "row_id": 34001931,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9400282,
+          "row_id": 34101934,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9500285,
+          "row_id": 34201937,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9600288,
+          "row_id": 34301940,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9700291,
+          "row_id": 34401943,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9800294,
+          "row_id": 34501946,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9900297,
+          "row_id": 34601949,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10000300,
+          "row_id": 34701952,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10100303,
+          "row_id": 34801955,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10200306,
+          "row_id": 34901958,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10300309,
+          "row_id": 35001961,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10400312,
+          "row_id": 35101964,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10500315,
+          "row_id": 35201967,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10600318,
+          "row_id": 35301970,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10700321,
+          "row_id": 35401973,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10800324,
+          "row_id": 35501976,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10900327,
+          "row_id": 35601979,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11000330,
+          "row_id": 35701982,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11100333,
+          "row_id": 35801985,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11200336,
+          "row_id": 35901988,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11300339,
+          "row_id": 36001991,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11400342,
+          "row_id": 36101994,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11500345,
+          "row_id": 36201997,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11600348,
+          "row_id": 36302000,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11700351,
+          "row_id": 36402003,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11800354,
+          "row_id": 36502006,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11900357,
+          "row_id": 36602009,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12000360,
+          "row_id": 36702012,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12100363,
+          "row_id": 36802015,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12200366,
+          "row_id": 36902018,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12300369,
+          "row_id": 37002021,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12400372,
+          "row_id": 37102024,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12500375,
+          "row_id": 37202027,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12600378,
+          "row_id": 37302030,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12700381,
+          "row_id": 37402033,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12800384,
+          "row_id": 37502036,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12900387,
+          "row_id": 37602039,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13000390,
+          "row_id": 37702042,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13100393,
+          "row_id": 37802045,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13200396,
+          "row_id": 37902048,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13300399,
+          "row_id": 38002051,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13400402,
+          "row_id": 38102054,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13500405,
+          "row_id": 38202057,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13600408,
+          "row_id": 38302060,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13700411,
+          "row_id": 38402063,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13800414,
+          "row_id": 38502066,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13900417,
+          "row_id": 38602069,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14000420,
+          "row_id": 38702072,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14100423,
+          "row_id": 38802075,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14200426,
+          "row_id": 38902078,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14300429,
+          "row_id": 39002081,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14400432,
+          "row_id": 39102084,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14500435,
+          "row_id": 39202087,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14600438,
+          "row_id": 39302090,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14700441,
+          "row_id": 39402093,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14800444,
+          "row_id": 39502096,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14900447,
+          "row_id": 39602099,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15000450,
+          "row_id": 39702102,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15100453,
+          "row_id": 39802105,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15200456,
+          "row_id": 39902108,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15300459,
+          "row_id": 40002111,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15400462,
+          "row_id": 40102114,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15500465,
+          "row_id": 40202117,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15600468,
+          "row_id": 40302120,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15700471,
+          "row_id": 40402123,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15800474,
+          "row_id": 40502126,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15900477,
+          "row_id": 40602129,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16000480,
+          "row_id": 40702132,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16100483,
+          "row_id": 40802135,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16200486,
+          "row_id": 40902138,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16300489,
+          "row_id": 41002141,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16400492,
+          "row_id": 41102144,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16500495,
+          "row_id": 41202147,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16600498,
+          "row_id": 41302150,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16700501,
+          "row_id": 41402153,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16800504,
+          "row_id": 41502156,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16900507,
+          "row_id": 41602159,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17000510,
+          "row_id": 41702162,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17100513,
+          "row_id": 41802165,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17200516,
+          "row_id": 41902168,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17300519,
+          "row_id": 42002171,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17400522,
+          "row_id": 42102174,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17500525,
+          "row_id": 42202177,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17600528,
+          "row_id": 42302180,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17700531,
+          "row_id": 42402183,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17800534,
+          "row_id": 42502186,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17900537,
+          "row_id": 42602189,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18000540,
+          "row_id": 42702192,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18100543,
+          "row_id": 42802195,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18200546,
+          "row_id": 42902198,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18300549,
+          "row_id": 43002201,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18400552,
+          "row_id": 43102204,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18500555,
+          "row_id": 43202207,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18600558,
+          "row_id": 43302210,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18700561,
+          "row_id": 43402213,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18800564,
+          "row_id": 43502216,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18900567,
+          "row_id": 43602219,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19000570,
+          "row_id": 43702222,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19100573,
+          "row_id": 43802225,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19200576,
+          "row_id": 43902228,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19300579,
+          "row_id": 44002231,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19400582,
+          "row_id": 44102234,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19500585,
+          "row_id": 44202237,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19600588,
+          "row_id": 44302240,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19700591,
+          "row_id": 44402243,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19800594,
+          "row_id": 44502246,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19900597,
+          "row_id": 44602249,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20000600,
+          "row_id": 44702252,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20100603,
+          "row_id": 44802255,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20200606,
+          "row_id": 44902258,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20300609,
+          "row_id": 45002261,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20400612,
+          "row_id": 45102264,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20500615,
+          "row_id": 45202267,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20600618,
+          "row_id": 45302270,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20700621,
+          "row_id": 45402273,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20800624,
+          "row_id": 45502276,
+          "kept": true
+        },
+        {
+          "source_ordinal": 20900627,
+          "row_id": 45602279,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21000630,
+          "row_id": 45702282,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21100633,
+          "row_id": 45802285,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21200636,
+          "row_id": 45902288,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21300639,
+          "row_id": 46002291,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21400642,
+          "row_id": 46102294,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21500645,
+          "row_id": 46202297,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21600648,
+          "row_id": 46302300,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21700651,
+          "row_id": 46402303,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21800654,
+          "row_id": 46502306,
+          "kept": true
+        },
+        {
+          "source_ordinal": 21900657,
+          "row_id": 46602309,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22000660,
+          "row_id": 46702312,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22100663,
+          "row_id": 46802315,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22200666,
+          "row_id": 46902318,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22300669,
+          "row_id": 47002321,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22400672,
+          "row_id": 47102324,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22500675,
+          "row_id": 47202327,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22600678,
+          "row_id": 47302330,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22700681,
+          "row_id": 47402333,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22800684,
+          "row_id": 47502336,
+          "kept": true
+        },
+        {
+          "source_ordinal": 22900687,
+          "row_id": 47602339,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23000690,
+          "row_id": 47702342,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23100693,
+          "row_id": 47802345,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23200696,
+          "row_id": 47902348,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23300699,
+          "row_id": 48002351,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23400702,
+          "row_id": 48102354,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23500705,
+          "row_id": 48202357,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23600708,
+          "row_id": 48302360,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23700711,
+          "row_id": 48402363,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23800714,
+          "row_id": 48502366,
+          "kept": true
+        },
+        {
+          "source_ordinal": 23900717,
+          "row_id": 48602369,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24000720,
+          "row_id": 48702372,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24100723,
+          "row_id": 48802375,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24200726,
+          "row_id": 48902378,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24300729,
+          "row_id": 49002381,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24400732,
+          "row_id": 49102384,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24500735,
+          "row_id": 49202387,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24600738,
+          "row_id": 49302390,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24700741,
+          "row_id": 49402393,
+          "kept": true
+        },
+        {
+          "source_ordinal": 24701650,
+          "row_id": 49403302,
+          "kept": true
+        }
+      ],
+      "row_id_offset": 24701651
+    },
+    {
+      "table": "labels",
+      "revision": "51005b1a1495beae6371838584ad73eaf170ebc9",
+      "path": "mul/part-0-of-1.parquet",
+      "bytes": 203150922,
+      "sha256": "591e3de9490939979325d22222b26717d526c4a5204860bdaf92f82c8849e4e6",
+      "url": "https://huggingface.co/datasets/permutans/wikidata-labels/resolve/51005b1a1495beae6371838584ad73eaf170ebc9/mul/part-0-of-1.parquet",
+      "source_rows": 19975251,
+      "counts": {
+        "non_item_subject": 445,
+        "kept": 19974806
+      },
+      "samples": [
+        {
+          "source_ordinal": 0,
+          "row_id": 49403303,
+          "kept": false
+        },
+        {
+          "source_ordinal": 100003,
+          "row_id": 49503306,
+          "kept": true
+        },
+        {
+          "source_ordinal": 200006,
+          "row_id": 49603309,
+          "kept": true
+        },
+        {
+          "source_ordinal": 300009,
+          "row_id": 49703312,
+          "kept": true
+        },
+        {
+          "source_ordinal": 400012,
+          "row_id": 49803315,
+          "kept": true
+        },
+        {
+          "source_ordinal": 500015,
+          "row_id": 49903318,
+          "kept": true
+        },
+        {
+          "source_ordinal": 600018,
+          "row_id": 50003321,
+          "kept": true
+        },
+        {
+          "source_ordinal": 700021,
+          "row_id": 50103324,
+          "kept": true
+        },
+        {
+          "source_ordinal": 800024,
+          "row_id": 50203327,
+          "kept": true
+        },
+        {
+          "source_ordinal": 900027,
+          "row_id": 50303330,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1000030,
+          "row_id": 50403333,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1100033,
+          "row_id": 50503336,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1200036,
+          "row_id": 50603339,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1300039,
+          "row_id": 50703342,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1400042,
+          "row_id": 50803345,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1500045,
+          "row_id": 50903348,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1600048,
+          "row_id": 51003351,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1700051,
+          "row_id": 51103354,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1800054,
+          "row_id": 51203357,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1900057,
+          "row_id": 51303360,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2000060,
+          "row_id": 51403363,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2100063,
+          "row_id": 51503366,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2200066,
+          "row_id": 51603369,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2300069,
+          "row_id": 51703372,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2400072,
+          "row_id": 51803375,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2500075,
+          "row_id": 51903378,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2600078,
+          "row_id": 52003381,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2700081,
+          "row_id": 52103384,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2800084,
+          "row_id": 52203387,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2900087,
+          "row_id": 52303390,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3000090,
+          "row_id": 52403393,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3100093,
+          "row_id": 52503396,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3200096,
+          "row_id": 52603399,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3300099,
+          "row_id": 52703402,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3400102,
+          "row_id": 52803405,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3500105,
+          "row_id": 52903408,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3600108,
+          "row_id": 53003411,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3700111,
+          "row_id": 53103414,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3800114,
+          "row_id": 53203417,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3900117,
+          "row_id": 53303420,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4000120,
+          "row_id": 53403423,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4100123,
+          "row_id": 53503426,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4200126,
+          "row_id": 53603429,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4300129,
+          "row_id": 53703432,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4400132,
+          "row_id": 53803435,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4500135,
+          "row_id": 53903438,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4600138,
+          "row_id": 54003441,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4700141,
+          "row_id": 54103444,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4800144,
+          "row_id": 54203447,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4900147,
+          "row_id": 54303450,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5000150,
+          "row_id": 54403453,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5100153,
+          "row_id": 54503456,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5200156,
+          "row_id": 54603459,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5300159,
+          "row_id": 54703462,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5400162,
+          "row_id": 54803465,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5500165,
+          "row_id": 54903468,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5600168,
+          "row_id": 55003471,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5700171,
+          "row_id": 55103474,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5800174,
+          "row_id": 55203477,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5900177,
+          "row_id": 55303480,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6000180,
+          "row_id": 55403483,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6100183,
+          "row_id": 55503486,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6200186,
+          "row_id": 55603489,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6300189,
+          "row_id": 55703492,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6400192,
+          "row_id": 55803495,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6500195,
+          "row_id": 55903498,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6600198,
+          "row_id": 56003501,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6700201,
+          "row_id": 56103504,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6800204,
+          "row_id": 56203507,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6900207,
+          "row_id": 56303510,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7000210,
+          "row_id": 56403513,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7100213,
+          "row_id": 56503516,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7200216,
+          "row_id": 56603519,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7300219,
+          "row_id": 56703522,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7400222,
+          "row_id": 56803525,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7500225,
+          "row_id": 56903528,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7600228,
+          "row_id": 57003531,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7700231,
+          "row_id": 57103534,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7800234,
+          "row_id": 57203537,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7900237,
+          "row_id": 57303540,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8000240,
+          "row_id": 57403543,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8100243,
+          "row_id": 57503546,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8200246,
+          "row_id": 57603549,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8300249,
+          "row_id": 57703552,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8400252,
+          "row_id": 57803555,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8500255,
+          "row_id": 57903558,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8600258,
+          "row_id": 58003561,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8700261,
+          "row_id": 58103564,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8800264,
+          "row_id": 58203567,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8900267,
+          "row_id": 58303570,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9000270,
+          "row_id": 58403573,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9100273,
+          "row_id": 58503576,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9200276,
+          "row_id": 58603579,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9300279,
+          "row_id": 58703582,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9400282,
+          "row_id": 58803585,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9500285,
+          "row_id": 58903588,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9600288,
+          "row_id": 59003591,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9700291,
+          "row_id": 59103594,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9800294,
+          "row_id": 59203597,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9900297,
+          "row_id": 59303600,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10000300,
+          "row_id": 59403603,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10100303,
+          "row_id": 59503606,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10200306,
+          "row_id": 59603609,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10300309,
+          "row_id": 59703612,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10400312,
+          "row_id": 59803615,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10500315,
+          "row_id": 59903618,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10600318,
+          "row_id": 60003621,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10700321,
+          "row_id": 60103624,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10800324,
+          "row_id": 60203627,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10900327,
+          "row_id": 60303630,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11000330,
+          "row_id": 60403633,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11100333,
+          "row_id": 60503636,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11200336,
+          "row_id": 60603639,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11300339,
+          "row_id": 60703642,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11400342,
+          "row_id": 60803645,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11500345,
+          "row_id": 60903648,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11600348,
+          "row_id": 61003651,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11700351,
+          "row_id": 61103654,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11800354,
+          "row_id": 61203657,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11900357,
+          "row_id": 61303660,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12000360,
+          "row_id": 61403663,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12100363,
+          "row_id": 61503666,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12200366,
+          "row_id": 61603669,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12300369,
+          "row_id": 61703672,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12400372,
+          "row_id": 61803675,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12500375,
+          "row_id": 61903678,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12600378,
+          "row_id": 62003681,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12700381,
+          "row_id": 62103684,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12800384,
+          "row_id": 62203687,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12900387,
+          "row_id": 62303690,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13000390,
+          "row_id": 62403693,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13100393,
+          "row_id": 62503696,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13200396,
+          "row_id": 62603699,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13300399,
+          "row_id": 62703702,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13400402,
+          "row_id": 62803705,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13500405,
+          "row_id": 62903708,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13600408,
+          "row_id": 63003711,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13700411,
+          "row_id": 63103714,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13800414,
+          "row_id": 63203717,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13900417,
+          "row_id": 63303720,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14000420,
+          "row_id": 63403723,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14100423,
+          "row_id": 63503726,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14200426,
+          "row_id": 63603729,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14300429,
+          "row_id": 63703732,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14400432,
+          "row_id": 63803735,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14500435,
+          "row_id": 63903738,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14600438,
+          "row_id": 64003741,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14700441,
+          "row_id": 64103744,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14800444,
+          "row_id": 64203747,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14900447,
+          "row_id": 64303750,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15000450,
+          "row_id": 64403753,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15100453,
+          "row_id": 64503756,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15200456,
+          "row_id": 64603759,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15300459,
+          "row_id": 64703762,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15400462,
+          "row_id": 64803765,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15500465,
+          "row_id": 64903768,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15600468,
+          "row_id": 65003771,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15700471,
+          "row_id": 65103774,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15800474,
+          "row_id": 65203777,
+          "kept": true
+        },
+        {
+          "source_ordinal": 15900477,
+          "row_id": 65303780,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16000480,
+          "row_id": 65403783,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16100483,
+          "row_id": 65503786,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16200486,
+          "row_id": 65603789,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16300489,
+          "row_id": 65703792,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16400492,
+          "row_id": 65803795,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16500495,
+          "row_id": 65903798,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16600498,
+          "row_id": 66003801,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16700501,
+          "row_id": 66103804,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16800504,
+          "row_id": 66203807,
+          "kept": true
+        },
+        {
+          "source_ordinal": 16900507,
+          "row_id": 66303810,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17000510,
+          "row_id": 66403813,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17100513,
+          "row_id": 66503816,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17200516,
+          "row_id": 66603819,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17300519,
+          "row_id": 66703822,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17400522,
+          "row_id": 66803825,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17500525,
+          "row_id": 66903828,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17600528,
+          "row_id": 67003831,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17700531,
+          "row_id": 67103834,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17800534,
+          "row_id": 67203837,
+          "kept": true
+        },
+        {
+          "source_ordinal": 17900537,
+          "row_id": 67303840,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18000540,
+          "row_id": 67403843,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18100543,
+          "row_id": 67503846,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18200546,
+          "row_id": 67603849,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18300549,
+          "row_id": 67703852,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18400552,
+          "row_id": 67803855,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18500555,
+          "row_id": 67903858,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18600558,
+          "row_id": 68003861,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18700561,
+          "row_id": 68103864,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18800564,
+          "row_id": 68203867,
+          "kept": true
+        },
+        {
+          "source_ordinal": 18900567,
+          "row_id": 68303870,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19000570,
+          "row_id": 68403873,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19100573,
+          "row_id": 68503876,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19200576,
+          "row_id": 68603879,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19300579,
+          "row_id": 68703882,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19400582,
+          "row_id": 68803885,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19500585,
+          "row_id": 68903888,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19600588,
+          "row_id": 69003891,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19700591,
+          "row_id": 69103894,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19800594,
+          "row_id": 69203897,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19900597,
+          "row_id": 69303900,
+          "kept": true
+        },
+        {
+          "source_ordinal": 19975250,
+          "row_id": 69378553,
+          "kept": true
+        }
+      ],
+      "row_id_offset": 49403302
+    },
+    {
+      "table": "aliases",
+      "revision": "6ac11164399601dc6cc24c39a65d03b90c4dccc7",
+      "path": "en/part-0-of-1.parquet",
+      "bytes": 142385818,
+      "sha256": "d38bc4cdca09ce44a9f9bf85880c46ccd6d9f8e2b2e9670953a8a0690b4be05b",
+      "url": "https://huggingface.co/datasets/permutans/wikidata-aliases/resolve/6ac11164399601dc6cc24c39a65d03b90c4dccc7/en/part-0-of-1.parquet",
+      "source_rows": 14768817,
+      "counts": {
+        "non_item_subject": 24807,
+        "kept": 14744010
+      },
+      "samples": [
+        {
+          "source_ordinal": 0,
+          "row_id": 69378554,
+          "kept": false
+        },
+        {
+          "source_ordinal": 100003,
+          "row_id": 69478557,
+          "kept": true
+        },
+        {
+          "source_ordinal": 200006,
+          "row_id": 69578560,
+          "kept": true
+        },
+        {
+          "source_ordinal": 300009,
+          "row_id": 69678563,
+          "kept": true
+        },
+        {
+          "source_ordinal": 400012,
+          "row_id": 69778566,
+          "kept": true
+        },
+        {
+          "source_ordinal": 500015,
+          "row_id": 69878569,
+          "kept": true
+        },
+        {
+          "source_ordinal": 600018,
+          "row_id": 69978572,
+          "kept": true
+        },
+        {
+          "source_ordinal": 700021,
+          "row_id": 70078575,
+          "kept": true
+        },
+        {
+          "source_ordinal": 800024,
+          "row_id": 70178578,
+          "kept": true
+        },
+        {
+          "source_ordinal": 900027,
+          "row_id": 70278581,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1000030,
+          "row_id": 70378584,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1100033,
+          "row_id": 70478587,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1200036,
+          "row_id": 70578590,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1300039,
+          "row_id": 70678593,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1400042,
+          "row_id": 70778596,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1500045,
+          "row_id": 70878599,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1600048,
+          "row_id": 70978602,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1700051,
+          "row_id": 71078605,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1800054,
+          "row_id": 71178608,
+          "kept": true
+        },
+        {
+          "source_ordinal": 1900057,
+          "row_id": 71278611,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2000060,
+          "row_id": 71378614,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2100063,
+          "row_id": 71478617,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2200066,
+          "row_id": 71578620,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2300069,
+          "row_id": 71678623,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2400072,
+          "row_id": 71778626,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2500075,
+          "row_id": 71878629,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2600078,
+          "row_id": 71978632,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2700081,
+          "row_id": 72078635,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2800084,
+          "row_id": 72178638,
+          "kept": true
+        },
+        {
+          "source_ordinal": 2900087,
+          "row_id": 72278641,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3000090,
+          "row_id": 72378644,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3100093,
+          "row_id": 72478647,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3200096,
+          "row_id": 72578650,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3300099,
+          "row_id": 72678653,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3400102,
+          "row_id": 72778656,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3500105,
+          "row_id": 72878659,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3600108,
+          "row_id": 72978662,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3700111,
+          "row_id": 73078665,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3800114,
+          "row_id": 73178668,
+          "kept": true
+        },
+        {
+          "source_ordinal": 3900117,
+          "row_id": 73278671,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4000120,
+          "row_id": 73378674,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4100123,
+          "row_id": 73478677,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4200126,
+          "row_id": 73578680,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4300129,
+          "row_id": 73678683,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4400132,
+          "row_id": 73778686,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4500135,
+          "row_id": 73878689,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4600138,
+          "row_id": 73978692,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4700141,
+          "row_id": 74078695,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4800144,
+          "row_id": 74178698,
+          "kept": true
+        },
+        {
+          "source_ordinal": 4900147,
+          "row_id": 74278701,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5000150,
+          "row_id": 74378704,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5100153,
+          "row_id": 74478707,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5200156,
+          "row_id": 74578710,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5300159,
+          "row_id": 74678713,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5400162,
+          "row_id": 74778716,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5500165,
+          "row_id": 74878719,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5600168,
+          "row_id": 74978722,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5700171,
+          "row_id": 75078725,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5800174,
+          "row_id": 75178728,
+          "kept": true
+        },
+        {
+          "source_ordinal": 5900177,
+          "row_id": 75278731,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6000180,
+          "row_id": 75378734,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6100183,
+          "row_id": 75478737,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6200186,
+          "row_id": 75578740,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6300189,
+          "row_id": 75678743,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6400192,
+          "row_id": 75778746,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6500195,
+          "row_id": 75878749,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6600198,
+          "row_id": 75978752,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6700201,
+          "row_id": 76078755,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6800204,
+          "row_id": 76178758,
+          "kept": true
+        },
+        {
+          "source_ordinal": 6900207,
+          "row_id": 76278761,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7000210,
+          "row_id": 76378764,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7100213,
+          "row_id": 76478767,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7200216,
+          "row_id": 76578770,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7300219,
+          "row_id": 76678773,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7400222,
+          "row_id": 76778776,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7500225,
+          "row_id": 76878779,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7600228,
+          "row_id": 76978782,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7700231,
+          "row_id": 77078785,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7800234,
+          "row_id": 77178788,
+          "kept": true
+        },
+        {
+          "source_ordinal": 7900237,
+          "row_id": 77278791,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8000240,
+          "row_id": 77378794,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8100243,
+          "row_id": 77478797,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8200246,
+          "row_id": 77578800,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8300249,
+          "row_id": 77678803,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8400252,
+          "row_id": 77778806,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8500255,
+          "row_id": 77878809,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8600258,
+          "row_id": 77978812,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8700261,
+          "row_id": 78078815,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8800264,
+          "row_id": 78178818,
+          "kept": true
+        },
+        {
+          "source_ordinal": 8900267,
+          "row_id": 78278821,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9000270,
+          "row_id": 78378824,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9100273,
+          "row_id": 78478827,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9200276,
+          "row_id": 78578830,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9300279,
+          "row_id": 78678833,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9400282,
+          "row_id": 78778836,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9500285,
+          "row_id": 78878839,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9600288,
+          "row_id": 78978842,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9700291,
+          "row_id": 79078845,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9800294,
+          "row_id": 79178848,
+          "kept": true
+        },
+        {
+          "source_ordinal": 9900297,
+          "row_id": 79278851,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10000300,
+          "row_id": 79378854,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10100303,
+          "row_id": 79478857,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10200306,
+          "row_id": 79578860,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10300309,
+          "row_id": 79678863,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10400312,
+          "row_id": 79778866,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10500315,
+          "row_id": 79878869,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10600318,
+          "row_id": 79978872,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10700321,
+          "row_id": 80078875,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10800324,
+          "row_id": 80178878,
+          "kept": true
+        },
+        {
+          "source_ordinal": 10900327,
+          "row_id": 80278881,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11000330,
+          "row_id": 80378884,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11100333,
+          "row_id": 80478887,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11200336,
+          "row_id": 80578890,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11300339,
+          "row_id": 80678893,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11400342,
+          "row_id": 80778896,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11500345,
+          "row_id": 80878899,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11600348,
+          "row_id": 80978902,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11700351,
+          "row_id": 81078905,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11800354,
+          "row_id": 81178908,
+          "kept": true
+        },
+        {
+          "source_ordinal": 11900357,
+          "row_id": 81278911,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12000360,
+          "row_id": 81378914,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12100363,
+          "row_id": 81478917,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12200366,
+          "row_id": 81578920,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12300369,
+          "row_id": 81678923,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12400372,
+          "row_id": 81778926,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12500375,
+          "row_id": 81878929,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12600378,
+          "row_id": 81978932,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12700381,
+          "row_id": 82078935,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12800384,
+          "row_id": 82178938,
+          "kept": true
+        },
+        {
+          "source_ordinal": 12900387,
+          "row_id": 82278941,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13000390,
+          "row_id": 82378944,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13100393,
+          "row_id": 82478947,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13200396,
+          "row_id": 82578950,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13300399,
+          "row_id": 82678953,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13400402,
+          "row_id": 82778956,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13500405,
+          "row_id": 82878959,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13600408,
+          "row_id": 82978962,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13700411,
+          "row_id": 83078965,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13800414,
+          "row_id": 83178968,
+          "kept": true
+        },
+        {
+          "source_ordinal": 13900417,
+          "row_id": 83278971,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14000420,
+          "row_id": 83378974,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14100423,
+          "row_id": 83478977,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14200426,
+          "row_id": 83578980,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14300429,
+          "row_id": 83678983,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14400432,
+          "row_id": 83778986,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14500435,
+          "row_id": 83878989,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14600438,
+          "row_id": 83978992,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14700441,
+          "row_id": 84078995,
+          "kept": true
+        },
+        {
+          "source_ordinal": 14768816,
+          "row_id": 84147370,
+          "kept": true
+        }
+      ],
+      "row_id_offset": 69378553
+    },
+    {
+      "table": "aliases",
+      "revision": "6ac11164399601dc6cc24c39a65d03b90c4dccc7",
+      "path": "mul/part-0-of-1.parquet",
+      "bytes": 9295759,
+      "sha256": "e5adb9a5f85e2f198887d4d7a48aea62655e37d909bbe7a43c440fe476dea32f",
+      "url": "https://huggingface.co/datasets/permutans/wikidata-aliases/resolve/6ac11164399601dc6cc24c39a65d03b90c4dccc7/mul/part-0-of-1.parquet",
+      "source_rows": 882386,
+      "counts": {
+        "non_item_subject": 565,
+        "kept": 881821
+      },
+      "samples": [
+        {
+          "source_ordinal": 0,
+          "row_id": 84147371,
+          "kept": false
+        },
+        {
+          "source_ordinal": 100003,
+          "row_id": 84247374,
+          "kept": true
+        },
+        {
+          "source_ordinal": 200006,
+          "row_id": 84347377,
+          "kept": true
+        },
+        {
+          "source_ordinal": 300009,
+          "row_id": 84447380,
+          "kept": true
+        },
+        {
+          "source_ordinal": 400012,
+          "row_id": 84547383,
+          "kept": true
+        },
+        {
+          "source_ordinal": 500015,
+          "row_id": 84647386,
+          "kept": true
+        },
+        {
+          "source_ordinal": 600018,
+          "row_id": 84747389,
+          "kept": true
+        },
+        {
+          "source_ordinal": 700021,
+          "row_id": 84847392,
+          "kept": true
+        },
+        {
+          "source_ordinal": 800024,
+          "row_id": 84947395,
+          "kept": true
+        },
+        {
+          "source_ordinal": 882385,
+          "row_id": 85029756,
+          "kept": true
+        }
+      ],
+      "row_id_offset": 84147370
+    }
+  ],
+  "integrity": [
+    [
+      "ok"
+    ]
+  ],
+  "edges": 5677515,
+  "names": 84990012,
+  "edge_subjects": 1094802,
+  "ranks_qualifiers": [
+    [
+      0,
+      0,
+      4968743
+    ],
+    [
+      0,
+      1,
+      704320
+    ],
+    [
+      1,
+      0,
+      1519
+    ],
+    [
+      1,
+      1,
+      2933
+    ]
+  ],
+  "seconds": 602.322,
+  "peak_rss_kib": 602132,
+  "database_bytes": 10367000576
+}

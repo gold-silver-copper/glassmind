@@ -1,0 +1,16 @@
+# Working directory: /home/gsc/code/glassmind
+# Public metadata: unauthenticated urllib requests; repository revisions and
+# per-file URLs are preserved in source-metadata and pilot-manifest.json.
+python3 -m venv /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/venv
+/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/venv/bin/python -m pip install --only-binary=:all: 'pyarrow==25.0.1'
+systemd-run --user --scope --quiet --collect --unit=glassmind-snapshot-fetch-pilot -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 1850 python3 tools/facts/wikidata-snapshot/fetch.py /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot
+# Initial import failed before insertion because legacy GUID entity prefixes can
+# be lowercase. Its database, script and log are preserved separately.
+# Successful/current importer source is pinned in source/manifest.json.
+TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/tmp systemd-run --user --scope --quiet --collect --unit=glassmind-snapshot-import-pilot-v2 -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 1850 /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/venv/bin/python tools/facts/wikidata-snapshot/import.py /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot
+TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/tmp systemd-run --user --scope --quiet --collect --unit=glassmind-snapshot-source-audit -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 120 /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/venv/bin/python tools/facts/wikidata-snapshot/audit-source.py /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot
+systemd-run --user --scope --quiet --collect --unit=glassmind-snapshot-normalization -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 120 rustc -O /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/normalization-probe.rs -o /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/normalization-probe
+# Inline Python comparison preserved as audit-normalization.py.
+python3 /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/audit-normalization.py
+TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/tmp CARGO_BUILD_JOBS=1 tools/check.sh
+TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/tmp systemd-run --user --scope --quiet --collect --unit=glassmind-snapshot-row-audit -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 300 /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot/venv/bin/python tools/facts/wikidata-snapshot/audit.py /home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-snapshot

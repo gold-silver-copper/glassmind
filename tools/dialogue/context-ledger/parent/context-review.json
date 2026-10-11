@@ -1,0 +1,6 @@
+{
+  "source_contexts_reconstructed": 34223,
+  "original_conversations": 3174,
+  "features": "Actual source text, actual preceding USER, bounded predicted-span mask history and frozen baseline state; no annotation values used",
+  "scope": "Reconstructs all reported source contexts; does not independently rerun full BIO decoding or retrain weights"
+}

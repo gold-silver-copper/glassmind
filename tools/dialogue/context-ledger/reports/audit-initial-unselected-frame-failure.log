@@ -1,0 +1,9 @@
+Running as unit: run-p549488-i101209383.scope; invocation ID: dff5bc0383774dc189e0ee4654595877
+Traceback (most recent call last):
+  File "/home/gsc/.cache/glassmind/continuous-20261010/contextledger/tools/dialogue/context-ledger/audit.py", line 67, in <module>
+    fs,j=outcome(t,t['baseline']);baseline[(d['id'],i)]=(fs,j)
+         ~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/gsc/.cache/glassmind/continuous-20261010/contextledger/tools/dialogue/context-ledger/audit.py", line 59, in outcome
+    fs={f['service']:f for f in p['frames']}; gold={f['service']:f for f in t['gold']}; assert gold.keys()<=schemas.keys()
+                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

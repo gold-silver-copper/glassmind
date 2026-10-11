@@ -1,0 +1,203 @@
+{
+  "scope": "every Unicode scalar inserted between A and B; current Rust Store normalization versus pilot Python regex",
+  "scalars": 1112064,
+  "different": 6167,
+  "difference_stream_sha256": "dfe2e7c2b11e63dce38cc531ab8be1ed7e525da58d09c1dc9cff01de863c870a",
+  "rust_unicode": "Rust Unicode (17, 0, 0)",
+  "python_unicode": "16.0.0",
+  "examples": [
+    {
+      "codepoint": "U+0345",
+      "name": "COMBINING GREEK YPOGEGRAMMENI",
+      "rust": "a\u0345b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+0363",
+      "name": "COMBINING LATIN SMALL LETTER A",
+      "rust": "a\u0363b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+0364",
+      "name": "COMBINING LATIN SMALL LETTER E",
+      "rust": "a\u0364b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+0365",
+      "name": "COMBINING LATIN SMALL LETTER I",
+      "rust": "a\u0365b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+0366",
+      "name": "COMBINING LATIN SMALL LETTER O",
+      "rust": "a\u0366b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+0367",
+      "name": "COMBINING LATIN SMALL LETTER U",
+      "rust": "a\u0367b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+0368",
+      "name": "COMBINING LATIN SMALL LETTER C",
+      "rust": "a\u0368b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+0369",
+      "name": "COMBINING LATIN SMALL LETTER D",
+      "rust": "a\u0369b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+036A",
+      "name": "COMBINING LATIN SMALL LETTER H",
+      "rust": "a\u036ab",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+036B",
+      "name": "COMBINING LATIN SMALL LETTER M",
+      "rust": "a\u036bb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+036C",
+      "name": "COMBINING LATIN SMALL LETTER R",
+      "rust": "a\u036cb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+036D",
+      "name": "COMBINING LATIN SMALL LETTER T",
+      "rust": "a\u036db",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+036E",
+      "name": "COMBINING LATIN SMALL LETTER V",
+      "rust": "a\u036eb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+036F",
+      "name": "COMBINING LATIN SMALL LETTER X",
+      "rust": "a\u036fb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B0",
+      "name": "HEBREW POINT SHEVA",
+      "rust": "a\u05b0b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B1",
+      "name": "HEBREW POINT HATAF SEGOL",
+      "rust": "a\u05b1b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B2",
+      "name": "HEBREW POINT HATAF PATAH",
+      "rust": "a\u05b2b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B3",
+      "name": "HEBREW POINT HATAF QAMATS",
+      "rust": "a\u05b3b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B4",
+      "name": "HEBREW POINT HIRIQ",
+      "rust": "a\u05b4b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B5",
+      "name": "HEBREW POINT TSERE",
+      "rust": "a\u05b5b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B6",
+      "name": "HEBREW POINT SEGOL",
+      "rust": "a\u05b6b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B7",
+      "name": "HEBREW POINT PATAH",
+      "rust": "a\u05b7b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B8",
+      "name": "HEBREW POINT QAMATS",
+      "rust": "a\u05b8b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05B9",
+      "name": "HEBREW POINT HOLAM",
+      "rust": "a\u05b9b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05BA",
+      "name": "HEBREW POINT HOLAM HASER FOR VAV",
+      "rust": "a\u05bab",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05BB",
+      "name": "HEBREW POINT QUBUTS",
+      "rust": "a\u05bbb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05BC",
+      "name": "HEBREW POINT DAGESH OR MAPIQ",
+      "rust": "a\u05bcb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05BD",
+      "name": "HEBREW POINT METEG",
+      "rust": "a\u05bdb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05BF",
+      "name": "HEBREW POINT RAFE",
+      "rust": "a\u05bfb",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05C1",
+      "name": "HEBREW POINT SHIN DOT",
+      "rust": "a\u05c1b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05C2",
+      "name": "HEBREW POINT SIN DOT",
+      "rust": "a\u05c2b",
+      "python": "a b"
+    },
+    {
+      "codepoint": "U+05C4",
+      "name": "HEBREW MARK UPPER DOT",
+      "rust": "a\u05c4b",
+      "python": "a b"
+    }
+  ],
+  "conclusion": "Require native Rust normalization before runtime use; this is not an answer-accuracy measurement."
+}

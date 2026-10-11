@@ -1,0 +1,25 @@
+{
+  "archive_files_verified": 87,
+  "source_files_verified": 11,
+  "all_train_runtime_inputs_verified": 3174,
+  "baseline_inputs_exactly_aligned": true,
+  "source_checks": {
+    "source_rows": 34223,
+    "class_scores": 4380544,
+    "FIT_rows": 27241,
+    "FIT_NONE_targets": 1912,
+    "CAL_rows": 6982,
+    "CAL_NONE_targets": 663
+  },
+  "max_role_error": 0.00012567510157168726,
+  "FIT_role_labels": 128,
+  "verified": {
+    "FIT_opportunities": 5654,
+    "CAL_opportunities": 1432,
+    "candidate_scores_and_sources": 46789,
+    "decisions": 22912
+  },
+  "max_rank_error": 0.00017847872999254832,
+  "result": "REJECTED_CAL; all 16 original gates independently reproduced",
+  "limitation": "Frozen-state overlay; not integrated candidate inference or DEV accuracy"
+}

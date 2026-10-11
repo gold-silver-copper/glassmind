@@ -1,0 +1,62 @@
+Running as unit: run-p546144-i101193931.scope; invocation ID: c74659740c744a3a90bafda064ff4e1c
+Running as unit: run-p546165-i101193933.scope; invocation ID: 8d8e732ed4c64b609086533bf7eed122
+   Compiling glassmind-dialogue v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/contextledger/crates/dialogue)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.33s
+     Running unittests examples/context-ledger.rs (/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/target/debug/examples/context_ledger-f0d113e99df5332a)
+
+running 7 tests
+test experiment::tests::ambiguity_none_and_exhaustive_rank ... ok
+test experiment::tests::low_confidence_competitor_blocks_and_same_value_does_not ... ok
+test experiment::tests::none_supervision_and_ledger_exclusion ... ok
+test experiment::tests::contextual_source_masks_entities_and_uses_actual_user ... ok
+test experiment::tests::value_free_binding ... ok
+test experiment::tests::unicode_provenance_and_eviction_reset ... ok
+test experiment::tests::strict_input_and_model ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Running as unit: run-p546303-i101193934.scope; invocation ID: e70ae85a5a064895a0461cd9da8301c6
+    Checking utf8parse v0.2.2
+    Checking typenum v1.20.1
+    Checking generic-array v0.14.7
+    Checking anstyle-parse v1.0.0
+    Checking anstyle-query v1.1.5
+    Checking anstyle v1.0.14
+    Checking colorchoice v1.0.5
+    Checking is_terminal_polyfill v1.70.2
+    Checking anstream v1.0.0
+    Checking serde_core v1.0.229
+    Checking clap_lex v1.1.1
+    Checking strsim v0.11.1
+    Checking clap_builder v4.6.7
+    Checking zmij v1.0.23
+    Checking block-buffer v0.10.4
+    Checking crypto-common v0.1.7
+    Checking itoa v1.0.18
+    Checking memchr v2.8.3
+    Checking serde_json v1.0.151
+    Checking serde v1.0.229
+    Checking digest v0.10.7
+    Checking clap v4.6.7
+    Checking cpufeatures v0.2.17
+    Checking cfg-if v1.0.5
+    Checking sha2 v0.10.9
+    Checking glassmind-everyday v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/contextledger/crates/everyday)
+    Checking glassmind-dialogue v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/contextledger/crates/dialogue)
+error: this function has too many arguments (8/7)
+   --> crates/dialogue/examples/../../../tools/dialogue/context-ledger/native/context_ledger_experiment.rs:582:1
+    |
+582 | / fn rank_features(
+583 | |     user: &str,
+584 | |     target: &str,
+585 | |     intent: &str,
+...   |
+590 | |     mask_values: &[String],
+591 | | ) -> Vec<usize> {
+    | |_______________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#too_many_arguments
+    = note: `-D clippy::too-many-arguments` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::too_many_arguments)]`
+
+error: could not compile `glassmind-dialogue` (example "context-ledger") due to 1 previous error

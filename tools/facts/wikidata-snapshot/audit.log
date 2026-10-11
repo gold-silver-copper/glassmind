@@ -1,0 +1,7 @@
+{"table": "claims", "path": "all/part-00-of-86.parquet", "raw_samples": 96}
+{"table": "labels", "path": "en/part-0-of-2.parquet", "raw_samples": 249}
+{"table": "labels", "path": "en/part-1-of-2.parquet", "raw_samples": 249}
+{"table": "labels", "path": "mul/part-0-of-1.parquet", "raw_samples": 201}
+{"table": "aliases", "path": "en/part-0-of-1.parquet", "raw_samples": 149}
+{"table": "aliases", "path": "mul/part-0-of-1.parquet", "raw_samples": 10}
+{"source_sample_checks": [{"table": "claims", "path": "all/part-00-of-86.parquet", "raw_samples": 96}, {"table": "labels", "path": "en/part-0-of-2.parquet", "raw_samples": 249}, {"table": "labels", "path": "en/part-1-of-2.parquet", "raw_samples": 249}, {"table": "labels", "path": "mul/part-0-of-1.parquet", "raw_samples": 201}, {"table": "aliases", "path": "en/part-0-of-1.parquet", "raw_samples": 149}, {"table": "aliases", "path": "mul/part-0-of-1.parquet", "raw_samples": 10}], "total_raw_samples": 954, "edges": 5677515, "names": 84990012, "query_plans": {"forward": [[2, 0, 45, "SEARCH edges USING COVERING INDEX edges_forward (subject=? AND property=?)"]], "inverse": [[2, 0, 197, "SEARCH edges USING COVERING INDEX edges_inverse (property=? AND object=?)"]], "alias": [[2, 0, 48, "SEARCH names USING COVERING INDEX names_lookup (normalized=?)"]]}, "seconds": 7.297}

@@ -1,0 +1,2439 @@
+diff --git 1/crates/dialogue/examples/context-ledger.rs 2/crates/dialogue/examples/context-ledger.rs
+new file mode 100644
+index 0000000..b28f9fc
+--- /dev/null
++++ 2/crates/dialogue/examples/context-ledger.rs
+@@ -0,0 +1,6 @@
++//! Isolated offline contextual source-role experiment, not a runtime adapter.
++#[path = "../../../tools/dialogue/context-ledger/native/context_ledger_experiment.rs"]
++mod experiment;
++fn main() -> Result<(), Box<dyn std::error::Error>> {
++    experiment::run()
++}
+diff --git 1/tools/dialogue/context-ledger/DATA-LICENSE.txt 2/tools/dialogue/context-ledger/DATA-LICENSE.txt
+new file mode 100644
+index 0000000..e100aff
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/DATA-LICENSE.txt
+@@ -0,0 +1,427 @@
++Attribution-ShareAlike 4.0 International
++
++=======================================================================
++
++Creative Commons Corporation ("Creative Commons") is not a law firm and
++does not provide legal services or legal advice. Distribution of
++Creative Commons public licenses does not create a lawyer-client or
++other relationship. Creative Commons makes its licenses and related
++information available on an "as-is" basis. Creative Commons gives no
++warranties regarding its licenses, any material licensed under their
++terms and conditions, or any related information. Creative Commons
++disclaims all liability for damages resulting from their use to the
++fullest extent possible.
++
++Using Creative Commons Public Licenses
++
++Creative Commons public licenses provide a standard set of terms and
++conditions that creators and other rights holders may use to share
++original works of authorship and other material subject to copyright
++and certain other rights specified in the public license below. The
++following considerations are for informational purposes only, are not
++exhaustive, and do not form part of our licenses.
++
++     Considerations for licensors: Our public licenses are
++     intended for use by those authorized to give the public
++     permission to use material in ways otherwise restricted by
++     copyright and certain other rights. Our licenses are
++     irrevocable. Licensors should read and understand the terms
++     and conditions of the license they choose before applying it.
++     Licensors should also secure all rights necessary before
++     applying our licenses so that the public can reuse the
++     material as expected. Licensors should clearly mark any
++     material not subject to the license. This includes other CC-
++     licensed material, or material used under an exception or
++     limitation to copyright. More considerations for licensors:
++     wiki.creativecommons.org/Considerations_for_licensors
++
++     Considerations for the public: By using one of our public
++     licenses, a licensor grants the public permission to use the
++     licensed material under specified terms and conditions. If
++     the licensor's permission is not necessary for any reason--for
++     example, because of any applicable exception or limitation to
++     copyright--then that use is not regulated by the license. Our
++     licenses grant only permissions under copyright and certain
++     other rights that a licensor has authority to grant. Use of
++     the licensed material may still be restricted for other
++     reasons, including because others have copyright or other
++     rights in the material. A licensor may make special requests,
++     such as asking that all changes be marked or described.
++     Although not required by our licenses, you are encouraged to
++     respect those requests where reasonable. More_considerations
++     for the public:
++     wiki.creativecommons.org/Considerations_for_licensees
++
++=======================================================================
++
++Creative Commons Attribution-ShareAlike 4.0 International Public
++License
++
++By exercising the Licensed Rights (defined below), You accept and agree
++to be bound by the terms and conditions of this Creative Commons
++Attribution-ShareAlike 4.0 International Public License ("Public
++License"). To the extent this Public License may be interpreted as a
++contract, You are granted the Licensed Rights in consideration of Your
++acceptance of these terms and conditions, and the Licensor grants You
++such rights in consideration of benefits the Licensor receives from
++making the Licensed Material available under these terms and
++conditions.
++
++
++Section 1 -- Definitions.
++
++  a. Adapted Material means material subject to Copyright and Similar
++     Rights that is derived from or based upon the Licensed Material
++     and in which the Licensed Material is translated, altered,
++     arranged, transformed, or otherwise modified in a manner requiring
++     permission under the Copyright and Similar Rights held by the
++     Licensor. For purposes of this Public License, where the Licensed
++     Material is a musical work, performance, or sound recording,
++     Adapted Material is always produced where the Licensed Material is
++     synched in timed relation with a moving image.
++
++  b. Adapter's License means the license You apply to Your Copyright
++     and Similar Rights in Your contributions to Adapted Material in
++     accordance with the terms and conditions of this Public License.
++
++  c. BY-SA Compatible License means a license listed at
++     creativecommons.org/compatiblelicenses, approved by Creative
++     Commons as essentially the equivalent of this Public License.
++
++  d. Copyright and Similar Rights means copyright and/or similar rights
++     closely related to copyright including, without limitation,
++     performance, broadcast, sound recording, and Sui Generis Database
++     Rights, without regard to how the rights are labeled or
++     categorized. For purposes of this Public License, the rights
++     specified in Section 2(b)(1)-(2) are not Copyright and Similar
++     Rights.
++
++  e. Effective Technological Measures means those measures that, in the
++     absence of proper authority, may not be circumvented under laws
++     fulfilling obligations under Article 11 of the WIPO Copyright
++     Treaty adopted on December 20, 1996, and/or similar international
++     agreements.
++
++  f. Exceptions and Limitations means fair use, fair dealing, and/or
++     any other exception or limitation to Copyright and Similar Rights
++     that applies to Your use of the Licensed Material.
++
++  g. License Elements means the license attributes listed in the name
++     of a Creative Commons Public License. The License Elements of this
++     Public License are Attribution and ShareAlike.
++
++  h. Licensed Material means the artistic or literary work, database,
++     or other material to which the Licensor applied this Public
++     License.
++
++  i. Licensed Rights means the rights granted to You subject to the
++     terms and conditions of this Public License, which are limited to
++     all Copyright and Similar Rights that apply to Your use of the
++     Licensed Material and that the Licensor has authority to license.
++
++  j. Licensor means the individual(s) or entity(ies) granting rights
++     under this Public License.
++
++  k. Share means to provide material to the public by any means or
++     process that requires permission under the Licensed Rights, such
++     as reproduction, public display, public performance, distribution,
++     dissemination, communication, or importation, and to make material
++     available to the public including in ways that members of the
++     public may access the material from a place and at a time
++     individually chosen by them.
++
++  l. Sui Generis Database Rights means rights other than copyright
++     resulting from Directive 96/9/EC of the European Parliament and of
++     the Council of 11 March 1996 on the legal protection of databases,
++     as amended and/or succeeded, as well as other essentially
++     equivalent rights anywhere in the world.
++
++  m. You means the individual or entity exercising the Licensed Rights
++     under this Public License. Your has a corresponding meaning.
++
++
++Section 2 -- Scope.
++
++  a. License grant.
++
++       1. Subject to the terms and conditions of this Public License,
++          the Licensor hereby grants You a worldwide, royalty-free,
++          non-sublicensable, non-exclusive, irrevocable license to
++          exercise the Licensed Rights in the Licensed Material to:
++
++            a. reproduce and Share the Licensed Material, in whole or
++               in part; and
++
++            b. produce, reproduce, and Share Adapted Material.
++
++       2. Exceptions and Limitations. For the avoidance of doubt, where
++          Exceptions and Limitations apply to Your use, this Public
++          License does not apply, and You do not need to comply with
++          its terms and conditions.
++
++       3. Term. The term of this Public License is specified in Section
++          6(a).
++
++       4. Media and formats; technical modifications allowed. The
++          Licensor authorizes You to exercise the Licensed Rights in
++          all media and formats whether now known or hereafter created,
++          and to make technical modifications necessary to do so. The
++          Licensor waives and/or agrees not to assert any right or
++          authority to forbid You from making technical modifications
++          necessary to exercise the Licensed Rights, including
++          technical modifications necessary to circumvent Effective
++          Technological Measures. For purposes of this Public License,
++          simply making modifications authorized by this Section 2(a)
++          (4) never produces Adapted Material.
++
++       5. Downstream recipients.
++
++            a. Offer from the Licensor -- Licensed Material. Every
++               recipient of the Licensed Material automatically
++               receives an offer from the Licensor to exercise the
++               Licensed Rights under the terms and conditions of this
++               Public License.
++
++            b. Additional offer from the Licensor -- Adapted Material.
++               Every recipient of Adapted Material from You
++               automatically receives an offer from the Licensor to
++               exercise the Licensed Rights in the Adapted Material
++               under the conditions of the Adapter's License You apply.
++
++            c. No downstream restrictions. You may not offer or impose
++               any additional or different terms or conditions on, or
++               apply any Effective Technological Measures to, the
++               Licensed Material if doing so restricts exercise of the
++               Licensed Rights by any recipient of the Licensed
++               Material.
++
++       6. No endorsement. Nothing in this Public License constitutes or
++          may be construed as permission to assert or imply that You
++          are, or that Your use of the Licensed Material is, connected
++          with, or sponsored, endorsed, or granted official status by,
++          the Licensor or others designated to receive attribution as
++          provided in Section 3(a)(1)(A)(i).
++
++  b. Other rights.
++
++       1. Moral rights, such as the right of integrity, are not
++          licensed under this Public License, nor are publicity,
++          privacy, and/or other similar personality rights; however, to
++          the extent possible, the Licensor waives and/or agrees not to
++          assert any such rights held by the Licensor to the limited
++          extent necessary to allow You to exercise the Licensed
++          Rights, but not otherwise.
++
++       2. Patent and trademark rights are not licensed under this
++          Public License.
++
++       3. To the extent possible, the Licensor waives any right to
++          collect royalties from You for the exercise of the Licensed
++          Rights, whether directly or through a collecting society
++          under any voluntary or waivable statutory or compulsory
++          licensing scheme. In all other cases the Licensor expressly
++          reserves any right to collect such royalties.
++
++
++Section 3 -- License Conditions.
++
++Your exercise of the Licensed Rights is expressly made subject to the
++following conditions.
++
++  a. Attribution.
++
++       1. If You Share the Licensed Material (including in modified
++          form), You must:
++
++            a. retain the following if it is supplied by the Licensor
++               with the Licensed Material:
++
++                 i. identification of the creator(s) of the Licensed
++                    Material and any others designated to receive
++                    attribution, in any reasonable manner requested by
++                    the Licensor (including by pseudonym if
++                    designated);
++
++                ii. a copyright notice;
++
++               iii. a notice that refers to this Public License;
++
++                iv. a notice that refers to the disclaimer of
++                    warranties;
++
++                 v. a URI or hyperlink to the Licensed Material to the
++                    extent reasonably practicable;
++
++            b. indicate if You modified the Licensed Material and
++               retain an indication of any previous modifications; and
++
++            c. indicate the Licensed Material is licensed under this
++               Public License, and include the text of, or the URI or
++               hyperlink to, this Public License.
++
++       2. You may satisfy the conditions in Section 3(a)(1) in any
++          reasonable manner based on the medium, means, and context in
++          which You Share the Licensed Material. For example, it may be
++          reasonable to satisfy the conditions by providing a URI or
++          hyperlink to a resource that includes the required
++          information.
++
++       3. If requested by the Licensor, You must remove any of the
++          information required by Section 3(a)(1)(A) to the extent
++          reasonably practicable.
++
++  b. ShareAlike.
++
++     In addition to the conditions in Section 3(a), if You Share
++     Adapted Material You produce, the following conditions also apply.
++
++       1. The Adapter's License You apply must be a Creative Commons
++          license with the same License Elements, this version or
++          later, or a BY-SA Compatible License.
++
++       2. You must include the text of, or the URI or hyperlink to, the
++          Adapter's License You apply. You may satisfy this condition
++          in any reasonable manner based on the medium, means, and
++          context in which You Share Adapted Material.
++
++       3. You may not offer or impose any additional or different terms
++          or conditions on, or apply any Effective Technological
++          Measures to, Adapted Material that restrict exercise of the
++          rights granted under the Adapter's License You apply.
++
++
++Section 4 -- Sui Generis Database Rights.
++
++Where the Licensed Rights include Sui Generis Database Rights that
++apply to Your use of the Licensed Material:
++
++  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
++     to extract, reuse, reproduce, and Share all or a substantial
++     portion of the contents of the database;
++
++  b. if You include all or a substantial portion of the database
++     contents in a database in which You have Sui Generis Database
++     Rights, then the database in which You have Sui Generis Database
++     Rights (but not its individual contents) is Adapted Material,
++
++     including for purposes of Section 3(b); and
++  c. You must comply with the conditions in Section 3(a) if You Share
++     all or a substantial portion of the contents of the database.
++
++For the avoidance of doubt, this Section 4 supplements and does not
++replace Your obligations under this Public License where the Licensed
++Rights include other Copyright and Similar Rights.
++
++
++Section 5 -- Disclaimer of Warranties and Limitation of Liability.
++
++  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
++     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
++     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
++     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
++     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
++     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
++     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
++     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
++     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
++     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
++
++  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
++     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
++     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
++     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
++     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
++     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
++     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
++     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
++     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
++
++  c. The disclaimer of warranties and limitation of liability provided
++     above shall be interpreted in a manner that, to the extent
++     possible, most closely approximates an absolute disclaimer and
++     waiver of all liability.
++
++
++Section 6 -- Term and Termination.
++
++  a. This Public License applies for the term of the Copyright and
++     Similar Rights licensed here. However, if You fail to comply with
++     this Public License, then Your rights under this Public License
++     terminate automatically.
++
++  b. Where Your right to use the Licensed Material has terminated under
++     Section 6(a), it reinstates:
++
++       1. automatically as of the date the violation is cured, provided
++          it is cured within 30 days of Your discovery of the
++          violation; or
++
++       2. upon express reinstatement by the Licensor.
++
++     For the avoidance of doubt, this Section 6(b) does not affect any
++     right the Licensor may have to seek remedies for Your violations
++     of this Public License.
++
++  c. For the avoidance of doubt, the Licensor may also offer the
++     Licensed Material under separate terms or conditions or stop
++     distributing the Licensed Material at any time; however, doing so
++     will not terminate this Public License.
++
++  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
++     License.
++
++
++Section 7 -- Other Terms and Conditions.
++
++  a. The Licensor shall not be bound by any additional or different
++     terms or conditions communicated by You unless expressly agreed.
++
++  b. Any arrangements, understandings, or agreements regarding the
++     Licensed Material not stated herein are separate from and
++     independent of the terms and conditions of this Public License.
++
++
++Section 8 -- Interpretation.
++
++  a. For the avoidance of doubt, this Public License does not, and
++     shall not be interpreted to, reduce, limit, restrict, or impose
++     conditions on any use of the Licensed Material that could lawfully
++     be made without permission under this Public License.
++
++  b. To the extent possible, if any provision of this Public License is
++     deemed unenforceable, it shall be automatically reformed to the
++     minimum extent necessary to make it enforceable. If the provision
++     cannot be reformed, it shall be severed from this Public License
++     without affecting the enforceability of the remaining terms and
++     conditions.
++
++  c. No term or condition of this Public License will be waived and no
++     failure to comply consented to unless expressly agreed to by the
++     Licensor.
++
++  d. Nothing in this Public License constitutes or may be interpreted
++     as a limitation upon, or waiver of, any privileges and immunities
++     that apply to the Licensor or You, including from the legal
++     processes of any jurisdiction or authority.
++
++
++=======================================================================
++
++Creative Commons is not a party to its public
++licenses. Notwithstanding, Creative Commons may elect to apply one of
++its public licenses to material it publishes and in those instances
++will be considered the “Licensor.” The text of the Creative Commons
++public licenses is dedicated to the public domain under the CC0 Public
++Domain Dedication. Except for the limited purpose of indicating that
++material is shared under a Creative Commons public license or as
++otherwise permitted by the Creative Commons policies published at
++creativecommons.org/policies, Creative Commons does not authorize the
++use of the trademark "Creative Commons" or any other trademark or logo
++of Creative Commons without its prior written consent including,
++without limitation, in connection with any unauthorized modifications
++to any of its public licenses or any other arrangements,
++understandings, or agreements concerning use of licensed material. For
++the avoidance of doubt, this paragraph does not form part of the
++public licenses.
++
++Creative Commons may be contacted at creativecommons.org.
+diff --git 1/tools/dialogue/context-ledger/EXPERIMENT.md 2/tools/dialogue/context-ledger/EXPERIMENT.md
+new file mode 100644
+index 0000000..ee833c1
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/EXPERIMENT.md
+@@ -0,0 +1,110 @@
++# Contextual source-role / NONE experiment — frozen before implementation
++
++Status: planned; one representation and one fitting schedule. Start 2026-10-11.
++Source checkout d84ba870465562456fb389805d3703ee12d41f23. No runtime integration
++is planned unless the frozen CAL gate passes. Existing published DEV baseline:
++610/1119 joint USER turns, 716/1218 strict frames, 179 dialogues. These are supplied
++baseline results, not freshly measured candidate results. Prior entity-ledger
++role/rank experiment rejected: all 16 members added 41–71 wrong assertions and
++lost 2–4 correct states. No old role/rank weights are reused.
++
++## Hypothesis and acceptance
++Preceding actual USER text plus masked SYSTEM context and predicted state,
++trained on actual frozen-boundary spans with explicit NONE, reduces erroneous
++source-role assignments and supports safe missing-slot references without
++filtering source owners to the three routed services. Only FIT may fit weights
++or choose vocabulary. CAL is empirical new-component validation: old baseline
++weights saw all TRAIN and prior diagnostics inspected FIT and CAL.
++
++Exactly 2532 FIT / 642 CAL of 3174 selected TRAIN conversations, assigned by
++SHA256(dialogue_id) integer modulo 5 == 0 for CAL. All USER and SYSTEM turns,
++including unselected-service turns, retained. Supervision: all actual predicted
++SYSTEM spans get a target. Deduplicate identical exact span/role annotations;
++one unique exact role is positive if in FIT label vocabulary; no exact annotation,
++multiple distinct exact roles, or out-of-label role => NONE. Missing annotation
++is incomplete supervision, NOT proof of semantic absence. Character offsets are
++converted to UTF-8 byte offsets offline; no approximate/gold boundary substitution.
++Roles are schema service/slot strings from all TRAIN schema, never pair rules.
++
++## Frozen representation / fit
++Frozen BIO decoder and weights ONLY from supplied rejected-model.json. No fitting
++of boundary or reuse of its old role/rank weights. Source role labels: NONE index
++0 plus roles with >=20 unique exact predicted-span matches in FIT, ordered by
++frequency descending then lexical, capped at 127 roles. Every predicted source
++span is a training example, including all negatives. Eight deterministic
++averaged-perceptron role epochs, then eight deterministic averaged-perceptron
++reference rank epochs; zero initialization, original sorted conversation/turn/
++span order, no shuffle, balancing, subsampling, second schedule or tuning.
++
++Role features: bias, capped span token length, three adjacent tokens each side,
++SYSTEM noncandidate bag-of-words, preceding actual USER unigrams/bigrams, and
++baseline predicted active service names, intents and filled slot names. Mask
++all current predicted spans, bounded previous raw span values and baseline
++predicted state values in SYSTEM/USER lexical features. No gold values, gold
++state or gold activity enters features. A role-independent raw span history
++(128 spans, 32 SYSTEM turns) supplies masking only; NONE never enters the role
++entity ledger (also 128 spans/32 SYSTEM turns). Input limits 4096 UTF-8 bytes/
++128 tokens, span limit 16 tokens. Over-limit USER texts have no rank candidates;
++over-limit SYSTEM texts have no extracted spans. All skipped turns still counted.
++
++Source confidence is winning role score minus highest score of ANY other class,
++including NONE, independent of boundary margin. A NONE winner never enters the
++entity ledger. All per-class scores, decisions, raw spans, exact labels and hashed
++features retained for independent reconstruction. No source-router owner filter.
++
++Rank features reuse value-free role/target pair, source context, recency buckets
++[0,1,2,4,8,16,32], latest-role flag, ledger count capped8, predicted intent/activity/
++filled-slot names, masked current USER unigrams/bigrams. All known raw/accepted
++entity and predicted state strings masked. No entity identity/equality feature.
++Rank fitting uses all missing noncategorical input slots of predicted-active
++services. Truth is highest-scoring candidate whose raw value exactly case-fold
++matches offline annotated target values, deterministic first on ties; otherwise
++NONE (fixed score0). All negatives and empty opportunities remain. Training uses
++unchanged baseline state, not gold state or gold previous activity. Positive vs
++negative updates use ordinary averaged structured perceptron, 8 epochs. Hashes:
++FNV-1a, 262144 shared role bins and 262144 rank bins, 196608 frozen boundary weights.
++Serialized total model <=16MiB, finite validated weights and role/schema checks.
++
++## Frozen selection and audit
++Exactly source role margin [0,2] x rank-vs-NONE [2,4,8,16] x gap [2,4]. Every
++candidate with a different case-folded value competes regardless of source margin;
++NONE score0 also competes. First candidate wins equal scores (gap will refuse
++conflicting equal values). No further lexical vetoes, thresholds or retuning.
++Full persistent overlay: apply only missing noncategorical input slots to baseline
++predicted-active services after existing models, never overwrite baseline values,
++never change routing/intent; retain overlay across later turns and clear the
++corresponding held entry when baseline supplies that slot. All changed stored
++slot-turns audited, including propagation. Held/inactive changes recorded separately
++and receive no correctness credit. Gold scored input slots follow unchanged
++upstream metric schema definitions; fixed denominators across all members.
++
++Gate BEFORE candidate DEV: >=30 newly correct previously missing scored slot-turn
++assertions, ZERO newly incorrect scored assertions, no lost baseline-correct CAL
++joint turns or strict frames. Choose passing member by most new correct fills,
++then joint gain, then lexical grid order. If none passes, archive/reject: no candidate
++DEV, no alternate representation/grid. If passed, freeze sources/models/binary,
++then unchanged evaluate.py first10 and full179. DEV acceptance >=620 joint,
++>=726 frames, all610/716 retained, zero new wrong scored assertions, unchanged
++routing/intent/denominator, reverse replay equal, legacy45 byte-identical.
++
++## Sources, limits and reproduction
++Both manifests independently hash/size verified before edits. contextledger-source:
++3 payloads /20,369,681 bytes; rejected-model SHA256
++661c80b75a808994427a53591c651cb3d1ddc2fc1e0624503d6b70e4ca09b0e0.
++entityledger-source: 11 payloads /120,818,396 bytes; approved model SHA256
++fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88.
++SGD revision e852981ae34990f4358979625854259302feaa78, CC-BY-SA-4.0;
++all derived annotations retain that license. Code MIT OR Apache-2.0.
++No new downloads. Supplied input arrays independently equal every sorted TRAIN
++speaker/utterance turn; all prediction turn indices align with all USER turns.
++No held-out/private logs/parent folders read. No credentials/API/teacher/runtime
++LLM. Outer scope verified MemoryMax8589934592/MemorySwapMax0. No agents or services.
++
++Commands (all exact executed commands additionally retained in commands.log):
++python3 tools/dialogue/context-ledger/prepare.py
++TMPDIR=$TMPDIR systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt --all -- --check
++TMPDIR=$TMPDIR systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4
++TMPDIR=$TMPDIR systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo clippy -p glassmind-dialogue --all-targets -j1 -- -D warnings
++TMPDIR=$TMPDIR systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo build -p glassmind-dialogue --release --example context-ledger -j1
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 "$CARGO_TARGET_DIR/release/examples/context-ledger" tools/dialogue/context-ledger/artifacts/dataset.json tools/dialogue/context-ledger/artifacts /home/gsc/.cache/glassmind/continuous-20261010/contextledger-source/rejected-model.json
++/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/audit.py
+diff --git 1/tools/dialogue/context-ledger/HANDOFF.md 2/tools/dialogue/context-ledger/HANDOFF.md
+new file mode 100644
+index 0000000..33c6446
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/HANDOFF.md
+@@ -0,0 +1,186 @@
++# Handoff — REJECTED, completed bounded experiment
++
++One representation and one 8-role/8-rank averaged-perceptron schedule were fitted.
++No CAL member passed. No candidate DEV inference, second representation, threshold
++retuning, runtime integration, external action, commit, agent or model call occurred.
++No accepted accuracy improvement is claimed. The unchanged production baseline is
++still the supplied 610/1119 joint USER turns and 716/1218 frames on 179 DEV dialogues.
++
++## Exact changes
++
++- Added `crates/dialogue/examples/context-ledger.rs`, an isolated offline executable.
++- Added `tools/dialogue/context-ledger/native/context_ledger_experiment.rs`, copied
++  from the explicitly authorized native source and modified to deserialize ONLY
++  the old frozen BIO boundary into a fresh model. Both old role/rank fields are
++  skipped; new role/rank weights start at zero.
++- Source labels use actual predicted SYSTEM spans, with NONE for absent/unaligned,
++  ambiguous or out-of-label exact supervision. Exact duplicate annotations are
++  deduplicated. FIT frequency >=20, top127 roles plus NONE; all negative rows retained.
++- Added masked preceding actual USER text, masked local SYSTEM context and baseline
++  predicted state features. No gold features, owner/router filter, service pair
++  lexical rules, entity identity features, pretrained models or downloads.
++- Added preparation, independent CAL audit, full linear-score reconstruction,
++  first10 FIT independent boundary decoder parity, reproduction wrapper and reports.
++- NONE never enters the role ledger. A separate bounded raw-span mask history is
++  retained solely to mask available entity strings. Both histories cap128/32 SYSTEM;
++  utterances4096bytes/128tokens, extracted spans16tokens, model16MiB.
++- No tracked production dialogue file was changed (`git diff --exit-code --
++  crates/dialogue` passed; the example is a NEW untracked file). No old model,
++  README, manifest, scorer, main CLI, loop or historical report was edited.
++  Pre-existing parent-directory deletions in this isolated worktree were untouched.
++
++## Frozen CAL gate and complete result
++
++The pre-implementation plan is `EXPERIMENT.md`. All 3174 TRAIN dialogues and all
++34022 USER /34022 SYSTEM turns were retained. SHA256(id) mod5 split:2532 FIT/642 CAL.
++CAL denominators are fixed at6830 USER turns and2505 supported-service gold frames.
++The5137 additional unselected-service gold frames are retained in the dataset,
++not scored against a model that has no corresponding output frame. USER turns with
++no supported gold frame remain in the denominator; gold route is intersected with
++supported schema services. This is a TRAIN diagnostic convention, not a DEV score.
++All members use exactly this same convention and the unchanged upstream frame
++metric. Baseline CAL:5803 joint and1478 strict frames;1073 individual erroneous
++scored slot states are explicitly preserved in `artifacts/baseline-slot-errors.json`.
++
++Required:>=30 new correct fills, zero newly wrong scored assertions, no lost
++baseline-correct joint or frame outcomes. All changed scored slot-turns count,
++including propagation. Baseline-supplied values take precedence and clear a held
++entry; held overlay persists otherwise. Held/inactive changes receive no correctness
++credit. Full candidate prediction files, original gold/state/input data, every
++binding event and every changed slot-turn are retained for every grid member.
++
++| Source margin | Rank vs NONE | Different-value gap | New correct | New wrong | Lost joint | Lost frames | Held/unscored |
++|---:|---:|---:|---:|---:|---:|---:|---:|
++| 0 | 2 | 2 | 510 | 65 | 1 | 1 | 123 |
++| 0 | 2 | 4 | 509 | 61 | 1 | 1 | 117 |
++| 0 | 4 | 2 | 510 | 65 | 1 | 1 | 123 |
++| 0 | 4 | 4 | 509 | 61 | 1 | 1 | 117 |
++| 0 | 8 | 2 | 508 | 65 | 1 | 1 | 123 |
++| 0 | 8 | 4 | 507 | 61 | 1 | 1 | 117 |
++| 0 | 16 | 2 | 489 | 55 | 1 | 1 | 105 |
++| 0 | 16 | 4 | 488 | 52 | 1 | 1 | 99 |
++| 2 | 2 | 2 | 507 | 53 | 0 | 0 | 117 |
++| 2 | 2 | 4 | 506 | 49 | 0 | 0 | 111 |
++| 2 | 4 | 2 | 507 | 53 | 0 | 0 | 117 |
++| 2 | 4 | 4 | 506 | 49 | 0 | 0 | 111 |
++| 2 | 8 | 2 | 505 | 53 | 0 | 0 | 117 |
++| 2 | 8 | 4 | 504 | 49 | 0 | 0 | 111 |
++| 2 | 16 | 2 | 484 | 48 | 0 | 0 | 99 |
++| 2 | 16 | 4 | 483 | 45 | 0 | 0 | 93 |
++
++Every member is rejected:45–65 new wrong assertions. Some members additionally
++lose one previously correct joint/frame. No member was selected, including those
++that preserve all prior correct frames. Held/unscored changes range93–123 and are
++not counted as correct fills. No further experiments were attempted.
++
++## Source supervision and reconstruction evidence
++
++34223 actual frozen-boundary source spans;27241 FIT and6982 CAL.128 competing
++classes include NONE. FIT has1912 NONE targets (1597 absent/unaligned,315 outside
++label vocabulary); CAL has663 (562 absent/unaligned,101 outside vocabulary).
++No ambiguous multiple-role exact annotations occurred in this dataset, but their
++NONE behavior is explicitly tested. FIT predicts2734 NONE and CAL predicts876.
++CAL source role-or-NONE agreement with exact-span supervision:5138/6982;
++4742 positive predictions match annotated roles,1364 positive predictions do not.
++This remains insufficient for the zero-wrong reference gate. Missing source
++annotations do not prove semantic absence, so these are supervision-agreement
++counts rather than complete semantic precision/recall.
++
++All7086 opportunities are retained:5654 FIT/1432 CAL, including1324 empty and3955
++negative opportunities across both groups. All46789 candidates remain in raw
++proposals. Model role owners cover25 services; valid sources were not restricted
++to the three routed services. All22912 native CAL decisions (including refusals)
++were independently reproduced. Every other-valued candidate competes regardless
++of its source margin. NONE has fixed rank score0; source NONE is a trained class.
++
++`reconstruction.py` independently recomputed all4380544 source class scores and
++all46789 rank scores, verified exact original source bytes/UTF-8 span endpoints,
++preceding actual USER utterances, feature hashes, FIT frequency ordering/cap and
++non-NONE candidate provenance. The separate Python boundary decoder matched all
++69 extracted spans on104 SYSTEM turns of the fixed first10 FIT dialogues.
++Original baseline inputs/prediction USER indices match all3174 sorted conversations.
++Original frozen boundary numerical weights match exactly; both package manifests
++were independently SHA256/size verified.
++
++## Validation, failures and limitations
++
++PASS:7 native tests (UTF-8 provenance, deterministic capacity/age eviction, reset,
++strict annotation rejection, finite weights, source masking/actual USER lexical
++context, NONE supervision/ledger exclusion, exhaustive two-candidate ambiguity,
++low-margin competitor veto and same-value alternatives). PASS: final formatting,
++all-target affected-package clippy with -D warnings, release example and complete
++package release. Logs are under `artifacts/`.
++
++Preserved failures: initial clippy rejected an eight-argument helper. Its history
++arguments were grouped with no feature change, then all checks passed. Initial CAL
++audit asserted every TRAIN gold frame belonged to selected schema; it stopped
++before candidate metrics. The original script and failure log are retained. The
++fix limits frame scoring to available schema outputs while keeping every USER
++turn and all raw gold; no upstream metric code, fitting data, fitted weights,
++representation, schedule or grid was changed. This scoring convention is explicit
++above. It does not rescue any candidate: every member fails on new wrong assertions.
++
++Old baseline weights saw all TRAIN, and prior diagnostics inspected FIT and CAL.
++This is empirical new-component validation, never unseen calibration. Annotation
++absence creates potentially false-negative NONE supervision. Finite label cap and
++hash collisions remain representation limitations. The source owner count does
++not imply correct role inference. Rank supervision uses offline exact case-folded
++value alignment; the unchanged strict noncategorical evaluation is case-sensitive.
++
++No DEV inference was permitted after gate failure; consequently no DEV gain,
++reverse-conversation runtime test or45-dialogue legacy candidate replay is claimed.
++No runtime/bundle integration was attempted and no production rollback was needed.
++The runtime reset tests concern the isolated ledger only. Rejection/correction is
++learned from USER lexical evidence, with no manually added veto: CAL wrong assertions
++show this is insufficient for deployment. No action executor or persistent user
++memory exists in this experiment.
++
++## Source/version/license/bytes
++
++No newly downloaded data (0bytes). Source SGD revision
++`e852981ae34990f4358979625854259302feaa78`, CC-BY-SA-4.0. Derived annotation artifacts
++retain CC-BY-SA-4.0 (`DATA-LICENSE.txt`). Code MIT OR Apache-2.0; unchanged upstream
++metric Apache-2.0. Source checkout `d84ba870465562456fb389805d3703ee12d41f23`.
++Supplied read-only `contextledger-source`:3 manifest payloads/20369681bytes.
++Supplied read-only `entityledger-source`:11 manifest payloads/120818396bytes.
++Their exact per-file source IDs, hashes and sizes are in `artifacts/source-verification.json`.
++Rejected source model SHA256:
++`661c80b75a808994427a53591c651cb3d1ddc2fc1e0624503d6b70e4ca09b0e0`.
++Approved unchanged v2 source model SHA256:
++`fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88`.
++
++| Derived artifact | Bytes | SHA256 |
++|---|---:|---|
++| `dataset.json` | 29431429 | `e24fc279a53a4f8b78062d2dfc39a45e8df69fc14de608faae52549f8a731faa` |
++| `model.json` | 4081031 | `bfaa28ad936fee501145484db17ef4fe7d1676c71c8ef41dc23822b10a994385` |
++| `context-ledger` | 11924568 | `e0218edb68e40a927807baf74239ec4d1e04007bff0ca65a543edd7f64fdc966` |
++| `source-spans.jsonl` | 148845810 | `ab5cecdf683e376204b487506320f4a74993b54ceea57fa17ece1725bd4fc1f4` |
++| `proposals.jsonl` | 96660872 | `31a250e06a955ffc99c7a5eb51ff3ecce793f7976aee73a2d35612ffe98799b0` |
++| `decisions.jsonl` | 2349914 | `b973cb993a59b42377c36dc5bd31cdeef1a12fb63ac56f95193a6cab10a9fdc5` |
++
++## Reproduction and archive
++
++Run from the supplied worktree with its existing `CARGO_TARGET_DIR` and on-disk
++`TMPDIR`. The complete bounded fitting/check commands are in `run-checks.sh` and
++`commands.log`; every Cargo invocation is capped8GiB/0swap, `setsid --wait`,
++`timeout --kill-after=10s 600`, `-j1` except fmt, test threads4. The outer scope was
++also independently verified capped8GiB/0swap. Use the mounted read-only metrics
++interpreter. No credentials are required or read.
++
++```sh
++python3 tools/dialogue/context-ledger/prepare.py
++bash tools/dialogue/context-ledger/run-checks.sh
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/audit.py
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/reconstruct.py
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/boundary-parity.py
++```
++
++The historical mechanical-construction script under `originals/` is retained for
++provenance, not to be rerun over final source. `originals/` also preserves the
++original authorized native code and the initially failing audit implementation.
++All final source, new example, complete raw models/traces/predictions/counts/golds,
++logs/failures, license, source patch and this handoff are preserved in
++`archive.tar.gz`; `archive-manifest.json` records every member hash/size and
++`archive-verification.json` confirms byte-for-byte verification from the archive.
++Nothing was committed. Coordinator may retain this as a rejected offline
++experiment; no runtime change is proposed. No owned job remains running at handoff.
+diff --git 1/tools/dialogue/context-ledger/archive.py 2/tools/dialogue/context-ledger/archive.py
+new file mode 100644
+index 0000000..7118e85
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/archive.py
+@@ -0,0 +1,32 @@
++#!/usr/bin/env python3
++"""Archive all owned evidence and verify each member's exact bytes."""
++import hashlib,json,pathlib,subprocess,tarfile
++H=pathlib.Path(__file__).resolve().parent;root=H.parents[2]
++example=root/'crates/dialogue/examples/context-ledger.rs'
++# Source-only patch accompanies complete files/artifacts (large raw data stays as files).
++code=[example]+sorted(p for p in H.rglob('*') if p.is_file() and 'artifacts' not in p.parts and 'originals' not in p.parts and p.suffix in {'.rs','.py','.sh','.md','.txt','.log'} and p.name not in {'source.patch'})
++with open(H/'source.patch','w') as out:
++ for p in code:
++  result=subprocess.run(['git','diff','--no-index','--','/dev/null',str(p.relative_to(root))],cwd=root,text=True,capture_output=True)
++  assert result.returncode in (0,1);out.write(result.stdout)
++exclude={'archive.tar.gz','archive-manifest.json','archive-verification.json'}
++files=[example]+sorted(p for p in H.rglob('*') if p.is_file() and p.name not in exclude and '__pycache__' not in p.parts)
++manifest={}
++for p in files:
++ b=p.read_bytes();manifest[str(p.relative_to(root))]={'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()}
++(H/'archive-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
++archive=H/'archive.tar.gz'
++with tarfile.open(archive,'w:gz',compresslevel=1) as tar:
++ for p in files:tar.add(p,arcname=str(p.relative_to(root)),recursive=False)
++ tar.add(H/'archive-manifest.json',arcname=str((H/'archive-manifest.json').relative_to(root)),recursive=False)
++verified=0
++with tarfile.open(archive,'r:gz') as tar:
++ for name,record in manifest.items():
++  f=tar.extractfile(name);assert f is not None;h=hashlib.sha256();n=0
++  while b:=f.read(1024*1024):n+=len(b);h.update(b)
++  assert n==record['bytes'] and h.hexdigest()==record['sha256'];verified+=1
++h=hashlib.sha256()
++with open(archive,'rb') as f:
++ while b:=f.read(1024*1024):h.update(b)
++r={'verified_members':verified,'payload_bytes':sum(v['bytes'] for v in manifest.values()),'archive_bytes':archive.stat().st_size,'archive_sha256':h.hexdigest(),'every_manifest_member_verified':True}
++(H/'archive-verification.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))
+diff --git 1/tools/dialogue/context-ledger/audit.py 2/tools/dialogue/context-ledger/audit.py
+new file mode 100644
+index 0000000..6167731
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/audit.py
+@@ -0,0 +1,121 @@
++#!/usr/bin/env python3
++"""Independent CAL decoder/overlay audit using unchanged upstream metrics."""
++import collections, copy, hashlib, itertools, json, pathlib, sys, warnings
++HERE=pathlib.Path(__file__).resolve().parent; A=HERE/'artifacts'
++sys.path.insert(0,str(HERE.parents[2]/'crates/dialogue/tools'))
++with warnings.catch_warnings():
++ warnings.simplefilter('ignore')
++ import upstream_metrics as metrics
++S=pathlib.Path('/home/gsc/.cache/glassmind/continuous-20261010/entityledger-source')
++def load(p): return json.loads(p.read_text())
++def save(n,v): (A/n).write_text(json.dumps(v,indent=2,ensure_ascii=False)+'\n')
++data=load(A/'dataset.json'); ds=[d for d in data['dialogues'] if d['cal']]; schemas={s['service_name']:s for s in load(S/'schema.json')}
++assert len(ds)==642
++rows={}; total=collections.Counter(); source=collections.defaultdict(collections.Counter)
++model=load(A/'model.json'); assert len((A/'model.json').read_bytes())<=16*1024*1024
++# Prove only the boundary was inherited and its serialized mathematical values unchanged.
++old=load(pathlib.Path('/home/gsc/.cache/glassmind/continuous-20261010/contextledger-source/rejected-model.json'))
++assert model['boundary']==old['boundary'];del old
++for line in open(A/'source-spans.jsonl'):
++ z=json.loads(line);r=z['row']; split='CAL' if r['cal'] else 'FIT';c=source[split];c['spans']+=1
++ exact=set(r['exact_roles']);label=next(iter(exact)) if len(exact)==1 and next(iter(exact)) in model['roles'] else 'NONE'
++ assert label==r['label']; scores=z['scores']; prediction=max(range(len(scores)),key=lambda i:scores[i]);assert prediction==z['prediction']
++ assert abs(z['margin']-(scores[prediction]-max(s for i,s in enumerate(scores) if i!=prediction)))<0.002
++ pred=model['roles'][prediction];c['gold_none']+=label=='NONE';c['pred_none']+=pred=='NONE';c['correct']+=label==pred
++ c['positive_correct']+=pred==label and pred!='NONE';c['positive_wrong']+=pred!=label and pred!='NONE'
++ c['absent_or_unaligned']+=not exact;c['ambiguous']+=len(exact)>1;c['out_of_label']+=len(exact)==1 and label=='NONE'
++ assert z['enters_ledger']==(pred!='NONE')
++for line in open(A/'proposals.jsonl'):
++ r=json.loads(line); total['CAL_opportunities' if r['cal'] else 'FIT_opportunities']+=1
++ total['CAL_candidates' if r['cal'] else 'FIT_candidates']+=len(r['candidates'])
++ total['empty_opportunities']+=not r['candidates'];total['negative_opportunities']+=not any(c['correct'] for c in r['candidates'])
++ if r['cal']: rows[(r['id'],r['turn'],r['service'],r['slot'])]=r
++assert sum(1 for d in data['dialogues'] for t in d['turns'] if t['input']['speaker']=='USER')==34022
++# Every baseline missing target produces an opportunity, independently enumerated.
++expected=set()
++for d in ds:
++ for i,t in enumerate(d['turns']):
++  b=t['baseline']
++  if b is None:continue
++  for f in b['frames']:
++   if f['service'] not in b['active_services']:continue
++   for slot in data['targets'][f['service']]:
++    if slot not in f['state']['slot_values']:expected.add((d['id'],i,f['service'],slot))
++assert expected==rows.keys()
++GRIDS=list(itertools.product([0,2],[2,4,8,16],[2,4]))
++def select(r,g):
++ source,score,gap=g;cs=r['candidates'];eligible=[i for i,c in enumerate(cs) if c['entity']['confidence']>=source]
++ if not eligible:return None
++ k=max(eligible,key=lambda i:cs[i]['score']);b=cs[k];bs=b['score']
++ other=max([0.]+[c['score'] for c in cs if c['entity']['value'].lower()!=b['entity']['value'].lower()])
++ return k if bs>=score and bs-other>=gap else None
++# Verify every native grid decision, including every abstention.
++num=0
++for line in open(A/'decisions.jsonl'):
++ z=json.loads(line);r=rows[(z['id'],z['turn'],z['service'],z['slot'])]
++ assert select(r,z['grid'])==z['chosen'];num+=1
++assert num==16*len(rows)
++def outcome(t,p):
++ fs={f['service']:f for f in p['frames']}; gold={f['service']:f for f in t['gold'] if f['service'] in schemas}
++ frames={s:bool(metrics.get_average_and_joint_goal_accuracy(g,fs[s],schemas[s],False)['joint_goal_accuracy']) for s,g in gold.items()}
++ intent=all(metrics.get_active_intent_accuracy(g,fs[s]) for s,g in gold.items())
++ return frames, bool(set(p['active_services'])==gold.keys() and all(frames.values()) and intent)
++baseline={}; basecount=collections.Counter()
++for d in ds:
++ for i,t in enumerate(d['turns']):
++  if t['baseline'] is None:continue
++  fs,j=outcome(t,t['baseline']);baseline[(d['id'],i)]=(fs,j)
++  basecount['user_turns']+=1;basecount['gold_frames']+=len(fs);basecount['joint_correct']+=j;basecount['strict_frames']+=sum(fs.values())
++basecount['unselected_gold_frames_retained_unscored']=sum(f['service'] not in schemas for d in ds for t in d['turns'] for f in t['gold'])
++basecount['all_user_turns_including_unselected']=sum(t['input']['speaker']=='USER' for d in ds for t in d['turns'])
++save('cal-baseline.json',basecount)
++results=[]
++for grid in GRIDS:
++ tag='-'.join(map(str,grid));c=collections.Counter();predictions=[];changes=[];events=[]
++ for d in ds:
++  held={};out=[]
++  for i,t in enumerate(d['turns']):
++   if t['baseline'] is None:continue
++   b=t['baseline'];p=copy.deepcopy(b);bf={f['service']:f for f in b['frames']};pf={f['service']:f for f in p['frames']};gold={f['service']:f for f in t['gold']}
++   for service,f in bf.items():
++    for slot in f['state']['slot_values']:held.pop((service,slot),None)
++   for service in b['active_services']:
++    for slot in data['targets'][service]:
++     key=(service,slot)
++     if slot in bf[service]['state']['slot_values'] or key in held:continue
++     r=rows[(d['id'],i,service,slot)];idx=select(r,grid)
++     if idx is not None:
++      e=r['candidates'][idx]['entity'];held[key]={'value':e['value'],'source_turn':e['source_turn'],'start':e['start'],'end':e['end'],'role':e['role'],'binding_turn':i,'candidate_index':idx}
++      events.append({'id':d['id'],'turn':i,'service':service,'slot':slot,'provenance':held[key]})
++   for (service,slot),entry in held.items():
++    assert slot not in pf[service]['state']['slot_values']
++    pf[service]['state']['slot_values'][slot]=[entry['value']]
++   assert p['active_services']==b['active_services']
++   for service,f in pf.items():
++    assert f['state']['active_intent']==bf[service]['state']['active_intent']
++    for slot,vs in f['state']['slot_values'].items():
++     old=bf[service]['state']['slot_values'].get(slot)
++     if old==vs:continue
++     assert old is None
++     scored=service in gold and slot in {s['name'] for s in schemas[service]['slots']}
++     gv=gold.get(service,{}).get('state',{}).get('slot_values',{}).get(slot,[])
++     correct=scored and vs[0] in gv
++     c['changed_slot_turns']+=1;c['scored_changes']+=scored;c['held_unscored']+=not scored
++     c['predicted_inactive_changes']+=service not in p['active_services']
++     c['new_correct_fills']+=correct and service in p['active_services'];c['scored_correct_inactive_no_credit']+=correct and service not in p['active_services'];c['new_wrong_assertions']+=scored and not correct
++     changes.append({'id':d['id'],'turn':i,'service':service,'slot':slot,'baseline':old,'candidate':vs,'gold':gv,'scored':scored,'correct':correct,'predicted_active':service in p['active_services'],'provenance':held[(service,slot)]})
++   fs,j=outcome(t,p);bfs,bj=baseline[(d['id'],i)]
++   c['user_turns']+=1;c['gold_frames']+=len(fs);c['joint_correct']+=j;c['strict_frames']+=sum(fs.values())
++   c['lost_joint']+=bj and not j;c['gained_joint']+=j and not bj
++   c['lost_frames']+=sum(bfs[s] and not fs[s] for s in bfs);c['gained_frames']+=sum(fs[s] and not bfs[s] for s in bfs)
++   c['inherited_wrong_joint_retained']+=not bj and not j
++   c['inherited_wrong_frames_retained']+=sum(not bfs[s] and not fs[s] for s in bfs)
++   out.append(p)
++  predictions.append(out)
++ assert c['user_turns']==basecount['user_turns'] and c['gold_frames']==basecount['gold_frames']
++ passed=c['new_correct_fills']>=30 and c['new_wrong_assertions']==0 and c['lost_joint']==0 and c['lost_frames']==0
++ result={'grid':grid,'passes':passed,**c};results.append(result)
++ save(f'cal-{tag}-predictions.json',predictions);save(f'cal-{tag}-changes.json',changes);save(f'cal-{tag}-events.json',events)
++ print(json.dumps(result),flush=True)
++passed=[r for r in results if r['passes']];passed.sort(key=lambda r:(-r['new_correct_fills'],-r['gained_joint'],r['grid']))
++save('cal-report.json',{'status':'CAL_PASS' if passed else 'REJECTED','selected':passed[0]['grid'] if passed else None,'baseline':basecount,'source_classification':source,'opportunities':total,'native_decisions_independently_verified':num,'grid':results,'limitation':'Empirical new-component validation, not unseen calibration; NONE includes absent/incomplete annotations.'})
+diff --git 1/tools/dialogue/context-ledger/boundary-parity.py 2/tools/dialogue/context-ledger/boundary-parity.py
+new file mode 100644
+index 0000000..7a2c26e
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/boundary-parity.py
+@@ -0,0 +1,55 @@
++#!/usr/bin/env python3
++"""Fixed first10 FIT parity for the frozen BIO decoder, independently in Python."""
++import json,pathlib,numpy as np
++A=pathlib.Path(__file__).resolve().parent/'artifacts'
++def read(p):return json.loads(p.read_text())
++m=read(A/'model.json')['boundary'];w=np.array(m['w'],dtype=np.float32)
++ds=[d for d in read(A/'dataset.json')['dialogues'] if not d['cal']][:10];ids={d['id'] for d in ds};expected={}
++for line in open(A/'source-spans.jsonl'):
++ z=json.loads(line);r=z['row']
++ if r['id'] in ids:expected.setdefault((r['id'],r['turn']),[]).append(r['raw'])
++def fnv(s):
++ h=2166136261
++ for b in s.encode():h=((h^b)*16777619)&0xffffffff
++ return h
++def tokens(s):
++ out=[];start=None;byte=0
++ for ch in s:
++  n=len(ch.encode())
++  if ch.isalnum():
++   if start is None:start=byte
++  else:
++   if start is not None:out.append((start,byte,s.encode()[start:byte].decode()));start=None
++   if not ch.isspace():out.append((byte,byte+n,ch))
++  byte+=n
++ if start is not None:out.append((start,byte,s.encode()[start:byte].decode()))
++ return out
++def shape(s):return ''.join('A' if c.isupper() else 'a' if c.islower() else '0' if c.isnumeric() else c for c in s)
++count=spans=0
++for d in ds:
++ for turn,t in enumerate(d['turns']):
++  if t['input']['speaker']!='SYSTEM':continue
++  text=t['input']['utterance'];ts=tokens(text);ys=[];margins=[];prev=0;out=[];count+=1
++  if len(text.encode())<=4096 and len(ts)<=128:
++   for i,(_,_,word) in enumerate(ts):
++    f=['bias']
++    for offset in range(-2,3):
++     if 0<=i+offset<len(ts):
++      word2=ts[i+offset][2];f.extend([f'w{offset}={word2.lower()}',f's{offset}={shape(word2)}'])
++    for n in range(1,4):f.extend([f'pre{n}={word.lower()[:n]}',f'suf{n}={word.lower()[::-1][:n]}'])
++    fs=sorted({fnv(x) for x in f})+[fnv(f'prev={prev}')]
++    scores=[float(np.cumsum(w[np.array(fs)%65536+l*65536],dtype=np.float32)[-1]) for l in range(3)]
++    valid=[0,1] if prev==0 else [0,1,2];l=max(valid,key=lambda l:scores[l]);margin=scores[l]-max(scores[j] for j in valid if j!=l)
++    ys.append(l);margins.append(margin);prev=l
++   i=0
++   while i<len(ts):
++    if ys[i]!=1:i+=1;continue
++    first=i;i+=1
++    while i<len(ts) and ys[i]==2:i+=1
++    if i-first<=16:out.append({'start':ts[first][0],'end':ts[i-1][1],'boundary_margin':min(margins[first:i])})
++  exp=expected.get((d['id'],turn),[]);assert len(out)==len(exp)
++  for a,b in zip(out,exp):
++   assert (a['start'],a['end'])==(b['start'],b['end']) and abs(a['boundary_margin']-b['boundary_margin'])<0.002
++  spans+=len(out)
++r={'fixed_first_FIT_dialogues':[d['id'] for d in ds],'SYSTEM_turns':count,'raw_spans':spans,'independent_boundary_decode_matches':True}
++(A/'boundary-parity.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r))
+diff --git 1/tools/dialogue/context-ledger/commands.log 2/tools/dialogue/context-ledger/commands.log
+new file mode 100644
+index 0000000..3d6faca
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/commands.log
+@@ -0,0 +1,23 @@
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt --all 
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4 
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo clippy -p glassmind-dialogue --all-targets -j1 -- -D warnings 
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt --all 
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4 
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo clippy -p glassmind-dialogue --all-targets -j1 -- -D warnings 
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo build -p glassmind-dialogue --release --example context-ledger -j1 
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 tools/dialogue/context-ledger/artifacts/context-ledger tools/dialogue/context-ledger/artifacts/dataset.json tools/dialogue/context-ledger/artifacts /home/gsc/.cache/glassmind/continuous-20261010/contextledger-source/rejected-model.json 
++# Before fit: python3 tools/dialogue/context-ledger/prepare.py (exact input alignment, all source hashes).
++# Initial validation: capped cargo fmt --all; capped cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4 (4 tests).
++# Initial run-checks.sh: 7 tests passed; clippy too_many_arguments failed; helper arguments grouped, features unchanged; initial log preserved.
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/audit.py
++# Initial audit rejected an invalid audit assumption that every TRAIN gold frame was selected. Preserved original script/log; select supported gold frames for metrics, retain all USER turns and all raw gold frames. No fit/model/grid change.
++# Shell environment for every Cargo command: TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/tmp; CARGO_TARGET_DIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/target
++# Construction (historical; do not rerun over final source): python3 tools/dialogue/context-ledger/implement.py, retained as originals/mechanical-construction.py; subsequent test additions/refactor retained in final source.
++# Both audits used the same capped invocation below; first assumption failure and original script retained.
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/audit.py
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/reconstruct.py
++TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/tmp systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo fmt --all -- --check
++TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/tmp systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 cargo build -p glassmind-dialogue --release -j1
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/boundary-parity.py
++python3 tools/dialogue/context-ledger/write-report.py
++python3 tools/dialogue/context-ledger/archive.py
+diff --git 1/tools/dialogue/context-ledger/native/context_ledger_experiment.rs 2/tools/dialogue/context-ledger/native/context_ledger_experiment.rs
+new file mode 100644
+index 0000000..08acf94
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/native/context_ledger_experiment.rs
+@@ -0,0 +1,1103 @@
++//! SYSTEM span/role learning and value-free binding, isolated offline harness.
++use glassmind_dialogue::tracker::InputTurn;
++use serde::{Deserialize, Serialize};
++use std::collections::{BTreeMap, BTreeSet, VecDeque};
++use std::fs::File;
++use std::io::{BufReader, BufWriter, Write};
++
++const BINS: usize = 262144;
++fn hash(s: &str) -> usize {
++    s.bytes().fold(2166136261u32, |h, b| {
++        (h ^ u32::from(b)).wrapping_mul(16777619)
++    }) as usize
++}
++fn features(xs: Vec<String>) -> Vec<usize> {
++    let mut f: Vec<_> = xs.iter().map(|s| hash(s)).collect();
++    f.sort_unstable();
++    f.dedup();
++    f
++}
++#[derive(Serialize, Deserialize, Clone)]
++struct Linear {
++    w: Vec<f32>,
++    labels: usize,
++    bio: bool,
++}
++impl Linear {
++    fn new(labels: usize, bio: bool) -> Self {
++        Self {
++            w: vec![0.; if bio { 3 * 65536 } else { BINS }],
++            labels,
++            bio,
++        }
++    }
++    fn index(&self, f: usize, l: usize) -> usize {
++        if self.bio {
++            l * 65536 + (f & 65535)
++        } else {
++            (f ^ l.wrapping_mul(2654435761)) & (BINS - 1)
++        }
++    }
++    fn score(&self, fs: &[usize], l: usize) -> f32 {
++        fs.iter()
++            .map(|&f| self.w.get(self.index(f, l)).copied().unwrap_or(0.))
++            .sum()
++    }
++    fn best(&self, fs: &[usize], prev: usize) -> (usize, f32) {
++        let mut best = (0, f32::NEG_INFINITY);
++        let mut second = f32::NEG_INFINITY;
++        for l in 0..self.labels {
++            if self.bio && l == 2 && prev == 0 {
++                continue;
++            }
++            let s = self.score(fs, l);
++            if s > best.1 {
++                second = best.1;
++                best = (l, s);
++            } else if s > second {
++                second = s;
++            }
++        }
++        (
++            best.0,
++            if second.is_finite() {
++                best.1 - second
++            } else {
++                0.
++            },
++        )
++    }
++    fn validate(&self) -> Result<(), String> {
++        if self.labels == 0
++            || self.labels > 128
++            || self.w.len() != if self.bio { 3 * 65536 } else { BINS }
++            || self.w.iter().any(|x| !x.is_finite())
++        {
++            return Err("invalid finite bounded weights".into());
++        }
++        Ok(())
++    }
++}
++struct Learner {
++    m: Linear,
++    sum: Vec<f64>,
++    last: Vec<u64>,
++    step: u64,
++}
++impl Learner {
++    fn new(labels: usize, bio: bool) -> Self {
++        let m = Linear::new(labels, bio);
++        Self {
++            sum: vec![0.; m.w.len()],
++            last: vec![0; m.w.len()],
++            m,
++            step: 0,
++        }
++    }
++    fn update(&mut self, fs: &[usize], label: usize, amount: f32) {
++        for &f in fs {
++            let i = self.m.index(f, label);
++            if let (Some(w), Some(s), Some(last)) = (
++                self.m.w.get_mut(i),
++                self.sum.get_mut(i),
++                self.last.get_mut(i),
++            ) {
++                *s += (self.step - *last) as f64 * f64::from(*w);
++                *last = self.step;
++                *w += amount;
++            }
++        }
++    }
++    fn finish(mut self) -> Linear {
++        for ((w, s), last) in self.m.w.iter_mut().zip(self.sum).zip(self.last) {
++            *w = ((s + (self.step - last) as f64 * f64::from(*w)) / self.step.max(1) as f64) as f32;
++        }
++        self.m
++    }
++}
++#[derive(Clone, Debug)]
++struct Token {
++    s: usize,
++    e: usize,
++    text: String,
++}
++fn tokens(s: &str) -> Vec<Token> {
++    let mut out = Vec::new();
++    let mut begin = None;
++    for (i, c) in s.char_indices() {
++        if c.is_alphanumeric() {
++            if begin.is_none() {
++                begin = Some(i);
++            }
++        } else {
++            if let Some(b) = begin.take() {
++                out.push(Token {
++                    s: b,
++                    e: i,
++                    text: s.get(b..i).unwrap_or("").to_owned(),
++                });
++            }
++            if !c.is_whitespace() {
++                out.push(Token {
++                    s: i,
++                    e: i + c.len_utf8(),
++                    text: c.to_string(),
++                });
++            }
++        }
++    }
++    if let Some(b) = begin {
++        out.push(Token {
++            s: b,
++            e: s.len(),
++            text: s.get(b..).unwrap_or("").to_owned(),
++        });
++    }
++    out
++}
++fn shape(s: &str) -> String {
++    s.chars()
++        .map(|c| {
++            if c.is_uppercase() {
++                'A'
++            } else if c.is_lowercase() {
++                'a'
++            } else if c.is_numeric() {
++                '0'
++            } else {
++                c
++            }
++        })
++        .collect()
++}
++fn token_features(ts: &[Token], i: usize) -> Vec<usize> {
++    let mut xs = vec!["bias".into()];
++    for offset in -2isize..=2 {
++        if let Some(j) = i.checked_add_signed(offset)
++            && let Some(t) = ts.get(j)
++        {
++            xs.push(format!("w{offset}={}", t.text.to_lowercase()));
++            xs.push(format!("s{offset}={}", shape(&t.text)));
++        }
++    }
++    if let Some(t) = ts.get(i) {
++        for n in 1..=3 {
++            xs.push(format!(
++                "pre{n}={}",
++                t.text.to_lowercase().chars().take(n).collect::<String>()
++            ));
++            xs.push(format!(
++                "suf{n}={}",
++                t.text
++                    .to_lowercase()
++                    .chars()
++                    .rev()
++                    .take(n)
++                    .collect::<String>()
++            ));
++        }
++    }
++    features(xs)
++}
++fn mask(text: &str, values: &[String]) -> String {
++    let mut out = text.to_lowercase();
++    let mut values: Vec<_> = values
++        .iter()
++        .map(|v| v.to_lowercase())
++        .filter(|v| !v.is_empty())
++        .collect();
++    values.sort_by(|a, b| b.len().cmp(&a.len()).then(a.cmp(b)));
++    values.dedup();
++    for v in values {
++        out = out.replace(&v, " <entity> ");
++    }
++    out
++}
++fn state_context(prior: Option<&Snapshot>) -> (Vec<String>, Vec<String>) {
++    let mut fs = Vec::new();
++    let mut values = Vec::new();
++    if let Some(b) = prior {
++        for a in &b.active_services {
++            fs.push(format!("active={a}"));
++        }
++        for f in &b.frames {
++            fs.push(format!("intent={}:{}", f.service, f.state.active_intent));
++            for (slot, vs) in &f.state.slot_values {
++                fs.push(format!("filled={}:{}", f.service, slot));
++                values.extend(vs.iter().cloned());
++            }
++        }
++    }
++    (fs, values)
++}
++fn source_context(
++    text: &str,
++    s: usize,
++    e: usize,
++    user: &str,
++    prior: Option<&Snapshot>,
++    values: &[String],
++) -> Vec<String> {
++    let (state, mut masked_values) = state_context(prior);
++    masked_values.extend_from_slice(values);
++    let left = mask(text.get(..s).unwrap_or(""), &masked_values);
++    let right = mask(text.get(e..).unwrap_or(""), &masked_values);
++    let before = tokens(&left);
++    let after = tokens(&right);
++    let mut xs = vec![
++        "bias".into(),
++        format!("len={}", tokens(text.get(s..e).unwrap_or("")).len().min(16)),
++    ];
++    for (i, t) in before.iter().rev().take(3).enumerate() {
++        xs.push(format!("left{i}={}", t.text));
++    }
++    for (i, t) in after.iter().take(3).enumerate() {
++        xs.push(format!("right{i}={}", t.text));
++    }
++    for t in before.iter().chain(&after) {
++        xs.push(format!("ctx={}", t.text));
++    }
++    // Over-limit preceding USER text supplies no lexical features, but is retained in the trace.
++    if user.len() <= 4096 && tokens(user).len() <= 128 {
++        let ws = tokens(&mask(user, &masked_values));
++        for t in &ws {
++            xs.push(format!("previous_user={}", t.text));
++        }
++        for pair in ws.windows(2) {
++            if let [a, b] = pair {
++                xs.push(format!("previous_bigram={}_{}", a.text, b.text));
++            }
++        }
++    }
++    xs.extend(state);
++    xs
++}
++#[derive(Serialize, Deserialize, Clone)]
++struct Span {
++    start: usize,
++    end: usize,
++    role: String,
++}
++#[derive(Serialize, Deserialize)]
++struct Turn {
++    input: InputTurn,
++    spans: Vec<Span>,
++    baseline: Option<Snapshot>,
++    gold: Vec<Frame>,
++}
++#[derive(Serialize, Deserialize)]
++struct Conversation {
++    id: String,
++    cal: bool,
++    turns: Vec<Turn>,
++}
++#[derive(Serialize, Deserialize, Clone, Default)]
++struct State {
++    active_intent: String,
++    slot_values: BTreeMap<String, Vec<String>>,
++}
++#[derive(Serialize, Deserialize, Clone)]
++struct Frame {
++    service: String,
++    state: State,
++}
++#[derive(Serialize, Deserialize, Clone)]
++struct Snapshot {
++    turn_index: usize,
++    active_services: Vec<String>,
++    frames: Vec<Frame>,
++}
++#[derive(Serialize, Deserialize)]
++struct Dataset {
++    roles: BTreeSet<String>,
++    targets: BTreeMap<String, Vec<String>>,
++    dialogues: Vec<Conversation>,
++}
++#[derive(Serialize, Deserialize)]
++struct Model {
++    version: u32,
++    roles: Vec<String>,
++    boundary: Linear,
++    role: Linear,
++    rank: Linear,
++}
++impl Model {
++    fn validate(&self, allowed: &BTreeSet<String>) -> Result<(), String> {
++        self.boundary.validate()?;
++        self.role.validate()?;
++        self.rank.validate()?;
++        if self.version != 2
++            || self.roles.is_empty()
++            || self.roles.len() != self.role.labels
++            || self
++                .roles
++                .iter()
++                .any(|r| r != "NONE" && !allowed.contains(r))
++            || self.roles.first().map(String::as_str) != Some("NONE")
++            || self.boundary.labels != 3
++            || !self.boundary.bio
++            || self.role.bio
++            || self.rank.bio
++            || self.rank.labels != 1
++            || self.roles.iter().collect::<BTreeSet<_>>().len() != self.roles.len()
++        {
++            return Err("role/schema mismatch".into());
++        }
++        Ok(())
++    }
++}
++#[derive(Clone, Serialize, Deserialize, Debug)]
++struct Entity {
++    source_turn: usize,
++    system_index: usize,
++    start: usize,
++    end: usize,
++    source: String,
++    value: String,
++    role: String,
++    confidence: f32,
++    context: Vec<String>,
++}
++impl Entity {
++    fn valid(&self) -> bool {
++        self.role != "NONE"
++            && self.start < self.end
++            && self.source.get(self.start..self.end) == Some(self.value.as_str())
++            && self.source.len() <= 4096
++            && self.confidence.is_finite()
++    }
++}
++#[derive(Default)]
++struct Ledger {
++    entities: VecDeque<Entity>,
++    systems: usize,
++}
++impl Ledger {
++    fn reset(&mut self) {
++        *self = Self::default();
++    }
++    fn push(&mut self, mut es: Vec<Entity>) {
++        self.systems += 1;
++        for e in &mut es {
++            e.system_index = self.systems;
++        }
++        self.entities.extend(es.into_iter().filter(Entity::valid));
++        while self.entities.len() > 128
++            || self
++                .entities
++                .front()
++                .is_some_and(|e| self.systems.saturating_sub(e.system_index) >= 32)
++        {
++            self.entities.pop_front();
++        }
++    }
++}
++#[derive(Clone, Serialize, Deserialize)]
++struct RawSpan {
++    start: usize,
++    end: usize,
++    boundary_margin: f32,
++}
++fn extract(boundary: &Linear, text: &str) -> Vec<RawSpan> {
++    let ts = tokens(text);
++    if text.len() > 4096 || ts.len() > 128 {
++        return vec![];
++    }
++    let mut labels = Vec::new();
++    let mut margins = Vec::new();
++    let mut prev = 0;
++    for i in 0..ts.len() {
++        let mut f = token_features(&ts, i);
++        f.push(hash(&format!("prev={prev}")));
++        let (l, m) = boundary.best(&f, prev);
++        labels.push(l);
++        margins.push(m);
++        prev = l;
++    }
++    let mut out = Vec::new();
++    let mut i = 0;
++    while i < ts.len() {
++        if labels.get(i) != Some(&1) {
++            i += 1;
++            continue;
++        }
++        let first = i;
++        i += 1;
++        while labels.get(i) == Some(&2) {
++            i += 1;
++        }
++        if i - first > 16 {
++            continue;
++        }
++        if let (Some(a), Some(b)) = (ts.get(first), ts.get(i - 1)) {
++            out.push(RawSpan {
++                start: a.s,
++                end: b.e,
++                boundary_margin: margins
++                    .get(first..i)
++                    .unwrap_or(&[])
++                    .iter()
++                    .copied()
++                    .fold(f32::INFINITY, f32::min),
++            });
++        }
++    }
++    out
++}
++#[derive(Clone, Serialize, Deserialize)]
++struct SourceRow {
++    id: String,
++    cal: bool,
++    turn: usize,
++    raw: RawSpan,
++    source: String,
++    previous_user: String,
++    context: Vec<String>,
++    features: Vec<usize>,
++    exact_roles: Vec<String>,
++    label: String,
++}
++fn label_for(exact: &[String], roles: &[String]) -> String {
++    if let [r] = exact
++        && roles.contains(r)
++    {
++        r.clone()
++    } else {
++        "NONE".into()
++    }
++}
++// Raw mask history carries values only; NONE predictions never enter Entity/Ledger.
++#[derive(Default)]
++struct MaskHistory {
++    values: VecDeque<(usize, String)>,
++    systems: usize,
++}
++impl MaskHistory {
++    fn push(&mut self, values: Vec<String>) {
++        self.systems += 1;
++        self.values
++            .extend(values.into_iter().map(|v| (self.systems, v)));
++        while self.values.len() > 128
++            || self
++                .values
++                .front()
++                .is_some_and(|(i, _)| self.systems.saturating_sub(*i) >= 32)
++        {
++            self.values.pop_front();
++        }
++    }
++    fn values(&self) -> Vec<String> {
++        self.values.iter().map(|(_, v)| v.clone()).collect()
++    }
++}
++fn source_rows(data: &Dataset, boundary: &Linear) -> Vec<SourceRow> {
++    let mut rows = Vec::new();
++    for d in &data.dialogues {
++        let mut prior = None;
++        let mut user = "";
++        let mut history = MaskHistory::default();
++        for (i, t) in d.turns.iter().enumerate() {
++            if matches!(t.input.speaker, glassmind_dialogue::tracker::Speaker::User) {
++                user = &t.input.utterance;
++                prior = t.baseline.as_ref();
++                continue;
++            }
++            let spans = extract(boundary, &t.input.utterance);
++            let current: Vec<_> = spans
++                .iter()
++                .filter_map(|s| t.input.utterance.get(s.start..s.end).map(str::to_owned))
++                .collect();
++            let mut values = history.values();
++            values.extend(current.iter().cloned());
++            for raw in spans {
++                let exact_roles: Vec<_> = t
++                    .spans
++                    .iter()
++                    .filter(|s| s.start == raw.start && s.end == raw.end)
++                    .map(|s| s.role.clone())
++                    .collect::<BTreeSet<_>>()
++                    .into_iter()
++                    .collect();
++                let context =
++                    source_context(&t.input.utterance, raw.start, raw.end, user, prior, &values);
++                rows.push(SourceRow {
++                    id: d.id.clone(),
++                    cal: d.cal,
++                    turn: i,
++                    raw,
++                    source: t.input.utterance.clone(),
++                    previous_user: user.into(),
++                    features: features(context.clone()),
++                    context,
++                    exact_roles,
++                    label: String::new(),
++                });
++            }
++            history.push(current);
++        }
++    }
++    rows
++}
++fn entity_from(row: &SourceRow, m: &Model) -> Option<Entity> {
++    let (r, confidence) = m.role.best(&row.features, 0);
++    let role = m.roles.get(r)?;
++    if role == "NONE" {
++        return None;
++    }
++    Some(Entity {
++        source_turn: row.turn,
++        system_index: 0,
++        start: row.raw.start,
++        end: row.raw.end,
++        source: row.source.clone(),
++        value: row.source.get(row.raw.start..row.raw.end)?.into(),
++        role: role.clone(),
++        confidence,
++        context: row.context.clone(),
++    })
++}
++#[derive(Clone, Serialize, Deserialize)]
++struct Candidate {
++    entity: Entity,
++    features: Vec<usize>,
++    correct: bool,
++    score: f32,
++}
++#[derive(Serialize, Deserialize)]
++struct Opportunity {
++    id: String,
++    turn: usize,
++    cal: bool,
++    service: String,
++    slot: String,
++    gold: Vec<String>,
++    candidates: Vec<Candidate>,
++}
++fn recency(n: usize) -> usize {
++    [0, 1, 2, 4, 8, 16, 32]
++        .into_iter()
++        .find(|&x| n <= x)
++        .unwrap_or(32)
++}
++fn rank_features(
++    user: &str,
++    target: &str,
++    intent: &str,
++    active: &[String],
++    filled: &[String],
++    e: &Entity,
++    history: (&Ledger, &[String]),
++) -> Vec<usize> {
++    let (ledger, mask_values) = history;
++    let pair = format!("{target}|{}", e.role);
++    let age = ledger.systems.saturating_sub(e.system_index);
++    let latest = !ledger
++        .entities
++        .iter()
++        .any(|x| x.role == e.role && x.system_index > e.system_index);
++    let mut xs = vec![
++        format!("pair={pair}"),
++        format!("target={target}"),
++        format!("age={pair}:{}", recency(age)),
++        format!("latest={pair}:{latest}"),
++        format!("count={pair}:{}", ledger.entities.len().min(8)),
++        format!("intent={pair}:{intent}"),
++    ];
++    for a in active {
++        xs.push(format!("active={pair}:{a}"));
++    }
++    for s in filled {
++        xs.push(format!("filled={pair}:{s}"));
++    }
++    for c in &e.context {
++        xs.push(format!("source={pair}:{c}"));
++    }
++    // Explicitly remove all ledger values: no candidate text identity/equality feature.
++    let mut masked = user.to_lowercase();
++    let mut values: Vec<_> = ledger
++        .entities
++        .iter()
++        .map(|x| x.value.to_lowercase())
++        .collect();
++    values.extend(mask_values.iter().map(|v| v.to_lowercase()));
++    values.sort_by(|a, b| b.len().cmp(&a.len()).then(a.cmp(b)));
++    values.dedup();
++    for v in values {
++        if !v.is_empty() {
++            masked = masked.replace(&v, " <entity> ");
++        }
++    }
++    let ws: Vec<_> = tokens(&masked).into_iter().map(|t| t.text).collect();
++    for w in &ws {
++        xs.push(format!("user={pair}:{w}"));
++    }
++    for w in ws.windows(2) {
++        if let [a, b] = w {
++            xs.push(format!("bigram={pair}:{a}_{b}"));
++        }
++    }
++    features(xs)
++}
++fn read<T: serde::de::DeserializeOwned>(p: &str) -> Result<T, Box<dyn std::error::Error>> {
++    Ok(serde_json::from_reader(BufReader::new(File::open(p)?))?)
++}
++fn write<T: Serialize>(p: &str, v: &T) -> Result<(), Box<dyn std::error::Error>> {
++    serde_json::to_writer(BufWriter::new(File::create(p)?), v)?;
++    Ok(())
++}
++
++#[derive(Deserialize)]
++struct BoundaryOnly {
++    boundary: Linear,
++}
++fn train_source(
++    data: &Dataset,
++    frozen: &str,
++    out: &str,
++) -> Result<(Model, Vec<SourceRow>), Box<dyn std::error::Error>> {
++    // Unknown role/rank fields are skipped by serde; never deserialize their weights.
++    let frozen: BoundaryOnly = read(frozen)?;
++    frozen.boundary.validate()?;
++    if frozen.boundary.labels != 3 || !frozen.boundary.bio {
++        return Err("invalid boundary".into());
++    }
++    let mut rows = source_rows(data, &frozen.boundary);
++    let mut counts = BTreeMap::<String, usize>::new();
++    for r in rows.iter().filter(|r| !r.cal) {
++        if let [role] = r.exact_roles.as_slice() {
++            *counts.entry(role.clone()).or_default() += 1;
++        }
++    }
++    let mut labels: Vec<_> = counts.iter().filter(|(_, n)| **n >= 20).collect();
++    labels.sort_by(|a, b| b.1.cmp(a.1).then(a.0.cmp(b.0)));
++    labels.truncate(127);
++    let mut roles = vec!["NONE".into()];
++    roles.extend(labels.iter().map(|(r, _)| (*r).clone()));
++    for r in &mut rows {
++        r.label = label_for(&r.exact_roles, &roles);
++    }
++    write(&format!("{out}/role-frequencies.json"), &counts)?;
++    eprintln!("source rows={} labels={}", rows.len(), roles.len());
++    let mut role = Learner::new(roles.len(), false);
++    for epoch in 0..8 {
++        let mut errors = 0;
++        for r in rows.iter().filter(|r| !r.cal) {
++            role.step += 1;
++            let y = roles
++                .iter()
++                .position(|x| *x == r.label)
++                .ok_or("missing label")?;
++            let (p, _) = role.m.best(&r.features, 0);
++            if p != y {
++                role.update(&r.features, y, 1.);
++                role.update(&r.features, p, -1.);
++                errors += 1;
++            }
++        }
++        eprintln!("role epoch {epoch} errors {errors}");
++    }
++    Ok((
++        Model {
++            version: 2,
++            roles,
++            boundary: frozen.boundary,
++            role: role.finish(),
++            rank: Linear::new(1, false),
++        },
++        rows,
++    ))
++}
++fn opportunities(data: &Dataset, m: &Model, source: &[SourceRow]) -> Vec<Opportunity> {
++    let mut by_turn = BTreeMap::<(&str, usize), Vec<&SourceRow>>::new();
++    for r in source {
++        by_turn.entry((&r.id, r.turn)).or_default().push(r);
++    }
++    let mut rows = Vec::new();
++    let mut all_users = 0usize;
++    let mut systems = 0usize;
++    for d in &data.dialogues {
++        let mut ledger = Ledger::default();
++        let mut masks = MaskHistory::default();
++        for (i, t) in d.turns.iter().enumerate() {
++            if matches!(
++                t.input.speaker,
++                glassmind_dialogue::tracker::Speaker::System
++            ) {
++                let rs = by_turn
++                    .get(&(d.id.as_str(), i))
++                    .cloned()
++                    .unwrap_or_default();
++                masks.push(
++                    rs.iter()
++                        .filter_map(|r| r.source.get(r.raw.start..r.raw.end).map(str::to_owned))
++                        .collect(),
++                );
++                ledger.push(rs.iter().filter_map(|r| entity_from(r, m)).collect());
++                systems += 1;
++                continue;
++            }
++            all_users += 1;
++            let Some(b) = &t.baseline else {
++                continue;
++            };
++            let (_, mut mask_values) = state_context(Some(b));
++            mask_values.extend(masks.values());
++            for f in &b.frames {
++                if !b.active_services.contains(&f.service) {
++                    continue;
++                }
++                for slot in data.targets.get(&f.service).into_iter().flatten() {
++                    if f.state.slot_values.contains_key(slot) {
++                        continue;
++                    }
++                    let gold = t
++                        .gold
++                        .iter()
++                        .find(|g| g.service == f.service)
++                        .and_then(|g| g.state.slot_values.get(slot))
++                        .cloned()
++                        .unwrap_or_default();
++                    let mut candidates = Vec::new();
++                    if t.input.utterance.len() <= 4096 && tokens(&t.input.utterance).len() <= 128 {
++                        for e in &ledger.entities {
++                            let fs = rank_features(
++                                &t.input.utterance,
++                                &format!("{}/{}", f.service, slot),
++                                &f.state.active_intent,
++                                &b.active_services,
++                                &f.state.slot_values.keys().cloned().collect::<Vec<_>>(),
++                                e,
++                                (&ledger, &mask_values),
++                            );
++                            candidates.push(Candidate {
++                                entity: e.clone(),
++                                features: fs,
++                                correct: gold
++                                    .iter()
++                                    .any(|v| v.to_lowercase() == e.value.to_lowercase()),
++                                score: 0.,
++                            });
++                        }
++                    }
++                    rows.push(Opportunity {
++                        id: d.id.clone(),
++                        turn: i,
++                        cal: d.cal,
++                        service: f.service.clone(),
++                        slot: slot.clone(),
++                        gold,
++                        candidates,
++                    });
++                }
++            }
++        }
++        ledger.reset();
++    }
++    eprintln!(
++        "trace USER={all_users} SYSTEM={systems} missing opportunities={}",
++        rows.len()
++    );
++    rows
++}
++fn train_rank(rows: &[Opportunity]) -> Linear {
++    let mut l = Learner::new(1, false);
++    for epoch in 0..8 {
++        let mut errors = 0;
++        for r in rows.iter().filter(|r| !r.cal) {
++            l.step += 1;
++            let mut best = None;
++            let mut best_s = 0.;
++            let mut truth = None;
++            let mut truth_s = f32::NEG_INFINITY;
++            for (i, c) in r.candidates.iter().enumerate() {
++                let s = l.m.score(&c.features, 0);
++                if s > best_s {
++                    best = Some(i);
++                    best_s = s;
++                }
++                if c.correct && s > truth_s {
++                    truth = Some(i);
++                    truth_s = s;
++                }
++            }
++            if best != truth {
++                if let Some(c) = truth.and_then(|i| r.candidates.get(i)) {
++                    l.update(&c.features, 0, 1.);
++                }
++                if let Some(c) = best.and_then(|i| r.candidates.get(i)) {
++                    l.update(&c.features, 0, -1.);
++                }
++                errors += 1;
++            }
++        }
++        eprintln!("rank epoch {epoch} errors {errors}");
++    }
++    l.finish()
++}
++fn select(cs: &[Candidate], source: f32, score: f32, gap: f32) -> Option<usize> {
++    let mut best = None;
++    let mut bs = f32::NEG_INFINITY;
++    for (i, c) in cs.iter().enumerate() {
++        if c.entity.confidence >= source && c.score > bs {
++            best = Some(i);
++            bs = c.score;
++        }
++    }
++    let b = cs.get(best?)?;
++    if bs < score || !bs.is_finite() {
++        return None;
++    }
++    // Competing values remain competitors even when their source confidence is low.
++    let alternative = cs
++        .iter()
++        .filter(|c| c.entity.value.to_lowercase() != b.entity.value.to_lowercase())
++        .map(|c| c.score)
++        .fold(0., f32::max);
++    if bs - alternative < gap {
++        return None;
++    }
++    best
++}
++pub fn run() -> Result<(), Box<dyn std::error::Error>> {
++    let args: Vec<_> = std::env::args().collect();
++    let [_, data_path, out, frozen] = args.as_slice() else {
++        return Err("usage: context-ledger DATA OUTPUT_DIR FROZEN_BOUNDARY_MODEL".into());
++    };
++    let data: Dataset = read(data_path)?;
++    let (mut m, source) = train_source(&data, frozen, out)?;
++    let mut raw_sources = BufWriter::new(File::create(format!("{out}/source-spans.jsonl"))?);
++    for r in &source {
++        let scores: Vec<_> = (0..m.roles.len())
++            .map(|l| m.role.score(&r.features, l))
++            .collect();
++        let (prediction, margin) = m.role.best(&r.features, 0);
++        serde_json::to_writer(
++            &mut raw_sources,
++            &serde_json::json!({"row":r,"scores":scores,"prediction":prediction,"margin":margin,"enters_ledger":prediction!=0}),
++        )?;
++        writeln!(raw_sources)?;
++    }
++    raw_sources.flush()?;
++    m.validate(&data.roles)?;
++    write(&format!("{out}/source-model.json"), &m)?;
++    let mut rows = opportunities(&data, &m, &source);
++    m.rank = train_rank(&rows);
++    m.validate(&data.roles)?;
++    let model_path = format!("{out}/model.json");
++    write(&model_path, &m)?;
++    if std::fs::metadata(&model_path)?.len() > 16 * 1024 * 1024 {
++        return Err("serialized model exceeds16MiB".into());
++    }
++    let mut raw = BufWriter::new(File::create(format!("{out}/proposals.jsonl"))?);
++    for r in &mut rows {
++        for c in &mut r.candidates {
++            c.score = m.rank.score(&c.features, 0);
++        }
++        serde_json::to_writer(&mut raw, &r)?;
++        writeln!(raw)?;
++    }
++    raw.flush()?;
++    let mut decisions = BufWriter::new(File::create(format!("{out}/decisions.jsonl"))?);
++    for source in [0., 2.] {
++        for score in [2., 4., 8., 16.] {
++            for gap in [2., 4.] {
++                for r in rows.iter().filter(|r| r.cal) {
++                    let chosen = select(&r.candidates, source, score, gap);
++                    serde_json::to_writer(
++                        &mut decisions,
++                        &serde_json::json!({"grid":[source,score,gap],"id":r.id,"turn":r.turn,"service":r.service,"slot":r.slot,"chosen":chosen}),
++                    )?;
++                    writeln!(decisions)?;
++                }
++            }
++        }
++    }
++    decisions.flush()?;
++    Ok(())
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    fn entity(v: &str, turn: usize) -> Entity {
++        Entity {
++            source_turn: turn,
++            system_index: 0,
++            start: 3,
++            end: 3 + v.len(),
++            source: format!("At {v}!"),
++            value: v.into(),
++            role: "service/name".into(),
++            confidence: 5.,
++            context: vec![],
++        }
++    }
++    #[test]
++    fn unicode_provenance_and_eviction_reset() {
++        let mut l = Ledger::default();
++        let e = entity("Élan 東京", 3);
++        assert!(e.valid());
++        l.push(vec![e]);
++        for _ in 0..31 {
++            l.push(vec![]);
++        }
++        assert_eq!(l.entities.len(), 1);
++        l.push(vec![]);
++        assert!(l.entities.is_empty());
++        l.push((0..140).map(|i| entity("Name", i)).collect());
++        assert_eq!(l.entities.len(), 128);
++        assert_eq!(l.entities.front().map(|e| e.source_turn), Some(12));
++        l.reset();
++        assert_eq!(l.systems, 0);
++        assert!(l.entities.is_empty());
++        let mut bad = entity("Élan", 0);
++        bad.end -= 1;
++        assert!(!bad.valid());
++    }
++    #[test]
++    fn ambiguity_none_and_exhaustive_rank() {
++        for a in -2..=6 {
++            for b in -2..=6 {
++                let c = vec![
++                    Candidate {
++                        entity: entity("First", 1),
++                        features: vec![],
++                        correct: false,
++                        score: a as f32,
++                    },
++                    Candidate {
++                        entity: entity("Second", 2),
++                        features: vec![],
++                        correct: false,
++                        score: b as f32,
++                    },
++                ];
++                let got = select(&c, 0., 2., 2.);
++                let expected = if a >= 2 && a - b.max(0) >= 2 {
++                    Some(0)
++                } else if b >= 2 && b - a.max(0) >= 2 {
++                    Some(1)
++                } else {
++                    None
++                };
++                assert_eq!(got, expected);
++            }
++        }
++    }
++    #[test]
++    fn strict_input_and_model() {
++        assert!(
++            serde_json::from_str::<InputTurn>(
++                r#"{"speaker":"SYSTEM","utterance":"x","frames":[]}"#
++            )
++            .is_err()
++        );
++        let mut m = Linear::new(3, true);
++        assert!(m.validate().is_ok());
++        if let Some(w) = m.w.first_mut() {
++            *w = f32::NAN;
++        }
++        assert!(m.validate().is_err());
++        let ts = tokens("Hi Élan 東京.");
++        for t in ts {
++            assert_eq!("Hi Élan 東京.".get(t.s..t.e), Some(t.text.as_str()));
++        }
++    }
++    #[test]
++    fn value_free_binding() {
++        let mut a = Ledger::default();
++        a.push(vec![entity("Alpha", 1)]);
++        let mut b = Ledger::default();
++        b.push(vec![entity("Beta", 1)]);
++        let fa = a
++            .entities
++            .front()
++            .map(|e| rank_features("go to Alpha", "t", "i", &[], &[], e, (&a, &[])));
++        let fb = b
++            .entities
++            .front()
++            .map(|e| rank_features("go to Beta", "t", "i", &[], &[], e, (&b, &[])));
++        assert_eq!(fa, fb);
++    }
++    #[test]
++    fn contextual_source_masks_entities_and_uses_actual_user() {
++        let a = source_context(
++            "Visit Alpha near Gamma.",
++            6,
++            11,
++            "Find Alpha near Gamma",
++            None,
++            &["Alpha".into(), "Gamma".into()],
++        );
++        let b = source_context(
++            "Visit Bravo near Delta.",
++            6,
++            11,
++            "Find Bravo near Delta",
++            None,
++            &["Bravo".into(), "Delta".into()],
++        );
++        assert_eq!(a, b);
++        assert!(
++            a.iter()
++                .all(|x| !x.contains("alpha") && !x.contains("gamma"))
++        );
++        let c = source_context(
++            "Visit Alpha near Gamma.",
++            6,
++            11,
++            "Avoid Alpha near Gamma",
++            None,
++            &["Alpha".into(), "Gamma".into()],
++        );
++        assert_ne!(features(a), features(c));
++    }
++    #[test]
++    fn none_supervision_and_ledger_exclusion() {
++        let roles = vec!["NONE".into(), "service/name".into()];
++        assert_eq!(label_for(&[], &roles), "NONE");
++        assert_eq!(label_for(&["other/name".into()], &roles), "NONE");
++        assert_eq!(
++            label_for(&["service/name".into(), "other/name".into()], &roles),
++            "NONE"
++        );
++        assert_eq!(label_for(&["service/name".into()], &roles), "service/name");
++        let mut l = Ledger::default();
++        let mut e = entity("Alpha", 0);
++        e.role = "NONE".into();
++        l.push(vec![e]);
++        assert!(l.entities.is_empty());
++        let mut h = MaskHistory::default();
++        h.push(vec!["Alpha".into()]);
++        for _ in 0..32 {
++            h.push(vec![]);
++        }
++        assert!(h.values().is_empty());
++    }
++    #[test]
++    fn low_confidence_competitor_blocks_and_same_value_does_not() {
++        let mut a = entity("Alpha", 0);
++        a.confidence = 4.;
++        let mut b = entity("Beta", 1);
++        b.confidence = 0.;
++        let mut cs = vec![
++            Candidate {
++                entity: a,
++                features: vec![],
++                correct: false,
++                score: 8.,
++            },
++            Candidate {
++                entity: b,
++                features: vec![],
++                correct: false,
++                score: 7.,
++            },
++        ];
++        assert_eq!(select(&cs, 2., 4., 2.), None);
++        if let Some(c) = cs.get_mut(1) {
++            c.entity.value = "Alpha".into();
++        }
++        assert_eq!(select(&cs, 2., 4., 2.), Some(0));
++    }
++}
+diff --git 1/tools/dialogue/context-ledger/prepare.py 2/tools/dialogue/context-ledger/prepare.py
+new file mode 100644
+index 0000000..1f9d525
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/prepare.py
+@@ -0,0 +1,44 @@
++#!/usr/bin/env python3
++"""Offline annotations; runtime features are generated separately from InputTurn."""
++import collections, hashlib, json, pathlib
++HERE=pathlib.Path(__file__).resolve().parent
++ROOT=HERE.parents[3].parent
++# Fixed supplied read-only packages; no old report discovery.
++ROOT=pathlib.Path('/home/gsc/.cache/glassmind/continuous-20261010')
++S=ROOT/'entityledger-source'; C=ROOT/'contextledger-source'; OUT=HERE/'artifacts'
++def read(p): return json.loads(p.read_text())
++def save(n,v): (OUT/n).write_text(json.dumps(v,ensure_ascii=False,separators=(',',':'))+'\n')
++verified={}
++for p in [S,C]:
++ m=read(p/'manifest.json')
++ for n,r in m.items():
++  b=(p/n).read_bytes();assert len(b)==r['bytes'] and hashlib.sha256(b).hexdigest()==r['sha256']
++ verified[p.name]={'files':len(m),'bytes':sum(r['bytes'] for r in m.values()),'manifest':m}
++ds=sorted(read(S/'train.json'),key=lambda d:d['dialogue_id']); baseline=read(C/'baseline-train.json'); inputs=read(C/'train-input.json')
++assert inputs==[[{k:t[k] for k in ('speaker','utterance')} for t in d['turns']] for d in ds]
++assert len(ds)==len(baseline)==3174
++schemas=read(S/'full-train-schema.json'); selected=read(S/'schema.json')
++roles=sorted({s['service_name']+'/'+sl['name'] for s in schemas for sl in s['slots']})
++targets={}
++for s in selected:
++ names={k for it in s['intents'] for k in list(it['required_slots'])+list(it['optional_slots'])}
++ targets[s['service_name']]=sorted(sl['name'] for sl in s['slots'] if not sl['is_categorical'] and sl['name'] in names)
++result=[]; counts=collections.Counter()
++for d,ps in zip(ds,baseline):
++ bi={p['turn_index']:p for p in ps}; assert len(bi)==len(ps)
++ assert sorted(bi)==[i for i,t in enumerate(d['turns']) if t['speaker']=='USER']
++ cal=int(hashlib.sha256(d['dialogue_id'].encode()).hexdigest(),16)%5==0;counts['CAL' if cal else 'FIT']+=1
++ turns=[]
++ for i,t in enumerate(d['turns']):
++  counts[t['speaker']]+=1;spans=[]
++  for f in t['frames']:
++   for sp in f.get('slots',[]):
++    a,b=sp['start'],sp['exclusive_end'];assert 0<=a<b<=len(t['utterance'])
++    role=f['service']+'/'+sp['slot']; assert role in roles
++    spans.append({'start':len(t['utterance'][:a].encode()),'end':len(t['utterance'][:b].encode()),'role':role})
++  turns.append({'input':{k:t[k] for k in ('speaker','utterance')},'spans':spans,'baseline':bi.get(i),'gold':[{'service':f['service'],'state':f['state']} for f in t['frames'] if 'state' in f]})
++ result.append({'id':d['dialogue_id'],'cal':cal,'turns':turns})
++assert counts['FIT']==2532 and counts['CAL']==642
++save('dataset.json',{'roles':roles,'targets':targets,'dialogues':result})
++save('source-verification.json',{'packages':verified,'alignment':'exact sorted utterance-only inputs and every USER index','counts':counts,'targets':targets,'license':'CC-BY-SA-4.0','revision':'e852981ae34990f4358979625854259302feaa78'})
++print(json.dumps(counts));print(targets)
+diff --git 1/tools/dialogue/context-ledger/reconstruct.py 2/tools/dialogue/context-ledger/reconstruct.py
+new file mode 100644
+index 0000000..0f7ca7f
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/reconstruct.py
+@@ -0,0 +1,61 @@
++#!/usr/bin/env python3
++"""Independent reconstruction of all retained native linear scores and provenance."""
++import collections, hashlib, json, pathlib, sys
++import numpy as np
++H=pathlib.Path(__file__).resolve().parent; A=H/'artifacts'
++def load(p):return json.loads(p.read_text())
++def fnv(s):
++ h=2166136261
++ for b in s.encode(): h=((h^b)*16777619)&0xffffffff
++ return h
++m=load(A/'model.json');d=load(A/'dataset.json');by_id={x['id']:x for x in d['dialogues']}
++rw=np.array(m['role']['w'],dtype=np.float32);kw=np.array(m['rank']['w'],dtype=np.float32)
++labels=np.arange(len(m['roles']),dtype=np.uint64)*np.uint64(2654435761)
++c=collections.Counter();freq=collections.Counter();source_owner=collections.Counter()
++for line in open(A/'source-spans.jsonl'):
++ z=json.loads(line);r=z['row'];conv=by_id[r['id']];t=conv['turns'][r['turn']];c['source_rows']+=1
++ assert r['source']==t['input']['utterance'] and t['input']['speaker']=='SYSTEM' and r['cal']==conv['cal']
++ previous=next((x['input']['utterance'] for x in reversed(conv['turns'][:r['turn']]) if x['input']['speaker']=='USER'),'')
++ assert previous==r['previous_user']
++ assert sorted({fnv(x) for x in r['context']})==r['features']
++ raw=r['raw'];value=r['source'].encode()[raw['start']:raw['end']].decode();assert value
++ exact=sorted({sp['role'] for sp in t['spans'] if (sp['start'],sp['end'])==(raw['start'],raw['end'])});assert exact==r['exact_roles']
++ if not r['cal'] and len(exact)==1:freq[exact[0]]+=1
++ ix=(np.array(r['features'],dtype=np.uint64)[None,:]^labels[:,None])&np.uint64(262143)
++ scores=np.cumsum(rw[ix],axis=1,dtype=np.float32)[:,-1]
++ assert np.allclose(scores,z['scores'],rtol=0,atol=0.001),(r['id'],r['turn'])
++ assert int(np.argmax(scores))==z['prediction']
++ if z['prediction']:
++  role=m['roles'][z['prediction']];source_owner[role.split('/')[0]]+=1
++c['all_source_class_scores']=c['source_rows']*len(m['roles'])
++expected=['NONE']+[k for k,n in sorted(freq.items(),key=lambda x:(-x[1],x[0])) if n>=20][:127];assert m['roles']==expected
++for line in open(A/'proposals.jsonl'):
++ r=json.loads(line);c['opportunities']+=1
++ for cand in r['candidates']:
++  e=cand['entity'];t=by_id[r['id']]['turns'][e['source_turn']]
++  assert t['input']['speaker']=='SYSTEM' and e['source']==t['input']['utterance'] and e['value']==e['source'].encode()[e['start']:e['end']].decode()
++  assert e['role']!='NONE'; assert e['source_turn']<r['turn']
++  fs=np.array(cand['features'],dtype=np.uint64)&np.uint64(262143)
++  score=float(np.cumsum(kw[fs],dtype=np.float32)[-1])
++  assert abs(score-cand['score'])<0.001
++  c['rank_scores']+=1
++# Explicit baseline errors for every CAL selected-service scored slot, with old values retained.
++sys.path.insert(0,str(H.parents[2]/'crates/dialogue/tools'))
++import upstream_metrics as metrics
++schemas={s['service_name']:s for s in load(pathlib.Path('/home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/schema.json'))}
++errors=[]
++for conv in d['dialogues']:
++ if not conv['cal']:continue
++ for i,t in enumerate(conv['turns']):
++  if t['baseline'] is None:continue
++  pred={f['service']:f for f in t['baseline']['frames']}
++  for g in t['gold']:
++   service=g['service']
++   if service not in schemas:continue
++   correctness,_,_=metrics.compare_slot_values(g['state']['slot_values'],pred[service]['state']['slot_values'],schemas[service],False)
++   for slot,ok in zip(schemas[service]['slots'],correctness):
++    if not ok:errors.append({'id':conv['id'],'turn':i,'service':service,'slot':slot['name'],'baseline':pred[service]['state']['slot_values'].get(slot['name']),'gold':g['state']['slot_values'].get(slot['name'])})
++(A/'baseline-slot-errors.json').write_text(json.dumps(errors,indent=2)+'\n')
++c['baseline_CAL_slot_errors']=len(errors)
++report={'checks':c,'source_role_predictions_by_owner':source_owner,'all_source_scores_and_all_rank_scores_reconstructed':True,'all_raw_source_and_candidate_provenance_verified':True,'FIT_label_selection_independently_reconstructed':True}
++(A/'reconstruction.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+diff --git 1/tools/dialogue/context-ledger/run-checks.sh 2/tools/dialogue/context-ledger/run-checks.sh
+new file mode 100644
+index 0000000..d44fc86
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/run-checks.sh
+@@ -0,0 +1,16 @@
++#!/usr/bin/env bash
++set -euo pipefail
++export TMPDIR=/home/gsc/.cache/glassmind/continuous-20261010/contextledger-run/tmp
++: "${CARGO_TARGET_DIR:?existing target required}"
++D=tools/dialogue/context-ledger
++run() {
++ printf '%q ' "$@" >> "$D/commands.log"; printf '\n' >> "$D/commands.log"
++ "$@"
++}
++cap() { run systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 "$@"; }
++cap cargo fmt --all
++cap cargo test -p glassmind-dialogue --example context-ledger -j1 -- --test-threads 4
++cap cargo clippy -p glassmind-dialogue --all-targets -j1 -- -D warnings
++cap cargo build -p glassmind-dialogue --release --example context-ledger -j1
++cp "$CARGO_TARGET_DIR/release/examples/context-ledger" "$D/artifacts/context-ledger"
++cap "$D/artifacts/context-ledger" "$D/artifacts/dataset.json" "$D/artifacts" /home/gsc/.cache/glassmind/continuous-20261010/contextledger-source/rejected-model.json
+diff --git 1/tools/dialogue/context-ledger/write-report.py 2/tools/dialogue/context-ledger/write-report.py
+new file mode 100644
+index 0000000..cb81f61
+--- /dev/null
++++ 2/tools/dialogue/context-ledger/write-report.py
+@@ -0,0 +1,177 @@
++#!/usr/bin/env python3
++import hashlib,json,pathlib
++H=pathlib.Path(__file__).resolve().parent;A=H/'artifacts'
++r=json.loads((A/'cal-report.json').read_text());c=json.loads((A/'reconstruction.json').read_text())
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++s='''# Handoff — REJECTED, completed bounded experiment
++
++One representation and one 8-role/8-rank averaged-perceptron schedule were fitted.
++No CAL member passed. No candidate DEV inference, second representation, threshold
++retuning, runtime integration, external action, commit, agent or model call occurred.
++No accepted accuracy improvement is claimed. The unchanged production baseline is
++still the supplied 610/1119 joint USER turns and 716/1218 frames on 179 DEV dialogues.
++
++## Exact changes
++
++- Added `crates/dialogue/examples/context-ledger.rs`, an isolated offline executable.
++- Added `tools/dialogue/context-ledger/native/context_ledger_experiment.rs`, copied
++  from the explicitly authorized native source and modified to deserialize ONLY
++  the old frozen BIO boundary into a fresh model. Both old role/rank fields are
++  skipped; new role/rank weights start at zero.
++- Source labels use actual predicted SYSTEM spans, with NONE for absent/unaligned,
++  ambiguous or out-of-label exact supervision. Exact duplicate annotations are
++  deduplicated. FIT frequency >=20, top127 roles plus NONE; all negative rows retained.
++- Added masked preceding actual USER text, masked local SYSTEM context and baseline
++  predicted state features. No gold features, owner/router filter, service pair
++  lexical rules, entity identity features, pretrained models or downloads.
++- Added preparation, independent CAL audit, full linear-score reconstruction,
++  first10 FIT independent boundary decoder parity, reproduction wrapper and reports.
++- NONE never enters the role ledger. A separate bounded raw-span mask history is
++  retained solely to mask available entity strings. Both histories cap128/32 SYSTEM;
++  utterances4096bytes/128tokens, extracted spans16tokens, model16MiB.
++- No tracked production dialogue file was changed (`git diff --exit-code --
++  crates/dialogue` passed; the example is a NEW untracked file). No old model,
++  README, manifest, scorer, main CLI, loop or historical report was edited.
++  Pre-existing parent-directory deletions in this isolated worktree were untouched.
++
++## Frozen CAL gate and complete result
++
++The pre-implementation plan is `EXPERIMENT.md`. All 3174 TRAIN dialogues and all
++34022 USER /34022 SYSTEM turns were retained. SHA256(id) mod5 split:2532 FIT/642 CAL.
++CAL denominators are fixed at6830 USER turns and2505 supported-service gold frames.
++The5137 additional unselected-service gold frames are retained in the dataset,
++not scored against a model that has no corresponding output frame. USER turns with
++no supported gold frame remain in the denominator; gold route is intersected with
++supported schema services. This is a TRAIN diagnostic convention, not a DEV score.
++All members use exactly this same convention and the unchanged upstream frame
++metric. Baseline CAL:5803 joint and1478 strict frames;1073 individual erroneous
++scored slot states are explicitly preserved in `artifacts/baseline-slot-errors.json`.
++
++Required:>=30 new correct fills, zero newly wrong scored assertions, no lost
++baseline-correct joint or frame outcomes. All changed scored slot-turns count,
++including propagation. Baseline-supplied values take precedence and clear a held
++entry; held overlay persists otherwise. Held/inactive changes receive no correctness
++credit. Full candidate prediction files, original gold/state/input data, every
++binding event and every changed slot-turn are retained for every grid member.
++
++| Source margin | Rank vs NONE | Different-value gap | New correct | New wrong | Lost joint | Lost frames | Held/unscored |
++|---:|---:|---:|---:|---:|---:|---:|---:|
++'''
++for g in r['grid']:
++ s+='| '+' | '.join(map(str,[*g['grid'],g['new_correct_fills'],g['new_wrong_assertions'],g['lost_joint'],g['lost_frames'],g['held_unscored']]))+' |\n'
++s+='''
++Every member is rejected:45–65 new wrong assertions. Some members additionally
++lose one previously correct joint/frame. No member was selected, including those
++that preserve all prior correct frames. Held/unscored changes range93–123 and are
++not counted as correct fills. No further experiments were attempted.
++
++## Source supervision and reconstruction evidence
++
++34223 actual frozen-boundary source spans;27241 FIT and6982 CAL.128 competing
++classes include NONE. FIT has1912 NONE targets (1597 absent/unaligned,315 outside
++label vocabulary); CAL has663 (562 absent/unaligned,101 outside vocabulary).
++No ambiguous multiple-role exact annotations occurred in this dataset, but their
++NONE behavior is explicitly tested. FIT predicts2734 NONE and CAL predicts876.
++CAL source role-or-NONE agreement with exact-span supervision:5138/6982;
++4742 positive predictions match annotated roles,1364 positive predictions do not.
++This remains insufficient for the zero-wrong reference gate. Missing source
++annotations do not prove semantic absence, so these are supervision-agreement
++counts rather than complete semantic precision/recall.
++
++All7086 opportunities are retained:5654 FIT/1432 CAL, including1324 empty and3955
++negative opportunities across both groups. All46789 candidates remain in raw
++proposals. Model role owners cover25 services; valid sources were not restricted
++to the three routed services. All22912 native CAL decisions (including refusals)
++were independently reproduced. Every other-valued candidate competes regardless
++of its source margin. NONE has fixed rank score0; source NONE is a trained class.
++
++`reconstruction.py` independently recomputed all4380544 source class scores and
++all46789 rank scores, verified exact original source bytes/UTF-8 span endpoints,
++preceding actual USER utterances, feature hashes, FIT frequency ordering/cap and
++non-NONE candidate provenance. The separate Python boundary decoder matched all
++69 extracted spans on104 SYSTEM turns of the fixed first10 FIT dialogues.
++Original baseline inputs/prediction USER indices match all3174 sorted conversations.
++Original frozen boundary numerical weights match exactly; both package manifests
++were independently SHA256/size verified.
++
++## Validation, failures and limitations
++
++PASS:7 native tests (UTF-8 provenance, deterministic capacity/age eviction, reset,
++strict annotation rejection, finite weights, source masking/actual USER lexical
++context, NONE supervision/ledger exclusion, exhaustive two-candidate ambiguity,
++low-margin competitor veto and same-value alternatives). PASS: final formatting,
++all-target affected-package clippy with -D warnings, release example and complete
++package release. Logs are under `artifacts/`.
++
++Preserved failures: initial clippy rejected an eight-argument helper. Its history
++arguments were grouped with no feature change, then all checks passed. Initial CAL
++audit asserted every TRAIN gold frame belonged to selected schema; it stopped
++before candidate metrics. The original script and failure log are retained. The
++fix limits frame scoring to available schema outputs while keeping every USER
++turn and all raw gold; no upstream metric code, fitting data, fitted weights,
++representation, schedule or grid was changed. This scoring convention is explicit
++above. It does not rescue any candidate: every member fails on new wrong assertions.
++
++Old baseline weights saw all TRAIN, and prior diagnostics inspected FIT and CAL.
++This is empirical new-component validation, never unseen calibration. Annotation
++absence creates potentially false-negative NONE supervision. Finite label cap and
++hash collisions remain representation limitations. The source owner count does
++not imply correct role inference. Rank supervision uses offline exact case-folded
++value alignment; the unchanged strict noncategorical evaluation is case-sensitive.
++
++No DEV inference was permitted after gate failure; consequently no DEV gain,
++reverse-conversation runtime test or45-dialogue legacy candidate replay is claimed.
++No runtime/bundle integration was attempted and no production rollback was needed.
++The runtime reset tests concern the isolated ledger only. Rejection/correction is
++learned from USER lexical evidence, with no manually added veto: CAL wrong assertions
++show this is insufficient for deployment. No action executor or persistent user
++memory exists in this experiment.
++
++## Source/version/license/bytes
++
++No newly downloaded data (0bytes). Source SGD revision
++`e852981ae34990f4358979625854259302feaa78`, CC-BY-SA-4.0. Derived annotation artifacts
++retain CC-BY-SA-4.0 (`DATA-LICENSE.txt`). Code MIT OR Apache-2.0; unchanged upstream
++metric Apache-2.0. Source checkout `d84ba870465562456fb389805d3703ee12d41f23`.
++Supplied read-only `contextledger-source`:3 manifest payloads/20369681bytes.
++Supplied read-only `entityledger-source`:11 manifest payloads/120818396bytes.
++Their exact per-file source IDs, hashes and sizes are in `artifacts/source-verification.json`.
++Rejected source model SHA256:
++`661c80b75a808994427a53591c651cb3d1ddc2fc1e0624503d6b70e4ca09b0e0`.
++Approved unchanged v2 source model SHA256:
++`fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88`.
++
++| Derived artifact | Bytes | SHA256 |
++|---|---:|---|
++'''
++for n in ['dataset.json','model.json','context-ledger','source-spans.jsonl','proposals.jsonl','decisions.jsonl']:
++ p=A/n;s+=f'| `{n}` | {p.stat().st_size} | `{sha(p)}` |\n'
++s+='''
++## Reproduction and archive
++
++Run from the supplied worktree with its existing `CARGO_TARGET_DIR` and on-disk
++`TMPDIR`. The complete bounded fitting/check commands are in `run-checks.sh` and
++`commands.log`; every Cargo invocation is capped8GiB/0swap, `setsid --wait`,
++`timeout --kill-after=10s 600`, `-j1` except fmt, test threads4. The outer scope was
++also independently verified capped8GiB/0swap. Use the mounted read-only metrics
++interpreter. No credentials are required or read.
++
++```sh
++python3 tools/dialogue/context-ledger/prepare.py
++bash tools/dialogue/context-ledger/run-checks.sh
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/audit.py
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/reconstruct.py
++systemd-run --user --scope -pMemoryMax=8G -pMemorySwapMax=0 setsid --wait timeout --kill-after=10s 600 /home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/context-ledger/boundary-parity.py
++```
++
++The historical mechanical-construction script under `originals/` is retained for
++provenance, not to be rerun over final source. `originals/` also preserves the
++original authorized native code and the initially failing audit implementation.
++All final source, new example, complete raw models/traces/predictions/counts/golds,
++logs/failures, license, source patch and this handoff are preserved in
++`archive.tar.gz`; `archive-manifest.json` records every member hash/size and
++`archive-verification.json` confirms byte-for-byte verification from the archive.
++Nothing was committed. Coordinator may retain this as a rejected offline
++experiment; no runtime change is proposed. No owned job remains running at handoff.
++'''
++(H/'HANDOFF.md').write_text(s)

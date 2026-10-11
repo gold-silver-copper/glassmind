@@ -1,0 +1,329 @@
+{
+  "scope": "selection FIT only: prefix90%, excluding i%10==0; in-sample diagnostic",
+  "selection_rows": 15778,
+  "counts": {
+    "P": {
+      "rows": 12066,
+      "anchor_in_index": 733,
+      "linked_correct_anchor": 679,
+      "anchor_alias_in_question": 700,
+      "answered": 1109,
+      "answer_match": 752,
+      "strict_joint": 505,
+      "refused": 10957,
+      "refusal:no unique entity alias in this snapshot": 8813,
+      "refusal:claim missing from this finite snapshot": 1970,
+      "refusal:this snapshot has multiple answers; narrow the question": 172,
+      "wrong_anchor:absent": 588,
+      "correct_anchor_wrong_relation_or_answer": 14,
+      "wrong_anchor:present_alias": 1,
+      "wrong_anchor:present_no_alias": 1,
+      "refusal:uncertain relation": 2
+    },
+    "R": {
+      "rows": 3712,
+      "anchor_in_index": 1934,
+      "linked_correct_anchor": 1669,
+      "anchor_alias_in_question": 1878,
+      "refused": 3545,
+      "refusal:claim missing from this finite snapshot": 825,
+      "refusal:this snapshot has multiple answers; narrow the question": 1131,
+      "refusal:no unique entity alias in this snapshot": 1588,
+      "answered": 167,
+      "answer_match": 1,
+      "strict_joint": 1,
+      "correct_anchor_wrong_relation_or_answer": 162,
+      "wrong_anchor:absent": 3,
+      "wrong_anchor:present_alias": 1,
+      "refusal:uncertain relation": 1
+    }
+  },
+  "eligible_unique_anchors": 14109,
+  "eligible_anchor_directions": {
+    "P": 11892,
+    "R": 2187,
+    "P+R": 30
+  },
+  "selected_anchor_directions": {
+    "P": 559,
+    "R": 411,
+    "P+R": 30
+  },
+  "samples": {
+    "P:correct": [
+      {
+        "index": 1,
+        "question": "what is the language in which mera shikar was filmed in",
+        "gold_anchor": "Q6817891",
+        "predicted": {
+          "answers": [
+            "Q1568"
+          ],
+          "entity": "Q6817891",
+          "refusal": null,
+          "relation": "P364"
+        }
+      },
+      {
+        "index": 92,
+        "question": "What sport is crici\u00fama esporte clube a part of?",
+        "gold_anchor": "Q598834",
+        "predicted": {
+          "answers": [
+            "Q2736"
+          ],
+          "entity": "Q598834",
+          "refusal": null,
+          "relation": "P641"
+        }
+      },
+      {
+        "index": 101,
+        "question": "Which city did ronnie burns die in",
+        "gold_anchor": "Q7365833",
+        "predicted": {
+          "answers": [
+            "Q1370207"
+          ],
+          "entity": "Q7365833",
+          "refusal": null,
+          "relation": "P20"
+        }
+      },
+      {
+        "index": 112,
+        "question": "What position does footballer erkan sulejmani play?",
+        "gold_anchor": "Q5389642",
+        "predicted": {
+          "answers": [
+            "Q193592"
+          ],
+          "entity": "Q5389642",
+          "refusal": null,
+          "relation": "P413"
+        }
+      },
+      {
+        "index": 133,
+        "question": "what language is portlandia written in",
+        "gold_anchor": "Q1645442",
+        "predicted": {
+          "answers": [
+            "Q1860"
+          ],
+          "entity": "Q1645442",
+          "refusal": null,
+          "relation": "P364"
+        }
+      }
+    ],
+    "P:wrong_anchor:absent": [
+      {
+        "index": 45,
+        "question": "what country is cosmic ray from",
+        "gold_anchor": "Q5174096",
+        "predicted": {
+          "answers": [
+            "Q30"
+          ],
+          "entity": "Q83440",
+          "refusal": null,
+          "relation": "P495"
+        },
+        "selected_aliases": [
+          "country"
+        ]
+      },
+      {
+        "index": 76,
+        "question": "what country does the film stealing a nation take place in",
+        "gold_anchor": "Q7605291",
+        "predicted": {
+          "answers": [
+            "Q30"
+          ],
+          "entity": "Q83440",
+          "refusal": null,
+          "relation": "P495"
+        },
+        "selected_aliases": [
+          "country"
+        ]
+      },
+      {
+        "index": 161,
+        "question": "what country is deadly blessing from?",
+        "gold_anchor": "Q2415347",
+        "predicted": {
+          "answers": [
+            "Q30"
+          ],
+          "entity": "Q83440",
+          "refusal": null,
+          "relation": "P495"
+        },
+        "selected_aliases": [
+          "country"
+        ]
+      },
+      {
+        "index": 173,
+        "question": "which genre does the film the monster that challenged the world belong to",
+        "gold_anchor": "Q3794894",
+        "predicted": {
+          "answers": [
+            "Q11366"
+          ],
+          "entity": "Q6902658",
+          "refusal": null,
+          "relation": "P136"
+        },
+        "selected_aliases": [
+          "monster"
+        ]
+      },
+      {
+        "index": 211,
+        "question": "what country made the film  the rejected woman",
+        "gold_anchor": "Q7760093",
+        "predicted": {
+          "answers": [
+            "Q30"
+          ],
+          "entity": "Q83440",
+          "refusal": null,
+          "relation": "P495"
+        },
+        "selected_aliases": [
+          "country"
+        ]
+      }
+    ],
+    "R:wrong_anchor:absent": [
+      {
+        "index": 5155,
+        "question": "who was born in the city of amsterdam",
+        "gold_anchor": "Q478456",
+        "predicted": {
+          "answers": [
+            "Q153696"
+          ],
+          "entity": "Q727",
+          "refusal": null,
+          "relation": "R19"
+        },
+        "selected_aliases": [
+          "amsterdam"
+        ]
+      },
+      {
+        "index": 6314,
+        "question": "which army officer was involved in the mexican\u2013american war?",
+        "gold_anchor": "Q6683",
+        "predicted": {
+          "answers": [
+            "Q572954"
+          ],
+          "entity": "Q8740",
+          "refusal": null,
+          "relation": "R607"
+        },
+        "selected_aliases": [
+          "american war"
+        ]
+      },
+      {
+        "index": 7552,
+        "question": "who was born in chittagong district",
+        "gold_anchor": "Q1074991",
+        "predicted": {
+          "answers": [
+            "Q2435073"
+          ],
+          "entity": "Q376749",
+          "refusal": null,
+          "relation": "R19"
+        },
+        "selected_aliases": [
+          "chittagong"
+        ]
+      }
+    ],
+    "P:wrong_anchor:present_alias": [
+      {
+        "index": 5878,
+        "question": "Which country does the film 99 take place in?",
+        "gold_anchor": "Q4646285",
+        "predicted": {
+          "answers": [
+            "Q30"
+          ],
+          "entity": "Q83440",
+          "refusal": null,
+          "relation": "P495"
+        },
+        "selected_aliases": [
+          "country"
+        ]
+      }
+    ],
+    "P:wrong_anchor:present_no_alias": [
+      {
+        "index": 9008,
+        "question": "which country released frenchmans farm",
+        "gold_anchor": "Q5502707",
+        "predicted": {
+          "answers": [
+            "Q30"
+          ],
+          "entity": "Q83440",
+          "refusal": null,
+          "relation": "P495"
+        },
+        "selected_aliases": [
+          "country"
+        ]
+      }
+    ],
+    "R:wrong_anchor:present_alias": [
+      {
+        "index": 12194,
+        "question": "who is a japanese pop music group",
+        "gold_anchor": "Q37073",
+        "predicted": {
+          "answers": [
+            "Q188111"
+          ],
+          "entity": "Q131578",
+          "refusal": null,
+          "relation": "R136"
+        },
+        "selected_aliases": [
+          "japanese pop"
+        ]
+      }
+    ],
+    "R:correct": [
+      {
+        "index": 12441,
+        "question": "who was michael gerald ford's mother",
+        "gold_anchor": "Q6830581",
+        "predicted": {
+          "answers": [
+            "Q213122"
+          ],
+          "entity": "Q6830581",
+          "refusal": null,
+          "relation": "R40"
+        }
+      }
+    ]
+  },
+  "hashes": {
+    "/home/gsc/.cache/glassmind/data/simplequestions/train.tsv": "25c5994c4e3a4dad39bacf3c457b3ff4cf7b199630eb78045a0b478e4fda145b",
+    "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/train.questions": "d3cd1c39d916195757a304ce254a19e5f3b6b6b7fa19f6356cddbf9fff675eaf",
+    "/home/gsc/.cache/glassmind/continuous-20261010/linkquality-run/artifacts/new999-train-pairs.jsonl": "8d9347b70a452f910e1dadd98387ad684c049963fa5c77afeb4b2af0740aff24",
+    "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/index.json": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791",
+    "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/selection.json": "77208912a8fbf86efc3aafa707495c6c5f1ecde2f07390d9a37d2ece637f40af"
+  }
+}

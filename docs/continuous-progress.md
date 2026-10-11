@@ -1,38 +1,108 @@
 # Continuous development checkpoint
 
-Unlimited active goal; milestone completion does not complete the goal.
-Root branch `harness`; WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Current source commit 3539a2d; coding feature source c6ac04a; original and corrected experiment reports in
-1529e30, 2a35c17 and b72897a. All coding evaluation jobs are complete. The contextual dialogue worker is active.
-Known completed-worker tokens: 200,145,321, cached input counted once;
-parent and interrupted usage excluded. One Astra fast/ChatGPT worker is running; details below.
+Unlimited active goal; milestones do not complete it. Root branch `harness`.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+This turn: PROGRESS — facts FIT diagnosis complete, forward-only expansion
+rejected before acquisition; independent Wikidata storage pilot acquired, imported
+and audited successfully. Current runtime source3539a2d; coding sourcec6ac04a.
+Known completed-worker tokens201,926,299 (cached input counted once; parent and
+interrupted usage excluded). No model worker ran; all root jobs are complete.
 
-## Current action: publish determined scalar targets; review dialogue rejection
+## Next action: native disk-backed facts compatibility
 
-PROGRESS this turn: source3539a2d implements exact target determination without
-requiring every operand to be unique. Fully consumed grammar unchanged. Exact
-row reduction plus bounded Fourier-Motzkin projection handles free variables and
-absolute-difference sign branches; ambiguity/inconsistency/overflow refuse.
-Review tools/quantities/target-determination/PARENT.md; artifacts
-WORK/coordinator/linear-targets; worktree WORK/linear-targets at3539a2d.
-New20 contracts: baseline8/20 (allrefused), candidate20/20 (12answers8refusals).
-Independent rectangle63, previous composition50 and absolute55 pass. All3116
-synthetic status/value/unit triples unchanged; MathQA sample100/full4475 unchanged
-29correct/4443refused/3wrong with all32 old answers retained. No benchmark gain.
-Newjournal series explicitly authored12/20 substantive answers,8expectedrefusals.
-Main20cases EACHplain+intent mode pass;12successes each preserve/recheck persisted
-memory/story/draft state with realbundles andrestart. 23source/test/manifests exact.
-Package tests/three newgroups/fmt/alltargetclippy/release/strict4smoke passed.
-Rootworkspace90346 andmain49570 COMPLETE; no rootverification job remains.
-NEXT: commit/pushreports and openPR46, mergeexactheadgreenCI. Then archive/review
-contextledger original submission before modifying/removing its worktree.
+Read tools/facts/wikidata-snapshot/PARENT.md and its frozen PLAN.md. The independent
+20260928 CC0 Wikidata pilot has5,677,515 statements for1,094,802 subjects and
+84,990,012 names. Six public files1,475,606,067 bytes hash-verified; all94,498,260
+source IDs/languages valid;954 independent raw-row checks pass. SQLite integrity
+and three indexed query paths pass. Import602.322s, processRSS602132KiB, database
+10,367,000,576bytes under frozen12GiB/1800s gates; scope8GiB0swap includescache.
+No QA input, inference or DEV was used. Production scores/bundles unchanged.
 
-Contextledger worker PID539613 is confirmed active atthischeckpoint; it reports
-all16CALgrids fail (45–65newwrong) and is finishing independent reconstruction and
-archive. This is provisional worker evidence, not yet parentverified. No runtime
-integration orcandidateDEV. Do not launch a duplicate. See ownership/details below.
+Artifacts WORK/coordinator/wikidata-snapshot; read-only pilot.sqlite SHA256
+c3f1197705f131e74f8f7b794d3f08eaef7d3b48e8a312170185e6728bff1313.
+Raw Parquet and PyArrow25.0.1 venv retained. Only first of86claims shards acquired;
+full claims44,633,986,614bytes remains unfetched. Public selection by path/language,
+never QA labels. Scholarly works excluded by publisher; first shard is incomplete.
+Statements retain rank/qualifier flags; rawsource retains full qualifiers/references.
 
-## Published PR45 and current dialogue worker
+Next concrete experiment: a native bounded SQLite facts adapter, using the exact
+same Rust normalization at import and query time. First freeze parity gates against
+existing JSON Store on the same facts, including Unicode, acronym case, equal-length
+ambiguity, inverse deduplication, set counts/order and all refusals. Expose through
+usable facts commands, then assess integration into talk. Do not claim QA gain
+from storage parity. The pilot's Python keys differ from Rust on6167/1112064scalar
+probes: native key rebuild is mandatory, not an optional optimization. Choose a
+separate full-graph acquisition/strict QA plan after native compatibility is proved.
+Do not repeat the completed pilot or download the other85shards yet.
+
+Initial import GUID-casing assumption stopped before insertion; archived and
+corrected from rawdata plus Wikibase docs. Completed fetch75958/import6255/source
+ audit1468/rowaudit58311/hash96220. PID655339 gone. Requiredworkspacecheck passed.
+Tools/reports preserve original executed scripts and exact source artifacts.
+
+## Completed facts selection diagnosis
+
+Report tools/facts/selection-diagnosis/PARENT.md. Reused hash-verified frozen TRAIN
+predictions without inference. EligibleFIT15778: forward12066rows only733anchors
+present,679correctlinks,1109answers/752answer-only/505strictjoint; inverse3712rows,
+1934anchorspresent,1669correctlinks,167answers/1strictjoint. Wrong forward anchors
+include588absent versus only2present. Original1000selected:559P-only/411R-only/30both.
+The frozen additional1000forwardFIT anchors cover only3newforwardCALrows, below
+required10: rejected before acquisition. Do not lower the gate or fetch that list.
+
+Keep historical500 validation-seeded series separate (ordinary256/2821,
+2545refused20wrong; strictjoint252/2821). TRAIN999 remains rejected as a default
+(47right2712refused62wrong; strictjoint2/2821). No claims from QA answer triples.
+Do not retry the rejected alias-boundary rule or inverse-edge fetch.
+
+## PR46 published: exact scalar target determination
+
+PR46 MERGED https://github.com/gold-silver-copper/glassmind/pull/46.
+Reviewed headfa1370dcef48307b1909706681b45e052f13d206, CI38152742274 passed94s
+(15:47:18–15:48:52UTC). Mergee5de0b19a5031ab9d9b52b026d298ffcf201ab83
+at2026-10-11T15:49:01Z. Push36544, PR42654, merge43786 COMPLETE.
+Source3539a2d supports unique requested values even when operands remain free;
+consumed grammar unchanged. Exact row reduction plus bounded inequality projection
+preserves absolute-difference branches and refuses ambiguity/inconsistency/overflow.
+20authored:12answers8expectedrefusals versus baselineall20refused; separate journal
+series records12/20 substantive answers. Rectangle63, earlieralgebra105 pass.
+All3116 synthetic triples unchanged; MathQA sample100/full4475 unchanged29right,
+4443refused3wrong; all32oldanswers retained. No benchmark accuracy gain.
+Main20eachplain/intent pass, preserving/rechecking persistedmemory/story/draft for
+all12successes each.23quantity source/test/manifest identities match integration.
+Workspacefmt/clippy/release/strict4smoke andpackage tests passed. All jobs complete.
+Report tools/quantities/target-determination/PARENT.md. Raw artifacts
+WORK/coordinator/linear-targets; retained worktree WORK/linear-targets at3539a2d.
+Do not rerun completed gates or republish PR46.
+
+## Contextual dialogue experiment independently rejected and cleaned
+
+FormerPID539613 absent; glassmind-continuous-contextledger.scope inactive.
+Owned WORK/contextledger worktree and temporary authentication link removed only
+after originals archived and reverified. Branchcontinuous/contextledger retained.
+Original parent archive129files/468238087bytes, workerarchive87members/378401811
+payloadbytes verified; all32tracked dialogue files identical to production.
+WORK/contextledger-run/terminal-originals and manifests retained; no lost evidence.
+Worker1780978tokens (1749044input incl1671936cached +31934output).
+
+All16frozenCAL grids rejected:483–510newcorrect fills,45–65newwrong,0–1lost prior
+correct joint/frame outcomes. Strictest483correct/45wrong/93held. No candidateDEV
+or runtime integration. Approved dialogue remains610/1119joint,716/1218frames.
+Parent reconstructed all34223source contexts from original text, predicted-span
+maskhistory and frozenbaseline state; exactoriginalspan/NONE joins and128FITlabels;
+4380544role scores,46789rank scores,22912decisions andall16full persistent overlays
+match. BaselineCAL5803joint/1478frames among6830USER/2505supportedgoldframes.
+Maxf64/nativef32score errors0.000126role/0.000179rank. No annotation values enter
+reconstructed features. Parent did not retrain or rerun full BIO; scope explicit.
+7native tests, first10FIT boundarydecoderparity andbuild/clippy are worker evidence.
+Initial clippy/audit failures preserved. All reports at
+ tools/dialogue/context-ledger/PARENT.md andparent/.
+Independent16fictional-name fixtures were masked from worker; no candidate run
+because CAL prerequisite failed. Allknownworkercommands inspected; no fixture read.
+Parent audit58814, feature reconstruction50459, archive19140 all COMPLETE.
+No further source-role threshold/model experiment queued; move to facts above.
+
+## Published PR45 and dialogue launch (historical details)
 
 Runtime integrated at c6ac04a. Full coding DEV: 218/765, 547 refusals, zero
 failures; all 215 previous passes retained. Three gains are request styles of
