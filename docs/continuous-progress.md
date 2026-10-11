@@ -16,13 +16,24 @@ PreviousPR38 merge663d966... remains history, not an outstanding task.
 
 ## Active experiment: typed argument swaps
 
-Argumentswap worker LIVE PID2643937, scopeglassmind-continuous-argumentswap.scope,
-worktreeWORK/argumentswap, branchcontinuous/argumentswap, basecdd5030.
-TaskWORK/argumentswap-task.txt; runWORK/argumentswap-run; launcherWORK/launch.py.
-Latest scopecheck active/running, MemoryMax8589934592,MemorySwapMax0.
-ChatGPTlogin and requiredCLIflags reverified beforelaunch; Astra fast forced,
-APIkeyenvstripped. Twoactive modelworkers(argumentswap+temporal), uncounted untilterminal. No candidate
-source/results inspected. Do not duplicate on an observation timeout.
+Worker COMPLETED and archived before inspection: WORK/argumentswap-run/terminal-originals,
+906 files / 246,507,361 bytes, hashes verified. Scope inactive; no model worker remains.
+Worktree WORK/argumentswap, base cdd5030; original frozen binary SHA
+0b2c2cbcb11906a964022a2edc3daf5d8b8843e4db2a837a53165d972093e462.
+Original worker TRAIN 6→7/27, sample unchanged2/4, authored25 passed; parent13
+FAILED: only7/9 repairs and competing repair incorrectly accepted. Originals retained.
+Coordinator revision in worktree allows standard assertions/test attributes for
+format binding, absolute ::std::format!, and one independently typed operand to
+anchor an unsuffixed literal. Both-untyped literals remain excluded. Recursively
+scan standard macro arguments for exported macros; unknown imports/macros refuse.
+Revision tests/clippy/release passed (build2 session95794 COMPLETE).
+Revised frozen binary WORK/coordinator/argumentswap-independent/revision/frozen/glassmind
+SHA6a2c30af75edc611a6c485f24d20fc12f185cd30cb151ce29682abc91d46bb7c.
+Parent13 session23199 COMPLETE:9/9exact native repairs,3negative unchanged,
+competing unchanged with choice.json recording BOTH test-passing alternatives.
+They match independently replayed native outputs5vs3. No timeouts/manifest edits.
+Worker25 replay session78312 RUNNING, log revision/worker25.log. Full765 pending;
+require all203 old passes retained and no failures. No root source integration yet.
 
 PublicTRAIN rb-fix-tests-download-progress calls percent(d.size,d.received)
 inside format!("{} {}%",d.name,...), where the actual localhelper wants part,whole.
@@ -56,11 +67,17 @@ Unchangedcompetingcase alone is insufficient; manuallyverifycandidatechoiceevide
 
 ## Active conversation experiment: qualified date verification
 
-Temporal worker LIVE PID2698298, scopeglassmind-continuous-temporal.scope,
-worktreeWORK/temporal, branchcontinuous/temporal, base07f3d0d. TaskWORK/temporal-task.txt;
-runWORK/temporal-run. Latestscopecheck active/running. Astra fast, forcedChatGPTlogin
-verified beforelaunch, APIenvstripped. Ownscrates/facts+tools/facts/temporal only;
-parentowns eventualmainroute. No livecandidate/source/results inspected.
+Temporal worker COMPLETED, scope inactive. Original archived before inspection:
+WORK/temporal-run/terminal-originals,141 files /194,056,696 bytes, hashes verified.
+Worktree WORK/temporal, base07f3d0d. Frozen candidate standalone SHA
+6ebd8026fe05398b31c2e680ff97f1a33928e2c1a0a46bd760fd59c1ecf46bec.
+Worker reports56contracts,100cached queries,20facts tests and full2821 legacy bytes
+unchanged. Parent45 session54393 COMPLETE:45/45statuses/edges,44/44 CLI/library
+identical; NUL via library. Adapter only renamed identical rawbytes to extractor
+hash filename and constructed its indexmanifest; expected labels unchanged.
+Runtime retains all raw qualifiers and emits eligibility skip reasons, rather than
+extractor dropping unsupported claims. Parent full-witness, real15 and loader gates
+pending; main12 contracts frozen and integration not started.
 
 Hypothesis: verifyonepositive P108employer/P27citizenship claim at exactcalendarDATE
 usingoneoriginalstatement's P580/P582bounds. A strictguaranteedinterior requires
@@ -235,8 +252,23 @@ Do not revive these configurations by weakening thresholds or repeating decoder
 cosmetics. Further quantities work needs evidence for better argument grounding
 or supervision. No heldout/DEVformula/parentfixture access by either worker.
 
-Known completed worker tokens164630460, including cachedinput once. Parent and
-interrupted calls excluded. Argumentswapandtemporal active, uncounted. New corpus downloads0.
+Known completed worker tokens171896511, including cachedinput once. Parent and
+interrupted calls excluded. All three current workers terminal. New corpus downloads0.
+Argument worker3999906, temporal2118994, grounding audit1147151 this batch.
+
+## Completed TRAIN arithmetic diagnostic, independent review pending
+
+WORK/groundingaudit, basef57d1f1, scope inactive. Original archived/hashverified
+WORK/groundingaudit-run/terminal-originals,108files/135,997,175bytes. No runtime edits.
+Read-only source WORK/groundingaudit-source:29files/69,811,137bytes, TRAIN only.
+Worker reports exact original native replay200, all29837 gold executions,4590FIT
+and1182cleanCAL free outputs. No DEV evaluation or fitting. CAL nonSTOPoperations
+1912/4138(46.21%), gold-context left2197/4138(53.09%), right2499/4138(60.39%).
+Oracle operation plan+length raises CALnumeric143→221/1182; both planning and
+binding fail before prefix errors. No unique causal primary failure established.
+Next: verify frozen manifest/instrumentation/split/counts, integrate diagnostic
+report only; retain previous model rejection. Next representation candidate is
+explicit quantity roles/relations, not another threshold or decoder tweak.
 
 ## Stable baselines and closed hypotheses
 
