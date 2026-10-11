@@ -16,25 +16,39 @@ Parent evidence stays masked from teachers. Unchanged pilot schema/validator,
 34 passing contracts and all batch/source/builder hashes inpre-teacher.json.
 
 All four teacher environments prepared and isolated ChatGPT login verified.
-Batches01/02/03 running sessions47083/13879/74867. Scopes
- glassmind-span-expansion-01/02/03.scope. Supervisors1217986/1218089/1218195;
-wrappers1217993/1218096/1218202. Verify current state before acting.
-Batch04 PREPARED, not yet launched; launch once one slot is free regardless of
-earlier results. No more than three teachers at once. Use teacher.py run 04.
-Each exactgpt-6-astra/fast/high, forcedChatGPTlogin,1200s8GiBnoswap,2MiBannotations,
-256MiBteacher-directorycap. API-key environment removed, no provider fallback.
-Owned auth symlinks exist in each RUN/batch-NN/teacher/codex/auth.json; never read
-or archive credential contents. Remove only after that teacher is terminal and
-originals have been preserved/hashverified. No current completed expansion usage.
-Known completed-worker total remains202156530 until actual terminal usage.
+Batches01/02/03 COMPLETE sessions47083/13879/74867 exit0 at174.398/168.386/176.402s,
+no resource failures. Peak writable directory68.94/68.84/68.85MB below256MiB.
+Originals archived/hashverified:14files each,528673/434360/443041bytes. All three
+scopes inactive; owned auth links removed, credential contents never read/archived.
+Mechanical/native checks passed:26/24/22 accepted rows,28/26/25program variants.
 
-NEXT: monitor sessions. After terminal status, preserve.py NN archives only work
-and explicit noncredential metadata, verifies hashes, records usage and removes
-owned auth link after inactive scope check. Never run teacher-written scripts.
-Run unchanged span-references/validate.py on each source/batch-NN/batch.json and
-batch-NN/teacher-originals/work/annotations.json with --out a new mechanical report
-and original groundedsteps-source/equation_executor under bounded8GiBscope.
-Root must review every accepted source assignment, compare all8parent cases and
-execute frozen counterfactuals before any semantic approval. Gate>=96/128 andzero
+Batch04 RUNNING session4711,scopeglassmind-span-expansion-04,supervisor1219143,
+wrapper1219150,started1791746571.108. Only one model worker now. Its owned auth
+symlink remains atRUN/batch-04/teacher/codex/auth.json; preserve before cleanup.
+Each teacher exactgpt-6-astra/fast/high, forcedChatGPTlogin,1200s8GiBnoswap,
+2MiBannotations256MiBteacher-directorycap. API-key environment scrubbed; nofallback.
+
+Completed batch usage349523+227144+231903=808570tokens includingcachedinputonce.
+Known completed-worker total202965100; batch04pending, parent/interrupted excluded.
+Readusage-through-03.json andlaunches.json for exact per-batch accounting/ownership.
+
+Parent semantic review batch01 COMPLETE:26accepted,28programvariants,163source
+assignments reviewed,zeroacceptedcontradictions; all6refusalsconfirmed. Per-row
+reasoning and artifact hashes insemantic-review-01.json, externalbatch-01copy.
+All18refusals inbatches02/03 also confirmed againstsourcequestions/rationales;
+nonacceptance-review-02-03.json. The24+22acceptedrows inbatches02/03 remainUNREVIEWED.
+The eight prospective references still require the automated all-batch comparison.
+No overall replication acceptance yet. Do not count these labels as solver accuracy.
+
+NEXT: monitor4711 thenpreserve.py04; it archives only work and explicit noncredential
+metadata, verifies hashes, records usage and removes owned auth link after inactive
+scope check. Never run teacher-written scripts. Then run unchanged
+span-references/validate.py RUN/source/batch-04/batch.json
+RUN/batch-04/teacher-originals/work/annotations.json --out
+RUN/batch-04/mechanical-report.json --executor
+WORK/groundedsteps-source/equation_executor under bounded8GiBscope.
+Afterallfourmechanicalreports, check-parent.py compares all8frozenreferences and
+nativecounterfactuals. Root must review every accepted source assignment in batches
+02/03/04 and every batch04refusal before the final gate. Gate>=96/128 andzero
 teacher-accepted contradictions; no secondattempt or silent correction. No runtime,
 fitting,CAL/DEV or quantity-score changes. Read PLAN.md for complete frozen gate.

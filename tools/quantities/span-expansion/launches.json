@@ -30,6 +30,29 @@
       "supervisor_pid": 1217986,
       "scope": "glassmind-span-expansion-01.scope",
       "started_unix": 1791746388.8045359
+    },
+    "completion": {
+      "sampled_peak_teacher_bytes": 68935680,
+      "returncode": 0,
+      "seconds": 174.39827877201606,
+      "limit_failure": null,
+      "worker_exited_cleanly": true,
+      "annotations_exist": true,
+      "semantic_approval": false
+    },
+    "usage": {
+      "turns": 1,
+      "input_tokens": 338461,
+      "cached_input_tokens": 272384,
+      "output_tokens": 11062,
+      "cached_counted_once": true,
+      "total_counted": 349523
+    },
+    "cleanup": {
+      "scope_state": "inactive",
+      "owned_login_symlink_removed": true,
+      "originals_hash_verified": true,
+      "credential_contents_read": false
     }
   },
   {
@@ -63,6 +86,29 @@
       "supervisor_pid": 1218089,
       "scope": "glassmind-span-expansion-02.scope",
       "started_unix": 1791746389.966696
+    },
+    "completion": {
+      "sampled_peak_teacher_bytes": 68841472,
+      "returncode": 0,
+      "seconds": 168.38645188196097,
+      "limit_failure": null,
+      "worker_exited_cleanly": true,
+      "annotations_exist": true,
+      "semantic_approval": false
+    },
+    "usage": {
+      "turns": 1,
+      "input_tokens": 217004,
+      "cached_input_tokens": 179712,
+      "output_tokens": 10140,
+      "cached_counted_once": true,
+      "total_counted": 227144
+    },
+    "cleanup": {
+      "scope_state": "inactive",
+      "owned_login_symlink_removed": true,
+      "originals_hash_verified": true,
+      "credential_contents_read": false
     }
   },
   {
@@ -96,6 +142,29 @@
       "supervisor_pid": 1218195,
       "scope": "glassmind-span-expansion-03.scope",
       "started_unix": 1791746391.12273
+    },
+    "completion": {
+      "sampled_peak_teacher_bytes": 68849664,
+      "returncode": 0,
+      "seconds": 176.40243086300325,
+      "limit_failure": null,
+      "worker_exited_cleanly": true,
+      "annotations_exist": true,
+      "semantic_approval": false
+    },
+    "usage": {
+      "turns": 1,
+      "input_tokens": 220587,
+      "cached_input_tokens": 169216,
+      "output_tokens": 11316,
+      "cached_counted_once": true,
+      "total_counted": 231903
+    },
+    "cleanup": {
+      "scope_state": "inactive",
+      "owned_login_symlink_removed": true,
+      "originals_hash_verified": true,
+      "credential_contents_read": false
     }
   },
   {
@@ -123,6 +192,12 @@
       "masked_paths": 5,
       "selected_batch_visible": true,
       "key_environment_removed": true
+    },
+    "process": {
+      "pid": 1219150,
+      "supervisor_pid": 1219143,
+      "scope": "glassmind-span-expansion-04.scope",
+      "started_unix": 1791746571.107585
     }
   }
 ]
