@@ -2,19 +2,22 @@
 
 ## Authoritative current state — 2026-10-11 UTC
 
-Goal active: follow `prompts/grow-continuously.md` until stopped. The preceding
-prompt-only response made no project progress; this turn revalidated live jobs,
-completed the full coding comparison and independently audited reading/facts.
+Goal active: follow `prompts/grow-continuously.md` until stopped. This turn made
+concrete progress: completed the full coding comparison, independently audited
+reading/facts, merged PR16, and launched the next dialogue experiment.
 No persistent blocker. Older sections below are historical, including ACTIVE
 labels; this section supersedes them.
 
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 Source HEAD `eb22519f20325e72549a103cf99180ea0dbc2ba3`; PR15 already MERGED
 `e1fd2d2fb1634ceb3361f1fc05e4bc89a8db58f9` at exacthead176dc89, CI38115264848.
-Next publishing batch is PR16, not yet opened. Local e8fc354 records rejected
-TRAIN facts expansion; eb22519 integrates compositional field-language parsing.
+PR16 MERGED `c6c6cd133e485e23f4bb8fe1d8786bcf6442b75e` at2026-10-11T05:54:19Z,
+exact reviewed head`69ba975a9f44bd8f3aaf45be355fffe82cbc6577`. CI38116227685
+passed1m0s. e8fc354 records rejectedTRAIN facts expansion; eb22519 integrates
+compositional field-language parsing. All required gates/publishing complete.
+No repoll/remerge of PR15/16 or completed parent evaluations.
 
-### Completed, verified, ready to publish
+### Completed, verified and merged
 
 - EDITLANGUAGE: archived original5files/50,089bytes, worktree/auth removed.
   Parent reproduced and fixed dangling `. and` / `; and` acceptance. Independent
@@ -59,7 +62,9 @@ joint-facts point; rejected999/reading candidates are evidence, not shipped gain
 
 ### Live work and next actions
 
-REPAIRAMBIGUITY2 is the sole live model worker, confirmed systemd ACTIVE.
+Two model workers are live, both confirmed systemd ACTIVE.
+
+REPAIRAMBIGUITY2:
 PID2927471, scopeglassmind-continuous-repairambiguity2.scope, worktree
 WORK/repairambiguity2 at eb22519, runWORK/repairambiguity2-run,
 briefWORK/repairambiguity2-task.txt. Owns world-Rust checks/slips/new pure-scalar
@@ -78,8 +83,23 @@ abort explanation retained in WORK/repairambiguity-run/PREPARATION-ABORT.txt.
 Replacement bundle108files/29,232bytes includes27original visible integrationtests,
 27Cargo.toml,27src/lib.rs,27cachedCargo.lock. No hidden/generator/solution content.
 
-Next: publish current verified parser+audit batch after required exact-head CI;
-review repair worker when terminal (archive before integration). Reading needs
+SPANSEQUENCE PID2972208, scopeglassmind-continuous-spansequence.scope, worktree
+WORK/spansequence at69ba975, runWORK/spansequence-run, briefWORK/spansequence-task.txt.
+Verified8GiB/zero-swap, forcedGPT6Astrafast/ChatGPT login (statuschecked), APIenv
+removed. Ownscrates/dialogue +newtools/dialogue/spansequence; no mainCLI/scorers.
+Hypothesis:new small inspectable structured BIO sequence proposal model recovers
+missing/correction spans; frozenrouter/intent/categorical/references/offers stay.
+Newweights use2532FIT/642CAL conversationhashsplit, no wholeTRAINrefit ordevtuning.
+Frozen approved32,174,720bytev2model/fullpreds/inheritedaudit copied intoownrun.
+Acceptance preserves610correctjoint and716frames plus substantivegain orrepair
+ofinheritederrors, zero new wrongchangedslotassertions. Full179/1119/1218 and
+all7inheritedwrongslotturns audited, v2full/legacybyteequivalence required.
+Worker mustpreregisteronefamily/schedule beforeDEV, rejectandrestoreiffails; parent
+independentretrain/replayrequiredifaccepted. Originalfirstlauncherattempt failed
+beforeprocessstart due taskregistrationorder; fixedbeforeactualsinglelaunch.
+
+Next: review repair worker when terminal (archive before integration), then
+independenttest/witnessreplay and full765gate for any candidate. Reading needs
 better supervision/representation, not another threshold or acceptance relaxation.
 Revisit dialogue proposal quality after rejected boundary filter; keep coding and
 conversation moving. Preserve stopped dirty old loop; on stop terminate onlyowned
