@@ -5,7 +5,7 @@ WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Known completed-worker tokens:201926299, cached input counted once; parent and
 interrupted usage excluded. No model workers, teacher calls or auth mounts.
 
-## Current jobs,18:52UTC
+## Current jobs,18:56UTC
 
 Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
 coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
@@ -27,7 +27,7 @@ thenwitnesses.py3600s; bothviasupervise.py+8GiB0swap+setsid--waittimeout.
 No fullnative success/finalaudit/newgraphQA yet. Keepoldartifactsimmutable.
 Readworktree tools/facts/full-claims/PROGRESS.md andVALIDATION-PLAN.md.
 
-Coding wordinitials fullDEV COMPLETE and integrated; publicationnext.
+Coding wordinitials fullDEV COMPLETE, integrated and published in PR51.
 WORK/word-initials cleanhead5a45bd7; rootmerge7c034b0 matchesall196evaluated
 crate/source/manifest/lockfiles and exactbinarySHA
 efb48471993e9fb63181a7f171ffef428ef8938e24f29af20f5192a59d5b101b.
@@ -44,7 +44,17 @@ authoredoutputs and6TRAINoutputs independentlyrecompiled/verifierevidenceverifie
 terminal. No need to rerunidenticalsources. Tools/coding-word-initials/PARENT.md,
 pre-dev.json,source-review.json,integration.json preserve exactevidence.
 README/docs/scorejournal now221. Previousb04baseline preserved externally.
-NEXT: pushcoherentbatch, openPR, inspectCI for exactreviewedheadandmergeonlygreen.
+PR51 MERGED48ac2a89ff9a1644bf1f1cf6c536c401116dce02 at18:56:12UTC.
+Reviewedhead9a1fa5420cebc8f98f91a0249aa44080ae66d320;CI38165713044 SUCCESS102s.
+Push93513/create77478/merge43361 allCOMPLETE. FirstpostmergeGitHubquery TLS
+timeout; retryconfirmedmergedstate. No publicationwork remainsforcodingbatch.
+NEXT: monitor existingnativeclaimsjob89022, then frozenstorageaudit/witnesses.
+Independentnextquantitydirection requires explicitsemantic span/stepreference
+supervision: prior value-only GSM8K converter failed354/7473 vs1000 gate;
+constant/input/prior-step collisions are notresolved by numeric agreement.
+InspectretainedTRAIN-only evidence, freeze a smallFIT-only semanticannotation
+pilot and independentcounterfactual source-referencecontracts before new model
+work. No new teacher/model call or newquantityexperiment startedyet.
 Continue monitoringnativeclaims89022; rawprovenance/storageaudit remainsindependent
 andmustpass beforeanynewgraphQA. No newmodelworkers/accountcalls.
 
