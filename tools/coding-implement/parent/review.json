@@ -1,0 +1,21 @@
+{
+  "decision": "REJECTED original runtime; no benchmark gain claimed",
+  "original_archive_files": 313,
+  "original_archive_bytes": 467927,
+  "final_archive_reverified": true,
+  "five_candidate_sources_verified": true,
+  "candidate_binary_and_patch_and_fixture_hashes_verified": true,
+  "patch_applies_to_current_runtime": true,
+  "parent_authored_checks": 20,
+  "parent_implementations": 6,
+  "parent_safe_refusals": 14,
+  "all_case_outcomes_and_before_after_hashes_match_worker": true,
+  "train_requests": 60,
+  "accepted_request_syntax": 0,
+  "full765_not_run": true,
+  "scope_inactive": true,
+  "auth_unlinked": true,
+  "restored_worktree_removed": true,
+  "additional_static_limitation": "native runner requires externally supplied CARGO_TARGET_DIR; new prospective experiment must make ordinary CLI invocation work without it",
+  "no_retroactive_gate_change": true
+}

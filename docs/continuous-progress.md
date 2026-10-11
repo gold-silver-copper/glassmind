@@ -5,8 +5,9 @@
 Goal active: follow `prompts/grow-continuously.md` until stopped. Prior turn made
 progress: PR21 merged and new experiments started. This turn completed independent
 reviews of rejected word grammar and partial inverse facts acquisition, archived
-originals and removed their restored worktrees/auth links. New implementation and
-explicit fact-set product experiments are active; no accepted runtime change yet.
+originals and removed their restored worktrees/auth links. The first implementation candidate was also independently reviewed and rejected;
+a new language/invocation experiment and explicit fact-set product work are active.
+No accepted runtime change yet.
 No blocker. Older ACTIVE labels below are historical; this section supersedes them.
 WORK=`/home/gsc/.cache/glassmind/continuous-20261010`, branch `harness`.
 
@@ -31,6 +32,10 @@ PR21 MERGED a2a74918022472a3fa903030af630d847b491685 at2026-10-11T06:45:37Z,
 exact head12934256db0c5dd0226568c7af4a7444f03b11e8, CI38119019617SUCCESS.
 Rejected relative-rate evidence and parent role audit published; no runtime change.
 Do not repeat PR21 checks/merge.
+PR22 MERGED4fb9bae2a5bc8732774bf13717f73b3b711010f2 at2026-10-11T06:57:18Z,
+exacthead2be77e092f5337d9d10d5bd024b3d0a35ef66b5a, CI38119617288SUCCESS.
+Grammar/inverse evidence and independent audits published; runtime unchanged.
+Do not repeat PR22 checks/merge.
 
 
 
@@ -82,7 +87,7 @@ and inverseknowledgecoverage beforeanotherlinking experiment. Default500remains
 256answer-only /252jointmatches,2545refused,20answer-only/24jointwrong.
 Reports docs/results/facts-train999-coverage-{train,valid}.json.
 
-Knowncompletedworker tokens81,661,371 inclcachedinputonce;parent/unfinished/
+Knowncompletedworker tokens83,714,527 inclcachedinputonce;parent/unfinished/
 interruptedcalls excluded. Codingpoint174/591/0 added; rejectedmodels no gainpoint.
 Other trustedbaselines:dialogue610/459/50 of1119;readingraw2532/10570,selected815/
 791/8964;MathQA22/3/4450 of4475;syntheticquantities3056incl762expectedrefusals,
@@ -250,23 +255,33 @@ Original10files77,808bytes archived WORK/inversefacts-run/submitted, reverified
 before restoredworktree removal; scopeinactive/authunlinked. Evidence now
  tools/facts/inverse-coverage inclPARENT.md,parent-review.json,coverage-diagnostic.json,
 parent-audit.py; rawWORK/coordinator/inversefacts-review. Newdata noteddata/README.
-Knowncompletedworker tokens81,661,371 inclcachedonce; parent/unfinished excluded.
+Knowncompletedworker tokens83,714,527 inclcachedonce; parent/unfinished excluded.
 
-IMPLEMENT RUNNING (assembling rejected handoff), PID3380603,
-scopeglassmind-continuous-implement.scope, branchcontinuous/implement at35d3ea8,
-worktreeWORK/implement/runWORK/implement-run, briefWORK/implement-task.txt.
-Own world-rust implementationAPI, Englishbridge, minimalmainCLIrouting, authored
-fixtures/tools/coding-implement. Type-directed native std pipelines, no English/
-docs/testanswers into generator, scratch nonempty originaltests, boundedsearch,
-refuse multiple passing candidates. Worker reports sample3/3, authored20/20 with
-6implementations14saferefusals,76scopedtests; initial1secondtimeoutgrace correctedto10
-and sample rerun with originalevidence retained. Extraabsentcargo refusalsafe.
-TRAINsyntax audit0/60 accepted (backticknames/otherlanguage unsupported); worker
-rejects fixed parent>=177full765gate asunattainable and has archived/reverted
-runtime. No full765run or newcodinggain claimed. Await terminalhandoff, archive
-original and independentlyreview BEFORE anycleanup/reuse. Prospective nextbatch
-can repair languagebridge/reuse typedproposer under SAME>=177/preserve174/0failgate,
-with publicTRAINrequest coveragechecked BEFORE newcandidate implementation.
+IMPLEMENT COMPLETE/REJECTED; scopeinactive/authunlinked, restoredworktreeremoved.
+Original313files467,927bytes archived WORK/implement-run/submitted with adjacent
+archive-manifest.json, verified againstbothcopies beforecleanup. No runtimepatch
+integrated. Worker20/20authoredchecks (6implementations14saferefusals),76scopedtests,
+initial1secondkillgracecorrectedto10 with retainedlogs. Parent repeatedall20cases:
+everyoutcome/before-afterhash identical, all14refusalbytes unchanged. Five source
+hashes, fixture, patch, binary verified; patchapplies. TRAINsyntax0/60 reproduced;
+no full765 or coveragegain claimed. ExistingenvironmentrequirementCARGO_TARGET_DIR
+is an additional static invocation limitation. Evidence tools/coding-implement
+inclPARENT.md,parent/{review,results,train-syntax}.json; rawWORK/coordinator/implement-review.
+Parenttoolsession49179COMPLETE; do notpoll/rerun. Candidatebinaryd80716b6411c99b8ebe6491e90906f660cc87fd576e2eb6a3bfa144b1856e952;
+patch32618f996cfa2d2170aa1f955987e641ce9e5f81b198560968233c4326709d84.
+
+IMPLLANGUAGE RUNNING, PID3429738, scopeglassmind-continuous-impllanguage.scope,
+branchcontinuous/impllanguage at2be77e0, worktreeWORK/impllanguage,
+runWORK/impllanguage-run, briefWORK/impllanguage-task.txt. Newprospectivehypothesis
+reuses rejectedcode-onlytypedproposer withfullyconsumed quotednames/politeness/
+boundedstub-reference language; no taskname/template answers. PublicTRAINrequests
+and source signatures checkedBEFOREnewgrammar; no tests mined foroutputs. Remove
+CARGO_TARGET_DIRcallerrequirement usingownedexistingcache/scratchconventions;
+preserveallcaps/rules/rollback/nonemptytests/multiple-survivorrefusal. Ownworld/English
+implementmodules,exports,minimalCLI main; nofactsetsfiles. Old archive mountedreadonly.
+Gate unchanged: original20+newcontracts pass, >=3distinctTRAINrequests originaltests
+verified beforehandoff, parentfull765>=177passes/all174retained/0failures. No old
+rejection rescued. Do notconfuse requestsyntaxcoverage withcorrectimplementations.
 
 FACTSETS RUNNING, PID3403711, scopeglassmind-continuous-factsets.scope,
 branchcontinuous/factsets at35d3ea8, worktreeWORK/factsets, runWORK/factsets-run,
@@ -279,10 +294,10 @@ positive/refusal/sessioncontracts required. Newproductcoverage, notbenchmarkgain
 No newdownloads/LLMs/models; onlyexistingreadonlydefault500/TRAIN999bundles.
 
 Two live workers, both forced Astra fast/ChatGPT, API-key environment stripped,
-8GiB/0swap. No parent jobs; independent word count audit session97521 COMPLETE.
-Next: publish reviewed grammar/inverse evidence; inspect implementation terminal
-submission; reviewfactsets and only ship passing candidates after affectedfullDEV
-and relevantregressions. No blocker; goal active. Preserve old stopped dirty loop.
+8GiB/0swap. No parent jobs; independent word count audit session97521 and implementation
+replay49179 COMPLETE. PR22publishing done. Reviewed originalimplementation evidence is committed locally; publishing can join
+the next coherent batch. Next: review factsets and impllanguage terminal submissions, archivefirst and
+only ship passing candidates after affectedfullDEV and relevantregressions. No blocker; goal active. Preserve old stopped dirty loop.
 
 ## Historical checkpoints (superseded by current state above)
 

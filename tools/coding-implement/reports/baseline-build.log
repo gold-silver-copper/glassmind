@@ -1,0 +1,9 @@
+Running as unit: run-p3412350-i95712141.scope; invocation ID: 591ca5b669594c43bc8fdc64f1487e00
+error: failed to load manifest for workspace member `/home/gsc/.cache/glassmind/continuous-20261010/implement-run/baseline-source/tools/oracle`
+referenced by workspace at `/home/gsc/.cache/glassmind/continuous-20261010/implement-run/baseline-source/Cargo.toml`
+
+Caused by:
+  failed to read `/home/gsc/.cache/glassmind/continuous-20261010/implement-run/baseline-source/tools/oracle/Cargo.toml`
+
+Caused by:
+  No such file or directory (os error 2)

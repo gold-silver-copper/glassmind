@@ -1,0 +1,26 @@
+status=exit status: 101 elapsed=0.090s
+
+running 1 test
+test tests::check ... FAILED
+
+failures:
+
+---- tests::check stdout ----
+
+thread 'tests::check' (3392275) panicked at src/lib.rs:2:61:
+assertion `left == right` failed
+  left: 6
+ right: 8
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::check
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+   Compiling implementation_contract v0.1.0 (/home/gsc/.cache/glassmind/scratch/implement-3392036-1)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/implement-run/target/debug/deps/implementation_contract-8fd708060fc6914c)
+error: test failed, to rerun pass `--lib`
