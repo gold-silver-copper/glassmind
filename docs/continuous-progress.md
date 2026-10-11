@@ -3,9 +3,10 @@
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Known completed-worker tokens:201926299, cached input counted once; parent and
-interrupted usage excluded. No model workers, teacher calls or auth mounts.
+interrupted usage excluded. One isolated Astra fast teacher is running; its final
+usage is pending. Its owned ChatGPT login symlink is recorded below.
 
-## Current jobs,18:56UTC
+## Current jobs,19:11UTC
 
 Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
 coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
@@ -20,7 +21,8 @@ Fullsource manifestSHA782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a12
 Native89022 RUNNING,scopeglassmind-full-claims-native,supervisor1022832,child
 1022833 (verify).8GiB/no swap,21600s,192GiBoutput,384GiBaddedrun cap; TMPDIRand
 SQLITE_TMPDIR=RUN/tmp. At197.591s sourcehashes/projectionvalidated andnativealiases
-copied without renormalization. Fullclaims/witnessloading remains; do not restart.
+copied without renormalization. Claims/witnesses loaded807.318s; secondaryindexes
+built1225.432s. Finalintegrity/references remain; do not restart.
 NEXT: after successfulnative-resources.json, readonlyoutput thenaudit.py under
 3396sremaining original3600s combinedsourceaudit budget (referenceused203.173s),
 thenwitnesses.py3600s; bothviasupervise.py+8GiB0swap+setsid--waittimeout.
@@ -49,14 +51,44 @@ Reviewedhead9a1fa5420cebc8f98f91a0249aa44080ae66d320;CI38165713044 SUCCESS102s.
 Push93513/create77478/merge43361 allCOMPLETE. FirstpostmergeGitHubquery TLS
 timeout; retryconfirmedmergedstate. No publicationwork remainsforcodingbatch.
 NEXT: monitor existingnativeclaimsjob89022, then frozenstorageaudit/witnesses.
-Independentnextquantitydirection requires explicitsemantic span/stepreference
-supervision: prior value-only GSM8K converter failed354/7473 vs1000 gate;
-constant/input/prior-step collisions are notresolved by numeric agreement.
-InspectretainedTRAIN-only evidence, freeze a smallFIT-only semanticannotation
-pilot and independentcounterfactual source-referencecontracts before new model
-work. No new teacher/model call or newquantityexperiment startedyet.
+Independentquantitypilot nowactive: WORK/span-references,branchcontinuous/span-references
+head430b732. RUN=WORK/coordinator/span-references. Plan d4efe58 frozenbeforeselection.
+32TRAIN-FIT rows selectedby(group_sha256,row_id), solepriorreasonambiguous_leaf;
+all6sourcefiles/52oldarchivefileshashverified and32nativebindingsreproduced.
+BatchSHAb4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e.
+NoCAL/DEV/newdata orquantityruntimechanges. Originalvalue-onlyconverter354/7473
+vs1000 remainsREJECTED; thisissemantic TRAIN-labelquality, notsolveraccuracy.
+
+34authoredprotocolcontractspass; schema/validator/preteacherhashesfrozen5bd40bf.
+8parentFIT semanticreferences/counterfactualsfrozenatRUN/parent beforeteacher;
+26nativeoriginal/counterfactual/negativechecks matchmanualvalues. Parent5436must
+refusebadwaiting-intervalrationale;5449mustrefuseimplicitderived5housecountas
+fixedconstant. Allparentexpectations hidden fromteacher. See worktreePROGRESS.
+
+Teacher96285 RUNNING: supervisor1198492,wrapper1198534,scope
+glassmind-span-references-teacher,thread01a12c5e-57c4-7fd0-94a1-9a7ebe086e6b.
+Started1791745742.716.1200s/8GiB0swap/2MiBannotationcap/on-disktmp.
+Exactgpt-6-astra/fast/high,forcedChatGPTlogin. Localandisolatedloginstatus
+verifiedChatGPT;APIkeyenvscrubbed. OpenAI Docs configurationchecked.
+Bwraponlyexposesselectedbatch/schema/validator/brief;5protectedpathsverified
+absent includingfullTRAIN/CAL,parentexpectations andproject/benchmarktrees.
+OwnedloginlinkRUN/teacher/codex/auth.json points toestablishedlogin; neverread
+orarchivecredentialcontents. WorkerwritesonlyRUN/teacher/work.
+
+NEXTquantity: awaitteacherterminal, preserve+hashoriginalteacher/work andevent/
+stderr/completionmetadata beforechanges (exclude codex/auth.json entirely).
+Thenvalidate.py source/batch.json teacher/work/annotations.json --out NEW.json
+--executor WORK/groundedsteps-source/equation_executor inbounded8GiBscope.
+ParentreviewEVERYacceptedsemanticlink andall8frozenreferences/counterfactuals.
+Gate>=24/32parentconfirmedresolved/equivalent,zeroacceptedsemanticcontradictions,
+all8parentcasesagree,all34protocolcontractspass. No secondannotationattempt
+selectedafterresults; nofit/CAL/DEV beforeseparatelyfrozennextplan.
+Atcompletionreadturn.completed usage:inputincludescached,addoutputonce. Update
+201926299completedworkerbaselineonlywithactualcompletedusage; interruptedexcluded.
+Afterpreservationandterminalscopeverification, unlinkONLYownedlogin symlink.
+
 Continue monitoringnativeclaims89022; rawprovenance/storageaudit remainsindependent
-andmustpass beforeanynewgraphQA. No newmodelworkers/accountcalls.
+andmustpass beforeanynewgraphQA. OneboundedteacherusesChatGPTonly asabove; noAPIkeycalls.
 
 ## PR50 merged: word joining shipped
 
