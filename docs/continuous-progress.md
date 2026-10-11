@@ -2,8 +2,9 @@
 
 Unlimited active goal; milestone completion does not complete the goal. Root
 branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Previous goal turn: PROGRESS (prompt clarified). Current turn: PROGRESS; accepted
-comparator and exact quantity comparison, integrated main, completed all gates.
+Previous goal turn: PROGRESS (PR43merged, graphparserlaunched). Currentturn:
+PROGRESS (implementationgrammarworkerlaunched; independentnative/boundarybaselines
+andambiguityalternativesexecuted; graphparentadaptervalidated).
 
 ## PR43 published; next parser experiment active
 
@@ -100,22 +101,76 @@ outputsretained. No oldcorrectcoreedge maybelost; cannotrescuefailedcorpusgate.
 12independentarbitrary scorematrices2..5nodes with exhaustive legal single-root
 maximumscores+tiecounts frozen decoder-cases.json. Lateradaptermustmatchoptimal
 scoreandvalidtree, notspecifictiedtree. Parentcases notavailable toworker.
-NEXT whileworkeractive: inspectotherindependenttrack evidence or prepareparent
-review adapters withoutreadingcandidate. When terminal, archiveoriginalsource/
+Parentreview.py nowready anddry-run againstapprovedbinary/model passes24forms
+and24raw predictions with52coreedges, validtrees and exactUTF8spans; statuswire
+ispredicted. It reportsandfails anyoldcorrectedge loss. Decoderbridge stillneeds
+terminalsource review. No livecandidate source/results inspected.
+NEXT whileworkeractive: usefulindependentwork withoutreadingcandidate. When terminal, archiveoriginalsource/
 patch/reports/results andverifyhashesBEFOREinspection, thenreviewfrozenmodelgates
 andindependentlyrescore. Allotherjobscomplete; no reason to repeat closedgates.
 
+## LIVE: implementation intent grammar and bounded synthesis
+
+WorkerPID4131690 scopeglassmind-continuous-implgrammar.scope active/running,
+MemoryMax8589934592/MemorySwapMax0 verified. Astrafast/ChatGPT only, strippedAPIenv.
+WorktreeWORK/implgrammar, branchcontinuous/implgrammar, base3f7ce8f.
+TaskWORK/implgrammar-task.txt;runWORK/implgrammar-run. No liveworkersource/results
+inspected. Rootcleanexceptcheckpoint; no othermain/worldrustworkerowns thesefiles.
+
+Newprospectivehypothesis afterprior3rejectedimplementationexperiments: typed,
+fullyconsumed action/identifier/owner/path grammar instead ofglobal keyword
+reservation, preservingactualcurrentquery/rename/type/AddField/repair authority.
+Mayreuse/auditold signature-onlyfinitegenerator, NO newtemplatefamily or name/
+English/docs/assertionbasedalgorithmselection. Nativeuniquecompletechoice,
+actuallyexecutedfailingbaseline, no-test/unexecutedtarget/multipassrefusals,
+stale/applyverify/rollback required. DefaultCARGO_TARGET_DIR independence and
+no-live-artifactrefusals required, currentcheck-isolation alreadyaccepted.
+Taskauthorizesminimal do-route mainCLI edit plusworld/bridge modules, nothingin
+reading/everyday. Parentintegratesonlyafternewgates; oldrejections remainrejected.
+
+Readonlyimplgrammar-source43manifestfiles93316468bytes:20publicTRAINsources/
+60requeststyles,40Cargo.toml/src/lib.rs files allsize/SHAverified fromprior
+implementation-routes/reports/train-input-provenance.json. CurrentPR43baseline
+binary included53c6caca..., requestsand sourcecard. RustBenchf79e71a MIT ORApache2;
+no newdownloads/hiddenassets/labels/expectedpatches. Workerfixedsamplethenfull60,
+>=3verifiedrequests andallauthoredboundariespass; parentfull765>=218passes,
+all215oldpassesretained,0fail beforeacceptance. NoDEVworkeraccess.
+
+Parentcoordinator/implgrammar-independent:
+- baseline.py/boundary-cases.json/boundary-freeze.json:12currentquery/rename
+  controlsallpass, separateunambiguousfunctions/fields namedimplement/implemented/
+  write/fill, exactbefore/aftersourcesretained. Theseareobservedcurrentbehavior,
+  notunsupportedassumptions fromrejectedoldfixtures.
+- freeze.py/cases.json/PLAN.md/freeze.json:18freshnativecases=6implementations,
+  1ambiguity,11unchangedcontrols. Same-signaturedifferentbehaviors, unrelated/
+  Unicode names, sumall/negative,oddreverse,characters/word-sequence/count.
+- native.py baseline93213 COMPLETE:0/6implemented,all18wholeprojectsunchanged.
+  15originalscompileandexecutefailingtests;2separate no-tests/unexecuted controls
+  pass;1explicitcompiler-failure. Beforechecksusecopies, no liveCargo.lock.
+- alternatives.py COMPLETE:all-sum andpositive-sum BOTHpasspublic[2]test but
+  nativeoutput8 vs11 for[-3,2,4,5]. Evidence alternatives/report.json+sources/logs.
+- native.py candidateadapterready, --unset-target optionretainspersistentTMPDIR;
+  exactstubbody/outsidebytes+manifest/sourcechecks. Nativeproposercheckseparate
+  fromnativeaftercheck. adapter-freeze.json preservesadapters/fullgatehashes.
+- full-gate.json/compare-full.py frozen:765,>=218/all215retained/0fail. Baseline
+  coordinator/comparator-full/results.jsonl6cdb3be2..., runnerunchangedaddadae4....
+
+NEXT: Onterminalverifyinactive/PIDgone, archiveoriginalpatch/source/reports/results
+andhashverify BEFOREinspection, thenreviewactualgrammar andgeneratoragainstfrozen
+contracts. Nativeparentbaseline/12boundary/2alternativesalreadydone; don'trepeat.
+Candidateparent/full765 onlyafteroriginalsubmissionarchived. Parentpositivecases
+areoutsideworkeraccess. Both current workers stilllive; no nativerootjobsremain.
+
 ## Next experiments
 
-Graphparserexperiment above iscurrent. Independentnextcodinggap: zero
-implementationDEVcoverage; choose a new PUBLIC TRAIN failure without looking at
-hiddenmaterial. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
+Graphparser andimplementationgrammar experiments above arecurrent. Zero
+implementationDEVcoverage motivated the latter; no gain claimed beforegates. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
 do not duplicate. Deferredthermostatreassociation needs exactoverflowreasoning.
 Facts coverage/inverseedges remain a broadgap; read prior TRAIN999rejection and
 incomingcoverage reports before additionalfetch. Avoidaliasfilterretunes.
 Dialogue accuracyneeds materiallydifferentsemanticrepresentation afterthreefailed
 spanproposalhypotheses. Quantity formalpartiallabelsupervision wasrejected in
-d2902be (alreadyincludedupcomingPR); do not retuneit. Currenttypedcomparison is
+d2902be (publishedinPR43); do not retuneit. Currenttypedcomparison is
 separatecapability, no learnedaccuracygain. Choose a bounded new hypothesis and
 freeze parentcontracts before worker inspection. Atmost4modelslotsincludingroot;
 Astrafast/ChatGPTonly/noAPIkeys. Everycargo8GiB0swap/setsid--waittimeout/persistentTMPDIR.
