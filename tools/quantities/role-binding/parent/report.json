@@ -1,0 +1,68 @@
+{
+  "decision": "rejected",
+  "frozen_manifest_entries": 142,
+  "clean_cal_membership_exact": 1182,
+  "native_free_replay_exact": 1182,
+  "independent_native_proposed": 1181,
+  "baseline200_exact": true,
+  "original_comparator_sha256": "24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0",
+  "totals": {
+    "baseline": {
+      "free": {
+        "wrong": 993,
+        "exact_ast": 123,
+        "correct": 143,
+        "refused": 46
+      },
+      "oracle": {
+        "wrong": 887,
+        "exact_ast": 202,
+        "refused": 74,
+        "correct": 221
+      },
+      "teacher": {
+        "decisions": 4138,
+        "op_correct": 1912,
+        "left_correct": 2197,
+        "right_correct": 2499,
+        "whole_arguments": 202
+      }
+    },
+    "candidate": {
+      "free": {
+        "wrong": 1089,
+        "exact_ast": 69,
+        "correct": 92,
+        "refused": 1
+      },
+      "oracle": {
+        "wrong": 1007,
+        "exact_ast": 133,
+        "correct": 170,
+        "refused": 5
+      },
+      "teacher": {
+        "decisions": 4138,
+        "op_correct": 1912,
+        "left_correct": 2370,
+        "right_correct": 2540,
+        "whole_arguments": 133
+      }
+    }
+  },
+  "gates": {
+    "left": true,
+    "right": false,
+    "free": false,
+    "oracle": false
+  },
+  "free_transitions": {
+    "wrong->wrong": 975,
+    "correct->correct": 74,
+    "refused->wrong": 45,
+    "correct->wrong": 69,
+    "wrong->correct": 18,
+    "refused->refused": 1
+  },
+  "scope": "TRAIN calibration, annotation-cleaned, oracle modes explicitly conditioned; no DEV or production acceptance"
+}
