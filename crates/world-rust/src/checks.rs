@@ -54,8 +54,9 @@ const AHEAD: Duration = Duration::from_secs(24 * 60 * 60);
 /// The version of the kept results, raised when checks change what they
 /// find: before 2, a check could read a build of another copy; before 3,
 /// builds took in benches; before 4, a failed linter without readable
-/// diagnostics could be cached as a pass.
-const RESULTS: &str = "v4";
+/// diagnostics could be cached as a pass; before 5, a failed target could
+/// stop cargo before it reported errors in other independent targets.
+const RESULTS: &str = "v5";
 
 /// How long one tool run may take.
 const TOOL_TIME: Duration = Duration::from_secs(600);
@@ -498,7 +499,14 @@ fn run_tools(
                 source,
                 root,
                 "check",
-                &[targets(root), &["--message-format=json", "-q"]].concat(),
+                // Report all independent targets even when one fails: in
+                // particular, a library and its cfg(test) build can have
+                // different errors. Cargo's default stops at the first.
+                &[
+                    targets(root),
+                    &["--keep-going", "--message-format=json", "-q"],
+                ]
+                .concat(),
             )?;
             let found = findings(source, root, &out, &["error"]);
             // A failed build with no error read from it is not a pass.
@@ -513,7 +521,11 @@ fn run_tools(
                 source,
                 root,
                 "clippy",
-                &[targets(root), &["--message-format=json", "-q"]].concat(),
+                &[
+                    targets(root),
+                    &["--keep-going", "--message-format=json", "-q"],
+                ]
+                .concat(),
             )?;
             let found = findings(source, root, &out, &["error", "warning"]);
             if !ok && found.is_empty() {
