@@ -1,0 +1,53 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 542,
+    "pass": 223
+  },
+  "all_previous_passes_retained": 221,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "implement/merge-sorted-unique",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "implement/merge-sorted-unique",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "pass": 30,
+      "refused": 51
+    },
+    "implement": {
+      "refused": 52,
+      "pass": 8
+    }
+  },
+  "baseline_result_sha256": "f9554a39072279faad89ec977f12cacb6f4d6afe9e4e23551b59b4a3b9e476b8",
+  "candidate_result_sha256": "65b40f4dcdd058e4bdbadb3a20d7ac2519c324aeda10400c7cc95ba9048b481d",
+  "binary_sha256": "dd6a823946637dd5daacba2f1033a1c3e1fc4421b147dabc8dacf8b16aef92bf",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}
