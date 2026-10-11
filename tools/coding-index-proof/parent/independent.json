@@ -1,0 +1,128 @@
+{
+  "binary_sha256": "5fcb1577ee7c22487f603aa2dbd7bf39ca60575b218b7c5fde9e507f76c6a815",
+  "cases": [
+    {
+      "case": "one_based",
+      "expected_supported": true,
+      "changed": true,
+      "minimal_edit": true,
+      "native_test_exit": 0,
+      "reply": "I'd make one change to fix the build.\n  src/lib.rs:1:140  `index` -> `(index) as usize`\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+      "exit": 0,
+      "source_sha256": "5c4307ba03b4812d4c3fc05952f4dc6b637be75b46adc6eee674fe8ad18bbb98",
+      "after_sha256": "a20ba6508b2bf2ab1b3d223988bb9f1ddaebba6a1c11b5c21793c24f1a7a68bc"
+    },
+    {
+      "case": "zero_based",
+      "expected_supported": true,
+      "changed": true,
+      "minimal_edit": true,
+      "native_test_exit": 0,
+      "reply": "I'd make one change to fix the build.\n  src/lib.rs:1:137  `index` -> `(index) as usize`\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+      "exit": 0,
+      "source_sha256": "8aa19c8323e41383a69a9a4e066280120764b02ced52d1c49691081586545a49",
+      "after_sha256": "705f5a19a7cd0b9551c20e5216723e32021959fe1663a2517b0aae150f989461"
+    },
+    {
+      "case": "mutation_after_guard",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "0d7ed0cb7edaff3c0c8c617adcc1f6b6dc09586ae2fee02294f74305455498f5",
+      "after_sha256": "0d7ed0cb7edaff3c0c8c617adcc1f6b6dc09586ae2fee02294f74305455498f5"
+    },
+    {
+      "case": "shadow_after_guard",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "c118988822ab6ce6a5fee2bad051c15b8361706d73c17fa9711c0a1561d76415",
+      "after_sha256": "c118988822ab6ce6a5fee2bad051c15b8361706d73c17fa9711c0a1561d76415"
+    },
+    {
+      "case": "nonexit_guard",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "15bfacd822001af19803cbada52b62db4db1e1ad3c0067120564c6f97177c5bc",
+      "after_sha256": "15bfacd822001af19803cbada52b62db4db1e1ad3c0067120564c6f97177c5bc"
+    },
+    {
+      "case": "wrong_conjunction",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "f848e6f320c7c49027765a8718c201c75d108bc2270501eabdb49571eaf0745e",
+      "after_sha256": "f848e6f320c7c49027765a8718c201c75d108bc2270501eabdb49571eaf0745e"
+    },
+    {
+      "case": "zero_passes_lower_bound",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "37fdcfae8fcbf1c5cf5fc1617f2c3b507764559d73038b256c6955ae92702f96",
+      "after_sha256": "37fdcfae8fcbf1c5cf5fc1617f2c3b507764559d73038b256c6955ae92702f96"
+    },
+    {
+      "case": "guarded_different_binding",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "f56fd11f07232b852146471e5ed21672c089183993ab2d5b80dad1ae49bb98c1",
+      "after_sha256": "f56fd11f07232b852146471e5ed21672c089183993ab2d5b80dad1ae49bb98c1"
+    },
+    {
+      "case": "early_guard_only_one_branch",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "468082010661a8fe08b598b11de7e9d1074079a631f7ee9ae2f337f89efb7e45",
+      "after_sha256": "468082010661a8fe08b598b11de7e9d1074079a631f7ee9ae2f337f89efb7e45"
+    },
+    {
+      "case": "arithmetic_can_overflow",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "619ce9f5ae6d95d3f43d7ae7c02fef33514aa903c190cd1acd033dad2af0ba8c",
+      "after_sha256": "619ce9f5ae6d95d3f43d7ae7c02fef33514aa903c190cd1acd033dad2af0ba8c"
+    },
+    {
+      "case": "subtract_larger_constant",
+      "expected_supported": false,
+      "changed": false,
+      "minimal_edit": true,
+      "native_test_exit": null,
+      "reply": "I don't know how to fix the build.\n  still: src/lib.rs:1  E0277  the type `[u8]` cannot be indexed by `i32`\n",
+      "exit": 0,
+      "source_sha256": "91ba428d1dd53edd7f3f8f1d06c47a82fc85b77b0b9cc04388c4493dd4adf639",
+      "after_sha256": "91ba428d1dd53edd7f3f8f1d06c47a82fc85b77b0b9cc04388c4493dd4adf639"
+    }
+  ],
+  "edits": 2,
+  "unsafe_edits": 0
+}

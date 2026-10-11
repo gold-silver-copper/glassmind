@@ -1,5 +1,92 @@
 # Continuous development checkpoint
 
+## Signed-index full DEV complete; publishing pending
+
+Full765 session99446 COMPLETE:177pass588refused0fail, all174oldpasses retained.
+Only3index-with-i32 styles improve. ResultSHA52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d.
+Finalcomparison docs/results/coding-index-proof.json; allparentcheckscomplete.
+No repeatfull required. Syntaxworker alsoCOMPLETE, original32files196045bytes
+archived andall66external/5source/27repo/10freeze identitiesverified. Parent
+all25148word scoring exactlymatches19423LAS/20540UAS andall2001validtrees;
+nonduplicate19286LAS/20403UAS of25011. Parent13frozencontrasts, forms+text26runs:
+68/70coreedges,24/26all-correct; objectquestionWho didNora thank? fails bothmodes.
+No mainCLI integrationyet; prepared syntax-cli.rs undercoordinator/udsyntax-review.
+Workerworktree/auth stillpresent; preserveoriginals, hashverifycopiesbeforecleanup.
+OlderACTIVE labels belowarehistorical; no modelworker orparentbenchmark remainslive.
+
+## Previous checkpoint — signed-index full DEV was running
+
+INDEXPROOF worker COMPLETE; original613files/1,173,505bytes archived at
+WORK/indexproof-run/submitted. Allarchive/2runtime/29authored/10native/3supplied
+identities, accepted+failedbinary and frozenplan/cases verified. Workerpatch and
+archivepatch differ onlyi/vsc/oldpathprefixes; normalizedbytesidentical. All612
+repositorycopies reverified before inactiveworktree/authremoval. No workerjobs.
+Runtime 0f8dbfa61628e73e7d5cc22bbf81f10feb131a52, releasebinary
+5fcb1577ee7c22487f603aa2dbd7bf39ca60575b218b7c5fde9e507f76c6a815 retained at
+WORK/coordinator/indexproof-review/glassmind-integrated androottarget/release.
+Only2worldRustsourcefiles changed. Native target-width proof uncached; source
+unchanged outsideindexcast. Parentreview coversguarddominance, arithmetic and
+bindingidentity, exactdiagnostic/source andnativetargetwitness.
+
+Independent11frozencases:2minimalnative-testedrepairs+9unchangednegativecases,
+bothworker andintegratedrelease. Actualinstalledwasm32 compilerchecks4cases:
+i16/i32repair,i64/i128refuse; no wasmbehavior execution claimed. Final release
+ownedfirstsample3 thenfull32 reproducealloriginalcontracts/sourcehashes:
+10exactnative-testedrepairs (3supplied+7authored),22unchangednegatives. All34world
+tests/workspacefmt+allclippy+release+strict4smoke pass. Completedparentsessions
+53093/75969/69866/80490. Inherited export26/27 andAddField14/15 remain documented.
+Full765 ACTIVE session99446, unchangedtools/rustbench-dev.sh, own
+WORK/coordinator/indexproof-full withTMPDIR/native-scratch. Re-poll samehandle;
+no resultfile untilterminal is expected, notfailure. Mustretainall174oldpasses,
+>=174passes/0fail beforepublication. Comparator prepared at
+WORK/coordinator/indexproof-review/compare-full.py. No newfullscoreclaimedyet.
+Originalnewtools/parentreports andworkerusage are saved withthislocalcheckpoint;
+publishing waitsforfullDEV.
+Knowncompletedworker tokens120,879,428, cachedinputonce;parent/unfinishedexcluded.
+
+UDSYNTAX stillACTIVE PID318192, verifiedscope8GiB/0swap. Workerreports frozenmodel
+~12MiB, training3.37s/285MiB; fullDEV claimed19423/25148LAS and20540/25148UAS,
+2001validtrees and6/6authoredroles. Unreviewed until originalarchival+parentaudit.
+Parentindependentsourceaudit: DEV2001sentences25148words,68exactTRAINduplicates
+(137words), no>128tokenDEV; chainbaselineUAS2528/LAS481. Reports alreadyfrozen
+atWORK/coordinator/udsyntax-independent/source-audit.json and13contrastfixtures.
+Awaitterminal; archivebeforeintegration; independentlyrecomputeallmetricdenominators,
+replaymodeland13contrasts, reviewboundedloader/inference, integratemainCLIonlyif
+accepted. This is predictedgold-tokenizedsyntax, not QA/semantictruth accuracy.
+
+## Latest published evidence and active workers
+
+PR30 MERGED e3ed37ccb68d2829631c95acbf6d460aafc0a619 at2026-10-11T08:48:18Z,
+exacthead a34306ab8d314551d54748189a34ab1f0d82d298;CI38125987960SUCCESS.
+Push36666/create85697/merge25959 COMPLETE; do notrepeat. Publishes dialogue
+rejection andindependentaudit only, no runtimechange. Parentall11indexbaseline
+session84986 COMPLETE, allrefused. No parentnativejob remainslive.
+INDEXPROOF stillactive: workerreports3supplied+7authoredpositiveexactrepairs and
+22negativeunchanged, plusinheritedregressionfailures. These are unreviewedworker
+claims; originalarchive/parentreview/full765 stillrequired. UDSYNTAX active too.
+
+## Active syntax experiment — current worker ownership
+
+UDSYNTAX ACTIVE PID318192, scopeglassmind-continuous-udsyntax.scope, verified8GiB/
+0swap, worktreeWORK/udsyntax ata34306a, branchcontinuous/udsyntax, runWORK/udsyntax-run.
+TaskWORK/udsyntax-task.txt; one frozen candidate: twoepochaveragedperceptronPOS +
+threeepocharcstandarddependencyparser, forms-only inference using predictedtags.
+Owns newreading syntaxlibrary/bin/minimallibexport/newtools/reading/syntax only.
+MainCLI integration remainsparent-owned ifaccepted. Strictlypredictedsyntax,
+nevertruth/repairauthority. Fixedfirst100 thenallDEV; include unsupportedwords
+in denominator; primaryUAS>=55%,LAS>=45%, treevalidity100%, usefulauthoredroles.
+No modeltuning onDEV. Goldtokenizationseparatefromrawtexttokenization. TRAIN/DEV
+exactduplicates audited andseparatelyreported. Parentfroze13independentcontrasts
+beforecandidateinspection inWORK/coordinator/udsyntax-independent.
+
+NewsourceWORK/udsyntax-source: UDEnglishEWTr2.18,b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c,
+CC-BY-SA-4.0; README24522/license20014/TRAIN15034493/DEV1898574bytes. Exactlyfourfiles,
+16,977,603downloadedbytes; officialtest notdownloaded. Provenancehashes retained.
+Logged-inChatGPTverified beforelaunch; forcedGPT6Astrafast/noAPI launcher asbefore.
+Twoactive workers INDEXPROOF+UDSYNTAX, noadditionalagents. Parent11indexbaseline
+completed session84986:allrefused,including2positiveguardedlookups. Frozenfixtures
+andnative runneratWORK/coordinator/indexproof-independent; awaitterminalcandidate.
+
 ## Authoritative checkpoint — token endpoint rejection independently verified
 
 Goal active; branch harness, validated runtime408d16b unchanged. The preceding

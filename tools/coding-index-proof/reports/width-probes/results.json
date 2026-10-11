@@ -1,0 +1,54 @@
+[
+  {
+    "required_bits": 32,
+    "source_sha256": "f9880f9cd9e27a52b6166fcfb8f30b9dde9822b891960bf8bebff6877dabca6d",
+    "bytes": 372,
+    "result": {
+      "command": [
+        "systemd-run",
+        "--user",
+        "--scope",
+        "-pMemoryMax=8G",
+        "-pMemorySwapMax=0",
+        "setsid",
+        "--wait",
+        "timeout",
+        "--kill-after=10s",
+        "600",
+        "cargo",
+        "check",
+        "-j1"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Running as unit: run-p317366-i96734257.scope; invocation ID: 05c3319c6ea647c88513e707a02264e2\n    Checking task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/width-probes/width-32)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s\n"
+    },
+    "passed": true
+  },
+  {
+    "required_bits": 128,
+    "source_sha256": "54f05a513e6fdccd52d1affe503920a0331657e8e7d8840225305ded48953997",
+    "bytes": 373,
+    "result": {
+      "command": [
+        "systemd-run",
+        "--user",
+        "--scope",
+        "-pMemoryMax=8G",
+        "-pMemorySwapMax=0",
+        "setsid",
+        "--wait",
+        "timeout",
+        "--kill-after=10s",
+        "600",
+        "cargo",
+        "check",
+        "-j1"
+      ],
+      "exit": 101,
+      "stdout": "",
+      "stderr": "Running as unit: run-p317382-i96789547.scope; invocation ID: 9ba3b7c54c77481dabf8c28a3fb5d64d\n    Checking task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/width-probes/width-128)\nerror[E0308]: mismatched types\n --> src/lib.rs:7:37\n  |\n7 |     Some(players[{ let _: [(); 1] = [(); (::core::primitive::usize::BITS >= 128) as usize]; (index) as usize }].to_string())\n  |                           -------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected an array with a size of 1, found one with a size of 0\n  |                           |\n  |                           expected due to this\n  |\nhelp: consider specifying the actual array length\n  |\n7 -     Some(players[{ let _: [(); 1] = [(); (::core::primitive::usize::BITS >= 128) as usize]; (index) as usize }].to_string())\n7 +     Some(players[{ let _: [(); 0] = [(); (::core::primitive::usize::BITS >= 128) as usize]; (index) as usize }].to_string())\n  |\n\nFor more information about this error, try `rustc --explain E0308`.\nerror: could not compile `task` (lib) due to 1 previous error\n"
+    },
+    "passed": true
+  }
+]

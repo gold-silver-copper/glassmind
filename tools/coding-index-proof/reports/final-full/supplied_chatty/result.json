@@ -1,0 +1,24 @@
+{
+  "name": "supplied_chatty",
+  "positive": true,
+  "changed": true,
+  "exact": true,
+  "unrelated_bytes_preserved": true,
+  "original_e0277": true,
+  "native_pass": true,
+  "result": {
+    "command": [
+      "/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/accepted-glassmind",
+      "do",
+      "/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/final-full/supplied_chatty/package",
+      "Hi! The leaderboard lookup won't build, something about indexing. Could you fix it so it compiles? Ranks are 1-based, and that part works the way I want.",
+      "--explain"
+    ],
+    "exit": 0,
+    "stdout": "input:  Hi! The leaderboard lookup won't build, something about indexing. Could you fix it so it compiles? Ranks are 1-based, and that part works the way I want.\nwords:  [Hi] [!] [The] [leaderboard] [lookup] [won't] [build] [,] [something] [about] [indexing] [.] [Could] [you] [fix] [it] [so] [it] [compiles] [?] [Ranks] [are] [1-based] [,] [and] [that] [part] [works] [the] [way] [I] [want] [.]\nreading 1 (chosen):\n  parse:   coding intent: fix_build (1.0000)\n  meaning: Command(Repair(Build))\n  rules:   coding.intent.fallback (by hand)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 7, column: 17, old: \"index\", new: \"(index) as usize\" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 7, name: \"E0277\", kind: Problem, owner: None, detail: Some(\"the type `[&str]` cannot be indexed by `i32`\") }], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29), rust.remedy.signed_index (by hand)\nchoice: 1 surviving reading(s), all with the same answer\npreferences: mind.accept_verified (by hand)\nreply:  Assuming { reading: Command(Repair(Build)), reply: Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 7, column: 17, old: \"index\", new: \"(index) as usize\" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 7, name: \"E0277\", kind: Problem, owner: None, detail: Some(\"the type `[&str]` cannot be indexed by `i32`\") }], left: [] } }\nspoken by: en.reply.assuming (seed), en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand), en.reply.remedy_one (by hand)\n\nI take that to mean: fix the build I'd make one change to fix the build.\n  src/lib.rs:7:18  `index` -> `(index) as usize`\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+    "stderr": ""
+  },
+  "before_sha": "a61f1daa61ac66aa6f0f4fe374fbcba0cdff1e4a13e4f676937272d9e49be97e",
+  "after_sha": "574f9852fd31a14996f5e8bdd2c4a6d683c5066ca192f73f0a66017ee4228772",
+  "passed": true
+}

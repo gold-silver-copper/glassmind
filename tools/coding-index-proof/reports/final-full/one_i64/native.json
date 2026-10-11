@@ -1,0 +1,23 @@
+{
+  "command": [
+    "systemd-run",
+    "--user",
+    "--scope",
+    "-pMemoryMax=8G",
+    "-pMemorySwapMax=0",
+    "setsid",
+    "--wait",
+    "timeout",
+    "--kill-after=10s",
+    "600",
+    "cargo",
+    "test",
+    "-j1",
+    "--",
+    "--test-threads",
+    "4"
+  ],
+  "exit": 0,
+  "stdout": "\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 1 test\ntest independent_contract ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+  "stderr": "Running as unit: run-p321573-i96718585.scope; invocation ID: db26650f76814030abf5007d8aee398a\n   Compiling task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/final-full/one_i64/package)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s\n     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/target/debug/deps/task-b217b6fd00e19b88)\n     Running tests/independent.rs (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/target/debug/deps/independent-be1f5a50e6f5c211)\n   Doc-tests task\n"
+}

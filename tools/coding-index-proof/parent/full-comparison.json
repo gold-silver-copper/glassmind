@@ -1,0 +1,62 @@
+{
+  "scope": "Full fixed765 Rust coding dev; no held-out evaluation",
+  "commit": "0f8dbfa61628e73e7d5cc22bbf81f10feb131a52",
+  "binary_sha256": "5fcb1577ee7c22487f603aa2dbd7bf39ca60575b218b7c5fde9e507f76c6a815",
+  "total": 765,
+  "outcomes": {
+    "refused": 588,
+    "pass": 177
+  },
+  "all_previous_passes_retained": 174,
+  "outcome_changes": [
+    {
+      "task": "fix-errors/index-with-i32",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-errors/index-with-i32",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-errors/index-with-i32",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 77,
+      "pass": 4
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 136,
+      "refused": 347
+    },
+    "fix-test": {
+      "refused": 66,
+      "pass": 15
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "6bb70923ac905413d059f4882ca7edf88b90a2707fe244bbd531bc85bb36cb34",
+  "candidate_result_sha256": "52d3d1a407acb1229b8abaf3fb8d7f2b43591d553a7d9dfc2278d1437dd11e2d",
+  "timing": {
+    "sum_agent_seconds": 436.883127028,
+    "median_agent_seconds": 0.300972555
+  },
+  "runner": "Unchanged tools/rustbench-dev.sh; persistent TMPDIR and explicit GLASSMIND_SCRATCH; memory8GiB/0swap, setsid --wait, bounded timeouts10s shutdown grace"
+}

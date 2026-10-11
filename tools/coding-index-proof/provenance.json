@@ -1,0 +1,217 @@
+{
+  "license": "MIT OR Apache-2.0",
+  "source": "Locally authored development fixtures; no downloads, model calls or evaluation material",
+  "base_commit": "b27dabe0aeacda2a86acc520450f8df3e59f7c47",
+  "cases_sha256": "821cd035801d70f913a23c421cb88fa1f0a7bcabe0c4d72134f47b05d1dfa0f8",
+  "plan_sha256": "f3da1fc2bee71ffae85291f7ce715ffdc60268dd7165a35e183806cf0327a236",
+  "authored_source_count": 29,
+  "authored_source_bytes": 4713,
+  "authored_sources": {
+    "one_i8": {
+      "bytes": 160,
+      "sha256": "9fdfc48bc89694adb7c128f7e1e767d0610cdd6860e7a3c7ce8fc9afcb34645f"
+    },
+    "one_i16": {
+      "bytes": 161,
+      "sha256": "dce1317d2cc4a9fa7b97407d84f7a8e14871961b02cff1f92399715c4ae70d3a"
+    },
+    "one_i32": {
+      "bytes": 161,
+      "sha256": "3b69b69efe580b4df10d309f19994c741377c3a22812b4ae2557d3424ea1f39e"
+    },
+    "one_i64": {
+      "bytes": 162,
+      "sha256": "4f46d199432c74420e9018d74b155893a588bed6f8ccf8c3615d94c2feca8349"
+    },
+    "zero_i16": {
+      "bytes": 162,
+      "sha256": "4ea2d7549a127208a80e33c7414361d499852e1571050ba379df8157e095e7e5"
+    },
+    "zero_i32": {
+      "bytes": 140,
+      "sha256": "6f558be78e5aaf0f90cc0d87612b8a8b6a150309a382c181c220d843892aae5d"
+    },
+    "split_named": {
+      "bytes": 199,
+      "sha256": "031719c4ed7cce06b9cbe6e923b722b847c11969f6de87060c60d5450c6c02ff"
+    },
+    "absent": {
+      "bytes": 100,
+      "sha256": "efe6643a1089efd62375b7db15eaf6eecd7245fd53e89758b788826dc418c6ac"
+    },
+    "no_lower": {
+      "bytes": 149,
+      "sha256": "313bc0646fdfda214975d5f151df609d54944ecbef0da3721852e8737eaac045"
+    },
+    "no_upper": {
+      "bytes": 130,
+      "sha256": "5efd05118a38fee8b608fbed4aef3e439dc7605d6d497e6fa7a732191042ce47"
+    },
+    "zero_wrong_upper": {
+      "bytes": 161,
+      "sha256": "4ac93f5c80a8bfdb224cdd58a442841477b6a6cb01e31e5ab3a82a18506c278e"
+    },
+    "and": {
+      "bytes": 161,
+      "sha256": "4838be8c6b3f19192e89adc5a927ab0d8a98907c8a63446f3220e83cadd88117"
+    },
+    "no_return": {
+      "bytes": 154,
+      "sha256": "310002254b5d59715af69e2892c368b3787173fb1ea981b4cb38b29f9b4aa8f2"
+    },
+    "mutation": {
+      "bytes": 176,
+      "sha256": "d72eb6559fb789b51791dc813bcd05aefbecd1600b8b426bb90a0501938f7597"
+    },
+    "shadow": {
+      "bytes": 177,
+      "sha256": "e788de2a26a54480f00a83876931e101c25f4ce2116a61d0440b5f9f5abcf401"
+    },
+    "overflow": {
+      "bytes": 161,
+      "sha256": "4d65c34bfa4282bb292a75fa8fbd7cdebc36424d9377089f1f481dbecc43c308"
+    },
+    "negative": {
+      "bytes": 162,
+      "sha256": "4a406c6ca3f8b2b4f9aa6feec813f3e90892c833a78e80ba85b41506c53bd454"
+    },
+    "unsigned": {
+      "bytes": 161,
+      "sha256": "2ca0b94cdd663943e2ad43c6ec2555ad60a84258f96150e336817afcb3774278"
+    },
+    "generic": {
+      "bytes": 164,
+      "sha256": "e19e9001128840b66a16b2fb6710b71e17478504339080920a024eea19037b95"
+    },
+    "custom": {
+      "bytes": 162,
+      "sha256": "58f70b718ea13f9a463933d1e3c043ca5d8228a8c3807af59fbe3145bd4368c7"
+    },
+    "macro": {
+      "bytes": 174,
+      "sha256": "9c1bd2aeb7ecf704641e47f266575ffc410222b8f2d63eaa5155b0c4eae2860c"
+    },
+    "unknown_attr": {
+      "bytes": 172,
+      "sha256": "2be98298c8e9e06f5957144b1803414c6509faf669338a4065a4dcca98075bbe"
+    },
+    "conditional": {
+      "bytes": 174,
+      "sha256": "8d0ebbe5d573feb5237b11930be5c54076ae008c975164d7e9b9337198885d89"
+    },
+    "join": {
+      "bytes": 174,
+      "sha256": "8fb19d0f12e2fc5088a4661706ce8647229b29c71ccee37e27150331f7fe3acb"
+    },
+    "two_indices": {
+      "bytes": 176,
+      "sha256": "f40c5ff54f81878407dfce9ec207d2b826fda2f4494a2d78e279e8d4970a6de8"
+    },
+    "call": {
+      "bytes": 164,
+      "sha256": "aff7452590823988401ffb262bb97980e1c00f2a05b3486893a8be90ffe9ccd2"
+    },
+    "alias": {
+      "bytes": 177,
+      "sha256": "1d948f2b934f31af3449bdbbed44d090f75aff13f67b28025fdf38fff37ef157"
+    },
+    "local_attr": {
+      "bytes": 178,
+      "sha256": "7f8636c214d6c340b3b4a10e75e692ea9830b5c7993b83e036c9efe0c86e64f4"
+    },
+    "upper_first": {
+      "bytes": 161,
+      "sha256": "f0757f674e7a3dcf40b68a2a3024f61c20d7b37a8e29245c64a55b78c03fa11b"
+    }
+  },
+  "supplied": {
+    "source": "Public workspace and existing train-v3 requests only; no task.toml/hidden/solution content",
+    "revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "license": "MIT OR Apache-2.0",
+    "files": {
+      "Cargo.toml": {
+        "bytes": 86,
+        "sha256": "e664e9b8b04122585790c3cfbb230c5173c915ac7f0c9846abeae130559ed5ab"
+      },
+      "Cargo.lock": {
+        "bytes": 148,
+        "sha256": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418"
+      },
+      "src/lib.rs": {
+        "bytes": 285,
+        "sha256": "a61f1daa61ac66aa6f0f4fe374fbcba0cdff1e4a13e4f676937272d9e49be97e"
+      }
+    },
+    "requests": [
+      {
+        "id": "train/rb-fix-errors-index-with-i32/chatty#0",
+        "text": "Hi! The leaderboard lookup won't build, something about indexing. Could you fix it so it compiles? Ranks are 1-based, and that part works the way I want."
+      },
+      {
+        "id": "train/rb-fix-errors-index-with-i32/hurried#0",
+        "text": "index error in player_at_rank, fix"
+      },
+      {
+        "id": "train/rb-fix-errors-index-with-i32/terse#0",
+        "text": "fix compile error"
+      }
+    ],
+    "bytes": 519,
+    "baseline_binary_sha256": "20594291e08e216596645ac21355eca216f8cadfb12cd20e66d7fd71350634f6"
+  },
+  "runtime_files": {
+    "crates/world-rust/src/lib.rs": {
+      "bytes": 50173,
+      "sha256": "e5f69506f16ca609c7a3d3eba261ca7c9e09ff3169fed129b2dbf1325abba743"
+    },
+    "crates/world-rust/src/index_conversion.rs": {
+      "bytes": 15403,
+      "sha256": "ea8f06b866bf25443638de82a32e19d33f27b17b55077d26ed51d70e91aff771"
+    }
+  },
+  "runtime_patch_sha256": "8e94f25e8fce66da5f854637f5d47c3a1df93ded3193331046362dd01ec3f8d2",
+  "binary_sha256": "efe96b9a0f5cca75bba0a5b5711acbea307426d1b81e484e27aef616689e29ae",
+  "failed_first_binary_sha256": "e67eb4930137c6a6a0e254a51c8bd82321a61e6cfdb8fdec7ca0858fc34ff4fe",
+  "native_contracts": {
+    "supplied_chatty": {
+      "bytes": 361,
+      "sha256": "84fd8579d07b189349fdc6e8485be77fb22a0630e18bed09ce4bc1391ae8e9b7"
+    },
+    "supplied_hurried": {
+      "bytes": 361,
+      "sha256": "84fd8579d07b189349fdc6e8485be77fb22a0630e18bed09ce4bc1391ae8e9b7"
+    },
+    "supplied_terse": {
+      "bytes": 361,
+      "sha256": "84fd8579d07b189349fdc6e8485be77fb22a0630e18bed09ce4bc1391ae8e9b7"
+    },
+    "one_i8": {
+      "bytes": 307,
+      "sha256": "47eba99db2d3de463751f1343f95e4b92ebd205b0acd179bca0a0cf6255f2c4c"
+    },
+    "one_i16": {
+      "bytes": 309,
+      "sha256": "ee5515e83895bf473f2dffe8001b96b89648fa69b4927d86e1f4c5486f31ddfe"
+    },
+    "one_i32": {
+      "bytes": 309,
+      "sha256": "9b152302084131dfa197d197276d09e59af8d1679e4d27f60be3cd22e2465f66"
+    },
+    "one_i64": {
+      "bytes": 309,
+      "sha256": "173a2011f4b2468c234fb8b67ed446e1096700f37c2ef93fb3ca2d2102f89c0a"
+    },
+    "zero_i16": {
+      "bytes": 309,
+      "sha256": "8e3f860bebb3a772853fe18e79a2d99c21c276f49e7046a9af5f2c60ecb82796"
+    },
+    "zero_i32": {
+      "bytes": 309,
+      "sha256": "8f12fb2f60a813374ca0b21d38197dc61d410a3ce6c82f2b3d88d806088435a9"
+    },
+    "split_named": {
+      "bytes": 311,
+      "sha256": "29b7f6a5fb7592c9e00802f012180b569895bdea20d9e52a74eba9af93c8fd4f"
+    }
+  }
+}

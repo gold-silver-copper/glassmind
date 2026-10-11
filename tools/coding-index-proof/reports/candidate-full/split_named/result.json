@@ -1,0 +1,24 @@
+{
+  "name": "split_named",
+  "positive": true,
+  "changed": true,
+  "exact": true,
+  "unrelated_bytes_preserved": true,
+  "original_e0277": true,
+  "native_pass": true,
+  "result": {
+    "command": [
+      "/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/target/debug/glassmind",
+      "do",
+      "/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/candidate-full/split_named/package",
+      "fix compile error",
+      "--explain"
+    ],
+    "exit": 0,
+    "stdout": "input:  fix compile error\nwords:  [fix] [compile] [error]\nreading 1 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.errors[en.check_phrase.bare[en.rust.check.compile[\"compile\"]] \"error\"]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.errors (round 29), en.check_phrase.bare (round 29), en.rust.check.compile (round 29)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 5, column: 13, old: \"index\", new: \"(index) as usize\" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 5, name: \"E0277\", kind: Problem, owner: None, detail: Some(\"the type `[i32]` cannot be indexed by `i32`\") }], left: [] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29), rust.remedy.signed_index (by hand)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Remedy { check: Build, changes: [RustChange { source: \"package\", file: \"src/lib.rs\", line: 5, column: 13, old: \"index\", new: \"(index) as usize\" }], fixed: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 5, name: \"E0277\", kind: Problem, owner: None, detail: Some(\"the type `[i32]` cannot be indexed by `i32`\") }], left: [] }\nspoken by: en.reply.remedy_one (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI'd make one change to fix the build.\n  src/lib.rs:5:14  `index` -> `(index) as usize`\n  (say yes to make these changes)\nI made one change. No problems with the build.\n",
+    "stderr": ""
+  },
+  "before_sha": "031719c4ed7cce06b9cbe6e923b722b847c11969f6de87060c60d5450c6c02ff",
+  "after_sha": "e897795e86fc96d5d879c768d9b4153de8b7df453028cbd7607f34badc896b17",
+  "passed": true
+}

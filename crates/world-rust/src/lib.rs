@@ -24,6 +24,7 @@ pub mod add_fields;
 pub mod checks;
 pub mod declared_types;
 pub mod index;
+mod index_conversion;
 mod rename_fields;
 mod rename_package;
 mod rename_types;
@@ -203,6 +204,8 @@ const REMEDY_SUGGESTED: RuleInfo = RuleInfo::new("rust.remedy.compiler_suggestio
 /// it offers there, as no two replacements of the same text can both be
 /// made.
 const REMEDY_ONE_PER_PLACE: RuleInfo = RuleInfo::new("rust.remedy.one_per_place", 29);
+/// Convert a signed slice index only after an AST range and native width proof.
+const REMEDY_INDEX: RuleInfo = RuleInfo::new("rust.remedy.signed_index", HAND);
 /// Add standard Debug only to a unique compiler-identified local declaration.
 const REMEDY_DEBUG: RuleInfo = RuleInfo::new("rust.remedy.derive_debug", HAND);
 /// Compiler fixes can expose further errors; compose bounded rounds only
@@ -218,6 +221,7 @@ const APPLY_CHANGES: RuleInfo = RuleInfo::new("rust.apply.changes", HAND);
 pub const RULES: &[RuleInfo] = &[
     declared_types::DECLARED_TYPE,
     REMEDY_DEBUG,
+    REMEDY_INDEX,
     REMEDY_ITERATE,
     RUN_CHECK,
     REMEDY_SUGGESTED,
@@ -946,6 +950,20 @@ impl World<Rust> for RustWorld {
                 fired.push(REMEDY_DEBUG);
             }
         }
+        let mut converted_index = false;
+        if changes.is_empty() && self.switches.on(REMEDY_INDEX.id) {
+            for source in &self.sources {
+                changes.extend(index_conversion::proposals(
+                    &source.name,
+                    &source.root,
+                    &found,
+                ));
+            }
+            converted_index = !changes.is_empty();
+            if converted_index {
+                fired.push(REMEDY_INDEX);
+            }
+        }
         changes.sort();
         changes.dedup();
         // Failing tests come with no fixes of the compiler's.
@@ -998,6 +1016,7 @@ impl World<Rust> for RustWorld {
                 Ok(after)
                     if !after.is_empty()
                         && !derived_debug
+                        && !converted_index
                         && self.switches.on(REMEDY_ITERATE.id) =>
                 {
                     fired.push(REMEDY_ITERATE);
@@ -1025,7 +1044,8 @@ impl World<Rust> for RustWorld {
                 Err(_) => return Err(Unsupported),
             }
         }
-        if left.len() >= problems.len() || (derived_debug && !left.is_empty()) {
+        if left.len() >= problems.len() || ((derived_debug || converted_index) && !left.is_empty())
+        {
             return Ok(Reply::Remedy {
                 check: *check,
                 changes: Vec::new(),
