@@ -2,11 +2,11 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Known completed-worker tokens:202156530, cached input counted once; parent and
-interrupted usage excluded. Pilot semantic teacher completed; three replication teachers now running.
+Known completed-worker tokens:202965100, cached input counted once; parent and
+interrupted usage excluded. Pilot semantic teacher completed; one replication teacher now running.
 Its owned ChatGPT login symlink has been removed after archival and scope verification.
 
-## Current jobs,19:11UTC
+## Current jobs,19:25UTC
 
 Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
 coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
@@ -84,16 +84,23 @@ plan d9f9fdc beforeselection, preparation982b936 beforeteachers. RUN=WORK/coordi
 span-expansion. Next128uniqueFITgroups in4x32frozenbatches; allsourcehashes/native
 bindingsverified. CombinedbatchSHA1863c210d4e566a939b568fe7a70db8db53bc46a979011c990e3f5f27bb47a10.
 Eightparentcases frozen,24nativechecks passed;4498mustrefuseconflictingboardlengths.
-All4isolatedChatGPTloginsverified. Batches01/02/03 RUNNING47083/13879/74867,
-scopesglassmind-span-expansion-01/02/03, supervisors1217986/1218089/1218195,
-wrappers1217993/1218096/1218202. Batch04prepared,launchonceoneslotfreeevenifearly
-resultsfail;max3teachers. EachAstrafast/high1200s8G0swap2MiBannotations256MiBdir.
-OwnedauthlinksRUN/batch-NN/teacher/codex/auth.json remain;preserve.py NN archives
-originals+usage thenremovesownedlinkafterterminalscope. Neverarchivecredentials.
-Gate>=96/128,zeroacceptedsemanticcontradictions,all8parentcasesagree. Parentreview
-EVERYacceptedlink;nofit/CAL/DEV. ReadworktreePROGRESS.md forcommands andfullgate.
+All4isolatedChatGPTloginsverified. Batches01/02/03 COMPLETE47083/13879/74867 exit0,
+174.398/168.386/176.402s, nocapfailures. Originals14filesperbatchhashverified;
+ownedauthlinksremovedafterinactivescopes. Mechanical/native26/24/22acceptedrows,
+28/26/25programvariants. Usage349523+227144+231903=808570; completedtotal202965100.
+Batch04RUNNING4711,scopeglassmind-span-expansion-04,supervisor1219143,wrapper1219150;
+onlymodelworker. OwnedauthlinkRUN/batch-04/teacher/codex/auth.json remains;
+preserve.py04 afterterminal archivesoriginals+usage thenremovesownedlink. Never
+archivecredentials. EachAstrafast/high1200s8G0swap2MiBannotations256MiBdirectory.
+Batch01semanticreviewCOMPLETE:26accepted28variants163assignments,zeroaccepted
+contradictions;all6refusalsconfirmed. semantic-review-01.json hasall32rowdecisions.
+All18refusalsbatches02/03reviewed;24+22acceptedrowsstillUNREVIEWED. See
+nonacceptance-review-02-03.json. Batch04unreviewed. Overallgatestillpending.
+NEXT:finish04preservation/nativevalidation,check-parent.pyall8frozenreferences,
+then reviewEVERYacceptedlink in02/03/04plus04refusals. Gate>=96/128,zeroaccepted
+semanticcontradictions,all8parentagree. Nofit/CAL/DEV/runtimeorquantityscorechange.
 
-Nativeclaims89022 stillRUNNING at33minutes (PIDs1022832/1022833verified);
+Nativeclaims89022 stillRUNNING at42minutes (PIDs1022832/1022833verified);
 secondaryindexesbuilt1225.432s, finalintegritychecksremaining. Do not restart.
 Continue original3396saudit/witnesses sequence afterterminalresourcepass.
 
