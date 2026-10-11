@@ -91,7 +91,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
 | Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
-| Multi-service dialogue, SGD three-service dev subset | 609/1,119 exact routing-and-state turns; 50 refused; 460 wrong | pending |
+| Multi-service dialogue, SGD three-service dev subset | 610/1,119 exact routing-and-state turns; 50 refused; 459 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
 | Word problems, MathQA (numeric answers without choices) | 22/4,475 right; 4,450 refused; 3 wrong | pending |
 | Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
@@ -136,14 +136,18 @@ pass; independent probes verify behavior for four additional repairs.
 
 On 179 complete SGD dev conversations involving RideSharing, Travel and Weather,
 learned slot transfers raise exact routing-and-state turns from 549 to 595/1,119;
-learned spans from system confirmations raise that to 609. All baseline-correct
-turns remain correct. Four earlier incorrect copies persist for 11 scored
-slot-turns; the new spans add 32 correct claims and no wrong claims in this dev
-scope. Multi-service RideSharing improves from 0 to 23/265 exact frames. Initial
+learned spans from system confirmations raise that to 609, and TRAIN-calibrated
+punctuation boundaries raise it to 610. All baseline-correct turns remain correct.
+The boundary change fixes four scored slot-turns from two earlier incorrect
+copies; two other incorrect copies persist for seven scored slot-turns. Six
+changed held slot-turns have no gold frame and remain unscored. No new wrong
+claims appear in this dev scope. Multi-service RideSharing improves from 0 to
+23/265 exact frames. Initial
 indirect destination requests generally remain unresolved until confirmation.
 This is a separate, scoped command and metric, with unchanged routing.
 [Transfer evidence](tools/dialogue/references/HANDOFF.md) and
-[span-selection evidence and reproduction](tools/dialogue/offers/HANDOFF.md).
+[span-selection evidence](tools/dialogue/offers/HANDOFF.md), and
+[boundary evidence and parent replay](tools/dialogue/boundaries/PARENT.md).
 
 `talk` now answers supported quantity questions with or without an intent
 model, preserves memory priority and recalls calculation requests across

@@ -1,0 +1,1286 @@
+{
+  "split_counts": {
+    "fit": 2532,
+    "calibration": 642
+  },
+  "training_user_turns": 34022,
+  "rules": 2,
+  "evidence": [
+    {
+      "shape": "#D1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 3,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 0,
+      "distinct_values": 3,
+      "speakers": {
+        "USER": 2,
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "#D1",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 0,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "#D3",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "#D3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 11,
+      "calibration_conversations": 4,
+      "mismatches": 0,
+      "fit_rows": 15,
+      "calibration_rows": 6,
+      "distinct_values": 15,
+      "speakers": {
+        "SYSTEM": 14,
+        "USER": 7
+      },
+      "accepted": false
+    },
+    {
+      "shape": "#D3",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 3,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 1,
+      "distinct_values": 4,
+      "speakers": {
+        "SYSTEM": 4
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 5,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 5,
+      "calibration_rows": 0,
+      "distinct_values": 3,
+      "speakers": {
+        "SYSTEM": 5
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 19,
+      "calibration_conversations": 7,
+      "mismatches": 0,
+      "fit_rows": 26,
+      "calibration_rows": 10,
+      "distinct_values": 19,
+      "speakers": {
+        "SYSTEM": 27,
+        "USER": 9
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 9,
+      "calibration_conversations": 2,
+      "mismatches": 0,
+      "fit_rows": 10,
+      "calibration_rows": 3,
+      "distinct_values": 9,
+      "speakers": {
+        "SYSTEM": 12,
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1'A3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1-D1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 1,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1-D1",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1-D3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1-D3",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1.A1",
+      "punctuation": ".",
+      "extension_chars": 1,
+      "fit_conversations": 47,
+      "calibration_conversations": 7,
+      "mismatches": 0,
+      "fit_rows": 73,
+      "calibration_rows": 11,
+      "distinct_values": 18,
+      "speakers": {
+        "USER": 12,
+        "SYSTEM": 72
+      },
+      "accepted": true
+    },
+    {
+      "shape": "A1.A1",
+      "punctuation": ".,",
+      "extension_chars": 1,
+      "fit_conversations": 3,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 2,
+      "distinct_values": 3,
+      "speakers": {
+        "SYSTEM": 5
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1.A1",
+      "punctuation": "..",
+      "extension_chars": 1,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1.A1",
+      "punctuation": ".?",
+      "extension_chars": 1,
+      "fit_conversations": 2,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 1,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1D1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 0,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 2,
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1D1",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 0,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1D3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A1D3",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A2",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 154,
+      "calibration_conversations": 31,
+      "mismatches": 0,
+      "fit_rows": 188,
+      "calibration_rows": 37,
+      "distinct_values": 110,
+      "speakers": {
+        "USER": 35,
+        "SYSTEM": 190
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A2",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 863,
+      "calibration_conversations": 208,
+      "mismatches": 6,
+      "fit_rows": 1292,
+      "calibration_rows": 311,
+      "distinct_values": 232,
+      "speakers": {
+        "USER": 544,
+        "SYSTEM": 1059
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A2",
+      "punctuation": ".,",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A2",
+      "punctuation": "..",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A2",
+      "punctuation": ":",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A2",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 189,
+      "calibration_conversations": 48,
+      "mismatches": 0,
+      "fit_rows": 213,
+      "calibration_rows": 51,
+      "distinct_values": 106,
+      "speakers": {
+        "USER": 105,
+        "SYSTEM": 159
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "!",
+      "extension_chars": 1,
+      "fit_conversations": 16,
+      "calibration_conversations": 4,
+      "mismatches": 10,
+      "fit_rows": 19,
+      "calibration_rows": 4,
+      "distinct_values": 12,
+      "speakers": {
+        "USER": 15,
+        "SYSTEM": 8
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "!,",
+      "extension_chars": 1,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "!.",
+      "extension_chars": 1,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "!?",
+      "extension_chars": 1,
+      "fit_conversations": 3,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": ")",
+      "extension_chars": 1,
+      "fit_conversations": 11,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 11,
+      "calibration_rows": 1,
+      "distinct_values": 7,
+      "speakers": {
+        "SYSTEM": 12
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "),",
+      "extension_chars": 1,
+      "fit_conversations": 4,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 4,
+      "calibration_rows": 1,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 5
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": ").",
+      "extension_chars": 1,
+      "fit_conversations": 12,
+      "calibration_conversations": 6,
+      "mismatches": 0,
+      "fit_rows": 14,
+      "calibration_rows": 6,
+      "distinct_values": 4,
+      "speakers": {
+        "SYSTEM": 18,
+        "USER": 2
+      },
+      "accepted": true
+    },
+    {
+      "shape": "A3",
+      "punctuation": ")?",
+      "extension_chars": 1,
+      "fit_conversations": 5,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 6,
+      "calibration_rows": 0,
+      "distinct_values": 3,
+      "speakers": {
+        "SYSTEM": 6
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 534,
+      "calibration_conversations": 150,
+      "mismatches": 0,
+      "fit_rows": 824,
+      "calibration_rows": 231,
+      "distinct_values": 431,
+      "speakers": {
+        "SYSTEM": 826,
+        "USER": 229
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1980,
+      "calibration_conversations": 511,
+      "mismatches": 5,
+      "fit_rows": 4096,
+      "calibration_rows": 1032,
+      "distinct_values": 1280,
+      "speakers": {
+        "USER": 3463,
+        "SYSTEM": 1665
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "..",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 1,
+      "distinct_values": 3,
+      "speakers": {
+        "SYSTEM": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": ".?",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": ":",
+      "extension_chars": 0,
+      "fit_conversations": 5,
+      "calibration_conversations": 2,
+      "mismatches": 0,
+      "fit_rows": 5,
+      "calibration_rows": 2,
+      "distinct_values": 7,
+      "speakers": {
+        "SYSTEM": 7
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": ";",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 1,
+      "distinct_values": 3,
+      "speakers": {
+        "SYSTEM": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 857,
+      "calibration_conversations": 203,
+      "mismatches": 0,
+      "fit_rows": 1233,
+      "calibration_rows": 302,
+      "distinct_values": 693,
+      "speakers": {
+        "SYSTEM": 871,
+        "USER": 664
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3",
+      "punctuation": "?.",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 1,
+      "distinct_values": 2,
+      "speakers": {
+        "USER": 1,
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3'A1",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3-A2",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3-A3",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 3,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 1,
+      "distinct_values": 3,
+      "speakers": {
+        "USER": 4
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3-A3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 26,
+      "calibration_conversations": 10,
+      "mismatches": 0,
+      "fit_rows": 26,
+      "calibration_rows": 10,
+      "distinct_values": 8,
+      "speakers": {
+        "USER": 34,
+        "SYSTEM": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3-A3",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 4,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 4,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 4
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3.A3",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 3,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 1,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 4
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3.A3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3.A3",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "A3/A3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 14,
+      "calibration_conversations": 3,
+      "mismatches": 0,
+      "fit_rows": 15,
+      "calibration_rows": 5,
+      "distinct_values": 14,
+      "speakers": {
+        "SYSTEM": 8,
+        "USER": 12
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 5,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 5,
+      "calibration_rows": 0,
+      "distinct_values": 5,
+      "speakers": {
+        "SYSTEM": 4,
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1.D1",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 6,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 6,
+      "calibration_rows": 0,
+      "distinct_values": 3,
+      "speakers": {
+        "SYSTEM": 6
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1.D1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 140,
+      "calibration_conversations": 27,
+      "mismatches": 0,
+      "fit_rows": 176,
+      "calibration_rows": 30,
+      "distinct_values": 17,
+      "speakers": {
+        "SYSTEM": 185,
+        "USER": 21
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1.D1",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 13,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 16,
+      "calibration_rows": 1,
+      "distinct_values": 9,
+      "speakers": {
+        "SYSTEM": 16,
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1:D2",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 28,
+      "calibration_conversations": 7,
+      "mismatches": 0,
+      "fit_rows": 30,
+      "calibration_rows": 7,
+      "distinct_values": 20,
+      "speakers": {
+        "USER": 37
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1:D2",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 3,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 3,
+      "calibration_rows": 1,
+      "distinct_values": 4,
+      "speakers": {
+        "USER": 4
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1A1",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1A1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 3,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 4,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 2,
+        "SYSTEM": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1A2",
+      "punctuation": "!",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 1,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1A2",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 150,
+      "calibration_conversations": 50,
+      "mismatches": 0,
+      "fit_rows": 168,
+      "calibration_rows": 55,
+      "distinct_values": 22,
+      "speakers": {
+        "SYSTEM": 187,
+        "USER": 36
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1A2",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 791,
+      "calibration_conversations": 215,
+      "mismatches": 0,
+      "fit_rows": 1142,
+      "calibration_rows": 302,
+      "distinct_values": 34,
+      "speakers": {
+        "SYSTEM": 802,
+        "USER": 642
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1A2",
+      "punctuation": ":",
+      "extension_chars": 0,
+      "fit_conversations": 4,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 4,
+      "calibration_rows": 1,
+      "distinct_values": 3,
+      "speakers": {
+        "SYSTEM": 5
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D1A2",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 457,
+      "calibration_conversations": 143,
+      "mismatches": 0,
+      "fit_rows": 558,
+      "calibration_rows": 173,
+      "distinct_values": 32,
+      "speakers": {
+        "USER": 267,
+        "SYSTEM": 464
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 25,
+      "calibration_conversations": 8,
+      "mismatches": 0,
+      "fit_rows": 27,
+      "calibration_rows": 8,
+      "distinct_values": 21,
+      "speakers": {
+        "USER": 8,
+        "SYSTEM": 27
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 0,
+      "distinct_values": 2,
+      "speakers": {
+        "USER": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2:D2",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 1,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 1,
+      "distinct_values": 3,
+      "speakers": {
+        "USER": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2:D2",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 59,
+      "calibration_conversations": 16,
+      "mismatches": 0,
+      "fit_rows": 60,
+      "calibration_rows": 16,
+      "distinct_values": 38,
+      "speakers": {
+        "USER": 76
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2:D2",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 19,
+      "calibration_conversations": 3,
+      "mismatches": 0,
+      "fit_rows": 19,
+      "calibration_rows": 3,
+      "distinct_values": 17,
+      "speakers": {
+        "USER": 22
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2A2",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 66,
+      "calibration_conversations": 9,
+      "mismatches": 0,
+      "fit_rows": 70,
+      "calibration_rows": 10,
+      "distinct_values": 12,
+      "speakers": {
+        "SYSTEM": 64,
+        "USER": 16
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2A2",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 492,
+      "calibration_conversations": 119,
+      "mismatches": 0,
+      "fit_rows": 719,
+      "calibration_rows": 175,
+      "distinct_values": 17,
+      "speakers": {
+        "USER": 470,
+        "SYSTEM": 424
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2A2",
+      "punctuation": "..",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2A2",
+      "punctuation": ":",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 0,
+      "distinct_values": 2,
+      "speakers": {
+        "SYSTEM": 2
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2A2",
+      "punctuation": ";",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D2A2",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 285,
+      "calibration_conversations": 61,
+      "mismatches": 0,
+      "fit_rows": 335,
+      "calibration_rows": 68,
+      "distinct_values": 18,
+      "speakers": {
+        "USER": 180,
+        "SYSTEM": 223
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D3",
+      "punctuation": ",",
+      "extension_chars": 0,
+      "fit_conversations": 2,
+      "calibration_conversations": 2,
+      "mismatches": 0,
+      "fit_rows": 2,
+      "calibration_rows": 2,
+      "distinct_values": 4,
+      "speakers": {
+        "SYSTEM": 3,
+        "USER": 1
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D3",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 59,
+      "calibration_conversations": 7,
+      "mismatches": 0,
+      "fit_rows": 62,
+      "calibration_rows": 9,
+      "distinct_values": 33,
+      "speakers": {
+        "SYSTEM": 14,
+        "USER": 57
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D3",
+      "punctuation": "?",
+      "extension_chars": 0,
+      "fit_conversations": 15,
+      "calibration_conversations": 2,
+      "mismatches": 0,
+      "fit_rows": 17,
+      "calibration_rows": 3,
+      "distinct_values": 12,
+      "speakers": {
+        "SYSTEM": 17,
+        "USER": 3
+      },
+      "accepted": false
+    },
+    {
+      "shape": "D3A1",
+      "punctuation": ".",
+      "extension_chars": 0,
+      "fit_conversations": 1,
+      "calibration_conversations": 0,
+      "mismatches": 0,
+      "fit_rows": 1,
+      "calibration_rows": 0,
+      "distinct_values": 1,
+      "speakers": {
+        "SYSTEM": 1
+      },
+      "accepted": false
+    }
+  ]
+}

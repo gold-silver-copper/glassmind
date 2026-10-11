@@ -27,7 +27,8 @@ PR11 merged: head57eb656ded41d452bf5d8199cfcf182a73951162, merge
 7f847d9ca372d64d9ab82c6815f1336d1594172c; CI38112513112 passed1m25s.
 Linearwords PR12 merged: head712d3a5f1ecf1bae20eca26cfd1211ff6184a72a,
 mergefb47a32ce86493162a338e7a768f7036a6f1cb49; CI38112788701 passed1m9s.
-All gates for PR11/12 are complete. Answerfiles worker is active.
+All gates for PR11/12 are complete. Answerfiles and boundaries workers are complete;
+parent integration checks described below are in progress.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
 `docs/results/tracks.html` is regenerated at each batch. Historical reports
@@ -314,7 +315,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:47,162,504 including cached input; parent and
+Known completed worker tokens:51,038,797 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -325,45 +326,91 @@ MathQA and PyArrow: `WORK/quantities-run/tmp/{mathqa,quantities-deps}`.
 Do not delete retained data/models under `~/.cache/glassmind/{data,models}`.
 The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
-## Active coding follow-up
+## Current coding and dialogue integrations
 
-**Answerfiles worker active**, launcherPID2355484, scope
-`glassmind-continuous-answerfiles.scope`; worktreeWORK/answerfiles at712d3a5,
-runWORK/answerfiles-run. Live scope verified8GiB/0swap; GPT6AstrafastChatGPT,
-no API keys, no extra workers. Owns CLI act path/newhelper and only necessary
-reusable typed query interfaces; no quantity/facts/conversation/scorer changes.
+Both answerfiles and boundaries workers COMPLETE, scopes inactive, temporary
+login symlinks removed. Two new model workers are active below. Original submissions archived
+with SHA256 manifests at WORK/{answerfiles,boundaries}-run/submitted/.
+All archived file hashes verified against each completed worktree; both worktrees removed. Both used the
+required GPT-6 Astra fast through ChatGPT; no API-key authentication.
 
-Audit corrected the initial "explanation" hypothesis: many of42 refused dev
-explain-kind cases are metadata questions PLUS file-output instructions, not
-function-purpose descriptions. Two hurried count cases already answer correct
-metadata to stdout but create no requested file. The product gap is general
-fully consumed query/output composition, typed plain-value serialization and
-safe requested output. No hardcodedANSWER/path/task names, suffix ignoring,
-mutating repair/rename through query route or output on unsupported/ambiguous
-answers. Scope must reject unsafe paths, symlink escape and accidental existing
-file overwrites, preserve reply-file transcript and avoid partial writes.
-Worker must preregister after local code audit; no acceptance claim yet.
+**Metadata answer files:** committed source
+82f2a2e917acbf97958122a0a7c5ef01fe4a7eee, unpublished pending full dev.
+Fully consumed typed count/name question plus explicit relative output directive;
+plain number/name serialization, directory-descriptor no-symlink traversal,
+complete fsynced staging and atomic no-clobber publication. No field-type export,
+unknown/ambiguous actions refuse. Existing --reply-file transcript preserved.
+Does not promise a sandbox against concurrent hostile directory renaming.
+Parent corrected dispatcher regression for ordinary functions named write/put/save
+and added --explain query, resolved reply and fired rules while keeping exported
+file plain. Original worker source is retained separately from parent fixes.
 
-Provided THREE source-only dev workspaces, SEVEN original requests:
-callers-of-apply-damage2,command-variant-count2,items-field-type3. Two hurried
-request strings weren't present in result transcripts and were omitted, not
-inferred. Inputs derive only from already-evaluatedDEV outputs and production
-workspace Cargo/src; no task.toml/solution/hidden tests/generators opened.
-Inline test markers absent in copiedproduction. Exact sourcehashes and no-upstream-
-LICENSE disclosure in run/dev-inputs/provenance.json. Firstfixed3terse thenall7;
-independent meaningful I/O/source/semantic fixtures required. Frozen baseline
-CLI in run/tmp/glassmind-baseline, engine2ce9230 plusverifiedscalar687f275.
-Parent must review then run full765 coding before publishing candidate.
+Parent fixed sample2/3 and full2/7 exports, remaining requests refuse; all27
+worker I/O/semantic fixtures and8 new dispatch/explanation checks pass. EnglishRust
+35 tests +8CLI tests, fmt/all-target clippy/release/strict4/4smoke pass. Reports:
+docs/coding-answerfiles-evidence/integrated/. No full benchmark gain claimed yet.
+Full765 RustBench dev is RUNNING, execsession72237, exact frozen binary SHA
+ a4b625c0e9c06a65d5226236fe6154e1003a50c4a643a5b2e7acd9a5bf69a2b9
+at WORK/coordinator/answerfiles-full/glassmind. source.json/run.log there.
+Compare every(task,style) to WORK/coordinator/repairs2-full/results.jsonl baseline
+166pass596refused3fail, unchanged benchmark f79e71a. Reuse live handle; an
+observation timeout is not permission to restart.
+
+**Dialogue boundary restoration:** committed source38ef238, unpublished pending
+parent full replay (now passed). Value-free shape/punctuation rules fit on same3174TRAIN
+conversations, deterministic2532fit/642calibration split; all noncategorical TRAIN
+schema slots and USER+SYSTEM gold spans, scope amendment disclosed before dev.
+Two accepted rules require >=5fit and>=3calibration conversations, zero endpoint
+mismatches. Only extends an existing reference copy to an exact contiguous slice
+of the latest matching source occurrence; source classifiers/states unchanged.
+Version2 requires optional boundary submodel; legacy version1 behavior preserved.
+Gold TRAIN endpoints are not frozen-prediction calibration or probabilities.
+
+Worker full1119USERturns609->610right,460->459wrong,50refused; exactframes712->716
+of1218. Two inherited copy errors fixed across4scoredslotturns,6other changes are
+unscored held states. Remaining2inherited events cause7wrongslotturns. No freshness
+or source-state correction claim. Worker candidate model SHA
+fac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88;
+fullprediction SHA8887d88afbf18462d10a70574be030df8a6d33071a5c201fa84dc1f99efacc8d.
+Parent workspace gate passed (session46163 COMPLETE). Parent independent training,
+8tests, sample/full/audit, frozen baseline, legacy byte replay and provenance
+verification COMPLETE execsession56221, all passed. Independent model, boundary
+weights and full prediction bytes exactly match the worker. Parent evidence in
+tools/dialogue/boundaries/integrated/. WORK/coordinator/boundaries-check/{replay.sh,
+replay.log,boundaries/}. Script skips fmt/clippy/build already passed by workspace
+check; reproduction default SGD_ROOT corrected to retained persistent dataset.
+No new downloads/dependencies/heldout access. Originalreports in
+tools/dialogue/boundaries/reports; parent results confirmed.
 
 ## Immediate next actions
 
-1. PR11 and PR12 merged after green exact-head CI; no required publishing or
-   evaluation remains for either. Do not re-run their completed gates.
-2. Review answerfiles when complete. Preserve raw submission before parent edits,
-   verify output correctness and I/O boundaries, then sample/full7/local fixtures
-   and full765 RustBench dev baseline166pass596refused3fail. No benchmark gain
-   may be claimed from local fixtures alone. Keep frozen binary/reuse live handle.
-3. Broader gaps remain MathQA language22/4475, finite validation-seeded facts,
-   genuine reading semantics beyond byte likelihood and general coding actions.
-4. Goal active until stopped. Stop only owned jobs on pause/stop and preserve
-   artifacts; old dirty loop remains stopped. One owned modelworker above is live.
+1. Finish existing coding72237; dialogue56221 is complete. Inspect coding changes
+   and independent hashes, no restarts on observation timeout.
+2. If gates pass, update shared scoreboard/README with exact evaluated commits,
+   publish coherent PR and merge only after green CI with exact-head match.
+3. Completed archive verification and removal of both worktrees; retain all run data.
+4. Next gaps: broader metadata field-type answers, dialogue source freshness and
+   contiguous decoded spans, MathQA language22/4475, finite validation-seeded facts,
+   reading semantics beyond byte likelihood. Keep coding/conversation progressing.
+5. Goal remains active. Two owned model workers are live below. Old dirty improvement loop stopped.
+
+## Next bounded workers
+
+- **Metatypes ACTIVE**: launcherPID2445256, scopeglassmind-continuous-metatypes.scope,
+  worktreeWORK/metatypes at38ef238, runWORK/metatypes-run. Owns reusable typed
+  declared-field-type semantics plus minimal CLI/export integration and reports.
+  Same three production-only dev workspaces/seven requests, frozen baseline
+  answerfiles binarya4b625c0. No new hidden/task/solution data. Require genuine
+  uniquely resolved declared syntax, no alias-resolution claim, count/name/safety/
+  ordinary-query regression preservation. Parent full765 required after integration.
+- **Freshness ACTIVE**: launcherPID2455150, scopeglassmind-continuous-freshness.scope,
+  worktreeWORK/freshness at38ef238, runWORK/freshness-run. Owns dialogue only and new
+  freshness reports. Frozen independently verified boundary model/full predictions
+  copied into baseline/. Baseline610right459wrong50refused,716frames, remaining
+  inherited2events7wrongslotturns. Investigate TRAIN evidence for one optional
+  source-freshness/contiguous-span improvement; preserve baseline correct, audit
+  all changed claims and unscored heldstates; reject if acceptance fails.
+
+Both scopes verified8GiB/0swap, forced GPT-6 Astra fast/ChatGPT-only, noAPIenv.
+Login status confirmed ChatGPT before launch. Each bounded1800sec, no subworkers.
+Temporary login symlinks remain until each exits. Keep all workers within4cap.

@@ -269,6 +269,32 @@
         "reasoning_output_tokens": 4513
       },
       "source": "Shared affine constraints; worker24/4475, parent rejected signed English difference semantics pending correction/replay"
+    },
+    {
+      "track": "answerfiles-continuous",
+      "started_unix": 1791694265.8208685,
+      "finished_unix": 1791694647.6692572,
+      "usage": {
+        "input_tokens": 2354822,
+        "cached_input_tokens": 2265216,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 21607,
+        "reasoning_output_tokens": 5980
+      },
+      "source": "Typed query output:2/7dev and27fixtures; parent fixes unquoted verb-name regression and adds explain trace before full765 gate"
+    },
+    {
+      "track": "dialogue-boundaries-continuous",
+      "started_unix": 1791694391.9183788,
+      "finished_unix": 1791694739.7546473,
+      "usage": {
+        "input_tokens": 1477301,
+        "cached_input_tokens": 1394944,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22563,
+        "reasoning_output_tokens": 6297
+      },
+      "source": "Value-free TRAIN span boundaries;609to610joint,712to716frames;4wrong copiedslotturns fixed,7remain; parent independentreplay identical; all gates pass"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
