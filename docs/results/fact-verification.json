@@ -1,0 +1,90 @@
+{
+  "source_commit": "e6a6a4e72d579db28ebf2b7273403e1ce5cd80cf",
+  "main_binary_sha256": "d5f77ece135204e8b4839c01b2e69015b16164072274899125fe58c5fedbae89",
+  "scope": "Explicit bounded verification against directed local snapshot edges; not a QA benchmark gain",
+  "independent_original_expectations": {
+    "matched": 47,
+    "total": 48,
+    "positive_witnesses_matched": 18,
+    "positive_total": 18,
+    "remaining_mismatch": "compound subject expected Unknown, receives Refused under reserved conjunction syntax"
+  },
+  "main_integration": {
+    "native_single_line_cases_identical": 47,
+    "multiline_library_only": 1,
+    "session_checks": 18
+  },
+  "ordinary_full_qa": {
+    "total": 2821,
+    "right": 256,
+    "refused": 2545,
+    "wrong": 20,
+    "joint_right": 252,
+    "joint_wrong": 24,
+    "standalone_talk_and_default_bytes_identical": true
+  },
+  "new_external_download_bytes": 0,
+  "authored_fixture_files": [
+    {
+      "path": "tools/facts/verification/graph.json",
+      "bytes": 3721,
+      "sha256": "479368a230dc7a7b0299f71c6c9d306d102b77a3e405d8bb17dc290e30730c7b"
+    },
+    {
+      "path": "tools/facts/verification/cases.json",
+      "bytes": 15443,
+      "sha256": "efce129df0dbb2eb431479dfbf21cd0e6a20b1d316de67aca4c293094e637fd7"
+    },
+    {
+      "path": "tools/facts/verification/supplemental.json",
+      "bytes": 974,
+      "sha256": "d7e23d96f017fa6f0d8f5ecfe5fe6bfcd1362403e81d19fb01510d41e035ebca"
+    },
+    {
+      "path": "tools/facts/verification/cases-alias-v2.json",
+      "bytes": 15503,
+      "sha256": "39ed44e2db753285206edcaa836b67392e54188533c93ab28d3e88ce87a9ee3c"
+    },
+    {
+      "path": "tools/facts/verification/alias-ambiguity-contrasts.json",
+      "bytes": 3685,
+      "sha256": "b566c8887c2b28a8c28724c26f336913498fa7352d274977ec9c273da65e0f8a"
+    },
+    {
+      "path": "tools/facts/verification/parent/store.json",
+      "bytes": 3560,
+      "sha256": "7668a26ac00b11939fec576ca8d1755cc742238dd0ca11152c1c7e9717f1f66c"
+    },
+    {
+      "path": "tools/facts/verification/parent/cases.json",
+      "bytes": 10063,
+      "sha256": "862ee76f8cdeffd30f59221af74b476129fbac3cc00313945877142d782fa27f"
+    },
+    {
+      "path": "tools/facts/verification/parent/supplemental/store.json",
+      "bytes": 1312,
+      "sha256": "4d6525cbbdbbb2fc1f1e076ad0afdd226669b782f36afa4b9648b969be95d2ef"
+    },
+    {
+      "path": "tools/facts/verification/parent/supplemental/cases.json",
+      "bytes": 1328,
+      "sha256": "e181cd4d699846a6a2a03104b61cf22db2de395439367b5cfa35c1cf1cbe5dff"
+    }
+  ],
+  "authored_fixture_bytes_including_versioned_copies": 55589,
+  "license": "MIT OR Apache-2.0 for authored fixtures; Wikidata CC0-1.0; SimpleQuestions CC-BY-3.0",
+  "original_worker_cli_contracts": {
+    "matched": 69,
+    "total": 71,
+    "changes": "two original strict-delimiter classifications intentionally differ; old fixtures unchanged, cases-alias-v2 explicit"
+  },
+  "checks": {
+    "existing_facts_tests": 6,
+    "current_contract_facts_tests": 4,
+    "cli_tests": 21,
+    "fixture_smoke": 4,
+    "workspace_fmt_clippy_release": true
+  },
+  "combined_release_sha256": "30c25729e302578be2091071572201b389ebe72df98ba059ed748b0fe491dbb1",
+  "combined_verification_cases_and_session_invariants_unchanged": true
+}

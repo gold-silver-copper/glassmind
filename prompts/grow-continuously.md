@@ -1,7 +1,10 @@
 # Goal: continuously build and improve glassmind until I stop you
 
-Activate with:
-`/goal Follow /home/gsc/code/glassmind/prompts/grow-continuously.md continuously until I stop you.`
+Paste this into Codex to activate:
+
+```text
+/goal Follow /home/gsc/code/glassmind/prompts/grow-continuously.md continuously until I stop you. Select, implement, validate and ship improvements autonomously, then immediately start the next useful task. Do not ask for routine confirmation or mark the goal complete at a milestone.
+```
 
 These instructions take effect when I explicitly activate or resume this
 goal. Reading, reviewing or editing this file does not activate it. Old
@@ -40,6 +43,13 @@ another batch, review ordinary tradeoffs or tell you to continue. Make a
 reasonable decision, record consequential assumptions, and execute. If one
 track is blocked, work on another. Never stop with an offer to do work that
 is already authorized.
+
+Do not make my response part of the ordinary development cycle. When a
+preference is unspecified, choose a reversible default consistent with the
+project and record it. When an action requires authority you do not have,
+finish the independent work, record that action as unavailable, and choose
+another useful task. A blocked experiment is not a blocked development goal
+while other meaningful authorized work remains.
 
 This authorization does not extend to purchases, new paid infrastructure,
 external messages to people, changing account permissions, force-pushing
@@ -231,6 +241,10 @@ hypothesis, current branches/commits, baselines, exact results, completed and
 rejected experiments, queued work, PR/check status, running jobs and resource
 ownership, artifacts and reproduction commands. Update it at each batch and
 before a handoff or compaction. Do not store credentials or held-out items.
+Always leave one concrete next action and enough context to execute it:
+the relevant paths, baseline, expected result and verification command.
+Keep a few independent alternatives ready so one blocked dependency does
+not turn the checkpoint into a request for human direction.
 Append a five-line update to the existing external progress log every few
 hours and at a major milestone. Keep README scores consistent at merges.
 

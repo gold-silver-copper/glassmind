@@ -84,3 +84,12 @@ Their artifact hashes are verified; parent main/talk integration and its regress
 checks remain unperformed because this candidate has not passed its acceptance
 review. Do not describe the new operation as shipped or claim benchmark accuracy
 improvement. Keep the owned inactive worktree for the representation revision.
+
+## Combined release confirmation
+
+After integrating the independently full-DEV-tested coding revision, exact main
+release30c25729e302578be2091071572201b389ebe72df98ba059ed748b0fe491dbb1
+reproduces the47 single-line verification cases and18 session invariants unchanged.
+Combined24CLI+40English tests and workspace fmt/clippy/release/strict4smoke pass.
+Ordinary full2821 outputs were evaluated on the facts-only main above; subsequent
+coding.rs changes do not enter the talk/facts paths. No redundant full QA rerun.

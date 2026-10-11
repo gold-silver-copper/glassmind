@@ -44,3 +44,11 @@ and implicit failure reports. Original native rows54,55,57 still edit under thei
 unchanged negative labels. Their original outcomes remain visible; no all68-pass or
 universal no-unrequested-edit claim is made. An earlier strict positive whitelist
 lost127/180 successes and was rejected; those artifacts remain separate.
+
+Combined release30c25729e302578be2091071572201b389ebe72df98ba059ed748b0fe491dbb1
+replays both native suites with the same16/16 positive repairs, zero unrequested
+edits/negative previews, all10 typed status meanings and all initialask--apply
+unchanged. Combined24CLI+40English tests, workspace fmt/clippy/release and strict4
+smoke pass. The facts interface also reproduces its47 single-line cases and18
+session invariants on this exact combined binary. Integration reports are in
+parent/integrated; full765 execution remains the frozen coding-only binary above.

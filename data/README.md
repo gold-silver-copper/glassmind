@@ -526,3 +526,20 @@ parser fit; no DEV tuning or probability calibration. Raw models/data stay under
 `~/.cache/glassmind/continuous-20261010/udsyntax-{source,run}`.
 [Provenance and license notice](../tools/reading/syntax/NOTICE.md),
 [independent audit](../tools/reading/syntax/PARENT.md).
+
+### Explicit snapshot relationship verification
+
+The verification grammar and authored graph fixtures live in
+[`tools/facts/verification`](../tools/facts/verification/PARENT.md). No new external
+records or learned models were acquired. The existing500-entity Wikidata snapshot
+(CC0-1.0) and SimpleQuestions revision df69267 (CC-BY-3.0) retain their original
+scope and hashes. The feature checks directed edge membership and does not retain
+statement dates, qualifiers or ranks.
+
+Nine authored graph/case files, including explicitly versioned copies, total55,589
+bytes under the repository MIT OR Apache-2.0 license. Individual hashes and byte
+counts are in [`docs/results/fact-verification.json`](../docs/results/fact-verification.json).
+Original worker and independent case files remain unchanged; the grammar revision
+has separate expectations and preserves the original disagreements in its report.
+These fixtures measure finite local behavior, not independent world knowledge or
+ordinary QA benchmark improvement.
