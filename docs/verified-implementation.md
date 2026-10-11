@@ -13,7 +13,9 @@ glassmind do ./my-library 'sum_even is a stub, implement it'
 The function signature supplies candidate operations over integer slices/Vecs
 and strings: filtering, reversal, sums, counts, boolean reductions, character
 sequences and word sequences with concatenation or single-space joining.
-Word sequences can keep their order or reverse it. The request selects the target. Existing tests
+Word sequences can keep their order or reverse it. String candidates can also
+extract word initials, optionally keep alphabetic initials, and apply Unicode
+upper/lower case conversion. The request selects the target. Existing tests
 verify candidates; doc comments and assertions do not choose an algorithm.
 The result reports test verification and links to the saved evidence.
 
@@ -34,10 +36,11 @@ again on the live package; failure restores the original files. Tests and other
 source bytes remain intact. This establishes the recorded tests' behavior,
 without proving all English requirements or behavior on untested inputs.
 
-The full 765-request coding DEV run reaches **220 passes, 545 refusals and zero
-failures**, retaining all 218 previous passes. The two new gains are styles of
-the reverse-words task also present in the supplied TRAIN material. Ten new
-authored checks cover both joining behaviors, Unicode, whitespace, existing
-string operations and ambiguity; all 66 prior native checks remain passing.
-These are separate from the benchmark score.
-[Source, validation and limitations](../tools/coding-word-join/PARENT.md).
+The full 765-request coding DEV run reaches **221 passes, 544 refusals and zero
+failures**, retaining all 220 previous passes. The new gain is the initials task's
+terse request, also present in the supplied TRAIN material. Twelve authored
+behaviors cover word-initial extraction, Unicode filtering/case conversion and
+word order; a weak case correctly refuses four passing candidates. All 76
+existing native checks remain passing. These checks are separate from the
+benchmark score.
+[Source, validation and limitations](../tools/coding-word-initials/PARENT.md).

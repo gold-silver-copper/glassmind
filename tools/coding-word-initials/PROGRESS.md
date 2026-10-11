@@ -1,4 +1,4 @@
-# Word-initial compositions: full DEV running
+# Word-initial compositions: full DEV passed, integration next
 
 Root-owned WORK/word-initials, branchcontinuous/word-initials.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
@@ -39,3 +39,8 @@ Gate:retainall220passes,>=221passes,0fail. No runtimeedits whileevaluationruns.
 Ifpass:review/recordexactresults, integrate sources centrally withhashidentity,
 update README/docs/results, requiredpublishedchecks, PRandmerge exactreviewedhead.
 No fullDEV result or shippingclaimyet. Preservefailedgates unchanged.
+
+FullDEV73728 COMPLETE exit0:221passes544refusals0failures,all220oldpassesretained.
+Onlytransitioninitials/terse,alsoTRAIN. Frozencompare-full.py gatepasses.
+Runtime andcandidate unchanged; PARENT.md carriesfullreview. Nextintegrateexact
+sources, recordscore,publish andmergeonlyexactreviewedgreenPRhead.
