@@ -1,0 +1,71 @@
+{
+  "binary_sha256": "8da34939a7de111626740405f0d99a57c9ce5586586d2abe07151dd2e3fb388f",
+  "cases": [
+    {
+      "case": "rename-item-struct-terse",
+      "prompt": "Rename the struct `Item` to `StockItem` across the whole crate.",
+      "changed": [],
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "check_stderr": "Running as unit: run-p2018073-i94268420.scope; invocation ID: 7a8780dfd8a3442ab2bd8a4ff8457e9d\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n"
+    },
+    {
+      "case": "rename-item-struct-chatty",
+      "prompt": "Hi there, `Item` is getting too generic a name in this inventory code now that we're adding other kinds of items. Could you rename the struct to `StockItem` everywhere: the definition, its impl, the warehouse and restock modules, and main? Nothing else should change.",
+      "changed": [],
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I can't follow the sentence from the marked spot.\n  Hi \u25aethere, `Item` is getting too generic a name in this inventory code now that we're adding other kinds of items. Could you rename the struct to `StockItem` everywhere: the definition, its impl, the warehouse and restock modules, and main? Nothing else should change.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "check_stderr": "Running as unit: run-p2018133-i94223593.scope; invocation ID: fead1d98098a405f86172a23a69739a8\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n"
+    },
+    {
+      "case": "rename-item-struct-hurried",
+      "prompt": "rename Item struct to StockItem, everywhere its used (all modules + main)",
+      "changed": [],
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I can't follow the sentence from the marked spot.\n  rename Item struct to StockItem, everywhere its used (all modules \u25ae+ main)\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "check_stderr": "Running as unit: run-p2018190-i94215681.scope; invocation ID: 250c594333b9430c9ee3b7bcf2e03412\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n"
+    },
+    {
+      "case": "rename-done-variant-terse",
+      "prompt": "Rename the variant `OrderStatus::Done` to `OrderStatus::Delivered` everywhere.",
+      "changed": [],
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "check_stderr": "Running as unit: run-p2018257-i94227229.scope; invocation ID: 5b084be36ad9459d9786a3e46f6cf509\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n"
+    },
+    {
+      "case": "rename-done-variant-chatty",
+      "prompt": "Hi! Our support team finds `OrderStatus::Done` confusing, since an order can be 'done' on our side long before the customer has it. Could you rename that variant to `Delivered`? It's matched and constructed in a handful of places across the crate, so please update all of them. Labels and behaviour stay as they are.",
+      "changed": [],
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I take that to mean: fix the tests I don't know how to fix the tests.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "check_stderr": "Running as unit: run-p2018477-i94215688.scope; invocation ID: ce7189dad735440d836acad00864431e\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n"
+    },
+    {
+      "case": "rename-done-variant-hurried",
+      "prompt": "rename OrderStatus::Done to Delivered, all matches/uses",
+      "changed": [],
+      "before_exit": 0,
+      "after_exit": 0,
+      "reply": "I understand, but I can't do that here.\n",
+      "stderr": "",
+      "edit_exit": 0,
+      "check_stderr": "Running as unit: run-p2018529-i94215690.scope; invocation ID: 4f79e82485854f6fb594ad5cec8567f9\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s\n"
+    }
+  ]
+}

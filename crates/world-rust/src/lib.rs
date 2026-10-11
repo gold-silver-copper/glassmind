@@ -22,6 +22,7 @@ use serde::{Deserialize, Serialize};
 
 pub mod checks;
 pub mod index;
+mod rename_package;
 mod rename_types;
 mod rename_variants;
 mod slips;
@@ -796,6 +797,10 @@ impl World<Rust> for RustWorld {
                 },
                 fired,
             )?;
+            // A package graph cannot account for references in another source.
+            if self.sources.len() != 1 {
+                return Err(Unsupported);
+            }
             let source = self
                 .sources
                 .iter()

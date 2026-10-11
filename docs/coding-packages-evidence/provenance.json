@@ -1,0 +1,210 @@
+{
+  "base": "fcb81dbf17273dcca4d45f7a8df4d3428fb217a0",
+  "new_dataset_downloads": false,
+  "independent_fixtures": {
+    "version": "fixed15-v1",
+    "license": "MIT OR Apache-2.0",
+    "cases": 15,
+    "before_source_bytes": 2486,
+    "before_source_sha256": "234c32c2429b3362c9ace5a36711715d92ac10efee806b1e68349a095cfbddf8",
+    "generated_input_bytes": 3816,
+    "harness_bytes": 7731,
+    "harness_sha256": "aa3d7e28a8aee5bbca2d33d69f1e2e53f1ae75e648a9b9478d465ef6b3a8225c"
+  },
+  "supplied_workspace_sources_and_prompts": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-item-struct/Cargo.toml",
+      "bytes": 130,
+      "sha256": "f147ff636c8f578b5bcd672b31379d21a5632b5cd4a1a886dff8e85b6d609bd4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-item-struct/src/item.rs",
+      "bytes": 511,
+      "sha256": "e1d480d090f2bf78da7c87e9f927159b5c14e7bd135eae46002a46412cc2413e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-item-struct/src/lib.rs",
+      "bytes": 135,
+      "sha256": "a58e94d14fc9b62ad8fc42b9fde75b431c44e87087a05d4982bda82fa6ca517c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-item-struct/src/main.rs",
+      "bytes": 514,
+      "sha256": "eba39d5835fe49bb652c8eb7ec71f41437acec667af5dbe13bf7d140d755452a"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-item-struct/src/restock.rs",
+      "bytes": 723,
+      "sha256": "3fa561f5655c1d8f2e129744a895494d5f571a1e59e45c37e30e2d8406a65bf9"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-item-struct/src/warehouse.rs",
+      "bytes": 701,
+      "sha256": "5a81a842066020ca13e4ffbe16c5df3b3a6b125245e3761da8c59935396014a4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-item-struct-prompts.json",
+      "bytes": 454,
+      "sha256": "8e0c31f712758aff5b2476bcb4f9a79cd872dcaa300a411b1928d48496e47f99"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-done-variant/Cargo.toml",
+      "bytes": 130,
+      "sha256": "f147ff636c8f578b5bcd672b31379d21a5632b5cd4a1a886dff8e85b6d609bd4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-done-variant/src/lib.rs",
+      "bytes": 143,
+      "sha256": "c9c9eaa2fd0d07c4be3bebd38755ac22b47ce224ab53ff40684366f25df090e5"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-done-variant/src/main.rs",
+      "bytes": 514,
+      "sha256": "7f549f0dac7ab1eda478fa591b3c3524ec54887a9046e913fb9ff1cddfeb18c8"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-done-variant/src/order.rs",
+      "bytes": 1124,
+      "sha256": "230e0b6c119812fdc8a87af4d6ad913c9e7c8a3f0a422490e8f59900d8006508"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-done-variant/src/status.rs",
+      "bytes": 876,
+      "sha256": "dccee5e6a805833ea2cd49c0c624d19580a9f43c67d95db0a41cc6a621c23ea6"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-done-variant/src/tracking.rs",
+      "bytes": 477,
+      "sha256": "7e452171f176ec5d6be80d8ea08040e8a16fd7a87442b3bc8d4a253b4230f693"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/packages-run/dev-inputs/rename-done-variant-prompts.json",
+      "bytes": 500,
+      "sha256": "6507827c7be2814d8215ab339284cc273fc76fde59a5b53708b3ab22038af1ef"
+    }
+  ],
+  "supplied_bytes": 6932,
+  "supplied_upstream_license": "not supplied",
+  "new_lock_packages": [
+    {
+      "name": "equivalent",
+      "version": "1.0.2",
+      "registry_checksum": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "Apache-2.0 OR MIT",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/equivalent-1.0.2.crate",
+        "bytes": 7419,
+        "sha256": "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f"
+      }
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "registry_checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT OR Apache-2.0",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/hashbrown-0.17.1.crate",
+        "bytes": 155512,
+        "sha256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a"
+      }
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.2",
+      "registry_checksum": "cc4e190f5d26ca7051642629da2c52fc03bde85a03197c99408dcd291734c855",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "Apache-2.0 OR MIT",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/indexmap-2.14.2.crate",
+        "bytes": 103014,
+        "sha256": "cc4e190f5d26ca7051642629da2c52fc03bde85a03197c99408dcd291734c855"
+      }
+    },
+    {
+      "name": "serde_spanned",
+      "version": "1.1.2",
+      "registry_checksum": "4e7523beb55eece201a2356bee0bbca0d1ab466c14c07703b2e0ee6d42cb0c2c",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT OR Apache-2.0",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/serde_spanned-1.1.2.crate",
+        "bytes": 11124,
+        "sha256": "4e7523beb55eece201a2356bee0bbca0d1ab466c14c07703b2e0ee6d42cb0c2c"
+      }
+    },
+    {
+      "name": "toml",
+      "version": "0.9.12+spec-1.1.0",
+      "registry_checksum": "cf92845e79fc2e2def6a5d828f0801e29a2f8acc037becc5ab08595c7d5e9863",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT OR Apache-2.0",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/toml-0.9.12+spec-1.1.0.crate",
+        "bytes": 56485,
+        "sha256": "cf92845e79fc2e2def6a5d828f0801e29a2f8acc037becc5ab08595c7d5e9863"
+      }
+    },
+    {
+      "name": "toml_datetime",
+      "version": "0.7.5+spec-1.1.0",
+      "registry_checksum": "92e1cfed4a3038bc5a127e35a2d360f145e1f4b971b551a2ba5fd7aedf7e1347",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT OR Apache-2.0",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/toml_datetime-0.7.5+spec-1.1.0.crate",
+        "bytes": 17975,
+        "sha256": "92e1cfed4a3038bc5a127e35a2d360f145e1f4b971b551a2ba5fd7aedf7e1347"
+      }
+    },
+    {
+      "name": "toml_parser",
+      "version": "1.1.5+spec-1.1.0",
+      "registry_checksum": "baa693a8032d7e1cada7d0041e96126df243179ff061456783ac7f12bda4744c",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT OR Apache-2.0",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/toml_parser-1.1.5+spec-1.1.0.crate",
+        "bytes": 36159,
+        "sha256": "baa693a8032d7e1cada7d0041e96126df243179ff061456783ac7f12bda4744c"
+      }
+    },
+    {
+      "name": "toml_writer",
+      "version": "1.1.3+spec-1.1.0",
+      "registry_checksum": "06bdbd8cfc056b8d2e2e85f29b56a3bdbecb527cef81eb39e3e7b98af4652770",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT OR Apache-2.0",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/toml_writer-1.1.3+spec-1.1.0.crate",
+        "bytes": 19114,
+        "sha256": "06bdbd8cfc056b8d2e2e85f29b56a3bdbecb527cef81eb39e3e7b98af4652770"
+      }
+    },
+    {
+      "name": "winnow",
+      "version": "0.7.15",
+      "registry_checksum": "df79d97927682d2fd8adb29682d1140b343be4ac0f08fd68b7765d9c059d3945",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/winnow-0.7.15.crate",
+        "bytes": 187092,
+        "sha256": "df79d97927682d2fd8adb29682d1140b343be4ac0f08fd68b7765d9c059d3945"
+      }
+    },
+    {
+      "name": "winnow",
+      "version": "1.0.4",
+      "registry_checksum": "23b97319f7b8343df12cc98938e5c3eb436064524c8d2b4e30a1d3a36eecdf81",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "license": "MIT",
+      "archive": {
+        "path": "/home/gsc/.cargo/registry/cache/index.crates.io-1949cf8c6b5b557f/winnow-1.0.4.crate",
+        "bytes": 188513,
+        "sha256": "23b97319f7b8343df12cc98938e5c3eb436064524c8d2b4e30a1d3a36eecdf81"
+      }
+    }
+  ]
+}
