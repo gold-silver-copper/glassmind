@@ -6,6 +6,30 @@ Known completed-worker tokens:203193886, cached input counted once; parent and
 interrupted usage excluded. All quantity teachers are terminal; no model workers
 are running. Their owned auth symlinks were removed after verified archival.
 
+## Current handoff: full claims integrated; graph teacher running
+
+Fullclaims storage/source validation COMPLETE. Worktreecontinuous/full-claims
+headd88d72e merged centrallya489c02. All25facts/lockfiles byte-identical. Required
+centralworkspace36773 COMPLETE exit0:fmt/alltargetclippy/release/strict4smoke pass.
+Native62,772,387,840bytes SHAfc04ca4ac6f30468f619395a310181e23ebb45a44f776b81bb74178b357f0172.
+Audit77590 COMPLETE:8009rawsamples,854aliases andindependentcounts agree;
+combinedreference+audit671.175s. Witness64463 COMPLETE54.040s:157cases,
+49ordinaryanswers108refusals79sets24truncated;1setVMbudgeterror for8073242matches.
+All successful results matchcompleteprojection scans. Originallimitsunchanged.
+Read tools/facts/full-claims/PARENT.md andintegration.json. Allclaimsprocesses
+terminal. NEXTpublish reviewedcentralhead withgreenCI. NoQA/defaultpromotion.
+
+Quantitygraph worktreeWORK/quantity-graphs protocolfrozen47c7cc7:51contracts,
+6nativeprefixchecks passed. Batch/parent hashes unchanged. Exactlyone teacher
+46506 RUNNING;scopeglassmind-quantity-graphs-teacher,supervisor1245190,
+launcher1245197. Astrafast/high,forcedChatGPTloginverified,APIkeyenvremoved,
+masked5paths,1200s8GiB0swap2MiBannotations256MiBdirectory; TMPDIRon disk.
+RUN=WORK/coordinator/quantity-graphs. Do not restart. Afterterminal runpreserve.py,
+validate.py withnativeexecutor,check-parent.py,thenrootsemanticreviewall32.
+No model fit,CAL/DEV orruntimechange. Workerusagepending;knowntotal203193886.
+
+## Earlier handoff (current status above takes precedence)
+
 ## Current jobs,19:38UTC
 
 Fullclaims WORK/full-claims branchcontinuous/full-claims head800ff44. RUN=WORK/
