@@ -1,0 +1,20 @@
+{
+  "command": [
+    "systemd-run",
+    "--user",
+    "--scope",
+    "-pMemoryMax=8G",
+    "-pMemorySwapMax=0",
+    "setsid",
+    "--wait",
+    "timeout",
+    "--kill-after=10s",
+    "600",
+    "cargo",
+    "check",
+    "-j1"
+  ],
+  "exit": 101,
+  "stdout": "",
+  "stderr": "Running as unit: run-p271006-i96648631.scope; invocation ID: 8fa6fcf37b1f4d43b5ca1b278ad415a0\n    Blocking waiting for file lock on build directory\n    Checking task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/baseline-full/custom/package)\nerror[E0425]: cannot find type `Custom` in this scope\n --> src/lib.rs:1:21\n  |\n1 | pub fn pick(items: &Custom, rank: i32) -> Option<i32> {\n  |                     ^^^^^^ not found in this scope\n\nFor more information about this error, try `rustc --explain E0425`.\nerror: could not compile `task` (lib) due to 1 previous error\n"
+}

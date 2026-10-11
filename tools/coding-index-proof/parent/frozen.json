@@ -1,0 +1,68 @@
+[
+  {
+    "name": "one_based",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 1 || rank as usize > xs.len() { return None; } let index = rank - 1; Some(xs[index]) }\n",
+    "expected_supported": true,
+    "request": "fix the build"
+  },
+  {
+    "name": "zero_based",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 0 || rank as usize >= xs.len() { return None; } let index = rank; Some(xs[index]) }\n",
+    "expected_supported": true,
+    "request": "fix the build"
+  },
+  {
+    "name": "mutation_after_guard",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 1 || rank as usize > xs.len() { return None; } let mut index = rank - 1; index -= 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "shadow_after_guard",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 1 || rank as usize > xs.len() { return None; } let index = rank - 1; let index = -index - 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "nonexit_guard",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 1 || rank as usize > xs.len() { let _ignored = rank; } let index = rank - 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "wrong_conjunction",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 1 && rank as usize > xs.len() { return None; } let index = rank - 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "zero_passes_lower_bound",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 0 || rank as usize > xs.len() { return None; } let index = rank - 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "guarded_different_binding",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { let other = 1i32; if other < 1 || other as usize > xs.len() { return None; } let index = rank - 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "early_guard_only_one_branch",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if xs.is_empty() { if rank < 1 { return None; } } let index = rank - 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "arithmetic_can_overflow",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 1 { return None; } let index = rank + 1; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  },
+  {
+    "name": "subtract_larger_constant",
+    "source": "pub fn lookup(xs: &[u8], rank: i32) -> Option<u8> { if rank < 1 || rank as usize > xs.len() { return None; } let index = rank - 2; Some(xs[index]) }\n",
+    "expected_supported": false,
+    "request": "fix the build"
+  }
+]

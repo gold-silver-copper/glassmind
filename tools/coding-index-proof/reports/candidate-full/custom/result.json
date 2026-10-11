@@ -1,0 +1,24 @@
+{
+  "name": "custom",
+  "positive": false,
+  "changed": false,
+  "exact": true,
+  "unrelated_bytes_preserved": true,
+  "original_e0277": false,
+  "native_pass": false,
+  "result": {
+    "command": [
+      "/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/target/debug/glassmind",
+      "do",
+      "/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/candidate-full/custom/package",
+      "fix compile error",
+      "--explain"
+    ],
+    "exit": 0,
+    "stdout": "input:  fix compile error\nwords:  [fix] [compile] [error]\nreading 1 (chosen):\n  parse:   en.utterance.command[en.command.repair[\"fix\" en.check_phrase.errors[en.check_phrase.bare[en.rust.check.compile[\"compile\"]] \"error\"]]]\n  meaning: Command(Repair(Build))\n  rules:   en.utterance.command (round 5), en.command.repair (by hand), en.check_phrase.errors (round 29), en.check_phrase.bare (round 29), en.rust.check.compile (round 29)\n  resolved: Command(Repair(Build))\n  world:    Remedy { check: Build, changes: [], fixed: [], left: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0425\", kind: Problem, owner: None, detail: Some(\"cannot find type `Custom` in this scope\") }] }\n  world rules: rust.check.run (by hand), rust.remedy.compiler_suggestions (by hand), rust.remedy.one_per_place (round 29)\nchoice: 1 surviving reading(s), all with the same answer\nreply:  Remedy { check: Build, changes: [], fixed: [], left: [RustItem { source: \"package\", file: \"src/lib.rs\", line: 1, name: \"E0425\", kind: Problem, owner: None, detail: Some(\"cannot find type `Custom` in this scope\") }] }\nspoken by: en.reply.no_remedy (by hand), en.check_phrase.the (by hand), en.rust.check.build (by hand)\n\nI don't know how to fix the build.\n  still: src/lib.rs:1  E0425  cannot find type `Custom` in this scope\n",
+    "stderr": ""
+  },
+  "before_sha": "58f70b718ea13f9a463933d1e3c043ca5d8228a8c3807af59fbe3145bd4368c7",
+  "after_sha": "58f70b718ea13f9a463933d1e3c043ca5d8228a8c3807af59fbe3145bd4368c7",
+  "passed": true
+}

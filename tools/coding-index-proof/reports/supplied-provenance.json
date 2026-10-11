@@ -1,0 +1,35 @@
+{
+  "source": "Public workspace and existing train-v3 requests only; no task.toml/hidden/solution content",
+  "revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+  "license": "MIT OR Apache-2.0",
+  "files": {
+    "Cargo.toml": {
+      "bytes": 86,
+      "sha256": "e664e9b8b04122585790c3cfbb230c5173c915ac7f0c9846abeae130559ed5ab"
+    },
+    "Cargo.lock": {
+      "bytes": 148,
+      "sha256": "fc69187b936e312aa4a6813b74113c8699021e003ca5f792d10d9965f74a0418"
+    },
+    "src/lib.rs": {
+      "bytes": 285,
+      "sha256": "a61f1daa61ac66aa6f0f4fe374fbcba0cdff1e4a13e4f676937272d9e49be97e"
+    }
+  },
+  "requests": [
+    {
+      "id": "train/rb-fix-errors-index-with-i32/chatty#0",
+      "text": "Hi! The leaderboard lookup won't build, something about indexing. Could you fix it so it compiles? Ranks are 1-based, and that part works the way I want."
+    },
+    {
+      "id": "train/rb-fix-errors-index-with-i32/hurried#0",
+      "text": "index error in player_at_rank, fix"
+    },
+    {
+      "id": "train/rb-fix-errors-index-with-i32/terse#0",
+      "text": "fix compile error"
+    }
+  ],
+  "bytes": 519,
+  "baseline_binary_sha256": "20594291e08e216596645ac21355eca216f8cadfb12cd20e66d7fd71350634f6"
+}

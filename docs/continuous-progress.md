@@ -1,5 +1,45 @@
 # Continuous development checkpoint
 
+## Current review — signed-index runtime integrated, full DEV running
+
+INDEXPROOF worker COMPLETE; original613files/1,173,505bytes archived at
+WORK/indexproof-run/submitted. Allarchive/2runtime/29authored/10native/3supplied
+identities, accepted+failedbinary and frozenplan/cases verified. Workerpatch and
+archivepatch differ onlyi/vsc/oldpathprefixes; normalizedbytesidentical. All612
+repositorycopies reverified before inactiveworktree/authremoval. No workerjobs.
+Runtime 0f8dbfa61628e73e7d5cc22bbf81f10feb131a52, releasebinary
+5fcb1577ee7c22487f603aa2dbd7bf39ca60575b218b7c5fde9e507f76c6a815 retained at
+WORK/coordinator/indexproof-review/glassmind-integrated androottarget/release.
+Only2worldRustsourcefiles changed. Native target-width proof uncached; source
+unchanged outsideindexcast. Parentreview coversguarddominance, arithmetic and
+bindingidentity, exactdiagnostic/source andnativetargetwitness.
+
+Independent11frozencases:2minimalnative-testedrepairs+9unchangednegativecases,
+bothworker andintegratedrelease. Actualinstalledwasm32 compilerchecks4cases:
+i16/i32repair,i64/i128refuse; no wasmbehavior execution claimed. Final release
+ownedfirstsample3 thenfull32 reproducealloriginalcontracts/sourcehashes:
+10exactnative-testedrepairs (3supplied+7authored),22unchangednegatives. All34world
+tests/workspacefmt+allclippy+release+strict4smoke pass. Completedparentsessions
+53093/75969/69866/80490. Inherited export26/27 andAddField14/15 remain documented.
+Full765 ACTIVE session99446, unchangedtools/rustbench-dev.sh, own
+WORK/coordinator/indexproof-full withTMPDIR/native-scratch. Re-poll samehandle;
+no resultfile untilterminal is expected, notfailure. Mustretainall174oldpasses,
+>=174passes/0fail beforepublication. Comparator prepared at
+WORK/coordinator/indexproof-review/compare-full.py. No newfullscoreclaimedyet.
+Originalnewtools/parentreports andworkerusage are saved withthislocalcheckpoint;
+publishing waitsforfullDEV.
+Knowncompletedworker tokens120,879,428, cachedinputonce;parent/unfinishedexcluded.
+
+UDSYNTAX stillACTIVE PID318192, verifiedscope8GiB/0swap. Workerreports frozenmodel
+~12MiB, training3.37s/285MiB; fullDEV claimed19423/25148LAS and20540/25148UAS,
+2001validtrees and6/6authoredroles. Unreviewed until originalarchival+parentaudit.
+Parentindependentsourceaudit: DEV2001sentences25148words,68exactTRAINduplicates
+(137words), no>128tokenDEV; chainbaselineUAS2528/LAS481. Reports alreadyfrozen
+atWORK/coordinator/udsyntax-independent/source-audit.json and13contrastfixtures.
+Awaitterminal; archivebeforeintegration; independentlyrecomputeallmetricdenominators,
+replaymodeland13contrasts, reviewboundedloader/inference, integratemainCLIonlyif
+accepted. This is predictedgold-tokenizedsyntax, not QA/semantictruth accuracy.
+
 ## Latest published evidence and active workers
 
 PR30 MERGED e3ed37ccb68d2829631c95acbf6d460aafc0a619 at2026-10-11T08:48:18Z,

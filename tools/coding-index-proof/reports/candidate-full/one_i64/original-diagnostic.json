@@ -1,0 +1,20 @@
+{
+  "command": [
+    "systemd-run",
+    "--user",
+    "--scope",
+    "-pMemoryMax=8G",
+    "-pMemorySwapMax=0",
+    "setsid",
+    "--wait",
+    "timeout",
+    "--kill-after=10s",
+    "600",
+    "cargo",
+    "check",
+    "-j1"
+  ],
+  "exit": 101,
+  "stdout": "",
+  "stderr": "Running as unit: run-p295632-i96726129.scope; invocation ID: fc6b712266c1472a8faa2ff107927beb\n    Checking task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/candidate-full/one_i64/package)\nerror[E0277]: the type `[i32]` cannot be indexed by `i64`\n --> src/lib.rs:4:13\n  |\n4 |  Some(items[index])\n  |             ^^^^^ slice indices are of type `usize` or ranges of `usize`\n  |\n  = help: the trait `SliceIndex<[i32]>` is not implemented for `i64`\nhelp: `usize` implements trait `SliceIndex<T>`\n --> /rustc/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/core/src/slice/index.rs:179:0\n  |\n  = note: `SliceIndex<[T]>`\n --> /rustc/b940084d7eb6a299eb4bfeb8e34901bc051e7ac4/library/core/src/bstr/traits.rs:197:0\n  |\n  = note: `SliceIndex<ByteStr>`\n  = note: required for `[i32]` to implement `Index<i64>`\n\nFor more information about this error, try `rustc --explain E0277`.\nerror: could not compile `task` (lib) due to 1 previous error\n"
+}

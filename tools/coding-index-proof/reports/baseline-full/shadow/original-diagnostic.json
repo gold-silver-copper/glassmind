@@ -1,0 +1,20 @@
+{
+  "command": [
+    "systemd-run",
+    "--user",
+    "--scope",
+    "-pMemoryMax=8G",
+    "-pMemorySwapMax=0",
+    "setsid",
+    "--wait",
+    "timeout",
+    "--kill-after=10s",
+    "600",
+    "cargo",
+    "check",
+    "-j1"
+  ],
+  "exit": 101,
+  "stdout": "",
+  "stderr": "Running as unit: run-p270675-i96623394.scope; invocation ID: e48c91dca9314878805c57ef459c0b37\n    Checking task v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/indexproof-run/tmp/baseline-full/shadow/package)\nerror[E0277]: the trait bound `usize: Neg` is not satisfied\n --> src/lib.rs:3:13\n  |\n3 |  let rank = -1;\n  |             ^^ the trait `Neg` is not implemented for `usize`\n  |\nhelp: consider specifying an integer type that can be negative\n  |\n3 |  let rank = -1isize;\n  |               +++++\n\nFor more information about this error, try `rustc --explain E0277`.\nerror: could not compile `task` (lib) due to 1 previous error\n"
+}
