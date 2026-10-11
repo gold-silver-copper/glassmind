@@ -3,7 +3,7 @@
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Known completed-worker tokens:202156530, cached input counted once; parent and
-interrupted usage excluded. Semantic teacher completed; no model workers running.
+interrupted usage excluded. Pilot semantic teacher completed; three replication teachers now running.
 Its owned ChatGPT login symlink has been removed after archival and scope verification.
 
 ## Current jobs,19:11UTC
@@ -79,7 +79,19 @@ requiresmissingderivedbike/trashcanwheelcount; cannotencodeasconstant6.
 Semanticreview RUN/semantic-review.json andworktreecopy includesall32decisions,
 source/outputhashes andfixed-graphcaveats. All34protocolcontractspass. No quantity
 runtime,fit,CAL/DEV orscorechange. Old354/7473vs1000gatestillREJECTED.
-NEXTquantity: freeze separateboundedexpansion/trainingplan beforemoreselection.
+NEXTquantity replicationnowACTIVE: WORK/span-references tools/quantities/span-expansion,
+plan d9f9fdc beforeselection, preparation982b936 beforeteachers. RUN=WORK/coordinator/
+span-expansion. Next128uniqueFITgroups in4x32frozenbatches; allsourcehashes/native
+bindingsverified. CombinedbatchSHA1863c210d4e566a939b568fe7a70db8db53bc46a979011c990e3f5f27bb47a10.
+Eightparentcases frozen,24nativechecks passed;4498mustrefuseconflictingboardlengths.
+All4isolatedChatGPTloginsverified. Batches01/02/03 RUNNING47083/13879/74867,
+scopesglassmind-span-expansion-01/02/03, supervisors1217986/1218089/1218195,
+wrappers1217993/1218096/1218202. Batch04prepared,launchonceoneslotfreeevenifearly
+resultsfail;max3teachers. EachAstrafast/high1200s8G0swap2MiBannotations256MiBdir.
+OwnedauthlinksRUN/batch-NN/teacher/codex/auth.json remain;preserve.py NN archives
+originals+usage thenremovesownedlinkafterterminalscope. Neverarchivecredentials.
+Gate>=96/128,zeroacceptedsemanticcontradictions,all8parentcasesagree. Parentreview
+EVERYacceptedlink;nofit/CAL/DEV. ReadworktreePROGRESS.md forcommands andfullgate.
 
 Nativeclaims89022 stillRUNNING at33minutes (PIDs1022832/1022833verified);
 secondaryindexesbuilt1225.432s, finalintegritychecksremaining. Do not restart.
