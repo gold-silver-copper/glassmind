@@ -1,0 +1,137 @@
+{
+  "source": {
+    "source": "openai/grade-school-math",
+    "revision": "3101c7d5072418e28b9008a6636bde82a006892c",
+    "license": "MIT",
+    "official_split": "train",
+    "rows": 7473,
+    "files": [
+      {
+        "file": "train.jsonl",
+        "url": "https://raw.githubusercontent.com/openai/grade-school-math/3101c7d5072418e28b9008a6636bde82a006892c/grade_school_math/data/train.jsonl",
+        "bytes": 4166206,
+        "sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465"
+      },
+      {
+        "file": "LICENSE",
+        "url": "https://raw.githubusercontent.com/openai/grade-school-math/3101c7d5072418e28b9008a6636bde82a006892c/LICENSE",
+        "bytes": 1062,
+        "sha256": "86bbb73e855821d7c401912fd4bf82e34313e6e3b6fd6f909f2b6cc9e209a53b"
+      }
+    ],
+    "test_downloaded": false,
+    "reused_native_files": [
+      {
+        "file": "equation_executor",
+        "source": "/home/gsc/.cache/glassmind/continuous-20261010/groundingaudit-source/equation_executor",
+        "bytes": 16919992,
+        "sha256": "40e6a6e975cf8474231ac0e3bcc2e3df5c1ce8196dead0b9159586aa5935ea6f"
+      },
+      {
+        "file": "original-proposal.rs",
+        "source": "/home/gsc/.cache/glassmind/continuous-20261010/groundingaudit-source/rejected-source/crates/quantities/src/proposal.rs",
+        "bytes": 14862,
+        "sha256": "f341f213d9ca351c29160af02edab3fd34b81f8ab56ef8327673162069a1eaa3"
+      },
+      {
+        "file": "original-rational.rs",
+        "source": "/home/gsc/.cache/glassmind/continuous-20261010/groundingaudit-source/rejected-source/crates/quantities/src/rational.rs",
+        "bytes": 4346,
+        "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d"
+      },
+      {
+        "file": "original-executor.rs",
+        "source": "/home/gsc/.cache/glassmind/continuous-20261010/groundingaudit-source/rejected-source/crates/quantities/examples/equation_executor.rs",
+        "bytes": 1184,
+        "sha256": "dc346e0648194df414551aff26bfbc056b73b0ccec92be1fa5960ce1842c13a3"
+      }
+    ]
+  },
+  "source_manifest_sha256": "f621a2568bed59f7bfce95778ae479312c64197e18ee8cf4af2af295876e5143",
+  "archive_manifest_sha256": "d3c0edef2fbb3aacfc9fd6f78e61383c3269a4bd337b2fdf97263b7ce263a2ad",
+  "original_archive_files_verified": 52,
+  "source_files_verified": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/groundedsteps-source/train.jsonl",
+      "sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+      "bytes": 4166206
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/groundedsteps-source/LICENSE",
+      "sha256": "86bbb73e855821d7c401912fd4bf82e34313e6e3b6fd6f909f2b6cc9e209a53b",
+      "bytes": 1062
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/groundedsteps-source/equation_executor",
+      "sha256": "40e6a6e975cf8474231ac0e3bcc2e3df5c1ce8196dead0b9159586aa5935ea6f",
+      "bytes": 16919992
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/groundedsteps-source/original-proposal.rs",
+      "sha256": "f341f213d9ca351c29160af02edab3fd34b81f8ab56ef8327673162069a1eaa3",
+      "bytes": 14862
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/groundedsteps-source/original-rational.rs",
+      "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d",
+      "bytes": 4346
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/groundedsteps-source/original-executor.rs",
+      "sha256": "dc346e0648194df414551aff26bfbc056b73b0ccec92be1fa5960ce1842c13a3",
+      "bytes": 1184
+    }
+  ],
+  "selection": "next32 distinct TRAIN-FIT groups after prior160, by(group_sha256,row_id), sole reason ambiguous_leaf",
+  "rows": 32,
+  "row_ids": [
+    5799,
+    312,
+    5151,
+    7044,
+    2791,
+    5197,
+    3325,
+    1626,
+    4160,
+    6597,
+    3797,
+    1633,
+    5223,
+    3443,
+    2748,
+    3510,
+    3506,
+    4147,
+    1306,
+    1348,
+    2782,
+    4662,
+    2114,
+    3581,
+    3143,
+    6404,
+    2393,
+    1204,
+    7443,
+    3111,
+    2924,
+    697
+  ],
+  "parent_reference_row_ids": [
+    5799,
+    312,
+    5151,
+    7044,
+    2791,
+    5197,
+    3325,
+    1626
+  ],
+  "batch_sha256": "56a62c5a75dbb42bb6c6279aa1f34e7c9ce5750d70eb34de0e328cd5a72062db",
+  "all_native_bindings_reproduced": true,
+  "baseline_resolved_in_selected_batch": 0,
+  "original_converter_global_accepted": 354,
+  "original_converter_global_total": 7473,
+  "teacher_calls": 0
+}

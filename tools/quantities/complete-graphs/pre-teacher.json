@@ -1,0 +1,30 @@
+{
+  "plan_commit": "3ccea2b",
+  "preparation_commit": "a1bbb84",
+  "contracts": 51,
+  "native_prefix_checks": 6,
+  "batch_sha256": "56a62c5a75dbb42bb6c6279aa1f34e7c9ce5750d70eb34de0e328cd5a72062db",
+  "parent_expectations_sha256": "5a1bef22a2abc27de7bc1ec12429e732111f3814945c45de60ccedc3467da885",
+  "files": {
+    "PLAN.md": "d5168fd927a3eb31a8037c58bfe186ce39adfe12ae6ba8adacb5304e4eac1f3c",
+    "schema.json": "72387a52d9925b9a35183e6ccb0fc76c58737f2ef0632548c4e5b48acf8eeb83",
+    "validate.py": "e5ab09ff56fa4e99fd22825c8a827c2f80a2b479be4b8a4a8e4633354b28223b",
+    "contracts.py": "96e35f9930707653e23f668ad7864f67938cdeff12b4d8fd7cf0cdfa996e25b3",
+    "contracts-report.json": "0880c610bca4e5f92443573b1d26b39061ac9c15d145fdd655ee0c5ffe7843df",
+    "teacher-brief.txt": "0811ff600c00c8f931f034b108878df6159df22bf9d46d31d8b4f2b5d8c453d6",
+    "teacher.py": "0804baab6688c2995ed3267a708cd1c26b60874695e5709e5a5c2b778ef9729e",
+    "preserve.py": "625b863093c5c4d2a62db55ba1faa62feb30032d3af881faef1ae4cf3a98a052"
+  },
+  "teacher_started": false,
+  "semantic_approval": false,
+  "gate": {
+    "minimum_parent_confirmed": 24,
+    "total": 32,
+    "accepted_semantic_contradictions": 0,
+    "parent_cases": 8
+  },
+  "model": "gpt-6-astra",
+  "service_tier": "fast",
+  "forced_login_method": "chatgpt",
+  "attempts": 1
+}

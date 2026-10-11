@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "id": "fit-5799",
+      "status": "resolved",
+      "status_agrees": true,
+      "required_rejection": false,
+      "agrees": true
+    },
+    {
+      "id": "fit-312",
+      "status": "resolved",
+      "status_agrees": true,
+      "required_rejection": false,
+      "agrees": true
+    },
+    {
+      "id": "fit-5151",
+      "status": "resolved",
+      "status_agrees": true,
+      "required_rejection": false,
+      "agrees": true
+    },
+    {
+      "id": "fit-7044",
+      "status": "ambiguous",
+      "status_agrees": true,
+      "required_rejection": true,
+      "agrees": true
+    },
+    {
+      "id": "fit-2791",
+      "status": "resolved",
+      "status_agrees": true,
+      "required_rejection": false,
+      "agrees": true
+    },
+    {
+      "id": "fit-5197",
+      "status": "ambiguous",
+      "status_agrees": true,
+      "required_rejection": true,
+      "agrees": true
+    },
+    {
+      "id": "fit-3325",
+      "status": "unsupported",
+      "status_agrees": true,
+      "required_rejection": true,
+      "agrees": true
+    },
+    {
+      "id": "fit-1626",
+      "status": "resolved",
+      "status_agrees": true,
+      "required_rejection": false,
+      "agrees": true
+    }
+  ],
+  "all_eight_agree": true,
+  "native_requests": 17,
+  "all_original_and_counterfactual_values_match": true,
+  "all_32_semantic_review_still_required": true
+}
