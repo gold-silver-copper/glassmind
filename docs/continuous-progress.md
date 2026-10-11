@@ -2,11 +2,34 @@
 
 Unlimited active goal; milestone completion does not complete the goal. Root
 branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Previous goal turn: PROGRESS (PR43merged, graphparserlaunched). Currentturn:
-PROGRESS (implementationgrammarworkerlaunched; independentnative/boundarybaselines
-andambiguityalternativesexecuted; graphparentadaptervalidated).
+Previous goal turn: PROGRESS (implementationgrammarlaunched, nativebaselines).
+Currentturn: PROGRESS (graphparserindependentlyrejected/archived, comparisonprefix
+boundaryfixedandvalidated). Unlimitedgoalremainsactive.
 
-## PR43 published; next parser experiment active
+## Current batch: prefix boundary fix and graph rejection
+
+Commits09f1cab graphrejection report; b57c7b9 quantityprefixfix. Push95481 pending
+atcheckpoint, thenopenPR44 againstmain, verifyrequiredCI onexactreviewedhead and
+mergewith--match-head-commit. No accuracyjournalrow: neitherchangeclaimsnewscore.
+Knowncompletedworker tokens192615259 inclcachedonce; parent/interrupted/liveimpl
+excluded (graphworker2069421input incl1973120cached +25502output=2094923).
+
+Quantityprefixbugreproduced: explicitComparequantities: separatorcountedagainst
+4096-bytepayloadcap. Baseline12/14; two validatlimitASCII/Unicodewhitespacecases
+refusedonlywithspaceaftercolon. One-linefix removesatmostoneoptionalASCIIspace,
+keeps4096payloadcapbeforetrimming;4097/NULstillrefuse. Bothplain/intent14/14pass.
+Main52208 COMPLETE:79commands/statechecksEACHmode=158total, restarteach, realfacts/
+draftbundles, memory/story/draftpreserved, humanfalse/equal/rightwitnessespass.
+Requiredworkspace83907 COMPLETEfmt/alltargetclippy/release/strict4smoke.
+NativequantitysourceUNCHANGED fromPR43; no needfullcoding/quantity/factsrerun.
+Frozenmain coordinator/unitcompare-prefix-boundary/glassmind SHA
+931528b065c361a9580a090392497b9e060a894cf5f1edb824ccb0132836eda4.
+Sourcehashes/cases/baselineandcandidateoutputs retainedthere; compactreports
+ tools/quantities/unit-comparison/prefix-boundary/PARENT.md.
+Whenintegratingimplgrammar, preserve this talk_quantities.rs fix: workerowns
+minimalmain.rs DO-route only, do NOToverwriteentireCLIcratedirectory fromitsbase.
+
+## Published PR43 baseline
 
 PR43 MERGED https://github.com/gold-silver-copper/glassmind/pull/43
 Reviewedhead225892adb78afe5d9ea567fe4b08790aa7d93b52; CI38147567718 SUCCESS
@@ -68,46 +91,40 @@ Workspacefmt/alltargetclippy/release/strict4fixture passed afterintegration:
 coordinator/combined-comparator-unitcompare-check.log. Earlier comparatorchecked
 buildretained coordinator/comparator-checked, not finalquantityintegration.
 
-## LIVE: graph-based dependency parser experiment
+## Graph dependency parser rejected and independently reviewed
 
-WorkerPID4115132 scopeglassmind-continuous-graphsyntax.scope active/running,
-MemoryMax8589934592/MemorySwapMax0 verified; Astrafast/ChatGPTlogin verified,
-provider/API-keyenvstripped. WorktreeWORK/graphsyntax, branchcontinuous/graphsyntax,
-base225892a. TaskWORK/graphsyntax-task.txt; runWORK/graphsyntax-run. Do NOTinspect
-liveworker source/results. No newexternaldata/downloads/teacher calls.
+FormerworkerPID4115132 terminal/inactive; original206files93888678bytes archived
+andverifiedbeforeinspection; frozen97files60767507bytes independentlyverified.
+Botharchivesreverifiedbeforeownedworktreeandtemporaryloginlinkremoved. Retained
+ROOT/graphsyntax-run/frozen-candidate, terminal-originals, originalmanifest;
+coordinator/graphsyntax-independent/cleanup.json. Do notaccessremovedworktree.
+No productionreading/modelchange. Reports tools/reading/syntax-graph/PARENT.md.
 
-Hypothesis materiallydifferentfromthreefailedbeam/normalization/childfeature
-experiments: learnedfirst-orderlabeledarcscore+exactglobal single-root nonprojective
-maximumspanningtree, structuredaveragedperceptron THREEfixed orderedTRAINepochs.
-Frozenapprovedtaggerreused exactly; no goldtaginference; noDEVretuning/secondfit.
-Explicitnewversion/trainflag, legacydefaultv1model/form/rawbytesunchanged. Model<32MiB,
-128tokens/16KiBtext/128KiBrow/128MiBload, nativejobsbounded600seconds. Workerowns
-readingsyntaxsource/newgraphmodule/bin andnewtools/reading/syntax-graph; maincoordinator.
-CorpusacceptanceLAS>=19673,UAS>=20540/25148words, all2001valid/zerorefusal;68duplicate
-sentences137edgesincludedandreported, no denominatorchanges. First100beforefull.
-Primaryalgorithmreferencehttps://aclanthology.org/H05-1066.pdf openedbyparent;
-exactsingle-rootrequirement isadditionalexplicitcontract, notheuristicrepair.
+SameEWT r2.18 b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c,CC-BY-SA4.0 TRAIN/DEV;
+no newcorpusdownload/officialTEST. Oneexactglobalfirst-orderlabeledarc/MSTmodel,
+threefixedorderedstructuredperceptronepochs, approvedtaggerunchanged. NoDEVretune.
+Nativefull2001/25148words LAS19423→17900,UAS20540→19732, allvalidtrees/zero refusals;
+68TRAINduplicate137edgesincludedandallcorrect. FrozenLAS>=19673/UAS>=20540FAIL.
+Parentunchangedauditindependentlyrescoredallrows, recomputedalledgetransitionsand
+exacttrees:LAS2869oldrightlost1346gained,UAS2293lost1485gained, countsagreeworker.
 
-Readonlyudsyntax-source EWT r2.18 b7711cce01cdd4f5fcc0a8199b8a50d951b16c0c,
-CC-BY-SA4.0. TRAIN15034493bytesSHA d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143;
-DEV1898574SHA39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8.
-Bothhashesverifiedbeforelaunch. NoofficialTESTavailable. ownrun/baseline6files
-28067787bytesverifiedfromsyntaxchildren-run/baseline: model,standalone,forms/raw
-inputs+predictions. Model12554724bytesSHA47d8d245b575ab01afa6c0ef7471fc8b8571aede62c106b8fbe50ec9ccc01db6.
+Frozenparent24sentences52coreedges baseline46/52,19/24complete→41/52,15/24complete
+bothforms/raw;7oldcorrectedgeslost2gained. AllrawUTF8spans/treesvalid. GateFAIL.
+Exactfrozendecoderhelpers extractedintoindependentnativewrapper;12matrices2..5nodes
+matchindependent exhaustive legal single-root maximumscores includingnegative/ties.
+Nofitrepeated. Nativeprobe source/outputs/report underparent/decoder andexternalcache.
+Actual1328492taggerbytes exactSHA0409e47e9376ee1593480461fa35bbe7cfa1c21f6d74fce7ba9bad167dbba39f;
+legacyall2001formsandrawpredictionstreamsbyteidentical. All27prefrozenidentities
+verifiedincludingarchivedsource. Two restoredruntimefilesbyteexactroot; graphmodule
+absent. Newmodel9715189bytesSHA5168e505cfd1a11502a707e403e482a83fde821aaaed270412990d24bec19781.
+Candidatebinaryc57138f62d89d273132e9e6ba67b291006c34c4a67deed998d9adb4406aa2f25.
 
-Parentcoordinator/graphsyntax-independent freeze.py/PLAN/cases/freeze.json:
-24freshsentences52corelabelededges; nativebaseline46/52,19/24complete,forms+raw
-outputsretained. No oldcorrectcoreedge maybelost; cannotrescuefailedcorpusgate.
-12independentarbitrary scorematrices2..5nodes with exhaustive legal single-root
-maximumscores+tiecounts frozen decoder-cases.json. Lateradaptermustmatchoptimal
-scoreandvalidtree, notspecifictiedtree. Parentcases notavailable toworker.
-Parentreview.py nowready anddry-run againstapprovedbinary/model passes24forms
-and24raw predictions with52coreedges, validtrees and exactUTF8spans; statuswire
-ispredicted. It reportsandfails anyoldcorrectedge loss. Decoderbridge stillneeds
-terminalsource review. No livecandidate source/results inspected.
-NEXT whileworkeractive: usefulindependentwork withoutreadingcandidate. When terminal, archiveoriginalsource/
-patch/reports/results andverifyhashesBEFOREinspection, thenreviewfrozenmodelgates
-andindependentlyrescore. Allotherjobscomplete; no reason to repeat closedgates.
+Parentaudit-evidence.py passesallchecksafterfiveartifact-pathresolutionfailures;
+originalscriptsretained. Nonechangedcandidate/model/expectations. Initialworker
+clippyfailuresfixedbeforefitandarchived. No secondconfiguration. Thisrepresentation
+alsofailed; do nottuneitsfeatures/epochs ontheseobservedDEVfailures. Futureparsing
+workneeds independentTRAINdiagnosis ornewdata/representation; currentimplgrammar
+workerisindependent. No moreparserjobsrunning.
 
 ## LIVE: implementation intent grammar and bounded synthesis
 
@@ -159,11 +176,11 @@ NEXT: Onterminalverifyinactive/PIDgone, archiveoriginalpatch/source/reports/resu
 andhashverify BEFOREinspection, thenreviewactualgrammar andgeneratoragainstfrozen
 contracts. Nativeparentbaseline/12boundary/2alternativesalreadydone; don'trepeat.
 Candidateparent/full765 onlyafteroriginalsubmissionarchived. Parentpositivecases
-areoutsideworkeraccess. Both current workers stilllive; no nativerootjobsremain.
+areoutsideworkeraccess. Onlyimplgrammarworkerstilllive; no nativerootjobsremain.
 
 ## Next experiments
 
-Graphparser andimplementationgrammar experiments above arecurrent. Zero
+Implementationgrammar experiment above iscurrent; graphparserrejected. Zero
 implementationDEVcoverage motivated the latter; no gain claimed beforegates. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
 do not duplicate. Deferredthermostatreassociation needs exactoverflowreasoning.
 Facts coverage/inverseedges remain a broadgap; read prior TRAIN999rejection and
