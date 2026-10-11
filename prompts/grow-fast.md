@@ -73,9 +73,10 @@ cd ~/code/glassmind && tools/loop-service.sh start ~/.cache/glassmind/loop/state
   - it never sees English;
   - it only proposes candidates;
   - types and tests decide.
-- **Opus 5.5 only**, through `claude -p --model claude-opus-5-5
-  --no-session-persistence` on the user's login. Never an API key, never
-  `~/.claude/.credentials.json`.
+- **Codex GPT-6 Astra, fast mode only**, through `codex exec --model
+  gpt-6-astra -c 'service_tier="fast"' --ephemeral` on the user's login.
+  This supersedes all earlier Opus/Claude instructions. Never use an API
+  key or read credential files.
 - **Never depend on `~/code/flexion`.** Read it for ideas only.
 - **No panics in non-test code**, enforced by the workspace clippy lints.
 
@@ -123,7 +124,7 @@ Each track has:
 - a fixed dev sample to steer by;
 - a held-out split scored every few hours, totals only.
 
-One chart, one line per track, against hours and Opus tokens.
+One chart, one line per track, against hours and Codex tokens.
 
 | Track | Benchmark | What it checks |
 |---|---|---|
@@ -187,7 +188,7 @@ Conversation:
    - **Rule probabilities learned from raw text by EM:** parse BabyLM,
      count rule use, re-weight, repeat. The parse ranker then comes from
      millions of real sentences, not from glassmind's own requests.
-   - **Opus as a teacher, in waves.** It labels real sentences in
+   - **GPT-6 Astra as a teacher, in waves.** It labels real sentences in
      glassmind's own meaning types, which trains the tagger and the parse
      ranker. Show the teacher how glassmind already reads the known words,
      or its labels contradict each other (sememe found 287 of 1,291
