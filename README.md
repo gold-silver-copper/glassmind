@@ -52,11 +52,15 @@ bash crates/everyday/tools/reproduce.sh
 ./target/release/glassmind talk --model scratch/everyday/intent.json --session conversation.json
 # Follow assertions and answer questions about a short story
 ./target/release/glassmind-stories --model tools/stories/action-model.json
+# Exact arithmetic, typed units and calendar dates
+./target/release/glassmind-quantities "Convert 60 km/h to m/s"
 ```
 
 For example, `glassmind talk` remembers “my name is Mira”, answers “what is
 my name?”, and applies “actually, my name is Jo”. Story input uses one
 assertion or question per line; `/reset` starts a new story.
+[Dialogue tracking](crates/dialogue/EXPERIMENT.md) and
+[Wikidata facts](tools/facts/README.md) have separate trained-model commands.
 
 ## Current benchmark tracks
 
@@ -69,7 +73,10 @@ class counts a correct refusal as right.
 | Coding, rustbench (all styles) | 160/765 pass; 602 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
-| Basic chat memory | 41/41 synthetic smoke checks | independent dialogue benchmark pending |
+| Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,526 refused; 39 wrong | pending |
+| Multi-turn dialogue, SGD RideSharing_1 single-service slice | 202/257 exact states; 89.18% official fuzzy joint goal | pending |
+| Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | external benchmark pending |
+| Basic chat memory | 41/41 synthetic smoke checks | no independent chat benchmark |
 | Reading, BabyLM 2025 dev | 1/120 sampled documents parsed; 15 exceed the 48-token cap | pending |
 | Grammar, BLiMP parse-only probe | 1 good preference, 3 bad, 1,336 ties on 1,340 pairs | no probability-model score yet |
 
@@ -77,8 +84,10 @@ The story dev set is a deterministic episode-level partition of the official
 training data. CLINC thresholds were calibrated on official validation;
 its official train and validation splits overlap on three utterances.
 The reading probes measure parser coverage, not correctness of meanings.
-SGD/MultiWOZ, Wikidata fact questions and arithmetic/unit/date benchmarks
-remain to be implemented. [Data provenance and limitations](data/README.md).
+The dialogue result covers one service; the quantity suites are synthetic
+development checks, not an external word-problem benchmark. The facts
+index is seeded by validation subject IDs and has limited coverage; it is not
+an open-world entity-retrieval result. [Data provenance and limitations](data/README.md).
 
 ## Earlier code-QA results
 
@@ -115,7 +124,7 @@ tooling. Chart: `docs/results/chart.html` (numbers in `docs/results/summary.json
 
 ## How it is built
 
-Three layers, kept apart by the crate graph (`cargo run -p glassmind-depcheck`, run in CI):
+Three layers, kept apart by the crate graph (`cargo run -p glassmind-depcheck`, run by loop checks):
 
 | crate | layer |
 |---|---|
@@ -130,7 +139,7 @@ Three layers, kept apart by the crate graph (`cargo run -p glassmind-depcheck`, 
 | `glassmind` (cli) | `ask`, `chat`, `code`, `do`, `complete`, `eval`, `rules`, `train-normalizer`, `train-intents` |
 | `glassmind-loop` | the scorer (with its own cargo runner for judging fixes), the size counter and the improvement loop |
 | `tools/oracle` | computes exact answers with `syn`, independently of glassmind |
-| `tools/datagen` | plans conversations from tasks and phrases them with Claude Opus 5.5 |
+| `tools/datagen` | plans conversations from tasks and phrases them with ChatGPT-authenticated Codex GPT-6 Astra fast |
 
 The meaning layer depends on no language and no world; English depends on
 no world; worlds depend on no language.
@@ -165,7 +174,7 @@ run it as a detached, resumable service) supports:
 
 A change is accepted only if it builds and passes fmt, clippy and the
 layer check; lowers training cost (the code-size price is currently zero); turns no right or honestly refused training turn wrong; does not
-worsen the validation score (other repositories) by more than 2; and is not
+worsen the validation score (other repositories, when configured) by more than 2; and is not
 vetoed by a reviewer agent for faked answers. The held-out score decides
 nothing, not even when to stop: it is only reported. Agents cannot read
 anything held out, and the scorer's code (`crates/loop`, `crates/answer`)

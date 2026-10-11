@@ -158,3 +158,58 @@ archive stored under `~/.cache/glassmind/heldout/babi/`. Workers never read
 its test members or predictions. The frozen model scored 19,916 right,
 64 refusals and 20 wrong across all 20,000 official test questions.
 No held-out failures were inspected or used to modify the reasoner.
+
+### SimpleQuestions / Wikidata facts (2026-10-10)
+
+- [SimpleQuestions-Wikidata](https://github.com/askplatypus/wikidata-simplequestions),
+  commit `df69267f1db4f85a71325e7e8c06e192bcaf0b0e`, CC BY 3.0:
+  answerable train 19,481 rows / 1,193,868 bytes; validation 2,821 rows /
+  173,187 bytes, including inverse relations. No test downloaded. Every tenth
+  training row calibrates refusal; validation never fits weights.
+- [Wikidata structured data](https://www.wikidata.org/wiki/Wikidata:Licensing),
+  CC0, API snapshot from 2026-10-10: 20 cached responses / 27,696,032 bytes;
+  500 indexed entities / 287,236 bytes. Validation subject IDs seed this
+  benchmark-scoped candidate store. Validation answers and relations never
+  populate the store; claims come independently from Wikidata. This is not
+  an open-world entity-retrieval result. Rate limits stopped the crawl;
+  missing coverage stays in the full validation denominator.
+- Full validation: 256 right, 2,526 refused, 39 wrong / 2,821.
+  Multiple-answer claims are refused. Live facts may differ from the historical
+  benchmark. Index, hashes, calibration totals and reproduction commands:
+  [facts notes](../tools/facts/README.md). Relation weights remain in
+  `~/.cache/glassmind/data/simplequestions/relation.json`.
+
+### Schema-Guided Dialogue (2026-10-10)
+
+- [Official SGD](https://github.com/google-research-datasets/dstc8-schema-guided-dialogue/tree/e852981ae34990f4358979625854259302feaa78),
+  version `e852981ae34990f4358979625854259302feaa78`, CC BY-SA 4.0.
+  Fetcher scanned 504,306,737 bytes from explicit train/dev URLs only.
+  Training retained 688 conversations containing `RideSharing_1`, 7,267,443
+  bytes; 3,455 target-service frames supply labels. Full selected dev slice:
+  all 45 single-service `RideSharing_1` conversations, 257 frames, 220,834 bytes.
+- [Official metric implementation](https://github.com/google-research/google-research/blob/5b09c22d73a9d35eb6c5d2a99b95677a45053466/schema_guided_dst/metrics.py),
+  version `5b09c22d73a9d35eb6c5d2a99b95677a45053466`, Apache-2.0, 11,209 bytes.
+  NumPy 2.3.3 and fuzzywuzzy 0.18.0 with the pure-Python backend are pinned.
+- Full slice: 202/257 exact states; official fuzzy joint goal 89.18%;
+  256/257 correct active intents. The centroid baseline gets 52/257 exact
+  states and 41.47% fuzzy joint goal. These are single-service slice results,
+  not whole-SGD performance. No test split accessed. All 257 predictions
+  reproduce from annotation-free runtime inputs.
+- [Experiment and hashes](../crates/dialogue/EXPERIMENT.md). Retained source
+  selection lives at `~/.cache/glassmind/data/sgd`; models at
+  `~/.cache/glassmind/models/dialogue/model-{0,12}.json`.
+
+### Numbers, units and dates (2026-10-10)
+
+- Synthetic development suites `quantities-synthetic-dev-v1` (seed 20261010,
+  2,080 rows / 314,258 bytes) and `quantities-extended-dev-v1` (seed 20261011,
+  1,036 rows / 174,437 bytes), workspace MIT OR Apache-2.0 license.
+  Python's `Fraction`, `Decimal`, `datetime` and `calendar` compute expected
+  answers independently of the Rust implementation. These are generated
+  development questions, not SVAMP/MAWPS or held-out benchmark results.
+- Fixed samples precede full evaluation. Combined full dev: 3,056 right,
+  60 refused, 0 wrong / 3,116. Right includes 762 expected refusals for invalid
+  or ambiguous inputs; 2,294 substantive answers are correct. All 60 misses
+  are unsupported English paraphrases. No external training data or test
+  split was used. Sources, hashes, full reports and reproduction commands:
+  [quantities handoff](../crates/quantities/HANDOFF.md).

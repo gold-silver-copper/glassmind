@@ -38,6 +38,30 @@
         "output_tokens": 35893,
         "reasoning_output_tokens": 13169
       }
+    },
+    {
+      "track": "sgd",
+      "started_unix": 1791685693.1907816,
+      "finished_unix": 1791686163.4046876,
+      "usage": {
+        "input_tokens": 2808671,
+        "cached_input_tokens": 2729344,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27920,
+        "reasoning_output_tokens": 7285
+      }
+    },
+    {
+      "track": "numbers",
+      "started_unix": 1791685693.1899705,
+      "finished_unix": 1791686260.513261,
+      "usage": {
+        "input_tokens": 2001369,
+        "cached_input_tokens": 1930368,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 35921,
+        "reasoning_output_tokens": 10068
+      }
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
