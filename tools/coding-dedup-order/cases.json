@@ -1,0 +1,177 @@
+[
+  {
+    "name": "owned_i8",
+    "code": "pub fn f(mut xs: Vec<i8>) -> Vec<i8> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "owned_i32",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "owned_i128",
+    "code": "pub fn f(mut xs: Vec<i128>) -> Vec<i128> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "owned_u16",
+    "code": "pub fn f(mut xs: Vec<u16>) -> Vec<u16> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "owned_u64",
+    "code": "pub fn f(mut xs: Vec<u64>) -> Vec<u64> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "owned_usize",
+    "code": "pub fn f(mut xs: Vec<usize>) -> Vec<usize> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "unicode",
+    "code": "pub fn f(mut \u00e9l\u00e9ments: Vec<i32>) -> Vec<i32> { \u00e9l\u00e9ments.dedup(); /* preserved gap */ \u00e9l\u00e9ments.sort(); \u00e9l\u00e9ments }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "typed_local",
+    "code": "pub fn f(input: Vec<i32>) -> Vec<i32> { let mut xs: Vec<i32> = input.into_iter().collect(); xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "string_pipeline",
+    "code": "pub fn f(raw: &[&str]) -> Vec<String> { let mut xs: Vec<String> = raw.iter().map(|s| s.trim().to_lowercase()).filter(|s| !s.is_empty()).collect(); xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![\"Z\"],vec![\"z\"]),(vec![\"a\",\"a\",\"b\"],vec![\"a\",\"b\"]),(vec![\" Z \",\"a\",\"z\",\"\",\"A\"],vec![\"a\",\"z\"])] { assert_eq!(f(&a), b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "inline_tests",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }\n#[cfg(test)] mod tests { #[test] fn check() { assert_eq!(super::f(vec![2,1,2]),vec![1,2]); } }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 1,
+    "accept": true
+  },
+  {
+    "name": "alias_vec",
+    "code": "type Vec<T> = std::vec::Vec<T>; pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "alias_scalar",
+    "code": "type i32 = i64; pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "alias_string",
+    "code": "pub fn f(raw: &[&str]) -> Vec<Text> { let mut xs: Vec<Text> = raw.iter().map(|s| s.trim().to_lowercase()).filter(|s| !s.is_empty()).collect(); xs.dedup(); /* preserved gap */ xs.sort(); xs } type Text = String;",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![\"Z\"],vec![\"z\"]),(vec![\"a\",\"a\",\"b\"],vec![\"a\",\"b\"]),(vec![\" Z \",\"a\",\"z\",\"\",\"A\"],vec![\"a\",\"z\"])] { assert_eq!(f(&a), b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "import",
+    "code": "use std::vec::Vec; pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "custom",
+    "code": "pub struct Vec<T>(std::vec::Vec<T>); impl<T: Ord> Vec<T> { fn dedup(&mut self) { self.0.dedup(); } fn sort(&mut self) { self.0.sort(); } } pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); xs.sort(); xs } pub fn expose() -> std::vec::Vec<i32> { f(Vec(std::vec![2,1,2])).0 }",
+    "test": "#[test] fn checks() { assert_eq!(expose(),std::vec![1,2]); }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "shadow",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { let mut xs: Vec<i32> = xs; xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "wrong_receiver",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { let mut ys: Vec<i32> = xs.clone(); xs.dedup(); ys.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "effect",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); xs.reverse(); xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "dedup_by",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup_by(|a,b| a == b); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "sort_by",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort_by(|a,b| a.cmp(b)); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "unresolved_local",
+    "code": "pub fn f(input: Vec<i32>) -> Vec<i32> { let mut xs = input; xs.dedup(); xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "attribute",
+    "code": "#[inline] pub fn f(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "macro",
+    "code": "pub fn f(mut xs: Vec<i32>) -> Vec<i32> { let _other = vec![1]; xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "generic",
+    "code": "pub fn f<T: Ord>(mut xs: Vec<T>) -> Vec<T> { xs.dedup(); xs.sort(); xs }",
+    "test": "#[test] fn checks() { for (a,b) in [(vec![],vec![]),(vec![3],vec![3]),(vec![1,2,3],vec![1,2,3]),(vec![3,2,1],vec![1,2,3]),(vec![1,1,2,2],vec![1,2]),(vec![3,1,3,2,1],vec![1,2,3])] { assert_eq!(f(a),b); } }",
+    "count": 0,
+    "accept": false
+  },
+  {
+    "name": "two_passing",
+    "code": "pub fn left(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }\npub fn right(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup(); /* preserved gap */ xs.sort(); xs }",
+    "test": "#[test] fn checks() { assert!(left(vec![2,1,2]) == vec![1,2] || right(vec![2,1,2]) == vec![1,2]); }",
+    "count": 2,
+    "accept": false
+  }
+]

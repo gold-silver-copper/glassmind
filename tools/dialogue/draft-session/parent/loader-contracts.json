@@ -1,0 +1,44 @@
+{
+  "model_cap": 67108864,
+  "schema_cap": 1048576,
+  "manifest_cap": 65536,
+  "max_turns": 128,
+  "max_utterance_bytes": 4096,
+  "max_total_utterance_bytes": 65536,
+  "invalid_bundles": [
+    "missing_manifest",
+    "wrong_version",
+    "unknown_manifest_field",
+    "empty_source",
+    "empty_license",
+    "empty_scope",
+    "missing_model",
+    "missing_schema",
+    "model_hash_mismatch",
+    "schema_hash_mismatch",
+    "schema_model_incompatible",
+    "model_valid_json_over_cap",
+    "schema_valid_json_over_cap",
+    "manifest_valid_json_over_cap"
+  ],
+  "invalid_history": [
+    "unknown_top_field",
+    "annotation_bearing_turn",
+    "unknown_speaker",
+    "bad_version",
+    "wrong_model_identity",
+    "wrong_schema_identity",
+    "empty_utterance",
+    "nul_utterance",
+    "multibyte_over_4096",
+    "129_turns",
+    "65537_total_bytes"
+  ],
+  "boundaries": [
+    "empty_history",
+    "128_turns",
+    "4096_single_bytes",
+    "65536_total_bytes"
+  ],
+  "semantics": "Validate before mutation; no truncation, dropped history, goldbearing savedstates, or implicit rebind"
+}

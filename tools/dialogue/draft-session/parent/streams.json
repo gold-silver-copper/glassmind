@@ -1,0 +1,123 @@
+[
+  {
+    "name": "ride",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "I need a ride to Cedar Museum."
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "How many passengers will travel?"
+      },
+      {
+        "speaker": "USER",
+        "utterance": "There are 3 passengers."
+      }
+    ],
+    "restart_after": [
+      1,
+      2
+    ]
+  },
+  {
+    "name": "cross_service",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Find attractions in Kyoto."
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "Would you like a park or a museum?"
+      },
+      {
+        "speaker": "USER",
+        "utterance": "A museum, please."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be there tomorrow?"
+      },
+      {
+        "speaker": "USER",
+        "utterance": "I need a taxi there."
+      }
+    ],
+    "restart_after": [
+      2,
+      3
+    ]
+  },
+  {
+    "name": "offered_value",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Find attractions in Utrecht."
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "You could visit Central Museum."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Yes, that sounds good."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "I need a ride there."
+      }
+    ],
+    "restart_after": [
+      2
+    ]
+  },
+  {
+    "name": "unicode",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "I need a taxi to Café Étoile."
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "How many passengers?"
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Just me."
+      }
+    ],
+    "restart_after": [
+      1,
+      2
+    ]
+  },
+  {
+    "name": "state_boundary",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "My name is Changed"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "Mary moved to the office."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "I like coffee"
+      }
+    ],
+    "restart_after": [
+      1,
+      2
+    ]
+  },
+  {
+    "name": "empty_show_reset",
+    "turns": [],
+    "restart_after": []
+  }
+]

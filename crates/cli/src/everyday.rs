@@ -15,6 +15,8 @@ struct Session {
     memory: Conversation,
     #[serde(default)]
     stories: Stories,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    request_draft: Option<serde_json::Value>,
 }
 
 /// Preserve existing conversation JSON while exposing the calculation's typed result.
@@ -29,6 +31,7 @@ enum TalkReply {
     Matching(Box<MatchingReply>),
     Temporal(Box<TemporalReply>),
     TemporalMatching(Box<TemporalMatchingReply>),
+    Draft(Box<crate::talk_drafts::DraftReply>),
 }
 
 #[derive(serde::Serialize)]
@@ -51,6 +54,7 @@ impl TalkReply {
             Self::Matching(reply) => &reply.text,
             Self::Temporal(reply) => &reply.text,
             Self::TemporalMatching(reply) => &reply.text,
+            Self::Draft(reply) => &reply.text,
         }
     }
 }
@@ -333,9 +337,11 @@ pub fn run(
     session: Option<PathBuf>,
     model: Option<PathBuf>,
     facts_dir: Option<PathBuf>,
+    dialogue_dir: Option<PathBuf>,
     json: bool,
 ) -> Result<(), String> {
     let facts = facts_dir.as_deref().map(Facts::load).transpose()?;
+    let mut drafts = crate::talk_drafts::Drafts::load(dialogue_dir.as_deref())?;
     let model: Option<IntentModel> = model.as_deref().map(read).transpose()?;
     if let Some(model) = &model {
         model.validate().map_err(|e| e.to_string())?;
@@ -375,6 +381,7 @@ pub fn run(
         if line.trim() == "/reset" {
             memory = Session::default();
             memory.stories.restore()?;
+            drafts.clear();
             writeln!(
                 output,
                 "{}",
@@ -386,7 +393,14 @@ pub fn run(
             )
             .map_err(|e| e.to_string())?;
         } else {
-            let reply = respond_with_facts(&mut memory, &line, model.as_ref(), facts.as_ref());
+            let reply = if let Some(request) = crate::talk_drafts::request(&line) {
+                memory.memory.turn = memory.memory.turn.saturating_add(1);
+                memory.memory.last_user_utterance = Some(line.clone());
+                memory.memory.last_slot = None;
+                TalkReply::Draft(Box::new(drafts.respond(&mut memory.request_draft, request)))
+            } else {
+                respond_with_facts(&mut memory, &line, model.as_ref(), facts.as_ref())
+            };
             if json {
                 serde_json::to_writer(&mut output, &reply).map_err(|e| e.to_string())?;
                 writeln!(output).map_err(|e| e.to_string())?;

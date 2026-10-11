@@ -32,6 +32,7 @@ mod everyday;
 mod reading;
 mod syntax;
 mod system;
+mod talk_drafts;
 mod talk_facts;
 mod talk_stories;
 mod train;
@@ -109,15 +110,18 @@ enum Command {
     },
     /// Conversation: remember preferences, follow stories, calculate units and dates.
     #[command(
-        long_about = "Remember names and preferences, follow story facts, and calculate exact answers.\n\nTry: Mary went to the kitchen. / Mary picked up the apple. / Where is the apple?\nEnter each statement or question on its own line. Use --session FILE to continue later.\n/reset clears memory and story facts; /quit leaves the conversation."
+        long_about = "Remember names and preferences, follow story facts, and calculate exact answers.\n\nTry: Mary went to the kitchen. / Mary picked up the apple. / Where is the apple?\nWith --dialogue-dir BUNDLE, use Draft request: TEXT and Service reply: TEXT for a provisional service request. Show request displays it; Reset request clears it.\nEnter each statement or question on its own line. Use --session FILE to continue later.\n/reset clears memory, stories and request drafts; /quit leaves the conversation."
     )]
     Talk {
-        /// Persist memory and story facts between runs; /reset clears both.
+        /// Persist memory, stories and request drafts between runs; /reset clears all.
         #[arg(long)]
         session: Option<PathBuf>,
         /// Local facts bundle: manifest.json, index.json, relation.json, optional labels.json.
         #[arg(long)]
         facts_dir: Option<PathBuf>,
+        /// Local provisional dialogue bundle: manifest.json, model.json, schema.json.
+        #[arg(long)]
+        dialogue_dir: Option<PathBuf>,
         /// Optional learned everyday-intent model (no services are executed).
         #[arg(long)]
         model: Option<PathBuf>,
@@ -252,8 +256,9 @@ fn main() -> ExitCode {
             session,
             model,
             facts_dir,
+            dialogue_dir,
             json,
-        } => everyday::run(session, model, facts_dir, json),
+        } => everyday::run(session, model, facts_dir, dialogue_dir, json),
         Command::Ask {
             common,
             apply,

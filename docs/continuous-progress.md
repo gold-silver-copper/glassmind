@@ -1,8 +1,8 @@
 # Continuous development checkpoint
 
 The unlimited goal is active; milestones do not complete it. Root branch `harness`.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the live dedup-order
-experiment below. No routine human confirmation is needed.
+WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the full coding gate and combined release
+checks below. No routine human confirmation is needed.
 
 ## Published PR41 and current baseline
 
@@ -28,88 +28,93 @@ independently evaluated timedmatch integration. Manifest and combined-source.jso
 retain those checks. Workspace36033 COMPLETE:fmt/alltargetclippy/releaseworkspace/
 strict4fixture smoke. Final main37851 COMPLETE:32cases/44state-recall checks,
 both intent modes and three human-output checks. README/journal/html updated.
-Known completedworker tokens180312484 includingcachedinputonce; root/interrupted
-usage excluded. Last worker groundedsteps590889; deduporder not yet counted.
+Known completedworker tokens184586362 includingcachedinputonce; root/interrupted
+usage excluded. Latest deduporder2933900 and draftsession1339978. Both terminal.
 
-## LIVE: typed dedup/sort ordering repair
+## Current integrated batch: dedup ordering and resumable drafts
 
-WorkerPID3504868, scopeglassmind-continuous-deduporder.scope active/running8GiB0swap.
-WorktreeWORK/deduporder, branchcontinuous/deduporder, basec0efc7a.
-TaskWORK/deduporder-task.txt; runWORK/deduporder-run; launcherWORK/launch.py.
-Astra fast, forcedChatGPTlogin andsupportedCLI flags verified beforelaunch;
-provider/APIkey environment stripped. No live source/results inspected.
-Onlycrates/world-rust +newtools/coding-dedup-order owned; coordinator owns integration.
-ReadonlyWORK/extremum-source reuses vetted110files57265bytes publicTRAIN.
-Fixed27 TRAIN inputSHA6eea206a106aa053c7e458e5975f7a4e2c4c2b19a7a066510ad454f2985e6164.
-BaselineRUN/baseline/glassmind is final4087feb... binary. ExpectedTRAIN8/27,
-worker mustverify baseline and retain every oldpatch/response exactly.
+Root has reviewed source for both capabilities, plus command docs and
+compact independent reports. Original worker evidence was archived/hashverified
+BEFORE inspection or edits. No current modelworkers. PR41 remains last published.
+Current build/check handle is recorded in coordinator/combined-deduporder-draftsession-check.log;
+fmt/alltargetclippy/releaseworkspace/strict4fixture smoke COMPLETE session49737.
+Allcargo8GiB0swap,setsid--waittimeout,persistentTMPDIR,jobs1. Full765session40652
+COMPLETE212/553/0,all209retained. comparison.jsonSHA records exact outcomes;
+resultsSHA44748aef509d445f3f9605a302213590d896c48d1f0c5b8f4bfd6343ba16c19f.
+Gains threeblog-tagsstyles,onebug. Do not duplicate either run.
 
-Hypothesis: adjacent dedup();sort(); on resolvedstandardVec primitive/String can
-be reordered by a source/type-driven proposal, nativeverified before acceptance.
-KnownTRAINblog-tags has explicitly typedlocalVec<String>. No task-ID/docs/output
-hardcoding. Preserve alloldfamilypriority/budgets; no fallthrough after oldfamily
-ambiguity/incomplete withdrawal, INCLUDINGextremum. Newfamily <=8candidates/20sec,
-exactlyonecompletepassingrepair andsavedchoice evidence; otherwise refuse.
-Unknownimports/aliases/customtypes/generics/shadowing/otherreceivers/intervening
-effects/customcomparators remain excluded. Ordinary inlinecfg(test) handledsafely.
+Deduporder formerPID3504868/scopeinactive, worktreeWORK/deduporder retained.
+Original terminal-originals1182files173993430bytes verified; frozen1137files172975121bytes
+verified. Frozenbinarydc5f5cccbc76d8749be40b083b003f7d6e2074c16c1bb0829c282ce645fcdb2d.
+Allrootworld-rust files copied byteexact from frozen-candidate/final-source.
+TRAIN8→9/27, all8prioroutcomefilesbyteidentical, fixedsample2/4. 54worldrusttests,
+29authorednativechecks pass. Primitive/String Vec typedadjacentdedup/sort only;
+unknownaliases/imports/shadows/effects excluded. Newboundednativefamily afterold
+families; previousambiguity/error withdrawal veto preserved. Sharedoldextremum
+helper extraction reviewed, oldlegacyproposal/undo/cargo/run_in_until unchanged.
 
-ParentWORK/coordinator/deduporder-independent froze12 cases beforeinspection:
-5exactrepair cases,5negative controls,2unresolved cases. casesSHA
+Parentcoordinator/deduporder-independent frozen12casesSHA
  e4c8ef8cb28dfa15cc55f716fc2206a1f097f364cc53517d7e39d1c7ec7c5259.
-One unresolved case has two distinct passing reorderings. The other has two
-passing OLD extremum choices plus a possible new sort-order repair: previous
-family veto MUST survive. PLAN/freeze/full-gate/compare-full.py are frozen.
-Full765 gate:209passesretained/0fail, unchanged denominator and runner.
-Baseline session86841 COMPLETE:all12 compile andfailtests;0/5repairs,5negative
-controls and2unresolved cases unchanged;no timeouts/manifestedits.
-Baseline oldextremum veto has actual2passing/incompletefalse/acceptedfalse evidence,
-reviewed inbaseline-veto-review.json. Independentalternatives61762 COMPLETE:
-two reorderings passbutyielddifferentvectors;oldextremum2 andnewdedup1 choices
-allpass thecross-family publictest andyielddifferentoutputs. Reports retained.
-Do not duplicate these runs. Parentcandidate replay waits for worker
-terminal archive/hashverification. Then review source, localcontracts and full765.
+Baseline12actualcompile/failingtests and independent5alternativeoutputs passed.
+Candidate9209 COMPLETE:5/5exactrepairs,5negativeunchanged,2ambiguitiesrefused,
+notimeouts/manifestedits. choice-review.json records2completepassingnewalternatives;
+prior_extremum_veto keeps exactold2passingchoice evidence and createsNOnewchoice.
+Full765 gatecompare-full.py frozen:all209oldpassesretained,0fail,denominator765.
+Frozenfullgate passed; baselinecoordinator/extremum-full/results.jsonl.
+README now212/765. No hiddenitems/labels/generators inspected.
 
-## LIVE: resumable provisional dialogue drafts
+Draftsession formerPID3618382/scopeinactive; worktreeWORK/draftsession retained,
+base49340ae. Original179files94263022bytes verified; frozen116files93364413bytes
+verified. Worker1313785inputincl1250688cached+26193output=1339978tokens.
+Sourcecrates/dialogue onlyaddsimmutablebundle/input-onlyhistory APIs andSHA2;
+alloldmodel/router/inference unchanged. No accuracygain:610right459wrong50refused/1119.
+No newdata:reusedSGDe852981ae34990f4358979625854259302feaa78 CC-BY-SA4.0,
+6readonlyfiles49643602bytes. Model32174720bytesSHAfac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88;
+schema3707SHA b021ae923dbeb7782b99ac6628e65b1b48f3cca2892fb62ce8c77b472324e089.
+InputsonlyUSER/SYSTEM179conversations1119USER; no goldannotations inruntime.
 
-WorkerPID3618382, scopeglassmind-continuous-draftsession.scope active/running8GiB0swap.
-WorktreeWORK/draftsession, branchcontinuous/draftsession, base49340ae.
-TaskWORK/draftsession-task.txt;runWORK/draftsession-run. Onlycrates/dialogue and
-newtools/dialogue/draft-session owned. MainCLI is coordinatorowned, not yetedited.
-Astra fast/forcedChatGPTlogin verified; no live source/results inspected.
+Worker14tests/fmt/clippy/release,91sample+1119fullpredictionparity,reversedorder,
+179SYSTEMmidpointrestores+interleaving pass. Legacyfullpredictionbytesunchanged.
+Originalbaseline filenamecollision correctedandrepeatedbeforeimplementation;
+originalfailure retained. NativeexampleSHA654e6897ade4751364ced3d80ff4a131e434a953ef5e5a7eaedb71122959de0b.
 
-Gap: validatedthree-service tracker is batch-only and MultiSession ephemeral.
-Add typedhash-bound inputhistory/bundleloader APIs for resumableprovisionaldrafts.
-No model/training/decoder/router/threshold changes; no newaccuracyclaim or external
-booking/weather/factual action. Expectedold610right459wrong50refused/1119 remains.
-OnlyUSER/SYSTEM inputhistory persists; never deserialize goldframes or predicted
-states as authority. Replay unchangedmodel onresume; validatebeforemutation.
-Bundle exactmodel/schema hashes+requiredsource/license/scope; fixedfilenames;
-model64MiB/schema1MiB/manifest64KiB readcaps. History128turns/64KiButterancebytes,
-4096bytesperturn, nonempty/noNUL; badidentity/unknownfields/role/version refuses.
-Efficient in-memoryadvance,show/reset, restartafterSYSTEM, interleavedisolation.
-Coordinatorplannedmain --dialogue-dir withDraftrequest:/Servicereply:/Showrequest/
-Resetrequest; draft neverfeedsordinarymemory/story/facts; resetwithoutbundleallowed.
+Parentcoordinator/draftsession-independent frozePLAN/6streams/main/loadercontracts
+beforeinspection. Native48132 COMPLETE:13USERpredictions/9processrestartpoints,
+15invalidbundles rejected includingvalidJSONoveractualcaps,10invalidhistorycategories
+atomic,128turns/4096singlebytes/65536totalpositiveboundaries,2rawsame-semantics
+model/schemaidentityrebindsrefused. Full179/1119 exactunderroundrobininterleaving
+and179midpointrestores. review.py+candidate/report.json andrawstreams retained.
 
-ReadonlyWORK/draftsession-source:6files49643602bytes, manifestsourceprovenance.
-Acceptedmodel32174720bytes SHAfac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88;
-selectedRideSharing_1/Travel_1/Weather_1 schema, unchangedoldnativebinary,
-179 publicDEV conversations strippedtoonlyspeaker/utterance (1119USERturns),
-frozenpredictionSHA8887d88afbf18462d10a70574be030df8a6d33071a5c201fa84dc1f99efacc8d.
-No goldannotationdata mounted; exactparity is acceptance, notsemanticverification.
-DatasetSGDe852981ae34990f4358979625854259302feaa78 CC-BY-SA4.0; no newdownloads.
+Mainintegration crates/cli/src/talk_drafts.rs +everydayoptionalrequest_draft and
+--dialogue-dir. OnlyexplicitDraftrequest:/Servicereply:/Showrequest/Resetrequest
+routes; no personal/story/factsbinding. Exactpayloadbytes,case-insensitiveprefixes,
+unknown/malformed/limits preservehistory, resetwithoutbundleallowed. Inputhistory
+only, replayonfirstuseafterload; inprocessadvancesonce. Showdoesnotadvance/persist
+emptydraft. /reset clearsall. Humanoutputexplicitlyprovisional, no booking/actions.
+Allsnapshotfieldsincludinginactiveframes/proposalsmatcholdnative. Bundlecaps
+64MiBmodel/1MiBschema/64KiBmanifest;history128turns/4096UTF8perturn/65536total.
+Unknownhistoryfields,annotations,wrongidentity,blank/NUL refuse beforemutation.
 
-ParentWORK/coordinator/draftsession-independent PLAN/freeze.py/freeze.json:
-6authored streams/13USERsnapshot baseline alreadyranwitholdnativebinary.
-streamsSHA2119c858ffcd6694256e43097bf007c280fe4043239b17c87f3d40547ec2c7e3;
-maincontractsSHAbc5988060261a4e0b69573a4faae8c028b1bf74a86343504af4366e745440c55;
-loadercontractsSHA2023f3c7523504b245f94f0466e13c38d40820c3d3d940506813128a20cf40b4.
-BaselinepredictionsSHA059fd2fc90b5d10e3f3c1bbd43dabb4b86c37f76824fb71c012cc9c1230d4c4b.
-Authored tests coverrestartafterSYSTEMoffers, UTF8, explicitmemory/story-likepayloads,
-no statepollution, invalidbundle/history/bytecaps and unchangedonfailure. Expect
-mainkinddialogue_draft andoptionalrequest_draft sessionfield omittedwhenunused.
-Worker first10/full179parity +restart tests mustpass beforeparentmainintegration.
-NEXT: afterterminal archive/hashverify BEFOREinspection; adaptparent harness totyped
-API withoutchanging frozen semantics; integrate main explicitroutes onlyaftergates.
+Initialmainbuild66502 COMPLETE clippy+release. Frozeninitialmain
+coordinator/draftsession-integrated/glassmind SHAc6b9db4312edabde8edfa07fd9a74ce7b6c4ac1b4542dd6ae913d4b72388a310.
+Main82683 COMPLETE:46countedcommands34statechecksEACHintentmode=92/68total;
+restartaftereverycommand;ordinarymemory/story/calc/factisolation;rebound/malformed
+savedhistorypreserved;resetrecovers;invaliddeclaredbundlefailswithoutstatewrite.
+Mainfull179/1119 exactpredictions;humanlabelschecked. Latermain.rs changesonly
+helptext; everyday/talk_drafts/source remain exactinitialevaluatedfiles.
+Legacy COMPLETE41memory/27calc/47story;authority1344 COMPLETE93+41production;
+facts49820 COMPLETEfirst200/full2821standalone/facts-enabled/defaulttalkbytesidentical.
+Reports tools/dialogue/draft-session/PARENT.md +parent/, docs/dialogue-drafts.md.
+Combined frozenbinary coordinator/combined-deduporder-draftsession/glassmind
+SHAb6b093c5a82e76ec08481b5e0c8739e6b9090590f5f06b79d8b41eeb04e8948d.
+All26world-rustfilesmatchfull765; allCLI/dialoguefilesmatchinitialmainexcepthelptext,
+whosepreviousbyteswere reconstructedandhashverified. Manifest/combined-source.json.
+
+NEXT sourcecommit andcodingjournalrow, commit/pushPR42 andmerge exactgreenhead.
+Fullgatescompleted. Keepgoalactive.
+Then archiveverify andremoveonlycompletedworkerworktrees/temp loginlinks. Prepare
+nextquantityrepresentation orfactscoverage experiment fromTRAIN evidence; do not
+revive closedthreshold/spanproposalhypotheses. No currentmodelworkers tostop.
 
 ## Finished PR41 experiments
 
@@ -177,13 +182,13 @@ semanticchecks; no first-match value priority or another oldrankerconfiguration.
 1. Finish currentdedup-order worker and frozenparent/native/fullDEV gates.
 2. Revisit quantities via explicitspan/reference supervision; source and rejected
    value-only dataaudit are ready. Avoid anotherthreshold/localfeature rename.
-3. Dialogue610/1119 remains a separate neglectedtrack; tokenendpoints was third
-   rejectedspan-proposalhypothesis. Readtools/dialogue/token-endpoints/PARENT.md
-   before selecting a materiallydifferent representation. No newdialogue taskyet.
+3. Dialogue draft persistence integrated and under final combined checks; accuracy
+   unchanged610/1119. Tokenendpoints was third rejectedspan-proposalhypothesis;
+   future accuracy work needs a materiallydifferent representation.
 4. Facts coverage/inverseedges are the known broadgap; previousTRAIN999expansion
    rejected, rawcachedassets retained. Do not repeat aliasfilters or duplicatefetch.
 
-Deduporder anddraftsession modelworkers active; parentbaseline86841 andalternatives61762 COMPLETE.
+Deduporder anddraftsession workers terminal; fullcoding andcombinedrelease checks COMPLETE.
 Allcargo8GiB/0swap,setsid--waittimeout,persistentTMPDIR,jobs1,testthreads<=4.
 Atmost4modelslotsincludingroot,8cargojobsprojectwide. No unrelatedcleanup/pkill-f.
 Stop exactownedjobs onexplicit userstop. Preserve archives BEFORE worker edits/removal.

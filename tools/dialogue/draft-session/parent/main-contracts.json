@@ -1,0 +1,155 @@
+{
+  "kind": "dialogue_draft",
+  "field": "request_draft",
+  "prefixes": {
+    "USER": "Draft request: ",
+    "SYSTEM": "Service reply: "
+  },
+  "show": "Show request",
+  "reset": "Reset request",
+  "streams": [
+    {
+      "name": "ride",
+      "turns": [
+        {
+          "speaker": "USER",
+          "utterance": "I need a ride to Cedar Museum."
+        },
+        {
+          "speaker": "SYSTEM",
+          "utterance": "How many passengers will travel?"
+        },
+        {
+          "speaker": "USER",
+          "utterance": "There are 3 passengers."
+        }
+      ],
+      "restart_after": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "cross_service",
+      "turns": [
+        {
+          "speaker": "USER",
+          "utterance": "Find attractions in Kyoto."
+        },
+        {
+          "speaker": "SYSTEM",
+          "utterance": "Would you like a park or a museum?"
+        },
+        {
+          "speaker": "USER",
+          "utterance": "A museum, please."
+        },
+        {
+          "speaker": "USER",
+          "utterance": "What will the weather be there tomorrow?"
+        },
+        {
+          "speaker": "USER",
+          "utterance": "I need a taxi there."
+        }
+      ],
+      "restart_after": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "offered_value",
+      "turns": [
+        {
+          "speaker": "USER",
+          "utterance": "Find attractions in Utrecht."
+        },
+        {
+          "speaker": "SYSTEM",
+          "utterance": "You could visit Central Museum."
+        },
+        {
+          "speaker": "USER",
+          "utterance": "Yes, that sounds good."
+        },
+        {
+          "speaker": "USER",
+          "utterance": "I need a ride there."
+        }
+      ],
+      "restart_after": [
+        2
+      ]
+    },
+    {
+      "name": "unicode",
+      "turns": [
+        {
+          "speaker": "USER",
+          "utterance": "I need a taxi to Café Étoile."
+        },
+        {
+          "speaker": "SYSTEM",
+          "utterance": "How many passengers?"
+        },
+        {
+          "speaker": "USER",
+          "utterance": "Just me."
+        }
+      ],
+      "restart_after": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "state_boundary",
+      "turns": [
+        {
+          "speaker": "USER",
+          "utterance": "My name is Changed"
+        },
+        {
+          "speaker": "SYSTEM",
+          "utterance": "Mary moved to the office."
+        },
+        {
+          "speaker": "USER",
+          "utterance": "I like coffee"
+        }
+      ],
+      "restart_after": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "empty_show_reset",
+      "turns": [],
+      "restart_after": []
+    }
+  ],
+  "malformed": [
+    "Draft request",
+    "Draft request:",
+    "Draft request My name is Changed",
+    "Service reply",
+    "Service reply: ",
+    "Draft request: \u0000",
+    "Draft request: ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+  ],
+  "case_space_command": "  DRAFT REQUEST:  I need a ride to Café Étoile.  ",
+  "case_space_payload": " I need a ride to Café Étoile.  ",
+  "invariants": [
+    "Every admitted USER snapshot equals unchanged old dialogue-multi prediction, including inactiveframes/proposals",
+    "Main turn and last_user_utterance update, correctionfocus clears; everyothermemory/storyfield preserved",
+    "Only explicit USER/SYSTEM payloads enter request_draft; ordinarymemory/story/fact/calc turns do not",
+    "Show changes no transcript or predictedstate; reset clears only draft; reset withoutbundle allowed",
+    "Save/reload afterSYSTEM preserves futureUSERprediction; twointerleaved sessions independent",
+    "No bundle, badboundidentity or rejectedpayload preservesdraft; malformedprefix cannot change name/story",
+    "New field omitted whenunused; default legacyJSON byte-identical",
+    "All rendered results provisional interpretations; no weatherfacts/booking confirmation/externalaction",
+    "Missing/corruptdeclaredbundle failsload; no automaticmodeldownload orfallback"
+  ]
+}

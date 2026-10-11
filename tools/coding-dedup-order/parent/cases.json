@@ -1,0 +1,111 @@
+[
+  {
+    "name": "owned_i32",
+    "kind": "repair",
+    "source": "pub fn norm(mut xs: Vec<i32>) -> Vec<i32> {\n    xs.dedup();\n    xs.sort();\n    xs\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(vec![]), Vec::<i32>::new()); assert_eq!(norm(vec![7]), vec![7]); assert_eq!(norm(vec![7,8,7,-2,8]), vec![-2,7,8]); assert_eq!(norm(vec![7,7,8]), vec![7,8]); } }\n",
+    "old": "xs.dedup();\n    xs.sort();",
+    "new": [
+      "xs.sort();\n    xs.dedup();"
+    ]
+  },
+  {
+    "name": "owned_string",
+    "kind": "repair",
+    "source": "pub fn norm(mut xs: Vec<String>) -> Vec<String> {\n    xs.dedup();\n    xs.sort();\n    xs\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(Vec::new()), Vec::<String>::new()); assert_eq!(norm(vec![\"É\".into(),\"a\".into(),\"É\".into(),\"b\".into()]), vec![\"a\".to_string(),\"b\".to_string(),\"É\".to_string()]); } }\n",
+    "old": "xs.dedup();\n    xs.sort();",
+    "new": [
+      "xs.sort();\n    xs.dedup();"
+    ]
+  },
+  {
+    "name": "typed_local_i32",
+    "kind": "repair",
+    "source": "pub fn norm(input: &[i32]) -> Vec<i32> {\n    let mut xs: Vec<i32> = input.to_vec();\n    xs.dedup();\n    xs.sort();\n    xs\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(&[]),Vec::<i32>::new()); assert_eq!(norm(&[9,7,9,8,7]),vec![7,8,9]); } }\n",
+    "old": "xs.dedup();\n    xs.sort();",
+    "new": [
+      "xs.sort();\n    xs.dedup();"
+    ]
+  },
+  {
+    "name": "typed_local_string",
+    "kind": "repair",
+    "source": "pub fn norm(input: &[&str]) -> Vec<String> {\n    let mut xs: Vec<String> = input.iter().map(|s| s.trim().to_lowercase()).filter(|s| !s.is_empty()).collect();\n    xs.dedup();\n    xs.sort();\n    xs\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(&[\" Z \",\"a\",\"z\",\"\", \" A \"]),vec![\"a\".to_string(),\"z\".to_string()]); } }\n",
+    "old": "xs.dedup();\n    xs.sort();",
+    "new": [
+      "xs.sort();\n    xs.dedup();"
+    ]
+  },
+  {
+    "name": "unicode_binding",
+    "kind": "repair",
+    "source": "pub fn norm(mut éléments: Vec<i32>) -> Vec<i32> {\n    éléments.dedup();\n    éléments.sort();\n    éléments\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(vec![]), Vec::<i32>::new()); assert_eq!(norm(vec![7]), vec![7]); assert_eq!(norm(vec![7,8,7,-2,8]), vec![-2,7,8]); assert_eq!(norm(vec![7,7,8]), vec![7,8]); } }\n",
+    "old": "éléments.dedup();\n    éléments.sort();",
+    "new": [
+      "éléments.sort();\n    éléments.dedup();"
+    ]
+  },
+  {
+    "name": "type_alias",
+    "kind": "unchanged",
+    "source": "type Reading = i32; pub fn norm(mut xs: Vec<Reading>) -> Vec<Reading> { xs.dedup();\n    xs.sort(); xs }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(vec![]), Vec::<i32>::new()); assert_eq!(norm(vec![7]), vec![7]); assert_eq!(norm(vec![7,8,7,-2,8]), vec![-2,7,8]); assert_eq!(norm(vec![7,7,8]), vec![7,8]); } }\n",
+    "old": null,
+    "new": []
+  },
+  {
+    "name": "import_alias",
+    "kind": "unchanged",
+    "source": "use std::vec::Vec as Basket; pub fn norm(mut xs: Basket<i32>) -> Basket<i32> { xs.dedup();\n    xs.sort(); xs }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(vec![]), Vec::<i32>::new()); assert_eq!(norm(vec![7]), vec![7]); assert_eq!(norm(vec![7,8,7,-2,8]), vec![-2,7,8]); assert_eq!(norm(vec![7,7,8]), vec![7,8]); } }\n",
+    "old": null,
+    "new": []
+  },
+  {
+    "name": "intervening_observation",
+    "kind": "unchanged",
+    "source": "pub fn norm(mut xs: Vec<i32>) -> (Vec<i32>,usize) { xs.dedup(); let before = xs.len(); xs.sort(); (xs,before) }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(vec![7,8,7]),(vec![7,8],3)); } }\n",
+    "old": null,
+    "new": []
+  },
+  {
+    "name": "custom_dedup",
+    "kind": "unchanged",
+    "source": "pub fn norm(mut xs: Vec<i32>) -> Vec<i32> { xs.dedup_by(|a,b| a==b); xs.sort(); xs }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(vec![]), Vec::<i32>::new()); assert_eq!(norm(vec![7]), vec![7]); assert_eq!(norm(vec![7,8,7,-2,8]), vec![-2,7,8]); assert_eq!(norm(vec![7,7,8]), vec![7,8]); } }\n",
+    "old": null,
+    "new": []
+  },
+  {
+    "name": "different_receivers",
+    "kind": "unchanged",
+    "source": "pub fn norm(mut xs: Vec<i32>,mut ys: Vec<i32>) -> (Vec<i32>,Vec<i32>) { xs.dedup(); ys.sort(); (xs,ys) }\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(norm(vec![7,8,7],vec![9,7]),(vec![7,8],vec![7,9])); } }\n",
+    "old": null,
+    "new": []
+  },
+  {
+    "name": "competing_repairs",
+    "kind": "unresolved",
+    "source": "pub fn left(mut xs: Vec<i32>) -> Vec<i32> {\n    xs.dedup();\n    xs.sort();\n    xs\n}\npub fn right(mut ys: Vec<i32>) -> Vec<i32> {\n    ys.dedup();\n    ys.sort();\n    ys\n}\npub fn joined(a:Vec<i32>,b:Vec<i32>)->Vec<i32>{let mut out=left(a);out.extend(right(b));out}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(joined(vec![7,8,7],vec![9,10,9]).len(),5); } }\n",
+    "old": null,
+    "new": [],
+    "alternatives": [
+      {
+        "old": "xs.dedup();\n    xs.sort();",
+        "new": "xs.sort();\n    xs.dedup();"
+      },
+      {
+        "old": "ys.dedup();\n    ys.sort();",
+        "new": "ys.sort();\n    ys.dedup();"
+      }
+    ],
+    "probe": "joined(vec![7,8,7],vec![9,10,9])",
+    "expected_probe_outputs": [
+      "[7, 8, 9, 9, 10]",
+      "[7, 7, 8, 9, 10]"
+    ]
+  },
+  {
+    "name": "prior_extremum_veto",
+    "kind": "unresolved",
+    "source": "pub fn upper(xs:&[i32])->Option<i32>{if xs.is_empty(){return None;}let mut best=0;for &x in xs {if x>best{best=x;}}Some(best)}\npub fn other(xs:&[i32])->Option<i32>{if xs.is_empty(){return None;}let mut best=0;for &x in xs {if x>best{best=x;}}Some(best)}\npub fn norm(mut xs: Vec<i32>) -> Vec<i32> {\n    xs.dedup();\n    xs.sort();\n    xs\n}\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(upper(&[2,1]),Some(2));assert_eq!(other(&[2,1]),Some(2));assert!(upper(&[-3])==Some(-3) || other(&[-3])==Some(-3) || norm(vec![7,8,7]).len()==2); } }\n",
+    "old": null,
+    "new": []
+  }
+]

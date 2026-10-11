@@ -755,6 +755,7 @@ const SLIP_TIME: Duration = Duration::from_secs(120);
 pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
     let mut old = legacy_slips(source, root, tests);
     old.extend(extrema(source, root));
+    old.extend(dedup_orders(source, root));
     old
 }
 
@@ -764,6 +765,16 @@ fn extrema(source: &str, root: &Path) -> Vec<RustChange> {
         .flat_map(|file| {
             let text = std::fs::read_to_string(root.join(&file)).unwrap_or_default();
             crate::extremum::proposals(source, &file.to_string_lossy(), &text)
+        })
+        .collect()
+}
+
+fn dedup_orders(source: &str, root: &Path) -> Vec<RustChange> {
+    crate::slips::production_files(root)
+        .into_iter()
+        .flat_map(|file| {
+            let text = std::fs::read_to_string(root.join(&file)).unwrap_or_default();
+            crate::dedup_order::proposals(source, &file.to_string_lossy(), &text)
         })
         .collect()
 }
@@ -869,10 +880,33 @@ pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustCh
         return old;
     }
     let candidates = extrema(source, root);
-    verify_extrema(source, root, &candidates)
+    let old = verify_native_choice(source, root, &candidates, "extremum", &mut withdrawn);
+    if old.is_some() || withdrawn {
+        return old;
+    }
+    verify_native_choice(
+        source,
+        root,
+        &dedup_orders(source, root),
+        "dedup-order",
+        &mut withdrawn,
+    )
 }
 
+#[cfg(test)]
 fn verify_extrema(source: &str, root: &Path, candidates: &[RustChange]) -> Option<RustChange> {
+    verify_native_choice(source, root, candidates, "extremum", &mut false)
+}
+
+// Each structural family gets its own unchanged bounded native choice search.
+// An unresolved older choice must never enable a newer family's fallback.
+fn verify_native_choice(
+    source: &str,
+    root: &Path,
+    candidates: &[RustChange],
+    family: &str,
+    withdrawn: &mut bool,
+) -> Option<RustChange> {
     if candidates.is_empty() {
         return None;
     }
@@ -901,6 +935,16 @@ fn verify_extrema(source: &str, root: &Path, candidates: &[RustChange]) -> Optio
         records.push(serde_json::json!({"patch":candidate,"result":result}));
         match result {
             Ok(findings) if findings.is_empty() => passing.push(candidate.clone()),
+            // A new pipeline alternative must execute tests. Compiler findings
+            // are incomplete verification, not a behavioral rejection. Keep the
+            // pre-existing extremum choice semantics unchanged.
+            Ok(findings)
+                if family == "dedup-order"
+                    && findings.iter().any(|f| f.item.kind != RustKind::Test) =>
+            {
+                incomplete = true;
+                break;
+            }
             Ok(_) => {}
             Err(_) => {
                 incomplete = true;
@@ -910,16 +954,22 @@ fn verify_extrema(source: &str, root: &Path, candidates: &[RustChange]) -> Optio
     }
     let accepted = !incomplete && passing.len() == 1;
     let evidence = scratch_base().join(format!(
-        "extremum-{}",
+        "{family}-{}",
         scratch.file_name()?.to_string_lossy()
     ));
+    let limitation = if family == "extremum" {
+        "bounded native public-test verification; no loop interpreter or semantic witness"
+    } else {
+        "bounded native public-test verification; public tests are not proof of intended semantics"
+    };
     let record = serde_json::json!({"candidates":candidates,"native_checks":records,"passing":passing,
         "incomplete":incomplete,"accepted":accepted,"original_tree_fingerprint":format!("{:016x}",fingerprint(root)),
-        "limitation":"bounded native public-test verification; no loop interpreter or semantic witness"});
+        "limitation":limitation});
     let saved = std::fs::create_dir_all(&evidence)
         .and_then(|()| std::fs::write(evidence.join("choice.json"), record.to_string()))
         .is_ok();
     let _ = std::fs::remove_dir_all(&scratch);
+    *withdrawn = incomplete || passing.len() > 1 || !saved;
     if accepted && saved {
         passing.pop()
     } else {
@@ -1323,3 +1373,7 @@ mod tests {
 #[cfg(test)]
 #[path = "extremum_tests.rs"]
 mod extremum_tests;
+
+#[cfg(test)]
+#[path = "dedup_order_tests.rs"]
+mod dedup_order_tests;

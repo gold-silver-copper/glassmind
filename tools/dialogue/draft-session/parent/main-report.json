@@ -1,0 +1,22 @@
+{
+  "binary_sha256": "c6b9db4312edabde8edfa07fd9a74ce7b6c4ac1b4542dd6ae913d4b72388a310",
+  "modes": [
+    {
+      "mode": "plain",
+      "commands": 46,
+      "state_checks": 34,
+      "ordinary_isolated": 5,
+      "process_restart_after_every_command": true
+    },
+    {
+      "mode": "intent",
+      "commands": 46,
+      "state_checks": 34,
+      "ordinary_isolated": 5,
+      "process_restart_after_every_command": true
+    }
+  ],
+  "full_dev_user_predictions": 1119,
+  "full_dev_conversations": 179,
+  "invalid_declared_bundle_fails_without_mutation": true
+}

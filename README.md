@@ -70,8 +70,18 @@ Guarded signed min/max initializer repairs now reach 209/765, retaining all 206
 prior passes with zero failures. The three gains are request styles for one bug;
 [independent review](tools/coding-extremum/PARENT.md) includes competing repairs
 and exact native evidence.
+Typed adjacent Vec dedup/sort reordering reaches 212/765, retaining all 209 prior
+passes with zero failures. The three gains are styles of one blog-tags bug.
+[Independent repairs, controls and old-family ambiguity veto](tools/coding-dedup-order/PARENT.md).
 
 ## Conversation and story commands
+
+With `--dialogue-dir BUNDLE`, explicit `Draft request: TEXT` and `Service reply:
+TEXT` commands maintain a provisional service-request interpretation across
+`--session` restarts. `Show request` displays it and `Reset request` clears it.
+Draft inputs stay separate from personal memory and stories. Existing dialogue
+predictions are unchanged; this adds persistence and access through the main CLI.
+[Bundle format, commands and limits](docs/dialogue-drafts.md).
 
 ```sh
 # Memory, arithmetic, units and dates; no model needed
@@ -139,7 +149,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 209/765 pass; 556 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 212/765 pass; 553 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |
