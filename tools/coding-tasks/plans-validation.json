@@ -1,0 +1,18 @@
+{
+  "commit": "e297c2ecf5a2ba318d09a30dd40014ee22a6d10c",
+  "sha256": "5d86471adc8b50e8f2d196377b67ebd350e1e70d76eb01f7bcab4b5cbe8f9ac6",
+  "cli_tests": 51,
+  "new_plan_tests": 12,
+  "cli_smoke_processes": 13,
+  "dev_total": 765,
+  "outcomes": {
+    "refused": 542,
+    "pass": 223
+  },
+  "all_outcomes_identical_to_persistent_task_baseline": true,
+  "baseline_sha256": "648ef73afd1158373b8fd4247035c1edb9ed6c756a35b2763d06e54fae7ec609",
+  "results_sha256": "8162991b03fe58f14dec203b9974b7f59f57f1549a414c601b89e6c210df0ae0",
+  "artifacts": "/home/gsc/.cache/glassmind/yolo-plans",
+  "workspace_checks": "fmt, all-target clippy, release workspace, strict 4/4 fixture smoke",
+  "limitations": "Ordered plans are bounded to four supported operations. No conditional branching or automatic revision yet. Flat legacy DEV scores; new behavior covered by native task tests and real CLI processes."
+}

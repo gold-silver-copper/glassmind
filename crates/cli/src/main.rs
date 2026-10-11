@@ -195,8 +195,8 @@ enum Command {
         /// Persist a coding task and its conversation outside the repository.
         #[arg(long)]
         session: Option<PathBuf>,
-        /// Maximum task stages this turn (1 proposes; 2 also applies and verifies).
-        #[arg(long, default_value_t = 2, value_parser = clap::value_parser!(u8).range(1..=2), requires = "session")]
+        /// Maximum task stages this turn; each proposal and application consumes one.
+        #[arg(long, default_value_t = 4, value_parser = clap::value_parser!(u8).range(1..=8), requires = "session")]
         steps: u8,
         /// Show the whole trace.
         #[arg(long)]
