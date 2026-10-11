@@ -29,6 +29,7 @@ mod coding;
 mod details;
 mod edit;
 mod everyday;
+mod reading;
 mod system;
 mod talk_facts;
 mod talk_stories;
@@ -69,6 +70,27 @@ struct Common {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Propose an unverified answer from a supplied passage, with its source text.
+    Read {
+        /// Local span-ranking model. Predictions are not verified factual answers.
+        #[arg(long)]
+        model: PathBuf,
+        /// UTF-8 passage file (at most 65,536 bytes).
+        #[arg(long, required_unless_present = "input", conflicts_with = "input")]
+        context: Option<PathBuf>,
+        /// JSONL context/question pairs; produces one JSON prediction per line.
+        #[arg(long, conflicts_with_all = ["context", "text", "explain"])]
+        input: Option<PathBuf>,
+        /// Print the typed prediction and source offsets as JSON.
+        #[arg(long)]
+        json: bool,
+        /// Show source offsets and ranking scores (not probabilities).
+        #[arg(long)]
+        explain: bool,
+        /// Question about the passage.
+        #[arg(required_unless_present = "input")]
+        text: Vec<String>,
+    },
     /// Conversation: remember preferences, follow stories, calculate units and dates.
     #[command(
         long_about = "Remember names and preferences, follow story facts, and calculate exact answers.\n\nTry: Mary went to the kitchen. / Mary picked up the apple. / Where is the apple?\nEnter each statement or question on its own line. Use --session FILE to continue later.\n/reset clears memory and story facts; /quit leaves the conversation."
@@ -189,6 +211,21 @@ enum Command {
 fn main() -> ExitCode {
     let cli = Cli::parse();
     let result = match cli.command {
+        Command::Read {
+            model,
+            context,
+            input,
+            json,
+            explain,
+            text,
+        } => reading::run(
+            &model,
+            context.as_deref(),
+            input.as_deref(),
+            &text.join(" "),
+            json,
+            explain,
+        ),
         Command::Talk {
             session,
             model,

@@ -1,0 +1,45 @@
+Running as unit: run-p2516917-i94826522.scope; invocation ID: 5669ef69b38640c892957cc4a72ae0c6
+{
+  "baseline": {
+    "total": 200,
+    "raw": {
+      "exact": 13.0,
+      "f1": 18.813095238095237,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 13.0,
+      "f1": 18.813095238095237,
+      "total": 200
+    },
+    "right": 26,
+    "refused": 0,
+    "wrong": 174,
+    "precision": 0.13,
+    "coverage": 1.0
+  },
+  "candidate": {
+    "total": 200,
+    "raw": {
+      "exact": 23.0,
+      "f1": 31.20875652125652,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 8.0,
+      "f1": 8.844444444444445,
+      "total": 200
+    },
+    "right": 16,
+    "refused": 167,
+    "wrong": 17,
+    "precision": 0.48484848484848486,
+    "coverage": 0.165
+  },
+  "gains_pp": {
+    "exact": 10.0,
+    "f1": 12.395661283161285
+  },
+  "passes_frozen_gate": true,
+  "selection": "SHA256(questionID) ascending; first200 for sample, all10570 for full"
+}
