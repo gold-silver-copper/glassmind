@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims/candidate",
+    "import-wikidata-claims",
+    "--names",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/wikidata-native/native.sqlite",
+    "--claims",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims/claims.sqlite",
+    "--manifest",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims/source-manifest.json",
+    "--database",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/full-claims/native.sqlite"
+  ],
+  "binary_sha256": "b0a86c031e6c83d81af3a5672391f6385b9ec7eb1205743d4d79a7c5677cded7",
+  "manifest_sha256": "782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a1251dba2",
+  "seconds_cap": 21600,
+  "raw_reference_sha256": "3fcd1c82d6fc1563121dc33e0f81b81481ffd773aa89f3e1003e4c56c429e15c",
+  "reference_report_sha256": "e7a3a4d437b24af20549b8f6a1e390f497b3c9ab2c6910982a98a8b860e80475",
+  "audit_seconds_remaining": 3396,
+  "output_bytes_cap": 206158430208,
+  "added_run_bytes_cap": 412316860416
+}

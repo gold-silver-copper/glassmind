@@ -1,4 +1,26 @@
-# Full independent claims release: running, not yet validated
+# Full independent claims release: native ingestion running
+
+Current18:45UTC: acquisition/projection/rawreference COMPLETE; native89022RUNNING.
+No full native success, final independent audit or newgraph QA yet.
+
+Projection29161 COMPLETE exit0:789435443rawrows,364044919statements,46448050
+qualified,1092134757canonical retainedIDs. 25821511680bytes SHA
+7fd86d572ba1f0b91de7cb4165543162195247b164d69363571bbf67c7128622.
+2711.674s supervised,556268KiBpeakRSS,70529619240sampledpeakaddedbytes.
+All resourcegates passed; claims.sqlite0444. Raw8009samples allagree withfinal
+projectionreport, including3647eligible. Database audit remainsrequired.
+
+Preparation18606 COMPLETE exit0. Pinned native binaryb0a86c03..., fullsource
+manifestSHA782d12c471f9af31dfc86878ee3cddeab9609332702c33f0f431dc7a1251dba2
+and originalrawreference before native start. See native-invocation.json.
+Native89022 RUNNING,scopeglassmind-full-claims-native,supervisor1022832,child
+1022833 (verify).21600s/192GiBoutput/384GiBaddedrun,8GiBno swap,ownedprocessgroup,
+TMPDIR/SQLITE_TMPDIR=RUN/tmp. Input projection andnative names are immutable.
+NEXT: monitor existing job; onlyafter native-resources passed makeoutputreadonly.
+Run independentaudit with3396sremaining budget via supervise.py thenwitnesses
+under3600s. Preservefailures andgates; no overwrite/restart/re-fetch.
+
+## Prior execution record (completed statuses above supersede old observations)
 
 Root-owned worktree WORK/full-claims, branchcontinuous/full-claims. No model
 workers, new authentication or model calls. Knownworker tokens unchanged201926299.
