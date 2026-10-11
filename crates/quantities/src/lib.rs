@@ -3,6 +3,7 @@ pub mod calendar;
 pub mod inventory;
 pub mod number_words;
 mod parser;
+mod percent;
 pub mod rational;
 pub mod units;
 

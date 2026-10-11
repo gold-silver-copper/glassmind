@@ -225,3 +225,22 @@ coverage, not independent language data. The main `talk` command improves from
 CLINC intent model. Existing 41 memory checks still pass. Routing all 3,116
 existing synthetic quantity questions through `talk` preserves the standalone
 solver's 3,056 / 60 / 0 result, including 762 expected refusals.
+
+### External word problems: MathQA
+
+[AllenAI MathQA](https://huggingface.co/datasets/allenai/math_qa), parquet
+revision `fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6`; Apache-2.0 per its
+pinned dataset card. Only official train (29,837 rows, 9,013,733 bytes) and
+validation (4,475 rows, 1,350,141 bytes) were downloaded. Official test was
+not downloaded. Exact hashes and bounded fetch URLs are in
+`tools/quantities/reports/source.json`.
+
+Runtime receives question text only, without choices, labels or formulas.
+The development adapter compares exact rational values against numeric gold
+choices, with no tolerance or rounding. This is a custom numeric metric,
+not official multiple-choice accuracy. All 4,475 rows count, including
+1,229 choices outside the adapter's limited numeric normalization.
+Baseline 5 right / 4,469 refused / 1 wrong becomes 14 / 4,458 / 3. The two
+new scored errors are exact mathematical results versus rounded choices;
+they remain counted wrong. Existing synthetic results are unchanged.
+See [full provenance and limitations](../tools/quantities/HANDOFF.md).
