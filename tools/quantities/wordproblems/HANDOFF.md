@@ -2,6 +2,15 @@
 
 Base source: 742cc2a9a0ac501f8de5d93d54f55c6476b168c5. Hypothesis: fully consumed ratio-and-sum clauses over abstract numbers add real coverage with exact checked arithmetic. One representation: RatioTotal { positive rational weights (2–4), positive rational total, selector (ordinal/min/max) }. Adjacent three-number ratios normalize to weights [a*c,b*c,b*d] for a:b and c:d. No entity guessing, units, rounding, choice inputs, labels, or runtime tables.
 
+Coordinator integration source: `6ac211b7452383c52ec3791bee40f0b8f69b31ef`.
+Independent release-binary sample/full replay reproduces every worker answer.
+All 3,116 synthetic status/value/unit outputs match the frozen baseline; all
+five quantity tests and workspace fmt/clippy/build/strict4/4 smoke pass.
+Existing conversation checks remain27/27 with and without the intent model.
+Four independent ratio questions through the main `talk` command improve0→4
+correct in both configurations; memory and prior-calculation recall are preserved.
+Integrated evidence and binary hashes are in `reports/integrated/`.
+
 Grammar (case/whitespace insensitive, punctuation explicitly consumed):
 - `the ratio of COUNT numbers is RATIOS and their sum is TOTAL . QUERY`
 - `COUNT numbers are in the ratio RATIOS [.] [and] [their sum is | add up to give a sum of] TOTAL . QUERY`
@@ -55,7 +64,7 @@ bash tools/quantities/wordproblems/reproduce.sh
 
 The script sets the existing read-only PyArrow path and uses the unchanged MathQA evaluator; writes large outputs only underTMPDIR. `compare.py` runs both binaries on frozen synthetic JSONL and compares every status/value/unit, and audits every baseline/new dev answer. New runtime code has no Python dependency.
 
-Limitations: small scoped dev gain, extensive remaining refusals. Both gained cases share training templates (row882 closely parallels train28122); this demonstrates bounded template generalization, not broad word-problem understanding. Adjacent-chain and rank variants passed train/independent fixtures but added no measured dev answers. Named entities, physical units, negative/zero-total ratios, whole-number feasibility, ratio differences, additional constraints and rounding requests remain unsupported. Checked intermediate overflow can refuse some mathematically representable results. Main talk integration shares this library but was not rebuilt/evaluated here; coordinator must verify it. The development-tool scope clarification is recorded above. No new model configuration/authentication claim is made: no new LLM process was launched.
+Limitations: small scoped dev gain, extensive remaining refusals. Both gained cases share training templates (row882 closely parallels train28122); this demonstrates bounded template generalization, not broad word-problem understanding. Adjacent-chain and rank variants passed train/independent fixtures but added no measured dev answers. Named entities, physical units, negative/zero-total ratios, whole-number feasibility, ratio differences, additional constraints and rounding requests remain unsupported. Checked intermediate overflow can refuse some mathematically representable results. The worker did not rebuild main talk; the coordinator subsequently verified it as recorded above. The development-tool scope clarification is recorded above. No new model configuration/authentication claim is made: no new LLM process was launched.
 
 Final candidate binary SHA256 `2c260e83d08199487c7c194d385b4b91ccb5302ca06d301b289ced2702f4aa5b`.
 Baseline binary SHA256 `80a2120912f95a8266a15d7e756c2cec145fd12ce4b12737e30e6d27e8fa57d2`.

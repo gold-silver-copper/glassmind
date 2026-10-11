@@ -323,3 +323,19 @@ inherited four copy errors across 11 slot-turns remain. All gains use later
 system confirmations; initial indirect destination requests generally remain
 unresolved. Independent training/full replay/legacy/isolation checks reproduce
 worker results. [Span-selection provenance and limits](../tools/dialogue/offers/HANDOFF.md).
+
+
+## Ratio-total MathQA follow-up (2026-10-11 UTC)
+
+The same pinned MathQA train/dev files and unchanged exact-numeric evaluator are
+used; no new downloads or learned model. Training inspection reads only Problem
+text. Three fully consumed clause productions bind two-to-four positive rational
+weights, their total, and an ordinal/min/max selector; checked arithmetic computes
+the requested value. No choices, formulas, IDs or labels enter runtime.
+
+Full dev improves14→16/4,475 correct,4,458→4,456 refused, with3 wrong unchanged.
+All17 old answered records are preserved. The two new answers are400 and60 for
+ratio/sum questions; both share training templates, so this is narrow template
+coverage. First100 stays1/99/0, all3,116 synthetic outputs match the baseline,
+and independent main-talk checks preserve memory/recall. No held-out data read.
+[Full audit, source hashes and reproduction](../tools/quantities/wordproblems/HANDOFF.md).

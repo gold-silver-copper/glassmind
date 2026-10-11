@@ -1,0 +1,206 @@
+[
+  {
+    "binary": "baseline",
+    "intent_model": false,
+    "new_ratio_answers": 0,
+    "total_new_ratio_questions": 4,
+    "memory_and_recall_checks": 3,
+    "responses": [
+      {
+        "kind": "remembered",
+        "text": "I'll call you Mira.",
+        "slot": "Name"
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "recalled",
+        "text": "You said: The sum of three numbers is 26. The ratio of the first to the second is 3:2 and that of the second to the third is 4:3. The third number is?",
+        "source_turn": 5
+      },
+      {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      }
+    ],
+    "binary_sha256": "0227f639013d66fa4befe07f0487590b491b9d30981217f8668821daf895240c"
+  },
+  {
+    "binary": "baseline",
+    "intent_model": true,
+    "new_ratio_answers": 0,
+    "total_new_ratio_questions": 4,
+    "memory_and_recall_checks": 3,
+    "responses": [
+      {
+        "kind": "remembered",
+        "text": "I'll call you Mira.",
+        "slot": "Name"
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "refusal",
+        "text": "I can't answer that from the facts I have. Please give one statement or question at a time. Use /reset and restate the facts.",
+        "answer": null,
+        "reason": "Please give one statement or question at a time. Use /reset and restate the facts."
+      },
+      {
+        "kind": "recalled",
+        "text": "You said: The sum of three numbers is 26. The ratio of the first to the second is 3:2 and that of the second to the third is 4:3. The third number is?",
+        "source_turn": 5
+      },
+      {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      }
+    ],
+    "binary_sha256": "0227f639013d66fa4befe07f0487590b491b9d30981217f8668821daf895240c"
+  },
+  {
+    "binary": "candidate",
+    "intent_model": false,
+    "new_ratio_answers": 4,
+    "total_new_ratio_questions": 4,
+    "memory_and_recall_checks": 3,
+    "responses": [
+      {
+        "kind": "remembered",
+        "text": "I'll call you Mira.",
+        "slot": "Name"
+      },
+      {
+        "kind": "calculated",
+        "text": "140/9",
+        "value": "140/9",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "calculated",
+        "text": "2",
+        "value": "2",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "calculated",
+        "text": "15",
+        "value": "15",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "calculated",
+        "text": "6",
+        "value": "6",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "recalled",
+        "text": "You said: The sum of three numbers is 26. The ratio of the first to the second is 3:2 and that of the second to the third is 4:3. The third number is?",
+        "source_turn": 5
+      },
+      {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      }
+    ],
+    "binary_sha256": "f88241589006d87f021c7774bb16ea6428ed22393b61966d7c77d51784d46ac6"
+  },
+  {
+    "binary": "candidate",
+    "intent_model": true,
+    "new_ratio_answers": 4,
+    "total_new_ratio_questions": 4,
+    "memory_and_recall_checks": 3,
+    "responses": [
+      {
+        "kind": "remembered",
+        "text": "I'll call you Mira.",
+        "slot": "Name"
+      },
+      {
+        "kind": "calculated",
+        "text": "140/9",
+        "value": "140/9",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "calculated",
+        "text": "2",
+        "value": "2",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "calculated",
+        "text": "15",
+        "value": "15",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "calculated",
+        "text": "6",
+        "value": "6",
+        "unit": null,
+        "method": "exact checked ratio and total"
+      },
+      {
+        "kind": "recalled",
+        "text": "You said: The sum of three numbers is 26. The ratio of the first to the second is 3:2 and that of the second to the third is 4:3. The third number is?",
+        "source_turn": 5
+      },
+      {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      }
+    ],
+    "binary_sha256": "f88241589006d87f021c7774bb16ea6428ed22393b61966d7c77d51784d46ac6"
+  }
+]

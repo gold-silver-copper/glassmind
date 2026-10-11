@@ -204,6 +204,19 @@
         "reasoning_output_tokens": 6550
       },
       "source": "Learned system-offer span selection; final sample/full, added-claim audit and frozen replay"
+    },
+    {
+      "track": "wordproblems-continuous",
+      "started_unix": 1791692163.143908,
+      "finished_unix": 1791692352.7263017,
+      "usage": {
+        "input_tokens": 780380,
+        "cached_input_tokens": 726400,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12860,
+        "reasoning_output_tokens": 1729
+      },
+      "source": "Exact ratio totals; MathQA14\u219216 correct, exhaustive new-answer and frozen synthetic audit"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

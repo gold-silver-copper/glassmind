@@ -174,21 +174,24 @@ A clippy collapsible-if failure is being fixed. Candidate NOT accepted.
 No extra service/worker/model calls. GPT6Astra fastChatGPT login confirmed.
 Parentmustfull765beforepublishingcandidate. Run artifacts ownTMPDIR/target.
 
-**Active worker: wordproblems**, launcherPID1990887, scope
-`glassmind-continuous-wordproblems.scope`, worktree `WORK/wordproblems`,
-base `742cc2a`. Owns crates/quantities and newtools/quantities/wordproblems.
-Selected family: two-to-four-number ratio totals, ordinal/largest/smallest
-queries and three-number adjacent-ratio chains, fromTRAIN Problemtext. Baseline
-first100/full independently reproduced; representation fixedbeforeediting.
-Noformula/rationale
-inspection, noansweroptions at runtime, checkedrational/units andfullconsumption.
-BaselineMathQA14right4458refused3wrong/4475; first1001/99/0; synthetic3056right
-(including762expectedrefusals)60refused0wrong/3116. Fixedsamplemustnotregress,
-fullcorrectmustincrease, preserveoldcorrect andsyntheticoutputs; auditallnew
-answers includingroundingmismatchesaswrong. No dev-specific answer patterns.
-Existingraw train/devParquet+PyArrow read-only fromWORK/quantities-run/tmp;
-zero new downloads. ModelGPT6Astrafast/ChatGPT/noAPIkeys,8GiB0swap,j1.
-Report tools/quantities/wordproblems/HANDOFF.md; no manifest/CLI/scorerchanges.
+**Wordproblems worker COMPLETE**, scopeinactive/authremoved; source/reports
+archived `WORK/wordproblems-run/submitted/`; worktree retainedpendingcleanup.
+Integratedsource `6ac211b7452383c52ec3791bee40f0b8f69b31ef`: fully consumed
+ratio totals over2–4 positive rational weights; ordinal/rankqueries andadjacent
+three-number chains. MathQAfull14→16right,4458→4456refused,3wrong unchanged;
+all17oldansweredrecords preserved; fixedfirst1001/99/0 unchanged. Bothnewdev
+answers sharetrainingtemplates, notbroadwordproblemunderstanding. All3116
+syntheticstatus/value/unitoutputs unchanged. Coordinatorindependentfull/sample
+replay identical toworker. Main talk4newindependentratioquestions0→4correct
+with/withoutmodel;3memory/recall checks preserved; old27/27 each unchanged.
+Fivequantitytests +workspacefmt/clippy/release/strict4/4smoke pass. Completed
+sessions11570,48624,99520,37727; DO NOT repoll/restart. Integratedreports at
+`tools/quantities/wordproblems/reports/integrated/`, frozenartifacts
+`WORK/coordinator/ratio-check/`. Sourcehash/binaryhashes in validation.json.
+Worker flaggedreadinglocalvisible syntheticdevadapter asprohibited; parent
+clarifiedgoalpermits this repository-visible development tooling, withnohidden
+orheldoutdata access. Archive retainsoriginalreport; frozenJSONLusedforregression.
+Readyforpublication; no additionalcodeverificationneeded unless sourcechanges.
 
 Retained SGD train/dev150files504306737bytes, pinned
 e852981ae34990f4358979625854259302feaa78,CC-BY-SA4, source+selection hashes:
@@ -220,7 +223,7 @@ were removed and worktrees removed. All quantity/facts files were verified
 against integrated files before removal. Original coding submission is
 archived in `WORK/coding-run/submitted` because coordinator guards differ.
 Their logs, targets, development outputs and data remain in `*-run/`.
-Known completed worker tokens:36,747,202 including cached input; parent and
+Known completed worker tokens:37,540,442 including cached input; parent and
 unfinished worker usage excluded. Update `docs/results/worker-usage.json`
 once per newly completed worker, without double-counting.
 
@@ -235,8 +238,8 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 1. PR8 merged after green CI; no publishing or benchmark work remains for it.
    README/data/scoreboard updated; reports identify exact evaluated source.
-2. PR9 merged and all independentreplay/checks complete; no pendingpublishing.
-   Review packages/wordproblems when done, verifyacceptedchanges andcontinue.
+2. PR9 merged. Publish verified ratio-total source6ac211b and evidence next;
+   review packages finalhandoff, integrate and full765dev beforepublishing it.
 3. Next coding experiment: dev rename requests parse but refuse. Permitted
    workspace sources expose library+binary roots, docs/derive attributes and
    reexports that the closed resolver rejects. Investigate a sound bounded
