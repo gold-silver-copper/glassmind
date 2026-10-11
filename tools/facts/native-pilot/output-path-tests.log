@@ -1,0 +1,81 @@
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/wikidata-native/crates/facts)
+    Finished `release` profile [optimized + debuginfo] target(s) in 26.56s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/deps/glassmind_facts-0060820f4162ae73)
+
+running 7 tests
+test tests::descriptive_aliases_still_ignore_case ... ok
+test tests::explicit_lowercase_alias_remains_valid ... ok
+test tests::bounded_sets_preserve_legacy_refusal_and_relation_guards ... ok
+test tests::longest_alias_and_ambiguity_are_preserved ... ok
+test tests::uppercase_alias_does_not_match_an_ordinary_word ... ok
+test tests::rejected_acronym_does_not_resolve_ambiguity_or_expose_shorter_alias ... ok
+test disk::tests::exhausted_work_budget_returns_no_partial_set_and_next_request_recovers ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/deps/glassmind_facts-41a6aa7be98b89bd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/disk.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/deps/disk-92ebc247995ce989)
+
+running 5 tests
+test forward_inverse_cardinality_order_and_refusals_match ... ok
+test unicode_alias_ties_and_acronym_case_match_the_existing_store ... ok
+test commands_preserve_stream_rows_and_fail_closed_on_oversized_input ... ok
+test connection_keeps_one_snapshot_across_external_wal_commits ... ok
+test invalid_schema_input_limits_and_failed_query_recovery ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/matching.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/deps/matching-99a7d49fa38c8256)
+
+running 5 tests
+test graph_cannot_disambiguate_and_truncation_follows_intersection ... ok
+test reserved_separator_alias_is_refused_without_using_claims ... ok
+test typed_constraints_order_duplicates_and_graph_order_invariant ... ok
+test typed_invalid_endpoints_and_complete_parse ... ok
+test frozen_contracts_exact_sets_and_witnesses ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/parent_matching.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/deps/parent_matching-4412af7a2f0b95b8)
+
+running 1 test
+test independent_matching_contracts_including_nul ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/pilot.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/release/deps/pilot-0417e60879ff3a4b)
+
+running 3 tests
+test native_projection_preserves_witnesses_provenance_and_json_link_semantics ... ok
+test command_line_import_reopens_and_preserves_version_one_output_shape ... FAILED
+test hash_mapping_and_invalid_rows_fail_without_usable_partial_output ... ok
+
+failures:
+
+---- command_line_import_reopens_and_preserves_version_one_output_shape stdout ----
+
+thread 'command_line_import_reopens_and_preserves_version_one_output_shape' (750767) panicked at crates/facts/tests/pilot.rs:241:5:
+{"seconds":0.000053871,"stage":"source hash verified"}
+{"seconds":0.000412355,"stage":"source rows validated"}
+{"seconds":0.000617952,"stage":"entities loaded"}
+{"seconds":0.0007074,"stage":"native aliases loaded"}
+{"seconds":0.000737036,"stage":"edges and statement witnesses loaded"}
+{"seconds":0.000769106,"stage":"secondary indexes built"}
+{"seconds":0.000835461,"stage":"integrity and references checked"}
+{"seconds":0.002973148,"stage":"committed"}
+access mode not allowed: rw
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    command_line_import_reopens_and_preserves_version_one_output_shape
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+error: test failed, to rerun pass `-p glassmind-facts --test pilot`

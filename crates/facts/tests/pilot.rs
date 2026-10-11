@@ -222,5 +222,52 @@ fn command_line_import_reopens_and_preserves_version_one_output_shape() -> Resul
     let info = serde_json::to_value(v1.info())?;
     assert_eq!(info.as_object().map(|o| o.len()), Some(4));
     assert!(info["source_json_sha256"].is_string());
+    // URI support for attaching the source must not reinterpret an output name
+    // and write to a different pre-existing database.
+    let existing = fixture.root.join("existing.sqlite");
+    Connection::open(&existing)?.execute_batch(
+        "CREATE TABLE sentinel(value TEXT); INSERT INTO sentinel VALUES ('untouched');",
+    )?;
+    let before = hash(&existing)?;
+    let literal = "file:existing.sqlite?mode=rw";
+    let result = std::process::Command::new(env!("CARGO_BIN_EXE_glassmind-facts"))
+        .current_dir(&fixture.root)
+        .args(["import-wikidata-pilot", "--pilot"])
+        .arg(&fixture.source)
+        .arg("--manifest")
+        .arg(&fixture.manifest)
+        .args(["--database", literal])
+        .output()?;
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    assert_eq!(hash(&existing)?, before);
+    assert_eq!(
+        DiskStore::open(&fixture.root.join(literal))?.info().edges,
+        2
+    );
+    let index = fixture.root.join("empty.json");
+    std::fs::write(&index, br#"{"entities":{}}"#)?;
+    let literal_v1 = "file:existing.sqlite?mode=rwc";
+    let result = std::process::Command::new(env!("CARGO_BIN_EXE_glassmind-facts"))
+        .current_dir(&fixture.root)
+        .args(["index-disk", "--index"])
+        .arg(&index)
+        .args(["--database", literal_v1])
+        .output()?;
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    assert_eq!(hash(&existing)?, before);
+    assert_eq!(
+        DiskStore::open(&fixture.root.join(literal_v1))?
+            .info()
+            .entities,
+        0
+    );
     Ok(())
 }

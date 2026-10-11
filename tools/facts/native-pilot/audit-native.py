@@ -107,7 +107,7 @@ def main():
     with MODEL.open('rb') as stream:
         assert hashlib.file_digest(stream, 'sha256').hexdigest() == 'db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6'
     query_start = time.monotonic()
-    subprocess.run(['python3', str(ROOT / 'measure-query.py')], check=True, timeout=120)
+    subprocess.run(['timeout', '--kill-after=10s', '120s', 'python3', str(ROOT / 'measure-query.py')], check=True)
     query_seconds = time.monotonic() - query_start
     outputs = [json.loads(line) for line in (ROOT / 'source-name-predictions.jsonl').read_text().splitlines()]
     assert len(outputs) == len(expected_entities)

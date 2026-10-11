@@ -130,7 +130,7 @@ impl DiskStore {
             .open(output)
             .map_err(error)?;
         let mut db = Connection::open_with_flags(
-            output,
+            output.canonicalize().map_err(error)?,
             OpenFlags::SQLITE_OPEN_READ_WRITE | OpenFlags::SQLITE_OPEN_NO_MUTEX,
         )
         .map_err(error)?;
@@ -194,7 +194,7 @@ impl DiskStore {
     /// resolution and edges cannot drift between requests if a writer commits.
     pub fn open(path: &Path) -> Result<Self, String> {
         let db = Connection::open_with_flags(
-            path,
+            path.canonicalize().map_err(error)?,
             OpenFlags::SQLITE_OPEN_READ_ONLY | OpenFlags::SQLITE_OPEN_NO_MUTEX,
         )
         .map_err(error)?;

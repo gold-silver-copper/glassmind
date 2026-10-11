@@ -215,8 +215,11 @@ pub fn import_file(pilot: &Path, manifest_path: &Path, output: &Path) -> Result<
         .create_new(true)
         .open(output)
         .map_err(error)?;
+    // URI parsing is required for the read-only attachment, but the output is
+    // always a literal filesystem path, including names starting with "file:".
+    let reserved_output = output.canonicalize().map_err(error)?;
     let mut db = Connection::open_with_flags(
-        output,
+        &reserved_output,
         OpenFlags::SQLITE_OPEN_READ_WRITE
             | OpenFlags::SQLITE_OPEN_NO_MUTEX
             | OpenFlags::SQLITE_OPEN_URI,
