@@ -5,7 +5,7 @@ WORK=/home/gsc/.cache/glassmind/continuous-20261010.
 Known completed-worker tokens:201926299, cached input counted once; parent and
 interrupted usage excluded. No model workers, teacher calls or auth mounts.
 
-## Current jobs,18:47UTC
+## Current jobs,18:52UTC
 
 Fullclaims WORK/full-claims branchcontinuous/full-claims headaee93d4. RUN=WORK/
 coordinator/full-claims. Acquisition,projection,rawreference COMPLETE. Projection
@@ -27,34 +27,26 @@ thenwitnesses.py3600s; bothviasupervise.py+8GiB0swap+setsid--waittimeout.
 No fullnative success/finalaudit/newgraphQA yet. Keepoldartifactsimmutable.
 Readworktree tools/facts/full-claims/PROGRESS.md andVALIDATION-PLAN.md.
 
-Coding WORK/word-initials branchcontinuous/word-initials head377beda.
-RUN=WORK/coordinator/word-initials. Plan53ce67b frozenbeforecode; runtime23e7525
-adds12signature-only &str->String compositions: wordfirstchar,optionalUnicode
-alphabeticfilter/caseconversion,bothwordorders. Retains6oldcandidates,32/90s
-budgets,exactlyonesurvivor,targetexecution/livecheck/rollback. No grammar change.
-CandidateSHAefb48471993e9fb63181a7f171ffef428ef8938e24f29af20f5192a59d5b101b.
-Central target/release/glassmind nowhasthiscandidate, root sourcesnotintegratedyet.
-Previousb04binary preserved atRUN/baseline andcoordinator/word-join/candidate.
-
-ALLpreDEVgates pass;tools/coding-word-initials/pre-dev.json pins evidence.
-23nativecases:12new+5oldimplementations,6refusals. Weakcase4passingcandidates
-correctlyrefused.30oldsourceoutcomes identical(20oldnative+10wordjoin).
-Independent18and18unsettarget+10extra allpass; existing76checks includesunset
-repeats.59worldtests,workspacefmt/alltargetclippy/release/strict4smoke pass.
-All17acceptednativeoutputs independentlyrecompiled/verifierevidenceverified.
-TRAIN9sample6accepted; full60:6acceptedvs5; all5oldsourceoutputs byteidentical;
-onlygaininitials/terse fromsuppliedTRAIN, notunseen-taskgeneralization. All6accepted
-TRAIN independentlyrecompiled andtargetexecution/uniquechoice/livechecks verified.
-All43retainedTRAINsourcefiles hashverified; no newdata/hiddeninspection/modelcalls.
-
-Full765DEV73728 RUNNING viaunchangedtools/rustbench-dev.sh:8GiB0swap/3600s/jobs1,
-ownfull765/native-target+check-cache. No runtimeedits whileit runs.
-NEXT: oncompletion runtools/coding-word-initials/compare-full.py --before
-WORK/coordinator/word-join/full765/results.jsonl --after RUN/full765/results.jsonl
---binary RUN/candidate --out RUN/full765/comparison.json. Gate retainall220,
-pass>=221,0fail. Thenifpass review/integratebyteidenticalsources, reportexactresults,
-updateREADME/docs/scorejournal andpublish/mergeexactreviewedgreenhead. No shipping
-claimyet. See worktreePROGRESS forcompleted sessions andsourcehashes.
+Coding wordinitials fullDEV COMPLETE and integrated; publicationnext.
+WORK/word-initials cleanhead5a45bd7; rootmerge7c034b0 matchesall196evaluated
+crate/source/manifest/lockfiles and exactbinarySHA
+efb48471993e9fb63181a7f171ffef428ef8938e24f29af20f5192a59d5b101b.
+Runtime23e7525 adds18lines ofsignature-only wordfirstchar/filter/case/order
+compositions. No grammar,budget,verifier or testchange.
+Full765DEV73728 COMPLETE:221passes544refusals0failures;all220priorpassesretained.
+Onlygaininitials/terse,alsoinTRAIN. ResultSHA
+f9554a39072279faad89ec977f12cacb6f4d6afe9e4e23551b59b4a3b9e476b8.
+TRAIN6/60vs5, all5oldsuccessfuloutputsbyteidentical; sample6/9.
+13newnativechecks(12impl+1weakambiguity) and76existingchecks pass, including18
+repeatcases withunsettarget. All30oldsourceoutcomesidentical. All17accepted
+authoredoutputs and6TRAINoutputs independentlyrecompiled/verifierevidenceverified.
+59worldtests andworkspacefmt/clippy/release/strict4smoke pass. Allcodingjobs
+terminal. No need to rerunidenticalsources. Tools/coding-word-initials/PARENT.md,
+pre-dev.json,source-review.json,integration.json preserve exactevidence.
+README/docs/scorejournal now221. Previousb04baseline preserved externally.
+NEXT: pushcoherentbatch, openPR, inspectCI for exactreviewedheadandmergeonlygreen.
+Continue monitoringnativeclaims89022; rawprovenance/storageaudit remainsindependent
+andmustpass beforeanynewgraphQA. No newmodelworkers/accountcalls.
 
 ## PR50 merged: word joining shipped
 

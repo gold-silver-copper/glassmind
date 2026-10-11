@@ -44,3 +44,7 @@ FullDEV73728 COMPLETE exit0:221passes544refusals0failures,all220oldpassesretaine
 Onlytransitioninitials/terse,alsoTRAIN. Frozencompare-full.py gatepasses.
 Runtime andcandidate unchanged; PARENT.md carriesfullreview. Nextintegrateexact
 sources, recordscore,publish andmergeonlyexactreviewedgreenPRhead.
+
+Integrated centrally in7c034b0; all196crate/manifest/lockfiles and executable
+match evaluatedworktree exactly. No repeatedbenchmark needed foridenticalinputs.
+README, verifiedimplementationdocs andscorejournal now221/765. Publicationnext.

@@ -47,3 +47,7 @@ are pinned before the full DEV result. Original artifacts remain under
 `/home/gsc/.cache/glassmind/continuous-20261010/coordinator/word-initials`.
 Known completed-worker usage remains 201,926,299 tokens, cached input counted
 once; parent/interrupted usage is excluded. The continuous goal remains active.
+
+Integration merge `7c034b0` preserves all 196 evaluated crate source, manifest
+and lock files byte-for-byte. The central executable has the same evaluated
+SHA256; [integration evidence](integration.json) records the comparison.
