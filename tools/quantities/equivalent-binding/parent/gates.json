@@ -1,0 +1,13 @@
+{
+  "split": "original TRAIN clean CAL",
+  "rows": 1182,
+  "operand_decisions": 4138,
+  "free_numeric_min": 168,
+  "oracle_numeric_min": 251,
+  "strictly_exceed_singleton_control_free_and_oracle": true,
+  "equivalent_teacher_min_gain_count": 125,
+  "teacher_comparators": ["original", "matched_singleton_control"],
+  "teacher_left": "Predicted left given gold operation and prefix belongs to projection of formal target pairs",
+  "teacher_right": "Predicted right given gold operation, GOLD left and prefix belongs to formal pairs restricted to that gold left",
+  "semantics": "Continuation evidence only; no selection, DEV or production acceptance"
+}

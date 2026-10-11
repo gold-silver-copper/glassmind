@@ -1,0 +1,322 @@
+{
+  "valid": [
+    {
+      "name": "add_commutes",
+      "input_count": 3,
+      "prefix": [],
+      "op": "add",
+      "left": 0,
+      "right": 1,
+      "expected_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "multiply_commutes",
+      "input_count": 3,
+      "prefix": [],
+      "op": "multiply",
+      "left": 0,
+      "right": 1,
+      "expected_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "subtract_ordered",
+      "input_count": 3,
+      "prefix": [],
+      "op": "subtract",
+      "left": 0,
+      "right": 1,
+      "expected_pairs": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "divide_ordered",
+      "input_count": 3,
+      "prefix": [],
+      "op": "divide",
+      "left": 0,
+      "right": 1,
+      "expected_pairs": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "equal_value_distinct_inputs",
+      "input_count": 2,
+      "prefix": [],
+      "op": "add",
+      "left": 0,
+      "right": 0,
+      "expected_pairs": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "input_one_not_constant_one",
+      "input_count": 1,
+      "prefix": [],
+      "op": "add",
+      "left": 0,
+      "right": 17,
+      "expected_pairs": [
+        [
+          0,
+          17
+        ],
+        [
+          17,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "duplicate_prior_trees",
+      "input_count": 3,
+      "prefix": [
+        {
+          "op": "add",
+          "left": 0,
+          "right": 1
+        },
+        {
+          "op": "add",
+          "left": 1,
+          "right": 0
+        }
+      ],
+      "op": "subtract",
+      "left": 36,
+      "right": 37,
+      "expected_pairs": [
+        [
+          36,
+          36
+        ],
+        [
+          36,
+          37
+        ],
+        [
+          37,
+          36
+        ],
+        [
+          37,
+          37
+        ]
+      ]
+    },
+    {
+      "name": "nested_commutation",
+      "input_count": 3,
+      "prefix": [
+        {
+          "op": "subtract",
+          "left": 0,
+          "right": 1
+        },
+        {
+          "op": "subtract",
+          "left": 1,
+          "right": 0
+        }
+      ],
+      "op": "multiply",
+      "left": 36,
+      "right": 37,
+      "expected_pairs": [
+        [
+          36,
+          37
+        ],
+        [
+          37,
+          36
+        ]
+      ]
+    },
+    {
+      "name": "ordered_prior_different",
+      "input_count": 3,
+      "prefix": [
+        {
+          "op": "subtract",
+          "left": 0,
+          "right": 1
+        },
+        {
+          "op": "subtract",
+          "left": 1,
+          "right": 0
+        }
+      ],
+      "op": "add",
+      "left": 0,
+      "right": 36,
+      "expected_pairs": [
+        [
+          0,
+          36
+        ],
+        [
+          36,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "association_not_admitted",
+      "input_count": 3,
+      "prefix": [
+        {
+          "op": "add",
+          "left": 0,
+          "right": 1
+        },
+        {
+          "op": "add",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "op": "add",
+          "left": 36,
+          "right": 2
+        },
+        {
+          "op": "add",
+          "left": 0,
+          "right": 37
+        }
+      ],
+      "op": "divide",
+      "left": 38,
+      "right": 39,
+      "expected_pairs": [
+        [
+          38,
+          39
+        ]
+      ]
+    },
+    {
+      "name": "cancellation_not_admitted",
+      "input_count": 3,
+      "prefix": [
+        {
+          "op": "divide",
+          "left": 0,
+          "right": 0
+        }
+      ],
+      "op": "add",
+      "left": 36,
+      "right": 17,
+      "expected_pairs": [
+        [
+          17,
+          36
+        ],
+        [
+          36,
+          17
+        ]
+      ]
+    },
+    {
+      "name": "rational_constant_atom",
+      "input_count": 1,
+      "prefix": [],
+      "op": "multiply",
+      "left": 0,
+      "right": 33,
+      "expected_pairs": [
+        [
+          0,
+          33
+        ],
+        [
+          33,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "zero_multiplication_not_collapsed",
+      "input_count": 3,
+      "prefix": [
+        {
+          "op": "multiply",
+          "left": 0,
+          "right": 16
+        }
+      ],
+      "op": "add",
+      "left": 36,
+      "right": 16,
+      "expected_pairs": [
+        [
+          16,
+          36
+        ],
+        [
+          36,
+          16
+        ]
+      ]
+    }
+  ],
+  "invalid": [
+    {
+      "name": "missing_input",
+      "input_count": 1,
+      "prefix": [],
+      "op": "add",
+      "left": 1,
+      "right": 0
+    },
+    {
+      "name": "forward_step",
+      "input_count": 1,
+      "prefix": [],
+      "op": "add",
+      "left": 36,
+      "right": 0
+    },
+    {
+      "name": "invalid_constant",
+      "input_count": 1,
+      "prefix": [],
+      "op": "add",
+      "left": 99,
+      "right": 0
+    }
+  ]
+}
