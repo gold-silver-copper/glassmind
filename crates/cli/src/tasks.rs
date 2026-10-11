@@ -525,20 +525,6 @@ pub fn run(
                 session.conversation.turns.clear();
                 "Task cancelled; no pending action will run.".into()
             }
-            _ if glassmind_english_rust::add_fields::request(text).is_some() => {
-                if let Some(task) = &mut session.task
-                    && matches!(
-                        task.status,
-                        TaskStatus::Ready | TaskStatus::Blocked | TaskStatus::Revising
-                    )
-                {
-                    task.status = TaskStatus::Cancelled;
-                }
-                if let Some(plan) = &mut session.plan {
-                    plan.status = TaskStatus::Cancelled;
-                }
-                "This action is not yet supported in a persistent task. Use do without --session for adding fields.".into()
-            }
             _ if glassmind_english::selection::request(text).is_some() => {
                 let selection =
                     glassmind_english::selection::request(text).ok_or("selection missing")?;
@@ -1111,7 +1097,8 @@ mod tests {
         let f = Fixture::new(SOURCE);
         f.turn(1, "rename Parcel to Package then rename Bundle to Shipment");
         f.turn(2, "add public field count: u32 to Parcel");
-        assert_eq!(f.state().plan.unwrap().status, TaskStatus::Cancelled);
+        assert!(f.state().plan.is_none());
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Cancelled);
         f.turn(8, "continue");
         assert_eq!(f.source(), SOURCE);
     }
@@ -1706,5 +1693,142 @@ mod tests {
         assert!(f.source().contains("fn total("));
         assert!(f.source().contains(".sum()"));
         assert!(!f.source().contains("todo!()"));
+    }
+    const FIELD_SOURCE: &str = "pub struct Parcel { pub value: u8 }\npub fn make() -> Parcel { Parcel { value: 9 } }\n#[cfg(test)] mod tests { use super::*; #[test] fn keeps_value() { assert_eq!(make().value, 9); } }\n";
+    const FIELD_REQUEST: &str =
+        "Add public field weight: u16 to Parcel; use 7 for all existing constructors";
+
+    #[test]
+    fn field_specification_survives_restart_apply_and_undo() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(1, FIELD_REQUEST);
+        let task = f.state().task.unwrap();
+        assert_eq!(task.status, TaskStatus::Ready);
+        assert!(
+            matches!(task.request, Action::AddMember { member, .. } if member.name == "weight" && member.ty == "u16" && member.default == "7")
+        );
+        assert_eq!(f.source(), FIELD_SOURCE);
+        f.turn(1, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("pub weight: u16"));
+        assert!(f.source().contains("weight: 7"));
+        f.turn(1, "undo");
+        assert_eq!(f.source(), FIELD_SOURCE);
+    }
+
+    #[test]
+    fn field_plan_groups_specification_clauses_before_executing() {
+        // Existing type renaming supports inert test attributes, but deliberately
+        // rejects cfg modules and opaque assertion macros. Exercise its supported
+        // subset here; the separate test below retains the rejection boundary.
+        let source = "pub struct Parcel { pub value: u8 }\npub fn make() -> Parcel { Parcel { value: 9 } }\n#[test] fn keeps_value() -> Result<(), String> { if make().value == 9 { Ok(()) } else { Err(String::from(\"value changed\")) } }\n";
+        let f = Fixture::new(source);
+        f.turn(
+            8,
+            &format!("{FIELD_REQUEST}; then rename it to Packet; then check the tests"),
+        );
+        let state = f.state();
+        let plan = state.plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Completed);
+        assert_eq!(plan.current, 3);
+        assert!(f.source().contains("struct Packet"));
+        assert!(f.source().contains("weight: 7"));
+    }
+
+    #[test]
+    fn field_owner_correction_retains_type_and_default() {
+        let source = format!("pub struct Other {{ pub value: u8 }}\n{FIELD_SOURCE}");
+        let f = Fixture::new(&source);
+        f.turn(1, FIELD_REQUEST);
+        f.turn(2, "sorry, I meant `Other`");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("pub weight: u16"));
+        assert!(f.source().contains("struct Parcel { pub value: u8 }"));
+    }
+
+    #[test]
+    fn field_followup_uses_the_prior_struct() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(1, "where is Parcel?");
+        f.turn(
+            2,
+            "Add pub ready: bool to it. Use true for every existing constructor.",
+        );
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Completed);
+        assert!(f.source().contains("pub ready: bool"));
+        assert!(f.source().contains("ready: true"));
+    }
+
+    #[test]
+    fn unsupported_field_constraints_never_apply_a_partial_plan() {
+        for suffix in [
+            "; use 8 for all existing constructors",
+            "; then delete every file",
+            "; then do not add the field",
+        ] {
+            let f = Fixture::new(FIELD_SOURCE);
+            f.turn(8, &format!("{FIELD_REQUEST}{suffix}"));
+            assert_eq!(f.source(), FIELD_SOURCE);
+            assert!(f.state().plan.is_none());
+        }
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(2, "Add pub weight: u16 to Parcel");
+        assert_eq!(f.source(), FIELD_SOURCE);
+    }
+
+    #[test]
+    fn field_patches_are_reproved_and_external_changes_invalidate_them() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(1, FIELD_REQUEST);
+        let mut state = f.state();
+        let Reply::Patch { changes, .. } = &mut state
+            .task
+            .as_mut()
+            .unwrap()
+            .events
+            .last_mut()
+            .unwrap()
+            .result
+        else {
+            panic!("missing patch")
+        };
+        changes.first_mut().unwrap().new.push_str("// unproved");
+        save(&f.session, &state).unwrap();
+        f.turn(2, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), FIELD_SOURCE);
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(1, FIELD_REQUEST);
+        let changed = format!("{FIELD_SOURCE}// external\n");
+        fs::write(f.root.join("src/lib.rs"), &changed).unwrap();
+        f.turn(2, "continue");
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Stale);
+        assert_eq!(f.source(), changed);
+    }
+    #[test]
+    fn invalid_field_type_default_and_failed_tests_leave_source_intact() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(
+            2,
+            "Add pub code: u8 to Parcel. Use 999 for all existing constructors.",
+        );
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        assert_eq!(f.source(), FIELD_SOURCE);
+        let failed = FIELD_SOURCE.replace("make().value, 9", "make().value, 8");
+        let f = Fixture::new(&failed);
+        f.turn(2, FIELD_REQUEST);
+        assert_eq!(f.state().task.unwrap().status, TaskStatus::Blocked);
+        assert_eq!(f.source(), failed);
+    }
+
+    #[test]
+    fn field_plan_does_not_bypass_type_rename_proof_limits() {
+        let f = Fixture::new(FIELD_SOURCE);
+        f.turn(8, &format!("{FIELD_REQUEST}; then rename it to Packet"));
+        let plan = f.state().plan.unwrap();
+        assert_eq!(plan.status, TaskStatus::Blocked);
+        assert_eq!(plan.current, 1);
+        assert!(f.source().contains("struct Parcel"));
+        assert!(f.source().contains("weight: 7"));
     }
 }

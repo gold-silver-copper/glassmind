@@ -49,6 +49,7 @@ use index::SourceIndex;
 pub struct Rust;
 
 impl Ontology for Rust {
+    type Member = add_fields::PublicField;
     type Kind = RustKind;
     type Relation = RustRelation;
     type Item = RustItem;
@@ -863,6 +864,11 @@ impl World<Rust> for RustWorld {
         let (thing, kind, name) = match action {
             Action::Rename { thing, kind, name } => (thing, kind, name),
             Action::Repair(check) => return self.remedy(check, fired),
+            Action::AddMember { .. } => {
+                return self
+                    .propose_typed_field(action)
+                    .map_err(|reason| Trouble::ActionFailed { reason });
+            }
             Action::Implement { .. } => {
                 return self
                     .propose_typed_implementation(action)
@@ -1096,6 +1102,17 @@ impl World<Rust> for RustWorld {
     fn apply(&self, proposal: &Reply<Rust>, fired: &mut Vec<RuleInfo>) -> Found<Reply<Rust>> {
         if !self.switches.on(APPLY_CHANGES.id) {
             return Err(Unsupported);
+        }
+        if matches!(
+            proposal,
+            Reply::Patch {
+                action: Action::AddMember { .. },
+                ..
+            }
+        ) {
+            return self
+                .apply_typed_field(proposal)
+                .map_err(|reason| Trouble::ActionFailed { reason });
         }
         if matches!(proposal, Reply::Patch { .. }) {
             return self

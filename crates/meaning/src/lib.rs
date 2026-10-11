@@ -38,6 +38,8 @@ pub trait Ontology: Copy + Eq + Ord + Hash + Debug + Default + 'static {
     type Check: Concept;
     /// One change to the world's data, such as replacing text in a file.
     type Change: Concept;
+    /// A world-specific specification for adding a member to an existing thing.
+    type Member: Concept;
 }
 
 /// The bounds every concept a world defines must meet.
@@ -162,6 +164,8 @@ pub enum Selection {
 pub enum Action<O: Ontology> {
     /// Supply an implementation for a declared, unresolved target.
     Implement { thing: Thing<O> },
+    /// Add a member while retaining its world-typed specification.
+    AddMember { thing: Thing<O>, member: O::Member },
     /// Give the thing a new name wherever it is named; `kind`, if given, is
     /// what the user said it is. `name` is `None` when the user asks for a
     /// rename without saying the new name.
@@ -340,7 +344,11 @@ impl<O: Ontology> Utterance<O> {
                 d.conditions.iter().filter_map(Condition::other).collect()
             }
             Utterance::Ask(Question::Locate { thing, .. } | Question::Describe { thing, .. })
-            | Utterance::Command(Action::Rename { thing, .. } | Action::Implement { thing })
+            | Utterance::Command(
+                Action::Rename { thing, .. }
+                | Action::Implement { thing }
+                | Action::AddMember { thing, .. },
+            )
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => vec![thing],
             Utterance::Ask(Question::Passes(_) | Question::Problems(_))
@@ -362,7 +370,11 @@ impl<O: Ontology> Utterance<O> {
     pub fn things_within(&self, within: &dyn Fn(&Description<O>) -> bool) -> Vec<&Thing<O>> {
         match self {
             Utterance::Ask(q) => q.things_within(within),
-            Utterance::Command(Action::Rename { thing, .. } | Action::Implement { thing })
+            Utterance::Command(
+                Action::Rename { thing, .. }
+                | Action::Implement { thing }
+                | Action::AddMember { thing, .. },
+            )
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => thing.things_within(within),
             Utterance::Command(Action::Repair(_))
@@ -379,7 +391,11 @@ impl<O: Ontology> Utterance<O> {
         let mut out = self.clone();
         match &mut out {
             Utterance::Ask(q) => *q = q.map_things(f),
-            Utterance::Command(Action::Rename { thing, .. } | Action::Implement { thing })
+            Utterance::Command(
+                Action::Rename { thing, .. }
+                | Action::Implement { thing }
+                | Action::AddMember { thing, .. },
+            )
             | Utterance::Tell(Fact::Alias { thing, .. })
             | Utterance::Correct(thing) => *thing = thing.map_things(f),
             Utterance::Command(Action::Repair(_))
@@ -556,11 +572,14 @@ impl<O: Ontology> Reply<O> {
                 ..
             }
             | Reply::Patch {
-                action: Action::Implement { thing } | Action::Rename { thing, .. },
+                action:
+                    Action::Implement { thing }
+                    | Action::Rename { thing, .. }
+                    | Action::AddMember { thing, .. },
                 ..
             }
             | Reply::Reason {
-                action: Action::Implement { thing },
+                action: Action::Implement { thing } | Action::AddMember { thing, .. },
                 ..
             }
             | Reply::Noted(Fact::Alias { thing, .. }) => thing.item().into_iter().collect(),

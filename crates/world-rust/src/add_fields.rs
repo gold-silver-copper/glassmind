@@ -1,4 +1,5 @@
 //! Checked, source-preserving field addition over a closed package graph.
+use crate::{APPLY_CHANGES, RUN_CHECK, Rust, RustKind};
 use crate::{
     RustWorld,
     checks::{self, RustChange, RustCheck},
@@ -6,7 +7,18 @@ use crate::{
     rename_package::{Package, inert},
     rename_types::Module,
 };
+use glassmind_meaning::{Action, Name, Reply, Thing, interface::World};
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
+
+/// Explicit public field and the literal used at every existing constructor.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+pub struct PublicField {
+    pub name: String,
+    pub ty: String,
+    pub default: String,
+}
+
 use syn::{parse::Parser, visit::Visit};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -82,6 +94,94 @@ fn scalar(a: &AddField) -> Result<(), String> {
 }
 
 impl RustWorld {
+    fn typed_field(&self, action: &Action<Rust>) -> Result<AddField, String> {
+        if !self.switches.on(APPLY_CHANGES.id) || !self.switches.on(RUN_CHECK.id) {
+            return Err("field addition requires enabled apply and check rules".into());
+        }
+        let Action::AddMember {
+            thing: Thing::Item(item),
+            member,
+        } = action
+        else {
+            return Err("field addition requires one resolved struct".into());
+        };
+        if item.kind != RustKind::Struct
+            || !self
+                .lookup(&Name(item.name.clone()), &mut Vec::new())
+                .contains(item)
+            || !self.sources.iter().any(|s| s.name == item.source)
+        {
+            return Err("field owner must be a current struct".into());
+        }
+        Ok(AddField {
+            owner: item.name.clone(),
+            field: member.name.clone(),
+            ty: member.ty.clone(),
+            default: member.default.clone(),
+        })
+    }
+
+    pub(crate) fn propose_typed_field(&self, action: &Action<Rust>) -> Result<Reply<Rust>, String> {
+        let proposal = self.propose_add_field(&self.typed_field(action)?)?;
+        self.trial_add_field(&proposal)?;
+        Ok(Reply::Patch {
+            action: action.clone(),
+            changes: proposal.changes,
+            check: RustCheck::Test,
+            trials: 1,
+            evidence:
+                "source-preserving struct and constructor proof; scratch build and existing tests"
+                    .into(),
+        })
+    }
+
+    pub(crate) fn apply_typed_field(&self, patch: &Reply<Rust>) -> Result<Reply<Rust>, String> {
+        let Reply::Patch {
+            action,
+            changes,
+            check: RustCheck::Test,
+            ..
+        } = patch
+        else {
+            return Err("field patch with test verification required".into());
+        };
+        let proposal = self.propose_add_field(&self.typed_field(action)?)?;
+        if proposal.changes != *changes {
+            return Err("saved field patch differs from current constructor proof".into());
+        }
+        let count = self.apply_add_field(&proposal)?;
+        Ok(Reply::Applied {
+            changes: count,
+            check: Some(RustCheck::Test),
+            problems: Vec::new(),
+        })
+    }
+
+    fn trial_add_field(&self, current: &FieldAddition) -> Result<(), String> {
+        let source = self.sources.first().ok_or("missing source")?;
+        let scratch = checks::scratch(&source.name);
+        let trial: Result<(), String> = (|| {
+            checks::copy_tree(&source.root, &scratch)?;
+            checks::apply(
+                &current.changes,
+                &BTreeMap::from([(source.name.clone(), scratch.clone())]),
+            )?;
+            verify(&scratch, &source.name, current)?;
+            for check in [RustCheck::Build, RustCheck::Test] {
+                if !checks::run_in(&checks::Places::default(), check, &source.name, &scratch)?
+                    .is_empty()
+                {
+                    return Err(
+                        "field addition failed compiler or existing tests in scratch copy".into(),
+                    );
+                }
+            }
+            Ok(())
+        })();
+        let _ = std::fs::remove_dir_all(scratch);
+        trial
+    }
+
     pub fn propose_add_field(&self, action: &AddField) -> Result<FieldAddition, String> {
         scalar(action)?;
         let [source] = self.sources.as_slice() else {
@@ -96,28 +196,8 @@ impl RustWorld {
         if current.changes != proposal.changes {
             return Err("source changed since proposal".into());
         }
+        self.trial_add_field(&current)?;
         let source = self.sources.first().ok_or("missing source")?;
-        let scratch = checks::scratch(&source.name);
-        let trial: Result<(), String> = (|| {
-            checks::copy_tree(&source.root, &scratch)?;
-            checks::apply(
-                &current.changes,
-                &BTreeMap::from([(source.name.clone(), scratch.clone())]),
-            )?;
-            verify(&scratch, &source.name, &current)?;
-            for check in [RustCheck::Build, RustCheck::Test] {
-                if !checks::run_in(&checks::Places::default(), check, &source.name, &scratch)?
-                    .is_empty()
-                {
-                    return Err(
-                        "field addition failed compiler or existing tests in scratch copy".into(),
-                    );
-                }
-            }
-            Ok(())
-        })();
-        let _ = std::fs::remove_dir_all(scratch);
-        trial?;
         let mut originals = BTreeMap::new();
         for change in &current.changes {
             let path = source.root.join(&change.file);
@@ -497,4 +577,64 @@ fn verify(root: &std::path::Path, name: &str, proposal: &FieldAddition) -> Resul
     // Every requested insertion must exist byte-for-byte at its original anchor;
     // checks::apply validates original spans and changes only these insertions.
     Ok(())
+}
+
+#[cfg(test)]
+mod task_tests {
+    use super::*;
+    use glassmind_rules::Switches;
+
+    #[test]
+    fn saved_field_patch_needs_current_proof_and_enabled_checks() {
+        let root = checks::scratch("typed-field-contract");
+        std::fs::create_dir_all(root.join("src")).unwrap();
+        std::fs::write(root.join("Cargo.toml"), "[package]\nname=\"typed_field_contract\"\nversion=\"0.1.0\"\nedition=\"2021\"\n[workspace]\n").unwrap();
+        let original = "pub struct Flag { pub code: u8 }\npub fn make() -> Flag { Flag { code: 3 } }\n#[cfg(test)] mod tests { use super::*; #[test] fn keeps_code() { assert_eq!(make().code, 3); } }\n";
+        std::fs::write(root.join("src/lib.rs"), original).unwrap();
+        let open =
+            |switches: &Switches| RustWorld::open(&[("fixture".into(), root.as_path())], switches);
+        let world = open(&Switches::all_on());
+        let item = world
+            .lookup(&Name("Flag".into()), &mut Vec::new())
+            .first()
+            .unwrap()
+            .clone();
+        let action = Action::AddMember {
+            thing: Thing::Item(item),
+            member: PublicField {
+                name: "enabled".into(),
+                ty: "bool".into(),
+                default: "true".into(),
+            },
+        };
+        let patch = world.propose(&action, &mut Vec::new()).unwrap();
+        let bytes = serde_json::to_vec(&patch).unwrap();
+        let saved: Reply<Rust> = serde_json::from_slice(&bytes).unwrap();
+        drop(world);
+        let mut forged = saved.clone();
+        let Reply::Patch { changes, .. } = &mut forged else {
+            panic!("missing patch")
+        };
+        changes.first_mut().unwrap().new.push_str("// unproved");
+        assert!(
+            open(&Switches::all_on())
+                .apply(&forged, &mut Vec::new())
+                .is_err()
+        );
+        assert_eq!(
+            std::fs::read_to_string(root.join("src/lib.rs")).unwrap(),
+            original
+        );
+        let off = Switches::without([RUN_CHECK.id]);
+        assert!(open(&off).apply(&saved, &mut Vec::new()).is_err());
+        let result = open(&Switches::all_on())
+            .apply(&saved, &mut Vec::new())
+            .unwrap();
+        assert!(
+            matches!(result, Reply::Applied { check: Some(RustCheck::Test), problems, .. } if problems.is_empty())
+        );
+        let result = std::fs::read_to_string(root.join("src/lib.rs")).unwrap();
+        assert!(result.contains("pub enabled: bool") && result.contains("enabled: true"));
+        std::fs::remove_dir_all(root).unwrap();
+    }
 }
