@@ -132,6 +132,9 @@ affect display only. Ordinary memory, calculation and story questions keep their
 existing priority. For multiple matches, use `List answers to: Who wrote TITLE?`.
 [Explicit factual lists](docs/fact-sets.md) return up to ten sorted matching IDs,
 source links and local match counts, while preserving personal and story state.
+For dedicated offline queries, [native disk indexes](docs/disk-facts.md) provide
+`glassmind-facts index-disk`, `ask-disk` and `predict-disk`, with the same alias and
+answer rules and bounded indexed access.
 Use `Check fact: Was SUBJECT born in OBJECT?` to [verify an explicit relationship](docs/fact-verification.md)
 against the loaded records. Replies distinguish supported, unknown and refused,
 with an exact edge witness; an absent edge never becomes a negative factual claim.

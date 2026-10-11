@@ -1,0 +1,92 @@
+    Checking rusqlite v0.40.2
+    Checking glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/disk-facts/crates/facts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.35s
+   Compiling rusqlite v0.40.2
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/disk-facts/crates/facts)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.31s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/glassmind_facts-6d271339ae8a93b0)
+
+running 7 tests
+test tests::explicit_lowercase_alias_remains_valid ... ok
+test tests::descriptive_aliases_still_ignore_case ... ok
+test tests::rejected_acronym_does_not_resolve_ambiguity_or_expose_shorter_alias ... ok
+test tests::longest_alias_and_ambiguity_are_preserved ... ok
+test tests::bounded_sets_preserve_legacy_refusal_and_relation_guards ... ok
+test tests::uppercase_alias_does_not_match_an_ordinary_word ... ok
+test disk::tests::exhausted_work_budget_returns_no_partial_set_and_next_request_recovers ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.33s
+
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/glassmind_facts-ea8c347c3eb95bff)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/disk.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/disk-c9c762af34fa0612)
+
+running 4 tests
+test unicode_alias_ties_and_acronym_case_match_the_existing_store ... ok
+test forward_inverse_cardinality_order_and_refusals_match ... ok
+test invalid_schema_input_limits_and_failed_query_recovery ... ok
+test connection_keeps_one_snapshot_across_external_wal_commits ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+     Running tests/matching.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/matching-6c45052f1018469c)
+
+running 5 tests
+test reserved_separator_alias_is_refused_without_using_claims ... ok
+test typed_invalid_endpoints_and_complete_parse ... ok
+test graph_cannot_disambiguate_and_truncation_follows_intersection ... ok
+test typed_constraints_order_duplicates_and_graph_order_invariant ... ok
+test frozen_contracts_exact_sets_and_witnesses ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/parent_matching.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/parent_matching-4ea560260272552d)
+
+running 1 test
+test independent_matching_contracts_including_nul ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/temporal.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/temporal-fd31b7b808531fed)
+
+running 4 tests
+test deterministic_statement_selection ... ok
+test frozen_calendar_claim_query_contracts ... ok
+test historical_statement_ids_and_reason_contracts ... ok
+test loader_binding_schema_duplicates_and_caps ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.17s
+
+     Running tests/timed_matching.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/timed_matching-274e1086d2a2d611)
+
+running 4 tests
+test distinct_citizenships_use_distinct_original_claims ... ok
+test typed_refusals_alias_normalization_and_claim_order ... ok
+test fixed_sample ... ok
+test full_frozen_contracts ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/verification.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/verification-d6d1b911230b43d8)
+
+running 4 tests
+test overlapping_predicate_delimiters_refuse ... ok
+test resolution_and_unbounded_edge_membership ... ok
+test edge_truth_and_alias_ambiguity_cannot_choose_a_parse ... ok
+test alias_v2_graph_contracts_and_read_only_store ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests glassmind_facts
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Compiling rusqlite v0.40.2
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/disk-facts/crates/facts)
+    Finished `release` profile [optimized + debuginfo] target(s) in 12.42s

@@ -12,6 +12,33 @@ struct Args {
 }
 #[derive(Subcommand)]
 enum Command {
+    /// Create a new native SQLite index from a bounded JSON facts store.
+    IndexDisk {
+        #[arg(long)]
+        index: PathBuf,
+        #[arg(long)]
+        database: PathBuf,
+    },
+    /// Query a native disk index without loading the full graph into memory.
+    AskDisk {
+        #[arg(long)]
+        model: PathBuf,
+        #[arg(long)]
+        database: PathBuf,
+        /// Return the first ten distinct local answers and the complete local count.
+        #[arg(long)]
+        set: bool,
+        question: String,
+    },
+    /// Read one question per stdin line and emit one answer JSON per line.
+    PredictDisk {
+        #[arg(long)]
+        model: PathBuf,
+        #[arg(long)]
+        database: PathBuf,
+        #[arg(long)]
+        set: bool,
+    },
     /// Match positive conditions whose recorded intervals strictly contain a day.
     MatchAt {
         #[arg(long)]
@@ -106,6 +133,34 @@ fn load(
     store.validate()?;
     Ok((model, store))
 }
+fn disk_model(path: &PathBuf) -> Result<IntentModel, Box<dyn std::error::Error>> {
+    use std::io::Read;
+    const MAX_MODEL_BYTES: usize = 64 * 1024 * 1024;
+    let mut bytes = Vec::new();
+    fs::File::open(path)?
+        .take((MAX_MODEL_BYTES + 1) as u64)
+        .read_to_end(&mut bytes)?;
+    if bytes.len() > MAX_MODEL_BYTES {
+        return Err("relation model byte cap exceeded".into());
+    }
+    let model: IntentModel = serde_json::from_slice(&bytes)?;
+    model.validate()?;
+    Ok(model)
+}
+
+fn disk_answer(
+    store: &glassmind_facts::disk::DiskStore,
+    model: &IntentModel,
+    question: &str,
+    set: bool,
+) -> Result<String, Box<dyn std::error::Error>> {
+    Ok(if set {
+        serde_json::to_string(&store.answer_set(model, question)?)?
+    } else {
+        serde_json::to_string(&store.answer(model, question)?)?
+    })
+}
+
 #[derive(Default, Serialize)]
 struct Totals {
     total: usize,
@@ -117,6 +172,49 @@ struct Totals {
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     match Args::parse().command {
+        Command::IndexDisk { index, database } => {
+            let store = glassmind_facts::disk::DiskStore::import_file(&index, &database)?;
+            println!("{}", serde_json::to_string(store.info())?);
+        }
+        Command::AskDisk {
+            model,
+            database,
+            set,
+            question,
+        } => {
+            let model = disk_model(&model)?;
+            let store = glassmind_facts::disk::DiskStore::open(&database)?;
+            println!("{}", disk_answer(&store, &model, &question, set)?);
+        }
+        Command::PredictDisk {
+            model,
+            database,
+            set,
+        } => {
+            use std::io::{BufRead, Read, Write};
+            let model = disk_model(&model)?;
+            let store = glassmind_facts::disk::DiskStore::open(&database)?;
+            let mut input = std::io::stdin().lock();
+            let mut output = std::io::BufWriter::new(std::io::stdout().lock());
+            loop {
+                let mut bytes = Vec::new();
+                let n = (&mut input)
+                    .take((glassmind_facts::disk::MAX_DISK_QUESTION_BYTES + 2) as u64)
+                    .read_until(b'\n', &mut bytes)?;
+                if n == 0 {
+                    break;
+                }
+                if bytes.last() == Some(&b'\n') {
+                    bytes.pop();
+                }
+                if bytes.last() == Some(&b'\r') {
+                    bytes.pop();
+                }
+                let question = std::str::from_utf8(&bytes)?;
+                writeln!(output, "{}", disk_answer(&store, &model, question, set)?)?;
+            }
+            output.flush()?;
+        }
         Command::MatchAt {
             index,
             temporal,

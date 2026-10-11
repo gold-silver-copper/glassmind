@@ -1,0 +1,72 @@
+   Compiling utf8parse v0.2.2
+   Compiling typenum v1.20.1
+   Compiling generic-array v0.14.7
+   Compiling anstyle-parse v1.0.0
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling colorchoice v1.0.5
+   Compiling anstyle-query v1.1.5
+   Compiling anstyle v1.0.14
+   Compiling anstream v1.0.0
+   Compiling serde_core v1.0.229
+   Compiling strsim v0.11.1
+   Compiling clap_lex v1.1.1
+   Compiling foldhash v0.2.0
+   Compiling hashbrown v0.17.1
+   Compiling clap_builder v4.6.7
+   Compiling zmij v1.0.23
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling serde_json v1.0.151
+   Compiling serde v1.0.229
+   Compiling digest v0.10.7
+   Compiling libsqlite3-sys v0.38.2
+   Compiling clap v4.6.7
+   Compiling hashlink v0.12.2
+   Compiling smallvec v1.16.3
+   Compiling cpufeatures v0.2.17
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling cfg-if v1.0.5
+   Compiling fallible-iterator v0.3.0
+   Compiling bitflags v2.13.2
+   Compiling rusqlite v0.40.2
+   Compiling sha2 v0.10.9
+   Compiling glassmind-everyday v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/disk-facts/crates/everyday)
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/disk-facts/crates/facts)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.39s
+     Running tests/disk.rs (/home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/target/debug/deps/disk-01046670451af7a0)
+
+running 3 tests
+test unicode_alias_ties_and_acronym_case_match_the_existing_store ... ok
+test forward_inverse_cardinality_order_and_refusals_match ... ok
+test invalid_schema_input_limits_and_failed_query_recovery ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+    Checking glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/disk-facts/crates/facts)
+error: this `if` statement can be collapsed
+   --> crates/facts/src/disk.rs:422:9
+    |
+422 | /         if result.answer.refusal.is_none() {
+423 | |             if let (Some(entity), Some(label)) = (&result.answer.entity, &result.answer.relation) {
+424 | |                 if label.len() < 2
+425 | |                     || !label
+...   |
+443 | |         }
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.99.0/index.html#collapsible_if
+    = note: `-D clippy::collapsible-if` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::collapsible_if)]`
+help: collapse nested if block
+    |
+422 ~         if result.answer.refusal.is_none()
+423 ~             && let (Some(entity), Some(label)) = (&result.answer.entity, &result.answer.relation) {
+424 |                 if label.len() < 2
+...
+441 |                 }
+442 ~             }
+    |
+
+error: could not compile `glassmind-facts` (lib) due to 1 previous error

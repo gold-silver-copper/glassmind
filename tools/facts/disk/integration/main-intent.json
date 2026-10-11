@@ -1,0 +1,524 @@
+{
+  "total": 28,
+  "right": 28,
+  "checks": [
+    {
+      "name": "known accepted question reaches frozen facts",
+      "passed": true,
+      "actual": {
+        "kind": "fact_answer",
+        "text": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151",
+        "entity": "Q11865151",
+        "relation": "P27",
+        "answers": [
+          "Q33"
+        ],
+        "refusal": null,
+        "entities": [
+          {
+            "id": "Q11865151",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q11865151"
+          },
+          {
+            "id": "Q33",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q33"
+          }
+        ],
+        "provenance": {
+          "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+          "license": "Questions CC BY 3.0; Wikidata CC0",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+          "relation_selection": "learned proposal, not logical certainty",
+          "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+          "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+          "relation_direction": "forward"
+        }
+      }
+    },
+    {
+      "name": "real singleton QID",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "entity and learned relation provenance",
+      "passed": true,
+      "actual": {
+        "kind": "fact_answer",
+        "text": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151",
+        "entity": "Q11865151",
+        "relation": "P27",
+        "answers": [
+          "Q33"
+        ],
+        "refusal": null,
+        "entities": [
+          {
+            "id": "Q11865151",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q11865151"
+          },
+          {
+            "id": "Q33",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q33"
+          }
+        ],
+        "provenance": {
+          "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+          "license": "Questions CC BY 3.0; Wikidata CC0",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+          "relation_selection": "learned proposal, not logical certainty",
+          "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+          "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+          "relation_direction": "forward"
+        }
+      }
+    },
+    {
+      "name": "fact clears name focus",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "bare correction after fact survives restart without editing name",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Mira.",
+          "source_turn": 1
+        }
+      ]
+    },
+    {
+      "name": "bare correction after fact preserves preference",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your favorite color is blue.",
+          "source_turn": 5
+        }
+      ]
+    },
+    {
+      "name": "explicit memory override works",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "remembered",
+          "text": "I'll call you Alice.",
+          "slot": "Name"
+        },
+        {
+          "kind": "remembered",
+          "text": "I'll remember that your favorite color is green.",
+          "slot": {
+            "Preference": "color"
+          }
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Alice.",
+          "source_turn": 9
+        },
+        {
+          "kind": "recalled",
+          "text": "Your favorite color is green.",
+          "source_turn": 10
+        }
+      ]
+    },
+    {
+      "name": "unsupported fact refuses and clears focus",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "refusal",
+          "text": "I couldn't find a unique answer in the local Wikidata snapshot.",
+          "entity": null,
+          "relation": null,
+          "answers": [],
+          "refusal": "no unique entity alias in this snapshot",
+          "entities": [],
+          "provenance": {
+            "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+            "license": "Questions CC BY 3.0; Wikidata CC0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+            "relation_url": null,
+            "relation_direction": null
+          }
+        },
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Alice.",
+          "source_turn": 9
+        }
+      ]
+    },
+    {
+      "name": "calculation and established story priority",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "calculated",
+          "text": "14",
+          "value": "14",
+          "unit": null,
+          "method": "exact rational expression with standard precedence"
+        },
+        {
+          "kind": "story_fact",
+          "text": "Got it. I'll use that when answering your questions.",
+          "answer": null,
+          "reason": "event accepted"
+        },
+        {
+          "kind": "story_answer",
+          "text": "kitchen",
+          "answer": "kitchen",
+          "reason": "derived from story state"
+        }
+      ]
+    },
+    {
+      "name": "facts coexist with established story",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "fact_answer",
+          "text": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+            "license": "Questions CC BY 3.0; Wikidata CC0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "story_answer",
+          "text": "kitchen",
+          "answer": "kitchen",
+          "reason": "derived from story state"
+        }
+      ]
+    },
+    {
+      "name": "reset clears memory but retains frozen facts",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "reset"
+        },
+        {
+          "kind": "fact_answer",
+          "text": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+            "license": "Questions CC BY 3.0; Wikidata CC0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "missing",
+          "text": "I don't know your name yet."
+        }
+      ]
+    },
+    {
+      "name": "explicit memory wins for snapshot entities",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "remembered",
+          "text": "I'll call you Ismo Kallio.",
+          "slot": "Name"
+        },
+        {
+          "kind": "remembered",
+          "text": "I'll remember that your favorite country is Finland.",
+          "slot": {
+            "Preference": "country"
+          }
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Ismo Kallio.",
+          "source_turn": 3
+        },
+        {
+          "kind": "recalled",
+          "text": "Your favorite country is Finland.",
+          "source_turn": 4
+        }
+      ]
+    },
+    {
+      "name": "established story overrides indexed entity",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "story_fact",
+          "text": "Got it. I'll use that when answering your questions.",
+          "answer": null,
+          "reason": "event accepted"
+        },
+        {
+          "kind": "story_answer",
+          "text": "kitchen",
+          "answer": "kitchen",
+          "reason": "derived from story state"
+        }
+      ]
+    },
+    {
+      "name": "facts with established story cannot correct old personal name",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "fact_answer",
+          "text": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+            "license": "Questions CC BY 3.0; Wikidata CC0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "refusal",
+          "text": "I can't answer that from the facts I have. I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them.",
+          "answer": null,
+          "reason": "I couldn't safely update the facts from that statement. Use /reset and restate the facts before asking about them."
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Ismo Kallio.",
+          "source_turn": 3
+        }
+      ]
+    },
+    {
+      "name": "legacy session and persisted fact focus",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "missing",
+          "text": "Which name or preference are you correcting?"
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Ada.",
+          "source_turn": 1
+        }
+      ]
+    },
+    {
+      "name": "human attribution and links",
+      "passed": true,
+      "actual": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151\n"
+    },
+    {
+      "name": "index immutable",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "empty fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/main-intent/empty/index.json: No such file or directory (os error 2)\n"
+    },
+    {
+      "name": "index-only fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/main-intent/index-only/relation.json: No such file or directory (os error 2)\n"
+    },
+    {
+      "name": "model-only fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/main-intent/model-only/index.json: No such file or directory (os error 2)\n"
+    },
+    {
+      "name": "index-mismatch fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/main-intent/index-mismatch/index.json: does not match manifest.json\n"
+    },
+    {
+      "name": "model-mismatch fails cleanly",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/main-intent/model-mismatch/relation.json: does not match manifest.json\n"
+    },
+    {
+      "name": "labels-mismatch fails cleanly",
+      "passed": true,
+      "actual": "glassmind: labels.json: snapshot or provenance mismatch\n"
+    },
+    {
+      "name": "default ignores facts assets",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "missing labels explicitly disclose QIDs",
+      "passed": true,
+      "actual": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151\n"
+    },
+    {
+      "name": "display labels do not link or change IDs",
+      "passed": true,
+      "actual": [
+        {
+          "kind": "fact_answer",
+          "text": "The local Wikidata snapshot suggests Q33 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q11865151",
+          "entity": "Q11865151",
+          "relation": "P27",
+          "answers": [
+            "Q33"
+          ],
+          "refusal": null,
+          "entities": [
+            {
+              "id": "Q11865151",
+              "label": "Zzzdisplayonly",
+              "url": "https://www.wikidata.org/wiki/Q11865151"
+            },
+            {
+              "id": "Q33",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q33"
+            }
+          ],
+          "provenance": {
+            "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+            "license": "Questions CC BY 3.0; Wikidata CC0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "relation_direction": "forward"
+          }
+        },
+        {
+          "kind": "reset"
+        },
+        {
+          "kind": "refusal",
+          "text": "I couldn't find a unique answer in the local Wikidata snapshot.",
+          "entity": null,
+          "relation": null,
+          "answers": [],
+          "refusal": "no unique entity alias in this snapshot",
+          "entities": [],
+          "provenance": {
+            "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+            "license": "Questions CC BY 3.0; Wikidata CC0",
+            "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+            "relation_url": null,
+            "relation_direction": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "labels outside snapshot rejected",
+      "passed": true,
+      "actual": "glassmind: labels.json: labels must describe existing snapshot IDs only\n"
+    },
+    {
+      "name": "same-size changed index rejected",
+      "passed": true,
+      "actual": "glassmind: /home/gsc/.cache/glassmind/continuous-20261010/coordinator/disk-facts/main-intent/same-size-mismatch/index.json: does not match manifest.json\n"
+    }
+  ]
+}
