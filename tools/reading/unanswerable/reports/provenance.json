@@ -1,0 +1,157 @@
+{
+  "base_source": "80b9f636050accfbe6ca0fbdb0ecc2bc6ca531d9",
+  "source_revision": "eee5fdbf62f8613a7812b03419e6b29617b74fd1",
+  "license": "SQuAD data CC-BY-SA-4.0; official scorer/repository MIT",
+  "new_download_bytes": 0,
+  "reused_squad2_dataset_bytes": 46494161,
+  "outer_scope": "glassmind-continuous-unanswerable.scope",
+  "memory_max": 8589934592,
+  "memory_swap_max": 0,
+  "files": [
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa2-source/LICENSE",
+      "bytes": 1073,
+      "sha256": "9c92e90621a47dc8508ddd78f0ee41a7b6a8fd5d37fd00709ff1c6eb1a7d7019"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa2-source/dev-v2.0.json",
+      "bytes": 4370528,
+      "sha256": "80a5225e94905956a6446d296ca1093975c4d3b3260f1d6c8f68bc2ab77182d8"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa2-source/evaluate-v2.0.py",
+      "bytes": 10547,
+      "sha256": "710840ce2c2c61716334c056777032f24660b83eb9869a451036e6a24d8103c4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/readingqa2-source/train-v2.0.json",
+      "bytes": 42123633,
+      "sha256": "68dcfbb971bd3e96d5b46c7177b16c1a4e7d4bdef19fb204502738552dede002"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/baseline/full.input.jsonl",
+      "bytes": 10786904,
+      "sha256": "9a888b070e8b5054ae06aead59ac8f7857cab844c665db7af2095a17e9f80722"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/baseline/full.outputs.jsonl",
+      "bytes": 2204003,
+      "sha256": "6dd02aa2757011bec9971e47aef04e08260426f089eea004396ac13f0f9666a4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/baseline/model.json",
+      "bytes": 873881,
+      "sha256": "b7dc4618b96c26ea9dc91880d1b7644336c9ff253f22bab036583473479f7ed5"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/build.log",
+      "bytes": 2113,
+      "sha256": "45f1a3fbcb1dd66ea6920f13a19d34cedee404a1558f3c8711ef578b067dfabe"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/cal-frontier.json",
+      "bytes": 393505,
+      "sha256": "0837c0457d179f8c3fc1150402990ec76cb4c5b9321bc4cb414304dd1aae1579"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/cal.input.jsonl",
+      "bytes": 1684106,
+      "sha256": "7f4fda34e94b1b8adc4b7e16b506b0d19585b8d1089d9ad3cd13a9d62e5d876c"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/cal.labels.json",
+      "bytes": 2060032,
+      "sha256": "e229ff1b1d32432f808c9315bb7c7dd24952acddb563cd8f7d56fcb03c0aa70b"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/cal.output.jsonl",
+      "bytes": 2002347,
+      "sha256": "1966c1ea4c093ea0abaa27a9f10adf264afb7e6933ddb3ad9718a3777f68306f"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/calibrate.log",
+      "bytes": 686,
+      "sha256": "f6f8de9615f02afe74412584233a9a717dc03d0eaada4f102ddde37a7e3f71e0"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/clippy.log",
+      "bytes": 2086,
+      "sha256": "d3fba4a07a166be6ed858ba002f61e6f508cfe223e639c63ae69f882f2de592e"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/first-weights.json",
+      "bytes": 205742,
+      "sha256": "0d9b397a11cd1f825320d6808d3dc70118875ef05507dadd99e13843a7cd7588"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/fit.input.jsonl",
+      "bytes": 6707920,
+      "sha256": "58d813920b3abfbfb18b23bb21441de375077b31aa3c099d4ca8774af1d5bec8"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/fit.labels.json",
+      "bytes": 8251075,
+      "sha256": "3c6a291565d75410b6f84ab387ca7dd4fe8b53bf29a27424e6cb2670c2f1b001"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/fit.output.jsonl",
+      "bytes": 7813119,
+      "sha256": "da7a19a85419ae224772e47b705f26e91ac473924f9ce0734003a07dab02eb39"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/fmt-check.log",
+      "bytes": 95,
+      "sha256": "8e8731bb0298aa22cca316d952dc92eca8d7509111b300e6a280aadde1455814"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/fmt.log",
+      "bytes": 95,
+      "sha256": "b1b70f412da41b8752c44e94c4d7962ccdb784c5257daf3459bf1e8af948c5ae"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/prepare.log",
+      "bytes": 256,
+      "sha256": "f372af219dcffadf1e82b7be352cb2ec235b6a53a6deab9789c2046047bdf0df"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/probes.input.jsonl",
+      "bytes": 1034,
+      "sha256": "4de8933a63f9be06e1dd6a8e24519022a13f89fbf88de0dc90d7d5f927456310"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/probes.log",
+      "bytes": 95,
+      "sha256": "9cebc8d7d06463ca5db9369fc547b002b33102dd618c49baa295f39385a7b919"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/probes.output.jsonl",
+      "bytes": 9346,
+      "sha256": "75cf9a008e1d28cc7926d88619c266174b119fbcaad707c458bcb07234c5c6f8"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/tests.log",
+      "bytes": 2872,
+      "sha256": "e2e827c7dbee23fa4c48f9a3eca19d0d34526b101b2ab20c70af2931a2c3c625"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/train.log",
+      "bytes": 486,
+      "sha256": "a0b48a400f6ba1802a32b5d96057c2c808f1fa5d02e23058b9530452626af64d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/v1-replay.log",
+      "bytes": 95,
+      "sha256": "08406b6b154fb41abacfe9b34558bdf804d3195d93ca0bf61922b838e8703a5d"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/experiment/v1-replay.output.jsonl",
+      "bytes": 2204003,
+      "sha256": "6dd02aa2757011bec9971e47aef04e08260426f089eea004396ac13f0f9666a4"
+    },
+    {
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/unanswerable-run/target/release/reading-qa",
+      "bytes": 12150232,
+      "sha256": "b589e599cfde109b6664db78b85609becdb8ac3a0e03fa4a35cdcbdf79a7b807"
+    }
+  ]
+}

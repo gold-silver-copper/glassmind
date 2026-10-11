@@ -1,0 +1,269 @@
+{
+  "frozen_source_sha256": "24f1d65ed2f1785b940d7c674565dd9b49c168e498f57c23cbd6c8c2c6eab6f0",
+  "independent_cases": [
+    {
+      "gold": "1 1/2 hours",
+      "value": "90",
+      "unit": "minutes",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "5400",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "-0 1/2 hours",
+      "value": "-30",
+      "unit": "minutes",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "-1800",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "1,200 m",
+      "value": "1.2",
+      "unit": "km",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "1200",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "1 mph",
+      "value": "1397/3125",
+      "unit": "m/s",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "1397/3125",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "25%",
+      "value": "25",
+      "unit": "percent",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "25",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "25%",
+      "value": "0.25",
+      "unit": "percent",
+      "grade": "wrong",
+      "actual": {
+        "grade": "wrong",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "1/4",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "25%",
+      "value": "25",
+      "unit": null,
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "missing_prediction_unit",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "1 kg",
+      "value": "1000",
+      "unit": "g",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "1",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "1 kg",
+      "value": "1",
+      "unit": "meters",
+      "grade": "wrong",
+      "actual": {
+        "grade": "wrong",
+        "reason": "incompatible_dimension",
+        "predicted_canonical": "1",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "0 km",
+      "value": "0",
+      "unit": "seconds",
+      "grade": "wrong",
+      "actual": {
+        "grade": "wrong",
+        "reason": "incompatible_dimension",
+        "predicted_canonical": "0",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "3",
+      "value": "3",
+      "unit": "meters",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "scalar_coefficient_only",
+        "predicted_canonical": "3",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "1,00 m",
+      "value": "100",
+      "unit": "m",
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "3 hours or 4 days",
+      "value": "3",
+      "unit": "hours",
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "3m^2",
+      "value": "3",
+      "unit": "m",
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "\u0661 m",
+      "value": "1",
+      "unit": "m",
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "NaN",
+      "value": "0",
+      "unit": null,
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "unsupported_gold",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "1 km",
+      "value": "1000",
+      "unit": "unknown",
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "unsupported_prediction_unit",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    },
+    {
+      "gold": "30 sec",
+      "value": "1/2",
+      "unit": "minutes",
+      "grade": "correct",
+      "actual": {
+        "grade": "correct",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "30",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "30 sec",
+      "value": "30",
+      "unit": "minutes",
+      "grade": "wrong",
+      "actual": {
+        "grade": "wrong",
+        "reason": "exact_physical_label",
+        "predicted_canonical": "1800",
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": true
+      }
+    },
+    {
+      "gold": "3 hours",
+      "value": "3",
+      "unit": null,
+      "grade": "unscorable",
+      "actual": {
+        "grade": "unscorable",
+        "reason": "missing_prediction_unit",
+        "predicted_canonical": null,
+        "question_requested_units_evaluated": false,
+        "prediction_dimension_evaluated": false
+      }
+    }
+  ],
+  "exact_conversion_and_near_miss_checks": 304,
+  "malformed_option_containers": 3,
+  "decision": "Frozen normalizer passes parent contract probes; full ledger and final artifact review still pending.",
+  "scope": "Exact-label contract only; bare scalar ignores dimension by declared legacy contract, no question semantics or dataset truth asserted."
+}

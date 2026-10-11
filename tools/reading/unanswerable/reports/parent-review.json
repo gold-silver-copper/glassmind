@@ -1,0 +1,31 @@
+{
+  "decision": "REJECTED_CAL; no runtime integration",
+  "archive_files": 23,
+  "archive_bytes": 1055394,
+  "provenance_files_rehashed": 29,
+  "frozen_source_artifacts_reconstructed": 8,
+  "selection_verified": {
+    "excluded_titles": 80,
+    "fit_articles": 96,
+    "cal_articles": 32,
+    "fit_rows": 8000,
+    "cal_rows": 2000,
+    "title_context_id_overlap": 0,
+    "inputs_exactly_match_selected_labels": true
+  },
+  "calibration_frontier_groups": 1975,
+  "always_refuse_correct": 606,
+  "best_precision_at_100_correct": {
+    "threshold": -0.5449126042509705,
+    "accepted": 220,
+    "correct": 100,
+    "wrong": 120,
+    "precision": 0.45454545454545453,
+    "strict_correct": 669,
+    "expected_refusals": 569
+  },
+  "max_correct_at_precision60": 48,
+  "default_v1_dev_outputs_byte_identical": 11873,
+  "no_candidate_dev": true,
+  "scope": "Parent independently reconstructed article/row selection and context-only inputs, exact official span grades and complete score frontier from retained first-run weights/features. No repeated training or inference. Semantic probes show unresolved relation/negation failures; no entailment claim."
+}

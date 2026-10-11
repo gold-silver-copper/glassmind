@@ -1,0 +1,32 @@
+{
+  "gate_pass": false,
+  "selected": null,
+  "total": 2000,
+  "always_refuse": 606,
+  "baseline": {
+    "total": 2000,
+    "counts": {
+      "unsupported": 1141,
+      "wrong": 225,
+      "expected_refusal": 518,
+      "correct": 116
+    },
+    "precision": 0.34017595307917886,
+    "strict_correct": 634,
+    "official": {
+      "exact": 31.7,
+      "f1": 32.83874060150376,
+      "total": 2000
+    },
+    "normalization_coincidences": []
+  },
+  "best_precision_at_100_correct": {
+    "threshold": -0.5449126042509705,
+    "accepted": 220,
+    "correct": 100,
+    "wrong": 120,
+    "precision": 0.45454545454545453,
+    "strict_correct": 669,
+    "expected_refusals": 569
+  }
+}

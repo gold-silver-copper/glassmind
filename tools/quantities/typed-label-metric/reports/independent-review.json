@@ -1,0 +1,1238 @@
+{
+  "accepted_normalizations_checked": 3631,
+  "all_answered_derivations": [
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "24"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "24",
+      "independently_derived_prediction": "24",
+      "index": 94,
+      "normalization_changed": false,
+      "selected": "24",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "24"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "24",
+      "independently_derived_prediction": "24",
+      "index": 94,
+      "normalization_changed": false,
+      "selected": "24",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "1"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "1",
+      "independently_derived_prediction": "1",
+      "index": 145,
+      "normalization_changed": false,
+      "selected": "1.0",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "1"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "1",
+      "independently_derived_prediction": "1",
+      "index": 145,
+      "normalization_changed": false,
+      "selected": "1.0",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "24"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "24",
+      "independently_derived_prediction": "24",
+      "index": 295,
+      "normalization_changed": false,
+      "selected": "24",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "80/3"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "wrong",
+      "independently_derived_gold": "2667/100",
+      "independently_derived_prediction": "80/3",
+      "index": 454,
+      "normalization_changed": true,
+      "selected": "26.67 %",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "80/3"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "wrong",
+      "independently_derived_gold": "2667/100",
+      "independently_derived_prediction": "80/3",
+      "index": 454,
+      "normalization_changed": true,
+      "selected": "26.67 %",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "1331"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "1331",
+      "independently_derived_prediction": "1331",
+      "index": 509,
+      "normalization_changed": false,
+      "selected": "1331",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "1331"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "1331",
+      "independently_derived_prediction": "1331",
+      "index": 509,
+      "normalization_changed": false,
+      "selected": "1331",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "30"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "30",
+      "independently_derived_prediction": "30",
+      "index": 563,
+      "normalization_changed": true,
+      "selected": "30 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "480"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "480",
+      "independently_derived_prediction": "480",
+      "index": 687,
+      "normalization_changed": false,
+      "selected": "480",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "480"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "480",
+      "independently_derived_prediction": "480",
+      "index": 687,
+      "normalization_changed": false,
+      "selected": "480",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "1"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "1",
+      "independently_derived_prediction": "1",
+      "index": 819,
+      "normalization_changed": false,
+      "selected": "1",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "1"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "1",
+      "independently_derived_prediction": "1",
+      "index": 819,
+      "normalization_changed": false,
+      "selected": "1",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact checked ratio and total",
+        "status": "answer",
+        "unit": null,
+        "value": "400"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "400",
+      "independently_derived_prediction": "400",
+      "index": 882,
+      "normalization_changed": false,
+      "selected": "400",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact checked ratio and total",
+        "status": "answer",
+        "unit": null,
+        "value": "400"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "400",
+      "independently_derived_prediction": "400",
+      "index": 882,
+      "normalization_changed": false,
+      "selected": "400",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "12"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "12",
+      "independently_derived_prediction": "12",
+      "index": 1094,
+      "normalization_changed": false,
+      "selected": "12",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "12"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "12",
+      "independently_derived_prediction": "12",
+      "index": 1094,
+      "normalization_changed": false,
+      "selected": "12",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "6"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "6",
+      "independently_derived_prediction": "6",
+      "index": 1128,
+      "normalization_changed": true,
+      "selected": "6 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "123/250"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "123/250",
+      "independently_derived_prediction": "123/250",
+      "index": 1239,
+      "normalization_changed": false,
+      "selected": "0.492",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "123/250"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "123/250",
+      "independently_derived_prediction": "123/250",
+      "index": 1239,
+      "normalization_changed": false,
+      "selected": "0.492",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "4800"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "4800",
+      "independently_derived_prediction": "4800",
+      "index": 1252,
+      "normalization_changed": false,
+      "selected": "4800",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "4800"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "4800",
+      "independently_derived_prediction": "4800",
+      "index": 1252,
+      "normalization_changed": false,
+      "selected": "4800",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "18"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "18",
+      "independently_derived_prediction": "18",
+      "index": 1587,
+      "normalization_changed": true,
+      "selected": "18 %",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "18"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "18",
+      "independently_derived_prediction": "18",
+      "index": 1587,
+      "normalization_changed": true,
+      "selected": "18 %",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "15"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "15",
+      "independently_derived_prediction": "15",
+      "index": 1702,
+      "normalization_changed": false,
+      "selected": "15",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "15"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "15",
+      "independently_derived_prediction": "15",
+      "index": 1702,
+      "normalization_changed": false,
+      "selected": "15",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "27"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "27",
+      "independently_derived_prediction": "27",
+      "index": 1986,
+      "normalization_changed": true,
+      "selected": "27 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "330"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "330",
+      "independently_derived_prediction": "330",
+      "index": 2087,
+      "normalization_changed": false,
+      "selected": "330",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "330"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "330",
+      "independently_derived_prediction": "330",
+      "index": 2087,
+      "normalization_changed": false,
+      "selected": "330",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "3016"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "3016",
+      "independently_derived_prediction": "3016",
+      "index": 2113,
+      "normalization_changed": false,
+      "selected": "3016",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "3016"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "3016",
+      "independently_derived_prediction": "3016",
+      "index": 2113,
+      "normalization_changed": false,
+      "selected": "3016",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "29"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "29",
+      "independently_derived_prediction": "29",
+      "index": 2398,
+      "normalization_changed": false,
+      "selected": "29",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "29"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "29",
+      "independently_derived_prediction": "29",
+      "index": 2398,
+      "normalization_changed": false,
+      "selected": "29",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "456"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "456",
+      "independently_derived_prediction": "456",
+      "index": 2410,
+      "normalization_changed": false,
+      "selected": "456",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "456"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "456",
+      "independently_derived_prediction": "456",
+      "index": 2410,
+      "normalization_changed": false,
+      "selected": "456",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact checked ratio and total",
+        "status": "answer",
+        "unit": null,
+        "value": "60"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "60",
+      "independently_derived_prediction": "60",
+      "index": 2454,
+      "normalization_changed": false,
+      "selected": "60",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact checked ratio and total",
+        "status": "answer",
+        "unit": null,
+        "value": "60"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "60",
+      "independently_derived_prediction": "60",
+      "index": 2454,
+      "normalization_changed": false,
+      "selected": "60",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "29"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "29",
+      "independently_derived_prediction": "29",
+      "index": 2836,
+      "normalization_changed": true,
+      "selected": "29 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "27"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "27",
+      "independently_derived_prediction": "27",
+      "index": 2873,
+      "normalization_changed": true,
+      "selected": "27 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "335"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "335",
+      "independently_derived_prediction": "335",
+      "index": 2911,
+      "normalization_changed": false,
+      "selected": "335",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact rational expression with standard precedence",
+        "status": "answer",
+        "unit": null,
+        "value": "335"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "335",
+      "independently_derived_prediction": "335",
+      "index": 2911,
+      "normalization_changed": false,
+      "selected": "335",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "160"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "160",
+      "independently_derived_prediction": "160",
+      "index": 3339,
+      "normalization_changed": false,
+      "selected": "160",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "160"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "160",
+      "independently_derived_prediction": "160",
+      "index": 3339,
+      "normalization_changed": false,
+      "selected": "160",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "3089/250"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "3089/250",
+      "independently_derived_prediction": "3089/250",
+      "index": 3358,
+      "normalization_changed": false,
+      "selected": "12.356",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "3089/250"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "3089/250",
+      "independently_derived_prediction": "3089/250",
+      "index": 3358,
+      "normalization_changed": false,
+      "selected": "12.356",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "dimension-checked exact SI conversion",
+        "status": "answer",
+        "unit": "km",
+        "value": "301752/625"
+      },
+      "derivation": "explicit km and km; same dimension length; gold scale 1000, prediction scale 1000",
+      "grade": "wrong",
+      "independently_derived_gold": "480000",
+      "independently_derived_prediction": "2414016/5",
+      "index": 3795,
+      "normalization_changed": true,
+      "selected": "480 km",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "dimension-checked exact SI conversion",
+        "status": "answer",
+        "unit": "km",
+        "value": "301752/625"
+      },
+      "derivation": "explicit km and km; same dimension length; gold scale 1000, prediction scale 1000",
+      "grade": "wrong",
+      "independently_derived_gold": "480000",
+      "independently_derived_prediction": "2414016/5",
+      "index": 3795,
+      "normalization_changed": true,
+      "selected": "480 km",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "3/50"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "3/50",
+      "independently_derived_prediction": "3/50",
+      "index": 3887,
+      "normalization_changed": false,
+      "selected": "0.06",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "3/50"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "3/50",
+      "independently_derived_prediction": "3/50",
+      "index": 3887,
+      "normalization_changed": false,
+      "selected": "0.06",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "1340067/2500"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "wrong",
+      "independently_derived_gold": "536",
+      "independently_derived_prediction": "1340067/2500",
+      "index": 4045,
+      "normalization_changed": false,
+      "selected": "536",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "1340067/2500"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "wrong",
+      "independently_derived_gold": "536",
+      "independently_derived_prediction": "1340067/2500",
+      "index": 4045,
+      "normalization_changed": false,
+      "selected": "536",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "78/125"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "78/125",
+      "independently_derived_prediction": "78/125",
+      "index": 4244,
+      "normalization_changed": false,
+      "selected": "0.624",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": null,
+        "value": "78/125"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "78/125",
+      "independently_derived_prediction": "78/125",
+      "index": 4244,
+      "normalization_changed": false,
+      "selected": "0.624",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "580"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "580",
+      "independently_derived_prediction": "580",
+      "index": 4461,
+      "normalization_changed": false,
+      "selected": "580",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact scalar linear constraints",
+        "status": "answer",
+        "unit": null,
+        "value": "580"
+      },
+      "derivation": "numeric coefficient only; prediction dimension ignored",
+      "grade": "correct",
+      "independently_derived_gold": "580",
+      "independently_derived_prediction": "580",
+      "index": 4461,
+      "normalization_changed": false,
+      "selected": "580",
+      "series": "candidate"
+    }
+  ],
+  "all_changed_answered_normalizations": [
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "80/3"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "wrong",
+      "independently_derived_gold": "2667/100",
+      "independently_derived_prediction": "80/3",
+      "index": 454,
+      "normalization_changed": true,
+      "selected": "26.67 %",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "80/3"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "wrong",
+      "independently_derived_gold": "2667/100",
+      "independently_derived_prediction": "80/3",
+      "index": 454,
+      "normalization_changed": true,
+      "selected": "26.67 %",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "30"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "30",
+      "independently_derived_prediction": "30",
+      "index": 563,
+      "normalization_changed": true,
+      "selected": "30 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "6"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "6",
+      "independently_derived_prediction": "6",
+      "index": 1128,
+      "normalization_changed": true,
+      "selected": "6 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "18"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "18",
+      "independently_derived_prediction": "18",
+      "index": 1587,
+      "normalization_changed": true,
+      "selected": "18 %",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "exact percentage relation",
+        "status": "answer",
+        "unit": "percent",
+        "value": "18"
+      },
+      "derivation": "explicit % and percent; same dimension percentage_points; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "18",
+      "independently_derived_prediction": "18",
+      "index": 1587,
+      "normalization_changed": true,
+      "selected": "18 %",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "27"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "27",
+      "independently_derived_prediction": "27",
+      "index": 1986,
+      "normalization_changed": true,
+      "selected": "27 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "29"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "29",
+      "independently_derived_prediction": "29",
+      "index": 2836,
+      "normalization_changed": true,
+      "selected": "29 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "27"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "27",
+      "independently_derived_prediction": "27",
+      "index": 2873,
+      "normalization_changed": true,
+      "selected": "27 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "dimension-checked exact SI conversion",
+        "status": "answer",
+        "unit": "km",
+        "value": "301752/625"
+      },
+      "derivation": "explicit km and km; same dimension length; gold scale 1000, prediction scale 1000",
+      "grade": "wrong",
+      "independently_derived_gold": "480000",
+      "independently_derived_prediction": "2414016/5",
+      "index": 3795,
+      "normalization_changed": true,
+      "selected": "480 km",
+      "series": "baseline"
+    },
+    {
+      "actual": {
+        "method": "dimension-checked exact SI conversion",
+        "status": "answer",
+        "unit": "km",
+        "value": "301752/625"
+      },
+      "derivation": "explicit km and km; same dimension length; gold scale 1000, prediction scale 1000",
+      "grade": "wrong",
+      "independently_derived_gold": "480000",
+      "independently_derived_prediction": "2414016/5",
+      "index": 3795,
+      "normalization_changed": true,
+      "selected": "480 km",
+      "series": "candidate"
+    }
+  ],
+  "answered_records_checked": 56,
+  "changed_answered_normalizations_checked": 11,
+  "changed_grade_derivations": [
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "30"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "30",
+      "independently_derived_prediction": "30",
+      "index": 563,
+      "normalization_changed": true,
+      "selected": "30 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "6"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "6",
+      "independently_derived_prediction": "6",
+      "index": 1128,
+      "normalization_changed": true,
+      "selected": "6 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "27"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "27",
+      "independently_derived_prediction": "27",
+      "index": 1986,
+      "normalization_changed": true,
+      "selected": "27 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "29"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "29",
+      "independently_derived_prediction": "29",
+      "index": 2836,
+      "normalization_changed": true,
+      "selected": "29 sec",
+      "series": "candidate"
+    },
+    {
+      "actual": {
+        "method": "exact typed traversal constraints",
+        "status": "answer",
+        "unit": "seconds",
+        "value": "27"
+      },
+      "derivation": "explicit sec and seconds; same dimension time; gold scale 1, prediction scale 1",
+      "grade": "correct",
+      "independently_derived_gold": "27",
+      "independently_derived_prediction": "27",
+      "index": 2873,
+      "normalization_changed": true,
+      "selected": "27 sec",
+      "series": "candidate"
+    }
+  ],
+  "changed_grade_records_checked": 5,
+  "evidence_sha256": {
+    "changed-grades.json": "2493f71253464285a62046b152c98929719a273f6187b52d8c6a1f35e8b605a0",
+    "gold-normalization-changes.jsonl": "efc595c032e8e3f2f7a46830097c8315dc9ed9bb64c4d707df71f9357c839cca",
+    "ledger.jsonl": "baa3653d8be63a4f54b27a810a0bbc75788ddc3ab6ee8341bf44086610ba7f9d",
+    "summary.json": "e3d1f2f4c2989f3eb15292afc445ac4817ccd286d3e1e25ba598c8199aa16061"
+  },
+  "independent_arithmetic": "integer pairs, Decimal decomposition, cross multiplication; no metric imports",
+  "limitation": "Independent arithmetic implementation in same worker, not an independent human/parent review. No question-semantic verification.",
+  "mixed_scalar_derivations": [
+    {
+      "independently_derived": "50/3",
+      "index": 479,
+      "legacy_value": "54",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "16 2 / 3 %"
+    },
+    {
+      "independently_derived": "300/13",
+      "index": 1235,
+      "legacy_value": "231/13",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "23 1 / 13 %"
+    },
+    {
+      "independently_derived": "10/3",
+      "index": 1911,
+      "legacy_value": "31/3",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "3 1 / 3"
+    },
+    {
+      "independently_derived": "100/3",
+      "index": 2572,
+      "legacy_value": "331/3",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "33 1 / 3 %"
+    },
+    {
+      "independently_derived": "21/5",
+      "index": 2719,
+      "legacy_value": "41/5",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "4 1 / 5"
+    },
+    {
+      "independently_derived": "50/13",
+      "index": 3164,
+      "legacy_value": "311/13",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "3 11 / 13 %"
+    },
+    {
+      "independently_derived": "150/7",
+      "index": 3232,
+      "legacy_value": "213/7",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "21 3 / 7 %"
+    },
+    {
+      "independently_derived": "16/5",
+      "index": 3610,
+      "legacy_value": "31/5",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "3 1 / 5"
+    },
+    {
+      "independently_derived": "100/3",
+      "index": 3839,
+      "legacy_value": "331/3",
+      "method": "signed whole plus proper numerator/denominator",
+      "selected": "33 1 / 3 %"
+    }
+  ],
+  "status": "PASS"
+}

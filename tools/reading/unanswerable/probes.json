@@ -1,0 +1,74 @@
+[
+  {
+    "name": "role_positive",
+    "context": "Iris thanked Pavel.",
+    "question": "Who did Iris thank?",
+    "expected": "Pavel"
+  },
+  {
+    "name": "role_negative",
+    "context": "Pavel thanked Iris.",
+    "question": "Who did Iris thank?",
+    "expected": null
+  },
+  {
+    "name": "predicate_positive",
+    "context": "Iris demolished the bridge in 2009.",
+    "question": "When did Iris demolish the bridge?",
+    "expected": "2009"
+  },
+  {
+    "name": "predicate_negative",
+    "context": "Iris painted the bridge in 2009.",
+    "question": "When did Iris demolish the bridge?",
+    "expected": null
+  },
+  {
+    "name": "negation_positive",
+    "context": "Iris demolished the bridge in 2009.",
+    "question": "When did Iris demolish the bridge?",
+    "expected": "2009"
+  },
+  {
+    "name": "negation_negative",
+    "context": "Iris never demolished the bridge in 2009.",
+    "question": "When did Iris demolish the bridge?",
+    "expected": null
+  },
+  {
+    "name": "ambiguous_positive",
+    "context": "Iris visited Lima. Iris visited Lima.",
+    "question": "Who visited Lima?",
+    "expected": "Iris"
+  },
+  {
+    "name": "ambiguous_negative",
+    "context": "Iris visited Lima. Pavel visited Lima.",
+    "question": "Who visited Lima?",
+    "expected": null
+  },
+  {
+    "name": "unicode_positive",
+    "context": "Éva visited Zürich.",
+    "question": "Who visited Zürich?",
+    "expected": "Éva"
+  },
+  {
+    "name": "unicode_negative",
+    "context": "Éva departed Zürich.",
+    "question": "Who visited Zürich?",
+    "expected": null
+  },
+  {
+    "name": "no_support_positive",
+    "context": "The volcano erupted in 2014.",
+    "question": "When did the volcano erupt?",
+    "expected": "2014"
+  },
+  {
+    "name": "no_support_negative",
+    "context": "Pavel owns a bicycle.",
+    "question": "When did the volcano erupt?",
+    "expected": null
+  }
+]

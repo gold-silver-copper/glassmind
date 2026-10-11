@@ -464,6 +464,32 @@
         "reasoning_output_tokens": 2267
       },
       "source": "REJECTED evaluator v2: six initial tests pass but ambiguous/background request-unit probes fail. Parent replay all4475byteidentical; no legacy/runtime change."
+    },
+    {
+      "track": "unanswerable-continuous",
+      "started_unix": 1791699452.6225538,
+      "finished_unix": 1791699822.312287,
+      "usage": {
+        "input_tokens": 1515350,
+        "cached_input_tokens": 1443072,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22128,
+        "reasoning_output_tokens": 4730
+      },
+      "source": "REJECTED_CAL:best100/220precision45.45%, gate60%; no candidateDEV. Parent independently verified selection,1975CALgroups,29artifacthashes;default11873unchanged."
+    },
+    {
+      "track": "typedmetric-continuous",
+      "started_unix": 1791699524.1779604,
+      "finished_unix": 1791699880.2805111,
+      "usage": {
+        "input_tokens": 772253,
+        "cached_input_tokens": 712576,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 24016,
+        "reasoning_output_tokens": 4501
+      },
+      "source": "Separate exact-label-v3 evaluator accepted after parent15testgroups,330authoredchecks,12byteidenticalreports/full4475. Baseline22/4450/3; legacy and rejectedratewordsdecision unchanged."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

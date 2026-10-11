@@ -1,0 +1,305 @@
+{
+  "note": "No selected behavior asserted without passing CAL threshold. Raw spans and scores are diagnostic, not entailment.",
+  "cases": [
+    {
+      "name": "role_positive",
+      "context": "Iris thanked Pavel.",
+      "question": "Who did Iris thank?",
+      "expected": "Pavel",
+      "raw": "thanked Pavel",
+      "baseline": {
+        "answer": "",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.008341550827026367,
+        "proposal": {
+          "end": 18,
+          "start": 5
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.0061473846435547,
+        "status": "refused"
+      },
+      "score": -2.592774651079543,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "role_negative",
+      "context": "Pavel thanked Iris.",
+      "question": "Who did Iris thank?",
+      "expected": null,
+      "raw": "Pavel",
+      "baseline": {
+        "answer": "",
+        "evidence": {
+          "end": 18,
+          "start": 0
+        },
+        "margin": 0.012530207633972168,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 0.8214656710624695,
+        "status": "refused"
+      },
+      "score": -0.20935456993569695,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "predicate_positive",
+      "context": "Iris demolished the bridge in 2009.",
+      "question": "When did Iris demolish the bridge?",
+      "expected": "2009",
+      "raw": "2009",
+      "baseline": {
+        "answer": "2009",
+        "evidence": {
+          "end": 34,
+          "start": 0
+        },
+        "margin": 0.5592759847640991,
+        "proposal": {
+          "end": 34,
+          "start": 30
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9661824703216553,
+        "status": "predicted"
+      },
+      "score": 1.5962193292105187,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "predicate_negative",
+      "context": "Iris painted the bridge in 2009.",
+      "question": "When did Iris demolish the bridge?",
+      "expected": null,
+      "raw": "2009",
+      "baseline": {
+        "answer": "2009",
+        "evidence": {
+          "end": 31,
+          "start": 0
+        },
+        "margin": 0.5592759847640991,
+        "proposal": {
+          "end": 31,
+          "start": 27
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9661824703216553,
+        "status": "predicted"
+      },
+      "score": 1.1297334714759748,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "negation_positive",
+      "context": "Iris demolished the bridge in 2009.",
+      "question": "When did Iris demolish the bridge?",
+      "expected": "2009",
+      "raw": "2009",
+      "baseline": {
+        "answer": "2009",
+        "evidence": {
+          "end": 34,
+          "start": 0
+        },
+        "margin": 0.5592759847640991,
+        "proposal": {
+          "end": 34,
+          "start": 30
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9661824703216553,
+        "status": "predicted"
+      },
+      "score": 1.5962193292105187,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "negation_negative",
+      "context": "Iris never demolished the bridge in 2009.",
+      "question": "When did Iris demolish the bridge?",
+      "expected": null,
+      "raw": "2009",
+      "baseline": {
+        "answer": "2009",
+        "evidence": {
+          "end": 40,
+          "start": 0
+        },
+        "margin": 0.5674725770950317,
+        "proposal": {
+          "end": 40,
+          "start": 36
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.9607181549072266,
+        "status": "predicted"
+      },
+      "score": 1.5852601886933648,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "ambiguous_positive",
+      "context": "Iris visited Lima. Iris visited Lima.",
+      "question": "Who visited Lima?",
+      "expected": "Iris",
+      "raw": "Iris",
+      "baseline": {
+        "answer": "Iris",
+        "evidence": {
+          "end": 17,
+          "start": 0
+        },
+        "margin": 0.5165042877197266,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.5633258819580078,
+        "status": "predicted"
+      },
+      "score": 1.1988626295702818,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "ambiguous_negative",
+      "context": "Iris visited Lima. Pavel visited Lima.",
+      "question": "Who visited Lima?",
+      "expected": null,
+      "raw": "Pavel",
+      "baseline": {
+        "answer": "",
+        "evidence": {
+          "end": 37,
+          "start": 19
+        },
+        "margin": 0.11776423454284668,
+        "proposal": {
+          "end": 24,
+          "start": 19
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.6810901165008545,
+        "status": "refused"
+      },
+      "score": -0.34402737305971093,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "unicode_positive",
+      "context": "Éva visited Zürich.",
+      "question": "Who visited Zürich?",
+      "expected": "Éva",
+      "raw": "Éva",
+      "baseline": {
+        "answer": "Éva",
+        "evidence": {
+          "end": 20,
+          "start": 0
+        },
+        "margin": 0.4733130931854248,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "model_prediction_not_verified",
+        "score": 1.6877593994140625,
+        "status": "predicted"
+      },
+      "score": 1.5203984061631168,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "unicode_negative",
+      "context": "Éva departed Zürich.",
+      "question": "Who visited Zürich?",
+      "expected": null,
+      "raw": "Éva",
+      "baseline": {
+        "answer": "",
+        "evidence": {
+          "end": 21,
+          "start": 0
+        },
+        "margin": 0.004077315330505371,
+        "proposal": {
+          "end": 4,
+          "start": 0
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.0171259641647339,
+        "status": "refused"
+      },
+      "score": -1.226014277614544,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "no_support_positive",
+      "context": "The volcano erupted in 2014.",
+      "question": "When did the volcano erupt?",
+      "expected": "2014",
+      "raw": "2014",
+      "baseline": {
+        "answer": "",
+        "evidence": {
+          "end": 27,
+          "start": 0
+        },
+        "margin": 0.17463040351867676,
+        "proposal": {
+          "end": 27,
+          "start": 23
+        },
+        "reason": "below_train_calibrated_threshold",
+        "score": 1.3245975971221924,
+        "status": "refused"
+      },
+      "score": 1.5079942070127108,
+      "selected": null,
+      "selected_behavior_pass": null
+    },
+    {
+      "name": "no_support_negative",
+      "context": "Pavel owns a bicycle.",
+      "question": "When did the volcano erupt?",
+      "expected": null,
+      "raw": "Pavel",
+      "baseline": {
+        "answer": "",
+        "evidence": {
+          "end": 20,
+          "start": 0
+        },
+        "margin": 0.11282527446746826,
+        "proposal": {
+          "end": 5,
+          "start": 0
+        },
+        "reason": "no_lexical_support",
+        "score": 0.6035246849060059,
+        "status": "refused"
+      },
+      "score": 0,
+      "selected": null,
+      "selected_behavior_pass": null
+    }
+  ]
+}
