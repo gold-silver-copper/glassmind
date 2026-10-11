@@ -1,0 +1,81 @@
+{
+  "utc": "2026-10-11T08:22:31.287194+00:00",
+  "dev_inference_started": false,
+  "base_commit": "5af9c4067d12d1f7a0ee05af14b84af4b321f68c",
+  "files": {
+    "crates/quantities/src/calendar.rs": {
+      "bytes": 4021,
+      "sha256": "e5c25f8281a8c938e4ddb18468b377fd05a90b0267e896e665b4d09441dce6ca"
+    },
+    "crates/quantities/src/inventory.rs": {
+      "bytes": 1779,
+      "sha256": "a3f48765518754664f86e084e8b428925ccbdc345b9665fac8a3eafe3352497e"
+    },
+    "crates/quantities/src/lib.rs": {
+      "bytes": 868,
+      "sha256": "d05dbdd91ca0fe1bd3e568341117548533150d2e6ce06cdd9c74a71749c6721b"
+    },
+    "crates/quantities/src/linear.rs": {
+      "bytes": 15869,
+      "sha256": "92ee55d057dd098356f17a7bade17b1f4dfbace04b679a09aefaae73e10264eb"
+    },
+    "crates/quantities/src/main.rs": {
+      "bytes": 872,
+      "sha256": "d66376e89fbe68a03449a5577cf23a42c2b3767d3bfafeb1d4fad686a8918e4e"
+    },
+    "crates/quantities/src/number_words.rs": {
+      "bytes": 3062,
+      "sha256": "8fd3c91f3176ffb71da48c3511e6978ee80fe5c8ef498e3ec814c02a64b95df1"
+    },
+    "crates/quantities/src/parser.rs": {
+      "bytes": 19092,
+      "sha256": "8bfcb4bbf76ae03c07ba761326b24a58d20e3c1b55ebccd9b058d05111145fe5"
+    },
+    "crates/quantities/src/percent.rs": {
+      "bytes": 3830,
+      "sha256": "052a4ae9f91661547d1a05f770cf7a8b71c5408e6ce65d9e7a0cc219dd99642b"
+    },
+    "crates/quantities/src/percent_change.rs": {
+      "bytes": 7301,
+      "sha256": "bb75b8b6aeee552f58583f716151450172122e682c9395a39c9027aaf11bafbc"
+    },
+    "crates/quantities/src/ratio_total.rs": {
+      "bytes": 6492,
+      "sha256": "b08d5a838210944cd73a716f0f4d0f4329f2d6504aebeabe23d71428abb2446f"
+    },
+    "crates/quantities/src/rational.rs": {
+      "bytes": 4346,
+      "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d"
+    },
+    "crates/quantities/src/units.rs": {
+      "bytes": 6790,
+      "sha256": "f2d45cd3a0916525149c7d752d8f6a414c09a3a6547192512adef75adadfb04c"
+    },
+    "crates/quantities/tests/percent_change.rs": {
+      "bytes": 3555,
+      "sha256": "35f29514a7bd0516eff48e39d67d1ee85feb354a9a3c19d9d9878610b4eda12f"
+    },
+    "tools/quantities/percent-change/PLAN.md": {
+      "bytes": 3533,
+      "sha256": "00e17ffc94aa2c1ac1debdda0637de13d5cfc15a5fcd1f2591b599c50980381b"
+    },
+    "tools/quantities/percent-change/probes.py": {
+      "bytes": 3814,
+      "sha256": "a6ead0a383df89e3c4d6f4d506541c42738ef05518ff12deffb0a29b490e450b"
+    },
+    "tools/quantities/percent-change/evaluate.py": {
+      "bytes": 5511,
+      "sha256": "f6542e70cafb8cfe56922df021f4b03480963e94c02b445599a739f9ee353dda"
+    }
+  },
+  "binaries": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/percentchange-run/candidate/glassmind-quantities": {
+      "bytes": 25275728,
+      "sha256": "e94f0ba1b05ce12aee1dfd015815af0f6825bf0f3049c0501fb2a5eb2cfacf15"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/percentchange-run/candidate/glassmind": {
+      "bytes": 126845800,
+      "sha256": "6e1de5323493f759231525cd5347eb0324a851f469a300d3c3de89970af6f9a1"
+    }
+  }
+}

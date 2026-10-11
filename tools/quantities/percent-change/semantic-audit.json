@@ -1,0 +1,131 @@
+{
+  "total": 7,
+  "justified": 7,
+  "discrepancies": 0,
+  "assumptions": [
+    "Standard annual population compounding, no migration or rounding implied.",
+    "Original price is positive when defining its percentage change.",
+    "Population results are integer counts; existing scalar output convention uses null unit."
+  ],
+  "rows": [
+    {
+      "index": 265,
+      "question": "the population of a town is 8000 . it decreases annually at the rate of 30 % p . a . what will be its population after 2 years ?",
+      "reasoning": "The town starts at 8000; each year removes 30% of that year's population. Two years leave 70% twice.",
+      "formula": "8000 * (7/10)^2",
+      "independent_value": "3920",
+      "independent_unit": null,
+      "actual": {
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        "status": "answer",
+        "unit": null,
+        "value": "3920"
+      },
+      "mathematically_justified": true,
+      "label_grade": "correct",
+      "discrepancies": []
+    },
+    {
+      "index": 1482,
+      "question": "the present population of a town is 3744 . population increase rate is 20 % p . a . find the population of town before 2 years ?",
+      "reasoning": "The current 3744 is the population after two annual 20% gains. Divide by 1.2 twice to recover the explicitly earlier population.",
+      "formula": "3744 / (6/5)^2",
+      "independent_value": "2600",
+      "independent_unit": null,
+      "actual": {
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        "status": "answer",
+        "unit": null,
+        "value": "2600"
+      },
+      "mathematically_justified": true,
+      "label_grade": "correct",
+      "discrepancies": []
+    },
+    {
+      "index": 1751,
+      "question": "the present population of a town is 2000 . population increase rate is 20 % p . a . find the population of town after 1 years ?",
+      "reasoning": "The present population is 2000, and the query is one year after at 20% annual growth.",
+      "formula": "2000 * 6/5",
+      "independent_value": "2400",
+      "independent_unit": null,
+      "actual": {
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        "status": "answer",
+        "unit": null,
+        "value": "2400"
+      },
+      "mathematically_justified": true,
+      "label_grade": "correct",
+      "discrepancies": []
+    },
+    {
+      "index": 2854,
+      "question": "70 is increased by 50 % . find the final number .",
+      "reasoning": "The increase is 50% of the explicitly supplied 70. Add 35 to 70.",
+      "formula": "70 + 70/2",
+      "independent_value": "105",
+      "independent_unit": null,
+      "actual": {
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        "status": "answer",
+        "unit": null,
+        "value": "105"
+      },
+      "mathematically_justified": true,
+      "label_grade": "correct",
+      "discrepancies": []
+    },
+    {
+      "index": 3805,
+      "question": "if the annual increase in the population of a town is 10 % and the present number of people is 15000 , what will the population be in 2 years ?",
+      "reasoning": "The present 15000 gains 10% per year for two years; the annual base changes after the first year.",
+      "formula": "15000 * (11/10)^2",
+      "independent_value": "18150",
+      "independent_unit": null,
+      "actual": {
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        "status": "answer",
+        "unit": null,
+        "value": "18150"
+      },
+      "mathematically_justified": true,
+      "label_grade": "correct",
+      "discrepancies": []
+    },
+    {
+      "index": 4013,
+      "question": "increasing the original price of a certain item by 20 percent and then increasing the new price by 20 percent is equivalent to increasing the original price by what percent ?",
+      "reasoning": "The second 20% increase explicitly uses the new price. Normalizing the positive original price to 100, stages are 100 ->120 ->144; original-base increase is44%.",
+      "formula": "(6/5 * 6/5 - 1) * 100",
+      "independent_value": "44",
+      "independent_unit": "percent",
+      "actual": {
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        "status": "answer",
+        "unit": "percent",
+        "value": "44"
+      },
+      "mathematically_justified": true,
+      "label_grade": "correct",
+      "discrepancies": []
+    },
+    {
+      "index": 4071,
+      "question": "increasing the original price of a certain item by 25 percent and then increasing the new price by 30 percent is equivalent to increasing the original price by what percent ?",
+      "reasoning": "The first25% gain gives125 per original100. The second30% gain uses125, adding37.5. Final162.5 is62.5% above original.",
+      "formula": "(5/4 * 13/10 - 1) * 100",
+      "independent_value": "125/2",
+      "independent_unit": "percent",
+      "actual": {
+        "method": "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
+        "status": "answer",
+        "unit": "percent",
+        "value": "125/2"
+      },
+      "mathematically_justified": true,
+      "label_grade": "correct",
+      "discrepancies": []
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+diff --git i/crates/quantities/src/lib.rs w/crates/quantities/src/lib.rs
+index a314572..33df6dd 100644
+--- i/crates/quantities/src/lib.rs
++++ w/crates/quantities/src/lib.rs
+@@ -5,6 +5,7 @@ mod linear;
+ pub mod number_words;
+ mod parser;
+ mod percent;
++mod percent_change;
+ mod ratio_total;
+ pub mod rational;
+ pub mod units;
+diff --git i/crates/quantities/src/parser.rs w/crates/quantities/src/parser.rs
+index 33ae97b..259709e 100644
+--- i/crates/quantities/src/parser.rs
++++ w/crates/quantities/src/parser.rs
+@@ -180,6 +180,13 @@ pub fn solve(question: &str) -> Result<Solved> {
+     if let Ok(Some(value)) = crate::linear::solve(&text) {
+         return Ok(numeric(value, "exact scalar linear constraints"));
+     }
++    if let Some((value, percent)) = crate::percent_change::solve(&text)? {
++        return Ok((
++            value.to_string(),
++            percent.then(|| "percent".into()),
++            "exact directed percentage changes; each new stage uses the preceding base; annual population compounds without rounding",
++        ));
++    }
+     if let Some((value, is_ratio)) = crate::percent::solve(&text)? {
+         return Ok((
+             value.to_string(),
+diff --git 1/crates/quantities/src/percent_change.rs 2/crates/quantities/src/percent_change.rs
+new file mode 100644
+index 0000000..13bb2e5
+--- /dev/null
++++ 2/crates/quantities/src/percent_change.rs
+@@ -0,0 +1,183 @@
++//! One-quantity directed changes with explicit before/after stage binding.
++use crate::rational::{Rational, Result};
++use regex::Regex;
++
++const N: &str = r"(-?\d+(?:\.\d+|/\d+)?)";
++const P: &str = r"\s*(?:%|percent|per cent)";
++
++#[derive(Clone, Copy)]
++enum Direction {
++    Increase,
++    Decrease,
++}
++impl Direction {
++    fn parse(s: &str) -> Self {
++        if s.starts_with("increas") {
++            Self::Increase
++        } else {
++            Self::Decrease
++        }
++    }
++}
++struct Change {
++    direction: Direction,
++    percent: Rational,
++}
++impl Change {
++    fn factor(&self) -> Result<Rational> {
++        if self.percent.is_negative() {
++            return Err("negative change magnitude".into());
++        }
++        let fraction = self.percent.checked_div(Rational::integer(100))?;
++        let factor = match self.direction {
++            Direction::Increase => Rational::integer(1).checked_add(fraction)?,
++            Direction::Decrease => Rational::integer(1).checked_sub(fraction)?,
++        };
++        if factor.is_negative() {
++            return Err("decrease exceeds nonnegative quantity".into());
++        }
++        Ok(factor)
++    }
++}
++struct Stages {
++    factor: Rational,
++}
++impl Stages {
++    fn new() -> Self {
++        Self {
++            factor: Rational::integer(1),
++        }
++    }
++    fn append(&mut self, change: Change) -> Result<()> {
++        self.factor = self.factor.checked_mul(change.factor()?)?;
++        Ok(())
++    }
++    fn value(&self, known: Rational, inverse: bool) -> Result<Rational> {
++        if known.is_negative() {
++            return Err("negative base".into());
++        }
++        if inverse {
++            known.checked_div(self.factor)
++        } else {
++            known.checked_mul(self.factor)
++        }
++    }
++    fn percent(&self, direction: Direction) -> Result<Rational> {
++        let signed = self
++            .factor
++            .checked_sub(Rational::integer(1))?
++            .checked_mul(Rational::integer(100))?;
++        let result = match direction {
++            Direction::Increase => signed,
++            Direction::Decrease => signed.checked_neg()?,
++        };
++        if result.is_negative() {
++            return Err("requested direction conflicts with change".into());
++        }
++        Ok(result)
++    }
++}
++fn re(pattern: &str) -> Result<Regex> {
++    Regex::new(pattern).map_err(|e| e.to_string())
++}
++fn change(direction: &str, percent: &str) -> Result<Change> {
++    Ok(Change {
++        direction: Direction::parse(direction),
++        percent: percent.parse()?,
++    })
++}
++
++pub(crate) fn solve(text: &str) -> Result<Option<(Rational, bool)>> {
++    if !["increas", "decreas", "reduced"]
++        .iter()
++        .any(|word| text.contains(word))
++    {
++        return Ok(None);
++    }
++    // No comma or sentence deletion: separators are consumed by productions.
++    let population = r"(?:a (?:town|village|city)|(?:the )?(?:town|village|city) [a-z]+)";
++    let patterns = [
++        format!(
++            r"^the population of {population} is {N}\s*\. it (increases|decreases) annually at the rate of {N}{P}(?: p\s*\. a\s*\.)?\s*\.? what will be its population after (\d+) years?$"
++        ),
++        format!(
++            r"^the present population of {population} is {N}\s*\. population (increase|decrease) rate is {N}{P} p\s*\. a\s*\. find the population of (?:the )?(?:town|village|city) (before|after) (\d+) years?$"
++        ),
++        format!(
++            r"^if the annual (increase|decrease) in the population of {population} is {N}{P} and the present number of people is {N}\s*, what will the population be in (\d+) years?$"
++        ),
++    ];
++    for (index, pattern) in patterns.iter().enumerate() {
++        if let Some(c) = re(pattern)?.captures(text) {
++            let (known, direction, percent, years, inverse) = match index {
++                0 => (&c[1], &c[2], &c[3], &c[4], false),
++                1 => (&c[1], &c[2], &c[3], &c[5], &c[4] == "before"),
++                _ => (&c[3], &c[1], &c[2], &c[4], false),
++            };
++            if index == 1 {
++                let subject = re(r"^the present population of (?:a |the )?(town|village|city)\b")?;
++                let source = subject.captures(text).ok_or("missing population entity")?;
++                let query = re(r"find the population of (?:the )?(town|village|city)\b")?;
++                let target = query.captures(text).ok_or("missing population reference")?;
++                if source[1] != target[1] {
++                    return Err("conflicting population reference".into());
++                }
++            }
++            let years: usize = years.parse().map_err(|_| "invalid year count")?;
++            if years > 100 {
++                return Err("too many annual stages".into());
++            }
++            let mut stages = Stages::new();
++            // Check the rate even for a zero-year interval.
++            change(direction, percent)?.factor()?;
++            for _ in 0..years {
++                stages.append(change(direction, percent)?)?;
++            }
++            let result = stages.value(known.parse()?, inverse)?;
++            result.as_i64()?;
++            return Ok(Some((result, false)));
++        }
++    }
++    // The second clause explicitly names the new base, not the original base.
++    let pattern = format!(
++        r"^(increasing|decreasing) the original (price|cost) of (?:a|an) (?:certain )?[a-z]+ by {N}{P} and then (increasing|decreasing) the new (price|cost) by {N}{P} is equivalent to (increasing|decreasing) the original (price|cost) by what (?:percent|percentage|per cent)$"
++    );
++    if let Some(c) = re(&pattern)?.captures(text) {
++        if c[2] != c[5] || c[2] != c[8] {
++            return Err("conflicting quantity reference".into());
++        }
++        let mut stages = Stages::new();
++        stages.append(change(&c[1], &c[3])?)?;
++        stages.append(change(&c[4], &c[6])?)?;
++        return Ok(Some((stages.percent(Direction::parse(&c[7]))?, true)));
++    }
++    let pattern = format!(
++        r"^(?:if )?(a number|the price of (?:a|an) [a-z]+) is (?:first )?(increased|decreased|reduced) by {N}{P} and then (increased|decreased|reduced) by {N}{P}\s*\.(?: find the net (increase|decrease) (?:percent|per cent)| what is the (?:percent|percentage) (increase|decrease))$"
++    );
++    if let Some(c) = re(&pattern)?.captures(text) {
++        let mut stages = Stages::new();
++        stages.append(change(&c[2], &c[3])?)?;
++        stages.append(change(&c[4], &c[5])?)?;
++        let target = c
++            .get(6)
++            .or_else(|| c.get(7))
++            .ok_or("missing direction")?
++            .as_str();
++        return Ok(Some((stages.percent(Direction::parse(target))?, true)));
++    }
++    let pattern =
++        format!(r"^{N} is (increased|decreased|reduced) by {N}{P}\s*\. find the final number$");
++    if let Some(c) = re(&pattern)?.captures(text) {
++        let mut stages = Stages::new();
++        stages.append(change(&c[2], &c[3])?)?;
++        return Ok(Some((stages.value(c[1].parse()?, false)?, false)));
++    }
++    let pattern =
++        format!(r"^a number (increased|decreased|reduced) by {N}{P} gives {N}\s*\. the number is$");
++    if let Some(c) = re(&pattern)?.captures(text) {
++        let mut stages = Stages::new();
++        stages.append(change(&c[1], &c[2])?)?;
++        return Ok(Some((stages.value(c[3].parse()?, true)?, false)));
++    }
++    Ok(None)
++}
+diff --git 1/crates/quantities/tests/percent_change.rs 2/crates/quantities/tests/percent_change.rs
+new file mode 100644
+index 0000000..ac48787
+--- /dev/null
++++ 2/crates/quantities/tests/percent_change.rs
+@@ -0,0 +1,80 @@
++use glassmind_quantities::{Answer, solve};
++fn answer(q: &str, expected: &str, unit: Option<&str>) {
++    match solve(q) {
++        Answer::Answer {
++            value,
++            unit: actual,
++            ..
++        } => {
++            assert_eq!(value, expected, "{q}");
++            assert_eq!(actual.as_deref(), unit, "{q}");
++        }
++        a => assert!(matches!(a, Answer::Answer { .. }), "{q}: {a:?}"),
++    }
++}
++#[test]
++fn directed_bases_and_successive_changes() {
++    answer(
++        "A number increased by 20% gives 120. The number is",
++        "100",
++        None,
++    );
++    answer("0 is increased by 20%. Find the final number.", "0", None);
++    answer("90 is decreased by 100%. Find the final number.", "0", None);
++    answer(
++        "A number is increased by 20% and then decreased by 20%. What is the percentage decrease?",
++        "4",
++        Some("percent"),
++    );
++    answer(
++        "A number is decreased by 50% and then increased by 50%. What is the percentage decrease?",
++        "25",
++        Some("percent"),
++    );
++    answer(
++        "Increasing the original price of a lantern by 10 percent and then increasing the new price by 10 percent is equivalent to increasing the original price by what percent?",
++        "21",
++        Some("percent"),
++    );
++    answer("What is 20 percent of 120?", "24", None);
++}
++#[test]
++fn annual_forward_inverse_and_bound_entity() {
++    answer(
++        "The population of a village is 8000. It decreases annually at the rate of 10% p. a. What will be its population after 2 years?",
++        "6480",
++        None,
++    );
++    answer(
++        "The present population of a city is 1440. Population increase rate is 20% p. a. Find the population of city before 2 years?",
++        "1000",
++        None,
++    );
++    answer(
++        "If the annual increase in the population of town mira is 10% and the present number of people is 10000, what will the population be in 2 years?",
++        "12100",
++        None,
++    );
++}
++#[test]
++fn refuses_incomplete_ambiguous_or_invalid_relations() {
++    for q in [
++        "A number decreased by 100% gives 0. The number is",
++        "-20 is increased by 10%. Find the final number.",
++        "20 is increased by -10%. Find the final number.",
++        "20 is decreased by 101%. Find the final number.",
++        "20 is increased by 10 percentage points. Find the final number.",
++        "A number is increased by 20% and then decreased by 20%. What is the percentage increase?",
++        "20 is increased by 10%. Find the final number. Also add 5.",
++        "A number increased by 20% gives 120. The number is 90. The number is",
++        "Increasing the original price of a lantern by 10 percent and then increasing the new cost by 10 percent is equivalent to increasing the original price by what percent?",
++        "Increasing the original price of a lantern by 10 percent and then increasing the original price by 10 percent is equivalent to increasing the original price by what percent?",
++        "The present population of a city is 1440. Population increase rate is 20% p. a. Find the population of village before 2 years?",
++        "The population of a town is 1. It increases annually at the rate of 10%. What will be its population after 1 year?",
++        "A number is increased by x percent and then decreased by y percent. What is the percentage increase?",
++        "20 dollars is increased by 10%. Find the final number.",
++        "20 is changed by 10%. Find the final number.",
++    ] {
++        assert!(matches!(solve(q), Answer::Refusal { .. }), "{q}");
++    }
++}

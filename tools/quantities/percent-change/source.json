@@ -1,0 +1,26 @@
+{
+  "source": "AllenAI MathQA",
+  "homepage": "https://math-qa.github.io/math-QA/",
+  "license": "Apache-2.0 (AllenAI dataset card)",
+  "version": "fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6",
+  "card_version": "c4f1cc784c04c4957b50c97858f23893b633eea6",
+  "files": [
+    {
+      "split": "train",
+      "url": "https://huggingface.co/datasets/allenai/math_qa/resolve/fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6/default/train/0000.parquet",
+      "bytes": 9013733,
+      "sha256": "c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99"
+    },
+    {
+      "split": "validation",
+      "url": "https://huggingface.co/datasets/allenai/math_qa/resolve/fafb9f7ee5b9ec4da9499f9c4177a4c91389f2d6/default/validation/0000.parquet",
+      "bytes": 1350141,
+      "sha256": "488beaa0e6cafe4aefbdd07ac76542547a27681461e3da7641e0777e14756e20"
+    }
+  ],
+  "official_splits": {
+    "train": 29837,
+    "validation": 4475
+  },
+  "test_downloaded": false
+}

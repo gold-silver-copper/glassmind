@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "source_and_binaries_match_pre_dev_freeze": true,
+  "metric_freeze_verified": true,
+  "baseline_identity_verified": true,
+  "baseline_answer_payloads_unchanged": 25,
+  "baseline_correct_retained": 22,
+  "additional_independently_justified_correct": 7,
+  "synthetic_triples_unchanged": 3116,
+  "independent_probes_passed": 38,
+  "linear_probes_passed": 50,
+  "absolute_probes_passed": 55,
+  "post_full_runtime_edits": false,
+  "rejected_capability_iterations": [],
+  "pre_freeze_validation_issue": "Clippy rejected explicit panic in test helper; replaced with assertion before freeze; first check preceded new tests, final validation reran all required checks.",
+  "parent_integrated_checks_pending": true
+}
