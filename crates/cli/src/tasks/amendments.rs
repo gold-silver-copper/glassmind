@@ -2,6 +2,18 @@
 use super::*;
 use glassmind_meaning::Trouble;
 
+pub(super) fn answer_missing(session: &CodingSession, text: &str) -> Option<String> {
+    let task = session.task.as_ref()?;
+    if task.status != TaskStatus::Blocked
+        || task.choices.is_some()
+        || !matches!(&task.request, Action::AddMember { member, .. } if member.default.is_none())
+        || !matches!(task.events.last().map(|e| &e.result), Some(Reply::Trouble(Trouble::MissingParameter { parameter })) if parameter == "field default")
+    {
+        return None;
+    }
+    glassmind_english_rust::add_fields::literal_answer(text)
+}
+
 pub(super) fn amend(
     session: &mut CodingSession,
     path: &Path,
@@ -23,6 +35,11 @@ pub(super) fn amend(
         return Ok("No active plan step can take this correction.".into());
     }
     let parsed = glassmind_english_rust::add_fields::amendment_request(text)
+        .or_else(|| {
+            answer_missing(session, text).map(|value| {
+                Ok(glassmind_world_rust::amendments::RustAmendment::FieldDefault(value))
+            })
+        })
         .ok_or("parameter correction missing")?;
     let system = open(&session.repository);
     let revised = match parsed {

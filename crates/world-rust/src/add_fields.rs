@@ -16,7 +16,7 @@ use std::collections::BTreeMap;
 pub struct PublicField {
     pub name: String,
     pub ty: String,
-    pub default: String,
+    pub default: Option<String>,
 }
 
 use syn::{parse::Parser, visit::Visit};
@@ -34,6 +34,32 @@ pub struct FieldAddition {
     pub action: AddField,
     pub changes: Vec<RustChange>,
     pub constructors: usize,
+}
+
+pub(crate) fn validate_member_shape(member: &PublicField) -> Result<(), String> {
+    if syn::parse_str::<syn::Ident>(&member.name).is_err() || member.name.starts_with("r#") {
+        return Err("ordinary field identifier required".into());
+    }
+    if !matches!(
+        member.ty.as_str(),
+        "bool"
+            | "char"
+            | "u8"
+            | "u16"
+            | "u32"
+            | "u64"
+            | "u128"
+            | "usize"
+            | "i8"
+            | "i16"
+            | "i32"
+            | "i64"
+            | "i128"
+            | "isize"
+    ) {
+        return Err("supported field types are primitive integers, bool and char".into());
+    }
+    Ok(())
 }
 
 pub(crate) fn test_cfg(a: &syn::Attribute) -> bool {
@@ -117,7 +143,10 @@ impl RustWorld {
             owner: item.name.clone(),
             field: member.name.clone(),
             ty: member.ty.clone(),
-            default: member.default.clone(),
+            default: member
+                .default
+                .clone()
+                .ok_or("explicit constructor default required")?,
         })
     }
 
@@ -604,7 +633,7 @@ mod task_tests {
             member: PublicField {
                 name: "enabled".into(),
                 ty: "bool".into(),
-                default: "true".into(),
+                default: Some("true".into()),
             },
         };
         let patch = world.propose(&action, &mut Vec::new()).unwrap();

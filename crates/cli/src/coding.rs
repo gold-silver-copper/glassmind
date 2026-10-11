@@ -791,7 +791,7 @@ impl Language<Rust> for CodingLanguage<'_> {
                     thing
                         .item()
                         .map_or_else(|| "the target".into(), |i| i.label()),
-                    member.default,
+                    member.default.as_deref().unwrap_or("unspecified"),
                     changes.len()
                 ),
                 rules: Vec::new(),
@@ -807,6 +807,12 @@ impl Language<Rust> for CodingLanguage<'_> {
                     thing
                         .item()
                         .map_or_else(|| "the target".into(), |i| i.label())
+                ),
+                rules: Vec::new(),
+            }),
+            Reply::Trouble(Trouble::MissingParameter { parameter }) => Some(Spoken {
+                text: format!(
+                    "What value should I use for the {parameter}? Specify one literal for every existing constructor. The task is waiting; no changes were applied."
                 ),
                 rules: Vec::new(),
             }),

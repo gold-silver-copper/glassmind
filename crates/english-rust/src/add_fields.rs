@@ -335,7 +335,30 @@ fn clause(c: &mut Cursor<'_>) -> Option<Clause> {
     })
 }
 
-fn parse(text: &str, tokens: &[Token<'_>]) -> Option<(AddField, bool)> {
+/// A bare literal is an answer only when the host has one missing default.
+/// It is not an unconditional action interpretation.
+pub fn literal_answer(text: &str) -> Option<String> {
+    if text.len() > 8192 {
+        return None;
+    }
+    let tokens = tokens(text)?;
+    let mut c = Cursor {
+        source: text,
+        tokens: &tokens,
+        at: 0,
+        owner_previous: false,
+    };
+    let value = c.literal()?;
+    c.eat(".");
+    (c.at == tokens.len()).then_some(value)
+}
+
+struct FieldRequest {
+    owner: String,
+    member: PublicField,
+}
+
+fn parse(text: &str, tokens: &[Token<'_>]) -> Option<(FieldRequest, bool)> {
     let mut c = Cursor {
         source: text,
         tokens,
@@ -402,22 +425,35 @@ fn parse(text: &str, tokens: &[Token<'_>]) -> Option<(AddField, bool)> {
             _ => {}
         }
     }
-    if !(all || (new && other)) {
+    if default.is_some() && !(all || (new && other)) {
         return None;
     }
     Some((
-        AddField {
+        FieldRequest {
             owner: owner.clone(),
-            field: field.clone(),
-            ty: ty.clone(),
-            default: default?.clone(),
+            member: PublicField {
+                name: field.clone(),
+                ty: ty.clone(),
+                default: default.cloned(),
+            },
         },
         c.owner_previous,
     ))
 }
 
 pub fn request(text: &str) -> Option<Result<AddField, String>> {
-    request_target(text).map(|r| r.map(|(field, _)| field))
+    request_target(text).map(|r| {
+        r.and_then(|(field, _)| {
+            Ok(AddField {
+                owner: field.owner,
+                field: field.member.name,
+                ty: field.member.ty,
+                default: field.member.default.ok_or_else(|| {
+                    "explicit default for every existing constructor required".to_owned()
+                })?,
+            })
+        })
+    })
 }
 
 pub fn task_request(text: &str) -> Option<Result<(Thing<Rust>, PublicField), String>> {
@@ -428,19 +464,12 @@ pub fn task_request(text: &str) -> Option<Result<(Thing<Rust>, PublicField), Str
             } else {
                 Thing::Named(Name(field.owner))
             };
-            (
-                thing,
-                PublicField {
-                    name: field.field,
-                    ty: field.ty,
-                    default: field.default,
-                },
-            )
+            (thing, field.member)
         })
     })
 }
 
-fn request_target(text: &str) -> Option<Result<(AddField, bool), String>> {
+fn request_target(text: &str) -> Option<Result<(FieldRequest, bool), String>> {
     let tokens = tokens(text)?;
     let action = parse(text, &tokens);
     // Dispatch only a real declaration constituent at a clause boundary. This
@@ -471,6 +500,20 @@ fn request_target(text: &str) -> Option<Result<(AddField, bool), String>> {
 mod tests {
     use super::*;
     #[test]
+    fn omitted_defaults_remain_unresolved_without_widening_standalone_edits() {
+        let text = "Add pub ready: bool to Beacon";
+        let (target, member) = task_request(text).unwrap().unwrap();
+        assert_eq!(target, Thing::Named(Name("Beacon".into())));
+        assert!(member.default.is_none());
+        assert!(request(text).unwrap().is_err());
+        assert!(
+            task_request("Add pub ready: bool to Beacon; use true in Beacon::new")
+                .unwrap()
+                .is_err()
+        );
+    }
+
+    #[test]
     fn contextual_owner_and_quoted_identifier_are_distinct() {
         use glassmind_meaning::{Name, Thing};
         let (target, member) =
@@ -478,7 +521,7 @@ mod tests {
                 .unwrap()
                 .unwrap();
         assert_eq!(target, Thing::Previous);
-        assert_eq!(member.default, "true");
+        assert_eq!(member.default.as_deref(), Some("true"));
         let (target, _) =
             task_request("Add pub ready: bool to `it`. Use true for all existing constructors.")
                 .unwrap()
