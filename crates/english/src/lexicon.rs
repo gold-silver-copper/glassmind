@@ -24,6 +24,10 @@ pub const NAME: &str = "name";
 /// identifier (`spawn_wave`). A plain word may be English the system does
 /// not know, so it is never one: a new name must not be a guess.
 pub const CODE: &str = "code";
+/// An exact single identifier in a syntactically explicit code-name role.
+/// Unlike NAME this also admits English vocabulary. Bridges must opt in at
+/// the role, rather than making arbitrary English words into noun phrases.
+pub const IDENTIFIER: &str = "identifier";
 /// Token class: a plain word the system does not know, not written as
 /// code: what a name of the user's own ("the history sheet") is made of.
 pub const WORD: &str = "word";
@@ -93,6 +97,14 @@ impl<O: Ontology> Lexicon<Sem<O>> for EnglishLexicon<O> {
 
     fn read_class(&self, class: &'static str, token: &Token) -> Vec<Sem<O>> {
         match (class, token.shape) {
+            (IDENTIFIER, Shape::Word | Shape::Code)
+                if token.text.chars().next().is_some_and(|c| c.is_alphabetic() || c == '_')
+                    && token.text.chars().all(|c| c.is_alphanumeric() || c == '_')
+                    // A plain word trimmed by the tokenizer is not exact.
+                    && (token.shape == Shape::Code || token.end - token.start == token.text.len()) =>
+            {
+                vec![Sem::Name(Name(token.text.clone()))]
+            }
             (NAME | CODE, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
             (NAME | WORD, Shape::Word) if !self.known.contains(self.norm(token)) => {
                 vec![Sem::Name(Name(token.text.clone()))]

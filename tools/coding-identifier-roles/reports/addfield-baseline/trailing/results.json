@@ -1,0 +1,14 @@
+[
+  {
+    "request": "Add pub weight: u16 to Parcel. Use 7 for all existing constructors. Also delete the tests.",
+    "result": {
+      "code": 0,
+      "stdout": "Cannot add field: expected a complete public field addition with explicit type and one default for every existing constructor; unsupported or conflicting clauses are not ignored\n",
+      "stderr": ""
+    },
+    "changed": false,
+    "exact_rollback": true,
+    "passed": true,
+    "case": "trailing"
+  }
+]

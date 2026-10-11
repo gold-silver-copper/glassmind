@@ -1,0 +1,255 @@
+{
+  "total": 42,
+  "baseline_pass": 33,
+  "candidate_pass": 42,
+  "retained": 33,
+  "new_successes": [
+    "query-caller-plain",
+    "query-renamed-plain",
+    "query-called-plain",
+    "field-query-called",
+    "field-query-renamed",
+    "rename-implement",
+    "rename-weigh",
+    "field-rename-called",
+    "field-rename-renamed"
+  ],
+  "baseline_renames": 10,
+  "candidate_renames": 14,
+  "all_negative_exact": true,
+  "all_inventory_exact": true,
+  "changed_cases": [
+    {
+      "id": "query-caller-plain",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  where is function caller?▮\n",
+      "candidate_reply": "`caller` is defined at src/lib.rs:1.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "query-renamed-plain",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  where is function renamed▮?\n",
+      "candidate_reply": "`renamed` is defined at src/lib.rs:1.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "query-called-plain",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "Nothing is called `is`.\n",
+      "candidate_reply": "`called` is defined at src/lib.rs:1.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "field-query-called",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  where is field called of struct Record▮?\n",
+      "candidate_reply": "`Record::called` is defined at src/lib.rs:1.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "field-query-renamed",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  where is field renamed ▮of struct Record?\n",
+      "candidate_reply": "`Record::renamed` is defined at src/lib.rs:1.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "rename-implement",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename function implement to ▮renamed\n",
+      "candidate_reply": "I'd rename the `implement` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `implement` -> `renamed`\n  src/lib.rs:2:27  `implement` -> `renamed`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n",
+      "changed_paths": [
+        "src/lib.rs"
+      ],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve implement in comments.\npub const NOTE: &str = \"implement\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": true
+    },
+    {
+      "id": "rename-weigh",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename function weigh to ▮called\n",
+      "candidate_reply": "I'd rename the `weigh` function to `called` in 2 places.\n  src/lib.rs:1:8  `weigh` -> `called`\n  src/lib.rs:2:27  `weigh` -> `called`\n  (say yes to rename `weigh`)\nI made 2 changes. No problems with the build.\n",
+      "changed_paths": [
+        "src/lib.rs"
+      ],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve weigh in comments.\npub const NOTE: &str = \"weigh\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": true
+    },
+    {
+      "id": "field-rename-called",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I don't know the word `Record`.\n  rename field called on ▮Record to saved\n",
+      "candidate_reply": "I'd rename the `Record::called` field to `saved` in 3 places.\n  src/lib.rs:1:25  `called` -> `saved`\n  src/lib.rs:2:36  `called` -> `saved`\n  src/lib.rs:2:48  `called` -> `saved`\n  (say yes to rename `Record::called`)\nI made 3 changes. No problems with the build.\n",
+      "changed_paths": [
+        "src/lib.rs"
+      ],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub struct Record { pub saved: u32 }\npub fn observe() -> u32 { Record { saved: 7 }.saved }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": true
+    },
+    {
+      "id": "field-rename-renamed",
+      "baseline_pass": false,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename field renamed ▮on Record to read\n",
+      "candidate_reply": "I'd rename the `Record::renamed` field to `read` in 3 places.\n  src/lib.rs:1:25  `renamed` -> `read`\n  src/lib.rs:2:36  `renamed` -> `read`\n  src/lib.rs:2:49  `renamed` -> `read`\n  (say yes to rename `Record::renamed`)\nI made 3 changes. No problems with the build.\n",
+      "changed_paths": [
+        "src/lib.rs"
+      ],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub struct Record { pub read: u32 }\npub fn observe() -> u32 { Record { read: 7 }.read }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": true
+    },
+    {
+      "id": "multi",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename function caller to ▮renamed and rename function observe to calculate\n",
+      "candidate_reply": "I can't follow the sentence from the marked spot.\n  rename function caller to renamed and rename function observe to calculate▮\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "suffix",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename function caller to ▮renamed inexplicable_suffix\n",
+      "candidate_reply": "I can't follow the sentence from the marked spot.\n  rename function caller to renamed inexplicable_suffix▮\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "collision",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename function caller to ▮renamed\n",
+      "candidate_reply": "I understand, but I can't do that here.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub fn renamed() {}\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "two-functions",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename function caller to ▮renamed\n",
+      "candidate_reply": "I can't tell which one you mean: `caller` and `caller`.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub mod nested { pub fn caller() -> u32 { 3 } }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    },
+    {
+      "id": "wrong-kind",
+      "baseline_pass": true,
+      "candidate_pass": true,
+      "baseline_reply": "I can't follow the sentence from the marked spot.\n  rename field caller to ▮renamed\n",
+      "candidate_reply": "`caller` is the wrong kind of thing for that.\n",
+      "changed_paths": [],
+      "exact": true,
+      "behavior": true,
+      "files": {
+        "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+        "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+        "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+      },
+      "native_test_ran": false
+    }
+  ]
+}

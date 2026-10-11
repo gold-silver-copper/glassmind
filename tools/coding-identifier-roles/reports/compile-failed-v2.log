@@ -1,0 +1,20 @@
+Running as unit: run-p3905958-i96168964.scope; invocation ID: 764e77be248c4f7ca0aaddeaaa39f233
+   Compiling glassmind-english v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles/crates/english)
+   Compiling glassmind-english-rust v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/identifierroles/crates/english-rust)
+warning: unused import: `Question`
+ --> crates/english-rust/src/identifier_roles.rs:6:67
+  |
+6 | use glassmind_meaning::{Action, Condition, Description, Position, Question, Thing, Utterance};
+  |                                                                   ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0433]: cannot find module `Question` in this scope
+  --> crates/english-rust/src/identifier_roles.rs:95:70
+   |
+95 |                 [Sem::Mention { thing, kind }] => Some(Sem::Question(Question::Locate {
+   |                                                                      ^^^^^^^^ `Question` is a variant, not a module
+
+For more information about this error, try `rustc --explain E0433`.
+warning: `glassmind-english-rust` (lib) generated 1 warning
+error: could not compile `glassmind-english-rust` (lib) due to 1 previous error; 1 warning emitted

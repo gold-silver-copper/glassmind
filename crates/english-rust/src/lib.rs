@@ -5,6 +5,7 @@
 
 pub mod add_fields;
 pub mod declared_types;
+pub mod identifier_roles;
 
 use glassmind_english::{Cat, Number, Sem, VerbForm, word};
 use glassmind_grammar::Rule;
@@ -361,6 +362,7 @@ pub fn rules() -> Vec<Word> {
         .into_iter()
         .chain(words())
         .chain(check_words())
+        .chain(identifier_roles::rules())
         .collect()
 }
 

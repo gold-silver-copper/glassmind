@@ -1,0 +1,716 @@
+[
+  {
+    "id": "query-caller-plain",
+    "request": "where is function caller?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`caller` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-caller-backtick",
+    "request": "where is function `caller`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`caller` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-caller-double",
+    "request": "where is function \"caller\"?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`caller` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-renamed-plain",
+    "request": "where is function renamed?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`renamed` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-renamed-backtick",
+    "request": "where is function `renamed`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`renamed` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-renamed-double",
+    "request": "where is function \"renamed\"?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`renamed` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-called-plain",
+    "request": "where is function called?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`called` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-called-backtick",
+    "request": "where is function `called`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`called` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-called-double",
+    "request": "where is function \"called\"?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`called` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-drain_events-plain",
+    "request": "where is function drain_events?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`drain_events` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-drain_events-backtick",
+    "request": "where is function `drain_events`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`drain_events` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-drain_events-double",
+    "request": "where is function \"drain_events\"?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`drain_events` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-café-plain",
+    "request": "where is function café?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`café` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-café-backtick",
+    "request": "where is function `café`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`café` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "query-café-double",
+    "request": "where is function \"café\"?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`café` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "field-query-called",
+    "request": "where is field called of struct Record?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`Record::called` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "field-control-called",
+    "request": "where is field `called` of struct `Record`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`Record::called` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "field-query-renamed",
+    "request": "where is field renamed of struct Record?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`Record::renamed` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "field-control-renamed",
+    "request": "where is field `renamed` of struct `Record`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`Record::renamed` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "field-query-drain_events",
+    "request": "where is field drain_events of struct Record?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub drain_events: u32 }\npub fn observe() -> u32 { Record { drain_events: 7 }.drain_events }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub drain_events: u32 }\npub fn observe() -> u32 { Record { drain_events: 7 }.drain_events }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`Record::drain_events` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "field-control-drain_events",
+    "request": "where is field `drain_events` of struct `Record`?",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub drain_events: u32 }\npub fn observe() -> u32 { Record { drain_events: 7 }.drain_events }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub drain_events: u32 }\npub fn observe() -> u32 { Record { drain_events: 7 }.drain_events }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": "`Record::drain_events` is defined at src/lib.rs:1.\n",
+    "positive": true,
+    "mutation": false
+  },
+  {
+    "id": "rename-caller",
+    "request": "rename function caller to implement_again",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn implement_again() -> u32 { 7 }\npub fn observe() -> u32 { implement_again() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-control-caller",
+    "request": "rename function `caller` to `implement_again`",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn implement_again() -> u32 { 7 }\npub fn observe() -> u32 { implement_again() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-implement",
+    "request": "rename function implement to renamed",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn implement() -> u32 { 7 }\npub fn observe() -> u32 { implement() }\n// Preserve implement in comments.\npub const NOTE: &str = \"implement\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve implement in comments.\npub const NOTE: &str = \"implement\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-control-implement",
+    "request": "rename function `implement` to `renamed`",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn implement() -> u32 { 7 }\npub fn observe() -> u32 { implement() }\n// Preserve implement in comments.\npub const NOTE: &str = \"implement\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn renamed() -> u32 { 7 }\npub fn observe() -> u32 { renamed() }\n// Preserve implement in comments.\npub const NOTE: &str = \"implement\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-weigh",
+    "request": "rename function weigh to called",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn weigh() -> u32 { 7 }\npub fn observe() -> u32 { weigh() }\n// Preserve weigh in comments.\npub const NOTE: &str = \"weigh\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve weigh in comments.\npub const NOTE: &str = \"weigh\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-control-weigh",
+    "request": "rename function `weigh` to `called`",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn weigh() -> u32 { 7 }\npub fn observe() -> u32 { weigh() }\n// Preserve weigh in comments.\npub const NOTE: &str = \"weigh\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn called() -> u32 { 7 }\npub fn observe() -> u32 { called() }\n// Preserve weigh in comments.\npub const NOTE: &str = \"weigh\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-drain_events",
+    "request": "rename function drain_events to read",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn read() -> u32 { 7 }\npub fn observe() -> u32 { read() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-control-drain_events",
+    "request": "rename function `drain_events` to `read`",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn drain_events() -> u32 { 7 }\npub fn observe() -> u32 { drain_events() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn read() -> u32 { 7 }\npub fn observe() -> u32 { read() }\n// Preserve drain_events in comments.\npub const NOTE: &str = \"drain_events\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-café",
+    "request": "rename function café to naïve",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn naïve() -> u32 { 7 }\npub fn observe() -> u32 { naïve() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "rename-control-café",
+    "request": "rename function `café` to `naïve`",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn café() -> u32 { 7 }\npub fn observe() -> u32 { café() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn naïve() -> u32 { 7 }\npub fn observe() -> u32 { naïve() }\n// Preserve café in comments.\npub const NOTE: &str = \"café\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "field-rename-called",
+    "request": "rename field called on Record to saved",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub saved: u32 }\npub fn observe() -> u32 { Record { saved: 7 }.saved }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "field-rename-control-called",
+    "request": "rename field `called` on `Record` to `saved`",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub called: u32 }\npub fn observe() -> u32 { Record { called: 7 }.called }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub saved: u32 }\npub fn observe() -> u32 { Record { saved: 7 }.saved }\n// Preserve called in comments.\npub const NOTE: &str = \"called\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "field-rename-renamed",
+    "request": "rename field renamed on Record to read",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub read: u32 }\npub fn observe() -> u32 { Record { read: 7 }.read }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "field-rename-control-renamed",
+    "request": "rename field `renamed` on `Record` to `read`",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub renamed: u32 }\npub fn observe() -> u32 { Record { renamed: 7 }.renamed }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub struct Record { pub read: u32 }\npub fn observe() -> u32 { Record { read: 7 }.read }\n// Preserve renamed in comments.\npub const NOTE: &str = \"renamed\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": true,
+    "mutation": true
+  },
+  {
+    "id": "negation",
+    "request": "do not rename function caller to renamed",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": false,
+    "mutation": false
+  },
+  {
+    "id": "multi",
+    "request": "rename function caller to renamed and rename function observe to calculate",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": false,
+    "mutation": false
+  },
+  {
+    "id": "suffix",
+    "request": "rename function caller to renamed inexplicable_suffix",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": false,
+    "mutation": false
+  },
+  {
+    "id": "collision",
+    "request": "rename function caller to renamed",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub fn renamed() {}\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub fn renamed() {}\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": false,
+    "mutation": false
+  },
+  {
+    "id": "ambiguous",
+    "request": "rename `caller` to renamed",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub struct Other { pub caller: u32 }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub struct Other { pub caller: u32 }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": false,
+    "mutation": false
+  },
+  {
+    "id": "two-functions",
+    "request": "rename function caller to renamed",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub mod nested { pub fn caller() -> u32 { 3 } }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\npub mod nested { pub fn caller() -> u32 { 3 } }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": false,
+    "mutation": false
+  },
+  {
+    "id": "wrong-kind",
+    "request": "rename field caller to renamed",
+    "files": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "expected": {
+      "Cargo.toml": "[package]\nname=\"roles\"\nversion=\"0.0.0\"\nedition=\"2021\"\n[workspace]\n",
+      "src/lib.rs": "pub fn caller() -> u32 { 7 }\npub fn observe() -> u32 { caller() }\n// Preserve caller in comments.\npub const NOTE: &str = \"caller\";\n",
+      "tests/behavior.rs": "#[test]\nfn preserved() { assert_eq!(roles::observe(), 7); }\n"
+    },
+    "reply": null,
+    "positive": false,
+    "mutation": false
+  }
+]

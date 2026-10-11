@@ -1,0 +1,9 @@
+query-caller-plain False "I can't follow the sentence from the marked spot.\n  where is function caller?▮\n"
+query-caller-backtick True '`caller` is defined at src/lib.rs:1.\n'
+field-query-called False "I can't follow the sentence from the marked spot.\n  where is field called of struct Record▮?\n"
+field-control-called True '`Record::called` is defined at src/lib.rs:1.\n'
+rename-implement False "I can't follow the sentence from the marked spot.\n  rename function implement to ▮renamed\n"
+rename-control-implement True "I'd rename the `implement` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `implement` -> `renamed`\n  src/lib.rs:2:27  `implement` -> `renamed`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n"
+negation True "I can't follow the sentence from the marked spot.\n  do ▮not rename function caller to renamed\n"
+collision True "I can't follow the sentence from the marked spot.\n  rename function caller to ▮renamed\n"
+{"total": 8, "passed": 5, "changed": 1}

@@ -1,0 +1,263 @@
+--- a/crates/english-rust/src/lib.rs
++++ b/crates/english-rust/src/lib.rs
+@@ -5,6 +5,7 @@
+ 
+ pub mod add_fields;
+ pub mod declared_types;
++pub mod identifier_roles;
+ 
+ use glassmind_english::{Cat, Number, Sem, VerbForm, word};
+ use glassmind_grammar::Rule;
+@@ -361,6 +362,7 @@
+         .into_iter()
+         .chain(words())
+         .chain(check_words())
++        .chain(identifier_roles::rules())
+         .collect()
+ }
+ 
+--- /dev/null
++++ b/crates/english-rust/src/identifier_roles.rs
+@@ -0,0 +1,203 @@
++//! Exact identifier constituents where the syntax explicitly asks for a code
++//! name. These add readings; ordinary English alternatives remain available.
++
++use glassmind_english::{Cat, Sem, lexicon::IDENTIFIER};
++use glassmind_grammar::{Rule, Sem as Build, Sym};
++use glassmind_meaning::{
++    Action, Condition, Description, Position, Question as CodeQuestion, Thing, Utterance,
++};
++use glassmind_rules::{HAND, RuleInfo};
++use glassmind_world_rust::Rust;
++
++type Value = Sem<Rust>;
++
++fn kind_name(children: &[Value]) -> Option<Value> {
++    let (kind, name) = match children {
++        [Sem::Kind { kind, .. }, Sem::Name(name)] | [Sem::Name(name), Sem::Kind { kind, .. }] => {
++            (kind, name)
++        }
++        _ => return None,
++    };
++    Some(Sem::Mention {
++        thing: Thing::Named(name.clone()),
++        kind: Some(*kind),
++    })
++}
++
++fn rename(children: &[Value]) -> Option<Value> {
++    let [_, Sem::Mention { thing, kind }, _, Sem::Name(name)] = children else {
++        return None;
++    };
++    Some(Sem::Utterance(Utterance::Command(Action::Rename {
++        thing: thing.clone(),
++        kind: *kind,
++        name: Some(name.clone()),
++    })))
++}
++
++fn owned(c: &[Value]) -> Option<Value> {
++    let [
++        Sem::Mention {
++            thing: Thing::Named(name),
++            kind,
++        },
++        Sem::Relation { relation, .. },
++        Sem::Mention {
++            thing: owner,
++            kind: owner_kind,
++        },
++    ] = c
++    else {
++        return None;
++    };
++    let owner = match owner_kind {
++        Some(kind) => Thing::Fitting(Description {
++            kind: Some(*kind),
++            conditions: vec![Condition::Is(owner.clone())],
++        }),
++        None => owner.clone(),
++    };
++    Some(Sem::Mention {
++        thing: Thing::Fitting(Description {
++            kind: *kind,
++            conditions: vec![
++                Condition::Called(name.clone()),
++                Condition::Related {
++                    relation: *relation,
++                    position: Position::First,
++                    other: owner,
++                },
++            ],
++        }),
++        kind: *kind,
++    })
++}
++
++pub fn rules() -> Vec<Rule<Cat, Value>> {
++    use Cat::*;
++    use Sym::{Cat as C, Class};
++    [
++        (
++            "en.rust.identifier.kind_name",
++            IdentifierMention,
++            vec![C(Noun), Class(IDENTIFIER)],
++            kind_name as fn(&[Value]) -> Option<Value>,
++        ),
++        (
++            "en.rust.identifier.name_kind",
++            IdentifierMention,
++            vec![Class(IDENTIFIER), C(Noun)],
++            kind_name,
++        ),
++        (
++            "en.rust.identifier.location",
++            Target,
++            vec![C(IdentifierMention)],
++            |c| match c {
++                [Sem::Mention { thing, kind }] => Some(Sem::Question(CodeQuestion::Locate {
++                    thing: thing.clone(),
++                    kind: *kind,
++                })),
++                _ => None,
++            },
++        ),
++        (
++            "en.rust.identifier.owner",
++            IdentifierMention,
++            vec![C(IdentifierMention), C(Preposition), C(Mention)],
++            owned,
++        ),
++        (
++            "en.rust.identifier.typed_owner",
++            IdentifierMention,
++            vec![C(IdentifierMention), C(Preposition), C(IdentifierMention)],
++            owned,
++        ),
++        (
++            "en.rust.identifier.destination",
++            Command,
++            vec![C(Rename), C(IdentifierMention), C(Into), Class(IDENTIFIER)],
++            rename,
++        ),
++    ]
++    .into_iter()
++    .map(|(id, lhs, rhs, build)| {
++        Rule::new(RuleInfo::new(id, HAND), lhs, rhs, Build::Build(build)).read_only()
++    })
++    .collect()
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    use glassmind_english::English;
++    use glassmind_meaning::interface::{Language, Understanding};
++    use glassmind_rules::Switches;
++
++    fn meanings(english: &English<Rust>, text: &str) -> Vec<Utterance<Rust>> {
++        match english.understand(text) {
++            Understanding::Readings(readings) => readings
++                .into_iter()
++                .filter(|r| r.edits == 0 && r.discarded.is_empty())
++                .map(|r| r.meaning)
++                .collect(),
++            Understanding::Failed { .. } => Vec::new(),
++        }
++    }
++
++    #[test]
++    fn explicit_names_retain_spelling_and_existing_alternatives() {
++        let english = English::new(crate::rules(), &Switches::all_on());
++        let original = English::new(
++            crate::rules()
++                .into_iter()
++                .filter(|r| !r.info.id.starts_with("en.rust.identifier."))
++                .collect(),
++            &Switches::all_on(),
++        );
++        for text in [
++            "where is function called?",
++            "where is function caller?",
++            "where is field renamed of struct Change?",
++            "rename function it to saved",
++            "rename function drain_events to renamed",
++            "rename function `café` to naïve",
++            "which functions call forget?",
++        ] {
++            let added = meanings(&english, text);
++            assert!(!added.is_empty(), "{text}");
++            for old in meanings(&original, text) {
++                assert!(added.contains(&old), "lost {old:?} for {text}");
++            }
++        }
++        let text = "rename function `café` to naïve";
++        assert!(meanings(&english, text).iter().any(|u| matches!(u,
++            Utterance::Command(Action::Rename { thing: Thing::Named(n), name: Some(to), .. })
++                if n.0 == "café" && to.0 == "naïve")));
++    }
++
++    #[test]
++    fn identifier_atom_is_single_exact_token() {
++        use glassmind_grammar::Lexicon;
++        let english: English<Rust> = English::new(crate::rules(), &Switches::all_on());
++        let lexicon = glassmind_english::EnglishLexicon::<Rust> {
++            known: Default::default(),
++            standing: Default::default(),
++            spellings: Default::default(),
++            typos: false,
++            ontology: Default::default(),
++        };
++        for text in ["called", "drain_events", "café", "\"renamed\""] {
++            let tokens = english.tokens_of(text);
++            assert_eq!(tokens.len(), 1);
++            for token in &tokens {
++                assert_eq!(lexicon.read_class(IDENTIFIER, token).len(), 1);
++            }
++        }
++        for text in ["`two names`", "`a-b`", "`1name`", "`a::b`"] {
++            for token in english.tokens_of(text) {
++                assert!(lexicon.read_class(IDENTIFIER, &token).is_empty());
++            }
++        }
++    }
++}
+--- a/crates/english/src/lexicon.rs
++++ b/crates/english/src/lexicon.rs
+@@ -24,6 +24,10 @@
+ /// identifier (`spawn_wave`). A plain word may be English the system does
+ /// not know, so it is never one: a new name must not be a guess.
+ pub const CODE: &str = "code";
++/// An exact single identifier in a syntactically explicit code-name role.
++/// Unlike NAME this also admits English vocabulary. Bridges must opt in at
++/// the role, rather than making arbitrary English words into noun phrases.
++pub const IDENTIFIER: &str = "identifier";
+ /// Token class: a plain word the system does not know, not written as
+ /// code: what a name of the user's own ("the history sheet") is made of.
+ pub const WORD: &str = "word";
+@@ -93,6 +97,14 @@
+ 
+     fn read_class(&self, class: &'static str, token: &Token) -> Vec<Sem<O>> {
+         match (class, token.shape) {
++            (IDENTIFIER, Shape::Word | Shape::Code)
++                if token.text.chars().next().is_some_and(|c| c.is_alphabetic() || c == '_')
++                    && token.text.chars().all(|c| c.is_alphanumeric() || c == '_')
++                    // A plain word trimmed by the tokenizer is not exact.
++                    && (token.shape == Shape::Code || token.end - token.start == token.text.len()) =>
++            {
++                vec![Sem::Name(Name(token.text.clone()))]
++            }
+             (NAME | CODE, Shape::Code) => vec![Sem::Name(Name(token.text.clone()))],
+             (NAME | WORD, Shape::Word) if !self.known.contains(self.norm(token)) => {
+                 vec![Sem::Name(Name(token.text.clone()))]
+--- a/crates/english/src/sem.rs
++++ b/crates/english/src/sem.rs
+@@ -48,6 +48,8 @@
+     Question,
+     /// A noun phrase that refers to one thing.
+     NounPhrase,
++    /// A code name with an explicit kind, used only in code query/edit roles.
++    IdentifierMention,
+     /// A noun naming a kind of thing, singular or plural.
+     Noun,
+     /// A verb naming a two-place relation.

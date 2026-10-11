@@ -1,0 +1,178 @@
+[
+  {
+    "mode": "baseline",
+    "id": "query-owner",
+    "request": "where is field called of struct Change?",
+    "ok": false,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  where is field called of struct Change\u25ae?\n",
+    "stderr": "Running as unit: run-p3932112-i96197058.scope; invocation ID: 6688be87a7704f50b0405789c73b771c\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "baseline",
+    "id": "query-other",
+    "request": "where is field called of struct Ledger?",
+    "ok": false,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  where is field called of struct Ledger\u25ae?\n",
+    "stderr": "Running as unit: run-p3932117-i96203350.scope; invocation ID: d57c2422bc804ee6b399bea235372ad4\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "baseline",
+    "id": "rename-owner",
+    "request": "rename field called on Change to saved",
+    "ok": false,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename field called on \u25aeChange to saved\n",
+    "stderr": "Running as unit: run-p3932121-i96178107.scope; invocation ID: f70383931bb04f1ba471e4dfd6da4894\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "baseline",
+    "id": "rename-control",
+    "request": "rename field `called` on `Change` to `saved`",
+    "ok": false,
+    "changed": false,
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p3932123-i96140640.scope; invocation ID: 7dc7fe97d48146e1b4499e3cd92164c0\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "baseline",
+    "id": "ambiguous",
+    "request": "rename field `called` to `saved`",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't tell which one you mean: `Change::called` and `Ledger::called`.\n",
+    "stderr": "Running as unit: run-p3932125-i96200673.scope; invocation ID: cf5de1243a0a401ab13f07113f6dc756\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "baseline",
+    "id": "negated",
+    "request": "do not rename field called on Change to saved",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  do \u25aenot rename field called on Change to saved\n",
+    "stderr": "Running as unit: run-p3932127-i96147640.scope; invocation ID: 41487e54d4df4bdf9daa85bacf0a9281\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "baseline",
+    "id": "suffix",
+    "request": "rename field called on Change to saved mysterious_suffix",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename field called on \u25aeChange to saved mysterious_suffix\n",
+    "stderr": "Running as unit: run-p3932129-i96147641.scope; invocation ID: 51917107cec741139c0f51e9915c8838\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "baseline",
+    "id": "second-command",
+    "request": "rename field called on Change to saved; rename field called on Ledger to updated",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename field called on \u25aeChange to saved; rename field called on Ledger to updated\n",
+    "stderr": "Running as unit: run-p3932144-i96200677.scope; invocation ID: 72045c66a6ed41669e26c52aaea738c4\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "query-owner",
+    "request": "where is field called of struct Change?",
+    "ok": true,
+    "changed": false,
+    "stdout": "`Change::called` is defined at src/lib.rs:1.\n",
+    "stderr": "Running as unit: run-p3932146-i96207713.scope; invocation ID: a98b76cf397142a3acb714fd7848ad17\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "query-other",
+    "request": "where is field called of struct Ledger?",
+    "ok": true,
+    "changed": false,
+    "stdout": "`Ledger::called` is defined at src/lib.rs:2.\n",
+    "stderr": "Running as unit: run-p3932148-i96107293.scope; invocation ID: 643338812f224b26976260b8921f70f4\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "rename-owner",
+    "request": "rename field called on Change to saved",
+    "ok": false,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename field called on Change \u25aeto saved\n",
+    "stderr": "Running as unit: run-p3932151-i96220091.scope; invocation ID: fce0467396bc4e99a96baf6979e20e7b\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "rename-control",
+    "request": "rename field `called` on `Change` to `saved`",
+    "ok": false,
+    "changed": false,
+    "stdout": "I understand, but I can't do that here.\n",
+    "stderr": "Running as unit: run-p3932219-i96220092.scope; invocation ID: 06cdbf0556c1400593f5628e6185a4c0\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "ambiguous",
+    "request": "rename field `called` to `saved`",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't tell which one you mean: `Change::called` and `Ledger::called`.\n",
+    "stderr": "Running as unit: run-p3932222-i96220093.scope; invocation ID: f44c9aaea90444189c639561679cacba\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "negated",
+    "request": "do not rename field called on Change to saved",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  do \u25aenot rename field called on Change to saved\n",
+    "stderr": "Running as unit: run-p3932232-i96124700.scope; invocation ID: 90151e2d242c4bd0af057f26bd849206\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "suffix",
+    "request": "rename field called on Change to saved mysterious_suffix",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename field called on Change \u25aeto saved mysterious_suffix\n",
+    "stderr": "Running as unit: run-p3932240-i96220094.scope; invocation ID: ae692a74d4084968a49cd922298de791\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  },
+  {
+    "mode": "candidate",
+    "id": "second-command",
+    "request": "rename field called on Change to saved; rename field called on Ledger to updated",
+    "ok": true,
+    "changed": false,
+    "stdout": "I can't follow the sentence from the marked spot.\n  rename field called on Change \u25aeto saved; rename field called on Ledger to updated\n",
+    "stderr": "Running as unit: run-p3932246-i96207722.scope; invocation ID: 7f5fffc27195474286f43003b88d6685\n",
+    "actual": "pub struct Change { pub called: u32 }\npub struct Ledger { pub called: u32 }\npub fn observe() -> u32 { Change { called: 3 }.called + Ledger { called: 4 }.called }\n// called stays here\npub const NOTE: &str = \"called\";\n",
+    "native": null
+  }
+]

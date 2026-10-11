@@ -1,0 +1,161 @@
+{
+  "scope": "Authored identifier-source preservation probes; refusal is allowed but mutation must preserve complete spelling",
+  "binary_sha256": "ca120ec676a8979d9116ef10380e58cd6f7f3d033fc97ade968a7d510c5b1bd7",
+  "cases": [
+    {
+      "request": "rename function caller to renamed_()",
+      "expected_identifier": "renamed_",
+      "mutated": true,
+      "safe": true,
+      "stdout": "I'd rename the `caller` function to `renamed_` in 2 places.\n  src/lib.rs:1:8  `caller` -> `renamed_`\n  src/lib.rs:2:25  `caller` -> `renamed_`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "",
+      "actual": "pub fn renamed_() -> u32 { 7 }\npub fn entry() -> u32 { renamed_() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    },
+    {
+      "request": "rename function caller to called__()",
+      "expected_identifier": "called__",
+      "mutated": true,
+      "safe": true,
+      "stdout": "I'd rename the `caller` function to `called__` in 2 places.\n  src/lib.rs:1:8  `caller` -> `called__`\n  src/lib.rs:2:25  `caller` -> `called__`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "",
+      "actual": "pub fn called__() -> u32 { 7 }\npub fn entry() -> u32 { called__() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "76cd07d7c45127e05fe9578587cdcc8d7f1b1e8711a09c4d0c69c5129fe9cfb1",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    },
+    {
+      "request": "rename function caller to saved_()",
+      "expected_identifier": "saved_",
+      "mutated": true,
+      "safe": true,
+      "stdout": "I'd rename the `caller` function to `saved_` in 2 places.\n  src/lib.rs:1:8  `caller` -> `saved_`\n  src/lib.rs:2:25  `caller` -> `saved_`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "",
+      "actual": "pub fn saved_() -> u32 { 7 }\npub fn entry() -> u32 { saved_() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "4de8fe02429ed8e34ed3d1d354c890ad438048fcfc06d5b450a1c6341b68d879",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    },
+    {
+      "request": "rename function caller to `renamed_()`",
+      "expected_identifier": "renamed_",
+      "mutated": true,
+      "safe": true,
+      "stdout": "I'd rename the `caller` function to `renamed_` in 2 places.\n  src/lib.rs:1:8  `caller` -> `renamed_`\n  src/lib.rs:2:25  `caller` -> `renamed_`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "",
+      "actual": "pub fn renamed_() -> u32 { 7 }\npub fn entry() -> u32 { renamed_() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    },
+    {
+      "request": "rename function caller to renamed_",
+      "expected_identifier": "renamed_",
+      "mutated": false,
+      "safe": true,
+      "stdout": "I can't follow the sentence from the marked spot.\n  rename function caller to ▮renamed_\n",
+      "stderr": "",
+      "actual": "pub fn caller() -> u32 { 7 }\npub fn entry() -> u32 { caller() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    },
+    {
+      "request": "rename function tick to renamed_()",
+      "expected_identifier": "renamed_",
+      "mutated": true,
+      "safe": true,
+      "stdout": "I'd rename the `tick` function to `renamed_` in 2 places.\n  src/lib.rs:1:8  `tick` -> `renamed_`\n  src/lib.rs:2:25  `tick` -> `renamed_`\n  (say yes to rename `tick`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "",
+      "actual": "pub fn renamed_() -> u32 { 7 }\npub fn entry() -> u32 { renamed_() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "0dfd145d924971f6be24afa841f8772214375a88cd97207c9d52ac1bedf6dd64",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "5c94caea1631efdd0ff5f70cd49e56ec008f326e434c31cd7e49dd32343c3149",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    },
+    {
+      "request": "rename function caller to renamed",
+      "expected_identifier": "renamed",
+      "mutated": true,
+      "safe": true,
+      "stdout": "I'd rename the `caller` function to `renamed` in 2 places.\n  src/lib.rs:1:8  `caller` -> `renamed`\n  src/lib.rs:2:25  `caller` -> `renamed`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "",
+      "actual": "pub fn renamed() -> u32 { 7 }\npub fn entry() -> u32 { renamed() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "376580a4c544181aaf61859adf2418eefd01434c5351fab146e27b9fdb834b32",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    },
+    {
+      "request": "rename function caller to naïve",
+      "expected_identifier": "naïve",
+      "mutated": true,
+      "safe": true,
+      "stdout": "I'd rename the `caller` function to `naïve` in 2 places.\n  src/lib.rs:1:8  `caller` -> `naïve`\n  src/lib.rs:2:25  `caller` -> `naïve`\n  (say yes to rename `caller`)\nI made 2 changes. No problems with the build.\n",
+      "stderr": "",
+      "actual": "pub fn naïve() -> u32 { 7 }\npub fn entry() -> u32 { naïve() }\n",
+      "before": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "fb1f71edeb8aae1c548e7cd3a04d57d401c9a7945d03594b523890a7dcfaa92d",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      },
+      "after": {
+        "Cargo.toml": "cf7244ba1b2e1d5f83114bde9a9ed173c88e0bb84224056d0d3a6cef69c813d4",
+        "src/lib.rs": "acb1fd09bd8f9eff7bf9f6ffca0c02b53667f5e77182fc2fb688129ab52bc098",
+        "tests/check.rs": "a01f419eb8bdd496d76da11d65f6c34d3441c28ac76e869c7d545a0f834caf8a"
+      }
+    }
+  ],
+  "total": 8,
+  "safe": 8,
+  "mutations": 7
+}
