@@ -1,0 +1,155 @@
+{
+  "dataset": "quantities-synthetic-dev-v1",
+  "split": "fixed-dev-sample",
+  "total": 130,
+  "right": 130,
+  "refusal": 0,
+  "wrong": 0,
+  "correct_refusals": 25,
+  "categories": {
+    "comparison": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_days": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_difference": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_months": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "decimal": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "expression": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "groups": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "invalid_date": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "inventory": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "multi_event": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "object_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "operator_precedence": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "percent": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "price": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sharing": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "speed": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sum_wording": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "temperature": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_duration": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_length": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_mass": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_volume": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unknown_unit": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weekday": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "zero_divisor": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "failures": [],
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-synthetic-dev-v1",
+    "seed": 20261010,
+    "rows": 2080,
+    "bytes": 314258,
+    "sha256": "cd36b7d8053d53fe84b1dc7e1aefefc0c6cee98e00cab0714379ce6b6d76e66c",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}

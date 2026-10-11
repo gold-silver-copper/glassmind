@@ -1,0 +1,426 @@
+{
+  "dataset": "quantities-synthetic-dev-v1",
+  "split": "fixed-dev-sample",
+  "total": 130,
+  "right": 103,
+  "refusal": 27,
+  "wrong": 0,
+  "correct_refusals": 25,
+  "categories": {
+    "comparison": {
+      "right": 0,
+      "refusal": 5,
+      "wrong": 0
+    },
+    "date_days": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_difference": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_months": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "decimal": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "expression": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "groups": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "invalid_date": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "inventory": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "multi_event": {
+      "right": 0,
+      "refusal": 5,
+      "wrong": 0
+    },
+    "object_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "operator_precedence": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "percent": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "price": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sharing": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "speed": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sum_wording": {
+      "right": 0,
+      "refusal": 5,
+      "wrong": 0
+    },
+    "temperature": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_duration": {
+      "right": 2,
+      "refusal": 3,
+      "wrong": 0
+    },
+    "units_length": {
+      "right": 2,
+      "refusal": 3,
+      "wrong": 0
+    },
+    "units_mass": {
+      "right": 2,
+      "refusal": 3,
+      "wrong": 0
+    },
+    "units_volume": {
+      "right": 2,
+      "refusal": 3,
+      "wrong": 0
+    },
+    "unknown_unit": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weekday": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "zero_divisor": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "failures": [
+    {
+      "id": "units_length-0000",
+      "question": "How many centimeters are in 9 meters?",
+      "expected": "900",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: centimeters are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_mass-0000",
+      "question": "How many grams are in 9 pounds?",
+      "expected": "408233133/100000",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: grams are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_duration-0000",
+      "question": "How many weeks are in 9 hours?",
+      "expected": "3/56",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: weeks are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_volume-0000",
+      "question": "How many liters are in 9 milliliters?",
+      "expected": "9/1000",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: liters are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "sum_wording-0000",
+      "question": "What is the sum of 90 and 60?",
+      "expected": "150",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "comparison-0000",
+      "question": "Ava has 150 apples. Ben has 60 apples. How many more apples does Ava have than Ben?",
+      "expected": "90",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "multi_event-0000",
+      "question": "Mira has 150 apples. She gets 170 apples. She gives away 60 apples. How many apples does she have now?",
+      "expected": "260",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "sum_wording-0001",
+      "question": "What is the sum of 101 and 196?",
+      "expected": "297",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "comparison-0001",
+      "question": "Ava has 297 coins. Ben has 196 coins. How many more coins does Ava have than Ben?",
+      "expected": "101",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "multi_event-0001",
+      "question": "Mira has 297 coins. She gets 117 coins. She gives away 196 coins. How many coins does she have now?",
+      "expected": "218",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_length-0002",
+      "question": "How many miles are in 7.7 meters?",
+      "expected": "175/36576",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: miles are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_mass-0002",
+      "question": "How many grams are in 7.7 kilograms?",
+      "expected": "7700",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: grams are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_duration-0002",
+      "question": "How many days are in 7.7 hours?",
+      "expected": "77/240",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: days are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_volume-0002",
+      "question": "How many liters are in 7.7 milliliters?",
+      "expected": "77/10000",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: liters are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "sum_wording-0002",
+      "question": "What is the sum of 77 and 28?",
+      "expected": "105",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "comparison-0002",
+      "question": "Ava has 105 books. Ben has 28 books. How many more books does Ava have than Ben?",
+      "expected": "77",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "multi_event-0002",
+      "question": "Mira has 105 books. She gets 194 books. She gives away 28 books. How many books does she have now?",
+      "expected": "271",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "sum_wording-0003",
+      "question": "What is the sum of 99 and 35?",
+      "expected": "134",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "comparison-0003",
+      "question": "Ava has 134 marbles. Ben has 35 marbles. How many more marbles does Ava have than Ben?",
+      "expected": "99",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "multi_event-0003",
+      "question": "Mira has 134 marbles. She gets 189 marbles. She gives away 35 marbles. How many marbles does she have now?",
+      "expected": "288",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_length-0004",
+      "question": "How many feet are in 14.4 centimeters?",
+      "expected": "60/127",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: feet are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_mass-0004",
+      "question": "How many pounds are in 14.4 ounces?",
+      "expected": "9/10",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: pounds are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_duration-0004",
+      "question": "How many days are in 14.4 minutes?",
+      "expected": "1/100",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: days are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "units_volume-0004",
+      "question": "How many liters are in 14.4 milliliters?",
+      "expected": "9/625",
+      "actual": {
+        "status": "refusal",
+        "reason": "unknown or ambiguous unit: liters are"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "sum_wording-0004",
+      "question": "What is the sum of 144 and 86?",
+      "expected": "230",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "comparison-0004",
+      "question": "Ava has 230 apples. Ben has 86 apples. How many more apples does Ava have than Ben?",
+      "expected": "144",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    },
+    {
+      "id": "multi_event-0004",
+      "question": "Mira has 230 apples. She gets 200 apples. She gives away 86 apples. How many apples does she have now?",
+      "expected": "344",
+      "actual": {
+        "status": "refusal",
+        "reason": "unsupported English or number word"
+      },
+      "outcome": "refusal"
+    }
+  ],
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-synthetic-dev-v1",
+    "seed": 20261010,
+    "rows": 2080,
+    "bytes": 314258,
+    "sha256": "cd36b7d8053d53fe84b1dc7e1aefefc0c6cee98e00cab0714379ce6b6d76e66c",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}

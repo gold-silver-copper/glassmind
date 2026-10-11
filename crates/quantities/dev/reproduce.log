@@ -1,0 +1,606 @@
+Running as unit: run-p908248-i93157595.scope; invocation ID: db5cab3388594f889e73552e43570780
+Running as unit: run-p908252-i93177245.scope; invocation ID: 37720aef21224fdeb72eb5411e01b002
+Running as unit: run-p908273-i93161698.scope; invocation ID: 872b752c231f4cf7984f447062958c26
+    Checking glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/grow-fast-20261010/numbers/crates/quantities)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.26s
+Running as unit: run-p908320-i93161700.scope; invocation ID: bd78710723264919a6820c3d4f4011c5
+   Compiling glassmind-quantities v0.1.0 (/home/gsc/.cache/glassmind/grow-fast-20261010/numbers/crates/quantities)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.31s
+Running as unit: run-p908581-i93161702.scope; invocation ID: 12fba315a7154cffaad117c16b079ec0
+{
+  "dataset": "quantities-synthetic-dev-v1",
+  "split": "fixed-dev-sample",
+  "total": 130,
+  "right": 130,
+  "refusal": 0,
+  "wrong": 0,
+  "correct_refusals": 25,
+  "categories": {
+    "comparison": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_days": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_difference": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_months": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "decimal": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "expression": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "groups": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "invalid_date": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "inventory": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "multi_event": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "object_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "operator_precedence": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "percent": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "price": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sharing": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "speed": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sum_wording": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "temperature": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_duration": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_length": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_mass": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_volume": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unknown_unit": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weekday": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "zero_divisor": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-synthetic-dev-v1",
+    "seed": 20261010,
+    "rows": 2080,
+    "bytes": 314258,
+    "sha256": "cd36b7d8053d53fe84b1dc7e1aefefc0c6cee98e00cab0714379ce6b6d76e66c",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}
+Running as unit: run-p908805-i93161705.scope; invocation ID: 48f773ded9f940e9b7fda976c0a04d11
+{
+  "dataset": "quantities-extended-dev-v1",
+  "split": "fixed-dev-sample",
+  "total": 97,
+  "right": 92,
+  "refusal": 5,
+  "wrong": 0,
+  "correct_refusals": 32,
+  "categories": {
+    "calendar_span": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "calendar_unit_ambiguity": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "century_boundary": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_between": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_range": {
+      "right": 2,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "distance": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "entity_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "kelvin": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "leap_year_shift": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "named_product": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "negative_inventory": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "number_words": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "overflow": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "paraphrase_gap": {
+      "right": 0,
+      "refusal": 5,
+      "wrong": 0
+    },
+    "rate": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "rational_cancellation": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "recipient_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition_mismatch": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weeks": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-extended-dev-v1",
+    "seed": 20261011,
+    "rows": 1036,
+    "bytes": 174437,
+    "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}
+Running as unit: run-p908829-i93169670.scope; invocation ID: 5468ccdb5aeb467b853560adee619ad1
+{
+  "dataset": "quantities-synthetic-dev-v1",
+  "split": "full-dev",
+  "total": 2080,
+  "right": 2080,
+  "refusal": 0,
+  "wrong": 0,
+  "correct_refusals": 400,
+  "categories": {
+    "comparison": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_days": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_difference": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_months": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "decimal": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "expression": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "groups": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "invalid_date": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "inventory": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "multi_event": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "object_mismatch": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "operator_precedence": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "percent": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "price": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sharing": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "speed": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "sum_wording": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "temperature": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_mismatch": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_duration": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_length": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_mass": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "units_volume": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unknown_unit": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weekday": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "zero_divisor": {
+      "right": 80,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-synthetic-dev-v1",
+    "seed": 20261010,
+    "rows": 2080,
+    "bytes": 314258,
+    "sha256": "cd36b7d8053d53fe84b1dc7e1aefefc0c6cee98e00cab0714379ce6b6d76e66c",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}
+Running as unit: run-p908849-i93161707.scope; invocation ID: d3c5ffa07fe4491b896bda1218d468f9
+{
+  "dataset": "quantities-extended-dev-v1",
+  "split": "full-dev",
+  "total": 1036,
+  "right": 976,
+  "refusal": 60,
+  "wrong": 0,
+  "correct_refusals": 362,
+  "categories": {
+    "calendar_span": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "calendar_unit_ambiguity": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "century_boundary": {
+      "right": 9,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_between": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "date_range": {
+      "right": 2,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "distance": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "entity_mismatch": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "kelvin": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "leap_year_shift": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "named_product": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "negative_inventory": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "number_words": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "overflow": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "paraphrase_gap": {
+      "right": 0,
+      "refusal": 60,
+      "wrong": 0
+    },
+    "rate": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "rational_cancellation": {
+      "right": 5,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "recipient_mismatch": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "unit_addition_mismatch": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    },
+    "weeks": {
+      "right": 60,
+      "refusal": 0,
+      "wrong": 0
+    }
+  },
+  "provenance": {
+    "source": "locally generated deterministic English dev cases; no external benchmark items",
+    "version": "quantities-extended-dev-v1",
+    "seed": 20261011,
+    "rows": 1036,
+    "bytes": 174437,
+    "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0",
+    "license": "MIT OR Apache-2.0 (workspace)",
+    "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+    "python": "3.14.7",
+    "external_training_data_used": false,
+    "held_out_data_accessed": false
+  }
+}
+Running as unit: run-p908852-i93161708.scope; invocation ID: b0eff99f3948414aad03e7619e1825a9
+{
+  "total": 3116,
+  "right": 3056,
+  "refusal": 60,
+  "wrong": 0,
+  "correct_refusals": 762,
+  "answered_right": 2294,
+  "description": "Synthetic dev only; right includes explicitly expected refusals. No external benchmark score.",
+  "sources": [
+    {
+      "source": "locally generated deterministic English dev cases; no external benchmark items",
+      "version": "quantities-synthetic-dev-v1",
+      "seed": 20261010,
+      "rows": 2080,
+      "bytes": 314258,
+      "sha256": "cd36b7d8053d53fe84b1dc7e1aefefc0c6cee98e00cab0714379ce6b6d76e66c",
+      "license": "MIT OR Apache-2.0 (workspace)",
+      "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+      "python": "3.14.7",
+      "external_training_data_used": false,
+      "held_out_data_accessed": false
+    },
+    {
+      "source": "locally generated deterministic English dev cases; no external benchmark items",
+      "version": "quantities-extended-dev-v1",
+      "seed": 20261011,
+      "rows": 1036,
+      "bytes": 174437,
+      "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0",
+      "license": "MIT OR Apache-2.0 (workspace)",
+      "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+      "python": "3.14.7",
+      "external_training_data_used": false,
+      "held_out_data_accessed": false
+    }
+  ]
+}

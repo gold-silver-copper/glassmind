@@ -1,0 +1,13 @@
+{
+  "source": "locally generated deterministic English dev cases; no external benchmark items",
+  "version": "quantities-extended-dev-v1",
+  "seed": 20261011,
+  "rows": 1036,
+  "bytes": 174437,
+  "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0",
+  "license": "MIT OR Apache-2.0 (workspace)",
+  "oracle": "Python stdlib Fraction, Decimal, datetime, calendar",
+  "python": "3.14.7",
+  "external_training_data_used": false,
+  "held_out_data_accessed": false
+}
