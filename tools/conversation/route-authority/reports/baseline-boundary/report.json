@@ -1,0 +1,23 @@
+{
+  "binary_sha256": "8cde5dc486025e05932db946ba4accb7b5401fcd27c530bc8539eb4dca5bb78b",
+  "right": 114,
+  "total": 116,
+  "failures": [
+    {
+      "row": {
+        "text": "how are you Mira teleported to the cellar",
+        "rule": "invalidate",
+        "setup": []
+      },
+      "checks": {
+        "name_source": true,
+        "focus": true,
+        "turn": true,
+        "utterance": true,
+        "refused": true,
+        "invalidated": false,
+        "no_stale": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "decision": "all behavioral integration gates passed",
+  "commit": "47b6b285b5cd23f0580600dcda3011689ab20da1",
+  "binary_sha256": "bd7df8f882bf3fb2d1a5ac4c86ce77083e6305949953630030285256562747dd",
+  "checks": {
+    "social-sample-plain": 126,
+    "social-full-plain": 490,
+    "memory-plain": 134,
+    "goodbye-plain": 6,
+    "boundary-sample-plain": 59,
+    "boundary-full-plain": 122,
+    "social-sample-model": 126,
+    "social-full-model": 490,
+    "memory-model": 134,
+    "goodbye-model": 7,
+    "boundary-sample-model": 59,
+    "boundary-full-model": 122
+  },
+  "calc27": 27,
+  "story47": 47,
+  "factset36": 36,
+  "fact_sessions16": 16,
+  "stale_answer": 2,
+  "full3100": {
+    "previous_correct": 1303,
+    "correct": 1305,
+    "retained": 1303,
+    "gains": 2,
+    "new_wrong": 0,
+    "inherited_wrong": 40,
+    "changed_rows": 19,
+    "reply_bytes_equal_unbuffered": true
+  },
+  "full_story": {
+    "questions": 3987,
+    "turns": 47625,
+    "correct": 3966,
+    "wrong": 3,
+    "refused": 18,
+    "all_bytes_equal_baseline": true
+  },
+  "full_facts": {
+    "questions": 2821,
+    "both_modes_byte_identical": true
+  },
+  "original_archive_files": 442,
+  "verified_artifact_entries": 438,
+  "verified_identities": 25,
+  "verified_inputs": 30,
+  "frozen_entries": 2,
+  "limitations": [
+    "Authored checks are not independent benchmark accuracy.",
+    "New greeting-shaped actors in coordinated movement remain ambiguous.",
+    "Worker wrapper EOF after all scoring commands retained; final bash syntax and reports verified.",
+    "Parent unbuffered story run completed inference but baseline path typo interrupted reporting; report completed offline without new inference.",
+    "Parent unbuffered model session suite interrupted at15saved sessions; no partial full-suite score claimed. Final buffered suites complete."
+  ],
+  "conversation_unit_tests": 17,
+  "workspace": "fmt/clippy/release/strict4smoke pass at final buffered source"
+}

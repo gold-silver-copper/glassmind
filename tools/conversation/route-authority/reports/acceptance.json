@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "binary_sha256": "ec8b6734916d64fc50b163a04dd42dd071f7c2b51168b96dcd44a359de7c5270",
+  "checks": {
+    "old-sample-plain": true,
+    "old-full-plain": true,
+    "memory-plain": true,
+    "goodbye-plain": true,
+    "candidate-boundary-sample": true,
+    "candidate-boundary": true,
+    "old-sample-model": true,
+    "old-full-model": true,
+    "memory-model": true,
+    "goodbye-model": true,
+    "candidate-boundary-sample-model": true,
+    "candidate-boundary-model": true,
+    "stale": true,
+    "calc27": true,
+    "story47": true,
+    "facts36": true,
+    "facts-session16": true,
+    "routing-retention": true,
+    "changed-row-audit": true,
+    "story-full": true,
+    "verified-inputs.json": true,
+    "identities.json": true,
+    "FROZEN.sha256": true,
+    "source.sha256": true,
+    "unit-tests": true,
+    "build": true,
+    "clippy": true
+  }
+}

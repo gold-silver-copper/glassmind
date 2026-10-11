@@ -1,0 +1,102 @@
+{
+  "../routeauthority-run/baseline/glassmind": {
+    "bytes": 74314920,
+    "sha256": "8cde5dc486025e05932db946ba4accb7b5401fcd27c530bc8539eb4dca5bb78b"
+  },
+  "../routeauthority-run/glassmind-candidate": {
+    "bytes": 74308784,
+    "sha256": "ec8b6734916d64fc50b163a04dd42dd071f7c2b51168b96dcd44a359de7c5270"
+  },
+  "../coordinator/socialrouting-review/intent-routing.py": {
+    "bytes": 3116,
+    "sha256": "e34f7a964d5e1257216dd4dce08bae0688bf484705035a01085a905532853f05"
+  },
+  "../coordinator/socialrouting-review/intent-baseline/records.json": {
+    "bytes": 1646640,
+    "sha256": "d1c5b02462ad4e150d0ff92030fca06b044c149708fffa9a138b344cccfbd304"
+  },
+  "../coordinator/socialrouting-review/intent-baseline/report.json": {
+    "bytes": 692,
+    "sha256": "7d0655004705680da232a2f586483ccc5aef441cc39620e5fa1ae29923c103ce"
+  },
+  "crates/cli/src/everyday.rs": {
+    "bytes": 15297,
+    "sha256": "e2118b62c7aea715c9c80f8f5008abbd95fb0b5a4ee79dd44c496ff37a4502b8"
+  },
+  "crates/cli/src/talk_stories.rs": {
+    "bytes": 15406,
+    "sha256": "945070eaed3b360bf773b57073a5a8fe81e3edb15ea2d1716477726fb9840a5d"
+  },
+  "../socialrouting-run/submitted/crates/cli/src/everyday.rs": {
+    "bytes": 15663,
+    "sha256": "dc39b5da752a9c311711b72fc6123d8c51c6fc65ce7856941fb5ba9c775f4908"
+  },
+  "../socialrouting-run/submitted/crates/cli/src/talk_stories.rs": {
+    "bytes": 14575,
+    "sha256": "4f0dfc287c4f51fe90a8becb00041f9dd090bf51938dccc65551b27c3430482c"
+  },
+  "crates/everyday/src/memory.rs": {
+    "bytes": 18081,
+    "sha256": "291fa35b91a608af485c723925c9bea431e6006b060205993ba3ffa56e211c11"
+  },
+  "crates/everyday/src/model.rs": {
+    "bytes": 14411,
+    "sha256": "41ee730bb6351f29ff8d0d0ef9791062405f0b3f62fb3e35c115d43dec21e5a7"
+  },
+  "tools/conversation/memory-authority/evaluate.py": {
+    "bytes": 3802,
+    "sha256": "ae648040e4430d48d9c4690265cf4e37894c2b993d8d221205fdcb236864d3ad"
+  },
+  "tools/conversation/memory-authority/contracts.json": {
+    "bytes": 12617,
+    "sha256": "4309d3c42eb7c5256cddbf7f9cc7474e4525356e52a6246d16a3e0af2d1e4db5"
+  },
+  "tools/conversation/memory-authority/frozen.sha256": {
+    "bytes": 453,
+    "sha256": "984092f7967aced3f4b0bd25191b488ab5b4b8e82bde4a2f5a918e6e925fa231"
+  },
+  "tools/conversation/memory-authority/learned_social.py": {
+    "bytes": 1519,
+    "sha256": "903a3d8f43fa245ae8e9c79c56a8984f62dbc3e5d0326fc64417b6ae1635ded3"
+  },
+  "tools/conversation/memory-authority/learned-social-frozen.sha256": {
+    "bytes": 120,
+    "sha256": "e8a88c2f20956c713c1596bcfdf2f9e0aa6809f993e665180fe0c1765ccedffb"
+  },
+  "tools/talk-dev.py": {
+    "bytes": 6243,
+    "sha256": "32e128f90edbb1b8c94341c4f429e3e7c380ac6ca949f32ff5dedef16c88ca14"
+  },
+  "tools/talk-story-dev.py": {
+    "bytes": 7435,
+    "sha256": "e169d783e9df000aa383f2d4926f51917bf5360c5c12076201672e1751fa4a0f"
+  },
+  "tools/stories/babi.py": {
+    "bytes": 9868,
+    "sha256": "abc00b3e0844ff141bb64fac720e0b5b48c0c3c1e4517fc9d60ab4e2f1a5e5a1"
+  },
+  "tools/facts/sets/contracts.py": {
+    "bytes": 5178,
+    "sha256": "18126f9afb326e31a28f4cab144c563be1dfc3a808727605cf95fe9e3ae957b2"
+  },
+  "tools/facts/sets/session_contracts.py": {
+    "bytes": 1880,
+    "sha256": "ec6b880c8731529e92df28ba4a7a374dcd0e0d2885b4c1ca9f2cce538e656d69"
+  },
+  "crates/everyday/tools/smoke_memory.py": {
+    "bytes": 4726,
+    "sha256": "eee606b8dd2dc3497dac124625a260371ac087352f3c5a649950e90434a01729"
+  },
+  "/home/gsc/.cache/glassmind/continuous-20261010/routeauthority-run/target/release/deps/glassmind-b4a29ca4482421ce": {
+    "bytes": 67936496,
+    "sha256": "42c76b532e10dd551c1b4d58cbf97663b1e5ea3c42de778b412d2986495035ee"
+  },
+  "/home/gsc/.cache/glassmind/continuous-20261010/routeauthority-run/target/release/deps/glassmind_everyday-5811da3f5ad1c985": {
+    "bytes": 8740768,
+    "sha256": "09cadcfe8c9a9a05d70b95186f45599abb958f5495f5758f05ac2b60f206708e"
+  },
+  "tools/conversation/route-authority/reports/runtime.patch": {
+    "bytes": 15093,
+    "sha256": "407c93a5c63c29ccef4443a8979f9442d282d2821ecbdc993551a2a051b15a08"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "scope": "Full fixed765 Rust coding dev; no held-out evaluation",
+  "commit": "5f2859a730f6d20a0ac64ca9a7551821ed123e86",
+  "binary_sha256": "ca120ec676a8979d9116ef10380e58cd6f7f3d033fc97ade968a7d510c5b1bd7",
+  "total": 765,
+  "outcomes": {
+    "refused": 591,
+    "pass": 174
+  },
+  "all_previous_passes_retained": 174,
+  "outcome_changes": [],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 77,
+      "pass": 4
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 133,
+      "refused": 350
+    },
+    "fix-test": {
+      "refused": 66,
+      "pass": 15
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "c478ff2400ac6d947dfba6eb89aec0e7c8deb14268f898edd9095ca396817594",
+  "candidate_result_sha256": "cc1daf8604b72ca88978b6c3580c9af5f43b4194bc9980ddb33c0a330f7fa631",
+  "timing": {
+    "sum_agent_seconds": 431.794253233,
+    "median_agent_seconds": 0.300829131
+  },
+  "runner": "Unchanged tools/rustbench-dev.sh; persistent TMPDIR and explicit GLASSMIND_SCRATCH; memory8GiB/0swap, setsid --wait, bounded timeouts10s shutdown grace"
+}

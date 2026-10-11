@@ -10,7 +10,8 @@ names to eight safe cases. All five previously correct edits/refusals remain
 byte-identical; all three wrong names are corrected by actual edits. Six native
 integration tests execute and pass, with exact source and unrelated-file checks.
 All 41 scoped English tests, workspace fmt/clippy/release and strict4/4 smoke
-pass. Full765 remains pending; these authored checks are not a benchmark score.
+pass. Combined coding commit5f2859a retains all174passes on full765, with591refusals
+and0failures. These authored checks are not a benchmark score.
 
 The legacy reading/grammar parse input audit finds no underscore-call notation
 in any of 2,680 grammar sentences or 120 reading documents. Those inputs therefore

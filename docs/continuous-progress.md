@@ -1,6 +1,88 @@
 # Continuous development checkpoint
 
-## Authoritative current state — 2026-10-11 UTC
+## Authoritative current state — 2026-10-11 UTC, runtime 47b6b28
+
+Goal active under `prompts/grow-continuously.md`. Previous turn only restated the
+prompt (no progress); this continuation verified the live checkout and resumes
+publishing completed work. This section supersedes every older ACTIVE/pending
+label below. WORK=`/home/gsc/.cache/glassmind/continuous-20261010`.
+Branch `harness`; PR26 already merged3ad0b952af127f0266066c82a89985b4dfd9f667,
+exacthead6329b3870f1c6b21a8bbb41eedc7677a1aef49f2, CI38122571042SUCCESS.
+No open PR at this audit. Current batch is validated locally, not yet published.
+
+Runtime47b6b285b5cd23f0580600dcda3011689ab20da1; final release binary
+bd7df8f882bf3fb2d1a5ac4c86ce77083e6305949953630030285256562747dd, retained
+at WORK/coordinator/buffered-route-review/glassmind-integrated.
+
+IDENTIFIER SPELLING + ROLES accepted: explicit call names preserve underscores;
+known English words can be identifiers only in explicit code roles. Parent42/42
+contracts versus33/42, four added verified renames and five queries; all prior
+successes retained. Independent eight spelling probes all safe, seven actual
+edits with unchanged native behavior tests. All43 scoped tests/workspace gates
+pass; full1340 grammar and120reading parse outputs unchanged. V1 broad noun
+promotion remains rejected. Original136-file archive and repository copies were
+reverified before removing the inactive worker and login link.
+Full765 COMPLETE at5f2859a730f6d20a0ac64ca9a7551821ed123e86, binaryca120ec6:
+174passes,591refusals,0fail; every outcome unchanged. Result SHA
+cc1daf8604b72ca88978b6c3580c9af5f43b4194bc9980ddb33c0a330f7fa631.
+Raw WORK/coordinator/identifierroles-full; docs/results/coding-identifier-roles.json.
+Session75904 and all previous coding jobs are COMPLETE; do not repeat them.
+Later commits change only two conversation modules, not coding paths.
+
+ROUTEAUTHORITY accepted: typed story plans decide state ownership before learned
+fallback. Final buffered binary passes490social +134memory checks in both model
+modes, goodbye6/7,122boundary checks each, calc27/story47/facts36+16/stale2.
+All3100 CLINC inputs retain1303 correct learned proposals and add2, zero newly
+wrong;40 inherited wrong proposals remain. All19changed rows audited. This is a
+routing diagnostic, not full conversation or classifier accuracy. Full3987story
+questions/47625turns and2821ordinaryfacts both modes preserve output bytes.
+All17conversationtests and final workspace fmt/clippy/release/strict4smoke pass.
+Original442files archived;438artifacts/25identities/30inputs/2freezes verified.
+Scope inactive; original archive and66 repository copies verified again before
+removing its worktree and login link.
+Reports: tools/conversation/route-authority/PARENT.md; raw final
+WORK/coordinator/buffered-route-review. Original rejected social route remains
+rejected. Worker wrapper EOF after completed scoring, parent story report-path
+typo, and intentionally interrupted unbuffered model run remain documented;
+none supplies a partial passing score. Final buffered suites completed fully.
+
+BUFFERED LOADING accepted: same serde JSON parser reads through BufReader.
+Five interleaved fresh-process trials with the same production model measured
+median2.586598s ->0.093314s (27.72x), identical replies. Concurrent development
+jobs were active; no isolated-system or cold-cache claim. Ten malformed/missing
+model/session cases preserve rejection behavior; valid persisted state/replies
+are byte-identical. Report tools/conversation/buffered-loading/PARENT.md.
+All final parent jobs are COMPLETE:38834,99136,29730,95468,29973,25761,22479,
+62890,95523. Do not poll or repeat these completed handles.
+
+FIELDOWNERS complete but NOT integrated/accepted by parent. Original282files
+1,130,972bytes archived/hashverified at WORK/fieldowners-run/submitted.
+Only WORK/fieldowners-run/glassmind-accepted (SHA19d2770f8a43cdd9037b8a46747d5a428489b567dcdfd63e40e1bc1e011fb621)
+and accepted-*/regressions-accepted reports represent final code. Earlier files
+named final-* and glassmind-candidate are stale v3 after a failed build; retained,
+excluded from acceptance. Worker frozen16:12safe refusals ->16/16 including4exact
+owner-only edits; four supplemental refusals pass. Existing export26/27 and
+AddField14/15 failures unchanged. Parent review/replay/full765 remain required.
+Original282-file archive verified again; inactive worktree/login link removed.
+Reviewer accesses the immutable archive and final binary, not that worktree.
+
+FIELDREVIEW is ACTIVE, verified live this continuation: PID22957,
+scopeglassmind-continuous-fieldreview.scope, MemoryMax8GiB/MemorySwapMax0;
+worktree WORK/fieldreview at47b6b28, run WORK/fieldreview-run,
+brief WORK/fieldreview-task.txt. GPT6Astra fast through ChatGPT, no API keys.
+Independent owner/scope/alias/macro/cfg review and behavioral counterexamples;
+no runtime fixes or scorer changes. One model worker plus parent. Do not restart.
+Known completed worker tokens113,602,883; cached input counted once, parent and
+unfinished reviewer excluded. Old stopped dirty loop untouched.
+
+Next: commit reports/journal, push/open PR for validated runtime, wait for exact
+head CI and merge. Meanwhile inspect field reviewer when terminal, archive its
+original evidence, and decide next coding experiment from actual findings.
+No blocker and no goal completion. Keep coding and conversation moving; after
+this batch revisit weak reading/dialogue coverage with a new falsifiable gate.
+
+
+## Historical checkpoint before final route replay — superseded below
 
 Goal active: follow `prompts/grow-continuously.md` until stopped. PR25's native
 isolation and memory authority remain the validated runtime. Parent review now
