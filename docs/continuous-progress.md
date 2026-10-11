@@ -74,8 +74,9 @@ Session93455:memory41/41(nointent),calculations27/27,mixedstory47/47 pass.
 Mainbaseline42229/24773 COMPLETE underfactmatch-independent; copiedpredictor and
 baseline-identity.json preserved. Maincoding/world-rust sourceunchangedbyfacts.
 
-Next: review/commit integratedfacts source and measuredreports, append scopedtrack
-records using exactsourcecommits, renderchart, pushharness, openPR, requiregreenCI
+Facts source/evidence commit4551ebe01a10d1f87ba87e6f0ab1d9ce365c8f71. Scopedtrack
+records and chart nowupdated, coding203/765, ordinaryfactsunchanged;30/30authored
+matchingcontracts explicitly separate. Next: pushharness, openPR, requiregreenCI
 forreviewedexacthead andmergewith--match-head-commit. No openPR atlastcheck.
 Do not reruncompletedvalidation withoutnewchanges. Retainoriginalevidence before
 removinginactiveworkerworktrees/loginlinks. External5linemilestone log dueatmerge.
