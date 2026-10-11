@@ -50,6 +50,35 @@ exacthead29deec883e6dcb99879404a966568a884523b5f2, CI38120596496SUCCESS.
 Rejectedimplementationlanguage evidence/parentreview published, runtimeunchanged.
 Do not repeat PR24 checks/merge. Push43446/create47886/merge53793 COMPLETE.
 
+### New parent identifier-spelling fix — local, full dev pending
+
+Root HEAD d212378ef6fe123003dd1782b4f09c2c77854e11 includes an independent
+parent tokenizer fix: explicit call notation preserves trailing underscores
+before prose typo normalization. `renamed_()` previously became `renamed`.
+Frozen eight-request probe:5safe/3wrong ->8safe, all5 previously correct retained,
+all3 wrong targets corrected,6 real edits and6 executed native behavior tests.
+All41 scoped English tests and workspace fmt/clippy/release/strict4smoke pass.
+Candidate binary SHA aa27ec44ca0f2d2a73b4c334ad95077643cd0fddf54b0402d9c75e84a5b7e506.
+Root target/release/glassmind is now this binary, not the previous8cde baseline.
+Reports: tools/coding-identifier-spelling; raw WORK/coordinator/identifier-spelling.
+Parent sessions29579,73580,76154 and1985 are COMPLETE. Full765 remains pending;
+no accepted benchmark score or published runtime claim yet.
+
+The retained full1340 grammar parse baseline remains1good/3bad/1336ties.
+It is parser coverage, not the separate707/1340 byte-probability score. An
+independent source-input audit finds no `_()` forms among2680 grammar sentences
+and120reading documents, so this tokenizer change cannot affect their tokens.
+The identifier-role worker changes grammar rules and still needs its own full
+parse comparison after integration. Parent spelling change is onlytokens.rs;
+worker ownership remainslexicon/sem/Rustbridge, so they can integrate independently.
+
+PR26 is MERGED at3ad0b952af127f0266066c82a89985b4dfd9f667,
+2026-10-11T07:49:20Z, exact reviewed head6329b3870f1c6b21a8bbb41eedc7677a1aef49f2.
+CI38122571042 passed. Push13754/create83073/merge95322 COMPLETE. Do not repeat.
+It publishes both rejections and their audits, with no runtime changes. Diff
+whitespace warnings occur only in byte-preserved raw patches/logs; all other
+changes pass diff check. All17 retained Python adapters parse successfully.
+
 ### Current validated batch and active work
 
 Runtime commit `1331ac715eadcf7b9169423e947cedf861eb42a3` combines native check
@@ -190,8 +219,8 @@ No parent evaluation remains running. Old stopped dirty loop untouched.
 
 Next: finish preserving the rejection evidence, review each new worker only
 when terminal, archive the original before any changes/removal, then run full
-affected gates for promising candidates. Native runtime is still1331ac7 and
-root target/release/glassmind SHA8cde5dc4. No blocker or goal completion.
+affected gates for promising candidates. Published runtime is still1331ac7; local tokenizer fix d212378/aa27ec44 is
+awaiting full dev as described above. No blocker or goal completion.
 
 ### Verified current batch
 
