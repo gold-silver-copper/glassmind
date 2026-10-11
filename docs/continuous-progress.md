@@ -1,5 +1,48 @@
 # Continuous development checkpoint
 
+## Authoritative checkpoint — token endpoint rejection independently verified
+
+Goal active; branch harness, validated runtime408d16b unchanged. The preceding
+prompt-only turn made no development progress; this continuation independently
+verified and preserved the dialogue rejection. PR27/28/29 remain merged; no
+reason to repeat their completed benchmark runs. Older ACTIVE labels below
+are historical and superseded here.
+
+TOKENENDPOINTS terminal and REJECTED before DEV. Original30files/1,677,366bytes,
+28ownedmanifest/10external/7freeze/4data/29restoredsource identities verified.
+Runtime patch empty. Parent independently recomputed all165reference rows and
+1,635rule gates: all50extensions wrong, zero qualifyingrules. Excluding one
+existing punctuation correction,158originalvalues already have complete source
+annotations and6have none; no annotatedtruncation in actualTRAINcopies. Five
+contrasts and shellsyntax pass. No repeatednativeinference or candidateDEV.
+Originalarchive and repositorycopies reverified before inactiveworktree/auth
+removal. Reports tools/dialogue/token-endpoints/PARENT.md and parent/; raw
+WORK/tokenendpoints-run and WORK/coordinator/tokenendpoints-review. Third rejected
+span-proposal hypothesis: switch track/representation, no fourth cosmetic retry.
+Known completed worker tokens117,559,088; cachedinput countedonce, parent and
+unfinishedworkerexcluded. No scoring gain claimed for rejection evidence.
+
+INDEXPROOF ACTIVE: PID241565, scopeglassmind-continuous-indexproof.scope,8GiB/0swap,
+worktreeWORK/indexproof atb27dabe, branchcontinuous/indexproof, runWORK/indexproof-run;
+briefWORK/indexproof-task.txt. Revalidated live this continuation. Required
+GPT6Astrafast/ChatGPTlauncher, noAPIkeys. OwnsworldRust helper/libregistration/new
+unit tests plusnewtools/coding-index-proof. Compiler-confirmed signedslice-index
+repair must prove dominatingguards, bindingidentity, definedarithmetic and actual
+target representability; no blindcast. Temporary native constant-width proof
+planned, with originalbehavior preserved. Supplied publicindex-with-i32 workspace
+519bytes and3TRAIN-v3requests only; no hidden/task.toml/solution inputs. Parent
+froze11independent cases before candidateinspection (2positives,9unsafe/unproved)
+atWORK/coordinator/indexproof-independent. Review terminal submission only after
+originalarchive; require meaningful nativebehavior and full765>=174/0fail with
+all174retained before publication. Do not infer completion from log files.
+
+Parent publicprobes disproved redundant genericDebug andderiveHash hypotheses:
+existing compiler suggestions already repair both withnativebehavior checks.
+ArtifactsWORK/coordinator/debugtypes-baseline andderive-baseline; jobscomplete.
+Next: commit rejection evidence, review INDEXPROOF when terminal, select a new
+conversation/reading hypothesis from TRAIN evidence. No blocker. Goal remains
+active until user stops it.
+
 ## Authoritative current state — 2026-10-11 UTC, PR29 merged; dialogue token endpoints active
 
 Goal active under prompts/grow-continuously.md. This section supersedes older

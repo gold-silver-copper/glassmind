@@ -1,0 +1,384 @@
+{
+  "basis": "Provided baseline audit, not new DEV inference. No production/model change; no candidate accepted.",
+  "changed_assertions": [],
+  "new_wrong_assertions": [],
+  "remaining_seven_wrong_assertions": [
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "literal_exact": false
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "literal_exact": false
+    },
+    {
+      "dialogue_id": "17_00022",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San Rafael"
+      ],
+      "after": [
+        "San Rafael"
+      ],
+      "gold": [
+        "Philly"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "literal_exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "literal_exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "literal_exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "literal_exact": false
+    },
+    {
+      "dialogue_id": "17_00038",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "San"
+      ],
+      "after": [
+        "San"
+      ],
+      "gold": [
+        "San Fran"
+      ],
+      "before_status": "wrong",
+      "status": "wrong",
+      "literal_exact": false
+    }
+  ],
+  "four_previously_repaired_assertions": [
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "wrong",
+      "status": "correct",
+      "literal_exact": true
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 6,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "wrong",
+      "status": "correct",
+      "literal_exact": true
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "wrong",
+      "status": "correct",
+      "literal_exact": true
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [
+        "Washington D.C."
+      ],
+      "before_status": "wrong",
+      "status": "correct",
+      "literal_exact": true
+    }
+  ],
+  "held_unscored": [
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 8,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [],
+      "before_status": "unscored-held",
+      "status": "unscored-held",
+      "literal_exact": false,
+      "origin": {
+        "service": "Travel_1",
+        "slot": "location",
+        "original": "Washington D.C",
+        "value": "Washington D.C.",
+        "source_turn": 2,
+        "start": 12,
+        "end": 27,
+        "rule": 0,
+        "dialogue_id": "17_00025",
+        "turn_index": 6,
+        "source_utterance": "Check it in Washington D.C."
+      }
+    },
+    {
+      "dialogue_id": "17_00025",
+      "turn_index": 10,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [],
+      "before_status": "unscored-held",
+      "status": "unscored-held",
+      "literal_exact": false,
+      "origin": {
+        "service": "Travel_1",
+        "slot": "location",
+        "original": "Washington D.C",
+        "value": "Washington D.C.",
+        "source_turn": 2,
+        "start": 12,
+        "end": 27,
+        "rule": 0,
+        "dialogue_id": "17_00025",
+        "turn_index": 6,
+        "source_utterance": "Check it in Washington D.C."
+      }
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 12,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [],
+      "before_status": "unscored-held",
+      "status": "unscored-held",
+      "literal_exact": false,
+      "origin": {
+        "service": "Travel_1",
+        "slot": "location",
+        "original": "Washington D.C",
+        "value": "Washington D.C.",
+        "source_turn": 0,
+        "start": 31,
+        "end": 46,
+        "rule": 0,
+        "dialogue_id": "17_00034",
+        "turn_index": 6,
+        "source_utterance": "Can you look up the weather in Washington D.C. for March 7th?"
+      }
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 14,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [],
+      "before_status": "unscored-held",
+      "status": "unscored-held",
+      "literal_exact": false,
+      "origin": {
+        "service": "Travel_1",
+        "slot": "location",
+        "original": "Washington D.C",
+        "value": "Washington D.C.",
+        "source_turn": 0,
+        "start": 31,
+        "end": 46,
+        "rule": 0,
+        "dialogue_id": "17_00034",
+        "turn_index": 6,
+        "source_utterance": "Can you look up the weather in Washington D.C. for March 7th?"
+      }
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 16,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [],
+      "before_status": "unscored-held",
+      "status": "unscored-held",
+      "literal_exact": false,
+      "origin": {
+        "service": "Travel_1",
+        "slot": "location",
+        "original": "Washington D.C",
+        "value": "Washington D.C.",
+        "source_turn": 0,
+        "start": 31,
+        "end": 46,
+        "rule": 0,
+        "dialogue_id": "17_00034",
+        "turn_index": 6,
+        "source_utterance": "Can you look up the weather in Washington D.C. for March 7th?"
+      }
+    },
+    {
+      "dialogue_id": "17_00034",
+      "turn_index": 18,
+      "service": "Travel_1",
+      "slot": "location",
+      "before": [
+        "Washington D.C"
+      ],
+      "after": [
+        "Washington D.C."
+      ],
+      "gold": [],
+      "before_status": "unscored-held",
+      "status": "unscored-held",
+      "literal_exact": false,
+      "origin": {
+        "service": "Travel_1",
+        "slot": "location",
+        "original": "Washington D.C",
+        "value": "Washington D.C.",
+        "source_turn": 0,
+        "start": 31,
+        "end": 46,
+        "rule": 0,
+        "dialogue_id": "17_00034",
+        "turn_index": 6,
+        "source_utterance": "Can you look up the weather in Washington D.C. for March 7th?"
+      }
+    }
+  ],
+  "credit_for_held": 0
+}
