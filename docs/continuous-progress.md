@@ -9,10 +9,10 @@ Repository `/home/gsc/code/glassmind`, branch `harness`.
 Merged PR #4 (conversation calculations), main merge `f83aefc`;
 merged PR #5 (exact percentages/MathQA), main merge `d607271`.
 Merged PR #6 (syntax repairs and acronym guard), merge `138676e`,
-evaluated PR head `ed81553`. New local commits awaiting full coding dev:
+evaluated PR head `ed81553`. New verified local commits awaiting publication:
 `ea52c58` (type renaming), `797ba62` (story conversation), `ebd9817`
-(fixed byte probability scorer). All three workers completed; no model
-workers remain active. Reporting/checkpoint changes follow these commits.
+(fixed byte probability scorer), `422d754` (story focus correction).
+Their workers completed. A new dialogue worker is active below.
 Do not push worker candidates until their affected full dev evidence passes.
 
 The latest complete benchmark records are in `docs/results/tracks.jsonl`;
@@ -53,7 +53,7 @@ Workspace fmt, all-target clippy, release build and strict4/4 fixture smoke
 pass after integrating coding and facts. No held-out evaluation has been run
 in this continuous batch; none of its items was inspected.
 
-## Current batch and one active evaluation
+## Verified current batch and next experiment
 
 WORK = `/home/gsc/.cache/glassmind/continuous-20261010`.
 
@@ -67,11 +67,14 @@ WORK = `/home/gsc/.cache/glassmind/continuous-20261010`.
   session compatibility and explicit prediction labels. Coordinator found
   bare ambiguous corrections could preserve stale story state; fixed routing
   only when story context exists. The first coordinator fix changed a
-  memory-only clarification; rejected and narrowed. Five CLI tests pass.
+  memory-only clarification; rejected and narrowed. Six CLI tests pass (five original plus the new focus regression).
+  Final source `422d754` also clears the previous personal-memory focus on
+  story turns: a bare correction cannot replace an earlier name with a story
+  location. An explicit memory question establishes its focus again.
   Final integrated47/47 mixed checks with/without intent model,41/41 memory,
   27/27 calculations with/without model, fullbAbI3966/18/3 of3987 and quantities
   3056/60/0 of3116 (including762 expected refusals). Final binarySHA
-  `d504e39cabe4df6516f83c3493bb485bbbd0a3af6084419c1131ecd31ef68093`.
+  `94c89f0184b1b8af183f727bb177c5c115d4b20e59d182d80a0496c2f030a0ef`.
   Reports in `docs/talk-stories-evidence/integrated/`; all those checks complete.
 - **Reading**: `ebd9817`, fixed non-generating byte6-gram trained only on
   BabyLM2025 train10M. Coordinator full1340/120 evaluations exactly reproduce
@@ -82,16 +85,34 @@ WORK = `/home/gsc/.cache/glassmind/continuous-20261010`.
   Separate probability command; no semantic/independent-test claim. All
   settings/provenance/licenses/reproduction in `tools/reading/HANDOFF.md`.
   Model retained `WORK/reading-run/probability/byte6.bin` (68,861,296bytes).
-- **RUNNING: full765 RustBench dev**, exec session **66778**, runnerPID1678209,
-  timeout/process-group1678208. Output `WORK/coordinator/edits-full/`;
-  `run.log` provides progress, `results.jsonl` only complete at finish.
-  ~500cases done at this checkpoint; inspect actual status, don't restart.
-  Frozen binary SHA
-  `54df40227208af89128e2767bbb504e170814d9ce4b3979276b82a0133de6b1b`.
-  It includes final type-renaming source plus initial story integration;
-  later CLI-only correction refinement does not affect the coding command.
-  Baseline is **163pass599refused3fail**, from `WORK/coordinator/coding-full/`.
-  Compare every task/style transition; preserve denominator765. No held-out.
+- **COMPLETE: full765 RustBench dev**, exec66778 terminal; do not poll or
+  restart it. All outcomes unchanged:163pass599refused3fail. The nine local
+  rename cases establish a bounded new capability, not a benchmark gain;
+  all81 benchmark edit requests still refuse. Full report with hashes is
+  `docs/results/coding-type-renames.json`. Frozen result/binary retained in
+  `WORK/coordinator/edits-full/`. No held-out evaluation.
+
+**Active worker: dialogue**, launcherPID1756969, scope
+`glassmind-continuous-dialogue.scope`, worktree `WORK/dialogue`, base `eb15517`.
+Owns crates/dialogue and new tools/dialogue only; no shared CLI/scorer changes.
+GPT-6 Astra fast via ChatGPT, capped8GiB/zero swap. Goal: actual learned
+service routing and separate state from utterance-only inputs. Initially
+selected RideSharing_1+Travel_1 using training co-occurrences; no multi-service
+dev conversations, so rejected before scoring. Added Weather_1 from training
+availability. Fixed complete selection now179 dev conversations (54multi),
+1119user turns,1218frames; model training/evaluation in progress. Frozen
+RideSharing regression reproduced202/257 exact,89.1751%fuzzy. Inspect final
+handoff; do not assume candidate accepted.
+
+Worker downloaded permitted pinned train/dev into its namespace's temporary
+cache `/home/gsc/.cache/glassmind/data/sgd-full`. Coordinator preserved all150
+source files with manifest hash verification, plus selected files, at
+**`WORK/dialogue-run/data-sgd-full`**. Do not lose this data or redownload.
+The worker's internal path disappears when its namespace closes; fix/parameterize
+reproduction paths during integration. Current namespace ownerPID1756977
+(`/proc/1756977/root/...`) if further permitted artifact recovery is needed.
+Do not read unrelated paths or credentials. Worker model/reports under
+`WORK/dialogue-run/tmp/multi` persist normally.
 
 Workspace fmt/all-target clippy/release build/strict4/4 smoke pass after
 all integrations. Scalar bits-per-byte report support added to
@@ -100,9 +121,10 @@ explicit tie counts and model metadata. Rate/scalar/invalid-input checks
 pass; render is current. No cargo job should be started uncapped.
 
 All storychat/edits/reading workers used GPT-6 Astra fast through ChatGPT;
-scopes inactive and temporary auth symlinks removed. Dirty worktrees retained
-until final evidence/cleanup; original story submission differs from the
-coordinator corrections. Do not restart workers or duplicate their output.
+scopes inactive and temporary auth symlinks removed. Their changed files were archived with SHA256 manifests to
+`WORK/NAME-run/submitted`, then worktrees removed. Original story submission
+differs from coordinator corrections, and summarized baseline reports link
+the retained full originals in that archive. Do not restart workers or duplicate their output.
 Their `NAME-run/{events.jsonl,summary.txt}` retain completed evidence.
 
 ## Completed worker cleanup and retained evidence
@@ -125,20 +147,20 @@ The old improvement loop remains STOPPED; preserve its dirty checkout/state.
 
 ## Immediate next actions
 
-1. Poll exec66778 / inspect full coding result once done; no other job remains
-   active. Compare against163/599/3 and record exact outcome transitions and
-   hashes in a new report. Do not inspect hidden tests or generators.
-2. Update README/scoreboard/type-rename report with full coding result. Commit
-   current reporting changes. Publish the verified batch as nextPR (#7), wait
-   for CI and merge with actual headSHA. PR6 already merged; no merge retry.
-3. Preserve worker evidence before removing worktrees. Baseline story refusal
-   lists were summarized in git; full reports still in storychat worktree.
-4. Next useful experiments: expand grounded real dialogue beyond one service;
-   improve facts coverage using training-derived entities (existing index is
-   validation-seeded, never call it openworld); revisit independent reading
-   evaluation with a preregistered new dev split to avoid overlap. Keep parser
-   coverage, probability, synthetic and scoped metrics distinct. Start a
-   bounded hypothesis and keep the goal active after this batch.
+1. Publish this verified batch as nextPR (#7), inspect CI and merge with actual
+   headSHA. Full coding/session/reading evidence is complete; no benchmark
+   process remains. PR6 already merged.
+2. Review active dialogue worker when done, reproduce full declared selection
+   and annotation isolation, preserve frozen single-service regression. Fix
+   namespace-only data paths using the preserved cache above. Do not claim
+   multi-service routing from oracle service names or score only easy frames.
+3. Coding has plateaued on all81 edit tasks despite the valid local rename
+   subset. Next coding hypothesis should target realistic source layouts and
+   reusable requested transformations, with actual before/after behavior and
+   rollback. Do not inspect hidden tests/generators or expected patches.
+4. Facts expansion should use independently selected/training-derived entities;
+   existing index is validation-seeded. Reading follow-up needs a declared
+   independent dev design with overlap diagnostics. Keep measured scopes honest.
 
-Read the exact active prompt for standing authorization and stop/cleanup rules.
+Read the active prompt for standing authorization and stop/cleanup rules.
 This checkpoint is not a request for user approval or a completed goal.

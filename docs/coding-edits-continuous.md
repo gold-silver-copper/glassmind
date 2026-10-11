@@ -1,7 +1,7 @@
 # Bounded type rename candidate — 2026-10-10
 
 Starting source: `e73f68c36e183b4060468cc6e752b8709f0662a0`.
-Changes are uncommitted for coordinator integration. No shared manifests,
+Integrated coding source: `ea52c58bc1c575db236c71ee435594d65831e96e`. No shared manifests,
 CLI, slips repair code, scorers, historical prompts or datasets were changed.
 
 ## Hypothesis and fixed acceptance criterion
@@ -60,9 +60,11 @@ exit results, source checks and binary hashes are in
 - world-rust fmt check;
 - CLI debug build and the nine independent CLI/compile/run examples.
 
-This is local capability evidence, **not benchmark correctness**. Full
-RustBench dev (765 cases), workspace-wide checks and shipping decisions remain
-with the coordinator. No train/held-out items, task generators, official test
+Coordinator reproduction passes all nine local cases and required workspace
+checks. The full765 RustBench dev comparison preserves **every outcome**:
+163passed,599refused,3failed, including all81 benchmark edit requests still
+refused. This is a useful bounded capability on the separate local examples,
+**not a RustBench gain**. [Full comparison](results/coding-type-renames.json). No train/held-out items, task generators, official test
 split, private logs or credentials were read. No new model calls were made.
 
 ## Rejected approaches and review findings

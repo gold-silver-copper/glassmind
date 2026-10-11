@@ -95,6 +95,11 @@ loop-bound task: all 160 baseline passes remain passes, 599 refusals remain
 refusals, and the three existing failures remain failures. Candidates exclude
 explicit test code and non-code text. [Full dev comparison](docs/results/coding-syntax-repairs.json).
 
+Struct/enum renames now resolve explicit module/import bindings and verify
+application through `do`. All nine local source/runtime/refusal checks pass;
+all 765 RustBench outcomes remain unchanged, including its 81 refused edit
+requests. [Rename scope and evidence](docs/coding-edits-continuous.md).
+
 `talk` now answers supported quantity questions with or without an intent
 model, preserves memory priority and recalls calculation requests across
 sessions. The same 3,116 synthetic quantity questions through `talk` retain

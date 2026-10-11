@@ -1,14 +1,14 @@
 {
-  "source_commit": "797ba62c735909d8132ce816e06d00c3fb832b86",
-  "binary_sha256": "d504e39cabe4df6516f83c3493bb485bbbd0a3af6084419c1131ecd31ef68093",
+  "source_commit": "422d7548236b57659e96bbdf29c9c91747ea6046",
+  "binary_sha256": "94c89f0184b1b8af183f727bb177c5c115d4b20e59d182d80a0496c2f030a0ef",
   "memory": {
     "right": 41,
     "wrong": 0
   },
   "rust_world_tests": 10,
-  "cli_tests": 5,
+  "cli_tests": 6,
   "workspace_fmt_clippy_build_smoke": "passed",
-  "correction_regression": "unresolved correction invalidates only existing story context, including after restart",
+  "correction_regression": "story turns clear prior name/preference focus; ambiguous correction preserves personal facts and invalidates story across restart; explicit memory question restores personal focus",
   "earlier_rejected_coordinator_attempt": "routing every Missing reply invalidated personal-memory clarifications without story context; narrowed and rechecked",
   "rename_runner_retry": "first invocation lacked required CARGO_TARGET_DIR; separate capped rerun passed nine cases"
 }
