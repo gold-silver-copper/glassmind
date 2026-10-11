@@ -69,6 +69,48 @@ allpass thecross-family publictest andyielddifferentoutputs. Reports retained.
 Do not duplicate these runs. Parentcandidate replay waits for worker
 terminal archive/hashverification. Then review source, localcontracts and full765.
 
+## LIVE: resumable provisional dialogue drafts
+
+WorkerPID3618382, scopeglassmind-continuous-draftsession.scope active/running8GiB0swap.
+WorktreeWORK/draftsession, branchcontinuous/draftsession, base49340ae.
+TaskWORK/draftsession-task.txt;runWORK/draftsession-run. Onlycrates/dialogue and
+newtools/dialogue/draft-session owned. MainCLI is coordinatorowned, not yetedited.
+Astra fast/forcedChatGPTlogin verified; no live source/results inspected.
+
+Gap: validatedthree-service tracker is batch-only and MultiSession ephemeral.
+Add typedhash-bound inputhistory/bundleloader APIs for resumableprovisionaldrafts.
+No model/training/decoder/router/threshold changes; no newaccuracyclaim or external
+booking/weather/factual action. Expectedold610right459wrong50refused/1119 remains.
+OnlyUSER/SYSTEM inputhistory persists; never deserialize goldframes or predicted
+states as authority. Replay unchangedmodel onresume; validatebeforemutation.
+Bundle exactmodel/schema hashes+requiredsource/license/scope; fixedfilenames;
+model64MiB/schema1MiB/manifest64KiB readcaps. History128turns/64KiButterancebytes,
+4096bytesperturn, nonempty/noNUL; badidentity/unknownfields/role/version refuses.
+Efficient in-memoryadvance,show/reset, restartafterSYSTEM, interleavedisolation.
+Coordinatorplannedmain --dialogue-dir withDraftrequest:/Servicereply:/Showrequest/
+Resetrequest; draft neverfeedsordinarymemory/story/facts; resetwithoutbundleallowed.
+
+ReadonlyWORK/draftsession-source:6files49643602bytes, manifestsourceprovenance.
+Acceptedmodel32174720bytes SHAfac911dc687d8b31d6ef48ef5d200827ee417f85cd25b832bb1a709855bbbd88;
+selectedRideSharing_1/Travel_1/Weather_1 schema, unchangedoldnativebinary,
+179 publicDEV conversations strippedtoonlyspeaker/utterance (1119USERturns),
+frozenpredictionSHA8887d88afbf18462d10a70574be030df8a6d33071a5c201fa84dc1f99efacc8d.
+No goldannotationdata mounted; exactparity is acceptance, notsemanticverification.
+DatasetSGDe852981ae34990f4358979625854259302feaa78 CC-BY-SA4.0; no newdownloads.
+
+ParentWORK/coordinator/draftsession-independent PLAN/freeze.py/freeze.json:
+6authored streams/13USERsnapshot baseline alreadyranwitholdnativebinary.
+streamsSHA2119c858ffcd6694256e43097bf007c280fe4043239b17c87f3d40547ec2c7e3;
+maincontractsSHAbc5988060261a4e0b69573a4faae8c028b1bf74a86343504af4366e745440c55;
+loadercontractsSHA2023f3c7523504b245f94f0466e13c38d40820c3d3d940506813128a20cf40b4.
+BaselinepredictionsSHA059fd2fc90b5d10e3f3c1bbd43dabb4b86c37f76824fb71c012cc9c1230d4c4b.
+Authored tests coverrestartafterSYSTEMoffers, UTF8, explicitmemory/story-likepayloads,
+no statepollution, invalidbundle/history/bytecaps and unchangedonfailure. Expect
+mainkinddialogue_draft andoptionalrequest_draft sessionfield omittedwhenunused.
+Worker first10/full179parity +restart tests mustpass beforeparentmainintegration.
+NEXT: afterterminal archive/hashverify BEFOREinspection; adaptparent harness totyped
+API withoutchanging frozen semantics; integrate main explicitroutes onlyaftergates.
+
 ## Finished PR41 experiments
 
 Extremum original archive1422files87096407bytes; original candidate parent0/15
@@ -141,7 +183,7 @@ semanticchecks; no first-match value priority or another oldrankerconfiguration.
 4. Facts coverage/inverseedges are the known broadgap; previousTRAIN999expansion
    rejected, rawcachedassets retained. Do not repeat aliasfilters or duplicatefetch.
 
-Onlydeduporder modelworkeractive; parentbaseline86841 andalternatives61762 COMPLETE.
+Deduporder anddraftsession modelworkers active; parentbaseline86841 andalternatives61762 COMPLETE.
 Allcargo8GiB/0swap,setsid--waittimeout,persistentTMPDIR,jobs1,testthreads<=4.
 Atmost4modelslotsincludingroot,8cargojobsprojectwide. No unrelatedcleanup/pkill-f.
 Stop exactownedjobs onexplicit userstop. Preserve archives BEFORE worker edits/removal.
