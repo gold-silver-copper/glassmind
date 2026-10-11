@@ -2,6 +2,7 @@
 use std::io::{BufRead, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
+use crate::talk_facts::{FactReply, Facts};
 use crate::talk_stories::{Stories, StoryReply};
 use glassmind_everyday::{Conversation, IntentModel, Reply};
 use glassmind_quantities::Answer;
@@ -21,6 +22,7 @@ enum TalkReply {
     Conversation(Reply),
     Calculation(Calculation),
     Story(StoryReply),
+    Fact(Box<FactReply>),
 }
 
 #[derive(serde::Serialize)]
@@ -38,11 +40,17 @@ impl TalkReply {
             Self::Conversation(reply) => reply.text(),
             Self::Calculation(reply) => &reply.text,
             Self::Story(reply) => &reply.text,
+            Self::Fact(reply) => &reply.text,
         }
     }
 }
 
-fn respond(session: &mut Session, line: &str, model: Option<&IntentModel>) -> TalkReply {
+fn respond_with_facts(
+    session: &mut Session,
+    line: &str,
+    model: Option<&IntentModel>,
+    facts: Option<&Facts>,
+) -> TalkReply {
     let memory = &mut session.memory;
     // Persist one turn per utterance. Explicit memory always wins; learned
     // intent proposals run only after typed reasoning, from the prior state.
@@ -66,6 +74,20 @@ fn respond(session: &mut Session, line: &str, model: Option<&IntentModel>) -> Ta
             method,
         });
     }
+    let fact = if matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. }) {
+        facts.map(|facts| facts.respond(line))
+    } else {
+        None
+    };
+    if !session.stories.has_context()
+        && fact
+            .as_ref()
+            .is_some_and(|r| !r.answer.answers.is_empty() || crate::talk_facts::is_question(line))
+        && let Some(fact) = fact
+    {
+        session.memory.last_slot = None;
+        return TalkReply::Fact(Box::new(fact));
+    }
     if (matches!(reply, Reply::Intent { .. } | Reply::Refusal { .. })
         || (matches!(reply, Reply::Missing { .. }) && session.stories.has_context()))
         && let Some(story) = session.stories.respond(line)
@@ -74,6 +96,12 @@ fn respond(session: &mut Session, line: &str, model: Option<&IntentModel>) -> Ta
         // correction must not overwrite an earlier name or preference.
         session.memory.last_slot = None;
         return TalkReply::Story(story);
+    }
+    if let Some(fact) = fact
+        && crate::talk_facts::is_question(line)
+    {
+        session.memory.last_slot = None;
+        return TalkReply::Fact(Box::new(fact));
     }
     if matches!(reply, Reply::Refusal { .. })
         && let Some(mut previous) = previous
@@ -97,7 +125,13 @@ fn save(path: &Path, memory: &Session) -> Result<(), String> {
     std::fs::rename(pending, path).map_err(|e| e.to_string())
 }
 
-pub fn run(session: Option<PathBuf>, model: Option<PathBuf>, json: bool) -> Result<(), String> {
+pub fn run(
+    session: Option<PathBuf>,
+    model: Option<PathBuf>,
+    facts_dir: Option<PathBuf>,
+    json: bool,
+) -> Result<(), String> {
+    let facts = facts_dir.as_deref().map(Facts::load).transpose()?;
     let model: Option<IntentModel> = model.as_deref().map(read).transpose()?;
     if let Some(model) = &model {
         model.validate().map_err(|e| e.to_string())?;
@@ -148,7 +182,7 @@ pub fn run(session: Option<PathBuf>, model: Option<PathBuf>, json: bool) -> Resu
             )
             .map_err(|e| e.to_string())?;
         } else {
-            let reply = respond(&mut memory, &line, model.as_ref());
+            let reply = respond_with_facts(&mut memory, &line, model.as_ref(), facts.as_ref());
             if json {
                 serde_json::to_writer(&mut output, &reply).map_err(|e| e.to_string())?;
                 writeln!(output).map_err(|e| e.to_string())?;
@@ -167,6 +201,10 @@ pub fn run(session: Option<PathBuf>, model: Option<PathBuf>, json: bool) -> Resu
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn respond(session: &mut Session, line: &str, model: Option<&IntentModel>) -> TalkReply {
+        respond_with_facts(session, line, model, None)
+    }
 
     #[test]
     fn unresolved_correction_invalidates_story_across_restart() {

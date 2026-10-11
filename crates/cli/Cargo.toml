@@ -16,6 +16,7 @@ glassmind-answer.workspace = true
 glassmind-models.workspace = true
 glassmind-stories.workspace = true
 glassmind-everyday.workspace = true
+glassmind-facts = { path = "../facts" }
 glassmind-quantities.workspace = true
 glassmind-rules.workspace = true
 glassmind-grammar.workspace = true
@@ -23,6 +24,7 @@ serde.workspace = true
 clap.workspace = true
 rustyline.workspace = true
 serde_json.workspace = true
+sha2 = "0.10"
 
 [lints]
 workspace = true
