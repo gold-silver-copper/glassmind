@@ -13,16 +13,30 @@ Reviewed c6d03d58726cf761a018205da2a791a64c611165; CI38170842839 SUCCESS104s.
 Mention extraction/learner evidence published; no production facts change.
 
 Coding worktree WORK/sequence-composition branch continuous/sequence-composition.
-Frozen plan73fe0b0; independent fixtures and TRAIN hashes0e07286. External RUN=
-WORK/coordinator/sequence-composition. Baseline22/22refused as expected, binary
-0d551879056cc5e0356b7e36adea1f274c2e0e30182122aa538dfb4b895dbc1b.
-Implementation now adds16signature-only integer sequence compositions for two
-slice/Vec arguments. No verifier/request/budget changes. Build92719 live in
-scope glassmind-sequence-build,1200s8GiB0swap,jobs4,log RUN/build.log.
-NEXT inspect build, pin candidate, run22newnative + existing89checks, fixedTRAIN12
-then60(all6oldoutputs retained). Independently recompile accepted outputs.
-After required checks, full765DEV gate retain221passes +>=1gain,0failures.
-No new model workers, unchanged knownworker usage203481375. NoAPIkeys.
+Frozen plan73fe0b0; fixtures/TRAINhashes0e07286; runtimec3790af. Onlyproductionedit
+adds16signature-only integer sequence compositions. CandidateSHA256
+ dd6a823946637dd5daacba2f1033a1c3e1fc4421b147dabc8dacf8b16aef92bf.
+RUN=WORK/coordinator/sequence-composition. Baseline22refused. New22native checks
+pass(16implementations/6refusals); all89oldnative outcomes unchanged;59Rustworld
+tests andrequiredworkspacefmt/alltargetclippy/release/strict4smoke pass.
+TRAINsample12andfull60 eachaccept8; all6oldsourceoutputs byteidentical,2gains
+merge-sorted-unique hurried/terse (suppliedTRAIN, notunseen). Independent16native
+and8TRAINoutputs recompiled, completeverifierevidence validated. Pre-dev gatePASS.
+Build92719/workspace15687complete. Local83876 stopped beforeindependentcase on
+missinghistoricalarchivefreeze.py; exactoriginal restored46cc2e8, nofixture/scorer
+change; resume14291complete. Originalfailurelog retained. No runtimechanges.
+
+Full765DEV67238 RUNNING, unchangedtools/rustbench-dev.sh3600s8GiB0swap,jobs1,
+privateRUN/full765/native-target,check-cache,check-scratch,tmp. Nootherjobs/models.
+NEXT await existingjob, compare withtools/coding-sequence-composition/compare-full.py
+--before WORK/coordinator/word-initials/full765/results.jsonl --after
+RUN/full765/results.jsonl --binary RUN/candidate --out RUN/full765/comparison.json.
+Requireall221priorpasses,>=222passes,0failures. Then integrate reviewed source,
+updateREADME/journal, centralrequiredchecks, publishandmerge exactgreenhead.
+Candidate200sourcehashes inRUN/candidate.json; no edits whileevaluationruns.
+Knownworker usage203481375 unchanged. NoAPIkeys/modelcalls thisexperiment.
+Aftercodingdelivery, revisit facts candidate-boundary/open-set absence evidence;
+do not retune rejected55threshold grid or repeat fullgraphCAL promotion.
 
 ## Previous handoff: PR54 merged; mention studies complete
 
