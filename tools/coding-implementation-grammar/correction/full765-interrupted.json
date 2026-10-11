@@ -1,0 +1,19 @@
+{
+  "reason": "Independent authored probe found literal Rust identifier function is consumed as an optional kind; full acceptance cannot proceed. No full DEV score used to select the correction.",
+  "owned_pids": [
+    159790,
+    159791,
+    236985,
+    236989,
+    237336,
+    237339,
+    237340,
+    237341
+  ],
+  "stopped_scopes": [
+    "run-p159790-i100775496.scope",
+    "run-p237336-i100777644.scope",
+    "run-p237340-i100826775.scope"
+  ],
+  "time": "2026-10-11T15:12:43.878413+00:00"
+}

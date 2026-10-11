@@ -1,0 +1,546 @@
+[
+  {
+    "id": "b0",
+    "text": "which functions call implement?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "1 function calls `implement`: `implemented`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b1",
+    "text": "where is function implement?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "`implement` is defined at src/lib.rs:1.\n",
+    "exit": 0
+  },
+  {
+    "id": "b2",
+    "text": "rename function implement to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "e9c62ec4ead3d924cb684f172edba73e917ce1bacdec0ff86cc5f9670a2fb4e1"
+    },
+    "stdout": "I'd rename the `implement` function to `calculate` in 2 places.\n  src/lib.rs:1:8  `implement` -> `calculate`\n  src/lib.rs:2:31  `implement` -> `calculate`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b3",
+    "text": "what is the type of Ledger.implement?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "The declared type of `Ledger.implement` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "exit": 0
+  },
+  {
+    "id": "b4",
+    "text": "rename field implement to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "838b7c1231d8fcbe5d06d923d75c7cc9aabb96e259b7282df2b1ba9c9c4aa146"
+    },
+    "stdout": "I'd rename the `Ledger::implement` field to `calculate` in 2 places.\n  src/lib.rs:1:25  `implement` -> `calculate`\n  src/lib.rs:2:37  `implement` -> `calculate`\n  (say yes to rename `Ledger::implement`)\nI made 2 changes. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b5",
+    "text": "which functions call implemented?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "1 function calls `implemented`: `write`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b6",
+    "text": "where is function implemented?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "`implemented` is defined at src/lib.rs:2.\n",
+    "exit": 0
+  },
+  {
+    "id": "b7",
+    "text": "rename function implemented to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "407a17db374e9e574a1b4710a5c0400f178b0327fa92c0891b80df67e676905a"
+    },
+    "stdout": "I'd rename the `implemented` function to `calculate` in 2 places.\n  src/lib.rs:2:8  `implemented` -> `calculate`\n  src/lib.rs:3:25  `implemented` -> `calculate`\n  (say yes to rename `implemented`)\nI made 2 changes. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b8",
+    "text": "what is the type of Ledger.implemented?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "The declared type of `Ledger.implemented` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "exit": 0
+  },
+  {
+    "id": "b9",
+    "text": "rename field implemented to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "83d8af256faf0bd288a72032cb14482c484d6d7596e964a74fd09474421ca217"
+    },
+    "stdout": "I'd rename the `Ledger::implemented` field to `calculate` in 2 places.\n  src/lib.rs:1:45  `implemented` -> `calculate`\n  src/lib.rs:2:51  `implemented` -> `calculate`\n  (say yes to rename `Ledger::implemented`)\nI made 2 changes. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b10",
+    "text": "which functions call write?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "1 function calls `write`: `fill`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b11",
+    "text": "where is function write?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "`write` is defined at src/lib.rs:3.\n",
+    "exit": 0
+  },
+  {
+    "id": "b12",
+    "text": "rename function write to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "aae6e50f94ba8f9840ea63df3be90bc700d5f8a83ffc8ba13348a31c9ede3aa3"
+    },
+    "stdout": "I'd rename the `write` function to `calculate` in 2 places.\n  src/lib.rs:3:8  `write` -> `calculate`\n  src/lib.rs:4:24  `write` -> `calculate`\n  (say yes to rename `write`)\nI made 2 changes. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b13",
+    "text": "what is the type of Ledger.write?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "The declared type of `Ledger.write` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "exit": 0
+  },
+  {
+    "id": "b14",
+    "text": "rename field write to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "5e321d85f9193746ed7a0daaa1944845f362c438c1110f6a758e430d732be872"
+    },
+    "stdout": "I'd rename the `Ledger::write` field to `calculate` in 2 places.\n  src/lib.rs:1:67  `write` -> `calculate`\n  src/lib.rs:2:67  `write` -> `calculate`\n  (say yes to rename `Ledger::write`)\nI made 2 changes. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b15",
+    "text": "which functions call fill?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "No functions call `fill`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b16",
+    "text": "where is function fill?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "`fill` is defined at src/lib.rs:4.\n",
+    "exit": 0
+  },
+  {
+    "id": "b17",
+    "text": "rename function fill to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "277613387170426c88a3f2c421448c13355282d0cc1081310e33b7de3ea79df5"
+    },
+    "stdout": "I'd rename the `fill` function to `calculate` in one place.\n  src/lib.rs:4:8  `fill` -> `calculate`\n  (say yes to rename `fill`)\nI made one change. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b18",
+    "text": "what is the type of Ledger.fill?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "The declared type of `Ledger.fill` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "exit": 0
+  },
+  {
+    "id": "b19",
+    "text": "rename field fill to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "ace881aa2a0910a09c3fd03e2b1861b5c5e351e1b87f09cb4f57f6886c0b2588"
+    },
+    "stdout": "I'd rename the `Ledger::fill` field to `calculate` in 2 places.\n  src/lib.rs:1:83  `fill` -> `calculate`\n  src/lib.rs:2:77  `fill` -> `calculate`\n  (say yes to rename `Ledger::fill`)\nI made 2 changes. No problems with the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b20",
+    "text": "which functions call `implement`?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "1 function calls `implement`: `implemented`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b21",
+    "text": "where is function \"write\"?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "`write` is defined at src/lib.rs:3.\n",
+    "exit": 0
+  },
+  {
+    "id": "b22",
+    "text": "what is the type of `Ledger.implement`?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "The declared type of `Ledger.implement` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "exit": 0
+  },
+  {
+    "id": "b23",
+    "text": "where is function implement?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "45571424a9cd72020dd933f32cbdf0557b904752e0b5573f8ddceaba48be4b1b"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "45571424a9cd72020dd933f32cbdf0557b904752e0b5573f8ddceaba48be4b1b"
+    },
+    "stdout": "`implement` is defined at src/lib.rs:1.\n",
+    "exit": 0
+  },
+  {
+    "id": "b24",
+    "text": "rename implement to calculate",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "45571424a9cd72020dd933f32cbdf0557b904752e0b5573f8ddceaba48be4b1b"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "45571424a9cd72020dd933f32cbdf0557b904752e0b5573f8ddceaba48be4b1b"
+    },
+    "stdout": "I can't tell which one you mean: `implement` and `Ledger::implement`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b25",
+    "text": "add a public i32 field total to Ledger with default 0",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "I can't follow the sentence from the marked spot.\n  add a public i32 field total to Ledger with default 0▮\n",
+    "exit": 0
+  },
+  {
+    "id": "b26",
+    "text": "repair implemented",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "I take that to mean: fix the build I don't know how to fix the build.\n",
+    "exit": 0
+  },
+  {
+    "id": "b27",
+    "text": "which functions implemented this behavior?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "I take that to mean: which functions does `implemented` call? `implemented` calls `implement`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b28",
+    "text": "what is the type of Ledger.implemented?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "The declared type of `Ledger.implemented` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "exit": 0
+  },
+  {
+    "id": "b29",
+    "text": "rename function write to implement",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8358f61417e7584b7dabc32b5ca45c23fc5e4d6b79d185471ef4a64e1528d772"
+    },
+    "stdout": "I understand, but I can't do that here.\n",
+    "exit": 0
+  },
+  {
+    "id": "b30",
+    "text": "where is field fill in Ledger?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "752d514b52358cb112b4212e5a5eebd3acd9b04fff94a7b48253eea0234f88ad"
+    },
+    "stdout": "`Ledger::fill` is defined at src/lib.rs:1.\n",
+    "exit": 0
+  },
+  {
+    "id": "b31",
+    "text": "which functions call fill?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "25d598f2f903765a2c6903be0942ca36d1fb7088bea1ee268b87e0cec37c01ca"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "25d598f2f903765a2c6903be0942ca36d1fb7088bea1ee268b87e0cec37c01ca"
+    },
+    "stdout": "No functions call `fill`.\n",
+    "exit": 0
+  },
+  {
+    "id": "b32",
+    "text": "Use 0 for all existing constructors. Could you please add a public field total: i32 to the Ledger struct?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "22dd7f35a6fa9ca100fed9630af744e8918c16173a5b22c5be53658af3e834a4"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "45e4033d7cee514d2df9d701ece13edb5d812bd9f635091e6e26628cbcf344da"
+    },
+    "stdout": "Added public field total: i32 to Ledger; updated 1 constructors (2 verified edits).\n",
+    "exit": 0
+  },
+  {
+    "id": "b33",
+    "text": "Use 0 for all existing constructors. Could you please add a public field implemented_new: i32 to the Ledger struct?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "22dd7f35a6fa9ca100fed9630af744e8918c16173a5b22c5be53658af3e834a4"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "d1345d05dfabc99fb885f7f7e81a32f3e4430d03da2bee47f016e50b2bd9a5db"
+    },
+    "stdout": "Added public field implemented_new: i32 to Ledger; updated 1 constructors (2 verified edits).\n",
+    "exit": 0
+  }
+]

@@ -1,0 +1,16 @@
+Running as unit: run-p4142786-i100548570.scope; invocation ID: cef1efdd21a347e09500ae0322ed9c02
+Diff in /home/gsc/.cache/glassmind/continuous-20261010/implgrammar/crates/english-rust/src/implementation_grammar.rs:241:
+         for &(text, target) in ACCEPT {
+             assert_eq!(request(text).unwrap().unwrap().target, target, "{text}");
+         }
+[31m-        for &text in REFUSE { assert!(matches!(request(text), Some(Err(_))), "{text}"); }
+(B[m[31m-        for &text in NONE { assert!(request(text).is_none(), "{text}"); }
+(B[m[32m+        for &text in REFUSE {
+(B[m[32m+            assert!(matches!(request(text), Some(Err(_))), "{text}");
+(B[m[32m+        }
+(B[m[32m+        for &text in NONE {
+(B[m[32m+            assert!(request(text).is_none(), "{text}");
+(B[m[32m+        }
+(B[m     }
+ }
+ 

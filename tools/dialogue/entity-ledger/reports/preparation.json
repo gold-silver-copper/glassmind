@@ -1,0 +1,23 @@
+{
+  "counts": {
+    "FIT": 2532,
+    "CAL": 642,
+    "user": 34022,
+    "system": 34022,
+    "unselected_user": 24415,
+    "annotations": 34603
+  },
+  "targets": {
+    "RideSharing_1": [
+      "destination"
+    ],
+    "Travel_1": [
+      "location"
+    ],
+    "Weather_1": [
+      "city",
+      "date"
+    ]
+  },
+  "note": "Only FIT supplies learned roles or weights; schema roles are validation metadata."
+}

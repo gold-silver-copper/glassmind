@@ -1,0 +1,59 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 547,
+    "pass": 218
+  },
+  "all_previous_passes_retained": 215,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "implement/sum-even",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "implement/sum-even",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "implement/sum-even",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "pass": 30,
+      "refused": 51
+    },
+    "implement": {
+      "refused": 57,
+      "pass": 3
+    }
+  },
+  "baseline_result_sha256": "6cdb3be22ce3e32e6d77528eaaebaeaee5099ef5c6657b7acdc7787238dcde1c",
+  "candidate_result_sha256": "f76e6f43f890f9dc741ae62dcaece3b37532b7ec07055929cebbe947f0d71bbe",
+  "binary_sha256": "371b0c1fcb1c7102a5ca6228ed8f228c8460cac23fa9d82ac9d7dc35f10b03f9",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}

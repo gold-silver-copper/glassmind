@@ -1,0 +1,192 @@
+[
+  {
+    "case": "set",
+    "ok": true,
+    "accepted": true,
+    "expected": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "c87c5007ecdbdd2fdc00e680476129177e25e7a6bf7dda283842c5445916fdc1",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/scratch/implement-4181827-0.evidence\n"
+  },
+  {
+    "case": "unset-target",
+    "ok": true,
+    "accepted": true,
+    "expected": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "c87c5007ecdbdd2fdc00e680476129177e25e7a6bf7dda283842c5445916fdc1",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/scratch/implement-4182746-0.evidence\n"
+  },
+  {
+    "case": "default-scratch",
+    "ok": true,
+    "accepted": true,
+    "expected": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "c87c5007ecdbdd2fdc00e680476129177e25e7a6bf7dda283842c5445916fdc1",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/home/.cache/glassmind/scratch/implement-4183874-0.evidence\n"
+  },
+  {
+    "case": "live-scratch",
+    "ok": true,
+    "accepted": false,
+    "expected": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Cannot implement: scratch must be persistent disk outside the source package\n"
+  },
+  {
+    "case": "live-target",
+    "ok": true,
+    "accepted": false,
+    "expected": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Cannot implement: CARGO_TARGET_DIR must be outside /tmp and the checked package; evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/scratch/implement-4184965-0.evidence\n"
+  },
+  {
+    "case": "live-tmp",
+    "ok": true,
+    "accepted": false,
+    "expected": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Cannot implement: TMPDIR must be outside /tmp and the checked package; evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/scratch/implement-4184973-0.evidence\n"
+  },
+  {
+    "case": "artifacts-refusal",
+    "ok": true,
+    "accepted": false,
+    "expected": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "0e5a6d088c20ef97e2a934c33119f68ce651d051fc063834008728cb9c33ed39",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "0e5a6d088c20ef97e2a934c33119f68ce651d051fc063834008728cb9c33ed39",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Cannot implement: target must be a unique named free function\n"
+  },
+  {
+    "case": "missing-cargo",
+    "ok": true,
+    "accepted": false,
+    "expected": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Cannot implement: nonzero executed failing baseline tests required; evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/scratch/implement-4184986-0.evidence\n"
+  },
+  {
+    "case": "timeout",
+    "ok": true,
+    "accepted": false,
+    "expected": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "66ba757296f872a172c4c8d35e5324dfeb335d42f54b2e92d1525cef60965645",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "66ba757296f872a172c4c8d35e5324dfeb335d42f54b2e92d1525cef60965645",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Cannot implement: native check timed out; candidate family not exhausted; evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/scratch/implement-4185010-0.evidence\n"
+  },
+  {
+    "case": "unexecuted-failing",
+    "ok": true,
+    "accepted": false,
+    "expected": false,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "309edfe624bd542365b5846406a113e4c3b1993b8d2d67442ef16271fcd7cb53",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "Cargo.lock": "7beeb62ed704365bf5d447e14b663757e3bc11fdf70f4493b537c053f04b519d",
+      "src/lib.rs": "309edfe624bd542365b5846406a113e4c3b1993b8d2d67442ef16271fcd7cb53",
+      "target/sentinel": "45c2e375b4da64ee25d77e6262504343393d489da7d52a5c468a5f31bdd8dbd9"
+    },
+    "stdout": "Cannot implement: 0 passing candidates; require one survivor of the bounded family (not a proof of intended semantics); evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/environment/scratch/implement-4190295-0.evidence\n"
+  }
+]

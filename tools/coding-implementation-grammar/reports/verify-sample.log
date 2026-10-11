@@ -1,0 +1,42 @@
+Running as unit: run-p4162328-i100567476.scope; invocation ID: 446eb22170d74774ae0f3344316b3b48
+[
+  {
+    "id": "sum",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-sample/scratch/implement-4150847-0.evidence",
+    "choice": {
+      "candidate_count": 5,
+      "passing_indices": [
+        4
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "reverse",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-sample/scratch/implement-4151612-0.evidence",
+    "choice": {
+      "candidate_count": 12,
+      "passing_indices": [
+        11
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  },
+  {
+    "id": "words",
+    "ok": true,
+    "evidence": "/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/candidate-sample/scratch/implement-4154097-0.evidence",
+    "choice": {
+      "candidate_count": 2,
+      "passing_indices": [
+        1
+      ],
+      "target_execution": true
+    },
+    "independent_exit": 0
+  }
+]

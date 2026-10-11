@@ -1,0 +1,50 @@
+[
+  {
+    "id": "train/rb-implement-sum-even/chatty#0",
+    "text": "Hi! There's a `sum_even` function in src/lib.rs that's still just a `todo!()`. Could you fill it in so it does what its doc comment says?",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+      "src/lib.rs": "fe894f47cb9322ca53ada207dd35f1d5b3d7307e477c0a4c9ad635215e8710ac"
+    },
+    "after": {
+      "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+      "src/lib.rs": "fe894f47cb9322ca53ada207dd35f1d5b3d7307e477c0a4c9ad635215e8710ac"
+    },
+    "stdout": "I can't follow the sentence from the marked spot.\n  Hi! There's a `sum_even` function in src/lib.rs that's still just a `todo!()`. Could you fill it in so it does what its doc comment says?▮\n",
+    "exit": 0
+  },
+  {
+    "id": "train/rb-implement-sum-even/hurried#0",
+    "text": "sum_even is todo!() still, implement it per the doc comment pls",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+      "src/lib.rs": "fe894f47cb9322ca53ada207dd35f1d5b3d7307e477c0a4c9ad635215e8710ac"
+    },
+    "after": {
+      "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+      "src/lib.rs": "fe894f47cb9322ca53ada207dd35f1d5b3d7307e477c0a4c9ad635215e8710ac"
+    },
+    "stdout": "I can't follow the sentence from the marked spot.\n  sum_even is todo▮!() still, implement it per the doc comment pls\n",
+    "exit": 0
+  },
+  {
+    "id": "train/rb-implement-sum-even/terse#0",
+    "text": "implement `sum_even`",
+    "ok": true,
+    "accepted": false,
+    "before": {
+      "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+      "src/lib.rs": "fe894f47cb9322ca53ada207dd35f1d5b3d7307e477c0a4c9ad635215e8710ac"
+    },
+    "after": {
+      "Cargo.toml": "6c657923a0fe0ecdad2783af57e4ced1605ec02e88231624dd006c830c4af5ff",
+      "src/lib.rs": "fe894f47cb9322ca53ada207dd35f1d5b3d7307e477c0a4c9ad635215e8710ac"
+    },
+    "stdout": "I take that to mean: fix the build I don't know how to fix the build.\n",
+    "exit": 0
+  }
+]

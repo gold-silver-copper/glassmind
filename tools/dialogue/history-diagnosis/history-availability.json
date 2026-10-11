@@ -1,0 +1,627 @@
+{
+  "note": "Case-insensitive substring availability is a diagnostic upper bound, not extraction or referent correctness. Gold values never enter runtime input.",
+  "total": 87,
+  "availability": {
+    "earlier_history": 83,
+    "immediately_prior_system": 4
+  },
+  "turn_gap_histogram": {
+    "1": 4,
+    "3": 29,
+    "5": 26,
+    "7": 18,
+    "9": 7,
+    "11": 3
+  },
+  "cases": [
+    {
+      "dialogue_id": "90_00027",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00028",
+      "turn_index": 8,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00029",
+      "turn_index": 4,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00030",
+      "turn_index": 12,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00031",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00032",
+      "turn_index": 10,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00033",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00034",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00035",
+      "turn_index": 10,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00036",
+      "turn_index": 12,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00037",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00038",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00039",
+      "turn_index": 12,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00040",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00041",
+      "turn_index": 14,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00042",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00043",
+      "turn_index": 12,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00044",
+      "turn_index": 16,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00045",
+      "turn_index": 8,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00046",
+      "turn_index": 6,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00047",
+      "turn_index": 14,
+      "last_mention": 11,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00048",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00049",
+      "turn_index": 10,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00050",
+      "turn_index": 14,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00051",
+      "turn_index": 6,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00051",
+      "turn_index": 10,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "immediately_prior_system"
+    },
+    {
+      "dialogue_id": "90_00052",
+      "turn_index": 10,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00053",
+      "turn_index": 12,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00054",
+      "turn_index": 12,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00055",
+      "turn_index": 18,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00056",
+      "turn_index": 14,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00057",
+      "turn_index": 10,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00058",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00059",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00060",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00061",
+      "turn_index": 12,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00062",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00062",
+      "turn_index": 10,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "immediately_prior_system"
+    },
+    {
+      "dialogue_id": "90_00063",
+      "turn_index": 14,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00064",
+      "turn_index": 14,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00065",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00066",
+      "turn_index": 8,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00067",
+      "turn_index": 12,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00068",
+      "turn_index": 14,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00069",
+      "turn_index": 14,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00070",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00071",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00072",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00073",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00074",
+      "turn_index": 8,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00075",
+      "turn_index": 12,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00075",
+      "turn_index": 16,
+      "last_mention": 15,
+      "source_speaker": "SYSTEM",
+      "category": "immediately_prior_system"
+    },
+    {
+      "dialogue_id": "90_00076",
+      "turn_index": 12,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00077",
+      "turn_index": 10,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00078",
+      "turn_index": 12,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00079",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00080",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00081",
+      "turn_index": 12,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00082",
+      "turn_index": 6,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00083",
+      "turn_index": 16,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00084",
+      "turn_index": 10,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00085",
+      "turn_index": 16,
+      "last_mention": 11,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00086",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00087",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00088",
+      "turn_index": 8,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00089",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00090",
+      "turn_index": 6,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00091",
+      "turn_index": 10,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00092",
+      "turn_index": 16,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00092",
+      "turn_index": 20,
+      "last_mention": 19,
+      "source_speaker": "SYSTEM",
+      "category": "immediately_prior_system"
+    },
+    {
+      "dialogue_id": "90_00093",
+      "turn_index": 14,
+      "last_mention": 11,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00094",
+      "turn_index": 6,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00095",
+      "turn_index": 8,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00096",
+      "turn_index": 14,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00097",
+      "turn_index": 6,
+      "last_mention": 1,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00098",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00099",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00100",
+      "turn_index": 10,
+      "last_mention": 7,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00101",
+      "turn_index": 16,
+      "last_mention": 9,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00102",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00103",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00104",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00105",
+      "turn_index": 12,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00106",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00107",
+      "turn_index": 10,
+      "last_mention": 5,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00108",
+      "turn_index": 6,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    },
+    {
+      "dialogue_id": "90_00109",
+      "turn_index": 8,
+      "last_mention": 3,
+      "source_speaker": "SYSTEM",
+      "category": "earlier_history"
+    }
+  ]
+}

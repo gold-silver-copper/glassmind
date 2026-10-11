@@ -1,0 +1,18 @@
+Running as unit: run-p61625-i100677910.scope; invocation ID: 602350ba4ce245f78d8f4f39c0d5de52
+   Compiling glassmind v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/implgrammar/crates/cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.34s
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/target/debug/deps/glassmind-1c12887bf3be5b0e)
+
+running 9 tests
+test coding::rename_tests::old_exact_rename_ambiguity_and_repairs_are_retained ... ok
+test coding::rename_tests::legacy_rename_coverage ... ok
+test coding::rename_tests::explicit_scope_and_open_description_objects_preserve_identity ... ok
+test coding::repair_veto_probes::export_public_typing ... ok
+test coding::repair_veto_probes::frozen_speech_scope_contrasts ... ok
+test coding::repair_veto_probes::request_authority_and_preservation_contrasts ... ok
+test coding::rename_tests::unsupported_tails_never_escape_into_guesses ... ok
+test coding::rename_tests::quoted_rename_examples_cannot_become_commands_or_guesses ... ok
+test coding::rename_tests::frozen_authored_rename_requests_and_fallback_controls ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 15 filtered out; finished in 12.13s
+

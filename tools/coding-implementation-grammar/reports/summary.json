@@ -1,0 +1,116 @@
+{
+  "baseline-native": {
+    "total": 6,
+    "passed": 6,
+    "accepted": 0
+  },
+  "baseline-boundaries-complete": {
+    "total": 34,
+    "passed": 34,
+    "accepted": 0
+  },
+  "baseline-train-sample": {
+    "total": 3,
+    "passed": 3,
+    "accepted": 0
+  },
+  "candidate-boundaries": {
+    "total": 34,
+    "passed": 34,
+    "accepted": 0
+  },
+  "candidate-sample": {
+    "total": 3,
+    "passed": 3,
+    "accepted": 3
+  },
+  "candidate-native": {
+    "total": 20,
+    "passed": 20,
+    "accepted": 6
+  },
+  "environment": {
+    "total": 10,
+    "passed": 10,
+    "accepted": 3
+  },
+  "final-boundaries": {
+    "total": 34,
+    "passed": 34,
+    "accepted": 0
+  },
+  "final-sample": {
+    "total": 3,
+    "passed": 3,
+    "accepted": 3
+  },
+  "final-native": {
+    "total": 20,
+    "passed": 20,
+    "accepted": 6
+  },
+  "environment-final": {
+    "total": 10,
+    "passed": 10,
+    "accepted": 3
+  },
+  "train-sample": {
+    "total": 3,
+    "passed": 3,
+    "accepted": 3
+  },
+  "train-full": {
+    "total": 60,
+    "passed": 60,
+    "accepted": 3
+  },
+  "candidate-native-verification": {
+    "total": 6,
+    "passed": 6,
+    "accepted": 0
+  },
+  "train-sample-verification": {
+    "total": 3,
+    "passed": 3,
+    "accepted": 0
+  },
+  "train-full-verification": {
+    "total": 3,
+    "passed": 3,
+    "accepted": 0
+  },
+  "distinct-witness": {
+    "total": 2,
+    "passed": 2,
+    "accepted": 0
+  },
+  "release-sample": {
+    "total": 3,
+    "passed": 3,
+    "accepted": 3
+  },
+  "release-boundaries": {
+    "total": 34,
+    "passed": 34,
+    "accepted": 0
+  },
+  "binaries": {
+    "glassmind": {
+      "bytes": 150550344,
+      "sha256": "78a2f2c659bba1969926ebf132ca4f7e0bb37fd236b93b65a2db3ee83bdb4f4c"
+    },
+    "glassmind-release": {
+      "bytes": 93538112,
+      "sha256": "1822949badd4ab902f630f9e6b092fd8081cff4b588ad966047182655f88caf1"
+    },
+    "baseline-glassmind": {
+      "bytes": 93285896,
+      "sha256": "53c6cacac60e61cf90aba78d183c9134e574b3db56755141913392700c69dfff"
+    }
+  },
+  "family": {
+    "identical": true,
+    "bytes": 3865,
+    "sha256": "536ef99e01cb59716b7221e3baf726a27edf6a9a5b5968f0af467e9ae6d7d833"
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sum",
+    "text": "implement collect_values",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "9b4eccf3e2776b42c4345ad5e8619e58f87d7c3a4f5e4c45c858c39599444b44"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "c87c5007ecdbdd2fdc00e680476129177e25e7a6bf7dda283842c5445916fdc1"
+    },
+    "stdout": "Applied test-verified proposal for collect_values (5 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-sample/scratch/implement-50968-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "reverse",
+    "text": "implement transform_values",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "abb944b5cabb633eff2af01b0a45fcbfc73b763fa5bab237b3a0167266c9c91b"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "5125f0aab353e08597772ae00b4d677d7802a44db3e2e22d91870e244cb095ba"
+    },
+    "stdout": "Applied test-verified proposal for transform_values (12 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-sample/scratch/implement-51635-0.evidence\n",
+    "exit": 0
+  },
+  {
+    "id": "words",
+    "text": "implement 単語",
+    "ok": true,
+    "accepted": true,
+    "before": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "3832eff06e727d2649828ab225b9f9567507dc67b7b14abc3b7917b07a6965c7"
+    },
+    "after": {
+      "Cargo.toml": "1f243d4c64a16a5dc1ff8892f9f08faeac910aee4e974c6fb71116cf46caa6ce",
+      "src/lib.rs": "8f77e5498c1dc44cd648a55b80d032d4e637cd22af62e8a6f36c4d7db5600e2f"
+    },
+    "stdout": "Applied test-verified proposal for 単語 (2 candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: /home/gsc/.cache/glassmind/continuous-20261010/implgrammar-run/final-sample/scratch/implement-53159-0.evidence\n",
+    "exit": 0
+  }
+]

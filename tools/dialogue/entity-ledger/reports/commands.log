@@ -1,0 +1,14 @@
+/home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/baseline-dialogue-multi predict --input tools/dialogue/entity-ledger/artifacts/train-input.json --schema /home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/schema.json --model /home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/model.json --output tools/dialogue/entity-ledger/artifacts/baseline-train.json 
+cargo fmt -p glassmind-dialogue 
+cargo build --offline -p glassmind-dialogue --example entity-ledger --release -j1 
+cargo test --offline -p glassmind-dialogue --example entity-ledger -j1 -- --test-threads 4 
+tools/dialogue/entity-ledger/artifacts/entity-ledger-native tools/dialogue/entity-ledger/artifacts/supervision.json tools/dialogue/entity-ledger/artifacts 
+/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/entity-ledger/audit.py --artifacts tools/dialogue/entity-ledger/artifacts --schema /home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/schema.json 
+cargo clippy --offline -p glassmind-dialogue --all-targets -j1 -- -D warnings 
+/home/gsc/.cache/glassmind/continuous-20261010/dialogue-run/tmp/metrics-venv/bin/python tools/dialogue/entity-ledger/audit.py --artifacts tools/dialogue/entity-ledger/artifacts --schema /home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/schema.json 
+cargo test --offline -p glassmind-dialogue --lib -j1 -- --test-threads 4 
+cargo fmt -p glassmind-dialogue -- --check 
+cargo build --offline --release -p glassmind-dialogue -j1 
+python3 tools/dialogue/entity-ledger/review.py --artifacts tools/dialogue/entity-ledger/artifacts 
+python3 tools/dialogue/entity-ledger/review.py --artifacts tools/dialogue/entity-ledger/artifacts 
+/home/gsc/.cache/glassmind/continuous-20261010/entityledger-run/target/release/dialogue-multi predict --input tools/dialogue/entity-ledger/artifacts/train-input.json --schema /home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/schema.json --model /home/gsc/.cache/glassmind/continuous-20261010/entityledger-source/model.json --output tools/dialogue/entity-ledger/artifacts/rebuilt-baseline-train.json 

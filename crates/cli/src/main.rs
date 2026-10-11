@@ -468,6 +468,22 @@ fn act(
         }
         return Ok(());
     }
+    if let Some(action) = glassmind_english_rust::implementation_grammar::request(text) {
+        let result = action.and_then(|action| {
+            let proposal = system.world.propose_implementation(&action)?;
+            system.world.apply_implementation(&proposal)?;
+            Ok(format!(
+                "Applied test-verified proposal for {} ({} candidates checked). Existing tests pass; English constraints and doc comments are not proved. Evidence: {}",
+                action.target, proposal.trials(), proposal.evidence().display()
+            ))
+        });
+        let message = result.unwrap_or_else(|reason| format!("Cannot implement: {reason}"));
+        say!("{message}");
+        if let Some(path) = reply_file {
+            std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
+        }
+        return Ok(());
+    }
     if let Some(action) = glassmind_english_rust::add_fields::request(text) {
         let result = action.and_then(|action| {
             let proposal = system.world.propose_add_field(&action)?;

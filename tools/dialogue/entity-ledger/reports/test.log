@@ -1,0 +1,47 @@
+Running as unit: run-p211533-i100901379.scope; invocation ID: f26ad9ba4b1548a5a140f81c0d1a5e1e
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling version_check v0.9.5
+   Compiling generic-array v0.14.7
+   Compiling syn v3.0.7
+   Compiling utf8parse v0.2.2
+   Compiling typenum v1.20.1
+   Compiling serde_core v1.0.229
+   Compiling anstyle-parse v1.0.0
+   Compiling anstyle-query v1.1.5
+   Compiling anstyle v1.0.14
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling zmij v1.0.23
+   Compiling colorchoice v1.0.5
+   Compiling anstream v1.0.0
+   Compiling heck v0.5.0
+   Compiling strsim v0.11.1
+   Compiling serde v1.0.229
+   Compiling serde_json v1.0.151
+   Compiling clap_lex v1.1.1
+   Compiling clap_builder v4.6.7
+   Compiling clap_derive v4.6.7
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling serde_derive v1.0.229
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling digest v0.10.7
+   Compiling clap v4.6.7
+   Compiling cfg-if v1.0.5
+   Compiling cpufeatures v0.2.17
+   Compiling sha2 v0.10.9
+   Compiling glassmind-everyday v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/entityledger/crates/everyday)
+   Compiling glassmind-dialogue v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/entityledger/crates/dialogue)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.61s
+     Running unittests examples/entity-ledger.rs (/home/gsc/.cache/glassmind/continuous-20261010/entityledger-run/target/debug/examples/entity_ledger-d897bb07958a498f)
+
+running 4 tests
+test experiment::tests::ambiguity_none_and_exhaustive_rank ... ok
+test experiment::tests::value_free_binding ... ok
+test experiment::tests::unicode_provenance_and_eviction_reset ... ok
+test experiment::tests::strict_input_and_model ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

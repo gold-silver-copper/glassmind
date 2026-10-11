@@ -1,18 +1,86 @@
 # Continuous development checkpoint
 
-Unlimited active goal; milestone completion does not complete the goal. Root
-branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-Previous goal turn: PROGRESS (implementationgrammarlaunched, nativebaselines).
-Currentturn: PROGRESS (graphparserindependentlyrejected/archived, comparisonprefix
-boundaryfixedandvalidated). Unlimitedgoalremainsactive.
+Unlimited active goal; milestone completion does not complete the goal.
+Root branch `harness`; WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+Current source commit c6ac04a; original and corrected experiment reports in
+1529e30, 2a35c17 and b72897a. All workers and native evaluation jobs are complete.
+Known completed-worker tokens: 200,145,321, cached input counted once;
+parent and interrupted usage excluded. No new worker is running.
 
-## Current batch: prefix boundary fix and graph rejection
+## Current action: publish the verified implementation feature
 
-Commits09f1cab graphrejection report; b57c7b9 quantityprefixfix. Push95481 pending
-atcheckpoint, thenopenPR44 againstmain, verifyrequiredCI onexactreviewedhead and
-mergewith--match-head-commit. No accuracyjournalrow: neitherchangeclaimsnewscore.
-Knowncompletedworker tokens192615259 inclcachedonce; parent/interrupted/liveimpl
-excluded (graphworker2069421input incl1973120cached +25502output=2094923).
+Runtime integrated at c6ac04a. Full coding DEV: 218/765, 547 refusals, zero
+failures; all 215 previous passes retained. Three gains are request styles of
+sum-even, also supplied in TRAIN; no unseen-task generalization claim.
+Full results: WORK/coordinator/implgrammar-corrected/full765-v2. Candidate SHA
+371b0c1fcb1c7102a5ca6228ed8f228c8460cac23fa9d82ac9d7dc35f10b03f9.
+All 172 source/manifest/contracts files match the integrated checkout exactly.
+Root binary SHA b38233e5e1fb0e13bd1264c459661a8d268ae0fac015f0ff27c9b43da69d72e1.
+Both workspace checks passed fmt/all-target clippy/release/strict four-turn smoke.
+Final candidate: 44 parser, 46 boundaries, 66 native cases, full TRAIN 3/60 with
+57 unchanged refusals. Integrated root additionally passes 12 boundaries and
+10 identifier/declaration cases. All completed; do not repeat full765.
+Review: tools/coding-implementation-grammar/correction/PARENT.md.
+
+Original worker remains rejected for unsupported declarations. Coordinator
+revision one was deliberately interrupted after independent review found that
+`implement function` refused a valid literal identifier. Its archive and process
+cleanup are retained. Revision two fixed that grammar error before full DEV.
+No hidden test contents were inspected. Original generator remains unchanged.
+WORK/implgrammar-fix worktree retained at 07cf5a0; root integration c6ac04a.
+Original implgrammar worker/worktree and temporary authentication link were
+archived, verified, then removed. No worker uses that retained fix worktree.
+
+NEXT: finish score journal/docs, review diff, commit/push harness and open PR45
+against main. Merge only with exact-head green CI. Then append external progress
+log and start the next bounded experiment. PR45 has not yet been created.
+Latest published PR44 details are below; do not republish PR44.
+
+## Dialogue entity ledger rejected; next hypothesis available
+
+All 3174 approved TRAIN dialogues were processed, with 2532 FIT and 642 CAL.
+The worker learned SYSTEM entity boundaries, source roles and a value-free
+reference ranker. All 16 frozen CAL thresholds failed: 41–71 newly wrong slots,
+2–4 lost previously correct states. No candidate DEV or runtime integration.
+Production dialogue remains 610/1119 joint and 716/1218 frames.
+Review: tools/dialogue/entity-ledger/PARENT.md and parent/cal-review.json.
+Parent independently reconstructed all 51,647 candidates, 22,912 decisions,
+16 persistent overlays, original TRAIN gold joins and source/weight identities.
+All reports match. Original archive 114 files/223,211,085 bytes and 70-member
+pre-rollback archive were verified before owned worktree/auth link removal.
+Worker usage 2,304,793 tokens (input includes cached tokens once).
+
+FIT diagnostic: an old-router source-owner filter would discard 8,135 valid
+source roles while removing 1,648 wrong roles. Do not use that filter as source
+authority. A new hypothesis can condition source roles on preceding USER text
+and train NONE on actual predicted unaligned/unmodeled spans, while retaining
+valid entities from all services. Freeze a new FIT/CAL plan before training;
+no new task or worker exists yet. Keep existing thresholds fixed, no DEV tuning.
+Mask tools/dialogue/entity-ledger/parent from future workers: it contains the
+parent's 16 independent fictional-name probes. They were baseline-only because
+this candidate failed CAL before integration.
+
+Earlier TRAIN diagnosis (606e341) found 87 initial missing ride destinations
+and 295 propagated misses among 1171 USER turns/144 complete selected-service
+conversations. Extending the unchanged offer model's history found zero of
+those 87; it does not solve grounding. This in-sample diagnostic is documented
+in tools/dialogue/history-diagnosis/PARENT.md. All runs completed; reuse results.
+
+## Published PR44 (historical checkpoint)
+
+PR44 merged: https://github.com/gold-silver-copper/glassmind/pull/44
+Reviewed head: 8d86b8d66f035f5ceb61a024c0a7ec2095e3b150.
+CI 38148917594 passed in 66 seconds, 14:52:06–14:53:12 UTC.
+Merge: 3814a9ae7721919c6f038316bc8503de574ed12c, 2026-10-11T14:53:37Z.
+Push55960, PR4743, CI5309 and merge84046 completed successfully. Do not repeat
+publication. Commits09f1cab records the rejected parser; b57c7b9 fixes the
+quantity prefix. Neither changes a benchmark score, so no accuracy row was added.
+The two whitespace diagnostics from git diff --check are literal blank context
+lines inside the preserved rejected.patch; the original evidence stays intact.
+
+At PR44, known completed-worker tokens were 192,615,259, including cached input
+once; the current count is recorded above. The graph
+worker used 2,069,421 input (1,973,120 cached) plus 25,502 output = 2,094,923.
 
 Quantityprefixbugreproduced: explicitComparequantities: separatorcountedagainst
 4096-bytepayloadcap. Baseline12/14; two validatlimitASCII/Unicodewhitespacecases
@@ -126,61 +194,22 @@ alsofailed; do nottuneitsfeatures/epochs ontheseobservedDEVfailures. Futureparsi
 workneeds independentTRAINdiagnosis ornewdata/representation; currentimplgrammar
 workerisindependent. No moreparserjobsrunning.
 
-## LIVE: implementation intent grammar and bounded synthesis
+## Original implementation submission: rejected and cleaned
 
-WorkerPID4131690 scopeglassmind-continuous-implgrammar.scope active/running,
-MemoryMax8589934592/MemorySwapMax0 verified. Astrafast/ChatGPT only, strippedAPIenv.
-WorktreeWORK/implgrammar, branchcontinuous/implgrammar, base3f7ce8f.
-TaskWORK/implgrammar-task.txt;runWORK/implgrammar-run. No liveworkersource/results
-inspected. Rootcleanexceptcheckpoint; no othermain/worldrustworkerowns thesefiles.
-
-Newprospectivehypothesis afterprior3rejectedimplementationexperiments: typed,
-fullyconsumed action/identifier/owner/path grammar instead ofglobal keyword
-reservation, preservingactualcurrentquery/rename/type/AddField/repair authority.
-Mayreuse/auditold signature-onlyfinitegenerator, NO newtemplatefamily or name/
-English/docs/assertionbasedalgorithmselection. Nativeuniquecompletechoice,
-actuallyexecutedfailingbaseline, no-test/unexecutedtarget/multipassrefusals,
-stale/applyverify/rollback required. DefaultCARGO_TARGET_DIR independence and
-no-live-artifactrefusals required, currentcheck-isolation alreadyaccepted.
-Taskauthorizesminimal do-route mainCLI edit plusworld/bridge modules, nothingin
-reading/everyday. Parentintegratesonlyafternewgates; oldrejections remainrejected.
-
-Readonlyimplgrammar-source43manifestfiles93316468bytes:20publicTRAINsources/
-60requeststyles,40Cargo.toml/src/lib.rs files allsize/SHAverified fromprior
-implementation-routes/reports/train-input-provenance.json. CurrentPR43baseline
-binary included53c6caca..., requestsand sourcecard. RustBenchf79e71a MIT ORApache2;
-no newdownloads/hiddenassets/labels/expectedpatches. Workerfixedsamplethenfull60,
->=3verifiedrequests andallauthoredboundariespass; parentfull765>=218passes,
-all215oldpassesretained,0fail beforeacceptance. NoDEVworkeraccess.
-
-Parentcoordinator/implgrammar-independent:
-- baseline.py/boundary-cases.json/boundary-freeze.json:12currentquery/rename
-  controlsallpass, separateunambiguousfunctions/fields namedimplement/implemented/
-  write/fill, exactbefore/aftersourcesretained. Theseareobservedcurrentbehavior,
-  notunsupportedassumptions fromrejectedoldfixtures.
-- freeze.py/cases.json/PLAN.md/freeze.json:18freshnativecases=6implementations,
-  1ambiguity,11unchangedcontrols. Same-signaturedifferentbehaviors, unrelated/
-  Unicode names, sumall/negative,oddreverse,characters/word-sequence/count.
-- native.py baseline93213 COMPLETE:0/6implemented,all18wholeprojectsunchanged.
-  15originalscompileandexecutefailingtests;2separate no-tests/unexecuted controls
-  pass;1explicitcompiler-failure. Beforechecksusecopies, no liveCargo.lock.
-- alternatives.py COMPLETE:all-sum andpositive-sum BOTHpasspublic[2]test but
-  nativeoutput8 vs11 for[-3,2,4,5]. Evidence alternatives/report.json+sources/logs.
-- native.py candidateadapterready, --unset-target optionretainspersistentTMPDIR;
-  exactstubbody/outsidebytes+manifest/sourcechecks. Nativeproposercheckseparate
-  fromnativeaftercheck. adapter-freeze.json preservesadapters/fullgatehashes.
-- full-gate.json/compare-full.py frozen:765,>=218/all215retained/0fail. Baseline
-  coordinator/comparator-full/results.jsonl6cdb3be2..., runnerunchangedaddadae4....
-
-NEXT: Onterminalverifyinactive/PIDgone, archiveoriginalpatch/source/reports/results
-andhashverify BEFOREinspection, thenreviewactualgrammar andgeneratoragainstfrozen
-contracts. Nativeparentbaseline/12boundary/2alternativesalreadydone; don'trepeat.
-Candidateparent/full765 onlyafteroriginalsubmissionarchived. Parentpositivecases
-areoutsideworkeraccess. Onlyimplgrammarworkerstilllive; no nativerootjobsremain.
+See tools/coding-implementation-grammar/PARENT.md for the complete independent
+review. Original release1822949b... passes all12 frozen boundary controls and all
+18 native cases (6implementations/12unchanged). Saved choice logs confirm every
+candidate exhausted and unique native success for all six. A separate native
+parser probe reproduces two accepted forms outside the frozen grammar, so the
+original remains rejected and no full765 ran. Worker TRAIN3/60 onlyonefunction
+in3styles; this parent did not repeat original TRAIN. Old source restored exactly.
+Original archives retained at implgrammar-run/{terminal-originals,frozen-candidate};
+worktree and temporary auth link removed only after complete hash reverification.
+The current prospective correction is recorded at the top of this checkpoint.
 
 ## Next experiments
 
-Implementationgrammar experiment above iscurrent; graphparserrejected. Zero
+The corrected implementation grammar above is current; graph parser rejected. Zero
 implementationDEVcoverage motivated the latter; no gain claimed beforegates. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
 do not duplicate. Deferredthermostatreassociation needs exactoverflowreasoning.
 Facts coverage/inverseedges remain a broadgap; read prior TRAIN999rejection and

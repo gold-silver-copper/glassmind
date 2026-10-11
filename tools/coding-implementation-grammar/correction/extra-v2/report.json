@@ -1,0 +1,132 @@
+[
+  {
+    "request": "function needs a body",
+    "accepted": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    }
+  },
+  {
+    "request": "function needs a body, implement it",
+    "accepted": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    }
+  },
+  {
+    "request": "function needs a body. please implement function",
+    "accepted": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    }
+  },
+  {
+    "request": "function needs implementing",
+    "accepted": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    }
+  },
+  {
+    "request": "function needs implementing, implement it",
+    "accepted": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    }
+  },
+  {
+    "request": "function needs implementing. please implement function",
+    "accepted": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    }
+  },
+  {
+    "request": "implement function fold_values",
+    "accepted": false,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    }
+  },
+  {
+    "request": "implement function",
+    "accepted": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "5ec6381ac100daf46d43b4ecf268a0654b16b5eb2bfda8bf33b9df341a91d360"
+    }
+  },
+  {
+    "request": "implement function in src/lib.rs",
+    "accepted": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "5ec6381ac100daf46d43b4ecf268a0654b16b5eb2bfda8bf33b9df341a91d360"
+    }
+  },
+  {
+    "request": "function is a stub, implement it",
+    "accepted": true,
+    "exit": 0,
+    "before": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "77681b64d26804659464b86f70754b289339dd26f23a8e71bb72fc77fc5506dc"
+    },
+    "after": {
+      "Cargo.toml": "0dd1f59dfb23a4b1d1b689737002193d0011adfa8ebe22a1059c945e5f7fa7b8",
+      "src/lib.rs": "5ec6381ac100daf46d43b4ecf268a0654b16b5eb2bfda8bf33b9df341a91d360"
+    }
+  }
+]

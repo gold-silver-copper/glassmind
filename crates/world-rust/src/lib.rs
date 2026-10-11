@@ -28,6 +28,7 @@ mod comparator;
 pub mod declared_types;
 mod dedup_order;
 mod extremum;
+pub mod implementation;
 pub mod index;
 mod index_conversion;
 mod rename_fields;

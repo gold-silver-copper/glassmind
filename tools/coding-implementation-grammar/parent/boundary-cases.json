@@ -1,0 +1,86 @@
+[
+  {
+    "name": "query_implement",
+    "source": "pub fn implement() -> i32 { 7 }\npub fn caller() -> i32 { implement() }\n",
+    "request": "which functions call implement?",
+    "contains": "caller",
+    "edit": false
+  },
+  {
+    "name": "rename_implement",
+    "source": "pub fn implement() -> i32 { 7 }\npub fn caller() -> i32 { implement() }\n",
+    "request": "rename function `implement` to `advance_task`",
+    "contains": "advance_task",
+    "edit": true
+  },
+  {
+    "name": "query_implemented",
+    "source": "pub fn implemented() -> i32 { 7 }\npub fn caller() -> i32 { implemented() }\n",
+    "request": "which functions call implemented?",
+    "contains": "caller",
+    "edit": false
+  },
+  {
+    "name": "rename_implemented",
+    "source": "pub fn implemented() -> i32 { 7 }\npub fn caller() -> i32 { implemented() }\n",
+    "request": "rename function `implemented` to `advance_task`",
+    "contains": "advance_task",
+    "edit": true
+  },
+  {
+    "name": "query_write",
+    "source": "pub fn write() -> i32 { 7 }\npub fn caller() -> i32 { write() }\n",
+    "request": "which functions call write?",
+    "contains": "caller",
+    "edit": false
+  },
+  {
+    "name": "rename_write",
+    "source": "pub fn write() -> i32 { 7 }\npub fn caller() -> i32 { write() }\n",
+    "request": "rename function `write` to `advance_task`",
+    "contains": "advance_task",
+    "edit": true
+  },
+  {
+    "name": "query_fill",
+    "source": "pub fn fill() -> i32 { 7 }\npub fn caller() -> i32 { fill() }\n",
+    "request": "which functions call fill?",
+    "contains": "caller",
+    "edit": false
+  },
+  {
+    "name": "rename_fill",
+    "source": "pub fn fill() -> i32 { 7 }\npub fn caller() -> i32 { fill() }\n",
+    "request": "rename function `fill` to `advance_task`",
+    "contains": "advance_task",
+    "edit": true
+  },
+  {
+    "name": "field_query_implement",
+    "source": "pub struct Ledger { pub implement: i32 }\npub fn make() -> Ledger { Ledger { implement: 3 } }\n",
+    "request": "what is the type of Ledger.implement?",
+    "contains": "i32",
+    "edit": false
+  },
+  {
+    "name": "field_rename_implement",
+    "source": "pub struct Ledger { pub implement: i32 }\npub fn make() -> Ledger { Ledger { implement: 3 } }\n",
+    "request": "rename Ledger.implement to stored_value",
+    "contains": "stored_value",
+    "edit": true
+  },
+  {
+    "name": "field_query_implemented",
+    "source": "pub struct Ledger { pub implemented: i32 }\npub fn make() -> Ledger { Ledger { implemented: 3 } }\n",
+    "request": "what is the type of Ledger.implemented?",
+    "contains": "i32",
+    "edit": false
+  },
+  {
+    "name": "field_rename_implemented",
+    "source": "pub struct Ledger { pub implemented: i32 }\npub fn make() -> Ledger { Ledger { implemented: 3 } }\n",
+    "request": "rename Ledger.implemented to stored_value",
+    "contains": "stored_value",
+    "edit": true
+  }
+]

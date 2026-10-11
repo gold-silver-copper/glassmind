@@ -1,0 +1,902 @@
+{
+  "archive_files_verified": 70,
+  "source_files_verified": 11,
+  "all_train_runtime_inputs_verified": 3174,
+  "baseline_predictions_byte_identical": true,
+  "FIT_role_labels": 128,
+  "verified": {
+    "FIT_opportunities": 5654,
+    "CAL_opportunities": 1432,
+    "candidate_scores_and_sources": 51647,
+    "decisions": 22912
+  },
+  "max_rank_error": 0.00016121799998813913,
+  "grids": [
+    {
+      "grid": [
+        0.0,
+        2.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2043,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6368,
+        "initial_events": 207,
+        "correct_scored": 604,
+        "changed_slot_turns": 866,
+        "inactive_changes": 191,
+        "held_unscored": 191,
+        "wrong_scored": 71
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        2.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2033,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6358,
+        "initial_events": 197,
+        "correct_scored": 594,
+        "changed_slot_turns": 818,
+        "inactive_changes": 170,
+        "held_unscored": 170,
+        "wrong_scored": 54
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        4.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2035,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6360,
+        "initial_events": 204,
+        "correct_scored": 596,
+        "changed_slot_turns": 853,
+        "inactive_changes": 187,
+        "held_unscored": 187,
+        "wrong_scored": 70
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        4.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2033,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6358,
+        "initial_events": 197,
+        "correct_scored": 594,
+        "changed_slot_turns": 818,
+        "inactive_changes": 170,
+        "held_unscored": 170,
+        "wrong_scored": 54
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        8.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2024,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6349,
+        "initial_events": 200,
+        "correct_scored": 584,
+        "changed_slot_turns": 833,
+        "inactive_changes": 187,
+        "held_unscored": 187,
+        "wrong_scored": 62
+      },
+      "lost_joint": [
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        8.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2022,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6347,
+        "initial_events": 193,
+        "correct_scored": 582,
+        "changed_slot_turns": 798,
+        "inactive_changes": 170,
+        "held_unscored": 170,
+        "wrong_scored": 46
+      },
+      "lost_joint": [
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        16.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1955,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6280,
+        "initial_events": 173,
+        "correct_scored": 511,
+        "changed_slot_turns": 734,
+        "inactive_changes": 175,
+        "held_unscored": 175,
+        "wrong_scored": 48
+      },
+      "lost_joint": [
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        0.0,
+        16.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1949,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6274,
+        "initial_events": 168,
+        "correct_scored": 505,
+        "changed_slot_turns": 704,
+        "inactive_changes": 158,
+        "held_unscored": 158,
+        "wrong_scored": 41
+      },
+      "lost_joint": [
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2007,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6332,
+        "initial_events": 192,
+        "correct_scored": 565,
+        "changed_slot_turns": 801,
+        "inactive_changes": 175,
+        "held_unscored": 175,
+        "wrong_scored": 61
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        2.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2006,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6331,
+        "initial_events": 186,
+        "correct_scored": 564,
+        "changed_slot_turns": 774,
+        "inactive_changes": 162,
+        "held_unscored": 162,
+        "wrong_scored": 48
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        4.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2006,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6331,
+        "initial_events": 191,
+        "correct_scored": 564,
+        "changed_slot_turns": 795,
+        "inactive_changes": 171,
+        "held_unscored": 171,
+        "wrong_scored": 60
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        4.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 2006,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6331,
+        "initial_events": 186,
+        "correct_scored": 564,
+        "changed_slot_turns": 774,
+        "inactive_changes": 162,
+        "held_unscored": 162,
+        "wrong_scored": 48
+      },
+      "lost_joint": [
+        [
+          "116_00054",
+          14
+        ],
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00054",
+          14,
+          "RideSharing_1"
+        ],
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        8.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1994,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6319,
+        "initial_events": 188,
+        "correct_scored": 551,
+        "changed_slot_turns": 777,
+        "inactive_changes": 171,
+        "held_unscored": 171,
+        "wrong_scored": 55
+      },
+      "lost_joint": [
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        8.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1994,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6319,
+        "initial_events": 183,
+        "correct_scored": 551,
+        "changed_slot_turns": 756,
+        "inactive_changes": 162,
+        "held_unscored": 162,
+        "wrong_scored": 43
+      },
+      "lost_joint": [
+        [
+          "116_00073",
+          18
+        ],
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00073",
+          18,
+          "RideSharing_1"
+        ],
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        16.0,
+        2.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1925,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6250,
+        "initial_events": 162,
+        "correct_scored": 478,
+        "changed_slot_turns": 681,
+        "inactive_changes": 159,
+        "held_unscored": 159,
+        "wrong_scored": 44
+      },
+      "lost_joint": [
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "grid": [
+        2.0,
+        16.0,
+        4.0
+      ],
+      "counts": {
+        "user_turns": 6830,
+        "gold_frames": 2505,
+        "baseline_correct_frames": 1478,
+        "candidate_correct_frames": 1921,
+        "baseline_correct_joint": 5803,
+        "candidate_correct_joint": 6246,
+        "initial_events": 159,
+        "correct_scored": 474,
+        "changed_slot_turns": 665,
+        "inactive_changes": 150,
+        "held_unscored": 150,
+        "wrong_scored": 41
+      },
+      "lost_joint": [
+        [
+          "116_00076",
+          8
+        ],
+        [
+          "116_00081",
+          24
+        ]
+      ],
+      "lost_frames": [
+        [
+          "116_00076",
+          8,
+          "RideSharing_1"
+        ],
+        [
+          "116_00081",
+          24,
+          "RideSharing_1"
+        ]
+      ],
+      "passed": false
+    }
+  ],
+  "result": "REJECTED_CAL; all 16 original gates independently reproduced",
+  "limitation": "Frozen-state overlay; not integrated candidate inference or DEV accuracy"
+}

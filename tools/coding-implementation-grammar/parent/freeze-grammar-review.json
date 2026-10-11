@@ -1,0 +1,31 @@
+{
+  "binary_sha256": "87ce099ff4febb608ac484d43c1105f5a7721ad09bb1b789b8b36f0225bc097f",
+  "result": "rejected: first two accepted forms exceed frozen declaration grammar",
+  "cases": [
+    {
+      "request": "fold_values needs a body, implement it",
+      "previous": "accepted",
+      "final": "accepted"
+    },
+    {
+      "request": "fold_values needs implementing, implement it",
+      "previous": "accepted",
+      "final": "accepted"
+    },
+    {
+      "request": "fold_values is a stub, implement it",
+      "previous": "accepted",
+      "final": "accepted"
+    },
+    {
+      "request": "which functions call alpha and write?",
+      "previous": "refused",
+      "final": "other-route"
+    },
+    {
+      "request": "please do not implement fold_values",
+      "previous": "refused",
+      "final": "refused"
+    }
+  ]
+}

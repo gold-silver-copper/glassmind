@@ -1,0 +1,16 @@
+{
+  "archive_files_verified": 70,
+  "source_files_verified": 11,
+  "all_train_runtime_inputs_verified": 3174,
+  "baseline_predictions_byte_identical": true,
+  "FIT_role_labels": 128,
+  "verified": {
+    "FIT_opportunities": 5654,
+    "CAL_opportunities": 1432,
+    "candidate_scores_and_sources": 51647,
+    "decisions": 22912
+  },
+  "max_rank_error": 0.00016121799998813913,
+  "result": "REJECTED_CAL; all 16 original gates independently reproduced",
+  "limitation": "Frozen-state overlay; not integrated candidate inference or DEV accuracy"
+}

@@ -1,0 +1,394 @@
+[
+  {
+    "name": "offer_0_immediate",
+    "kind": "positive",
+    "expected": "Amber Kite Observatory",
+    "delayed": false,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Amber Kite Observatory. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_0_delayed",
+    "kind": "positive",
+    "expected": "Amber Kite Observatory",
+    "delayed": true,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Amber Kite Observatory. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like there?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The temperature will be 22 degrees and there is no chance of rain."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_1_immediate",
+    "kind": "positive",
+    "expected": "Cobalt Finch Gallery",
+    "delayed": false,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Cobalt Finch Gallery. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_1_delayed",
+    "kind": "positive",
+    "expected": "Cobalt Finch Gallery",
+    "delayed": true,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Cobalt Finch Gallery. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like there?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The temperature will be 22 degrees and there is no chance of rain."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_2_immediate",
+    "kind": "positive",
+    "expected": "Isla Verde Pavilion",
+    "delayed": false,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Isla Verde Pavilion. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_2_delayed",
+    "kind": "positive",
+    "expected": "Isla Verde Pavilion",
+    "delayed": true,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Isla Verde Pavilion. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like there?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The temperature will be 22 degrees and there is no chance of rain."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_3_immediate",
+    "kind": "positive",
+    "expected": "Étoile Lantern Museum",
+    "delayed": false,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Étoile Lantern Museum. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_3_delayed",
+    "kind": "positive",
+    "expected": "Étoile Lantern Museum",
+    "delayed": true,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Étoile Lantern Museum. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like there?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The temperature will be 22 degrees and there is no chance of rain."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_4_immediate",
+    "kind": "positive",
+    "expected": "Orchid Glass Atrium",
+    "delayed": false,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Orchid Glass Atrium. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_4_delayed",
+    "kind": "positive",
+    "expected": "Orchid Glass Atrium",
+    "delayed": true,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Orchid Glass Atrium. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like there?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The temperature will be 22 degrees and there is no chance of rain."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_5_immediate",
+    "kind": "positive",
+    "expected": "Saffron Bell Theatre",
+    "delayed": false,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Saffron Bell Theatre. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "offer_5_delayed",
+    "kind": "positive",
+    "expected": "Saffron Bell Theatre",
+    "delayed": true,
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Saffron Bell Theatre. It is a museum worth visiting."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like there?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The temperature will be 22 degrees and there is no chance of rain."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab there for two people."
+      }
+    ]
+  },
+  {
+    "name": "control_0",
+    "kind": "control",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The two options are Amber Kite Observatory and Cobalt Finch Gallery."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "It will be sunny and warm."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Please book a cab to one of those two places."
+      }
+    ]
+  },
+  {
+    "name": "control_1",
+    "kind": "control",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "The two options are Amber Kite Observatory and Cobalt Finch Gallery."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "It will be sunny and warm."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "I have not chosen between those places, so do not book a cab."
+      }
+    ]
+  },
+  {
+    "name": "control_2",
+    "kind": "control",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Amber Kite Observatory."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "It will be sunny and warm."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "Do not book a cab to that place."
+      }
+    ]
+  },
+  {
+    "name": "control_3",
+    "kind": "control",
+    "turns": [
+      {
+        "speaker": "USER",
+        "utterance": "Can you recommend an attraction to visit?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "I recommend Amber Kite Observatory."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "What will the weather be like?"
+      },
+      {
+        "speaker": "SYSTEM",
+        "utterance": "It will be sunny and warm."
+      },
+      {
+        "speaker": "USER",
+        "utterance": "I do not want to visit that place. Do not book a cab."
+      }
+    ]
+  }
+]

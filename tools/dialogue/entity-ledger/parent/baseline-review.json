@@ -1,0 +1,171 @@
+{
+  "binary_sha256": "3cc61a81edc01ab935404ae98baf4d528cda95a6f2a6ebe1f8456c3cf87f43fb",
+  "cases": [
+    {
+      "name": "offer_0_immediate",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Amber Kite Observatory",
+      "active": [
+        "Travel_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_0_delayed",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Amber Kite Observatory",
+      "active": [
+        "RideSharing_1",
+        "Weather_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_1_immediate",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Cobalt Finch Gallery",
+      "active": [
+        "Travel_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_1_delayed",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Cobalt Finch Gallery",
+      "active": [
+        "RideSharing_1",
+        "Weather_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_2_immediate",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Isla Verde Pavilion",
+      "active": [
+        "Travel_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_2_delayed",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Isla Verde Pavilion",
+      "active": [
+        "RideSharing_1",
+        "Weather_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_3_immediate",
+      "kind": "positive",
+      "destination": null,
+      "expected": "\u00c9toile Lantern Museum",
+      "active": [
+        "Travel_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_3_delayed",
+      "kind": "positive",
+      "destination": null,
+      "expected": "\u00c9toile Lantern Museum",
+      "active": [
+        "RideSharing_1",
+        "Weather_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_4_immediate",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Orchid Glass Atrium",
+      "active": [
+        "Travel_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_4_delayed",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Orchid Glass Atrium",
+      "active": [
+        "RideSharing_1",
+        "Weather_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_5_immediate",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Saffron Bell Theatre",
+      "active": [
+        "Travel_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "offer_5_delayed",
+      "kind": "positive",
+      "destination": null,
+      "expected": "Saffron Bell Theatre",
+      "active": [
+        "RideSharing_1",
+        "Weather_1"
+      ],
+      "correct": false
+    },
+    {
+      "name": "control_0",
+      "kind": "control",
+      "destination": null,
+      "expected": null,
+      "active": [
+        "RideSharing_1"
+      ],
+      "correct": true
+    },
+    {
+      "name": "control_1",
+      "kind": "control",
+      "destination": null,
+      "expected": null,
+      "active": [
+        "RideSharing_1"
+      ],
+      "correct": true
+    },
+    {
+      "name": "control_2",
+      "kind": "control",
+      "destination": null,
+      "expected": null,
+      "active": [
+        "RideSharing_1"
+      ],
+      "correct": true
+    },
+    {
+      "name": "control_3",
+      "kind": "control",
+      "destination": null,
+      "expected": null,
+      "active": [
+        "RideSharing_1"
+      ],
+      "correct": true
+    }
+  ]
+}

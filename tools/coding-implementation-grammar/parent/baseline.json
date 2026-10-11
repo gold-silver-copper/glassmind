@@ -1,0 +1,194 @@
+[
+  {
+    "name": "query_implement",
+    "ok": true,
+    "exit": 0,
+    "stdout": "1 function calls `implement`: `caller`.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "d56d93d26de3eff1acf133c77dbdeb5a76e5e6c9a151e76f3fed28847ccf9065"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "d56d93d26de3eff1acf133c77dbdeb5a76e5e6c9a151e76f3fed28847ccf9065"
+    },
+    "source_after": "pub fn implement() -> i32 { 7 }\npub fn caller() -> i32 { implement() }\n"
+  },
+  {
+    "name": "rename_implement",
+    "ok": true,
+    "exit": 0,
+    "stdout": "I'd rename the `implement` function to `advance_task` in 2 places.\n  src/lib.rs:1:8  `implement` -> `advance_task`\n  src/lib.rs:2:26  `implement` -> `advance_task`\n  (say yes to rename `implement`)\nI made 2 changes. No problems with the build.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "d56d93d26de3eff1acf133c77dbdeb5a76e5e6c9a151e76f3fed28847ccf9065"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "8ca25126403cfa62ca99ef167ab60b1ab8373e70c04ec74fd427391513aaf0e5"
+    },
+    "source_after": "pub fn advance_task() -> i32 { 7 }\npub fn caller() -> i32 { advance_task() }\n"
+  },
+  {
+    "name": "query_implemented",
+    "ok": true,
+    "exit": 0,
+    "stdout": "1 function calls `implemented`: `caller`.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "052d2406e4f5a89b4925d1db54ff4701d60b0f2bce9c85b037be8d13c5eba85c"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "052d2406e4f5a89b4925d1db54ff4701d60b0f2bce9c85b037be8d13c5eba85c"
+    },
+    "source_after": "pub fn implemented() -> i32 { 7 }\npub fn caller() -> i32 { implemented() }\n"
+  },
+  {
+    "name": "rename_implemented",
+    "ok": true,
+    "exit": 0,
+    "stdout": "I'd rename the `implemented` function to `advance_task` in 2 places.\n  src/lib.rs:1:8  `implemented` -> `advance_task`\n  src/lib.rs:2:26  `implemented` -> `advance_task`\n  (say yes to rename `implemented`)\nI made 2 changes. No problems with the build.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "052d2406e4f5a89b4925d1db54ff4701d60b0f2bce9c85b037be8d13c5eba85c"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "8ca25126403cfa62ca99ef167ab60b1ab8373e70c04ec74fd427391513aaf0e5"
+    },
+    "source_after": "pub fn advance_task() -> i32 { 7 }\npub fn caller() -> i32 { advance_task() }\n"
+  },
+  {
+    "name": "query_write",
+    "ok": true,
+    "exit": 0,
+    "stdout": "1 function calls `write`: `caller`.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "3f4316180b20282a65cc723862396df32636e233aab2bcf505bbef586c75b8da"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "3f4316180b20282a65cc723862396df32636e233aab2bcf505bbef586c75b8da"
+    },
+    "source_after": "pub fn write() -> i32 { 7 }\npub fn caller() -> i32 { write() }\n"
+  },
+  {
+    "name": "rename_write",
+    "ok": true,
+    "exit": 0,
+    "stdout": "I'd rename the `write` function to `advance_task` in 2 places.\n  src/lib.rs:1:8  `write` -> `advance_task`\n  src/lib.rs:2:26  `write` -> `advance_task`\n  (say yes to rename `write`)\nI made 2 changes. No problems with the build.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "3f4316180b20282a65cc723862396df32636e233aab2bcf505bbef586c75b8da"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "8ca25126403cfa62ca99ef167ab60b1ab8373e70c04ec74fd427391513aaf0e5"
+    },
+    "source_after": "pub fn advance_task() -> i32 { 7 }\npub fn caller() -> i32 { advance_task() }\n"
+  },
+  {
+    "name": "query_fill",
+    "ok": true,
+    "exit": 0,
+    "stdout": "1 function calls `fill`: `caller`.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "bf1c5401488029403f9513f28ed95a0ba98f5a6dbd2a3a61045f913064cd5793"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "bf1c5401488029403f9513f28ed95a0ba98f5a6dbd2a3a61045f913064cd5793"
+    },
+    "source_after": "pub fn fill() -> i32 { 7 }\npub fn caller() -> i32 { fill() }\n"
+  },
+  {
+    "name": "rename_fill",
+    "ok": true,
+    "exit": 0,
+    "stdout": "I'd rename the `fill` function to `advance_task` in 2 places.\n  src/lib.rs:1:8  `fill` -> `advance_task`\n  src/lib.rs:2:26  `fill` -> `advance_task`\n  (say yes to rename `fill`)\nI made 2 changes. No problems with the build.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "bf1c5401488029403f9513f28ed95a0ba98f5a6dbd2a3a61045f913064cd5793"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "8ca25126403cfa62ca99ef167ab60b1ab8373e70c04ec74fd427391513aaf0e5"
+    },
+    "source_after": "pub fn advance_task() -> i32 { 7 }\npub fn caller() -> i32 { advance_task() }\n"
+  },
+  {
+    "name": "field_query_implement",
+    "ok": true,
+    "exit": 0,
+    "stdout": "The declared type of `Ledger.implement` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "71c713ef9679a479fef7bc1781a98c23e7254a7b79560b4105434b31c45b2434"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "71c713ef9679a479fef7bc1781a98c23e7254a7b79560b4105434b31c45b2434"
+    },
+    "source_after": "pub struct Ledger { pub implement: i32 }\npub fn make() -> Ledger { Ledger { implement: 3 } }\n"
+  },
+  {
+    "name": "field_rename_implement",
+    "ok": true,
+    "exit": 0,
+    "stdout": "I'd rename `Ledger::implement` to `stored_value` in 2 places.\n  src/lib.rs:1:25  `implement` -> `stored_value`\n  src/lib.rs:2:36  `implement` -> `stored_value`\n  (say yes to rename `Ledger::implement`)\nI made 2 changes. No problems with the build.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "71c713ef9679a479fef7bc1781a98c23e7254a7b79560b4105434b31c45b2434"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "d6107ea16ea0ec637308091cce60b61eb19499e991359e70ed47f3c2fc2aad18"
+    },
+    "source_after": "pub struct Ledger { pub stored_value: i32 }\npub fn make() -> Ledger { Ledger { stored_value: 3 } }\n"
+  },
+  {
+    "name": "field_query_implemented",
+    "ok": true,
+    "exit": 0,
+    "stdout": "The declared type of `Ledger.implemented` is `i32` (src/lib.rs:1; source spelling, not resolved).\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "236282084e4fc194085980c3da1b916c8db3f31dc7284e79897a05593ab00455"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "236282084e4fc194085980c3da1b916c8db3f31dc7284e79897a05593ab00455"
+    },
+    "source_after": "pub struct Ledger { pub implemented: i32 }\npub fn make() -> Ledger { Ledger { implemented: 3 } }\n"
+  },
+  {
+    "name": "field_rename_implemented",
+    "ok": true,
+    "exit": 0,
+    "stdout": "I'd rename `Ledger::implemented` to `stored_value` in 2 places.\n  src/lib.rs:1:25  `implemented` -> `stored_value`\n  src/lib.rs:2:36  `implemented` -> `stored_value`\n  (say yes to rename `Ledger::implemented`)\nI made 2 changes. No problems with the build.\n",
+    "stderr": "",
+    "before": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "236282084e4fc194085980c3da1b916c8db3f31dc7284e79897a05593ab00455"
+    },
+    "after": {
+      "Cargo.toml": "a250c1fa2047051054df18cc714291792313e4d8d49272769e2a0b524cfe4cc8",
+      "src/lib.rs": "d6107ea16ea0ec637308091cce60b61eb19499e991359e70ed47f3c2fc2aad18"
+    },
+    "source_after": "pub struct Ledger { pub stored_value: i32 }\npub fn make() -> Ledger { Ledger { stored_value: 3 } }\n"
+  }
+]
