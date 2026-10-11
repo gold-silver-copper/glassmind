@@ -8,7 +8,35 @@ and audited successfully. Current runtime source3539a2d; coding sourcec6ac04a.
 Known completed-worker tokens201,926,299 (cached input counted once; parent and
 interrupted usage excluded). No model worker ran; all root jobs are complete.
 
-## Next action: native disk-backed facts compatibility
+## PR47 published; native disk-backed facts experiment started
+
+PR47 MERGED https://github.com/gold-silver-copper/glassmind/pull/47.
+Reviewed160872a9e3c42d679153a555f6a359b9eaecc355, CI38155083549 passed95s
+(16:21:03–16:22:38UTC). Merge67dc480a7277fd5651b6a97b55d838abae8635bb
+at2026-10-11T16:22:49Z. Push44172, PR92746, CIwatch63376, merge94653 COMPLETE.
+Includes contextual-dialogue rejection audit and facts diagnosis/storage pilot;
+production source/models/scores unchanged. Do not republish or rerun this batch.
+
+## Next action: implement native disk-backed facts compatibility
+
+Root-owned isolated worktree WORK/disk-facts, branchcontinuous/disk-facts at
+ d2bb2ae (frozen tools/facts/DISK-PLAN.md), based on160872a. No model worker.
+Same plan at WORK/coordinator/disk-facts/PLAN.md. Exactly two uncommitted preparatory
+files: crates/facts/Cargo.toml andCargo.lock addrusqlite0.40.2 with bundled/hooks/
+limits/functions. Dependency cargo check -pglassmind-facts -j1 passed13.70s in
+scopeglassmind-disk-facts-dependencies, session76854 COMPLETE. No adapter exists yet.
+Retained buildcache WORK/coordinator/disk-facts/target anddiskTMPDIR .../tmp.
+All further Cargo uses8GiB0swap, setsid --wait timeouts, -j1 withthat target/TMPDIR.
+First implement the versioned native SQLite representation/import andreadonlyquery
+API plusCLI, then frozen same-data parity; do not restart source acquisition.
+Use literal string IDs (including lexical ordering), original aliases and the same
+Rust normalize helper at ingestion/query; avoid the pilot's Python keys. Inspect
+current Store.answer versusanswer_set refusal semantics before sharinglogic.
+Native dependencies are now locally available at ~/.cargo/registry/src/*/rusqlite-0.40.2;
+progress_handler andset_limit returnResult. Query plans/limits andno whole-graph
+load must be verified. Existing plan fixes19481TRAIN+2821DEV answer/set parity,
+10-minute8GiB cap; no newaccuracyclaim. No further public graph download yet.
+
 
 Read tools/facts/wikidata-snapshot/PARENT.md and its frozen PLAN.md. The independent
 20260928 CC0 Wikidata pilot has5,677,515 statements for1,094,802 subjects and
