@@ -73,7 +73,7 @@ def main():
     # This tiny store contains only sampled raw names, never questions or labels.
     json_path = ROOT / 'raw-sample-view.json'
     json_path.write_text(json.dumps(golden, ensure_ascii=False) + '\n')
-    subprocess.run([str(ROOT / 'candidate'), 'index-disk', '--index', str(json_path),
+    subprocess.run([str(ROOT / 'final-candidate'), 'index-disk', '--index', str(json_path),
                     '--database', str(ROOT / 'raw-sample-view.sqlite')], check=True,
                    stdout=(ROOT / 'raw-sample-view-info.json').open('wb'))
     reference = connection(ROOT / 'raw-sample-view.sqlite')

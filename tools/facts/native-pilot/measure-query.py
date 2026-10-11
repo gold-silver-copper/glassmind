@@ -9,7 +9,7 @@ import time
 
 root = Path(__file__).resolve().parent
 model = root.parent.parent / 'trainindex-run/tmp/trainindex/bundle1000/relation.json'
-command = [str(root / 'candidate'), 'predict-disk', '--model', str(model), '--database', str(root / 'native.sqlite')]
+command = [str(root / 'final-candidate'), 'predict-disk', '--model', str(model), '--database', str(root / 'native.sqlite')]
 start = time.monotonic()
 launcher_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
 with (root / 'source-name-queries.txt').open('rb') as inp, (root / 'source-name-predictions.jsonl').open('wb') as out:
