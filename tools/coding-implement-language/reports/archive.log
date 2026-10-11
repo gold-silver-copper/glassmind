@@ -1,0 +1,101 @@
+{
+  "decision": "REJECTED: strict CLI contract suite 33/34; runtime must be restored after archiving",
+  "base_commit": "2be77e092f5337d9d10d5bd024b3d0a35ef66b5a",
+  "gate": {
+    "original20": "20/20",
+    "parser_contracts": "34/34",
+    "environment": "6/6",
+    "cli_contracts": "33/34",
+    "required_cli_contracts": "34/34",
+    "train_test_verified": "3/60",
+    "distinct_functions": 1,
+    "styles": [
+      "chatty",
+      "hurried",
+      "terse"
+    ],
+    "function": "sum_even",
+    "parent_full765": "NOT RUN; no >=177 or retained174 claim"
+  },
+  "parser_coverage": "23/60 only, not implementation correctness",
+  "train_refusals": "57/57 unchanged",
+  "rust_tests": "76/76",
+  "fmt": "passed",
+  "clippy": "passed",
+  "debug_build": "passed",
+  "release_build": "not run: candidate rejected",
+  "baseline": {
+    "old_candidate_rejection": "UNCHANGED: original 0/60 request coverage",
+    "replayed_old_sample": "3/3 authored implementations",
+    "replayed_original_train_sample": "0/1",
+    "no_cargo_target": "refused unchanged: existing CARGO_TARGET_DIR required",
+    "wrong_action": "same Cargo.lock/target creation reproduced on archived baseline"
+  },
+  "data": {
+    "new_download_bytes": 0,
+    "authored_license": "MIT OR Apache-2.0 (workspace code license)",
+    "original_fixture": {
+      "sha256": "7284edba6c1fcc4b55f432069c3c74a30f69d781c558985b73c9b4f0b267aa40",
+      "bytes": 3433
+    },
+    "new_language_contracts": {
+      "sha256": "01f4ffc2936ff5b754c342b12198de4ed55fe973c96433314030986c4998b98d",
+      "bytes": 1287
+    },
+    "train_requests": 60,
+    "train_request_utf8_bytes": 5070,
+    "public_projects": 20,
+    "public_project_files": 40,
+    "public_project_bytes": 17648,
+    "public_source_license": "Unestablished in inspected Cargo/src allowlist; no license inferred. Raw project sources retained outside git.",
+    "public_source_version": "Existing train-v3 and cached rb-implement public production workspaces, exact hashes in train-input-provenance.json; inherited checkpoint benchmark pin f79e71a2a26fdaf15f9bc55225a038b61e66fafb not independently reverified"
+  },
+  "runtime_source": {
+    "crates/cli/src/main.rs": {
+      "sha256": "e5f0d7da595f49ebeb2f012dadfd03806198428b1656be01d2f9948e4d9e5d4c",
+      "bytes": 22477
+    },
+    "crates/english-rust/src/lib.rs": {
+      "sha256": "b71be4c5ea4c8975b25c02f0b07239d3cccf887410253828650854d0fe40a7c2",
+      "bytes": 75148
+    },
+    "crates/world-rust/src/lib.rs": {
+      "sha256": "ab4f0a6c088525f411f28427a6f68f8b056a32b865bfddce4622699e7d056f4d",
+      "bytes": 47004
+    },
+    "crates/english-rust/src/implement.rs": {
+      "sha256": "ab873caaacb09a397b0e59e2e0e17f52d8ef3912d8f686281e3d15518b7252ad",
+      "bytes": 6976
+    },
+    "crates/world-rust/src/implement.rs": {
+      "sha256": "55c29fd5615736b42526c97d084d746a5168b5f6cda7ce1f336a249ba6e47650",
+      "bytes": 26770
+    }
+  },
+  "patch": {
+    "sha256": "cfea6bd0c4abd8ac4819663dbc13fdc41483aedecc8298b4842398a05328c4a0",
+    "bytes": 37091
+  },
+  "binaries": {
+    "glassmind-archived": {
+      "sha256": "4110792df46c75a0544501eb3008c07ed4c0144a32521e470a4bf744de078b90",
+      "bytes": 126875056
+    },
+    "glassmind-candidate": {
+      "sha256": "4105aa27a1617da94df06bd5f7422496aff5c874400f07ed1d871be7936d1596",
+      "bytes": 126950672
+    },
+    "glassmind-final": {
+      "sha256": "ef5ba7d56a22814f620c322b0205e6a13234c7903aa7325c1eabc1c8096b1f5d",
+      "bytes": 126989920
+    },
+    "parser-probe": {
+      "sha256": "76062b4bd408ab515b41dc5fe34707ba0d21d142dd0cb56a1221d0ff0320e2dc",
+      "bytes": 46357608
+    },
+    "parser-probe-final": {
+      "sha256": "0354cb33ba444fd005d4d7a50d6e7be55c2aad9367b0f1e5c645a21831c6e283",
+      "bytes": 46386768
+    }
+  }
+}

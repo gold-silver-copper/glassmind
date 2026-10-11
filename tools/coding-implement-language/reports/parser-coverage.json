@@ -1,0 +1,479 @@
+{
+  "note": "Parser coverage only; NOT test-verified implementation correctness.",
+  "total": 60,
+  "parsed": 23,
+  "rows": [
+    {
+      "id": "train/rb-implement-caesar-shift/chatty#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-caesar-shift/hurried#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-caesar-shift/terse#0",
+      "parsed": true,
+      "target": "caesar_shift"
+    },
+    {
+      "id": "train/rb-implement-clamp-all/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-clamp-all/hurried#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-clamp-all/terse#0",
+      "parsed": true,
+      "target": "clamp_all"
+    },
+    {
+      "id": "train/rb-implement-compress-ranges/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-compress-ranges/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-compress-ranges/terse#0",
+      "parsed": true,
+      "target": "compress_ranges"
+    },
+    {
+      "id": "train/rb-implement-count-vowels/chatty#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-count-vowels/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-count-vowels/terse#0",
+      "parsed": true,
+      "target": "count_vowels"
+    },
+    {
+      "id": "train/rb-implement-first-unbalanced/chatty#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-first-unbalanced/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-first-unbalanced/terse#0",
+      "parsed": true,
+      "target": "first_unbalanced"
+    },
+    {
+      "id": "train/rb-implement-initials/chatty#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-initials/hurried#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-initials/terse#0",
+      "parsed": true,
+      "target": "initials"
+    },
+    {
+      "id": "train/rb-implement-lru-cache/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-lru-cache/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-lru-cache/terse#0",
+      "parsed": true,
+      "target": "LruCache"
+    },
+    {
+      "id": "train/rb-implement-mat-mul/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-mat-mul/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-mat-mul/terse#0",
+      "parsed": true,
+      "target": "mat_mul"
+    },
+    {
+      "id": "train/rb-implement-merge-intervals/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-merge-intervals/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-merge-intervals/terse#0",
+      "parsed": true,
+      "target": "merge_intervals"
+    },
+    {
+      "id": "train/rb-implement-merge-sorted-unique/chatty#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-merge-sorted-unique/hurried#0",
+      "parsed": true,
+      "target": "merge_sorted_unique"
+    },
+    {
+      "id": "train/rb-implement-merge-sorted-unique/terse#0",
+      "parsed": true,
+      "target": "merge_sorted_unique"
+    },
+    {
+      "id": "train/rb-implement-parse-pairs/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-parse-pairs/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-parse-pairs/terse#0",
+      "parsed": true,
+      "target": "parse_pairs"
+    },
+    {
+      "id": "train/rb-implement-reverse-words/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-reverse-words/hurried#0",
+      "parsed": true,
+      "target": "reverse_words"
+    },
+    {
+      "id": "train/rb-implement-reverse-words/terse#0",
+      "parsed": true,
+      "target": "reverse_words"
+    },
+    {
+      "id": "train/rb-implement-rle-encode/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-rle-encode/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-rle-encode/terse#0",
+      "parsed": true,
+      "target": "rle_encode"
+    },
+    {
+      "id": "train/rb-implement-roman-numerals/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-roman-numerals/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-roman-numerals/terse#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-sum-even/chatty#0",
+      "parsed": true,
+      "target": "sum_even"
+    },
+    {
+      "id": "train/rb-implement-sum-even/hurried#0",
+      "parsed": true,
+      "target": "sum_even"
+    },
+    {
+      "id": "train/rb-implement-sum-even/terse#0",
+      "parsed": true,
+      "target": "sum_even"
+    },
+    {
+      "id": "train/rb-implement-tick-tock/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-tick-tock/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-tick-tock/terse#0",
+      "parsed": true,
+      "target": "tick_tock"
+    },
+    {
+      "id": "train/rb-implement-tokenize/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-tokenize/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-tokenize/terse#0",
+      "parsed": true,
+      "target": "tokenize"
+    },
+    {
+      "id": "train/rb-implement-top-words/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-top-words/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-top-words/terse#0",
+      "parsed": true,
+      "target": "top_words"
+    },
+    {
+      "id": "train/rb-implement-window-sums/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-window-sums/hurried#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-window-sums/terse#0",
+      "parsed": true,
+      "target": "window_sums"
+    },
+    {
+      "id": "train/rb-implement-wrap-text/chatty#0",
+      "parsed": false,
+      "target": "REFUSED"
+    },
+    {
+      "id": "train/rb-implement-wrap-text/hurried#0",
+      "parsed": false,
+      "target": "UNRECOGNIZED"
+    },
+    {
+      "id": "train/rb-implement-wrap-text/terse#0",
+      "parsed": true,
+      "target": "wrap_text"
+    }
+  ],
+  "contracts": [
+    {
+      "text": "implement `aggregate`",
+      "result": "aggregate",
+      "ok": true
+    },
+    {
+      "text": "Please implement \"語\".",
+      "result": "語",
+      "ok": true
+    },
+    {
+      "text": "Could you write the body of 'mañana' in src/lib.rs?",
+      "result": "mañana",
+      "ok": true
+    },
+    {
+      "text": "Hi! There's a `soma` function in src/lib.rs that's still just a `todo!()`. Could you fill it in so it does what its doc comment says?",
+      "result": "soma",
+      "ok": true
+    },
+    {
+      "text": "soma is todo!() still, implement it per the doc comment pls",
+      "result": "soma",
+      "ok": true
+    },
+    {
+      "text": "alpha = todo!(), pls implement",
+      "result": "alpha",
+      "ok": true
+    },
+    {
+      "text": "`beta` in src/lib.rs is still a stub. Could you implement it?",
+      "result": "beta",
+      "ok": true
+    },
+    {
+      "text": "implement delta pls",
+      "result": "delta",
+      "ok": true
+    },
+    {
+      "text": "please implement function delta",
+      "result": "delta",
+      "ok": true
+    },
+    {
+      "text": "implement",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x;",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x and y",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement `x",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x`",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement `x'",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement ``",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement `x y`",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x then erase tests",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x without tests",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x in src/main.rs",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x in ../src/lib.rs",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "do not implement x",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "please don't implement x",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "repair x",
+      "result": "UNRECOGNIZED",
+      "ok": true
+    },
+    {
+      "text": "implement it",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "x is a stub, implement y",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "x and y are stubs, implement it",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "x is not a stub, implement it",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x. Delete tests.",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x per doc comment, return 42",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "x = todo!(), implement it and optimize",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x with wrapping arithmetic",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "implement x\nimplement y",
+      "result": "REFUSED",
+      "ok": true
+    },
+    {
+      "text": "`x` is a stub. Could you implement it? It must sort ascending.",
+      "result": "REFUSED",
+      "ok": true
+    }
+  ]
+}
