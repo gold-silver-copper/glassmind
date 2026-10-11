@@ -240,6 +240,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "glassmind-reading"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "glassmind-english",
+ "glassmind-english-rust",
+ "glassmind-meaning",
+ "glassmind-rules",
+ "glassmind-world-rust",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "glassmind-rules"
 version = "0.1.0"
 
