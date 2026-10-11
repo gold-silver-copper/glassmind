@@ -1,80 +1,90 @@
 # Continuous development checkpoint
 
-## Current checkpoint — repair revision passed local gates; full765 running
+## Current checkpoint — full repair regression rejected; runtime restored
 
-The unlimited continuous goal remains active. Root branch harness; evaluated source
-8aeb5ac1a888dcea571d4c0710e059005442b215 (repair request boundary). Evidence commit
-a22f613 preserves original rejected repair/beam experiments. WORK=/home/gsc/.cache/
-glassmind/continuous-20261010 (join path without newline). Root publication is still
-PR35: reviewed head86b1e545, mergec9dd5e3a5bfa4d10c1a1fd2db0ba26900485fcd8,
-CI38131245655 SUCCESS. No open PR at last query. PR34 coding180/765,585refused,0fail;
-PR35 raw syntax1556/2001exact,all1370oldretained; dependency model/predictions unchanged.
-Do not claim this new repair candidate merged or accepted until full gate succeeds.
+The unlimited continuous goal remains active. WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+Root branch harness, lastsourcechange6a346c3 rolls back rejected8aeb5ac. Root crate
+files match published86b1e545 exactly; capped rollbackbuild19645 completed and main
+binary hash981f8b100cd82ec9edfa23f2c2d379f2dfb17976e6b32ebab2c68d335c6efdb7 matches
+published rawsyntax. PR35 remains latest merged (mergec9dd5e3, reviewed86b1e545,
+CI38131245655success); no openPR atlastquery. Coding180/765 andrawsyntax1556/2001
+remain published; no new runtime gain. Completed worker tokens148045514, excluding
+parent/interrupted and active repairveto/syntaxchildren workers.
 
-REPAIRSPEECH original candidate was rejected:8→4 native positives,4/6statuses,
-but9→0 unrequested edits. Original67/parent66 archives and85workeridentities verified.
-Source/binary/reports immutable in repairspeech-run/submitted and parent-submitted.
-Coordinator revision in inactive WORK/repairspeech adds singular diagnostic nouns,
-Rust source nouns, semicolon failure contexts, exact preservation constraints,
-bare build predicates and Problems(Build/Test) status queries. Initial addedtest
-caught code/build subject ambiguity; fixed before candidate inference; no tests removed.
-Original tracked patch+new source snapshot and debugbinary are in coordinator/
-repairspeech-review/revision. Current root source matches revised snapshot hashes.
+REPAIRSPEECH coordinator candidate8aeb5ac FAILED full765:53pass712refused0fail,
+all53retainedbut127 of180oldpasses lost. Session51761 COMPLETE; do notrerun. Exact
+results coordinator/repairspeech-full/results.jsonl SHA
+a2c7933d70ec10bb7a7ce25f95a3000413f107a236a288928ae587cd61724ba1.
+Fullcomparison in coordinator/repairspeech-review/revision/full-comparison.json and
+repo tools/coding-repair-speech/parent/revision/full-comparison.json. Original53-pass
+release e7bf6dd5fa6c1f3306cdeb563ceb50c5839ffabac7224c78fe874b90db28639e anddebug
+ e7a5c228f36c765f2623dcd054808909624cc7494f4e56d540038719d94ce752 remain frozen there.
+Originalworker67/parent66 archives and revisedsource snapshots preserved,verified
+before rollback andbefore inactive repairspeechworktree/auth removal (nowremoved).
+Both originalworker andcoordinator candidates rejected; no repairsource integrated.
+Local8/8nativepositive,0unrequestededits,15legacydo,20CLI+43English,workspace4smoke,
+30releasecontracts were real but insufficient; allsessionsCOMPLETE. Statusproxyv1=5/6,
+explicit Problems typecorrectionv2=6/6 witholdbaseline/originalgradespreserved.
+Do not claim all765 passed or alteroriginal68negative labels/oldworkerapplyexpectations.
 
-Local gate COMPLETE:20CLI+43English tests (all68 authored/15legacy/oldrenamecases),
-parent30cases×2modes has8/8 exactnative do repairs,0unrequestededits,0negativeCommand
-previews,allinitialask--applyRemediesreadonly. Fifteen legacydo requests exact/native;
-worker's old initialapply expectation remains30/45 with15failures, never relabelled.
-Status originalproxy5/6; explicitly corrected Problems-versus-Passes proxy6/6.
-Baseline and originalcandidate rescored under both proxies,originalgradespreserved;
-see parent/revision/status-contract-v2.md. All mutation/refusal/repair gates unchanged.
-ParentcasesSHA cc0bdeb085b22636dea7517609712323d68988cb677ca38ef9de29ee8aab111d.
-DebugSHA e7a5c228f36c765f2623dcd054808909624cc7494f4e56d540038719d94ce752.
-Sessions97154tests/52911parent/9605legacy/82443workspace/27445releasecontracts COMPLETE.
-Workspacefmt/alltargetclippy/release/strict4smoke passes. All30 integrated release
-meanings identical to tested debug output and sources unchanged. No further rerun
-needed unless source changes. Source8aeb5ac; release atcoordinator/repairspeech-review/
-revision/glassmind-release SHA e7bf6dd5fa6c1f3306cdeb563ceb50c5839ffabac7224c78fe874b90db28639e.
+Only publicTRAIN requesttext from train-v3/inputs.jsonl was inspected afterfailure:
+172unique (91build/81test),no task.toml/solutions/hidden/generators read. Narrow
+whitelist missed shorthand/narrative/implicit context. Change hypothesis ratherthan
+addwhole-sentence templates. README/results/reviews nowdescribe failedfullgate.
 
-ACTIVE fullcoding765 session51761, unchanged tools/rustbench-dev.sh; artifacts
-coordinator/repairspeech-full, native-scratch explicit; CARGO_TARGET_DIRunset,
-8GiB/0swap scopes/processgroups/timeouts, TMPDIRon disk/jobs1. Results JSONL is written
-at completion; run.log currently progressing through rustc-error-index tasks. Do not
-start a duplicate or infer failure from absent results.jsonl. When COMPLETE run
-coordinator/repairspeech-review/revision/compare-full.py --out NEWPATH. It compares
-against rename-boundary-full (180passes), requiresall180retained/0fails and reportsall
-transitions. If regression, retain failed output/source and investigate visibleDEV
-requests/general language without reading task.toml/solutions/hidden tests. No PR
-until full gate passes; then README/scoreboard/journal/report, push, exact-headCI/merge.
+ACTIVE REPAIRVETO: PID1397043, scopeglassmind-continuous-repairveto.scope,
+WORK/repairveto branchcontinuous/repairveto at6a346c3; runWORK/repairveto-run.
+Astrafast/forcedChatGPT/noAPIenv,loginverified,outer8GiB0swap. Newbounded speech-act
+analysis vetoes Repair for explicitread-only/quoted/reported/negated/retracted/
+conditional/deferred/competing requests; preserves broadlegacypositive inference.
+This changes experimental scope, not originaltestlabels: old68 expectations remain
+reportedwithallfailures, not relabelled; implicitreports remain knownlegacyambiguity.
+Required original30parentcases/all9oldunrequestededitblocks/all8positive,full765all180
+retained/0failed; no claims ofuniversalrequestauthority. Workerowns coding.rs/newhelper/
+tools/coding-repair-veto only. TRAIN172plaintexts+kind preparedprovenancehashes; noIDs
+oranswers inruntime. Baseline main981f8 copied/hashverified. Do notinspectcandidate
+untilterminalarchive.
+Freshparent24cases×2modes atcoordinator/repairveto-independent frozenSHA
+20d0f745000ceda9c608d6d4b567321852c4a06d8a434d71f665841b25490187.
+Baseline session67365 COMPLETE:7/8 exactnativepositives (positive_2 unsupported),
+1/4correctstatuses,5unrequesteddoedits(status_0,negative_1,4,5,9),8negativeCommand
+previewmodecases. Allask--applyread-only. cases/check/query labels remain frozen;
+requirebaseline7retained,all8desiredpositives,4typedstatuses,zero unsupportedCommand
+previews/unrequestededits. Candidate notinspectedyet.
 
-SYNTAXBEAM terminalREJECTED: parent rescored2001 LAS19423→17879,UAS20540→19051/25148,
-allvalidtrees. Independent36→25/40edges,11losses/0gains,16→8/20sentences. Source
-rolledback byteidentical. Original57archive/58,265,881bytes,parent29/82,097bytes,
-raw69identities/109,454,301bytes andallfreeze/source/rootcopies verified. Worker/auth
-removed onlyafterverification. Alloriginals retained syntaxbeam-run. Smallreports
-committed tools/reading/syntax-beam; do notintegraterejectedpatch/rerunfullinference.
+SYNTAXNORM terminalREJECTED: independently rescored2001 LAS19423→19428 (+5 <250gate),
+UAS20540→20547/25148. LAS12correct→wrong/17wrong→correct;UAS13/20;all828exacttrees
+retained;allvalid/no refusals. Independent36/40 and16/20 unchanged,0edgechanges.
+Original73archive61,209,688bytes,parent32/121,136bytes,55rawidentities166,885,684bytes,
+27freeze135,271,132bytes verified. Two rolledback source paths resolvedto frozen
+candidate sourcecopies;initialmanifestlistassumptionfixedwithoutchangingartifacts.
+Worktree/auth removed onlyafterreverification. Originals remain syntaxnorm-run;
+smallreports tools/reading/syntax-normalized +parent; docsresultsrejectedJSON.
+Two decoderobjectives exhausted; no thirdscore/width/temperaturetweak.
 
-ACTIVE SYNTAXNORM worker PID1372109, scopeglassmind-continuous-syntaxnorm.scope,
-branchcontinuous/syntaxnorm at8aeb5ac, WORK/syntaxnorm, runWORK/syntaxnorm-run.
-Astrafast/forcedChatGPT/noAPIenv; loginstatusverified; scope8GiB/0swap,30minouter.
-New hypothesis compares cumulative local logsoftmax overlegaltransitions (temp1,
-width4fixed), removing arbitrary per-state score offsets from prior rawsumobjective.
-No retraining/defaultchanges/widthtemperatureDEVtuning; scoresnotcalibratedprobabilities.
-Samefull gate>=19673LAS/20540UAS,all2001valid,no baselinecoreedgelosses. Default
-raw/forms/model MUST remainbyteidentical. Workerownsreadinglibrary/standaloneonly;
-no mainCLI/coding/sharedreports. Its baselinebundle copied/byteverified.
-Parentfresh20sentences40edges frozen beforecandidateinspection atcoordinator/
-syntaxnorm-independent: casesSHA1a1a5465505f37f8616d668da0c9bc4778754a558f5051d2623949c60b2295f7.
-Baseline COMPLETE36/40edges,16/20complete. Do notinspectcandidatebeforefreeze(it is
-already frozen); use run.py --beam for eventual --normalized-beam standalonemode.
-Archive terminalworker beforeintegration/removal, then parentaudit. Ifthisobjective
-fails, futureparserworkmust change training/features,notathirdscore/widthtweak.
+ACTIVE SYNTAXCHILDREN: PID1410721, scopeglassmind-continuous-syntaxchildren.scope,
+WORK/syntaxchildren branchcontinuous/syntaxchildren at6a346c3; runWORK/syntaxchildren-run.
+RequiredAstrafast/ChatGPTlogin/noAPIkeys;outer8GiB0swapverified. Newtraining feature
+hypothesis secondoutermostleft/rightchild+head/tag/labelconjunctions(top2stack),
+<=32additionalfeatures, same2tag/3parserTRAINepochs/staticoracle/greedydecoder,
+oneTRAINmodel only,noDEVtuning. Newexplicit train --child-features/version dispatch;
+legacyv1load/save/defaulttrain/fullraw/forms muststaybyteidentical. Model<32MiB,
+allbounds unchanged. Workerreadinglib/standalone/newtools only; parentmainintegration.
+Gate>=19673LAS and>=20540UAS/all2001valid/no newrefusals plusparentcoreedgepreservation.
+Freshparent20modifier/question/rolecontrasts40edges frozen beforeinspection at
+coordinator/syntaxchildren-independent, casesSHA
+98474dd00e465f90b27f618165308b2d3fccd8efb3a1a5d2015f729db7e0b135.
+Baseline COMPLETE31/40coreedges,15/20allcorrect. No candidateinspected. Trainingdata
+pinnedEWTTRAIN/DEVonly,noofficialtest/download. Baselinebundle byteverified.
 
-Completed worker tokens146687638; syntaxnormunfinished,parent/interruptedexcluded.
-No othermodelworkeractive. Inactive repairspeechcheckout/auth retained forrevision;
-no pending native/testjobs besidesfull51761. Rawsyntax/rate/workrate/rename oldjobs
-are COMPLETE; do not restart. Evidenceupdates ready to commit; runtime8aeb5ac remains
-local while full gate runs. Oldercheckpointdetailsbelow are historical.
+Pendingrootchanges are rejected-evidence/README/results/checkpoint only; netcrate
+diff since86b1e545 is empty. Nextcommit/push these reviews as evidence-onlyPR36,
+exactheadCI+merge; no redundant fullbenchmark warranted foridenticalrestoredruntime.
+Then reviewterminalworkers/archiveoriginals,runfrozenparentgates,integrateonlyaccepted
+candidateandfullaffectedDEV/checks beforepublishing. Noothermodel/native/fulljobs
+remainactive; alloldfulls complete. Nextaftercurrentparserfeature experiment should
+revisit facts/dialogue or quantities with a genuinely differentrepresentation.
+Oldercheckpointdetailsbelow arehistorical.
 
 ### Previous checkpoint details (superseded)
 

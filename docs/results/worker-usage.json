@@ -813,6 +813,17 @@
         "reasoning_output_tokens": 7315
       },
       "source": "Width4 cumulative-score search rejected: full EWT LAS19423->17879/UAS20540->19051, all2001 trees valid, six authored role regressions. Original rejected archive57, parent archive29 and raw artifact identities verified; runtime rolled back byte-identically. Parent rescored2001 LAS17879/UAS19051; frozen independent36->25/40 core edges,11losses/no gains. Allfreeze and original/rootcopies verified before inactiveworktree/auth removal."
+    },
+    {
+      "track": "syntaxnorm-continuous",
+      "usage": {
+        "input_tokens": 1342387,
+        "cached_input_tokens": 1272960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15489,
+        "reasoning_output_tokens": 3937
+      },
+      "source": "Normalized width4 search rejected: independentLAS19423->19428 fails preregistered19673 gate; UAS20540->20547. All2001valid trees/no refusals; defaultmodel/raw/forms byteidentical. Original73archive/32parent/raw/freeze identities verified; parentcoreedges36/40 unchanged."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."

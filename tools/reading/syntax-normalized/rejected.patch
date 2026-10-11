@@ -1,0 +1,311 @@
+diff --git i/crates/reading/src/bin/reading-syntax.rs w/crates/reading/src/bin/reading-syntax.rs
+index 2e44d85..4c5639f 100644
+--- i/crates/reading/src/bin/reading-syntax.rs
++++ w/crates/reading/src/bin/reading-syntax.rs
+@@ -28,6 +28,9 @@ enum Command {
+         input: PathBuf,
+         #[arg(long)]
+         output: PathBuf,
++        /// Use the optional width-4 local log-softmax beam (temperature 1; ranking, not calibrated probability).
++        #[arg(long)]
++        normalized_beam: bool,
+     },
+ }
+ #[derive(Default, Serialize)]
+@@ -129,6 +132,7 @@ fn run() -> Result<(), String> {
+             model,
+             input,
+             output,
++            normalized_beam,
+         } => {
+             let model = Model::load(BufReader::new(
+                 std::fs::File::open(model).map_err(|e| e.to_string())?,
+@@ -151,11 +155,21 @@ fn run() -> Result<(), String> {
+                 }
+                 let result = serde_json::from_str::<Input>(&line)
+                     .map_err(|e| e.to_string())
+-                    .and_then(|i| model.predict(i));
++                    .and_then(|i| {
++                        if normalized_beam {
++                            model.predict_normalized_beam(i, 4)
++                        } else {
++                            model.predict(i)
++                        }
++                    });
+                 let value = match result {
+                     Ok(p) => serde_json::to_value(p).map_err(|e| e.to_string())?,
+                     Err(reason) => {
+-                        serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason})
++                        if normalized_beam {
++                            serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason,"search_mode":"normalized_beam_4_logsoftmax_t1_stable"})
++                        } else {
++                            serde_json::json!({"status":"refused","model_version":VERSION,"reason":reason})
++                        }
+                     }
+                 };
+                 serde_json::to_writer(&mut writer, &value).map_err(|e| e.to_string())?;
+diff --git i/crates/reading/src/syntax.rs w/crates/reading/src/syntax.rs
+index 44b56bf..2f3371d 100644
+--- i/crates/reading/src/syntax.rs
++++ w/crates/reading/src/syntax.rs
+@@ -39,6 +39,9 @@ pub struct Prediction {
+     pub heads: Vec<usize>,
+     pub deprels: Vec<String>,
+     pub structurally_valid: bool,
++    /// Explicit search provenance; absent for the unchanged greedy default.
++    #[serde(skip_serializing_if = "Option::is_none")]
++    pub search_mode: Option<String>,
+ }
+ fn combining(c: char) -> bool {
+     matches!(c as u32, 0x0300..=0x036f | 0x1ab0..=0x1aff | 0x1dc0..=0x1dff | 0x20d0..=0x20ff | 0xfe20..=0xfe2f)
+@@ -312,6 +315,40 @@ fn best(scores: &[f32], legal: impl Fn(usize) -> bool) -> Result<usize> {
+     }
+     b.ok_or_else(|| "no legal transition".into())
+ }
++/// Offset-invariant legal-action objective; retain ascending action order.
++fn legal_log_softmax(scores: &[f32], legal: impl Fn(usize) -> bool) -> Result<Vec<(usize, f64)>> {
++    let mut actions = Vec::new();
++    let mut maximum = f64::NEG_INFINITY;
++    for (action, &score) in scores.iter().enumerate() {
++        if !score.is_finite() {
++            return Err("nonfinite score".into());
++        }
++        if legal(action) {
++            let score = f64::from(score);
++            maximum = maximum.max(score);
++            actions.push((action, score));
++        }
++    }
++    if actions.is_empty() {
++        return Err("no legal transition".into());
++    }
++    let log_sum = actions
++        .iter()
++        .map(|(_, score)| (score - maximum).exp())
++        .sum::<f64>()
++        .ln();
++    if !log_sum.is_finite() {
++        return Err("nonfinite normalization".into());
++    }
++    for (_, score) in &mut actions {
++        *score = (*score - maximum) - log_sum;
++        if !score.is_finite() {
++            return Err("nonfinite normalized score".into());
++        }
++    }
++    Ok(actions)
++}
++#[derive(Clone)]
+ struct State {
+     stack: Vec<usize>,
+     next: usize,
+@@ -518,8 +555,111 @@ impl Model {
+             heads,
+             deprels,
+             structurally_valid: true,
++            search_mode: None,
+         })
+     }
++    /// Optional bounded search with unchanged tags, features and legal actions.
++    /// Width 1 is a greedy compatibility path; the only beam candidate is width 4.
++    /// Sums local legal-action log-softmax at temperature 1 in f64.
++    /// This ranking objective is not calibrated probability or semantic proof.
++    pub fn infer_normalized_beam(&self, forms: &[String], width: usize) -> Result<Prediction> {
++        if !matches!(width, 1 | 4) {
++            return Err("beam width must be 1 or 4".into());
++        }
++        if width == 1 {
++            let mut p = self.infer(forms)?;
++            p.search_mode = Some("normalized_beam_1_greedy_compat".into());
++            return Ok(p);
++        }
++        validate_forms(forms)?;
++        let n = forms.len();
++        let ws = words(forms);
++        let tags = self.tag(&ws)?;
++        let mut beam = vec![(State::new(n), 0_f64)];
++        for _ in 0..2 * n {
++            // Keep only four descriptors, not a state clone for every expansion.
++            let mut selected: Vec<(usize, usize, f64)> = Vec::with_capacity(width);
++            for (parent, (state, total)) in beam.iter().enumerate() {
++                let features = parse_features(state, &ws, &tags);
++                let scores = self.parser.scores(&features);
++                let normalized = legal_log_softmax(&scores, |action| {
++                    state.legal(action, n, self.labels.len(), self.root)
++                })?;
++                for (action, score) in normalized {
++                    let sum = total + score;
++                    if !sum.is_finite() {
++                        return Err("nonfinite cumulative score".into());
++                    }
++                    // Strict comparison preserves parent then action order on ties.
++                    let rank = selected
++                        .iter()
++                        .position(|x| sum > x.2)
++                        .unwrap_or(selected.len());
++                    if rank < width {
++                        if selected.len() == width {
++                            selected.pop();
++                        }
++                        selected.insert(rank, (parent, action, sum));
++                    }
++                }
++            }
++            if selected.is_empty() {
++                return Err("no legal transition".into());
++            }
++            beam = selected
++                .into_iter()
++                .map(|(parent, action, total)| {
++                    let mut state = beam[parent].0.clone();
++                    state.apply(action, self.labels.len());
++                    (state, total)
++                })
++                .collect();
++        }
++        let (state, _) = beam.into_iter().next().ok_or("no legal transition")?;
++        if state.next != n + 1 || state.stack != [0] {
++            return Err("incomplete transitions".into());
++        }
++        let heads = state.heads[1..].to_vec();
++        let deprels = state.labels[1..]
++            .iter()
++            .map(|&label| self.labels[label].clone())
++            .collect::<Vec<_>>();
++        if !valid_tree(&heads, &deprels) {
++            return Err("invalid predicted structure".into());
++        }
++        Ok(Prediction {
++            status: "predicted".into(),
++            model_version: VERSION.into(),
++            tokenization: "provided_forms".into(),
++            forms: forms.to_vec(),
++            spans: None,
++            upos: tags.iter().map(|&tag| self.tags[tag].clone()).collect(),
++            heads,
++            deprels,
++            structurally_valid: true,
++            search_mode: Some("normalized_beam_4_logsoftmax_t1_stable".into()),
++        })
++    }
++    /// Strict forms/text input; raw segmentation and exact spans are unchanged.
++    pub fn predict_normalized_beam(&self, input: Input, width: usize) -> Result<Prediction> {
++        if !matches!(width, 1 | 4) {
++            return Err("beam width must be 1 or 4".into());
++        }
++        match (input.forms, input.text) {
++            (Some(forms), None) => self.infer_normalized_beam(&forms, width),
++            (None, Some(text)) => {
++                let spans = tokenize(&text)?;
++                let mut p = self.infer_normalized_beam(
++                    &spans.iter().map(|t| t.form.clone()).collect::<Vec<_>>(),
++                    width,
++                )?;
++                p.tokenization = "raw_unicode_apostrophe_v2".into();
++                p.spans = Some(spans);
++                Ok(p)
++            }
++            _ => Err("exactly one of forms or text required".into()),
++        }
++    }
+     pub fn predict(&self, input: Input) -> Result<Prediction> {
+         match (input.forms, input.text) {
+             (Some(forms), None) => self.infer(&forms),
+@@ -966,6 +1106,97 @@ mod tests {
+         assert!(Model::load(bytes.as_slice()).is_err());
+     }
+     #[test]
++    fn beam_compatibility_ties_bounds_and_provenance() {
++        let model = tiny();
++        for n in [1, 2, 3, 128] {
++            let forms = vec!["word".into(); n];
++            let greedy = model.infer(&forms).unwrap();
++            let mut one = model.infer_normalized_beam(&forms, 1).unwrap();
++            assert_eq!(
++                one.search_mode.take().as_deref(),
++                Some("normalized_beam_1_greedy_compat")
++            );
++            assert_eq!(one, greedy);
++            let mut four = model.infer_normalized_beam(&forms, 4).unwrap();
++            assert_eq!(four, model.infer_normalized_beam(&forms, 4).unwrap());
++            assert_eq!(
++                four.search_mode.take().as_deref(),
++                Some("normalized_beam_4_logsoftmax_t1_stable")
++            );
++            assert_eq!(four.upos, greedy.upos);
++            assert!(four.structurally_valid);
++            assert!(
++                !serde_json::to_string(&greedy)
++                    .unwrap()
++                    .contains("search_mode")
++            );
++        }
++        for width in [0, 2, 3, 5, usize::MAX] {
++            assert!(
++                model
++                    .infer_normalized_beam(&["word".into()], width)
++                    .is_err()
++            );
++        }
++        assert!(model.infer_normalized_beam(&[], 4).is_err());
++        assert!(
++            model
++                .infer_normalized_beam(&vec!["word".into(); 129], 4)
++                .is_err()
++        );
++        let text = "Élodie can't—go!";
++        let input = || Input {
++            forms: None,
++            text: Some(text.into()),
++        };
++        let greedy = model.predict(input()).unwrap();
++        let beam = model.predict_normalized_beam(input(), 4).unwrap();
++        assert_eq!(greedy.spans, beam.spans);
++        assert_eq!(greedy.forms, beam.forms);
++        assert_eq!(greedy.upos, beam.upos);
++    }
++    #[test]
++    fn normalized_objective_offsets_legality_extremes_and_ties() {
++        let scores = [2., 1., 1000.];
++        let original = legal_log_softmax(&scores, |a| a < 2).unwrap();
++        let shifted = legal_log_softmax(&[102., 101., -1000.], |a| a < 2).unwrap();
++        assert_eq!(original, shifted);
++        assert!((original[0].1 - (-(1_f64 + (-1_f64).exp()).ln())).abs() < 1e-12);
++        assert!((original.iter().map(|(_, s)| s.exp()).sum::<f64>() - 1.).abs() < 1e-12);
++        assert_eq!(
++            legal_log_softmax(&[f32::MAX, -f32::MAX], |_| true).unwrap()[0].1,
++            0.
++        );
++        assert_eq!(
++            legal_log_softmax(&[9., -99.], |a| a == 1).unwrap(),
++            [(1, 0.)]
++        );
++        assert!(legal_log_softmax(&scores, |_| false).is_err());
++        assert!(legal_log_softmax(&[0., f32::NAN], |a| a == 0).is_err());
++        assert!(legal_log_softmax(&[f32::INFINITY], |_| true).is_err());
++        let tied = legal_log_softmax(&[0., 0.], |_| true).unwrap();
++        assert_eq!(tied, [(0, -2_f64.ln()), (1, -2_f64.ln())]);
++        // Two symmetric zero-weight parses tie; parent/action order keeps LEFT.
++        assert_eq!(
++            tiny()
++                .infer_normalized_beam(&["a".into(), "b".into()], 4)
++                .unwrap()
++                .heads,
++            [2, 0]
++        );
++    }
++    #[test]
++    fn beam_refuses_nonfinite_transition_scores() {
++        let mut model = tiny();
++        model.parser.weights.fill(f32::MAX);
++        assert!(
++            model
++                .infer_normalized_beam(&["word".into()], 4)
++                .unwrap_err()
++                .contains("nonfinite score")
++        );
++    }
++    #[test]
+     fn corrupt_weights_and_dimensions() {
+         let mut m = tiny();
+         m.parser.weights[0] = 1.;

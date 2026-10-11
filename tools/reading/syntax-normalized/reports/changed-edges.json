@@ -1,0 +1,1242 @@
+[
+  {
+    "sentence": 33,
+    "token": 3,
+    "form": "there",
+    "duplicate": false,
+    "gold": [
+      2,
+      "advmod"
+    ],
+    "baseline": [
+      4,
+      "advmod"
+    ],
+    "beam": [
+      2,
+      "advmod"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 33,
+    "token": 4,
+    "form": "clashed",
+    "duplicate": false,
+    "gold": [
+      0,
+      "root"
+    ],
+    "baseline": [
+      2,
+      "ccomp"
+    ],
+    "beam": [
+      2,
+      "xcomp"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 62,
+    "token": 4,
+    "form": "top",
+    "duplicate": false,
+    "gold": [
+      6,
+      "amod"
+    ],
+    "baseline": [
+      9,
+      "nsubj:pass"
+    ],
+    "beam": [
+      2,
+      "obj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 62,
+    "token": 9,
+    "form": "announced",
+    "duplicate": false,
+    "gold": [
+      2,
+      "ccomp"
+    ],
+    "baseline": [
+      2,
+      "ccomp"
+    ],
+    "beam": [
+      4,
+      "acl:relcl"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 62,
+    "token": 18,
+    "form": "awarded",
+    "duplicate": false,
+    "gold": [
+      9,
+      "advcl"
+    ],
+    "baseline": [
+      9,
+      "conj"
+    ],
+    "beam": [
+      4,
+      "acl:relcl"
+    ],
+    "uas": "correct->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 126,
+    "token": 6,
+    "form": "event",
+    "duplicate": false,
+    "gold": [
+      18,
+      "obl"
+    ],
+    "baseline": [
+      3,
+      "obj"
+    ],
+    "beam": [
+      18,
+      "nsubj:outer"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 126,
+    "token": 8,
+    "form": "Friday",
+    "duplicate": false,
+    "gold": [
+      6,
+      "nmod"
+    ],
+    "baseline": [
+      3,
+      "obl"
+    ],
+    "beam": [
+      6,
+      "nmod"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 126,
+    "token": 10,
+    "form": "one",
+    "duplicate": false,
+    "gold": [
+      18,
+      "nsubj:outer"
+    ],
+    "baseline": [
+      18,
+      "nsubj:outer"
+    ],
+    "beam": [
+      6,
+      "appos"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 126,
+    "token": 18,
+    "form": "has",
+    "duplicate": false,
+    "gold": [
+      0,
+      "root"
+    ],
+    "baseline": [
+      3,
+      "advcl"
+    ],
+    "beam": [
+      3,
+      "ccomp"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 788,
+    "token": 14,
+    "form": "$",
+    "duplicate": false,
+    "gold": [
+      11,
+      "conj"
+    ],
+    "baseline": [
+      11,
+      "conj"
+    ],
+    "beam": [
+      7,
+      "conj"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 788,
+    "token": 17,
+    "form": "deposited",
+    "duplicate": false,
+    "gold": [
+      16,
+      "acl"
+    ],
+    "baseline": [
+      9,
+      "acl:relcl"
+    ],
+    "beam": [
+      14,
+      "acl:relcl"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 870,
+    "token": 13,
+    "form": "Rahu",
+    "duplicate": false,
+    "gold": [
+      8,
+      "nmod"
+    ],
+    "baseline": [
+      11,
+      "obl:agent"
+    ],
+    "beam": [
+      11,
+      "nmod"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 870,
+    "token": 15,
+    "form": "Venus",
+    "duplicate": false,
+    "gold": [
+      13,
+      "conj"
+    ],
+    "baseline": [
+      11,
+      "conj"
+    ],
+    "beam": [
+      13,
+      "conj"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 890,
+    "token": 11,
+    "form": ",",
+    "duplicate": false,
+    "gold": [
+      12,
+      "punct"
+    ],
+    "baseline": [
+      12,
+      "punct"
+    ],
+    "beam": [
+      14,
+      "punct"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 890,
+    "token": 12,
+    "form": "panties",
+    "duplicate": false,
+    "gold": [
+      10,
+      "conj"
+    ],
+    "baseline": [
+      8,
+      "obl"
+    ],
+    "beam": [
+      14,
+      "compound"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 890,
+    "token": 14,
+    "form": "stockings",
+    "duplicate": false,
+    "gold": [
+      10,
+      "conj"
+    ],
+    "baseline": [
+      12,
+      "nmod"
+    ],
+    "beam": [
+      6,
+      "conj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 984,
+    "token": 5,
+    "form": "industry",
+    "duplicate": false,
+    "gold": [
+      14,
+      "nsubj"
+    ],
+    "baseline": [
+      14,
+      "nsubj"
+    ],
+    "beam": [
+      14,
+      "advmod"
+    ],
+    "uas": "correct->correct",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 984,
+    "token": 6,
+    "form": ",",
+    "duplicate": false,
+    "gold": [
+      5,
+      "punct"
+    ],
+    "baseline": [
+      8,
+      "punct"
+    ],
+    "beam": [
+      5,
+      "punct"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 984,
+    "token": 8,
+    "form": "put",
+    "duplicate": false,
+    "gold": [
+      14,
+      "advcl"
+    ],
+    "baseline": [
+      5,
+      "conj"
+    ],
+    "beam": [
+      14,
+      "advcl"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 984,
+    "token": 12,
+    "form": ",",
+    "duplicate": false,
+    "gold": [
+      8,
+      "punct"
+    ],
+    "baseline": [
+      5,
+      "punct"
+    ],
+    "beam": [
+      8,
+      "punct"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 990,
+    "token": 6,
+    "form": "(",
+    "duplicate": false,
+    "gold": [
+      9,
+      "punct"
+    ],
+    "baseline": [
+      8,
+      "punct"
+    ],
+    "beam": [
+      25,
+      "punct"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 990,
+    "token": 8,
+    "form": "blogger",
+    "duplicate": false,
+    "gold": [
+      9,
+      "nsubj"
+    ],
+    "baseline": [
+      25,
+      "ccomp"
+    ],
+    "beam": [
+      25,
+      "nsubj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 990,
+    "token": 25,
+    "form": "demanded",
+    "duplicate": false,
+    "gold": [
+      5,
+      "conj"
+    ],
+    "baseline": [
+      5,
+      "csubj"
+    ],
+    "beam": [
+      5,
+      "parataxis"
+    ],
+    "uas": "correct->correct",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1273,
+    "token": 16,
+    "form": "make",
+    "duplicate": false,
+    "gold": [
+      4,
+      "conj"
+    ],
+    "baseline": [
+      12,
+      "conj"
+    ],
+    "beam": [
+      6,
+      "conj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1273,
+    "token": 29,
+    "form": "got",
+    "duplicate": false,
+    "gold": [
+      33,
+      "advcl"
+    ],
+    "baseline": [
+      6,
+      "conj"
+    ],
+    "beam": [
+      4,
+      "conj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1296,
+    "token": 18,
+    "form": "afnd",
+    "duplicate": false,
+    "gold": [
+      21,
+      "cc"
+    ],
+    "baseline": [
+      34,
+      "advmod"
+    ],
+    "beam": [
+      17,
+      "amod"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1296,
+    "token": 28,
+    "form": "dated",
+    "duplicate": false,
+    "gold": [
+      4,
+      "conj"
+    ],
+    "baseline": [
+      18,
+      "conj"
+    ],
+    "beam": [
+      4,
+      "conj"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1296,
+    "token": 34,
+    "form": "like",
+    "duplicate": false,
+    "gold": [
+      32,
+      "acl:relcl"
+    ],
+    "baseline": [
+      15,
+      "ccomp"
+    ],
+    "beam": [
+      28,
+      "ccomp"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1338,
+    "token": 5,
+    "form": ",",
+    "duplicate": false,
+    "gold": [
+      13,
+      "punct"
+    ],
+    "baseline": [
+      8,
+      "punct"
+    ],
+    "beam": [
+      13,
+      "punct"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1338,
+    "token": 6,
+    "form": "and",
+    "duplicate": false,
+    "gold": [
+      13,
+      "cc"
+    ],
+    "baseline": [
+      8,
+      "cc"
+    ],
+    "beam": [
+      13,
+      "cc"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1338,
+    "token": 7,
+    "form": "it",
+    "duplicate": false,
+    "gold": [
+      13,
+      "nsubj:outer"
+    ],
+    "baseline": [
+      8,
+      "nsubj"
+    ],
+    "beam": [
+      13,
+      "nsubj"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1338,
+    "token": 8,
+    "form": "is",
+    "duplicate": false,
+    "gold": [
+      13,
+      "cop"
+    ],
+    "baseline": [
+      4,
+      "conj"
+    ],
+    "beam": [
+      13,
+      "cop"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1338,
+    "token": 13,
+    "form": "like",
+    "duplicate": false,
+    "gold": [
+      4,
+      "conj"
+    ],
+    "baseline": [
+      8,
+      "advcl"
+    ],
+    "beam": [
+      4,
+      "conj"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1338,
+    "token": 18,
+    "form": "know",
+    "duplicate": false,
+    "gold": [
+      4,
+      "parataxis"
+    ],
+    "baseline": [
+      4,
+      "conj"
+    ],
+    "beam": [
+      13,
+      "parataxis"
+    ],
+    "uas": "correct->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1381,
+    "token": 6,
+    "form": "eggs",
+    "duplicate": false,
+    "gold": [
+      5,
+      "obj"
+    ],
+    "baseline": [
+      7,
+      "compound"
+    ],
+    "beam": [
+      5,
+      "obj"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1381,
+    "token": 7,
+    "form": "yesterday",
+    "duplicate": false,
+    "gold": [
+      5,
+      "obl:unmarked"
+    ],
+    "baseline": [
+      5,
+      "obj"
+    ],
+    "beam": [
+      5,
+      "obl:unmarked"
+    ],
+    "uas": "correct->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1381,
+    "token": 9,
+    "form": "today",
+    "duplicate": false,
+    "gold": [
+      15,
+      "obl:unmarked"
+    ],
+    "baseline": [
+      7,
+      "conj"
+    ],
+    "beam": [
+      5,
+      "conj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1381,
+    "token": 10,
+    "form": "some",
+    "duplicate": false,
+    "gold": [
+      15,
+      "nsubj"
+    ],
+    "baseline": [
+      15,
+      "nsubj"
+    ],
+    "beam": [
+      9,
+      "obj"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 1381,
+    "token": 15,
+    "form": "soft",
+    "duplicate": false,
+    "gold": [
+      5,
+      "conj"
+    ],
+    "baseline": [
+      5,
+      "xcomp"
+    ],
+    "beam": [
+      9,
+      "xcomp"
+    ],
+    "uas": "correct->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1381,
+    "token": 18,
+    "form": "mean",
+    "duplicate": false,
+    "gold": [
+      21,
+      "advcl"
+    ],
+    "baseline": [
+      15,
+      "advcl"
+    ],
+    "beam": [
+      21,
+      "advcl"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1381,
+    "token": 21,
+    "form": "mean",
+    "duplicate": false,
+    "gold": [
+      5,
+      "parataxis"
+    ],
+    "baseline": [
+      19,
+      "ccomp"
+    ],
+    "beam": [
+      5,
+      "parataxis"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1381,
+    "token": 27,
+    "form": "eggs",
+    "duplicate": false,
+    "gold": [
+      21,
+      "obl"
+    ],
+    "baseline": [
+      21,
+      "ccomp"
+    ],
+    "beam": [
+      21,
+      "advcl"
+    ],
+    "uas": "correct->correct",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1439,
+    "token": 14,
+    "form": "yet",
+    "duplicate": false,
+    "gold": [
+      12,
+      "advmod"
+    ],
+    "baseline": [
+      18,
+      "advmod"
+    ],
+    "beam": [
+      7,
+      "advmod"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1439,
+    "token": 15,
+    "form": "so",
+    "duplicate": false,
+    "gold": [
+      22,
+      "advmod"
+    ],
+    "baseline": [
+      18,
+      "mark"
+    ],
+    "beam": [
+      17,
+      "mark"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1439,
+    "token": 16,
+    "form": "it",
+    "duplicate": false,
+    "gold": [
+      22,
+      "nsubj"
+    ],
+    "baseline": [
+      18,
+      "nsubj"
+    ],
+    "beam": [
+      17,
+      "nsubj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1439,
+    "token": 17,
+    "form": "s",
+    "duplicate": false,
+    "gold": [
+      22,
+      "cop"
+    ],
+    "baseline": [
+      18,
+      "cop"
+    ],
+    "beam": [
+      14,
+      "advcl"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1439,
+    "token": 18,
+    "form": "kind",
+    "duplicate": false,
+    "gold": [
+      22,
+      "advmod"
+    ],
+    "baseline": [
+      7,
+      "obl"
+    ],
+    "beam": [
+      17,
+      "obj"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1556,
+    "token": 6,
+    "form": "Rd",
+    "duplicate": false,
+    "gold": [
+      4,
+      "nmod:unmarked"
+    ],
+    "baseline": [
+      7,
+      "compound"
+    ],
+    "beam": [
+      4,
+      "nmod:unmarked"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1556,
+    "token": 10,
+    "form": "48604",
+    "duplicate": false,
+    "gold": [
+      4,
+      "list"
+    ],
+    "baseline": [
+      2,
+      "nmod:unmarked"
+    ],
+    "beam": [
+      7,
+      "nmod:unmarked"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1556,
+    "token": 12,
+    "form": "989",
+    "duplicate": false,
+    "gold": [
+      4,
+      "list"
+    ],
+    "baseline": [
+      10,
+      "nmod:unmarked"
+    ],
+    "beam": [
+      7,
+      "appos"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1556,
+    "token": 14,
+    "form": "755-1109",
+    "duplicate": false,
+    "gold": [
+      12,
+      "flat"
+    ],
+    "baseline": [
+      10,
+      "nmod:unmarked"
+    ],
+    "beam": [
+      12,
+      "nmod:unmarked"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1737,
+    "token": 10,
+    "form": "Bridges",
+    "duplicate": false,
+    "gold": [
+      0,
+      "root"
+    ],
+    "baseline": [
+      13,
+      "nmod"
+    ],
+    "beam": [
+      16,
+      "obl"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1737,
+    "token": 13,
+    "form": "miles",
+    "duplicate": false,
+    "gold": [
+      16,
+      "nmod:unmarked"
+    ],
+    "baseline": [
+      4,
+      "orphan"
+    ],
+    "beam": [
+      16,
+      "nsubj"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1737,
+    "token": 16,
+    "form": "west",
+    "duplicate": false,
+    "gold": [
+      10,
+      "nmod"
+    ],
+    "baseline": [
+      13,
+      "nmod"
+    ],
+    "beam": [
+      4,
+      "orphan"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1840,
+    "token": 1,
+    "form": "We",
+    "duplicate": false,
+    "gold": [
+      2,
+      "nsubj"
+    ],
+    "baseline": [
+      2,
+      "nsubj"
+    ],
+    "beam": [
+      4,
+      "nsubj"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 1840,
+    "token": 2,
+    "form": "have",
+    "duplicate": false,
+    "gold": [
+      0,
+      "root"
+    ],
+    "baseline": [
+      0,
+      "root"
+    ],
+    "beam": [
+      4,
+      "aux"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 1840,
+    "token": 4,
+    "form": "Lobby",
+    "duplicate": false,
+    "gold": [
+      2,
+      "obj"
+    ],
+    "baseline": [
+      2,
+      "obj"
+    ],
+    "beam": [
+      0,
+      "root"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 1840,
+    "token": 9,
+    "form": "Fabrics",
+    "duplicate": false,
+    "gold": [
+      4,
+      "conj"
+    ],
+    "baseline": [
+      4,
+      "conj"
+    ],
+    "beam": [
+      4,
+      "appos"
+    ],
+    "uas": "correct->correct",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 1840,
+    "token": 11,
+    "form": "Walmart",
+    "duplicate": false,
+    "gold": [
+      4,
+      "conj"
+    ],
+    "baseline": [
+      4,
+      "conj"
+    ],
+    "beam": [
+      9,
+      "conj"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  },
+  {
+    "sentence": 1840,
+    "token": 15,
+    "form": "Mall",
+    "duplicate": false,
+    "gold": [
+      4,
+      "conj"
+    ],
+    "baseline": [
+      2,
+      "obl"
+    ],
+    "beam": [
+      4,
+      "conj"
+    ],
+    "uas": "wrong->correct",
+    "las": "wrong->correct"
+  },
+  {
+    "sentence": 1840,
+    "token": 18,
+    "form": "Barling",
+    "duplicate": false,
+    "gold": [
+      2,
+      "obl"
+    ],
+    "baseline": [
+      15,
+      "orphan"
+    ],
+    "beam": [
+      15,
+      "nmod:unmarked"
+    ],
+    "uas": "wrong->wrong",
+    "las": "wrong->wrong"
+  },
+  {
+    "sentence": 1840,
+    "token": 19,
+    "form": ".",
+    "duplicate": false,
+    "gold": [
+      2,
+      "punct"
+    ],
+    "baseline": [
+      2,
+      "punct"
+    ],
+    "beam": [
+      4,
+      "punct"
+    ],
+    "uas": "correct->wrong",
+    "las": "correct->wrong"
+  }
+]

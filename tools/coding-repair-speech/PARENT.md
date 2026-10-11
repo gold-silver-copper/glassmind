@@ -1,9 +1,10 @@
 # Original repair-request candidate fails independent coverage
 
-A subsequent coordinator revision restores8/8 positive repairs, blocks all9 old
-unrequested edits and passes15 legacy native repairs. Full765 is running; this is
-not yet a published improvement. See [revision validation](parent/revision/VALIDATION.md).
-The original rejected submission and its scores below remain unchanged.
+The coordinator revision passed its local8/8 positive and15 legacy native checks,
+but the full coding DEV collapsed180→53/765 (712 refusals,zero failures), losing127
+previous passes. It is rejected and rolled back; no repair runtime change ships.
+See [full revision review](parent/revision/VALIDATION.md). The original worker and
+coordinator submissions remain preserved separately, including all failing results.
 
 The original submission removes all nine unrequested do edits from the parent
 baseline, but loses four of eight previously working repair requests. It answers

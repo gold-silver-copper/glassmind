@@ -1,0 +1,1570 @@
+{
+  "scope": "Full fixed765 Rust coding DEV; no held-out evaluation",
+  "source_commit": "8aeb5ac1a888dcea571d4c0710e059005442b215",
+  "binary_sha256": "e7bf6dd5fa6c1f3306cdeb563ceb50c5839ffabac7224c78fe874b90db28639e",
+  "total": 765,
+  "outcomes": {
+    "refused": 712,
+    "pass": 53
+  },
+  "all_previous_passes_retained": 53,
+  "regressions": [
+    {
+      "task": "fix-errors/assign-twice",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/assign-twice",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/bare-trait-object",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/bare-trait-object",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/bare-trait-object",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-clone",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-clone",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-hash",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-hash",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-partialeq",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-partialeq",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-partialeq",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/generic-missing-bound",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/generic-missing-bound",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/index-with-i32",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/index-with-i32",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-mut",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-mut",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-mut",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-without-iter",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-without-iter",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-without-iter",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/longest-lifetime",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/longest-lifetime",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/longest-lifetime",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/missing-use",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/missing-use",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/missing-use",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/misspelled-field",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/misspelled-method",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/misspelled-method",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/move-out-of-borrow",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/move-out-of-borrow",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/move-out-of-borrow",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/mutate-through-self",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/mutate-through-self",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/question-mark-in-main",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/question-mark-in-main",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-plus-str",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-plus-str",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-to-string-field",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-to-string-field",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-to-string-field",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/temp-dropped",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/temp-dropped",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/thread-closure-move",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/thread-closure-move",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/trailing-semicolon",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/trailing-semicolon",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/trait-not-in-scope",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/use-after-move",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/frost-alert",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/frost-alert",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/frost-alert",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/invoice-tax",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/invoice-tax",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/invoice-tax",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/log-first-error",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/log-first-error",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/log-first-error",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/recent-files-ring",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/recent-files-ring",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/recent-files-ring",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0026",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0026",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0026",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0034",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0034",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0121",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0121",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0200",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0212",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0212",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0212",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0214",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0214",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0221",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0221",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0221",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0254",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0255",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0255",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0277",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0307",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0307",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0309",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0310",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0310",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0373",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0373",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0381",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0381",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0381",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0384",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0401",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0401",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0409",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0409",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0424",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0424",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0576",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0576",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0594",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0594",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0617",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0617",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0665",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0665",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0700",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0700",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0716",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0716",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0716",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0746",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0746",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0769",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0769",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0782",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0782",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0783",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0783",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    }
+  ],
+  "outcome_changes": [
+    {
+      "task": "fix-errors/assign-twice",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/assign-twice",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/bare-trait-object",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/bare-trait-object",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/bare-trait-object",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-clone",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-clone",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-debug",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-hash",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-hash",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-partialeq",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-partialeq",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/derive-partialeq",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/generic-missing-bound",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/generic-missing-bound",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/index-with-i32",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/index-with-i32",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-mut",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-mut",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-mut",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-without-iter",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-without-iter",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/iter-without-iter",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/longest-lifetime",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/longest-lifetime",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/longest-lifetime",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/missing-use",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/missing-use",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/missing-use",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/misspelled-field",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/misspelled-method",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/misspelled-method",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/move-out-of-borrow",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/move-out-of-borrow",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/move-out-of-borrow",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/mutate-through-self",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/mutate-through-self",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/question-mark-in-main",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/question-mark-in-main",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-plus-str",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-plus-str",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-to-string-field",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-to-string-field",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/str-to-string-field",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/temp-dropped",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/temp-dropped",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/thread-closure-move",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/thread-closure-move",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/trailing-semicolon",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/trailing-semicolon",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/trait-not-in-scope",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-errors/use-after-move",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/frost-alert",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/frost-alert",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/frost-alert",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/invoice-tax",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/invoice-tax",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/invoice-tax",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/log-first-error",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/log-first-error",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/log-first-error",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/recent-files-ring",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/recent-files-ring",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/recent-files-ring",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "fix-tests/steps-moving-average",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0026",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0026",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0026",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0034",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0034",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0121",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0121",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0200",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0212",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0212",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0212",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0214",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0214",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0221",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0221",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0221",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0254",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0255",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0255",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0277",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0307",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0307",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0309",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0310",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0310",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0373",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0373",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0381",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0381",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0381",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0384",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0401",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0401",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0409",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0409",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0424",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0424",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0576",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0576",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0594",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0594",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0617",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0617",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0665",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0665",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0700",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0700",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0716",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0716",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0716",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0746",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0746",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0769",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0769",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0782",
+      "style": "chatty",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0782",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0783",
+      "style": "hurried",
+      "before": "pass",
+      "after": "refused"
+    },
+    {
+      "task": "rustc-error-index/e0783",
+      "style": "terse",
+      "before": "pass",
+      "after": "refused"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "refused": 459,
+      "pass": 24
+    },
+    "fix-test": {
+      "refused": 81
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "6af4aba6d01ee829f2235494398eb76b894582cdd3f64f396293c55aea22e01b",
+  "candidate_result_sha256": "a2c7933d70ec10bb7a7ce25f95a3000413f107a236a288928ae587cd61724ba1",
+  "timing": {
+    "sum_agent_seconds": 216.947361429,
+    "median_agent_seconds": 0.150599012
+  },
+  "runner": "Unchanged tools/rustbench-dev.sh; on-disk TMPDIR and explicit native scratch;8GiB/0swap,setsid--wait,bounded timeouts and10second shutdown grace",
+  "independent_gates": "Parent30 cases/60 modes:8 exact native repairs,zero unrequested edits/negative Command previews; status proxy v1=5/6,v2=6/6 after explicit Problems type correction. Fifteen legacy do repairs exact/native; initial ask--apply remains read-only.20CLI+43English tests and workspace checks pass."
+}

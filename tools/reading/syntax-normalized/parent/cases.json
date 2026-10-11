@@ -1,0 +1,432 @@
+[
+  {
+    "name": "contrast_0",
+    "forms": [
+      "Dana",
+      "visited",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_1",
+    "forms": [
+      "Dana",
+      "called",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_2",
+    "forms": [
+      "Dana",
+      "helped",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_3",
+    "forms": [
+      "Dana",
+      "thanked",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_4",
+    "forms": [
+      "Dana",
+      "met",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_5",
+    "forms": [
+      "Yesterday",
+      ",",
+      "Dana",
+      "called",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_6",
+    "forms": [
+      "Did",
+      "Dana",
+      "call",
+      "Riley",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_7",
+    "forms": [
+      "Who",
+      "did",
+      "Dana",
+      "call",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 1,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_8",
+    "forms": [
+      "Who",
+      "called",
+      "Dana",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_9",
+    "forms": [
+      "Dana",
+      "never",
+      "called",
+      "Riley",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_10",
+    "forms": [
+      "Riley",
+      "visited",
+      "Dana",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_11",
+    "forms": [
+      "Riley",
+      "called",
+      "Dana",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_12",
+    "forms": [
+      "Riley",
+      "helped",
+      "Dana",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_13",
+    "forms": [
+      "Riley",
+      "thanked",
+      "Dana",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_14",
+    "forms": [
+      "Riley",
+      "met",
+      "Dana",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_15",
+    "forms": [
+      "Yesterday",
+      ",",
+      "Riley",
+      "called",
+      "Dana",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 5,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_16",
+    "forms": [
+      "Did",
+      "Riley",
+      "call",
+      "Dana",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 2,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_17",
+    "forms": [
+      "Who",
+      "did",
+      "Riley",
+      "call",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 3,
+        "head": 4,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 1,
+        "head": 4,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_18",
+    "forms": [
+      "Who",
+      "called",
+      "Riley",
+      "?"
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 2,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 3,
+        "head": 2,
+        "label": "obj"
+      }
+    ]
+  },
+  {
+    "name": "contrast_19",
+    "forms": [
+      "Riley",
+      "never",
+      "called",
+      "Dana",
+      "."
+    ],
+    "edges": [
+      {
+        "dependent": 1,
+        "head": 3,
+        "label": "nsubj"
+      },
+      {
+        "dependent": 4,
+        "head": 3,
+        "label": "obj"
+      }
+    ]
+  }
+]
