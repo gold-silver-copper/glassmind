@@ -1,0 +1,44 @@
+{
+  "baseline": {
+    "total": 10570,
+    "raw": {
+      "exact": 12.39356669820246,
+      "f1": 19.00151729312828,
+      "total": 10570
+    },
+    "accepted": {
+      "exact": 12.346263008514665,
+      "f1": 18.94592535011912,
+      "total": 10570
+    },
+    "right": 1305,
+    "refused": 108,
+    "wrong": 9157,
+    "precision": 0.12473714394953164,
+    "coverage": 0.9897824030274361
+  },
+  "candidate": {
+    "total": 10570,
+    "raw": {
+      "exact": 23.954588457899717,
+      "f1": 34.51842504801282,
+      "total": 10570
+    },
+    "accepted": {
+      "exact": 7.710501419110691,
+      "f1": 8.700190089811684,
+      "total": 10570
+    },
+    "right": 815,
+    "refused": 8964,
+    "wrong": 791,
+    "precision": 0.5074719800747198,
+    "coverage": 0.15193945127719963
+  },
+  "gains_pp": {
+    "exact": 11.561021759697258,
+    "f1": 15.516907754884542
+  },
+  "passes_frozen_gate": true,
+  "selection": "SHA256(questionID) ascending; first200 for sample, all10570 for full"
+}

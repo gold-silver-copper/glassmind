@@ -108,6 +108,25 @@ is correct. Documents over 48 tokens remain in the denominator as uncovered;
 the report counts them separately. No bits-per-byte claim is made. BabyLM's
 test archive is not used.
 
+## Passage question answering (development experiment)
+
+[SQuAD 1.1](https://rajpurkar.github.io/SQuAD-explorer/), repository revision
+`eee5fdbf62f8613a7812b03419e6b29617b74fd1`, CC BY-SA 4.0: official TRAIN
+87,599 questions from 442 articles (30,288,272 bytes) and public DEV 10,570
+questions from 48 articles (4,854,279 bytes). No test data or model predictions
+were fetched. An exact audit found no shared article titles, context strings or
+question IDs across these two splits. All dev questions have annotated answers;
+this dataset alone cannot establish refusal quality on unanswerable questions.
+
+The experiment is separate from text probability and grammar coverage. Data,
+hashes and overlap audit are retained under
+`~/.cache/glassmind/continuous-20261010/readingqa-source/`. The unchanged official
+`evaluate-v2.0.py` from the same revision supplies normalized EM and token F1 on
+the all-answerable v1.1 data; no no-answer probabilities are supplied. Prediction
+IDs must cover the full selected split before scoring, since the upstream script
+otherwise omits missing predictions. The repository/scorer license is MIT.
+No passage-QA capability or measured gain is claimed until independently verified.
+
 ## Everyday intents and conversation memory
 
 [CLINC150 / oos-eval](https://github.com/clinc/oos-eval), revision

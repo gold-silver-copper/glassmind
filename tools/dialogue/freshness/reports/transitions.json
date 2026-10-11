@@ -1,0 +1,109 @@
+{
+  "joint_transitions": {
+    "right->right": 595,
+    "wrong->wrong": 459,
+    "refused->refused": 50,
+    "right->wrong": 15
+  },
+  "frame_transitions": {
+    "True->True": 699,
+    "False->False": 502,
+    "True->False": 17
+  },
+  "routing_transitions": {
+    "True->True": 977,
+    "False->False": 142
+  },
+  "changed_joint_ids": [
+    [
+      "2_00008",
+      2,
+      "right",
+      "wrong"
+    ],
+    [
+      "2_00008",
+      4,
+      "right",
+      "wrong"
+    ],
+    [
+      "2_00008",
+      6,
+      "right",
+      "wrong"
+    ],
+    [
+      "2_00019",
+      2,
+      "right",
+      "wrong"
+    ],
+    [
+      "2_00019",
+      4,
+      "right",
+      "wrong"
+    ],
+    [
+      "2_00019",
+      6,
+      "right",
+      "wrong"
+    ],
+    [
+      "2_00019",
+      8,
+      "right",
+      "wrong"
+    ],
+    [
+      "2_00022",
+      4,
+      "right",
+      "wrong"
+    ],
+    [
+      "3_00082",
+      0,
+      "right",
+      "wrong"
+    ],
+    [
+      "3_00082",
+      2,
+      "right",
+      "wrong"
+    ],
+    [
+      "3_00082",
+      4,
+      "right",
+      "wrong"
+    ],
+    [
+      "3_00082",
+      6,
+      "right",
+      "wrong"
+    ],
+    [
+      "3_00098",
+      2,
+      "right",
+      "wrong"
+    ],
+    [
+      "3_00098",
+      4,
+      "right",
+      "wrong"
+    ],
+    [
+      "3_00098",
+      6,
+      "right",
+      "wrong"
+    ]
+  ]
+}

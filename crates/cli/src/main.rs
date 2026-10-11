@@ -29,6 +29,7 @@ mod coding;
 mod details;
 mod edit;
 mod everyday;
+mod reading;
 mod system;
 mod talk_facts;
 mod talk_stories;
@@ -69,6 +70,27 @@ struct Common {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Propose an unverified answer from a supplied passage, with its source text.
+    Read {
+        /// Local span-ranking model. Predictions are not verified factual answers.
+        #[arg(long)]
+        model: PathBuf,
+        /// UTF-8 passage file (at most 65,536 bytes).
+        #[arg(long, required_unless_present = "input", conflicts_with = "input")]
+        context: Option<PathBuf>,
+        /// JSONL context/question pairs; produces one JSON prediction per line.
+        #[arg(long, conflicts_with_all = ["context", "text", "explain"])]
+        input: Option<PathBuf>,
+        /// Print the typed prediction and source offsets as JSON.
+        #[arg(long)]
+        json: bool,
+        /// Show source offsets and ranking scores (not probabilities).
+        #[arg(long)]
+        explain: bool,
+        /// Question about the passage.
+        #[arg(required_unless_present = "input")]
+        text: Vec<String>,
+    },
     /// Conversation: remember preferences, follow stories, calculate units and dates.
     #[command(
         long_about = "Remember names and preferences, follow story facts, and calculate exact answers.\n\nTry: Mary went to the kitchen. / Mary picked up the apple. / Where is the apple?\nEnter each statement or question on its own line. Use --session FILE to continue later.\n/reset clears memory and story facts; /quit leaves the conversation."
@@ -189,6 +211,21 @@ enum Command {
 fn main() -> ExitCode {
     let cli = Cli::parse();
     let result = match cli.command {
+        Command::Read {
+            model,
+            context,
+            input,
+            json,
+            explain,
+            text,
+        } => reading::run(
+            &model,
+            context.as_deref(),
+            input.as_deref(),
+            &text.join(" "),
+            json,
+            explain,
+        ),
         Command::Talk {
             session,
             model,
@@ -285,6 +322,16 @@ fn open(common: &Common) -> System {
 
 fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
     let system = open(common);
+    if glassmind_english_rust::declared_types::question(text).is_some() && common.session.is_some()
+    {
+        return Err(
+            "declared-type questions currently require a standalone ask (no --session)".into(),
+        );
+    }
+    if let Some(message) = declared_type_reply(&system, text, common.explain, common.json) {
+        say!("{message}");
+        return Ok(());
+    }
     let mut session = match &common.session {
         Some(path) => load_session(path, system.source_refs())?,
         None => Session::new(system.source_refs()),
@@ -330,6 +377,42 @@ fn ask(common: &Common, apply: bool, text: &str) -> Result<(), String> {
     Ok(())
 }
 
+// Both ordinary replies and exports use the same typed world operation.
+fn declared_type_reply(system: &System, text: &str, explain: bool, json: bool) -> Option<String> {
+    let question = glassmind_english_rust::declared_types::question(text)?;
+    let mut fired = Vec::new();
+    let answer = question.and_then(|question| {
+        if explain && !json {
+            say!("Metadata question: {question:?}");
+        }
+        system
+            .world
+            .declared_type(&question, &mut fired)
+            .map_err(|e| format!("{e:?}"))
+    });
+    if explain && !json {
+        say!("Resolved answer: {answer:?}");
+        for rule in fired {
+            say!(
+                "World rule: {} ({})",
+                rule.id,
+                glassmind_rules::provenance(rule.round)
+            );
+        }
+    }
+    Some(if json {
+        match answer {
+            Ok(answer) => serde_json::json!({"declared_type": answer}).to_string(),
+            Err(reason) => serde_json::json!({"refused": reason}).to_string(),
+        }
+    } else {
+        match answer {
+            Ok(answer) => glassmind_english_rust::declared_types::say(&answer),
+            Err(reason) => format!("Cannot establish a declared type: {reason}"),
+        }
+    })
+}
+
 fn act(
     repo: &std::path::Path,
     reply_file: Option<&std::path::Path>,
@@ -348,6 +431,13 @@ fn act(
             if answer_file::transcript_conflicts(repo, path, text) {
                 return Err(message);
             }
+            std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
+        }
+        return Ok(());
+    }
+    if let Some(message) = declared_type_reply(&system, text, explain, false) {
+        say!("{message}");
+        if let Some(path) = reply_file {
             std::fs::write(path, format!("{message}\n")).map_err(|e| e.to_string())?;
         }
         return Ok(());

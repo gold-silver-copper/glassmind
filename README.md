@@ -86,7 +86,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 168/765 pass; 594 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 170/765 pass; 592 refused; 3 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation with a 500-entity scoped Wikidata index | 256/2,821 right; 2,545 refused; 20 wrong | pending |
@@ -94,6 +94,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 | Multi-service dialogue, SGD three-service dev subset | 610/1,119 exact routing-and-state turns; 50 refused; 459 wrong | pending |
 | Numbers, units, dates (synthetic dev) | 3,056/3,116 correct including 762 expected refusals; 60 unsupported; 0 wrong | pending |
 | Word problems, MathQA (numeric answers without choices) | 22/4,475 right; 4,450 refused; 3 wrong | pending |
+| Passage QA, SQuAD 1.1 (unverified proposals) | 23.95% raw normalized EM; selected: 815 right, 8,964 refused, 791 wrong / 10,570 | pending |
 | Chat memory, calculations and stories | 41/41 memory; 27/27 calculations; 47/47 mixed story checks | synthetic; no independent chat benchmark |
 | Reading, BabyLM 2025 dev | Byte scorer: 2.1893 bits/byte vs unigram 4.8212; all 120 excerpts (33 overlap training) | pending |
 | Grammar, BLiMP dev probe | Byte scorer: 707 good, 633 bad, 0 ties on 1,340 pairs | pending |
@@ -139,6 +140,21 @@ unchanged. Exports refuse ambiguous answers, unsupported formats, unsafe paths
 and existing destinations; `--reply-file` remains the separate transcript.
 [Export scope](docs/coding-answerfiles.md) and
 [full comparison](docs/results/coding-answerfiles.json).
+
+Declared field types now retain their exact source spelling and UTF-8 offsets,
+including generics, references, comments and aliases. Standalone questions and
+type exports add two more dev passes, preserving every other outcome. This is
+source syntax, not compiler type resolution; ambiguous owners and unsupported
+cfg or macros refuse. [Type-query scope](docs/coding-metatypes.md) and
+[full comparison](docs/results/coding-metatypes.json).
+
+`glassmind read --model tools/reading/qa/artifacts/model.json --context passage.txt
+"Who visited Zürich?"` proposes a source span and shows its passage. Output is
+explicitly unverified; it never enters factual conversation or stored knowledge.
+The learned ranker improves raw SQuAD dev extraction from 12.39% to 23.95% exact
+match, but selected predictions are only 50.75% exact and include known relation
+errors. All 10,570 main-command outputs match the independently rebuilt model.
+[Usage, complete metrics and limitations](tools/reading/qa/PARENT.md).
 
 
 On 179 complete SGD dev conversations involving RideSharing, Travel and Weather,

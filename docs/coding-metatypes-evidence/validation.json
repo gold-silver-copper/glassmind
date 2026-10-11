@@ -1,0 +1,162 @@
+{
+  "base_commit": "38ef238c560d11f0627adb14a946ceb935bc4288",
+  "source_manifest": {
+    "crates/cli/src/answer_file.rs": {
+      "bytes": 14563,
+      "sha256": "9b6d58fa95b81d2f3352209b822891b31d1a79a75397c0cedb98e1a3ab56253f"
+    },
+    "crates/cli/src/main.rs": {
+      "bytes": 19637,
+      "sha256": "cc12fcfdb7a8b37c33a0877206422562f39527dd8115f3eeb5c049e3fd3c2bf4"
+    },
+    "crates/english-rust/src/lib.rs": {
+      "bytes": 75109,
+      "sha256": "25cf8d7e636ef943b1a2152c4b5a0f53b7277613b45929e2a447b63f9c964468"
+    },
+    "crates/english-rust/src/declared_types.rs": {
+      "bytes": 3576,
+      "sha256": "af1cecf81b8f36b26eef84580163f3a2e964c2232e8b2e0f8e42dff058049578"
+    },
+    "crates/world-rust/src/index.rs": {
+      "bytes": 15773,
+      "sha256": "18258c69e700e78e778016cc080df3abf087f947b35719c688ec37c62021f93e"
+    },
+    "crates/world-rust/src/lib.rs": {
+      "bytes": 46965,
+      "sha256": "8402f4e761a2b101ffe3bd144b309cd7b270f67335d08f9f9fe16ad372645489"
+    },
+    "crates/world-rust/src/declared_types.rs": {
+      "bytes": 9057,
+      "sha256": "27a0ba964e2728428fe42244ca97a52250389c9354d277594442fef5165e5300"
+    }
+  },
+  "source_manifest_sha256": "88f86cc6e33ee34a3637f87b9c4abd26a2f909afe2723e7c94d875a00a338e7f",
+  "source_manifest_hash_encoding": "SHA256 of UTF-8 json.dumps(source_manifest,sort_keys=True,separators=(comma,colon))",
+  "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+  "binary_bytes": 121662912,
+  "frozen_binary": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/glassmind-metatypes-verified",
+  "reports": {
+    "baseline-sample": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/glassmind-baseline",
+      "binary_sha256": "a4b625c0e9c06a65d5226236fe6154e1003a50c4a643a5b2e7acd9a5bf69a2b9",
+      "total": 3,
+      "usable": 2,
+      "safe": 3,
+      "report_sha256": "641cb3d18db417149277f0be755bea566d1398de1b1f33ee3eb8ed6be3ec86c8",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-baseline-sample/results.json"
+    },
+    "baseline-full": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/glassmind-baseline",
+      "binary_sha256": "a4b625c0e9c06a65d5226236fe6154e1003a50c4a643a5b2e7acd9a5bf69a2b9",
+      "total": 7,
+      "usable": 2,
+      "safe": 7,
+      "report_sha256": "fa67b54f4e79cadfd7d9724d02301d7b46ee7beb0363ad47c674d1f9d41c5e05",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-baseline-full/results.json"
+    },
+    "verified-sample": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/target/debug/glassmind",
+      "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+      "total": 3,
+      "usable": 3,
+      "safe": 3,
+      "report_sha256": "f517138309f3065dd9f5c8176f170746cdea155da953135be7d5487efe3f43d4",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-verified-sample/results.json"
+    },
+    "verified-full": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/target/debug/glassmind",
+      "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+      "total": 7,
+      "usable": 4,
+      "safe": 7,
+      "report_sha256": "0fc37117d0cd1049a657b36ef916faa05f54931c060373bf83a030c84da4c8c9",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-verified-full/results.json"
+    },
+    "verified-independent-sample": {
+      "total": 3,
+      "passed": 3,
+      "usable": 3,
+      "safe": 3,
+      "fixture_bytes": 553,
+      "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+      "report_sha256": "f6bb0d0bc2aa8f481b7098c24522b989c1a32e1d604020b5de9a3d1d096cfad9",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-verified-independent-sample/results.json"
+    },
+    "verified-independent-full": {
+      "total": 35,
+      "passed": 35,
+      "usable": 13,
+      "safe": 35,
+      "fixture_bytes": 5916,
+      "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+      "report_sha256": "87f23fffb263c53aa357b50cc8f5d2cf1012ca1e35c93aa234b0e0362b155d47",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-verified-independent-full/results.json"
+    },
+    "verified-old27": {
+      "binary": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/target/debug/glassmind",
+      "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+      "total": 27,
+      "usable": 6,
+      "safe": 26,
+      "report_sha256": "4ec4f6b6ec56334e5836338ed9d291d13aaa33c95e99f68e6d7e8d0a35c6b4f8",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-verified-old27/results.json"
+    },
+    "verified-regression8": {
+      "total": 8,
+      "right": 8,
+      "binary_sha256": "a886bda67cc9a9a23764de52798dbe3fab961f6061110da4ff2dd5424adfb182",
+      "source_sha256": "8468645997e16e971a13f26bac5c2519f2d23cd348b80c7fc7b650bbb0bb449b",
+      "report_sha256": "cc80cbc3b8ce94ff33d57e6c4ddd4cd8fdb11e9561676e75695500ffe4080006",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-verified-regression8/results.json"
+    }
+  },
+  "checks": {
+    "tests": {
+      "sha256": "737e23976d36b1a78eeef68298e5249c9ac867129f57b0085e7fda38e687c83d",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-tests-verified.log",
+      "exit_code": 0
+    },
+    "build": {
+      "sha256": "bef67c0eaee02f62ff4ac8226d8cf7ecd316f340313d6e8af70dfb720cf11e1d",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-build-verified.log",
+      "exit_code": 0
+    },
+    "clippy": {
+      "sha256": "8db4e1db865008faf6a48c67ddcd3b8eb388937fd2a8bc26ad6215c5c7cc6f39",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-clippy-verified.log",
+      "exit_code": 0
+    },
+    "fmt": {
+      "sha256": "4b061945bd85b94a7b45585c60ae723a1b0f2b49a88b63635703eab4cbdbe630",
+      "raw_path": "/home/gsc/.cache/glassmind/continuous-20261010/metatypes-run/tmp/metatypes-fmt-verified.log",
+      "exit_code": 0
+    }
+  },
+  "provenance": {
+    "production_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "production_bytes": 3418,
+    "requests_bytes": 1539,
+    "production_license": "unknown; no supplied upstream LICENSE",
+    "supplied_hashes_verified": true,
+    "fixture_license": "MIT OR Apache-2.0",
+    "fixture_bytes": 5916,
+    "new_dependencies": 0,
+    "new_downloads": 0,
+    "supplied_provenance": {
+      "bytes": 2779,
+      "sha256": "7cbef83aeaea1d8082fd132474caedfa2b86ebc20b20e87e51b55ae1546828f4"
+    }
+  },
+  "limitations": [
+    "No full765 or heldout evaluation",
+    "old27 unsupported_type frozen refusal expectation now conflicts with correct supported type export",
+    "Rust-specific standalone query interface, no generic dialogue session support",
+    "Syntax spelling only; no cfg, macro, alias or compiler type resolution"
+  ],
+  "tooling": {
+    "tools/coding-metatypes-dev.py": {
+      "bytes": 8705,
+      "sha256": "d5d78d58b423958108449923337a8198c0a64eb71594eeb2e59fd1d137ba6b8d"
+    }
+  }
+}

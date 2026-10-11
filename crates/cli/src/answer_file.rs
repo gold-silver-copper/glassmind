@@ -13,6 +13,7 @@ use crate::system::System;
 #[derive(Clone, Copy, Debug)]
 enum Format {
     Number,
+    Type,
     Name,
 }
 
@@ -58,9 +59,28 @@ fn parse(text: &str) -> Result<Export<'_>, String> {
     let format = match words.first() {
         Some(&"number") => Format::Number,
         Some(&"name") => Format::Name,
-        _ => return Err("unsupported answer format (number or unique name required)".into()),
+        Some(&"type" | &"type,") => Format::Type,
+        _ => {
+            return Err(
+                "unsupported answer format (number, unique name or declared type required)".into(),
+            );
+        }
     };
     words.remove(0);
+    if matches!(format, Format::Type) {
+        for phrase in [
+            &["exactly", "as", "written", "in", "the", "source,"][..],
+            &[
+                "spelled", "exactly", "as", "it", "is", "in", "the", "source,",
+            ][..],
+            &["exactly", "like", "in", "the", "code"][..],
+        ] {
+            if words.starts_with(phrase) {
+                words.drain(..phrase.len());
+                break;
+            }
+        }
+    }
     if !words
         .first()
         .is_some_and(|w| ["to", "into", "in"].contains(w))
@@ -212,6 +232,35 @@ pub fn handle(
             .any(|s| !s.skipped.is_empty() || s.files.is_empty())
         {
             return Err("source index is incomplete".into());
+        }
+        if let Some(question) = glassmind_english_rust::declared_types::question(export.question) {
+            if !matches!(export.format, Format::Type) {
+                return Err("declared type requires type output".into());
+            }
+            let question = question?;
+            let mut fired = Vec::new();
+            let answer = system
+                .world
+                .declared_type(&question, &mut fired)
+                .map_err(|e| format!("cannot establish declared type: {e:?}"))?;
+            if explain {
+                say!("Metadata question: {question:?}");
+                say!("Resolved answer: {answer:?}");
+                for rule in fired {
+                    say!(
+                        "World rule: {} ({})",
+                        rule.id,
+                        glassmind_rules::provenance(rule.round)
+                    );
+                }
+            }
+            let bytes = format!("{}\n", answer.spelling);
+            publish(repo, &export.destination, bytes.as_bytes()).map_err(|e| e.to_string())?;
+            return Ok(format!(
+                "Wrote {} to {}.",
+                answer.spelling,
+                export.destination.display()
+            ));
         }
         let questions =
             glassmind_english_rust::metadata_questions(&system.english, export.question);

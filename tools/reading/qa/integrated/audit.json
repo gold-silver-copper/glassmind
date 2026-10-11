@@ -1,0 +1,22 @@
+{
+  "accepted_transitions": {
+    "refused -> refused": 108,
+    "right -> refused": 976,
+    "right -> right": 262,
+    "right -> wrong": 67,
+    "wrong -> refused": 7880,
+    "wrong -> right": 553,
+    "wrong -> wrong": 724
+  },
+  "raw_exact_transitions": {
+    "0 -> 0": 7397,
+    "0 -> 1": 1863,
+    "1 -> 0": 641,
+    "1 -> 1": 669
+  },
+  "nonzero_weights": 34827,
+  "dense_f32_weight_bytes": 262144,
+  "fit_representable": 3214,
+  "fit_unrepresentable": 786,
+  "no_dev_tuning": true
+}

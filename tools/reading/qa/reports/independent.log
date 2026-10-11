@@ -1,0 +1,141 @@
+Running as unit: run-p2520676-i94762899.scope; invocation ID: 99d1170cc79e43b7804d826fb69c264d
+[
+  {
+    "name": "unicode",
+    "context": "Élodie visited Zürich in 2018.",
+    "question": "Who visited Zürich?",
+    "expected": "Élodie",
+    "prediction": {
+      "status": "predicted",
+      "answer": "Élodie",
+      "proposal": {
+        "start": 0,
+        "end": 7
+      },
+      "evidence": {
+        "start": 0,
+        "end": 31
+      },
+      "score": 1.7024875,
+      "margin": 0.30193532,
+      "reason": "model_prediction_not_verified"
+    },
+    "raw": "Élodie",
+    "correct_behavior": true
+  },
+  {
+    "name": "no_support",
+    "context": "Lena owns a bicycle.",
+    "question": "When did the volcano erupt?",
+    "expected": null,
+    "prediction": {
+      "status": "refused",
+      "answer": "",
+      "proposal": {
+        "start": 0,
+        "end": 4
+      },
+      "evidence": {
+        "start": 0,
+        "end": 19
+      },
+      "score": 0.50166476,
+      "margin": 0.20206249,
+      "reason": "no_lexical_support"
+    },
+    "raw": "Lena",
+    "correct_behavior": true
+  },
+  {
+    "name": "ambiguous",
+    "context": "Ana visited Lima. Bea visited Lima.",
+    "question": "Who visited Lima?",
+    "expected": null,
+    "prediction": {
+      "status": "refused",
+      "answer": "",
+      "proposal": {
+        "start": 0,
+        "end": 3
+      },
+      "evidence": {
+        "start": 0,
+        "end": 16
+      },
+      "score": 1.6807382,
+      "margin": 0.023079157,
+      "reason": "below_train_calibrated_threshold"
+    },
+    "raw": "Ana",
+    "correct_behavior": true
+  },
+  {
+    "name": "multioccurrence",
+    "context": "Ana visited Lima. Ana visited Lima.",
+    "question": "Who visited Lima?",
+    "expected": "Ana",
+    "prediction": {
+      "status": "predicted",
+      "answer": "Ana",
+      "proposal": {
+        "start": 0,
+        "end": 3
+      },
+      "evidence": {
+        "start": 0,
+        "end": 16
+      },
+      "score": 1.6807382,
+      "margin": 0.5898392,
+      "reason": "model_prediction_not_verified"
+    },
+    "raw": "Ana",
+    "correct_behavior": true
+  },
+  {
+    "name": "trailing_text",
+    "context": "Mira founded the club in 2004. The unrelated bakery sells bread.",
+    "question": "When did Mira found the club?",
+    "expected": "2004",
+    "prediction": {
+      "status": "predicted",
+      "answer": "2004",
+      "proposal": {
+        "start": 25,
+        "end": 29
+      },
+      "evidence": {
+        "start": 0,
+        "end": 29
+      },
+      "score": 1.5236082,
+      "margin": 0.37465107,
+      "reason": "model_prediction_not_verified"
+    },
+    "raw": "2004",
+    "correct_behavior": true
+  },
+  {
+    "name": "unsupported_relation",
+    "context": "Lena painted a bicycle.",
+    "question": "When did Lena buy the bicycle?",
+    "expected": null,
+    "prediction": {
+      "status": "predicted",
+      "answer": "painted",
+      "proposal": {
+        "start": 5,
+        "end": 12
+      },
+      "evidence": {
+        "start": 0,
+        "end": 22
+      },
+      "score": 0.9324444,
+      "margin": 0.27997923,
+      "reason": "model_prediction_not_verified"
+    },
+    "raw": "painted",
+    "correct_behavior": false
+  }
+]
