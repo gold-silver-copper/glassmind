@@ -1,8 +1,83 @@
 # Continuous development checkpoint
 
-The unlimited goal is active; milestones do not complete it. Root branch `harness`.
-WORK=/home/gsc/.cache/glassmind/continuous-20261010. Resume the comparator full765 run and live unit-comparison
-experiment below. No routine human confirmation is needed.
+Unlimited active goal; milestone completion does not complete the goal. Root
+branch `harness`, WORK=/home/gsc/.cache/glassmind/continuous-20261010.
+Previous goal turn: PROGRESS (prompt clarified). Current turn: PROGRESS; accepted
+comparator and exact quantity comparison, integrated main, completed all gates.
+
+## Current batch ready for PR43
+
+Source commit04a2289. Both workers terminal, scopes inactive; no active model
+workers. Comparatorfull16303 COMPLETE, workspace50616 COMPLETE, mainbuild1718
+COMPLETE, main10770 COMPLETE, authority52463 COMPLETE, facts43900 COMPLETE.
+No running native tool sessions remain. Do not repeat these completed gates.
+Next: publish journal/checkpoint commit, push harness, open PR, wait for CI on
+exact reviewed head, then merge with --match-head-commit. After publication,
+reverify archives before removing the two owned worker worktrees/login links.
+
+Coding215/765,550refused0fail; all212previouspassesretained. Three changes are
+styles of one arcade-leaderboard bug. Fullresults coordinator/comparator-full/
+results.jsonl SHA6cdb3be22ce3e32e6d77528eaaebaeaee5099ef5c6657b7acdc7787238dcde1c.
+Fullcomparison.json records exact765/no regressions. Parent11:5exactrepairs,
+4unchangednegativecontrols,2ambiguitiesrefused. Olddedupveto evidence unchanged,
+no new fallback attempted. Native5alternatives have distinct passing outputs.
+Originalworker archive1684files280126084bytes verified; frozen1639files279019019.
+WorktreeWORK/comparator retained, frozenbinary2343c2ed6db780ee4b2be674800bfcb168f5acfb4e4c74f532ae2df4aab7ce38.
+Reports tools/coding-comparator/PARENT.md andparent/. Source exactfrozen.
+
+UnitcompareworkerformerPID3937908 terminal; worktreeWORK/unitcompare retained.
+Original terminal-originals206files50970674bytes verifiedBEFOREinspection;
+manifestunitcompare-run/terminal-originals-manifest.json. Frozenfinal-hashes126
+files49345825bytes independentlyverified. Worker886576input incl832128cached +
+23209output=909785. Knowncompletedworker total190520336; parent/interruptedexcluded.
+NativeSHAa135ff47690658ed9f85e88dc3cea145ac6e2c1b33d624ee8fff9aec71f800e5.
+
+Typedexactcomparison API, no scalarAnswer/solve changes. UsesexistingUnits and
+Rational checked_cmp; direct-query dimension validation, pure literalgrammar,
+4096UTF8/NUL/unknownunit/dimension/overflowrefusal. 5relations/all6dims,8adjectives;
+false/equality/left/right explicit, witness inleftunit. No f64/context/pronouns.
+Worker64cases32positive32refusal,19tests/5transportchecks/fmt/clippy/releasepass;
+initialenum-sizeclippyfailure fixedandretained. Nonewexternaldata/training.
+Parent41frozen:24compared17refused,24exactFraction/SIwitnesses+directAPIequal.
+coordinator/unitcompare-independent/review.py+candidate/report.json. Maincontracts
+SHA bd7c40c6d0c55b3b7c1ed1e4042e0d66f3e4706b2ce958bcca844ad900361f79 unchanged.
+
+Maincrates/cli/src/talk_quantities.rs routesnaturalstems+Comparequantitiesprefix;
+kindquantity_comparison, statuscomparison/refusal, exacttypedresult+humanwitness.
+Malformedrecognizedstemsreservedbeforememory/story; turn+1,lastmessage,current,
+lastslotNone; no otherstatechanges. Main79commands/statechecksEACHplain+intent
+mode=158total, processrestartaftereach, withreal facts/dialoguebundlesloaded;
+recall/calc/draftchecks4eachpass. Humanfalse/equal/rightselectionpass.
+FreshscalarANDmain-talksample200/full4475/synthetic3116 outputsbyteidentical.
+Legacy41memory27calc47story pass;93authority+41production pass. Factsfirst200and
+full2821standalone/facts-enabled/defaulttalk byteidentical. Synthetic mainstill
+3056right incl762expectedrefusals/60unsupported/0wrong. NoMathQAaccuracygainclaim.
+Reports tools/quantities/unit-comparison/PARENT.md, parent/, docs/quantity-comparisons.md.
+
+Finalcombined coordinator/combined-comparator-unitcompare/glassmind SHA
+53c6cacac60e61cf90aba78d183c9134e574b3db56755141913392700c69dfff.
+Equals independentlyevaluatedunitcompare-integrated/glassmind BYTEFORBYTE.
+Manifestprovesallworldrustsource exactfull765candidate andquantitysource exactworker.
+Workspacefmt/alltargetclippy/release/strict4fixture passed afterintegration:
+coordinator/combined-comparator-unitcompare-check.log. Earlier comparatorchecked
+buildretained coordinator/comparator-checked, not finalquantityintegration.
+
+## Next experiments
+
+Resume usefuldevelopment immediatelyafterpublishing. Current codinggap: zero
+implementationDEVcoverage; choose a new PUBLIC TRAIN failure without looking at
+hiddenmaterial. Comparator/dedup/extremum/argswap/ceil families alreadyaccepted;
+do not duplicate. Deferredthermostatreassociation needs exactoverflowreasoning.
+Facts coverage/inverseedges remain a broadgap; read prior TRAIN999rejection and
+incomingcoverage reports before additionalfetch. Avoidaliasfilterretunes.
+Dialogue accuracyneeds materiallydifferentsemanticrepresentation afterthreefailed
+spanproposalhypotheses. Quantity formalpartiallabelsupervision wasrejected in
+d2902be (alreadyincludedupcomingPR); do not retuneit. Currenttypedcomparison is
+separatecapability, no learnedaccuracygain. Choose a bounded new hypothesis and
+freeze parentcontracts before worker inspection. Atmost4modelslotsincludingroot;
+Astrafast/ChatGPTonly/noAPIkeys. Everycargo8GiB0swap/setsid--waittimeout/persistentTMPDIR.
+
+## Historical checkpoints (superseded by current state above)
 
 ## Published PR42 and current two-track batch
 
