@@ -1,6 +1,7 @@
 //! Deterministic, bounded arithmetic with explicit refusals and typed execution.
 pub mod calendar;
 pub mod inventory;
+mod linear;
 pub mod number_words;
 mod parser;
 mod percent;

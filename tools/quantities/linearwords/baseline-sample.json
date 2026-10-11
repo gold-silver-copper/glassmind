@@ -1,0 +1,26 @@
+{
+  "dataset": "MathQA",
+  "split": "official-validation-first-100",
+  "total": 100,
+  "right": 1,
+  "refused": 99,
+  "wrong": 0,
+  "non_numeric_gold": 32,
+  "metric": "exact numeric value in requested units; no choice input; all rows count",
+  "questions_sha256": "1c42e4ea2b67b4e7783b5e10695bffd839c097739e32e6edf8cca6d3f25df269",
+  "binary_sha256": "5b11dd50ad89b8370f944396a2953402a242f6a057d67ac6ece32c9918fecfe8",
+  "answered": [
+    {
+      "index": 94,
+      "question": "what is 30 % of 80 ?",
+      "expected": "24",
+      "actual": {
+        "status": "answer",
+        "value": "24",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    }
+  ]
+}

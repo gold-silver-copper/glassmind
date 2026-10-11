@@ -363,3 +363,17 @@ The SHA256 implementation adds8 locked dependencies totaling219,434 registry
 archive bytes, already cached locally. Source revisions, per-response hashes,
 licenses, remaining limitations and reproduction are recorded in the
 [facts conversation handoff](../tools/facts/chat/HANDOFF.md).
+
+
+## Compositional scalar constraints (2026-10-11 UTC)
+
+Reuse the same MathQA train Problem-only text and fixed dev evaluator; no new
+external bytes, models or dependencies. The parent-corrected candidate raises
+16→22 right of4475, preserves all19 old answer records and keeps3 wrong.
+Two worker-scored-correct difference questions now refuse because the sign of
+the unknown is not determined. All3116 synthetic triples remain unchanged.
+Local evidence includes50 permuted/contradictory affine cases and55 independently
+enumerated absolute-difference cases, workspace MIT OR Apache-2.0. These are
+development checks, not independent held-out benchmarks; two-variable coverage
+has local evidence only. [Original training provenance](../tools/quantities/linearwords/HANDOFF.md)
+and [corrected results and source hashes](../tools/quantities/linearwords/PARENT.md).

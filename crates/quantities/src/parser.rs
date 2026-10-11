@@ -177,6 +177,9 @@ pub fn solve(question: &str) -> Result<Solved> {
         let date: Date = field(&c, 1)?.parse()?;
         return Ok((date.weekday().into(), None, "Gregorian weekday"));
     }
+    if let Ok(Some(value)) = crate::linear::solve(&text) {
+        return Ok(numeric(value, "exact scalar linear constraints"));
+    }
     if let Some((value, is_ratio)) = crate::percent::solve(&text)? {
         return Ok((
             value.to_string(),

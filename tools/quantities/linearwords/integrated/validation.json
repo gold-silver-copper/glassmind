@@ -1,0 +1,26 @@
+{
+  "source_commit": "687f2751ff256f2071330590345ef0652fb09baa",
+  "binary_sha256": "06a651b1817f022677f1c898ba8f71bb53eb2d6ed7ad5c42c707b356a869768a",
+  "tests": 9,
+  "focused_clippy": "passed",
+  "workspace": "fmt, all-target clippy, release build, strict4/4smoke passed",
+  "full_dev": {
+    "total": 4475,
+    "right": 22,
+    "refused": 4450,
+    "wrong": 3
+  },
+  "baseline_answers_preserved": 19,
+  "new_correct": 6,
+  "synthetic": "All3116status/value/unit triples unchanged;3056right including762expectedrefusals,60unsupported,0wrong",
+  "independent_composition": 50,
+  "independent_absolute_difference": 55,
+  "talk": "8/8 new mixed cases in all4 facts/model configurations;27/27 legacy calculation/memory checks with/without model",
+  "cli_binary_sha256": "cbe42583c56482cec7f8dca21a368f6984e5ecb491757714318af692f9fcfad8",
+  "raw_logs": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/linearwords-check/build.log": "90b1e1cc7f2cb82d4d3990e5a2c2517cad6e5a62dd942b50e4e07bc67ce67fbc",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/linearwords-check/workspace.log": "594e9f159a622daf6a79de7484b7398af3589e99b91a2cdf6f1bfece22d2fc77",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/linearwords-check/replay.log": "cf695c61d340ab1cf664b295d975475d32e65a6117bc534194d44c877c311080",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/linearwords-check/talk.log": "565f845b98091ae6999361025e76fb9b1cbddf5c6c52c41164f1685133cab3ca"
+  }
+}

@@ -256,6 +256,19 @@
         "reasoning_output_tokens": 11238
       },
       "source": "Opt-in talk facts;276 accepted dev answer sets preserved; partial display-only labels; parent generic bundle loader replaces pinned fingerprint"
+    },
+    {
+      "track": "linearwords-continuous",
+      "started_unix": 1791693619.1566856,
+      "finished_unix": 1791693892.3111448,
+      "usage": {
+        "input_tokens": 1023528,
+        "cached_input_tokens": 961024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19107,
+        "reasoning_output_tokens": 4513
+      },
+      "source": "Shared affine constraints; worker24/4475, parent rejected signed English difference semantics pending correction/replay"
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
