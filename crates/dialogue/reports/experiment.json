@@ -1,0 +1,32 @@
+{
+  "format_version": 2,
+  "epochs": 12,
+  "char_weight": 0.15,
+  "min_df": 2,
+  "training_dialogues": 688,
+  "training_frames": 3455,
+  "training_span_tokens": 27771,
+  "span_features": 39824,
+  "sample_dialogue_ids": [
+    "1_00123",
+    "1_00124",
+    "1_00125",
+    "1_00126",
+    "1_00127",
+    "2_00000",
+    "2_00001",
+    "2_00002",
+    "2_00003",
+    "2_00004"
+  ],
+  "models": {
+    "centroid": {
+      "bytes": 7073331,
+      "sha256": "5507c7e16a10a81c33ee49926990a4c7418285bb24d3fd02eae7c4d19e2c75bd"
+    },
+    "trained": {
+      "bytes": 7583366,
+      "sha256": "f3759d541be8115043b68ade07ff80856acfd9e8e403e3071e1fd4a1eec2b547"
+    }
+  }
+}

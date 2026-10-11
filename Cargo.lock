@@ -175,6 +175,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "glassmind-dialogue"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "glassmind-everyday",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "glassmind-english"
 version = "0.1.0"
 dependencies = [
