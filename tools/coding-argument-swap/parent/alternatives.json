@@ -1,0 +1,26 @@
+[
+  {
+    "alternative": 0,
+    "old": "distance(b,a)",
+    "new": "distance(a,b)",
+    "public_tests_passed": true,
+    "input": [
+      7,
+      2
+    ],
+    "observed_output": 5,
+    "source_sha256": "68b24286b58c224f1ca1fad3a0a077559f4b1c8c03b152224f0fe05fcdbd2601"
+  },
+  {
+    "alternative": 1,
+    "old": "distance(4,a)",
+    "new": "distance(a,4)",
+    "public_tests_passed": true,
+    "input": [
+      7,
+      2
+    ],
+    "observed_output": 3,
+    "source_sha256": "2e490b953db46f01c56b059f3be3b2fab4eee23e9560b2372244ceaf165c972a"
+  }
+]

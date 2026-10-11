@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "refused": 21,
+    "verified": 6
+  },
+  "candidate": {
+    "refused": 20,
+    "verified": 7
+  },
+  "sample": {
+    "refused": 2,
+    "verified": 2
+  },
+  "old_patches_identical": [
+    "rb-fix-tests-frost-alert",
+    "rb-fix-tests-invoice-tax",
+    "rb-fix-tests-log-first-error",
+    "rb-fix-tests-recent-files-ring",
+    "rb-fix-tests-shipping-boxes",
+    "rb-fix-tests-steps-moving-average"
+  ],
+  "new_verified": [
+    {
+      "source": "rb-fix-tests-download-progress",
+      "turn_id": "train/rb-fix-tests-download-progress/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-download-progress",
+          "file": "src/lib.rs",
+          "line": 16,
+          "column": 30,
+          "old": "percent(d.size, d.received)",
+          "new": "percent(d.received, d.size)"
+        }
+      ]
+    }
+  ],
+  "authored_positive_exact": 10,
+  "authored_refusal_exact": 10,
+  "supplement_exact": 5,
+  "originals_unchanged": true,
+  "train_source_files": 108,
+  "train_source_bytes": 29232,
+  "train_source_hashes_preserved": true,
+  "source_identity": {
+    "crates/world-rust/src/argument_swap.rs": {
+      "sha256": "eafa10ee9efb41a7cf3325625e0004691943aa97b38100c64c84627de0bfc288",
+      "bytes": 14318
+    },
+    "crates/world-rust/src/checks.rs": {
+      "sha256": "aafef40d7c55b34a26f21d276189366d4e7010b7e0a4723f2224c3145debc5fd",
+      "bytes": 45764
+    },
+    "crates/world-rust/src/lib.rs": {
+      "sha256": "51d43efd9fe1670b1786372f4e6757f4df8510b7c5363113a197cd7912ef3ae0",
+      "bytes": 52031
+    },
+    "crates/world-rust/tests/argument_swap.rs": {
+      "sha256": "1ba206472fe344b5797441f88a8f693cb2cbe61e6ae84340e5b6f2f5b25924f8",
+      "bytes": 5465
+    }
+  },
+  "parent_full765_gate": "pending; no worker score claim"
+}

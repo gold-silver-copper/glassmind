@@ -1,0 +1,111 @@
+[
+  {
+    "name": "direct_u8",
+    "kind": "repair",
+    "source": "pub fn distance(a:u8,b:u8)->u8 { if a >= b { a-b } else { 0 } }\npub fn value(left:u8,right:u8)->u8 { distance(right,left) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(u8::MAX,0),u8::MAX);}}\n",
+    "old": "distance(right,left)",
+    "new": "distance(left,right)"
+  },
+  {
+    "name": "direct_u16",
+    "kind": "repair",
+    "source": "pub fn distance(a:u16,b:u16)->u16 { if a >= b { a-b } else { 0 } }\npub fn value(left:u16,right:u16)->u16 { distance(right,left) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(u16::MAX,0),u16::MAX);}}\n",
+    "old": "distance(right,left)",
+    "new": "distance(left,right)"
+  },
+  {
+    "name": "direct_u32",
+    "kind": "repair",
+    "source": "pub fn distance(a:u32,b:u32)->u32 { if a >= b { a-b } else { 0 } }\npub fn value(left:u32,right:u32)->u32 { distance(right,left) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(u32::MAX,0),u32::MAX);}}\n",
+    "old": "distance(right,left)",
+    "new": "distance(left,right)"
+  },
+  {
+    "name": "direct_u64",
+    "kind": "repair",
+    "source": "pub fn distance(a:u64,b:u64)->u64 { if a >= b { a-b } else { 0 } }\npub fn value(left:u64,right:u64)->u64 { distance(right,left) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(u64::MAX,0),u64::MAX);}}\n",
+    "old": "distance(right,left)",
+    "new": "distance(left,right)"
+  },
+  {
+    "name": "direct_i32",
+    "kind": "repair",
+    "source": "pub fn distance(a:i32,b:i32)->i32 { if a >= b { a-b } else { 0 } }\npub fn value(left:i32,right:i32)->i32 { distance(right,left) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(i32::MAX,0),i32::MAX);}}\n",
+    "old": "distance(right,left)",
+    "new": "distance(left,right)"
+  },
+  {
+    "name": "direct_i64",
+    "kind": "repair",
+    "source": "pub fn distance(a:i64,b:i64)->i64 { if a >= b { a-b } else { 0 } }\npub fn value(left:i64,right:i64)->i64 { distance(right,left) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(i64::MAX,0),i64::MAX);}}\n",
+    "old": "distance(right,left)",
+    "new": "distance(left,right)"
+  },
+  {
+    "name": "format_fields",
+    "kind": "repair",
+    "source": "pub fn distance(a:u64,b:u64)->u64 { if a >= b { a-b } else { 0 } }\npub struct Pair {pub left:u64,pub right:u64}\npub fn value(p:&Pair)->String { format!(\"value: {}\",distance(p.right,p.left)) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(&Pair{left:0,right:0}),\"value: 0\");assert_eq!(distance(1,0),1); assert_eq!(value(&Pair{left:1,right:0}),\"value: 1\");assert_eq!(distance(0,1),0); assert_eq!(value(&Pair{left:0,right:1}),\"value: 0\");assert_eq!(distance(11,4),7); assert_eq!(value(&Pair{left:11,right:4}),\"value: 7\");assert_eq!(distance(u64::MAX,0),u64::MAX);}}\n",
+    "old": "distance(p.right,p.left)",
+    "new": "distance(p.left,p.right)"
+  },
+  {
+    "name": "unicode",
+    "kind": "repair",
+    "source": "pub fn distance(a:u32,b:u32)->u32 { if a >= b { a-b } else { 0 } }\npub fn value(π:u32,δ:u32)->u32 { /* café */ distance(δ,π) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(u32::MAX,0),u32::MAX);}}\n",
+    "old": "distance(δ,π)",
+    "new": "distance(π,δ)"
+  },
+  {
+    "name": "qualified_format",
+    "kind": "repair",
+    "source": "pub fn distance(a:u32,b:u32)->u32 { if a >= b { a-b } else { 0 } }\npub fn value(left:u32,right:u32)->String { ::std::format!(\"value: {}\",distance(right,left)) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),\"value: 0\");assert_eq!(distance(1,0),1); assert_eq!(value(1,0),\"value: 1\");assert_eq!(distance(0,1),0); assert_eq!(value(0,1),\"value: 0\");assert_eq!(distance(11,4),7); assert_eq!(value(11,4),\"value: 7\");assert_eq!(distance(u32::MAX,0),u32::MAX);}}\n",
+    "old": "distance(right,left)",
+    "new": "distance(left,right)"
+  },
+  {
+    "name": "callee_alias_unknown",
+    "kind": "unchanged",
+    "source": "pub fn distance(a:u32,b:u32)->u32 { if a >= b { a-b } else { 0 } }\npub fn value(left:u32,right:u32)->u32 { let target=distance; target(right,left) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),0);assert_eq!(distance(1,0),1); assert_eq!(value(1,0),1);assert_eq!(distance(0,1),0); assert_eq!(value(0,1),0);assert_eq!(distance(11,4),7); assert_eq!(value(11,4),7);assert_eq!(distance(u32::MAX,0),u32::MAX);}}\n",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "custom_format_macro",
+    "kind": "unchanged",
+    "source": "pub fn distance(a:u32,b:u32)->u32 { if a >= b { a-b } else { 0 } }\nmacro_rules! format { ($s:literal,$v:expr)=>{::std::format!(\"value: {}\",$v)} }\npub fn value(left:u32,right:u32)->String { format!(\"custom\",distance(right,left)) }\n\n#[cfg(test)] mod tests { use super::*; #[test] fn native(){assert_eq!(distance(0,0),0); assert_eq!(value(0,0),\"value: 0\");assert_eq!(distance(1,0),1); assert_eq!(value(1,0),\"value: 1\");assert_eq!(distance(0,1),0); assert_eq!(value(0,1),\"value: 0\");assert_eq!(distance(11,4),7); assert_eq!(value(11,4),\"value: 7\");assert_eq!(distance(u32::MAX,0),u32::MAX);}}\n",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "effectful_arguments",
+    "kind": "unchanged",
+    "source": "pub fn distance(a:u32,b:u32)->u32 { if a >= b { a-b } else { 0 } }\npub fn value(left:u32,right:u32)->(u32,u32) {let mut trace=0;let v=distance({trace=trace*10+1;right},{trace=trace*10+2;left});(v,trace)}\n#[cfg(test)]mod tests{use super::*;#[test]fn native(){assert_eq!(distance(11,4),7);assert_eq!(distance(4,11),0);assert_eq!(value(11,4),(7,12));}}\n",
+    "old": null,
+    "new": null
+  },
+  {
+    "name": "competing_repairs",
+    "kind": "unresolved",
+    "source": "pub fn distance(a:u32,b:u32)->u32 { if a >= b { a-b } else { 0 } }\npub fn value(a:u32,b:u32)->u32 {distance(b,a)+distance(4,a)}\n#[cfg(test)]mod tests{use super::*;#[test]fn native(){assert_eq!(distance(5,4),1);assert_eq!(distance(4,5),0);assert_eq!(distance(7,2),5);assert_eq!(value(5,4),1);}}\n",
+    "old": null,
+    "new": null,
+    "alternatives": [
+      [
+        "distance(b,a)",
+        "distance(a,b)"
+      ],
+      [
+        "distance(4,a)",
+        "distance(a,4)"
+      ]
+    ],
+    "distinguishing_input": [
+      7,
+      2
+    ],
+    "expected_outputs": [
+      5,
+      3
+    ]
+  }
+]

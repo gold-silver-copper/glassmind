@@ -1,0 +1,51 @@
+{
+  "totals": {
+    "refused": 2,
+    "verified": 2
+  },
+  "details": [
+    {
+      "source": "rb-fix-tests-arcade-leaderboard",
+      "turn_id": "train/rb-fix-tests-arcade-leaderboard/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-invoice-tax",
+      "turn_id": "train/rb-fix-tests-invoice-tax/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-invoice-tax",
+          "file": "src/lib.rs",
+          "line": 20,
+          "column": 8,
+          "old": "-",
+          "new": "+"
+        }
+      ]
+    },
+    {
+      "source": "rb-fix-tests-pos-price-cents",
+      "turn_id": "train/rb-fix-tests-pos-price-cents/chatty#0",
+      "verdict": "refused",
+      "changes": []
+    },
+    {
+      "source": "rb-fix-tests-steps-moving-average",
+      "turn_id": "train/rb-fix-tests-steps-moving-average/chatty#0",
+      "verdict": "verified",
+      "changes": [
+        {
+          "source": "rb-fix-tests-steps-moving-average",
+          "file": "src/lib.rs",
+          "line": 10,
+          "column": 18,
+          "old": "..",
+          "new": "..="
+        }
+      ]
+    }
+  ],
+  "inputs_sha256": "e7e40240d859bdc23a6c66f81d4b33d19a420a329743a7a48892b1e6bef5d61b"
+}

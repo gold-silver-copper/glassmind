@@ -21,6 +21,7 @@ use glassmind_rules::{HAND, RuleInfo, SEED, Switches};
 use serde::{Deserialize, Serialize};
 
 pub mod add_fields;
+mod argument_swap;
 mod ceiling_division;
 pub mod checks;
 pub mod declared_types;

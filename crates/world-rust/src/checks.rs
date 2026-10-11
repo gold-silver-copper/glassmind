@@ -763,6 +763,7 @@ pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
     });
     let mut changes = Vec::new();
     let mut rounding = Vec::new();
+    let mut swaps = Vec::new();
     for f in files {
         let text = std::fs::read_to_string(root.join(&f)).unwrap_or_default();
         let old = crate::slips::proposals(source, &f.to_string_lossy(), &text);
@@ -772,12 +773,18 @@ pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
             &text,
             &old,
         ));
+        swaps.extend(crate::argument_swap::proposals(
+            source,
+            &f.to_string_lossy(),
+            &text,
+        ));
         changes.extend(old);
     }
     // Stable partition across ALL files and lines, not just each source file.
     // New operators must never displace or consume the budget of old proposals.
     changes.sort_by_key(|change| matches!(change.old.as_str(), "*" | "/"));
     changes.extend(rounding);
+    changes.extend(swaps);
     changes
 }
 
@@ -843,22 +850,83 @@ pub fn undo_slip(source: &str, root: &Path, tests: &[RustItem]) -> Option<RustCh
     let scratch = scratch(source);
     let roots = BTreeMap::from([(source.to_owned(), scratch.clone())]);
     let start = Instant::now();
-    let mut candidates = slips(source, root, tests).into_iter();
+    let all = slips(source, root, tests);
+    let swaps: Vec<_> = crate::slips::production_files(root)
+        .into_iter()
+        .flat_map(|file| {
+            let text = std::fs::read_to_string(root.join(&file)).unwrap_or_default();
+            crate::argument_swap::proposals(source, &file.to_string_lossy(), &text)
+        })
+        .collect();
+    let mut candidates = all.into_iter();
+    let mut uncertain_swap = false;
     let found = candidates
         .by_ref()
         .take_while(|_| start.elapsed() < SLIP_TIME)
         .find(|slip| {
-            copy_tree(root, &scratch)
+            let result = copy_tree(root, &scratch)
                 .and_then(|()| apply(std::slice::from_ref(slip), &roots))
-                .and_then(|_| run(RustCheck::Test, source, &scratch))
-                .is_ok_and(|f| f.is_empty())
+                .and_then(|_| run(RustCheck::Test, source, &scratch));
+            if swaps.contains(slip) && result.is_err() {
+                uncertain_swap = true;
+            }
+            result.is_ok_and(|f| f.is_empty())
         });
     if let Some(first) = &found {
+        if swaps.contains(first) {
+            // Calls are deliberately outside the scalar interpreter. Native-test
+            // remaining swaps, and decline unresolved choices without inventing
+            // a semantic witness. This branch cannot withdraw a legacy repair.
+            let deadline = (Instant::now() + Duration::from_secs(10)).min(start + SLIP_TIME);
+            let remaining: Vec<_> = candidates.filter(|c| swaps.contains(c)).collect();
+            let mut unresolved = uncertain_swap || remaining.len() > 8;
+            for second in remaining.iter().take(8) {
+                if unresolved || Instant::now() >= deadline {
+                    unresolved = true;
+                    break;
+                }
+                let result = copy_tree(root, &scratch)
+                    .and_then(|()| apply(std::slice::from_ref(second), &roots))
+                    .and_then(|_| {
+                        run_in_until(
+                            &Places::from_env(),
+                            RustCheck::Test,
+                            source,
+                            &scratch,
+                            Some(deadline),
+                        )
+                    });
+                match result {
+                    Ok(findings) if !findings.is_empty() => {}
+                    other => {
+                        unresolved = true;
+                        let record = serde_json::json!({"first_patch":first,"second_patch":second,
+                            "second_tests_passed":other.is_ok(), "reason":"unresolved new argument-swap choice; no semantic witness claimed"});
+                        let evidence = scratch_base().join(format!(
+                            "unresolved-{}",
+                            scratch.file_name()?.to_string_lossy()
+                        ));
+                        let _ = std::fs::create_dir_all(&evidence).and_then(|()| {
+                            std::fs::write(evidence.join("choice.json"), record.to_string())
+                        });
+                        eprintln!("repair withdrawn: {record}");
+                        break;
+                    }
+                }
+            }
+            if unresolved {
+                eprintln!(
+                    "repair withdrawn: unresolved new argument-swap choice (bounded native verification); no semantic witness claimed"
+                );
+            }
+            let _ = std::fs::remove_dir_all(&scratch);
+            return if unresolved { None } else { found };
+        }
         let extra = Instant::now();
         let first_text = std::fs::read_to_string(scratch.join(&first.file)).ok();
         let original_text = std::fs::read_to_string(root.join(&first.file)).ok();
         let mut trials = 0;
-        for second in candidates.take(64) {
+        for second in candidates.filter(|c| !swaps.contains(c)).take(64) {
             if trials >= 8
                 || extra.elapsed() >= Duration::from_secs(10)
                 || start.elapsed() >= SLIP_TIME.min(Duration::from_secs(80))

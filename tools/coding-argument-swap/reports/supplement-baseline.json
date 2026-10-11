@@ -1,0 +1,76 @@
+[
+  {
+    "name": "protected_string",
+    "positive": false,
+    "changes": [],
+    "original_unchanged": true,
+    "exact": true,
+    "verified": null,
+    "source_sha256": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "a2d62d173eb9f8fdba284ea37e29a8f52ec9d7e479739a2bf97973d65308ab9e",
+      "tests/visible.rs": "0b403ca3ad334df20e85deb1324764f7b1043fd72e38218a770241ca7cbcfff3"
+    }
+  },
+  {
+    "name": "protected_test",
+    "positive": false,
+    "changes": [],
+    "original_unchanged": true,
+    "exact": true,
+    "verified": null,
+    "source_sha256": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "3f90113c35ae47c37d25f3c78d41964c48468c62eef475d86edb233aeeabe858",
+      "tests/visible.rs": "67dce5aa50591f67338f5597ee8cab64be3960032a376e84cec662b579bb6e75"
+    }
+  },
+  {
+    "name": "protected_type",
+    "positive": false,
+    "changes": [],
+    "original_unchanged": true,
+    "exact": true,
+    "verified": null,
+    "source_sha256": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "0931d726e2b39df8a2ca8c3075e18bf29d9fb55bc8c21835126efff52b97f587",
+      "tests/visible.rs": "53f80f06da8f717b6732173f3c9630b5bd95c989d59d5f628d5dace3e8fd2a67"
+    }
+  },
+  {
+    "name": "macro_use_test",
+    "positive": false,
+    "changes": [],
+    "original_unchanged": true,
+    "exact": true,
+    "verified": null,
+    "source_sha256": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "aa928c4b7307cfc2c197b090479a7d7dcbf48c0db16d944eb9f19c955472d576",
+      "tests/visible.rs": "9c95f75787a82b30ec6c6c8e2fda17d799ba293f8fff51cd28af86c75e781076"
+    }
+  },
+  {
+    "name": "legacy_beats_swap",
+    "positive": true,
+    "changes": [
+      {
+        "source": "legacy_beats_swap",
+        "file": "src/lib.rs",
+        "line": 2,
+        "column": 34,
+        "old": "false",
+        "new": "true"
+      }
+    ],
+    "original_unchanged": true,
+    "exact": true,
+    "verified": true,
+    "source_sha256": {
+      "Cargo.toml": "e579e58d306880e186fd4e14a150a6323379bd4d9346dd375188d9293ffbef5b",
+      "src/lib.rs": "5ce017b9b8f9dc2fd30a8d15929613af3d8100465cc5155f4a7b9cb3d08809c1",
+      "tests/visible.rs": "1b682812dd8ca23a4118d98ddfb8e0a2977448793593eaa287ee5e58f16fa3d5"
+    }
+  }
+]

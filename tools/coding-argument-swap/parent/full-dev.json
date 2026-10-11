@@ -1,0 +1,58 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 559,
+    "pass": 206
+  },
+  "all_previous_passes_retained": 203,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "fix-tests/download-progress",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/download-progress",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/download-progress",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "refused": 60,
+      "pass": 21
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "0b491f90bc85c9b6e8900f8ce87a2b5b6542f78020b79a10483d9958e411431a",
+  "candidate_result_sha256": "927848d34a2cbc7a17280a9db6e35360fc1d37d6f5669a0d7163500e73023abd",
+  "binary_sha256": "6a2c30af75edc611a6c485f24d20fc12f185cd30cb151ce29682abc91d46bb7c",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}
