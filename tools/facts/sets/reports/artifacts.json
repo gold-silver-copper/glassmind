@@ -1,0 +1,144 @@
+{
+  "base_commit": "35d3ea80d63791af1625d5019077d6ea2cfa5f26",
+  "source_version": "base plus uncommitted owned runtime.patch",
+  "new_download_bytes": 0,
+  "old_answer_method_byte_identical": true,
+  "assets": {
+    "index": {
+      "source": "Wikidata cached 2026-10-10",
+      "license": "CC0-1.0",
+      "selection": "historical validation-subject-seeded 500"
+    },
+    "questions": {
+      "source": "askplatypus/wikidata-simplequestions",
+      "revision": "df69267f1db4f85a71325e7e8c06e192bcaf0b0e",
+      "license": "CC-BY-3.0",
+      "split": "valid",
+      "rows": 2821
+    }
+  },
+  "files": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/crates/facts/src/lib.rs": {
+      "bytes": 13367,
+      "sha256": "8d7410cf510fd32bb372c3116133a0d69870094efb83a517585e7ec3448b912f"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/crates/cli/src/talk_facts.rs": {
+      "bytes": 17461,
+      "sha256": "fc683db9000fa07513567fdfc30d9a049e0a2a36afd691a49fc68783a356723d"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/crates/cli/src/everyday.rs": {
+      "bytes": 9253,
+      "sha256": "18fab214523a742417b83872db536ab1f8d5f806b9dadc182e941acc7035b63f"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/tools/facts/sets/contracts.py": {
+      "bytes": 5178,
+      "sha256": "18126f9afb326e31a28f4cab144c563be1dfc3a808727605cf95fe9e3ae957b2"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/tools/facts/sets/regression.py": {
+      "bytes": 1463,
+      "sha256": "cba6e17343fb29f7eea67b6cc563ba03850bf80a4458b2e31c7c97f106b8d3d8"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/tools/facts/sets/session_contracts.py": {
+      "bytes": 1880,
+      "sha256": "ec6b880c8731529e92df28ba4a7a374dcd0e0d2885b4c1ca9f2cce538e656d69"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/tools/facts/sets/real_example.py": {
+      "bytes": 2049,
+      "sha256": "39c34ee4aed059db29167f083af470709ce7943dd7d1b96ee37d79773ae1e2b5"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/tools/facts/sets/PLAN.md": {
+      "bytes": 2584,
+      "sha256": "33abce217b7270d7ec878e0040a2ec3c04bbe8dd79f977964ea32febc4d7cb01"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/tools/facts/sets/contracts.json": {
+      "bytes": 842,
+      "sha256": "f47a944708737f600c70aeeaa12d1aa9826c137d8f39fd8e9a58df437f66b27c"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/tools/facts/sets/reproduce.sh": {
+      "bytes": 2421,
+      "sha256": "8ca1886b58534e24e57354edeb6acf27b2e4fd956acb6f8218cb3e28442360f1"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets/docs/fact-sets.md": {
+      "bytes": 2185,
+      "sha256": "b8095fb18d5264f4933c217b279b90ef84f7ad1afdace82efa0e0119da88ead8"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/runtime.patch": {
+      "bytes": 13712,
+      "sha256": "53a2a67d3b0073fde7795b7a085942ada2ba97199ab8583991a13888de72a39b"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/baseline/glassmind": {
+      "bytes": 74058600,
+      "sha256": "0d5c9ea8be0e4d3c83b17508e5666ed814bb8b8f4e78364f478fd7d3e3a0ba21"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/baseline/continuous_predictions": {
+      "bytes": 7585016,
+      "sha256": "622fef74f24b4d3862de9e2b425b0a21c734824c21b4399da5edff36e95d5b56"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/candidate/glassmind": {
+      "bytes": 74285432,
+      "sha256": "fe04ebf44491eac39e019ef9021d6f70ca4cbe3300b6d3c3822dd233e5b06ead"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/candidate/continuous_predictions": {
+      "bytes": 7751312,
+      "sha256": "ef862338bfbea73860c6c8e83da5fcd78367104ad29021c106ac8d42d47b7bae"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/bundle/index.json": {
+      "bytes": 287236,
+      "sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/bundle/relation.json": {
+      "bytes": 35773124,
+      "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/bundle/manifest.json": {
+      "bytes": 379,
+      "sha256": "a3445f45cf1e44fd645f0af06472dfbe685a90d81cc2da5c1294aa9282541e3c"
+    },
+    "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv": {
+      "bytes": 173187,
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/contracts/bundle/index.json": {
+      "bytes": 1469,
+      "sha256": "0b413c1f75ae665b4bca368e8aee0eb63bac2ee55b1be82b43c7097f8b674f42"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/contracts/bundle/relation.json": {
+      "bytes": 337,
+      "sha256": "9cc77f17e5aa074460bdfbcdf38d92858e45c9ca354baad28b79a103ccd86a6a"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/contracts/bundle/manifest.json": {
+      "bytes": 312,
+      "sha256": "06996fc3b7d313d01b9392f0d7a5e11785a16dda88299385a9a3ae06a4129f09"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/contracts/bundle/labels.json": {
+      "bytes": 209,
+      "sha256": "88efbf1df5be8d5acea25dffe44de27d7e3a6d6fbf5eff943ce169e77a4ef45b"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/final.log": {
+      "bytes": 6897,
+      "sha256": "f134cda7917ed0c9ca5657e86788749321f60b16b44ef28b6c202ef407405ef4"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/checks-first.log": {
+      "bytes": 7361,
+      "sha256": "f9a96fd2ba216f2071fc5d27fea36280e9d735a55356d4c074cabf0e9d9c7199"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/baseline.log": {
+      "bytes": 1757,
+      "sha256": "46c7c28f39a1b1c39d0bbd3b0f720a1e249d34b6e85e5b501f21ed501b0d79b9"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/real-example/report.json": {
+      "bytes": 873,
+      "sha256": "82ec87bd636f4860bdef17e71b357a21c619c5cb50d634db5c7ead09eb5809ba"
+    },
+    "/home/gsc/.cache/glassmind/continuous-20261010/factsets-run/tmp/sets/real-example/reply.json": {
+      "bytes": 1516,
+      "sha256": "814afc5203c6deb110e8df8ed9e0c3ddd3a998ffe5fd6a86f097f811ebd8bbec"
+    }
+  },
+  "authored_fixtures": {
+    "source": "tools/facts/sets/contracts.py at its frozen SHA-256",
+    "license": "MIT OR Apache-2.0",
+    "generated_bundle_bytes": 2327,
+    "note": "synthetic adapter contracts, not factual data or trained production model; two-feature hand-authored model exercises unchanged proposer"
+  }
+}

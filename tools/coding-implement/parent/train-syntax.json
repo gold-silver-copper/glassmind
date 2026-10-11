@@ -1,0 +1,307 @@
+{
+  "note": "Syntax audit only, not benchmark execution or semantic scoring. No expected values inspected.",
+  "train_requests": 60,
+  "accepted_syntax": 0,
+  "rows": [
+    {
+      "id": "train/rb-implement-caesar-shift/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-caesar-shift/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-caesar-shift/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-clamp-all/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-clamp-all/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-clamp-all/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-compress-ranges/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-compress-ranges/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-compress-ranges/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-count-vowels/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-count-vowels/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-count-vowels/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-first-unbalanced/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-first-unbalanced/hurried#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-first-unbalanced/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-initials/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-initials/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-initials/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-lru-cache/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-lru-cache/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-lru-cache/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-mat-mul/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-mat-mul/hurried#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-mat-mul/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-merge-intervals/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-merge-intervals/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-merge-intervals/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-merge-sorted-unique/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-merge-sorted-unique/hurried#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-merge-sorted-unique/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-parse-pairs/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-parse-pairs/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-parse-pairs/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-reverse-words/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-reverse-words/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-reverse-words/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-rle-encode/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-rle-encode/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-rle-encode/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-roman-numerals/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-roman-numerals/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-roman-numerals/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-sum-even/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-sum-even/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-sum-even/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-tick-tock/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-tick-tock/hurried#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-tick-tock/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-tokenize/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-tokenize/hurried#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-tokenize/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-top-words/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-top-words/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-top-words/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-window-sums/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-window-sums/hurried#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-window-sums/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-wrap-text/chatty#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-wrap-text/hurried#0",
+      "recognized": false,
+      "accepted_syntax": false
+    },
+    {
+      "id": "train/rb-implement-wrap-text/terse#0",
+      "recognized": true,
+      "accepted_syntax": false
+    }
+  ]
+}

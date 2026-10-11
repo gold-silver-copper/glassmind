@@ -51,6 +51,19 @@ fn respond_with_facts(
     model: Option<&IntentModel>,
     facts: Option<&Facts>,
 ) -> TalkReply {
+    if let Some(request) = crate::talk_facts::set_request(line) {
+        // Explicit external facts never enter the memory/story interpreters.
+        session.memory.turn = session.memory.turn.saturating_add(1);
+        session.memory.last_user_utterance = Some(line.to_owned());
+        session.memory.last_slot = None;
+        return match facts {
+            Some(facts) => TalkReply::Fact(Box::new(facts.respond_set(request))),
+            None => TalkReply::Conversation(Reply::Refusal {
+                text: "Listing factual answers requires a local facts bundle (--facts-dir).".into(),
+                proposal: None,
+            }),
+        };
+    }
     let memory = &mut session.memory;
     // Persist one turn per utterance. Explicit memory always wins; learned
     // intent proposals run only after typed reasoning, from the prior state.

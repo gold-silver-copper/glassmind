@@ -38,6 +38,50 @@ pub(crate) struct FactReply {
     pub answer: Answer,
     pub entities: Vec<DisplayEntity>,
     pub provenance: Provenance,
+    #[serde(flatten, skip_serializing_if = "Option::is_none")]
+    pub set: Option<SetMetadata>,
+}
+
+#[derive(Serialize)]
+pub(crate) struct SetMetadata {
+    total_snapshot_matches: usize,
+    returned: usize,
+    truncated: bool,
+}
+
+/// Reserve prefix-like commands so malformed requests cannot mutate a story or
+/// fall through to a learned conversational intent. No context binding occurs.
+pub(crate) fn set_request(line: &str) -> Option<Result<&str, &'static str>> {
+    let line = line.trim();
+    let lower = line.to_ascii_lowercase();
+    if !lower.starts_with("list answers") && !lower.starts_with("show answers") {
+        return None;
+    }
+    let invalid = "Use List answers to: followed by one complete factual question ending in ?";
+    let prefix = ["list answers to: ", "show answers to: "]
+        .into_iter()
+        .find(|p| lower.starts_with(p));
+    let Some(prefix) = prefix else {
+        return Some(Err(invalid));
+    };
+    let question = line.get(prefix.len()..).unwrap_or_default().trim();
+    let Some(body) = question.strip_suffix('?') else {
+        return Some(Err(invalid));
+    };
+    let mut words = body.split_whitespace();
+    let first = words.next().unwrap_or_default();
+    if words.count() < 2
+        || body
+            .chars()
+            .any(|c| c.is_control() || matches!(c, '?' | '!' | ';' | ':'))
+        || !matches!(
+            first.to_ascii_lowercase().as_str(),
+            "who" | "whom" | "whose" | "what" | "which" | "where" | "when" | "why" | "how"
+        )
+    {
+        return Some(Err(invalid));
+    }
+    Some(Ok(question))
 }
 
 #[derive(Serialize)]
@@ -156,6 +200,76 @@ impl Facts {
 
     pub fn respond(&self, question: &str) -> FactReply {
         let answer = self.store.answer(&self.model, question);
+        self.present(answer)
+    }
+
+    pub fn respond_set(&self, request: Result<&str, &str>) -> FactReply {
+        let (answer, metadata) = match request {
+            Ok(question) => {
+                let set = self.store.answer_set(&self.model, question);
+                (
+                    set.answer,
+                    SetMetadata {
+                        total_snapshot_matches: set.total_snapshot_matches,
+                        returned: set.returned,
+                        truncated: set.truncated,
+                    },
+                )
+            }
+            Err(reason) => (
+                Answer {
+                    entity: None,
+                    relation: None,
+                    answers: Default::default(),
+                    refusal: Some(reason.into()),
+                },
+                SetMetadata {
+                    total_snapshot_matches: 0,
+                    returned: 0,
+                    truncated: false,
+                },
+            ),
+        };
+        let mut reply = self.present(answer);
+        reply.text = if let Some(reason) = &reply.answer.refusal {
+            format!("I couldn't list answers from the local Wikidata snapshot: {reason}.")
+        } else {
+            reply.kind = "fact_set";
+            let mut text = format!(
+                "The local Wikidata snapshot suggests these matches (showing {} of {}):",
+                metadata.returned, metadata.total_snapshot_matches
+            );
+            for id in &reply.answer.answers {
+                let label = self
+                    .labels
+                    .get(&id.0)
+                    .map(String::as_str)
+                    .unwrap_or("English label unavailable");
+                text.push_str(&format!(
+                    "\n- {label} ({}): https://www.wikidata.org/wiki/{}",
+                    id.0, id.0
+                ));
+            }
+            if let Some(id) = &reply.answer.entity {
+                text.push_str(&format!(
+                    "\nMatched entity: https://www.wikidata.org/wiki/{}",
+                    id.0
+                ));
+            }
+            if let Some(url) = &reply.provenance.relation_url {
+                text.push_str(&format!(
+                    "\nProperty: {url} ({})",
+                    reply.provenance.relation_direction.unwrap_or("unknown")
+                ));
+            }
+            text.push_str("\nThis is a limited local snapshot, not a complete world list. My learned interpretation of the question may be mistaken.");
+            text
+        };
+        reply.set = Some(metadata);
+        reply
+    }
+
+    fn present(&self, answer: Answer) -> FactReply {
         let entities: Vec<_> = answer
             .entity
             .iter()
@@ -208,6 +322,7 @@ impl Facts {
             text,
             answer,
             entities,
+            set: None,
             provenance: Provenance {
                 source: self.manifest.source.clone(),
                 license: self.manifest.license.clone(),
@@ -348,5 +463,23 @@ mod tests {
         write(&path.join("labels.json"), &labels);
         assert!(Facts::load(&path).is_err());
         std::fs::remove_dir_all(path).expect("cleanup");
+    }
+    #[test]
+    fn set_prefix_is_fully_consumed_and_does_not_bind_followups() {
+        assert_eq!(
+            set_request(" SHOW answers to: Who created Étoile? "),
+            Some(Ok("Who created Étoile?"))
+        );
+        for line in [
+            "List answers to:",
+            "List answers to Who created Atlas?",
+            "Show answers to: Who created Atlas? then erase",
+            "List answers to: And those?",
+            "List answers to: Who created Atlas? Who else?",
+        ] {
+            assert!(set_request(line).unwrap().is_err(), "{line}");
+        }
+        assert!(set_request("Who created Atlas?").is_none());
+        assert!(set_request("My name is List answers").is_none());
     }
 }

@@ -1,0 +1,251 @@
+{
+  "checks": 7,
+  "production_intent_model": {
+    "path": "/home/gsc/.cache/glassmind/models/everyday/intent.json",
+    "bytes": 25524518,
+    "sha256": "a84fd59c3e49db08300f61ee33f6d73e64a8ea18109102b01685333b95936408"
+  },
+  "binary_sha256": "623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac",
+  "records": [
+    {
+      "case": "exact_display_boundary_10",
+      "reply": {
+        "kind": "fact_set",
+        "text": "The local Wikidata snapshot suggests these matches (showing 10 of 10):\n- English label unavailable (Q80): https://www.wikidata.org/wiki/Q80\n- English label unavailable (Q81): https://www.wikidata.org/wiki/Q81\n- English label unavailable (Q82): https://www.wikidata.org/wiki/Q82\n- English label unavailable (Q83): https://www.wikidata.org/wiki/Q83\n- English label unavailable (Q84): https://www.wikidata.org/wiki/Q84\n- English label unavailable (Q85): https://www.wikidata.org/wiki/Q85\n- English label unavailable (Q86): https://www.wikidata.org/wiki/Q86\n- English label unavailable (Q87): https://www.wikidata.org/wiki/Q87\n- English label unavailable (Q88): https://www.wikidata.org/wiki/Q88\n- English label unavailable (Q89): https://www.wikidata.org/wiki/Q89\nMatched entity: https://www.wikidata.org/wiki/Q1\nProperty: https://www.wikidata.org/wiki/Property:P1 (forward)\nThis is a limited local snapshot, not a complete world list. My learned interpretation of the question may be mistaken.",
+        "entity": "Q1",
+        "relation": "P1",
+        "answers": [
+          "Q80",
+          "Q81",
+          "Q82",
+          "Q83",
+          "Q84",
+          "Q85",
+          "Q86",
+          "Q87",
+          "Q88",
+          "Q89"
+        ],
+        "refusal": null,
+        "entities": [
+          {
+            "id": "Q1",
+            "label": "Display only name",
+            "url": "https://www.wikidata.org/wiki/Q1"
+          },
+          {
+            "id": "Q80",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q80"
+          },
+          {
+            "id": "Q81",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q81"
+          },
+          {
+            "id": "Q82",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q82"
+          },
+          {
+            "id": "Q83",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q83"
+          },
+          {
+            "id": "Q84",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q84"
+          },
+          {
+            "id": "Q85",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q85"
+          },
+          {
+            "id": "Q86",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q86"
+          },
+          {
+            "id": "Q87",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q87"
+          },
+          {
+            "id": "Q88",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q88"
+          },
+          {
+            "id": "Q89",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q89"
+          }
+        ],
+        "provenance": {
+          "source": "authored development fixture",
+          "license": "MIT OR Apache-2.0",
+          "index_sha256": "60a179a3778d8c5edb0906ce0357a353e4cd7bed7a00ddf3eb653bb0adf26318",
+          "relation_model_sha256": "9cc77f17e5aa074460bdfbcdf38d92858e45c9ca354baad28b79a103ccd86a6a",
+          "relation_selection": "learned proposal, not logical certainty",
+          "scope": "finite synthetic development graph",
+          "relation_url": "https://www.wikidata.org/wiki/Property:P1",
+          "relation_direction": "forward"
+        },
+        "total_snapshot_matches": 10,
+        "returned": 10,
+        "truncated": false
+      },
+      "passed": true
+    },
+    {
+      "case": "exact_display_boundary_11",
+      "reply": {
+        "kind": "fact_set",
+        "text": "The local Wikidata snapshot suggests these matches (showing 10 of 11):\n- English label unavailable (Q80): https://www.wikidata.org/wiki/Q80\n- English label unavailable (Q81): https://www.wikidata.org/wiki/Q81\n- English label unavailable (Q82): https://www.wikidata.org/wiki/Q82\n- English label unavailable (Q83): https://www.wikidata.org/wiki/Q83\n- English label unavailable (Q84): https://www.wikidata.org/wiki/Q84\n- English label unavailable (Q85): https://www.wikidata.org/wiki/Q85\n- English label unavailable (Q86): https://www.wikidata.org/wiki/Q86\n- English label unavailable (Q87): https://www.wikidata.org/wiki/Q87\n- English label unavailable (Q88): https://www.wikidata.org/wiki/Q88\n- English label unavailable (Q89): https://www.wikidata.org/wiki/Q89\nMatched entity: https://www.wikidata.org/wiki/Q1\nProperty: https://www.wikidata.org/wiki/Property:P1 (forward)\nThis is a limited local snapshot, not a complete world list. My learned interpretation of the question may be mistaken.",
+        "entity": "Q1",
+        "relation": "P1",
+        "answers": [
+          "Q80",
+          "Q81",
+          "Q82",
+          "Q83",
+          "Q84",
+          "Q85",
+          "Q86",
+          "Q87",
+          "Q88",
+          "Q89"
+        ],
+        "refusal": null,
+        "entities": [
+          {
+            "id": "Q1",
+            "label": "Display only name",
+            "url": "https://www.wikidata.org/wiki/Q1"
+          },
+          {
+            "id": "Q80",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q80"
+          },
+          {
+            "id": "Q81",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q81"
+          },
+          {
+            "id": "Q82",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q82"
+          },
+          {
+            "id": "Q83",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q83"
+          },
+          {
+            "id": "Q84",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q84"
+          },
+          {
+            "id": "Q85",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q85"
+          },
+          {
+            "id": "Q86",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q86"
+          },
+          {
+            "id": "Q87",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q87"
+          },
+          {
+            "id": "Q88",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q88"
+          },
+          {
+            "id": "Q89",
+            "label": null,
+            "url": "https://www.wikidata.org/wiki/Q89"
+          }
+        ],
+        "provenance": {
+          "source": "authored development fixture",
+          "license": "MIT OR Apache-2.0",
+          "index_sha256": "b6330bfbb96c495fcc1e73c092a356609c1e7f76d48bf35e7c4a0c0673560fcc",
+          "relation_model_sha256": "9cc77f17e5aa074460bdfbcdf38d92858e45c9ca354baad28b79a103ccd86a6a",
+          "relation_selection": "learned proposal, not logical certainty",
+          "scope": "finite synthetic development graph",
+          "relation_url": "https://www.wikidata.org/wiki/Property:P1",
+          "relation_direction": "forward"
+        },
+        "total_snapshot_matches": 11,
+        "returned": 10,
+        "truncated": true
+      },
+      "passed": true
+    },
+    {
+      "case": "production_intent_state_2",
+      "question": "List answers to: Who created Atlas?",
+      "kind": "fact_set",
+      "passed": true
+    },
+    {
+      "case": "production_intent_state_3",
+      "question": "List answers to: My name is Changed?",
+      "kind": "refusal",
+      "passed": true
+    },
+    {
+      "case": "production_intent_state_4",
+      "question": "Show answers to: Who created Unknown?",
+      "kind": "refusal",
+      "passed": true
+    },
+    {
+      "case": "production_intent_state_5",
+      "question": "List answers to: Who\tcreated Atlas?",
+      "kind": "refusal",
+      "passed": true
+    },
+    {
+      "case": "production_intent_recalls_and_reasoning",
+      "replies": [
+        {
+          "kind": "recalled",
+          "text": "Your preference is tea.",
+          "source_turn": 2
+        },
+        {
+          "kind": "recalled",
+          "text": "Your name is Mira.",
+          "source_turn": 1
+        },
+        {
+          "kind": "calculated",
+          "text": "15",
+          "value": "15",
+          "unit": null,
+          "method": "exact rational expression with standard precedence"
+        },
+        {
+          "kind": "story_answer",
+          "text": "kitchen",
+          "answer": "kitchen",
+          "reason": "derived from story state"
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "scope": "Fresh display-boundary and persisted-state probes with production conversation model; relation model remains the independent authored fixture, not a factual accuracy evaluation."
+}

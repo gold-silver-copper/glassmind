@@ -1,0 +1,57 @@
+{
+  "source_revision": "35d3ea80d63791af1625d5019077d6ea2cfa5f26",
+  "baseline_reported_full765": {
+    "pass": 174,
+    "refused": 591,
+    "failed": 0,
+    "implementation_pass": 0,
+    "implementation_total": 60
+  },
+  "baseline_local_sample": {
+    "implementations": 0,
+    "total": 3,
+    "existing_behavior": "Created Cargo.lock in each fixture; source bytes unchanged. Evaluator correctly exited 1."
+  },
+  "candidate_local_sample": {
+    "implementations": 3,
+    "total": 3
+  },
+  "candidate_authored_full": {
+    "checks_passed": 20,
+    "total": 20,
+    "implementations": 6,
+    "safe_refusals": 14
+  },
+  "additional_missing_cargo": {
+    "refused": true,
+    "unchanged": true
+  },
+  "scoped_rust_tests": {
+    "cli": 10,
+    "english_rust": 39,
+    "world_rust": 27,
+    "total": 76,
+    "passed": 76
+  },
+  "checks": {
+    "fmt": "passed",
+    "clippy_all_targets_3_affected_packages": "passed after replacing five indexing expressions",
+    "debug_build": "passed",
+    "restored_baseline_build": "passed",
+    "release_build": "not run",
+    "full765": "not run; release gate not established"
+  },
+  "train_request_syntax": {
+    "total": 60,
+    "accepted": 0,
+    "scope": "Syntax audit only, no benchmark task execution"
+  },
+  "decision": "REJECT runtime; do not integrate rejected.patch",
+  "data": {
+    "new_downloads": 0,
+    "authored_fixtures_bytes": 3433,
+    "authored_fixtures_sha256": "7284edba6c1fcc4b55f432069c3c74a30f69d781c558985b73c9b4f0b267aa40",
+    "license": "MIT OR Apache-2.0 (workspace code license)",
+    "version": "frozen authored fixtures, 2026-10-11"
+  }
+}

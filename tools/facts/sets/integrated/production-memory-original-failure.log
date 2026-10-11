@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/gsc/code/glassmind/crates/everyday/tools/smoke_memory.py", line 99, in <module>
+    main()
+    ~~~~^^
+  File "/home/gsc/code/glassmind/crates/everyday/tools/smoke_memory.py", line 87, in main
+    run([
+    ~~~^^
+        ("Call me a taxi", "refusal", None, None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        ("What is my name?", "recalled", "Dr. Kim", 5),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ])
+    ^^
+  File "/home/gsc/code/glassmind/crates/everyday/tools/smoke_memory.py", line 62, in run
+    raise RuntimeError(f"Memory smoke failure for {utterance!r}: {reply}")
+RuntimeError: Memory smoke failure for 'Call me tomorrow': {'kind': 'intent', 'text': 'I understand this as: change user name. I can identify this request, but no service is connected to carry it out.', 'proposal': {'label': 'change_user_name', 'accepted': True, 'score': 1.7266953, 'margin': 0.52997744, 'dev_confidence': 0.9037037, 'confidence_support': 135, 'known_features': 37}}

@@ -1,0 +1,28 @@
+{"checks": 36, "baseline": false, "binary_sha256": "623e8c0c9556af2cf6c0298cb00a436bcabb09590736955f04e0bf3b8a9677ac", "fixture_index_sha256": "0b413c1f75ae665b4bca368e8aee0eb63bac2ee55b1be82b43c7097f8b674f42"}
+{"checks": 16, "intent_fixture_modes": [false, true]}
+[{"mode": "standalone", "rows": 200, "bytes": 19120, "sha256": "8015991afccc77932038ca25ae8b9451ab22acd4aa4c53b5c59356dc1e3b34e9", "identical": true}, {"mode": "talk", "rows": 200, "bytes": 137072, "sha256": "3364de426985f32df55ffbd487b116475a624a61ad291dfbc4123c4e9def68d4", "identical": true}, {"mode": "default", "rows": 200, "bytes": 38735, "sha256": "6f5fb6d8133add8fe50501159d6693474b7d9dd49e3c50f1f87e1109a4e5d695", "identical": true}, {"mode": "standalone", "rows": 2821, "bytes": 270305, "sha256": "9d7fb56e29d8dd52275c93d8edd14c921c5748d8b4c3bc48c7fc7008574005b1", "identical": true}, {"mode": "talk", "rows": 2821, "bytes": 1946341, "sha256": "28dc8a98db2674c3b615ce63cca7cc37c01d4e295328530c5c0aa25135928e06", "identical": true}, {"mode": "default", "rows": 2821, "bytes": 540219, "sha256": "e9b4501389cfccdbfb937b4984d54cfc86aa653df527f43321646df7e4674f85", "identical": true}]
+memory 0 {
+  "synthetic_memory_smoke": {
+    "right": 41,
+    "wrong": 0
+  },
+  "independent_benchmark": false
+}
+
+calculations 0 {"dataset": "talk-calculations-memory-synthetic-dev-v1", "independent_benchmark": false, "total": 27, "right": 27, "refused": 0, "wrong": 0, "model": "/home/gsc/.cache/glassmind/models/everyday/intent.json"}
+
+stories 0 {"dataset": "talk-stories-mixed-dev-v1", "independent_benchmark": false, "total": 47, "totals": {"right": 47}, "binary_sha256": "37794f18e338ae73641affdf3b551c2eef99c1b02b3919cc6193db7d26b03d34"}
+
+memory 0 {
+  "synthetic_memory_smoke": {
+    "right": 41,
+    "wrong": 0
+  },
+  "independent_benchmark": false
+}
+
+calculations 0 {"dataset": "talk-calculations-memory-synthetic-dev-v1", "independent_benchmark": false, "total": 27, "right": 27, "refused": 0, "wrong": 0, "model": "/home/gsc/.cache/glassmind/models/everyday/intent.json"}
+
+stories 0 {"dataset": "talk-stories-mixed-dev-v1", "independent_benchmark": false, "total": 47, "totals": {"right": 47}, "binary_sha256": "9a2b7ee750f8c0d9ae8f6a30429e5a9d4fd96a6bbc34dc66505f07f7f7accfe7"}
+
+{"question": "What language is spoken in Brotherhood of the Wolf?", "subject": "Q1123891", "property": "P364", "expected_ids_from_edges": ["Q1321", "Q150", "Q652"], "published_claims": [{"statement_id": "Q1123891$7DFE4175-D6E4-4939-9CA3-4ECC2AE475AD", "target": "Q652"}, {"statement_id": "Q1123891$8682CD49-7D28-42A7-B714-2A1629658764", "target": "Q150"}, {"statement_id": "Q1123891$B068B94C-AEAC-4EFD-846C-C2769713CC21", "target": "Q1321"}], "raw_source": {"path": "/home/gsc/.cache/glassmind/data/simplequestions/wikidata/62dc0ffcee5e0194.json", "bytes": 1066603, "sha256": "f8c5ff60a6ad1b999bf8dccb49160a9860454a9cd9d6a63a069a3da44c30d3a9"}, "source": "Wikidata cached snapshot retrieved 2026-10-10", "license": "CC0-1.0", "new_download_bytes": 0}

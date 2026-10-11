@@ -542,6 +542,32 @@
         "reasoning_output_tokens": 4989
       },
       "source": "Rejected partial graph:1817newclaims/1735aliaslessnodes, all2821predictions unchanged. Parent130artifact identities/20freeze/selection/independentedge reconstruction/7tests verified; original10files77808bytes archived and restoredworktree/authremoved."
+    },
+    {
+      "track": "implement-continuous",
+      "started_unix": 1791701233.2153792,
+      "finished_unix": 1791701714.5500252,
+      "usage": {
+        "input_tokens": 2025012,
+        "cached_input_tokens": 1939712,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 28144,
+        "reasoning_output_tokens": 7846
+      },
+      "source": "REJECTED0/60TRAINrequestsyntax; parent20authoredchecks6implementations14saferefusals reproducealloutcomes/hashes; no full765. Original313files467927bytes archived, restoredworktree/authremoved."
+    },
+    {
+      "track": "factsets-continuous",
+      "started_unix": 1791701522.895501,
+      "finished_unix": 1791701916.700102,
+      "usage": {
+        "input_tokens": 2131025,
+        "cached_input_tokens": 2050176,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 22646,
+        "reasoning_output_tokens": 5365
+      },
+      "source": "Accepted explicit bounded fact sets after parent52+7checks/17tests/workspace/full2821byte-preservation;memory41withoutintent,40/41withproductionmodel identicalbaseline (inheritedCallmetomorrowintent);calc27/stories47pass bothbundle modes. Original25files108120bytes archived; worktree/authremoved."
     }
   ],
   "note": "Completed Codex worker turns only. Parent-session usage and interrupted Opus/Codex calls are unavailable and excluded; these are a lower bound, not total session consumption."
