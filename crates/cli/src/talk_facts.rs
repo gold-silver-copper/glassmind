@@ -1,6 +1,6 @@
 //! Opt-in immutable facts bundles. Display labels never enter the linker.
 use glassmind_everyday::IntentModel;
-use glassmind_facts::{Answer, Store};
+use glassmind_facts::{Answer, RefusalReason, Store, Verification};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::{collections::BTreeMap, path::Path};
@@ -40,6 +40,37 @@ pub(crate) struct FactReply {
     pub provenance: Provenance,
     #[serde(flatten, skip_serializing_if = "Option::is_none")]
     pub set: Option<SetMetadata>,
+}
+
+#[derive(Serialize)]
+pub(crate) struct VerificationReply {
+    pub kind: &'static str,
+    pub text: String,
+    #[serde(flatten)]
+    pub verification: Verification,
+    pub provenance: Provenance,
+}
+
+/// Explicit verification does not infer an entity from conversation history.
+pub(crate) fn verification_request(line: &str) -> Option<Result<&str, &'static str>> {
+    let line = line.trim_matches(' ');
+    if !line
+        .get(..10)
+        .is_some_and(|s| s.eq_ignore_ascii_case("check fact"))
+    {
+        return None;
+    }
+    let invalid = "Use Check fact: followed by one positive factual question with explicit names.";
+    Some(
+        if line
+            .get(..12)
+            .is_some_and(|s| s.eq_ignore_ascii_case("check fact: "))
+        {
+            line.get(12..).filter(|s| !s.is_empty()).ok_or(invalid)
+        } else {
+            Err(invalid)
+        },
+    )
 }
 
 #[derive(Serialize)]
@@ -201,6 +232,55 @@ impl Facts {
     pub fn respond(&self, question: &str) -> FactReply {
         let answer = self.store.answer(&self.model, question);
         self.present(answer)
+    }
+
+    pub fn verify(&self, request: Result<&str, &str>) -> VerificationReply {
+        let verification = match request {
+            Ok(question) => self.store.verify(question),
+            Err(_) => Verification::Refused {
+                reason: RefusalReason::UnsupportedShape,
+            },
+        };
+        let describe = |id: &str| match self.labels.get(id) {
+            Some(label) => format!("{label} ({id})"),
+            None => id.to_owned(),
+        };
+        let (text, relation_url) = match &verification {
+            Verification::Supported { witness, .. } => {
+                let relationship = match witness.property.0.as_str() {
+                    "P19" => "place of birth",
+                    "P20" => "place of death",
+                    "P27" => "country of citizenship",
+                    "P108" => "employer",
+                    _ => "relationship",
+                };
+                (format!(
+                    "The loaded records list {} as the {relationship} of {}.\nSource: {}\nThis is a relationship recorded in this snapshot; dates and current status are not verified.",
+                    describe(&witness.object.0), describe(&witness.subject.0), witness.source_url
+                ), Some(format!("https://www.wikidata.org/wiki/Property:{}", witness.property.0)))
+            }
+            Verification::Unknown { .. } => (
+                "The loaded records do not establish that relationship. Missing information does not mean it is false.".into(), None
+            ),
+            Verification::Refused { .. } => (
+                request.err().unwrap_or("I can check one positive question about birthplace, place of death, citizenship or employer, using explicit names.").into(), None
+            ),
+        };
+        VerificationReply {
+            kind: "fact_verification",
+            text,
+            verification,
+            provenance: Provenance {
+                source: self.manifest.source.clone(),
+                license: self.manifest.license.clone(),
+                index_sha256: self.manifest.index_sha256.clone(),
+                relation_model_sha256: self.manifest.relation_model_sha256.clone(),
+                relation_selection: "explicit positive claim; exact directed snapshot edge; no learned proposal",
+                scope: self.manifest.scope.clone(),
+                relation_url,
+                relation_direction: Some("forward"),
+            },
+        }
     }
 
     pub fn respond_set(&self, request: Result<&str, &str>) -> FactReply {
@@ -464,6 +544,60 @@ mod tests {
         assert!(Facts::load(&path).is_err());
         std::fs::remove_dir_all(path).expect("cleanup");
     }
+    #[test]
+    fn verification_uses_snapshot_provenance_and_never_negates_missing_edges() {
+        let path = bundle("Verification fixture");
+        let graph: serde_json::Value = serde_json::from_str(include_str!(
+            "../../../tools/facts/verification/parent/store.json"
+        ))
+        .expect("independent authored graph");
+        let index_sha = write(&path.join("index.json"), &graph);
+        let mut manifest: serde_json::Value =
+            serde_json::from_slice(&std::fs::read(path.join("manifest.json")).expect("manifest"))
+                .expect("manifest JSON");
+        manifest["index_sha256"] = serde_json::json!(index_sha);
+        write(&path.join("manifest.json"), &manifest);
+        let facts = Facts::load(&path).expect("verified bundle");
+        let supported = facts.verify(Ok("Was Mara Finch born in North Haven?"));
+        assert!(
+            matches!(supported.verification, Verification::Supported { ref witness, .. }
+            if witness.subject.0 == "Q900001" && witness.property.0 == "P19" && witness.object.0 == "Q900010")
+        );
+        assert_eq!(supported.provenance.index_sha256, index_sha);
+        assert!(supported.text.contains("loaded records"));
+        assert!(supported.text.contains("current status are not verified"));
+        let unknown = facts.verify(Ok("Was Mara Finch born in South Haven?"));
+        assert!(matches!(unknown.verification, Verification::Unknown { .. }));
+        assert!(unknown.text.contains("does not mean it is false"));
+        let unsupported = facts.verify(Ok("Was Mara Finch born in North Haven? My name is Other."));
+        assert!(matches!(
+            unsupported.verification,
+            Verification::Refused { .. }
+        ));
+        std::fs::remove_dir_all(path).expect("cleanup");
+    }
+
+    #[test]
+    fn verification_prefix_reserves_malformed_commands_without_binding_names() {
+        assert_eq!(
+            verification_request(" CHECK FACT: Was Zoë born in Paris? "),
+            Some(Ok("Was Zoë born in Paris?"))
+        );
+        for text in [
+            "Check fact",
+            "Check fact:",
+            "Check fact Was Ada born in Paris?",
+        ] {
+            assert!(
+                verification_request(text)
+                    .expect("reserved prefix")
+                    .is_err()
+            );
+        }
+        assert!(verification_request("My name is Check fact").is_none());
+        assert!(verification_request("Was Ada born in Paris?").is_none());
+    }
+
     #[test]
     fn set_prefix_is_fully_consumed_and_does_not_bind_followups() {
         assert_eq!(

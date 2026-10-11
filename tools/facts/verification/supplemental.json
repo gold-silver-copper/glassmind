@@ -1,0 +1,14 @@
+{
+  "rationale": "Post-first-pass source review found that non-overlapping delimiter iteration could hide a second delimiter sharing a boundary space. Freeze this public authored contrast before correction; original 67 cases unchanged.",
+  "graph": {"entities": {
+    "Q90": {"aliases": ["Ada", "Ada born in", "Ada die in", "Ada a citizen of", "Ada work for"], "claims": {"P19": ["Q91"], "P20": ["Q91"], "P27": ["Q91"], "P108": ["Q91"]}},
+    "Q91": {"aliases": ["Port", "born in Port", "die in Port", "a citizen of Port", "work for Port"], "claims": {}}
+  }},
+  "cases": [
+    {"question": "Was Ada born in born in Port?", "status": "refused"},
+    {"question": "Did Ada die in die in Port?", "status": "refused"},
+    {"question": "Is Ada a citizen of a citizen of Port?", "status": "refused"},
+    {"question": "Does Ada work for work for Port?", "status": "refused"},
+    {"question": "Was Ada born in Port?", "status": "supported", "edge": ["Q90", "P19", "Q91"]}
+  ]
+}

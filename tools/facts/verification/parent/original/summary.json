@@ -1,0 +1,90 @@
+{
+  "binary": "/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/tmp/verification/frozen-candidate-v2/glassmind-facts",
+  "binary_sha256": "e99c3eb220e0c61ec580e0b820a753f4015763a3e389e074b0abc75abb575a88",
+  "fixtures": {
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factverify-independent/cases.json": "862ee76f8cdeffd30f59221af74b476129fbac3cc00313945877142d782fa27f",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factverify-independent/store.json": "7668a26ac00b11939fec576ca8d1755cc742238dd0ca11152c1c7e9717f1f66c",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factverify-independent/supplemental/cases.json": "e181cd4d699846a6a2a03104b61cf22db2de395439367b5cfa35c1cf1cbe5dff",
+    "/home/gsc/.cache/glassmind/continuous-20261010/coordinator/factverify-independent/supplemental/store.json": "4d6525cbbdbbb2fc1f1e076ad0afdd226669b782f36afa4b9648b969be95d2ef"
+  },
+  "total": 48,
+  "passed": 44,
+  "failures": [
+    {
+      "suite": "primary",
+      "case": {
+        "name": "case_13",
+        "text": "Was Eli born in North Haven born in South Haven?",
+        "expected": "supported",
+        "edge": [
+          "Q900007",
+          "P19",
+          "Q900011"
+        ]
+      },
+      "actual": {
+        "status": "refused",
+        "reason": "ambiguous_delimiter"
+      },
+      "returncode": 0,
+      "stdout": "{\"status\":\"refused\",\"reason\":\"ambiguous_delimiter\"}\n",
+      "stderr": "",
+      "pass": false
+    },
+    {
+      "suite": "primary",
+      "case": {
+        "name": "case_27",
+        "text": "Was Mara Finch and Noel Finch born in North Haven?",
+        "expected": "unknown",
+        "edge": null
+      },
+      "actual": {
+        "status": "refused",
+        "reason": "invalid_endpoint"
+      },
+      "returncode": 0,
+      "stdout": "{\"status\":\"refused\",\"reason\":\"invalid_endpoint\"}\n",
+      "stderr": "",
+      "pass": false
+    },
+    {
+      "suite": "supplemental",
+      "case": {
+        "name": "supplemental_3",
+        "text": "Was Painter Born in Winter born in İzmir?",
+        "expected": "supported",
+        "edge": [
+          "Q910005",
+          "P19",
+          "Q910010"
+        ]
+      },
+      "actual": {
+        "status": "refused",
+        "reason": "ambiguous_delimiter"
+      },
+      "returncode": 0,
+      "stdout": "{\"status\":\"refused\",\"reason\":\"ambiguous_delimiter\"}\n",
+      "stderr": "",
+      "pass": false
+    },
+    {
+      "suite": "supplemental",
+      "case": {
+        "name": "supplemental_7",
+        "text": "Was İlke Şahin born in Title born in İzmir?",
+        "expected": "unknown",
+        "edge": null
+      },
+      "actual": {
+        "status": "refused",
+        "reason": "ambiguous_delimiter"
+      },
+      "returncode": 0,
+      "stdout": "{\"status\":\"refused\",\"reason\":\"ambiguous_delimiter\"}\n",
+      "stderr": "",
+      "pass": false
+    }
+  ]
+}

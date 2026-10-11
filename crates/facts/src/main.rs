@@ -11,6 +11,12 @@ struct Args {
 }
 #[derive(Subcommand)]
 enum Command {
+    /// Check an explicit positive relation against this finite local snapshot.
+    Verify {
+        #[arg(long)]
+        index: PathBuf,
+        question: String,
+    },
     Train {
         #[arg(long)]
         train: PathBuf,
@@ -84,6 +90,11 @@ struct Totals {
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     match Args::parse().command {
+        Command::Verify { index, question } => {
+            let store: Store = serde_json::from_slice(&fs::read(index)?)?;
+            store.validate()?;
+            println!("{}", serde_json::to_string(&store.verify(&question))?);
+        }
         Command::Train { train, model } => {
             let rows = rows(&train)?;
             // Deterministic training-only calibration, no validation examples.

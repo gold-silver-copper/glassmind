@@ -1,0 +1,23 @@
+{
+  "question": "Was Q100303 born in Q2533654?",
+  "selection": "first lexical subject/property/object over four supported properties; QID endpoints",
+  "claim": {
+    "subject": "Q100303",
+    "property": "P19",
+    "object": "Q2533654",
+    "published_statements": [
+      {
+        "id": "q100303$EDDE6E93-DC6C-4FC5-BB64-C5E312B85289",
+        "rank": "normal",
+        "qualifiers": {}
+      }
+    ],
+    "cache_file": "/home/gsc/.cache/glassmind/data/simplequestions/wikidata/faea9d8294db2ab9.json",
+    "cache_bytes": 1880743,
+    "cache_sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+    "lastrevid": null
+  },
+  "scope": "500 validation-subject-seeded entities; finite snapshot only",
+  "source": "Wikidata existing cached snapshot retrieved 2026-10-10; CC0-1.0",
+  "new_download_bytes": 0
+}

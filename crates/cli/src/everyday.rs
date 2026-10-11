@@ -2,7 +2,7 @@
 use std::io::{BufRead, IsTerminal, Write};
 use std::path::{Path, PathBuf};
 
-use crate::talk_facts::{FactReply, Facts};
+use crate::talk_facts::{FactReply, Facts, VerificationReply};
 use crate::talk_stories::{Stories, StoryPlan, StoryReply};
 use glassmind_everyday::{Conversation, IntentModel, Reply};
 use glassmind_quantities::Answer;
@@ -23,6 +23,7 @@ enum TalkReply {
     Calculation(Calculation),
     Story(StoryReply),
     Fact(Box<FactReply>),
+    Verification(Box<VerificationReply>),
 }
 
 #[derive(serde::Serialize)]
@@ -41,6 +42,7 @@ impl TalkReply {
             Self::Calculation(reply) => &reply.text,
             Self::Story(reply) => &reply.text,
             Self::Fact(reply) => &reply.text,
+            Self::Verification(reply) => &reply.text,
         }
     }
 }
@@ -131,6 +133,19 @@ fn respond_with_facts(
     model: Option<&IntentModel>,
     facts: Option<&Facts>,
 ) -> TalkReply {
+    if let Some(request) = crate::talk_facts::verification_request(line) {
+        session.memory.turn = session.memory.turn.saturating_add(1);
+        session.memory.last_user_utterance = Some(line.to_owned());
+        session.memory.last_slot = None;
+        return match facts {
+            Some(facts) => TalkReply::Verification(Box::new(facts.verify(request))),
+            None => TalkReply::Conversation(Reply::Refusal {
+                text: "Checking factual relationships requires a local facts bundle (--facts-dir)."
+                    .into(),
+                proposal: None,
+            }),
+        };
+    }
     if let Some(request) = crate::talk_facts::set_request(line) {
         // Explicit external facts never enter the memory/story interpreters.
         session.memory.turn = session.memory.turn.saturating_add(1);

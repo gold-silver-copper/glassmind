@@ -4,6 +4,12 @@ use glassmind_everyday::IntentModel;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 
+mod verification;
+pub use verification::{
+    EdgeWitness, EndpointResolution, MAX_ENDPOINT_BYTES, MAX_VERIFY_QUESTION_BYTES, RefusalReason,
+    UnknownReason, Verification,
+};
+
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct EntityId(pub String);
 

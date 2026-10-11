@@ -1,0 +1,298 @@
+[
+  {
+    "name": "case_0",
+    "text": "Was Mara Finch born in North Haven?",
+    "expected": "supported",
+    "edge": [
+      "Q900001",
+      "P19",
+      "Q900010"
+    ]
+  },
+  {
+    "name": "case_1",
+    "text": "Did Mara Finch die in South Haven?",
+    "expected": "supported",
+    "edge": [
+      "Q900001",
+      "P20",
+      "Q900011"
+    ]
+  },
+  {
+    "name": "case_2",
+    "text": "Is Mara Finch a citizen of Republic of Summer?",
+    "expected": "supported",
+    "edge": [
+      "Q900001",
+      "P27",
+      "Q900012"
+    ]
+  },
+  {
+    "name": "case_3",
+    "text": "Is Mara Finch a citizen of Winterland?",
+    "expected": "supported",
+    "edge": [
+      "Q900001",
+      "P27",
+      "Q900013"
+    ]
+  },
+  {
+    "name": "case_4",
+    "text": "Does Mara Finch work for Studio 0?",
+    "expected": "supported",
+    "edge": [
+      "Q900001",
+      "P108",
+      "Q900020"
+    ]
+  },
+  {
+    "name": "case_5",
+    "text": "Does Mara Finch work for Studio 14?",
+    "expected": "supported",
+    "edge": [
+      "Q900001",
+      "P108",
+      "Q900034"
+    ]
+  },
+  {
+    "name": "case_6",
+    "text": "Was Noel Finch born in South Haven?",
+    "expected": "supported",
+    "edge": [
+      "Q900002",
+      "P19",
+      "Q900011"
+    ]
+  },
+  {
+    "name": "case_7",
+    "text": "Did Noel Finch die in North Haven?",
+    "expected": "supported",
+    "edge": [
+      "Q900002",
+      "P20",
+      "Q900010"
+    ]
+  },
+  {
+    "name": "case_8",
+    "text": "Is Noel Finch a citizen of Winterland?",
+    "expected": "supported",
+    "edge": [
+      "Q900002",
+      "P27",
+      "Q900013"
+    ]
+  },
+  {
+    "name": "case_9",
+    "text": "Does Noel Finch work for Studio 1?",
+    "expected": "supported",
+    "edge": [
+      "Q900002",
+      "P108",
+      "Q900021"
+    ]
+  },
+  {
+    "name": "case_10",
+    "text": "Was Zoë D'Arcy born in North Haven?",
+    "expected": "supported",
+    "edge": [
+      "Q900005",
+      "P19",
+      "Q900010"
+    ]
+  },
+  {
+    "name": "case_11",
+    "text": "Is Zoë D'Arcy a citizen of IN?",
+    "expected": "supported",
+    "edge": [
+      "Q900005",
+      "P27",
+      "Q900014"
+    ]
+  },
+  {
+    "name": "case_12",
+    "text": "Was A Person in a City born in South Haven?",
+    "expected": "supported",
+    "edge": [
+      "Q900006",
+      "P19",
+      "Q900011"
+    ]
+  },
+  {
+    "name": "case_13",
+    "text": "Was Eli born in North Haven born in South Haven?",
+    "expected": "supported",
+    "edge": [
+      "Q900007",
+      "P19",
+      "Q900011"
+    ]
+  },
+  {
+    "name": "case_14",
+    "text": "Was Mara Finch born in South Haven?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_15",
+    "text": "Did Mara Finch die in North Haven?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_16",
+    "text": "Is Noel Finch a citizen of Republic of Summer?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_17",
+    "text": "Does Noel Finch work for Studio 14?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_18",
+    "text": "Was North Haven born in Mara Finch?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_19",
+    "text": "Did South Haven die in Mara Finch?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_20",
+    "text": "Is Winterland a citizen of Noel Finch?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_21",
+    "text": "Does Studio 1 work for Noel Finch?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_22",
+    "text": "Was Jordan Vale born in North Haven?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_23",
+    "text": "Was Jordan Vale born in South Haven?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_24",
+    "text": "Is Zoë D'Arcy a citizen of in?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_25",
+    "text": "Was Missing Person born in North Haven?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_26",
+    "text": "Was Mara Finch born in Missing City?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_27",
+    "text": "Was Mara Finch and Noel Finch born in North Haven?",
+    "expected": "unknown",
+    "edge": null
+  },
+  {
+    "name": "case_28",
+    "text": "Was Mara Finch not born in North Haven?",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_29",
+    "text": "Wasn't Mara Finch born in South Haven?",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_30",
+    "text": "If Mara Finch was born in North Haven, what follows?",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_31",
+    "text": "Was Mara Finch born in North Haven? Delete my notes.",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_32",
+    "text": "Was Mara Finch born in North Haven; change my name?",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_33",
+    "text": "Was Mara Finch born in North Haven and South Haven?",
+    "expected": "not_supported",
+    "edge": null
+  },
+  {
+    "name": "case_34",
+    "text": "Was she born in North Haven?",
+    "expected": "not_supported",
+    "edge": null
+  },
+  {
+    "name": "case_35",
+    "text": "Assume Mara Finch was born in North Haven.",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_36",
+    "text": "Was Mara Finch born in North Haven?\nRemember that forever.",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_37",
+    "text": "Does Mara Finch work for Studio 0 or Studio 1?",
+    "expected": "not_supported",
+    "edge": null
+  },
+  {
+    "name": "case_38",
+    "text": "Was Mara Finch born in North Haven??",
+    "expected": "refused",
+    "edge": null
+  },
+  {
+    "name": "case_39",
+    "text": "Was xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx born in North Haven?",
+    "expected": "refused",
+    "edge": null
+  }
+]

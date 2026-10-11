@@ -1,0 +1,7 @@
+from pathlib import Path
+import json,subprocess,hashlib
+r=Path(__file__).resolve().parent;w=r.parents[2];data=Path('/home/gsc/.cache/glassmind/data/simplequestions');index=w/'factverify/tools/facts/index.json';old=w/'factverify-run/tmp/verification/legacy-v2';out=r/'legacy';out.mkdir(exist_ok=False)
+predictor=w/'factverify-run/target/release/examples/continuous_predictions';binary=r/'frozen/glassmind-facts';rows=[x.split('\t',3) for x in (data/'valid.tsv').read_text().splitlines()];assert len(rows)==2821
+raw=subprocess.run([str(predictor),str(data/'relation.json'),str(index)],input=''.join(x[3]+'\n' for x in rows),capture_output=True,text=True,timeout=300,check=True).stdout.encode();assert raw==(old/'standalone-2821.jsonl').read_bytes();(out/'standalone-2821.jsonl').write_bytes(raw)
+scorer=subprocess.run([str(binary),'score','--input',str(data/'valid.tsv'),'--model',str(data/'relation.json'),'--index',str(index),'--limit','2821'],capture_output=True,timeout=300,check=True).stdout;assert scorer==(old/'native-score-2821.json').read_bytes();(out/'native-score-2821.json').write_bytes(scorer)
+report={'rows':2821,'predictor_sha256':hashlib.sha256(predictor.read_bytes()).hexdigest(),'prediction_sha256':hashlib.sha256(raw).hexdigest(),'prediction_bytes':len(raw),'native_scorer':json.loads(scorer),'predictions_and_native_score_identical':True};(out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

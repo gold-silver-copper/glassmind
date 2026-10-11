@@ -1,0 +1,41 @@
+Running as unit: glassmind-factverify-alias-contract-v2.scope; invocation ID: 753df74b2b134910b88bf3f97e20d9fa
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/factverify/crates/facts)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.94s
+     Running unittests src/lib.rs (/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/target/debug/deps/glassmind_facts-d8cb45dac857ad1d)
+
+running 6 tests
+test tests::descriptive_aliases_still_ignore_case ... ok
+test tests::explicit_lowercase_alias_remains_valid ... ok
+test tests::longest_alias_and_ambiguity_are_preserved ... ok
+test tests::uppercase_alias_does_not_match_an_ordinary_word ... ok
+test tests::rejected_acronym_does_not_resolve_ambiguity_or_expose_shorter_alias ... ok
+test tests::bounded_sets_preserve_legacy_refusal_and_relation_guards ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/target/debug/deps/glassmind_facts-3101ce2ea3b0ddab)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/verification.rs (/home/gsc/.cache/glassmind/continuous-20261010/factverify-run/target/debug/deps/verification-db928189e8f66ee9)
+
+running 4 tests
+test resolution_and_unbounded_edge_membership ... ok
+test overlapping_predicate_delimiters_refuse ... ok
+test edge_truth_and_alias_ambiguity_cannot_choose_a_parse ... ok
+test alias_v2_graph_contracts_and_read_only_store ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests glassmind_facts
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+    Checking glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/factverify/crates/facts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.35s
+   Compiling glassmind-facts v0.1.0 (/home/gsc/.cache/glassmind/continuous-20261010/factverify/crates/facts)
+    Finished `release` profile [optimized + debuginfo] target(s) in 2.39s
