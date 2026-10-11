@@ -1,0 +1,162 @@
+use clap::{Parser, Subcommand};
+use glassmind_everyday::{Example, IntentModel, TrainOptions};
+use glassmind_facts::{EntityId, Store};
+use serde::Serialize;
+use std::{fs, path::PathBuf};
+
+#[derive(Parser)]
+struct Args {
+    #[command(subcommand)]
+    command: Command,
+}
+#[derive(Subcommand)]
+enum Command {
+    Train {
+        #[arg(long)]
+        train: PathBuf,
+        #[arg(long)]
+        model: PathBuf,
+    },
+    Score {
+        #[arg(long)]
+        input: PathBuf,
+        #[arg(long)]
+        model: PathBuf,
+        #[arg(long)]
+        index: PathBuf,
+        #[arg(long)]
+        limit: Option<usize>,
+    },
+    Ask {
+        #[arg(long)]
+        model: PathBuf,
+        #[arg(long)]
+        index: PathBuf,
+        question: String,
+    },
+}
+struct Row {
+    subject: String,
+    relation: String,
+    object: String,
+    question: String,
+}
+fn rows(path: &PathBuf) -> Result<Vec<Row>, Box<dyn std::error::Error>> {
+    fs::read_to_string(path)?
+        .lines()
+        .enumerate()
+        .map(|(i, line)| {
+            let mut parts = line.splitn(4, '\t');
+            let subject = parts.next().ok_or("missing subject")?.to_owned();
+            let relation = parts.next().ok_or("missing relation")?.to_owned();
+            let object = parts.next().ok_or("missing object")?.to_owned();
+            let question = parts
+                .next()
+                .ok_or_else(|| format!("missing question on row {}", i + 1))?
+                .to_owned();
+            Ok(Row {
+                subject,
+                relation,
+                object,
+                question,
+            })
+        })
+        .collect()
+}
+fn load(
+    model: &PathBuf,
+    index: &PathBuf,
+) -> Result<(IntentModel, Store), Box<dyn std::error::Error>> {
+    let model: IntentModel = serde_json::from_slice(&fs::read(model)?)?;
+    let store: Store = serde_json::from_slice(&fs::read(index)?)?;
+    model.validate()?;
+    store.validate()?;
+    Ok((model, store))
+}
+#[derive(Default, Serialize)]
+struct Totals {
+    total: usize,
+    right: usize,
+    refused: usize,
+    wrong: usize,
+    entity_linked_correct: usize,
+    relation_top1_correct: usize,
+}
+fn run() -> Result<(), Box<dyn std::error::Error>> {
+    match Args::parse().command {
+        Command::Train { train, model } => {
+            let rows = rows(&train)?;
+            // Deterministic training-only calibration, no validation examples.
+            let (calibration, fit): (Vec<_>, Vec<_>) =
+                rows.into_iter().enumerate().partition(|(i, _)| i % 10 == 0);
+            let examples = |rows: Vec<(usize, Row)>| {
+                rows.into_iter()
+                    .map(|(_, r)| Example {
+                        text: r.question,
+                        label: r.relation,
+                    })
+                    .collect::<Vec<_>>()
+            };
+            let fit = examples(fit);
+            let calibration = examples(calibration);
+            let mut trained = IntentModel::train(
+                &fit,
+                TrainOptions {
+                    epochs: 12,
+                    char_weight: 0.15,
+                    min_df: 2,
+                },
+            )?;
+            let totals = trained.calibrate(&calibration, 2.0)?;
+            fs::write(model, serde_json::to_vec(&trained)?)?;
+            println!("{}", serde_json::to_string(&totals)?);
+        }
+        Command::Score {
+            input,
+            model,
+            index,
+            limit,
+        } => {
+            let (model, store) = load(&model, &index)?;
+            let mut totals = Totals::default();
+            for row in rows(&input)?.into_iter().take(limit.unwrap_or(usize::MAX)) {
+                let answer = store.answer(&model, &row.question);
+                totals.total += 1;
+                totals.entity_linked_correct +=
+                    usize::from(answer.entity.as_ref().is_some_and(|id| id.0 == row.subject));
+                totals.relation_top1_correct +=
+                    usize::from(model.predict(&row.question).label == row.relation);
+                // Multiple answers count wrong, even if one matches the benchmark answer.
+                if answer.answers.len() == 1 && answer.answers.contains(&EntityId(row.object)) {
+                    totals.right += 1;
+                } else if answer.refusal.is_some() {
+                    totals.refused += 1;
+                } else {
+                    totals.wrong += 1;
+                }
+            }
+            println!("{}", serde_json::to_string(&totals)?);
+        }
+        Command::Ask {
+            model,
+            index,
+            question,
+        } => {
+            let (model, store) = load(&model, &index)?;
+            println!(
+                "{}",
+                serde_json::to_string(&store.answer(&model, &question))?
+            );
+        }
+    }
+    Ok(())
+}
+fn main() -> std::process::ExitCode {
+    match run() {
+        Ok(()) => std::process::ExitCode::SUCCESS,
+        Err(e) => {
+            eprintln!("{e}");
+            std::process::ExitCode::FAILURE
+        }
+    }
+}
