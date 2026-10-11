@@ -1,0 +1,312 @@
+{
+  "binary_sha256": "b04a929a56f4fff3e1e748477856311a2098a5e95044b04bb1a5662fe3d99a78",
+  "baseline": false,
+  "cases": [
+    {
+      "name": "sum_all",
+      "kind": "implement",
+      "original_exit": 101,
+      "changed": true,
+      "accepted": true,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "5d44da5995ba41a310d3e8d167e756a794d021bc1d645b5c61b13c24c30689fb"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "9dbb0859c0fd715e2c6bbce1ab44c2a6b7167911931c80263b740611a5017f2f"
+      },
+      "source": "pub fn fold_values(data: &[i64]) -> i64 { return data.iter().copied().sum() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(fold_values(&[-8,-3,0,2,7]),-2); assert_eq!(fold_values(&[]),0); } }\n"
+    },
+    {
+      "name": "sum_negative",
+      "kind": "implement",
+      "original_exit": 101,
+      "changed": true,
+      "accepted": true,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "dee94d01b2712d50e51046c3bcb681eab8524775c230c1f93afe9557cbb99437"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "033146a438fafd29d67978c30765a9b6e4fbf56081469e4c5a3da4efecb4c4af"
+      },
+      "source": "pub fn fold_values(data: &[i64]) -> i64 { return data.iter().copied().filter(|v| *v < 0).sum() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(fold_values(&[-8,-3,0,2,7]),-11); assert_eq!(fold_values(&[4,9]),0); } }\n"
+    },
+    {
+      "name": "reverse_odd",
+      "kind": "implement",
+      "original_exit": 101,
+      "changed": true,
+      "accepted": true,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "fe12e48dd332462d58401902c9406e15c7dbe300d44e0cd4e94c355df0d582fd"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "04aa403de8dec14d0e699cc87ecf88a4ae6742b36d9ab985e018757229e5d126"
+      },
+      "source": "pub fn select_values(data: &[i32]) -> Vec<i32> { return data.iter().copied().filter(|v| *v % 2 != 0).rev().collect::<::std::vec::Vec<_>>() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(select_values(&[-5,-2,0,3,8,9]),vec![9,3,-5]); assert_eq!(select_values(&[]),vec![]); } }\n"
+    },
+    {
+      "name": "unicode_reverse",
+      "kind": "implement",
+      "original_exit": 101,
+      "changed": true,
+      "accepted": true,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "b9500b0ed2bed710134599df32cb68c9de101794a3da61ef70f9b934dedcac0e"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "ab0bb6028a254a3fc8fce2d54cdc12e0ad17a9d577eed6749616f2158942b41e"
+      },
+      "source": "pub fn 並べる(data: &str) -> String { return data.chars().rev().collect::<::std::string::String>() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(並べる(\"ø 中 x\"),\"x 中 ø\"); assert_eq!(並べる(\"a\tb\"),\"b\ta\"); assert_eq!(並べる(\"\"),\"\"); } }\n"
+    },
+    {
+      "name": "words_forward",
+      "kind": "implement",
+      "original_exit": 101,
+      "changed": true,
+      "accepted": true,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "929393d61318d3c997118a32b2a74c5cfa78274521075a54cddba15c773ece73"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "60870858324c14bce4c9ea9508ed8e33fa97f391bd90e9b428315f859946cd06"
+      },
+      "source": "pub fn pieces(data: &str) -> Vec<String> { return data.split_whitespace().map(::std::string::String::from).collect::<::std::vec::Vec<_>>() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(pieces(\" oak\t birch\n松 \"),vec![\"oak\",\"birch\",\"松\"]); assert!(pieces(\" \t\").is_empty()); } }\n"
+    },
+    {
+      "name": "count_chars",
+      "kind": "implement",
+      "original_exit": 101,
+      "changed": true,
+      "accepted": true,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "df22509919c8ab64bb39654a622864d26efb2dca5d49f54c93cefdec19030eb8"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "a9bc494b681f0957c09cc6b7f891bae82df12feb18a80b1012a43ba7571c14e8"
+      },
+      "source": "pub fn measure(data: &str) -> usize { return data.chars().count() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(measure(\"é 中\"),3); assert_eq!(measure(\"abc def\"),7); assert_eq!(measure(\"\"),0); } }\n"
+    },
+    {
+      "name": "competing",
+      "kind": "ambiguous",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "079877c98181f4080bdaa7a5a98145f78741883cd6a941edb890071e7b289afa"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "079877c98181f4080bdaa7a5a98145f78741883cd6a941edb890071e7b289afa"
+      },
+      "source": "pub fn fold_values(data: &[i64]) -> i64 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(fold_values(&[2]),2); } }\n"
+    },
+    {
+      "name": "alias",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "f97dba168c359cea6588ea8e2ce4e701b751aeac820f2b24e9c6df2aa0ca1a30"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "f97dba168c359cea6588ea8e2ce4e701b751aeac820f2b24e9c6df2aa0ca1a30"
+      },
+      "source": "type i32 = u32; pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n"
+    },
+    {
+      "name": "partial",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "423c1ec0f5caa6a6578f9be460e449a18747e0d37633fcd79ce8f89e99b4a170"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "423c1ec0f5caa6a6578f9be460e449a18747e0d37633fcd79ce8f89e99b4a170"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { let _keep = 1; todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n"
+    },
+    {
+      "name": "existing",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "7ed9a9930c81966ec0df2f8e558041a0cb925f84513988400d4fc2599ae7489d"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "7ed9a9930c81966ec0df2f8e558041a0cb925f84513988400d4fc2599ae7489d"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { 0 }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n"
+    },
+    {
+      "name": "macro_shadow",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "99b03c2b1985dbeaf2fe37925ad81f7f8fe3845f0ea72acc26811118c81c4ba6"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "99b03c2b1985dbeaf2fe37925ad81f7f8fe3845f0ea72acc26811118c81c4ba6"
+      },
+      "source": "macro_rules! todo { () => {0} } pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n"
+    },
+    {
+      "name": "negative",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "5db770ea2781c4d6279767ec52cba42749a236d93b2dc0495ec02ba5effa1425"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "5db770ea2781c4d6279767ec52cba42749a236d93b2dc0495ec02ba5effa1425"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n"
+    },
+    {
+      "name": "compound",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "5db770ea2781c4d6279767ec52cba42749a236d93b2dc0495ec02ba5effa1425"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "5db770ea2781c4d6279767ec52cba42749a236d93b2dc0495ec02ba5effa1425"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n"
+    },
+    {
+      "name": "behavior",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "5db770ea2781c4d6279767ec52cba42749a236d93b2dc0495ec02ba5effa1425"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "5db770ea2781c4d6279767ec52cba42749a236d93b2dc0495ec02ba5effa1425"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); } }\n"
+    },
+    {
+      "name": "unexecuted",
+      "kind": "unchanged",
+      "original_exit": 0,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "dd9f4026168ca1567aa9ab37e32627b79651e8e929f5fdeb61de0b832cb76c6d"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "dd9f4026168ca1567aa9ab37e32627b79651e8e929f5fdeb61de0b832cb76c6d"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(2+3,5); } }\n"
+    },
+    {
+      "name": "no_tests",
+      "kind": "unchanged",
+      "original_exit": 0,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "cddd8b9b9e57c93f36c73d16383e3089722a05f358d2d4b9e32ebe875c3ed59a"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "cddd8b9b9e57c93f36c73d16383e3089722a05f358d2d4b9e32ebe875c3ed59a"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n"
+    },
+    {
+      "name": "compiler_failure",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "1bd2b7a24d0cab7808f65b68b6c63b7ab6524bafaf893c98b68c4b751c818520"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "1bd2b7a24d0cab7808f65b68b6c63b7ab6524bafaf893c98b68c4b751c818520"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { missing_function(); } }\n"
+    },
+    {
+      "name": "conflicting",
+      "kind": "unchanged",
+      "original_exit": 101,
+      "changed": false,
+      "accepted": false,
+      "action_exit": 0,
+      "before": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "c7551706cd1dc8dff37b9c3eaf0214dc2d9beb752342c6eb06a62f43c6c0ff47"
+      },
+      "after": {
+        "Cargo.toml": "62a8db040fd3c395545160b4773e7cd16496b4e3ca6ec57c96f084e65541f5dc",
+        "src/lib.rs": "c7551706cd1dc8dff37b9c3eaf0214dc2d9beb752342c6eb06a62f43c6c0ff47"
+      },
+      "source": "pub fn target(data: &[i32]) -> i32 { todo!() }\n// This source tail and its assertions must remain unchanged.\n#[cfg(test)] mod tests { use super::*; #[test] fn contract() { assert_eq!(target(&[2,3]),5); assert_eq!(target(&[2,3]),6); } }\n"
+    }
+  ]
+}

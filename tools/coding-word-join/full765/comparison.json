@@ -1,0 +1,53 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 545,
+    "pass": 220
+  },
+  "all_previous_passes_retained": 218,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "implement/reverse-words",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "implement/reverse-words",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "pass": 30,
+      "refused": 51
+    },
+    "implement": {
+      "refused": 55,
+      "pass": 5
+    }
+  },
+  "baseline_result_sha256": "f76e6f43f890f9dc741ae62dcaece3b37532b7ec07055929cebbe947f0d71bbe",
+  "candidate_result_sha256": "ac1a58deb96ed9a1d084a50937609c8a9231c1c635fc31450af363829fca252a",
+  "binary_sha256": "b04a929a56f4fff3e1e748477856311a2098a5e95044b04bb1a5662fe3d99a78",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}
