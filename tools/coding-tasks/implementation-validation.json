@@ -1,0 +1,22 @@
+{
+  "commit": "be519af38767d3e04c0eaa54e91f4f7c732e7621",
+  "sha256": "b99b23284f830e0d4713271da6692e6a73470ee7448dad9a527b55c2dd506577",
+  "binary": "/home/gsc/.cache/glassmind/yolo-implementation/candidate",
+  "checks": "check.log",
+  "native_tests": "tests-v2.log",
+  "cli_tests": 80,
+  "implementation_grammar_tests": 4,
+  "native_implementation_tests": 3,
+  "cli_smoke_processes": 29,
+  "dev_total": 765,
+  "outcomes": {
+    "refused": 542,
+    "pass": 223
+  },
+  "all_outcomes_identical_to_revisions_baseline": true,
+  "baseline_sha256": "6be848b22610da57e4e79e109ab673f6bdd808ec76fcba02a0b9158506f9c1e0",
+  "results_sha256": "b8948bf99a4b0ebf85fd9c82f9da112c2f07fc7f44dad477dac81b6f1d51e2ac",
+  "artifacts": "/home/gsc/.cache/glassmind/yolo-implementation",
+  "workspace_checks": "fmt, all-target clippy, release workspace, strict 4/4 fixture smoke",
+  "limitations": "Finite signature-directed function families; unique native-test survivor does not prove prose requirements. General implementation, persistent field addition and conditional plans are outside this candidate."
+}
