@@ -1,0 +1,854 @@
+[
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/Cargo.toml",
+    "archive": "source/crates/quantities/Cargo.toml",
+    "bytes": 342,
+    "sha256": "df239632478115077be512e6bf13f183c0e69e47a5b03b835038917936ff5b8b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/HANDOFF.md",
+    "archive": "source/crates/quantities/HANDOFF.md",
+    "bytes": 5914,
+    "sha256": "d2100664da94224585edd41f1b7a7e70b333857e8ebe5fef7cbb381a3adf8ff7"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/aggregate.json",
+    "archive": "source/crates/quantities/dev/aggregate.json",
+    "bytes": 1331,
+    "sha256": "a28dee447b6b2c8bd6f82931238cefbeb2955086aa3fa1a2993c7da20d67ca6e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/aggregate.py",
+    "archive": "source/crates/quantities/dev/aggregate.py",
+    "bytes": 861,
+    "sha256": "c14dfd2584de10dd16e08292436d5c012213bc222c3aad8460fe06f33f52b2ed"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/baseline-sample.json",
+    "archive": "source/crates/quantities/dev/baseline-sample.json",
+    "bytes": 10654,
+    "sha256": "83ad6060c9afb47138600334d66033ede9ea6f5b8cdda17402814a4d07232bb9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/evaluate.py",
+    "archive": "source/crates/quantities/dev/evaluate.py",
+    "bytes": 13047,
+    "sha256": "f4a564a339d33e3fbaab78f2ab98fa083ccbb8dba23915d228e4efa1dc3e97bc"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/extended-dev-provenance.json",
+    "archive": "source/crates/quantities/dev/extended-dev-provenance.json",
+    "bytes": 485,
+    "sha256": "7592e8e5fe68a17fddd43fb1c14f4e03ac503a52f34d61842523a42e470f34b0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/extended-dev.jsonl",
+    "archive": "source/crates/quantities/dev/extended-dev.jsonl",
+    "bytes": 174437,
+    "sha256": "975b9b4c4049b8dc8beac88a5026cd81347e4496535d284421f3fad4db0d13b0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/extended-full-dev.json",
+    "archive": "source/crates/quantities/dev/extended-full-dev.json",
+    "bytes": 20319,
+    "sha256": "0ff43bb89be83cd514c40c12aa1b802665d17af1a534c479a583ec123a86cf2a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/extended-sample.json",
+    "archive": "source/crates/quantities/dev/extended-sample.json",
+    "bytes": 3927,
+    "sha256": "44ff5481105d208403e8ad50a5ee9047d15b6759edb8d82be54b42556a6b0b1d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/final-sample.json",
+    "archive": "source/crates/quantities/dev/final-sample.json",
+    "bytes": 2877,
+    "sha256": "ddb3d24e4d8fcc9519497bd9eb57e5c758338d9bc7e7920a7820f79c48605aa5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/full-dev.json",
+    "archive": "source/crates/quantities/dev/full-dev.json",
+    "bytes": 2898,
+    "sha256": "557a0edbe167f18511630b23ab2d6cd05ae7815a61f18dfef74b2c58cb7925e9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/reproduce.log",
+    "archive": "source/crates/quantities/dev/reproduce.log",
+    "bytes": 13138,
+    "sha256": "46b9f8d60e05eadfb3bf9369eac9472da1c93b2953a450820f926396e2465bee"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/reproduce.sh",
+    "archive": "source/crates/quantities/dev/reproduce.sh",
+    "bytes": 1044,
+    "sha256": "4c315d5d6f4b5f137b6d9fec62b850264eeb7c269acaa6209329014559809954"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/synthetic-dev-provenance.json",
+    "archive": "source/crates/quantities/dev/synthetic-dev-provenance.json",
+    "bytes": 486,
+    "sha256": "9ac546a7a3f012c30c4bcbbb3e2527ac3866f286322175ac7fc12612d4e01fe9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/dev/synthetic-dev.jsonl",
+    "archive": "source/crates/quantities/dev/synthetic-dev.jsonl",
+    "bytes": 314258,
+    "sha256": "cd36b7d8053d53fe84b1dc7e1aefefc0c6cee98e00cab0714379ce6b6d76e66c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/calendar.rs",
+    "archive": "source/crates/quantities/src/calendar.rs",
+    "bytes": 4021,
+    "sha256": "e5c25f8281a8c938e4ddb18468b377fd05a90b0267e896e665b4d09441dce6ca"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/inventory.rs",
+    "archive": "source/crates/quantities/src/inventory.rs",
+    "bytes": 1779,
+    "sha256": "a3f48765518754664f86e084e8b428925ccbdc345b9665fac8a3eafe3352497e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/lib.rs",
+    "archive": "source/crates/quantities/src/lib.rs",
+    "bytes": 868,
+    "sha256": "d05dbdd91ca0fe1bd3e568341117548533150d2e6ce06cdd9c74a71749c6721b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/linear.rs",
+    "archive": "source/crates/quantities/src/linear.rs",
+    "bytes": 15869,
+    "sha256": "92ee55d057dd098356f17a7bade17b1f4dfbace04b679a09aefaae73e10264eb"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/main.rs",
+    "archive": "source/crates/quantities/src/main.rs",
+    "bytes": 872,
+    "sha256": "d66376e89fbe68a03449a5577cf23a42c2b3767d3bfafeb1d4fad686a8918e4e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/number_words.rs",
+    "archive": "source/crates/quantities/src/number_words.rs",
+    "bytes": 3062,
+    "sha256": "8fd3c91f3176ffb71da48c3511e6978ee80fe5c8ef498e3ec814c02a64b95df1"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/parser.rs",
+    "archive": "source/crates/quantities/src/parser.rs",
+    "bytes": 19092,
+    "sha256": "8bfcb4bbf76ae03c07ba761326b24a58d20e3c1b55ebccd9b058d05111145fe5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/percent.rs",
+    "archive": "source/crates/quantities/src/percent.rs",
+    "bytes": 3830,
+    "sha256": "052a4ae9f91661547d1a05f770cf7a8b71c5408e6ce65d9e7a0cc219dd99642b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/percent_change.rs",
+    "archive": "source/crates/quantities/src/percent_change.rs",
+    "bytes": 7301,
+    "sha256": "bb75b8b6aeee552f58583f716151450172122e682c9395a39c9027aaf11bafbc"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/ratio_total.rs",
+    "archive": "source/crates/quantities/src/ratio_total.rs",
+    "bytes": 6492,
+    "sha256": "b08d5a838210944cd73a716f0f4d0f4329f2d6504aebeabe23d71428abb2446f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/rational.rs",
+    "archive": "source/crates/quantities/src/rational.rs",
+    "bytes": 4346,
+    "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/src/units.rs",
+    "archive": "source/crates/quantities/src/units.rs",
+    "bytes": 6790,
+    "sha256": "f2d45cd3a0916525149c7d752d8f6a414c09a3a6547192512adef75adadfb04c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/tests/linear_language.rs",
+    "archive": "source/crates/quantities/tests/linear_language.rs",
+    "bytes": 4437,
+    "sha256": "7078fc36bb07e8b2ca624a80babbeadc7de1fc87bce7f400208ef4789ee82709"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/tests/percent_change.rs",
+    "archive": "source/crates/quantities/tests/percent_change.rs",
+    "bytes": 3555,
+    "sha256": "35f29514a7bd0516eff48e39d67d1ee85feb354a9a3c19d9d9878610b4eda12f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/tests/percent_language.rs",
+    "archive": "source/crates/quantities/tests/percent_language.rs",
+    "bytes": 1792,
+    "sha256": "3360df448e19ca6824416ea7e48a2bdefea227325365817d8b4598a33a370698"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/crates/quantities/tests/ratio_totals.rs",
+    "archive": "source/crates/quantities/tests/ratio_totals.rs",
+    "bytes": 4622,
+    "sha256": "95a6a87eb0ecac3dfeb7c9ffbcc259bbe0c064605bfd133cc54762f8a46c4487"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/PLAN.md",
+    "archive": "source/tools/quantities/equation-sequence/PLAN.md",
+    "bytes": 3210,
+    "sha256": "bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/build.log",
+    "archive": "source/tools/quantities/equation-sequence/build.log",
+    "bytes": 1033,
+    "sha256": "92643ada05e1ad2b83861732960729eddad34ba8ef33ff5778631f1cbc4c1164"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/test.log",
+    "archive": "source/tools/quantities/equation-sequence/test.log",
+    "bytes": 1466,
+    "sha256": "4243a577d089c8650b670c41862336d3d8f471f37e8ef133e32c2501d68ef902"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/experiment.py",
+    "archive": "source/tools/quantities/equation-sequence/experiment.py",
+    "bytes": 9080,
+    "sha256": "9e684a5c188c4809974581464b44aa2b01b2363ff3bfd983fdd0afe3e9802979"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/reproduce.sh",
+    "archive": "source/tools/quantities/equation-sequence/reproduce.sh",
+    "bytes": 651,
+    "sha256": "099857bb11cf9c347eabae3587109f2546c34c95ff509913f8ef1481d9a335ee"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/fmt.log",
+    "archive": "source/tools/quantities/equation-sequence/fmt.log",
+    "bytes": 95,
+    "sha256": "bcf82a472575deb7ff14b9b00ac818bcd9193c1cf5ce63f98a95a0b82327b600"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/clippy.log",
+    "archive": "source/tools/quantities/equation-sequence/clippy.log",
+    "bytes": 1696,
+    "sha256": "9ed13a0b8e0f2151ddb35fd64e2091c0f3703ed0fbb2bf72a813301a00d912bd"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/fmt2.log",
+    "archive": "source/tools/quantities/equation-sequence/fmt2.log",
+    "bytes": 95,
+    "sha256": "db9c95d4b919dc28fb49baea3fcaa2f4b3d6b288b97dc10032e6393b9e66c022"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/clippy2.log",
+    "archive": "source/tools/quantities/equation-sequence/clippy2.log",
+    "bytes": 292,
+    "sha256": "2265f8dde0b0114be26eff3ee7efb96135917e1a8155333d1ac57f6a8149583f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/build2.log",
+    "archive": "source/tools/quantities/equation-sequence/build2.log",
+    "bytes": 294,
+    "sha256": "4dd1c9c37450f0d8ccf12c239c28fc2a7b8d8363100e390a8490f4dbd6554bda"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/experiment.log",
+    "archive": "source/tools/quantities/equation-sequence/experiment.log",
+    "bytes": 2521,
+    "sha256": "e0ed92f1096486c6fd6e0d1343b973385d7062d50d506174c51db063cd53d29c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/contracts.py",
+    "archive": "source/tools/quantities/equation-sequence/contracts.py",
+    "bytes": 2215,
+    "sha256": "d2fef31590e2739bc0e558c77bc06d2eb9101e06ba9d2b2934821d71201d1581"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/contracts.log",
+    "archive": "source/tools/quantities/equation-sequence/contracts.log",
+    "bytes": 200,
+    "sha256": "84e3e2f6c885608d000bc54faa74b8854e470db3feada9f36737f35930f88b93"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/test2.log",
+    "archive": "source/tools/quantities/equation-sequence/test2.log",
+    "bytes": 727,
+    "sha256": "391bea1fb27a1e50175a44ade97417ce4f5e2168040c2c3943b3e6f4547da474"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/source-baseline-verification.json",
+    "archive": "source/tools/quantities/equation-sequence/source-baseline-verification.json",
+    "bytes": 266,
+    "sha256": "5a0ce4a64d43fbbeaa4bd88c89eeed808e946e77f4bb14fef1f8a14256fee1d3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-runtime.patch",
+    "archive": "source/tools/quantities/equation-sequence/rejected-runtime.patch",
+    "bytes": 27141,
+    "sha256": "ffcaf3c0f2a70cae218b1279ed116360a2746dd79cd8ada3b9737d83cf42922d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/audit.json",
+    "archive": "source/tools/quantities/equation-sequence/audit.json",
+    "bytes": 153,
+    "sha256": "4be9969b97f88a2c671c29e87637b224cd0655db02494d4fdeca46e7e6b32ab5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/fit-report.json",
+    "archive": "source/tools/quantities/equation-sequence/fit-report.json",
+    "bytes": 322,
+    "sha256": "7fdf433631f9e77cfb70fcac7029612a457540504169990ccf2c7e6e3f75ac4e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/calibration-report.json",
+    "archive": "source/tools/quantities/equation-sequence/calibration-report.json",
+    "bytes": 281,
+    "sha256": "4289021c82c3be4ffe8cf8f5792c17d1e2907cb7af4646a06352a5a497d60baf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/sample-report.json",
+    "archive": "source/tools/quantities/equation-sequence/sample-report.json",
+    "bytes": 785,
+    "sha256": "6b556b61914190a28c9e4685c7cab37a05ce78600472ab9a3b9b0606fa007bf9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/full-report.json",
+    "archive": "source/tools/quantities/equation-sequence/full-report.json",
+    "bytes": 818,
+    "sha256": "9c40bb222480cb71f9a1e8a1518e515de8db5076b5648a7702a04e62c63c16b0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/thresholds.json",
+    "archive": "source/tools/quantities/equation-sequence/thresholds.json",
+    "bytes": 60,
+    "sha256": "dff0a3b8bc04c54f345007c8733d430e681d28f0d402d37ca69c2332ba26101a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/compatibility.json",
+    "archive": "source/tools/quantities/equation-sequence/compatibility.json",
+    "bytes": 350,
+    "sha256": "fe5d065bc58d00cba34fa7051bf8087fd1476787557de1d8875b1680f1c127fe"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/decision.json",
+    "archive": "source/tools/quantities/equation-sequence/decision.json",
+    "bytes": 115,
+    "sha256": "5249a9815ea6bfc2e8208a0fda44899b0f3bf521352838e1aa8bb39bc9c706ed"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/authored-contracts.json",
+    "archive": "source/tools/quantities/equation-sequence/authored-contracts.json",
+    "bytes": 8662,
+    "sha256": "d2e9078b578ebb77ec17c3e8fff6f7251fb5ce0f0c21ec821db48f9398316dbd"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/prefit-manifest.json",
+    "archive": "source/tools/quantities/equation-sequence/prefit-manifest.json",
+    "bytes": 6078,
+    "sha256": "876ec8eec8d2f0d520b3853f90914436e430d6dc3ecead9c8f1747fa36813701"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/postfit-manifest.json",
+    "archive": "source/tools/quantities/equation-sequence/postfit-manifest.json",
+    "bytes": 601,
+    "sha256": "5384971c9f98cd7c0a304790eee74313dd649b382b582ce7b480b3a97dcbaab3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/calibration-prescore-manifest.json",
+    "archive": "source/tools/quantities/equation-sequence/calibration-prescore-manifest.json",
+    "bytes": 1240,
+    "sha256": "87d258e0acfb7ce3447335ce90ff7cea7705391d412aee13b79b6b7941382092"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/sample-prescore-manifest.json",
+    "archive": "source/tools/quantities/equation-sequence/sample-prescore-manifest.json",
+    "bytes": 1228,
+    "sha256": "6da50eb4aa2745700ceb689c440422d73db208fc6966c6975bb0b48b32eb38a5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/full-prescore-manifest.json",
+    "archive": "source/tools/quantities/equation-sequence/full-prescore-manifest.json",
+    "bytes": 1226,
+    "sha256": "2674fb742336300654a3907c8add68144a8809c6ab37ba7896d7ac7dcfe566cf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/final-manifest.json",
+    "archive": "source/tools/quantities/equation-sequence/final-manifest.json",
+    "bytes": 12751,
+    "sha256": "0be5330a5482b5aec4a56031fc256f298f216946411997715aadd9818a8c5e32"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/sample-indices.json",
+    "archive": "source/tools/quantities/equation-sequence/sample-indices.json",
+    "bytes": 951,
+    "sha256": "178afa7bd298fba39eed5cf051b3c3ed2adb688ffb5dbf140de17111ee1cc6c4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/HANDOFF.md",
+    "archive": "source/tools/quantities/equation-sequence/HANDOFF.md",
+    "bytes": 13175,
+    "sha256": "72ebfbfdfd841f3ccb04ce887f489ecb8a004fc43bb0b10dbbbe23e2c7ae4090"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/HANDOFF-MANIFEST.json",
+    "archive": "source/tools/quantities/equation-sequence/HANDOFF-MANIFEST.json",
+    "bytes": 10054,
+    "sha256": "9d318e35162c719739ed38fa1f61503563d729cf3f0ca38474a7eed102e5757a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/Cargo.lock",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/Cargo.lock",
+    "bytes": 17192,
+    "sha256": "32177db12b632ae27d87ca92e4a2903ab937d941bcc7f64486f64e5c494ccb03"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/crates/quantities/Cargo.toml",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/crates/quantities/Cargo.toml",
+    "bytes": 356,
+    "sha256": "829c2ee923104e6b1202621665b37449936d9d7a47f2d6dfb997f6481c2053e3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/crates/quantities/src/lib.rs",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/crates/quantities/src/lib.rs",
+    "bytes": 886,
+    "sha256": "1053df9b620fefcba44cb4b8235ca72d651e76901e6115d705cb34bd6346d59f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/crates/quantities/src/proposal.rs",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/crates/quantities/src/proposal.rs",
+    "bytes": 14862,
+    "sha256": "f341f213d9ca351c29160af02edab3fd34b81f8ab56ef8327673162069a1eaa3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/crates/quantities/examples/equation_executor.rs",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/crates/quantities/examples/equation_executor.rs",
+    "bytes": 1184,
+    "sha256": "dc346e0648194df414551aff26bfbc056b73b0ccec92be1fa5960ce1842c13a3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/crates/quantities/examples/equation_fit.rs",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/crates/quantities/examples/equation_fit.rs",
+    "bytes": 4190,
+    "sha256": "400c010197e097f957e83e9fa96a8f73100203c5ab1edecd3728e60a7cd5aa71"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/crates/quantities/examples/equation_sequence.rs",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/crates/quantities/examples/equation_sequence.rs",
+    "bytes": 876,
+    "sha256": "6de7e4743701574e3950b4815d4ec3f04f1cd420b70c1d62b2f699152930910f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence/tools/quantities/equation-sequence/rejected-source/crates/quantities/tests/sequence.rs",
+    "archive": "source/tools/quantities/equation-sequence/rejected-source/crates/quantities/tests/sequence.rs",
+    "bytes": 3345,
+    "sha256": "f74c6d310d225badebb8184fda7f3300d67b4cfc519aabdd1d67e6b356c2384d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/summary.txt",
+    "archive": "run/summary.txt",
+    "bytes": 553,
+    "sha256": "89bdb5c26d89397a411b6e9e3a62218a0c9156136e3e62b604dfe809b7955db2"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/events.jsonl",
+    "archive": "run/events.jsonl",
+    "bytes": 351884,
+    "sha256": "47879366c43c853d06b1c8b7bdbe73e26f03f3c558a1acaec4a44e78049c9e98"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/stderr.log",
+    "archive": "run/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/brief.txt",
+    "archive": "run/brief.txt",
+    "bytes": 8523,
+    "sha256": "4532735cb32dd8411f7478fff33b3c2009b824e80a1a99c5f885f5f1869c0598"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/process.json",
+    "archive": "run/process.json",
+    "bytes": 159,
+    "sha256": "9d96fbf0c389154ce6d55241d73fe18f1fe99a277d7606a05a5d88786577ec17"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/equation_sequence",
+    "archive": "experiment/equation_sequence",
+    "bytes": 16658576,
+    "sha256": "7f8f6f8658cedde3590fbf7dd2e462cb88f505e3f0dcc22e6249dd1f9079c0d3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/equation_fit",
+    "archive": "experiment/equation_fit",
+    "bytes": 17050144,
+    "sha256": "5b2a02b6795e1d050b6cdb7723a3f167b6ae16278cce12e02d96a742d7bf84de"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/equation_executor",
+    "archive": "experiment/equation_executor",
+    "bytes": 16919992,
+    "sha256": "40e6a6e975cf8474231ac0e3bcc2e3df5c1ce8196dead0b9159586aa5935ea6f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/glassmind-quantities",
+    "archive": "experiment/glassmind-quantities",
+    "bytes": 16684136,
+    "sha256": "9706879f15c22c030131a02743a0a73f294ce4c04e6e1bd834214898add9278d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/prefit-manifest.json",
+    "archive": "experiment/prefit-manifest.json",
+    "bytes": 6078,
+    "sha256": "876ec8eec8d2f0d520b3853f90914436e430d6dc3ecead9c8f1747fa36813701"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/split.json",
+    "archive": "experiment/split.json",
+    "bytes": 2167034,
+    "sha256": "b16bce2866326a9fe20438f88fca0631d11d62019a75fb2189c9dca6e01411e6"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/train-executions.stderr",
+    "archive": "experiment/train-executions.stderr",
+    "bytes": 95,
+    "sha256": "e999e6086d092da1995939de3585a94ea257dfe4c2c1bcafc320e8656b31d9e7"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/train-executions.jsonl",
+    "archive": "experiment/train-executions.jsonl",
+    "bytes": 9970742,
+    "sha256": "a05b336340cabbd3870e7bbf136532d5bba3d9ecdcb72aa3aa7524010090eb25"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/audit.json",
+    "archive": "experiment/audit.json",
+    "bytes": 153,
+    "sha256": "4be9969b97f88a2c671c29e87637b224cd0655db02494d4fdeca46e7e6b32ab5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/fit-input.jsonl",
+    "archive": "experiment/fit-input.jsonl",
+    "bytes": 2283014,
+    "sha256": "02c614e86b6ed74cc1b81e077bf0d5373ecfb93139b480609bc453c9265e4a8c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/fit-report.json",
+    "archive": "experiment/fit-report.json",
+    "bytes": 322,
+    "sha256": "7fdf433631f9e77cfb70fcac7029612a457540504169990ccf2c7e6e3f75ac4e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/fit.stderr",
+    "archive": "experiment/fit.stderr",
+    "bytes": 525,
+    "sha256": "2e94aaf40def09bb9cf4ee39257e5d9475f1b4ebebeef76c1cfa856c09c50661"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/model.json",
+    "archive": "experiment/model.json",
+    "bytes": 8046176,
+    "sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/postfit-manifest.json",
+    "archive": "experiment/postfit-manifest.json",
+    "bytes": 601,
+    "sha256": "5384971c9f98cd7c0a304790eee74313dd649b382b582ce7b480b3a97dcbaab3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/calibration-questions.jsonl",
+    "archive": "experiment/calibration-questions.jsonl",
+    "bytes": 989704,
+    "sha256": "add387264eb02c1412c54289dc0a3210d6b64c0144042cc1974861f45155ac50"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/calibration-candidate.stderr",
+    "archive": "experiment/calibration-candidate.stderr",
+    "bytes": 95,
+    "sha256": "5a13997e525b7f0854b26a38afef7a50c83d0dab9ed36d657e0ce9e195b776cd"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/calibration-candidate.jsonl",
+    "archive": "experiment/calibration-candidate.jsonl",
+    "bytes": 3643109,
+    "sha256": "5eb26fc5476845d27ea5c558b9627c30b1f0803c73a869abb730b647f99da354"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/calibration-prescore-manifest.json",
+    "archive": "experiment/calibration-prescore-manifest.json",
+    "bytes": 1240,
+    "sha256": "87d258e0acfb7ce3447335ce90ff7cea7705391d412aee13b79b6b7941382092"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/thresholds.json",
+    "archive": "experiment/thresholds.json",
+    "bytes": 60,
+    "sha256": "dff0a3b8bc04c54f345007c8733d430e681d28f0d402d37ca69c2332ba26101a"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/calibration-report.json",
+    "archive": "experiment/calibration-report.json",
+    "bytes": 281,
+    "sha256": "4289021c82c3be4ffe8cf8f5792c17d1e2907cb7af4646a06352a5a497d60baf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/sample-indices.json",
+    "archive": "experiment/sample-indices.json",
+    "bytes": 951,
+    "sha256": "178afa7bd298fba39eed5cf051b3c3ed2adb688ffb5dbf140de17111ee1cc6c4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/sample-questions.jsonl",
+    "archive": "experiment/sample-questions.jsonl",
+    "bytes": 34213,
+    "sha256": "581d4081ed2164df4ffafa7befe2790dbd55ca742979d907470d772351d64476"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/sample-candidate.stderr",
+    "archive": "experiment/sample-candidate.stderr",
+    "bytes": 95,
+    "sha256": "573c46ee925f190c736f25e824630b3457876886aba2ee4e4d96dc94db43afee"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/sample-candidate.jsonl",
+    "archive": "experiment/sample-candidate.jsonl",
+    "bytes": 124426,
+    "sha256": "df60bc8a87da14ee9075f6cf58d9c1e8c552669ba58cf94d375834e8c704df98"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/sample-prescore-manifest.json",
+    "archive": "experiment/sample-prescore-manifest.json",
+    "bytes": 1228,
+    "sha256": "6da50eb4aa2745700ceb689c440422d73db208fc6966c6975bb0b48b32eb38a5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/full-questions.jsonl",
+    "archive": "experiment/full-questions.jsonl",
+    "bytes": 763658,
+    "sha256": "bf0c0a3d095234fe1b00707e0d0b748477225acf4de1cb633ed6095b66e425f2"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/full-candidate.stderr",
+    "archive": "experiment/full-candidate.stderr",
+    "bytes": 95,
+    "sha256": "165d0afbb85f61b14f073251615e8aecacf3f322777c70a3ad4c88b3b677fcd5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/full-candidate.jsonl",
+    "archive": "experiment/full-candidate.jsonl",
+    "bytes": 2718909,
+    "sha256": "f542de12b9e0f239795df1367161cc3f203736d3d969d70ef8a582b5a7cb06db"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/full-prescore-manifest.json",
+    "archive": "experiment/full-prescore-manifest.json",
+    "bytes": 1226,
+    "sha256": "2674fb742336300654a3907c8add68144a8809c6ab37ba7896d7ac7dcfe566cf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/sample-report.json",
+    "archive": "experiment/sample-report.json",
+    "bytes": 785,
+    "sha256": "6b556b61914190a28c9e4685c7cab37a05ce78600472ab9a3b9b0606fa007bf9"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/full-report.json",
+    "archive": "experiment/full-report.json",
+    "bytes": 818,
+    "sha256": "9c40bb222480cb71f9a1e8a1518e515de8db5076b5648a7702a04e62c63c16b0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/solve-sample-candidate.stderr",
+    "archive": "experiment/solve-sample-candidate.stderr",
+    "bytes": 95,
+    "sha256": "839a5a83cc4970ff9e9dc928b0ea96fdc3d6f5ab39cc92e7a7d697aabefd3194"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/solve-sample-candidate.jsonl",
+    "archive": "experiment/solve-sample-candidate.jsonl",
+    "bytes": 11474,
+    "sha256": "dc6b9f8d10bcf64c23295e666e67edd63f10616ad9068b9b34458a87aa0a85bf"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/solve-full-candidate.stderr",
+    "archive": "experiment/solve-full-candidate.stderr",
+    "bytes": 95,
+    "sha256": "bc51100487f93e4ee544f90fb370bdf811a98e2f3e4e1819e258251e1a7daba4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/solve-full-candidate.jsonl",
+    "archive": "experiment/solve-full-candidate.jsonl",
+    "bytes": 258256,
+    "sha256": "5cf77234ace536a7f147c3a1bc4ac832a1052e2ac50c05ea232a1ce4a175eb98"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/solve-synthetic-candidate.stderr",
+    "archive": "experiment/solve-synthetic-candidate.stderr",
+    "bytes": 95,
+    "sha256": "6e508f9a8b40249f9f585013195f577c2edfc4486b905dbc75dfd5e2713c5fe0"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/solve-synthetic-candidate.jsonl",
+    "archive": "experiment/solve-synthetic-candidate.jsonl",
+    "bytes": 296711,
+    "sha256": "ab818fdee8b4b383c8e0439dae83d9136926c6a5b4558c66033dfff4dac895ab"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/compatibility.json",
+    "archive": "experiment/compatibility.json",
+    "bytes": 350,
+    "sha256": "fe5d065bc58d00cba34fa7051bf8087fd1476787557de1d8875b1680f1c127fe"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/decision.json",
+    "archive": "experiment/decision.json",
+    "bytes": 115,
+    "sha256": "5249a9815ea6bfc2e8208a0fda44899b0f3bf521352838e1aa8bb39bc9c706ed"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/final-manifest.json",
+    "archive": "experiment/final-manifest.json",
+    "bytes": 12751,
+    "sha256": "0be5330a5482b5aec4a56031fc256f298f216946411997715aadd9818a8c5e32"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/authored-contracts.json",
+    "archive": "experiment/authored-contracts.json",
+    "bytes": 8662,
+    "sha256": "d2e9078b578ebb77ec17c3e8fff6f7251fb5ce0f0c21ec821db48f9398316dbd"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/rejected-runtime.patch",
+    "archive": "experiment/rejected-runtime.patch",
+    "bytes": 27141,
+    "sha256": "ffcaf3c0f2a70cae218b1279ed116360a2746dd79cd8ada3b9737d83cf42922d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/Cargo.lock",
+    "archive": "experiment/source/Cargo.lock",
+    "bytes": 17192,
+    "sha256": "32177db12b632ae27d87ca92e4a2903ab937d941bcc7f64486f64e5c494ccb03"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/tools/quantities/equation-sequence/experiment.py",
+    "archive": "experiment/source/tools/quantities/equation-sequence/experiment.py",
+    "bytes": 9080,
+    "sha256": "9e684a5c188c4809974581464b44aa2b01b2363ff3bfd983fdd0afe3e9802979"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/tools/quantities/equation-sequence/PLAN.md",
+    "archive": "experiment/source/tools/quantities/equation-sequence/PLAN.md",
+    "bytes": 3210,
+    "sha256": "bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/Cargo.toml",
+    "archive": "experiment/source/crates/quantities/Cargo.toml",
+    "bytes": 356,
+    "sha256": "829c2ee923104e6b1202621665b37449936d9d7a47f2d6dfb997f6481c2053e3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/calendar.rs",
+    "archive": "experiment/source/crates/quantities/src/calendar.rs",
+    "bytes": 4021,
+    "sha256": "e5c25f8281a8c938e4ddb18468b377fd05a90b0267e896e665b4d09441dce6ca"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/inventory.rs",
+    "archive": "experiment/source/crates/quantities/src/inventory.rs",
+    "bytes": 1779,
+    "sha256": "a3f48765518754664f86e084e8b428925ccbdc345b9665fac8a3eafe3352497e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/lib.rs",
+    "archive": "experiment/source/crates/quantities/src/lib.rs",
+    "bytes": 886,
+    "sha256": "1053df9b620fefcba44cb4b8235ca72d651e76901e6115d705cb34bd6346d59f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/linear.rs",
+    "archive": "experiment/source/crates/quantities/src/linear.rs",
+    "bytes": 15869,
+    "sha256": "92ee55d057dd098356f17a7bade17b1f4dfbace04b679a09aefaae73e10264eb"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/main.rs",
+    "archive": "experiment/source/crates/quantities/src/main.rs",
+    "bytes": 872,
+    "sha256": "d66376e89fbe68a03449a5577cf23a42c2b3767d3bfafeb1d4fad686a8918e4e"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/number_words.rs",
+    "archive": "experiment/source/crates/quantities/src/number_words.rs",
+    "bytes": 3062,
+    "sha256": "8fd3c91f3176ffb71da48c3511e6978ee80fe5c8ef498e3ec814c02a64b95df1"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/parser.rs",
+    "archive": "experiment/source/crates/quantities/src/parser.rs",
+    "bytes": 19092,
+    "sha256": "8bfcb4bbf76ae03c07ba761326b24a58d20e3c1b55ebccd9b058d05111145fe5"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/percent.rs",
+    "archive": "experiment/source/crates/quantities/src/percent.rs",
+    "bytes": 3830,
+    "sha256": "052a4ae9f91661547d1a05f770cf7a8b71c5408e6ce65d9e7a0cc219dd99642b"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/percent_change.rs",
+    "archive": "experiment/source/crates/quantities/src/percent_change.rs",
+    "bytes": 7301,
+    "sha256": "bb75b8b6aeee552f58583f716151450172122e682c9395a39c9027aaf11bafbc"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/ratio_total.rs",
+    "archive": "experiment/source/crates/quantities/src/ratio_total.rs",
+    "bytes": 6492,
+    "sha256": "b08d5a838210944cd73a716f0f4d0f4329f2d6504aebeabe23d71428abb2446f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/rational.rs",
+    "archive": "experiment/source/crates/quantities/src/rational.rs",
+    "bytes": 4346,
+    "sha256": "1397083755346a195004fd639d79d2ba4bc6ec23ffeafbd26d19535fc690fe4d"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/units.rs",
+    "archive": "experiment/source/crates/quantities/src/units.rs",
+    "bytes": 6790,
+    "sha256": "f2d45cd3a0916525149c7d752d8f6a414c09a3a6547192512adef75adadfb04c"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/src/proposal.rs",
+    "archive": "experiment/source/crates/quantities/src/proposal.rs",
+    "bytes": 14862,
+    "sha256": "f341f213d9ca351c29160af02edab3fd34b81f8ab56ef8327673162069a1eaa3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/examples/equation_executor.rs",
+    "archive": "experiment/source/crates/quantities/examples/equation_executor.rs",
+    "bytes": 1184,
+    "sha256": "dc346e0648194df414551aff26bfbc056b73b0ccec92be1fa5960ce1842c13a3"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/examples/equation_sequence.rs",
+    "archive": "experiment/source/crates/quantities/examples/equation_sequence.rs",
+    "bytes": 876,
+    "sha256": "6de7e4743701574e3950b4815d4ec3f04f1cd420b70c1d62b2f699152930910f"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/examples/equation_fit.rs",
+    "archive": "experiment/source/crates/quantities/examples/equation_fit.rs",
+    "bytes": 4190,
+    "sha256": "400c010197e097f957e83e9fa96a8f73100203c5ab1edecd3728e60a7cd5aa71"
+  },
+  {
+    "source": "/home/gsc/.cache/glassmind/continuous-20261010/equationsequence-run/tmp/equation-sequence/source/crates/quantities/tests/sequence.rs",
+    "archive": "experiment/source/crates/quantities/tests/sequence.rs",
+    "bytes": 3345,
+    "sha256": "f74c6d310d225badebb8184fda7f3300d67b4cfc519aabdd1d67e6b356c2384d"
+  }
+]

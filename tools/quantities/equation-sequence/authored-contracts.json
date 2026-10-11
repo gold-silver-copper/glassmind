@@ -1,0 +1,303 @@
+{
+  "boundaries_pass": true,
+  "malformed_model_and_oversized_row_pass": true,
+  "contrasts": [
+    {
+      "question": "A crate contains 8 packs of 2 bolts. How many bolts are in the crate?",
+      "expected": "16",
+      "actual": {
+        "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+        "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+        "numbers": [
+          {
+            "end": 18,
+            "literal": "8",
+            "start": 17,
+            "value": "8"
+          },
+          {
+            "end": 29,
+            "literal": "2",
+            "start": 28,
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "score": -0.6973593113943709,
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "4"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "A crate contains 8 bolts, of which 2 are defective. How many bolts are usable?",
+      "expected": "6",
+      "actual": {
+        "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+        "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+        "numbers": [
+          {
+            "end": 18,
+            "literal": "8",
+            "start": 17,
+            "value": "8"
+          },
+          {
+            "end": 36,
+            "literal": "2",
+            "start": 35,
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 1,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 12,
+                "kind": "constant"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 0,
+                "kind": "step"
+              }
+            }
+          ]
+        },
+        "score": -0.7817507672909738,
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "400"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "Mira has 8 coins and gives away 2 coins. How many coins does Mira have now?",
+      "expected": "6",
+      "actual": {
+        "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+        "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+        "numbers": [
+          {
+            "end": 10,
+            "literal": "8",
+            "start": 9,
+            "value": "8"
+          },
+          {
+            "end": 33,
+            "literal": "2",
+            "start": 32,
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "score": -0.7544280148247373,
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "4"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "Mira has 8 coins and receives 2 coins. How many coins does Mira have now?",
+      "expected": "10",
+      "actual": {
+        "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+        "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+        "numbers": [
+          {
+            "end": 10,
+            "literal": "8",
+            "start": 9,
+            "value": "8"
+          },
+          {
+            "end": 31,
+            "literal": "2",
+            "start": 30,
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            }
+          ]
+        },
+        "score": -0.7683369509583023,
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "4"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "A machine makes 8 parts in 2 hours. How many parts does it make per hour?",
+      "expected": "4",
+      "actual": {
+        "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+        "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+        "numbers": [
+          {
+            "end": 17,
+            "literal": "8",
+            "start": 16,
+            "value": "8"
+          },
+          {
+            "end": 28,
+            "literal": "2",
+            "start": 27,
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 0,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 1,
+                "kind": "input"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "step"
+              },
+              "op": "multiply",
+              "right": {
+                "index": 11,
+                "kind": "constant"
+              }
+            }
+          ]
+        },
+        "score": -0.6672130694922347,
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "240"
+      },
+      "numeric_match": false
+    },
+    {
+      "question": "A machine makes 8 parts per hour for 2 hours. How many parts does it make?",
+      "expected": "16",
+      "actual": {
+        "model_provenance": "MathQA TRAIN c16335ea4f7c9a8da44ccec52146d29e040582d2c11ca712fcfa2dd0ee964a99; PLAN bb635ad26da1dbd595290cd6a16d6250e1127106f82624261a1baf606e12f1b4; all4590 grouped FIT; linear operation/left/right v1",
+        "model_sha256": "2b56181582960a862b2da422b0988cf3e20671949c80253bb5b0eaa2d49478e3",
+        "numbers": [
+          {
+            "end": 17,
+            "literal": "8",
+            "start": 16,
+            "value": "8"
+          },
+          {
+            "end": 38,
+            "literal": "2",
+            "start": 37,
+            "value": "2"
+          }
+        ],
+        "program": {
+          "steps": [
+            {
+              "left": {
+                "index": 1,
+                "kind": "input"
+              },
+              "op": "divide",
+              "right": {
+                "index": 0,
+                "kind": "input"
+              }
+            },
+            {
+              "left": {
+                "index": 0,
+                "kind": "step"
+              },
+              "op": "multiply",
+              "right": {
+                "index": 11,
+                "kind": "constant"
+              }
+            },
+            {
+              "left": {
+                "index": 1,
+                "kind": "step"
+              },
+              "op": "divide",
+              "right": {
+                "index": 1,
+                "kind": "step"
+              }
+            }
+          ]
+        },
+        "score": -0.8155273707208328,
+        "semantics": "unverified",
+        "status": "proposed",
+        "value": "1"
+      },
+      "numeric_match": false
+    }
+  ],
+  "contrast_numeric_matches": 0
+}
