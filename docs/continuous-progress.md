@@ -2,10 +2,57 @@
 
 Unlimited active goal; milestones do not complete it. Root branch `harness`.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010.
-This turn: PROGRESS — the independent public Wikidata graph passed native
-ingestion, source accounting and positive query checks, and is integrated.
+This turn: PROGRESS — full independent claims acquisition and projection are
+running. The new multi-shard importer and existing-artifact regressions pass.
 Known completed-worker tokens: 201,926,299 (cached input counted once; parent
 and interrupted usage excluded). No model workers ran in this batch.
+
+## Active full claims experiment: preserve and monitor existing jobs
+
+Root branch harness at84803eb before this checkpoint; isolated root-owned
+WORK/full-claims branchcontinuous/full-claims at056959f, clean. Read its
+ tools/facts/full-claims/PROGRESS.md and PLAN.md. Root has not integrated the
+experimental format3 importer; wait for full public source correctness gates.
+No model workers/auth mounts/API calls. No default QA promotion or new QA run.
+
+RUN=WORK/coordinator/full-claims. Fetch session64342, scopeglassmind-full-claims-fetch
+RUNNING; projection session29161, scopeglassmind-full-claims-projection RUNNING.
+Supervisor761927/child761928 last observed live; verify before acting. Fetch reads
+all86 pinned public files, reusing first. Last sample29new verified shards,
+15044572106receivedbytes at504.917s. Projection11files/99419158rawrows/
+53992705retainedstatements. Hashes pass for completed files. Do not restart either.
+Bounded fetch7200s/96GiBreceived, projection14400s/96GiBoutput, total384GiBaddedrun;
+eachscope8GiB/no swap. Scope memory includes file cache; inspect memory.events
+before making process-memory/OOM claims. Original pilot/native/raw remain intact.
+
+Implementation bcc796c: separate format3/provenance, native alias copy from
+hash-pinned format2 base, global raw claims row ranges, all witnesses/rank/qualifier
+flags, dedupedges, integrity/FKs before header. New output192GiB/21600s cap.
+Native full import NOT STARTED. Source verification plan59950f7, probes835d9f8.
+
+Completed36facts tests;500000raw projection smoke exactly matches oldpilot,
+86536kept. Workspacefmt/clippy/release/strict4smoke passed, helperclippy passed
+following example change. Existing19481TRAIN+2821DEV ordinary/set byte-identical,
+main28/28bothmodes,853oldformat2source-query predictions byte-identical. Old110
+witness probes unchanged37answers73refusals59sets; new independent scan reproduces
+same caseSHAcaeccf0249d6e16c5119385562bda55ee889a0eb6934c282899a8fca5b848100.
+These are old-artifact regressions, NOT fullgraphQA. Sessions46178/18599/56281/94911
+COMPLETE. Evidence committed in worktree tools/facts/full-claims; no need rerun.
+
+NEXT: continue work in WORK/full-claims. Monitor64342/29161; on completion verify
+fetch ledger and projection-resources.json passed. Run RUN/prepare-native.py RUN
+WORK/coordinator/disk-facts/target/release/glassmind-facts in a bounded scope; it
+pins source manifest and copied candidate. Then invoke RUN/supervise.py RUN native
+21600 followed by native-invocation.json's command, within8GiB/no swap,
+setsid --wait timeout --kill-after=10s21610s, RUN/tmp forTMPDIR/SQLITE_TMPDIR.
+After nativepasses, makeoutputreadonly and run independentaudit.py thenwitnesses.py
+under3600s/8GiB/supervision. Full source accounting and raw samples must pass before
+integration or publication. Preserve queryVMlimits and report largeset budgeterrors
+separately. Freeze separateCALQA gate only after storagepasses; no newDEV now.
+
+Do useful independent implementation/review while current finite jobs run. Do not
+start duplicate data jobs, re-create the goal or return to prompt-writing. Goal
+remains active without budget until explicit user stop/platform limits.
 
 ## PR49 merged; independent public QA CAL rejected
 
