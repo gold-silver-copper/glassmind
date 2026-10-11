@@ -114,3 +114,10 @@ All8,009rawsamples agree with both projections. Source-derived probes return
 49correct ordinary answers and79correct sets; one8,073,242-match set exceeds the
 unchanged query budget and is reported as an error. These are storage/API checks,
 not a QA accuracy result. [Full import evidence](../tools/facts/full-claims/PARENT.md).
+
+A [TRAIN-only mention study](../tools/facts/mention-learning/PARENT.md) found
+1,400 question groups where a shorter eligible alias can recover the intended
+entity. A small learned context selector was tested and rejected: no frozen
+threshold achieved the required 50 internal-validation gains without new errors.
+It is not enabled by disk query commands; the model and diagnostics remain
+research artifacts.

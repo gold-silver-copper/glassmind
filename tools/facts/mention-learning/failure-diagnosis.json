@@ -1,0 +1,151 @@
+{
+  "diagnostic_threshold": {
+    "margin": 0,
+    "gap": 0
+  },
+  "diagnostic_only_not_selected": true,
+  "categories": {
+    "baseline_unlinked_gold_candidate_absent": 41,
+    "baseline_correct_gold_candidate_present": 6,
+    "baseline_wrong_gold_candidate_absent": 7,
+    "baseline_unlinked_gold_candidate_present": 3
+  },
+  "examples": [
+    {
+      "train_index": 243,
+      "before": null,
+      "after": "Q108370695",
+      "gold": "Q483412",
+      "question": "What's a book from the the chronicles of narnia",
+      "selected_spans": [
+        "chronicles of narnia"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 654,
+      "before": null,
+      "after": "Q5467423",
+      "gold": "Q572736",
+      "question": "who wrote the story for the film force 10 from navarone",
+      "selected_spans": [
+        "force 10"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 924,
+      "before": null,
+      "after": "Q107343540",
+      "gold": "Q7770010",
+      "question": "where was the film the traveller filmed",
+      "selected_spans": [
+        "filmed"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 1865,
+      "before": null,
+      "after": "Q50591986",
+      "gold": "Q51570",
+      "question": "In what conflict did george roy hill participate?",
+      "selected_spans": [
+        "george roy"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 2117,
+      "before": null,
+      "after": "Q127050438",
+      "gold": "Q1512638",
+      "question": "what language is god rest you merry, gentlemen in",
+      "selected_spans": [
+        "god rest you merry"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 2255,
+      "before": "Q3520364",
+      "after": "Q64518304",
+      "gold": "Q3520364",
+      "question": "what genre is the album the complete guide to needlework?",
+      "selected_spans": [
+        "the complete"
+      ],
+      "gold_spans": [
+        "the complete guide to needlework"
+      ]
+    },
+    {
+      "train_index": 2554,
+      "before": null,
+      "after": "Q130089023",
+      "gold": "Q3129033",
+      "question": "heart of china contains what type of gameplay mode?",
+      "selected_spans": [
+        "gameplay mode"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 2718,
+      "before": null,
+      "after": "Q22102043",
+      "gold": "Q93204",
+      "question": "What documentary film did Paul Raimondi produce?",
+      "selected_spans": [
+        "paul raimondi"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 3424,
+      "before": null,
+      "after": "Q94746904",
+      "gold": "Q824020",
+      "question": "who was born in maibara",
+      "selected_spans": [
+        "maibara"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 3901,
+      "before": null,
+      "after": "Q107343540",
+      "gold": "Q606935",
+      "question": "what country is the swindle filmed in ",
+      "selected_spans": [
+        "filmed"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 3956,
+      "before": null,
+      "after": "Q134376589",
+      "gold": "Q579928",
+      "question": "what country was shown in the spongebob squarepants movie",
+      "selected_spans": [
+        "spongebob squarepants movie"
+      ],
+      "gold_spans": []
+    },
+    {
+      "train_index": 4183,
+      "before": "Q340607",
+      "after": "Q1451581",
+      "gold": "Q340607",
+      "question": "Who authored the lays of beleriand?",
+      "selected_spans": [
+        "beleriand"
+      ],
+      "gold_spans": [
+        "the lays of beleriand"
+      ]
+    }
+  ]
+}

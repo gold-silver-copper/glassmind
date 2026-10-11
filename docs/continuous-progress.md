@@ -6,7 +6,29 @@ Known completed-worker tokens:203481375, cached input counted once; parent and
 interrupted usage excluded. All six quantity teachers are terminal and archived;
 all owned auth links removed. No model workers or experiment jobs running.
 
-## Current handoff: PR53 merged; full graph QA and complete graph pilot rejected
+## Current handoff: PR54 merged; mention studies complete; pivot to coding
+
+PR54 MERGED07eb4b947ceee4918c9289634f9d9b50fedc9216 at19:56:23UTC.
+Reviewed2f33ae32a6cab05fdd0739470eea5c2cdc9f8783;CI38169946220SUCCESS65s.
+All previousQA/quantity publication finished. No workers orauthlinks running.
+
+Mention worktreeWORK/mention-candidates branchcontinuous/mention-candidates
+head2d50423 integratedcentrally. Candidateplanf1df139,extractor720faff; learning
+planf984146,prototype/runnerd9a2a2a. RUNs=WORK/coordinator/mention-candidates and
+mention-learning. Alljobs terminal:build85818/56533,extraction27506,fit14156.
+
+Extraction44.011s/139552KiB/64.33MB passedcaps.17465FITrows after1949CAL+67overlap
+exclusions;17291groups,allnativeparity exact.9085groupswithcorrecteligiblealias,
+1400recoverablebaseline misses => preparationPASS. Nativeextractor SHA7fbe57961d24f1d3c01449a01ed78dc35f7d74dac5a7c1fcad88ee1bda5c2e40.
+
+LearningREJECTED internally:3598validationrows/3567groups;19719trainspans;
+157357bytemodel;0/55thresholdpairs meetfrozen>=50gain/zero-new-error gate.
+Maxgain219introduces50newwrong(6lostcorrect);bestzeroerrorgain5.41/44unlinked->wrong
+lackeligiblegoldspan,3haveone. Partialnames/words chosenwhenactualentityabsent.
+Modeloriginals retained, noCAL/DEV/defaultpromotion.2.001s/244312KiB/22.18MBcaps pass.
+Read tools/facts/mention-learning/PARENT.md, PROGRESS.md andintegration.json.
+Requiredcentralchecks passed; production/binaries unchanged. NEXTpublish reviewed
+research batch, then newcodingtwo-sequence composition hypothesis. No facts retry.
 
 PR53 MERGEDa063cf13c064d67a59846ffd2708eb6ead4564a9 at19:50:02UTC.
 Reviewed7eb3de8cccf315766460223318852b97ceacc612, CI38169506217 SUCCESS99s.
