@@ -5,25 +5,53 @@ WORK=/home/gsc/.cache/glassmind/continuous-20261010; root branch `harness`.
 
 ## Published milestone
 
-PR38 MERGED: https://github.com/gold-silver-copper/glassmind/pull/38
-Reviewed head609f42ecdd9071c0888e1f402ee08b8d8616793a; source commit
-508b43513868f06cde300dfee1b0a52636d8298d. CI38137149457 passed in79seconds.
-Merge663d966087f06bbb981b8b6c930046b692f1a126 at2026-10-11T11:53:57Z.
-Push40317, PR creation42472 and merge16241 are COMPLETE. Do not repeat them.
+PR39 MERGED: https://github.com/gold-silver-copper/glassmind/pull/39
+Reviewed headcdd5030a6bfee293c74da99bba52452748a4e1cd; sourcecommits1367343(coding),
+4551ebe01a10d1f87ba87e6f0ab1d9ce365c8f71(facts). CI38138707499 passed in64seconds.
+Mergebc4097332230d4f6e0cea73971cec5667afff7c4 at2026-10-11T12:19:40Z.
+Push66826,PRcreation28941,merge21474 COMPLETE. Do not repeat publication.
+Coding203/765 (200retained,3shipping-boxesstylegains),562refused,0fail.
+Main Match facts: conjunctions shipped; ordinaryfacts256/2545/20answer unchanged.
+PreviousPR38 merge663d966... remains history, not an outstanding task.
 
-Multiplication/division repairs and inline-unit-test ambiguity correction are shipped.
-Independent14 cases:8new and1legacy exact native repair,4negative cases unchanged,
-1native-confirmed ambiguity withdrawal. Full765 session82568 is COMPLETE:
-200pass/565refused/0fail, every outcome identical to the previous release.
-Results: WORK/coordinator/multiplicative-full/results.jsonl,
-SHA c2f9fbd3aba3f11558e9872973b6fb0aa4d3714d7ce9c79d5f3a95e58b9625f6.
-Full evaluated release825df340f06a81024d4620fee92cd5cea7a0813abd675cf3f2cfe59a15f63cc6
-is frozen undercoordinator/multiplicative-independent/revision/frozen/glassmind.
-Integrated release7a3d98dfb4eb6428d9d43ceb4cbdb963d20750034d0da223ffaa21dbe9781d81
-has identical reviewed source. Workspace session73733 COMPLETE:fmt,clippy,release,
-strict4/4 smoke. No native/build/full-evaluation job remains from that release.
+## Active experiment: typed argument swaps
 
-## Current batch: validated, publication next
+Argumentswap worker LIVE PID2643937, scopeglassmind-continuous-argumentswap.scope,
+worktreeWORK/argumentswap, branchcontinuous/argumentswap, basecdd5030.
+TaskWORK/argumentswap-task.txt; runWORK/argumentswap-run; launcherWORK/launch.py.
+Latest scopecheck active/running, MemoryMax8589934592,MemorySwapMax0.
+ChatGPTlogin and requiredCLIflags reverified beforelaunch; Astra fast forced,
+APIkeyenvstripped. Oneactive modelworker, uncounted untilterminal. No candidate
+source/results inspected. Do not duplicate on an observation timeout.
+
+PublicTRAIN rb-fix-tests-download-progress calls percent(d.size,d.received)
+inside format!("{} {}%",d.name,...), where the actual localhelper wants part,whole.
+Hypothesis generic typedtwo-argument localfree-function swaps, purecopyoperands,
+including parsed positionalexpressions inunambiguouslystandardformat!, notopaque
+macroediting. Skip unresolvedbindings,custommacros/imports/shadowing,sideeffects,
+unknown/customtypes/tests/strings. Preserve alloldproposalpriority includingceil.
+Competingnewtest-passingrepairs mustyield a nativewitness orconservativeunresolved
+choice, notacceptonebecauseoldscalarinterpretercannotlowercalls. Existingnative
+scalarveto andlegacyrepairs stayunchanged. See frozen taskforexactrequirements.
+Ownsworld-rust+tools/coding-argument-swap only; noEnglish/main/facts/scorerchanges.
+Require>=1newpublicTRAINrepair, all6oldpatchesretained (baseline6/27); parentfull
+DEVgate203retained/0fail. Baselinecopiedrun/baseline/glassmindSHA562a774bc98583d487b2bbcabcb53b3b300bae767f8427c7f0491cc2652a07a4.
+
+Parent13cases frozenbeforeinspection atWORK/coordinator/argumentswap-independent:
+9positives(sixsigned/unsignedwidths,fieldsinsideformat,Unicode,qualifiedformat),
+3negativecontrols(calleealias/custommacro/statefularguments),1competingrepair.
+CasesSHA0fa442dcb80e9c8f7307d7e4c0e9452fda0cc643702d15d4696614612a2fec58.
+Helperdirecttests preventfixingthehelperarithmeticinstead; entirecallreplacement
+andallotherbytespreserved. Competingcase twoalternatives bothpasssamepublictest
+butdiffer natively at(7,2),5vs3. No labels changed. This is authoredDEV.
+NEXT: writeboundedparentnativeadapter andrunactualbaseline onthese13beforecandidate
+inspection, verifyalloriginalscompileandfailexecutedtests. Baselineexpected0/9 is
+unmeasureduntilthen. Whenworkerterminal, archive/hashverify originalsource,binary,
+patch,commands/results BEFOREinspection; rununchangedparentcases andonlythenfull765.
+No parentadapter/baseline run yet. Legacyceildivisionadapter suppliesresourcepattern,
+butits exactreplacementmatcher is division-specific and mustnotbesilentlyreused.
+
+## PR39 validation and retained evidence
 
 Previous goal turn was PROGRESS: accepted independent ceiling-division contracts,
 completed source integration/workspace checks, and froze independent facts contracts.
@@ -41,11 +69,13 @@ sourcehashesidentical, WORK/coordinator/ceildivision-integrated; workspace43069C
 Parent13:8exactnativepositives,4negativeunchanged,1nativeambiguitywithdrawal;
 separatereplaybothpublictests+nativeoutputs passed. WorkerpublicTRAIN5→6/27,
 alloldpatchesunchanged. Original622files/81,410,732bytes preserved/hashverified
-WORK/ceildivision-run/terminal-originals. WorktreeWORK/ceildivision stillretained.
+WORK/ceildivision-run/terminal-originals. Inactiveceildivisionworktree andtemporaryloginlink removedafterall622hashes
+reverifiedagainstoriginals. Allfrozenbinary/source/resultsremain.
 
 Facts worker COMPLETE: original226files/85,040,204bytes includingCargo.lock
 preserved/hashverified BEFOREinspection underWORK/factmatch-run/terminal-originals.
-Scopeglassmind-continuous-factmatch.scope inactive/dead; no modelworker remains.
+Scopeglassmind-continuous-factmatch.scope inactive/dead; itsworktree andtemporary
+loginlink removedafterall226hashesreverifiedagainstoriginals. Artifactsremain.
 Frozen standalone90861d7dfe781d45c7eccfe10253edefbe197e47fb4e2bbc57a14472205e7203
 WORK/factmatch-run/frozen-candidate/binary/glassmind-facts. Archived library
 integrated unchanged; parent adds Match facts: conversationroute andindependenttests.
@@ -75,20 +105,25 @@ Mainbaseline42229/24773 COMPLETE underfactmatch-independent; copiedpredictor and
 baseline-identity.json preserved. Maincoding/world-rust sourceunchangedbyfacts.
 
 Facts source/evidence commit4551ebe01a10d1f87ba87e6f0ab1d9ce365c8f71. Scopedtrack
-records and chart nowupdated, coding203/765, ordinaryfactsunchanged;30/30authored
-matchingcontracts explicitly separate. Next: pushharness, openPR, requiregreenCI
-forreviewedexacthead andmergewith--match-head-commit. No openPR atlastcheck.
-Do not reruncompletedvalidation withoutnewchanges. Retainoriginalevidence before
-removinginactiveworkerworktrees/loginlinks. External5linemilestone log dueatmerge.
-Afterpublish startnextmeasurableexperiment; lead: auditTRAINsubjectcoverage in
-existingrawcache before choosing an independentTRAIN-seeded facts-index expansion.
-No newindex/download experiment yetauthorizedbymeasurement; don't useDEVanswers
-forselection orclaimopenworldcoverage. Otherqueuedlead integerreassociation needs
-nativeoverflow/rounding evidence, notanotherphrasepatch.
+records and chart updated, coding203/765, ordinaryfactsunchanged;30/30authored
+matchingcontracts explicitlyseparate. Allpublishing/native/evaluationhandles above
+are COMPLETE. External5linemilestone appended aftermerge.
+
+Read-onlynextlead audit WORK/coordinator/facts-train-index-audit verifiesonly500
+entities in the historicalindex's20cachedresponses,56TRAINsubjects,noadditionalones.
+Do NOT interpret this as allretaineddata: separateTRAIN999cache alreadyexists in
+WORK/trainindex-run/tmp/trainindex. HistoricalTRAIN100→999 expansion was rejected
+(44/2725/52→47/2712/62), with18refused→wrong; joint999only2/2712/107.
+JOINT-AUDIT.md shows just3uniquegoldmatchingclaims inthatpartial999store, soanother
+linkerfiltercannotrepairthedominantmissing-inverse-edgecoverage. That expansion,
+linkqualityboundaryrule andpartialinversecoverageattempt are alreadyclosed.
+Do not launchduplicatefetch/aliasrulebasedonthismanifest-limitedcacheaudit.
+Integerreassociation thermostat remainsdeferred: c*(9/5)+32 losesrounding, butnaive
+regrouping canintroduceintermediateoverflow. Currentargument-swaplead isdistinct.
 
 Known completedworker tokens164630460 (factmatch1151559input+26765output,
 1076736cachedinput included ONCE; ceiling1941615input+26250output). Root/interrupted
-excluded. No activeuncountedworker. Goalremainsactive; milestonesarenotcompletion.
+excluded. Argumentswapactiveuncounted. Goalremainsactive; milestonesarenotcompletion.
 
 ## Multiplicative coding revision
 
