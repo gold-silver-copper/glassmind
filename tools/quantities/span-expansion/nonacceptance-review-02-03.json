@@ -1,0 +1,135 @@
+{
+  "rows": [
+    {
+      "batch": 2,
+      "id": "fit-6028",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "The weekly sum needs computed60minutes converted to1hour; the supplied nodes never perform that conversion. Other input1 has a different daily-duration role."
+    },
+    {
+      "batch": 2,
+      "id": "fit-389",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Remaining November days are derived from month length minus elapsed days. First-period15 is a different quantity, even though the original periods coincide."
+    },
+    {
+      "batch": 2,
+      "id": "fit-315",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Unannotated remaining-provision duration and population ratio cannot become constants60 and2/3."
+    },
+    {
+      "batch": 2,
+      "id": "fit-6854",
+      "teacher_status": "ambiguous",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Two mentions of the same14-year averaging interval cause exact-occurrence ambiguity at division. The protocol cannot express coreferential alternatives here."
+    },
+    {
+      "batch": 2,
+      "id": "fit-7023",
+      "teacher_status": "ambiguous",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Monday and Friday3-mile summands can be exchanged across different nested addition nodes. The restricted direct-swap equivalence representation cannot express that whole-sum permutation."
+    },
+    {
+      "batch": 2,
+      "id": "fit-4889",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "The chicken fraction is the unannotated complement of the duck fraction. Its numerator2 is neither the feeding-price input nor a justified fixed constant."
+    },
+    {
+      "batch": 2,
+      "id": "fit-2875",
+      "teacher_status": "label_error",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Question supports Dawn-to-Mary2miles, but rationale explicitly calls that Ken-to-Mary distance. Correcting its semantic role would silently repair a premise; final12 alone does not validate that step description."
+    },
+    {
+      "batch": 2,
+      "id": "fit-6393",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Four wash cycles are computed only outside calculator annotations. Constant4 would hide the missing capacity division; prose also misstates20 rather than15 items/cycle."
+    },
+    {
+      "batch": 3,
+      "id": "fit-4498",
+      "teacher_status": "label_error",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Matches prospective required refusal:118cm board stated longer than others cannot imply others125cm. Equal cuts cannot equalize unequal boards."
+    },
+    {
+      "batch": 3,
+      "id": "fit-6044",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Nine rounds are used as nine holes; no holes/round conversion is supplied. Per-hole rates cannot multiply round count unchanged."
+    },
+    {
+      "batch": 3,
+      "id": "fit-6162",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Eraser count40 is not the same quantity as the unannotated weighted pencil-price coefficient40. Division cannot reuse it solely because values coincide."
+    },
+    {
+      "batch": 3,
+      "id": "fit-5589",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Remainder numerator2 requires a complement calculation absent from the graph. Lexical third licenses3 but does not supply the derived complement node."
+    },
+    {
+      "batch": 3,
+      "id": "fit-3719",
+      "teacher_status": "ambiguous",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Twice as many after another interval admits cumulative20 or additional20. Rationale assumes additional without resolving the cumulative wording."
+    },
+    {
+      "batch": 3,
+      "id": "fit-7180",
+      "teacher_status": "ambiguous",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Two coreferential mentions of two sodas/guest cannot be represented as direct-swap alternatives for the single product leaf. Exact occurrence choice remains ambiguous under this protocol."
+    },
+    {
+      "batch": 3,
+      "id": "fit-1719",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Interest dollars20 must be computed from balance and rate. The percentage20 input is not money, and the required conversion/multiplication is unannotated."
+    },
+    {
+      "batch": 3,
+      "id": "fit-4935",
+      "teacher_status": "ambiguous",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Two coreferential five-pound target mentions cause occurrence ambiguity. This is a source-label decision only, not validation of the simplified physiological model in the dataset."
+    },
+    {
+      "batch": 3,
+      "id": "fit-168",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Discount amount6 is computed only in prose. Neither an item-count6 nor constant6 can supply that missing percentage calculation; a separate prose typo also exists."
+    },
+    {
+      "batch": 3,
+      "id": "fit-6390",
+      "teacher_status": "unsupported",
+      "parent_confirms_nonacceptance": true,
+      "reason": "Water/day7 cannot be reused as days/week7. Native constant7 is unavailable, and four weeks would require another missing conversion from28days."
+    }
+  ],
+  "hashes": {
+    "batch-02/teacher-originals/work/annotations.json": "81af4308dffb9f4795d029d0e51be1f87ca7b4cea1cc8db4579f721560642214",
+    "batch-03/teacher-originals/work/annotations.json": "2708e2ae3b4169673bc33790d24dc46c2691dfb9db20689021ab0cf24d712bde"
+  },
+  "accepted_rows_in_batches02_and03_still_unreviewed": true
+}

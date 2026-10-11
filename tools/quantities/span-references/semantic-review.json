@@ -1,0 +1,356 @@
+{
+  "schema": 1,
+  "scope": "GSM8K official TRAIN-FIT source-reference label pilot; not inference accuracy",
+  "decision": "pass",
+  "selected": 32,
+  "parent_confirmed_accepted": 29,
+  "accepted_semantic_contradictions": 0,
+  "status_counts": {
+    "resolved": 26,
+    "equivalent": 3,
+    "label_error": 1,
+    "unsupported": 2
+  },
+  "native_original_program_variants": 32,
+  "protocol_contracts": 34,
+  "frozen_parent_cases_agree": 8,
+  "parent_native_original_counterfactual_requests": 25,
+  "hashes": {
+    "source/batch.json": "b4aabd567e85d8dae9c1903627ebba626ec26d7a09347c3b0e96193397e7565e",
+    "teacher-originals/work/annotations.json": "2599c6868641f2485bb0c46a8e47906cf2e99985e0694bb4e3dbcf3ecd5272d6",
+    "mechanical-report.json": "04425e909a76ef47e779c5c662681cc761a86411c652e19ea40f68623d90c98b",
+    "parent-comparison.json": "70252eeb527d66c463a1c4bc02221ae6821a14aa3b02bec60770619eed98fabe",
+    "parent/expectations.json": "48e7b46a9bdcc7cbc16310884c41edb26e3dec352535b340536014a31c2e827d",
+    "teacher-usage.json": "3679145767106eb34f9c1a8644dacf3a523b1dd5a8ea3759dd8942643dd6ffc4",
+    "teacher-cleanup.json": "41cd666b2936b00f213dacb072a40905d843993b0f8676b3ccb841a2ee3d3643"
+  },
+  "protocol_sha256": "7ecfce222b755864fdf51e9019f7eca835a31499578b7fbb152eef8132c6a9e9",
+  "rows": [
+    {
+      "id": "fit-6667",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 10,
+      "reason": "Research plus editing minutes are converted using 60 minutes/hour; pages times minutes/page is separately converted and added. The original graph normalizes the stated one-page numerator; arbitrary changes to that numerator are outside this fixed-graph review."
+    },
+    {
+      "id": "fit-5132",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 9,
+      "reason": "Each service price is paired with its own car count. The two occurrences of 5 mean oil-change count and car-wash price; neither replaces the other. Three computed revenues are summed."
+    },
+    {
+      "id": "fit-1331",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Daily hours times days/week yields weekly hours; computed weekly hours times weeks yields total hours."
+    },
+    {
+      "id": "fit-4166",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 12,
+      "reason": "Each coin count pairs with its own penny conversion. Both complete programs differ only by directly swapping dime count and dime value at multiplication; nickel sources and summed revenues remain correct."
+    },
+    {
+      "id": "fit-3919",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Monday and Friday counts are added; triple licenses constant 3 applied to Monday count. The two distinct computed subtotals are summed."
+    },
+    {
+      "id": "fit-5436",
+      "teacher_status": "label_error",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Required rejection: five products imply four between-product waits, while application durations are unstated. The supplied five-times-five rationale does not justify 55 minutes."
+    },
+    {
+      "id": "fit-5449",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Required rejection: the final divisor 5 is a derived count of two white plus three red houses. No original node computes it; substituting constant 5 misrepresents a variable subtotal."
+    },
+    {
+      "id": "fit-2848",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Area divided by coverage yields paint volume; two coats and an ordinary equal cost split between two people justify the two constant-2 operations. Computed volume multiplies the stated price."
+    },
+    {
+      "id": "fit-1812",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 5,
+      "reason": "The three activity durations are added through original nested nodes; the movie duration is input 3 rather than the equal-valued reading-plus-dinner subtree. Subtract total occupied time from travel duration."
+    },
+    {
+      "id": "fit-7105",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Richmond population minus its excess yields Victoria population; dividing this computed population by the stated factor gives Beacon population."
+    },
+    {
+      "id": "fit-5839",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "All 30 children including Katie each get two bars; computed bar count divides by box capacity. Original count is divisible; this graph does not claim general ceiling division for arbitrary counts."
+    },
+    {
+      "id": "fit-5042",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Amy age plus the older-age gap yields current Mark age; add future elapsed years to this computed age."
+    },
+    {
+      "id": "fit-5505",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Existing caterpillars plus newly hatched caterpillars minus those leaving. Ordinary one-caterpillar-per-egg reading is justified by the problem."
+    },
+    {
+      "id": "fit-6949",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 10,
+      "reason": "Calories per chip divide total calories by chip count. One-third more adds a computed one-third increment to that base. The separate six-cheezit input multiplies the result; original chip calories are added. The original graph normalizes the unit-fraction numerator; arbitrary numerator changes are outside this fixed graph."
+    },
+    {
+      "id": "fit-3503",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Both per-mile times multiply the same distance; accompanied elapsed time minus solo elapsed time yields extra minutes."
+    },
+    {
+      "id": "fit-1243",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Distance divided by elapsed hours yields hourly speed; computed speed times the new duration yields distance."
+    },
+    {
+      "id": "fit-2895",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 9,
+      "reason": "Driving distance divides by speed. Lunch minutes plus two repetitions of the stated bathroom-break duration yield break minutes, then constant 60 converts to hours. Add both computed durations. Two breaks are structurally unrolled in the fixed graph; arbitrary changes to break count require another graph."
+    },
+    {
+      "id": "fit-5909",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Correct rejection: six bike/trash-can wheels are derived by an unannotated 3*2 calculation missing from supplied nodes. Constant 6 would conceal this missing dependency; conventional wheel counts alone cannot fix the supplied graph."
+    },
+    {
+      "id": "fit-7306",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 16,
+      "reason": "Lemonade price and count use separate equal-valued occurrences, with two correlated direct-multiplication swaps. Sandwich price pairs with sandwich count. Combined costs are subtracted from the payment bill."
+    },
+    {
+      "id": "fit-7016",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Future height minus current height yields annual growth; constant 12 months/year converts this computed difference to monthly growth."
+    },
+    {
+      "id": "fit-6527",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Wallet balance plus father transfer yields subtotal. Twice licenses constant 2 multiplying the father transfer. Computed mother transfer and earlier subtotal are summed."
+    },
+    {
+      "id": "fit-2276",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "Quarts multiply the explicit cups/quart occurrence. Reduction preserves multiply-by-fraction-numerator then divide-by-denominator nodes. Sugar input 1 is distinct from reduction numerator 1 and added to computed reduced volume."
+    },
+    {
+      "id": "fit-7012",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Thrice licenses constant 3 multiplying Jacob hourly pay. Computed Jake hourly pay multiplies daily hours, then computed daily pay multiplies days."
+    },
+    {
+      "id": "fit-5371",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "Jane gift plus extra yields James gift. Original nested subtraction removes both from initial apples. Desired retained count subtracts from the computed remaining stock."
+    },
+    {
+      "id": "fit-5723",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Tissues per box times boxes yields purchased stock; subtract stated usage from the computed stock."
+    },
+    {
+      "id": "fit-6848",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Quarter counts use their respective purchase inputs; both divisors are constant four quarters/dollar, including the one equal to the chip-count input. Sum computed dollar costs."
+    },
+    {
+      "id": "fit-2377",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Student and adult counts pair with their matching ticket prices; sum both computed revenues."
+    },
+    {
+      "id": "fit-446",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Children count times books each yields child-held total; add additional books brought by teacher."
+    },
+    {
+      "id": "fit-4283",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 9,
+      "reason": "Each daily baking rate multiplies the same duration. Sister daily unit is supplied by parallel wording and shared a-day description. Original nested sum combines three computed outputs."
+    },
+    {
+      "id": "fit-1797",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Shirt price multiplies shirt count; computed shirt subtotal plus total pants cost gives spending. Intermediate 60 is a prior result rather than a unit conversion constant."
+    },
+    {
+      "id": "fit-5272",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Table A plus excess yields C. C is reused to compute A+C and twice C for B. Sum these computed subtotals. Time-of-day numbers and table count are irrelevant distractors."
+    },
+    {
+      "id": "fit-6428",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 16,
+      "reason": "Both equal-valued daily swimming durations occur once. Two programs differ only in direct addition order. Computed daily hours multiply school days; add weekend hours and multiply computed weekly total by weeks."
+    }
+  ],
+  "limitations": [
+    "Source semantics reviewed by root with original TRAIN rationale; no independent held-out accuracy claim.",
+    "Fixed original calculator graphs preserve original structural unrolling and normalized unit numerators; this is not arbitrary question-counterfactual completeness.",
+    "Original value-only 354/7473 versus 1000 gate remains rejected.",
+    "Passing this pilot permits only a separately frozen expansion/training experiment; no current fitting, CAL, DEV or runtime promotion."
+  ]
+}

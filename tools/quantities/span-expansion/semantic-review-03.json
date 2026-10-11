@@ -1,0 +1,337 @@
+{
+  "schema": 1,
+  "batch": 3,
+  "scope": "TRAIN-FIT source-reference replication, no inference accuracy",
+  "rows": [
+    {
+      "id": "fit-4498",
+      "teacher_status": "label_error",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Matches prospective required refusal:118cm board stated longer than others cannot imply others125cm. Equal cuts cannot equalize unequal boards."
+    },
+    {
+      "id": "fit-3040",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Thrice licenses3 for Rommel age; computed Rommel age plus input gap yields Jenny age; subtract original Tim input. Matches prospective reference."
+    },
+    {
+      "id": "fit-6044",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Nine rounds are used as nine holes; no holes/round conversion is supplied. Per-hole rates cannot multiply round count unchanged."
+    },
+    {
+      "id": "fit-2343",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Twice scales prior-month purchases to current-month purchases; sum both and subtract computed additions from current collection."
+    },
+    {
+      "id": "fit-5165",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Pages times paragraphs/page yields paragraph count; scale by sentences/paragraph and divide computed sentence total by stated sentences in one hour. Original fixed graph normalizes the one-hour interval; no arbitrary rate-interval change is claimed."
+    },
+    {
+      "id": "fit-493",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Fee per attendee times attendance gives contributions; subtract stated surplus to recover expenses."
+    },
+    {
+      "id": "fit-1",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Hourly wage divided by60minutes/hour yields minute rate; multiply computed rate by worked minutes."
+    },
+    {
+      "id": "fit-5705",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "Explicit hat percentage conversion scales available dollars; subtract computed hat expenditure and divide remaining scarf money by scarf price. Lexical twice is irrelevant to the final price2."
+    },
+    {
+      "id": "fit-6030",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Observed distance over duration yields speed; computed speed multiplies next duration for additional distance."
+    },
+    {
+      "id": "fit-6162",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Eraser count40 is not the same quantity as the unannotated weighted pencil-price coefficient40. Division cannot reuse it solely because values coincide."
+    },
+    {
+      "id": "fit-4546",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Wood/table times tables gives table consumption; subtract from stock and divide computed remainder by wood/chair. Original chair count is integral."
+    },
+    {
+      "id": "fit-4491",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 8,
+      "reason": "Distinct shirts/child and children inputs3 occur once in each of two direct multiply swaps. Computed shirts scale by buttons/shirt."
+    },
+    {
+      "id": "fit-5589",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Remainder numerator2 requires a complement calculation absent from the graph. Lexical third licenses3 but does not supply the derived complement node."
+    },
+    {
+      "id": "fit-5295",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Sandwich count times price yields bill; subtract computed bill from tendered cash."
+    },
+    {
+      "id": "fit-4019",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Tray price over egg count gives dollars/egg;100cents/dollar converts to cents; subtract computed tray price per egg from individual price."
+    },
+    {
+      "id": "fit-3719",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Twice as many after another interval admits cumulative20 or additional20. Rationale assumes additional without resolving the cumulative wording."
+    },
+    {
+      "id": "fit-6345",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Fronds/fern times ferns yields fronds; computed fronds times leaves/frond yields leaves."
+    },
+    {
+      "id": "fit-1847",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 12,
+      "reason": "Both storage quantities appear once in each of two direct addition variants. Add new purchases to computed initial total, then subtract consumption."
+    },
+    {
+      "id": "fit-308",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Ratio water volume divided by charcoal mass yields water/mass; divide actual water volume by computed ratio to obtain mass."
+    },
+    {
+      "id": "fit-7180",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Two coreferential mentions of two sodas/guest cannot be represented as direct-swap alternatives for the single product leaf. Exact occurrence choice remains ambiguous under this protocol."
+    },
+    {
+      "id": "fit-1719",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Interest dollars20 must be computed from balance and rate. The percentage20 input is not money, and the required conversion/multiplication is unannotated."
+    },
+    {
+      "id": "fit-4161",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 7,
+      "reason": "Rows times flowers/row yields stock; explicit percentage over100 scales computed stock to cut count; subtract completed cut count from original computed stock."
+    },
+    {
+      "id": "fit-3611",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 11,
+      "reason": "Second-turkey cost18 and third-turkey mass18 are distinct prior results. Third-turkey pricing correctly uses mass step2; total cost correctly uses second-turkey cost step1. Lexical twice supplies weight multiplier2, separate from price input2."
+    },
+    {
+      "id": "fit-4935",
+      "teacher_status": "ambiguous",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Two coreferential five-pound target mentions cause occurrence ambiguity. This is a source-label decision only, not validation of the simplified physiological model in the dataset."
+    },
+    {
+      "id": "fit-168",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Discount amount6 is computed only in prose. Neither an item-count6 nor constant6 can supply that missing percentage calculation; a separate prose typo also exists."
+    },
+    {
+      "id": "fit-5921",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Local/international call durations pair with their proper rates; computed costs add; divide completed cent total by100cents/dollar. Total1000 is a prior result, not constant."
+    },
+    {
+      "id": "fit-4756",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 6,
+      "reason": "Initial minus final temperature yields drop; divide by input per-tree drop; computed tree count times price gives cost under the question explicitly stipulated linear model."
+    },
+    {
+      "id": "fit-6390",
+      "teacher_status": "unsupported",
+      "parent_confirms": true,
+      "accepted": false,
+      "all_source_assignments_reviewed": false,
+      "program_variants": 0,
+      "assignments_reviewed": 0,
+      "reason": "Water/day7 cannot be reused as days/week7. Native constant7 is unavailable, and four weeks would require another missing conversion from28days."
+    },
+    {
+      "id": "fit-2622",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Excess-beans input4 and comparison-multiplier input4 have separate roles. Form Sedrich count, combined count and lexical twice; divide computed doubled sum by Mikey multiplier."
+    },
+    {
+      "id": "fit-695",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 4,
+      "reason": "Add puree and cream volumes, then divide computed mixture total by serving volume; original serving count is integral under stipulated additive-volume model."
+    },
+    {
+      "id": "fit-2688",
+      "teacher_status": "equivalent",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 2,
+      "assignments_reviewed": 18,
+      "reason": "Blue count input2 and lexical twice constant2 each occur once in direct multiply variants. Computed black count is doubled; separate reduction input2 gives red count. Final nested sum uses original blue and computed red/black quantities."
+    },
+    {
+      "id": "fit-5318",
+      "teacher_status": "resolved",
+      "parent_confirms": true,
+      "accepted": true,
+      "all_source_assignments_reviewed": true,
+      "program_variants": 1,
+      "assignments_reviewed": 8,
+      "reason": "Stated months and explicitly stated weeks/month yield computed weeks. Weekly and monthly prices use their own input rates and durations; subtract computed payment totals."
+    }
+  ],
+  "parent_confirmed_accepted": 22,
+  "accepted_semantic_contradictions": 0,
+  "program_variants": 25,
+  "assignments_reviewed": 151,
+  "hashes": {
+    "source/batch-03/batch.json": "5fdad1a3ccae0141eb6862766f616584fae734d480d682ee817d6882806ffbb2",
+    "batch-03/teacher-originals/work/annotations.json": "2708e2ae3b4169673bc33790d24dc46c2691dfb9db20689021ab0cf24d712bde",
+    "batch-03/mechanical-report.json": "6746137533c772cd1e273202127062057a6bb364bb6d9ceff84cd7cc54ff0be1"
+  },
+  "replication_gate": "coverage already fails:95mechanicallyaccepted versus96minimum; full semantic audit continues"
+}
