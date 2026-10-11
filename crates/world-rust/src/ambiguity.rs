@@ -69,6 +69,7 @@ impl Val {
 #[derive(Debug)]
 enum Expr {
     Arg,
+    DivCeil(Box<Expr>, Box<Expr>),
     Lit(Val),
     Unary(syn::UnOp, Box<Expr>),
     Binary(syn::BinOp, Box<Expr>, Box<Expr>),
@@ -78,7 +79,7 @@ fn has_arg(e: &Expr) -> bool {
         Expr::Arg => true,
         Expr::Lit(_) => false,
         Expr::Unary(_, e) => has_arg(e),
-        Expr::Binary(_, l, r) => has_arg(l) || has_arg(r),
+        Expr::Binary(_, l, r) | Expr::DivCeil(l, r) => has_arg(l) || has_arg(r),
     }
 }
 fn lower(
@@ -112,6 +113,36 @@ fn lower(
             }
             _ => None,
         },
+        E::Call(c) if c.attrs.is_empty() && c.args.len() == 2 => {
+            let E::Path(p) = &*c.func else { return None };
+            if !p.attrs.is_empty() || p.qself.is_some() || p.path.leading_colon.is_none() {
+                return None;
+            }
+            let parts: Vec<_> = p.path.segments.iter().collect();
+            let [core, primitive, scalar, method] = parts.as_slice() else {
+                return None;
+            };
+            if core.ident != "core"
+                || primitive.ident != "primitive"
+                || method.ident != "div_ceil"
+                || parts
+                    .iter()
+                    .any(|s| !matches!(s.arguments, syn::PathArguments::None))
+            {
+                return None;
+            }
+            let call_ty = Ty::parse(&syn::parse_str::<syn::Type>(&scalar.ident.to_string()).ok()?)?;
+            if call_ty != ty || !matches!(ty, Ty::Int { signed: false, .. }) {
+                return None;
+            }
+            let mut args = c.args.iter();
+            let (l, lt) = lower(args.next()?, arg, ty, literals, depth + 1)?;
+            let (r, rt) = lower(args.next()?, arg, ty, literals, depth + 1)?;
+            if lt != ty || rt != ty {
+                return None;
+            }
+            Some((Expr::DivCeil(Box::new(l), Box::new(r)), ty))
+        }
         E::Unary(u) if u.attrs.is_empty() => {
             let (e, t) = lower(&u.expr, arg, ty, literals, depth + 1)?;
             match (&u.op, t) {
@@ -156,6 +187,16 @@ fn eval(e: &Expr, arg: Val, ty: Ty) -> Option<Val> {
     match e {
         Expr::Arg => Some(arg),
         Expr::Lit(v) => Some(*v),
+        Expr::DivCeil(l, r) => {
+            if !matches!(ty, Ty::Int { signed: false, .. }) {
+                return None;
+            }
+            let l = eval(l, arg, ty)?.integer()?;
+            let r = eval(r, arg, ty)?.integer()?;
+            let q = l.checked_div(r)?;
+            let n = q.checked_add(i128::from(l.checked_rem(r)? != 0))?;
+            Some(Val::Int(ty.valid(n)?))
+        }
         Expr::Unary(op, e) => match op {
             U::Not(_) => Some(Val::Bool(!eval(e, arg, ty)?.boolean()?)),
             U::Neg(_) => Some(Val::Int(
@@ -358,6 +399,34 @@ mod tests {
         let f: syn::ItemFn = syn::parse_str(code).unwrap();
         let (e, ty, _, _) = function(&f)?;
         eval(&e, Val::Int(n), ty)
+    }
+    #[test]
+    fn primitive_ceiling_calls_are_checked_and_exact() {
+        for n in 0..=255u8 {
+            for d in 1..=9u8 {
+                let code = format!("fn f(x:u8)->u8 {{ ::core::primitive::u8::div_ceil(x, {d}) }}");
+                assert_eq!(
+                    value(&code, i128::from(n)),
+                    Some(Val::Int(i128::from(n.div_ceil(d))))
+                );
+            }
+        }
+        for code in [
+            "fn f(x:u8)->u8 { ::core::primitive::u8::div_ceil(x, 0) }",
+            "fn f(x:u8)->u8 { ::core::primitive::u16::div_ceil(x, 3) }",
+            "fn f(x:u8)->u8 { ::core::primitive::u8::div_ceil(x, 3u16) }",
+            "fn f(x:u8)->u8 { ::core::primitive::u8::div_ceil(x + 1, 3) }",
+            "fn f(x:u8)->u8 { u8::div_ceil(x, 3) }",
+            "fn f(x:u8)->u8 { x.div_ceil(3) }",
+            "fn f(x:i8)->i8 { ::core::primitive::i8::div_ceil(x, 3) }",
+            "fn f(x:u8)->u8 { ::custom::primitive::u8::div_ceil(x, 3) }",
+        ] {
+            assert_eq!(value(code, 255), None, "{code}");
+        }
+        let a = "fn f(n:u32)->u32 { ::core::primitive::u32::div_ceil(n, 2) + n / 3 }";
+        let b = "fn f(n:u32)->u32 { n / 2 + ::core::primitive::u32::div_ceil(n, 3) }";
+        assert!(difference(a, b, 1, 1).is_some());
+        assert!(difference(&format!("type u32 = u16; {a}"), b, 1, 1).is_none());
     }
     #[test]
     fn checked_widths_and_short_circuit_match_native_rust() {

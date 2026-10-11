@@ -1,0 +1,149 @@
+[
+  {
+    "name": "width_u8",
+    "code": "pub fn f(n: u8, d: u8) -> u8 { if d == 0 { return 0; } n / d }\n",
+    "tests": "assert_eq!(f(0,3),0); assert_eq!(f(6,3),2); assert_eq!(f(7,3),3); assert_eq!(f(u8::MAX,2),u8::MAX/2+1); assert_eq!(f(9,0),0);",
+    "old": "n / d",
+    "new": "::core::primitive::u8::div_ceil(n, d)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "width_u16",
+    "code": "pub fn f(n: u16, d: u16) -> u16 { if d == 0 { return 0; } n / d }\n",
+    "tests": "assert_eq!(f(0,3),0); assert_eq!(f(6,3),2); assert_eq!(f(7,3),3); assert_eq!(f(u16::MAX,2),u16::MAX/2+1); assert_eq!(f(9,0),0);",
+    "old": "n / d",
+    "new": "::core::primitive::u16::div_ceil(n, d)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "width_u32",
+    "code": "pub fn f(n: u32, d: u32) -> u32 { if d == 0 { return 0; } n / d }\n",
+    "tests": "assert_eq!(f(0,3),0); assert_eq!(f(6,3),2); assert_eq!(f(7,3),3); assert_eq!(f(u32::MAX,2),u32::MAX/2+1); assert_eq!(f(9,0),0);",
+    "old": "n / d",
+    "new": "::core::primitive::u32::div_ceil(n, d)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "width_u64",
+    "code": "pub fn f(n: u64, d: u64) -> u64 { if d == 0 { return 0; } n / d }\n",
+    "tests": "assert_eq!(f(0,3),0); assert_eq!(f(6,3),2); assert_eq!(f(7,3),3); assert_eq!(f(u64::MAX,2),u64::MAX/2+1); assert_eq!(f(9,0),0);",
+    "old": "n / d",
+    "new": "::core::primitive::u64::div_ceil(n, d)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "width_u128",
+    "code": "pub fn f(n: u128, d: u128) -> u128 { if d == 0 { return 0; } n / d }\n",
+    "tests": "assert_eq!(f(0,3),0); assert_eq!(f(6,3),2); assert_eq!(f(7,3),3); assert_eq!(f(u128::MAX,2),u128::MAX/2+1); assert_eq!(f(9,0),0);",
+    "old": "n / d",
+    "new": "::core::primitive::u128::div_ceil(n, d)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "width_usize",
+    "code": "pub fn f(n: usize, d: usize) -> usize { if d == 0 { return 0; } n / d }\n",
+    "tests": "assert_eq!(f(0,3),0); assert_eq!(f(6,3),2); assert_eq!(f(7,3),3); assert_eq!(f(usize::MAX,2),usize::MAX/2+1); assert_eq!(f(9,0),0);",
+    "old": "n / d",
+    "new": "::core::primitive::usize::div_ceil(n, d)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "typed_fields",
+    "code": "pub struct Pair { pub count: u32, pub size: u32 }\npub fn f(p: &Pair) -> u32 { if p.size == 0 { return 0; } p.count / p.size }\n",
+    "tests": "for (n,d,w) in [(0,3,0),(6,3,2),(7,3,3),(u32::MAX,2,u32::MAX/2+1),(9,0,0)] { assert_eq!(f(&Pair{count:n,size:d}),w); }",
+    "old": "p.count / p.size",
+    "new": "::core::primitive::u32::div_ceil(p.count, p.size)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "unicode",
+    "code": "pub fn f(café: u16) -> u16 { café / 3 }\n",
+    "tests": "assert_eq!(f(0),0); assert_eq!(f(6),2); assert_eq!(f(7),3); assert_eq!(f(u16::MAX),21845);",
+    "old": "café / 3",
+    "new": "::core::primitive::u16::div_ceil(café, 3)",
+    "kind": "positive",
+    "extra": {}
+  },
+  {
+    "name": "signed",
+    "code": "pub fn f(n:i32)->i32 { n / 3 }\n",
+    "tests": "assert_eq!(f(7),3); assert_eq!(f(6),2);",
+    "old": null,
+    "new": null,
+    "kind": "negative",
+    "extra": {}
+  },
+  {
+    "name": "unknown",
+    "code": "pub fn f()->u32 { let n = 7; n / 3 }\n",
+    "tests": "assert_eq!(f(),3);",
+    "old": null,
+    "new": null,
+    "kind": "negative",
+    "extra": {}
+  },
+  {
+    "name": "custom",
+    "code": "#[derive(Clone,Copy)] pub struct N(pub u32); impl std::ops::Div for N { type Output = N; fn div(self,r:Self)->Self { N(self.0/r.0) } } impl N { pub fn div_ceil(self,_:Self)->Self { N(99) } } pub fn f(n:N,d:N)->N { n / d }\n",
+    "tests": "assert_eq!(f(N(7),N(3)).0,3); assert_eq!(f(N(6),N(3)).0,2);",
+    "old": null,
+    "new": null,
+    "kind": "negative",
+    "extra": {}
+  },
+  {
+    "name": "macro",
+    "code": "pub fn f(n:u32)->u32 { { macro_rules! q { () => { n / 3 } } q!() } }\n",
+    "tests": "assert_eq!(f(7),3); assert_eq!(f(6),2);",
+    "old": null,
+    "new": null,
+    "kind": "negative",
+    "extra": {}
+  },
+  {
+    "name": "protected",
+    "code": "pub fn f()->u32 { 1 }\n#[cfg(test)] fn helper(n:u32)->u32 { n / 3 }\n",
+    "tests": "assert_eq!(helper(7),3); assert_eq!(f(),1);",
+    "old": null,
+    "new": null,
+    "kind": "negative",
+    "extra": {}
+  },
+  {
+    "name": "rollback",
+    "code": "pub fn f(n:u32)->u32 { n / 3 }\n",
+    "tests": "assert_eq!(f(7),3); assert_eq!(f(7),4);",
+    "old": null,
+    "new": null,
+    "kind": "negative",
+    "extra": {}
+  },
+  {
+    "name": "ambiguous",
+    "code": "pub fn f(n:u32)->u32 { n / 2 + n / 3 }\n",
+    "tests": "assert_eq!(f(7),6);",
+    "old": null,
+    "new": null,
+    "kind": "ambiguity",
+    "extra": {}
+  },
+  {
+    "name": "legacy",
+    "code": "mod early; mod late; pub fn f(n:u32)->u32 { n * 3 }\n",
+    "tests": "assert_eq!(f(6),2); assert_eq!(f(9),3);",
+    "old": "*",
+    "new": "/",
+    "kind": "legacy",
+    "extra": {
+      "src/early.rs": "pub fn q(n:u32)->u32 { n / 3 }\n",
+      "src/late.rs": "pub fn old(n:u32)->u32 { n + 1 }\n"
+    }
+  }
+]

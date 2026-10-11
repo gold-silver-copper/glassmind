@@ -1,0 +1,469 @@
+{
+  "scope": "Exact cached directed edges only; historical/qualified claims and validation-subject seeded partial index, not current or global truth. No network or heldout data.",
+  "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+  "examples": [
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q7473516"
+        },
+        {
+          "property": "P27",
+          "object": "Q17"
+        }
+      ],
+      "single_counts": [
+        2,
+        9
+      ],
+      "matches": [
+        "Q1013868"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q1013868",
+          "property": "P19",
+          "object": "Q7473516",
+          "source_url": "https://www.wikidata.org/wiki/Q1013868#P19",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q1013868$48359124-0C12-42D2-BCE7-B8CC818675BA",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q1013868",
+          "property": "P27",
+          "object": "Q17",
+          "source_url": "https://www.wikidata.org/wiki/Q1013868#P27",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q1013868$FC364A66-6DD1-4C24-B227-CA9DD1F2E0FF",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q220"
+        },
+        {
+          "property": "P20",
+          "object": "Q90"
+        }
+      ],
+      "single_counts": [
+        2,
+        2
+      ],
+      "matches": [
+        "Q1029284"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q1029284",
+          "property": "P19",
+          "object": "Q220",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P19",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "q1029284$C805C435-9966-439C-9E14-18B753D7891F",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q1029284",
+          "property": "P20",
+          "object": "Q90",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P20",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "q1029284$533B5BAD-5A8C-4A0F-BDD4-839F86F3590C",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q220"
+        },
+        {
+          "property": "P27",
+          "object": "Q142"
+        }
+      ],
+      "single_counts": [
+        2,
+        10
+      ],
+      "matches": [
+        "Q1029284"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q1029284",
+          "property": "P19",
+          "object": "Q220",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P19",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "q1029284$C805C435-9966-439C-9E14-18B753D7891F",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q1029284",
+          "property": "P27",
+          "object": "Q142",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P27",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q1029284$13AD2691-DF44-4859-9F6D-1F3F28AB887C",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P20",
+          "object": "Q90"
+        },
+        {
+          "property": "P27",
+          "object": "Q142"
+        }
+      ],
+      "single_counts": [
+        2,
+        10
+      ],
+      "matches": [
+        "Q1029284"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q1029284",
+          "property": "P20",
+          "object": "Q90",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P20",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "q1029284$533B5BAD-5A8C-4A0F-BDD4-839F86F3590C",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q1029284",
+          "property": "P27",
+          "object": "Q142",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P27",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q1029284$13AD2691-DF44-4859-9F6D-1F3F28AB887C",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P20",
+          "object": "Q90"
+        },
+        {
+          "property": "P27",
+          "object": "Q172579"
+        }
+      ],
+      "single_counts": [
+        2,
+        4
+      ],
+      "matches": [
+        "Q1029284"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q1029284",
+          "property": "P20",
+          "object": "Q90",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P20",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "q1029284$533B5BAD-5A8C-4A0F-BDD4-839F86F3590C",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q1029284",
+          "property": "P27",
+          "object": "Q172579",
+          "source_url": "https://www.wikidata.org/wiki/Q1029284#P27",
+          "cached_response": {
+            "file": "faea9d8294db2ab9.json",
+            "sha256": "0ac074d1a50473a0e453a8b9cd4ba1a6a9fa5926ae8b683d169d603483d4f332",
+            "bytes": 1880743
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q1029284$C2369A54-9AA8-4024-9A7A-DDB8D6DCB579",
+              "rank": "normal",
+              "qualifier_properties": [
+                "P580"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q490"
+        },
+        {
+          "property": "P27",
+          "object": "Q172579"
+        }
+      ],
+      "single_counts": [
+        2,
+        4
+      ],
+      "matches": [
+        "Q1056757"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q1056757",
+          "property": "P19",
+          "object": "Q490",
+          "source_url": "https://www.wikidata.org/wiki/Q1056757#P19",
+          "cached_response": {
+            "file": "398b4452066dbd60.json",
+            "sha256": "2527f9aff6eecf2f32ac170a78fb709b38da1ba2e902726c374e8d2486c54f33",
+            "bytes": 1216397
+          },
+          "raw_claims": [
+            {
+              "claim_id": "q1056757$F394600A-89BC-4165-9BA1-89678E6BC4A5",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q1056757",
+          "property": "P27",
+          "object": "Q172579",
+          "source_url": "https://www.wikidata.org/wiki/Q1056757#P27",
+          "cached_response": {
+            "file": "398b4452066dbd60.json",
+            "sha256": "2527f9aff6eecf2f32ac170a78fb709b38da1ba2e902726c374e8d2486c54f33",
+            "bytes": 1216397
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q1056757$A53703EE-B50D-46EF-B39E-E10C8E0249E2",
+              "rank": "normal",
+              "qualifier_properties": [
+                "P582"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q84"
+        },
+        {
+          "property": "P27",
+          "object": "Q145"
+        }
+      ],
+      "single_counts": [
+        3,
+        21
+      ],
+      "matches": [
+        "Q10748975"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q10748975",
+          "property": "P19",
+          "object": "Q84",
+          "source_url": "https://www.wikidata.org/wiki/Q10748975#P19",
+          "cached_response": {
+            "file": "5f053ccbe639e4a3.json",
+            "sha256": "6c0d3205868a170eee6434a64a1dcb2eaee8a7b8477448d079198ad6963fee4b",
+            "bytes": 1555911
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q10748975$623C9263-2E71-4B79-B6FC-7B4F3F616684",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q10748975",
+          "property": "P27",
+          "object": "Q145",
+          "source_url": "https://www.wikidata.org/wiki/Q10748975#P27",
+          "cached_response": {
+            "file": "5f053ccbe639e4a3.json",
+            "sha256": "6c0d3205868a170eee6434a64a1dcb2eaee8a7b8477448d079198ad6963fee4b",
+            "bytes": 1555911
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q10748975$83704A29-53B6-4D38-A4E2-ADDACCB4236A",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q84"
+        },
+        {
+          "property": "P27",
+          "object": "Q174193"
+        }
+      ],
+      "single_counts": [
+        3,
+        12
+      ],
+      "matches": [
+        "Q10748975"
+      ],
+      "witnesses": [
+        {
+          "subject": "Q10748975",
+          "property": "P19",
+          "object": "Q84",
+          "source_url": "https://www.wikidata.org/wiki/Q10748975#P19",
+          "cached_response": {
+            "file": "5f053ccbe639e4a3.json",
+            "sha256": "6c0d3205868a170eee6434a64a1dcb2eaee8a7b8477448d079198ad6963fee4b",
+            "bytes": 1555911
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q10748975$623C9263-2E71-4B79-B6FC-7B4F3F616684",
+              "rank": "normal",
+              "qualifier_properties": []
+            }
+          ]
+        },
+        {
+          "subject": "Q10748975",
+          "property": "P27",
+          "object": "Q174193",
+          "source_url": "https://www.wikidata.org/wiki/Q10748975#P27",
+          "cached_response": {
+            "file": "5f053ccbe639e4a3.json",
+            "sha256": "6c0d3205868a170eee6434a64a1dcb2eaee8a7b8477448d079198ad6963fee4b",
+            "bytes": 1555911
+          },
+          "raw_claims": [
+            {
+              "claim_id": "Q10748975$CEC840D3-5938-4988-A86D-D6C874EFA846",
+              "rank": "normal",
+              "qualifier_properties": [
+                "P1534",
+                "P582"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

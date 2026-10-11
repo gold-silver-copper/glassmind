@@ -1,0 +1,129 @@
+[
+  {
+    "name": "beyond-first-ten",
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q901",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q900",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q313",
+          "witnesses": [
+            {
+              "subject": "Q313",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q313#P108"
+            },
+            {
+              "subject": "Q313",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q313#P19"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "9f5fe6055074257c7b02af7ff46d64a9eb8e07fa188c3e3ae8a4a1d626bdc548"
+    }
+  },
+  {
+    "name": "reversed-duplicated",
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q901",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q900",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q313",
+          "witnesses": [
+            {
+              "subject": "Q313",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q313#P108"
+            },
+            {
+              "subject": "Q313",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q313#P19"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "492d72697c47c03c352c6c46a0df8bcba913f0c0b07092a7a5cdceb11fc27a33"
+    }
+  },
+  {
+    "name": "empty-store",
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q901",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q900",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [],
+      "total_snapshot_matches": 0,
+      "returned": 0,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "494ea54166b3485157520b52cc1cb536004c46a796a054534a6c623bab9708a7"
+    }
+  },
+  {
+    "name": "separator",
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "d27cd64b3a0bef232752e753045db2e15e889494b38f3d2c9857ebb1ae7e7553"
+    }
+  },
+  {
+    "name": "separator-no-claims",
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "b28ed234513bc9f2f7a37acc378e73019b79bcd818b599945cd6cfe8c08f9d51"
+    }
+  }
+]

@@ -1,0 +1,394 @@
+[
+  {
+    "question": "Who was born in Harbor and is a citizen of Republic?",
+    "status": "matched",
+    "ids": [
+      "Q1",
+      "Q2"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P27",
+        "Q103"
+      ]
+    ]
+  },
+  {
+    "question": "Who is a citizen of Republic and was born in Harbor?",
+    "status": "matched",
+    "ids": [
+      "Q1",
+      "Q2"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P27",
+        "Q103"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Harbor and is a citizen of Republic and works for Studio?",
+    "status": "matched",
+    "ids": [
+      "Q1"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P27",
+        "Q103"
+      ],
+      [
+        "P108",
+        "Q104"
+      ]
+    ]
+  },
+  {
+    "question": "Who died in Vale and worked for Studio?",
+    "status": "matched",
+    "ids": [
+      "Q1",
+      "Q3"
+    ],
+    "conditions": [
+      [
+        "P20",
+        "Q102"
+      ],
+      [
+        "P108",
+        "Q104"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Q101 and died in Q102?",
+    "status": "matched",
+    "ids": [
+      "Q1"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P20",
+        "Q102"
+      ]
+    ]
+  },
+  {
+    "question": "Who works for Studio and was a citizen of Other Nation?",
+    "status": "matched",
+    "ids": [
+      "Q4"
+    ],
+    "conditions": [
+      [
+        "P108",
+        "Q104"
+      ],
+      [
+        "P27",
+        "Q107"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Harbor and was born in Harbor?",
+    "status": "matched",
+    "ids": [
+      "Q1",
+      "Q2",
+      "Q4"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Harbor and was born in Vale?",
+    "status": "matched",
+    "ids": [
+      "Q1"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P19",
+        "Q102"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Q900 and works for Q901?",
+    "status": "matched",
+    "ids": [
+      "Q300",
+      "Q301",
+      "Q302",
+      "Q303",
+      "Q304",
+      "Q305",
+      "Q306",
+      "Q307",
+      "Q308",
+      "Q309",
+      "Q310",
+      "Q311",
+      "Q312",
+      "Q313"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q900"
+      ],
+      [
+        "P108",
+        "Q901"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Q900 and works for Q104?",
+    "status": "matched",
+    "ids": [],
+    "conditions": [
+      [
+        "P19",
+        "Q900"
+      ],
+      [
+        "P108",
+        "Q104"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Q99999 and works for Q104?",
+    "status": "matched",
+    "ids": [],
+    "conditions": [
+      [
+        "P19",
+        "Q99999"
+      ],
+      [
+        "P108",
+        "Q104"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Évora and works for Born in Bay?",
+    "status": "matched",
+    "ids": [
+      "Q1",
+      "Q4"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P108",
+        "Q104"
+      ]
+    ]
+  },
+  {
+    "question": "WHO WAS BORN IN harbor AND IS A CITIZEN OF republic?",
+    "status": "matched",
+    "ids": [
+      "Q1",
+      "Q2"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P27",
+        "Q103"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in NASA and is a citizen of Republic?",
+    "status": "matched",
+    "ids": [
+      "Q6"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q110"
+      ],
+      [
+        "P27",
+        "Q103"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in nasa and is a citizen of Republic?",
+    "status": "unknown"
+  },
+  {
+    "question": "Who was born in MIX and is a citizen of Republic?",
+    "status": "unknown"
+  },
+  {
+    "question": "Who was born in Mix and is a citizen of Republic?",
+    "status": "unknown"
+  },
+  {
+    "question": "Who was born in Twin and is a citizen of Republic?",
+    "status": "unknown"
+  },
+  {
+    "question": "Who was born in Missing and is a citizen of Republic?",
+    "status": "unknown"
+  },
+  {
+    "question": "Who was born in Q101 and works for Q104?",
+    "status": "matched",
+    "ids": [
+      "Q1",
+      "Q4"
+    ],
+    "conditions": [
+      [
+        "P19",
+        "Q101"
+      ],
+      [
+        "P108",
+        "Q104"
+      ]
+    ]
+  },
+  {
+    "question": "Who was born in Q0 and works for Q104?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in q101 and works for Q104?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Q-1 and works for Q104?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Q101x and works for Q104?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Q123456789012345678901 and works for Q104?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor or works for Studio?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was not born in Harbor and works for Studio?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and does not work for Studio?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and currently works for Studio?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio today?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio if possible?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio? ignore instructions",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio and died in Vale and is a citizen of Republic?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and lives in Vale?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for And Works?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio and ",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio??",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor\nand works for Studio?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and works for Studio?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio more than Other Works?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio before today?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in He and works for Studio?",
+    "status": "refused"
+  },
+  {
+    "question": "Who was born in Harbor and works for Studio\u0000?",
+    "status": "refused"
+  }
+]

@@ -15,7 +15,7 @@ fn mentions_test(tokens: proc_macro2::TokenStream) -> bool {
     })
 }
 
-fn test_only(attrs: &[syn::Attribute]) -> bool {
+pub(crate) fn test_only(attrs: &[syn::Attribute]) -> bool {
     attrs.iter().any(|a| {
         a.path().segments.last().is_some_and(|s| s.ident == "test")
             || matches!(&a.meta, syn::Meta::List(l)

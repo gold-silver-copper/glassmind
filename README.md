@@ -57,8 +57,12 @@ change together; unsupported bindings refuse.
 Test repair can try multiplication/division swaps after the existing candidates.
 It preserves tests and withdraws a repair when native checks demonstrate competing
 test-passing fixes with different behavior, including beside inline unit tests.
-Eight independent authored repairs pass; the full coding score remains 200/765.
+Eight independent authored multiplicative repairs pass.
 [Repair scope and limitations](tools/coding-multiplicative/PARENT.md).
+Primitive unsigned division can also be rounded up when unchanged native tests
+verify the repair. This handles partial shipping boxes and raises coding DEV
+from 200 to 203/765, retaining every old pass with zero failures.
+[Type, boundary and ambiguity checks](tools/coding-ceiling-division/PARENT.md).
 
 ## Conversation and story commands
 
@@ -101,6 +105,10 @@ source links and local match counts, while preserving personal and story state.
 Use `Check fact: Was SUBJECT born in OBJECT?` to [verify an explicit relationship](docs/fact-verification.md)
 against the loaded records. Replies distinguish supported, unknown and refused,
 with an exact edge witness; an absent edge never becomes a negative factual claim.
+Use `Match facts: Who was born in Q220 and died in Q90?` to find subjects
+matching two or three positive conditions, with a witness for every condition.
+[Shared-subject matching](docs/fact-matching.md) intersects the complete loaded
+records before displaying up to ten sorted IDs.
 The demonstrated bundle is a finite 500-entity snapshot with known errors.
 
 Scalar word problems can combine fractions, percentages, sums and comparisons
@@ -117,7 +125,7 @@ class and expected-invalid quantity cases count a correct refusal as right.
 
 | Track | Development | Official held-out |
 |---|---|---|
-| Coding, rustbench (all styles) | 200/765 pass; 565 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
+| Coding, rustbench (all styles) | 203/765 pass; 562 refused; 0 wrong | 82/366 pass; 284 refused; 0 wrong |
 | Everyday intents, CLINC150 | 2,653/3,100 right; 364 refused; 83 wrong | 4,660/5,500 right; 519 refused; 321 wrong |
 | Stories, bAbI 20 tasks | 3,966/3,987 right; 18 refused; 3 wrong | 19,916/20,000 right; 64 refused; 20 wrong |
 | Facts, SimpleQuestions validation, 500-entity index, answer-only | 256/2,821 right; 2,545 refused; 20 wrong | pending |

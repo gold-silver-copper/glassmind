@@ -1,0 +1,58 @@
+{
+  "question": "Who works for Q193727 and was born in Q18419?",
+  "single_filter_sets": [
+    [
+      "Q1242948",
+      "Q168041"
+    ],
+    [
+      "Q1242948",
+      "Q1338869"
+    ]
+  ],
+  "intersection": [
+    "Q1242948"
+  ],
+  "result": {
+    "status": "matched",
+    "constraints": [
+      {
+        "property": "P108",
+        "object": "Q193727",
+        "object_resolution": "explicit_id"
+      },
+      {
+        "property": "P19",
+        "object": "Q18419",
+        "object_resolution": "explicit_id"
+      }
+    ],
+    "matches": [
+      {
+        "subject": "Q1242948",
+        "witnesses": [
+          {
+            "subject": "Q1242948",
+            "property": "P108",
+            "object": "Q193727",
+            "source_url": "https://www.wikidata.org/wiki/Q1242948#P108"
+          },
+          {
+            "subject": "Q1242948",
+            "property": "P19",
+            "object": "Q18419",
+            "source_url": "https://www.wikidata.org/wiki/Q1242948#P19"
+          }
+        ]
+      }
+    ],
+    "total_snapshot_matches": 1,
+    "returned": 1,
+    "truncated": false,
+    "scope": "local_snapshot",
+    "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+    "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+  },
+  "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+  "scope": "finite validation-subject-seeded index capability evidence, not independent benchmark or open-world truth"
+}

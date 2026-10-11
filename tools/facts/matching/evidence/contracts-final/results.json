@@ -1,0 +1,1120 @@
+[
+  {
+    "case": 0,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q103",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            },
+            {
+              "subject": "Q1",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q2",
+          "witnesses": [
+            {
+              "subject": "Q2",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q2#P19"
+            },
+            {
+              "subject": "Q2",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q2#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 1,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q103",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            },
+            {
+              "subject": "Q1",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q2",
+          "witnesses": [
+            {
+              "subject": "Q2",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q2#P19"
+            },
+            {
+              "subject": "Q2",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q2#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 2,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q104",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q103",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P108"
+            },
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            },
+            {
+              "subject": "Q1",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 3,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q104",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P20",
+          "object": "Q102",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P108"
+            },
+            {
+              "subject": "Q1",
+              "property": "P20",
+              "object": "Q102",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P20"
+            }
+          ]
+        },
+        {
+          "subject": "Q3",
+          "witnesses": [
+            {
+              "subject": "Q3",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q3#P108"
+            },
+            {
+              "subject": "Q3",
+              "property": "P20",
+              "object": "Q102",
+              "source_url": "https://www.wikidata.org/wiki/Q3#P20"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 4,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P20",
+          "object": "Q102",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            },
+            {
+              "subject": "Q1",
+              "property": "P20",
+              "object": "Q102",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P20"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 5,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q104",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q107",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q4",
+          "witnesses": [
+            {
+              "subject": "Q4",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q4#P108"
+            },
+            {
+              "subject": "Q4",
+              "property": "P27",
+              "object": "Q107",
+              "source_url": "https://www.wikidata.org/wiki/Q4#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 6,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q2",
+          "witnesses": [
+            {
+              "subject": "Q2",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q2#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q4",
+          "witnesses": [
+            {
+              "subject": "Q4",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q4#P19"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 3,
+      "returned": 3,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 7,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P19",
+          "object": "Q102",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            },
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q102",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 8,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q901",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q900",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q300",
+          "witnesses": [
+            {
+              "subject": "Q300",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q300#P108"
+            },
+            {
+              "subject": "Q300",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q300#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q301",
+          "witnesses": [
+            {
+              "subject": "Q301",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q301#P108"
+            },
+            {
+              "subject": "Q301",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q301#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q302",
+          "witnesses": [
+            {
+              "subject": "Q302",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q302#P108"
+            },
+            {
+              "subject": "Q302",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q302#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q303",
+          "witnesses": [
+            {
+              "subject": "Q303",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q303#P108"
+            },
+            {
+              "subject": "Q303",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q303#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q304",
+          "witnesses": [
+            {
+              "subject": "Q304",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q304#P108"
+            },
+            {
+              "subject": "Q304",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q304#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q305",
+          "witnesses": [
+            {
+              "subject": "Q305",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q305#P108"
+            },
+            {
+              "subject": "Q305",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q305#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q306",
+          "witnesses": [
+            {
+              "subject": "Q306",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q306#P108"
+            },
+            {
+              "subject": "Q306",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q306#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q307",
+          "witnesses": [
+            {
+              "subject": "Q307",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q307#P108"
+            },
+            {
+              "subject": "Q307",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q307#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q308",
+          "witnesses": [
+            {
+              "subject": "Q308",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q308#P108"
+            },
+            {
+              "subject": "Q308",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q308#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q309",
+          "witnesses": [
+            {
+              "subject": "Q309",
+              "property": "P108",
+              "object": "Q901",
+              "source_url": "https://www.wikidata.org/wiki/Q309#P108"
+            },
+            {
+              "subject": "Q309",
+              "property": "P19",
+              "object": "Q900",
+              "source_url": "https://www.wikidata.org/wiki/Q309#P19"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 14,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 9,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q104",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q900",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [],
+      "total_snapshot_matches": 0,
+      "returned": 0,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 10,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q104",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q99999",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [],
+      "total_snapshot_matches": 0,
+      "returned": 0,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 11,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q104",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P108"
+            },
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q4",
+          "witnesses": [
+            {
+              "subject": "Q4",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q4#P108"
+            },
+            {
+              "subject": "Q4",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q4#P19"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 12,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q103",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            },
+            {
+              "subject": "Q1",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q2",
+          "witnesses": [
+            {
+              "subject": "Q2",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q2#P19"
+            },
+            {
+              "subject": "Q2",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q2#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 13,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q110",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q103",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q6",
+          "witnesses": [
+            {
+              "subject": "Q6",
+              "property": "P19",
+              "object": "Q110",
+              "source_url": "https://www.wikidata.org/wiki/Q6#P19"
+            },
+            {
+              "subject": "Q6",
+              "property": "P27",
+              "object": "Q103",
+              "source_url": "https://www.wikidata.org/wiki/Q6#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 14,
+    "result": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 15,
+    "result": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 16,
+    "result": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 17,
+    "result": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 18,
+    "result": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 19,
+    "result": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q104",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q101",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q1",
+          "witnesses": [
+            {
+              "subject": "Q1",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P108"
+            },
+            {
+              "subject": "Q1",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q1#P19"
+            }
+          ]
+        },
+        {
+          "subject": "Q4",
+          "witnesses": [
+            {
+              "subject": "Q4",
+              "property": "P108",
+              "object": "Q104",
+              "source_url": "https://www.wikidata.org/wiki/Q4#P108"
+            },
+            {
+              "subject": "Q4",
+              "property": "P19",
+              "object": "Q101",
+              "source_url": "https://www.wikidata.org/wiki/Q4#P19"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 20,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 21,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 22,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 23,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 24,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 25,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_condition_count",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 26,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 27,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 28,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 29,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 30,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 31,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 32,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_condition_count",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 33,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_condition_count",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 34,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 35,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 36,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 37,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 38,
+    "result": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 39,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 40,
+    "result": {
+      "status": "refused",
+      "reason": "question_too_long",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 41,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 42,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  },
+  {
+    "case": 43,
+    "result": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "23454d591984e66af7a665723199c5dc6c47916e98051c6dd8a4d3e515767e5e"
+    }
+  }
+]

@@ -1,33 +1,94 @@
 # Continuous development checkpoint
 
-The unlimited goal is active. This is a resumable checkpoint, never completion.
+The unlimited goal is active. Continue from live evidence; milestones do not complete it.
 WORK=/home/gsc/.cache/glassmind/continuous-20261010; root branch `harness`.
-Validated coding source commit 508b43513868f06cde300dfee1b0a52636d8298d.
-The rejected sequence experiment and this handoff are being committed before PR publication.
-No model workers are running. Do not restart completed workers or old loops.
 
-## Live work and immediate next action
+## Published milestone
 
-Full765 coding DEV session82568 is COMPLETE:200pass/565refused/0fail, all765
-outcomes identical and all200previouspasses retained. No benchmark score gain.
-Output WORK/coordinator/multiplicative-full; unchanged `tools/rustbench-dev.sh`.
-Frozen evaluated binary is
-WORK/coordinator/multiplicative-independent/revision/frozen/glassmind,
-SHA825df340f06a81024d4620fee92cd5cea7a0813abd675cf3f2cfe59a15f63cc6.
-Every (task,style) compared with WORK/coordinator/repairveto-full/results.jsonl.
-NewresultsSHA c2f9fbd3aba3f11558e9872973b6fb0aa4d3714d7ce9c79d5f3a95e58b9625f6;
-comparison in tools/coding-multiplicative/parent/revision/full-comparison.json.
+PR38 MERGED: https://github.com/gold-silver-copper/glassmind/pull/38
+Reviewed head609f42ecdd9071c0888e1f402ee08b8d8616793a; source commit
+508b43513868f06cde300dfee1b0a52636d8298d. CI38137149457 passed in79seconds.
+Merge663d966087f06bbb981b8b6c930046b692f1a126 at2026-10-11T11:53:57Z.
+Push40317, PR creation42472 and merge16241 are COMPLETE. Do not repeat them.
 
-Integrated workspace check session73733 is COMPLETE: fmt, all-target clippy,
-release workspace and strict4/4 fixture smoke pass. Log at
-WORK/coordinator/multiplicative-integrated/check.log. All jobs use8GiB/0swap,
-setsid--wait, boundedtimeouts, on-disk TMPDIR, cargo1 and testthreads4.
+Multiplication/division repairs and inline-unit-test ambiguity correction are shipped.
+Independent14 cases:8new and1legacy exact native repair,4negative cases unchanged,
+1native-confirmed ambiguity withdrawal. Full765 session82568 is COMPLETE:
+200pass/565refused/0fail, every outcome identical to the previous release.
+Results: WORK/coordinator/multiplicative-full/results.jsonl,
+SHA c2f9fbd3aba3f11558e9872973b6fb0aa4d3714d7ce9c79d5f3a95e58b9625f6.
+Full evaluated release825df340f06a81024d4620fee92cd5cea7a0813abd675cf3f2cfe59a15f63cc6
+is frozen undercoordinator/multiplicative-independent/revision/frozen/glassmind.
+Integrated release7a3d98dfb4eb6428d9d43ceb4cbdb963d20750034d0da223ffaa21dbe9781d81
+has identical reviewed source. Workspace session73733 COMPLETE:fmt,clippy,release,
+strict4/4 smoke. No native/build/full-evaluation job remains from that release.
 
-All local gates, PARENT/report/README and source commit are complete. Integrated
-release7a3d98dfb4eb6428d9d43ceb4cbdb963d20750034d0da223ffaa21dbe9781d81
-matches the frozen evaluated source; root workspace checks pass.
-Next: push harness, openPR and merge exact reviewed head after required CI passes.
-Do not claim this feature shipped while CI/merge remain pending.
+## Current batch: validated, publication next
+
+Previous goal turn was PROGRESS: accepted independent ceiling-division contracts,
+completed source integration/workspace checks, and froze independent facts contracts.
+Current turn completed facts integration, native regressions and full coding DEV.
+
+Coding sourcecommit13673438624ce290c369b563a286534e3da326fd; full765 session78883
+COMPLETE:203pass/562refused/0fail, all200priorpassesretained. Only3gains are
+fix-tests/shipping-boxes acrosschatty/hurried/terse. Comparison committedpath
+ tools/coding-ceiling-division/parent/full-comparison.json; results
+WORK/coordinator/ceildivision-full/results.jsonl SHA
+0b491f90bc85c9b6e8900f8ce87a2b5b6542f78020b79a10483d9958e411431a.
+Frozen evaluatedmain90e463f72105bb3a28fc0b1c17315647af15ba4d4c109dfec0d53b6fd7c67141
+WORK/ceildivision-run/frozen-candidate/glassmind. Integratedcodingmain44ca28a...,
+sourcehashesidentical, WORK/coordinator/ceildivision-integrated; workspace43069COMPLETE.
+Parent13:8exactnativepositives,4negativeunchanged,1nativeambiguitywithdrawal;
+separatereplaybothpublictests+nativeoutputs passed. WorkerpublicTRAIN5→6/27,
+alloldpatchesunchanged. Original622files/81,410,732bytes preserved/hashverified
+WORK/ceildivision-run/terminal-originals. WorktreeWORK/ceildivision stillretained.
+
+Facts worker COMPLETE: original226files/85,040,204bytes includingCargo.lock
+preserved/hashverified BEFOREinspection underWORK/factmatch-run/terminal-originals.
+Scopeglassmind-continuous-factmatch.scope inactive/dead; no modelworker remains.
+Frozen standalone90861d7dfe781d45c7eccfe10253edefbe197e47fb4e2bbc57a14472205e7203
+WORK/factmatch-run/frozen-candidate/binary/glassmind-facts. Archived library
+integrated unchanged; parent adds Match facts: conversationroute andindependenttests.
+Existinglockedsha2 dependencyedge only; no packageversion/download changes.
+Worker44CLI+45library contracts,5invariants,152legacyqueries/answer_set bytespass;
+its originalseparatoralias failure is preserved, finalguardcorrected beforehandoff.
+
+Parent30cases/49entitygraph frozenbeforeinspection,casesSHA
+102d1cd1c75601a23e8e416fa3436989f313c596d5dbd10f9d14805bc9c2a92b:
+29/29nativeCLIcases and30/30librarycases pass (NUL libraryonly). Eightrealindex
+conjunctions strictlyreducebothinputsets;16edges confirmed againsthashverified
+rawWikidataresponses. ArtifactsWORK/coordinator/factmatch-{independent,audit}.
+OriginalPLAN prosecount19 correctedonly in audit.json; frozenexpectedarrayscorrect.
+500entityindex remainsvalidation-subject seeded, notindependentretrievalbenchmark.
+IndexSHA923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185;
+relationSHAdb0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6.
+
+Parentmain integration COMPLETE at WORK/coordinator/factmatch-integrated:
+mainSHA562a774bc98583d487b2bbcabcb53b3b300bae767f8427c7f0491cc2652a07a4.
+Session53373:24main+16facts tests,fmt,alltargetclippy,release,strict4/4smoke pass.
+Session52504:29nativeconversationcases,26state/recallchecks bothproductionintent
+modes,2prefix/namechecks,humantruncation/source/scope andrealcacheexample pass.
+Session88481:all6first200/full2821 standalone/facts-enabled/defaulttalk outputfiles
+byteidenticaltobaseline. Facts256/2545/20 answer,252/2545/24joint unchanged.
+Session93455:memory41/41(nointent),calculations27/27,mixedstory47/47 pass.
+Mainbaseline42229/24773 COMPLETE underfactmatch-independent; copiedpredictor and
+baseline-identity.json preserved. Maincoding/world-rust sourceunchangedbyfacts.
+
+Facts source/evidence commit4551ebe01a10d1f87ba87e6f0ab1d9ce365c8f71. Scopedtrack
+records and chart nowupdated, coding203/765, ordinaryfactsunchanged;30/30authored
+matchingcontracts explicitly separate. Next: pushharness, openPR, requiregreenCI
+forreviewedexacthead andmergewith--match-head-commit. No openPR atlastcheck.
+Do not reruncompletedvalidation withoutnewchanges. Retainoriginalevidence before
+removinginactiveworkerworktrees/loginlinks. External5linemilestone log dueatmerge.
+Afterpublish startnextmeasurableexperiment; lead: auditTRAINsubjectcoverage in
+existingrawcache before choosing an independentTRAIN-seeded facts-index expansion.
+No newindex/download experiment yetauthorizedbymeasurement; don't useDEVanswers
+forselection orclaimopenworldcoverage. Otherqueuedlead integerreassociation needs
+nativeoverflow/rounding evidence, notanotherphrasepatch.
+
+Known completedworker tokens164630460 (factmatch1151559input+26765output,
+1076736cachedinput included ONCE; ceiling1941615input+26250output). Root/interrupted
+excluded. No activeuncountedworker. Goalremainsactive; milestonesarenotcompletion.
 
 ## Multiplicative coding revision
 
@@ -35,8 +96,9 @@ Original worker completed:8/8authored new repairs,6/6negative preservation,legac
 priority; publicTRAIN5/27 unchanged,39world-rust tests/clippy/fmt/release passed.
 Original709files/79,969,637bytes archived/hash-verified BEFORE inspection under
 WORK/multiplicative-run/terminal-originals. Original release deec095b... remains
-WORK/multiplicative-run/frozen-candidate. Worktree WORK/multiplicative is now
-coordinator-owned with a revision; preserve both original and revised evidence.
+WORK/multiplicative-run/frozen-candidate. The inactive worker worktree and temporary login link are removed after verifying
+all709 original and59 final files. Final source/report archive is
+WORK/multiplicative-run/coordinator-final-submitted; all original evidence remains.
 
 Parent original14cases frozen before inspection:8new+1legacy exactnative repairs,
 4unchanged negatives, but ambiguity case acceptedone of two differing repairs.
@@ -86,8 +148,8 @@ Do not revive these configurations by weakening thresholds or repeating decoder
 cosmetics. Further quantities work needs evidence for better argument grounding
 or supervision. No heldout/DEVformula/parentfixture access by either worker.
 
-Known completed worker tokens161484271, including cachedinput once. Parent and
-interrupted calls excluded. No active uncounted worker. New corpus downloads0.
+Known completed worker tokens164630460, including cachedinput once. Parent and
+interrupted calls excluded. No active model workers. New corpus downloads0.
 
 ## Stable baselines and closed hypotheses
 
@@ -105,8 +167,8 @@ keyword/route patch. Three syntax decoder/feature tweaks are closed. Two quantit
 rate-grammar attempts failed; do not resume them. Repair positive-whitelist work
 lost127passes and is rejected. Originals/reasons remain in relevant PARENT reports.
 
-Next useful coding lead (TRAIN source read, no changes yet): shipping-boxes uses
-unsigned floor division where a partial box needs a rounded-up quotient. Consider
+The active ceiling-division experiment follows public TRAIN evidence: shipping-boxes uses
+unsigned floor division where a partial box needs a rounded-up quotient. Its task is
 a generic, primitive-typed, test-checked division-rounding repair with preserved
 old priority, zero/overflow boundaries and independent native cases; require a
 real publicTRAIN gain and full765 regression checks. Another lead is integer

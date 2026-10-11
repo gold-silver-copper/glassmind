@@ -1,0 +1,58 @@
+{
+  "scope": "Full765 public DEV, unchanged runner and denominator; no hidden task contents inspected",
+  "total": 765,
+  "outcomes": {
+    "refused": 562,
+    "pass": 203
+  },
+  "all_previous_passes_retained": 200,
+  "regressions": [],
+  "outcome_changes": [
+    {
+      "task": "fix-tests/shipping-boxes",
+      "style": "chatty",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/shipping-boxes",
+      "style": "hurried",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "fix-tests/shipping-boxes",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "per_kind": {
+    "ask": {
+      "pass": 18
+    },
+    "edit": {
+      "refused": 74,
+      "pass": 7
+    },
+    "explain": {
+      "refused": 38,
+      "pass": 4
+    },
+    "fix-error": {
+      "pass": 156,
+      "refused": 327
+    },
+    "fix-test": {
+      "refused": 63,
+      "pass": 18
+    },
+    "implement": {
+      "refused": 60
+    }
+  },
+  "baseline_result_sha256": "c2f9fbd3aba3f11558e9872973b6fb0aa4d3714d7ce9c79d5f3a95e58b9625f6",
+  "candidate_result_sha256": "0b491f90bc85c9b6e8900f8ce87a2b5b6542f78020b79a10483d9958e411431a",
+  "binary_sha256": "90e463f72105bb3a28fc0b1c17315647af15ba4d4c109dfec0d53b6fd7c67141",
+  "runner_sha256": "addadae48873426a30e0d95bd2b148e334c31a1d03114024f2a5afbf50b61c06"
+}

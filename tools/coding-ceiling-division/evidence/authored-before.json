@@ -1,0 +1,139 @@
+[
+  {
+    "name": "width_u8",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "width_u16",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "width_u32",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "width_u64",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "width_u128",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "width_usize",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "typed_fields",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "unicode",
+    "kind": "positive",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "signed",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "unknown",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "custom",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "macro",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "protected",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "rollback",
+    "kind": "negative",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": true
+  },
+  {
+    "name": "ambiguous",
+    "kind": "ambiguity",
+    "changes": [],
+    "exact": false,
+    "native": null,
+    "ok": false
+  },
+  {
+    "name": "legacy",
+    "kind": "legacy",
+    "changes": [
+      {
+        "source": "legacy",
+        "file": "src/lib.rs",
+        "line": 1,
+        "column": 46,
+        "old": "*",
+        "new": "/"
+      }
+    ],
+    "exact": true,
+    "native": true,
+    "ok": true
+  }
+]

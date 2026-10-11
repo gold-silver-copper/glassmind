@@ -64,13 +64,13 @@ struct Claim<'a> {
     object: &'a str,
 }
 
-enum EndpointLink {
+pub(super) enum EndpointLink {
     Missing,
     Ambiguous,
     Known(EntityId, EndpointResolution),
 }
 
-fn valid_id(id: &str) -> bool {
+pub(super) fn valid_id(id: &str) -> bool {
     let Some(digits) = id.strip_prefix('Q') else {
         return false;
     };
@@ -80,7 +80,7 @@ fn valid_id(id: &str) -> bool {
         && digits.bytes().all(|c| c.is_ascii_digit())
 }
 
-fn endpoint(text: &str) -> Result<(), RefusalReason> {
+pub(super) fn endpoint(text: &str) -> Result<(), RefusalReason> {
     if text.is_empty()
         || text.len() > MAX_ENDPOINT_BYTES
         || text.trim() != text
@@ -200,7 +200,7 @@ fn parse(question: &str) -> Result<Vec<Claim<'_>>, RefusalReason> {
 impl Store {
     // Equal FULL normalized aliases only. Casing may withdraw a unique link,
     // never disambiguate it. Bound aliases before allocating normalized text.
-    fn verification_endpoint(&self, text: &str) -> EndpointLink {
+    pub(super) fn verification_endpoint(&self, text: &str) -> EndpointLink {
         if valid_id(text) {
             return EndpointLink::Known(EntityId(text.into()), EndpointResolution::ExplicitId);
         }

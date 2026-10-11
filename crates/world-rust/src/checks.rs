@@ -762,13 +762,22 @@ pub fn slips(source: &str, root: &Path, tests: &[RustItem]) -> Vec<RustChange> {
         )
     });
     let mut changes = Vec::new();
+    let mut rounding = Vec::new();
     for f in files {
         let text = std::fs::read_to_string(root.join(&f)).unwrap_or_default();
-        changes.extend(crate::slips::proposals(source, &f.to_string_lossy(), &text));
+        let old = crate::slips::proposals(source, &f.to_string_lossy(), &text);
+        rounding.extend(crate::ceiling_division::proposals(
+            source,
+            &f.to_string_lossy(),
+            &text,
+            &old,
+        ));
+        changes.extend(old);
     }
     // Stable partition across ALL files and lines, not just each source file.
     // New operators must never displace or consume the budget of old proposals.
     changes.sort_by_key(|change| matches!(change.old.as_str(), "*" | "/"));
+    changes.extend(rounding);
     changes
 }
 

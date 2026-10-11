@@ -2,6 +2,7 @@ use clap::{Parser, Subcommand};
 use glassmind_everyday::{Example, IntentModel, TrainOptions};
 use glassmind_facts::{EntityId, Store};
 use serde::Serialize;
+use sha2::{Digest, Sha256};
 use std::{fs, path::PathBuf};
 
 #[derive(Parser)]
@@ -11,6 +12,12 @@ struct Args {
 }
 #[derive(Subcommand)]
 enum Command {
+    /// Match two or three positive shared-subject conditions in this snapshot.
+    Match {
+        #[arg(long)]
+        index: PathBuf,
+        question: String,
+    },
     /// Check an explicit positive relation against this finite local snapshot.
     Verify {
         #[arg(long)]
@@ -90,6 +97,24 @@ struct Totals {
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     match Args::parse().command {
+        Command::Match { index, question } => {
+            let bytes = fs::read(index)?;
+            let store: Store = serde_json::from_slice(&bytes)?;
+            store.validate()?;
+            #[derive(Serialize)]
+            struct Reply {
+                #[serde(flatten)]
+                result: glassmind_facts::MatchResult,
+                index_sha256: String,
+            }
+            println!(
+                "{}",
+                serde_json::to_string(&Reply {
+                    result: store.match_question(&question),
+                    index_sha256: format!("{:x}", Sha256::digest(&bytes)),
+                })?
+            );
+        }
         Command::Verify { index, question } => {
             let store: Store = serde_json::from_slice(&fs::read(index)?)?;
             store.validate()?;

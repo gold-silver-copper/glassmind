@@ -1,0 +1,1476 @@
+[
+  {
+    "name": "intersection-before-limit",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "reverse-order",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "three-constraints",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q9003",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P108"
+            },
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P108"
+            },
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "three-reordered",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q9003",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P108"
+            },
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P108"
+            },
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "death-employment",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q9003",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P20",
+          "object": "Q9004",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P108"
+            },
+            {
+              "subject": "Q27",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P20"
+            }
+          ]
+        },
+        {
+          "subject": "Q35",
+          "witnesses": [
+            {
+              "subject": "Q35",
+              "property": "P108",
+              "object": "Q9003",
+              "source_url": "https://www.wikidata.org/wiki/Q35#P108"
+            },
+            {
+              "subject": "Q35",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q35#P20"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "death-citizenship-birth",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P20",
+          "object": "Q9004",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P20"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P20",
+              "object": "Q9004",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P20"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 2,
+      "returned": 2,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "duplicate-condition",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "explicit-ids",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q20",
+          "witnesses": [
+            {
+              "subject": "Q20",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P19"
+            },
+            {
+              "subject": "Q20",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q20#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q21",
+          "witnesses": [
+            {
+              "subject": "Q21",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P19"
+            },
+            {
+              "subject": "Q21",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q21#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q22",
+          "witnesses": [
+            {
+              "subject": "Q22",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P19"
+            },
+            {
+              "subject": "Q22",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q22#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q23",
+          "witnesses": [
+            {
+              "subject": "Q23",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P19"
+            },
+            {
+              "subject": "Q23",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q23#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q24",
+          "witnesses": [
+            {
+              "subject": "Q24",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P19"
+            },
+            {
+              "subject": "Q24",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q24#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q25",
+          "witnesses": [
+            {
+              "subject": "Q25",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P19"
+            },
+            {
+              "subject": "Q25",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q25#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q26",
+          "witnesses": [
+            {
+              "subject": "Q26",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P19"
+            },
+            {
+              "subject": "Q26",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q26#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q27",
+          "witnesses": [
+            {
+              "subject": "Q27",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P19"
+            },
+            {
+              "subject": "Q27",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q27#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q28",
+          "witnesses": [
+            {
+              "subject": "Q28",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P19"
+            },
+            {
+              "subject": "Q28",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q28#P27"
+            }
+          ]
+        },
+        {
+          "subject": "Q29",
+          "witnesses": [
+            {
+              "subject": "Q29",
+              "property": "P19",
+              "object": "Q9001",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P19"
+            },
+            {
+              "subject": "Q29",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q29#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 11,
+      "returned": 10,
+      "truncated": true,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "full-claim-vector",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9005",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q40",
+          "witnesses": [
+            {
+              "subject": "Q40",
+              "property": "P19",
+              "object": "Q9005",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P19"
+            },
+            {
+              "subject": "Q40",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "edge-only-object-id",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q99999",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q40",
+          "witnesses": [
+            {
+              "subject": "Q40",
+              "property": "P108",
+              "object": "Q99999",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P108"
+            },
+            {
+              "subject": "Q40",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q40#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "scoped-empty",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P108",
+          "object": "Q123456",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P19",
+          "object": "Q9001",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [],
+      "total_snapshot_matches": 0,
+      "returned": 0,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "directed-not-reversed",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q1",
+          "object_resolution": "explicit_id"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "explicit_id"
+        }
+      ],
+      "matches": [],
+      "total_snapshot_matches": 0,
+      "returned": 0,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "predicate-inside-full-alias",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "matched",
+      "constraints": [
+        {
+          "property": "P19",
+          "object": "Q9014",
+          "object_resolution": "alias"
+        },
+        {
+          "property": "P27",
+          "object": "Q9002",
+          "object_resolution": "alias"
+        }
+      ],
+      "matches": [
+        {
+          "subject": "Q43",
+          "witnesses": [
+            {
+              "subject": "Q43",
+              "property": "P19",
+              "object": "Q9014",
+              "source_url": "https://www.wikidata.org/wiki/Q43#P19"
+            },
+            {
+              "subject": "Q43",
+              "property": "P27",
+              "object": "Q9002",
+              "source_url": "https://www.wikidata.org/wiki/Q43#P27"
+            }
+          ]
+        }
+      ],
+      "total_snapshot_matches": 1,
+      "returned": 1,
+      "truncated": false,
+      "scope": "local_snapshot",
+      "semantics": "Positive directed stored edges only; no global completeness or temporal/current-validity guarantee.",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "ambiguous-alias",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "case-collision-upper",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "case-collision-title",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "unknown-alias",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "or",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_condition_count",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "not",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "conditional",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "trailing-instruction",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "unknown-predicate",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "four-conditions",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_condition_count",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "current-time",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "malformed-id",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "control",
+    "library_only": true,
+    "reason": "NUL cannot cross argv; separate native library gate required"
+  },
+  {
+    "name": "newline-instruction",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "unsupported_grammar",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "oversize-endpoint",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "invalid_endpoint",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "oversize-question",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "refused",
+      "reason": "question_too_long",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  },
+  {
+    "name": "pronoun",
+    "passed": true,
+    "error": null,
+    "actual": {
+      "status": "unknown",
+      "reason": "object_not_unique_or_missing",
+      "index_sha256": "0cf9ddfc43e7635ddbb659f983d9f9c18676fc8f48de33e934124a11c6a1c389"
+    },
+    "stderr": ""
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "witness": {
+    "argument": "x : u32",
+    "first_output": "1",
+    "function": "calc",
+    "input": "2",
+    "method": "bounded checked scalar AST evaluation; disagreement only",
+    "second_output": "2"
+  },
+  "runs": [
+    {
+      "label": "first",
+      "returncode": 0,
+      "command": [
+        "systemd-run",
+        "--user",
+        "--scope",
+        "-pMemoryMax=8G",
+        "-pMemorySwapMax=0",
+        "setsid",
+        "--wait",
+        "timeout",
+        "--kill-after=10s",
+        "600",
+        "cargo",
+        "test",
+        "-j1",
+        "--",
+        "--test-threads",
+        "4"
+      ]
+    },
+    {
+      "label": "second",
+      "returncode": 0,
+      "command": [
+        "systemd-run",
+        "--user",
+        "--scope",
+        "-pMemoryMax=8G",
+        "-pMemorySwapMax=0",
+        "setsid",
+        "--wait",
+        "timeout",
+        "--kill-after=10s",
+        "600",
+        "cargo",
+        "test",
+        "-j1",
+        "--",
+        "--test-threads",
+        "4"
+      ]
+    },
+    {
+      "label": "native",
+      "returncode": 0,
+      "command": [
+        "systemd-run",
+        "--user",
+        "--scope",
+        "-pMemoryMax=8G",
+        "-pMemorySwapMax=0",
+        "setsid",
+        "--wait",
+        "timeout",
+        "--kill-after=10s",
+        "600",
+        "cargo",
+        "test",
+        "-j1",
+        "--",
+        "--test-threads",
+        "4"
+      ]
+    }
+  ],
+  "witness_sha256": "ef7a8dbdbeb0e65978c81aece40d19a98f428948522dc0b51184ab1317522fc1"
+}

@@ -1,0 +1,162 @@
+{
+  "scope": "Finite existing index only; validation-subject seeded, not global or independent benchmark coverage.",
+  "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+  "entities": 500,
+  "indexed_condition_keys": 404,
+  "cooccurring_condition_pairs": 644,
+  "strict_nonempty_intersections": 47,
+  "examples": [
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q7473516"
+        },
+        {
+          "property": "P27",
+          "object": "Q17"
+        }
+      ],
+      "single_counts": [
+        2,
+        9
+      ],
+      "matches": [
+        "Q1013868"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q220"
+        },
+        {
+          "property": "P20",
+          "object": "Q90"
+        }
+      ],
+      "single_counts": [
+        2,
+        2
+      ],
+      "matches": [
+        "Q1029284"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q220"
+        },
+        {
+          "property": "P27",
+          "object": "Q142"
+        }
+      ],
+      "single_counts": [
+        2,
+        10
+      ],
+      "matches": [
+        "Q1029284"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P20",
+          "object": "Q90"
+        },
+        {
+          "property": "P27",
+          "object": "Q142"
+        }
+      ],
+      "single_counts": [
+        2,
+        10
+      ],
+      "matches": [
+        "Q1029284"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P20",
+          "object": "Q90"
+        },
+        {
+          "property": "P27",
+          "object": "Q172579"
+        }
+      ],
+      "single_counts": [
+        2,
+        4
+      ],
+      "matches": [
+        "Q1029284"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q490"
+        },
+        {
+          "property": "P27",
+          "object": "Q172579"
+        }
+      ],
+      "single_counts": [
+        2,
+        4
+      ],
+      "matches": [
+        "Q1056757"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q84"
+        },
+        {
+          "property": "P27",
+          "object": "Q145"
+        }
+      ],
+      "single_counts": [
+        3,
+        21
+      ],
+      "matches": [
+        "Q10748975"
+      ]
+    },
+    {
+      "conditions": [
+        {
+          "property": "P19",
+          "object": "Q84"
+        },
+        {
+          "property": "P27",
+          "object": "Q174193"
+        }
+      ],
+      "single_counts": [
+        3,
+        12
+      ],
+      "matches": [
+        "Q10748975"
+      ]
+    }
+  ]
+}

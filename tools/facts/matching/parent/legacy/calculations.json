@@ -1,0 +1,395 @@
+{
+  "dataset": "talk-calculations-memory-synthetic-dev-v1",
+  "independent_benchmark": false,
+  "total": 27,
+  "right": 27,
+  "refused": 0,
+  "wrong": 0,
+  "model": null,
+  "outcomes": [
+    {
+      "question": "My name is Mira",
+      "expected": {
+        "kind": "remembered",
+        "contains": "Mira"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll call you Mira.",
+        "slot": "Name"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Calculate 2 + 3 * 4",
+      "expected": {
+        "kind": "calculated",
+        "value": "14",
+        "unit": null
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "14",
+        "value": "14",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 2,
+        "contains": "Calculate 2 + 3 * 4"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: Calculate 2 + 3 * 4",
+        "source_turn": 2
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Mira"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Convert 1/3 hours to minutes",
+      "expected": {
+        "kind": "calculated",
+        "value": "20",
+        "unit": "minutes"
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "20 minutes",
+        "value": "20",
+        "unit": "minutes",
+        "method": "dimension-checked exact SI conversion"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What about my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Mira"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "My favorite number is 12",
+      "expected": {
+        "kind": "remembered",
+        "contains": "12"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite number is 12.",
+        "slot": {
+          "Preference": "number"
+        }
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is my favorite number?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 7,
+        "contains": "12"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite number is 12.",
+        "source_turn": 7
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is twenty-one plus three?",
+      "expected": {
+        "kind": "calculated",
+        "value": "24",
+        "unit": null
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "24",
+        "value": "24",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Actually, it's 42",
+      "expected": {
+        "kind": "remembered",
+        "contains": "42"
+      },
+      "actual": {
+        "kind": "remembered",
+        "text": "I'll remember that your favorite number is 42.",
+        "slot": {
+          "Preference": "number"
+        }
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is my favorite number?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 10,
+        "contains": "42"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite number is 42.",
+        "source_turn": 10
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Convert 32 fahrenheit to celsius",
+      "expected": {
+        "kind": "calculated",
+        "value": "0",
+        "unit": "celsius"
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "0 celsius",
+        "value": "0",
+        "unit": "celsius",
+        "method": "dimension-checked exact SI conversion"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What date is 1 day after 2024-02-28?",
+      "expected": {
+        "kind": "calculated",
+        "value": "2024-02-29",
+        "unit": null
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "2024-02-29",
+        "value": "2024-02-29",
+        "unit": null,
+        "method": "Gregorian calendar; month/year shifts clamp to month end"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What day of the week is 2024-02-29?",
+      "expected": {
+        "kind": "calculated",
+        "value": "Thursday",
+        "unit": null
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "Thursday",
+        "value": "Thursday",
+        "unit": null,
+        "method": "Gregorian weekday"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is 25 percent of 80?",
+      "expected": {
+        "kind": "calculated",
+        "value": "20",
+        "unit": null
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "20",
+        "value": "20",
+        "unit": null,
+        "method": "exact percentage relation"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What date is 1 year after 2024-02-29?",
+      "expected": {
+        "kind": "calculated",
+        "value": "2025-02-28",
+        "unit": null
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "2025-02-28",
+        "value": "2025-02-28",
+        "unit": null,
+        "method": "Gregorian calendar; month/year shifts clamp to month end"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 16,
+        "contains": "What date is 1 year after 2024-02-29?"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: What date is 1 year after 2024-02-29?",
+        "source_turn": 16
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is my name?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 1,
+        "contains": "Mira"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your name is Mira.",
+        "source_turn": 1
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is my favorite number?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 10,
+        "contains": "42"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "Your favorite number is 42.",
+        "source_turn": 10
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "/reset",
+      "expected": {
+        "kind": "reset"
+      },
+      "actual": {
+        "kind": "reset"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What is my name?",
+      "expected": {
+        "kind": "missing"
+      },
+      "actual": {
+        "kind": "missing",
+        "text": "I don't know your name yet."
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Calculate 1/2 + 1/3",
+      "expected": {
+        "kind": "calculated",
+        "value": "5/6",
+        "unit": null
+      },
+      "actual": {
+        "kind": "calculated",
+        "text": "5/6",
+        "value": "5/6",
+        "unit": null,
+        "method": "exact rational expression with standard precedence"
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What did I just say?",
+      "expected": {
+        "kind": "recalled",
+        "source_turn": 2,
+        "contains": "Calculate 1/2 + 1/3"
+      },
+      "actual": {
+        "kind": "recalled",
+        "text": "You said: Calculate 1/2 + 1/3",
+        "source_turn": 2
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Calculate 1 / 0",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Convert 3 meters to kilograms",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "What date is 1 day after 1900-02-29?",
+      "actual": {
+        "kind": "refusal",
+        "text": "I couldn't find a unique answer in the local Wikidata snapshot.",
+        "entity": null,
+        "relation": null,
+        "answers": [],
+        "refusal": "no unique entity alias in this snapshot",
+        "entities": [],
+        "provenance": {
+          "source": "SimpleQuestions revision df69267f1db4f85a71325e7e8c06e192bcaf0b0e; cached Wikidata",
+          "license": "Questions CC BY 3.0; Wikidata CC0",
+          "index_sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185",
+          "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+          "relation_selection": "learned proposal, not logical certainty",
+          "scope": "500 validation-subject-seeded entities; partial loaded snapshot, no global or current-time truth",
+          "relation_url": null,
+          "relation_direction": null
+        }
+      },
+      "outcome": "right"
+    },
+    {
+      "question": "Calculate 2 + 2 and book me a flight",
+      "actual": {
+        "kind": "refusal",
+        "text": "I can remember your name and preferences. Load an intent model to recognize everyday requests.",
+        "proposal": null
+      },
+      "outcome": "right"
+    }
+  ]
+}
