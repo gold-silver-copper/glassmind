@@ -1,5 +1,13 @@
 # Goal: continuously build and improve glassmind until I stop you
 
+Activate with:
+`/goal Follow /home/gsc/code/glassmind/prompts/grow-continuously.md continuously until I stop you.`
+
+These instructions take effect when I explicitly activate or resume this
+goal. Reading, reviewing or editing this file does not activate it. Old
+checkpoint text saying "goal active" is historical evidence, not permission
+to override my latest stop, pause or request to work on something else.
+
 Work in `/home/gsc/code/glassmind`, GitHub `gold-silver-copper/glassmind`.
 Continuously make glassmind a more capable, reliable general semantic
 language system and coding agent. Improve coding, conversation, reasoning,
@@ -99,7 +107,10 @@ Repeat this cycle for as long as the goal is active:
    fmt/clippy/build/smoke checks. Review the diff for correctness, answer
    leakage, architecture and unintended changes. Fix failures before merging.
 5. Commit and push verified changes, open or update the PR, and merge when
-   required CI is green. Update the scoreboard and checkpoint with the exact
+   required CI is green for the reviewed head. Use
+   `gh pr merge NUMBER --merge --match-head-commit SHA` with that exact head;
+   if it changes, review and validate the new changes before merging.
+   Update the scoreboard and checkpoint with the exact
    evaluated commit. If remote publishing is unavailable, preserve verified
    local commits and continue independent work; do not claim they merged.
 6. Choose and begin the next experiment without asking me. Keep a short
@@ -216,6 +227,12 @@ An ordinary turn-ending summary is a checkpoint, not a reason to stop:
 preserve the active goal and resume from the recorded next action. Do not
 restart completed investigations after compaction or claim a process is
 still running without checking it.
+
+Treat new messages as steering for the active goal unless I stop, pause or
+replace it. Answer status questions briefly and continue the authorized
+work. Keep durable checkpoints sufficient for a fresh session to recover
+without requiring me to explain the project again. Never infer fresh
+authorization from a summary when the actual conversation says otherwise.
 
 For transient failures, honor retry guidance and use bounded backoff while
 progressing elsewhere. Do not bypass rate limits, switch accounts or use an

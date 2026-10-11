@@ -1,0 +1,62 @@
+{
+  "v1": {
+    "total": 200,
+    "raw": {
+      "exact": 23.0,
+      "f1": 31.20875652125652,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 8.0,
+      "f1": 8.844444444444445,
+      "total": 200
+    },
+    "right": 16,
+    "refused": 167,
+    "wrong": 17,
+    "precision": 0.48484848484848486,
+    "coverage": 0.165
+  },
+  "support": {
+    "total": 200,
+    "raw": {
+      "exact": 23.0,
+      "f1": 31.20875652125652,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 0.0,
+      "f1": 0.0,
+      "total": 200
+    },
+    "right": 0,
+    "refused": 200,
+    "wrong": 0,
+    "precision": null,
+    "coverage": 0.0
+  },
+  "margin": {
+    "total": 200,
+    "raw": {
+      "exact": 23.0,
+      "f1": 31.20875652125652,
+      "total": 200
+    },
+    "accepted": {
+      "exact": 0.0,
+      "f1": 0.0,
+      "total": 200
+    },
+    "right": 0,
+    "refused": 200,
+    "wrong": 0,
+    "precision": null,
+    "coverage": 0.0
+  },
+  "acceptance": false,
+  "transitions": {
+    "wrong_to_refused": 17,
+    "correct_to_refused": 16
+  },
+  "old_refusals_preserved": true
+}

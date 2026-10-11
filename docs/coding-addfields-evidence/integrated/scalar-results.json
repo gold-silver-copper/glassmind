@@ -1,0 +1,23 @@
+[
+  {
+    "case": "signed_unicode",
+    "passed": true,
+    "original_sha256": "280b6bacab5cf6ca40af474773d830d6f105e860df18944cc972942a4078f62c",
+    "edited_sha256": "6388065744674d33ca7e7871eea8e736d22e821e747d5786447d5de76461cc15",
+    "stdout": "Added public field flag: i16 to Vessel; updated 1 constructors (2 verified edits).\n"
+  },
+  {
+    "case": "boolean",
+    "passed": true,
+    "original_sha256": "571a77dc90c18ed69046fa0c60fc534c1d95f059ecc33e4eaefd91caedf1ab29",
+    "edited_sha256": "a298e3fbcf864004d014bae3a0413bc6ace19b5ef004bc47395d122df4b34aa2",
+    "stdout": "Added public field flag: bool to Vessel; updated 1 constructors (2 verified edits).\n"
+  },
+  {
+    "case": "unicode_char",
+    "passed": true,
+    "original_sha256": "571a77dc90c18ed69046fa0c60fc534c1d95f059ecc33e4eaefd91caedf1ab29",
+    "edited_sha256": "ddbe1073bbcd26f6f97ee51baf47810ed577e7b6bc3521f560d7dbcd2c23b39c",
+    "stdout": "Added public field flag: char to Vessel; updated 1 constructors (2 verified edits).\n"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "source": {
+    "source_commit": "cfa343e9948a61699061230f720d15f77b81ca52",
+    "binary_sha256": "5f76302ccde394ebf74e2b7d7bc0030ab12f0f34a2915b1f1618d68ba17cd11a",
+    "benchmark_revision": "f79e71a2a26fdaf15f9bc55225a038b61e66fafb",
+    "baseline": "170pass592refused3fail/765",
+    "local_validation": "docs/coding-addfields-evidence/integrated/validation.json"
+  },
+  "total": 765,
+  "baseline": {
+    "refused": 592,
+    "pass": 170,
+    "fail": 3
+  },
+  "candidate": {
+    "refused": 590,
+    "pass": 172,
+    "fail": 3
+  },
+  "unchanged": 763,
+  "changes": [
+    {
+      "task": "edits/add-book-pages",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    },
+    {
+      "task": "edits/add-task-priority",
+      "style": "terse",
+      "before": "refused",
+      "after": "pass"
+    }
+  ],
+  "baseline_results_sha256": "232db863e5aa45b3ec1ff99ae2f856742f5bcf6f8c7c23e4225373391b192627",
+  "candidate_results_sha256": "b21954a8305e0b46791142c884308338343c4da2b8b99830ada3df569ed1e466",
+  "note": "All original170 passes retained, existing3fails unchanged; first2 verified structural-edit dev passes. No heldout run."
+}

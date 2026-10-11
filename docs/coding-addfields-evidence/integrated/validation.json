@@ -1,0 +1,93 @@
+{
+  "source_commit": "cfa343e9948a61699061230f720d15f77b81ca52",
+  "binary_sha256": "5f76302ccde394ebf74e2b7d7bc0030ab12f0f34a2915b1f1618d68ba17cd11a",
+  "reports": {
+    "sample": {
+      "cases": 2,
+      "passed": 2,
+      "changed": 2
+    },
+    "full": {
+      "cases": 5,
+      "passed": 2,
+      "changed": 2
+    },
+    "independent": {
+      "cases": 15,
+      "passed": 15,
+      "changed": 2
+    },
+    "metatypes": {
+      "summary": {
+        "total": 35,
+        "passed": 35,
+        "usable": 13,
+        "safe": 35,
+        "fixture_bytes": 5916,
+        "binary_sha256": "5f76302ccde394ebf74e2b7d7bc0030ab12f0f34a2915b1f1618d68ba17cd11a"
+      }
+    },
+    "queries": {
+      "summary": {
+        "total": 8,
+        "right": 8,
+        "binary_sha256": "5f76302ccde394ebf74e2b7d7bc0030ab12f0f34a2915b1f1618d68ba17cd11a",
+        "source_sha256": "8468645997e16e971a13f26bac5c2519f2d23cd348b80c7fc7b650bbb0bb449b"
+      }
+    }
+  },
+  "additional_scalar_probes": 3,
+  "files": [
+    {
+      "file": "full.json",
+      "bytes": 6756,
+      "sha256": "254fb997f64b4d0f9b4cbe32931c864b3751f500abc73429d907ab31cf84fc8f"
+    },
+    {
+      "file": "independent.json",
+      "bytes": 9135,
+      "sha256": "f4c4d28af260dc375c4ae816ee9d81fb3652f84e3b114443589ff05f77b116f0"
+    },
+    {
+      "file": "metatypes.json",
+      "bytes": 54483,
+      "sha256": "573e74ba0071a82eddc0d694d4306090ef2e1549479f8989f2d9aed036eea774"
+    },
+    {
+      "file": "queries.json",
+      "bytes": 1955,
+      "sha256": "8707ea7a75c89ffbea2be16541617278c6b0e89dbc890848f5adcb47cf7678e0"
+    },
+    {
+      "file": "replay.sh",
+      "bytes": 1137,
+      "sha256": "b91f99921261786fb9c90a38d1428d27d7bf920d984189c2d1df259338e90dc1"
+    },
+    {
+      "file": "sample.json",
+      "bytes": 4918,
+      "sha256": "ec0c9e53b96618b180d52ffd2de27c7971e13a2a587cc2355207343b2359e607"
+    },
+    {
+      "file": "scalar-results.json",
+      "bytes": 1016,
+      "sha256": "7638395159e5b73228b8f7c56adf70dc7ff92403247829f45fd2cea2d6b2d475"
+    },
+    {
+      "file": "scalars.py",
+      "bytes": 2028,
+      "sha256": "4e1b6a1508ea456a3a3bbd525d7b574d48fed740b242bb5f65cc2de0e95e3b7d"
+    },
+    {
+      "file": "tests.log",
+      "bytes": 5720,
+      "sha256": "8cd3bbe73574bf65af031742921e67c2d84f1a3d6f01a420c0b9648154abaff8"
+    },
+    {
+      "file": "workspace.log",
+      "bytes": 941,
+      "sha256": "827abfc0a4a0d501265248cf40bb9afa06afac510dab810c50c66d21dcec4dd5"
+    }
+  ],
+  "notes": "Original worker artifacts archived before integration; parent independently replayed candidate. Full supplied language suite exits1 for three unchanged refusals. No expected assertions weakened. Full765 complete:172pass590refused3fail, exactly2refusal-to-pass transitions; docs/results/coding-addfields.json."
+}

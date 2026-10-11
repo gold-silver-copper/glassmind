@@ -523,3 +523,73 @@ probesmustreportnegation/roles/relationfailures. No devtuning/scorerchanges.
 
 PR14 merged, all benchmark/replay jobs complete. Only model workers addfields2608856
 andqasupport2639183 remain live. Check their actual scopes/handles before any action.
+
+## Current checkpoint: field additions and TRAIN-selected facts
+
+The preceding goal turn made progress by improving the continuation prompt.
+This explicitly resumed goal remains active. Prompt reading alone does not
+activate a goal; current user instructions take precedence over old checkpoints.
+
+Both addfields and qasupport workers are now COMPLETE, scopes inactive.
+Their original submissions were archived and hash-verified before integration
+and again before removing their worktrees. Temporary login links were removed;
+raw run artifacts remain. Addfields archive has 10 files / 224,621 bytes;
+qasupport archive has 17 files / 505,808 bytes. Known completed worker tokens
+are 60,631,375, counting cached input once; parent and unfinished work excluded.
+
+AddField source is `cfa343e9948a61699061230f720d15f77b81ca52`; release binary
+SHA256 `5f76302ccde394ebf74e2b7d7bc0030ab12f0f34a2915b1f1618d68ba17cd11a`.
+Reusable Rust action inserts one explicit public scalar field and its literal
+default in resolved constructors. It checks structural postconditions, runs
+scratch build/tests and fresh live-root tests, and rolls back failure.
+Bounded English forms integrate through `do`; three supplied variants refuse.
+Coordinator independently verified 2/2 sample, 2 edits +3 refusals /5 full
+supplied requests, 15/15 independent probes, 35/35 type probes, 8/8 query probes,
+and three additional signed/bool/Unicode-char/CRLF cases. All66 scoped tests,
+workspace fmt/clippy/release and strict4/4 smoke passed.
+Full765 dev is COMPLETE (session5849):172pass590refused3fail. Exactly2terse
+field-addition requests improve; all other763 outcomes unchanged, all170 oldpasses
+preserved. Artifacts WORK/coordinator/addfields-full; do not repeat without cause.
+Parent replay sessions25257/10934/29791 and workspace81250 are COMPLETE.
+
+QAsupport is REJECTED, evidence only in `tools/reading/support`; the runtime
+patch stays unapplied. Parent independently recomputed calibration frontiers:
+best precision with >=30 accepts is24/31 (77.42%) for support and28/45 (62.22%)
+for margin. Neither meets the frozen90% gate. Verified75 provenance hashes
+and identical10570-row v1 replay. The reject-all diagnostic is not a gain;
+predicate/negation/role contrasts show absent semantic discrimination.
+No threshold weakening, dev retuning or additional full training run occurred.
+
+TRAININDEX is ACTIVE: launcherPID2719285, scope
+glassmind-continuous-trainindex.scope, worktreeWORK/trainindex at4a05e4c,
+runWORK/trainindex-run, briefWORK/trainindex-task.txt. Owns only new
+tools/facts/trainindex. GPT6Astrafast/ChatGPT login forced, API environment
+removed, sandbox and8GiB/zero-swap scope verified. One live model worker.
+It freezes1000 TRAIN subject IDs by frequency (SHA256 tie break) using first90%
+of TRAIN rows minus old every-tenth calibration rows, and nested100 baseline.
+Actual Wikidata claims/aliases only; no validation entity selection, relation
+labels or objects injected. Existing500 index stays unchanged, new scope is
+a separate finite TRAIN-selected series. Public API bounded80requests/80MiB/
+600s, sequential with2s spacing, maxlag/Retry-After respected; raw data outsidegit.
+Acceptance: expanded correct coverage grows over100prefix, precision loses
+at most.02, unchanged standalone/talk answerIDs and relocatable offline bundle.
+Read worker PLAN.md and final handoff before integrating; no full results yet.
+
+Next: inspect full765 exact transitions, then publish only after full affected
+dev and exact-head CI gates. Review trainindex upon completion. Further reading
+work needs relation/argument support or better supervision, not the same weak
+feature selector at a lower threshold. Preserve old stopped dirty loop.
+
+EDITLANGUAGE is ACTIVE: launcherPID2771836, scope
+glassmind-continuous-editlanguage.scope, worktreeWORK/editlanguage atcfa343e,
+runWORK/editlanguage-run, briefWORK/editlanguage-task.txt. Owns the English
+AddField parser and minimal reusable English helpers plus new local adapter,
+not world-Rust/CLI/scorers or other tracks. Same forcedAstrafast/ChatGPT/noAPI
+sandbox;8GiB/zero-swap verified. Two live model workers with trainindex.
+Frozen baseline and original five visible requests/public workspaces copied
+into its run directory. Hypothesis: compositional typed clause parsing can
+generalize beyond2terseforms while consuming all meaningful request text.
+Acceptance >2/5 verified, preservebotholdsuccesses, independent newnames/defaults/
+wordorders, refusal for unknown/competing actions, conflicts and negation.
+No arbitrary polite-prefix/suffix stripping, bag-of-words or benchmark templates.
+Parent independently verifies useful candidate and full765 before publishing.

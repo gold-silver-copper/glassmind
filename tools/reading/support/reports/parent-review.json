@@ -1,0 +1,21 @@
+{
+  "support": {
+    "accepted": 31,
+    "right": 24,
+    "precision": 0.7741935483870968
+  },
+  "margin": {
+    "accepted": 45,
+    "right": 28,
+    "precision": 0.6222222222222222
+  },
+  "calibration_rows": 2000,
+  "selected_rows": 304,
+  "selected_right": 140,
+  "frozen_v1_replay_rows": 10570,
+  "verified_provenance_files": 75,
+  "removed_experimental_source": [
+    "/home/gsc/.cache/glassmind/continuous-20261010/qasupport/crates/reading/src/bin/reading-support.rs"
+  ],
+  "decision": "rejected; calibration gate failed, no runtime integration"
+}
