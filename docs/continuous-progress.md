@@ -593,3 +593,55 @@ Acceptance >2/5 verified, preservebotholdsuccesses, independent newnames/default
 wordorders, refusal for unknown/competing actions, conflicts and negation.
 No arbitrary polite-prefix/suffix stripping, bag-of-words or benchmark templates.
 Parent independently verifies useful candidate and full765 before publishing.
+
+## Latest: PR15 merged; facts expansion rejected
+
+PR15 https://github.com/gold-silver-copper/glassmind/pull/15 is MERGED at
+`e1fd2d2fb1634ceb3361f1fc05e4bc89a8db58f9` (2026-10-11T05:36:41Z), matching
+reviewed head `176dc89ee9ce0ad2302474f03683334e37514b76` exactly.
+CI38115264848 passed in53s. Coding172/765 is the new trusted baseline,
+590refused3fail; all170 earlierpasses retained. No publishing or parent jobs
+remain for this batch. This goal turn made progress, not a blocked wait.
+
+TRAININDEX COMPLETE and REJECTED, evidence only in tools/facts/trainindex.
+Actual scopes100 and999 of1000preselected TRAIN subjects; one redirect omitted.
+First200:3right193refused4wrong ->3right191refused6wrong.
+Full2821:44right2725refused52wrong ->47right2712refused62wrong.
+Precision45.8333%->43.1193% drops.02714, failing frozen.02 allowance.
+All44oldcorrect retained;2refused->right,1wrong->right (wrongentity but samegold
+gender, explicitly not subject-level success),18refused->wrong,7wrong->refused.
+Partial name/title aliases and incomplete inverse uniqueness explain newwrong.
+No runtime/defaultindex/relationmodel changes; old500 remains256/2545/20.
+
+TRAIN scope uses15778rows, first90%prefix minus every-tenth calibration row.
+Independent Wikidata fetch39requests/76.6877s/67,094,727new rawbytes, CC0,
+>=2s spacing, no rate failures;28selectedIDs reusedexactly fromcachedresponses.
+Structuredrevisionnumbers unavailable because initial props omittedinfo;
+exactrawhashes/times retained, finalfetcher improved without secondnetworkrun.
+Parent independently verified101provenancehashes, selection, nestedindices,
+all2821transitions and standalone/talkIDequality foreachscope;5offline tests pass.
+No repeatnetwork/training/fullinference claimed. Original12files238431bytes
+archived inWORK/trainindex-run/submitted and hashverified before worktree removal.
+Scopeinactive/authlinkremoved; rawdata/bundles remainWORK/trainindex-run/tmp/trainindex.
+Knowncompletedworker tokens62,722,547 inclcachedinputonce;parent/unfinishedexcluded.
+
+Only model workers EDITLANGUAGE2771836 and LINKQUALITY2807468 are now live.
+LINKQUALITY scopeglassmind-continuous-linkquality.scope, worktreeWORK/linkquality
+at176dc89, runWORK/linkquality-run, briefWORK/linkquality-task.txt. Sameverified
+GPT6Astrafast/ChatGPT/noAPI sandbox,8GiB/0swap; no childagents/services.
+Ownscrates/facts library/newqualitymodule andnewexample/tools/facts/linkquality,
+not existing scorers/mainCLI/defaultindices/models. New999index/frozenbaseline
+facts binaries copied toownrun; existingTRAIN/valid/relationmodel read-onlymounted.
+Investigate complete entity mention/context support fromTRAIN, preregisterone
+typedconstraint orsmallinspectable learnedselector beforedev. Optionalmechanism
+mayonlykeepanexistinganswerunchanged orrefuse; neverresolveambiguity/revive/refallback.
+Iflearned: TRAINfit excludesold every-tenthcal; CALtarget95%entityprecision,
+min50accepts, tiesgrouped/no devretuning. Fixedsample thenfullboth500/999scopes.
+Acceptance zerochangedclaims, at least244/256 and45/47 correct retained,
+old500wrong<=20,new999wrong<=52. Reportallcorrectlosses/inversefailures; noallrefusal.
+Parent integrates useful API into optional checked main/talk bundle before shipping.
+
+Next: review editlanguage and linkquality when terminal; archive originals first,
+independently validate acceptance, then fullaffecteddev and exactheadmerge gates.
+Reading still needs stronger relation/argument representation or supervision.
+Preserve stopped dirty old loop. Goal active until user stops it.

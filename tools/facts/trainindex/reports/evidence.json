@@ -1,0 +1,1534 @@
+{
+  "adapter_hashes": [
+    {
+      "bytes": 2665,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/trainindex/PLAN.md",
+      "sha256": "75dceb823c721d026156b5ea9a8dab22f01b827d0e005688d8214e4ae061896c"
+    },
+    {
+      "bytes": 12482,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/trainindex/prepare.py",
+      "sha256": "bc67750a9d551f4e62936ec138f97aa769c7c88cff24ec0e921543ce1e242aa5"
+    },
+    {
+      "bytes": 4909,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/trainindex/evaluate.py",
+      "sha256": "dc93ae73976aeb698ea56d5f26263f1cc558ada120c8d281db9f00670dabf61a"
+    },
+    {
+      "bytes": 3734,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/trainindex/test_prepare.py",
+      "sha256": "48960d40cdfd13d894c44cf57ac2501ac6e23150618c8bbff3aee52786895418"
+    },
+    {
+      "bytes": 1718,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/trainindex/reproduce.sh",
+      "sha256": "f87356df9e7e8c43b42d63b398f293c8bc438f720cb1efaec0f88b36ae3babe6"
+    },
+    {
+      "bytes": 3316,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/trainindex/check_bundle.py",
+      "sha256": "6c493ae18ac7e1cb222bf5d7227f2db7e74467e9add32c5d14696b3ff3fc907c"
+    },
+    {
+      "bytes": 5483,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/trainindex/audit.py",
+      "sha256": "f6319d24d8b25da2e1ae063aabc7ee0fdb53e1ab61bf0a02884a7a8ce4cf2e32"
+    }
+  ],
+  "artifacts": [
+    {
+      "bytes": 8402,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle-checks.json",
+      "sha256": "481eca13dc1b86894735a7716493df01ec05a90287d2b002a25152fd1199bd70"
+    },
+    {
+      "bytes": 89148,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/index.json",
+      "sha256": "ecd5c8095fcfbcd03e8b6ea5e6373c393937f93fddfab1cc14174954a8c93cb7"
+    },
+    {
+      "bytes": 4687,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/labels.json",
+      "sha256": "614e387936b943af916924f4df0c01b2fcda5dfacb06848d06cef069656fd0c7"
+    },
+    {
+      "bytes": 408,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/manifest.json",
+      "sha256": "32247172b3c3022c683f8eb5447e0917f5a0b29441165b21dc824edf12460e5a"
+    },
+    {
+      "bytes": 35773124,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/relation.json",
+      "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+    },
+    {
+      "bytes": 650045,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/index.json",
+      "sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791"
+    },
+    {
+      "bytes": 32825,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/labels.json",
+      "sha256": "ebc434b04a6b97c9d4db8f7d81e33826c615d87dd7c9fc03a1f47aafeabf6a61"
+    },
+    {
+      "bytes": 409,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/manifest.json",
+      "sha256": "237685af159b0a213fc1f9b2a051b390aa3a677e537d2e3eae3912c474178512"
+    },
+    {
+      "bytes": 35773124,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+      "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+    },
+    {
+      "bytes": 738,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/determinism.json",
+      "sha256": "b95735799b0871eee855218c9553a02b2c8df469cfc87532f5a43275fb4cee12"
+    },
+    {
+      "bytes": 59889,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/fetch.json",
+      "sha256": "3fa3575b1e2c03a15af6780b57dd5be44115b9a4d59e3d6884331f924712816a"
+    },
+    {
+      "bytes": 9023,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/hazards.json",
+      "sha256": "2ef548d56555c41744b77c3661a6eccd5683295ab66c4e5ced9b74e0b25c5edb"
+    },
+    {
+      "bytes": 115573,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/questions.txt",
+      "sha256": "97704ab5a33b6c6ffed1dcf90f08b9296c761dcd5ad4615bb4d46bc342c2fc32"
+    },
+    {
+      "bytes": 3974,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/report.json",
+      "sha256": "7d5dc155c63ae865ef316b8fb36a92b970707d0b8a9626efe02f1232789554ca"
+    },
+    {
+      "bytes": 134,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/score100.json",
+      "sha256": "766483a70b78c1936bf39f0a6b2d047e845ab9f8da8f7fae0d2834977258fa3d"
+    },
+    {
+      "bytes": 134,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/score1000.json",
+      "sha256": "23c9a53df9b2545e27cf11ce415fa175bb6bdc6a155bdedce2bb79cd65b4f694"
+    },
+    {
+      "bytes": 272985,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/standalone100.jsonl",
+      "sha256": "920e8f925f70ab557c117923db9a6c97298b0c2cdaeb5b6042841ed98dde2f5c"
+    },
+    {
+      "bytes": 275811,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/standalone1000.jsonl",
+      "sha256": "31eabcae27f2303c2060e17e86cc5027273079c2624a4ffff1e15a878d920a85"
+    },
+    {
+      "bytes": 2008895,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/talk100.jsonl",
+      "sha256": "bedf215b1b2700082948aca794bf639b25ff5ef33f616ea89418bc6b3bb1b5f9"
+    },
+    {
+      "bytes": 2033220,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/talk1000.jsonl",
+      "sha256": "ccf40eb2e485c4e12f787528ac9de36b1a12a8a0e9b7ed6ff353a2892cfa6602"
+    },
+    {
+      "bytes": 1158259,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/transitions.jsonl",
+      "sha256": "772532003ae5eadf08912e658da03078ae3b154ece82174165d6d25d6cb2c0d5"
+    },
+    {
+      "bytes": 4120,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/label-cache.json",
+      "sha256": "c881786f846f04fd2a178ae50fdb09f8a667ab54ad413f61c13b0a1207c41095"
+    },
+    {
+      "bytes": 1190,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/probes.json",
+      "sha256": "d0cc7ecd7b69ecb659963d139f414e1e7b88394a8eb63d9e14e3efd034eb550c"
+    },
+    {
+      "bytes": 1679923,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/0b8c8bd3934c76cbbce4cfc02f9a588161ff699725dca9ee6393c753ba8c2cd6.json",
+      "sha256": "0b8c8bd3934c76cbbce4cfc02f9a588161ff699725dca9ee6393c753ba8c2cd6"
+    },
+    {
+      "bytes": 1651980,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/0ce39c89cdaedc305acce70907e586a784c7bb1e8b6a4d96b04fcf2c916c253e.json",
+      "sha256": "0ce39c89cdaedc305acce70907e586a784c7bb1e8b6a4d96b04fcf2c916c253e"
+    },
+    {
+      "bytes": 844944,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/179f0d42401afaf7fd2b867827d44e2aac640e7f8394485edd89960abc4b017c.json",
+      "sha256": "179f0d42401afaf7fd2b867827d44e2aac640e7f8394485edd89960abc4b017c"
+    },
+    {
+      "bytes": 1533900,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/26511f1acae219be54283e7518459a00138ed7c0de52de32a529dfa30f89af38.json",
+      "sha256": "26511f1acae219be54283e7518459a00138ed7c0de52de32a529dfa30f89af38"
+    },
+    {
+      "bytes": 2844535,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/268d8326ca3b4e2d7cb20eaa1b33a7b0d4e6ea0c1ac72b329aab0425112322df.json",
+      "sha256": "268d8326ca3b4e2d7cb20eaa1b33a7b0d4e6ea0c1ac72b329aab0425112322df"
+    },
+    {
+      "bytes": 1306589,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/28af41a15bfea93e563cc5ba724f560668406ab723cd41615c0efb38869f4111.json",
+      "sha256": "28af41a15bfea93e563cc5ba724f560668406ab723cd41615c0efb38869f4111"
+    },
+    {
+      "bytes": 698244,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/2a1648e9580af2c8303852f2135fd41aab7c9500abc07d41d3bdd34d8b200f1c.json",
+      "sha256": "2a1648e9580af2c8303852f2135fd41aab7c9500abc07d41d3bdd34d8b200f1c"
+    },
+    {
+      "bytes": 1202971,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/2f4d383f58f351e56bf1994a2df362458ae6f3117b6b37b4a90af72ddd4767e8.json",
+      "sha256": "2f4d383f58f351e56bf1994a2df362458ae6f3117b6b37b4a90af72ddd4767e8"
+    },
+    {
+      "bytes": 2148407,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/30b9341b026cfdefaece288a0a739366d079039f2d668dbddfdb1d40c3189ede.json",
+      "sha256": "30b9341b026cfdefaece288a0a739366d079039f2d668dbddfdb1d40c3189ede"
+    },
+    {
+      "bytes": 808647,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/4567797b2b3fda3febbcaf1d2c0cbeab5c3dbd20bddc03bc02bce8c7c34aa377.json",
+      "sha256": "4567797b2b3fda3febbcaf1d2c0cbeab5c3dbd20bddc03bc02bce8c7c34aa377"
+    },
+    {
+      "bytes": 2058452,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/48a1c591e5af63809a894a3063340eb8b2cbb450f5dcfd4eed285da6bdb527ed.json",
+      "sha256": "48a1c591e5af63809a894a3063340eb8b2cbb450f5dcfd4eed285da6bdb527ed"
+    },
+    {
+      "bytes": 800800,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/4e17a1248f56b6d3181d4fbdbe652e1920dab8a96498c7b7b43e3e3fe77149a7.json",
+      "sha256": "4e17a1248f56b6d3181d4fbdbe652e1920dab8a96498c7b7b43e3e3fe77149a7"
+    },
+    {
+      "bytes": 617914,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/5477dde56297d30be3ee6186b0e96997ea8aae8c840459baf10c03d43f6ade60.json",
+      "sha256": "5477dde56297d30be3ee6186b0e96997ea8aae8c840459baf10c03d43f6ade60"
+    },
+    {
+      "bytes": 1188634,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/557b4f59b3067eb7b49968a9e7a90a59f37ccd982c060659a091bec61faad115.json",
+      "sha256": "557b4f59b3067eb7b49968a9e7a90a59f37ccd982c060659a091bec61faad115"
+    },
+    {
+      "bytes": 881743,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/5e8dfa80c18dd5ca825d5b7b655dadf4209c9bba5e7196ff6341618cf7c019d4.json",
+      "sha256": "5e8dfa80c18dd5ca825d5b7b655dadf4209c9bba5e7196ff6341618cf7c019d4"
+    },
+    {
+      "bytes": 1201611,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/5ed04fd2b415983a53e2714824d20717bbcd4940ec4ade6edf4ceeb21d978ada.json",
+      "sha256": "5ed04fd2b415983a53e2714824d20717bbcd4940ec4ade6edf4ceeb21d978ada"
+    },
+    {
+      "bytes": 1052013,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/6385b59d0e0960ce345c64b402ae5e03a0a89d8cba4e2b655d7b198b428f9413.json",
+      "sha256": "6385b59d0e0960ce345c64b402ae5e03a0a89d8cba4e2b655d7b198b428f9413"
+    },
+    {
+      "bytes": 2716371,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/6d5654fe0882f1c306a46ff29c5a6caffa5098e783fa584bfe957b7b3c5a0d8b.json",
+      "sha256": "6d5654fe0882f1c306a46ff29c5a6caffa5098e783fa584bfe957b7b3c5a0d8b"
+    },
+    {
+      "bytes": 1284791,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/707f63ff00b23eefc1999b5663cc26490676476cf3d8cfc35efd0a8feb9c8dfb.json",
+      "sha256": "707f63ff00b23eefc1999b5663cc26490676476cf3d8cfc35efd0a8feb9c8dfb"
+    },
+    {
+      "bytes": 988557,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/7295739847095e34f5251315fbd458fc2fb0161baf8b45b148791882c83c77e6.json",
+      "sha256": "7295739847095e34f5251315fbd458fc2fb0161baf8b45b148791882c83c77e6"
+    },
+    {
+      "bytes": 1318004,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/9b6dc22e244bae25a1264cfaa9ac09b660aae5775ca2ae0f8cabc2671fb23b46.json",
+      "sha256": "9b6dc22e244bae25a1264cfaa9ac09b660aae5775ca2ae0f8cabc2671fb23b46"
+    },
+    {
+      "bytes": 2868843,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/9caf4dc0dac4e18a5ba14d7b6c9478c0305bde27ea3c11cc19bd05117e326620.json",
+      "sha256": "9caf4dc0dac4e18a5ba14d7b6c9478c0305bde27ea3c11cc19bd05117e326620"
+    },
+    {
+      "bytes": 2323758,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/9cdcbfa7af6614e98de9e0c9acbd85f7cb1148223ab62518c891b2dae5f822a3.json",
+      "sha256": "9cdcbfa7af6614e98de9e0c9acbd85f7cb1148223ab62518c891b2dae5f822a3"
+    },
+    {
+      "bytes": 3963756,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/9f521f8588ac12dbf88db96154427426175417725289ab4e5b2ec69964cc6003.json",
+      "sha256": "9f521f8588ac12dbf88db96154427426175417725289ab4e5b2ec69964cc6003"
+    },
+    {
+      "bytes": 3190478,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/ab2137cceb031d5c399d837d40368f70e39add0e427ce1fefe47353862b96a41.json",
+      "sha256": "ab2137cceb031d5c399d837d40368f70e39add0e427ce1fefe47353862b96a41"
+    },
+    {
+      "bytes": 1161691,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/afb104b4dfdd8ef42400930062ed68f0fbc2552417d9b34d15f28b94ccb485a6.json",
+      "sha256": "afb104b4dfdd8ef42400930062ed68f0fbc2552417d9b34d15f28b94ccb485a6"
+    },
+    {
+      "bytes": 832205,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/b2bee155f450af0bca744db6c4ef73ebda3a8fcc745a175d3f808c2b3b9267bd.json",
+      "sha256": "b2bee155f450af0bca744db6c4ef73ebda3a8fcc745a175d3f808c2b3b9267bd"
+    },
+    {
+      "bytes": 2229043,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/c2e15a40d3e7bb5f9ab2d8debfe52f1d034ba93583a7cf1738e2e462df7e7a43.json",
+      "sha256": "c2e15a40d3e7bb5f9ab2d8debfe52f1d034ba93583a7cf1738e2e462df7e7a43"
+    },
+    {
+      "bytes": 2573261,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/cbb3468a6d7b16f90c2a526756b84a51050b7318a3625faafafef8d5e10ef2f5.json",
+      "sha256": "cbb3468a6d7b16f90c2a526756b84a51050b7318a3625faafafef8d5e10ef2f5"
+    },
+    {
+      "bytes": 2757195,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/cddf328e4a4740fc2e98ee914101e1cb428811864bac8d69df5beebc1a7c9610.json",
+      "sha256": "cddf328e4a4740fc2e98ee914101e1cb428811864bac8d69df5beebc1a7c9610"
+    },
+    {
+      "bytes": 1095163,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/d6026aab643965af8209060683fa755a05b2bb1cce9e9d21c83d45ab90b9fe4a.json",
+      "sha256": "d6026aab643965af8209060683fa755a05b2bb1cce9e9d21c83d45ab90b9fe4a"
+    },
+    {
+      "bytes": 3065054,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/de10e2c1e4db603ca2e6816d325a902bb86415e960e4580f1446a459475e3f9f.json",
+      "sha256": "de10e2c1e4db603ca2e6816d325a902bb86415e960e4580f1446a459475e3f9f"
+    },
+    {
+      "bytes": 1034501,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/e237e5b7f5ec13c7376cb8d5de9193e5e39f6ae1fc43bcc73f88c6d474b51bbf.json",
+      "sha256": "e237e5b7f5ec13c7376cb8d5de9193e5e39f6ae1fc43bcc73f88c6d474b51bbf"
+    },
+    {
+      "bytes": 2974151,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/e6a89bd6e7c8df26665b542e843e7ae18ed24914ac0cf9321d0a644d3c62fc42.json",
+      "sha256": "e6a89bd6e7c8df26665b542e843e7ae18ed24914ac0cf9321d0a644d3c62fc42"
+    },
+    {
+      "bytes": 774694,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/ec53531ef8511453802265499623c86755009d6c1ae816c8dd678db01429face.json",
+      "sha256": "ec53531ef8511453802265499623c86755009d6c1ae816c8dd678db01429face"
+    },
+    {
+      "bytes": 1463440,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/f12f2226acf6e08c52c43f9a88fc038387bbbc645f94f7f720f118a99da4b339.json",
+      "sha256": "f12f2226acf6e08c52c43f9a88fc038387bbbc645f94f7f720f118a99da4b339"
+    },
+    {
+      "bytes": 2163471,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/f73fd0336e3d62123ad12059eda915d77bf9ec046047412c615feecb46b435ee.json",
+      "sha256": "f73fd0336e3d62123ad12059eda915d77bf9ec046047412c615feecb46b435ee"
+    },
+    {
+      "bytes": 2860372,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/f878e587e4259c0005ce1715b1c9f27a727c329e55f81867a57fafbaf4ef4352.json",
+      "sha256": "f878e587e4259c0005ce1715b1c9f27a727c329e55f81867a57fafbaf4ef4352"
+    },
+    {
+      "bytes": 934621,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/raw/fe0f06419593c7ca5b496456f98473e91429be24ab9a3c1b20bd227587722606.json",
+      "sha256": "fe0f06419593c7ca5b496456f98473e91429be24ab9a3c1b20bd227587722606"
+    },
+    {
+      "bytes": 71999,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/rebuild.json",
+      "sha256": "2026f7cccad7c18fed0aa233d643a78588012ab2d891fbcf5cea890f78d595ed"
+    },
+    {
+      "bytes": 998,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/hazards.json",
+      "sha256": "c3728da43fbbb042658ec6ad9ab8a080385d340b86f5e4078476a2630c48ed86"
+    },
+    {
+      "bytes": 8279,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/questions.txt",
+      "sha256": "706809c54a225761d369c68f6b929f08827342bc2de59218eeb11e9af534b5ab"
+    },
+    {
+      "bytes": 3881,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/report.json",
+      "sha256": "2def5dd8932a02459f8cea3137e1d01b18e1b2d337897871f122981e1e1e4f20"
+    },
+    {
+      "bytes": 127,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/score100.json",
+      "sha256": "9bf358b0527a09f7a6e2b03f41d1e8f11e656d7cfd789dec839d2cb8e95bfd88"
+    },
+    {
+      "bytes": 127,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/score1000.json",
+      "sha256": "fff3594b182bebd5d92cd51378c31d6dc7cb24e20d06cab77f6038f6821a7ec1"
+    },
+    {
+      "bytes": 19250,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/standalone100.jsonl",
+      "sha256": "f4b56dac0a16d30c887c0baaef89036f31ec83a04ed0261661990ea36fbf7721"
+    },
+    {
+      "bytes": 19289,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/standalone1000.jsonl",
+      "sha256": "2af91684d1018092c21161a3c931e28e2ec638418d4b16d957376822d9c01235"
+    },
+    {
+      "bytes": 143393,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/talk100.jsonl",
+      "sha256": "4e2935566691fc02329fcbf73f88dab54216c0781826a2ac61fd8db91b0af722"
+    },
+    {
+      "bytes": 144821,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/talk1000.jsonl",
+      "sha256": "e121a055c3e554b6c26138a3231b89d67fa2d719ea83b5340e7931841e569a5e"
+    },
+    {
+      "bytes": 81653,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/sample/transitions.jsonl",
+      "sha256": "8b6c26e405ef418ee1b2ac2e2c25004c653ca848bd7e1474ee812bd41c2ee703"
+    },
+    {
+      "bytes": 89148,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/scope100/index.json",
+      "sha256": "ecd5c8095fcfbcd03e8b6ea5e6373c393937f93fddfab1cc14174954a8c93cb7"
+    },
+    {
+      "bytes": 4687,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/scope100/labels.json",
+      "sha256": "614e387936b943af916924f4df0c01b2fcda5dfacb06848d06cef069656fd0c7"
+    },
+    {
+      "bytes": 650045,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/scope1000/index.json",
+      "sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791"
+    },
+    {
+      "bytes": 32825,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/scope1000/labels.json",
+      "sha256": "ebc434b04a6b97c9d4db8f7d81e33826c615d87dd7c9fc03a1f47aafeabf6a61"
+    },
+    {
+      "bytes": 142820,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/selection.json",
+      "sha256": "77208912a8fbf86efc3aafa707495c6c5f1ecde2f07390d9a37d2ece637f40af"
+    }
+  ],
+  "bundle_checks": {
+    "checks": {
+      "index_asset_binding": {
+        "rejected": true,
+        "stderr": "glassmind: bundle/index.json: does not match manifest.json\n"
+      },
+      "labels_asset_binding": {
+        "rejected": true,
+        "stderr": "glassmind: labels.json: snapshot or provenance mismatch\n"
+      },
+      "model_asset_binding": {
+        "rejected": true,
+        "stderr": "glassmind: bundle/relation.json: does not match manifest.json\n"
+      },
+      "relocated_byte_identical": true,
+      "unsupported_manifest_schema": {
+        "rejected": true,
+        "stderr": "glassmind: manifest.json: unsupported version or missing provenance\n"
+      }
+    },
+    "correct": 4,
+    "note": "independent factual probes, not benchmark score; prompts frozen before dev read",
+    "probes": [
+      {
+        "correct": true,
+        "expected": [
+          "Q65"
+        ],
+        "property": "P19",
+        "question": "Where was Diane Keaton born?",
+        "reply": {
+          "answers": [
+            "Q65"
+          ],
+          "entities": [
+            {
+              "id": "Q102642",
+              "label": "Diane Keaton",
+              "url": "https://www.wikidata.org/wiki/Q102642"
+            },
+            {
+              "id": "Q65",
+              "label": "Los Angeles",
+              "url": "https://www.wikidata.org/wiki/Q65"
+            }
+          ],
+          "entity": "Q102642",
+          "kind": "fact_answer",
+          "provenance": {
+            "index_sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791",
+            "license": "CC0-1.0",
+            "relation_direction": "forward",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P19",
+            "scope": "TRAIN prefix90 fit frequency top1000; finite snapshot; see rebuild.json for actual coverage",
+            "source": "Wikidata actual cached claims; TRAIN subject-selected series v1"
+          },
+          "refusal": null,
+          "relation": "P19",
+          "text": "The local Wikidata snapshot suggests Los Angeles (Q65).\nSource: https://www.wikidata.org/wiki/Q102642"
+        },
+        "source": "actual independently fetched Wikidata claim, not validation annotations",
+        "subject": "Q102642"
+      },
+      {
+        "correct": true,
+        "expected": [
+          "Q23556"
+        ],
+        "property": "P19",
+        "question": "What city was Steven Soderbergh born in?",
+        "reply": {
+          "answers": [
+            "Q23556"
+          ],
+          "entities": [
+            {
+              "id": "Q103917",
+              "label": "Steven Soderbergh",
+              "url": "https://www.wikidata.org/wiki/Q103917"
+            },
+            {
+              "id": "Q23556",
+              "label": "Atlanta",
+              "url": "https://www.wikidata.org/wiki/Q23556"
+            }
+          ],
+          "entity": "Q103917",
+          "kind": "fact_answer",
+          "provenance": {
+            "index_sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791",
+            "license": "CC0-1.0",
+            "relation_direction": "forward",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P19",
+            "scope": "TRAIN prefix90 fit frequency top1000; finite snapshot; see rebuild.json for actual coverage",
+            "source": "Wikidata actual cached claims; TRAIN subject-selected series v1"
+          },
+          "refusal": null,
+          "relation": "P19",
+          "text": "The local Wikidata snapshot suggests Atlanta (Q23556).\nSource: https://www.wikidata.org/wiki/Q103917"
+        },
+        "source": "actual independently fetched Wikidata claim, not validation annotations",
+        "subject": "Q103917"
+      },
+      {
+        "correct": true,
+        "expected": [
+          "Q30"
+        ],
+        "property": "P27",
+        "question": "What country was Thomas Edison a citizen of?",
+        "reply": {
+          "answers": [
+            "Q30"
+          ],
+          "entities": [
+            {
+              "id": "Q8743",
+              "label": "Thomas Edison",
+              "url": "https://www.wikidata.org/wiki/Q8743"
+            },
+            {
+              "id": "Q30",
+              "label": "United States",
+              "url": "https://www.wikidata.org/wiki/Q30"
+            }
+          ],
+          "entity": "Q8743",
+          "kind": "fact_answer",
+          "provenance": {
+            "index_sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791",
+            "license": "CC0-1.0",
+            "relation_direction": "forward",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P27",
+            "scope": "TRAIN prefix90 fit frequency top1000; finite snapshot; see rebuild.json for actual coverage",
+            "source": "Wikidata actual cached claims; TRAIN subject-selected series v1"
+          },
+          "refusal": null,
+          "relation": "P27",
+          "text": "The local Wikidata snapshot suggests United States (Q30).\nSource: https://www.wikidata.org/wiki/Q8743"
+        },
+        "source": "actual independently fetched Wikidata claim, not validation annotations",
+        "subject": "Q8743"
+      },
+      {
+        "correct": false,
+        "expected": [
+          "Q214681"
+        ],
+        "property": "P36",
+        "question": "What is the capital of Goa?",
+        "reply": {
+          "answers": [],
+          "entities": [
+            {
+              "id": "Q1171",
+              "label": "Goa",
+              "url": "https://www.wikidata.org/wiki/Q1171"
+            }
+          ],
+          "entity": "Q1171",
+          "kind": "refusal",
+          "provenance": {
+            "index_sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791",
+            "license": "CC0-1.0",
+            "relation_direction": "forward",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P31",
+            "scope": "TRAIN prefix90 fit frequency top1000; finite snapshot; see rebuild.json for actual coverage",
+            "source": "Wikidata actual cached claims; TRAIN subject-selected series v1"
+          },
+          "refusal": "uncertain relation",
+          "relation": "P31",
+          "text": "I couldn't find a unique answer in the local Wikidata snapshot."
+        },
+        "source": "actual independently fetched Wikidata claim, not validation annotations",
+        "subject": "Q1171"
+      },
+      {
+        "correct": true,
+        "expected": [
+          "Q549750"
+        ],
+        "property": "P20",
+        "question": "Where did Jean Cocteau die?",
+        "reply": {
+          "answers": [
+            "Q549750"
+          ],
+          "entities": [
+            {
+              "id": "Q83158",
+              "label": "Jean Cocteau",
+              "url": "https://www.wikidata.org/wiki/Q83158"
+            },
+            {
+              "id": "Q549750",
+              "label": null,
+              "url": "https://www.wikidata.org/wiki/Q549750"
+            }
+          ],
+          "entity": "Q83158",
+          "kind": "fact_answer",
+          "provenance": {
+            "index_sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791",
+            "license": "CC0-1.0",
+            "relation_direction": "forward",
+            "relation_model_sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6",
+            "relation_selection": "learned proposal, not logical certainty",
+            "relation_url": "https://www.wikidata.org/wiki/Property:P20",
+            "scope": "TRAIN prefix90 fit frequency top1000; finite snapshot; see rebuild.json for actual coverage",
+            "source": "Wikidata actual cached claims; TRAIN subject-selected series v1"
+          },
+          "refusal": null,
+          "relation": "P20",
+          "text": "The local Wikidata snapshot suggests Q549750 (English label unavailable).\nSource: https://www.wikidata.org/wiki/Q83158"
+        },
+        "source": "actual independently fetched Wikidata claim, not validation annotations",
+        "subject": "Q83158"
+      }
+    ],
+    "total": 5
+  },
+  "decision": "REJECT expanded scope as default replacement: precision drop exceeds preregistered 0.02",
+  "earlier_correct_lost": [],
+  "expanded1000_qids_sha256": "4adfd2617a09e84d9ad97cbed28f44b18f55a4291dc9a24424242bcc8692c65a",
+  "full": {
+    "binaries": [
+      {
+        "bytes": 12803712,
+        "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/target/release/glassmind-facts",
+        "sha256": "076f5f89d620d4e6c4521d45799f85c585a9c6fb54004e74540c5c5ad37b4a3d"
+      },
+      {
+        "bytes": 7584984,
+        "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/target/release/examples/continuous_predictions",
+        "sha256": "1e5a4af21b05024c85c6e3173f782cd6d62c3a5ed27259fe642aeb30c56eb433"
+      },
+      {
+        "bytes": 72713392,
+        "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/target/release/glassmind",
+        "sha256": "d199ecfbe0d52692fe35d058de523ba4883a7c99e90679f5ea933c180784a1f1"
+      }
+    ],
+    "exact_id_equivalence": true,
+    "hazards": 18,
+    "metric_acceptance": false,
+    "scopes": {
+      "100": {
+        "answer_id_changes": [],
+        "assets": [
+          {
+            "bytes": 408,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/manifest.json",
+            "sha256": "32247172b3c3022c683f8eb5447e0917f5a0b29441165b21dc824edf12460e5a"
+          },
+          {
+            "bytes": 89148,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/index.json",
+            "sha256": "ecd5c8095fcfbcd03e8b6ea5e6373c393937f93fddfab1cc14174954a8c93cb7"
+          },
+          {
+            "bytes": 35773124,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/relation.json",
+            "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+          },
+          {
+            "bytes": 4687,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/labels.json",
+            "sha256": "614e387936b943af916924f4df0c01b2fcda5dfacb06848d06cef069656fd0c7"
+          }
+        ],
+        "precision": 0.4583333333333333,
+        "score": {
+          "entity_linked_correct": 150,
+          "refused": 2725,
+          "relation_top1_correct": 2664,
+          "right": 44,
+          "total": 2821,
+          "wrong": 52
+        }
+      },
+      "1000": {
+        "answer_id_changes": [],
+        "assets": [
+          {
+            "bytes": 409,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/manifest.json",
+            "sha256": "237685af159b0a213fc1f9b2a051b390aa3a677e537d2e3eae3912c474178512"
+          },
+          {
+            "bytes": 650045,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/index.json",
+            "sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791"
+          },
+          {
+            "bytes": 35773124,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+            "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+          },
+          {
+            "bytes": 32825,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/labels.json",
+            "sha256": "ebc434b04a6b97c9d4db8f7d81e33826c615d87dd7c9fc03a1f47aafeabf6a61"
+          }
+        ],
+        "precision": 0.43119266055045874,
+        "score": {
+          "entity_linked_correct": 193,
+          "refused": 2712,
+          "relation_top1_correct": 2664,
+          "right": 47,
+          "total": 2821,
+          "wrong": 62
+        }
+      }
+    },
+    "series": "TRAIN-prefix90-fit subject-frequency finite Wikidata scope v1",
+    "total": 2821,
+    "transitions": {
+      "refused->refused": 2705,
+      "refused->right": 2,
+      "refused->wrong": 18,
+      "right->right": 44,
+      "wrong->refused": 7,
+      "wrong->right": 1,
+      "wrong->wrong": 44
+    },
+    "validation": {
+      "bytes": 173187,
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv",
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    }
+  },
+  "gained_correct": [
+    {
+      "after": {
+        "answers": [
+          "Q668"
+        ],
+        "entity": "Q6817891",
+        "refusal": null,
+        "relation": "P495"
+      },
+      "before": {
+        "answers": [
+          "Q30"
+        ],
+        "entity": "Q83440",
+        "refusal": null,
+        "relation": "P495"
+      },
+      "gold_object": "Q668",
+      "gold_relation": "P495",
+      "gold_subject": "Q6817891",
+      "question": "which country was the mera shikar filmed in",
+      "row": 572,
+      "transition": "wrong->right"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q30"
+        ],
+        "entity": "Q14950133",
+        "refusal": null,
+        "relation": "P27"
+      },
+      "before": {
+        "answers": [],
+        "entity": "Q83440",
+        "refusal": "claim missing from this finite snapshot",
+        "relation": "P27"
+      },
+      "gold_object": "Q30",
+      "gold_relation": "P27",
+      "gold_subject": "Q14950133",
+      "question": "What country is james develin from",
+      "row": 1780,
+      "transition": "refused->right"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q6581097"
+        ],
+        "entity": "Q5538847",
+        "refusal": null,
+        "relation": "P21"
+      },
+      "before": {
+        "answers": [],
+        "entity": "Q6581072",
+        "refusal": "claim missing from this finite snapshot",
+        "relation": "P21"
+      },
+      "gold_object": "Q6581097",
+      "gold_relation": "P21",
+      "gold_subject": "Q5537495",
+      "question": "Is george butler male or female?",
+      "row": 2190,
+      "transition": "refused->right"
+    }
+  ],
+  "licenses": {
+    "SimpleQuestions": "CC BY 3.0; pinned df69267f1db4f85a71325e7e8c06e192bcaf0b0e",
+    "Wikidata structured labels aliases claims": "CC0-1.0",
+    "project": "MIT OR Apache-2.0"
+  },
+  "minimum_request_spacing_seconds": 2.000031,
+  "nested_entity_values_identical": true,
+  "newly_wrong": [
+    {
+      "after": {
+        "answers": [
+          "Q75707"
+        ],
+        "entity": "Q1055",
+        "refusal": null,
+        "relation": "R19"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "expanded_inverse_subjects": [
+        "Q75707"
+      ],
+      "gold_object": "Q7531204",
+      "gold_relation": "R19",
+      "gold_subject": "Q1055",
+      "linked_gold_subject": true,
+      "question": "Who was born in hamburg?",
+      "row": 154,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q11366"
+        ],
+        "entity": "Q6902658",
+        "refusal": null,
+        "relation": "P136"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q183504",
+      "gold_relation": "P136",
+      "gold_subject": "Q6902783",
+      "linked_gold_subject": false,
+      "question": "what kind of music does monster movie (band) perform",
+      "row": 190,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q1203"
+        ],
+        "entity": "Q2703182",
+        "refusal": null,
+        "relation": "P86"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q360399",
+      "gold_relation": "P86",
+      "gold_subject": "Q304030",
+      "linked_gold_subject": false,
+      "question": "who composed the music for eat pray love",
+      "row": 618,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q6771974"
+        ],
+        "entity": "Q8678",
+        "refusal": null,
+        "relation": "R19"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "expanded_inverse_subjects": [
+        "Q6771974"
+      ],
+      "gold_object": "Q462197",
+      "gold_relation": "R19",
+      "gold_subject": "Q8678",
+      "linked_gold_subject": true,
+      "question": "who was born in rio de janeiro",
+      "row": 666,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q134307"
+        ],
+        "entity": "Q3161788",
+        "refusal": null,
+        "relation": "P136"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q369747",
+      "gold_relation": "P136",
+      "gold_subject": "Q4631008",
+      "linked_gold_subject": false,
+      "question": "what film genre is 21 and a wake-up",
+      "row": 721,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q6369544"
+        ],
+        "entity": "Q24826",
+        "refusal": null,
+        "relation": "R19"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "expanded_inverse_subjects": [
+        "Q6369544"
+      ],
+      "gold_object": "Q2586583",
+      "gold_relation": "R19",
+      "gold_subject": "Q24826",
+      "linked_gold_subject": true,
+      "question": "Name someone who was born in liverpool",
+      "row": 747,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q145"
+        ],
+        "entity": "Q10430120",
+        "refusal": null,
+        "relation": "P27"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q30",
+      "gold_relation": "P27",
+      "gold_subject": "Q1928646",
+      "linked_gold_subject": false,
+      "question": "What nation is michael moore originally from?",
+      "row": 761,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q6369544"
+        ],
+        "entity": "Q24826",
+        "refusal": null,
+        "relation": "R19"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "expanded_inverse_subjects": [
+        "Q6369544"
+      ],
+      "gold_object": "Q4964993",
+      "gold_relation": "R19",
+      "gold_subject": "Q24826",
+      "linked_gold_subject": true,
+      "question": "Name someone famous who was born in liverpool",
+      "row": 849,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q4115712"
+        ],
+        "entity": "Q717231",
+        "refusal": null,
+        "relation": "P19"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q649",
+      "gold_relation": "P19",
+      "gold_subject": "Q933012",
+      "linked_gold_subject": false,
+      "question": "where was nikolay alexeyev born",
+      "row": 861,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q269049"
+        ],
+        "entity": "Q485395",
+        "refusal": null,
+        "relation": "R136"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": "Q11399",
+        "refusal": "claim missing from this finite snapshot",
+        "relation": "R136"
+      },
+      "expanded_inverse_subjects": [
+        "Q269049"
+      ],
+      "gold_object": "Q366371",
+      "gold_relation": "R136",
+      "gold_subject": "Q485395",
+      "linked_gold_subject": true,
+      "question": "what gothic rock albums are there",
+      "row": 1143,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q73683"
+        ],
+        "entity": "Q64",
+        "refusal": null,
+        "relation": "R19"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "expanded_inverse_subjects": [
+        "Q73683"
+      ],
+      "gold_object": "Q122006",
+      "gold_relation": "R19",
+      "gold_subject": "Q64",
+      "linked_gold_subject": true,
+      "question": "Who is someone that was born in berlin?",
+      "row": 1572,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q7360500"
+        ],
+        "entity": "Q100",
+        "refusal": null,
+        "relation": "R19"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "expanded_inverse_subjects": [
+        "Q7360500"
+      ],
+      "gold_object": "Q709361",
+      "gold_relation": "R19",
+      "gold_subject": "Q100",
+      "linked_gold_subject": true,
+      "question": "Who is a person born in boston",
+      "row": 1661,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q2839693"
+        ],
+        "entity": "Q90",
+        "refusal": null,
+        "relation": "R19"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "expanded_inverse_subjects": [
+        "Q2839693"
+      ],
+      "gold_object": "Q6909632",
+      "gold_relation": "R19",
+      "gold_subject": "Q1018504",
+      "linked_gold_subject": false,
+      "question": "What American pastor was born in Paris?",
+      "row": 2357,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q217191"
+        ],
+        "entity": "Q2703182",
+        "refusal": null,
+        "relation": "P136"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q45981",
+      "gold_relation": "P136",
+      "gold_subject": "Q1098388",
+      "linked_gold_subject": false,
+      "question": "What is the genre of the album everybody needs somebody to love / think?",
+      "row": 2359,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q1501183"
+        ],
+        "entity": "Q484344",
+        "refusal": null,
+        "relation": "R136"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": "Q484344",
+        "refusal": "claim missing from this finite snapshot",
+        "relation": "R136"
+      },
+      "expanded_inverse_subjects": [
+        "Q1501183"
+      ],
+      "gold_object": "Q5000628",
+      "gold_relation": "R136",
+      "gold_subject": "Q484344",
+      "linked_gold_subject": true,
+      "question": "Name a album within the progressive metal genre.",
+      "row": 2371,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q572954"
+        ],
+        "entity": "Q8740",
+        "refusal": null,
+        "relation": "R607"
+      },
+      "analysis": "inverse local unique: does not prove global uniqueness or satisfy additional type restrictions",
+      "before": {
+        "answers": [],
+        "entity": "Q8740",
+        "refusal": "claim missing from this finite snapshot",
+        "relation": "R607"
+      },
+      "expanded_inverse_subjects": [
+        "Q572954"
+      ],
+      "gold_object": "Q8013275",
+      "gold_relation": "R607",
+      "gold_subject": "Q8740",
+      "linked_gold_subject": true,
+      "question": "Name a military personnel involved in the vietnam war.",
+      "row": 2551,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q174193"
+        ],
+        "entity": "Q556520",
+        "refusal": null,
+        "relation": "P27"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q30",
+      "gold_relation": "P27",
+      "gold_subject": "Q7377585",
+      "linked_gold_subject": false,
+      "question": "whats the nationality of  rudy carpenter",
+      "row": 2678,
+      "transition": "refused->wrong"
+    },
+    {
+      "after": {
+        "answers": [
+          "Q408"
+        ],
+        "entity": "Q36687",
+        "refusal": null,
+        "relation": "P131"
+      },
+      "analysis": "wrong entity alias link: factual claim belongs to a different subject",
+      "before": {
+        "answers": [],
+        "entity": null,
+        "refusal": "no unique entity alias in this snapshot",
+        "relation": null
+      },
+      "gold_object": "Q26762",
+      "gold_relation": "P131",
+      "gold_subject": "Q982114",
+      "linked_gold_subject": false,
+      "question": "which county is la victoria located in",
+      "row": 2757,
+      "transition": "refused->wrong"
+    }
+  ],
+  "numeric_wikidata_revisions": "Unavailable: original wbgetentities props excluded info; exact raw SHA256 and client retrieval timestamps retained. Old cache retrieval times unavailable, only mtime. No revision numbers invented.",
+  "prefix100_qids_sha256": "e4af71e5d6added53d8fc58d8c7122e41101c5d0a6fb733452239282edb638e9",
+  "rejected_experiments": [
+    "Only preregistered 100->1000 expansion; rejected on full-dev precision. No dev-driven retry, threshold, claim filtering, entity reselection or default replacement."
+  ],
+  "run_logs": [
+    {
+      "bytes": 3566,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/build.log",
+      "sha256": "3390aba01a7551a8843f4a2a66530ff3b59a6bb6d83476fffbd37f6d67b8f600"
+    },
+    {
+      "bytes": 3551,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/python-tests.log",
+      "sha256": "a3891f5fa6215f5c13eb7f715118ada33a7325741c7d868e086f3c71c5f30520"
+    },
+    {
+      "bytes": 409,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/sample.log",
+      "sha256": "58e535bc8dc8b791d892dde8b0549d1b785cf12163b0d316613f34a859fe771b"
+    },
+    {
+      "bytes": 484,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/full.log",
+      "sha256": "1d8c39bf25e0e4d8ec6f0d47492bad14e7822f844c5b5398440720022f9ec6ee"
+    },
+    {
+      "bytes": 8402,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/bundle-checks.log",
+      "sha256": "481eca13dc1b86894735a7716493df01ec05a90287d2b002a25152fd1199bd70"
+    },
+    {
+      "bytes": 19806,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/rebuild.log",
+      "sha256": "3c5095d6cdc800c44ad818820e91cb32ce3d10476cc513fb6570bb4927366565"
+    },
+    {
+      "bytes": 49096,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/fetch.log",
+      "sha256": "b77893387d222ad8acab6ee8e59d7bafd55676243ec0eaaf4071c7a4278adbd7"
+    }
+  ],
+  "sample": {
+    "binaries": [
+      {
+        "bytes": 12803712,
+        "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/target/release/glassmind-facts",
+        "sha256": "076f5f89d620d4e6c4521d45799f85c585a9c6fb54004e74540c5c5ad37b4a3d"
+      },
+      {
+        "bytes": 7584984,
+        "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/target/release/examples/continuous_predictions",
+        "sha256": "1e5a4af21b05024c85c6e3173f782cd6d62c3a5ed27259fe642aeb30c56eb433"
+      },
+      {
+        "bytes": 72713392,
+        "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/target/release/glassmind",
+        "sha256": "d199ecfbe0d52692fe35d058de523ba4883a7c99e90679f5ea933c180784a1f1"
+      }
+    ],
+    "exact_id_equivalence": true,
+    "hazards": 2,
+    "metric_acceptance": false,
+    "scopes": {
+      "100": {
+        "answer_id_changes": [],
+        "assets": [
+          {
+            "bytes": 408,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/manifest.json",
+            "sha256": "32247172b3c3022c683f8eb5447e0917f5a0b29441165b21dc824edf12460e5a"
+          },
+          {
+            "bytes": 89148,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/index.json",
+            "sha256": "ecd5c8095fcfbcd03e8b6ea5e6373c393937f93fddfab1cc14174954a8c93cb7"
+          },
+          {
+            "bytes": 35773124,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/relation.json",
+            "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+          },
+          {
+            "bytes": 4687,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle100/labels.json",
+            "sha256": "614e387936b943af916924f4df0c01b2fcda5dfacb06848d06cef069656fd0c7"
+          }
+        ],
+        "precision": 0.42857142857142855,
+        "score": {
+          "entity_linked_correct": 7,
+          "refused": 193,
+          "relation_top1_correct": 187,
+          "right": 3,
+          "total": 200,
+          "wrong": 4
+        }
+      },
+      "1000": {
+        "answer_id_changes": [],
+        "assets": [
+          {
+            "bytes": 409,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/manifest.json",
+            "sha256": "237685af159b0a213fc1f9b2a051b390aa3a677e537d2e3eae3912c474178512"
+          },
+          {
+            "bytes": 650045,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/index.json",
+            "sha256": "142f62f8abeec20f0b01bb5361b5e536507d21781c77773e96ca87091aed5791"
+          },
+          {
+            "bytes": 35773124,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/relation.json",
+            "sha256": "db0b175aa5caa78d7f7f6b63dd830e0dc7a2fab39f8259f223239a17db89ada6"
+          },
+          {
+            "bytes": 32825,
+            "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/bundle1000/labels.json",
+            "sha256": "ebc434b04a6b97c9d4db8f7d81e33826c615d87dd7c9fc03a1f47aafeabf6a61"
+          }
+        ],
+        "precision": 0.3333333333333333,
+        "score": {
+          "entity_linked_correct": 9,
+          "refused": 191,
+          "relation_top1_correct": 187,
+          "right": 3,
+          "total": 200,
+          "wrong": 6
+        }
+      }
+    },
+    "series": "TRAIN-prefix90-fit subject-frequency finite Wikidata scope v1",
+    "total": 200,
+    "transitions": {
+      "refused->refused": 191,
+      "refused->wrong": 2,
+      "right->right": 3,
+      "wrong->wrong": 4
+    },
+    "validation": {
+      "bytes": 173187,
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/valid.tsv",
+      "sha256": "1dffa967f15f2cb73ba7a50d3545f9585ef76b8722322e569cf54c9f9a1a9a48"
+    }
+  },
+  "selection": {
+    "excluded_calibration_in_prefix": 1754,
+    "excluded_tail": 1949,
+    "fit_row_indices_sha256": "2b0b6f59cffe2daaecaf9f3d54df6c04b95b0f7092776cc2f5ebf709a9a6a5c2",
+    "fit_rows": 15778,
+    "old_model_calibration_rows": 1949,
+    "prefix_end_exclusive": 17532,
+    "rule": "i < floor(0.9*N) and i%10 != 0; frequency desc, SHA256(QID) asc",
+    "source_revision": "df69267f1db4f85a71325e7e8c06e192bcaf0b0e",
+    "total_train_rows": 19481,
+    "train": {
+      "bytes": 1193868,
+      "path": "/home/gsc/.cache/glassmind/data/simplequestions/train.tsv",
+      "sha256": "25c5994c4e3a4dad39bacf3c457b3ff4cf7b199630eb78045a0b478e4fda145b"
+    },
+    "version": 1
+  },
+  "selection_artifact": {
+    "bytes": 142820,
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/selection.json",
+    "sha256": "77208912a8fbf86efc3aafa707495c6c5f1ecde2f07390d9a37d2ece637f40af"
+  },
+  "source_commit": "4a05e4cbd53209a1666f8335e2b974ab19aa6da1",
+  "source_hashes": [
+    {
+      "bytes": 5065,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/crates/facts/src/main.rs",
+      "sha256": "3abf5d6ca2a09dc1004b72f20098fe1b4101cfdf62236ded84ff585f1c6a17e4"
+    },
+    {
+      "bytes": 7750,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/crates/facts/src/lib.rs",
+      "sha256": "e0f0c6cc24d2123641b8c5b3c93dacb53207b2e8b543f1b48f1ba3e140e9284b"
+    },
+    {
+      "bytes": 845,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/crates/facts/examples/continuous_predictions.rs",
+      "sha256": "d38ad548444210cf177a3d647f2dc6e7188ab04f9816f9af34f3ee3521514934"
+    },
+    {
+      "bytes": 12456,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/crates/cli/src/talk_facts.rs",
+      "sha256": "37a89d8bb05b68b2631afcdb057f17f8d9eba03ebfd4569a2e6a18aac2fce0be"
+    },
+    {
+      "bytes": 8593,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/crates/cli/src/everyday.rs",
+      "sha256": "30a6e52fbe4f77fb09285e38fd1c03cf3e742d276168ad27c20013b59247e65f"
+    },
+    {
+      "bytes": 2230,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/chat/package.py",
+      "sha256": "08b6c43eee8eb1bbeac5b19699ee0f5043db0fdade96ac487e2c52ca9ef36c36"
+    },
+    {
+      "bytes": 287236,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/index.json",
+      "sha256": "923fda815c0a132e11fded9b79dc8dd42e22faee15dbbc7b9a9a45d426a1c185"
+    },
+    {
+      "bytes": 259,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/tools/facts/model-provenance.json",
+      "sha256": "53b8910bb60ba67b68cbbae820bb806b50428e34b8797b0d643890df4e10af20"
+    },
+    {
+      "bytes": 17183,
+      "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex/Cargo.lock",
+      "sha256": "ea1150873757ef71f9201bee023b162b983262de4714fa243a5168292c41bcf4"
+    }
+  ],
+  "transitions_full_artifact": {
+    "bytes": 1158259,
+    "path": "/home/gsc/.cache/glassmind/continuous-20261010/trainindex-run/tmp/trainindex/full/transitions.jsonl",
+    "sha256": "772532003ae5eadf08912e658da03078ae3b154ece82174165d6d25d6cb2c0d5"
+  }
+}
